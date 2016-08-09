@@ -3,7 +3,7 @@
 // DO NOT EDIT!
 
 /*
-Package google_cloud_vision_v1 is a generated protocol buffer package.
+Package v1 is a generated protocol buffer package.
 
 It is generated from these files:
 	google.golang.org/genproto/googleapis/cloud/vision/v1/geometry.proto
@@ -31,7 +31,7 @@ It has these top-level messages:
 	BatchAnnotateImagesRequest
 	BatchAnnotateImagesResponse
 */
-package google_cloud_vision_v1
+package v1
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

@@ -21,7 +21,7 @@ import "github.com/golang/protobuf/ptypes/empty/empty.proto"; // from google/pro
 import "google.golang.org/genproto/protobuf/field_mask.proto"; // from google/protobuf/field_mask.proto
 import "github.com/golang/protobuf/ptypes/struct/struct.proto"; // from google/protobuf/struct.proto
 import "github.com/golang/protobuf/ptypes/wrappers/wrappers.proto"; // from google/protobuf/wrappers.proto
-import "google.golang.org/genproto/googleapis/rpc/status.proto"; // from google/rpc/status.proto
+import "google.golang.org/genproto/googleapis/rpc/status/status.proto"; // from google/rpc/status.proto
 
 option cc_enable_arenas = true;
 option java_multiple_files = true;

@@ -18,7 +18,7 @@ package google.cloud.speech.v1beta1;
 
 import "google.golang.org/genproto/googleapis/api/serviceconfig/annotations.proto"; // from google/api/annotations.proto
 import "google.golang.org/genproto/googleapis/longrunning/operations.proto"; // from google/longrunning/operations.proto
-import "google.golang.org/genproto/googleapis/rpc/status.proto"; // from google/rpc/status.proto
+import "google.golang.org/genproto/googleapis/rpc/status/status.proto"; // from google/rpc/status.proto
 
 option java_multiple_files = true;
 option java_outer_classname = "SpeechProto";

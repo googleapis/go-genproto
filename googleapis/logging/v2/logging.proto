@@ -22,13 +22,14 @@ import "google.golang.org/genproto/googleapis/logging/v2/log_entry.proto"; // fr
 import "github.com/golang/protobuf/ptypes/duration/duration.proto"; // from google/protobuf/duration.proto
 import "github.com/golang/protobuf/ptypes/empty/empty.proto"; // from google/protobuf/empty.proto
 import "github.com/golang/protobuf/ptypes/timestamp/timestamp.proto"; // from google/protobuf/timestamp.proto
-import "google.golang.org/genproto/googleapis/rpc/status.proto"; // from google/rpc/status.proto
+import "google.golang.org/genproto/googleapis/rpc/status/status.proto"; // from google/rpc/status.proto
 
 option cc_enable_arenas = true;
 option java_multiple_files = true;
 option java_outer_classname = "LoggingProto";
 option java_package = "com.google.logging.v2";
 
+option go_package = "google.golang.org/genproto/googleapis/logging/v2";
 
 // Service for ingesting and querying logs.
 service LoggingServiceV2 {

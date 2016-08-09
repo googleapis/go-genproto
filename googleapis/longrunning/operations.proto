@@ -19,7 +19,7 @@ package google.longrunning;
 import "google.golang.org/genproto/googleapis/api/serviceconfig/annotations.proto"; // from google/api/annotations.proto
 import "github.com/golang/protobuf/ptypes/any/any.proto"; // from google/protobuf/any.proto
 import "github.com/golang/protobuf/ptypes/empty/empty.proto"; // from google/protobuf/empty.proto
-import "google.golang.org/genproto/googleapis/rpc/status.proto"; // from google/rpc/status.proto
+import "google.golang.org/genproto/googleapis/rpc/status/status.proto"; // from google/rpc/status.proto
 
 option java_multiple_files = true;
 option java_outer_classname = "OperationsProto";
