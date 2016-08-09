@@ -62,22 +62,15 @@ for f in $(cd $PKG && find protobuf -name '*.proto'); do
   filename_map[$up]=$f
 done
 
-# Pass 2a: move the protos out of googleapis/google/api.
-for f in $(cd $PKG && find googleapis/api -name '*.proto'); do
-  echo 1>&2 "finding latest version of $f... "
-  # Note: we use move here so that the next pass doesn't see them.
-  up=google/api/$(basename $f)
-  mv $tmpapi/$up $PKG/$f
-  filename_map[$up]=$f
-done
-
-# Pass 2b: repeat for googleapis/google/rpc.
-for f in $(cd $PKG && find googleapis/rpc -name '*.proto'); do
-  echo 1>&2 "finding latest version of $f... "
-  # Note: we use move here so that the next pass doesn't see them.
-  up=google/rpc/$(basename $f)
-  mv $tmpapi/$up $PKG/$f
-  filename_map[$up]=$f
+# Pass 2: move the protos out of googleapis/google/{api,rpc,type}.
+for g in "api" "rpc" "type"; do
+  for f in $(cd $PKG && find googleapis/$g -name '*.proto'); do
+    echo 1>&2 "finding latest version of $f... "
+    # Note: we use move here so that the next pass doesn't see them.
+    up=google/$g/$(basename $f)
+    mv $tmpapi/$up $PKG/$f
+    filename_map[$up]=$f
+  done
 done
 
 # Pass 3: copy the rest of googleapis/google

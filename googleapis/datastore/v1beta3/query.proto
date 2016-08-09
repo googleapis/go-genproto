@@ -19,7 +19,7 @@ package google.datastore.v1beta3;
 import "google.golang.org/genproto/googleapis/api/serviceconfig/annotations.proto"; // from google/api/annotations.proto
 import "google.golang.org/genproto/googleapis/datastore/v1beta3/entity.proto"; // from google/datastore/v1beta3/entity.proto
 import "github.com/golang/protobuf/ptypes/wrappers/wrappers.proto"; // from google/protobuf/wrappers.proto
-import "google.golang.org/genproto/googleapis/type/latlng.proto"; // from google/type/latlng.proto
+import "google.golang.org/genproto/googleapis/type/latlng/latlng.proto"; // from google/type/latlng.proto
 
 option java_multiple_files = true;
 option java_outer_classname = "QueryProto";
