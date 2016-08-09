@@ -62,11 +62,20 @@ for f in $(cd $PKG && find protobuf -name '*.proto'); do
   filename_map[$up]=$f
 done
 
-# Pass 2: move the protos out of googleapis/google/api.
+# Pass 2a: move the protos out of googleapis/google/api.
 for f in $(cd $PKG && find googleapis/api -name '*.proto'); do
   echo 1>&2 "finding latest version of $f... "
   # Note: we use move here so that the next pass doesn't see them.
   up=google/api/$(basename $f)
+  mv $tmpapi/$up $PKG/$f
+  filename_map[$up]=$f
+done
+
+# Pass 2b: repeat for googleapis/google/rpc.
+for f in $(cd $PKG && find googleapis/rpc -name '*.proto'); do
+  echo 1>&2 "finding latest version of $f... "
+  # Note: we use move here so that the next pass doesn't see them.
+  up=google/rpc/$(basename $f)
   mv $tmpapi/$up $PKG/$f
   filename_map[$up]=$f
 done
@@ -110,6 +119,11 @@ for f in "${!known_types[@]}"; do
   pkg=${known_types[$f]}
   types_map="$types_map,M$f=$pkg"
 done
+
+# Hack: delete broken package.
+rm -rf google.golang.org/genproto/googleapis/appengine/ # See https://github.com/googleapis/googleapis/issues/74
+rm -rf google.golang.org/genproto/googleapis/cloud/runtimeconfig/ # See https://github.com/googleapis/googleapis/issues/77
+rm -rf google.golang.org/genproto/googleapis/storagetransfer/ # See https://github.com/googleapis/googleapis/issues/78
 
 # Run protoc once per package.
 for dir in $(find $PKG -name '*.proto' | xargs dirname | sort -u); do

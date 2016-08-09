@@ -17,7 +17,7 @@ syntax = "proto3";
 package google.bigtable.v1;
 
 import "google.golang.org/genproto/googleapis/bigtable/v1/bigtable_data.proto"; // from google/bigtable/v1/bigtable_data.proto
-import "google.golang.org/genproto/googleapis/rpc/status.proto"; // from google/rpc/status.proto
+import "google.golang.org/genproto/googleapis/rpc/status/status.proto"; // from google/rpc/status.proto
 
 option java_multiple_files = true;
 option java_outer_classname = "BigtableServiceMessagesProto";

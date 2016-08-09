@@ -22,7 +22,7 @@ import "google.golang.org/genproto/googleapis/api/monitoredres/monitored_resourc
 import "google.golang.org/genproto/googleapis/monitoring/v3/common.proto"; // from google/monitoring/v3/common.proto
 import "google.golang.org/genproto/googleapis/monitoring/v3/metric.proto"; // from google/monitoring/v3/metric.proto
 import "github.com/golang/protobuf/ptypes/empty/empty.proto"; // from google/protobuf/empty.proto
-import "google.golang.org/genproto/googleapis/rpc/status.proto"; // from google/rpc/status.proto
+import "google.golang.org/genproto/googleapis/rpc/status/status.proto"; // from google/rpc/status.proto
 
 option java_multiple_files = true;
 option java_outer_classname = "MetricServiceProto";
