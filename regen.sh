@@ -114,7 +114,6 @@ for f in "${!known_types[@]}"; do
 done
 
 # Hack: delete broken package.
-rm -rf google.golang.org/genproto/googleapis/appengine/ # See https://github.com/googleapis/googleapis/issues/74
 rm -rf google.golang.org/genproto/googleapis/cloud/runtimeconfig/ # See https://github.com/googleapis/googleapis/issues/77
 rm -rf google.golang.org/genproto/googleapis/storagetransfer/ # See https://github.com/googleapis/googleapis/issues/78
 
