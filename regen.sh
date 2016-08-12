@@ -52,14 +52,21 @@ git clone -q $PROTO_REPO $tmpdir &
 git clone -q $API_REPO $tmpapi &
 wait
 
-declare -A filename_map
+import_fixes=$tmpdir/fix_imports.sed
+import_msg=$tmpdir/fix_imports.txt
+
+# Rename records a proto rename from $1->$2.
+function rename() {
+  echo >>$import_msg "Renaming $1 => $2"
+  echo >>$import_fixes "s,\"$1\";,\"$2\"; // from $1,"
+}
 
 # Pass 1: copy protos from the google/protobuf repo.
 for f in $(cd $PKG && find protobuf -name '*.proto'); do
   echo 1>&2 "finding latest version of $f... "
   up=google/protobuf/$(basename $f)
-  cp $tmpdir/src/$up $PKG/$f
-  filename_map[$up]=$f
+  cp "$tmpdir/src/$up" "$PKG/$f"
+  rename "$up" "$PKG/$f"
 done
 
 # Pass 2: move the protos out of googleapis/google/{api,rpc,type}.
@@ -68,8 +75,8 @@ for g in "api" "rpc" "type"; do
     echo 1>&2 "finding latest version of $f... "
     # Note: we use move here so that the next pass doesn't see them.
     up=google/$g/$(basename $f)
-    mv $tmpapi/$up $PKG/$f
-    filename_map[$up]=$f
+    mv "$tmpapi/$up" "$PKG/$f"
+    rename "$up" "$PKG/$f"
   done
 done
 
@@ -78,47 +85,28 @@ for f in $(cd "$tmpapi/google" && find * -name '*.proto'); do
   dst=$(dirname "$PKG/googleapis/$f")
   echo 1>&2 "finding latest version of $f... "
   mkdir -p $dst
-  cp "$tmpapi/google/$f" $dst
-  filename_map[google/$f]=googleapis/$f
+  cp "$tmpapi/google/$f" "$dst"
+  rename "google/$f" "$PKG/googleapis/$f"
 done
 
 # Mappings of well-known proto types.
-declare -A known_types
-known_types[google/protobuf/any.proto]=github.com/golang/protobuf/ptypes/any/any.proto
-known_types[google/protobuf/duration.proto]=github.com/golang/protobuf/ptypes/duration/duration.proto
-known_types[google/protobuf/empty.proto]=github.com/golang/protobuf/ptypes/empty/empty.proto
-known_types[google/protobuf/struct.proto]=github.com/golang/protobuf/ptypes/struct/struct.proto
-known_types[google/protobuf/timestamp.proto]=github.com/golang/protobuf/ptypes/timestamp/timestamp.proto
-known_types[google/protobuf/wrappers.proto]=github.com/golang/protobuf/ptypes/wrappers/wrappers.proto
+rename "google/protobuf/any.proto" "github.com/golang/protobuf/ptypes/any/any.proto"
+rename "google/protobuf/duration.proto" "github.com/golang/protobuf/ptypes/duration/duration.proto"
+rename "google/protobuf/empty.proto" "github.com/golang/protobuf/ptypes/empty/empty.proto"
+rename "google/protobuf/struct.proto" "github.com/golang/protobuf/ptypes/struct/struct.proto"
+rename "google/protobuf/timestamp.proto" "github.com/golang/protobuf/ptypes/timestamp/timestamp.proto"
+rename "google/protobuf/wrappers.proto" "github.com/golang/protobuf/ptypes/wrappers/wrappers.proto"
 
 # Pass 4: fix the imports in each of the protos.
-import_fixes=$tmpdir/fix_imports.sed
-for up in "${!filename_map[@]}"; do
-  dst=$PKG/${filename_map[$up]}
-  echo "Renaming $up => $dst"
-  echo >>$import_fixes "s,\"$up\";,\"$dst\"; // from $up,"
-done | sort 1>&2
-
-for up in "${!known_types[@]}"; do
-  dst=${known_types[$up]}
-  echo "Renaming $up => $dst"
-  echo >>$import_fixes "s,\"$up\";,\"$dst\"; // from $up,"
-done | sort 1>&2
-
-sed -i -f $import_fixes $(find $PKG -name '*.proto')
-
-types_map=""
-for f in "${!known_types[@]}"; do
-  pkg=${known_types[$f]}
-  types_map="$types_map,M$f=$pkg"
-done
+sort $import_msg 1>&2
+sed -i '' -f $import_fixes $(find $PKG -name '*.proto')
 
 # Hack: delete broken package.
 rm -rf google.golang.org/genproto/googleapis/cloud/runtimeconfig/ # See https://github.com/googleapis/googleapis/issues/77
 rm -rf google.golang.org/genproto/googleapis/storagetransfer/ # See https://github.com/googleapis/googleapis/issues/78
 
 # Run protoc once per package.
-for dir in $(find $PKG -name '*.proto' | xargs dirname | sort -u); do
+for dir in $(find $PKG -name '*.proto' -exec dirname '{}' ';' | sort -u); do
   echo 1>&2 "* $dir"
   protoc --go_out=plugins=grpc:. $dir/*.proto
 done
