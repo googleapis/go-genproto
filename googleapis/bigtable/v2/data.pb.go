@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/bigtable/v2/data.proto
 // DO NOT EDIT!
 
-package google_bigtable_v2
+package google_bigtable_v2 // import "google.golang.org/genproto/googleapis/bigtable/v2"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

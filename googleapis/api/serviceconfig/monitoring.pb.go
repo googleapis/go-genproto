@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/api/serviceconfig/monitoring.proto
 // DO NOT EDIT!
 
-package google_api
+package google_api // import "google.golang.org/genproto/googleapis/api/serviceconfig"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

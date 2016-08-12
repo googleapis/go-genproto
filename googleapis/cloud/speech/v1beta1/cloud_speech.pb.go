@@ -23,7 +23,7 @@ It has these top-level messages:
 	SpeechRecognitionResult
 	SpeechRecognitionAlternative
 */
-package google_cloud_speech_v1beta1
+package google_cloud_speech_v1beta1 // import "google.golang.org/genproto/googleapis/cloud/speech/v1beta1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

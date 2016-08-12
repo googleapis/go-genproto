@@ -11,7 +11,7 @@ It is generated from these files:
 It has these top-level messages:
 	TimeOfDay
 */
-package google_type
+package google_type // import "google.golang.org/genproto/googleapis/type/timeofday"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

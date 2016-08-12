@@ -11,7 +11,7 @@ It is generated from these files:
 It has these top-level messages:
 	Money
 */
-package google_type
+package google_type // import "google.golang.org/genproto/googleapis/type/money"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

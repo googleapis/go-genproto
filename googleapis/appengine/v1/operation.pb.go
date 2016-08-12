@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/appengine/v1/operation.proto
 // DO NOT EDIT!
 
-package google_appengine_v1
+package google_appengine_v1 // import "google.golang.org/genproto/googleapis/appengine/v1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

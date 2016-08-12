@@ -24,7 +24,7 @@ It has these top-level messages:
 	DeleteColumnFamilyRequest
 	BulkDeleteRowsRequest
 */
-package google_bigtable_admin_table_v1
+package google_bigtable_admin_table_v1 // import "google.golang.org/genproto/googleapis/bigtable/admin/table/v1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

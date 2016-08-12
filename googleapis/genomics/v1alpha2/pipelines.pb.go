@@ -29,7 +29,7 @@ It has these top-level messages:
 	PipelineParameter
 	DockerExecutor
 */
-package google_genomics_v1alpha2
+package google_genomics_v1alpha2 // import "google.golang.org/genproto/googleapis/genomics/v1alpha2"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

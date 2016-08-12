@@ -17,7 +17,7 @@ It has these top-level messages:
 	GetTraceRequest
 	PatchTracesRequest
 */
-package google_devtools_cloudtrace_v1
+package google_devtools_cloudtrace_v1 // import "google.golang.org/genproto/googleapis/devtools/cloudtrace/v1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

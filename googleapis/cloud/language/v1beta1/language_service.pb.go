@@ -25,7 +25,7 @@ It has these top-level messages:
 	AnnotateTextRequest
 	AnnotateTextResponse
 */
-package google_cloud_language_v1beta1
+package google_cloud_language_v1beta1 // import "google.golang.org/genproto/googleapis/cloud/language/v1beta1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

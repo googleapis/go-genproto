@@ -107,6 +107,12 @@ for dir in $(find $PKG -name '*.proto' -exec dirname '{}' ';' | sort -u); do
   protoc --go_out=plugins=grpc:. $dir/*.proto
 done
 
+# Add import comments and fix package names.
+for f in $(find $PKG -name '*.pb.go'); do
+  dir=$(dirname $f)
+  sed -i '' "s,^\(package .*\)\$,\\1 // import \"$dir\"," $f
+done
+
 # Sanity check the build.
 echo 1>&2 "Checking that the libraries build..."
 go build -v $PKG/...

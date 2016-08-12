@@ -10,7 +10,7 @@ It is generated from these files:
 
 It has these top-level messages:
 */
-package google_type
+package google_type // import "google.golang.org/genproto/googleapis/type/dayofweek"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

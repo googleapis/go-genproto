@@ -35,7 +35,7 @@ It has these top-level messages:
 	Mutation
 	ReadModifyWriteRule
 */
-package google_bigtable_v2
+package google_bigtable_v2 // import "google.golang.org/genproto/googleapis/bigtable/v2"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

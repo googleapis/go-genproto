@@ -32,7 +32,7 @@ It has these top-level messages:
 	ModifyAckDeadlineRequest
 	AcknowledgeRequest
 */
-package google_pubsub_v1beta2
+package google_pubsub_v1beta2 // import "google.golang.org/genproto/googleapis/pubsub/v1beta2"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

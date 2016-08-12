@@ -44,7 +44,7 @@ It has these top-level messages:
 	GqlQueryParameter
 	QueryResultBatch
 */
-package google_datastore_v1beta3
+package google_datastore_v1beta3 // import "google.golang.org/genproto/googleapis/datastore/v1beta3"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

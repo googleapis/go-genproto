@@ -33,7 +33,7 @@ It has these top-level messages:
 	TransferCounters
 	TransferOperation
 */
-package google_storagetransfer_v1
+package google_storagetransfer_v1 // import "google.golang.org/genproto/googleapis/storagetransfer/v1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

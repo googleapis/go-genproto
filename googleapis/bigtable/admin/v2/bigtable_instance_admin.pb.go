@@ -38,7 +38,7 @@ It has these top-level messages:
 	ColumnFamily
 	GcRule
 */
-package google_bigtable_admin_v2
+package google_bigtable_admin_v2 // import "google.golang.org/genproto/googleapis/bigtable/admin/v2"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

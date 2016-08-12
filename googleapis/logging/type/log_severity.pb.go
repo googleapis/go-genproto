@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/logging/type/log_severity.proto
 // DO NOT EDIT!
 
-package google_logging_type
+package google_logging_type // import "google.golang.org/genproto/googleapis/logging/type"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

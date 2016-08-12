@@ -20,7 +20,7 @@ It has these top-level messages:
 	ProjectRepoId
 	CloudWorkspaceId
 */
-package google_devtools_source_v1
+package google_devtools_source_v1 // import "google.golang.org/genproto/googleapis/devtools/source/v1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

@@ -53,7 +53,7 @@ It has these top-level messages:
 	Usage
 	UsageRule
 */
-package google_api
+package google_api // import "google.golang.org/genproto/googleapis/api/serviceconfig"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/monitoring/v3/metric.proto
 // DO NOT EDIT!
 
-package google_monitoring_v3
+package google_monitoring_v3 // import "google.golang.org/genproto/googleapis/monitoring/v3"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

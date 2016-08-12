@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/devtools/clouderrorreporting/v1beta1/error_stats_service.proto
 // DO NOT EDIT!
 
-package google_devtools_clouderrorreporting_v1beta1
+package google_devtools_clouderrorreporting_v1beta1 // import "google.golang.org/genproto/googleapis/devtools/clouderrorreporting/v1beta1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

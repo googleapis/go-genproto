@@ -17,7 +17,7 @@ It has these top-level messages:
 	ResourceInfo
 	Help
 */
-package google_rpc
+package google_rpc // import "google.golang.org/genproto/googleapis/rpc/error_details"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

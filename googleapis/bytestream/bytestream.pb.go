@@ -16,7 +16,7 @@ It has these top-level messages:
 	QueryWriteStatusRequest
 	QueryWriteStatusResponse
 */
-package google_bytestream
+package google_bytestream // import "google.golang.org/genproto/googleapis/bytestream"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

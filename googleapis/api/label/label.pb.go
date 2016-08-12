@@ -11,7 +11,7 @@ It is generated from these files:
 It has these top-level messages:
 	LabelDescriptor
 */
-package google_api
+package google_api // import "google.golang.org/genproto/googleapis/api/label"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

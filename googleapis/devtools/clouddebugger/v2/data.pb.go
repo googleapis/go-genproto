@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/devtools/clouddebugger/v2/data.proto
 // DO NOT EDIT!
 
-package google_devtools_clouddebugger_v2
+package google_devtools_clouddebugger_v2 // import "google.golang.org/genproto/googleapis/devtools/clouddebugger/v2"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

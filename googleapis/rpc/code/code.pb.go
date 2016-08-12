@@ -10,7 +10,7 @@ It is generated from these files:
 
 It has these top-level messages:
 */
-package google_rpc
+package google_rpc // import "google.golang.org/genproto/googleapis/rpc/code"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

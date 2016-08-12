@@ -16,7 +16,7 @@ It has these top-level messages:
 	CancelOperationRequest
 	DeleteOperationRequest
 */
-package google_longrunning
+package google_longrunning // import "google.golang.org/genproto/googleapis/longrunning"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

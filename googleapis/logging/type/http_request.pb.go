@@ -12,7 +12,7 @@ It is generated from these files:
 It has these top-level messages:
 	HttpRequest
 */
-package google_logging_type
+package google_logging_type // import "google.golang.org/genproto/googleapis/logging/type"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

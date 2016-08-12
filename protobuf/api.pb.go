@@ -44,7 +44,7 @@ It has these top-level messages:
 	EnumValue
 	Option
 */
-package descriptor
+package descriptor // import "google.golang.org/genproto/protobuf"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

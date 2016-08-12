@@ -27,7 +27,7 @@ It has these top-level messages:
 	CancelBuildRequest
 	BuildOptions
 */
-package google_devtools_cloudbuild_v1
+package google_devtools_cloudbuild_v1 // import "google.golang.org/genproto/googleapis/devtools/cloudbuild/v1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

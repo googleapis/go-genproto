@@ -11,7 +11,7 @@ It is generated from these files:
 It has these top-level messages:
 	Status
 */
-package google_rpc
+package google_rpc // import "google.golang.org/genproto/googleapis/rpc/status"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

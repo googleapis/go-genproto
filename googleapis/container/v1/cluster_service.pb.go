@@ -29,7 +29,7 @@ It has these top-level messages:
 	GetServerConfigRequest
 	ServerConfig
 */
-package google_container_v1
+package google_container_v1 // import "google.golang.org/genproto/googleapis/container/v1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

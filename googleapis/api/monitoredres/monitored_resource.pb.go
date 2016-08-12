@@ -12,7 +12,7 @@ It has these top-level messages:
 	MonitoredResourceDescriptor
 	MonitoredResource
 */
-package monitoredres
+package monitoredres // import "google.golang.org/genproto/googleapis/api/monitoredres"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/iam/v1/policy.proto
 // DO NOT EDIT!
 
-package google_iam_v1
+package google_iam_v1 // import "google.golang.org/genproto/googleapis/iam/v1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

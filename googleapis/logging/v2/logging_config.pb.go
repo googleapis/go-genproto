@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/logging/v2/logging_config.proto
 // DO NOT EDIT!
 
-package v2
+package v2 // import "google.golang.org/genproto/googleapis/logging/v2"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

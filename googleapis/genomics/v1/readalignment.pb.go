@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/genomics/v1/readalignment.proto
 // DO NOT EDIT!
 
-package google_genomics_v1
+package google_genomics_v1 // import "google.golang.org/genproto/googleapis/genomics/v1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

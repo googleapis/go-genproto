@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package google.monitoring.v3;
 
-import "google.golang.org/genproto/googleapis/api/distribution.proto"; // from google/api/distribution.proto
+import "google.golang.org/genproto/googleapis/api/distribution/distribution.proto"; // from google/api/distribution.proto
 import "github.com/golang/protobuf/ptypes/duration/duration.proto"; // from google/protobuf/duration.proto
 import "github.com/golang/protobuf/ptypes/timestamp/timestamp.proto"; // from google/protobuf/timestamp.proto
 

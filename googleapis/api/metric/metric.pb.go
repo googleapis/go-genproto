@@ -12,7 +12,7 @@ It has these top-level messages:
 	MetricDescriptor
 	Metric
 */
-package google_api
+package google_api // import "google.golang.org/genproto/googleapis/api/metric"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

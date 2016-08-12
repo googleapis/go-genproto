@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/googleapis/cloud/runtimeconfig/v1beta1/runtimeconfig.proto
 // DO NOT EDIT!
 
-package google_cloud_runtimeconfig_v1beta1
+package google_cloud_runtimeconfig_v1beta1 // import "google.golang.org/genproto/googleapis/cloud/runtimeconfig/v1beta1"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"

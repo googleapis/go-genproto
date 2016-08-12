@@ -2,7 +2,7 @@
 // source: google.golang.org/genproto/protobuf/field_mask.proto
 // DO NOT EDIT!
 
-package descriptor
+package descriptor // import "google.golang.org/genproto/protobuf"
 
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
