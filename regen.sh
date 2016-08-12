@@ -101,10 +101,6 @@ rename "google/protobuf/wrappers.proto" "github.com/golang/protobuf/ptypes/wrapp
 sort $import_msg 1>&2
 sed -i '' -f $import_fixes $(find $PKG -name '*.proto')
 
-# Hack: delete broken package.
-rm -rf google.golang.org/genproto/googleapis/cloud/runtimeconfig/ # See https://github.com/googleapis/googleapis/issues/77
-rm -rf google.golang.org/genproto/googleapis/storagetransfer/ # See https://github.com/googleapis/googleapis/issues/78
-
 # Run protoc once per package.
 for dir in $(find $PKG -name '*.proto' -exec dirname '{}' ';' | sort -u); do
   echo 1>&2 "* $dir"
