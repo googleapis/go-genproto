@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 #
 # Copyright 2016 Google Inc.
 #
@@ -19,10 +19,24 @@
 # see https://github.com/golang/protobuf for instructions.
 # You also need Go and Git installed.
 
+set -e
+
 PKG=google.golang.org/genproto
 PROTO_REPO=https://github.com/google/protobuf
 PROTO_SUBDIR=src/google/protobuf
 API_REPO=https://github.com/googleapis/googleapis
+
+# NOTE(cbro): Mac OS sed requires an argument be passed into -i,
+# GNU sed interprets that blank argument as a filename.
+if [ "Darwin" = $(uname) ]; then
+  function sed-i-f {
+    sed -i '' -f $@
+  }
+else
+  function sed-i-f {
+    sed -i -f $@
+  }
+fi
 
 function die() {
   echo 1>&2 $*
@@ -35,9 +49,9 @@ for tool in go git protoc protoc-gen-go; do
   echo 1>&2 "$tool: $q"
 done
 
-tmpdir=$(mktemp -d -t regen-cbt.XXXXXX)
+tmpdir=$(mktemp -d -t regen-cds-dir.XXXXXX)
 trap 'rm -rf $tmpdir' EXIT
-tmpapi=$(mktemp -d -t regen-cds.XXXXXX)
+tmpapi=$(mktemp -d -t regen-cds-api.XXXXXX)
 trap 'rm -rf $tmpapi' EXIT
 
 echo -n 1>&2 "finding package dir... "
@@ -54,6 +68,7 @@ wait
 
 import_fixes=$tmpdir/fix_imports.sed
 import_msg=$tmpdir/fix_imports.txt
+vanity_fixes=$tmpdir/vanity_fixes.sed
 
 # Rename records a proto rename from $1->$2.
 function rename() {
@@ -99,7 +114,7 @@ rename "google/protobuf/wrappers.proto" "github.com/golang/protobuf/ptypes/wrapp
 
 # Pass 4: fix the imports in each of the protos.
 sort $import_msg 1>&2
-sed -i '' -f $import_fixes $(find $PKG -name '*.proto')
+sed-i-f $import_fixes $(find $PKG -name '*.proto')
 
 # Run protoc once per package.
 for dir in $(find $PKG -name '*.proto' -exec dirname '{}' ';' | sort -u); do
@@ -110,7 +125,8 @@ done
 # Add import comments and fix package names.
 for f in $(find $PKG -name '*.pb.go'); do
   dir=$(dirname $f)
-  sed -i '' "s,^\(package .*\)\$,\\1 // import \"$dir\"," $f
+  echo "s,^\(package .*\)\$,\\1 // import \"$dir\"," > $vanity_fixes
+  sed-i-f $vanity_fixes $f
 done
 
 # Sanity check the build.
