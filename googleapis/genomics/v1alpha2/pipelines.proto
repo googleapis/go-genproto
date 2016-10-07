@@ -18,6 +18,7 @@ package google.genomics.v1alpha2;
 
 import "google.golang.org/genproto/googleapis/api/serviceconfig/annotations.proto"; // from google/api/annotations.proto
 import "google.golang.org/genproto/googleapis/longrunning/operations.proto"; // from google/longrunning/operations.proto
+import "github.com/golang/protobuf/ptypes/duration/duration.proto"; // from google/protobuf/duration.proto
 import "github.com/golang/protobuf/ptypes/empty/empty.proto"; // from google/protobuf/empty.proto
 import "github.com/golang/protobuf/ptypes/timestamp/timestamp.proto"; // from google/protobuf/timestamp.proto
 import "google.golang.org/genproto/googleapis/rpc/code/code.proto"; // from google/rpc/code.proto
@@ -199,6 +200,11 @@ message RunPipelineArgs {
   // Required. Logging options. Used by the service to communicate results
   // to the user.
   LoggingOptions logging = 7;
+
+  // How long to keep the VM up after a failure (for example docker command
+  // failed, copying input or output files failed, etc). While the VM is up, one
+  // can ssh into the VM to debug. Default is 0; maximum allowed value is 1 day.
+  google.protobuf.Duration keep_vm_alive_on_failure_duration = 8;
 }
 
 // The request to run a pipeline. If `pipelineId` is specified, it
@@ -369,13 +375,11 @@ message PipelineResources {
       TYPE_UNSPECIFIED = 0;
 
       // Specifies a Google Compute Engine persistent hard disk. See
-      // https://cloud.google.com/compute/docs/disks/persistent-disks#typeofdisks
-      // for details.
+      // https://cloud.google.com/compute/docs/disks/#pdspecs for details.
       PERSISTENT_HDD = 1;
 
       // Specifies a Google Compute Engine persistent solid-state disk. See
-      // https://cloud.google.com/compute/docs/disks/persistent-disks#typeofdisks
-      // for details.
+      // https://cloud.google.com/compute/docs/disks/#pdspecs for details.
       PERSISTENT_SSD = 2;
 
       // Specifies a Google Compute Engine local SSD.

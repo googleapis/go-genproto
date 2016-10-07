@@ -90,6 +90,7 @@ for g in "api" "rpc" "type"; do
     echo 1>&2 "finding latest version of $f... "
     # Note: we use move here so that the next pass doesn't see them.
     up=google/$g/$(basename $f)
+    [ ! -f "$tmpapi/$up" ] && continue
     mv "$tmpapi/$up" "$PKG/$f"
     rename "$up" "$PKG/$f"
   done

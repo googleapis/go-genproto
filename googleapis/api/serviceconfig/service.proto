@@ -19,11 +19,10 @@ package google.api;
 import "google.golang.org/genproto/googleapis/api/serviceconfig/annotations.proto"; // from google/api/annotations.proto
 import "google.golang.org/genproto/googleapis/api/serviceconfig/auth.proto"; // from google/api/auth.proto
 import "google.golang.org/genproto/googleapis/api/serviceconfig/backend.proto"; // from google/api/backend.proto
-import "google.golang.org/genproto/googleapis/api/serviceconfig/billing.proto"; // from google/api/billing.proto
-import "google.golang.org/genproto/googleapis/api/serviceconfig/consumer.proto"; // from google/api/consumer.proto
 import "google.golang.org/genproto/googleapis/api/serviceconfig/context.proto"; // from google/api/context.proto
 import "google.golang.org/genproto/googleapis/api/serviceconfig/control.proto"; // from google/api/control.proto
 import "google.golang.org/genproto/googleapis/api/serviceconfig/documentation.proto"; // from google/api/documentation.proto
+import "google.golang.org/genproto/googleapis/api/serviceconfig/endpoint.proto"; // from google/api/endpoint.proto
 import "google.golang.org/genproto/googleapis/api/serviceconfig/http.proto"; // from google/api/http.proto
 import "google.golang.org/genproto/googleapis/api/label/label.proto"; // from google/api/label.proto
 import "google.golang.org/genproto/googleapis/api/serviceconfig/log.proto"; // from google/api/log.proto
@@ -41,6 +40,7 @@ import "github.com/golang/protobuf/ptypes/wrappers/wrappers.proto"; // from goog
 option java_multiple_files = true;
 option java_outer_classname = "ServiceProto";
 option java_package = "com.google.api";
+option objc_class_prefix = "GAPI";
 
 
 // `Service` is the root object of the configuration schema. It
@@ -128,8 +128,10 @@ message Service {
   // Configuration controlling usage of this service.
   Usage usage = 15;
 
-  // Configuration of per-consumer project properties.
-  ProjectProperties project_properties = 17;
+  // Configuration for network endpoints.  If this is empty, then an endpoint
+  // with the same name as the service is automatically generated to service all
+  // defined APIs.
+  repeated Endpoint endpoints = 18;
 
   // Configuration for the service control plane.
   Control control = 21;
@@ -142,11 +144,7 @@ message Service {
 
   // Defines the monitored resources used by this service. This is required
   // by the [Service.monitoring][google.api.Service.monitoring] and [Service.logging][google.api.Service.logging] configurations.
-  //
   repeated MonitoredResourceDescriptor monitored_resources = 25;
-
-  // Billing configuration of the service.
-  Billing billing = 26;
 
   // Logging configuration of the service.
   Logging logging = 27;
