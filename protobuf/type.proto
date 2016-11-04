@@ -36,10 +36,10 @@ import "github.com/golang/protobuf/ptypes/any/any.proto"; // from google/protobu
 import "google.golang.org/genproto/protobuf/source_context.proto"; // from google/protobuf/source_context.proto
 
 option csharp_namespace = "Google.Protobuf.WellKnownTypes";
+option cc_enable_arenas = true;
 option java_package = "com.google.protobuf";
 option java_outer_classname = "TypeProto";
 option java_multiple_files = true;
-option java_generate_equals_and_hash = true;
 option objc_class_prefix = "GPB";
 
 // A protocol buffer message type.
