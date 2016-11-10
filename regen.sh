@@ -63,7 +63,13 @@ cd $base
 
 echo 1>&2 "fetching proto repos..."
 git clone -q $PROTO_REPO $tmpdir &
-git clone -q $API_REPO $tmpapi &
+
+if [ -z $GOOGLEAPIS ]; then
+  git clone -q $API_REPO $tmpapi &
+else
+  cp -r $GOOGLEAPIS/* $tmpapi
+fi
+
 wait
 
 import_fixes=$tmpdir/fix_imports.sed
@@ -86,7 +92,7 @@ done
 
 # Pass 2: move the protos out of googleapis/google/{api,rpc,type}.
 for g in "api" "rpc" "type"; do
-  for f in $(cd $PKG && find googleapis/$g -name '*.proto'); do
+  for f in $(cd $PKG && ls googleapis/$g/*/*.proto); do
     echo 1>&2 "finding latest version of $f... "
     # Note: we use move here so that the next pass doesn't see them.
     up=google/$g/$(basename $f)
