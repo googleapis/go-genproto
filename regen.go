@@ -14,10 +14,20 @@
 
 // +build ignore
 
+// Regen.go regenerates the genproto repository.
+//
+// Regen.go recursively walks through each directory named by given arguments,
+// looking for all .proto files. (Symlinks are not followed.)
+// If the pkg_prefix flag is not an empty string,
+// any proto file without `go_package` option
+// or whose option does not begin with the prefix is ignored.
+// Protoc is executed on remaining files,
+// one invocation per set of files declaring the same Go package.
 package main
 
 import (
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -30,9 +40,18 @@ import (
 
 var goPkgOptRe = regexp.MustCompile(`(?m)^option go_package = (.*);`)
 
+func usage() {
+	fmt.Fprintln(os.Stderr, `usage: go run regen.go -go_out=path/to/output [-pkg_prefix=pkg/prefix] roots...
+
+Most users will not need to run this file directly.
+To regenerate this repository, run regen.sh instead.`)
+	flag.PrintDefaults()
+}
+
 func main() {
 	goOutDir := flag.String("go_out", "", "go_out argument to pass to protoc-gen-go")
 	pkgPrefix := flag.String("pkg_prefix", "", "only include proto files with go_package starting with this prefix")
+	flag.Usage = usage
 	flag.Parse()
 
 	if *goOutDir == "" {
@@ -47,48 +66,58 @@ func main() {
 		if !info.Mode().IsRegular() || !strings.HasSuffix(path, ".proto") {
 			return nil
 		}
-		return register(path, pkgFiles, *pkgPrefix)
+		pkg, err := goPkg(path)
+		if err != nil {
+			return err
+		}
+		pkgFiles[pkg] = append(pkgFiles[pkg], path)
+		return nil
 	}
 	for _, root := range flag.Args() {
 		if err := filepath.Walk(root, walkFn); err != nil {
 			log.Fatal(err)
 		}
 	}
-	for _, fnames := range pkgFiles {
-		if err := protoc(*goOutDir, flag.Args(), fnames); err != nil {
-			log.Fatal(err)
+	for pkg, fnames := range pkgFiles {
+		if !strings.HasPrefix(pkg, *pkgPrefix) {
+			continue
+		}
+		if out, err := protoc(*goOutDir, flag.Args(), fnames); err != nil {
+			log.Fatalf("error executing protoc: %s\n%s", err, out)
 		}
 	}
 }
 
-func register(fname string, pkgFiles map[string][]string, pkgPrefix string) error {
+// goPkg reports the import path declared in the given file's
+// `go_package` option. If the option is missing, goPkg returns empty string.
+func goPkg(fname string) (string, error) {
 	content, err := ioutil.ReadFile(fname)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	var pkgName string
 	if match := goPkgOptRe.FindSubmatch(content); len(match) > 0 {
 		pn, err := strconv.Unquote(string(match[1]))
 		if err != nil {
-			return err
+			return "", err
 		}
 		pkgName = pn
 	}
 	if p := strings.IndexRune(pkgName, ';'); p > 0 {
 		pkgName = pkgName[:p]
 	}
-	if strings.HasPrefix(pkgName, pkgPrefix) {
-		pkgFiles[pkgName] = append(pkgFiles[pkgName], fname)
-	}
-	return nil
+	return pkgName, nil
 }
 
-func protoc(goOut string, includes, fnames []string) error {
+// protoc executes the "protoc" command on files named in fnames,
+// passing go_out and include flags specified in goOut and includes respectively.
+// protoc returns combined output from stdout and stderr.
+func protoc(goOut string, includes, fnames []string) ([]byte, error) {
 	args := []string{"--go_out=plugins=grpc:" + goOut}
 	for _, inc := range includes {
-		args = append(args, "-I"+inc)
+		args = append(args, "-I", inc)
 	}
 	args = append(args, fnames...)
-	return exec.Command("protoc", args...).Run()
+	return exec.Command("protoc", args...).CombinedOutput()
 }
