@@ -16,6 +16,8 @@ It has these top-level messages:
 	TestIamPermissionsResponse
 	Policy
 	Binding
+	PolicyDelta
+	BindingDelta
 */
 package iam
 

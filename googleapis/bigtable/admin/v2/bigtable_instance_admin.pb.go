@@ -67,19 +67,19 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 // Request message for BigtableInstanceAdmin.CreateInstance.
 type CreateInstanceRequest struct {
 	// The unique name of the project in which to create the new instance.
-	// Values are of the form projects/<project>
+	// Values are of the form `projects/<project>`.
 	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
-	// The id to be used when referring to the new instance within its project,
-	// e.g. just the "myinstance" section of the full name
-	// "projects/myproject/instances/myinstance"
+	// The ID to be used when referring to the new instance within its project,
+	// e.g., just `myinstance` rather than
+	// `projects/myproject/instances/myinstance`.
 	InstanceId string `protobuf:"bytes,2,opt,name=instance_id,json=instanceId" json:"instance_id,omitempty"`
 	// The instance to create.
-	// Fields marked "@OutputOnly" must be left blank.
+	// Fields marked `OutputOnly` must be left blank.
 	Instance *Instance `protobuf:"bytes,3,opt,name=instance" json:"instance,omitempty"`
 	// The clusters to be created within the instance, mapped by desired
-	// cluster ID (e.g. just the "mycluster" part of the full name
-	// "projects/myproject/instances/myinstance/clusters/mycluster").
-	// Fields marked "@OutputOnly" must be left blank.
+	// cluster ID, e.g., just `mycluster` rather than
+	// `projects/myproject/instances/myinstance/clusters/mycluster`.
+	// Fields marked `OutputOnly` must be left blank.
 	// Currently exactly one cluster must be specified.
 	Clusters map[string]*Cluster `protobuf:"bytes,4,rep,name=clusters" json:"clusters,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 }
@@ -120,7 +120,7 @@ func (m *CreateInstanceRequest) GetClusters() map[string]*Cluster {
 // Request message for BigtableInstanceAdmin.GetInstance.
 type GetInstanceRequest struct {
 	// The unique name of the requested instance. Values are of the form
-	// projects/<project>/instances/<instance>
+	// `projects/<project>/instances/<instance>`.
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
 
@@ -139,7 +139,7 @@ func (m *GetInstanceRequest) GetName() string {
 // Request message for BigtableInstanceAdmin.ListInstances.
 type ListInstancesRequest struct {
 	// The unique name of the project for which a list of instances is requested.
-	// Values are of the form projects/<project>
+	// Values are of the form `projects/<project>`.
 	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
 	// The value of `next_page_token` returned by a previous call.
 	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
@@ -171,7 +171,7 @@ type ListInstancesResponse struct {
 	// Locations from which Instance information could not be retrieved,
 	// due to an outage or some other transient condition.
 	// Instances whose Clusters are all in one of the failed locations
-	// may be missing from 'instances', and Instances with at least one
+	// may be missing from `instances`, and Instances with at least one
 	// Cluster in a failed location may only have partial information returned.
 	FailedLocations []string `protobuf:"bytes,2,rep,name=failed_locations,json=failedLocations" json:"failed_locations,omitempty"`
 	// Set if not all instances could be returned in a single response.
@@ -209,7 +209,7 @@ func (m *ListInstancesResponse) GetNextPageToken() string {
 // Request message for BigtableInstanceAdmin.DeleteInstance.
 type DeleteInstanceRequest struct {
 	// The unique name of the instance to be deleted.
-	// Values are of the form projects/<project>/instances/<instance>
+	// Values are of the form `projects/<project>/instances/<instance>`.
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
 
@@ -229,14 +229,14 @@ func (m *DeleteInstanceRequest) GetName() string {
 type CreateClusterRequest struct {
 	// The unique name of the instance in which to create the new cluster.
 	// Values are of the form
-	// projects/<project>/instances/<instance>/clusters/[a-z][-a-z0-9]*
+	// `projects/<project>/instances/<instance>`.
 	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
-	// The id to be used when referring to the new cluster within its instance,
-	// e.g. just the "mycluster" section of the full name
-	// "projects/myproject/instances/myinstance/clusters/mycluster"
+	// The ID to be used when referring to the new cluster within its instance,
+	// e.g., just `mycluster` rather than
+	// `projects/myproject/instances/myinstance/clusters/mycluster`.
 	ClusterId string `protobuf:"bytes,2,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
 	// The cluster to be created.
-	// Fields marked "@OutputOnly" must be left blank.
+	// Fields marked `OutputOnly` must be left blank.
 	Cluster *Cluster `protobuf:"bytes,3,opt,name=cluster" json:"cluster,omitempty"`
 }
 
@@ -269,7 +269,7 @@ func (m *CreateClusterRequest) GetCluster() *Cluster {
 // Request message for BigtableInstanceAdmin.GetCluster.
 type GetClusterRequest struct {
 	// The unique name of the requested cluster. Values are of the form
-	// projects/<project>/instances/<instance>/clusters/<cluster>
+	// `projects/<project>/instances/<instance>/clusters/<cluster>`.
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
 
@@ -288,9 +288,9 @@ func (m *GetClusterRequest) GetName() string {
 // Request message for BigtableInstanceAdmin.ListClusters.
 type ListClustersRequest struct {
 	// The unique name of the instance for which a list of clusters is requested.
-	// Values are of the form projects/<project>/instances/<instance>
-	// Use <instance> = '-' to list Clusters for all Instances in a project,
-	// for example "projects/myproject/instances/-"
+	// Values are of the form `projects/<project>/instances/<instance>`.
+	// Use `<instance> = '-'` to list Clusters for all Instances in a project,
+	// e.g., `projects/myproject/instances/-`.
 	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
 	// The value of `next_page_token` returned by a previous call.
 	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
@@ -321,7 +321,7 @@ type ListClustersResponse struct {
 	Clusters []*Cluster `protobuf:"bytes,1,rep,name=clusters" json:"clusters,omitempty"`
 	// Locations from which Cluster information could not be retrieved,
 	// due to an outage or some other transient condition.
-	// Clusters from these locations may be missing from 'clusters',
+	// Clusters from these locations may be missing from `clusters`,
 	// or may only have partial information returned.
 	FailedLocations []string `protobuf:"bytes,2,rep,name=failed_locations,json=failedLocations" json:"failed_locations,omitempty"`
 	// Set if not all clusters could be returned in a single response.
@@ -359,7 +359,7 @@ func (m *ListClustersResponse) GetNextPageToken() string {
 // Request message for BigtableInstanceAdmin.DeleteCluster.
 type DeleteClusterRequest struct {
 	// The unique name of the cluster to be deleted. Values are of the form
-	// projects/<project>/instances/<instance>/clusters/<cluster>
+	// `projects/<project>/instances/<instance>/clusters/<cluster>`.
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
 

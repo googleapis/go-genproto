@@ -94,10 +94,10 @@ type ImportVariantsRequest_Format int32
 
 const (
 	ImportVariantsRequest_FORMAT_UNSPECIFIED ImportVariantsRequest_Format = 0
-	// VCF (Variant Call Format). The VCF files should be uncompressed. gVCF is
+	// VCF (Variant Call Format). The VCF files may be gzip compressed. gVCF is
 	// also supported.
 	ImportVariantsRequest_FORMAT_VCF ImportVariantsRequest_Format = 1
-	// Complete Genomics masterVarBeta format. The masterVarBeta files should
+	// Complete Genomics masterVarBeta format. The masterVarBeta files may
 	// be bzip2 compressed.
 	ImportVariantsRequest_FORMAT_COMPLETE_GENOMICS ImportVariantsRequest_Format = 2
 )
@@ -1392,7 +1392,7 @@ func (m *GetCallSetRequest) GetCallSetId() string {
 
 // The stream variants request.
 type StreamVariantsRequest struct {
-	// The Google Developers Console project ID or number which will be billed
+	// The Google Cloud project ID which will be billed
 	// for this access. The caller must have WRITE access to this project.
 	// Required.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`

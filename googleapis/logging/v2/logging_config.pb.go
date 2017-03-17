@@ -54,7 +54,8 @@ func (LogSink_VersionFormat) EnumDescriptor() ([]byte, []int) { return fileDescr
 // Describes a sink used to export log entries to one of the following
 // destinations in any project: a Cloud Storage bucket, a BigQuery dataset, or a
 // Cloud Pub/Sub topic.  A logs filter controls which log entries are
-// exported. The sink must be created within a project or organization.
+// exported. The sink must be created within a project, organization, billing
+// account, or folder.
 type LogSink struct {
 	// Required. The client-assigned sink identifier, unique within the
 	// project. Example: `"my-syslog-errors-to-pubsub"`.  Sink identifiers are
@@ -171,8 +172,12 @@ func (m *LogSink) GetEndTime() *google_protobuf4.Timestamp {
 
 // The parameters to `ListSinks`.
 type ListSinksRequest struct {
-	// Required. The parent resource whose sinks are to be listed.
-	// Examples: `"projects/my-logging-project"`, `"organizations/123456789"`.
+	// Required. The parent resource whose sinks are to be listed:
+	//
+	//     "projects/[PROJECT_ID]"
+	//     "organizations/[ORGANIZATION_ID]"
+	//     "billingAccounts/[BILLING_ACCOUNT_ID]"
+	//     "folders/[FOLDER_ID]"
 	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the
 	// preceding call to this method.  `pageToken` must be the value of
@@ -242,10 +247,12 @@ func (m *ListSinksResponse) GetNextPageToken() string {
 
 // The parameters to `GetSink`.
 type GetSinkRequest struct {
-	// Required. The parent resource name of the sink:
+	// Required. The resource name of the sink:
 	//
 	//     "projects/[PROJECT_ID]/sinks/[SINK_ID]"
 	//     "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+	//     "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+	//     "folders/[FOLDER_ID]/sinks/[SINK_ID]"
 	//
 	// Example: `"projects/my-project-id/sinks/my-sink-id"`.
 	SinkName string `protobuf:"bytes,1,opt,name=sink_name,json=sinkName" json:"sink_name,omitempty"`
@@ -269,6 +276,8 @@ type CreateSinkRequest struct {
 	//
 	//     "projects/[PROJECT_ID]"
 	//     "organizations/[ORGANIZATION_ID]"
+	//     "billingAccounts/[BILLING_ACCOUNT_ID]"
+	//     "folders/[FOLDER_ID]"
 	//
 	// Examples: `"projects/my-logging-project"`, `"organizations/123456789"`.
 	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
@@ -278,9 +287,9 @@ type CreateSinkRequest struct {
 	// Optional. Determines the kind of IAM identity returned as `writer_identity`
 	// in the new sink.  If this value is omitted or set to false, and if the
 	// sink's parent is a project, then the value returned as `writer_identity` is
-	// `cloud-logs@google.com`, the same identity used before the addition of
-	// writer identities to this API. The sink's destination must be in the same
-	// project as the sink itself.
+	// the same group or service account used by Stackdriver Logging before the
+	// addition of writer identities to this API. The sink's destination must be
+	// in the same project as the sink itself.
 	//
 	// If this field is set to true, or if the sink is owned by a non-project
 	// resource such as an organization, then the value of `writer_identity` will
@@ -322,6 +331,8 @@ type UpdateSinkRequest struct {
 	//
 	//     "projects/[PROJECT_ID]/sinks/[SINK_ID]"
 	//     "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+	//     "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+	//     "folders/[FOLDER_ID]/sinks/[SINK_ID]"
 	//
 	// Example: `"projects/my-project-id/sinks/my-sink-id"`.
 	SinkName string `protobuf:"bytes,1,opt,name=sink_name,json=sinkName" json:"sink_name,omitempty"`
@@ -337,9 +348,9 @@ type UpdateSinkRequest struct {
 	//
 	// +   If the old and new values of this field are both false or both true,
 	//     then there is no change to the sink's `writer_identity`.
-	// +   If the old value was false and the new value is true, then
+	// +   If the old value is false and the new value is true, then
 	//     `writer_identity` is changed to a unique service account.
-	// +   It is an error if the old value was true and the new value is false.
+	// +   It is an error if the old value is true and the new value is false.
 	UniqueWriterIdentity bool `protobuf:"varint,3,opt,name=unique_writer_identity,json=uniqueWriterIdentity" json:"unique_writer_identity,omitempty"`
 }
 
@@ -376,10 +387,10 @@ type DeleteSinkRequest struct {
 	//
 	//     "projects/[PROJECT_ID]/sinks/[SINK_ID]"
 	//     "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+	//     "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+	//     "folders/[FOLDER_ID]/sinks/[SINK_ID]"
 	//
-	// It is an error if the sink does not exist.  Example:
-	// `"projects/my-project-id/sinks/my-sink-id"`.  It is an error if
-	// the sink does not exist.
+	// Example: `"projects/my-project-id/sinks/my-sink-id"`.
 	SinkName string `protobuf:"bytes,1,opt,name=sink_name,json=sinkName" json:"sink_name,omitempty"`
 }
 

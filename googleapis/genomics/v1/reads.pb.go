@@ -151,6 +151,13 @@ type ImportReadGroupSetsRequest struct {
 	// A list of URIs pointing at [BAM
 	// files](https://samtools.github.io/hts-specs/SAMv1.pdf)
 	// in Google Cloud Storage.
+	// Those URIs can include wildcards (*), but do not add or remove
+	// matching files before import has completed.
+	//
+	// Note that Google Cloud Storage object listing is only eventually
+	// consistent: files added may be not be immediately visible to
+	// everyone. Thus, if using a wildcard it is preferable not to start
+	// the import immediately after the files are created.
 	SourceUris []string `protobuf:"bytes,2,rep,name=source_uris,json=sourceUris" json:"source_uris,omitempty"`
 	// The partition strategy describes how read groups are partitioned into read
 	// group sets.
@@ -210,7 +217,7 @@ func (m *ImportReadGroupSetsResponse) GetReadGroupSetIds() []string {
 
 // The read group set export request.
 type ExportReadGroupSetRequest struct {
-	// Required. The Google Developers Console project ID that owns this
+	// Required. The Google Cloud project ID that owns this
 	// export. The caller must have WRITE access to this project.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
 	// Required. A Google Cloud Storage URI for the exported BAM file.
@@ -611,7 +618,7 @@ func (m *SearchReadsResponse) GetNextPageToken() string {
 
 // The stream reads request.
 type StreamReadsRequest struct {
-	// The Google Developers Console project ID or number which will be billed
+	// The Google Cloud project ID which will be billed
 	// for this access. The caller must have WRITE access to this project.
 	// Required.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`

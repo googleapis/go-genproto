@@ -30,6 +30,8 @@ type DeleteLogRequest struct {
 	//
 	//     "projects/[PROJECT_ID]/logs/[LOG_ID]"
 	//     "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+	//     "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+	//     "folders/[FOLDER_ID]/logs/[LOG_ID]"
 	//
 	// `[LOG_ID]` must be URL-encoded. For example,
 	// `"projects/my-project-id/logs/syslog"`,
@@ -58,6 +60,8 @@ type WriteLogEntriesRequest struct {
 	//
 	//     "projects/[PROJECT_ID]/logs/[LOG_ID]"
 	//     "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+	//     "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+	//     "folders/[FOLDER_ID]/logs/[LOG_ID]"
 	//
 	// `[LOG_ID]` must be URL-encoded. For example,
 	// `"projects/my-project-id/logs/syslog"` or
@@ -79,10 +83,16 @@ type WriteLogEntriesRequest struct {
 	// as a label in this parameter, then the log entry's label is not changed.
 	// See [LogEntry][google.logging.v2.LogEntry].
 	Labels map[string]string `protobuf:"bytes,3,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// Required. The log entries to write. Values supplied for the fields
+	// Required.  The log entries to write. Values supplied for the fields
 	// `log_name`, `resource`, and `labels` in this `entries.write` request are
-	// added to those log entries that do not provide their own values for the
-	// fields.
+	// inserted into those log entries in this list that do not provide their own
+	// values.
+	//
+	// Stackdriver Logging also creates and inserts values for `timestamp` and
+	// `insert_id` if the entries do not provide them. The created `insert_id` for
+	// the N'th entry in this list will be greater than earlier entries and less
+	// than later entries.  Otherwise, the order of log entries in this list does
+	// not matter.
 	//
 	// To improve throughput and to avoid exceeding the
 	// [quota limit](/logging/quota-policy) for calls to `entries.write`,
@@ -91,9 +101,9 @@ type WriteLogEntriesRequest struct {
 	Entries []*LogEntry `protobuf:"bytes,4,rep,name=entries" json:"entries,omitempty"`
 	// Optional. Whether valid entries should be written even if some other
 	// entries fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any
-	// entry is not written, the response status will be the error associated
-	// with one of the failed entries and include error details in the form of
-	// WriteLogEntriesPartialErrors.
+	// entry is not written, then the response status is the error associated
+	// with one of the failed entries and the response includes error details
+	// keyed by the entries' zero-based index in the `entries.write` method.
 	PartialSuccess bool `protobuf:"varint,5,opt,name=partial_success,json=partialSuccess" json:"partial_success,omitempty"`
 }
 
@@ -155,11 +165,13 @@ type ListLogEntriesRequest struct {
 	// resource name format and added to the list of resources in
 	// `resource_names`.
 	ProjectIds []string `protobuf:"bytes,1,rep,name=project_ids,json=projectIds" json:"project_ids,omitempty"`
-	// Required. Names of one or more resources from which to retrieve log
-	// entries:
+	// Required. Names of one or more parent resources from which to
+	// retrieve log entries:
 	//
 	//     "projects/[PROJECT_ID]"
 	//     "organizations/[ORGANIZATION_ID]"
+	//     "billingAccounts/[BILLING_ACCOUNT_ID]"
+	//     "folders/[FOLDER_ID]"
 	//
 	// Projects listed in the `project_ids` field are added to this list.
 	ResourceNames []string `protobuf:"bytes,8,rep,name=resource_names,json=resourceNames" json:"resource_names,omitempty"`
@@ -176,15 +188,15 @@ type ListLogEntriesRequest struct {
 	// option returns entries in order of increasing values of
 	// `LogEntry.timestamp` (oldest first), and the second option returns entries
 	// in order of decreasing timestamps (newest first).  Entries with equal
-	// timestamps are returned in order of `LogEntry.insertId`.
+	// timestamps are returned in order of their `insert_id` values.
 	OrderBy string `protobuf:"bytes,3,opt,name=order_by,json=orderBy" json:"order_by,omitempty"`
 	// Optional. The maximum number of results to return from this request.
-	// Non-positive values are ignored.  The presence of `nextPageToken` in the
+	// Non-positive values are ignored.  The presence of `next_page_token` in the
 	// response indicates that more results might be available.
 	PageSize int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the
-	// preceding call to this method.  `pageToken` must be the value of
-	// `nextPageToken` from the previous response.  The values of other method
+	// preceding call to this method.  `page_token` must be the value of
+	// `next_page_token` from the previous response.  The values of other method
 	// parameters should be identical to those in the previous call.
 	PageToken string `protobuf:"bytes,5,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
 }
@@ -347,6 +359,8 @@ type ListLogsRequest struct {
 	//
 	//     "projects/[PROJECT_ID]"
 	//     "organizations/[ORGANIZATION_ID]"
+	//     "billingAccounts/[BILLING_ACCOUNT_ID]"
+	//     "folders/[FOLDER_ID]"
 	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
 	// Optional. The maximum number of results to return from this request.
 	// Non-positive values are ignored.  The presence of `nextPageToken` in the
@@ -441,9 +455,10 @@ const _ = grpc.SupportPackageIsVersion4
 type LoggingServiceV2Client interface {
 	// Deletes all the log entries in a log.
 	// The log reappears if it receives new entries.
+	// Log entries written shortly before the delete operation might not be
+	// deleted.
 	DeleteLog(ctx context.Context, in *DeleteLogRequest, opts ...grpc.CallOption) (*google_protobuf5.Empty, error)
-	// Writes log entries to Stackdriver Logging.  All log entries are
-	// written by this method.
+	// Writes log entries to Stackdriver Logging.
 	WriteLogEntries(ctx context.Context, in *WriteLogEntriesRequest, opts ...grpc.CallOption) (*WriteLogEntriesResponse, error)
 	// Lists log entries.  Use this method to retrieve log entries from
 	// Stackdriver Logging.  For ways to export log entries, see
@@ -452,7 +467,7 @@ type LoggingServiceV2Client interface {
 	// Lists the descriptors for monitored resource types used by Stackdriver
 	// Logging.
 	ListMonitoredResourceDescriptors(ctx context.Context, in *ListMonitoredResourceDescriptorsRequest, opts ...grpc.CallOption) (*ListMonitoredResourceDescriptorsResponse, error)
-	// Lists the logs in projects or organizations.
+	// Lists the logs in projects, organizations, folders, or billing accounts.
 	// Only logs that have entries are listed.
 	ListLogs(ctx context.Context, in *ListLogsRequest, opts ...grpc.CallOption) (*ListLogsResponse, error)
 }
@@ -515,9 +530,10 @@ func (c *loggingServiceV2Client) ListLogs(ctx context.Context, in *ListLogsReque
 type LoggingServiceV2Server interface {
 	// Deletes all the log entries in a log.
 	// The log reappears if it receives new entries.
+	// Log entries written shortly before the delete operation might not be
+	// deleted.
 	DeleteLog(context.Context, *DeleteLogRequest) (*google_protobuf5.Empty, error)
-	// Writes log entries to Stackdriver Logging.  All log entries are
-	// written by this method.
+	// Writes log entries to Stackdriver Logging.
 	WriteLogEntries(context.Context, *WriteLogEntriesRequest) (*WriteLogEntriesResponse, error)
 	// Lists log entries.  Use this method to retrieve log entries from
 	// Stackdriver Logging.  For ways to export log entries, see
@@ -526,7 +542,7 @@ type LoggingServiceV2Server interface {
 	// Lists the descriptors for monitored resource types used by Stackdriver
 	// Logging.
 	ListMonitoredResourceDescriptors(context.Context, *ListMonitoredResourceDescriptorsRequest) (*ListMonitoredResourceDescriptorsResponse, error)
-	// Lists the logs in projects or organizations.
+	// Lists the logs in projects, organizations, folders, or billing accounts.
 	// Only logs that have entries are listed.
 	ListLogs(context.Context, *ListLogsRequest) (*ListLogsResponse, error)
 }

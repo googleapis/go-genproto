@@ -31,7 +31,7 @@ var _ = math.Inf
 type Dataset struct {
 	// The server-generated dataset ID, unique across all datasets.
 	Id string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	// The Google Developers Console project ID that this dataset belongs to.
+	// The Google Cloud project ID that this dataset belongs to.
 	ProjectId string `protobuf:"bytes,2,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
 	// The dataset name.
 	Name string `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
@@ -74,7 +74,7 @@ func (m *Dataset) GetCreateTime() *google_protobuf6.Timestamp {
 
 // The dataset list request.
 type ListDatasetsRequest struct {
-	// Required. The project to list datasets for.
+	// Required. The Google Cloud project ID to list datasets for.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
 	// The maximum number of results to return in a single page. If unspecified,
 	// defaults to 50. The maximum value is 1024.
