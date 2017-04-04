@@ -38,7 +38,7 @@ type Usage struct {
 func (m *Usage) Reset()                    { *m = Usage{} }
 func (m *Usage) String() string            { return proto.CompactTextString(m) }
 func (*Usage) ProtoMessage()               {}
-func (*Usage) Descriptor() ([]byte, []int) { return fileDescriptor13, []int{0} }
+func (*Usage) Descriptor() ([]byte, []int) { return fileDescriptor15, []int{0} }
 
 func (m *Usage) GetRequirements() []string {
 	if m != nil {
@@ -99,7 +99,7 @@ type UsageRule struct {
 func (m *UsageRule) Reset()                    { *m = UsageRule{} }
 func (m *UsageRule) String() string            { return proto.CompactTextString(m) }
 func (*UsageRule) ProtoMessage()               {}
-func (*UsageRule) Descriptor() ([]byte, []int) { return fileDescriptor13, []int{1} }
+func (*UsageRule) Descriptor() ([]byte, []int) { return fileDescriptor15, []int{1} }
 
 func (m *UsageRule) GetSelector() string {
 	if m != nil {
@@ -120,9 +120,9 @@ func init() {
 	proto.RegisterType((*UsageRule)(nil), "google.api.UsageRule")
 }
 
-func init() { proto.RegisterFile("google/api/usage.proto", fileDescriptor13) }
+func init() { proto.RegisterFile("google/api/usage.proto", fileDescriptor15) }
 
-var fileDescriptor13 = []byte{
+var fileDescriptor15 = []byte{
 	// 303 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x54, 0x90, 0xcf, 0x4b, 0x3b, 0x31,
 	0x10, 0xc5, 0x49, 0xfb, 0x6d, 0xbf, 0x6d, 0x14, 0x0f, 0x01, 0x4b, 0xa8, 0x0a, 0x4b, 0x4f, 0x0b,

@@ -1067,9 +1067,7 @@ type Document struct {
 	// accepted.<br>
 	// **Current Language Restrictions:**
 	//
-	//  * Only English, Spanish, and Japanese textual content
-	//    are supported, with the following additional restriction:
-	//    * `analyzeSentiment` only supports English text.
+	//  * Only English, Spanish, and Japanese textual content are supported.
 	// If the language (either specified by the caller or automatically detected)
 	// is not supported by the called API method, an `INVALID_ARGUMENT` error
 	// is returned.
@@ -1343,7 +1341,7 @@ type Sentiment struct {
 	// negative).
 	Magnitude float32 `protobuf:"fixed32,2,opt,name=magnitude" json:"magnitude,omitempty"`
 	// Sentiment score between -1.0 (negative sentiment) and 1.0
-	// (positive sentiment.)
+	// (positive sentiment).
 	Score float32 `protobuf:"fixed32,3,opt,name=score" json:"score,omitempty"`
 }
 
@@ -1950,8 +1948,9 @@ const _ = grpc.SupportPackageIsVersion4
 type LanguageServiceClient interface {
 	// Analyzes the sentiment of the provided text.
 	AnalyzeSentiment(ctx context.Context, in *AnalyzeSentimentRequest, opts ...grpc.CallOption) (*AnalyzeSentimentResponse, error)
-	// Finds named entities (currently finds proper names) in the text,
-	// entity types, salience, mentions for each entity, and other properties.
+	// Finds named entities (currently proper names and common nouns) in the text
+	// along with entity types, salience, mentions for each entity, and
+	// other properties.
 	AnalyzeEntities(ctx context.Context, in *AnalyzeEntitiesRequest, opts ...grpc.CallOption) (*AnalyzeEntitiesResponse, error)
 	// Analyzes the syntax of the text and provides sentence boundaries and
 	// tokenization along with part of speech tags, dependency trees, and other
@@ -2011,8 +2010,9 @@ func (c *languageServiceClient) AnnotateText(ctx context.Context, in *AnnotateTe
 type LanguageServiceServer interface {
 	// Analyzes the sentiment of the provided text.
 	AnalyzeSentiment(context.Context, *AnalyzeSentimentRequest) (*AnalyzeSentimentResponse, error)
-	// Finds named entities (currently finds proper names) in the text,
-	// entity types, salience, mentions for each entity, and other properties.
+	// Finds named entities (currently proper names and common nouns) in the text
+	// along with entity types, salience, mentions for each entity, and
+	// other properties.
 	AnalyzeEntities(context.Context, *AnalyzeEntitiesRequest) (*AnalyzeEntitiesResponse, error)
 	// Analyzes the syntax of the text and provides sentence boundaries and
 	// tokenization along with part of speech tags, dependency trees, and other
