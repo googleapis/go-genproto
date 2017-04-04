@@ -17,7 +17,9 @@ It is generated from these files:
 	google/api/log.proto
 	google/api/logging.proto
 	google/api/monitoring.proto
+	google/api/quota.proto
 	google/api/service.proto
+	google/api/source_info.proto
 	google/api/system_parameter.proto
 	google/api/usage.proto
 
@@ -43,7 +45,11 @@ It has these top-level messages:
 	LogDescriptor
 	Logging
 	Monitoring
+	Quota
+	MetricRule
+	QuotaLimit
 	Service
+	SourceInfo
 	SystemParameters
 	SystemParameterRule
 	SystemParameter
