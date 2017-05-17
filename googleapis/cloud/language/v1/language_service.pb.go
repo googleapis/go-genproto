@@ -1065,9 +1065,8 @@ type Document struct {
 	// The language of the document (if not specified, the language is
 	// automatically detected). Both ISO and BCP-47 language codes are
 	// accepted.<br>
-	// **Current Language Restrictions:**
-	//
-	//  * Only English, Spanish, and Japanese textual content are supported.
+	// [Language Support](https://cloud.google.com/natural-language/docs/languages)
+	// lists currently supported languages for each API method.
 	// If the language (either specified by the caller or automatically detected)
 	// is not supported by the called API method, an `INVALID_ARGUMENT` error
 	// is returned.
@@ -1574,8 +1573,7 @@ func (m *TextSpan) GetBeginOffset() int32 {
 
 // The sentiment analysis request message.
 type AnalyzeSentimentRequest struct {
-	// Input document. Currently, `analyzeSentiment` only supports English text
-	// ([Document.language][google.cloud.language.v1.Document.language]="EN").
+	// Input document.
 	Document *Document `protobuf:"bytes,1,opt,name=document" json:"document,omitempty"`
 	// The encoding type used by the API to calculate sentence offsets.
 	EncodingType EncodingType `protobuf:"varint,2,opt,name=encoding_type,json=encodingType,enum=google.cloud.language.v1.EncodingType" json:"encoding_type,omitempty"`
@@ -1606,7 +1604,7 @@ type AnalyzeSentimentResponse struct {
 	DocumentSentiment *Sentiment `protobuf:"bytes,1,opt,name=document_sentiment,json=documentSentiment" json:"document_sentiment,omitempty"`
 	// The language of the text, which will be the same as the language specified
 	// in the request or, if not specified, the automatically-detected language.
-	// See `Document.language` field for more details.
+	// See [Document.language][google.cloud.language.v1.Document.language] field for more details.
 	Language string `protobuf:"bytes,2,opt,name=language" json:"language,omitempty"`
 	// The sentiment for all the sentences in the document.
 	Sentences []*Sentence `protobuf:"bytes,3,rep,name=sentences" json:"sentences,omitempty"`
@@ -1671,7 +1669,7 @@ type AnalyzeEntitiesResponse struct {
 	Entities []*Entity `protobuf:"bytes,1,rep,name=entities" json:"entities,omitempty"`
 	// The language of the text, which will be the same as the language specified
 	// in the request or, if not specified, the automatically-detected language.
-	// See `Document.language` field for more details.
+	// See [Document.language][google.cloud.language.v1.Document.language] field for more details.
 	Language string `protobuf:"bytes,2,opt,name=language" json:"language,omitempty"`
 }
 
@@ -1729,7 +1727,7 @@ type AnalyzeSyntaxResponse struct {
 	Tokens []*Token `protobuf:"bytes,2,rep,name=tokens" json:"tokens,omitempty"`
 	// The language of the text, which will be the same as the language specified
 	// in the request or, if not specified, the automatically-detected language.
-	// See `Document.language` field for more details.
+	// See [Document.language][google.cloud.language.v1.Document.language] field for more details.
 	Language string `protobuf:"bytes,3,opt,name=language" json:"language,omitempty"`
 }
 
@@ -1853,7 +1851,7 @@ type AnnotateTextResponse struct {
 	DocumentSentiment *Sentiment `protobuf:"bytes,4,opt,name=document_sentiment,json=documentSentiment" json:"document_sentiment,omitempty"`
 	// The language of the text, which will be the same as the language specified
 	// in the request or, if not specified, the automatically-detected language.
-	// See `Document.language` field for more details.
+	// See [Document.language][google.cloud.language.v1.Document.language] field for more details.
 	Language string `protobuf:"bytes,5,opt,name=language" json:"language,omitempty"`
 }
 
