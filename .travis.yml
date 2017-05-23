@@ -7,4 +7,6 @@ go_import_path: google.golang.org/genproto
 
 script:
 - go test -v ./...
-- go get -v cloud.google.com/go/...
+- if [[ "$TRAVIS_BRANCH" == "master" &&  "$TRAVIS_PULL_REQUEST" == "false" ]]; then
+  go get -u -v cloud.google.com/go/...;
+  fi
