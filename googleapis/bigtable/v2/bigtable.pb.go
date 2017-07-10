@@ -740,7 +740,7 @@ const _ = grpc.SupportPackageIsVersion4
 // Client API for Bigtable service
 
 type BigtableClient interface {
-	// Streams back the contents of all requested rows, optionally
+	// Streams back the contents of all requested rows in key order, optionally
 	// applying the same Reader filter to each. Depending on their size,
 	// rows and cells may be broken up across multiple responses, but
 	// atomicity of each row will still be preserved. See the
@@ -902,7 +902,7 @@ func (c *bigtableClient) ReadModifyWriteRow(ctx context.Context, in *ReadModifyW
 // Server API for Bigtable service
 
 type BigtableServer interface {
-	// Streams back the contents of all requested rows, optionally
+	// Streams back the contents of all requested rows in key order, optionally
 	// applying the same Reader filter to each. Depending on their size,
 	// rows and cells may be broken up across multiple responses, but
 	// atomicity of each row will still be preserved. See the
