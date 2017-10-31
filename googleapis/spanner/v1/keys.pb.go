@@ -26,6 +26,8 @@ It has these top-level messages:
 	CreateSessionRequest
 	Session
 	GetSessionRequest
+	ListSessionsRequest
+	ListSessionsResponse
 	DeleteSessionRequest
 	ExecuteSqlRequest
 	ReadRequest
