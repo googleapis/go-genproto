@@ -1180,9 +1180,7 @@ type Cluster struct {
 	// notation (e.g. `1.2.3.4/29`). Service addresses are
 	// typically put in the last `/16` from the container CIDR.
 	ServicesIpv4Cidr string `protobuf:"bytes,110,opt,name=services_ipv4_cidr,json=servicesIpv4Cidr" json:"services_ipv4_cidr,omitempty"`
-	// [Output only] The resource URLs of [instance
-	// groups](/compute/docs/instance-groups/) associated with this
-	// cluster.
+	// Deprecated. Use node_pools.instance_group_urls.
 	InstanceGroupUrls []string `protobuf:"bytes,111,rep,name=instance_group_urls,json=instanceGroupUrls" json:"instance_group_urls,omitempty"`
 	// [Output only] The number of nodes currently in the cluster.
 	CurrentNodeCount int32 `protobuf:"varint,112,opt,name=current_node_count,json=currentNodeCount" json:"current_node_count,omitempty"`
@@ -2741,11 +2739,11 @@ type NodePool struct {
 	InitialNodeCount int32 `protobuf:"varint,3,opt,name=initial_node_count,json=initialNodeCount" json:"initial_node_count,omitempty"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink string `protobuf:"bytes,100,opt,name=self_link,json=selfLink" json:"self_link,omitempty"`
-	// [Output only] The version of the Kubernetes of this node.
+	// The version of the Kubernetes of this node.
 	Version string `protobuf:"bytes,101,opt,name=version" json:"version,omitempty"`
-	// [Output only] The resource URLs of [instance
-	// groups](/compute/docs/instance-groups/) associated with this
-	// node pool.
+	// [Output only] The resource URLs of the [managed instance
+	// groups](/compute/docs/instance-groups/creating-groups-of-managed-instances)
+	// associated with this node pool.
 	InstanceGroupUrls []string `protobuf:"bytes,102,rep,name=instance_group_urls,json=instanceGroupUrls" json:"instance_group_urls,omitempty"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status NodePool_Status `protobuf:"varint,103,opt,name=status,enum=google.container.v1.NodePool_Status" json:"status,omitempty"`
