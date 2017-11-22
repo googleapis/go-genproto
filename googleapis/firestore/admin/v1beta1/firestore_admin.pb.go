@@ -173,8 +173,8 @@ type CreateIndexRequest struct {
 	// The name of the database this index will apply to. For example:
 	// `projects/{project_id}/databases/{database_id}`
 	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
-	// The index to create. The name and state should not be specified.
-	// Certain single field indexes cannot be created or deleted.
+	// The index to create. The name and state fields are output only and will be
+	// ignored. Certain single field indexes cannot be created or deleted.
 	Index *Index `protobuf:"bytes,2,opt,name=index" json:"index,omitempty"`
 }
 

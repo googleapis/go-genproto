@@ -120,14 +120,14 @@ func (m *IndexField) GetMode() IndexField_Mode {
 // An index definition.
 type Index struct {
 	// The resource name of the index.
+	// Output only.
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	// The collection ID to which this index applies. Required.
 	CollectionId string `protobuf:"bytes,2,opt,name=collection_id,json=collectionId" json:"collection_id,omitempty"`
 	// The fields to index.
 	Fields []*IndexField `protobuf:"bytes,3,rep,name=fields" json:"fields,omitempty"`
 	// The state of the index.
-	// The state is read-only.
-	// @OutputOnly
+	// Output only.
 	State Index_State `protobuf:"varint,6,opt,name=state,enum=google.firestore.admin.v1beta1.Index_State" json:"state,omitempty"`
 }
 
