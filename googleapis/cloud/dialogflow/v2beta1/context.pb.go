@@ -185,8 +185,7 @@ func (m *CreateContextRequest) GetContext() *Context {
 // The request message for
 // [Contexts.UpdateContext][google.cloud.dialogflow.v2beta1.Contexts.UpdateContext].
 type UpdateContextRequest struct {
-	// Required. The context to update. Format:
-	// `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
+	// Required. The context to update.
 	Context *Context `protobuf:"bytes,1,opt,name=context" json:"context,omitempty"`
 	// Optional. The mask to control which fields get updated.
 	UpdateMask *google_protobuf3.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
