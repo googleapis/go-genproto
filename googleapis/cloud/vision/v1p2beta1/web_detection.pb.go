@@ -28,8 +28,7 @@ type WebDetection struct {
 	PagesWithMatchingImages []*WebDetection_WebPage `protobuf:"bytes,4,rep,name=pages_with_matching_images,json=pagesWithMatchingImages" json:"pages_with_matching_images,omitempty"`
 	// The visually similar image results.
 	VisuallySimilarImages []*WebDetection_WebImage `protobuf:"bytes,6,rep,name=visually_similar_images,json=visuallySimilarImages" json:"visually_similar_images,omitempty"`
-	// The service's best guess as to the topic of the request image.
-	// Inferred from similar images on the open web.
+	// Best guess text labels for the request image.
 	BestGuessLabels []*WebDetection_WebLabel `protobuf:"bytes,8,rep,name=best_guess_labels,json=bestGuessLabels" json:"best_guess_labels,omitempty"`
 }
 
