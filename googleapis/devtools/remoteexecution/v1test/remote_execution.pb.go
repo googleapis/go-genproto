@@ -135,9 +135,11 @@ type Action struct {
 	// `output_directories`, will be returned to the client as output.
 	// Other files that may be created during command execution are discarded.
 	//
-	// The paths are specified using forward slashes (`/`) as path separators,
-	// even if the execution platform natively uses a different separator. The
-	// path MUST NOT include a trailing slash.
+	// The paths are relative to the working directory of the action execution.
+	// The paths are specified using a single forward slash (`/`) as a path
+	// separator, even if the execution platform natively uses a different
+	// separator. The path MUST NOT include a trailing slash, nor a leading slash,
+	// being a relative path.
 	//
 	// In order to ensure consistent hashing of the same Action, the output paths
 	// MUST be sorted lexicographically by code point (or, equivalently, by UTF-8
@@ -149,11 +151,13 @@ type Action struct {
 	// returned, as well as files listed in `output_files`. Other files that may
 	// be created during command execution are discarded.
 	//
-	// The paths are specified using forward slashes (`/`) as path separators,
-	// even if the execution platform natively uses a different separator. The
-	// path MUST NOT include a trailing slash, unless the path is `"/"` (which,
-	// although not recommended, can be used to capture the entire working
-	// directory tree, including inputs).
+	// The paths are relative to the working directory of the action execution.
+	// The paths are specified using a single forward slash (`/`) as a path
+	// separator, even if the execution platform natively uses a different
+	// separator. The path MUST NOT include a trailing slash, nor a leading slash,
+	// being a relative path.
+	// The special value of empty string is allowed, although not recommended, and
+	// can be used to capture the entire working directory tree, including inputs.
 	//
 	// In order to ensure consistent hashing of the same Action, the output paths
 	// MUST be sorted lexicographically by code point (or, equivalently, by UTF-8
@@ -248,9 +252,7 @@ func (m *Action) GetDoNotCache() bool {
 type Command struct {
 	// The arguments to the command. The first argument must be the path to the
 	// executable, which must be either a relative path, in which case it is
-	// evaluated with respect to the input root, or an absolute path. The `PATH`
-	// environment variable, or similar functionality on other systems, is not
-	// used to determine which executable to run.
+	// evaluated with respect to the input root, or an absolute path.
 	//
 	// The working directory will always be the input root.
 	Arguments []string `protobuf:"bytes,1,rep,name=arguments" json:"arguments,omitempty"`
@@ -597,20 +599,73 @@ func (m *Digest) GetSizeBytes() int64 {
 // An ActionResult represents the result of an
 // [Action][google.devtools.remoteexecution.v1test.Action] being run.
 type ActionResult struct {
-	// The output files of the action. For each output file requested, if the
-	// corresponding file existed after the action completed, a single entry will
-	// be present in the output list.
+	// The output files of the action. For each output file requested in the
+	// `output_files` field of the Action, if the corresponding file existed after
+	// the action completed, a single entry will be present in the output list.
 	//
 	// If the action does not produce the requested output, or produces a
 	// directory where a regular file is expected or vice versa, then that output
 	// will be omitted from the list. The server is free to arrange the output
 	// list as desired; clients MUST NOT assume that the output list is sorted.
 	OutputFiles []*OutputFile `protobuf:"bytes,2,rep,name=output_files,json=outputFiles" json:"output_files,omitempty"`
-	// The output directories of the action. For each output directory requested,
-	// if the corresponding directory existed after the action completed, a single
-	// entry will be present in the output list, which will contain the digest of
-	// a [Tree][google.devtools.remoteexecution.v1.test.Tree] message containing
-	// the directory tree.
+	// The output directories of the action. For each output directory requested
+	// in the `output_directories` field of the Action, if the corresponding
+	// directory existed after the action completed, a single entry will be
+	// present in the output list, which will contain the digest of
+	// a [Tree][google.devtools.remoteexecution.v1test.Tree] message containing
+	// the directory tree, and the path equal exactly to the corresponding Action
+	// output_directories member.
+	// As an example, suppose the Action had an output directory `a/b/dir` and the
+	// execution produced the following contents in `a/b/dir`: a file named `bar`
+	// and a directory named `foo` with an executable file named `baz`. Then,
+	// output_directory will contain (hashes shortened for readability):
+	//
+	// ```json
+	// // OutputDirectory proto:
+	// {
+	//   path: "a/b/dir"
+	//   tree_digest: {
+	//     hash: "4a73bc9d03...",
+	//     size: 55
+	//   }
+	// }
+	// // Tree proto with hash "4a73bc9d03..." and size 55:
+	// {
+	//   root: {
+	//     files: [
+	//       {
+	//         name: "bar",
+	//         digest: {
+	//           hash: "4a73bc9d03...",
+	//           size: 65534
+	//         }
+	//       }
+	//     ],
+	//     directories: [
+	//       {
+	//         name: "foo",
+	//         digest: {
+	//           hash: "4cf2eda940...",
+	//           size: 43
+	//         }
+	//       }
+	//     ]
+	//   }
+	//   children : {
+	//     // (Directory proto with hash "4cf2eda940..." and size 43)
+	//     files: [
+	//       {
+	//         name: "baz",
+	//         digest: {
+	//           hash: "b2c941073e...",
+	//           size: 1294,
+	//         },
+	//         is_executable: true
+	//       }
+	//     ]
+	//   }
+	// }
+	// ```
 	OutputDirectories []*OutputDirectory `protobuf:"bytes,3,rep,name=output_directories,json=outputDirectories" json:"output_directories,omitempty"`
 	// The exit code of the command.
 	ExitCode int32 `protobuf:"varint,4,opt,name=exit_code,json=exitCode" json:"exit_code,omitempty"`
@@ -702,7 +757,8 @@ func (m *ActionResult) GetStderrDigest() *Digest {
 // `OutputFile` is binary-compatible with `FileNode`.
 type OutputFile struct {
 	// The full path of the file relative to the input root, including the
-	// filename. The path separator is a forward slash `/`.
+	// filename. The path separator is a forward slash `/`. Since this is a
+	// relative path, it MUST NOT begin with a leading forward slash.
 	Path string `protobuf:"bytes,1,opt,name=path" json:"path,omitempty"`
 	// The digest of the file's content.
 	Digest *Digest `protobuf:"bytes,2,opt,name=digest" json:"digest,omitempty"`
@@ -789,8 +845,10 @@ func (m *Tree) GetChildren() []*Directory {
 // An `OutputDirectory` is the output in an `ActionResult` corresponding to a
 // directory's full contents rather than a single file.
 type OutputDirectory struct {
-	// The full path of the directory relative to the input root, including the
-	// filename. The path separator is a forward slash `/`.
+	// The full path of the directory relative to the working directory. The path
+	// separator is a forward slash `/`. Since this is a relative path, it MUST
+	// NOT begin with a leading forward slash. The empty string value is allowed,
+	// and it denotes the entire working directory.
 	Path string `protobuf:"bytes,1,opt,name=path" json:"path,omitempty"`
 	// DEPRECATED: This field is deprecated and should no longer be used.
 	Digest *Digest `protobuf:"bytes,2,opt,name=digest" json:"digest,omitempty"`

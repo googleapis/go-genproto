@@ -2153,7 +2153,7 @@ func (m *InspectDataSourceDetails) GetResult() *InspectDataSourceDetails_Result 
 }
 
 type InspectDataSourceDetails_RequestedOptions struct {
-	// If run with an inspect template, a snapshot of it's state at the time of
+	// If run with an InspectTemplate, a snapshot of its state at the time of
 	// this run.
 	SnapshotInspectTemplate *InspectTemplate  `protobuf:"bytes,1,opt,name=snapshot_inspect_template,json=snapshotInspectTemplate" json:"snapshot_inspect_template,omitempty"`
 	JobConfig               *InspectJobConfig `protobuf:"bytes,3,opt,name=job_config,json=jobConfig" json:"job_config,omitempty"`
@@ -6885,7 +6885,7 @@ func (m *Action_SaveFindings) GetOutputConfig() *OutputStorageConfig {
 }
 
 // Publish the results of a DlpJob to a pub sub channel.
-// Compatible with: Inpect, Risk
+// Compatible with: Inspect, Risk
 type Action_PublishToPubSub struct {
 	// Cloud Pub/Sub topic to send notifications to. The topic must have given
 	// publishing access rights to the DLP API service account executing
@@ -8206,27 +8206,27 @@ type DlpServiceClient interface {
 	// supports. For more information, see [Listing supported predefined
 	// infoTypes](/dlp/docs/listing-infotypes).
 	ListInfoTypes(ctx context.Context, in *ListInfoTypesRequest, opts ...grpc.CallOption) (*ListInfoTypesResponse, error)
-	// Creates an inspect template for re-using frequently used configuration
+	// Creates an InspectTemplate for re-using frequently used configuration
 	// for inspecting content, images, and storage.
 	CreateInspectTemplate(ctx context.Context, in *CreateInspectTemplateRequest, opts ...grpc.CallOption) (*InspectTemplate, error)
-	// Updates the inspect template.
+	// Updates the InspectTemplate.
 	UpdateInspectTemplate(ctx context.Context, in *UpdateInspectTemplateRequest, opts ...grpc.CallOption) (*InspectTemplate, error)
-	// Gets an inspect template.
+	// Gets an InspectTemplate.
 	GetInspectTemplate(ctx context.Context, in *GetInspectTemplateRequest, opts ...grpc.CallOption) (*InspectTemplate, error)
-	// Lists inspect templates.
+	// Lists InspectTemplates.
 	ListInspectTemplates(ctx context.Context, in *ListInspectTemplatesRequest, opts ...grpc.CallOption) (*ListInspectTemplatesResponse, error)
-	// Deletes an inspect template.
+	// Deletes an InspectTemplate.
 	DeleteInspectTemplate(ctx context.Context, in *DeleteInspectTemplateRequest, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
-	// Creates a de-identify template for re-using frequently used configuration
-	// for Deidentifying content, images, and storage.
+	// Creates a DeidentifyTemplate for re-using frequently used configuration
+	// for de-identifying content, images, and storage.
 	CreateDeidentifyTemplate(ctx context.Context, in *CreateDeidentifyTemplateRequest, opts ...grpc.CallOption) (*DeidentifyTemplate, error)
-	// Updates the de-identify template.
+	// Updates the DeidentifyTemplate.
 	UpdateDeidentifyTemplate(ctx context.Context, in *UpdateDeidentifyTemplateRequest, opts ...grpc.CallOption) (*DeidentifyTemplate, error)
-	// Gets a de-identify template.
+	// Gets a DeidentifyTemplate.
 	GetDeidentifyTemplate(ctx context.Context, in *GetDeidentifyTemplateRequest, opts ...grpc.CallOption) (*DeidentifyTemplate, error)
-	// Lists de-identify templates.
+	// Lists DeidentifyTemplates.
 	ListDeidentifyTemplates(ctx context.Context, in *ListDeidentifyTemplatesRequest, opts ...grpc.CallOption) (*ListDeidentifyTemplatesResponse, error)
-	// Deletes a de-identify template.
+	// Deletes a DeidentifyTemplate.
 	DeleteDeidentifyTemplate(ctx context.Context, in *DeleteDeidentifyTemplateRequest, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
 	// Creates a job trigger to run DLP actions such as scanning storage for
 	// sensitive information on a set schedule.
@@ -8239,8 +8239,8 @@ type DlpServiceClient interface {
 	ListJobTriggers(ctx context.Context, in *ListJobTriggersRequest, opts ...grpc.CallOption) (*ListJobTriggersResponse, error)
 	// Deletes a job trigger.
 	DeleteJobTrigger(ctx context.Context, in *DeleteJobTriggerRequest, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
-	// Creates a new job to inspect storage or calculate risk metrics [How-to
-	// guide](/dlp/docs/compute-risk-analysis).
+	// Creates a new job to inspect storage or calculate risk metrics.
+	// [How-to guide](/dlp/docs/compute-risk-analysis).
 	CreateDlpJob(ctx context.Context, in *CreateDlpJobRequest, opts ...grpc.CallOption) (*DlpJob, error)
 	// Lists DlpJobs that match the specified filter in the request.
 	ListDlpJobs(ctx context.Context, in *ListDlpJobsRequest, opts ...grpc.CallOption) (*ListDlpJobsResponse, error)
@@ -8511,27 +8511,27 @@ type DlpServiceServer interface {
 	// supports. For more information, see [Listing supported predefined
 	// infoTypes](/dlp/docs/listing-infotypes).
 	ListInfoTypes(context.Context, *ListInfoTypesRequest) (*ListInfoTypesResponse, error)
-	// Creates an inspect template for re-using frequently used configuration
+	// Creates an InspectTemplate for re-using frequently used configuration
 	// for inspecting content, images, and storage.
 	CreateInspectTemplate(context.Context, *CreateInspectTemplateRequest) (*InspectTemplate, error)
-	// Updates the inspect template.
+	// Updates the InspectTemplate.
 	UpdateInspectTemplate(context.Context, *UpdateInspectTemplateRequest) (*InspectTemplate, error)
-	// Gets an inspect template.
+	// Gets an InspectTemplate.
 	GetInspectTemplate(context.Context, *GetInspectTemplateRequest) (*InspectTemplate, error)
-	// Lists inspect templates.
+	// Lists InspectTemplates.
 	ListInspectTemplates(context.Context, *ListInspectTemplatesRequest) (*ListInspectTemplatesResponse, error)
-	// Deletes an inspect template.
+	// Deletes an InspectTemplate.
 	DeleteInspectTemplate(context.Context, *DeleteInspectTemplateRequest) (*google_protobuf3.Empty, error)
-	// Creates a de-identify template for re-using frequently used configuration
-	// for Deidentifying content, images, and storage.
+	// Creates a DeidentifyTemplate for re-using frequently used configuration
+	// for de-identifying content, images, and storage.
 	CreateDeidentifyTemplate(context.Context, *CreateDeidentifyTemplateRequest) (*DeidentifyTemplate, error)
-	// Updates the de-identify template.
+	// Updates the DeidentifyTemplate.
 	UpdateDeidentifyTemplate(context.Context, *UpdateDeidentifyTemplateRequest) (*DeidentifyTemplate, error)
-	// Gets a de-identify template.
+	// Gets a DeidentifyTemplate.
 	GetDeidentifyTemplate(context.Context, *GetDeidentifyTemplateRequest) (*DeidentifyTemplate, error)
-	// Lists de-identify templates.
+	// Lists DeidentifyTemplates.
 	ListDeidentifyTemplates(context.Context, *ListDeidentifyTemplatesRequest) (*ListDeidentifyTemplatesResponse, error)
-	// Deletes a de-identify template.
+	// Deletes a DeidentifyTemplate.
 	DeleteDeidentifyTemplate(context.Context, *DeleteDeidentifyTemplateRequest) (*google_protobuf3.Empty, error)
 	// Creates a job trigger to run DLP actions such as scanning storage for
 	// sensitive information on a set schedule.
@@ -8544,8 +8544,8 @@ type DlpServiceServer interface {
 	ListJobTriggers(context.Context, *ListJobTriggersRequest) (*ListJobTriggersResponse, error)
 	// Deletes a job trigger.
 	DeleteJobTrigger(context.Context, *DeleteJobTriggerRequest) (*google_protobuf3.Empty, error)
-	// Creates a new job to inspect storage or calculate risk metrics [How-to
-	// guide](/dlp/docs/compute-risk-analysis).
+	// Creates a new job to inspect storage or calculate risk metrics.
+	// [How-to guide](/dlp/docs/compute-risk-analysis).
 	CreateDlpJob(context.Context, *CreateDlpJobRequest) (*DlpJob, error)
 	// Lists DlpJobs that match the specified filter in the request.
 	ListDlpJobs(context.Context, *ListDlpJobsRequest) (*ListDlpJobsResponse, error)
