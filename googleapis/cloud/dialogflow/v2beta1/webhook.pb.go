@@ -75,6 +75,28 @@ type WebhookResponse struct {
 	// Optional. This value is passed directly to `QueryResult.webhook_source`.
 	Source string `protobuf:"bytes,3,opt,name=source" json:"source,omitempty"`
 	// Optional. This value is passed directly to `QueryResult.webhook_payload`.
+	// See the related `fulfillment_messages[i].payload field`, which may be used
+	// as an alternative to this field.
+	//
+	// This field can be used for Actions on Google responses.
+	// It should have a structure similar to the JSON message shown here. For more
+	// information, see
+	// [Actions on Google Webhook
+	// Format](https://developers.google.com/actions/dialogflow/webhook)
+	// <pre>{
+	//   "google": {
+	//     "expectUserResponse": true,
+	//     "richResponse": {
+	//       "items": [
+	//         {
+	//           "simpleResponse": {
+	//             "textToSpeech": "this is a simple response"
+	//           }
+	//         }
+	//       ]
+	//     }
+	//   }
+	// }</pre>
 	Payload *google_protobuf4.Struct `protobuf:"bytes,4,opt,name=payload" json:"payload,omitempty"`
 	// Optional. The collection of output contexts. This value is passed directly
 	// to `QueryResult.output_contexts`.
@@ -135,8 +157,7 @@ func (m *WebhookResponse) GetFollowupEventInput() *EventInput {
 // the `[Streaming]DetectIntent` call.
 type OriginalDetectIntentRequest struct {
 	// The source of this request, e.g., `google`, `facebook`, `slack`. It is set
-	// by Dialogflow-owned servers. Possible values of this field correspond to
-	// [Intent.Message.Platform][google.cloud.dialogflow.v2beta1.Intent.Message.Platform].
+	// by Dialogflow-owned servers.
 	Source string `protobuf:"bytes,1,opt,name=source" json:"source,omitempty"`
 	// Optional. This field is set to the value of `QueryParameters.payload` field
 	// passed in the request.

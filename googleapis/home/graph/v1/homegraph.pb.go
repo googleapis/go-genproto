@@ -83,8 +83,7 @@ func (*RequestSyncDevicesResponse) Descriptor() ([]byte, []int) { return fileDes
 //         },
 //         "456": {
 //           "on": true,
-//           "online": true,
-//           "isLocked": true
+//           "brightness": 10
 //         }
 //       },
 //       "notifications": {
