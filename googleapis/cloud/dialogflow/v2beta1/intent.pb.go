@@ -130,6 +130,66 @@ const (
 	// Viber.
 	Intent_Message_VIBER Intent_Message_Platform = 7
 	// Actions on Google.
+	// When using Actions on Google, you can choose one of the specific
+	// Intent.Message types that mention support for Actions on Google,
+	// or you can use the advanced Intent.Message.payload field.
+	// The payload field provides access to AoG features not available in the
+	// specific message types.
+	// If using the Intent.Message.payload field, it should have a structure
+	// similar to the JSON message shown here. For more information, see
+	// [Actions on Google Webhook
+	// Format](https://developers.google.com/actions/dialogflow/webhook)
+	// <pre>{
+	//   "expectUserResponse": true,
+	//   "isSsml": false,
+	//   "noInputPrompts": [],
+	//   "richResponse": {
+	//     "items": [
+	//       {
+	//         "simpleResponse": {
+	//           "displayText": "hi",
+	//           "textToSpeech": "hello"
+	//         }
+	//       }
+	//     ],
+	//     "suggestions": [
+	//       {
+	//         "title": "Say this"
+	//       },
+	//       {
+	//         "title": "or this"
+	//       }
+	//     ]
+	//   },
+	//   "systemIntent": {
+	//     "data": {
+	//       "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+	//       "listSelect": {
+	//         "items": [
+	//           {
+	//             "optionInfo": {
+	//               "key": "key1",
+	//               "synonyms": [
+	//                 "key one"
+	//               ]
+	//             },
+	//             "title": "must not be empty, but unique"
+	//           },
+	//           {
+	//             "optionInfo": {
+	//               "key": "key2",
+	//               "synonyms": [
+	//                 "key two"
+	//               ]
+	//             },
+	//             "title": "must not be empty, but unique"
+	//           }
+	//         ]
+	//       }
+	//     },
+	//     "intent": "actions.intent.OPTION"
+	//   }
+	// }</pre>
 	Intent_Message_ACTIONS_ON_GOOGLE Intent_Message_Platform = 8
 )
 
@@ -223,7 +283,7 @@ type Intent struct {
 	// Optional. The collection of parameters associated with the intent.
 	Parameters []*Intent_Parameter `protobuf:"bytes,13,rep,name=parameters" json:"parameters,omitempty"`
 	// Optional. The collection of rich messages corresponding to the
-	// `Response` field in API.AI console.
+	// `Response` field in the Dialogflow console.
 	Messages []*Intent_Message `protobuf:"bytes,14,rep,name=messages" json:"messages,omitempty"`
 	// Optional. The list of platforms for which the first response will be
 	// taken from among the messages assigned to the DEFAULT_PLATFORM.
@@ -576,7 +636,7 @@ func (m *Intent_Parameter) GetIsList() bool {
 	return false
 }
 
-// Corresponds to the `Response` field in API.AI console.
+// Corresponds to the `Response` field in the Dialogflow console.
 type Intent_Message struct {
 	// Required. The rich response message.
 	//

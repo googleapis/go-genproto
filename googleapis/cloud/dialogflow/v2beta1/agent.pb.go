@@ -158,7 +158,7 @@ type Agent struct {
 	// The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description string `protobuf:"bytes,6,opt,name=description" json:"description,omitempty"`
 	// Optional. The URI of the agent's avatar.
-	// Avatars are used throughout API.AI console and in the self-hosted
+	// Avatars are used throughout the Dialogflow console and in the self-hosted
 	// [Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.
 	AvatarUri string `protobuf:"bytes,7,opt,name=avatar_uri,json=avatarUri" json:"avatar_uri,omitempty"`
 	// Optional. Determines whether this agent should log conversation queries.
