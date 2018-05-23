@@ -48,7 +48,7 @@ func (x Instance_State) String() string {
 	return proto.EnumName(Instance_State_name, int32(x))
 }
 func (Instance_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_instance_acf7ca11f8e8d868, []int{0, 0}
+	return fileDescriptor_instance_fa63b73e18194980, []int{0, 0}
 }
 
 // The type of the instance.
@@ -87,7 +87,7 @@ func (x Instance_Type) String() string {
 	return proto.EnumName(Instance_Type_name, int32(x))
 }
 func (Instance_Type) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_instance_acf7ca11f8e8d868, []int{0, 1}
+	return fileDescriptor_instance_fa63b73e18194980, []int{0, 1}
 }
 
 // Possible states of a cluster.
@@ -132,7 +132,7 @@ func (x Cluster_State) String() string {
 	return proto.EnumName(Cluster_State_name, int32(x))
 }
 func (Cluster_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_instance_acf7ca11f8e8d868, []int{1, 0}
+	return fileDescriptor_instance_fa63b73e18194980, []int{1, 0}
 }
 
 // A collection of Bigtable [Tables][google.bigtable.admin.v2.Table] and
@@ -174,7 +174,7 @@ func (m *Instance) Reset()         { *m = Instance{} }
 func (m *Instance) String() string { return proto.CompactTextString(m) }
 func (*Instance) ProtoMessage()    {}
 func (*Instance) Descriptor() ([]byte, []int) {
-	return fileDescriptor_instance_acf7ca11f8e8d868, []int{0}
+	return fileDescriptor_instance_fa63b73e18194980, []int{0}
 }
 func (m *Instance) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Instance.Unmarshal(m, b)
@@ -262,7 +262,7 @@ func (m *Cluster) Reset()         { *m = Cluster{} }
 func (m *Cluster) String() string { return proto.CompactTextString(m) }
 func (*Cluster) ProtoMessage()    {}
 func (*Cluster) Descriptor() ([]byte, []int) {
-	return fileDescriptor_instance_acf7ca11f8e8d868, []int{1}
+	return fileDescriptor_instance_fa63b73e18194980, []int{1}
 }
 func (m *Cluster) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Cluster.Unmarshal(m, b)
@@ -317,11 +317,6 @@ func (m *Cluster) GetDefaultStorageType() StorageType {
 	return StorageType_STORAGE_TYPE_UNSPECIFIED
 }
 
-// This is a private alpha release of Cloud Bigtable replication. This feature
-// is not currently available to most Cloud Bigtable customers. This feature
-// might be changed in backward-incompatible ways and is not recommended for
-// production use. It is not subject to any SLA or deprecation policy.
-//
 // A configuration object describing how Cloud Bigtable should treat traffic
 // from a particular end user application.
 type AppProfile struct {
@@ -356,7 +351,7 @@ func (m *AppProfile) Reset()         { *m = AppProfile{} }
 func (m *AppProfile) String() string { return proto.CompactTextString(m) }
 func (*AppProfile) ProtoMessage()    {}
 func (*AppProfile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_instance_acf7ca11f8e8d868, []int{2}
+	return fileDescriptor_instance_fa63b73e18194980, []int{2}
 }
 func (m *AppProfile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppProfile.Unmarshal(m, b)
@@ -520,7 +515,7 @@ func (m *AppProfile_MultiClusterRoutingUseAny) Reset()         { *m = AppProfile
 func (m *AppProfile_MultiClusterRoutingUseAny) String() string { return proto.CompactTextString(m) }
 func (*AppProfile_MultiClusterRoutingUseAny) ProtoMessage()    {}
 func (*AppProfile_MultiClusterRoutingUseAny) Descriptor() ([]byte, []int) {
-	return fileDescriptor_instance_acf7ca11f8e8d868, []int{2, 0}
+	return fileDescriptor_instance_fa63b73e18194980, []int{2, 0}
 }
 func (m *AppProfile_MultiClusterRoutingUseAny) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppProfile_MultiClusterRoutingUseAny.Unmarshal(m, b)
@@ -559,7 +554,7 @@ func (m *AppProfile_SingleClusterRouting) Reset()         { *m = AppProfile_Sing
 func (m *AppProfile_SingleClusterRouting) String() string { return proto.CompactTextString(m) }
 func (*AppProfile_SingleClusterRouting) ProtoMessage()    {}
 func (*AppProfile_SingleClusterRouting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_instance_acf7ca11f8e8d868, []int{2, 1}
+	return fileDescriptor_instance_fa63b73e18194980, []int{2, 1}
 }
 func (m *AppProfile_SingleClusterRouting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppProfile_SingleClusterRouting.Unmarshal(m, b)
@@ -606,10 +601,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/bigtable/admin/v2/instance.proto", fileDescriptor_instance_acf7ca11f8e8d868)
+	proto.RegisterFile("google/bigtable/admin/v2/instance.proto", fileDescriptor_instance_fa63b73e18194980)
 }
 
-var fileDescriptor_instance_acf7ca11f8e8d868 = []byte{
+var fileDescriptor_instance_fa63b73e18194980 = []byte{
 	// 765 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0xdd, 0x8e, 0xdb, 0x44,
 	0x14, 0x8e, 0xf3, 0xb3, 0x64, 0x4f, 0xca, 0xd6, 0x1a, 0x22, 0x94, 0x86, 0x16, 0x42, 0xa4, 0xaa,

@@ -56,7 +56,7 @@ func (m *CreateInstanceRequest) Reset()         { *m = CreateInstanceRequest{} }
 func (m *CreateInstanceRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateInstanceRequest) ProtoMessage()    {}
 func (*CreateInstanceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{0}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{0}
 }
 func (m *CreateInstanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateInstanceRequest.Unmarshal(m, b)
@@ -118,7 +118,7 @@ func (m *GetInstanceRequest) Reset()         { *m = GetInstanceRequest{} }
 func (m *GetInstanceRequest) String() string { return proto.CompactTextString(m) }
 func (*GetInstanceRequest) ProtoMessage()    {}
 func (*GetInstanceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{1}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{1}
 }
 func (m *GetInstanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetInstanceRequest.Unmarshal(m, b)
@@ -161,7 +161,7 @@ func (m *ListInstancesRequest) Reset()         { *m = ListInstancesRequest{} }
 func (m *ListInstancesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListInstancesRequest) ProtoMessage()    {}
 func (*ListInstancesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{2}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{2}
 }
 func (m *ListInstancesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListInstancesRequest.Unmarshal(m, b)
@@ -218,7 +218,7 @@ func (m *ListInstancesResponse) Reset()         { *m = ListInstancesResponse{} }
 func (m *ListInstancesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListInstancesResponse) ProtoMessage()    {}
 func (*ListInstancesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{3}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{3}
 }
 func (m *ListInstancesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListInstancesResponse.Unmarshal(m, b)
@@ -275,7 +275,7 @@ func (m *PartialUpdateInstanceRequest) Reset()         { *m = PartialUpdateInsta
 func (m *PartialUpdateInstanceRequest) String() string { return proto.CompactTextString(m) }
 func (*PartialUpdateInstanceRequest) ProtoMessage()    {}
 func (*PartialUpdateInstanceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{4}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{4}
 }
 func (m *PartialUpdateInstanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartialUpdateInstanceRequest.Unmarshal(m, b)
@@ -323,7 +323,7 @@ func (m *DeleteInstanceRequest) Reset()         { *m = DeleteInstanceRequest{} }
 func (m *DeleteInstanceRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteInstanceRequest) ProtoMessage()    {}
 func (*DeleteInstanceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{5}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{5}
 }
 func (m *DeleteInstanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteInstanceRequest.Unmarshal(m, b)
@@ -372,7 +372,7 @@ func (m *CreateClusterRequest) Reset()         { *m = CreateClusterRequest{} }
 func (m *CreateClusterRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateClusterRequest) ProtoMessage()    {}
 func (*CreateClusterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{6}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{6}
 }
 func (m *CreateClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateClusterRequest.Unmarshal(m, b)
@@ -427,7 +427,7 @@ func (m *GetClusterRequest) Reset()         { *m = GetClusterRequest{} }
 func (m *GetClusterRequest) String() string { return proto.CompactTextString(m) }
 func (*GetClusterRequest) ProtoMessage()    {}
 func (*GetClusterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{7}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{7}
 }
 func (m *GetClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetClusterRequest.Unmarshal(m, b)
@@ -472,7 +472,7 @@ func (m *ListClustersRequest) Reset()         { *m = ListClustersRequest{} }
 func (m *ListClustersRequest) String() string { return proto.CompactTextString(m) }
 func (*ListClustersRequest) ProtoMessage()    {}
 func (*ListClustersRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{8}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{8}
 }
 func (m *ListClustersRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListClustersRequest.Unmarshal(m, b)
@@ -528,7 +528,7 @@ func (m *ListClustersResponse) Reset()         { *m = ListClustersResponse{} }
 func (m *ListClustersResponse) String() string { return proto.CompactTextString(m) }
 func (*ListClustersResponse) ProtoMessage()    {}
 func (*ListClustersResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{9}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{9}
 }
 func (m *ListClustersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListClustersResponse.Unmarshal(m, b)
@@ -583,7 +583,7 @@ func (m *DeleteClusterRequest) Reset()         { *m = DeleteClusterRequest{} }
 func (m *DeleteClusterRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteClusterRequest) ProtoMessage()    {}
 func (*DeleteClusterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{10}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{10}
 }
 func (m *DeleteClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteClusterRequest.Unmarshal(m, b)
@@ -627,7 +627,7 @@ func (m *CreateInstanceMetadata) Reset()         { *m = CreateInstanceMetadata{}
 func (m *CreateInstanceMetadata) String() string { return proto.CompactTextString(m) }
 func (*CreateInstanceMetadata) ProtoMessage()    {}
 func (*CreateInstanceMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{11}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{11}
 }
 func (m *CreateInstanceMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateInstanceMetadata.Unmarshal(m, b)
@@ -685,7 +685,7 @@ func (m *UpdateInstanceMetadata) Reset()         { *m = UpdateInstanceMetadata{}
 func (m *UpdateInstanceMetadata) String() string { return proto.CompactTextString(m) }
 func (*UpdateInstanceMetadata) ProtoMessage()    {}
 func (*UpdateInstanceMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{12}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{12}
 }
 func (m *UpdateInstanceMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateInstanceMetadata.Unmarshal(m, b)
@@ -743,7 +743,7 @@ func (m *CreateClusterMetadata) Reset()         { *m = CreateClusterMetadata{} }
 func (m *CreateClusterMetadata) String() string { return proto.CompactTextString(m) }
 func (*CreateClusterMetadata) ProtoMessage()    {}
 func (*CreateClusterMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{13}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{13}
 }
 func (m *CreateClusterMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateClusterMetadata.Unmarshal(m, b)
@@ -801,7 +801,7 @@ func (m *UpdateClusterMetadata) Reset()         { *m = UpdateClusterMetadata{} }
 func (m *UpdateClusterMetadata) String() string { return proto.CompactTextString(m) }
 func (*UpdateClusterMetadata) ProtoMessage()    {}
 func (*UpdateClusterMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{14}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{14}
 }
 func (m *UpdateClusterMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateClusterMetadata.Unmarshal(m, b)
@@ -842,11 +842,6 @@ func (m *UpdateClusterMetadata) GetFinishTime() *timestamp.Timestamp {
 	return nil
 }
 
-// This is a private alpha release of Cloud Bigtable replication. This feature
-// is not currently available to most Cloud Bigtable customers. This feature
-// might be changed in backward-incompatible ways and is not recommended for
-// production use. It is not subject to any SLA or deprecation policy.
-//
 // Request message for BigtableInstanceAdmin.CreateAppProfile.
 type CreateAppProfileRequest struct {
 	// The unique name of the instance in which to create the new app profile.
@@ -871,7 +866,7 @@ func (m *CreateAppProfileRequest) Reset()         { *m = CreateAppProfileRequest
 func (m *CreateAppProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAppProfileRequest) ProtoMessage()    {}
 func (*CreateAppProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{15}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{15}
 }
 func (m *CreateAppProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAppProfileRequest.Unmarshal(m, b)
@@ -919,11 +914,6 @@ func (m *CreateAppProfileRequest) GetIgnoreWarnings() bool {
 	return false
 }
 
-// This is a private alpha release of Cloud Bigtable replication. This feature
-// is not currently available to most Cloud Bigtable customers. This feature
-// might be changed in backward-incompatible ways and is not recommended for
-// production use. It is not subject to any SLA or deprecation policy.
-//
 // Request message for BigtableInstanceAdmin.GetAppProfile.
 type GetAppProfileRequest struct {
 	// The unique name of the requested app profile. Values are of the form
@@ -938,7 +928,7 @@ func (m *GetAppProfileRequest) Reset()         { *m = GetAppProfileRequest{} }
 func (m *GetAppProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAppProfileRequest) ProtoMessage()    {}
 func (*GetAppProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{16}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{16}
 }
 func (m *GetAppProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAppProfileRequest.Unmarshal(m, b)
@@ -965,11 +955,6 @@ func (m *GetAppProfileRequest) GetName() string {
 	return ""
 }
 
-// This is a private alpha release of Cloud Bigtable replication. This feature
-// is not currently available to most Cloud Bigtable customers. This feature
-// might be changed in backward-incompatible ways and is not recommended for
-// production use. It is not subject to any SLA or deprecation policy.
-//
 // Request message for BigtableInstanceAdmin.ListAppProfiles.
 type ListAppProfilesRequest struct {
 	// The unique name of the instance for which a list of app profiles is
@@ -987,7 +972,7 @@ func (m *ListAppProfilesRequest) Reset()         { *m = ListAppProfilesRequest{}
 func (m *ListAppProfilesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListAppProfilesRequest) ProtoMessage()    {}
 func (*ListAppProfilesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{17}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{17}
 }
 func (m *ListAppProfilesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAppProfilesRequest.Unmarshal(m, b)
@@ -1021,11 +1006,6 @@ func (m *ListAppProfilesRequest) GetPageToken() string {
 	return ""
 }
 
-// This is a private alpha release of Cloud Bigtable replication. This feature
-// is not currently available to most Cloud Bigtable customers. This feature
-// might be changed in backward-incompatible ways and is not recommended for
-// production use. It is not subject to any SLA or deprecation policy.
-//
 // Response message for BigtableInstanceAdmin.ListAppProfiles.
 type ListAppProfilesResponse struct {
 	// The list of requested app profiles.
@@ -1043,7 +1023,7 @@ func (m *ListAppProfilesResponse) Reset()         { *m = ListAppProfilesResponse
 func (m *ListAppProfilesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListAppProfilesResponse) ProtoMessage()    {}
 func (*ListAppProfilesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{18}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{18}
 }
 func (m *ListAppProfilesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAppProfilesResponse.Unmarshal(m, b)
@@ -1077,11 +1057,6 @@ func (m *ListAppProfilesResponse) GetNextPageToken() string {
 	return ""
 }
 
-// This is a private alpha release of Cloud Bigtable replication. This feature
-// is not currently available to most Cloud Bigtable customers. This feature
-// might be changed in backward-incompatible ways and is not recommended for
-// production use. It is not subject to any SLA or deprecation policy.
-//
 // Request message for BigtableInstanceAdmin.UpdateAppProfile.
 type UpdateAppProfileRequest struct {
 	// The app profile which will (partially) replace the current value.
@@ -1100,7 +1075,7 @@ func (m *UpdateAppProfileRequest) Reset()         { *m = UpdateAppProfileRequest
 func (m *UpdateAppProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateAppProfileRequest) ProtoMessage()    {}
 func (*UpdateAppProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{19}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{19}
 }
 func (m *UpdateAppProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAppProfileRequest.Unmarshal(m, b)
@@ -1141,11 +1116,6 @@ func (m *UpdateAppProfileRequest) GetIgnoreWarnings() bool {
 	return false
 }
 
-// This is a private alpha release of Cloud Bigtable replication. This feature
-// is not currently available to most Cloud Bigtable customers. This feature
-// might be changed in backward-incompatible ways and is not recommended for
-// production use. It is not subject to any SLA or deprecation policy.
-//
 // Request message for BigtableInstanceAdmin.DeleteAppProfile.
 type DeleteAppProfileRequest struct {
 	// The unique name of the app profile to be deleted. Values are of the form
@@ -1162,7 +1132,7 @@ func (m *DeleteAppProfileRequest) Reset()         { *m = DeleteAppProfileRequest
 func (m *DeleteAppProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteAppProfileRequest) ProtoMessage()    {}
 func (*DeleteAppProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{20}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{20}
 }
 func (m *DeleteAppProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteAppProfileRequest.Unmarshal(m, b)
@@ -1196,11 +1166,6 @@ func (m *DeleteAppProfileRequest) GetIgnoreWarnings() bool {
 	return false
 }
 
-// This is a private alpha release of Cloud Bigtable replication. This feature
-// is not currently available to most Cloud Bigtable customers. This feature
-// might be changed in backward-incompatible ways and is not recommended for
-// production use. It is not subject to any SLA or deprecation policy.
-//
 // The metadata for the Operation returned by UpdateAppProfile.
 type UpdateAppProfileMetadata struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1212,7 +1177,7 @@ func (m *UpdateAppProfileMetadata) Reset()         { *m = UpdateAppProfileMetada
 func (m *UpdateAppProfileMetadata) String() string { return proto.CompactTextString(m) }
 func (*UpdateAppProfileMetadata) ProtoMessage()    {}
 func (*UpdateAppProfileMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f, []int{21}
+	return fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa, []int{21}
 }
 func (m *UpdateAppProfileMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAppProfileMetadata.Unmarshal(m, b)
@@ -1292,65 +1257,22 @@ type BigtableInstanceAdminClient interface {
 	UpdateCluster(ctx context.Context, in *Cluster, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes a cluster from an instance.
 	DeleteCluster(ctx context.Context, in *DeleteClusterRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Creates an app profile within an instance.
 	CreateAppProfile(ctx context.Context, in *CreateAppProfileRequest, opts ...grpc.CallOption) (*AppProfile, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Gets information about an app profile.
 	GetAppProfile(ctx context.Context, in *GetAppProfileRequest, opts ...grpc.CallOption) (*AppProfile, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Lists information about app profiles in an instance.
 	ListAppProfiles(ctx context.Context, in *ListAppProfilesRequest, opts ...grpc.CallOption) (*ListAppProfilesResponse, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Updates an app profile within an instance.
 	UpdateAppProfile(ctx context.Context, in *UpdateAppProfileRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Deletes an app profile from an instance.
 	DeleteAppProfile(ctx context.Context, in *DeleteAppProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// This is a private alpha release of Cloud Bigtable instance level
-	// permissions. This feature is not currently available to most Cloud Bigtable
-	// customers. This feature might be changed in backward-incompatible ways and
-	// is not recommended for production use. It is not subject to any SLA or
-	// deprecation policy.
-	//
 	// Gets the access control policy for an instance resource. Returns an empty
 	// policy if an instance exists but does not have a policy set.
 	GetIamPolicy(ctx context.Context, in *v1.GetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
-	// This is a private alpha release of Cloud Bigtable instance level
-	// permissions. This feature is not currently available to most Cloud Bigtable
-	// customers. This feature might be changed in backward-incompatible ways and
-	// is not recommended for production use. It is not subject to any SLA or
-	// deprecation policy.
-	//
 	// Sets the access control policy on an instance resource. Replaces any
 	// existing policy.
 	SetIamPolicy(ctx context.Context, in *v1.SetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
-	// This is a private alpha release of Cloud Bigtable instance level
-	// permissions. This feature is not currently available to most Cloud Bigtable
-	// customers. This feature might be changed in backward-incompatible ways and
-	// is not recommended for production use. It is not subject to any SLA or
-	// deprecation policy.
-	//
 	// Returns permissions that the caller has on the specified instance resource.
 	TestIamPermissions(ctx context.Context, in *v1.TestIamPermissionsRequest, opts ...grpc.CallOption) (*v1.TestIamPermissionsResponse, error)
 }
@@ -1559,65 +1481,22 @@ type BigtableInstanceAdminServer interface {
 	UpdateCluster(context.Context, *Cluster) (*longrunning.Operation, error)
 	// Deletes a cluster from an instance.
 	DeleteCluster(context.Context, *DeleteClusterRequest) (*empty.Empty, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Creates an app profile within an instance.
 	CreateAppProfile(context.Context, *CreateAppProfileRequest) (*AppProfile, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Gets information about an app profile.
 	GetAppProfile(context.Context, *GetAppProfileRequest) (*AppProfile, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Lists information about app profiles in an instance.
 	ListAppProfiles(context.Context, *ListAppProfilesRequest) (*ListAppProfilesResponse, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Updates an app profile within an instance.
 	UpdateAppProfile(context.Context, *UpdateAppProfileRequest) (*longrunning.Operation, error)
-	// This is a private alpha release of Cloud Bigtable replication. This feature
-	// is not currently available to most Cloud Bigtable customers. This feature
-	// might be changed in backward-incompatible ways and is not recommended for
-	// production use. It is not subject to any SLA or deprecation policy.
-	//
 	// Deletes an app profile from an instance.
 	DeleteAppProfile(context.Context, *DeleteAppProfileRequest) (*empty.Empty, error)
-	// This is a private alpha release of Cloud Bigtable instance level
-	// permissions. This feature is not currently available to most Cloud Bigtable
-	// customers. This feature might be changed in backward-incompatible ways and
-	// is not recommended for production use. It is not subject to any SLA or
-	// deprecation policy.
-	//
 	// Gets the access control policy for an instance resource. Returns an empty
 	// policy if an instance exists but does not have a policy set.
 	GetIamPolicy(context.Context, *v1.GetIamPolicyRequest) (*v1.Policy, error)
-	// This is a private alpha release of Cloud Bigtable instance level
-	// permissions. This feature is not currently available to most Cloud Bigtable
-	// customers. This feature might be changed in backward-incompatible ways and
-	// is not recommended for production use. It is not subject to any SLA or
-	// deprecation policy.
-	//
 	// Sets the access control policy on an instance resource. Replaces any
 	// existing policy.
 	SetIamPolicy(context.Context, *v1.SetIamPolicyRequest) (*v1.Policy, error)
-	// This is a private alpha release of Cloud Bigtable instance level
-	// permissions. This feature is not currently available to most Cloud Bigtable
-	// customers. This feature might be changed in backward-incompatible ways and
-	// is not recommended for production use. It is not subject to any SLA or
-	// deprecation policy.
-	//
 	// Returns permissions that the caller has on the specified instance resource.
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
 }
@@ -2054,10 +1933,10 @@ var _BigtableInstanceAdmin_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/bigtable/admin/v2/bigtable_instance_admin.proto", fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f)
+	proto.RegisterFile("google/bigtable/admin/v2/bigtable_instance_admin.proto", fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa)
 }
 
-var fileDescriptor_bigtable_instance_admin_eff75d51f8bccd2f = []byte{
+var fileDescriptor_bigtable_instance_admin_4a25aca1138ca2aa = []byte{
 	// 1566 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x59, 0xcf, 0x6f, 0xdc, 0xc4,
 	0x17, 0xd7, 0x6c, 0xfa, 0xed, 0xb7, 0x79, 0x9b, 0x5f, 0xdf, 0xf9, 0x36, 0xc9, 0xca, 0xf4, 0x47,
