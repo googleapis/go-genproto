@@ -35,7 +35,7 @@ type ListQueuesRequest struct {
 	//
 	// The location name.
 	// For example: `projects/PROJECT_ID/locations/LOCATION_ID`
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// `filter` can be used to specify a subset of queues. Any [Queue][google.cloud.tasks.v2beta2.Queue]
 	// field can be used as a filter and several operators as supported.
 	// For example: `<=, <, >=, >, !=, =, :`. The filter syntax is the same as
@@ -46,7 +46,7 @@ type ListQueuesRequest struct {
 	//
 	// Note that using filters might cause fewer queues than the
 	// requested_page size to be returned.
-	Filter string `protobuf:"bytes,2,opt,name=filter" json:"filter,omitempty"`
+	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Requested page size.
 	//
 	// The maximum page size is 9800. If unspecified, the page size will
@@ -54,7 +54,7 @@ type ListQueuesRequest struct {
 	// even if more queues exist; use the
 	// [next_page_token][google.cloud.tasks.v2beta2.ListQueuesResponse.next_page_token] in the
 	// response to determine if more queues exist.
-	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// A token identifying the page of results to return.
 	//
 	// To request the first page results, page_token must be empty. To
@@ -63,7 +63,7 @@ type ListQueuesRequest struct {
 	// from the previous call to [ListQueues][google.cloud.tasks.v2beta2.CloudTasks.ListQueues]
 	// method. It is an error to switch the value of the
 	// [filter][google.cloud.tasks.v2beta2.ListQueuesRequest.filter] while iterating through pages.
-	PageToken            string   `protobuf:"bytes,4,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -124,7 +124,7 @@ func (m *ListQueuesRequest) GetPageToken() string {
 // Response message for [ListQueues][google.cloud.tasks.v2beta2.CloudTasks.ListQueues].
 type ListQueuesResponse struct {
 	// The list of queues.
-	Queues []*Queue `protobuf:"bytes,1,rep,name=queues" json:"queues,omitempty"`
+	Queues []*Queue `protobuf:"bytes,1,rep,name=queues,proto3" json:"queues,omitempty"`
 	// A token to retrieve next page of results.
 	//
 	// To return the next page of results, call
@@ -134,7 +134,7 @@ type ListQueuesResponse struct {
 	// If the next_page_token is empty, there are no more results.
 	//
 	// The page token is valid for only 2 hours.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -184,7 +184,7 @@ type GetQueueRequest struct {
 	//
 	// The resource name of the queue. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -231,13 +231,13 @@ type CreateQueueRequest struct {
 	// The list of allowed locations can be obtained by calling Cloud
 	// Tasks' implementation of
 	// [ListLocations][google.cloud.location.Locations.ListLocations].
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required.
 	//
 	// The queue to create.
 	//
 	// [Queue's name][google.cloud.tasks.v2beta2.Queue.name] cannot be the same as an existing queue.
-	Queue                *Queue   `protobuf:"bytes,2,opt,name=queue" json:"queue,omitempty"`
+	Queue                *Queue   `protobuf:"bytes,2,opt,name=queue,proto3" json:"queue,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -292,11 +292,11 @@ type UpdateQueueRequest struct {
 	// Output only fields cannot be modified using UpdateQueue.
 	// Any value specified for an output only field will be ignored.
 	// The queue's [name][google.cloud.tasks.v2beta2.Queue.name] cannot be changed.
-	Queue *Queue `protobuf:"bytes,1,opt,name=queue" json:"queue,omitempty"`
+	Queue *Queue `protobuf:"bytes,1,opt,name=queue,proto3" json:"queue,omitempty"`
 	// A mask used to specify which fields of the queue are being updated.
 	//
 	// If empty, then all fields will be updated.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -346,7 +346,7 @@ type DeleteQueueRequest struct {
 	//
 	// The queue name. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -389,7 +389,7 @@ type PurgeQueueRequest struct {
 	//
 	// The queue name. For example:
 	// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -432,7 +432,7 @@ type PauseQueueRequest struct {
 	//
 	// The queue name. For example:
 	// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -475,7 +475,7 @@ type ResumeQueueRequest struct {
 	//
 	// The queue name. For example:
 	// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -518,7 +518,7 @@ type ListTasksRequest struct {
 	//
 	// The queue name. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -531,12 +531,12 @@ type ListTasksRequest struct {
 	// Authorization for [FULL][google.cloud.tasks.v2beta2.Task.View.FULL] requires
 	// `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
 	// [Task][google.cloud.tasks.v2beta2.Task] resource.
-	ResponseView Task_View `protobuf:"varint,2,opt,name=response_view,json=responseView,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
+	ResponseView Task_View `protobuf:"varint,2,opt,name=response_view,json=responseView,proto3,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
 	// Sort order used for the query. The only fields supported for sorting
 	// are `schedule_time` and `pull_message.tag`. All results will be
 	// returned in approximately ascending order. The default ordering is by
 	// `schedule_time`.
-	OrderBy string `protobuf:"bytes,3,opt,name=order_by,json=orderBy" json:"order_by,omitempty"`
+	OrderBy string `protobuf:"bytes,3,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	// Requested page size. Fewer tasks than requested might be returned.
 	//
 	// The maximum page size is 1000. If unspecified, the page size will
@@ -544,7 +544,7 @@ type ListTasksRequest struct {
 	// even if more tasks exist; use
 	// [next_page_token][google.cloud.tasks.v2beta2.ListTasksResponse.next_page_token] in the
 	// response to determine if more tasks exist.
-	PageSize int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// A token identifying the page of results to return.
 	//
 	// To request the first page results, page_token must be empty. To
@@ -554,7 +554,7 @@ type ListTasksRequest struct {
 	// method.
 	//
 	// The page token is valid for only 2 hours.
-	PageToken            string   `protobuf:"bytes,5,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,5,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -622,7 +622,7 @@ func (m *ListTasksRequest) GetPageToken() string {
 // Response message for listing tasks using [ListTasks][google.cloud.tasks.v2beta2.CloudTasks.ListTasks].
 type ListTasksResponse struct {
 	// The list of tasks.
-	Tasks []*Task `protobuf:"bytes,1,rep,name=tasks" json:"tasks,omitempty"`
+	Tasks []*Task `protobuf:"bytes,1,rep,name=tasks,proto3" json:"tasks,omitempty"`
 	// A token to retrieve next page of results.
 	//
 	// To return the next page of results, call
@@ -630,7 +630,7 @@ type ListTasksResponse struct {
 	// [page_token][google.cloud.tasks.v2beta2.ListTasksRequest.page_token].
 	//
 	// If the next_page_token is empty, there are no more results.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -680,7 +680,7 @@ type GetTaskRequest struct {
 	//
 	// The task name. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -693,7 +693,7 @@ type GetTaskRequest struct {
 	// Authorization for [FULL][google.cloud.tasks.v2beta2.Task.View.FULL] requires
 	// `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
 	// [Task][google.cloud.tasks.v2beta2.Task] resource.
-	ResponseView         Task_View `protobuf:"varint,2,opt,name=response_view,json=responseView,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
+	ResponseView         Task_View `protobuf:"varint,2,opt,name=response_view,json=responseView,proto3,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -745,7 +745,7 @@ type CreateTaskRequest struct {
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
 	//
 	// The queue must already exist.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required.
 	//
 	// The task to add.
@@ -781,7 +781,7 @@ type CreateTaskRequest struct {
 	// task commands. The infrastructure relies on an approximately
 	// uniform distribution of task ids to store and serve tasks
 	// efficiently.
-	Task *Task `protobuf:"bytes,2,opt,name=task" json:"task,omitempty"`
+	Task *Task `protobuf:"bytes,2,opt,name=task,proto3" json:"task,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -794,7 +794,7 @@ type CreateTaskRequest struct {
 	// Authorization for [FULL][google.cloud.tasks.v2beta2.Task.View.FULL] requires
 	// `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
 	// [Task][google.cloud.tasks.v2beta2.Task] resource.
-	ResponseView         Task_View `protobuf:"varint,3,opt,name=response_view,json=responseView,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
+	ResponseView         Task_View `protobuf:"varint,3,opt,name=response_view,json=responseView,proto3,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -852,7 +852,7 @@ type DeleteTaskRequest struct {
 	//
 	// The task name. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -895,10 +895,10 @@ type LeaseTasksRequest struct {
 	//
 	// The queue name. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of tasks to lease. The maximum that can be
 	// requested is 1000.
-	MaxTasks int32 `protobuf:"varint,2,opt,name=max_tasks,json=maxTasks" json:"max_tasks,omitempty"`
+	MaxTasks int32 `protobuf:"varint,2,opt,name=max_tasks,json=maxTasks,proto3" json:"max_tasks,omitempty"`
 	//
 	// After the worker has successfully finished the work associated
 	// with the task, the worker must call via
@@ -909,7 +909,7 @@ type LeaseTasksRequest struct {
 	//
 	// The maximum lease duration is 1 week.
 	// `lease_duration` will be truncated to the nearest second.
-	LeaseDuration *duration.Duration `protobuf:"bytes,3,opt,name=lease_duration,json=leaseDuration" json:"lease_duration,omitempty"`
+	LeaseDuration *duration.Duration `protobuf:"bytes,3,opt,name=lease_duration,json=leaseDuration,proto3" json:"lease_duration,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -922,7 +922,7 @@ type LeaseTasksRequest struct {
 	// Authorization for [FULL][google.cloud.tasks.v2beta2.Task.View.FULL] requires
 	// `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
 	// [Task][google.cloud.tasks.v2beta2.Task] resource.
-	ResponseView Task_View `protobuf:"varint,4,opt,name=response_view,json=responseView,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
+	ResponseView Task_View `protobuf:"varint,4,opt,name=response_view,json=responseView,proto3,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
 	// `filter` can be used to specify a subset of tasks to lease.
 	//
 	// When `filter` is set to `tag=<my-tag>` then the
@@ -952,7 +952,7 @@ type LeaseTasksRequest struct {
 	// aren't UTF-8 encoded can't be used in the
 	// [filter][google.cloud.tasks.v2beta2.LeaseTasksRequest.filter] and the task's
 	// [tag][google.cloud.tasks.v2beta2.PullMessage.tag] will be displayed as empty in Cloud Tasks.
-	Filter               string   `protobuf:"bytes,5,opt,name=filter" json:"filter,omitempty"`
+	Filter               string   `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1020,7 +1020,7 @@ func (m *LeaseTasksRequest) GetFilter() string {
 // Response message for leasing tasks using [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks].
 type LeaseTasksResponse struct {
 	// The leased tasks.
-	Tasks                []*Task  `protobuf:"bytes,1,rep,name=tasks" json:"tasks,omitempty"`
+	Tasks                []*Task  `protobuf:"bytes,1,rep,name=tasks,proto3" json:"tasks,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1064,7 +1064,7 @@ type AcknowledgeTaskRequest struct {
 	//
 	// The task name. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required.
 	//
 	// The task's current schedule time, available in the
@@ -1072,7 +1072,7 @@ type AcknowledgeTaskRequest struct {
 	// [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] response or
 	// [RenewLease][google.cloud.tasks.v2beta2.CloudTasks.RenewLease] response. This restriction is
 	// to ensure that your worker currently holds the lease.
-	ScheduleTime         *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime" json:"schedule_time,omitempty"`
+	ScheduleTime         *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1123,7 +1123,7 @@ type RenewLeaseRequest struct {
 	//
 	// The task name. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required.
 	//
 	// The task's current schedule time, available in the
@@ -1131,7 +1131,7 @@ type RenewLeaseRequest struct {
 	// [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] response or
 	// [RenewLease][google.cloud.tasks.v2beta2.CloudTasks.RenewLease] response. This restriction is
 	// to ensure that your worker currently holds the lease.
-	ScheduleTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime" json:"schedule_time,omitempty"`
+	ScheduleTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
 	// Required.
 	//
 	// The desired new lease duration, starting from now.
@@ -1139,7 +1139,7 @@ type RenewLeaseRequest struct {
 	//
 	// The maximum lease duration is 1 week.
 	// `lease_duration` will be truncated to the nearest second.
-	LeaseDuration *duration.Duration `protobuf:"bytes,3,opt,name=lease_duration,json=leaseDuration" json:"lease_duration,omitempty"`
+	LeaseDuration *duration.Duration `protobuf:"bytes,3,opt,name=lease_duration,json=leaseDuration,proto3" json:"lease_duration,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -1152,7 +1152,7 @@ type RenewLeaseRequest struct {
 	// Authorization for [FULL][google.cloud.tasks.v2beta2.Task.View.FULL] requires
 	// `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
 	// [Task][google.cloud.tasks.v2beta2.Task] resource.
-	ResponseView         Task_View `protobuf:"varint,4,opt,name=response_view,json=responseView,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
+	ResponseView         Task_View `protobuf:"varint,4,opt,name=response_view,json=responseView,proto3,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -1217,7 +1217,7 @@ type CancelLeaseRequest struct {
 	//
 	// The task name. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required.
 	//
 	// The task's current schedule time, available in the
@@ -1225,7 +1225,7 @@ type CancelLeaseRequest struct {
 	// [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] response or
 	// [RenewLease][google.cloud.tasks.v2beta2.CloudTasks.RenewLease] response. This restriction is
 	// to ensure that your worker currently holds the lease.
-	ScheduleTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime" json:"schedule_time,omitempty"`
+	ScheduleTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -1238,7 +1238,7 @@ type CancelLeaseRequest struct {
 	// Authorization for [FULL][google.cloud.tasks.v2beta2.Task.View.FULL] requires
 	// `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
 	// [Task][google.cloud.tasks.v2beta2.Task] resource.
-	ResponseView         Task_View `protobuf:"varint,3,opt,name=response_view,json=responseView,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
+	ResponseView         Task_View `protobuf:"varint,3,opt,name=response_view,json=responseView,proto3,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -1296,7 +1296,7 @@ type RunTaskRequest struct {
 	//
 	// The task name. For example:
 	// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -1309,7 +1309,7 @@ type RunTaskRequest struct {
 	// Authorization for [FULL][google.cloud.tasks.v2beta2.Task.View.FULL] requires
 	// `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
 	// [Task][google.cloud.tasks.v2beta2.Task] resource.
-	ResponseView         Task_View `protobuf:"varint,2,opt,name=response_view,json=responseView,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
+	ResponseView         Task_View `protobuf:"varint,2,opt,name=response_view,json=responseView,proto3,enum=google.cloud.tasks.v2beta2.Task_View" json:"response_view,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -1792,8 +1792,7 @@ func (c *cloudTasksClient) RunTask(ctx context.Context, in *RunTaskRequest, opts
 	return out, nil
 }
 
-// Server API for CloudTasks service
-
+// CloudTasksServer is the server API for CloudTasks service.
 type CloudTasksServer interface {
 	// Lists queues.
 	//

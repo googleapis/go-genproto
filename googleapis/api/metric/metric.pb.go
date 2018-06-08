@@ -110,7 +110,7 @@ func (MetricDescriptor_ValueType) EnumDescriptor() ([]byte, []int) {
 // existing data unusable.
 type MetricDescriptor struct {
 	// The resource name of the metric descriptor.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The metric type, including its DNS name prefix. The type is not
 	// URL-encoded.  All user-defined custom metric types have the DNS name
 	// `custom.googleapis.com`.  Metric types should use a natural hierarchical
@@ -118,20 +118,20 @@ type MetricDescriptor struct {
 	//
 	//     "custom.googleapis.com/invoice/paid/amount"
 	//     "appengine.googleapis.com/http/server/response_latencies"
-	Type string `protobuf:"bytes,8,opt,name=type" json:"type,omitempty"`
+	Type string `protobuf:"bytes,8,opt,name=type,proto3" json:"type,omitempty"`
 	// The set of labels that can be used to describe a specific
 	// instance of this metric type. For example, the
 	// `appengine.googleapis.com/http/server/response_latencies` metric
 	// type has a label for the HTTP response code, `response_code`, so
 	// you can look at latencies for successful responses or just
 	// for responses that failed.
-	Labels []*label.LabelDescriptor `protobuf:"bytes,2,rep,name=labels" json:"labels,omitempty"`
+	Labels []*label.LabelDescriptor `protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty"`
 	// Whether the metric records instantaneous values, changes to a value, etc.
 	// Some combinations of `metric_kind` and `value_type` might not be supported.
-	MetricKind MetricDescriptor_MetricKind `protobuf:"varint,3,opt,name=metric_kind,json=metricKind,enum=google.api.MetricDescriptor_MetricKind" json:"metric_kind,omitempty"`
+	MetricKind MetricDescriptor_MetricKind `protobuf:"varint,3,opt,name=metric_kind,json=metricKind,proto3,enum=google.api.MetricDescriptor_MetricKind" json:"metric_kind,omitempty"`
 	// Whether the measurement is an integer, a floating-point number, etc.
 	// Some combinations of `metric_kind` and `value_type` might not be supported.
-	ValueType MetricDescriptor_ValueType `protobuf:"varint,4,opt,name=value_type,json=valueType,enum=google.api.MetricDescriptor_ValueType" json:"value_type,omitempty"`
+	ValueType MetricDescriptor_ValueType `protobuf:"varint,4,opt,name=value_type,json=valueType,proto3,enum=google.api.MetricDescriptor_ValueType" json:"value_type,omitempty"`
 	// The unit in which the metric value is reported. It is only applicable
 	// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The
 	// supported units are a subset of [The Unified Code for Units of
@@ -197,14 +197,14 @@ type MetricDescriptor struct {
 	// * `1` represents dimensionless value 1, such as in `1/s`.
 	// * `%` represents dimensionless value 1/100, and annotates values giving
 	//    a percentage.
-	Unit string `protobuf:"bytes,5,opt,name=unit" json:"unit,omitempty"`
+	Unit string `protobuf:"bytes,5,opt,name=unit,proto3" json:"unit,omitempty"`
 	// A detailed description of the metric, which can be used in documentation.
-	Description string `protobuf:"bytes,6,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
 	// A concise name for the metric, which can be displayed in user interfaces.
 	// Use sentence case without an ending period, for example "Request count".
 	// This field is optional but it is recommended to be set for any metrics
 	// associated with user-visible concepts, such as Quota.
-	DisplayName          string   `protobuf:"bytes,7,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	DisplayName          string   `protobuf:"bytes,7,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -295,10 +295,10 @@ func (m *MetricDescriptor) GetDisplayName() string {
 type Metric struct {
 	// An existing metric type, see [google.api.MetricDescriptor][google.api.MetricDescriptor].
 	// For example, `custom.googleapis.com/invoice/paid/amount`.
-	Type string `protobuf:"bytes,3,opt,name=type" json:"type,omitempty"`
+	Type string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	// The set of label values that uniquely identify this metric. All
 	// labels listed in the `MetricDescriptor` must be assigned values.
-	Labels               map[string]string `protobuf:"bytes,2,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Labels               map[string]string `protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`

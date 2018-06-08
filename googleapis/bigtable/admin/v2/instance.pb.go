@@ -143,16 +143,16 @@ type Instance struct {
 	// (`OutputOnly`)
 	// The unique name of the instance. Values are of the form
 	// `projects/<project>/instances/[a-z][a-z0-9\\-]+[a-z0-9]`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The descriptive name for this instance as it appears in UIs.
 	// Can be changed at any time, but should be kept globally unique
 	// to avoid confusion.
-	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// (`OutputOnly`)
 	// The current state of the instance.
-	State Instance_State `protobuf:"varint,3,opt,name=state,enum=google.bigtable.admin.v2.Instance_State" json:"state,omitempty"`
+	State Instance_State `protobuf:"varint,3,opt,name=state,proto3,enum=google.bigtable.admin.v2.Instance_State" json:"state,omitempty"`
 	// The type of the instance. Defaults to `PRODUCTION`.
-	Type Instance_Type `protobuf:"varint,4,opt,name=type,enum=google.bigtable.admin.v2.Instance_Type" json:"type,omitempty"`
+	Type Instance_Type `protobuf:"varint,4,opt,name=type,proto3,enum=google.bigtable.admin.v2.Instance_Type" json:"type,omitempty"`
 	// Labels are a flexible and lightweight mechanism for organizing cloud
 	// resources into groups that reflect a customer's organizational needs and
 	// deployment strategies. They can be used to filter resources and aggregate
@@ -164,7 +164,7 @@ type Instance struct {
 	//   the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`.
 	// * No more than 64 labels can be associated with a given resource.
 	// * Keys and values must both be under 128 bytes.
-	Labels               map[string]string `protobuf:"bytes,5,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Labels               map[string]string `protobuf:"bytes,5,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -236,23 +236,23 @@ type Cluster struct {
 	// (`OutputOnly`)
 	// The unique name of the cluster. Values are of the form
 	// `projects/<project>/instances/<instance>/clusters/[a-z][-a-z0-9]*`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// (`CreationOnly`)
 	// The location where this cluster's nodes and storage reside. For best
 	// performance, clients should be located as close as possible to this
 	// cluster. Currently only zones are supported, so values should be of the
 	// form `projects/<project>/locations/<zone>`.
-	Location string `protobuf:"bytes,2,opt,name=location" json:"location,omitempty"`
+	Location string `protobuf:"bytes,2,opt,name=location,proto3" json:"location,omitempty"`
 	// (`OutputOnly`)
 	// The current state of the cluster.
-	State Cluster_State `protobuf:"varint,3,opt,name=state,enum=google.bigtable.admin.v2.Cluster_State" json:"state,omitempty"`
+	State Cluster_State `protobuf:"varint,3,opt,name=state,proto3,enum=google.bigtable.admin.v2.Cluster_State" json:"state,omitempty"`
 	// The number of nodes allocated to this cluster. More nodes enable higher
 	// throughput and more consistent performance.
-	ServeNodes int32 `protobuf:"varint,4,opt,name=serve_nodes,json=serveNodes" json:"serve_nodes,omitempty"`
+	ServeNodes int32 `protobuf:"varint,4,opt,name=serve_nodes,json=serveNodes,proto3" json:"serve_nodes,omitempty"`
 	// (`CreationOnly`)
 	// The type of storage used by this cluster to serve its
 	// parent instance's tables, unless explicitly overridden.
-	DefaultStorageType   StorageType `protobuf:"varint,5,opt,name=default_storage_type,json=defaultStorageType,enum=google.bigtable.admin.v2.StorageType" json:"default_storage_type,omitempty"`
+	DefaultStorageType   StorageType `protobuf:"varint,5,opt,name=default_storage_type,json=defaultStorageType,proto3,enum=google.bigtable.admin.v2.StorageType" json:"default_storage_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`
 	XXX_sizecache        int32       `json:"-"`
@@ -323,7 +323,7 @@ type AppProfile struct {
 	// (`OutputOnly`)
 	// The unique name of the app profile. Values are of the form
 	// `projects/<project>/instances/<instance>/appProfiles/[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Strongly validated etag for optimistic concurrency control. Preserve the
 	// value returned from `GetAppProfile` when calling `UpdateAppProfile` to
 	// fail the request if there has been a modification in the mean time. The
@@ -332,9 +332,9 @@ type AppProfile struct {
 	// See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and
 	// [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more
 	// details.
-	Etag string `protobuf:"bytes,2,opt,name=etag" json:"etag,omitempty"`
+	Etag string `protobuf:"bytes,2,opt,name=etag,proto3" json:"etag,omitempty"`
 	// Optional long form description of the use case for this AppProfile.
-	Description string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// The routing policy for all read/write requests which use this app profile.
 	// A value must be explicitly set.
 	//
@@ -376,10 +376,10 @@ type isAppProfile_RoutingPolicy interface {
 }
 
 type AppProfile_MultiClusterRoutingUseAny_ struct {
-	MultiClusterRoutingUseAny *AppProfile_MultiClusterRoutingUseAny `protobuf:"bytes,5,opt,name=multi_cluster_routing_use_any,json=multiClusterRoutingUseAny,oneof"`
+	MultiClusterRoutingUseAny *AppProfile_MultiClusterRoutingUseAny `protobuf:"bytes,5,opt,name=multi_cluster_routing_use_any,json=multiClusterRoutingUseAny,proto3,oneof"`
 }
 type AppProfile_SingleClusterRouting_ struct {
-	SingleClusterRouting *AppProfile_SingleClusterRouting `protobuf:"bytes,6,opt,name=single_cluster_routing,json=singleClusterRouting,oneof"`
+	SingleClusterRouting *AppProfile_SingleClusterRouting `protobuf:"bytes,6,opt,name=single_cluster_routing,json=singleClusterRouting,proto3,oneof"`
 }
 
 func (*AppProfile_MultiClusterRoutingUseAny_) isAppProfile_RoutingPolicy() {}
@@ -540,11 +540,11 @@ var xxx_messageInfo_AppProfile_MultiClusterRoutingUseAny proto.InternalMessageIn
 // availability.
 type AppProfile_SingleClusterRouting struct {
 	// The cluster to which read/write requests should be routed.
-	ClusterId string `protobuf:"bytes,1,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	ClusterId string `protobuf:"bytes,1,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
 	// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are
 	// allowed by this app profile. It is unsafe to send these requests to
 	// the same table/row/column in multiple clusters.
-	AllowTransactionalWrites bool     `protobuf:"varint,2,opt,name=allow_transactional_writes,json=allowTransactionalWrites" json:"allow_transactional_writes,omitempty"`
+	AllowTransactionalWrites bool     `protobuf:"varint,2,opt,name=allow_transactional_writes,json=allowTransactionalWrites,proto3" json:"allow_transactional_writes,omitempty"`
 	XXX_NoUnkeyedLiteral     struct{} `json:"-"`
 	XXX_unrecognized         []byte   `json:"-"`
 	XXX_sizecache            int32    `json:"-"`

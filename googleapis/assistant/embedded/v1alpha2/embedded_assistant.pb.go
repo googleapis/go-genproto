@@ -274,7 +274,7 @@ type isAssistRequest_Type interface {
 }
 
 type AssistRequest_Config struct {
-	Config *AssistConfig `protobuf:"bytes,1,opt,name=config,oneof"`
+	Config *AssistConfig `protobuf:"bytes,1,opt,name=config,proto3,oneof"`
 }
 type AssistRequest_AudioIn struct {
 	AudioIn []byte `protobuf:"bytes,2,opt,name=audio_in,json=audioIn,proto3,oneof"`
@@ -378,14 +378,14 @@ func _AssistRequest_OneofSizer(msg proto.Message) (n int) {
 // `AssistResponse` messages are streamed back to the client.
 type AssistResponse struct {
 	// *Output-only* Indicates the type of event.
-	EventType AssistResponse_EventType `protobuf:"varint,1,opt,name=event_type,json=eventType,enum=google.assistant.embedded.v1alpha2.AssistResponse_EventType" json:"event_type,omitempty"`
+	EventType AssistResponse_EventType `protobuf:"varint,1,opt,name=event_type,json=eventType,proto3,enum=google.assistant.embedded.v1alpha2.AssistResponse_EventType" json:"event_type,omitempty"`
 	// *Output-only* The audio containing the Assistant's response to the query.
-	AudioOut *AudioOut `protobuf:"bytes,3,opt,name=audio_out,json=audioOut" json:"audio_out,omitempty"`
+	AudioOut *AudioOut `protobuf:"bytes,3,opt,name=audio_out,json=audioOut,proto3" json:"audio_out,omitempty"`
 	// *Output-only* Contains the Assistant's visual response to the query.
-	ScreenOut *ScreenOut `protobuf:"bytes,4,opt,name=screen_out,json=screenOut" json:"screen_out,omitempty"`
+	ScreenOut *ScreenOut `protobuf:"bytes,4,opt,name=screen_out,json=screenOut,proto3" json:"screen_out,omitempty"`
 	// *Output-only* Contains the action triggered by the query with the
 	// appropriate payloads and semantic parsing.
-	DeviceAction *DeviceAction `protobuf:"bytes,6,opt,name=device_action,json=deviceAction" json:"device_action,omitempty"`
+	DeviceAction *DeviceAction `protobuf:"bytes,6,opt,name=device_action,json=deviceAction,proto3" json:"device_action,omitempty"`
 	// *Output-only* This repeated list contains zero or more speech recognition
 	// results that correspond to consecutive portions of the audio currently
 	// being processed, starting with the portion corresponding to the earliest
@@ -393,12 +393,12 @@ type AssistResponse struct {
 	// recent audio. The strings can be concatenated to view the full
 	// in-progress response. When the speech recognition completes, this list
 	// will contain one item with `stability` of `1.0`.
-	SpeechResults []*SpeechRecognitionResult `protobuf:"bytes,2,rep,name=speech_results,json=speechResults" json:"speech_results,omitempty"`
+	SpeechResults []*SpeechRecognitionResult `protobuf:"bytes,2,rep,name=speech_results,json=speechResults,proto3" json:"speech_results,omitempty"`
 	// *Output-only* Contains output related to the user's query.
-	DialogStateOut *DialogStateOut `protobuf:"bytes,5,opt,name=dialog_state_out,json=dialogStateOut" json:"dialog_state_out,omitempty"`
+	DialogStateOut *DialogStateOut `protobuf:"bytes,5,opt,name=dialog_state_out,json=dialogStateOut,proto3" json:"dialog_state_out,omitempty"`
 	// *Output-only* Debugging info for developer. Only returned if request set
 	// `return_debug_info` to true.
-	DebugInfo            *DebugInfo `protobuf:"bytes,8,opt,name=debug_info,json=debugInfo" json:"debug_info,omitempty"`
+	DebugInfo            *DebugInfo `protobuf:"bytes,8,opt,name=debug_info,json=debugInfo,proto3" json:"debug_info,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -485,7 +485,7 @@ type DebugInfo struct {
 	// https://developers.google.com/actions/reference/rest/Shared.Types/AppResponse.
 	// It will only be populated if the request maker owns the AoG project and the
 	// AoG project is in preview mode.
-	AogAgentToAssistantJson string   `protobuf:"bytes,1,opt,name=aog_agent_to_assistant_json,json=aogAgentToAssistantJson" json:"aog_agent_to_assistant_json,omitempty"`
+	AogAgentToAssistantJson string   `protobuf:"bytes,1,opt,name=aog_agent_to_assistant_json,json=aogAgentToAssistantJson,proto3" json:"aog_agent_to_assistant_json,omitempty"`
 	XXX_NoUnkeyedLiteral    struct{} `json:"-"`
 	XXX_unrecognized        []byte   `json:"-"`
 	XXX_sizecache           int32    `json:"-"`
@@ -529,16 +529,16 @@ type AssistConfig struct {
 	//	*AssistConfig_TextQuery
 	Type isAssistConfig_Type `protobuf_oneof:"type"`
 	// *Required* Specifies how to format the audio that will be returned.
-	AudioOutConfig *AudioOutConfig `protobuf:"bytes,2,opt,name=audio_out_config,json=audioOutConfig" json:"audio_out_config,omitempty"`
+	AudioOutConfig *AudioOutConfig `protobuf:"bytes,2,opt,name=audio_out_config,json=audioOutConfig,proto3" json:"audio_out_config,omitempty"`
 	// *Optional* Specifies the desired format to use when server returns a
 	// visual screen response.
-	ScreenOutConfig *ScreenOutConfig `protobuf:"bytes,8,opt,name=screen_out_config,json=screenOutConfig" json:"screen_out_config,omitempty"`
+	ScreenOutConfig *ScreenOutConfig `protobuf:"bytes,8,opt,name=screen_out_config,json=screenOutConfig,proto3" json:"screen_out_config,omitempty"`
 	// *Required* Represents the current dialog state.
-	DialogStateIn *DialogStateIn `protobuf:"bytes,3,opt,name=dialog_state_in,json=dialogStateIn" json:"dialog_state_in,omitempty"`
+	DialogStateIn *DialogStateIn `protobuf:"bytes,3,opt,name=dialog_state_in,json=dialogStateIn,proto3" json:"dialog_state_in,omitempty"`
 	// Device configuration that uniquely identifies a specific device.
-	DeviceConfig *DeviceConfig `protobuf:"bytes,4,opt,name=device_config,json=deviceConfig" json:"device_config,omitempty"`
+	DeviceConfig *DeviceConfig `protobuf:"bytes,4,opt,name=device_config,json=deviceConfig,proto3" json:"device_config,omitempty"`
 	// *Optional* Debugging parameters for the whole `Assist` RPC.
-	DebugConfig          *DebugConfig `protobuf:"bytes,5,opt,name=debug_config,json=debugConfig" json:"debug_config,omitempty"`
+	DebugConfig          *DebugConfig `protobuf:"bytes,5,opt,name=debug_config,json=debugConfig,proto3" json:"debug_config,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -573,10 +573,10 @@ type isAssistConfig_Type interface {
 }
 
 type AssistConfig_AudioInConfig struct {
-	AudioInConfig *AudioInConfig `protobuf:"bytes,1,opt,name=audio_in_config,json=audioInConfig,oneof"`
+	AudioInConfig *AudioInConfig `protobuf:"bytes,1,opt,name=audio_in_config,json=audioInConfig,proto3,oneof"`
 }
 type AssistConfig_TextQuery struct {
-	TextQuery string `protobuf:"bytes,6,opt,name=text_query,json=textQuery,oneof"`
+	TextQuery string `protobuf:"bytes,6,opt,name=text_query,json=textQuery,proto3,oneof"`
 }
 
 func (*AssistConfig_AudioInConfig) isAssistConfig_Type() {}
@@ -713,13 +713,13 @@ func _AssistConfig_OneofSizer(msg proto.Message) (n int) {
 // [best practices](https://developers.google.com/assistant/sdk/guides/service/python/best-practices/audio).
 type AudioInConfig struct {
 	// *Required* Encoding of audio data sent in all `audio_in` messages.
-	Encoding AudioInConfig_Encoding `protobuf:"varint,1,opt,name=encoding,enum=google.assistant.embedded.v1alpha2.AudioInConfig_Encoding" json:"encoding,omitempty"`
+	Encoding AudioInConfig_Encoding `protobuf:"varint,1,opt,name=encoding,proto3,enum=google.assistant.embedded.v1alpha2.AudioInConfig_Encoding" json:"encoding,omitempty"`
 	// *Required* Sample rate (in Hertz) of the audio data sent in all `audio_in`
 	// messages. Valid values are from 16000-24000, but 16000 is optimal.
 	// For best results, set the sampling rate of the audio source to 16000 Hz.
 	// If that's not possible, use the native sample rate of the audio source
 	// (instead of re-sampling).
-	SampleRateHertz      int32    `protobuf:"varint,2,opt,name=sample_rate_hertz,json=sampleRateHertz" json:"sample_rate_hertz,omitempty"`
+	SampleRateHertz      int32    `protobuf:"varint,2,opt,name=sample_rate_hertz,json=sampleRateHertz,proto3" json:"sample_rate_hertz,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -768,13 +768,13 @@ func (m *AudioInConfig) GetSampleRateHertz() int32 {
 type AudioOutConfig struct {
 	// *Required* The encoding of audio data to be returned in all `audio_out`
 	// messages.
-	Encoding AudioOutConfig_Encoding `protobuf:"varint,1,opt,name=encoding,enum=google.assistant.embedded.v1alpha2.AudioOutConfig_Encoding" json:"encoding,omitempty"`
+	Encoding AudioOutConfig_Encoding `protobuf:"varint,1,opt,name=encoding,proto3,enum=google.assistant.embedded.v1alpha2.AudioOutConfig_Encoding" json:"encoding,omitempty"`
 	// *Required* The sample rate in Hertz of the audio data returned in
 	// `audio_out` messages. Valid values are: 16000-24000.
-	SampleRateHertz int32 `protobuf:"varint,2,opt,name=sample_rate_hertz,json=sampleRateHertz" json:"sample_rate_hertz,omitempty"`
+	SampleRateHertz int32 `protobuf:"varint,2,opt,name=sample_rate_hertz,json=sampleRateHertz,proto3" json:"sample_rate_hertz,omitempty"`
 	// *Required* Current volume setting of the device's audio output.
 	// Valid values are 1 to 100 (corresponding to 1% to 100%).
-	VolumePercentage     int32    `protobuf:"varint,3,opt,name=volume_percentage,json=volumePercentage" json:"volume_percentage,omitempty"`
+	VolumePercentage     int32    `protobuf:"varint,3,opt,name=volume_percentage,json=volumePercentage,proto3" json:"volume_percentage,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -829,7 +829,7 @@ func (m *AudioOutConfig) GetVolumePercentage() int32 {
 // `screen_out` response.
 type ScreenOutConfig struct {
 	// Current visual screen-mode for the device while issuing the query.
-	ScreenMode           ScreenOutConfig_ScreenMode `protobuf:"varint,1,opt,name=screen_mode,json=screenMode,enum=google.assistant.embedded.v1alpha2.ScreenOutConfig_ScreenMode" json:"screen_mode,omitempty"`
+	ScreenMode           ScreenOutConfig_ScreenMode `protobuf:"varint,1,opt,name=screen_mode,json=screenMode,proto3,enum=google.assistant.embedded.v1alpha2.ScreenOutConfig_ScreenMode" json:"screen_mode,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
 	XXX_sizecache        int32                      `json:"-"`
@@ -881,14 +881,14 @@ type DialogStateIn struct {
 	// using the [Settings](https://developers.google.com/assistant/sdk/reference/assistant-app/assistant-settings)
 	// menu in your phone's Google Assistant app, that selection will override
 	// this value.
-	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode" json:"language_code,omitempty"`
+	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// *Optional* Location of the device where the query originated.
-	DeviceLocation *DeviceLocation `protobuf:"bytes,5,opt,name=device_location,json=deviceLocation" json:"device_location,omitempty"`
+	DeviceLocation *DeviceLocation `protobuf:"bytes,5,opt,name=device_location,json=deviceLocation,proto3" json:"device_location,omitempty"`
 	// *Optional* If true, the server will treat the request as a new conversation
 	// and not use state from the prior request. Set this field to true when the
 	// conversation should be restarted, such as after a device reboot, or after a
 	// significant lapse of time since the prior query.
-	IsNewConversation    bool     `protobuf:"varint,7,opt,name=is_new_conversation,json=isNewConversation" json:"is_new_conversation,omitempty"`
+	IsNewConversation    bool     `protobuf:"varint,7,opt,name=is_new_conversation,json=isNewConversation,proto3" json:"is_new_conversation,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -964,11 +964,11 @@ type DeviceConfig struct {
 	// capabilities of this device. This information should not change across
 	// device reboots. However, it should not be saved across
 	// factory-default resets.
-	DeviceId string `protobuf:"bytes,1,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
+	DeviceId string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
 	// *Required* Unique identifier for the device model. The combination of
 	// device_model_id and device_id must have been previously associated through
 	// device registration.
-	DeviceModelId        string   `protobuf:"bytes,3,opt,name=device_model_id,json=deviceModelId" json:"device_model_id,omitempty"`
+	DeviceModelId        string   `protobuf:"bytes,3,opt,name=device_model_id,json=deviceModelId,proto3" json:"device_model_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1059,7 +1059,7 @@ func (m *AudioOut) GetAudioData() []byte {
 // `screen_out_config`.
 type ScreenOut struct {
 	// *Output-only* The format of the provided screen data.
-	Format ScreenOut_Format `protobuf:"varint,1,opt,name=format,enum=google.assistant.embedded.v1alpha2.ScreenOut_Format" json:"format,omitempty"`
+	Format ScreenOut_Format `protobuf:"varint,1,opt,name=format,proto3,enum=google.assistant.embedded.v1alpha2.ScreenOut_Format" json:"format,omitempty"`
 	// *Output-only* The raw screen data to be displayed as the result of the
 	// Assistant query.
 	Data                 []byte   `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
@@ -1115,7 +1115,7 @@ type DeviceAction struct {
 	// Device Action grammar. The format is given by the
 	// `action.devices.EXECUTE` intent for a given
 	// [trait](https://developers.google.com/assistant/sdk/reference/traits/).
-	DeviceRequestJson    string   `protobuf:"bytes,1,opt,name=device_request_json,json=deviceRequestJson" json:"device_request_json,omitempty"`
+	DeviceRequestJson    string   `protobuf:"bytes,1,opt,name=device_request_json,json=deviceRequestJson,proto3" json:"device_request_json,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1156,12 +1156,12 @@ func (m *DeviceAction) GetDeviceRequestJson() string {
 // a single segment or the full guess of the user's spoken query.
 type SpeechRecognitionResult struct {
 	// *Output-only* Transcript text representing the words that the user spoke.
-	Transcript string `protobuf:"bytes,1,opt,name=transcript" json:"transcript,omitempty"`
+	Transcript string `protobuf:"bytes,1,opt,name=transcript,proto3" json:"transcript,omitempty"`
 	// *Output-only* An estimate of the likelihood that the Assistant will not
 	// change its guess about this result. Values range from 0.0 (completely
 	// unstable) to 1.0 (completely stable and final). The default of 0.0 is a
 	// sentinel value indicating `stability` was not set.
-	Stability            float32  `protobuf:"fixed32,2,opt,name=stability" json:"stability,omitempty"`
+	Stability            float32  `protobuf:"fixed32,2,opt,name=stability,proto3" json:"stability,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1211,7 +1211,7 @@ type DialogStateOut struct {
 	// *Output-only* Supplemental display text from the Assistant. This could be
 	// the same as the speech spoken in `AssistResponse.audio_out` or it could
 	// be some additional information which aids the user's understanding.
-	SupplementalDisplayText string `protobuf:"bytes,1,opt,name=supplemental_display_text,json=supplementalDisplayText" json:"supplemental_display_text,omitempty"`
+	SupplementalDisplayText string `protobuf:"bytes,1,opt,name=supplemental_display_text,json=supplementalDisplayText,proto3" json:"supplemental_display_text,omitempty"`
 	// *Output-only* State information for the subsequent `Assist` RPC. This
 	// value should be saved in the client and returned in the
 	// [`DialogStateIn.conversation_state`](#dialogstatein) field with the next
@@ -1222,7 +1222,7 @@ type DialogStateOut struct {
 	ConversationState []byte `protobuf:"bytes,2,opt,name=conversation_state,json=conversationState,proto3" json:"conversation_state,omitempty"`
 	// *Output-only* Specifies the mode of the microphone after this `Assist`
 	// RPC is processed.
-	MicrophoneMode DialogStateOut_MicrophoneMode `protobuf:"varint,3,opt,name=microphone_mode,json=microphoneMode,enum=google.assistant.embedded.v1alpha2.DialogStateOut_MicrophoneMode" json:"microphone_mode,omitempty"`
+	MicrophoneMode DialogStateOut_MicrophoneMode `protobuf:"varint,3,opt,name=microphone_mode,json=microphoneMode,proto3,enum=google.assistant.embedded.v1alpha2.DialogStateOut_MicrophoneMode" json:"microphone_mode,omitempty"`
 	// *Output-only* Updated volume level. The value will be 0 or omitted
 	// (indicating no change) unless a voice command such as *Increase the volume*
 	// or *Set volume level 4* was recognized, in which case the value will be
@@ -1232,7 +1232,7 @@ type DialogStateOut struct {
 	// supply it in the `AudioOutConfig` of the next `AssistRequest`. (Some
 	// clients may also implement other ways to allow the current volume level to
 	// be changed, for example, by providing a knob that the user can turn.)
-	VolumePercentage     int32    `protobuf:"varint,4,opt,name=volume_percentage,json=volumePercentage" json:"volume_percentage,omitempty"`
+	VolumePercentage     int32    `protobuf:"varint,4,opt,name=volume_percentage,json=volumePercentage,proto3" json:"volume_percentage,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1295,7 +1295,7 @@ type DebugConfig struct {
 	// When this field is set to true, the `debug_info` field in `AssistResponse`
 	// may be populated. However it will significantly increase latency of
 	// responses. Do not set this field true in production code.
-	ReturnDebugInfo      bool     `protobuf:"varint,6,opt,name=return_debug_info,json=returnDebugInfo" json:"return_debug_info,omitempty"`
+	ReturnDebugInfo      bool     `protobuf:"varint,6,opt,name=return_debug_info,json=returnDebugInfo,proto3" json:"return_debug_info,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1378,7 +1378,7 @@ type isDeviceLocation_Type interface {
 }
 
 type DeviceLocation_Coordinates struct {
-	Coordinates *latlng.LatLng `protobuf:"bytes,1,opt,name=coordinates,oneof"`
+	Coordinates *latlng.LatLng `protobuf:"bytes,1,opt,name=coordinates,proto3,oneof"`
 }
 
 func (*DeviceLocation_Coordinates) isDeviceLocation_Type() {}
@@ -1574,8 +1574,7 @@ func (x *embeddedAssistantAssistClient) Recv() (*AssistResponse, error) {
 	return m, nil
 }
 
-// Server API for EmbeddedAssistant service
-
+// EmbeddedAssistantServer is the server API for EmbeddedAssistant service.
 type EmbeddedAssistantServer interface {
 	// Initiates or continues a conversation with the embedded Assistant Service.
 	// Each call performs one round-trip, sending an audio request to the service

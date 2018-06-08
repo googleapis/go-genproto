@@ -36,9 +36,9 @@ type Topic struct {
 	// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
 	// signs (`%`). It must be between 3 and 255 characters in length, and it
 	// must not start with `"goog"`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// User labels.
-	Labels               map[string]string `protobuf:"bytes,2,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Labels               map[string]string `protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -88,16 +88,16 @@ type PubsubMessage struct {
 	// The message payload.
 	Data []byte `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
 	// Optional attributes for this message.
-	Attributes map[string]string `protobuf:"bytes,2,rep,name=attributes" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Attributes map[string]string `protobuf:"bytes,2,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// ID of this message, assigned by the server when the message is published.
 	// Guaranteed to be unique within the topic. This value may be read by a
 	// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
 	// delivery. It must not be populated by the publisher in a `Publish` call.
-	MessageId string `protobuf:"bytes,3,opt,name=message_id,json=messageId" json:"message_id,omitempty"`
+	MessageId string `protobuf:"bytes,3,opt,name=message_id,json=messageId,proto3" json:"message_id,omitempty"`
 	// The time at which the message was published, populated by the server when
 	// it receives the `Publish` call. It must not be populated by the
 	// publisher in a `Publish` call.
-	PublishTime          *timestamp.Timestamp `protobuf:"bytes,4,opt,name=publish_time,json=publishTime" json:"publish_time,omitempty"`
+	PublishTime          *timestamp.Timestamp `protobuf:"bytes,4,opt,name=publish_time,json=publishTime,proto3" json:"publish_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -159,7 +159,7 @@ func (m *PubsubMessage) GetPublishTime() *timestamp.Timestamp {
 type GetTopicRequest struct {
 	// The name of the topic to get.
 	// Format is `projects/{project}/topics/{topic}`.
-	Topic                string   `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+	Topic                string   `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -199,10 +199,10 @@ func (m *GetTopicRequest) GetTopic() string {
 // Request for the UpdateTopic method.
 type UpdateTopicRequest struct {
 	// The topic to update.
-	Topic *Topic `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+	Topic *Topic `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	// Indicates which fields in the provided topic to update.
 	// Must be specified and non-empty.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -250,9 +250,9 @@ func (m *UpdateTopicRequest) GetUpdateMask() *field_mask.FieldMask {
 type PublishRequest struct {
 	// The messages in the request will be published on this topic.
 	// Format is `projects/{project}/topics/{topic}`.
-	Topic string `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+	Topic string `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	// The messages to publish.
-	Messages             []*PubsubMessage `protobuf:"bytes,2,rep,name=messages" json:"messages,omitempty"`
+	Messages             []*PubsubMessage `protobuf:"bytes,2,rep,name=messages,proto3" json:"messages,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -301,7 +301,7 @@ type PublishResponse struct {
 	// The server-assigned ID of each published message, in the same order as
 	// the messages in the request. IDs are guaranteed to be unique within
 	// the topic.
-	MessageIds           []string `protobuf:"bytes,1,rep,name=message_ids,json=messageIds" json:"message_ids,omitempty"`
+	MessageIds           []string `protobuf:"bytes,1,rep,name=message_ids,json=messageIds,proto3" json:"message_ids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -342,13 +342,13 @@ func (m *PublishResponse) GetMessageIds() []string {
 type ListTopicsRequest struct {
 	// The name of the cloud project that topics belong to.
 	// Format is `projects/{project}`.
-	Project string `protobuf:"bytes,1,opt,name=project" json:"project,omitempty"`
+	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// Maximum number of topics to return.
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The value returned by the last `ListTopicsResponse`; indicates that this is
 	// a continuation of a prior `ListTopics` call, and that the system should
 	// return the next page of data.
-	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -402,10 +402,10 @@ func (m *ListTopicsRequest) GetPageToken() string {
 // Response for the `ListTopics` method.
 type ListTopicsResponse struct {
 	// The resulting topics.
-	Topics []*Topic `protobuf:"bytes,1,rep,name=topics" json:"topics,omitempty"`
+	Topics []*Topic `protobuf:"bytes,1,rep,name=topics,proto3" json:"topics,omitempty"`
 	// If not empty, indicates that there may be more topics that match the
 	// request; this value should be passed in a new `ListTopicsRequest`.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -453,13 +453,13 @@ func (m *ListTopicsResponse) GetNextPageToken() string {
 type ListTopicSubscriptionsRequest struct {
 	// The name of the topic that subscriptions are attached to.
 	// Format is `projects/{project}/topics/{topic}`.
-	Topic string `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+	Topic string `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	// Maximum number of subscription names to return.
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The value returned by the last `ListTopicSubscriptionsResponse`; indicates
 	// that this is a continuation of a prior `ListTopicSubscriptions` call, and
 	// that the system should return the next page of data.
-	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -513,11 +513,11 @@ func (m *ListTopicSubscriptionsRequest) GetPageToken() string {
 // Response for the `ListTopicSubscriptions` method.
 type ListTopicSubscriptionsResponse struct {
 	// The names of the subscriptions that match the request.
-	Subscriptions []string `protobuf:"bytes,1,rep,name=subscriptions" json:"subscriptions,omitempty"`
+	Subscriptions []string `protobuf:"bytes,1,rep,name=subscriptions,proto3" json:"subscriptions,omitempty"`
 	// If not empty, indicates that there may be more subscriptions that match
 	// the request; this value should be passed in a new
 	// `ListTopicSubscriptionsRequest` to get more subscriptions.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -565,7 +565,7 @@ func (m *ListTopicSubscriptionsResponse) GetNextPageToken() string {
 type DeleteTopicRequest struct {
 	// Name of the topic to delete.
 	// Format is `projects/{project}/topics/{topic}`.
-	Topic                string   `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+	Topic                string   `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -610,16 +610,16 @@ type Subscription struct {
 	// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
 	// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
 	// in length, and it must not start with `"goog"`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The name of the topic from which this subscription is receiving messages.
 	// Format is `projects/{project}/topics/{topic}`.
 	// The value of this field will be `_deleted-topic_` if the topic has been
 	// deleted.
-	Topic string `protobuf:"bytes,2,opt,name=topic" json:"topic,omitempty"`
+	Topic string `protobuf:"bytes,2,opt,name=topic,proto3" json:"topic,omitempty"`
 	// If push delivery is used with this subscription, this field is
 	// used to configure it. An empty `pushConfig` signifies that the subscriber
 	// will pull and ack messages using API methods.
-	PushConfig *PushConfig `protobuf:"bytes,4,opt,name=push_config,json=pushConfig" json:"push_config,omitempty"`
+	PushConfig *PushConfig `protobuf:"bytes,4,opt,name=push_config,json=pushConfig,proto3" json:"push_config,omitempty"`
 	// This value is the maximum time after a subscriber receives a message
 	// before the subscriber should acknowledge the message. After message
 	// delivery but before the ack deadline expires and before the message is
@@ -639,21 +639,21 @@ type Subscription struct {
 	//
 	// If the subscriber never acknowledges the message, the Pub/Sub
 	// system will eventually redeliver the message.
-	AckDeadlineSeconds int32 `protobuf:"varint,5,opt,name=ack_deadline_seconds,json=ackDeadlineSeconds" json:"ack_deadline_seconds,omitempty"`
+	AckDeadlineSeconds int32 `protobuf:"varint,5,opt,name=ack_deadline_seconds,json=ackDeadlineSeconds,proto3" json:"ack_deadline_seconds,omitempty"`
 	// Indicates whether to retain acknowledged messages. If true, then
 	// messages are not expunged from the subscription's backlog, even if they are
 	// acknowledged, until they fall out of the `message_retention_duration`
 	// window.
-	RetainAckedMessages bool `protobuf:"varint,7,opt,name=retain_acked_messages,json=retainAckedMessages" json:"retain_acked_messages,omitempty"`
+	RetainAckedMessages bool `protobuf:"varint,7,opt,name=retain_acked_messages,json=retainAckedMessages,proto3" json:"retain_acked_messages,omitempty"`
 	// How long to retain unacknowledged messages in the subscription's backlog,
 	// from the moment a message is published.
 	// If `retain_acked_messages` is true, then this also configures the retention
 	// of acknowledged messages, and thus configures how far back in time a `Seek`
 	// can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
 	// minutes.
-	MessageRetentionDuration *duration.Duration `protobuf:"bytes,8,opt,name=message_retention_duration,json=messageRetentionDuration" json:"message_retention_duration,omitempty"`
+	MessageRetentionDuration *duration.Duration `protobuf:"bytes,8,opt,name=message_retention_duration,json=messageRetentionDuration,proto3" json:"message_retention_duration,omitempty"`
 	// User labels.
-	Labels               map[string]string `protobuf:"bytes,9,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Labels               map[string]string `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -736,7 +736,7 @@ func (m *Subscription) GetLabels() map[string]string {
 type PushConfig struct {
 	// A URL locating the endpoint to which messages should be pushed.
 	// For example, a Webhook endpoint might use "https://example.com/push".
-	PushEndpoint string `protobuf:"bytes,1,opt,name=push_endpoint,json=pushEndpoint" json:"push_endpoint,omitempty"`
+	PushEndpoint string `protobuf:"bytes,1,opt,name=push_endpoint,json=pushEndpoint,proto3" json:"push_endpoint,omitempty"`
 	// Endpoint configuration attributes.
 	//
 	// Every endpoint has a set of API supported attributes that can be used to
@@ -758,7 +758,7 @@ type PushConfig struct {
 	//
 	// * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
 	// * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
-	Attributes           map[string]string `protobuf:"bytes,2,rep,name=attributes" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Attributes           map[string]string `protobuf:"bytes,2,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -805,9 +805,9 @@ func (m *PushConfig) GetAttributes() map[string]string {
 // A message and its corresponding acknowledgment ID.
 type ReceivedMessage struct {
 	// This ID can be used to acknowledge the received message.
-	AckId string `protobuf:"bytes,1,opt,name=ack_id,json=ackId" json:"ack_id,omitempty"`
+	AckId string `protobuf:"bytes,1,opt,name=ack_id,json=ackId,proto3" json:"ack_id,omitempty"`
 	// The message.
-	Message              *PubsubMessage `protobuf:"bytes,2,opt,name=message" json:"message,omitempty"`
+	Message              *PubsubMessage `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -855,7 +855,7 @@ func (m *ReceivedMessage) GetMessage() *PubsubMessage {
 type GetSubscriptionRequest struct {
 	// The name of the subscription to get.
 	// Format is `projects/{project}/subscriptions/{sub}`.
-	Subscription         string   `protobuf:"bytes,1,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription         string   `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -895,10 +895,10 @@ func (m *GetSubscriptionRequest) GetSubscription() string {
 // Request for the UpdateSubscription method.
 type UpdateSubscriptionRequest struct {
 	// The updated subscription object.
-	Subscription *Subscription `protobuf:"bytes,1,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription *Subscription `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	// Indicates which fields in the provided subscription to update.
 	// Must be specified and non-empty.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -946,13 +946,13 @@ func (m *UpdateSubscriptionRequest) GetUpdateMask() *field_mask.FieldMask {
 type ListSubscriptionsRequest struct {
 	// The name of the cloud project that subscriptions belong to.
 	// Format is `projects/{project}`.
-	Project string `protobuf:"bytes,1,opt,name=project" json:"project,omitempty"`
+	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// Maximum number of subscriptions to return.
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The value returned by the last `ListSubscriptionsResponse`; indicates that
 	// this is a continuation of a prior `ListSubscriptions` call, and that the
 	// system should return the next page of data.
-	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1006,11 +1006,11 @@ func (m *ListSubscriptionsRequest) GetPageToken() string {
 // Response for the `ListSubscriptions` method.
 type ListSubscriptionsResponse struct {
 	// The subscriptions that match the request.
-	Subscriptions []*Subscription `protobuf:"bytes,1,rep,name=subscriptions" json:"subscriptions,omitempty"`
+	Subscriptions []*Subscription `protobuf:"bytes,1,rep,name=subscriptions,proto3" json:"subscriptions,omitempty"`
 	// If not empty, indicates that there may be more subscriptions that match
 	// the request; this value should be passed in a new
 	// `ListSubscriptionsRequest` to get more subscriptions.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1058,7 +1058,7 @@ func (m *ListSubscriptionsResponse) GetNextPageToken() string {
 type DeleteSubscriptionRequest struct {
 	// The subscription to delete.
 	// Format is `projects/{project}/subscriptions/{sub}`.
-	Subscription         string   `protobuf:"bytes,1,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription         string   `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1099,14 +1099,14 @@ func (m *DeleteSubscriptionRequest) GetSubscription() string {
 type ModifyPushConfigRequest struct {
 	// The name of the subscription.
 	// Format is `projects/{project}/subscriptions/{sub}`.
-	Subscription string `protobuf:"bytes,1,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription string `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	// The push configuration for future deliveries.
 	//
 	// An empty `pushConfig` indicates that the Pub/Sub system should
 	// stop pushing messages from the given subscription and allow
 	// messages to be pulled and acknowledged - effectively pausing
 	// the subscription if `Pull` is not called.
-	PushConfig           *PushConfig `protobuf:"bytes,2,opt,name=push_config,json=pushConfig" json:"push_config,omitempty"`
+	PushConfig           *PushConfig `protobuf:"bytes,2,opt,name=push_config,json=pushConfig,proto3" json:"push_config,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`
 	XXX_sizecache        int32       `json:"-"`
@@ -1154,17 +1154,17 @@ func (m *ModifyPushConfigRequest) GetPushConfig() *PushConfig {
 type PullRequest struct {
 	// The subscription from which messages should be pulled.
 	// Format is `projects/{project}/subscriptions/{sub}`.
-	Subscription string `protobuf:"bytes,1,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription string `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	// If this field set to true, the system will respond immediately even if
 	// it there are no messages available to return in the `Pull` response.
 	// Otherwise, the system may wait (for a bounded amount of time) until at
 	// least one message is available, rather than returning no messages. The
 	// client may cancel the request if it does not wish to wait any longer for
 	// the response.
-	ReturnImmediately bool `protobuf:"varint,2,opt,name=return_immediately,json=returnImmediately" json:"return_immediately,omitempty"`
+	ReturnImmediately bool `protobuf:"varint,2,opt,name=return_immediately,json=returnImmediately,proto3" json:"return_immediately,omitempty"`
 	// The maximum number of messages returned for this request. The Pub/Sub
 	// system may return fewer than the number specified.
-	MaxMessages          int32    `protobuf:"varint,3,opt,name=max_messages,json=maxMessages" json:"max_messages,omitempty"`
+	MaxMessages          int32    `protobuf:"varint,3,opt,name=max_messages,json=maxMessages,proto3" json:"max_messages,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1221,7 +1221,7 @@ type PullResponse struct {
 	// there are no more available in the backlog. The Pub/Sub system may return
 	// fewer than the `maxMessages` requested even if there are more messages
 	// available in the backlog.
-	ReceivedMessages     []*ReceivedMessage `protobuf:"bytes,1,rep,name=received_messages,json=receivedMessages" json:"received_messages,omitempty"`
+	ReceivedMessages     []*ReceivedMessage `protobuf:"bytes,1,rep,name=received_messages,json=receivedMessages,proto3" json:"received_messages,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -1262,9 +1262,9 @@ func (m *PullResponse) GetReceivedMessages() []*ReceivedMessage {
 type ModifyAckDeadlineRequest struct {
 	// The name of the subscription.
 	// Format is `projects/{project}/subscriptions/{sub}`.
-	Subscription string `protobuf:"bytes,1,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription string `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	// List of acknowledgment IDs.
-	AckIds []string `protobuf:"bytes,4,rep,name=ack_ids,json=ackIds" json:"ack_ids,omitempty"`
+	AckIds []string `protobuf:"bytes,4,rep,name=ack_ids,json=ackIds,proto3" json:"ack_ids,omitempty"`
 	// The new ack deadline with respect to the time this request was sent to
 	// the Pub/Sub system. For example, if the value is 10, the new
 	// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
@@ -1272,7 +1272,7 @@ type ModifyAckDeadlineRequest struct {
 	// another pull request.
 	// The minimum deadline you can specify is 0 seconds.
 	// The maximum deadline you can specify is 600 seconds (10 minutes).
-	AckDeadlineSeconds   int32    `protobuf:"varint,3,opt,name=ack_deadline_seconds,json=ackDeadlineSeconds" json:"ack_deadline_seconds,omitempty"`
+	AckDeadlineSeconds   int32    `protobuf:"varint,3,opt,name=ack_deadline_seconds,json=ackDeadlineSeconds,proto3" json:"ack_deadline_seconds,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1327,10 +1327,10 @@ func (m *ModifyAckDeadlineRequest) GetAckDeadlineSeconds() int32 {
 type AcknowledgeRequest struct {
 	// The subscription whose message is being acknowledged.
 	// Format is `projects/{project}/subscriptions/{sub}`.
-	Subscription string `protobuf:"bytes,1,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription string `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	// The acknowledgment ID for the messages being acknowledged that was returned
 	// by the Pub/Sub system in the `Pull` response. Must not be empty.
-	AckIds               []string `protobuf:"bytes,2,rep,name=ack_ids,json=ackIds" json:"ack_ids,omitempty"`
+	AckIds               []string `protobuf:"bytes,2,rep,name=ack_ids,json=ackIds,proto3" json:"ack_ids,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1382,13 +1382,13 @@ type StreamingPullRequest struct {
 	// provided in the first request on the stream, and must not be set in
 	// subsequent requests from client to server.
 	// Format is `projects/{project}/subscriptions/{sub}`.
-	Subscription string `protobuf:"bytes,1,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription string `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	// List of acknowledgement IDs for acknowledging previously received messages
 	// (received on this stream or a different stream). If an ack ID has expired,
 	// the corresponding message may be redelivered later. Acknowledging a message
 	// more than once will not result in an error. If the acknowledgement ID is
 	// malformed, the stream will be aborted with status `INVALID_ARGUMENT`.
-	AckIds []string `protobuf:"bytes,2,rep,name=ack_ids,json=ackIds" json:"ack_ids,omitempty"`
+	AckIds []string `protobuf:"bytes,2,rep,name=ack_ids,json=ackIds,proto3" json:"ack_ids,omitempty"`
 	// The list of new ack deadlines for the IDs listed in
 	// `modify_deadline_ack_ids`. The size of this list must be the same as the
 	// size of `modify_deadline_ack_ids`. If it differs the stream will be aborted
@@ -1400,18 +1400,18 @@ type StreamingPullRequest struct {
 	// the message is immediately made available for another streaming or
 	// non-streaming pull request. If the value is < 0 (an error), the stream will
 	// be aborted with status `INVALID_ARGUMENT`.
-	ModifyDeadlineSeconds []int32 `protobuf:"varint,3,rep,packed,name=modify_deadline_seconds,json=modifyDeadlineSeconds" json:"modify_deadline_seconds,omitempty"`
+	ModifyDeadlineSeconds []int32 `protobuf:"varint,3,rep,packed,name=modify_deadline_seconds,json=modifyDeadlineSeconds,proto3" json:"modify_deadline_seconds,omitempty"`
 	// List of acknowledgement IDs whose deadline will be modified based on the
 	// corresponding element in `modify_deadline_seconds`. This field can be used
 	// to indicate that more time is needed to process a message by the
 	// subscriber, or to make the message available for redelivery if the
 	// processing was interrupted.
-	ModifyDeadlineAckIds []string `protobuf:"bytes,4,rep,name=modify_deadline_ack_ids,json=modifyDeadlineAckIds" json:"modify_deadline_ack_ids,omitempty"`
+	ModifyDeadlineAckIds []string `protobuf:"bytes,4,rep,name=modify_deadline_ack_ids,json=modifyDeadlineAckIds,proto3" json:"modify_deadline_ack_ids,omitempty"`
 	// The ack deadline to use for the stream. This must be provided in the
 	// first request on the stream, but it can also be updated on subsequent
 	// requests from client to server. The minimum deadline you can specify is 10
 	// seconds. The maximum deadline you can specify is 600 seconds (10 minutes).
-	StreamAckDeadlineSeconds int32    `protobuf:"varint,5,opt,name=stream_ack_deadline_seconds,json=streamAckDeadlineSeconds" json:"stream_ack_deadline_seconds,omitempty"`
+	StreamAckDeadlineSeconds int32    `protobuf:"varint,5,opt,name=stream_ack_deadline_seconds,json=streamAckDeadlineSeconds,proto3" json:"stream_ack_deadline_seconds,omitempty"`
 	XXX_NoUnkeyedLiteral     struct{} `json:"-"`
 	XXX_unrecognized         []byte   `json:"-"`
 	XXX_sizecache            int32    `json:"-"`
@@ -1480,7 +1480,7 @@ func (m *StreamingPullRequest) GetStreamAckDeadlineSeconds() int32 {
 // messages from the server to the client.
 type StreamingPullResponse struct {
 	// Received Pub/Sub messages. This will not be empty.
-	ReceivedMessages     []*ReceivedMessage `protobuf:"bytes,1,rep,name=received_messages,json=receivedMessages" json:"received_messages,omitempty"`
+	ReceivedMessages     []*ReceivedMessage `protobuf:"bytes,1,rep,name=received_messages,json=receivedMessages,proto3" json:"received_messages,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -1524,7 +1524,7 @@ type CreateSnapshotRequest struct {
 	// name for this snapshot on the same project as the subscription.
 	// Note that for REST API requests, you must specify a name.
 	// Format is `projects/{project}/snapshots/{snap}`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The subscription whose backlog the snapshot retains.
 	// Specifically, the created snapshot is guaranteed to retain:
 	//  (a) The existing backlog on the subscription. More precisely, this is
@@ -1534,7 +1534,7 @@ type CreateSnapshotRequest struct {
 	//  (b) Any messages published to the subscription's topic following the
 	//      successful completion of the CreateSnapshot request.
 	// Format is `projects/{project}/subscriptions/{sub}`.
-	Subscription         string   `protobuf:"bytes,2,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription         string   `protobuf:"bytes,2,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1581,10 +1581,10 @@ func (m *CreateSnapshotRequest) GetSubscription() string {
 // Request for the UpdateSnapshot method.
 type UpdateSnapshotRequest struct {
 	// The updated snpashot object.
-	Snapshot *Snapshot `protobuf:"bytes,1,opt,name=snapshot" json:"snapshot,omitempty"`
+	Snapshot *Snapshot `protobuf:"bytes,1,opt,name=snapshot,proto3" json:"snapshot,omitempty"`
 	// Indicates which fields in the provided snapshot to update.
 	// Must be specified and non-empty.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -1631,9 +1631,9 @@ func (m *UpdateSnapshotRequest) GetUpdateMask() *field_mask.FieldMask {
 // A snapshot resource.
 type Snapshot struct {
 	// The name of the snapshot.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The name of the topic from which this snapshot is retaining messages.
-	Topic string `protobuf:"bytes,2,opt,name=topic" json:"topic,omitempty"`
+	Topic string `protobuf:"bytes,2,opt,name=topic,proto3" json:"topic,omitempty"`
 	// The snapshot is guaranteed to exist up until this time.
 	// A newly-created snapshot expires no later than 7 days from the time of its
 	// creation. Its exact lifetime is determined at creation by the existing
@@ -1643,9 +1643,9 @@ type Snapshot struct {
 	// old. If a snapshot is created from this subscription, the snapshot -- which
 	// will always capture this 3-day-old backlog as long as the snapshot
 	// exists -- will expire in 4 days.
-	ExpireTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=expire_time,json=expireTime" json:"expire_time,omitempty"`
+	ExpireTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 	// User labels.
-	Labels               map[string]string `protobuf:"bytes,4,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Labels               map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -1707,13 +1707,13 @@ func (m *Snapshot) GetLabels() map[string]string {
 type ListSnapshotsRequest struct {
 	// The name of the cloud project that snapshots belong to.
 	// Format is `projects/{project}`.
-	Project string `protobuf:"bytes,1,opt,name=project" json:"project,omitempty"`
+	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// Maximum number of snapshots to return.
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The value returned by the last `ListSnapshotsResponse`; indicates that this
 	// is a continuation of a prior `ListSnapshots` call, and that the system
 	// should return the next page of data.
-	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1767,10 +1767,10 @@ func (m *ListSnapshotsRequest) GetPageToken() string {
 // Response for the `ListSnapshots` method.
 type ListSnapshotsResponse struct {
 	// The resulting snapshots.
-	Snapshots []*Snapshot `protobuf:"bytes,1,rep,name=snapshots" json:"snapshots,omitempty"`
+	Snapshots []*Snapshot `protobuf:"bytes,1,rep,name=snapshots,proto3" json:"snapshots,omitempty"`
 	// If not empty, indicates that there may be more snapshot that match the
 	// request; this value should be passed in a new `ListSnapshotsRequest`.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1818,7 +1818,7 @@ func (m *ListSnapshotsResponse) GetNextPageToken() string {
 type DeleteSnapshotRequest struct {
 	// The name of the snapshot to delete.
 	// Format is `projects/{project}/snapshots/{snap}`.
-	Snapshot             string   `protobuf:"bytes,1,opt,name=snapshot" json:"snapshot,omitempty"`
+	Snapshot             string   `protobuf:"bytes,1,opt,name=snapshot,proto3" json:"snapshot,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1858,7 +1858,7 @@ func (m *DeleteSnapshotRequest) GetSnapshot() string {
 // Request for the `Seek` method.
 type SeekRequest struct {
 	// The subscription to affect.
-	Subscription string `protobuf:"bytes,1,opt,name=subscription" json:"subscription,omitempty"`
+	Subscription string `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	// Types that are valid to be assigned to Target:
 	//	*SeekRequest_Time
 	//	*SeekRequest_Snapshot
@@ -1897,10 +1897,10 @@ type isSeekRequest_Target interface {
 }
 
 type SeekRequest_Time struct {
-	Time *timestamp.Timestamp `protobuf:"bytes,2,opt,name=time,oneof"`
+	Time *timestamp.Timestamp `protobuf:"bytes,2,opt,name=time,proto3,oneof"`
 }
 type SeekRequest_Snapshot struct {
-	Snapshot string `protobuf:"bytes,3,opt,name=snapshot,oneof"`
+	Snapshot string `protobuf:"bytes,3,opt,name=snapshot,proto3,oneof"`
 }
 
 func (*SeekRequest_Time) isSeekRequest_Target()     {}
@@ -2350,8 +2350,7 @@ func (c *subscriberClient) Seek(ctx context.Context, in *SeekRequest, opts ...gr
 	return out, nil
 }
 
-// Server API for Subscriber service
-
+// SubscriberServer is the server API for Subscriber service.
 type SubscriberServer interface {
 	// Creates a subscription to a given topic.
 	// If the subscription already exists, returns `ALREADY_EXISTS`.
@@ -2906,8 +2905,7 @@ func (c *publisherClient) DeleteTopic(ctx context.Context, in *DeleteTopicReques
 	return out, nil
 }
 
-// Server API for Publisher service
-
+// PublisherServer is the server API for Publisher service.
 type PublisherServer interface {
 	// Creates the given topic with the given name.
 	CreateTopic(context.Context, *Topic) (*Topic, error)

@@ -70,7 +70,7 @@ type LogSink struct {
 	// limited to 100 characters and can include only the following characters:
 	// upper and lower-case alphanumeric characters, underscores, hyphens, and
 	// periods.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The export destination:
 	//
 	//     "storage.googleapis.com/[GCS_BUCKET]"
@@ -81,17 +81,17 @@ type LogSink struct {
 	// have permission to write to the destination or else the log
 	// entries are not exported.  For more information, see
 	// [Exporting Logs With Sinks](/logging/docs/api/tasks/exporting-logs).
-	Destination string `protobuf:"bytes,3,opt,name=destination" json:"destination,omitempty"`
+	Destination string `protobuf:"bytes,3,opt,name=destination,proto3" json:"destination,omitempty"`
 	// Optional.
 	// An [advanced logs filter](/logging/docs/view/advanced_filters).  The only
 	// exported log entries are those that are in the resource owning the sink and
 	// that match the filter.  For example:
 	//
 	//     logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
-	Filter string `protobuf:"bytes,5,opt,name=filter" json:"filter,omitempty"`
+	Filter string `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Deprecated. The log entry format to use for this sink's exported log
 	// entries.  The v2 format is used by default and cannot be changed.
-	OutputVersionFormat LogSink_VersionFormat `protobuf:"varint,6,opt,name=output_version_format,json=outputVersionFormat,enum=google.logging.v2.LogSink_VersionFormat" json:"output_version_format,omitempty"`
+	OutputVersionFormat LogSink_VersionFormat `protobuf:"varint,6,opt,name=output_version_format,json=outputVersionFormat,proto3,enum=google.logging.v2.LogSink_VersionFormat" json:"output_version_format,omitempty"`
 	// Output only. An IAM identity&mdash;a service account or group&mdash;under
 	// which Stackdriver Logging writes the exported log entries to the sink's
 	// destination.  This field is set by
@@ -106,7 +106,7 @@ type LogSink struct {
 	// resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource).
 	// Consult the destination service's documentation to determine the
 	// appropriate IAM roles to assign to the identity.
-	WriterIdentity string `protobuf:"bytes,8,opt,name=writer_identity,json=writerIdentity" json:"writer_identity,omitempty"`
+	WriterIdentity string `protobuf:"bytes,8,opt,name=writer_identity,json=writerIdentity,proto3" json:"writer_identity,omitempty"`
 	// Optional. This field applies only to sinks owned by organizations and
 	// folders. If the field is false, the default, only the logs owned by the
 	// sink's parent resource are available for export. If the field is true, then
@@ -120,11 +120,11 @@ type LogSink struct {
 	//
 	//     logName:("projects/test-project1/" OR "projects/test-project2/") AND
 	//     resource.type=gce_instance
-	IncludeChildren bool `protobuf:"varint,9,opt,name=include_children,json=includeChildren" json:"include_children,omitempty"`
+	IncludeChildren bool `protobuf:"varint,9,opt,name=include_children,json=includeChildren,proto3" json:"include_children,omitempty"`
 	// Deprecated. This field is ignored when creating or updating sinks.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=start_time,json=startTime" json:"start_time,omitempty"`
+	StartTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Deprecated. This field is ignored when creating or updating sinks.
-	EndTime              *timestamp.Timestamp `protobuf:"bytes,11,opt,name=end_time,json=endTime" json:"end_time,omitempty"`
+	EndTime              *timestamp.Timestamp `protobuf:"bytes,11,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -218,16 +218,16 @@ type ListSinksRequest struct {
 	//     "organizations/[ORGANIZATION_ID]"
 	//     "billingAccounts/[BILLING_ACCOUNT_ID]"
 	//     "folders/[FOLDER_ID]"
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the
 	// preceding call to this method.  `pageToken` must be the value of
 	// `nextPageToken` from the previous response.  The values of other method
 	// parameters should be identical to those in the previous call.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional. The maximum number of results to return from this request.
 	// Non-positive values are ignored.  The presence of `nextPageToken` in the
 	// response indicates that more results might be available.
-	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -281,11 +281,11 @@ func (m *ListSinksRequest) GetPageSize() int32 {
 // Result returned from `ListSinks`.
 type ListSinksResponse struct {
 	// A list of sinks.
-	Sinks []*LogSink `protobuf:"bytes,1,rep,name=sinks" json:"sinks,omitempty"`
+	Sinks []*LogSink `protobuf:"bytes,1,rep,name=sinks,proto3" json:"sinks,omitempty"`
 	// If there might be more results than appear in this response, then
 	// `nextPageToken` is included.  To get the next set of results, call the same
 	// method again using the value of `nextPageToken` as `pageToken`.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -339,7 +339,7 @@ type GetSinkRequest struct {
 	//     "folders/[FOLDER_ID]/sinks/[SINK_ID]"
 	//
 	// Example: `"projects/my-project-id/sinks/my-sink-id"`.
-	SinkName             string   `protobuf:"bytes,1,opt,name=sink_name,json=sinkName" json:"sink_name,omitempty"`
+	SinkName             string   `protobuf:"bytes,1,opt,name=sink_name,json=sinkName,proto3" json:"sink_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -386,10 +386,10 @@ type CreateSinkRequest struct {
 	//     "folders/[FOLDER_ID]"
 	//
 	// Examples: `"projects/my-logging-project"`, `"organizations/123456789"`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The new sink, whose `name` parameter is a sink identifier that
 	// is not already in use.
-	Sink *LogSink `protobuf:"bytes,2,opt,name=sink" json:"sink,omitempty"`
+	Sink *LogSink `protobuf:"bytes,2,opt,name=sink,proto3" json:"sink,omitempty"`
 	// Optional. Determines the kind of IAM identity returned as `writer_identity`
 	// in the new sink.  If this value is omitted or set to false, and if the
 	// sink's parent is a project, then the value returned as `writer_identity` is
@@ -401,7 +401,7 @@ type CreateSinkRequest struct {
 	// resource such as an organization, then the value of `writer_identity` will
 	// be a unique service account used only for exports from the new sink.  For
 	// more information, see `writer_identity` in [LogSink][google.logging.v2.LogSink].
-	UniqueWriterIdentity bool     `protobuf:"varint,3,opt,name=unique_writer_identity,json=uniqueWriterIdentity" json:"unique_writer_identity,omitempty"`
+	UniqueWriterIdentity bool     `protobuf:"varint,3,opt,name=unique_writer_identity,json=uniqueWriterIdentity,proto3" json:"unique_writer_identity,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -463,10 +463,10 @@ type UpdateSinkRequest struct {
 	//     "folders/[FOLDER_ID]/sinks/[SINK_ID]"
 	//
 	// Example: `"projects/my-project-id/sinks/my-sink-id"`.
-	SinkName string `protobuf:"bytes,1,opt,name=sink_name,json=sinkName" json:"sink_name,omitempty"`
+	SinkName string `protobuf:"bytes,1,opt,name=sink_name,json=sinkName,proto3" json:"sink_name,omitempty"`
 	// Required. The updated sink, whose name is the same identifier that appears
 	// as part of `sink_name`.
-	Sink *LogSink `protobuf:"bytes,2,opt,name=sink" json:"sink,omitempty"`
+	Sink *LogSink `protobuf:"bytes,2,opt,name=sink,proto3" json:"sink,omitempty"`
 	// Optional. See
 	// [sinks.create](/logging/docs/api/reference/rest/v2/projects.sinks/create)
 	// for a description of this field.  When updating a sink, the effect of this
@@ -479,7 +479,7 @@ type UpdateSinkRequest struct {
 	//     `writer_identity` is changed to a unique service account.
 	// +   It is an error if the old value is true and the new value is
 	//     set to false or defaulted to false.
-	UniqueWriterIdentity bool `protobuf:"varint,3,opt,name=unique_writer_identity,json=uniqueWriterIdentity" json:"unique_writer_identity,omitempty"`
+	UniqueWriterIdentity bool `protobuf:"varint,3,opt,name=unique_writer_identity,json=uniqueWriterIdentity,proto3" json:"unique_writer_identity,omitempty"`
 	// Optional. Field mask that specifies the fields in `sink` that need
 	// an update. A sink field will be overwritten if, and only if, it is
 	// in the update mask.  `name` and output only fields cannot be updated.
@@ -494,7 +494,7 @@ type UpdateSinkRequest struct {
 	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
 	//
 	// Example: `updateMask=filter`.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -563,7 +563,7 @@ type DeleteSinkRequest struct {
 	//     "folders/[FOLDER_ID]/sinks/[SINK_ID]"
 	//
 	// Example: `"projects/my-project-id/sinks/my-sink-id"`.
-	SinkName             string   `protobuf:"bytes,1,opt,name=sink_name,json=sinkName" json:"sink_name,omitempty"`
+	SinkName             string   `protobuf:"bytes,1,opt,name=sink_name,json=sinkName,proto3" json:"sink_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -610,9 +610,9 @@ type LogExclusion struct {
 	// Required. A client-assigned identifier, such as
 	// `"load-balancer-exclusion"`. Identifiers are limited to 100 characters and
 	// can include only letters, digits, underscores, hyphens, and periods.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. A description of this exclusion.
-	Description string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Required.
 	// An [advanced logs filter](/logging/docs/view/advanced_filters)
 	// that matches the log entries to be excluded. By using the
@@ -622,12 +622,12 @@ type LogExclusion struct {
 	// entries from load balancers:
 	//
 	//     "resource.type=http_load_balancer severity<ERROR sample(insertId, 0.99)"
-	Filter string `protobuf:"bytes,3,opt,name=filter" json:"filter,omitempty"`
+	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Optional. If set to True, then this exclusion is disabled and it does not
 	// exclude any log entries. You can use
 	// [exclusions.patch](/logging/docs/alpha-exclusion/docs/reference/v2/rest/v2/projects.exclusions/patch)
 	// to change the value of this field.
-	Disabled             bool     `protobuf:"varint,4,opt,name=disabled" json:"disabled,omitempty"`
+	Disabled             bool     `protobuf:"varint,4,opt,name=disabled,proto3" json:"disabled,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -693,16 +693,16 @@ type ListExclusionsRequest struct {
 	//     "organizations/[ORGANIZATION_ID]"
 	//     "billingAccounts/[BILLING_ACCOUNT_ID]"
 	//     "folders/[FOLDER_ID]"
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the
 	// preceding call to this method.  `pageToken` must be the value of
 	// `nextPageToken` from the previous response.  The values of other method
 	// parameters should be identical to those in the previous call.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional. The maximum number of results to return from this request.
 	// Non-positive values are ignored.  The presence of `nextPageToken` in the
 	// response indicates that more results might be available.
-	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -756,11 +756,11 @@ func (m *ListExclusionsRequest) GetPageSize() int32 {
 // Result returned from `ListExclusions`.
 type ListExclusionsResponse struct {
 	// A list of exclusions.
-	Exclusions []*LogExclusion `protobuf:"bytes,1,rep,name=exclusions" json:"exclusions,omitempty"`
+	Exclusions []*LogExclusion `protobuf:"bytes,1,rep,name=exclusions,proto3" json:"exclusions,omitempty"`
 	// If there might be more results than appear in this response, then
 	// `nextPageToken` is included.  To get the next set of results, call the same
 	// method again using the value of `nextPageToken` as `pageToken`.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -814,7 +814,7 @@ type GetExclusionRequest struct {
 	//     "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
 	//
 	// Example: `"projects/my-project-id/exclusions/my-exclusion-id"`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -861,10 +861,10 @@ type CreateExclusionRequest struct {
 	//     "folders/[FOLDER_ID]"
 	//
 	// Examples: `"projects/my-logging-project"`, `"organizations/123456789"`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The new exclusion, whose `name` parameter is an exclusion name
 	// that is not already used in the parent resource.
-	Exclusion            *LogExclusion `protobuf:"bytes,2,opt,name=exclusion" json:"exclusion,omitempty"`
+	Exclusion            *LogExclusion `protobuf:"bytes,2,opt,name=exclusion,proto3" json:"exclusion,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -918,10 +918,10 @@ type UpdateExclusionRequest struct {
 	//     "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
 	//
 	// Example: `"projects/my-project-id/exclusions/my-exclusion-id"`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. New values for the existing exclusion. Only the fields specified
 	// in `update_mask` are relevant.
-	Exclusion *LogExclusion `protobuf:"bytes,2,opt,name=exclusion" json:"exclusion,omitempty"`
+	Exclusion *LogExclusion `protobuf:"bytes,2,opt,name=exclusion,proto3" json:"exclusion,omitempty"`
 	// Required. A nonempty list of fields to change in the existing exclusion.
 	// New values for the fields are taken from the corresponding fields in the
 	// [LogExclusion][google.logging.v2.LogExclusion] included in this request. Fields not mentioned in
@@ -929,7 +929,7 @@ type UpdateExclusionRequest struct {
 	//
 	// For example, to change the filter and description of an exclusion,
 	// specify an `update_mask` of `"filter,description"`.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -990,7 +990,7 @@ type DeleteExclusionRequest struct {
 	//     "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
 	//
 	// Example: `"projects/my-project-id/exclusions/my-exclusion-id"`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1186,8 +1186,7 @@ func (c *configServiceV2Client) DeleteExclusion(ctx context.Context, in *DeleteE
 	return out, nil
 }
 
-// Server API for ConfigServiceV2 service
-
+// ConfigServiceV2Server is the server API for ConfigServiceV2 service.
 type ConfigServiceV2Server interface {
 	// Lists sinks.
 	ListSinks(context.Context, *ListSinksRequest) (*ListSinksResponse, error)

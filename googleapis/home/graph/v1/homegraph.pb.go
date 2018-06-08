@@ -30,11 +30,11 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 type RequestSyncDevicesRequest struct {
 	// Required. Third-party user id issued by agent's third-party identity
 	// provider.
-	AgentUserId string `protobuf:"bytes,1,opt,name=agent_user_id,json=agentUserId" json:"agent_user_id,omitempty"`
+	AgentUserId string `protobuf:"bytes,1,opt,name=agent_user_id,json=agentUserId,proto3" json:"agent_user_id,omitempty"`
 	// Optional. If set, the request will be added to a queue and a response will
 	// be returned immediately. The queue allows for de-duplication of
 	// simultaneous requests.
-	Async                bool     `protobuf:"varint,2,opt,name=async" json:"async,omitempty"`
+	Async                bool     `protobuf:"varint,2,opt,name=async,proto3" json:"async,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -158,11 +158,11 @@ var xxx_messageInfo_RequestSyncDevicesResponse proto.InternalMessageInfo
 // Next tag: 5.
 type ReportStateAndNotificationRequest struct {
 	// Request id used for debugging.
-	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId" json:"request_id,omitempty"`
+	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// Unique identifier per event (eg: doorbell press).
-	EventId string `protobuf:"bytes,4,opt,name=event_id,json=eventId" json:"event_id,omitempty"`
+	EventId string `protobuf:"bytes,4,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
 	// Required. Third-party user id.
-	AgentUserId string `protobuf:"bytes,2,opt,name=agent_user_id,json=agentUserId" json:"agent_user_id,omitempty"`
+	AgentUserId string `protobuf:"bytes,2,opt,name=agent_user_id,json=agentUserId,proto3" json:"agent_user_id,omitempty"`
 	// State of devices to update and notification metadata for devices. For
 	// example, if a user turns a light on manually, a State update should be
 	// sent so that the information is always the current status of the device.
@@ -173,7 +173,7 @@ type ReportStateAndNotificationRequest struct {
 	// include both "on" and "70 degrees" but the 3p may choose not to send any
 	// notification for that, or to only say that the "the room is heating up",
 	// keeping state and notification independent.
-	Payload              *StateAndNotificationPayload `protobuf:"bytes,3,opt,name=payload" json:"payload,omitempty"`
+	Payload              *StateAndNotificationPayload `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
 	XXX_unrecognized     []byte                       `json:"-"`
 	XXX_sizecache        int32                        `json:"-"`
@@ -234,7 +234,7 @@ func (m *ReportStateAndNotificationRequest) GetPayload() *StateAndNotificationPa
 // Response type for ReportStateAndNotification call.
 type ReportStateAndNotificationResponse struct {
 	// Request id copied from ReportStateAndNotificationRequest.
-	RequestId            string   `protobuf:"bytes,1,opt,name=request_id,json=requestId" json:"request_id,omitempty"`
+	RequestId            string   `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -274,7 +274,7 @@ func (m *ReportStateAndNotificationResponse) GetRequestId() string {
 // Payload containing the State and Notification information for devices.
 type StateAndNotificationPayload struct {
 	// The devices for updating State and sending Notifications.
-	Devices              *ReportStateAndNotificationDevice `protobuf:"bytes,1,opt,name=devices" json:"devices,omitempty"`
+	Devices              *ReportStateAndNotificationDevice `protobuf:"bytes,1,opt,name=devices,proto3" json:"devices,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
 	XXX_unrecognized     []byte                            `json:"-"`
 	XXX_sizecache        int32                             `json:"-"`
@@ -314,9 +314,9 @@ func (m *StateAndNotificationPayload) GetDevices() *ReportStateAndNotificationDe
 // The States and Notifications specific to a device.
 type ReportStateAndNotificationDevice struct {
 	// States of devices to update.
-	States *_struct.Struct `protobuf:"bytes,1,opt,name=states" json:"states,omitempty"`
+	States *_struct.Struct `protobuf:"bytes,1,opt,name=states,proto3" json:"states,omitempty"`
 	// Notifications metadata for devices.
-	Notifications        *_struct.Struct `protobuf:"bytes,2,opt,name=notifications" json:"notifications,omitempty"`
+	Notifications        *_struct.Struct `protobuf:"bytes,2,opt,name=notifications,proto3" json:"notifications,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -363,9 +363,9 @@ func (m *ReportStateAndNotificationDevice) GetNotifications() *_struct.Struct {
 // Request type for DeleteAgentUser call.
 type DeleteAgentUserRequest struct {
 	// Request id used for debugging.
-	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId" json:"request_id,omitempty"`
+	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// Required. Third-party user id.
-	AgentUserId          string   `protobuf:"bytes,2,opt,name=agent_user_id,json=agentUserId" json:"agent_user_id,omitempty"`
+	AgentUserId          string   `protobuf:"bytes,2,opt,name=agent_user_id,json=agentUserId,proto3" json:"agent_user_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -497,8 +497,7 @@ func (c *homeGraphApiServiceClient) DeleteAgentUser(ctx context.Context, in *Del
 	return out, nil
 }
 
-// Server API for HomeGraphApiService service
-
+// HomeGraphApiServiceServer is the server API for HomeGraphApiService service.
 type HomeGraphApiServiceServer interface {
 	// Requests a Sync call from Google to a 3p partner's home control agent for
 	// a user.

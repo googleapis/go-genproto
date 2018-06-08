@@ -36,23 +36,23 @@ type MonitoredResourceDescriptor struct {
 	// {project_id} is a project ID that provides API-specific context for
 	// accessing the type.  APIs that do not use project information can use the
 	// resource name format `"monitoredResourceDescriptors/{type}"`.
-	Name string `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The monitored resource type. For example, the type
 	// `"cloudsql_database"` represents databases in Google Cloud SQL.
 	// The maximum length of this value is 256 characters.
-	Type string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
+	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	// Optional. A concise name for the monitored resource type that might be
 	// displayed in user interfaces. It should be a Title Cased Noun Phrase,
 	// without any article or other determiners. For example,
 	// `"Google Cloud SQL Database"`.
-	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Optional. A detailed description of the monitored resource type that might
 	// be used in documentation.
-	Description string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Required. A set of labels used to describe instances of this monitored
 	// resource type. For example, an individual Google Cloud SQL database is
 	// identified by values for the labels `"database_id"` and `"zone"`.
-	Labels               []*label.LabelDescriptor `protobuf:"bytes,4,rep,name=labels" json:"labels,omitempty"`
+	Labels               []*label.LabelDescriptor `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
 	XXX_unrecognized     []byte                   `json:"-"`
 	XXX_sizecache        int32                    `json:"-"`
@@ -134,11 +134,11 @@ type MonitoredResource struct {
 	// Required. The monitored resource type. This field must match
 	// the `type` field of a [MonitoredResourceDescriptor][google.api.MonitoredResourceDescriptor] object. For
 	// example, the type of a Compute Engine VM instance is `gce_instance`.
-	Type string `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
+	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	// Required. Values for all of the labels listed in the associated monitored
 	// resource descriptor. For example, Compute Engine VM instances use the
 	// labels `"project_id"`, `"instance_id"`, and `"zone"`.
-	Labels               map[string]string `protobuf:"bytes,2,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Labels               map[string]string `protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -200,9 +200,9 @@ type MonitoredResourceMetadata struct {
 	//     { "name": "my-test-instance",
 	//       "security_group": ["a", "b", "c"],
 	//       "spot_instance": false }
-	SystemLabels *_struct.Struct `protobuf:"bytes,1,opt,name=system_labels,json=systemLabels" json:"system_labels,omitempty"`
+	SystemLabels *_struct.Struct `protobuf:"bytes,1,opt,name=system_labels,json=systemLabels,proto3" json:"system_labels,omitempty"`
 	// Output only. A map of user-defined metadata labels.
-	UserLabels           map[string]string `protobuf:"bytes,2,rep,name=user_labels,json=userLabels" json:"user_labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	UserLabels           map[string]string `protobuf:"bytes,2,rep,name=user_labels,json=userLabels,proto3" json:"user_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`

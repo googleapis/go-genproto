@@ -54,7 +54,7 @@ type SystemParameters struct {
 	//               http_header: Api-Key2
 	//
 	// **NOTE:** All service configuration rules follow "last one wins" order.
-	Rules                []*SystemParameterRule `protobuf:"bytes,1,rep,name=rules" json:"rules,omitempty"`
+	Rules                []*SystemParameterRule `protobuf:"bytes,1,rep,name=rules,proto3" json:"rules,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
 	XXX_unrecognized     []byte                 `json:"-"`
 	XXX_sizecache        int32                  `json:"-"`
@@ -98,13 +98,13 @@ type SystemParameterRule struct {
 	// methods in all APIs.
 	//
 	// Refer to [selector][google.api.DocumentationRule.selector] for syntax details.
-	Selector string `protobuf:"bytes,1,opt,name=selector" json:"selector,omitempty"`
+	Selector string `protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
 	// Define parameters. Multiple names may be defined for a parameter.
 	// For a given method call, only one of them should be used. If multiple
 	// names are used the behavior is implementation-dependent.
 	// If none of the specified names are present the behavior is
 	// parameter-dependent.
-	Parameters           []*SystemParameter `protobuf:"bytes,2,rep,name=parameters" json:"parameters,omitempty"`
+	Parameters           []*SystemParameter `protobuf:"bytes,2,rep,name=parameters,proto3" json:"parameters,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -153,13 +153,13 @@ func (m *SystemParameterRule) GetParameters() []*SystemParameter {
 // is implementation-dependent.
 type SystemParameter struct {
 	// Define the name of the parameter, such as "api_key" . It is case sensitive.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Define the HTTP header name to use for the parameter. It is case
 	// insensitive.
-	HttpHeader string `protobuf:"bytes,2,opt,name=http_header,json=httpHeader" json:"http_header,omitempty"`
+	HttpHeader string `protobuf:"bytes,2,opt,name=http_header,json=httpHeader,proto3" json:"http_header,omitempty"`
 	// Define the URL query parameter name to use for the parameter. It is case
 	// sensitive.
-	UrlQueryParameter    string   `protobuf:"bytes,3,opt,name=url_query_parameter,json=urlQueryParameter" json:"url_query_parameter,omitempty"`
+	UrlQueryParameter    string   `protobuf:"bytes,3,opt,name=url_query_parameter,json=urlQueryParameter,proto3" json:"url_query_parameter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

@@ -61,12 +61,12 @@ type Monitoring struct {
 	// There can be multiple producer destinations, each one must have a
 	// different monitored resource type. A metric can be used in at most
 	// one producer destination.
-	ProducerDestinations []*Monitoring_MonitoringDestination `protobuf:"bytes,1,rep,name=producer_destinations,json=producerDestinations" json:"producer_destinations,omitempty"`
+	ProducerDestinations []*Monitoring_MonitoringDestination `protobuf:"bytes,1,rep,name=producer_destinations,json=producerDestinations,proto3" json:"producer_destinations,omitempty"`
 	// Monitoring configurations for sending metrics to the consumer project.
 	// There can be multiple consumer destinations, each one must have a
 	// different monitored resource type. A metric can be used in at most
 	// one consumer destination.
-	ConsumerDestinations []*Monitoring_MonitoringDestination `protobuf:"bytes,2,rep,name=consumer_destinations,json=consumerDestinations" json:"consumer_destinations,omitempty"`
+	ConsumerDestinations []*Monitoring_MonitoringDestination `protobuf:"bytes,2,rep,name=consumer_destinations,json=consumerDestinations,proto3" json:"consumer_destinations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
 	XXX_unrecognized     []byte                              `json:"-"`
 	XXX_sizecache        int32                               `json:"-"`
@@ -115,10 +115,10 @@ func (m *Monitoring) GetConsumerDestinations() []*Monitoring_MonitoringDestinati
 type Monitoring_MonitoringDestination struct {
 	// The monitored resource type. The type must be defined in
 	// [Service.monitored_resources][google.api.Service.monitored_resources] section.
-	MonitoredResource string `protobuf:"bytes,1,opt,name=monitored_resource,json=monitoredResource" json:"monitored_resource,omitempty"`
+	MonitoredResource string `protobuf:"bytes,1,opt,name=monitored_resource,json=monitoredResource,proto3" json:"monitored_resource,omitempty"`
 	// Names of the metrics to report to this monitoring destination.
 	// Each name must be defined in [Service.metrics][google.api.Service.metrics] section.
-	Metrics              []string `protobuf:"bytes,2,rep,name=metrics" json:"metrics,omitempty"`
+	Metrics              []string `protobuf:"bytes,2,rep,name=metrics,proto3" json:"metrics,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

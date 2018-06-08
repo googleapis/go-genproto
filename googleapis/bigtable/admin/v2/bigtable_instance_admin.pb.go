@@ -33,20 +33,20 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 type CreateInstanceRequest struct {
 	// The unique name of the project in which to create the new instance.
 	// Values are of the form `projects/<project>`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The ID to be used when referring to the new instance within its project,
 	// e.g., just `myinstance` rather than
 	// `projects/myproject/instances/myinstance`.
-	InstanceId string `protobuf:"bytes,2,opt,name=instance_id,json=instanceId" json:"instance_id,omitempty"`
+	InstanceId string `protobuf:"bytes,2,opt,name=instance_id,json=instanceId,proto3" json:"instance_id,omitempty"`
 	// The instance to create.
 	// Fields marked `OutputOnly` must be left blank.
-	Instance *Instance `protobuf:"bytes,3,opt,name=instance" json:"instance,omitempty"`
+	Instance *Instance `protobuf:"bytes,3,opt,name=instance,proto3" json:"instance,omitempty"`
 	// The clusters to be created within the instance, mapped by desired
 	// cluster ID, e.g., just `mycluster` rather than
 	// `projects/myproject/instances/myinstance/clusters/mycluster`.
 	// Fields marked `OutputOnly` must be left blank.
 	// Currently exactly one cluster must be specified.
-	Clusters             map[string]*Cluster `protobuf:"bytes,4,rep,name=clusters" json:"clusters,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Clusters             map[string]*Cluster `protobuf:"bytes,4,rep,name=clusters,proto3" json:"clusters,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -108,7 +108,7 @@ func (m *CreateInstanceRequest) GetClusters() map[string]*Cluster {
 type GetInstanceRequest struct {
 	// The unique name of the requested instance. Values are of the form
 	// `projects/<project>/instances/<instance>`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -149,9 +149,9 @@ func (m *GetInstanceRequest) GetName() string {
 type ListInstancesRequest struct {
 	// The unique name of the project for which a list of instances is requested.
 	// Values are of the form `projects/<project>`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The value of `next_page_token` returned by a previous call.
-	PageToken            string   `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -198,17 +198,17 @@ func (m *ListInstancesRequest) GetPageToken() string {
 // Response message for BigtableInstanceAdmin.ListInstances.
 type ListInstancesResponse struct {
 	// The list of requested instances.
-	Instances []*Instance `protobuf:"bytes,1,rep,name=instances" json:"instances,omitempty"`
+	Instances []*Instance `protobuf:"bytes,1,rep,name=instances,proto3" json:"instances,omitempty"`
 	// Locations from which Instance information could not be retrieved,
 	// due to an outage or some other transient condition.
 	// Instances whose Clusters are all in one of the failed locations
 	// may be missing from `instances`, and Instances with at least one
 	// Cluster in a failed location may only have partial information returned.
-	FailedLocations []string `protobuf:"bytes,2,rep,name=failed_locations,json=failedLocations" json:"failed_locations,omitempty"`
+	FailedLocations []string `protobuf:"bytes,2,rep,name=failed_locations,json=failedLocations,proto3" json:"failed_locations,omitempty"`
 	// Set if not all instances could be returned in a single response.
 	// Pass this value to `page_token` in another request to get the next
 	// page of results.
-	NextPageToken        string   `protobuf:"bytes,3,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,3,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -262,10 +262,10 @@ func (m *ListInstancesResponse) GetNextPageToken() string {
 // Request message for BigtableInstanceAdmin.PartialUpdateInstance.
 type PartialUpdateInstanceRequest struct {
 	// The Instance which will (partially) replace the current value.
-	Instance *Instance `protobuf:"bytes,1,opt,name=instance" json:"instance,omitempty"`
+	Instance *Instance `protobuf:"bytes,1,opt,name=instance,proto3" json:"instance,omitempty"`
 	// The subset of Instance fields which should be replaced.
 	// Must be explicitly set.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -313,7 +313,7 @@ func (m *PartialUpdateInstanceRequest) GetUpdateMask() *field_mask.FieldMask {
 type DeleteInstanceRequest struct {
 	// The unique name of the instance to be deleted.
 	// Values are of the form `projects/<project>/instances/<instance>`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -355,14 +355,14 @@ type CreateClusterRequest struct {
 	// The unique name of the instance in which to create the new cluster.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The ID to be used when referring to the new cluster within its instance,
 	// e.g., just `mycluster` rather than
 	// `projects/myproject/instances/myinstance/clusters/mycluster`.
-	ClusterId string `protobuf:"bytes,2,opt,name=cluster_id,json=clusterId" json:"cluster_id,omitempty"`
+	ClusterId string `protobuf:"bytes,2,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"`
 	// The cluster to be created.
 	// Fields marked `OutputOnly` must be left blank.
-	Cluster              *Cluster `protobuf:"bytes,3,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster              *Cluster `protobuf:"bytes,3,opt,name=cluster,proto3" json:"cluster,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -417,7 +417,7 @@ func (m *CreateClusterRequest) GetCluster() *Cluster {
 type GetClusterRequest struct {
 	// The unique name of the requested cluster. Values are of the form
 	// `projects/<project>/instances/<instance>/clusters/<cluster>`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -460,9 +460,9 @@ type ListClustersRequest struct {
 	// Values are of the form `projects/<project>/instances/<instance>`.
 	// Use `<instance> = '-'` to list Clusters for all Instances in a project,
 	// e.g., `projects/myproject/instances/-`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The value of `next_page_token` returned by a previous call.
-	PageToken            string   `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -509,16 +509,16 @@ func (m *ListClustersRequest) GetPageToken() string {
 // Response message for BigtableInstanceAdmin.ListClusters.
 type ListClustersResponse struct {
 	// The list of requested clusters.
-	Clusters []*Cluster `protobuf:"bytes,1,rep,name=clusters" json:"clusters,omitempty"`
+	Clusters []*Cluster `protobuf:"bytes,1,rep,name=clusters,proto3" json:"clusters,omitempty"`
 	// Locations from which Cluster information could not be retrieved,
 	// due to an outage or some other transient condition.
 	// Clusters from these locations may be missing from `clusters`,
 	// or may only have partial information returned.
-	FailedLocations []string `protobuf:"bytes,2,rep,name=failed_locations,json=failedLocations" json:"failed_locations,omitempty"`
+	FailedLocations []string `protobuf:"bytes,2,rep,name=failed_locations,json=failedLocations,proto3" json:"failed_locations,omitempty"`
 	// Set if not all clusters could be returned in a single response.
 	// Pass this value to `page_token` in another request to get the next
 	// page of results.
-	NextPageToken        string   `protobuf:"bytes,3,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,3,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -573,7 +573,7 @@ func (m *ListClustersResponse) GetNextPageToken() string {
 type DeleteClusterRequest struct {
 	// The unique name of the cluster to be deleted. Values are of the form
 	// `projects/<project>/instances/<instance>/clusters/<cluster>`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -613,11 +613,11 @@ func (m *DeleteClusterRequest) GetName() string {
 // The metadata for the Operation returned by CreateInstance.
 type CreateInstanceMetadata struct {
 	// The request that prompted the initiation of this CreateInstance operation.
-	OriginalRequest *CreateInstanceRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest" json:"original_request,omitempty"`
+	OriginalRequest *CreateInstanceRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest,proto3" json:"original_request,omitempty"`
 	// The time at which the original request was received.
-	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime" json:"request_time,omitempty"`
+	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime,proto3" json:"request_time,omitempty"`
 	// The time at which the operation failed or was completed successfully.
-	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime" json:"finish_time,omitempty"`
+	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -671,11 +671,11 @@ func (m *CreateInstanceMetadata) GetFinishTime() *timestamp.Timestamp {
 // The metadata for the Operation returned by UpdateInstance.
 type UpdateInstanceMetadata struct {
 	// The request that prompted the initiation of this UpdateInstance operation.
-	OriginalRequest *PartialUpdateInstanceRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest" json:"original_request,omitempty"`
+	OriginalRequest *PartialUpdateInstanceRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest,proto3" json:"original_request,omitempty"`
 	// The time at which the original request was received.
-	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime" json:"request_time,omitempty"`
+	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime,proto3" json:"request_time,omitempty"`
 	// The time at which the operation failed or was completed successfully.
-	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime" json:"finish_time,omitempty"`
+	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -729,11 +729,11 @@ func (m *UpdateInstanceMetadata) GetFinishTime() *timestamp.Timestamp {
 // The metadata for the Operation returned by CreateCluster.
 type CreateClusterMetadata struct {
 	// The request that prompted the initiation of this CreateCluster operation.
-	OriginalRequest *CreateClusterRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest" json:"original_request,omitempty"`
+	OriginalRequest *CreateClusterRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest,proto3" json:"original_request,omitempty"`
 	// The time at which the original request was received.
-	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime" json:"request_time,omitempty"`
+	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime,proto3" json:"request_time,omitempty"`
 	// The time at which the operation failed or was completed successfully.
-	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime" json:"finish_time,omitempty"`
+	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -787,11 +787,11 @@ func (m *CreateClusterMetadata) GetFinishTime() *timestamp.Timestamp {
 // The metadata for the Operation returned by UpdateCluster.
 type UpdateClusterMetadata struct {
 	// The request that prompted the initiation of this UpdateCluster operation.
-	OriginalRequest *Cluster `protobuf:"bytes,1,opt,name=original_request,json=originalRequest" json:"original_request,omitempty"`
+	OriginalRequest *Cluster `protobuf:"bytes,1,opt,name=original_request,json=originalRequest,proto3" json:"original_request,omitempty"`
 	// The time at which the original request was received.
-	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime" json:"request_time,omitempty"`
+	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime,proto3" json:"request_time,omitempty"`
 	// The time at which the operation failed or was completed successfully.
-	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime" json:"finish_time,omitempty"`
+	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -847,16 +847,16 @@ type CreateAppProfileRequest struct {
 	// The unique name of the instance in which to create the new app profile.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The ID to be used when referring to the new app profile within its
 	// instance, e.g., just `myprofile` rather than
 	// `projects/myproject/instances/myinstance/appProfiles/myprofile`.
-	AppProfileId string `protobuf:"bytes,2,opt,name=app_profile_id,json=appProfileId" json:"app_profile_id,omitempty"`
+	AppProfileId string `protobuf:"bytes,2,opt,name=app_profile_id,json=appProfileId,proto3" json:"app_profile_id,omitempty"`
 	// The app profile to be created.
 	// Fields marked `OutputOnly` will be ignored.
-	AppProfile *AppProfile `protobuf:"bytes,3,opt,name=app_profile,json=appProfile" json:"app_profile,omitempty"`
+	AppProfile *AppProfile `protobuf:"bytes,3,opt,name=app_profile,json=appProfile,proto3" json:"app_profile,omitempty"`
 	// If true, ignore safety checks when creating the app profile.
-	IgnoreWarnings       bool     `protobuf:"varint,4,opt,name=ignore_warnings,json=ignoreWarnings" json:"ignore_warnings,omitempty"`
+	IgnoreWarnings       bool     `protobuf:"varint,4,opt,name=ignore_warnings,json=ignoreWarnings,proto3" json:"ignore_warnings,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -918,7 +918,7 @@ func (m *CreateAppProfileRequest) GetIgnoreWarnings() bool {
 type GetAppProfileRequest struct {
 	// The unique name of the requested app profile. Values are of the form
 	// `projects/<project>/instances/<instance>/appProfiles/<app_profile>`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -960,9 +960,9 @@ type ListAppProfilesRequest struct {
 	// The unique name of the instance for which a list of app profiles is
 	// requested. Values are of the form
 	// `projects/<project>/instances/<instance>`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The value of `next_page_token` returned by a previous call.
-	PageToken            string   `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1009,11 +1009,11 @@ func (m *ListAppProfilesRequest) GetPageToken() string {
 // Response message for BigtableInstanceAdmin.ListAppProfiles.
 type ListAppProfilesResponse struct {
 	// The list of requested app profiles.
-	AppProfiles []*AppProfile `protobuf:"bytes,1,rep,name=app_profiles,json=appProfiles" json:"app_profiles,omitempty"`
+	AppProfiles []*AppProfile `protobuf:"bytes,1,rep,name=app_profiles,json=appProfiles,proto3" json:"app_profiles,omitempty"`
 	// Set if not all app profiles could be returned in a single response.
 	// Pass this value to `page_token` in another request to get the next
 	// page of results.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1060,12 +1060,12 @@ func (m *ListAppProfilesResponse) GetNextPageToken() string {
 // Request message for BigtableInstanceAdmin.UpdateAppProfile.
 type UpdateAppProfileRequest struct {
 	// The app profile which will (partially) replace the current value.
-	AppProfile *AppProfile `protobuf:"bytes,1,opt,name=app_profile,json=appProfile" json:"app_profile,omitempty"`
+	AppProfile *AppProfile `protobuf:"bytes,1,opt,name=app_profile,json=appProfile,proto3" json:"app_profile,omitempty"`
 	// The subset of app profile fields which should be replaced.
 	// If unset, all fields will be replaced.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// If true, ignore safety checks when updating the app profile.
-	IgnoreWarnings       bool     `protobuf:"varint,3,opt,name=ignore_warnings,json=ignoreWarnings" json:"ignore_warnings,omitempty"`
+	IgnoreWarnings       bool     `protobuf:"varint,3,opt,name=ignore_warnings,json=ignoreWarnings,proto3" json:"ignore_warnings,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1120,9 +1120,9 @@ func (m *UpdateAppProfileRequest) GetIgnoreWarnings() bool {
 type DeleteAppProfileRequest struct {
 	// The unique name of the app profile to be deleted. Values are of the form
 	// `projects/<project>/instances/<instance>/appProfiles/<app_profile>`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// If true, ignore safety checks when deleting the app profile.
-	IgnoreWarnings       bool     `protobuf:"varint,2,opt,name=ignore_warnings,json=ignoreWarnings" json:"ignore_warnings,omitempty"`
+	IgnoreWarnings       bool     `protobuf:"varint,2,opt,name=ignore_warnings,json=ignoreWarnings,proto3" json:"ignore_warnings,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1456,8 +1456,7 @@ func (c *bigtableInstanceAdminClient) TestIamPermissions(ctx context.Context, in
 	return out, nil
 }
 
-// Server API for BigtableInstanceAdmin service
-
+// BigtableInstanceAdminServer is the server API for BigtableInstanceAdmin service.
 type BigtableInstanceAdminServer interface {
 	// Create an instance within a project.
 	CreateInstance(context.Context, *CreateInstanceRequest) (*longrunning.Operation, error)

@@ -46,7 +46,7 @@ type Billing struct {
 	// There can be multiple consumer destinations per service, each one must have
 	// a different monitored resource type. A metric can be used in at most
 	// one consumer destination.
-	ConsumerDestinations []*Billing_BillingDestination `protobuf:"bytes,8,rep,name=consumer_destinations,json=consumerDestinations" json:"consumer_destinations,omitempty"`
+	ConsumerDestinations []*Billing_BillingDestination `protobuf:"bytes,8,rep,name=consumer_destinations,json=consumerDestinations,proto3" json:"consumer_destinations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
 	XXX_unrecognized     []byte                        `json:"-"`
 	XXX_sizecache        int32                         `json:"-"`
@@ -88,10 +88,10 @@ func (m *Billing) GetConsumerDestinations() []*Billing_BillingDestination {
 type Billing_BillingDestination struct {
 	// The monitored resource type. The type must be defined in
 	// [Service.monitored_resources][google.api.Service.monitored_resources] section.
-	MonitoredResource string `protobuf:"bytes,1,opt,name=monitored_resource,json=monitoredResource" json:"monitored_resource,omitempty"`
+	MonitoredResource string `protobuf:"bytes,1,opt,name=monitored_resource,json=monitoredResource,proto3" json:"monitored_resource,omitempty"`
 	// Names of the metrics to report to this billing destination.
 	// Each name must be defined in [Service.metrics][google.api.Service.metrics] section.
-	Metrics              []string `protobuf:"bytes,2,rep,name=metrics" json:"metrics,omitempty"`
+	Metrics              []string `protobuf:"bytes,2,rep,name=metrics,proto3" json:"metrics,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

@@ -53,12 +53,12 @@ type Logging struct {
 	// There can be multiple producer destinations, each one must have a
 	// different monitored resource type. A log can be used in at most
 	// one producer destination.
-	ProducerDestinations []*Logging_LoggingDestination `protobuf:"bytes,1,rep,name=producer_destinations,json=producerDestinations" json:"producer_destinations,omitempty"`
+	ProducerDestinations []*Logging_LoggingDestination `protobuf:"bytes,1,rep,name=producer_destinations,json=producerDestinations,proto3" json:"producer_destinations,omitempty"`
 	// Logging configurations for sending logs to the consumer project.
 	// There can be multiple consumer destinations, each one must have a
 	// different monitored resource type. A log can be used in at most
 	// one consumer destination.
-	ConsumerDestinations []*Logging_LoggingDestination `protobuf:"bytes,2,rep,name=consumer_destinations,json=consumerDestinations" json:"consumer_destinations,omitempty"`
+	ConsumerDestinations []*Logging_LoggingDestination `protobuf:"bytes,2,rep,name=consumer_destinations,json=consumerDestinations,proto3" json:"consumer_destinations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
 	XXX_unrecognized     []byte                        `json:"-"`
 	XXX_sizecache        int32                         `json:"-"`
@@ -107,12 +107,12 @@ func (m *Logging) GetConsumerDestinations() []*Logging_LoggingDestination {
 type Logging_LoggingDestination struct {
 	// The monitored resource type. The type must be defined in the
 	// [Service.monitored_resources][google.api.Service.monitored_resources] section.
-	MonitoredResource string `protobuf:"bytes,3,opt,name=monitored_resource,json=monitoredResource" json:"monitored_resource,omitempty"`
+	MonitoredResource string `protobuf:"bytes,3,opt,name=monitored_resource,json=monitoredResource,proto3" json:"monitored_resource,omitempty"`
 	// Names of the logs to be sent to this destination. Each name must
 	// be defined in the [Service.logs][google.api.Service.logs] section. If the log name is
 	// not a domain scoped name, it will be automatically prefixed with
 	// the service name followed by "/".
-	Logs                 []string `protobuf:"bytes,1,rep,name=logs" json:"logs,omitempty"`
+	Logs                 []string `protobuf:"bytes,1,rep,name=logs,proto3" json:"logs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

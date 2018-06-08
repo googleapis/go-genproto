@@ -171,8 +171,7 @@ func (c *bigtableServiceClient) ReadModifyWriteRow(ctx context.Context, in *Read
 	return out, nil
 }
 
-// Server API for BigtableService service
-
+// BigtableServiceServer is the server API for BigtableService service.
 type BigtableServiceServer interface {
 	// Streams back the contents of all requested rows, optionally applying
 	// the same Reader filter to each. Depending on their size, rows may be

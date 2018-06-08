@@ -32,17 +32,17 @@ type LogDescriptor struct {
 	// include the following characters: upper- and lower-case alphanumeric
 	// characters [A-Za-z0-9], and punctuation characters including
 	// slash, underscore, hyphen, period [/_-.].
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The set of labels that are available to describe a specific log entry.
 	// Runtime requests that contain labels not specified here are
 	// considered invalid.
-	Labels []*label.LabelDescriptor `protobuf:"bytes,2,rep,name=labels" json:"labels,omitempty"`
+	Labels []*label.LabelDescriptor `protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty"`
 	// A human-readable description of this log. This information appears in
 	// the documentation and can contain details.
-	Description string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// The human-readable name for this log. This information appears on
 	// the user interface and should be concise.
-	DisplayName          string   `protobuf:"bytes,4,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	DisplayName          string   `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

@@ -37,9 +37,9 @@ type Authentication struct {
 	// A list of authentication rules that apply to individual API methods.
 	//
 	// **NOTE:** All service configuration rules follow "last one wins" order.
-	Rules []*AuthenticationRule `protobuf:"bytes,3,rep,name=rules" json:"rules,omitempty"`
+	Rules []*AuthenticationRule `protobuf:"bytes,3,rep,name=rules,proto3" json:"rules,omitempty"`
 	// Defines a set of authentication providers that a service supports.
-	Providers            []*AuthProvider `protobuf:"bytes,4,rep,name=providers" json:"providers,omitempty"`
+	Providers            []*AuthProvider `protobuf:"bytes,4,rep,name=providers,proto3" json:"providers,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -96,13 +96,13 @@ type AuthenticationRule struct {
 	// Selects the methods to which this rule applies.
 	//
 	// Refer to [selector][google.api.DocumentationRule.selector] for syntax details.
-	Selector string `protobuf:"bytes,1,opt,name=selector" json:"selector,omitempty"`
+	Selector string `protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
 	// The requirements for OAuth credentials.
-	Oauth *OAuthRequirements `protobuf:"bytes,2,opt,name=oauth" json:"oauth,omitempty"`
+	Oauth *OAuthRequirements `protobuf:"bytes,2,opt,name=oauth,proto3" json:"oauth,omitempty"`
 	// If true, the service accepts API keys without any other credential.
-	AllowWithoutCredential bool `protobuf:"varint,5,opt,name=allow_without_credential,json=allowWithoutCredential" json:"allow_without_credential,omitempty"`
+	AllowWithoutCredential bool `protobuf:"varint,5,opt,name=allow_without_credential,json=allowWithoutCredential,proto3" json:"allow_without_credential,omitempty"`
 	// Requirements for additional authentication providers.
-	Requirements         []*AuthRequirement `protobuf:"bytes,7,rep,name=requirements" json:"requirements,omitempty"`
+	Requirements         []*AuthRequirement `protobuf:"bytes,7,rep,name=requirements,proto3" json:"requirements,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -167,14 +167,14 @@ type AuthProvider struct {
 	// `AuthRequirement.provider_id`.
 	//
 	// Example: "bookstore_auth".
-	Id string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Identifies the principal that issued the JWT. See
 	// https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1
 	// Usually a URL or an email address.
 	//
 	// Example: https://securetoken.google.com
 	// Example: 1234567-compute@developer.gserviceaccount.com
-	Issuer string `protobuf:"bytes,2,opt,name=issuer" json:"issuer,omitempty"`
+	Issuer string `protobuf:"bytes,2,opt,name=issuer,proto3" json:"issuer,omitempty"`
 	// URL of the provider's public key set to validate signature of the JWT. See
 	// [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	// Optional if the key set document:
@@ -184,7 +184,7 @@ type AuthProvider struct {
 	//  - can be inferred from the email domain of the issuer (e.g. a Google service account).
 	//
 	// Example: https://www.googleapis.com/oauth2/v1/certs
-	JwksUri string `protobuf:"bytes,3,opt,name=jwks_uri,json=jwksUri" json:"jwks_uri,omitempty"`
+	JwksUri string `protobuf:"bytes,3,opt,name=jwks_uri,json=jwksUri,proto3" json:"jwks_uri,omitempty"`
 	// The list of JWT
 	// [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
 	// that are allowed to access. A JWT containing any of these audiences will
@@ -198,10 +198,10 @@ type AuthProvider struct {
 	//
 	//     audiences: bookstore_android.apps.googleusercontent.com,
 	//                bookstore_web.apps.googleusercontent.com
-	Audiences string `protobuf:"bytes,4,opt,name=audiences" json:"audiences,omitempty"`
+	Audiences string `protobuf:"bytes,4,opt,name=audiences,proto3" json:"audiences,omitempty"`
 	// Redirect URL if JWT token is required but no present or is expired.
 	// Implement authorizationUrl of securityDefinitions in OpenAPI spec.
-	AuthorizationUrl     string   `protobuf:"bytes,5,opt,name=authorization_url,json=authorizationUrl" json:"authorization_url,omitempty"`
+	AuthorizationUrl     string   `protobuf:"bytes,5,opt,name=authorization_url,json=authorizationUrl,proto3" json:"authorization_url,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -292,7 +292,7 @@ type OAuthRequirements struct {
 	//
 	//      canonical_scopes: https://www.googleapis.com/auth/calendar,
 	//                        https://www.googleapis.com/auth/calendar.read
-	CanonicalScopes      string   `protobuf:"bytes,1,opt,name=canonical_scopes,json=canonicalScopes" json:"canonical_scopes,omitempty"`
+	CanonicalScopes      string   `protobuf:"bytes,1,opt,name=canonical_scopes,json=canonicalScopes,proto3" json:"canonical_scopes,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -337,7 +337,7 @@ type AuthRequirement struct {
 	// Example:
 	//
 	//     provider_id: bookstore_auth
-	ProviderId string `protobuf:"bytes,1,opt,name=provider_id,json=providerId" json:"provider_id,omitempty"`
+	ProviderId string `protobuf:"bytes,1,opt,name=provider_id,json=providerId,proto3" json:"provider_id,omitempty"`
 	// NOTE: This will be deprecated soon, once AuthProvider.audiences is
 	// implemented and accepted in all the runtime components.
 	//
@@ -354,7 +354,7 @@ type AuthRequirement struct {
 	//
 	//     audiences: bookstore_android.apps.googleusercontent.com,
 	//                bookstore_web.apps.googleusercontent.com
-	Audiences            string   `protobuf:"bytes,2,opt,name=audiences" json:"audiences,omitempty"`
+	Audiences            string   `protobuf:"bytes,2,opt,name=audiences,proto3" json:"audiences,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

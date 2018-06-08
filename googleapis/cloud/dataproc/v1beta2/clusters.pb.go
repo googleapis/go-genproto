@@ -111,32 +111,32 @@ func (ClusterStatus_Substate) EnumDescriptor() ([]byte, []int) {
 // a cluster of Compute Engine instances.
 type Cluster struct {
 	// Required. The Google Cloud Platform project ID that the cluster belongs to.
-	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// Required. The cluster name. Cluster names within a project must be
 	// unique. Names of deleted clusters can be reused.
-	ClusterName string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
+	ClusterName string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName,proto3" json:"cluster_name,omitempty"`
 	// Required. The cluster config. Note that Cloud Dataproc may set
 	// default values, and values may change when clusters are updated.
-	Config *ClusterConfig `protobuf:"bytes,3,opt,name=config" json:"config,omitempty"`
+	Config *ClusterConfig `protobuf:"bytes,3,opt,name=config,proto3" json:"config,omitempty"`
 	// Optional. The labels to associate with this cluster.
 	// Label **keys** must contain 1 to 63 characters, and must conform to
 	// [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt).
 	// Label **values** may be empty, but, if present, must contain 1 to 63
 	// characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt).
 	// No more than 32 labels can be associated with a cluster.
-	Labels map[string]string `protobuf:"bytes,8,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Labels map[string]string `protobuf:"bytes,8,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Output only. Cluster status.
-	Status *ClusterStatus `protobuf:"bytes,4,opt,name=status" json:"status,omitempty"`
+	Status *ClusterStatus `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
 	// Output only. The previous cluster status.
-	StatusHistory []*ClusterStatus `protobuf:"bytes,7,rep,name=status_history,json=statusHistory" json:"status_history,omitempty"`
+	StatusHistory []*ClusterStatus `protobuf:"bytes,7,rep,name=status_history,json=statusHistory,proto3" json:"status_history,omitempty"`
 	// Output only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc
 	// generates this value when it creates the cluster.
-	ClusterUuid string `protobuf:"bytes,6,opt,name=cluster_uuid,json=clusterUuid" json:"cluster_uuid,omitempty"`
+	ClusterUuid string `protobuf:"bytes,6,opt,name=cluster_uuid,json=clusterUuid,proto3" json:"cluster_uuid,omitempty"`
 	// Contains cluster daemon metrics such as HDFS and YARN stats.
 	//
 	// **Beta Feature**: This report is available for testing purposes only. It may
 	// be changed before final release.
-	Metrics              *ClusterMetrics `protobuf:"bytes,9,opt,name=metrics" json:"metrics,omitempty"`
+	Metrics              *ClusterMetrics `protobuf:"bytes,9,opt,name=metrics,proto3" json:"metrics,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -230,23 +230,23 @@ type ClusterConfig struct {
 	// ASIA, or EU) for your cluster's staging bucket according to the Google
 	// Compute Engine zone where your cluster is deployed, and then it will create
 	// and manage this project-level, per-location bucket for you.
-	ConfigBucket string `protobuf:"bytes,1,opt,name=config_bucket,json=configBucket" json:"config_bucket,omitempty"`
+	ConfigBucket string `protobuf:"bytes,1,opt,name=config_bucket,json=configBucket,proto3" json:"config_bucket,omitempty"`
 	// Required. The shared Compute Engine config settings for
 	// all instances in a cluster.
-	GceClusterConfig *GceClusterConfig `protobuf:"bytes,8,opt,name=gce_cluster_config,json=gceClusterConfig" json:"gce_cluster_config,omitempty"`
+	GceClusterConfig *GceClusterConfig `protobuf:"bytes,8,opt,name=gce_cluster_config,json=gceClusterConfig,proto3" json:"gce_cluster_config,omitempty"`
 	// Optional. The Compute Engine config settings for
 	// the master instance in a cluster.
-	MasterConfig *InstanceGroupConfig `protobuf:"bytes,9,opt,name=master_config,json=masterConfig" json:"master_config,omitempty"`
+	MasterConfig *InstanceGroupConfig `protobuf:"bytes,9,opt,name=master_config,json=masterConfig,proto3" json:"master_config,omitempty"`
 	// Optional. The Compute Engine config settings for
 	// worker instances in a cluster.
-	WorkerConfig *InstanceGroupConfig `protobuf:"bytes,10,opt,name=worker_config,json=workerConfig" json:"worker_config,omitempty"`
+	WorkerConfig *InstanceGroupConfig `protobuf:"bytes,10,opt,name=worker_config,json=workerConfig,proto3" json:"worker_config,omitempty"`
 	// Optional. The Compute Engine config settings for
 	// additional worker instances in a cluster.
-	SecondaryWorkerConfig *InstanceGroupConfig `protobuf:"bytes,12,opt,name=secondary_worker_config,json=secondaryWorkerConfig" json:"secondary_worker_config,omitempty"`
+	SecondaryWorkerConfig *InstanceGroupConfig `protobuf:"bytes,12,opt,name=secondary_worker_config,json=secondaryWorkerConfig,proto3" json:"secondary_worker_config,omitempty"`
 	// Optional. The config settings for software inside the cluster.
-	SoftwareConfig *SoftwareConfig `protobuf:"bytes,13,opt,name=software_config,json=softwareConfig" json:"software_config,omitempty"`
+	SoftwareConfig *SoftwareConfig `protobuf:"bytes,13,opt,name=software_config,json=softwareConfig,proto3" json:"software_config,omitempty"`
 	// Optional. The config setting for auto delete cluster schedule.
-	LifecycleConfig *LifecycleConfig `protobuf:"bytes,14,opt,name=lifecycle_config,json=lifecycleConfig" json:"lifecycle_config,omitempty"`
+	LifecycleConfig *LifecycleConfig `protobuf:"bytes,14,opt,name=lifecycle_config,json=lifecycleConfig,proto3" json:"lifecycle_config,omitempty"`
 	// Optional. Commands to execute on each node after config is
 	// completed. By default, executables are run on master and all worker nodes.
 	// You can test a node's <code>role</code> metadata to run an executable on
@@ -258,7 +258,7 @@ type ClusterConfig struct {
 	//     else
 	//       ... worker specific actions ...
 	//     fi
-	InitializationActions []*NodeInitializationAction `protobuf:"bytes,11,rep,name=initialization_actions,json=initializationActions" json:"initialization_actions,omitempty"`
+	InitializationActions []*NodeInitializationAction `protobuf:"bytes,11,rep,name=initialization_actions,json=initializationActions,proto3" json:"initialization_actions,omitempty"`
 	XXX_NoUnkeyedLiteral  struct{}                    `json:"-"`
 	XXX_unrecognized      []byte                      `json:"-"`
 	XXX_sizecache         int32                       `json:"-"`
@@ -358,7 +358,7 @@ type GceClusterConfig struct {
 	// * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]`
 	// * `projects/[project_id]/zones/[zone]`
 	// * `us-central1-f`
-	ZoneUri string `protobuf:"bytes,1,opt,name=zone_uri,json=zoneUri" json:"zone_uri,omitempty"`
+	ZoneUri string `protobuf:"bytes,1,opt,name=zone_uri,json=zoneUri,proto3" json:"zone_uri,omitempty"`
 	// Optional. The Compute Engine network to be used for machine
 	// communications. Cannot be specified with subnetwork_uri. If neither
 	// `network_uri` nor `subnetwork_uri` is specified, the "default" network of
@@ -370,7 +370,7 @@ type GceClusterConfig struct {
 	// * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default`
 	// * `projects/[project_id]/regions/global/default`
 	// * `default`
-	NetworkUri string `protobuf:"bytes,2,opt,name=network_uri,json=networkUri" json:"network_uri,omitempty"`
+	NetworkUri string `protobuf:"bytes,2,opt,name=network_uri,json=networkUri,proto3" json:"network_uri,omitempty"`
 	// Optional. The Compute Engine subnetwork to be used for machine
 	// communications. Cannot be specified with network_uri.
 	//
@@ -379,14 +379,14 @@ type GceClusterConfig struct {
 	// * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`
 	// * `projects/[project_id]/regions/us-east1/sub0`
 	// * `sub0`
-	SubnetworkUri string `protobuf:"bytes,6,opt,name=subnetwork_uri,json=subnetworkUri" json:"subnetwork_uri,omitempty"`
+	SubnetworkUri string `protobuf:"bytes,6,opt,name=subnetwork_uri,json=subnetworkUri,proto3" json:"subnetwork_uri,omitempty"`
 	// Optional. If true, all instances in the cluster will only have internal IP
 	// addresses. By default, clusters are not restricted to internal IP addresses,
 	// and will have ephemeral external IP addresses assigned to each instance.
 	// This `internal_ip_only` restriction can only be enabled for subnetwork
 	// enabled networks, and all off-cluster dependencies must be configured to be
 	// accessible without external IP addresses.
-	InternalIpOnly bool `protobuf:"varint,7,opt,name=internal_ip_only,json=internalIpOnly" json:"internal_ip_only,omitempty"`
+	InternalIpOnly bool `protobuf:"varint,7,opt,name=internal_ip_only,json=internalIpOnly,proto3" json:"internal_ip_only,omitempty"`
 	// Optional. The service account of the instances. Defaults to the default
 	// Compute Engine service account. Custom service accounts need
 	// permissions equivalent to the following IAM roles:
@@ -397,7 +397,7 @@ type GceClusterConfig struct {
 	// (see https://cloud.google.com/compute/docs/access/service-accounts#custom_service_accounts
 	// for more information).
 	// Example: `[account_id]@[project_id].iam.gserviceaccount.com`
-	ServiceAccount string `protobuf:"bytes,8,opt,name=service_account,json=serviceAccount" json:"service_account,omitempty"`
+	ServiceAccount string `protobuf:"bytes,8,opt,name=service_account,json=serviceAccount,proto3" json:"service_account,omitempty"`
 	// Optional. The URIs of service account scopes to be included in
 	// Compute Engine instances. The following base set of scopes is always
 	// included:
@@ -412,13 +412,13 @@ type GceClusterConfig struct {
 	// * https://www.googleapis.com/auth/bigtable.admin.table
 	// * https://www.googleapis.com/auth/bigtable.data
 	// * https://www.googleapis.com/auth/devstorage.full_control
-	ServiceAccountScopes []string `protobuf:"bytes,3,rep,name=service_account_scopes,json=serviceAccountScopes" json:"service_account_scopes,omitempty"`
+	ServiceAccountScopes []string `protobuf:"bytes,3,rep,name=service_account_scopes,json=serviceAccountScopes,proto3" json:"service_account_scopes,omitempty"`
 	// The Compute Engine tags to add to all instances (see
 	// [Tagging instances](/compute/docs/label-or-tag-resources#tags)).
-	Tags []string `protobuf:"bytes,4,rep,name=tags" json:"tags,omitempty"`
+	Tags []string `protobuf:"bytes,4,rep,name=tags,proto3" json:"tags,omitempty"`
 	// The Compute Engine metadata entries to add to all instances (see
 	// [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-	Metadata             map[string]string `protobuf:"bytes,5,rep,name=metadata" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Metadata             map[string]string `protobuf:"bytes,5,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -509,13 +509,13 @@ func (m *GceClusterConfig) GetMetadata() map[string]string {
 type InstanceGroupConfig struct {
 	// Optional. The number of VM instances in the instance group.
 	// For master instance groups, must be set to 1.
-	NumInstances int32 `protobuf:"varint,1,opt,name=num_instances,json=numInstances" json:"num_instances,omitempty"`
+	NumInstances int32 `protobuf:"varint,1,opt,name=num_instances,json=numInstances,proto3" json:"num_instances,omitempty"`
 	// Output only. The list of instance names. Cloud Dataproc derives the names
 	// from `cluster_name`, `num_instances`, and the instance group.
-	InstanceNames []string `protobuf:"bytes,2,rep,name=instance_names,json=instanceNames" json:"instance_names,omitempty"`
+	InstanceNames []string `protobuf:"bytes,2,rep,name=instance_names,json=instanceNames,proto3" json:"instance_names,omitempty"`
 	// Output only. The Compute Engine image resource used for cluster
 	// instances. Inferred from `SoftwareConfig.image_version`.
-	ImageUri string `protobuf:"bytes,3,opt,name=image_uri,json=imageUri" json:"image_uri,omitempty"`
+	ImageUri string `protobuf:"bytes,3,opt,name=image_uri,json=imageUri,proto3" json:"image_uri,omitempty"`
 	// Optional. The Compute Engine machine type used for cluster instances.
 	//
 	// A full URL, partial URI, or short name are valid. Examples:
@@ -528,25 +528,25 @@ type InstanceGroupConfig struct {
 	// [Auto Zone Placement](/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
 	// feature, you must use the short name of the machine type
 	// resource, for example, `n1-standard-2`.
-	MachineTypeUri string `protobuf:"bytes,4,opt,name=machine_type_uri,json=machineTypeUri" json:"machine_type_uri,omitempty"`
+	MachineTypeUri string `protobuf:"bytes,4,opt,name=machine_type_uri,json=machineTypeUri,proto3" json:"machine_type_uri,omitempty"`
 	// Optional. Disk option config settings.
-	DiskConfig *DiskConfig `protobuf:"bytes,5,opt,name=disk_config,json=diskConfig" json:"disk_config,omitempty"`
+	DiskConfig *DiskConfig `protobuf:"bytes,5,opt,name=disk_config,json=diskConfig,proto3" json:"disk_config,omitempty"`
 	// Optional. Specifies that this instance group contains preemptible instances.
-	IsPreemptible bool `protobuf:"varint,6,opt,name=is_preemptible,json=isPreemptible" json:"is_preemptible,omitempty"`
+	IsPreemptible bool `protobuf:"varint,6,opt,name=is_preemptible,json=isPreemptible,proto3" json:"is_preemptible,omitempty"`
 	// Output only. The config for Compute Engine Instance Group
 	// Manager that manages this group.
 	// This is only used for preemptible instance groups.
-	ManagedGroupConfig *ManagedGroupConfig `protobuf:"bytes,7,opt,name=managed_group_config,json=managedGroupConfig" json:"managed_group_config,omitempty"`
+	ManagedGroupConfig *ManagedGroupConfig `protobuf:"bytes,7,opt,name=managed_group_config,json=managedGroupConfig,proto3" json:"managed_group_config,omitempty"`
 	// Optional. The Compute Engine accelerator configuration for these
 	// instances.
 	//
 	// **Beta Feature**: This feature is still under development. It may be
 	// changed before final release.
-	Accelerators []*AcceleratorConfig `protobuf:"bytes,8,rep,name=accelerators" json:"accelerators,omitempty"`
+	Accelerators []*AcceleratorConfig `protobuf:"bytes,8,rep,name=accelerators,proto3" json:"accelerators,omitempty"`
 	// Optional. Specifies the minimum cpu platform for the Instance Group.
 	// See [Cloud Dataproc&rarr;Minimum CPU Platform]
 	// (/dataproc/docs/concepts/compute/dataproc-min-cpu).
-	MinCpuPlatform       string   `protobuf:"bytes,9,opt,name=min_cpu_platform,json=minCpuPlatform" json:"min_cpu_platform,omitempty"`
+	MinCpuPlatform       string   `protobuf:"bytes,9,opt,name=min_cpu_platform,json=minCpuPlatform,proto3" json:"min_cpu_platform,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -643,9 +643,9 @@ func (m *InstanceGroupConfig) GetMinCpuPlatform() string {
 type ManagedGroupConfig struct {
 	// Output only. The name of the Instance Template used for the Managed
 	// Instance Group.
-	InstanceTemplateName string `protobuf:"bytes,1,opt,name=instance_template_name,json=instanceTemplateName" json:"instance_template_name,omitempty"`
+	InstanceTemplateName string `protobuf:"bytes,1,opt,name=instance_template_name,json=instanceTemplateName,proto3" json:"instance_template_name,omitempty"`
 	// Output only. The name of the Instance Group Manager for this group.
-	InstanceGroupManagerName string   `protobuf:"bytes,2,opt,name=instance_group_manager_name,json=instanceGroupManagerName" json:"instance_group_manager_name,omitempty"`
+	InstanceGroupManagerName string   `protobuf:"bytes,2,opt,name=instance_group_manager_name,json=instanceGroupManagerName,proto3" json:"instance_group_manager_name,omitempty"`
 	XXX_NoUnkeyedLiteral     struct{} `json:"-"`
 	XXX_unrecognized         []byte   `json:"-"`
 	XXX_sizecache            int32    `json:"-"`
@@ -705,9 +705,9 @@ type AcceleratorConfig struct {
 	// [Auto Zone Placement](/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
 	// feature, you must use the short name of the accelerator type
 	// resource, for example, `nvidia-tesla-k80`.
-	AcceleratorTypeUri string `protobuf:"bytes,1,opt,name=accelerator_type_uri,json=acceleratorTypeUri" json:"accelerator_type_uri,omitempty"`
+	AcceleratorTypeUri string `protobuf:"bytes,1,opt,name=accelerator_type_uri,json=acceleratorTypeUri,proto3" json:"accelerator_type_uri,omitempty"`
 	// The number of the accelerator cards of this type exposed to this instance.
-	AcceleratorCount     int32    `protobuf:"varint,2,opt,name=accelerator_count,json=acceleratorCount" json:"accelerator_count,omitempty"`
+	AcceleratorCount     int32    `protobuf:"varint,2,opt,name=accelerator_count,json=acceleratorCount,proto3" json:"accelerator_count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -756,16 +756,16 @@ type DiskConfig struct {
 	// Optional. Type of the boot disk (default is "pd-standard").
 	// Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or
 	// "pd-standard" (Persistent Disk Hard Disk Drive).
-	BootDiskType string `protobuf:"bytes,3,opt,name=boot_disk_type,json=bootDiskType" json:"boot_disk_type,omitempty"`
+	BootDiskType string `protobuf:"bytes,3,opt,name=boot_disk_type,json=bootDiskType,proto3" json:"boot_disk_type,omitempty"`
 	// Optional. Size in GB of the boot disk (default is 500GB).
-	BootDiskSizeGb int32 `protobuf:"varint,1,opt,name=boot_disk_size_gb,json=bootDiskSizeGb" json:"boot_disk_size_gb,omitempty"`
+	BootDiskSizeGb int32 `protobuf:"varint,1,opt,name=boot_disk_size_gb,json=bootDiskSizeGb,proto3" json:"boot_disk_size_gb,omitempty"`
 	// Optional. Number of attached SSDs, from 0 to 4 (default is 0).
 	// If SSDs are not attached, the boot disk is used to store runtime logs and
 	// [HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data.
 	// If one or more SSDs are attached, this runtime bulk
 	// data is spread across them, and the boot disk contains only basic
 	// config and installed binaries.
-	NumLocalSsds         int32    `protobuf:"varint,2,opt,name=num_local_ssds,json=numLocalSsds" json:"num_local_ssds,omitempty"`
+	NumLocalSsds         int32    `protobuf:"varint,2,opt,name=num_local_ssds,json=numLocalSsds,proto3" json:"num_local_ssds,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -820,7 +820,7 @@ func (m *DiskConfig) GetNumLocalSsds() int32 {
 type LifecycleConfig struct {
 	// Optional. The longest duration that cluster would keep alive while staying
 	//  idle; passing this threshold will cause cluster to be auto-deleted.
-	IdleDeleteTtl *duration.Duration `protobuf:"bytes,1,opt,name=idle_delete_ttl,json=idleDeleteTtl" json:"idle_delete_ttl,omitempty"`
+	IdleDeleteTtl *duration.Duration `protobuf:"bytes,1,opt,name=idle_delete_ttl,json=idleDeleteTtl,proto3" json:"idle_delete_ttl,omitempty"`
 	// Optional. Either the exact time the cluster should be deleted at or
 	// the cluster maximum age.
 	//
@@ -862,10 +862,10 @@ type isLifecycleConfig_Ttl interface {
 }
 
 type LifecycleConfig_AutoDeleteTime struct {
-	AutoDeleteTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=auto_delete_time,json=autoDeleteTime,oneof"`
+	AutoDeleteTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=auto_delete_time,json=autoDeleteTime,proto3,oneof"`
 }
 type LifecycleConfig_AutoDeleteTtl struct {
-	AutoDeleteTtl *duration.Duration `protobuf:"bytes,3,opt,name=auto_delete_ttl,json=autoDeleteTtl,oneof"`
+	AutoDeleteTtl *duration.Duration `protobuf:"bytes,3,opt,name=auto_delete_ttl,json=autoDeleteTtl,proto3,oneof"`
 }
 
 func (*LifecycleConfig_AutoDeleteTime) isLifecycleConfig_Ttl() {}
@@ -977,12 +977,12 @@ func _LifecycleConfig_OneofSizer(msg proto.Message) (n int) {
 // timeout period for executable completion.
 type NodeInitializationAction struct {
 	// Required. Cloud Storage URI of executable file.
-	ExecutableFile string `protobuf:"bytes,1,opt,name=executable_file,json=executableFile" json:"executable_file,omitempty"`
+	ExecutableFile string `protobuf:"bytes,1,opt,name=executable_file,json=executableFile,proto3" json:"executable_file,omitempty"`
 	// Optional. Amount of time executable has to complete. Default is
 	// 10 minutes. Cluster creation fails with an explanatory error message (the
 	// name of the executable that caused the error and the exceeded timeout
 	// period) if the executable is not completed at end of the timeout period.
-	ExecutionTimeout     *duration.Duration `protobuf:"bytes,2,opt,name=execution_timeout,json=executionTimeout" json:"execution_timeout,omitempty"`
+	ExecutionTimeout     *duration.Duration `protobuf:"bytes,2,opt,name=execution_timeout,json=executionTimeout,proto3" json:"execution_timeout,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -1029,14 +1029,14 @@ func (m *NodeInitializationAction) GetExecutionTimeout() *duration.Duration {
 // The status of a cluster and its instances.
 type ClusterStatus struct {
 	// Output only. The cluster's state.
-	State ClusterStatus_State `protobuf:"varint,1,opt,name=state,enum=google.cloud.dataproc.v1beta2.ClusterStatus_State" json:"state,omitempty"`
+	State ClusterStatus_State `protobuf:"varint,1,opt,name=state,proto3,enum=google.cloud.dataproc.v1beta2.ClusterStatus_State" json:"state,omitempty"`
 	// Output only. Optional details of cluster's state.
-	Detail string `protobuf:"bytes,2,opt,name=detail" json:"detail,omitempty"`
+	Detail string `protobuf:"bytes,2,opt,name=detail,proto3" json:"detail,omitempty"`
 	// Output only. Time when this state was entered.
-	StateStartTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=state_start_time,json=stateStartTime" json:"state_start_time,omitempty"`
+	StateStartTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=state_start_time,json=stateStartTime,proto3" json:"state_start_time,omitempty"`
 	// Output only. Additional state information that includes
 	// status reported by the agent.
-	Substate             ClusterStatus_Substate `protobuf:"varint,4,opt,name=substate,enum=google.cloud.dataproc.v1beta2.ClusterStatus_Substate" json:"substate,omitempty"`
+	Substate             ClusterStatus_Substate `protobuf:"varint,4,opt,name=substate,proto3,enum=google.cloud.dataproc.v1beta2.ClusterStatus_Substate" json:"substate,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
 	XXX_unrecognized     []byte                 `json:"-"`
 	XXX_sizecache        int32                  `json:"-"`
@@ -1101,7 +1101,7 @@ type SoftwareConfig struct {
 	// such as "1.2" (including a subminor version, such as "1.2.29"), or the
 	// ["preview" version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
 	// If unspecified, it defaults to the latest version.
-	ImageVersion string `protobuf:"bytes,1,opt,name=image_version,json=imageVersion" json:"image_version,omitempty"`
+	ImageVersion string `protobuf:"bytes,1,opt,name=image_version,json=imageVersion,proto3" json:"image_version,omitempty"`
 	// Optional. The properties to set on daemon config files.
 	//
 	// Property keys are specified in `prefix:property` format, such as
@@ -1120,7 +1120,7 @@ type SoftwareConfig struct {
 	//
 	// For more information, see
 	// [Cluster properties](/dataproc/docs/concepts/cluster-properties).
-	Properties           map[string]string `protobuf:"bytes,2,rep,name=properties" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Properties           map[string]string `protobuf:"bytes,2,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -1170,9 +1170,9 @@ func (m *SoftwareConfig) GetProperties() map[string]string {
 // be changed before final release.
 type ClusterMetrics struct {
 	// The HDFS metrics.
-	HdfsMetrics map[string]int64 `protobuf:"bytes,1,rep,name=hdfs_metrics,json=hdfsMetrics" json:"hdfs_metrics,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	HdfsMetrics map[string]int64 `protobuf:"bytes,1,rep,name=hdfs_metrics,json=hdfsMetrics,proto3" json:"hdfs_metrics,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
 	// The YARN metrics.
-	YarnMetrics          map[string]int64 `protobuf:"bytes,2,rep,name=yarn_metrics,json=yarnMetrics" json:"yarn_metrics,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	YarnMetrics          map[string]int64 `protobuf:"bytes,2,rep,name=yarn_metrics,json=yarnMetrics,proto3" json:"yarn_metrics,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -1220,11 +1220,11 @@ func (m *ClusterMetrics) GetYarnMetrics() map[string]int64 {
 type CreateClusterRequest struct {
 	// Required. The ID of the Google Cloud Platform project that the cluster
 	// belongs to.
-	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// Required. The Cloud Dataproc region in which to handle the request.
-	Region string `protobuf:"bytes,3,opt,name=region" json:"region,omitempty"`
+	Region string `protobuf:"bytes,3,opt,name=region,proto3" json:"region,omitempty"`
 	// Required. The cluster to create.
-	Cluster *Cluster `protobuf:"bytes,2,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster *Cluster `protobuf:"bytes,2,opt,name=cluster,proto3" json:"cluster,omitempty"`
 	// Optional. A unique id used to identify the request. If the server
 	// receives two [CreateClusterRequest][google.cloud.dataproc.v1beta2.CreateClusterRequest] requests  with the same
 	// id, then the second request will be ignored and the
@@ -1236,7 +1236,7 @@ type CreateClusterRequest struct {
 	//
 	// The id must contain only letters (a-z, A-Z), numbers (0-9),
 	// underscores (_), and hyphens (-). The maximum length is 40 characters.
-	RequestId            string   `protobuf:"bytes,4,opt,name=request_id,json=requestId" json:"request_id,omitempty"`
+	RequestId            string   `protobuf:"bytes,4,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1298,13 +1298,13 @@ func (m *CreateClusterRequest) GetRequestId() string {
 type UpdateClusterRequest struct {
 	// Required. The ID of the Google Cloud Platform project the
 	// cluster belongs to.
-	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// Required. The Cloud Dataproc region in which to handle the request.
-	Region string `protobuf:"bytes,5,opt,name=region" json:"region,omitempty"`
+	Region string `protobuf:"bytes,5,opt,name=region,proto3" json:"region,omitempty"`
 	// Required. The cluster name.
-	ClusterName string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
+	ClusterName string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName,proto3" json:"cluster_name,omitempty"`
 	// Required. The changes to the cluster.
-	Cluster *Cluster `protobuf:"bytes,3,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster *Cluster `protobuf:"bytes,3,opt,name=cluster,proto3" json:"cluster,omitempty"`
 	// Optional. Timeout for graceful YARN decomissioning. Graceful
 	// decommissioning allows removing nodes from the cluster without
 	// interrupting jobs in progress. Timeout specifies how long to wait for jobs
@@ -1313,7 +1313,7 @@ type UpdateClusterRequest struct {
 	// the maximum allowed timeout is 1 day.
 	//
 	// Only supported on Dataproc image versions 1.2 and higher.
-	GracefulDecommissionTimeout *duration.Duration `protobuf:"bytes,6,opt,name=graceful_decommission_timeout,json=gracefulDecommissionTimeout" json:"graceful_decommission_timeout,omitempty"`
+	GracefulDecommissionTimeout *duration.Duration `protobuf:"bytes,6,opt,name=graceful_decommission_timeout,json=gracefulDecommissionTimeout,proto3" json:"graceful_decommission_timeout,omitempty"`
 	// Required. Specifies the path, relative to `Cluster`, of
 	// the field to update. For example, to change the number of workers
 	// in a cluster to 5, the `update_mask` parameter would be
@@ -1364,7 +1364,7 @@ type UpdateClusterRequest struct {
 	// <td>config.lifecycle_config.idle_delete_ttl</td><td>Update Idle TTL duration</td>
 	// </tr>
 	// </table>
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. A unique id used to identify the request. If the server
 	// receives two [UpdateClusterRequest][google.cloud.dataproc.v1beta2.UpdateClusterRequest] requests  with the same
 	// id, then the second request will be ignored and the
@@ -1376,7 +1376,7 @@ type UpdateClusterRequest struct {
 	//
 	// The id must contain only letters (a-z, A-Z), numbers (0-9),
 	// underscores (_), and hyphens (-). The maximum length is 40 characters.
-	RequestId            string   `protobuf:"bytes,7,opt,name=request_id,json=requestId" json:"request_id,omitempty"`
+	RequestId            string   `protobuf:"bytes,7,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1459,14 +1459,14 @@ func (m *UpdateClusterRequest) GetRequestId() string {
 type DeleteClusterRequest struct {
 	// Required. The ID of the Google Cloud Platform project that the cluster
 	// belongs to.
-	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// Required. The Cloud Dataproc region in which to handle the request.
-	Region string `protobuf:"bytes,3,opt,name=region" json:"region,omitempty"`
+	Region string `protobuf:"bytes,3,opt,name=region,proto3" json:"region,omitempty"`
 	// Required. The cluster name.
-	ClusterName string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
+	ClusterName string `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName,proto3" json:"cluster_name,omitempty"`
 	// Optional. Specifying the `cluster_uuid` means the RPC should fail
 	// (with error NOT_FOUND) if cluster with specified UUID does not exist.
-	ClusterUuid string `protobuf:"bytes,4,opt,name=cluster_uuid,json=clusterUuid" json:"cluster_uuid,omitempty"`
+	ClusterUuid string `protobuf:"bytes,4,opt,name=cluster_uuid,json=clusterUuid,proto3" json:"cluster_uuid,omitempty"`
 	// Optional. A unique id used to identify the request. If the server
 	// receives two [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest] requests  with the same
 	// id, then the second request will be ignored and the
@@ -1478,7 +1478,7 @@ type DeleteClusterRequest struct {
 	//
 	// The id must contain only letters (a-z, A-Z), numbers (0-9),
 	// underscores (_), and hyphens (-). The maximum length is 40 characters.
-	RequestId            string   `protobuf:"bytes,5,opt,name=request_id,json=requestId" json:"request_id,omitempty"`
+	RequestId            string   `protobuf:"bytes,5,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1547,11 +1547,11 @@ func (m *DeleteClusterRequest) GetRequestId() string {
 type GetClusterRequest struct {
 	// Required. The ID of the Google Cloud Platform project that the cluster
 	// belongs to.
-	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// Required. The Cloud Dataproc region in which to handle the request.
-	Region string `protobuf:"bytes,3,opt,name=region" json:"region,omitempty"`
+	Region string `protobuf:"bytes,3,opt,name=region,proto3" json:"region,omitempty"`
 	// Required. The cluster name.
-	ClusterName          string   `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
+	ClusterName          string   `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName,proto3" json:"cluster_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1606,9 +1606,9 @@ func (m *GetClusterRequest) GetClusterName() string {
 type ListClustersRequest struct {
 	// Required. The ID of the Google Cloud Platform project that the cluster
 	// belongs to.
-	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// Required. The Cloud Dataproc region in which to handle the request.
-	Region string `protobuf:"bytes,4,opt,name=region" json:"region,omitempty"`
+	Region string `protobuf:"bytes,4,opt,name=region,proto3" json:"region,omitempty"`
 	// Optional. A filter constraining the clusters to list. Filters are
 	// case-sensitive and have the following syntax:
 	//
@@ -1628,11 +1628,11 @@ type ListClustersRequest struct {
 	//
 	// status.state = ACTIVE AND clusterName = mycluster
 	// AND labels.env = staging AND labels.starred = *
-	Filter string `protobuf:"bytes,5,opt,name=filter" json:"filter,omitempty"`
+	Filter string `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Optional. The standard List page size.
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. The standard List page token.
-	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1700,11 +1700,11 @@ func (m *ListClustersRequest) GetPageToken() string {
 // The list of all clusters in a project.
 type ListClustersResponse struct {
 	// Output only. The clusters in the project.
-	Clusters []*Cluster `protobuf:"bytes,1,rep,name=clusters" json:"clusters,omitempty"`
+	Clusters []*Cluster `protobuf:"bytes,1,rep,name=clusters,proto3" json:"clusters,omitempty"`
 	// Output only. This token is included in the response if there are more
 	// results to fetch. To fetch additional results, provide this value as the
 	// `page_token` in a subsequent <code>ListClustersRequest</code>.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1752,11 +1752,11 @@ func (m *ListClustersResponse) GetNextPageToken() string {
 type DiagnoseClusterRequest struct {
 	// Required. The ID of the Google Cloud Platform project that the cluster
 	// belongs to.
-	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId" json:"project_id,omitempty"`
+	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// Required. The Cloud Dataproc region in which to handle the request.
-	Region string `protobuf:"bytes,3,opt,name=region" json:"region,omitempty"`
+	Region string `protobuf:"bytes,3,opt,name=region,proto3" json:"region,omitempty"`
 	// Required. The cluster name.
-	ClusterName          string   `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
+	ClusterName          string   `protobuf:"bytes,2,opt,name=cluster_name,json=clusterName,proto3" json:"cluster_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1812,7 +1812,7 @@ type DiagnoseClusterResults struct {
 	// Output only. The Cloud Storage URI of the diagnostic output.
 	// The output report is a plain text file with a summary of collected
 	// diagnostics.
-	OutputUri            string   `protobuf:"bytes,1,opt,name=output_uri,json=outputUri" json:"output_uri,omitempty"`
+	OutputUri            string   `protobuf:"bytes,1,opt,name=output_uri,json=outputUri,proto3" json:"output_uri,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1969,8 +1969,7 @@ func (c *clusterControllerClient) DiagnoseCluster(ctx context.Context, in *Diagn
 	return out, nil
 }
 
-// Server API for ClusterController service
-
+// ClusterControllerServer is the server API for ClusterController service.
 type ClusterControllerServer interface {
 	// Creates a cluster in a project.
 	CreateCluster(context.Context, *CreateClusterRequest) (*longrunning.Operation, error)

@@ -59,12 +59,12 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 // handled, all other features will continue to work unchanged.
 type HttpBody struct {
 	// The HTTP Content-Type string representing the content type of the body.
-	ContentType string `protobuf:"bytes,1,opt,name=content_type,json=contentType" json:"content_type,omitempty"`
+	ContentType string `protobuf:"bytes,1,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`
 	// HTTP body binary data.
 	Data []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	// Application specific response metadata. Must be set in the first response
 	// for streaming APIs.
-	Extensions           []*any.Any `protobuf:"bytes,3,rep,name=extensions" json:"extensions,omitempty"`
+	Extensions           []*any.Any `protobuf:"bytes,3,rep,name=extensions,proto3" json:"extensions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`

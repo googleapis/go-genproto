@@ -77,9 +77,9 @@ type LogMetric struct {
 	// part of a `metric_name` API parameter, then the metric identifier
 	// must be URL-encoded. Example:
 	// `"projects/my-project/metrics/nginx%2Frequests"`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. A description of this metric, which is used in documentation.
-	Description string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Required. An [advanced logs filter](/logging/docs/view/advanced_filters)
 	// which is used to match log entries.
 	// Example:
@@ -87,7 +87,7 @@ type LogMetric struct {
 	//     "resource.type=gae_app AND severity>=ERROR"
 	//
 	// The maximum length of the filter is 20000 characters.
-	Filter string `protobuf:"bytes,3,opt,name=filter" json:"filter,omitempty"`
+	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Optional. The metric descriptor associated with the logs-based metric.
 	// If unspecified, it uses a default metric descriptor with a DELTA metric
 	// kind, INT64 value type, with no labels and a unit of "1". Such a metric
@@ -109,7 +109,7 @@ type LogMetric struct {
 	// be updated once initially configured. New labels can be added in the
 	// `metric_descriptor`, but existing labels cannot be modified except for
 	// their description.
-	MetricDescriptor *metric.MetricDescriptor `protobuf:"bytes,5,opt,name=metric_descriptor,json=metricDescriptor" json:"metric_descriptor,omitempty"`
+	MetricDescriptor *metric.MetricDescriptor `protobuf:"bytes,5,opt,name=metric_descriptor,json=metricDescriptor,proto3" json:"metric_descriptor,omitempty"`
 	// Optional. A `value_extractor` is required when using a distribution
 	// logs-based metric to extract the values to record from a log entry.
 	// Two functions are supported for value extraction: `EXTRACT(field)` or
@@ -129,7 +129,7 @@ type LogMetric struct {
 	// distribution.
 	//
 	// Example: `REGEXP_EXTRACT(jsonPayload.request, ".*quantity=(\d+).*")`
-	ValueExtractor string `protobuf:"bytes,6,opt,name=value_extractor,json=valueExtractor" json:"value_extractor,omitempty"`
+	ValueExtractor string `protobuf:"bytes,6,opt,name=value_extractor,json=valueExtractor,proto3" json:"value_extractor,omitempty"`
 	// Optional. A map from a label key string to an extractor expression which is
 	// used to extract data from a log entry field and assign as the label value.
 	// Each label key specified in the LabelDescriptor must have an associated
@@ -144,14 +144,14 @@ type LogMetric struct {
 	//
 	// Note that there are upper bounds on the maximum number of labels and the
 	// number of active time series that are allowed in a project.
-	LabelExtractors map[string]string `protobuf:"bytes,7,rep,name=label_extractors,json=labelExtractors" json:"label_extractors,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	LabelExtractors map[string]string `protobuf:"bytes,7,rep,name=label_extractors,json=labelExtractors,proto3" json:"label_extractors,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Optional. The `bucket_options` are required when the logs-based metric is
 	// using a DISTRIBUTION value type and it describes the bucket boundaries
 	// used to create a histogram of the extracted values.
-	BucketOptions *distribution.Distribution_BucketOptions `protobuf:"bytes,8,opt,name=bucket_options,json=bucketOptions" json:"bucket_options,omitempty"`
+	BucketOptions *distribution.Distribution_BucketOptions `protobuf:"bytes,8,opt,name=bucket_options,json=bucketOptions,proto3" json:"bucket_options,omitempty"`
 	// Deprecated. The API version that created or updated this metric.
 	// The v2 format is used by default and cannot be changed.
-	Version              LogMetric_ApiVersion `protobuf:"varint,4,opt,name=version,enum=google.logging.v2.LogMetric_ApiVersion" json:"version,omitempty"`
+	Version              LogMetric_ApiVersion `protobuf:"varint,4,opt,name=version,proto3,enum=google.logging.v2.LogMetric_ApiVersion" json:"version,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -242,16 +242,16 @@ type ListLogMetricsRequest struct {
 	// Required. The name of the project containing the metrics:
 	//
 	//     "projects/[PROJECT_ID]"
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the
 	// preceding call to this method.  `pageToken` must be the value of
 	// `nextPageToken` from the previous response.  The values of other method
 	// parameters should be identical to those in the previous call.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional. The maximum number of results to return from this request.
 	// Non-positive values are ignored.  The presence of `nextPageToken` in the
 	// response indicates that more results might be available.
-	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -305,11 +305,11 @@ func (m *ListLogMetricsRequest) GetPageSize() int32 {
 // Result returned from ListLogMetrics.
 type ListLogMetricsResponse struct {
 	// A list of logs-based metrics.
-	Metrics []*LogMetric `protobuf:"bytes,1,rep,name=metrics" json:"metrics,omitempty"`
+	Metrics []*LogMetric `protobuf:"bytes,1,rep,name=metrics,proto3" json:"metrics,omitempty"`
 	// If there might be more results than appear in this response, then
 	// `nextPageToken` is included.  To get the next set of results, call this
 	// method again using the value of `nextPageToken` as `pageToken`.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -358,7 +358,7 @@ type GetLogMetricRequest struct {
 	// The resource name of the desired metric:
 	//
 	//     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
-	MetricName           string   `protobuf:"bytes,1,opt,name=metric_name,json=metricName" json:"metric_name,omitempty"`
+	MetricName           string   `protobuf:"bytes,1,opt,name=metric_name,json=metricName,proto3" json:"metric_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -402,10 +402,10 @@ type CreateLogMetricRequest struct {
 	//     "projects/[PROJECT_ID]"
 	//
 	// The new metric must be provided in the request.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The new logs-based metric, which must not have an identifier that
 	// already exists.
-	Metric               *LogMetric `protobuf:"bytes,2,opt,name=metric" json:"metric,omitempty"`
+	Metric               *LogMetric `protobuf:"bytes,2,opt,name=metric,proto3" json:"metric,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -458,9 +458,9 @@ type UpdateLogMetricRequest struct {
 	// The updated metric must be provided in the request and it's
 	// `name` field must be the same as `[METRIC_ID]` If the metric
 	// does not exist in `[PROJECT_ID]`, then a new metric is created.
-	MetricName string `protobuf:"bytes,1,opt,name=metric_name,json=metricName" json:"metric_name,omitempty"`
+	MetricName string `protobuf:"bytes,1,opt,name=metric_name,json=metricName,proto3" json:"metric_name,omitempty"`
 	// The updated metric.
-	Metric               *LogMetric `protobuf:"bytes,2,opt,name=metric" json:"metric,omitempty"`
+	Metric               *LogMetric `protobuf:"bytes,2,opt,name=metric,proto3" json:"metric,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -509,7 +509,7 @@ type DeleteLogMetricRequest struct {
 	// The resource name of the metric to delete:
 	//
 	//     "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
-	MetricName           string   `protobuf:"bytes,1,opt,name=metric_name,json=metricName" json:"metric_name,omitempty"`
+	MetricName           string   `protobuf:"bytes,1,opt,name=metric_name,json=metricName,proto3" json:"metric_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -635,8 +635,7 @@ func (c *metricsServiceV2Client) DeleteLogMetric(ctx context.Context, in *Delete
 	return out, nil
 }
 
-// Server API for MetricsServiceV2 service
-
+// MetricsServiceV2Server is the server API for MetricsServiceV2 service.
 type MetricsServiceV2Server interface {
 	// Lists logs-based metrics.
 	ListLogMetrics(context.Context, *ListLogMetricsRequest) (*ListLogMetricsResponse, error)

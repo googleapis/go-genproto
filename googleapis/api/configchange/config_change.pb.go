@@ -72,18 +72,18 @@ type ConfigChange struct {
 	// - visibility.rules[selector=="google.LibraryService.CreateBook"].restriction
 	// - quota.metric_rules[selector=="google"].metric_costs[key=="reads"].value
 	// - logging.producer_destinations[0]
-	Element string `protobuf:"bytes,1,opt,name=element" json:"element,omitempty"`
+	Element string `protobuf:"bytes,1,opt,name=element,proto3" json:"element,omitempty"`
 	// Value of the changed object in the old Service configuration,
 	// in JSON format. This field will not be populated if ChangeType == ADDED.
-	OldValue string `protobuf:"bytes,2,opt,name=old_value,json=oldValue" json:"old_value,omitempty"`
+	OldValue string `protobuf:"bytes,2,opt,name=old_value,json=oldValue,proto3" json:"old_value,omitempty"`
 	// Value of the changed object in the new Service configuration,
 	// in JSON format. This field will not be populated if ChangeType == REMOVED.
-	NewValue string `protobuf:"bytes,3,opt,name=new_value,json=newValue" json:"new_value,omitempty"`
+	NewValue string `protobuf:"bytes,3,opt,name=new_value,json=newValue,proto3" json:"new_value,omitempty"`
 	// The type for this change, either ADDED, REMOVED, or MODIFIED.
-	ChangeType ChangeType `protobuf:"varint,4,opt,name=change_type,json=changeType,enum=google.api.ChangeType" json:"change_type,omitempty"`
+	ChangeType ChangeType `protobuf:"varint,4,opt,name=change_type,json=changeType,proto3,enum=google.api.ChangeType" json:"change_type,omitempty"`
 	// Collection of advice provided for this change, useful for determining the
 	// possible impact of this change.
-	Advices              []*Advice `protobuf:"bytes,5,rep,name=advices" json:"advices,omitempty"`
+	Advices              []*Advice `protobuf:"bytes,5,rep,name=advices,proto3" json:"advices,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -153,7 +153,7 @@ func (m *ConfigChange) GetAdvices() []*Advice {
 type Advice struct {
 	// Useful description for why this advice was applied and what actions should
 	// be taken to mitigate any implied risks.
-	Description          string   `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	Description          string   `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
