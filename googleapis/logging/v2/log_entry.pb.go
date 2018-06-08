@@ -48,12 +48,12 @@ type LogEntry struct {
 	// forward-slash is removed. Listing the log entry will not show the leading
 	// slash and filtering for a log name with a leading slash will never return
 	// any results.
-	LogName string `protobuf:"bytes,12,opt,name=log_name,json=logName" json:"log_name,omitempty"`
+	LogName string `protobuf:"bytes,12,opt,name=log_name,json=logName,proto3" json:"log_name,omitempty"`
 	// Required. The monitored resource associated with this log entry.
 	// Example: a log entry that reports a database error would be
 	// associated with the monitored resource designating the particular
 	// database that reported the error.
-	Resource *monitoredres.MonitoredResource `protobuf:"bytes,8,opt,name=resource" json:"resource,omitempty"`
+	Resource *monitoredres.MonitoredResource `protobuf:"bytes,8,opt,name=resource,proto3" json:"resource,omitempty"`
 	// Optional. The log entry payload, which can be one of multiple types.
 	//
 	// Types that are valid to be assigned to Payload:
@@ -70,42 +70,42 @@ type LogEntry struct {
 	// the [logs retention period](/logging/quota-policy) in the past,
 	// and no more than 24 hours in the future.
 	// See the `entries.write` API method for more information.
-	Timestamp *timestamp.Timestamp `protobuf:"bytes,9,opt,name=timestamp" json:"timestamp,omitempty"`
+	Timestamp *timestamp.Timestamp `protobuf:"bytes,9,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	// Output only. The time the log entry was received by Stackdriver Logging.
-	ReceiveTimestamp *timestamp.Timestamp `protobuf:"bytes,24,opt,name=receive_timestamp,json=receiveTimestamp" json:"receive_timestamp,omitempty"`
+	ReceiveTimestamp *timestamp.Timestamp `protobuf:"bytes,24,opt,name=receive_timestamp,json=receiveTimestamp,proto3" json:"receive_timestamp,omitempty"`
 	// Optional. The severity of the log entry. The default value is
 	// `LogSeverity.DEFAULT`.
-	Severity _type.LogSeverity `protobuf:"varint,10,opt,name=severity,enum=google.logging.type.LogSeverity" json:"severity,omitempty"`
+	Severity _type.LogSeverity `protobuf:"varint,10,opt,name=severity,proto3,enum=google.logging.type.LogSeverity" json:"severity,omitempty"`
 	// Optional. A unique identifier for the log entry. If you provide a value,
 	// then Stackdriver Logging considers other log entries in the same project,
 	// with the same `timestamp`, and with the same `insert_id` to be duplicates
 	// which can be removed.  If omitted in new log entries, then Stackdriver
 	// Logging assigns its own unique identifier. The `insert_id` is also used
 	// to order log entries that have the same `timestamp` value.
-	InsertId string `protobuf:"bytes,4,opt,name=insert_id,json=insertId" json:"insert_id,omitempty"`
+	InsertId string `protobuf:"bytes,4,opt,name=insert_id,json=insertId,proto3" json:"insert_id,omitempty"`
 	// Optional. Information about the HTTP request associated with this
 	// log entry, if applicable.
-	HttpRequest *_type.HttpRequest `protobuf:"bytes,7,opt,name=http_request,json=httpRequest" json:"http_request,omitempty"`
+	HttpRequest *_type.HttpRequest `protobuf:"bytes,7,opt,name=http_request,json=httpRequest,proto3" json:"http_request,omitempty"`
 	// Optional. A set of user-defined (key, value) data that provides additional
 	// information about the log entry.
-	Labels map[string]string `protobuf:"bytes,11,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Labels map[string]string `protobuf:"bytes,11,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Optional. Information about an operation associated with the log entry, if
 	// applicable.
-	Operation *LogEntryOperation `protobuf:"bytes,15,opt,name=operation" json:"operation,omitempty"`
+	Operation *LogEntryOperation `protobuf:"bytes,15,opt,name=operation,proto3" json:"operation,omitempty"`
 	// Optional. Resource name of the trace associated with the log entry, if any.
 	// If it contains a relative resource name, the name is assumed to be relative
 	// to `//tracing.googleapis.com`. Example:
 	// `projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824`
-	Trace string `protobuf:"bytes,22,opt,name=trace" json:"trace,omitempty"`
+	Trace string `protobuf:"bytes,22,opt,name=trace,proto3" json:"trace,omitempty"`
 	// Optional. Id of the span within the trace associated with the log entry.
 	// e.g. "0000000000000042"
 	// For Stackdriver trace spans, this is the same format that the Stackdriver
 	// trace API uses.
 	// The ID is a 16-character hexadecimal encoding of an 8-byte array.
-	SpanId string `protobuf:"bytes,27,opt,name=span_id,json=spanId" json:"span_id,omitempty"`
+	SpanId string `protobuf:"bytes,27,opt,name=span_id,json=spanId,proto3" json:"span_id,omitempty"`
 	// Optional. Source code location information associated with the log entry,
 	// if any.
-	SourceLocation       *LogEntrySourceLocation `protobuf:"bytes,23,opt,name=source_location,json=sourceLocation" json:"source_location,omitempty"`
+	SourceLocation       *LogEntrySourceLocation `protobuf:"bytes,23,opt,name=source_location,json=sourceLocation,proto3" json:"source_location,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
 	XXX_sizecache        int32                   `json:"-"`
@@ -140,13 +140,13 @@ type isLogEntry_Payload interface {
 }
 
 type LogEntry_ProtoPayload struct {
-	ProtoPayload *any.Any `protobuf:"bytes,2,opt,name=proto_payload,json=protoPayload,oneof"`
+	ProtoPayload *any.Any `protobuf:"bytes,2,opt,name=proto_payload,json=protoPayload,proto3,oneof"`
 }
 type LogEntry_TextPayload struct {
-	TextPayload string `protobuf:"bytes,3,opt,name=text_payload,json=textPayload,oneof"`
+	TextPayload string `protobuf:"bytes,3,opt,name=text_payload,json=textPayload,proto3,oneof"`
 }
 type LogEntry_JsonPayload struct {
-	JsonPayload *_struct.Struct `protobuf:"bytes,6,opt,name=json_payload,json=jsonPayload,oneof"`
+	JsonPayload *_struct.Struct `protobuf:"bytes,6,opt,name=json_payload,json=jsonPayload,proto3,oneof"`
 }
 
 func (*LogEntry_ProtoPayload) isLogEntry_Payload() {}
@@ -359,15 +359,15 @@ func _LogEntry_OneofSizer(msg proto.Message) (n int) {
 type LogEntryOperation struct {
 	// Optional. An arbitrary operation identifier. Log entries with the
 	// same identifier are assumed to be part of the same operation.
-	Id string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Optional. An arbitrary producer identifier. The combination of
 	// `id` and `producer` must be globally unique.  Examples for `producer`:
 	// `"MyDivision.MyBigCompany.com"`, `"github.com/MyProject/MyApplication"`.
-	Producer string `protobuf:"bytes,2,opt,name=producer" json:"producer,omitempty"`
+	Producer string `protobuf:"bytes,2,opt,name=producer,proto3" json:"producer,omitempty"`
 	// Optional. Set this to True if this is the first log entry in the operation.
-	First bool `protobuf:"varint,3,opt,name=first" json:"first,omitempty"`
+	First bool `protobuf:"varint,3,opt,name=first,proto3" json:"first,omitempty"`
 	// Optional. Set this to True if this is the last log entry in the operation.
-	Last                 bool     `protobuf:"varint,4,opt,name=last" json:"last,omitempty"`
+	Last                 bool     `protobuf:"varint,4,opt,name=last,proto3" json:"last,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -430,17 +430,17 @@ func (m *LogEntryOperation) GetLast() bool {
 type LogEntrySourceLocation struct {
 	// Optional. Source file name. Depending on the runtime environment, this
 	// might be a simple name or a fully-qualified name.
-	File string `protobuf:"bytes,1,opt,name=file" json:"file,omitempty"`
+	File string `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
 	// Optional. Line within the source file. 1-based; 0 indicates no line number
 	// available.
-	Line int64 `protobuf:"varint,2,opt,name=line" json:"line,omitempty"`
+	Line int64 `protobuf:"varint,2,opt,name=line,proto3" json:"line,omitempty"`
 	// Optional. Human-readable name of the function or method being invoked, with
 	// optional context such as the class or package name. This information may be
 	// used in contexts such as the logs viewer, where a file and line number are
 	// less meaningful. The format can vary by language. For example:
 	// `qual.if.ied.Class.method` (Java), `dir/package.func` (Go), `function`
 	// (Python).
-	Function             string   `protobuf:"bytes,3,opt,name=function" json:"function,omitempty"`
+	Function             string   `protobuf:"bytes,3,opt,name=function,proto3" json:"function,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

@@ -171,24 +171,24 @@ type Table struct {
 	// The unique name of the table. Values are of the form
 	// `projects/<project>/instances/<instance>/tables/[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
 	// Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// (`OutputOnly`)
 	// Map from cluster ID to per-cluster table state.
 	// If it could not be determined whether or not the table has data in a
 	// particular cluster (for example, if its zone is unavailable), then
 	// there will be an entry for the cluster with UNKNOWN `replication_status`.
 	// Views: `REPLICATION_VIEW`, `FULL`
-	ClusterStates map[string]*Table_ClusterState `protobuf:"bytes,2,rep,name=cluster_states,json=clusterStates" json:"cluster_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ClusterStates map[string]*Table_ClusterState `protobuf:"bytes,2,rep,name=cluster_states,json=clusterStates,proto3" json:"cluster_states,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// (`CreationOnly`)
 	// The column families configured for this table, mapped by column family ID.
 	// Views: `SCHEMA_VIEW`, `FULL`
-	ColumnFamilies map[string]*ColumnFamily `protobuf:"bytes,3,rep,name=column_families,json=columnFamilies" json:"column_families,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ColumnFamilies map[string]*ColumnFamily `protobuf:"bytes,3,rep,name=column_families,json=columnFamilies,proto3" json:"column_families,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// (`CreationOnly`)
 	// The granularity (i.e. `MILLIS`) at which timestamps are stored in
 	// this table. Timestamps not matching the granularity will be rejected.
 	// If unspecified at creation time, the value will be set to `MILLIS`.
 	// Views: `SCHEMA_VIEW`, `FULL`
-	Granularity          Table_TimestampGranularity `protobuf:"varint,4,opt,name=granularity,enum=google.bigtable.admin.v2.Table_TimestampGranularity" json:"granularity,omitempty"`
+	Granularity          Table_TimestampGranularity `protobuf:"varint,4,opt,name=granularity,proto3,enum=google.bigtable.admin.v2.Table_TimestampGranularity" json:"granularity,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
 	XXX_sizecache        int32                      `json:"-"`
@@ -250,7 +250,7 @@ func (m *Table) GetGranularity() Table_TimestampGranularity {
 type Table_ClusterState struct {
 	// (`OutputOnly`)
 	// The state of replication for the table in this cluster.
-	ReplicationState     Table_ClusterState_ReplicationState `protobuf:"varint,1,opt,name=replication_state,json=replicationState,enum=google.bigtable.admin.v2.Table_ClusterState_ReplicationState" json:"replication_state,omitempty"`
+	ReplicationState     Table_ClusterState_ReplicationState `protobuf:"varint,1,opt,name=replication_state,json=replicationState,proto3,enum=google.bigtable.admin.v2.Table_ClusterState_ReplicationState" json:"replication_state,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
 	XXX_unrecognized     []byte                              `json:"-"`
 	XXX_sizecache        int32                               `json:"-"`
@@ -295,7 +295,7 @@ type ColumnFamily struct {
 	// NOTE: Garbage collection executes opportunistically in the background, and
 	// so it's possible for reads to return a cell even if it matches the active
 	// GC expression for its family.
-	GcRule               *GcRule  `protobuf:"bytes,1,opt,name=gc_rule,json=gcRule" json:"gc_rule,omitempty"`
+	GcRule               *GcRule  `protobuf:"bytes,1,opt,name=gc_rule,json=gcRule,proto3" json:"gc_rule,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -376,16 +376,16 @@ type isGcRule_Rule interface {
 }
 
 type GcRule_MaxNumVersions struct {
-	MaxNumVersions int32 `protobuf:"varint,1,opt,name=max_num_versions,json=maxNumVersions,oneof"`
+	MaxNumVersions int32 `protobuf:"varint,1,opt,name=max_num_versions,json=maxNumVersions,proto3,oneof"`
 }
 type GcRule_MaxAge struct {
-	MaxAge *duration.Duration `protobuf:"bytes,2,opt,name=max_age,json=maxAge,oneof"`
+	MaxAge *duration.Duration `protobuf:"bytes,2,opt,name=max_age,json=maxAge,proto3,oneof"`
 }
 type GcRule_Intersection_ struct {
-	Intersection *GcRule_Intersection `protobuf:"bytes,3,opt,name=intersection,oneof"`
+	Intersection *GcRule_Intersection `protobuf:"bytes,3,opt,name=intersection,proto3,oneof"`
 }
 type GcRule_Union_ struct {
-	Union *GcRule_Union `protobuf:"bytes,4,opt,name=union,oneof"`
+	Union *GcRule_Union `protobuf:"bytes,4,opt,name=union,proto3,oneof"`
 }
 
 func (*GcRule_MaxNumVersions) isGcRule_Rule() {}
@@ -538,7 +538,7 @@ func _GcRule_OneofSizer(msg proto.Message) (n int) {
 // A GcRule which deletes cells matching all of the given rules.
 type GcRule_Intersection struct {
 	// Only delete cells which would be deleted by every element of `rules`.
-	Rules                []*GcRule `protobuf:"bytes,1,rep,name=rules" json:"rules,omitempty"`
+	Rules                []*GcRule `protobuf:"bytes,1,rep,name=rules,proto3" json:"rules,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -578,7 +578,7 @@ func (m *GcRule_Intersection) GetRules() []*GcRule {
 // A GcRule which deletes cells matching any of the given rules.
 type GcRule_Union struct {
 	// Delete cells which would be deleted by any element of `rules`.
-	Rules                []*GcRule `protobuf:"bytes,1,rep,name=rules" json:"rules,omitempty"`
+	Rules                []*GcRule `protobuf:"bytes,1,rep,name=rules,proto3" json:"rules,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -627,29 +627,29 @@ type Snapshot struct {
 	// The unique name of the snapshot.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/clusters/<cluster>/snapshots/<snapshot>`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// (`OutputOnly`)
 	// The source table at the time the snapshot was taken.
-	SourceTable *Table `protobuf:"bytes,2,opt,name=source_table,json=sourceTable" json:"source_table,omitempty"`
+	SourceTable *Table `protobuf:"bytes,2,opt,name=source_table,json=sourceTable,proto3" json:"source_table,omitempty"`
 	// (`OutputOnly`)
 	// The size of the data in the source table at the time the snapshot was
 	// taken. In some cases, this value may be computed asynchronously via a
 	// background process and a placeholder of 0 will be used in the meantime.
-	DataSizeBytes int64 `protobuf:"varint,3,opt,name=data_size_bytes,json=dataSizeBytes" json:"data_size_bytes,omitempty"`
+	DataSizeBytes int64 `protobuf:"varint,3,opt,name=data_size_bytes,json=dataSizeBytes,proto3" json:"data_size_bytes,omitempty"`
 	// (`OutputOnly`)
 	// The time when the snapshot is created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime" json:"create_time,omitempty"`
+	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// (`OutputOnly`)
 	// The time when the snapshot will be deleted. The maximum amount of time a
 	// snapshot can stay active is 365 days. If 'ttl' is not specified,
 	// the default maximum of 365 days will be used.
-	DeleteTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=delete_time,json=deleteTime" json:"delete_time,omitempty"`
+	DeleteTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=delete_time,json=deleteTime,proto3" json:"delete_time,omitempty"`
 	// (`OutputOnly`)
 	// The current state of the snapshot.
-	State Snapshot_State `protobuf:"varint,6,opt,name=state,enum=google.bigtable.admin.v2.Snapshot_State" json:"state,omitempty"`
+	State Snapshot_State `protobuf:"varint,6,opt,name=state,proto3,enum=google.bigtable.admin.v2.Snapshot_State" json:"state,omitempty"`
 	// (`OutputOnly`)
 	// Description of the snapshot.
-	Description          string   `protobuf:"bytes,7,opt,name=description" json:"description,omitempty"`
+	Description          string   `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

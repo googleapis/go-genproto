@@ -22,7 +22,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 // Source information used to create a Service Config
 type SourceInfo struct {
 	// All files used during config generation.
-	SourceFiles          []*any.Any `protobuf:"bytes,1,rep,name=source_files,json=sourceFiles" json:"source_files,omitempty"`
+	SourceFiles          []*any.Any `protobuf:"bytes,1,rep,name=source_files,json=sourceFiles,proto3" json:"source_files,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`

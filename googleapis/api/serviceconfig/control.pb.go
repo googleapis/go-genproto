@@ -24,7 +24,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 type Control struct {
 	// The service control environment to use. If empty, no control plane
 	// feature (like quota and billing) will be enabled.
-	Environment          string   `protobuf:"bytes,1,opt,name=environment" json:"environment,omitempty"`
+	Environment          string   `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

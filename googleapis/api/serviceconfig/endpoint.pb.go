@@ -37,27 +37,27 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 //       allow_cors: true
 type Endpoint struct {
 	// The canonical name of this endpoint.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// DEPRECATED: This field is no longer supported. Instead of using aliases,
 	// please specify multiple [google.api.Endpoint][google.api.Endpoint] for each of the intended
 	// aliases.
 	//
 	// Additional names that this endpoint will be hosted on.
-	Aliases []string `protobuf:"bytes,2,rep,name=aliases" json:"aliases,omitempty"`
+	Aliases []string `protobuf:"bytes,2,rep,name=aliases,proto3" json:"aliases,omitempty"`
 	// The list of features enabled on this endpoint.
-	Features []string `protobuf:"bytes,4,rep,name=features" json:"features,omitempty"`
+	Features []string `protobuf:"bytes,4,rep,name=features,proto3" json:"features,omitempty"`
 	// The specification of an Internet routable address of API frontend that will
 	// handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary).
 	// It should be either a valid IPv4 address or a fully-qualified domain name.
 	// For example, "8.8.8.8" or "myservice.appspot.com".
-	Target string `protobuf:"bytes,101,opt,name=target" json:"target,omitempty"`
+	Target string `protobuf:"bytes,101,opt,name=target,proto3" json:"target,omitempty"`
 	// Allowing
 	// [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka
 	// cross-domain traffic, would allow the backends served from this endpoint to
 	// receive and respond to HTTP OPTIONS requests. The response will be used by
 	// the browser to determine whether the subsequent cross-origin request is
 	// allowed to proceed.
-	AllowCors            bool     `protobuf:"varint,5,opt,name=allow_cors,json=allowCors" json:"allow_cors,omitempty"`
+	AllowCors            bool     `protobuf:"varint,5,opt,name=allow_cors,json=allowCors,proto3" json:"allow_cors,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

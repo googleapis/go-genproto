@@ -23,7 +23,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 // only be used by whitelisted users.
 type Experimental struct {
 	// Authorization configuration.
-	Authorization        *AuthorizationConfig `protobuf:"bytes,8,opt,name=authorization" json:"authorization,omitempty"`
+	Authorization        *AuthorizationConfig `protobuf:"bytes,8,opt,name=authorization,proto3" json:"authorization,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`

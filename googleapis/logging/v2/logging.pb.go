@@ -43,7 +43,7 @@ type DeleteLogRequest struct {
 	// `"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"`.
 	// For more information about log names, see
 	// [LogEntry][google.logging.v2.LogEntry].
-	LogName              string   `protobuf:"bytes,1,opt,name=log_name,json=logName" json:"log_name,omitempty"`
+	LogName              string   `protobuf:"bytes,1,opt,name=log_name,json=logName,proto3" json:"log_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -95,7 +95,7 @@ type WriteLogEntriesRequest struct {
 	// `"organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"`.
 	// For more information about log names, see
 	// [LogEntry][google.logging.v2.LogEntry].
-	LogName string `protobuf:"bytes,1,opt,name=log_name,json=logName" json:"log_name,omitempty"`
+	LogName string `protobuf:"bytes,1,opt,name=log_name,json=logName,proto3" json:"log_name,omitempty"`
 	// Optional. A default monitored resource object that is assigned to all log
 	// entries in `entries` that do not specify a value for `resource`. Example:
 	//
@@ -104,12 +104,12 @@ type WriteLogEntriesRequest struct {
 	//         "zone": "us-central1-a", "instance_id": "00000000000000000000" }}
 	//
 	// See [LogEntry][google.logging.v2.LogEntry].
-	Resource *monitoredres.MonitoredResource `protobuf:"bytes,2,opt,name=resource" json:"resource,omitempty"`
+	Resource *monitoredres.MonitoredResource `protobuf:"bytes,2,opt,name=resource,proto3" json:"resource,omitempty"`
 	// Optional. Default labels that are added to the `labels` field of all log
 	// entries in `entries`. If a log entry already has a label with the same key
 	// as a label in this parameter, then the log entry's label is not changed.
 	// See [LogEntry][google.logging.v2.LogEntry].
-	Labels map[string]string `protobuf:"bytes,3,rep,name=labels" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Labels map[string]string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Required. The log entries to send to Stackdriver Logging. The order of log
 	// entries in this list does not matter. Values supplied in this method's
 	// `log_name`, `resource`, and `labels` fields are copied into those log
@@ -131,13 +131,13 @@ type WriteLogEntriesRequest struct {
 	// [quota limit](/logging/quota-policy) for calls to `entries.write`,
 	// you should try to include several log entries in this list,
 	// rather than calling this method for each individual log entry.
-	Entries []*LogEntry `protobuf:"bytes,4,rep,name=entries" json:"entries,omitempty"`
+	Entries []*LogEntry `protobuf:"bytes,4,rep,name=entries,proto3" json:"entries,omitempty"`
 	// Optional. Whether valid entries should be written even if some other
 	// entries fail due to INVALID_ARGUMENT or PERMISSION_DENIED errors. If any
 	// entry is not written, then the response status is the error associated
 	// with one of the failed entries and the response includes error details
 	// keyed by the entries' zero-based index in the `entries.write` method.
-	PartialSuccess       bool     `protobuf:"varint,5,opt,name=partial_success,json=partialSuccess" json:"partial_success,omitempty"`
+	PartialSuccess       bool     `protobuf:"varint,5,opt,name=partial_success,json=partialSuccess,proto3" json:"partial_success,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -242,7 +242,7 @@ type WriteLogEntriesPartialErrors struct {
 	//
 	// Failed requests for which no entries are written will not include
 	// per-entry errors.
-	LogEntryErrors       map[int32]*status.Status `protobuf:"bytes,1,rep,name=log_entry_errors,json=logEntryErrors" json:"log_entry_errors,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	LogEntryErrors       map[int32]*status.Status `protobuf:"bytes,1,rep,name=log_entry_errors,json=logEntryErrors,proto3" json:"log_entry_errors,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
 	XXX_unrecognized     []byte                   `json:"-"`
 	XXX_sizecache        int32                    `json:"-"`
@@ -286,7 +286,7 @@ type ListLogEntriesRequest struct {
 	// `"my-project-1A"`. If present, these project identifiers are converted to
 	// resource name format and added to the list of resources in
 	// `resource_names`.
-	ProjectIds []string `protobuf:"bytes,1,rep,name=project_ids,json=projectIds" json:"project_ids,omitempty"`
+	ProjectIds []string `protobuf:"bytes,1,rep,name=project_ids,json=projectIds,proto3" json:"project_ids,omitempty"`
 	// Required. Names of one or more parent resources from which to
 	// retrieve log entries:
 	//
@@ -296,7 +296,7 @@ type ListLogEntriesRequest struct {
 	//     "folders/[FOLDER_ID]"
 	//
 	// Projects listed in the `project_ids` field are added to this list.
-	ResourceNames []string `protobuf:"bytes,8,rep,name=resource_names,json=resourceNames" json:"resource_names,omitempty"`
+	ResourceNames []string `protobuf:"bytes,8,rep,name=resource_names,json=resourceNames,proto3" json:"resource_names,omitempty"`
 	// Optional. A filter that chooses which log entries to return.  See [Advanced
 	// Logs Filters](/logging/docs/view/advanced_filters).  Only log entries that
 	// match the filter are returned.  An empty filter matches all log entries in
@@ -304,23 +304,23 @@ type ListLogEntriesRequest struct {
 	// that is not listed in `resource_names` will cause the filter to return no
 	// results.
 	// The maximum length of the filter is 20000 characters.
-	Filter string `protobuf:"bytes,2,opt,name=filter" json:"filter,omitempty"`
+	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Optional. How the results should be sorted.  Presently, the only permitted
 	// values are `"timestamp asc"` (default) and `"timestamp desc"`. The first
 	// option returns entries in order of increasing values of
 	// `LogEntry.timestamp` (oldest first), and the second option returns entries
 	// in order of decreasing timestamps (newest first).  Entries with equal
 	// timestamps are returned in order of their `insert_id` values.
-	OrderBy string `protobuf:"bytes,3,opt,name=order_by,json=orderBy" json:"order_by,omitempty"`
+	OrderBy string `protobuf:"bytes,3,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	// Optional. The maximum number of results to return from this request.
 	// Non-positive values are ignored.  The presence of `next_page_token` in the
 	// response indicates that more results might be available.
-	PageSize int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the
 	// preceding call to this method.  `page_token` must be the value of
 	// `next_page_token` from the previous response.  The values of other method
 	// parameters should be identical to those in the previous call.
-	PageToken            string   `protobuf:"bytes,5,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,5,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -397,7 +397,7 @@ type ListLogEntriesResponse struct {
 	// A list of log entries.  If `entries` is empty, `nextPageToken` may still be
 	// returned, indicating that more entries may exist.  See `nextPageToken` for
 	// more information.
-	Entries []*LogEntry `protobuf:"bytes,1,rep,name=entries" json:"entries,omitempty"`
+	Entries []*LogEntry `protobuf:"bytes,1,rep,name=entries,proto3" json:"entries,omitempty"`
 	// If there might be more results than those appearing in this response, then
 	// `nextPageToken` is included.  To get the next set of results, call this
 	// method again using the value of `nextPageToken` as `pageToken`.
@@ -408,7 +408,7 @@ type ListLogEntriesResponse struct {
 	// value for `page_token` to continue the search.  Alternatively, consider
 	// speeding up the search by changing your filter to specify a single log name
 	// or resource type, or to narrow the time range of the search.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -457,12 +457,12 @@ type ListMonitoredResourceDescriptorsRequest struct {
 	// Optional. The maximum number of results to return from this request.
 	// Non-positive values are ignored.  The presence of `nextPageToken` in the
 	// response indicates that more results might be available.
-	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the
 	// preceding call to this method.  `pageToken` must be the value of
 	// `nextPageToken` from the previous response.  The values of other method
 	// parameters should be identical to those in the previous call.
-	PageToken            string   `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -511,11 +511,11 @@ func (m *ListMonitoredResourceDescriptorsRequest) GetPageToken() string {
 // Result returned from ListMonitoredResourceDescriptors.
 type ListMonitoredResourceDescriptorsResponse struct {
 	// A list of resource descriptors.
-	ResourceDescriptors []*monitoredres.MonitoredResourceDescriptor `protobuf:"bytes,1,rep,name=resource_descriptors,json=resourceDescriptors" json:"resource_descriptors,omitempty"`
+	ResourceDescriptors []*monitoredres.MonitoredResourceDescriptor `protobuf:"bytes,1,rep,name=resource_descriptors,json=resourceDescriptors,proto3" json:"resource_descriptors,omitempty"`
 	// If there might be more results than those appearing in this response, then
 	// `nextPageToken` is included.  To get the next set of results, call this
 	// method again using the value of `nextPageToken` as `pageToken`.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -569,16 +569,16 @@ type ListLogsRequest struct {
 	//     "organizations/[ORGANIZATION_ID]"
 	//     "billingAccounts/[BILLING_ACCOUNT_ID]"
 	//     "folders/[FOLDER_ID]"
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The maximum number of results to return from this request.
 	// Non-positive values are ignored.  The presence of `nextPageToken` in the
 	// response indicates that more results might be available.
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the
 	// preceding call to this method.  `pageToken` must be the value of
 	// `nextPageToken` from the previous response.  The values of other method
 	// parameters should be identical to those in the previous call.
-	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -634,11 +634,11 @@ type ListLogsResponse struct {
 	// A list of log names. For example,
 	// `"projects/my-project/syslog"` or
 	// `"organizations/123/cloudresourcemanager.googleapis.com%2Factivity"`.
-	LogNames []string `protobuf:"bytes,3,rep,name=log_names,json=logNames" json:"log_names,omitempty"`
+	LogNames []string `protobuf:"bytes,3,rep,name=log_names,json=logNames,proto3" json:"log_names,omitempty"`
 	// If there might be more results than those appearing in this response, then
 	// `nextPageToken` is included.  To get the next set of results, call this
 	// method again using the value of `nextPageToken` as `pageToken`.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -787,8 +787,7 @@ func (c *loggingServiceV2Client) ListLogs(ctx context.Context, in *ListLogsReque
 	return out, nil
 }
 
-// Server API for LoggingServiceV2 service
-
+// LoggingServiceV2Server is the server API for LoggingServiceV2 service.
 type LoggingServiceV2Server interface {
 	// Deletes all the log entries in a log.
 	// The log reappears if it receives new entries.

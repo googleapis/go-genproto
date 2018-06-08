@@ -154,26 +154,26 @@ type AnnotateVideoRequest struct {
 	// multiple videos. Supported wildcards: '*' to match 0 or more characters;
 	// '?' to match 1 character. If unset, the input video should be embedded
 	// in the request as `input_content`. If set, `input_content` should be unset.
-	InputUri string `protobuf:"bytes,1,opt,name=input_uri,json=inputUri" json:"input_uri,omitempty"`
+	InputUri string `protobuf:"bytes,1,opt,name=input_uri,json=inputUri,proto3" json:"input_uri,omitempty"`
 	// The video data bytes.
 	// If unset, the input video(s) should be specified via `input_uri`.
 	// If set, `input_uri` should be unset.
 	InputContent []byte `protobuf:"bytes,6,opt,name=input_content,json=inputContent,proto3" json:"input_content,omitempty"`
 	// Requested video annotation features.
-	Features []Feature `protobuf:"varint,2,rep,packed,name=features,enum=google.cloud.videointelligence.v1p1beta1.Feature" json:"features,omitempty"`
+	Features []Feature `protobuf:"varint,2,rep,packed,name=features,proto3,enum=google.cloud.videointelligence.v1p1beta1.Feature" json:"features,omitempty"`
 	// Additional video context and/or feature-specific parameters.
-	VideoContext *VideoContext `protobuf:"bytes,3,opt,name=video_context,json=videoContext" json:"video_context,omitempty"`
+	VideoContext *VideoContext `protobuf:"bytes,3,opt,name=video_context,json=videoContext,proto3" json:"video_context,omitempty"`
 	// Optional location where the output (in JSON format) should be stored.
 	// Currently, only [Google Cloud Storage](https://cloud.google.com/storage/)
 	// URIs are supported, which must be specified in the following format:
 	// `gs://bucket-id/object-id` (other URI formats return
 	// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]). For more information, see
 	// [Request URIs](/storage/docs/reference-uris).
-	OutputUri string `protobuf:"bytes,4,opt,name=output_uri,json=outputUri" json:"output_uri,omitempty"`
+	OutputUri string `protobuf:"bytes,4,opt,name=output_uri,json=outputUri,proto3" json:"output_uri,omitempty"`
 	// Optional cloud region where annotation should take place. Supported cloud
 	// regions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region
 	// is specified, a region will be determined based on video file location.
-	LocationId           string   `protobuf:"bytes,5,opt,name=location_id,json=locationId" json:"location_id,omitempty"`
+	LocationId           string   `protobuf:"bytes,5,opt,name=location_id,json=locationId,proto3" json:"location_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -250,15 +250,15 @@ type VideoContext struct {
 	// Video segments to annotate. The segments may overlap and are not required
 	// to be contiguous or span the whole video. If unspecified, each video
 	// is treated as a single segment.
-	Segments []*VideoSegment `protobuf:"bytes,1,rep,name=segments" json:"segments,omitempty"`
+	Segments []*VideoSegment `protobuf:"bytes,1,rep,name=segments,proto3" json:"segments,omitempty"`
 	// Config for LABEL_DETECTION.
-	LabelDetectionConfig *LabelDetectionConfig `protobuf:"bytes,2,opt,name=label_detection_config,json=labelDetectionConfig" json:"label_detection_config,omitempty"`
+	LabelDetectionConfig *LabelDetectionConfig `protobuf:"bytes,2,opt,name=label_detection_config,json=labelDetectionConfig,proto3" json:"label_detection_config,omitempty"`
 	// Config for SHOT_CHANGE_DETECTION.
-	ShotChangeDetectionConfig *ShotChangeDetectionConfig `protobuf:"bytes,3,opt,name=shot_change_detection_config,json=shotChangeDetectionConfig" json:"shot_change_detection_config,omitempty"`
+	ShotChangeDetectionConfig *ShotChangeDetectionConfig `protobuf:"bytes,3,opt,name=shot_change_detection_config,json=shotChangeDetectionConfig,proto3" json:"shot_change_detection_config,omitempty"`
 	// Config for EXPLICIT_CONTENT_DETECTION.
-	ExplicitContentDetectionConfig *ExplicitContentDetectionConfig `protobuf:"bytes,4,opt,name=explicit_content_detection_config,json=explicitContentDetectionConfig" json:"explicit_content_detection_config,omitempty"`
+	ExplicitContentDetectionConfig *ExplicitContentDetectionConfig `protobuf:"bytes,4,opt,name=explicit_content_detection_config,json=explicitContentDetectionConfig,proto3" json:"explicit_content_detection_config,omitempty"`
 	// Config for SPEECH_TRANSCRIPTION.
-	SpeechTranscriptionConfig *SpeechTranscriptionConfig `protobuf:"bytes,6,opt,name=speech_transcription_config,json=speechTranscriptionConfig" json:"speech_transcription_config,omitempty"`
+	SpeechTranscriptionConfig *SpeechTranscriptionConfig `protobuf:"bytes,6,opt,name=speech_transcription_config,json=speechTranscriptionConfig,proto3" json:"speech_transcription_config,omitempty"`
 	XXX_NoUnkeyedLiteral      struct{}                   `json:"-"`
 	XXX_unrecognized          []byte                     `json:"-"`
 	XXX_sizecache             int32                      `json:"-"`
@@ -328,15 +328,15 @@ type LabelDetectionConfig struct {
 	// What labels should be detected with LABEL_DETECTION, in addition to
 	// video-level labels or segment-level labels.
 	// If unspecified, defaults to `SHOT_MODE`.
-	LabelDetectionMode LabelDetectionMode `protobuf:"varint,1,opt,name=label_detection_mode,json=labelDetectionMode,enum=google.cloud.videointelligence.v1p1beta1.LabelDetectionMode" json:"label_detection_mode,omitempty"`
+	LabelDetectionMode LabelDetectionMode `protobuf:"varint,1,opt,name=label_detection_mode,json=labelDetectionMode,proto3,enum=google.cloud.videointelligence.v1p1beta1.LabelDetectionMode" json:"label_detection_mode,omitempty"`
 	// Whether the video has been shot from a stationary (i.e. non-moving) camera.
 	// When set to true, might improve detection accuracy for moving objects.
 	// Should be used with `SHOT_AND_FRAME_MODE` enabled.
-	StationaryCamera bool `protobuf:"varint,2,opt,name=stationary_camera,json=stationaryCamera" json:"stationary_camera,omitempty"`
+	StationaryCamera bool `protobuf:"varint,2,opt,name=stationary_camera,json=stationaryCamera,proto3" json:"stationary_camera,omitempty"`
 	// Model to use for label detection.
 	// Supported values: "builtin/stable" (the default if unset) and
 	// "builtin/latest".
-	Model                string   `protobuf:"bytes,3,opt,name=model" json:"model,omitempty"`
+	Model                string   `protobuf:"bytes,3,opt,name=model,proto3" json:"model,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -392,7 +392,7 @@ type ShotChangeDetectionConfig struct {
 	// Model to use for shot change detection.
 	// Supported values: "builtin/stable" (the default if unset) and
 	// "builtin/latest".
-	Model                string   `protobuf:"bytes,1,opt,name=model" json:"model,omitempty"`
+	Model                string   `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -434,7 +434,7 @@ type ExplicitContentDetectionConfig struct {
 	// Model to use for explicit content detection.
 	// Supported values: "builtin/stable" (the default if unset) and
 	// "builtin/latest".
-	Model                string   `protobuf:"bytes,1,opt,name=model" json:"model,omitempty"`
+	Model                string   `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -475,10 +475,10 @@ func (m *ExplicitContentDetectionConfig) GetModel() string {
 type VideoSegment struct {
 	// Time-offset, relative to the beginning of the video,
 	// corresponding to the start of the segment (inclusive).
-	StartTimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=start_time_offset,json=startTimeOffset" json:"start_time_offset,omitempty"`
+	StartTimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
 	// Time-offset, relative to the beginning of the video,
 	// corresponding to the end of the segment (inclusive).
-	EndTimeOffset        *duration.Duration `protobuf:"bytes,2,opt,name=end_time_offset,json=endTimeOffset" json:"end_time_offset,omitempty"`
+	EndTimeOffset        *duration.Duration `protobuf:"bytes,2,opt,name=end_time_offset,json=endTimeOffset,proto3" json:"end_time_offset,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -525,9 +525,9 @@ func (m *VideoSegment) GetEndTimeOffset() *duration.Duration {
 // Video segment level annotation results for label detection.
 type LabelSegment struct {
 	// Video segment where a label was detected.
-	Segment *VideoSegment `protobuf:"bytes,1,opt,name=segment" json:"segment,omitempty"`
+	Segment *VideoSegment `protobuf:"bytes,1,opt,name=segment,proto3" json:"segment,omitempty"`
 	// Confidence that the label is accurate. Range: [0, 1].
-	Confidence           float32  `protobuf:"fixed32,2,opt,name=confidence" json:"confidence,omitempty"`
+	Confidence           float32  `protobuf:"fixed32,2,opt,name=confidence,proto3" json:"confidence,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -575,9 +575,9 @@ func (m *LabelSegment) GetConfidence() float32 {
 type LabelFrame struct {
 	// Time-offset, relative to the beginning of the video, corresponding to the
 	// video frame for this location.
-	TimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=time_offset,json=timeOffset" json:"time_offset,omitempty"`
+	TimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
 	// Confidence that the label is accurate. Range: [0, 1].
-	Confidence           float32  `protobuf:"fixed32,2,opt,name=confidence" json:"confidence,omitempty"`
+	Confidence           float32  `protobuf:"fixed32,2,opt,name=confidence,proto3" json:"confidence,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -626,11 +626,11 @@ type Entity struct {
 	// Opaque entity ID. Some IDs may be available in
 	// [Google Knowledge Graph Search
 	// API](https://developers.google.com/knowledge-graph/).
-	EntityId string `protobuf:"bytes,1,opt,name=entity_id,json=entityId" json:"entity_id,omitempty"`
+	EntityId string `protobuf:"bytes,1,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`
 	// Textual description, e.g. `Fixed-gear bicycle`.
-	Description string `protobuf:"bytes,2,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Language code for `description` in BCP-47 format.
-	LanguageCode         string   `protobuf:"bytes,3,opt,name=language_code,json=languageCode" json:"language_code,omitempty"`
+	LanguageCode         string   `protobuf:"bytes,3,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -684,16 +684,16 @@ func (m *Entity) GetLanguageCode() string {
 // Label annotation.
 type LabelAnnotation struct {
 	// Detected entity.
-	Entity *Entity `protobuf:"bytes,1,opt,name=entity" json:"entity,omitempty"`
+	Entity *Entity `protobuf:"bytes,1,opt,name=entity,proto3" json:"entity,omitempty"`
 	// Common categories for the detected entity.
 	// E.g. when the label is `Terrier` the category is likely `dog`. And in some
 	// cases there might be more than one categories e.g. `Terrier` could also be
 	// a `pet`.
-	CategoryEntities []*Entity `protobuf:"bytes,2,rep,name=category_entities,json=categoryEntities" json:"category_entities,omitempty"`
+	CategoryEntities []*Entity `protobuf:"bytes,2,rep,name=category_entities,json=categoryEntities,proto3" json:"category_entities,omitempty"`
 	// All video segments where a label was detected.
-	Segments []*LabelSegment `protobuf:"bytes,3,rep,name=segments" json:"segments,omitempty"`
+	Segments []*LabelSegment `protobuf:"bytes,3,rep,name=segments,proto3" json:"segments,omitempty"`
 	// All video frames where a label was detected.
-	Frames               []*LabelFrame `protobuf:"bytes,4,rep,name=frames" json:"frames,omitempty"`
+	Frames               []*LabelFrame `protobuf:"bytes,4,rep,name=frames,proto3" json:"frames,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
 	XXX_sizecache        int32         `json:"-"`
@@ -755,9 +755,9 @@ func (m *LabelAnnotation) GetFrames() []*LabelFrame {
 type ExplicitContentFrame struct {
 	// Time-offset, relative to the beginning of the video, corresponding to the
 	// video frame for this location.
-	TimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=time_offset,json=timeOffset" json:"time_offset,omitempty"`
+	TimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
 	// Likelihood of the pornography content..
-	PornographyLikelihood Likelihood `protobuf:"varint,2,opt,name=pornography_likelihood,json=pornographyLikelihood,enum=google.cloud.videointelligence.v1p1beta1.Likelihood" json:"pornography_likelihood,omitempty"`
+	PornographyLikelihood Likelihood `protobuf:"varint,2,opt,name=pornography_likelihood,json=pornographyLikelihood,proto3,enum=google.cloud.videointelligence.v1p1beta1.Likelihood" json:"pornography_likelihood,omitempty"`
 	XXX_NoUnkeyedLiteral  struct{}   `json:"-"`
 	XXX_unrecognized      []byte     `json:"-"`
 	XXX_sizecache         int32      `json:"-"`
@@ -806,7 +806,7 @@ func (m *ExplicitContentFrame) GetPornographyLikelihood() Likelihood {
 // present for that frame.
 type ExplicitContentAnnotation struct {
 	// All video frames where explicit content was detected.
-	Frames               []*ExplicitContentFrame `protobuf:"bytes,1,rep,name=frames" json:"frames,omitempty"`
+	Frames               []*ExplicitContentFrame `protobuf:"bytes,1,rep,name=frames,proto3" json:"frames,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
 	XXX_sizecache        int32                   `json:"-"`
@@ -848,13 +848,13 @@ func (m *ExplicitContentAnnotation) GetFrames() []*ExplicitContentFrame {
 // Range: [0, 1].
 type NormalizedBoundingBox struct {
 	// Left X coordinate.
-	Left float32 `protobuf:"fixed32,1,opt,name=left" json:"left,omitempty"`
+	Left float32 `protobuf:"fixed32,1,opt,name=left,proto3" json:"left,omitempty"`
 	// Top Y coordinate.
-	Top float32 `protobuf:"fixed32,2,opt,name=top" json:"top,omitempty"`
+	Top float32 `protobuf:"fixed32,2,opt,name=top,proto3" json:"top,omitempty"`
 	// Right X coordinate.
-	Right float32 `protobuf:"fixed32,3,opt,name=right" json:"right,omitempty"`
+	Right float32 `protobuf:"fixed32,3,opt,name=right,proto3" json:"right,omitempty"`
 	// Bottom Y coordinate.
-	Bottom               float32  `protobuf:"fixed32,4,opt,name=bottom" json:"bottom,omitempty"`
+	Bottom               float32  `protobuf:"fixed32,4,opt,name=bottom,proto3" json:"bottom,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -916,25 +916,25 @@ func (m *NormalizedBoundingBox) GetBottom() float32 {
 type VideoAnnotationResults struct {
 	// Video file location in
 	// [Google Cloud Storage](https://cloud.google.com/storage/).
-	InputUri string `protobuf:"bytes,1,opt,name=input_uri,json=inputUri" json:"input_uri,omitempty"`
+	InputUri string `protobuf:"bytes,1,opt,name=input_uri,json=inputUri,proto3" json:"input_uri,omitempty"`
 	// Label annotations on video level or user specified segment level.
 	// There is exactly one element for each unique label.
-	SegmentLabelAnnotations []*LabelAnnotation `protobuf:"bytes,2,rep,name=segment_label_annotations,json=segmentLabelAnnotations" json:"segment_label_annotations,omitempty"`
+	SegmentLabelAnnotations []*LabelAnnotation `protobuf:"bytes,2,rep,name=segment_label_annotations,json=segmentLabelAnnotations,proto3" json:"segment_label_annotations,omitempty"`
 	// Label annotations on shot level.
 	// There is exactly one element for each unique label.
-	ShotLabelAnnotations []*LabelAnnotation `protobuf:"bytes,3,rep,name=shot_label_annotations,json=shotLabelAnnotations" json:"shot_label_annotations,omitempty"`
+	ShotLabelAnnotations []*LabelAnnotation `protobuf:"bytes,3,rep,name=shot_label_annotations,json=shotLabelAnnotations,proto3" json:"shot_label_annotations,omitempty"`
 	// Label annotations on frame level.
 	// There is exactly one element for each unique label.
-	FrameLabelAnnotations []*LabelAnnotation `protobuf:"bytes,4,rep,name=frame_label_annotations,json=frameLabelAnnotations" json:"frame_label_annotations,omitempty"`
+	FrameLabelAnnotations []*LabelAnnotation `protobuf:"bytes,4,rep,name=frame_label_annotations,json=frameLabelAnnotations,proto3" json:"frame_label_annotations,omitempty"`
 	// Shot annotations. Each shot is represented as a video segment.
-	ShotAnnotations []*VideoSegment `protobuf:"bytes,6,rep,name=shot_annotations,json=shotAnnotations" json:"shot_annotations,omitempty"`
+	ShotAnnotations []*VideoSegment `protobuf:"bytes,6,rep,name=shot_annotations,json=shotAnnotations,proto3" json:"shot_annotations,omitempty"`
 	// Explicit content annotation.
-	ExplicitAnnotation *ExplicitContentAnnotation `protobuf:"bytes,7,opt,name=explicit_annotation,json=explicitAnnotation" json:"explicit_annotation,omitempty"`
+	ExplicitAnnotation *ExplicitContentAnnotation `protobuf:"bytes,7,opt,name=explicit_annotation,json=explicitAnnotation,proto3" json:"explicit_annotation,omitempty"`
 	// Speech transcription.
-	SpeechTranscriptions []*SpeechTranscription `protobuf:"bytes,11,rep,name=speech_transcriptions,json=speechTranscriptions" json:"speech_transcriptions,omitempty"`
+	SpeechTranscriptions []*SpeechTranscription `protobuf:"bytes,11,rep,name=speech_transcriptions,json=speechTranscriptions,proto3" json:"speech_transcriptions,omitempty"`
 	// If set, indicates an error. Note that for a single `AnnotateVideoRequest`
 	// some videos may succeed and some may fail.
-	Error                *status.Status `protobuf:"bytes,9,opt,name=error" json:"error,omitempty"`
+	Error                *status.Status `protobuf:"bytes,9,opt,name=error,proto3" json:"error,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -1025,7 +1025,7 @@ func (m *VideoAnnotationResults) GetError() *status.Status {
 // call of the `google::longrunning::Operations` service.
 type AnnotateVideoResponse struct {
 	// Annotation results for all videos specified in `AnnotateVideoRequest`.
-	AnnotationResults    []*VideoAnnotationResults `protobuf:"bytes,1,rep,name=annotation_results,json=annotationResults" json:"annotation_results,omitempty"`
+	AnnotationResults    []*VideoAnnotationResults `protobuf:"bytes,1,rep,name=annotation_results,json=annotationResults,proto3" json:"annotation_results,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
 	XXX_unrecognized     []byte                    `json:"-"`
 	XXX_sizecache        int32                     `json:"-"`
@@ -1066,14 +1066,14 @@ func (m *AnnotateVideoResponse) GetAnnotationResults() []*VideoAnnotationResults
 type VideoAnnotationProgress struct {
 	// Video file location in
 	// [Google Cloud Storage](https://cloud.google.com/storage/).
-	InputUri string `protobuf:"bytes,1,opt,name=input_uri,json=inputUri" json:"input_uri,omitempty"`
+	InputUri string `protobuf:"bytes,1,opt,name=input_uri,json=inputUri,proto3" json:"input_uri,omitempty"`
 	// Approximate percentage processed thus far.
 	// Guaranteed to be 100 when fully processed.
-	ProgressPercent int32 `protobuf:"varint,2,opt,name=progress_percent,json=progressPercent" json:"progress_percent,omitempty"`
+	ProgressPercent int32 `protobuf:"varint,2,opt,name=progress_percent,json=progressPercent,proto3" json:"progress_percent,omitempty"`
 	// Time when the request was received.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime" json:"start_time,omitempty"`
+	StartTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time of the most recent update.
-	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime" json:"update_time,omitempty"`
+	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1136,7 +1136,7 @@ func (m *VideoAnnotationProgress) GetUpdateTime() *timestamp.Timestamp {
 // call of the `google::longrunning::Operations` service.
 type AnnotateVideoProgress struct {
 	// Progress metadata for all videos specified in `AnnotateVideoRequest`.
-	AnnotationProgress   []*VideoAnnotationProgress `protobuf:"bytes,1,rep,name=annotation_progress,json=annotationProgress" json:"annotation_progress,omitempty"`
+	AnnotationProgress   []*VideoAnnotationProgress `protobuf:"bytes,1,rep,name=annotation_progress,json=annotationProgress,proto3" json:"annotation_progress,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
 	XXX_sizecache        int32                      `json:"-"`
@@ -1180,23 +1180,23 @@ type SpeechTranscriptionConfig struct {
 	// Example: "en-US".
 	// See [Language Support](https://cloud.google.com/speech/docs/languages)
 	// for a list of the currently supported language codes.
-	LanguageCode string `protobuf:"bytes,1,opt,name=language_code,json=languageCode" json:"language_code,omitempty"`
+	LanguageCode string `protobuf:"bytes,1,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// *Optional* Maximum number of recognition hypotheses to be returned.
 	// Specifically, the maximum number of `SpeechRecognitionAlternative` messages
 	// within each `SpeechRecognitionResult`. The server may return fewer than
 	// `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will
 	// return a maximum of one. If omitted, will return a maximum of one.
-	MaxAlternatives int32 `protobuf:"varint,2,opt,name=max_alternatives,json=maxAlternatives" json:"max_alternatives,omitempty"`
+	MaxAlternatives int32 `protobuf:"varint,2,opt,name=max_alternatives,json=maxAlternatives,proto3" json:"max_alternatives,omitempty"`
 	// *Optional* If set to `true`, the server will attempt to filter out
 	// profanities, replacing all but the initial character in each filtered word
 	// with asterisks, e.g. "f***". If set to `false` or omitted, profanities
 	// won't be filtered out.
-	FilterProfanity bool `protobuf:"varint,3,opt,name=filter_profanity,json=filterProfanity" json:"filter_profanity,omitempty"`
+	FilterProfanity bool `protobuf:"varint,3,opt,name=filter_profanity,json=filterProfanity,proto3" json:"filter_profanity,omitempty"`
 	// *Optional* A means to provide context to assist the speech recognition.
-	SpeechContexts []*SpeechContext `protobuf:"bytes,4,rep,name=speech_contexts,json=speechContexts" json:"speech_contexts,omitempty"`
+	SpeechContexts []*SpeechContext `protobuf:"bytes,4,rep,name=speech_contexts,json=speechContexts,proto3" json:"speech_contexts,omitempty"`
 	// *Optional* For file formats, such as MXF or MKV, supporting multiple audio
 	// tracks, specify up to two tracks. Default: track 0.
-	AudioTracks          []int32  `protobuf:"varint,6,rep,packed,name=audio_tracks,json=audioTracks" json:"audio_tracks,omitempty"`
+	AudioTracks          []int32  `protobuf:"varint,6,rep,packed,name=audio_tracks,json=audioTracks,proto3" json:"audio_tracks,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1270,7 +1270,7 @@ type SpeechContext struct {
 	// specific commands are typically spoken by the user. This can also be used
 	// to add additional words to the vocabulary of the recognizer. See
 	// [usage limits](https://cloud.google.com/speech/limits#content).
-	Phrases              []string `protobuf:"bytes,1,rep,name=phrases" json:"phrases,omitempty"`
+	Phrases              []string `protobuf:"bytes,1,rep,name=phrases,proto3" json:"phrases,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1313,7 +1313,7 @@ type SpeechTranscription struct {
 	// maximum specified in `max_alternatives`).
 	// These alternatives are ordered in terms of accuracy, with the top (first)
 	// alternative being the most probable, as ranked by the recognizer.
-	Alternatives         []*SpeechRecognitionAlternative `protobuf:"bytes,1,rep,name=alternatives" json:"alternatives,omitempty"`
+	Alternatives         []*SpeechRecognitionAlternative `protobuf:"bytes,1,rep,name=alternatives,proto3" json:"alternatives,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
 	XXX_unrecognized     []byte                          `json:"-"`
 	XXX_sizecache        int32                           `json:"-"`
@@ -1353,16 +1353,16 @@ func (m *SpeechTranscription) GetAlternatives() []*SpeechRecognitionAlternative 
 // Alternative hypotheses (a.k.a. n-best list).
 type SpeechRecognitionAlternative struct {
 	// Output only. Transcript text representing the words that the user spoke.
-	Transcript string `protobuf:"bytes,1,opt,name=transcript" json:"transcript,omitempty"`
+	Transcript string `protobuf:"bytes,1,opt,name=transcript,proto3" json:"transcript,omitempty"`
 	// Output only. The confidence estimate between 0.0 and 1.0. A higher number
 	// indicates an estimated greater likelihood that the recognized words are
 	// correct. This field is typically provided only for the top hypothesis, and
 	// only for `is_final=true` results. Clients should not rely on the
 	// `confidence` field as it is not guaranteed to be accurate or consistent.
 	// The default of 0.0 is a sentinel value indicating `confidence` was not set.
-	Confidence float32 `protobuf:"fixed32,2,opt,name=confidence" json:"confidence,omitempty"`
+	Confidence float32 `protobuf:"fixed32,2,opt,name=confidence,proto3" json:"confidence,omitempty"`
 	// Output only. A list of word-specific information for each recognized word.
-	Words                []*WordInfo `protobuf:"bytes,3,rep,name=words" json:"words,omitempty"`
+	Words                []*WordInfo `protobuf:"bytes,3,rep,name=words,proto3" json:"words,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`
 	XXX_sizecache        int32       `json:"-"`
@@ -1421,14 +1421,14 @@ type WordInfo struct {
 	// corresponding to the start of the spoken word. This field is only set if
 	// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
 	// experimental feature and the accuracy of the time offset can vary.
-	StartTime *duration.Duration `protobuf:"bytes,1,opt,name=start_time,json=startTime" json:"start_time,omitempty"`
+	StartTime *duration.Duration `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Output only. Time offset relative to the beginning of the audio, and
 	// corresponding to the end of the spoken word. This field is only set if
 	// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
 	// experimental feature and the accuracy of the time offset can vary.
-	EndTime *duration.Duration `protobuf:"bytes,2,opt,name=end_time,json=endTime" json:"end_time,omitempty"`
+	EndTime *duration.Duration `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Output only. The word corresponding to this set of information.
-	Word                 string   `protobuf:"bytes,3,opt,name=word" json:"word,omitempty"`
+	Word                 string   `protobuf:"bytes,3,opt,name=word,proto3" json:"word,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1543,8 +1543,7 @@ func (c *videoIntelligenceServiceClient) AnnotateVideo(ctx context.Context, in *
 	return out, nil
 }
 
-// Server API for VideoIntelligenceService service
-
+// VideoIntelligenceServiceServer is the server API for VideoIntelligenceService service.
 type VideoIntelligenceServiceServer interface {
 	// Performs asynchronous video annotation. Progress and results can be
 	// retrieved through the `google.longrunning.Operations` interface.

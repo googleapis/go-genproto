@@ -119,7 +119,7 @@ type PullMessage struct {
 	// string or [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-),
 	// only UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8
 	// encoded, the tag will be empty when the task is returned by Cloud Tasks.
-	Tag                  string   `protobuf:"bytes,2,opt,name=tag" json:"tag,omitempty"`
+	Tag                  string   `protobuf:"bytes,2,opt,name=tag,proto3" json:"tag,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -183,7 +183,7 @@ type AppEngineHttpTarget struct {
 	// If set, `app_engine_routing_override` is used for all tasks in
 	// the queue, no matter what the setting is for the
 	// [task-level app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
-	AppEngineRoutingOverride *AppEngineRouting `protobuf:"bytes,1,opt,name=app_engine_routing_override,json=appEngineRoutingOverride" json:"app_engine_routing_override,omitempty"`
+	AppEngineRoutingOverride *AppEngineRouting `protobuf:"bytes,1,opt,name=app_engine_routing_override,json=appEngineRoutingOverride,proto3" json:"app_engine_routing_override,omitempty"`
 	XXX_NoUnkeyedLiteral     struct{}          `json:"-"`
 	XXX_unrecognized         []byte            `json:"-"`
 	XXX_sizecache            int32             `json:"-"`
@@ -273,21 +273,21 @@ type AppEngineHttpRequest struct {
 	// and the documentation for the request handlers in the language your app is
 	// written in e.g.
 	// [Python Request Handler](/appengine/docs/python/tools/webapp/requesthandlerclass).
-	HttpMethod HttpMethod `protobuf:"varint,1,opt,name=http_method,json=httpMethod,enum=google.cloud.tasks.v2beta2.HttpMethod" json:"http_method,omitempty"`
+	HttpMethod HttpMethod `protobuf:"varint,1,opt,name=http_method,json=httpMethod,proto3,enum=google.cloud.tasks.v2beta2.HttpMethod" json:"http_method,omitempty"`
 	// Task-level setting for App Engine routing.
 	//
 	// If set,
 	// [app_engine_routing_override][google.cloud.tasks.v2beta2.AppEngineHttpTarget.app_engine_routing_override]
 	// is used for all tasks in the queue, no matter what the setting is for the
 	// [task-level app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
-	AppEngineRouting *AppEngineRouting `protobuf:"bytes,2,opt,name=app_engine_routing,json=appEngineRouting" json:"app_engine_routing,omitempty"`
+	AppEngineRouting *AppEngineRouting `protobuf:"bytes,2,opt,name=app_engine_routing,json=appEngineRouting,proto3" json:"app_engine_routing,omitempty"`
 	// The relative URL.
 	//
 	// The relative URL must begin with "/" and must be a valid HTTP relative URL.
 	// It can contain a path and query string arguments.
 	// If the relative URL is empty, then the root path "/" will be used.
 	// No spaces are allowed, and the maximum length allowed is 2083 characters.
-	RelativeUrl string `protobuf:"bytes,3,opt,name=relative_url,json=relativeUrl" json:"relative_url,omitempty"`
+	RelativeUrl string `protobuf:"bytes,3,opt,name=relative_url,json=relativeUrl,proto3" json:"relative_url,omitempty"`
 	// HTTP request headers.
 	//
 	// This map contains the header field names and values.
@@ -329,7 +329,7 @@ type AppEngineHttpRequest struct {
 	// Although there is no specific limit for the maximum number of headers or
 	// the size, there is a limit on the maximum size of the [Task][google.cloud.tasks.v2beta2.Task]. For more
 	// information, see the [CreateTask][google.cloud.tasks.v2beta2.CloudTasks.CreateTask] documentation.
-	Headers map[string]string `protobuf:"bytes,4,rep,name=headers" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Headers map[string]string `protobuf:"bytes,4,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Payload.
 	//
 	// The payload will be sent as the HTTP message body. A message
@@ -425,7 +425,7 @@ type AppEngineRouting struct {
 	// [service][google.cloud.tasks.v2beta2.AppEngineRouting.service],
 	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version], and
 	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] are the empty string.
-	Service string `protobuf:"bytes,1,opt,name=service" json:"service,omitempty"`
+	Service string `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
 	// App version.
 	//
 	// By default, the task is sent to the version which is the default
@@ -442,7 +442,7 @@ type AppEngineRouting struct {
 	// [service][google.cloud.tasks.v2beta2.AppEngineRouting.service],
 	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version], and
 	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] are the empty string.
-	Version string `protobuf:"bytes,2,opt,name=version" json:"version,omitempty"`
+	Version string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
 	// App instance.
 	//
 	// By default, the task is sent to an instance which is available when
@@ -453,7 +453,7 @@ type AppEngineRouting struct {
 	// App Engine Flex does not support instances. For more information, see
 	// [App Engine Standard request routing](/appengine/docs/standard/python/how-requests-are-routed)
 	// and [App Engine Flex request routing](/appengine/docs/flexible/python/how-requests-are-routed).
-	Instance string `protobuf:"bytes,3,opt,name=instance" json:"instance,omitempty"`
+	Instance string `protobuf:"bytes,3,opt,name=instance,proto3" json:"instance,omitempty"`
 	// Output only. The host that the task is sent to.
 	//
 	// For more information, see
@@ -520,7 +520,7 @@ type AppEngineRouting struct {
 	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] is invalid, then the task
 	// will be sent to the default version of the default service when
 	// the task is attempted.
-	Host                 string   `protobuf:"bytes,4,opt,name=host" json:"host,omitempty"`
+	Host                 string   `protobuf:"bytes,4,opt,name=host,proto3" json:"host,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

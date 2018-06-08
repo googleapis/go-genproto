@@ -112,7 +112,7 @@ type ListVoicesRequest struct {
 	// "no-*" (Norwegian) and "nb-*" (Norwegian Bokmal) voices; specifying "zh"
 	// will also get supported "cmn-*" voices; specifying "zh-hk" will also get
 	// supported "yue-*" voices.
-	LanguageCode         string   `protobuf:"bytes,1,opt,name=language_code,json=languageCode" json:"language_code,omitempty"`
+	LanguageCode         string   `protobuf:"bytes,1,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -152,7 +152,7 @@ func (m *ListVoicesRequest) GetLanguageCode() string {
 // The message returned to the client by the `ListVoices` method.
 type ListVoicesResponse struct {
 	// The list of voices.
-	Voices               []*Voice `protobuf:"bytes,1,rep,name=voices" json:"voices,omitempty"`
+	Voices               []*Voice `protobuf:"bytes,1,rep,name=voices,proto3" json:"voices,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -194,13 +194,13 @@ type Voice struct {
 	// The languages that this voice supports, expressed as
 	// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g.
 	// "en-US", "es-419", "cmn-tw").
-	LanguageCodes []string `protobuf:"bytes,1,rep,name=language_codes,json=languageCodes" json:"language_codes,omitempty"`
+	LanguageCodes []string `protobuf:"bytes,1,rep,name=language_codes,json=languageCodes,proto3" json:"language_codes,omitempty"`
 	// The name of this voice.  Each distinct voice has a unique name.
-	Name string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// The gender of this voice.
-	SsmlGender SsmlVoiceGender `protobuf:"varint,3,opt,name=ssml_gender,json=ssmlGender,enum=google.cloud.texttospeech.v1.SsmlVoiceGender" json:"ssml_gender,omitempty"`
+	SsmlGender SsmlVoiceGender `protobuf:"varint,3,opt,name=ssml_gender,json=ssmlGender,proto3,enum=google.cloud.texttospeech.v1.SsmlVoiceGender" json:"ssml_gender,omitempty"`
 	// The natural sample rate (in hertz) for this voice.
-	NaturalSampleRateHertz int32    `protobuf:"varint,4,opt,name=natural_sample_rate_hertz,json=naturalSampleRateHertz" json:"natural_sample_rate_hertz,omitempty"`
+	NaturalSampleRateHertz int32    `protobuf:"varint,4,opt,name=natural_sample_rate_hertz,json=naturalSampleRateHertz,proto3" json:"natural_sample_rate_hertz,omitempty"`
 	XXX_NoUnkeyedLiteral   struct{} `json:"-"`
 	XXX_unrecognized       []byte   `json:"-"`
 	XXX_sizecache          int32    `json:"-"`
@@ -261,11 +261,11 @@ func (m *Voice) GetNaturalSampleRateHertz() int32 {
 // The top-level message sent by the client for the `SynthesizeSpeech` method.
 type SynthesizeSpeechRequest struct {
 	// Required. The Synthesizer requires either plain text or SSML as input.
-	Input *SynthesisInput `protobuf:"bytes,1,opt,name=input" json:"input,omitempty"`
+	Input *SynthesisInput `protobuf:"bytes,1,opt,name=input,proto3" json:"input,omitempty"`
 	// Required. The desired voice of the synthesized audio.
-	Voice *VoiceSelectionParams `protobuf:"bytes,2,opt,name=voice" json:"voice,omitempty"`
+	Voice *VoiceSelectionParams `protobuf:"bytes,2,opt,name=voice,proto3" json:"voice,omitempty"`
 	// Required. The configuration of the synthesized audio.
-	AudioConfig          *AudioConfig `protobuf:"bytes,3,opt,name=audio_config,json=audioConfig" json:"audio_config,omitempty"`
+	AudioConfig          *AudioConfig `protobuf:"bytes,3,opt,name=audio_config,json=audioConfig,proto3" json:"audio_config,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -361,10 +361,10 @@ type isSynthesisInput_InputSource interface {
 }
 
 type SynthesisInput_Text struct {
-	Text string `protobuf:"bytes,1,opt,name=text,oneof"`
+	Text string `protobuf:"bytes,1,opt,name=text,proto3,oneof"`
 }
 type SynthesisInput_Ssml struct {
-	Ssml string `protobuf:"bytes,2,opt,name=ssml,oneof"`
+	Ssml string `protobuf:"bytes,2,opt,name=ssml,proto3,oneof"`
 }
 
 func (*SynthesisInput_Text) isSynthesisInput_InputSource() {}
@@ -470,16 +470,16 @@ type VoiceSelectionParams struct {
 	// (e.g. using en-US rather than en-CA if there isn't a Canadian voice
 	// available), or even a different language, e.g. using "nb" (Norwegian
 	// Bokmal) instead of "no" (Norwegian)".
-	LanguageCode string `protobuf:"bytes,1,opt,name=language_code,json=languageCode" json:"language_code,omitempty"`
+	LanguageCode string `protobuf:"bytes,1,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// The name of the voice. Optional; if not set, the service will choose a
 	// voice based on the other parameters such as language_code and gender.
-	Name string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// The preferred gender of the voice. Optional; if not set, the service will
 	// choose a voice based on the other parameters such as language_code and
 	// name. Note that this is only a preference, not requirement; if a
 	// voice of the appropriate gender is not available, the synthesizer should
 	// substitute a voice with a different gender rather than failing the request.
-	SsmlGender           SsmlVoiceGender `protobuf:"varint,3,opt,name=ssml_gender,json=ssmlGender,enum=google.cloud.texttospeech.v1.SsmlVoiceGender" json:"ssml_gender,omitempty"`
+	SsmlGender           SsmlVoiceGender `protobuf:"varint,3,opt,name=ssml_gender,json=ssmlGender,proto3,enum=google.cloud.texttospeech.v1.SsmlVoiceGender" json:"ssml_gender,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -533,16 +533,16 @@ func (m *VoiceSelectionParams) GetSsmlGender() SsmlVoiceGender {
 // Description of audio data to be synthesized.
 type AudioConfig struct {
 	// Required. The format of the requested audio byte stream.
-	AudioEncoding AudioEncoding `protobuf:"varint,1,opt,name=audio_encoding,json=audioEncoding,enum=google.cloud.texttospeech.v1.AudioEncoding" json:"audio_encoding,omitempty"`
+	AudioEncoding AudioEncoding `protobuf:"varint,1,opt,name=audio_encoding,json=audioEncoding,proto3,enum=google.cloud.texttospeech.v1.AudioEncoding" json:"audio_encoding,omitempty"`
 	// Optional speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal
 	// native speed supported by the specific voice. 2.0 is twice as fast, and
 	// 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any
 	// other values < 0.25 or > 4.0 will return an error.
-	SpeakingRate float64 `protobuf:"fixed64,2,opt,name=speaking_rate,json=speakingRate" json:"speaking_rate,omitempty"`
+	SpeakingRate float64 `protobuf:"fixed64,2,opt,name=speaking_rate,json=speakingRate,proto3" json:"speaking_rate,omitempty"`
 	// Optional speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20
 	// semitones from the original pitch. -20 means decrease 20 semitones from the
 	// original pitch.
-	Pitch float64 `protobuf:"fixed64,3,opt,name=pitch" json:"pitch,omitempty"`
+	Pitch float64 `protobuf:"fixed64,3,opt,name=pitch,proto3" json:"pitch,omitempty"`
 	// Optional volume gain (in dB) of the normal native volume supported by the
 	// specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of
 	// 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB)
@@ -551,14 +551,14 @@ type AudioConfig struct {
 	// amplitude of the normal native signal amplitude. Strongly recommend not to
 	// exceed +10 (dB) as there's usually no effective increase in loudness for
 	// any value greater than that.
-	VolumeGainDb float64 `protobuf:"fixed64,4,opt,name=volume_gain_db,json=volumeGainDb" json:"volume_gain_db,omitempty"`
+	VolumeGainDb float64 `protobuf:"fixed64,4,opt,name=volume_gain_db,json=volumeGainDb,proto3" json:"volume_gain_db,omitempty"`
 	// The synthesis sample rate (in hertz) for this audio. Optional.  If this is
 	// different from the voice's natural sample rate, then the synthesizer will
 	// honor this request by converting to the desired sample rate (which might
 	// result in worse audio quality), unless the specified sample rate is not
 	// supported for the encoding chosen, in which case it will fail the request
 	// and return [google.rpc.Code.INVALID_ARGUMENT][].
-	SampleRateHertz      int32    `protobuf:"varint,5,opt,name=sample_rate_hertz,json=sampleRateHertz" json:"sample_rate_hertz,omitempty"`
+	SampleRateHertz      int32    `protobuf:"varint,5,opt,name=sample_rate_hertz,json=sampleRateHertz,proto3" json:"sample_rate_hertz,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -725,8 +725,7 @@ func (c *textToSpeechClient) SynthesizeSpeech(ctx context.Context, in *Synthesiz
 	return out, nil
 }
 
-// Server API for TextToSpeech service
-
+// TextToSpeechServer is the server API for TextToSpeech service.
 type TextToSpeechServer interface {
 	// Returns a list of [Voice][google.cloud.texttospeech.v1.Voice]
 	// supported for synthesis.

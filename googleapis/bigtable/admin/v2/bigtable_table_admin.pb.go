@@ -33,12 +33,12 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 type CreateTableRequest struct {
 	// The unique name of the instance in which to create the table.
 	// Values are of the form `projects/<project>/instances/<instance>`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The name by which the new table should be referred to within the parent
 	// instance, e.g., `foobar` rather than `<parent>/tables/foobar`.
-	TableId string `protobuf:"bytes,2,opt,name=table_id,json=tableId" json:"table_id,omitempty"`
+	TableId string `protobuf:"bytes,2,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
 	// The Table to create.
-	Table *Table `protobuf:"bytes,3,opt,name=table" json:"table,omitempty"`
+	Table *Table `protobuf:"bytes,3,opt,name=table,proto3" json:"table,omitempty"`
 	// The optional list of row keys that will be used to initially split the
 	// table into several tablets (tablets are similar to HBase regions).
 	// Given two split keys, `s1` and `s2`, three tablets will be created,
@@ -55,7 +55,7 @@ type CreateTableRequest struct {
 	//     - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.`
 	//     - Tablet 4 `[customer_2, other)      => {"customer_2"}.`
 	//     - Tablet 5 `[other, )                => {"other", "zz"}.`
-	InitialSplits        []*CreateTableRequest_Split `protobuf:"bytes,4,rep,name=initial_splits,json=initialSplits" json:"initial_splits,omitempty"`
+	InitialSplits        []*CreateTableRequest_Split `protobuf:"bytes,4,rep,name=initial_splits,json=initialSplits,proto3" json:"initial_splits,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
 	XXX_unrecognized     []byte                      `json:"-"`
 	XXX_sizecache        int32                       `json:"-"`
@@ -163,15 +163,15 @@ func (m *CreateTableRequest_Split) GetKey() []byte {
 type CreateTableFromSnapshotRequest struct {
 	// The unique name of the instance in which to create the table.
 	// Values are of the form `projects/<project>/instances/<instance>`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The name by which the new table should be referred to within the parent
 	// instance, e.g., `foobar` rather than `<parent>/tables/foobar`.
-	TableId string `protobuf:"bytes,2,opt,name=table_id,json=tableId" json:"table_id,omitempty"`
+	TableId string `protobuf:"bytes,2,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
 	// The unique name of the snapshot from which to restore the table. The
 	// snapshot and the table must be in the same instance.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/clusters/<cluster>/snapshots/<snapshot>`.
-	SourceSnapshot       string   `protobuf:"bytes,3,opt,name=source_snapshot,json=sourceSnapshot" json:"source_snapshot,omitempty"`
+	SourceSnapshot       string   `protobuf:"bytes,3,opt,name=source_snapshot,json=sourceSnapshot,proto3" json:"source_snapshot,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -228,7 +228,7 @@ type DropRowRangeRequest struct {
 	// The unique name of the table on which to drop a range of rows.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/tables/<table>`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Delete all rows or by prefix.
 	//
 	// Types that are valid to be assigned to Target:
@@ -272,7 +272,7 @@ type DropRowRangeRequest_RowKeyPrefix struct {
 	RowKeyPrefix []byte `protobuf:"bytes,2,opt,name=row_key_prefix,json=rowKeyPrefix,proto3,oneof"`
 }
 type DropRowRangeRequest_DeleteAllDataFromTable struct {
-	DeleteAllDataFromTable bool `protobuf:"varint,3,opt,name=delete_all_data_from_table,json=deleteAllDataFromTable,oneof"`
+	DeleteAllDataFromTable bool `protobuf:"varint,3,opt,name=delete_all_data_from_table,json=deleteAllDataFromTable,proto3,oneof"`
 }
 
 func (*DropRowRangeRequest_RowKeyPrefix) isDropRowRangeRequest_Target()           {}
@@ -380,12 +380,12 @@ func _DropRowRangeRequest_OneofSizer(msg proto.Message) (n int) {
 type ListTablesRequest struct {
 	// The unique name of the instance for which tables should be listed.
 	// Values are of the form `projects/<project>/instances/<instance>`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The view to be applied to the returned tables' fields.
 	// Defaults to `NAME_ONLY` if unspecified; no others are currently supported.
-	View Table_View `protobuf:"varint,2,opt,name=view,enum=google.bigtable.admin.v2.Table_View" json:"view,omitempty"`
+	View Table_View `protobuf:"varint,2,opt,name=view,proto3,enum=google.bigtable.admin.v2.Table_View" json:"view,omitempty"`
 	// The value of `next_page_token` returned by a previous call.
-	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -440,11 +440,11 @@ func (m *ListTablesRequest) GetPageToken() string {
 // [google.bigtable.admin.v2.BigtableTableAdmin.ListTables][google.bigtable.admin.v2.BigtableTableAdmin.ListTables]
 type ListTablesResponse struct {
 	// The tables present in the requested instance.
-	Tables []*Table `protobuf:"bytes,1,rep,name=tables" json:"tables,omitempty"`
+	Tables []*Table `protobuf:"bytes,1,rep,name=tables,proto3" json:"tables,omitempty"`
 	// Set if not all tables could be returned in a single response.
 	// Pass this value to `page_token` in another request to get the next
 	// page of results.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -494,10 +494,10 @@ type GetTableRequest struct {
 	// The unique name of the requested table.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/tables/<table>`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The view to be applied to the returned table's fields.
 	// Defaults to `SCHEMA_VIEW` if unspecified.
-	View                 Table_View `protobuf:"varint,2,opt,name=view,enum=google.bigtable.admin.v2.Table_View" json:"view,omitempty"`
+	View                 Table_View `protobuf:"varint,2,opt,name=view,proto3,enum=google.bigtable.admin.v2.Table_View" json:"view,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -547,7 +547,7 @@ type DeleteTableRequest struct {
 	// The unique name of the table to be deleted.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/tables/<table>`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -590,12 +590,12 @@ type ModifyColumnFamiliesRequest struct {
 	// The unique name of the table whose families should be modified.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/tables/<table>`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Modifications to be atomically applied to the specified table's families.
 	// Entries are applied in order, meaning that earlier modifications can be
 	// masked by later ones (in the case of repeated updates to the same family,
 	// for example).
-	Modifications        []*ModifyColumnFamiliesRequest_Modification `protobuf:"bytes,2,rep,name=modifications" json:"modifications,omitempty"`
+	Modifications        []*ModifyColumnFamiliesRequest_Modification `protobuf:"bytes,2,rep,name=modifications,proto3" json:"modifications,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                    `json:"-"`
 	XXX_unrecognized     []byte                                      `json:"-"`
 	XXX_sizecache        int32                                       `json:"-"`
@@ -642,7 +642,7 @@ func (m *ModifyColumnFamiliesRequest) GetModifications() []*ModifyColumnFamilies
 // A create, update, or delete of a particular column family.
 type ModifyColumnFamiliesRequest_Modification struct {
 	// The ID of the column family to be modified.
-	Id string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Column familiy modifications.
 	//
 	// Types that are valid to be assigned to Mod:
@@ -686,13 +686,13 @@ type isModifyColumnFamiliesRequest_Modification_Mod interface {
 }
 
 type ModifyColumnFamiliesRequest_Modification_Create struct {
-	Create *ColumnFamily `protobuf:"bytes,2,opt,name=create,oneof"`
+	Create *ColumnFamily `protobuf:"bytes,2,opt,name=create,proto3,oneof"`
 }
 type ModifyColumnFamiliesRequest_Modification_Update struct {
-	Update *ColumnFamily `protobuf:"bytes,3,opt,name=update,oneof"`
+	Update *ColumnFamily `protobuf:"bytes,3,opt,name=update,proto3,oneof"`
 }
 type ModifyColumnFamiliesRequest_Modification_Drop struct {
-	Drop bool `protobuf:"varint,4,opt,name=drop,oneof"`
+	Drop bool `protobuf:"varint,4,opt,name=drop,proto3,oneof"`
 }
 
 func (*ModifyColumnFamiliesRequest_Modification_Create) isModifyColumnFamiliesRequest_Modification_Mod() {
@@ -835,7 +835,7 @@ type GenerateConsistencyTokenRequest struct {
 	// The unique name of the Table for which to create a consistency token.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/tables/<table>`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -876,7 +876,7 @@ func (m *GenerateConsistencyTokenRequest) GetName() string {
 // [google.bigtable.admin.v2.BigtableTableAdmin.GenerateConsistencyToken][google.bigtable.admin.v2.BigtableTableAdmin.GenerateConsistencyToken]
 type GenerateConsistencyTokenResponse struct {
 	// The generated consistency token.
-	ConsistencyToken     string   `protobuf:"bytes,1,opt,name=consistency_token,json=consistencyToken" json:"consistency_token,omitempty"`
+	ConsistencyToken     string   `protobuf:"bytes,1,opt,name=consistency_token,json=consistencyToken,proto3" json:"consistency_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -919,9 +919,9 @@ type CheckConsistencyRequest struct {
 	// The unique name of the Table for which to check replication consistency.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/tables/<table>`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The token created using GenerateConsistencyToken for the Table.
-	ConsistencyToken     string   `protobuf:"bytes,2,opt,name=consistency_token,json=consistencyToken" json:"consistency_token,omitempty"`
+	ConsistencyToken     string   `protobuf:"bytes,2,opt,name=consistency_token,json=consistencyToken,proto3" json:"consistency_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -970,7 +970,7 @@ func (m *CheckConsistencyRequest) GetConsistencyToken() string {
 type CheckConsistencyResponse struct {
 	// True only if the token is consistent. A token is consistent if replication
 	// has caught up with the restrictions specified in the request.
-	Consistent           bool     `protobuf:"varint,1,opt,name=consistent" json:"consistent,omitempty"`
+	Consistent           bool     `protobuf:"varint,1,opt,name=consistent,proto3" json:"consistent,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1018,23 +1018,23 @@ type SnapshotTableRequest struct {
 	// The unique name of the table to have the snapshot taken.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/tables/<table>`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The name of the cluster where the snapshot will be created in.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/clusters/<cluster>`.
-	Cluster string `protobuf:"bytes,2,opt,name=cluster" json:"cluster,omitempty"`
+	Cluster string `protobuf:"bytes,2,opt,name=cluster,proto3" json:"cluster,omitempty"`
 	// The ID by which the new snapshot should be referred to within the parent
 	// cluster, e.g., `mysnapshot` of the form: `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`
 	// rather than
 	// `projects/<project>/instances/<instance>/clusters/<cluster>/snapshots/mysnapshot`.
-	SnapshotId string `protobuf:"bytes,3,opt,name=snapshot_id,json=snapshotId" json:"snapshot_id,omitempty"`
+	SnapshotId string `protobuf:"bytes,3,opt,name=snapshot_id,json=snapshotId,proto3" json:"snapshot_id,omitempty"`
 	// The amount of time that the new snapshot can stay active after it is
 	// created. Once 'ttl' expires, the snapshot will get deleted. The maximum
 	// amount of time a snapshot can stay active is 7 days. If 'ttl' is not
 	// specified, the default value of 24 hours will be used.
-	Ttl *duration.Duration `protobuf:"bytes,4,opt,name=ttl" json:"ttl,omitempty"`
+	Ttl *duration.Duration `protobuf:"bytes,4,opt,name=ttl,proto3" json:"ttl,omitempty"`
 	// Description of the snapshot.
-	Description          string   `protobuf:"bytes,5,opt,name=description" json:"description,omitempty"`
+	Description          string   `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1110,7 +1110,7 @@ type GetSnapshotRequest struct {
 	// The unique name of the requested snapshot.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/clusters/<cluster>/snapshots/<snapshot>`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1160,11 +1160,11 @@ type ListSnapshotsRequest struct {
 	// `projects/<project>/instances/<instance>/clusters/<cluster>`.
 	// Use `<cluster> = '-'` to list snapshots for all clusters in an instance,
 	// e.g., `projects/<project>/instances/<instance>/clusters/-`.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of snapshots to return.
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The value of `next_page_token` returned by a previous call.
-	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1224,11 +1224,11 @@ func (m *ListSnapshotsRequest) GetPageToken() string {
 // for production use. It is not subject to any SLA or deprecation policy.
 type ListSnapshotsResponse struct {
 	// The snapshots present in the requested cluster.
-	Snapshots []*Snapshot `protobuf:"bytes,1,rep,name=snapshots" json:"snapshots,omitempty"`
+	Snapshots []*Snapshot `protobuf:"bytes,1,rep,name=snapshots,proto3" json:"snapshots,omitempty"`
 	// Set if not all snapshots could be returned in a single response.
 	// Pass this value to `page_token` in another request to get the next
 	// page of results.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1283,7 +1283,7 @@ type DeleteSnapshotRequest struct {
 	// The unique name of the snapshot to be deleted.
 	// Values are of the form
 	// `projects/<project>/instances/<instance>/clusters/<cluster>/snapshots/<snapshot>`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1328,11 +1328,11 @@ func (m *DeleteSnapshotRequest) GetName() string {
 // for production use. It is not subject to any SLA or deprecation policy.
 type SnapshotTableMetadata struct {
 	// The request that prompted the initiation of this SnapshotTable operation.
-	OriginalRequest *SnapshotTableRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest" json:"original_request,omitempty"`
+	OriginalRequest *SnapshotTableRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest,proto3" json:"original_request,omitempty"`
 	// The time at which the original request was received.
-	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime" json:"request_time,omitempty"`
+	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime,proto3" json:"request_time,omitempty"`
 	// The time at which the operation failed or was completed successfully.
-	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime" json:"finish_time,omitempty"`
+	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1392,11 +1392,11 @@ func (m *SnapshotTableMetadata) GetFinishTime() *timestamp.Timestamp {
 type CreateTableFromSnapshotMetadata struct {
 	// The request that prompted the initiation of this CreateTableFromSnapshot
 	// operation.
-	OriginalRequest *CreateTableFromSnapshotRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest" json:"original_request,omitempty"`
+	OriginalRequest *CreateTableFromSnapshotRequest `protobuf:"bytes,1,opt,name=original_request,json=originalRequest,proto3" json:"original_request,omitempty"`
 	// The time at which the original request was received.
-	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime" json:"request_time,omitempty"`
+	RequestTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=request_time,json=requestTime,proto3" json:"request_time,omitempty"`
 	// The time at which the operation failed or was completed successfully.
-	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime" json:"finish_time,omitempty"`
+	FinishTime           *timestamp.Timestamp `protobuf:"bytes,3,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -1680,8 +1680,7 @@ func (c *bigtableTableAdminClient) DeleteSnapshot(ctx context.Context, in *Delet
 	return out, nil
 }
 
-// Server API for BigtableTableAdmin service
-
+// BigtableTableAdminServer is the server API for BigtableTableAdmin service.
 type BigtableTableAdminServer interface {
 	// Creates a new table in the specified instance.
 	// The table can be created with a full set of initial column families,

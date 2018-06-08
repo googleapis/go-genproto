@@ -23,7 +23,7 @@ type Backend struct {
 	// A list of API backend rules that apply to individual API methods.
 	//
 	// **NOTE:** All service configuration rules follow "last one wins" order.
-	Rules                []*BackendRule `protobuf:"bytes,1,rep,name=rules" json:"rules,omitempty"`
+	Rules                []*BackendRule `protobuf:"bytes,1,rep,name=rules,proto3" json:"rules,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -65,15 +65,15 @@ type BackendRule struct {
 	// Selects the methods to which this rule applies.
 	//
 	// Refer to [selector][google.api.DocumentationRule.selector] for syntax details.
-	Selector string `protobuf:"bytes,1,opt,name=selector" json:"selector,omitempty"`
+	Selector string `protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
 	// The address of the API backend.
-	Address string `protobuf:"bytes,2,opt,name=address" json:"address,omitempty"`
+	Address string `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	// The number of seconds to wait for a response from a request.  The default
 	// deadline for gRPC is infinite (no deadline) and HTTP requests is 5 seconds.
-	Deadline float64 `protobuf:"fixed64,3,opt,name=deadline" json:"deadline,omitempty"`
+	Deadline float64 `protobuf:"fixed64,3,opt,name=deadline,proto3" json:"deadline,omitempty"`
 	// Minimum deadline in seconds needed for this method. Calls having deadline
 	// value lower than this will be rejected.
-	MinDeadline          float64  `protobuf:"fixed64,4,opt,name=min_deadline,json=minDeadline" json:"min_deadline,omitempty"`
+	MinDeadline          float64  `protobuf:"fixed64,4,opt,name=min_deadline,json=minDeadline,proto3" json:"min_deadline,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

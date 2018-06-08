@@ -504,21 +504,21 @@ func (DlpJob_JobState) EnumDescriptor() ([]byte, []int) {
 type InspectConfig struct {
 	// Restricts what info_types to look for. The values must correspond to
 	// InfoType values returned by ListInfoTypes or found in documentation.
-	InfoTypes []*InfoType `protobuf:"bytes,1,rep,name=info_types,json=infoTypes" json:"info_types,omitempty"`
+	InfoTypes []*InfoType `protobuf:"bytes,1,rep,name=info_types,json=infoTypes,proto3" json:"info_types,omitempty"`
 	// Only returns findings equal or above this threshold. The default is
 	// POSSIBLE.
-	MinLikelihood Likelihood                   `protobuf:"varint,2,opt,name=min_likelihood,json=minLikelihood,enum=google.privacy.dlp.v2.Likelihood" json:"min_likelihood,omitempty"`
-	Limits        *InspectConfig_FindingLimits `protobuf:"bytes,3,opt,name=limits" json:"limits,omitempty"`
+	MinLikelihood Likelihood                   `protobuf:"varint,2,opt,name=min_likelihood,json=minLikelihood,proto3,enum=google.privacy.dlp.v2.Likelihood" json:"min_likelihood,omitempty"`
+	Limits        *InspectConfig_FindingLimits `protobuf:"bytes,3,opt,name=limits,proto3" json:"limits,omitempty"`
 	// When true, a contextual quote from the data that triggered a finding is
 	// included in the response; see Finding.quote.
-	IncludeQuote bool `protobuf:"varint,4,opt,name=include_quote,json=includeQuote" json:"include_quote,omitempty"`
+	IncludeQuote bool `protobuf:"varint,4,opt,name=include_quote,json=includeQuote,proto3" json:"include_quote,omitempty"`
 	// When true, excludes type information of the findings.
-	ExcludeInfoTypes bool `protobuf:"varint,5,opt,name=exclude_info_types,json=excludeInfoTypes" json:"exclude_info_types,omitempty"`
+	ExcludeInfoTypes bool `protobuf:"varint,5,opt,name=exclude_info_types,json=excludeInfoTypes,proto3" json:"exclude_info_types,omitempty"`
 	// Custom infoTypes provided by the user.
-	CustomInfoTypes []*CustomInfoType `protobuf:"bytes,6,rep,name=custom_info_types,json=customInfoTypes" json:"custom_info_types,omitempty"`
+	CustomInfoTypes []*CustomInfoType `protobuf:"bytes,6,rep,name=custom_info_types,json=customInfoTypes,proto3" json:"custom_info_types,omitempty"`
 	// List of options defining data content to scan.
 	// If empty, text, images, and other content will be included.
-	ContentOptions       []ContentOption `protobuf:"varint,8,rep,packed,name=content_options,json=contentOptions,enum=google.privacy.dlp.v2.ContentOption" json:"content_options,omitempty"`
+	ContentOptions       []ContentOption `protobuf:"varint,8,rep,packed,name=content_options,json=contentOptions,proto3,enum=google.privacy.dlp.v2.ContentOption" json:"content_options,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -602,13 +602,13 @@ type InspectConfig_FindingLimits struct {
 	// When set within `InspectDataSourceRequest`,
 	// the maximum returned is 1000 regardless if this is set higher.
 	// When set within `InspectContentRequest`, this field is ignored.
-	MaxFindingsPerItem int32 `protobuf:"varint,1,opt,name=max_findings_per_item,json=maxFindingsPerItem" json:"max_findings_per_item,omitempty"`
+	MaxFindingsPerItem int32 `protobuf:"varint,1,opt,name=max_findings_per_item,json=maxFindingsPerItem,proto3" json:"max_findings_per_item,omitempty"`
 	// Max number of findings that will be returned per request/job.
 	// When set within `InspectContentRequest`, the maximum returned is 1000
 	// regardless if this is set higher.
-	MaxFindingsPerRequest int32 `protobuf:"varint,2,opt,name=max_findings_per_request,json=maxFindingsPerRequest" json:"max_findings_per_request,omitempty"`
+	MaxFindingsPerRequest int32 `protobuf:"varint,2,opt,name=max_findings_per_request,json=maxFindingsPerRequest,proto3" json:"max_findings_per_request,omitempty"`
 	// Configuration of findings limit given for specified infoTypes.
-	MaxFindingsPerInfoType []*InspectConfig_FindingLimits_InfoTypeLimit `protobuf:"bytes,3,rep,name=max_findings_per_info_type,json=maxFindingsPerInfoType" json:"max_findings_per_info_type,omitempty"`
+	MaxFindingsPerInfoType []*InspectConfig_FindingLimits_InfoTypeLimit `protobuf:"bytes,3,rep,name=max_findings_per_info_type,json=maxFindingsPerInfoType,proto3" json:"max_findings_per_info_type,omitempty"`
 	XXX_NoUnkeyedLiteral   struct{}                                     `json:"-"`
 	XXX_unrecognized       []byte                                       `json:"-"`
 	XXX_sizecache          int32                                        `json:"-"`
@@ -666,9 +666,9 @@ type InspectConfig_FindingLimits_InfoTypeLimit struct {
 	// info_type should be provided. If InfoTypeLimit does not have an
 	// info_type, the DLP API applies the limit against all info_types that
 	// are found but not specified in another InfoTypeLimit.
-	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType" json:"info_type,omitempty"`
+	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType,proto3" json:"info_type,omitempty"`
 	// Max findings limit for the given infoType.
-	MaxFindings          int32    `protobuf:"varint,2,opt,name=max_findings,json=maxFindings" json:"max_findings,omitempty"`
+	MaxFindings          int32    `protobuf:"varint,2,opt,name=max_findings,json=maxFindings,proto3" json:"max_findings,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -717,7 +717,7 @@ func (m *InspectConfig_FindingLimits_InfoTypeLimit) GetMaxFindings() int32 {
 // Container for bytes to inspect or redact.
 type ByteContentItem struct {
 	// The type of data stored in the bytes string. Default will be TEXT_UTF8.
-	Type ByteContentItem_BytesType `protobuf:"varint,1,opt,name=type,enum=google.privacy.dlp.v2.ByteContentItem_BytesType" json:"type,omitempty"`
+	Type ByteContentItem_BytesType `protobuf:"varint,1,opt,name=type,proto3,enum=google.privacy.dlp.v2.ByteContentItem_BytesType" json:"type,omitempty"`
 	// Content data to inspect or redact.
 	Data                 []byte   `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -806,13 +806,13 @@ type isContentItem_DataItem interface {
 }
 
 type ContentItem_Value struct {
-	Value string `protobuf:"bytes,3,opt,name=value,oneof"`
+	Value string `protobuf:"bytes,3,opt,name=value,proto3,oneof"`
 }
 type ContentItem_Table struct {
-	Table *Table `protobuf:"bytes,4,opt,name=table,oneof"`
+	Table *Table `protobuf:"bytes,4,opt,name=table,proto3,oneof"`
 }
 type ContentItem_ByteItem struct {
-	ByteItem *ByteContentItem `protobuf:"bytes,5,opt,name=byte_item,json=byteItem,oneof"`
+	ByteItem *ByteContentItem `protobuf:"bytes,5,opt,name=byte_item,json=byteItem,proto3,oneof"`
 }
 
 func (*ContentItem_Value) isContentItem_DataItem()    {}
@@ -938,8 +938,8 @@ func _ContentItem_OneofSizer(msg proto.Message) (n int) {
 
 // Structured content to inspect. Up to 50,000 `Value`s per request allowed.
 type Table struct {
-	Headers              []*FieldId   `protobuf:"bytes,1,rep,name=headers" json:"headers,omitempty"`
-	Rows                 []*Table_Row `protobuf:"bytes,2,rep,name=rows" json:"rows,omitempty"`
+	Headers              []*FieldId   `protobuf:"bytes,1,rep,name=headers,proto3" json:"headers,omitempty"`
+	Rows                 []*Table_Row `protobuf:"bytes,2,rep,name=rows,proto3" json:"rows,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -984,7 +984,7 @@ func (m *Table) GetRows() []*Table_Row {
 }
 
 type Table_Row struct {
-	Values               []*Value `protobuf:"bytes,1,rep,name=values" json:"values,omitempty"`
+	Values               []*Value `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1024,14 +1024,14 @@ func (m *Table_Row) GetValues() []*Value {
 // All the findings for a single scanned item.
 type InspectResult struct {
 	// List of findings for an item.
-	Findings []*Finding `protobuf:"bytes,1,rep,name=findings" json:"findings,omitempty"`
+	Findings []*Finding `protobuf:"bytes,1,rep,name=findings,proto3" json:"findings,omitempty"`
 	// If true, then this item might have more findings than were returned,
 	// and the findings returned are an arbitrary subset of all findings.
 	// The findings list might be truncated because the input items were too
 	// large, or because the server reached the maximum amount of resources
 	// allowed for a single API call. For best results, divide the input into
 	// smaller batches.
-	FindingsTruncated    bool     `protobuf:"varint,2,opt,name=findings_truncated,json=findingsTruncated" json:"findings_truncated,omitempty"`
+	FindingsTruncated    bool     `protobuf:"varint,2,opt,name=findings_truncated,json=findingsTruncated,proto3" json:"findings_truncated,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1082,20 +1082,20 @@ type Finding struct {
 	// Provided if requested by the `InspectConfig` and the finding is
 	// less than or equal to 4096 bytes long. If the finding exceeds 4096 bytes
 	// in length, the quote may be omitted.
-	Quote string `protobuf:"bytes,1,opt,name=quote" json:"quote,omitempty"`
+	Quote string `protobuf:"bytes,1,opt,name=quote,proto3" json:"quote,omitempty"`
 	// The type of content that might have been found.
 	// Provided if requested by the `InspectConfig`.
-	InfoType *InfoType `protobuf:"bytes,2,opt,name=info_type,json=infoType" json:"info_type,omitempty"`
+	InfoType *InfoType `protobuf:"bytes,2,opt,name=info_type,json=infoType,proto3" json:"info_type,omitempty"`
 	// Estimate of how likely it is that the `info_type` is correct.
-	Likelihood Likelihood `protobuf:"varint,3,opt,name=likelihood,enum=google.privacy.dlp.v2.Likelihood" json:"likelihood,omitempty"`
+	Likelihood Likelihood `protobuf:"varint,3,opt,name=likelihood,proto3,enum=google.privacy.dlp.v2.Likelihood" json:"likelihood,omitempty"`
 	// Where the content was found.
-	Location *Location `protobuf:"bytes,4,opt,name=location" json:"location,omitempty"`
+	Location *Location `protobuf:"bytes,4,opt,name=location,proto3" json:"location,omitempty"`
 	// Timestamp when finding was detected.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime" json:"create_time,omitempty"`
+	CreateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Contains data parsed from quotes. Only populated if include_quote was set
 	// to true and a supported infoType was requested. Currently supported
 	// infoTypes: DATE, DATE_OF_BIRTH and TIME.
-	QuoteInfo            *QuoteInfo `protobuf:"bytes,7,opt,name=quote_info,json=quoteInfo" json:"quote_info,omitempty"`
+	QuoteInfo            *QuoteInfo `protobuf:"bytes,7,opt,name=quote_info,json=quoteInfo,proto3" json:"quote_info,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -1174,14 +1174,14 @@ type Location struct {
 	// Note that when the content is not textual, this references
 	// the UTF-8 encoded textual representation of the content.
 	// Omitted if content is an image.
-	ByteRange *Range `protobuf:"bytes,1,opt,name=byte_range,json=byteRange" json:"byte_range,omitempty"`
+	ByteRange *Range `protobuf:"bytes,1,opt,name=byte_range,json=byteRange,proto3" json:"byte_range,omitempty"`
 	// Unicode character offsets delimiting the finding.
 	// These are relative to the finding's containing element.
 	// Provided when the content is text.
-	CodepointRange *Range `protobuf:"bytes,2,opt,name=codepoint_range,json=codepointRange" json:"codepoint_range,omitempty"`
+	CodepointRange *Range `protobuf:"bytes,2,opt,name=codepoint_range,json=codepointRange,proto3" json:"codepoint_range,omitempty"`
 	// List of nested objects pointing to the precise location of the finding
 	// within the file or record.
-	ContentLocations     []*ContentLocation `protobuf:"bytes,7,rep,name=content_locations,json=contentLocations" json:"content_locations,omitempty"`
+	ContentLocations     []*ContentLocation `protobuf:"bytes,7,rep,name=content_locations,json=contentLocations,proto3" json:"content_locations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -1238,7 +1238,7 @@ type ContentLocation struct {
 	// The top level name is the source file name or table name. Nested names
 	// could be absent if the embedded object has no string identifier
 	// (for an example an image contained within a document).
-	ContainerName string `protobuf:"bytes,1,opt,name=container_name,json=containerName" json:"container_name,omitempty"`
+	ContainerName string `protobuf:"bytes,1,opt,name=container_name,json=containerName,proto3" json:"container_name,omitempty"`
 	// Type of the container within the file with location of the finding.
 	//
 	// Types that are valid to be assigned to Location:
@@ -1250,10 +1250,10 @@ type ContentLocation struct {
 	// For Google Cloud Storage contains last file modification timestamp.
 	// For BigQuery table contains last_modified_time property.
 	// For Datastore - not populated.
-	ContainerTimestamp *timestamp.Timestamp `protobuf:"bytes,6,opt,name=container_timestamp,json=containerTimestamp" json:"container_timestamp,omitempty"`
+	ContainerTimestamp *timestamp.Timestamp `protobuf:"bytes,6,opt,name=container_timestamp,json=containerTimestamp,proto3" json:"container_timestamp,omitempty"`
 	// Findings container version, if available
 	// ("generation" for Google Cloud Storage).
-	ContainerVersion     string   `protobuf:"bytes,7,opt,name=container_version,json=containerVersion" json:"container_version,omitempty"`
+	ContainerVersion     string   `protobuf:"bytes,7,opt,name=container_version,json=containerVersion,proto3" json:"container_version,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1288,13 +1288,13 @@ type isContentLocation_Location interface {
 }
 
 type ContentLocation_RecordLocation struct {
-	RecordLocation *RecordLocation `protobuf:"bytes,2,opt,name=record_location,json=recordLocation,oneof"`
+	RecordLocation *RecordLocation `protobuf:"bytes,2,opt,name=record_location,json=recordLocation,proto3,oneof"`
 }
 type ContentLocation_ImageLocation struct {
-	ImageLocation *ImageLocation `protobuf:"bytes,3,opt,name=image_location,json=imageLocation,oneof"`
+	ImageLocation *ImageLocation `protobuf:"bytes,3,opt,name=image_location,json=imageLocation,proto3,oneof"`
 }
 type ContentLocation_DocumentLocation struct {
-	DocumentLocation *DocumentLocation `protobuf:"bytes,5,opt,name=document_location,json=documentLocation,oneof"`
+	DocumentLocation *DocumentLocation `protobuf:"bytes,5,opt,name=document_location,json=documentLocation,proto3,oneof"`
 }
 
 func (*ContentLocation_RecordLocation) isContentLocation_Location()   {}
@@ -1447,7 +1447,7 @@ func _ContentLocation_OneofSizer(msg proto.Message) (n int) {
 type DocumentLocation struct {
 	// Offset of the line, from the beginning of the file, where the finding
 	// is located.
-	FileOffset           int64    `protobuf:"varint,1,opt,name=file_offset,json=fileOffset" json:"file_offset,omitempty"`
+	FileOffset           int64    `protobuf:"varint,1,opt,name=file_offset,json=fileOffset,proto3" json:"file_offset,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1487,11 +1487,11 @@ func (m *DocumentLocation) GetFileOffset() int64 {
 // Location of a finding within a row or record.
 type RecordLocation struct {
 	// Key of the finding.
-	RecordKey *RecordKey `protobuf:"bytes,1,opt,name=record_key,json=recordKey" json:"record_key,omitempty"`
+	RecordKey *RecordKey `protobuf:"bytes,1,opt,name=record_key,json=recordKey,proto3" json:"record_key,omitempty"`
 	// Field id of the field containing the finding.
-	FieldId *FieldId `protobuf:"bytes,2,opt,name=field_id,json=fieldId" json:"field_id,omitempty"`
+	FieldId *FieldId `protobuf:"bytes,2,opt,name=field_id,json=fieldId,proto3" json:"field_id,omitempty"`
 	// Location within a `ContentItem.Table`.
-	TableLocation        *TableLocation `protobuf:"bytes,3,opt,name=table_location,json=tableLocation" json:"table_location,omitempty"`
+	TableLocation        *TableLocation `protobuf:"bytes,3,opt,name=table_location,json=tableLocation,proto3" json:"table_location,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -1545,7 +1545,7 @@ func (m *RecordLocation) GetTableLocation() *TableLocation {
 // Location of a finding within a table.
 type TableLocation struct {
 	// The zero-based index of the row where the finding is located.
-	RowIndex             int64    `protobuf:"varint,1,opt,name=row_index,json=rowIndex" json:"row_index,omitempty"`
+	RowIndex             int64    `protobuf:"varint,1,opt,name=row_index,json=rowIndex,proto3" json:"row_index,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1585,9 +1585,9 @@ func (m *TableLocation) GetRowIndex() int64 {
 // Generic half-open interval [start, end)
 type Range struct {
 	// Index of the first character of the range (inclusive).
-	Start int64 `protobuf:"varint,1,opt,name=start" json:"start,omitempty"`
+	Start int64 `protobuf:"varint,1,opt,name=start,proto3" json:"start,omitempty"`
 	// Index of the last character of the range (exclusive).
-	End                  int64    `protobuf:"varint,2,opt,name=end" json:"end,omitempty"`
+	End                  int64    `protobuf:"varint,2,opt,name=end,proto3" json:"end,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1634,7 +1634,7 @@ func (m *Range) GetEnd() int64 {
 // Location of the finding within an image.
 type ImageLocation struct {
 	// Bounding boxes locating the pixels within the image containing the finding.
-	BoundingBoxes        []*BoundingBox `protobuf:"bytes,1,rep,name=bounding_boxes,json=boundingBoxes" json:"bounding_boxes,omitempty"`
+	BoundingBoxes        []*BoundingBox `protobuf:"bytes,1,rep,name=bounding_boxes,json=boundingBoxes,proto3" json:"bounding_boxes,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -1674,13 +1674,13 @@ func (m *ImageLocation) GetBoundingBoxes() []*BoundingBox {
 // Bounding box encompassing detected text within an image.
 type BoundingBox struct {
 	// Top coordinate of the bounding box. (0,0) is upper left.
-	Top int32 `protobuf:"varint,1,opt,name=top" json:"top,omitempty"`
+	Top int32 `protobuf:"varint,1,opt,name=top,proto3" json:"top,omitempty"`
 	// Left coordinate of the bounding box. (0,0) is upper left.
-	Left int32 `protobuf:"varint,2,opt,name=left" json:"left,omitempty"`
+	Left int32 `protobuf:"varint,2,opt,name=left,proto3" json:"left,omitempty"`
 	// Width of the bounding box in pixels.
-	Width int32 `protobuf:"varint,3,opt,name=width" json:"width,omitempty"`
+	Width int32 `protobuf:"varint,3,opt,name=width,proto3" json:"width,omitempty"`
 	// Height of the bounding box in pixels.
-	Height               int32    `protobuf:"varint,4,opt,name=height" json:"height,omitempty"`
+	Height               int32    `protobuf:"varint,4,opt,name=height,proto3" json:"height,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1742,13 +1742,13 @@ func (m *BoundingBox) GetHeight() int32 {
 // and replace it with a default or provided content.
 type RedactImageRequest struct {
 	// The parent resource name, for example projects/my-project-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Configuration for the inspector.
-	InspectConfig *InspectConfig `protobuf:"bytes,2,opt,name=inspect_config,json=inspectConfig" json:"inspect_config,omitempty"`
+	InspectConfig *InspectConfig `protobuf:"bytes,2,opt,name=inspect_config,json=inspectConfig,proto3" json:"inspect_config,omitempty"`
 	// The configuration for specifying what content to redact from images.
-	ImageRedactionConfigs []*RedactImageRequest_ImageRedactionConfig `protobuf:"bytes,5,rep,name=image_redaction_configs,json=imageRedactionConfigs" json:"image_redaction_configs,omitempty"`
+	ImageRedactionConfigs []*RedactImageRequest_ImageRedactionConfig `protobuf:"bytes,5,rep,name=image_redaction_configs,json=imageRedactionConfigs,proto3" json:"image_redaction_configs,omitempty"`
 	// The content must be PNG, JPEG, SVG or BMP.
-	ByteItem             *ByteContentItem `protobuf:"bytes,7,opt,name=byte_item,json=byteItem" json:"byte_item,omitempty"`
+	ByteItem             *ByteContentItem `protobuf:"bytes,7,opt,name=byte_item,json=byteItem,proto3" json:"byte_item,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -1816,7 +1816,7 @@ type RedactImageRequest_ImageRedactionConfig struct {
 	Target isRedactImageRequest_ImageRedactionConfig_Target `protobuf_oneof:"target"`
 	// The color to use when redacting content from an image. If not specified,
 	// the default is black.
-	RedactionColor       *Color   `protobuf:"bytes,3,opt,name=redaction_color,json=redactionColor" json:"redaction_color,omitempty"`
+	RedactionColor       *Color   `protobuf:"bytes,3,opt,name=redaction_color,json=redactionColor,proto3" json:"redaction_color,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1853,10 +1853,10 @@ type isRedactImageRequest_ImageRedactionConfig_Target interface {
 }
 
 type RedactImageRequest_ImageRedactionConfig_InfoType struct {
-	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType,oneof"`
+	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType,proto3,oneof"`
 }
 type RedactImageRequest_ImageRedactionConfig_RedactAllText struct {
-	RedactAllText bool `protobuf:"varint,2,opt,name=redact_all_text,json=redactAllText,oneof"`
+	RedactAllText bool `protobuf:"varint,2,opt,name=redact_all_text,json=redactAllText,proto3,oneof"`
 }
 
 func (*RedactImageRequest_ImageRedactionConfig_InfoType) isRedactImageRequest_ImageRedactionConfig_Target() {
@@ -1968,11 +1968,11 @@ func _RedactImageRequest_ImageRedactionConfig_OneofSizer(msg proto.Message) (n i
 // Represents a color in the RGB color space.
 type Color struct {
 	// The amount of red in the color as a value in the interval [0, 1].
-	Red float32 `protobuf:"fixed32,1,opt,name=red" json:"red,omitempty"`
+	Red float32 `protobuf:"fixed32,1,opt,name=red,proto3" json:"red,omitempty"`
 	// The amount of green in the color as a value in the interval [0, 1].
-	Green float32 `protobuf:"fixed32,2,opt,name=green" json:"green,omitempty"`
+	Green float32 `protobuf:"fixed32,2,opt,name=green,proto3" json:"green,omitempty"`
 	// The amount of blue in the color as a value in the interval [0, 1].
-	Blue                 float32  `protobuf:"fixed32,3,opt,name=blue" json:"blue,omitempty"`
+	Blue                 float32  `protobuf:"fixed32,3,opt,name=blue,proto3" json:"blue,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2030,7 +2030,7 @@ type RedactImageResponse struct {
 	// If an image was being inspected and the InspectConfig's include_quote was
 	// set to true, then this field will include all text, if any, that was found
 	// in the image.
-	ExtractedText        string   `protobuf:"bytes,2,opt,name=extracted_text,json=extractedText" json:"extracted_text,omitempty"`
+	ExtractedText        string   `protobuf:"bytes,2,opt,name=extracted_text,json=extractedText,proto3" json:"extracted_text,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2077,29 +2077,29 @@ func (m *RedactImageResponse) GetExtractedText() string {
 // Request to de-identify a list of items.
 type DeidentifyContentRequest struct {
 	// The parent resource name, for example projects/my-project-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Configuration for the de-identification of the content item.
 	// Items specified here will override the template referenced by the
 	// deidentify_template_name argument.
-	DeidentifyConfig *DeidentifyConfig `protobuf:"bytes,2,opt,name=deidentify_config,json=deidentifyConfig" json:"deidentify_config,omitempty"`
+	DeidentifyConfig *DeidentifyConfig `protobuf:"bytes,2,opt,name=deidentify_config,json=deidentifyConfig,proto3" json:"deidentify_config,omitempty"`
 	// Configuration for the inspector.
 	// Items specified here will override the template referenced by the
 	// inspect_template_name argument.
-	InspectConfig *InspectConfig `protobuf:"bytes,3,opt,name=inspect_config,json=inspectConfig" json:"inspect_config,omitempty"`
+	InspectConfig *InspectConfig `protobuf:"bytes,3,opt,name=inspect_config,json=inspectConfig,proto3" json:"inspect_config,omitempty"`
 	// The item to de-identify. Will be treated as text.
-	Item *ContentItem `protobuf:"bytes,4,opt,name=item" json:"item,omitempty"`
+	Item *ContentItem `protobuf:"bytes,4,opt,name=item,proto3" json:"item,omitempty"`
 	// Optional template to use. Any configuration directly specified in
 	// inspect_config will override those set in the template. Singular fields
 	// that are set in this request will replace their corresponding fields in the
 	// template. Repeated fields are appended. Singular sub-messages and groups
 	// are recursively merged.
-	InspectTemplateName string `protobuf:"bytes,5,opt,name=inspect_template_name,json=inspectTemplateName" json:"inspect_template_name,omitempty"`
+	InspectTemplateName string `protobuf:"bytes,5,opt,name=inspect_template_name,json=inspectTemplateName,proto3" json:"inspect_template_name,omitempty"`
 	// Optional template to use. Any configuration directly specified in
 	// deidentify_config will override those set in the template. Singular fields
 	// that are set in this request will replace their corresponding fields in the
 	// template. Repeated fields are appended. Singular sub-messages and groups
 	// are recursively merged.
-	DeidentifyTemplateName string   `protobuf:"bytes,6,opt,name=deidentify_template_name,json=deidentifyTemplateName" json:"deidentify_template_name,omitempty"`
+	DeidentifyTemplateName string   `protobuf:"bytes,6,opt,name=deidentify_template_name,json=deidentifyTemplateName,proto3" json:"deidentify_template_name,omitempty"`
 	XXX_NoUnkeyedLiteral   struct{} `json:"-"`
 	XXX_unrecognized       []byte   `json:"-"`
 	XXX_sizecache          int32    `json:"-"`
@@ -2174,9 +2174,9 @@ func (m *DeidentifyContentRequest) GetDeidentifyTemplateName() string {
 // Results of de-identifying a ContentItem.
 type DeidentifyContentResponse struct {
 	// The de-identified item.
-	Item *ContentItem `protobuf:"bytes,1,opt,name=item" json:"item,omitempty"`
+	Item *ContentItem `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
 	// An overview of the changes that were made on the `item`.
-	Overview             *TransformationOverview `protobuf:"bytes,2,opt,name=overview" json:"overview,omitempty"`
+	Overview             *TransformationOverview `protobuf:"bytes,2,opt,name=overview,proto3" json:"overview,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
 	XXX_sizecache        int32                   `json:"-"`
@@ -2223,7 +2223,7 @@ func (m *DeidentifyContentResponse) GetOverview() *TransformationOverview {
 // Request to re-identify an item.
 type ReidentifyContentRequest struct {
 	// The parent resource name.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Configuration for the re-identification of the content item.
 	// This field shares the same proto message type that is used for
 	// de-identification, however its usage here is for the reversal of the
@@ -2233,24 +2233,24 @@ type ReidentifyContentRequest struct {
 	// be provided here. The reversible transformations are:
 	//
 	//  - `CryptoReplaceFfxFpeConfig`
-	ReidentifyConfig *DeidentifyConfig `protobuf:"bytes,2,opt,name=reidentify_config,json=reidentifyConfig" json:"reidentify_config,omitempty"`
+	ReidentifyConfig *DeidentifyConfig `protobuf:"bytes,2,opt,name=reidentify_config,json=reidentifyConfig,proto3" json:"reidentify_config,omitempty"`
 	// Configuration for the inspector.
-	InspectConfig *InspectConfig `protobuf:"bytes,3,opt,name=inspect_config,json=inspectConfig" json:"inspect_config,omitempty"`
+	InspectConfig *InspectConfig `protobuf:"bytes,3,opt,name=inspect_config,json=inspectConfig,proto3" json:"inspect_config,omitempty"`
 	// The item to re-identify. Will be treated as text.
-	Item *ContentItem `protobuf:"bytes,4,opt,name=item" json:"item,omitempty"`
+	Item *ContentItem `protobuf:"bytes,4,opt,name=item,proto3" json:"item,omitempty"`
 	// Optional template to use. Any configuration directly specified in
 	// `inspect_config` will override those set in the template. Singular fields
 	// that are set in this request will replace their corresponding fields in the
 	// template. Repeated fields are appended. Singular sub-messages and groups
 	// are recursively merged.
-	InspectTemplateName string `protobuf:"bytes,5,opt,name=inspect_template_name,json=inspectTemplateName" json:"inspect_template_name,omitempty"`
+	InspectTemplateName string `protobuf:"bytes,5,opt,name=inspect_template_name,json=inspectTemplateName,proto3" json:"inspect_template_name,omitempty"`
 	// Optional template to use. References an instance of `DeidentifyTemplate`.
 	// Any configuration directly specified in `reidentify_config` or
 	// `inspect_config` will override those set in the template. Singular fields
 	// that are set in this request will replace their corresponding fields in the
 	// template. Repeated fields are appended. Singular sub-messages and groups
 	// are recursively merged.
-	ReidentifyTemplateName string   `protobuf:"bytes,6,opt,name=reidentify_template_name,json=reidentifyTemplateName" json:"reidentify_template_name,omitempty"`
+	ReidentifyTemplateName string   `protobuf:"bytes,6,opt,name=reidentify_template_name,json=reidentifyTemplateName,proto3" json:"reidentify_template_name,omitempty"`
 	XXX_NoUnkeyedLiteral   struct{} `json:"-"`
 	XXX_unrecognized       []byte   `json:"-"`
 	XXX_sizecache          int32    `json:"-"`
@@ -2325,9 +2325,9 @@ func (m *ReidentifyContentRequest) GetReidentifyTemplateName() string {
 // Results of re-identifying a item.
 type ReidentifyContentResponse struct {
 	// The re-identified item.
-	Item *ContentItem `protobuf:"bytes,1,opt,name=item" json:"item,omitempty"`
+	Item *ContentItem `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
 	// An overview of the changes that were made to the `item`.
-	Overview             *TransformationOverview `protobuf:"bytes,2,opt,name=overview" json:"overview,omitempty"`
+	Overview             *TransformationOverview `protobuf:"bytes,2,opt,name=overview,proto3" json:"overview,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
 	XXX_sizecache        int32                   `json:"-"`
@@ -2374,18 +2374,18 @@ func (m *ReidentifyContentResponse) GetOverview() *TransformationOverview {
 // Request to search for potentially sensitive info in a ContentItem.
 type InspectContentRequest struct {
 	// The parent resource name, for example projects/my-project-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Configuration for the inspector. What specified here will override
 	// the template referenced by the inspect_template_name argument.
-	InspectConfig *InspectConfig `protobuf:"bytes,2,opt,name=inspect_config,json=inspectConfig" json:"inspect_config,omitempty"`
+	InspectConfig *InspectConfig `protobuf:"bytes,2,opt,name=inspect_config,json=inspectConfig,proto3" json:"inspect_config,omitempty"`
 	// The item to inspect.
-	Item *ContentItem `protobuf:"bytes,3,opt,name=item" json:"item,omitempty"`
+	Item *ContentItem `protobuf:"bytes,3,opt,name=item,proto3" json:"item,omitempty"`
 	// Optional template to use. Any configuration directly specified in
 	// inspect_config will override those set in the template. Singular fields
 	// that are set in this request will replace their corresponding fields in the
 	// template. Repeated fields are appended. Singular sub-messages and groups
 	// are recursively merged.
-	InspectTemplateName  string   `protobuf:"bytes,4,opt,name=inspect_template_name,json=inspectTemplateName" json:"inspect_template_name,omitempty"`
+	InspectTemplateName  string   `protobuf:"bytes,4,opt,name=inspect_template_name,json=inspectTemplateName,proto3" json:"inspect_template_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2446,7 +2446,7 @@ func (m *InspectContentRequest) GetInspectTemplateName() string {
 // Results of inspecting an item.
 type InspectContentResponse struct {
 	// The findings.
-	Result               *InspectResult `protobuf:"bytes,1,opt,name=result" json:"result,omitempty"`
+	Result               *InspectResult `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -2495,7 +2495,7 @@ type OutputStorageConfig struct {
 	//
 	// If unspecified, then all available columns will be used for a new table,
 	// and no changes will be made to an existing table.
-	OutputSchema         OutputStorageConfig_OutputSchema `protobuf:"varint,3,opt,name=output_schema,json=outputSchema,enum=google.privacy.dlp.v2.OutputStorageConfig_OutputSchema" json:"output_schema,omitempty"`
+	OutputSchema         OutputStorageConfig_OutputSchema `protobuf:"varint,3,opt,name=output_schema,json=outputSchema,proto3,enum=google.privacy.dlp.v2.OutputStorageConfig_OutputSchema" json:"output_schema,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                         `json:"-"`
 	XXX_unrecognized     []byte                           `json:"-"`
 	XXX_sizecache        int32                            `json:"-"`
@@ -2530,7 +2530,7 @@ type isOutputStorageConfig_Type interface {
 }
 
 type OutputStorageConfig_Table struct {
-	Table *BigQueryTable `protobuf:"bytes,1,opt,name=table,oneof"`
+	Table *BigQueryTable `protobuf:"bytes,1,opt,name=table,proto3,oneof"`
 }
 
 func (*OutputStorageConfig_Table) isOutputStorageConfig_Type() {}
@@ -2614,9 +2614,9 @@ func _OutputStorageConfig_OneofSizer(msg proto.Message) (n int) {
 // Statistics regarding a specific InfoType.
 type InfoTypeStats struct {
 	// The type of finding this stat is for.
-	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType" json:"info_type,omitempty"`
+	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType,proto3" json:"info_type,omitempty"`
 	// Number of findings for this infoType.
-	Count                int64    `protobuf:"varint,2,opt,name=count" json:"count,omitempty"`
+	Count                int64    `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2663,9 +2663,9 @@ func (m *InfoTypeStats) GetCount() int64 {
 // The results of an inspect DataSource job.
 type InspectDataSourceDetails struct {
 	// The configuration used for this job.
-	RequestedOptions *InspectDataSourceDetails_RequestedOptions `protobuf:"bytes,2,opt,name=requested_options,json=requestedOptions" json:"requested_options,omitempty"`
+	RequestedOptions *InspectDataSourceDetails_RequestedOptions `protobuf:"bytes,2,opt,name=requested_options,json=requestedOptions,proto3" json:"requested_options,omitempty"`
 	// A summary of the outcome of this inspect job.
-	Result               *InspectDataSourceDetails_Result `protobuf:"bytes,3,opt,name=result" json:"result,omitempty"`
+	Result               *InspectDataSourceDetails_Result `protobuf:"bytes,3,opt,name=result,proto3" json:"result,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                         `json:"-"`
 	XXX_unrecognized     []byte                           `json:"-"`
 	XXX_sizecache        int32                            `json:"-"`
@@ -2712,8 +2712,8 @@ func (m *InspectDataSourceDetails) GetResult() *InspectDataSourceDetails_Result 
 type InspectDataSourceDetails_RequestedOptions struct {
 	// If run with an InspectTemplate, a snapshot of its state at the time of
 	// this run.
-	SnapshotInspectTemplate *InspectTemplate  `protobuf:"bytes,1,opt,name=snapshot_inspect_template,json=snapshotInspectTemplate" json:"snapshot_inspect_template,omitempty"`
-	JobConfig               *InspectJobConfig `protobuf:"bytes,3,opt,name=job_config,json=jobConfig" json:"job_config,omitempty"`
+	SnapshotInspectTemplate *InspectTemplate  `protobuf:"bytes,1,opt,name=snapshot_inspect_template,json=snapshotInspectTemplate,proto3" json:"snapshot_inspect_template,omitempty"`
+	JobConfig               *InspectJobConfig `protobuf:"bytes,3,opt,name=job_config,json=jobConfig,proto3" json:"job_config,omitempty"`
 	XXX_NoUnkeyedLiteral    struct{}          `json:"-"`
 	XXX_unrecognized        []byte            `json:"-"`
 	XXX_sizecache           int32             `json:"-"`
@@ -2761,12 +2761,12 @@ func (m *InspectDataSourceDetails_RequestedOptions) GetJobConfig() *InspectJobCo
 
 type InspectDataSourceDetails_Result struct {
 	// Total size in bytes that were processed.
-	ProcessedBytes int64 `protobuf:"varint,1,opt,name=processed_bytes,json=processedBytes" json:"processed_bytes,omitempty"`
+	ProcessedBytes int64 `protobuf:"varint,1,opt,name=processed_bytes,json=processedBytes,proto3" json:"processed_bytes,omitempty"`
 	// Estimate of the number of bytes to process.
-	TotalEstimatedBytes int64 `protobuf:"varint,2,opt,name=total_estimated_bytes,json=totalEstimatedBytes" json:"total_estimated_bytes,omitempty"`
+	TotalEstimatedBytes int64 `protobuf:"varint,2,opt,name=total_estimated_bytes,json=totalEstimatedBytes,proto3" json:"total_estimated_bytes,omitempty"`
 	// Statistics of how many instances of each info type were found during
 	// inspect job.
-	InfoTypeStats        []*InfoTypeStats `protobuf:"bytes,3,rep,name=info_type_stats,json=infoTypeStats" json:"info_type_stats,omitempty"`
+	InfoTypeStats        []*InfoTypeStats `protobuf:"bytes,3,rep,name=info_type_stats,json=infoTypeStats,proto3" json:"info_type_stats,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -2820,11 +2820,11 @@ func (m *InspectDataSourceDetails_Result) GetInfoTypeStats() []*InfoTypeStats {
 // InfoType description.
 type InfoTypeDescription struct {
 	// Internal name of the infoType.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Human readable form of the infoType name.
-	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Which parts of the API supports this InfoType.
-	SupportedBy          []InfoTypeSupportedBy `protobuf:"varint,3,rep,packed,name=supported_by,json=supportedBy,enum=google.privacy.dlp.v2.InfoTypeSupportedBy" json:"supported_by,omitempty"`
+	SupportedBy          []InfoTypeSupportedBy `protobuf:"varint,3,rep,packed,name=supported_by,json=supportedBy,proto3,enum=google.privacy.dlp.v2.InfoTypeSupportedBy" json:"supported_by,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -2880,10 +2880,10 @@ type ListInfoTypesRequest struct {
 	// Optional BCP-47 language code for localized infoType friendly
 	// names. If omitted, or if localized strings are not available,
 	// en-US strings will be returned.
-	LanguageCode string `protobuf:"bytes,1,opt,name=language_code,json=languageCode" json:"language_code,omitempty"`
+	LanguageCode string `protobuf:"bytes,1,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// Optional filter to only return infoTypes supported by certain parts of the
 	// API. Defaults to supported_by=INSPECT.
-	Filter               string   `protobuf:"bytes,2,opt,name=filter" json:"filter,omitempty"`
+	Filter               string   `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2930,7 +2930,7 @@ func (m *ListInfoTypesRequest) GetFilter() string {
 // Response to the ListInfoTypes request.
 type ListInfoTypesResponse struct {
 	// Set of sensitive infoTypes.
-	InfoTypes            []*InfoTypeDescription `protobuf:"bytes,1,rep,name=info_types,json=infoTypes" json:"info_types,omitempty"`
+	InfoTypes            []*InfoTypeDescription `protobuf:"bytes,1,rep,name=info_types,json=infoTypes,proto3" json:"info_types,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
 	XXX_unrecognized     []byte                 `json:"-"`
 	XXX_sizecache        int32                  `json:"-"`
@@ -2970,12 +2970,12 @@ func (m *ListInfoTypesResponse) GetInfoTypes() []*InfoTypeDescription {
 // Configuration for a risk analysis job.
 type RiskAnalysisJobConfig struct {
 	// Privacy metric to compute.
-	PrivacyMetric *PrivacyMetric `protobuf:"bytes,1,opt,name=privacy_metric,json=privacyMetric" json:"privacy_metric,omitempty"`
+	PrivacyMetric *PrivacyMetric `protobuf:"bytes,1,opt,name=privacy_metric,json=privacyMetric,proto3" json:"privacy_metric,omitempty"`
 	// Input dataset to compute metrics over.
-	SourceTable *BigQueryTable `protobuf:"bytes,2,opt,name=source_table,json=sourceTable" json:"source_table,omitempty"`
+	SourceTable *BigQueryTable `protobuf:"bytes,2,opt,name=source_table,json=sourceTable,proto3" json:"source_table,omitempty"`
 	// Actions to execute at the completion of the job. Are executed in the order
 	// provided.
-	Actions              []*Action `protobuf:"bytes,3,rep,name=actions" json:"actions,omitempty"`
+	Actions              []*Action `protobuf:"bytes,3,rep,name=actions,proto3" json:"actions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -3069,19 +3069,19 @@ type isPrivacyMetric_Type interface {
 }
 
 type PrivacyMetric_NumericalStatsConfig_ struct {
-	NumericalStatsConfig *PrivacyMetric_NumericalStatsConfig `protobuf:"bytes,1,opt,name=numerical_stats_config,json=numericalStatsConfig,oneof"`
+	NumericalStatsConfig *PrivacyMetric_NumericalStatsConfig `protobuf:"bytes,1,opt,name=numerical_stats_config,json=numericalStatsConfig,proto3,oneof"`
 }
 type PrivacyMetric_CategoricalStatsConfig_ struct {
-	CategoricalStatsConfig *PrivacyMetric_CategoricalStatsConfig `protobuf:"bytes,2,opt,name=categorical_stats_config,json=categoricalStatsConfig,oneof"`
+	CategoricalStatsConfig *PrivacyMetric_CategoricalStatsConfig `protobuf:"bytes,2,opt,name=categorical_stats_config,json=categoricalStatsConfig,proto3,oneof"`
 }
 type PrivacyMetric_KAnonymityConfig_ struct {
-	KAnonymityConfig *PrivacyMetric_KAnonymityConfig `protobuf:"bytes,3,opt,name=k_anonymity_config,json=kAnonymityConfig,oneof"`
+	KAnonymityConfig *PrivacyMetric_KAnonymityConfig `protobuf:"bytes,3,opt,name=k_anonymity_config,json=kAnonymityConfig,proto3,oneof"`
 }
 type PrivacyMetric_LDiversityConfig_ struct {
-	LDiversityConfig *PrivacyMetric_LDiversityConfig `protobuf:"bytes,4,opt,name=l_diversity_config,json=lDiversityConfig,oneof"`
+	LDiversityConfig *PrivacyMetric_LDiversityConfig `protobuf:"bytes,4,opt,name=l_diversity_config,json=lDiversityConfig,proto3,oneof"`
 }
 type PrivacyMetric_KMapEstimationConfig_ struct {
-	KMapEstimationConfig *PrivacyMetric_KMapEstimationConfig `protobuf:"bytes,5,opt,name=k_map_estimation_config,json=kMapEstimationConfig,oneof"`
+	KMapEstimationConfig *PrivacyMetric_KMapEstimationConfig `protobuf:"bytes,5,opt,name=k_map_estimation_config,json=kMapEstimationConfig,proto3,oneof"`
 }
 
 func (*PrivacyMetric_NumericalStatsConfig_) isPrivacyMetric_Type()   {}
@@ -3268,7 +3268,7 @@ func _PrivacyMetric_OneofSizer(msg proto.Message) (n int) {
 type PrivacyMetric_NumericalStatsConfig struct {
 	// Field to compute numerical stats on. Supported types are
 	// integer, float, date, datetime, timestamp, time.
-	Field                *FieldId `protobuf:"bytes,1,opt,name=field" json:"field,omitempty"`
+	Field                *FieldId `protobuf:"bytes,1,opt,name=field,proto3" json:"field,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3312,7 +3312,7 @@ type PrivacyMetric_CategoricalStatsConfig struct {
 	// supported except for arrays and structs. However, it may be more
 	// informative to use NumericalStats when the field type is supported,
 	// depending on the data.
-	Field                *FieldId `protobuf:"bytes,1,opt,name=field" json:"field,omitempty"`
+	Field                *FieldId `protobuf:"bytes,1,opt,name=field,proto3" json:"field,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3356,7 +3356,7 @@ type PrivacyMetric_KAnonymityConfig struct {
 	// repeated data types are not supported; however, nested fields are
 	// supported so long as they are not structs themselves or nested within
 	// a repeated field.
-	QuasiIds []*FieldId `protobuf:"bytes,1,rep,name=quasi_ids,json=quasiIds" json:"quasi_ids,omitempty"`
+	QuasiIds []*FieldId `protobuf:"bytes,1,rep,name=quasi_ids,json=quasiIds,proto3" json:"quasi_ids,omitempty"`
 	// Optional message indicating that multiple rows might be associated to a
 	// single individual. If the same entity_id is associated to multiple
 	// quasi-identifier tuples over distict rows, we consider the entire
@@ -3367,7 +3367,7 @@ type PrivacyMetric_KAnonymityConfig struct {
 	// Important note: a maximum of 1000 rows can be associated to a single
 	// entity ID. If more rows are associated with the same entity ID, some
 	// might be ignored.
-	EntityId             *EntityId `protobuf:"bytes,2,opt,name=entity_id,json=entityId" json:"entity_id,omitempty"`
+	EntityId             *EntityId `protobuf:"bytes,2,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -3416,9 +3416,9 @@ type PrivacyMetric_LDiversityConfig struct {
 	// Set of quasi-identifiers indicating how equivalence classes are
 	// defined for the l-diversity computation. When multiple fields are
 	// specified, they are considered a single composite key.
-	QuasiIds []*FieldId `protobuf:"bytes,1,rep,name=quasi_ids,json=quasiIds" json:"quasi_ids,omitempty"`
+	QuasiIds []*FieldId `protobuf:"bytes,1,rep,name=quasi_ids,json=quasiIds,proto3" json:"quasi_ids,omitempty"`
 	// Sensitive field for computing the l-value.
-	SensitiveAttribute   *FieldId `protobuf:"bytes,2,opt,name=sensitive_attribute,json=sensitiveAttribute" json:"sensitive_attribute,omitempty"`
+	SensitiveAttribute   *FieldId `protobuf:"bytes,2,opt,name=sensitive_attribute,json=sensitiveAttribute,proto3" json:"sensitive_attribute,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3472,15 +3472,15 @@ func (m *PrivacyMetric_LDiversityConfig) GetSensitiveAttribute() *FieldId {
 type PrivacyMetric_KMapEstimationConfig struct {
 	// Fields considered to be quasi-identifiers. No two columns can have the
 	// same tag. [required]
-	QuasiIds []*PrivacyMetric_KMapEstimationConfig_TaggedField `protobuf:"bytes,1,rep,name=quasi_ids,json=quasiIds" json:"quasi_ids,omitempty"`
+	QuasiIds []*PrivacyMetric_KMapEstimationConfig_TaggedField `protobuf:"bytes,1,rep,name=quasi_ids,json=quasiIds,proto3" json:"quasi_ids,omitempty"`
 	// ISO 3166-1 alpha-2 region code to use in the statistical modeling.
 	// Required if no column is tagged with a region-specific InfoType (like
 	// US_ZIP_5) or a region code.
-	RegionCode string `protobuf:"bytes,2,opt,name=region_code,json=regionCode" json:"region_code,omitempty"`
+	RegionCode string `protobuf:"bytes,2,opt,name=region_code,json=regionCode,proto3" json:"region_code,omitempty"`
 	// Several auxiliary tables can be used in the analysis. Each custom_tag
 	// used to tag a quasi-identifiers column must appear in exactly one column
 	// of one auxiliary table.
-	AuxiliaryTables      []*PrivacyMetric_KMapEstimationConfig_AuxiliaryTable `protobuf:"bytes,3,rep,name=auxiliary_tables,json=auxiliaryTables" json:"auxiliary_tables,omitempty"`
+	AuxiliaryTables      []*PrivacyMetric_KMapEstimationConfig_AuxiliaryTable `protobuf:"bytes,3,rep,name=auxiliary_tables,json=auxiliaryTables,proto3" json:"auxiliary_tables,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                             `json:"-"`
 	XXX_unrecognized     []byte                                               `json:"-"`
 	XXX_sizecache        int32                                                `json:"-"`
@@ -3533,7 +3533,7 @@ func (m *PrivacyMetric_KMapEstimationConfig) GetAuxiliaryTables() []*PrivacyMetr
 
 type PrivacyMetric_KMapEstimationConfig_TaggedField struct {
 	// Identifies the column. [required]
-	Field *FieldId `protobuf:"bytes,1,opt,name=field" json:"field,omitempty"`
+	Field *FieldId `protobuf:"bytes,1,opt,name=field,proto3" json:"field,omitempty"`
 	// Semantic tag that identifies what a column contains, to determine which
 	// statistical model to use to estimate the reidentifiability of each
 	// value. [required]
@@ -3581,13 +3581,13 @@ type isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag interface {
 }
 
 type PrivacyMetric_KMapEstimationConfig_TaggedField_InfoType struct {
-	InfoType *InfoType `protobuf:"bytes,2,opt,name=info_type,json=infoType,oneof"`
+	InfoType *InfoType `protobuf:"bytes,2,opt,name=info_type,json=infoType,proto3,oneof"`
 }
 type PrivacyMetric_KMapEstimationConfig_TaggedField_CustomTag struct {
-	CustomTag string `protobuf:"bytes,3,opt,name=custom_tag,json=customTag,oneof"`
+	CustomTag string `protobuf:"bytes,3,opt,name=custom_tag,json=customTag,proto3,oneof"`
 }
 type PrivacyMetric_KMapEstimationConfig_TaggedField_Inferred struct {
-	Inferred *empty.Empty `protobuf:"bytes,4,opt,name=inferred,oneof"`
+	Inferred *empty.Empty `protobuf:"bytes,4,opt,name=inferred,proto3,oneof"`
 }
 
 func (*PrivacyMetric_KMapEstimationConfig_TaggedField_InfoType) isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag() {
@@ -3730,13 +3730,13 @@ func _PrivacyMetric_KMapEstimationConfig_TaggedField_OneofSizer(msg proto.Messag
 // tuple is highly reidentifiable).
 type PrivacyMetric_KMapEstimationConfig_AuxiliaryTable struct {
 	// Auxiliary table location. [required]
-	Table *BigQueryTable `protobuf:"bytes,3,opt,name=table" json:"table,omitempty"`
+	Table *BigQueryTable `protobuf:"bytes,3,opt,name=table,proto3" json:"table,omitempty"`
 	// Quasi-identifier columns. [required]
-	QuasiIds []*PrivacyMetric_KMapEstimationConfig_AuxiliaryTable_QuasiIdField `protobuf:"bytes,1,rep,name=quasi_ids,json=quasiIds" json:"quasi_ids,omitempty"`
+	QuasiIds []*PrivacyMetric_KMapEstimationConfig_AuxiliaryTable_QuasiIdField `protobuf:"bytes,1,rep,name=quasi_ids,json=quasiIds,proto3" json:"quasi_ids,omitempty"`
 	// The relative frequency column must contain a floating-point number
 	// between 0 and 1 (inclusive). Null values are assumed to be zero.
 	// [required]
-	RelativeFrequency    *FieldId `protobuf:"bytes,2,opt,name=relative_frequency,json=relativeFrequency" json:"relative_frequency,omitempty"`
+	RelativeFrequency    *FieldId `protobuf:"bytes,2,opt,name=relative_frequency,json=relativeFrequency,proto3" json:"relative_frequency,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3794,8 +3794,8 @@ func (m *PrivacyMetric_KMapEstimationConfig_AuxiliaryTable) GetRelativeFrequency
 // A quasi-identifier column has a custom_tag, used to know which column
 // in the data corresponds to which column in the statistical model.
 type PrivacyMetric_KMapEstimationConfig_AuxiliaryTable_QuasiIdField struct {
-	Field                *FieldId `protobuf:"bytes,1,opt,name=field" json:"field,omitempty"`
-	CustomTag            string   `protobuf:"bytes,2,opt,name=custom_tag,json=customTag" json:"custom_tag,omitempty"`
+	Field                *FieldId `protobuf:"bytes,1,opt,name=field,proto3" json:"field,omitempty"`
+	CustomTag            string   `protobuf:"bytes,2,opt,name=custom_tag,json=customTag,proto3" json:"custom_tag,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3846,9 +3846,9 @@ func (m *PrivacyMetric_KMapEstimationConfig_AuxiliaryTable_QuasiIdField) GetCust
 // Result of a risk analysis operation request.
 type AnalyzeDataSourceRiskDetails struct {
 	// Privacy metric to compute.
-	RequestedPrivacyMetric *PrivacyMetric `protobuf:"bytes,1,opt,name=requested_privacy_metric,json=requestedPrivacyMetric" json:"requested_privacy_metric,omitempty"`
+	RequestedPrivacyMetric *PrivacyMetric `protobuf:"bytes,1,opt,name=requested_privacy_metric,json=requestedPrivacyMetric,proto3" json:"requested_privacy_metric,omitempty"`
 	// Input dataset to compute metrics over.
-	RequestedSourceTable *BigQueryTable `protobuf:"bytes,2,opt,name=requested_source_table,json=requestedSourceTable" json:"requested_source_table,omitempty"`
+	RequestedSourceTable *BigQueryTable `protobuf:"bytes,2,opt,name=requested_source_table,json=requestedSourceTable,proto3" json:"requested_source_table,omitempty"`
 	// Values associated with this metric.
 	//
 	// Types that are valid to be assigned to Result:
@@ -3892,19 +3892,19 @@ type isAnalyzeDataSourceRiskDetails_Result interface {
 }
 
 type AnalyzeDataSourceRiskDetails_NumericalStatsResult_ struct {
-	NumericalStatsResult *AnalyzeDataSourceRiskDetails_NumericalStatsResult `protobuf:"bytes,3,opt,name=numerical_stats_result,json=numericalStatsResult,oneof"`
+	NumericalStatsResult *AnalyzeDataSourceRiskDetails_NumericalStatsResult `protobuf:"bytes,3,opt,name=numerical_stats_result,json=numericalStatsResult,proto3,oneof"`
 }
 type AnalyzeDataSourceRiskDetails_CategoricalStatsResult_ struct {
-	CategoricalStatsResult *AnalyzeDataSourceRiskDetails_CategoricalStatsResult `protobuf:"bytes,4,opt,name=categorical_stats_result,json=categoricalStatsResult,oneof"`
+	CategoricalStatsResult *AnalyzeDataSourceRiskDetails_CategoricalStatsResult `protobuf:"bytes,4,opt,name=categorical_stats_result,json=categoricalStatsResult,proto3,oneof"`
 }
 type AnalyzeDataSourceRiskDetails_KAnonymityResult_ struct {
-	KAnonymityResult *AnalyzeDataSourceRiskDetails_KAnonymityResult `protobuf:"bytes,5,opt,name=k_anonymity_result,json=kAnonymityResult,oneof"`
+	KAnonymityResult *AnalyzeDataSourceRiskDetails_KAnonymityResult `protobuf:"bytes,5,opt,name=k_anonymity_result,json=kAnonymityResult,proto3,oneof"`
 }
 type AnalyzeDataSourceRiskDetails_LDiversityResult_ struct {
-	LDiversityResult *AnalyzeDataSourceRiskDetails_LDiversityResult `protobuf:"bytes,6,opt,name=l_diversity_result,json=lDiversityResult,oneof"`
+	LDiversityResult *AnalyzeDataSourceRiskDetails_LDiversityResult `protobuf:"bytes,6,opt,name=l_diversity_result,json=lDiversityResult,proto3,oneof"`
 }
 type AnalyzeDataSourceRiskDetails_KMapEstimationResult_ struct {
-	KMapEstimationResult *AnalyzeDataSourceRiskDetails_KMapEstimationResult `protobuf:"bytes,7,opt,name=k_map_estimation_result,json=kMapEstimationResult,oneof"`
+	KMapEstimationResult *AnalyzeDataSourceRiskDetails_KMapEstimationResult `protobuf:"bytes,7,opt,name=k_map_estimation_result,json=kMapEstimationResult,proto3,oneof"`
 }
 
 func (*AnalyzeDataSourceRiskDetails_NumericalStatsResult_) isAnalyzeDataSourceRiskDetails_Result()   {}
@@ -4103,12 +4103,12 @@ func _AnalyzeDataSourceRiskDetails_OneofSizer(msg proto.Message) (n int) {
 // Result of the numerical stats computation.
 type AnalyzeDataSourceRiskDetails_NumericalStatsResult struct {
 	// Minimum value appearing in the column.
-	MinValue *Value `protobuf:"bytes,1,opt,name=min_value,json=minValue" json:"min_value,omitempty"`
+	MinValue *Value `protobuf:"bytes,1,opt,name=min_value,json=minValue,proto3" json:"min_value,omitempty"`
 	// Maximum value appearing in the column.
-	MaxValue *Value `protobuf:"bytes,2,opt,name=max_value,json=maxValue" json:"max_value,omitempty"`
+	MaxValue *Value `protobuf:"bytes,2,opt,name=max_value,json=maxValue,proto3" json:"max_value,omitempty"`
 	// List of 99 values that partition the set of field values into 100 equal
 	// sized buckets.
-	QuantileValues       []*Value `protobuf:"bytes,4,rep,name=quantile_values,json=quantileValues" json:"quantile_values,omitempty"`
+	QuantileValues       []*Value `protobuf:"bytes,4,rep,name=quantile_values,json=quantileValues,proto3" json:"quantile_values,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4166,7 +4166,7 @@ func (m *AnalyzeDataSourceRiskDetails_NumericalStatsResult) GetQuantileValues() 
 // Result of the categorical stats computation.
 type AnalyzeDataSourceRiskDetails_CategoricalStatsResult struct {
 	// Histogram of value frequencies in the column.
-	ValueFrequencyHistogramBuckets []*AnalyzeDataSourceRiskDetails_CategoricalStatsResult_CategoricalStatsHistogramBucket `protobuf:"bytes,5,rep,name=value_frequency_histogram_buckets,json=valueFrequencyHistogramBuckets" json:"value_frequency_histogram_buckets,omitempty"`
+	ValueFrequencyHistogramBuckets []*AnalyzeDataSourceRiskDetails_CategoricalStatsResult_CategoricalStatsHistogramBucket `protobuf:"bytes,5,rep,name=value_frequency_histogram_buckets,json=valueFrequencyHistogramBuckets,proto3" json:"value_frequency_histogram_buckets,omitempty"`
 	XXX_NoUnkeyedLiteral           struct{}                                                                               `json:"-"`
 	XXX_unrecognized               []byte                                                                                 `json:"-"`
 	XXX_sizecache                  int32                                                                                  `json:"-"`
@@ -4209,16 +4209,16 @@ func (m *AnalyzeDataSourceRiskDetails_CategoricalStatsResult) GetValueFrequencyH
 
 type AnalyzeDataSourceRiskDetails_CategoricalStatsResult_CategoricalStatsHistogramBucket struct {
 	// Lower bound on the value frequency of the values in this bucket.
-	ValueFrequencyLowerBound int64 `protobuf:"varint,1,opt,name=value_frequency_lower_bound,json=valueFrequencyLowerBound" json:"value_frequency_lower_bound,omitempty"`
+	ValueFrequencyLowerBound int64 `protobuf:"varint,1,opt,name=value_frequency_lower_bound,json=valueFrequencyLowerBound,proto3" json:"value_frequency_lower_bound,omitempty"`
 	// Upper bound on the value frequency of the values in this bucket.
-	ValueFrequencyUpperBound int64 `protobuf:"varint,2,opt,name=value_frequency_upper_bound,json=valueFrequencyUpperBound" json:"value_frequency_upper_bound,omitempty"`
+	ValueFrequencyUpperBound int64 `protobuf:"varint,2,opt,name=value_frequency_upper_bound,json=valueFrequencyUpperBound,proto3" json:"value_frequency_upper_bound,omitempty"`
 	// Total number of values in this bucket.
-	BucketSize int64 `protobuf:"varint,3,opt,name=bucket_size,json=bucketSize" json:"bucket_size,omitempty"`
+	BucketSize int64 `protobuf:"varint,3,opt,name=bucket_size,json=bucketSize,proto3" json:"bucket_size,omitempty"`
 	// Sample of value frequencies in this bucket. The total number of
 	// values returned per bucket is capped at 20.
-	BucketValues []*ValueFrequency `protobuf:"bytes,4,rep,name=bucket_values,json=bucketValues" json:"bucket_values,omitempty"`
+	BucketValues []*ValueFrequency `protobuf:"bytes,4,rep,name=bucket_values,json=bucketValues,proto3" json:"bucket_values,omitempty"`
 	// Total number of distinct values in this bucket.
-	BucketValueCount     int64    `protobuf:"varint,5,opt,name=bucket_value_count,json=bucketValueCount" json:"bucket_value_count,omitempty"`
+	BucketValueCount     int64    `protobuf:"varint,5,opt,name=bucket_value_count,json=bucketValueCount,proto3" json:"bucket_value_count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4291,7 +4291,7 @@ func (m *AnalyzeDataSourceRiskDetails_CategoricalStatsResult_CategoricalStatsHis
 // Result of the k-anonymity computation.
 type AnalyzeDataSourceRiskDetails_KAnonymityResult struct {
 	// Histogram of k-anonymity equivalence classes.
-	EquivalenceClassHistogramBuckets []*AnalyzeDataSourceRiskDetails_KAnonymityResult_KAnonymityHistogramBucket `protobuf:"bytes,5,rep,name=equivalence_class_histogram_buckets,json=equivalenceClassHistogramBuckets" json:"equivalence_class_histogram_buckets,omitempty"`
+	EquivalenceClassHistogramBuckets []*AnalyzeDataSourceRiskDetails_KAnonymityResult_KAnonymityHistogramBucket `protobuf:"bytes,5,rep,name=equivalence_class_histogram_buckets,json=equivalenceClassHistogramBuckets,proto3" json:"equivalence_class_histogram_buckets,omitempty"`
 	XXX_NoUnkeyedLiteral             struct{}                                                                   `json:"-"`
 	XXX_unrecognized                 []byte                                                                     `json:"-"`
 	XXX_sizecache                    int32                                                                      `json:"-"`
@@ -4337,10 +4337,10 @@ type AnalyzeDataSourceRiskDetails_KAnonymityResult_KAnonymityEquivalenceClass st
 	// Set of values defining the equivalence class. One value per
 	// quasi-identifier column in the original KAnonymity metric message.
 	// The order is always the same as the original request.
-	QuasiIdsValues []*Value `protobuf:"bytes,1,rep,name=quasi_ids_values,json=quasiIdsValues" json:"quasi_ids_values,omitempty"`
+	QuasiIdsValues []*Value `protobuf:"bytes,1,rep,name=quasi_ids_values,json=quasiIdsValues,proto3" json:"quasi_ids_values,omitempty"`
 	// Size of the equivalence class, for example number of rows with the
 	// above set of values.
-	EquivalenceClassSize int64    `protobuf:"varint,2,opt,name=equivalence_class_size,json=equivalenceClassSize" json:"equivalence_class_size,omitempty"`
+	EquivalenceClassSize int64    `protobuf:"varint,2,opt,name=equivalence_class_size,json=equivalenceClassSize,proto3" json:"equivalence_class_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4390,16 +4390,16 @@ func (m *AnalyzeDataSourceRiskDetails_KAnonymityResult_KAnonymityEquivalenceClas
 
 type AnalyzeDataSourceRiskDetails_KAnonymityResult_KAnonymityHistogramBucket struct {
 	// Lower bound on the size of the equivalence classes in this bucket.
-	EquivalenceClassSizeLowerBound int64 `protobuf:"varint,1,opt,name=equivalence_class_size_lower_bound,json=equivalenceClassSizeLowerBound" json:"equivalence_class_size_lower_bound,omitempty"`
+	EquivalenceClassSizeLowerBound int64 `protobuf:"varint,1,opt,name=equivalence_class_size_lower_bound,json=equivalenceClassSizeLowerBound,proto3" json:"equivalence_class_size_lower_bound,omitempty"`
 	// Upper bound on the size of the equivalence classes in this bucket.
-	EquivalenceClassSizeUpperBound int64 `protobuf:"varint,2,opt,name=equivalence_class_size_upper_bound,json=equivalenceClassSizeUpperBound" json:"equivalence_class_size_upper_bound,omitempty"`
+	EquivalenceClassSizeUpperBound int64 `protobuf:"varint,2,opt,name=equivalence_class_size_upper_bound,json=equivalenceClassSizeUpperBound,proto3" json:"equivalence_class_size_upper_bound,omitempty"`
 	// Total number of equivalence classes in this bucket.
-	BucketSize int64 `protobuf:"varint,3,opt,name=bucket_size,json=bucketSize" json:"bucket_size,omitempty"`
+	BucketSize int64 `protobuf:"varint,3,opt,name=bucket_size,json=bucketSize,proto3" json:"bucket_size,omitempty"`
 	// Sample of equivalence classes in this bucket. The total number of
 	// classes returned per bucket is capped at 20.
-	BucketValues []*AnalyzeDataSourceRiskDetails_KAnonymityResult_KAnonymityEquivalenceClass `protobuf:"bytes,4,rep,name=bucket_values,json=bucketValues" json:"bucket_values,omitempty"`
+	BucketValues []*AnalyzeDataSourceRiskDetails_KAnonymityResult_KAnonymityEquivalenceClass `protobuf:"bytes,4,rep,name=bucket_values,json=bucketValues,proto3" json:"bucket_values,omitempty"`
 	// Total number of distinct equivalence classes in this bucket.
-	BucketValueCount     int64    `protobuf:"varint,5,opt,name=bucket_value_count,json=bucketValueCount" json:"bucket_value_count,omitempty"`
+	BucketValueCount     int64    `protobuf:"varint,5,opt,name=bucket_value_count,json=bucketValueCount,proto3" json:"bucket_value_count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4471,7 +4471,7 @@ func (m *AnalyzeDataSourceRiskDetails_KAnonymityResult_KAnonymityHistogramBucket
 // Result of the l-diversity computation.
 type AnalyzeDataSourceRiskDetails_LDiversityResult struct {
 	// Histogram of l-diversity equivalence class sensitive value frequencies.
-	SensitiveValueFrequencyHistogramBuckets []*AnalyzeDataSourceRiskDetails_LDiversityResult_LDiversityHistogramBucket `protobuf:"bytes,5,rep,name=sensitive_value_frequency_histogram_buckets,json=sensitiveValueFrequencyHistogramBuckets" json:"sensitive_value_frequency_histogram_buckets,omitempty"`
+	SensitiveValueFrequencyHistogramBuckets []*AnalyzeDataSourceRiskDetails_LDiversityResult_LDiversityHistogramBucket `protobuf:"bytes,5,rep,name=sensitive_value_frequency_histogram_buckets,json=sensitiveValueFrequencyHistogramBuckets,proto3" json:"sensitive_value_frequency_histogram_buckets,omitempty"`
 	XXX_NoUnkeyedLiteral                    struct{}                                                                   `json:"-"`
 	XXX_unrecognized                        []byte                                                                     `json:"-"`
 	XXX_sizecache                           int32                                                                      `json:"-"`
@@ -4516,13 +4516,13 @@ func (m *AnalyzeDataSourceRiskDetails_LDiversityResult) GetSensitiveValueFrequen
 type AnalyzeDataSourceRiskDetails_LDiversityResult_LDiversityEquivalenceClass struct {
 	// Quasi-identifier values defining the k-anonymity equivalence
 	// class. The order is always the same as the original request.
-	QuasiIdsValues []*Value `protobuf:"bytes,1,rep,name=quasi_ids_values,json=quasiIdsValues" json:"quasi_ids_values,omitempty"`
+	QuasiIdsValues []*Value `protobuf:"bytes,1,rep,name=quasi_ids_values,json=quasiIdsValues,proto3" json:"quasi_ids_values,omitempty"`
 	// Size of the k-anonymity equivalence class.
-	EquivalenceClassSize int64 `protobuf:"varint,2,opt,name=equivalence_class_size,json=equivalenceClassSize" json:"equivalence_class_size,omitempty"`
+	EquivalenceClassSize int64 `protobuf:"varint,2,opt,name=equivalence_class_size,json=equivalenceClassSize,proto3" json:"equivalence_class_size,omitempty"`
 	// Number of distinct sensitive values in this equivalence class.
-	NumDistinctSensitiveValues int64 `protobuf:"varint,3,opt,name=num_distinct_sensitive_values,json=numDistinctSensitiveValues" json:"num_distinct_sensitive_values,omitempty"`
+	NumDistinctSensitiveValues int64 `protobuf:"varint,3,opt,name=num_distinct_sensitive_values,json=numDistinctSensitiveValues,proto3" json:"num_distinct_sensitive_values,omitempty"`
 	// Estimated frequencies of top sensitive values.
-	TopSensitiveValues   []*ValueFrequency `protobuf:"bytes,4,rep,name=top_sensitive_values,json=topSensitiveValues" json:"top_sensitive_values,omitempty"`
+	TopSensitiveValues   []*ValueFrequency `protobuf:"bytes,4,rep,name=top_sensitive_values,json=topSensitiveValues,proto3" json:"top_sensitive_values,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -4587,17 +4587,17 @@ func (m *AnalyzeDataSourceRiskDetails_LDiversityResult_LDiversityEquivalenceClas
 type AnalyzeDataSourceRiskDetails_LDiversityResult_LDiversityHistogramBucket struct {
 	// Lower bound on the sensitive value frequencies of the equivalence
 	// classes in this bucket.
-	SensitiveValueFrequencyLowerBound int64 `protobuf:"varint,1,opt,name=sensitive_value_frequency_lower_bound,json=sensitiveValueFrequencyLowerBound" json:"sensitive_value_frequency_lower_bound,omitempty"`
+	SensitiveValueFrequencyLowerBound int64 `protobuf:"varint,1,opt,name=sensitive_value_frequency_lower_bound,json=sensitiveValueFrequencyLowerBound,proto3" json:"sensitive_value_frequency_lower_bound,omitempty"`
 	// Upper bound on the sensitive value frequencies of the equivalence
 	// classes in this bucket.
-	SensitiveValueFrequencyUpperBound int64 `protobuf:"varint,2,opt,name=sensitive_value_frequency_upper_bound,json=sensitiveValueFrequencyUpperBound" json:"sensitive_value_frequency_upper_bound,omitempty"`
+	SensitiveValueFrequencyUpperBound int64 `protobuf:"varint,2,opt,name=sensitive_value_frequency_upper_bound,json=sensitiveValueFrequencyUpperBound,proto3" json:"sensitive_value_frequency_upper_bound,omitempty"`
 	// Total number of equivalence classes in this bucket.
-	BucketSize int64 `protobuf:"varint,3,opt,name=bucket_size,json=bucketSize" json:"bucket_size,omitempty"`
+	BucketSize int64 `protobuf:"varint,3,opt,name=bucket_size,json=bucketSize,proto3" json:"bucket_size,omitempty"`
 	// Sample of equivalence classes in this bucket. The total number of
 	// classes returned per bucket is capped at 20.
-	BucketValues []*AnalyzeDataSourceRiskDetails_LDiversityResult_LDiversityEquivalenceClass `protobuf:"bytes,4,rep,name=bucket_values,json=bucketValues" json:"bucket_values,omitempty"`
+	BucketValues []*AnalyzeDataSourceRiskDetails_LDiversityResult_LDiversityEquivalenceClass `protobuf:"bytes,4,rep,name=bucket_values,json=bucketValues,proto3" json:"bucket_values,omitempty"`
 	// Total number of distinct equivalence classes in this bucket.
-	BucketValueCount     int64    `protobuf:"varint,5,opt,name=bucket_value_count,json=bucketValueCount" json:"bucket_value_count,omitempty"`
+	BucketValueCount     int64    `protobuf:"varint,5,opt,name=bucket_value_count,json=bucketValueCount,proto3" json:"bucket_value_count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4677,7 +4677,7 @@ type AnalyzeDataSourceRiskDetails_KMapEstimationResult struct {
 	//   {min_anonymity: 5, max_anonymity: 10, frequency: 99}
 	// mean that there are no record with an estimated anonymity of 4, 5, or
 	// larger than 10.
-	KMapEstimationHistogram []*AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationHistogramBucket `protobuf:"bytes,1,rep,name=k_map_estimation_histogram,json=kMapEstimationHistogram" json:"k_map_estimation_histogram,omitempty"`
+	KMapEstimationHistogram []*AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationHistogramBucket `protobuf:"bytes,1,rep,name=k_map_estimation_histogram,json=kMapEstimationHistogram,proto3" json:"k_map_estimation_histogram,omitempty"`
 	XXX_NoUnkeyedLiteral    struct{}                                                                           `json:"-"`
 	XXX_unrecognized        []byte                                                                             `json:"-"`
 	XXX_sizecache           int32                                                                              `json:"-"`
@@ -4721,9 +4721,9 @@ func (m *AnalyzeDataSourceRiskDetails_KMapEstimationResult) GetKMapEstimationHis
 // A tuple of values for the quasi-identifier columns.
 type AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationQuasiIdValues struct {
 	// The quasi-identifier values.
-	QuasiIdsValues []*Value `protobuf:"bytes,1,rep,name=quasi_ids_values,json=quasiIdsValues" json:"quasi_ids_values,omitempty"`
+	QuasiIdsValues []*Value `protobuf:"bytes,1,rep,name=quasi_ids_values,json=quasiIdsValues,proto3" json:"quasi_ids_values,omitempty"`
 	// The estimated anonymity for these quasi-identifier values.
-	EstimatedAnonymity   int64    `protobuf:"varint,2,opt,name=estimated_anonymity,json=estimatedAnonymity" json:"estimated_anonymity,omitempty"`
+	EstimatedAnonymity   int64    `protobuf:"varint,2,opt,name=estimated_anonymity,json=estimatedAnonymity,proto3" json:"estimated_anonymity,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4781,16 +4781,16 @@ func (m *AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationQuasiId
 // corresponds to the number of uniquely identifiable records.
 type AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationHistogramBucket struct {
 	// Always positive.
-	MinAnonymity int64 `protobuf:"varint,1,opt,name=min_anonymity,json=minAnonymity" json:"min_anonymity,omitempty"`
+	MinAnonymity int64 `protobuf:"varint,1,opt,name=min_anonymity,json=minAnonymity,proto3" json:"min_anonymity,omitempty"`
 	// Always greater than or equal to min_anonymity.
-	MaxAnonymity int64 `protobuf:"varint,2,opt,name=max_anonymity,json=maxAnonymity" json:"max_anonymity,omitempty"`
+	MaxAnonymity int64 `protobuf:"varint,2,opt,name=max_anonymity,json=maxAnonymity,proto3" json:"max_anonymity,omitempty"`
 	// Number of records within these anonymity bounds.
-	BucketSize int64 `protobuf:"varint,5,opt,name=bucket_size,json=bucketSize" json:"bucket_size,omitempty"`
+	BucketSize int64 `protobuf:"varint,5,opt,name=bucket_size,json=bucketSize,proto3" json:"bucket_size,omitempty"`
 	// Sample of quasi-identifier tuple values in this bucket. The total
 	// number of classes returned per bucket is capped at 20.
-	BucketValues []*AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationQuasiIdValues `protobuf:"bytes,6,rep,name=bucket_values,json=bucketValues" json:"bucket_values,omitempty"`
+	BucketValues []*AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationQuasiIdValues `protobuf:"bytes,6,rep,name=bucket_values,json=bucketValues,proto3" json:"bucket_values,omitempty"`
 	// Total number of distinct quasi-identifier tuple values in this bucket.
-	BucketValueCount     int64    `protobuf:"varint,7,opt,name=bucket_value_count,json=bucketValueCount" json:"bucket_value_count,omitempty"`
+	BucketValueCount     int64    `protobuf:"varint,7,opt,name=bucket_value_count,json=bucketValueCount,proto3" json:"bucket_value_count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4863,9 +4863,9 @@ func (m *AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationHistogr
 // A value of a field, including its frequency.
 type ValueFrequency struct {
 	// A value contained in the field in question.
-	Value *Value `protobuf:"bytes,1,opt,name=value" json:"value,omitempty"`
+	Value *Value `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	// How many times the value is contained in the field.
-	Count                int64    `protobuf:"varint,2,opt,name=count" json:"count,omitempty"`
+	Count                int64    `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4960,28 +4960,28 @@ type isValue_Type interface {
 }
 
 type Value_IntegerValue struct {
-	IntegerValue int64 `protobuf:"varint,1,opt,name=integer_value,json=integerValue,oneof"`
+	IntegerValue int64 `protobuf:"varint,1,opt,name=integer_value,json=integerValue,proto3,oneof"`
 }
 type Value_FloatValue struct {
-	FloatValue float64 `protobuf:"fixed64,2,opt,name=float_value,json=floatValue,oneof"`
+	FloatValue float64 `protobuf:"fixed64,2,opt,name=float_value,json=floatValue,proto3,oneof"`
 }
 type Value_StringValue struct {
-	StringValue string `protobuf:"bytes,3,opt,name=string_value,json=stringValue,oneof"`
+	StringValue string `protobuf:"bytes,3,opt,name=string_value,json=stringValue,proto3,oneof"`
 }
 type Value_BooleanValue struct {
-	BooleanValue bool `protobuf:"varint,4,opt,name=boolean_value,json=booleanValue,oneof"`
+	BooleanValue bool `protobuf:"varint,4,opt,name=boolean_value,json=booleanValue,proto3,oneof"`
 }
 type Value_TimestampValue struct {
-	TimestampValue *timestamp.Timestamp `protobuf:"bytes,5,opt,name=timestamp_value,json=timestampValue,oneof"`
+	TimestampValue *timestamp.Timestamp `protobuf:"bytes,5,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
 }
 type Value_TimeValue struct {
-	TimeValue *timeofday.TimeOfDay `protobuf:"bytes,6,opt,name=time_value,json=timeValue,oneof"`
+	TimeValue *timeofday.TimeOfDay `protobuf:"bytes,6,opt,name=time_value,json=timeValue,proto3,oneof"`
 }
 type Value_DateValue struct {
-	DateValue *date.Date `protobuf:"bytes,7,opt,name=date_value,json=dateValue,oneof"`
+	DateValue *date.Date `protobuf:"bytes,7,opt,name=date_value,json=dateValue,proto3,oneof"`
 }
 type Value_DayOfWeekValue struct {
-	DayOfWeekValue dayofweek.DayOfWeek `protobuf:"varint,8,opt,name=day_of_week_value,json=dayOfWeekValue,enum=google.type.DayOfWeek,oneof"`
+	DayOfWeekValue dayofweek.DayOfWeek `protobuf:"varint,8,opt,name=day_of_week_value,json=dayOfWeekValue,proto3,enum=google.type.DayOfWeek,oneof"`
 }
 
 func (*Value_IntegerValue) isValue_Type()   {}
@@ -5265,7 +5265,7 @@ type isQuoteInfo_ParsedQuote interface {
 }
 
 type QuoteInfo_DateTime struct {
-	DateTime *DateTime `protobuf:"bytes,2,opt,name=date_time,json=dateTime,oneof"`
+	DateTime *DateTime `protobuf:"bytes,2,opt,name=date_time,json=dateTime,proto3,oneof"`
 }
 
 func (*QuoteInfo_DateTime) isQuoteInfo_ParsedQuote() {}
@@ -5343,10 +5343,10 @@ func _QuoteInfo_OneofSizer(msg proto.Message) (n int) {
 type DateTime struct {
 	// One or more of the following must be set. All fields are optional, but
 	// when set must be valid date or time values.
-	Date                 *date.Date           `protobuf:"bytes,1,opt,name=date" json:"date,omitempty"`
-	DayOfWeek            dayofweek.DayOfWeek  `protobuf:"varint,2,opt,name=day_of_week,json=dayOfWeek,enum=google.type.DayOfWeek" json:"day_of_week,omitempty"`
-	Time                 *timeofday.TimeOfDay `protobuf:"bytes,3,opt,name=time" json:"time,omitempty"`
-	TimeZone             *DateTime_TimeZone   `protobuf:"bytes,4,opt,name=time_zone,json=timeZone" json:"time_zone,omitempty"`
+	Date                 *date.Date           `protobuf:"bytes,1,opt,name=date,proto3" json:"date,omitempty"`
+	DayOfWeek            dayofweek.DayOfWeek  `protobuf:"varint,2,opt,name=day_of_week,json=dayOfWeek,proto3,enum=google.type.DayOfWeek" json:"day_of_week,omitempty"`
+	Time                 *timeofday.TimeOfDay `protobuf:"bytes,3,opt,name=time,proto3" json:"time,omitempty"`
+	TimeZone             *DateTime_TimeZone   `protobuf:"bytes,4,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -5407,7 +5407,7 @@ func (m *DateTime) GetTimeZone() *DateTime_TimeZone {
 type DateTime_TimeZone struct {
 	// Set only if the offset can be determined. Positive for time ahead of UTC.
 	// E.g. For "UTC-9", this value is -540.
-	OffsetMinutes        int32    `protobuf:"varint,1,opt,name=offset_minutes,json=offsetMinutes" json:"offset_minutes,omitempty"`
+	OffsetMinutes        int32    `protobuf:"varint,1,opt,name=offset_minutes,json=offsetMinutes,proto3" json:"offset_minutes,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -5484,10 +5484,10 @@ type isDeidentifyConfig_Transformation interface {
 }
 
 type DeidentifyConfig_InfoTypeTransformations struct {
-	InfoTypeTransformations *InfoTypeTransformations `protobuf:"bytes,1,opt,name=info_type_transformations,json=infoTypeTransformations,oneof"`
+	InfoTypeTransformations *InfoTypeTransformations `protobuf:"bytes,1,opt,name=info_type_transformations,json=infoTypeTransformations,proto3,oneof"`
 }
 type DeidentifyConfig_RecordTransformations struct {
-	RecordTransformations *RecordTransformations `protobuf:"bytes,2,opt,name=record_transformations,json=recordTransformations,oneof"`
+	RecordTransformations *RecordTransformations `protobuf:"bytes,2,opt,name=record_transformations,json=recordTransformations,proto3,oneof"`
 }
 
 func (*DeidentifyConfig_InfoTypeTransformations) isDeidentifyConfig_Transformation() {}
@@ -5636,34 +5636,34 @@ type isPrimitiveTransformation_Transformation interface {
 }
 
 type PrimitiveTransformation_ReplaceConfig struct {
-	ReplaceConfig *ReplaceValueConfig `protobuf:"bytes,1,opt,name=replace_config,json=replaceConfig,oneof"`
+	ReplaceConfig *ReplaceValueConfig `protobuf:"bytes,1,opt,name=replace_config,json=replaceConfig,proto3,oneof"`
 }
 type PrimitiveTransformation_RedactConfig struct {
-	RedactConfig *RedactConfig `protobuf:"bytes,2,opt,name=redact_config,json=redactConfig,oneof"`
+	RedactConfig *RedactConfig `protobuf:"bytes,2,opt,name=redact_config,json=redactConfig,proto3,oneof"`
 }
 type PrimitiveTransformation_CharacterMaskConfig struct {
-	CharacterMaskConfig *CharacterMaskConfig `protobuf:"bytes,3,opt,name=character_mask_config,json=characterMaskConfig,oneof"`
+	CharacterMaskConfig *CharacterMaskConfig `protobuf:"bytes,3,opt,name=character_mask_config,json=characterMaskConfig,proto3,oneof"`
 }
 type PrimitiveTransformation_CryptoReplaceFfxFpeConfig struct {
-	CryptoReplaceFfxFpeConfig *CryptoReplaceFfxFpeConfig `protobuf:"bytes,4,opt,name=crypto_replace_ffx_fpe_config,json=cryptoReplaceFfxFpeConfig,oneof"`
+	CryptoReplaceFfxFpeConfig *CryptoReplaceFfxFpeConfig `protobuf:"bytes,4,opt,name=crypto_replace_ffx_fpe_config,json=cryptoReplaceFfxFpeConfig,proto3,oneof"`
 }
 type PrimitiveTransformation_FixedSizeBucketingConfig struct {
-	FixedSizeBucketingConfig *FixedSizeBucketingConfig `protobuf:"bytes,5,opt,name=fixed_size_bucketing_config,json=fixedSizeBucketingConfig,oneof"`
+	FixedSizeBucketingConfig *FixedSizeBucketingConfig `protobuf:"bytes,5,opt,name=fixed_size_bucketing_config,json=fixedSizeBucketingConfig,proto3,oneof"`
 }
 type PrimitiveTransformation_BucketingConfig struct {
-	BucketingConfig *BucketingConfig `protobuf:"bytes,6,opt,name=bucketing_config,json=bucketingConfig,oneof"`
+	BucketingConfig *BucketingConfig `protobuf:"bytes,6,opt,name=bucketing_config,json=bucketingConfig,proto3,oneof"`
 }
 type PrimitiveTransformation_ReplaceWithInfoTypeConfig struct {
-	ReplaceWithInfoTypeConfig *ReplaceWithInfoTypeConfig `protobuf:"bytes,7,opt,name=replace_with_info_type_config,json=replaceWithInfoTypeConfig,oneof"`
+	ReplaceWithInfoTypeConfig *ReplaceWithInfoTypeConfig `protobuf:"bytes,7,opt,name=replace_with_info_type_config,json=replaceWithInfoTypeConfig,proto3,oneof"`
 }
 type PrimitiveTransformation_TimePartConfig struct {
-	TimePartConfig *TimePartConfig `protobuf:"bytes,8,opt,name=time_part_config,json=timePartConfig,oneof"`
+	TimePartConfig *TimePartConfig `protobuf:"bytes,8,opt,name=time_part_config,json=timePartConfig,proto3,oneof"`
 }
 type PrimitiveTransformation_CryptoHashConfig struct {
-	CryptoHashConfig *CryptoHashConfig `protobuf:"bytes,9,opt,name=crypto_hash_config,json=cryptoHashConfig,oneof"`
+	CryptoHashConfig *CryptoHashConfig `protobuf:"bytes,9,opt,name=crypto_hash_config,json=cryptoHashConfig,proto3,oneof"`
 }
 type PrimitiveTransformation_DateShiftConfig struct {
-	DateShiftConfig *DateShiftConfig `protobuf:"bytes,11,opt,name=date_shift_config,json=dateShiftConfig,oneof"`
+	DateShiftConfig *DateShiftConfig `protobuf:"bytes,11,opt,name=date_shift_config,json=dateShiftConfig,proto3,oneof"`
 }
 
 func (*PrimitiveTransformation_ReplaceConfig) isPrimitiveTransformation_Transformation()             {}
@@ -5983,7 +5983,7 @@ func _PrimitiveTransformation_OneofSizer(msg proto.Message) (n int) {
 // For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
 // portion of the value.
 type TimePartConfig struct {
-	PartToExtract        TimePartConfig_TimePart `protobuf:"varint,1,opt,name=part_to_extract,json=partToExtract,enum=google.privacy.dlp.v2.TimePartConfig_TimePart" json:"part_to_extract,omitempty"`
+	PartToExtract        TimePartConfig_TimePart `protobuf:"varint,1,opt,name=part_to_extract,json=partToExtract,proto3,enum=google.privacy.dlp.v2.TimePartConfig_TimePart" json:"part_to_extract,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
 	XXX_sizecache        int32                   `json:"-"`
@@ -6028,7 +6028,7 @@ func (m *TimePartConfig) GetPartToExtract() TimePartConfig_TimePart {
 // Currently, only string and integer values can be hashed.
 type CryptoHashConfig struct {
 	// The key used by the hash function.
-	CryptoKey            *CryptoKey `protobuf:"bytes,1,opt,name=crypto_key,json=cryptoKey" json:"crypto_key,omitempty"`
+	CryptoKey            *CryptoKey `protobuf:"bytes,1,opt,name=crypto_key,json=cryptoKey,proto3" json:"crypto_key,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -6068,7 +6068,7 @@ func (m *CryptoHashConfig) GetCryptoKey() *CryptoKey {
 // Replace each input value with a given `Value`.
 type ReplaceValueConfig struct {
 	// Value to replace it with.
-	NewValue             *Value   `protobuf:"bytes,1,opt,name=new_value,json=newValue" json:"new_value,omitempty"`
+	NewValue             *Value   `protobuf:"bytes,1,opt,name=new_value,json=newValue,proto3" json:"new_value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -6210,10 +6210,10 @@ type isCharsToIgnore_Characters interface {
 }
 
 type CharsToIgnore_CharactersToSkip struct {
-	CharactersToSkip string `protobuf:"bytes,1,opt,name=characters_to_skip,json=charactersToSkip,oneof"`
+	CharactersToSkip string `protobuf:"bytes,1,opt,name=characters_to_skip,json=charactersToSkip,proto3,oneof"`
 }
 type CharsToIgnore_CommonCharactersToIgnore struct {
-	CommonCharactersToIgnore CharsToIgnore_CommonCharsToIgnore `protobuf:"varint,2,opt,name=common_characters_to_ignore,json=commonCharactersToIgnore,enum=google.privacy.dlp.v2.CharsToIgnore_CommonCharsToIgnore,oneof"`
+	CommonCharactersToIgnore CharsToIgnore_CommonCharsToIgnore `protobuf:"varint,2,opt,name=common_characters_to_ignore,json=commonCharactersToIgnore,proto3,enum=google.privacy.dlp.v2.CharsToIgnore_CommonCharsToIgnore,oneof"`
 }
 
 func (*CharsToIgnore_CharactersToSkip) isCharsToIgnore_Characters()         {}
@@ -6316,20 +6316,20 @@ type CharacterMaskConfig struct {
 	// alphabetic string such as name, or "0" for a numeric string such as ZIP
 	// code or credit card number. String must have length 1. If not supplied, we
 	// will default to "*" for strings, 0 for digits.
-	MaskingCharacter string `protobuf:"bytes,1,opt,name=masking_character,json=maskingCharacter" json:"masking_character,omitempty"`
+	MaskingCharacter string `protobuf:"bytes,1,opt,name=masking_character,json=maskingCharacter,proto3" json:"masking_character,omitempty"`
 	// Number of characters to mask. If not set, all matching chars will be
 	// masked. Skipped characters do not count towards this tally.
-	NumberToMask int32 `protobuf:"varint,2,opt,name=number_to_mask,json=numberToMask" json:"number_to_mask,omitempty"`
+	NumberToMask int32 `protobuf:"varint,2,opt,name=number_to_mask,json=numberToMask,proto3" json:"number_to_mask,omitempty"`
 	// Mask characters in reverse order. For example, if `masking_character` is
 	// '0', number_to_mask is 14, and `reverse_order` is false, then
 	// 1234-5678-9012-3456 -> 00000000000000-3456
 	// If `masking_character` is '*', `number_to_mask` is 3, and `reverse_order`
 	// is true, then 12345 -> 12***
-	ReverseOrder bool `protobuf:"varint,3,opt,name=reverse_order,json=reverseOrder" json:"reverse_order,omitempty"`
+	ReverseOrder bool `protobuf:"varint,3,opt,name=reverse_order,json=reverseOrder,proto3" json:"reverse_order,omitempty"`
 	// When masking a string, items in this list will be skipped when replacing.
 	// For example, if your string is 555-555-5555 and you ask us to skip `-` and
 	// mask 5 chars with * we would produce ***-*55-5555.
-	CharactersToIgnore   []*CharsToIgnore `protobuf:"bytes,4,rep,name=characters_to_ignore,json=charactersToIgnore" json:"characters_to_ignore,omitempty"`
+	CharactersToIgnore   []*CharsToIgnore `protobuf:"bytes,4,rep,name=characters_to_ignore,json=charactersToIgnore,proto3" json:"characters_to_ignore,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -6405,17 +6405,17 @@ type FixedSizeBucketingConfig struct {
 	// Lower bound value of buckets. All values less than `lower_bound` are
 	// grouped together into a single bucket; for example if `lower_bound` = 10,
 	// then all values less than 10 are replaced with the value “-10”. [Required].
-	LowerBound *Value `protobuf:"bytes,1,opt,name=lower_bound,json=lowerBound" json:"lower_bound,omitempty"`
+	LowerBound *Value `protobuf:"bytes,1,opt,name=lower_bound,json=lowerBound,proto3" json:"lower_bound,omitempty"`
 	// Upper bound value of buckets. All values greater than upper_bound are
 	// grouped together into a single bucket; for example if `upper_bound` = 89,
 	// then all values greater than 89 are replaced with the value “89+”.
 	// [Required].
-	UpperBound *Value `protobuf:"bytes,2,opt,name=upper_bound,json=upperBound" json:"upper_bound,omitempty"`
+	UpperBound *Value `protobuf:"bytes,2,opt,name=upper_bound,json=upperBound,proto3" json:"upper_bound,omitempty"`
 	// Size of each bucket (except for minimum and maximum buckets). So if
 	// `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the
 	// following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,
 	// 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works. [Required].
-	BucketSize           float64  `protobuf:"fixed64,3,opt,name=bucket_size,json=bucketSize" json:"bucket_size,omitempty"`
+	BucketSize           float64  `protobuf:"fixed64,3,opt,name=bucket_size,json=bucketSize,proto3" json:"bucket_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -6476,7 +6476,7 @@ func (m *FixedSizeBucketingConfig) GetBucketSize() float64 {
 // the type of the bound before comparing.
 type BucketingConfig struct {
 	// Set of buckets. Ranges must be non-overlapping.
-	Buckets              []*BucketingConfig_Bucket `protobuf:"bytes,1,rep,name=buckets" json:"buckets,omitempty"`
+	Buckets              []*BucketingConfig_Bucket `protobuf:"bytes,1,rep,name=buckets,proto3" json:"buckets,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
 	XXX_unrecognized     []byte                    `json:"-"`
 	XXX_sizecache        int32                     `json:"-"`
@@ -6517,12 +6517,12 @@ func (m *BucketingConfig) GetBuckets() []*BucketingConfig_Bucket {
 type BucketingConfig_Bucket struct {
 	// Lower bound of the range, inclusive. Type should be the same as max if
 	// used.
-	Min *Value `protobuf:"bytes,1,opt,name=min" json:"min,omitempty"`
+	Min *Value `protobuf:"bytes,1,opt,name=min,proto3" json:"min,omitempty"`
 	// Upper bound of the range, exclusive; type must match min.
-	Max *Value `protobuf:"bytes,2,opt,name=max" json:"max,omitempty"`
+	Max *Value `protobuf:"bytes,2,opt,name=max,proto3" json:"max,omitempty"`
 	// Replacement value for this bucket. If not provided
 	// the default behavior will be to hyphenate the min-max range.
-	ReplacementValue     *Value   `protobuf:"bytes,3,opt,name=replacement_value,json=replacementValue" json:"replacement_value,omitempty"`
+	ReplacementValue     *Value   `protobuf:"bytes,3,opt,name=replacement_value,json=replacementValue,proto3" json:"replacement_value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -6585,7 +6585,7 @@ func (m *BucketingConfig_Bucket) GetReplacementValue() *Value {
 // See [Pseudonymization](/dlp/docs/pseudonymization) for example usage.
 type CryptoReplaceFfxFpeConfig struct {
 	// The key used by the encryption algorithm. [required]
-	CryptoKey *CryptoKey `protobuf:"bytes,1,opt,name=crypto_key,json=cryptoKey" json:"crypto_key,omitempty"`
+	CryptoKey *CryptoKey `protobuf:"bytes,1,opt,name=crypto_key,json=cryptoKey,proto3" json:"crypto_key,omitempty"`
 	// The 'tweak', a context may be used for higher security since the same
 	// identifier in two different contexts won't be given the same surrogate. If
 	// the context is not set, a default tweak will be used.
@@ -6606,7 +6606,7 @@ type CryptoReplaceFfxFpeConfig struct {
 	//
 	// - a 64 bit integer is encoded followed by a single byte of value 1
 	// - a string is encoded in UTF-8 format followed by a single byte of value 2
-	Context *FieldId `protobuf:"bytes,2,opt,name=context" json:"context,omitempty"`
+	Context *FieldId `protobuf:"bytes,2,opt,name=context,proto3" json:"context,omitempty"`
 	// Types that are valid to be assigned to Alphabet:
 	//	*CryptoReplaceFfxFpeConfig_CommonAlphabet
 	//	*CryptoReplaceFfxFpeConfig_CustomAlphabet
@@ -6637,7 +6637,7 @@ type CryptoReplaceFfxFpeConfig struct {
 	// For example, assuming your data is entered from a regular ASCII keyboard,
 	// the symbol with the hex code point 29DD might be used like so:
 	// ⧝MY_TOKEN_TYPE
-	SurrogateInfoType    *InfoType `protobuf:"bytes,8,opt,name=surrogate_info_type,json=surrogateInfoType" json:"surrogate_info_type,omitempty"`
+	SurrogateInfoType    *InfoType `protobuf:"bytes,8,opt,name=surrogate_info_type,json=surrogateInfoType,proto3" json:"surrogate_info_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -6672,13 +6672,13 @@ type isCryptoReplaceFfxFpeConfig_Alphabet interface {
 }
 
 type CryptoReplaceFfxFpeConfig_CommonAlphabet struct {
-	CommonAlphabet CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet `protobuf:"varint,4,opt,name=common_alphabet,json=commonAlphabet,enum=google.privacy.dlp.v2.CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet,oneof"`
+	CommonAlphabet CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet `protobuf:"varint,4,opt,name=common_alphabet,json=commonAlphabet,proto3,enum=google.privacy.dlp.v2.CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet,oneof"`
 }
 type CryptoReplaceFfxFpeConfig_CustomAlphabet struct {
-	CustomAlphabet string `protobuf:"bytes,5,opt,name=custom_alphabet,json=customAlphabet,oneof"`
+	CustomAlphabet string `protobuf:"bytes,5,opt,name=custom_alphabet,json=customAlphabet,proto3,oneof"`
 }
 type CryptoReplaceFfxFpeConfig_Radix struct {
-	Radix int32 `protobuf:"varint,6,opt,name=radix,oneof"`
+	Radix int32 `protobuf:"varint,6,opt,name=radix,proto3,oneof"`
 }
 
 func (*CryptoReplaceFfxFpeConfig_CommonAlphabet) isCryptoReplaceFfxFpeConfig_Alphabet() {}
@@ -6858,13 +6858,13 @@ type isCryptoKey_Source interface {
 }
 
 type CryptoKey_Transient struct {
-	Transient *TransientCryptoKey `protobuf:"bytes,1,opt,name=transient,oneof"`
+	Transient *TransientCryptoKey `protobuf:"bytes,1,opt,name=transient,proto3,oneof"`
 }
 type CryptoKey_Unwrapped struct {
-	Unwrapped *UnwrappedCryptoKey `protobuf:"bytes,2,opt,name=unwrapped,oneof"`
+	Unwrapped *UnwrappedCryptoKey `protobuf:"bytes,2,opt,name=unwrapped,proto3,oneof"`
 }
 type CryptoKey_KmsWrapped struct {
-	KmsWrapped *KmsWrappedCryptoKey `protobuf:"bytes,3,opt,name=kms_wrapped,json=kmsWrapped,oneof"`
+	KmsWrapped *KmsWrappedCryptoKey `protobuf:"bytes,3,opt,name=kms_wrapped,json=kmsWrapped,proto3,oneof"`
 }
 
 func (*CryptoKey_Transient) isCryptoKey_Source()  {}
@@ -7001,7 +7001,7 @@ type TransientCryptoKey struct {
 	// protos share the same generated key if their names are the same.
 	// When the data crypto key is generated, this name is not used in any way
 	// (repeating the api call will result in a different key being generated).
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -7087,7 +7087,7 @@ type KmsWrappedCryptoKey struct {
 	// The wrapped data crypto key. [required]
 	WrappedKey []byte `protobuf:"bytes,1,opt,name=wrapped_key,json=wrappedKey,proto3" json:"wrapped_key,omitempty"`
 	// The resource name of the KMS CryptoKey to use for unwrapping. [required]
-	CryptoKeyName        string   `protobuf:"bytes,2,opt,name=crypto_key_name,json=cryptoKeyName" json:"crypto_key_name,omitempty"`
+	CryptoKeyName        string   `protobuf:"bytes,2,opt,name=crypto_key_name,json=cryptoKeyName,proto3" json:"crypto_key_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -7140,14 +7140,14 @@ type DateShiftConfig struct {
 	//
 	// For example, 3 means shift date to at most 3 days into the future.
 	// [Required]
-	UpperBoundDays int32 `protobuf:"varint,1,opt,name=upper_bound_days,json=upperBoundDays" json:"upper_bound_days,omitempty"`
+	UpperBoundDays int32 `protobuf:"varint,1,opt,name=upper_bound_days,json=upperBoundDays,proto3" json:"upper_bound_days,omitempty"`
 	// For example, -5 means shift date to at most 5 days back in the past.
 	// [Required]
-	LowerBoundDays int32 `protobuf:"varint,2,opt,name=lower_bound_days,json=lowerBoundDays" json:"lower_bound_days,omitempty"`
+	LowerBoundDays int32 `protobuf:"varint,2,opt,name=lower_bound_days,json=lowerBoundDays,proto3" json:"lower_bound_days,omitempty"`
 	// Points to the field that contains the context, for example, an entity id.
 	// If set, must also set method. If set, shift will be consistent for the
 	// given context.
-	Context *FieldId `protobuf:"bytes,3,opt,name=context" json:"context,omitempty"`
+	Context *FieldId `protobuf:"bytes,3,opt,name=context,proto3" json:"context,omitempty"`
 	// Method for calculating shift that takes context into consideration. If
 	// set, must also set context. Can only be applied to table items.
 	//
@@ -7188,7 +7188,7 @@ type isDateShiftConfig_Method interface {
 }
 
 type DateShiftConfig_CryptoKey struct {
-	CryptoKey *CryptoKey `protobuf:"bytes,4,opt,name=crypto_key,json=cryptoKey,oneof"`
+	CryptoKey *CryptoKey `protobuf:"bytes,4,opt,name=crypto_key,json=cryptoKey,proto3,oneof"`
 }
 
 func (*DateShiftConfig_CryptoKey) isDateShiftConfig_Method() {}
@@ -7290,7 +7290,7 @@ func _DateShiftConfig_OneofSizer(msg proto.Message) (n int) {
 type InfoTypeTransformations struct {
 	// Transformation for each infoType. Cannot specify more than one
 	// for a given infoType. [required]
-	Transformations      []*InfoTypeTransformations_InfoTypeTransformation `protobuf:"bytes,1,rep,name=transformations" json:"transformations,omitempty"`
+	Transformations      []*InfoTypeTransformations_InfoTypeTransformation `protobuf:"bytes,1,rep,name=transformations,proto3" json:"transformations,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                          `json:"-"`
 	XXX_unrecognized     []byte                                            `json:"-"`
 	XXX_sizecache        int32                                             `json:"-"`
@@ -7332,9 +7332,9 @@ func (m *InfoTypeTransformations) GetTransformations() []*InfoTypeTransformation
 type InfoTypeTransformations_InfoTypeTransformation struct {
 	// InfoTypes to apply the transformation to. Empty list will match all
 	// available infoTypes for this transformation.
-	InfoTypes []*InfoType `protobuf:"bytes,1,rep,name=info_types,json=infoTypes" json:"info_types,omitempty"`
+	InfoTypes []*InfoType `protobuf:"bytes,1,rep,name=info_types,json=infoTypes,proto3" json:"info_types,omitempty"`
 	// Primitive transformation to apply to the infoType. [required]
-	PrimitiveTransformation *PrimitiveTransformation `protobuf:"bytes,2,opt,name=primitive_transformation,json=primitiveTransformation" json:"primitive_transformation,omitempty"`
+	PrimitiveTransformation *PrimitiveTransformation `protobuf:"bytes,2,opt,name=primitive_transformation,json=primitiveTransformation,proto3" json:"primitive_transformation,omitempty"`
 	XXX_NoUnkeyedLiteral    struct{}                 `json:"-"`
 	XXX_unrecognized        []byte                   `json:"-"`
 	XXX_sizecache           int32                    `json:"-"`
@@ -7385,7 +7385,7 @@ func (m *InfoTypeTransformations_InfoTypeTransformation) GetPrimitiveTransformat
 // The transformation to apply to the field.
 type FieldTransformation struct {
 	// Input field(s) to apply the transformation to. [required]
-	Fields []*FieldId `protobuf:"bytes,1,rep,name=fields" json:"fields,omitempty"`
+	Fields []*FieldId `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty"`
 	// Only apply the transformation if the condition evaluates to true for the
 	// given `RecordCondition`. The conditions are allowed to reference fields
 	// that are not used in the actual transformation. [optional]
@@ -7395,7 +7395,7 @@ type FieldTransformation struct {
 	// - Apply a different bucket transformation to an age column if the zip code
 	// column for the same record is within a specific range.
 	// - Redact a field if the date of birth field is greater than 85.
-	Condition *RecordCondition `protobuf:"bytes,3,opt,name=condition" json:"condition,omitempty"`
+	Condition *RecordCondition `protobuf:"bytes,3,opt,name=condition,proto3" json:"condition,omitempty"`
 	// Transformation to apply. [required]
 	//
 	// Types that are valid to be assigned to Transformation:
@@ -7436,10 +7436,10 @@ type isFieldTransformation_Transformation interface {
 }
 
 type FieldTransformation_PrimitiveTransformation struct {
-	PrimitiveTransformation *PrimitiveTransformation `protobuf:"bytes,4,opt,name=primitive_transformation,json=primitiveTransformation,oneof"`
+	PrimitiveTransformation *PrimitiveTransformation `protobuf:"bytes,4,opt,name=primitive_transformation,json=primitiveTransformation,proto3,oneof"`
 }
 type FieldTransformation_InfoTypeTransformations struct {
-	InfoTypeTransformations *InfoTypeTransformations `protobuf:"bytes,5,opt,name=info_type_transformations,json=infoTypeTransformations,oneof"`
+	InfoTypeTransformations *InfoTypeTransformations `protobuf:"bytes,5,opt,name=info_type_transformations,json=infoTypeTransformations,proto3,oneof"`
 }
 
 func (*FieldTransformation_PrimitiveTransformation) isFieldTransformation_Transformation() {}
@@ -7558,10 +7558,10 @@ func _FieldTransformation_OneofSizer(msg proto.Message) (n int) {
 // table.
 type RecordTransformations struct {
 	// Transform the record by applying various field transformations.
-	FieldTransformations []*FieldTransformation `protobuf:"bytes,1,rep,name=field_transformations,json=fieldTransformations" json:"field_transformations,omitempty"`
+	FieldTransformations []*FieldTransformation `protobuf:"bytes,1,rep,name=field_transformations,json=fieldTransformations,proto3" json:"field_transformations,omitempty"`
 	// Configuration defining which records get suppressed entirely. Records that
 	// match any suppression rule are omitted from the output [optional].
-	RecordSuppressions   []*RecordSuppression `protobuf:"bytes,2,rep,name=record_suppressions,json=recordSuppressions" json:"record_suppressions,omitempty"`
+	RecordSuppressions   []*RecordSuppression `protobuf:"bytes,2,rep,name=record_suppressions,json=recordSuppressions,proto3" json:"record_suppressions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -7610,7 +7610,7 @@ func (m *RecordTransformations) GetRecordSuppressions() []*RecordSuppression {
 type RecordSuppression struct {
 	// A condition that when it evaluates to true will result in the record being
 	// evaluated to be suppressed from the transformed content.
-	Condition            *RecordCondition `protobuf:"bytes,1,opt,name=condition" json:"condition,omitempty"`
+	Condition            *RecordCondition `protobuf:"bytes,1,opt,name=condition,proto3" json:"condition,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -7651,7 +7651,7 @@ func (m *RecordSuppression) GetCondition() *RecordCondition {
 // a field.
 type RecordCondition struct {
 	// An expression.
-	Expressions          *RecordCondition_Expressions `protobuf:"bytes,3,opt,name=expressions" json:"expressions,omitempty"`
+	Expressions          *RecordCondition_Expressions `protobuf:"bytes,3,opt,name=expressions,proto3" json:"expressions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
 	XXX_unrecognized     []byte                       `json:"-"`
 	XXX_sizecache        int32                        `json:"-"`
@@ -7708,11 +7708,11 @@ func (m *RecordCondition) GetExpressions() *RecordCondition_Expressions {
 // the condition will evaluate to false.
 type RecordCondition_Condition struct {
 	// Field within the record this condition is evaluated against. [required]
-	Field *FieldId `protobuf:"bytes,1,opt,name=field" json:"field,omitempty"`
+	Field *FieldId `protobuf:"bytes,1,opt,name=field,proto3" json:"field,omitempty"`
 	// Operator used to compare the field or infoType to the value. [required]
-	Operator RelationalOperator `protobuf:"varint,3,opt,name=operator,enum=google.privacy.dlp.v2.RelationalOperator" json:"operator,omitempty"`
+	Operator RelationalOperator `protobuf:"varint,3,opt,name=operator,proto3,enum=google.privacy.dlp.v2.RelationalOperator" json:"operator,omitempty"`
 	// Value to compare against. [Required, except for `EXISTS` tests.]
-	Value                *Value   `protobuf:"bytes,4,opt,name=value" json:"value,omitempty"`
+	Value                *Value   `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -7765,7 +7765,7 @@ func (m *RecordCondition_Condition) GetValue() *Value {
 
 // A collection of conditions.
 type RecordCondition_Conditions struct {
-	Conditions           []*RecordCondition_Condition `protobuf:"bytes,1,rep,name=conditions" json:"conditions,omitempty"`
+	Conditions           []*RecordCondition_Condition `protobuf:"bytes,1,rep,name=conditions,proto3" json:"conditions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
 	XXX_unrecognized     []byte                       `json:"-"`
 	XXX_sizecache        int32                        `json:"-"`
@@ -7806,7 +7806,7 @@ func (m *RecordCondition_Conditions) GetConditions() []*RecordCondition_Conditio
 type RecordCondition_Expressions struct {
 	// The operator to apply to the result of conditions. Default and currently
 	// only supported value is `AND`.
-	LogicalOperator RecordCondition_Expressions_LogicalOperator `protobuf:"varint,1,opt,name=logical_operator,json=logicalOperator,enum=google.privacy.dlp.v2.RecordCondition_Expressions_LogicalOperator" json:"logical_operator,omitempty"`
+	LogicalOperator RecordCondition_Expressions_LogicalOperator `protobuf:"varint,1,opt,name=logical_operator,json=logicalOperator,proto3,enum=google.privacy.dlp.v2.RecordCondition_Expressions_LogicalOperator" json:"logical_operator,omitempty"`
 	// Types that are valid to be assigned to Type:
 	//	*RecordCondition_Expressions_Conditions
 	Type                 isRecordCondition_Expressions_Type `protobuf_oneof:"type"`
@@ -7844,7 +7844,7 @@ type isRecordCondition_Expressions_Type interface {
 }
 
 type RecordCondition_Expressions_Conditions struct {
-	Conditions *RecordCondition_Conditions `protobuf:"bytes,3,opt,name=conditions,oneof"`
+	Conditions *RecordCondition_Conditions `protobuf:"bytes,3,opt,name=conditions,proto3,oneof"`
 }
 
 func (*RecordCondition_Expressions_Conditions) isRecordCondition_Expressions_Type() {}
@@ -7928,9 +7928,9 @@ func _RecordCondition_Expressions_OneofSizer(msg proto.Message) (n int) {
 // Overview of the modifications that occurred.
 type TransformationOverview struct {
 	// Total size in bytes that were transformed in some way.
-	TransformedBytes int64 `protobuf:"varint,2,opt,name=transformed_bytes,json=transformedBytes" json:"transformed_bytes,omitempty"`
+	TransformedBytes int64 `protobuf:"varint,2,opt,name=transformed_bytes,json=transformedBytes,proto3" json:"transformed_bytes,omitempty"`
 	// Transformations applied to the dataset.
-	TransformationSummaries []*TransformationSummary `protobuf:"bytes,3,rep,name=transformation_summaries,json=transformationSummaries" json:"transformation_summaries,omitempty"`
+	TransformationSummaries []*TransformationSummary `protobuf:"bytes,3,rep,name=transformation_summaries,json=transformationSummaries,proto3" json:"transformation_summaries,omitempty"`
 	XXX_NoUnkeyedLiteral    struct{}                 `json:"-"`
 	XXX_unrecognized        []byte                   `json:"-"`
 	XXX_sizecache           int32                    `json:"-"`
@@ -7979,20 +7979,20 @@ func (m *TransformationOverview) GetTransformationSummaries() []*TransformationS
 // will be set.
 type TransformationSummary struct {
 	// Set if the transformation was limited to a specific info_type.
-	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType" json:"info_type,omitempty"`
+	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType,proto3" json:"info_type,omitempty"`
 	// Set if the transformation was limited to a specific FieldId.
-	Field *FieldId `protobuf:"bytes,2,opt,name=field" json:"field,omitempty"`
+	Field *FieldId `protobuf:"bytes,2,opt,name=field,proto3" json:"field,omitempty"`
 	// The specific transformation these stats apply to.
-	Transformation *PrimitiveTransformation `protobuf:"bytes,3,opt,name=transformation" json:"transformation,omitempty"`
+	Transformation *PrimitiveTransformation `protobuf:"bytes,3,opt,name=transformation,proto3" json:"transformation,omitempty"`
 	// The field transformation that was applied.
 	// If multiple field transformations are requested for a single field,
 	// this list will contain all of them; otherwise, only one is supplied.
-	FieldTransformations []*FieldTransformation `protobuf:"bytes,5,rep,name=field_transformations,json=fieldTransformations" json:"field_transformations,omitempty"`
+	FieldTransformations []*FieldTransformation `protobuf:"bytes,5,rep,name=field_transformations,json=fieldTransformations,proto3" json:"field_transformations,omitempty"`
 	// The specific suppression option these stats apply to.
-	RecordSuppress *RecordSuppression                     `protobuf:"bytes,6,opt,name=record_suppress,json=recordSuppress" json:"record_suppress,omitempty"`
-	Results        []*TransformationSummary_SummaryResult `protobuf:"bytes,4,rep,name=results" json:"results,omitempty"`
+	RecordSuppress *RecordSuppression                     `protobuf:"bytes,6,opt,name=record_suppress,json=recordSuppress,proto3" json:"record_suppress,omitempty"`
+	Results        []*TransformationSummary_SummaryResult `protobuf:"bytes,4,rep,name=results,proto3" json:"results,omitempty"`
 	// Total size in bytes that were transformed in some way.
-	TransformedBytes     int64    `protobuf:"varint,7,opt,name=transformed_bytes,json=transformedBytes" json:"transformed_bytes,omitempty"`
+	TransformedBytes     int64    `protobuf:"varint,7,opt,name=transformed_bytes,json=transformedBytes,proto3" json:"transformed_bytes,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -8074,11 +8074,11 @@ func (m *TransformationSummary) GetTransformedBytes() int64 {
 // A collection that informs the user the number of times a particular
 // `TransformationResultCode` and error details occurred.
 type TransformationSummary_SummaryResult struct {
-	Count int64                                          `protobuf:"varint,1,opt,name=count" json:"count,omitempty"`
-	Code  TransformationSummary_TransformationResultCode `protobuf:"varint,2,opt,name=code,enum=google.privacy.dlp.v2.TransformationSummary_TransformationResultCode" json:"code,omitempty"`
+	Count int64                                          `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"`
+	Code  TransformationSummary_TransformationResultCode `protobuf:"varint,2,opt,name=code,proto3,enum=google.privacy.dlp.v2.TransformationSummary_TransformationResultCode" json:"code,omitempty"`
 	// A place for warnings or errors to show up if a transformation didn't
 	// work as expected.
-	Details              string   `protobuf:"bytes,3,opt,name=details" json:"details,omitempty"`
+	Details              string   `protobuf:"bytes,3,opt,name=details,proto3" json:"details,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -8168,7 +8168,7 @@ type isSchedule_Option interface {
 }
 
 type Schedule_RecurrencePeriodDuration struct {
-	RecurrencePeriodDuration *duration.Duration `protobuf:"bytes,1,opt,name=recurrence_period_duration,json=recurrencePeriodDuration,oneof"`
+	RecurrencePeriodDuration *duration.Duration `protobuf:"bytes,1,opt,name=recurrence_period_duration,json=recurrencePeriodDuration,proto3,oneof"`
 }
 
 func (*Schedule_RecurrencePeriodDuration) isSchedule_Option() {}
@@ -8251,17 +8251,17 @@ type InspectTemplate struct {
 	// The template will have one of the following formats:
 	// `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
 	// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Display name (max 256 chars).
-	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Short description (max 256 chars).
-	Description string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// The creation timestamp of a inspectTemplate, output only field.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime" json:"create_time,omitempty"`
+	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The last update timestamp of a inspectTemplate, output only field.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime" json:"update_time,omitempty"`
+	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The core content of the template. Configuration of the scanning process.
-	InspectConfig        *InspectConfig `protobuf:"bytes,6,opt,name=inspect_config,json=inspectConfig" json:"inspect_config,omitempty"`
+	InspectConfig        *InspectConfig `protobuf:"bytes,6,opt,name=inspect_config,json=inspectConfig,proto3" json:"inspect_config,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -8340,17 +8340,17 @@ type DeidentifyTemplate struct {
 	// The template will have one of the following formats:
 	// `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR
 	// `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Display name (max 256 chars).
-	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Short description (max 256 chars).
-	Description string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// The creation timestamp of a inspectTemplate, output only field.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime" json:"create_time,omitempty"`
+	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The last update timestamp of a inspectTemplate, output only field.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime" json:"update_time,omitempty"`
+	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// ///////////// // The core content of the template  // ///////////////
-	DeidentifyConfig     *DeidentifyConfig `protobuf:"bytes,6,opt,name=deidentify_config,json=deidentifyConfig" json:"deidentify_config,omitempty"`
+	DeidentifyConfig     *DeidentifyConfig `protobuf:"bytes,6,opt,name=deidentify_config,json=deidentifyConfig,proto3" json:"deidentify_config,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -8426,9 +8426,9 @@ func (m *DeidentifyTemplate) GetDeidentifyConfig() *DeidentifyConfig {
 // the results of an unsuccessful activation of the JobTrigger.
 // Output only field.
 type Error struct {
-	Details *status.Status `protobuf:"bytes,1,opt,name=details" json:"details,omitempty"`
+	Details *status.Status `protobuf:"bytes,1,opt,name=details,proto3" json:"details,omitempty"`
 	// The times the error occurred.
-	Timestamps           []*timestamp.Timestamp `protobuf:"bytes,2,rep,name=timestamps" json:"timestamps,omitempty"`
+	Timestamps           []*timestamp.Timestamp `protobuf:"bytes,2,rep,name=timestamps,proto3" json:"timestamps,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
 	XXX_unrecognized     []byte                 `json:"-"`
 	XXX_sizecache        int32                  `json:"-"`
@@ -8477,11 +8477,11 @@ type JobTrigger struct {
 	// Unique resource name for the triggeredJob, assigned by the service when the
 	// triggeredJob is created, for example
 	// `projects/dlp-test-project/triggeredJobs/53234423`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Display name (max 100 chars)
-	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// User provided description (max 256 chars)
-	Description string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// The configuration details for the specific type of job to run.
 	//
 	// Types that are valid to be assigned to Job:
@@ -8490,20 +8490,20 @@ type JobTrigger struct {
 	// A list of triggers which will be OR'ed together. Only one in the list
 	// needs to trigger for a job to be started. The list may contain only
 	// a single Schedule trigger and must have at least one object.
-	Triggers []*JobTrigger_Trigger `protobuf:"bytes,5,rep,name=triggers" json:"triggers,omitempty"`
+	Triggers []*JobTrigger_Trigger `protobuf:"bytes,5,rep,name=triggers,proto3" json:"triggers,omitempty"`
 	// A stream of errors encountered when the trigger was activated. Repeated
 	// errors may result in the JobTrigger automaticaly being paused.
 	// Will return the last 100 errors. Whenever the JobTrigger is modified
 	// this list will be cleared. Output only field.
-	Errors []*Error `protobuf:"bytes,6,rep,name=errors" json:"errors,omitempty"`
+	Errors []*Error `protobuf:"bytes,6,rep,name=errors,proto3" json:"errors,omitempty"`
 	// The creation timestamp of a triggeredJob, output only field.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime" json:"create_time,omitempty"`
+	CreateTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The last update timestamp of a triggeredJob, output only field.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=update_time,json=updateTime" json:"update_time,omitempty"`
+	UpdateTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The timestamp of the last time this trigger executed, output only field.
-	LastRunTime *timestamp.Timestamp `protobuf:"bytes,9,opt,name=last_run_time,json=lastRunTime" json:"last_run_time,omitempty"`
+	LastRunTime *timestamp.Timestamp `protobuf:"bytes,9,opt,name=last_run_time,json=lastRunTime,proto3" json:"last_run_time,omitempty"`
 	// A status for this trigger. [required]
-	Status               JobTrigger_Status `protobuf:"varint,10,opt,name=status,enum=google.privacy.dlp.v2.JobTrigger_Status" json:"status,omitempty"`
+	Status               JobTrigger_Status `protobuf:"varint,10,opt,name=status,proto3,enum=google.privacy.dlp.v2.JobTrigger_Status" json:"status,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -8538,7 +8538,7 @@ type isJobTrigger_Job interface {
 }
 
 type JobTrigger_InspectJob struct {
-	InspectJob *InspectJobConfig `protobuf:"bytes,4,opt,name=inspect_job,json=inspectJob,oneof"`
+	InspectJob *InspectJobConfig `protobuf:"bytes,4,opt,name=inspect_job,json=inspectJob,proto3,oneof"`
 }
 
 func (*JobTrigger_InspectJob) isJobTrigger_Job() {}
@@ -8714,7 +8714,7 @@ type isJobTrigger_Trigger_Trigger interface {
 }
 
 type JobTrigger_Trigger_Schedule struct {
-	Schedule *Schedule `protobuf:"bytes,1,opt,name=schedule,oneof"`
+	Schedule *Schedule `protobuf:"bytes,1,opt,name=schedule,proto3,oneof"`
 }
 
 func (*JobTrigger_Trigger_Schedule) isJobTrigger_Trigger_Trigger() {}
@@ -8829,13 +8829,13 @@ type isAction_Action interface {
 }
 
 type Action_SaveFindings_ struct {
-	SaveFindings *Action_SaveFindings `protobuf:"bytes,1,opt,name=save_findings,json=saveFindings,oneof"`
+	SaveFindings *Action_SaveFindings `protobuf:"bytes,1,opt,name=save_findings,json=saveFindings,proto3,oneof"`
 }
 type Action_PubSub struct {
-	PubSub *Action_PublishToPubSub `protobuf:"bytes,2,opt,name=pub_sub,json=pubSub,oneof"`
+	PubSub *Action_PublishToPubSub `protobuf:"bytes,2,opt,name=pub_sub,json=pubSub,proto3,oneof"`
 }
 type Action_PublishSummaryToCscc_ struct {
-	PublishSummaryToCscc *Action_PublishSummaryToCscc `protobuf:"bytes,3,opt,name=publish_summary_to_cscc,json=publishSummaryToCscc,oneof"`
+	PublishSummaryToCscc *Action_PublishSummaryToCscc `protobuf:"bytes,3,opt,name=publish_summary_to_cscc,json=publishSummaryToCscc,proto3,oneof"`
 }
 
 func (*Action_SaveFindings_) isAction_Action()         {}
@@ -8968,7 +8968,7 @@ func _Action_OneofSizer(msg proto.Message) (n int) {
 // specified.
 // Compatible with: Inspect
 type Action_SaveFindings struct {
-	OutputConfig         *OutputStorageConfig `protobuf:"bytes,1,opt,name=output_config,json=outputConfig" json:"output_config,omitempty"`
+	OutputConfig         *OutputStorageConfig `protobuf:"bytes,1,opt,name=output_config,json=outputConfig,proto3" json:"output_config,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -9012,7 +9012,7 @@ type Action_PublishToPubSub struct {
 	// publishing access rights to the DLP API service account executing
 	// the long running DlpJob sending the notifications.
 	// Format is projects/{project}/topics/{topic}.
-	Topic                string   `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+	Topic                string   `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9093,14 +9093,14 @@ var xxx_messageInfo_Action_PublishSummaryToCscc proto.InternalMessageInfo
 type CreateInspectTemplateRequest struct {
 	// The parent resource name, for example projects/my-project-id or
 	// organizations/my-org-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The InspectTemplate to create.
-	InspectTemplate *InspectTemplate `protobuf:"bytes,2,opt,name=inspect_template,json=inspectTemplate" json:"inspect_template,omitempty"`
+	InspectTemplate *InspectTemplate `protobuf:"bytes,2,opt,name=inspect_template,json=inspectTemplate,proto3" json:"inspect_template,omitempty"`
 	// The template id can contain uppercase and lowercase letters,
 	// numbers, and hyphens; that is, it must match the regular
 	// expression: `[a-zA-Z\\d-]+`. The maximum length is 100
 	// characters. Can be empty to allow the system to generate one.
-	TemplateId           string   `protobuf:"bytes,3,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	TemplateId           string   `protobuf:"bytes,3,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9156,11 +9156,11 @@ type UpdateInspectTemplateRequest struct {
 	// Resource name of organization and inspectTemplate to be updated, for
 	// example `organizations/433245324/inspectTemplates/432452342` or
 	// projects/project-id/inspectTemplates/432452342.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// New InspectTemplate value.
-	InspectTemplate *InspectTemplate `protobuf:"bytes,2,opt,name=inspect_template,json=inspectTemplate" json:"inspect_template,omitempty"`
+	InspectTemplate *InspectTemplate `protobuf:"bytes,2,opt,name=inspect_template,json=inspectTemplate,proto3" json:"inspect_template,omitempty"`
 	// Mask to control which fields get updated.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -9216,7 +9216,7 @@ type GetInspectTemplateRequest struct {
 	// Resource name of the organization and inspectTemplate to be read, for
 	// example `organizations/433245324/inspectTemplates/432452342` or
 	// projects/project-id/inspectTemplates/432452342.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9257,13 +9257,13 @@ func (m *GetInspectTemplateRequest) GetName() string {
 type ListInspectTemplatesRequest struct {
 	// The parent resource name, for example projects/my-project-id or
 	// organizations/my-org-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional page token to continue retrieval. Comes from previous call
 	// to `ListInspectTemplates`.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional size of the page, can be limited by server. If zero server returns
 	// a page of max size 100.
-	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9317,10 +9317,10 @@ func (m *ListInspectTemplatesRequest) GetPageSize() int32 {
 // Response message for ListInspectTemplates.
 type ListInspectTemplatesResponse struct {
 	// List of inspectTemplates, up to page_size in ListInspectTemplatesRequest.
-	InspectTemplates []*InspectTemplate `protobuf:"bytes,1,rep,name=inspect_templates,json=inspectTemplates" json:"inspect_templates,omitempty"`
+	InspectTemplates []*InspectTemplate `protobuf:"bytes,1,rep,name=inspect_templates,json=inspectTemplates,proto3" json:"inspect_templates,omitempty"`
 	// If the next page is available then the next page token to be used
 	// in following ListInspectTemplates request.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9369,7 +9369,7 @@ type DeleteInspectTemplateRequest struct {
 	// Resource name of the organization and inspectTemplate to be deleted, for
 	// example `organizations/433245324/inspectTemplates/432452342` or
 	// projects/project-id/inspectTemplates/432452342.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9409,14 +9409,14 @@ func (m *DeleteInspectTemplateRequest) GetName() string {
 // Request message for CreateJobTrigger.
 type CreateJobTriggerRequest struct {
 	// The parent resource name, for example projects/my-project-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The JobTrigger to create.
-	JobTrigger *JobTrigger `protobuf:"bytes,2,opt,name=job_trigger,json=jobTrigger" json:"job_trigger,omitempty"`
+	JobTrigger *JobTrigger `protobuf:"bytes,2,opt,name=job_trigger,json=jobTrigger,proto3" json:"job_trigger,omitempty"`
 	// The trigger id can contain uppercase and lowercase letters,
 	// numbers, and hyphens; that is, it must match the regular
 	// expression: `[a-zA-Z\\d-]+`. The maximum length is 100
 	// characters. Can be empty to allow the system to generate one.
-	TriggerId            string   `protobuf:"bytes,3,opt,name=trigger_id,json=triggerId" json:"trigger_id,omitempty"`
+	TriggerId            string   `protobuf:"bytes,3,opt,name=trigger_id,json=triggerId,proto3" json:"trigger_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9471,11 +9471,11 @@ func (m *CreateJobTriggerRequest) GetTriggerId() string {
 type UpdateJobTriggerRequest struct {
 	// Resource name of the project and the triggeredJob, for example
 	// `projects/dlp-test-project/jobTriggers/53234423`.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// New JobTrigger value.
-	JobTrigger *JobTrigger `protobuf:"bytes,2,opt,name=job_trigger,json=jobTrigger" json:"job_trigger,omitempty"`
+	JobTrigger *JobTrigger `protobuf:"bytes,2,opt,name=job_trigger,json=jobTrigger,proto3" json:"job_trigger,omitempty"`
 	// Mask to control which fields get updated.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -9530,7 +9530,7 @@ func (m *UpdateJobTriggerRequest) GetUpdateMask() *field_mask.FieldMask {
 type GetJobTriggerRequest struct {
 	// Resource name of the project and the triggeredJob, for example
 	// `projects/dlp-test-project/jobTriggers/53234423`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9572,7 +9572,7 @@ func (m *GetJobTriggerRequest) GetName() string {
 // Storage.
 type CreateDlpJobRequest struct {
 	// The parent resource name, for example projects/my-project-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The configuration details for the specific type of job to run.
 	//
 	// Types that are valid to be assigned to Job:
@@ -9583,7 +9583,7 @@ type CreateDlpJobRequest struct {
 	// numbers, and hyphens; that is, it must match the regular
 	// expression: `[a-zA-Z\\d-]+`. The maximum length is 100
 	// characters. Can be empty to allow the system to generate one.
-	JobId                string   `protobuf:"bytes,4,opt,name=job_id,json=jobId" json:"job_id,omitempty"`
+	JobId                string   `protobuf:"bytes,4,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9618,10 +9618,10 @@ type isCreateDlpJobRequest_Job interface {
 }
 
 type CreateDlpJobRequest_InspectJob struct {
-	InspectJob *InspectJobConfig `protobuf:"bytes,2,opt,name=inspect_job,json=inspectJob,oneof"`
+	InspectJob *InspectJobConfig `protobuf:"bytes,2,opt,name=inspect_job,json=inspectJob,proto3,oneof"`
 }
 type CreateDlpJobRequest_RiskJob struct {
-	RiskJob *RiskAnalysisJobConfig `protobuf:"bytes,3,opt,name=risk_job,json=riskJob,oneof"`
+	RiskJob *RiskAnalysisJobConfig `protobuf:"bytes,3,opt,name=risk_job,json=riskJob,proto3,oneof"`
 }
 
 func (*CreateDlpJobRequest_InspectJob) isCreateDlpJobRequest_Job() {}
@@ -9739,13 +9739,13 @@ func _CreateDlpJobRequest_OneofSizer(msg proto.Message) (n int) {
 // Request message for ListJobTriggers.
 type ListJobTriggersRequest struct {
 	// The parent resource name, for example projects/my-project-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional page token to continue retrieval. Comes from previous call
 	// to ListJobTriggers. `order_by` and `filter` should not change for
 	// subsequent calls, but can be omitted if token is specified.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional size of the page, can be limited by a server.
-	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional comma separated list of triggeredJob fields to order by,
 	// followed by 'asc/desc' postfix, i.e.
 	// `"create_time asc,name desc,schedule_mode asc"`. This list is
@@ -9759,7 +9759,7 @@ type ListJobTriggersRequest struct {
 	// - `update_time`: corresponds to time the triggeredJob was last updated.
 	// - `name`: corresponds to JobTrigger's display name.
 	// - `status`: corresponds to the triggeredJob status.
-	OrderBy              string   `protobuf:"bytes,4,opt,name=order_by,json=orderBy" json:"order_by,omitempty"`
+	OrderBy              string   `protobuf:"bytes,4,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9820,10 +9820,10 @@ func (m *ListJobTriggersRequest) GetOrderBy() string {
 // Response message for ListJobTriggers.
 type ListJobTriggersResponse struct {
 	// List of triggeredJobs, up to page_size in ListJobTriggersRequest.
-	JobTriggers []*JobTrigger `protobuf:"bytes,1,rep,name=job_triggers,json=jobTriggers" json:"job_triggers,omitempty"`
+	JobTriggers []*JobTrigger `protobuf:"bytes,1,rep,name=job_triggers,json=jobTriggers,proto3" json:"job_triggers,omitempty"`
 	// If the next page is available then the next page token to be used
 	// in following ListJobTriggers request.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9871,7 +9871,7 @@ func (m *ListJobTriggersResponse) GetNextPageToken() string {
 type DeleteJobTriggerRequest struct {
 	// Resource name of the project and the triggeredJob, for example
 	// `projects/dlp-test-project/jobTriggers/53234423`.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -9910,16 +9910,16 @@ func (m *DeleteJobTriggerRequest) GetName() string {
 
 type InspectJobConfig struct {
 	// The data to scan.
-	StorageConfig *StorageConfig `protobuf:"bytes,1,opt,name=storage_config,json=storageConfig" json:"storage_config,omitempty"`
+	StorageConfig *StorageConfig `protobuf:"bytes,1,opt,name=storage_config,json=storageConfig,proto3" json:"storage_config,omitempty"`
 	// How and what to scan for.
-	InspectConfig *InspectConfig `protobuf:"bytes,2,opt,name=inspect_config,json=inspectConfig" json:"inspect_config,omitempty"`
+	InspectConfig *InspectConfig `protobuf:"bytes,2,opt,name=inspect_config,json=inspectConfig,proto3" json:"inspect_config,omitempty"`
 	// If provided, will be used as the default for all values in InspectConfig.
 	// `inspect_config` will be merged into the values persisted as part of the
 	// template.
-	InspectTemplateName string `protobuf:"bytes,3,opt,name=inspect_template_name,json=inspectTemplateName" json:"inspect_template_name,omitempty"`
+	InspectTemplateName string `protobuf:"bytes,3,opt,name=inspect_template_name,json=inspectTemplateName,proto3" json:"inspect_template_name,omitempty"`
 	// Actions to execute at the completion of the job. Are executed in the order
 	// provided.
-	Actions              []*Action `protobuf:"bytes,4,rep,name=actions" json:"actions,omitempty"`
+	Actions              []*Action `protobuf:"bytes,4,rep,name=actions,proto3" json:"actions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -9980,26 +9980,26 @@ func (m *InspectJobConfig) GetActions() []*Action {
 // Combines all of the information about a DLP job.
 type DlpJob struct {
 	// The server-assigned name.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The type of job.
-	Type DlpJobType `protobuf:"varint,2,opt,name=type,enum=google.privacy.dlp.v2.DlpJobType" json:"type,omitempty"`
+	Type DlpJobType `protobuf:"varint,2,opt,name=type,proto3,enum=google.privacy.dlp.v2.DlpJobType" json:"type,omitempty"`
 	// State of a job.
-	State DlpJob_JobState `protobuf:"varint,3,opt,name=state,enum=google.privacy.dlp.v2.DlpJob_JobState" json:"state,omitempty"`
+	State DlpJob_JobState `protobuf:"varint,3,opt,name=state,proto3,enum=google.privacy.dlp.v2.DlpJob_JobState" json:"state,omitempty"`
 	// Types that are valid to be assigned to Details:
 	//	*DlpJob_RiskDetails
 	//	*DlpJob_InspectDetails
 	Details isDlpJob_Details `protobuf_oneof:"details"`
 	// Time when the job was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime" json:"create_time,omitempty"`
+	CreateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Time when the job started.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=start_time,json=startTime" json:"start_time,omitempty"`
+	StartTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time when the job finished.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=end_time,json=endTime" json:"end_time,omitempty"`
+	EndTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// If created by a job trigger, the resource name of the trigger that
 	// instantiated the job.
-	JobTriggerName string `protobuf:"bytes,10,opt,name=job_trigger_name,json=jobTriggerName" json:"job_trigger_name,omitempty"`
+	JobTriggerName string `protobuf:"bytes,10,opt,name=job_trigger_name,json=jobTriggerName,proto3" json:"job_trigger_name,omitempty"`
 	// A stream of errors encountered running the job.
-	Errors               []*Error `protobuf:"bytes,11,rep,name=errors" json:"errors,omitempty"`
+	Errors               []*Error `protobuf:"bytes,11,rep,name=errors,proto3" json:"errors,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -10034,10 +10034,10 @@ type isDlpJob_Details interface {
 }
 
 type DlpJob_RiskDetails struct {
-	RiskDetails *AnalyzeDataSourceRiskDetails `protobuf:"bytes,4,opt,name=risk_details,json=riskDetails,oneof"`
+	RiskDetails *AnalyzeDataSourceRiskDetails `protobuf:"bytes,4,opt,name=risk_details,json=riskDetails,proto3,oneof"`
 }
 type DlpJob_InspectDetails struct {
-	InspectDetails *InspectDataSourceDetails `protobuf:"bytes,5,opt,name=inspect_details,json=inspectDetails,oneof"`
+	InspectDetails *InspectDataSourceDetails `protobuf:"bytes,5,opt,name=inspect_details,json=inspectDetails,proto3,oneof"`
 }
 
 func (*DlpJob_RiskDetails) isDlpJob_Details()    {}
@@ -10197,7 +10197,7 @@ func _DlpJob_OneofSizer(msg proto.Message) (n int) {
 // The request message for [DlpJobs.GetDlpJob][].
 type GetDlpJobRequest struct {
 	// The name of the DlpJob resource.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -10237,7 +10237,7 @@ func (m *GetDlpJobRequest) GetName() string {
 // The request message for listing DLP jobs.
 type ListDlpJobsRequest struct {
 	// The parent resource name, for example projects/my-project-id.
-	Parent string `protobuf:"bytes,4,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,4,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. Allows filtering.
 	//
 	// Supported syntax:
@@ -10261,13 +10261,13 @@ type ListDlpJobsRequest struct {
 	// * inspected_storage = cloud_storage AND (state = done OR state = canceled)
 	//
 	// The length of this field should be no more than 500 characters.
-	Filter string `protobuf:"bytes,1,opt,name=filter" json:"filter,omitempty"`
+	Filter string `protobuf:"bytes,1,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
-	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The standard list page token.
-	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// The type of job. Defaults to `DlpJobType.INSPECT`
-	Type                 DlpJobType `protobuf:"varint,5,opt,name=type,enum=google.privacy.dlp.v2.DlpJobType" json:"type,omitempty"`
+	Type                 DlpJobType `protobuf:"varint,5,opt,name=type,proto3,enum=google.privacy.dlp.v2.DlpJobType" json:"type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
 	XXX_sizecache        int32      `json:"-"`
@@ -10335,9 +10335,9 @@ func (m *ListDlpJobsRequest) GetType() DlpJobType {
 // The response message for listing DLP jobs.
 type ListDlpJobsResponse struct {
 	// A list of DlpJobs that matches the specified filter in the request.
-	Jobs []*DlpJob `protobuf:"bytes,1,rep,name=jobs" json:"jobs,omitempty"`
+	Jobs []*DlpJob `protobuf:"bytes,1,rep,name=jobs,proto3" json:"jobs,omitempty"`
 	// The standard List next-page token.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -10384,7 +10384,7 @@ func (m *ListDlpJobsResponse) GetNextPageToken() string {
 // The request message for canceling a DLP job.
 type CancelDlpJobRequest struct {
 	// The name of the DlpJob resource to be cancelled.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -10424,7 +10424,7 @@ func (m *CancelDlpJobRequest) GetName() string {
 // The request message for deleting a DLP job.
 type DeleteDlpJobRequest struct {
 	// The name of the DlpJob resource to be deleted.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -10465,14 +10465,14 @@ func (m *DeleteDlpJobRequest) GetName() string {
 type CreateDeidentifyTemplateRequest struct {
 	// The parent resource name, for example projects/my-project-id or
 	// organizations/my-org-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The DeidentifyTemplate to create.
-	DeidentifyTemplate *DeidentifyTemplate `protobuf:"bytes,2,opt,name=deidentify_template,json=deidentifyTemplate" json:"deidentify_template,omitempty"`
+	DeidentifyTemplate *DeidentifyTemplate `protobuf:"bytes,2,opt,name=deidentify_template,json=deidentifyTemplate,proto3" json:"deidentify_template,omitempty"`
 	// The template id can contain uppercase and lowercase letters,
 	// numbers, and hyphens; that is, it must match the regular
 	// expression: `[a-zA-Z\\d-]+`. The maximum length is 100
 	// characters. Can be empty to allow the system to generate one.
-	TemplateId           string   `protobuf:"bytes,3,opt,name=template_id,json=templateId" json:"template_id,omitempty"`
+	TemplateId           string   `protobuf:"bytes,3,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -10528,11 +10528,11 @@ type UpdateDeidentifyTemplateRequest struct {
 	// Resource name of organization and deidentify template to be updated, for
 	// example `organizations/433245324/deidentifyTemplates/432452342` or
 	// projects/project-id/deidentifyTemplates/432452342.
-	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// New DeidentifyTemplate value.
-	DeidentifyTemplate *DeidentifyTemplate `protobuf:"bytes,2,opt,name=deidentify_template,json=deidentifyTemplate" json:"deidentify_template,omitempty"`
+	DeidentifyTemplate *DeidentifyTemplate `protobuf:"bytes,2,opt,name=deidentify_template,json=deidentifyTemplate,proto3" json:"deidentify_template,omitempty"`
 	// Mask to control which fields get updated.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask" json:"update_mask,omitempty"`
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -10588,7 +10588,7 @@ type GetDeidentifyTemplateRequest struct {
 	// Resource name of the organization and deidentify template to be read, for
 	// example `organizations/433245324/deidentifyTemplates/432452342` or
 	// projects/project-id/deidentifyTemplates/432452342.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -10629,13 +10629,13 @@ func (m *GetDeidentifyTemplateRequest) GetName() string {
 type ListDeidentifyTemplatesRequest struct {
 	// The parent resource name, for example projects/my-project-id or
 	// organizations/my-org-id.
-	Parent string `protobuf:"bytes,1,opt,name=parent" json:"parent,omitempty"`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional page token to continue retrieval. Comes from previous call
 	// to `ListDeidentifyTemplates`.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken" json:"page_token,omitempty"`
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional size of the page, can be limited by server. If zero server returns
 	// a page of max size 100.
-	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize" json:"page_size,omitempty"`
+	PageSize             int32    `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -10690,10 +10690,10 @@ func (m *ListDeidentifyTemplatesRequest) GetPageSize() int32 {
 type ListDeidentifyTemplatesResponse struct {
 	// List of deidentify templates, up to page_size in
 	// ListDeidentifyTemplatesRequest.
-	DeidentifyTemplates []*DeidentifyTemplate `protobuf:"bytes,1,rep,name=deidentify_templates,json=deidentifyTemplates" json:"deidentify_templates,omitempty"`
+	DeidentifyTemplates []*DeidentifyTemplate `protobuf:"bytes,1,rep,name=deidentify_templates,json=deidentifyTemplates,proto3" json:"deidentify_templates,omitempty"`
 	// If the next page is available then the next page token to be used
 	// in following ListDeidentifyTemplates request.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken" json:"next_page_token,omitempty"`
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -10742,7 +10742,7 @@ type DeleteDeidentifyTemplateRequest struct {
 	// Resource name of the organization and deidentify template to be deleted,
 	// for example `organizations/433245324/deidentifyTemplates/432452342` or
 	// projects/project-id/deidentifyTemplates/432452342.
-	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -11238,8 +11238,7 @@ func (c *dlpServiceClient) CancelDlpJob(ctx context.Context, in *CancelDlpJobReq
 	return out, nil
 }
 
-// Server API for DlpService service
-
+// DlpServiceServer is the server API for DlpService service.
 type DlpServiceServer interface {
 	// Finds potentially sensitive info in content.
 	// This method has limits on input size, processing time, and output size.

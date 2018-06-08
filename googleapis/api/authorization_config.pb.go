@@ -31,7 +31,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 type AuthorizationConfig struct {
 	// The name of the authorization provider, such as
 	// firebaserules.googleapis.com.
-	Provider             string   `protobuf:"bytes,1,opt,name=provider" json:"provider,omitempty"`
+	Provider             string   `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
