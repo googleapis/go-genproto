@@ -25,7 +25,7 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 type Likelihood int32
 
 const (
-	// Default value; information with all likelihoods is included.
+	// Default value; same as POSSIBLE.
 	Likelihood_LIKELIHOOD_UNSPECIFIED Likelihood = 0
 	// Few matching elements.
 	Likelihood_VERY_UNLIKELY Likelihood = 1
@@ -58,7 +58,7 @@ func (x Likelihood) String() string {
 	return proto.EnumName(Likelihood_name, int32(x))
 }
 func (Likelihood) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{0}
 }
 
 // Definitions of file type groups to scan.
@@ -93,7 +93,7 @@ func (x FileType) String() string {
 	return proto.EnumName(FileType_name, int32(x))
 }
 func (FileType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1}
 }
 
 // How to sample bytes if not all bytes are scanned. Meaningful only when used
@@ -125,7 +125,7 @@ func (x CloudStorageOptions_SampleMethod) String() string {
 	return proto.EnumName(CloudStorageOptions_SampleMethod_name, int32(x))
 }
 func (CloudStorageOptions_SampleMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{6, 0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{6, 0}
 }
 
 // How to sample rows if not all rows are scanned. Meaningful only when used
@@ -156,12 +156,15 @@ func (x BigQueryOptions_SampleMethod) String() string {
 	return proto.EnumName(BigQueryOptions_SampleMethod_name, int32(x))
 }
 func (BigQueryOptions_SampleMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{8, 0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{8, 0}
 }
 
 // Type of information detected by the API.
 type InfoType struct {
-	// Name of the information type.
+	// Name of the information type. Either a name of your choosing when
+	// creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying
+	// a built-in type.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -172,7 +175,7 @@ func (m *InfoType) Reset()         { *m = InfoType{} }
 func (m *InfoType) String() string { return proto.CompactTextString(m) }
 func (*InfoType) ProtoMessage()    {}
 func (*InfoType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{0}
 }
 func (m *InfoType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InfoType.Unmarshal(m, b)
@@ -202,10 +205,10 @@ func (m *InfoType) GetName() string {
 // Custom information type provided by the user. Used to find domain-specific
 // sensitive information configurable to the data in question.
 type CustomInfoType struct {
-	// Info type configuration. All custom info types must have configurations
-	// that do not conflict with built-in info types or other custom info types.
+	// All CustomInfoTypes must have a name
+	// that does not conflict with built-in InfoTypes or other CustomInfoTypes.
 	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType,proto3" json:"info_type,omitempty"`
-	// Likelihood to return for this custom info type. This base value can be
+	// Likelihood to return for this CustomInfoType. This base value can be
 	// altered by a detection rule if the finding meets the criteria specified by
 	// the rule. Defaults to `VERY_LIKELY` if not specified.
 	Likelihood Likelihood `protobuf:"varint,6,opt,name=likelihood,proto3,enum=google.privacy.dlp.v2.Likelihood" json:"likelihood,omitempty"`
@@ -214,9 +217,9 @@ type CustomInfoType struct {
 	//	*CustomInfoType_Regex_
 	//	*CustomInfoType_SurrogateType_
 	Type isCustomInfoType_Type `protobuf_oneof:"type"`
-	// Set of detection rules to apply to all findings of this custom info type.
+	// Set of detection rules to apply to all findings of this CustomInfoType.
 	// Rules are applied in order that they are specified. Not supported for the
-	// `surrogate_type` custom info type.
+	// `surrogate_type` CustomInfoType.
 	DetectionRules       []*CustomInfoType_DetectionRule `protobuf:"bytes,7,rep,name=detection_rules,json=detectionRules,proto3" json:"detection_rules,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
 	XXX_unrecognized     []byte                          `json:"-"`
@@ -227,7 +230,7 @@ func (m *CustomInfoType) Reset()         { *m = CustomInfoType{} }
 func (m *CustomInfoType) String() string { return proto.CompactTextString(m) }
 func (*CustomInfoType) ProtoMessage()    {}
 func (*CustomInfoType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1}
 }
 func (m *CustomInfoType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInfoType.Unmarshal(m, b)
@@ -440,7 +443,7 @@ func (m *CustomInfoType_Dictionary) Reset()         { *m = CustomInfoType_Dictio
 func (m *CustomInfoType_Dictionary) String() string { return proto.CompactTextString(m) }
 func (*CustomInfoType_Dictionary) ProtoMessage()    {}
 func (*CustomInfoType_Dictionary) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1, 0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1, 0}
 }
 func (m *CustomInfoType_Dictionary) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInfoType_Dictionary.Unmarshal(m, b)
@@ -584,7 +587,7 @@ func (m *CustomInfoType_Dictionary_WordList) Reset()         { *m = CustomInfoTy
 func (m *CustomInfoType_Dictionary_WordList) String() string { return proto.CompactTextString(m) }
 func (*CustomInfoType_Dictionary_WordList) ProtoMessage()    {}
 func (*CustomInfoType_Dictionary_WordList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1, 0, 0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1, 0, 0}
 }
 func (m *CustomInfoType_Dictionary_WordList) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInfoType_Dictionary_WordList.Unmarshal(m, b)
@@ -624,7 +627,7 @@ func (m *CustomInfoType_Regex) Reset()         { *m = CustomInfoType_Regex{} }
 func (m *CustomInfoType_Regex) String() string { return proto.CompactTextString(m) }
 func (*CustomInfoType_Regex) ProtoMessage()    {}
 func (*CustomInfoType_Regex) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1, 1}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1, 1}
 }
 func (m *CustomInfoType_Regex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInfoType_Regex.Unmarshal(m, b)
@@ -657,7 +660,7 @@ func (m *CustomInfoType_Regex) GetPattern() string {
 // These types of transformations are
 // those that perform pseudonymization, thereby producing a "surrogate" as
 // output. This should be used in conjunction with a field on the
-// transformation such as `surrogate_info_type`. This custom info type does
+// transformation such as `surrogate_info_type`. This CustomInfoType does
 // not support the use of `detection_rules`.
 type CustomInfoType_SurrogateType struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -669,7 +672,7 @@ func (m *CustomInfoType_SurrogateType) Reset()         { *m = CustomInfoType_Sur
 func (m *CustomInfoType_SurrogateType) String() string { return proto.CompactTextString(m) }
 func (*CustomInfoType_SurrogateType) ProtoMessage()    {}
 func (*CustomInfoType_SurrogateType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1, 2}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1, 2}
 }
 func (m *CustomInfoType_SurrogateType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInfoType_SurrogateType.Unmarshal(m, b)
@@ -689,7 +692,7 @@ func (m *CustomInfoType_SurrogateType) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CustomInfoType_SurrogateType proto.InternalMessageInfo
 
-// Rule for modifying a custom info type to alter behavior under certain
+// Rule for modifying a CustomInfoType to alter behavior under certain
 // circumstances, depending on the specific details of the rule. Not supported
 // for the `surrogate_type` custom info type.
 type CustomInfoType_DetectionRule struct {
@@ -705,7 +708,7 @@ func (m *CustomInfoType_DetectionRule) Reset()         { *m = CustomInfoType_Det
 func (m *CustomInfoType_DetectionRule) String() string { return proto.CompactTextString(m) }
 func (*CustomInfoType_DetectionRule) ProtoMessage()    {}
 func (*CustomInfoType_DetectionRule) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1, 3}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1, 3}
 }
 func (m *CustomInfoType_DetectionRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInfoType_DetectionRule.Unmarshal(m, b)
@@ -822,7 +825,7 @@ func (m *CustomInfoType_DetectionRule_Proximity) Reset() {
 func (m *CustomInfoType_DetectionRule_Proximity) String() string { return proto.CompactTextString(m) }
 func (*CustomInfoType_DetectionRule_Proximity) ProtoMessage()    {}
 func (*CustomInfoType_DetectionRule_Proximity) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1, 3, 0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1, 3, 0}
 }
 func (m *CustomInfoType_DetectionRule_Proximity) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInfoType_DetectionRule_Proximity.Unmarshal(m, b)
@@ -876,7 +879,7 @@ func (m *CustomInfoType_DetectionRule_LikelihoodAdjustment) String() string {
 }
 func (*CustomInfoType_DetectionRule_LikelihoodAdjustment) ProtoMessage() {}
 func (*CustomInfoType_DetectionRule_LikelihoodAdjustment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1, 3, 1}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1, 3, 1}
 }
 func (m *CustomInfoType_DetectionRule_LikelihoodAdjustment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInfoType_DetectionRule_LikelihoodAdjustment.Unmarshal(m, b)
@@ -997,10 +1000,10 @@ func _CustomInfoType_DetectionRule_LikelihoodAdjustment_OneofSizer(msg proto.Mes
 	return n
 }
 
-// Detection rule that adjusts the likelihood of findings within a certain
+// The rule that adjusts the likelihood of findings within a certain
 // proximity of hotwords.
 type CustomInfoType_DetectionRule_HotwordRule struct {
-	// Regex pattern defining what qualifies as a hotword.
+	// Regular expression pattern defining what qualifies as a hotword.
 	HotwordRegex *CustomInfoType_Regex `protobuf:"bytes,1,opt,name=hotword_regex,json=hotwordRegex,proto3" json:"hotword_regex,omitempty"`
 	// Proximity of the finding within which the entire hotword must reside.
 	// The total length of the window cannot exceed 1000 characters. Note that
@@ -1024,7 +1027,7 @@ func (m *CustomInfoType_DetectionRule_HotwordRule) Reset() {
 func (m *CustomInfoType_DetectionRule_HotwordRule) String() string { return proto.CompactTextString(m) }
 func (*CustomInfoType_DetectionRule_HotwordRule) ProtoMessage()    {}
 func (*CustomInfoType_DetectionRule_HotwordRule) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{1, 3, 2}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{1, 3, 2}
 }
 func (m *CustomInfoType_DetectionRule_HotwordRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInfoType_DetectionRule_HotwordRule.Unmarshal(m, b)
@@ -1078,7 +1081,7 @@ func (m *FieldId) Reset()         { *m = FieldId{} }
 func (m *FieldId) String() string { return proto.CompactTextString(m) }
 func (*FieldId) ProtoMessage()    {}
 func (*FieldId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{2}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{2}
 }
 func (m *FieldId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FieldId.Unmarshal(m, b)
@@ -1125,7 +1128,7 @@ func (m *PartitionId) Reset()         { *m = PartitionId{} }
 func (m *PartitionId) String() string { return proto.CompactTextString(m) }
 func (*PartitionId) ProtoMessage()    {}
 func (*PartitionId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{3}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{3}
 }
 func (m *PartitionId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartitionId.Unmarshal(m, b)
@@ -1172,7 +1175,7 @@ func (m *KindExpression) Reset()         { *m = KindExpression{} }
 func (m *KindExpression) String() string { return proto.CompactTextString(m) }
 func (*KindExpression) ProtoMessage()    {}
 func (*KindExpression) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{4}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{4}
 }
 func (m *KindExpression) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KindExpression.Unmarshal(m, b)
@@ -1215,7 +1218,7 @@ func (m *DatastoreOptions) Reset()         { *m = DatastoreOptions{} }
 func (m *DatastoreOptions) String() string { return proto.CompactTextString(m) }
 func (*DatastoreOptions) ProtoMessage()    {}
 func (*DatastoreOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{5}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{5}
 }
 func (m *DatastoreOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DatastoreOptions.Unmarshal(m, b)
@@ -1274,7 +1277,7 @@ func (m *CloudStorageOptions) Reset()         { *m = CloudStorageOptions{} }
 func (m *CloudStorageOptions) String() string { return proto.CompactTextString(m) }
 func (*CloudStorageOptions) ProtoMessage()    {}
 func (*CloudStorageOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{6}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{6}
 }
 func (m *CloudStorageOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CloudStorageOptions.Unmarshal(m, b)
@@ -1343,7 +1346,7 @@ func (m *CloudStorageOptions_FileSet) Reset()         { *m = CloudStorageOptions
 func (m *CloudStorageOptions_FileSet) String() string { return proto.CompactTextString(m) }
 func (*CloudStorageOptions_FileSet) ProtoMessage()    {}
 func (*CloudStorageOptions_FileSet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{6, 0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{6, 0}
 }
 func (m *CloudStorageOptions_FileSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CloudStorageOptions_FileSet.Unmarshal(m, b)
@@ -1384,7 +1387,7 @@ func (m *CloudStoragePath) Reset()         { *m = CloudStoragePath{} }
 func (m *CloudStoragePath) String() string { return proto.CompactTextString(m) }
 func (*CloudStoragePath) ProtoMessage()    {}
 func (*CloudStoragePath) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{7}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{7}
 }
 func (m *CloudStoragePath) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CloudStoragePath.Unmarshal(m, b)
@@ -1432,7 +1435,7 @@ func (m *BigQueryOptions) Reset()         { *m = BigQueryOptions{} }
 func (m *BigQueryOptions) String() string { return proto.CompactTextString(m) }
 func (*BigQueryOptions) ProtoMessage()    {}
 func (*BigQueryOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{8}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{8}
 }
 func (m *BigQueryOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BigQueryOptions.Unmarshal(m, b)
@@ -1497,7 +1500,7 @@ func (m *StorageConfig) Reset()         { *m = StorageConfig{} }
 func (m *StorageConfig) String() string { return proto.CompactTextString(m) }
 func (*StorageConfig) ProtoMessage()    {}
 func (*StorageConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{9}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{9}
 }
 func (m *StorageConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StorageConfig.Unmarshal(m, b)
@@ -1693,7 +1696,7 @@ func (m *StorageConfig_TimespanConfig) Reset()         { *m = StorageConfig_Time
 func (m *StorageConfig_TimespanConfig) String() string { return proto.CompactTextString(m) }
 func (*StorageConfig_TimespanConfig) ProtoMessage()    {}
 func (*StorageConfig_TimespanConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{9, 0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{9, 0}
 }
 func (m *StorageConfig_TimespanConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StorageConfig_TimespanConfig.Unmarshal(m, b)
@@ -1757,7 +1760,7 @@ func (m *BigQueryKey) Reset()         { *m = BigQueryKey{} }
 func (m *BigQueryKey) String() string { return proto.CompactTextString(m) }
 func (*BigQueryKey) ProtoMessage()    {}
 func (*BigQueryKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{10}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{10}
 }
 func (m *BigQueryKey) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BigQueryKey.Unmarshal(m, b)
@@ -1804,7 +1807,7 @@ func (m *DatastoreKey) Reset()         { *m = DatastoreKey{} }
 func (m *DatastoreKey) String() string { return proto.CompactTextString(m) }
 func (*DatastoreKey) ProtoMessage()    {}
 func (*DatastoreKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{11}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{11}
 }
 func (m *DatastoreKey) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DatastoreKey.Unmarshal(m, b)
@@ -1859,7 +1862,7 @@ func (m *Key) Reset()         { *m = Key{} }
 func (m *Key) String() string { return proto.CompactTextString(m) }
 func (*Key) ProtoMessage()    {}
 func (*Key) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{12}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{12}
 }
 func (m *Key) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key.Unmarshal(m, b)
@@ -1918,7 +1921,7 @@ func (m *Key_PathElement) Reset()         { *m = Key_PathElement{} }
 func (m *Key_PathElement) String() string { return proto.CompactTextString(m) }
 func (*Key_PathElement) ProtoMessage()    {}
 func (*Key_PathElement) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{12, 0}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{12, 0}
 }
 func (m *Key_PathElement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key_PathElement.Unmarshal(m, b)
@@ -2060,7 +2063,7 @@ func (m *RecordKey) Reset()         { *m = RecordKey{} }
 func (m *RecordKey) String() string { return proto.CompactTextString(m) }
 func (*RecordKey) ProtoMessage()    {}
 func (*RecordKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{13}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{13}
 }
 func (m *RecordKey) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RecordKey.Unmarshal(m, b)
@@ -2211,7 +2214,7 @@ func (m *BigQueryTable) Reset()         { *m = BigQueryTable{} }
 func (m *BigQueryTable) String() string { return proto.CompactTextString(m) }
 func (*BigQueryTable) ProtoMessage()    {}
 func (*BigQueryTable) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{14}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{14}
 }
 func (m *BigQueryTable) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BigQueryTable.Unmarshal(m, b)
@@ -2269,7 +2272,7 @@ func (m *EntityId) Reset()         { *m = EntityId{} }
 func (m *EntityId) String() string { return proto.CompactTextString(m) }
 func (*EntityId) ProtoMessage()    {}
 func (*EntityId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_87ef6cb42f05a092, []int{15}
+	return fileDescriptor_storage_fb7f209e00c99d61, []int{15}
 }
 func (m *EntityId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EntityId.Unmarshal(m, b)
@@ -2331,10 +2334,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/privacy/dlp/v2/storage.proto", fileDescriptor_storage_87ef6cb42f05a092)
+	proto.RegisterFile("google/privacy/dlp/v2/storage.proto", fileDescriptor_storage_fb7f209e00c99d61)
 }
 
-var fileDescriptor_storage_87ef6cb42f05a092 = []byte{
+var fileDescriptor_storage_fb7f209e00c99d61 = []byte{
 	// 1753 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x58, 0xfd, 0x92, 0x1a, 0x4b,
 	0x15, 0x67, 0x60, 0x59, 0xe0, 0xf0, 0xb1, 0x6c, 0xef, 0xc6, 0x22, 0x68, 0xee, 0xdd, 0x90, 0x18,
