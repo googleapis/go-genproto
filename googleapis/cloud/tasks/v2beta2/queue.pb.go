@@ -76,13 +76,16 @@ func (x Queue_State) String() string {
 	return proto.EnumName(Queue_State_name, int32(x))
 }
 func (Queue_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_queue_fcad6349d23af99b, []int{0, 0}
+	return fileDescriptor_queue_2041daffc3c0cfe8, []int{0, 0}
 }
 
 // A queue is a container of related tasks. Queues are configured to manage
 // how those tasks are dispatched. Configurable properties include rate limits,
 // retry options, target types, and others.
 type Queue struct {
+	// Caller-specified and required in [CreateQueue][google.cloud.tasks.v2beta2.CloudTasks.CreateQueue],
+	// after which it becomes output only.
+	//
 	// The queue name.
 	//
 	// The queue name must have the following format:
@@ -98,17 +101,14 @@ type Queue struct {
 	//    For more information, see https://cloud.google.com/about/locations/.
 	// * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
 	//   hyphens (-). The maximum length is 100 characters.
-	//
-	// Caller-specified and required in [CreateQueue][google.cloud.tasks.v2beta2.CloudTasks.CreateQueue],
-	// after which it becomes output only.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The queue's target.
-	//
-	// The target applies to all tasks in the queue.
-	//
 	// Caller-specified and required in [CreateQueue][google.cloud.tasks.v2beta2.CloudTasks.CreateQueue][],
 	// after which the queue config type becomes output only, though fields within
 	// the config are mutable.
+	//
+	// The queue's target.
+	//
+	// The target applies to all tasks in the queue.
 	//
 	// Types that are valid to be assigned to TargetType:
 	//	*Queue_AppEngineHttpTarget
@@ -168,7 +168,7 @@ func (m *Queue) Reset()         { *m = Queue{} }
 func (m *Queue) String() string { return proto.CompactTextString(m) }
 func (*Queue) ProtoMessage()    {}
 func (*Queue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_queue_fcad6349d23af99b, []int{0}
+	return fileDescriptor_queue_2041daffc3c0cfe8, []int{0}
 }
 func (m *Queue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Queue.Unmarshal(m, b)
@@ -418,7 +418,7 @@ func (m *RateLimits) Reset()         { *m = RateLimits{} }
 func (m *RateLimits) String() string { return proto.CompactTextString(m) }
 func (*RateLimits) ProtoMessage()    {}
 func (*RateLimits) Descriptor() ([]byte, []int) {
-	return fileDescriptor_queue_fcad6349d23af99b, []int{1}
+	return fileDescriptor_queue_2041daffc3c0cfe8, []int{1}
 }
 func (m *RateLimits) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RateLimits.Unmarshal(m, b)
@@ -572,7 +572,7 @@ func (m *RetryConfig) Reset()         { *m = RetryConfig{} }
 func (m *RetryConfig) String() string { return proto.CompactTextString(m) }
 func (*RetryConfig) ProtoMessage()    {}
 func (*RetryConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_queue_fcad6349d23af99b, []int{2}
+	return fileDescriptor_queue_2041daffc3c0cfe8, []int{2}
 }
 func (m *RetryConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RetryConfig.Unmarshal(m, b)
@@ -731,10 +731,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2beta2/queue.proto", fileDescriptor_queue_fcad6349d23af99b)
+	proto.RegisterFile("google/cloud/tasks/v2beta2/queue.proto", fileDescriptor_queue_2041daffc3c0cfe8)
 }
 
-var fileDescriptor_queue_fcad6349d23af99b = []byte{
+var fileDescriptor_queue_2041daffc3c0cfe8 = []byte{
 	// 702 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x94, 0xcb, 0x6e, 0xdb, 0x3a,
 	0x10, 0x86, 0xad, 0x24, 0xca, 0x65, 0xe4, 0x04, 0x0e, 0xcf, 0x05, 0x3e, 0x3e, 0x45, 0x62, 0x38,
