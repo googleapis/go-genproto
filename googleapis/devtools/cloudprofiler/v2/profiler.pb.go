@@ -56,11 +56,11 @@ var ProfileType_name = map[int32]string{
 }
 var ProfileType_value = map[string]int32{
 	"PROFILE_TYPE_UNSPECIFIED": 0,
-	"CPU":        1,
-	"WALL":       2,
-	"HEAP":       3,
-	"THREADS":    4,
-	"CONTENTION": 5,
+	"CPU":                      1,
+	"WALL":                     2,
+	"HEAP":                     3,
+	"THREADS":                  4,
+	"CONTENTION":               5,
 }
 
 func (x ProfileType) String() string {
