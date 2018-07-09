@@ -66,7 +66,7 @@ var StructuredQuery_CompositeFilter_Operator_name = map[int32]string{
 }
 var StructuredQuery_CompositeFilter_Operator_value = map[string]int32{
 	"OPERATOR_UNSPECIFIED": 0,
-	"AND":                  1,
+	"AND": 1,
 }
 
 func (x StructuredQuery_CompositeFilter_Operator) String() string {
