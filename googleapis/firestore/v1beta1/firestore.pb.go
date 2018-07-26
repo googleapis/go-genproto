@@ -73,7 +73,7 @@ func (x TargetChange_TargetChangeType) String() string {
 	return proto.EnumName(TargetChange_TargetChangeType_name, int32(x))
 }
 func (TargetChange_TargetChangeType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{20, 0}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{20, 0}
 }
 
 // The request for [Firestore.GetDocument][google.firestore.v1beta1.Firestore.GetDocument].
@@ -102,7 +102,7 @@ func (m *GetDocumentRequest) Reset()         { *m = GetDocumentRequest{} }
 func (m *GetDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDocumentRequest) ProtoMessage()    {}
 func (*GetDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{0}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{0}
 }
 func (m *GetDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDocumentRequest.Unmarshal(m, b)
@@ -122,27 +122,6 @@ func (m *GetDocumentRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetDocumentRequest proto.InternalMessageInfo
 
-type isGetDocumentRequest_ConsistencySelector interface {
-	isGetDocumentRequest_ConsistencySelector()
-}
-
-type GetDocumentRequest_Transaction struct {
-	Transaction []byte `protobuf:"bytes,3,opt,name=transaction,proto3,oneof"`
-}
-type GetDocumentRequest_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=read_time,json=readTime,proto3,oneof"`
-}
-
-func (*GetDocumentRequest_Transaction) isGetDocumentRequest_ConsistencySelector() {}
-func (*GetDocumentRequest_ReadTime) isGetDocumentRequest_ConsistencySelector()    {}
-
-func (m *GetDocumentRequest) GetConsistencySelector() isGetDocumentRequest_ConsistencySelector {
-	if m != nil {
-		return m.ConsistencySelector
-	}
-	return nil
-}
-
 func (m *GetDocumentRequest) GetName() string {
 	if m != nil {
 		return m.Name
@@ -153,6 +132,29 @@ func (m *GetDocumentRequest) GetName() string {
 func (m *GetDocumentRequest) GetMask() *DocumentMask {
 	if m != nil {
 		return m.Mask
+	}
+	return nil
+}
+
+type isGetDocumentRequest_ConsistencySelector interface {
+	isGetDocumentRequest_ConsistencySelector()
+}
+
+type GetDocumentRequest_Transaction struct {
+	Transaction []byte `protobuf:"bytes,3,opt,name=transaction,proto3,oneof"`
+}
+
+type GetDocumentRequest_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*GetDocumentRequest_Transaction) isGetDocumentRequest_ConsistencySelector() {}
+
+func (*GetDocumentRequest_ReadTime) isGetDocumentRequest_ConsistencySelector() {}
+
+func (m *GetDocumentRequest) GetConsistencySelector() isGetDocumentRequest_ConsistencySelector {
+	if m != nil {
+		return m.ConsistencySelector
 	}
 	return nil
 }
@@ -288,7 +290,7 @@ func (m *ListDocumentsRequest) Reset()         { *m = ListDocumentsRequest{} }
 func (m *ListDocumentsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDocumentsRequest) ProtoMessage()    {}
 func (*ListDocumentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{1}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{1}
 }
 func (m *ListDocumentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDocumentsRequest.Unmarshal(m, b)
@@ -307,27 +309,6 @@ func (m *ListDocumentsRequest) XXX_DiscardUnknown() {
 }
 
 var xxx_messageInfo_ListDocumentsRequest proto.InternalMessageInfo
-
-type isListDocumentsRequest_ConsistencySelector interface {
-	isListDocumentsRequest_ConsistencySelector()
-}
-
-type ListDocumentsRequest_Transaction struct {
-	Transaction []byte `protobuf:"bytes,8,opt,name=transaction,proto3,oneof"`
-}
-type ListDocumentsRequest_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=read_time,json=readTime,proto3,oneof"`
-}
-
-func (*ListDocumentsRequest_Transaction) isListDocumentsRequest_ConsistencySelector() {}
-func (*ListDocumentsRequest_ReadTime) isListDocumentsRequest_ConsistencySelector()    {}
-
-func (m *ListDocumentsRequest) GetConsistencySelector() isListDocumentsRequest_ConsistencySelector {
-	if m != nil {
-		return m.ConsistencySelector
-	}
-	return nil
-}
 
 func (m *ListDocumentsRequest) GetParent() string {
 	if m != nil {
@@ -367,6 +348,29 @@ func (m *ListDocumentsRequest) GetOrderBy() string {
 func (m *ListDocumentsRequest) GetMask() *DocumentMask {
 	if m != nil {
 		return m.Mask
+	}
+	return nil
+}
+
+type isListDocumentsRequest_ConsistencySelector interface {
+	isListDocumentsRequest_ConsistencySelector()
+}
+
+type ListDocumentsRequest_Transaction struct {
+	Transaction []byte `protobuf:"bytes,8,opt,name=transaction,proto3,oneof"`
+}
+
+type ListDocumentsRequest_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*ListDocumentsRequest_Transaction) isListDocumentsRequest_ConsistencySelector() {}
+
+func (*ListDocumentsRequest_ReadTime) isListDocumentsRequest_ConsistencySelector() {}
+
+func (m *ListDocumentsRequest) GetConsistencySelector() isListDocumentsRequest_ConsistencySelector {
+	if m != nil {
+		return m.ConsistencySelector
 	}
 	return nil
 }
@@ -477,7 +481,7 @@ func (m *ListDocumentsResponse) Reset()         { *m = ListDocumentsResponse{} }
 func (m *ListDocumentsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDocumentsResponse) ProtoMessage()    {}
 func (*ListDocumentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{2}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{2}
 }
 func (m *ListDocumentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDocumentsResponse.Unmarshal(m, b)
@@ -539,7 +543,7 @@ func (m *CreateDocumentRequest) Reset()         { *m = CreateDocumentRequest{} }
 func (m *CreateDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateDocumentRequest) ProtoMessage()    {}
 func (*CreateDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{3}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{3}
 }
 func (m *CreateDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDocumentRequest.Unmarshal(m, b)
@@ -624,7 +628,7 @@ func (m *UpdateDocumentRequest) Reset()         { *m = UpdateDocumentRequest{} }
 func (m *UpdateDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateDocumentRequest) ProtoMessage()    {}
 func (*UpdateDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{4}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{4}
 }
 func (m *UpdateDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDocumentRequest.Unmarshal(m, b)
@@ -689,7 +693,7 @@ func (m *DeleteDocumentRequest) Reset()         { *m = DeleteDocumentRequest{} }
 func (m *DeleteDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteDocumentRequest) ProtoMessage()    {}
 func (*DeleteDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{5}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{5}
 }
 func (m *DeleteDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDocumentRequest.Unmarshal(m, b)
@@ -755,7 +759,7 @@ func (m *BatchGetDocumentsRequest) Reset()         { *m = BatchGetDocumentsReque
 func (m *BatchGetDocumentsRequest) String() string { return proto.CompactTextString(m) }
 func (*BatchGetDocumentsRequest) ProtoMessage()    {}
 func (*BatchGetDocumentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{6}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{6}
 }
 func (m *BatchGetDocumentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetDocumentsRequest.Unmarshal(m, b)
@@ -775,31 +779,6 @@ func (m *BatchGetDocumentsRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BatchGetDocumentsRequest proto.InternalMessageInfo
 
-type isBatchGetDocumentsRequest_ConsistencySelector interface {
-	isBatchGetDocumentsRequest_ConsistencySelector()
-}
-
-type BatchGetDocumentsRequest_Transaction struct {
-	Transaction []byte `protobuf:"bytes,4,opt,name=transaction,proto3,oneof"`
-}
-type BatchGetDocumentsRequest_NewTransaction struct {
-	NewTransaction *TransactionOptions `protobuf:"bytes,5,opt,name=new_transaction,json=newTransaction,proto3,oneof"`
-}
-type BatchGetDocumentsRequest_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
-}
-
-func (*BatchGetDocumentsRequest_Transaction) isBatchGetDocumentsRequest_ConsistencySelector()    {}
-func (*BatchGetDocumentsRequest_NewTransaction) isBatchGetDocumentsRequest_ConsistencySelector() {}
-func (*BatchGetDocumentsRequest_ReadTime) isBatchGetDocumentsRequest_ConsistencySelector()       {}
-
-func (m *BatchGetDocumentsRequest) GetConsistencySelector() isBatchGetDocumentsRequest_ConsistencySelector {
-	if m != nil {
-		return m.ConsistencySelector
-	}
-	return nil
-}
-
 func (m *BatchGetDocumentsRequest) GetDatabase() string {
 	if m != nil {
 		return m.Database
@@ -817,6 +796,35 @@ func (m *BatchGetDocumentsRequest) GetDocuments() []string {
 func (m *BatchGetDocumentsRequest) GetMask() *DocumentMask {
 	if m != nil {
 		return m.Mask
+	}
+	return nil
+}
+
+type isBatchGetDocumentsRequest_ConsistencySelector interface {
+	isBatchGetDocumentsRequest_ConsistencySelector()
+}
+
+type BatchGetDocumentsRequest_Transaction struct {
+	Transaction []byte `protobuf:"bytes,4,opt,name=transaction,proto3,oneof"`
+}
+
+type BatchGetDocumentsRequest_NewTransaction struct {
+	NewTransaction *TransactionOptions `protobuf:"bytes,5,opt,name=new_transaction,json=newTransaction,proto3,oneof"`
+}
+
+type BatchGetDocumentsRequest_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*BatchGetDocumentsRequest_Transaction) isBatchGetDocumentsRequest_ConsistencySelector() {}
+
+func (*BatchGetDocumentsRequest_NewTransaction) isBatchGetDocumentsRequest_ConsistencySelector() {}
+
+func (*BatchGetDocumentsRequest_ReadTime) isBatchGetDocumentsRequest_ConsistencySelector() {}
+
+func (m *BatchGetDocumentsRequest) GetConsistencySelector() isBatchGetDocumentsRequest_ConsistencySelector {
+	if m != nil {
+		return m.ConsistencySelector
 	}
 	return nil
 }
@@ -958,7 +966,7 @@ func (m *BatchGetDocumentsResponse) Reset()         { *m = BatchGetDocumentsResp
 func (m *BatchGetDocumentsResponse) String() string { return proto.CompactTextString(m) }
 func (*BatchGetDocumentsResponse) ProtoMessage()    {}
 func (*BatchGetDocumentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{7}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{7}
 }
 func (m *BatchGetDocumentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetDocumentsResponse.Unmarshal(m, b)
@@ -985,11 +993,13 @@ type isBatchGetDocumentsResponse_Result interface {
 type BatchGetDocumentsResponse_Found struct {
 	Found *Document `protobuf:"bytes,1,opt,name=found,proto3,oneof"`
 }
+
 type BatchGetDocumentsResponse_Missing struct {
 	Missing string `protobuf:"bytes,2,opt,name=missing,proto3,oneof"`
 }
 
-func (*BatchGetDocumentsResponse_Found) isBatchGetDocumentsResponse_Result()   {}
+func (*BatchGetDocumentsResponse_Found) isBatchGetDocumentsResponse_Result() {}
+
 func (*BatchGetDocumentsResponse_Missing) isBatchGetDocumentsResponse_Result() {}
 
 func (m *BatchGetDocumentsResponse) GetResult() isBatchGetDocumentsResponse_Result {
@@ -1114,7 +1124,7 @@ func (m *BeginTransactionRequest) Reset()         { *m = BeginTransactionRequest
 func (m *BeginTransactionRequest) String() string { return proto.CompactTextString(m) }
 func (*BeginTransactionRequest) ProtoMessage()    {}
 func (*BeginTransactionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{8}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{8}
 }
 func (m *BeginTransactionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BeginTransactionRequest.Unmarshal(m, b)
@@ -1161,7 +1171,7 @@ func (m *BeginTransactionResponse) Reset()         { *m = BeginTransactionRespon
 func (m *BeginTransactionResponse) String() string { return proto.CompactTextString(m) }
 func (*BeginTransactionResponse) ProtoMessage()    {}
 func (*BeginTransactionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{9}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{9}
 }
 func (m *BeginTransactionResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BeginTransactionResponse.Unmarshal(m, b)
@@ -1208,7 +1218,7 @@ func (m *CommitRequest) Reset()         { *m = CommitRequest{} }
 func (m *CommitRequest) String() string { return proto.CompactTextString(m) }
 func (*CommitRequest) ProtoMessage()    {}
 func (*CommitRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{10}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{10}
 }
 func (m *CommitRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommitRequest.Unmarshal(m, b)
@@ -1267,7 +1277,7 @@ func (m *CommitResponse) Reset()         { *m = CommitResponse{} }
 func (m *CommitResponse) String() string { return proto.CompactTextString(m) }
 func (*CommitResponse) ProtoMessage()    {}
 func (*CommitResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{11}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{11}
 }
 func (m *CommitResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommitResponse.Unmarshal(m, b)
@@ -1317,7 +1327,7 @@ func (m *RollbackRequest) Reset()         { *m = RollbackRequest{} }
 func (m *RollbackRequest) String() string { return proto.CompactTextString(m) }
 func (*RollbackRequest) ProtoMessage()    {}
 func (*RollbackRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{12}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{12}
 }
 func (m *RollbackRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RollbackRequest.Unmarshal(m, b)
@@ -1382,7 +1392,7 @@ func (m *RunQueryRequest) Reset()         { *m = RunQueryRequest{} }
 func (m *RunQueryRequest) String() string { return proto.CompactTextString(m) }
 func (*RunQueryRequest) ProtoMessage()    {}
 func (*RunQueryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{13}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{13}
 }
 func (m *RunQueryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunQueryRequest.Unmarshal(m, b)
@@ -1402,44 +1412,6 @@ func (m *RunQueryRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RunQueryRequest proto.InternalMessageInfo
 
-type isRunQueryRequest_QueryType interface {
-	isRunQueryRequest_QueryType()
-}
-type isRunQueryRequest_ConsistencySelector interface {
-	isRunQueryRequest_ConsistencySelector()
-}
-
-type RunQueryRequest_StructuredQuery struct {
-	StructuredQuery *StructuredQuery `protobuf:"bytes,2,opt,name=structured_query,json=structuredQuery,proto3,oneof"`
-}
-type RunQueryRequest_Transaction struct {
-	Transaction []byte `protobuf:"bytes,5,opt,name=transaction,proto3,oneof"`
-}
-type RunQueryRequest_NewTransaction struct {
-	NewTransaction *TransactionOptions `protobuf:"bytes,6,opt,name=new_transaction,json=newTransaction,proto3,oneof"`
-}
-type RunQueryRequest_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
-}
-
-func (*RunQueryRequest_StructuredQuery) isRunQueryRequest_QueryType()          {}
-func (*RunQueryRequest_Transaction) isRunQueryRequest_ConsistencySelector()    {}
-func (*RunQueryRequest_NewTransaction) isRunQueryRequest_ConsistencySelector() {}
-func (*RunQueryRequest_ReadTime) isRunQueryRequest_ConsistencySelector()       {}
-
-func (m *RunQueryRequest) GetQueryType() isRunQueryRequest_QueryType {
-	if m != nil {
-		return m.QueryType
-	}
-	return nil
-}
-func (m *RunQueryRequest) GetConsistencySelector() isRunQueryRequest_ConsistencySelector {
-	if m != nil {
-		return m.ConsistencySelector
-	}
-	return nil
-}
-
 func (m *RunQueryRequest) GetParent() string {
 	if m != nil {
 		return m.Parent
@@ -1447,9 +1419,55 @@ func (m *RunQueryRequest) GetParent() string {
 	return ""
 }
 
+type isRunQueryRequest_QueryType interface {
+	isRunQueryRequest_QueryType()
+}
+
+type RunQueryRequest_StructuredQuery struct {
+	StructuredQuery *StructuredQuery `protobuf:"bytes,2,opt,name=structured_query,json=structuredQuery,proto3,oneof"`
+}
+
+func (*RunQueryRequest_StructuredQuery) isRunQueryRequest_QueryType() {}
+
+func (m *RunQueryRequest) GetQueryType() isRunQueryRequest_QueryType {
+	if m != nil {
+		return m.QueryType
+	}
+	return nil
+}
+
 func (m *RunQueryRequest) GetStructuredQuery() *StructuredQuery {
 	if x, ok := m.GetQueryType().(*RunQueryRequest_StructuredQuery); ok {
 		return x.StructuredQuery
+	}
+	return nil
+}
+
+type isRunQueryRequest_ConsistencySelector interface {
+	isRunQueryRequest_ConsistencySelector()
+}
+
+type RunQueryRequest_Transaction struct {
+	Transaction []byte `protobuf:"bytes,5,opt,name=transaction,proto3,oneof"`
+}
+
+type RunQueryRequest_NewTransaction struct {
+	NewTransaction *TransactionOptions `protobuf:"bytes,6,opt,name=new_transaction,json=newTransaction,proto3,oneof"`
+}
+
+type RunQueryRequest_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*RunQueryRequest_Transaction) isRunQueryRequest_ConsistencySelector() {}
+
+func (*RunQueryRequest_NewTransaction) isRunQueryRequest_ConsistencySelector() {}
+
+func (*RunQueryRequest_ReadTime) isRunQueryRequest_ConsistencySelector() {}
+
+func (m *RunQueryRequest) GetConsistencySelector() isRunQueryRequest_ConsistencySelector {
+	if m != nil {
+		return m.ConsistencySelector
 	}
 	return nil
 }
@@ -1625,7 +1643,7 @@ func (m *RunQueryResponse) Reset()         { *m = RunQueryResponse{} }
 func (m *RunQueryResponse) String() string { return proto.CompactTextString(m) }
 func (*RunQueryResponse) ProtoMessage()    {}
 func (*RunQueryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{14}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{14}
 }
 func (m *RunQueryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunQueryResponse.Unmarshal(m, b)
@@ -1725,7 +1743,7 @@ func (m *WriteRequest) Reset()         { *m = WriteRequest{} }
 func (m *WriteRequest) String() string { return proto.CompactTextString(m) }
 func (*WriteRequest) ProtoMessage()    {}
 func (*WriteRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{15}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{15}
 }
 func (m *WriteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteRequest.Unmarshal(m, b)
@@ -1806,7 +1824,7 @@ func (m *WriteResponse) Reset()         { *m = WriteResponse{} }
 func (m *WriteResponse) String() string { return proto.CompactTextString(m) }
 func (*WriteResponse) ProtoMessage()    {}
 func (*WriteResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{16}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{16}
 }
 func (m *WriteResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteResponse.Unmarshal(m, b)
@@ -1876,7 +1894,7 @@ func (m *ListenRequest) Reset()         { *m = ListenRequest{} }
 func (m *ListenRequest) String() string { return proto.CompactTextString(m) }
 func (*ListenRequest) ProtoMessage()    {}
 func (*ListenRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{17}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{17}
 }
 func (m *ListenRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListenRequest.Unmarshal(m, b)
@@ -1896,6 +1914,13 @@ func (m *ListenRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListenRequest proto.InternalMessageInfo
 
+func (m *ListenRequest) GetDatabase() string {
+	if m != nil {
+		return m.Database
+	}
+	return ""
+}
+
 type isListenRequest_TargetChange interface {
 	isListenRequest_TargetChange()
 }
@@ -1903,11 +1928,13 @@ type isListenRequest_TargetChange interface {
 type ListenRequest_AddTarget struct {
 	AddTarget *Target `protobuf:"bytes,2,opt,name=add_target,json=addTarget,proto3,oneof"`
 }
+
 type ListenRequest_RemoveTarget struct {
 	RemoveTarget int32 `protobuf:"varint,3,opt,name=remove_target,json=removeTarget,proto3,oneof"`
 }
 
-func (*ListenRequest_AddTarget) isListenRequest_TargetChange()    {}
+func (*ListenRequest_AddTarget) isListenRequest_TargetChange() {}
+
 func (*ListenRequest_RemoveTarget) isListenRequest_TargetChange() {}
 
 func (m *ListenRequest) GetTargetChange() isListenRequest_TargetChange {
@@ -1915,13 +1942,6 @@ func (m *ListenRequest) GetTargetChange() isListenRequest_TargetChange {
 		return m.TargetChange
 	}
 	return nil
-}
-
-func (m *ListenRequest) GetDatabase() string {
-	if m != nil {
-		return m.Database
-	}
-	return ""
 }
 
 func (m *ListenRequest) GetAddTarget() *Target {
@@ -2034,7 +2054,7 @@ func (m *ListenResponse) Reset()         { *m = ListenResponse{} }
 func (m *ListenResponse) String() string { return proto.CompactTextString(m) }
 func (*ListenResponse) ProtoMessage()    {}
 func (*ListenResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{18}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{18}
 }
 func (m *ListenResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListenResponse.Unmarshal(m, b)
@@ -2061,24 +2081,32 @@ type isListenResponse_ResponseType interface {
 type ListenResponse_TargetChange struct {
 	TargetChange *TargetChange `protobuf:"bytes,2,opt,name=target_change,json=targetChange,proto3,oneof"`
 }
+
 type ListenResponse_DocumentChange struct {
 	DocumentChange *DocumentChange `protobuf:"bytes,3,opt,name=document_change,json=documentChange,proto3,oneof"`
 }
+
 type ListenResponse_DocumentDelete struct {
 	DocumentDelete *DocumentDelete `protobuf:"bytes,4,opt,name=document_delete,json=documentDelete,proto3,oneof"`
 }
+
 type ListenResponse_DocumentRemove struct {
 	DocumentRemove *DocumentRemove `protobuf:"bytes,6,opt,name=document_remove,json=documentRemove,proto3,oneof"`
 }
+
 type ListenResponse_Filter struct {
 	Filter *ExistenceFilter `protobuf:"bytes,5,opt,name=filter,proto3,oneof"`
 }
 
-func (*ListenResponse_TargetChange) isListenResponse_ResponseType()   {}
+func (*ListenResponse_TargetChange) isListenResponse_ResponseType() {}
+
 func (*ListenResponse_DocumentChange) isListenResponse_ResponseType() {}
+
 func (*ListenResponse_DocumentDelete) isListenResponse_ResponseType() {}
+
 func (*ListenResponse_DocumentRemove) isListenResponse_ResponseType() {}
-func (*ListenResponse_Filter) isListenResponse_ResponseType()         {}
+
+func (*ListenResponse_Filter) isListenResponse_ResponseType() {}
 
 func (m *ListenResponse) GetResponseType() isListenResponse_ResponseType {
 	if m != nil {
@@ -2290,7 +2318,7 @@ func (m *Target) Reset()         { *m = Target{} }
 func (m *Target) String() string { return proto.CompactTextString(m) }
 func (*Target) ProtoMessage()    {}
 func (*Target) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{19}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{19}
 }
 func (m *Target) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Target.Unmarshal(m, b)
@@ -2313,37 +2341,22 @@ var xxx_messageInfo_Target proto.InternalMessageInfo
 type isTarget_TargetType interface {
 	isTarget_TargetType()
 }
-type isTarget_ResumeType interface {
-	isTarget_ResumeType()
-}
 
 type Target_Query struct {
 	Query *Target_QueryTarget `protobuf:"bytes,2,opt,name=query,proto3,oneof"`
 }
+
 type Target_Documents struct {
 	Documents *Target_DocumentsTarget `protobuf:"bytes,3,opt,name=documents,proto3,oneof"`
 }
-type Target_ResumeToken struct {
-	ResumeToken []byte `protobuf:"bytes,4,opt,name=resume_token,json=resumeToken,proto3,oneof"`
-}
-type Target_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=read_time,json=readTime,proto3,oneof"`
-}
 
-func (*Target_Query) isTarget_TargetType()       {}
-func (*Target_Documents) isTarget_TargetType()   {}
-func (*Target_ResumeToken) isTarget_ResumeType() {}
-func (*Target_ReadTime) isTarget_ResumeType()    {}
+func (*Target_Query) isTarget_TargetType() {}
+
+func (*Target_Documents) isTarget_TargetType() {}
 
 func (m *Target) GetTargetType() isTarget_TargetType {
 	if m != nil {
 		return m.TargetType
-	}
-	return nil
-}
-func (m *Target) GetResumeType() isTarget_ResumeType {
-	if m != nil {
-		return m.ResumeType
 	}
 	return nil
 }
@@ -2358,6 +2371,29 @@ func (m *Target) GetQuery() *Target_QueryTarget {
 func (m *Target) GetDocuments() *Target_DocumentsTarget {
 	if x, ok := m.GetTargetType().(*Target_Documents); ok {
 		return x.Documents
+	}
+	return nil
+}
+
+type isTarget_ResumeType interface {
+	isTarget_ResumeType()
+}
+
+type Target_ResumeToken struct {
+	ResumeToken []byte `protobuf:"bytes,4,opt,name=resume_token,json=resumeToken,proto3,oneof"`
+}
+
+type Target_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*Target_ResumeToken) isTarget_ResumeType() {}
+
+func (*Target_ReadTime) isTarget_ResumeType() {}
+
+func (m *Target) GetResumeType() isTarget_ResumeType {
+	if m != nil {
+		return m.ResumeType
 	}
 	return nil
 }
@@ -2526,7 +2562,7 @@ func (m *Target_DocumentsTarget) Reset()         { *m = Target_DocumentsTarget{}
 func (m *Target_DocumentsTarget) String() string { return proto.CompactTextString(m) }
 func (*Target_DocumentsTarget) ProtoMessage()    {}
 func (*Target_DocumentsTarget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{19, 0}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{19, 0}
 }
 func (m *Target_DocumentsTarget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Target_DocumentsTarget.Unmarshal(m, b)
@@ -2576,7 +2612,7 @@ func (m *Target_QueryTarget) Reset()         { *m = Target_QueryTarget{} }
 func (m *Target_QueryTarget) String() string { return proto.CompactTextString(m) }
 func (*Target_QueryTarget) ProtoMessage()    {}
 func (*Target_QueryTarget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{19, 1}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{19, 1}
 }
 func (m *Target_QueryTarget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Target_QueryTarget.Unmarshal(m, b)
@@ -2596,6 +2632,13 @@ func (m *Target_QueryTarget) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Target_QueryTarget proto.InternalMessageInfo
 
+func (m *Target_QueryTarget) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
 type isTarget_QueryTarget_QueryType interface {
 	isTarget_QueryTarget_QueryType()
 }
@@ -2611,13 +2654,6 @@ func (m *Target_QueryTarget) GetQueryType() isTarget_QueryTarget_QueryType {
 		return m.QueryType
 	}
 	return nil
-}
-
-func (m *Target_QueryTarget) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
 }
 
 func (m *Target_QueryTarget) GetStructuredQuery() *StructuredQuery {
@@ -2723,7 +2759,7 @@ func (m *TargetChange) Reset()         { *m = TargetChange{} }
 func (m *TargetChange) String() string { return proto.CompactTextString(m) }
 func (*TargetChange) ProtoMessage()    {}
 func (*TargetChange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{20}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{20}
 }
 func (m *TargetChange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetChange.Unmarshal(m, b)
@@ -2799,7 +2835,7 @@ func (m *ListCollectionIdsRequest) Reset()         { *m = ListCollectionIdsReque
 func (m *ListCollectionIdsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListCollectionIdsRequest) ProtoMessage()    {}
 func (*ListCollectionIdsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{21}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{21}
 }
 func (m *ListCollectionIdsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCollectionIdsRequest.Unmarshal(m, b)
@@ -2855,7 +2891,7 @@ func (m *ListCollectionIdsResponse) Reset()         { *m = ListCollectionIdsResp
 func (m *ListCollectionIdsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListCollectionIdsResponse) ProtoMessage()    {}
 func (*ListCollectionIdsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_42af00d8e1a5b915, []int{22}
+	return fileDescriptor_firestore_2eafd6d2fedf882a, []int{22}
 }
 func (m *ListCollectionIdsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCollectionIdsResponse.Unmarshal(m, b)
@@ -3540,10 +3576,10 @@ var _Firestore_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/v1beta1/firestore.proto", fileDescriptor_firestore_42af00d8e1a5b915)
+	proto.RegisterFile("google/firestore/v1beta1/firestore.proto", fileDescriptor_firestore_2eafd6d2fedf882a)
 }
 
-var fileDescriptor_firestore_42af00d8e1a5b915 = []byte{
+var fileDescriptor_firestore_2eafd6d2fedf882a = []byte{
 	// 2180 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x59, 0xcd, 0x8f, 0x1b, 0x49,
 	0x15, 0x77, 0xf9, 0x6b, 0xec, 0xe7, 0x8f, 0xf1, 0x96, 0x92, 0xac, 0xe3, 0x64, 0xc9, 0xd0, 0x4b,

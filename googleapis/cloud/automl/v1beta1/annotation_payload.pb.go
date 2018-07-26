@@ -47,7 +47,7 @@ func (m *AnnotationPayload) Reset()         { *m = AnnotationPayload{} }
 func (m *AnnotationPayload) String() string { return proto.CompactTextString(m) }
 func (*AnnotationPayload) ProtoMessage()    {}
 func (*AnnotationPayload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_payload_402fc50b010feaeb, []int{0}
+	return fileDescriptor_annotation_payload_ce47679ba5fa3ec6, []int{0}
 }
 func (m *AnnotationPayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationPayload.Unmarshal(m, b)
@@ -74,11 +74,13 @@ type isAnnotationPayload_Detail interface {
 type AnnotationPayload_Translation struct {
 	Translation *TranslationAnnotation `protobuf:"bytes,2,opt,name=translation,proto3,oneof"`
 }
+
 type AnnotationPayload_Classification struct {
 	Classification *ClassificationAnnotation `protobuf:"bytes,3,opt,name=classification,proto3,oneof"`
 }
 
-func (*AnnotationPayload_Translation) isAnnotationPayload_Detail()    {}
+func (*AnnotationPayload_Translation) isAnnotationPayload_Detail() {}
+
 func (*AnnotationPayload_Classification) isAnnotationPayload_Detail() {}
 
 func (m *AnnotationPayload) GetDetail() isAnnotationPayload_Detail {
@@ -195,10 +197,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/annotation_payload.proto", fileDescriptor_annotation_payload_402fc50b010feaeb)
+	proto.RegisterFile("google/cloud/automl/v1beta1/annotation_payload.proto", fileDescriptor_annotation_payload_ce47679ba5fa3ec6)
 }
 
-var fileDescriptor_annotation_payload_402fc50b010feaeb = []byte{
+var fileDescriptor_annotation_payload_ce47679ba5fa3ec6 = []byte{
 	// 297 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0x41, 0x4b, 0x33, 0x31,
 	0x10, 0x86, 0xbf, 0xed, 0x87, 0x45, 0x53, 0x11, 0xdd, 0xd3, 0x52, 0x05, 0xab, 0xa7, 0x1e, 0x34,

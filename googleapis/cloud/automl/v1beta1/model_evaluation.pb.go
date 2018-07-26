@@ -55,7 +55,7 @@ func (m *ModelEvaluation) Reset()         { *m = ModelEvaluation{} }
 func (m *ModelEvaluation) String() string { return proto.CompactTextString(m) }
 func (*ModelEvaluation) ProtoMessage()    {}
 func (*ModelEvaluation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_evaluation_a77b44488aa864eb, []int{0}
+	return fileDescriptor_model_evaluation_77eb85cbfb723c98, []int{0}
 }
 func (m *ModelEvaluation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ModelEvaluation.Unmarshal(m, b)
@@ -82,12 +82,14 @@ type isModelEvaluation_Metrics interface {
 type ModelEvaluation_ClassificationEvaluationMetrics struct {
 	ClassificationEvaluationMetrics *ClassificationEvaluationMetrics `protobuf:"bytes,8,opt,name=classification_evaluation_metrics,json=classificationEvaluationMetrics,proto3,oneof"`
 }
+
 type ModelEvaluation_TranslationEvaluationMetrics struct {
 	TranslationEvaluationMetrics *TranslationEvaluationMetrics `protobuf:"bytes,9,opt,name=translation_evaluation_metrics,json=translationEvaluationMetrics,proto3,oneof"`
 }
 
 func (*ModelEvaluation_ClassificationEvaluationMetrics) isModelEvaluation_Metrics() {}
-func (*ModelEvaluation_TranslationEvaluationMetrics) isModelEvaluation_Metrics()    {}
+
+func (*ModelEvaluation_TranslationEvaluationMetrics) isModelEvaluation_Metrics() {}
 
 func (m *ModelEvaluation) GetMetrics() isModelEvaluation_Metrics {
 	if m != nil {
@@ -217,10 +219,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/model_evaluation.proto", fileDescriptor_model_evaluation_a77b44488aa864eb)
+	proto.RegisterFile("google/cloud/automl/v1beta1/model_evaluation.proto", fileDescriptor_model_evaluation_77eb85cbfb723c98)
 }
 
-var fileDescriptor_model_evaluation_a77b44488aa864eb = []byte{
+var fileDescriptor_model_evaluation_77eb85cbfb723c98 = []byte{
 	// 388 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x52, 0x4f, 0x6b, 0xdb, 0x30,
 	0x1c, 0x9d, 0xb7, 0x25, 0x5b, 0x94, 0xc3, 0x86, 0x60, 0xcc, 0x78, 0x61, 0xc9, 0x76, 0xca, 0x61,

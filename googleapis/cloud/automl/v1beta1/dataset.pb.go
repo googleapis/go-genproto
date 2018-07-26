@@ -52,7 +52,7 @@ func (m *Dataset) Reset()         { *m = Dataset{} }
 func (m *Dataset) String() string { return proto.CompactTextString(m) }
 func (*Dataset) ProtoMessage()    {}
 func (*Dataset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_0f6cd639ca5f12a6, []int{0}
+	return fileDescriptor_dataset_a8678ffeb33098d6, []int{0}
 }
 func (m *Dataset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Dataset.Unmarshal(m, b)
@@ -79,16 +79,20 @@ type isDataset_DatasetMetadata interface {
 type Dataset_TranslationDatasetMetadata struct {
 	TranslationDatasetMetadata *TranslationDatasetMetadata `protobuf:"bytes,23,opt,name=translation_dataset_metadata,json=translationDatasetMetadata,proto3,oneof"`
 }
+
 type Dataset_ImageClassificationDatasetMetadata struct {
 	ImageClassificationDatasetMetadata *ImageClassificationDatasetMetadata `protobuf:"bytes,24,opt,name=image_classification_dataset_metadata,json=imageClassificationDatasetMetadata,proto3,oneof"`
 }
+
 type Dataset_TextClassificationDatasetMetadata struct {
 	TextClassificationDatasetMetadata *TextClassificationDatasetMetadata `protobuf:"bytes,25,opt,name=text_classification_dataset_metadata,json=textClassificationDatasetMetadata,proto3,oneof"`
 }
 
-func (*Dataset_TranslationDatasetMetadata) isDataset_DatasetMetadata()         {}
+func (*Dataset_TranslationDatasetMetadata) isDataset_DatasetMetadata() {}
+
 func (*Dataset_ImageClassificationDatasetMetadata) isDataset_DatasetMetadata() {}
-func (*Dataset_TextClassificationDatasetMetadata) isDataset_DatasetMetadata()  {}
+
+func (*Dataset_TextClassificationDatasetMetadata) isDataset_DatasetMetadata() {}
 
 func (m *Dataset) GetDatasetMetadata() isDataset_DatasetMetadata {
 	if m != nil {
@@ -244,10 +248,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/dataset.proto", fileDescriptor_dataset_0f6cd639ca5f12a6)
+	proto.RegisterFile("google/cloud/automl/v1beta1/dataset.proto", fileDescriptor_dataset_a8678ffeb33098d6)
 }
 
-var fileDescriptor_dataset_0f6cd639ca5f12a6 = []byte{
+var fileDescriptor_dataset_a8678ffeb33098d6 = []byte{
 	// 428 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0x5d, 0x6b, 0x14, 0x31,
 	0x14, 0x86, 0x1d, 0xa9, 0x8a, 0xd9, 0x2a, 0x12, 0x10, 0xc7, 0xb1, 0xd0, 0x6d, 0xfd, 0x5a, 0x41,
