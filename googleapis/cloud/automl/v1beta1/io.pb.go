@@ -35,7 +35,7 @@ func (m *InputConfig) Reset()         { *m = InputConfig{} }
 func (m *InputConfig) String() string { return proto.CompactTextString(m) }
 func (*InputConfig) ProtoMessage()    {}
 func (*InputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_cefafa604fe5db83, []int{0}
+	return fileDescriptor_io_30049c92fb799bce, []int{0}
 }
 func (m *InputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputConfig.Unmarshal(m, b)
@@ -150,7 +150,7 @@ func (m *OutputConfig) Reset()         { *m = OutputConfig{} }
 func (m *OutputConfig) String() string { return proto.CompactTextString(m) }
 func (*OutputConfig) ProtoMessage()    {}
 func (*OutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_cefafa604fe5db83, []int{1}
+	return fileDescriptor_io_30049c92fb799bce, []int{1}
 }
 func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputConfig.Unmarshal(m, b)
@@ -264,7 +264,7 @@ func (m *GcsSource) Reset()         { *m = GcsSource{} }
 func (m *GcsSource) String() string { return proto.CompactTextString(m) }
 func (*GcsSource) ProtoMessage()    {}
 func (*GcsSource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_cefafa604fe5db83, []int{2}
+	return fileDescriptor_io_30049c92fb799bce, []int{2}
 }
 func (m *GcsSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsSource.Unmarshal(m, b)
@@ -309,7 +309,7 @@ func (m *GcsDestination) Reset()         { *m = GcsDestination{} }
 func (m *GcsDestination) String() string { return proto.CompactTextString(m) }
 func (*GcsDestination) ProtoMessage()    {}
 func (*GcsDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_cefafa604fe5db83, []int{3}
+	return fileDescriptor_io_30049c92fb799bce, []int{3}
 }
 func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsDestination.Unmarshal(m, b)
@@ -344,10 +344,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/io.proto", fileDescriptor_io_cefafa604fe5db83)
+	proto.RegisterFile("google/cloud/automl/v1beta1/io.proto", fileDescriptor_io_30049c92fb799bce)
 }
 
-var fileDescriptor_io_cefafa604fe5db83 = []byte{
+var fileDescriptor_io_30049c92fb799bce = []byte{
 	// 300 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x91, 0x4b, 0x4b, 0x03, 0x31,
 	0x10, 0xc7, 0xbb, 0x08, 0xc5, 0x9d, 0x6a, 0x8b, 0x7b, 0x2a, 0x3e, 0xb0, 0x2c, 0x22, 0xa5, 0x42,

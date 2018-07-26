@@ -47,7 +47,7 @@ func (x Model_DeploymentState) String() string {
 	return proto.EnumName(Model_DeploymentState_name, int32(x))
 }
 func (Model_DeploymentState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_model_20a2aca5850ac7e3, []int{0, 0}
+	return fileDescriptor_model_2836c0ea5c1ddbd5, []int{0, 0}
 }
 
 // API proto representing a trained machine learning model.
@@ -92,7 +92,7 @@ func (m *Model) Reset()         { *m = Model{} }
 func (m *Model) String() string { return proto.CompactTextString(m) }
 func (*Model) ProtoMessage()    {}
 func (*Model) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_20a2aca5850ac7e3, []int{0}
+	return fileDescriptor_model_2836c0ea5c1ddbd5, []int{0}
 }
 func (m *Model) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model.Unmarshal(m, b)
@@ -119,16 +119,20 @@ type isModel_ModelMetadata interface {
 type Model_ImageClassificationModelMetadata struct {
 	ImageClassificationModelMetadata *ImageClassificationModelMetadata `protobuf:"bytes,13,opt,name=image_classification_model_metadata,json=imageClassificationModelMetadata,proto3,oneof"`
 }
+
 type Model_TextClassificationModelMetadata struct {
 	TextClassificationModelMetadata *TextClassificationModelMetadata `protobuf:"bytes,14,opt,name=text_classification_model_metadata,json=textClassificationModelMetadata,proto3,oneof"`
 }
+
 type Model_TranslationModelMetadata struct {
 	TranslationModelMetadata *TranslationModelMetadata `protobuf:"bytes,15,opt,name=translation_model_metadata,json=translationModelMetadata,proto3,oneof"`
 }
 
 func (*Model_ImageClassificationModelMetadata) isModel_ModelMetadata() {}
-func (*Model_TextClassificationModelMetadata) isModel_ModelMetadata()  {}
-func (*Model_TranslationModelMetadata) isModel_ModelMetadata()         {}
+
+func (*Model_TextClassificationModelMetadata) isModel_ModelMetadata() {}
+
+func (*Model_TranslationModelMetadata) isModel_ModelMetadata() {}
 
 func (m *Model) GetModelMetadata() isModel_ModelMetadata {
 	if m != nil {
@@ -299,10 +303,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/model.proto", fileDescriptor_model_20a2aca5850ac7e3)
+	proto.RegisterFile("google/cloud/automl/v1beta1/model.proto", fileDescriptor_model_2836c0ea5c1ddbd5)
 }
 
-var fileDescriptor_model_20a2aca5850ac7e3 = []byte{
+var fileDescriptor_model_2836c0ea5c1ddbd5 = []byte{
 	// 501 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x93, 0xd1, 0x6e, 0xd3, 0x30,
 	0x14, 0x86, 0x97, 0x01, 0x63, 0x3b, 0x1d, 0x6d, 0xe5, 0xab, 0xa8, 0x0c, 0x35, 0x14, 0x09, 0x7a,

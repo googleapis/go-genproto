@@ -44,7 +44,7 @@ func (x DocumentTransform_FieldTransform_ServerValue) String() string {
 	return proto.EnumName(DocumentTransform_FieldTransform_ServerValue_name, int32(x))
 }
 func (DocumentTransform_FieldTransform_ServerValue) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_write_c8c57c5c377aeb08, []int{1, 0, 0}
+	return fileDescriptor_write_9914518038802de9, []int{1, 0, 0}
 }
 
 // A write on a document.
@@ -79,7 +79,7 @@ func (m *Write) Reset()         { *m = Write{} }
 func (m *Write) String() string { return proto.CompactTextString(m) }
 func (*Write) ProtoMessage()    {}
 func (*Write) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_c8c57c5c377aeb08, []int{0}
+	return fileDescriptor_write_9914518038802de9, []int{0}
 }
 func (m *Write) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Write.Unmarshal(m, b)
@@ -106,15 +106,19 @@ type isWrite_Operation interface {
 type Write_Update struct {
 	Update *Document `protobuf:"bytes,1,opt,name=update,proto3,oneof"`
 }
+
 type Write_Delete struct {
 	Delete string `protobuf:"bytes,2,opt,name=delete,proto3,oneof"`
 }
+
 type Write_Transform struct {
 	Transform *DocumentTransform `protobuf:"bytes,6,opt,name=transform,proto3,oneof"`
 }
 
-func (*Write_Update) isWrite_Operation()    {}
-func (*Write_Delete) isWrite_Operation()    {}
+func (*Write_Update) isWrite_Operation() {}
+
+func (*Write_Delete) isWrite_Operation() {}
+
 func (*Write_Transform) isWrite_Operation() {}
 
 func (m *Write) GetOperation() isWrite_Operation {
@@ -265,7 +269,7 @@ func (m *DocumentTransform) Reset()         { *m = DocumentTransform{} }
 func (m *DocumentTransform) String() string { return proto.CompactTextString(m) }
 func (*DocumentTransform) ProtoMessage()    {}
 func (*DocumentTransform) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_c8c57c5c377aeb08, []int{1}
+	return fileDescriptor_write_9914518038802de9, []int{1}
 }
 func (m *DocumentTransform) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentTransform.Unmarshal(m, b)
@@ -318,7 +322,7 @@ func (m *DocumentTransform_FieldTransform) Reset()         { *m = DocumentTransf
 func (m *DocumentTransform_FieldTransform) String() string { return proto.CompactTextString(m) }
 func (*DocumentTransform_FieldTransform) ProtoMessage()    {}
 func (*DocumentTransform_FieldTransform) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_c8c57c5c377aeb08, []int{1, 0}
+	return fileDescriptor_write_9914518038802de9, []int{1, 0}
 }
 func (m *DocumentTransform_FieldTransform) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentTransform_FieldTransform.Unmarshal(m, b)
@@ -338,6 +342,13 @@ func (m *DocumentTransform_FieldTransform) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DocumentTransform_FieldTransform proto.InternalMessageInfo
 
+func (m *DocumentTransform_FieldTransform) GetFieldPath() string {
+	if m != nil {
+		return m.FieldPath
+	}
+	return ""
+}
+
 type isDocumentTransform_FieldTransform_TransformType interface {
 	isDocumentTransform_FieldTransform_TransformType()
 }
@@ -354,13 +365,6 @@ func (m *DocumentTransform_FieldTransform) GetTransformType() isDocumentTransfor
 		return m.TransformType
 	}
 	return nil
-}
-
-func (m *DocumentTransform_FieldTransform) GetFieldPath() string {
-	if m != nil {
-		return m.FieldPath
-	}
-	return ""
 }
 
 func (m *DocumentTransform_FieldTransform) GetSetToServerValue() DocumentTransform_FieldTransform_ServerValue {
@@ -440,7 +444,7 @@ func (m *WriteResult) Reset()         { *m = WriteResult{} }
 func (m *WriteResult) String() string { return proto.CompactTextString(m) }
 func (*WriteResult) ProtoMessage()    {}
 func (*WriteResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_c8c57c5c377aeb08, []int{2}
+	return fileDescriptor_write_9914518038802de9, []int{2}
 }
 func (m *WriteResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteResult.Unmarshal(m, b)
@@ -499,7 +503,7 @@ func (m *DocumentChange) Reset()         { *m = DocumentChange{} }
 func (m *DocumentChange) String() string { return proto.CompactTextString(m) }
 func (*DocumentChange) ProtoMessage()    {}
 func (*DocumentChange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_c8c57c5c377aeb08, []int{3}
+	return fileDescriptor_write_9914518038802de9, []int{3}
 }
 func (m *DocumentChange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentChange.Unmarshal(m, b)
@@ -565,7 +569,7 @@ func (m *DocumentDelete) Reset()         { *m = DocumentDelete{} }
 func (m *DocumentDelete) String() string { return proto.CompactTextString(m) }
 func (*DocumentDelete) ProtoMessage()    {}
 func (*DocumentDelete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_c8c57c5c377aeb08, []int{4}
+	return fileDescriptor_write_9914518038802de9, []int{4}
 }
 func (m *DocumentDelete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentDelete.Unmarshal(m, b)
@@ -632,7 +636,7 @@ func (m *DocumentRemove) Reset()         { *m = DocumentRemove{} }
 func (m *DocumentRemove) String() string { return proto.CompactTextString(m) }
 func (*DocumentRemove) ProtoMessage()    {}
 func (*DocumentRemove) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_c8c57c5c377aeb08, []int{5}
+	return fileDescriptor_write_9914518038802de9, []int{5}
 }
 func (m *DocumentRemove) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentRemove.Unmarshal(m, b)
@@ -691,7 +695,7 @@ func (m *ExistenceFilter) Reset()         { *m = ExistenceFilter{} }
 func (m *ExistenceFilter) String() string { return proto.CompactTextString(m) }
 func (*ExistenceFilter) ProtoMessage()    {}
 func (*ExistenceFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_c8c57c5c377aeb08, []int{6}
+	return fileDescriptor_write_9914518038802de9, []int{6}
 }
 func (m *ExistenceFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExistenceFilter.Unmarshal(m, b)
@@ -738,10 +742,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/v1beta1/write.proto", fileDescriptor_write_c8c57c5c377aeb08)
+	proto.RegisterFile("google/firestore/v1beta1/write.proto", fileDescriptor_write_9914518038802de9)
 }
 
-var fileDescriptor_write_c8c57c5c377aeb08 = []byte{
+var fileDescriptor_write_9914518038802de9 = []byte{
 	// 756 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x55, 0xcd, 0x8e, 0xe3, 0x44,
 	0x10, 0x8e, 0x93, 0x49, 0x34, 0xae, 0xa0, 0x8c, 0xb7, 0xe1, 0x60, 0x85, 0x59, 0x36, 0x8a, 0xf8,

@@ -50,7 +50,7 @@ func (x IndexOperationMetadata_OperationType) String() string {
 	return proto.EnumName(IndexOperationMetadata_OperationType_name, int32(x))
 }
 func (IndexOperationMetadata_OperationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_bf8d6f204477dd80, []int{0, 0}
+	return fileDescriptor_firestore_admin_4aed9459ad95e423, []int{0, 0}
 }
 
 // Metadata for index operations. This metadata populates
@@ -81,7 +81,7 @@ func (m *IndexOperationMetadata) Reset()         { *m = IndexOperationMetadata{}
 func (m *IndexOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*IndexOperationMetadata) ProtoMessage()    {}
 func (*IndexOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_bf8d6f204477dd80, []int{0}
+	return fileDescriptor_firestore_admin_4aed9459ad95e423, []int{0}
 }
 func (m *IndexOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexOperationMetadata.Unmarshal(m, b)
@@ -160,7 +160,7 @@ func (m *Progress) Reset()         { *m = Progress{} }
 func (m *Progress) String() string { return proto.CompactTextString(m) }
 func (*Progress) ProtoMessage()    {}
 func (*Progress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_bf8d6f204477dd80, []int{1}
+	return fileDescriptor_firestore_admin_4aed9459ad95e423, []int{1}
 }
 func (m *Progress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Progress.Unmarshal(m, b)
@@ -211,7 +211,7 @@ func (m *CreateIndexRequest) Reset()         { *m = CreateIndexRequest{} }
 func (m *CreateIndexRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateIndexRequest) ProtoMessage()    {}
 func (*CreateIndexRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_bf8d6f204477dd80, []int{2}
+	return fileDescriptor_firestore_admin_4aed9459ad95e423, []int{2}
 }
 func (m *CreateIndexRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateIndexRequest.Unmarshal(m, b)
@@ -259,7 +259,7 @@ func (m *GetIndexRequest) Reset()         { *m = GetIndexRequest{} }
 func (m *GetIndexRequest) String() string { return proto.CompactTextString(m) }
 func (*GetIndexRequest) ProtoMessage()    {}
 func (*GetIndexRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_bf8d6f204477dd80, []int{3}
+	return fileDescriptor_firestore_admin_4aed9459ad95e423, []int{3}
 }
 func (m *GetIndexRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetIndexRequest.Unmarshal(m, b)
@@ -305,7 +305,7 @@ func (m *ListIndexesRequest) Reset()         { *m = ListIndexesRequest{} }
 func (m *ListIndexesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListIndexesRequest) ProtoMessage()    {}
 func (*ListIndexesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_bf8d6f204477dd80, []int{4}
+	return fileDescriptor_firestore_admin_4aed9459ad95e423, []int{4}
 }
 func (m *ListIndexesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIndexesRequest.Unmarshal(m, b)
@@ -367,7 +367,7 @@ func (m *DeleteIndexRequest) Reset()         { *m = DeleteIndexRequest{} }
 func (m *DeleteIndexRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteIndexRequest) ProtoMessage()    {}
 func (*DeleteIndexRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_bf8d6f204477dd80, []int{5}
+	return fileDescriptor_firestore_admin_4aed9459ad95e423, []int{5}
 }
 func (m *DeleteIndexRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteIndexRequest.Unmarshal(m, b)
@@ -409,7 +409,7 @@ func (m *ListIndexesResponse) Reset()         { *m = ListIndexesResponse{} }
 func (m *ListIndexesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListIndexesResponse) ProtoMessage()    {}
 func (*ListIndexesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_bf8d6f204477dd80, []int{6}
+	return fileDescriptor_firestore_admin_4aed9459ad95e423, []int{6}
 }
 func (m *ListIndexesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIndexesResponse.Unmarshal(m, b)
@@ -658,10 +658,10 @@ var _FirestoreAdmin_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/admin/v1beta1/firestore_admin.proto", fileDescriptor_firestore_admin_bf8d6f204477dd80)
+	proto.RegisterFile("google/firestore/admin/v1beta1/firestore_admin.proto", fileDescriptor_firestore_admin_4aed9459ad95e423)
 }
 
-var fileDescriptor_firestore_admin_bf8d6f204477dd80 = []byte{
+var fileDescriptor_firestore_admin_4aed9459ad95e423 = []byte{
 	// 841 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x55, 0xdd, 0x6e, 0xe3, 0x44,
 	0x14, 0xc6, 0xe9, 0xcf, 0x26, 0xa7, 0x6a, 0xb6, 0xcc, 0xa2, 0x2a, 0xf2, 0xfe, 0x10, 0x19, 0x8a,
