@@ -234,8 +234,8 @@ var RecognitionMetadata_OriginalMediaType_name = map[int32]string{
 }
 var RecognitionMetadata_OriginalMediaType_value = map[string]int32{
 	"ORIGINAL_MEDIA_TYPE_UNSPECIFIED": 0,
-	"AUDIO":                           1,
-	"VIDEO":                           2,
+	"AUDIO": 1,
+	"VIDEO": 2,
 }
 
 func (x RecognitionMetadata_OriginalMediaType) String() string {
