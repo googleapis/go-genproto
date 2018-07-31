@@ -319,11 +319,11 @@ var CharsToIgnore_CommonCharsToIgnore_name = map[int32]string{
 }
 var CharsToIgnore_CommonCharsToIgnore_value = map[string]int32{
 	"COMMON_CHARS_TO_IGNORE_UNSPECIFIED": 0,
-	"NUMERIC":                            1,
-	"ALPHA_UPPER_CASE":                   2,
-	"ALPHA_LOWER_CASE":                   3,
-	"PUNCTUATION":                        4,
-	"WHITESPACE":                         5,
+	"NUMERIC":          1,
+	"ALPHA_UPPER_CASE": 2,
+	"ALPHA_LOWER_CASE": 3,
+	"PUNCTUATION":      4,
+	"WHITESPACE":       5,
 }
 
 func (x CharsToIgnore_CommonCharsToIgnore) String() string {
@@ -359,10 +359,10 @@ var CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet_name = map[int32]string{
 }
 var CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet_value = map[string]int32{
 	"FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED": 0,
-	"NUMERIC":                                1,
-	"HEXADECIMAL":                            2,
-	"UPPER_CASE_ALPHA_NUMERIC":               3,
-	"ALPHA_NUMERIC":                          4,
+	"NUMERIC":                  1,
+	"HEXADECIMAL":              2,
+	"UPPER_CASE_ALPHA_NUMERIC": 3,
+	"ALPHA_NUMERIC":            4,
 }
 
 func (x CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet) String() string {
@@ -385,7 +385,7 @@ var RecordCondition_Expressions_LogicalOperator_name = map[int32]string{
 }
 var RecordCondition_Expressions_LogicalOperator_value = map[string]int32{
 	"LOGICAL_OPERATOR_UNSPECIFIED": 0,
-	"AND":                          1,
+	"AND": 1,
 }
 
 func (x RecordCondition_Expressions_LogicalOperator) String() string {
@@ -411,8 +411,8 @@ var TransformationSummary_TransformationResultCode_name = map[int32]string{
 }
 var TransformationSummary_TransformationResultCode_value = map[string]int32{
 	"TRANSFORMATION_RESULT_CODE_UNSPECIFIED": 0,
-	"SUCCESS":                                1,
-	"ERROR":                                  2,
+	"SUCCESS": 1,
+	"ERROR":   2,
 }
 
 func (x TransformationSummary_TransformationResultCode) String() string {

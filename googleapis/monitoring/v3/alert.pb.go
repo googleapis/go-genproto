@@ -48,9 +48,9 @@ var AlertPolicy_ConditionCombinerType_name = map[int32]string{
 	3: "AND_WITH_MATCHING_RESOURCE",
 }
 var AlertPolicy_ConditionCombinerType_value = map[string]int32{
-	"COMBINE_UNSPECIFIED":        0,
-	"AND":                        1,
-	"OR":                         2,
+	"COMBINE_UNSPECIFIED": 0,
+	"AND": 1,
+	"OR":  2,
 	"AND_WITH_MATCHING_RESOURCE": 3,
 }
 
