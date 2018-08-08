@@ -82,10 +82,10 @@ var CryptoKeyVersion_CryptoKeyVersionState_name = map[int32]string{
 }
 var CryptoKeyVersion_CryptoKeyVersionState_value = map[string]int32{
 	"CRYPTO_KEY_VERSION_STATE_UNSPECIFIED": 0,
-	"ENABLED":                              1,
-	"DISABLED":                             2,
-	"DESTROYED":                            3,
-	"DESTROY_SCHEDULED":                    4,
+	"ENABLED":           1,
+	"DISABLED":          2,
+	"DESTROYED":         3,
+	"DESTROY_SCHEDULED": 4,
 }
 
 func (x CryptoKeyVersion_CryptoKeyVersionState) String() string {
