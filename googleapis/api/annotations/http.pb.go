@@ -42,7 +42,7 @@ func (m *Http) Reset()         { *m = Http{} }
 func (m *Http) String() string { return proto.CompactTextString(m) }
 func (*Http) ProtoMessage()    {}
 func (*Http) Descriptor() ([]byte, []int) {
-	return fileDescriptor_http_9c97bbd8b94894d4, []int{0}
+	return fileDescriptor_http_98c2ff955ca74b42, []int{0}
 }
 func (m *Http) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Http.Unmarshal(m, b)
@@ -328,7 +328,7 @@ func (m *HttpRule) Reset()         { *m = HttpRule{} }
 func (m *HttpRule) String() string { return proto.CompactTextString(m) }
 func (*HttpRule) ProtoMessage()    {}
 func (*HttpRule) Descriptor() ([]byte, []int) {
-	return fileDescriptor_http_9c97bbd8b94894d4, []int{1}
+	return fileDescriptor_http_98c2ff955ca74b42, []int{1}
 }
 func (m *HttpRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpRule.Unmarshal(m, b)
@@ -603,7 +603,7 @@ func (m *CustomHttpPattern) Reset()         { *m = CustomHttpPattern{} }
 func (m *CustomHttpPattern) String() string { return proto.CompactTextString(m) }
 func (*CustomHttpPattern) ProtoMessage()    {}
 func (*CustomHttpPattern) Descriptor() ([]byte, []int) {
-	return fileDescriptor_http_9c97bbd8b94894d4, []int{2}
+	return fileDescriptor_http_98c2ff955ca74b42, []int{2}
 }
 func (m *CustomHttpPattern) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomHttpPattern.Unmarshal(m, b)
@@ -643,9 +643,9 @@ func init() {
 	proto.RegisterType((*CustomHttpPattern)(nil), "google.api.CustomHttpPattern")
 }
 
-func init() { proto.RegisterFile("google/api/http.proto", fileDescriptor_http_9c97bbd8b94894d4) }
+func init() { proto.RegisterFile("google/api/http.proto", fileDescriptor_http_98c2ff955ca74b42) }
 
-var fileDescriptor_http_9c97bbd8b94894d4 = []byte{
+var fileDescriptor_http_98c2ff955ca74b42 = []byte{
 	// 401 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0x41, 0xab, 0x13, 0x31,
 	0x10, 0xc7, 0xdd, 0x76, 0xdb, 0xd7, 0x4e, 0x41, 0x30, 0x3e, 0x25, 0x88, 0x62, 0xe9, 0xa9, 0x78,

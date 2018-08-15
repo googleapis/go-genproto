@@ -43,7 +43,7 @@ func (m *UpdateFieldRequest) Reset()         { *m = UpdateFieldRequest{} }
 func (m *UpdateFieldRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateFieldRequest) ProtoMessage()    {}
 func (*UpdateFieldRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_cb5d0089de813520, []int{0}
+	return fileDescriptor_firestore_admin_1ffbeeca3c483e85, []int{0}
 }
 func (m *UpdateFieldRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateFieldRequest.Unmarshal(m, b)
@@ -91,7 +91,7 @@ func (m *GetFieldRequest) Reset()         { *m = GetFieldRequest{} }
 func (m *GetFieldRequest) String() string { return proto.CompactTextString(m) }
 func (*GetFieldRequest) ProtoMessage()    {}
 func (*GetFieldRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_cb5d0089de813520, []int{1}
+	return fileDescriptor_firestore_admin_1ffbeeca3c483e85, []int{1}
 }
 func (m *GetFieldRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetFieldRequest.Unmarshal(m, b)
@@ -144,7 +144,7 @@ func (m *ListFieldsRequest) Reset()         { *m = ListFieldsRequest{} }
 func (m *ListFieldsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListFieldsRequest) ProtoMessage()    {}
 func (*ListFieldsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_cb5d0089de813520, []int{2}
+	return fileDescriptor_firestore_admin_1ffbeeca3c483e85, []int{2}
 }
 func (m *ListFieldsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFieldsRequest.Unmarshal(m, b)
@@ -208,7 +208,7 @@ func (m *ListFieldsResponse) Reset()         { *m = ListFieldsResponse{} }
 func (m *ListFieldsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListFieldsResponse) ProtoMessage()    {}
 func (*ListFieldsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_firestore_admin_cb5d0089de813520, []int{3}
+	return fileDescriptor_firestore_admin_1ffbeeca3c483e85, []int{3}
 }
 func (m *ListFieldsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFieldsResponse.Unmarshal(m, b)
@@ -428,10 +428,10 @@ var _FirestoreAdmin_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/admin/v1beta2/firestore_admin.proto", fileDescriptor_firestore_admin_cb5d0089de813520)
+	proto.RegisterFile("google/firestore/admin/v1beta2/firestore_admin.proto", fileDescriptor_firestore_admin_1ffbeeca3c483e85)
 }
 
-var fileDescriptor_firestore_admin_cb5d0089de813520 = []byte{
+var fileDescriptor_firestore_admin_1ffbeeca3c483e85 = []byte{
 	// 610 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0xcd, 0x6e, 0xd3, 0x4c,
 	0x14, 0x95, 0xd3, 0xb4, 0x6a, 0xa7, 0xfa, 0xbe, 0x8a, 0x41, 0x42, 0x91, 0x4b, 0x51, 0x64, 0x28,

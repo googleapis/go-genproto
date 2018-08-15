@@ -34,7 +34,7 @@ func (m *ImageClassificationDatasetMetadata) Reset()         { *m = ImageClassif
 func (m *ImageClassificationDatasetMetadata) String() string { return proto.CompactTextString(m) }
 func (*ImageClassificationDatasetMetadata) ProtoMessage()    {}
 func (*ImageClassificationDatasetMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_image_2de9cf011ac64c7a, []int{0}
+	return fileDescriptor_image_154474385dd5e971, []int{0}
 }
 func (m *ImageClassificationDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageClassificationDatasetMetadata.Unmarshal(m, b)
@@ -87,7 +87,7 @@ func (m *ImageClassificationModelMetadata) Reset()         { *m = ImageClassific
 func (m *ImageClassificationModelMetadata) String() string { return proto.CompactTextString(m) }
 func (*ImageClassificationModelMetadata) ProtoMessage()    {}
 func (*ImageClassificationModelMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_image_2de9cf011ac64c7a, []int{1}
+	return fileDescriptor_image_154474385dd5e971, []int{1}
 }
 func (m *ImageClassificationModelMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageClassificationModelMetadata.Unmarshal(m, b)
@@ -141,10 +141,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/image.proto", fileDescriptor_image_2de9cf011ac64c7a)
+	proto.RegisterFile("google/cloud/automl/v1beta1/image.proto", fileDescriptor_image_154474385dd5e971)
 }
 
-var fileDescriptor_image_2de9cf011ac64c7a = []byte{
+var fileDescriptor_image_154474385dd5e971 = []byte{
 	// 338 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xb1, 0x6a, 0xe3, 0x40,
 	0x10, 0x86, 0xd1, 0x99, 0x3b, 0xf0, 0xfa, 0xee, 0x0a, 0xa5, 0x11, 0x4e, 0x82, 0x1d, 0x35, 0x71,
