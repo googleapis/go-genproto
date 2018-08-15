@@ -79,7 +79,7 @@ func (x Note_Kind) String() string {
 	return proto.EnumName(Note_Kind_name, int32(x))
 }
 func (Note_Kind) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{2, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{2, 0}
 }
 
 // Types of platforms.
@@ -113,7 +113,7 @@ func (x Deployable_Deployment_Platform) String() string {
 	return proto.EnumName(Deployable_Deployment_Platform_name, int32(x))
 }
 func (Deployable_Deployment_Platform) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{3, 0, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{3, 0, 0}
 }
 
 // Analysis status for a resource.
@@ -156,7 +156,7 @@ func (x Discovery_Discovered_AnalysisStatus) String() string {
 	return proto.EnumName(Discovery_Discovered_AnalysisStatus_name, int32(x))
 }
 func (Discovery_Discovered_AnalysisStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{4, 0, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{4, 0, 0}
 }
 
 // Public key formats
@@ -186,7 +186,7 @@ func (x BuildSignature_KeyType) String() string {
 	return proto.EnumName(BuildSignature_KeyType_name, int32(x))
 }
 func (BuildSignature_KeyType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{6, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{6, 0}
 }
 
 // Type (for example schema) of the attestation payload that was signed.
@@ -215,7 +215,7 @@ func (x PgpSignedAttestation_ContentType) String() string {
 	return proto.EnumName(PgpSignedAttestation_ContentType_name, int32(x))
 }
 func (PgpSignedAttestation_ContentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{7, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{7, 0}
 }
 
 // `Occurrence` includes information about analysis occurrences for an image.
@@ -262,7 +262,7 @@ func (m *Occurrence) Reset()         { *m = Occurrence{} }
 func (m *Occurrence) String() string { return proto.CompactTextString(m) }
 func (*Occurrence) ProtoMessage()    {}
 func (*Occurrence) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{0}
 }
 func (m *Occurrence) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Occurrence.Unmarshal(m, b)
@@ -281,6 +281,47 @@ func (m *Occurrence) XXX_DiscardUnknown() {
 }
 
 var xxx_messageInfo_Occurrence proto.InternalMessageInfo
+
+type isOccurrence_Details interface {
+	isOccurrence_Details()
+}
+
+type Occurrence_VulnerabilityDetails struct {
+	VulnerabilityDetails *VulnerabilityType_VulnerabilityDetails `protobuf:"bytes,8,opt,name=vulnerability_details,json=vulnerabilityDetails,proto3,oneof"`
+}
+type Occurrence_BuildDetails struct {
+	BuildDetails *BuildDetails `protobuf:"bytes,7,opt,name=build_details,json=buildDetails,proto3,oneof"`
+}
+type Occurrence_DerivedImage struct {
+	DerivedImage *DockerImage_Derived `protobuf:"bytes,11,opt,name=derived_image,json=derivedImage,proto3,oneof"`
+}
+type Occurrence_Installation struct {
+	Installation *PackageManager_Installation `protobuf:"bytes,12,opt,name=installation,proto3,oneof"`
+}
+type Occurrence_Deployment struct {
+	Deployment *Deployable_Deployment `protobuf:"bytes,14,opt,name=deployment,proto3,oneof"`
+}
+type Occurrence_Discovered struct {
+	Discovered *Discovery_Discovered `protobuf:"bytes,15,opt,name=discovered,proto3,oneof"`
+}
+type Occurrence_Attestation struct {
+	Attestation *AttestationAuthority_Attestation `protobuf:"bytes,16,opt,name=attestation,proto3,oneof"`
+}
+
+func (*Occurrence_VulnerabilityDetails) isOccurrence_Details() {}
+func (*Occurrence_BuildDetails) isOccurrence_Details()         {}
+func (*Occurrence_DerivedImage) isOccurrence_Details()         {}
+func (*Occurrence_Installation) isOccurrence_Details()         {}
+func (*Occurrence_Deployment) isOccurrence_Details()           {}
+func (*Occurrence_Discovered) isOccurrence_Details()           {}
+func (*Occurrence_Attestation) isOccurrence_Details()          {}
+
+func (m *Occurrence) GetDetails() isOccurrence_Details {
+	if m != nil {
+		return m.Details
+	}
+	return nil
+}
 
 func (m *Occurrence) GetName() string {
 	if m != nil {
@@ -315,59 +356,6 @@ func (m *Occurrence) GetKind() Note_Kind {
 		return m.Kind
 	}
 	return Note_KIND_UNSPECIFIED
-}
-
-type isOccurrence_Details interface {
-	isOccurrence_Details()
-}
-
-type Occurrence_VulnerabilityDetails struct {
-	VulnerabilityDetails *VulnerabilityType_VulnerabilityDetails `protobuf:"bytes,8,opt,name=vulnerability_details,json=vulnerabilityDetails,proto3,oneof"`
-}
-
-type Occurrence_BuildDetails struct {
-	BuildDetails *BuildDetails `protobuf:"bytes,7,opt,name=build_details,json=buildDetails,proto3,oneof"`
-}
-
-type Occurrence_DerivedImage struct {
-	DerivedImage *DockerImage_Derived `protobuf:"bytes,11,opt,name=derived_image,json=derivedImage,proto3,oneof"`
-}
-
-type Occurrence_Installation struct {
-	Installation *PackageManager_Installation `protobuf:"bytes,12,opt,name=installation,proto3,oneof"`
-}
-
-type Occurrence_Deployment struct {
-	Deployment *Deployable_Deployment `protobuf:"bytes,14,opt,name=deployment,proto3,oneof"`
-}
-
-type Occurrence_Discovered struct {
-	Discovered *Discovery_Discovered `protobuf:"bytes,15,opt,name=discovered,proto3,oneof"`
-}
-
-type Occurrence_Attestation struct {
-	Attestation *AttestationAuthority_Attestation `protobuf:"bytes,16,opt,name=attestation,proto3,oneof"`
-}
-
-func (*Occurrence_VulnerabilityDetails) isOccurrence_Details() {}
-
-func (*Occurrence_BuildDetails) isOccurrence_Details() {}
-
-func (*Occurrence_DerivedImage) isOccurrence_Details() {}
-
-func (*Occurrence_Installation) isOccurrence_Details() {}
-
-func (*Occurrence_Deployment) isOccurrence_Details() {}
-
-func (*Occurrence_Discovered) isOccurrence_Details() {}
-
-func (*Occurrence_Attestation) isOccurrence_Details() {}
-
-func (m *Occurrence) GetDetails() isOccurrence_Details {
-	if m != nil {
-		return m.Details
-	}
-	return nil
 }
 
 func (m *Occurrence) GetVulnerabilityDetails() *VulnerabilityType_VulnerabilityDetails {
@@ -627,7 +615,7 @@ func (m *Resource) Reset()         { *m = Resource{} }
 func (m *Resource) String() string { return proto.CompactTextString(m) }
 func (*Resource) ProtoMessage()    {}
 func (*Resource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{1}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{1}
 }
 func (m *Resource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Resource.Unmarshal(m, b)
@@ -710,7 +698,7 @@ func (m *Note) Reset()         { *m = Note{} }
 func (m *Note) String() string { return proto.CompactTextString(m) }
 func (*Note) ProtoMessage()    {}
 func (*Note) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{2}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{2}
 }
 func (m *Note) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Note.Unmarshal(m, b)
@@ -729,6 +717,47 @@ func (m *Note) XXX_DiscardUnknown() {
 }
 
 var xxx_messageInfo_Note proto.InternalMessageInfo
+
+type isNote_NoteType interface {
+	isNote_NoteType()
+}
+
+type Note_VulnerabilityType struct {
+	VulnerabilityType *VulnerabilityType `protobuf:"bytes,6,opt,name=vulnerability_type,json=vulnerabilityType,proto3,oneof"`
+}
+type Note_BuildType struct {
+	BuildType *BuildType `protobuf:"bytes,8,opt,name=build_type,json=buildType,proto3,oneof"`
+}
+type Note_BaseImage struct {
+	BaseImage *DockerImage_Basis `protobuf:"bytes,13,opt,name=base_image,json=baseImage,proto3,oneof"`
+}
+type Note_Package struct {
+	Package *PackageManager_Package `protobuf:"bytes,14,opt,name=package,proto3,oneof"`
+}
+type Note_Deployable struct {
+	Deployable *Deployable `protobuf:"bytes,17,opt,name=deployable,proto3,oneof"`
+}
+type Note_Discovery struct {
+	Discovery *Discovery `protobuf:"bytes,18,opt,name=discovery,proto3,oneof"`
+}
+type Note_AttestationAuthority struct {
+	AttestationAuthority *AttestationAuthority `protobuf:"bytes,19,opt,name=attestation_authority,json=attestationAuthority,proto3,oneof"`
+}
+
+func (*Note_VulnerabilityType) isNote_NoteType()    {}
+func (*Note_BuildType) isNote_NoteType()            {}
+func (*Note_BaseImage) isNote_NoteType()            {}
+func (*Note_Package) isNote_NoteType()              {}
+func (*Note_Deployable) isNote_NoteType()           {}
+func (*Note_Discovery) isNote_NoteType()            {}
+func (*Note_AttestationAuthority) isNote_NoteType() {}
+
+func (m *Note) GetNoteType() isNote_NoteType {
+	if m != nil {
+		return m.NoteType
+	}
+	return nil
+}
 
 func (m *Note) GetName() string {
 	if m != nil {
@@ -756,59 +785,6 @@ func (m *Note) GetKind() Note_Kind {
 		return m.Kind
 	}
 	return Note_KIND_UNSPECIFIED
-}
-
-type isNote_NoteType interface {
-	isNote_NoteType()
-}
-
-type Note_VulnerabilityType struct {
-	VulnerabilityType *VulnerabilityType `protobuf:"bytes,6,opt,name=vulnerability_type,json=vulnerabilityType,proto3,oneof"`
-}
-
-type Note_BuildType struct {
-	BuildType *BuildType `protobuf:"bytes,8,opt,name=build_type,json=buildType,proto3,oneof"`
-}
-
-type Note_BaseImage struct {
-	BaseImage *DockerImage_Basis `protobuf:"bytes,13,opt,name=base_image,json=baseImage,proto3,oneof"`
-}
-
-type Note_Package struct {
-	Package *PackageManager_Package `protobuf:"bytes,14,opt,name=package,proto3,oneof"`
-}
-
-type Note_Deployable struct {
-	Deployable *Deployable `protobuf:"bytes,17,opt,name=deployable,proto3,oneof"`
-}
-
-type Note_Discovery struct {
-	Discovery *Discovery `protobuf:"bytes,18,opt,name=discovery,proto3,oneof"`
-}
-
-type Note_AttestationAuthority struct {
-	AttestationAuthority *AttestationAuthority `protobuf:"bytes,19,opt,name=attestation_authority,json=attestationAuthority,proto3,oneof"`
-}
-
-func (*Note_VulnerabilityType) isNote_NoteType() {}
-
-func (*Note_BuildType) isNote_NoteType() {}
-
-func (*Note_BaseImage) isNote_NoteType() {}
-
-func (*Note_Package) isNote_NoteType() {}
-
-func (*Note_Deployable) isNote_NoteType() {}
-
-func (*Note_Discovery) isNote_NoteType() {}
-
-func (*Note_AttestationAuthority) isNote_NoteType() {}
-
-func (m *Note) GetNoteType() isNote_NoteType {
-	if m != nil {
-		return m.NoteType
-	}
-	return nil
 }
 
 func (m *Note) GetVulnerabilityType() *VulnerabilityType {
@@ -1072,7 +1048,7 @@ func (m *Note_RelatedUrl) Reset()         { *m = Note_RelatedUrl{} }
 func (m *Note_RelatedUrl) String() string { return proto.CompactTextString(m) }
 func (*Note_RelatedUrl) ProtoMessage()    {}
 func (*Note_RelatedUrl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{2, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{2, 0}
 }
 func (m *Note_RelatedUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Note_RelatedUrl.Unmarshal(m, b)
@@ -1119,7 +1095,7 @@ func (m *Deployable) Reset()         { *m = Deployable{} }
 func (m *Deployable) String() string { return proto.CompactTextString(m) }
 func (*Deployable) ProtoMessage()    {}
 func (*Deployable) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{3}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{3}
 }
 func (m *Deployable) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Deployable.Unmarshal(m, b)
@@ -1172,7 +1148,7 @@ func (m *Deployable_Deployment) Reset()         { *m = Deployable_Deployment{} }
 func (m *Deployable_Deployment) String() string { return proto.CompactTextString(m) }
 func (*Deployable_Deployment) ProtoMessage()    {}
 func (*Deployable_Deployment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{3, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{3, 0}
 }
 func (m *Deployable_Deployment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Deployable_Deployment.Unmarshal(m, b)
@@ -1258,7 +1234,7 @@ func (m *Discovery) Reset()         { *m = Discovery{} }
 func (m *Discovery) String() string { return proto.CompactTextString(m) }
 func (*Discovery) ProtoMessage()    {}
 func (*Discovery) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{4}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{4}
 }
 func (m *Discovery) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Discovery.Unmarshal(m, b)
@@ -1304,7 +1280,7 @@ func (m *Discovery_Discovered) Reset()         { *m = Discovery_Discovered{} }
 func (m *Discovery_Discovered) String() string { return proto.CompactTextString(m) }
 func (*Discovery_Discovered) ProtoMessage()    {}
 func (*Discovery_Discovered) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{4, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{4, 0}
 }
 func (m *Discovery_Discovered) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Discovery_Discovered.Unmarshal(m, b)
@@ -1362,7 +1338,7 @@ func (m *BuildType) Reset()         { *m = BuildType{} }
 func (m *BuildType) String() string { return proto.CompactTextString(m) }
 func (*BuildType) ProtoMessage()    {}
 func (*BuildType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{5}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{5}
 }
 func (m *BuildType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildType.Unmarshal(m, b)
@@ -1431,7 +1407,7 @@ func (m *BuildSignature) Reset()         { *m = BuildSignature{} }
 func (m *BuildSignature) String() string { return proto.CompactTextString(m) }
 func (*BuildSignature) ProtoMessage()    {}
 func (*BuildSignature) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{6}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{6}
 }
 func (m *BuildSignature) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildSignature.Unmarshal(m, b)
@@ -1519,7 +1495,7 @@ func (m *PgpSignedAttestation) Reset()         { *m = PgpSignedAttestation{} }
 func (m *PgpSignedAttestation) String() string { return proto.CompactTextString(m) }
 func (*PgpSignedAttestation) ProtoMessage()    {}
 func (*PgpSignedAttestation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{7}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{7}
 }
 func (m *PgpSignedAttestation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PgpSignedAttestation.Unmarshal(m, b)
@@ -1539,20 +1515,6 @@ func (m *PgpSignedAttestation) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PgpSignedAttestation proto.InternalMessageInfo
 
-func (m *PgpSignedAttestation) GetSignature() string {
-	if m != nil {
-		return m.Signature
-	}
-	return ""
-}
-
-func (m *PgpSignedAttestation) GetContentType() PgpSignedAttestation_ContentType {
-	if m != nil {
-		return m.ContentType
-	}
-	return PgpSignedAttestation_CONTENT_TYPE_UNSPECIFIED
-}
-
 type isPgpSignedAttestation_KeyId interface {
 	isPgpSignedAttestation_KeyId()
 }
@@ -1568,6 +1530,20 @@ func (m *PgpSignedAttestation) GetKeyId() isPgpSignedAttestation_KeyId {
 		return m.KeyId
 	}
 	return nil
+}
+
+func (m *PgpSignedAttestation) GetSignature() string {
+	if m != nil {
+		return m.Signature
+	}
+	return ""
+}
+
+func (m *PgpSignedAttestation) GetContentType() PgpSignedAttestation_ContentType {
+	if m != nil {
+		return m.ContentType
+	}
+	return PgpSignedAttestation_CONTENT_TYPE_UNSPECIFIED
 }
 
 func (m *PgpSignedAttestation) GetPgpKeyId() string {
@@ -1647,7 +1623,7 @@ func (m *AttestationAuthority) Reset()         { *m = AttestationAuthority{} }
 func (m *AttestationAuthority) String() string { return proto.CompactTextString(m) }
 func (*AttestationAuthority) ProtoMessage()    {}
 func (*AttestationAuthority) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{8}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{8}
 }
 func (m *AttestationAuthority) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AttestationAuthority.Unmarshal(m, b)
@@ -1697,7 +1673,7 @@ func (m *AttestationAuthority_AttestationAuthorityHint) String() string {
 }
 func (*AttestationAuthority_AttestationAuthorityHint) ProtoMessage() {}
 func (*AttestationAuthority_AttestationAuthorityHint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{8, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{8, 0}
 }
 func (m *AttestationAuthority_AttestationAuthorityHint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AttestationAuthority_AttestationAuthorityHint.Unmarshal(m, b)
@@ -1749,7 +1725,7 @@ func (m *AttestationAuthority_Attestation) Reset()         { *m = AttestationAut
 func (m *AttestationAuthority_Attestation) String() string { return proto.CompactTextString(m) }
 func (*AttestationAuthority_Attestation) ProtoMessage()    {}
 func (*AttestationAuthority_Attestation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{8, 1}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{8, 1}
 }
 func (m *AttestationAuthority_Attestation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AttestationAuthority_Attestation.Unmarshal(m, b)
@@ -1874,7 +1850,7 @@ func (m *BuildDetails) Reset()         { *m = BuildDetails{} }
 func (m *BuildDetails) String() string { return proto.CompactTextString(m) }
 func (*BuildDetails) ProtoMessage()    {}
 func (*BuildDetails) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{9}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{9}
 }
 func (m *BuildDetails) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildDetails.Unmarshal(m, b)
@@ -1926,7 +1902,7 @@ func (m *ScanConfig) Reset()         { *m = ScanConfig{} }
 func (m *ScanConfig) String() string { return proto.CompactTextString(m) }
 func (*ScanConfig) ProtoMessage()    {}
 func (*ScanConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{10}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{10}
 }
 func (m *ScanConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanConfig.Unmarshal(m, b)
@@ -1981,7 +1957,7 @@ func (m *GetOccurrenceRequest) Reset()         { *m = GetOccurrenceRequest{} }
 func (m *GetOccurrenceRequest) String() string { return proto.CompactTextString(m) }
 func (*GetOccurrenceRequest) ProtoMessage()    {}
 func (*GetOccurrenceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{11}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{11}
 }
 func (m *GetOccurrenceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetOccurrenceRequest.Unmarshal(m, b)
@@ -2033,7 +2009,7 @@ func (m *ListOccurrencesRequest) Reset()         { *m = ListOccurrencesRequest{}
 func (m *ListOccurrencesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListOccurrencesRequest) ProtoMessage()    {}
 func (*ListOccurrencesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{12}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{12}
 }
 func (m *ListOccurrencesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOccurrencesRequest.Unmarshal(m, b)
@@ -2112,7 +2088,7 @@ func (m *ListOccurrencesResponse) Reset()         { *m = ListOccurrencesResponse
 func (m *ListOccurrencesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListOccurrencesResponse) ProtoMessage()    {}
 func (*ListOccurrencesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{13}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{13}
 }
 func (m *ListOccurrencesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOccurrencesResponse.Unmarshal(m, b)
@@ -2160,7 +2136,7 @@ func (m *DeleteOccurrenceRequest) Reset()         { *m = DeleteOccurrenceRequest
 func (m *DeleteOccurrenceRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteOccurrenceRequest) ProtoMessage()    {}
 func (*DeleteOccurrenceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{14}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{14}
 }
 func (m *DeleteOccurrenceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteOccurrenceRequest.Unmarshal(m, b)
@@ -2205,7 +2181,7 @@ func (m *CreateOccurrenceRequest) Reset()         { *m = CreateOccurrenceRequest
 func (m *CreateOccurrenceRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateOccurrenceRequest) ProtoMessage()    {}
 func (*CreateOccurrenceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{15}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{15}
 }
 func (m *CreateOccurrenceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateOccurrenceRequest.Unmarshal(m, b)
@@ -2264,7 +2240,7 @@ func (m *UpdateOccurrenceRequest) Reset()         { *m = UpdateOccurrenceRequest
 func (m *UpdateOccurrenceRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateOccurrenceRequest) ProtoMessage()    {}
 func (*UpdateOccurrenceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{16}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{16}
 }
 func (m *UpdateOccurrenceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateOccurrenceRequest.Unmarshal(m, b)
@@ -2319,7 +2295,7 @@ func (m *GetNoteRequest) Reset()         { *m = GetNoteRequest{} }
 func (m *GetNoteRequest) String() string { return proto.CompactTextString(m) }
 func (*GetNoteRequest) ProtoMessage()    {}
 func (*GetNoteRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{17}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{17}
 }
 func (m *GetNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNoteRequest.Unmarshal(m, b)
@@ -2360,7 +2336,7 @@ func (m *GetOccurrenceNoteRequest) Reset()         { *m = GetOccurrenceNoteReque
 func (m *GetOccurrenceNoteRequest) String() string { return proto.CompactTextString(m) }
 func (*GetOccurrenceNoteRequest) ProtoMessage()    {}
 func (*GetOccurrenceNoteRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{18}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{18}
 }
 func (m *GetOccurrenceNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetOccurrenceNoteRequest.Unmarshal(m, b)
@@ -2410,7 +2386,7 @@ func (m *ListNotesRequest) Reset()         { *m = ListNotesRequest{} }
 func (m *ListNotesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListNotesRequest) ProtoMessage()    {}
 func (*ListNotesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{19}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{19}
 }
 func (m *ListNotesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNotesRequest.Unmarshal(m, b)
@@ -2481,7 +2457,7 @@ func (m *ListNotesResponse) Reset()         { *m = ListNotesResponse{} }
 func (m *ListNotesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListNotesResponse) ProtoMessage()    {}
 func (*ListNotesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{20}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{20}
 }
 func (m *ListNotesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNotesResponse.Unmarshal(m, b)
@@ -2529,7 +2505,7 @@ func (m *DeleteNoteRequest) Reset()         { *m = DeleteNoteRequest{} }
 func (m *DeleteNoteRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteNoteRequest) ProtoMessage()    {}
 func (*DeleteNoteRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{21}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{21}
 }
 func (m *DeleteNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteNoteRequest.Unmarshal(m, b)
@@ -2578,7 +2554,7 @@ func (m *CreateNoteRequest) Reset()         { *m = CreateNoteRequest{} }
 func (m *CreateNoteRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateNoteRequest) ProtoMessage()    {}
 func (*CreateNoteRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{22}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{22}
 }
 func (m *CreateNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateNoteRequest.Unmarshal(m, b)
@@ -2644,7 +2620,7 @@ func (m *UpdateNoteRequest) Reset()         { *m = UpdateNoteRequest{} }
 func (m *UpdateNoteRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateNoteRequest) ProtoMessage()    {}
 func (*UpdateNoteRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{23}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{23}
 }
 func (m *UpdateNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateNoteRequest.Unmarshal(m, b)
@@ -2705,7 +2681,7 @@ func (m *ListNoteOccurrencesRequest) Reset()         { *m = ListNoteOccurrencesR
 func (m *ListNoteOccurrencesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListNoteOccurrencesRequest) ProtoMessage()    {}
 func (*ListNoteOccurrencesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{24}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{24}
 }
 func (m *ListNoteOccurrencesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNoteOccurrencesRequest.Unmarshal(m, b)
@@ -2768,7 +2744,7 @@ func (m *ListNoteOccurrencesResponse) Reset()         { *m = ListNoteOccurrences
 func (m *ListNoteOccurrencesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListNoteOccurrencesResponse) ProtoMessage()    {}
 func (*ListNoteOccurrencesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{25}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{25}
 }
 func (m *ListNoteOccurrencesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNoteOccurrencesResponse.Unmarshal(m, b)
@@ -2819,7 +2795,7 @@ func (m *CreateOperationRequest) Reset()         { *m = CreateOperationRequest{}
 func (m *CreateOperationRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateOperationRequest) ProtoMessage()    {}
 func (*CreateOperationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{26}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{26}
 }
 func (m *CreateOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateOperationRequest.Unmarshal(m, b)
@@ -2877,7 +2853,7 @@ func (m *UpdateOperationRequest) Reset()         { *m = UpdateOperationRequest{}
 func (m *UpdateOperationRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateOperationRequest) ProtoMessage()    {}
 func (*UpdateOperationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{27}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{27}
 }
 func (m *UpdateOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateOperationRequest.Unmarshal(m, b)
@@ -2934,7 +2910,7 @@ func (m *OperationMetadata) Reset()         { *m = OperationMetadata{} }
 func (m *OperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*OperationMetadata) ProtoMessage()    {}
 func (*OperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{28}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{28}
 }
 func (m *OperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationMetadata.Unmarshal(m, b)
@@ -2983,7 +2959,7 @@ func (m *GetVulnzOccurrencesSummaryRequest) Reset()         { *m = GetVulnzOccur
 func (m *GetVulnzOccurrencesSummaryRequest) String() string { return proto.CompactTextString(m) }
 func (*GetVulnzOccurrencesSummaryRequest) ProtoMessage()    {}
 func (*GetVulnzOccurrencesSummaryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{29}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{29}
 }
 func (m *GetVulnzOccurrencesSummaryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetVulnzOccurrencesSummaryRequest.Unmarshal(m, b)
@@ -3032,7 +3008,7 @@ func (m *GetVulnzOccurrencesSummaryResponse) Reset()         { *m = GetVulnzOccu
 func (m *GetVulnzOccurrencesSummaryResponse) String() string { return proto.CompactTextString(m) }
 func (*GetVulnzOccurrencesSummaryResponse) ProtoMessage()    {}
 func (*GetVulnzOccurrencesSummaryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{30}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{30}
 }
 func (m *GetVulnzOccurrencesSummaryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetVulnzOccurrencesSummaryResponse.Unmarshal(m, b)
@@ -3078,7 +3054,7 @@ func (m *GetVulnzOccurrencesSummaryResponse_SeverityCount) String() string {
 }
 func (*GetVulnzOccurrencesSummaryResponse_SeverityCount) ProtoMessage() {}
 func (*GetVulnzOccurrencesSummaryResponse_SeverityCount) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{30, 0}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{30, 0}
 }
 func (m *GetVulnzOccurrencesSummaryResponse_SeverityCount) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetVulnzOccurrencesSummaryResponse_SeverityCount.Unmarshal(m, b)
@@ -3127,7 +3103,7 @@ func (m *GetScanConfigRequest) Reset()         { *m = GetScanConfigRequest{} }
 func (m *GetScanConfigRequest) String() string { return proto.CompactTextString(m) }
 func (*GetScanConfigRequest) ProtoMessage()    {}
 func (*GetScanConfigRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{31}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{31}
 }
 func (m *GetScanConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetScanConfigRequest.Unmarshal(m, b)
@@ -3174,7 +3150,7 @@ func (m *ListScanConfigsRequest) Reset()         { *m = ListScanConfigsRequest{}
 func (m *ListScanConfigsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListScanConfigsRequest) ProtoMessage()    {}
 func (*ListScanConfigsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{32}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{32}
 }
 func (m *ListScanConfigsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListScanConfigsRequest.Unmarshal(m, b)
@@ -3237,7 +3213,7 @@ func (m *ListScanConfigsResponse) Reset()         { *m = ListScanConfigsResponse
 func (m *ListScanConfigsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListScanConfigsResponse) ProtoMessage()    {}
 func (*ListScanConfigsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{33}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{33}
 }
 func (m *ListScanConfigsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListScanConfigsResponse.Unmarshal(m, b)
@@ -3289,7 +3265,7 @@ func (m *UpdateScanConfigRequest) Reset()         { *m = UpdateScanConfigRequest
 func (m *UpdateScanConfigRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateScanConfigRequest) ProtoMessage()    {}
 func (*UpdateScanConfigRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_containeranalysis_7302a99efbbe81f1, []int{34}
+	return fileDescriptor_containeranalysis_18accdd02d5dedc0, []int{34}
 }
 func (m *UpdateScanConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateScanConfigRequest.Unmarshal(m, b)
@@ -4222,10 +4198,10 @@ var _ContainerAnalysis_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/containeranalysis/v1alpha1/containeranalysis.proto", fileDescriptor_containeranalysis_7302a99efbbe81f1)
+	proto.RegisterFile("google/devtools/containeranalysis/v1alpha1/containeranalysis.proto", fileDescriptor_containeranalysis_18accdd02d5dedc0)
 }
 
-var fileDescriptor_containeranalysis_7302a99efbbe81f1 = []byte{
+var fileDescriptor_containeranalysis_18accdd02d5dedc0 = []byte{
 	// 3256 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x5b, 0xdb, 0x6f, 0x23, 0x57,
 	0x19, 0xdf, 0xc9, 0xd5, 0xfe, 0x9c, 0x8b, 0x73, 0x36, 0xbb, 0xeb, 0x7a, 0x7b, 0x49, 0xa7, 0x94,

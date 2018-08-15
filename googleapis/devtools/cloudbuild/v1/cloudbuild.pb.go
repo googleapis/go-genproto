@@ -77,7 +77,7 @@ func (x Build_Status) String() string {
 	return proto.EnumName(Build_Status_name, int32(x))
 }
 func (Build_Status) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{10, 0}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{10, 0}
 }
 
 // Specifies the hash algorithm, if any.
@@ -107,7 +107,7 @@ func (x Hash_HashType) String() string {
 	return proto.EnumName(Hash_HashType_name, int32(x))
 }
 func (Hash_HashType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{16, 0}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{16, 0}
 }
 
 // Specifies the manner in which the build should be verified, if at all.
@@ -133,7 +133,7 @@ func (x BuildOptions_VerifyOption) String() string {
 	return proto.EnumName(BuildOptions_VerifyOption_name, int32(x))
 }
 func (BuildOptions_VerifyOption) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{30, 0}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{30, 0}
 }
 
 // Supported VM sizes.
@@ -163,7 +163,7 @@ func (x BuildOptions_MachineType) String() string {
 	return proto.EnumName(BuildOptions_MachineType_name, int32(x))
 }
 func (BuildOptions_MachineType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{30, 1}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{30, 1}
 }
 
 // Specifies the behavior when there is an error in the substitution checks.
@@ -190,7 +190,7 @@ func (x BuildOptions_SubstitutionOption) String() string {
 	return proto.EnumName(BuildOptions_SubstitutionOption_name, int32(x))
 }
 func (BuildOptions_SubstitutionOption) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{30, 2}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{30, 2}
 }
 
 // Specifies the behavior when writing build logs to Google Cloud Storage.
@@ -221,7 +221,7 @@ func (x BuildOptions_LogStreamingOption) String() string {
 	return proto.EnumName(BuildOptions_LogStreamingOption_name, int32(x))
 }
 func (BuildOptions_LogStreamingOption) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{30, 3}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{30, 3}
 }
 
 // Specifies a build to retry.
@@ -239,7 +239,7 @@ func (m *RetryBuildRequest) Reset()         { *m = RetryBuildRequest{} }
 func (m *RetryBuildRequest) String() string { return proto.CompactTextString(m) }
 func (*RetryBuildRequest) ProtoMessage()    {}
 func (*RetryBuildRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{0}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{0}
 }
 func (m *RetryBuildRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RetryBuildRequest.Unmarshal(m, b)
@@ -290,7 +290,7 @@ func (m *RunBuildTriggerRequest) Reset()         { *m = RunBuildTriggerRequest{}
 func (m *RunBuildTriggerRequest) String() string { return proto.CompactTextString(m) }
 func (*RunBuildTriggerRequest) ProtoMessage()    {}
 func (*RunBuildTriggerRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{1}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{1}
 }
 func (m *RunBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunBuildTriggerRequest.Unmarshal(m, b)
@@ -354,7 +354,7 @@ func (m *StorageSource) Reset()         { *m = StorageSource{} }
 func (m *StorageSource) String() string { return proto.CompactTextString(m) }
 func (*StorageSource) ProtoMessage()    {}
 func (*StorageSource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{2}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{2}
 }
 func (m *StorageSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StorageSource.Unmarshal(m, b)
@@ -425,7 +425,7 @@ func (m *RepoSource) Reset()         { *m = RepoSource{} }
 func (m *RepoSource) String() string { return proto.CompactTextString(m) }
 func (*RepoSource) ProtoMessage()    {}
 func (*RepoSource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{3}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{3}
 }
 func (m *RepoSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RepoSource.Unmarshal(m, b)
@@ -445,6 +445,31 @@ func (m *RepoSource) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RepoSource proto.InternalMessageInfo
 
+type isRepoSource_Revision interface {
+	isRepoSource_Revision()
+}
+
+type RepoSource_BranchName struct {
+	BranchName string `protobuf:"bytes,3,opt,name=branch_name,json=branchName,proto3,oneof"`
+}
+type RepoSource_TagName struct {
+	TagName string `protobuf:"bytes,4,opt,name=tag_name,json=tagName,proto3,oneof"`
+}
+type RepoSource_CommitSha struct {
+	CommitSha string `protobuf:"bytes,5,opt,name=commit_sha,json=commitSha,proto3,oneof"`
+}
+
+func (*RepoSource_BranchName) isRepoSource_Revision() {}
+func (*RepoSource_TagName) isRepoSource_Revision()    {}
+func (*RepoSource_CommitSha) isRepoSource_Revision()  {}
+
+func (m *RepoSource) GetRevision() isRepoSource_Revision {
+	if m != nil {
+		return m.Revision
+	}
+	return nil
+}
+
 func (m *RepoSource) GetProjectId() string {
 	if m != nil {
 		return m.ProjectId
@@ -457,35 +482,6 @@ func (m *RepoSource) GetRepoName() string {
 		return m.RepoName
 	}
 	return ""
-}
-
-type isRepoSource_Revision interface {
-	isRepoSource_Revision()
-}
-
-type RepoSource_BranchName struct {
-	BranchName string `protobuf:"bytes,3,opt,name=branch_name,json=branchName,proto3,oneof"`
-}
-
-type RepoSource_TagName struct {
-	TagName string `protobuf:"bytes,4,opt,name=tag_name,json=tagName,proto3,oneof"`
-}
-
-type RepoSource_CommitSha struct {
-	CommitSha string `protobuf:"bytes,5,opt,name=commit_sha,json=commitSha,proto3,oneof"`
-}
-
-func (*RepoSource_BranchName) isRepoSource_Revision() {}
-
-func (*RepoSource_TagName) isRepoSource_Revision() {}
-
-func (*RepoSource_CommitSha) isRepoSource_Revision() {}
-
-func (m *RepoSource) GetRevision() isRepoSource_Revision {
-	if m != nil {
-		return m.Revision
-	}
-	return nil
 }
 
 func (m *RepoSource) GetBranchName() string {
@@ -614,7 +610,7 @@ func (m *Source) Reset()         { *m = Source{} }
 func (m *Source) String() string { return proto.CompactTextString(m) }
 func (*Source) ProtoMessage()    {}
 func (*Source) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{4}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{4}
 }
 func (m *Source) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Source.Unmarshal(m, b)
@@ -641,14 +637,12 @@ type isSource_Source interface {
 type Source_StorageSource struct {
 	StorageSource *StorageSource `protobuf:"bytes,2,opt,name=storage_source,json=storageSource,proto3,oneof"`
 }
-
 type Source_RepoSource struct {
 	RepoSource *RepoSource `protobuf:"bytes,3,opt,name=repo_source,json=repoSource,proto3,oneof"`
 }
 
 func (*Source_StorageSource) isSource_Source() {}
-
-func (*Source_RepoSource) isSource_Source() {}
+func (*Source_RepoSource) isSource_Source()    {}
 
 func (m *Source) GetSource() isSource_Source {
 	if m != nil {
@@ -763,7 +757,7 @@ func (m *BuiltImage) Reset()         { *m = BuiltImage{} }
 func (m *BuiltImage) String() string { return proto.CompactTextString(m) }
 func (*BuiltImage) ProtoMessage()    {}
 func (*BuiltImage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{5}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{5}
 }
 func (m *BuiltImage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuiltImage.Unmarshal(m, b)
@@ -891,7 +885,7 @@ func (m *BuildStep) Reset()         { *m = BuildStep{} }
 func (m *BuildStep) String() string { return proto.CompactTextString(m) }
 func (*BuildStep) ProtoMessage()    {}
 func (*BuildStep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{6}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{6}
 }
 func (m *BuildStep) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildStep.Unmarshal(m, b)
@@ -1017,7 +1011,7 @@ func (m *Volume) Reset()         { *m = Volume{} }
 func (m *Volume) String() string { return proto.CompactTextString(m) }
 func (*Volume) ProtoMessage()    {}
 func (*Volume) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{7}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{7}
 }
 func (m *Volume) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Volume.Unmarshal(m, b)
@@ -1071,7 +1065,7 @@ func (m *Results) Reset()         { *m = Results{} }
 func (m *Results) String() string { return proto.CompactTextString(m) }
 func (*Results) ProtoMessage()    {}
 func (*Results) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{8}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{8}
 }
 func (m *Results) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Results.Unmarshal(m, b)
@@ -1137,7 +1131,7 @@ func (m *ArtifactResult) Reset()         { *m = ArtifactResult{} }
 func (m *ArtifactResult) String() string { return proto.CompactTextString(m) }
 func (*ArtifactResult) ProtoMessage()    {}
 func (*ArtifactResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{9}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{9}
 }
 func (m *ArtifactResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ArtifactResult.Unmarshal(m, b)
@@ -1271,7 +1265,7 @@ func (m *Build) Reset()         { *m = Build{} }
 func (m *Build) String() string { return proto.CompactTextString(m) }
 func (*Build) ProtoMessage()    {}
 func (*Build) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{10}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{10}
 }
 func (m *Build) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Build.Unmarshal(m, b)
@@ -1479,7 +1473,7 @@ func (m *Artifacts) Reset()         { *m = Artifacts{} }
 func (m *Artifacts) String() string { return proto.CompactTextString(m) }
 func (*Artifacts) ProtoMessage()    {}
 func (*Artifacts) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{11}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{11}
 }
 func (m *Artifacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Artifacts.Unmarshal(m, b)
@@ -1536,7 +1530,7 @@ func (m *Artifacts_ArtifactObjects) Reset()         { *m = Artifacts_ArtifactObj
 func (m *Artifacts_ArtifactObjects) String() string { return proto.CompactTextString(m) }
 func (*Artifacts_ArtifactObjects) ProtoMessage()    {}
 func (*Artifacts_ArtifactObjects) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{11, 0}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{11, 0}
 }
 func (m *Artifacts_ArtifactObjects) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Artifacts_ArtifactObjects.Unmarshal(m, b)
@@ -1592,7 +1586,7 @@ func (m *TimeSpan) Reset()         { *m = TimeSpan{} }
 func (m *TimeSpan) String() string { return proto.CompactTextString(m) }
 func (*TimeSpan) ProtoMessage()    {}
 func (*TimeSpan) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{12}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{12}
 }
 func (m *TimeSpan) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeSpan.Unmarshal(m, b)
@@ -1639,7 +1633,7 @@ func (m *BuildOperationMetadata) Reset()         { *m = BuildOperationMetadata{}
 func (m *BuildOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*BuildOperationMetadata) ProtoMessage()    {}
 func (*BuildOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{13}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{13}
 }
 func (m *BuildOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildOperationMetadata.Unmarshal(m, b)
@@ -1695,7 +1689,7 @@ func (m *SourceProvenance) Reset()         { *m = SourceProvenance{} }
 func (m *SourceProvenance) String() string { return proto.CompactTextString(m) }
 func (*SourceProvenance) ProtoMessage()    {}
 func (*SourceProvenance) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{14}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{14}
 }
 func (m *SourceProvenance) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceProvenance.Unmarshal(m, b)
@@ -1750,7 +1744,7 @@ func (m *FileHashes) Reset()         { *m = FileHashes{} }
 func (m *FileHashes) String() string { return proto.CompactTextString(m) }
 func (*FileHashes) ProtoMessage()    {}
 func (*FileHashes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{15}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{15}
 }
 func (m *FileHashes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileHashes.Unmarshal(m, b)
@@ -1792,7 +1786,7 @@ func (m *Hash) Reset()         { *m = Hash{} }
 func (m *Hash) String() string { return proto.CompactTextString(m) }
 func (*Hash) ProtoMessage()    {}
 func (*Hash) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{16}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{16}
 }
 func (m *Hash) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Hash.Unmarshal(m, b)
@@ -1847,7 +1841,7 @@ func (m *Secret) Reset()         { *m = Secret{} }
 func (m *Secret) String() string { return proto.CompactTextString(m) }
 func (*Secret) ProtoMessage()    {}
 func (*Secret) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{17}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{17}
 }
 func (m *Secret) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Secret.Unmarshal(m, b)
@@ -1896,7 +1890,7 @@ func (m *CreateBuildRequest) Reset()         { *m = CreateBuildRequest{} }
 func (m *CreateBuildRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateBuildRequest) ProtoMessage()    {}
 func (*CreateBuildRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{18}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{18}
 }
 func (m *CreateBuildRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateBuildRequest.Unmarshal(m, b)
@@ -1945,7 +1939,7 @@ func (m *GetBuildRequest) Reset()         { *m = GetBuildRequest{} }
 func (m *GetBuildRequest) String() string { return proto.CompactTextString(m) }
 func (*GetBuildRequest) ProtoMessage()    {}
 func (*GetBuildRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{19}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{19}
 }
 func (m *GetBuildRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetBuildRequest.Unmarshal(m, b)
@@ -1998,7 +1992,7 @@ func (m *ListBuildsRequest) Reset()         { *m = ListBuildsRequest{} }
 func (m *ListBuildsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListBuildsRequest) ProtoMessage()    {}
 func (*ListBuildsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{20}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{20}
 }
 func (m *ListBuildsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBuildsRequest.Unmarshal(m, b)
@@ -2061,7 +2055,7 @@ func (m *ListBuildsResponse) Reset()         { *m = ListBuildsResponse{} }
 func (m *ListBuildsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListBuildsResponse) ProtoMessage()    {}
 func (*ListBuildsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{21}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{21}
 }
 func (m *ListBuildsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBuildsResponse.Unmarshal(m, b)
@@ -2110,7 +2104,7 @@ func (m *CancelBuildRequest) Reset()         { *m = CancelBuildRequest{} }
 func (m *CancelBuildRequest) String() string { return proto.CompactTextString(m) }
 func (*CancelBuildRequest) ProtoMessage()    {}
 func (*CancelBuildRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{22}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{22}
 }
 func (m *CancelBuildRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelBuildRequest.Unmarshal(m, b)
@@ -2178,7 +2172,7 @@ func (m *BuildTrigger) Reset()         { *m = BuildTrigger{} }
 func (m *BuildTrigger) String() string { return proto.CompactTextString(m) }
 func (*BuildTrigger) ProtoMessage()    {}
 func (*BuildTrigger) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{23}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{23}
 }
 func (m *BuildTrigger) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildTrigger.Unmarshal(m, b)
@@ -2198,6 +2192,27 @@ func (m *BuildTrigger) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BuildTrigger proto.InternalMessageInfo
 
+type isBuildTrigger_BuildTemplate interface {
+	isBuildTrigger_BuildTemplate()
+}
+
+type BuildTrigger_Build struct {
+	Build *Build `protobuf:"bytes,4,opt,name=build,proto3,oneof"`
+}
+type BuildTrigger_Filename struct {
+	Filename string `protobuf:"bytes,8,opt,name=filename,proto3,oneof"`
+}
+
+func (*BuildTrigger_Build) isBuildTrigger_BuildTemplate()    {}
+func (*BuildTrigger_Filename) isBuildTrigger_BuildTemplate() {}
+
+func (m *BuildTrigger) GetBuildTemplate() isBuildTrigger_BuildTemplate {
+	if m != nil {
+		return m.BuildTemplate
+	}
+	return nil
+}
+
 func (m *BuildTrigger) GetId() string {
 	if m != nil {
 		return m.Id
@@ -2215,29 +2230,6 @@ func (m *BuildTrigger) GetDescription() string {
 func (m *BuildTrigger) GetTriggerTemplate() *RepoSource {
 	if m != nil {
 		return m.TriggerTemplate
-	}
-	return nil
-}
-
-type isBuildTrigger_BuildTemplate interface {
-	isBuildTrigger_BuildTemplate()
-}
-
-type BuildTrigger_Build struct {
-	Build *Build `protobuf:"bytes,4,opt,name=build,proto3,oneof"`
-}
-
-type BuildTrigger_Filename struct {
-	Filename string `protobuf:"bytes,8,opt,name=filename,proto3,oneof"`
-}
-
-func (*BuildTrigger_Build) isBuildTrigger_BuildTemplate() {}
-
-func (*BuildTrigger_Filename) isBuildTrigger_BuildTemplate() {}
-
-func (m *BuildTrigger) GetBuildTemplate() isBuildTrigger_BuildTemplate {
-	if m != nil {
-		return m.BuildTemplate
 	}
 	return nil
 }
@@ -2362,7 +2354,7 @@ func (m *CreateBuildTriggerRequest) Reset()         { *m = CreateBuildTriggerReq
 func (m *CreateBuildTriggerRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateBuildTriggerRequest) ProtoMessage()    {}
 func (*CreateBuildTriggerRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{24}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{24}
 }
 func (m *CreateBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateBuildTriggerRequest.Unmarshal(m, b)
@@ -2411,7 +2403,7 @@ func (m *GetBuildTriggerRequest) Reset()         { *m = GetBuildTriggerRequest{}
 func (m *GetBuildTriggerRequest) String() string { return proto.CompactTextString(m) }
 func (*GetBuildTriggerRequest) ProtoMessage()    {}
 func (*GetBuildTriggerRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{25}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{25}
 }
 func (m *GetBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetBuildTriggerRequest.Unmarshal(m, b)
@@ -2458,7 +2450,7 @@ func (m *ListBuildTriggersRequest) Reset()         { *m = ListBuildTriggersReque
 func (m *ListBuildTriggersRequest) String() string { return proto.CompactTextString(m) }
 func (*ListBuildTriggersRequest) ProtoMessage()    {}
 func (*ListBuildTriggersRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{26}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{26}
 }
 func (m *ListBuildTriggersRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBuildTriggersRequest.Unmarshal(m, b)
@@ -2498,7 +2490,7 @@ func (m *ListBuildTriggersResponse) Reset()         { *m = ListBuildTriggersResp
 func (m *ListBuildTriggersResponse) String() string { return proto.CompactTextString(m) }
 func (*ListBuildTriggersResponse) ProtoMessage()    {}
 func (*ListBuildTriggersResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{27}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{27}
 }
 func (m *ListBuildTriggersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBuildTriggersResponse.Unmarshal(m, b)
@@ -2540,7 +2532,7 @@ func (m *DeleteBuildTriggerRequest) Reset()         { *m = DeleteBuildTriggerReq
 func (m *DeleteBuildTriggerRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteBuildTriggerRequest) ProtoMessage()    {}
 func (*DeleteBuildTriggerRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{28}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{28}
 }
 func (m *DeleteBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteBuildTriggerRequest.Unmarshal(m, b)
@@ -2591,7 +2583,7 @@ func (m *UpdateBuildTriggerRequest) Reset()         { *m = UpdateBuildTriggerReq
 func (m *UpdateBuildTriggerRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateBuildTriggerRequest) ProtoMessage()    {}
 func (*UpdateBuildTriggerRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{29}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{29}
 }
 func (m *UpdateBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateBuildTriggerRequest.Unmarshal(m, b)
@@ -2662,7 +2654,7 @@ func (m *BuildOptions) Reset()         { *m = BuildOptions{} }
 func (m *BuildOptions) String() string { return proto.CompactTextString(m) }
 func (*BuildOptions) ProtoMessage()    {}
 func (*BuildOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudbuild_953822d6e0430e8d, []int{30}
+	return fileDescriptor_cloudbuild_d57dea8fb5b56d22, []int{30}
 }
 func (m *BuildOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildOptions.Unmarshal(m, b)
@@ -3287,10 +3279,10 @@ var _CloudBuild_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/cloudbuild/v1/cloudbuild.proto", fileDescriptor_cloudbuild_953822d6e0430e8d)
+	proto.RegisterFile("google/devtools/cloudbuild/v1/cloudbuild.proto", fileDescriptor_cloudbuild_d57dea8fb5b56d22)
 }
 
-var fileDescriptor_cloudbuild_953822d6e0430e8d = []byte{
+var fileDescriptor_cloudbuild_d57dea8fb5b56d22 = []byte{
 	// 2755 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x5a, 0xdb, 0x6f, 0x23, 0x57,
 	0x19, 0xdf, 0xb1, 0x13, 0x5f, 0x3e, 0xe7, 0x32, 0x7b, 0xba, 0x4d, 0x1d, 0x6f, 0xb7, 0x9b, 0x4e,
