@@ -80,7 +80,7 @@ func (x LoggingConfig_Level) String() string {
 	return proto.EnumName(LoggingConfig_Level_name, int32(x))
 }
 func (LoggingConfig_Level) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{0, 0}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{0, 0}
 }
 
 // The job state.
@@ -143,7 +143,7 @@ func (x JobStatus_State) String() string {
 	return proto.EnumName(JobStatus_State_name, int32(x))
 }
 func (JobStatus_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{9, 0}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{9, 0}
 }
 
 // The job substate.
@@ -187,7 +187,7 @@ func (x JobStatus_Substate) String() string {
 	return proto.EnumName(JobStatus_Substate_name, int32(x))
 }
 func (JobStatus_Substate) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{9, 1}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{9, 1}
 }
 
 // The application state, corresponding to
@@ -242,7 +242,7 @@ func (x YarnApplication_State) String() string {
 	return proto.EnumName(YarnApplication_State_name, int32(x))
 }
 func (YarnApplication_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{11, 0}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{11, 0}
 }
 
 // A matcher that specifies categories of job states.
@@ -273,7 +273,7 @@ func (x ListJobsRequest_JobStateMatcher) String() string {
 	return proto.EnumName(ListJobsRequest_JobStateMatcher_name, int32(x))
 }
 func (ListJobsRequest_JobStateMatcher) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{16, 0}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{16, 0}
 }
 
 // The runtime logging config of the job.
@@ -292,7 +292,7 @@ func (m *LoggingConfig) Reset()         { *m = LoggingConfig{} }
 func (m *LoggingConfig) String() string { return proto.CompactTextString(m) }
 func (*LoggingConfig) ProtoMessage()    {}
 func (*LoggingConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{0}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{0}
 }
 func (m *LoggingConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LoggingConfig.Unmarshal(m, b)
@@ -364,7 +364,7 @@ func (m *HadoopJob) Reset()         { *m = HadoopJob{} }
 func (m *HadoopJob) String() string { return proto.CompactTextString(m) }
 func (*HadoopJob) ProtoMessage()    {}
 func (*HadoopJob) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{1}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{1}
 }
 func (m *HadoopJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HadoopJob.Unmarshal(m, b)
@@ -571,7 +571,7 @@ func (m *SparkJob) Reset()         { *m = SparkJob{} }
 func (m *SparkJob) String() string { return proto.CompactTextString(m) }
 func (*SparkJob) ProtoMessage()    {}
 func (*SparkJob) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{2}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{2}
 }
 func (m *SparkJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SparkJob.Unmarshal(m, b)
@@ -775,7 +775,7 @@ func (m *PySparkJob) Reset()         { *m = PySparkJob{} }
 func (m *PySparkJob) String() string { return proto.CompactTextString(m) }
 func (*PySparkJob) ProtoMessage()    {}
 func (*PySparkJob) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{3}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{3}
 }
 func (m *PySparkJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PySparkJob.Unmarshal(m, b)
@@ -877,7 +877,7 @@ func (m *QueryList) Reset()         { *m = QueryList{} }
 func (m *QueryList) String() string { return proto.CompactTextString(m) }
 func (*QueryList) ProtoMessage()    {}
 func (*QueryList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{4}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{4}
 }
 func (m *QueryList) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryList.Unmarshal(m, b)
@@ -939,7 +939,7 @@ func (m *HiveJob) Reset()         { *m = HiveJob{} }
 func (m *HiveJob) String() string { return proto.CompactTextString(m) }
 func (*HiveJob) ProtoMessage()    {}
 func (*HiveJob) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{5}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{5}
 }
 func (m *HiveJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HiveJob.Unmarshal(m, b)
@@ -1124,7 +1124,7 @@ func (m *SparkSqlJob) Reset()         { *m = SparkSqlJob{} }
 func (m *SparkSqlJob) String() string { return proto.CompactTextString(m) }
 func (*SparkSqlJob) ProtoMessage()    {}
 func (*SparkSqlJob) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{6}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{6}
 }
 func (m *SparkSqlJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SparkSqlJob.Unmarshal(m, b)
@@ -1315,7 +1315,7 @@ func (m *PigJob) Reset()         { *m = PigJob{} }
 func (m *PigJob) String() string { return proto.CompactTextString(m) }
 func (*PigJob) ProtoMessage()    {}
 func (*PigJob) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{7}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{7}
 }
 func (m *PigJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PigJob.Unmarshal(m, b)
@@ -1493,7 +1493,7 @@ func (m *JobPlacement) Reset()         { *m = JobPlacement{} }
 func (m *JobPlacement) String() string { return proto.CompactTextString(m) }
 func (*JobPlacement) ProtoMessage()    {}
 func (*JobPlacement) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{8}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{8}
 }
 func (m *JobPlacement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobPlacement.Unmarshal(m, b)
@@ -1548,7 +1548,7 @@ func (m *JobStatus) Reset()         { *m = JobStatus{} }
 func (m *JobStatus) String() string { return proto.CompactTextString(m) }
 func (*JobStatus) ProtoMessage()    {}
 func (*JobStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{9}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{9}
 }
 func (m *JobStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobStatus.Unmarshal(m, b)
@@ -1616,7 +1616,7 @@ func (m *JobReference) Reset()         { *m = JobReference{} }
 func (m *JobReference) String() string { return proto.CompactTextString(m) }
 func (*JobReference) ProtoMessage()    {}
 func (*JobReference) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{10}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{10}
 }
 func (m *JobReference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobReference.Unmarshal(m, b)
@@ -1676,7 +1676,7 @@ func (m *YarnApplication) Reset()         { *m = YarnApplication{} }
 func (m *YarnApplication) String() string { return proto.CompactTextString(m) }
 func (*YarnApplication) ProtoMessage()    {}
 func (*YarnApplication) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{11}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{11}
 }
 func (m *YarnApplication) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_YarnApplication.Unmarshal(m, b)
@@ -1780,7 +1780,7 @@ func (m *Job) Reset()         { *m = Job{} }
 func (m *Job) String() string { return proto.CompactTextString(m) }
 func (*Job) ProtoMessage()    {}
 func (*Job) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{12}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{12}
 }
 func (m *Job) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Job.Unmarshal(m, b)
@@ -2122,7 +2122,7 @@ func (m *JobScheduling) Reset()         { *m = JobScheduling{} }
 func (m *JobScheduling) String() string { return proto.CompactTextString(m) }
 func (*JobScheduling) ProtoMessage()    {}
 func (*JobScheduling) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{13}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{13}
 }
 func (m *JobScheduling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobScheduling.Unmarshal(m, b)
@@ -2179,7 +2179,7 @@ func (m *SubmitJobRequest) Reset()         { *m = SubmitJobRequest{} }
 func (m *SubmitJobRequest) String() string { return proto.CompactTextString(m) }
 func (*SubmitJobRequest) ProtoMessage()    {}
 func (*SubmitJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{14}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{14}
 }
 func (m *SubmitJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SubmitJobRequest.Unmarshal(m, b)
@@ -2245,7 +2245,7 @@ func (m *GetJobRequest) Reset()         { *m = GetJobRequest{} }
 func (m *GetJobRequest) String() string { return proto.CompactTextString(m) }
 func (*GetJobRequest) ProtoMessage()    {}
 func (*GetJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{15}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{15}
 }
 func (m *GetJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetJobRequest.Unmarshal(m, b)
@@ -2330,7 +2330,7 @@ func (m *ListJobsRequest) Reset()         { *m = ListJobsRequest{} }
 func (m *ListJobsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListJobsRequest) ProtoMessage()    {}
 func (*ListJobsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{16}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{16}
 }
 func (m *ListJobsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListJobsRequest.Unmarshal(m, b)
@@ -2426,7 +2426,7 @@ func (m *UpdateJobRequest) Reset()         { *m = UpdateJobRequest{} }
 func (m *UpdateJobRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateJobRequest) ProtoMessage()    {}
 func (*UpdateJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{17}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{17}
 }
 func (m *UpdateJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateJobRequest.Unmarshal(m, b)
@@ -2498,7 +2498,7 @@ func (m *ListJobsResponse) Reset()         { *m = ListJobsResponse{} }
 func (m *ListJobsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListJobsResponse) ProtoMessage()    {}
 func (*ListJobsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{18}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{18}
 }
 func (m *ListJobsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListJobsResponse.Unmarshal(m, b)
@@ -2550,7 +2550,7 @@ func (m *CancelJobRequest) Reset()         { *m = CancelJobRequest{} }
 func (m *CancelJobRequest) String() string { return proto.CompactTextString(m) }
 func (*CancelJobRequest) ProtoMessage()    {}
 func (*CancelJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{19}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{19}
 }
 func (m *CancelJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelJobRequest.Unmarshal(m, b)
@@ -2609,7 +2609,7 @@ func (m *DeleteJobRequest) Reset()         { *m = DeleteJobRequest{} }
 func (m *DeleteJobRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteJobRequest) ProtoMessage()    {}
 func (*DeleteJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_jobs_2b4f6e28c2cc705f, []int{20}
+	return fileDescriptor_jobs_0f6ff1bb746c0b59, []int{20}
 }
 func (m *DeleteJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteJobRequest.Unmarshal(m, b)
@@ -2948,10 +2948,10 @@ var _JobController_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dataproc/v1beta2/jobs.proto", fileDescriptor_jobs_2b4f6e28c2cc705f)
+	proto.RegisterFile("google/cloud/dataproc/v1beta2/jobs.proto", fileDescriptor_jobs_0f6ff1bb746c0b59)
 }
 
-var fileDescriptor_jobs_2b4f6e28c2cc705f = []byte{
+var fileDescriptor_jobs_0f6ff1bb746c0b59 = []byte{
 	// 2306 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x5a, 0xcd, 0x73, 0xdb, 0xc6,
 	0x15, 0x17, 0xbf, 0x89, 0x47, 0x7d, 0x40, 0x1b, 0x3b, 0xe5, 0x30, 0xcd, 0x44, 0xc1, 0x4c, 0x52,
