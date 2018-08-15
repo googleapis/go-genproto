@@ -79,16 +79,20 @@ type isDataset_DatasetMetadata interface {
 type Dataset_TranslationDatasetMetadata struct {
 	TranslationDatasetMetadata *TranslationDatasetMetadata `protobuf:"bytes,23,opt,name=translation_dataset_metadata,json=translationDatasetMetadata,proto3,oneof"`
 }
+
 type Dataset_ImageClassificationDatasetMetadata struct {
 	ImageClassificationDatasetMetadata *ImageClassificationDatasetMetadata `protobuf:"bytes,24,opt,name=image_classification_dataset_metadata,json=imageClassificationDatasetMetadata,proto3,oneof"`
 }
+
 type Dataset_TextClassificationDatasetMetadata struct {
 	TextClassificationDatasetMetadata *TextClassificationDatasetMetadata `protobuf:"bytes,25,opt,name=text_classification_dataset_metadata,json=textClassificationDatasetMetadata,proto3,oneof"`
 }
 
-func (*Dataset_TranslationDatasetMetadata) isDataset_DatasetMetadata()         {}
+func (*Dataset_TranslationDatasetMetadata) isDataset_DatasetMetadata() {}
+
 func (*Dataset_ImageClassificationDatasetMetadata) isDataset_DatasetMetadata() {}
-func (*Dataset_TextClassificationDatasetMetadata) isDataset_DatasetMetadata()  {}
+
+func (*Dataset_TextClassificationDatasetMetadata) isDataset_DatasetMetadata() {}
 
 func (m *Dataset) GetDatasetMetadata() isDataset_DatasetMetadata {
 	if m != nil {

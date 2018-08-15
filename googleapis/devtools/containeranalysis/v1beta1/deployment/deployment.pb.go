@@ -41,9 +41,9 @@ var Deployment_Platform_name = map[int32]string{
 }
 var Deployment_Platform_value = map[string]int32{
 	"PLATFORM_UNSPECIFIED": 0,
-	"GKE":    1,
-	"FLEX":   2,
-	"CUSTOM": 3,
+	"GKE":                  1,
+	"FLEX":                 2,
+	"CUSTOM":               3,
 }
 
 func (x Deployment_Platform) String() string {

@@ -458,23 +458,31 @@ type isTypedValue_Value interface {
 type TypedValue_BoolValue struct {
 	BoolValue bool `protobuf:"varint,1,opt,name=bool_value,json=boolValue,proto3,oneof"`
 }
+
 type TypedValue_Int64Value struct {
 	Int64Value int64 `protobuf:"varint,2,opt,name=int64_value,json=int64Value,proto3,oneof"`
 }
+
 type TypedValue_DoubleValue struct {
 	DoubleValue float64 `protobuf:"fixed64,3,opt,name=double_value,json=doubleValue,proto3,oneof"`
 }
+
 type TypedValue_StringValue struct {
 	StringValue string `protobuf:"bytes,4,opt,name=string_value,json=stringValue,proto3,oneof"`
 }
+
 type TypedValue_DistributionValue struct {
 	DistributionValue *distribution.Distribution `protobuf:"bytes,5,opt,name=distribution_value,json=distributionValue,proto3,oneof"`
 }
 
-func (*TypedValue_BoolValue) isTypedValue_Value()         {}
-func (*TypedValue_Int64Value) isTypedValue_Value()        {}
-func (*TypedValue_DoubleValue) isTypedValue_Value()       {}
-func (*TypedValue_StringValue) isTypedValue_Value()       {}
+func (*TypedValue_BoolValue) isTypedValue_Value() {}
+
+func (*TypedValue_Int64Value) isTypedValue_Value() {}
+
+func (*TypedValue_DoubleValue) isTypedValue_Value() {}
+
+func (*TypedValue_StringValue) isTypedValue_Value() {}
+
 func (*TypedValue_DistributionValue) isTypedValue_Value() {}
 
 func (m *TypedValue) GetValue() isTypedValue_Value {

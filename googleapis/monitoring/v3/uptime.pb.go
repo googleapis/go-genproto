@@ -257,44 +257,6 @@ func (m *UptimeCheckConfig) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UptimeCheckConfig proto.InternalMessageInfo
 
-type isUptimeCheckConfig_Resource interface {
-	isUptimeCheckConfig_Resource()
-}
-type isUptimeCheckConfig_CheckRequestType interface {
-	isUptimeCheckConfig_CheckRequestType()
-}
-
-type UptimeCheckConfig_MonitoredResource struct {
-	MonitoredResource *monitoredres.MonitoredResource `protobuf:"bytes,3,opt,name=monitored_resource,json=monitoredResource,proto3,oneof"`
-}
-type UptimeCheckConfig_ResourceGroup_ struct {
-	ResourceGroup *UptimeCheckConfig_ResourceGroup `protobuf:"bytes,4,opt,name=resource_group,json=resourceGroup,proto3,oneof"`
-}
-type UptimeCheckConfig_HttpCheck_ struct {
-	HttpCheck *UptimeCheckConfig_HttpCheck `protobuf:"bytes,5,opt,name=http_check,json=httpCheck,proto3,oneof"`
-}
-type UptimeCheckConfig_TcpCheck_ struct {
-	TcpCheck *UptimeCheckConfig_TcpCheck `protobuf:"bytes,6,opt,name=tcp_check,json=tcpCheck,proto3,oneof"`
-}
-
-func (*UptimeCheckConfig_MonitoredResource) isUptimeCheckConfig_Resource()  {}
-func (*UptimeCheckConfig_ResourceGroup_) isUptimeCheckConfig_Resource()     {}
-func (*UptimeCheckConfig_HttpCheck_) isUptimeCheckConfig_CheckRequestType() {}
-func (*UptimeCheckConfig_TcpCheck_) isUptimeCheckConfig_CheckRequestType()  {}
-
-func (m *UptimeCheckConfig) GetResource() isUptimeCheckConfig_Resource {
-	if m != nil {
-		return m.Resource
-	}
-	return nil
-}
-func (m *UptimeCheckConfig) GetCheckRequestType() isUptimeCheckConfig_CheckRequestType {
-	if m != nil {
-		return m.CheckRequestType
-	}
-	return nil
-}
-
 func (m *UptimeCheckConfig) GetName() string {
 	if m != nil {
 		return m.Name
@@ -309,6 +271,29 @@ func (m *UptimeCheckConfig) GetDisplayName() string {
 	return ""
 }
 
+type isUptimeCheckConfig_Resource interface {
+	isUptimeCheckConfig_Resource()
+}
+
+type UptimeCheckConfig_MonitoredResource struct {
+	MonitoredResource *monitoredres.MonitoredResource `protobuf:"bytes,3,opt,name=monitored_resource,json=monitoredResource,proto3,oneof"`
+}
+
+type UptimeCheckConfig_ResourceGroup_ struct {
+	ResourceGroup *UptimeCheckConfig_ResourceGroup `protobuf:"bytes,4,opt,name=resource_group,json=resourceGroup,proto3,oneof"`
+}
+
+func (*UptimeCheckConfig_MonitoredResource) isUptimeCheckConfig_Resource() {}
+
+func (*UptimeCheckConfig_ResourceGroup_) isUptimeCheckConfig_Resource() {}
+
+func (m *UptimeCheckConfig) GetResource() isUptimeCheckConfig_Resource {
+	if m != nil {
+		return m.Resource
+	}
+	return nil
+}
+
 func (m *UptimeCheckConfig) GetMonitoredResource() *monitoredres.MonitoredResource {
 	if x, ok := m.GetResource().(*UptimeCheckConfig_MonitoredResource); ok {
 		return x.MonitoredResource
@@ -319,6 +304,29 @@ func (m *UptimeCheckConfig) GetMonitoredResource() *monitoredres.MonitoredResour
 func (m *UptimeCheckConfig) GetResourceGroup() *UptimeCheckConfig_ResourceGroup {
 	if x, ok := m.GetResource().(*UptimeCheckConfig_ResourceGroup_); ok {
 		return x.ResourceGroup
+	}
+	return nil
+}
+
+type isUptimeCheckConfig_CheckRequestType interface {
+	isUptimeCheckConfig_CheckRequestType()
+}
+
+type UptimeCheckConfig_HttpCheck_ struct {
+	HttpCheck *UptimeCheckConfig_HttpCheck `protobuf:"bytes,5,opt,name=http_check,json=httpCheck,proto3,oneof"`
+}
+
+type UptimeCheckConfig_TcpCheck_ struct {
+	TcpCheck *UptimeCheckConfig_TcpCheck `protobuf:"bytes,6,opt,name=tcp_check,json=tcpCheck,proto3,oneof"`
+}
+
+func (*UptimeCheckConfig_HttpCheck_) isUptimeCheckConfig_CheckRequestType() {}
+
+func (*UptimeCheckConfig_TcpCheck_) isUptimeCheckConfig_CheckRequestType() {}
+
+func (m *UptimeCheckConfig) GetCheckRequestType() isUptimeCheckConfig_CheckRequestType {
+	if m != nil {
+		return m.CheckRequestType
 	}
 	return nil
 }

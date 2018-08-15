@@ -39,7 +39,7 @@ var Table_TimestampGranularity_name = map[int32]string{
 }
 var Table_TimestampGranularity_value = map[string]int32{
 	"TIMESTAMP_GRANULARITY_UNSPECIFIED": 0,
-	"MILLIS": 1,
+	"MILLIS":                            1,
 }
 
 func (x Table_TimestampGranularity) String() string {
@@ -378,20 +378,26 @@ type isGcRule_Rule interface {
 type GcRule_MaxNumVersions struct {
 	MaxNumVersions int32 `protobuf:"varint,1,opt,name=max_num_versions,json=maxNumVersions,proto3,oneof"`
 }
+
 type GcRule_MaxAge struct {
 	MaxAge *duration.Duration `protobuf:"bytes,2,opt,name=max_age,json=maxAge,proto3,oneof"`
 }
+
 type GcRule_Intersection_ struct {
 	Intersection *GcRule_Intersection `protobuf:"bytes,3,opt,name=intersection,proto3,oneof"`
 }
+
 type GcRule_Union_ struct {
 	Union *GcRule_Union `protobuf:"bytes,4,opt,name=union,proto3,oneof"`
 }
 
 func (*GcRule_MaxNumVersions) isGcRule_Rule() {}
-func (*GcRule_MaxAge) isGcRule_Rule()         {}
-func (*GcRule_Intersection_) isGcRule_Rule()  {}
-func (*GcRule_Union_) isGcRule_Rule()         {}
+
+func (*GcRule_MaxAge) isGcRule_Rule() {}
+
+func (*GcRule_Intersection_) isGcRule_Rule() {}
+
+func (*GcRule_Union_) isGcRule_Rule() {}
 
 func (m *GcRule) GetRule() isGcRule_Rule {
 	if m != nil {

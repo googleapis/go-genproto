@@ -48,9 +48,9 @@ var AlertPolicy_ConditionCombinerType_name = map[int32]string{
 	3: "AND_WITH_MATCHING_RESOURCE",
 }
 var AlertPolicy_ConditionCombinerType_value = map[string]int32{
-	"COMBINE_UNSPECIFIED": 0,
-	"AND": 1,
-	"OR":  2,
+	"COMBINE_UNSPECIFIED":        0,
+	"AND":                        1,
+	"OR":                         2,
 	"AND_WITH_MATCHING_RESOURCE": 3,
 }
 
@@ -350,27 +350,6 @@ func (m *AlertPolicy_Condition) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_AlertPolicy_Condition proto.InternalMessageInfo
 
-type isAlertPolicy_Condition_Condition interface {
-	isAlertPolicy_Condition_Condition()
-}
-
-type AlertPolicy_Condition_ConditionThreshold struct {
-	ConditionThreshold *AlertPolicy_Condition_MetricThreshold `protobuf:"bytes,1,opt,name=condition_threshold,json=conditionThreshold,proto3,oneof"`
-}
-type AlertPolicy_Condition_ConditionAbsent struct {
-	ConditionAbsent *AlertPolicy_Condition_MetricAbsence `protobuf:"bytes,2,opt,name=condition_absent,json=conditionAbsent,proto3,oneof"`
-}
-
-func (*AlertPolicy_Condition_ConditionThreshold) isAlertPolicy_Condition_Condition() {}
-func (*AlertPolicy_Condition_ConditionAbsent) isAlertPolicy_Condition_Condition()    {}
-
-func (m *AlertPolicy_Condition) GetCondition() isAlertPolicy_Condition_Condition {
-	if m != nil {
-		return m.Condition
-	}
-	return nil
-}
-
 func (m *AlertPolicy_Condition) GetName() string {
 	if m != nil {
 		return m.Name
@@ -383,6 +362,29 @@ func (m *AlertPolicy_Condition) GetDisplayName() string {
 		return m.DisplayName
 	}
 	return ""
+}
+
+type isAlertPolicy_Condition_Condition interface {
+	isAlertPolicy_Condition_Condition()
+}
+
+type AlertPolicy_Condition_ConditionThreshold struct {
+	ConditionThreshold *AlertPolicy_Condition_MetricThreshold `protobuf:"bytes,1,opt,name=condition_threshold,json=conditionThreshold,proto3,oneof"`
+}
+
+type AlertPolicy_Condition_ConditionAbsent struct {
+	ConditionAbsent *AlertPolicy_Condition_MetricAbsence `protobuf:"bytes,2,opt,name=condition_absent,json=conditionAbsent,proto3,oneof"`
+}
+
+func (*AlertPolicy_Condition_ConditionThreshold) isAlertPolicy_Condition_Condition() {}
+
+func (*AlertPolicy_Condition_ConditionAbsent) isAlertPolicy_Condition_Condition() {}
+
+func (m *AlertPolicy_Condition) GetCondition() isAlertPolicy_Condition_Condition {
+	if m != nil {
+		return m.Condition
+	}
+	return nil
 }
 
 func (m *AlertPolicy_Condition) GetConditionThreshold() *AlertPolicy_Condition_MetricThreshold {
@@ -518,11 +520,13 @@ type isAlertPolicy_Condition_Trigger_Type interface {
 type AlertPolicy_Condition_Trigger_Count struct {
 	Count int32 `protobuf:"varint,1,opt,name=count,proto3,oneof"`
 }
+
 type AlertPolicy_Condition_Trigger_Percent struct {
 	Percent float64 `protobuf:"fixed64,2,opt,name=percent,proto3,oneof"`
 }
 
-func (*AlertPolicy_Condition_Trigger_Count) isAlertPolicy_Condition_Trigger_Type()   {}
+func (*AlertPolicy_Condition_Trigger_Count) isAlertPolicy_Condition_Trigger_Type() {}
+
 func (*AlertPolicy_Condition_Trigger_Percent) isAlertPolicy_Condition_Trigger_Type() {}
 
 func (m *AlertPolicy_Condition_Trigger) GetType() isAlertPolicy_Condition_Trigger_Type {

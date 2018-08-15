@@ -152,37 +152,22 @@ var xxx_messageInfo_KeyRange proto.InternalMessageInfo
 type isKeyRange_StartKeyType interface {
 	isKeyRange_StartKeyType()
 }
-type isKeyRange_EndKeyType interface {
-	isKeyRange_EndKeyType()
-}
 
 type KeyRange_StartClosed struct {
 	StartClosed *_struct.ListValue `protobuf:"bytes,1,opt,name=start_closed,json=startClosed,proto3,oneof"`
 }
+
 type KeyRange_StartOpen struct {
 	StartOpen *_struct.ListValue `protobuf:"bytes,2,opt,name=start_open,json=startOpen,proto3,oneof"`
 }
-type KeyRange_EndClosed struct {
-	EndClosed *_struct.ListValue `protobuf:"bytes,3,opt,name=end_closed,json=endClosed,proto3,oneof"`
-}
-type KeyRange_EndOpen struct {
-	EndOpen *_struct.ListValue `protobuf:"bytes,4,opt,name=end_open,json=endOpen,proto3,oneof"`
-}
 
 func (*KeyRange_StartClosed) isKeyRange_StartKeyType() {}
-func (*KeyRange_StartOpen) isKeyRange_StartKeyType()   {}
-func (*KeyRange_EndClosed) isKeyRange_EndKeyType()     {}
-func (*KeyRange_EndOpen) isKeyRange_EndKeyType()       {}
+
+func (*KeyRange_StartOpen) isKeyRange_StartKeyType() {}
 
 func (m *KeyRange) GetStartKeyType() isKeyRange_StartKeyType {
 	if m != nil {
 		return m.StartKeyType
-	}
-	return nil
-}
-func (m *KeyRange) GetEndKeyType() isKeyRange_EndKeyType {
-	if m != nil {
-		return m.EndKeyType
 	}
 	return nil
 }
@@ -197,6 +182,29 @@ func (m *KeyRange) GetStartClosed() *_struct.ListValue {
 func (m *KeyRange) GetStartOpen() *_struct.ListValue {
 	if x, ok := m.GetStartKeyType().(*KeyRange_StartOpen); ok {
 		return x.StartOpen
+	}
+	return nil
+}
+
+type isKeyRange_EndKeyType interface {
+	isKeyRange_EndKeyType()
+}
+
+type KeyRange_EndClosed struct {
+	EndClosed *_struct.ListValue `protobuf:"bytes,3,opt,name=end_closed,json=endClosed,proto3,oneof"`
+}
+
+type KeyRange_EndOpen struct {
+	EndOpen *_struct.ListValue `protobuf:"bytes,4,opt,name=end_open,json=endOpen,proto3,oneof"`
+}
+
+func (*KeyRange_EndClosed) isKeyRange_EndKeyType() {}
+
+func (*KeyRange_EndOpen) isKeyRange_EndKeyType() {}
+
+func (m *KeyRange) GetEndKeyType() isKeyRange_EndKeyType {
+	if m != nil {
+		return m.EndKeyType
 	}
 	return nil
 }

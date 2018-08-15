@@ -239,27 +239,6 @@ func (m *ReadRowsResponse_CellChunk) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ReadRowsResponse_CellChunk proto.InternalMessageInfo
 
-type isReadRowsResponse_CellChunk_RowStatus interface {
-	isReadRowsResponse_CellChunk_RowStatus()
-}
-
-type ReadRowsResponse_CellChunk_ResetRow struct {
-	ResetRow bool `protobuf:"varint,8,opt,name=reset_row,json=resetRow,proto3,oneof"`
-}
-type ReadRowsResponse_CellChunk_CommitRow struct {
-	CommitRow bool `protobuf:"varint,9,opt,name=commit_row,json=commitRow,proto3,oneof"`
-}
-
-func (*ReadRowsResponse_CellChunk_ResetRow) isReadRowsResponse_CellChunk_RowStatus()  {}
-func (*ReadRowsResponse_CellChunk_CommitRow) isReadRowsResponse_CellChunk_RowStatus() {}
-
-func (m *ReadRowsResponse_CellChunk) GetRowStatus() isReadRowsResponse_CellChunk_RowStatus {
-	if m != nil {
-		return m.RowStatus
-	}
-	return nil
-}
-
 func (m *ReadRowsResponse_CellChunk) GetRowKey() []byte {
 	if m != nil {
 		return m.RowKey
@@ -307,6 +286,29 @@ func (m *ReadRowsResponse_CellChunk) GetValueSize() int32 {
 		return m.ValueSize
 	}
 	return 0
+}
+
+type isReadRowsResponse_CellChunk_RowStatus interface {
+	isReadRowsResponse_CellChunk_RowStatus()
+}
+
+type ReadRowsResponse_CellChunk_ResetRow struct {
+	ResetRow bool `protobuf:"varint,8,opt,name=reset_row,json=resetRow,proto3,oneof"`
+}
+
+type ReadRowsResponse_CellChunk_CommitRow struct {
+	CommitRow bool `protobuf:"varint,9,opt,name=commit_row,json=commitRow,proto3,oneof"`
+}
+
+func (*ReadRowsResponse_CellChunk_ResetRow) isReadRowsResponse_CellChunk_RowStatus() {}
+
+func (*ReadRowsResponse_CellChunk_CommitRow) isReadRowsResponse_CellChunk_RowStatus() {}
+
+func (m *ReadRowsResponse_CellChunk) GetRowStatus() isReadRowsResponse_CellChunk_RowStatus {
+	if m != nil {
+		return m.RowStatus
+	}
+	return nil
 }
 
 func (m *ReadRowsResponse_CellChunk) GetResetRow() bool {

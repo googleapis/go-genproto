@@ -86,89 +86,64 @@ var xxx_messageInfo_AuditData proto.InternalMessageInfo
 type isAuditData_Request interface {
 	isAuditData_Request()
 }
-type isAuditData_Response interface {
-	isAuditData_Response()
-}
 
 type AuditData_TableInsertRequest struct {
 	TableInsertRequest *TableInsertRequest `protobuf:"bytes,1,opt,name=table_insert_request,json=tableInsertRequest,proto3,oneof"`
 }
+
 type AuditData_TableUpdateRequest struct {
 	TableUpdateRequest *TableUpdateRequest `protobuf:"bytes,16,opt,name=table_update_request,json=tableUpdateRequest,proto3,oneof"`
 }
+
 type AuditData_DatasetListRequest struct {
 	DatasetListRequest *DatasetListRequest `protobuf:"bytes,2,opt,name=dataset_list_request,json=datasetListRequest,proto3,oneof"`
 }
+
 type AuditData_DatasetInsertRequest struct {
 	DatasetInsertRequest *DatasetInsertRequest `protobuf:"bytes,3,opt,name=dataset_insert_request,json=datasetInsertRequest,proto3,oneof"`
 }
+
 type AuditData_DatasetUpdateRequest struct {
 	DatasetUpdateRequest *DatasetUpdateRequest `protobuf:"bytes,4,opt,name=dataset_update_request,json=datasetUpdateRequest,proto3,oneof"`
 }
+
 type AuditData_JobInsertRequest struct {
 	JobInsertRequest *JobInsertRequest `protobuf:"bytes,5,opt,name=job_insert_request,json=jobInsertRequest,proto3,oneof"`
 }
+
 type AuditData_JobQueryRequest struct {
 	JobQueryRequest *JobQueryRequest `protobuf:"bytes,6,opt,name=job_query_request,json=jobQueryRequest,proto3,oneof"`
 }
+
 type AuditData_JobGetQueryResultsRequest struct {
 	JobGetQueryResultsRequest *JobGetQueryResultsRequest `protobuf:"bytes,7,opt,name=job_get_query_results_request,json=jobGetQueryResultsRequest,proto3,oneof"`
 }
+
 type AuditData_TableDataListRequest struct {
 	TableDataListRequest *TableDataListRequest `protobuf:"bytes,8,opt,name=table_data_list_request,json=tableDataListRequest,proto3,oneof"`
 }
-type AuditData_TableInsertResponse struct {
-	TableInsertResponse *TableInsertResponse `protobuf:"bytes,9,opt,name=table_insert_response,json=tableInsertResponse,proto3,oneof"`
-}
-type AuditData_TableUpdateResponse struct {
-	TableUpdateResponse *TableUpdateResponse `protobuf:"bytes,10,opt,name=table_update_response,json=tableUpdateResponse,proto3,oneof"`
-}
-type AuditData_DatasetInsertResponse struct {
-	DatasetInsertResponse *DatasetInsertResponse `protobuf:"bytes,11,opt,name=dataset_insert_response,json=datasetInsertResponse,proto3,oneof"`
-}
-type AuditData_DatasetUpdateResponse struct {
-	DatasetUpdateResponse *DatasetUpdateResponse `protobuf:"bytes,12,opt,name=dataset_update_response,json=datasetUpdateResponse,proto3,oneof"`
-}
-type AuditData_JobInsertResponse struct {
-	JobInsertResponse *JobInsertResponse `protobuf:"bytes,18,opt,name=job_insert_response,json=jobInsertResponse,proto3,oneof"`
-}
-type AuditData_JobQueryResponse struct {
-	JobQueryResponse *JobQueryResponse `protobuf:"bytes,13,opt,name=job_query_response,json=jobQueryResponse,proto3,oneof"`
-}
-type AuditData_JobGetQueryResultsResponse struct {
-	JobGetQueryResultsResponse *JobGetQueryResultsResponse `protobuf:"bytes,14,opt,name=job_get_query_results_response,json=jobGetQueryResultsResponse,proto3,oneof"`
-}
-type AuditData_JobQueryDoneResponse struct {
-	JobQueryDoneResponse *JobQueryDoneResponse `protobuf:"bytes,15,opt,name=job_query_done_response,json=jobQueryDoneResponse,proto3,oneof"`
-}
 
-func (*AuditData_TableInsertRequest) isAuditData_Request()          {}
-func (*AuditData_TableUpdateRequest) isAuditData_Request()          {}
-func (*AuditData_DatasetListRequest) isAuditData_Request()          {}
-func (*AuditData_DatasetInsertRequest) isAuditData_Request()        {}
-func (*AuditData_DatasetUpdateRequest) isAuditData_Request()        {}
-func (*AuditData_JobInsertRequest) isAuditData_Request()            {}
-func (*AuditData_JobQueryRequest) isAuditData_Request()             {}
-func (*AuditData_JobGetQueryResultsRequest) isAuditData_Request()   {}
-func (*AuditData_TableDataListRequest) isAuditData_Request()        {}
-func (*AuditData_TableInsertResponse) isAuditData_Response()        {}
-func (*AuditData_TableUpdateResponse) isAuditData_Response()        {}
-func (*AuditData_DatasetInsertResponse) isAuditData_Response()      {}
-func (*AuditData_DatasetUpdateResponse) isAuditData_Response()      {}
-func (*AuditData_JobInsertResponse) isAuditData_Response()          {}
-func (*AuditData_JobQueryResponse) isAuditData_Response()           {}
-func (*AuditData_JobGetQueryResultsResponse) isAuditData_Response() {}
-func (*AuditData_JobQueryDoneResponse) isAuditData_Response()       {}
+func (*AuditData_TableInsertRequest) isAuditData_Request() {}
+
+func (*AuditData_TableUpdateRequest) isAuditData_Request() {}
+
+func (*AuditData_DatasetListRequest) isAuditData_Request() {}
+
+func (*AuditData_DatasetInsertRequest) isAuditData_Request() {}
+
+func (*AuditData_DatasetUpdateRequest) isAuditData_Request() {}
+
+func (*AuditData_JobInsertRequest) isAuditData_Request() {}
+
+func (*AuditData_JobQueryRequest) isAuditData_Request() {}
+
+func (*AuditData_JobGetQueryResultsRequest) isAuditData_Request() {}
+
+func (*AuditData_TableDataListRequest) isAuditData_Request() {}
 
 func (m *AuditData) GetRequest() isAuditData_Request {
 	if m != nil {
 		return m.Request
-	}
-	return nil
-}
-func (m *AuditData) GetResponse() isAuditData_Response {
-	if m != nil {
-		return m.Response
 	}
 	return nil
 }
@@ -232,6 +207,65 @@ func (m *AuditData) GetJobGetQueryResultsRequest() *JobGetQueryResultsRequest {
 func (m *AuditData) GetTableDataListRequest() *TableDataListRequest {
 	if x, ok := m.GetRequest().(*AuditData_TableDataListRequest); ok {
 		return x.TableDataListRequest
+	}
+	return nil
+}
+
+type isAuditData_Response interface {
+	isAuditData_Response()
+}
+
+type AuditData_TableInsertResponse struct {
+	TableInsertResponse *TableInsertResponse `protobuf:"bytes,9,opt,name=table_insert_response,json=tableInsertResponse,proto3,oneof"`
+}
+
+type AuditData_TableUpdateResponse struct {
+	TableUpdateResponse *TableUpdateResponse `protobuf:"bytes,10,opt,name=table_update_response,json=tableUpdateResponse,proto3,oneof"`
+}
+
+type AuditData_DatasetInsertResponse struct {
+	DatasetInsertResponse *DatasetInsertResponse `protobuf:"bytes,11,opt,name=dataset_insert_response,json=datasetInsertResponse,proto3,oneof"`
+}
+
+type AuditData_DatasetUpdateResponse struct {
+	DatasetUpdateResponse *DatasetUpdateResponse `protobuf:"bytes,12,opt,name=dataset_update_response,json=datasetUpdateResponse,proto3,oneof"`
+}
+
+type AuditData_JobInsertResponse struct {
+	JobInsertResponse *JobInsertResponse `protobuf:"bytes,18,opt,name=job_insert_response,json=jobInsertResponse,proto3,oneof"`
+}
+
+type AuditData_JobQueryResponse struct {
+	JobQueryResponse *JobQueryResponse `protobuf:"bytes,13,opt,name=job_query_response,json=jobQueryResponse,proto3,oneof"`
+}
+
+type AuditData_JobGetQueryResultsResponse struct {
+	JobGetQueryResultsResponse *JobGetQueryResultsResponse `protobuf:"bytes,14,opt,name=job_get_query_results_response,json=jobGetQueryResultsResponse,proto3,oneof"`
+}
+
+type AuditData_JobQueryDoneResponse struct {
+	JobQueryDoneResponse *JobQueryDoneResponse `protobuf:"bytes,15,opt,name=job_query_done_response,json=jobQueryDoneResponse,proto3,oneof"`
+}
+
+func (*AuditData_TableInsertResponse) isAuditData_Response() {}
+
+func (*AuditData_TableUpdateResponse) isAuditData_Response() {}
+
+func (*AuditData_DatasetInsertResponse) isAuditData_Response() {}
+
+func (*AuditData_DatasetUpdateResponse) isAuditData_Response() {}
+
+func (*AuditData_JobInsertResponse) isAuditData_Response() {}
+
+func (*AuditData_JobQueryResponse) isAuditData_Response() {}
+
+func (*AuditData_JobGetQueryResultsResponse) isAuditData_Response() {}
+
+func (*AuditData_JobQueryDoneResponse) isAuditData_Response() {}
+
+func (m *AuditData) GetResponse() isAuditData_Response {
+	if m != nil {
+		return m.Response
 	}
 	return nil
 }
@@ -2049,19 +2083,25 @@ type isJobConfiguration_Configuration interface {
 type JobConfiguration_Query_ struct {
 	Query *JobConfiguration_Query `protobuf:"bytes,5,opt,name=query,proto3,oneof"`
 }
+
 type JobConfiguration_Load_ struct {
 	Load *JobConfiguration_Load `protobuf:"bytes,6,opt,name=load,proto3,oneof"`
 }
+
 type JobConfiguration_Extract_ struct {
 	Extract *JobConfiguration_Extract `protobuf:"bytes,7,opt,name=extract,proto3,oneof"`
 }
+
 type JobConfiguration_TableCopy_ struct {
 	TableCopy *JobConfiguration_TableCopy `protobuf:"bytes,8,opt,name=table_copy,json=tableCopy,proto3,oneof"`
 }
 
-func (*JobConfiguration_Query_) isJobConfiguration_Configuration()     {}
-func (*JobConfiguration_Load_) isJobConfiguration_Configuration()      {}
-func (*JobConfiguration_Extract_) isJobConfiguration_Configuration()   {}
+func (*JobConfiguration_Query_) isJobConfiguration_Configuration() {}
+
+func (*JobConfiguration_Load_) isJobConfiguration_Configuration() {}
+
+func (*JobConfiguration_Extract_) isJobConfiguration_Configuration() {}
+
 func (*JobConfiguration_TableCopy_) isJobConfiguration_Configuration() {}
 
 func (m *JobConfiguration) GetConfiguration() isJobConfiguration_Configuration {

@@ -288,12 +288,14 @@ type isStreamingRecognizeRequest_StreamingRequest interface {
 type StreamingRecognizeRequest_StreamingConfig struct {
 	StreamingConfig *StreamingRecognitionConfig `protobuf:"bytes,1,opt,name=streaming_config,json=streamingConfig,proto3,oneof"`
 }
+
 type StreamingRecognizeRequest_AudioContent struct {
 	AudioContent []byte `protobuf:"bytes,2,opt,name=audio_content,json=audioContent,proto3,oneof"`
 }
 
 func (*StreamingRecognizeRequest_StreamingConfig) isStreamingRecognizeRequest_StreamingRequest() {}
-func (*StreamingRecognizeRequest_AudioContent) isStreamingRecognizeRequest_StreamingRequest()    {}
+
+func (*StreamingRecognizeRequest_AudioContent) isStreamingRecognizeRequest_StreamingRequest() {}
 
 func (m *StreamingRecognizeRequest) GetStreamingRequest() isStreamingRecognizeRequest_StreamingRequest {
 	if m != nil {
@@ -667,12 +669,14 @@ type isRecognitionAudio_AudioSource interface {
 type RecognitionAudio_Content struct {
 	Content []byte `protobuf:"bytes,1,opt,name=content,proto3,oneof"`
 }
+
 type RecognitionAudio_Uri struct {
 	Uri string `protobuf:"bytes,2,opt,name=uri,proto3,oneof"`
 }
 
 func (*RecognitionAudio_Content) isRecognitionAudio_AudioSource() {}
-func (*RecognitionAudio_Uri) isRecognitionAudio_AudioSource()     {}
+
+func (*RecognitionAudio_Uri) isRecognitionAudio_AudioSource() {}
 
 func (m *RecognitionAudio) GetAudioSource() isRecognitionAudio_AudioSource {
 	if m != nil {

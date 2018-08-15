@@ -488,11 +488,13 @@ type isExportAgentResponse_Agent interface {
 type ExportAgentResponse_AgentUri struct {
 	AgentUri string `protobuf:"bytes,1,opt,name=agent_uri,json=agentUri,proto3,oneof"`
 }
+
 type ExportAgentResponse_AgentContent struct {
 	AgentContent []byte `protobuf:"bytes,2,opt,name=agent_content,json=agentContent,proto3,oneof"`
 }
 
-func (*ExportAgentResponse_AgentUri) isExportAgentResponse_Agent()     {}
+func (*ExportAgentResponse_AgentUri) isExportAgentResponse_Agent() {}
+
 func (*ExportAgentResponse_AgentContent) isExportAgentResponse_Agent() {}
 
 func (m *ExportAgentResponse) GetAgent() isExportAgentResponse_Agent {
@@ -622,6 +624,13 @@ func (m *ImportAgentRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ImportAgentRequest proto.InternalMessageInfo
 
+func (m *ImportAgentRequest) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
 type isImportAgentRequest_Agent interface {
 	isImportAgentRequest_Agent()
 }
@@ -629,11 +638,13 @@ type isImportAgentRequest_Agent interface {
 type ImportAgentRequest_AgentUri struct {
 	AgentUri string `protobuf:"bytes,2,opt,name=agent_uri,json=agentUri,proto3,oneof"`
 }
+
 type ImportAgentRequest_AgentContent struct {
 	AgentContent []byte `protobuf:"bytes,3,opt,name=agent_content,json=agentContent,proto3,oneof"`
 }
 
-func (*ImportAgentRequest_AgentUri) isImportAgentRequest_Agent()     {}
+func (*ImportAgentRequest_AgentUri) isImportAgentRequest_Agent() {}
+
 func (*ImportAgentRequest_AgentContent) isImportAgentRequest_Agent() {}
 
 func (m *ImportAgentRequest) GetAgent() isImportAgentRequest_Agent {
@@ -641,13 +652,6 @@ func (m *ImportAgentRequest) GetAgent() isImportAgentRequest_Agent {
 		return m.Agent
 	}
 	return nil
-}
-
-func (m *ImportAgentRequest) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
 }
 
 func (m *ImportAgentRequest) GetAgentUri() string {
@@ -770,6 +774,13 @@ func (m *RestoreAgentRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RestoreAgentRequest proto.InternalMessageInfo
 
+func (m *RestoreAgentRequest) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
 type isRestoreAgentRequest_Agent interface {
 	isRestoreAgentRequest_Agent()
 }
@@ -777,11 +788,13 @@ type isRestoreAgentRequest_Agent interface {
 type RestoreAgentRequest_AgentUri struct {
 	AgentUri string `protobuf:"bytes,2,opt,name=agent_uri,json=agentUri,proto3,oneof"`
 }
+
 type RestoreAgentRequest_AgentContent struct {
 	AgentContent []byte `protobuf:"bytes,3,opt,name=agent_content,json=agentContent,proto3,oneof"`
 }
 
-func (*RestoreAgentRequest_AgentUri) isRestoreAgentRequest_Agent()     {}
+func (*RestoreAgentRequest_AgentUri) isRestoreAgentRequest_Agent() {}
+
 func (*RestoreAgentRequest_AgentContent) isRestoreAgentRequest_Agent() {}
 
 func (m *RestoreAgentRequest) GetAgent() isRestoreAgentRequest_Agent {
@@ -789,13 +802,6 @@ func (m *RestoreAgentRequest) GetAgent() isRestoreAgentRequest_Agent {
 		return m.Agent
 	}
 	return nil
-}
-
-func (m *RestoreAgentRequest) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
 }
 
 func (m *RestoreAgentRequest) GetAgentUri() string {

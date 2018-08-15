@@ -75,6 +75,13 @@ func (m *ListGroupsRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListGroupsRequest proto.InternalMessageInfo
 
+func (m *ListGroupsRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type isListGroupsRequest_Filter interface {
 	isListGroupsRequest_Filter()
 }
@@ -82,15 +89,19 @@ type isListGroupsRequest_Filter interface {
 type ListGroupsRequest_ChildrenOfGroup struct {
 	ChildrenOfGroup string `protobuf:"bytes,2,opt,name=children_of_group,json=childrenOfGroup,proto3,oneof"`
 }
+
 type ListGroupsRequest_AncestorsOfGroup struct {
 	AncestorsOfGroup string `protobuf:"bytes,3,opt,name=ancestors_of_group,json=ancestorsOfGroup,proto3,oneof"`
 }
+
 type ListGroupsRequest_DescendantsOfGroup struct {
 	DescendantsOfGroup string `protobuf:"bytes,4,opt,name=descendants_of_group,json=descendantsOfGroup,proto3,oneof"`
 }
 
-func (*ListGroupsRequest_ChildrenOfGroup) isListGroupsRequest_Filter()    {}
-func (*ListGroupsRequest_AncestorsOfGroup) isListGroupsRequest_Filter()   {}
+func (*ListGroupsRequest_ChildrenOfGroup) isListGroupsRequest_Filter() {}
+
+func (*ListGroupsRequest_AncestorsOfGroup) isListGroupsRequest_Filter() {}
+
 func (*ListGroupsRequest_DescendantsOfGroup) isListGroupsRequest_Filter() {}
 
 func (m *ListGroupsRequest) GetFilter() isListGroupsRequest_Filter {
@@ -98,13 +109,6 @@ func (m *ListGroupsRequest) GetFilter() isListGroupsRequest_Filter {
 		return m.Filter
 	}
 	return nil
-}
-
-func (m *ListGroupsRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
 }
 
 func (m *ListGroupsRequest) GetChildrenOfGroup() string {

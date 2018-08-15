@@ -176,48 +176,68 @@ type isValue_ValueType interface {
 type Value_NullValue struct {
 	NullValue _struct.NullValue `protobuf:"varint,11,opt,name=null_value,json=nullValue,proto3,enum=google.protobuf.NullValue,oneof"`
 }
+
 type Value_BooleanValue struct {
 	BooleanValue bool `protobuf:"varint,1,opt,name=boolean_value,json=booleanValue,proto3,oneof"`
 }
+
 type Value_IntegerValue struct {
 	IntegerValue int64 `protobuf:"varint,2,opt,name=integer_value,json=integerValue,proto3,oneof"`
 }
+
 type Value_DoubleValue struct {
 	DoubleValue float64 `protobuf:"fixed64,3,opt,name=double_value,json=doubleValue,proto3,oneof"`
 }
+
 type Value_TimestampValue struct {
 	TimestampValue *timestamp.Timestamp `protobuf:"bytes,10,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
 }
+
 type Value_StringValue struct {
 	StringValue string `protobuf:"bytes,17,opt,name=string_value,json=stringValue,proto3,oneof"`
 }
+
 type Value_BytesValue struct {
 	BytesValue []byte `protobuf:"bytes,18,opt,name=bytes_value,json=bytesValue,proto3,oneof"`
 }
+
 type Value_ReferenceValue struct {
 	ReferenceValue string `protobuf:"bytes,5,opt,name=reference_value,json=referenceValue,proto3,oneof"`
 }
+
 type Value_GeoPointValue struct {
 	GeoPointValue *latlng.LatLng `protobuf:"bytes,8,opt,name=geo_point_value,json=geoPointValue,proto3,oneof"`
 }
+
 type Value_ArrayValue struct {
 	ArrayValue *ArrayValue `protobuf:"bytes,9,opt,name=array_value,json=arrayValue,proto3,oneof"`
 }
+
 type Value_MapValue struct {
 	MapValue *MapValue `protobuf:"bytes,6,opt,name=map_value,json=mapValue,proto3,oneof"`
 }
 
-func (*Value_NullValue) isValue_ValueType()      {}
-func (*Value_BooleanValue) isValue_ValueType()   {}
-func (*Value_IntegerValue) isValue_ValueType()   {}
-func (*Value_DoubleValue) isValue_ValueType()    {}
+func (*Value_NullValue) isValue_ValueType() {}
+
+func (*Value_BooleanValue) isValue_ValueType() {}
+
+func (*Value_IntegerValue) isValue_ValueType() {}
+
+func (*Value_DoubleValue) isValue_ValueType() {}
+
 func (*Value_TimestampValue) isValue_ValueType() {}
-func (*Value_StringValue) isValue_ValueType()    {}
-func (*Value_BytesValue) isValue_ValueType()     {}
+
+func (*Value_StringValue) isValue_ValueType() {}
+
+func (*Value_BytesValue) isValue_ValueType() {}
+
 func (*Value_ReferenceValue) isValue_ValueType() {}
-func (*Value_GeoPointValue) isValue_ValueType()  {}
-func (*Value_ArrayValue) isValue_ValueType()     {}
-func (*Value_MapValue) isValue_ValueType()       {}
+
+func (*Value_GeoPointValue) isValue_ValueType() {}
+
+func (*Value_ArrayValue) isValue_ValueType() {}
+
+func (*Value_MapValue) isValue_ValueType() {}
 
 func (m *Value) GetValueType() isValue_ValueType {
 	if m != nil {

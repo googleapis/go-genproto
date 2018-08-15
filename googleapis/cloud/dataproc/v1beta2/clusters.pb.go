@@ -857,6 +857,13 @@ func (m *LifecycleConfig) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_LifecycleConfig proto.InternalMessageInfo
 
+func (m *LifecycleConfig) GetIdleDeleteTtl() *duration.Duration {
+	if m != nil {
+		return m.IdleDeleteTtl
+	}
+	return nil
+}
+
 type isLifecycleConfig_Ttl interface {
 	isLifecycleConfig_Ttl()
 }
@@ -864,23 +871,18 @@ type isLifecycleConfig_Ttl interface {
 type LifecycleConfig_AutoDeleteTime struct {
 	AutoDeleteTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=auto_delete_time,json=autoDeleteTime,proto3,oneof"`
 }
+
 type LifecycleConfig_AutoDeleteTtl struct {
 	AutoDeleteTtl *duration.Duration `protobuf:"bytes,3,opt,name=auto_delete_ttl,json=autoDeleteTtl,proto3,oneof"`
 }
 
 func (*LifecycleConfig_AutoDeleteTime) isLifecycleConfig_Ttl() {}
-func (*LifecycleConfig_AutoDeleteTtl) isLifecycleConfig_Ttl()  {}
+
+func (*LifecycleConfig_AutoDeleteTtl) isLifecycleConfig_Ttl() {}
 
 func (m *LifecycleConfig) GetTtl() isLifecycleConfig_Ttl {
 	if m != nil {
 		return m.Ttl
-	}
-	return nil
-}
-
-func (m *LifecycleConfig) GetIdleDeleteTtl() *duration.Duration {
-	if m != nil {
-		return m.IdleDeleteTtl
 	}
 	return nil
 }

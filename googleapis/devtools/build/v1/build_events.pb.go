@@ -170,6 +170,13 @@ func (m *BuildEvent) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BuildEvent proto.InternalMessageInfo
 
+func (m *BuildEvent) GetEventTime() *timestamp.Timestamp {
+	if m != nil {
+		return m.EventTime
+	}
+	return nil
+}
+
 type isBuildEvent_Event interface {
 	isBuildEvent_Event()
 }
@@ -177,51 +184,60 @@ type isBuildEvent_Event interface {
 type BuildEvent_InvocationAttemptStarted_ struct {
 	InvocationAttemptStarted *BuildEvent_InvocationAttemptStarted `protobuf:"bytes,51,opt,name=invocation_attempt_started,json=invocationAttemptStarted,proto3,oneof"`
 }
+
 type BuildEvent_InvocationAttemptFinished_ struct {
 	InvocationAttemptFinished *BuildEvent_InvocationAttemptFinished `protobuf:"bytes,52,opt,name=invocation_attempt_finished,json=invocationAttemptFinished,proto3,oneof"`
 }
+
 type BuildEvent_BuildEnqueued_ struct {
 	BuildEnqueued *BuildEvent_BuildEnqueued `protobuf:"bytes,53,opt,name=build_enqueued,json=buildEnqueued,proto3,oneof"`
 }
+
 type BuildEvent_BuildFinished_ struct {
 	BuildFinished *BuildEvent_BuildFinished `protobuf:"bytes,55,opt,name=build_finished,json=buildFinished,proto3,oneof"`
 }
+
 type BuildEvent_ConsoleOutput_ struct {
 	ConsoleOutput *BuildEvent_ConsoleOutput `protobuf:"bytes,56,opt,name=console_output,json=consoleOutput,proto3,oneof"`
 }
+
 type BuildEvent_ComponentStreamFinished struct {
 	ComponentStreamFinished *BuildEvent_BuildComponentStreamFinished `protobuf:"bytes,59,opt,name=component_stream_finished,json=componentStreamFinished,proto3,oneof"`
 }
+
 type BuildEvent_BazelEvent struct {
 	BazelEvent *any.Any `protobuf:"bytes,60,opt,name=bazel_event,json=bazelEvent,proto3,oneof"`
 }
+
 type BuildEvent_BuildExecutionEvent struct {
 	BuildExecutionEvent *any.Any `protobuf:"bytes,61,opt,name=build_execution_event,json=buildExecutionEvent,proto3,oneof"`
 }
+
 type BuildEvent_SourceFetchEvent struct {
 	SourceFetchEvent *any.Any `protobuf:"bytes,62,opt,name=source_fetch_event,json=sourceFetchEvent,proto3,oneof"`
 }
 
-func (*BuildEvent_InvocationAttemptStarted_) isBuildEvent_Event()  {}
+func (*BuildEvent_InvocationAttemptStarted_) isBuildEvent_Event() {}
+
 func (*BuildEvent_InvocationAttemptFinished_) isBuildEvent_Event() {}
-func (*BuildEvent_BuildEnqueued_) isBuildEvent_Event()             {}
-func (*BuildEvent_BuildFinished_) isBuildEvent_Event()             {}
-func (*BuildEvent_ConsoleOutput_) isBuildEvent_Event()             {}
-func (*BuildEvent_ComponentStreamFinished) isBuildEvent_Event()    {}
-func (*BuildEvent_BazelEvent) isBuildEvent_Event()                 {}
-func (*BuildEvent_BuildExecutionEvent) isBuildEvent_Event()        {}
-func (*BuildEvent_SourceFetchEvent) isBuildEvent_Event()           {}
+
+func (*BuildEvent_BuildEnqueued_) isBuildEvent_Event() {}
+
+func (*BuildEvent_BuildFinished_) isBuildEvent_Event() {}
+
+func (*BuildEvent_ConsoleOutput_) isBuildEvent_Event() {}
+
+func (*BuildEvent_ComponentStreamFinished) isBuildEvent_Event() {}
+
+func (*BuildEvent_BazelEvent) isBuildEvent_Event() {}
+
+func (*BuildEvent_BuildExecutionEvent) isBuildEvent_Event() {}
+
+func (*BuildEvent_SourceFetchEvent) isBuildEvent_Event() {}
 
 func (m *BuildEvent) GetEvent() isBuildEvent_Event {
 	if m != nil {
 		return m.Event
-	}
-	return nil
-}
-
-func (m *BuildEvent) GetEventTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.EventTime
 	}
 	return nil
 }
@@ -702,6 +718,13 @@ func (m *BuildEvent_ConsoleOutput) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BuildEvent_ConsoleOutput proto.InternalMessageInfo
 
+func (m *BuildEvent_ConsoleOutput) GetType() ConsoleOutputStream {
+	if m != nil {
+		return m.Type
+	}
+	return ConsoleOutputStream_UNKNOWN
+}
+
 type isBuildEvent_ConsoleOutput_Output interface {
 	isBuildEvent_ConsoleOutput_Output()
 }
@@ -709,11 +732,13 @@ type isBuildEvent_ConsoleOutput_Output interface {
 type BuildEvent_ConsoleOutput_TextOutput struct {
 	TextOutput string `protobuf:"bytes,2,opt,name=text_output,json=textOutput,proto3,oneof"`
 }
+
 type BuildEvent_ConsoleOutput_BinaryOutput struct {
 	BinaryOutput []byte `protobuf:"bytes,3,opt,name=binary_output,json=binaryOutput,proto3,oneof"`
 }
 
-func (*BuildEvent_ConsoleOutput_TextOutput) isBuildEvent_ConsoleOutput_Output()   {}
+func (*BuildEvent_ConsoleOutput_TextOutput) isBuildEvent_ConsoleOutput_Output() {}
+
 func (*BuildEvent_ConsoleOutput_BinaryOutput) isBuildEvent_ConsoleOutput_Output() {}
 
 func (m *BuildEvent_ConsoleOutput) GetOutput() isBuildEvent_ConsoleOutput_Output {
@@ -721,13 +746,6 @@ func (m *BuildEvent_ConsoleOutput) GetOutput() isBuildEvent_ConsoleOutput_Output
 		return m.Output
 	}
 	return nil
-}
-
-func (m *BuildEvent_ConsoleOutput) GetType() ConsoleOutputStream {
-	if m != nil {
-		return m.Type
-	}
-	return ConsoleOutputStream_UNKNOWN
 }
 
 func (m *BuildEvent_ConsoleOutput) GetTextOutput() string {

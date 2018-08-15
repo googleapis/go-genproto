@@ -249,27 +249,6 @@ func (m *Action) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Action proto.InternalMessageInfo
 
-type isAction_ActionType interface {
-	isAction_ActionType()
-}
-
-type Action_BuildAction struct {
-	BuildAction *BuildAction `protobuf:"bytes,9,opt,name=build_action,json=buildAction,proto3,oneof"`
-}
-type Action_TestAction struct {
-	TestAction *TestAction `protobuf:"bytes,10,opt,name=test_action,json=testAction,proto3,oneof"`
-}
-
-func (*Action_BuildAction) isAction_ActionType() {}
-func (*Action_TestAction) isAction_ActionType()  {}
-
-func (m *Action) GetActionType() isAction_ActionType {
-	if m != nil {
-		return m.ActionType
-	}
-	return nil
-}
-
 func (m *Action) GetName() string {
 	if m != nil {
 		return m.Name
@@ -294,6 +273,29 @@ func (m *Action) GetStatusAttributes() *StatusAttributes {
 func (m *Action) GetTiming() *Timing {
 	if m != nil {
 		return m.Timing
+	}
+	return nil
+}
+
+type isAction_ActionType interface {
+	isAction_ActionType()
+}
+
+type Action_BuildAction struct {
+	BuildAction *BuildAction `protobuf:"bytes,9,opt,name=build_action,json=buildAction,proto3,oneof"`
+}
+
+type Action_TestAction struct {
+	TestAction *TestAction `protobuf:"bytes,10,opt,name=test_action,json=testAction,proto3,oneof"`
+}
+
+func (*Action_BuildAction) isAction_ActionType() {}
+
+func (*Action_TestAction) isAction_ActionType() {}
+
+func (m *Action) GetActionType() isAction_ActionType {
+	if m != nil {
+		return m.ActionType
 	}
 	return nil
 }
@@ -1053,11 +1055,13 @@ type isTestTiming_Location interface {
 type TestTiming_Local struct {
 	Local *LocalTestTiming `protobuf:"bytes,1,opt,name=local,proto3,oneof"`
 }
+
 type TestTiming_Remote struct {
 	Remote *RemoteTestTiming `protobuf:"bytes,2,opt,name=remote,proto3,oneof"`
 }
 
-func (*TestTiming_Local) isTestTiming_Location()  {}
+func (*TestTiming_Local) isTestTiming_Location() {}
+
 func (*TestTiming_Remote) isTestTiming_Location() {}
 
 func (m *TestTiming) GetLocation() isTestTiming_Location {

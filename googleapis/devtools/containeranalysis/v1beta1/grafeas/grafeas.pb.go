@@ -97,47 +97,6 @@ func (m *Occurrence) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Occurrence proto.InternalMessageInfo
 
-type isOccurrence_Details interface {
-	isOccurrence_Details()
-}
-
-type Occurrence_Vulnerability struct {
-	Vulnerability *vulnerability.Details `protobuf:"bytes,8,opt,name=vulnerability,proto3,oneof"`
-}
-type Occurrence_Build struct {
-	Build *build.Details `protobuf:"bytes,9,opt,name=build,proto3,oneof"`
-}
-type Occurrence_DerivedImage struct {
-	DerivedImage *image.Details `protobuf:"bytes,10,opt,name=derived_image,json=derivedImage,proto3,oneof"`
-}
-type Occurrence_Installation struct {
-	Installation *_package.Details `protobuf:"bytes,11,opt,name=installation,proto3,oneof"`
-}
-type Occurrence_Deployment struct {
-	Deployment *deployment.Details `protobuf:"bytes,12,opt,name=deployment,proto3,oneof"`
-}
-type Occurrence_Discovered struct {
-	Discovered *discovery.Details `protobuf:"bytes,13,opt,name=discovered,proto3,oneof"`
-}
-type Occurrence_Attestation struct {
-	Attestation *attestation.Details `protobuf:"bytes,14,opt,name=attestation,proto3,oneof"`
-}
-
-func (*Occurrence_Vulnerability) isOccurrence_Details() {}
-func (*Occurrence_Build) isOccurrence_Details()         {}
-func (*Occurrence_DerivedImage) isOccurrence_Details()  {}
-func (*Occurrence_Installation) isOccurrence_Details()  {}
-func (*Occurrence_Deployment) isOccurrence_Details()    {}
-func (*Occurrence_Discovered) isOccurrence_Details()    {}
-func (*Occurrence_Attestation) isOccurrence_Details()   {}
-
-func (m *Occurrence) GetDetails() isOccurrence_Details {
-	if m != nil {
-		return m.Details
-	}
-	return nil
-}
-
 func (m *Occurrence) GetName() string {
 	if m != nil {
 		return m.Name
@@ -183,6 +142,59 @@ func (m *Occurrence) GetCreateTime() *timestamp.Timestamp {
 func (m *Occurrence) GetUpdateTime() *timestamp.Timestamp {
 	if m != nil {
 		return m.UpdateTime
+	}
+	return nil
+}
+
+type isOccurrence_Details interface {
+	isOccurrence_Details()
+}
+
+type Occurrence_Vulnerability struct {
+	Vulnerability *vulnerability.Details `protobuf:"bytes,8,opt,name=vulnerability,proto3,oneof"`
+}
+
+type Occurrence_Build struct {
+	Build *build.Details `protobuf:"bytes,9,opt,name=build,proto3,oneof"`
+}
+
+type Occurrence_DerivedImage struct {
+	DerivedImage *image.Details `protobuf:"bytes,10,opt,name=derived_image,json=derivedImage,proto3,oneof"`
+}
+
+type Occurrence_Installation struct {
+	Installation *_package.Details `protobuf:"bytes,11,opt,name=installation,proto3,oneof"`
+}
+
+type Occurrence_Deployment struct {
+	Deployment *deployment.Details `protobuf:"bytes,12,opt,name=deployment,proto3,oneof"`
+}
+
+type Occurrence_Discovered struct {
+	Discovered *discovery.Details `protobuf:"bytes,13,opt,name=discovered,proto3,oneof"`
+}
+
+type Occurrence_Attestation struct {
+	Attestation *attestation.Details `protobuf:"bytes,14,opt,name=attestation,proto3,oneof"`
+}
+
+func (*Occurrence_Vulnerability) isOccurrence_Details() {}
+
+func (*Occurrence_Build) isOccurrence_Details() {}
+
+func (*Occurrence_DerivedImage) isOccurrence_Details() {}
+
+func (*Occurrence_Installation) isOccurrence_Details() {}
+
+func (*Occurrence_Deployment) isOccurrence_Details() {}
+
+func (*Occurrence_Discovered) isOccurrence_Details() {}
+
+func (*Occurrence_Attestation) isOccurrence_Details() {}
+
+func (m *Occurrence) GetDetails() isOccurrence_Details {
+	if m != nil {
+		return m.Details
 	}
 	return nil
 }
@@ -529,47 +541,6 @@ func (m *Note) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Note proto.InternalMessageInfo
 
-type isNote_Type interface {
-	isNote_Type()
-}
-
-type Note_Vulnerability struct {
-	Vulnerability *vulnerability.Vulnerability `protobuf:"bytes,10,opt,name=vulnerability,proto3,oneof"`
-}
-type Note_Build struct {
-	Build *build.Build `protobuf:"bytes,11,opt,name=build,proto3,oneof"`
-}
-type Note_BaseImage struct {
-	BaseImage *image.Basis `protobuf:"bytes,12,opt,name=base_image,json=baseImage,proto3,oneof"`
-}
-type Note_Package struct {
-	Package *_package.Package `protobuf:"bytes,13,opt,name=package,proto3,oneof"`
-}
-type Note_Deployable struct {
-	Deployable *deployment.Deployable `protobuf:"bytes,14,opt,name=deployable,proto3,oneof"`
-}
-type Note_Discovery struct {
-	Discovery *discovery.Discovery `protobuf:"bytes,15,opt,name=discovery,proto3,oneof"`
-}
-type Note_AttestationAuthority struct {
-	AttestationAuthority *attestation.Authority `protobuf:"bytes,16,opt,name=attestation_authority,json=attestationAuthority,proto3,oneof"`
-}
-
-func (*Note_Vulnerability) isNote_Type()        {}
-func (*Note_Build) isNote_Type()                {}
-func (*Note_BaseImage) isNote_Type()            {}
-func (*Note_Package) isNote_Type()              {}
-func (*Note_Deployable) isNote_Type()           {}
-func (*Note_Discovery) isNote_Type()            {}
-func (*Note_AttestationAuthority) isNote_Type() {}
-
-func (m *Note) GetType() isNote_Type {
-	if m != nil {
-		return m.Type
-	}
-	return nil
-}
-
 func (m *Note) GetName() string {
 	if m != nil {
 		return m.Name
@@ -629,6 +600,59 @@ func (m *Note) GetUpdateTime() *timestamp.Timestamp {
 func (m *Note) GetRelatedNoteNames() []string {
 	if m != nil {
 		return m.RelatedNoteNames
+	}
+	return nil
+}
+
+type isNote_Type interface {
+	isNote_Type()
+}
+
+type Note_Vulnerability struct {
+	Vulnerability *vulnerability.Vulnerability `protobuf:"bytes,10,opt,name=vulnerability,proto3,oneof"`
+}
+
+type Note_Build struct {
+	Build *build.Build `protobuf:"bytes,11,opt,name=build,proto3,oneof"`
+}
+
+type Note_BaseImage struct {
+	BaseImage *image.Basis `protobuf:"bytes,12,opt,name=base_image,json=baseImage,proto3,oneof"`
+}
+
+type Note_Package struct {
+	Package *_package.Package `protobuf:"bytes,13,opt,name=package,proto3,oneof"`
+}
+
+type Note_Deployable struct {
+	Deployable *deployment.Deployable `protobuf:"bytes,14,opt,name=deployable,proto3,oneof"`
+}
+
+type Note_Discovery struct {
+	Discovery *discovery.Discovery `protobuf:"bytes,15,opt,name=discovery,proto3,oneof"`
+}
+
+type Note_AttestationAuthority struct {
+	AttestationAuthority *attestation.Authority `protobuf:"bytes,16,opt,name=attestation_authority,json=attestationAuthority,proto3,oneof"`
+}
+
+func (*Note_Vulnerability) isNote_Type() {}
+
+func (*Note_Build) isNote_Type() {}
+
+func (*Note_BaseImage) isNote_Type() {}
+
+func (*Note_Package) isNote_Type() {}
+
+func (*Note_Deployable) isNote_Type() {}
+
+func (*Note_Discovery) isNote_Type() {}
+
+func (*Note_AttestationAuthority) isNote_Type() {}
+
+func (m *Note) GetType() isNote_Type {
+	if m != nil {
+		return m.Type
 	}
 	return nil
 }

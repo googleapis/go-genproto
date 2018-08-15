@@ -2153,6 +2153,13 @@ func (m *SeekRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_SeekRequest proto.InternalMessageInfo
 
+func (m *SeekRequest) GetSubscription() string {
+	if m != nil {
+		return m.Subscription
+	}
+	return ""
+}
+
 type isSeekRequest_Target interface {
 	isSeekRequest_Target()
 }
@@ -2160,11 +2167,13 @@ type isSeekRequest_Target interface {
 type SeekRequest_Time struct {
 	Time *timestamp.Timestamp `protobuf:"bytes,2,opt,name=time,proto3,oneof"`
 }
+
 type SeekRequest_Snapshot struct {
 	Snapshot string `protobuf:"bytes,3,opt,name=snapshot,proto3,oneof"`
 }
 
-func (*SeekRequest_Time) isSeekRequest_Target()     {}
+func (*SeekRequest_Time) isSeekRequest_Target() {}
+
 func (*SeekRequest_Snapshot) isSeekRequest_Target() {}
 
 func (m *SeekRequest) GetTarget() isSeekRequest_Target {
@@ -2172,13 +2181,6 @@ func (m *SeekRequest) GetTarget() isSeekRequest_Target {
 		return m.Target
 	}
 	return nil
-}
-
-func (m *SeekRequest) GetSubscription() string {
-	if m != nil {
-		return m.Subscription
-	}
-	return ""
 }
 
 func (m *SeekRequest) GetTime() *timestamp.Timestamp {

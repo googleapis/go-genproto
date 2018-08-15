@@ -1131,6 +1131,13 @@ func (m *CommitRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommitRequest proto.InternalMessageInfo
 
+func (m *CommitRequest) GetSession() string {
+	if m != nil {
+		return m.Session
+	}
+	return ""
+}
+
 type isCommitRequest_Transaction interface {
 	isCommitRequest_Transaction()
 }
@@ -1138,11 +1145,13 @@ type isCommitRequest_Transaction interface {
 type CommitRequest_TransactionId struct {
 	TransactionId []byte `protobuf:"bytes,2,opt,name=transaction_id,json=transactionId,proto3,oneof"`
 }
+
 type CommitRequest_SingleUseTransaction struct {
 	SingleUseTransaction *TransactionOptions `protobuf:"bytes,3,opt,name=single_use_transaction,json=singleUseTransaction,proto3,oneof"`
 }
 
-func (*CommitRequest_TransactionId) isCommitRequest_Transaction()        {}
+func (*CommitRequest_TransactionId) isCommitRequest_Transaction() {}
+
 func (*CommitRequest_SingleUseTransaction) isCommitRequest_Transaction() {}
 
 func (m *CommitRequest) GetTransaction() isCommitRequest_Transaction {
@@ -1150,13 +1159,6 @@ func (m *CommitRequest) GetTransaction() isCommitRequest_Transaction {
 		return m.Transaction
 	}
 	return nil
-}
-
-func (m *CommitRequest) GetSession() string {
-	if m != nil {
-		return m.Session
-	}
-	return ""
 }
 
 func (m *CommitRequest) GetTransactionId() []byte {

@@ -221,11 +221,13 @@ type isTest_TestType interface {
 type Test_TestCase struct {
 	TestCase *TestCase `protobuf:"bytes,1,opt,name=test_case,json=testCase,proto3,oneof"`
 }
+
 type Test_TestSuite struct {
 	TestSuite *TestSuite `protobuf:"bytes,2,opt,name=test_suite,json=testSuite,proto3,oneof"`
 }
 
-func (*Test_TestCase) isTest_TestType()  {}
+func (*Test_TestCase) isTest_TestType() {}
+
 func (*Test_TestSuite) isTest_TestType() {}
 
 func (m *Test) GetTestType() isTest_TestType {

@@ -181,6 +181,13 @@ func (m *Variable) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Variable proto.InternalMessageInfo
 
+func (m *Variable) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type isVariable_Contents interface {
 	isVariable_Contents()
 }
@@ -188,25 +195,20 @@ type isVariable_Contents interface {
 type Variable_Value struct {
 	Value []byte `protobuf:"bytes,2,opt,name=value,proto3,oneof"`
 }
+
 type Variable_Text struct {
 	Text string `protobuf:"bytes,5,opt,name=text,proto3,oneof"`
 }
 
 func (*Variable_Value) isVariable_Contents() {}
-func (*Variable_Text) isVariable_Contents()  {}
+
+func (*Variable_Text) isVariable_Contents() {}
 
 func (m *Variable) GetContents() isVariable_Contents {
 	if m != nil {
 		return m.Contents
 	}
 	return nil
-}
-
-func (m *Variable) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
 }
 
 func (m *Variable) GetValue() []byte {

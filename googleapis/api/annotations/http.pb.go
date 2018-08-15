@@ -348,6 +348,13 @@ func (m *HttpRule) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_HttpRule proto.InternalMessageInfo
 
+func (m *HttpRule) GetSelector() string {
+	if m != nil {
+		return m.Selector
+	}
+	return ""
+}
+
 type isHttpRule_Pattern interface {
 	isHttpRule_Pattern()
 }
@@ -355,27 +362,37 @@ type isHttpRule_Pattern interface {
 type HttpRule_Get struct {
 	Get string `protobuf:"bytes,2,opt,name=get,proto3,oneof"`
 }
+
 type HttpRule_Put struct {
 	Put string `protobuf:"bytes,3,opt,name=put,proto3,oneof"`
 }
+
 type HttpRule_Post struct {
 	Post string `protobuf:"bytes,4,opt,name=post,proto3,oneof"`
 }
+
 type HttpRule_Delete struct {
 	Delete string `protobuf:"bytes,5,opt,name=delete,proto3,oneof"`
 }
+
 type HttpRule_Patch struct {
 	Patch string `protobuf:"bytes,6,opt,name=patch,proto3,oneof"`
 }
+
 type HttpRule_Custom struct {
 	Custom *CustomHttpPattern `protobuf:"bytes,8,opt,name=custom,proto3,oneof"`
 }
 
-func (*HttpRule_Get) isHttpRule_Pattern()    {}
-func (*HttpRule_Put) isHttpRule_Pattern()    {}
-func (*HttpRule_Post) isHttpRule_Pattern()   {}
+func (*HttpRule_Get) isHttpRule_Pattern() {}
+
+func (*HttpRule_Put) isHttpRule_Pattern() {}
+
+func (*HttpRule_Post) isHttpRule_Pattern() {}
+
 func (*HttpRule_Delete) isHttpRule_Pattern() {}
-func (*HttpRule_Patch) isHttpRule_Pattern()  {}
+
+func (*HttpRule_Patch) isHttpRule_Pattern() {}
+
 func (*HttpRule_Custom) isHttpRule_Pattern() {}
 
 func (m *HttpRule) GetPattern() isHttpRule_Pattern {
@@ -383,13 +400,6 @@ func (m *HttpRule) GetPattern() isHttpRule_Pattern {
 		return m.Pattern
 	}
 	return nil
-}
-
-func (m *HttpRule) GetSelector() string {
-	if m != nil {
-		return m.Selector
-	}
-	return ""
 }
 
 func (m *HttpRule) GetGet() string {

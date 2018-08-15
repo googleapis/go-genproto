@@ -82,12 +82,14 @@ type isModelEvaluation_Metrics interface {
 type ModelEvaluation_ClassificationEvaluationMetrics struct {
 	ClassificationEvaluationMetrics *ClassificationEvaluationMetrics `protobuf:"bytes,8,opt,name=classification_evaluation_metrics,json=classificationEvaluationMetrics,proto3,oneof"`
 }
+
 type ModelEvaluation_TranslationEvaluationMetrics struct {
 	TranslationEvaluationMetrics *TranslationEvaluationMetrics `protobuf:"bytes,9,opt,name=translation_evaluation_metrics,json=translationEvaluationMetrics,proto3,oneof"`
 }
 
 func (*ModelEvaluation_ClassificationEvaluationMetrics) isModelEvaluation_Metrics() {}
-func (*ModelEvaluation_TranslationEvaluationMetrics) isModelEvaluation_Metrics()    {}
+
+func (*ModelEvaluation_TranslationEvaluationMetrics) isModelEvaluation_Metrics() {}
 
 func (m *ModelEvaluation) GetMetrics() isModelEvaluation_Metrics {
 	if m != nil {

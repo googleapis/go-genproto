@@ -138,49 +138,34 @@ func (m *CloudFunction) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CloudFunction proto.InternalMessageInfo
 
+func (m *CloudFunction) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type isCloudFunction_SourceCode interface {
 	isCloudFunction_SourceCode()
-}
-type isCloudFunction_Trigger interface {
-	isCloudFunction_Trigger()
 }
 
 type CloudFunction_SourceArchiveUrl struct {
 	SourceArchiveUrl string `protobuf:"bytes,14,opt,name=source_archive_url,json=sourceArchiveUrl,proto3,oneof"`
 }
+
 type CloudFunction_SourceRepository struct {
 	SourceRepository *SourceRepository `protobuf:"bytes,3,opt,name=source_repository,json=sourceRepository,proto3,oneof"`
 }
-type CloudFunction_HttpsTrigger struct {
-	HttpsTrigger *HTTPSTrigger `protobuf:"bytes,6,opt,name=https_trigger,json=httpsTrigger,proto3,oneof"`
-}
-type CloudFunction_EventTrigger struct {
-	EventTrigger *EventTrigger `protobuf:"bytes,12,opt,name=event_trigger,json=eventTrigger,proto3,oneof"`
-}
 
 func (*CloudFunction_SourceArchiveUrl) isCloudFunction_SourceCode() {}
+
 func (*CloudFunction_SourceRepository) isCloudFunction_SourceCode() {}
-func (*CloudFunction_HttpsTrigger) isCloudFunction_Trigger()        {}
-func (*CloudFunction_EventTrigger) isCloudFunction_Trigger()        {}
 
 func (m *CloudFunction) GetSourceCode() isCloudFunction_SourceCode {
 	if m != nil {
 		return m.SourceCode
 	}
 	return nil
-}
-func (m *CloudFunction) GetTrigger() isCloudFunction_Trigger {
-	if m != nil {
-		return m.Trigger
-	}
-	return nil
-}
-
-func (m *CloudFunction) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
 }
 
 func (m *CloudFunction) GetSourceArchiveUrl() string {
@@ -193,6 +178,29 @@ func (m *CloudFunction) GetSourceArchiveUrl() string {
 func (m *CloudFunction) GetSourceRepository() *SourceRepository {
 	if x, ok := m.GetSourceCode().(*CloudFunction_SourceRepository); ok {
 		return x.SourceRepository
+	}
+	return nil
+}
+
+type isCloudFunction_Trigger interface {
+	isCloudFunction_Trigger()
+}
+
+type CloudFunction_HttpsTrigger struct {
+	HttpsTrigger *HTTPSTrigger `protobuf:"bytes,6,opt,name=https_trigger,json=httpsTrigger,proto3,oneof"`
+}
+
+type CloudFunction_EventTrigger struct {
+	EventTrigger *EventTrigger `protobuf:"bytes,12,opt,name=event_trigger,json=eventTrigger,proto3,oneof"`
+}
+
+func (*CloudFunction_HttpsTrigger) isCloudFunction_Trigger() {}
+
+func (*CloudFunction_EventTrigger) isCloudFunction_Trigger() {}
+
+func (m *CloudFunction) GetTrigger() isCloudFunction_Trigger {
+	if m != nil {
+		return m.Trigger
 	}
 	return nil
 }
@@ -537,31 +545,6 @@ func (m *SourceRepository) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_SourceRepository proto.InternalMessageInfo
 
-type isSourceRepository_Version interface {
-	isSourceRepository_Version()
-}
-
-type SourceRepository_Branch struct {
-	Branch string `protobuf:"bytes,3,opt,name=branch,proto3,oneof"`
-}
-type SourceRepository_Tag struct {
-	Tag string `protobuf:"bytes,4,opt,name=tag,proto3,oneof"`
-}
-type SourceRepository_Revision struct {
-	Revision string `protobuf:"bytes,5,opt,name=revision,proto3,oneof"`
-}
-
-func (*SourceRepository_Branch) isSourceRepository_Version()   {}
-func (*SourceRepository_Tag) isSourceRepository_Version()      {}
-func (*SourceRepository_Revision) isSourceRepository_Version() {}
-
-func (m *SourceRepository) GetVersion() isSourceRepository_Version {
-	if m != nil {
-		return m.Version
-	}
-	return nil
-}
-
 func (m *SourceRepository) GetRepositoryUrl() string {
 	if m != nil {
 		return m.RepositoryUrl
@@ -574,6 +557,35 @@ func (m *SourceRepository) GetSourcePath() string {
 		return m.SourcePath
 	}
 	return ""
+}
+
+type isSourceRepository_Version interface {
+	isSourceRepository_Version()
+}
+
+type SourceRepository_Branch struct {
+	Branch string `protobuf:"bytes,3,opt,name=branch,proto3,oneof"`
+}
+
+type SourceRepository_Tag struct {
+	Tag string `protobuf:"bytes,4,opt,name=tag,proto3,oneof"`
+}
+
+type SourceRepository_Revision struct {
+	Revision string `protobuf:"bytes,5,opt,name=revision,proto3,oneof"`
+}
+
+func (*SourceRepository_Branch) isSourceRepository_Version() {}
+
+func (*SourceRepository_Tag) isSourceRepository_Version() {}
+
+func (*SourceRepository_Revision) isSourceRepository_Version() {}
+
+func (m *SourceRepository) GetVersion() isSourceRepository_Version {
+	if m != nil {
+		return m.Version
+	}
+	return nil
 }
 
 func (m *SourceRepository) GetBranch() string {

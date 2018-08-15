@@ -285,6 +285,13 @@ func (m *Index_IndexField) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Index_IndexField proto.InternalMessageInfo
 
+func (m *Index_IndexField) GetFieldPath() string {
+	if m != nil {
+		return m.FieldPath
+	}
+	return ""
+}
+
 type isIndex_IndexField_ValueMode interface {
 	isIndex_IndexField_ValueMode()
 }
@@ -292,11 +299,13 @@ type isIndex_IndexField_ValueMode interface {
 type Index_IndexField_Order_ struct {
 	Order Index_IndexField_Order `protobuf:"varint,2,opt,name=order,proto3,enum=google.firestore.admin.v1beta2.Index_IndexField_Order,oneof"`
 }
+
 type Index_IndexField_ArrayConfig_ struct {
 	ArrayConfig Index_IndexField_ArrayConfig `protobuf:"varint,3,opt,name=array_config,json=arrayConfig,proto3,enum=google.firestore.admin.v1beta2.Index_IndexField_ArrayConfig,oneof"`
 }
 
-func (*Index_IndexField_Order_) isIndex_IndexField_ValueMode()       {}
+func (*Index_IndexField_Order_) isIndex_IndexField_ValueMode() {}
+
 func (*Index_IndexField_ArrayConfig_) isIndex_IndexField_ValueMode() {}
 
 func (m *Index_IndexField) GetValueMode() isIndex_IndexField_ValueMode {
@@ -304,13 +313,6 @@ func (m *Index_IndexField) GetValueMode() isIndex_IndexField_ValueMode {
 		return m.ValueMode
 	}
 	return nil
-}
-
-func (m *Index_IndexField) GetFieldPath() string {
-	if m != nil {
-		return m.FieldPath
-	}
-	return ""
 }
 
 func (m *Index_IndexField) GetOrder() Index_IndexField_Order {

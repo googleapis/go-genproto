@@ -252,11 +252,13 @@ type isScanConfig_Authentication_Authentication interface {
 type ScanConfig_Authentication_GoogleAccount_ struct {
 	GoogleAccount *ScanConfig_Authentication_GoogleAccount `protobuf:"bytes,1,opt,name=google_account,json=googleAccount,proto3,oneof"`
 }
+
 type ScanConfig_Authentication_CustomAccount_ struct {
 	CustomAccount *ScanConfig_Authentication_CustomAccount `protobuf:"bytes,2,opt,name=custom_account,json=customAccount,proto3,oneof"`
 }
 
 func (*ScanConfig_Authentication_GoogleAccount_) isScanConfig_Authentication_Authentication() {}
+
 func (*ScanConfig_Authentication_CustomAccount_) isScanConfig_Authentication_Authentication() {}
 
 func (m *ScanConfig_Authentication) GetAuthentication() isScanConfig_Authentication_Authentication {

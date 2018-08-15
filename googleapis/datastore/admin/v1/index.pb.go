@@ -39,8 +39,8 @@ var Index_AncestorMode_name = map[int32]string{
 }
 var Index_AncestorMode_value = map[string]int32{
 	"ANCESTOR_MODE_UNSPECIFIED": 0,
-	"NONE":          1,
-	"ALL_ANCESTORS": 2,
+	"NONE":                      1,
+	"ALL_ANCESTORS":             2,
 }
 
 func (x Index_AncestorMode) String() string {

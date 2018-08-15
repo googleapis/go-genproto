@@ -142,31 +142,6 @@ func (m *LogEntry) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_LogEntry proto.InternalMessageInfo
 
-type isLogEntry_Payload interface {
-	isLogEntry_Payload()
-}
-
-type LogEntry_ProtoPayload struct {
-	ProtoPayload *any.Any `protobuf:"bytes,2,opt,name=proto_payload,json=protoPayload,proto3,oneof"`
-}
-type LogEntry_TextPayload struct {
-	TextPayload string `protobuf:"bytes,3,opt,name=text_payload,json=textPayload,proto3,oneof"`
-}
-type LogEntry_JsonPayload struct {
-	JsonPayload *_struct.Struct `protobuf:"bytes,6,opt,name=json_payload,json=jsonPayload,proto3,oneof"`
-}
-
-func (*LogEntry_ProtoPayload) isLogEntry_Payload() {}
-func (*LogEntry_TextPayload) isLogEntry_Payload()  {}
-func (*LogEntry_JsonPayload) isLogEntry_Payload()  {}
-
-func (m *LogEntry) GetPayload() isLogEntry_Payload {
-	if m != nil {
-		return m.Payload
-	}
-	return nil
-}
-
 func (m *LogEntry) GetLogName() string {
 	if m != nil {
 		return m.LogName
@@ -177,6 +152,35 @@ func (m *LogEntry) GetLogName() string {
 func (m *LogEntry) GetResource() *monitoredres.MonitoredResource {
 	if m != nil {
 		return m.Resource
+	}
+	return nil
+}
+
+type isLogEntry_Payload interface {
+	isLogEntry_Payload()
+}
+
+type LogEntry_ProtoPayload struct {
+	ProtoPayload *any.Any `protobuf:"bytes,2,opt,name=proto_payload,json=protoPayload,proto3,oneof"`
+}
+
+type LogEntry_TextPayload struct {
+	TextPayload string `protobuf:"bytes,3,opt,name=text_payload,json=textPayload,proto3,oneof"`
+}
+
+type LogEntry_JsonPayload struct {
+	JsonPayload *_struct.Struct `protobuf:"bytes,6,opt,name=json_payload,json=jsonPayload,proto3,oneof"`
+}
+
+func (*LogEntry_ProtoPayload) isLogEntry_Payload() {}
+
+func (*LogEntry_TextPayload) isLogEntry_Payload() {}
+
+func (*LogEntry_JsonPayload) isLogEntry_Payload() {}
+
+func (m *LogEntry) GetPayload() isLogEntry_Payload {
+	if m != nil {
+		return m.Payload
 	}
 	return nil
 }

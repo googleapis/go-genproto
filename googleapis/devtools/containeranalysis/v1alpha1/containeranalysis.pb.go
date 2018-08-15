@@ -104,9 +104,9 @@ var Deployable_Deployment_Platform_name = map[int32]string{
 }
 var Deployable_Deployment_Platform_value = map[string]int32{
 	"PLATFORM_UNSPECIFIED": 0,
-	"GKE":    1,
-	"FLEX":   2,
-	"CUSTOM": 3,
+	"GKE":                  1,
+	"FLEX":                 2,
+	"CUSTOM":               3,
 }
 
 func (x Deployable_Deployment_Platform) String() string {
@@ -282,47 +282,6 @@ func (m *Occurrence) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Occurrence proto.InternalMessageInfo
 
-type isOccurrence_Details interface {
-	isOccurrence_Details()
-}
-
-type Occurrence_VulnerabilityDetails struct {
-	VulnerabilityDetails *VulnerabilityType_VulnerabilityDetails `protobuf:"bytes,8,opt,name=vulnerability_details,json=vulnerabilityDetails,proto3,oneof"`
-}
-type Occurrence_BuildDetails struct {
-	BuildDetails *BuildDetails `protobuf:"bytes,7,opt,name=build_details,json=buildDetails,proto3,oneof"`
-}
-type Occurrence_DerivedImage struct {
-	DerivedImage *DockerImage_Derived `protobuf:"bytes,11,opt,name=derived_image,json=derivedImage,proto3,oneof"`
-}
-type Occurrence_Installation struct {
-	Installation *PackageManager_Installation `protobuf:"bytes,12,opt,name=installation,proto3,oneof"`
-}
-type Occurrence_Deployment struct {
-	Deployment *Deployable_Deployment `protobuf:"bytes,14,opt,name=deployment,proto3,oneof"`
-}
-type Occurrence_Discovered struct {
-	Discovered *Discovery_Discovered `protobuf:"bytes,15,opt,name=discovered,proto3,oneof"`
-}
-type Occurrence_Attestation struct {
-	Attestation *AttestationAuthority_Attestation `protobuf:"bytes,16,opt,name=attestation,proto3,oneof"`
-}
-
-func (*Occurrence_VulnerabilityDetails) isOccurrence_Details() {}
-func (*Occurrence_BuildDetails) isOccurrence_Details()         {}
-func (*Occurrence_DerivedImage) isOccurrence_Details()         {}
-func (*Occurrence_Installation) isOccurrence_Details()         {}
-func (*Occurrence_Deployment) isOccurrence_Details()           {}
-func (*Occurrence_Discovered) isOccurrence_Details()           {}
-func (*Occurrence_Attestation) isOccurrence_Details()          {}
-
-func (m *Occurrence) GetDetails() isOccurrence_Details {
-	if m != nil {
-		return m.Details
-	}
-	return nil
-}
-
 func (m *Occurrence) GetName() string {
 	if m != nil {
 		return m.Name
@@ -356,6 +315,59 @@ func (m *Occurrence) GetKind() Note_Kind {
 		return m.Kind
 	}
 	return Note_KIND_UNSPECIFIED
+}
+
+type isOccurrence_Details interface {
+	isOccurrence_Details()
+}
+
+type Occurrence_VulnerabilityDetails struct {
+	VulnerabilityDetails *VulnerabilityType_VulnerabilityDetails `protobuf:"bytes,8,opt,name=vulnerability_details,json=vulnerabilityDetails,proto3,oneof"`
+}
+
+type Occurrence_BuildDetails struct {
+	BuildDetails *BuildDetails `protobuf:"bytes,7,opt,name=build_details,json=buildDetails,proto3,oneof"`
+}
+
+type Occurrence_DerivedImage struct {
+	DerivedImage *DockerImage_Derived `protobuf:"bytes,11,opt,name=derived_image,json=derivedImage,proto3,oneof"`
+}
+
+type Occurrence_Installation struct {
+	Installation *PackageManager_Installation `protobuf:"bytes,12,opt,name=installation,proto3,oneof"`
+}
+
+type Occurrence_Deployment struct {
+	Deployment *Deployable_Deployment `protobuf:"bytes,14,opt,name=deployment,proto3,oneof"`
+}
+
+type Occurrence_Discovered struct {
+	Discovered *Discovery_Discovered `protobuf:"bytes,15,opt,name=discovered,proto3,oneof"`
+}
+
+type Occurrence_Attestation struct {
+	Attestation *AttestationAuthority_Attestation `protobuf:"bytes,16,opt,name=attestation,proto3,oneof"`
+}
+
+func (*Occurrence_VulnerabilityDetails) isOccurrence_Details() {}
+
+func (*Occurrence_BuildDetails) isOccurrence_Details() {}
+
+func (*Occurrence_DerivedImage) isOccurrence_Details() {}
+
+func (*Occurrence_Installation) isOccurrence_Details() {}
+
+func (*Occurrence_Deployment) isOccurrence_Details() {}
+
+func (*Occurrence_Discovered) isOccurrence_Details() {}
+
+func (*Occurrence_Attestation) isOccurrence_Details() {}
+
+func (m *Occurrence) GetDetails() isOccurrence_Details {
+	if m != nil {
+		return m.Details
+	}
+	return nil
 }
 
 func (m *Occurrence) GetVulnerabilityDetails() *VulnerabilityType_VulnerabilityDetails {
@@ -718,47 +730,6 @@ func (m *Note) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Note proto.InternalMessageInfo
 
-type isNote_NoteType interface {
-	isNote_NoteType()
-}
-
-type Note_VulnerabilityType struct {
-	VulnerabilityType *VulnerabilityType `protobuf:"bytes,6,opt,name=vulnerability_type,json=vulnerabilityType,proto3,oneof"`
-}
-type Note_BuildType struct {
-	BuildType *BuildType `protobuf:"bytes,8,opt,name=build_type,json=buildType,proto3,oneof"`
-}
-type Note_BaseImage struct {
-	BaseImage *DockerImage_Basis `protobuf:"bytes,13,opt,name=base_image,json=baseImage,proto3,oneof"`
-}
-type Note_Package struct {
-	Package *PackageManager_Package `protobuf:"bytes,14,opt,name=package,proto3,oneof"`
-}
-type Note_Deployable struct {
-	Deployable *Deployable `protobuf:"bytes,17,opt,name=deployable,proto3,oneof"`
-}
-type Note_Discovery struct {
-	Discovery *Discovery `protobuf:"bytes,18,opt,name=discovery,proto3,oneof"`
-}
-type Note_AttestationAuthority struct {
-	AttestationAuthority *AttestationAuthority `protobuf:"bytes,19,opt,name=attestation_authority,json=attestationAuthority,proto3,oneof"`
-}
-
-func (*Note_VulnerabilityType) isNote_NoteType()    {}
-func (*Note_BuildType) isNote_NoteType()            {}
-func (*Note_BaseImage) isNote_NoteType()            {}
-func (*Note_Package) isNote_NoteType()              {}
-func (*Note_Deployable) isNote_NoteType()           {}
-func (*Note_Discovery) isNote_NoteType()            {}
-func (*Note_AttestationAuthority) isNote_NoteType() {}
-
-func (m *Note) GetNoteType() isNote_NoteType {
-	if m != nil {
-		return m.NoteType
-	}
-	return nil
-}
-
 func (m *Note) GetName() string {
 	if m != nil {
 		return m.Name
@@ -785,6 +756,59 @@ func (m *Note) GetKind() Note_Kind {
 		return m.Kind
 	}
 	return Note_KIND_UNSPECIFIED
+}
+
+type isNote_NoteType interface {
+	isNote_NoteType()
+}
+
+type Note_VulnerabilityType struct {
+	VulnerabilityType *VulnerabilityType `protobuf:"bytes,6,opt,name=vulnerability_type,json=vulnerabilityType,proto3,oneof"`
+}
+
+type Note_BuildType struct {
+	BuildType *BuildType `protobuf:"bytes,8,opt,name=build_type,json=buildType,proto3,oneof"`
+}
+
+type Note_BaseImage struct {
+	BaseImage *DockerImage_Basis `protobuf:"bytes,13,opt,name=base_image,json=baseImage,proto3,oneof"`
+}
+
+type Note_Package struct {
+	Package *PackageManager_Package `protobuf:"bytes,14,opt,name=package,proto3,oneof"`
+}
+
+type Note_Deployable struct {
+	Deployable *Deployable `protobuf:"bytes,17,opt,name=deployable,proto3,oneof"`
+}
+
+type Note_Discovery struct {
+	Discovery *Discovery `protobuf:"bytes,18,opt,name=discovery,proto3,oneof"`
+}
+
+type Note_AttestationAuthority struct {
+	AttestationAuthority *AttestationAuthority `protobuf:"bytes,19,opt,name=attestation_authority,json=attestationAuthority,proto3,oneof"`
+}
+
+func (*Note_VulnerabilityType) isNote_NoteType() {}
+
+func (*Note_BuildType) isNote_NoteType() {}
+
+func (*Note_BaseImage) isNote_NoteType() {}
+
+func (*Note_Package) isNote_NoteType() {}
+
+func (*Note_Deployable) isNote_NoteType() {}
+
+func (*Note_Discovery) isNote_NoteType() {}
+
+func (*Note_AttestationAuthority) isNote_NoteType() {}
+
+func (m *Note) GetNoteType() isNote_NoteType {
+	if m != nil {
+		return m.NoteType
+	}
+	return nil
 }
 
 func (m *Note) GetVulnerabilityType() *VulnerabilityType {
@@ -1515,6 +1539,20 @@ func (m *PgpSignedAttestation) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PgpSignedAttestation proto.InternalMessageInfo
 
+func (m *PgpSignedAttestation) GetSignature() string {
+	if m != nil {
+		return m.Signature
+	}
+	return ""
+}
+
+func (m *PgpSignedAttestation) GetContentType() PgpSignedAttestation_ContentType {
+	if m != nil {
+		return m.ContentType
+	}
+	return PgpSignedAttestation_CONTENT_TYPE_UNSPECIFIED
+}
+
 type isPgpSignedAttestation_KeyId interface {
 	isPgpSignedAttestation_KeyId()
 }
@@ -1530,20 +1568,6 @@ func (m *PgpSignedAttestation) GetKeyId() isPgpSignedAttestation_KeyId {
 		return m.KeyId
 	}
 	return nil
-}
-
-func (m *PgpSignedAttestation) GetSignature() string {
-	if m != nil {
-		return m.Signature
-	}
-	return ""
-}
-
-func (m *PgpSignedAttestation) GetContentType() PgpSignedAttestation_ContentType {
-	if m != nil {
-		return m.ContentType
-	}
-	return PgpSignedAttestation_CONTENT_TYPE_UNSPECIFIED
 }
 
 func (m *PgpSignedAttestation) GetPgpKeyId() string {

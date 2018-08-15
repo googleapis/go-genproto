@@ -281,12 +281,14 @@ type isTransactionOptions_Mode interface {
 type TransactionOptions_ReadWrite_ struct {
 	ReadWrite *TransactionOptions_ReadWrite `protobuf:"bytes,1,opt,name=read_write,json=readWrite,proto3,oneof"`
 }
+
 type TransactionOptions_ReadOnly_ struct {
 	ReadOnly *TransactionOptions_ReadOnly `protobuf:"bytes,2,opt,name=read_only,json=readOnly,proto3,oneof"`
 }
 
 func (*TransactionOptions_ReadWrite_) isTransactionOptions_Mode() {}
-func (*TransactionOptions_ReadOnly_) isTransactionOptions_Mode()  {}
+
+func (*TransactionOptions_ReadOnly_) isTransactionOptions_Mode() {}
 
 func (m *TransactionOptions) GetMode() isTransactionOptions_Mode {
 	if m != nil {
@@ -465,24 +467,32 @@ type isTransactionOptions_ReadOnly_TimestampBound interface {
 type TransactionOptions_ReadOnly_Strong struct {
 	Strong bool `protobuf:"varint,1,opt,name=strong,proto3,oneof"`
 }
+
 type TransactionOptions_ReadOnly_MinReadTimestamp struct {
 	MinReadTimestamp *timestamp.Timestamp `protobuf:"bytes,2,opt,name=min_read_timestamp,json=minReadTimestamp,proto3,oneof"`
 }
+
 type TransactionOptions_ReadOnly_MaxStaleness struct {
 	MaxStaleness *duration.Duration `protobuf:"bytes,3,opt,name=max_staleness,json=maxStaleness,proto3,oneof"`
 }
+
 type TransactionOptions_ReadOnly_ReadTimestamp struct {
 	ReadTimestamp *timestamp.Timestamp `protobuf:"bytes,4,opt,name=read_timestamp,json=readTimestamp,proto3,oneof"`
 }
+
 type TransactionOptions_ReadOnly_ExactStaleness struct {
 	ExactStaleness *duration.Duration `protobuf:"bytes,5,opt,name=exact_staleness,json=exactStaleness,proto3,oneof"`
 }
 
-func (*TransactionOptions_ReadOnly_Strong) isTransactionOptions_ReadOnly_TimestampBound()           {}
+func (*TransactionOptions_ReadOnly_Strong) isTransactionOptions_ReadOnly_TimestampBound() {}
+
 func (*TransactionOptions_ReadOnly_MinReadTimestamp) isTransactionOptions_ReadOnly_TimestampBound() {}
-func (*TransactionOptions_ReadOnly_MaxStaleness) isTransactionOptions_ReadOnly_TimestampBound()     {}
-func (*TransactionOptions_ReadOnly_ReadTimestamp) isTransactionOptions_ReadOnly_TimestampBound()    {}
-func (*TransactionOptions_ReadOnly_ExactStaleness) isTransactionOptions_ReadOnly_TimestampBound()   {}
+
+func (*TransactionOptions_ReadOnly_MaxStaleness) isTransactionOptions_ReadOnly_TimestampBound() {}
+
+func (*TransactionOptions_ReadOnly_ReadTimestamp) isTransactionOptions_ReadOnly_TimestampBound() {}
+
+func (*TransactionOptions_ReadOnly_ExactStaleness) isTransactionOptions_ReadOnly_TimestampBound() {}
 
 func (m *TransactionOptions_ReadOnly) GetTimestampBound() isTransactionOptions_ReadOnly_TimestampBound {
 	if m != nil {
@@ -774,16 +784,20 @@ type isTransactionSelector_Selector interface {
 type TransactionSelector_SingleUse struct {
 	SingleUse *TransactionOptions `protobuf:"bytes,1,opt,name=single_use,json=singleUse,proto3,oneof"`
 }
+
 type TransactionSelector_Id struct {
 	Id []byte `protobuf:"bytes,2,opt,name=id,proto3,oneof"`
 }
+
 type TransactionSelector_Begin struct {
 	Begin *TransactionOptions `protobuf:"bytes,3,opt,name=begin,proto3,oneof"`
 }
 
 func (*TransactionSelector_SingleUse) isTransactionSelector_Selector() {}
-func (*TransactionSelector_Id) isTransactionSelector_Selector()        {}
-func (*TransactionSelector_Begin) isTransactionSelector_Selector()     {}
+
+func (*TransactionSelector_Id) isTransactionSelector_Selector() {}
+
+func (*TransactionSelector_Begin) isTransactionSelector_Selector() {}
 
 func (m *TransactionSelector) GetSelector() isTransactionSelector_Selector {
 	if m != nil {

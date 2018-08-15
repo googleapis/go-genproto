@@ -102,20 +102,26 @@ type isSourceContext_Context interface {
 type SourceContext_CloudRepo struct {
 	CloudRepo *CloudRepoSourceContext `protobuf:"bytes,1,opt,name=cloud_repo,json=cloudRepo,proto3,oneof"`
 }
+
 type SourceContext_CloudWorkspace struct {
 	CloudWorkspace *CloudWorkspaceSourceContext `protobuf:"bytes,2,opt,name=cloud_workspace,json=cloudWorkspace,proto3,oneof"`
 }
+
 type SourceContext_Gerrit struct {
 	Gerrit *GerritSourceContext `protobuf:"bytes,3,opt,name=gerrit,proto3,oneof"`
 }
+
 type SourceContext_Git struct {
 	Git *GitSourceContext `protobuf:"bytes,6,opt,name=git,proto3,oneof"`
 }
 
-func (*SourceContext_CloudRepo) isSourceContext_Context()      {}
+func (*SourceContext_CloudRepo) isSourceContext_Context() {}
+
 func (*SourceContext_CloudWorkspace) isSourceContext_Context() {}
-func (*SourceContext_Gerrit) isSourceContext_Context()         {}
-func (*SourceContext_Git) isSourceContext_Context()            {}
+
+func (*SourceContext_Gerrit) isSourceContext_Context() {}
+
+func (*SourceContext_Git) isSourceContext_Context() {}
 
 func (m *SourceContext) GetContext() isSourceContext_Context {
 	if m != nil {
@@ -405,6 +411,13 @@ func (m *CloudRepoSourceContext) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CloudRepoSourceContext proto.InternalMessageInfo
 
+func (m *CloudRepoSourceContext) GetRepoId() *RepoId {
+	if m != nil {
+		return m.RepoId
+	}
+	return nil
+}
+
 type isCloudRepoSourceContext_Revision interface {
 	isCloudRepoSourceContext_Revision()
 }
@@ -412,27 +425,24 @@ type isCloudRepoSourceContext_Revision interface {
 type CloudRepoSourceContext_RevisionId struct {
 	RevisionId string `protobuf:"bytes,2,opt,name=revision_id,json=revisionId,proto3,oneof"`
 }
+
 type CloudRepoSourceContext_AliasName struct {
 	AliasName string `protobuf:"bytes,3,opt,name=alias_name,json=aliasName,proto3,oneof"`
 }
+
 type CloudRepoSourceContext_AliasContext struct {
 	AliasContext *AliasContext `protobuf:"bytes,4,opt,name=alias_context,json=aliasContext,proto3,oneof"`
 }
 
-func (*CloudRepoSourceContext_RevisionId) isCloudRepoSourceContext_Revision()   {}
-func (*CloudRepoSourceContext_AliasName) isCloudRepoSourceContext_Revision()    {}
+func (*CloudRepoSourceContext_RevisionId) isCloudRepoSourceContext_Revision() {}
+
+func (*CloudRepoSourceContext_AliasName) isCloudRepoSourceContext_Revision() {}
+
 func (*CloudRepoSourceContext_AliasContext) isCloudRepoSourceContext_Revision() {}
 
 func (m *CloudRepoSourceContext) GetRevision() isCloudRepoSourceContext_Revision {
 	if m != nil {
 		return m.Revision
-	}
-	return nil
-}
-
-func (m *CloudRepoSourceContext) GetRepoId() *RepoId {
-	if m != nil {
-		return m.RepoId
 	}
 	return nil
 }
@@ -638,31 +648,6 @@ func (m *GerritSourceContext) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GerritSourceContext proto.InternalMessageInfo
 
-type isGerritSourceContext_Revision interface {
-	isGerritSourceContext_Revision()
-}
-
-type GerritSourceContext_RevisionId struct {
-	RevisionId string `protobuf:"bytes,3,opt,name=revision_id,json=revisionId,proto3,oneof"`
-}
-type GerritSourceContext_AliasName struct {
-	AliasName string `protobuf:"bytes,4,opt,name=alias_name,json=aliasName,proto3,oneof"`
-}
-type GerritSourceContext_AliasContext struct {
-	AliasContext *AliasContext `protobuf:"bytes,5,opt,name=alias_context,json=aliasContext,proto3,oneof"`
-}
-
-func (*GerritSourceContext_RevisionId) isGerritSourceContext_Revision()   {}
-func (*GerritSourceContext_AliasName) isGerritSourceContext_Revision()    {}
-func (*GerritSourceContext_AliasContext) isGerritSourceContext_Revision() {}
-
-func (m *GerritSourceContext) GetRevision() isGerritSourceContext_Revision {
-	if m != nil {
-		return m.Revision
-	}
-	return nil
-}
-
 func (m *GerritSourceContext) GetHostUri() string {
 	if m != nil {
 		return m.HostUri
@@ -675,6 +660,35 @@ func (m *GerritSourceContext) GetGerritProject() string {
 		return m.GerritProject
 	}
 	return ""
+}
+
+type isGerritSourceContext_Revision interface {
+	isGerritSourceContext_Revision()
+}
+
+type GerritSourceContext_RevisionId struct {
+	RevisionId string `protobuf:"bytes,3,opt,name=revision_id,json=revisionId,proto3,oneof"`
+}
+
+type GerritSourceContext_AliasName struct {
+	AliasName string `protobuf:"bytes,4,opt,name=alias_name,json=aliasName,proto3,oneof"`
+}
+
+type GerritSourceContext_AliasContext struct {
+	AliasContext *AliasContext `protobuf:"bytes,5,opt,name=alias_context,json=aliasContext,proto3,oneof"`
+}
+
+func (*GerritSourceContext_RevisionId) isGerritSourceContext_Revision() {}
+
+func (*GerritSourceContext_AliasName) isGerritSourceContext_Revision() {}
+
+func (*GerritSourceContext_AliasContext) isGerritSourceContext_Revision() {}
+
+func (m *GerritSourceContext) GetRevision() isGerritSourceContext_Revision {
+	if m != nil {
+		return m.Revision
+	}
+	return nil
 }
 
 func (m *GerritSourceContext) GetRevisionId() string {
@@ -879,12 +893,14 @@ type isRepoId_Id interface {
 type RepoId_ProjectRepoId struct {
 	ProjectRepoId *ProjectRepoId `protobuf:"bytes,1,opt,name=project_repo_id,json=projectRepoId,proto3,oneof"`
 }
+
 type RepoId_Uid struct {
 	Uid string `protobuf:"bytes,2,opt,name=uid,proto3,oneof"`
 }
 
 func (*RepoId_ProjectRepoId) isRepoId_Id() {}
-func (*RepoId_Uid) isRepoId_Id()           {}
+
+func (*RepoId_Uid) isRepoId_Id() {}
 
 func (m *RepoId) GetId() isRepoId_Id {
 	if m != nil {

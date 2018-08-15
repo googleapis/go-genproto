@@ -389,12 +389,14 @@ type isHadoopJob_Driver interface {
 type HadoopJob_MainJarFileUri struct {
 	MainJarFileUri string `protobuf:"bytes,1,opt,name=main_jar_file_uri,json=mainJarFileUri,proto3,oneof"`
 }
+
 type HadoopJob_MainClass struct {
 	MainClass string `protobuf:"bytes,2,opt,name=main_class,json=mainClass,proto3,oneof"`
 }
 
 func (*HadoopJob_MainJarFileUri) isHadoopJob_Driver() {}
-func (*HadoopJob_MainClass) isHadoopJob_Driver()      {}
+
+func (*HadoopJob_MainClass) isHadoopJob_Driver() {}
 
 func (m *HadoopJob) GetDriver() isHadoopJob_Driver {
 	if m != nil {
@@ -594,12 +596,14 @@ type isSparkJob_Driver interface {
 type SparkJob_MainJarFileUri struct {
 	MainJarFileUri string `protobuf:"bytes,1,opt,name=main_jar_file_uri,json=mainJarFileUri,proto3,oneof"`
 }
+
 type SparkJob_MainClass struct {
 	MainClass string `protobuf:"bytes,2,opt,name=main_class,json=mainClass,proto3,oneof"`
 }
 
 func (*SparkJob_MainJarFileUri) isSparkJob_Driver() {}
-func (*SparkJob_MainClass) isSparkJob_Driver()      {}
+
+func (*SparkJob_MainClass) isSparkJob_Driver() {}
 
 func (m *SparkJob) GetDriver() isSparkJob_Driver {
 	if m != nil {
@@ -960,12 +964,14 @@ type isHiveJob_Queries interface {
 type HiveJob_QueryFileUri struct {
 	QueryFileUri string `protobuf:"bytes,1,opt,name=query_file_uri,json=queryFileUri,proto3,oneof"`
 }
+
 type HiveJob_QueryList struct {
 	QueryList *QueryList `protobuf:"bytes,2,opt,name=query_list,json=queryList,proto3,oneof"`
 }
 
 func (*HiveJob_QueryFileUri) isHiveJob_Queries() {}
-func (*HiveJob_QueryList) isHiveJob_Queries()    {}
+
+func (*HiveJob_QueryList) isHiveJob_Queries() {}
 
 func (m *HiveJob) GetQueries() isHiveJob_Queries {
 	if m != nil {
@@ -1143,12 +1149,14 @@ type isSparkSqlJob_Queries interface {
 type SparkSqlJob_QueryFileUri struct {
 	QueryFileUri string `protobuf:"bytes,1,opt,name=query_file_uri,json=queryFileUri,proto3,oneof"`
 }
+
 type SparkSqlJob_QueryList struct {
 	QueryList *QueryList `protobuf:"bytes,2,opt,name=query_list,json=queryList,proto3,oneof"`
 }
 
 func (*SparkSqlJob_QueryFileUri) isSparkSqlJob_Queries() {}
-func (*SparkSqlJob_QueryList) isSparkSqlJob_Queries()    {}
+
+func (*SparkSqlJob_QueryList) isSparkSqlJob_Queries() {}
 
 func (m *SparkSqlJob) GetQueries() isSparkSqlJob_Queries {
 	if m != nil {
@@ -1332,12 +1340,14 @@ type isPigJob_Queries interface {
 type PigJob_QueryFileUri struct {
 	QueryFileUri string `protobuf:"bytes,1,opt,name=query_file_uri,json=queryFileUri,proto3,oneof"`
 }
+
 type PigJob_QueryList struct {
 	QueryList *QueryList `protobuf:"bytes,2,opt,name=query_list,json=queryList,proto3,oneof"`
 }
 
 func (*PigJob_QueryFileUri) isPigJob_Queries() {}
-func (*PigJob_QueryList) isPigJob_Queries()    {}
+
+func (*PigJob_QueryList) isPigJob_Queries() {}
 
 func (m *PigJob) GetQueries() isPigJob_Queries {
 	if m != nil {
@@ -1788,43 +1798,6 @@ func (m *Job) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Job proto.InternalMessageInfo
 
-type isJob_TypeJob interface {
-	isJob_TypeJob()
-}
-
-type Job_HadoopJob struct {
-	HadoopJob *HadoopJob `protobuf:"bytes,3,opt,name=hadoop_job,json=hadoopJob,proto3,oneof"`
-}
-type Job_SparkJob struct {
-	SparkJob *SparkJob `protobuf:"bytes,4,opt,name=spark_job,json=sparkJob,proto3,oneof"`
-}
-type Job_PysparkJob struct {
-	PysparkJob *PySparkJob `protobuf:"bytes,5,opt,name=pyspark_job,json=pysparkJob,proto3,oneof"`
-}
-type Job_HiveJob struct {
-	HiveJob *HiveJob `protobuf:"bytes,6,opt,name=hive_job,json=hiveJob,proto3,oneof"`
-}
-type Job_PigJob struct {
-	PigJob *PigJob `protobuf:"bytes,7,opt,name=pig_job,json=pigJob,proto3,oneof"`
-}
-type Job_SparkSqlJob struct {
-	SparkSqlJob *SparkSqlJob `protobuf:"bytes,12,opt,name=spark_sql_job,json=sparkSqlJob,proto3,oneof"`
-}
-
-func (*Job_HadoopJob) isJob_TypeJob()   {}
-func (*Job_SparkJob) isJob_TypeJob()    {}
-func (*Job_PysparkJob) isJob_TypeJob()  {}
-func (*Job_HiveJob) isJob_TypeJob()     {}
-func (*Job_PigJob) isJob_TypeJob()      {}
-func (*Job_SparkSqlJob) isJob_TypeJob() {}
-
-func (m *Job) GetTypeJob() isJob_TypeJob {
-	if m != nil {
-		return m.TypeJob
-	}
-	return nil
-}
-
 func (m *Job) GetReference() *JobReference {
 	if m != nil {
 		return m.Reference
@@ -1835,6 +1808,53 @@ func (m *Job) GetReference() *JobReference {
 func (m *Job) GetPlacement() *JobPlacement {
 	if m != nil {
 		return m.Placement
+	}
+	return nil
+}
+
+type isJob_TypeJob interface {
+	isJob_TypeJob()
+}
+
+type Job_HadoopJob struct {
+	HadoopJob *HadoopJob `protobuf:"bytes,3,opt,name=hadoop_job,json=hadoopJob,proto3,oneof"`
+}
+
+type Job_SparkJob struct {
+	SparkJob *SparkJob `protobuf:"bytes,4,opt,name=spark_job,json=sparkJob,proto3,oneof"`
+}
+
+type Job_PysparkJob struct {
+	PysparkJob *PySparkJob `protobuf:"bytes,5,opt,name=pyspark_job,json=pysparkJob,proto3,oneof"`
+}
+
+type Job_HiveJob struct {
+	HiveJob *HiveJob `protobuf:"bytes,6,opt,name=hive_job,json=hiveJob,proto3,oneof"`
+}
+
+type Job_PigJob struct {
+	PigJob *PigJob `protobuf:"bytes,7,opt,name=pig_job,json=pigJob,proto3,oneof"`
+}
+
+type Job_SparkSqlJob struct {
+	SparkSqlJob *SparkSqlJob `protobuf:"bytes,12,opt,name=spark_sql_job,json=sparkSqlJob,proto3,oneof"`
+}
+
+func (*Job_HadoopJob) isJob_TypeJob() {}
+
+func (*Job_SparkJob) isJob_TypeJob() {}
+
+func (*Job_PysparkJob) isJob_TypeJob() {}
+
+func (*Job_HiveJob) isJob_TypeJob() {}
+
+func (*Job_PigJob) isJob_TypeJob() {}
+
+func (*Job_SparkSqlJob) isJob_TypeJob() {}
+
+func (m *Job) GetTypeJob() isJob_TypeJob {
+	if m != nil {
+		return m.TypeJob
 	}
 	return nil
 }

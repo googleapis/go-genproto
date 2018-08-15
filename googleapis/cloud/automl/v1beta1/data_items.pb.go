@@ -68,11 +68,13 @@ type isImage_Data interface {
 type Image_ImageBytes struct {
 	ImageBytes []byte `protobuf:"bytes,1,opt,name=image_bytes,json=imageBytes,proto3,oneof"`
 }
+
 type Image_InputConfig struct {
 	InputConfig *InputConfig `protobuf:"bytes,6,opt,name=input_config,json=inputConfig,proto3,oneof"`
 }
 
-func (*Image_ImageBytes) isImage_Data()  {}
+func (*Image_ImageBytes) isImage_Data() {}
+
 func (*Image_InputConfig) isImage_Data() {}
 
 func (m *Image) GetData() isImage_Data {
@@ -279,11 +281,13 @@ type isExamplePayload_Payload interface {
 type ExamplePayload_Image struct {
 	Image *Image `protobuf:"bytes,1,opt,name=image,proto3,oneof"`
 }
+
 type ExamplePayload_TextSnippet struct {
 	TextSnippet *TextSnippet `protobuf:"bytes,2,opt,name=text_snippet,json=textSnippet,proto3,oneof"`
 }
 
-func (*ExamplePayload_Image) isExamplePayload_Payload()       {}
+func (*ExamplePayload_Image) isExamplePayload_Payload() {}
+
 func (*ExamplePayload_TextSnippet) isExamplePayload_Payload() {}
 
 func (m *ExamplePayload) GetPayload() isExamplePayload_Payload {

@@ -255,31 +255,6 @@ func (m *Version) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Version proto.InternalMessageInfo
 
-type isVersion_Scaling interface {
-	isVersion_Scaling()
-}
-
-type Version_AutomaticScaling struct {
-	AutomaticScaling *AutomaticScaling `protobuf:"bytes,3,opt,name=automatic_scaling,json=automaticScaling,proto3,oneof"`
-}
-type Version_BasicScaling struct {
-	BasicScaling *BasicScaling `protobuf:"bytes,4,opt,name=basic_scaling,json=basicScaling,proto3,oneof"`
-}
-type Version_ManualScaling struct {
-	ManualScaling *ManualScaling `protobuf:"bytes,5,opt,name=manual_scaling,json=manualScaling,proto3,oneof"`
-}
-
-func (*Version_AutomaticScaling) isVersion_Scaling() {}
-func (*Version_BasicScaling) isVersion_Scaling()     {}
-func (*Version_ManualScaling) isVersion_Scaling()    {}
-
-func (m *Version) GetScaling() isVersion_Scaling {
-	if m != nil {
-		return m.Scaling
-	}
-	return nil
-}
-
 func (m *Version) GetName() string {
 	if m != nil {
 		return m.Name
@@ -292,6 +267,35 @@ func (m *Version) GetId() string {
 		return m.Id
 	}
 	return ""
+}
+
+type isVersion_Scaling interface {
+	isVersion_Scaling()
+}
+
+type Version_AutomaticScaling struct {
+	AutomaticScaling *AutomaticScaling `protobuf:"bytes,3,opt,name=automatic_scaling,json=automaticScaling,proto3,oneof"`
+}
+
+type Version_BasicScaling struct {
+	BasicScaling *BasicScaling `protobuf:"bytes,4,opt,name=basic_scaling,json=basicScaling,proto3,oneof"`
+}
+
+type Version_ManualScaling struct {
+	ManualScaling *ManualScaling `protobuf:"bytes,5,opt,name=manual_scaling,json=manualScaling,proto3,oneof"`
+}
+
+func (*Version_AutomaticScaling) isVersion_Scaling() {}
+
+func (*Version_BasicScaling) isVersion_Scaling() {}
+
+func (*Version_ManualScaling) isVersion_Scaling() {}
+
+func (m *Version) GetScaling() isVersion_Scaling {
+	if m != nil {
+		return m.Scaling
+	}
+	return nil
 }
 
 func (m *Version) GetAutomaticScaling() *AutomaticScaling {

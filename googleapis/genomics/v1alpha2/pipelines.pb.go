@@ -244,23 +244,6 @@ func (m *Pipeline) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Pipeline proto.InternalMessageInfo
 
-type isPipeline_Executor interface {
-	isPipeline_Executor()
-}
-
-type Pipeline_Docker struct {
-	Docker *DockerExecutor `protobuf:"bytes,5,opt,name=docker,proto3,oneof"`
-}
-
-func (*Pipeline_Docker) isPipeline_Executor() {}
-
-func (m *Pipeline) GetExecutor() isPipeline_Executor {
-	if m != nil {
-		return m.Executor
-	}
-	return nil
-}
-
 func (m *Pipeline) GetProjectId() string {
 	if m != nil {
 		return m.ProjectId
@@ -292,6 +275,23 @@ func (m *Pipeline) GetInputParameters() []*PipelineParameter {
 func (m *Pipeline) GetOutputParameters() []*PipelineParameter {
 	if m != nil {
 		return m.OutputParameters
+	}
+	return nil
+}
+
+type isPipeline_Executor interface {
+	isPipeline_Executor()
+}
+
+type Pipeline_Docker struct {
+	Docker *DockerExecutor `protobuf:"bytes,5,opt,name=docker,proto3,oneof"`
+}
+
+func (*Pipeline_Docker) isPipeline_Executor() {}
+
+func (m *Pipeline) GetExecutor() isPipeline_Executor {
+	if m != nil {
+		return m.Executor
 	}
 	return nil
 }
@@ -600,11 +600,13 @@ type isRunPipelineRequest_Pipeline interface {
 type RunPipelineRequest_PipelineId struct {
 	PipelineId string `protobuf:"bytes,1,opt,name=pipeline_id,json=pipelineId,proto3,oneof"`
 }
+
 type RunPipelineRequest_EphemeralPipeline struct {
 	EphemeralPipeline *Pipeline `protobuf:"bytes,2,opt,name=ephemeral_pipeline,json=ephemeralPipeline,proto3,oneof"`
 }
 
-func (*RunPipelineRequest_PipelineId) isRunPipelineRequest_Pipeline()        {}
+func (*RunPipelineRequest_PipelineId) isRunPipelineRequest_Pipeline() {}
+
 func (*RunPipelineRequest_EphemeralPipeline) isRunPipelineRequest_Pipeline() {}
 
 func (m *RunPipelineRequest) GetPipeline() isRunPipelineRequest_Pipeline {

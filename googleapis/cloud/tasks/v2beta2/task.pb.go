@@ -149,6 +149,13 @@ func (m *Task) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Task proto.InternalMessageInfo
 
+func (m *Task) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type isTask_PayloadType interface {
 	isTask_PayloadType()
 }
@@ -156,25 +163,20 @@ type isTask_PayloadType interface {
 type Task_AppEngineHttpRequest struct {
 	AppEngineHttpRequest *AppEngineHttpRequest `protobuf:"bytes,3,opt,name=app_engine_http_request,json=appEngineHttpRequest,proto3,oneof"`
 }
+
 type Task_PullMessage struct {
 	PullMessage *PullMessage `protobuf:"bytes,4,opt,name=pull_message,json=pullMessage,proto3,oneof"`
 }
 
 func (*Task_AppEngineHttpRequest) isTask_PayloadType() {}
-func (*Task_PullMessage) isTask_PayloadType()          {}
+
+func (*Task_PullMessage) isTask_PayloadType() {}
 
 func (m *Task) GetPayloadType() isTask_PayloadType {
 	if m != nil {
 		return m.PayloadType
 	}
 	return nil
-}
-
-func (m *Task) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
 }
 
 func (m *Task) GetAppEngineHttpRequest() *AppEngineHttpRequest {

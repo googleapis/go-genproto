@@ -75,39 +75,6 @@ func (m *MetricValue) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MetricValue proto.InternalMessageInfo
 
-type isMetricValue_Value interface {
-	isMetricValue_Value()
-}
-
-type MetricValue_BoolValue struct {
-	BoolValue bool `protobuf:"varint,4,opt,name=bool_value,json=boolValue,proto3,oneof"`
-}
-type MetricValue_Int64Value struct {
-	Int64Value int64 `protobuf:"varint,5,opt,name=int64_value,json=int64Value,proto3,oneof"`
-}
-type MetricValue_DoubleValue struct {
-	DoubleValue float64 `protobuf:"fixed64,6,opt,name=double_value,json=doubleValue,proto3,oneof"`
-}
-type MetricValue_StringValue struct {
-	StringValue string `protobuf:"bytes,7,opt,name=string_value,json=stringValue,proto3,oneof"`
-}
-type MetricValue_DistributionValue struct {
-	DistributionValue *Distribution `protobuf:"bytes,8,opt,name=distribution_value,json=distributionValue,proto3,oneof"`
-}
-
-func (*MetricValue_BoolValue) isMetricValue_Value()         {}
-func (*MetricValue_Int64Value) isMetricValue_Value()        {}
-func (*MetricValue_DoubleValue) isMetricValue_Value()       {}
-func (*MetricValue_StringValue) isMetricValue_Value()       {}
-func (*MetricValue_DistributionValue) isMetricValue_Value() {}
-
-func (m *MetricValue) GetValue() isMetricValue_Value {
-	if m != nil {
-		return m.Value
-	}
-	return nil
-}
-
 func (m *MetricValue) GetLabels() map[string]string {
 	if m != nil {
 		return m.Labels
@@ -125,6 +92,47 @@ func (m *MetricValue) GetStartTime() *timestamp.Timestamp {
 func (m *MetricValue) GetEndTime() *timestamp.Timestamp {
 	if m != nil {
 		return m.EndTime
+	}
+	return nil
+}
+
+type isMetricValue_Value interface {
+	isMetricValue_Value()
+}
+
+type MetricValue_BoolValue struct {
+	BoolValue bool `protobuf:"varint,4,opt,name=bool_value,json=boolValue,proto3,oneof"`
+}
+
+type MetricValue_Int64Value struct {
+	Int64Value int64 `protobuf:"varint,5,opt,name=int64_value,json=int64Value,proto3,oneof"`
+}
+
+type MetricValue_DoubleValue struct {
+	DoubleValue float64 `protobuf:"fixed64,6,opt,name=double_value,json=doubleValue,proto3,oneof"`
+}
+
+type MetricValue_StringValue struct {
+	StringValue string `protobuf:"bytes,7,opt,name=string_value,json=stringValue,proto3,oneof"`
+}
+
+type MetricValue_DistributionValue struct {
+	DistributionValue *Distribution `protobuf:"bytes,8,opt,name=distribution_value,json=distributionValue,proto3,oneof"`
+}
+
+func (*MetricValue_BoolValue) isMetricValue_Value() {}
+
+func (*MetricValue_Int64Value) isMetricValue_Value() {}
+
+func (*MetricValue_DoubleValue) isMetricValue_Value() {}
+
+func (*MetricValue_StringValue) isMetricValue_Value() {}
+
+func (*MetricValue_DistributionValue) isMetricValue_Value() {}
+
+func (m *MetricValue) GetValue() isMetricValue_Value {
+	if m != nil {
+		return m.Value
 	}
 	return nil
 }

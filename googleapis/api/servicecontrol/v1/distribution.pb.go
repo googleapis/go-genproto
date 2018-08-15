@@ -111,31 +111,6 @@ func (m *Distribution) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Distribution proto.InternalMessageInfo
 
-type isDistribution_BucketOption interface {
-	isDistribution_BucketOption()
-}
-
-type Distribution_LinearBuckets_ struct {
-	LinearBuckets *Distribution_LinearBuckets `protobuf:"bytes,7,opt,name=linear_buckets,json=linearBuckets,proto3,oneof"`
-}
-type Distribution_ExponentialBuckets_ struct {
-	ExponentialBuckets *Distribution_ExponentialBuckets `protobuf:"bytes,8,opt,name=exponential_buckets,json=exponentialBuckets,proto3,oneof"`
-}
-type Distribution_ExplicitBuckets_ struct {
-	ExplicitBuckets *Distribution_ExplicitBuckets `protobuf:"bytes,9,opt,name=explicit_buckets,json=explicitBuckets,proto3,oneof"`
-}
-
-func (*Distribution_LinearBuckets_) isDistribution_BucketOption()      {}
-func (*Distribution_ExponentialBuckets_) isDistribution_BucketOption() {}
-func (*Distribution_ExplicitBuckets_) isDistribution_BucketOption()    {}
-
-func (m *Distribution) GetBucketOption() isDistribution_BucketOption {
-	if m != nil {
-		return m.BucketOption
-	}
-	return nil
-}
-
 func (m *Distribution) GetCount() int64 {
 	if m != nil {
 		return m.Count
@@ -174,6 +149,35 @@ func (m *Distribution) GetSumOfSquaredDeviation() float64 {
 func (m *Distribution) GetBucketCounts() []int64 {
 	if m != nil {
 		return m.BucketCounts
+	}
+	return nil
+}
+
+type isDistribution_BucketOption interface {
+	isDistribution_BucketOption()
+}
+
+type Distribution_LinearBuckets_ struct {
+	LinearBuckets *Distribution_LinearBuckets `protobuf:"bytes,7,opt,name=linear_buckets,json=linearBuckets,proto3,oneof"`
+}
+
+type Distribution_ExponentialBuckets_ struct {
+	ExponentialBuckets *Distribution_ExponentialBuckets `protobuf:"bytes,8,opt,name=exponential_buckets,json=exponentialBuckets,proto3,oneof"`
+}
+
+type Distribution_ExplicitBuckets_ struct {
+	ExplicitBuckets *Distribution_ExplicitBuckets `protobuf:"bytes,9,opt,name=explicit_buckets,json=explicitBuckets,proto3,oneof"`
+}
+
+func (*Distribution_LinearBuckets_) isDistribution_BucketOption() {}
+
+func (*Distribution_ExponentialBuckets_) isDistribution_BucketOption() {}
+
+func (*Distribution_ExplicitBuckets_) isDistribution_BucketOption() {}
+
+func (m *Distribution) GetBucketOption() isDistribution_BucketOption {
+	if m != nil {
+		return m.BucketOption
 	}
 	return nil
 }

@@ -107,6 +107,20 @@ func (m *PgpSignedAttestation) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PgpSignedAttestation proto.InternalMessageInfo
 
+func (m *PgpSignedAttestation) GetSignature() string {
+	if m != nil {
+		return m.Signature
+	}
+	return ""
+}
+
+func (m *PgpSignedAttestation) GetContentType() PgpSignedAttestation_ContentType {
+	if m != nil {
+		return m.ContentType
+	}
+	return PgpSignedAttestation_CONTENT_TYPE_UNSPECIFIED
+}
+
 type isPgpSignedAttestation_KeyId interface {
 	isPgpSignedAttestation_KeyId()
 }
@@ -122,20 +136,6 @@ func (m *PgpSignedAttestation) GetKeyId() isPgpSignedAttestation_KeyId {
 		return m.KeyId
 	}
 	return nil
-}
-
-func (m *PgpSignedAttestation) GetSignature() string {
-	if m != nil {
-		return m.Signature
-	}
-	return ""
-}
-
-func (m *PgpSignedAttestation) GetContentType() PgpSignedAttestation_ContentType {
-	if m != nil {
-		return m.ContentType
-	}
-	return PgpSignedAttestation_CONTENT_TYPE_UNSPECIFIED
 }
 
 func (m *PgpSignedAttestation) GetPgpKeyId() string {

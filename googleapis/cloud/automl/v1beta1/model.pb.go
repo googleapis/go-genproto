@@ -119,16 +119,20 @@ type isModel_ModelMetadata interface {
 type Model_ImageClassificationModelMetadata struct {
 	ImageClassificationModelMetadata *ImageClassificationModelMetadata `protobuf:"bytes,13,opt,name=image_classification_model_metadata,json=imageClassificationModelMetadata,proto3,oneof"`
 }
+
 type Model_TextClassificationModelMetadata struct {
 	TextClassificationModelMetadata *TextClassificationModelMetadata `protobuf:"bytes,14,opt,name=text_classification_model_metadata,json=textClassificationModelMetadata,proto3,oneof"`
 }
+
 type Model_TranslationModelMetadata struct {
 	TranslationModelMetadata *TranslationModelMetadata `protobuf:"bytes,15,opt,name=translation_model_metadata,json=translationModelMetadata,proto3,oneof"`
 }
 
 func (*Model_ImageClassificationModelMetadata) isModel_ModelMetadata() {}
-func (*Model_TextClassificationModelMetadata) isModel_ModelMetadata()  {}
-func (*Model_TranslationModelMetadata) isModel_ModelMetadata()         {}
+
+func (*Model_TextClassificationModelMetadata) isModel_ModelMetadata() {}
+
+func (*Model_TranslationModelMetadata) isModel_ModelMetadata() {}
 
 func (m *Model) GetModelMetadata() isModel_ModelMetadata {
 	if m != nil {

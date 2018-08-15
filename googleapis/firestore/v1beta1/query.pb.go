@@ -66,7 +66,7 @@ var StructuredQuery_CompositeFilter_Operator_name = map[int32]string{
 }
 var StructuredQuery_CompositeFilter_Operator_value = map[string]int32{
 	"OPERATOR_UNSPECIFIED": 0,
-	"AND": 1,
+	"AND":                  1,
 }
 
 func (x StructuredQuery_CompositeFilter_Operator) String() string {
@@ -376,16 +376,20 @@ type isStructuredQuery_Filter_FilterType interface {
 type StructuredQuery_Filter_CompositeFilter struct {
 	CompositeFilter *StructuredQuery_CompositeFilter `protobuf:"bytes,1,opt,name=composite_filter,json=compositeFilter,proto3,oneof"`
 }
+
 type StructuredQuery_Filter_FieldFilter struct {
 	FieldFilter *StructuredQuery_FieldFilter `protobuf:"bytes,2,opt,name=field_filter,json=fieldFilter,proto3,oneof"`
 }
+
 type StructuredQuery_Filter_UnaryFilter struct {
 	UnaryFilter *StructuredQuery_UnaryFilter `protobuf:"bytes,3,opt,name=unary_filter,json=unaryFilter,proto3,oneof"`
 }
 
 func (*StructuredQuery_Filter_CompositeFilter) isStructuredQuery_Filter_FilterType() {}
-func (*StructuredQuery_Filter_FieldFilter) isStructuredQuery_Filter_FilterType()     {}
-func (*StructuredQuery_Filter_UnaryFilter) isStructuredQuery_Filter_FilterType()     {}
+
+func (*StructuredQuery_Filter_FieldFilter) isStructuredQuery_Filter_FilterType() {}
+
+func (*StructuredQuery_Filter_UnaryFilter) isStructuredQuery_Filter_FilterType() {}
 
 func (m *StructuredQuery_Filter) GetFilterType() isStructuredQuery_Filter_FilterType {
 	if m != nil {
@@ -654,6 +658,13 @@ func (m *StructuredQuery_UnaryFilter) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StructuredQuery_UnaryFilter proto.InternalMessageInfo
 
+func (m *StructuredQuery_UnaryFilter) GetOp() StructuredQuery_UnaryFilter_Operator {
+	if m != nil {
+		return m.Op
+	}
+	return StructuredQuery_UnaryFilter_OPERATOR_UNSPECIFIED
+}
+
 type isStructuredQuery_UnaryFilter_OperandType interface {
 	isStructuredQuery_UnaryFilter_OperandType()
 }
@@ -669,13 +680,6 @@ func (m *StructuredQuery_UnaryFilter) GetOperandType() isStructuredQuery_UnaryFi
 		return m.OperandType
 	}
 	return nil
-}
-
-func (m *StructuredQuery_UnaryFilter) GetOp() StructuredQuery_UnaryFilter_Operator {
-	if m != nil {
-		return m.Op
-	}
-	return StructuredQuery_UnaryFilter_OPERATOR_UNSPECIFIED
 }
 
 func (m *StructuredQuery_UnaryFilter) GetField() *StructuredQuery_FieldReference {

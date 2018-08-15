@@ -293,37 +293,22 @@ var xxx_messageInfo_RowRange proto.InternalMessageInfo
 type isRowRange_StartKey interface {
 	isRowRange_StartKey()
 }
-type isRowRange_EndKey interface {
-	isRowRange_EndKey()
-}
 
 type RowRange_StartKeyClosed struct {
 	StartKeyClosed []byte `protobuf:"bytes,1,opt,name=start_key_closed,json=startKeyClosed,proto3,oneof"`
 }
+
 type RowRange_StartKeyOpen struct {
 	StartKeyOpen []byte `protobuf:"bytes,2,opt,name=start_key_open,json=startKeyOpen,proto3,oneof"`
 }
-type RowRange_EndKeyOpen struct {
-	EndKeyOpen []byte `protobuf:"bytes,3,opt,name=end_key_open,json=endKeyOpen,proto3,oneof"`
-}
-type RowRange_EndKeyClosed struct {
-	EndKeyClosed []byte `protobuf:"bytes,4,opt,name=end_key_closed,json=endKeyClosed,proto3,oneof"`
-}
 
 func (*RowRange_StartKeyClosed) isRowRange_StartKey() {}
-func (*RowRange_StartKeyOpen) isRowRange_StartKey()   {}
-func (*RowRange_EndKeyOpen) isRowRange_EndKey()       {}
-func (*RowRange_EndKeyClosed) isRowRange_EndKey()     {}
+
+func (*RowRange_StartKeyOpen) isRowRange_StartKey() {}
 
 func (m *RowRange) GetStartKey() isRowRange_StartKey {
 	if m != nil {
 		return m.StartKey
-	}
-	return nil
-}
-func (m *RowRange) GetEndKey() isRowRange_EndKey {
-	if m != nil {
-		return m.EndKey
 	}
 	return nil
 }
@@ -338,6 +323,29 @@ func (m *RowRange) GetStartKeyClosed() []byte {
 func (m *RowRange) GetStartKeyOpen() []byte {
 	if x, ok := m.GetStartKey().(*RowRange_StartKeyOpen); ok {
 		return x.StartKeyOpen
+	}
+	return nil
+}
+
+type isRowRange_EndKey interface {
+	isRowRange_EndKey()
+}
+
+type RowRange_EndKeyOpen struct {
+	EndKeyOpen []byte `protobuf:"bytes,3,opt,name=end_key_open,json=endKeyOpen,proto3,oneof"`
+}
+
+type RowRange_EndKeyClosed struct {
+	EndKeyClosed []byte `protobuf:"bytes,4,opt,name=end_key_closed,json=endKeyClosed,proto3,oneof"`
+}
+
+func (*RowRange_EndKeyOpen) isRowRange_EndKey() {}
+
+func (*RowRange_EndKeyClosed) isRowRange_EndKey() {}
+
+func (m *RowRange) GetEndKey() isRowRange_EndKey {
+	if m != nil {
+		return m.EndKey
 	}
 	return nil
 }
@@ -563,49 +571,34 @@ func (m *ColumnRange) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ColumnRange proto.InternalMessageInfo
 
+func (m *ColumnRange) GetFamilyName() string {
+	if m != nil {
+		return m.FamilyName
+	}
+	return ""
+}
+
 type isColumnRange_StartQualifier interface {
 	isColumnRange_StartQualifier()
-}
-type isColumnRange_EndQualifier interface {
-	isColumnRange_EndQualifier()
 }
 
 type ColumnRange_StartQualifierClosed struct {
 	StartQualifierClosed []byte `protobuf:"bytes,2,opt,name=start_qualifier_closed,json=startQualifierClosed,proto3,oneof"`
 }
+
 type ColumnRange_StartQualifierOpen struct {
 	StartQualifierOpen []byte `protobuf:"bytes,3,opt,name=start_qualifier_open,json=startQualifierOpen,proto3,oneof"`
 }
-type ColumnRange_EndQualifierClosed struct {
-	EndQualifierClosed []byte `protobuf:"bytes,4,opt,name=end_qualifier_closed,json=endQualifierClosed,proto3,oneof"`
-}
-type ColumnRange_EndQualifierOpen struct {
-	EndQualifierOpen []byte `protobuf:"bytes,5,opt,name=end_qualifier_open,json=endQualifierOpen,proto3,oneof"`
-}
 
 func (*ColumnRange_StartQualifierClosed) isColumnRange_StartQualifier() {}
-func (*ColumnRange_StartQualifierOpen) isColumnRange_StartQualifier()   {}
-func (*ColumnRange_EndQualifierClosed) isColumnRange_EndQualifier()     {}
-func (*ColumnRange_EndQualifierOpen) isColumnRange_EndQualifier()       {}
+
+func (*ColumnRange_StartQualifierOpen) isColumnRange_StartQualifier() {}
 
 func (m *ColumnRange) GetStartQualifier() isColumnRange_StartQualifier {
 	if m != nil {
 		return m.StartQualifier
 	}
 	return nil
-}
-func (m *ColumnRange) GetEndQualifier() isColumnRange_EndQualifier {
-	if m != nil {
-		return m.EndQualifier
-	}
-	return nil
-}
-
-func (m *ColumnRange) GetFamilyName() string {
-	if m != nil {
-		return m.FamilyName
-	}
-	return ""
 }
 
 func (m *ColumnRange) GetStartQualifierClosed() []byte {
@@ -618,6 +611,29 @@ func (m *ColumnRange) GetStartQualifierClosed() []byte {
 func (m *ColumnRange) GetStartQualifierOpen() []byte {
 	if x, ok := m.GetStartQualifier().(*ColumnRange_StartQualifierOpen); ok {
 		return x.StartQualifierOpen
+	}
+	return nil
+}
+
+type isColumnRange_EndQualifier interface {
+	isColumnRange_EndQualifier()
+}
+
+type ColumnRange_EndQualifierClosed struct {
+	EndQualifierClosed []byte `protobuf:"bytes,4,opt,name=end_qualifier_closed,json=endQualifierClosed,proto3,oneof"`
+}
+
+type ColumnRange_EndQualifierOpen struct {
+	EndQualifierOpen []byte `protobuf:"bytes,5,opt,name=end_qualifier_open,json=endQualifierOpen,proto3,oneof"`
+}
+
+func (*ColumnRange_EndQualifierClosed) isColumnRange_EndQualifier() {}
+
+func (*ColumnRange_EndQualifierOpen) isColumnRange_EndQualifier() {}
+
+func (m *ColumnRange) GetEndQualifier() isColumnRange_EndQualifier {
+	if m != nil {
+		return m.EndQualifier
 	}
 	return nil
 }
@@ -841,37 +857,22 @@ var xxx_messageInfo_ValueRange proto.InternalMessageInfo
 type isValueRange_StartValue interface {
 	isValueRange_StartValue()
 }
-type isValueRange_EndValue interface {
-	isValueRange_EndValue()
-}
 
 type ValueRange_StartValueClosed struct {
 	StartValueClosed []byte `protobuf:"bytes,1,opt,name=start_value_closed,json=startValueClosed,proto3,oneof"`
 }
+
 type ValueRange_StartValueOpen struct {
 	StartValueOpen []byte `protobuf:"bytes,2,opt,name=start_value_open,json=startValueOpen,proto3,oneof"`
 }
-type ValueRange_EndValueClosed struct {
-	EndValueClosed []byte `protobuf:"bytes,3,opt,name=end_value_closed,json=endValueClosed,proto3,oneof"`
-}
-type ValueRange_EndValueOpen struct {
-	EndValueOpen []byte `protobuf:"bytes,4,opt,name=end_value_open,json=endValueOpen,proto3,oneof"`
-}
 
 func (*ValueRange_StartValueClosed) isValueRange_StartValue() {}
-func (*ValueRange_StartValueOpen) isValueRange_StartValue()   {}
-func (*ValueRange_EndValueClosed) isValueRange_EndValue()     {}
-func (*ValueRange_EndValueOpen) isValueRange_EndValue()       {}
+
+func (*ValueRange_StartValueOpen) isValueRange_StartValue() {}
 
 func (m *ValueRange) GetStartValue() isValueRange_StartValue {
 	if m != nil {
 		return m.StartValue
-	}
-	return nil
-}
-func (m *ValueRange) GetEndValue() isValueRange_EndValue {
-	if m != nil {
-		return m.EndValue
 	}
 	return nil
 }
@@ -886,6 +887,29 @@ func (m *ValueRange) GetStartValueClosed() []byte {
 func (m *ValueRange) GetStartValueOpen() []byte {
 	if x, ok := m.GetStartValue().(*ValueRange_StartValueOpen); ok {
 		return x.StartValueOpen
+	}
+	return nil
+}
+
+type isValueRange_EndValue interface {
+	isValueRange_EndValue()
+}
+
+type ValueRange_EndValueClosed struct {
+	EndValueClosed []byte `protobuf:"bytes,3,opt,name=end_value_closed,json=endValueClosed,proto3,oneof"`
+}
+
+type ValueRange_EndValueOpen struct {
+	EndValueOpen []byte `protobuf:"bytes,4,opt,name=end_value_open,json=endValueOpen,proto3,oneof"`
+}
+
+func (*ValueRange_EndValueClosed) isValueRange_EndValue() {}
+
+func (*ValueRange_EndValueOpen) isValueRange_EndValue() {}
+
+func (m *ValueRange) GetEndValue() isValueRange_EndValue {
+	if m != nil {
+		return m.EndValue
 	}
 	return nil
 }
@@ -1106,80 +1130,116 @@ type isRowFilter_Filter interface {
 type RowFilter_Chain_ struct {
 	Chain *RowFilter_Chain `protobuf:"bytes,1,opt,name=chain,proto3,oneof"`
 }
+
 type RowFilter_Interleave_ struct {
 	Interleave *RowFilter_Interleave `protobuf:"bytes,2,opt,name=interleave,proto3,oneof"`
 }
+
 type RowFilter_Condition_ struct {
 	Condition *RowFilter_Condition `protobuf:"bytes,3,opt,name=condition,proto3,oneof"`
 }
+
 type RowFilter_Sink struct {
 	Sink bool `protobuf:"varint,16,opt,name=sink,proto3,oneof"`
 }
+
 type RowFilter_PassAllFilter struct {
 	PassAllFilter bool `protobuf:"varint,17,opt,name=pass_all_filter,json=passAllFilter,proto3,oneof"`
 }
+
 type RowFilter_BlockAllFilter struct {
 	BlockAllFilter bool `protobuf:"varint,18,opt,name=block_all_filter,json=blockAllFilter,proto3,oneof"`
 }
+
 type RowFilter_RowKeyRegexFilter struct {
 	RowKeyRegexFilter []byte `protobuf:"bytes,4,opt,name=row_key_regex_filter,json=rowKeyRegexFilter,proto3,oneof"`
 }
+
 type RowFilter_RowSampleFilter struct {
 	RowSampleFilter float64 `protobuf:"fixed64,14,opt,name=row_sample_filter,json=rowSampleFilter,proto3,oneof"`
 }
+
 type RowFilter_FamilyNameRegexFilter struct {
 	FamilyNameRegexFilter string `protobuf:"bytes,5,opt,name=family_name_regex_filter,json=familyNameRegexFilter,proto3,oneof"`
 }
+
 type RowFilter_ColumnQualifierRegexFilter struct {
 	ColumnQualifierRegexFilter []byte `protobuf:"bytes,6,opt,name=column_qualifier_regex_filter,json=columnQualifierRegexFilter,proto3,oneof"`
 }
+
 type RowFilter_ColumnRangeFilter struct {
 	ColumnRangeFilter *ColumnRange `protobuf:"bytes,7,opt,name=column_range_filter,json=columnRangeFilter,proto3,oneof"`
 }
+
 type RowFilter_TimestampRangeFilter struct {
 	TimestampRangeFilter *TimestampRange `protobuf:"bytes,8,opt,name=timestamp_range_filter,json=timestampRangeFilter,proto3,oneof"`
 }
+
 type RowFilter_ValueRegexFilter struct {
 	ValueRegexFilter []byte `protobuf:"bytes,9,opt,name=value_regex_filter,json=valueRegexFilter,proto3,oneof"`
 }
+
 type RowFilter_ValueRangeFilter struct {
 	ValueRangeFilter *ValueRange `protobuf:"bytes,15,opt,name=value_range_filter,json=valueRangeFilter,proto3,oneof"`
 }
+
 type RowFilter_CellsPerRowOffsetFilter struct {
 	CellsPerRowOffsetFilter int32 `protobuf:"varint,10,opt,name=cells_per_row_offset_filter,json=cellsPerRowOffsetFilter,proto3,oneof"`
 }
+
 type RowFilter_CellsPerRowLimitFilter struct {
 	CellsPerRowLimitFilter int32 `protobuf:"varint,11,opt,name=cells_per_row_limit_filter,json=cellsPerRowLimitFilter,proto3,oneof"`
 }
+
 type RowFilter_CellsPerColumnLimitFilter struct {
 	CellsPerColumnLimitFilter int32 `protobuf:"varint,12,opt,name=cells_per_column_limit_filter,json=cellsPerColumnLimitFilter,proto3,oneof"`
 }
+
 type RowFilter_StripValueTransformer struct {
 	StripValueTransformer bool `protobuf:"varint,13,opt,name=strip_value_transformer,json=stripValueTransformer,proto3,oneof"`
 }
+
 type RowFilter_ApplyLabelTransformer struct {
 	ApplyLabelTransformer string `protobuf:"bytes,19,opt,name=apply_label_transformer,json=applyLabelTransformer,proto3,oneof"`
 }
 
-func (*RowFilter_Chain_) isRowFilter_Filter()                     {}
-func (*RowFilter_Interleave_) isRowFilter_Filter()                {}
-func (*RowFilter_Condition_) isRowFilter_Filter()                 {}
-func (*RowFilter_Sink) isRowFilter_Filter()                       {}
-func (*RowFilter_PassAllFilter) isRowFilter_Filter()              {}
-func (*RowFilter_BlockAllFilter) isRowFilter_Filter()             {}
-func (*RowFilter_RowKeyRegexFilter) isRowFilter_Filter()          {}
-func (*RowFilter_RowSampleFilter) isRowFilter_Filter()            {}
-func (*RowFilter_FamilyNameRegexFilter) isRowFilter_Filter()      {}
+func (*RowFilter_Chain_) isRowFilter_Filter() {}
+
+func (*RowFilter_Interleave_) isRowFilter_Filter() {}
+
+func (*RowFilter_Condition_) isRowFilter_Filter() {}
+
+func (*RowFilter_Sink) isRowFilter_Filter() {}
+
+func (*RowFilter_PassAllFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_BlockAllFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_RowKeyRegexFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_RowSampleFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_FamilyNameRegexFilter) isRowFilter_Filter() {}
+
 func (*RowFilter_ColumnQualifierRegexFilter) isRowFilter_Filter() {}
-func (*RowFilter_ColumnRangeFilter) isRowFilter_Filter()          {}
-func (*RowFilter_TimestampRangeFilter) isRowFilter_Filter()       {}
-func (*RowFilter_ValueRegexFilter) isRowFilter_Filter()           {}
-func (*RowFilter_ValueRangeFilter) isRowFilter_Filter()           {}
-func (*RowFilter_CellsPerRowOffsetFilter) isRowFilter_Filter()    {}
-func (*RowFilter_CellsPerRowLimitFilter) isRowFilter_Filter()     {}
-func (*RowFilter_CellsPerColumnLimitFilter) isRowFilter_Filter()  {}
-func (*RowFilter_StripValueTransformer) isRowFilter_Filter()      {}
-func (*RowFilter_ApplyLabelTransformer) isRowFilter_Filter()      {}
+
+func (*RowFilter_ColumnRangeFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_TimestampRangeFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_ValueRegexFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_ValueRangeFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_CellsPerRowOffsetFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_CellsPerRowLimitFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_CellsPerColumnLimitFilter) isRowFilter_Filter() {}
+
+func (*RowFilter_StripValueTransformer) isRowFilter_Filter() {}
+
+func (*RowFilter_ApplyLabelTransformer) isRowFilter_Filter() {}
 
 func (m *RowFilter) GetFilter() isRowFilter_Filter {
 	if m != nil {
@@ -1895,20 +1955,26 @@ type isMutation_Mutation interface {
 type Mutation_SetCell_ struct {
 	SetCell *Mutation_SetCell `protobuf:"bytes,1,opt,name=set_cell,json=setCell,proto3,oneof"`
 }
+
 type Mutation_DeleteFromColumn_ struct {
 	DeleteFromColumn *Mutation_DeleteFromColumn `protobuf:"bytes,2,opt,name=delete_from_column,json=deleteFromColumn,proto3,oneof"`
 }
+
 type Mutation_DeleteFromFamily_ struct {
 	DeleteFromFamily *Mutation_DeleteFromFamily `protobuf:"bytes,3,opt,name=delete_from_family,json=deleteFromFamily,proto3,oneof"`
 }
+
 type Mutation_DeleteFromRow_ struct {
 	DeleteFromRow *Mutation_DeleteFromRow `protobuf:"bytes,4,opt,name=delete_from_row,json=deleteFromRow,proto3,oneof"`
 }
 
-func (*Mutation_SetCell_) isMutation_Mutation()          {}
+func (*Mutation_SetCell_) isMutation_Mutation() {}
+
 func (*Mutation_DeleteFromColumn_) isMutation_Mutation() {}
+
 func (*Mutation_DeleteFromFamily_) isMutation_Mutation() {}
-func (*Mutation_DeleteFromRow_) isMutation_Mutation()    {}
+
+func (*Mutation_DeleteFromRow_) isMutation_Mutation() {}
 
 func (m *Mutation) GetMutation() isMutation_Mutation {
 	if m != nil {
@@ -2309,27 +2375,6 @@ func (m *ReadModifyWriteRule) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ReadModifyWriteRule proto.InternalMessageInfo
 
-type isReadModifyWriteRule_Rule interface {
-	isReadModifyWriteRule_Rule()
-}
-
-type ReadModifyWriteRule_AppendValue struct {
-	AppendValue []byte `protobuf:"bytes,3,opt,name=append_value,json=appendValue,proto3,oneof"`
-}
-type ReadModifyWriteRule_IncrementAmount struct {
-	IncrementAmount int64 `protobuf:"varint,4,opt,name=increment_amount,json=incrementAmount,proto3,oneof"`
-}
-
-func (*ReadModifyWriteRule_AppendValue) isReadModifyWriteRule_Rule()     {}
-func (*ReadModifyWriteRule_IncrementAmount) isReadModifyWriteRule_Rule() {}
-
-func (m *ReadModifyWriteRule) GetRule() isReadModifyWriteRule_Rule {
-	if m != nil {
-		return m.Rule
-	}
-	return nil
-}
-
 func (m *ReadModifyWriteRule) GetFamilyName() string {
 	if m != nil {
 		return m.FamilyName
@@ -2340,6 +2385,29 @@ func (m *ReadModifyWriteRule) GetFamilyName() string {
 func (m *ReadModifyWriteRule) GetColumnQualifier() []byte {
 	if m != nil {
 		return m.ColumnQualifier
+	}
+	return nil
+}
+
+type isReadModifyWriteRule_Rule interface {
+	isReadModifyWriteRule_Rule()
+}
+
+type ReadModifyWriteRule_AppendValue struct {
+	AppendValue []byte `protobuf:"bytes,3,opt,name=append_value,json=appendValue,proto3,oneof"`
+}
+
+type ReadModifyWriteRule_IncrementAmount struct {
+	IncrementAmount int64 `protobuf:"varint,4,opt,name=increment_amount,json=incrementAmount,proto3,oneof"`
+}
+
+func (*ReadModifyWriteRule_AppendValue) isReadModifyWriteRule_Rule() {}
+
+func (*ReadModifyWriteRule_IncrementAmount) isReadModifyWriteRule_Rule() {}
+
+func (m *ReadModifyWriteRule) GetRule() isReadModifyWriteRule_Rule {
+	if m != nil {
+		return m.Rule
 	}
 	return nil
 }

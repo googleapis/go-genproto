@@ -371,27 +371,6 @@ func (m *AppProfile) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_AppProfile proto.InternalMessageInfo
 
-type isAppProfile_RoutingPolicy interface {
-	isAppProfile_RoutingPolicy()
-}
-
-type AppProfile_MultiClusterRoutingUseAny_ struct {
-	MultiClusterRoutingUseAny *AppProfile_MultiClusterRoutingUseAny `protobuf:"bytes,5,opt,name=multi_cluster_routing_use_any,json=multiClusterRoutingUseAny,proto3,oneof"`
-}
-type AppProfile_SingleClusterRouting_ struct {
-	SingleClusterRouting *AppProfile_SingleClusterRouting `protobuf:"bytes,6,opt,name=single_cluster_routing,json=singleClusterRouting,proto3,oneof"`
-}
-
-func (*AppProfile_MultiClusterRoutingUseAny_) isAppProfile_RoutingPolicy() {}
-func (*AppProfile_SingleClusterRouting_) isAppProfile_RoutingPolicy()      {}
-
-func (m *AppProfile) GetRoutingPolicy() isAppProfile_RoutingPolicy {
-	if m != nil {
-		return m.RoutingPolicy
-	}
-	return nil
-}
-
 func (m *AppProfile) GetName() string {
 	if m != nil {
 		return m.Name
@@ -411,6 +390,29 @@ func (m *AppProfile) GetDescription() string {
 		return m.Description
 	}
 	return ""
+}
+
+type isAppProfile_RoutingPolicy interface {
+	isAppProfile_RoutingPolicy()
+}
+
+type AppProfile_MultiClusterRoutingUseAny_ struct {
+	MultiClusterRoutingUseAny *AppProfile_MultiClusterRoutingUseAny `protobuf:"bytes,5,opt,name=multi_cluster_routing_use_any,json=multiClusterRoutingUseAny,proto3,oneof"`
+}
+
+type AppProfile_SingleClusterRouting_ struct {
+	SingleClusterRouting *AppProfile_SingleClusterRouting `protobuf:"bytes,6,opt,name=single_cluster_routing,json=singleClusterRouting,proto3,oneof"`
+}
+
+func (*AppProfile_MultiClusterRoutingUseAny_) isAppProfile_RoutingPolicy() {}
+
+func (*AppProfile_SingleClusterRouting_) isAppProfile_RoutingPolicy() {}
+
+func (m *AppProfile) GetRoutingPolicy() isAppProfile_RoutingPolicy {
+	if m != nil {
+		return m.RoutingPolicy
+	}
+	return nil
 }
 
 func (m *AppProfile) GetMultiClusterRoutingUseAny() *AppProfile_MultiClusterRoutingUseAny {

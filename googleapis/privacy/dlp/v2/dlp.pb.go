@@ -196,10 +196,10 @@ var StoredInfoTypeState_name = map[int32]string{
 }
 var StoredInfoTypeState_value = map[string]int32{
 	"STORED_INFO_TYPE_STATE_UNSPECIFIED": 0,
-	"PENDING": 1,
-	"READY":   2,
-	"FAILED":  3,
-	"INVALID": 4,
+	"PENDING":                            1,
+	"READY":                              2,
+	"FAILED":                             3,
+	"INVALID":                            4,
 }
 
 func (x StoredInfoTypeState) String() string {
@@ -359,11 +359,11 @@ var CharsToIgnore_CommonCharsToIgnore_name = map[int32]string{
 }
 var CharsToIgnore_CommonCharsToIgnore_value = map[string]int32{
 	"COMMON_CHARS_TO_IGNORE_UNSPECIFIED": 0,
-	"NUMERIC":          1,
-	"ALPHA_UPPER_CASE": 2,
-	"ALPHA_LOWER_CASE": 3,
-	"PUNCTUATION":      4,
-	"WHITESPACE":       5,
+	"NUMERIC":                            1,
+	"ALPHA_UPPER_CASE":                   2,
+	"ALPHA_LOWER_CASE":                   3,
+	"PUNCTUATION":                        4,
+	"WHITESPACE":                         5,
 }
 
 func (x CharsToIgnore_CommonCharsToIgnore) String() string {
@@ -399,10 +399,10 @@ var CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet_name = map[int32]string{
 }
 var CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet_value = map[string]int32{
 	"FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED": 0,
-	"NUMERIC":                  1,
-	"HEXADECIMAL":              2,
-	"UPPER_CASE_ALPHA_NUMERIC": 3,
-	"ALPHA_NUMERIC":            4,
+	"NUMERIC":                                1,
+	"HEXADECIMAL":                            2,
+	"UPPER_CASE_ALPHA_NUMERIC":               3,
+	"ALPHA_NUMERIC":                          4,
 }
 
 func (x CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet) String() string {
@@ -425,7 +425,7 @@ var RecordCondition_Expressions_LogicalOperator_name = map[int32]string{
 }
 var RecordCondition_Expressions_LogicalOperator_value = map[string]int32{
 	"LOGICAL_OPERATOR_UNSPECIFIED": 0,
-	"AND": 1,
+	"AND":                          1,
 }
 
 func (x RecordCondition_Expressions_LogicalOperator) String() string {
@@ -451,8 +451,8 @@ var TransformationSummary_TransformationResultCode_name = map[int32]string{
 }
 var TransformationSummary_TransformationResultCode_value = map[string]int32{
 	"TRANSFORMATION_RESULT_CODE_UNSPECIFIED": 0,
-	"SUCCESS": 1,
-	"ERROR":   2,
+	"SUCCESS":                                1,
+	"ERROR":                                  2,
 }
 
 func (x TransformationSummary_TransformationResultCode) String() string {
@@ -860,15 +860,19 @@ type isContentItem_DataItem interface {
 type ContentItem_Value struct {
 	Value string `protobuf:"bytes,3,opt,name=value,proto3,oneof"`
 }
+
 type ContentItem_Table struct {
 	Table *Table `protobuf:"bytes,4,opt,name=table,proto3,oneof"`
 }
+
 type ContentItem_ByteItem struct {
 	ByteItem *ByteContentItem `protobuf:"bytes,5,opt,name=byte_item,json=byteItem,proto3,oneof"`
 }
 
-func (*ContentItem_Value) isContentItem_DataItem()    {}
-func (*ContentItem_Table) isContentItem_DataItem()    {}
+func (*ContentItem_Value) isContentItem_DataItem() {}
+
+func (*ContentItem_Table) isContentItem_DataItem() {}
+
 func (*ContentItem_ByteItem) isContentItem_DataItem() {}
 
 func (m *ContentItem) GetDataItem() isContentItem_DataItem {
@@ -1337,6 +1341,13 @@ func (m *ContentLocation) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ContentLocation proto.InternalMessageInfo
 
+func (m *ContentLocation) GetContainerName() string {
+	if m != nil {
+		return m.ContainerName
+	}
+	return ""
+}
+
 type isContentLocation_Location interface {
 	isContentLocation_Location()
 }
@@ -1344,15 +1355,19 @@ type isContentLocation_Location interface {
 type ContentLocation_RecordLocation struct {
 	RecordLocation *RecordLocation `protobuf:"bytes,2,opt,name=record_location,json=recordLocation,proto3,oneof"`
 }
+
 type ContentLocation_ImageLocation struct {
 	ImageLocation *ImageLocation `protobuf:"bytes,3,opt,name=image_location,json=imageLocation,proto3,oneof"`
 }
+
 type ContentLocation_DocumentLocation struct {
 	DocumentLocation *DocumentLocation `protobuf:"bytes,5,opt,name=document_location,json=documentLocation,proto3,oneof"`
 }
 
-func (*ContentLocation_RecordLocation) isContentLocation_Location()   {}
-func (*ContentLocation_ImageLocation) isContentLocation_Location()    {}
+func (*ContentLocation_RecordLocation) isContentLocation_Location() {}
+
+func (*ContentLocation_ImageLocation) isContentLocation_Location() {}
+
 func (*ContentLocation_DocumentLocation) isContentLocation_Location() {}
 
 func (m *ContentLocation) GetLocation() isContentLocation_Location {
@@ -1360,13 +1375,6 @@ func (m *ContentLocation) GetLocation() isContentLocation_Location {
 		return m.Location
 	}
 	return nil
-}
-
-func (m *ContentLocation) GetContainerName() string {
-	if m != nil {
-		return m.ContainerName
-	}
-	return ""
 }
 
 func (m *ContentLocation) GetRecordLocation() *RecordLocation {
@@ -1919,12 +1927,14 @@ type isRedactImageRequest_ImageRedactionConfig_Target interface {
 type RedactImageRequest_ImageRedactionConfig_InfoType struct {
 	InfoType *InfoType `protobuf:"bytes,1,opt,name=info_type,json=infoType,proto3,oneof"`
 }
+
 type RedactImageRequest_ImageRedactionConfig_RedactAllText struct {
 	RedactAllText bool `protobuf:"varint,2,opt,name=redact_all_text,json=redactAllText,proto3,oneof"`
 }
 
 func (*RedactImageRequest_ImageRedactionConfig_InfoType) isRedactImageRequest_ImageRedactionConfig_Target() {
 }
+
 func (*RedactImageRequest_ImageRedactionConfig_RedactAllText) isRedactImageRequest_ImageRedactionConfig_Target() {
 }
 
@@ -3143,6 +3153,13 @@ func (m *QuasiId) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_QuasiId proto.InternalMessageInfo
 
+func (m *QuasiId) GetField() *FieldId {
+	if m != nil {
+		return m.Field
+	}
+	return nil
+}
+
 type isQuasiId_Tag interface {
 	isQuasiId_Tag()
 }
@@ -3150,27 +3167,24 @@ type isQuasiId_Tag interface {
 type QuasiId_InfoType struct {
 	InfoType *InfoType `protobuf:"bytes,2,opt,name=info_type,json=infoType,proto3,oneof"`
 }
+
 type QuasiId_CustomTag struct {
 	CustomTag string `protobuf:"bytes,3,opt,name=custom_tag,json=customTag,proto3,oneof"`
 }
+
 type QuasiId_Inferred struct {
 	Inferred *empty.Empty `protobuf:"bytes,4,opt,name=inferred,proto3,oneof"`
 }
 
-func (*QuasiId_InfoType) isQuasiId_Tag()  {}
+func (*QuasiId_InfoType) isQuasiId_Tag() {}
+
 func (*QuasiId_CustomTag) isQuasiId_Tag() {}
-func (*QuasiId_Inferred) isQuasiId_Tag()  {}
+
+func (*QuasiId_Inferred) isQuasiId_Tag() {}
 
 func (m *QuasiId) GetTag() isQuasiId_Tag {
 	if m != nil {
 		return m.Tag
-	}
-	return nil
-}
-
-func (m *QuasiId) GetField() *FieldId {
-	if m != nil {
-		return m.Field
 	}
 	return nil
 }
@@ -3445,27 +3459,37 @@ type isPrivacyMetric_Type interface {
 type PrivacyMetric_NumericalStatsConfig_ struct {
 	NumericalStatsConfig *PrivacyMetric_NumericalStatsConfig `protobuf:"bytes,1,opt,name=numerical_stats_config,json=numericalStatsConfig,proto3,oneof"`
 }
+
 type PrivacyMetric_CategoricalStatsConfig_ struct {
 	CategoricalStatsConfig *PrivacyMetric_CategoricalStatsConfig `protobuf:"bytes,2,opt,name=categorical_stats_config,json=categoricalStatsConfig,proto3,oneof"`
 }
+
 type PrivacyMetric_KAnonymityConfig_ struct {
 	KAnonymityConfig *PrivacyMetric_KAnonymityConfig `protobuf:"bytes,3,opt,name=k_anonymity_config,json=kAnonymityConfig,proto3,oneof"`
 }
+
 type PrivacyMetric_LDiversityConfig_ struct {
 	LDiversityConfig *PrivacyMetric_LDiversityConfig `protobuf:"bytes,4,opt,name=l_diversity_config,json=lDiversityConfig,proto3,oneof"`
 }
+
 type PrivacyMetric_KMapEstimationConfig_ struct {
 	KMapEstimationConfig *PrivacyMetric_KMapEstimationConfig `protobuf:"bytes,5,opt,name=k_map_estimation_config,json=kMapEstimationConfig,proto3,oneof"`
 }
+
 type PrivacyMetric_DeltaPresenceEstimationConfig_ struct {
 	DeltaPresenceEstimationConfig *PrivacyMetric_DeltaPresenceEstimationConfig `protobuf:"bytes,6,opt,name=delta_presence_estimation_config,json=deltaPresenceEstimationConfig,proto3,oneof"`
 }
 
-func (*PrivacyMetric_NumericalStatsConfig_) isPrivacyMetric_Type()          {}
-func (*PrivacyMetric_CategoricalStatsConfig_) isPrivacyMetric_Type()        {}
-func (*PrivacyMetric_KAnonymityConfig_) isPrivacyMetric_Type()              {}
-func (*PrivacyMetric_LDiversityConfig_) isPrivacyMetric_Type()              {}
-func (*PrivacyMetric_KMapEstimationConfig_) isPrivacyMetric_Type()          {}
+func (*PrivacyMetric_NumericalStatsConfig_) isPrivacyMetric_Type() {}
+
+func (*PrivacyMetric_CategoricalStatsConfig_) isPrivacyMetric_Type() {}
+
+func (*PrivacyMetric_KAnonymityConfig_) isPrivacyMetric_Type() {}
+
+func (*PrivacyMetric_LDiversityConfig_) isPrivacyMetric_Type() {}
+
+func (*PrivacyMetric_KMapEstimationConfig_) isPrivacyMetric_Type() {}
+
 func (*PrivacyMetric_DeltaPresenceEstimationConfig_) isPrivacyMetric_Type() {}
 
 func (m *PrivacyMetric) GetType() isPrivacyMetric_Type {
@@ -3980,6 +4004,13 @@ func (m *PrivacyMetric_KMapEstimationConfig_TaggedField) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PrivacyMetric_KMapEstimationConfig_TaggedField proto.InternalMessageInfo
 
+func (m *PrivacyMetric_KMapEstimationConfig_TaggedField) GetField() *FieldId {
+	if m != nil {
+		return m.Field
+	}
+	return nil
+}
+
 type isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag interface {
 	isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag()
 }
@@ -3987,30 +4018,27 @@ type isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag interface {
 type PrivacyMetric_KMapEstimationConfig_TaggedField_InfoType struct {
 	InfoType *InfoType `protobuf:"bytes,2,opt,name=info_type,json=infoType,proto3,oneof"`
 }
+
 type PrivacyMetric_KMapEstimationConfig_TaggedField_CustomTag struct {
 	CustomTag string `protobuf:"bytes,3,opt,name=custom_tag,json=customTag,proto3,oneof"`
 }
+
 type PrivacyMetric_KMapEstimationConfig_TaggedField_Inferred struct {
 	Inferred *empty.Empty `protobuf:"bytes,4,opt,name=inferred,proto3,oneof"`
 }
 
 func (*PrivacyMetric_KMapEstimationConfig_TaggedField_InfoType) isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag() {
 }
+
 func (*PrivacyMetric_KMapEstimationConfig_TaggedField_CustomTag) isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag() {
 }
+
 func (*PrivacyMetric_KMapEstimationConfig_TaggedField_Inferred) isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag() {
 }
 
 func (m *PrivacyMetric_KMapEstimationConfig_TaggedField) GetTag() isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag {
 	if m != nil {
 		return m.Tag
-	}
-	return nil
-}
-
-func (m *PrivacyMetric_KMapEstimationConfig_TaggedField) GetField() *FieldId {
-	if m != nil {
-		return m.Field
 	}
 	return nil
 }
@@ -4362,44 +4390,6 @@ func (m *AnalyzeDataSourceRiskDetails) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_AnalyzeDataSourceRiskDetails proto.InternalMessageInfo
 
-type isAnalyzeDataSourceRiskDetails_Result interface {
-	isAnalyzeDataSourceRiskDetails_Result()
-}
-
-type AnalyzeDataSourceRiskDetails_NumericalStatsResult_ struct {
-	NumericalStatsResult *AnalyzeDataSourceRiskDetails_NumericalStatsResult `protobuf:"bytes,3,opt,name=numerical_stats_result,json=numericalStatsResult,proto3,oneof"`
-}
-type AnalyzeDataSourceRiskDetails_CategoricalStatsResult_ struct {
-	CategoricalStatsResult *AnalyzeDataSourceRiskDetails_CategoricalStatsResult `protobuf:"bytes,4,opt,name=categorical_stats_result,json=categoricalStatsResult,proto3,oneof"`
-}
-type AnalyzeDataSourceRiskDetails_KAnonymityResult_ struct {
-	KAnonymityResult *AnalyzeDataSourceRiskDetails_KAnonymityResult `protobuf:"bytes,5,opt,name=k_anonymity_result,json=kAnonymityResult,proto3,oneof"`
-}
-type AnalyzeDataSourceRiskDetails_LDiversityResult_ struct {
-	LDiversityResult *AnalyzeDataSourceRiskDetails_LDiversityResult `protobuf:"bytes,6,opt,name=l_diversity_result,json=lDiversityResult,proto3,oneof"`
-}
-type AnalyzeDataSourceRiskDetails_KMapEstimationResult_ struct {
-	KMapEstimationResult *AnalyzeDataSourceRiskDetails_KMapEstimationResult `protobuf:"bytes,7,opt,name=k_map_estimation_result,json=kMapEstimationResult,proto3,oneof"`
-}
-type AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult_ struct {
-	DeltaPresenceEstimationResult *AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult `protobuf:"bytes,9,opt,name=delta_presence_estimation_result,json=deltaPresenceEstimationResult,proto3,oneof"`
-}
-
-func (*AnalyzeDataSourceRiskDetails_NumericalStatsResult_) isAnalyzeDataSourceRiskDetails_Result()   {}
-func (*AnalyzeDataSourceRiskDetails_CategoricalStatsResult_) isAnalyzeDataSourceRiskDetails_Result() {}
-func (*AnalyzeDataSourceRiskDetails_KAnonymityResult_) isAnalyzeDataSourceRiskDetails_Result()       {}
-func (*AnalyzeDataSourceRiskDetails_LDiversityResult_) isAnalyzeDataSourceRiskDetails_Result()       {}
-func (*AnalyzeDataSourceRiskDetails_KMapEstimationResult_) isAnalyzeDataSourceRiskDetails_Result()   {}
-func (*AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult_) isAnalyzeDataSourceRiskDetails_Result() {
-}
-
-func (m *AnalyzeDataSourceRiskDetails) GetResult() isAnalyzeDataSourceRiskDetails_Result {
-	if m != nil {
-		return m.Result
-	}
-	return nil
-}
-
 func (m *AnalyzeDataSourceRiskDetails) GetRequestedPrivacyMetric() *PrivacyMetric {
 	if m != nil {
 		return m.RequestedPrivacyMetric
@@ -4410,6 +4400,54 @@ func (m *AnalyzeDataSourceRiskDetails) GetRequestedPrivacyMetric() *PrivacyMetri
 func (m *AnalyzeDataSourceRiskDetails) GetRequestedSourceTable() *BigQueryTable {
 	if m != nil {
 		return m.RequestedSourceTable
+	}
+	return nil
+}
+
+type isAnalyzeDataSourceRiskDetails_Result interface {
+	isAnalyzeDataSourceRiskDetails_Result()
+}
+
+type AnalyzeDataSourceRiskDetails_NumericalStatsResult_ struct {
+	NumericalStatsResult *AnalyzeDataSourceRiskDetails_NumericalStatsResult `protobuf:"bytes,3,opt,name=numerical_stats_result,json=numericalStatsResult,proto3,oneof"`
+}
+
+type AnalyzeDataSourceRiskDetails_CategoricalStatsResult_ struct {
+	CategoricalStatsResult *AnalyzeDataSourceRiskDetails_CategoricalStatsResult `protobuf:"bytes,4,opt,name=categorical_stats_result,json=categoricalStatsResult,proto3,oneof"`
+}
+
+type AnalyzeDataSourceRiskDetails_KAnonymityResult_ struct {
+	KAnonymityResult *AnalyzeDataSourceRiskDetails_KAnonymityResult `protobuf:"bytes,5,opt,name=k_anonymity_result,json=kAnonymityResult,proto3,oneof"`
+}
+
+type AnalyzeDataSourceRiskDetails_LDiversityResult_ struct {
+	LDiversityResult *AnalyzeDataSourceRiskDetails_LDiversityResult `protobuf:"bytes,6,opt,name=l_diversity_result,json=lDiversityResult,proto3,oneof"`
+}
+
+type AnalyzeDataSourceRiskDetails_KMapEstimationResult_ struct {
+	KMapEstimationResult *AnalyzeDataSourceRiskDetails_KMapEstimationResult `protobuf:"bytes,7,opt,name=k_map_estimation_result,json=kMapEstimationResult,proto3,oneof"`
+}
+
+type AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult_ struct {
+	DeltaPresenceEstimationResult *AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult `protobuf:"bytes,9,opt,name=delta_presence_estimation_result,json=deltaPresenceEstimationResult,proto3,oneof"`
+}
+
+func (*AnalyzeDataSourceRiskDetails_NumericalStatsResult_) isAnalyzeDataSourceRiskDetails_Result() {}
+
+func (*AnalyzeDataSourceRiskDetails_CategoricalStatsResult_) isAnalyzeDataSourceRiskDetails_Result() {}
+
+func (*AnalyzeDataSourceRiskDetails_KAnonymityResult_) isAnalyzeDataSourceRiskDetails_Result() {}
+
+func (*AnalyzeDataSourceRiskDetails_LDiversityResult_) isAnalyzeDataSourceRiskDetails_Result() {}
+
+func (*AnalyzeDataSourceRiskDetails_KMapEstimationResult_) isAnalyzeDataSourceRiskDetails_Result() {}
+
+func (*AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult_) isAnalyzeDataSourceRiskDetails_Result() {
+}
+
+func (m *AnalyzeDataSourceRiskDetails) GetResult() isAnalyzeDataSourceRiskDetails_Result {
+	if m != nil {
+		return m.Result
 	}
 	return nil
 }
@@ -5671,35 +5709,49 @@ type isValue_Type interface {
 type Value_IntegerValue struct {
 	IntegerValue int64 `protobuf:"varint,1,opt,name=integer_value,json=integerValue,proto3,oneof"`
 }
+
 type Value_FloatValue struct {
 	FloatValue float64 `protobuf:"fixed64,2,opt,name=float_value,json=floatValue,proto3,oneof"`
 }
+
 type Value_StringValue struct {
 	StringValue string `protobuf:"bytes,3,opt,name=string_value,json=stringValue,proto3,oneof"`
 }
+
 type Value_BooleanValue struct {
 	BooleanValue bool `protobuf:"varint,4,opt,name=boolean_value,json=booleanValue,proto3,oneof"`
 }
+
 type Value_TimestampValue struct {
 	TimestampValue *timestamp.Timestamp `protobuf:"bytes,5,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
 }
+
 type Value_TimeValue struct {
 	TimeValue *timeofday.TimeOfDay `protobuf:"bytes,6,opt,name=time_value,json=timeValue,proto3,oneof"`
 }
+
 type Value_DateValue struct {
 	DateValue *date.Date `protobuf:"bytes,7,opt,name=date_value,json=dateValue,proto3,oneof"`
 }
+
 type Value_DayOfWeekValue struct {
 	DayOfWeekValue dayofweek.DayOfWeek `protobuf:"varint,8,opt,name=day_of_week_value,json=dayOfWeekValue,proto3,enum=google.type.DayOfWeek,oneof"`
 }
 
-func (*Value_IntegerValue) isValue_Type()   {}
-func (*Value_FloatValue) isValue_Type()     {}
-func (*Value_StringValue) isValue_Type()    {}
-func (*Value_BooleanValue) isValue_Type()   {}
+func (*Value_IntegerValue) isValue_Type() {}
+
+func (*Value_FloatValue) isValue_Type() {}
+
+func (*Value_StringValue) isValue_Type() {}
+
+func (*Value_BooleanValue) isValue_Type() {}
+
 func (*Value_TimestampValue) isValue_Type() {}
-func (*Value_TimeValue) isValue_Type()      {}
-func (*Value_DateValue) isValue_Type()      {}
+
+func (*Value_TimeValue) isValue_Type() {}
+
+func (*Value_DateValue) isValue_Type() {}
+
 func (*Value_DayOfWeekValue) isValue_Type() {}
 
 func (m *Value) GetType() isValue_Type {
@@ -6195,12 +6247,14 @@ type isDeidentifyConfig_Transformation interface {
 type DeidentifyConfig_InfoTypeTransformations struct {
 	InfoTypeTransformations *InfoTypeTransformations `protobuf:"bytes,1,opt,name=info_type_transformations,json=infoTypeTransformations,proto3,oneof"`
 }
+
 type DeidentifyConfig_RecordTransformations struct {
 	RecordTransformations *RecordTransformations `protobuf:"bytes,2,opt,name=record_transformations,json=recordTransformations,proto3,oneof"`
 }
 
 func (*DeidentifyConfig_InfoTypeTransformations) isDeidentifyConfig_Transformation() {}
-func (*DeidentifyConfig_RecordTransformations) isDeidentifyConfig_Transformation()   {}
+
+func (*DeidentifyConfig_RecordTransformations) isDeidentifyConfig_Transformation() {}
 
 func (m *DeidentifyConfig) GetTransformation() isDeidentifyConfig_Transformation {
 	if m != nil {
@@ -6347,44 +6401,62 @@ type isPrimitiveTransformation_Transformation interface {
 type PrimitiveTransformation_ReplaceConfig struct {
 	ReplaceConfig *ReplaceValueConfig `protobuf:"bytes,1,opt,name=replace_config,json=replaceConfig,proto3,oneof"`
 }
+
 type PrimitiveTransformation_RedactConfig struct {
 	RedactConfig *RedactConfig `protobuf:"bytes,2,opt,name=redact_config,json=redactConfig,proto3,oneof"`
 }
+
 type PrimitiveTransformation_CharacterMaskConfig struct {
 	CharacterMaskConfig *CharacterMaskConfig `protobuf:"bytes,3,opt,name=character_mask_config,json=characterMaskConfig,proto3,oneof"`
 }
+
 type PrimitiveTransformation_CryptoReplaceFfxFpeConfig struct {
 	CryptoReplaceFfxFpeConfig *CryptoReplaceFfxFpeConfig `protobuf:"bytes,4,opt,name=crypto_replace_ffx_fpe_config,json=cryptoReplaceFfxFpeConfig,proto3,oneof"`
 }
+
 type PrimitiveTransformation_FixedSizeBucketingConfig struct {
 	FixedSizeBucketingConfig *FixedSizeBucketingConfig `protobuf:"bytes,5,opt,name=fixed_size_bucketing_config,json=fixedSizeBucketingConfig,proto3,oneof"`
 }
+
 type PrimitiveTransformation_BucketingConfig struct {
 	BucketingConfig *BucketingConfig `protobuf:"bytes,6,opt,name=bucketing_config,json=bucketingConfig,proto3,oneof"`
 }
+
 type PrimitiveTransformation_ReplaceWithInfoTypeConfig struct {
 	ReplaceWithInfoTypeConfig *ReplaceWithInfoTypeConfig `protobuf:"bytes,7,opt,name=replace_with_info_type_config,json=replaceWithInfoTypeConfig,proto3,oneof"`
 }
+
 type PrimitiveTransformation_TimePartConfig struct {
 	TimePartConfig *TimePartConfig `protobuf:"bytes,8,opt,name=time_part_config,json=timePartConfig,proto3,oneof"`
 }
+
 type PrimitiveTransformation_CryptoHashConfig struct {
 	CryptoHashConfig *CryptoHashConfig `protobuf:"bytes,9,opt,name=crypto_hash_config,json=cryptoHashConfig,proto3,oneof"`
 }
+
 type PrimitiveTransformation_DateShiftConfig struct {
 	DateShiftConfig *DateShiftConfig `protobuf:"bytes,11,opt,name=date_shift_config,json=dateShiftConfig,proto3,oneof"`
 }
 
-func (*PrimitiveTransformation_ReplaceConfig) isPrimitiveTransformation_Transformation()             {}
-func (*PrimitiveTransformation_RedactConfig) isPrimitiveTransformation_Transformation()              {}
-func (*PrimitiveTransformation_CharacterMaskConfig) isPrimitiveTransformation_Transformation()       {}
+func (*PrimitiveTransformation_ReplaceConfig) isPrimitiveTransformation_Transformation() {}
+
+func (*PrimitiveTransformation_RedactConfig) isPrimitiveTransformation_Transformation() {}
+
+func (*PrimitiveTransformation_CharacterMaskConfig) isPrimitiveTransformation_Transformation() {}
+
 func (*PrimitiveTransformation_CryptoReplaceFfxFpeConfig) isPrimitiveTransformation_Transformation() {}
-func (*PrimitiveTransformation_FixedSizeBucketingConfig) isPrimitiveTransformation_Transformation()  {}
-func (*PrimitiveTransformation_BucketingConfig) isPrimitiveTransformation_Transformation()           {}
+
+func (*PrimitiveTransformation_FixedSizeBucketingConfig) isPrimitiveTransformation_Transformation() {}
+
+func (*PrimitiveTransformation_BucketingConfig) isPrimitiveTransformation_Transformation() {}
+
 func (*PrimitiveTransformation_ReplaceWithInfoTypeConfig) isPrimitiveTransformation_Transformation() {}
-func (*PrimitiveTransformation_TimePartConfig) isPrimitiveTransformation_Transformation()            {}
-func (*PrimitiveTransformation_CryptoHashConfig) isPrimitiveTransformation_Transformation()          {}
-func (*PrimitiveTransformation_DateShiftConfig) isPrimitiveTransformation_Transformation()           {}
+
+func (*PrimitiveTransformation_TimePartConfig) isPrimitiveTransformation_Transformation() {}
+
+func (*PrimitiveTransformation_CryptoHashConfig) isPrimitiveTransformation_Transformation() {}
+
+func (*PrimitiveTransformation_DateShiftConfig) isPrimitiveTransformation_Transformation() {}
 
 func (m *PrimitiveTransformation) GetTransformation() isPrimitiveTransformation_Transformation {
 	if m != nil {
@@ -6921,11 +6993,13 @@ type isCharsToIgnore_Characters interface {
 type CharsToIgnore_CharactersToSkip struct {
 	CharactersToSkip string `protobuf:"bytes,1,opt,name=characters_to_skip,json=charactersToSkip,proto3,oneof"`
 }
+
 type CharsToIgnore_CommonCharactersToIgnore struct {
 	CommonCharactersToIgnore CharsToIgnore_CommonCharsToIgnore `protobuf:"varint,2,opt,name=common_characters_to_ignore,json=commonCharactersToIgnore,proto3,enum=google.privacy.dlp.v2.CharsToIgnore_CommonCharsToIgnore,oneof"`
 }
 
-func (*CharsToIgnore_CharactersToSkip) isCharsToIgnore_Characters()         {}
+func (*CharsToIgnore_CharactersToSkip) isCharsToIgnore_Characters() {}
+
 func (*CharsToIgnore_CommonCharactersToIgnore) isCharsToIgnore_Characters() {}
 
 func (m *CharsToIgnore) GetCharacters() isCharsToIgnore_Characters {
@@ -7379,31 +7453,6 @@ func (m *CryptoReplaceFfxFpeConfig) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CryptoReplaceFfxFpeConfig proto.InternalMessageInfo
 
-type isCryptoReplaceFfxFpeConfig_Alphabet interface {
-	isCryptoReplaceFfxFpeConfig_Alphabet()
-}
-
-type CryptoReplaceFfxFpeConfig_CommonAlphabet struct {
-	CommonAlphabet CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet `protobuf:"varint,4,opt,name=common_alphabet,json=commonAlphabet,proto3,enum=google.privacy.dlp.v2.CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet,oneof"`
-}
-type CryptoReplaceFfxFpeConfig_CustomAlphabet struct {
-	CustomAlphabet string `protobuf:"bytes,5,opt,name=custom_alphabet,json=customAlphabet,proto3,oneof"`
-}
-type CryptoReplaceFfxFpeConfig_Radix struct {
-	Radix int32 `protobuf:"varint,6,opt,name=radix,proto3,oneof"`
-}
-
-func (*CryptoReplaceFfxFpeConfig_CommonAlphabet) isCryptoReplaceFfxFpeConfig_Alphabet() {}
-func (*CryptoReplaceFfxFpeConfig_CustomAlphabet) isCryptoReplaceFfxFpeConfig_Alphabet() {}
-func (*CryptoReplaceFfxFpeConfig_Radix) isCryptoReplaceFfxFpeConfig_Alphabet()          {}
-
-func (m *CryptoReplaceFfxFpeConfig) GetAlphabet() isCryptoReplaceFfxFpeConfig_Alphabet {
-	if m != nil {
-		return m.Alphabet
-	}
-	return nil
-}
-
 func (m *CryptoReplaceFfxFpeConfig) GetCryptoKey() *CryptoKey {
 	if m != nil {
 		return m.CryptoKey
@@ -7414,6 +7463,35 @@ func (m *CryptoReplaceFfxFpeConfig) GetCryptoKey() *CryptoKey {
 func (m *CryptoReplaceFfxFpeConfig) GetContext() *FieldId {
 	if m != nil {
 		return m.Context
+	}
+	return nil
+}
+
+type isCryptoReplaceFfxFpeConfig_Alphabet interface {
+	isCryptoReplaceFfxFpeConfig_Alphabet()
+}
+
+type CryptoReplaceFfxFpeConfig_CommonAlphabet struct {
+	CommonAlphabet CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet `protobuf:"varint,4,opt,name=common_alphabet,json=commonAlphabet,proto3,enum=google.privacy.dlp.v2.CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet,oneof"`
+}
+
+type CryptoReplaceFfxFpeConfig_CustomAlphabet struct {
+	CustomAlphabet string `protobuf:"bytes,5,opt,name=custom_alphabet,json=customAlphabet,proto3,oneof"`
+}
+
+type CryptoReplaceFfxFpeConfig_Radix struct {
+	Radix int32 `protobuf:"varint,6,opt,name=radix,proto3,oneof"`
+}
+
+func (*CryptoReplaceFfxFpeConfig_CommonAlphabet) isCryptoReplaceFfxFpeConfig_Alphabet() {}
+
+func (*CryptoReplaceFfxFpeConfig_CustomAlphabet) isCryptoReplaceFfxFpeConfig_Alphabet() {}
+
+func (*CryptoReplaceFfxFpeConfig_Radix) isCryptoReplaceFfxFpeConfig_Alphabet() {}
+
+func (m *CryptoReplaceFfxFpeConfig) GetAlphabet() isCryptoReplaceFfxFpeConfig_Alphabet {
+	if m != nil {
+		return m.Alphabet
 	}
 	return nil
 }
@@ -7572,15 +7650,19 @@ type isCryptoKey_Source interface {
 type CryptoKey_Transient struct {
 	Transient *TransientCryptoKey `protobuf:"bytes,1,opt,name=transient,proto3,oneof"`
 }
+
 type CryptoKey_Unwrapped struct {
 	Unwrapped *UnwrappedCryptoKey `protobuf:"bytes,2,opt,name=unwrapped,proto3,oneof"`
 }
+
 type CryptoKey_KmsWrapped struct {
 	KmsWrapped *KmsWrappedCryptoKey `protobuf:"bytes,3,opt,name=kms_wrapped,json=kmsWrapped,proto3,oneof"`
 }
 
-func (*CryptoKey_Transient) isCryptoKey_Source()  {}
-func (*CryptoKey_Unwrapped) isCryptoKey_Source()  {}
+func (*CryptoKey_Transient) isCryptoKey_Source() {}
+
+func (*CryptoKey_Unwrapped) isCryptoKey_Source() {}
+
 func (*CryptoKey_KmsWrapped) isCryptoKey_Source() {}
 
 func (m *CryptoKey) GetSource() isCryptoKey_Source {
@@ -7896,23 +7978,6 @@ func (m *DateShiftConfig) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DateShiftConfig proto.InternalMessageInfo
 
-type isDateShiftConfig_Method interface {
-	isDateShiftConfig_Method()
-}
-
-type DateShiftConfig_CryptoKey struct {
-	CryptoKey *CryptoKey `protobuf:"bytes,4,opt,name=crypto_key,json=cryptoKey,proto3,oneof"`
-}
-
-func (*DateShiftConfig_CryptoKey) isDateShiftConfig_Method() {}
-
-func (m *DateShiftConfig) GetMethod() isDateShiftConfig_Method {
-	if m != nil {
-		return m.Method
-	}
-	return nil
-}
-
 func (m *DateShiftConfig) GetUpperBoundDays() int32 {
 	if m != nil {
 		return m.UpperBoundDays
@@ -7930,6 +7995,23 @@ func (m *DateShiftConfig) GetLowerBoundDays() int32 {
 func (m *DateShiftConfig) GetContext() *FieldId {
 	if m != nil {
 		return m.Context
+	}
+	return nil
+}
+
+type isDateShiftConfig_Method interface {
+	isDateShiftConfig_Method()
+}
+
+type DateShiftConfig_CryptoKey struct {
+	CryptoKey *CryptoKey `protobuf:"bytes,4,opt,name=crypto_key,json=cryptoKey,proto3,oneof"`
+}
+
+func (*DateShiftConfig_CryptoKey) isDateShiftConfig_Method() {}
+
+func (m *DateShiftConfig) GetMethod() isDateShiftConfig_Method {
+	if m != nil {
+		return m.Method
 	}
 	return nil
 }
@@ -8145,27 +8227,6 @@ func (m *FieldTransformation) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_FieldTransformation proto.InternalMessageInfo
 
-type isFieldTransformation_Transformation interface {
-	isFieldTransformation_Transformation()
-}
-
-type FieldTransformation_PrimitiveTransformation struct {
-	PrimitiveTransformation *PrimitiveTransformation `protobuf:"bytes,4,opt,name=primitive_transformation,json=primitiveTransformation,proto3,oneof"`
-}
-type FieldTransformation_InfoTypeTransformations struct {
-	InfoTypeTransformations *InfoTypeTransformations `protobuf:"bytes,5,opt,name=info_type_transformations,json=infoTypeTransformations,proto3,oneof"`
-}
-
-func (*FieldTransformation_PrimitiveTransformation) isFieldTransformation_Transformation() {}
-func (*FieldTransformation_InfoTypeTransformations) isFieldTransformation_Transformation() {}
-
-func (m *FieldTransformation) GetTransformation() isFieldTransformation_Transformation {
-	if m != nil {
-		return m.Transformation
-	}
-	return nil
-}
-
 func (m *FieldTransformation) GetFields() []*FieldId {
 	if m != nil {
 		return m.Fields
@@ -8176,6 +8237,29 @@ func (m *FieldTransformation) GetFields() []*FieldId {
 func (m *FieldTransformation) GetCondition() *RecordCondition {
 	if m != nil {
 		return m.Condition
+	}
+	return nil
+}
+
+type isFieldTransformation_Transformation interface {
+	isFieldTransformation_Transformation()
+}
+
+type FieldTransformation_PrimitiveTransformation struct {
+	PrimitiveTransformation *PrimitiveTransformation `protobuf:"bytes,4,opt,name=primitive_transformation,json=primitiveTransformation,proto3,oneof"`
+}
+
+type FieldTransformation_InfoTypeTransformations struct {
+	InfoTypeTransformations *InfoTypeTransformations `protobuf:"bytes,5,opt,name=info_type_transformations,json=infoTypeTransformations,proto3,oneof"`
+}
+
+func (*FieldTransformation_PrimitiveTransformation) isFieldTransformation_Transformation() {}
+
+func (*FieldTransformation_InfoTypeTransformations) isFieldTransformation_Transformation() {}
+
+func (m *FieldTransformation) GetTransformation() isFieldTransformation_Transformation {
+	if m != nil {
+		return m.Transformation
 	}
 	return nil
 }
@@ -8553,6 +8637,13 @@ func (m *RecordCondition_Expressions) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RecordCondition_Expressions proto.InternalMessageInfo
 
+func (m *RecordCondition_Expressions) GetLogicalOperator() RecordCondition_Expressions_LogicalOperator {
+	if m != nil {
+		return m.LogicalOperator
+	}
+	return RecordCondition_Expressions_LOGICAL_OPERATOR_UNSPECIFIED
+}
+
 type isRecordCondition_Expressions_Type interface {
 	isRecordCondition_Expressions_Type()
 }
@@ -8568,13 +8659,6 @@ func (m *RecordCondition_Expressions) GetType() isRecordCondition_Expressions_Ty
 		return m.Type
 	}
 	return nil
-}
-
-func (m *RecordCondition_Expressions) GetLogicalOperator() RecordCondition_Expressions_LogicalOperator {
-	if m != nil {
-		return m.LogicalOperator
-	}
-	return RecordCondition_Expressions_LOGICAL_OPERATOR_UNSPECIFIED
 }
 
 func (m *RecordCondition_Expressions) GetConditions() *RecordCondition_Conditions {
@@ -9250,23 +9334,6 @@ func (m *JobTrigger) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_JobTrigger proto.InternalMessageInfo
 
-type isJobTrigger_Job interface {
-	isJobTrigger_Job()
-}
-
-type JobTrigger_InspectJob struct {
-	InspectJob *InspectJobConfig `protobuf:"bytes,4,opt,name=inspect_job,json=inspectJob,proto3,oneof"`
-}
-
-func (*JobTrigger_InspectJob) isJobTrigger_Job() {}
-
-func (m *JobTrigger) GetJob() isJobTrigger_Job {
-	if m != nil {
-		return m.Job
-	}
-	return nil
-}
-
 func (m *JobTrigger) GetName() string {
 	if m != nil {
 		return m.Name
@@ -9286,6 +9353,23 @@ func (m *JobTrigger) GetDescription() string {
 		return m.Description
 	}
 	return ""
+}
+
+type isJobTrigger_Job interface {
+	isJobTrigger_Job()
+}
+
+type JobTrigger_InspectJob struct {
+	InspectJob *InspectJobConfig `protobuf:"bytes,4,opt,name=inspect_job,json=inspectJob,proto3,oneof"`
+}
+
+func (*JobTrigger_InspectJob) isJobTrigger_Job() {}
+
+func (m *JobTrigger) GetJob() isJobTrigger_Job {
+	if m != nil {
+		return m.Job
+	}
+	return nil
 }
 
 func (m *JobTrigger) GetInspectJob() *InspectJobConfig {
@@ -9549,15 +9633,19 @@ type isAction_Action interface {
 type Action_SaveFindings_ struct {
 	SaveFindings *Action_SaveFindings `protobuf:"bytes,1,opt,name=save_findings,json=saveFindings,proto3,oneof"`
 }
+
 type Action_PubSub struct {
 	PubSub *Action_PublishToPubSub `protobuf:"bytes,2,opt,name=pub_sub,json=pubSub,proto3,oneof"`
 }
+
 type Action_PublishSummaryToCscc_ struct {
 	PublishSummaryToCscc *Action_PublishSummaryToCscc `protobuf:"bytes,3,opt,name=publish_summary_to_cscc,json=publishSummaryToCscc,proto3,oneof"`
 }
 
-func (*Action_SaveFindings_) isAction_Action()         {}
-func (*Action_PubSub) isAction_Action()                {}
+func (*Action_SaveFindings_) isAction_Action() {}
+
+func (*Action_PubSub) isAction_Action() {}
+
 func (*Action_PublishSummaryToCscc_) isAction_Action() {}
 
 func (m *Action) GetAction() isAction_Action {
@@ -10331,6 +10419,13 @@ func (m *CreateDlpJobRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CreateDlpJobRequest proto.InternalMessageInfo
 
+func (m *CreateDlpJobRequest) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
 type isCreateDlpJobRequest_Job interface {
 	isCreateDlpJobRequest_Job()
 }
@@ -10338,25 +10433,20 @@ type isCreateDlpJobRequest_Job interface {
 type CreateDlpJobRequest_InspectJob struct {
 	InspectJob *InspectJobConfig `protobuf:"bytes,2,opt,name=inspect_job,json=inspectJob,proto3,oneof"`
 }
+
 type CreateDlpJobRequest_RiskJob struct {
 	RiskJob *RiskAnalysisJobConfig `protobuf:"bytes,3,opt,name=risk_job,json=riskJob,proto3,oneof"`
 }
 
 func (*CreateDlpJobRequest_InspectJob) isCreateDlpJobRequest_Job() {}
-func (*CreateDlpJobRequest_RiskJob) isCreateDlpJobRequest_Job()    {}
+
+func (*CreateDlpJobRequest_RiskJob) isCreateDlpJobRequest_Job() {}
 
 func (m *CreateDlpJobRequest) GetJob() isCreateDlpJobRequest_Job {
 	if m != nil {
 		return m.Job
 	}
 	return nil
-}
-
-func (m *CreateDlpJobRequest) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
 }
 
 func (m *CreateDlpJobRequest) GetInspectJob() *InspectJobConfig {
@@ -10746,27 +10836,6 @@ func (m *DlpJob) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DlpJob proto.InternalMessageInfo
 
-type isDlpJob_Details interface {
-	isDlpJob_Details()
-}
-
-type DlpJob_RiskDetails struct {
-	RiskDetails *AnalyzeDataSourceRiskDetails `protobuf:"bytes,4,opt,name=risk_details,json=riskDetails,proto3,oneof"`
-}
-type DlpJob_InspectDetails struct {
-	InspectDetails *InspectDataSourceDetails `protobuf:"bytes,5,opt,name=inspect_details,json=inspectDetails,proto3,oneof"`
-}
-
-func (*DlpJob_RiskDetails) isDlpJob_Details()    {}
-func (*DlpJob_InspectDetails) isDlpJob_Details() {}
-
-func (m *DlpJob) GetDetails() isDlpJob_Details {
-	if m != nil {
-		return m.Details
-	}
-	return nil
-}
-
 func (m *DlpJob) GetName() string {
 	if m != nil {
 		return m.Name
@@ -10786,6 +10855,29 @@ func (m *DlpJob) GetState() DlpJob_JobState {
 		return m.State
 	}
 	return DlpJob_JOB_STATE_UNSPECIFIED
+}
+
+type isDlpJob_Details interface {
+	isDlpJob_Details()
+}
+
+type DlpJob_RiskDetails struct {
+	RiskDetails *AnalyzeDataSourceRiskDetails `protobuf:"bytes,4,opt,name=risk_details,json=riskDetails,proto3,oneof"`
+}
+
+type DlpJob_InspectDetails struct {
+	InspectDetails *InspectDataSourceDetails `protobuf:"bytes,5,opt,name=inspect_details,json=inspectDetails,proto3,oneof"`
+}
+
+func (*DlpJob_RiskDetails) isDlpJob_Details() {}
+
+func (*DlpJob_InspectDetails) isDlpJob_Details() {}
+
+func (m *DlpJob) GetDetails() isDlpJob_Details {
+	if m != nil {
+		return m.Details
+	}
+	return nil
 }
 
 func (m *DlpJob) GetRiskDetails() *AnalyzeDataSourceRiskDetails {
@@ -11541,6 +11633,13 @@ func (m *LargeCustomDictionaryConfig) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_LargeCustomDictionaryConfig proto.InternalMessageInfo
 
+func (m *LargeCustomDictionaryConfig) GetOutputPath() *CloudStoragePath {
+	if m != nil {
+		return m.OutputPath
+	}
+	return nil
+}
+
 type isLargeCustomDictionaryConfig_Source interface {
 	isLargeCustomDictionaryConfig_Source()
 }
@@ -11548,23 +11647,18 @@ type isLargeCustomDictionaryConfig_Source interface {
 type LargeCustomDictionaryConfig_CloudStorageFileSet struct {
 	CloudStorageFileSet *CloudStorageFileSet `protobuf:"bytes,2,opt,name=cloud_storage_file_set,json=cloudStorageFileSet,proto3,oneof"`
 }
+
 type LargeCustomDictionaryConfig_BigQueryField struct {
 	BigQueryField *BigQueryField `protobuf:"bytes,3,opt,name=big_query_field,json=bigQueryField,proto3,oneof"`
 }
 
 func (*LargeCustomDictionaryConfig_CloudStorageFileSet) isLargeCustomDictionaryConfig_Source() {}
-func (*LargeCustomDictionaryConfig_BigQueryField) isLargeCustomDictionaryConfig_Source()       {}
+
+func (*LargeCustomDictionaryConfig_BigQueryField) isLargeCustomDictionaryConfig_Source() {}
 
 func (m *LargeCustomDictionaryConfig) GetSource() isLargeCustomDictionaryConfig_Source {
 	if m != nil {
 		return m.Source
-	}
-	return nil
-}
-
-func (m *LargeCustomDictionaryConfig) GetOutputPath() *CloudStoragePath {
-	if m != nil {
-		return m.OutputPath
 	}
 	return nil
 }
@@ -11695,6 +11789,20 @@ func (m *StoredInfoTypeConfig) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StoredInfoTypeConfig proto.InternalMessageInfo
 
+func (m *StoredInfoTypeConfig) GetDisplayName() string {
+	if m != nil {
+		return m.DisplayName
+	}
+	return ""
+}
+
+func (m *StoredInfoTypeConfig) GetDescription() string {
+	if m != nil {
+		return m.Description
+	}
+	return ""
+}
+
 type isStoredInfoTypeConfig_Type interface {
 	isStoredInfoTypeConfig_Type()
 }
@@ -11710,20 +11818,6 @@ func (m *StoredInfoTypeConfig) GetType() isStoredInfoTypeConfig_Type {
 		return m.Type
 	}
 	return nil
-}
-
-func (m *StoredInfoTypeConfig) GetDisplayName() string {
-	if m != nil {
-		return m.DisplayName
-	}
-	return ""
-}
-
-func (m *StoredInfoTypeConfig) GetDescription() string {
-	if m != nil {
-		return m.Description
-	}
-	return ""
 }
 
 func (m *StoredInfoTypeConfig) GetLargeCustomDictionary() *LargeCustomDictionaryConfig {

@@ -109,11 +109,13 @@ type isPrecondition_ConditionType interface {
 type Precondition_Exists struct {
 	Exists bool `protobuf:"varint,1,opt,name=exists,proto3,oneof"`
 }
+
 type Precondition_UpdateTime struct {
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=update_time,json=updateTime,proto3,oneof"`
 }
 
-func (*Precondition_Exists) isPrecondition_ConditionType()     {}
+func (*Precondition_Exists) isPrecondition_ConditionType() {}
+
 func (*Precondition_UpdateTime) isPrecondition_ConditionType() {}
 
 func (m *Precondition) GetConditionType() isPrecondition_ConditionType {
@@ -254,11 +256,13 @@ type isTransactionOptions_Mode interface {
 type TransactionOptions_ReadOnly_ struct {
 	ReadOnly *TransactionOptions_ReadOnly `protobuf:"bytes,2,opt,name=read_only,json=readOnly,proto3,oneof"`
 }
+
 type TransactionOptions_ReadWrite_ struct {
 	ReadWrite *TransactionOptions_ReadWrite `protobuf:"bytes,3,opt,name=read_write,json=readWrite,proto3,oneof"`
 }
 
-func (*TransactionOptions_ReadOnly_) isTransactionOptions_Mode()  {}
+func (*TransactionOptions_ReadOnly_) isTransactionOptions_Mode() {}
+
 func (*TransactionOptions_ReadWrite_) isTransactionOptions_Mode() {}
 
 func (m *TransactionOptions) GetMode() isTransactionOptions_Mode {

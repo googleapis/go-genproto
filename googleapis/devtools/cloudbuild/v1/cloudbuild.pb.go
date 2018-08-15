@@ -445,31 +445,6 @@ func (m *RepoSource) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RepoSource proto.InternalMessageInfo
 
-type isRepoSource_Revision interface {
-	isRepoSource_Revision()
-}
-
-type RepoSource_BranchName struct {
-	BranchName string `protobuf:"bytes,3,opt,name=branch_name,json=branchName,proto3,oneof"`
-}
-type RepoSource_TagName struct {
-	TagName string `protobuf:"bytes,4,opt,name=tag_name,json=tagName,proto3,oneof"`
-}
-type RepoSource_CommitSha struct {
-	CommitSha string `protobuf:"bytes,5,opt,name=commit_sha,json=commitSha,proto3,oneof"`
-}
-
-func (*RepoSource_BranchName) isRepoSource_Revision() {}
-func (*RepoSource_TagName) isRepoSource_Revision()    {}
-func (*RepoSource_CommitSha) isRepoSource_Revision()  {}
-
-func (m *RepoSource) GetRevision() isRepoSource_Revision {
-	if m != nil {
-		return m.Revision
-	}
-	return nil
-}
-
 func (m *RepoSource) GetProjectId() string {
 	if m != nil {
 		return m.ProjectId
@@ -482,6 +457,35 @@ func (m *RepoSource) GetRepoName() string {
 		return m.RepoName
 	}
 	return ""
+}
+
+type isRepoSource_Revision interface {
+	isRepoSource_Revision()
+}
+
+type RepoSource_BranchName struct {
+	BranchName string `protobuf:"bytes,3,opt,name=branch_name,json=branchName,proto3,oneof"`
+}
+
+type RepoSource_TagName struct {
+	TagName string `protobuf:"bytes,4,opt,name=tag_name,json=tagName,proto3,oneof"`
+}
+
+type RepoSource_CommitSha struct {
+	CommitSha string `protobuf:"bytes,5,opt,name=commit_sha,json=commitSha,proto3,oneof"`
+}
+
+func (*RepoSource_BranchName) isRepoSource_Revision() {}
+
+func (*RepoSource_TagName) isRepoSource_Revision() {}
+
+func (*RepoSource_CommitSha) isRepoSource_Revision() {}
+
+func (m *RepoSource) GetRevision() isRepoSource_Revision {
+	if m != nil {
+		return m.Revision
+	}
+	return nil
 }
 
 func (m *RepoSource) GetBranchName() string {
@@ -637,12 +641,14 @@ type isSource_Source interface {
 type Source_StorageSource struct {
 	StorageSource *StorageSource `protobuf:"bytes,2,opt,name=storage_source,json=storageSource,proto3,oneof"`
 }
+
 type Source_RepoSource struct {
 	RepoSource *RepoSource `protobuf:"bytes,3,opt,name=repo_source,json=repoSource,proto3,oneof"`
 }
 
 func (*Source_StorageSource) isSource_Source() {}
-func (*Source_RepoSource) isSource_Source()    {}
+
+func (*Source_RepoSource) isSource_Source() {}
 
 func (m *Source) GetSource() isSource_Source {
 	if m != nil {
@@ -2192,27 +2198,6 @@ func (m *BuildTrigger) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BuildTrigger proto.InternalMessageInfo
 
-type isBuildTrigger_BuildTemplate interface {
-	isBuildTrigger_BuildTemplate()
-}
-
-type BuildTrigger_Build struct {
-	Build *Build `protobuf:"bytes,4,opt,name=build,proto3,oneof"`
-}
-type BuildTrigger_Filename struct {
-	Filename string `protobuf:"bytes,8,opt,name=filename,proto3,oneof"`
-}
-
-func (*BuildTrigger_Build) isBuildTrigger_BuildTemplate()    {}
-func (*BuildTrigger_Filename) isBuildTrigger_BuildTemplate() {}
-
-func (m *BuildTrigger) GetBuildTemplate() isBuildTrigger_BuildTemplate {
-	if m != nil {
-		return m.BuildTemplate
-	}
-	return nil
-}
-
 func (m *BuildTrigger) GetId() string {
 	if m != nil {
 		return m.Id
@@ -2230,6 +2215,29 @@ func (m *BuildTrigger) GetDescription() string {
 func (m *BuildTrigger) GetTriggerTemplate() *RepoSource {
 	if m != nil {
 		return m.TriggerTemplate
+	}
+	return nil
+}
+
+type isBuildTrigger_BuildTemplate interface {
+	isBuildTrigger_BuildTemplate()
+}
+
+type BuildTrigger_Build struct {
+	Build *Build `protobuf:"bytes,4,opt,name=build,proto3,oneof"`
+}
+
+type BuildTrigger_Filename struct {
+	Filename string `protobuf:"bytes,8,opt,name=filename,proto3,oneof"`
+}
+
+func (*BuildTrigger_Build) isBuildTrigger_BuildTemplate() {}
+
+func (*BuildTrigger_Filename) isBuildTrigger_BuildTemplate() {}
+
+func (m *BuildTrigger) GetBuildTemplate() isBuildTrigger_BuildTemplate {
+	if m != nil {
+		return m.BuildTemplate
 	}
 	return nil
 }

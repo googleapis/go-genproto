@@ -255,16 +255,20 @@ type isDistribution_BucketOptions_Options interface {
 type Distribution_BucketOptions_LinearBuckets struct {
 	LinearBuckets *Distribution_BucketOptions_Linear `protobuf:"bytes,1,opt,name=linear_buckets,json=linearBuckets,proto3,oneof"`
 }
+
 type Distribution_BucketOptions_ExponentialBuckets struct {
 	ExponentialBuckets *Distribution_BucketOptions_Exponential `protobuf:"bytes,2,opt,name=exponential_buckets,json=exponentialBuckets,proto3,oneof"`
 }
+
 type Distribution_BucketOptions_ExplicitBuckets struct {
 	ExplicitBuckets *Distribution_BucketOptions_Explicit `protobuf:"bytes,3,opt,name=explicit_buckets,json=explicitBuckets,proto3,oneof"`
 }
 
-func (*Distribution_BucketOptions_LinearBuckets) isDistribution_BucketOptions_Options()      {}
+func (*Distribution_BucketOptions_LinearBuckets) isDistribution_BucketOptions_Options() {}
+
 func (*Distribution_BucketOptions_ExponentialBuckets) isDistribution_BucketOptions_Options() {}
-func (*Distribution_BucketOptions_ExplicitBuckets) isDistribution_BucketOptions_Options()    {}
+
+func (*Distribution_BucketOptions_ExplicitBuckets) isDistribution_BucketOptions_Options() {}
 
 func (m *Distribution_BucketOptions) GetOptions() isDistribution_BucketOptions_Options {
 	if m != nil {

@@ -279,11 +279,13 @@ type isWorkflowTemplatePlacement_Placement interface {
 type WorkflowTemplatePlacement_ManagedCluster struct {
 	ManagedCluster *ManagedCluster `protobuf:"bytes,1,opt,name=managed_cluster,json=managedCluster,proto3,oneof"`
 }
+
 type WorkflowTemplatePlacement_ClusterSelector struct {
 	ClusterSelector *ClusterSelector `protobuf:"bytes,2,opt,name=cluster_selector,json=clusterSelector,proto3,oneof"`
 }
 
-func (*WorkflowTemplatePlacement_ManagedCluster) isWorkflowTemplatePlacement_Placement()  {}
+func (*WorkflowTemplatePlacement_ManagedCluster) isWorkflowTemplatePlacement_Placement() {}
+
 func (*WorkflowTemplatePlacement_ClusterSelector) isWorkflowTemplatePlacement_Placement() {}
 
 func (m *WorkflowTemplatePlacement) GetPlacement() isWorkflowTemplatePlacement_Placement {
@@ -576,6 +578,13 @@ func (m *OrderedJob) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_OrderedJob proto.InternalMessageInfo
 
+func (m *OrderedJob) GetStepId() string {
+	if m != nil {
+		return m.StepId
+	}
+	return ""
+}
+
 type isOrderedJob_JobType interface {
 	isOrderedJob_JobType()
 }
@@ -583,27 +592,37 @@ type isOrderedJob_JobType interface {
 type OrderedJob_HadoopJob struct {
 	HadoopJob *HadoopJob `protobuf:"bytes,2,opt,name=hadoop_job,json=hadoopJob,proto3,oneof"`
 }
+
 type OrderedJob_SparkJob struct {
 	SparkJob *SparkJob `protobuf:"bytes,3,opt,name=spark_job,json=sparkJob,proto3,oneof"`
 }
+
 type OrderedJob_PysparkJob struct {
 	PysparkJob *PySparkJob `protobuf:"bytes,4,opt,name=pyspark_job,json=pysparkJob,proto3,oneof"`
 }
+
 type OrderedJob_HiveJob struct {
 	HiveJob *HiveJob `protobuf:"bytes,5,opt,name=hive_job,json=hiveJob,proto3,oneof"`
 }
+
 type OrderedJob_PigJob struct {
 	PigJob *PigJob `protobuf:"bytes,6,opt,name=pig_job,json=pigJob,proto3,oneof"`
 }
+
 type OrderedJob_SparkSqlJob struct {
 	SparkSqlJob *SparkSqlJob `protobuf:"bytes,7,opt,name=spark_sql_job,json=sparkSqlJob,proto3,oneof"`
 }
 
-func (*OrderedJob_HadoopJob) isOrderedJob_JobType()   {}
-func (*OrderedJob_SparkJob) isOrderedJob_JobType()    {}
-func (*OrderedJob_PysparkJob) isOrderedJob_JobType()  {}
-func (*OrderedJob_HiveJob) isOrderedJob_JobType()     {}
-func (*OrderedJob_PigJob) isOrderedJob_JobType()      {}
+func (*OrderedJob_HadoopJob) isOrderedJob_JobType() {}
+
+func (*OrderedJob_SparkJob) isOrderedJob_JobType() {}
+
+func (*OrderedJob_PysparkJob) isOrderedJob_JobType() {}
+
+func (*OrderedJob_HiveJob) isOrderedJob_JobType() {}
+
+func (*OrderedJob_PigJob) isOrderedJob_JobType() {}
+
 func (*OrderedJob_SparkSqlJob) isOrderedJob_JobType() {}
 
 func (m *OrderedJob) GetJobType() isOrderedJob_JobType {
@@ -611,13 +630,6 @@ func (m *OrderedJob) GetJobType() isOrderedJob_JobType {
 		return m.JobType
 	}
 	return nil
-}
-
-func (m *OrderedJob) GetStepId() string {
-	if m != nil {
-		return m.StepId
-	}
-	return ""
 }
 
 func (m *OrderedJob) GetHadoopJob() *HadoopJob {

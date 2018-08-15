@@ -66,11 +66,13 @@ type isAuditData_Method interface {
 type AuditData_UpdateService struct {
 	UpdateService *UpdateServiceMethod `protobuf:"bytes,1,opt,name=update_service,json=updateService,proto3,oneof"`
 }
+
 type AuditData_CreateVersion struct {
 	CreateVersion *CreateVersionMethod `protobuf:"bytes,2,opt,name=create_version,json=createVersion,proto3,oneof"`
 }
 
 func (*AuditData_UpdateService) isAuditData_Method() {}
+
 func (*AuditData_CreateVersion) isAuditData_Method() {}
 
 func (m *AuditData) GetMethod() isAuditData_Method {

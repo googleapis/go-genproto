@@ -359,6 +359,13 @@ func (m *Span_TimeEvent) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Span_TimeEvent proto.InternalMessageInfo
 
+func (m *Span_TimeEvent) GetTime() *timestamp.Timestamp {
+	if m != nil {
+		return m.Time
+	}
+	return nil
+}
+
 type isSpan_TimeEvent_Value interface {
 	isSpan_TimeEvent_Value()
 }
@@ -366,23 +373,18 @@ type isSpan_TimeEvent_Value interface {
 type Span_TimeEvent_Annotation_ struct {
 	Annotation *Span_TimeEvent_Annotation `protobuf:"bytes,2,opt,name=annotation,proto3,oneof"`
 }
+
 type Span_TimeEvent_MessageEvent_ struct {
 	MessageEvent *Span_TimeEvent_MessageEvent `protobuf:"bytes,3,opt,name=message_event,json=messageEvent,proto3,oneof"`
 }
 
-func (*Span_TimeEvent_Annotation_) isSpan_TimeEvent_Value()   {}
+func (*Span_TimeEvent_Annotation_) isSpan_TimeEvent_Value() {}
+
 func (*Span_TimeEvent_MessageEvent_) isSpan_TimeEvent_Value() {}
 
 func (m *Span_TimeEvent) GetValue() isSpan_TimeEvent_Value {
 	if m != nil {
 		return m.Value
-	}
-	return nil
-}
-
-func (m *Span_TimeEvent) GetTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.Time
 	}
 	return nil
 }
@@ -826,16 +828,20 @@ type isAttributeValue_Value interface {
 type AttributeValue_StringValue struct {
 	StringValue *TruncatableString `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3,oneof"`
 }
+
 type AttributeValue_IntValue struct {
 	IntValue int64 `protobuf:"varint,2,opt,name=int_value,json=intValue,proto3,oneof"`
 }
+
 type AttributeValue_BoolValue struct {
 	BoolValue bool `protobuf:"varint,3,opt,name=bool_value,json=boolValue,proto3,oneof"`
 }
 
 func (*AttributeValue_StringValue) isAttributeValue_Value() {}
-func (*AttributeValue_IntValue) isAttributeValue_Value()    {}
-func (*AttributeValue_BoolValue) isAttributeValue_Value()   {}
+
+func (*AttributeValue_IntValue) isAttributeValue_Value() {}
+
+func (*AttributeValue_BoolValue) isAttributeValue_Value() {}
 
 func (m *AttributeValue) GetValue() isAttributeValue_Value {
 	if m != nil {

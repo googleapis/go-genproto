@@ -681,27 +681,6 @@ func (m *Rollout) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Rollout proto.InternalMessageInfo
 
-type isRollout_Strategy interface {
-	isRollout_Strategy()
-}
-
-type Rollout_TrafficPercentStrategy_ struct {
-	TrafficPercentStrategy *Rollout_TrafficPercentStrategy `protobuf:"bytes,5,opt,name=traffic_percent_strategy,json=trafficPercentStrategy,proto3,oneof"`
-}
-type Rollout_DeleteServiceStrategy_ struct {
-	DeleteServiceStrategy *Rollout_DeleteServiceStrategy `protobuf:"bytes,200,opt,name=delete_service_strategy,json=deleteServiceStrategy,proto3,oneof"`
-}
-
-func (*Rollout_TrafficPercentStrategy_) isRollout_Strategy() {}
-func (*Rollout_DeleteServiceStrategy_) isRollout_Strategy()  {}
-
-func (m *Rollout) GetStrategy() isRollout_Strategy {
-	if m != nil {
-		return m.Strategy
-	}
-	return nil
-}
-
 func (m *Rollout) GetRolloutId() string {
 	if m != nil {
 		return m.RolloutId
@@ -728,6 +707,29 @@ func (m *Rollout) GetStatus() Rollout_RolloutStatus {
 		return m.Status
 	}
 	return Rollout_ROLLOUT_STATUS_UNSPECIFIED
+}
+
+type isRollout_Strategy interface {
+	isRollout_Strategy()
+}
+
+type Rollout_TrafficPercentStrategy_ struct {
+	TrafficPercentStrategy *Rollout_TrafficPercentStrategy `protobuf:"bytes,5,opt,name=traffic_percent_strategy,json=trafficPercentStrategy,proto3,oneof"`
+}
+
+type Rollout_DeleteServiceStrategy_ struct {
+	DeleteServiceStrategy *Rollout_DeleteServiceStrategy `protobuf:"bytes,200,opt,name=delete_service_strategy,json=deleteServiceStrategy,proto3,oneof"`
+}
+
+func (*Rollout_TrafficPercentStrategy_) isRollout_Strategy() {}
+
+func (*Rollout_DeleteServiceStrategy_) isRollout_Strategy() {}
+
+func (m *Rollout) GetStrategy() isRollout_Strategy {
+	if m != nil {
+		return m.Strategy
+	}
+	return nil
 }
 
 func (m *Rollout) GetTrafficPercentStrategy() *Rollout_TrafficPercentStrategy {

@@ -107,15 +107,19 @@ type isWrite_Operation interface {
 type Write_Update struct {
 	Update *Document `protobuf:"bytes,1,opt,name=update,proto3,oneof"`
 }
+
 type Write_Delete struct {
 	Delete string `protobuf:"bytes,2,opt,name=delete,proto3,oneof"`
 }
+
 type Write_Transform struct {
 	Transform *DocumentTransform `protobuf:"bytes,6,opt,name=transform,proto3,oneof"`
 }
 
-func (*Write_Update) isWrite_Operation()    {}
-func (*Write_Delete) isWrite_Operation()    {}
+func (*Write_Update) isWrite_Operation() {}
+
+func (*Write_Delete) isWrite_Operation() {}
+
 func (*Write_Transform) isWrite_Operation() {}
 
 func (m *Write) GetOperation() isWrite_Operation {
@@ -341,6 +345,13 @@ func (m *DocumentTransform_FieldTransform) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DocumentTransform_FieldTransform proto.InternalMessageInfo
 
+func (m *DocumentTransform_FieldTransform) GetFieldPath() string {
+	if m != nil {
+		return m.FieldPath
+	}
+	return ""
+}
+
 type isDocumentTransform_FieldTransform_TransformType interface {
 	isDocumentTransform_FieldTransform_TransformType()
 }
@@ -348,17 +359,21 @@ type isDocumentTransform_FieldTransform_TransformType interface {
 type DocumentTransform_FieldTransform_SetToServerValue struct {
 	SetToServerValue DocumentTransform_FieldTransform_ServerValue `protobuf:"varint,2,opt,name=set_to_server_value,json=setToServerValue,proto3,enum=google.firestore.v1beta1.DocumentTransform_FieldTransform_ServerValue,oneof"`
 }
+
 type DocumentTransform_FieldTransform_AppendMissingElements struct {
 	AppendMissingElements *ArrayValue `protobuf:"bytes,6,opt,name=append_missing_elements,json=appendMissingElements,proto3,oneof"`
 }
+
 type DocumentTransform_FieldTransform_RemoveAllFromArray struct {
 	RemoveAllFromArray *ArrayValue `protobuf:"bytes,7,opt,name=remove_all_from_array,json=removeAllFromArray,proto3,oneof"`
 }
 
 func (*DocumentTransform_FieldTransform_SetToServerValue) isDocumentTransform_FieldTransform_TransformType() {
 }
+
 func (*DocumentTransform_FieldTransform_AppendMissingElements) isDocumentTransform_FieldTransform_TransformType() {
 }
+
 func (*DocumentTransform_FieldTransform_RemoveAllFromArray) isDocumentTransform_FieldTransform_TransformType() {
 }
 
@@ -367,13 +382,6 @@ func (m *DocumentTransform_FieldTransform) GetTransformType() isDocumentTransfor
 		return m.TransformType
 	}
 	return nil
-}
-
-func (m *DocumentTransform_FieldTransform) GetFieldPath() string {
-	if m != nil {
-		return m.FieldPath
-	}
-	return ""
 }
 
 func (m *DocumentTransform_FieldTransform) GetSetToServerValue() DocumentTransform_FieldTransform_ServerValue {

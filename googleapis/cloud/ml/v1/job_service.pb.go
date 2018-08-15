@@ -231,9 +231,9 @@ var PredictionInput_DataFormat_name = map[int32]string{
 }
 var PredictionInput_DataFormat_value = map[string]int32{
 	"DATA_FORMAT_UNSPECIFIED": 0,
-	"TEXT":           1,
-	"TF_RECORD":      2,
-	"TF_RECORD_GZIP": 3,
+	"TEXT":                    1,
+	"TF_RECORD":               2,
+	"TF_RECORD_GZIP":          3,
 }
 
 func (x PredictionInput_DataFormat) String() string {
@@ -975,16 +975,20 @@ type isPredictionInput_ModelVersion interface {
 type PredictionInput_ModelName struct {
 	ModelName string `protobuf:"bytes,1,opt,name=model_name,json=modelName,proto3,oneof"`
 }
+
 type PredictionInput_VersionName struct {
 	VersionName string `protobuf:"bytes,2,opt,name=version_name,json=versionName,proto3,oneof"`
 }
+
 type PredictionInput_Uri struct {
 	Uri string `protobuf:"bytes,9,opt,name=uri,proto3,oneof"`
 }
 
-func (*PredictionInput_ModelName) isPredictionInput_ModelVersion()   {}
+func (*PredictionInput_ModelName) isPredictionInput_ModelVersion() {}
+
 func (*PredictionInput_VersionName) isPredictionInput_ModelVersion() {}
-func (*PredictionInput_Uri) isPredictionInput_ModelVersion()         {}
+
+func (*PredictionInput_Uri) isPredictionInput_ModelVersion() {}
 
 func (m *PredictionInput) GetModelVersion() isPredictionInput_ModelVersion {
 	if m != nil {
@@ -1259,49 +1263,34 @@ func (m *Job) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Job proto.InternalMessageInfo
 
+func (m *Job) GetJobId() string {
+	if m != nil {
+		return m.JobId
+	}
+	return ""
+}
+
 type isJob_Input interface {
 	isJob_Input()
-}
-type isJob_Output interface {
-	isJob_Output()
 }
 
 type Job_TrainingInput struct {
 	TrainingInput *TrainingInput `protobuf:"bytes,2,opt,name=training_input,json=trainingInput,proto3,oneof"`
 }
+
 type Job_PredictionInput struct {
 	PredictionInput *PredictionInput `protobuf:"bytes,3,opt,name=prediction_input,json=predictionInput,proto3,oneof"`
 }
-type Job_TrainingOutput struct {
-	TrainingOutput *TrainingOutput `protobuf:"bytes,9,opt,name=training_output,json=trainingOutput,proto3,oneof"`
-}
-type Job_PredictionOutput struct {
-	PredictionOutput *PredictionOutput `protobuf:"bytes,10,opt,name=prediction_output,json=predictionOutput,proto3,oneof"`
-}
 
-func (*Job_TrainingInput) isJob_Input()     {}
-func (*Job_PredictionInput) isJob_Input()   {}
-func (*Job_TrainingOutput) isJob_Output()   {}
-func (*Job_PredictionOutput) isJob_Output() {}
+func (*Job_TrainingInput) isJob_Input() {}
+
+func (*Job_PredictionInput) isJob_Input() {}
 
 func (m *Job) GetInput() isJob_Input {
 	if m != nil {
 		return m.Input
 	}
 	return nil
-}
-func (m *Job) GetOutput() isJob_Output {
-	if m != nil {
-		return m.Output
-	}
-	return nil
-}
-
-func (m *Job) GetJobId() string {
-	if m != nil {
-		return m.JobId
-	}
-	return ""
 }
 
 func (m *Job) GetTrainingInput() *TrainingInput {
@@ -1351,6 +1340,29 @@ func (m *Job) GetErrorMessage() string {
 		return m.ErrorMessage
 	}
 	return ""
+}
+
+type isJob_Output interface {
+	isJob_Output()
+}
+
+type Job_TrainingOutput struct {
+	TrainingOutput *TrainingOutput `protobuf:"bytes,9,opt,name=training_output,json=trainingOutput,proto3,oneof"`
+}
+
+type Job_PredictionOutput struct {
+	PredictionOutput *PredictionOutput `protobuf:"bytes,10,opt,name=prediction_output,json=predictionOutput,proto3,oneof"`
+}
+
+func (*Job_TrainingOutput) isJob_Output() {}
+
+func (*Job_PredictionOutput) isJob_Output() {}
+
+func (m *Job) GetOutput() isJob_Output {
+	if m != nil {
+		return m.Output
+	}
+	return nil
 }
 
 func (m *Job) GetTrainingOutput() *TrainingOutput {

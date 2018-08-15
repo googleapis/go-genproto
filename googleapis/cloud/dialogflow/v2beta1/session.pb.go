@@ -122,9 +122,9 @@ var KnowledgeAnswers_Answer_MatchConfidenceLevel_name = map[int32]string{
 }
 var KnowledgeAnswers_Answer_MatchConfidenceLevel_value = map[string]int32{
 	"MATCH_CONFIDENCE_LEVEL_UNSPECIFIED": 0,
-	"LOW":    1,
-	"MEDIUM": 2,
-	"HIGH":   3,
+	"LOW":                                1,
+	"MEDIUM":                             2,
+	"HIGH":                               3,
 }
 
 func (x KnowledgeAnswers_Answer_MatchConfidenceLevel) String() string {
@@ -534,16 +534,20 @@ type isQueryInput_Input interface {
 type QueryInput_AudioConfig struct {
 	AudioConfig *InputAudioConfig `protobuf:"bytes,1,opt,name=audio_config,json=audioConfig,proto3,oneof"`
 }
+
 type QueryInput_Text struct {
 	Text *TextInput `protobuf:"bytes,2,opt,name=text,proto3,oneof"`
 }
+
 type QueryInput_Event struct {
 	Event *EventInput `protobuf:"bytes,3,opt,name=event,proto3,oneof"`
 }
 
 func (*QueryInput_AudioConfig) isQueryInput_Input() {}
-func (*QueryInput_Text) isQueryInput_Input()        {}
-func (*QueryInput_Event) isQueryInput_Input()       {}
+
+func (*QueryInput_Text) isQueryInput_Input() {}
+
+func (*QueryInput_Event) isQueryInput_Input() {}
 
 func (m *QueryInput) GetInput() isQueryInput_Input {
 	if m != nil {

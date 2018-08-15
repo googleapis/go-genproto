@@ -117,8 +117,8 @@ var CloudStorageOptions_SampleMethod_name = map[int32]string{
 }
 var CloudStorageOptions_SampleMethod_value = map[string]int32{
 	"SAMPLE_METHOD_UNSPECIFIED": 0,
-	"TOP":          1,
-	"RANDOM_START": 2,
+	"TOP":                       1,
+	"RANDOM_START":              2,
 }
 
 func (x CloudStorageOptions_SampleMethod) String() string {
@@ -148,8 +148,8 @@ var BigQueryOptions_SampleMethod_name = map[int32]string{
 }
 var BigQueryOptions_SampleMethod_value = map[string]int32{
 	"SAMPLE_METHOD_UNSPECIFIED": 0,
-	"TOP":          1,
-	"RANDOM_START": 2,
+	"TOP":                       1,
+	"RANDOM_START":              2,
 }
 
 func (x BigQueryOptions_SampleMethod) String() string {
@@ -303,35 +303,6 @@ func (m *CustomInfoType) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CustomInfoType proto.InternalMessageInfo
 
-type isCustomInfoType_Type interface {
-	isCustomInfoType_Type()
-}
-
-type CustomInfoType_Dictionary_ struct {
-	Dictionary *CustomInfoType_Dictionary `protobuf:"bytes,2,opt,name=dictionary,proto3,oneof"`
-}
-type CustomInfoType_Regex_ struct {
-	Regex *CustomInfoType_Regex `protobuf:"bytes,3,opt,name=regex,proto3,oneof"`
-}
-type CustomInfoType_SurrogateType_ struct {
-	SurrogateType *CustomInfoType_SurrogateType `protobuf:"bytes,4,opt,name=surrogate_type,json=surrogateType,proto3,oneof"`
-}
-type CustomInfoType_StoredType struct {
-	StoredType *StoredType `protobuf:"bytes,5,opt,name=stored_type,json=storedType,proto3,oneof"`
-}
-
-func (*CustomInfoType_Dictionary_) isCustomInfoType_Type()    {}
-func (*CustomInfoType_Regex_) isCustomInfoType_Type()         {}
-func (*CustomInfoType_SurrogateType_) isCustomInfoType_Type() {}
-func (*CustomInfoType_StoredType) isCustomInfoType_Type()     {}
-
-func (m *CustomInfoType) GetType() isCustomInfoType_Type {
-	if m != nil {
-		return m.Type
-	}
-	return nil
-}
-
 func (m *CustomInfoType) GetInfoType() *InfoType {
 	if m != nil {
 		return m.InfoType
@@ -344,6 +315,41 @@ func (m *CustomInfoType) GetLikelihood() Likelihood {
 		return m.Likelihood
 	}
 	return Likelihood_LIKELIHOOD_UNSPECIFIED
+}
+
+type isCustomInfoType_Type interface {
+	isCustomInfoType_Type()
+}
+
+type CustomInfoType_Dictionary_ struct {
+	Dictionary *CustomInfoType_Dictionary `protobuf:"bytes,2,opt,name=dictionary,proto3,oneof"`
+}
+
+type CustomInfoType_Regex_ struct {
+	Regex *CustomInfoType_Regex `protobuf:"bytes,3,opt,name=regex,proto3,oneof"`
+}
+
+type CustomInfoType_SurrogateType_ struct {
+	SurrogateType *CustomInfoType_SurrogateType `protobuf:"bytes,4,opt,name=surrogate_type,json=surrogateType,proto3,oneof"`
+}
+
+type CustomInfoType_StoredType struct {
+	StoredType *StoredType `protobuf:"bytes,5,opt,name=stored_type,json=storedType,proto3,oneof"`
+}
+
+func (*CustomInfoType_Dictionary_) isCustomInfoType_Type() {}
+
+func (*CustomInfoType_Regex_) isCustomInfoType_Type() {}
+
+func (*CustomInfoType_SurrogateType_) isCustomInfoType_Type() {}
+
+func (*CustomInfoType_StoredType) isCustomInfoType_Type() {}
+
+func (m *CustomInfoType) GetType() isCustomInfoType_Type {
+	if m != nil {
+		return m.Type
+	}
+	return nil
 }
 
 func (m *CustomInfoType) GetDictionary() *CustomInfoType_Dictionary {
@@ -557,11 +563,13 @@ type isCustomInfoType_Dictionary_Source interface {
 type CustomInfoType_Dictionary_WordList_ struct {
 	WordList *CustomInfoType_Dictionary_WordList `protobuf:"bytes,1,opt,name=word_list,json=wordList,proto3,oneof"`
 }
+
 type CustomInfoType_Dictionary_CloudStoragePath struct {
 	CloudStoragePath *CloudStoragePath `protobuf:"bytes,3,opt,name=cloud_storage_path,json=cloudStoragePath,proto3,oneof"`
 }
 
-func (*CustomInfoType_Dictionary_WordList_) isCustomInfoType_Dictionary_Source()        {}
+func (*CustomInfoType_Dictionary_WordList_) isCustomInfoType_Dictionary_Source() {}
+
 func (*CustomInfoType_Dictionary_CloudStoragePath) isCustomInfoType_Dictionary_Source() {}
 
 func (m *CustomInfoType_Dictionary) GetSource() isCustomInfoType_Dictionary_Source {
@@ -993,12 +1001,14 @@ type isCustomInfoType_DetectionRule_LikelihoodAdjustment_Adjustment interface {
 type CustomInfoType_DetectionRule_LikelihoodAdjustment_FixedLikelihood struct {
 	FixedLikelihood Likelihood `protobuf:"varint,1,opt,name=fixed_likelihood,json=fixedLikelihood,proto3,enum=google.privacy.dlp.v2.Likelihood,oneof"`
 }
+
 type CustomInfoType_DetectionRule_LikelihoodAdjustment_RelativeLikelihood struct {
 	RelativeLikelihood int32 `protobuf:"varint,2,opt,name=relative_likelihood,json=relativeLikelihood,proto3,oneof"`
 }
 
 func (*CustomInfoType_DetectionRule_LikelihoodAdjustment_FixedLikelihood) isCustomInfoType_DetectionRule_LikelihoodAdjustment_Adjustment() {
 }
+
 func (*CustomInfoType_DetectionRule_LikelihoodAdjustment_RelativeLikelihood) isCustomInfoType_DetectionRule_LikelihoodAdjustment_Adjustment() {
 }
 
@@ -1682,16 +1692,20 @@ type isStorageConfig_Type interface {
 type StorageConfig_DatastoreOptions struct {
 	DatastoreOptions *DatastoreOptions `protobuf:"bytes,2,opt,name=datastore_options,json=datastoreOptions,proto3,oneof"`
 }
+
 type StorageConfig_CloudStorageOptions struct {
 	CloudStorageOptions *CloudStorageOptions `protobuf:"bytes,3,opt,name=cloud_storage_options,json=cloudStorageOptions,proto3,oneof"`
 }
+
 type StorageConfig_BigQueryOptions struct {
 	BigQueryOptions *BigQueryOptions `protobuf:"bytes,4,opt,name=big_query_options,json=bigQueryOptions,proto3,oneof"`
 }
 
-func (*StorageConfig_DatastoreOptions) isStorageConfig_Type()    {}
+func (*StorageConfig_DatastoreOptions) isStorageConfig_Type() {}
+
 func (*StorageConfig_CloudStorageOptions) isStorageConfig_Type() {}
-func (*StorageConfig_BigQueryOptions) isStorageConfig_Type()     {}
+
+func (*StorageConfig_BigQueryOptions) isStorageConfig_Type() {}
 
 func (m *StorageConfig) GetType() isStorageConfig_Type {
 	if m != nil {
@@ -2098,6 +2112,13 @@ func (m *Key_PathElement) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Key_PathElement proto.InternalMessageInfo
 
+func (m *Key_PathElement) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
 type isKey_PathElement_IdType interface {
 	isKey_PathElement_IdType()
 }
@@ -2105,11 +2126,13 @@ type isKey_PathElement_IdType interface {
 type Key_PathElement_Id struct {
 	Id int64 `protobuf:"varint,2,opt,name=id,proto3,oneof"`
 }
+
 type Key_PathElement_Name struct {
 	Name string `protobuf:"bytes,3,opt,name=name,proto3,oneof"`
 }
 
-func (*Key_PathElement_Id) isKey_PathElement_IdType()   {}
+func (*Key_PathElement_Id) isKey_PathElement_IdType() {}
+
 func (*Key_PathElement_Name) isKey_PathElement_IdType() {}
 
 func (m *Key_PathElement) GetIdType() isKey_PathElement_IdType {
@@ -2117,13 +2140,6 @@ func (m *Key_PathElement) GetIdType() isKey_PathElement_IdType {
 		return m.IdType
 	}
 	return nil
-}
-
-func (m *Key_PathElement) GetKind() string {
-	if m != nil {
-		return m.Kind
-	}
-	return ""
 }
 
 func (m *Key_PathElement) GetId() int64 {
@@ -2247,12 +2263,14 @@ type isRecordKey_Type interface {
 type RecordKey_DatastoreKey struct {
 	DatastoreKey *DatastoreKey `protobuf:"bytes,2,opt,name=datastore_key,json=datastoreKey,proto3,oneof"`
 }
+
 type RecordKey_BigQueryKey struct {
 	BigQueryKey *BigQueryKey `protobuf:"bytes,3,opt,name=big_query_key,json=bigQueryKey,proto3,oneof"`
 }
 
 func (*RecordKey_DatastoreKey) isRecordKey_Type() {}
-func (*RecordKey_BigQueryKey) isRecordKey_Type()  {}
+
+func (*RecordKey_BigQueryKey) isRecordKey_Type() {}
 
 func (m *RecordKey) GetType() isRecordKey_Type {
 	if m != nil {

@@ -1135,6 +1135,13 @@ func (m *Document) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Document proto.InternalMessageInfo
 
+func (m *Document) GetType() Document_Type {
+	if m != nil {
+		return m.Type
+	}
+	return Document_TYPE_UNSPECIFIED
+}
+
 type isDocument_Source interface {
 	isDocument_Source()
 }
@@ -1142,11 +1149,13 @@ type isDocument_Source interface {
 type Document_Content struct {
 	Content string `protobuf:"bytes,2,opt,name=content,proto3,oneof"`
 }
+
 type Document_GcsContentUri struct {
 	GcsContentUri string `protobuf:"bytes,3,opt,name=gcs_content_uri,json=gcsContentUri,proto3,oneof"`
 }
 
-func (*Document_Content) isDocument_Source()       {}
+func (*Document_Content) isDocument_Source() {}
+
 func (*Document_GcsContentUri) isDocument_Source() {}
 
 func (m *Document) GetSource() isDocument_Source {
@@ -1154,13 +1163,6 @@ func (m *Document) GetSource() isDocument_Source {
 		return m.Source
 	}
 	return nil
-}
-
-func (m *Document) GetType() Document_Type {
-	if m != nil {
-		return m.Type
-	}
-	return Document_TYPE_UNSPECIFIED
 }
 
 func (m *Document) GetContent() string {

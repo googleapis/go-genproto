@@ -417,27 +417,6 @@ func (m *Annotation) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Annotation proto.InternalMessageInfo
 
-type isAnnotation_Value interface {
-	isAnnotation_Value()
-}
-
-type Annotation_Variant struct {
-	Variant *VariantAnnotation `protobuf:"bytes,10,opt,name=variant,proto3,oneof"`
-}
-type Annotation_Transcript struct {
-	Transcript *Transcript `protobuf:"bytes,11,opt,name=transcript,proto3,oneof"`
-}
-
-func (*Annotation_Variant) isAnnotation_Value()    {}
-func (*Annotation_Transcript) isAnnotation_Value() {}
-
-func (m *Annotation) GetValue() isAnnotation_Value {
-	if m != nil {
-		return m.Value
-	}
-	return nil
-}
-
 func (m *Annotation) GetId() string {
 	if m != nil {
 		return m.Id
@@ -499,6 +478,29 @@ func (m *Annotation) GetType() AnnotationType {
 		return m.Type
 	}
 	return AnnotationType_ANNOTATION_TYPE_UNSPECIFIED
+}
+
+type isAnnotation_Value interface {
+	isAnnotation_Value()
+}
+
+type Annotation_Variant struct {
+	Variant *VariantAnnotation `protobuf:"bytes,10,opt,name=variant,proto3,oneof"`
+}
+
+type Annotation_Transcript struct {
+	Transcript *Transcript `protobuf:"bytes,11,opt,name=transcript,proto3,oneof"`
+}
+
+func (*Annotation_Variant) isAnnotation_Value() {}
+
+func (*Annotation_Transcript) isAnnotation_Value() {}
+
+func (m *Annotation) GetValue() isAnnotation_Value {
+	if m != nil {
+		return m.Value
+	}
+	return nil
 }
 
 func (m *Annotation) GetVariant() *VariantAnnotation {
@@ -1721,6 +1723,13 @@ func (m *SearchAnnotationsRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_SearchAnnotationsRequest proto.InternalMessageInfo
 
+func (m *SearchAnnotationsRequest) GetAnnotationSetIds() []string {
+	if m != nil {
+		return m.AnnotationSetIds
+	}
+	return nil
+}
+
 type isSearchAnnotationsRequest_Reference interface {
 	isSearchAnnotationsRequest_Reference()
 }
@@ -1728,23 +1737,18 @@ type isSearchAnnotationsRequest_Reference interface {
 type SearchAnnotationsRequest_ReferenceId struct {
 	ReferenceId string `protobuf:"bytes,2,opt,name=reference_id,json=referenceId,proto3,oneof"`
 }
+
 type SearchAnnotationsRequest_ReferenceName struct {
 	ReferenceName string `protobuf:"bytes,3,opt,name=reference_name,json=referenceName,proto3,oneof"`
 }
 
-func (*SearchAnnotationsRequest_ReferenceId) isSearchAnnotationsRequest_Reference()   {}
+func (*SearchAnnotationsRequest_ReferenceId) isSearchAnnotationsRequest_Reference() {}
+
 func (*SearchAnnotationsRequest_ReferenceName) isSearchAnnotationsRequest_Reference() {}
 
 func (m *SearchAnnotationsRequest) GetReference() isSearchAnnotationsRequest_Reference {
 	if m != nil {
 		return m.Reference
-	}
-	return nil
-}
-
-func (m *SearchAnnotationsRequest) GetAnnotationSetIds() []string {
-	if m != nil {
-		return m.AnnotationSetIds
 	}
 	return nil
 }

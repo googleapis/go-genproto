@@ -624,6 +624,13 @@ func (m *BatchUpdateEntityTypesRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BatchUpdateEntityTypesRequest proto.InternalMessageInfo
 
+func (m *BatchUpdateEntityTypesRequest) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
 type isBatchUpdateEntityTypesRequest_EntityTypeBatch interface {
 	isBatchUpdateEntityTypesRequest_EntityTypeBatch()
 }
@@ -631,12 +638,14 @@ type isBatchUpdateEntityTypesRequest_EntityTypeBatch interface {
 type BatchUpdateEntityTypesRequest_EntityTypeBatchUri struct {
 	EntityTypeBatchUri string `protobuf:"bytes,2,opt,name=entity_type_batch_uri,json=entityTypeBatchUri,proto3,oneof"`
 }
+
 type BatchUpdateEntityTypesRequest_EntityTypeBatchInline struct {
 	EntityTypeBatchInline *EntityTypeBatch `protobuf:"bytes,3,opt,name=entity_type_batch_inline,json=entityTypeBatchInline,proto3,oneof"`
 }
 
 func (*BatchUpdateEntityTypesRequest_EntityTypeBatchUri) isBatchUpdateEntityTypesRequest_EntityTypeBatch() {
 }
+
 func (*BatchUpdateEntityTypesRequest_EntityTypeBatchInline) isBatchUpdateEntityTypesRequest_EntityTypeBatch() {
 }
 
@@ -645,13 +654,6 @@ func (m *BatchUpdateEntityTypesRequest) GetEntityTypeBatch() isBatchUpdateEntity
 		return m.EntityTypeBatch
 	}
 	return nil
-}
-
-func (m *BatchUpdateEntityTypesRequest) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
 }
 
 func (m *BatchUpdateEntityTypesRequest) GetEntityTypeBatchUri() string {

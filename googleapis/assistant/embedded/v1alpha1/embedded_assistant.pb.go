@@ -565,11 +565,13 @@ type isConverseRequest_ConverseRequest interface {
 type ConverseRequest_Config struct {
 	Config *ConverseConfig `protobuf:"bytes,1,opt,name=config,proto3,oneof"`
 }
+
 type ConverseRequest_AudioIn struct {
 	AudioIn []byte `protobuf:"bytes,2,opt,name=audio_in,json=audioIn,proto3,oneof"`
 }
 
-func (*ConverseRequest_Config) isConverseRequest_ConverseRequest()  {}
+func (*ConverseRequest_Config) isConverseRequest_ConverseRequest() {}
+
 func (*ConverseRequest_AudioIn) isConverseRequest_ConverseRequest() {}
 
 func (m *ConverseRequest) GetConverseRequest() isConverseRequest_ConverseRequest {
@@ -710,20 +712,26 @@ type isConverseResponse_ConverseResponse interface {
 type ConverseResponse_Error struct {
 	Error *status.Status `protobuf:"bytes,1,opt,name=error,proto3,oneof"`
 }
+
 type ConverseResponse_EventType_ struct {
 	EventType ConverseResponse_EventType `protobuf:"varint,2,opt,name=event_type,json=eventType,proto3,enum=google.assistant.embedded.v1alpha1.ConverseResponse_EventType,oneof"`
 }
+
 type ConverseResponse_AudioOut struct {
 	AudioOut *AudioOut `protobuf:"bytes,3,opt,name=audio_out,json=audioOut,proto3,oneof"`
 }
+
 type ConverseResponse_Result struct {
 	Result *ConverseResult `protobuf:"bytes,5,opt,name=result,proto3,oneof"`
 }
 
-func (*ConverseResponse_Error) isConverseResponse_ConverseResponse()      {}
+func (*ConverseResponse_Error) isConverseResponse_ConverseResponse() {}
+
 func (*ConverseResponse_EventType_) isConverseResponse_ConverseResponse() {}
-func (*ConverseResponse_AudioOut) isConverseResponse_ConverseResponse()   {}
-func (*ConverseResponse_Result) isConverseResponse_ConverseResponse()     {}
+
+func (*ConverseResponse_AudioOut) isConverseResponse_ConverseResponse() {}
+
+func (*ConverseResponse_Result) isConverseResponse_ConverseResponse() {}
 
 func (m *ConverseResponse) GetConverseResponse() isConverseResponse_ConverseResponse {
 	if m != nil {

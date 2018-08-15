@@ -203,6 +203,13 @@ func (m *Key_PathElement) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Key_PathElement proto.InternalMessageInfo
 
+func (m *Key_PathElement) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
 type isKey_PathElement_IdType interface {
 	isKey_PathElement_IdType()
 }
@@ -210,11 +217,13 @@ type isKey_PathElement_IdType interface {
 type Key_PathElement_Id struct {
 	Id int64 `protobuf:"varint,2,opt,name=id,proto3,oneof"`
 }
+
 type Key_PathElement_Name struct {
 	Name string `protobuf:"bytes,3,opt,name=name,proto3,oneof"`
 }
 
-func (*Key_PathElement_Id) isKey_PathElement_IdType()   {}
+func (*Key_PathElement_Id) isKey_PathElement_IdType() {}
+
 func (*Key_PathElement_Name) isKey_PathElement_IdType() {}
 
 func (m *Key_PathElement) GetIdType() isKey_PathElement_IdType {
@@ -222,13 +231,6 @@ func (m *Key_PathElement) GetIdType() isKey_PathElement_IdType {
 		return m.IdType
 	}
 	return nil
-}
-
-func (m *Key_PathElement) GetKind() string {
-	if m != nil {
-		return m.Kind
-	}
-	return ""
 }
 
 func (m *Key_PathElement) GetId() int64 {
@@ -411,48 +413,68 @@ type isValue_ValueType interface {
 type Value_NullValue struct {
 	NullValue _struct.NullValue `protobuf:"varint,11,opt,name=null_value,json=nullValue,proto3,enum=google.protobuf.NullValue,oneof"`
 }
+
 type Value_BooleanValue struct {
 	BooleanValue bool `protobuf:"varint,1,opt,name=boolean_value,json=booleanValue,proto3,oneof"`
 }
+
 type Value_IntegerValue struct {
 	IntegerValue int64 `protobuf:"varint,2,opt,name=integer_value,json=integerValue,proto3,oneof"`
 }
+
 type Value_DoubleValue struct {
 	DoubleValue float64 `protobuf:"fixed64,3,opt,name=double_value,json=doubleValue,proto3,oneof"`
 }
+
 type Value_TimestampValue struct {
 	TimestampValue *timestamp.Timestamp `protobuf:"bytes,10,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
 }
+
 type Value_KeyValue struct {
 	KeyValue *Key `protobuf:"bytes,5,opt,name=key_value,json=keyValue,proto3,oneof"`
 }
+
 type Value_StringValue struct {
 	StringValue string `protobuf:"bytes,17,opt,name=string_value,json=stringValue,proto3,oneof"`
 }
+
 type Value_BlobValue struct {
 	BlobValue []byte `protobuf:"bytes,18,opt,name=blob_value,json=blobValue,proto3,oneof"`
 }
+
 type Value_GeoPointValue struct {
 	GeoPointValue *latlng.LatLng `protobuf:"bytes,8,opt,name=geo_point_value,json=geoPointValue,proto3,oneof"`
 }
+
 type Value_EntityValue struct {
 	EntityValue *Entity `protobuf:"bytes,6,opt,name=entity_value,json=entityValue,proto3,oneof"`
 }
+
 type Value_ArrayValue struct {
 	ArrayValue *ArrayValue `protobuf:"bytes,9,opt,name=array_value,json=arrayValue,proto3,oneof"`
 }
 
-func (*Value_NullValue) isValue_ValueType()      {}
-func (*Value_BooleanValue) isValue_ValueType()   {}
-func (*Value_IntegerValue) isValue_ValueType()   {}
-func (*Value_DoubleValue) isValue_ValueType()    {}
+func (*Value_NullValue) isValue_ValueType() {}
+
+func (*Value_BooleanValue) isValue_ValueType() {}
+
+func (*Value_IntegerValue) isValue_ValueType() {}
+
+func (*Value_DoubleValue) isValue_ValueType() {}
+
 func (*Value_TimestampValue) isValue_ValueType() {}
-func (*Value_KeyValue) isValue_ValueType()       {}
-func (*Value_StringValue) isValue_ValueType()    {}
-func (*Value_BlobValue) isValue_ValueType()      {}
-func (*Value_GeoPointValue) isValue_ValueType()  {}
-func (*Value_EntityValue) isValue_ValueType()    {}
-func (*Value_ArrayValue) isValue_ValueType()     {}
+
+func (*Value_KeyValue) isValue_ValueType() {}
+
+func (*Value_StringValue) isValue_ValueType() {}
+
+func (*Value_BlobValue) isValue_ValueType() {}
+
+func (*Value_GeoPointValue) isValue_ValueType() {}
+
+func (*Value_EntityValue) isValue_ValueType() {}
+
+func (*Value_ArrayValue) isValue_ValueType() {}
 
 func (m *Value) GetValueType() isValue_ValueType {
 	if m != nil {

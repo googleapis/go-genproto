@@ -122,27 +122,6 @@ func (m *GetDocumentRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GetDocumentRequest proto.InternalMessageInfo
 
-type isGetDocumentRequest_ConsistencySelector interface {
-	isGetDocumentRequest_ConsistencySelector()
-}
-
-type GetDocumentRequest_Transaction struct {
-	Transaction []byte `protobuf:"bytes,3,opt,name=transaction,proto3,oneof"`
-}
-type GetDocumentRequest_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=read_time,json=readTime,proto3,oneof"`
-}
-
-func (*GetDocumentRequest_Transaction) isGetDocumentRequest_ConsistencySelector() {}
-func (*GetDocumentRequest_ReadTime) isGetDocumentRequest_ConsistencySelector()    {}
-
-func (m *GetDocumentRequest) GetConsistencySelector() isGetDocumentRequest_ConsistencySelector {
-	if m != nil {
-		return m.ConsistencySelector
-	}
-	return nil
-}
-
 func (m *GetDocumentRequest) GetName() string {
 	if m != nil {
 		return m.Name
@@ -153,6 +132,29 @@ func (m *GetDocumentRequest) GetName() string {
 func (m *GetDocumentRequest) GetMask() *DocumentMask {
 	if m != nil {
 		return m.Mask
+	}
+	return nil
+}
+
+type isGetDocumentRequest_ConsistencySelector interface {
+	isGetDocumentRequest_ConsistencySelector()
+}
+
+type GetDocumentRequest_Transaction struct {
+	Transaction []byte `protobuf:"bytes,3,opt,name=transaction,proto3,oneof"`
+}
+
+type GetDocumentRequest_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*GetDocumentRequest_Transaction) isGetDocumentRequest_ConsistencySelector() {}
+
+func (*GetDocumentRequest_ReadTime) isGetDocumentRequest_ConsistencySelector() {}
+
+func (m *GetDocumentRequest) GetConsistencySelector() isGetDocumentRequest_ConsistencySelector {
+	if m != nil {
+		return m.ConsistencySelector
 	}
 	return nil
 }
@@ -308,27 +310,6 @@ func (m *ListDocumentsRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListDocumentsRequest proto.InternalMessageInfo
 
-type isListDocumentsRequest_ConsistencySelector interface {
-	isListDocumentsRequest_ConsistencySelector()
-}
-
-type ListDocumentsRequest_Transaction struct {
-	Transaction []byte `protobuf:"bytes,8,opt,name=transaction,proto3,oneof"`
-}
-type ListDocumentsRequest_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=read_time,json=readTime,proto3,oneof"`
-}
-
-func (*ListDocumentsRequest_Transaction) isListDocumentsRequest_ConsistencySelector() {}
-func (*ListDocumentsRequest_ReadTime) isListDocumentsRequest_ConsistencySelector()    {}
-
-func (m *ListDocumentsRequest) GetConsistencySelector() isListDocumentsRequest_ConsistencySelector {
-	if m != nil {
-		return m.ConsistencySelector
-	}
-	return nil
-}
-
 func (m *ListDocumentsRequest) GetParent() string {
 	if m != nil {
 		return m.Parent
@@ -367,6 +348,29 @@ func (m *ListDocumentsRequest) GetOrderBy() string {
 func (m *ListDocumentsRequest) GetMask() *DocumentMask {
 	if m != nil {
 		return m.Mask
+	}
+	return nil
+}
+
+type isListDocumentsRequest_ConsistencySelector interface {
+	isListDocumentsRequest_ConsistencySelector()
+}
+
+type ListDocumentsRequest_Transaction struct {
+	Transaction []byte `protobuf:"bytes,8,opt,name=transaction,proto3,oneof"`
+}
+
+type ListDocumentsRequest_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*ListDocumentsRequest_Transaction) isListDocumentsRequest_ConsistencySelector() {}
+
+func (*ListDocumentsRequest_ReadTime) isListDocumentsRequest_ConsistencySelector() {}
+
+func (m *ListDocumentsRequest) GetConsistencySelector() isListDocumentsRequest_ConsistencySelector {
+	if m != nil {
+		return m.ConsistencySelector
 	}
 	return nil
 }
@@ -775,31 +779,6 @@ func (m *BatchGetDocumentsRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BatchGetDocumentsRequest proto.InternalMessageInfo
 
-type isBatchGetDocumentsRequest_ConsistencySelector interface {
-	isBatchGetDocumentsRequest_ConsistencySelector()
-}
-
-type BatchGetDocumentsRequest_Transaction struct {
-	Transaction []byte `protobuf:"bytes,4,opt,name=transaction,proto3,oneof"`
-}
-type BatchGetDocumentsRequest_NewTransaction struct {
-	NewTransaction *TransactionOptions `protobuf:"bytes,5,opt,name=new_transaction,json=newTransaction,proto3,oneof"`
-}
-type BatchGetDocumentsRequest_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
-}
-
-func (*BatchGetDocumentsRequest_Transaction) isBatchGetDocumentsRequest_ConsistencySelector()    {}
-func (*BatchGetDocumentsRequest_NewTransaction) isBatchGetDocumentsRequest_ConsistencySelector() {}
-func (*BatchGetDocumentsRequest_ReadTime) isBatchGetDocumentsRequest_ConsistencySelector()       {}
-
-func (m *BatchGetDocumentsRequest) GetConsistencySelector() isBatchGetDocumentsRequest_ConsistencySelector {
-	if m != nil {
-		return m.ConsistencySelector
-	}
-	return nil
-}
-
 func (m *BatchGetDocumentsRequest) GetDatabase() string {
 	if m != nil {
 		return m.Database
@@ -817,6 +796,35 @@ func (m *BatchGetDocumentsRequest) GetDocuments() []string {
 func (m *BatchGetDocumentsRequest) GetMask() *DocumentMask {
 	if m != nil {
 		return m.Mask
+	}
+	return nil
+}
+
+type isBatchGetDocumentsRequest_ConsistencySelector interface {
+	isBatchGetDocumentsRequest_ConsistencySelector()
+}
+
+type BatchGetDocumentsRequest_Transaction struct {
+	Transaction []byte `protobuf:"bytes,4,opt,name=transaction,proto3,oneof"`
+}
+
+type BatchGetDocumentsRequest_NewTransaction struct {
+	NewTransaction *TransactionOptions `protobuf:"bytes,5,opt,name=new_transaction,json=newTransaction,proto3,oneof"`
+}
+
+type BatchGetDocumentsRequest_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*BatchGetDocumentsRequest_Transaction) isBatchGetDocumentsRequest_ConsistencySelector() {}
+
+func (*BatchGetDocumentsRequest_NewTransaction) isBatchGetDocumentsRequest_ConsistencySelector() {}
+
+func (*BatchGetDocumentsRequest_ReadTime) isBatchGetDocumentsRequest_ConsistencySelector() {}
+
+func (m *BatchGetDocumentsRequest) GetConsistencySelector() isBatchGetDocumentsRequest_ConsistencySelector {
+	if m != nil {
+		return m.ConsistencySelector
 	}
 	return nil
 }
@@ -985,11 +993,13 @@ type isBatchGetDocumentsResponse_Result interface {
 type BatchGetDocumentsResponse_Found struct {
 	Found *Document `protobuf:"bytes,1,opt,name=found,proto3,oneof"`
 }
+
 type BatchGetDocumentsResponse_Missing struct {
 	Missing string `protobuf:"bytes,2,opt,name=missing,proto3,oneof"`
 }
 
-func (*BatchGetDocumentsResponse_Found) isBatchGetDocumentsResponse_Result()   {}
+func (*BatchGetDocumentsResponse_Found) isBatchGetDocumentsResponse_Result() {}
+
 func (*BatchGetDocumentsResponse_Missing) isBatchGetDocumentsResponse_Result() {}
 
 func (m *BatchGetDocumentsResponse) GetResult() isBatchGetDocumentsResponse_Result {
@@ -1402,44 +1412,6 @@ func (m *RunQueryRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RunQueryRequest proto.InternalMessageInfo
 
-type isRunQueryRequest_QueryType interface {
-	isRunQueryRequest_QueryType()
-}
-type isRunQueryRequest_ConsistencySelector interface {
-	isRunQueryRequest_ConsistencySelector()
-}
-
-type RunQueryRequest_StructuredQuery struct {
-	StructuredQuery *StructuredQuery `protobuf:"bytes,2,opt,name=structured_query,json=structuredQuery,proto3,oneof"`
-}
-type RunQueryRequest_Transaction struct {
-	Transaction []byte `protobuf:"bytes,5,opt,name=transaction,proto3,oneof"`
-}
-type RunQueryRequest_NewTransaction struct {
-	NewTransaction *TransactionOptions `protobuf:"bytes,6,opt,name=new_transaction,json=newTransaction,proto3,oneof"`
-}
-type RunQueryRequest_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
-}
-
-func (*RunQueryRequest_StructuredQuery) isRunQueryRequest_QueryType()          {}
-func (*RunQueryRequest_Transaction) isRunQueryRequest_ConsistencySelector()    {}
-func (*RunQueryRequest_NewTransaction) isRunQueryRequest_ConsistencySelector() {}
-func (*RunQueryRequest_ReadTime) isRunQueryRequest_ConsistencySelector()       {}
-
-func (m *RunQueryRequest) GetQueryType() isRunQueryRequest_QueryType {
-	if m != nil {
-		return m.QueryType
-	}
-	return nil
-}
-func (m *RunQueryRequest) GetConsistencySelector() isRunQueryRequest_ConsistencySelector {
-	if m != nil {
-		return m.ConsistencySelector
-	}
-	return nil
-}
-
 func (m *RunQueryRequest) GetParent() string {
 	if m != nil {
 		return m.Parent
@@ -1447,9 +1419,55 @@ func (m *RunQueryRequest) GetParent() string {
 	return ""
 }
 
+type isRunQueryRequest_QueryType interface {
+	isRunQueryRequest_QueryType()
+}
+
+type RunQueryRequest_StructuredQuery struct {
+	StructuredQuery *StructuredQuery `protobuf:"bytes,2,opt,name=structured_query,json=structuredQuery,proto3,oneof"`
+}
+
+func (*RunQueryRequest_StructuredQuery) isRunQueryRequest_QueryType() {}
+
+func (m *RunQueryRequest) GetQueryType() isRunQueryRequest_QueryType {
+	if m != nil {
+		return m.QueryType
+	}
+	return nil
+}
+
 func (m *RunQueryRequest) GetStructuredQuery() *StructuredQuery {
 	if x, ok := m.GetQueryType().(*RunQueryRequest_StructuredQuery); ok {
 		return x.StructuredQuery
+	}
+	return nil
+}
+
+type isRunQueryRequest_ConsistencySelector interface {
+	isRunQueryRequest_ConsistencySelector()
+}
+
+type RunQueryRequest_Transaction struct {
+	Transaction []byte `protobuf:"bytes,5,opt,name=transaction,proto3,oneof"`
+}
+
+type RunQueryRequest_NewTransaction struct {
+	NewTransaction *TransactionOptions `protobuf:"bytes,6,opt,name=new_transaction,json=newTransaction,proto3,oneof"`
+}
+
+type RunQueryRequest_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*RunQueryRequest_Transaction) isRunQueryRequest_ConsistencySelector() {}
+
+func (*RunQueryRequest_NewTransaction) isRunQueryRequest_ConsistencySelector() {}
+
+func (*RunQueryRequest_ReadTime) isRunQueryRequest_ConsistencySelector() {}
+
+func (m *RunQueryRequest) GetConsistencySelector() isRunQueryRequest_ConsistencySelector {
+	if m != nil {
+		return m.ConsistencySelector
 	}
 	return nil
 }
@@ -1896,6 +1914,13 @@ func (m *ListenRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListenRequest proto.InternalMessageInfo
 
+func (m *ListenRequest) GetDatabase() string {
+	if m != nil {
+		return m.Database
+	}
+	return ""
+}
+
 type isListenRequest_TargetChange interface {
 	isListenRequest_TargetChange()
 }
@@ -1903,11 +1928,13 @@ type isListenRequest_TargetChange interface {
 type ListenRequest_AddTarget struct {
 	AddTarget *Target `protobuf:"bytes,2,opt,name=add_target,json=addTarget,proto3,oneof"`
 }
+
 type ListenRequest_RemoveTarget struct {
 	RemoveTarget int32 `protobuf:"varint,3,opt,name=remove_target,json=removeTarget,proto3,oneof"`
 }
 
-func (*ListenRequest_AddTarget) isListenRequest_TargetChange()    {}
+func (*ListenRequest_AddTarget) isListenRequest_TargetChange() {}
+
 func (*ListenRequest_RemoveTarget) isListenRequest_TargetChange() {}
 
 func (m *ListenRequest) GetTargetChange() isListenRequest_TargetChange {
@@ -1915,13 +1942,6 @@ func (m *ListenRequest) GetTargetChange() isListenRequest_TargetChange {
 		return m.TargetChange
 	}
 	return nil
-}
-
-func (m *ListenRequest) GetDatabase() string {
-	if m != nil {
-		return m.Database
-	}
-	return ""
 }
 
 func (m *ListenRequest) GetAddTarget() *Target {
@@ -2061,24 +2081,32 @@ type isListenResponse_ResponseType interface {
 type ListenResponse_TargetChange struct {
 	TargetChange *TargetChange `protobuf:"bytes,2,opt,name=target_change,json=targetChange,proto3,oneof"`
 }
+
 type ListenResponse_DocumentChange struct {
 	DocumentChange *DocumentChange `protobuf:"bytes,3,opt,name=document_change,json=documentChange,proto3,oneof"`
 }
+
 type ListenResponse_DocumentDelete struct {
 	DocumentDelete *DocumentDelete `protobuf:"bytes,4,opt,name=document_delete,json=documentDelete,proto3,oneof"`
 }
+
 type ListenResponse_DocumentRemove struct {
 	DocumentRemove *DocumentRemove `protobuf:"bytes,6,opt,name=document_remove,json=documentRemove,proto3,oneof"`
 }
+
 type ListenResponse_Filter struct {
 	Filter *ExistenceFilter `protobuf:"bytes,5,opt,name=filter,proto3,oneof"`
 }
 
-func (*ListenResponse_TargetChange) isListenResponse_ResponseType()   {}
+func (*ListenResponse_TargetChange) isListenResponse_ResponseType() {}
+
 func (*ListenResponse_DocumentChange) isListenResponse_ResponseType() {}
+
 func (*ListenResponse_DocumentDelete) isListenResponse_ResponseType() {}
+
 func (*ListenResponse_DocumentRemove) isListenResponse_ResponseType() {}
-func (*ListenResponse_Filter) isListenResponse_ResponseType()         {}
+
+func (*ListenResponse_Filter) isListenResponse_ResponseType() {}
 
 func (m *ListenResponse) GetResponseType() isListenResponse_ResponseType {
 	if m != nil {
@@ -2313,37 +2341,22 @@ var xxx_messageInfo_Target proto.InternalMessageInfo
 type isTarget_TargetType interface {
 	isTarget_TargetType()
 }
-type isTarget_ResumeType interface {
-	isTarget_ResumeType()
-}
 
 type Target_Query struct {
 	Query *Target_QueryTarget `protobuf:"bytes,2,opt,name=query,proto3,oneof"`
 }
+
 type Target_Documents struct {
 	Documents *Target_DocumentsTarget `protobuf:"bytes,3,opt,name=documents,proto3,oneof"`
 }
-type Target_ResumeToken struct {
-	ResumeToken []byte `protobuf:"bytes,4,opt,name=resume_token,json=resumeToken,proto3,oneof"`
-}
-type Target_ReadTime struct {
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=read_time,json=readTime,proto3,oneof"`
-}
 
-func (*Target_Query) isTarget_TargetType()       {}
-func (*Target_Documents) isTarget_TargetType()   {}
-func (*Target_ResumeToken) isTarget_ResumeType() {}
-func (*Target_ReadTime) isTarget_ResumeType()    {}
+func (*Target_Query) isTarget_TargetType() {}
+
+func (*Target_Documents) isTarget_TargetType() {}
 
 func (m *Target) GetTargetType() isTarget_TargetType {
 	if m != nil {
 		return m.TargetType
-	}
-	return nil
-}
-func (m *Target) GetResumeType() isTarget_ResumeType {
-	if m != nil {
-		return m.ResumeType
 	}
 	return nil
 }
@@ -2358,6 +2371,29 @@ func (m *Target) GetQuery() *Target_QueryTarget {
 func (m *Target) GetDocuments() *Target_DocumentsTarget {
 	if x, ok := m.GetTargetType().(*Target_Documents); ok {
 		return x.Documents
+	}
+	return nil
+}
+
+type isTarget_ResumeType interface {
+	isTarget_ResumeType()
+}
+
+type Target_ResumeToken struct {
+	ResumeToken []byte `protobuf:"bytes,4,opt,name=resume_token,json=resumeToken,proto3,oneof"`
+}
+
+type Target_ReadTime struct {
+	ReadTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=read_time,json=readTime,proto3,oneof"`
+}
+
+func (*Target_ResumeToken) isTarget_ResumeType() {}
+
+func (*Target_ReadTime) isTarget_ResumeType() {}
+
+func (m *Target) GetResumeType() isTarget_ResumeType {
+	if m != nil {
+		return m.ResumeType
 	}
 	return nil
 }
@@ -2596,6 +2632,13 @@ func (m *Target_QueryTarget) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Target_QueryTarget proto.InternalMessageInfo
 
+func (m *Target_QueryTarget) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
 type isTarget_QueryTarget_QueryType interface {
 	isTarget_QueryTarget_QueryType()
 }
@@ -2611,13 +2654,6 @@ func (m *Target_QueryTarget) GetQueryType() isTarget_QueryTarget_QueryType {
 		return m.QueryType
 	}
 	return nil
-}
-
-func (m *Target_QueryTarget) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
 }
 
 func (m *Target_QueryTarget) GetStructuredQuery() *StructuredQuery {

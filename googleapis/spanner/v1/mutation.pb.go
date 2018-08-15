@@ -69,24 +69,32 @@ type isMutation_Operation interface {
 type Mutation_Insert struct {
 	Insert *Mutation_Write `protobuf:"bytes,1,opt,name=insert,proto3,oneof"`
 }
+
 type Mutation_Update struct {
 	Update *Mutation_Write `protobuf:"bytes,2,opt,name=update,proto3,oneof"`
 }
+
 type Mutation_InsertOrUpdate struct {
 	InsertOrUpdate *Mutation_Write `protobuf:"bytes,3,opt,name=insert_or_update,json=insertOrUpdate,proto3,oneof"`
 }
+
 type Mutation_Replace struct {
 	Replace *Mutation_Write `protobuf:"bytes,4,opt,name=replace,proto3,oneof"`
 }
+
 type Mutation_Delete_ struct {
 	Delete *Mutation_Delete `protobuf:"bytes,5,opt,name=delete,proto3,oneof"`
 }
 
-func (*Mutation_Insert) isMutation_Operation()         {}
-func (*Mutation_Update) isMutation_Operation()         {}
+func (*Mutation_Insert) isMutation_Operation() {}
+
+func (*Mutation_Update) isMutation_Operation() {}
+
 func (*Mutation_InsertOrUpdate) isMutation_Operation() {}
-func (*Mutation_Replace) isMutation_Operation()        {}
-func (*Mutation_Delete_) isMutation_Operation()        {}
+
+func (*Mutation_Replace) isMutation_Operation() {}
+
+func (*Mutation_Delete_) isMutation_Operation() {}
 
 func (m *Mutation) GetOperation() isMutation_Operation {
 	if m != nil {

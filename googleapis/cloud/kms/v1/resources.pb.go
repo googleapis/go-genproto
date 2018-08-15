@@ -82,10 +82,10 @@ var CryptoKeyVersion_CryptoKeyVersionState_name = map[int32]string{
 }
 var CryptoKeyVersion_CryptoKeyVersionState_value = map[string]int32{
 	"CRYPTO_KEY_VERSION_STATE_UNSPECIFIED": 0,
-	"ENABLED":           1,
-	"DISABLED":          2,
-	"DESTROYED":         3,
-	"DESTROY_SCHEDULED": 4,
+	"ENABLED":                              1,
+	"DISABLED":                             2,
+	"DESTROYED":                            3,
+	"DESTROY_SCHEDULED":                    4,
 }
 
 func (x CryptoKeyVersion_CryptoKeyVersionState) String() string {
@@ -213,23 +213,6 @@ func (m *CryptoKey) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CryptoKey proto.InternalMessageInfo
 
-type isCryptoKey_RotationSchedule interface {
-	isCryptoKey_RotationSchedule()
-}
-
-type CryptoKey_RotationPeriod struct {
-	RotationPeriod *duration.Duration `protobuf:"bytes,8,opt,name=rotation_period,json=rotationPeriod,proto3,oneof"`
-}
-
-func (*CryptoKey_RotationPeriod) isCryptoKey_RotationSchedule() {}
-
-func (m *CryptoKey) GetRotationSchedule() isCryptoKey_RotationSchedule {
-	if m != nil {
-		return m.RotationSchedule
-	}
-	return nil
-}
-
 func (m *CryptoKey) GetName() string {
 	if m != nil {
 		return m.Name
@@ -261,6 +244,23 @@ func (m *CryptoKey) GetCreateTime() *timestamp.Timestamp {
 func (m *CryptoKey) GetNextRotationTime() *timestamp.Timestamp {
 	if m != nil {
 		return m.NextRotationTime
+	}
+	return nil
+}
+
+type isCryptoKey_RotationSchedule interface {
+	isCryptoKey_RotationSchedule()
+}
+
+type CryptoKey_RotationPeriod struct {
+	RotationPeriod *duration.Duration `protobuf:"bytes,8,opt,name=rotation_period,json=rotationPeriod,proto3,oneof"`
+}
+
+func (*CryptoKey_RotationPeriod) isCryptoKey_RotationSchedule() {}
+
+func (m *CryptoKey) GetRotationSchedule() isCryptoKey_RotationSchedule {
+	if m != nil {
+		return m.RotationSchedule
 	}
 	return nil
 }

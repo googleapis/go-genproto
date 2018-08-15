@@ -155,8 +155,8 @@ var ScreenOutConfig_ScreenMode_name = map[int32]string{
 }
 var ScreenOutConfig_ScreenMode_value = map[string]int32{
 	"SCREEN_MODE_UNSPECIFIED": 0,
-	"OFF":     1,
-	"PLAYING": 3,
+	"OFF":                     1,
+	"PLAYING":                 3,
 }
 
 func (x ScreenOutConfig_ScreenMode) String() string {
@@ -276,11 +276,13 @@ type isAssistRequest_Type interface {
 type AssistRequest_Config struct {
 	Config *AssistConfig `protobuf:"bytes,1,opt,name=config,proto3,oneof"`
 }
+
 type AssistRequest_AudioIn struct {
 	AudioIn []byte `protobuf:"bytes,2,opt,name=audio_in,json=audioIn,proto3,oneof"`
 }
 
-func (*AssistRequest_Config) isAssistRequest_Type()  {}
+func (*AssistRequest_Config) isAssistRequest_Type() {}
+
 func (*AssistRequest_AudioIn) isAssistRequest_Type() {}
 
 func (m *AssistRequest) GetType() isAssistRequest_Type {
@@ -575,12 +577,14 @@ type isAssistConfig_Type interface {
 type AssistConfig_AudioInConfig struct {
 	AudioInConfig *AudioInConfig `protobuf:"bytes,1,opt,name=audio_in_config,json=audioInConfig,proto3,oneof"`
 }
+
 type AssistConfig_TextQuery struct {
 	TextQuery string `protobuf:"bytes,6,opt,name=text_query,json=textQuery,proto3,oneof"`
 }
 
 func (*AssistConfig_AudioInConfig) isAssistConfig_Type() {}
-func (*AssistConfig_TextQuery) isAssistConfig_Type()     {}
+
+func (*AssistConfig_TextQuery) isAssistConfig_Type() {}
 
 func (m *AssistConfig) GetType() isAssistConfig_Type {
 	if m != nil {

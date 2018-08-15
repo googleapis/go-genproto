@@ -602,37 +602,28 @@ var xxx_messageInfo_TransferSpec proto.InternalMessageInfo
 type isTransferSpec_DataSource interface {
 	isTransferSpec_DataSource()
 }
-type isTransferSpec_DataSink interface {
-	isTransferSpec_DataSink()
-}
 
 type TransferSpec_GcsDataSource struct {
 	GcsDataSource *GcsData `protobuf:"bytes,1,opt,name=gcs_data_source,json=gcsDataSource,proto3,oneof"`
 }
+
 type TransferSpec_AwsS3DataSource struct {
 	AwsS3DataSource *AwsS3Data `protobuf:"bytes,2,opt,name=aws_s3_data_source,json=awsS3DataSource,proto3,oneof"`
 }
+
 type TransferSpec_HttpDataSource struct {
 	HttpDataSource *HttpData `protobuf:"bytes,3,opt,name=http_data_source,json=httpDataSource,proto3,oneof"`
 }
-type TransferSpec_GcsDataSink struct {
-	GcsDataSink *GcsData `protobuf:"bytes,4,opt,name=gcs_data_sink,json=gcsDataSink,proto3,oneof"`
-}
 
-func (*TransferSpec_GcsDataSource) isTransferSpec_DataSource()   {}
+func (*TransferSpec_GcsDataSource) isTransferSpec_DataSource() {}
+
 func (*TransferSpec_AwsS3DataSource) isTransferSpec_DataSource() {}
-func (*TransferSpec_HttpDataSource) isTransferSpec_DataSource()  {}
-func (*TransferSpec_GcsDataSink) isTransferSpec_DataSink()       {}
+
+func (*TransferSpec_HttpDataSource) isTransferSpec_DataSource() {}
 
 func (m *TransferSpec) GetDataSource() isTransferSpec_DataSource {
 	if m != nil {
 		return m.DataSource
-	}
-	return nil
-}
-func (m *TransferSpec) GetDataSink() isTransferSpec_DataSink {
-	if m != nil {
-		return m.DataSink
 	}
 	return nil
 }
@@ -654,6 +645,23 @@ func (m *TransferSpec) GetAwsS3DataSource() *AwsS3Data {
 func (m *TransferSpec) GetHttpDataSource() *HttpData {
 	if x, ok := m.GetDataSource().(*TransferSpec_HttpDataSource); ok {
 		return x.HttpDataSource
+	}
+	return nil
+}
+
+type isTransferSpec_DataSink interface {
+	isTransferSpec_DataSink()
+}
+
+type TransferSpec_GcsDataSink struct {
+	GcsDataSink *GcsData `protobuf:"bytes,4,opt,name=gcs_data_sink,json=gcsDataSink,proto3,oneof"`
+}
+
+func (*TransferSpec_GcsDataSink) isTransferSpec_DataSink() {}
+
+func (m *TransferSpec) GetDataSink() isTransferSpec_DataSink {
+	if m != nil {
+		return m.DataSink
 	}
 	return nil
 }

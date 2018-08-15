@@ -768,48 +768,68 @@ type isIntent_Message_Message interface {
 type Intent_Message_Text_ struct {
 	Text *Intent_Message_Text `protobuf:"bytes,1,opt,name=text,proto3,oneof"`
 }
+
 type Intent_Message_Image_ struct {
 	Image *Intent_Message_Image `protobuf:"bytes,2,opt,name=image,proto3,oneof"`
 }
+
 type Intent_Message_QuickReplies_ struct {
 	QuickReplies *Intent_Message_QuickReplies `protobuf:"bytes,3,opt,name=quick_replies,json=quickReplies,proto3,oneof"`
 }
+
 type Intent_Message_Card_ struct {
 	Card *Intent_Message_Card `protobuf:"bytes,4,opt,name=card,proto3,oneof"`
 }
+
 type Intent_Message_Payload struct {
 	Payload *_struct.Struct `protobuf:"bytes,5,opt,name=payload,proto3,oneof"`
 }
+
 type Intent_Message_SimpleResponses_ struct {
 	SimpleResponses *Intent_Message_SimpleResponses `protobuf:"bytes,7,opt,name=simple_responses,json=simpleResponses,proto3,oneof"`
 }
+
 type Intent_Message_BasicCard_ struct {
 	BasicCard *Intent_Message_BasicCard `protobuf:"bytes,8,opt,name=basic_card,json=basicCard,proto3,oneof"`
 }
+
 type Intent_Message_Suggestions_ struct {
 	Suggestions *Intent_Message_Suggestions `protobuf:"bytes,9,opt,name=suggestions,proto3,oneof"`
 }
+
 type Intent_Message_LinkOutSuggestion_ struct {
 	LinkOutSuggestion *Intent_Message_LinkOutSuggestion `protobuf:"bytes,10,opt,name=link_out_suggestion,json=linkOutSuggestion,proto3,oneof"`
 }
+
 type Intent_Message_ListSelect_ struct {
 	ListSelect *Intent_Message_ListSelect `protobuf:"bytes,11,opt,name=list_select,json=listSelect,proto3,oneof"`
 }
+
 type Intent_Message_CarouselSelect_ struct {
 	CarouselSelect *Intent_Message_CarouselSelect `protobuf:"bytes,12,opt,name=carousel_select,json=carouselSelect,proto3,oneof"`
 }
 
-func (*Intent_Message_Text_) isIntent_Message_Message()              {}
-func (*Intent_Message_Image_) isIntent_Message_Message()             {}
-func (*Intent_Message_QuickReplies_) isIntent_Message_Message()      {}
-func (*Intent_Message_Card_) isIntent_Message_Message()              {}
-func (*Intent_Message_Payload) isIntent_Message_Message()            {}
-func (*Intent_Message_SimpleResponses_) isIntent_Message_Message()   {}
-func (*Intent_Message_BasicCard_) isIntent_Message_Message()         {}
-func (*Intent_Message_Suggestions_) isIntent_Message_Message()       {}
+func (*Intent_Message_Text_) isIntent_Message_Message() {}
+
+func (*Intent_Message_Image_) isIntent_Message_Message() {}
+
+func (*Intent_Message_QuickReplies_) isIntent_Message_Message() {}
+
+func (*Intent_Message_Card_) isIntent_Message_Message() {}
+
+func (*Intent_Message_Payload) isIntent_Message_Message() {}
+
+func (*Intent_Message_SimpleResponses_) isIntent_Message_Message() {}
+
+func (*Intent_Message_BasicCard_) isIntent_Message_Message() {}
+
+func (*Intent_Message_Suggestions_) isIntent_Message_Message() {}
+
 func (*Intent_Message_LinkOutSuggestion_) isIntent_Message_Message() {}
-func (*Intent_Message_ListSelect_) isIntent_Message_Message()        {}
-func (*Intent_Message_CarouselSelect_) isIntent_Message_Message()    {}
+
+func (*Intent_Message_ListSelect_) isIntent_Message_Message() {}
+
+func (*Intent_Message_CarouselSelect_) isIntent_Message_Message() {}
 
 func (m *Intent_Message) GetMessage() isIntent_Message_Message {
 	if m != nil {
@@ -2565,6 +2585,13 @@ func (m *BatchUpdateIntentsRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BatchUpdateIntentsRequest proto.InternalMessageInfo
 
+func (m *BatchUpdateIntentsRequest) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
 type isBatchUpdateIntentsRequest_IntentBatch interface {
 	isBatchUpdateIntentsRequest_IntentBatch()
 }
@@ -2572,11 +2599,13 @@ type isBatchUpdateIntentsRequest_IntentBatch interface {
 type BatchUpdateIntentsRequest_IntentBatchUri struct {
 	IntentBatchUri string `protobuf:"bytes,2,opt,name=intent_batch_uri,json=intentBatchUri,proto3,oneof"`
 }
+
 type BatchUpdateIntentsRequest_IntentBatchInline struct {
 	IntentBatchInline *IntentBatch `protobuf:"bytes,3,opt,name=intent_batch_inline,json=intentBatchInline,proto3,oneof"`
 }
 
-func (*BatchUpdateIntentsRequest_IntentBatchUri) isBatchUpdateIntentsRequest_IntentBatch()    {}
+func (*BatchUpdateIntentsRequest_IntentBatchUri) isBatchUpdateIntentsRequest_IntentBatch() {}
+
 func (*BatchUpdateIntentsRequest_IntentBatchInline) isBatchUpdateIntentsRequest_IntentBatch() {}
 
 func (m *BatchUpdateIntentsRequest) GetIntentBatch() isBatchUpdateIntentsRequest_IntentBatch {
@@ -2584,13 +2613,6 @@ func (m *BatchUpdateIntentsRequest) GetIntentBatch() isBatchUpdateIntentsRequest
 		return m.IntentBatch
 	}
 	return nil
-}
-
-func (m *BatchUpdateIntentsRequest) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
 }
 
 func (m *BatchUpdateIntentsRequest) GetIntentBatchUri() string {

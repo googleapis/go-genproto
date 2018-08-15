@@ -47,9 +47,9 @@ var EntityResult_ResultType_name = map[int32]string{
 }
 var EntityResult_ResultType_value = map[string]int32{
 	"RESULT_TYPE_UNSPECIFIED": 0,
-	"FULL":       1,
-	"PROJECTION": 2,
-	"KEY_ONLY":   3,
+	"FULL":                    1,
+	"PROJECTION":              2,
+	"KEY_ONLY":                3,
 }
 
 func (x EntityResult_ResultType) String() string {
@@ -105,7 +105,7 @@ var CompositeFilter_Operator_name = map[int32]string{
 }
 var CompositeFilter_Operator_value = map[string]int32{
 	"OPERATOR_UNSPECIFIED": 0,
-	"AND": 1,
+	"AND":                  1,
 }
 
 func (x CompositeFilter_Operator) String() string {
@@ -604,12 +604,14 @@ type isFilter_FilterType interface {
 type Filter_CompositeFilter struct {
 	CompositeFilter *CompositeFilter `protobuf:"bytes,1,opt,name=composite_filter,json=compositeFilter,proto3,oneof"`
 }
+
 type Filter_PropertyFilter struct {
 	PropertyFilter *PropertyFilter `protobuf:"bytes,2,opt,name=property_filter,json=propertyFilter,proto3,oneof"`
 }
 
 func (*Filter_CompositeFilter) isFilter_FilterType() {}
-func (*Filter_PropertyFilter) isFilter_FilterType()  {}
+
+func (*Filter_PropertyFilter) isFilter_FilterType() {}
 
 func (m *Filter) GetFilterType() isFilter_FilterType {
 	if m != nil {
@@ -937,11 +939,13 @@ type isGqlQueryParameter_ParameterType interface {
 type GqlQueryParameter_Value struct {
 	Value *Value `protobuf:"bytes,2,opt,name=value,proto3,oneof"`
 }
+
 type GqlQueryParameter_Cursor struct {
 	Cursor []byte `protobuf:"bytes,3,opt,name=cursor,proto3,oneof"`
 }
 
-func (*GqlQueryParameter_Value) isGqlQueryParameter_ParameterType()  {}
+func (*GqlQueryParameter_Value) isGqlQueryParameter_ParameterType() {}
+
 func (*GqlQueryParameter_Cursor) isGqlQueryParameter_ParameterType() {}
 
 func (m *GqlQueryParameter) GetParameterType() isGqlQueryParameter_ParameterType {

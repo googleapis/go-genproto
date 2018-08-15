@@ -74,11 +74,13 @@ type isAnnotationPayload_Detail interface {
 type AnnotationPayload_Translation struct {
 	Translation *TranslationAnnotation `protobuf:"bytes,2,opt,name=translation,proto3,oneof"`
 }
+
 type AnnotationPayload_Classification struct {
 	Classification *ClassificationAnnotation `protobuf:"bytes,3,opt,name=classification,proto3,oneof"`
 }
 
-func (*AnnotationPayload_Translation) isAnnotationPayload_Detail()    {}
+func (*AnnotationPayload_Translation) isAnnotationPayload_Detail() {}
+
 func (*AnnotationPayload_Classification) isAnnotationPayload_Detail() {}
 
 func (m *AnnotationPayload) GetDetail() isAnnotationPayload_Detail {

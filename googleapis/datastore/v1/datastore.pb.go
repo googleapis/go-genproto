@@ -253,27 +253,6 @@ func (m *RunQueryRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RunQueryRequest proto.InternalMessageInfo
 
-type isRunQueryRequest_QueryType interface {
-	isRunQueryRequest_QueryType()
-}
-
-type RunQueryRequest_Query struct {
-	Query *Query `protobuf:"bytes,3,opt,name=query,proto3,oneof"`
-}
-type RunQueryRequest_GqlQuery struct {
-	GqlQuery *GqlQuery `protobuf:"bytes,7,opt,name=gql_query,json=gqlQuery,proto3,oneof"`
-}
-
-func (*RunQueryRequest_Query) isRunQueryRequest_QueryType()    {}
-func (*RunQueryRequest_GqlQuery) isRunQueryRequest_QueryType() {}
-
-func (m *RunQueryRequest) GetQueryType() isRunQueryRequest_QueryType {
-	if m != nil {
-		return m.QueryType
-	}
-	return nil
-}
-
 func (m *RunQueryRequest) GetProjectId() string {
 	if m != nil {
 		return m.ProjectId
@@ -291,6 +270,29 @@ func (m *RunQueryRequest) GetPartitionId() *PartitionId {
 func (m *RunQueryRequest) GetReadOptions() *ReadOptions {
 	if m != nil {
 		return m.ReadOptions
+	}
+	return nil
+}
+
+type isRunQueryRequest_QueryType interface {
+	isRunQueryRequest_QueryType()
+}
+
+type RunQueryRequest_Query struct {
+	Query *Query `protobuf:"bytes,3,opt,name=query,proto3,oneof"`
+}
+
+type RunQueryRequest_GqlQuery struct {
+	GqlQuery *GqlQuery `protobuf:"bytes,7,opt,name=gql_query,json=gqlQuery,proto3,oneof"`
+}
+
+func (*RunQueryRequest_Query) isRunQueryRequest_QueryType() {}
+
+func (*RunQueryRequest_GqlQuery) isRunQueryRequest_QueryType() {}
+
+func (m *RunQueryRequest) GetQueryType() isRunQueryRequest_QueryType {
+	if m != nil {
+		return m.QueryType
 	}
 	return nil
 }
@@ -657,6 +659,20 @@ func (m *CommitRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommitRequest proto.InternalMessageInfo
 
+func (m *CommitRequest) GetProjectId() string {
+	if m != nil {
+		return m.ProjectId
+	}
+	return ""
+}
+
+func (m *CommitRequest) GetMode() CommitRequest_Mode {
+	if m != nil {
+		return m.Mode
+	}
+	return CommitRequest_MODE_UNSPECIFIED
+}
+
 type isCommitRequest_TransactionSelector interface {
 	isCommitRequest_TransactionSelector()
 }
@@ -672,20 +688,6 @@ func (m *CommitRequest) GetTransactionSelector() isCommitRequest_TransactionSele
 		return m.TransactionSelector
 	}
 	return nil
-}
-
-func (m *CommitRequest) GetProjectId() string {
-	if m != nil {
-		return m.ProjectId
-	}
-	return ""
-}
-
-func (m *CommitRequest) GetMode() CommitRequest_Mode {
-	if m != nil {
-		return m.Mode
-	}
-	return CommitRequest_MODE_UNSPECIFIED
 }
 
 func (m *CommitRequest) GetTransaction() []byte {
@@ -1041,41 +1043,34 @@ var xxx_messageInfo_Mutation proto.InternalMessageInfo
 type isMutation_Operation interface {
 	isMutation_Operation()
 }
-type isMutation_ConflictDetectionStrategy interface {
-	isMutation_ConflictDetectionStrategy()
-}
 
 type Mutation_Insert struct {
 	Insert *Entity `protobuf:"bytes,4,opt,name=insert,proto3,oneof"`
 }
+
 type Mutation_Update struct {
 	Update *Entity `protobuf:"bytes,5,opt,name=update,proto3,oneof"`
 }
+
 type Mutation_Upsert struct {
 	Upsert *Entity `protobuf:"bytes,6,opt,name=upsert,proto3,oneof"`
 }
+
 type Mutation_Delete struct {
 	Delete *Key `protobuf:"bytes,7,opt,name=delete,proto3,oneof"`
 }
-type Mutation_BaseVersion struct {
-	BaseVersion int64 `protobuf:"varint,8,opt,name=base_version,json=baseVersion,proto3,oneof"`
-}
 
-func (*Mutation_Insert) isMutation_Operation()                      {}
-func (*Mutation_Update) isMutation_Operation()                      {}
-func (*Mutation_Upsert) isMutation_Operation()                      {}
-func (*Mutation_Delete) isMutation_Operation()                      {}
-func (*Mutation_BaseVersion) isMutation_ConflictDetectionStrategy() {}
+func (*Mutation_Insert) isMutation_Operation() {}
+
+func (*Mutation_Update) isMutation_Operation() {}
+
+func (*Mutation_Upsert) isMutation_Operation() {}
+
+func (*Mutation_Delete) isMutation_Operation() {}
 
 func (m *Mutation) GetOperation() isMutation_Operation {
 	if m != nil {
 		return m.Operation
-	}
-	return nil
-}
-func (m *Mutation) GetConflictDetectionStrategy() isMutation_ConflictDetectionStrategy {
-	if m != nil {
-		return m.ConflictDetectionStrategy
 	}
 	return nil
 }
@@ -1104,6 +1099,23 @@ func (m *Mutation) GetUpsert() *Entity {
 func (m *Mutation) GetDelete() *Key {
 	if x, ok := m.GetOperation().(*Mutation_Delete); ok {
 		return x.Delete
+	}
+	return nil
+}
+
+type isMutation_ConflictDetectionStrategy interface {
+	isMutation_ConflictDetectionStrategy()
+}
+
+type Mutation_BaseVersion struct {
+	BaseVersion int64 `protobuf:"varint,8,opt,name=base_version,json=baseVersion,proto3,oneof"`
+}
+
+func (*Mutation_BaseVersion) isMutation_ConflictDetectionStrategy() {}
+
+func (m *Mutation) GetConflictDetectionStrategy() isMutation_ConflictDetectionStrategy {
+	if m != nil {
+		return m.ConflictDetectionStrategy
 	}
 	return nil
 }
@@ -1363,12 +1375,14 @@ type isReadOptions_ConsistencyType interface {
 type ReadOptions_ReadConsistency_ struct {
 	ReadConsistency ReadOptions_ReadConsistency `protobuf:"varint,1,opt,name=read_consistency,json=readConsistency,proto3,enum=google.datastore.v1.ReadOptions_ReadConsistency,oneof"`
 }
+
 type ReadOptions_Transaction struct {
 	Transaction []byte `protobuf:"bytes,2,opt,name=transaction,proto3,oneof"`
 }
 
 func (*ReadOptions_ReadConsistency_) isReadOptions_ConsistencyType() {}
-func (*ReadOptions_Transaction) isReadOptions_ConsistencyType()      {}
+
+func (*ReadOptions_Transaction) isReadOptions_ConsistencyType() {}
 
 func (m *ReadOptions) GetConsistencyType() isReadOptions_ConsistencyType {
 	if m != nil {
@@ -1505,12 +1519,14 @@ type isTransactionOptions_Mode interface {
 type TransactionOptions_ReadWrite_ struct {
 	ReadWrite *TransactionOptions_ReadWrite `protobuf:"bytes,1,opt,name=read_write,json=readWrite,proto3,oneof"`
 }
+
 type TransactionOptions_ReadOnly_ struct {
 	ReadOnly *TransactionOptions_ReadOnly `protobuf:"bytes,2,opt,name=read_only,json=readOnly,proto3,oneof"`
 }
 
 func (*TransactionOptions_ReadWrite_) isTransactionOptions_Mode() {}
-func (*TransactionOptions_ReadOnly_) isTransactionOptions_Mode()  {}
+
+func (*TransactionOptions_ReadOnly_) isTransactionOptions_Mode() {}
 
 func (m *TransactionOptions) GetMode() isTransactionOptions_Mode {
 	if m != nil {

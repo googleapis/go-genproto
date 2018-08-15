@@ -80,27 +80,6 @@ func (m *Operation) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Operation proto.InternalMessageInfo
 
-type isOperation_Result interface {
-	isOperation_Result()
-}
-
-type Operation_Error struct {
-	Error *status.Status `protobuf:"bytes,4,opt,name=error,proto3,oneof"`
-}
-type Operation_Response struct {
-	Response *any.Any `protobuf:"bytes,5,opt,name=response,proto3,oneof"`
-}
-
-func (*Operation_Error) isOperation_Result()    {}
-func (*Operation_Response) isOperation_Result() {}
-
-func (m *Operation) GetResult() isOperation_Result {
-	if m != nil {
-		return m.Result
-	}
-	return nil
-}
-
 func (m *Operation) GetName() string {
 	if m != nil {
 		return m.Name
@@ -120,6 +99,29 @@ func (m *Operation) GetDone() bool {
 		return m.Done
 	}
 	return false
+}
+
+type isOperation_Result interface {
+	isOperation_Result()
+}
+
+type Operation_Error struct {
+	Error *status.Status `protobuf:"bytes,4,opt,name=error,proto3,oneof"`
+}
+
+type Operation_Response struct {
+	Response *any.Any `protobuf:"bytes,5,opt,name=response,proto3,oneof"`
+}
+
+func (*Operation_Error) isOperation_Result() {}
+
+func (*Operation_Response) isOperation_Result() {}
+
+func (m *Operation) GetResult() isOperation_Result {
+	if m != nil {
+		return m.Result
+	}
+	return nil
 }
 
 func (m *Operation) GetError() *status.Status {

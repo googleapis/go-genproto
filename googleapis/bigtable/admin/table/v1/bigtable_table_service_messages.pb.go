@@ -439,6 +439,13 @@ func (m *BulkDeleteRowsRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BulkDeleteRowsRequest proto.InternalMessageInfo
 
+func (m *BulkDeleteRowsRequest) GetTableName() string {
+	if m != nil {
+		return m.TableName
+	}
+	return ""
+}
+
 type isBulkDeleteRowsRequest_Target interface {
 	isBulkDeleteRowsRequest_Target()
 }
@@ -446,11 +453,13 @@ type isBulkDeleteRowsRequest_Target interface {
 type BulkDeleteRowsRequest_RowKeyPrefix struct {
 	RowKeyPrefix []byte `protobuf:"bytes,2,opt,name=row_key_prefix,json=rowKeyPrefix,proto3,oneof"`
 }
+
 type BulkDeleteRowsRequest_DeleteAllDataFromTable struct {
 	DeleteAllDataFromTable bool `protobuf:"varint,3,opt,name=delete_all_data_from_table,json=deleteAllDataFromTable,proto3,oneof"`
 }
 
-func (*BulkDeleteRowsRequest_RowKeyPrefix) isBulkDeleteRowsRequest_Target()           {}
+func (*BulkDeleteRowsRequest_RowKeyPrefix) isBulkDeleteRowsRequest_Target() {}
+
 func (*BulkDeleteRowsRequest_DeleteAllDataFromTable) isBulkDeleteRowsRequest_Target() {}
 
 func (m *BulkDeleteRowsRequest) GetTarget() isBulkDeleteRowsRequest_Target {
@@ -458,13 +467,6 @@ func (m *BulkDeleteRowsRequest) GetTarget() isBulkDeleteRowsRequest_Target {
 		return m.Target
 	}
 	return nil
-}
-
-func (m *BulkDeleteRowsRequest) GetTableName() string {
-	if m != nil {
-		return m.TableName
-	}
-	return ""
 }
 
 func (m *BulkDeleteRowsRequest) GetRowKeyPrefix() []byte {

@@ -188,6 +188,13 @@ func (m *Queue) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Queue proto.InternalMessageInfo
 
+func (m *Queue) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type isQueue_TargetType interface {
 	isQueue_TargetType()
 }
@@ -195,25 +202,20 @@ type isQueue_TargetType interface {
 type Queue_AppEngineHttpTarget struct {
 	AppEngineHttpTarget *AppEngineHttpTarget `protobuf:"bytes,3,opt,name=app_engine_http_target,json=appEngineHttpTarget,proto3,oneof"`
 }
+
 type Queue_PullTarget struct {
 	PullTarget *PullTarget `protobuf:"bytes,4,opt,name=pull_target,json=pullTarget,proto3,oneof"`
 }
 
 func (*Queue_AppEngineHttpTarget) isQueue_TargetType() {}
-func (*Queue_PullTarget) isQueue_TargetType()          {}
+
+func (*Queue_PullTarget) isQueue_TargetType() {}
 
 func (m *Queue) GetTargetType() isQueue_TargetType {
 	if m != nil {
 		return m.TargetType
 	}
 	return nil
-}
-
-func (m *Queue) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
 }
 
 func (m *Queue) GetAppEngineHttpTarget() *AppEngineHttpTarget {
@@ -594,11 +596,13 @@ type isRetryConfig_NumAttempts interface {
 type RetryConfig_MaxAttempts struct {
 	MaxAttempts int32 `protobuf:"varint,1,opt,name=max_attempts,json=maxAttempts,proto3,oneof"`
 }
+
 type RetryConfig_UnlimitedAttempts struct {
 	UnlimitedAttempts bool `protobuf:"varint,2,opt,name=unlimited_attempts,json=unlimitedAttempts,proto3,oneof"`
 }
 
-func (*RetryConfig_MaxAttempts) isRetryConfig_NumAttempts()       {}
+func (*RetryConfig_MaxAttempts) isRetryConfig_NumAttempts() {}
+
 func (*RetryConfig_UnlimitedAttempts) isRetryConfig_NumAttempts() {}
 
 func (m *RetryConfig) GetNumAttempts() isRetryConfig_NumAttempts {

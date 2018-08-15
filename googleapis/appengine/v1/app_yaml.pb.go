@@ -405,6 +405,13 @@ func (m *UrlMap) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UrlMap proto.InternalMessageInfo
 
+func (m *UrlMap) GetUrlRegex() string {
+	if m != nil {
+		return m.UrlRegex
+	}
+	return ""
+}
+
 type isUrlMap_HandlerType interface {
 	isUrlMap_HandlerType()
 }
@@ -412,15 +419,19 @@ type isUrlMap_HandlerType interface {
 type UrlMap_StaticFiles struct {
 	StaticFiles *StaticFilesHandler `protobuf:"bytes,2,opt,name=static_files,json=staticFiles,proto3,oneof"`
 }
+
 type UrlMap_Script struct {
 	Script *ScriptHandler `protobuf:"bytes,3,opt,name=script,proto3,oneof"`
 }
+
 type UrlMap_ApiEndpoint struct {
 	ApiEndpoint *ApiEndpointHandler `protobuf:"bytes,4,opt,name=api_endpoint,json=apiEndpoint,proto3,oneof"`
 }
 
 func (*UrlMap_StaticFiles) isUrlMap_HandlerType() {}
-func (*UrlMap_Script) isUrlMap_HandlerType()      {}
+
+func (*UrlMap_Script) isUrlMap_HandlerType() {}
+
 func (*UrlMap_ApiEndpoint) isUrlMap_HandlerType() {}
 
 func (m *UrlMap) GetHandlerType() isUrlMap_HandlerType {
@@ -428,13 +439,6 @@ func (m *UrlMap) GetHandlerType() isUrlMap_HandlerType {
 		return m.HandlerType
 	}
 	return nil
-}
-
-func (m *UrlMap) GetUrlRegex() string {
-	if m != nil {
-		return m.UrlRegex
-	}
-	return ""
 }
 
 func (m *UrlMap) GetStaticFiles() *StaticFilesHandler {

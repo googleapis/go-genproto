@@ -399,16 +399,20 @@ type isDependency_Resource interface {
 type Dependency_Target struct {
 	Target string `protobuf:"bytes,1,opt,name=target,proto3,oneof"`
 }
+
 type Dependency_ConfiguredTarget struct {
 	ConfiguredTarget string `protobuf:"bytes,2,opt,name=configured_target,json=configuredTarget,proto3,oneof"`
 }
+
 type Dependency_Action struct {
 	Action string `protobuf:"bytes,3,opt,name=action,proto3,oneof"`
 }
 
-func (*Dependency_Target) isDependency_Resource()           {}
+func (*Dependency_Target) isDependency_Resource() {}
+
 func (*Dependency_ConfiguredTarget) isDependency_Resource() {}
-func (*Dependency_Action) isDependency_Resource()           {}
+
+func (*Dependency_Action) isDependency_Resource() {}
 
 func (m *Dependency) GetResource() isDependency_Resource {
 	if m != nil {

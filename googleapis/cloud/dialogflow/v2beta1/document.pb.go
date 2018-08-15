@@ -53,8 +53,8 @@ var Document_KnowledgeType_name = map[int32]string{
 }
 var Document_KnowledgeType_value = map[string]int32{
 	"KNOWLEDGE_TYPE_UNSPECIFIED": 0,
-	"FAQ":           1,
-	"EXTRACTIVE_QA": 2,
+	"FAQ":                        1,
+	"EXTRACTIVE_QA":              2,
 }
 
 func (x Document_KnowledgeType) String() string {
@@ -147,27 +147,6 @@ func (m *Document) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Document proto.InternalMessageInfo
 
-type isDocument_Source interface {
-	isDocument_Source()
-}
-
-type Document_ContentUri struct {
-	ContentUri string `protobuf:"bytes,5,opt,name=content_uri,json=contentUri,proto3,oneof"`
-}
-type Document_Content struct {
-	Content string `protobuf:"bytes,6,opt,name=content,proto3,oneof"`
-}
-
-func (*Document_ContentUri) isDocument_Source() {}
-func (*Document_Content) isDocument_Source()    {}
-
-func (m *Document) GetSource() isDocument_Source {
-	if m != nil {
-		return m.Source
-	}
-	return nil
-}
-
 func (m *Document) GetName() string {
 	if m != nil {
 		return m.Name
@@ -192,6 +171,29 @@ func (m *Document) GetMimeType() string {
 func (m *Document) GetKnowledgeTypes() []Document_KnowledgeType {
 	if m != nil {
 		return m.KnowledgeTypes
+	}
+	return nil
+}
+
+type isDocument_Source interface {
+	isDocument_Source()
+}
+
+type Document_ContentUri struct {
+	ContentUri string `protobuf:"bytes,5,opt,name=content_uri,json=contentUri,proto3,oneof"`
+}
+
+type Document_Content struct {
+	Content string `protobuf:"bytes,6,opt,name=content,proto3,oneof"`
+}
+
+func (*Document_ContentUri) isDocument_Source() {}
+
+func (*Document_Content) isDocument_Source() {}
+
+func (m *Document) GetSource() isDocument_Source {
+	if m != nil {
+		return m.Source
 	}
 	return nil
 }

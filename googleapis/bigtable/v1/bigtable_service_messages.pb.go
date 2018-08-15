@@ -73,6 +73,13 @@ func (m *ReadRowsRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ReadRowsRequest proto.InternalMessageInfo
 
+func (m *ReadRowsRequest) GetTableName() string {
+	if m != nil {
+		return m.TableName
+	}
+	return ""
+}
+
 type isReadRowsRequest_Target interface {
 	isReadRowsRequest_Target()
 }
@@ -80,29 +87,26 @@ type isReadRowsRequest_Target interface {
 type ReadRowsRequest_RowKey struct {
 	RowKey []byte `protobuf:"bytes,2,opt,name=row_key,json=rowKey,proto3,oneof"`
 }
+
 type ReadRowsRequest_RowRange struct {
 	RowRange *RowRange `protobuf:"bytes,3,opt,name=row_range,json=rowRange,proto3,oneof"`
 }
+
 type ReadRowsRequest_RowSet struct {
 	RowSet *RowSet `protobuf:"bytes,8,opt,name=row_set,json=rowSet,proto3,oneof"`
 }
 
-func (*ReadRowsRequest_RowKey) isReadRowsRequest_Target()   {}
+func (*ReadRowsRequest_RowKey) isReadRowsRequest_Target() {}
+
 func (*ReadRowsRequest_RowRange) isReadRowsRequest_Target() {}
-func (*ReadRowsRequest_RowSet) isReadRowsRequest_Target()   {}
+
+func (*ReadRowsRequest_RowSet) isReadRowsRequest_Target() {}
 
 func (m *ReadRowsRequest) GetTarget() isReadRowsRequest_Target {
 	if m != nil {
 		return m.Target
 	}
 	return nil
-}
-
-func (m *ReadRowsRequest) GetTableName() string {
-	if m != nil {
-		return m.TableName
-	}
-	return ""
 }
 
 func (m *ReadRowsRequest) GetRowKey() []byte {
@@ -331,16 +335,20 @@ type isReadRowsResponse_Chunk_Chunk interface {
 type ReadRowsResponse_Chunk_RowContents struct {
 	RowContents *Family `protobuf:"bytes,1,opt,name=row_contents,json=rowContents,proto3,oneof"`
 }
+
 type ReadRowsResponse_Chunk_ResetRow struct {
 	ResetRow bool `protobuf:"varint,2,opt,name=reset_row,json=resetRow,proto3,oneof"`
 }
+
 type ReadRowsResponse_Chunk_CommitRow struct {
 	CommitRow bool `protobuf:"varint,3,opt,name=commit_row,json=commitRow,proto3,oneof"`
 }
 
 func (*ReadRowsResponse_Chunk_RowContents) isReadRowsResponse_Chunk_Chunk() {}
-func (*ReadRowsResponse_Chunk_ResetRow) isReadRowsResponse_Chunk_Chunk()    {}
-func (*ReadRowsResponse_Chunk_CommitRow) isReadRowsResponse_Chunk_Chunk()   {}
+
+func (*ReadRowsResponse_Chunk_ResetRow) isReadRowsResponse_Chunk_Chunk() {}
+
+func (*ReadRowsResponse_Chunk_CommitRow) isReadRowsResponse_Chunk_Chunk() {}
 
 func (m *ReadRowsResponse_Chunk) GetChunk() isReadRowsResponse_Chunk_Chunk {
 	if m != nil {

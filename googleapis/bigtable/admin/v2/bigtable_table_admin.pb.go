@@ -264,6 +264,13 @@ func (m *DropRowRangeRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DropRowRangeRequest proto.InternalMessageInfo
 
+func (m *DropRowRangeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type isDropRowRangeRequest_Target interface {
 	isDropRowRangeRequest_Target()
 }
@@ -271,11 +278,13 @@ type isDropRowRangeRequest_Target interface {
 type DropRowRangeRequest_RowKeyPrefix struct {
 	RowKeyPrefix []byte `protobuf:"bytes,2,opt,name=row_key_prefix,json=rowKeyPrefix,proto3,oneof"`
 }
+
 type DropRowRangeRequest_DeleteAllDataFromTable struct {
 	DeleteAllDataFromTable bool `protobuf:"varint,3,opt,name=delete_all_data_from_table,json=deleteAllDataFromTable,proto3,oneof"`
 }
 
-func (*DropRowRangeRequest_RowKeyPrefix) isDropRowRangeRequest_Target()           {}
+func (*DropRowRangeRequest_RowKeyPrefix) isDropRowRangeRequest_Target() {}
+
 func (*DropRowRangeRequest_DeleteAllDataFromTable) isDropRowRangeRequest_Target() {}
 
 func (m *DropRowRangeRequest) GetTarget() isDropRowRangeRequest_Target {
@@ -283,13 +292,6 @@ func (m *DropRowRangeRequest) GetTarget() isDropRowRangeRequest_Target {
 		return m.Target
 	}
 	return nil
-}
-
-func (m *DropRowRangeRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
 }
 
 func (m *DropRowRangeRequest) GetRowKeyPrefix() []byte {
@@ -681,6 +683,13 @@ func (m *ModifyColumnFamiliesRequest_Modification) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ModifyColumnFamiliesRequest_Modification proto.InternalMessageInfo
 
+func (m *ModifyColumnFamiliesRequest_Modification) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
 type isModifyColumnFamiliesRequest_Modification_Mod interface {
 	isModifyColumnFamiliesRequest_Modification_Mod()
 }
@@ -688,17 +697,21 @@ type isModifyColumnFamiliesRequest_Modification_Mod interface {
 type ModifyColumnFamiliesRequest_Modification_Create struct {
 	Create *ColumnFamily `protobuf:"bytes,2,opt,name=create,proto3,oneof"`
 }
+
 type ModifyColumnFamiliesRequest_Modification_Update struct {
 	Update *ColumnFamily `protobuf:"bytes,3,opt,name=update,proto3,oneof"`
 }
+
 type ModifyColumnFamiliesRequest_Modification_Drop struct {
 	Drop bool `protobuf:"varint,4,opt,name=drop,proto3,oneof"`
 }
 
 func (*ModifyColumnFamiliesRequest_Modification_Create) isModifyColumnFamiliesRequest_Modification_Mod() {
 }
+
 func (*ModifyColumnFamiliesRequest_Modification_Update) isModifyColumnFamiliesRequest_Modification_Mod() {
 }
+
 func (*ModifyColumnFamiliesRequest_Modification_Drop) isModifyColumnFamiliesRequest_Modification_Mod() {
 }
 
@@ -707,13 +720,6 @@ func (m *ModifyColumnFamiliesRequest_Modification) GetMod() isModifyColumnFamili
 		return m.Mod
 	}
 	return nil
-}
-
-func (m *ModifyColumnFamiliesRequest_Modification) GetId() string {
-	if m != nil {
-		return m.Id
-	}
-	return ""
 }
 
 func (m *ModifyColumnFamiliesRequest_Modification) GetCreate() *ColumnFamily {
