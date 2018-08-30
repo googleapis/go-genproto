@@ -40,8 +40,8 @@ var Discovered_ContinuousAnalysis_name = map[int32]string{
 }
 var Discovered_ContinuousAnalysis_value = map[string]int32{
 	"CONTINUOUS_ANALYSIS_UNSPECIFIED": 0,
-	"ACTIVE":   1,
-	"INACTIVE": 2,
+	"ACTIVE":                          1,
+	"INACTIVE":                        2,
 }
 
 func (x Discovered_ContinuousAnalysis) String() string {

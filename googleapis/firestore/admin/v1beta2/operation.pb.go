@@ -91,8 +91,8 @@ var FieldOperationMetadata_IndexConfigDelta_ChangeType_name = map[int32]string{
 }
 var FieldOperationMetadata_IndexConfigDelta_ChangeType_value = map[string]int32{
 	"CHANGE_TYPE_UNSPECIFIED": 0,
-	"ADD":    1,
-	"REMOVE": 2,
+	"ADD":                     1,
+	"REMOVE":                  2,
 }
 
 func (x FieldOperationMetadata_IndexConfigDelta_ChangeType) String() string {
