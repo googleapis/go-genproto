@@ -44,7 +44,7 @@ func (m *SetBreakpointRequest) Reset()         { *m = SetBreakpointRequest{} }
 func (m *SetBreakpointRequest) String() string { return proto.CompactTextString(m) }
 func (*SetBreakpointRequest) ProtoMessage()    {}
 func (*SetBreakpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{0}
+	return fileDescriptor_682c945d4794189b, []int{0}
 }
 func (m *SetBreakpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetBreakpointRequest.Unmarshal(m, b)
@@ -52,8 +52,8 @@ func (m *SetBreakpointRequest) XXX_Unmarshal(b []byte) error {
 func (m *SetBreakpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SetBreakpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *SetBreakpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetBreakpointRequest.Merge(dst, src)
+func (m *SetBreakpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetBreakpointRequest.Merge(m, src)
 }
 func (m *SetBreakpointRequest) XXX_Size() int {
 	return xxx_messageInfo_SetBreakpointRequest.Size(m)
@@ -99,7 +99,7 @@ func (m *SetBreakpointResponse) Reset()         { *m = SetBreakpointResponse{} }
 func (m *SetBreakpointResponse) String() string { return proto.CompactTextString(m) }
 func (*SetBreakpointResponse) ProtoMessage()    {}
 func (*SetBreakpointResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{1}
+	return fileDescriptor_682c945d4794189b, []int{1}
 }
 func (m *SetBreakpointResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetBreakpointResponse.Unmarshal(m, b)
@@ -107,8 +107,8 @@ func (m *SetBreakpointResponse) XXX_Unmarshal(b []byte) error {
 func (m *SetBreakpointResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SetBreakpointResponse.Marshal(b, m, deterministic)
 }
-func (dst *SetBreakpointResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetBreakpointResponse.Merge(dst, src)
+func (m *SetBreakpointResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetBreakpointResponse.Merge(m, src)
 }
 func (m *SetBreakpointResponse) XXX_Size() int {
 	return xxx_messageInfo_SetBreakpointResponse.Size(m)
@@ -144,7 +144,7 @@ func (m *GetBreakpointRequest) Reset()         { *m = GetBreakpointRequest{} }
 func (m *GetBreakpointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetBreakpointRequest) ProtoMessage()    {}
 func (*GetBreakpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{2}
+	return fileDescriptor_682c945d4794189b, []int{2}
 }
 func (m *GetBreakpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetBreakpointRequest.Unmarshal(m, b)
@@ -152,8 +152,8 @@ func (m *GetBreakpointRequest) XXX_Unmarshal(b []byte) error {
 func (m *GetBreakpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetBreakpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetBreakpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetBreakpointRequest.Merge(dst, src)
+func (m *GetBreakpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetBreakpointRequest.Merge(m, src)
 }
 func (m *GetBreakpointRequest) XXX_Size() int {
 	return xxx_messageInfo_GetBreakpointRequest.Size(m)
@@ -199,7 +199,7 @@ func (m *GetBreakpointResponse) Reset()         { *m = GetBreakpointResponse{} }
 func (m *GetBreakpointResponse) String() string { return proto.CompactTextString(m) }
 func (*GetBreakpointResponse) ProtoMessage()    {}
 func (*GetBreakpointResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{3}
+	return fileDescriptor_682c945d4794189b, []int{3}
 }
 func (m *GetBreakpointResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetBreakpointResponse.Unmarshal(m, b)
@@ -207,8 +207,8 @@ func (m *GetBreakpointResponse) XXX_Unmarshal(b []byte) error {
 func (m *GetBreakpointResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetBreakpointResponse.Marshal(b, m, deterministic)
 }
-func (dst *GetBreakpointResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetBreakpointResponse.Merge(dst, src)
+func (m *GetBreakpointResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetBreakpointResponse.Merge(m, src)
 }
 func (m *GetBreakpointResponse) XXX_Size() int {
 	return xxx_messageInfo_GetBreakpointResponse.Size(m)
@@ -244,7 +244,7 @@ func (m *DeleteBreakpointRequest) Reset()         { *m = DeleteBreakpointRequest
 func (m *DeleteBreakpointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteBreakpointRequest) ProtoMessage()    {}
 func (*DeleteBreakpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{4}
+	return fileDescriptor_682c945d4794189b, []int{4}
 }
 func (m *DeleteBreakpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteBreakpointRequest.Unmarshal(m, b)
@@ -252,8 +252,8 @@ func (m *DeleteBreakpointRequest) XXX_Unmarshal(b []byte) error {
 func (m *DeleteBreakpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeleteBreakpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *DeleteBreakpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteBreakpointRequest.Merge(dst, src)
+func (m *DeleteBreakpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteBreakpointRequest.Merge(m, src)
 }
 func (m *DeleteBreakpointRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteBreakpointRequest.Size(m)
@@ -318,7 +318,7 @@ func (m *ListBreakpointsRequest) Reset()         { *m = ListBreakpointsRequest{}
 func (m *ListBreakpointsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListBreakpointsRequest) ProtoMessage()    {}
 func (*ListBreakpointsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{5}
+	return fileDescriptor_682c945d4794189b, []int{5}
 }
 func (m *ListBreakpointsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBreakpointsRequest.Unmarshal(m, b)
@@ -326,8 +326,8 @@ func (m *ListBreakpointsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListBreakpointsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListBreakpointsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListBreakpointsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListBreakpointsRequest.Merge(dst, src)
+func (m *ListBreakpointsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListBreakpointsRequest.Merge(m, src)
 }
 func (m *ListBreakpointsRequest) XXX_Size() int {
 	return xxx_messageInfo_ListBreakpointsRequest.Size(m)
@@ -405,7 +405,7 @@ func (m *ListBreakpointsRequest_BreakpointActionValue) String() string {
 }
 func (*ListBreakpointsRequest_BreakpointActionValue) ProtoMessage() {}
 func (*ListBreakpointsRequest_BreakpointActionValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{5, 0}
+	return fileDescriptor_682c945d4794189b, []int{5, 0}
 }
 func (m *ListBreakpointsRequest_BreakpointActionValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBreakpointsRequest_BreakpointActionValue.Unmarshal(m, b)
@@ -413,8 +413,8 @@ func (m *ListBreakpointsRequest_BreakpointActionValue) XXX_Unmarshal(b []byte) e
 func (m *ListBreakpointsRequest_BreakpointActionValue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListBreakpointsRequest_BreakpointActionValue.Marshal(b, m, deterministic)
 }
-func (dst *ListBreakpointsRequest_BreakpointActionValue) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListBreakpointsRequest_BreakpointActionValue.Merge(dst, src)
+func (m *ListBreakpointsRequest_BreakpointActionValue) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListBreakpointsRequest_BreakpointActionValue.Merge(m, src)
 }
 func (m *ListBreakpointsRequest_BreakpointActionValue) XXX_Size() int {
 	return xxx_messageInfo_ListBreakpointsRequest_BreakpointActionValue.Size(m)
@@ -451,7 +451,7 @@ func (m *ListBreakpointsResponse) Reset()         { *m = ListBreakpointsResponse
 func (m *ListBreakpointsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListBreakpointsResponse) ProtoMessage()    {}
 func (*ListBreakpointsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{6}
+	return fileDescriptor_682c945d4794189b, []int{6}
 }
 func (m *ListBreakpointsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBreakpointsResponse.Unmarshal(m, b)
@@ -459,8 +459,8 @@ func (m *ListBreakpointsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListBreakpointsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListBreakpointsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListBreakpointsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListBreakpointsResponse.Merge(dst, src)
+func (m *ListBreakpointsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListBreakpointsResponse.Merge(m, src)
 }
 func (m *ListBreakpointsResponse) XXX_Size() int {
 	return xxx_messageInfo_ListBreakpointsResponse.Size(m)
@@ -504,7 +504,7 @@ func (m *ListDebuggeesRequest) Reset()         { *m = ListDebuggeesRequest{} }
 func (m *ListDebuggeesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDebuggeesRequest) ProtoMessage()    {}
 func (*ListDebuggeesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{7}
+	return fileDescriptor_682c945d4794189b, []int{7}
 }
 func (m *ListDebuggeesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDebuggeesRequest.Unmarshal(m, b)
@@ -512,8 +512,8 @@ func (m *ListDebuggeesRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListDebuggeesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDebuggeesRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListDebuggeesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDebuggeesRequest.Merge(dst, src)
+func (m *ListDebuggeesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDebuggeesRequest.Merge(m, src)
 }
 func (m *ListDebuggeesRequest) XXX_Size() int {
 	return xxx_messageInfo_ListDebuggeesRequest.Size(m)
@@ -561,7 +561,7 @@ func (m *ListDebuggeesResponse) Reset()         { *m = ListDebuggeesResponse{} }
 func (m *ListDebuggeesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDebuggeesResponse) ProtoMessage()    {}
 func (*ListDebuggeesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_debugger_04096ebac35efe72, []int{8}
+	return fileDescriptor_682c945d4794189b, []int{8}
 }
 func (m *ListDebuggeesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDebuggeesResponse.Unmarshal(m, b)
@@ -569,8 +569,8 @@ func (m *ListDebuggeesResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListDebuggeesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDebuggeesResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListDebuggeesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDebuggeesResponse.Merge(dst, src)
+func (m *ListDebuggeesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDebuggeesResponse.Merge(m, src)
 }
 func (m *ListDebuggeesResponse) XXX_Size() int {
 	return xxx_messageInfo_ListDebuggeesResponse.Size(m)
@@ -816,10 +816,10 @@ var _Debugger2_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/clouddebugger/v2/debugger.proto", fileDescriptor_debugger_04096ebac35efe72)
+	proto.RegisterFile("google/devtools/clouddebugger/v2/debugger.proto", fileDescriptor_682c945d4794189b)
 }
 
-var fileDescriptor_debugger_04096ebac35efe72 = []byte{
+var fileDescriptor_682c945d4794189b = []byte{
 	// 797 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x56, 0xdd, 0x6a, 0xdb, 0x48,
 	0x14, 0x66, 0x9c, 0xcd, 0x8f, 0x8f, 0xe3, 0x24, 0x3b, 0xe4, 0x47, 0x78, 0xff, 0x8c, 0xf6, 0x87,

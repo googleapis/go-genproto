@@ -47,7 +47,7 @@ func (m *AnnotationPayload) Reset()         { *m = AnnotationPayload{} }
 func (m *AnnotationPayload) String() string { return proto.CompactTextString(m) }
 func (*AnnotationPayload) ProtoMessage()    {}
 func (*AnnotationPayload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_payload_ce47679ba5fa3ec6, []int{0}
+	return fileDescriptor_cb8fb684261d0460, []int{0}
 }
 func (m *AnnotationPayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationPayload.Unmarshal(m, b)
@@ -55,8 +55,8 @@ func (m *AnnotationPayload) XXX_Unmarshal(b []byte) error {
 func (m *AnnotationPayload) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_AnnotationPayload.Marshal(b, m, deterministic)
 }
-func (dst *AnnotationPayload) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AnnotationPayload.Merge(dst, src)
+func (m *AnnotationPayload) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AnnotationPayload.Merge(m, src)
 }
 func (m *AnnotationPayload) XXX_Size() int {
 	return xxx_messageInfo_AnnotationPayload.Size(m)
@@ -197,10 +197,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/annotation_payload.proto", fileDescriptor_annotation_payload_ce47679ba5fa3ec6)
+	proto.RegisterFile("google/cloud/automl/v1beta1/annotation_payload.proto", fileDescriptor_cb8fb684261d0460)
 }
 
-var fileDescriptor_annotation_payload_ce47679ba5fa3ec6 = []byte{
+var fileDescriptor_cb8fb684261d0460 = []byte{
 	// 297 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0x41, 0x4b, 0x33, 0x31,
 	0x10, 0x86, 0xbf, 0xed, 0x87, 0x45, 0x53, 0x11, 0xdd, 0xd3, 0x52, 0x05, 0xab, 0xa7, 0x1e, 0x34,

@@ -43,6 +43,7 @@ var PublishLifecycleEventRequest_ServiceLevel_name = map[int32]string{
 	0: "NONINTERACTIVE",
 	1: "INTERACTIVE",
 }
+
 var PublishLifecycleEventRequest_ServiceLevel_value = map[string]int32{
 	"NONINTERACTIVE": 0,
 	"INTERACTIVE":    1,
@@ -51,8 +52,9 @@ var PublishLifecycleEventRequest_ServiceLevel_value = map[string]int32{
 func (x PublishLifecycleEventRequest_ServiceLevel) String() string {
 	return proto.EnumName(PublishLifecycleEventRequest_ServiceLevel_name, int32(x))
 }
+
 func (PublishLifecycleEventRequest_ServiceLevel) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_publish_build_event_3702c05a2ef5b2cf, []int{0, 0}
+	return fileDescriptor_81da11d19c4841eb, []int{0, 0}
 }
 
 // Publishes 'lifecycle events' that update the high-level state of a build:
@@ -89,7 +91,7 @@ func (m *PublishLifecycleEventRequest) Reset()         { *m = PublishLifecycleEv
 func (m *PublishLifecycleEventRequest) String() string { return proto.CompactTextString(m) }
 func (*PublishLifecycleEventRequest) ProtoMessage()    {}
 func (*PublishLifecycleEventRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_publish_build_event_3702c05a2ef5b2cf, []int{0}
+	return fileDescriptor_81da11d19c4841eb, []int{0}
 }
 func (m *PublishLifecycleEventRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublishLifecycleEventRequest.Unmarshal(m, b)
@@ -97,8 +99,8 @@ func (m *PublishLifecycleEventRequest) XXX_Unmarshal(b []byte) error {
 func (m *PublishLifecycleEventRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_PublishLifecycleEventRequest.Marshal(b, m, deterministic)
 }
-func (dst *PublishLifecycleEventRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PublishLifecycleEventRequest.Merge(dst, src)
+func (m *PublishLifecycleEventRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PublishLifecycleEventRequest.Merge(m, src)
 }
 func (m *PublishLifecycleEventRequest) XXX_Size() int {
 	return xxx_messageInfo_PublishLifecycleEventRequest.Size(m)
@@ -160,7 +162,7 @@ func (m *PublishBuildToolEventStreamResponse) Reset()         { *m = PublishBuil
 func (m *PublishBuildToolEventStreamResponse) String() string { return proto.CompactTextString(m) }
 func (*PublishBuildToolEventStreamResponse) ProtoMessage()    {}
 func (*PublishBuildToolEventStreamResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_publish_build_event_3702c05a2ef5b2cf, []int{1}
+	return fileDescriptor_81da11d19c4841eb, []int{1}
 }
 func (m *PublishBuildToolEventStreamResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublishBuildToolEventStreamResponse.Unmarshal(m, b)
@@ -168,8 +170,8 @@ func (m *PublishBuildToolEventStreamResponse) XXX_Unmarshal(b []byte) error {
 func (m *PublishBuildToolEventStreamResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_PublishBuildToolEventStreamResponse.Marshal(b, m, deterministic)
 }
-func (dst *PublishBuildToolEventStreamResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PublishBuildToolEventStreamResponse.Merge(dst, src)
+func (m *PublishBuildToolEventStreamResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PublishBuildToolEventStreamResponse.Merge(m, src)
 }
 func (m *PublishBuildToolEventStreamResponse) XXX_Size() int {
 	return xxx_messageInfo_PublishBuildToolEventStreamResponse.Size(m)
@@ -214,7 +216,7 @@ func (m *OrderedBuildEvent) Reset()         { *m = OrderedBuildEvent{} }
 func (m *OrderedBuildEvent) String() string { return proto.CompactTextString(m) }
 func (*OrderedBuildEvent) ProtoMessage()    {}
 func (*OrderedBuildEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_publish_build_event_3702c05a2ef5b2cf, []int{2}
+	return fileDescriptor_81da11d19c4841eb, []int{2}
 }
 func (m *OrderedBuildEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OrderedBuildEvent.Unmarshal(m, b)
@@ -222,8 +224,8 @@ func (m *OrderedBuildEvent) XXX_Unmarshal(b []byte) error {
 func (m *OrderedBuildEvent) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_OrderedBuildEvent.Marshal(b, m, deterministic)
 }
-func (dst *OrderedBuildEvent) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_OrderedBuildEvent.Merge(dst, src)
+func (m *OrderedBuildEvent) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OrderedBuildEvent.Merge(m, src)
 }
 func (m *OrderedBuildEvent) XXX_Size() int {
 	return xxx_messageInfo_OrderedBuildEvent.Size(m)
@@ -281,7 +283,7 @@ func (m *PublishBuildToolEventStreamRequest) Reset()         { *m = PublishBuild
 func (m *PublishBuildToolEventStreamRequest) String() string { return proto.CompactTextString(m) }
 func (*PublishBuildToolEventStreamRequest) ProtoMessage()    {}
 func (*PublishBuildToolEventStreamRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_publish_build_event_3702c05a2ef5b2cf, []int{3}
+	return fileDescriptor_81da11d19c4841eb, []int{3}
 }
 func (m *PublishBuildToolEventStreamRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublishBuildToolEventStreamRequest.Unmarshal(m, b)
@@ -289,8 +291,8 @@ func (m *PublishBuildToolEventStreamRequest) XXX_Unmarshal(b []byte) error {
 func (m *PublishBuildToolEventStreamRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_PublishBuildToolEventStreamRequest.Marshal(b, m, deterministic)
 }
-func (dst *PublishBuildToolEventStreamRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PublishBuildToolEventStreamRequest.Merge(dst, src)
+func (m *PublishBuildToolEventStreamRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PublishBuildToolEventStreamRequest.Merge(m, src)
 }
 func (m *PublishBuildToolEventStreamRequest) XXX_Size() int {
 	return xxx_messageInfo_PublishBuildToolEventStreamRequest.Size(m)
@@ -510,10 +512,10 @@ var _PublishBuildEvent_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/build/v1/publish_build_event.proto", fileDescriptor_publish_build_event_3702c05a2ef5b2cf)
+	proto.RegisterFile("google/devtools/build/v1/publish_build_event.proto", fileDescriptor_81da11d19c4841eb)
 }
 
-var fileDescriptor_publish_build_event_3702c05a2ef5b2cf = []byte{
+var fileDescriptor_81da11d19c4841eb = []byte{
 	// 668 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x55, 0xcd, 0x6e, 0xd3, 0x4c,
 	0x14, 0xfd, 0x26, 0x69, 0xab, 0x2f, 0x93, 0x36, 0xa5, 0x03, 0x05, 0x93, 0xb6, 0x28, 0x32, 0x08,

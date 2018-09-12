@@ -122,7 +122,7 @@ func (m *LogEntry) Reset()         { *m = LogEntry{} }
 func (m *LogEntry) String() string { return proto.CompactTextString(m) }
 func (*LogEntry) ProtoMessage()    {}
 func (*LogEntry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_log_entry_72fcc25aa7b2cfea, []int{0}
+	return fileDescriptor_8ba2017251165146, []int{0}
 }
 func (m *LogEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogEntry.Unmarshal(m, b)
@@ -130,8 +130,8 @@ func (m *LogEntry) XXX_Unmarshal(b []byte) error {
 func (m *LogEntry) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_LogEntry.Marshal(b, m, deterministic)
 }
-func (dst *LogEntry) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LogEntry.Merge(dst, src)
+func (m *LogEntry) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LogEntry.Merge(m, src)
 }
 func (m *LogEntry) XXX_Size() int {
 	return xxx_messageInfo_LogEntry.Size(m)
@@ -395,7 +395,7 @@ func (m *LogEntryOperation) Reset()         { *m = LogEntryOperation{} }
 func (m *LogEntryOperation) String() string { return proto.CompactTextString(m) }
 func (*LogEntryOperation) ProtoMessage()    {}
 func (*LogEntryOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_log_entry_72fcc25aa7b2cfea, []int{1}
+	return fileDescriptor_8ba2017251165146, []int{1}
 }
 func (m *LogEntryOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogEntryOperation.Unmarshal(m, b)
@@ -403,8 +403,8 @@ func (m *LogEntryOperation) XXX_Unmarshal(b []byte) error {
 func (m *LogEntryOperation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_LogEntryOperation.Marshal(b, m, deterministic)
 }
-func (dst *LogEntryOperation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LogEntryOperation.Merge(dst, src)
+func (m *LogEntryOperation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LogEntryOperation.Merge(m, src)
 }
 func (m *LogEntryOperation) XXX_Size() int {
 	return xxx_messageInfo_LogEntryOperation.Size(m)
@@ -468,7 +468,7 @@ func (m *LogEntrySourceLocation) Reset()         { *m = LogEntrySourceLocation{}
 func (m *LogEntrySourceLocation) String() string { return proto.CompactTextString(m) }
 func (*LogEntrySourceLocation) ProtoMessage()    {}
 func (*LogEntrySourceLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_log_entry_72fcc25aa7b2cfea, []int{2}
+	return fileDescriptor_8ba2017251165146, []int{2}
 }
 func (m *LogEntrySourceLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogEntrySourceLocation.Unmarshal(m, b)
@@ -476,8 +476,8 @@ func (m *LogEntrySourceLocation) XXX_Unmarshal(b []byte) error {
 func (m *LogEntrySourceLocation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_LogEntrySourceLocation.Marshal(b, m, deterministic)
 }
-func (dst *LogEntrySourceLocation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LogEntrySourceLocation.Merge(dst, src)
+func (m *LogEntrySourceLocation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LogEntrySourceLocation.Merge(m, src)
 }
 func (m *LogEntrySourceLocation) XXX_Size() int {
 	return xxx_messageInfo_LogEntrySourceLocation.Size(m)
@@ -516,11 +516,9 @@ func init() {
 	proto.RegisterType((*LogEntrySourceLocation)(nil), "google.logging.v2.LogEntrySourceLocation")
 }
 
-func init() {
-	proto.RegisterFile("google/logging/v2/log_entry.proto", fileDescriptor_log_entry_72fcc25aa7b2cfea)
-}
+func init() { proto.RegisterFile("google/logging/v2/log_entry.proto", fileDescriptor_8ba2017251165146) }
 
-var fileDescriptor_log_entry_72fcc25aa7b2cfea = []byte{
+var fileDescriptor_8ba2017251165146 = []byte{
 	// 748 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x54, 0x5d, 0x6f, 0xf3, 0x34,
 	0x14, 0x7e, 0xd3, 0xbe, 0xb4, 0xa9, 0xdb, 0x77, 0x1f, 0xd6, 0x58, 0xb3, 0x6e, 0x88, 0xb2, 0xf1,

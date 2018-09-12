@@ -50,6 +50,7 @@ var Change_State_name = map[int32]string{
 	2: "INITIAL_STATE_SKIPPED",
 	3: "ERROR",
 }
+
 var Change_State_value = map[string]int32{
 	"EXISTS":                0,
 	"DOES_NOT_EXIST":        1,
@@ -60,8 +61,9 @@ var Change_State_value = map[string]int32{
 func (x Change_State) String() string {
 	return proto.EnumName(Change_State_name, int32(x))
 }
+
 func (Change_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_watch_40ce6762a23e7042, []int{2, 0}
+	return fileDescriptor_fbde036e07af626b, []int{2, 0}
 }
 
 // The message used by the client to register interest in an entity.
@@ -130,7 +132,7 @@ func (m *Request) Reset()         { *m = Request{} }
 func (m *Request) String() string { return proto.CompactTextString(m) }
 func (*Request) ProtoMessage()    {}
 func (*Request) Descriptor() ([]byte, []int) {
-	return fileDescriptor_watch_40ce6762a23e7042, []int{0}
+	return fileDescriptor_fbde036e07af626b, []int{0}
 }
 func (m *Request) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Request.Unmarshal(m, b)
@@ -138,8 +140,8 @@ func (m *Request) XXX_Unmarshal(b []byte) error {
 func (m *Request) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Request.Marshal(b, m, deterministic)
 }
-func (dst *Request) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Request.Merge(dst, src)
+func (m *Request) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Request.Merge(m, src)
 }
 func (m *Request) XXX_Size() int {
 	return xxx_messageInfo_Request.Size(m)
@@ -177,7 +179,7 @@ func (m *ChangeBatch) Reset()         { *m = ChangeBatch{} }
 func (m *ChangeBatch) String() string { return proto.CompactTextString(m) }
 func (*ChangeBatch) ProtoMessage()    {}
 func (*ChangeBatch) Descriptor() ([]byte, []int) {
-	return fileDescriptor_watch_40ce6762a23e7042, []int{1}
+	return fileDescriptor_fbde036e07af626b, []int{1}
 }
 func (m *ChangeBatch) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ChangeBatch.Unmarshal(m, b)
@@ -185,8 +187,8 @@ func (m *ChangeBatch) XXX_Unmarshal(b []byte) error {
 func (m *ChangeBatch) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ChangeBatch.Marshal(b, m, deterministic)
 }
-func (dst *ChangeBatch) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ChangeBatch.Merge(dst, src)
+func (m *ChangeBatch) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChangeBatch.Merge(m, src)
 }
 func (m *ChangeBatch) XXX_Size() int {
 	return xxx_messageInfo_ChangeBatch.Size(m)
@@ -234,7 +236,7 @@ func (m *Change) Reset()         { *m = Change{} }
 func (m *Change) String() string { return proto.CompactTextString(m) }
 func (*Change) ProtoMessage()    {}
 func (*Change) Descriptor() ([]byte, []int) {
-	return fileDescriptor_watch_40ce6762a23e7042, []int{2}
+	return fileDescriptor_fbde036e07af626b, []int{2}
 }
 func (m *Change) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Change.Unmarshal(m, b)
@@ -242,8 +244,8 @@ func (m *Change) XXX_Unmarshal(b []byte) error {
 func (m *Change) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Change.Marshal(b, m, deterministic)
 }
-func (dst *Change) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Change.Merge(dst, src)
+func (m *Change) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Change.Merge(m, src)
 }
 func (m *Change) XXX_Size() int {
 	return xxx_messageInfo_Change.Size(m)
@@ -397,11 +399,9 @@ var _Watcher_serviceDesc = grpc.ServiceDesc{
 	Metadata: "google/watcher/v1/watch.proto",
 }
 
-func init() {
-	proto.RegisterFile("google/watcher/v1/watch.proto", fileDescriptor_watch_40ce6762a23e7042)
-}
+func init() { proto.RegisterFile("google/watcher/v1/watch.proto", fileDescriptor_fbde036e07af626b) }
 
-var fileDescriptor_watch_40ce6762a23e7042 = []byte{
+var fileDescriptor_fbde036e07af626b = []byte{
 	// 449 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x52, 0xdd, 0x6e, 0xd3, 0x30,
 	0x14, 0xc6, 0xdd, 0x92, 0xd2, 0xd3, 0x31, 0x75, 0x16, 0x43, 0x69, 0x19, 0x10, 0x85, 0x9b, 0x5c,

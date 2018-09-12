@@ -55,6 +55,7 @@ var Task_View_name = map[int32]string{
 	1: "BASIC",
 	2: "FULL",
 }
+
 var Task_View_value = map[string]int32{
 	"VIEW_UNSPECIFIED": 0,
 	"BASIC":            1,
@@ -64,8 +65,9 @@ var Task_View_value = map[string]int32{
 func (x Task_View) String() string {
 	return proto.EnumName(Task_View_name, int32(x))
 }
+
 func (Task_View) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_task_949e38cc41c5c152, []int{0, 0}
+	return fileDescriptor_ef2a735969aa09d5, []int{0, 0}
 }
 
 // A unit of scheduled work.
@@ -134,7 +136,7 @@ func (m *Task) Reset()         { *m = Task{} }
 func (m *Task) String() string { return proto.CompactTextString(m) }
 func (*Task) ProtoMessage()    {}
 func (*Task) Descriptor() ([]byte, []int) {
-	return fileDescriptor_task_949e38cc41c5c152, []int{0}
+	return fileDescriptor_ef2a735969aa09d5, []int{0}
 }
 func (m *Task) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Task.Unmarshal(m, b)
@@ -142,8 +144,8 @@ func (m *Task) XXX_Unmarshal(b []byte) error {
 func (m *Task) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Task.Marshal(b, m, deterministic)
 }
-func (dst *Task) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Task.Merge(dst, src)
+func (m *Task) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Task.Merge(m, src)
 }
 func (m *Task) XXX_Size() int {
 	return xxx_messageInfo_Task.Size(m)
@@ -317,7 +319,7 @@ func (m *Attempt) Reset()         { *m = Attempt{} }
 func (m *Attempt) String() string { return proto.CompactTextString(m) }
 func (*Attempt) ProtoMessage()    {}
 func (*Attempt) Descriptor() ([]byte, []int) {
-	return fileDescriptor_task_949e38cc41c5c152, []int{1}
+	return fileDescriptor_ef2a735969aa09d5, []int{1}
 }
 func (m *Attempt) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Attempt.Unmarshal(m, b)
@@ -325,8 +327,8 @@ func (m *Attempt) XXX_Unmarshal(b []byte) error {
 func (m *Attempt) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Attempt.Marshal(b, m, deterministic)
 }
-func (dst *Attempt) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Attempt.Merge(dst, src)
+func (m *Attempt) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Attempt.Merge(m, src)
 }
 func (m *Attempt) XXX_Size() int {
 	return xxx_messageInfo_Attempt.Size(m)
@@ -372,10 +374,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2beta3/task.proto", fileDescriptor_task_949e38cc41c5c152)
+	proto.RegisterFile("google/cloud/tasks/v2beta3/task.proto", fileDescriptor_ef2a735969aa09d5)
 }
 
-var fileDescriptor_task_949e38cc41c5c152 = []byte{
+var fileDescriptor_ef2a735969aa09d5 = []byte{
 	// 538 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0xcd, 0x6e, 0xda, 0x40,
 	0x10, 0xc7, 0xe3, 0xc4, 0xf9, 0x60, 0x03, 0x14, 0xad, 0x22, 0xc5, 0x42, 0x55, 0x8b, 0xa8, 0x50,

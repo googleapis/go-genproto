@@ -41,6 +41,7 @@ var SsmlVoiceGender_name = map[int32]string{
 	2: "SSML_VOICE_GENDER_FEMALE",
 	3: "SSML_VOICE_GENDER_NEUTRAL",
 }
+
 var SsmlVoiceGender_value = map[string]int32{
 	"SSML_VOICE_GENDER_UNSPECIFIED": 0,
 	"SSML_VOICE_GENDER_MALE":        1,
@@ -51,8 +52,9 @@ var SsmlVoiceGender_value = map[string]int32{
 func (x SsmlVoiceGender) String() string {
 	return proto.EnumName(SsmlVoiceGender_name, int32(x))
 }
+
 func (SsmlVoiceGender) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_b255710fcad33f7d, []int{0}
+	return fileDescriptor_80617ff5f6b0e1c6, []int{0}
 }
 
 // Audio encoding of the output audio format in Text-To-Speech.
@@ -79,6 +81,7 @@ var OutputAudioEncoding_name = map[int32]string{
 	2: "OUTPUT_AUDIO_ENCODING_MP3",
 	3: "OUTPUT_AUDIO_ENCODING_OGG_OPUS",
 }
+
 var OutputAudioEncoding_value = map[string]int32{
 	"OUTPUT_AUDIO_ENCODING_UNSPECIFIED": 0,
 	"OUTPUT_AUDIO_ENCODING_LINEAR_16":   1,
@@ -89,8 +92,9 @@ var OutputAudioEncoding_value = map[string]int32{
 func (x OutputAudioEncoding) String() string {
 	return proto.EnumName(OutputAudioEncoding_name, int32(x))
 }
+
 func (OutputAudioEncoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_b255710fcad33f7d, []int{1}
+	return fileDescriptor_80617ff5f6b0e1c6, []int{1}
 }
 
 // Description of which voice to use for speech synthesis.
@@ -113,7 +117,7 @@ func (m *VoiceSelectionParams) Reset()         { *m = VoiceSelectionParams{} }
 func (m *VoiceSelectionParams) String() string { return proto.CompactTextString(m) }
 func (*VoiceSelectionParams) ProtoMessage()    {}
 func (*VoiceSelectionParams) Descriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_b255710fcad33f7d, []int{0}
+	return fileDescriptor_80617ff5f6b0e1c6, []int{0}
 }
 func (m *VoiceSelectionParams) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VoiceSelectionParams.Unmarshal(m, b)
@@ -121,8 +125,8 @@ func (m *VoiceSelectionParams) XXX_Unmarshal(b []byte) error {
 func (m *VoiceSelectionParams) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_VoiceSelectionParams.Marshal(b, m, deterministic)
 }
-func (dst *VoiceSelectionParams) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_VoiceSelectionParams.Merge(dst, src)
+func (m *VoiceSelectionParams) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_VoiceSelectionParams.Merge(m, src)
 }
 func (m *VoiceSelectionParams) XXX_Size() int {
 	return xxx_messageInfo_VoiceSelectionParams.Size(m)
@@ -182,7 +186,7 @@ func (m *SynthesizeSpeechConfig) Reset()         { *m = SynthesizeSpeechConfig{}
 func (m *SynthesizeSpeechConfig) String() string { return proto.CompactTextString(m) }
 func (*SynthesizeSpeechConfig) ProtoMessage()    {}
 func (*SynthesizeSpeechConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_b255710fcad33f7d, []int{1}
+	return fileDescriptor_80617ff5f6b0e1c6, []int{1}
 }
 func (m *SynthesizeSpeechConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SynthesizeSpeechConfig.Unmarshal(m, b)
@@ -190,8 +194,8 @@ func (m *SynthesizeSpeechConfig) XXX_Unmarshal(b []byte) error {
 func (m *SynthesizeSpeechConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SynthesizeSpeechConfig.Marshal(b, m, deterministic)
 }
-func (dst *SynthesizeSpeechConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SynthesizeSpeechConfig.Merge(dst, src)
+func (m *SynthesizeSpeechConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SynthesizeSpeechConfig.Merge(m, src)
 }
 func (m *SynthesizeSpeechConfig) XXX_Size() int {
 	return xxx_messageInfo_SynthesizeSpeechConfig.Size(m)
@@ -258,7 +262,7 @@ func (m *OutputAudioConfig) Reset()         { *m = OutputAudioConfig{} }
 func (m *OutputAudioConfig) String() string { return proto.CompactTextString(m) }
 func (*OutputAudioConfig) ProtoMessage()    {}
 func (*OutputAudioConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_b255710fcad33f7d, []int{2}
+	return fileDescriptor_80617ff5f6b0e1c6, []int{2}
 }
 func (m *OutputAudioConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputAudioConfig.Unmarshal(m, b)
@@ -266,8 +270,8 @@ func (m *OutputAudioConfig) XXX_Unmarshal(b []byte) error {
 func (m *OutputAudioConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_OutputAudioConfig.Marshal(b, m, deterministic)
 }
-func (dst *OutputAudioConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_OutputAudioConfig.Merge(dst, src)
+func (m *OutputAudioConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OutputAudioConfig.Merge(m, src)
 }
 func (m *OutputAudioConfig) XXX_Size() int {
 	return xxx_messageInfo_OutputAudioConfig.Size(m)
@@ -308,10 +312,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dialogflow/v2beta1/audio_config.proto", fileDescriptor_audio_config_b255710fcad33f7d)
+	proto.RegisterFile("google/cloud/dialogflow/v2beta1/audio_config.proto", fileDescriptor_80617ff5f6b0e1c6)
 }
 
-var fileDescriptor_audio_config_b255710fcad33f7d = []byte{
+var fileDescriptor_80617ff5f6b0e1c6 = []byte{
 	// 647 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x54, 0x4f, 0x6f, 0xd3, 0x3e,
 	0x18, 0xfe, 0xb9, 0x5d, 0x7f, 0xd2, 0x3c, 0xd6, 0x65, 0x66, 0x9a, 0xca, 0xb4, 0xb1, 0xae, 0x03,

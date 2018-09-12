@@ -40,7 +40,7 @@ func (m *RegisterDebuggeeRequest) Reset()         { *m = RegisterDebuggeeRequest
 func (m *RegisterDebuggeeRequest) String() string { return proto.CompactTextString(m) }
 func (*RegisterDebuggeeRequest) ProtoMessage()    {}
 func (*RegisterDebuggeeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_controller_ba9f5f8b4f070828, []int{0}
+	return fileDescriptor_694192a34270926f, []int{0}
 }
 func (m *RegisterDebuggeeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RegisterDebuggeeRequest.Unmarshal(m, b)
@@ -48,8 +48,8 @@ func (m *RegisterDebuggeeRequest) XXX_Unmarshal(b []byte) error {
 func (m *RegisterDebuggeeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_RegisterDebuggeeRequest.Marshal(b, m, deterministic)
 }
-func (dst *RegisterDebuggeeRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegisterDebuggeeRequest.Merge(dst, src)
+func (m *RegisterDebuggeeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RegisterDebuggeeRequest.Merge(m, src)
 }
 func (m *RegisterDebuggeeRequest) XXX_Size() int {
 	return xxx_messageInfo_RegisterDebuggeeRequest.Size(m)
@@ -84,7 +84,7 @@ func (m *RegisterDebuggeeResponse) Reset()         { *m = RegisterDebuggeeRespon
 func (m *RegisterDebuggeeResponse) String() string { return proto.CompactTextString(m) }
 func (*RegisterDebuggeeResponse) ProtoMessage()    {}
 func (*RegisterDebuggeeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_controller_ba9f5f8b4f070828, []int{1}
+	return fileDescriptor_694192a34270926f, []int{1}
 }
 func (m *RegisterDebuggeeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RegisterDebuggeeResponse.Unmarshal(m, b)
@@ -92,8 +92,8 @@ func (m *RegisterDebuggeeResponse) XXX_Unmarshal(b []byte) error {
 func (m *RegisterDebuggeeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_RegisterDebuggeeResponse.Marshal(b, m, deterministic)
 }
-func (dst *RegisterDebuggeeResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegisterDebuggeeResponse.Merge(dst, src)
+func (m *RegisterDebuggeeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RegisterDebuggeeResponse.Merge(m, src)
 }
 func (m *RegisterDebuggeeResponse) XXX_Size() int {
 	return xxx_messageInfo_RegisterDebuggeeResponse.Size(m)
@@ -136,7 +136,7 @@ func (m *ListActiveBreakpointsRequest) Reset()         { *m = ListActiveBreakpoi
 func (m *ListActiveBreakpointsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListActiveBreakpointsRequest) ProtoMessage()    {}
 func (*ListActiveBreakpointsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_controller_ba9f5f8b4f070828, []int{2}
+	return fileDescriptor_694192a34270926f, []int{2}
 }
 func (m *ListActiveBreakpointsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListActiveBreakpointsRequest.Unmarshal(m, b)
@@ -144,8 +144,8 @@ func (m *ListActiveBreakpointsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListActiveBreakpointsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListActiveBreakpointsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListActiveBreakpointsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListActiveBreakpointsRequest.Merge(dst, src)
+func (m *ListActiveBreakpointsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListActiveBreakpointsRequest.Merge(m, src)
 }
 func (m *ListActiveBreakpointsRequest) XXX_Size() int {
 	return xxx_messageInfo_ListActiveBreakpointsRequest.Size(m)
@@ -198,7 +198,7 @@ func (m *ListActiveBreakpointsResponse) Reset()         { *m = ListActiveBreakpo
 func (m *ListActiveBreakpointsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListActiveBreakpointsResponse) ProtoMessage()    {}
 func (*ListActiveBreakpointsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_controller_ba9f5f8b4f070828, []int{3}
+	return fileDescriptor_694192a34270926f, []int{3}
 }
 func (m *ListActiveBreakpointsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListActiveBreakpointsResponse.Unmarshal(m, b)
@@ -206,8 +206,8 @@ func (m *ListActiveBreakpointsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListActiveBreakpointsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListActiveBreakpointsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListActiveBreakpointsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListActiveBreakpointsResponse.Merge(dst, src)
+func (m *ListActiveBreakpointsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListActiveBreakpointsResponse.Merge(m, src)
 }
 func (m *ListActiveBreakpointsResponse) XXX_Size() int {
 	return xxx_messageInfo_ListActiveBreakpointsResponse.Size(m)
@@ -256,7 +256,7 @@ func (m *UpdateActiveBreakpointRequest) Reset()         { *m = UpdateActiveBreak
 func (m *UpdateActiveBreakpointRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateActiveBreakpointRequest) ProtoMessage()    {}
 func (*UpdateActiveBreakpointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_controller_ba9f5f8b4f070828, []int{4}
+	return fileDescriptor_694192a34270926f, []int{4}
 }
 func (m *UpdateActiveBreakpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateActiveBreakpointRequest.Unmarshal(m, b)
@@ -264,8 +264,8 @@ func (m *UpdateActiveBreakpointRequest) XXX_Unmarshal(b []byte) error {
 func (m *UpdateActiveBreakpointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_UpdateActiveBreakpointRequest.Marshal(b, m, deterministic)
 }
-func (dst *UpdateActiveBreakpointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateActiveBreakpointRequest.Merge(dst, src)
+func (m *UpdateActiveBreakpointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateActiveBreakpointRequest.Merge(m, src)
 }
 func (m *UpdateActiveBreakpointRequest) XXX_Size() int {
 	return xxx_messageInfo_UpdateActiveBreakpointRequest.Size(m)
@@ -302,7 +302,7 @@ func (m *UpdateActiveBreakpointResponse) Reset()         { *m = UpdateActiveBrea
 func (m *UpdateActiveBreakpointResponse) String() string { return proto.CompactTextString(m) }
 func (*UpdateActiveBreakpointResponse) ProtoMessage()    {}
 func (*UpdateActiveBreakpointResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_controller_ba9f5f8b4f070828, []int{5}
+	return fileDescriptor_694192a34270926f, []int{5}
 }
 func (m *UpdateActiveBreakpointResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateActiveBreakpointResponse.Unmarshal(m, b)
@@ -310,8 +310,8 @@ func (m *UpdateActiveBreakpointResponse) XXX_Unmarshal(b []byte) error {
 func (m *UpdateActiveBreakpointResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_UpdateActiveBreakpointResponse.Marshal(b, m, deterministic)
 }
-func (dst *UpdateActiveBreakpointResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateActiveBreakpointResponse.Merge(dst, src)
+func (m *UpdateActiveBreakpointResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateActiveBreakpointResponse.Merge(m, src)
 }
 func (m *UpdateActiveBreakpointResponse) XXX_Size() int {
 	return xxx_messageInfo_UpdateActiveBreakpointResponse.Size(m)
@@ -532,10 +532,10 @@ var _Controller2_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/clouddebugger/v2/controller.proto", fileDescriptor_controller_ba9f5f8b4f070828)
+	proto.RegisterFile("google/devtools/clouddebugger/v2/controller.proto", fileDescriptor_694192a34270926f)
 }
 
-var fileDescriptor_controller_ba9f5f8b4f070828 = []byte{
+var fileDescriptor_694192a34270926f = []byte{
 	// 602 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0xdd, 0x6a, 0xd4, 0x40,
 	0x14, 0x66, 0x5a, 0x94, 0x76, 0xa2, 0xb4, 0x0c, 0xa8, 0x21, 0xb6, 0xba, 0x0d, 0x52, 0x96, 0x75,

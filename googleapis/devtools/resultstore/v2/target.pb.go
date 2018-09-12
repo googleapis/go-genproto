@@ -44,6 +44,7 @@ var TargetType_name = map[int32]string{
 	4: "PACKAGE",
 	5: "TEST",
 }
+
 var TargetType_value = map[string]int32{
 	"TARGET_TYPE_UNSPECIFIED": 0,
 	"APPLICATION":             1,
@@ -56,8 +57,9 @@ var TargetType_value = map[string]int32{
 func (x TargetType) String() string {
 	return proto.EnumName(TargetType_name, int32(x))
 }
+
 func (TargetType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_25848505c9398e1a, []int{0}
+	return fileDescriptor_b4e9059e809e996c, []int{0}
 }
 
 // Indicates how big the user indicated the test action was.
@@ -86,6 +88,7 @@ var TestSize_name = map[int32]string{
 	4: "ENORMOUS",
 	5: "OTHER_SIZE",
 }
+
 var TestSize_value = map[string]int32{
 	"TEST_SIZE_UNSPECIFIED": 0,
 	"SMALL":                 1,
@@ -98,8 +101,9 @@ var TestSize_value = map[string]int32{
 func (x TestSize) String() string {
 	return proto.EnumName(TestSize_name, int32(x))
 }
+
 func (TestSize) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_25848505c9398e1a, []int{1}
+	return fileDescriptor_b4e9059e809e996c, []int{1}
 }
 
 // Each Target represents data for a given target in a given Invocation.
@@ -142,7 +146,7 @@ func (m *Target) Reset()         { *m = Target{} }
 func (m *Target) String() string { return proto.CompactTextString(m) }
 func (*Target) ProtoMessage()    {}
 func (*Target) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_25848505c9398e1a, []int{0}
+	return fileDescriptor_b4e9059e809e996c, []int{0}
 }
 func (m *Target) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Target.Unmarshal(m, b)
@@ -150,8 +154,8 @@ func (m *Target) XXX_Unmarshal(b []byte) error {
 func (m *Target) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Target.Marshal(b, m, deterministic)
 }
-func (dst *Target) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Target.Merge(dst, src)
+func (m *Target) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Target.Merge(m, src)
 }
 func (m *Target) XXX_Size() int {
 	return xxx_messageInfo_Target.Size(m)
@@ -240,7 +244,7 @@ func (m *Target_Id) Reset()         { *m = Target_Id{} }
 func (m *Target_Id) String() string { return proto.CompactTextString(m) }
 func (*Target_Id) ProtoMessage()    {}
 func (*Target_Id) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_25848505c9398e1a, []int{0, 0}
+	return fileDescriptor_b4e9059e809e996c, []int{0, 0}
 }
 func (m *Target_Id) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Target_Id.Unmarshal(m, b)
@@ -248,8 +252,8 @@ func (m *Target_Id) XXX_Unmarshal(b []byte) error {
 func (m *Target_Id) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Target_Id.Marshal(b, m, deterministic)
 }
-func (dst *Target_Id) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Target_Id.Merge(dst, src)
+func (m *Target_Id) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Target_Id.Merge(m, src)
 }
 func (m *Target_Id) XXX_Size() int {
 	return xxx_messageInfo_Target_Id.Size(m)
@@ -295,7 +299,7 @@ func (m *TargetAttributes) Reset()         { *m = TargetAttributes{} }
 func (m *TargetAttributes) String() string { return proto.CompactTextString(m) }
 func (*TargetAttributes) ProtoMessage()    {}
 func (*TargetAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_25848505c9398e1a, []int{1}
+	return fileDescriptor_b4e9059e809e996c, []int{1}
 }
 func (m *TargetAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetAttributes.Unmarshal(m, b)
@@ -303,8 +307,8 @@ func (m *TargetAttributes) XXX_Unmarshal(b []byte) error {
 func (m *TargetAttributes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_TargetAttributes.Marshal(b, m, deterministic)
 }
-func (dst *TargetAttributes) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TargetAttributes.Merge(dst, src)
+func (m *TargetAttributes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TargetAttributes.Merge(m, src)
 }
 func (m *TargetAttributes) XXX_Size() int {
 	return xxx_messageInfo_TargetAttributes.Size(m)
@@ -349,7 +353,7 @@ func (m *TestAttributes) Reset()         { *m = TestAttributes{} }
 func (m *TestAttributes) String() string { return proto.CompactTextString(m) }
 func (*TestAttributes) ProtoMessage()    {}
 func (*TestAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_25848505c9398e1a, []int{2}
+	return fileDescriptor_b4e9059e809e996c, []int{2}
 }
 func (m *TestAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestAttributes.Unmarshal(m, b)
@@ -357,8 +361,8 @@ func (m *TestAttributes) XXX_Unmarshal(b []byte) error {
 func (m *TestAttributes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_TestAttributes.Marshal(b, m, deterministic)
 }
-func (dst *TestAttributes) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TestAttributes.Merge(dst, src)
+func (m *TestAttributes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TestAttributes.Merge(m, src)
 }
 func (m *TestAttributes) XXX_Size() int {
 	return xxx_messageInfo_TestAttributes.Size(m)
@@ -386,10 +390,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/resultstore/v2/target.proto", fileDescriptor_target_25848505c9398e1a)
+	proto.RegisterFile("google/devtools/resultstore/v2/target.proto", fileDescriptor_b4e9059e809e996c)
 }
 
-var fileDescriptor_target_25848505c9398e1a = []byte{
+var fileDescriptor_b4e9059e809e996c = []byte{
 	// 634 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x54, 0xed, 0x6a, 0xdb, 0x4a,
 	0x10, 0xbd, 0xb2, 0x65, 0x47, 0x1e, 0xe7, 0x3a, 0xba, 0x0b, 0x97, 0xaa, 0x09, 0x2d, 0xc6, 0x2d,

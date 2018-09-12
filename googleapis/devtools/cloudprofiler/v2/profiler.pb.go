@@ -67,6 +67,7 @@ var ProfileType_name = map[int32]string{
 	6: "PEAK_HEAP",
 	7: "HEAP_ALLOC",
 }
+
 var ProfileType_value = map[string]int32{
 	"PROFILE_TYPE_UNSPECIFIED": 0,
 	"CPU":                      1,
@@ -81,8 +82,9 @@ var ProfileType_value = map[string]int32{
 func (x ProfileType) String() string {
 	return proto.EnumName(ProfileType_name, int32(x))
 }
+
 func (ProfileType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_profiler_24c6f5803c16363e, []int{0}
+	return fileDescriptor_74a10a5851161432, []int{0}
 }
 
 // CreateProfileRequest describes a profile resource online creation request.
@@ -105,7 +107,7 @@ func (m *CreateProfileRequest) Reset()         { *m = CreateProfileRequest{} }
 func (m *CreateProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateProfileRequest) ProtoMessage()    {}
 func (*CreateProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profiler_24c6f5803c16363e, []int{0}
+	return fileDescriptor_74a10a5851161432, []int{0}
 }
 func (m *CreateProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateProfileRequest.Unmarshal(m, b)
@@ -113,8 +115,8 @@ func (m *CreateProfileRequest) XXX_Unmarshal(b []byte) error {
 func (m *CreateProfileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CreateProfileRequest.Marshal(b, m, deterministic)
 }
-func (dst *CreateProfileRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateProfileRequest.Merge(dst, src)
+func (m *CreateProfileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateProfileRequest.Merge(m, src)
 }
 func (m *CreateProfileRequest) XXX_Size() int {
 	return xxx_messageInfo_CreateProfileRequest.Size(m)
@@ -162,7 +164,7 @@ func (m *CreateOfflineProfileRequest) Reset()         { *m = CreateOfflineProfil
 func (m *CreateOfflineProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateOfflineProfileRequest) ProtoMessage()    {}
 func (*CreateOfflineProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profiler_24c6f5803c16363e, []int{1}
+	return fileDescriptor_74a10a5851161432, []int{1}
 }
 func (m *CreateOfflineProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateOfflineProfileRequest.Unmarshal(m, b)
@@ -170,8 +172,8 @@ func (m *CreateOfflineProfileRequest) XXX_Unmarshal(b []byte) error {
 func (m *CreateOfflineProfileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CreateOfflineProfileRequest.Marshal(b, m, deterministic)
 }
-func (dst *CreateOfflineProfileRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateOfflineProfileRequest.Merge(dst, src)
+func (m *CreateOfflineProfileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateOfflineProfileRequest.Merge(m, src)
 }
 func (m *CreateOfflineProfileRequest) XXX_Size() int {
 	return xxx_messageInfo_CreateOfflineProfileRequest.Size(m)
@@ -214,7 +216,7 @@ func (m *UpdateProfileRequest) Reset()         { *m = UpdateProfileRequest{} }
 func (m *UpdateProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateProfileRequest) ProtoMessage()    {}
 func (*UpdateProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profiler_24c6f5803c16363e, []int{2}
+	return fileDescriptor_74a10a5851161432, []int{2}
 }
 func (m *UpdateProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateProfileRequest.Unmarshal(m, b)
@@ -222,8 +224,8 @@ func (m *UpdateProfileRequest) XXX_Unmarshal(b []byte) error {
 func (m *UpdateProfileRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_UpdateProfileRequest.Marshal(b, m, deterministic)
 }
-func (dst *UpdateProfileRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateProfileRequest.Merge(dst, src)
+func (m *UpdateProfileRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateProfileRequest.Merge(m, src)
 }
 func (m *UpdateProfileRequest) XXX_Size() int {
 	return xxx_messageInfo_UpdateProfileRequest.Size(m)
@@ -281,7 +283,7 @@ func (m *Profile) Reset()         { *m = Profile{} }
 func (m *Profile) String() string { return proto.CompactTextString(m) }
 func (*Profile) ProtoMessage()    {}
 func (*Profile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profiler_24c6f5803c16363e, []int{3}
+	return fileDescriptor_74a10a5851161432, []int{3}
 }
 func (m *Profile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Profile.Unmarshal(m, b)
@@ -289,8 +291,8 @@ func (m *Profile) XXX_Unmarshal(b []byte) error {
 func (m *Profile) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Profile.Marshal(b, m, deterministic)
 }
-func (dst *Profile) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Profile.Merge(dst, src)
+func (m *Profile) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Profile.Merge(m, src)
 }
 func (m *Profile) XXX_Size() int {
 	return xxx_messageInfo_Profile.Size(m)
@@ -378,7 +380,7 @@ func (m *Deployment) Reset()         { *m = Deployment{} }
 func (m *Deployment) String() string { return proto.CompactTextString(m) }
 func (*Deployment) ProtoMessage()    {}
 func (*Deployment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profiler_24c6f5803c16363e, []int{4}
+	return fileDescriptor_74a10a5851161432, []int{4}
 }
 func (m *Deployment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Deployment.Unmarshal(m, b)
@@ -386,8 +388,8 @@ func (m *Deployment) XXX_Unmarshal(b []byte) error {
 func (m *Deployment) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Deployment.Marshal(b, m, deterministic)
 }
-func (dst *Deployment) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Deployment.Merge(dst, src)
+func (m *Deployment) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Deployment.Merge(m, src)
 }
 func (m *Deployment) XXX_Size() int {
 	return xxx_messageInfo_Deployment.Size(m)
@@ -609,10 +611,10 @@ var _ProfilerService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/cloudprofiler/v2/profiler.proto", fileDescriptor_profiler_24c6f5803c16363e)
+	proto.RegisterFile("google/devtools/cloudprofiler/v2/profiler.proto", fileDescriptor_74a10a5851161432)
 }
 
-var fileDescriptor_profiler_24c6f5803c16363e = []byte{
+var fileDescriptor_74a10a5851161432 = []byte{
 	// 786 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x56, 0x5f, 0x6f, 0xda, 0x56,
 	0x14, 0xdf, 0xc5, 0x04, 0xc2, 0x71, 0xc8, 0xac, 0xab, 0x68, 0x62, 0x2c, 0xdb, 0x2c, 0x4f, 0x93,

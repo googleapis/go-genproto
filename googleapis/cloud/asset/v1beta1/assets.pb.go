@@ -41,7 +41,7 @@ func (m *TemporalAsset) Reset()         { *m = TemporalAsset{} }
 func (m *TemporalAsset) String() string { return proto.CompactTextString(m) }
 func (*TemporalAsset) ProtoMessage()    {}
 func (*TemporalAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_2522b927e73e7a92, []int{0}
+	return fileDescriptor_2e0a79b6d8a101c1, []int{0}
 }
 func (m *TemporalAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TemporalAsset.Unmarshal(m, b)
@@ -49,8 +49,8 @@ func (m *TemporalAsset) XXX_Unmarshal(b []byte) error {
 func (m *TemporalAsset) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_TemporalAsset.Marshal(b, m, deterministic)
 }
-func (dst *TemporalAsset) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TemporalAsset.Merge(dst, src)
+func (m *TemporalAsset) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TemporalAsset.Merge(m, src)
 }
 func (m *TemporalAsset) XXX_Size() int {
 	return xxx_messageInfo_TemporalAsset.Size(m)
@@ -98,7 +98,7 @@ func (m *TimeWindow) Reset()         { *m = TimeWindow{} }
 func (m *TimeWindow) String() string { return proto.CompactTextString(m) }
 func (*TimeWindow) ProtoMessage()    {}
 func (*TimeWindow) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_2522b927e73e7a92, []int{1}
+	return fileDescriptor_2e0a79b6d8a101c1, []int{1}
 }
 func (m *TimeWindow) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeWindow.Unmarshal(m, b)
@@ -106,8 +106,8 @@ func (m *TimeWindow) XXX_Unmarshal(b []byte) error {
 func (m *TimeWindow) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_TimeWindow.Marshal(b, m, deterministic)
 }
-func (dst *TimeWindow) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TimeWindow.Merge(dst, src)
+func (m *TimeWindow) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TimeWindow.Merge(m, src)
 }
 func (m *TimeWindow) XXX_Size() int {
 	return xxx_messageInfo_TimeWindow.Size(m)
@@ -156,7 +156,7 @@ func (m *Asset) Reset()         { *m = Asset{} }
 func (m *Asset) String() string { return proto.CompactTextString(m) }
 func (*Asset) ProtoMessage()    {}
 func (*Asset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_2522b927e73e7a92, []int{2}
+	return fileDescriptor_2e0a79b6d8a101c1, []int{2}
 }
 func (m *Asset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Asset.Unmarshal(m, b)
@@ -164,8 +164,8 @@ func (m *Asset) XXX_Unmarshal(b []byte) error {
 func (m *Asset) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Asset.Marshal(b, m, deterministic)
 }
-func (dst *Asset) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Asset.Merge(dst, src)
+func (m *Asset) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Asset.Merge(m, src)
 }
 func (m *Asset) XXX_Size() int {
 	return xxx_messageInfo_Asset.Size(m)
@@ -245,7 +245,7 @@ func (m *Resource) Reset()         { *m = Resource{} }
 func (m *Resource) String() string { return proto.CompactTextString(m) }
 func (*Resource) ProtoMessage()    {}
 func (*Resource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_2522b927e73e7a92, []int{3}
+	return fileDescriptor_2e0a79b6d8a101c1, []int{3}
 }
 func (m *Resource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Resource.Unmarshal(m, b)
@@ -253,8 +253,8 @@ func (m *Resource) XXX_Unmarshal(b []byte) error {
 func (m *Resource) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Resource.Marshal(b, m, deterministic)
 }
-func (dst *Resource) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Resource.Merge(dst, src)
+func (m *Resource) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Resource.Merge(m, src)
 }
 func (m *Resource) XXX_Size() int {
 	return xxx_messageInfo_Resource.Size(m)
@@ -315,10 +315,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/asset/v1beta1/assets.proto", fileDescriptor_assets_2522b927e73e7a92)
+	proto.RegisterFile("google/cloud/asset/v1beta1/assets.proto", fileDescriptor_2e0a79b6d8a101c1)
 }
 
-var fileDescriptor_assets_2522b927e73e7a92 = []byte{
+var fileDescriptor_2e0a79b6d8a101c1 = []byte{
 	// 551 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x53, 0xdb, 0x6a, 0xd4, 0x40,
 	0x18, 0x26, 0xed, 0xee, 0x76, 0xf3, 0xd7, 0x7a, 0x31, 0x68, 0x8d, 0x4b, 0xd5, 0x76, 0xf1, 0x50,

@@ -51,7 +51,7 @@ func (m *PredictRequest) Reset()         { *m = PredictRequest{} }
 func (m *PredictRequest) String() string { return proto.CompactTextString(m) }
 func (*PredictRequest) ProtoMessage()    {}
 func (*PredictRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_prediction_service_1b71b7f556fd7159, []int{0}
+	return fileDescriptor_59a9dba5da3c687d, []int{0}
 }
 func (m *PredictRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredictRequest.Unmarshal(m, b)
@@ -59,8 +59,8 @@ func (m *PredictRequest) XXX_Unmarshal(b []byte) error {
 func (m *PredictRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_PredictRequest.Marshal(b, m, deterministic)
 }
-func (dst *PredictRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PredictRequest.Merge(dst, src)
+func (m *PredictRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PredictRequest.Merge(m, src)
 }
 func (m *PredictRequest) XXX_Size() int {
 	return xxx_messageInfo_PredictRequest.Size(m)
@@ -111,7 +111,7 @@ func (m *PredictResponse) Reset()         { *m = PredictResponse{} }
 func (m *PredictResponse) String() string { return proto.CompactTextString(m) }
 func (*PredictResponse) ProtoMessage()    {}
 func (*PredictResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_prediction_service_1b71b7f556fd7159, []int{1}
+	return fileDescriptor_59a9dba5da3c687d, []int{1}
 }
 func (m *PredictResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredictResponse.Unmarshal(m, b)
@@ -119,8 +119,8 @@ func (m *PredictResponse) XXX_Unmarshal(b []byte) error {
 func (m *PredictResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_PredictResponse.Marshal(b, m, deterministic)
 }
-func (dst *PredictResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PredictResponse.Merge(dst, src)
+func (m *PredictResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PredictResponse.Merge(m, src)
 }
 func (m *PredictResponse) XXX_Size() int {
 	return xxx_messageInfo_PredictResponse.Size(m)
@@ -227,10 +227,10 @@ var _PredictionService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/prediction_service.proto", fileDescriptor_prediction_service_1b71b7f556fd7159)
+	proto.RegisterFile("google/cloud/automl/v1beta1/prediction_service.proto", fileDescriptor_59a9dba5da3c687d)
 }
 
-var fileDescriptor_prediction_service_1b71b7f556fd7159 = []byte{
+var fileDescriptor_59a9dba5da3c687d = []byte{
 	// 462 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0xdf, 0x8a, 0xd3, 0x40,
 	0x14, 0xc6, 0x99, 0x56, 0x77, 0xdd, 0x29, 0xfe, 0x1b, 0x44, 0x4a, 0x14, 0x2c, 0xbd, 0x2a, 0xdd,

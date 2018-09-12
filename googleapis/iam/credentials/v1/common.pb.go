@@ -56,7 +56,7 @@ func (m *GenerateAccessTokenRequest) Reset()         { *m = GenerateAccessTokenR
 func (m *GenerateAccessTokenRequest) String() string { return proto.CompactTextString(m) }
 func (*GenerateAccessTokenRequest) ProtoMessage()    {}
 func (*GenerateAccessTokenRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_282adaf687fb3260, []int{0}
+	return fileDescriptor_e91212214ea1422e, []int{0}
 }
 func (m *GenerateAccessTokenRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateAccessTokenRequest.Unmarshal(m, b)
@@ -64,8 +64,8 @@ func (m *GenerateAccessTokenRequest) XXX_Unmarshal(b []byte) error {
 func (m *GenerateAccessTokenRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GenerateAccessTokenRequest.Marshal(b, m, deterministic)
 }
-func (dst *GenerateAccessTokenRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GenerateAccessTokenRequest.Merge(dst, src)
+func (m *GenerateAccessTokenRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GenerateAccessTokenRequest.Merge(m, src)
 }
 func (m *GenerateAccessTokenRequest) XXX_Size() int {
 	return xxx_messageInfo_GenerateAccessTokenRequest.Size(m)
@@ -119,7 +119,7 @@ func (m *GenerateAccessTokenResponse) Reset()         { *m = GenerateAccessToken
 func (m *GenerateAccessTokenResponse) String() string { return proto.CompactTextString(m) }
 func (*GenerateAccessTokenResponse) ProtoMessage()    {}
 func (*GenerateAccessTokenResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_282adaf687fb3260, []int{1}
+	return fileDescriptor_e91212214ea1422e, []int{1}
 }
 func (m *GenerateAccessTokenResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateAccessTokenResponse.Unmarshal(m, b)
@@ -127,8 +127,8 @@ func (m *GenerateAccessTokenResponse) XXX_Unmarshal(b []byte) error {
 func (m *GenerateAccessTokenResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GenerateAccessTokenResponse.Marshal(b, m, deterministic)
 }
-func (dst *GenerateAccessTokenResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GenerateAccessTokenResponse.Merge(dst, src)
+func (m *GenerateAccessTokenResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GenerateAccessTokenResponse.Merge(m, src)
 }
 func (m *GenerateAccessTokenResponse) XXX_Size() int {
 	return xxx_messageInfo_GenerateAccessTokenResponse.Size(m)
@@ -181,7 +181,7 @@ func (m *SignBlobRequest) Reset()         { *m = SignBlobRequest{} }
 func (m *SignBlobRequest) String() string { return proto.CompactTextString(m) }
 func (*SignBlobRequest) ProtoMessage()    {}
 func (*SignBlobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_282adaf687fb3260, []int{2}
+	return fileDescriptor_e91212214ea1422e, []int{2}
 }
 func (m *SignBlobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SignBlobRequest.Unmarshal(m, b)
@@ -189,8 +189,8 @@ func (m *SignBlobRequest) XXX_Unmarshal(b []byte) error {
 func (m *SignBlobRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SignBlobRequest.Marshal(b, m, deterministic)
 }
-func (dst *SignBlobRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SignBlobRequest.Merge(dst, src)
+func (m *SignBlobRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SignBlobRequest.Merge(m, src)
 }
 func (m *SignBlobRequest) XXX_Size() int {
 	return xxx_messageInfo_SignBlobRequest.Size(m)
@@ -236,7 +236,7 @@ func (m *SignBlobResponse) Reset()         { *m = SignBlobResponse{} }
 func (m *SignBlobResponse) String() string { return proto.CompactTextString(m) }
 func (*SignBlobResponse) ProtoMessage()    {}
 func (*SignBlobResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_282adaf687fb3260, []int{3}
+	return fileDescriptor_e91212214ea1422e, []int{3}
 }
 func (m *SignBlobResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SignBlobResponse.Unmarshal(m, b)
@@ -244,8 +244,8 @@ func (m *SignBlobResponse) XXX_Unmarshal(b []byte) error {
 func (m *SignBlobResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SignBlobResponse.Marshal(b, m, deterministic)
 }
-func (dst *SignBlobResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SignBlobResponse.Merge(dst, src)
+func (m *SignBlobResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SignBlobResponse.Merge(m, src)
 }
 func (m *SignBlobResponse) XXX_Size() int {
 	return xxx_messageInfo_SignBlobResponse.Size(m)
@@ -298,7 +298,7 @@ func (m *SignJwtRequest) Reset()         { *m = SignJwtRequest{} }
 func (m *SignJwtRequest) String() string { return proto.CompactTextString(m) }
 func (*SignJwtRequest) ProtoMessage()    {}
 func (*SignJwtRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_282adaf687fb3260, []int{4}
+	return fileDescriptor_e91212214ea1422e, []int{4}
 }
 func (m *SignJwtRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SignJwtRequest.Unmarshal(m, b)
@@ -306,8 +306,8 @@ func (m *SignJwtRequest) XXX_Unmarshal(b []byte) error {
 func (m *SignJwtRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SignJwtRequest.Marshal(b, m, deterministic)
 }
-func (dst *SignJwtRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SignJwtRequest.Merge(dst, src)
+func (m *SignJwtRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SignJwtRequest.Merge(m, src)
 }
 func (m *SignJwtRequest) XXX_Size() int {
 	return xxx_messageInfo_SignJwtRequest.Size(m)
@@ -353,7 +353,7 @@ func (m *SignJwtResponse) Reset()         { *m = SignJwtResponse{} }
 func (m *SignJwtResponse) String() string { return proto.CompactTextString(m) }
 func (*SignJwtResponse) ProtoMessage()    {}
 func (*SignJwtResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_282adaf687fb3260, []int{5}
+	return fileDescriptor_e91212214ea1422e, []int{5}
 }
 func (m *SignJwtResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SignJwtResponse.Unmarshal(m, b)
@@ -361,8 +361,8 @@ func (m *SignJwtResponse) XXX_Unmarshal(b []byte) error {
 func (m *SignJwtResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SignJwtResponse.Marshal(b, m, deterministic)
 }
-func (dst *SignJwtResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SignJwtResponse.Merge(dst, src)
+func (m *SignJwtResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SignJwtResponse.Merge(m, src)
 }
 func (m *SignJwtResponse) XXX_Size() int {
 	return xxx_messageInfo_SignJwtResponse.Size(m)
@@ -419,7 +419,7 @@ func (m *GenerateIdTokenRequest) Reset()         { *m = GenerateIdTokenRequest{}
 func (m *GenerateIdTokenRequest) String() string { return proto.CompactTextString(m) }
 func (*GenerateIdTokenRequest) ProtoMessage()    {}
 func (*GenerateIdTokenRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_282adaf687fb3260, []int{6}
+	return fileDescriptor_e91212214ea1422e, []int{6}
 }
 func (m *GenerateIdTokenRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateIdTokenRequest.Unmarshal(m, b)
@@ -427,8 +427,8 @@ func (m *GenerateIdTokenRequest) XXX_Unmarshal(b []byte) error {
 func (m *GenerateIdTokenRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GenerateIdTokenRequest.Marshal(b, m, deterministic)
 }
-func (dst *GenerateIdTokenRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GenerateIdTokenRequest.Merge(dst, src)
+func (m *GenerateIdTokenRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GenerateIdTokenRequest.Merge(m, src)
 }
 func (m *GenerateIdTokenRequest) XXX_Size() int {
 	return xxx_messageInfo_GenerateIdTokenRequest.Size(m)
@@ -479,7 +479,7 @@ func (m *GenerateIdTokenResponse) Reset()         { *m = GenerateIdTokenResponse
 func (m *GenerateIdTokenResponse) String() string { return proto.CompactTextString(m) }
 func (*GenerateIdTokenResponse) ProtoMessage()    {}
 func (*GenerateIdTokenResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_282adaf687fb3260, []int{7}
+	return fileDescriptor_e91212214ea1422e, []int{7}
 }
 func (m *GenerateIdTokenResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateIdTokenResponse.Unmarshal(m, b)
@@ -487,8 +487,8 @@ func (m *GenerateIdTokenResponse) XXX_Unmarshal(b []byte) error {
 func (m *GenerateIdTokenResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GenerateIdTokenResponse.Marshal(b, m, deterministic)
 }
-func (dst *GenerateIdTokenResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GenerateIdTokenResponse.Merge(dst, src)
+func (m *GenerateIdTokenResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GenerateIdTokenResponse.Merge(m, src)
 }
 func (m *GenerateIdTokenResponse) XXX_Size() int {
 	return xxx_messageInfo_GenerateIdTokenResponse.Size(m)
@@ -518,10 +518,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/iam/credentials/v1/common.proto", fileDescriptor_common_282adaf687fb3260)
+	proto.RegisterFile("google/iam/credentials/v1/common.proto", fileDescriptor_e91212214ea1422e)
 }
 
-var fileDescriptor_common_282adaf687fb3260 = []byte{
+var fileDescriptor_e91212214ea1422e = []byte{
 	// 514 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0x4d, 0x6f, 0xd3, 0x40,
 	0x10, 0x95, 0x9b, 0xa4, 0x8d, 0x27, 0xe1, 0x43, 0x56, 0x01, 0x27, 0x50, 0x1a, 0x8c, 0x84, 0x72,

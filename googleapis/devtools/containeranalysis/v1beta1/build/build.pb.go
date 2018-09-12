@@ -36,6 +36,7 @@ var BuildSignature_KeyType_name = map[int32]string{
 	1: "PGP_ASCII_ARMORED",
 	2: "PKIX_PEM",
 }
+
 var BuildSignature_KeyType_value = map[string]int32{
 	"KEY_TYPE_UNSPECIFIED": 0,
 	"PGP_ASCII_ARMORED":    1,
@@ -45,8 +46,9 @@ var BuildSignature_KeyType_value = map[string]int32{
 func (x BuildSignature_KeyType) String() string {
 	return proto.EnumName(BuildSignature_KeyType_name, int32(x))
 }
+
 func (BuildSignature_KeyType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_build_739f6c7d44c8a606, []int{1, 0}
+	return fileDescriptor_040ca5655a0ae0a6, []int{1, 0}
 }
 
 // Note holding the version of the provider's builder and the signature of the
@@ -66,7 +68,7 @@ func (m *Build) Reset()         { *m = Build{} }
 func (m *Build) String() string { return proto.CompactTextString(m) }
 func (*Build) ProtoMessage()    {}
 func (*Build) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_739f6c7d44c8a606, []int{0}
+	return fileDescriptor_040ca5655a0ae0a6, []int{0}
 }
 func (m *Build) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Build.Unmarshal(m, b)
@@ -74,8 +76,8 @@ func (m *Build) XXX_Unmarshal(b []byte) error {
 func (m *Build) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Build.Marshal(b, m, deterministic)
 }
-func (dst *Build) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Build.Merge(dst, src)
+func (m *Build) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Build.Merge(m, src)
 }
 func (m *Build) XXX_Size() int {
 	return xxx_messageInfo_Build.Size(m)
@@ -136,7 +138,7 @@ func (m *BuildSignature) Reset()         { *m = BuildSignature{} }
 func (m *BuildSignature) String() string { return proto.CompactTextString(m) }
 func (*BuildSignature) ProtoMessage()    {}
 func (*BuildSignature) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_739f6c7d44c8a606, []int{1}
+	return fileDescriptor_040ca5655a0ae0a6, []int{1}
 }
 func (m *BuildSignature) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildSignature.Unmarshal(m, b)
@@ -144,8 +146,8 @@ func (m *BuildSignature) XXX_Unmarshal(b []byte) error {
 func (m *BuildSignature) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_BuildSignature.Marshal(b, m, deterministic)
 }
-func (dst *BuildSignature) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BuildSignature.Merge(dst, src)
+func (m *BuildSignature) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BuildSignature.Merge(m, src)
 }
 func (m *BuildSignature) XXX_Size() int {
 	return xxx_messageInfo_BuildSignature.Size(m)
@@ -209,7 +211,7 @@ func (m *Details) Reset()         { *m = Details{} }
 func (m *Details) String() string { return proto.CompactTextString(m) }
 func (*Details) ProtoMessage()    {}
 func (*Details) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_739f6c7d44c8a606, []int{2}
+	return fileDescriptor_040ca5655a0ae0a6, []int{2}
 }
 func (m *Details) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Details.Unmarshal(m, b)
@@ -217,8 +219,8 @@ func (m *Details) XXX_Unmarshal(b []byte) error {
 func (m *Details) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Details.Marshal(b, m, deterministic)
 }
-func (dst *Details) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Details.Merge(dst, src)
+func (m *Details) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Details.Merge(m, src)
 }
 func (m *Details) XXX_Size() int {
 	return xxx_messageInfo_Details.Size(m)
@@ -251,10 +253,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/build/build.proto", fileDescriptor_build_739f6c7d44c8a606)
+	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/build/build.proto", fileDescriptor_040ca5655a0ae0a6)
 }
 
-var fileDescriptor_build_739f6c7d44c8a606 = []byte{
+var fileDescriptor_040ca5655a0ae0a6 = []byte{
 	// 434 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0x4d, 0x6f, 0xd3, 0x40,
 	0x10, 0xc5, 0x29, 0x6d, 0x9a, 0x69, 0x95, 0x86, 0x15, 0x91, 0x2c, 0x04, 0x52, 0x14, 0x09, 0x11,

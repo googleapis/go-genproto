@@ -53,7 +53,7 @@ func (m *DeleteLogRequest) Reset()         { *m = DeleteLogRequest{} }
 func (m *DeleteLogRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteLogRequest) ProtoMessage()    {}
 func (*DeleteLogRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{0}
+	return fileDescriptor_6a8ba408154557e4, []int{0}
 }
 func (m *DeleteLogRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteLogRequest.Unmarshal(m, b)
@@ -61,8 +61,8 @@ func (m *DeleteLogRequest) XXX_Unmarshal(b []byte) error {
 func (m *DeleteLogRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeleteLogRequest.Marshal(b, m, deterministic)
 }
-func (dst *DeleteLogRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteLogRequest.Merge(dst, src)
+func (m *DeleteLogRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteLogRequest.Merge(m, src)
 }
 func (m *DeleteLogRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteLogRequest.Size(m)
@@ -153,7 +153,7 @@ func (m *WriteLogEntriesRequest) Reset()         { *m = WriteLogEntriesRequest{}
 func (m *WriteLogEntriesRequest) String() string { return proto.CompactTextString(m) }
 func (*WriteLogEntriesRequest) ProtoMessage()    {}
 func (*WriteLogEntriesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{1}
+	return fileDescriptor_6a8ba408154557e4, []int{1}
 }
 func (m *WriteLogEntriesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteLogEntriesRequest.Unmarshal(m, b)
@@ -161,8 +161,8 @@ func (m *WriteLogEntriesRequest) XXX_Unmarshal(b []byte) error {
 func (m *WriteLogEntriesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_WriteLogEntriesRequest.Marshal(b, m, deterministic)
 }
-func (dst *WriteLogEntriesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WriteLogEntriesRequest.Merge(dst, src)
+func (m *WriteLogEntriesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WriteLogEntriesRequest.Merge(m, src)
 }
 func (m *WriteLogEntriesRequest) XXX_Size() int {
 	return xxx_messageInfo_WriteLogEntriesRequest.Size(m)
@@ -227,7 +227,7 @@ func (m *WriteLogEntriesResponse) Reset()         { *m = WriteLogEntriesResponse
 func (m *WriteLogEntriesResponse) String() string { return proto.CompactTextString(m) }
 func (*WriteLogEntriesResponse) ProtoMessage()    {}
 func (*WriteLogEntriesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{2}
+	return fileDescriptor_6a8ba408154557e4, []int{2}
 }
 func (m *WriteLogEntriesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteLogEntriesResponse.Unmarshal(m, b)
@@ -235,8 +235,8 @@ func (m *WriteLogEntriesResponse) XXX_Unmarshal(b []byte) error {
 func (m *WriteLogEntriesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_WriteLogEntriesResponse.Marshal(b, m, deterministic)
 }
-func (dst *WriteLogEntriesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WriteLogEntriesResponse.Merge(dst, src)
+func (m *WriteLogEntriesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WriteLogEntriesResponse.Merge(m, src)
 }
 func (m *WriteLogEntriesResponse) XXX_Size() int {
 	return xxx_messageInfo_WriteLogEntriesResponse.Size(m)
@@ -265,7 +265,7 @@ func (m *WriteLogEntriesPartialErrors) Reset()         { *m = WriteLogEntriesPar
 func (m *WriteLogEntriesPartialErrors) String() string { return proto.CompactTextString(m) }
 func (*WriteLogEntriesPartialErrors) ProtoMessage()    {}
 func (*WriteLogEntriesPartialErrors) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{3}
+	return fileDescriptor_6a8ba408154557e4, []int{3}
 }
 func (m *WriteLogEntriesPartialErrors) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteLogEntriesPartialErrors.Unmarshal(m, b)
@@ -273,8 +273,8 @@ func (m *WriteLogEntriesPartialErrors) XXX_Unmarshal(b []byte) error {
 func (m *WriteLogEntriesPartialErrors) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_WriteLogEntriesPartialErrors.Marshal(b, m, deterministic)
 }
-func (dst *WriteLogEntriesPartialErrors) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WriteLogEntriesPartialErrors.Merge(dst, src)
+func (m *WriteLogEntriesPartialErrors) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WriteLogEntriesPartialErrors.Merge(m, src)
 }
 func (m *WriteLogEntriesPartialErrors) XXX_Size() int {
 	return xxx_messageInfo_WriteLogEntriesPartialErrors.Size(m)
@@ -343,7 +343,7 @@ func (m *ListLogEntriesRequest) Reset()         { *m = ListLogEntriesRequest{} }
 func (m *ListLogEntriesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListLogEntriesRequest) ProtoMessage()    {}
 func (*ListLogEntriesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{4}
+	return fileDescriptor_6a8ba408154557e4, []int{4}
 }
 func (m *ListLogEntriesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogEntriesRequest.Unmarshal(m, b)
@@ -351,8 +351,8 @@ func (m *ListLogEntriesRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListLogEntriesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListLogEntriesRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListLogEntriesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListLogEntriesRequest.Merge(dst, src)
+func (m *ListLogEntriesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListLogEntriesRequest.Merge(m, src)
 }
 func (m *ListLogEntriesRequest) XXX_Size() int {
 	return xxx_messageInfo_ListLogEntriesRequest.Size(m)
@@ -432,7 +432,7 @@ func (m *ListLogEntriesResponse) Reset()         { *m = ListLogEntriesResponse{}
 func (m *ListLogEntriesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListLogEntriesResponse) ProtoMessage()    {}
 func (*ListLogEntriesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{5}
+	return fileDescriptor_6a8ba408154557e4, []int{5}
 }
 func (m *ListLogEntriesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogEntriesResponse.Unmarshal(m, b)
@@ -440,8 +440,8 @@ func (m *ListLogEntriesResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListLogEntriesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListLogEntriesResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListLogEntriesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListLogEntriesResponse.Merge(dst, src)
+func (m *ListLogEntriesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListLogEntriesResponse.Merge(m, src)
 }
 func (m *ListLogEntriesResponse) XXX_Size() int {
 	return xxx_messageInfo_ListLogEntriesResponse.Size(m)
@@ -488,7 +488,7 @@ func (m *ListMonitoredResourceDescriptorsRequest) Reset() {
 func (m *ListMonitoredResourceDescriptorsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListMonitoredResourceDescriptorsRequest) ProtoMessage()    {}
 func (*ListMonitoredResourceDescriptorsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{6}
+	return fileDescriptor_6a8ba408154557e4, []int{6}
 }
 func (m *ListMonitoredResourceDescriptorsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListMonitoredResourceDescriptorsRequest.Unmarshal(m, b)
@@ -496,8 +496,8 @@ func (m *ListMonitoredResourceDescriptorsRequest) XXX_Unmarshal(b []byte) error 
 func (m *ListMonitoredResourceDescriptorsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListMonitoredResourceDescriptorsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListMonitoredResourceDescriptorsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListMonitoredResourceDescriptorsRequest.Merge(dst, src)
+func (m *ListMonitoredResourceDescriptorsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListMonitoredResourceDescriptorsRequest.Merge(m, src)
 }
 func (m *ListMonitoredResourceDescriptorsRequest) XXX_Size() int {
 	return xxx_messageInfo_ListMonitoredResourceDescriptorsRequest.Size(m)
@@ -541,7 +541,7 @@ func (m *ListMonitoredResourceDescriptorsResponse) Reset() {
 func (m *ListMonitoredResourceDescriptorsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListMonitoredResourceDescriptorsResponse) ProtoMessage()    {}
 func (*ListMonitoredResourceDescriptorsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{7}
+	return fileDescriptor_6a8ba408154557e4, []int{7}
 }
 func (m *ListMonitoredResourceDescriptorsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListMonitoredResourceDescriptorsResponse.Unmarshal(m, b)
@@ -549,8 +549,8 @@ func (m *ListMonitoredResourceDescriptorsResponse) XXX_Unmarshal(b []byte) error
 func (m *ListMonitoredResourceDescriptorsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListMonitoredResourceDescriptorsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListMonitoredResourceDescriptorsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListMonitoredResourceDescriptorsResponse.Merge(dst, src)
+func (m *ListMonitoredResourceDescriptorsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListMonitoredResourceDescriptorsResponse.Merge(m, src)
 }
 func (m *ListMonitoredResourceDescriptorsResponse) XXX_Size() int {
 	return xxx_messageInfo_ListMonitoredResourceDescriptorsResponse.Size(m)
@@ -602,7 +602,7 @@ func (m *ListLogsRequest) Reset()         { *m = ListLogsRequest{} }
 func (m *ListLogsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListLogsRequest) ProtoMessage()    {}
 func (*ListLogsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{8}
+	return fileDescriptor_6a8ba408154557e4, []int{8}
 }
 func (m *ListLogsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogsRequest.Unmarshal(m, b)
@@ -610,8 +610,8 @@ func (m *ListLogsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListLogsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListLogsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListLogsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListLogsRequest.Merge(dst, src)
+func (m *ListLogsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListLogsRequest.Merge(m, src)
 }
 func (m *ListLogsRequest) XXX_Size() int {
 	return xxx_messageInfo_ListLogsRequest.Size(m)
@@ -662,7 +662,7 @@ func (m *ListLogsResponse) Reset()         { *m = ListLogsResponse{} }
 func (m *ListLogsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListLogsResponse) ProtoMessage()    {}
 func (*ListLogsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_logging_e1a2d3408d65219d, []int{9}
+	return fileDescriptor_6a8ba408154557e4, []int{9}
 }
 func (m *ListLogsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogsResponse.Unmarshal(m, b)
@@ -670,8 +670,8 @@ func (m *ListLogsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListLogsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListLogsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListLogsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListLogsResponse.Merge(dst, src)
+func (m *ListLogsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListLogsResponse.Merge(m, src)
 }
 func (m *ListLogsResponse) XXX_Size() int {
 	return xxx_messageInfo_ListLogsResponse.Size(m)
@@ -953,11 +953,9 @@ var _LoggingServiceV2_serviceDesc = grpc.ServiceDesc{
 	Metadata: "google/logging/v2/logging.proto",
 }
 
-func init() {
-	proto.RegisterFile("google/logging/v2/logging.proto", fileDescriptor_logging_e1a2d3408d65219d)
-}
+func init() { proto.RegisterFile("google/logging/v2/logging.proto", fileDescriptor_6a8ba408154557e4) }
 
-var fileDescriptor_logging_e1a2d3408d65219d = []byte{
+var fileDescriptor_6a8ba408154557e4 = []byte{
 	// 1093 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x56, 0x4f, 0x6f, 0xdc, 0x44,
 	0x14, 0xd7, 0x6c, 0x9a, 0xcd, 0xee, 0x84, 0x26, 0xdb, 0x69, 0xb3, 0x71, 0x77, 0x93, 0x66, 0xb3,
