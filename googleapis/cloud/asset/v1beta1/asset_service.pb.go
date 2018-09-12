@@ -43,6 +43,7 @@ var ContentType_name = map[int32]string{
 	1: "RESOURCE",
 	2: "IAM_POLICY",
 }
+
 var ContentType_value = map[string]int32{
 	"CONTENT_TYPE_UNSPECIFIED": 0,
 	"RESOURCE":                 1,
@@ -52,8 +53,9 @@ var ContentType_value = map[string]int32{
 func (x ContentType) String() string {
 	return proto.EnumName(ContentType_name, int32(x))
 }
+
 func (ContentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6ab303c6358bbeab, []int{0}
+	return fileDescriptor_565cfbddaa85b7d6, []int{0}
 }
 
 // Export asset request.
@@ -86,7 +88,7 @@ func (m *ExportAssetsRequest) Reset()         { *m = ExportAssetsRequest{} }
 func (m *ExportAssetsRequest) String() string { return proto.CompactTextString(m) }
 func (*ExportAssetsRequest) ProtoMessage()    {}
 func (*ExportAssetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6ab303c6358bbeab, []int{0}
+	return fileDescriptor_565cfbddaa85b7d6, []int{0}
 }
 func (m *ExportAssetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportAssetsRequest.Unmarshal(m, b)
@@ -94,8 +96,8 @@ func (m *ExportAssetsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ExportAssetsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ExportAssetsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ExportAssetsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExportAssetsRequest.Merge(dst, src)
+func (m *ExportAssetsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExportAssetsRequest.Merge(m, src)
 }
 func (m *ExportAssetsRequest) XXX_Size() int {
 	return xxx_messageInfo_ExportAssetsRequest.Size(m)
@@ -159,7 +161,7 @@ func (m *ExportAssetsResponse) Reset()         { *m = ExportAssetsResponse{} }
 func (m *ExportAssetsResponse) String() string { return proto.CompactTextString(m) }
 func (*ExportAssetsResponse) ProtoMessage()    {}
 func (*ExportAssetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6ab303c6358bbeab, []int{1}
+	return fileDescriptor_565cfbddaa85b7d6, []int{1}
 }
 func (m *ExportAssetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportAssetsResponse.Unmarshal(m, b)
@@ -167,8 +169,8 @@ func (m *ExportAssetsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ExportAssetsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ExportAssetsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ExportAssetsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExportAssetsResponse.Merge(dst, src)
+func (m *ExportAssetsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExportAssetsResponse.Merge(m, src)
 }
 func (m *ExportAssetsResponse) XXX_Size() int {
 	return xxx_messageInfo_ExportAssetsResponse.Size(m)
@@ -222,7 +224,7 @@ func (m *BatchGetAssetsHistoryRequest) Reset()         { *m = BatchGetAssetsHist
 func (m *BatchGetAssetsHistoryRequest) String() string { return proto.CompactTextString(m) }
 func (*BatchGetAssetsHistoryRequest) ProtoMessage()    {}
 func (*BatchGetAssetsHistoryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6ab303c6358bbeab, []int{2}
+	return fileDescriptor_565cfbddaa85b7d6, []int{2}
 }
 func (m *BatchGetAssetsHistoryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetAssetsHistoryRequest.Unmarshal(m, b)
@@ -230,8 +232,8 @@ func (m *BatchGetAssetsHistoryRequest) XXX_Unmarshal(b []byte) error {
 func (m *BatchGetAssetsHistoryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_BatchGetAssetsHistoryRequest.Marshal(b, m, deterministic)
 }
-func (dst *BatchGetAssetsHistoryRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BatchGetAssetsHistoryRequest.Merge(dst, src)
+func (m *BatchGetAssetsHistoryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchGetAssetsHistoryRequest.Merge(m, src)
 }
 func (m *BatchGetAssetsHistoryRequest) XXX_Size() int {
 	return xxx_messageInfo_BatchGetAssetsHistoryRequest.Size(m)
@@ -283,7 +285,7 @@ func (m *BatchGetAssetsHistoryResponse) Reset()         { *m = BatchGetAssetsHis
 func (m *BatchGetAssetsHistoryResponse) String() string { return proto.CompactTextString(m) }
 func (*BatchGetAssetsHistoryResponse) ProtoMessage()    {}
 func (*BatchGetAssetsHistoryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6ab303c6358bbeab, []int{3}
+	return fileDescriptor_565cfbddaa85b7d6, []int{3}
 }
 func (m *BatchGetAssetsHistoryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetAssetsHistoryResponse.Unmarshal(m, b)
@@ -291,8 +293,8 @@ func (m *BatchGetAssetsHistoryResponse) XXX_Unmarshal(b []byte) error {
 func (m *BatchGetAssetsHistoryResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_BatchGetAssetsHistoryResponse.Marshal(b, m, deterministic)
 }
-func (dst *BatchGetAssetsHistoryResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BatchGetAssetsHistoryResponse.Merge(dst, src)
+func (m *BatchGetAssetsHistoryResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchGetAssetsHistoryResponse.Merge(m, src)
 }
 func (m *BatchGetAssetsHistoryResponse) XXX_Size() int {
 	return xxx_messageInfo_BatchGetAssetsHistoryResponse.Size(m)
@@ -326,7 +328,7 @@ func (m *OutputConfig) Reset()         { *m = OutputConfig{} }
 func (m *OutputConfig) String() string { return proto.CompactTextString(m) }
 func (*OutputConfig) ProtoMessage()    {}
 func (*OutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6ab303c6358bbeab, []int{4}
+	return fileDescriptor_565cfbddaa85b7d6, []int{4}
 }
 func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputConfig.Unmarshal(m, b)
@@ -334,8 +336,8 @@ func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
 func (m *OutputConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_OutputConfig.Marshal(b, m, deterministic)
 }
-func (dst *OutputConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_OutputConfig.Merge(dst, src)
+func (m *OutputConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OutputConfig.Merge(m, src)
 }
 func (m *OutputConfig) XXX_Size() int {
 	return xxx_messageInfo_OutputConfig.Size(m)
@@ -441,7 +443,7 @@ func (m *GcsDestination) Reset()         { *m = GcsDestination{} }
 func (m *GcsDestination) String() string { return proto.CompactTextString(m) }
 func (*GcsDestination) ProtoMessage()    {}
 func (*GcsDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6ab303c6358bbeab, []int{5}
+	return fileDescriptor_565cfbddaa85b7d6, []int{5}
 }
 func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsDestination.Unmarshal(m, b)
@@ -449,8 +451,8 @@ func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
 func (m *GcsDestination) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GcsDestination.Marshal(b, m, deterministic)
 }
-func (dst *GcsDestination) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GcsDestination.Merge(dst, src)
+func (m *GcsDestination) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GcsDestination.Merge(m, src)
 }
 func (m *GcsDestination) XXX_Size() int {
 	return xxx_messageInfo_GcsDestination.Size(m)
@@ -602,10 +604,10 @@ var _AssetService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/asset/v1beta1/asset_service.proto", fileDescriptor_asset_service_6ab303c6358bbeab)
+	proto.RegisterFile("google/cloud/asset/v1beta1/asset_service.proto", fileDescriptor_565cfbddaa85b7d6)
 }
 
-var fileDescriptor_asset_service_6ab303c6358bbeab = []byte{
+var fileDescriptor_565cfbddaa85b7d6 = []byte{
 	// 766 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0xcd, 0x4e, 0xdb, 0x4a,
 	0x14, 0xc6, 0xce, 0xbd, 0x08, 0x26, 0x21, 0x37, 0x77, 0xfa, 0x23, 0x2b, 0x82, 0x12, 0xb9, 0x52,

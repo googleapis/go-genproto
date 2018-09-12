@@ -45,6 +45,7 @@ var HttpMethod_name = map[int32]string{
 	4: "PUT",
 	5: "DELETE",
 }
+
 var HttpMethod_value = map[string]int32{
 	"HTTP_METHOD_UNSPECIFIED": 0,
 	"POST":                    1,
@@ -57,8 +58,9 @@ var HttpMethod_value = map[string]int32{
 func (x HttpMethod) String() string {
 	return proto.EnumName(HttpMethod_name, int32(x))
 }
+
 func (HttpMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_d181648443660751, []int{0}
+	return fileDescriptor_595de6119aed6d9e, []int{0}
 }
 
 // App Engine HTTP queue.
@@ -91,7 +93,7 @@ func (m *AppEngineHttpQueue) Reset()         { *m = AppEngineHttpQueue{} }
 func (m *AppEngineHttpQueue) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpQueue) ProtoMessage()    {}
 func (*AppEngineHttpQueue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_d181648443660751, []int{0}
+	return fileDescriptor_595de6119aed6d9e, []int{0}
 }
 func (m *AppEngineHttpQueue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpQueue.Unmarshal(m, b)
@@ -99,8 +101,8 @@ func (m *AppEngineHttpQueue) XXX_Unmarshal(b []byte) error {
 func (m *AppEngineHttpQueue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_AppEngineHttpQueue.Marshal(b, m, deterministic)
 }
-func (dst *AppEngineHttpQueue) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AppEngineHttpQueue.Merge(dst, src)
+func (m *AppEngineHttpQueue) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AppEngineHttpQueue.Merge(m, src)
 }
 func (m *AppEngineHttpQueue) XXX_Size() int {
 	return xxx_messageInfo_AppEngineHttpQueue.Size(m)
@@ -242,7 +244,7 @@ func (m *AppEngineHttpRequest) Reset()         { *m = AppEngineHttpRequest{} }
 func (m *AppEngineHttpRequest) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpRequest) ProtoMessage()    {}
 func (*AppEngineHttpRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_d181648443660751, []int{1}
+	return fileDescriptor_595de6119aed6d9e, []int{1}
 }
 func (m *AppEngineHttpRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpRequest.Unmarshal(m, b)
@@ -250,8 +252,8 @@ func (m *AppEngineHttpRequest) XXX_Unmarshal(b []byte) error {
 func (m *AppEngineHttpRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_AppEngineHttpRequest.Marshal(b, m, deterministic)
 }
-func (dst *AppEngineHttpRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AppEngineHttpRequest.Merge(dst, src)
+func (m *AppEngineHttpRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AppEngineHttpRequest.Merge(m, src)
 }
 func (m *AppEngineHttpRequest) XXX_Size() int {
 	return xxx_messageInfo_AppEngineHttpRequest.Size(m)
@@ -379,7 +381,7 @@ func (m *AppEngineRouting) Reset()         { *m = AppEngineRouting{} }
 func (m *AppEngineRouting) String() string { return proto.CompactTextString(m) }
 func (*AppEngineRouting) ProtoMessage()    {}
 func (*AppEngineRouting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_d181648443660751, []int{2}
+	return fileDescriptor_595de6119aed6d9e, []int{2}
 }
 func (m *AppEngineRouting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineRouting.Unmarshal(m, b)
@@ -387,8 +389,8 @@ func (m *AppEngineRouting) XXX_Unmarshal(b []byte) error {
 func (m *AppEngineRouting) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_AppEngineRouting.Marshal(b, m, deterministic)
 }
-func (dst *AppEngineRouting) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AppEngineRouting.Merge(dst, src)
+func (m *AppEngineRouting) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AppEngineRouting.Merge(m, src)
 }
 func (m *AppEngineRouting) XXX_Size() int {
 	return xxx_messageInfo_AppEngineRouting.Size(m)
@@ -436,10 +438,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2beta3/target.proto", fileDescriptor_target_d181648443660751)
+	proto.RegisterFile("google/cloud/tasks/v2beta3/target.proto", fileDescriptor_595de6119aed6d9e)
 }
 
-var fileDescriptor_target_d181648443660751 = []byte{
+var fileDescriptor_595de6119aed6d9e = []byte{
 	// 511 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x53, 0x51, 0x6b, 0xd3, 0x50,
 	0x14, 0x36, 0x4d, 0xbb, 0xae, 0xa7, 0x45, 0xc2, 0x65, 0x60, 0xe8, 0x44, 0x6a, 0x1f, 0xb4, 0x88,

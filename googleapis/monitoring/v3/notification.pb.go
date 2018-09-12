@@ -50,6 +50,7 @@ var NotificationChannel_VerificationStatus_name = map[int32]string{
 	1: "UNVERIFIED",
 	2: "VERIFIED",
 }
+
 var NotificationChannel_VerificationStatus_value = map[string]int32{
 	"VERIFICATION_STATUS_UNSPECIFIED": 0,
 	"UNVERIFIED":                      1,
@@ -59,8 +60,9 @@ var NotificationChannel_VerificationStatus_value = map[string]int32{
 func (x NotificationChannel_VerificationStatus) String() string {
 	return proto.EnumName(NotificationChannel_VerificationStatus_name, int32(x))
 }
+
 func (NotificationChannel_VerificationStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_notification_edf6bf9ac9e92803, []int{1, 0}
+	return fileDescriptor_4399f1e4bc1a75ef, []int{1, 0}
 }
 
 // A description of a notification channel. The descriptor includes
@@ -99,7 +101,7 @@ func (m *NotificationChannelDescriptor) Reset()         { *m = NotificationChann
 func (m *NotificationChannelDescriptor) String() string { return proto.CompactTextString(m) }
 func (*NotificationChannelDescriptor) ProtoMessage()    {}
 func (*NotificationChannelDescriptor) Descriptor() ([]byte, []int) {
-	return fileDescriptor_notification_edf6bf9ac9e92803, []int{0}
+	return fileDescriptor_4399f1e4bc1a75ef, []int{0}
 }
 func (m *NotificationChannelDescriptor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NotificationChannelDescriptor.Unmarshal(m, b)
@@ -107,8 +109,8 @@ func (m *NotificationChannelDescriptor) XXX_Unmarshal(b []byte) error {
 func (m *NotificationChannelDescriptor) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_NotificationChannelDescriptor.Marshal(b, m, deterministic)
 }
-func (dst *NotificationChannelDescriptor) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_NotificationChannelDescriptor.Merge(dst, src)
+func (m *NotificationChannelDescriptor) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NotificationChannelDescriptor.Merge(m, src)
 }
 func (m *NotificationChannelDescriptor) XXX_Size() int {
 	return xxx_messageInfo_NotificationChannelDescriptor.Size(m)
@@ -237,7 +239,7 @@ func (m *NotificationChannel) Reset()         { *m = NotificationChannel{} }
 func (m *NotificationChannel) String() string { return proto.CompactTextString(m) }
 func (*NotificationChannel) ProtoMessage()    {}
 func (*NotificationChannel) Descriptor() ([]byte, []int) {
-	return fileDescriptor_notification_edf6bf9ac9e92803, []int{1}
+	return fileDescriptor_4399f1e4bc1a75ef, []int{1}
 }
 func (m *NotificationChannel) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NotificationChannel.Unmarshal(m, b)
@@ -245,8 +247,8 @@ func (m *NotificationChannel) XXX_Unmarshal(b []byte) error {
 func (m *NotificationChannel) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_NotificationChannel.Marshal(b, m, deterministic)
 }
-func (dst *NotificationChannel) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_NotificationChannel.Merge(dst, src)
+func (m *NotificationChannel) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NotificationChannel.Merge(m, src)
 }
 func (m *NotificationChannel) XXX_Size() int {
 	return xxx_messageInfo_NotificationChannel.Size(m)
@@ -322,10 +324,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/monitoring/v3/notification.proto", fileDescriptor_notification_edf6bf9ac9e92803)
+	proto.RegisterFile("google/monitoring/v3/notification.proto", fileDescriptor_4399f1e4bc1a75ef)
 }
 
-var fileDescriptor_notification_edf6bf9ac9e92803 = []byte{
+var fileDescriptor_4399f1e4bc1a75ef = []byte{
 	// 602 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0x6d, 0x6b, 0xdb, 0x3c,
 	0x14, 0x7d, 0x9c, 0x34, 0x7d, 0x5a, 0xb9, 0xa4, 0x9d, 0x5a, 0x86, 0xf1, 0xde, 0xd2, 0xee, 0xc3,

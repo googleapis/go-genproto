@@ -81,6 +81,7 @@ var AudioEncoding_name = map[int32]string{
 	6: "AUDIO_ENCODING_OGG_OPUS",
 	7: "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE",
 }
+
 var AudioEncoding_value = map[string]int32{
 	"AUDIO_ENCODING_UNSPECIFIED":            0,
 	"AUDIO_ENCODING_LINEAR_16":              1,
@@ -95,8 +96,9 @@ var AudioEncoding_value = map[string]int32{
 func (x AudioEncoding) String() string {
 	return proto.EnumName(AudioEncoding_name, int32(x))
 }
+
 func (AudioEncoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{0}
+	return fileDescriptor_40a53f854d709740, []int{0}
 }
 
 // Represents the system's confidence that this knowledge answer is a good
@@ -120,6 +122,7 @@ var KnowledgeAnswers_Answer_MatchConfidenceLevel_name = map[int32]string{
 	2: "MEDIUM",
 	3: "HIGH",
 }
+
 var KnowledgeAnswers_Answer_MatchConfidenceLevel_value = map[string]int32{
 	"MATCH_CONFIDENCE_LEVEL_UNSPECIFIED": 0,
 	"LOW":                                1,
@@ -130,8 +133,9 @@ var KnowledgeAnswers_Answer_MatchConfidenceLevel_value = map[string]int32{
 func (x KnowledgeAnswers_Answer_MatchConfidenceLevel) String() string {
 	return proto.EnumName(KnowledgeAnswers_Answer_MatchConfidenceLevel_name, int32(x))
 }
+
 func (KnowledgeAnswers_Answer_MatchConfidenceLevel) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{5, 0, 0}
+	return fileDescriptor_40a53f854d709740, []int{5, 0, 0}
 }
 
 // Type of the response message.
@@ -157,6 +161,7 @@ var StreamingRecognitionResult_MessageType_name = map[int32]string{
 	1: "TRANSCRIPT",
 	2: "END_OF_SINGLE_UTTERANCE",
 }
+
 var StreamingRecognitionResult_MessageType_value = map[string]int32{
 	"MESSAGE_TYPE_UNSPECIFIED": 0,
 	"TRANSCRIPT":               1,
@@ -166,8 +171,9 @@ var StreamingRecognitionResult_MessageType_value = map[string]int32{
 func (x StreamingRecognitionResult_MessageType) String() string {
 	return proto.EnumName(StreamingRecognitionResult_MessageType_name, int32(x))
 }
+
 func (StreamingRecognitionResult_MessageType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{8, 0}
+	return fileDescriptor_40a53f854d709740, []int{8, 0}
 }
 
 // The request to detect user's intent.
@@ -210,7 +216,7 @@ func (m *DetectIntentRequest) Reset()         { *m = DetectIntentRequest{} }
 func (m *DetectIntentRequest) String() string { return proto.CompactTextString(m) }
 func (*DetectIntentRequest) ProtoMessage()    {}
 func (*DetectIntentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{0}
+	return fileDescriptor_40a53f854d709740, []int{0}
 }
 func (m *DetectIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectIntentRequest.Unmarshal(m, b)
@@ -218,8 +224,8 @@ func (m *DetectIntentRequest) XXX_Unmarshal(b []byte) error {
 func (m *DetectIntentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DetectIntentRequest.Marshal(b, m, deterministic)
 }
-func (dst *DetectIntentRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DetectIntentRequest.Merge(dst, src)
+func (m *DetectIntentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DetectIntentRequest.Merge(m, src)
 }
 func (m *DetectIntentRequest) XXX_Size() int {
 	return xxx_messageInfo_DetectIntentRequest.Size(m)
@@ -300,7 +306,7 @@ func (m *DetectIntentResponse) Reset()         { *m = DetectIntentResponse{} }
 func (m *DetectIntentResponse) String() string { return proto.CompactTextString(m) }
 func (*DetectIntentResponse) ProtoMessage()    {}
 func (*DetectIntentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{1}
+	return fileDescriptor_40a53f854d709740, []int{1}
 }
 func (m *DetectIntentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectIntentResponse.Unmarshal(m, b)
@@ -308,8 +314,8 @@ func (m *DetectIntentResponse) XXX_Unmarshal(b []byte) error {
 func (m *DetectIntentResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DetectIntentResponse.Marshal(b, m, deterministic)
 }
-func (dst *DetectIntentResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DetectIntentResponse.Merge(dst, src)
+func (m *DetectIntentResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DetectIntentResponse.Merge(m, src)
 }
 func (m *DetectIntentResponse) XXX_Size() int {
 	return xxx_messageInfo_DetectIntentResponse.Size(m)
@@ -406,7 +412,7 @@ func (m *QueryParameters) Reset()         { *m = QueryParameters{} }
 func (m *QueryParameters) String() string { return proto.CompactTextString(m) }
 func (*QueryParameters) ProtoMessage()    {}
 func (*QueryParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{2}
+	return fileDescriptor_40a53f854d709740, []int{2}
 }
 func (m *QueryParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryParameters.Unmarshal(m, b)
@@ -414,8 +420,8 @@ func (m *QueryParameters) XXX_Unmarshal(b []byte) error {
 func (m *QueryParameters) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_QueryParameters.Marshal(b, m, deterministic)
 }
-func (dst *QueryParameters) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryParameters.Merge(dst, src)
+func (m *QueryParameters) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryParameters.Merge(m, src)
 }
 func (m *QueryParameters) XXX_Size() int {
 	return xxx_messageInfo_QueryParameters.Size(m)
@@ -507,7 +513,7 @@ func (m *QueryInput) Reset()         { *m = QueryInput{} }
 func (m *QueryInput) String() string { return proto.CompactTextString(m) }
 func (*QueryInput) ProtoMessage()    {}
 func (*QueryInput) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{3}
+	return fileDescriptor_40a53f854d709740, []int{3}
 }
 func (m *QueryInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryInput.Unmarshal(m, b)
@@ -515,8 +521,8 @@ func (m *QueryInput) XXX_Unmarshal(b []byte) error {
 func (m *QueryInput) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_QueryInput.Marshal(b, m, deterministic)
 }
-func (dst *QueryInput) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryInput.Merge(dst, src)
+func (m *QueryInput) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryInput.Merge(m, src)
 }
 func (m *QueryInput) XXX_Size() int {
 	return xxx_messageInfo_QueryInput.Size(m)
@@ -746,7 +752,7 @@ func (m *QueryResult) Reset()         { *m = QueryResult{} }
 func (m *QueryResult) String() string { return proto.CompactTextString(m) }
 func (*QueryResult) ProtoMessage()    {}
 func (*QueryResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{4}
+	return fileDescriptor_40a53f854d709740, []int{4}
 }
 func (m *QueryResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryResult.Unmarshal(m, b)
@@ -754,8 +760,8 @@ func (m *QueryResult) XXX_Unmarshal(b []byte) error {
 func (m *QueryResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_QueryResult.Marshal(b, m, deterministic)
 }
-func (dst *QueryResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryResult.Merge(dst, src)
+func (m *QueryResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryResult.Merge(m, src)
 }
 func (m *QueryResult) XXX_Size() int {
 	return xxx_messageInfo_QueryResult.Size(m)
@@ -891,7 +897,7 @@ func (m *KnowledgeAnswers) Reset()         { *m = KnowledgeAnswers{} }
 func (m *KnowledgeAnswers) String() string { return proto.CompactTextString(m) }
 func (*KnowledgeAnswers) ProtoMessage()    {}
 func (*KnowledgeAnswers) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{5}
+	return fileDescriptor_40a53f854d709740, []int{5}
 }
 func (m *KnowledgeAnswers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KnowledgeAnswers.Unmarshal(m, b)
@@ -899,8 +905,8 @@ func (m *KnowledgeAnswers) XXX_Unmarshal(b []byte) error {
 func (m *KnowledgeAnswers) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_KnowledgeAnswers.Marshal(b, m, deterministic)
 }
-func (dst *KnowledgeAnswers) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_KnowledgeAnswers.Merge(dst, src)
+func (m *KnowledgeAnswers) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_KnowledgeAnswers.Merge(m, src)
 }
 func (m *KnowledgeAnswers) XXX_Size() int {
 	return xxx_messageInfo_KnowledgeAnswers.Size(m)
@@ -955,7 +961,7 @@ func (m *KnowledgeAnswers_Answer) Reset()         { *m = KnowledgeAnswers_Answer
 func (m *KnowledgeAnswers_Answer) String() string { return proto.CompactTextString(m) }
 func (*KnowledgeAnswers_Answer) ProtoMessage()    {}
 func (*KnowledgeAnswers_Answer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{5, 0}
+	return fileDescriptor_40a53f854d709740, []int{5, 0}
 }
 func (m *KnowledgeAnswers_Answer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KnowledgeAnswers_Answer.Unmarshal(m, b)
@@ -963,8 +969,8 @@ func (m *KnowledgeAnswers_Answer) XXX_Unmarshal(b []byte) error {
 func (m *KnowledgeAnswers_Answer) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_KnowledgeAnswers_Answer.Marshal(b, m, deterministic)
 }
-func (dst *KnowledgeAnswers_Answer) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_KnowledgeAnswers_Answer.Merge(dst, src)
+func (m *KnowledgeAnswers_Answer) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_KnowledgeAnswers_Answer.Merge(m, src)
 }
 func (m *KnowledgeAnswers_Answer) XXX_Size() int {
 	return xxx_messageInfo_KnowledgeAnswers_Answer.Size(m)
@@ -1072,7 +1078,7 @@ func (m *StreamingDetectIntentRequest) Reset()         { *m = StreamingDetectInt
 func (m *StreamingDetectIntentRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamingDetectIntentRequest) ProtoMessage()    {}
 func (*StreamingDetectIntentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{6}
+	return fileDescriptor_40a53f854d709740, []int{6}
 }
 func (m *StreamingDetectIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingDetectIntentRequest.Unmarshal(m, b)
@@ -1080,8 +1086,8 @@ func (m *StreamingDetectIntentRequest) XXX_Unmarshal(b []byte) error {
 func (m *StreamingDetectIntentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StreamingDetectIntentRequest.Marshal(b, m, deterministic)
 }
-func (dst *StreamingDetectIntentRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StreamingDetectIntentRequest.Merge(dst, src)
+func (m *StreamingDetectIntentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingDetectIntentRequest.Merge(m, src)
 }
 func (m *StreamingDetectIntentRequest) XXX_Size() int {
 	return xxx_messageInfo_StreamingDetectIntentRequest.Size(m)
@@ -1186,7 +1192,7 @@ func (m *StreamingDetectIntentResponse) Reset()         { *m = StreamingDetectIn
 func (m *StreamingDetectIntentResponse) String() string { return proto.CompactTextString(m) }
 func (*StreamingDetectIntentResponse) ProtoMessage()    {}
 func (*StreamingDetectIntentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{7}
+	return fileDescriptor_40a53f854d709740, []int{7}
 }
 func (m *StreamingDetectIntentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingDetectIntentResponse.Unmarshal(m, b)
@@ -1194,8 +1200,8 @@ func (m *StreamingDetectIntentResponse) XXX_Unmarshal(b []byte) error {
 func (m *StreamingDetectIntentResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StreamingDetectIntentResponse.Marshal(b, m, deterministic)
 }
-func (dst *StreamingDetectIntentResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StreamingDetectIntentResponse.Merge(dst, src)
+func (m *StreamingDetectIntentResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingDetectIntentResponse.Merge(m, src)
 }
 func (m *StreamingDetectIntentResponse) XXX_Size() int {
 	return xxx_messageInfo_StreamingDetectIntentResponse.Size(m)
@@ -1317,7 +1323,7 @@ func (m *StreamingRecognitionResult) Reset()         { *m = StreamingRecognition
 func (m *StreamingRecognitionResult) String() string { return proto.CompactTextString(m) }
 func (*StreamingRecognitionResult) ProtoMessage()    {}
 func (*StreamingRecognitionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{8}
+	return fileDescriptor_40a53f854d709740, []int{8}
 }
 func (m *StreamingRecognitionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingRecognitionResult.Unmarshal(m, b)
@@ -1325,8 +1331,8 @@ func (m *StreamingRecognitionResult) XXX_Unmarshal(b []byte) error {
 func (m *StreamingRecognitionResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StreamingRecognitionResult.Marshal(b, m, deterministic)
 }
-func (dst *StreamingRecognitionResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StreamingRecognitionResult.Merge(dst, src)
+func (m *StreamingRecognitionResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingRecognitionResult.Merge(m, src)
 }
 func (m *StreamingRecognitionResult) XXX_Size() int {
 	return xxx_messageInfo_StreamingRecognitionResult.Size(m)
@@ -1409,7 +1415,7 @@ func (m *InputAudioConfig) Reset()         { *m = InputAudioConfig{} }
 func (m *InputAudioConfig) String() string { return proto.CompactTextString(m) }
 func (*InputAudioConfig) ProtoMessage()    {}
 func (*InputAudioConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{9}
+	return fileDescriptor_40a53f854d709740, []int{9}
 }
 func (m *InputAudioConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputAudioConfig.Unmarshal(m, b)
@@ -1417,8 +1423,8 @@ func (m *InputAudioConfig) XXX_Unmarshal(b []byte) error {
 func (m *InputAudioConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_InputAudioConfig.Marshal(b, m, deterministic)
 }
-func (dst *InputAudioConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InputAudioConfig.Merge(dst, src)
+func (m *InputAudioConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InputAudioConfig.Merge(m, src)
 }
 func (m *InputAudioConfig) XXX_Size() int {
 	return xxx_messageInfo_InputAudioConfig.Size(m)
@@ -1483,7 +1489,7 @@ func (m *TextInput) Reset()         { *m = TextInput{} }
 func (m *TextInput) String() string { return proto.CompactTextString(m) }
 func (*TextInput) ProtoMessage()    {}
 func (*TextInput) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{10}
+	return fileDescriptor_40a53f854d709740, []int{10}
 }
 func (m *TextInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextInput.Unmarshal(m, b)
@@ -1491,8 +1497,8 @@ func (m *TextInput) XXX_Unmarshal(b []byte) error {
 func (m *TextInput) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_TextInput.Marshal(b, m, deterministic)
 }
-func (dst *TextInput) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TextInput.Merge(dst, src)
+func (m *TextInput) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TextInput.Merge(m, src)
 }
 func (m *TextInput) XXX_Size() int {
 	return xxx_messageInfo_TextInput.Size(m)
@@ -1541,7 +1547,7 @@ func (m *EventInput) Reset()         { *m = EventInput{} }
 func (m *EventInput) String() string { return proto.CompactTextString(m) }
 func (*EventInput) ProtoMessage()    {}
 func (*EventInput) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{11}
+	return fileDescriptor_40a53f854d709740, []int{11}
 }
 func (m *EventInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EventInput.Unmarshal(m, b)
@@ -1549,8 +1555,8 @@ func (m *EventInput) XXX_Unmarshal(b []byte) error {
 func (m *EventInput) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_EventInput.Marshal(b, m, deterministic)
 }
-func (dst *EventInput) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EventInput.Merge(dst, src)
+func (m *EventInput) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EventInput.Merge(m, src)
 }
 func (m *EventInput) XXX_Size() int {
 	return xxx_messageInfo_EventInput.Size(m)
@@ -1597,7 +1603,7 @@ func (m *SentimentAnalysisRequestConfig) Reset()         { *m = SentimentAnalysi
 func (m *SentimentAnalysisRequestConfig) String() string { return proto.CompactTextString(m) }
 func (*SentimentAnalysisRequestConfig) ProtoMessage()    {}
 func (*SentimentAnalysisRequestConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{12}
+	return fileDescriptor_40a53f854d709740, []int{12}
 }
 func (m *SentimentAnalysisRequestConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SentimentAnalysisRequestConfig.Unmarshal(m, b)
@@ -1605,8 +1611,8 @@ func (m *SentimentAnalysisRequestConfig) XXX_Unmarshal(b []byte) error {
 func (m *SentimentAnalysisRequestConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SentimentAnalysisRequestConfig.Marshal(b, m, deterministic)
 }
-func (dst *SentimentAnalysisRequestConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SentimentAnalysisRequestConfig.Merge(dst, src)
+func (m *SentimentAnalysisRequestConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SentimentAnalysisRequestConfig.Merge(m, src)
 }
 func (m *SentimentAnalysisRequestConfig) XXX_Size() int {
 	return xxx_messageInfo_SentimentAnalysisRequestConfig.Size(m)
@@ -1638,7 +1644,7 @@ func (m *SentimentAnalysisResult) Reset()         { *m = SentimentAnalysisResult
 func (m *SentimentAnalysisResult) String() string { return proto.CompactTextString(m) }
 func (*SentimentAnalysisResult) ProtoMessage()    {}
 func (*SentimentAnalysisResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{13}
+	return fileDescriptor_40a53f854d709740, []int{13}
 }
 func (m *SentimentAnalysisResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SentimentAnalysisResult.Unmarshal(m, b)
@@ -1646,8 +1652,8 @@ func (m *SentimentAnalysisResult) XXX_Unmarshal(b []byte) error {
 func (m *SentimentAnalysisResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SentimentAnalysisResult.Marshal(b, m, deterministic)
 }
-func (dst *SentimentAnalysisResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SentimentAnalysisResult.Merge(dst, src)
+func (m *SentimentAnalysisResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SentimentAnalysisResult.Merge(m, src)
 }
 func (m *SentimentAnalysisResult) XXX_Size() int {
 	return xxx_messageInfo_SentimentAnalysisResult.Size(m)
@@ -1683,7 +1689,7 @@ func (m *Sentiment) Reset()         { *m = Sentiment{} }
 func (m *Sentiment) String() string { return proto.CompactTextString(m) }
 func (*Sentiment) ProtoMessage()    {}
 func (*Sentiment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_251d19dfdf11847a, []int{14}
+	return fileDescriptor_40a53f854d709740, []int{14}
 }
 func (m *Sentiment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Sentiment.Unmarshal(m, b)
@@ -1691,8 +1697,8 @@ func (m *Sentiment) XXX_Unmarshal(b []byte) error {
 func (m *Sentiment) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Sentiment.Marshal(b, m, deterministic)
 }
-func (dst *Sentiment) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Sentiment.Merge(dst, src)
+func (m *Sentiment) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Sentiment.Merge(m, src)
 }
 func (m *Sentiment) XXX_Size() int {
 	return xxx_messageInfo_Sentiment.Size(m)
@@ -1892,10 +1898,10 @@ var _Sessions_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dialogflow/v2beta1/session.proto", fileDescriptor_session_251d19dfdf11847a)
+	proto.RegisterFile("google/cloud/dialogflow/v2beta1/session.proto", fileDescriptor_40a53f854d709740)
 }
 
-var fileDescriptor_session_251d19dfdf11847a = []byte{
+var fileDescriptor_40a53f854d709740 = []byte{
 	// 2081 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x58, 0xcd, 0x73, 0x1b, 0x49,
 	0x15, 0xcf, 0x48, 0xfe, 0x90, 0x9f, 0x14, 0x5b, 0xe9, 0x78, 0x63, 0xd9, 0x71, 0xbe, 0xb4, 0xb5,

@@ -204,10 +204,10 @@ var _IAMCredentials_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/iam/credentials/v1/iamcredentials.proto", fileDescriptor_iamcredentials_bb9e3c7fcb39de21)
+	proto.RegisterFile("google/iam/credentials/v1/iamcredentials.proto", fileDescriptor_ad032f4dbfa7437c)
 }
 
-var fileDescriptor_iamcredentials_bb9e3c7fcb39de21 = []byte{
+var fileDescriptor_ad032f4dbfa7437c = []byte{
 	// 372 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0xbd, 0x4e, 0xc3, 0x30,
 	0x14, 0x85, 0x65, 0x24, 0x7e, 0x94, 0x01, 0xa4, 0x30, 0x51, 0x31, 0x65, 0x40, 0x22, 0x48, 0x31,

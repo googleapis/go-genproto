@@ -50,6 +50,7 @@ var AudioInConfig_Encoding_name = map[int32]string{
 	1: "LINEAR16",
 	2: "FLAC",
 }
+
 var AudioInConfig_Encoding_value = map[string]int32{
 	"ENCODING_UNSPECIFIED": 0,
 	"LINEAR16":             1,
@@ -59,8 +60,9 @@ var AudioInConfig_Encoding_value = map[string]int32{
 func (x AudioInConfig_Encoding) String() string {
 	return proto.EnumName(AudioInConfig_Encoding_name, int32(x))
 }
+
 func (AudioInConfig_Encoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{1, 0}
+	return fileDescriptor_2a6c80cea3f0c886, []int{1, 0}
 }
 
 // Audio encoding of the data returned in the audio message. All encodings are
@@ -87,6 +89,7 @@ var AudioOutConfig_Encoding_name = map[int32]string{
 	2: "MP3",
 	3: "OPUS_IN_OGG",
 }
+
 var AudioOutConfig_Encoding_value = map[string]int32{
 	"ENCODING_UNSPECIFIED": 0,
 	"LINEAR16":             1,
@@ -97,8 +100,9 @@ var AudioOutConfig_Encoding_value = map[string]int32{
 func (x AudioOutConfig_Encoding) String() string {
 	return proto.EnumName(AudioOutConfig_Encoding_name, int32(x))
 }
+
 func (AudioOutConfig_Encoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{2, 0}
+	return fileDescriptor_2a6c80cea3f0c886, []int{2, 0}
 }
 
 // Possible states of the microphone after a `Converse` RPC completes.
@@ -121,6 +125,7 @@ var ConverseResult_MicrophoneMode_name = map[int32]string{
 	1: "CLOSE_MICROPHONE",
 	2: "DIALOG_FOLLOW_ON",
 }
+
 var ConverseResult_MicrophoneMode_value = map[string]int32{
 	"MICROPHONE_MODE_UNSPECIFIED": 0,
 	"CLOSE_MICROPHONE":            1,
@@ -130,8 +135,9 @@ var ConverseResult_MicrophoneMode_value = map[string]int32{
 func (x ConverseResult_MicrophoneMode) String() string {
 	return proto.EnumName(ConverseResult_MicrophoneMode_name, int32(x))
 }
+
 func (ConverseResult_MicrophoneMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{5, 0}
+	return fileDescriptor_2a6c80cea3f0c886, []int{5, 0}
 }
 
 // Indicates the type of event.
@@ -153,6 +159,7 @@ var ConverseResponse_EventType_name = map[int32]string{
 	0: "EVENT_TYPE_UNSPECIFIED",
 	1: "END_OF_UTTERANCE",
 }
+
 var ConverseResponse_EventType_value = map[string]int32{
 	"EVENT_TYPE_UNSPECIFIED": 0,
 	"END_OF_UTTERANCE":       1,
@@ -161,8 +168,9 @@ var ConverseResponse_EventType_value = map[string]int32{
 func (x ConverseResponse_EventType) String() string {
 	return proto.EnumName(ConverseResponse_EventType_name, int32(x))
 }
+
 func (ConverseResponse_EventType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{7, 0}
+	return fileDescriptor_2a6c80cea3f0c886, []int{7, 0}
 }
 
 // Specifies how to process the `ConverseRequest` messages.
@@ -182,7 +190,7 @@ func (m *ConverseConfig) Reset()         { *m = ConverseConfig{} }
 func (m *ConverseConfig) String() string { return proto.CompactTextString(m) }
 func (*ConverseConfig) ProtoMessage()    {}
 func (*ConverseConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{0}
+	return fileDescriptor_2a6c80cea3f0c886, []int{0}
 }
 func (m *ConverseConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseConfig.Unmarshal(m, b)
@@ -190,8 +198,8 @@ func (m *ConverseConfig) XXX_Unmarshal(b []byte) error {
 func (m *ConverseConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ConverseConfig.Marshal(b, m, deterministic)
 }
-func (dst *ConverseConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ConverseConfig.Merge(dst, src)
+func (m *ConverseConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConverseConfig.Merge(m, src)
 }
 func (m *ConverseConfig) XXX_Size() int {
 	return xxx_messageInfo_ConverseConfig.Size(m)
@@ -244,7 +252,7 @@ func (m *AudioInConfig) Reset()         { *m = AudioInConfig{} }
 func (m *AudioInConfig) String() string { return proto.CompactTextString(m) }
 func (*AudioInConfig) ProtoMessage()    {}
 func (*AudioInConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{1}
+	return fileDescriptor_2a6c80cea3f0c886, []int{1}
 }
 func (m *AudioInConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioInConfig.Unmarshal(m, b)
@@ -252,8 +260,8 @@ func (m *AudioInConfig) XXX_Unmarshal(b []byte) error {
 func (m *AudioInConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_AudioInConfig.Marshal(b, m, deterministic)
 }
-func (dst *AudioInConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AudioInConfig.Merge(dst, src)
+func (m *AudioInConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AudioInConfig.Merge(m, src)
 }
 func (m *AudioInConfig) XXX_Size() int {
 	return xxx_messageInfo_AudioInConfig.Size(m)
@@ -299,7 +307,7 @@ func (m *AudioOutConfig) Reset()         { *m = AudioOutConfig{} }
 func (m *AudioOutConfig) String() string { return proto.CompactTextString(m) }
 func (*AudioOutConfig) ProtoMessage()    {}
 func (*AudioOutConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{2}
+	return fileDescriptor_2a6c80cea3f0c886, []int{2}
 }
 func (m *AudioOutConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioOutConfig.Unmarshal(m, b)
@@ -307,8 +315,8 @@ func (m *AudioOutConfig) XXX_Unmarshal(b []byte) error {
 func (m *AudioOutConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_AudioOutConfig.Marshal(b, m, deterministic)
 }
-func (dst *AudioOutConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AudioOutConfig.Merge(dst, src)
+func (m *AudioOutConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AudioOutConfig.Merge(m, src)
 }
 func (m *AudioOutConfig) XXX_Size() int {
 	return xxx_messageInfo_AudioOutConfig.Size(m)
@@ -357,7 +365,7 @@ func (m *ConverseState) Reset()         { *m = ConverseState{} }
 func (m *ConverseState) String() string { return proto.CompactTextString(m) }
 func (*ConverseState) ProtoMessage()    {}
 func (*ConverseState) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{3}
+	return fileDescriptor_2a6c80cea3f0c886, []int{3}
 }
 func (m *ConverseState) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseState.Unmarshal(m, b)
@@ -365,8 +373,8 @@ func (m *ConverseState) XXX_Unmarshal(b []byte) error {
 func (m *ConverseState) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ConverseState.Marshal(b, m, deterministic)
 }
-func (dst *ConverseState) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ConverseState.Merge(dst, src)
+func (m *ConverseState) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConverseState.Merge(m, src)
 }
 func (m *ConverseState) XXX_Size() int {
 	return xxx_messageInfo_ConverseState.Size(m)
@@ -400,7 +408,7 @@ func (m *AudioOut) Reset()         { *m = AudioOut{} }
 func (m *AudioOut) String() string { return proto.CompactTextString(m) }
 func (*AudioOut) ProtoMessage()    {}
 func (*AudioOut) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{4}
+	return fileDescriptor_2a6c80cea3f0c886, []int{4}
 }
 func (m *AudioOut) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioOut.Unmarshal(m, b)
@@ -408,8 +416,8 @@ func (m *AudioOut) XXX_Unmarshal(b []byte) error {
 func (m *AudioOut) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_AudioOut.Marshal(b, m, deterministic)
 }
-func (dst *AudioOut) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AudioOut.Merge(dst, src)
+func (m *AudioOut) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AudioOut.Merge(m, src)
 }
 func (m *AudioOut) XXX_Size() int {
 	return xxx_messageInfo_AudioOut.Size(m)
@@ -462,7 +470,7 @@ func (m *ConverseResult) Reset()         { *m = ConverseResult{} }
 func (m *ConverseResult) String() string { return proto.CompactTextString(m) }
 func (*ConverseResult) ProtoMessage()    {}
 func (*ConverseResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{5}
+	return fileDescriptor_2a6c80cea3f0c886, []int{5}
 }
 func (m *ConverseResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseResult.Unmarshal(m, b)
@@ -470,8 +478,8 @@ func (m *ConverseResult) XXX_Unmarshal(b []byte) error {
 func (m *ConverseResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ConverseResult.Marshal(b, m, deterministic)
 }
-func (dst *ConverseResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ConverseResult.Merge(dst, src)
+func (m *ConverseResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConverseResult.Merge(m, src)
 }
 func (m *ConverseResult) XXX_Size() int {
 	return xxx_messageInfo_ConverseResult.Size(m)
@@ -538,7 +546,7 @@ func (m *ConverseRequest) Reset()         { *m = ConverseRequest{} }
 func (m *ConverseRequest) String() string { return proto.CompactTextString(m) }
 func (*ConverseRequest) ProtoMessage()    {}
 func (*ConverseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{6}
+	return fileDescriptor_2a6c80cea3f0c886, []int{6}
 }
 func (m *ConverseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseRequest.Unmarshal(m, b)
@@ -546,8 +554,8 @@ func (m *ConverseRequest) XXX_Unmarshal(b []byte) error {
 func (m *ConverseRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ConverseRequest.Marshal(b, m, deterministic)
 }
-func (dst *ConverseRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ConverseRequest.Merge(dst, src)
+func (m *ConverseRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConverseRequest.Merge(m, src)
 }
 func (m *ConverseRequest) XXX_Size() int {
 	return xxx_messageInfo_ConverseRequest.Size(m)
@@ -685,7 +693,7 @@ func (m *ConverseResponse) Reset()         { *m = ConverseResponse{} }
 func (m *ConverseResponse) String() string { return proto.CompactTextString(m) }
 func (*ConverseResponse) ProtoMessage()    {}
 func (*ConverseResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_1e1f50e651d7eaee, []int{7}
+	return fileDescriptor_2a6c80cea3f0c886, []int{7}
 }
 func (m *ConverseResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseResponse.Unmarshal(m, b)
@@ -693,8 +701,8 @@ func (m *ConverseResponse) XXX_Unmarshal(b []byte) error {
 func (m *ConverseResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ConverseResponse.Marshal(b, m, deterministic)
 }
-func (dst *ConverseResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ConverseResponse.Merge(dst, src)
+func (m *ConverseResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConverseResponse.Merge(m, src)
 }
 func (m *ConverseResponse) XXX_Size() int {
 	return xxx_messageInfo_ConverseResponse.Size(m)
@@ -1077,10 +1085,10 @@ var _EmbeddedAssistant_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/assistant/embedded/v1alpha1/embedded_assistant.proto", fileDescriptor_embedded_assistant_1e1f50e651d7eaee)
+	proto.RegisterFile("google/assistant/embedded/v1alpha1/embedded_assistant.proto", fileDescriptor_2a6c80cea3f0c886)
 }
 
-var fileDescriptor_embedded_assistant_1e1f50e651d7eaee = []byte{
+var fileDescriptor_2a6c80cea3f0c886 = []byte{
 	// 892 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x56, 0x51, 0x73, 0xdb, 0x44,
 	0x10, 0xb6, 0xec, 0xa6, 0xb5, 0xb7, 0x89, 0x2c, 0x5f, 0x33, 0x90, 0x49, 0x61, 0x60, 0xf4, 0xc0,

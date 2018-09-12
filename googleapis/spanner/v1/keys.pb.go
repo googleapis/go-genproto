@@ -129,7 +129,7 @@ func (m *KeyRange) Reset()         { *m = KeyRange{} }
 func (m *KeyRange) String() string { return proto.CompactTextString(m) }
 func (*KeyRange) ProtoMessage()    {}
 func (*KeyRange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keys_3b687fe915157fa4, []int{0}
+	return fileDescriptor_558e8abca28348dd, []int{0}
 }
 func (m *KeyRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeyRange.Unmarshal(m, b)
@@ -137,8 +137,8 @@ func (m *KeyRange) XXX_Unmarshal(b []byte) error {
 func (m *KeyRange) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_KeyRange.Marshal(b, m, deterministic)
 }
-func (dst *KeyRange) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_KeyRange.Merge(dst, src)
+func (m *KeyRange) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_KeyRange.Merge(m, src)
 }
 func (m *KeyRange) XXX_Size() int {
 	return xxx_messageInfo_KeyRange.Size(m)
@@ -376,7 +376,7 @@ func (m *KeySet) Reset()         { *m = KeySet{} }
 func (m *KeySet) String() string { return proto.CompactTextString(m) }
 func (*KeySet) ProtoMessage()    {}
 func (*KeySet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keys_3b687fe915157fa4, []int{1}
+	return fileDescriptor_558e8abca28348dd, []int{1}
 }
 func (m *KeySet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeySet.Unmarshal(m, b)
@@ -384,8 +384,8 @@ func (m *KeySet) XXX_Unmarshal(b []byte) error {
 func (m *KeySet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_KeySet.Marshal(b, m, deterministic)
 }
-func (dst *KeySet) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_KeySet.Merge(dst, src)
+func (m *KeySet) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_KeySet.Merge(m, src)
 }
 func (m *KeySet) XXX_Size() int {
 	return xxx_messageInfo_KeySet.Size(m)
@@ -422,9 +422,9 @@ func init() {
 	proto.RegisterType((*KeySet)(nil), "google.spanner.v1.KeySet")
 }
 
-func init() { proto.RegisterFile("google/spanner/v1/keys.proto", fileDescriptor_keys_3b687fe915157fa4) }
+func init() { proto.RegisterFile("google/spanner/v1/keys.proto", fileDescriptor_558e8abca28348dd) }
 
-var fileDescriptor_keys_3b687fe915157fa4 = []byte{
+var fileDescriptor_558e8abca28348dd = []byte{
 	// 371 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xc1, 0x6b, 0xea, 0x30,
 	0x1c, 0xc7, 0x5f, 0xab, 0xf8, 0x34, 0x8a, 0xf8, 0x0a, 0x8f, 0x57, 0x7c, 0x3b, 0x88, 0xa7, 0x9d,

@@ -35,6 +35,7 @@ var Architecture_name = map[int32]string{
 	1: "X86",
 	2: "X64",
 }
+
 var Architecture_value = map[string]int32{
 	"ARCHITECTURE_UNSPECIFIED": 0,
 	"X86":                      1,
@@ -44,8 +45,9 @@ var Architecture_value = map[string]int32{
 func (x Architecture) String() string {
 	return proto.EnumName(Architecture_name, int32(x))
 }
+
 func (Architecture) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{0}
+	return fileDescriptor_a2db18e408c1243f, []int{0}
 }
 
 // Whether this is an ordinary package version or a sentinel MIN/MAX version.
@@ -70,6 +72,7 @@ var Version_VersionKind_name = map[int32]string{
 	2: "MINIMUM",
 	3: "MAXIMUM",
 }
+
 var Version_VersionKind_value = map[string]int32{
 	"VERSION_KIND_UNSPECIFIED": 0,
 	"NORMAL":                   1,
@@ -80,8 +83,9 @@ var Version_VersionKind_value = map[string]int32{
 func (x Version_VersionKind) String() string {
 	return proto.EnumName(Version_VersionKind_name, int32(x))
 }
+
 func (Version_VersionKind) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{5, 0}
+	return fileDescriptor_a2db18e408c1243f, []int{5, 0}
 }
 
 // This represents a particular channel of distribution for a given package.
@@ -111,7 +115,7 @@ func (m *Distribution) Reset()         { *m = Distribution{} }
 func (m *Distribution) String() string { return proto.CompactTextString(m) }
 func (*Distribution) ProtoMessage()    {}
 func (*Distribution) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{0}
+	return fileDescriptor_a2db18e408c1243f, []int{0}
 }
 func (m *Distribution) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution.Unmarshal(m, b)
@@ -119,8 +123,8 @@ func (m *Distribution) XXX_Unmarshal(b []byte) error {
 func (m *Distribution) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Distribution.Marshal(b, m, deterministic)
 }
-func (dst *Distribution) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Distribution.Merge(dst, src)
+func (m *Distribution) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Distribution.Merge(m, src)
 }
 func (m *Distribution) XXX_Size() int {
 	return xxx_messageInfo_Distribution.Size(m)
@@ -192,7 +196,7 @@ func (m *Location) Reset()         { *m = Location{} }
 func (m *Location) String() string { return proto.CompactTextString(m) }
 func (*Location) ProtoMessage()    {}
 func (*Location) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{1}
+	return fileDescriptor_a2db18e408c1243f, []int{1}
 }
 func (m *Location) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Location.Unmarshal(m, b)
@@ -200,8 +204,8 @@ func (m *Location) XXX_Unmarshal(b []byte) error {
 func (m *Location) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Location.Marshal(b, m, deterministic)
 }
-func (dst *Location) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Location.Merge(dst, src)
+func (m *Location) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Location.Merge(m, src)
 }
 func (m *Location) XXX_Size() int {
 	return xxx_messageInfo_Location.Size(m)
@@ -250,7 +254,7 @@ func (m *Package) Reset()         { *m = Package{} }
 func (m *Package) String() string { return proto.CompactTextString(m) }
 func (*Package) ProtoMessage()    {}
 func (*Package) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{2}
+	return fileDescriptor_a2db18e408c1243f, []int{2}
 }
 func (m *Package) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Package.Unmarshal(m, b)
@@ -258,8 +262,8 @@ func (m *Package) XXX_Unmarshal(b []byte) error {
 func (m *Package) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Package.Marshal(b, m, deterministic)
 }
-func (dst *Package) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Package.Merge(dst, src)
+func (m *Package) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Package.Merge(m, src)
 }
 func (m *Package) XXX_Size() int {
 	return xxx_messageInfo_Package.Size(m)
@@ -297,7 +301,7 @@ func (m *Details) Reset()         { *m = Details{} }
 func (m *Details) String() string { return proto.CompactTextString(m) }
 func (*Details) ProtoMessage()    {}
 func (*Details) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{3}
+	return fileDescriptor_a2db18e408c1243f, []int{3}
 }
 func (m *Details) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Details.Unmarshal(m, b)
@@ -305,8 +309,8 @@ func (m *Details) XXX_Unmarshal(b []byte) error {
 func (m *Details) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Details.Marshal(b, m, deterministic)
 }
-func (dst *Details) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Details.Merge(dst, src)
+func (m *Details) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Details.Merge(m, src)
 }
 func (m *Details) XXX_Size() int {
 	return xxx_messageInfo_Details.Size(m)
@@ -341,7 +345,7 @@ func (m *Installation) Reset()         { *m = Installation{} }
 func (m *Installation) String() string { return proto.CompactTextString(m) }
 func (*Installation) ProtoMessage()    {}
 func (*Installation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{4}
+	return fileDescriptor_a2db18e408c1243f, []int{4}
 }
 func (m *Installation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Installation.Unmarshal(m, b)
@@ -349,8 +353,8 @@ func (m *Installation) XXX_Unmarshal(b []byte) error {
 func (m *Installation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Installation.Marshal(b, m, deterministic)
 }
-func (dst *Installation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Installation.Merge(dst, src)
+func (m *Installation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Installation.Merge(m, src)
 }
 func (m *Installation) XXX_Size() int {
 	return xxx_messageInfo_Installation.Size(m)
@@ -395,7 +399,7 @@ func (m *Version) Reset()         { *m = Version{} }
 func (m *Version) String() string { return proto.CompactTextString(m) }
 func (*Version) ProtoMessage()    {}
 func (*Version) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{5}
+	return fileDescriptor_a2db18e408c1243f, []int{5}
 }
 func (m *Version) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Version.Unmarshal(m, b)
@@ -403,8 +407,8 @@ func (m *Version) XXX_Unmarshal(b []byte) error {
 func (m *Version) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Version.Marshal(b, m, deterministic)
 }
-func (dst *Version) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Version.Merge(dst, src)
+func (m *Version) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Version.Merge(m, src)
 }
 func (m *Version) XXX_Size() int {
 	return xxx_messageInfo_Version.Size(m)
@@ -455,10 +459,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/package/package.proto", fileDescriptor_package_98e063c9654a5d86)
+	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/package/package.proto", fileDescriptor_a2db18e408c1243f)
 }
 
-var fileDescriptor_package_98e063c9654a5d86 = []byte{
+var fileDescriptor_a2db18e408c1243f = []byte{
 	// 575 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xff, 0x6a, 0xd4, 0x40,
 	0x10, 0x36, 0x49, 0x7b, 0x69, 0xe7, 0xce, 0x12, 0x16, 0xb1, 0x41, 0x44, 0x62, 0x40, 0x38, 0x44,

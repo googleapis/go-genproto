@@ -36,6 +36,7 @@ var Index_QueryScope_name = map[int32]string{
 	0: "QUERY_SCOPE_UNSPECIFIED",
 	1: "COLLECTION",
 }
+
 var Index_QueryScope_value = map[string]int32{
 	"QUERY_SCOPE_UNSPECIFIED": 0,
 	"COLLECTION":              1,
@@ -44,8 +45,9 @@ var Index_QueryScope_value = map[string]int32{
 func (x Index_QueryScope) String() string {
 	return proto.EnumName(Index_QueryScope_name, int32(x))
 }
+
 func (Index_QueryScope) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_index_47cf3a5e57bc9ffa, []int{0, 0}
+	return fileDescriptor_91374f42b54eaaef, []int{0, 0}
 }
 
 // The state of an index. During index creation, an index will be in the
@@ -83,6 +85,7 @@ var Index_State_name = map[int32]string{
 	2: "READY",
 	3: "NEEDS_REPAIR",
 }
+
 var Index_State_value = map[string]int32{
 	"STATE_UNSPECIFIED": 0,
 	"CREATING":          1,
@@ -93,8 +96,9 @@ var Index_State_value = map[string]int32{
 func (x Index_State) String() string {
 	return proto.EnumName(Index_State_name, int32(x))
 }
+
 func (Index_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_index_47cf3a5e57bc9ffa, []int{0, 1}
+	return fileDescriptor_91374f42b54eaaef, []int{0, 1}
 }
 
 // The supported orderings.
@@ -114,6 +118,7 @@ var Index_IndexField_Order_name = map[int32]string{
 	1: "ASCENDING",
 	2: "DESCENDING",
 }
+
 var Index_IndexField_Order_value = map[string]int32{
 	"ORDER_UNSPECIFIED": 0,
 	"ASCENDING":         1,
@@ -123,8 +128,9 @@ var Index_IndexField_Order_value = map[string]int32{
 func (x Index_IndexField_Order) String() string {
 	return proto.EnumName(Index_IndexField_Order_name, int32(x))
 }
+
 func (Index_IndexField_Order) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_index_47cf3a5e57bc9ffa, []int{0, 0, 0}
+	return fileDescriptor_91374f42b54eaaef, []int{0, 0, 0}
 }
 
 // The supported array value configurations.
@@ -141,6 +147,7 @@ var Index_IndexField_ArrayConfig_name = map[int32]string{
 	0: "ARRAY_CONFIG_UNSPECIFIED",
 	1: "CONTAINS",
 }
+
 var Index_IndexField_ArrayConfig_value = map[string]int32{
 	"ARRAY_CONFIG_UNSPECIFIED": 0,
 	"CONTAINS":                 1,
@@ -149,8 +156,9 @@ var Index_IndexField_ArrayConfig_value = map[string]int32{
 func (x Index_IndexField_ArrayConfig) String() string {
 	return proto.EnumName(Index_IndexField_ArrayConfig_name, int32(x))
 }
+
 func (Index_IndexField_ArrayConfig) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_index_47cf3a5e57bc9ffa, []int{0, 0, 1}
+	return fileDescriptor_91374f42b54eaaef, []int{0, 0, 1}
 }
 
 // Cloud Firestore indexes enable simple and complex queries against
@@ -194,7 +202,7 @@ func (m *Index) Reset()         { *m = Index{} }
 func (m *Index) String() string { return proto.CompactTextString(m) }
 func (*Index) ProtoMessage()    {}
 func (*Index) Descriptor() ([]byte, []int) {
-	return fileDescriptor_index_47cf3a5e57bc9ffa, []int{0}
+	return fileDescriptor_91374f42b54eaaef, []int{0}
 }
 func (m *Index) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Index.Unmarshal(m, b)
@@ -202,8 +210,8 @@ func (m *Index) XXX_Unmarshal(b []byte) error {
 func (m *Index) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Index.Marshal(b, m, deterministic)
 }
-func (dst *Index) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Index.Merge(dst, src)
+func (m *Index) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Index.Merge(m, src)
 }
 func (m *Index) XXX_Size() int {
 	return xxx_messageInfo_Index.Size(m)
@@ -265,7 +273,7 @@ func (m *Index_IndexField) Reset()         { *m = Index_IndexField{} }
 func (m *Index_IndexField) String() string { return proto.CompactTextString(m) }
 func (*Index_IndexField) ProtoMessage()    {}
 func (*Index_IndexField) Descriptor() ([]byte, []int) {
-	return fileDescriptor_index_47cf3a5e57bc9ffa, []int{0, 0}
+	return fileDescriptor_91374f42b54eaaef, []int{0, 0}
 }
 func (m *Index_IndexField) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Index_IndexField.Unmarshal(m, b)
@@ -273,8 +281,8 @@ func (m *Index_IndexField) XXX_Unmarshal(b []byte) error {
 func (m *Index_IndexField) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Index_IndexField.Marshal(b, m, deterministic)
 }
-func (dst *Index_IndexField) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Index_IndexField.Merge(dst, src)
+func (m *Index_IndexField) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Index_IndexField.Merge(m, src)
 }
 func (m *Index_IndexField) XXX_Size() int {
 	return xxx_messageInfo_Index_IndexField.Size(m)
@@ -403,10 +411,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/admin/v1beta2/index.proto", fileDescriptor_index_47cf3a5e57bc9ffa)
+	proto.RegisterFile("google/firestore/admin/v1beta2/index.proto", fileDescriptor_91374f42b54eaaef)
 }
 
-var fileDescriptor_index_47cf3a5e57bc9ffa = []byte{
+var fileDescriptor_91374f42b54eaaef = []byte{
 	// 545 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0x4f, 0x6b, 0xdb, 0x4c,
 	0x10, 0xc6, 0x23, 0x39, 0x0a, 0xaf, 0xc7, 0x7e, 0x83, 0xba, 0x50, 0x2a, 0xd2, 0xb4, 0x18, 0xd1,

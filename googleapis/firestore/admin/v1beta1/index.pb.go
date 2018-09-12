@@ -42,6 +42,7 @@ var IndexField_Mode_name = map[int32]string{
 	3: "DESCENDING",
 	4: "ARRAY_CONTAINS",
 }
+
 var IndexField_Mode_value = map[string]int32{
 	"MODE_UNSPECIFIED": 0,
 	"ASCENDING":        2,
@@ -52,8 +53,9 @@ var IndexField_Mode_value = map[string]int32{
 func (x IndexField_Mode) String() string {
 	return proto.EnumName(IndexField_Mode_name, int32(x))
 }
+
 func (IndexField_Mode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_index_1d76a8618e50431f, []int{0, 0}
+	return fileDescriptor_18dcb37b2ab27460, []int{0, 0}
 }
 
 // The state of an index. During index creation, an index will be in the
@@ -88,6 +90,7 @@ var Index_State_name = map[int32]string{
 	2: "READY",
 	5: "ERROR",
 }
+
 var Index_State_value = map[string]int32{
 	"STATE_UNSPECIFIED": 0,
 	"CREATING":          3,
@@ -98,8 +101,9 @@ var Index_State_value = map[string]int32{
 func (x Index_State) String() string {
 	return proto.EnumName(Index_State_name, int32(x))
 }
+
 func (Index_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_index_1d76a8618e50431f, []int{1, 0}
+	return fileDescriptor_18dcb37b2ab27460, []int{1, 0}
 }
 
 // A field of an index.
@@ -120,7 +124,7 @@ func (m *IndexField) Reset()         { *m = IndexField{} }
 func (m *IndexField) String() string { return proto.CompactTextString(m) }
 func (*IndexField) ProtoMessage()    {}
 func (*IndexField) Descriptor() ([]byte, []int) {
-	return fileDescriptor_index_1d76a8618e50431f, []int{0}
+	return fileDescriptor_18dcb37b2ab27460, []int{0}
 }
 func (m *IndexField) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexField.Unmarshal(m, b)
@@ -128,8 +132,8 @@ func (m *IndexField) XXX_Unmarshal(b []byte) error {
 func (m *IndexField) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_IndexField.Marshal(b, m, deterministic)
 }
-func (dst *IndexField) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_IndexField.Merge(dst, src)
+func (m *IndexField) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IndexField.Merge(m, src)
 }
 func (m *IndexField) XXX_Size() int {
 	return xxx_messageInfo_IndexField.Size(m)
@@ -175,7 +179,7 @@ func (m *Index) Reset()         { *m = Index{} }
 func (m *Index) String() string { return proto.CompactTextString(m) }
 func (*Index) ProtoMessage()    {}
 func (*Index) Descriptor() ([]byte, []int) {
-	return fileDescriptor_index_1d76a8618e50431f, []int{1}
+	return fileDescriptor_18dcb37b2ab27460, []int{1}
 }
 func (m *Index) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Index.Unmarshal(m, b)
@@ -183,8 +187,8 @@ func (m *Index) XXX_Unmarshal(b []byte) error {
 func (m *Index) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Index.Marshal(b, m, deterministic)
 }
-func (dst *Index) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Index.Merge(dst, src)
+func (m *Index) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Index.Merge(m, src)
 }
 func (m *Index) XXX_Size() int {
 	return xxx_messageInfo_Index.Size(m)
@@ -231,10 +235,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/admin/v1beta1/index.proto", fileDescriptor_index_1d76a8618e50431f)
+	proto.RegisterFile("google/firestore/admin/v1beta1/index.proto", fileDescriptor_18dcb37b2ab27460)
 }
 
-var fileDescriptor_index_1d76a8618e50431f = []byte{
+var fileDescriptor_18dcb37b2ab27460 = []byte{
 	// 438 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0x5d, 0x8b, 0xd3, 0x40,
 	0x14, 0x35, 0x69, 0x52, 0xcc, 0x75, 0xb7, 0xc4, 0x41, 0xa1, 0x88, 0x4a, 0x89, 0x3e, 0x94, 0x15,

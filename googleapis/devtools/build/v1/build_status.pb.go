@@ -55,6 +55,7 @@ var BuildStatus_Result_name = map[int32]string{
 	8: "REQUEST_DEADLINE_EXCEEDED",
 	7: "CANCELLED",
 }
+
 var BuildStatus_Result_value = map[string]int32{
 	"UNKNOWN_STATUS":               0,
 	"COMMAND_SUCCEEDED":            1,
@@ -70,8 +71,9 @@ var BuildStatus_Result_value = map[string]int32{
 func (x BuildStatus_Result) String() string {
 	return proto.EnumName(BuildStatus_Result_name, int32(x))
 }
+
 func (BuildStatus_Result) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_build_status_062894fe191e028f, []int{0, 0}
+	return fileDescriptor_f5ec8917bb205301, []int{0, 0}
 }
 
 // Status used for both invocation attempt and overall build completion.
@@ -89,7 +91,7 @@ func (m *BuildStatus) Reset()         { *m = BuildStatus{} }
 func (m *BuildStatus) String() string { return proto.CompactTextString(m) }
 func (*BuildStatus) ProtoMessage()    {}
 func (*BuildStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_status_062894fe191e028f, []int{0}
+	return fileDescriptor_f5ec8917bb205301, []int{0}
 }
 func (m *BuildStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildStatus.Unmarshal(m, b)
@@ -97,8 +99,8 @@ func (m *BuildStatus) XXX_Unmarshal(b []byte) error {
 func (m *BuildStatus) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_BuildStatus.Marshal(b, m, deterministic)
 }
-func (dst *BuildStatus) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BuildStatus.Merge(dst, src)
+func (m *BuildStatus) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BuildStatus.Merge(m, src)
 }
 func (m *BuildStatus) XXX_Size() int {
 	return xxx_messageInfo_BuildStatus.Size(m)
@@ -129,10 +131,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/build/v1/build_status.proto", fileDescriptor_build_status_062894fe191e028f)
+	proto.RegisterFile("google/devtools/build/v1/build_status.proto", fileDescriptor_f5ec8917bb205301)
 }
 
-var fileDescriptor_build_status_062894fe191e028f = []byte{
+var fileDescriptor_f5ec8917bb205301 = []byte{
 	// 390 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x92, 0x4f, 0x0b, 0xd3, 0x30,
 	0x18, 0xc6, 0xcd, 0xd4, 0x4e, 0x33, 0x1d, 0x35, 0xa8, 0x6c, 0x63, 0xc2, 0xd8, 0x69, 0xa0, 0xa4,

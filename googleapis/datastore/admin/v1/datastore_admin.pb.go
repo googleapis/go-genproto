@@ -49,6 +49,7 @@ var OperationType_name = map[int32]string{
 	3: "CREATE_INDEX",
 	4: "DELETE_INDEX",
 }
+
 var OperationType_value = map[string]int32{
 	"OPERATION_TYPE_UNSPECIFIED": 0,
 	"EXPORT_ENTITIES":            1,
@@ -60,8 +61,9 @@ var OperationType_value = map[string]int32{
 func (x OperationType) String() string {
 	return proto.EnumName(OperationType_name, int32(x))
 }
+
 func (OperationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{0}
+	return fileDescriptor_891b89db06fa8774, []int{0}
 }
 
 // The various possible states for an ongoing Operation.
@@ -98,6 +100,7 @@ var CommonMetadata_State_name = map[int32]string{
 	6: "FAILED",
 	7: "CANCELLED",
 }
+
 var CommonMetadata_State_value = map[string]int32{
 	"STATE_UNSPECIFIED": 0,
 	"INITIALIZING":      1,
@@ -112,8 +115,9 @@ var CommonMetadata_State_value = map[string]int32{
 func (x CommonMetadata_State) String() string {
 	return proto.EnumName(CommonMetadata_State_name, int32(x))
 }
+
 func (CommonMetadata_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{0, 0}
+	return fileDescriptor_891b89db06fa8774, []int{0, 0}
 }
 
 // Metadata common to all Datastore Admin operations.
@@ -139,7 +143,7 @@ func (m *CommonMetadata) Reset()         { *m = CommonMetadata{} }
 func (m *CommonMetadata) String() string { return proto.CompactTextString(m) }
 func (*CommonMetadata) ProtoMessage()    {}
 func (*CommonMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{0}
+	return fileDescriptor_891b89db06fa8774, []int{0}
 }
 func (m *CommonMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommonMetadata.Unmarshal(m, b)
@@ -147,8 +151,8 @@ func (m *CommonMetadata) XXX_Unmarshal(b []byte) error {
 func (m *CommonMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CommonMetadata.Marshal(b, m, deterministic)
 }
-func (dst *CommonMetadata) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommonMetadata.Merge(dst, src)
+func (m *CommonMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommonMetadata.Merge(m, src)
 }
 func (m *CommonMetadata) XXX_Size() int {
 	return xxx_messageInfo_CommonMetadata.Size(m)
@@ -211,7 +215,7 @@ func (m *Progress) Reset()         { *m = Progress{} }
 func (m *Progress) String() string { return proto.CompactTextString(m) }
 func (*Progress) ProtoMessage()    {}
 func (*Progress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{1}
+	return fileDescriptor_891b89db06fa8774, []int{1}
 }
 func (m *Progress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Progress.Unmarshal(m, b)
@@ -219,8 +223,8 @@ func (m *Progress) XXX_Unmarshal(b []byte) error {
 func (m *Progress) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Progress.Marshal(b, m, deterministic)
 }
-func (dst *Progress) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Progress.Merge(dst, src)
+func (m *Progress) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Progress.Merge(m, src)
 }
 func (m *Progress) XXX_Size() int {
 	return xxx_messageInfo_Progress.Size(m)
@@ -282,7 +286,7 @@ func (m *ExportEntitiesRequest) Reset()         { *m = ExportEntitiesRequest{} }
 func (m *ExportEntitiesRequest) String() string { return proto.CompactTextString(m) }
 func (*ExportEntitiesRequest) ProtoMessage()    {}
 func (*ExportEntitiesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{2}
+	return fileDescriptor_891b89db06fa8774, []int{2}
 }
 func (m *ExportEntitiesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportEntitiesRequest.Unmarshal(m, b)
@@ -290,8 +294,8 @@ func (m *ExportEntitiesRequest) XXX_Unmarshal(b []byte) error {
 func (m *ExportEntitiesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ExportEntitiesRequest.Marshal(b, m, deterministic)
 }
-func (dst *ExportEntitiesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExportEntitiesRequest.Merge(dst, src)
+func (m *ExportEntitiesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExportEntitiesRequest.Merge(m, src)
 }
 func (m *ExportEntitiesRequest) XXX_Size() int {
 	return xxx_messageInfo_ExportEntitiesRequest.Size(m)
@@ -365,7 +369,7 @@ func (m *ImportEntitiesRequest) Reset()         { *m = ImportEntitiesRequest{} }
 func (m *ImportEntitiesRequest) String() string { return proto.CompactTextString(m) }
 func (*ImportEntitiesRequest) ProtoMessage()    {}
 func (*ImportEntitiesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{3}
+	return fileDescriptor_891b89db06fa8774, []int{3}
 }
 func (m *ImportEntitiesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportEntitiesRequest.Unmarshal(m, b)
@@ -373,8 +377,8 @@ func (m *ImportEntitiesRequest) XXX_Unmarshal(b []byte) error {
 func (m *ImportEntitiesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ImportEntitiesRequest.Marshal(b, m, deterministic)
 }
-func (dst *ImportEntitiesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ImportEntitiesRequest.Merge(dst, src)
+func (m *ImportEntitiesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ImportEntitiesRequest.Merge(m, src)
 }
 func (m *ImportEntitiesRequest) XXX_Size() int {
 	return xxx_messageInfo_ImportEntitiesRequest.Size(m)
@@ -430,7 +434,7 @@ func (m *ExportEntitiesResponse) Reset()         { *m = ExportEntitiesResponse{}
 func (m *ExportEntitiesResponse) String() string { return proto.CompactTextString(m) }
 func (*ExportEntitiesResponse) ProtoMessage()    {}
 func (*ExportEntitiesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{4}
+	return fileDescriptor_891b89db06fa8774, []int{4}
 }
 func (m *ExportEntitiesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportEntitiesResponse.Unmarshal(m, b)
@@ -438,8 +442,8 @@ func (m *ExportEntitiesResponse) XXX_Unmarshal(b []byte) error {
 func (m *ExportEntitiesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ExportEntitiesResponse.Marshal(b, m, deterministic)
 }
-func (dst *ExportEntitiesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExportEntitiesResponse.Merge(dst, src)
+func (m *ExportEntitiesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExportEntitiesResponse.Merge(m, src)
 }
 func (m *ExportEntitiesResponse) XXX_Size() int {
 	return xxx_messageInfo_ExportEntitiesResponse.Size(m)
@@ -482,7 +486,7 @@ func (m *ExportEntitiesMetadata) Reset()         { *m = ExportEntitiesMetadata{}
 func (m *ExportEntitiesMetadata) String() string { return proto.CompactTextString(m) }
 func (*ExportEntitiesMetadata) ProtoMessage()    {}
 func (*ExportEntitiesMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{5}
+	return fileDescriptor_891b89db06fa8774, []int{5}
 }
 func (m *ExportEntitiesMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportEntitiesMetadata.Unmarshal(m, b)
@@ -490,8 +494,8 @@ func (m *ExportEntitiesMetadata) XXX_Unmarshal(b []byte) error {
 func (m *ExportEntitiesMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ExportEntitiesMetadata.Marshal(b, m, deterministic)
 }
-func (dst *ExportEntitiesMetadata) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExportEntitiesMetadata.Merge(dst, src)
+func (m *ExportEntitiesMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExportEntitiesMetadata.Merge(m, src)
 }
 func (m *ExportEntitiesMetadata) XXX_Size() int {
 	return xxx_messageInfo_ExportEntitiesMetadata.Size(m)
@@ -559,7 +563,7 @@ func (m *ImportEntitiesMetadata) Reset()         { *m = ImportEntitiesMetadata{}
 func (m *ImportEntitiesMetadata) String() string { return proto.CompactTextString(m) }
 func (*ImportEntitiesMetadata) ProtoMessage()    {}
 func (*ImportEntitiesMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{6}
+	return fileDescriptor_891b89db06fa8774, []int{6}
 }
 func (m *ImportEntitiesMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportEntitiesMetadata.Unmarshal(m, b)
@@ -567,8 +571,8 @@ func (m *ImportEntitiesMetadata) XXX_Unmarshal(b []byte) error {
 func (m *ImportEntitiesMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ImportEntitiesMetadata.Marshal(b, m, deterministic)
 }
-func (dst *ImportEntitiesMetadata) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ImportEntitiesMetadata.Merge(dst, src)
+func (m *ImportEntitiesMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ImportEntitiesMetadata.Merge(m, src)
 }
 func (m *ImportEntitiesMetadata) XXX_Size() int {
 	return xxx_messageInfo_ImportEntitiesMetadata.Size(m)
@@ -653,7 +657,7 @@ func (m *EntityFilter) Reset()         { *m = EntityFilter{} }
 func (m *EntityFilter) String() string { return proto.CompactTextString(m) }
 func (*EntityFilter) ProtoMessage()    {}
 func (*EntityFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{7}
+	return fileDescriptor_891b89db06fa8774, []int{7}
 }
 func (m *EntityFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EntityFilter.Unmarshal(m, b)
@@ -661,8 +665,8 @@ func (m *EntityFilter) XXX_Unmarshal(b []byte) error {
 func (m *EntityFilter) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_EntityFilter.Marshal(b, m, deterministic)
 }
-func (dst *EntityFilter) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EntityFilter.Merge(dst, src)
+func (m *EntityFilter) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EntityFilter.Merge(m, src)
 }
 func (m *EntityFilter) XXX_Size() int {
 	return xxx_messageInfo_EntityFilter.Size(m)
@@ -703,7 +707,7 @@ func (m *GetIndexRequest) Reset()         { *m = GetIndexRequest{} }
 func (m *GetIndexRequest) String() string { return proto.CompactTextString(m) }
 func (*GetIndexRequest) ProtoMessage()    {}
 func (*GetIndexRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{8}
+	return fileDescriptor_891b89db06fa8774, []int{8}
 }
 func (m *GetIndexRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetIndexRequest.Unmarshal(m, b)
@@ -711,8 +715,8 @@ func (m *GetIndexRequest) XXX_Unmarshal(b []byte) error {
 func (m *GetIndexRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetIndexRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetIndexRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetIndexRequest.Merge(dst, src)
+func (m *GetIndexRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetIndexRequest.Merge(m, src)
 }
 func (m *GetIndexRequest) XXX_Size() int {
 	return xxx_messageInfo_GetIndexRequest.Size(m)
@@ -757,7 +761,7 @@ func (m *ListIndexesRequest) Reset()         { *m = ListIndexesRequest{} }
 func (m *ListIndexesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListIndexesRequest) ProtoMessage()    {}
 func (*ListIndexesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{9}
+	return fileDescriptor_891b89db06fa8774, []int{9}
 }
 func (m *ListIndexesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIndexesRequest.Unmarshal(m, b)
@@ -765,8 +769,8 @@ func (m *ListIndexesRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListIndexesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListIndexesRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListIndexesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListIndexesRequest.Merge(dst, src)
+func (m *ListIndexesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListIndexesRequest.Merge(m, src)
 }
 func (m *ListIndexesRequest) XXX_Size() int {
 	return xxx_messageInfo_ListIndexesRequest.Size(m)
@@ -821,7 +825,7 @@ func (m *ListIndexesResponse) Reset()         { *m = ListIndexesResponse{} }
 func (m *ListIndexesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListIndexesResponse) ProtoMessage()    {}
 func (*ListIndexesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{10}
+	return fileDescriptor_891b89db06fa8774, []int{10}
 }
 func (m *ListIndexesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIndexesResponse.Unmarshal(m, b)
@@ -829,8 +833,8 @@ func (m *ListIndexesResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListIndexesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListIndexesResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListIndexesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListIndexesResponse.Merge(dst, src)
+func (m *ListIndexesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListIndexesResponse.Merge(m, src)
 }
 func (m *ListIndexesResponse) XXX_Size() int {
 	return xxx_messageInfo_ListIndexesResponse.Size(m)
@@ -872,7 +876,7 @@ func (m *IndexOperationMetadata) Reset()         { *m = IndexOperationMetadata{}
 func (m *IndexOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*IndexOperationMetadata) ProtoMessage()    {}
 func (*IndexOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_92cd4010da186f33, []int{11}
+	return fileDescriptor_891b89db06fa8774, []int{11}
 }
 func (m *IndexOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexOperationMetadata.Unmarshal(m, b)
@@ -880,8 +884,8 @@ func (m *IndexOperationMetadata) XXX_Unmarshal(b []byte) error {
 func (m *IndexOperationMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_IndexOperationMetadata.Marshal(b, m, deterministic)
 }
-func (dst *IndexOperationMetadata) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_IndexOperationMetadata.Merge(dst, src)
+func (m *IndexOperationMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IndexOperationMetadata.Merge(m, src)
 }
 func (m *IndexOperationMetadata) XXX_Size() int {
 	return xxx_messageInfo_IndexOperationMetadata.Size(m)
@@ -1139,10 +1143,10 @@ var _DatastoreAdmin_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/datastore/admin/v1/datastore_admin.proto", fileDescriptor_datastore_admin_92cd4010da186f33)
+	proto.RegisterFile("google/datastore/admin/v1/datastore_admin.proto", fileDescriptor_891b89db06fa8774)
 }
 
-var fileDescriptor_datastore_admin_92cd4010da186f33 = []byte{
+var fileDescriptor_891b89db06fa8774 = []byte{
 	// 1216 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x57, 0xcd, 0x92, 0xdb, 0xc4,
 	0x13, 0xff, 0x4b, 0xfe, 0x88, 0xdd, 0x5e, 0x7b, 0x9d, 0xc9, 0x3f, 0x5b, 0x8e, 0x21, 0xc4, 0x68,

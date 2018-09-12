@@ -47,7 +47,7 @@ func (m *CreateDeviceRegistryRequest) Reset()         { *m = CreateDeviceRegistr
 func (m *CreateDeviceRegistryRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateDeviceRegistryRequest) ProtoMessage()    {}
 func (*CreateDeviceRegistryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{0}
+	return fileDescriptor_9243c344ef472aff, []int{0}
 }
 func (m *CreateDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDeviceRegistryRequest.Unmarshal(m, b)
@@ -55,8 +55,8 @@ func (m *CreateDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 func (m *CreateDeviceRegistryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CreateDeviceRegistryRequest.Marshal(b, m, deterministic)
 }
-func (dst *CreateDeviceRegistryRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateDeviceRegistryRequest.Merge(dst, src)
+func (m *CreateDeviceRegistryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateDeviceRegistryRequest.Merge(m, src)
 }
 func (m *CreateDeviceRegistryRequest) XXX_Size() int {
 	return xxx_messageInfo_CreateDeviceRegistryRequest.Size(m)
@@ -95,7 +95,7 @@ func (m *GetDeviceRegistryRequest) Reset()         { *m = GetDeviceRegistryReque
 func (m *GetDeviceRegistryRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceRegistryRequest) ProtoMessage()    {}
 func (*GetDeviceRegistryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{1}
+	return fileDescriptor_9243c344ef472aff, []int{1}
 }
 func (m *GetDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceRegistryRequest.Unmarshal(m, b)
@@ -103,8 +103,8 @@ func (m *GetDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 func (m *GetDeviceRegistryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetDeviceRegistryRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetDeviceRegistryRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetDeviceRegistryRequest.Merge(dst, src)
+func (m *GetDeviceRegistryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetDeviceRegistryRequest.Merge(m, src)
 }
 func (m *GetDeviceRegistryRequest) XXX_Size() int {
 	return xxx_messageInfo_GetDeviceRegistryRequest.Size(m)
@@ -136,7 +136,7 @@ func (m *DeleteDeviceRegistryRequest) Reset()         { *m = DeleteDeviceRegistr
 func (m *DeleteDeviceRegistryRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteDeviceRegistryRequest) ProtoMessage()    {}
 func (*DeleteDeviceRegistryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{2}
+	return fileDescriptor_9243c344ef472aff, []int{2}
 }
 func (m *DeleteDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDeviceRegistryRequest.Unmarshal(m, b)
@@ -144,8 +144,8 @@ func (m *DeleteDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 func (m *DeleteDeviceRegistryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeleteDeviceRegistryRequest.Marshal(b, m, deterministic)
 }
-func (dst *DeleteDeviceRegistryRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteDeviceRegistryRequest.Merge(dst, src)
+func (m *DeleteDeviceRegistryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteDeviceRegistryRequest.Merge(m, src)
 }
 func (m *DeleteDeviceRegistryRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteDeviceRegistryRequest.Size(m)
@@ -184,7 +184,7 @@ func (m *UpdateDeviceRegistryRequest) Reset()         { *m = UpdateDeviceRegistr
 func (m *UpdateDeviceRegistryRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateDeviceRegistryRequest) ProtoMessage()    {}
 func (*UpdateDeviceRegistryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{3}
+	return fileDescriptor_9243c344ef472aff, []int{3}
 }
 func (m *UpdateDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDeviceRegistryRequest.Unmarshal(m, b)
@@ -192,8 +192,8 @@ func (m *UpdateDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 func (m *UpdateDeviceRegistryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_UpdateDeviceRegistryRequest.Marshal(b, m, deterministic)
 }
-func (dst *UpdateDeviceRegistryRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateDeviceRegistryRequest.Merge(dst, src)
+func (m *UpdateDeviceRegistryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateDeviceRegistryRequest.Merge(m, src)
 }
 func (m *UpdateDeviceRegistryRequest) XXX_Size() int {
 	return xxx_messageInfo_UpdateDeviceRegistryRequest.Size(m)
@@ -241,7 +241,7 @@ func (m *ListDeviceRegistriesRequest) Reset()         { *m = ListDeviceRegistrie
 func (m *ListDeviceRegistriesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDeviceRegistriesRequest) ProtoMessage()    {}
 func (*ListDeviceRegistriesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{4}
+	return fileDescriptor_9243c344ef472aff, []int{4}
 }
 func (m *ListDeviceRegistriesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceRegistriesRequest.Unmarshal(m, b)
@@ -249,8 +249,8 @@ func (m *ListDeviceRegistriesRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListDeviceRegistriesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDeviceRegistriesRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListDeviceRegistriesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDeviceRegistriesRequest.Merge(dst, src)
+func (m *ListDeviceRegistriesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDeviceRegistriesRequest.Merge(m, src)
 }
 func (m *ListDeviceRegistriesRequest) XXX_Size() int {
 	return xxx_messageInfo_ListDeviceRegistriesRequest.Size(m)
@@ -299,7 +299,7 @@ func (m *ListDeviceRegistriesResponse) Reset()         { *m = ListDeviceRegistri
 func (m *ListDeviceRegistriesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDeviceRegistriesResponse) ProtoMessage()    {}
 func (*ListDeviceRegistriesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{5}
+	return fileDescriptor_9243c344ef472aff, []int{5}
 }
 func (m *ListDeviceRegistriesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceRegistriesResponse.Unmarshal(m, b)
@@ -307,8 +307,8 @@ func (m *ListDeviceRegistriesResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListDeviceRegistriesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDeviceRegistriesResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListDeviceRegistriesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDeviceRegistriesResponse.Merge(dst, src)
+func (m *ListDeviceRegistriesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDeviceRegistriesResponse.Merge(m, src)
 }
 func (m *ListDeviceRegistriesResponse) XXX_Size() int {
 	return xxx_messageInfo_ListDeviceRegistriesResponse.Size(m)
@@ -352,7 +352,7 @@ func (m *CreateDeviceRequest) Reset()         { *m = CreateDeviceRequest{} }
 func (m *CreateDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateDeviceRequest) ProtoMessage()    {}
 func (*CreateDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{6}
+	return fileDescriptor_9243c344ef472aff, []int{6}
 }
 func (m *CreateDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDeviceRequest.Unmarshal(m, b)
@@ -360,8 +360,8 @@ func (m *CreateDeviceRequest) XXX_Unmarshal(b []byte) error {
 func (m *CreateDeviceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CreateDeviceRequest.Marshal(b, m, deterministic)
 }
-func (dst *CreateDeviceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateDeviceRequest.Merge(dst, src)
+func (m *CreateDeviceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateDeviceRequest.Merge(m, src)
 }
 func (m *CreateDeviceRequest) XXX_Size() int {
 	return xxx_messageInfo_CreateDeviceRequest.Size(m)
@@ -404,7 +404,7 @@ func (m *GetDeviceRequest) Reset()         { *m = GetDeviceRequest{} }
 func (m *GetDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceRequest) ProtoMessage()    {}
 func (*GetDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{7}
+	return fileDescriptor_9243c344ef472aff, []int{7}
 }
 func (m *GetDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceRequest.Unmarshal(m, b)
@@ -412,8 +412,8 @@ func (m *GetDeviceRequest) XXX_Unmarshal(b []byte) error {
 func (m *GetDeviceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetDeviceRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetDeviceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetDeviceRequest.Merge(dst, src)
+func (m *GetDeviceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetDeviceRequest.Merge(m, src)
 }
 func (m *GetDeviceRequest) XXX_Size() int {
 	return xxx_messageInfo_GetDeviceRequest.Size(m)
@@ -459,7 +459,7 @@ func (m *UpdateDeviceRequest) Reset()         { *m = UpdateDeviceRequest{} }
 func (m *UpdateDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateDeviceRequest) ProtoMessage()    {}
 func (*UpdateDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{8}
+	return fileDescriptor_9243c344ef472aff, []int{8}
 }
 func (m *UpdateDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDeviceRequest.Unmarshal(m, b)
@@ -467,8 +467,8 @@ func (m *UpdateDeviceRequest) XXX_Unmarshal(b []byte) error {
 func (m *UpdateDeviceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_UpdateDeviceRequest.Marshal(b, m, deterministic)
 }
-func (dst *UpdateDeviceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateDeviceRequest.Merge(dst, src)
+func (m *UpdateDeviceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateDeviceRequest.Merge(m, src)
 }
 func (m *UpdateDeviceRequest) XXX_Size() int {
 	return xxx_messageInfo_UpdateDeviceRequest.Size(m)
@@ -508,7 +508,7 @@ func (m *DeleteDeviceRequest) Reset()         { *m = DeleteDeviceRequest{} }
 func (m *DeleteDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteDeviceRequest) ProtoMessage()    {}
 func (*DeleteDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{9}
+	return fileDescriptor_9243c344ef472aff, []int{9}
 }
 func (m *DeleteDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDeviceRequest.Unmarshal(m, b)
@@ -516,8 +516,8 @@ func (m *DeleteDeviceRequest) XXX_Unmarshal(b []byte) error {
 func (m *DeleteDeviceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeleteDeviceRequest.Marshal(b, m, deterministic)
 }
-func (dst *DeleteDeviceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteDeviceRequest.Merge(dst, src)
+func (m *DeleteDeviceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteDeviceRequest.Merge(m, src)
 }
 func (m *DeleteDeviceRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteDeviceRequest.Size(m)
@@ -569,7 +569,7 @@ func (m *ListDevicesRequest) Reset()         { *m = ListDevicesRequest{} }
 func (m *ListDevicesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDevicesRequest) ProtoMessage()    {}
 func (*ListDevicesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{10}
+	return fileDescriptor_9243c344ef472aff, []int{10}
 }
 func (m *ListDevicesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDevicesRequest.Unmarshal(m, b)
@@ -577,8 +577,8 @@ func (m *ListDevicesRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListDevicesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDevicesRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListDevicesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDevicesRequest.Merge(dst, src)
+func (m *ListDevicesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDevicesRequest.Merge(m, src)
 }
 func (m *ListDevicesRequest) XXX_Size() int {
 	return xxx_messageInfo_ListDevicesRequest.Size(m)
@@ -647,7 +647,7 @@ func (m *ListDevicesResponse) Reset()         { *m = ListDevicesResponse{} }
 func (m *ListDevicesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDevicesResponse) ProtoMessage()    {}
 func (*ListDevicesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{11}
+	return fileDescriptor_9243c344ef472aff, []int{11}
 }
 func (m *ListDevicesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDevicesResponse.Unmarshal(m, b)
@@ -655,8 +655,8 @@ func (m *ListDevicesResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListDevicesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDevicesResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListDevicesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDevicesResponse.Merge(dst, src)
+func (m *ListDevicesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDevicesResponse.Merge(m, src)
 }
 func (m *ListDevicesResponse) XXX_Size() int {
 	return xxx_messageInfo_ListDevicesResponse.Size(m)
@@ -704,7 +704,7 @@ func (m *ModifyCloudToDeviceConfigRequest) Reset()         { *m = ModifyCloudToD
 func (m *ModifyCloudToDeviceConfigRequest) String() string { return proto.CompactTextString(m) }
 func (*ModifyCloudToDeviceConfigRequest) ProtoMessage()    {}
 func (*ModifyCloudToDeviceConfigRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{12}
+	return fileDescriptor_9243c344ef472aff, []int{12}
 }
 func (m *ModifyCloudToDeviceConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ModifyCloudToDeviceConfigRequest.Unmarshal(m, b)
@@ -712,8 +712,8 @@ func (m *ModifyCloudToDeviceConfigRequest) XXX_Unmarshal(b []byte) error {
 func (m *ModifyCloudToDeviceConfigRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ModifyCloudToDeviceConfigRequest.Marshal(b, m, deterministic)
 }
-func (dst *ModifyCloudToDeviceConfigRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ModifyCloudToDeviceConfigRequest.Merge(dst, src)
+func (m *ModifyCloudToDeviceConfigRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ModifyCloudToDeviceConfigRequest.Merge(m, src)
 }
 func (m *ModifyCloudToDeviceConfigRequest) XXX_Size() int {
 	return xxx_messageInfo_ModifyCloudToDeviceConfigRequest.Size(m)
@@ -764,7 +764,7 @@ func (m *ListDeviceConfigVersionsRequest) Reset()         { *m = ListDeviceConfi
 func (m *ListDeviceConfigVersionsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDeviceConfigVersionsRequest) ProtoMessage()    {}
 func (*ListDeviceConfigVersionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{13}
+	return fileDescriptor_9243c344ef472aff, []int{13}
 }
 func (m *ListDeviceConfigVersionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceConfigVersionsRequest.Unmarshal(m, b)
@@ -772,8 +772,8 @@ func (m *ListDeviceConfigVersionsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListDeviceConfigVersionsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDeviceConfigVersionsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListDeviceConfigVersionsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDeviceConfigVersionsRequest.Merge(dst, src)
+func (m *ListDeviceConfigVersionsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDeviceConfigVersionsRequest.Merge(m, src)
 }
 func (m *ListDeviceConfigVersionsRequest) XXX_Size() int {
 	return xxx_messageInfo_ListDeviceConfigVersionsRequest.Size(m)
@@ -812,7 +812,7 @@ func (m *ListDeviceConfigVersionsResponse) Reset()         { *m = ListDeviceConf
 func (m *ListDeviceConfigVersionsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDeviceConfigVersionsResponse) ProtoMessage()    {}
 func (*ListDeviceConfigVersionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{14}
+	return fileDescriptor_9243c344ef472aff, []int{14}
 }
 func (m *ListDeviceConfigVersionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceConfigVersionsResponse.Unmarshal(m, b)
@@ -820,8 +820,8 @@ func (m *ListDeviceConfigVersionsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListDeviceConfigVersionsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDeviceConfigVersionsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListDeviceConfigVersionsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDeviceConfigVersionsResponse.Merge(dst, src)
+func (m *ListDeviceConfigVersionsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDeviceConfigVersionsResponse.Merge(m, src)
 }
 func (m *ListDeviceConfigVersionsResponse) XXX_Size() int {
 	return xxx_messageInfo_ListDeviceConfigVersionsResponse.Size(m)
@@ -858,7 +858,7 @@ func (m *ListDeviceStatesRequest) Reset()         { *m = ListDeviceStatesRequest
 func (m *ListDeviceStatesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDeviceStatesRequest) ProtoMessage()    {}
 func (*ListDeviceStatesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{15}
+	return fileDescriptor_9243c344ef472aff, []int{15}
 }
 func (m *ListDeviceStatesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceStatesRequest.Unmarshal(m, b)
@@ -866,8 +866,8 @@ func (m *ListDeviceStatesRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListDeviceStatesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDeviceStatesRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListDeviceStatesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDeviceStatesRequest.Merge(dst, src)
+func (m *ListDeviceStatesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDeviceStatesRequest.Merge(m, src)
 }
 func (m *ListDeviceStatesRequest) XXX_Size() int {
 	return xxx_messageInfo_ListDeviceStatesRequest.Size(m)
@@ -906,7 +906,7 @@ func (m *ListDeviceStatesResponse) Reset()         { *m = ListDeviceStatesRespon
 func (m *ListDeviceStatesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDeviceStatesResponse) ProtoMessage()    {}
 func (*ListDeviceStatesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_device_manager_2617478a41a48425, []int{16}
+	return fileDescriptor_9243c344ef472aff, []int{16}
 }
 func (m *ListDeviceStatesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceStatesResponse.Unmarshal(m, b)
@@ -914,8 +914,8 @@ func (m *ListDeviceStatesResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListDeviceStatesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDeviceStatesResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListDeviceStatesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDeviceStatesResponse.Merge(dst, src)
+func (m *ListDeviceStatesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDeviceStatesResponse.Merge(m, src)
 }
 func (m *ListDeviceStatesResponse) XXX_Size() int {
 	return xxx_messageInfo_ListDeviceStatesResponse.Size(m)
@@ -1571,10 +1571,10 @@ var _DeviceManager_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/iot/v1/device_manager.proto", fileDescriptor_device_manager_2617478a41a48425)
+	proto.RegisterFile("google/cloud/iot/v1/device_manager.proto", fileDescriptor_9243c344ef472aff)
 }
 
-var fileDescriptor_device_manager_2617478a41a48425 = []byte{
+var fileDescriptor_9243c344ef472aff = []byte{
 	// 1432 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x58, 0xcd, 0x6f, 0x1b, 0x45,
 	0x14, 0xd7, 0xd8, 0xa5, 0x90, 0x17, 0x97, 0xb6, 0x93, 0xd0, 0x1a, 0xbb, 0xa5, 0xee, 0x96, 0x0f,

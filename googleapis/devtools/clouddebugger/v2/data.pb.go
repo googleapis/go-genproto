@@ -51,6 +51,7 @@ var StatusMessage_Reference_name = map[int32]string{
 	5: "VARIABLE_NAME",
 	6: "VARIABLE_VALUE",
 }
+
 var StatusMessage_Reference_value = map[string]int32{
 	"UNSPECIFIED":                0,
 	"BREAKPOINT_SOURCE_LOCATION": 3,
@@ -64,8 +65,9 @@ var StatusMessage_Reference_value = map[string]int32{
 func (x StatusMessage_Reference) String() string {
 	return proto.EnumName(StatusMessage_Reference_name, int32(x))
 }
+
 func (StatusMessage_Reference) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{1, 0}
+	return fileDescriptor_af1dc785e55f21bc, []int{1, 0}
 }
 
 // Actions that can be taken when a breakpoint hits.
@@ -86,6 +88,7 @@ var Breakpoint_Action_name = map[int32]string{
 	0: "CAPTURE",
 	1: "LOG",
 }
+
 var Breakpoint_Action_value = map[string]int32{
 	"CAPTURE": 0,
 	"LOG":     1,
@@ -94,8 +97,9 @@ var Breakpoint_Action_value = map[string]int32{
 func (x Breakpoint_Action) String() string {
 	return proto.EnumName(Breakpoint_Action_name, int32(x))
 }
+
 func (Breakpoint_Action) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{5, 0}
+	return fileDescriptor_af1dc785e55f21bc, []int{5, 0}
 }
 
 // Log severity levels.
@@ -115,6 +119,7 @@ var Breakpoint_LogLevel_name = map[int32]string{
 	1: "WARNING",
 	2: "ERROR",
 }
+
 var Breakpoint_LogLevel_value = map[string]int32{
 	"INFO":    0,
 	"WARNING": 1,
@@ -124,8 +129,9 @@ var Breakpoint_LogLevel_value = map[string]int32{
 func (x Breakpoint_LogLevel) String() string {
 	return proto.EnumName(Breakpoint_LogLevel_name, int32(x))
 }
+
 func (Breakpoint_LogLevel) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{5, 1}
+	return fileDescriptor_af1dc785e55f21bc, []int{5, 1}
 }
 
 // Represents a message with parameters.
@@ -151,7 +157,7 @@ func (m *FormatMessage) Reset()         { *m = FormatMessage{} }
 func (m *FormatMessage) String() string { return proto.CompactTextString(m) }
 func (*FormatMessage) ProtoMessage()    {}
 func (*FormatMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{0}
+	return fileDescriptor_af1dc785e55f21bc, []int{0}
 }
 func (m *FormatMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FormatMessage.Unmarshal(m, b)
@@ -159,8 +165,8 @@ func (m *FormatMessage) XXX_Unmarshal(b []byte) error {
 func (m *FormatMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_FormatMessage.Marshal(b, m, deterministic)
 }
-func (dst *FormatMessage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FormatMessage.Merge(dst, src)
+func (m *FormatMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FormatMessage.Merge(m, src)
 }
 func (m *FormatMessage) XXX_Size() int {
 	return xxx_messageInfo_FormatMessage.Size(m)
@@ -206,7 +212,7 @@ func (m *StatusMessage) Reset()         { *m = StatusMessage{} }
 func (m *StatusMessage) String() string { return proto.CompactTextString(m) }
 func (*StatusMessage) ProtoMessage()    {}
 func (*StatusMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{1}
+	return fileDescriptor_af1dc785e55f21bc, []int{1}
 }
 func (m *StatusMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StatusMessage.Unmarshal(m, b)
@@ -214,8 +220,8 @@ func (m *StatusMessage) XXX_Unmarshal(b []byte) error {
 func (m *StatusMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StatusMessage.Marshal(b, m, deterministic)
 }
-func (dst *StatusMessage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StatusMessage.Merge(dst, src)
+func (m *StatusMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StatusMessage.Merge(m, src)
 }
 func (m *StatusMessage) XXX_Size() int {
 	return xxx_messageInfo_StatusMessage.Size(m)
@@ -262,7 +268,7 @@ func (m *SourceLocation) Reset()         { *m = SourceLocation{} }
 func (m *SourceLocation) String() string { return proto.CompactTextString(m) }
 func (*SourceLocation) ProtoMessage()    {}
 func (*SourceLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{2}
+	return fileDescriptor_af1dc785e55f21bc, []int{2}
 }
 func (m *SourceLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceLocation.Unmarshal(m, b)
@@ -270,8 +276,8 @@ func (m *SourceLocation) XXX_Unmarshal(b []byte) error {
 func (m *SourceLocation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SourceLocation.Marshal(b, m, deterministic)
 }
-func (dst *SourceLocation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SourceLocation.Merge(dst, src)
+func (m *SourceLocation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SourceLocation.Merge(m, src)
 }
 func (m *SourceLocation) XXX_Size() int {
 	return xxx_messageInfo_SourceLocation.Size(m)
@@ -450,7 +456,7 @@ func (m *Variable) Reset()         { *m = Variable{} }
 func (m *Variable) String() string { return proto.CompactTextString(m) }
 func (*Variable) ProtoMessage()    {}
 func (*Variable) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{3}
+	return fileDescriptor_af1dc785e55f21bc, []int{3}
 }
 func (m *Variable) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Variable.Unmarshal(m, b)
@@ -458,8 +464,8 @@ func (m *Variable) XXX_Unmarshal(b []byte) error {
 func (m *Variable) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Variable.Marshal(b, m, deterministic)
 }
-func (dst *Variable) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Variable.Merge(dst, src)
+func (m *Variable) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Variable.Merge(m, src)
 }
 func (m *Variable) XXX_Size() int {
 	return xxx_messageInfo_Variable.Size(m)
@@ -533,7 +539,7 @@ func (m *StackFrame) Reset()         { *m = StackFrame{} }
 func (m *StackFrame) String() string { return proto.CompactTextString(m) }
 func (*StackFrame) ProtoMessage()    {}
 func (*StackFrame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{4}
+	return fileDescriptor_af1dc785e55f21bc, []int{4}
 }
 func (m *StackFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StackFrame.Unmarshal(m, b)
@@ -541,8 +547,8 @@ func (m *StackFrame) XXX_Unmarshal(b []byte) error {
 func (m *StackFrame) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StackFrame.Marshal(b, m, deterministic)
 }
-func (dst *StackFrame) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StackFrame.Merge(dst, src)
+func (m *StackFrame) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StackFrame.Merge(m, src)
 }
 func (m *StackFrame) XXX_Size() int {
 	return xxx_messageInfo_StackFrame.Size(m)
@@ -671,7 +677,7 @@ func (m *Breakpoint) Reset()         { *m = Breakpoint{} }
 func (m *Breakpoint) String() string { return proto.CompactTextString(m) }
 func (*Breakpoint) ProtoMessage()    {}
 func (*Breakpoint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{5}
+	return fileDescriptor_af1dc785e55f21bc, []int{5}
 }
 func (m *Breakpoint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Breakpoint.Unmarshal(m, b)
@@ -679,8 +685,8 @@ func (m *Breakpoint) XXX_Unmarshal(b []byte) error {
 func (m *Breakpoint) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Breakpoint.Marshal(b, m, deterministic)
 }
-func (dst *Breakpoint) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Breakpoint.Merge(dst, src)
+func (m *Breakpoint) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Breakpoint.Merge(m, src)
 }
 func (m *Breakpoint) XXX_Size() int {
 	return xxx_messageInfo_Breakpoint.Size(m)
@@ -859,7 +865,7 @@ func (m *Debuggee) Reset()         { *m = Debuggee{} }
 func (m *Debuggee) String() string { return proto.CompactTextString(m) }
 func (*Debuggee) ProtoMessage()    {}
 func (*Debuggee) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_03347f8b18bb29e5, []int{6}
+	return fileDescriptor_af1dc785e55f21bc, []int{6}
 }
 func (m *Debuggee) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Debuggee.Unmarshal(m, b)
@@ -867,8 +873,8 @@ func (m *Debuggee) XXX_Unmarshal(b []byte) error {
 func (m *Debuggee) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Debuggee.Marshal(b, m, deterministic)
 }
-func (dst *Debuggee) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Debuggee.Merge(dst, src)
+func (m *Debuggee) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Debuggee.Merge(m, src)
 }
 func (m *Debuggee) XXX_Size() int {
 	return xxx_messageInfo_Debuggee.Size(m)
@@ -972,10 +978,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/clouddebugger/v2/data.proto", fileDescriptor_data_03347f8b18bb29e5)
+	proto.RegisterFile("google/devtools/clouddebugger/v2/data.proto", fileDescriptor_af1dc785e55f21bc)
 }
 
-var fileDescriptor_data_03347f8b18bb29e5 = []byte{
+var fileDescriptor_af1dc785e55f21bc = []byte{
 	// 1270 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x57, 0x5d, 0x92, 0xda, 0xc6,
 	0x16, 0x36, 0x3f, 0x03, 0xd2, 0x61, 0x60, 0x70, 0x5f, 0xfb, 0x96, 0x3c, 0xd7, 0x77, 0x4c, 0x71,

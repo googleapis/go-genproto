@@ -35,6 +35,7 @@ var DocumentTransform_FieldTransform_ServerValue_name = map[int32]string{
 	0: "SERVER_VALUE_UNSPECIFIED",
 	1: "REQUEST_TIME",
 }
+
 var DocumentTransform_FieldTransform_ServerValue_value = map[string]int32{
 	"SERVER_VALUE_UNSPECIFIED": 0,
 	"REQUEST_TIME":             1,
@@ -43,8 +44,9 @@ var DocumentTransform_FieldTransform_ServerValue_value = map[string]int32{
 func (x DocumentTransform_FieldTransform_ServerValue) String() string {
 	return proto.EnumName(DocumentTransform_FieldTransform_ServerValue_name, int32(x))
 }
+
 func (DocumentTransform_FieldTransform_ServerValue) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_write_20ad488dab963f67, []int{1, 0, 0}
+	return fileDescriptor_4c92377d80e15b52, []int{1, 0, 0}
 }
 
 // A write on a document.
@@ -80,7 +82,7 @@ func (m *Write) Reset()         { *m = Write{} }
 func (m *Write) String() string { return proto.CompactTextString(m) }
 func (*Write) ProtoMessage()    {}
 func (*Write) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_20ad488dab963f67, []int{0}
+	return fileDescriptor_4c92377d80e15b52, []int{0}
 }
 func (m *Write) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Write.Unmarshal(m, b)
@@ -88,8 +90,8 @@ func (m *Write) XXX_Unmarshal(b []byte) error {
 func (m *Write) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Write.Marshal(b, m, deterministic)
 }
-func (dst *Write) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Write.Merge(dst, src)
+func (m *Write) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Write.Merge(m, src)
 }
 func (m *Write) XXX_Size() int {
 	return xxx_messageInfo_Write.Size(m)
@@ -270,7 +272,7 @@ func (m *DocumentTransform) Reset()         { *m = DocumentTransform{} }
 func (m *DocumentTransform) String() string { return proto.CompactTextString(m) }
 func (*DocumentTransform) ProtoMessage()    {}
 func (*DocumentTransform) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_20ad488dab963f67, []int{1}
+	return fileDescriptor_4c92377d80e15b52, []int{1}
 }
 func (m *DocumentTransform) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentTransform.Unmarshal(m, b)
@@ -278,8 +280,8 @@ func (m *DocumentTransform) XXX_Unmarshal(b []byte) error {
 func (m *DocumentTransform) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DocumentTransform.Marshal(b, m, deterministic)
 }
-func (dst *DocumentTransform) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DocumentTransform.Merge(dst, src)
+func (m *DocumentTransform) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DocumentTransform.Merge(m, src)
 }
 func (m *DocumentTransform) XXX_Size() int {
 	return xxx_messageInfo_DocumentTransform.Size(m)
@@ -325,7 +327,7 @@ func (m *DocumentTransform_FieldTransform) Reset()         { *m = DocumentTransf
 func (m *DocumentTransform_FieldTransform) String() string { return proto.CompactTextString(m) }
 func (*DocumentTransform_FieldTransform) ProtoMessage()    {}
 func (*DocumentTransform_FieldTransform) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_20ad488dab963f67, []int{1, 0}
+	return fileDescriptor_4c92377d80e15b52, []int{1, 0}
 }
 func (m *DocumentTransform_FieldTransform) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentTransform_FieldTransform.Unmarshal(m, b)
@@ -333,8 +335,8 @@ func (m *DocumentTransform_FieldTransform) XXX_Unmarshal(b []byte) error {
 func (m *DocumentTransform_FieldTransform) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DocumentTransform_FieldTransform.Marshal(b, m, deterministic)
 }
-func (dst *DocumentTransform_FieldTransform) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DocumentTransform_FieldTransform.Merge(dst, src)
+func (m *DocumentTransform_FieldTransform) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DocumentTransform_FieldTransform.Merge(m, src)
 }
 func (m *DocumentTransform_FieldTransform) XXX_Size() int {
 	return xxx_messageInfo_DocumentTransform_FieldTransform.Size(m)
@@ -513,7 +515,7 @@ func (m *WriteResult) Reset()         { *m = WriteResult{} }
 func (m *WriteResult) String() string { return proto.CompactTextString(m) }
 func (*WriteResult) ProtoMessage()    {}
 func (*WriteResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_20ad488dab963f67, []int{2}
+	return fileDescriptor_4c92377d80e15b52, []int{2}
 }
 func (m *WriteResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteResult.Unmarshal(m, b)
@@ -521,8 +523,8 @@ func (m *WriteResult) XXX_Unmarshal(b []byte) error {
 func (m *WriteResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_WriteResult.Marshal(b, m, deterministic)
 }
-func (dst *WriteResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WriteResult.Merge(dst, src)
+func (m *WriteResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WriteResult.Merge(m, src)
 }
 func (m *WriteResult) XXX_Size() int {
 	return xxx_messageInfo_WriteResult.Size(m)
@@ -572,7 +574,7 @@ func (m *DocumentChange) Reset()         { *m = DocumentChange{} }
 func (m *DocumentChange) String() string { return proto.CompactTextString(m) }
 func (*DocumentChange) ProtoMessage()    {}
 func (*DocumentChange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_20ad488dab963f67, []int{3}
+	return fileDescriptor_4c92377d80e15b52, []int{3}
 }
 func (m *DocumentChange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentChange.Unmarshal(m, b)
@@ -580,8 +582,8 @@ func (m *DocumentChange) XXX_Unmarshal(b []byte) error {
 func (m *DocumentChange) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DocumentChange.Marshal(b, m, deterministic)
 }
-func (dst *DocumentChange) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DocumentChange.Merge(dst, src)
+func (m *DocumentChange) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DocumentChange.Merge(m, src)
 }
 func (m *DocumentChange) XXX_Size() int {
 	return xxx_messageInfo_DocumentChange.Size(m)
@@ -638,7 +640,7 @@ func (m *DocumentDelete) Reset()         { *m = DocumentDelete{} }
 func (m *DocumentDelete) String() string { return proto.CompactTextString(m) }
 func (*DocumentDelete) ProtoMessage()    {}
 func (*DocumentDelete) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_20ad488dab963f67, []int{4}
+	return fileDescriptor_4c92377d80e15b52, []int{4}
 }
 func (m *DocumentDelete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentDelete.Unmarshal(m, b)
@@ -646,8 +648,8 @@ func (m *DocumentDelete) XXX_Unmarshal(b []byte) error {
 func (m *DocumentDelete) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DocumentDelete.Marshal(b, m, deterministic)
 }
-func (dst *DocumentDelete) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DocumentDelete.Merge(dst, src)
+func (m *DocumentDelete) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DocumentDelete.Merge(m, src)
 }
 func (m *DocumentDelete) XXX_Size() int {
 	return xxx_messageInfo_DocumentDelete.Size(m)
@@ -705,7 +707,7 @@ func (m *DocumentRemove) Reset()         { *m = DocumentRemove{} }
 func (m *DocumentRemove) String() string { return proto.CompactTextString(m) }
 func (*DocumentRemove) ProtoMessage()    {}
 func (*DocumentRemove) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_20ad488dab963f67, []int{5}
+	return fileDescriptor_4c92377d80e15b52, []int{5}
 }
 func (m *DocumentRemove) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentRemove.Unmarshal(m, b)
@@ -713,8 +715,8 @@ func (m *DocumentRemove) XXX_Unmarshal(b []byte) error {
 func (m *DocumentRemove) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DocumentRemove.Marshal(b, m, deterministic)
 }
-func (dst *DocumentRemove) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DocumentRemove.Merge(dst, src)
+func (m *DocumentRemove) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DocumentRemove.Merge(m, src)
 }
 func (m *DocumentRemove) XXX_Size() int {
 	return xxx_messageInfo_DocumentRemove.Size(m)
@@ -764,7 +766,7 @@ func (m *ExistenceFilter) Reset()         { *m = ExistenceFilter{} }
 func (m *ExistenceFilter) String() string { return proto.CompactTextString(m) }
 func (*ExistenceFilter) ProtoMessage()    {}
 func (*ExistenceFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_write_20ad488dab963f67, []int{6}
+	return fileDescriptor_4c92377d80e15b52, []int{6}
 }
 func (m *ExistenceFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExistenceFilter.Unmarshal(m, b)
@@ -772,8 +774,8 @@ func (m *ExistenceFilter) XXX_Unmarshal(b []byte) error {
 func (m *ExistenceFilter) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ExistenceFilter.Marshal(b, m, deterministic)
 }
-func (dst *ExistenceFilter) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExistenceFilter.Merge(dst, src)
+func (m *ExistenceFilter) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExistenceFilter.Merge(m, src)
 }
 func (m *ExistenceFilter) XXX_Size() int {
 	return xxx_messageInfo_ExistenceFilter.Size(m)
@@ -811,10 +813,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/v1beta1/write.proto", fileDescriptor_write_20ad488dab963f67)
+	proto.RegisterFile("google/firestore/v1beta1/write.proto", fileDescriptor_4c92377d80e15b52)
 }
 
-var fileDescriptor_write_20ad488dab963f67 = []byte{
+var fileDescriptor_4c92377d80e15b52 = []byte{
 	// 826 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x95, 0x41, 0x6f, 0xe3, 0x44,
 	0x14, 0xc7, 0x9b, 0xb4, 0x09, 0xcd, 0x0b, 0x6a, 0xbd, 0x03, 0x2b, 0xac, 0xd0, 0x65, 0xab, 0x68,

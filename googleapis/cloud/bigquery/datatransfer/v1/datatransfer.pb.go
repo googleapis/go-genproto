@@ -59,6 +59,7 @@ var DataSourceParameter_Type_name = map[int32]string{
 	5: "RECORD",
 	6: "PLUS_PAGE",
 }
+
 var DataSourceParameter_Type_value = map[string]int32{
 	"TYPE_UNSPECIFIED": 0,
 	"STRING":           1,
@@ -72,8 +73,9 @@ var DataSourceParameter_Type_value = map[string]int32{
 func (x DataSourceParameter_Type) String() string {
 	return proto.EnumName(DataSourceParameter_Type_name, int32(x))
 }
+
 func (DataSourceParameter_Type) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{0, 0}
+	return fileDescriptor_8edec8f64c27b8a4, []int{0, 0}
 }
 
 // The type of authorization needed for this data source.
@@ -95,6 +97,7 @@ var DataSource_AuthorizationType_name = map[int32]string{
 	1: "AUTHORIZATION_CODE",
 	2: "GOOGLE_PLUS_AUTHORIZATION_CODE",
 }
+
 var DataSource_AuthorizationType_value = map[string]int32{
 	"AUTHORIZATION_TYPE_UNSPECIFIED": 0,
 	"AUTHORIZATION_CODE":             1,
@@ -104,8 +107,9 @@ var DataSource_AuthorizationType_value = map[string]int32{
 func (x DataSource_AuthorizationType) String() string {
 	return proto.EnumName(DataSource_AuthorizationType_name, int32(x))
 }
+
 func (DataSource_AuthorizationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{1, 0}
+	return fileDescriptor_8edec8f64c27b8a4, []int{1, 0}
 }
 
 // Represents how the data source supports data auto refresh.
@@ -129,6 +133,7 @@ var DataSource_DataRefreshType_name = map[int32]string{
 	1: "SLIDING_WINDOW",
 	2: "CUSTOM_SLIDING_WINDOW",
 }
+
 var DataSource_DataRefreshType_value = map[string]int32{
 	"DATA_REFRESH_TYPE_UNSPECIFIED": 0,
 	"SLIDING_WINDOW":                1,
@@ -138,8 +143,9 @@ var DataSource_DataRefreshType_value = map[string]int32{
 func (x DataSource_DataRefreshType) String() string {
 	return proto.EnumName(DataSource_DataRefreshType_name, int32(x))
 }
+
 func (DataSource_DataRefreshType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{1, 1}
+	return fileDescriptor_8edec8f64c27b8a4, []int{1, 1}
 }
 
 // Represents which runs should be pulled.
@@ -156,6 +162,7 @@ var ListTransferRunsRequest_RunAttempt_name = map[int32]string{
 	0: "RUN_ATTEMPT_UNSPECIFIED",
 	1: "LATEST",
 }
+
 var ListTransferRunsRequest_RunAttempt_value = map[string]int32{
 	"RUN_ATTEMPT_UNSPECIFIED": 0,
 	"LATEST":                  1,
@@ -164,8 +171,9 @@ var ListTransferRunsRequest_RunAttempt_value = map[string]int32{
 func (x ListTransferRunsRequest_RunAttempt) String() string {
 	return proto.EnumName(ListTransferRunsRequest_RunAttempt_name, int32(x))
 }
+
 func (ListTransferRunsRequest_RunAttempt) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{13, 0}
+	return fileDescriptor_8edec8f64c27b8a4, []int{13, 0}
 }
 
 // Represents a data source parameter with validation rules, so that
@@ -216,7 +224,7 @@ func (m *DataSourceParameter) Reset()         { *m = DataSourceParameter{} }
 func (m *DataSourceParameter) String() string { return proto.CompactTextString(m) }
 func (*DataSourceParameter) ProtoMessage()    {}
 func (*DataSourceParameter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{0}
+	return fileDescriptor_8edec8f64c27b8a4, []int{0}
 }
 func (m *DataSourceParameter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DataSourceParameter.Unmarshal(m, b)
@@ -224,8 +232,8 @@ func (m *DataSourceParameter) XXX_Unmarshal(b []byte) error {
 func (m *DataSourceParameter) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DataSourceParameter.Marshal(b, m, deterministic)
 }
-func (dst *DataSourceParameter) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DataSourceParameter.Merge(dst, src)
+func (m *DataSourceParameter) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DataSourceParameter.Merge(m, src)
 }
 func (m *DataSourceParameter) XXX_Size() int {
 	return xxx_messageInfo_DataSourceParameter.Size(m)
@@ -406,7 +414,7 @@ func (m *DataSource) Reset()         { *m = DataSource{} }
 func (m *DataSource) String() string { return proto.CompactTextString(m) }
 func (*DataSource) ProtoMessage()    {}
 func (*DataSource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{1}
+	return fileDescriptor_8edec8f64c27b8a4, []int{1}
 }
 func (m *DataSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DataSource.Unmarshal(m, b)
@@ -414,8 +422,8 @@ func (m *DataSource) XXX_Unmarshal(b []byte) error {
 func (m *DataSource) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DataSource.Marshal(b, m, deterministic)
 }
-func (dst *DataSource) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DataSource.Merge(dst, src)
+func (m *DataSource) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DataSource.Merge(m, src)
 }
 func (m *DataSource) XXX_Size() int {
 	return xxx_messageInfo_DataSource.Size(m)
@@ -566,7 +574,7 @@ func (m *GetDataSourceRequest) Reset()         { *m = GetDataSourceRequest{} }
 func (m *GetDataSourceRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDataSourceRequest) ProtoMessage()    {}
 func (*GetDataSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{2}
+	return fileDescriptor_8edec8f64c27b8a4, []int{2}
 }
 func (m *GetDataSourceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDataSourceRequest.Unmarshal(m, b)
@@ -574,8 +582,8 @@ func (m *GetDataSourceRequest) XXX_Unmarshal(b []byte) error {
 func (m *GetDataSourceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetDataSourceRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetDataSourceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetDataSourceRequest.Merge(dst, src)
+func (m *GetDataSourceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetDataSourceRequest.Merge(m, src)
 }
 func (m *GetDataSourceRequest) XXX_Size() int {
 	return xxx_messageInfo_GetDataSourceRequest.Size(m)
@@ -615,7 +623,7 @@ func (m *ListDataSourcesRequest) Reset()         { *m = ListDataSourcesRequest{}
 func (m *ListDataSourcesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDataSourcesRequest) ProtoMessage()    {}
 func (*ListDataSourcesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{3}
+	return fileDescriptor_8edec8f64c27b8a4, []int{3}
 }
 func (m *ListDataSourcesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDataSourcesRequest.Unmarshal(m, b)
@@ -623,8 +631,8 @@ func (m *ListDataSourcesRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListDataSourcesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDataSourcesRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListDataSourcesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDataSourcesRequest.Merge(dst, src)
+func (m *ListDataSourcesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDataSourcesRequest.Merge(m, src)
 }
 func (m *ListDataSourcesRequest) XXX_Size() int {
 	return xxx_messageInfo_ListDataSourcesRequest.Size(m)
@@ -674,7 +682,7 @@ func (m *ListDataSourcesResponse) Reset()         { *m = ListDataSourcesResponse
 func (m *ListDataSourcesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDataSourcesResponse) ProtoMessage()    {}
 func (*ListDataSourcesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{4}
+	return fileDescriptor_8edec8f64c27b8a4, []int{4}
 }
 func (m *ListDataSourcesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDataSourcesResponse.Unmarshal(m, b)
@@ -682,8 +690,8 @@ func (m *ListDataSourcesResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListDataSourcesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDataSourcesResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListDataSourcesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDataSourcesResponse.Merge(dst, src)
+func (m *ListDataSourcesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDataSourcesResponse.Merge(m, src)
 }
 func (m *ListDataSourcesResponse) XXX_Size() int {
 	return xxx_messageInfo_ListDataSourcesResponse.Size(m)
@@ -748,7 +756,7 @@ func (m *CreateTransferConfigRequest) Reset()         { *m = CreateTransferConfi
 func (m *CreateTransferConfigRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateTransferConfigRequest) ProtoMessage()    {}
 func (*CreateTransferConfigRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{5}
+	return fileDescriptor_8edec8f64c27b8a4, []int{5}
 }
 func (m *CreateTransferConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateTransferConfigRequest.Unmarshal(m, b)
@@ -756,8 +764,8 @@ func (m *CreateTransferConfigRequest) XXX_Unmarshal(b []byte) error {
 func (m *CreateTransferConfigRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CreateTransferConfigRequest.Marshal(b, m, deterministic)
 }
-func (dst *CreateTransferConfigRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateTransferConfigRequest.Merge(dst, src)
+func (m *CreateTransferConfigRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateTransferConfigRequest.Merge(m, src)
 }
 func (m *CreateTransferConfigRequest) XXX_Size() int {
 	return xxx_messageInfo_CreateTransferConfigRequest.Size(m)
@@ -822,7 +830,7 @@ func (m *UpdateTransferConfigRequest) Reset()         { *m = UpdateTransferConfi
 func (m *UpdateTransferConfigRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateTransferConfigRequest) ProtoMessage()    {}
 func (*UpdateTransferConfigRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{6}
+	return fileDescriptor_8edec8f64c27b8a4, []int{6}
 }
 func (m *UpdateTransferConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateTransferConfigRequest.Unmarshal(m, b)
@@ -830,8 +838,8 @@ func (m *UpdateTransferConfigRequest) XXX_Unmarshal(b []byte) error {
 func (m *UpdateTransferConfigRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_UpdateTransferConfigRequest.Marshal(b, m, deterministic)
 }
-func (dst *UpdateTransferConfigRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateTransferConfigRequest.Merge(dst, src)
+func (m *UpdateTransferConfigRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateTransferConfigRequest.Merge(m, src)
 }
 func (m *UpdateTransferConfigRequest) XXX_Size() int {
 	return xxx_messageInfo_UpdateTransferConfigRequest.Size(m)
@@ -877,7 +885,7 @@ func (m *GetTransferConfigRequest) Reset()         { *m = GetTransferConfigReque
 func (m *GetTransferConfigRequest) String() string { return proto.CompactTextString(m) }
 func (*GetTransferConfigRequest) ProtoMessage()    {}
 func (*GetTransferConfigRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{7}
+	return fileDescriptor_8edec8f64c27b8a4, []int{7}
 }
 func (m *GetTransferConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetTransferConfigRequest.Unmarshal(m, b)
@@ -885,8 +893,8 @@ func (m *GetTransferConfigRequest) XXX_Unmarshal(b []byte) error {
 func (m *GetTransferConfigRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetTransferConfigRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetTransferConfigRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetTransferConfigRequest.Merge(dst, src)
+func (m *GetTransferConfigRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetTransferConfigRequest.Merge(m, src)
 }
 func (m *GetTransferConfigRequest) XXX_Size() int {
 	return xxx_messageInfo_GetTransferConfigRequest.Size(m)
@@ -919,7 +927,7 @@ func (m *DeleteTransferConfigRequest) Reset()         { *m = DeleteTransferConfi
 func (m *DeleteTransferConfigRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteTransferConfigRequest) ProtoMessage()    {}
 func (*DeleteTransferConfigRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{8}
+	return fileDescriptor_8edec8f64c27b8a4, []int{8}
 }
 func (m *DeleteTransferConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteTransferConfigRequest.Unmarshal(m, b)
@@ -927,8 +935,8 @@ func (m *DeleteTransferConfigRequest) XXX_Unmarshal(b []byte) error {
 func (m *DeleteTransferConfigRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeleteTransferConfigRequest.Marshal(b, m, deterministic)
 }
-func (dst *DeleteTransferConfigRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteTransferConfigRequest.Merge(dst, src)
+func (m *DeleteTransferConfigRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteTransferConfigRequest.Merge(m, src)
 }
 func (m *DeleteTransferConfigRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteTransferConfigRequest.Size(m)
@@ -960,7 +968,7 @@ func (m *GetTransferRunRequest) Reset()         { *m = GetTransferRunRequest{} }
 func (m *GetTransferRunRequest) String() string { return proto.CompactTextString(m) }
 func (*GetTransferRunRequest) ProtoMessage()    {}
 func (*GetTransferRunRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{9}
+	return fileDescriptor_8edec8f64c27b8a4, []int{9}
 }
 func (m *GetTransferRunRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetTransferRunRequest.Unmarshal(m, b)
@@ -968,8 +976,8 @@ func (m *GetTransferRunRequest) XXX_Unmarshal(b []byte) error {
 func (m *GetTransferRunRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetTransferRunRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetTransferRunRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetTransferRunRequest.Merge(dst, src)
+func (m *GetTransferRunRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetTransferRunRequest.Merge(m, src)
 }
 func (m *GetTransferRunRequest) XXX_Size() int {
 	return xxx_messageInfo_GetTransferRunRequest.Size(m)
@@ -1001,7 +1009,7 @@ func (m *DeleteTransferRunRequest) Reset()         { *m = DeleteTransferRunReque
 func (m *DeleteTransferRunRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteTransferRunRequest) ProtoMessage()    {}
 func (*DeleteTransferRunRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{10}
+	return fileDescriptor_8edec8f64c27b8a4, []int{10}
 }
 func (m *DeleteTransferRunRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteTransferRunRequest.Unmarshal(m, b)
@@ -1009,8 +1017,8 @@ func (m *DeleteTransferRunRequest) XXX_Unmarshal(b []byte) error {
 func (m *DeleteTransferRunRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeleteTransferRunRequest.Marshal(b, m, deterministic)
 }
-func (dst *DeleteTransferRunRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteTransferRunRequest.Merge(dst, src)
+func (m *DeleteTransferRunRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteTransferRunRequest.Merge(m, src)
 }
 func (m *DeleteTransferRunRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteTransferRunRequest.Size(m)
@@ -1052,7 +1060,7 @@ func (m *ListTransferConfigsRequest) Reset()         { *m = ListTransferConfigsR
 func (m *ListTransferConfigsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListTransferConfigsRequest) ProtoMessage()    {}
 func (*ListTransferConfigsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{11}
+	return fileDescriptor_8edec8f64c27b8a4, []int{11}
 }
 func (m *ListTransferConfigsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTransferConfigsRequest.Unmarshal(m, b)
@@ -1060,8 +1068,8 @@ func (m *ListTransferConfigsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListTransferConfigsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListTransferConfigsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListTransferConfigsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListTransferConfigsRequest.Merge(dst, src)
+func (m *ListTransferConfigsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListTransferConfigsRequest.Merge(m, src)
 }
 func (m *ListTransferConfigsRequest) XXX_Size() int {
 	return xxx_messageInfo_ListTransferConfigsRequest.Size(m)
@@ -1118,7 +1126,7 @@ func (m *ListTransferConfigsResponse) Reset()         { *m = ListTransferConfigs
 func (m *ListTransferConfigsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListTransferConfigsResponse) ProtoMessage()    {}
 func (*ListTransferConfigsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{12}
+	return fileDescriptor_8edec8f64c27b8a4, []int{12}
 }
 func (m *ListTransferConfigsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTransferConfigsResponse.Unmarshal(m, b)
@@ -1126,8 +1134,8 @@ func (m *ListTransferConfigsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListTransferConfigsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListTransferConfigsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListTransferConfigsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListTransferConfigsResponse.Merge(dst, src)
+func (m *ListTransferConfigsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListTransferConfigsResponse.Merge(m, src)
 }
 func (m *ListTransferConfigsResponse) XXX_Size() int {
 	return xxx_messageInfo_ListTransferConfigsResponse.Size(m)
@@ -1181,7 +1189,7 @@ func (m *ListTransferRunsRequest) Reset()         { *m = ListTransferRunsRequest
 func (m *ListTransferRunsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListTransferRunsRequest) ProtoMessage()    {}
 func (*ListTransferRunsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{13}
+	return fileDescriptor_8edec8f64c27b8a4, []int{13}
 }
 func (m *ListTransferRunsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTransferRunsRequest.Unmarshal(m, b)
@@ -1189,8 +1197,8 @@ func (m *ListTransferRunsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListTransferRunsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListTransferRunsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListTransferRunsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListTransferRunsRequest.Merge(dst, src)
+func (m *ListTransferRunsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListTransferRunsRequest.Merge(m, src)
 }
 func (m *ListTransferRunsRequest) XXX_Size() int {
 	return xxx_messageInfo_ListTransferRunsRequest.Size(m)
@@ -1254,7 +1262,7 @@ func (m *ListTransferRunsResponse) Reset()         { *m = ListTransferRunsRespon
 func (m *ListTransferRunsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListTransferRunsResponse) ProtoMessage()    {}
 func (*ListTransferRunsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{14}
+	return fileDescriptor_8edec8f64c27b8a4, []int{14}
 }
 func (m *ListTransferRunsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTransferRunsResponse.Unmarshal(m, b)
@@ -1262,8 +1270,8 @@ func (m *ListTransferRunsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListTransferRunsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListTransferRunsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListTransferRunsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListTransferRunsResponse.Merge(dst, src)
+func (m *ListTransferRunsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListTransferRunsResponse.Merge(m, src)
 }
 func (m *ListTransferRunsResponse) XXX_Size() int {
 	return xxx_messageInfo_ListTransferRunsResponse.Size(m)
@@ -1313,7 +1321,7 @@ func (m *ListTransferLogsRequest) Reset()         { *m = ListTransferLogsRequest
 func (m *ListTransferLogsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListTransferLogsRequest) ProtoMessage()    {}
 func (*ListTransferLogsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{15}
+	return fileDescriptor_8edec8f64c27b8a4, []int{15}
 }
 func (m *ListTransferLogsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTransferLogsRequest.Unmarshal(m, b)
@@ -1321,8 +1329,8 @@ func (m *ListTransferLogsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListTransferLogsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListTransferLogsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListTransferLogsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListTransferLogsRequest.Merge(dst, src)
+func (m *ListTransferLogsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListTransferLogsRequest.Merge(m, src)
 }
 func (m *ListTransferLogsRequest) XXX_Size() int {
 	return xxx_messageInfo_ListTransferLogsRequest.Size(m)
@@ -1379,7 +1387,7 @@ func (m *ListTransferLogsResponse) Reset()         { *m = ListTransferLogsRespon
 func (m *ListTransferLogsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListTransferLogsResponse) ProtoMessage()    {}
 func (*ListTransferLogsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{16}
+	return fileDescriptor_8edec8f64c27b8a4, []int{16}
 }
 func (m *ListTransferLogsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTransferLogsResponse.Unmarshal(m, b)
@@ -1387,8 +1395,8 @@ func (m *ListTransferLogsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListTransferLogsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListTransferLogsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListTransferLogsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListTransferLogsResponse.Merge(dst, src)
+func (m *ListTransferLogsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListTransferLogsResponse.Merge(m, src)
 }
 func (m *ListTransferLogsResponse) XXX_Size() int {
 	return xxx_messageInfo_ListTransferLogsResponse.Size(m)
@@ -1432,7 +1440,7 @@ func (m *CheckValidCredsRequest) Reset()         { *m = CheckValidCredsRequest{}
 func (m *CheckValidCredsRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckValidCredsRequest) ProtoMessage()    {}
 func (*CheckValidCredsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{17}
+	return fileDescriptor_8edec8f64c27b8a4, []int{17}
 }
 func (m *CheckValidCredsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckValidCredsRequest.Unmarshal(m, b)
@@ -1440,8 +1448,8 @@ func (m *CheckValidCredsRequest) XXX_Unmarshal(b []byte) error {
 func (m *CheckValidCredsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CheckValidCredsRequest.Marshal(b, m, deterministic)
 }
-func (dst *CheckValidCredsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CheckValidCredsRequest.Merge(dst, src)
+func (m *CheckValidCredsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CheckValidCredsRequest.Merge(m, src)
 }
 func (m *CheckValidCredsRequest) XXX_Size() int {
 	return xxx_messageInfo_CheckValidCredsRequest.Size(m)
@@ -1472,7 +1480,7 @@ func (m *CheckValidCredsResponse) Reset()         { *m = CheckValidCredsResponse
 func (m *CheckValidCredsResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckValidCredsResponse) ProtoMessage()    {}
 func (*CheckValidCredsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{18}
+	return fileDescriptor_8edec8f64c27b8a4, []int{18}
 }
 func (m *CheckValidCredsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckValidCredsResponse.Unmarshal(m, b)
@@ -1480,8 +1488,8 @@ func (m *CheckValidCredsResponse) XXX_Unmarshal(b []byte) error {
 func (m *CheckValidCredsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CheckValidCredsResponse.Marshal(b, m, deterministic)
 }
-func (dst *CheckValidCredsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CheckValidCredsResponse.Merge(dst, src)
+func (m *CheckValidCredsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CheckValidCredsResponse.Merge(m, src)
 }
 func (m *CheckValidCredsResponse) XXX_Size() int {
 	return xxx_messageInfo_CheckValidCredsResponse.Size(m)
@@ -1519,7 +1527,7 @@ func (m *ScheduleTransferRunsRequest) Reset()         { *m = ScheduleTransferRun
 func (m *ScheduleTransferRunsRequest) String() string { return proto.CompactTextString(m) }
 func (*ScheduleTransferRunsRequest) ProtoMessage()    {}
 func (*ScheduleTransferRunsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{19}
+	return fileDescriptor_8edec8f64c27b8a4, []int{19}
 }
 func (m *ScheduleTransferRunsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScheduleTransferRunsRequest.Unmarshal(m, b)
@@ -1527,8 +1535,8 @@ func (m *ScheduleTransferRunsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ScheduleTransferRunsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ScheduleTransferRunsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ScheduleTransferRunsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ScheduleTransferRunsRequest.Merge(dst, src)
+func (m *ScheduleTransferRunsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ScheduleTransferRunsRequest.Merge(m, src)
 }
 func (m *ScheduleTransferRunsRequest) XXX_Size() int {
 	return xxx_messageInfo_ScheduleTransferRunsRequest.Size(m)
@@ -1573,7 +1581,7 @@ func (m *ScheduleTransferRunsResponse) Reset()         { *m = ScheduleTransferRu
 func (m *ScheduleTransferRunsResponse) String() string { return proto.CompactTextString(m) }
 func (*ScheduleTransferRunsResponse) ProtoMessage()    {}
 func (*ScheduleTransferRunsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datatransfer_a28d1a06a3af9867, []int{20}
+	return fileDescriptor_8edec8f64c27b8a4, []int{20}
 }
 func (m *ScheduleTransferRunsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScheduleTransferRunsResponse.Unmarshal(m, b)
@@ -1581,8 +1589,8 @@ func (m *ScheduleTransferRunsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ScheduleTransferRunsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ScheduleTransferRunsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ScheduleTransferRunsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ScheduleTransferRunsResponse.Merge(dst, src)
+func (m *ScheduleTransferRunsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ScheduleTransferRunsResponse.Merge(m, src)
 }
 func (m *ScheduleTransferRunsResponse) XXX_Size() int {
 	return xxx_messageInfo_ScheduleTransferRunsResponse.Size(m)
@@ -2147,10 +2155,10 @@ var _DataTransferService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/bigquery/datatransfer/v1/datatransfer.proto", fileDescriptor_datatransfer_a28d1a06a3af9867)
+	proto.RegisterFile("google/cloud/bigquery/datatransfer/v1/datatransfer.proto", fileDescriptor_8edec8f64c27b8a4)
 }
 
-var fileDescriptor_datatransfer_a28d1a06a3af9867 = []byte{
+var fileDescriptor_8edec8f64c27b8a4 = []byte{
 	// 2343 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x5a, 0xcf, 0x6f, 0xdb, 0xc8,
 	0xf5, 0xff, 0x52, 0xfe, 0xfd, 0x64, 0x5b, 0xf2, 0xc4, 0x71, 0x18, 0x39, 0xbb, 0x5f, 0x2f, 0xdb,

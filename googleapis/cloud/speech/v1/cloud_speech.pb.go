@@ -100,6 +100,7 @@ var RecognitionConfig_AudioEncoding_name = map[int32]string{
 	6: "OGG_OPUS",
 	7: "SPEEX_WITH_HEADER_BYTE",
 }
+
 var RecognitionConfig_AudioEncoding_value = map[string]int32{
 	"ENCODING_UNSPECIFIED":   0,
 	"LINEAR16":               1,
@@ -114,8 +115,9 @@ var RecognitionConfig_AudioEncoding_value = map[string]int32{
 func (x RecognitionConfig_AudioEncoding) String() string {
 	return proto.EnumName(RecognitionConfig_AudioEncoding_name, int32(x))
 }
+
 func (RecognitionConfig_AudioEncoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{4, 0}
+	return fileDescriptor_06c282b85cb237e9, []int{4, 0}
 }
 
 // Indicates the type of speech event.
@@ -138,6 +140,7 @@ var StreamingRecognizeResponse_SpeechEventType_name = map[int32]string{
 	0: "SPEECH_EVENT_UNSPECIFIED",
 	1: "END_OF_SINGLE_UTTERANCE",
 }
+
 var StreamingRecognizeResponse_SpeechEventType_value = map[string]int32{
 	"SPEECH_EVENT_UNSPECIFIED": 0,
 	"END_OF_SINGLE_UTTERANCE":  1,
@@ -146,8 +149,9 @@ var StreamingRecognizeResponse_SpeechEventType_value = map[string]int32{
 func (x StreamingRecognizeResponse_SpeechEventType) String() string {
 	return proto.EnumName(StreamingRecognizeResponse_SpeechEventType_name, int32(x))
 }
+
 func (StreamingRecognizeResponse_SpeechEventType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{10, 0}
+	return fileDescriptor_06c282b85cb237e9, []int{10, 0}
 }
 
 // The top-level message sent by the client for the `Recognize` method.
@@ -166,7 +170,7 @@ func (m *RecognizeRequest) Reset()         { *m = RecognizeRequest{} }
 func (m *RecognizeRequest) String() string { return proto.CompactTextString(m) }
 func (*RecognizeRequest) ProtoMessage()    {}
 func (*RecognizeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{0}
+	return fileDescriptor_06c282b85cb237e9, []int{0}
 }
 func (m *RecognizeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RecognizeRequest.Unmarshal(m, b)
@@ -174,8 +178,8 @@ func (m *RecognizeRequest) XXX_Unmarshal(b []byte) error {
 func (m *RecognizeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_RecognizeRequest.Marshal(b, m, deterministic)
 }
-func (dst *RecognizeRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RecognizeRequest.Merge(dst, src)
+func (m *RecognizeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RecognizeRequest.Merge(m, src)
 }
 func (m *RecognizeRequest) XXX_Size() int {
 	return xxx_messageInfo_RecognizeRequest.Size(m)
@@ -217,7 +221,7 @@ func (m *LongRunningRecognizeRequest) Reset()         { *m = LongRunningRecogniz
 func (m *LongRunningRecognizeRequest) String() string { return proto.CompactTextString(m) }
 func (*LongRunningRecognizeRequest) ProtoMessage()    {}
 func (*LongRunningRecognizeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{1}
+	return fileDescriptor_06c282b85cb237e9, []int{1}
 }
 func (m *LongRunningRecognizeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LongRunningRecognizeRequest.Unmarshal(m, b)
@@ -225,8 +229,8 @@ func (m *LongRunningRecognizeRequest) XXX_Unmarshal(b []byte) error {
 func (m *LongRunningRecognizeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_LongRunningRecognizeRequest.Marshal(b, m, deterministic)
 }
-func (dst *LongRunningRecognizeRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LongRunningRecognizeRequest.Merge(dst, src)
+func (m *LongRunningRecognizeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LongRunningRecognizeRequest.Merge(m, src)
 }
 func (m *LongRunningRecognizeRequest) XXX_Size() int {
 	return xxx_messageInfo_LongRunningRecognizeRequest.Size(m)
@@ -272,7 +276,7 @@ func (m *StreamingRecognizeRequest) Reset()         { *m = StreamingRecognizeReq
 func (m *StreamingRecognizeRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamingRecognizeRequest) ProtoMessage()    {}
 func (*StreamingRecognizeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{2}
+	return fileDescriptor_06c282b85cb237e9, []int{2}
 }
 func (m *StreamingRecognizeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingRecognizeRequest.Unmarshal(m, b)
@@ -280,8 +284,8 @@ func (m *StreamingRecognizeRequest) XXX_Unmarshal(b []byte) error {
 func (m *StreamingRecognizeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StreamingRecognizeRequest.Marshal(b, m, deterministic)
 }
-func (dst *StreamingRecognizeRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StreamingRecognizeRequest.Merge(dst, src)
+func (m *StreamingRecognizeRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingRecognizeRequest.Merge(m, src)
 }
 func (m *StreamingRecognizeRequest) XXX_Size() int {
 	return xxx_messageInfo_StreamingRecognizeRequest.Size(m)
@@ -431,7 +435,7 @@ func (m *StreamingRecognitionConfig) Reset()         { *m = StreamingRecognition
 func (m *StreamingRecognitionConfig) String() string { return proto.CompactTextString(m) }
 func (*StreamingRecognitionConfig) ProtoMessage()    {}
 func (*StreamingRecognitionConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{3}
+	return fileDescriptor_06c282b85cb237e9, []int{3}
 }
 func (m *StreamingRecognitionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingRecognitionConfig.Unmarshal(m, b)
@@ -439,8 +443,8 @@ func (m *StreamingRecognitionConfig) XXX_Unmarshal(b []byte) error {
 func (m *StreamingRecognitionConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StreamingRecognitionConfig.Marshal(b, m, deterministic)
 }
-func (dst *StreamingRecognitionConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StreamingRecognitionConfig.Merge(dst, src)
+func (m *StreamingRecognitionConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingRecognitionConfig.Merge(m, src)
 }
 func (m *StreamingRecognitionConfig) XXX_Size() int {
 	return xxx_messageInfo_StreamingRecognitionConfig.Size(m)
@@ -576,7 +580,7 @@ func (m *RecognitionConfig) Reset()         { *m = RecognitionConfig{} }
 func (m *RecognitionConfig) String() string { return proto.CompactTextString(m) }
 func (*RecognitionConfig) ProtoMessage()    {}
 func (*RecognitionConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{4}
+	return fileDescriptor_06c282b85cb237e9, []int{4}
 }
 func (m *RecognitionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RecognitionConfig.Unmarshal(m, b)
@@ -584,8 +588,8 @@ func (m *RecognitionConfig) XXX_Unmarshal(b []byte) error {
 func (m *RecognitionConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_RecognitionConfig.Marshal(b, m, deterministic)
 }
-func (dst *RecognitionConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RecognitionConfig.Merge(dst, src)
+func (m *RecognitionConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RecognitionConfig.Merge(m, src)
 }
 func (m *RecognitionConfig) XXX_Size() int {
 	return xxx_messageInfo_RecognitionConfig.Size(m)
@@ -685,7 +689,7 @@ func (m *SpeechContext) Reset()         { *m = SpeechContext{} }
 func (m *SpeechContext) String() string { return proto.CompactTextString(m) }
 func (*SpeechContext) ProtoMessage()    {}
 func (*SpeechContext) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{5}
+	return fileDescriptor_06c282b85cb237e9, []int{5}
 }
 func (m *SpeechContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpeechContext.Unmarshal(m, b)
@@ -693,8 +697,8 @@ func (m *SpeechContext) XXX_Unmarshal(b []byte) error {
 func (m *SpeechContext) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SpeechContext.Marshal(b, m, deterministic)
 }
-func (dst *SpeechContext) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SpeechContext.Merge(dst, src)
+func (m *SpeechContext) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SpeechContext.Merge(m, src)
 }
 func (m *SpeechContext) XXX_Size() int {
 	return xxx_messageInfo_SpeechContext.Size(m)
@@ -733,7 +737,7 @@ func (m *RecognitionAudio) Reset()         { *m = RecognitionAudio{} }
 func (m *RecognitionAudio) String() string { return proto.CompactTextString(m) }
 func (*RecognitionAudio) ProtoMessage()    {}
 func (*RecognitionAudio) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{6}
+	return fileDescriptor_06c282b85cb237e9, []int{6}
 }
 func (m *RecognitionAudio) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RecognitionAudio.Unmarshal(m, b)
@@ -741,8 +745,8 @@ func (m *RecognitionAudio) XXX_Unmarshal(b []byte) error {
 func (m *RecognitionAudio) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_RecognitionAudio.Marshal(b, m, deterministic)
 }
-func (dst *RecognitionAudio) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RecognitionAudio.Merge(dst, src)
+func (m *RecognitionAudio) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RecognitionAudio.Merge(m, src)
 }
 func (m *RecognitionAudio) XXX_Size() int {
 	return xxx_messageInfo_RecognitionAudio.Size(m)
@@ -872,7 +876,7 @@ func (m *RecognizeResponse) Reset()         { *m = RecognizeResponse{} }
 func (m *RecognizeResponse) String() string { return proto.CompactTextString(m) }
 func (*RecognizeResponse) ProtoMessage()    {}
 func (*RecognizeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{7}
+	return fileDescriptor_06c282b85cb237e9, []int{7}
 }
 func (m *RecognizeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RecognizeResponse.Unmarshal(m, b)
@@ -880,8 +884,8 @@ func (m *RecognizeResponse) XXX_Unmarshal(b []byte) error {
 func (m *RecognizeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_RecognizeResponse.Marshal(b, m, deterministic)
 }
-func (dst *RecognizeResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RecognizeResponse.Merge(dst, src)
+func (m *RecognizeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RecognizeResponse.Merge(m, src)
 }
 func (m *RecognizeResponse) XXX_Size() int {
 	return xxx_messageInfo_RecognizeResponse.Size(m)
@@ -917,7 +921,7 @@ func (m *LongRunningRecognizeResponse) Reset()         { *m = LongRunningRecogni
 func (m *LongRunningRecognizeResponse) String() string { return proto.CompactTextString(m) }
 func (*LongRunningRecognizeResponse) ProtoMessage()    {}
 func (*LongRunningRecognizeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{8}
+	return fileDescriptor_06c282b85cb237e9, []int{8}
 }
 func (m *LongRunningRecognizeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LongRunningRecognizeResponse.Unmarshal(m, b)
@@ -925,8 +929,8 @@ func (m *LongRunningRecognizeResponse) XXX_Unmarshal(b []byte) error {
 func (m *LongRunningRecognizeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_LongRunningRecognizeResponse.Marshal(b, m, deterministic)
 }
-func (dst *LongRunningRecognizeResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LongRunningRecognizeResponse.Merge(dst, src)
+func (m *LongRunningRecognizeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LongRunningRecognizeResponse.Merge(m, src)
 }
 func (m *LongRunningRecognizeResponse) XXX_Size() int {
 	return xxx_messageInfo_LongRunningRecognizeResponse.Size(m)
@@ -964,7 +968,7 @@ func (m *LongRunningRecognizeMetadata) Reset()         { *m = LongRunningRecogni
 func (m *LongRunningRecognizeMetadata) String() string { return proto.CompactTextString(m) }
 func (*LongRunningRecognizeMetadata) ProtoMessage()    {}
 func (*LongRunningRecognizeMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{9}
+	return fileDescriptor_06c282b85cb237e9, []int{9}
 }
 func (m *LongRunningRecognizeMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LongRunningRecognizeMetadata.Unmarshal(m, b)
@@ -972,8 +976,8 @@ func (m *LongRunningRecognizeMetadata) XXX_Unmarshal(b []byte) error {
 func (m *LongRunningRecognizeMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_LongRunningRecognizeMetadata.Marshal(b, m, deterministic)
 }
-func (dst *LongRunningRecognizeMetadata) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LongRunningRecognizeMetadata.Merge(dst, src)
+func (m *LongRunningRecognizeMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LongRunningRecognizeMetadata.Merge(m, src)
 }
 func (m *LongRunningRecognizeMetadata) XXX_Size() int {
 	return xxx_messageInfo_LongRunningRecognizeMetadata.Size(m)
@@ -1074,7 +1078,7 @@ func (m *StreamingRecognizeResponse) Reset()         { *m = StreamingRecognizeRe
 func (m *StreamingRecognizeResponse) String() string { return proto.CompactTextString(m) }
 func (*StreamingRecognizeResponse) ProtoMessage()    {}
 func (*StreamingRecognizeResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{10}
+	return fileDescriptor_06c282b85cb237e9, []int{10}
 }
 func (m *StreamingRecognizeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingRecognizeResponse.Unmarshal(m, b)
@@ -1082,8 +1086,8 @@ func (m *StreamingRecognizeResponse) XXX_Unmarshal(b []byte) error {
 func (m *StreamingRecognizeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StreamingRecognizeResponse.Marshal(b, m, deterministic)
 }
-func (dst *StreamingRecognizeResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StreamingRecognizeResponse.Merge(dst, src)
+func (m *StreamingRecognizeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingRecognizeResponse.Merge(m, src)
 }
 func (m *StreamingRecognizeResponse) XXX_Size() int {
 	return xxx_messageInfo_StreamingRecognizeResponse.Size(m)
@@ -1144,7 +1148,7 @@ func (m *StreamingRecognitionResult) Reset()         { *m = StreamingRecognition
 func (m *StreamingRecognitionResult) String() string { return proto.CompactTextString(m) }
 func (*StreamingRecognitionResult) ProtoMessage()    {}
 func (*StreamingRecognitionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{11}
+	return fileDescriptor_06c282b85cb237e9, []int{11}
 }
 func (m *StreamingRecognitionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingRecognitionResult.Unmarshal(m, b)
@@ -1152,8 +1156,8 @@ func (m *StreamingRecognitionResult) XXX_Unmarshal(b []byte) error {
 func (m *StreamingRecognitionResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StreamingRecognitionResult.Marshal(b, m, deterministic)
 }
-func (dst *StreamingRecognitionResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StreamingRecognitionResult.Merge(dst, src)
+func (m *StreamingRecognitionResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StreamingRecognitionResult.Merge(m, src)
 }
 func (m *StreamingRecognitionResult) XXX_Size() int {
 	return xxx_messageInfo_StreamingRecognitionResult.Size(m)
@@ -1201,7 +1205,7 @@ func (m *SpeechRecognitionResult) Reset()         { *m = SpeechRecognitionResult
 func (m *SpeechRecognitionResult) String() string { return proto.CompactTextString(m) }
 func (*SpeechRecognitionResult) ProtoMessage()    {}
 func (*SpeechRecognitionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{12}
+	return fileDescriptor_06c282b85cb237e9, []int{12}
 }
 func (m *SpeechRecognitionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpeechRecognitionResult.Unmarshal(m, b)
@@ -1209,8 +1213,8 @@ func (m *SpeechRecognitionResult) XXX_Unmarshal(b []byte) error {
 func (m *SpeechRecognitionResult) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SpeechRecognitionResult.Marshal(b, m, deterministic)
 }
-func (dst *SpeechRecognitionResult) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SpeechRecognitionResult.Merge(dst, src)
+func (m *SpeechRecognitionResult) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SpeechRecognitionResult.Merge(m, src)
 }
 func (m *SpeechRecognitionResult) XXX_Size() int {
 	return xxx_messageInfo_SpeechRecognitionResult.Size(m)
@@ -1251,7 +1255,7 @@ func (m *SpeechRecognitionAlternative) Reset()         { *m = SpeechRecognitionA
 func (m *SpeechRecognitionAlternative) String() string { return proto.CompactTextString(m) }
 func (*SpeechRecognitionAlternative) ProtoMessage()    {}
 func (*SpeechRecognitionAlternative) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{13}
+	return fileDescriptor_06c282b85cb237e9, []int{13}
 }
 func (m *SpeechRecognitionAlternative) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpeechRecognitionAlternative.Unmarshal(m, b)
@@ -1259,8 +1263,8 @@ func (m *SpeechRecognitionAlternative) XXX_Unmarshal(b []byte) error {
 func (m *SpeechRecognitionAlternative) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SpeechRecognitionAlternative.Marshal(b, m, deterministic)
 }
-func (dst *SpeechRecognitionAlternative) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SpeechRecognitionAlternative.Merge(dst, src)
+func (m *SpeechRecognitionAlternative) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SpeechRecognitionAlternative.Merge(m, src)
 }
 func (m *SpeechRecognitionAlternative) XXX_Size() int {
 	return xxx_messageInfo_SpeechRecognitionAlternative.Size(m)
@@ -1319,7 +1323,7 @@ func (m *WordInfo) Reset()         { *m = WordInfo{} }
 func (m *WordInfo) String() string { return proto.CompactTextString(m) }
 func (*WordInfo) ProtoMessage()    {}
 func (*WordInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloud_speech_e29a84bc29d9b679, []int{14}
+	return fileDescriptor_06c282b85cb237e9, []int{14}
 }
 func (m *WordInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WordInfo.Unmarshal(m, b)
@@ -1327,8 +1331,8 @@ func (m *WordInfo) XXX_Unmarshal(b []byte) error {
 func (m *WordInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_WordInfo.Marshal(b, m, deterministic)
 }
-func (dst *WordInfo) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WordInfo.Merge(dst, src)
+func (m *WordInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_WordInfo.Merge(m, src)
 }
 func (m *WordInfo) XXX_Size() int {
 	return xxx_messageInfo_WordInfo.Size(m)
@@ -1568,10 +1572,10 @@ var _Speech_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/speech/v1/cloud_speech.proto", fileDescriptor_cloud_speech_e29a84bc29d9b679)
+	proto.RegisterFile("google/cloud/speech/v1/cloud_speech.proto", fileDescriptor_06c282b85cb237e9)
 }
 
-var fileDescriptor_cloud_speech_e29a84bc29d9b679 = []byte{
+var fileDescriptor_06c282b85cb237e9 = []byte{
 	// 1392 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x57, 0x4f, 0x73, 0xdb, 0x44,
 	0x14, 0x8f, 0xe2, 0x38, 0x7f, 0x5e, 0xfe, 0x39, 0x4b, 0x68, 0x15, 0x37, 0xb4, 0x41, 0xa5, 0x43,

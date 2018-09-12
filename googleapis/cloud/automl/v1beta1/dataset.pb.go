@@ -52,7 +52,7 @@ func (m *Dataset) Reset()         { *m = Dataset{} }
 func (m *Dataset) String() string { return proto.CompactTextString(m) }
 func (*Dataset) ProtoMessage()    {}
 func (*Dataset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_a8678ffeb33098d6, []int{0}
+	return fileDescriptor_1f2b1dc66a1e92da, []int{0}
 }
 func (m *Dataset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Dataset.Unmarshal(m, b)
@@ -60,8 +60,8 @@ func (m *Dataset) XXX_Unmarshal(b []byte) error {
 func (m *Dataset) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Dataset.Marshal(b, m, deterministic)
 }
-func (dst *Dataset) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Dataset.Merge(dst, src)
+func (m *Dataset) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Dataset.Merge(m, src)
 }
 func (m *Dataset) XXX_Size() int {
 	return xxx_messageInfo_Dataset.Size(m)
@@ -248,10 +248,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/dataset.proto", fileDescriptor_dataset_a8678ffeb33098d6)
+	proto.RegisterFile("google/cloud/automl/v1beta1/dataset.proto", fileDescriptor_1f2b1dc66a1e92da)
 }
 
-var fileDescriptor_dataset_a8678ffeb33098d6 = []byte{
+var fileDescriptor_1f2b1dc66a1e92da = []byte{
 	// 428 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0x5d, 0x6b, 0x14, 0x31,
 	0x14, 0x86, 0x1d, 0xa9, 0x8a, 0xd9, 0x2a, 0x12, 0x10, 0xc7, 0xb1, 0xd0, 0x6d, 0xfd, 0x5a, 0x41,

@@ -41,7 +41,7 @@ func (m *Image) Reset()         { *m = Image{} }
 func (m *Image) String() string { return proto.CompactTextString(m) }
 func (*Image) ProtoMessage()    {}
 func (*Image) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_items_6a949c451484ad28, []int{0}
+	return fileDescriptor_bd1fd4e23d5f1ca3, []int{0}
 }
 func (m *Image) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Image.Unmarshal(m, b)
@@ -49,8 +49,8 @@ func (m *Image) XXX_Unmarshal(b []byte) error {
 func (m *Image) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Image.Marshal(b, m, deterministic)
 }
-func (dst *Image) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Image.Merge(dst, src)
+func (m *Image) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Image.Merge(m, src)
 }
 func (m *Image) XXX_Size() int {
 	return xxx_messageInfo_Image.Size(m)
@@ -196,7 +196,7 @@ func (m *TextSnippet) Reset()         { *m = TextSnippet{} }
 func (m *TextSnippet) String() string { return proto.CompactTextString(m) }
 func (*TextSnippet) ProtoMessage()    {}
 func (*TextSnippet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_items_6a949c451484ad28, []int{1}
+	return fileDescriptor_bd1fd4e23d5f1ca3, []int{1}
 }
 func (m *TextSnippet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextSnippet.Unmarshal(m, b)
@@ -204,8 +204,8 @@ func (m *TextSnippet) XXX_Unmarshal(b []byte) error {
 func (m *TextSnippet) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_TextSnippet.Marshal(b, m, deterministic)
 }
-func (dst *TextSnippet) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TextSnippet.Merge(dst, src)
+func (m *TextSnippet) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TextSnippet.Merge(m, src)
 }
 func (m *TextSnippet) XXX_Size() int {
 	return xxx_messageInfo_TextSnippet.Size(m)
@@ -254,7 +254,7 @@ func (m *ExamplePayload) Reset()         { *m = ExamplePayload{} }
 func (m *ExamplePayload) String() string { return proto.CompactTextString(m) }
 func (*ExamplePayload) ProtoMessage()    {}
 func (*ExamplePayload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_items_6a949c451484ad28, []int{2}
+	return fileDescriptor_bd1fd4e23d5f1ca3, []int{2}
 }
 func (m *ExamplePayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExamplePayload.Unmarshal(m, b)
@@ -262,8 +262,8 @@ func (m *ExamplePayload) XXX_Unmarshal(b []byte) error {
 func (m *ExamplePayload) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ExamplePayload.Marshal(b, m, deterministic)
 }
-func (dst *ExamplePayload) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExamplePayload.Merge(dst, src)
+func (m *ExamplePayload) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExamplePayload.Merge(m, src)
 }
 func (m *ExamplePayload) XXX_Size() int {
 	return xxx_messageInfo_ExamplePayload.Size(m)
@@ -392,10 +392,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/data_items.proto", fileDescriptor_data_items_6a949c451484ad28)
+	proto.RegisterFile("google/cloud/automl/v1beta1/data_items.proto", fileDescriptor_bd1fd4e23d5f1ca3)
 }
 
-var fileDescriptor_data_items_6a949c451484ad28 = []byte{
+var fileDescriptor_bd1fd4e23d5f1ca3 = []byte{
 	// 381 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0x3d, 0xcf, 0xd3, 0x30,
 	0x14, 0x85, 0x1b, 0xd4, 0x0f, 0xe2, 0x14, 0x06, 0x4f, 0x51, 0x8b, 0xd4, 0x52, 0x18, 0x32, 0xa0,

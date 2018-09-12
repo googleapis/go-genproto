@@ -42,6 +42,7 @@ var ExecutionStrategy_name = map[int32]string{
 	3: "LOCAL_PARALLEL",
 	4: "LOCAL_SEQUENTIAL",
 }
+
 var ExecutionStrategy_value = map[string]int32{
 	"EXECUTION_STRATEGY_UNSPECIFIED": 0,
 	"OTHER_ENVIRONMENT":              1,
@@ -53,8 +54,9 @@ var ExecutionStrategy_value = map[string]int32{
 func (x ExecutionStrategy) String() string {
 	return proto.EnumName(ExecutionStrategy_name, int32(x))
 }
+
 func (ExecutionStrategy) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{0}
+	return fileDescriptor_e98e32542f2d3836, []int{0}
 }
 
 // Most build systems cache build results to speed up incremental builds.
@@ -79,6 +81,7 @@ var TestCaching_name = map[int32]string{
 	2: "REMOTE_CACHE_HIT",
 	3: "CACHE_MISS",
 }
+
 var TestCaching_value = map[string]int32{
 	"TEST_CACHING_UNSPECIFIED": 0,
 	"LOCAL_CACHE_HIT":          1,
@@ -89,8 +92,9 @@ var TestCaching_value = map[string]int32{
 func (x TestCaching) String() string {
 	return proto.EnumName(TestCaching_name, int32(x))
 }
+
 func (TestCaching) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{1}
+	return fileDescriptor_e98e32542f2d3836, []int{1}
 }
 
 // Errors in file post-processing are categorized using this enum.
@@ -125,6 +129,7 @@ var FileProcessingErrorType_name = map[int32]string{
 	6: "DEADLINE_EXCEEDED",
 	7: "NOT_FOUND",
 }
+
 var FileProcessingErrorType_value = map[string]int32{
 	"FILE_PROCESSING_ERROR_TYPE_UNSPECIFIED": 0,
 	"GENERIC_READ_ERROR":                     1,
@@ -139,8 +144,9 @@ var FileProcessingErrorType_value = map[string]int32{
 func (x FileProcessingErrorType) String() string {
 	return proto.EnumName(FileProcessingErrorType_name, int32(x))
 }
+
 func (FileProcessingErrorType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{2}
+	return fileDescriptor_e98e32542f2d3836, []int{2}
 }
 
 // An action that happened as part of a configured target. This action could be
@@ -229,7 +235,7 @@ func (m *Action) Reset()         { *m = Action{} }
 func (m *Action) String() string { return proto.CompactTextString(m) }
 func (*Action) ProtoMessage()    {}
 func (*Action) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{0}
+	return fileDescriptor_e98e32542f2d3836, []int{0}
 }
 func (m *Action) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Action.Unmarshal(m, b)
@@ -237,8 +243,8 @@ func (m *Action) XXX_Unmarshal(b []byte) error {
 func (m *Action) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Action.Marshal(b, m, deterministic)
 }
-func (dst *Action) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Action.Merge(dst, src)
+func (m *Action) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Action.Merge(m, src)
 }
 func (m *Action) XXX_Size() int {
 	return xxx_messageInfo_Action.Size(m)
@@ -456,7 +462,7 @@ func (m *Action_Id) Reset()         { *m = Action_Id{} }
 func (m *Action_Id) String() string { return proto.CompactTextString(m) }
 func (*Action_Id) ProtoMessage()    {}
 func (*Action_Id) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{0, 0}
+	return fileDescriptor_e98e32542f2d3836, []int{0, 0}
 }
 func (m *Action_Id) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Action_Id.Unmarshal(m, b)
@@ -464,8 +470,8 @@ func (m *Action_Id) XXX_Unmarshal(b []byte) error {
 func (m *Action_Id) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Action_Id.Marshal(b, m, deterministic)
 }
-func (dst *Action_Id) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Action_Id.Merge(dst, src)
+func (m *Action_Id) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Action_Id.Merge(m, src)
 }
 func (m *Action_Id) XXX_Size() int {
 	return xxx_messageInfo_Action_Id.Size(m)
@@ -527,7 +533,7 @@ func (m *BuildAction) Reset()         { *m = BuildAction{} }
 func (m *BuildAction) String() string { return proto.CompactTextString(m) }
 func (*BuildAction) ProtoMessage()    {}
 func (*BuildAction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{1}
+	return fileDescriptor_e98e32542f2d3836, []int{1}
 }
 func (m *BuildAction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildAction.Unmarshal(m, b)
@@ -535,8 +541,8 @@ func (m *BuildAction) XXX_Unmarshal(b []byte) error {
 func (m *BuildAction) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_BuildAction.Marshal(b, m, deterministic)
 }
-func (dst *BuildAction) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BuildAction.Merge(dst, src)
+func (m *BuildAction) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BuildAction.Merge(m, src)
 }
 func (m *BuildAction) XXX_Size() int {
 	return xxx_messageInfo_BuildAction.Size(m)
@@ -606,7 +612,7 @@ func (m *TestAction) Reset()         { *m = TestAction{} }
 func (m *TestAction) String() string { return proto.CompactTextString(m) }
 func (*TestAction) ProtoMessage()    {}
 func (*TestAction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{2}
+	return fileDescriptor_e98e32542f2d3836, []int{2}
 }
 func (m *TestAction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestAction.Unmarshal(m, b)
@@ -614,8 +620,8 @@ func (m *TestAction) XXX_Unmarshal(b []byte) error {
 func (m *TestAction) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_TestAction.Marshal(b, m, deterministic)
 }
-func (dst *TestAction) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TestAction.Merge(dst, src)
+func (m *TestAction) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TestAction.Merge(m, src)
 }
 func (m *TestAction) XXX_Size() int {
 	return xxx_messageInfo_TestAction.Size(m)
@@ -696,7 +702,7 @@ func (m *ActionAttributes) Reset()         { *m = ActionAttributes{} }
 func (m *ActionAttributes) String() string { return proto.CompactTextString(m) }
 func (*ActionAttributes) ProtoMessage()    {}
 func (*ActionAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{3}
+	return fileDescriptor_e98e32542f2d3836, []int{3}
 }
 func (m *ActionAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ActionAttributes.Unmarshal(m, b)
@@ -704,8 +710,8 @@ func (m *ActionAttributes) XXX_Unmarshal(b []byte) error {
 func (m *ActionAttributes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ActionAttributes.Marshal(b, m, deterministic)
 }
-func (dst *ActionAttributes) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ActionAttributes.Merge(dst, src)
+func (m *ActionAttributes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ActionAttributes.Merge(m, src)
 }
 func (m *ActionAttributes) XXX_Size() int {
 	return xxx_messageInfo_ActionAttributes.Size(m)
@@ -766,7 +772,7 @@ func (m *InputFileInfo) Reset()         { *m = InputFileInfo{} }
 func (m *InputFileInfo) String() string { return proto.CompactTextString(m) }
 func (*InputFileInfo) ProtoMessage()    {}
 func (*InputFileInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{4}
+	return fileDescriptor_e98e32542f2d3836, []int{4}
 }
 func (m *InputFileInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputFileInfo.Unmarshal(m, b)
@@ -774,8 +780,8 @@ func (m *InputFileInfo) XXX_Unmarshal(b []byte) error {
 func (m *InputFileInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_InputFileInfo.Marshal(b, m, deterministic)
 }
-func (dst *InputFileInfo) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InputFileInfo.Merge(dst, src)
+func (m *InputFileInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_InputFileInfo.Merge(m, src)
 }
 func (m *InputFileInfo) XXX_Size() int {
 	return xxx_messageInfo_InputFileInfo.Size(m)
@@ -835,7 +841,7 @@ func (m *LocalTestTiming) Reset()         { *m = LocalTestTiming{} }
 func (m *LocalTestTiming) String() string { return proto.CompactTextString(m) }
 func (*LocalTestTiming) ProtoMessage()    {}
 func (*LocalTestTiming) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{5}
+	return fileDescriptor_e98e32542f2d3836, []int{5}
 }
 func (m *LocalTestTiming) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocalTestTiming.Unmarshal(m, b)
@@ -843,8 +849,8 @@ func (m *LocalTestTiming) XXX_Unmarshal(b []byte) error {
 func (m *LocalTestTiming) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_LocalTestTiming.Marshal(b, m, deterministic)
 }
-func (dst *LocalTestTiming) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LocalTestTiming.Merge(dst, src)
+func (m *LocalTestTiming) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_LocalTestTiming.Merge(m, src)
 }
 func (m *LocalTestTiming) XXX_Size() int {
 	return xxx_messageInfo_LocalTestTiming.Size(m)
@@ -892,7 +898,7 @@ func (m *RemoteTestAttemptTiming) Reset()         { *m = RemoteTestAttemptTiming
 func (m *RemoteTestAttemptTiming) String() string { return proto.CompactTextString(m) }
 func (*RemoteTestAttemptTiming) ProtoMessage()    {}
 func (*RemoteTestAttemptTiming) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{6}
+	return fileDescriptor_e98e32542f2d3836, []int{6}
 }
 func (m *RemoteTestAttemptTiming) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoteTestAttemptTiming.Unmarshal(m, b)
@@ -900,8 +906,8 @@ func (m *RemoteTestAttemptTiming) XXX_Unmarshal(b []byte) error {
 func (m *RemoteTestAttemptTiming) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_RemoteTestAttemptTiming.Marshal(b, m, deterministic)
 }
-func (dst *RemoteTestAttemptTiming) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RemoteTestAttemptTiming.Merge(dst, src)
+func (m *RemoteTestAttemptTiming) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemoteTestAttemptTiming.Merge(m, src)
 }
 func (m *RemoteTestAttemptTiming) XXX_Size() int {
 	return xxx_messageInfo_RemoteTestAttemptTiming.Size(m)
@@ -963,7 +969,7 @@ func (m *RemoteTestTiming) Reset()         { *m = RemoteTestTiming{} }
 func (m *RemoteTestTiming) String() string { return proto.CompactTextString(m) }
 func (*RemoteTestTiming) ProtoMessage()    {}
 func (*RemoteTestTiming) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{7}
+	return fileDescriptor_e98e32542f2d3836, []int{7}
 }
 func (m *RemoteTestTiming) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoteTestTiming.Unmarshal(m, b)
@@ -971,8 +977,8 @@ func (m *RemoteTestTiming) XXX_Unmarshal(b []byte) error {
 func (m *RemoteTestTiming) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_RemoteTestTiming.Marshal(b, m, deterministic)
 }
-func (dst *RemoteTestTiming) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RemoteTestTiming.Merge(dst, src)
+func (m *RemoteTestTiming) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RemoteTestTiming.Merge(m, src)
 }
 func (m *RemoteTestTiming) XXX_Size() int {
 	return xxx_messageInfo_RemoteTestTiming.Size(m)
@@ -1028,7 +1034,7 @@ func (m *TestTiming) Reset()         { *m = TestTiming{} }
 func (m *TestTiming) String() string { return proto.CompactTextString(m) }
 func (*TestTiming) ProtoMessage()    {}
 func (*TestTiming) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{8}
+	return fileDescriptor_e98e32542f2d3836, []int{8}
 }
 func (m *TestTiming) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestTiming.Unmarshal(m, b)
@@ -1036,8 +1042,8 @@ func (m *TestTiming) XXX_Unmarshal(b []byte) error {
 func (m *TestTiming) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_TestTiming.Marshal(b, m, deterministic)
 }
-func (dst *TestTiming) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TestTiming.Merge(dst, src)
+func (m *TestTiming) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TestTiming.Merge(m, src)
 }
 func (m *TestTiming) XXX_Size() int {
 	return xxx_messageInfo_TestTiming.Size(m)
@@ -1193,7 +1199,7 @@ func (m *TestWarning) Reset()         { *m = TestWarning{} }
 func (m *TestWarning) String() string { return proto.CompactTextString(m) }
 func (*TestWarning) ProtoMessage()    {}
 func (*TestWarning) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{9}
+	return fileDescriptor_e98e32542f2d3836, []int{9}
 }
 func (m *TestWarning) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestWarning.Unmarshal(m, b)
@@ -1201,8 +1207,8 @@ func (m *TestWarning) XXX_Unmarshal(b []byte) error {
 func (m *TestWarning) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_TestWarning.Marshal(b, m, deterministic)
 }
-func (dst *TestWarning) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TestWarning.Merge(dst, src)
+func (m *TestWarning) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TestWarning.Merge(m, src)
 }
 func (m *TestWarning) XXX_Size() int {
 	return xxx_messageInfo_TestWarning.Size(m)
@@ -1235,7 +1241,7 @@ func (m *FileProcessingErrors) Reset()         { *m = FileProcessingErrors{} }
 func (m *FileProcessingErrors) String() string { return proto.CompactTextString(m) }
 func (*FileProcessingErrors) ProtoMessage()    {}
 func (*FileProcessingErrors) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{10}
+	return fileDescriptor_e98e32542f2d3836, []int{10}
 }
 func (m *FileProcessingErrors) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileProcessingErrors.Unmarshal(m, b)
@@ -1243,8 +1249,8 @@ func (m *FileProcessingErrors) XXX_Unmarshal(b []byte) error {
 func (m *FileProcessingErrors) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_FileProcessingErrors.Marshal(b, m, deterministic)
 }
-func (dst *FileProcessingErrors) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FileProcessingErrors.Merge(dst, src)
+func (m *FileProcessingErrors) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FileProcessingErrors.Merge(m, src)
 }
 func (m *FileProcessingErrors) XXX_Size() int {
 	return xxx_messageInfo_FileProcessingErrors.Size(m)
@@ -1284,7 +1290,7 @@ func (m *FileProcessingError) Reset()         { *m = FileProcessingError{} }
 func (m *FileProcessingError) String() string { return proto.CompactTextString(m) }
 func (*FileProcessingError) ProtoMessage()    {}
 func (*FileProcessingError) Descriptor() ([]byte, []int) {
-	return fileDescriptor_action_3d39b774c5b44bf6, []int{11}
+	return fileDescriptor_e98e32542f2d3836, []int{11}
 }
 func (m *FileProcessingError) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileProcessingError.Unmarshal(m, b)
@@ -1292,8 +1298,8 @@ func (m *FileProcessingError) XXX_Unmarshal(b []byte) error {
 func (m *FileProcessingError) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_FileProcessingError.Marshal(b, m, deterministic)
 }
-func (dst *FileProcessingError) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FileProcessingError.Merge(dst, src)
+func (m *FileProcessingError) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FileProcessingError.Merge(m, src)
 }
 func (m *FileProcessingError) XXX_Size() int {
 	return xxx_messageInfo_FileProcessingError.Size(m)
@@ -1338,10 +1344,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/resultstore/v2/action.proto", fileDescriptor_action_3d39b774c5b44bf6)
+	proto.RegisterFile("google/devtools/resultstore/v2/action.proto", fileDescriptor_e98e32542f2d3836)
 }
 
-var fileDescriptor_action_3d39b774c5b44bf6 = []byte{
+var fileDescriptor_e98e32542f2d3836 = []byte{
 	// 1658 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x58, 0x5f, 0x6f, 0x23, 0x49,
 	0x11, 0x5f, 0xdb, 0x49, 0xd6, 0x2e, 0xc7, 0xce, 0xb8, 0x93, 0xdd, 0xf5, 0x2d, 0x70, 0x2c, 0x06,

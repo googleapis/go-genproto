@@ -39,6 +39,7 @@ var MqttState_name = map[int32]string{
 	1: "MQTT_ENABLED",
 	2: "MQTT_DISABLED",
 }
+
 var MqttState_value = map[string]int32{
 	"MQTT_STATE_UNSPECIFIED": 0,
 	"MQTT_ENABLED":           1,
@@ -48,8 +49,9 @@ var MqttState_value = map[string]int32{
 func (x MqttState) String() string {
 	return proto.EnumName(MqttState_name, int32(x))
 }
+
 func (MqttState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{0}
+	return fileDescriptor_b8dc5e858286fc66, []int{0}
 }
 
 // Indicates whether DeviceService (HTTP) is enabled or disabled for the
@@ -71,6 +73,7 @@ var HttpState_name = map[int32]string{
 	1: "HTTP_ENABLED",
 	2: "HTTP_DISABLED",
 }
+
 var HttpState_value = map[string]int32{
 	"HTTP_STATE_UNSPECIFIED": 0,
 	"HTTP_ENABLED":           1,
@@ -80,8 +83,9 @@ var HttpState_value = map[string]int32{
 func (x HttpState) String() string {
 	return proto.EnumName(HttpState_name, int32(x))
 }
+
 func (HttpState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{1}
+	return fileDescriptor_b8dc5e858286fc66, []int{1}
 }
 
 // The supported formats for the public key.
@@ -101,6 +105,7 @@ var PublicKeyCertificateFormat_name = map[int32]string{
 	0: "UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT",
 	1: "X509_CERTIFICATE_PEM",
 }
+
 var PublicKeyCertificateFormat_value = map[string]int32{
 	"UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT": 0,
 	"X509_CERTIFICATE_PEM":                      1,
@@ -109,8 +114,9 @@ var PublicKeyCertificateFormat_value = map[string]int32{
 func (x PublicKeyCertificateFormat) String() string {
 	return proto.EnumName(PublicKeyCertificateFormat_name, int32(x))
 }
+
 func (PublicKeyCertificateFormat) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{2}
+	return fileDescriptor_b8dc5e858286fc66, []int{2}
 }
 
 // The supported formats for the public key.
@@ -148,6 +154,7 @@ var PublicKeyFormat_name = map[int32]string{
 	2: "ES256_PEM",
 	4: "ES256_X509_PEM",
 }
+
 var PublicKeyFormat_value = map[string]int32{
 	"UNSPECIFIED_PUBLIC_KEY_FORMAT": 0,
 	"RSA_PEM":                       3,
@@ -159,8 +166,9 @@ var PublicKeyFormat_value = map[string]int32{
 func (x PublicKeyFormat) String() string {
 	return proto.EnumName(PublicKeyFormat_name, int32(x))
 }
+
 func (PublicKeyFormat) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{3}
+	return fileDescriptor_b8dc5e858286fc66, []int{3}
 }
 
 // The device resource.
@@ -250,7 +258,7 @@ func (m *Device) Reset()         { *m = Device{} }
 func (m *Device) String() string { return proto.CompactTextString(m) }
 func (*Device) ProtoMessage()    {}
 func (*Device) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{0}
+	return fileDescriptor_b8dc5e858286fc66, []int{0}
 }
 func (m *Device) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Device.Unmarshal(m, b)
@@ -258,8 +266,8 @@ func (m *Device) XXX_Unmarshal(b []byte) error {
 func (m *Device) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Device.Marshal(b, m, deterministic)
 }
-func (dst *Device) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Device.Merge(dst, src)
+func (m *Device) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Device.Merge(m, src)
 }
 func (m *Device) XXX_Size() int {
 	return xxx_messageInfo_Device.Size(m)
@@ -424,7 +432,7 @@ func (m *DeviceRegistry) Reset()         { *m = DeviceRegistry{} }
 func (m *DeviceRegistry) String() string { return proto.CompactTextString(m) }
 func (*DeviceRegistry) ProtoMessage()    {}
 func (*DeviceRegistry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{1}
+	return fileDescriptor_b8dc5e858286fc66, []int{1}
 }
 func (m *DeviceRegistry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceRegistry.Unmarshal(m, b)
@@ -432,8 +440,8 @@ func (m *DeviceRegistry) XXX_Unmarshal(b []byte) error {
 func (m *DeviceRegistry) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeviceRegistry.Marshal(b, m, deterministic)
 }
-func (dst *DeviceRegistry) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeviceRegistry.Merge(dst, src)
+func (m *DeviceRegistry) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeviceRegistry.Merge(m, src)
 }
 func (m *DeviceRegistry) XXX_Size() int {
 	return xxx_messageInfo_DeviceRegistry.Size(m)
@@ -507,7 +515,7 @@ func (m *MqttConfig) Reset()         { *m = MqttConfig{} }
 func (m *MqttConfig) String() string { return proto.CompactTextString(m) }
 func (*MqttConfig) ProtoMessage()    {}
 func (*MqttConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{2}
+	return fileDescriptor_b8dc5e858286fc66, []int{2}
 }
 func (m *MqttConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MqttConfig.Unmarshal(m, b)
@@ -515,8 +523,8 @@ func (m *MqttConfig) XXX_Unmarshal(b []byte) error {
 func (m *MqttConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_MqttConfig.Marshal(b, m, deterministic)
 }
-func (dst *MqttConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MqttConfig.Merge(dst, src)
+func (m *MqttConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MqttConfig.Merge(m, src)
 }
 func (m *MqttConfig) XXX_Size() int {
 	return xxx_messageInfo_MqttConfig.Size(m)
@@ -548,7 +556,7 @@ func (m *HttpConfig) Reset()         { *m = HttpConfig{} }
 func (m *HttpConfig) String() string { return proto.CompactTextString(m) }
 func (*HttpConfig) ProtoMessage()    {}
 func (*HttpConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{3}
+	return fileDescriptor_b8dc5e858286fc66, []int{3}
 }
 func (m *HttpConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpConfig.Unmarshal(m, b)
@@ -556,8 +564,8 @@ func (m *HttpConfig) XXX_Unmarshal(b []byte) error {
 func (m *HttpConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_HttpConfig.Marshal(b, m, deterministic)
 }
-func (dst *HttpConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_HttpConfig.Merge(dst, src)
+func (m *HttpConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_HttpConfig.Merge(m, src)
 }
 func (m *HttpConfig) XXX_Size() int {
 	return xxx_messageInfo_HttpConfig.Size(m)
@@ -594,7 +602,7 @@ func (m *EventNotificationConfig) Reset()         { *m = EventNotificationConfig
 func (m *EventNotificationConfig) String() string { return proto.CompactTextString(m) }
 func (*EventNotificationConfig) ProtoMessage()    {}
 func (*EventNotificationConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{4}
+	return fileDescriptor_b8dc5e858286fc66, []int{4}
 }
 func (m *EventNotificationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EventNotificationConfig.Unmarshal(m, b)
@@ -602,8 +610,8 @@ func (m *EventNotificationConfig) XXX_Unmarshal(b []byte) error {
 func (m *EventNotificationConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_EventNotificationConfig.Marshal(b, m, deterministic)
 }
-func (dst *EventNotificationConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_EventNotificationConfig.Merge(dst, src)
+func (m *EventNotificationConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_EventNotificationConfig.Merge(m, src)
 }
 func (m *EventNotificationConfig) XXX_Size() int {
 	return xxx_messageInfo_EventNotificationConfig.Size(m)
@@ -642,7 +650,7 @@ func (m *StateNotificationConfig) Reset()         { *m = StateNotificationConfig
 func (m *StateNotificationConfig) String() string { return proto.CompactTextString(m) }
 func (*StateNotificationConfig) ProtoMessage()    {}
 func (*StateNotificationConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{5}
+	return fileDescriptor_b8dc5e858286fc66, []int{5}
 }
 func (m *StateNotificationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StateNotificationConfig.Unmarshal(m, b)
@@ -650,8 +658,8 @@ func (m *StateNotificationConfig) XXX_Unmarshal(b []byte) error {
 func (m *StateNotificationConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_StateNotificationConfig.Marshal(b, m, deterministic)
 }
-func (dst *StateNotificationConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StateNotificationConfig.Merge(dst, src)
+func (m *StateNotificationConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StateNotificationConfig.Merge(m, src)
 }
 func (m *StateNotificationConfig) XXX_Size() int {
 	return xxx_messageInfo_StateNotificationConfig.Size(m)
@@ -685,7 +693,7 @@ func (m *RegistryCredential) Reset()         { *m = RegistryCredential{} }
 func (m *RegistryCredential) String() string { return proto.CompactTextString(m) }
 func (*RegistryCredential) ProtoMessage()    {}
 func (*RegistryCredential) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{6}
+	return fileDescriptor_b8dc5e858286fc66, []int{6}
 }
 func (m *RegistryCredential) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RegistryCredential.Unmarshal(m, b)
@@ -693,8 +701,8 @@ func (m *RegistryCredential) XXX_Unmarshal(b []byte) error {
 func (m *RegistryCredential) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_RegistryCredential.Marshal(b, m, deterministic)
 }
-func (dst *RegistryCredential) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegistryCredential.Merge(dst, src)
+func (m *RegistryCredential) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RegistryCredential.Merge(m, src)
 }
 func (m *RegistryCredential) XXX_Size() int {
 	return xxx_messageInfo_RegistryCredential.Size(m)
@@ -807,7 +815,7 @@ func (m *X509CertificateDetails) Reset()         { *m = X509CertificateDetails{}
 func (m *X509CertificateDetails) String() string { return proto.CompactTextString(m) }
 func (*X509CertificateDetails) ProtoMessage()    {}
 func (*X509CertificateDetails) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{7}
+	return fileDescriptor_b8dc5e858286fc66, []int{7}
 }
 func (m *X509CertificateDetails) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_X509CertificateDetails.Unmarshal(m, b)
@@ -815,8 +823,8 @@ func (m *X509CertificateDetails) XXX_Unmarshal(b []byte) error {
 func (m *X509CertificateDetails) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_X509CertificateDetails.Marshal(b, m, deterministic)
 }
-func (dst *X509CertificateDetails) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_X509CertificateDetails.Merge(dst, src)
+func (m *X509CertificateDetails) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_X509CertificateDetails.Merge(m, src)
 }
 func (m *X509CertificateDetails) XXX_Size() int {
 	return xxx_messageInfo_X509CertificateDetails.Size(m)
@@ -886,7 +894,7 @@ func (m *PublicKeyCertificate) Reset()         { *m = PublicKeyCertificate{} }
 func (m *PublicKeyCertificate) String() string { return proto.CompactTextString(m) }
 func (*PublicKeyCertificate) ProtoMessage()    {}
 func (*PublicKeyCertificate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{8}
+	return fileDescriptor_b8dc5e858286fc66, []int{8}
 }
 func (m *PublicKeyCertificate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublicKeyCertificate.Unmarshal(m, b)
@@ -894,8 +902,8 @@ func (m *PublicKeyCertificate) XXX_Unmarshal(b []byte) error {
 func (m *PublicKeyCertificate) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_PublicKeyCertificate.Marshal(b, m, deterministic)
 }
-func (dst *PublicKeyCertificate) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PublicKeyCertificate.Merge(dst, src)
+func (m *PublicKeyCertificate) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PublicKeyCertificate.Merge(m, src)
 }
 func (m *PublicKeyCertificate) XXX_Size() int {
 	return xxx_messageInfo_PublicKeyCertificate.Size(m)
@@ -947,7 +955,7 @@ func (m *DeviceCredential) Reset()         { *m = DeviceCredential{} }
 func (m *DeviceCredential) String() string { return proto.CompactTextString(m) }
 func (*DeviceCredential) ProtoMessage()    {}
 func (*DeviceCredential) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{9}
+	return fileDescriptor_b8dc5e858286fc66, []int{9}
 }
 func (m *DeviceCredential) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceCredential.Unmarshal(m, b)
@@ -955,8 +963,8 @@ func (m *DeviceCredential) XXX_Unmarshal(b []byte) error {
 func (m *DeviceCredential) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeviceCredential.Marshal(b, m, deterministic)
 }
-func (dst *DeviceCredential) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeviceCredential.Merge(dst, src)
+func (m *DeviceCredential) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeviceCredential.Merge(m, src)
 }
 func (m *DeviceCredential) XXX_Size() int {
 	return xxx_messageInfo_DeviceCredential.Size(m)
@@ -1068,7 +1076,7 @@ func (m *PublicKeyCredential) Reset()         { *m = PublicKeyCredential{} }
 func (m *PublicKeyCredential) String() string { return proto.CompactTextString(m) }
 func (*PublicKeyCredential) ProtoMessage()    {}
 func (*PublicKeyCredential) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{10}
+	return fileDescriptor_b8dc5e858286fc66, []int{10}
 }
 func (m *PublicKeyCredential) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublicKeyCredential.Unmarshal(m, b)
@@ -1076,8 +1084,8 @@ func (m *PublicKeyCredential) XXX_Unmarshal(b []byte) error {
 func (m *PublicKeyCredential) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_PublicKeyCredential.Marshal(b, m, deterministic)
 }
-func (dst *PublicKeyCredential) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PublicKeyCredential.Merge(dst, src)
+func (m *PublicKeyCredential) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PublicKeyCredential.Merge(m, src)
 }
 func (m *PublicKeyCredential) XXX_Size() int {
 	return xxx_messageInfo_PublicKeyCredential.Size(m)
@@ -1133,7 +1141,7 @@ func (m *DeviceConfig) Reset()         { *m = DeviceConfig{} }
 func (m *DeviceConfig) String() string { return proto.CompactTextString(m) }
 func (*DeviceConfig) ProtoMessage()    {}
 func (*DeviceConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{11}
+	return fileDescriptor_b8dc5e858286fc66, []int{11}
 }
 func (m *DeviceConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceConfig.Unmarshal(m, b)
@@ -1141,8 +1149,8 @@ func (m *DeviceConfig) XXX_Unmarshal(b []byte) error {
 func (m *DeviceConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeviceConfig.Marshal(b, m, deterministic)
 }
-func (dst *DeviceConfig) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeviceConfig.Merge(dst, src)
+func (m *DeviceConfig) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeviceConfig.Merge(m, src)
 }
 func (m *DeviceConfig) XXX_Size() int {
 	return xxx_messageInfo_DeviceConfig.Size(m)
@@ -1197,7 +1205,7 @@ func (m *DeviceState) Reset()         { *m = DeviceState{} }
 func (m *DeviceState) String() string { return proto.CompactTextString(m) }
 func (*DeviceState) ProtoMessage()    {}
 func (*DeviceState) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_adeeda409206dfbb, []int{12}
+	return fileDescriptor_b8dc5e858286fc66, []int{12}
 }
 func (m *DeviceState) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceState.Unmarshal(m, b)
@@ -1205,8 +1213,8 @@ func (m *DeviceState) XXX_Unmarshal(b []byte) error {
 func (m *DeviceState) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeviceState.Marshal(b, m, deterministic)
 }
-func (dst *DeviceState) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeviceState.Merge(dst, src)
+func (m *DeviceState) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeviceState.Merge(m, src)
 }
 func (m *DeviceState) XXX_Size() int {
 	return xxx_messageInfo_DeviceState.Size(m)
@@ -1253,10 +1261,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/iot/v1/resources.proto", fileDescriptor_resources_adeeda409206dfbb)
+	proto.RegisterFile("google/cloud/iot/v1/resources.proto", fileDescriptor_b8dc5e858286fc66)
 }
 
-var fileDescriptor_resources_adeeda409206dfbb = []byte{
+var fileDescriptor_b8dc5e858286fc66 = []byte{
 	// 1348 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x57, 0xdd, 0x52, 0xdb, 0xc6,
 	0x17, 0x47, 0x06, 0x0c, 0x1c, 0x03, 0xb6, 0x17, 0x02, 0xfa, 0x7b, 0xfe, 0x6d, 0x1c, 0xf7, 0x8b,

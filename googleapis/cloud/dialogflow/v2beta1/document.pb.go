@@ -51,6 +51,7 @@ var Document_KnowledgeType_name = map[int32]string{
 	1: "FAQ",
 	2: "EXTRACTIVE_QA",
 }
+
 var Document_KnowledgeType_value = map[string]int32{
 	"KNOWLEDGE_TYPE_UNSPECIFIED": 0,
 	"FAQ":                        1,
@@ -60,8 +61,9 @@ var Document_KnowledgeType_value = map[string]int32{
 func (x Document_KnowledgeType) String() string {
 	return proto.EnumName(Document_KnowledgeType_name, int32(x))
 }
+
 func (Document_KnowledgeType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_document_3131c12790f8bf44, []int{0, 0}
+	return fileDescriptor_2d3494516d3ece6c, []int{0, 0}
 }
 
 // States of the operation.
@@ -84,6 +86,7 @@ var KnowledgeOperationMetadata_State_name = map[int32]string{
 	2: "RUNNING",
 	3: "DONE",
 }
+
 var KnowledgeOperationMetadata_State_value = map[string]int32{
 	"STATE_UNSPECIFIED": 0,
 	"PENDING":           1,
@@ -94,8 +97,9 @@ var KnowledgeOperationMetadata_State_value = map[string]int32{
 func (x KnowledgeOperationMetadata_State) String() string {
 	return proto.EnumName(KnowledgeOperationMetadata_State_name, int32(x))
 }
+
 func (KnowledgeOperationMetadata_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_document_3131c12790f8bf44, []int{6, 0}
+	return fileDescriptor_2d3494516d3ece6c, []int{6, 0}
 }
 
 // A document resource.
@@ -127,7 +131,7 @@ func (m *Document) Reset()         { *m = Document{} }
 func (m *Document) String() string { return proto.CompactTextString(m) }
 func (*Document) ProtoMessage()    {}
 func (*Document) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_3131c12790f8bf44, []int{0}
+	return fileDescriptor_2d3494516d3ece6c, []int{0}
 }
 func (m *Document) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Document.Unmarshal(m, b)
@@ -135,8 +139,8 @@ func (m *Document) XXX_Unmarshal(b []byte) error {
 func (m *Document) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Document.Marshal(b, m, deterministic)
 }
-func (dst *Document) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Document.Merge(dst, src)
+func (m *Document) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Document.Merge(m, src)
 }
 func (m *Document) XXX_Size() int {
 	return xxx_messageInfo_Document.Size(m)
@@ -297,7 +301,7 @@ func (m *ListDocumentsRequest) Reset()         { *m = ListDocumentsRequest{} }
 func (m *ListDocumentsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDocumentsRequest) ProtoMessage()    {}
 func (*ListDocumentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_3131c12790f8bf44, []int{1}
+	return fileDescriptor_2d3494516d3ece6c, []int{1}
 }
 func (m *ListDocumentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDocumentsRequest.Unmarshal(m, b)
@@ -305,8 +309,8 @@ func (m *ListDocumentsRequest) XXX_Unmarshal(b []byte) error {
 func (m *ListDocumentsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDocumentsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListDocumentsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDocumentsRequest.Merge(dst, src)
+func (m *ListDocumentsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDocumentsRequest.Merge(m, src)
 }
 func (m *ListDocumentsRequest) XXX_Size() int {
 	return xxx_messageInfo_ListDocumentsRequest.Size(m)
@@ -354,7 +358,7 @@ func (m *ListDocumentsResponse) Reset()         { *m = ListDocumentsResponse{} }
 func (m *ListDocumentsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDocumentsResponse) ProtoMessage()    {}
 func (*ListDocumentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_3131c12790f8bf44, []int{2}
+	return fileDescriptor_2d3494516d3ece6c, []int{2}
 }
 func (m *ListDocumentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDocumentsResponse.Unmarshal(m, b)
@@ -362,8 +366,8 @@ func (m *ListDocumentsResponse) XXX_Unmarshal(b []byte) error {
 func (m *ListDocumentsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ListDocumentsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListDocumentsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListDocumentsResponse.Merge(dst, src)
+func (m *ListDocumentsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDocumentsResponse.Merge(m, src)
 }
 func (m *ListDocumentsResponse) XXX_Size() int {
 	return xxx_messageInfo_ListDocumentsResponse.Size(m)
@@ -403,7 +407,7 @@ func (m *GetDocumentRequest) Reset()         { *m = GetDocumentRequest{} }
 func (m *GetDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDocumentRequest) ProtoMessage()    {}
 func (*GetDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_3131c12790f8bf44, []int{3}
+	return fileDescriptor_2d3494516d3ece6c, []int{3}
 }
 func (m *GetDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDocumentRequest.Unmarshal(m, b)
@@ -411,8 +415,8 @@ func (m *GetDocumentRequest) XXX_Unmarshal(b []byte) error {
 func (m *GetDocumentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_GetDocumentRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetDocumentRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetDocumentRequest.Merge(dst, src)
+func (m *GetDocumentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetDocumentRequest.Merge(m, src)
 }
 func (m *GetDocumentRequest) XXX_Size() int {
 	return xxx_messageInfo_GetDocumentRequest.Size(m)
@@ -446,7 +450,7 @@ func (m *CreateDocumentRequest) Reset()         { *m = CreateDocumentRequest{} }
 func (m *CreateDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateDocumentRequest) ProtoMessage()    {}
 func (*CreateDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_3131c12790f8bf44, []int{4}
+	return fileDescriptor_2d3494516d3ece6c, []int{4}
 }
 func (m *CreateDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDocumentRequest.Unmarshal(m, b)
@@ -454,8 +458,8 @@ func (m *CreateDocumentRequest) XXX_Unmarshal(b []byte) error {
 func (m *CreateDocumentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_CreateDocumentRequest.Marshal(b, m, deterministic)
 }
-func (dst *CreateDocumentRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateDocumentRequest.Merge(dst, src)
+func (m *CreateDocumentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateDocumentRequest.Merge(m, src)
 }
 func (m *CreateDocumentRequest) XXX_Size() int {
 	return xxx_messageInfo_CreateDocumentRequest.Size(m)
@@ -495,7 +499,7 @@ func (m *DeleteDocumentRequest) Reset()         { *m = DeleteDocumentRequest{} }
 func (m *DeleteDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteDocumentRequest) ProtoMessage()    {}
 func (*DeleteDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_3131c12790f8bf44, []int{5}
+	return fileDescriptor_2d3494516d3ece6c, []int{5}
 }
 func (m *DeleteDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDocumentRequest.Unmarshal(m, b)
@@ -503,8 +507,8 @@ func (m *DeleteDocumentRequest) XXX_Unmarshal(b []byte) error {
 func (m *DeleteDocumentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_DeleteDocumentRequest.Marshal(b, m, deterministic)
 }
-func (dst *DeleteDocumentRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteDocumentRequest.Merge(dst, src)
+func (m *DeleteDocumentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteDocumentRequest.Merge(m, src)
 }
 func (m *DeleteDocumentRequest) XXX_Size() int {
 	return xxx_messageInfo_DeleteDocumentRequest.Size(m)
@@ -535,7 +539,7 @@ func (m *KnowledgeOperationMetadata) Reset()         { *m = KnowledgeOperationMe
 func (m *KnowledgeOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*KnowledgeOperationMetadata) ProtoMessage()    {}
 func (*KnowledgeOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_3131c12790f8bf44, []int{6}
+	return fileDescriptor_2d3494516d3ece6c, []int{6}
 }
 func (m *KnowledgeOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KnowledgeOperationMetadata.Unmarshal(m, b)
@@ -543,8 +547,8 @@ func (m *KnowledgeOperationMetadata) XXX_Unmarshal(b []byte) error {
 func (m *KnowledgeOperationMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_KnowledgeOperationMetadata.Marshal(b, m, deterministic)
 }
-func (dst *KnowledgeOperationMetadata) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_KnowledgeOperationMetadata.Merge(dst, src)
+func (m *KnowledgeOperationMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_KnowledgeOperationMetadata.Merge(m, src)
 }
 func (m *KnowledgeOperationMetadata) XXX_Size() int {
 	return xxx_messageInfo_KnowledgeOperationMetadata.Size(m)
@@ -766,10 +770,10 @@ var _Documents_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dialogflow/v2beta1/document.proto", fileDescriptor_document_3131c12790f8bf44)
+	proto.RegisterFile("google/cloud/dialogflow/v2beta1/document.proto", fileDescriptor_2d3494516d3ece6c)
 }
 
-var fileDescriptor_document_3131c12790f8bf44 = []byte{
+var fileDescriptor_2d3494516d3ece6c = []byte{
 	// 885 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x56, 0xcd, 0x6e, 0x1b, 0x55,
 	0x14, 0xee, 0x1d, 0xe7, 0xc7, 0x39, 0xc6, 0xae, 0x7b, 0x45, 0x90, 0xe5, 0x52, 0x9a, 0x4e, 0x25,

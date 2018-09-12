@@ -65,7 +65,7 @@ func (m *File) Reset()         { *m = File{} }
 func (m *File) String() string { return proto.CompactTextString(m) }
 func (*File) ProtoMessage()    {}
 func (*File) Descriptor() ([]byte, []int) {
-	return fileDescriptor_file_164a6769e8eec974, []int{0}
+	return fileDescriptor_0f2079cd39696ac1, []int{0}
 }
 func (m *File) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_File.Unmarshal(m, b)
@@ -73,8 +73,8 @@ func (m *File) XXX_Unmarshal(b []byte) error {
 func (m *File) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_File.Marshal(b, m, deterministic)
 }
-func (dst *File) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_File.Merge(dst, src)
+func (m *File) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_File.Merge(m, src)
 }
 func (m *File) XXX_Size() int {
 	return xxx_messageInfo_File.Size(m)
@@ -161,7 +161,7 @@ func (m *ArchiveEntry) Reset()         { *m = ArchiveEntry{} }
 func (m *ArchiveEntry) String() string { return proto.CompactTextString(m) }
 func (*ArchiveEntry) ProtoMessage()    {}
 func (*ArchiveEntry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_file_164a6769e8eec974, []int{1}
+	return fileDescriptor_0f2079cd39696ac1, []int{1}
 }
 func (m *ArchiveEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ArchiveEntry.Unmarshal(m, b)
@@ -169,8 +169,8 @@ func (m *ArchiveEntry) XXX_Unmarshal(b []byte) error {
 func (m *ArchiveEntry) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_ArchiveEntry.Marshal(b, m, deterministic)
 }
-func (dst *ArchiveEntry) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ArchiveEntry.Merge(dst, src)
+func (m *ArchiveEntry) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ArchiveEntry.Merge(m, src)
 }
 func (m *ArchiveEntry) XXX_Size() int {
 	return xxx_messageInfo_ArchiveEntry.Size(m)
@@ -208,10 +208,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/resultstore/v2/file.proto", fileDescriptor_file_164a6769e8eec974)
+	proto.RegisterFile("google/devtools/resultstore/v2/file.proto", fileDescriptor_0f2079cd39696ac1)
 }
 
-var fileDescriptor_file_164a6769e8eec974 = []byte{
+var fileDescriptor_0f2079cd39696ac1 = []byte{
 	// 350 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x52, 0xdf, 0x4b, 0xeb, 0x30,
 	0x14, 0xa6, 0xdb, 0x6e, 0xef, 0x6e, 0xb6, 0x5d, 0x24, 0x0f, 0x12, 0x14, 0xa4, 0x0e, 0x84, 0x09,
