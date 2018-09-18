@@ -37,6 +37,7 @@ func (*Backend) ProtoMessage()    {}
 func (*Backend) Descriptor() ([]byte, []int) {
 	return fileDescriptor_87d0f28daa3f64f0, []int{0}
 }
+
 func (m *Backend) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Backend.Unmarshal(m, b)
 }
@@ -87,6 +88,7 @@ func (*BackendRule) ProtoMessage()    {}
 func (*BackendRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_87d0f28daa3f64f0, []int{1}
 }
+
 func (m *BackendRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BackendRule.Unmarshal(m, b)
 }

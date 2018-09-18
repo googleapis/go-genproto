@@ -87,6 +87,7 @@ func (*RuntimeConfig) ProtoMessage()    {}
 func (*RuntimeConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7913f3704a8d250c, []int{0}
 }
+
 func (m *RuntimeConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RuntimeConfig.Unmarshal(m, b)
 }
@@ -167,6 +168,7 @@ func (*Variable) ProtoMessage()    {}
 func (*Variable) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7913f3704a8d250c, []int{1}
 }
+
 func (m *Variable) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Variable.Unmarshal(m, b)
 }
@@ -328,6 +330,7 @@ func (*EndCondition) ProtoMessage()    {}
 func (*EndCondition) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7913f3704a8d250c, []int{2}
 }
+
 func (m *EndCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EndCondition.Unmarshal(m, b)
 }
@@ -456,6 +459,7 @@ func (*EndCondition_Cardinality) ProtoMessage()    {}
 func (*EndCondition_Cardinality) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7913f3704a8d250c, []int{2, 0}
 }
+
 func (m *EndCondition_Cardinality) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EndCondition_Cardinality.Unmarshal(m, b)
 }
@@ -555,6 +559,7 @@ func (*Waiter) ProtoMessage()    {}
 func (*Waiter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7913f3704a8d250c, []int{3}
 }
+
 func (m *Waiter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Waiter.Unmarshal(m, b)
 }

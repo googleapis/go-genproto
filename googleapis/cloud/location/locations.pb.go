@@ -48,6 +48,7 @@ func (*ListLocationsRequest) ProtoMessage()    {}
 func (*ListLocationsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3903434ffd69ff4c, []int{0}
 }
+
 func (m *ListLocationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLocationsRequest.Unmarshal(m, b)
 }
@@ -111,6 +112,7 @@ func (*ListLocationsResponse) ProtoMessage()    {}
 func (*ListLocationsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3903434ffd69ff4c, []int{1}
 }
+
 func (m *ListLocationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLocationsResponse.Unmarshal(m, b)
 }
@@ -158,6 +160,7 @@ func (*GetLocationRequest) ProtoMessage()    {}
 func (*GetLocationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3903434ffd69ff4c, []int{2}
 }
+
 func (m *GetLocationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetLocationRequest.Unmarshal(m, b)
 }
@@ -211,6 +214,7 @@ func (*Location) ProtoMessage()    {}
 func (*Location) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3903434ffd69ff4c, []int{3}
 }
+
 func (m *Location) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Location.Unmarshal(m, b)
 }

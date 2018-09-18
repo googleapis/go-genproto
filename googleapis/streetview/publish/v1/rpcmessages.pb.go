@@ -66,6 +66,7 @@ func (*CreatePhotoRequest) ProtoMessage()    {}
 func (*CreatePhotoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{0}
 }
+
 func (m *CreatePhotoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreatePhotoRequest.Unmarshal(m, b)
 }
@@ -115,6 +116,7 @@ func (*GetPhotoRequest) ProtoMessage()    {}
 func (*GetPhotoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{1}
 }
+
 func (m *GetPhotoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetPhotoRequest.Unmarshal(m, b)
 }
@@ -170,6 +172,7 @@ func (*BatchGetPhotosRequest) ProtoMessage()    {}
 func (*BatchGetPhotosRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{2}
 }
+
 func (m *BatchGetPhotosRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetPhotosRequest.Unmarshal(m, b)
 }
@@ -218,6 +221,7 @@ func (*BatchGetPhotosResponse) ProtoMessage()    {}
 func (*BatchGetPhotosResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{3}
 }
+
 func (m *BatchGetPhotosResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetPhotosResponse.Unmarshal(m, b)
 }
@@ -262,6 +266,7 @@ func (*PhotoResponse) ProtoMessage()    {}
 func (*PhotoResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{4}
 }
+
 func (m *PhotoResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PhotoResponse.Unmarshal(m, b)
 }
@@ -330,6 +335,7 @@ func (*ListPhotosRequest) ProtoMessage()    {}
 func (*ListPhotosRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{5}
 }
+
 func (m *ListPhotosRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListPhotosRequest.Unmarshal(m, b)
 }
@@ -395,6 +401,7 @@ func (*ListPhotosResponse) ProtoMessage()    {}
 func (*ListPhotosResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{6}
 }
+
 func (m *ListPhotosResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListPhotosResponse.Unmarshal(m, b)
 }
@@ -470,6 +477,7 @@ func (*UpdatePhotoRequest) ProtoMessage()    {}
 func (*UpdatePhotoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{7}
 }
+
 func (m *UpdatePhotoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePhotoRequest.Unmarshal(m, b)
 }
@@ -518,6 +526,7 @@ func (*BatchUpdatePhotosRequest) ProtoMessage()    {}
 func (*BatchUpdatePhotosRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{8}
 }
+
 func (m *BatchUpdatePhotosRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchUpdatePhotosRequest.Unmarshal(m, b)
 }
@@ -559,6 +568,7 @@ func (*BatchUpdatePhotosResponse) ProtoMessage()    {}
 func (*BatchUpdatePhotosResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{9}
 }
+
 func (m *BatchUpdatePhotosResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchUpdatePhotosResponse.Unmarshal(m, b)
 }
@@ -599,6 +609,7 @@ func (*DeletePhotoRequest) ProtoMessage()    {}
 func (*DeletePhotoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{10}
 }
+
 func (m *DeletePhotoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeletePhotoRequest.Unmarshal(m, b)
 }
@@ -639,6 +650,7 @@ func (*BatchDeletePhotosRequest) ProtoMessage()    {}
 func (*BatchDeletePhotosRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{11}
 }
+
 func (m *BatchDeletePhotosRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchDeletePhotosRequest.Unmarshal(m, b)
 }
@@ -679,6 +691,7 @@ func (*BatchDeletePhotosResponse) ProtoMessage()    {}
 func (*BatchDeletePhotosResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e56ff94407a6aca7, []int{12}
 }
+
 func (m *BatchDeletePhotosResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchDeletePhotosResponse.Unmarshal(m, b)
 }

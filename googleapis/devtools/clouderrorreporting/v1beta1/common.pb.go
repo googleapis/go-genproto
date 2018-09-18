@@ -44,6 +44,7 @@ func (*ErrorGroup) ProtoMessage()    {}
 func (*ErrorGroup) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d0e89497b32fa506, []int{0}
 }
+
 func (m *ErrorGroup) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ErrorGroup.Unmarshal(m, b)
 }
@@ -99,6 +100,7 @@ func (*TrackingIssue) ProtoMessage()    {}
 func (*TrackingIssue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d0e89497b32fa506, []int{1}
 }
+
 func (m *TrackingIssue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TrackingIssue.Unmarshal(m, b)
 }
@@ -147,6 +149,7 @@ func (*ErrorEvent) ProtoMessage()    {}
 func (*ErrorEvent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d0e89497b32fa506, []int{2}
 }
+
 func (m *ErrorEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ErrorEvent.Unmarshal(m, b)
 }
@@ -224,6 +227,7 @@ func (*ServiceContext) ProtoMessage()    {}
 func (*ServiceContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d0e89497b32fa506, []int{3}
 }
+
 func (m *ServiceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServiceContext.Unmarshal(m, b)
 }
@@ -298,6 +302,7 @@ func (*ErrorContext) ProtoMessage()    {}
 func (*ErrorContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d0e89497b32fa506, []int{4}
 }
+
 func (m *ErrorContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ErrorContext.Unmarshal(m, b)
 }
@@ -368,6 +373,7 @@ func (*HttpRequestContext) ProtoMessage()    {}
 func (*HttpRequestContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d0e89497b32fa506, []int{5}
 }
+
 func (m *HttpRequestContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpRequestContext.Unmarshal(m, b)
 }
@@ -454,6 +460,7 @@ func (*SourceLocation) ProtoMessage()    {}
 func (*SourceLocation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d0e89497b32fa506, []int{6}
 }
+
 func (m *SourceLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceLocation.Unmarshal(m, b)
 }

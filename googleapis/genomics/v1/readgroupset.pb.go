@@ -61,6 +61,7 @@ func (*ReadGroupSet) ProtoMessage()    {}
 func (*ReadGroupSet) Descriptor() ([]byte, []int) {
 	return fileDescriptor_976a96d3fd28f245, []int{0}
 }
+
 func (m *ReadGroupSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadGroupSet.Unmarshal(m, b)
 }

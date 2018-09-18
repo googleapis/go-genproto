@@ -69,6 +69,7 @@ func (*Field) ProtoMessage()    {}
 func (*Field) Descriptor() ([]byte, []int) {
 	return fileDescriptor_967ea3483ba729a5, []int{0}
 }
+
 func (m *Field) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Field.Unmarshal(m, b)
 }
@@ -133,6 +134,7 @@ func (*Field_IndexConfig) ProtoMessage()    {}
 func (*Field_IndexConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_967ea3483ba729a5, []int{0, 0}
 }
+
 func (m *Field_IndexConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Field_IndexConfig.Unmarshal(m, b)
 }

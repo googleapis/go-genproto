@@ -443,6 +443,7 @@ func (*TypedValue) ProtoMessage()    {}
 func (*TypedValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_013c57c1dcbb8d65, []int{0}
 }
+
 func (m *TypedValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TypedValue.Unmarshal(m, b)
 }
@@ -674,6 +675,7 @@ func (*TimeInterval) ProtoMessage()    {}
 func (*TimeInterval) Descriptor() ([]byte, []int) {
 	return fileDescriptor_013c57c1dcbb8d65, []int{1}
 }
+
 func (m *TimeInterval) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeInterval.Unmarshal(m, b)
 }
@@ -772,6 +774,7 @@ func (*Aggregation) ProtoMessage()    {}
 func (*Aggregation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_013c57c1dcbb8d65, []int{2}
 }
+
 func (m *Aggregation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Aggregation.Unmarshal(m, b)
 }

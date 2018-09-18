@@ -43,6 +43,7 @@ func (*Deployment) ProtoMessage()    {}
 func (*Deployment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_744f483f02f61d1c, []int{0}
 }
+
 func (m *Deployment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Deployment.Unmarshal(m, b)
 }
@@ -106,6 +107,7 @@ func (*FileInfo) ProtoMessage()    {}
 func (*FileInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_744f483f02f61d1c, []int{1}
 }
+
 func (m *FileInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileInfo.Unmarshal(m, b)
 }
@@ -163,6 +165,7 @@ func (*ContainerInfo) ProtoMessage()    {}
 func (*ContainerInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_744f483f02f61d1c, []int{2}
 }
+
 func (m *ContainerInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ContainerInfo.Unmarshal(m, b)
 }
@@ -208,6 +211,7 @@ func (*ZipInfo) ProtoMessage()    {}
 func (*ZipInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_744f483f02f61d1c, []int{3}
 }
+
 func (m *ZipInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ZipInfo.Unmarshal(m, b)
 }

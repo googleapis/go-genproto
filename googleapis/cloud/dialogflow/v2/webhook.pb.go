@@ -48,6 +48,7 @@ func (*WebhookRequest) ProtoMessage()    {}
 func (*WebhookRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2ba880626f278d96, []int{0}
 }
+
 func (m *WebhookRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebhookRequest.Unmarshal(m, b)
 }
@@ -145,6 +146,7 @@ func (*WebhookResponse) ProtoMessage()    {}
 func (*WebhookResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2ba880626f278d96, []int{1}
 }
+
 func (m *WebhookResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebhookResponse.Unmarshal(m, b)
 }
@@ -225,6 +227,7 @@ func (*OriginalDetectIntentRequest) ProtoMessage()    {}
 func (*OriginalDetectIntentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2ba880626f278d96, []int{2}
 }
+
 func (m *OriginalDetectIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OriginalDetectIntentRequest.Unmarshal(m, b)
 }

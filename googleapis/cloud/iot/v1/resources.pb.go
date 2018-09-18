@@ -262,6 +262,7 @@ func (*Device) ProtoMessage()    {}
 func (*Device) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{0}
 }
+
 func (m *Device) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Device.Unmarshal(m, b)
 }
@@ -436,6 +437,7 @@ func (*DeviceRegistry) ProtoMessage()    {}
 func (*DeviceRegistry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{1}
 }
+
 func (m *DeviceRegistry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceRegistry.Unmarshal(m, b)
 }
@@ -519,6 +521,7 @@ func (*MqttConfig) ProtoMessage()    {}
 func (*MqttConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{2}
 }
+
 func (m *MqttConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MqttConfig.Unmarshal(m, b)
 }
@@ -560,6 +563,7 @@ func (*HttpConfig) ProtoMessage()    {}
 func (*HttpConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{3}
 }
+
 func (m *HttpConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpConfig.Unmarshal(m, b)
 }
@@ -606,6 +610,7 @@ func (*EventNotificationConfig) ProtoMessage()    {}
 func (*EventNotificationConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{4}
 }
+
 func (m *EventNotificationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EventNotificationConfig.Unmarshal(m, b)
 }
@@ -654,6 +659,7 @@ func (*StateNotificationConfig) ProtoMessage()    {}
 func (*StateNotificationConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{5}
 }
+
 func (m *StateNotificationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StateNotificationConfig.Unmarshal(m, b)
 }
@@ -697,6 +703,7 @@ func (*RegistryCredential) ProtoMessage()    {}
 func (*RegistryCredential) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{6}
 }
+
 func (m *RegistryCredential) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RegistryCredential.Unmarshal(m, b)
 }
@@ -819,6 +826,7 @@ func (*X509CertificateDetails) ProtoMessage()    {}
 func (*X509CertificateDetails) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{7}
 }
+
 func (m *X509CertificateDetails) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_X509CertificateDetails.Unmarshal(m, b)
 }
@@ -898,6 +906,7 @@ func (*PublicKeyCertificate) ProtoMessage()    {}
 func (*PublicKeyCertificate) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{8}
 }
+
 func (m *PublicKeyCertificate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublicKeyCertificate.Unmarshal(m, b)
 }
@@ -959,6 +968,7 @@ func (*DeviceCredential) ProtoMessage()    {}
 func (*DeviceCredential) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{9}
 }
+
 func (m *DeviceCredential) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceCredential.Unmarshal(m, b)
 }
@@ -1080,6 +1090,7 @@ func (*PublicKeyCredential) ProtoMessage()    {}
 func (*PublicKeyCredential) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{10}
 }
+
 func (m *PublicKeyCredential) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublicKeyCredential.Unmarshal(m, b)
 }
@@ -1145,6 +1156,7 @@ func (*DeviceConfig) ProtoMessage()    {}
 func (*DeviceConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{11}
 }
+
 func (m *DeviceConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceConfig.Unmarshal(m, b)
 }
@@ -1209,6 +1221,7 @@ func (*DeviceState) ProtoMessage()    {}
 func (*DeviceState) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b8dc5e858286fc66, []int{12}
 }
+
 func (m *DeviceState) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceState.Unmarshal(m, b)
 }

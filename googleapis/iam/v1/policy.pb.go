@@ -113,6 +113,7 @@ func (*Policy) ProtoMessage()    {}
 func (*Policy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a3cd40b8a66b2a99, []int{0}
 }
+
 func (m *Policy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Policy.Unmarshal(m, b)
 }
@@ -193,6 +194,7 @@ func (*Binding) ProtoMessage()    {}
 func (*Binding) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a3cd40b8a66b2a99, []int{1}
 }
+
 func (m *Binding) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Binding.Unmarshal(m, b)
 }
@@ -240,6 +242,7 @@ func (*PolicyDelta) ProtoMessage()    {}
 func (*PolicyDelta) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a3cd40b8a66b2a99, []int{2}
 }
+
 func (m *PolicyDelta) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PolicyDelta.Unmarshal(m, b)
 }
@@ -290,6 +293,7 @@ func (*BindingDelta) ProtoMessage()    {}
 func (*BindingDelta) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a3cd40b8a66b2a99, []int{3}
 }
+
 func (m *BindingDelta) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BindingDelta.Unmarshal(m, b)
 }

@@ -80,6 +80,7 @@ func (*Monitoring) ProtoMessage()    {}
 func (*Monitoring) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6e2076230a37a7e3, []int{0}
 }
+
 func (m *Monitoring) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Monitoring.Unmarshal(m, b)
 }
@@ -132,6 +133,7 @@ func (*Monitoring_MonitoringDestination) ProtoMessage()    {}
 func (*Monitoring_MonitoringDestination) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6e2076230a37a7e3, []int{0, 0}
 }
+
 func (m *Monitoring_MonitoringDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Monitoring_MonitoringDestination.Unmarshal(m, b)
 }

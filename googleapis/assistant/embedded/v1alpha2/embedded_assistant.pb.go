@@ -265,6 +265,7 @@ func (*AssistRequest) ProtoMessage()    {}
 func (*AssistRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{0}
 }
+
 func (m *AssistRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssistRequest.Unmarshal(m, b)
 }
@@ -426,6 +427,7 @@ func (*AssistResponse) ProtoMessage()    {}
 func (*AssistResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{1}
 }
+
 func (m *AssistResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssistResponse.Unmarshal(m, b)
 }
@@ -513,6 +515,7 @@ func (*DebugInfo) ProtoMessage()    {}
 func (*DebugInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{2}
 }
+
 func (m *DebugInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DebugInfo.Unmarshal(m, b)
 }
@@ -566,6 +569,7 @@ func (*AssistConfig) ProtoMessage()    {}
 func (*AssistConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{3}
 }
+
 func (m *AssistConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssistConfig.Unmarshal(m, b)
 }
@@ -749,6 +753,7 @@ func (*AudioInConfig) ProtoMessage()    {}
 func (*AudioInConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{4}
 }
+
 func (m *AudioInConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioInConfig.Unmarshal(m, b)
 }
@@ -804,6 +809,7 @@ func (*AudioOutConfig) ProtoMessage()    {}
 func (*AudioOutConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{5}
 }
+
 func (m *AudioOutConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioOutConfig.Unmarshal(m, b)
 }
@@ -859,6 +865,7 @@ func (*ScreenOutConfig) ProtoMessage()    {}
 func (*ScreenOutConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{6}
 }
+
 func (m *ScreenOutConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScreenOutConfig.Unmarshal(m, b)
 }
@@ -918,6 +925,7 @@ func (*DialogStateIn) ProtoMessage()    {}
 func (*DialogStateIn) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{7}
 }
+
 func (m *DialogStateIn) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DialogStateIn.Unmarshal(m, b)
 }
@@ -998,6 +1006,7 @@ func (*DeviceConfig) ProtoMessage()    {}
 func (*DeviceConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{8}
 }
+
 func (m *DeviceConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceConfig.Unmarshal(m, b)
 }
@@ -1048,6 +1057,7 @@ func (*AudioOut) ProtoMessage()    {}
 func (*AudioOut) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{9}
 }
+
 func (m *AudioOut) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioOut.Unmarshal(m, b)
 }
@@ -1092,6 +1102,7 @@ func (*ScreenOut) ProtoMessage()    {}
 func (*ScreenOut) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{10}
 }
+
 func (m *ScreenOut) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScreenOut.Unmarshal(m, b)
 }
@@ -1145,6 +1156,7 @@ func (*DeviceAction) ProtoMessage()    {}
 func (*DeviceAction) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{11}
 }
+
 func (m *DeviceAction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceAction.Unmarshal(m, b)
 }
@@ -1191,6 +1203,7 @@ func (*SpeechRecognitionResult) ProtoMessage()    {}
 func (*SpeechRecognitionResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{12}
 }
+
 func (m *SpeechRecognitionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpeechRecognitionResult.Unmarshal(m, b)
 }
@@ -1262,6 +1275,7 @@ func (*DialogStateOut) ProtoMessage()    {}
 func (*DialogStateOut) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{13}
 }
+
 func (m *DialogStateOut) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DialogStateOut.Unmarshal(m, b)
 }
@@ -1325,6 +1339,7 @@ func (*DebugConfig) ProtoMessage()    {}
 func (*DebugConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{14}
 }
+
 func (m *DebugConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DebugConfig.Unmarshal(m, b)
 }
@@ -1373,6 +1388,7 @@ func (*DeviceLocation) ProtoMessage()    {}
 func (*DeviceLocation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a514007bdf931c71, []int{15}
 }
+
 func (m *DeviceLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceLocation.Unmarshal(m, b)
 }

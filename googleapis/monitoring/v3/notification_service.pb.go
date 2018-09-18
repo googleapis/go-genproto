@@ -62,6 +62,7 @@ func (*ListNotificationChannelDescriptorsRequest) ProtoMessage()    {}
 func (*ListNotificationChannelDescriptorsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{0}
 }
+
 func (m *ListNotificationChannelDescriptorsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNotificationChannelDescriptorsRequest.Unmarshal(m, b)
 }
@@ -126,6 +127,7 @@ func (*ListNotificationChannelDescriptorsResponse) ProtoMessage() {}
 func (*ListNotificationChannelDescriptorsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{1}
 }
+
 func (m *ListNotificationChannelDescriptorsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNotificationChannelDescriptorsResponse.Unmarshal(m, b)
 }
@@ -176,6 +178,7 @@ func (*GetNotificationChannelDescriptorRequest) ProtoMessage()    {}
 func (*GetNotificationChannelDescriptorRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{2}
 }
+
 func (m *GetNotificationChannelDescriptorRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNotificationChannelDescriptorRequest.Unmarshal(m, b)
 }
@@ -225,6 +228,7 @@ func (*CreateNotificationChannelRequest) ProtoMessage()    {}
 func (*CreateNotificationChannelRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{3}
 }
+
 func (m *CreateNotificationChannelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateNotificationChannelRequest.Unmarshal(m, b)
 }
@@ -298,6 +302,7 @@ func (*ListNotificationChannelsRequest) ProtoMessage()    {}
 func (*ListNotificationChannelsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{4}
 }
+
 func (m *ListNotificationChannelsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNotificationChannelsRequest.Unmarshal(m, b)
 }
@@ -371,6 +376,7 @@ func (*ListNotificationChannelsResponse) ProtoMessage()    {}
 func (*ListNotificationChannelsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{5}
 }
+
 func (m *ListNotificationChannelsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNotificationChannelsResponse.Unmarshal(m, b)
 }
@@ -419,6 +425,7 @@ func (*GetNotificationChannelRequest) ProtoMessage()    {}
 func (*GetNotificationChannelRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{6}
 }
+
 func (m *GetNotificationChannelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNotificationChannelRequest.Unmarshal(m, b)
 }
@@ -464,6 +471,7 @@ func (*UpdateNotificationChannelRequest) ProtoMessage()    {}
 func (*UpdateNotificationChannelRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{7}
 }
+
 func (m *UpdateNotificationChannelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateNotificationChannelRequest.Unmarshal(m, b)
 }
@@ -517,6 +525,7 @@ func (*DeleteNotificationChannelRequest) ProtoMessage()    {}
 func (*DeleteNotificationChannelRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{8}
 }
+
 func (m *DeleteNotificationChannelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteNotificationChannelRequest.Unmarshal(m, b)
 }
@@ -568,6 +577,7 @@ func (*SendNotificationChannelVerificationCodeRequest) ProtoMessage() {}
 func (*SendNotificationChannelVerificationCodeRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{9}
 }
+
 func (m *SendNotificationChannelVerificationCodeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SendNotificationChannelVerificationCodeRequest.Unmarshal(m, b)
 }
@@ -624,6 +634,7 @@ func (*GetNotificationChannelVerificationCodeRequest) ProtoMessage() {}
 func (*GetNotificationChannelVerificationCodeRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{10}
 }
+
 func (m *GetNotificationChannelVerificationCodeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNotificationChannelVerificationCodeRequest.Unmarshal(m, b)
 }
@@ -682,6 +693,7 @@ func (*GetNotificationChannelVerificationCodeResponse) ProtoMessage() {}
 func (*GetNotificationChannelVerificationCodeResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{11}
 }
+
 func (m *GetNotificationChannelVerificationCodeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNotificationChannelVerificationCodeResponse.Unmarshal(m, b)
 }
@@ -737,6 +749,7 @@ func (*VerifyNotificationChannelRequest) ProtoMessage()    {}
 func (*VerifyNotificationChannelRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7e2bcd7194b305fe, []int{12}
 }
+
 func (m *VerifyNotificationChannelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VerifyNotificationChannelRequest.Unmarshal(m, b)
 }

@@ -123,6 +123,7 @@ func (*Value) ProtoMessage()    {}
 func (*Value) Descriptor() ([]byte, []int) {
 	return fileDescriptor_24bee359d1e5798a, []int{0}
 }
+
 func (m *Value) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Value.Unmarshal(m, b)
 }
@@ -529,6 +530,7 @@ func (*ListValue) ProtoMessage()    {}
 func (*ListValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_24bee359d1e5798a, []int{1}
 }
+
 func (m *ListValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListValue.Unmarshal(m, b)
 }
@@ -575,6 +577,7 @@ func (*MapValue) ProtoMessage()    {}
 func (*MapValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_24bee359d1e5798a, []int{2}
 }
+
 func (m *MapValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MapValue.Unmarshal(m, b)
 }
@@ -620,6 +623,7 @@ func (*MapValue_Entry) ProtoMessage()    {}
 func (*MapValue_Entry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_24bee359d1e5798a, []int{2, 0}
 }
+
 func (m *MapValue_Entry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MapValue_Entry.Unmarshal(m, b)
 }
@@ -676,6 +680,7 @@ func (*TypeValue) ProtoMessage()    {}
 func (*TypeValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_24bee359d1e5798a, []int{3}
 }
+
 func (m *TypeValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TypeValue.Unmarshal(m, b)
 }

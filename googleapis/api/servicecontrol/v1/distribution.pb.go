@@ -95,6 +95,7 @@ func (*Distribution) ProtoMessage()    {}
 func (*Distribution) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b3f590f4dffbeb4c, []int{0}
 }
+
 func (m *Distribution) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution.Unmarshal(m, b)
 }
@@ -324,6 +325,7 @@ func (*Distribution_LinearBuckets) ProtoMessage()    {}
 func (*Distribution_LinearBuckets) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b3f590f4dffbeb4c, []int{0, 0}
 }
+
 func (m *Distribution_LinearBuckets) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution_LinearBuckets.Unmarshal(m, b)
 }
@@ -390,6 +392,7 @@ func (*Distribution_ExponentialBuckets) ProtoMessage()    {}
 func (*Distribution_ExponentialBuckets) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b3f590f4dffbeb4c, []int{0, 1}
 }
+
 func (m *Distribution_ExponentialBuckets) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution_ExponentialBuckets.Unmarshal(m, b)
 }
@@ -458,6 +461,7 @@ func (*Distribution_ExplicitBuckets) ProtoMessage()    {}
 func (*Distribution_ExplicitBuckets) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b3f590f4dffbeb4c, []int{0, 2}
 }
+
 func (m *Distribution_ExplicitBuckets) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution_ExplicitBuckets.Unmarshal(m, b)
 }

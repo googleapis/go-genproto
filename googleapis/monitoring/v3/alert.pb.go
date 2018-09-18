@@ -142,6 +142,7 @@ func (*AlertPolicy) ProtoMessage()    {}
 func (*AlertPolicy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_014ef0e1a0f00a00, []int{0}
 }
+
 func (m *AlertPolicy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy.Unmarshal(m, b)
 }
@@ -253,6 +254,7 @@ func (*AlertPolicy_Documentation) ProtoMessage()    {}
 func (*AlertPolicy_Documentation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_014ef0e1a0f00a00, []int{0, 0}
 }
+
 func (m *AlertPolicy_Documentation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Documentation.Unmarshal(m, b)
 }
@@ -336,6 +338,7 @@ func (*AlertPolicy_Condition) ProtoMessage()    {}
 func (*AlertPolicy_Condition) Descriptor() ([]byte, []int) {
 	return fileDescriptor_014ef0e1a0f00a00, []int{0, 1}
 }
+
 func (m *AlertPolicy_Condition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Condition.Unmarshal(m, b)
 }
@@ -499,6 +502,7 @@ func (*AlertPolicy_Condition_Trigger) ProtoMessage()    {}
 func (*AlertPolicy_Condition_Trigger) Descriptor() ([]byte, []int) {
 	return fileDescriptor_014ef0e1a0f00a00, []int{0, 1, 0}
 }
+
 func (m *AlertPolicy_Condition_Trigger) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Condition_Trigger.Unmarshal(m, b)
 }
@@ -712,6 +716,7 @@ func (*AlertPolicy_Condition_MetricThreshold) ProtoMessage()    {}
 func (*AlertPolicy_Condition_MetricThreshold) Descriptor() ([]byte, []int) {
 	return fileDescriptor_014ef0e1a0f00a00, []int{0, 1, 1}
 }
+
 func (m *AlertPolicy_Condition_MetricThreshold) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Condition_MetricThreshold.Unmarshal(m, b)
 }
@@ -837,6 +842,7 @@ func (*AlertPolicy_Condition_MetricAbsence) ProtoMessage()    {}
 func (*AlertPolicy_Condition_MetricAbsence) Descriptor() ([]byte, []int) {
 	return fileDescriptor_014ef0e1a0f00a00, []int{0, 1, 2}
 }
+
 func (m *AlertPolicy_Condition_MetricAbsence) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Condition_MetricAbsence.Unmarshal(m, b)
 }

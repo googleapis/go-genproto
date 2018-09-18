@@ -66,6 +66,7 @@ func (*PackageManager) ProtoMessage()    {}
 func (*PackageManager) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7bcf14fe966f6fd8, []int{0}
 }
+
 func (m *PackageManager) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PackageManager.Unmarshal(m, b)
 }
@@ -113,6 +114,7 @@ func (*PackageManager_Distribution) ProtoMessage()    {}
 func (*PackageManager_Distribution) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7bcf14fe966f6fd8, []int{0, 0}
 }
+
 func (m *PackageManager_Distribution) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PackageManager_Distribution.Unmarshal(m, b)
 }
@@ -195,6 +197,7 @@ func (*PackageManager_Location) ProtoMessage()    {}
 func (*PackageManager_Location) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7bcf14fe966f6fd8, []int{0, 1}
 }
+
 func (m *PackageManager_Location) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PackageManager_Location.Unmarshal(m, b)
 }
@@ -253,6 +256,7 @@ func (*PackageManager_Package) ProtoMessage()    {}
 func (*PackageManager_Package) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7bcf14fe966f6fd8, []int{0, 2}
 }
+
 func (m *PackageManager_Package) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PackageManager_Package.Unmarshal(m, b)
 }
@@ -304,6 +308,7 @@ func (*PackageManager_Installation) ProtoMessage()    {}
 func (*PackageManager_Installation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7bcf14fe966f6fd8, []int{0, 3}
 }
+
 func (m *PackageManager_Installation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PackageManager_Installation.Unmarshal(m, b)
 }

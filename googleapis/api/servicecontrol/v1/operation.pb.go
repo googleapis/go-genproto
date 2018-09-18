@@ -125,6 +125,7 @@ func (*Operation) ProtoMessage()    {}
 func (*Operation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_afd5d09de2965ad3, []int{0}
 }
+
 func (m *Operation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Operation.Unmarshal(m, b)
 }

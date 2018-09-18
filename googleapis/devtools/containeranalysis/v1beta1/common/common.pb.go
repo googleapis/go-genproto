@@ -89,6 +89,7 @@ func (*RelatedUrl) ProtoMessage()    {}
 func (*RelatedUrl) Descriptor() ([]byte, []int) {
 	return fileDescriptor_baf5189c00300310, []int{0}
 }
+
 func (m *RelatedUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RelatedUrl.Unmarshal(m, b)
 }

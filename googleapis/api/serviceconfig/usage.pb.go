@@ -51,6 +51,7 @@ func (*Usage) ProtoMessage()    {}
 func (*Usage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_701aa74a03c68f0a, []int{0}
 }
+
 func (m *Usage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Usage.Unmarshal(m, b)
 }
@@ -140,6 +141,7 @@ func (*UsageRule) ProtoMessage()    {}
 func (*UsageRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_701aa74a03c68f0a, []int{1}
 }
+
 func (m *UsageRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UsageRule.Unmarshal(m, b)
 }

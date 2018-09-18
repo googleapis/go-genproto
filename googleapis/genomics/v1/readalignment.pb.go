@@ -47,6 +47,7 @@ func (*LinearAlignment) ProtoMessage()    {}
 func (*LinearAlignment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5882c5c7543d07e3, []int{0}
 }
+
 func (m *LinearAlignment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LinearAlignment.Unmarshal(m, b)
 }
@@ -253,6 +254,7 @@ func (*Read) ProtoMessage()    {}
 func (*Read) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5882c5c7543d07e3, []int{1}
 }
+
 func (m *Read) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Read.Unmarshal(m, b)
 }

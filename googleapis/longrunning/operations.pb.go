@@ -64,6 +64,7 @@ func (*Operation) ProtoMessage()    {}
 func (*Operation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bff5d3ff9032d7eb, []int{0}
 }
+
 func (m *Operation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Operation.Unmarshal(m, b)
 }
@@ -229,6 +230,7 @@ func (*GetOperationRequest) ProtoMessage()    {}
 func (*GetOperationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bff5d3ff9032d7eb, []int{1}
 }
+
 func (m *GetOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetOperationRequest.Unmarshal(m, b)
 }
@@ -275,6 +277,7 @@ func (*ListOperationsRequest) ProtoMessage()    {}
 func (*ListOperationsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bff5d3ff9032d7eb, []int{2}
 }
+
 func (m *ListOperationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOperationsRequest.Unmarshal(m, b)
 }
@@ -338,6 +341,7 @@ func (*ListOperationsResponse) ProtoMessage()    {}
 func (*ListOperationsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bff5d3ff9032d7eb, []int{3}
 }
+
 func (m *ListOperationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOperationsResponse.Unmarshal(m, b)
 }
@@ -385,6 +389,7 @@ func (*CancelOperationRequest) ProtoMessage()    {}
 func (*CancelOperationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bff5d3ff9032d7eb, []int{4}
 }
+
 func (m *CancelOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelOperationRequest.Unmarshal(m, b)
 }
@@ -425,6 +430,7 @@ func (*DeleteOperationRequest) ProtoMessage()    {}
 func (*DeleteOperationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bff5d3ff9032d7eb, []int{5}
 }
+
 func (m *DeleteOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteOperationRequest.Unmarshal(m, b)
 }

@@ -43,6 +43,7 @@ func (*EvalState) ProtoMessage()    {}
 func (*EvalState) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1e95f32326d4b8b7, []int{0}
 }
+
 func (m *EvalState) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EvalState.Unmarshal(m, b)
 }
@@ -92,6 +93,7 @@ func (*EvalState_Result) ProtoMessage()    {}
 func (*EvalState_Result) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1e95f32326d4b8b7, []int{0, 0}
 }
+
 func (m *EvalState_Result) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EvalState_Result.Unmarshal(m, b)
 }
@@ -144,6 +146,7 @@ func (*ExprValue) ProtoMessage()    {}
 func (*ExprValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1e95f32326d4b8b7, []int{1}
 }
+
 func (m *ExprValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExprValue.Unmarshal(m, b)
 }
@@ -322,6 +325,7 @@ func (*ErrorSet) ProtoMessage()    {}
 func (*ErrorSet) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1e95f32326d4b8b7, []int{2}
 }
+
 func (m *ErrorSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ErrorSet.Unmarshal(m, b)
 }
@@ -364,6 +368,7 @@ func (*UnknownSet) ProtoMessage()    {}
 func (*UnknownSet) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1e95f32326d4b8b7, []int{3}
 }
+
 func (m *UnknownSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UnknownSet.Unmarshal(m, b)
 }

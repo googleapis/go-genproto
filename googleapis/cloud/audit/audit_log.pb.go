@@ -84,6 +84,7 @@ func (*AuditLog) ProtoMessage()    {}
 func (*AuditLog) Descriptor() ([]byte, []int) {
 	return fileDescriptor_197799a4334e4cbf, []int{0}
 }
+
 func (m *AuditLog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuditLog.Unmarshal(m, b)
 }
@@ -194,6 +195,7 @@ func (*AuthenticationInfo) ProtoMessage()    {}
 func (*AuthenticationInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_197799a4334e4cbf, []int{1}
 }
+
 func (m *AuthenticationInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthenticationInfo.Unmarshal(m, b)
 }
@@ -241,6 +243,7 @@ func (*AuthorizationInfo) ProtoMessage()    {}
 func (*AuthorizationInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_197799a4334e4cbf, []int{2}
 }
+
 func (m *AuthorizationInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthorizationInfo.Unmarshal(m, b)
 }
@@ -306,6 +309,7 @@ func (*RequestMetadata) ProtoMessage()    {}
 func (*RequestMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_197799a4334e4cbf, []int{3}
 }
+
 func (m *RequestMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestMetadata.Unmarshal(m, b)
 }

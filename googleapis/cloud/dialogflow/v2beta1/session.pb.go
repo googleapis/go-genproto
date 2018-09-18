@@ -220,6 +220,7 @@ func (*DetectIntentRequest) ProtoMessage()    {}
 func (*DetectIntentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{0}
 }
+
 func (m *DetectIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectIntentRequest.Unmarshal(m, b)
 }
@@ -310,6 +311,7 @@ func (*DetectIntentResponse) ProtoMessage()    {}
 func (*DetectIntentResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{1}
 }
+
 func (m *DetectIntentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectIntentResponse.Unmarshal(m, b)
 }
@@ -416,6 +418,7 @@ func (*QueryParameters) ProtoMessage()    {}
 func (*QueryParameters) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{2}
 }
+
 func (m *QueryParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryParameters.Unmarshal(m, b)
 }
@@ -517,6 +520,7 @@ func (*QueryInput) ProtoMessage()    {}
 func (*QueryInput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{3}
 }
+
 func (m *QueryInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryInput.Unmarshal(m, b)
 }
@@ -756,6 +760,7 @@ func (*QueryResult) ProtoMessage()    {}
 func (*QueryResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{4}
 }
+
 func (m *QueryResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryResult.Unmarshal(m, b)
 }
@@ -901,6 +906,7 @@ func (*KnowledgeAnswers) ProtoMessage()    {}
 func (*KnowledgeAnswers) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{5}
 }
+
 func (m *KnowledgeAnswers) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KnowledgeAnswers.Unmarshal(m, b)
 }
@@ -965,6 +971,7 @@ func (*KnowledgeAnswers_Answer) ProtoMessage()    {}
 func (*KnowledgeAnswers_Answer) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{5, 0}
 }
+
 func (m *KnowledgeAnswers_Answer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KnowledgeAnswers_Answer.Unmarshal(m, b)
 }
@@ -1082,6 +1089,7 @@ func (*StreamingDetectIntentRequest) ProtoMessage()    {}
 func (*StreamingDetectIntentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{6}
 }
+
 func (m *StreamingDetectIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingDetectIntentRequest.Unmarshal(m, b)
 }
@@ -1196,6 +1204,7 @@ func (*StreamingDetectIntentResponse) ProtoMessage()    {}
 func (*StreamingDetectIntentResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{7}
 }
+
 func (m *StreamingDetectIntentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingDetectIntentResponse.Unmarshal(m, b)
 }
@@ -1327,6 +1336,7 @@ func (*StreamingRecognitionResult) ProtoMessage()    {}
 func (*StreamingRecognitionResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{8}
 }
+
 func (m *StreamingRecognitionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingRecognitionResult.Unmarshal(m, b)
 }
@@ -1419,6 +1429,7 @@ func (*InputAudioConfig) ProtoMessage()    {}
 func (*InputAudioConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{9}
 }
+
 func (m *InputAudioConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputAudioConfig.Unmarshal(m, b)
 }
@@ -1493,6 +1504,7 @@ func (*TextInput) ProtoMessage()    {}
 func (*TextInput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{10}
 }
+
 func (m *TextInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextInput.Unmarshal(m, b)
 }
@@ -1551,6 +1563,7 @@ func (*EventInput) ProtoMessage()    {}
 func (*EventInput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{11}
 }
+
 func (m *EventInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EventInput.Unmarshal(m, b)
 }
@@ -1607,6 +1620,7 @@ func (*SentimentAnalysisRequestConfig) ProtoMessage()    {}
 func (*SentimentAnalysisRequestConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{12}
 }
+
 func (m *SentimentAnalysisRequestConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SentimentAnalysisRequestConfig.Unmarshal(m, b)
 }
@@ -1648,6 +1662,7 @@ func (*SentimentAnalysisResult) ProtoMessage()    {}
 func (*SentimentAnalysisResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{13}
 }
+
 func (m *SentimentAnalysisResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SentimentAnalysisResult.Unmarshal(m, b)
 }
@@ -1693,6 +1708,7 @@ func (*Sentiment) ProtoMessage()    {}
 func (*Sentiment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40a53f854d709740, []int{14}
 }
+
 func (m *Sentiment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Sentiment.Unmarshal(m, b)
 }

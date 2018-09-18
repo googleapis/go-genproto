@@ -57,6 +57,7 @@ func (*DeleteLogRequest) ProtoMessage()    {}
 func (*DeleteLogRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{0}
 }
+
 func (m *DeleteLogRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteLogRequest.Unmarshal(m, b)
 }
@@ -157,6 +158,7 @@ func (*WriteLogEntriesRequest) ProtoMessage()    {}
 func (*WriteLogEntriesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{1}
 }
+
 func (m *WriteLogEntriesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteLogEntriesRequest.Unmarshal(m, b)
 }
@@ -231,6 +233,7 @@ func (*WriteLogEntriesResponse) ProtoMessage()    {}
 func (*WriteLogEntriesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{2}
 }
+
 func (m *WriteLogEntriesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteLogEntriesResponse.Unmarshal(m, b)
 }
@@ -269,6 +272,7 @@ func (*WriteLogEntriesPartialErrors) ProtoMessage()    {}
 func (*WriteLogEntriesPartialErrors) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{3}
 }
+
 func (m *WriteLogEntriesPartialErrors) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteLogEntriesPartialErrors.Unmarshal(m, b)
 }
@@ -347,6 +351,7 @@ func (*ListLogEntriesRequest) ProtoMessage()    {}
 func (*ListLogEntriesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{4}
 }
+
 func (m *ListLogEntriesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogEntriesRequest.Unmarshal(m, b)
 }
@@ -436,6 +441,7 @@ func (*ListLogEntriesResponse) ProtoMessage()    {}
 func (*ListLogEntriesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{5}
 }
+
 func (m *ListLogEntriesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogEntriesResponse.Unmarshal(m, b)
 }
@@ -492,6 +498,7 @@ func (*ListMonitoredResourceDescriptorsRequest) ProtoMessage()    {}
 func (*ListMonitoredResourceDescriptorsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{6}
 }
+
 func (m *ListMonitoredResourceDescriptorsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListMonitoredResourceDescriptorsRequest.Unmarshal(m, b)
 }
@@ -545,6 +552,7 @@ func (*ListMonitoredResourceDescriptorsResponse) ProtoMessage()    {}
 func (*ListMonitoredResourceDescriptorsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{7}
 }
+
 func (m *ListMonitoredResourceDescriptorsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListMonitoredResourceDescriptorsResponse.Unmarshal(m, b)
 }
@@ -606,6 +614,7 @@ func (*ListLogsRequest) ProtoMessage()    {}
 func (*ListLogsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{8}
 }
+
 func (m *ListLogsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogsRequest.Unmarshal(m, b)
 }
@@ -666,6 +675,7 @@ func (*ListLogsResponse) ProtoMessage()    {}
 func (*ListLogsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6a8ba408154557e4, []int{9}
 }
+
 func (m *ListLogsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogsResponse.Unmarshal(m, b)
 }

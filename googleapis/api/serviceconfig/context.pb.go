@@ -53,6 +53,7 @@ func (*Context) ProtoMessage()    {}
 func (*Context) Descriptor() ([]byte, []int) {
 	return fileDescriptor_48d8be90143bd46c, []int{0}
 }
+
 func (m *Context) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Context.Unmarshal(m, b)
 }
@@ -100,6 +101,7 @@ func (*ContextRule) ProtoMessage()    {}
 func (*ContextRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_48d8be90143bd46c, []int{1}
 }
+
 func (m *ContextRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ContextRule.Unmarshal(m, b)
 }

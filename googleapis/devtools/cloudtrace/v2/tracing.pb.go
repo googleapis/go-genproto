@@ -47,6 +47,7 @@ func (*BatchWriteSpansRequest) ProtoMessage()    {}
 func (*BatchWriteSpansRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d1f9b588db05fdc6, []int{0}
 }
+
 func (m *BatchWriteSpansRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchWriteSpansRequest.Unmarshal(m, b)
 }

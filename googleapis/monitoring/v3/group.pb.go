@@ -75,6 +75,7 @@ func (*Group) ProtoMessage()    {}
 func (*Group) Descriptor() ([]byte, []int) {
 	return fileDescriptor_907e30c1f087271d, []int{0}
 }
+
 func (m *Group) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Group.Unmarshal(m, b)
 }

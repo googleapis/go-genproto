@@ -52,6 +52,7 @@ func (*LoginProfile) ProtoMessage()    {}
 func (*LoginProfile) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c51261020b887e3b, []int{0}
 }
+
 func (m *LoginProfile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LoginProfile.Unmarshal(m, b)
 }
@@ -115,6 +116,7 @@ func (*DeletePosixAccountRequest) ProtoMessage()    {}
 func (*DeletePosixAccountRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c51261020b887e3b, []int{1}
 }
+
 func (m *DeletePosixAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeletePosixAccountRequest.Unmarshal(m, b)
 }
@@ -157,6 +159,7 @@ func (*DeleteSshPublicKeyRequest) ProtoMessage()    {}
 func (*DeleteSshPublicKeyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c51261020b887e3b, []int{2}
 }
+
 func (m *DeleteSshPublicKeyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteSshPublicKeyRequest.Unmarshal(m, b)
 }
@@ -197,6 +200,7 @@ func (*GetLoginProfileRequest) ProtoMessage()    {}
 func (*GetLoginProfileRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c51261020b887e3b, []int{3}
 }
+
 func (m *GetLoginProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetLoginProfileRequest.Unmarshal(m, b)
 }
@@ -239,6 +243,7 @@ func (*GetSshPublicKeyRequest) ProtoMessage()    {}
 func (*GetSshPublicKeyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c51261020b887e3b, []int{4}
 }
+
 func (m *GetSshPublicKeyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSshPublicKeyRequest.Unmarshal(m, b)
 }
@@ -283,6 +288,7 @@ func (*ImportSshPublicKeyRequest) ProtoMessage()    {}
 func (*ImportSshPublicKeyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c51261020b887e3b, []int{5}
 }
+
 func (m *ImportSshPublicKeyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportSshPublicKeyRequest.Unmarshal(m, b)
 }
@@ -337,6 +343,7 @@ func (*ImportSshPublicKeyResponse) ProtoMessage()    {}
 func (*ImportSshPublicKeyResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c51261020b887e3b, []int{6}
 }
+
 func (m *ImportSshPublicKeyResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportSshPublicKeyResponse.Unmarshal(m, b)
 }
@@ -383,6 +390,7 @@ func (*UpdateSshPublicKeyRequest) ProtoMessage()    {}
 func (*UpdateSshPublicKeyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c51261020b887e3b, []int{7}
 }
+
 func (m *UpdateSshPublicKeyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSshPublicKeyRequest.Unmarshal(m, b)
 }

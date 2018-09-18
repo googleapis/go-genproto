@@ -255,6 +255,7 @@ func (*RetryBuildRequest) ProtoMessage()    {}
 func (*RetryBuildRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{0}
 }
+
 func (m *RetryBuildRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RetryBuildRequest.Unmarshal(m, b)
 }
@@ -306,6 +307,7 @@ func (*RunBuildTriggerRequest) ProtoMessage()    {}
 func (*RunBuildTriggerRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{1}
 }
+
 func (m *RunBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunBuildTriggerRequest.Unmarshal(m, b)
 }
@@ -370,6 +372,7 @@ func (*StorageSource) ProtoMessage()    {}
 func (*StorageSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{2}
 }
+
 func (m *StorageSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StorageSource.Unmarshal(m, b)
 }
@@ -441,6 +444,7 @@ func (*RepoSource) ProtoMessage()    {}
 func (*RepoSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{3}
 }
+
 func (m *RepoSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RepoSource.Unmarshal(m, b)
 }
@@ -630,6 +634,7 @@ func (*Source) ProtoMessage()    {}
 func (*Source) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{4}
 }
+
 func (m *Source) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Source.Unmarshal(m, b)
 }
@@ -779,6 +784,7 @@ func (*BuiltImage) ProtoMessage()    {}
 func (*BuiltImage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{5}
 }
+
 func (m *BuiltImage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuiltImage.Unmarshal(m, b)
 }
@@ -907,6 +913,7 @@ func (*BuildStep) ProtoMessage()    {}
 func (*BuildStep) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{6}
 }
+
 func (m *BuildStep) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildStep.Unmarshal(m, b)
 }
@@ -1033,6 +1040,7 @@ func (*Volume) ProtoMessage()    {}
 func (*Volume) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{7}
 }
+
 func (m *Volume) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Volume.Unmarshal(m, b)
 }
@@ -1087,6 +1095,7 @@ func (*Results) ProtoMessage()    {}
 func (*Results) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{8}
 }
+
 func (m *Results) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Results.Unmarshal(m, b)
 }
@@ -1153,6 +1162,7 @@ func (*ArtifactResult) ProtoMessage()    {}
 func (*ArtifactResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{9}
 }
+
 func (m *ArtifactResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ArtifactResult.Unmarshal(m, b)
 }
@@ -1287,6 +1297,7 @@ func (*Build) ProtoMessage()    {}
 func (*Build) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{10}
 }
+
 func (m *Build) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Build.Unmarshal(m, b)
 }
@@ -1495,6 +1506,7 @@ func (*Artifacts) ProtoMessage()    {}
 func (*Artifacts) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{11}
 }
+
 func (m *Artifacts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Artifacts.Unmarshal(m, b)
 }
@@ -1552,6 +1564,7 @@ func (*Artifacts_ArtifactObjects) ProtoMessage()    {}
 func (*Artifacts_ArtifactObjects) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{11, 0}
 }
+
 func (m *Artifacts_ArtifactObjects) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Artifacts_ArtifactObjects.Unmarshal(m, b)
 }
@@ -1608,6 +1621,7 @@ func (*TimeSpan) ProtoMessage()    {}
 func (*TimeSpan) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{12}
 }
+
 func (m *TimeSpan) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeSpan.Unmarshal(m, b)
 }
@@ -1655,6 +1669,7 @@ func (*BuildOperationMetadata) ProtoMessage()    {}
 func (*BuildOperationMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{13}
 }
+
 func (m *BuildOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildOperationMetadata.Unmarshal(m, b)
 }
@@ -1711,6 +1726,7 @@ func (*SourceProvenance) ProtoMessage()    {}
 func (*SourceProvenance) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{14}
 }
+
 func (m *SourceProvenance) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceProvenance.Unmarshal(m, b)
 }
@@ -1766,6 +1782,7 @@ func (*FileHashes) ProtoMessage()    {}
 func (*FileHashes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{15}
 }
+
 func (m *FileHashes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileHashes.Unmarshal(m, b)
 }
@@ -1808,6 +1825,7 @@ func (*Hash) ProtoMessage()    {}
 func (*Hash) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{16}
 }
+
 func (m *Hash) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Hash.Unmarshal(m, b)
 }
@@ -1863,6 +1881,7 @@ func (*Secret) ProtoMessage()    {}
 func (*Secret) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{17}
 }
+
 func (m *Secret) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Secret.Unmarshal(m, b)
 }
@@ -1912,6 +1931,7 @@ func (*CreateBuildRequest) ProtoMessage()    {}
 func (*CreateBuildRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{18}
 }
+
 func (m *CreateBuildRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateBuildRequest.Unmarshal(m, b)
 }
@@ -1961,6 +1981,7 @@ func (*GetBuildRequest) ProtoMessage()    {}
 func (*GetBuildRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{19}
 }
+
 func (m *GetBuildRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetBuildRequest.Unmarshal(m, b)
 }
@@ -2014,6 +2035,7 @@ func (*ListBuildsRequest) ProtoMessage()    {}
 func (*ListBuildsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{20}
 }
+
 func (m *ListBuildsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBuildsRequest.Unmarshal(m, b)
 }
@@ -2077,6 +2099,7 @@ func (*ListBuildsResponse) ProtoMessage()    {}
 func (*ListBuildsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{21}
 }
+
 func (m *ListBuildsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBuildsResponse.Unmarshal(m, b)
 }
@@ -2126,6 +2149,7 @@ func (*CancelBuildRequest) ProtoMessage()    {}
 func (*CancelBuildRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{22}
 }
+
 func (m *CancelBuildRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelBuildRequest.Unmarshal(m, b)
 }
@@ -2194,6 +2218,7 @@ func (*BuildTrigger) ProtoMessage()    {}
 func (*BuildTrigger) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{23}
 }
+
 func (m *BuildTrigger) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildTrigger.Unmarshal(m, b)
 }
@@ -2378,6 +2403,7 @@ func (*CreateBuildTriggerRequest) ProtoMessage()    {}
 func (*CreateBuildTriggerRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{24}
 }
+
 func (m *CreateBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateBuildTriggerRequest.Unmarshal(m, b)
 }
@@ -2427,6 +2453,7 @@ func (*GetBuildTriggerRequest) ProtoMessage()    {}
 func (*GetBuildTriggerRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{25}
 }
+
 func (m *GetBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetBuildTriggerRequest.Unmarshal(m, b)
 }
@@ -2474,6 +2501,7 @@ func (*ListBuildTriggersRequest) ProtoMessage()    {}
 func (*ListBuildTriggersRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{26}
 }
+
 func (m *ListBuildTriggersRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBuildTriggersRequest.Unmarshal(m, b)
 }
@@ -2514,6 +2542,7 @@ func (*ListBuildTriggersResponse) ProtoMessage()    {}
 func (*ListBuildTriggersResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{27}
 }
+
 func (m *ListBuildTriggersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBuildTriggersResponse.Unmarshal(m, b)
 }
@@ -2556,6 +2585,7 @@ func (*DeleteBuildTriggerRequest) ProtoMessage()    {}
 func (*DeleteBuildTriggerRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{28}
 }
+
 func (m *DeleteBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteBuildTriggerRequest.Unmarshal(m, b)
 }
@@ -2607,6 +2637,7 @@ func (*UpdateBuildTriggerRequest) ProtoMessage()    {}
 func (*UpdateBuildTriggerRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{29}
 }
+
 func (m *UpdateBuildTriggerRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateBuildTriggerRequest.Unmarshal(m, b)
 }
@@ -2678,6 +2709,7 @@ func (*BuildOptions) ProtoMessage()    {}
 func (*BuildOptions) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8a9099620ac1526a, []int{30}
 }
+
 func (m *BuildOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildOptions.Unmarshal(m, b)
 }

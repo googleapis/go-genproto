@@ -56,6 +56,7 @@ func (*CreateTableRequest) ProtoMessage()    {}
 func (*CreateTableRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a159d72e7e8b0be6, []int{0}
 }
+
 func (m *CreateTableRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateTableRequest.Unmarshal(m, b)
 }
@@ -116,6 +117,7 @@ func (*ListTablesRequest) ProtoMessage()    {}
 func (*ListTablesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a159d72e7e8b0be6, []int{1}
 }
+
 func (m *ListTablesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTablesRequest.Unmarshal(m, b)
 }
@@ -156,6 +158,7 @@ func (*ListTablesResponse) ProtoMessage()    {}
 func (*ListTablesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a159d72e7e8b0be6, []int{2}
 }
+
 func (m *ListTablesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTablesResponse.Unmarshal(m, b)
 }
@@ -195,6 +198,7 @@ func (*GetTableRequest) ProtoMessage()    {}
 func (*GetTableRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a159d72e7e8b0be6, []int{3}
 }
+
 func (m *GetTableRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetTableRequest.Unmarshal(m, b)
 }
@@ -234,6 +238,7 @@ func (*DeleteTableRequest) ProtoMessage()    {}
 func (*DeleteTableRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a159d72e7e8b0be6, []int{4}
 }
+
 func (m *DeleteTableRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteTableRequest.Unmarshal(m, b)
 }
@@ -276,6 +281,7 @@ func (*RenameTableRequest) ProtoMessage()    {}
 func (*RenameTableRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a159d72e7e8b0be6, []int{5}
 }
+
 func (m *RenameTableRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RenameTableRequest.Unmarshal(m, b)
 }
@@ -327,6 +333,7 @@ func (*CreateColumnFamilyRequest) ProtoMessage()    {}
 func (*CreateColumnFamilyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a159d72e7e8b0be6, []int{6}
 }
+
 func (m *CreateColumnFamilyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateColumnFamilyRequest.Unmarshal(m, b)
 }
@@ -380,6 +387,7 @@ func (*DeleteColumnFamilyRequest) ProtoMessage()    {}
 func (*DeleteColumnFamilyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a159d72e7e8b0be6, []int{7}
 }
+
 func (m *DeleteColumnFamilyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteColumnFamilyRequest.Unmarshal(m, b)
 }
@@ -423,6 +431,7 @@ func (*BulkDeleteRowsRequest) ProtoMessage()    {}
 func (*BulkDeleteRowsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a159d72e7e8b0be6, []int{8}
 }
+
 func (m *BulkDeleteRowsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BulkDeleteRowsRequest.Unmarshal(m, b)
 }

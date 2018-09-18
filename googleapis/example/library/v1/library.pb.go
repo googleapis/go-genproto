@@ -50,6 +50,7 @@ func (*Book) ProtoMessage()    {}
 func (*Book) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{0}
 }
+
 func (m *Book) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Book.Unmarshal(m, b)
 }
@@ -115,6 +116,7 @@ func (*Shelf) ProtoMessage()    {}
 func (*Shelf) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{1}
 }
+
 func (m *Shelf) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Shelf.Unmarshal(m, b)
 }
@@ -162,6 +164,7 @@ func (*CreateShelfRequest) ProtoMessage()    {}
 func (*CreateShelfRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{2}
 }
+
 func (m *CreateShelfRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateShelfRequest.Unmarshal(m, b)
 }
@@ -202,6 +205,7 @@ func (*GetShelfRequest) ProtoMessage()    {}
 func (*GetShelfRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{3}
 }
+
 func (m *GetShelfRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetShelfRequest.Unmarshal(m, b)
 }
@@ -248,6 +252,7 @@ func (*ListShelvesRequest) ProtoMessage()    {}
 func (*ListShelvesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{4}
 }
+
 func (m *ListShelvesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListShelvesRequest.Unmarshal(m, b)
 }
@@ -301,6 +306,7 @@ func (*ListShelvesResponse) ProtoMessage()    {}
 func (*ListShelvesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{5}
 }
+
 func (m *ListShelvesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListShelvesResponse.Unmarshal(m, b)
 }
@@ -348,6 +354,7 @@ func (*DeleteShelfRequest) ProtoMessage()    {}
 func (*DeleteShelfRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{6}
 }
+
 func (m *DeleteShelfRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteShelfRequest.Unmarshal(m, b)
 }
@@ -391,6 +398,7 @@ func (*MergeShelvesRequest) ProtoMessage()    {}
 func (*MergeShelvesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{7}
 }
+
 func (m *MergeShelvesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MergeShelvesRequest.Unmarshal(m, b)
 }
@@ -440,6 +448,7 @@ func (*CreateBookRequest) ProtoMessage()    {}
 func (*CreateBookRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{8}
 }
+
 func (m *CreateBookRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateBookRequest.Unmarshal(m, b)
 }
@@ -487,6 +496,7 @@ func (*GetBookRequest) ProtoMessage()    {}
 func (*GetBookRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{9}
 }
+
 func (m *GetBookRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetBookRequest.Unmarshal(m, b)
 }
@@ -535,6 +545,7 @@ func (*ListBooksRequest) ProtoMessage()    {}
 func (*ListBooksRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{10}
 }
+
 func (m *ListBooksRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBooksRequest.Unmarshal(m, b)
 }
@@ -595,6 +606,7 @@ func (*ListBooksResponse) ProtoMessage()    {}
 func (*ListBooksResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{11}
 }
+
 func (m *ListBooksResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBooksResponse.Unmarshal(m, b)
 }
@@ -644,6 +656,7 @@ func (*UpdateBookRequest) ProtoMessage()    {}
 func (*UpdateBookRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{12}
 }
+
 func (m *UpdateBookRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateBookRequest.Unmarshal(m, b)
 }
@@ -691,6 +704,7 @@ func (*DeleteBookRequest) ProtoMessage()    {}
 func (*DeleteBookRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{13}
 }
+
 func (m *DeleteBookRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteBookRequest.Unmarshal(m, b)
 }
@@ -734,6 +748,7 @@ func (*MoveBookRequest) ProtoMessage()    {}
 func (*MoveBookRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_40bd7925372a20e3, []int{14}
 }
+
 func (m *MoveBookRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MoveBookRequest.Unmarshal(m, b)
 }

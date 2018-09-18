@@ -45,6 +45,7 @@ func (*AuthorizationConfig) ProtoMessage()    {}
 func (*AuthorizationConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9a079278ac7754f2, []int{0}
 }
+
 func (m *AuthorizationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthorizationConfig.Unmarshal(m, b)
 }

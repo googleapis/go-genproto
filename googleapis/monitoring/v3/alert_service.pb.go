@@ -54,6 +54,7 @@ func (*CreateAlertPolicyRequest) ProtoMessage()    {}
 func (*CreateAlertPolicyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c45362b2a456d1bf, []int{0}
 }
+
 func (m *CreateAlertPolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAlertPolicyRequest.Unmarshal(m, b)
 }
@@ -103,6 +104,7 @@ func (*GetAlertPolicyRequest) ProtoMessage()    {}
 func (*GetAlertPolicyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c45362b2a456d1bf, []int{1}
 }
+
 func (m *GetAlertPolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAlertPolicyRequest.Unmarshal(m, b)
 }
@@ -170,6 +172,7 @@ func (*ListAlertPoliciesRequest) ProtoMessage()    {}
 func (*ListAlertPoliciesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c45362b2a456d1bf, []int{2}
 }
+
 func (m *ListAlertPoliciesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAlertPoliciesRequest.Unmarshal(m, b)
 }
@@ -242,6 +245,7 @@ func (*ListAlertPoliciesResponse) ProtoMessage()    {}
 func (*ListAlertPoliciesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c45362b2a456d1bf, []int{3}
 }
+
 func (m *ListAlertPoliciesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAlertPoliciesResponse.Unmarshal(m, b)
 }
@@ -314,6 +318,7 @@ func (*UpdateAlertPolicyRequest) ProtoMessage()    {}
 func (*UpdateAlertPolicyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c45362b2a456d1bf, []int{4}
 }
+
 func (m *UpdateAlertPolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAlertPolicyRequest.Unmarshal(m, b)
 }
@@ -365,6 +370,7 @@ func (*DeleteAlertPolicyRequest) ProtoMessage()    {}
 func (*DeleteAlertPolicyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c45362b2a456d1bf, []int{5}
 }
+
 func (m *DeleteAlertPolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteAlertPolicyRequest.Unmarshal(m, b)
 }

@@ -232,6 +232,7 @@ func (*AnnotateVideoRequest) ProtoMessage()    {}
 func (*AnnotateVideoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{0}
 }
+
 func (m *AnnotateVideoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateVideoRequest.Unmarshal(m, b)
 }
@@ -328,6 +329,7 @@ func (*VideoContext) ProtoMessage()    {}
 func (*VideoContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{1}
 }
+
 func (m *VideoContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoContext.Unmarshal(m, b)
 }
@@ -412,6 +414,7 @@ func (*VideoSegment) ProtoMessage()    {}
 func (*VideoSegment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{2}
 }
+
 func (m *VideoSegment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoSegment.Unmarshal(m, b)
 }
@@ -466,6 +469,7 @@ func (*LabelLocation) ProtoMessage()    {}
 func (*LabelLocation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{3}
 }
+
 func (m *LabelLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelLocation.Unmarshal(m, b)
 }
@@ -524,6 +528,7 @@ func (*LabelAnnotation) ProtoMessage()    {}
 func (*LabelAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{4}
 }
+
 func (m *LabelAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelAnnotation.Unmarshal(m, b)
 }
@@ -593,6 +598,7 @@ func (*SafeSearchAnnotation) ProtoMessage()    {}
 func (*SafeSearchAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{5}
 }
+
 func (m *SafeSearchAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SafeSearchAnnotation.Unmarshal(m, b)
 }
@@ -674,6 +680,7 @@ func (*BoundingBox) ProtoMessage()    {}
 func (*BoundingBox) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{6}
 }
+
 func (m *BoundingBox) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BoundingBox.Unmarshal(m, b)
 }
@@ -737,6 +744,7 @@ func (*FaceLocation) ProtoMessage()    {}
 func (*FaceLocation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{7}
 }
+
 func (m *FaceLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FaceLocation.Unmarshal(m, b)
 }
@@ -790,6 +798,7 @@ func (*FaceAnnotation) ProtoMessage()    {}
 func (*FaceAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{8}
 }
+
 func (m *FaceAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FaceAnnotation.Unmarshal(m, b)
 }
@@ -856,6 +865,7 @@ func (*VideoAnnotationResults) ProtoMessage()    {}
 func (*VideoAnnotationResults) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{9}
 }
+
 func (m *VideoAnnotationResults) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoAnnotationResults.Unmarshal(m, b)
 }
@@ -933,6 +943,7 @@ func (*AnnotateVideoResponse) ProtoMessage()    {}
 func (*AnnotateVideoResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{10}
 }
+
 func (m *AnnotateVideoResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateVideoResponse.Unmarshal(m, b)
 }
@@ -981,6 +992,7 @@ func (*VideoAnnotationProgress) ProtoMessage()    {}
 func (*VideoAnnotationProgress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{11}
 }
+
 func (m *VideoAnnotationProgress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoAnnotationProgress.Unmarshal(m, b)
 }
@@ -1044,6 +1056,7 @@ func (*AnnotateVideoProgress) ProtoMessage()    {}
 func (*AnnotateVideoProgress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bda050609d2e9d85, []int{12}
 }
+
 func (m *AnnotateVideoProgress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateVideoProgress.Unmarshal(m, b)
 }

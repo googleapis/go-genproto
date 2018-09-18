@@ -47,6 +47,7 @@ func (*UpdateFieldRequest) ProtoMessage()    {}
 func (*UpdateFieldRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d93f4454f4162ee9, []int{0}
 }
+
 func (m *UpdateFieldRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateFieldRequest.Unmarshal(m, b)
 }
@@ -95,6 +96,7 @@ func (*GetFieldRequest) ProtoMessage()    {}
 func (*GetFieldRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d93f4454f4162ee9, []int{1}
 }
+
 func (m *GetFieldRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetFieldRequest.Unmarshal(m, b)
 }
@@ -148,6 +150,7 @@ func (*ListFieldsRequest) ProtoMessage()    {}
 func (*ListFieldsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d93f4454f4162ee9, []int{2}
 }
+
 func (m *ListFieldsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFieldsRequest.Unmarshal(m, b)
 }
@@ -212,6 +215,7 @@ func (*ListFieldsResponse) ProtoMessage()    {}
 func (*ListFieldsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d93f4454f4162ee9, []int{3}
 }
+
 func (m *ListFieldsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFieldsResponse.Unmarshal(m, b)
 }

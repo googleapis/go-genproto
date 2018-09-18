@@ -56,6 +56,7 @@ func (*ReadRequest) ProtoMessage()    {}
 func (*ReadRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_657cab877f44cd08, []int{0}
 }
+
 func (m *ReadRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadRequest.Unmarshal(m, b)
 }
@@ -113,6 +114,7 @@ func (*ReadResponse) ProtoMessage()    {}
 func (*ReadResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_657cab877f44cd08, []int{1}
 }
+
 func (m *ReadResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadResponse.Unmarshal(m, b)
 }
@@ -177,6 +179,7 @@ func (*WriteRequest) ProtoMessage()    {}
 func (*WriteRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_657cab877f44cd08, []int{2}
 }
+
 func (m *WriteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteRequest.Unmarshal(m, b)
 }
@@ -238,6 +241,7 @@ func (*WriteResponse) ProtoMessage()    {}
 func (*WriteResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_657cab877f44cd08, []int{3}
 }
+
 func (m *WriteResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteResponse.Unmarshal(m, b)
 }
@@ -278,6 +282,7 @@ func (*QueryWriteStatusRequest) ProtoMessage()    {}
 func (*QueryWriteStatusRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_657cab877f44cd08, []int{4}
 }
+
 func (m *QueryWriteStatusRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryWriteStatusRequest.Unmarshal(m, b)
 }
@@ -321,6 +326,7 @@ func (*QueryWriteStatusResponse) ProtoMessage()    {}
 func (*QueryWriteStatusResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_657cab877f44cd08, []int{5}
 }
+
 func (m *QueryWriteStatusResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryWriteStatusResponse.Unmarshal(m, b)
 }

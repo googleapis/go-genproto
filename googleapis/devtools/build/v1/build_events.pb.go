@@ -160,6 +160,7 @@ func (*BuildEvent) ProtoMessage()    {}
 func (*BuildEvent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b1e5c65e074f08f4, []int{0}
 }
+
 func (m *BuildEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent.Unmarshal(m, b)
 }
@@ -537,6 +538,7 @@ func (*BuildEvent_InvocationAttemptStarted) ProtoMessage()    {}
 func (*BuildEvent_InvocationAttemptStarted) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b1e5c65e074f08f4, []int{0, 0}
 }
+
 func (m *BuildEvent_InvocationAttemptStarted) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_InvocationAttemptStarted.Unmarshal(m, b)
 }
@@ -579,6 +581,7 @@ func (*BuildEvent_InvocationAttemptFinished) ProtoMessage()    {}
 func (*BuildEvent_InvocationAttemptFinished) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b1e5c65e074f08f4, []int{0, 1}
 }
+
 func (m *BuildEvent_InvocationAttemptFinished) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_InvocationAttemptFinished.Unmarshal(m, b)
 }
@@ -627,6 +630,7 @@ func (*BuildEvent_BuildEnqueued) ProtoMessage()    {}
 func (*BuildEvent_BuildEnqueued) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b1e5c65e074f08f4, []int{0, 2}
 }
+
 func (m *BuildEvent_BuildEnqueued) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_BuildEnqueued.Unmarshal(m, b)
 }
@@ -662,6 +666,7 @@ func (*BuildEvent_BuildFinished) ProtoMessage()    {}
 func (*BuildEvent_BuildFinished) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b1e5c65e074f08f4, []int{0, 3}
 }
+
 func (m *BuildEvent_BuildFinished) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_BuildFinished.Unmarshal(m, b)
 }
@@ -708,6 +713,7 @@ func (*BuildEvent_ConsoleOutput) ProtoMessage()    {}
 func (*BuildEvent_ConsoleOutput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b1e5c65e074f08f4, []int{0, 4}
 }
+
 func (m *BuildEvent_ConsoleOutput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_ConsoleOutput.Unmarshal(m, b)
 }
@@ -854,6 +860,7 @@ func (*BuildEvent_BuildComponentStreamFinished) ProtoMessage()    {}
 func (*BuildEvent_BuildComponentStreamFinished) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b1e5c65e074f08f4, []int{0, 5}
 }
+
 func (m *BuildEvent_BuildComponentStreamFinished) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_BuildComponentStreamFinished.Unmarshal(m, b)
 }
@@ -899,6 +906,7 @@ func (*StreamId) ProtoMessage()    {}
 func (*StreamId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b1e5c65e074f08f4, []int{1}
 }
+
 func (m *StreamId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamId.Unmarshal(m, b)
 }

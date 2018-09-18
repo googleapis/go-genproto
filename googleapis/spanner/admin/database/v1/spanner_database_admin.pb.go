@@ -84,6 +84,7 @@ func (*Database) ProtoMessage()    {}
 func (*Database) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{0}
 }
+
 func (m *Database) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Database.Unmarshal(m, b)
 }
@@ -139,6 +140,7 @@ func (*ListDatabasesRequest) ProtoMessage()    {}
 func (*ListDatabasesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{1}
 }
+
 func (m *ListDatabasesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDatabasesRequest.Unmarshal(m, b)
 }
@@ -197,6 +199,7 @@ func (*ListDatabasesResponse) ProtoMessage()    {}
 func (*ListDatabasesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{2}
 }
+
 func (m *ListDatabasesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDatabasesResponse.Unmarshal(m, b)
 }
@@ -256,6 +259,7 @@ func (*CreateDatabaseRequest) ProtoMessage()    {}
 func (*CreateDatabaseRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{3}
 }
+
 func (m *CreateDatabaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDatabaseRequest.Unmarshal(m, b)
 }
@@ -311,6 +315,7 @@ func (*CreateDatabaseMetadata) ProtoMessage()    {}
 func (*CreateDatabaseMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{4}
 }
+
 func (m *CreateDatabaseMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDatabaseMetadata.Unmarshal(m, b)
 }
@@ -352,6 +357,7 @@ func (*GetDatabaseRequest) ProtoMessage()    {}
 func (*GetDatabaseRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{5}
 }
+
 func (m *GetDatabaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDatabaseRequest.Unmarshal(m, b)
 }
@@ -429,6 +435,7 @@ func (*UpdateDatabaseDdlRequest) ProtoMessage()    {}
 func (*UpdateDatabaseDdlRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{6}
 }
+
 func (m *UpdateDatabaseDdlRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDatabaseDdlRequest.Unmarshal(m, b)
 }
@@ -491,6 +498,7 @@ func (*UpdateDatabaseDdlMetadata) ProtoMessage()    {}
 func (*UpdateDatabaseDdlMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{7}
 }
+
 func (m *UpdateDatabaseDdlMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDatabaseDdlMetadata.Unmarshal(m, b)
 }
@@ -545,6 +553,7 @@ func (*DropDatabaseRequest) ProtoMessage()    {}
 func (*DropDatabaseRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{8}
 }
+
 func (m *DropDatabaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DropDatabaseRequest.Unmarshal(m, b)
 }
@@ -585,6 +594,7 @@ func (*GetDatabaseDdlRequest) ProtoMessage()    {}
 func (*GetDatabaseDdlRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{9}
 }
+
 func (m *GetDatabaseDdlRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDatabaseDdlRequest.Unmarshal(m, b)
 }
@@ -626,6 +636,7 @@ func (*GetDatabaseDdlResponse) ProtoMessage()    {}
 func (*GetDatabaseDdlResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9422939aee7fc2d7, []int{10}
 }
+
 func (m *GetDatabaseDdlResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDatabaseDdlResponse.Unmarshal(m, b)
 }

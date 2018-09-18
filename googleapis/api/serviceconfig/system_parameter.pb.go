@@ -68,6 +68,7 @@ func (*SystemParameters) ProtoMessage()    {}
 func (*SystemParameters) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c69d4a5e03567ede, []int{0}
 }
+
 func (m *SystemParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SystemParameters.Unmarshal(m, b)
 }
@@ -118,6 +119,7 @@ func (*SystemParameterRule) ProtoMessage()    {}
 func (*SystemParameterRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c69d4a5e03567ede, []int{1}
 }
+
 func (m *SystemParameterRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SystemParameterRule.Unmarshal(m, b)
 }
@@ -173,6 +175,7 @@ func (*SystemParameter) ProtoMessage()    {}
 func (*SystemParameter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c69d4a5e03567ede, []int{2}
 }
+
 func (m *SystemParameter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SystemParameter.Unmarshal(m, b)
 }

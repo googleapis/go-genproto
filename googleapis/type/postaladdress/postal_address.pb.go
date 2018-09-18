@@ -127,6 +127,7 @@ func (*PostalAddress) ProtoMessage()    {}
 func (*PostalAddress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_17c0e9bca935790c, []int{0}
 }
+
 func (m *PostalAddress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PostalAddress.Unmarshal(m, b)
 }

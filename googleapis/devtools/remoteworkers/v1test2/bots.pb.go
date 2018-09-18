@@ -263,6 +263,7 @@ func (*BotSession) ProtoMessage()    {}
 func (*BotSession) Descriptor() ([]byte, []int) {
 	return fileDescriptor_129e24cb0c941ff8, []int{0}
 }
+
 func (m *BotSession) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BotSession.Unmarshal(m, b)
 }
@@ -395,6 +396,7 @@ func (*Lease) ProtoMessage()    {}
 func (*Lease) Descriptor() ([]byte, []int) {
 	return fileDescriptor_129e24cb0c941ff8, []int{1}
 }
+
 func (m *Lease) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Lease.Unmarshal(m, b)
 }
@@ -506,6 +508,7 @@ func (*AdminTemp) ProtoMessage()    {}
 func (*AdminTemp) Descriptor() ([]byte, []int) {
 	return fileDescriptor_129e24cb0c941ff8, []int{2}
 }
+
 func (m *AdminTemp) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdminTemp.Unmarshal(m, b)
 }
@@ -555,6 +558,7 @@ func (*CreateBotSessionRequest) ProtoMessage()    {}
 func (*CreateBotSessionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_129e24cb0c941ff8, []int{3}
 }
+
 func (m *CreateBotSessionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateBotSessionRequest.Unmarshal(m, b)
 }
@@ -607,6 +611,7 @@ func (*UpdateBotSessionRequest) ProtoMessage()    {}
 func (*UpdateBotSessionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_129e24cb0c941ff8, []int{4}
 }
+
 func (m *UpdateBotSessionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateBotSessionRequest.Unmarshal(m, b)
 }
@@ -665,6 +670,7 @@ func (*PostBotEventTempRequest) ProtoMessage()    {}
 func (*PostBotEventTempRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_129e24cb0c941ff8, []int{5}
 }
+
 func (m *PostBotEventTempRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PostBotEventTempRequest.Unmarshal(m, b)
 }

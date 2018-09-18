@@ -40,6 +40,7 @@ func (*OutdatedLibrary) ProtoMessage()    {}
 func (*OutdatedLibrary) Descriptor() ([]byte, []int) {
 	return fileDescriptor_067c3e019cef51ec, []int{0}
 }
+
 func (m *OutdatedLibrary) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutdatedLibrary.Unmarshal(m, b)
 }
@@ -97,6 +98,7 @@ func (*ViolatingResource) ProtoMessage()    {}
 func (*ViolatingResource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_067c3e019cef51ec, []int{1}
 }
+
 func (m *ViolatingResource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ViolatingResource.Unmarshal(m, b)
 }
@@ -144,6 +146,7 @@ func (*VulnerableParameters) ProtoMessage()    {}
 func (*VulnerableParameters) Descriptor() ([]byte, []int) {
 	return fileDescriptor_067c3e019cef51ec, []int{2}
 }
+
 func (m *VulnerableParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VulnerableParameters.Unmarshal(m, b)
 }
@@ -186,6 +189,7 @@ func (*Xss) ProtoMessage()    {}
 func (*Xss) Descriptor() ([]byte, []int) {
 	return fileDescriptor_067c3e019cef51ec, []int{3}
 }
+
 func (m *Xss) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Xss.Unmarshal(m, b)
 }

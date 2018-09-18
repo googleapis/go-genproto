@@ -66,6 +66,7 @@ func (*MonitoredResourceDescriptor) ProtoMessage()    {}
 func (*MonitoredResourceDescriptor) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6cd8bd738b08f2bf, []int{0}
 }
+
 func (m *MonitoredResourceDescriptor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MonitoredResourceDescriptor.Unmarshal(m, b)
 }
@@ -152,6 +153,7 @@ func (*MonitoredResource) ProtoMessage()    {}
 func (*MonitoredResource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6cd8bd738b08f2bf, []int{1}
 }
+
 func (m *MonitoredResource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MonitoredResource.Unmarshal(m, b)
 }
@@ -216,6 +218,7 @@ func (*MonitoredResourceMetadata) ProtoMessage()    {}
 func (*MonitoredResourceMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6cd8bd738b08f2bf, []int{2}
 }
+
 func (m *MonitoredResourceMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MonitoredResourceMetadata.Unmarshal(m, b)
 }

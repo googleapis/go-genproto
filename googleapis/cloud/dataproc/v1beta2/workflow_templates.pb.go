@@ -164,6 +164,7 @@ func (*WorkflowTemplate) ProtoMessage()    {}
 func (*WorkflowTemplate) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{0}
 }
+
 func (m *WorkflowTemplate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WorkflowTemplate.Unmarshal(m, b)
 }
@@ -260,6 +261,7 @@ func (*WorkflowTemplatePlacement) ProtoMessage()    {}
 func (*WorkflowTemplatePlacement) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{1}
 }
+
 func (m *WorkflowTemplatePlacement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WorkflowTemplatePlacement.Unmarshal(m, b)
 }
@@ -422,6 +424,7 @@ func (*ManagedCluster) ProtoMessage()    {}
 func (*ManagedCluster) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{2}
 }
+
 func (m *ManagedCluster) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ManagedCluster.Unmarshal(m, b)
 }
@@ -483,6 +486,7 @@ func (*ClusterSelector) ProtoMessage()    {}
 func (*ClusterSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{3}
 }
+
 func (m *ClusterSelector) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClusterSelector.Unmarshal(m, b)
 }
@@ -566,6 +570,7 @@ func (*OrderedJob) ProtoMessage()    {}
 func (*OrderedJob) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{4}
 }
+
 func (m *OrderedJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OrderedJob.Unmarshal(m, b)
 }
@@ -881,6 +886,7 @@ func (*WorkflowMetadata) ProtoMessage()    {}
 func (*WorkflowMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{5}
 }
+
 func (m *WorkflowMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WorkflowMetadata.Unmarshal(m, b)
 }
@@ -974,6 +980,7 @@ func (*ClusterOperation) ProtoMessage()    {}
 func (*ClusterOperation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{6}
 }
+
 func (m *ClusterOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClusterOperation.Unmarshal(m, b)
 }
@@ -1028,6 +1035,7 @@ func (*WorkflowGraph) ProtoMessage()    {}
 func (*WorkflowGraph) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{7}
 }
+
 func (m *WorkflowGraph) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WorkflowGraph.Unmarshal(m, b)
 }
@@ -1076,6 +1084,7 @@ func (*WorkflowNode) ProtoMessage()    {}
 func (*WorkflowNode) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{8}
 }
+
 func (m *WorkflowNode) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WorkflowNode.Unmarshal(m, b)
 }
@@ -1148,6 +1157,7 @@ func (*CreateWorkflowTemplateRequest) ProtoMessage()    {}
 func (*CreateWorkflowTemplateRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{9}
 }
+
 func (m *CreateWorkflowTemplateRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateWorkflowTemplateRequest.Unmarshal(m, b)
 }
@@ -1202,6 +1212,7 @@ func (*GetWorkflowTemplateRequest) ProtoMessage()    {}
 func (*GetWorkflowTemplateRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{10}
 }
+
 func (m *GetWorkflowTemplateRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetWorkflowTemplateRequest.Unmarshal(m, b)
 }
@@ -1268,6 +1279,7 @@ func (*InstantiateWorkflowTemplateRequest) ProtoMessage()    {}
 func (*InstantiateWorkflowTemplateRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{11}
 }
+
 func (m *InstantiateWorkflowTemplateRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InstantiateWorkflowTemplateRequest.Unmarshal(m, b)
 }
@@ -1338,6 +1350,7 @@ func (*InstantiateInlineWorkflowTemplateRequest) ProtoMessage()    {}
 func (*InstantiateInlineWorkflowTemplateRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{12}
 }
+
 func (m *InstantiateInlineWorkflowTemplateRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InstantiateInlineWorkflowTemplateRequest.Unmarshal(m, b)
 }
@@ -1394,6 +1407,7 @@ func (*UpdateWorkflowTemplateRequest) ProtoMessage()    {}
 func (*UpdateWorkflowTemplateRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{13}
 }
+
 func (m *UpdateWorkflowTemplateRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateWorkflowTemplateRequest.Unmarshal(m, b)
 }
@@ -1441,6 +1455,7 @@ func (*ListWorkflowTemplatesRequest) ProtoMessage()    {}
 func (*ListWorkflowTemplatesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{14}
 }
+
 func (m *ListWorkflowTemplatesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListWorkflowTemplatesRequest.Unmarshal(m, b)
 }
@@ -1499,6 +1514,7 @@ func (*ListWorkflowTemplatesResponse) ProtoMessage()    {}
 func (*ListWorkflowTemplatesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{15}
 }
+
 func (m *ListWorkflowTemplatesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListWorkflowTemplatesResponse.Unmarshal(m, b)
 }
@@ -1554,6 +1570,7 @@ func (*DeleteWorkflowTemplateRequest) ProtoMessage()    {}
 func (*DeleteWorkflowTemplateRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49d658bedf9bdbee, []int{16}
 }
+
 func (m *DeleteWorkflowTemplateRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteWorkflowTemplateRequest.Unmarshal(m, b)
 }

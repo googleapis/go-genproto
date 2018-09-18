@@ -62,6 +62,7 @@ func (*ReadGroup) ProtoMessage()    {}
 func (*ReadGroup) Descriptor() ([]byte, []int) {
 	return fileDescriptor_78f10e430d3182d6, []int{0}
 }
+
 func (m *ReadGroup) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadGroup.Unmarshal(m, b)
 }
@@ -176,6 +177,7 @@ func (*ReadGroup_Experiment) ProtoMessage()    {}
 func (*ReadGroup_Experiment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_78f10e430d3182d6, []int{0, 0}
 }
+
 func (m *ReadGroup_Experiment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadGroup_Experiment.Unmarshal(m, b)
 }
@@ -246,6 +248,7 @@ func (*ReadGroup_Program) ProtoMessage()    {}
 func (*ReadGroup_Program) Descriptor() ([]byte, []int) {
 	return fileDescriptor_78f10e430d3182d6, []int{0, 1}
 }
+
 func (m *ReadGroup_Program) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadGroup_Program.Unmarshal(m, b)
 }

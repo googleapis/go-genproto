@@ -45,6 +45,7 @@ func (*Image) ProtoMessage()    {}
 func (*Image) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bd1fd4e23d5f1ca3, []int{0}
 }
+
 func (m *Image) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Image.Unmarshal(m, b)
 }
@@ -200,6 +201,7 @@ func (*TextSnippet) ProtoMessage()    {}
 func (*TextSnippet) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bd1fd4e23d5f1ca3, []int{1}
 }
+
 func (m *TextSnippet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextSnippet.Unmarshal(m, b)
 }
@@ -258,6 +260,7 @@ func (*ExamplePayload) ProtoMessage()    {}
 func (*ExamplePayload) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bd1fd4e23d5f1ca3, []int{2}
 }
+
 func (m *ExamplePayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExamplePayload.Unmarshal(m, b)
 }

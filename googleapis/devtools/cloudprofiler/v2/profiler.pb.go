@@ -111,6 +111,7 @@ func (*CreateProfileRequest) ProtoMessage()    {}
 func (*CreateProfileRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74a10a5851161432, []int{0}
 }
+
 func (m *CreateProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateProfileRequest.Unmarshal(m, b)
 }
@@ -168,6 +169,7 @@ func (*CreateOfflineProfileRequest) ProtoMessage()    {}
 func (*CreateOfflineProfileRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74a10a5851161432, []int{1}
 }
+
 func (m *CreateOfflineProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateOfflineProfileRequest.Unmarshal(m, b)
 }
@@ -220,6 +222,7 @@ func (*UpdateProfileRequest) ProtoMessage()    {}
 func (*UpdateProfileRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74a10a5851161432, []int{2}
 }
+
 func (m *UpdateProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateProfileRequest.Unmarshal(m, b)
 }
@@ -287,6 +290,7 @@ func (*Profile) ProtoMessage()    {}
 func (*Profile) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74a10a5851161432, []int{3}
 }
+
 func (m *Profile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Profile.Unmarshal(m, b)
 }
@@ -384,6 +388,7 @@ func (*Deployment) ProtoMessage()    {}
 func (*Deployment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74a10a5851161432, []int{4}
 }
+
 func (m *Deployment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Deployment.Unmarshal(m, b)
 }

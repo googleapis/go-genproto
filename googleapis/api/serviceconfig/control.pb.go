@@ -38,6 +38,7 @@ func (*Control) ProtoMessage()    {}
 func (*Control) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74b55b5694b7f0a5, []int{0}
 }
+
 func (m *Control) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Control.Unmarshal(m, b)
 }

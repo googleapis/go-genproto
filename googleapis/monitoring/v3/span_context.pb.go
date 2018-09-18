@@ -47,6 +47,7 @@ func (*SpanContext) ProtoMessage()    {}
 func (*SpanContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_933032e252f1c5e4, []int{0}
 }
+
 func (m *SpanContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpanContext.Unmarshal(m, b)
 }

@@ -38,6 +38,7 @@ func (*Vertex) ProtoMessage()    {}
 func (*Vertex) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ce1d1cf3c6845cfe, []int{0}
 }
+
 func (m *Vertex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Vertex.Unmarshal(m, b)
 }
@@ -89,6 +90,7 @@ func (*NormalizedVertex) ProtoMessage()    {}
 func (*NormalizedVertex) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ce1d1cf3c6845cfe, []int{1}
 }
+
 func (m *NormalizedVertex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NormalizedVertex.Unmarshal(m, b)
 }
@@ -138,6 +140,7 @@ func (*BoundingPoly) ProtoMessage()    {}
 func (*BoundingPoly) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ce1d1cf3c6845cfe, []int{2}
 }
+
 func (m *BoundingPoly) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BoundingPoly.Unmarshal(m, b)
 }
@@ -191,6 +194,7 @@ func (*Position) ProtoMessage()    {}
 func (*Position) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ce1d1cf3c6845cfe, []int{3}
 }
+
 func (m *Position) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Position.Unmarshal(m, b)
 }

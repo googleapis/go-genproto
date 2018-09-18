@@ -59,6 +59,7 @@ func (*Billing) ProtoMessage()    {}
 func (*Billing) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21f14814cad56ddb, []int{0}
 }
+
 func (m *Billing) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Billing.Unmarshal(m, b)
 }
@@ -104,6 +105,7 @@ func (*Billing_BillingDestination) ProtoMessage()    {}
 func (*Billing_BillingDestination) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21f14814cad56ddb, []int{0, 0}
 }
+
 func (m *Billing_BillingDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Billing_BillingDestination.Unmarshal(m, b)
 }

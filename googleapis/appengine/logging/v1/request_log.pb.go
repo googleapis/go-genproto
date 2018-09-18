@@ -44,6 +44,7 @@ func (*LogLine) ProtoMessage()    {}
 func (*LogLine) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bf83c8b28bf3fb01, []int{0}
 }
+
 func (m *LogLine) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogLine.Unmarshal(m, b)
 }
@@ -115,6 +116,7 @@ func (*SourceLocation) ProtoMessage()    {}
 func (*SourceLocation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bf83c8b28bf3fb01, []int{1}
 }
+
 func (m *SourceLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceLocation.Unmarshal(m, b)
 }
@@ -174,6 +176,7 @@ func (*SourceReference) ProtoMessage()    {}
 func (*SourceReference) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bf83c8b28bf3fb01, []int{2}
 }
+
 func (m *SourceReference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceReference.Unmarshal(m, b)
 }
@@ -302,6 +305,7 @@ func (*RequestLog) ProtoMessage()    {}
 func (*RequestLog) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bf83c8b28bf3fb01, []int{3}
 }
+
 func (m *RequestLog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestLog.Unmarshal(m, b)
 }

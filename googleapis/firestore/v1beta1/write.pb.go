@@ -86,6 +86,7 @@ func (*Write) ProtoMessage()    {}
 func (*Write) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c92377d80e15b52, []int{0}
 }
+
 func (m *Write) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Write.Unmarshal(m, b)
 }
@@ -276,6 +277,7 @@ func (*DocumentTransform) ProtoMessage()    {}
 func (*DocumentTransform) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c92377d80e15b52, []int{1}
 }
+
 func (m *DocumentTransform) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentTransform.Unmarshal(m, b)
 }
@@ -331,6 +333,7 @@ func (*DocumentTransform_FieldTransform) ProtoMessage()    {}
 func (*DocumentTransform_FieldTransform) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c92377d80e15b52, []int{1, 0}
 }
+
 func (m *DocumentTransform_FieldTransform) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentTransform_FieldTransform.Unmarshal(m, b)
 }
@@ -519,6 +522,7 @@ func (*WriteResult) ProtoMessage()    {}
 func (*WriteResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c92377d80e15b52, []int{2}
 }
+
 func (m *WriteResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WriteResult.Unmarshal(m, b)
 }
@@ -578,6 +582,7 @@ func (*DocumentChange) ProtoMessage()    {}
 func (*DocumentChange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c92377d80e15b52, []int{3}
 }
+
 func (m *DocumentChange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentChange.Unmarshal(m, b)
 }
@@ -644,6 +649,7 @@ func (*DocumentDelete) ProtoMessage()    {}
 func (*DocumentDelete) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c92377d80e15b52, []int{4}
 }
+
 func (m *DocumentDelete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentDelete.Unmarshal(m, b)
 }
@@ -711,6 +717,7 @@ func (*DocumentRemove) ProtoMessage()    {}
 func (*DocumentRemove) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c92377d80e15b52, []int{5}
 }
+
 func (m *DocumentRemove) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentRemove.Unmarshal(m, b)
 }
@@ -770,6 +777,7 @@ func (*ExistenceFilter) ProtoMessage()    {}
 func (*ExistenceFilter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c92377d80e15b52, []int{6}
 }
+
 func (m *ExistenceFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExistenceFilter.Unmarshal(m, b)
 }

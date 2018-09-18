@@ -37,6 +37,7 @@ func (*SourceContext) ProtoMessage()    {}
 func (*SourceContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b686cdb126d509db, []int{0}
 }
+
 func (m *SourceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceContext.Unmarshal(m, b)
 }

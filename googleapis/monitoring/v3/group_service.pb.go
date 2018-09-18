@@ -59,6 +59,7 @@ func (*ListGroupsRequest) ProtoMessage()    {}
 func (*ListGroupsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21ad21d0ed55c55a, []int{0}
 }
+
 func (m *ListGroupsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListGroupsRequest.Unmarshal(m, b)
 }
@@ -248,6 +249,7 @@ func (*ListGroupsResponse) ProtoMessage()    {}
 func (*ListGroupsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21ad21d0ed55c55a, []int{1}
 }
+
 func (m *ListGroupsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListGroupsResponse.Unmarshal(m, b)
 }
@@ -296,6 +298,7 @@ func (*GetGroupRequest) ProtoMessage()    {}
 func (*GetGroupRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21ad21d0ed55c55a, []int{2}
 }
+
 func (m *GetGroupRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGroupRequest.Unmarshal(m, b)
 }
@@ -342,6 +345,7 @@ func (*CreateGroupRequest) ProtoMessage()    {}
 func (*CreateGroupRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21ad21d0ed55c55a, []int{3}
 }
+
 func (m *CreateGroupRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateGroupRequest.Unmarshal(m, b)
 }
@@ -399,6 +403,7 @@ func (*UpdateGroupRequest) ProtoMessage()    {}
 func (*UpdateGroupRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21ad21d0ed55c55a, []int{4}
 }
+
 func (m *UpdateGroupRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateGroupRequest.Unmarshal(m, b)
 }
@@ -447,6 +452,7 @@ func (*DeleteGroupRequest) ProtoMessage()    {}
 func (*DeleteGroupRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21ad21d0ed55c55a, []int{5}
 }
+
 func (m *DeleteGroupRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteGroupRequest.Unmarshal(m, b)
 }
@@ -507,6 +513,7 @@ func (*ListGroupMembersRequest) ProtoMessage()    {}
 func (*ListGroupMembersRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21ad21d0ed55c55a, []int{6}
 }
+
 func (m *ListGroupMembersRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListGroupMembersRequest.Unmarshal(m, b)
 }
@@ -581,6 +588,7 @@ func (*ListGroupMembersResponse) ProtoMessage()    {}
 func (*ListGroupMembersResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_21ad21d0ed55c55a, []int{7}
 }
+
 func (m *ListGroupMembersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListGroupMembersResponse.Unmarshal(m, b)
 }

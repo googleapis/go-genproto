@@ -105,6 +105,7 @@ func (*NotificationChannelDescriptor) ProtoMessage()    {}
 func (*NotificationChannelDescriptor) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4399f1e4bc1a75ef, []int{0}
 }
+
 func (m *NotificationChannelDescriptor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NotificationChannelDescriptor.Unmarshal(m, b)
 }
@@ -243,6 +244,7 @@ func (*NotificationChannel) ProtoMessage()    {}
 func (*NotificationChannel) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4399f1e4bc1a75ef, []int{1}
 }
+
 func (m *NotificationChannel) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NotificationChannel.Unmarshal(m, b)
 }

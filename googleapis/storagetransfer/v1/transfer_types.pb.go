@@ -123,6 +123,7 @@ func (*GoogleServiceAccount) ProtoMessage()    {}
 func (*GoogleServiceAccount) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{0}
 }
+
 func (m *GoogleServiceAccount) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GoogleServiceAccount.Unmarshal(m, b)
 }
@@ -168,6 +169,7 @@ func (*AwsAccessKey) ProtoMessage()    {}
 func (*AwsAccessKey) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{1}
 }
+
 func (m *AwsAccessKey) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AwsAccessKey.Unmarshal(m, b)
 }
@@ -263,6 +265,7 @@ func (*ObjectConditions) ProtoMessage()    {}
 func (*ObjectConditions) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{2}
 }
+
 func (m *ObjectConditions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObjectConditions.Unmarshal(m, b)
 }
@@ -328,6 +331,7 @@ func (*GcsData) ProtoMessage()    {}
 func (*GcsData) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{3}
 }
+
 func (m *GcsData) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsData.Unmarshal(m, b)
 }
@@ -376,6 +380,7 @@ func (*AwsS3Data) ProtoMessage()    {}
 func (*AwsS3Data) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{4}
 }
+
 func (m *AwsS3Data) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AwsS3Data.Unmarshal(m, b)
 }
@@ -466,6 +471,7 @@ func (*HttpData) ProtoMessage()    {}
 func (*HttpData) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{5}
 }
+
 func (m *HttpData) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpData.Unmarshal(m, b)
 }
@@ -515,6 +521,7 @@ func (*TransferOptions) ProtoMessage()    {}
 func (*TransferOptions) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{6}
 }
+
 func (m *TransferOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferOptions.Unmarshal(m, b)
 }
@@ -587,6 +594,7 @@ func (*TransferSpec) ProtoMessage()    {}
 func (*TransferSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{7}
 }
+
 func (m *TransferSpec) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferSpec.Unmarshal(m, b)
 }
@@ -847,6 +855,7 @@ func (*Schedule) ProtoMessage()    {}
 func (*Schedule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{8}
 }
+
 func (m *Schedule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Schedule.Unmarshal(m, b)
 }
@@ -928,6 +937,7 @@ func (*TransferJob) ProtoMessage()    {}
 func (*TransferJob) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{9}
 }
+
 func (m *TransferJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferJob.Unmarshal(m, b)
 }
@@ -1028,6 +1038,7 @@ func (*ErrorLogEntry) ProtoMessage()    {}
 func (*ErrorLogEntry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{10}
 }
+
 func (m *ErrorLogEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ErrorLogEntry.Unmarshal(m, b)
 }
@@ -1081,6 +1092,7 @@ func (*ErrorSummary) ProtoMessage()    {}
 func (*ErrorSummary) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{11}
 }
+
 func (m *ErrorSummary) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ErrorSummary.Unmarshal(m, b)
 }
@@ -1171,6 +1183,7 @@ func (*TransferCounters) ProtoMessage()    {}
 func (*TransferCounters) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{12}
 }
+
 func (m *TransferCounters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferCounters.Unmarshal(m, b)
 }
@@ -1334,6 +1347,7 @@ func (*TransferOperation) ProtoMessage()    {}
 func (*TransferOperation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_291a6d3205b12034, []int{13}
 }
+
 func (m *TransferOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferOperation.Unmarshal(m, b)
 }

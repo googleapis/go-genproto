@@ -295,6 +295,7 @@ func (*AnnotationSet) ProtoMessage()    {}
 func (*AnnotationSet) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{0}
 }
+
 func (m *AnnotationSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationSet.Unmarshal(m, b)
 }
@@ -409,6 +410,7 @@ func (*Annotation) ProtoMessage()    {}
 func (*Annotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{1}
 }
+
 func (m *Annotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Annotation.Unmarshal(m, b)
 }
@@ -642,6 +644,7 @@ func (*VariantAnnotation) ProtoMessage()    {}
 func (*VariantAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{2}
 }
+
 func (m *VariantAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VariantAnnotation.Unmarshal(m, b)
 }
@@ -731,6 +734,7 @@ func (*VariantAnnotation_ClinicalCondition) ProtoMessage()    {}
 func (*VariantAnnotation_ClinicalCondition) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{2, 0}
 }
+
 func (m *VariantAnnotation_ClinicalCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VariantAnnotation_ClinicalCondition.Unmarshal(m, b)
 }
@@ -822,6 +826,7 @@ func (*Transcript) ProtoMessage()    {}
 func (*Transcript) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{3}
 }
+
 func (m *Transcript) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Transcript.Unmarshal(m, b)
 }
@@ -895,6 +900,7 @@ func (*Transcript_Exon) ProtoMessage()    {}
 func (*Transcript_Exon) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{3, 0}
 }
+
 func (m *Transcript_Exon) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Transcript_Exon.Unmarshal(m, b)
 }
@@ -954,6 +960,7 @@ func (*Transcript_CodingSequence) ProtoMessage()    {}
 func (*Transcript_CodingSequence) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{3, 1}
 }
+
 func (m *Transcript_CodingSequence) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Transcript_CodingSequence.Unmarshal(m, b)
 }
@@ -1002,6 +1009,7 @@ func (*ExternalId) ProtoMessage()    {}
 func (*ExternalId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{4}
 }
+
 func (m *ExternalId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExternalId.Unmarshal(m, b)
 }
@@ -1048,6 +1056,7 @@ func (*CreateAnnotationSetRequest) ProtoMessage()    {}
 func (*CreateAnnotationSetRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{5}
 }
+
 func (m *CreateAnnotationSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAnnotationSetRequest.Unmarshal(m, b)
 }
@@ -1087,6 +1096,7 @@ func (*GetAnnotationSetRequest) ProtoMessage()    {}
 func (*GetAnnotationSetRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{6}
 }
+
 func (m *GetAnnotationSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAnnotationSetRequest.Unmarshal(m, b)
 }
@@ -1134,6 +1144,7 @@ func (*UpdateAnnotationSetRequest) ProtoMessage()    {}
 func (*UpdateAnnotationSetRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{7}
 }
+
 func (m *UpdateAnnotationSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAnnotationSetRequest.Unmarshal(m, b)
 }
@@ -1187,6 +1198,7 @@ func (*DeleteAnnotationSetRequest) ProtoMessage()    {}
 func (*DeleteAnnotationSetRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{8}
 }
+
 func (m *DeleteAnnotationSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteAnnotationSetRequest.Unmarshal(m, b)
 }
@@ -1243,6 +1255,7 @@ func (*SearchAnnotationSetsRequest) ProtoMessage()    {}
 func (*SearchAnnotationSetsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{9}
 }
+
 func (m *SearchAnnotationSetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchAnnotationSetsRequest.Unmarshal(m, b)
 }
@@ -1321,6 +1334,7 @@ func (*SearchAnnotationSetsResponse) ProtoMessage()    {}
 func (*SearchAnnotationSetsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{10}
 }
+
 func (m *SearchAnnotationSetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchAnnotationSetsResponse.Unmarshal(m, b)
 }
@@ -1367,6 +1381,7 @@ func (*CreateAnnotationRequest) ProtoMessage()    {}
 func (*CreateAnnotationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{11}
 }
+
 func (m *CreateAnnotationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAnnotationRequest.Unmarshal(m, b)
 }
@@ -1415,6 +1430,7 @@ func (*BatchCreateAnnotationsRequest) ProtoMessage()    {}
 func (*BatchCreateAnnotationsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{12}
 }
+
 func (m *BatchCreateAnnotationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchCreateAnnotationsRequest.Unmarshal(m, b)
 }
@@ -1462,6 +1478,7 @@ func (*BatchCreateAnnotationsResponse) ProtoMessage()    {}
 func (*BatchCreateAnnotationsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{13}
 }
+
 func (m *BatchCreateAnnotationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchCreateAnnotationsResponse.Unmarshal(m, b)
 }
@@ -1503,6 +1520,7 @@ func (*BatchCreateAnnotationsResponse_Entry) ProtoMessage()    {}
 func (*BatchCreateAnnotationsResponse_Entry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{13, 0}
 }
+
 func (m *BatchCreateAnnotationsResponse_Entry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchCreateAnnotationsResponse_Entry.Unmarshal(m, b)
 }
@@ -1549,6 +1567,7 @@ func (*GetAnnotationRequest) ProtoMessage()    {}
 func (*GetAnnotationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{14}
 }
+
 func (m *GetAnnotationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAnnotationRequest.Unmarshal(m, b)
 }
@@ -1597,6 +1616,7 @@ func (*UpdateAnnotationRequest) ProtoMessage()    {}
 func (*UpdateAnnotationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{15}
 }
+
 func (m *UpdateAnnotationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAnnotationRequest.Unmarshal(m, b)
 }
@@ -1650,6 +1670,7 @@ func (*DeleteAnnotationRequest) ProtoMessage()    {}
 func (*DeleteAnnotationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{16}
 }
+
 func (m *DeleteAnnotationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteAnnotationRequest.Unmarshal(m, b)
 }
@@ -1715,6 +1736,7 @@ func (*SearchAnnotationsRequest) ProtoMessage()    {}
 func (*SearchAnnotationsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{17}
 }
+
 func (m *SearchAnnotationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchAnnotationsRequest.Unmarshal(m, b)
 }
@@ -1889,6 +1911,7 @@ func (*SearchAnnotationsResponse) ProtoMessage()    {}
 func (*SearchAnnotationsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4c5f02d3172d33a8, []int{18}
 }
+
 func (m *SearchAnnotationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchAnnotationsResponse.Unmarshal(m, b)
 }

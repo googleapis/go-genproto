@@ -158,6 +158,7 @@ func (*Span) ProtoMessage()    {}
 func (*Span) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{0}
 }
+
 func (m *Span) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Span.Unmarshal(m, b)
 }
@@ -293,6 +294,7 @@ func (*Span_Attributes) ProtoMessage()    {}
 func (*Span_Attributes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{0, 0}
 }
+
 func (m *Span_Attributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Span_Attributes.Unmarshal(m, b)
 }
@@ -347,6 +349,7 @@ func (*Span_TimeEvent) ProtoMessage()    {}
 func (*Span_TimeEvent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{0, 1}
 }
+
 func (m *Span_TimeEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Span_TimeEvent.Unmarshal(m, b)
 }
@@ -502,6 +505,7 @@ func (*Span_TimeEvent_Annotation) ProtoMessage()    {}
 func (*Span_TimeEvent_Annotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{0, 1, 0}
 }
+
 func (m *Span_TimeEvent_Annotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Span_TimeEvent_Annotation.Unmarshal(m, b)
 }
@@ -559,6 +563,7 @@ func (*Span_TimeEvent_MessageEvent) ProtoMessage()    {}
 func (*Span_TimeEvent_MessageEvent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{0, 1, 1}
 }
+
 func (m *Span_TimeEvent_MessageEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Span_TimeEvent_MessageEvent.Unmarshal(m, b)
 }
@@ -628,6 +633,7 @@ func (*Span_TimeEvents) ProtoMessage()    {}
 func (*Span_TimeEvents) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{0, 2}
 }
+
 func (m *Span_TimeEvents) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Span_TimeEvents.Unmarshal(m, b)
 }
@@ -692,6 +698,7 @@ func (*Span_Link) ProtoMessage()    {}
 func (*Span_Link) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{0, 3}
 }
+
 func (m *Span_Link) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Span_Link.Unmarshal(m, b)
 }
@@ -757,6 +764,7 @@ func (*Span_Links) ProtoMessage()    {}
 func (*Span_Links) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{0, 4}
 }
+
 func (m *Span_Links) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Span_Links.Unmarshal(m, b)
 }
@@ -809,6 +817,7 @@ func (*AttributeValue) ProtoMessage()    {}
 func (*AttributeValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{1}
 }
+
 func (m *AttributeValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AttributeValue.Unmarshal(m, b)
 }
@@ -989,6 +998,7 @@ func (*StackTrace) ProtoMessage()    {}
 func (*StackTrace) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{2}
 }
+
 func (m *StackTrace) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StackTrace.Unmarshal(m, b)
 }
@@ -1053,6 +1063,7 @@ func (*StackTrace_StackFrame) ProtoMessage()    {}
 func (*StackTrace_StackFrame) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{2, 0}
 }
+
 func (m *StackTrace_StackFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StackTrace_StackFrame.Unmarshal(m, b)
 }
@@ -1139,6 +1150,7 @@ func (*StackTrace_StackFrames) ProtoMessage()    {}
 func (*StackTrace_StackFrames) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{2, 1}
 }
+
 func (m *StackTrace_StackFrames) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StackTrace_StackFrames.Unmarshal(m, b)
 }
@@ -1190,6 +1202,7 @@ func (*Module) ProtoMessage()    {}
 func (*Module) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{3}
 }
+
 func (m *Module) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Module.Unmarshal(m, b)
 }
@@ -1246,6 +1259,7 @@ func (*TruncatableString) ProtoMessage()    {}
 func (*TruncatableString) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29869cc16dc8ce61, []int{4}
 }
+
 func (m *TruncatableString) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TruncatableString.Unmarshal(m, b)
 }

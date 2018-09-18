@@ -99,6 +99,7 @@ func (*SessionEntityType) ProtoMessage()    {}
 func (*SessionEntityType) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ea3dc39aca82329f, []int{0}
 }
+
 func (m *SessionEntityType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SessionEntityType.Unmarshal(m, b)
 }
@@ -163,6 +164,7 @@ func (*ListSessionEntityTypesRequest) ProtoMessage()    {}
 func (*ListSessionEntityTypesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ea3dc39aca82329f, []int{1}
 }
+
 func (m *ListSessionEntityTypesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSessionEntityTypesRequest.Unmarshal(m, b)
 }
@@ -221,6 +223,7 @@ func (*ListSessionEntityTypesResponse) ProtoMessage()    {}
 func (*ListSessionEntityTypesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ea3dc39aca82329f, []int{2}
 }
+
 func (m *ListSessionEntityTypesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSessionEntityTypesResponse.Unmarshal(m, b)
 }
@@ -273,6 +276,7 @@ func (*GetSessionEntityTypeRequest) ProtoMessage()    {}
 func (*GetSessionEntityTypeRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ea3dc39aca82329f, []int{3}
 }
+
 func (m *GetSessionEntityTypeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSessionEntityTypeRequest.Unmarshal(m, b)
 }
@@ -320,6 +324,7 @@ func (*CreateSessionEntityTypeRequest) ProtoMessage()    {}
 func (*CreateSessionEntityTypeRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ea3dc39aca82329f, []int{4}
 }
+
 func (m *CreateSessionEntityTypeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateSessionEntityTypeRequest.Unmarshal(m, b)
 }
@@ -374,6 +379,7 @@ func (*UpdateSessionEntityTypeRequest) ProtoMessage()    {}
 func (*UpdateSessionEntityTypeRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ea3dc39aca82329f, []int{5}
 }
+
 func (m *UpdateSessionEntityTypeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSessionEntityTypeRequest.Unmarshal(m, b)
 }
@@ -426,6 +432,7 @@ func (*DeleteSessionEntityTypeRequest) ProtoMessage()    {}
 func (*DeleteSessionEntityTypeRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ea3dc39aca82329f, []int{6}
 }
+
 func (m *DeleteSessionEntityTypeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteSessionEntityTypeRequest.Unmarshal(m, b)
 }

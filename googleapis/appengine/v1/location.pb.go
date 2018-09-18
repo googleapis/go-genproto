@@ -43,6 +43,7 @@ func (*LocationMetadata) ProtoMessage()    {}
 func (*LocationMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c86665b4be2de7f4, []int{0}
 }
+
 func (m *LocationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationMetadata.Unmarshal(m, b)
 }

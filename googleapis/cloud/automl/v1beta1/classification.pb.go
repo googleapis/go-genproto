@@ -72,6 +72,7 @@ func (*ClassificationAnnotation) ProtoMessage()    {}
 func (*ClassificationAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b436fefe6ae5367, []int{0}
 }
+
 func (m *ClassificationAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationAnnotation.Unmarshal(m, b)
 }
@@ -125,6 +126,7 @@ func (*ClassificationEvaluationMetrics) ProtoMessage()    {}
 func (*ClassificationEvaluationMetrics) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b436fefe6ae5367, []int{1}
 }
+
 func (m *ClassificationEvaluationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationEvaluationMetrics.Unmarshal(m, b)
 }
@@ -213,6 +215,7 @@ func (*ClassificationEvaluationMetrics_ConfidenceMetricsEntry) ProtoMessage() {}
 func (*ClassificationEvaluationMetrics_ConfidenceMetricsEntry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b436fefe6ae5367, []int{1, 0}
 }
+
 func (m *ClassificationEvaluationMetrics_ConfidenceMetricsEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationEvaluationMetrics_ConfidenceMetricsEntry.Unmarshal(m, b)
 }
@@ -305,6 +308,7 @@ func (*ClassificationEvaluationMetrics_ConfusionMatrix) ProtoMessage() {}
 func (*ClassificationEvaluationMetrics_ConfusionMatrix) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b436fefe6ae5367, []int{1, 1}
 }
+
 func (m *ClassificationEvaluationMetrics_ConfusionMatrix) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationEvaluationMetrics_ConfusionMatrix.Unmarshal(m, b)
 }
@@ -358,6 +362,7 @@ func (*ClassificationEvaluationMetrics_ConfusionMatrix_Row) ProtoMessage() {}
 func (*ClassificationEvaluationMetrics_ConfusionMatrix_Row) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b436fefe6ae5367, []int{1, 1, 0}
 }
+
 func (m *ClassificationEvaluationMetrics_ConfusionMatrix_Row) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationEvaluationMetrics_ConfusionMatrix_Row.Unmarshal(m, b)
 }

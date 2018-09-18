@@ -225,6 +225,7 @@ func (*ManagedService) ProtoMessage()    {}
 func (*ManagedService) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{0}
 }
+
 func (m *ManagedService) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ManagedService.Unmarshal(m, b)
 }
@@ -279,6 +280,7 @@ func (*OperationMetadata) ProtoMessage()    {}
 func (*OperationMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{1}
 }
+
 func (m *OperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationMetadata.Unmarshal(m, b)
 }
@@ -342,6 +344,7 @@ func (*OperationMetadata_Step) ProtoMessage()    {}
 func (*OperationMetadata_Step) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{1, 0}
 }
+
 func (m *OperationMetadata_Step) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationMetadata_Step.Unmarshal(m, b)
 }
@@ -393,6 +396,7 @@ func (*Diagnostic) ProtoMessage()    {}
 func (*Diagnostic) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{2}
 }
+
 func (m *Diagnostic) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Diagnostic.Unmarshal(m, b)
 }
@@ -453,6 +457,7 @@ func (*ConfigSource) ProtoMessage()    {}
 func (*ConfigSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{3}
 }
+
 func (m *ConfigSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConfigSource.Unmarshal(m, b)
 }
@@ -504,6 +509,7 @@ func (*ConfigFile) ProtoMessage()    {}
 func (*ConfigFile) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{4}
 }
+
 func (m *ConfigFile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConfigFile.Unmarshal(m, b)
 }
@@ -559,6 +565,7 @@ func (*ConfigRef) ProtoMessage()    {}
 func (*ConfigRef) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{5}
 }
+
 func (m *ConfigRef) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConfigRef.Unmarshal(m, b)
 }
@@ -606,6 +613,7 @@ func (*ChangeReport) ProtoMessage()    {}
 func (*ChangeReport) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{6}
 }
+
 func (m *ChangeReport) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ChangeReport.Unmarshal(m, b)
 }
@@ -673,6 +681,7 @@ func (*Rollout) ProtoMessage()    {}
 func (*Rollout) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{7}
 }
+
 func (m *Rollout) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Rollout.Unmarshal(m, b)
 }
@@ -883,6 +892,7 @@ func (*Rollout_TrafficPercentStrategy) ProtoMessage()    {}
 func (*Rollout_TrafficPercentStrategy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{7, 0}
 }
+
 func (m *Rollout_TrafficPercentStrategy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Rollout_TrafficPercentStrategy.Unmarshal(m, b)
 }
@@ -922,6 +932,7 @@ func (*Rollout_DeleteServiceStrategy) ProtoMessage()    {}
 func (*Rollout_DeleteServiceStrategy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16a1de86d13c4f21, []int{7, 1}
 }
+
 func (m *Rollout_DeleteServiceStrategy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Rollout_DeleteServiceStrategy.Unmarshal(m, b)
 }

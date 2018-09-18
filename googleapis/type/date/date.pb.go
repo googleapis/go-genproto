@@ -47,6 +47,7 @@ func (*Date) ProtoMessage()    {}
 func (*Date) Descriptor() ([]byte, []int) {
 	return fileDescriptor_92c30699df886e3f, []int{0}
 }
+
 func (m *Date) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Date.Unmarshal(m, b)
 }

@@ -51,6 +51,7 @@ func (*CreateDeviceRegistryRequest) ProtoMessage()    {}
 func (*CreateDeviceRegistryRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{0}
 }
+
 func (m *CreateDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDeviceRegistryRequest.Unmarshal(m, b)
 }
@@ -99,6 +100,7 @@ func (*GetDeviceRegistryRequest) ProtoMessage()    {}
 func (*GetDeviceRegistryRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{1}
 }
+
 func (m *GetDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceRegistryRequest.Unmarshal(m, b)
 }
@@ -140,6 +142,7 @@ func (*DeleteDeviceRegistryRequest) ProtoMessage()    {}
 func (*DeleteDeviceRegistryRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{2}
 }
+
 func (m *DeleteDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDeviceRegistryRequest.Unmarshal(m, b)
 }
@@ -188,6 +191,7 @@ func (*UpdateDeviceRegistryRequest) ProtoMessage()    {}
 func (*UpdateDeviceRegistryRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{3}
 }
+
 func (m *UpdateDeviceRegistryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDeviceRegistryRequest.Unmarshal(m, b)
 }
@@ -245,6 +249,7 @@ func (*ListDeviceRegistriesRequest) ProtoMessage()    {}
 func (*ListDeviceRegistriesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{4}
 }
+
 func (m *ListDeviceRegistriesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceRegistriesRequest.Unmarshal(m, b)
 }
@@ -303,6 +308,7 @@ func (*ListDeviceRegistriesResponse) ProtoMessage()    {}
 func (*ListDeviceRegistriesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{5}
 }
+
 func (m *ListDeviceRegistriesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceRegistriesResponse.Unmarshal(m, b)
 }
@@ -356,6 +362,7 @@ func (*CreateDeviceRequest) ProtoMessage()    {}
 func (*CreateDeviceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{6}
 }
+
 func (m *CreateDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDeviceRequest.Unmarshal(m, b)
 }
@@ -408,6 +415,7 @@ func (*GetDeviceRequest) ProtoMessage()    {}
 func (*GetDeviceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{7}
 }
+
 func (m *GetDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceRequest.Unmarshal(m, b)
 }
@@ -463,6 +471,7 @@ func (*UpdateDeviceRequest) ProtoMessage()    {}
 func (*UpdateDeviceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{8}
 }
+
 func (m *UpdateDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDeviceRequest.Unmarshal(m, b)
 }
@@ -512,6 +521,7 @@ func (*DeleteDeviceRequest) ProtoMessage()    {}
 func (*DeleteDeviceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{9}
 }
+
 func (m *DeleteDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDeviceRequest.Unmarshal(m, b)
 }
@@ -573,6 +583,7 @@ func (*ListDevicesRequest) ProtoMessage()    {}
 func (*ListDevicesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{10}
 }
+
 func (m *ListDevicesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDevicesRequest.Unmarshal(m, b)
 }
@@ -651,6 +662,7 @@ func (*ListDevicesResponse) ProtoMessage()    {}
 func (*ListDevicesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{11}
 }
+
 func (m *ListDevicesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDevicesResponse.Unmarshal(m, b)
 }
@@ -708,6 +720,7 @@ func (*ModifyCloudToDeviceConfigRequest) ProtoMessage()    {}
 func (*ModifyCloudToDeviceConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{12}
 }
+
 func (m *ModifyCloudToDeviceConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ModifyCloudToDeviceConfigRequest.Unmarshal(m, b)
 }
@@ -768,6 +781,7 @@ func (*ListDeviceConfigVersionsRequest) ProtoMessage()    {}
 func (*ListDeviceConfigVersionsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{13}
 }
+
 func (m *ListDeviceConfigVersionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceConfigVersionsRequest.Unmarshal(m, b)
 }
@@ -816,6 +830,7 @@ func (*ListDeviceConfigVersionsResponse) ProtoMessage()    {}
 func (*ListDeviceConfigVersionsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{14}
 }
+
 func (m *ListDeviceConfigVersionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceConfigVersionsResponse.Unmarshal(m, b)
 }
@@ -862,6 +877,7 @@ func (*ListDeviceStatesRequest) ProtoMessage()    {}
 func (*ListDeviceStatesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{15}
 }
+
 func (m *ListDeviceStatesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceStatesRequest.Unmarshal(m, b)
 }
@@ -910,6 +926,7 @@ func (*ListDeviceStatesResponse) ProtoMessage()    {}
 func (*ListDeviceStatesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9243c344ef472aff, []int{16}
 }
+
 func (m *ListDeviceStatesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDeviceStatesResponse.Unmarshal(m, b)
 }

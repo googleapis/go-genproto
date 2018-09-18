@@ -46,6 +46,7 @@ func (*Mutation) ProtoMessage()    {}
 func (*Mutation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_069356a524fd0232, []int{0}
 }
+
 func (m *Mutation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mutation.Unmarshal(m, b)
 }
@@ -302,6 +303,7 @@ func (*Mutation_Write) ProtoMessage()    {}
 func (*Mutation_Write) Descriptor() ([]byte, []int) {
 	return fileDescriptor_069356a524fd0232, []int{0, 0}
 }
+
 func (m *Mutation_Write) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mutation_Write.Unmarshal(m, b)
 }
@@ -360,6 +362,7 @@ func (*Mutation_Delete) ProtoMessage()    {}
 func (*Mutation_Delete) Descriptor() ([]byte, []int) {
 	return fileDescriptor_069356a524fd0232, []int{0, 1}
 }
+
 func (m *Mutation_Delete) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mutation_Delete.Unmarshal(m, b)
 }

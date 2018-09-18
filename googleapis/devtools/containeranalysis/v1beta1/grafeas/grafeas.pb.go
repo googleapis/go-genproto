@@ -81,6 +81,7 @@ func (*Occurrence) ProtoMessage()    {}
 func (*Occurrence) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{0}
 }
+
 func (m *Occurrence) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Occurrence.Unmarshal(m, b)
 }
@@ -440,6 +441,7 @@ func (*Resource) ProtoMessage()    {}
 func (*Resource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{1}
 }
+
 func (m *Resource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Resource.Unmarshal(m, b)
 }
@@ -525,6 +527,7 @@ func (*Note) ProtoMessage()    {}
 func (*Note) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{2}
 }
+
 func (m *Note) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Note.Unmarshal(m, b)
 }
@@ -893,6 +896,7 @@ func (*GetOccurrenceRequest) ProtoMessage()    {}
 func (*GetOccurrenceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{3}
 }
+
 func (m *GetOccurrenceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetOccurrenceRequest.Unmarshal(m, b)
 }
@@ -940,6 +944,7 @@ func (*ListOccurrencesRequest) ProtoMessage()    {}
 func (*ListOccurrencesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{4}
 }
+
 func (m *ListOccurrencesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOccurrencesRequest.Unmarshal(m, b)
 }
@@ -1005,6 +1010,7 @@ func (*ListOccurrencesResponse) ProtoMessage()    {}
 func (*ListOccurrencesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{5}
 }
+
 func (m *ListOccurrencesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOccurrencesResponse.Unmarshal(m, b)
 }
@@ -1053,6 +1059,7 @@ func (*DeleteOccurrenceRequest) ProtoMessage()    {}
 func (*DeleteOccurrenceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{6}
 }
+
 func (m *DeleteOccurrenceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteOccurrenceRequest.Unmarshal(m, b)
 }
@@ -1096,6 +1103,7 @@ func (*CreateOccurrenceRequest) ProtoMessage()    {}
 func (*CreateOccurrenceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{7}
 }
+
 func (m *CreateOccurrenceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateOccurrenceRequest.Unmarshal(m, b)
 }
@@ -1148,6 +1156,7 @@ func (*UpdateOccurrenceRequest) ProtoMessage()    {}
 func (*UpdateOccurrenceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{8}
 }
+
 func (m *UpdateOccurrenceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateOccurrenceRequest.Unmarshal(m, b)
 }
@@ -1203,6 +1212,7 @@ func (*GetNoteRequest) ProtoMessage()    {}
 func (*GetNoteRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{9}
 }
+
 func (m *GetNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNoteRequest.Unmarshal(m, b)
 }
@@ -1244,6 +1254,7 @@ func (*GetOccurrenceNoteRequest) ProtoMessage()    {}
 func (*GetOccurrenceNoteRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{10}
 }
+
 func (m *GetOccurrenceNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetOccurrenceNoteRequest.Unmarshal(m, b)
 }
@@ -1291,6 +1302,7 @@ func (*ListNotesRequest) ProtoMessage()    {}
 func (*ListNotesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{11}
 }
+
 func (m *ListNotesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNotesRequest.Unmarshal(m, b)
 }
@@ -1356,6 +1368,7 @@ func (*ListNotesResponse) ProtoMessage()    {}
 func (*ListNotesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{12}
 }
+
 func (m *ListNotesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNotesResponse.Unmarshal(m, b)
 }
@@ -1404,6 +1417,7 @@ func (*DeleteNoteRequest) ProtoMessage()    {}
 func (*DeleteNoteRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{13}
 }
+
 func (m *DeleteNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteNoteRequest.Unmarshal(m, b)
 }
@@ -1449,6 +1463,7 @@ func (*CreateNoteRequest) ProtoMessage()    {}
 func (*CreateNoteRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{14}
 }
+
 func (m *CreateNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateNoteRequest.Unmarshal(m, b)
 }
@@ -1508,6 +1523,7 @@ func (*UpdateNoteRequest) ProtoMessage()    {}
 func (*UpdateNoteRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{15}
 }
+
 func (m *UpdateNoteRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateNoteRequest.Unmarshal(m, b)
 }
@@ -1569,6 +1585,7 @@ func (*ListNoteOccurrencesRequest) ProtoMessage()    {}
 func (*ListNoteOccurrencesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{16}
 }
+
 func (m *ListNoteOccurrencesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNoteOccurrencesRequest.Unmarshal(m, b)
 }
@@ -1632,6 +1649,7 @@ func (*ListNoteOccurrencesResponse) ProtoMessage()    {}
 func (*ListNoteOccurrencesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{17}
 }
+
 func (m *ListNoteOccurrencesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNoteOccurrencesResponse.Unmarshal(m, b)
 }
@@ -1682,6 +1700,7 @@ func (*BatchCreateNotesRequest) ProtoMessage()    {}
 func (*BatchCreateNotesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{18}
 }
+
 func (m *BatchCreateNotesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchCreateNotesRequest.Unmarshal(m, b)
 }
@@ -1729,6 +1748,7 @@ func (*BatchCreateNotesResponse) ProtoMessage()    {}
 func (*BatchCreateNotesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{19}
 }
+
 func (m *BatchCreateNotesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchCreateNotesResponse.Unmarshal(m, b)
 }
@@ -1772,6 +1792,7 @@ func (*BatchCreateOccurrencesRequest) ProtoMessage()    {}
 func (*BatchCreateOccurrencesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{20}
 }
+
 func (m *BatchCreateOccurrencesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchCreateOccurrencesRequest.Unmarshal(m, b)
 }
@@ -1819,6 +1840,7 @@ func (*BatchCreateOccurrencesResponse) ProtoMessage()    {}
 func (*BatchCreateOccurrencesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{21}
 }
+
 func (m *BatchCreateOccurrencesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchCreateOccurrencesResponse.Unmarshal(m, b)
 }
@@ -1864,6 +1886,7 @@ func (*GetVulnerabilityOccurrencesSummaryRequest) ProtoMessage()    {}
 func (*GetVulnerabilityOccurrencesSummaryRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{22}
 }
+
 func (m *GetVulnerabilityOccurrencesSummaryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetVulnerabilityOccurrencesSummaryRequest.Unmarshal(m, b)
 }
@@ -1912,6 +1935,7 @@ func (*VulnerabilityOccurrencesSummary) ProtoMessage()    {}
 func (*VulnerabilityOccurrencesSummary) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{23}
 }
+
 func (m *VulnerabilityOccurrencesSummary) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VulnerabilityOccurrencesSummary.Unmarshal(m, b)
 }
@@ -1963,6 +1987,7 @@ func (*VulnerabilityOccurrencesSummary_FixableTotalByDigest) ProtoMessage() {}
 func (*VulnerabilityOccurrencesSummary_FixableTotalByDigest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5865e5de1898162a, []int{23, 0}
 }
+
 func (m *VulnerabilityOccurrencesSummary_FixableTotalByDigest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VulnerabilityOccurrencesSummary_FixableTotalByDigest.Unmarshal(m, b)
 }

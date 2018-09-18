@@ -49,6 +49,7 @@ func (*WebDetection) ProtoMessage()    {}
 func (*WebDetection) Descriptor() ([]byte, []int) {
 	return fileDescriptor_894df371610d13f4, []int{0}
 }
+
 func (m *WebDetection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebDetection.Unmarshal(m, b)
 }
@@ -129,6 +130,7 @@ func (*WebDetection_WebEntity) ProtoMessage()    {}
 func (*WebDetection_WebEntity) Descriptor() ([]byte, []int) {
 	return fileDescriptor_894df371610d13f4, []int{0, 0}
 }
+
 func (m *WebDetection_WebEntity) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebDetection_WebEntity.Unmarshal(m, b)
 }
@@ -185,6 +187,7 @@ func (*WebDetection_WebImage) ProtoMessage()    {}
 func (*WebDetection_WebImage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_894df371610d13f4, []int{0, 1}
 }
+
 func (m *WebDetection_WebImage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebDetection_WebImage.Unmarshal(m, b)
 }
@@ -244,6 +247,7 @@ func (*WebDetection_WebPage) ProtoMessage()    {}
 func (*WebDetection_WebPage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_894df371610d13f4, []int{0, 2}
 }
+
 func (m *WebDetection_WebPage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebDetection_WebPage.Unmarshal(m, b)
 }
@@ -316,6 +320,7 @@ func (*WebDetection_WebLabel) ProtoMessage()    {}
 func (*WebDetection_WebLabel) Descriptor() ([]byte, []int) {
 	return fileDescriptor_894df371610d13f4, []int{0, 3}
 }
+
 func (m *WebDetection_WebLabel) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebDetection_WebLabel.Unmarshal(m, b)
 }

@@ -92,6 +92,7 @@ func (*ExportAssetsRequest) ProtoMessage()    {}
 func (*ExportAssetsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_565cfbddaa85b7d6, []int{0}
 }
+
 func (m *ExportAssetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportAssetsRequest.Unmarshal(m, b)
 }
@@ -165,6 +166,7 @@ func (*ExportAssetsResponse) ProtoMessage()    {}
 func (*ExportAssetsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_565cfbddaa85b7d6, []int{1}
 }
+
 func (m *ExportAssetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportAssetsResponse.Unmarshal(m, b)
 }
@@ -228,6 +230,7 @@ func (*BatchGetAssetsHistoryRequest) ProtoMessage()    {}
 func (*BatchGetAssetsHistoryRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_565cfbddaa85b7d6, []int{2}
 }
+
 func (m *BatchGetAssetsHistoryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetAssetsHistoryRequest.Unmarshal(m, b)
 }
@@ -289,6 +292,7 @@ func (*BatchGetAssetsHistoryResponse) ProtoMessage()    {}
 func (*BatchGetAssetsHistoryResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_565cfbddaa85b7d6, []int{3}
 }
+
 func (m *BatchGetAssetsHistoryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetAssetsHistoryResponse.Unmarshal(m, b)
 }
@@ -332,6 +336,7 @@ func (*OutputConfig) ProtoMessage()    {}
 func (*OutputConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_565cfbddaa85b7d6, []int{4}
 }
+
 func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputConfig.Unmarshal(m, b)
 }
@@ -447,6 +452,7 @@ func (*GcsDestination) ProtoMessage()    {}
 func (*GcsDestination) Descriptor() ([]byte, []int) {
 	return fileDescriptor_565cfbddaa85b7d6, []int{5}
 }
+
 func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsDestination.Unmarshal(m, b)
 }

@@ -319,6 +319,7 @@ func (*Intent) ProtoMessage()    {}
 func (*Intent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0}
 }
+
 func (m *Intent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent.Unmarshal(m, b)
 }
@@ -488,6 +489,7 @@ func (*Intent_TrainingPhrase) ProtoMessage()    {}
 func (*Intent_TrainingPhrase) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 0}
 }
+
 func (m *Intent_TrainingPhrase) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_TrainingPhrase.Unmarshal(m, b)
 }
@@ -561,6 +563,7 @@ func (*Intent_TrainingPhrase_Part) ProtoMessage()    {}
 func (*Intent_TrainingPhrase_Part) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 0, 0}
 }
+
 func (m *Intent_TrainingPhrase_Part) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_TrainingPhrase_Part.Unmarshal(m, b)
 }
@@ -649,6 +652,7 @@ func (*Intent_Parameter) ProtoMessage()    {}
 func (*Intent_Parameter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 1}
 }
+
 func (m *Intent_Parameter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Parameter.Unmarshal(m, b)
 }
@@ -753,6 +757,7 @@ func (*Intent_Message) ProtoMessage()    {}
 func (*Intent_Message) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2}
 }
+
 func (m *Intent_Message) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message.Unmarshal(m, b)
 }
@@ -1192,6 +1197,7 @@ func (*Intent_Message_Text) ProtoMessage()    {}
 func (*Intent_Message_Text) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 0}
 }
+
 func (m *Intent_Message_Text) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_Text.Unmarshal(m, b)
 }
@@ -1235,6 +1241,7 @@ func (*Intent_Message_Image) ProtoMessage()    {}
 func (*Intent_Message_Image) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 1}
 }
+
 func (m *Intent_Message_Image) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_Image.Unmarshal(m, b)
 }
@@ -1284,6 +1291,7 @@ func (*Intent_Message_QuickReplies) ProtoMessage()    {}
 func (*Intent_Message_QuickReplies) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 2}
 }
+
 func (m *Intent_Message_QuickReplies) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_QuickReplies.Unmarshal(m, b)
 }
@@ -1337,6 +1345,7 @@ func (*Intent_Message_Card) ProtoMessage()    {}
 func (*Intent_Message_Card) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 3}
 }
+
 func (m *Intent_Message_Card) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_Card.Unmarshal(m, b)
 }
@@ -1401,6 +1410,7 @@ func (*Intent_Message_Card_Button) ProtoMessage()    {}
 func (*Intent_Message_Card_Button) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 3, 0}
 }
+
 func (m *Intent_Message_Card_Button) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_Card_Button.Unmarshal(m, b)
 }
@@ -1455,6 +1465,7 @@ func (*Intent_Message_SimpleResponse) ProtoMessage()    {}
 func (*Intent_Message_SimpleResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 4}
 }
+
 func (m *Intent_Message_SimpleResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_SimpleResponse.Unmarshal(m, b)
 }
@@ -1512,6 +1523,7 @@ func (*Intent_Message_SimpleResponses) ProtoMessage()    {}
 func (*Intent_Message_SimpleResponses) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 5}
 }
+
 func (m *Intent_Message_SimpleResponses) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_SimpleResponses.Unmarshal(m, b)
 }
@@ -1560,6 +1572,7 @@ func (*Intent_Message_BasicCard) ProtoMessage()    {}
 func (*Intent_Message_BasicCard) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 6}
 }
+
 func (m *Intent_Message_BasicCard) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_BasicCard.Unmarshal(m, b)
 }
@@ -1630,6 +1643,7 @@ func (*Intent_Message_BasicCard_Button) ProtoMessage()    {}
 func (*Intent_Message_BasicCard_Button) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 6, 0}
 }
+
 func (m *Intent_Message_BasicCard_Button) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_BasicCard_Button.Unmarshal(m, b)
 }
@@ -1681,6 +1695,7 @@ func (*Intent_Message_BasicCard_Button_OpenUriAction) ProtoMessage() {}
 func (*Intent_Message_BasicCard_Button_OpenUriAction) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 6, 0, 0}
 }
+
 func (m *Intent_Message_BasicCard_Button_OpenUriAction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_BasicCard_Button_OpenUriAction.Unmarshal(m, b)
 }
@@ -1722,6 +1737,7 @@ func (*Intent_Message_Suggestion) ProtoMessage()    {}
 func (*Intent_Message_Suggestion) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 7}
 }
+
 func (m *Intent_Message_Suggestion) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_Suggestion.Unmarshal(m, b)
 }
@@ -1762,6 +1778,7 @@ func (*Intent_Message_Suggestions) ProtoMessage()    {}
 func (*Intent_Message_Suggestions) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 8}
 }
+
 func (m *Intent_Message_Suggestions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_Suggestions.Unmarshal(m, b)
 }
@@ -1806,6 +1823,7 @@ func (*Intent_Message_LinkOutSuggestion) ProtoMessage()    {}
 func (*Intent_Message_LinkOutSuggestion) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 9}
 }
+
 func (m *Intent_Message_LinkOutSuggestion) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_LinkOutSuggestion.Unmarshal(m, b)
 }
@@ -1855,6 +1873,7 @@ func (*Intent_Message_ListSelect) ProtoMessage()    {}
 func (*Intent_Message_ListSelect) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 10}
 }
+
 func (m *Intent_Message_ListSelect) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_ListSelect.Unmarshal(m, b)
 }
@@ -1908,6 +1927,7 @@ func (*Intent_Message_ListSelect_Item) ProtoMessage()    {}
 func (*Intent_Message_ListSelect_Item) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 10, 0}
 }
+
 func (m *Intent_Message_ListSelect_Item) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_ListSelect_Item.Unmarshal(m, b)
 }
@@ -1969,6 +1989,7 @@ func (*Intent_Message_CarouselSelect) ProtoMessage()    {}
 func (*Intent_Message_CarouselSelect) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 11}
 }
+
 func (m *Intent_Message_CarouselSelect) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_CarouselSelect.Unmarshal(m, b)
 }
@@ -2015,6 +2036,7 @@ func (*Intent_Message_CarouselSelect_Item) ProtoMessage()    {}
 func (*Intent_Message_CarouselSelect_Item) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 11, 0}
 }
+
 func (m *Intent_Message_CarouselSelect_Item) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_CarouselSelect_Item.Unmarshal(m, b)
 }
@@ -2081,6 +2103,7 @@ func (*Intent_Message_SelectItemInfo) ProtoMessage()    {}
 func (*Intent_Message_SelectItemInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 2, 12}
 }
+
 func (m *Intent_Message_SelectItemInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_Message_SelectItemInfo.Unmarshal(m, b)
 }
@@ -2132,6 +2155,7 @@ func (*Intent_FollowupIntentInfo) ProtoMessage()    {}
 func (*Intent_FollowupIntentInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{0, 3}
 }
+
 func (m *Intent_FollowupIntentInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Intent_FollowupIntentInfo.Unmarshal(m, b)
 }
@@ -2193,6 +2217,7 @@ func (*ListIntentsRequest) ProtoMessage()    {}
 func (*ListIntentsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{1}
 }
+
 func (m *ListIntentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIntentsRequest.Unmarshal(m, b)
 }
@@ -2265,6 +2290,7 @@ func (*ListIntentsResponse) ProtoMessage()    {}
 func (*ListIntentsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{2}
 }
+
 func (m *ListIntentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIntentsResponse.Unmarshal(m, b)
 }
@@ -2321,6 +2347,7 @@ func (*GetIntentRequest) ProtoMessage()    {}
 func (*GetIntentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{3}
 }
+
 func (m *GetIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetIntentRequest.Unmarshal(m, b)
 }
@@ -2386,6 +2413,7 @@ func (*CreateIntentRequest) ProtoMessage()    {}
 func (*CreateIntentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{4}
 }
+
 func (m *CreateIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateIntentRequest.Unmarshal(m, b)
 }
@@ -2458,6 +2486,7 @@ func (*UpdateIntentRequest) ProtoMessage()    {}
 func (*UpdateIntentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{5}
 }
+
 func (m *UpdateIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateIntentRequest.Unmarshal(m, b)
 }
@@ -2520,6 +2549,7 @@ func (*DeleteIntentRequest) ProtoMessage()    {}
 func (*DeleteIntentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{6}
 }
+
 func (m *DeleteIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteIntentRequest.Unmarshal(m, b)
 }
@@ -2577,6 +2607,7 @@ func (*BatchUpdateIntentsRequest) ProtoMessage()    {}
 func (*BatchUpdateIntentsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{7}
 }
+
 func (m *BatchUpdateIntentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchUpdateIntentsRequest.Unmarshal(m, b)
 }
@@ -2745,6 +2776,7 @@ func (*BatchUpdateIntentsResponse) ProtoMessage()    {}
 func (*BatchUpdateIntentsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{8}
 }
+
 func (m *BatchUpdateIntentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchUpdateIntentsResponse.Unmarshal(m, b)
 }
@@ -2789,6 +2821,7 @@ func (*BatchDeleteIntentsRequest) ProtoMessage()    {}
 func (*BatchDeleteIntentsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{9}
 }
+
 func (m *BatchDeleteIntentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchDeleteIntentsRequest.Unmarshal(m, b)
 }
@@ -2836,6 +2869,7 @@ func (*IntentBatch) ProtoMessage()    {}
 func (*IntentBatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c20e31044d743bd, []int{10}
 }
+
 func (m *IntentBatch) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IntentBatch.Unmarshal(m, b)
 }

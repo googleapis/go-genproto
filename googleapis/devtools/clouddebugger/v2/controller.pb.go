@@ -44,6 +44,7 @@ func (*RegisterDebuggeeRequest) ProtoMessage()    {}
 func (*RegisterDebuggeeRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_694192a34270926f, []int{0}
 }
+
 func (m *RegisterDebuggeeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RegisterDebuggeeRequest.Unmarshal(m, b)
 }
@@ -88,6 +89,7 @@ func (*RegisterDebuggeeResponse) ProtoMessage()    {}
 func (*RegisterDebuggeeResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_694192a34270926f, []int{1}
 }
+
 func (m *RegisterDebuggeeResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RegisterDebuggeeResponse.Unmarshal(m, b)
 }
@@ -140,6 +142,7 @@ func (*ListActiveBreakpointsRequest) ProtoMessage()    {}
 func (*ListActiveBreakpointsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_694192a34270926f, []int{2}
 }
+
 func (m *ListActiveBreakpointsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListActiveBreakpointsRequest.Unmarshal(m, b)
 }
@@ -202,6 +205,7 @@ func (*ListActiveBreakpointsResponse) ProtoMessage()    {}
 func (*ListActiveBreakpointsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_694192a34270926f, []int{3}
 }
+
 func (m *ListActiveBreakpointsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListActiveBreakpointsResponse.Unmarshal(m, b)
 }
@@ -260,6 +264,7 @@ func (*UpdateActiveBreakpointRequest) ProtoMessage()    {}
 func (*UpdateActiveBreakpointRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_694192a34270926f, []int{4}
 }
+
 func (m *UpdateActiveBreakpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateActiveBreakpointRequest.Unmarshal(m, b)
 }
@@ -306,6 +311,7 @@ func (*UpdateActiveBreakpointResponse) ProtoMessage()    {}
 func (*UpdateActiveBreakpointResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_694192a34270926f, []int{5}
 }
+
 func (m *UpdateActiveBreakpointResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateActiveBreakpointResponse.Unmarshal(m, b)
 }

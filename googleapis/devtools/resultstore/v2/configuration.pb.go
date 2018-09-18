@@ -51,6 +51,7 @@ func (*Configuration) ProtoMessage()    {}
 func (*Configuration) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c7cb6c7dfd72e78e, []int{0}
 }
+
 func (m *Configuration) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Configuration.Unmarshal(m, b)
 }
@@ -121,6 +122,7 @@ func (*Configuration_Id) ProtoMessage()    {}
 func (*Configuration_Id) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c7cb6c7dfd72e78e, []int{0, 0}
 }
+
 func (m *Configuration_Id) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Configuration_Id.Unmarshal(m, b)
 }
@@ -168,6 +170,7 @@ func (*ConfigurationAttributes) ProtoMessage()    {}
 func (*ConfigurationAttributes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c7cb6c7dfd72e78e, []int{1}
 }
+
 func (m *ConfigurationAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConfigurationAttributes.Unmarshal(m, b)
 }

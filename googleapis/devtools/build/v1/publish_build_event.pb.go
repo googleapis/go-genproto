@@ -95,6 +95,7 @@ func (*PublishLifecycleEventRequest) ProtoMessage()    {}
 func (*PublishLifecycleEventRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81da11d19c4841eb, []int{0}
 }
+
 func (m *PublishLifecycleEventRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublishLifecycleEventRequest.Unmarshal(m, b)
 }
@@ -166,6 +167,7 @@ func (*PublishBuildToolEventStreamResponse) ProtoMessage()    {}
 func (*PublishBuildToolEventStreamResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81da11d19c4841eb, []int{1}
 }
+
 func (m *PublishBuildToolEventStreamResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublishBuildToolEventStreamResponse.Unmarshal(m, b)
 }
@@ -220,6 +222,7 @@ func (*OrderedBuildEvent) ProtoMessage()    {}
 func (*OrderedBuildEvent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81da11d19c4841eb, []int{2}
 }
+
 func (m *OrderedBuildEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OrderedBuildEvent.Unmarshal(m, b)
 }
@@ -287,6 +290,7 @@ func (*PublishBuildToolEventStreamRequest) ProtoMessage()    {}
 func (*PublishBuildToolEventStreamRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81da11d19c4841eb, []int{3}
 }
+
 func (m *PublishBuildToolEventStreamRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublishBuildToolEventStreamRequest.Unmarshal(m, b)
 }

@@ -53,6 +53,7 @@ func (*PosixAccount) ProtoMessage()    {}
 func (*PosixAccount) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7fa58776520b3f24, []int{0}
 }
+
 func (m *PosixAccount) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PosixAccount.Unmarshal(m, b)
 }
@@ -155,6 +156,7 @@ func (*SshPublicKey) ProtoMessage()    {}
 func (*SshPublicKey) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7fa58776520b3f24, []int{1}
 }
+
 func (m *SshPublicKey) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SshPublicKey.Unmarshal(m, b)
 }

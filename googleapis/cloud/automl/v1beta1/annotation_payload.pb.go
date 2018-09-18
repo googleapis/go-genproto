@@ -51,6 +51,7 @@ func (*AnnotationPayload) ProtoMessage()    {}
 func (*AnnotationPayload) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cb8fb684261d0460, []int{0}
 }
+
 func (m *AnnotationPayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationPayload.Unmarshal(m, b)
 }

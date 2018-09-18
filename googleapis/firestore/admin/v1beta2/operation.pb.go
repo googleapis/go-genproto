@@ -139,6 +139,7 @@ func (*FieldOperationMetadata) ProtoMessage()    {}
 func (*FieldOperationMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f946ae2a57533608, []int{0}
 }
+
 func (m *FieldOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FieldOperationMetadata.Unmarshal(m, b)
 }
@@ -225,6 +226,7 @@ func (*FieldOperationMetadata_IndexConfigDelta) ProtoMessage()    {}
 func (*FieldOperationMetadata_IndexConfigDelta) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f946ae2a57533608, []int{0, 0}
 }
+
 func (m *FieldOperationMetadata_IndexConfigDelta) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FieldOperationMetadata_IndexConfigDelta.Unmarshal(m, b)
 }
@@ -276,6 +278,7 @@ func (*Progress) ProtoMessage()    {}
 func (*Progress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f946ae2a57533608, []int{1}
 }
+
 func (m *Progress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Progress.Unmarshal(m, b)
 }

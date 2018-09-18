@@ -141,6 +141,7 @@ func (*IndexOperationMetadata) ProtoMessage()    {}
 func (*IndexOperationMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{0}
 }
+
 func (m *IndexOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexOperationMetadata.Unmarshal(m, b)
 }
@@ -220,6 +221,7 @@ func (*Progress) ProtoMessage()    {}
 func (*Progress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{1}
 }
+
 func (m *Progress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Progress.Unmarshal(m, b)
 }
@@ -271,6 +273,7 @@ func (*CreateIndexRequest) ProtoMessage()    {}
 func (*CreateIndexRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{2}
 }
+
 func (m *CreateIndexRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateIndexRequest.Unmarshal(m, b)
 }
@@ -319,6 +322,7 @@ func (*GetIndexRequest) ProtoMessage()    {}
 func (*GetIndexRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{3}
 }
+
 func (m *GetIndexRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetIndexRequest.Unmarshal(m, b)
 }
@@ -365,6 +369,7 @@ func (*ListIndexesRequest) ProtoMessage()    {}
 func (*ListIndexesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{4}
 }
+
 func (m *ListIndexesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIndexesRequest.Unmarshal(m, b)
 }
@@ -427,6 +432,7 @@ func (*DeleteIndexRequest) ProtoMessage()    {}
 func (*DeleteIndexRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{5}
 }
+
 func (m *DeleteIndexRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteIndexRequest.Unmarshal(m, b)
 }
@@ -469,6 +475,7 @@ func (*ListIndexesResponse) ProtoMessage()    {}
 func (*ListIndexesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{6}
 }
+
 func (m *ListIndexesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIndexesResponse.Unmarshal(m, b)
 }
@@ -528,6 +535,7 @@ func (*ExportDocumentsRequest) ProtoMessage()    {}
 func (*ExportDocumentsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{7}
 }
+
 func (m *ExportDocumentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportDocumentsRequest.Unmarshal(m, b)
 }
@@ -592,6 +600,7 @@ func (*ImportDocumentsRequest) ProtoMessage()    {}
 func (*ImportDocumentsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{8}
 }
+
 func (m *ImportDocumentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportDocumentsRequest.Unmarshal(m, b)
 }
@@ -648,6 +657,7 @@ func (*ExportDocumentsResponse) ProtoMessage()    {}
 func (*ExportDocumentsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{9}
 }
+
 func (m *ExportDocumentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportDocumentsResponse.Unmarshal(m, b)
 }
@@ -701,6 +711,7 @@ func (*ExportDocumentsMetadata) ProtoMessage()    {}
 func (*ExportDocumentsMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{10}
 }
+
 func (m *ExportDocumentsMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportDocumentsMetadata.Unmarshal(m, b)
 }
@@ -796,6 +807,7 @@ func (*ImportDocumentsMetadata) ProtoMessage()    {}
 func (*ImportDocumentsMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_45deb2e54c3a4296, []int{11}
 }
+
 func (m *ImportDocumentsMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportDocumentsMetadata.Unmarshal(m, b)
 }

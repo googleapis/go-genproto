@@ -48,6 +48,7 @@ func (*SetBreakpointRequest) ProtoMessage()    {}
 func (*SetBreakpointRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{0}
 }
+
 func (m *SetBreakpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetBreakpointRequest.Unmarshal(m, b)
 }
@@ -103,6 +104,7 @@ func (*SetBreakpointResponse) ProtoMessage()    {}
 func (*SetBreakpointResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{1}
 }
+
 func (m *SetBreakpointResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetBreakpointResponse.Unmarshal(m, b)
 }
@@ -148,6 +150,7 @@ func (*GetBreakpointRequest) ProtoMessage()    {}
 func (*GetBreakpointRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{2}
 }
+
 func (m *GetBreakpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetBreakpointRequest.Unmarshal(m, b)
 }
@@ -203,6 +206,7 @@ func (*GetBreakpointResponse) ProtoMessage()    {}
 func (*GetBreakpointResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{3}
 }
+
 func (m *GetBreakpointResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetBreakpointResponse.Unmarshal(m, b)
 }
@@ -248,6 +252,7 @@ func (*DeleteBreakpointRequest) ProtoMessage()    {}
 func (*DeleteBreakpointRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{4}
 }
+
 func (m *DeleteBreakpointRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteBreakpointRequest.Unmarshal(m, b)
 }
@@ -322,6 +327,7 @@ func (*ListBreakpointsRequest) ProtoMessage()    {}
 func (*ListBreakpointsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{5}
 }
+
 func (m *ListBreakpointsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBreakpointsRequest.Unmarshal(m, b)
 }
@@ -409,6 +415,7 @@ func (*ListBreakpointsRequest_BreakpointActionValue) ProtoMessage() {}
 func (*ListBreakpointsRequest_BreakpointActionValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{5, 0}
 }
+
 func (m *ListBreakpointsRequest_BreakpointActionValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBreakpointsRequest_BreakpointActionValue.Unmarshal(m, b)
 }
@@ -455,6 +462,7 @@ func (*ListBreakpointsResponse) ProtoMessage()    {}
 func (*ListBreakpointsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{6}
 }
+
 func (m *ListBreakpointsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBreakpointsResponse.Unmarshal(m, b)
 }
@@ -508,6 +516,7 @@ func (*ListDebuggeesRequest) ProtoMessage()    {}
 func (*ListDebuggeesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{7}
 }
+
 func (m *ListDebuggeesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDebuggeesRequest.Unmarshal(m, b)
 }
@@ -565,6 +574,7 @@ func (*ListDebuggeesResponse) ProtoMessage()    {}
 func (*ListDebuggeesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_682c945d4794189b, []int{8}
 }
+
 func (m *ListDebuggeesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDebuggeesResponse.Unmarshal(m, b)
 }

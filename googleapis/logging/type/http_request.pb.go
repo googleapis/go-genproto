@@ -81,6 +81,7 @@ func (*HttpRequest) ProtoMessage()    {}
 func (*HttpRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ea45f4ec7ed7b641, []int{0}
 }
+
 func (m *HttpRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpRequest.Unmarshal(m, b)
 }

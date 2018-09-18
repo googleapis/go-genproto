@@ -208,6 +208,7 @@ func (*TransferConfig) ProtoMessage()    {}
 func (*TransferConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_90c2574420b818ad, []int{0}
 }
+
 func (m *TransferConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferConfig.Unmarshal(m, b)
 }
@@ -370,6 +371,7 @@ func (*TransferRun) ProtoMessage()    {}
 func (*TransferRun) Descriptor() ([]byte, []int) {
 	return fileDescriptor_90c2574420b818ad, []int{1}
 }
+
 func (m *TransferRun) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferRun.Unmarshal(m, b)
 }
@@ -498,6 +500,7 @@ func (*TransferMessage) ProtoMessage()    {}
 func (*TransferMessage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_90c2574420b818ad, []int{2}
 }
+
 func (m *TransferMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransferMessage.Unmarshal(m, b)
 }

@@ -113,6 +113,7 @@ func (*TestSuite) ProtoMessage()    {}
 func (*TestSuite) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1eac8f04d5f129ff, []int{0}
 }
+
 func (m *TestSuite) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestSuite.Unmarshal(m, b)
 }
@@ -200,6 +201,7 @@ func (*Test) ProtoMessage()    {}
 func (*Test) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1eac8f04d5f129ff, []int{1}
 }
+
 func (m *Test) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Test.Unmarshal(m, b)
 }
@@ -369,6 +371,7 @@ func (*TestCase) ProtoMessage()    {}
 func (*TestCase) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1eac8f04d5f129ff, []int{2}
 }
+
 func (m *TestCase) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestCase.Unmarshal(m, b)
 }
@@ -471,6 +474,7 @@ func (*TestFailure) ProtoMessage()    {}
 func (*TestFailure) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1eac8f04d5f129ff, []int{3}
 }
+
 func (m *TestFailure) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestFailure.Unmarshal(m, b)
 }
@@ -538,6 +542,7 @@ func (*TestError) ProtoMessage()    {}
 func (*TestError) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1eac8f04d5f129ff, []int{4}
 }
+
 func (m *TestError) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestError.Unmarshal(m, b)
 }

@@ -63,6 +63,7 @@ func (*Task) ProtoMessage()    {}
 func (*Task) Descriptor() ([]byte, []int) {
 	return fileDescriptor_164aeca5668e3481, []int{0}
 }
+
 func (m *Task) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Task.Unmarshal(m, b)
 }
@@ -137,6 +138,7 @@ func (*TaskResult) ProtoMessage()    {}
 func (*TaskResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_164aeca5668e3481, []int{1}
 }
+
 func (m *TaskResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaskResult.Unmarshal(m, b)
 }
@@ -205,6 +207,7 @@ func (*GetTaskRequest) ProtoMessage()    {}
 func (*GetTaskRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_164aeca5668e3481, []int{2}
 }
+
 func (m *GetTaskRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetTaskRequest.Unmarshal(m, b)
 }
@@ -253,6 +256,7 @@ func (*UpdateTaskResultRequest) ProtoMessage()    {}
 func (*UpdateTaskResultRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_164aeca5668e3481, []int{3}
 }
+
 func (m *UpdateTaskResultRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateTaskResultRequest.Unmarshal(m, b)
 }
@@ -316,6 +320,7 @@ func (*AddTaskLogRequest) ProtoMessage()    {}
 func (*AddTaskLogRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_164aeca5668e3481, []int{4}
 }
+
 func (m *AddTaskLogRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddTaskLogRequest.Unmarshal(m, b)
 }
@@ -363,6 +368,7 @@ func (*AddTaskLogResponse) ProtoMessage()    {}
 func (*AddTaskLogResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_164aeca5668e3481, []int{5}
 }
+
 func (m *AddTaskLogResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddTaskLogResponse.Unmarshal(m, b)
 }

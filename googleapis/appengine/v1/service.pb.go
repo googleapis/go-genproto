@@ -87,6 +87,7 @@ func (*Service) ProtoMessage()    {}
 func (*Service) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c1fc975248a879f7, []int{0}
 }
+
 func (m *Service) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Service.Unmarshal(m, b)
 }
@@ -153,6 +154,7 @@ func (*TrafficSplit) ProtoMessage()    {}
 func (*TrafficSplit) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c1fc975248a879f7, []int{1}
 }
+
 func (m *TrafficSplit) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TrafficSplit.Unmarshal(m, b)
 }

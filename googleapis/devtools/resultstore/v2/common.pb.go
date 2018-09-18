@@ -223,6 +223,7 @@ func (*StatusAttributes) ProtoMessage()    {}
 func (*StatusAttributes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ff56b05a77242216, []int{0}
 }
+
 func (m *StatusAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StatusAttributes.Unmarshal(m, b)
 }
@@ -272,6 +273,7 @@ func (*Property) ProtoMessage()    {}
 func (*Property) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ff56b05a77242216, []int{1}
 }
+
 func (m *Property) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Property.Unmarshal(m, b)
 }
@@ -322,6 +324,7 @@ func (*Timing) ProtoMessage()    {}
 func (*Timing) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ff56b05a77242216, []int{2}
 }
+
 func (m *Timing) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Timing.Unmarshal(m, b)
 }
@@ -380,6 +383,7 @@ func (*Dependency) ProtoMessage()    {}
 func (*Dependency) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ff56b05a77242216, []int{3}
 }
+
 func (m *Dependency) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Dependency.Unmarshal(m, b)
 }

@@ -59,6 +59,7 @@ func (*PartitionId) ProtoMessage()    {}
 func (*PartitionId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ecbfdafa45100300, []int{0}
 }
+
 func (m *PartitionId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartitionId.Unmarshal(m, b)
 }
@@ -128,6 +129,7 @@ func (*Key) ProtoMessage()    {}
 func (*Key) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ecbfdafa45100300, []int{1}
 }
+
 func (m *Key) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key.Unmarshal(m, b)
 }
@@ -187,6 +189,7 @@ func (*Key_PathElement) ProtoMessage()    {}
 func (*Key_PathElement) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ecbfdafa45100300, []int{1, 0}
 }
+
 func (m *Key_PathElement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key_PathElement.Unmarshal(m, b)
 }
@@ -331,6 +334,7 @@ func (*ArrayValue) ProtoMessage()    {}
 func (*ArrayValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ecbfdafa45100300, []int{2}
 }
+
 func (m *ArrayValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ArrayValue.Unmarshal(m, b)
 }
@@ -390,6 +394,7 @@ func (*Value) ProtoMessage()    {}
 func (*Value) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ecbfdafa45100300, []int{3}
 }
+
 func (m *Value) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Value.Unmarshal(m, b)
 }
@@ -828,6 +833,7 @@ func (*Entity) ProtoMessage()    {}
 func (*Entity) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ecbfdafa45100300, []int{4}
 }
+
 func (m *Entity) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Entity.Unmarshal(m, b)
 }

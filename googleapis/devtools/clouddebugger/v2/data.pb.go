@@ -161,6 +161,7 @@ func (*FormatMessage) ProtoMessage()    {}
 func (*FormatMessage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_af1dc785e55f21bc, []int{0}
 }
+
 func (m *FormatMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FormatMessage.Unmarshal(m, b)
 }
@@ -216,6 +217,7 @@ func (*StatusMessage) ProtoMessage()    {}
 func (*StatusMessage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_af1dc785e55f21bc, []int{1}
 }
+
 func (m *StatusMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StatusMessage.Unmarshal(m, b)
 }
@@ -272,6 +274,7 @@ func (*SourceLocation) ProtoMessage()    {}
 func (*SourceLocation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_af1dc785e55f21bc, []int{2}
 }
+
 func (m *SourceLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceLocation.Unmarshal(m, b)
 }
@@ -460,6 +463,7 @@ func (*Variable) ProtoMessage()    {}
 func (*Variable) Descriptor() ([]byte, []int) {
 	return fileDescriptor_af1dc785e55f21bc, []int{3}
 }
+
 func (m *Variable) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Variable.Unmarshal(m, b)
 }
@@ -543,6 +547,7 @@ func (*StackFrame) ProtoMessage()    {}
 func (*StackFrame) Descriptor() ([]byte, []int) {
 	return fileDescriptor_af1dc785e55f21bc, []int{4}
 }
+
 func (m *StackFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StackFrame.Unmarshal(m, b)
 }
@@ -681,6 +686,7 @@ func (*Breakpoint) ProtoMessage()    {}
 func (*Breakpoint) Descriptor() ([]byte, []int) {
 	return fileDescriptor_af1dc785e55f21bc, []int{5}
 }
+
 func (m *Breakpoint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Breakpoint.Unmarshal(m, b)
 }
@@ -869,6 +875,7 @@ func (*Debuggee) ProtoMessage()    {}
 func (*Debuggee) Descriptor() ([]byte, []int) {
 	return fileDescriptor_af1dc785e55f21bc, []int{6}
 }
+
 func (m *Debuggee) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Debuggee.Unmarshal(m, b)
 }

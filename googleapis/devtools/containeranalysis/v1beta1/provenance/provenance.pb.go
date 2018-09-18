@@ -93,6 +93,7 @@ func (*BuildProvenance) ProtoMessage()    {}
 func (*BuildProvenance) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4ab6101dd6eab75c, []int{0}
 }
+
 func (m *BuildProvenance) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildProvenance.Unmarshal(m, b)
 }
@@ -234,6 +235,7 @@ func (*Source) ProtoMessage()    {}
 func (*Source) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4ab6101dd6eab75c, []int{1}
 }
+
 func (m *Source) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Source.Unmarshal(m, b)
 }
@@ -296,6 +298,7 @@ func (*FileHashes) ProtoMessage()    {}
 func (*FileHashes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4ab6101dd6eab75c, []int{2}
 }
+
 func (m *FileHashes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileHashes.Unmarshal(m, b)
 }
@@ -338,6 +341,7 @@ func (*Hash) ProtoMessage()    {}
 func (*Hash) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4ab6101dd6eab75c, []int{3}
 }
+
 func (m *Hash) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Hash.Unmarshal(m, b)
 }
@@ -398,6 +402,7 @@ func (*Command) ProtoMessage()    {}
 func (*Command) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4ab6101dd6eab75c, []int{4}
 }
+
 func (m *Command) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Command.Unmarshal(m, b)
 }
@@ -483,6 +488,7 @@ func (*Artifact) ProtoMessage()    {}
 func (*Artifact) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4ab6101dd6eab75c, []int{5}
 }
+
 func (m *Artifact) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Artifact.Unmarshal(m, b)
 }

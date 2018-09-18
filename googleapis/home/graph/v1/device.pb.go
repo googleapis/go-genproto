@@ -59,6 +59,7 @@ func (*Device) ProtoMessage()    {}
 func (*Device) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1729f8e53993f499, []int{0}
 }
+
 func (m *Device) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Device.Unmarshal(m, b)
 }
@@ -167,6 +168,7 @@ func (*DeviceNames) ProtoMessage()    {}
 func (*DeviceNames) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1729f8e53993f499, []int{1}
 }
+
 func (m *DeviceNames) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceNames.Unmarshal(m, b)
 }
@@ -227,6 +229,7 @@ func (*DeviceInfo) ProtoMessage()    {}
 func (*DeviceInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1729f8e53993f499, []int{2}
 }
+
 func (m *DeviceInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceInfo.Unmarshal(m, b)
 }

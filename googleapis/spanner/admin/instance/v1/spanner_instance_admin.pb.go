@@ -86,6 +86,7 @@ func (*InstanceConfig) ProtoMessage()    {}
 func (*InstanceConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{0}
 }
+
 func (m *InstanceConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InstanceConfig.Unmarshal(m, b)
 }
@@ -178,6 +179,7 @@ func (*Instance) ProtoMessage()    {}
 func (*Instance) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{1}
 }
+
 func (m *Instance) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Instance.Unmarshal(m, b)
 }
@@ -262,6 +264,7 @@ func (*ListInstanceConfigsRequest) ProtoMessage()    {}
 func (*ListInstanceConfigsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{2}
 }
+
 func (m *ListInstanceConfigsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListInstanceConfigsRequest.Unmarshal(m, b)
 }
@@ -320,6 +323,7 @@ func (*ListInstanceConfigsResponse) ProtoMessage()    {}
 func (*ListInstanceConfigsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{3}
 }
+
 func (m *ListInstanceConfigsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListInstanceConfigsResponse.Unmarshal(m, b)
 }
@@ -369,6 +373,7 @@ func (*GetInstanceConfigRequest) ProtoMessage()    {}
 func (*GetInstanceConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{4}
 }
+
 func (m *GetInstanceConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetInstanceConfigRequest.Unmarshal(m, b)
 }
@@ -410,6 +415,7 @@ func (*GetInstanceRequest) ProtoMessage()    {}
 func (*GetInstanceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{5}
 }
+
 func (m *GetInstanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetInstanceRequest.Unmarshal(m, b)
 }
@@ -458,6 +464,7 @@ func (*CreateInstanceRequest) ProtoMessage()    {}
 func (*CreateInstanceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{6}
 }
+
 func (m *CreateInstanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateInstanceRequest.Unmarshal(m, b)
 }
@@ -540,6 +547,7 @@ func (*ListInstancesRequest) ProtoMessage()    {}
 func (*ListInstancesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{7}
 }
+
 func (m *ListInstancesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListInstancesRequest.Unmarshal(m, b)
 }
@@ -605,6 +613,7 @@ func (*ListInstancesResponse) ProtoMessage()    {}
 func (*ListInstancesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{8}
 }
+
 func (m *ListInstancesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListInstancesResponse.Unmarshal(m, b)
 }
@@ -658,6 +667,7 @@ func (*UpdateInstanceRequest) ProtoMessage()    {}
 func (*UpdateInstanceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{9}
 }
+
 func (m *UpdateInstanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateInstanceRequest.Unmarshal(m, b)
 }
@@ -706,6 +716,7 @@ func (*DeleteInstanceRequest) ProtoMessage()    {}
 func (*DeleteInstanceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{10}
 }
+
 func (m *DeleteInstanceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteInstanceRequest.Unmarshal(m, b)
 }
@@ -757,6 +768,7 @@ func (*CreateInstanceMetadata) ProtoMessage()    {}
 func (*CreateInstanceMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{11}
 }
+
 func (m *CreateInstanceMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateInstanceMetadata.Unmarshal(m, b)
 }
@@ -828,6 +840,7 @@ func (*UpdateInstanceMetadata) ProtoMessage()    {}
 func (*UpdateInstanceMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3837da4dfb7336ac, []int{12}
 }
+
 func (m *UpdateInstanceMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateInstanceMetadata.Unmarshal(m, b)
 }

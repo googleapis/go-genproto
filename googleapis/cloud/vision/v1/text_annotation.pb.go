@@ -133,6 +133,7 @@ func (*TextAnnotation) ProtoMessage()    {}
 func (*TextAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9caabbd9b4627d68, []int{0}
 }
+
 func (m *TextAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextAnnotation.Unmarshal(m, b)
 }
@@ -184,6 +185,7 @@ func (*TextAnnotation_DetectedLanguage) ProtoMessage()    {}
 func (*TextAnnotation_DetectedLanguage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9caabbd9b4627d68, []int{0, 0}
 }
+
 func (m *TextAnnotation_DetectedLanguage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextAnnotation_DetectedLanguage.Unmarshal(m, b)
 }
@@ -233,6 +235,7 @@ func (*TextAnnotation_DetectedBreak) ProtoMessage()    {}
 func (*TextAnnotation_DetectedBreak) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9caabbd9b4627d68, []int{0, 1}
 }
+
 func (m *TextAnnotation_DetectedBreak) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextAnnotation_DetectedBreak.Unmarshal(m, b)
 }
@@ -282,6 +285,7 @@ func (*TextAnnotation_TextProperty) ProtoMessage()    {}
 func (*TextAnnotation_TextProperty) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9caabbd9b4627d68, []int{0, 2}
 }
+
 func (m *TextAnnotation_TextProperty) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextAnnotation_TextProperty.Unmarshal(m, b)
 }
@@ -339,6 +343,7 @@ func (*Page) ProtoMessage()    {}
 func (*Page) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9caabbd9b4627d68, []int{1}
 }
+
 func (m *Page) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Page.Unmarshal(m, b)
 }
@@ -434,6 +439,7 @@ func (*Block) ProtoMessage()    {}
 func (*Block) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9caabbd9b4627d68, []int{2}
 }
+
 func (m *Block) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Block.Unmarshal(m, b)
 }
@@ -522,6 +528,7 @@ func (*Paragraph) ProtoMessage()    {}
 func (*Paragraph) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9caabbd9b4627d68, []int{3}
 }
+
 func (m *Paragraph) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Paragraph.Unmarshal(m, b)
 }
@@ -604,6 +611,7 @@ func (*Word) ProtoMessage()    {}
 func (*Word) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9caabbd9b4627d68, []int{4}
 }
+
 func (m *Word) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Word.Unmarshal(m, b)
 }
@@ -685,6 +693,7 @@ func (*Symbol) ProtoMessage()    {}
 func (*Symbol) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9caabbd9b4627d68, []int{5}
 }
+
 func (m *Symbol) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Symbol.Unmarshal(m, b)
 }

@@ -95,6 +95,7 @@ func (*BuildStatus) ProtoMessage()    {}
 func (*BuildStatus) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f5ec8917bb205301, []int{0}
 }
+
 func (m *BuildStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildStatus.Unmarshal(m, b)
 }

@@ -93,6 +93,7 @@ func (*BuildProvenance) ProtoMessage()    {}
 func (*BuildProvenance) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fdbf35a243115a53, []int{0}
 }
+
 func (m *BuildProvenance) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildProvenance.Unmarshal(m, b)
 }
@@ -240,6 +241,7 @@ func (*Source) ProtoMessage()    {}
 func (*Source) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fdbf35a243115a53, []int{1}
 }
+
 func (m *Source) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Source.Unmarshal(m, b)
 }
@@ -413,6 +415,7 @@ func (*FileHashes) ProtoMessage()    {}
 func (*FileHashes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fdbf35a243115a53, []int{2}
 }
+
 func (m *FileHashes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileHashes.Unmarshal(m, b)
 }
@@ -455,6 +458,7 @@ func (*Hash) ProtoMessage()    {}
 func (*Hash) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fdbf35a243115a53, []int{3}
 }
+
 func (m *Hash) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Hash.Unmarshal(m, b)
 }
@@ -509,6 +513,7 @@ func (*StorageSource) ProtoMessage()    {}
 func (*StorageSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fdbf35a243115a53, []int{4}
 }
+
 func (m *StorageSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StorageSource.Unmarshal(m, b)
 }
@@ -574,6 +579,7 @@ func (*RepoSource) ProtoMessage()    {}
 func (*RepoSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fdbf35a243115a53, []int{5}
 }
+
 func (m *RepoSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RepoSource.Unmarshal(m, b)
 }
@@ -765,6 +771,7 @@ func (*Command) ProtoMessage()    {}
 func (*Command) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fdbf35a243115a53, []int{6}
 }
+
 func (m *Command) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Command.Unmarshal(m, b)
 }
@@ -859,6 +866,7 @@ func (*Artifact) ProtoMessage()    {}
 func (*Artifact) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fdbf35a243115a53, []int{7}
 }
+
 func (m *Artifact) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Artifact.Unmarshal(m, b)
 }

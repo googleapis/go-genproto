@@ -41,6 +41,7 @@ func (*FindingTypeStats) ProtoMessage()    {}
 func (*FindingTypeStats) Descriptor() ([]byte, []int) {
 	return fileDescriptor_91da39ac488bf6ea, []int{0}
 }
+
 func (m *FindingTypeStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FindingTypeStats.Unmarshal(m, b)
 }

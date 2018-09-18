@@ -65,6 +65,7 @@ func (*Model) ProtoMessage()    {}
 func (*Model) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{0}
 }
+
 func (m *Model) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model.Unmarshal(m, b)
 }
@@ -173,6 +174,7 @@ func (*Version) ProtoMessage()    {}
 func (*Version) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{1}
 }
+
 func (m *Version) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Version.Unmarshal(m, b)
 }
@@ -265,6 +267,7 @@ func (*ManualScaling) ProtoMessage()    {}
 func (*ManualScaling) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{2}
 }
+
 func (m *ManualScaling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ManualScaling.Unmarshal(m, b)
 }
@@ -309,6 +312,7 @@ func (*CreateModelRequest) ProtoMessage()    {}
 func (*CreateModelRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{3}
 }
+
 func (m *CreateModelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateModelRequest.Unmarshal(m, b)
 }
@@ -369,6 +373,7 @@ func (*ListModelsRequest) ProtoMessage()    {}
 func (*ListModelsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{4}
 }
+
 func (m *ListModelsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListModelsRequest.Unmarshal(m, b)
 }
@@ -426,6 +431,7 @@ func (*ListModelsResponse) ProtoMessage()    {}
 func (*ListModelsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{5}
 }
+
 func (m *ListModelsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListModelsResponse.Unmarshal(m, b)
 }
@@ -475,6 +481,7 @@ func (*GetModelRequest) ProtoMessage()    {}
 func (*GetModelRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{6}
 }
+
 func (m *GetModelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetModelRequest.Unmarshal(m, b)
 }
@@ -517,6 +524,7 @@ func (*DeleteModelRequest) ProtoMessage()    {}
 func (*DeleteModelRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{7}
 }
+
 func (m *DeleteModelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteModelRequest.Unmarshal(m, b)
 }
@@ -561,6 +569,7 @@ func (*CreateVersionRequest) ProtoMessage()    {}
 func (*CreateVersionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{8}
 }
+
 func (m *CreateVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateVersionRequest.Unmarshal(m, b)
 }
@@ -621,6 +630,7 @@ func (*ListVersionsRequest) ProtoMessage()    {}
 func (*ListVersionsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{9}
 }
+
 func (m *ListVersionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListVersionsRequest.Unmarshal(m, b)
 }
@@ -678,6 +688,7 @@ func (*ListVersionsResponse) ProtoMessage()    {}
 func (*ListVersionsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{10}
 }
+
 func (m *ListVersionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListVersionsResponse.Unmarshal(m, b)
 }
@@ -727,6 +738,7 @@ func (*GetVersionRequest) ProtoMessage()    {}
 func (*GetVersionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{11}
 }
+
 func (m *GetVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetVersionRequest.Unmarshal(m, b)
 }
@@ -771,6 +783,7 @@ func (*DeleteVersionRequest) ProtoMessage()    {}
 func (*DeleteVersionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{12}
 }
+
 func (m *DeleteVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteVersionRequest.Unmarshal(m, b)
 }
@@ -815,6 +828,7 @@ func (*SetDefaultVersionRequest) ProtoMessage()    {}
 func (*SetDefaultVersionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39edc295a31e1620, []int{13}
 }
+
 func (m *SetDefaultVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetDefaultVersionRequest.Unmarshal(m, b)
 }

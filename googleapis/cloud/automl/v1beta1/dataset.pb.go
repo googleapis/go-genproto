@@ -56,6 +56,7 @@ func (*Dataset) ProtoMessage()    {}
 func (*Dataset) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1f2b1dc66a1e92da, []int{0}
 }
+
 func (m *Dataset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Dataset.Unmarshal(m, b)
 }

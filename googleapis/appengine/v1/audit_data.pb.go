@@ -43,6 +43,7 @@ func (*AuditData) ProtoMessage()    {}
 func (*AuditData) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c735bfd5270b805, []int{0}
 }
+
 func (m *AuditData) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuditData.Unmarshal(m, b)
 }
@@ -187,6 +188,7 @@ func (*UpdateServiceMethod) ProtoMessage()    {}
 func (*UpdateServiceMethod) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c735bfd5270b805, []int{1}
 }
+
 func (m *UpdateServiceMethod) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateServiceMethod.Unmarshal(m, b)
 }
@@ -227,6 +229,7 @@ func (*CreateVersionMethod) ProtoMessage()    {}
 func (*CreateVersionMethod) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c735bfd5270b805, []int{2}
 }
+
 func (m *CreateVersionMethod) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateVersionMethod.Unmarshal(m, b)
 }

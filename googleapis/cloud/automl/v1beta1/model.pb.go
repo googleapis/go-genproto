@@ -98,6 +98,7 @@ func (*Model) ProtoMessage()    {}
 func (*Model) Descriptor() ([]byte, []int) {
 	return fileDescriptor_27c9ed3a1b40360b, []int{0}
 }
+
 func (m *Model) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model.Unmarshal(m, b)
 }

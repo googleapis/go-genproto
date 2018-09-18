@@ -41,6 +41,7 @@ func (*Range) ProtoMessage()    {}
 func (*Range) Descriptor() ([]byte, []int) {
 	return fileDescriptor_296c87a77538e516, []int{0}
 }
+
 func (m *Range) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Range.Unmarshal(m, b)
 }

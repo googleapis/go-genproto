@@ -58,6 +58,7 @@ func (*GenerateAccessTokenRequest) ProtoMessage()    {}
 func (*GenerateAccessTokenRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{0}
 }
+
 func (m *GenerateAccessTokenRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateAccessTokenRequest.Unmarshal(m, b)
 }
@@ -121,6 +122,7 @@ func (*GenerateAccessTokenResponse) ProtoMessage()    {}
 func (*GenerateAccessTokenResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{1}
 }
+
 func (m *GenerateAccessTokenResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateAccessTokenResponse.Unmarshal(m, b)
 }
@@ -181,6 +183,7 @@ func (*SignBlobRequest) ProtoMessage()    {}
 func (*SignBlobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{2}
 }
+
 func (m *SignBlobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SignBlobRequest.Unmarshal(m, b)
 }
@@ -236,6 +239,7 @@ func (*SignBlobResponse) ProtoMessage()    {}
 func (*SignBlobResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{3}
 }
+
 func (m *SignBlobResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SignBlobResponse.Unmarshal(m, b)
 }
@@ -296,6 +300,7 @@ func (*SignJwtRequest) ProtoMessage()    {}
 func (*SignJwtRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{4}
 }
+
 func (m *SignJwtRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SignJwtRequest.Unmarshal(m, b)
 }
@@ -351,6 +356,7 @@ func (*SignJwtResponse) ProtoMessage()    {}
 func (*SignJwtResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{5}
 }
+
 func (m *SignJwtResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SignJwtResponse.Unmarshal(m, b)
 }
@@ -415,6 +421,7 @@ func (*GenerateIdTokenRequest) ProtoMessage()    {}
 func (*GenerateIdTokenRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{6}
 }
+
 func (m *GenerateIdTokenRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateIdTokenRequest.Unmarshal(m, b)
 }
@@ -475,6 +482,7 @@ func (*GenerateIdTokenResponse) ProtoMessage()    {}
 func (*GenerateIdTokenResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{7}
 }
+
 func (m *GenerateIdTokenResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateIdTokenResponse.Unmarshal(m, b)
 }
@@ -569,6 +577,7 @@ func (*GenerateIdentityBindingAccessTokenRequest) ProtoMessage()    {}
 func (*GenerateIdentityBindingAccessTokenRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{8}
 }
+
 func (m *GenerateIdentityBindingAccessTokenRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateIdentityBindingAccessTokenRequest.Unmarshal(m, b)
 }
@@ -629,6 +638,7 @@ func (*GenerateIdentityBindingAccessTokenResponse) ProtoMessage() {}
 func (*GenerateIdentityBindingAccessTokenResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e91212214ea1422e, []int{9}
 }
+
 func (m *GenerateIdentityBindingAccessTokenResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenerateIdentityBindingAccessTokenResponse.Unmarshal(m, b)
 }

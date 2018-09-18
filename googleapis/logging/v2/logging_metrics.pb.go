@@ -167,6 +167,7 @@ func (*LogMetric) ProtoMessage()    {}
 func (*LogMetric) Descriptor() ([]byte, []int) {
 	return fileDescriptor_25f112b6cac96ff1, []int{0}
 }
+
 func (m *LogMetric) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogMetric.Unmarshal(m, b)
 }
@@ -268,6 +269,7 @@ func (*ListLogMetricsRequest) ProtoMessage()    {}
 func (*ListLogMetricsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_25f112b6cac96ff1, []int{1}
 }
+
 func (m *ListLogMetricsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogMetricsRequest.Unmarshal(m, b)
 }
@@ -326,6 +328,7 @@ func (*ListLogMetricsResponse) ProtoMessage()    {}
 func (*ListLogMetricsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_25f112b6cac96ff1, []int{2}
 }
+
 func (m *ListLogMetricsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLogMetricsResponse.Unmarshal(m, b)
 }
@@ -375,6 +378,7 @@ func (*GetLogMetricRequest) ProtoMessage()    {}
 func (*GetLogMetricRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_25f112b6cac96ff1, []int{3}
 }
+
 func (m *GetLogMetricRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetLogMetricRequest.Unmarshal(m, b)
 }
@@ -422,6 +426,7 @@ func (*CreateLogMetricRequest) ProtoMessage()    {}
 func (*CreateLogMetricRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_25f112b6cac96ff1, []int{4}
 }
+
 func (m *CreateLogMetricRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateLogMetricRequest.Unmarshal(m, b)
 }
@@ -477,6 +482,7 @@ func (*UpdateLogMetricRequest) ProtoMessage()    {}
 func (*UpdateLogMetricRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_25f112b6cac96ff1, []int{5}
 }
+
 func (m *UpdateLogMetricRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateLogMetricRequest.Unmarshal(m, b)
 }
@@ -526,6 +532,7 @@ func (*DeleteLogMetricRequest) ProtoMessage()    {}
 func (*DeleteLogMetricRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_25f112b6cac96ff1, []int{6}
 }
+
 func (m *DeleteLogMetricRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteLogMetricRequest.Unmarshal(m, b)
 }
