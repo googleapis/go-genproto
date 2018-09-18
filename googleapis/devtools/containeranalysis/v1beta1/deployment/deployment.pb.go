@@ -72,6 +72,7 @@ func (*Deployable) ProtoMessage()    {}
 func (*Deployable) Descriptor() ([]byte, []int) {
 	return fileDescriptor_27c2fb509818da47, []int{0}
 }
+
 func (m *Deployable) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Deployable.Unmarshal(m, b)
 }
@@ -112,6 +113,7 @@ func (*Details) ProtoMessage()    {}
 func (*Details) Descriptor() ([]byte, []int) {
 	return fileDescriptor_27c2fb509818da47, []int{1}
 }
+
 func (m *Details) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Details.Unmarshal(m, b)
 }
@@ -165,6 +167,7 @@ func (*Deployment) ProtoMessage()    {}
 func (*Deployment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_27c2fb509818da47, []int{2}
 }
+
 func (m *Deployment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Deployment.Unmarshal(m, b)
 }

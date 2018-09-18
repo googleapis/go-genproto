@@ -120,6 +120,7 @@ func (*Type) ProtoMessage()    {}
 func (*Type) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dc1f2442a7aeba2a, []int{0}
 }
+
 func (m *Type) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Type.Unmarshal(m, b)
 }
@@ -179,6 +180,7 @@ func (*StructType) ProtoMessage()    {}
 func (*StructType) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dc1f2442a7aeba2a, []int{1}
 }
+
 func (m *StructType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructType.Unmarshal(m, b)
 }
@@ -227,6 +229,7 @@ func (*StructType_Field) ProtoMessage()    {}
 func (*StructType_Field) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dc1f2442a7aeba2a, []int{1, 0}
 }
+
 func (m *StructType_Field) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructType_Field.Unmarshal(m, b)
 }

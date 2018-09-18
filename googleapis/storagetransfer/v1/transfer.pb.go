@@ -45,6 +45,7 @@ func (*GetGoogleServiceAccountRequest) ProtoMessage()    {}
 func (*GetGoogleServiceAccountRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e3f640a3e036c8f, []int{0}
 }
+
 func (m *GetGoogleServiceAccountRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGoogleServiceAccountRequest.Unmarshal(m, b)
 }
@@ -86,6 +87,7 @@ func (*CreateTransferJobRequest) ProtoMessage()    {}
 func (*CreateTransferJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e3f640a3e036c8f, []int{1}
 }
+
 func (m *CreateTransferJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateTransferJobRequest.Unmarshal(m, b)
 }
@@ -143,6 +145,7 @@ func (*UpdateTransferJobRequest) ProtoMessage()    {}
 func (*UpdateTransferJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e3f640a3e036c8f, []int{2}
 }
+
 func (m *UpdateTransferJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateTransferJobRequest.Unmarshal(m, b)
 }
@@ -208,6 +211,7 @@ func (*GetTransferJobRequest) ProtoMessage()    {}
 func (*GetTransferJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e3f640a3e036c8f, []int{3}
 }
+
 func (m *GetTransferJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetTransferJobRequest.Unmarshal(m, b)
 }
@@ -267,6 +271,7 @@ func (*ListTransferJobsRequest) ProtoMessage()    {}
 func (*ListTransferJobsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e3f640a3e036c8f, []int{4}
 }
+
 func (m *ListTransferJobsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTransferJobsRequest.Unmarshal(m, b)
 }
@@ -323,6 +328,7 @@ func (*ListTransferJobsResponse) ProtoMessage()    {}
 func (*ListTransferJobsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e3f640a3e036c8f, []int{5}
 }
+
 func (m *ListTransferJobsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTransferJobsResponse.Unmarshal(m, b)
 }
@@ -371,6 +377,7 @@ func (*PauseTransferOperationRequest) ProtoMessage()    {}
 func (*PauseTransferOperationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e3f640a3e036c8f, []int{6}
 }
+
 func (m *PauseTransferOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PauseTransferOperationRequest.Unmarshal(m, b)
 }
@@ -412,6 +419,7 @@ func (*ResumeTransferOperationRequest) ProtoMessage()    {}
 func (*ResumeTransferOperationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e3f640a3e036c8f, []int{7}
 }
+
 func (m *ResumeTransferOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResumeTransferOperationRequest.Unmarshal(m, b)
 }

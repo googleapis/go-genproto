@@ -133,6 +133,7 @@ func (*KeyRange) ProtoMessage()    {}
 func (*KeyRange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_558e8abca28348dd, []int{0}
 }
+
 func (m *KeyRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeyRange.Unmarshal(m, b)
 }
@@ -380,6 +381,7 @@ func (*KeySet) ProtoMessage()    {}
 func (*KeySet) Descriptor() ([]byte, []int) {
 	return fileDescriptor_558e8abca28348dd, []int{1}
 }
+
 func (m *KeySet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeySet.Unmarshal(m, b)
 }

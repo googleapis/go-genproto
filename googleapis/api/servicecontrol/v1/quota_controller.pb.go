@@ -144,6 +144,7 @@ func (*AllocateQuotaRequest) ProtoMessage()    {}
 func (*AllocateQuotaRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4401e348913df3b0, []int{0}
 }
+
 func (m *AllocateQuotaRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AllocateQuotaRequest.Unmarshal(m, b)
 }
@@ -235,6 +236,7 @@ func (*QuotaOperation) ProtoMessage()    {}
 func (*QuotaOperation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4401e348913df3b0, []int{1}
 }
+
 func (m *QuotaOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QuotaOperation.Unmarshal(m, b)
 }
@@ -326,6 +328,7 @@ func (*AllocateQuotaResponse) ProtoMessage()    {}
 func (*AllocateQuotaResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4401e348913df3b0, []int{2}
 }
+
 func (m *AllocateQuotaResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AllocateQuotaResponse.Unmarshal(m, b)
 }
@@ -393,6 +396,7 @@ func (*QuotaError) ProtoMessage()    {}
 func (*QuotaError) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4401e348913df3b0, []int{3}
 }
+
 func (m *QuotaError) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QuotaError.Unmarshal(m, b)
 }

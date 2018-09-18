@@ -232,6 +232,7 @@ func (*PredictRequest) ProtoMessage()    {}
 func (*PredictRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ca7339bffd66a462, []int{0}
 }
+
 func (m *PredictRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredictRequest.Unmarshal(m, b)
 }

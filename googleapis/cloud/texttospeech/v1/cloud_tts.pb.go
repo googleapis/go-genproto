@@ -130,6 +130,7 @@ func (*ListVoicesRequest) ProtoMessage()    {}
 func (*ListVoicesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86cfe431745e140, []int{0}
 }
+
 func (m *ListVoicesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListVoicesRequest.Unmarshal(m, b)
 }
@@ -170,6 +171,7 @@ func (*ListVoicesResponse) ProtoMessage()    {}
 func (*ListVoicesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86cfe431745e140, []int{1}
 }
+
 func (m *ListVoicesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListVoicesResponse.Unmarshal(m, b)
 }
@@ -218,6 +220,7 @@ func (*Voice) ProtoMessage()    {}
 func (*Voice) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86cfe431745e140, []int{2}
 }
+
 func (m *Voice) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Voice.Unmarshal(m, b)
 }
@@ -283,6 +286,7 @@ func (*SynthesizeSpeechRequest) ProtoMessage()    {}
 func (*SynthesizeSpeechRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86cfe431745e140, []int{3}
 }
+
 func (m *SynthesizeSpeechRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SynthesizeSpeechRequest.Unmarshal(m, b)
 }
@@ -344,6 +348,7 @@ func (*SynthesisInput) ProtoMessage()    {}
 func (*SynthesisInput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86cfe431745e140, []int{4}
 }
+
 func (m *SynthesisInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SynthesisInput.Unmarshal(m, b)
 }
@@ -499,6 +504,7 @@ func (*VoiceSelectionParams) ProtoMessage()    {}
 func (*VoiceSelectionParams) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86cfe431745e140, []int{5}
 }
+
 func (m *VoiceSelectionParams) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VoiceSelectionParams.Unmarshal(m, b)
 }
@@ -578,6 +584,7 @@ func (*AudioConfig) ProtoMessage()    {}
 func (*AudioConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86cfe431745e140, []int{6}
 }
+
 func (m *AudioConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioConfig.Unmarshal(m, b)
 }
@@ -649,6 +656,7 @@ func (*SynthesizeSpeechResponse) ProtoMessage()    {}
 func (*SynthesizeSpeechResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86cfe431745e140, []int{7}
 }
+
 func (m *SynthesizeSpeechResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SynthesizeSpeechResponse.Unmarshal(m, b)
 }

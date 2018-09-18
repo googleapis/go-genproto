@@ -55,6 +55,7 @@ func (*CheckRequest) ProtoMessage()    {}
 func (*CheckRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8f215053b51b20e0, []int{0}
 }
+
 func (m *CheckRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckRequest.Unmarshal(m, b)
 }
@@ -120,6 +121,7 @@ func (*CheckResponse) ProtoMessage()    {}
 func (*CheckResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8f215053b51b20e0, []int{1}
 }
+
 func (m *CheckResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckResponse.Unmarshal(m, b)
 }
@@ -180,6 +182,7 @@ func (*CheckResponse_CheckInfo) ProtoMessage()    {}
 func (*CheckResponse_CheckInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8f215053b51b20e0, []int{1, 0}
 }
+
 func (m *CheckResponse_CheckInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckResponse_CheckInfo.Unmarshal(m, b)
 }
@@ -221,6 +224,7 @@ func (*CheckResponse_ConsumerInfo) ProtoMessage()    {}
 func (*CheckResponse_ConsumerInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8f215053b51b20e0, []int{1, 1}
 }
+
 func (m *CheckResponse_ConsumerInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckResponse_ConsumerInfo.Unmarshal(m, b)
 }
@@ -283,6 +287,7 @@ func (*ReportRequest) ProtoMessage()    {}
 func (*ReportRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8f215053b51b20e0, []int{2}
 }
+
 func (m *ReportRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportRequest.Unmarshal(m, b)
 }
@@ -352,6 +357,7 @@ func (*ReportResponse) ProtoMessage()    {}
 func (*ReportResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8f215053b51b20e0, []int{3}
 }
+
 func (m *ReportResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportResponse.Unmarshal(m, b)
 }
@@ -401,6 +407,7 @@ func (*ReportResponse_ReportError) ProtoMessage()    {}
 func (*ReportResponse_ReportError) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8f215053b51b20e0, []int{3, 0}
 }
+
 func (m *ReportResponse_ReportError) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportResponse_ReportError.Unmarshal(m, b)
 }

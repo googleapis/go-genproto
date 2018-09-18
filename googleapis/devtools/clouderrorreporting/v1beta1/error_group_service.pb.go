@@ -48,6 +48,7 @@ func (*GetGroupRequest) ProtoMessage()    {}
 func (*GetGroupRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cada5d349d61e784, []int{0}
 }
+
 func (m *GetGroupRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGroupRequest.Unmarshal(m, b)
 }
@@ -88,6 +89,7 @@ func (*UpdateGroupRequest) ProtoMessage()    {}
 func (*UpdateGroupRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cada5d349d61e784, []int{1}
 }
+
 func (m *UpdateGroupRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateGroupRequest.Unmarshal(m, b)
 }

@@ -81,6 +81,7 @@ func (*SourceContext) ProtoMessage()    {}
 func (*SourceContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49411dfe5c54cc3e, []int{0}
 }
+
 func (m *SourceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceContext.Unmarshal(m, b)
 }
@@ -266,6 +267,7 @@ func (*AliasContext) ProtoMessage()    {}
 func (*AliasContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49411dfe5c54cc3e, []int{1}
 }
+
 func (m *AliasContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AliasContext.Unmarshal(m, b)
 }
@@ -321,6 +323,7 @@ func (*CloudRepoSourceContext) ProtoMessage()    {}
 func (*CloudRepoSourceContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49411dfe5c54cc3e, []int{2}
 }
+
 func (m *CloudRepoSourceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CloudRepoSourceContext.Unmarshal(m, b)
 }
@@ -479,6 +482,7 @@ func (*GerritSourceContext) ProtoMessage()    {}
 func (*GerritSourceContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49411dfe5c54cc3e, []int{3}
 }
+
 func (m *GerritSourceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GerritSourceContext.Unmarshal(m, b)
 }
@@ -637,6 +641,7 @@ func (*GitSourceContext) ProtoMessage()    {}
 func (*GitSourceContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49411dfe5c54cc3e, []int{4}
 }
+
 func (m *GitSourceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GitSourceContext.Unmarshal(m, b)
 }
@@ -689,6 +694,7 @@ func (*RepoId) ProtoMessage()    {}
 func (*RepoId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49411dfe5c54cc3e, []int{5}
 }
+
 func (m *RepoId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RepoId.Unmarshal(m, b)
 }
@@ -832,6 +838,7 @@ func (*ProjectRepoId) ProtoMessage()    {}
 func (*ProjectRepoId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_49411dfe5c54cc3e, []int{6}
 }
+
 func (m *ProjectRepoId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProjectRepoId.Unmarshal(m, b)
 }

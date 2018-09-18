@@ -56,6 +56,7 @@ func (*LogDescriptor) ProtoMessage()    {}
 func (*LogDescriptor) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6010a88b9216062d, []int{0}
 }
+
 func (m *LogDescriptor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogDescriptor.Unmarshal(m, b)
 }

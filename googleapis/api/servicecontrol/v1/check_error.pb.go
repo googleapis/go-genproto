@@ -132,6 +132,7 @@ func (*CheckError) ProtoMessage()    {}
 func (*CheckError) Descriptor() ([]byte, []int) {
 	return fileDescriptor_abfa738e19256db6, []int{0}
 }
+
 func (m *CheckError) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckError.Unmarshal(m, b)
 }

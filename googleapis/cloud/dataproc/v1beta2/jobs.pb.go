@@ -306,6 +306,7 @@ func (*LoggingConfig) ProtoMessage()    {}
 func (*LoggingConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{0}
 }
+
 func (m *LoggingConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LoggingConfig.Unmarshal(m, b)
 }
@@ -378,6 +379,7 @@ func (*HadoopJob) ProtoMessage()    {}
 func (*HadoopJob) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{1}
 }
+
 func (m *HadoopJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HadoopJob.Unmarshal(m, b)
 }
@@ -585,6 +587,7 @@ func (*SparkJob) ProtoMessage()    {}
 func (*SparkJob) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{2}
 }
+
 func (m *SparkJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SparkJob.Unmarshal(m, b)
 }
@@ -789,6 +792,7 @@ func (*PySparkJob) ProtoMessage()    {}
 func (*PySparkJob) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{3}
 }
+
 func (m *PySparkJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PySparkJob.Unmarshal(m, b)
 }
@@ -891,6 +895,7 @@ func (*QueryList) ProtoMessage()    {}
 func (*QueryList) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{4}
 }
+
 func (m *QueryList) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryList.Unmarshal(m, b)
 }
@@ -953,6 +958,7 @@ func (*HiveJob) ProtoMessage()    {}
 func (*HiveJob) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{5}
 }
+
 func (m *HiveJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HiveJob.Unmarshal(m, b)
 }
@@ -1138,6 +1144,7 @@ func (*SparkSqlJob) ProtoMessage()    {}
 func (*SparkSqlJob) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{6}
 }
+
 func (m *SparkSqlJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SparkSqlJob.Unmarshal(m, b)
 }
@@ -1329,6 +1336,7 @@ func (*PigJob) ProtoMessage()    {}
 func (*PigJob) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{7}
 }
+
 func (m *PigJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PigJob.Unmarshal(m, b)
 }
@@ -1507,6 +1515,7 @@ func (*JobPlacement) ProtoMessage()    {}
 func (*JobPlacement) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{8}
 }
+
 func (m *JobPlacement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobPlacement.Unmarshal(m, b)
 }
@@ -1562,6 +1571,7 @@ func (*JobStatus) ProtoMessage()    {}
 func (*JobStatus) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{9}
 }
+
 func (m *JobStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobStatus.Unmarshal(m, b)
 }
@@ -1630,6 +1640,7 @@ func (*JobReference) ProtoMessage()    {}
 func (*JobReference) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{10}
 }
+
 func (m *JobReference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobReference.Unmarshal(m, b)
 }
@@ -1690,6 +1701,7 @@ func (*YarnApplication) ProtoMessage()    {}
 func (*YarnApplication) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{11}
 }
+
 func (m *YarnApplication) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_YarnApplication.Unmarshal(m, b)
 }
@@ -1794,6 +1806,7 @@ func (*Job) ProtoMessage()    {}
 func (*Job) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{12}
 }
+
 func (m *Job) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Job.Unmarshal(m, b)
 }
@@ -2136,6 +2149,7 @@ func (*JobScheduling) ProtoMessage()    {}
 func (*JobScheduling) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{13}
 }
+
 func (m *JobScheduling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobScheduling.Unmarshal(m, b)
 }
@@ -2193,6 +2207,7 @@ func (*SubmitJobRequest) ProtoMessage()    {}
 func (*SubmitJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{14}
 }
+
 func (m *SubmitJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SubmitJobRequest.Unmarshal(m, b)
 }
@@ -2259,6 +2274,7 @@ func (*GetJobRequest) ProtoMessage()    {}
 func (*GetJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{15}
 }
+
 func (m *GetJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetJobRequest.Unmarshal(m, b)
 }
@@ -2344,6 +2360,7 @@ func (*ListJobsRequest) ProtoMessage()    {}
 func (*ListJobsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{16}
 }
+
 func (m *ListJobsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListJobsRequest.Unmarshal(m, b)
 }
@@ -2440,6 +2457,7 @@ func (*UpdateJobRequest) ProtoMessage()    {}
 func (*UpdateJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{17}
 }
+
 func (m *UpdateJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateJobRequest.Unmarshal(m, b)
 }
@@ -2512,6 +2530,7 @@ func (*ListJobsResponse) ProtoMessage()    {}
 func (*ListJobsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{18}
 }
+
 func (m *ListJobsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListJobsResponse.Unmarshal(m, b)
 }
@@ -2564,6 +2583,7 @@ func (*CancelJobRequest) ProtoMessage()    {}
 func (*CancelJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{19}
 }
+
 func (m *CancelJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelJobRequest.Unmarshal(m, b)
 }
@@ -2623,6 +2643,7 @@ func (*DeleteJobRequest) ProtoMessage()    {}
 func (*DeleteJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_20fb118582e1d7de, []int{20}
 }
+
 func (m *DeleteJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteJobRequest.Unmarshal(m, b)
 }

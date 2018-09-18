@@ -79,6 +79,7 @@ func (*Api) ProtoMessage()    {}
 func (*Api) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a2ec32096296c143, []int{0}
 }
+
 func (m *Api) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Api.Unmarshal(m, b)
 }
@@ -173,6 +174,7 @@ func (*Method) ProtoMessage()    {}
 func (*Method) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a2ec32096296c143, []int{1}
 }
+
 func (m *Method) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Method.Unmarshal(m, b)
 }
@@ -335,6 +337,7 @@ func (*Mixin) ProtoMessage()    {}
 func (*Mixin) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a2ec32096296c143, []int{2}
 }
+
 func (m *Mixin) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mixin.Unmarshal(m, b)
 }

@@ -184,6 +184,7 @@ func (*Instance) ProtoMessage()    {}
 func (*Instance) Descriptor() ([]byte, []int) {
 	return fileDescriptor_712127d2a900984d, []int{0}
 }
+
 func (m *Instance) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Instance.Unmarshal(m, b)
 }
@@ -272,6 +273,7 @@ func (*Cluster) ProtoMessage()    {}
 func (*Cluster) Descriptor() ([]byte, []int) {
 	return fileDescriptor_712127d2a900984d, []int{1}
 }
+
 func (m *Cluster) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Cluster.Unmarshal(m, b)
 }
@@ -361,6 +363,7 @@ func (*AppProfile) ProtoMessage()    {}
 func (*AppProfile) Descriptor() ([]byte, []int) {
 	return fileDescriptor_712127d2a900984d, []int{2}
 }
+
 func (m *AppProfile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppProfile.Unmarshal(m, b)
 }
@@ -527,6 +530,7 @@ func (*AppProfile_MultiClusterRoutingUseAny) ProtoMessage()    {}
 func (*AppProfile_MultiClusterRoutingUseAny) Descriptor() ([]byte, []int) {
 	return fileDescriptor_712127d2a900984d, []int{2, 0}
 }
+
 func (m *AppProfile_MultiClusterRoutingUseAny) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppProfile_MultiClusterRoutingUseAny.Unmarshal(m, b)
 }
@@ -566,6 +570,7 @@ func (*AppProfile_SingleClusterRouting) ProtoMessage()    {}
 func (*AppProfile_SingleClusterRouting) Descriptor() ([]byte, []int) {
 	return fileDescriptor_712127d2a900984d, []int{2, 1}
 }
+
 func (m *AppProfile_SingleClusterRouting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppProfile_SingleClusterRouting.Unmarshal(m, b)
 }

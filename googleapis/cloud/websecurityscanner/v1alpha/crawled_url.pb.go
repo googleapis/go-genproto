@@ -46,6 +46,7 @@ func (*CrawledUrl) ProtoMessage()    {}
 func (*CrawledUrl) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a45f0d639c4b8a44, []int{0}
 }
+
 func (m *CrawledUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CrawledUrl.Unmarshal(m, b)
 }

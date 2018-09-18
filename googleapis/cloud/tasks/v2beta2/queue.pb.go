@@ -174,6 +174,7 @@ func (*Queue) ProtoMessage()    {}
 func (*Queue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86070a8ff200176, []int{0}
 }
+
 func (m *Queue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Queue.Unmarshal(m, b)
 }
@@ -425,6 +426,7 @@ func (*RateLimits) ProtoMessage()    {}
 func (*RateLimits) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86070a8ff200176, []int{1}
 }
+
 func (m *RateLimits) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RateLimits.Unmarshal(m, b)
 }
@@ -575,6 +577,7 @@ func (*RetryConfig) ProtoMessage()    {}
 func (*RetryConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b86070a8ff200176, []int{2}
 }
+
 func (m *RetryConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RetryConfig.Unmarshal(m, b)
 }

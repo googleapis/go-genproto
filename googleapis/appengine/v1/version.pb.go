@@ -243,6 +243,7 @@ func (*Version) ProtoMessage()    {}
 func (*Version) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{0}
 }
+
 func (m *Version) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Version.Unmarshal(m, b)
 }
@@ -627,6 +628,7 @@ func (*AutomaticScaling) ProtoMessage()    {}
 func (*AutomaticScaling) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{1}
 }
+
 func (m *AutomaticScaling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AutomaticScaling.Unmarshal(m, b)
 }
@@ -750,6 +752,7 @@ func (*BasicScaling) ProtoMessage()    {}
 func (*BasicScaling) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{2}
 }
+
 func (m *BasicScaling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BasicScaling.Unmarshal(m, b)
 }
@@ -801,6 +804,7 @@ func (*ManualScaling) ProtoMessage()    {}
 func (*ManualScaling) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{3}
 }
+
 func (m *ManualScaling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ManualScaling.Unmarshal(m, b)
 }
@@ -844,6 +848,7 @@ func (*CpuUtilization) ProtoMessage()    {}
 func (*CpuUtilization) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{4}
 }
+
 func (m *CpuUtilization) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CpuUtilization.Unmarshal(m, b)
 }
@@ -893,6 +898,7 @@ func (*RequestUtilization) ProtoMessage()    {}
 func (*RequestUtilization) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{5}
 }
+
 func (m *RequestUtilization) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestUtilization.Unmarshal(m, b)
 }
@@ -946,6 +952,7 @@ func (*DiskUtilization) ProtoMessage()    {}
 func (*DiskUtilization) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{6}
 }
+
 func (m *DiskUtilization) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DiskUtilization.Unmarshal(m, b)
 }
@@ -1013,6 +1020,7 @@ func (*NetworkUtilization) ProtoMessage()    {}
 func (*NetworkUtilization) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{7}
 }
+
 func (m *NetworkUtilization) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NetworkUtilization.Unmarshal(m, b)
 }
@@ -1082,6 +1090,7 @@ func (*Network) ProtoMessage()    {}
 func (*Network) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{8}
 }
+
 func (m *Network) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Network.Unmarshal(m, b)
 }
@@ -1140,6 +1149,7 @@ func (*Resources) ProtoMessage()    {}
 func (*Resources) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fbe3eca208d62f7c, []int{9}
 }
+
 func (m *Resources) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Resources.Unmarshal(m, b)
 }

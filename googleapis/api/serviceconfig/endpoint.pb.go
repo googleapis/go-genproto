@@ -71,6 +71,7 @@ func (*Endpoint) ProtoMessage()    {}
 func (*Endpoint) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ee48cbc4cc013456, []int{0}
 }
+
 func (m *Endpoint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Endpoint.Unmarshal(m, b)
 }

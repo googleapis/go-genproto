@@ -91,6 +91,7 @@ func (*Quota) ProtoMessage()    {}
 func (*Quota) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6822ef0454b3845a, []int{0}
 }
+
 func (m *Quota) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Quota.Unmarshal(m, b)
 }
@@ -151,6 +152,7 @@ func (*MetricRule) ProtoMessage()    {}
 func (*MetricRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6822ef0454b3845a, []int{1}
 }
+
 func (m *MetricRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MetricRule.Unmarshal(m, b)
 }
@@ -334,6 +336,7 @@ func (*QuotaLimit) ProtoMessage()    {}
 func (*QuotaLimit) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6822ef0454b3845a, []int{2}
 }
+
 func (m *QuotaLimit) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QuotaLimit.Unmarshal(m, b)
 }

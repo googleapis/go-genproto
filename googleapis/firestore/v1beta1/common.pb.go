@@ -42,6 +42,7 @@ func (*DocumentMask) ProtoMessage()    {}
 func (*DocumentMask) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bfe8bb60f36bcae9, []int{0}
 }
+
 func (m *DocumentMask) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentMask.Unmarshal(m, b)
 }
@@ -86,6 +87,7 @@ func (*Precondition) ProtoMessage()    {}
 func (*Precondition) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bfe8bb60f36bcae9, []int{1}
 }
+
 func (m *Precondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Precondition.Unmarshal(m, b)
 }
@@ -233,6 +235,7 @@ func (*TransactionOptions) ProtoMessage()    {}
 func (*TransactionOptions) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bfe8bb60f36bcae9, []int{2}
 }
+
 func (m *TransactionOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions.Unmarshal(m, b)
 }
@@ -377,6 +380,7 @@ func (*TransactionOptions_ReadWrite) ProtoMessage()    {}
 func (*TransactionOptions_ReadWrite) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bfe8bb60f36bcae9, []int{2, 0}
 }
+
 func (m *TransactionOptions_ReadWrite) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions_ReadWrite.Unmarshal(m, b)
 }
@@ -421,6 +425,7 @@ func (*TransactionOptions_ReadOnly) ProtoMessage()    {}
 func (*TransactionOptions_ReadOnly) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bfe8bb60f36bcae9, []int{2, 1}
 }
+
 func (m *TransactionOptions_ReadOnly) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions_ReadOnly.Unmarshal(m, b)
 }

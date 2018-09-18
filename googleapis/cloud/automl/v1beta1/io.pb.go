@@ -39,6 +39,7 @@ func (*InputConfig) ProtoMessage()    {}
 func (*InputConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6e2d768504aa30d7, []int{0}
 }
+
 func (m *InputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputConfig.Unmarshal(m, b)
 }
@@ -154,6 +155,7 @@ func (*OutputConfig) ProtoMessage()    {}
 func (*OutputConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6e2d768504aa30d7, []int{1}
 }
+
 func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputConfig.Unmarshal(m, b)
 }
@@ -268,6 +270,7 @@ func (*GcsSource) ProtoMessage()    {}
 func (*GcsSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6e2d768504aa30d7, []int{2}
 }
+
 func (m *GcsSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsSource.Unmarshal(m, b)
 }
@@ -313,6 +316,7 @@ func (*GcsDestination) ProtoMessage()    {}
 func (*GcsDestination) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6e2d768504aa30d7, []int{3}
 }
+
 func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsDestination.Unmarshal(m, b)
 }

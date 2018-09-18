@@ -48,6 +48,7 @@ func (*SetIamPolicyRequest) ProtoMessage()    {}
 func (*SetIamPolicyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d2728eb97d748a32, []int{0}
 }
+
 func (m *SetIamPolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetIamPolicyRequest.Unmarshal(m, b)
 }
@@ -97,6 +98,7 @@ func (*GetIamPolicyRequest) ProtoMessage()    {}
 func (*GetIamPolicyRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d2728eb97d748a32, []int{1}
 }
+
 func (m *GetIamPolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetIamPolicyRequest.Unmarshal(m, b)
 }
@@ -144,6 +146,7 @@ func (*TestIamPermissionsRequest) ProtoMessage()    {}
 func (*TestIamPermissionsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d2728eb97d748a32, []int{2}
 }
+
 func (m *TestIamPermissionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestIamPermissionsRequest.Unmarshal(m, b)
 }
@@ -192,6 +195,7 @@ func (*TestIamPermissionsResponse) ProtoMessage()    {}
 func (*TestIamPermissionsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d2728eb97d748a32, []int{3}
 }
+
 func (m *TestIamPermissionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestIamPermissionsResponse.Unmarshal(m, b)
 }

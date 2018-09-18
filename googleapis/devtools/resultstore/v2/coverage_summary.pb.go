@@ -37,6 +37,7 @@ func (*LineCoverageSummary) ProtoMessage()    {}
 func (*LineCoverageSummary) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a504af212dd04847, []int{0}
 }
+
 func (m *LineCoverageSummary) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LineCoverageSummary.Unmarshal(m, b)
 }
@@ -96,6 +97,7 @@ func (*BranchCoverageSummary) ProtoMessage()    {}
 func (*BranchCoverageSummary) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a504af212dd04847, []int{1}
 }
+
 func (m *BranchCoverageSummary) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BranchCoverageSummary.Unmarshal(m, b)
 }
@@ -154,6 +156,7 @@ func (*LanguageCoverageSummary) ProtoMessage()    {}
 func (*LanguageCoverageSummary) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a504af212dd04847, []int{2}
 }
+
 func (m *LanguageCoverageSummary) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LanguageCoverageSummary.Unmarshal(m, b)
 }

@@ -39,6 +39,7 @@ func (*AuditData) ProtoMessage()    {}
 func (*AuditData) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe22f7c00ab4acd5, []int{0}
 }
+
 func (m *AuditData) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuditData.Unmarshal(m, b)
 }

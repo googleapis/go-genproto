@@ -239,6 +239,7 @@ func (*Action) ProtoMessage()    {}
 func (*Action) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{0}
 }
+
 func (m *Action) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Action.Unmarshal(m, b)
 }
@@ -466,6 +467,7 @@ func (*Action_Id) ProtoMessage()    {}
 func (*Action_Id) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{0, 0}
 }
+
 func (m *Action_Id) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Action_Id.Unmarshal(m, b)
 }
@@ -537,6 +539,7 @@ func (*BuildAction) ProtoMessage()    {}
 func (*BuildAction) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{1}
 }
+
 func (m *BuildAction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildAction.Unmarshal(m, b)
 }
@@ -616,6 +619,7 @@ func (*TestAction) ProtoMessage()    {}
 func (*TestAction) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{2}
 }
+
 func (m *TestAction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestAction.Unmarshal(m, b)
 }
@@ -706,6 +710,7 @@ func (*ActionAttributes) ProtoMessage()    {}
 func (*ActionAttributes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{3}
 }
+
 func (m *ActionAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ActionAttributes.Unmarshal(m, b)
 }
@@ -776,6 +781,7 @@ func (*InputFileInfo) ProtoMessage()    {}
 func (*InputFileInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{4}
 }
+
 func (m *InputFileInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputFileInfo.Unmarshal(m, b)
 }
@@ -845,6 +851,7 @@ func (*LocalTestTiming) ProtoMessage()    {}
 func (*LocalTestTiming) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{5}
 }
+
 func (m *LocalTestTiming) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocalTestTiming.Unmarshal(m, b)
 }
@@ -902,6 +909,7 @@ func (*RemoteTestAttemptTiming) ProtoMessage()    {}
 func (*RemoteTestAttemptTiming) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{6}
 }
+
 func (m *RemoteTestAttemptTiming) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoteTestAttemptTiming.Unmarshal(m, b)
 }
@@ -973,6 +981,7 @@ func (*RemoteTestTiming) ProtoMessage()    {}
 func (*RemoteTestTiming) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{7}
 }
+
 func (m *RemoteTestTiming) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoteTestTiming.Unmarshal(m, b)
 }
@@ -1038,6 +1047,7 @@ func (*TestTiming) ProtoMessage()    {}
 func (*TestTiming) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{8}
 }
+
 func (m *TestTiming) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestTiming.Unmarshal(m, b)
 }
@@ -1203,6 +1213,7 @@ func (*TestWarning) ProtoMessage()    {}
 func (*TestWarning) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{9}
 }
+
 func (m *TestWarning) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TestWarning.Unmarshal(m, b)
 }
@@ -1245,6 +1256,7 @@ func (*FileProcessingErrors) ProtoMessage()    {}
 func (*FileProcessingErrors) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{10}
 }
+
 func (m *FileProcessingErrors) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileProcessingErrors.Unmarshal(m, b)
 }
@@ -1294,6 +1306,7 @@ func (*FileProcessingError) ProtoMessage()    {}
 func (*FileProcessingError) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e98e32542f2d3836, []int{11}
 }
+
 func (m *FileProcessingError) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileProcessingError.Unmarshal(m, b)
 }

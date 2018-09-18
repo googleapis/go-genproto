@@ -215,6 +215,7 @@ func (*StructuredQuery) ProtoMessage()    {}
 func (*StructuredQuery) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{0}
 }
+
 func (m *StructuredQuery) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredQuery.Unmarshal(m, b)
 }
@@ -309,6 +310,7 @@ func (*StructuredQuery_CollectionSelector) ProtoMessage()    {}
 func (*StructuredQuery_CollectionSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{0, 0}
 }
+
 func (m *StructuredQuery_CollectionSelector) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredQuery_CollectionSelector.Unmarshal(m, b)
 }
@@ -361,6 +363,7 @@ func (*StructuredQuery_Filter) ProtoMessage()    {}
 func (*StructuredQuery_Filter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{0, 1}
 }
+
 func (m *StructuredQuery_Filter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredQuery_Filter.Unmarshal(m, b)
 }
@@ -540,6 +543,7 @@ func (*StructuredQuery_CompositeFilter) ProtoMessage()    {}
 func (*StructuredQuery_CompositeFilter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{0, 2}
 }
+
 func (m *StructuredQuery_CompositeFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredQuery_CompositeFilter.Unmarshal(m, b)
 }
@@ -591,6 +595,7 @@ func (*StructuredQuery_FieldFilter) ProtoMessage()    {}
 func (*StructuredQuery_FieldFilter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{0, 3}
 }
+
 func (m *StructuredQuery_FieldFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredQuery_FieldFilter.Unmarshal(m, b)
 }
@@ -650,6 +655,7 @@ func (*StructuredQuery_UnaryFilter) ProtoMessage()    {}
 func (*StructuredQuery_UnaryFilter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{0, 4}
 }
+
 func (m *StructuredQuery_UnaryFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredQuery_UnaryFilter.Unmarshal(m, b)
 }
@@ -771,6 +777,7 @@ func (*StructuredQuery_Order) ProtoMessage()    {}
 func (*StructuredQuery_Order) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{0, 5}
 }
+
 func (m *StructuredQuery_Order) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredQuery_Order.Unmarshal(m, b)
 }
@@ -817,6 +824,7 @@ func (*StructuredQuery_FieldReference) ProtoMessage()    {}
 func (*StructuredQuery_FieldReference) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{0, 6}
 }
+
 func (m *StructuredQuery_FieldReference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredQuery_FieldReference.Unmarshal(m, b)
 }
@@ -860,6 +868,7 @@ func (*StructuredQuery_Projection) ProtoMessage()    {}
 func (*StructuredQuery_Projection) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{0, 7}
 }
+
 func (m *StructuredQuery_Projection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredQuery_Projection.Unmarshal(m, b)
 }
@@ -906,6 +915,7 @@ func (*Cursor) ProtoMessage()    {}
 func (*Cursor) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ae4429ffd6f5a03, []int{1}
 }
+
 func (m *Cursor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Cursor.Unmarshal(m, b)
 }

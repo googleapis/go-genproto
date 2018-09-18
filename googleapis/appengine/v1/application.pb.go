@@ -89,6 +89,7 @@ func (*Application) ProtoMessage()    {}
 func (*Application) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fd91fbd11f8d8d62, []int{0}
 }
+
 func (m *Application) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Application.Unmarshal(m, b)
 }
@@ -197,6 +198,7 @@ func (*UrlDispatchRule) ProtoMessage()    {}
 func (*UrlDispatchRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fd91fbd11f8d8d62, []int{1}
 }
+
 func (m *UrlDispatchRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UrlDispatchRule.Unmarshal(m, b)
 }

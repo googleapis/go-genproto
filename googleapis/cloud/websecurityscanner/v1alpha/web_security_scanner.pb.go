@@ -48,6 +48,7 @@ func (*CreateScanConfigRequest) ProtoMessage()    {}
 func (*CreateScanConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{0}
 }
+
 func (m *CreateScanConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateScanConfigRequest.Unmarshal(m, b)
 }
@@ -97,6 +98,7 @@ func (*DeleteScanConfigRequest) ProtoMessage()    {}
 func (*DeleteScanConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{1}
 }
+
 func (m *DeleteScanConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteScanConfigRequest.Unmarshal(m, b)
 }
@@ -139,6 +141,7 @@ func (*GetScanConfigRequest) ProtoMessage()    {}
 func (*GetScanConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{2}
 }
+
 func (m *GetScanConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetScanConfigRequest.Unmarshal(m, b)
 }
@@ -189,6 +192,7 @@ func (*ListScanConfigsRequest) ProtoMessage()    {}
 func (*ListScanConfigsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{3}
 }
+
 func (m *ListScanConfigsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListScanConfigsRequest.Unmarshal(m, b)
 }
@@ -251,6 +255,7 @@ func (*UpdateScanConfigRequest) ProtoMessage()    {}
 func (*UpdateScanConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{4}
 }
+
 func (m *UpdateScanConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateScanConfigRequest.Unmarshal(m, b)
 }
@@ -301,6 +306,7 @@ func (*ListScanConfigsResponse) ProtoMessage()    {}
 func (*ListScanConfigsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{5}
 }
+
 func (m *ListScanConfigsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListScanConfigsResponse.Unmarshal(m, b)
 }
@@ -350,6 +356,7 @@ func (*StartScanRunRequest) ProtoMessage()    {}
 func (*StartScanRunRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{6}
 }
+
 func (m *StartScanRunRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StartScanRunRequest.Unmarshal(m, b)
 }
@@ -393,6 +400,7 @@ func (*GetScanRunRequest) ProtoMessage()    {}
 func (*GetScanRunRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{7}
 }
+
 func (m *GetScanRunRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetScanRunRequest.Unmarshal(m, b)
 }
@@ -443,6 +451,7 @@ func (*ListScanRunsRequest) ProtoMessage()    {}
 func (*ListScanRunsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{8}
 }
+
 func (m *ListScanRunsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListScanRunsRequest.Unmarshal(m, b)
 }
@@ -500,6 +509,7 @@ func (*ListScanRunsResponse) ProtoMessage()    {}
 func (*ListScanRunsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{9}
 }
+
 func (m *ListScanRunsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListScanRunsResponse.Unmarshal(m, b)
 }
@@ -550,6 +560,7 @@ func (*StopScanRunRequest) ProtoMessage()    {}
 func (*StopScanRunRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{10}
 }
+
 func (m *StopScanRunRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StopScanRunRequest.Unmarshal(m, b)
 }
@@ -601,6 +612,7 @@ func (*ListCrawledUrlsRequest) ProtoMessage()    {}
 func (*ListCrawledUrlsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{11}
 }
+
 func (m *ListCrawledUrlsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCrawledUrlsRequest.Unmarshal(m, b)
 }
@@ -658,6 +670,7 @@ func (*ListCrawledUrlsResponse) ProtoMessage()    {}
 func (*ListCrawledUrlsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{12}
 }
+
 func (m *ListCrawledUrlsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCrawledUrlsResponse.Unmarshal(m, b)
 }
@@ -708,6 +721,7 @@ func (*GetFindingRequest) ProtoMessage()    {}
 func (*GetFindingRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{13}
 }
+
 func (m *GetFindingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetFindingRequest.Unmarshal(m, b)
 }
@@ -764,6 +778,7 @@ func (*ListFindingsRequest) ProtoMessage()    {}
 func (*ListFindingsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{14}
 }
+
 func (m *ListFindingsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFindingsRequest.Unmarshal(m, b)
 }
@@ -828,6 +843,7 @@ func (*ListFindingsResponse) ProtoMessage()    {}
 func (*ListFindingsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{15}
 }
+
 func (m *ListFindingsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFindingsResponse.Unmarshal(m, b)
 }
@@ -878,6 +894,7 @@ func (*ListFindingTypeStatsRequest) ProtoMessage()    {}
 func (*ListFindingTypeStatsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{16}
 }
+
 func (m *ListFindingTypeStatsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFindingTypeStatsRequest.Unmarshal(m, b)
 }
@@ -918,6 +935,7 @@ func (*ListFindingTypeStatsResponse) ProtoMessage()    {}
 func (*ListFindingTypeStatsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_23d01882da6eef5f, []int{17}
 }
+
 func (m *ListFindingTypeStatsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFindingTypeStatsResponse.Unmarshal(m, b)
 }

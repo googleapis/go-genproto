@@ -251,6 +251,7 @@ func (*ApiConfigHandler) ProtoMessage()    {}
 func (*ApiConfigHandler) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e3b6ce3f971717f, []int{0}
 }
+
 func (m *ApiConfigHandler) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApiConfigHandler.Unmarshal(m, b)
 }
@@ -323,6 +324,7 @@ func (*ErrorHandler) ProtoMessage()    {}
 func (*ErrorHandler) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e3b6ce3f971717f, []int{1}
 }
+
 func (m *ErrorHandler) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ErrorHandler.Unmarshal(m, b)
 }
@@ -399,6 +401,7 @@ func (*UrlMap) ProtoMessage()    {}
 func (*UrlMap) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e3b6ce3f971717f, []int{2}
 }
+
 func (m *UrlMap) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UrlMap.Unmarshal(m, b)
 }
@@ -637,6 +640,7 @@ func (*StaticFilesHandler) ProtoMessage()    {}
 func (*StaticFilesHandler) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e3b6ce3f971717f, []int{3}
 }
+
 func (m *StaticFilesHandler) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StaticFilesHandler.Unmarshal(m, b)
 }
@@ -719,6 +723,7 @@ func (*ScriptHandler) ProtoMessage()    {}
 func (*ScriptHandler) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e3b6ce3f971717f, []int{4}
 }
+
 func (m *ScriptHandler) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScriptHandler.Unmarshal(m, b)
 }
@@ -759,6 +764,7 @@ func (*ApiEndpointHandler) ProtoMessage()    {}
 func (*ApiEndpointHandler) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e3b6ce3f971717f, []int{5}
 }
+
 func (m *ApiEndpointHandler) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApiEndpointHandler.Unmarshal(m, b)
 }
@@ -817,6 +823,7 @@ func (*HealthCheck) ProtoMessage()    {}
 func (*HealthCheck) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e3b6ce3f971717f, []int{6}
 }
+
 func (m *HealthCheck) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HealthCheck.Unmarshal(m, b)
 }
@@ -901,6 +908,7 @@ func (*Library) ProtoMessage()    {}
 func (*Library) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e3b6ce3f971717f, []int{7}
 }
+
 func (m *Library) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Library.Unmarshal(m, b)
 }

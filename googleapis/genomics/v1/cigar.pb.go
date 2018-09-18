@@ -128,6 +128,7 @@ func (*CigarUnit) ProtoMessage()    {}
 func (*CigarUnit) Descriptor() ([]byte, []int) {
 	return fileDescriptor_353bda9a6ec457b8, []int{0}
 }
+
 func (m *CigarUnit) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CigarUnit.Unmarshal(m, b)
 }

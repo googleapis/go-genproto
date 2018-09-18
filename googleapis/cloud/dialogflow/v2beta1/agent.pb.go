@@ -113,6 +113,7 @@ func (*Agent) ProtoMessage()    {}
 func (*Agent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be44838675479699, []int{0}
 }
+
 func (m *Agent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Agent.Unmarshal(m, b)
 }
@@ -217,6 +218,7 @@ func (*GetAgentRequest) ProtoMessage()    {}
 func (*GetAgentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be44838675479699, []int{1}
 }
+
 func (m *GetAgentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAgentRequest.Unmarshal(m, b)
 }
@@ -263,6 +265,7 @@ func (*SearchAgentsRequest) ProtoMessage()    {}
 func (*SearchAgentsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be44838675479699, []int{2}
 }
+
 func (m *SearchAgentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchAgentsRequest.Unmarshal(m, b)
 }
@@ -321,6 +324,7 @@ func (*SearchAgentsResponse) ProtoMessage()    {}
 func (*SearchAgentsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be44838675479699, []int{3}
 }
+
 func (m *SearchAgentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchAgentsResponse.Unmarshal(m, b)
 }
@@ -369,6 +373,7 @@ func (*TrainAgentRequest) ProtoMessage()    {}
 func (*TrainAgentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be44838675479699, []int{4}
 }
+
 func (m *TrainAgentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TrainAgentRequest.Unmarshal(m, b)
 }
@@ -416,6 +421,7 @@ func (*ExportAgentRequest) ProtoMessage()    {}
 func (*ExportAgentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be44838675479699, []int{5}
 }
+
 func (m *ExportAgentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportAgentRequest.Unmarshal(m, b)
 }
@@ -467,6 +473,7 @@ func (*ExportAgentResponse) ProtoMessage()    {}
 func (*ExportAgentResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be44838675479699, []int{6}
 }
+
 func (m *ExportAgentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportAgentResponse.Unmarshal(m, b)
 }
@@ -610,6 +617,7 @@ func (*ImportAgentRequest) ProtoMessage()    {}
 func (*ImportAgentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be44838675479699, []int{7}
 }
+
 func (m *ImportAgentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportAgentRequest.Unmarshal(m, b)
 }
@@ -760,6 +768,7 @@ func (*RestoreAgentRequest) ProtoMessage()    {}
 func (*RestoreAgentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be44838675479699, []int{8}
 }
+
 func (m *RestoreAgentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RestoreAgentRequest.Unmarshal(m, b)
 }

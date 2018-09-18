@@ -79,6 +79,7 @@ func (*Document) ProtoMessage()    {}
 func (*Document) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1522b475188e04d0, []int{0}
 }
+
 func (m *Document) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Document.Unmarshal(m, b)
 }
@@ -153,6 +154,7 @@ func (*Value) ProtoMessage()    {}
 func (*Value) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1522b475188e04d0, []int{1}
 }
+
 func (m *Value) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Value.Unmarshal(m, b)
 }
@@ -557,6 +559,7 @@ func (*ArrayValue) ProtoMessage()    {}
 func (*ArrayValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1522b475188e04d0, []int{2}
 }
+
 func (m *ArrayValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ArrayValue.Unmarshal(m, b)
 }
@@ -602,6 +605,7 @@ func (*MapValue) ProtoMessage()    {}
 func (*MapValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1522b475188e04d0, []int{3}
 }
+
 func (m *MapValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MapValue.Unmarshal(m, b)
 }

@@ -63,6 +63,7 @@ func (*Reference) ProtoMessage()    {}
 func (*Reference) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{0}
 }
+
 func (m *Reference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Reference.Unmarshal(m, b)
 }
@@ -176,6 +177,7 @@ func (*ReferenceSet) ProtoMessage()    {}
 func (*ReferenceSet) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{1}
 }
+
 func (m *ReferenceSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReferenceSet.Unmarshal(m, b)
 }
@@ -280,6 +282,7 @@ func (*SearchReferenceSetsRequest) ProtoMessage()    {}
 func (*SearchReferenceSetsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{2}
 }
+
 func (m *SearchReferenceSetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchReferenceSetsRequest.Unmarshal(m, b)
 }
@@ -351,6 +354,7 @@ func (*SearchReferenceSetsResponse) ProtoMessage()    {}
 func (*SearchReferenceSetsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{3}
 }
+
 func (m *SearchReferenceSetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchReferenceSetsResponse.Unmarshal(m, b)
 }
@@ -397,6 +401,7 @@ func (*GetReferenceSetRequest) ProtoMessage()    {}
 func (*GetReferenceSetRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{4}
 }
+
 func (m *GetReferenceSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetReferenceSetRequest.Unmarshal(m, b)
 }
@@ -451,6 +456,7 @@ func (*SearchReferencesRequest) ProtoMessage()    {}
 func (*SearchReferencesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{5}
 }
+
 func (m *SearchReferencesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchReferencesRequest.Unmarshal(m, b)
 }
@@ -522,6 +528,7 @@ func (*SearchReferencesResponse) ProtoMessage()    {}
 func (*SearchReferencesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{6}
 }
+
 func (m *SearchReferencesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchReferencesResponse.Unmarshal(m, b)
 }
@@ -568,6 +575,7 @@ func (*GetReferenceRequest) ProtoMessage()    {}
 func (*GetReferenceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{7}
 }
+
 func (m *GetReferenceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetReferenceRequest.Unmarshal(m, b)
 }
@@ -620,6 +628,7 @@ func (*ListBasesRequest) ProtoMessage()    {}
 func (*ListBasesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{8}
 }
+
 func (m *ListBasesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBasesRequest.Unmarshal(m, b)
 }
@@ -695,6 +704,7 @@ func (*ListBasesResponse) ProtoMessage()    {}
 func (*ListBasesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_008bb4c9c386df7c, []int{9}
 }
+
 func (m *ListBasesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListBasesResponse.Unmarshal(m, b)
 }

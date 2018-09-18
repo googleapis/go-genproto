@@ -97,6 +97,7 @@ func (*AppEngineHttpQueue) ProtoMessage()    {}
 func (*AppEngineHttpQueue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_595de6119aed6d9e, []int{0}
 }
+
 func (m *AppEngineHttpQueue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpQueue.Unmarshal(m, b)
 }
@@ -248,6 +249,7 @@ func (*AppEngineHttpRequest) ProtoMessage()    {}
 func (*AppEngineHttpRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_595de6119aed6d9e, []int{1}
 }
+
 func (m *AppEngineHttpRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpRequest.Unmarshal(m, b)
 }
@@ -385,6 +387,7 @@ func (*AppEngineRouting) ProtoMessage()    {}
 func (*AppEngineRouting) Descriptor() ([]byte, []int) {
 	return fileDescriptor_595de6119aed6d9e, []int{2}
 }
+
 func (m *AppEngineRouting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineRouting.Unmarshal(m, b)
 }

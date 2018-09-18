@@ -55,6 +55,7 @@ func (*GetFileRequest) ProtoMessage()    {}
 func (*GetFileRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8107699981ff9308, []int{0}
 }
+
 func (m *GetFileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetFileRequest.Unmarshal(m, b)
 }
@@ -109,6 +110,7 @@ func (*GetFileResponse) ProtoMessage()    {}
 func (*GetFileResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8107699981ff9308, []int{1}
 }
+
 func (m *GetFileResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetFileResponse.Unmarshal(m, b)
 }
@@ -161,6 +163,7 @@ func (*GetFileTailRequest) ProtoMessage()    {}
 func (*GetFileTailRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8107699981ff9308, []int{2}
 }
+
 func (m *GetFileTailRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetFileTailRequest.Unmarshal(m, b)
 }
@@ -215,6 +218,7 @@ func (*GetFileTailResponse) ProtoMessage()    {}
 func (*GetFileTailResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8107699981ff9308, []int{3}
 }
+
 func (m *GetFileTailResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetFileTailResponse.Unmarshal(m, b)
 }

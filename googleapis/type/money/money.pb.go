@@ -45,6 +45,7 @@ func (*Money) ProtoMessage()    {}
 func (*Money) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f093d3d05ab4bbee, []int{0}
 }
+
 func (m *Money) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Money.Unmarshal(m, b)
 }

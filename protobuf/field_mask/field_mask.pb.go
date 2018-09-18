@@ -233,6 +233,7 @@ func (*FieldMask) ProtoMessage()    {}
 func (*FieldMask) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5158202634f0da48, []int{0}
 }
+
 func (m *FieldMask) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FieldMask.Unmarshal(m, b)
 }

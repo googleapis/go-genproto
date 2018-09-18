@@ -112,6 +112,7 @@ func (*Documentation) ProtoMessage()    {}
 func (*Documentation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dead24b587ac0742, []int{0}
 }
+
 func (m *Documentation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Documentation.Unmarshal(m, b)
 }
@@ -190,6 +191,7 @@ func (*DocumentationRule) ProtoMessage()    {}
 func (*DocumentationRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dead24b587ac0742, []int{1}
 }
+
 func (m *DocumentationRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentationRule.Unmarshal(m, b)
 }
@@ -264,6 +266,7 @@ func (*Page) ProtoMessage()    {}
 func (*Page) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dead24b587ac0742, []int{2}
 }
+
 func (m *Page) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Page.Unmarshal(m, b)
 }

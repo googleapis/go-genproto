@@ -193,6 +193,7 @@ func (*AnnotateVideoRequest) ProtoMessage()    {}
 func (*AnnotateVideoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{0}
 }
+
 func (m *AnnotateVideoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateVideoRequest.Unmarshal(m, b)
 }
@@ -278,6 +279,7 @@ func (*VideoContext) ProtoMessage()    {}
 func (*VideoContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{1}
 }
+
 func (m *VideoContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoContext.Unmarshal(m, b)
 }
@@ -356,6 +358,7 @@ func (*LabelDetectionConfig) ProtoMessage()    {}
 func (*LabelDetectionConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{2}
 }
+
 func (m *LabelDetectionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelDetectionConfig.Unmarshal(m, b)
 }
@@ -412,6 +415,7 @@ func (*ShotChangeDetectionConfig) ProtoMessage()    {}
 func (*ShotChangeDetectionConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{3}
 }
+
 func (m *ShotChangeDetectionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ShotChangeDetectionConfig.Unmarshal(m, b)
 }
@@ -454,6 +458,7 @@ func (*ExplicitContentDetectionConfig) ProtoMessage()    {}
 func (*ExplicitContentDetectionConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{4}
 }
+
 func (m *ExplicitContentDetectionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExplicitContentDetectionConfig.Unmarshal(m, b)
 }
@@ -498,6 +503,7 @@ func (*VideoSegment) ProtoMessage()    {}
 func (*VideoSegment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{5}
 }
+
 func (m *VideoSegment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoSegment.Unmarshal(m, b)
 }
@@ -547,6 +553,7 @@ func (*LabelSegment) ProtoMessage()    {}
 func (*LabelSegment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{6}
 }
+
 func (m *LabelSegment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelSegment.Unmarshal(m, b)
 }
@@ -597,6 +604,7 @@ func (*LabelFrame) ProtoMessage()    {}
 func (*LabelFrame) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{7}
 }
+
 func (m *LabelFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelFrame.Unmarshal(m, b)
 }
@@ -650,6 +658,7 @@ func (*Entity) ProtoMessage()    {}
 func (*Entity) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{8}
 }
+
 func (m *Entity) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Entity.Unmarshal(m, b)
 }
@@ -713,6 +722,7 @@ func (*LabelAnnotation) ProtoMessage()    {}
 func (*LabelAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{9}
 }
+
 func (m *LabelAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelAnnotation.Unmarshal(m, b)
 }
@@ -777,6 +787,7 @@ func (*ExplicitContentFrame) ProtoMessage()    {}
 func (*ExplicitContentFrame) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{10}
 }
+
 func (m *ExplicitContentFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExplicitContentFrame.Unmarshal(m, b)
 }
@@ -826,6 +837,7 @@ func (*ExplicitContentAnnotation) ProtoMessage()    {}
 func (*ExplicitContentAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{11}
 }
+
 func (m *ExplicitContentAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExplicitContentAnnotation.Unmarshal(m, b)
 }
@@ -885,6 +897,7 @@ func (*VideoAnnotationResults) ProtoMessage()    {}
 func (*VideoAnnotationResults) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{12}
 }
+
 func (m *VideoAnnotationResults) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoAnnotationResults.Unmarshal(m, b)
 }
@@ -976,6 +989,7 @@ func (*AnnotateVideoResponse) ProtoMessage()    {}
 func (*AnnotateVideoResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{13}
 }
+
 func (m *AnnotateVideoResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateVideoResponse.Unmarshal(m, b)
 }
@@ -1024,6 +1038,7 @@ func (*VideoAnnotationProgress) ProtoMessage()    {}
 func (*VideoAnnotationProgress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{14}
 }
+
 func (m *VideoAnnotationProgress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoAnnotationProgress.Unmarshal(m, b)
 }
@@ -1087,6 +1102,7 @@ func (*AnnotateVideoProgress) ProtoMessage()    {}
 func (*AnnotateVideoProgress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{15}
 }
+
 func (m *AnnotateVideoProgress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateVideoProgress.Unmarshal(m, b)
 }
@@ -1154,6 +1170,7 @@ func (*SpeechTranscriptionConfig) ProtoMessage()    {}
 func (*SpeechTranscriptionConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{16}
 }
+
 func (m *SpeechTranscriptionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpeechTranscriptionConfig.Unmarshal(m, b)
 }
@@ -1235,6 +1252,7 @@ func (*SpeechContext) ProtoMessage()    {}
 func (*SpeechContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{17}
 }
+
 func (m *SpeechContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpeechContext.Unmarshal(m, b)
 }
@@ -1278,6 +1296,7 @@ func (*SpeechTranscription) ProtoMessage()    {}
 func (*SpeechTranscription) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{18}
 }
+
 func (m *SpeechTranscription) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpeechTranscription.Unmarshal(m, b)
 }
@@ -1327,6 +1346,7 @@ func (*SpeechRecognitionAlternative) ProtoMessage()    {}
 func (*SpeechRecognitionAlternative) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{19}
 }
+
 func (m *SpeechRecognitionAlternative) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpeechRecognitionAlternative.Unmarshal(m, b)
 }
@@ -1393,6 +1413,7 @@ func (*WordInfo) ProtoMessage()    {}
 func (*WordInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9e6ec0147460ac77, []int{20}
 }
+
 func (m *WordInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WordInfo.Unmarshal(m, b)
 }

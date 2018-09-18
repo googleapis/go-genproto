@@ -54,6 +54,7 @@ func (*Repo) ProtoMessage()    {}
 func (*Repo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0e2c2c58455430a2, []int{0}
 }
+
 func (m *Repo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Repo.Unmarshal(m, b)
 }
@@ -125,6 +126,7 @@ func (*MirrorConfig) ProtoMessage()    {}
 func (*MirrorConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0e2c2c58455430a2, []int{1}
 }
+
 func (m *MirrorConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MirrorConfig.Unmarshal(m, b)
 }
@@ -180,6 +182,7 @@ func (*GetRepoRequest) ProtoMessage()    {}
 func (*GetRepoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0e2c2c58455430a2, []int{2}
 }
+
 func (m *GetRepoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetRepoRequest.Unmarshal(m, b)
 }
@@ -228,6 +231,7 @@ func (*ListReposRequest) ProtoMessage()    {}
 func (*ListReposRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0e2c2c58455430a2, []int{3}
 }
+
 func (m *ListReposRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListReposRequest.Unmarshal(m, b)
 }
@@ -286,6 +290,7 @@ func (*ListReposResponse) ProtoMessage()    {}
 func (*ListReposResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0e2c2c58455430a2, []int{4}
 }
+
 func (m *ListReposResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListReposResponse.Unmarshal(m, b)
 }
@@ -337,6 +342,7 @@ func (*CreateRepoRequest) ProtoMessage()    {}
 func (*CreateRepoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0e2c2c58455430a2, []int{5}
 }
+
 func (m *CreateRepoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateRepoRequest.Unmarshal(m, b)
 }
@@ -385,6 +391,7 @@ func (*DeleteRepoRequest) ProtoMessage()    {}
 func (*DeleteRepoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0e2c2c58455430a2, []int{6}
 }
+
 func (m *DeleteRepoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteRepoRequest.Unmarshal(m, b)
 }

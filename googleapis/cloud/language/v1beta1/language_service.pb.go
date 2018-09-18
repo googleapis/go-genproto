@@ -1126,6 +1126,7 @@ func (*Document) ProtoMessage()    {}
 func (*Document) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{0}
 }
+
 func (m *Document) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Document.Unmarshal(m, b)
 }
@@ -1280,6 +1281,7 @@ func (*Sentence) ProtoMessage()    {}
 func (*Sentence) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{1}
 }
+
 func (m *Sentence) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Sentence.Unmarshal(m, b)
 }
@@ -1346,6 +1348,7 @@ func (*Entity) ProtoMessage()    {}
 func (*Entity) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{2}
 }
+
 func (m *Entity) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Entity.Unmarshal(m, b)
 }
@@ -1420,6 +1423,7 @@ func (*Token) ProtoMessage()    {}
 func (*Token) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{3}
 }
+
 func (m *Token) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Token.Unmarshal(m, b)
 }
@@ -1491,6 +1495,7 @@ func (*Sentiment) ProtoMessage()    {}
 func (*Sentiment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{4}
 }
+
 func (m *Sentiment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Sentiment.Unmarshal(m, b)
 }
@@ -1567,6 +1572,7 @@ func (*PartOfSpeech) ProtoMessage()    {}
 func (*PartOfSpeech) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{5}
 }
+
 func (m *PartOfSpeech) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartOfSpeech.Unmarshal(m, b)
 }
@@ -1690,6 +1696,7 @@ func (*DependencyEdge) ProtoMessage()    {}
 func (*DependencyEdge) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{6}
 }
+
 func (m *DependencyEdge) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DependencyEdge.Unmarshal(m, b)
 }
@@ -1740,6 +1747,7 @@ func (*EntityMention) ProtoMessage()    {}
 func (*EntityMention) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{7}
 }
+
 func (m *EntityMention) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EntityMention.Unmarshal(m, b)
 }
@@ -1790,6 +1798,7 @@ func (*TextSpan) ProtoMessage()    {}
 func (*TextSpan) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{8}
 }
+
 func (m *TextSpan) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextSpan.Unmarshal(m, b)
 }
@@ -1840,6 +1849,7 @@ func (*AnalyzeSentimentRequest) ProtoMessage()    {}
 func (*AnalyzeSentimentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{9}
 }
+
 func (m *AnalyzeSentimentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnalyzeSentimentRequest.Unmarshal(m, b)
 }
@@ -1893,6 +1903,7 @@ func (*AnalyzeSentimentResponse) ProtoMessage()    {}
 func (*AnalyzeSentimentResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{10}
 }
+
 func (m *AnalyzeSentimentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnalyzeSentimentResponse.Unmarshal(m, b)
 }
@@ -1949,6 +1960,7 @@ func (*AnalyzeEntitiesRequest) ProtoMessage()    {}
 func (*AnalyzeEntitiesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{11}
 }
+
 func (m *AnalyzeEntitiesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnalyzeEntitiesRequest.Unmarshal(m, b)
 }
@@ -2000,6 +2012,7 @@ func (*AnalyzeEntitiesResponse) ProtoMessage()    {}
 func (*AnalyzeEntitiesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{12}
 }
+
 func (m *AnalyzeEntitiesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnalyzeEntitiesResponse.Unmarshal(m, b)
 }
@@ -2049,6 +2062,7 @@ func (*AnalyzeSyntaxRequest) ProtoMessage()    {}
 func (*AnalyzeSyntaxRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{13}
 }
+
 func (m *AnalyzeSyntaxRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnalyzeSyntaxRequest.Unmarshal(m, b)
 }
@@ -2102,6 +2116,7 @@ func (*AnalyzeSyntaxResponse) ProtoMessage()    {}
 func (*AnalyzeSyntaxResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{14}
 }
+
 func (m *AnalyzeSyntaxResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnalyzeSyntaxResponse.Unmarshal(m, b)
 }
@@ -2161,6 +2176,7 @@ func (*AnnotateTextRequest) ProtoMessage()    {}
 func (*AnnotateTextRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{15}
 }
+
 func (m *AnnotateTextRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateTextRequest.Unmarshal(m, b)
 }
@@ -2220,6 +2236,7 @@ func (*AnnotateTextRequest_Features) ProtoMessage()    {}
 func (*AnnotateTextRequest_Features) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{15, 0}
 }
+
 func (m *AnnotateTextRequest_Features) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateTextRequest_Features.Unmarshal(m, b)
 }
@@ -2290,6 +2307,7 @@ func (*AnnotateTextResponse) ProtoMessage()    {}
 func (*AnnotateTextResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1ca1a8b57f399672, []int{16}
 }
+
 func (m *AnnotateTextResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateTextResponse.Unmarshal(m, b)
 }

@@ -44,6 +44,7 @@ func (*Position) ProtoMessage()    {}
 func (*Position) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8dcb4638f9813bab, []int{0}
 }
+
 func (m *Position) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Position.Unmarshal(m, b)
 }

@@ -48,6 +48,7 @@ func (*RequestSyncDevicesRequest) ProtoMessage()    {}
 func (*RequestSyncDevicesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{0}
 }
+
 func (m *RequestSyncDevicesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSyncDevicesRequest.Unmarshal(m, b)
 }
@@ -94,6 +95,7 @@ func (*RequestSyncDevicesResponse) ProtoMessage()    {}
 func (*RequestSyncDevicesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{1}
 }
+
 func (m *RequestSyncDevicesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestSyncDevicesResponse.Unmarshal(m, b)
 }
@@ -189,6 +191,7 @@ func (*ReportStateAndNotificationRequest) ProtoMessage()    {}
 func (*ReportStateAndNotificationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{2}
 }
+
 func (m *ReportStateAndNotificationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportStateAndNotificationRequest.Unmarshal(m, b)
 }
@@ -257,6 +260,7 @@ func (*ReportStateAndNotificationResponse) ProtoMessage()    {}
 func (*ReportStateAndNotificationResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{3}
 }
+
 func (m *ReportStateAndNotificationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportStateAndNotificationResponse.Unmarshal(m, b)
 }
@@ -297,6 +301,7 @@ func (*StateAndNotificationPayload) ProtoMessage()    {}
 func (*StateAndNotificationPayload) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{4}
 }
+
 func (m *StateAndNotificationPayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StateAndNotificationPayload.Unmarshal(m, b)
 }
@@ -339,6 +344,7 @@ func (*ReportStateAndNotificationDevice) ProtoMessage()    {}
 func (*ReportStateAndNotificationDevice) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{5}
 }
+
 func (m *ReportStateAndNotificationDevice) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportStateAndNotificationDevice.Unmarshal(m, b)
 }
@@ -388,6 +394,7 @@ func (*DeleteAgentUserRequest) ProtoMessage()    {}
 func (*DeleteAgentUserRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{6}
 }
+
 func (m *DeleteAgentUserRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteAgentUserRequest.Unmarshal(m, b)
 }
@@ -444,6 +451,7 @@ func (*QueryRequest) ProtoMessage()    {}
 func (*QueryRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{7}
 }
+
 func (m *QueryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryRequest.Unmarshal(m, b)
 }
@@ -498,6 +506,7 @@ func (*QueryRequestInput) ProtoMessage()    {}
 func (*QueryRequestInput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{8}
 }
+
 func (m *QueryRequestInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryRequestInput.Unmarshal(m, b)
 }
@@ -538,6 +547,7 @@ func (*QueryRequestPayload) ProtoMessage()    {}
 func (*QueryRequestPayload) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{9}
 }
+
 func (m *QueryRequestPayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryRequestPayload.Unmarshal(m, b)
 }
@@ -578,6 +588,7 @@ func (*AgentDeviceId) ProtoMessage()    {}
 func (*AgentDeviceId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{10}
 }
+
 func (m *AgentDeviceId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AgentDeviceId.Unmarshal(m, b)
 }
@@ -622,6 +633,7 @@ func (*QueryResponse) ProtoMessage()    {}
 func (*QueryResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{11}
 }
+
 func (m *QueryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryResponse.Unmarshal(m, b)
 }
@@ -670,6 +682,7 @@ func (*QueryResponsePayload) ProtoMessage()    {}
 func (*QueryResponsePayload) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{12}
 }
+
 func (m *QueryResponsePayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryResponsePayload.Unmarshal(m, b)
 }
@@ -715,6 +728,7 @@ func (*SyncRequest) ProtoMessage()    {}
 func (*SyncRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{13}
 }
+
 func (m *SyncRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SyncRequest.Unmarshal(m, b)
 }
@@ -798,6 +812,7 @@ func (*SyncResponse) ProtoMessage()    {}
 func (*SyncResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{14}
 }
+
 func (m *SyncResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SyncResponse.Unmarshal(m, b)
 }
@@ -847,6 +862,7 @@ func (*SyncResponsePayload) ProtoMessage()    {}
 func (*SyncResponsePayload) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7c06ecdbcb0515e5, []int{15}
 }
+
 func (m *SyncResponsePayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SyncResponsePayload.Unmarshal(m, b)
 }

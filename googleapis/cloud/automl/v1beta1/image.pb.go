@@ -38,6 +38,7 @@ func (*ImageClassificationDatasetMetadata) ProtoMessage()    {}
 func (*ImageClassificationDatasetMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29b9f2bc900da869, []int{0}
 }
+
 func (m *ImageClassificationDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageClassificationDatasetMetadata.Unmarshal(m, b)
 }
@@ -91,6 +92,7 @@ func (*ImageClassificationModelMetadata) ProtoMessage()    {}
 func (*ImageClassificationModelMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_29b9f2bc900da869, []int{1}
 }
+
 func (m *ImageClassificationModelMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageClassificationModelMetadata.Unmarshal(m, b)
 }

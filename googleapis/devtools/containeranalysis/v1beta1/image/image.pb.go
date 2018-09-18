@@ -129,6 +129,7 @@ func (*Layer) ProtoMessage()    {}
 func (*Layer) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ab0486c83d3ae0f1, []int{0}
 }
+
 func (m *Layer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Layer.Unmarshal(m, b)
 }
@@ -183,6 +184,7 @@ func (*Fingerprint) ProtoMessage()    {}
 func (*Fingerprint) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ab0486c83d3ae0f1, []int{1}
 }
+
 func (m *Fingerprint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Fingerprint.Unmarshal(m, b)
 }
@@ -244,6 +246,7 @@ func (*Basis) ProtoMessage()    {}
 func (*Basis) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ab0486c83d3ae0f1, []int{2}
 }
+
 func (m *Basis) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Basis.Unmarshal(m, b)
 }
@@ -291,6 +294,7 @@ func (*Details) ProtoMessage()    {}
 func (*Details) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ab0486c83d3ae0f1, []int{3}
 }
+
 func (m *Details) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Details.Unmarshal(m, b)
 }
@@ -343,6 +347,7 @@ func (*Derived) ProtoMessage()    {}
 func (*Derived) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ab0486c83d3ae0f1, []int{4}
 }
+
 func (m *Derived) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Derived.Unmarshal(m, b)
 }

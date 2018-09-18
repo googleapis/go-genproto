@@ -127,6 +127,7 @@ func (*InternalChecker) ProtoMessage()    {}
 func (*InternalChecker) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7ca0e36dfc8221d8, []int{0}
 }
+
 func (m *InternalChecker) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InternalChecker.Unmarshal(m, b)
 }
@@ -245,6 +246,7 @@ func (*UptimeCheckConfig) ProtoMessage()    {}
 func (*UptimeCheckConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7ca0e36dfc8221d8, []int{1}
 }
+
 func (m *UptimeCheckConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UptimeCheckConfig.Unmarshal(m, b)
 }
@@ -536,6 +538,7 @@ func (*UptimeCheckConfig_ResourceGroup) ProtoMessage()    {}
 func (*UptimeCheckConfig_ResourceGroup) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7ca0e36dfc8221d8, []int{1, 0}
 }
+
 func (m *UptimeCheckConfig_ResourceGroup) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UptimeCheckConfig_ResourceGroup.Unmarshal(m, b)
 }
@@ -610,6 +613,7 @@ func (*UptimeCheckConfig_HttpCheck) ProtoMessage()    {}
 func (*UptimeCheckConfig_HttpCheck) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7ca0e36dfc8221d8, []int{1, 1}
 }
+
 func (m *UptimeCheckConfig_HttpCheck) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UptimeCheckConfig_HttpCheck.Unmarshal(m, b)
 }
@@ -693,6 +697,7 @@ func (*UptimeCheckConfig_HttpCheck_BasicAuthentication) ProtoMessage() {}
 func (*UptimeCheckConfig_HttpCheck_BasicAuthentication) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7ca0e36dfc8221d8, []int{1, 1, 0}
 }
+
 func (m *UptimeCheckConfig_HttpCheck_BasicAuthentication) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UptimeCheckConfig_HttpCheck_BasicAuthentication.Unmarshal(m, b)
 }
@@ -742,6 +747,7 @@ func (*UptimeCheckConfig_TcpCheck) ProtoMessage()    {}
 func (*UptimeCheckConfig_TcpCheck) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7ca0e36dfc8221d8, []int{1, 2}
 }
+
 func (m *UptimeCheckConfig_TcpCheck) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UptimeCheckConfig_TcpCheck.Unmarshal(m, b)
 }
@@ -784,6 +790,7 @@ func (*UptimeCheckConfig_ContentMatcher) ProtoMessage()    {}
 func (*UptimeCheckConfig_ContentMatcher) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7ca0e36dfc8221d8, []int{1, 3}
 }
+
 func (m *UptimeCheckConfig_ContentMatcher) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UptimeCheckConfig_ContentMatcher.Unmarshal(m, b)
 }
@@ -835,6 +842,7 @@ func (*UptimeCheckIp) ProtoMessage()    {}
 func (*UptimeCheckIp) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7ca0e36dfc8221d8, []int{2}
 }
+
 func (m *UptimeCheckIp) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UptimeCheckIp.Unmarshal(m, b)
 }

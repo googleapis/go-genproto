@@ -38,6 +38,7 @@ func (*MutationRecord) ProtoMessage()    {}
 func (*MutationRecord) Descriptor() ([]byte, []int) {
 	return fileDescriptor_83c24e690bdb9101, []int{0}
 }
+
 func (m *MutationRecord) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutationRecord.Unmarshal(m, b)
 }

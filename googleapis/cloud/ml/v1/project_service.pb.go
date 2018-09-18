@@ -43,6 +43,7 @@ func (*GetConfigRequest) ProtoMessage()    {}
 func (*GetConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9d9ea4142d12cde4, []int{0}
 }
+
 func (m *GetConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetConfigRequest.Unmarshal(m, b)
 }
@@ -85,6 +86,7 @@ func (*GetConfigResponse) ProtoMessage()    {}
 func (*GetConfigResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9d9ea4142d12cde4, []int{1}
 }
+
 func (m *GetConfigResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetConfigResponse.Unmarshal(m, b)
 }

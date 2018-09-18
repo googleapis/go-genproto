@@ -55,6 +55,7 @@ func (*PredictRequest) ProtoMessage()    {}
 func (*PredictRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_59a9dba5da3c687d, []int{0}
 }
+
 func (m *PredictRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredictRequest.Unmarshal(m, b)
 }
@@ -115,6 +116,7 @@ func (*PredictResponse) ProtoMessage()    {}
 func (*PredictResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_59a9dba5da3c687d, []int{1}
 }
+
 func (m *PredictResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredictResponse.Unmarshal(m, b)
 }

@@ -132,6 +132,7 @@ func (*Instance) ProtoMessage()    {}
 func (*Instance) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3b3f5aa565fc77c9, []int{0}
 }
+
 func (m *Instance) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Instance.Unmarshal(m, b)
 }

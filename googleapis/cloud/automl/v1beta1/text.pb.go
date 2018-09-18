@@ -37,6 +37,7 @@ func (*TextClassificationDatasetMetadata) ProtoMessage()    {}
 func (*TextClassificationDatasetMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c1121cf231f416fd, []int{0}
 }
+
 func (m *TextClassificationDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextClassificationDatasetMetadata.Unmarshal(m, b)
 }
@@ -75,6 +76,7 @@ func (*TextClassificationModelMetadata) ProtoMessage()    {}
 func (*TextClassificationModelMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c1121cf231f416fd, []int{1}
 }
+
 func (m *TextClassificationModelMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextClassificationModelMetadata.Unmarshal(m, b)
 }

@@ -136,6 +136,7 @@ func (*ProductSearchParams) ProtoMessage()    {}
 func (*ProductSearchParams) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39c225061f094f0f, []int{0}
 }
+
 func (m *ProductSearchParams) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductSearchParams.Unmarshal(m, b)
 }
@@ -244,6 +245,7 @@ func (*ProductSearchResults) ProtoMessage()    {}
 func (*ProductSearchResults) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39c225061f094f0f, []int{1}
 }
+
 func (m *ProductSearchResults) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductSearchResults.Unmarshal(m, b)
 }
@@ -323,6 +325,7 @@ func (*ProductSearchResults_ProductInfo) ProtoMessage()    {}
 func (*ProductSearchResults_ProductInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39c225061f094f0f, []int{1, 0}
 }
+
 func (m *ProductSearchResults_ProductInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductSearchResults_ProductInfo.Unmarshal(m, b)
 }
@@ -386,6 +389,7 @@ func (*ProductSearchResults_Result) ProtoMessage()    {}
 func (*ProductSearchResults_Result) Descriptor() ([]byte, []int) {
 	return fileDescriptor_39c225061f094f0f, []int{1, 1}
 }
+
 func (m *ProductSearchResults_Result) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductSearchResults_Result.Unmarshal(m, b)
 }

@@ -72,6 +72,7 @@ func (*Logging) ProtoMessage()    {}
 func (*Logging) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9505b080db6dcefe, []int{0}
 }
+
 func (m *Logging) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Logging.Unmarshal(m, b)
 }
@@ -126,6 +127,7 @@ func (*Logging_LoggingDestination) ProtoMessage()    {}
 func (*Logging_LoggingDestination) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9505b080db6dcefe, []int{0, 0}
 }
+
 func (m *Logging_LoggingDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Logging_LoggingDestination.Unmarshal(m, b)
 }

@@ -60,6 +60,7 @@ func (*OperationMetadata) ProtoMessage()    {}
 func (*OperationMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ab6c330828363542, []int{0}
 }
+
 func (m *OperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationMetadata.Unmarshal(m, b)
 }
@@ -161,6 +162,7 @@ func (*OperationEvent) ProtoMessage()    {}
 func (*OperationEvent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ab6c330828363542, []int{1}
 }
+
 func (m *OperationEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationEvent.Unmarshal(m, b)
 }

@@ -40,6 +40,7 @@ func (*UploadRef) ProtoMessage()    {}
 func (*UploadRef) Descriptor() ([]byte, []int) {
 	return fileDescriptor_56f2b10d5439612a, []int{0}
 }
+
 func (m *UploadRef) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UploadRef.Unmarshal(m, b)
 }
@@ -80,6 +81,7 @@ func (*PhotoId) ProtoMessage()    {}
 func (*PhotoId) Descriptor() ([]byte, []int) {
 	return fileDescriptor_56f2b10d5439612a, []int{1}
 }
+
 func (m *PhotoId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PhotoId.Unmarshal(m, b)
 }
@@ -126,6 +128,7 @@ func (*Level) ProtoMessage()    {}
 func (*Level) Descriptor() ([]byte, []int) {
 	return fileDescriptor_56f2b10d5439612a, []int{2}
 }
+
 func (m *Level) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Level.Unmarshal(m, b)
 }
@@ -196,6 +199,7 @@ func (*Pose) ProtoMessage()    {}
 func (*Pose) Descriptor() ([]byte, []int) {
 	return fileDescriptor_56f2b10d5439612a, []int{3}
 }
+
 func (m *Pose) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Pose.Unmarshal(m, b)
 }
@@ -272,6 +276,7 @@ func (*Place) ProtoMessage()    {}
 func (*Place) Descriptor() ([]byte, []int) {
 	return fileDescriptor_56f2b10d5439612a, []int{4}
 }
+
 func (m *Place) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Place.Unmarshal(m, b)
 }
@@ -313,6 +318,7 @@ func (*Connection) ProtoMessage()    {}
 func (*Connection) Descriptor() ([]byte, []int) {
 	return fileDescriptor_56f2b10d5439612a, []int{5}
 }
+
 func (m *Connection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Connection.Unmarshal(m, b)
 }
@@ -378,6 +384,7 @@ func (*Photo) ProtoMessage()    {}
 func (*Photo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_56f2b10d5439612a, []int{6}
 }
+
 func (m *Photo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Photo.Unmarshal(m, b)
 }

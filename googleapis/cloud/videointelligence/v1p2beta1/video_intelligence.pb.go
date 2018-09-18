@@ -197,6 +197,7 @@ func (*AnnotateVideoRequest) ProtoMessage()    {}
 func (*AnnotateVideoRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{0}
 }
+
 func (m *AnnotateVideoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateVideoRequest.Unmarshal(m, b)
 }
@@ -282,6 +283,7 @@ func (*VideoContext) ProtoMessage()    {}
 func (*VideoContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{1}
 }
+
 func (m *VideoContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoContext.Unmarshal(m, b)
 }
@@ -360,6 +362,7 @@ func (*LabelDetectionConfig) ProtoMessage()    {}
 func (*LabelDetectionConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{2}
 }
+
 func (m *LabelDetectionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelDetectionConfig.Unmarshal(m, b)
 }
@@ -416,6 +419,7 @@ func (*ShotChangeDetectionConfig) ProtoMessage()    {}
 func (*ShotChangeDetectionConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{3}
 }
+
 func (m *ShotChangeDetectionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ShotChangeDetectionConfig.Unmarshal(m, b)
 }
@@ -458,6 +462,7 @@ func (*ExplicitContentDetectionConfig) ProtoMessage()    {}
 func (*ExplicitContentDetectionConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{4}
 }
+
 func (m *ExplicitContentDetectionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExplicitContentDetectionConfig.Unmarshal(m, b)
 }
@@ -502,6 +507,7 @@ func (*TextDetectionConfig) ProtoMessage()    {}
 func (*TextDetectionConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{5}
 }
+
 func (m *TextDetectionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextDetectionConfig.Unmarshal(m, b)
 }
@@ -546,6 +552,7 @@ func (*VideoSegment) ProtoMessage()    {}
 func (*VideoSegment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{6}
 }
+
 func (m *VideoSegment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoSegment.Unmarshal(m, b)
 }
@@ -595,6 +602,7 @@ func (*LabelSegment) ProtoMessage()    {}
 func (*LabelSegment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{7}
 }
+
 func (m *LabelSegment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelSegment.Unmarshal(m, b)
 }
@@ -645,6 +653,7 @@ func (*LabelFrame) ProtoMessage()    {}
 func (*LabelFrame) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{8}
 }
+
 func (m *LabelFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelFrame.Unmarshal(m, b)
 }
@@ -698,6 +707,7 @@ func (*Entity) ProtoMessage()    {}
 func (*Entity) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{9}
 }
+
 func (m *Entity) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Entity.Unmarshal(m, b)
 }
@@ -761,6 +771,7 @@ func (*LabelAnnotation) ProtoMessage()    {}
 func (*LabelAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{10}
 }
+
 func (m *LabelAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelAnnotation.Unmarshal(m, b)
 }
@@ -825,6 +836,7 @@ func (*ExplicitContentFrame) ProtoMessage()    {}
 func (*ExplicitContentFrame) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{11}
 }
+
 func (m *ExplicitContentFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExplicitContentFrame.Unmarshal(m, b)
 }
@@ -874,6 +886,7 @@ func (*ExplicitContentAnnotation) ProtoMessage()    {}
 func (*ExplicitContentAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{12}
 }
+
 func (m *ExplicitContentAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExplicitContentAnnotation.Unmarshal(m, b)
 }
@@ -922,6 +935,7 @@ func (*NormalizedBoundingBox) ProtoMessage()    {}
 func (*NormalizedBoundingBox) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{13}
 }
+
 func (m *NormalizedBoundingBox) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NormalizedBoundingBox.Unmarshal(m, b)
 }
@@ -1006,6 +1020,7 @@ func (*VideoAnnotationResults) ProtoMessage()    {}
 func (*VideoAnnotationResults) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{14}
 }
+
 func (m *VideoAnnotationResults) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoAnnotationResults.Unmarshal(m, b)
 }
@@ -1104,6 +1119,7 @@ func (*AnnotateVideoResponse) ProtoMessage()    {}
 func (*AnnotateVideoResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{15}
 }
+
 func (m *AnnotateVideoResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateVideoResponse.Unmarshal(m, b)
 }
@@ -1152,6 +1168,7 @@ func (*VideoAnnotationProgress) ProtoMessage()    {}
 func (*VideoAnnotationProgress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{16}
 }
+
 func (m *VideoAnnotationProgress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoAnnotationProgress.Unmarshal(m, b)
 }
@@ -1215,6 +1232,7 @@ func (*AnnotateVideoProgress) ProtoMessage()    {}
 func (*AnnotateVideoProgress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{17}
 }
+
 func (m *AnnotateVideoProgress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateVideoProgress.Unmarshal(m, b)
 }
@@ -1259,6 +1277,7 @@ func (*NormalizedVertex) ProtoMessage()    {}
 func (*NormalizedVertex) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{18}
 }
+
 func (m *NormalizedVertex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NormalizedVertex.Unmarshal(m, b)
 }
@@ -1322,6 +1341,7 @@ func (*NormalizedBoundingPoly) ProtoMessage()    {}
 func (*NormalizedBoundingPoly) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{19}
 }
+
 func (m *NormalizedBoundingPoly) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NormalizedBoundingPoly.Unmarshal(m, b)
 }
@@ -1362,6 +1382,7 @@ func (*TextSegment) ProtoMessage()    {}
 func (*TextSegment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{20}
 }
+
 func (m *TextSegment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextSegment.Unmarshal(m, b)
 }
@@ -1406,6 +1427,7 @@ func (*TextFrame) ProtoMessage()    {}
 func (*TextFrame) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{21}
 }
+
 func (m *TextFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextFrame.Unmarshal(m, b)
 }
@@ -1462,6 +1484,7 @@ func (*TextAnnotation) ProtoMessage()    {}
 func (*TextAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{22}
 }
+
 func (m *TextAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextAnnotation.Unmarshal(m, b)
 }
@@ -1526,6 +1549,7 @@ func (*ObjectTrackingFrame) ProtoMessage()    {}
 func (*ObjectTrackingFrame) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{23}
 }
+
 func (m *ObjectTrackingFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObjectTrackingFrame.Unmarshal(m, b)
 }
@@ -1579,6 +1603,7 @@ func (*ObjectTrackingAnnotation) ProtoMessage()    {}
 func (*ObjectTrackingAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_890c5161889e04ed, []int{24}
 }
+
 func (m *ObjectTrackingAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObjectTrackingAnnotation.Unmarshal(m, b)
 }

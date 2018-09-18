@@ -132,6 +132,7 @@ func (*ScanConfig) ProtoMessage()    {}
 func (*ScanConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_50b1b6d7cca97898, []int{0}
 }
+
 func (m *ScanConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanConfig.Unmarshal(m, b)
 }
@@ -233,6 +234,7 @@ func (*ScanConfig_Authentication) ProtoMessage()    {}
 func (*ScanConfig_Authentication) Descriptor() ([]byte, []int) {
 	return fileDescriptor_50b1b6d7cca97898, []int{0, 0}
 }
+
 func (m *ScanConfig_Authentication) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanConfig_Authentication.Unmarshal(m, b)
 }
@@ -385,6 +387,7 @@ func (*ScanConfig_Authentication_GoogleAccount) ProtoMessage()    {}
 func (*ScanConfig_Authentication_GoogleAccount) Descriptor() ([]byte, []int) {
 	return fileDescriptor_50b1b6d7cca97898, []int{0, 0, 0}
 }
+
 func (m *ScanConfig_Authentication_GoogleAccount) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanConfig_Authentication_GoogleAccount.Unmarshal(m, b)
 }
@@ -443,6 +446,7 @@ func (*ScanConfig_Authentication_CustomAccount) ProtoMessage()    {}
 func (*ScanConfig_Authentication_CustomAccount) Descriptor() ([]byte, []int) {
 	return fileDescriptor_50b1b6d7cca97898, []int{0, 0, 1}
 }
+
 func (m *ScanConfig_Authentication_CustomAccount) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanConfig_Authentication_CustomAccount.Unmarshal(m, b)
 }
@@ -503,6 +507,7 @@ func (*ScanConfig_Schedule) ProtoMessage()    {}
 func (*ScanConfig_Schedule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_50b1b6d7cca97898, []int{0, 1}
 }
+
 func (m *ScanConfig_Schedule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanConfig_Schedule.Unmarshal(m, b)
 }

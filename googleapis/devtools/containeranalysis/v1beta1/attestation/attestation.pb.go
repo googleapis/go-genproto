@@ -93,6 +93,7 @@ func (*PgpSignedAttestation) ProtoMessage()    {}
 func (*PgpSignedAttestation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a004b79c48a9c453, []int{0}
 }
+
 func (m *PgpSignedAttestation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PgpSignedAttestation.Unmarshal(m, b)
 }
@@ -222,6 +223,7 @@ func (*Authority) ProtoMessage()    {}
 func (*Authority) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a004b79c48a9c453, []int{1}
 }
+
 func (m *Authority) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Authority.Unmarshal(m, b)
 }
@@ -268,6 +270,7 @@ func (*Authority_Hint) ProtoMessage()    {}
 func (*Authority_Hint) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a004b79c48a9c453, []int{1, 0}
 }
+
 func (m *Authority_Hint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Authority_Hint.Unmarshal(m, b)
 }
@@ -308,6 +311,7 @@ func (*Details) ProtoMessage()    {}
 func (*Details) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a004b79c48a9c453, []int{2}
 }
+
 func (m *Details) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Details.Unmarshal(m, b)
 }
@@ -360,6 +364,7 @@ func (*Attestation) ProtoMessage()    {}
 func (*Attestation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a004b79c48a9c453, []int{3}
 }
+
 func (m *Attestation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Attestation.Unmarshal(m, b)
 }

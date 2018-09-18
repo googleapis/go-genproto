@@ -38,6 +38,7 @@ func (*ListZonesRequest) ProtoMessage()    {}
 func (*ListZonesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{0}
 }
+
 func (m *ListZonesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListZonesRequest.Unmarshal(m, b)
 }
@@ -78,6 +79,7 @@ func (*ListZonesResponse) ProtoMessage()    {}
 func (*ListZonesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{1}
 }
+
 func (m *ListZonesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListZonesResponse.Unmarshal(m, b)
 }
@@ -119,6 +121,7 @@ func (*GetClusterRequest) ProtoMessage()    {}
 func (*GetClusterRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{2}
 }
+
 func (m *GetClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetClusterRequest.Unmarshal(m, b)
 }
@@ -160,6 +163,7 @@ func (*ListClustersRequest) ProtoMessage()    {}
 func (*ListClustersRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{3}
 }
+
 func (m *ListClustersRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListClustersRequest.Unmarshal(m, b)
 }
@@ -202,6 +206,7 @@ func (*ListClustersResponse) ProtoMessage()    {}
 func (*ListClustersResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{4}
 }
+
 func (m *ListClustersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListClustersResponse.Unmarshal(m, b)
 }
@@ -258,6 +263,7 @@ func (*CreateClusterRequest) ProtoMessage()    {}
 func (*CreateClusterRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{5}
 }
+
 func (m *CreateClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateClusterRequest.Unmarshal(m, b)
 }
@@ -317,6 +323,7 @@ func (*CreateClusterMetadata) ProtoMessage()    {}
 func (*CreateClusterMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{6}
 }
+
 func (m *CreateClusterMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateClusterMetadata.Unmarshal(m, b)
 }
@@ -380,6 +387,7 @@ func (*UpdateClusterMetadata) ProtoMessage()    {}
 func (*UpdateClusterMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{7}
 }
+
 func (m *UpdateClusterMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateClusterMetadata.Unmarshal(m, b)
 }
@@ -442,6 +450,7 @@ func (*DeleteClusterRequest) ProtoMessage()    {}
 func (*DeleteClusterRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{8}
 }
+
 func (m *DeleteClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteClusterRequest.Unmarshal(m, b)
 }
@@ -483,6 +492,7 @@ func (*UndeleteClusterRequest) ProtoMessage()    {}
 func (*UndeleteClusterRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{9}
 }
+
 func (m *UndeleteClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UndeleteClusterRequest.Unmarshal(m, b)
 }
@@ -526,6 +536,7 @@ func (*UndeleteClusterMetadata) ProtoMessage()    {}
 func (*UndeleteClusterMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{10}
 }
+
 func (m *UndeleteClusterMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UndeleteClusterMetadata.Unmarshal(m, b)
 }
@@ -572,6 +583,7 @@ func (*V2OperationMetadata) ProtoMessage()    {}
 func (*V2OperationMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a8715cfb8408734, []int{11}
 }
+
 func (m *V2OperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_V2OperationMetadata.Unmarshal(m, b)
 }

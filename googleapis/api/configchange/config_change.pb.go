@@ -99,6 +99,7 @@ func (*ConfigChange) ProtoMessage()    {}
 func (*ConfigChange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5c5c17e3f260da51, []int{0}
 }
+
 func (m *ConfigChange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConfigChange.Unmarshal(m, b)
 }
@@ -169,6 +170,7 @@ func (*Advice) ProtoMessage()    {}
 func (*Advice) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5c5c17e3f260da51, []int{1}
 }
+
 func (m *Advice) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Advice.Unmarshal(m, b)
 }

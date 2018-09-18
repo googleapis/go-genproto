@@ -135,6 +135,7 @@ func (*Document) ProtoMessage()    {}
 func (*Document) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2d3494516d3ece6c, []int{0}
 }
+
 func (m *Document) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Document.Unmarshal(m, b)
 }
@@ -305,6 +306,7 @@ func (*ListDocumentsRequest) ProtoMessage()    {}
 func (*ListDocumentsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2d3494516d3ece6c, []int{1}
 }
+
 func (m *ListDocumentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDocumentsRequest.Unmarshal(m, b)
 }
@@ -362,6 +364,7 @@ func (*ListDocumentsResponse) ProtoMessage()    {}
 func (*ListDocumentsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2d3494516d3ece6c, []int{2}
 }
+
 func (m *ListDocumentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDocumentsResponse.Unmarshal(m, b)
 }
@@ -411,6 +414,7 @@ func (*GetDocumentRequest) ProtoMessage()    {}
 func (*GetDocumentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2d3494516d3ece6c, []int{3}
 }
+
 func (m *GetDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDocumentRequest.Unmarshal(m, b)
 }
@@ -454,6 +458,7 @@ func (*CreateDocumentRequest) ProtoMessage()    {}
 func (*CreateDocumentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2d3494516d3ece6c, []int{4}
 }
+
 func (m *CreateDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDocumentRequest.Unmarshal(m, b)
 }
@@ -503,6 +508,7 @@ func (*DeleteDocumentRequest) ProtoMessage()    {}
 func (*DeleteDocumentRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2d3494516d3ece6c, []int{5}
 }
+
 func (m *DeleteDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDocumentRequest.Unmarshal(m, b)
 }
@@ -543,6 +549,7 @@ func (*KnowledgeOperationMetadata) ProtoMessage()    {}
 func (*KnowledgeOperationMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2d3494516d3ece6c, []int{6}
 }
+
 func (m *KnowledgeOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KnowledgeOperationMetadata.Unmarshal(m, b)
 }

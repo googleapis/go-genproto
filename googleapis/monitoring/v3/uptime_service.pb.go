@@ -53,6 +53,7 @@ func (*ListUptimeCheckConfigsRequest) ProtoMessage()    {}
 func (*ListUptimeCheckConfigsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6222dd2aa0db8eee, []int{0}
 }
+
 func (m *ListUptimeCheckConfigsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListUptimeCheckConfigsRequest.Unmarshal(m, b)
 }
@@ -116,6 +117,7 @@ func (*ListUptimeCheckConfigsResponse) ProtoMessage()    {}
 func (*ListUptimeCheckConfigsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6222dd2aa0db8eee, []int{1}
 }
+
 func (m *ListUptimeCheckConfigsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListUptimeCheckConfigsResponse.Unmarshal(m, b)
 }
@@ -171,6 +173,7 @@ func (*GetUptimeCheckConfigRequest) ProtoMessage()    {}
 func (*GetUptimeCheckConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6222dd2aa0db8eee, []int{2}
 }
+
 func (m *GetUptimeCheckConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetUptimeCheckConfigRequest.Unmarshal(m, b)
 }
@@ -214,6 +217,7 @@ func (*CreateUptimeCheckConfigRequest) ProtoMessage()    {}
 func (*CreateUptimeCheckConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6222dd2aa0db8eee, []int{3}
 }
+
 func (m *CreateUptimeCheckConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateUptimeCheckConfigRequest.Unmarshal(m, b)
 }
@@ -276,6 +280,7 @@ func (*UpdateUptimeCheckConfigRequest) ProtoMessage()    {}
 func (*UpdateUptimeCheckConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6222dd2aa0db8eee, []int{4}
 }
+
 func (m *UpdateUptimeCheckConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateUptimeCheckConfigRequest.Unmarshal(m, b)
 }
@@ -324,6 +329,7 @@ func (*DeleteUptimeCheckConfigRequest) ProtoMessage()    {}
 func (*DeleteUptimeCheckConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6222dd2aa0db8eee, []int{5}
 }
+
 func (m *DeleteUptimeCheckConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteUptimeCheckConfigRequest.Unmarshal(m, b)
 }
@@ -373,6 +379,7 @@ func (*ListUptimeCheckIpsRequest) ProtoMessage()    {}
 func (*ListUptimeCheckIpsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6222dd2aa0db8eee, []int{6}
 }
+
 func (m *ListUptimeCheckIpsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListUptimeCheckIpsRequest.Unmarshal(m, b)
 }
@@ -428,6 +435,7 @@ func (*ListUptimeCheckIpsResponse) ProtoMessage()    {}
 func (*ListUptimeCheckIpsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6222dd2aa0db8eee, []int{7}
 }
+
 func (m *ListUptimeCheckIpsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListUptimeCheckIpsResponse.Unmarshal(m, b)
 }

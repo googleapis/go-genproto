@@ -128,6 +128,7 @@ func (*IndexField) ProtoMessage()    {}
 func (*IndexField) Descriptor() ([]byte, []int) {
 	return fileDescriptor_18dcb37b2ab27460, []int{0}
 }
+
 func (m *IndexField) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexField.Unmarshal(m, b)
 }
@@ -183,6 +184,7 @@ func (*Index) ProtoMessage()    {}
 func (*Index) Descriptor() ([]byte, []int) {
 	return fileDescriptor_18dcb37b2ab27460, []int{1}
 }
+
 func (m *Index) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Index.Unmarshal(m, b)
 }

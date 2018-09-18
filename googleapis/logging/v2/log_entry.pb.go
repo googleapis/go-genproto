@@ -126,6 +126,7 @@ func (*LogEntry) ProtoMessage()    {}
 func (*LogEntry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8ba2017251165146, []int{0}
 }
+
 func (m *LogEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogEntry.Unmarshal(m, b)
 }
@@ -399,6 +400,7 @@ func (*LogEntryOperation) ProtoMessage()    {}
 func (*LogEntryOperation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8ba2017251165146, []int{1}
 }
+
 func (m *LogEntryOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogEntryOperation.Unmarshal(m, b)
 }
@@ -472,6 +474,7 @@ func (*LogEntrySourceLocation) ProtoMessage()    {}
 func (*LogEntrySourceLocation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8ba2017251165146, []int{2}
 }
+
 func (m *LogEntrySourceLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogEntrySourceLocation.Unmarshal(m, b)
 }

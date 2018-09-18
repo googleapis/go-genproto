@@ -112,6 +112,7 @@ func (*Zone) ProtoMessage()    {}
 func (*Zone) Descriptor() ([]byte, []int) {
 	return fileDescriptor_33bf61dbf3bd7369, []int{0}
 }
+
 func (m *Zone) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Zone.Unmarshal(m, b)
 }
@@ -182,6 +183,7 @@ func (*Cluster) ProtoMessage()    {}
 func (*Cluster) Descriptor() ([]byte, []int) {
 	return fileDescriptor_33bf61dbf3bd7369, []int{1}
 }
+
 func (m *Cluster) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Cluster.Unmarshal(m, b)
 }

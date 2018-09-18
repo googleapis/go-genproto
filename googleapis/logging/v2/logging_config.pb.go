@@ -140,6 +140,7 @@ func (*LogSink) ProtoMessage()    {}
 func (*LogSink) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{0}
 }
+
 func (m *LogSink) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogSink.Unmarshal(m, b)
 }
@@ -246,6 +247,7 @@ func (*ListSinksRequest) ProtoMessage()    {}
 func (*ListSinksRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{1}
 }
+
 func (m *ListSinksRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSinksRequest.Unmarshal(m, b)
 }
@@ -304,6 +306,7 @@ func (*ListSinksResponse) ProtoMessage()    {}
 func (*ListSinksResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{2}
 }
+
 func (m *ListSinksResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSinksResponse.Unmarshal(m, b)
 }
@@ -358,6 +361,7 @@ func (*GetSinkRequest) ProtoMessage()    {}
 func (*GetSinkRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{3}
 }
+
 func (m *GetSinkRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSinkRequest.Unmarshal(m, b)
 }
@@ -420,6 +424,7 @@ func (*CreateSinkRequest) ProtoMessage()    {}
 func (*CreateSinkRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{4}
 }
+
 func (m *CreateSinkRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateSinkRequest.Unmarshal(m, b)
 }
@@ -513,6 +518,7 @@ func (*UpdateSinkRequest) ProtoMessage()    {}
 func (*UpdateSinkRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{5}
 }
+
 func (m *UpdateSinkRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSinkRequest.Unmarshal(m, b)
 }
@@ -582,6 +588,7 @@ func (*DeleteSinkRequest) ProtoMessage()    {}
 func (*DeleteSinkRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{6}
 }
+
 func (m *DeleteSinkRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteSinkRequest.Unmarshal(m, b)
 }
@@ -646,6 +653,7 @@ func (*LogExclusion) ProtoMessage()    {}
 func (*LogExclusion) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{7}
 }
+
 func (m *LogExclusion) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LogExclusion.Unmarshal(m, b)
 }
@@ -721,6 +729,7 @@ func (*ListExclusionsRequest) ProtoMessage()    {}
 func (*ListExclusionsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{8}
 }
+
 func (m *ListExclusionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListExclusionsRequest.Unmarshal(m, b)
 }
@@ -779,6 +788,7 @@ func (*ListExclusionsResponse) ProtoMessage()    {}
 func (*ListExclusionsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{9}
 }
+
 func (m *ListExclusionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListExclusionsResponse.Unmarshal(m, b)
 }
@@ -833,6 +843,7 @@ func (*GetExclusionRequest) ProtoMessage()    {}
 func (*GetExclusionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{10}
 }
+
 func (m *GetExclusionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetExclusionRequest.Unmarshal(m, b)
 }
@@ -883,6 +894,7 @@ func (*CreateExclusionRequest) ProtoMessage()    {}
 func (*CreateExclusionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{11}
 }
+
 func (m *CreateExclusionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateExclusionRequest.Unmarshal(m, b)
 }
@@ -948,6 +960,7 @@ func (*UpdateExclusionRequest) ProtoMessage()    {}
 func (*UpdateExclusionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{12}
 }
+
 func (m *UpdateExclusionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateExclusionRequest.Unmarshal(m, b)
 }
@@ -1009,6 +1022,7 @@ func (*DeleteExclusionRequest) ProtoMessage()    {}
 func (*DeleteExclusionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_775871f9b2cdbeb8, []int{13}
 }
+
 func (m *DeleteExclusionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteExclusionRequest.Unmarshal(m, b)
 }

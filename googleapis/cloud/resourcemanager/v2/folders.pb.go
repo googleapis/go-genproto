@@ -130,6 +130,7 @@ func (*Folder) ProtoMessage()    {}
 func (*Folder) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{0}
 }
+
 func (m *Folder) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Folder.Unmarshal(m, b)
 }
@@ -219,6 +220,7 @@ func (*ListFoldersRequest) ProtoMessage()    {}
 func (*ListFoldersRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{1}
 }
+
 func (m *ListFoldersRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFoldersRequest.Unmarshal(m, b)
 }
@@ -285,6 +287,7 @@ func (*ListFoldersResponse) ProtoMessage()    {}
 func (*ListFoldersResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{2}
 }
+
 func (m *ListFoldersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFoldersResponse.Unmarshal(m, b)
 }
@@ -354,6 +357,7 @@ func (*SearchFoldersRequest) ProtoMessage()    {}
 func (*SearchFoldersRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{3}
 }
+
 func (m *SearchFoldersRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchFoldersRequest.Unmarshal(m, b)
 }
@@ -413,6 +417,7 @@ func (*SearchFoldersResponse) ProtoMessage()    {}
 func (*SearchFoldersResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{4}
 }
+
 func (m *SearchFoldersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchFoldersResponse.Unmarshal(m, b)
 }
@@ -461,6 +466,7 @@ func (*GetFolderRequest) ProtoMessage()    {}
 func (*GetFolderRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{5}
 }
+
 func (m *GetFolderRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetFolderRequest.Unmarshal(m, b)
 }
@@ -505,6 +511,7 @@ func (*CreateFolderRequest) ProtoMessage()    {}
 func (*CreateFolderRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{6}
 }
+
 func (m *CreateFolderRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateFolderRequest.Unmarshal(m, b)
 }
@@ -557,6 +564,7 @@ func (*MoveFolderRequest) ProtoMessage()    {}
 func (*MoveFolderRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{7}
 }
+
 func (m *MoveFolderRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MoveFolderRequest.Unmarshal(m, b)
 }
@@ -609,6 +617,7 @@ func (*UpdateFolderRequest) ProtoMessage()    {}
 func (*UpdateFolderRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{8}
 }
+
 func (m *UpdateFolderRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateFolderRequest.Unmarshal(m, b)
 }
@@ -660,6 +669,7 @@ func (*DeleteFolderRequest) ProtoMessage()    {}
 func (*DeleteFolderRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{9}
 }
+
 func (m *DeleteFolderRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteFolderRequest.Unmarshal(m, b)
 }
@@ -708,6 +718,7 @@ func (*UndeleteFolderRequest) ProtoMessage()    {}
 func (*UndeleteFolderRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{10}
 }
+
 func (m *UndeleteFolderRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UndeleteFolderRequest.Unmarshal(m, b)
 }
@@ -756,6 +767,7 @@ func (*FolderOperation) ProtoMessage()    {}
 func (*FolderOperation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fe78511a4713776e, []int{11}
 }
+
 func (m *FolderOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FolderOperation.Unmarshal(m, b)
 }

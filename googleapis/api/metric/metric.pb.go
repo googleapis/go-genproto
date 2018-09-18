@@ -222,6 +222,7 @@ func (*MetricDescriptor) ProtoMessage()    {}
 func (*MetricDescriptor) Descriptor() ([]byte, []int) {
 	return fileDescriptor_927eaac1a24f8abb, []int{0}
 }
+
 func (m *MetricDescriptor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MetricDescriptor.Unmarshal(m, b)
 }
@@ -316,6 +317,7 @@ func (*Metric) ProtoMessage()    {}
 func (*Metric) Descriptor() ([]byte, []int) {
 	return fileDescriptor_927eaac1a24f8abb, []int{1}
 }
+
 func (m *Metric) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Metric.Unmarshal(m, b)
 }

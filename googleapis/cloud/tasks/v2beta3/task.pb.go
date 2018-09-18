@@ -140,6 +140,7 @@ func (*Task) ProtoMessage()    {}
 func (*Task) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ef2a735969aa09d5, []int{0}
 }
+
 func (m *Task) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Task.Unmarshal(m, b)
 }
@@ -323,6 +324,7 @@ func (*Attempt) ProtoMessage()    {}
 func (*Attempt) Descriptor() ([]byte, []int) {
 	return fileDescriptor_ef2a735969aa09d5, []int{1}
 }
+
 func (m *Attempt) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Attempt.Unmarshal(m, b)
 }

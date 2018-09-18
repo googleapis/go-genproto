@@ -45,6 +45,7 @@ func (*TimeOfDay) ProtoMessage()    {}
 func (*TimeOfDay) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6c354ab94588cebb, []int{0}
 }
+
 func (m *TimeOfDay) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeOfDay.Unmarshal(m, b)
 }

@@ -127,6 +127,7 @@ func (*DockerImage) ProtoMessage()    {}
 func (*DockerImage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8cf422f4020c41c0, []int{0}
 }
+
 func (m *DockerImage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DockerImage.Unmarshal(m, b)
 }
@@ -162,6 +163,7 @@ func (*DockerImage_Layer) ProtoMessage()    {}
 func (*DockerImage_Layer) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8cf422f4020c41c0, []int{0, 0}
 }
+
 func (m *DockerImage_Layer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DockerImage_Layer.Unmarshal(m, b)
 }
@@ -219,6 +221,7 @@ func (*DockerImage_Fingerprint) ProtoMessage()    {}
 func (*DockerImage_Fingerprint) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8cf422f4020c41c0, []int{0, 1}
 }
+
 func (m *DockerImage_Fingerprint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DockerImage_Fingerprint.Unmarshal(m, b)
 }
@@ -280,6 +283,7 @@ func (*DockerImage_Basis) ProtoMessage()    {}
 func (*DockerImage_Basis) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8cf422f4020c41c0, []int{0, 2}
 }
+
 func (m *DockerImage_Basis) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DockerImage_Basis.Unmarshal(m, b)
 }
@@ -339,6 +343,7 @@ func (*DockerImage_Derived) ProtoMessage()    {}
 func (*DockerImage_Derived) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8cf422f4020c41c0, []int{0, 3}
 }
+
 func (m *DockerImage_Derived) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DockerImage_Derived.Unmarshal(m, b)
 }

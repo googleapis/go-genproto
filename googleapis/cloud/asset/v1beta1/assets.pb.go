@@ -45,6 +45,7 @@ func (*TemporalAsset) ProtoMessage()    {}
 func (*TemporalAsset) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e0a79b6d8a101c1, []int{0}
 }
+
 func (m *TemporalAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TemporalAsset.Unmarshal(m, b)
 }
@@ -102,6 +103,7 @@ func (*TimeWindow) ProtoMessage()    {}
 func (*TimeWindow) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e0a79b6d8a101c1, []int{1}
 }
+
 func (m *TimeWindow) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeWindow.Unmarshal(m, b)
 }
@@ -160,6 +162,7 @@ func (*Asset) ProtoMessage()    {}
 func (*Asset) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e0a79b6d8a101c1, []int{2}
 }
+
 func (m *Asset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Asset.Unmarshal(m, b)
 }
@@ -249,6 +252,7 @@ func (*Resource) ProtoMessage()    {}
 func (*Resource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2e0a79b6d8a101c1, []int{3}
 }
+
 func (m *Resource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Resource.Unmarshal(m, b)
 }

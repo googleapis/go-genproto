@@ -41,6 +41,7 @@ func (*Row) ProtoMessage()    {}
 func (*Row) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{0}
 }
+
 func (m *Row) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Row.Unmarshal(m, b)
 }
@@ -95,6 +96,7 @@ func (*Family) ProtoMessage()    {}
 func (*Family) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{1}
 }
+
 func (m *Family) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Family.Unmarshal(m, b)
 }
@@ -148,6 +150,7 @@ func (*Column) ProtoMessage()    {}
 func (*Column) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{2}
 }
+
 func (m *Column) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Column.Unmarshal(m, b)
 }
@@ -206,6 +209,7 @@ func (*Cell) ProtoMessage()    {}
 func (*Cell) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{3}
 }
+
 func (m *Cell) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Cell.Unmarshal(m, b)
 }
@@ -262,6 +266,7 @@ func (*RowRange) ProtoMessage()    {}
 func (*RowRange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{4}
 }
+
 func (m *RowRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RowRange.Unmarshal(m, b)
 }
@@ -311,6 +316,7 @@ func (*RowSet) ProtoMessage()    {}
 func (*RowSet) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{5}
 }
+
 func (m *RowSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RowSet.Unmarshal(m, b)
 }
@@ -375,6 +381,7 @@ func (*ColumnRange) ProtoMessage()    {}
 func (*ColumnRange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{6}
 }
+
 func (m *ColumnRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ColumnRange.Unmarshal(m, b)
 }
@@ -599,6 +606,7 @@ func (*TimestampRange) ProtoMessage()    {}
 func (*TimestampRange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{7}
 }
+
 func (m *TimestampRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimestampRange.Unmarshal(m, b)
 }
@@ -658,6 +666,7 @@ func (*ValueRange) ProtoMessage()    {}
 func (*ValueRange) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{8}
 }
+
 func (m *ValueRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ValueRange.Unmarshal(m, b)
 }
@@ -927,6 +936,7 @@ func (*RowFilter) ProtoMessage()    {}
 func (*RowFilter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{9}
 }
+
 func (m *RowFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RowFilter.Unmarshal(m, b)
 }
@@ -1573,6 +1583,7 @@ func (*RowFilter_Chain) ProtoMessage()    {}
 func (*RowFilter_Chain) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{9, 0}
 }
+
 func (m *RowFilter_Chain) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RowFilter_Chain.Unmarshal(m, b)
 }
@@ -1637,6 +1648,7 @@ func (*RowFilter_Interleave) ProtoMessage()    {}
 func (*RowFilter_Interleave) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{9, 1}
 }
+
 func (m *RowFilter_Interleave) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RowFilter_Interleave.Unmarshal(m, b)
 }
@@ -1691,6 +1703,7 @@ func (*RowFilter_Condition) ProtoMessage()    {}
 func (*RowFilter_Condition) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{9, 2}
 }
+
 func (m *RowFilter_Condition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RowFilter_Condition.Unmarshal(m, b)
 }
@@ -1751,6 +1764,7 @@ func (*Mutation) ProtoMessage()    {}
 func (*Mutation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{10}
 }
+
 func (m *Mutation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mutation.Unmarshal(m, b)
 }
@@ -1971,6 +1985,7 @@ func (*Mutation_SetCell) ProtoMessage()    {}
 func (*Mutation_SetCell) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{10, 0}
 }
+
 func (m *Mutation_SetCell) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mutation_SetCell.Unmarshal(m, b)
 }
@@ -2039,6 +2054,7 @@ func (*Mutation_DeleteFromColumn) ProtoMessage()    {}
 func (*Mutation_DeleteFromColumn) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{10, 1}
 }
+
 func (m *Mutation_DeleteFromColumn) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mutation_DeleteFromColumn.Unmarshal(m, b)
 }
@@ -2094,6 +2110,7 @@ func (*Mutation_DeleteFromFamily) ProtoMessage()    {}
 func (*Mutation_DeleteFromFamily) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{10, 2}
 }
+
 func (m *Mutation_DeleteFromFamily) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mutation_DeleteFromFamily.Unmarshal(m, b)
 }
@@ -2132,6 +2149,7 @@ func (*Mutation_DeleteFromRow) ProtoMessage()    {}
 func (*Mutation_DeleteFromRow) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{10, 3}
 }
+
 func (m *Mutation_DeleteFromRow) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mutation_DeleteFromRow.Unmarshal(m, b)
 }
@@ -2178,6 +2196,7 @@ func (*ReadModifyWriteRule) ProtoMessage()    {}
 func (*ReadModifyWriteRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_234346170b768b8c, []int{11}
 }
+
 func (m *ReadModifyWriteRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadModifyWriteRule.Unmarshal(m, b)
 }

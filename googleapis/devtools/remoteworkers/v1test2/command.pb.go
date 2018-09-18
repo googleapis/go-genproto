@@ -43,6 +43,7 @@ func (*CommandTask) ProtoMessage()    {}
 func (*CommandTask) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{0}
 }
+
 func (m *CommandTask) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommandTask.Unmarshal(m, b)
 }
@@ -118,6 +119,7 @@ func (*CommandTask_Inputs) ProtoMessage()    {}
 func (*CommandTask_Inputs) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{0, 0}
 }
+
 func (m *CommandTask_Inputs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommandTask_Inputs.Unmarshal(m, b)
 }
@@ -176,6 +178,7 @@ func (*CommandTask_Inputs_EnvironmentVariable) ProtoMessage()    {}
 func (*CommandTask_Inputs_EnvironmentVariable) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{0, 0, 0}
 }
+
 func (m *CommandTask_Inputs_EnvironmentVariable) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommandTask_Inputs_EnvironmentVariable.Unmarshal(m, b)
 }
@@ -239,6 +242,7 @@ func (*CommandTask_Outputs) ProtoMessage()    {}
 func (*CommandTask_Outputs) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{0, 1}
 }
+
 func (m *CommandTask_Outputs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommandTask_Outputs.Unmarshal(m, b)
 }
@@ -314,6 +318,7 @@ func (*CommandTask_Timeouts) ProtoMessage()    {}
 func (*CommandTask_Timeouts) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{0, 2}
 }
+
 func (m *CommandTask_Timeouts) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommandTask_Timeouts.Unmarshal(m, b)
 }
@@ -377,6 +382,7 @@ func (*CommandOutputs) ProtoMessage()    {}
 func (*CommandOutputs) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{1}
 }
+
 func (m *CommandOutputs) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommandOutputs.Unmarshal(m, b)
 }
@@ -431,6 +437,7 @@ func (*CommandOverhead) ProtoMessage()    {}
 func (*CommandOverhead) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{2}
 }
+
 func (m *CommandOverhead) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommandOverhead.Unmarshal(m, b)
 }
@@ -503,6 +510,7 @@ func (*CommandResult) ProtoMessage()    {}
 func (*CommandResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{3}
 }
+
 func (m *CommandResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommandResult.Unmarshal(m, b)
 }
@@ -593,6 +601,7 @@ func (*FileMetadata) ProtoMessage()    {}
 func (*FileMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{4}
 }
+
 func (m *FileMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileMetadata.Unmarshal(m, b)
 }
@@ -658,6 +667,7 @@ func (*DirectoryMetadata) ProtoMessage()    {}
 func (*DirectoryMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{5}
 }
+
 func (m *DirectoryMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DirectoryMetadata.Unmarshal(m, b)
 }
@@ -719,6 +729,7 @@ func (*Digest) ProtoMessage()    {}
 func (*Digest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{6}
 }
+
 func (m *Digest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Digest.Unmarshal(m, b)
 }
@@ -769,6 +780,7 @@ func (*Directory) ProtoMessage()    {}
 func (*Directory) Descriptor() ([]byte, []int) {
 	return fileDescriptor_7b7f8597ab32e88e, []int{7}
 }
+
 func (m *Directory) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Directory.Unmarshal(m, b)
 }

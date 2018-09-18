@@ -50,6 +50,7 @@ func (*DroppedLabels) ProtoMessage()    {}
 func (*DroppedLabels) Descriptor() ([]byte, []int) {
 	return fileDescriptor_15749142c06d7f43, []int{0}
 }
+
 func (m *DroppedLabels) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DroppedLabels.Unmarshal(m, b)
 }

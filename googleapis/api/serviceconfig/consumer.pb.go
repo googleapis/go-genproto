@@ -90,6 +90,7 @@ func (*ProjectProperties) ProtoMessage()    {}
 func (*ProjectProperties) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bec5e69370b3104e, []int{0}
 }
+
 func (m *ProjectProperties) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProjectProperties.Unmarshal(m, b)
 }
@@ -143,6 +144,7 @@ func (*Property) ProtoMessage()    {}
 func (*Property) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bec5e69370b3104e, []int{1}
 }
+
 func (m *Property) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Property.Unmarshal(m, b)
 }

@@ -81,6 +81,7 @@ func (*Distribution) ProtoMessage()    {}
 func (*Distribution) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0835ee0fd90bf943, []int{0}
 }
+
 func (m *Distribution) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution.Unmarshal(m, b)
 }
@@ -158,6 +159,7 @@ func (*Distribution_Range) ProtoMessage()    {}
 func (*Distribution_Range) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0835ee0fd90bf943, []int{0, 0}
 }
+
 func (m *Distribution_Range) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution_Range.Unmarshal(m, b)
 }
@@ -232,6 +234,7 @@ func (*Distribution_BucketOptions) ProtoMessage()    {}
 func (*Distribution_BucketOptions) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0835ee0fd90bf943, []int{0, 1}
 }
+
 func (m *Distribution_BucketOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution_BucketOptions.Unmarshal(m, b)
 }
@@ -420,6 +423,7 @@ func (*Distribution_BucketOptions_Linear) ProtoMessage()    {}
 func (*Distribution_BucketOptions_Linear) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0835ee0fd90bf943, []int{0, 1, 0}
 }
+
 func (m *Distribution_BucketOptions_Linear) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution_BucketOptions_Linear.Unmarshal(m, b)
 }
@@ -488,6 +492,7 @@ func (*Distribution_BucketOptions_Exponential) ProtoMessage()    {}
 func (*Distribution_BucketOptions_Exponential) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0835ee0fd90bf943, []int{0, 1, 1}
 }
+
 func (m *Distribution_BucketOptions_Exponential) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution_BucketOptions_Exponential.Unmarshal(m, b)
 }
@@ -552,6 +557,7 @@ func (*Distribution_BucketOptions_Explicit) ProtoMessage()    {}
 func (*Distribution_BucketOptions_Explicit) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0835ee0fd90bf943, []int{0, 1, 2}
 }
+
 func (m *Distribution_BucketOptions_Explicit) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution_BucketOptions_Explicit.Unmarshal(m, b)
 }

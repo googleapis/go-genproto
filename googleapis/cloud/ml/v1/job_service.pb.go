@@ -426,6 +426,7 @@ func (*TrainingInput) ProtoMessage()    {}
 func (*TrainingInput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{0}
 }
+
 func (m *TrainingInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TrainingInput.Unmarshal(m, b)
 }
@@ -577,6 +578,7 @@ func (*HyperparameterSpec) ProtoMessage()    {}
 func (*HyperparameterSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{1}
 }
+
 func (m *HyperparameterSpec) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HyperparameterSpec.Unmarshal(m, b)
 }
@@ -669,6 +671,7 @@ func (*ParameterSpec) ProtoMessage()    {}
 func (*ParameterSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{2}
 }
+
 func (m *ParameterSpec) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ParameterSpec.Unmarshal(m, b)
 }
@@ -760,6 +763,7 @@ func (*HyperparameterOutput) ProtoMessage()    {}
 func (*HyperparameterOutput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{3}
 }
+
 func (m *HyperparameterOutput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HyperparameterOutput.Unmarshal(m, b)
 }
@@ -825,6 +829,7 @@ func (*HyperparameterOutput_HyperparameterMetric) ProtoMessage()    {}
 func (*HyperparameterOutput_HyperparameterMetric) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{3, 0}
 }
+
 func (m *HyperparameterOutput_HyperparameterMetric) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HyperparameterOutput_HyperparameterMetric.Unmarshal(m, b)
 }
@@ -880,6 +885,7 @@ func (*TrainingOutput) ProtoMessage()    {}
 func (*TrainingOutput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{4}
 }
+
 func (m *TrainingOutput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TrainingOutput.Unmarshal(m, b)
 }
@@ -964,6 +970,7 @@ func (*PredictionInput) ProtoMessage()    {}
 func (*PredictionInput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{5}
 }
+
 func (m *PredictionInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredictionInput.Unmarshal(m, b)
 }
@@ -1176,6 +1183,7 @@ func (*PredictionOutput) ProtoMessage()    {}
 func (*PredictionOutput) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{6}
 }
+
 func (m *PredictionOutput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredictionOutput.Unmarshal(m, b)
 }
@@ -1259,6 +1267,7 @@ func (*Job) ProtoMessage()    {}
 func (*Job) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{7}
 }
+
 func (m *Job) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Job.Unmarshal(m, b)
 }
@@ -1536,6 +1545,7 @@ func (*CreateJobRequest) ProtoMessage()    {}
 func (*CreateJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{8}
 }
+
 func (m *CreateJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateJobRequest.Unmarshal(m, b)
 }
@@ -1598,6 +1608,7 @@ func (*ListJobsRequest) ProtoMessage()    {}
 func (*ListJobsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{9}
 }
+
 func (m *ListJobsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListJobsRequest.Unmarshal(m, b)
 }
@@ -1662,6 +1673,7 @@ func (*ListJobsResponse) ProtoMessage()    {}
 func (*ListJobsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{10}
 }
+
 func (m *ListJobsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListJobsResponse.Unmarshal(m, b)
 }
@@ -1711,6 +1723,7 @@ func (*GetJobRequest) ProtoMessage()    {}
 func (*GetJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{11}
 }
+
 func (m *GetJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetJobRequest.Unmarshal(m, b)
 }
@@ -1753,6 +1766,7 @@ func (*CancelJobRequest) ProtoMessage()    {}
 func (*CancelJobRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a9e7ba15cb43988d, []int{12}
 }
+
 func (m *CancelJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelJobRequest.Unmarshal(m, b)
 }

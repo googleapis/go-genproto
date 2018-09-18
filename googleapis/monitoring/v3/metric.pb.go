@@ -48,6 +48,7 @@ func (*Point) ProtoMessage()    {}
 func (*Point) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c76199a3d2c4c21e, []int{0}
 }
+
 func (m *Point) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Point.Unmarshal(m, b)
 }
@@ -132,6 +133,7 @@ func (*TimeSeries) ProtoMessage()    {}
 func (*TimeSeries) Descriptor() ([]byte, []int) {
 	return fileDescriptor_c76199a3d2c4c21e, []int{1}
 }
+
 func (m *TimeSeries) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeSeries.Unmarshal(m, b)
 }

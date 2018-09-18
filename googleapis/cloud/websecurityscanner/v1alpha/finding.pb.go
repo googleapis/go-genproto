@@ -156,6 +156,7 @@ func (*Finding) ProtoMessage()    {}
 func (*Finding) Descriptor() ([]byte, []int) {
 	return fileDescriptor_811918cc7b338327, []int{0}
 }
+
 func (m *Finding) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Finding.Unmarshal(m, b)
 }

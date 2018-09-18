@@ -118,6 +118,7 @@ func (*Discovery) ProtoMessage()    {}
 func (*Discovery) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ec5519deb85e465, []int{0}
 }
+
 func (m *Discovery) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Discovery.Unmarshal(m, b)
 }
@@ -158,6 +159,7 @@ func (*Details) ProtoMessage()    {}
 func (*Details) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ec5519deb85e465, []int{1}
 }
+
 func (m *Details) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Details.Unmarshal(m, b)
 }
@@ -206,6 +208,7 @@ func (*Discovered) ProtoMessage()    {}
 func (*Discovered) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ec5519deb85e465, []int{2}
 }
+
 func (m *Discovered) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Discovered.Unmarshal(m, b)
 }

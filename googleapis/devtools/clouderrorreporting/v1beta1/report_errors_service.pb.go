@@ -47,6 +47,7 @@ func (*ReportErrorEventRequest) ProtoMessage()    {}
 func (*ReportErrorEventRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_575af94d0209aede, []int{0}
 }
+
 func (m *ReportErrorEventRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportErrorEventRequest.Unmarshal(m, b)
 }
@@ -93,6 +94,7 @@ func (*ReportErrorEventResponse) ProtoMessage()    {}
 func (*ReportErrorEventResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_575af94d0209aede, []int{1}
 }
+
 func (m *ReportErrorEventResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportErrorEventResponse.Unmarshal(m, b)
 }
@@ -137,6 +139,7 @@ func (*ReportedErrorEvent) ProtoMessage()    {}
 func (*ReportedErrorEvent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_575af94d0209aede, []int{2}
 }
+
 func (m *ReportedErrorEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportedErrorEvent.Unmarshal(m, b)
 }

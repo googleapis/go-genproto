@@ -38,6 +38,7 @@ func (*TranslationDatasetMetadata) ProtoMessage()    {}
 func (*TranslationDatasetMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74f6484316c15700, []int{0}
 }
+
 func (m *TranslationDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranslationDatasetMetadata.Unmarshal(m, b)
 }
@@ -87,6 +88,7 @@ func (*TranslationEvaluationMetrics) ProtoMessage()    {}
 func (*TranslationEvaluationMetrics) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74f6484316c15700, []int{1}
 }
+
 func (m *TranslationEvaluationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranslationEvaluationMetrics.Unmarshal(m, b)
 }
@@ -143,6 +145,7 @@ func (*TranslationModelMetadata) ProtoMessage()    {}
 func (*TranslationModelMetadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74f6484316c15700, []int{2}
 }
+
 func (m *TranslationModelMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranslationModelMetadata.Unmarshal(m, b)
 }
@@ -197,6 +200,7 @@ func (*TranslationAnnotation) ProtoMessage()    {}
 func (*TranslationAnnotation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_74f6484316c15700, []int{3}
 }
+
 func (m *TranslationAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranslationAnnotation.Unmarshal(m, b)
 }

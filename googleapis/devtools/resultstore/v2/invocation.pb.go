@@ -61,6 +61,7 @@ func (*Invocation) ProtoMessage()    {}
 func (*Invocation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9a57b6cf1112b76d, []int{0}
 }
+
 func (m *Invocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Invocation.Unmarshal(m, b)
 }
@@ -157,6 +158,7 @@ func (*Invocation_Id) ProtoMessage()    {}
 func (*Invocation_Id) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9a57b6cf1112b76d, []int{0, 0}
 }
+
 func (m *Invocation_Id) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Invocation_Id.Unmarshal(m, b)
 }
@@ -195,6 +197,7 @@ func (*WorkspaceContext) ProtoMessage()    {}
 func (*WorkspaceContext) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9a57b6cf1112b76d, []int{1}
 }
+
 func (m *WorkspaceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WorkspaceContext.Unmarshal(m, b)
 }
@@ -240,6 +243,7 @@ func (*WorkspaceInfo) ProtoMessage()    {}
 func (*WorkspaceInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9a57b6cf1112b76d, []int{2}
 }
+
 func (m *WorkspaceInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WorkspaceInfo.Unmarshal(m, b)
 }
@@ -316,6 +320,7 @@ func (*CommandLine) ProtoMessage()    {}
 func (*CommandLine) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9a57b6cf1112b76d, []int{3}
 }
+
 func (m *CommandLine) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommandLine.Unmarshal(m, b)
 }
@@ -390,6 +395,7 @@ func (*InvocationAttributes) ProtoMessage()    {}
 func (*InvocationAttributes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9a57b6cf1112b76d, []int{4}
 }
+
 func (m *InvocationAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InvocationAttributes.Unmarshal(m, b)
 }

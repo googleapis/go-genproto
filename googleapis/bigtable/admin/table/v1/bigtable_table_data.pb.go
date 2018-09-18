@@ -71,6 +71,7 @@ func (*Table) ProtoMessage()    {}
 func (*Table) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b9ed6c4c9bdaf892, []int{0}
 }
+
 func (m *Table) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Table.Unmarshal(m, b)
 }
@@ -168,6 +169,7 @@ func (*ColumnFamily) ProtoMessage()    {}
 func (*ColumnFamily) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b9ed6c4c9bdaf892, []int{1}
 }
+
 func (m *ColumnFamily) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ColumnFamily.Unmarshal(m, b)
 }
@@ -226,6 +228,7 @@ func (*GcRule) ProtoMessage()    {}
 func (*GcRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b9ed6c4c9bdaf892, []int{2}
 }
+
 func (m *GcRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcRule.Unmarshal(m, b)
 }
@@ -429,6 +432,7 @@ func (*GcRule_Intersection) ProtoMessage()    {}
 func (*GcRule_Intersection) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b9ed6c4c9bdaf892, []int{2, 0}
 }
+
 func (m *GcRule_Intersection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcRule_Intersection.Unmarshal(m, b)
 }
@@ -469,6 +473,7 @@ func (*GcRule_Union) ProtoMessage()    {}
 func (*GcRule_Union) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b9ed6c4c9bdaf892, []int{2, 1}
 }
+
 func (m *GcRule_Union) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcRule_Union.Unmarshal(m, b)
 }

@@ -48,6 +48,7 @@ func (*KnowledgeBase) ProtoMessage()    {}
 func (*KnowledgeBase) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9cdbbb049e0ce16a, []int{0}
 }
+
 func (m *KnowledgeBase) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KnowledgeBase.Unmarshal(m, b)
 }
@@ -101,6 +102,7 @@ func (*ListKnowledgeBasesRequest) ProtoMessage()    {}
 func (*ListKnowledgeBasesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9cdbbb049e0ce16a, []int{1}
 }
+
 func (m *ListKnowledgeBasesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListKnowledgeBasesRequest.Unmarshal(m, b)
 }
@@ -158,6 +160,7 @@ func (*ListKnowledgeBasesResponse) ProtoMessage()    {}
 func (*ListKnowledgeBasesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9cdbbb049e0ce16a, []int{2}
 }
+
 func (m *ListKnowledgeBasesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListKnowledgeBasesResponse.Unmarshal(m, b)
 }
@@ -206,6 +209,7 @@ func (*GetKnowledgeBaseRequest) ProtoMessage()    {}
 func (*GetKnowledgeBaseRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9cdbbb049e0ce16a, []int{3}
 }
+
 func (m *GetKnowledgeBaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetKnowledgeBaseRequest.Unmarshal(m, b)
 }
@@ -249,6 +253,7 @@ func (*CreateKnowledgeBaseRequest) ProtoMessage()    {}
 func (*CreateKnowledgeBaseRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9cdbbb049e0ce16a, []int{4}
 }
+
 func (m *CreateKnowledgeBaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateKnowledgeBaseRequest.Unmarshal(m, b)
 }
@@ -300,6 +305,7 @@ func (*DeleteKnowledgeBaseRequest) ProtoMessage()    {}
 func (*DeleteKnowledgeBaseRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9cdbbb049e0ce16a, []int{5}
 }
+
 func (m *DeleteKnowledgeBaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteKnowledgeBaseRequest.Unmarshal(m, b)
 }

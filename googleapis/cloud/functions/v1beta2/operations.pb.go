@@ -78,6 +78,7 @@ func (*OperationMetadataV1Beta2) ProtoMessage()    {}
 func (*OperationMetadataV1Beta2) Descriptor() ([]byte, []int) {
 	return fileDescriptor_25e43fb62395b1f8, []int{0}
 }
+
 func (m *OperationMetadataV1Beta2) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationMetadataV1Beta2.Unmarshal(m, b)
 }

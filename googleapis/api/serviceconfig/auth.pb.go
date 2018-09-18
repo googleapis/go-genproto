@@ -53,6 +53,7 @@ func (*Authentication) ProtoMessage()    {}
 func (*Authentication) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d6570d3c90e2b8ac, []int{0}
 }
+
 func (m *Authentication) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Authentication.Unmarshal(m, b)
 }
@@ -116,6 +117,7 @@ func (*AuthenticationRule) ProtoMessage()    {}
 func (*AuthenticationRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d6570d3c90e2b8ac, []int{1}
 }
+
 func (m *AuthenticationRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthenticationRule.Unmarshal(m, b)
 }
@@ -215,6 +217,7 @@ func (*AuthProvider) ProtoMessage()    {}
 func (*AuthProvider) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d6570d3c90e2b8ac, []int{2}
 }
+
 func (m *AuthProvider) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthProvider.Unmarshal(m, b)
 }
@@ -306,6 +309,7 @@ func (*OAuthRequirements) ProtoMessage()    {}
 func (*OAuthRequirements) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d6570d3c90e2b8ac, []int{3}
 }
+
 func (m *OAuthRequirements) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OAuthRequirements.Unmarshal(m, b)
 }
@@ -368,6 +372,7 @@ func (*AuthRequirement) ProtoMessage()    {}
 func (*AuthRequirement) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d6570d3c90e2b8ac, []int{4}
 }
+
 func (m *AuthRequirement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthRequirement.Unmarshal(m, b)
 }

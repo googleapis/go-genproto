@@ -165,6 +165,7 @@ func (*Color) ProtoMessage()    {}
 func (*Color) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8454902cb8a2d34f, []int{0}
 }
+
 func (m *Color) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Color.Unmarshal(m, b)
 }

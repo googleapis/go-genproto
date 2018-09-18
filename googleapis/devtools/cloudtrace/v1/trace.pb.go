@@ -125,6 +125,7 @@ func (*Trace) ProtoMessage()    {}
 func (*Trace) Descriptor() ([]byte, []int) {
 	return fileDescriptor_91f8d9fbc62846cf, []int{0}
 }
+
 func (m *Trace) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Trace.Unmarshal(m, b)
 }
@@ -179,6 +180,7 @@ func (*Traces) ProtoMessage()    {}
 func (*Traces) Descriptor() ([]byte, []int) {
 	return fileDescriptor_91f8d9fbc62846cf, []int{1}
 }
+
 func (m *Traces) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Traces.Unmarshal(m, b)
 }
@@ -278,6 +280,7 @@ func (*TraceSpan) ProtoMessage()    {}
 func (*TraceSpan) Descriptor() ([]byte, []int) {
 	return fileDescriptor_91f8d9fbc62846cf, []int{2}
 }
+
 func (m *TraceSpan) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TraceSpan.Unmarshal(m, b)
 }
@@ -422,6 +425,7 @@ func (*ListTracesRequest) ProtoMessage()    {}
 func (*ListTracesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_91f8d9fbc62846cf, []int{3}
 }
+
 func (m *ListTracesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTracesRequest.Unmarshal(m, b)
 }
@@ -515,6 +519,7 @@ func (*ListTracesResponse) ProtoMessage()    {}
 func (*ListTracesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_91f8d9fbc62846cf, []int{4}
 }
+
 func (m *ListTracesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTracesResponse.Unmarshal(m, b)
 }
@@ -564,6 +569,7 @@ func (*GetTraceRequest) ProtoMessage()    {}
 func (*GetTraceRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_91f8d9fbc62846cf, []int{5}
 }
+
 func (m *GetTraceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetTraceRequest.Unmarshal(m, b)
 }
@@ -613,6 +619,7 @@ func (*PatchTracesRequest) ProtoMessage()    {}
 func (*PatchTracesRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_91f8d9fbc62846cf, []int{6}
 }
+
 func (m *PatchTracesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PatchTracesRequest.Unmarshal(m, b)
 }

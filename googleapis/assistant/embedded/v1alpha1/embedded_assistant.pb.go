@@ -194,6 +194,7 @@ func (*ConverseConfig) ProtoMessage()    {}
 func (*ConverseConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a6c80cea3f0c886, []int{0}
 }
+
 func (m *ConverseConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseConfig.Unmarshal(m, b)
 }
@@ -256,6 +257,7 @@ func (*AudioInConfig) ProtoMessage()    {}
 func (*AudioInConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a6c80cea3f0c886, []int{1}
 }
+
 func (m *AudioInConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioInConfig.Unmarshal(m, b)
 }
@@ -311,6 +313,7 @@ func (*AudioOutConfig) ProtoMessage()    {}
 func (*AudioOutConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a6c80cea3f0c886, []int{2}
 }
+
 func (m *AudioOutConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioOutConfig.Unmarshal(m, b)
 }
@@ -369,6 +372,7 @@ func (*ConverseState) ProtoMessage()    {}
 func (*ConverseState) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a6c80cea3f0c886, []int{3}
 }
+
 func (m *ConverseState) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseState.Unmarshal(m, b)
 }
@@ -412,6 +416,7 @@ func (*AudioOut) ProtoMessage()    {}
 func (*AudioOut) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a6c80cea3f0c886, []int{4}
 }
+
 func (m *AudioOut) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioOut.Unmarshal(m, b)
 }
@@ -474,6 +479,7 @@ func (*ConverseResult) ProtoMessage()    {}
 func (*ConverseResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a6c80cea3f0c886, []int{5}
 }
+
 func (m *ConverseResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseResult.Unmarshal(m, b)
 }
@@ -550,6 +556,7 @@ func (*ConverseRequest) ProtoMessage()    {}
 func (*ConverseRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a6c80cea3f0c886, []int{6}
 }
+
 func (m *ConverseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseRequest.Unmarshal(m, b)
 }
@@ -697,6 +704,7 @@ func (*ConverseResponse) ProtoMessage()    {}
 func (*ConverseResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2a6c80cea3f0c886, []int{7}
 }
+
 func (m *ConverseResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConverseResponse.Unmarshal(m, b)
 }

@@ -147,6 +147,7 @@ func (*ScanRun) ProtoMessage()    {}
 func (*ScanRun) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d1e91fc2897e59cf, []int{0}
 }
+
 func (m *ScanRun) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanRun.Unmarshal(m, b)
 }

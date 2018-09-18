@@ -207,6 +207,7 @@ func (*Type) ProtoMessage()    {}
 func (*Type) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dd271cc1e348c538, []int{0}
 }
+
 func (m *Type) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Type.Unmarshal(m, b)
 }
@@ -302,6 +303,7 @@ func (*Field) ProtoMessage()    {}
 func (*Field) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dd271cc1e348c538, []int{1}
 }
+
 func (m *Field) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Field.Unmarshal(m, b)
 }
@@ -413,6 +415,7 @@ func (*Enum) ProtoMessage()    {}
 func (*Enum) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dd271cc1e348c538, []int{2}
 }
+
 func (m *Enum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Enum.Unmarshal(m, b)
 }
@@ -485,6 +488,7 @@ func (*EnumValue) ProtoMessage()    {}
 func (*EnumValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dd271cc1e348c538, []int{3}
 }
+
 func (m *EnumValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EnumValue.Unmarshal(m, b)
 }
@@ -548,6 +552,7 @@ func (*Option) ProtoMessage()    {}
 func (*Option) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dd271cc1e348c538, []int{4}
 }
+
 func (m *Option) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Option.Unmarshal(m, b)
 }
