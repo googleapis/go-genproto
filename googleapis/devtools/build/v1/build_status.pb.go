@@ -129,8 +129,8 @@ func (m *BuildStatus) GetDetails() *any.Any {
 }
 
 func init() {
-	proto.RegisterType((*BuildStatus)(nil), "google.devtools.build.v1.BuildStatus")
 	proto.RegisterEnum("google.devtools.build.v1.BuildStatus_Result", BuildStatus_Result_name, BuildStatus_Result_value)
+	proto.RegisterType((*BuildStatus)(nil), "google.devtools.build.v1.BuildStatus")
 }
 
 func init() {

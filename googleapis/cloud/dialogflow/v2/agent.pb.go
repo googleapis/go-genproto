@@ -896,6 +896,7 @@ func _RestoreAgentRequest_OneofSizer(msg proto.Message) (n int) {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dialogflow.v2.Agent_MatchMode", Agent_MatchMode_name, Agent_MatchMode_value)
 	proto.RegisterType((*Agent)(nil), "google.cloud.dialogflow.v2.Agent")
 	proto.RegisterType((*GetAgentRequest)(nil), "google.cloud.dialogflow.v2.GetAgentRequest")
 	proto.RegisterType((*SearchAgentsRequest)(nil), "google.cloud.dialogflow.v2.SearchAgentsRequest")
@@ -905,7 +906,6 @@ func init() {
 	proto.RegisterType((*ExportAgentResponse)(nil), "google.cloud.dialogflow.v2.ExportAgentResponse")
 	proto.RegisterType((*ImportAgentRequest)(nil), "google.cloud.dialogflow.v2.ImportAgentRequest")
 	proto.RegisterType((*RestoreAgentRequest)(nil), "google.cloud.dialogflow.v2.RestoreAgentRequest")
-	proto.RegisterEnum("google.cloud.dialogflow.v2.Agent_MatchMode", Agent_MatchMode_name, Agent_MatchMode_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

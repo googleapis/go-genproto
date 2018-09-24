@@ -479,13 +479,13 @@ func (m *GcsDestination) GetUri() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.asset.v1beta1.ContentType", ContentType_name, ContentType_value)
 	proto.RegisterType((*ExportAssetsRequest)(nil), "google.cloud.asset.v1beta1.ExportAssetsRequest")
 	proto.RegisterType((*ExportAssetsResponse)(nil), "google.cloud.asset.v1beta1.ExportAssetsResponse")
 	proto.RegisterType((*BatchGetAssetsHistoryRequest)(nil), "google.cloud.asset.v1beta1.BatchGetAssetsHistoryRequest")
 	proto.RegisterType((*BatchGetAssetsHistoryResponse)(nil), "google.cloud.asset.v1beta1.BatchGetAssetsHistoryResponse")
 	proto.RegisterType((*OutputConfig)(nil), "google.cloud.asset.v1beta1.OutputConfig")
 	proto.RegisterType((*GcsDestination)(nil), "google.cloud.asset.v1beta1.GcsDestination")
-	proto.RegisterEnum("google.cloud.asset.v1beta1.ContentType", ContentType_name, ContentType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

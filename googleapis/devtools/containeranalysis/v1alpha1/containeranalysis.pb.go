@@ -3384,6 +3384,11 @@ func (m *UpdateScanConfigRequest) GetUpdateMask() *field_mask.FieldMask {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.Note_Kind", Note_Kind_name, Note_Kind_value)
+	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.Deployable_Deployment_Platform", Deployable_Deployment_Platform_name, Deployable_Deployment_Platform_value)
+	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.Discovery_Discovered_AnalysisStatus", Discovery_Discovered_AnalysisStatus_name, Discovery_Discovered_AnalysisStatus_value)
+	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.BuildSignature_KeyType", BuildSignature_KeyType_name, BuildSignature_KeyType_value)
+	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.PgpSignedAttestation_ContentType", PgpSignedAttestation_ContentType_name, PgpSignedAttestation_ContentType_value)
 	proto.RegisterType((*Occurrence)(nil), "google.devtools.containeranalysis.v1alpha1.Occurrence")
 	proto.RegisterType((*Resource)(nil), "google.devtools.containeranalysis.v1alpha1.Resource")
 	proto.RegisterType((*Note)(nil), "google.devtools.containeranalysis.v1alpha1.Note")
@@ -3425,11 +3430,6 @@ func init() {
 	proto.RegisterType((*ListScanConfigsRequest)(nil), "google.devtools.containeranalysis.v1alpha1.ListScanConfigsRequest")
 	proto.RegisterType((*ListScanConfigsResponse)(nil), "google.devtools.containeranalysis.v1alpha1.ListScanConfigsResponse")
 	proto.RegisterType((*UpdateScanConfigRequest)(nil), "google.devtools.containeranalysis.v1alpha1.UpdateScanConfigRequest")
-	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.Note_Kind", Note_Kind_name, Note_Kind_value)
-	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.Deployable_Deployment_Platform", Deployable_Deployment_Platform_name, Deployable_Deployment_Platform_value)
-	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.Discovery_Discovered_AnalysisStatus", Discovery_Discovered_AnalysisStatus_name, Discovery_Discovered_AnalysisStatus_value)
-	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.BuildSignature_KeyType", BuildSignature_KeyType_name, BuildSignature_KeyType_value)
-	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.PgpSignedAttestation_ContentType", PgpSignedAttestation_ContentType_name, PgpSignedAttestation_ContentType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

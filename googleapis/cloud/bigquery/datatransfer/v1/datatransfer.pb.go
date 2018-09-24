@@ -1632,6 +1632,10 @@ func (m *ScheduleTransferRunsResponse) GetRuns() []*TransferRun {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.bigquery.datatransfer.v1.DataSourceParameter_Type", DataSourceParameter_Type_name, DataSourceParameter_Type_value)
+	proto.RegisterEnum("google.cloud.bigquery.datatransfer.v1.DataSource_AuthorizationType", DataSource_AuthorizationType_name, DataSource_AuthorizationType_value)
+	proto.RegisterEnum("google.cloud.bigquery.datatransfer.v1.DataSource_DataRefreshType", DataSource_DataRefreshType_name, DataSource_DataRefreshType_value)
+	proto.RegisterEnum("google.cloud.bigquery.datatransfer.v1.ListTransferRunsRequest_RunAttempt", ListTransferRunsRequest_RunAttempt_name, ListTransferRunsRequest_RunAttempt_value)
 	proto.RegisterType((*DataSourceParameter)(nil), "google.cloud.bigquery.datatransfer.v1.DataSourceParameter")
 	proto.RegisterType((*DataSource)(nil), "google.cloud.bigquery.datatransfer.v1.DataSource")
 	proto.RegisterType((*GetDataSourceRequest)(nil), "google.cloud.bigquery.datatransfer.v1.GetDataSourceRequest")
@@ -1653,10 +1657,6 @@ func init() {
 	proto.RegisterType((*CheckValidCredsResponse)(nil), "google.cloud.bigquery.datatransfer.v1.CheckValidCredsResponse")
 	proto.RegisterType((*ScheduleTransferRunsRequest)(nil), "google.cloud.bigquery.datatransfer.v1.ScheduleTransferRunsRequest")
 	proto.RegisterType((*ScheduleTransferRunsResponse)(nil), "google.cloud.bigquery.datatransfer.v1.ScheduleTransferRunsResponse")
-	proto.RegisterEnum("google.cloud.bigquery.datatransfer.v1.DataSourceParameter_Type", DataSourceParameter_Type_name, DataSourceParameter_Type_value)
-	proto.RegisterEnum("google.cloud.bigquery.datatransfer.v1.DataSource_AuthorizationType", DataSource_AuthorizationType_name, DataSource_AuthorizationType_value)
-	proto.RegisterEnum("google.cloud.bigquery.datatransfer.v1.DataSource_DataRefreshType", DataSource_DataRefreshType_name, DataSource_DataRefreshType_value)
-	proto.RegisterEnum("google.cloud.bigquery.datatransfer.v1.ListTransferRunsRequest_RunAttempt", ListTransferRunsRequest_RunAttempt_name, ListTransferRunsRequest_RunAttempt_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

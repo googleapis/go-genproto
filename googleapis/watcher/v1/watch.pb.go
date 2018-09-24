@@ -297,10 +297,10 @@ func (m *Change) GetContinued() bool {
 }
 
 func init() {
+	proto.RegisterEnum("google.watcher.v1.Change_State", Change_State_name, Change_State_value)
 	proto.RegisterType((*Request)(nil), "google.watcher.v1.Request")
 	proto.RegisterType((*ChangeBatch)(nil), "google.watcher.v1.ChangeBatch")
 	proto.RegisterType((*Change)(nil), "google.watcher.v1.Change")
-	proto.RegisterEnum("google.watcher.v1.Change_State", Change_State_name, Change_State_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

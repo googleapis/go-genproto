@@ -1767,6 +1767,9 @@ func (m *BatchAnnotateImagesResponse) GetResponses() []*AnnotateImageResponse {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.vision.v1p1beta1.Likelihood", Likelihood_name, Likelihood_value)
+	proto.RegisterEnum("google.cloud.vision.v1p1beta1.Feature_Type", Feature_Type_name, Feature_Type_value)
+	proto.RegisterEnum("google.cloud.vision.v1p1beta1.FaceAnnotation_Landmark_Type", FaceAnnotation_Landmark_Type_name, FaceAnnotation_Landmark_Type_value)
 	proto.RegisterType((*Feature)(nil), "google.cloud.vision.v1p1beta1.Feature")
 	proto.RegisterType((*ImageSource)(nil), "google.cloud.vision.v1p1beta1.ImageSource")
 	proto.RegisterType((*Image)(nil), "google.cloud.vision.v1p1beta1.Image")
@@ -1789,9 +1792,6 @@ func init() {
 	proto.RegisterType((*AnnotateImageResponse)(nil), "google.cloud.vision.v1p1beta1.AnnotateImageResponse")
 	proto.RegisterType((*BatchAnnotateImagesRequest)(nil), "google.cloud.vision.v1p1beta1.BatchAnnotateImagesRequest")
 	proto.RegisterType((*BatchAnnotateImagesResponse)(nil), "google.cloud.vision.v1p1beta1.BatchAnnotateImagesResponse")
-	proto.RegisterEnum("google.cloud.vision.v1p1beta1.Likelihood", Likelihood_name, Likelihood_value)
-	proto.RegisterEnum("google.cloud.vision.v1p1beta1.Feature_Type", Feature_Type_name, Feature_Type_value)
-	proto.RegisterEnum("google.cloud.vision.v1p1beta1.FaceAnnotation_Landmark_Type", FaceAnnotation_Landmark_Type_name, FaceAnnotation_Landmark_Type_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -2136,6 +2136,7 @@ func (m *RequestMetadata) GetCorrelatedInvocationsId() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.remoteexecution.v1test.ExecuteOperationMetadata_Stage", ExecuteOperationMetadata_Stage_name, ExecuteOperationMetadata_Stage_value)
 	proto.RegisterType((*Action)(nil), "google.devtools.remoteexecution.v1test.Action")
 	proto.RegisterType((*Command)(nil), "google.devtools.remoteexecution.v1test.Command")
 	proto.RegisterType((*Command_EnvironmentVariable)(nil), "google.devtools.remoteexecution.v1test.Command.EnvironmentVariable")
@@ -2166,7 +2167,6 @@ func init() {
 	proto.RegisterType((*GetTreeResponse)(nil), "google.devtools.remoteexecution.v1test.GetTreeResponse")
 	proto.RegisterType((*ToolDetails)(nil), "google.devtools.remoteexecution.v1test.ToolDetails")
 	proto.RegisterType((*RequestMetadata)(nil), "google.devtools.remoteexecution.v1test.RequestMetadata")
-	proto.RegisterEnum("google.devtools.remoteexecution.v1test.ExecuteOperationMetadata_Stage", ExecuteOperationMetadata_Stage_name, ExecuteOperationMetadata_Stage_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

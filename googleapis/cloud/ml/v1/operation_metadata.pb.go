@@ -154,8 +154,8 @@ func (m *OperationMetadata) GetVersion() *Version {
 }
 
 func init() {
-	proto.RegisterType((*OperationMetadata)(nil), "google.cloud.ml.v1.OperationMetadata")
 	proto.RegisterEnum("google.cloud.ml.v1.OperationMetadata_OperationType", OperationMetadata_OperationType_name, OperationMetadata_OperationType_value)
+	proto.RegisterType((*OperationMetadata)(nil), "google.cloud.ml.v1.OperationMetadata")
 }
 
 func init() {

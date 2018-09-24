@@ -435,11 +435,11 @@ func (m *AppEngineRouting) GetHost() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.tasks.v2beta3.HttpMethod", HttpMethod_name, HttpMethod_value)
 	proto.RegisterType((*AppEngineHttpQueue)(nil), "google.cloud.tasks.v2beta3.AppEngineHttpQueue")
 	proto.RegisterType((*AppEngineHttpRequest)(nil), "google.cloud.tasks.v2beta3.AppEngineHttpRequest")
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.tasks.v2beta3.AppEngineHttpRequest.HeadersEntry")
 	proto.RegisterType((*AppEngineRouting)(nil), "google.cloud.tasks.v2beta3.AppEngineRouting")
-	proto.RegisterEnum("google.cloud.tasks.v2beta3.HttpMethod", HttpMethod_name, HttpMethod_value)
 }
 
 func init() {

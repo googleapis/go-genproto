@@ -718,6 +718,7 @@ func (m *BatchDeletePhotosResponse) GetStatus() []*status.Status {
 }
 
 func init() {
+	proto.RegisterEnum("google.streetview.publish.v1.PhotoView", PhotoView_name, PhotoView_value)
 	proto.RegisterType((*CreatePhotoRequest)(nil), "google.streetview.publish.v1.CreatePhotoRequest")
 	proto.RegisterType((*GetPhotoRequest)(nil), "google.streetview.publish.v1.GetPhotoRequest")
 	proto.RegisterType((*BatchGetPhotosRequest)(nil), "google.streetview.publish.v1.BatchGetPhotosRequest")
@@ -731,7 +732,6 @@ func init() {
 	proto.RegisterType((*DeletePhotoRequest)(nil), "google.streetview.publish.v1.DeletePhotoRequest")
 	proto.RegisterType((*BatchDeletePhotosRequest)(nil), "google.streetview.publish.v1.BatchDeletePhotosRequest")
 	proto.RegisterType((*BatchDeletePhotosResponse)(nil), "google.streetview.publish.v1.BatchDeletePhotosResponse")
-	proto.RegisterEnum("google.streetview.publish.v1.PhotoView", PhotoView_name, PhotoView_value)
 }
 
 func init() {

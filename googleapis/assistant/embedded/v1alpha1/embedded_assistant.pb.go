@@ -894,6 +894,10 @@ func _ConverseResponse_OneofSizer(msg proto.Message) (n int) {
 }
 
 func init() {
+	proto.RegisterEnum("google.assistant.embedded.v1alpha1.AudioInConfig_Encoding", AudioInConfig_Encoding_name, AudioInConfig_Encoding_value)
+	proto.RegisterEnum("google.assistant.embedded.v1alpha1.AudioOutConfig_Encoding", AudioOutConfig_Encoding_name, AudioOutConfig_Encoding_value)
+	proto.RegisterEnum("google.assistant.embedded.v1alpha1.ConverseResult_MicrophoneMode", ConverseResult_MicrophoneMode_name, ConverseResult_MicrophoneMode_value)
+	proto.RegisterEnum("google.assistant.embedded.v1alpha1.ConverseResponse_EventType", ConverseResponse_EventType_name, ConverseResponse_EventType_value)
 	proto.RegisterType((*ConverseConfig)(nil), "google.assistant.embedded.v1alpha1.ConverseConfig")
 	proto.RegisterType((*AudioInConfig)(nil), "google.assistant.embedded.v1alpha1.AudioInConfig")
 	proto.RegisterType((*AudioOutConfig)(nil), "google.assistant.embedded.v1alpha1.AudioOutConfig")
@@ -902,10 +906,6 @@ func init() {
 	proto.RegisterType((*ConverseResult)(nil), "google.assistant.embedded.v1alpha1.ConverseResult")
 	proto.RegisterType((*ConverseRequest)(nil), "google.assistant.embedded.v1alpha1.ConverseRequest")
 	proto.RegisterType((*ConverseResponse)(nil), "google.assistant.embedded.v1alpha1.ConverseResponse")
-	proto.RegisterEnum("google.assistant.embedded.v1alpha1.AudioInConfig_Encoding", AudioInConfig_Encoding_name, AudioInConfig_Encoding_value)
-	proto.RegisterEnum("google.assistant.embedded.v1alpha1.AudioOutConfig_Encoding", AudioOutConfig_Encoding_name, AudioOutConfig_Encoding_value)
-	proto.RegisterEnum("google.assistant.embedded.v1alpha1.ConverseResult_MicrophoneMode", ConverseResult_MicrophoneMode_name, ConverseResult_MicrophoneMode_value)
-	proto.RegisterEnum("google.assistant.embedded.v1alpha1.ConverseResponse_EventType", ConverseResponse_EventType_name, ConverseResponse_EventType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -559,6 +559,7 @@ func (m *DeleteLogMetricRequest) GetMetricName() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.logging.v2.LogMetric_ApiVersion", LogMetric_ApiVersion_name, LogMetric_ApiVersion_value)
 	proto.RegisterType((*LogMetric)(nil), "google.logging.v2.LogMetric")
 	proto.RegisterMapType((map[string]string)(nil), "google.logging.v2.LogMetric.LabelExtractorsEntry")
 	proto.RegisterType((*ListLogMetricsRequest)(nil), "google.logging.v2.ListLogMetricsRequest")
@@ -567,7 +568,6 @@ func init() {
 	proto.RegisterType((*CreateLogMetricRequest)(nil), "google.logging.v2.CreateLogMetricRequest")
 	proto.RegisterType((*UpdateLogMetricRequest)(nil), "google.logging.v2.UpdateLogMetricRequest")
 	proto.RegisterType((*DeleteLogMetricRequest)(nil), "google.logging.v2.DeleteLogMetricRequest")
-	proto.RegisterEnum("google.logging.v2.LogMetric_ApiVersion", LogMetric_ApiVersion_name, LogMetric_ApiVersion_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -541,13 +541,13 @@ func (m *ScanConfig_Schedule) GetIntervalDurationDays() int32 {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.websecurityscanner.v1alpha.ScanConfig_UserAgent", ScanConfig_UserAgent_name, ScanConfig_UserAgent_value)
+	proto.RegisterEnum("google.cloud.websecurityscanner.v1alpha.ScanConfig_TargetPlatform", ScanConfig_TargetPlatform_name, ScanConfig_TargetPlatform_value)
 	proto.RegisterType((*ScanConfig)(nil), "google.cloud.websecurityscanner.v1alpha.ScanConfig")
 	proto.RegisterType((*ScanConfig_Authentication)(nil), "google.cloud.websecurityscanner.v1alpha.ScanConfig.Authentication")
 	proto.RegisterType((*ScanConfig_Authentication_GoogleAccount)(nil), "google.cloud.websecurityscanner.v1alpha.ScanConfig.Authentication.GoogleAccount")
 	proto.RegisterType((*ScanConfig_Authentication_CustomAccount)(nil), "google.cloud.websecurityscanner.v1alpha.ScanConfig.Authentication.CustomAccount")
 	proto.RegisterType((*ScanConfig_Schedule)(nil), "google.cloud.websecurityscanner.v1alpha.ScanConfig.Schedule")
-	proto.RegisterEnum("google.cloud.websecurityscanner.v1alpha.ScanConfig_UserAgent", ScanConfig_UserAgent_name, ScanConfig_UserAgent_value)
-	proto.RegisterEnum("google.cloud.websecurityscanner.v1alpha.ScanConfig_TargetPlatform", ScanConfig_TargetPlatform_name, ScanConfig_TargetPlatform_value)
 }
 
 func init() {

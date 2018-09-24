@@ -188,10 +188,10 @@ func (m *TrafficSplit) GetAllocations() map[string]float64 {
 }
 
 func init() {
+	proto.RegisterEnum("google.appengine.v1.TrafficSplit_ShardBy", TrafficSplit_ShardBy_name, TrafficSplit_ShardBy_value)
 	proto.RegisterType((*Service)(nil), "google.appengine.v1.Service")
 	proto.RegisterType((*TrafficSplit)(nil), "google.appengine.v1.TrafficSplit")
 	proto.RegisterMapType((map[string]float64)(nil), "google.appengine.v1.TrafficSplit.AllocationsEntry")
-	proto.RegisterEnum("google.appengine.v1.TrafficSplit_ShardBy", TrafficSplit_ShardBy_name, TrafficSplit_ShardBy_value)
 }
 
 func init() { proto.RegisterFile("google/appengine/v1/service.proto", fileDescriptor_c1fc975248a879f7) }

@@ -1793,6 +1793,12 @@ func (m *CancelJobRequest) GetName() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.ml.v1.TrainingInput_ScaleTier", TrainingInput_ScaleTier_name, TrainingInput_ScaleTier_value)
+	proto.RegisterEnum("google.cloud.ml.v1.HyperparameterSpec_GoalType", HyperparameterSpec_GoalType_name, HyperparameterSpec_GoalType_value)
+	proto.RegisterEnum("google.cloud.ml.v1.ParameterSpec_ParameterType", ParameterSpec_ParameterType_name, ParameterSpec_ParameterType_value)
+	proto.RegisterEnum("google.cloud.ml.v1.ParameterSpec_ScaleType", ParameterSpec_ScaleType_name, ParameterSpec_ScaleType_value)
+	proto.RegisterEnum("google.cloud.ml.v1.PredictionInput_DataFormat", PredictionInput_DataFormat_name, PredictionInput_DataFormat_value)
+	proto.RegisterEnum("google.cloud.ml.v1.Job_State", Job_State_name, Job_State_value)
 	proto.RegisterType((*TrainingInput)(nil), "google.cloud.ml.v1.TrainingInput")
 	proto.RegisterType((*HyperparameterSpec)(nil), "google.cloud.ml.v1.HyperparameterSpec")
 	proto.RegisterType((*ParameterSpec)(nil), "google.cloud.ml.v1.ParameterSpec")
@@ -1808,12 +1814,6 @@ func init() {
 	proto.RegisterType((*ListJobsResponse)(nil), "google.cloud.ml.v1.ListJobsResponse")
 	proto.RegisterType((*GetJobRequest)(nil), "google.cloud.ml.v1.GetJobRequest")
 	proto.RegisterType((*CancelJobRequest)(nil), "google.cloud.ml.v1.CancelJobRequest")
-	proto.RegisterEnum("google.cloud.ml.v1.TrainingInput_ScaleTier", TrainingInput_ScaleTier_name, TrainingInput_ScaleTier_value)
-	proto.RegisterEnum("google.cloud.ml.v1.HyperparameterSpec_GoalType", HyperparameterSpec_GoalType_name, HyperparameterSpec_GoalType_value)
-	proto.RegisterEnum("google.cloud.ml.v1.ParameterSpec_ParameterType", ParameterSpec_ParameterType_name, ParameterSpec_ParameterType_value)
-	proto.RegisterEnum("google.cloud.ml.v1.ParameterSpec_ScaleType", ParameterSpec_ScaleType_name, ParameterSpec_ScaleType_value)
-	proto.RegisterEnum("google.cloud.ml.v1.PredictionInput_DataFormat", PredictionInput_DataFormat_name, PredictionInput_DataFormat_value)
-	proto.RegisterEnum("google.cloud.ml.v1.Job_State", Job_State_name, Job_State_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

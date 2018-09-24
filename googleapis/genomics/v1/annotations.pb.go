@@ -1945,6 +1945,10 @@ func (m *SearchAnnotationsResponse) GetNextPageToken() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.genomics.v1.AnnotationType", AnnotationType_name, AnnotationType_value)
+	proto.RegisterEnum("google.genomics.v1.VariantAnnotation_Type", VariantAnnotation_Type_name, VariantAnnotation_Type_value)
+	proto.RegisterEnum("google.genomics.v1.VariantAnnotation_Effect", VariantAnnotation_Effect_name, VariantAnnotation_Effect_value)
+	proto.RegisterEnum("google.genomics.v1.VariantAnnotation_ClinicalSignificance", VariantAnnotation_ClinicalSignificance_name, VariantAnnotation_ClinicalSignificance_value)
 	proto.RegisterType((*AnnotationSet)(nil), "google.genomics.v1.AnnotationSet")
 	proto.RegisterMapType((map[string]*_struct.ListValue)(nil), "google.genomics.v1.AnnotationSet.InfoEntry")
 	proto.RegisterType((*Annotation)(nil), "google.genomics.v1.Annotation")
@@ -1970,10 +1974,6 @@ func init() {
 	proto.RegisterType((*DeleteAnnotationRequest)(nil), "google.genomics.v1.DeleteAnnotationRequest")
 	proto.RegisterType((*SearchAnnotationsRequest)(nil), "google.genomics.v1.SearchAnnotationsRequest")
 	proto.RegisterType((*SearchAnnotationsResponse)(nil), "google.genomics.v1.SearchAnnotationsResponse")
-	proto.RegisterEnum("google.genomics.v1.AnnotationType", AnnotationType_name, AnnotationType_value)
-	proto.RegisterEnum("google.genomics.v1.VariantAnnotation_Type", VariantAnnotation_Type_name, VariantAnnotation_Type_value)
-	proto.RegisterEnum("google.genomics.v1.VariantAnnotation_Effect", VariantAnnotation_Effect_name, VariantAnnotation_Effect_value)
-	proto.RegisterEnum("google.genomics.v1.VariantAnnotation_ClinicalSignificance", VariantAnnotation_ClinicalSignificance_name, VariantAnnotation_ClinicalSignificance_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

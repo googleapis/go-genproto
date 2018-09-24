@@ -123,8 +123,8 @@ func (m *RelatedUrl) GetLabel() string {
 }
 
 func init() {
-	proto.RegisterType((*RelatedUrl)(nil), "grafeas.v1beta1.RelatedUrl")
 	proto.RegisterEnum("grafeas.v1beta1.NoteKind", NoteKind_name, NoteKind_value)
+	proto.RegisterType((*RelatedUrl)(nil), "grafeas.v1beta1.RelatedUrl")
 }
 
 func init() {

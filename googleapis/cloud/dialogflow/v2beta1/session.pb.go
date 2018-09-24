@@ -1742,6 +1742,9 @@ func (m *Sentiment) GetMagnitude() float32 {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.AudioEncoding", AudioEncoding_name, AudioEncoding_value)
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.KnowledgeAnswers_Answer_MatchConfidenceLevel", KnowledgeAnswers_Answer_MatchConfidenceLevel_name, KnowledgeAnswers_Answer_MatchConfidenceLevel_value)
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.StreamingRecognitionResult_MessageType", StreamingRecognitionResult_MessageType_name, StreamingRecognitionResult_MessageType_value)
 	proto.RegisterType((*DetectIntentRequest)(nil), "google.cloud.dialogflow.v2beta1.DetectIntentRequest")
 	proto.RegisterType((*DetectIntentResponse)(nil), "google.cloud.dialogflow.v2beta1.DetectIntentResponse")
 	proto.RegisterType((*QueryParameters)(nil), "google.cloud.dialogflow.v2beta1.QueryParameters")
@@ -1758,9 +1761,6 @@ func init() {
 	proto.RegisterType((*SentimentAnalysisRequestConfig)(nil), "google.cloud.dialogflow.v2beta1.SentimentAnalysisRequestConfig")
 	proto.RegisterType((*SentimentAnalysisResult)(nil), "google.cloud.dialogflow.v2beta1.SentimentAnalysisResult")
 	proto.RegisterType((*Sentiment)(nil), "google.cloud.dialogflow.v2beta1.Sentiment")
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.AudioEncoding", AudioEncoding_name, AudioEncoding_value)
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.KnowledgeAnswers_Answer_MatchConfidenceLevel", KnowledgeAnswers_Answer_MatchConfidenceLevel_name, KnowledgeAnswers_Answer_MatchConfidenceLevel_value)
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.StreamingRecognitionResult_MessageType", StreamingRecognitionResult_MessageType_name, StreamingRecognitionResult_MessageType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

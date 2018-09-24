@@ -348,11 +348,11 @@ func (m *PublishBuildToolEventStreamRequest) GetNotificationKeywords() []string 
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.build.v1.PublishLifecycleEventRequest_ServiceLevel", PublishLifecycleEventRequest_ServiceLevel_name, PublishLifecycleEventRequest_ServiceLevel_value)
 	proto.RegisterType((*PublishLifecycleEventRequest)(nil), "google.devtools.build.v1.PublishLifecycleEventRequest")
 	proto.RegisterType((*PublishBuildToolEventStreamResponse)(nil), "google.devtools.build.v1.PublishBuildToolEventStreamResponse")
 	proto.RegisterType((*OrderedBuildEvent)(nil), "google.devtools.build.v1.OrderedBuildEvent")
 	proto.RegisterType((*PublishBuildToolEventStreamRequest)(nil), "google.devtools.build.v1.PublishBuildToolEventStreamRequest")
-	proto.RegisterEnum("google.devtools.build.v1.PublishLifecycleEventRequest_ServiceLevel", PublishLifecycleEventRequest_ServiceLevel_name, PublishLifecycleEventRequest_ServiceLevel_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

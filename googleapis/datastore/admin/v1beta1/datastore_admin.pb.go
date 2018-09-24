@@ -695,6 +695,8 @@ func (m *EntityFilter) GetNamespaceIds() []string {
 }
 
 func init() {
+	proto.RegisterEnum("google.datastore.admin.v1beta1.OperationType", OperationType_name, OperationType_value)
+	proto.RegisterEnum("google.datastore.admin.v1beta1.CommonMetadata_State", CommonMetadata_State_name, CommonMetadata_State_value)
 	proto.RegisterType((*CommonMetadata)(nil), "google.datastore.admin.v1beta1.CommonMetadata")
 	proto.RegisterMapType((map[string]string)(nil), "google.datastore.admin.v1beta1.CommonMetadata.LabelsEntry")
 	proto.RegisterType((*Progress)(nil), "google.datastore.admin.v1beta1.Progress")
@@ -706,8 +708,6 @@ func init() {
 	proto.RegisterType((*ExportEntitiesMetadata)(nil), "google.datastore.admin.v1beta1.ExportEntitiesMetadata")
 	proto.RegisterType((*ImportEntitiesMetadata)(nil), "google.datastore.admin.v1beta1.ImportEntitiesMetadata")
 	proto.RegisterType((*EntityFilter)(nil), "google.datastore.admin.v1beta1.EntityFilter")
-	proto.RegisterEnum("google.datastore.admin.v1beta1.OperationType", OperationType_name, OperationType_value)
-	proto.RegisterEnum("google.datastore.admin.v1beta1.CommonMetadata_State", CommonMetadata_State_name, CommonMetadata_State_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

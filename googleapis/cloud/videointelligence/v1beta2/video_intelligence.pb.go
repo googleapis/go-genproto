@@ -1404,6 +1404,9 @@ func (m *AnnotateVideoProgress) GetAnnotationProgress() []*VideoAnnotationProgre
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.videointelligence.v1beta2.Feature", Feature_name, Feature_value)
+	proto.RegisterEnum("google.cloud.videointelligence.v1beta2.LabelDetectionMode", LabelDetectionMode_name, LabelDetectionMode_value)
+	proto.RegisterEnum("google.cloud.videointelligence.v1beta2.Likelihood", Likelihood_name, Likelihood_value)
 	proto.RegisterType((*AnnotateVideoRequest)(nil), "google.cloud.videointelligence.v1beta2.AnnotateVideoRequest")
 	proto.RegisterType((*VideoContext)(nil), "google.cloud.videointelligence.v1beta2.VideoContext")
 	proto.RegisterType((*LabelDetectionConfig)(nil), "google.cloud.videointelligence.v1beta2.LabelDetectionConfig")
@@ -1425,9 +1428,6 @@ func init() {
 	proto.RegisterType((*AnnotateVideoResponse)(nil), "google.cloud.videointelligence.v1beta2.AnnotateVideoResponse")
 	proto.RegisterType((*VideoAnnotationProgress)(nil), "google.cloud.videointelligence.v1beta2.VideoAnnotationProgress")
 	proto.RegisterType((*AnnotateVideoProgress)(nil), "google.cloud.videointelligence.v1beta2.AnnotateVideoProgress")
-	proto.RegisterEnum("google.cloud.videointelligence.v1beta2.Feature", Feature_name, Feature_value)
-	proto.RegisterEnum("google.cloud.videointelligence.v1beta2.LabelDetectionMode", LabelDetectionMode_name, LabelDetectionMode_value)
-	proto.RegisterEnum("google.cloud.videointelligence.v1beta2.Likelihood", Likelihood_name, Likelihood_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

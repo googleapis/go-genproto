@@ -166,8 +166,8 @@ func (m *CheckError) GetDetail() string {
 }
 
 func init() {
-	proto.RegisterType((*CheckError)(nil), "google.api.servicecontrol.v1.CheckError")
 	proto.RegisterEnum("google.api.servicecontrol.v1.CheckError_Code", CheckError_Code_name, CheckError_Code_value)
+	proto.RegisterType((*CheckError)(nil), "google.api.servicecontrol.v1.CheckError")
 }
 
 func init() {

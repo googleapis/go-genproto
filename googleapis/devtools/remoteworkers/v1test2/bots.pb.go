@@ -711,16 +711,16 @@ func (m *PostBotEventTempRequest) GetMsg() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.remoteworkers.v1test2.BotStatus", BotStatus_name, BotStatus_value)
+	proto.RegisterEnum("google.devtools.remoteworkers.v1test2.LeaseState", LeaseState_name, LeaseState_value)
+	proto.RegisterEnum("google.devtools.remoteworkers.v1test2.AdminTemp_Command", AdminTemp_Command_name, AdminTemp_Command_value)
+	proto.RegisterEnum("google.devtools.remoteworkers.v1test2.PostBotEventTempRequest_Type", PostBotEventTempRequest_Type_name, PostBotEventTempRequest_Type_value)
 	proto.RegisterType((*BotSession)(nil), "google.devtools.remoteworkers.v1test2.BotSession")
 	proto.RegisterType((*Lease)(nil), "google.devtools.remoteworkers.v1test2.Lease")
 	proto.RegisterType((*AdminTemp)(nil), "google.devtools.remoteworkers.v1test2.AdminTemp")
 	proto.RegisterType((*CreateBotSessionRequest)(nil), "google.devtools.remoteworkers.v1test2.CreateBotSessionRequest")
 	proto.RegisterType((*UpdateBotSessionRequest)(nil), "google.devtools.remoteworkers.v1test2.UpdateBotSessionRequest")
 	proto.RegisterType((*PostBotEventTempRequest)(nil), "google.devtools.remoteworkers.v1test2.PostBotEventTempRequest")
-	proto.RegisterEnum("google.devtools.remoteworkers.v1test2.BotStatus", BotStatus_name, BotStatus_value)
-	proto.RegisterEnum("google.devtools.remoteworkers.v1test2.LeaseState", LeaseState_name, LeaseState_value)
-	proto.RegisterEnum("google.devtools.remoteworkers.v1test2.AdminTemp_Command", AdminTemp_Command_name, AdminTemp_Command_value)
-	proto.RegisterEnum("google.devtools.remoteworkers.v1test2.PostBotEventTempRequest_Type", PostBotEventTempRequest_Type_name, PostBotEventTempRequest_Type_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -2510,6 +2510,10 @@ func (m *OperationMetadata) GetUpdateTime() *timestamp.Timestamp {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.vision.v1p3beta1.Likelihood", Likelihood_name, Likelihood_value)
+	proto.RegisterEnum("google.cloud.vision.v1p3beta1.Feature_Type", Feature_Type_name, Feature_Type_value)
+	proto.RegisterEnum("google.cloud.vision.v1p3beta1.FaceAnnotation_Landmark_Type", FaceAnnotation_Landmark_Type_name, FaceAnnotation_Landmark_Type_value)
+	proto.RegisterEnum("google.cloud.vision.v1p3beta1.OperationMetadata_State", OperationMetadata_State_name, OperationMetadata_State_value)
 	proto.RegisterType((*Feature)(nil), "google.cloud.vision.v1p3beta1.Feature")
 	proto.RegisterType((*ImageSource)(nil), "google.cloud.vision.v1p3beta1.ImageSource")
 	proto.RegisterType((*Image)(nil), "google.cloud.vision.v1p3beta1.Image")
@@ -2544,10 +2548,6 @@ func init() {
 	proto.RegisterType((*GcsSource)(nil), "google.cloud.vision.v1p3beta1.GcsSource")
 	proto.RegisterType((*GcsDestination)(nil), "google.cloud.vision.v1p3beta1.GcsDestination")
 	proto.RegisterType((*OperationMetadata)(nil), "google.cloud.vision.v1p3beta1.OperationMetadata")
-	proto.RegisterEnum("google.cloud.vision.v1p3beta1.Likelihood", Likelihood_name, Likelihood_value)
-	proto.RegisterEnum("google.cloud.vision.v1p3beta1.Feature_Type", Feature_Type_name, Feature_Type_value)
-	proto.RegisterEnum("google.cloud.vision.v1p3beta1.FaceAnnotation_Landmark_Type", FaceAnnotation_Landmark_Type_name, FaceAnnotation_Landmark_Type_value)
-	proto.RegisterEnum("google.cloud.vision.v1p3beta1.OperationMetadata_State", OperationMetadata_State_name, OperationMetadata_State_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

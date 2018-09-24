@@ -238,10 +238,10 @@ func (m *Cluster) GetDefaultStorageType() StorageType {
 }
 
 func init() {
-	proto.RegisterType((*Zone)(nil), "google.bigtable.admin.cluster.v1.Zone")
-	proto.RegisterType((*Cluster)(nil), "google.bigtable.admin.cluster.v1.Cluster")
 	proto.RegisterEnum("google.bigtable.admin.cluster.v1.StorageType", StorageType_name, StorageType_value)
 	proto.RegisterEnum("google.bigtable.admin.cluster.v1.Zone_Status", Zone_Status_name, Zone_Status_value)
+	proto.RegisterType((*Zone)(nil), "google.bigtable.admin.cluster.v1.Zone")
+	proto.RegisterType((*Cluster)(nil), "google.bigtable.admin.cluster.v1.Cluster")
 }
 
 func init() {

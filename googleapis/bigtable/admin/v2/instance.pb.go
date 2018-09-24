@@ -604,15 +604,15 @@ func (m *AppProfile_SingleClusterRouting) GetAllowTransactionalWrites() bool {
 }
 
 func init() {
+	proto.RegisterEnum("google.bigtable.admin.v2.Instance_State", Instance_State_name, Instance_State_value)
+	proto.RegisterEnum("google.bigtable.admin.v2.Instance_Type", Instance_Type_name, Instance_Type_value)
+	proto.RegisterEnum("google.bigtable.admin.v2.Cluster_State", Cluster_State_name, Cluster_State_value)
 	proto.RegisterType((*Instance)(nil), "google.bigtable.admin.v2.Instance")
 	proto.RegisterMapType((map[string]string)(nil), "google.bigtable.admin.v2.Instance.LabelsEntry")
 	proto.RegisterType((*Cluster)(nil), "google.bigtable.admin.v2.Cluster")
 	proto.RegisterType((*AppProfile)(nil), "google.bigtable.admin.v2.AppProfile")
 	proto.RegisterType((*AppProfile_MultiClusterRoutingUseAny)(nil), "google.bigtable.admin.v2.AppProfile.MultiClusterRoutingUseAny")
 	proto.RegisterType((*AppProfile_SingleClusterRouting)(nil), "google.bigtable.admin.v2.AppProfile.SingleClusterRouting")
-	proto.RegisterEnum("google.bigtable.admin.v2.Instance_State", Instance_State_name, Instance_State_value)
-	proto.RegisterEnum("google.bigtable.admin.v2.Instance_Type", Instance_Type_name, Instance_Type_value)
-	proto.RegisterEnum("google.bigtable.admin.v2.Cluster_State", Cluster_State_name, Cluster_State_value)
 }
 
 func init() {

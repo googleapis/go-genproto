@@ -694,6 +694,8 @@ func (m *SynthesizeSpeechResponse) GetAudioContent() []byte {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.texttospeech.v1beta1.SsmlVoiceGender", SsmlVoiceGender_name, SsmlVoiceGender_value)
+	proto.RegisterEnum("google.cloud.texttospeech.v1beta1.AudioEncoding", AudioEncoding_name, AudioEncoding_value)
 	proto.RegisterType((*ListVoicesRequest)(nil), "google.cloud.texttospeech.v1beta1.ListVoicesRequest")
 	proto.RegisterType((*ListVoicesResponse)(nil), "google.cloud.texttospeech.v1beta1.ListVoicesResponse")
 	proto.RegisterType((*Voice)(nil), "google.cloud.texttospeech.v1beta1.Voice")
@@ -702,8 +704,6 @@ func init() {
 	proto.RegisterType((*VoiceSelectionParams)(nil), "google.cloud.texttospeech.v1beta1.VoiceSelectionParams")
 	proto.RegisterType((*AudioConfig)(nil), "google.cloud.texttospeech.v1beta1.AudioConfig")
 	proto.RegisterType((*SynthesizeSpeechResponse)(nil), "google.cloud.texttospeech.v1beta1.SynthesizeSpeechResponse")
-	proto.RegisterEnum("google.cloud.texttospeech.v1beta1.SsmlVoiceGender", SsmlVoiceGender_name, SsmlVoiceGender_value)
-	proto.RegisterEnum("google.cloud.texttospeech.v1beta1.AudioEncoding", AudioEncoding_name, AudioEncoding_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

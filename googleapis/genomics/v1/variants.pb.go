@@ -2184,6 +2184,10 @@ func (m *StreamVariantsResponse) GetVariants() []*Variant {
 }
 
 func init() {
+	proto.RegisterEnum("google.genomics.v1.InfoMergeOperation", InfoMergeOperation_name, InfoMergeOperation_value)
+	proto.RegisterEnum("google.genomics.v1.VariantSetMetadata_Type", VariantSetMetadata_Type_name, VariantSetMetadata_Type_value)
+	proto.RegisterEnum("google.genomics.v1.ImportVariantsRequest_Format", ImportVariantsRequest_Format_name, ImportVariantsRequest_Format_value)
+	proto.RegisterEnum("google.genomics.v1.ExportVariantSetRequest_Format", ExportVariantSetRequest_Format_name, ExportVariantSetRequest_Format_value)
 	proto.RegisterType((*VariantSetMetadata)(nil), "google.genomics.v1.VariantSetMetadata")
 	proto.RegisterMapType((map[string]*_struct.ListValue)(nil), "google.genomics.v1.VariantSetMetadata.InfoEntry")
 	proto.RegisterType((*VariantSet)(nil), "google.genomics.v1.VariantSet")
@@ -2220,10 +2224,6 @@ func init() {
 	proto.RegisterType((*GetCallSetRequest)(nil), "google.genomics.v1.GetCallSetRequest")
 	proto.RegisterType((*StreamVariantsRequest)(nil), "google.genomics.v1.StreamVariantsRequest")
 	proto.RegisterType((*StreamVariantsResponse)(nil), "google.genomics.v1.StreamVariantsResponse")
-	proto.RegisterEnum("google.genomics.v1.InfoMergeOperation", InfoMergeOperation_name, InfoMergeOperation_value)
-	proto.RegisterEnum("google.genomics.v1.VariantSetMetadata_Type", VariantSetMetadata_Type_name, VariantSetMetadata_Type_value)
-	proto.RegisterEnum("google.genomics.v1.ImportVariantsRequest_Format", ImportVariantsRequest_Format_name, ImportVariantsRequest_Format_value)
-	proto.RegisterEnum("google.genomics.v1.ExportVariantSetRequest_Format", ExportVariantSetRequest_Format_name, ExportVariantSetRequest_Format_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

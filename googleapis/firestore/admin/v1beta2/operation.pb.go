@@ -312,11 +312,11 @@ func (m *Progress) GetCompletedWork() int64 {
 }
 
 func init() {
+	proto.RegisterEnum("google.firestore.admin.v1beta2.OperationState", OperationState_name, OperationState_value)
+	proto.RegisterEnum("google.firestore.admin.v1beta2.FieldOperationMetadata_IndexConfigDelta_ChangeType", FieldOperationMetadata_IndexConfigDelta_ChangeType_name, FieldOperationMetadata_IndexConfigDelta_ChangeType_value)
 	proto.RegisterType((*FieldOperationMetadata)(nil), "google.firestore.admin.v1beta2.FieldOperationMetadata")
 	proto.RegisterType((*FieldOperationMetadata_IndexConfigDelta)(nil), "google.firestore.admin.v1beta2.FieldOperationMetadata.IndexConfigDelta")
 	proto.RegisterType((*Progress)(nil), "google.firestore.admin.v1beta2.Progress")
-	proto.RegisterEnum("google.firestore.admin.v1beta2.OperationState", OperationState_name, OperationState_value)
-	proto.RegisterEnum("google.firestore.admin.v1beta2.FieldOperationMetadata_IndexConfigDelta_ChangeType", FieldOperationMetadata_IndexConfigDelta_ChangeType_name, FieldOperationMetadata_IndexConfigDelta_ChangeType_value)
 }
 
 func init() {

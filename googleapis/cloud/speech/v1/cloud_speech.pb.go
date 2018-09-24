@@ -1382,6 +1382,8 @@ func (m *WordInfo) GetWord() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.speech.v1.RecognitionConfig_AudioEncoding", RecognitionConfig_AudioEncoding_name, RecognitionConfig_AudioEncoding_value)
+	proto.RegisterEnum("google.cloud.speech.v1.StreamingRecognizeResponse_SpeechEventType", StreamingRecognizeResponse_SpeechEventType_name, StreamingRecognizeResponse_SpeechEventType_value)
 	proto.RegisterType((*RecognizeRequest)(nil), "google.cloud.speech.v1.RecognizeRequest")
 	proto.RegisterType((*LongRunningRecognizeRequest)(nil), "google.cloud.speech.v1.LongRunningRecognizeRequest")
 	proto.RegisterType((*StreamingRecognizeRequest)(nil), "google.cloud.speech.v1.StreamingRecognizeRequest")
@@ -1397,8 +1399,6 @@ func init() {
 	proto.RegisterType((*SpeechRecognitionResult)(nil), "google.cloud.speech.v1.SpeechRecognitionResult")
 	proto.RegisterType((*SpeechRecognitionAlternative)(nil), "google.cloud.speech.v1.SpeechRecognitionAlternative")
 	proto.RegisterType((*WordInfo)(nil), "google.cloud.speech.v1.WordInfo")
-	proto.RegisterEnum("google.cloud.speech.v1.RecognitionConfig_AudioEncoding", RecognitionConfig_AudioEncoding_name, RecognitionConfig_AudioEncoding_value)
-	proto.RegisterEnum("google.cloud.speech.v1.StreamingRecognizeResponse_SpeechEventType", StreamingRecognizeResponse_SpeechEventType_name, StreamingRecognizeResponse_SpeechEventType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

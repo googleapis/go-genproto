@@ -1858,6 +1858,12 @@ func (m *WordInfo) GetSpeakerTag() int32 {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionConfig_AudioEncoding", RecognitionConfig_AudioEncoding_name, RecognitionConfig_AudioEncoding_value)
+	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionMetadata_InteractionType", RecognitionMetadata_InteractionType_name, RecognitionMetadata_InteractionType_value)
+	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionMetadata_MicrophoneDistance", RecognitionMetadata_MicrophoneDistance_name, RecognitionMetadata_MicrophoneDistance_value)
+	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionMetadata_OriginalMediaType", RecognitionMetadata_OriginalMediaType_name, RecognitionMetadata_OriginalMediaType_value)
+	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionMetadata_RecordingDeviceType", RecognitionMetadata_RecordingDeviceType_name, RecognitionMetadata_RecordingDeviceType_value)
+	proto.RegisterEnum("google.cloud.speech.v1p1beta1.StreamingRecognizeResponse_SpeechEventType", StreamingRecognizeResponse_SpeechEventType_name, StreamingRecognizeResponse_SpeechEventType_value)
 	proto.RegisterType((*RecognizeRequest)(nil), "google.cloud.speech.v1p1beta1.RecognizeRequest")
 	proto.RegisterType((*LongRunningRecognizeRequest)(nil), "google.cloud.speech.v1p1beta1.LongRunningRecognizeRequest")
 	proto.RegisterType((*StreamingRecognizeRequest)(nil), "google.cloud.speech.v1p1beta1.StreamingRecognizeRequest")
@@ -1874,12 +1880,6 @@ func init() {
 	proto.RegisterType((*SpeechRecognitionResult)(nil), "google.cloud.speech.v1p1beta1.SpeechRecognitionResult")
 	proto.RegisterType((*SpeechRecognitionAlternative)(nil), "google.cloud.speech.v1p1beta1.SpeechRecognitionAlternative")
 	proto.RegisterType((*WordInfo)(nil), "google.cloud.speech.v1p1beta1.WordInfo")
-	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionConfig_AudioEncoding", RecognitionConfig_AudioEncoding_name, RecognitionConfig_AudioEncoding_value)
-	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionMetadata_InteractionType", RecognitionMetadata_InteractionType_name, RecognitionMetadata_InteractionType_value)
-	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionMetadata_MicrophoneDistance", RecognitionMetadata_MicrophoneDistance_name, RecognitionMetadata_MicrophoneDistance_value)
-	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionMetadata_OriginalMediaType", RecognitionMetadata_OriginalMediaType_name, RecognitionMetadata_OriginalMediaType_value)
-	proto.RegisterEnum("google.cloud.speech.v1p1beta1.RecognitionMetadata_RecordingDeviceType", RecognitionMetadata_RecordingDeviceType_name, RecognitionMetadata_RecordingDeviceType_value)
-	proto.RegisterEnum("google.cloud.speech.v1p1beta1.StreamingRecognizeResponse_SpeechEventType", StreamingRecognizeResponse_SpeechEventType_name, StreamingRecognizeResponse_SpeechEventType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

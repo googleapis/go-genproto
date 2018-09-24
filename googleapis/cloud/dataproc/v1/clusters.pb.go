@@ -1588,6 +1588,8 @@ func (m *DiagnoseClusterResults) GetOutputUri() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dataproc.v1.ClusterStatus_State", ClusterStatus_State_name, ClusterStatus_State_value)
+	proto.RegisterEnum("google.cloud.dataproc.v1.ClusterStatus_Substate", ClusterStatus_Substate_name, ClusterStatus_Substate_value)
 	proto.RegisterType((*Cluster)(nil), "google.cloud.dataproc.v1.Cluster")
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.dataproc.v1.Cluster.LabelsEntry")
 	proto.RegisterType((*ClusterConfig)(nil), "google.cloud.dataproc.v1.ClusterConfig")
@@ -1612,8 +1614,6 @@ func init() {
 	proto.RegisterType((*ListClustersResponse)(nil), "google.cloud.dataproc.v1.ListClustersResponse")
 	proto.RegisterType((*DiagnoseClusterRequest)(nil), "google.cloud.dataproc.v1.DiagnoseClusterRequest")
 	proto.RegisterType((*DiagnoseClusterResults)(nil), "google.cloud.dataproc.v1.DiagnoseClusterResults")
-	proto.RegisterEnum("google.cloud.dataproc.v1.ClusterStatus_State", ClusterStatus_State_name, ClusterStatus_State_value)
-	proto.RegisterEnum("google.cloud.dataproc.v1.ClusterStatus_Substate", ClusterStatus_Substate_name, ClusterStatus_Substate_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

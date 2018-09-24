@@ -2666,6 +2666,11 @@ func (m *DeleteJobRequest) GetJobId() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dataproc.v1.LoggingConfig_Level", LoggingConfig_Level_name, LoggingConfig_Level_value)
+	proto.RegisterEnum("google.cloud.dataproc.v1.JobStatus_State", JobStatus_State_name, JobStatus_State_value)
+	proto.RegisterEnum("google.cloud.dataproc.v1.JobStatus_Substate", JobStatus_Substate_name, JobStatus_Substate_value)
+	proto.RegisterEnum("google.cloud.dataproc.v1.YarnApplication_State", YarnApplication_State_name, YarnApplication_State_value)
+	proto.RegisterEnum("google.cloud.dataproc.v1.ListJobsRequest_JobStateMatcher", ListJobsRequest_JobStateMatcher_name, ListJobsRequest_JobStateMatcher_value)
 	proto.RegisterType((*LoggingConfig)(nil), "google.cloud.dataproc.v1.LoggingConfig")
 	proto.RegisterMapType((map[string]LoggingConfig_Level)(nil), "google.cloud.dataproc.v1.LoggingConfig.DriverLogLevelsEntry")
 	proto.RegisterType((*HadoopJob)(nil), "google.cloud.dataproc.v1.HadoopJob")
@@ -2698,11 +2703,6 @@ func init() {
 	proto.RegisterType((*ListJobsResponse)(nil), "google.cloud.dataproc.v1.ListJobsResponse")
 	proto.RegisterType((*CancelJobRequest)(nil), "google.cloud.dataproc.v1.CancelJobRequest")
 	proto.RegisterType((*DeleteJobRequest)(nil), "google.cloud.dataproc.v1.DeleteJobRequest")
-	proto.RegisterEnum("google.cloud.dataproc.v1.LoggingConfig_Level", LoggingConfig_Level_name, LoggingConfig_Level_value)
-	proto.RegisterEnum("google.cloud.dataproc.v1.JobStatus_State", JobStatus_State_name, JobStatus_State_value)
-	proto.RegisterEnum("google.cloud.dataproc.v1.JobStatus_Substate", JobStatus_Substate_name, JobStatus_Substate_value)
-	proto.RegisterEnum("google.cloud.dataproc.v1.YarnApplication_State", YarnApplication_State_name, YarnApplication_State_value)
-	proto.RegisterEnum("google.cloud.dataproc.v1.ListJobsRequest_JobStateMatcher", ListJobsRequest_JobStateMatcher_name, ListJobsRequest_JobStateMatcher_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

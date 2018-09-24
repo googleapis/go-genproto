@@ -274,8 +274,8 @@ func (m *Finding) GetXss() *Xss {
 }
 
 func init() {
-	proto.RegisterType((*Finding)(nil), "google.cloud.websecurityscanner.v1alpha.Finding")
 	proto.RegisterEnum("google.cloud.websecurityscanner.v1alpha.Finding_FindingType", Finding_FindingType_name, Finding_FindingType_value)
+	proto.RegisterType((*Finding)(nil), "google.cloud.websecurityscanner.v1alpha.Finding")
 }
 
 func init() {

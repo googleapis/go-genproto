@@ -387,12 +387,12 @@ func (m *TestAttributes) GetSize() TestSize {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.resultstore.v2.TargetType", TargetType_name, TargetType_value)
+	proto.RegisterEnum("google.devtools.resultstore.v2.TestSize", TestSize_name, TestSize_value)
 	proto.RegisterType((*Target)(nil), "google.devtools.resultstore.v2.Target")
 	proto.RegisterType((*Target_Id)(nil), "google.devtools.resultstore.v2.Target.Id")
 	proto.RegisterType((*TargetAttributes)(nil), "google.devtools.resultstore.v2.TargetAttributes")
 	proto.RegisterType((*TestAttributes)(nil), "google.devtools.resultstore.v2.TestAttributes")
-	proto.RegisterEnum("google.devtools.resultstore.v2.TargetType", TargetType_name, TargetType_value)
-	proto.RegisterEnum("google.devtools.resultstore.v2.TestSize", TestSize_name, TestSize_value)
 }
 
 func init() {

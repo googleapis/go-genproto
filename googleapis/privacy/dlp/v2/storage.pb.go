@@ -2564,6 +2564,10 @@ func (m *EntityId) GetField() *FieldId {
 }
 
 func init() {
+	proto.RegisterEnum("google.privacy.dlp.v2.Likelihood", Likelihood_name, Likelihood_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.FileType", FileType_name, FileType_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.CloudStorageOptions_SampleMethod", CloudStorageOptions_SampleMethod_name, CloudStorageOptions_SampleMethod_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.BigQueryOptions_SampleMethod", BigQueryOptions_SampleMethod_name, BigQueryOptions_SampleMethod_value)
 	proto.RegisterType((*InfoType)(nil), "google.privacy.dlp.v2.InfoType")
 	proto.RegisterType((*StoredType)(nil), "google.privacy.dlp.v2.StoredType")
 	proto.RegisterType((*CustomInfoType)(nil), "google.privacy.dlp.v2.CustomInfoType")
@@ -2594,10 +2598,6 @@ func init() {
 	proto.RegisterType((*BigQueryTable)(nil), "google.privacy.dlp.v2.BigQueryTable")
 	proto.RegisterType((*BigQueryField)(nil), "google.privacy.dlp.v2.BigQueryField")
 	proto.RegisterType((*EntityId)(nil), "google.privacy.dlp.v2.EntityId")
-	proto.RegisterEnum("google.privacy.dlp.v2.Likelihood", Likelihood_name, Likelihood_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.FileType", FileType_name, FileType_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.CloudStorageOptions_SampleMethod", CloudStorageOptions_SampleMethod_name, CloudStorageOptions_SampleMethod_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.BigQueryOptions_SampleMethod", BigQueryOptions_SampleMethod_name, BigQueryOptions_SampleMethod_value)
 }
 
 func init() {

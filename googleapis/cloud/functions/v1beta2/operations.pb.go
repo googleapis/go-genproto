@@ -119,8 +119,8 @@ func (m *OperationMetadataV1Beta2) GetRequest() *any.Any {
 }
 
 func init() {
-	proto.RegisterType((*OperationMetadataV1Beta2)(nil), "google.cloud.functions.v1beta2.OperationMetadataV1Beta2")
 	proto.RegisterEnum("google.cloud.functions.v1beta2.OperationType", OperationType_name, OperationType_value)
+	proto.RegisterType((*OperationMetadataV1Beta2)(nil), "google.cloud.functions.v1beta2.OperationMetadataV1Beta2")
 }
 
 func init() {

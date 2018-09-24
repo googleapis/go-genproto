@@ -112,8 +112,8 @@ func (m *LabelDescriptor) GetDescription() string {
 }
 
 func init() {
-	proto.RegisterType((*LabelDescriptor)(nil), "google.api.LabelDescriptor")
 	proto.RegisterEnum("google.api.LabelDescriptor_ValueType", LabelDescriptor_ValueType_name, LabelDescriptor_ValueType_value)
+	proto.RegisterType((*LabelDescriptor)(nil), "google.api.LabelDescriptor")
 }
 
 func init() { proto.RegisterFile("google/api/label.proto", fileDescriptor_f372a463e25ba151) }

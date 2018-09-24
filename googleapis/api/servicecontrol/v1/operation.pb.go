@@ -208,9 +208,9 @@ func (m *Operation) GetImportance() Operation_Importance {
 }
 
 func init() {
+	proto.RegisterEnum("google.api.servicecontrol.v1.Operation_Importance", Operation_Importance_name, Operation_Importance_value)
 	proto.RegisterType((*Operation)(nil), "google.api.servicecontrol.v1.Operation")
 	proto.RegisterMapType((map[string]string)(nil), "google.api.servicecontrol.v1.Operation.LabelsEntry")
-	proto.RegisterEnum("google.api.servicecontrol.v1.Operation_Importance", Operation_Importance_name, Operation_Importance_value)
 }
 
 func init() {

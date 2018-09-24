@@ -683,7 +683,7 @@ type OperationMetadata struct {
 	Verb string `protobuf:"bytes,4,opt,name=verb,proto3" json:"verb,omitempty"`
 	// Operation status details.
 	StatusDetail string `protobuf:"bytes,5,opt,name=status_detail,json=statusDetail,proto3" json:"status_detail,omitempty"`
-	// Specifies if cancellation was requested for the operaiton.
+	// Specifies if cancellation was requested for the operation.
 	CancelRequested bool `protobuf:"varint,6,opt,name=cancel_requested,json=cancelRequested,proto3" json:"cancel_requested,omitempty"`
 	// API version.
 	ApiVersion           string   `protobuf:"bytes,7,opt,name=api_version,json=apiVersion,proto3" json:"api_version,omitempty"`
@@ -847,6 +847,8 @@ func (m *ZoneMetadata) XXX_DiscardUnknown() {
 var xxx_messageInfo_ZoneMetadata proto.InternalMessageInfo
 
 func init() {
+	proto.RegisterEnum("google.cloud.redis.v1.Instance_State", Instance_State_name, Instance_State_value)
+	proto.RegisterEnum("google.cloud.redis.v1.Instance_Tier", Instance_Tier_name, Instance_Tier_value)
 	proto.RegisterType((*Instance)(nil), "google.cloud.redis.v1.Instance")
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.redis.v1.Instance.LabelsEntry")
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.redis.v1.Instance.RedisConfigsEntry")
@@ -860,8 +862,6 @@ func init() {
 	proto.RegisterType((*LocationMetadata)(nil), "google.cloud.redis.v1.LocationMetadata")
 	proto.RegisterMapType((map[string]*ZoneMetadata)(nil), "google.cloud.redis.v1.LocationMetadata.AvailableZonesEntry")
 	proto.RegisterType((*ZoneMetadata)(nil), "google.cloud.redis.v1.ZoneMetadata")
-	proto.RegisterEnum("google.cloud.redis.v1.Instance_State", Instance_State_name, Instance_State_value)
-	proto.RegisterEnum("google.cloud.redis.v1.Instance_Tier", Instance_Tier_name, Instance_Tier_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

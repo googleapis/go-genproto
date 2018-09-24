@@ -870,6 +870,7 @@ func (m *ProjectRepoId) GetRepoName() string {
 }
 
 func init() {
+	proto.RegisterEnum("grafeas.v1beta1.source.AliasContext_Kind", AliasContext_Kind_name, AliasContext_Kind_value)
 	proto.RegisterType((*SourceContext)(nil), "grafeas.v1beta1.source.SourceContext")
 	proto.RegisterMapType((map[string]string)(nil), "grafeas.v1beta1.source.SourceContext.LabelsEntry")
 	proto.RegisterType((*AliasContext)(nil), "grafeas.v1beta1.source.AliasContext")
@@ -878,7 +879,6 @@ func init() {
 	proto.RegisterType((*GitSourceContext)(nil), "grafeas.v1beta1.source.GitSourceContext")
 	proto.RegisterType((*RepoId)(nil), "grafeas.v1beta1.source.RepoId")
 	proto.RegisterType((*ProjectRepoId)(nil), "grafeas.v1beta1.source.ProjectRepoId")
-	proto.RegisterEnum("grafeas.v1beta1.source.AliasContext_Kind", AliasContext_Kind_name, AliasContext_Kind_value)
 }
 
 func init() {

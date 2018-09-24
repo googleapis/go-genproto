@@ -438,6 +438,7 @@ func (m *DeleteSessionEntityTypeRequest) GetName() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dialogflow.v2.SessionEntityType_EntityOverrideMode", SessionEntityType_EntityOverrideMode_name, SessionEntityType_EntityOverrideMode_value)
 	proto.RegisterType((*SessionEntityType)(nil), "google.cloud.dialogflow.v2.SessionEntityType")
 	proto.RegisterType((*ListSessionEntityTypesRequest)(nil), "google.cloud.dialogflow.v2.ListSessionEntityTypesRequest")
 	proto.RegisterType((*ListSessionEntityTypesResponse)(nil), "google.cloud.dialogflow.v2.ListSessionEntityTypesResponse")
@@ -445,7 +446,6 @@ func init() {
 	proto.RegisterType((*CreateSessionEntityTypeRequest)(nil), "google.cloud.dialogflow.v2.CreateSessionEntityTypeRequest")
 	proto.RegisterType((*UpdateSessionEntityTypeRequest)(nil), "google.cloud.dialogflow.v2.UpdateSessionEntityTypeRequest")
 	proto.RegisterType((*DeleteSessionEntityTypeRequest)(nil), "google.cloud.dialogflow.v2.DeleteSessionEntityTypeRequest")
-	proto.RegisterEnum("google.cloud.dialogflow.v2.SessionEntityType_EntityOverrideMode", SessionEntityType_EntityOverrideMode_name, SessionEntityType_EntityOverrideMode_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

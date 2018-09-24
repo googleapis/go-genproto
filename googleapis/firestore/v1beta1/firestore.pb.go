@@ -2955,6 +2955,7 @@ func (m *ListCollectionIdsResponse) GetNextPageToken() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.firestore.v1beta1.TargetChange_TargetChangeType", TargetChange_TargetChangeType_name, TargetChange_TargetChangeType_value)
 	proto.RegisterType((*GetDocumentRequest)(nil), "google.firestore.v1beta1.GetDocumentRequest")
 	proto.RegisterType((*ListDocumentsRequest)(nil), "google.firestore.v1beta1.ListDocumentsRequest")
 	proto.RegisterType((*ListDocumentsResponse)(nil), "google.firestore.v1beta1.ListDocumentsResponse")
@@ -2982,7 +2983,6 @@ func init() {
 	proto.RegisterType((*TargetChange)(nil), "google.firestore.v1beta1.TargetChange")
 	proto.RegisterType((*ListCollectionIdsRequest)(nil), "google.firestore.v1beta1.ListCollectionIdsRequest")
 	proto.RegisterType((*ListCollectionIdsResponse)(nil), "google.firestore.v1beta1.ListCollectionIdsResponse")
-	proto.RegisterEnum("google.firestore.v1beta1.TargetChange_TargetChangeType", TargetChange_TargetChangeType_name, TargetChange_TargetChangeType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

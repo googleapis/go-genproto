@@ -12518,6 +12518,20 @@ func (m *DeleteStoredInfoTypeRequest) GetName() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.privacy.dlp.v2.ContentOption", ContentOption_name, ContentOption_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.InfoTypeSupportedBy", InfoTypeSupportedBy_name, InfoTypeSupportedBy_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.RelationalOperator", RelationalOperator_name, RelationalOperator_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.DlpJobType", DlpJobType_name, DlpJobType_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.StoredInfoTypeState", StoredInfoTypeState_name, StoredInfoTypeState_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.ByteContentItem_BytesType", ByteContentItem_BytesType_name, ByteContentItem_BytesType_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.OutputStorageConfig_OutputSchema", OutputStorageConfig_OutputSchema_name, OutputStorageConfig_OutputSchema_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.TimePartConfig_TimePart", TimePartConfig_TimePart_name, TimePartConfig_TimePart_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.CharsToIgnore_CommonCharsToIgnore", CharsToIgnore_CommonCharsToIgnore_name, CharsToIgnore_CommonCharsToIgnore_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet", CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet_name, CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.RecordCondition_Expressions_LogicalOperator", RecordCondition_Expressions_LogicalOperator_name, RecordCondition_Expressions_LogicalOperator_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.TransformationSummary_TransformationResultCode", TransformationSummary_TransformationResultCode_name, TransformationSummary_TransformationResultCode_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.JobTrigger_Status", JobTrigger_Status_name, JobTrigger_Status_value)
+	proto.RegisterEnum("google.privacy.dlp.v2.DlpJob_JobState", DlpJob_JobState_name, DlpJob_JobState_value)
 	proto.RegisterType((*InspectConfig)(nil), "google.privacy.dlp.v2.InspectConfig")
 	proto.RegisterType((*InspectConfig_FindingLimits)(nil), "google.privacy.dlp.v2.InspectConfig.FindingLimits")
 	proto.RegisterType((*InspectConfig_FindingLimits_InfoTypeLimit)(nil), "google.privacy.dlp.v2.InspectConfig.FindingLimits.InfoTypeLimit")
@@ -12664,20 +12678,6 @@ func init() {
 	proto.RegisterType((*ListStoredInfoTypesRequest)(nil), "google.privacy.dlp.v2.ListStoredInfoTypesRequest")
 	proto.RegisterType((*ListStoredInfoTypesResponse)(nil), "google.privacy.dlp.v2.ListStoredInfoTypesResponse")
 	proto.RegisterType((*DeleteStoredInfoTypeRequest)(nil), "google.privacy.dlp.v2.DeleteStoredInfoTypeRequest")
-	proto.RegisterEnum("google.privacy.dlp.v2.ContentOption", ContentOption_name, ContentOption_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.InfoTypeSupportedBy", InfoTypeSupportedBy_name, InfoTypeSupportedBy_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.RelationalOperator", RelationalOperator_name, RelationalOperator_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.DlpJobType", DlpJobType_name, DlpJobType_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.StoredInfoTypeState", StoredInfoTypeState_name, StoredInfoTypeState_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.ByteContentItem_BytesType", ByteContentItem_BytesType_name, ByteContentItem_BytesType_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.OutputStorageConfig_OutputSchema", OutputStorageConfig_OutputSchema_name, OutputStorageConfig_OutputSchema_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.TimePartConfig_TimePart", TimePartConfig_TimePart_name, TimePartConfig_TimePart_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.CharsToIgnore_CommonCharsToIgnore", CharsToIgnore_CommonCharsToIgnore_name, CharsToIgnore_CommonCharsToIgnore_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet", CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet_name, CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.RecordCondition_Expressions_LogicalOperator", RecordCondition_Expressions_LogicalOperator_name, RecordCondition_Expressions_LogicalOperator_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.TransformationSummary_TransformationResultCode", TransformationSummary_TransformationResultCode_name, TransformationSummary_TransformationResultCode_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.JobTrigger_Status", JobTrigger_Status_name, JobTrigger_Status_value)
-	proto.RegisterEnum("google.privacy.dlp.v2.DlpJob_JobState", DlpJob_JobState_name, DlpJob_JobState_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

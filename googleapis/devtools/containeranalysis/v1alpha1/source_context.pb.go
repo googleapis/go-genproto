@@ -872,6 +872,7 @@ func (m *ProjectRepoId) GetRepoName() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.AliasContext_Kind", AliasContext_Kind_name, AliasContext_Kind_value)
 	proto.RegisterType((*SourceContext)(nil), "google.devtools.containeranalysis.v1alpha1.SourceContext")
 	proto.RegisterMapType((map[string]string)(nil), "google.devtools.containeranalysis.v1alpha1.SourceContext.LabelsEntry")
 	proto.RegisterType((*AliasContext)(nil), "google.devtools.containeranalysis.v1alpha1.AliasContext")
@@ -880,7 +881,6 @@ func init() {
 	proto.RegisterType((*GitSourceContext)(nil), "google.devtools.containeranalysis.v1alpha1.GitSourceContext")
 	proto.RegisterType((*RepoId)(nil), "google.devtools.containeranalysis.v1alpha1.RepoId")
 	proto.RegisterType((*ProjectRepoId)(nil), "google.devtools.containeranalysis.v1alpha1.ProjectRepoId")
-	proto.RegisterEnum("google.devtools.containeranalysis.v1alpha1.AliasContext_Kind", AliasContext_Kind_name, AliasContext_Kind_value)
 }
 
 func init() {

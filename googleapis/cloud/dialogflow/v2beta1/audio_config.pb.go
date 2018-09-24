@@ -309,11 +309,11 @@ func (m *OutputAudioConfig) GetSynthesizeSpeechConfig() *SynthesizeSpeechConfig 
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.SsmlVoiceGender", SsmlVoiceGender_name, SsmlVoiceGender_value)
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.OutputAudioEncoding", OutputAudioEncoding_name, OutputAudioEncoding_value)
 	proto.RegisterType((*VoiceSelectionParams)(nil), "google.cloud.dialogflow.v2beta1.VoiceSelectionParams")
 	proto.RegisterType((*SynthesizeSpeechConfig)(nil), "google.cloud.dialogflow.v2beta1.SynthesizeSpeechConfig")
 	proto.RegisterType((*OutputAudioConfig)(nil), "google.cloud.dialogflow.v2beta1.OutputAudioConfig")
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.SsmlVoiceGender", SsmlVoiceGender_name, SsmlVoiceGender_value)
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.OutputAudioEncoding", OutputAudioEncoding_name, OutputAudioEncoding_value)
 }
 
 func init() {

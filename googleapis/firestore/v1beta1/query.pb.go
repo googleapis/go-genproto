@@ -949,6 +949,10 @@ func (m *Cursor) GetBefore() bool {
 }
 
 func init() {
+	proto.RegisterEnum("google.firestore.v1beta1.StructuredQuery_Direction", StructuredQuery_Direction_name, StructuredQuery_Direction_value)
+	proto.RegisterEnum("google.firestore.v1beta1.StructuredQuery_CompositeFilter_Operator", StructuredQuery_CompositeFilter_Operator_name, StructuredQuery_CompositeFilter_Operator_value)
+	proto.RegisterEnum("google.firestore.v1beta1.StructuredQuery_FieldFilter_Operator", StructuredQuery_FieldFilter_Operator_name, StructuredQuery_FieldFilter_Operator_value)
+	proto.RegisterEnum("google.firestore.v1beta1.StructuredQuery_UnaryFilter_Operator", StructuredQuery_UnaryFilter_Operator_name, StructuredQuery_UnaryFilter_Operator_value)
 	proto.RegisterType((*StructuredQuery)(nil), "google.firestore.v1beta1.StructuredQuery")
 	proto.RegisterType((*StructuredQuery_CollectionSelector)(nil), "google.firestore.v1beta1.StructuredQuery.CollectionSelector")
 	proto.RegisterType((*StructuredQuery_Filter)(nil), "google.firestore.v1beta1.StructuredQuery.Filter")
@@ -959,10 +963,6 @@ func init() {
 	proto.RegisterType((*StructuredQuery_FieldReference)(nil), "google.firestore.v1beta1.StructuredQuery.FieldReference")
 	proto.RegisterType((*StructuredQuery_Projection)(nil), "google.firestore.v1beta1.StructuredQuery.Projection")
 	proto.RegisterType((*Cursor)(nil), "google.firestore.v1beta1.Cursor")
-	proto.RegisterEnum("google.firestore.v1beta1.StructuredQuery_Direction", StructuredQuery_Direction_name, StructuredQuery_Direction_value)
-	proto.RegisterEnum("google.firestore.v1beta1.StructuredQuery_CompositeFilter_Operator", StructuredQuery_CompositeFilter_Operator_name, StructuredQuery_CompositeFilter_Operator_value)
-	proto.RegisterEnum("google.firestore.v1beta1.StructuredQuery_FieldFilter_Operator", StructuredQuery_FieldFilter_Operator_name, StructuredQuery_FieldFilter_Operator_value)
-	proto.RegisterEnum("google.firestore.v1beta1.StructuredQuery_UnaryFilter_Operator", StructuredQuery_UnaryFilter_Operator_name, StructuredQuery_UnaryFilter_Operator_value)
 }
 
 func init() {

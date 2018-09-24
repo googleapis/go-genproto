@@ -1049,6 +1049,7 @@ func (m *DeleteExclusionRequest) GetName() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.logging.v2.LogSink_VersionFormat", LogSink_VersionFormat_name, LogSink_VersionFormat_value)
 	proto.RegisterType((*LogSink)(nil), "google.logging.v2.LogSink")
 	proto.RegisterType((*ListSinksRequest)(nil), "google.logging.v2.ListSinksRequest")
 	proto.RegisterType((*ListSinksResponse)(nil), "google.logging.v2.ListSinksResponse")
@@ -1063,7 +1064,6 @@ func init() {
 	proto.RegisterType((*CreateExclusionRequest)(nil), "google.logging.v2.CreateExclusionRequest")
 	proto.RegisterType((*UpdateExclusionRequest)(nil), "google.logging.v2.UpdateExclusionRequest")
 	proto.RegisterType((*DeleteExclusionRequest)(nil), "google.logging.v2.DeleteExclusionRequest")
-	proto.RegisterEnum("google.logging.v2.LogSink_VersionFormat", LogSink_VersionFormat_name, LogSink_VersionFormat_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

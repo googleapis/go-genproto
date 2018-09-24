@@ -951,6 +951,12 @@ func (m *IssueTaxonomy_Category) GetComponents() map[string]*IssueTaxonomy_Compo
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.support.common.SupportAccount_State", SupportAccount_State_name, SupportAccount_State_value)
+	proto.RegisterEnum("google.cloud.support.common.SupportAccount_PricingModel", SupportAccount_PricingModel_name, SupportAccount_PricingModel_value)
+	proto.RegisterEnum("google.cloud.support.common.Case_Priority", Case_Priority_name, Case_Priority_value)
+	proto.RegisterEnum("google.cloud.support.common.Case_State", Case_State_name, Case_State_value)
+	proto.RegisterEnum("google.cloud.support.common.CustomerIssue_IssueState", CustomerIssue_IssueState_name, CustomerIssue_IssueState_value)
+	proto.RegisterEnum("google.cloud.support.common.SupportRole_Role", SupportRole_Role_name, SupportRole_Role_value)
 	proto.RegisterType((*SupportAccount)(nil), "google.cloud.support.common.SupportAccount")
 	proto.RegisterType((*Case)(nil), "google.cloud.support.common.Case")
 	proto.RegisterType((*CustomerIssue)(nil), "google.cloud.support.common.CustomerIssue")
@@ -961,12 +967,6 @@ func init() {
 	proto.RegisterType((*IssueTaxonomy_Component)(nil), "google.cloud.support.common.IssueTaxonomy.Component")
 	proto.RegisterType((*IssueTaxonomy_Category)(nil), "google.cloud.support.common.IssueTaxonomy.Category")
 	proto.RegisterMapType((map[string]*IssueTaxonomy_Component)(nil), "google.cloud.support.common.IssueTaxonomy.Category.ComponentsEntry")
-	proto.RegisterEnum("google.cloud.support.common.SupportAccount_State", SupportAccount_State_name, SupportAccount_State_value)
-	proto.RegisterEnum("google.cloud.support.common.SupportAccount_PricingModel", SupportAccount_PricingModel_name, SupportAccount_PricingModel_value)
-	proto.RegisterEnum("google.cloud.support.common.Case_Priority", Case_Priority_name, Case_Priority_value)
-	proto.RegisterEnum("google.cloud.support.common.Case_State", Case_State_name, Case_State_value)
-	proto.RegisterEnum("google.cloud.support.common.CustomerIssue_IssueState", CustomerIssue_IssueState_name, CustomerIssue_IssueState_value)
-	proto.RegisterEnum("google.cloud.support.common.SupportRole_Role", SupportRole_Role_name, SupportRole_Role_value)
 }
 
 func init() { proto.RegisterFile("google/cloud/support/common.proto", fileDescriptor_f71dd4106e21c931) }
