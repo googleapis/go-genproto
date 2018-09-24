@@ -804,6 +804,7 @@ func (m *CreateTimeSeriesError) GetStatus() *status.Status {
 }
 
 func init() {
+	proto.RegisterEnum("google.monitoring.v3.ListTimeSeriesRequest_TimeSeriesView", ListTimeSeriesRequest_TimeSeriesView_name, ListTimeSeriesRequest_TimeSeriesView_value)
 	proto.RegisterType((*ListMonitoredResourceDescriptorsRequest)(nil), "google.monitoring.v3.ListMonitoredResourceDescriptorsRequest")
 	proto.RegisterType((*ListMonitoredResourceDescriptorsResponse)(nil), "google.monitoring.v3.ListMonitoredResourceDescriptorsResponse")
 	proto.RegisterType((*GetMonitoredResourceDescriptorRequest)(nil), "google.monitoring.v3.GetMonitoredResourceDescriptorRequest")
@@ -816,7 +817,6 @@ func init() {
 	proto.RegisterType((*ListTimeSeriesResponse)(nil), "google.monitoring.v3.ListTimeSeriesResponse")
 	proto.RegisterType((*CreateTimeSeriesRequest)(nil), "google.monitoring.v3.CreateTimeSeriesRequest")
 	proto.RegisterType((*CreateTimeSeriesError)(nil), "google.monitoring.v3.CreateTimeSeriesError")
-	proto.RegisterEnum("google.monitoring.v3.ListTimeSeriesRequest_TimeSeriesView", ListTimeSeriesRequest_TimeSeriesView_name, ListTimeSeriesRequest_TimeSeriesView_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

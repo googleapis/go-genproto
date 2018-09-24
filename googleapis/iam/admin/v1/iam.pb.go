@@ -2123,6 +2123,14 @@ func (m *QueryTestablePermissionsResponse) GetNextPageToken() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.iam.admin.v1.ServiceAccountKeyAlgorithm", ServiceAccountKeyAlgorithm_name, ServiceAccountKeyAlgorithm_value)
+	proto.RegisterEnum("google.iam.admin.v1.ServiceAccountPrivateKeyType", ServiceAccountPrivateKeyType_name, ServiceAccountPrivateKeyType_value)
+	proto.RegisterEnum("google.iam.admin.v1.ServiceAccountPublicKeyType", ServiceAccountPublicKeyType_name, ServiceAccountPublicKeyType_value)
+	proto.RegisterEnum("google.iam.admin.v1.RoleView", RoleView_name, RoleView_value)
+	proto.RegisterEnum("google.iam.admin.v1.ListServiceAccountKeysRequest_KeyType", ListServiceAccountKeysRequest_KeyType_name, ListServiceAccountKeysRequest_KeyType_value)
+	proto.RegisterEnum("google.iam.admin.v1.Role_RoleLaunchStage", Role_RoleLaunchStage_name, Role_RoleLaunchStage_value)
+	proto.RegisterEnum("google.iam.admin.v1.Permission_PermissionLaunchStage", Permission_PermissionLaunchStage_name, Permission_PermissionLaunchStage_value)
+	proto.RegisterEnum("google.iam.admin.v1.Permission_CustomRolesSupportLevel", Permission_CustomRolesSupportLevel_name, Permission_CustomRolesSupportLevel_value)
 	proto.RegisterType((*ServiceAccount)(nil), "google.iam.admin.v1.ServiceAccount")
 	proto.RegisterType((*CreateServiceAccountRequest)(nil), "google.iam.admin.v1.CreateServiceAccountRequest")
 	proto.RegisterType((*ListServiceAccountsRequest)(nil), "google.iam.admin.v1.ListServiceAccountsRequest")
@@ -2152,14 +2160,6 @@ func init() {
 	proto.RegisterType((*Permission)(nil), "google.iam.admin.v1.Permission")
 	proto.RegisterType((*QueryTestablePermissionsRequest)(nil), "google.iam.admin.v1.QueryTestablePermissionsRequest")
 	proto.RegisterType((*QueryTestablePermissionsResponse)(nil), "google.iam.admin.v1.QueryTestablePermissionsResponse")
-	proto.RegisterEnum("google.iam.admin.v1.ServiceAccountKeyAlgorithm", ServiceAccountKeyAlgorithm_name, ServiceAccountKeyAlgorithm_value)
-	proto.RegisterEnum("google.iam.admin.v1.ServiceAccountPrivateKeyType", ServiceAccountPrivateKeyType_name, ServiceAccountPrivateKeyType_value)
-	proto.RegisterEnum("google.iam.admin.v1.ServiceAccountPublicKeyType", ServiceAccountPublicKeyType_name, ServiceAccountPublicKeyType_value)
-	proto.RegisterEnum("google.iam.admin.v1.RoleView", RoleView_name, RoleView_value)
-	proto.RegisterEnum("google.iam.admin.v1.ListServiceAccountKeysRequest_KeyType", ListServiceAccountKeysRequest_KeyType_name, ListServiceAccountKeysRequest_KeyType_value)
-	proto.RegisterEnum("google.iam.admin.v1.Role_RoleLaunchStage", Role_RoleLaunchStage_name, Role_RoleLaunchStage_value)
-	proto.RegisterEnum("google.iam.admin.v1.Permission_PermissionLaunchStage", Permission_PermissionLaunchStage_name, Permission_PermissionLaunchStage_value)
-	proto.RegisterEnum("google.iam.admin.v1.Permission_CustomRolesSupportLevel", Permission_CustomRolesSupportLevel_name, Permission_CustomRolesSupportLevel_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

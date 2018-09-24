@@ -1248,6 +1248,8 @@ func (m *EventInput) GetLanguageCode() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dialogflow.v2.AudioEncoding", AudioEncoding_name, AudioEncoding_value)
+	proto.RegisterEnum("google.cloud.dialogflow.v2.StreamingRecognitionResult_MessageType", StreamingRecognitionResult_MessageType_name, StreamingRecognitionResult_MessageType_value)
 	proto.RegisterType((*DetectIntentRequest)(nil), "google.cloud.dialogflow.v2.DetectIntentRequest")
 	proto.RegisterType((*DetectIntentResponse)(nil), "google.cloud.dialogflow.v2.DetectIntentResponse")
 	proto.RegisterType((*QueryParameters)(nil), "google.cloud.dialogflow.v2.QueryParameters")
@@ -1259,8 +1261,6 @@ func init() {
 	proto.RegisterType((*InputAudioConfig)(nil), "google.cloud.dialogflow.v2.InputAudioConfig")
 	proto.RegisterType((*TextInput)(nil), "google.cloud.dialogflow.v2.TextInput")
 	proto.RegisterType((*EventInput)(nil), "google.cloud.dialogflow.v2.EventInput")
-	proto.RegisterEnum("google.cloud.dialogflow.v2.AudioEncoding", AudioEncoding_name, AudioEncoding_value)
-	proto.RegisterEnum("google.cloud.dialogflow.v2.StreamingRecognitionResult_MessageType", StreamingRecognitionResult_MessageType_name, StreamingRecognitionResult_MessageType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

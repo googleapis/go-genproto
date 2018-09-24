@@ -587,6 +587,7 @@ func (m *IssueDetails) GetId() int64 {
 }
 
 func init() {
+	proto.RegisterEnum("google.api.expr.v1alpha1.IssueDetails_Severity", IssueDetails_Severity_name, IssueDetails_Severity_value)
 	proto.RegisterType((*ParseRequest)(nil), "google.api.expr.v1alpha1.ParseRequest")
 	proto.RegisterType((*ParseResponse)(nil), "google.api.expr.v1alpha1.ParseResponse")
 	proto.RegisterType((*CheckRequest)(nil), "google.api.expr.v1alpha1.CheckRequest")
@@ -595,7 +596,6 @@ func init() {
 	proto.RegisterMapType((map[string]*ExprValue)(nil), "google.api.expr.v1alpha1.EvalRequest.BindingsEntry")
 	proto.RegisterType((*EvalResponse)(nil), "google.api.expr.v1alpha1.EvalResponse")
 	proto.RegisterType((*IssueDetails)(nil), "google.api.expr.v1alpha1.IssueDetails")
-	proto.RegisterEnum("google.api.expr.v1alpha1.IssueDetails_Severity", IssueDetails_Severity_name, IssueDetails_Severity_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

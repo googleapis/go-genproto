@@ -752,6 +752,10 @@ func (m *Snapshot) GetDescription() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.bigtable.admin.v2.Table_TimestampGranularity", Table_TimestampGranularity_name, Table_TimestampGranularity_value)
+	proto.RegisterEnum("google.bigtable.admin.v2.Table_View", Table_View_name, Table_View_value)
+	proto.RegisterEnum("google.bigtable.admin.v2.Table_ClusterState_ReplicationState", Table_ClusterState_ReplicationState_name, Table_ClusterState_ReplicationState_value)
+	proto.RegisterEnum("google.bigtable.admin.v2.Snapshot_State", Snapshot_State_name, Snapshot_State_value)
 	proto.RegisterType((*Table)(nil), "google.bigtable.admin.v2.Table")
 	proto.RegisterMapType((map[string]*Table_ClusterState)(nil), "google.bigtable.admin.v2.Table.ClusterStatesEntry")
 	proto.RegisterMapType((map[string]*ColumnFamily)(nil), "google.bigtable.admin.v2.Table.ColumnFamiliesEntry")
@@ -761,10 +765,6 @@ func init() {
 	proto.RegisterType((*GcRule_Intersection)(nil), "google.bigtable.admin.v2.GcRule.Intersection")
 	proto.RegisterType((*GcRule_Union)(nil), "google.bigtable.admin.v2.GcRule.Union")
 	proto.RegisterType((*Snapshot)(nil), "google.bigtable.admin.v2.Snapshot")
-	proto.RegisterEnum("google.bigtable.admin.v2.Table_TimestampGranularity", Table_TimestampGranularity_name, Table_TimestampGranularity_value)
-	proto.RegisterEnum("google.bigtable.admin.v2.Table_View", Table_View_name, Table_View_value)
-	proto.RegisterEnum("google.bigtable.admin.v2.Table_ClusterState_ReplicationState", Table_ClusterState_ReplicationState_name, Table_ClusterState_ReplicationState_value)
-	proto.RegisterEnum("google.bigtable.admin.v2.Snapshot_State", Snapshot_State_name, Snapshot_State_value)
 }
 
 func init() {

@@ -1118,6 +1118,7 @@ func (m *CallFunctionResponse) GetError() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.functions.v1beta2.CloudFunctionStatus", CloudFunctionStatus_name, CloudFunctionStatus_value)
 	proto.RegisterType((*CloudFunction)(nil), "google.cloud.functions.v1beta2.CloudFunction")
 	proto.RegisterType((*HTTPSTrigger)(nil), "google.cloud.functions.v1beta2.HTTPSTrigger")
 	proto.RegisterType((*EventTrigger)(nil), "google.cloud.functions.v1beta2.EventTrigger")
@@ -1130,7 +1131,6 @@ func init() {
 	proto.RegisterType((*DeleteFunctionRequest)(nil), "google.cloud.functions.v1beta2.DeleteFunctionRequest")
 	proto.RegisterType((*CallFunctionRequest)(nil), "google.cloud.functions.v1beta2.CallFunctionRequest")
 	proto.RegisterType((*CallFunctionResponse)(nil), "google.cloud.functions.v1beta2.CallFunctionResponse")
-	proto.RegisterEnum("google.cloud.functions.v1beta2.CloudFunctionStatus", CloudFunctionStatus_name, CloudFunctionStatus_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

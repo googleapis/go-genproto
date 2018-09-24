@@ -1721,6 +1721,8 @@ func (m *TransactionOptions_ReadOnly) XXX_DiscardUnknown() {
 var xxx_messageInfo_TransactionOptions_ReadOnly proto.InternalMessageInfo
 
 func init() {
+	proto.RegisterEnum("google.datastore.v1beta3.CommitRequest_Mode", CommitRequest_Mode_name, CommitRequest_Mode_value)
+	proto.RegisterEnum("google.datastore.v1beta3.ReadOptions_ReadConsistency", ReadOptions_ReadConsistency_name, ReadOptions_ReadConsistency_value)
 	proto.RegisterType((*LookupRequest)(nil), "google.datastore.v1beta3.LookupRequest")
 	proto.RegisterType((*LookupResponse)(nil), "google.datastore.v1beta3.LookupResponse")
 	proto.RegisterType((*RunQueryRequest)(nil), "google.datastore.v1beta3.RunQueryRequest")
@@ -1741,8 +1743,6 @@ func init() {
 	proto.RegisterType((*TransactionOptions)(nil), "google.datastore.v1beta3.TransactionOptions")
 	proto.RegisterType((*TransactionOptions_ReadWrite)(nil), "google.datastore.v1beta3.TransactionOptions.ReadWrite")
 	proto.RegisterType((*TransactionOptions_ReadOnly)(nil), "google.datastore.v1beta3.TransactionOptions.ReadOnly")
-	proto.RegisterEnum("google.datastore.v1beta3.CommitRequest_Mode", CommitRequest_Mode_name, CommitRequest_Mode_value)
-	proto.RegisterEnum("google.datastore.v1beta3.ReadOptions_ReadConsistency", ReadOptions_ReadConsistency_name, ReadOptions_ReadConsistency_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

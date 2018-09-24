@@ -748,6 +748,8 @@ func (m *ZoneMetadata) XXX_DiscardUnknown() {
 var xxx_messageInfo_ZoneMetadata proto.InternalMessageInfo
 
 func init() {
+	proto.RegisterEnum("google.cloud.redis.v1beta1.Instance_State", Instance_State_name, Instance_State_value)
+	proto.RegisterEnum("google.cloud.redis.v1beta1.Instance_Tier", Instance_Tier_name, Instance_Tier_value)
 	proto.RegisterType((*Instance)(nil), "google.cloud.redis.v1beta1.Instance")
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.redis.v1beta1.Instance.LabelsEntry")
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.redis.v1beta1.Instance.RedisConfigsEntry")
@@ -760,8 +762,6 @@ func init() {
 	proto.RegisterType((*LocationMetadata)(nil), "google.cloud.redis.v1beta1.LocationMetadata")
 	proto.RegisterMapType((map[string]*ZoneMetadata)(nil), "google.cloud.redis.v1beta1.LocationMetadata.AvailableZonesEntry")
 	proto.RegisterType((*ZoneMetadata)(nil), "google.cloud.redis.v1beta1.ZoneMetadata")
-	proto.RegisterEnum("google.cloud.redis.v1beta1.Instance_State", Instance_State_name, Instance_State_value)
-	proto.RegisterEnum("google.cloud.redis.v1beta1.Instance_Tier", Instance_Tier_name, Instance_Tier_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

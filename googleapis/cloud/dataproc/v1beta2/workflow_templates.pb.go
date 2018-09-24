@@ -1604,6 +1604,8 @@ func (m *DeleteWorkflowTemplateRequest) GetVersion() int32 {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dataproc.v1beta2.WorkflowMetadata_State", WorkflowMetadata_State_name, WorkflowMetadata_State_value)
+	proto.RegisterEnum("google.cloud.dataproc.v1beta2.WorkflowNode_NodeState", WorkflowNode_NodeState_name, WorkflowNode_NodeState_value)
 	proto.RegisterType((*WorkflowTemplate)(nil), "google.cloud.dataproc.v1beta2.WorkflowTemplate")
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.dataproc.v1beta2.WorkflowTemplate.LabelsEntry")
 	proto.RegisterType((*WorkflowTemplatePlacement)(nil), "google.cloud.dataproc.v1beta2.WorkflowTemplatePlacement")
@@ -1626,8 +1628,6 @@ func init() {
 	proto.RegisterType((*ListWorkflowTemplatesRequest)(nil), "google.cloud.dataproc.v1beta2.ListWorkflowTemplatesRequest")
 	proto.RegisterType((*ListWorkflowTemplatesResponse)(nil), "google.cloud.dataproc.v1beta2.ListWorkflowTemplatesResponse")
 	proto.RegisterType((*DeleteWorkflowTemplateRequest)(nil), "google.cloud.dataproc.v1beta2.DeleteWorkflowTemplateRequest")
-	proto.RegisterEnum("google.cloud.dataproc.v1beta2.WorkflowMetadata_State", WorkflowMetadata_State_name, WorkflowMetadata_State_value)
-	proto.RegisterEnum("google.cloud.dataproc.v1beta2.WorkflowNode_NodeState", WorkflowNode_NodeState_name, WorkflowNode_NodeState_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

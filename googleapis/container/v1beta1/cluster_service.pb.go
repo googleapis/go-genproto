@@ -4660,6 +4660,13 @@ func (m *SetMaintenancePolicyRequest) GetName() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.container.v1beta1.NodeTaint_Effect", NodeTaint_Effect_name, NodeTaint_Effect_value)
+	proto.RegisterEnum("google.container.v1beta1.NetworkPolicy_Provider", NetworkPolicy_Provider_name, NetworkPolicy_Provider_value)
+	proto.RegisterEnum("google.container.v1beta1.Cluster_Status", Cluster_Status_name, Cluster_Status_value)
+	proto.RegisterEnum("google.container.v1beta1.Operation_Status", Operation_Status_name, Operation_Status_value)
+	proto.RegisterEnum("google.container.v1beta1.Operation_Type", Operation_Type_name, Operation_Type_value)
+	proto.RegisterEnum("google.container.v1beta1.SetMasterAuthRequest_Action", SetMasterAuthRequest_Action_name, SetMasterAuthRequest_Action_value)
+	proto.RegisterEnum("google.container.v1beta1.NodePool_Status", NodePool_Status_name, NodePool_Status_value)
 	proto.RegisterType((*NodeConfig)(nil), "google.container.v1beta1.NodeConfig")
 	proto.RegisterMapType((map[string]string)(nil), "google.container.v1beta1.NodeConfig.LabelsEntry")
 	proto.RegisterMapType((map[string]string)(nil), "google.container.v1beta1.NodeConfig.MetadataEntry")
@@ -4714,13 +4721,6 @@ func init() {
 	proto.RegisterType((*AcceleratorConfig)(nil), "google.container.v1beta1.AcceleratorConfig")
 	proto.RegisterType((*SetNetworkPolicyRequest)(nil), "google.container.v1beta1.SetNetworkPolicyRequest")
 	proto.RegisterType((*SetMaintenancePolicyRequest)(nil), "google.container.v1beta1.SetMaintenancePolicyRequest")
-	proto.RegisterEnum("google.container.v1beta1.NodeTaint_Effect", NodeTaint_Effect_name, NodeTaint_Effect_value)
-	proto.RegisterEnum("google.container.v1beta1.NetworkPolicy_Provider", NetworkPolicy_Provider_name, NetworkPolicy_Provider_value)
-	proto.RegisterEnum("google.container.v1beta1.Cluster_Status", Cluster_Status_name, Cluster_Status_value)
-	proto.RegisterEnum("google.container.v1beta1.Operation_Status", Operation_Status_name, Operation_Status_value)
-	proto.RegisterEnum("google.container.v1beta1.Operation_Type", Operation_Type_name, Operation_Type_value)
-	proto.RegisterEnum("google.container.v1beta1.SetMasterAuthRequest_Action", SetMasterAuthRequest_Action_name, SetMasterAuthRequest_Action_value)
-	proto.RegisterEnum("google.container.v1beta1.NodePool_Status", NodePool_Status_name, NodePool_Status_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

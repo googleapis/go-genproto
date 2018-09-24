@@ -541,12 +541,12 @@ func _Dependency_OneofSizer(msg proto.Message) (n int) {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.resultstore.v2.Language", Language_name, Language_value)
+	proto.RegisterEnum("google.devtools.resultstore.v2.Status", Status_name, Status_value)
 	proto.RegisterType((*StatusAttributes)(nil), "google.devtools.resultstore.v2.StatusAttributes")
 	proto.RegisterType((*Property)(nil), "google.devtools.resultstore.v2.Property")
 	proto.RegisterType((*Timing)(nil), "google.devtools.resultstore.v2.Timing")
 	proto.RegisterType((*Dependency)(nil), "google.devtools.resultstore.v2.Dependency")
-	proto.RegisterEnum("google.devtools.resultstore.v2.Language", Language_name, Language_value)
-	proto.RegisterEnum("google.devtools.resultstore.v2.Status", Status_name, Status_value)
 }
 
 func init() {

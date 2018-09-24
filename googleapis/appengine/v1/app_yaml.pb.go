@@ -942,6 +942,11 @@ func (m *Library) GetVersion() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.appengine.v1.AuthFailAction", AuthFailAction_name, AuthFailAction_value)
+	proto.RegisterEnum("google.appengine.v1.LoginRequirement", LoginRequirement_name, LoginRequirement_value)
+	proto.RegisterEnum("google.appengine.v1.SecurityLevel", SecurityLevel_name, SecurityLevel_value)
+	proto.RegisterEnum("google.appengine.v1.ErrorHandler_ErrorCode", ErrorHandler_ErrorCode_name, ErrorHandler_ErrorCode_value)
+	proto.RegisterEnum("google.appengine.v1.UrlMap_RedirectHttpResponseCode", UrlMap_RedirectHttpResponseCode_name, UrlMap_RedirectHttpResponseCode_value)
 	proto.RegisterType((*ApiConfigHandler)(nil), "google.appengine.v1.ApiConfigHandler")
 	proto.RegisterType((*ErrorHandler)(nil), "google.appengine.v1.ErrorHandler")
 	proto.RegisterType((*UrlMap)(nil), "google.appengine.v1.UrlMap")
@@ -951,11 +956,6 @@ func init() {
 	proto.RegisterType((*ApiEndpointHandler)(nil), "google.appengine.v1.ApiEndpointHandler")
 	proto.RegisterType((*HealthCheck)(nil), "google.appengine.v1.HealthCheck")
 	proto.RegisterType((*Library)(nil), "google.appengine.v1.Library")
-	proto.RegisterEnum("google.appengine.v1.AuthFailAction", AuthFailAction_name, AuthFailAction_value)
-	proto.RegisterEnum("google.appengine.v1.LoginRequirement", LoginRequirement_name, LoginRequirement_value)
-	proto.RegisterEnum("google.appengine.v1.SecurityLevel", SecurityLevel_name, SecurityLevel_value)
-	proto.RegisterEnum("google.appengine.v1.ErrorHandler_ErrorCode", ErrorHandler_ErrorCode_name, ErrorHandler_ErrorCode_value)
-	proto.RegisterEnum("google.appengine.v1.UrlMap_RedirectHttpResponseCode", UrlMap_RedirectHttpResponseCode_name, UrlMap_RedirectHttpResponseCode_value)
 }
 
 func init() { proto.RegisterFile("google/appengine/v1/app_yaml.proto", fileDescriptor_2e3b6ce3f971717f) }

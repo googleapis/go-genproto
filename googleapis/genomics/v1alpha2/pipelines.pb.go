@@ -1835,6 +1835,7 @@ func (m *DockerExecutor) GetCmd() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.genomics.v1alpha2.PipelineResources_Disk_Type", PipelineResources_Disk_Type_name, PipelineResources_Disk_Type_value)
 	proto.RegisterType((*ComputeEngine)(nil), "google.genomics.v1alpha2.ComputeEngine")
 	proto.RegisterType((*RuntimeMetadata)(nil), "google.genomics.v1alpha2.RuntimeMetadata")
 	proto.RegisterType((*Pipeline)(nil), "google.genomics.v1alpha2.Pipeline")
@@ -1864,7 +1865,6 @@ func init() {
 	proto.RegisterType((*PipelineParameter)(nil), "google.genomics.v1alpha2.PipelineParameter")
 	proto.RegisterType((*PipelineParameter_LocalCopy)(nil), "google.genomics.v1alpha2.PipelineParameter.LocalCopy")
 	proto.RegisterType((*DockerExecutor)(nil), "google.genomics.v1alpha2.DockerExecutor")
-	proto.RegisterEnum("google.genomics.v1alpha2.PipelineResources_Disk_Type", PipelineResources_Disk_Type_name, PipelineResources_Disk_Type_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

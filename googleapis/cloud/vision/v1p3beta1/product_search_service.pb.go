@@ -1911,6 +1911,7 @@ func (m *BatchOperationMetadata) GetEndTime() *timestamp.Timestamp {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.vision.v1p3beta1.BatchOperationMetadata_State", BatchOperationMetadata_State_name, BatchOperationMetadata_State_value)
 	proto.RegisterType((*Product)(nil), "google.cloud.vision.v1p3beta1.Product")
 	proto.RegisterType((*Product_KeyValue)(nil), "google.cloud.vision.v1p3beta1.Product.KeyValue")
 	proto.RegisterType((*ProductSet)(nil), "google.cloud.vision.v1p3beta1.ProductSet")
@@ -1941,7 +1942,6 @@ func init() {
 	proto.RegisterType((*ImportProductSetsRequest)(nil), "google.cloud.vision.v1p3beta1.ImportProductSetsRequest")
 	proto.RegisterType((*ImportProductSetsResponse)(nil), "google.cloud.vision.v1p3beta1.ImportProductSetsResponse")
 	proto.RegisterType((*BatchOperationMetadata)(nil), "google.cloud.vision.v1p3beta1.BatchOperationMetadata")
-	proto.RegisterEnum("google.cloud.vision.v1p3beta1.BatchOperationMetadata_State", BatchOperationMetadata_State_name, BatchOperationMetadata_State_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -909,6 +909,9 @@ func (m *DeleteEventsResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_DeleteEventsResponse proto.InternalMessageInfo
 
 func init() {
+	proto.RegisterEnum("google.devtools.clouderrorreporting.v1beta1.TimedCountAlignment", TimedCountAlignment_name, TimedCountAlignment_value)
+	proto.RegisterEnum("google.devtools.clouderrorreporting.v1beta1.ErrorGroupOrder", ErrorGroupOrder_name, ErrorGroupOrder_value)
+	proto.RegisterEnum("google.devtools.clouderrorreporting.v1beta1.QueryTimeRange_Period", QueryTimeRange_Period_name, QueryTimeRange_Period_value)
 	proto.RegisterType((*ListGroupStatsRequest)(nil), "google.devtools.clouderrorreporting.v1beta1.ListGroupStatsRequest")
 	proto.RegisterType((*ListGroupStatsResponse)(nil), "google.devtools.clouderrorreporting.v1beta1.ListGroupStatsResponse")
 	proto.RegisterType((*ErrorGroupStats)(nil), "google.devtools.clouderrorreporting.v1beta1.ErrorGroupStats")
@@ -919,9 +922,6 @@ func init() {
 	proto.RegisterType((*ServiceContextFilter)(nil), "google.devtools.clouderrorreporting.v1beta1.ServiceContextFilter")
 	proto.RegisterType((*DeleteEventsRequest)(nil), "google.devtools.clouderrorreporting.v1beta1.DeleteEventsRequest")
 	proto.RegisterType((*DeleteEventsResponse)(nil), "google.devtools.clouderrorreporting.v1beta1.DeleteEventsResponse")
-	proto.RegisterEnum("google.devtools.clouderrorreporting.v1beta1.TimedCountAlignment", TimedCountAlignment_name, TimedCountAlignment_value)
-	proto.RegisterEnum("google.devtools.clouderrorreporting.v1beta1.ErrorGroupOrder", ErrorGroupOrder_name, ErrorGroupOrder_value)
-	proto.RegisterEnum("google.devtools.clouderrorreporting.v1beta1.QueryTimeRange_Period", QueryTimeRange_Period_name, QueryTimeRange_Period_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -952,6 +952,10 @@ func (m *Rollout_DeleteServiceStrategy) XXX_DiscardUnknown() {
 var xxx_messageInfo_Rollout_DeleteServiceStrategy proto.InternalMessageInfo
 
 func init() {
+	proto.RegisterEnum("google.api.servicemanagement.v1.OperationMetadata_Status", OperationMetadata_Status_name, OperationMetadata_Status_value)
+	proto.RegisterEnum("google.api.servicemanagement.v1.Diagnostic_Kind", Diagnostic_Kind_name, Diagnostic_Kind_value)
+	proto.RegisterEnum("google.api.servicemanagement.v1.ConfigFile_FileType", ConfigFile_FileType_name, ConfigFile_FileType_value)
+	proto.RegisterEnum("google.api.servicemanagement.v1.Rollout_RolloutStatus", Rollout_RolloutStatus_name, Rollout_RolloutStatus_value)
 	proto.RegisterType((*ManagedService)(nil), "google.api.servicemanagement.v1.ManagedService")
 	proto.RegisterType((*OperationMetadata)(nil), "google.api.servicemanagement.v1.OperationMetadata")
 	proto.RegisterType((*OperationMetadata_Step)(nil), "google.api.servicemanagement.v1.OperationMetadata.Step")
@@ -964,10 +968,6 @@ func init() {
 	proto.RegisterType((*Rollout_TrafficPercentStrategy)(nil), "google.api.servicemanagement.v1.Rollout.TrafficPercentStrategy")
 	proto.RegisterMapType((map[string]float64)(nil), "google.api.servicemanagement.v1.Rollout.TrafficPercentStrategy.PercentagesEntry")
 	proto.RegisterType((*Rollout_DeleteServiceStrategy)(nil), "google.api.servicemanagement.v1.Rollout.DeleteServiceStrategy")
-	proto.RegisterEnum("google.api.servicemanagement.v1.OperationMetadata_Status", OperationMetadata_Status_name, OperationMetadata_Status_value)
-	proto.RegisterEnum("google.api.servicemanagement.v1.Diagnostic_Kind", Diagnostic_Kind_name, Diagnostic_Kind_value)
-	proto.RegisterEnum("google.api.servicemanagement.v1.ConfigFile_FileType", ConfigFile_FileType_name, ConfigFile_FileType_value)
-	proto.RegisterEnum("google.api.servicemanagement.v1.Rollout_RolloutStatus", Rollout_RolloutStatus_name, Rollout_RolloutStatus_value)
 }
 
 func init() {

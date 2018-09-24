@@ -437,13 +437,13 @@ func (m *QuotaError) GetDescription() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.api.servicecontrol.v1.QuotaOperation_QuotaMode", QuotaOperation_QuotaMode_name, QuotaOperation_QuotaMode_value)
+	proto.RegisterEnum("google.api.servicecontrol.v1.QuotaError_Code", QuotaError_Code_name, QuotaError_Code_value)
 	proto.RegisterType((*AllocateQuotaRequest)(nil), "google.api.servicecontrol.v1.AllocateQuotaRequest")
 	proto.RegisterType((*QuotaOperation)(nil), "google.api.servicecontrol.v1.QuotaOperation")
 	proto.RegisterMapType((map[string]string)(nil), "google.api.servicecontrol.v1.QuotaOperation.LabelsEntry")
 	proto.RegisterType((*AllocateQuotaResponse)(nil), "google.api.servicecontrol.v1.AllocateQuotaResponse")
 	proto.RegisterType((*QuotaError)(nil), "google.api.servicecontrol.v1.QuotaError")
-	proto.RegisterEnum("google.api.servicecontrol.v1.QuotaOperation_QuotaMode", QuotaOperation_QuotaMode_name, QuotaOperation_QuotaMode_value)
-	proto.RegisterEnum("google.api.servicecontrol.v1.QuotaError_Code", QuotaError_Code_name, QuotaError_Code_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

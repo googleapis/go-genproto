@@ -653,6 +653,8 @@ func (m *PatchTracesRequest) GetTraces() *Traces {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.cloudtrace.v1.TraceSpan_SpanKind", TraceSpan_SpanKind_name, TraceSpan_SpanKind_value)
+	proto.RegisterEnum("google.devtools.cloudtrace.v1.ListTracesRequest_ViewType", ListTracesRequest_ViewType_name, ListTracesRequest_ViewType_value)
 	proto.RegisterType((*Trace)(nil), "google.devtools.cloudtrace.v1.Trace")
 	proto.RegisterType((*Traces)(nil), "google.devtools.cloudtrace.v1.Traces")
 	proto.RegisterType((*TraceSpan)(nil), "google.devtools.cloudtrace.v1.TraceSpan")
@@ -661,8 +663,6 @@ func init() {
 	proto.RegisterType((*ListTracesResponse)(nil), "google.devtools.cloudtrace.v1.ListTracesResponse")
 	proto.RegisterType((*GetTraceRequest)(nil), "google.devtools.cloudtrace.v1.GetTraceRequest")
 	proto.RegisterType((*PatchTracesRequest)(nil), "google.devtools.cloudtrace.v1.PatchTracesRequest")
-	proto.RegisterEnum("google.devtools.cloudtrace.v1.TraceSpan_SpanKind", TraceSpan_SpanKind_name, TraceSpan_SpanKind_value)
-	proto.RegisterEnum("google.devtools.cloudtrace.v1.ListTracesRequest_ViewType", ListTracesRequest_ViewType_name, ListTracesRequest_ViewType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

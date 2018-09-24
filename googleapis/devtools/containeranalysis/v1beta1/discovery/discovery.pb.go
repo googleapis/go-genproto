@@ -256,11 +256,11 @@ func (m *Discovered) GetAnalysisStatusError() *status.Status {
 }
 
 func init() {
+	proto.RegisterEnum("grafeas.v1beta1.discovery.Discovered_ContinuousAnalysis", Discovered_ContinuousAnalysis_name, Discovered_ContinuousAnalysis_value)
+	proto.RegisterEnum("grafeas.v1beta1.discovery.Discovered_AnalysisStatus", Discovered_AnalysisStatus_name, Discovered_AnalysisStatus_value)
 	proto.RegisterType((*Discovery)(nil), "grafeas.v1beta1.discovery.Discovery")
 	proto.RegisterType((*Details)(nil), "grafeas.v1beta1.discovery.Details")
 	proto.RegisterType((*Discovered)(nil), "grafeas.v1beta1.discovery.Discovered")
-	proto.RegisterEnum("grafeas.v1beta1.discovery.Discovered_ContinuousAnalysis", Discovered_ContinuousAnalysis_name, Discovered_ContinuousAnalysis_value)
-	proto.RegisterEnum("grafeas.v1beta1.discovery.Discovered_AnalysisStatus", Discovered_AnalysisStatus_name, Discovered_AnalysisStatus_value)
 }
 
 func init() {

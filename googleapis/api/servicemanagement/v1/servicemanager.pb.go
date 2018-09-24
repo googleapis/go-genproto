@@ -1194,6 +1194,7 @@ func (m *GenerateConfigReportResponse) GetDiagnostics() []*Diagnostic {
 }
 
 func init() {
+	proto.RegisterEnum("google.api.servicemanagement.v1.GetServiceConfigRequest_ConfigView", GetServiceConfigRequest_ConfigView_name, GetServiceConfigRequest_ConfigView_value)
 	proto.RegisterType((*ListServicesRequest)(nil), "google.api.servicemanagement.v1.ListServicesRequest")
 	proto.RegisterType((*ListServicesResponse)(nil), "google.api.servicemanagement.v1.ListServicesResponse")
 	proto.RegisterType((*GetServiceRequest)(nil), "google.api.servicemanagement.v1.GetServiceRequest")
@@ -1215,7 +1216,6 @@ func init() {
 	proto.RegisterType((*DisableServiceRequest)(nil), "google.api.servicemanagement.v1.DisableServiceRequest")
 	proto.RegisterType((*GenerateConfigReportRequest)(nil), "google.api.servicemanagement.v1.GenerateConfigReportRequest")
 	proto.RegisterType((*GenerateConfigReportResponse)(nil), "google.api.servicemanagement.v1.GenerateConfigReportResponse")
-	proto.RegisterEnum("google.api.servicemanagement.v1.GetServiceConfigRequest_ConfigView", GetServiceConfigRequest_ConfigView_name, GetServiceConfigRequest_ConfigView_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

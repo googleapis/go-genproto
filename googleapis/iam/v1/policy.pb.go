@@ -334,11 +334,11 @@ func (m *BindingDelta) GetMember() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.iam.v1.BindingDelta_Action", BindingDelta_Action_name, BindingDelta_Action_value)
 	proto.RegisterType((*Policy)(nil), "google.iam.v1.Policy")
 	proto.RegisterType((*Binding)(nil), "google.iam.v1.Binding")
 	proto.RegisterType((*PolicyDelta)(nil), "google.iam.v1.PolicyDelta")
 	proto.RegisterType((*BindingDelta)(nil), "google.iam.v1.BindingDelta")
-	proto.RegisterEnum("google.iam.v1.BindingDelta_Action", BindingDelta_Action_name, BindingDelta_Action_value)
 }
 
 func init() { proto.RegisterFile("google/iam/v1/policy.proto", fileDescriptor_a3cd40b8a66b2a99) }

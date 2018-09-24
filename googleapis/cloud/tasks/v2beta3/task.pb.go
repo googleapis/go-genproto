@@ -372,9 +372,9 @@ func (m *Attempt) GetResponseStatus() *status.Status {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.tasks.v2beta3.Task_View", Task_View_name, Task_View_value)
 	proto.RegisterType((*Task)(nil), "google.cloud.tasks.v2beta3.Task")
 	proto.RegisterType((*Attempt)(nil), "google.cloud.tasks.v2beta3.Attempt")
-	proto.RegisterEnum("google.cloud.tasks.v2beta3.Task_View", Task_View_name, Task_View_value)
 }
 
 func init() {

@@ -3278,6 +3278,10 @@ func (m *IntentBatch) GetIntents() []*Intent {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.IntentView", IntentView_name, IntentView_value)
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.Intent_WebhookState", Intent_WebhookState_name, Intent_WebhookState_value)
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.Intent_TrainingPhrase_Type", Intent_TrainingPhrase_Type_name, Intent_TrainingPhrase_Type_value)
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.Intent_Message_Platform", Intent_Message_Platform_name, Intent_Message_Platform_value)
 	proto.RegisterType((*Intent)(nil), "google.cloud.dialogflow.v2beta1.Intent")
 	proto.RegisterType((*Intent_TrainingPhrase)(nil), "google.cloud.dialogflow.v2beta1.Intent.TrainingPhrase")
 	proto.RegisterType((*Intent_TrainingPhrase_Part)(nil), "google.cloud.dialogflow.v2beta1.Intent.TrainingPhrase.Part")
@@ -3315,10 +3319,6 @@ func init() {
 	proto.RegisterType((*BatchUpdateIntentsResponse)(nil), "google.cloud.dialogflow.v2beta1.BatchUpdateIntentsResponse")
 	proto.RegisterType((*BatchDeleteIntentsRequest)(nil), "google.cloud.dialogflow.v2beta1.BatchDeleteIntentsRequest")
 	proto.RegisterType((*IntentBatch)(nil), "google.cloud.dialogflow.v2beta1.IntentBatch")
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.IntentView", IntentView_name, IntentView_value)
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.Intent_WebhookState", Intent_WebhookState_name, Intent_WebhookState_value)
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.Intent_TrainingPhrase_Type", Intent_TrainingPhrase_Type_name, Intent_TrainingPhrase_Type_value)
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.Intent_Message_Platform", Intent_Message_Platform_name, Intent_Message_Platform_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

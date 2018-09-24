@@ -976,6 +976,7 @@ func (m *DebugInstanceRequest) GetName() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.appengine.v1.VersionView", VersionView_name, VersionView_value)
 	proto.RegisterType((*GetApplicationRequest)(nil), "google.appengine.v1.GetApplicationRequest")
 	proto.RegisterType((*RepairApplicationRequest)(nil), "google.appengine.v1.RepairApplicationRequest")
 	proto.RegisterType((*ListServicesRequest)(nil), "google.appengine.v1.ListServicesRequest")
@@ -994,7 +995,6 @@ func init() {
 	proto.RegisterType((*GetInstanceRequest)(nil), "google.appengine.v1.GetInstanceRequest")
 	proto.RegisterType((*DeleteInstanceRequest)(nil), "google.appengine.v1.DeleteInstanceRequest")
 	proto.RegisterType((*DebugInstanceRequest)(nil), "google.appengine.v1.DebugInstanceRequest")
-	proto.RegisterEnum("google.appengine.v1.VersionView", VersionView_name, VersionView_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

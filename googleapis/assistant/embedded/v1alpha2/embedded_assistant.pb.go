@@ -1487,6 +1487,12 @@ func _DeviceLocation_OneofSizer(msg proto.Message) (n int) {
 }
 
 func init() {
+	proto.RegisterEnum("google.assistant.embedded.v1alpha2.AssistResponse_EventType", AssistResponse_EventType_name, AssistResponse_EventType_value)
+	proto.RegisterEnum("google.assistant.embedded.v1alpha2.AudioInConfig_Encoding", AudioInConfig_Encoding_name, AudioInConfig_Encoding_value)
+	proto.RegisterEnum("google.assistant.embedded.v1alpha2.AudioOutConfig_Encoding", AudioOutConfig_Encoding_name, AudioOutConfig_Encoding_value)
+	proto.RegisterEnum("google.assistant.embedded.v1alpha2.ScreenOutConfig_ScreenMode", ScreenOutConfig_ScreenMode_name, ScreenOutConfig_ScreenMode_value)
+	proto.RegisterEnum("google.assistant.embedded.v1alpha2.ScreenOut_Format", ScreenOut_Format_name, ScreenOut_Format_value)
+	proto.RegisterEnum("google.assistant.embedded.v1alpha2.DialogStateOut_MicrophoneMode", DialogStateOut_MicrophoneMode_name, DialogStateOut_MicrophoneMode_value)
 	proto.RegisterType((*AssistRequest)(nil), "google.assistant.embedded.v1alpha2.AssistRequest")
 	proto.RegisterType((*AssistResponse)(nil), "google.assistant.embedded.v1alpha2.AssistResponse")
 	proto.RegisterType((*DebugInfo)(nil), "google.assistant.embedded.v1alpha2.DebugInfo")
@@ -1503,12 +1509,6 @@ func init() {
 	proto.RegisterType((*DialogStateOut)(nil), "google.assistant.embedded.v1alpha2.DialogStateOut")
 	proto.RegisterType((*DebugConfig)(nil), "google.assistant.embedded.v1alpha2.DebugConfig")
 	proto.RegisterType((*DeviceLocation)(nil), "google.assistant.embedded.v1alpha2.DeviceLocation")
-	proto.RegisterEnum("google.assistant.embedded.v1alpha2.AssistResponse_EventType", AssistResponse_EventType_name, AssistResponse_EventType_value)
-	proto.RegisterEnum("google.assistant.embedded.v1alpha2.AudioInConfig_Encoding", AudioInConfig_Encoding_name, AudioInConfig_Encoding_value)
-	proto.RegisterEnum("google.assistant.embedded.v1alpha2.AudioOutConfig_Encoding", AudioOutConfig_Encoding_name, AudioOutConfig_Encoding_value)
-	proto.RegisterEnum("google.assistant.embedded.v1alpha2.ScreenOutConfig_ScreenMode", ScreenOutConfig_ScreenMode_name, ScreenOutConfig_ScreenMode_value)
-	proto.RegisterEnum("google.assistant.embedded.v1alpha2.ScreenOut_Format", ScreenOut_Format_name, ScreenOut_Format_value)
-	proto.RegisterEnum("google.assistant.embedded.v1alpha2.DialogStateOut_MicrophoneMode", DialogStateOut_MicrophoneMode_name, DialogStateOut_MicrophoneMode_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

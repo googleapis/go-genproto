@@ -876,6 +876,8 @@ func (m *ImportDocumentsMetadata) GetInputUriPrefix() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.firestore.admin.v1beta1.OperationState", OperationState_name, OperationState_value)
+	proto.RegisterEnum("google.firestore.admin.v1beta1.IndexOperationMetadata_OperationType", IndexOperationMetadata_OperationType_name, IndexOperationMetadata_OperationType_value)
 	proto.RegisterType((*IndexOperationMetadata)(nil), "google.firestore.admin.v1beta1.IndexOperationMetadata")
 	proto.RegisterType((*Progress)(nil), "google.firestore.admin.v1beta1.Progress")
 	proto.RegisterType((*CreateIndexRequest)(nil), "google.firestore.admin.v1beta1.CreateIndexRequest")
@@ -888,8 +890,6 @@ func init() {
 	proto.RegisterType((*ExportDocumentsResponse)(nil), "google.firestore.admin.v1beta1.ExportDocumentsResponse")
 	proto.RegisterType((*ExportDocumentsMetadata)(nil), "google.firestore.admin.v1beta1.ExportDocumentsMetadata")
 	proto.RegisterType((*ImportDocumentsMetadata)(nil), "google.firestore.admin.v1beta1.ImportDocumentsMetadata")
-	proto.RegisterEnum("google.firestore.admin.v1beta1.OperationState", OperationState_name, OperationState_value)
-	proto.RegisterEnum("google.firestore.admin.v1beta1.IndexOperationMetadata_OperationType", IndexOperationMetadata_OperationType_name, IndexOperationMetadata_OperationType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

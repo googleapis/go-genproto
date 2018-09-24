@@ -232,10 +232,10 @@ func (m *Index) GetState() Index_State {
 }
 
 func init() {
-	proto.RegisterType((*IndexField)(nil), "google.firestore.admin.v1beta1.IndexField")
-	proto.RegisterType((*Index)(nil), "google.firestore.admin.v1beta1.Index")
 	proto.RegisterEnum("google.firestore.admin.v1beta1.IndexField_Mode", IndexField_Mode_name, IndexField_Mode_value)
 	proto.RegisterEnum("google.firestore.admin.v1beta1.Index_State", Index_State_name, Index_State_value)
+	proto.RegisterType((*IndexField)(nil), "google.firestore.admin.v1beta1.IndexField")
+	proto.RegisterType((*Index)(nil), "google.firestore.admin.v1beta1.Index")
 }
 
 func init() {

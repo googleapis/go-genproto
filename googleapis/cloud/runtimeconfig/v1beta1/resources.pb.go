@@ -628,12 +628,12 @@ func (m *Waiter) GetError() *status.Status {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.runtimeconfig.v1beta1.VariableState", VariableState_name, VariableState_value)
 	proto.RegisterType((*RuntimeConfig)(nil), "google.cloud.runtimeconfig.v1beta1.RuntimeConfig")
 	proto.RegisterType((*Variable)(nil), "google.cloud.runtimeconfig.v1beta1.Variable")
 	proto.RegisterType((*EndCondition)(nil), "google.cloud.runtimeconfig.v1beta1.EndCondition")
 	proto.RegisterType((*EndCondition_Cardinality)(nil), "google.cloud.runtimeconfig.v1beta1.EndCondition.Cardinality")
 	proto.RegisterType((*Waiter)(nil), "google.cloud.runtimeconfig.v1beta1.Waiter")
-	proto.RegisterEnum("google.cloud.runtimeconfig.v1beta1.VariableState", VariableState_name, VariableState_value)
 }
 
 func init() {

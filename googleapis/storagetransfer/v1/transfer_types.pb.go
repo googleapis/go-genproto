@@ -1430,6 +1430,8 @@ func (m *TransferOperation) GetTransferJobName() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.storagetransfer.v1.TransferJob_Status", TransferJob_Status_name, TransferJob_Status_value)
+	proto.RegisterEnum("google.storagetransfer.v1.TransferOperation_Status", TransferOperation_Status_name, TransferOperation_Status_value)
 	proto.RegisterType((*GoogleServiceAccount)(nil), "google.storagetransfer.v1.GoogleServiceAccount")
 	proto.RegisterType((*AwsAccessKey)(nil), "google.storagetransfer.v1.AwsAccessKey")
 	proto.RegisterType((*ObjectConditions)(nil), "google.storagetransfer.v1.ObjectConditions")
@@ -1444,8 +1446,6 @@ func init() {
 	proto.RegisterType((*ErrorSummary)(nil), "google.storagetransfer.v1.ErrorSummary")
 	proto.RegisterType((*TransferCounters)(nil), "google.storagetransfer.v1.TransferCounters")
 	proto.RegisterType((*TransferOperation)(nil), "google.storagetransfer.v1.TransferOperation")
-	proto.RegisterEnum("google.storagetransfer.v1.TransferJob_Status", TransferJob_Status_name, TransferJob_Status_value)
-	proto.RegisterEnum("google.storagetransfer.v1.TransferOperation_Status", TransferOperation_Status_name, TransferOperation_Status_value)
 }
 
 func init() {

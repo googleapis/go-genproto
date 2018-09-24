@@ -815,6 +815,8 @@ func (m *FolderOperation) GetDestinationParent() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.resourcemanager.v2.Folder_LifecycleState", Folder_LifecycleState_name, Folder_LifecycleState_value)
+	proto.RegisterEnum("google.cloud.resourcemanager.v2.FolderOperation_OperationType", FolderOperation_OperationType_name, FolderOperation_OperationType_value)
 	proto.RegisterType((*Folder)(nil), "google.cloud.resourcemanager.v2.Folder")
 	proto.RegisterType((*ListFoldersRequest)(nil), "google.cloud.resourcemanager.v2.ListFoldersRequest")
 	proto.RegisterType((*ListFoldersResponse)(nil), "google.cloud.resourcemanager.v2.ListFoldersResponse")
@@ -827,8 +829,6 @@ func init() {
 	proto.RegisterType((*DeleteFolderRequest)(nil), "google.cloud.resourcemanager.v2.DeleteFolderRequest")
 	proto.RegisterType((*UndeleteFolderRequest)(nil), "google.cloud.resourcemanager.v2.UndeleteFolderRequest")
 	proto.RegisterType((*FolderOperation)(nil), "google.cloud.resourcemanager.v2.FolderOperation")
-	proto.RegisterEnum("google.cloud.resourcemanager.v2.Folder_LifecycleState", Folder_LifecycleState_name, Folder_LifecycleState_value)
-	proto.RegisterEnum("google.cloud.resourcemanager.v2.FolderOperation_OperationType", FolderOperation_OperationType_name, FolderOperation_OperationType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

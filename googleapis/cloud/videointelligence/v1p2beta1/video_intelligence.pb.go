@@ -1651,6 +1651,9 @@ func (m *ObjectTrackingAnnotation) GetSegment() *VideoSegment {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.videointelligence.v1p2beta1.Feature", Feature_name, Feature_value)
+	proto.RegisterEnum("google.cloud.videointelligence.v1p2beta1.LabelDetectionMode", LabelDetectionMode_name, LabelDetectionMode_value)
+	proto.RegisterEnum("google.cloud.videointelligence.v1p2beta1.Likelihood", Likelihood_name, Likelihood_value)
 	proto.RegisterType((*AnnotateVideoRequest)(nil), "google.cloud.videointelligence.v1p2beta1.AnnotateVideoRequest")
 	proto.RegisterType((*VideoContext)(nil), "google.cloud.videointelligence.v1p2beta1.VideoContext")
 	proto.RegisterType((*LabelDetectionConfig)(nil), "google.cloud.videointelligence.v1p2beta1.LabelDetectionConfig")
@@ -1676,9 +1679,6 @@ func init() {
 	proto.RegisterType((*TextAnnotation)(nil), "google.cloud.videointelligence.v1p2beta1.TextAnnotation")
 	proto.RegisterType((*ObjectTrackingFrame)(nil), "google.cloud.videointelligence.v1p2beta1.ObjectTrackingFrame")
 	proto.RegisterType((*ObjectTrackingAnnotation)(nil), "google.cloud.videointelligence.v1p2beta1.ObjectTrackingAnnotation")
-	proto.RegisterEnum("google.cloud.videointelligence.v1p2beta1.Feature", Feature_name, Feature_value)
-	proto.RegisterEnum("google.cloud.videointelligence.v1p2beta1.LabelDetectionMode", LabelDetectionMode_name, LabelDetectionMode_value)
-	proto.RegisterEnum("google.cloud.videointelligence.v1p2beta1.Likelihood", Likelihood_name, Likelihood_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

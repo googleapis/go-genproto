@@ -888,6 +888,7 @@ func (m *UpdateInstanceMetadata) GetEndTime() *timestamp.Timestamp {
 }
 
 func init() {
+	proto.RegisterEnum("google.spanner.admin.instance.v1.Instance_State", Instance_State_name, Instance_State_value)
 	proto.RegisterType((*InstanceConfig)(nil), "google.spanner.admin.instance.v1.InstanceConfig")
 	proto.RegisterType((*Instance)(nil), "google.spanner.admin.instance.v1.Instance")
 	proto.RegisterMapType((map[string]string)(nil), "google.spanner.admin.instance.v1.Instance.LabelsEntry")
@@ -902,7 +903,6 @@ func init() {
 	proto.RegisterType((*DeleteInstanceRequest)(nil), "google.spanner.admin.instance.v1.DeleteInstanceRequest")
 	proto.RegisterType((*CreateInstanceMetadata)(nil), "google.spanner.admin.instance.v1.CreateInstanceMetadata")
 	proto.RegisterType((*UpdateInstanceMetadata)(nil), "google.spanner.admin.instance.v1.UpdateInstanceMetadata")
-	proto.RegisterEnum("google.spanner.admin.instance.v1.Instance_State", Instance_State_name, Instance_State_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

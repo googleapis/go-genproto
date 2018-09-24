@@ -972,6 +972,9 @@ func (m *Debuggee) GetLabels() map[string]string {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.clouddebugger.v2.StatusMessage_Reference", StatusMessage_Reference_name, StatusMessage_Reference_value)
+	proto.RegisterEnum("google.devtools.clouddebugger.v2.Breakpoint_Action", Breakpoint_Action_name, Breakpoint_Action_value)
+	proto.RegisterEnum("google.devtools.clouddebugger.v2.Breakpoint_LogLevel", Breakpoint_LogLevel_name, Breakpoint_LogLevel_value)
 	proto.RegisterType((*FormatMessage)(nil), "google.devtools.clouddebugger.v2.FormatMessage")
 	proto.RegisterType((*StatusMessage)(nil), "google.devtools.clouddebugger.v2.StatusMessage")
 	proto.RegisterType((*SourceLocation)(nil), "google.devtools.clouddebugger.v2.SourceLocation")
@@ -981,9 +984,6 @@ func init() {
 	proto.RegisterMapType((map[string]string)(nil), "google.devtools.clouddebugger.v2.Breakpoint.LabelsEntry")
 	proto.RegisterType((*Debuggee)(nil), "google.devtools.clouddebugger.v2.Debuggee")
 	proto.RegisterMapType((map[string]string)(nil), "google.devtools.clouddebugger.v2.Debuggee.LabelsEntry")
-	proto.RegisterEnum("google.devtools.clouddebugger.v2.StatusMessage_Reference", StatusMessage_Reference_name, StatusMessage_Reference_value)
-	proto.RegisterEnum("google.devtools.clouddebugger.v2.Breakpoint_Action", Breakpoint_Action_name, Breakpoint_Action_value)
-	proto.RegisterEnum("google.devtools.clouddebugger.v2.Breakpoint_LogLevel", Breakpoint_LogLevel_name, Breakpoint_LogLevel_value)
 }
 
 func init() {

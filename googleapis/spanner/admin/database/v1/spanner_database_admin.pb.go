@@ -663,6 +663,7 @@ func (m *GetDatabaseDdlResponse) GetStatements() []string {
 }
 
 func init() {
+	proto.RegisterEnum("google.spanner.admin.database.v1.Database_State", Database_State_name, Database_State_value)
 	proto.RegisterType((*Database)(nil), "google.spanner.admin.database.v1.Database")
 	proto.RegisterType((*ListDatabasesRequest)(nil), "google.spanner.admin.database.v1.ListDatabasesRequest")
 	proto.RegisterType((*ListDatabasesResponse)(nil), "google.spanner.admin.database.v1.ListDatabasesResponse")
@@ -674,7 +675,6 @@ func init() {
 	proto.RegisterType((*DropDatabaseRequest)(nil), "google.spanner.admin.database.v1.DropDatabaseRequest")
 	proto.RegisterType((*GetDatabaseDdlRequest)(nil), "google.spanner.admin.database.v1.GetDatabaseDdlRequest")
 	proto.RegisterType((*GetDatabaseDdlResponse)(nil), "google.spanner.admin.database.v1.GetDatabaseDdlResponse")
-	proto.RegisterEnum("google.spanner.admin.database.v1.Database_State", Database_State_name, Database_State_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

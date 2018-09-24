@@ -1454,6 +1454,9 @@ func (m *WordInfo) GetWord() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.videointelligence.v1p1beta1.Feature", Feature_name, Feature_value)
+	proto.RegisterEnum("google.cloud.videointelligence.v1p1beta1.LabelDetectionMode", LabelDetectionMode_name, LabelDetectionMode_value)
+	proto.RegisterEnum("google.cloud.videointelligence.v1p1beta1.Likelihood", Likelihood_name, Likelihood_value)
 	proto.RegisterType((*AnnotateVideoRequest)(nil), "google.cloud.videointelligence.v1p1beta1.AnnotateVideoRequest")
 	proto.RegisterType((*VideoContext)(nil), "google.cloud.videointelligence.v1p1beta1.VideoContext")
 	proto.RegisterType((*LabelDetectionConfig)(nil), "google.cloud.videointelligence.v1p1beta1.LabelDetectionConfig")
@@ -1475,9 +1478,6 @@ func init() {
 	proto.RegisterType((*SpeechTranscription)(nil), "google.cloud.videointelligence.v1p1beta1.SpeechTranscription")
 	proto.RegisterType((*SpeechRecognitionAlternative)(nil), "google.cloud.videointelligence.v1p1beta1.SpeechRecognitionAlternative")
 	proto.RegisterType((*WordInfo)(nil), "google.cloud.videointelligence.v1p1beta1.WordInfo")
-	proto.RegisterEnum("google.cloud.videointelligence.v1p1beta1.Feature", Feature_name, Feature_value)
-	proto.RegisterEnum("google.cloud.videointelligence.v1p1beta1.LabelDetectionMode", LabelDetectionMode_name, LabelDetectionMode_value)
-	proto.RegisterEnum("google.cloud.videointelligence.v1p1beta1.Likelihood", Likelihood_name, Likelihood_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

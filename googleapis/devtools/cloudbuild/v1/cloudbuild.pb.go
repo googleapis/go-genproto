@@ -2771,6 +2771,12 @@ func (m *BuildOptions) GetLogStreamingOption() BuildOptions_LogStreamingOption {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.cloudbuild.v1.Build_Status", Build_Status_name, Build_Status_value)
+	proto.RegisterEnum("google.devtools.cloudbuild.v1.Hash_HashType", Hash_HashType_name, Hash_HashType_value)
+	proto.RegisterEnum("google.devtools.cloudbuild.v1.BuildOptions_VerifyOption", BuildOptions_VerifyOption_name, BuildOptions_VerifyOption_value)
+	proto.RegisterEnum("google.devtools.cloudbuild.v1.BuildOptions_MachineType", BuildOptions_MachineType_name, BuildOptions_MachineType_value)
+	proto.RegisterEnum("google.devtools.cloudbuild.v1.BuildOptions_SubstitutionOption", BuildOptions_SubstitutionOption_name, BuildOptions_SubstitutionOption_value)
+	proto.RegisterEnum("google.devtools.cloudbuild.v1.BuildOptions_LogStreamingOption", BuildOptions_LogStreamingOption_name, BuildOptions_LogStreamingOption_value)
 	proto.RegisterType((*RetryBuildRequest)(nil), "google.devtools.cloudbuild.v1.RetryBuildRequest")
 	proto.RegisterType((*RunBuildTriggerRequest)(nil), "google.devtools.cloudbuild.v1.RunBuildTriggerRequest")
 	proto.RegisterType((*StorageSource)(nil), "google.devtools.cloudbuild.v1.StorageSource")
@@ -2808,12 +2814,6 @@ func init() {
 	proto.RegisterType((*DeleteBuildTriggerRequest)(nil), "google.devtools.cloudbuild.v1.DeleteBuildTriggerRequest")
 	proto.RegisterType((*UpdateBuildTriggerRequest)(nil), "google.devtools.cloudbuild.v1.UpdateBuildTriggerRequest")
 	proto.RegisterType((*BuildOptions)(nil), "google.devtools.cloudbuild.v1.BuildOptions")
-	proto.RegisterEnum("google.devtools.cloudbuild.v1.Build_Status", Build_Status_name, Build_Status_value)
-	proto.RegisterEnum("google.devtools.cloudbuild.v1.Hash_HashType", Hash_HashType_name, Hash_HashType_value)
-	proto.RegisterEnum("google.devtools.cloudbuild.v1.BuildOptions_VerifyOption", BuildOptions_VerifyOption_name, BuildOptions_VerifyOption_value)
-	proto.RegisterEnum("google.devtools.cloudbuild.v1.BuildOptions_MachineType", BuildOptions_MachineType_name, BuildOptions_MachineType_value)
-	proto.RegisterEnum("google.devtools.cloudbuild.v1.BuildOptions_SubstitutionOption", BuildOptions_SubstitutionOption_name, BuildOptions_SubstitutionOption_value)
-	proto.RegisterEnum("google.devtools.cloudbuild.v1.BuildOptions_LogStreamingOption", BuildOptions_LogStreamingOption_name, BuildOptions_LogStreamingOption_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

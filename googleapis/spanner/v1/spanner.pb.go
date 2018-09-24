@@ -1395,6 +1395,7 @@ func (m *RollbackRequest) GetTransactionId() []byte {
 }
 
 func init() {
+	proto.RegisterEnum("google.spanner.v1.ExecuteSqlRequest_QueryMode", ExecuteSqlRequest_QueryMode_name, ExecuteSqlRequest_QueryMode_value)
 	proto.RegisterType((*CreateSessionRequest)(nil), "google.spanner.v1.CreateSessionRequest")
 	proto.RegisterType((*Session)(nil), "google.spanner.v1.Session")
 	proto.RegisterMapType((map[string]string)(nil), "google.spanner.v1.Session.LabelsEntry")
@@ -1415,7 +1416,6 @@ func init() {
 	proto.RegisterType((*CommitRequest)(nil), "google.spanner.v1.CommitRequest")
 	proto.RegisterType((*CommitResponse)(nil), "google.spanner.v1.CommitResponse")
 	proto.RegisterType((*RollbackRequest)(nil), "google.spanner.v1.RollbackRequest")
-	proto.RegisterEnum("google.spanner.v1.ExecuteSqlRequest_QueryMode", ExecuteSqlRequest_QueryMode_name, ExecuteSqlRequest_QueryMode_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

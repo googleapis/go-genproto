@@ -430,12 +430,12 @@ func (m *ProductSearchResults_Result) GetImage() string {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.vision.v1p3beta1.ProductSearchCategory", ProductSearchCategory_name, ProductSearchCategory_value)
+	proto.RegisterEnum("google.cloud.vision.v1p3beta1.ProductSearchResultsView", ProductSearchResultsView_name, ProductSearchResultsView_value)
 	proto.RegisterType((*ProductSearchParams)(nil), "google.cloud.vision.v1p3beta1.ProductSearchParams")
 	proto.RegisterType((*ProductSearchResults)(nil), "google.cloud.vision.v1p3beta1.ProductSearchResults")
 	proto.RegisterType((*ProductSearchResults_ProductInfo)(nil), "google.cloud.vision.v1p3beta1.ProductSearchResults.ProductInfo")
 	proto.RegisterType((*ProductSearchResults_Result)(nil), "google.cloud.vision.v1p3beta1.ProductSearchResults.Result")
-	proto.RegisterEnum("google.cloud.vision.v1p3beta1.ProductSearchCategory", ProductSearchCategory_name, ProductSearchCategory_value)
-	proto.RegisterEnum("google.cloud.vision.v1p3beta1.ProductSearchResultsView", ProductSearchResultsView_name, ProductSearchResultsView_value)
 }
 
 func init() {

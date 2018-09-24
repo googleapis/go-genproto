@@ -1082,6 +1082,7 @@ func (m *StreamReadsResponse) GetAlignments() []*Read {
 }
 
 func init() {
+	proto.RegisterEnum("google.genomics.v1.ImportReadGroupSetsRequest_PartitionStrategy", ImportReadGroupSetsRequest_PartitionStrategy_name, ImportReadGroupSetsRequest_PartitionStrategy_value)
 	proto.RegisterType((*SearchReadGroupSetsRequest)(nil), "google.genomics.v1.SearchReadGroupSetsRequest")
 	proto.RegisterType((*SearchReadGroupSetsResponse)(nil), "google.genomics.v1.SearchReadGroupSetsResponse")
 	proto.RegisterType((*ImportReadGroupSetsRequest)(nil), "google.genomics.v1.ImportReadGroupSetsRequest")
@@ -1097,7 +1098,6 @@ func init() {
 	proto.RegisterType((*SearchReadsResponse)(nil), "google.genomics.v1.SearchReadsResponse")
 	proto.RegisterType((*StreamReadsRequest)(nil), "google.genomics.v1.StreamReadsRequest")
 	proto.RegisterType((*StreamReadsResponse)(nil), "google.genomics.v1.StreamReadsResponse")
-	proto.RegisterEnum("google.genomics.v1.ImportReadGroupSetsRequest_PartitionStrategy", ImportReadGroupSetsRequest_PartitionStrategy_name, ImportReadGroupSetsRequest_PartitionStrategy_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

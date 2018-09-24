@@ -169,8 +169,8 @@ func (m *CigarUnit) GetReferenceSequence() string {
 }
 
 func init() {
-	proto.RegisterType((*CigarUnit)(nil), "google.genomics.v1.CigarUnit")
 	proto.RegisterEnum("google.genomics.v1.CigarUnit_Operation", CigarUnit_Operation_name, CigarUnit_Operation_value)
+	proto.RegisterType((*CigarUnit)(nil), "google.genomics.v1.CigarUnit")
 }
 
 func init() { proto.RegisterFile("google/genomics/v1/cigar.proto", fileDescriptor_353bda9a6ec457b8) }

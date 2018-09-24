@@ -1107,6 +1107,8 @@ func (m *EntityTypeBatch) GetEntityTypes() []*EntityType {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.EntityType_Kind", EntityType_Kind_name, EntityType_Kind_value)
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.EntityType_AutoExpansionMode", EntityType_AutoExpansionMode_name, EntityType_AutoExpansionMode_value)
 	proto.RegisterType((*EntityType)(nil), "google.cloud.dialogflow.v2beta1.EntityType")
 	proto.RegisterType((*EntityType_Entity)(nil), "google.cloud.dialogflow.v2beta1.EntityType.Entity")
 	proto.RegisterType((*ListEntityTypesRequest)(nil), "google.cloud.dialogflow.v2beta1.ListEntityTypesRequest")
@@ -1122,8 +1124,6 @@ func init() {
 	proto.RegisterType((*BatchUpdateEntitiesRequest)(nil), "google.cloud.dialogflow.v2beta1.BatchUpdateEntitiesRequest")
 	proto.RegisterType((*BatchDeleteEntitiesRequest)(nil), "google.cloud.dialogflow.v2beta1.BatchDeleteEntitiesRequest")
 	proto.RegisterType((*EntityTypeBatch)(nil), "google.cloud.dialogflow.v2beta1.EntityTypeBatch")
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.EntityType_Kind", EntityType_Kind_name, EntityType_Kind_value)
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.EntityType_AutoExpansionMode", EntityType_AutoExpansionMode_name, EntityType_AutoExpansionMode_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

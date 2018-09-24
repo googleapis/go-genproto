@@ -576,6 +576,8 @@ func (m *KnowledgeOperationMetadata) GetState() KnowledgeOperationMetadata_State
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.Document_KnowledgeType", Document_KnowledgeType_name, Document_KnowledgeType_value)
+	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.KnowledgeOperationMetadata_State", KnowledgeOperationMetadata_State_name, KnowledgeOperationMetadata_State_value)
 	proto.RegisterType((*Document)(nil), "google.cloud.dialogflow.v2beta1.Document")
 	proto.RegisterType((*ListDocumentsRequest)(nil), "google.cloud.dialogflow.v2beta1.ListDocumentsRequest")
 	proto.RegisterType((*ListDocumentsResponse)(nil), "google.cloud.dialogflow.v2beta1.ListDocumentsResponse")
@@ -583,8 +585,6 @@ func init() {
 	proto.RegisterType((*CreateDocumentRequest)(nil), "google.cloud.dialogflow.v2beta1.CreateDocumentRequest")
 	proto.RegisterType((*DeleteDocumentRequest)(nil), "google.cloud.dialogflow.v2beta1.DeleteDocumentRequest")
 	proto.RegisterType((*KnowledgeOperationMetadata)(nil), "google.cloud.dialogflow.v2beta1.KnowledgeOperationMetadata")
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.Document_KnowledgeType", Document_KnowledgeType_name, Document_KnowledgeType_value)
-	proto.RegisterEnum("google.cloud.dialogflow.v2beta1.KnowledgeOperationMetadata_State", KnowledgeOperationMetadata_State_name, KnowledgeOperationMetadata_State_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

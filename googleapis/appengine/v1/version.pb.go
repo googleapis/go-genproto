@@ -1190,6 +1190,8 @@ func (m *Resources) GetMemoryGb() float64 {
 }
 
 func init() {
+	proto.RegisterEnum("google.appengine.v1.InboundServiceType", InboundServiceType_name, InboundServiceType_value)
+	proto.RegisterEnum("google.appengine.v1.ServingStatus", ServingStatus_name, ServingStatus_value)
 	proto.RegisterType((*Version)(nil), "google.appengine.v1.Version")
 	proto.RegisterMapType((map[string]string)(nil), "google.appengine.v1.Version.BetaSettingsEntry")
 	proto.RegisterMapType((map[string]string)(nil), "google.appengine.v1.Version.EnvVariablesEntry")
@@ -1202,8 +1204,6 @@ func init() {
 	proto.RegisterType((*NetworkUtilization)(nil), "google.appengine.v1.NetworkUtilization")
 	proto.RegisterType((*Network)(nil), "google.appengine.v1.Network")
 	proto.RegisterType((*Resources)(nil), "google.appengine.v1.Resources")
-	proto.RegisterEnum("google.appengine.v1.InboundServiceType", InboundServiceType_name, InboundServiceType_value)
-	proto.RegisterEnum("google.appengine.v1.ServingStatus", ServingStatus_name, ServingStatus_value)
 }
 
 func init() { proto.RegisterFile("google/appengine/v1/version.proto", fileDescriptor_fbe3eca208d62f7c) }

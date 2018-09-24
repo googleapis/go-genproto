@@ -429,6 +429,7 @@ func (m *Deployment) GetLabels() map[string]string {
 }
 
 func init() {
+	proto.RegisterEnum("google.devtools.cloudprofiler.v2.ProfileType", ProfileType_name, ProfileType_value)
 	proto.RegisterType((*CreateProfileRequest)(nil), "google.devtools.cloudprofiler.v2.CreateProfileRequest")
 	proto.RegisterType((*CreateOfflineProfileRequest)(nil), "google.devtools.cloudprofiler.v2.CreateOfflineProfileRequest")
 	proto.RegisterType((*UpdateProfileRequest)(nil), "google.devtools.cloudprofiler.v2.UpdateProfileRequest")
@@ -436,7 +437,6 @@ func init() {
 	proto.RegisterMapType((map[string]string)(nil), "google.devtools.cloudprofiler.v2.Profile.LabelsEntry")
 	proto.RegisterType((*Deployment)(nil), "google.devtools.cloudprofiler.v2.Deployment")
 	proto.RegisterMapType((map[string]string)(nil), "google.devtools.cloudprofiler.v2.Deployment.LabelsEntry")
-	proto.RegisterEnum("google.devtools.cloudprofiler.v2.ProfileType", ProfileType_name, ProfileType_value)
 }
 
 // Reference imports to suppress errors if they are not otherwise used.

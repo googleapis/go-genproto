@@ -395,12 +395,12 @@ func (m *Derived) GetBaseResourceUrl() string {
 }
 
 func init() {
+	proto.RegisterEnum("grafeas.v1beta1.image.Layer_Directive", Layer_Directive_name, Layer_Directive_value)
 	proto.RegisterType((*Layer)(nil), "grafeas.v1beta1.image.Layer")
 	proto.RegisterType((*Fingerprint)(nil), "grafeas.v1beta1.image.Fingerprint")
 	proto.RegisterType((*Basis)(nil), "grafeas.v1beta1.image.Basis")
 	proto.RegisterType((*Details)(nil), "grafeas.v1beta1.image.Details")
 	proto.RegisterType((*Derived)(nil), "grafeas.v1beta1.image.Derived")
-	proto.RegisterEnum("grafeas.v1beta1.image.Layer_Directive", Layer_Directive_name, Layer_Directive_value)
 }
 
 func init() {

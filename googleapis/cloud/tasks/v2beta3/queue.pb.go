@@ -580,10 +580,10 @@ func (m *RetryConfig) GetMaxDoublings() int32 {
 }
 
 func init() {
+	proto.RegisterEnum("google.cloud.tasks.v2beta3.Queue_State", Queue_State_name, Queue_State_value)
 	proto.RegisterType((*Queue)(nil), "google.cloud.tasks.v2beta3.Queue")
 	proto.RegisterType((*RateLimits)(nil), "google.cloud.tasks.v2beta3.RateLimits")
 	proto.RegisterType((*RetryConfig)(nil), "google.cloud.tasks.v2beta3.RetryConfig")
-	proto.RegisterEnum("google.cloud.tasks.v2beta3.Queue_State", Queue_State_name, Queue_State_value)
 }
 
 func init() {

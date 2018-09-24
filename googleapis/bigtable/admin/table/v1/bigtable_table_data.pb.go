@@ -500,13 +500,13 @@ func (m *GcRule_Union) GetRules() []*GcRule {
 }
 
 func init() {
+	proto.RegisterEnum("google.bigtable.admin.table.v1.Table_TimestampGranularity", Table_TimestampGranularity_name, Table_TimestampGranularity_value)
 	proto.RegisterType((*Table)(nil), "google.bigtable.admin.table.v1.Table")
 	proto.RegisterMapType((map[string]*ColumnFamily)(nil), "google.bigtable.admin.table.v1.Table.ColumnFamiliesEntry")
 	proto.RegisterType((*ColumnFamily)(nil), "google.bigtable.admin.table.v1.ColumnFamily")
 	proto.RegisterType((*GcRule)(nil), "google.bigtable.admin.table.v1.GcRule")
 	proto.RegisterType((*GcRule_Intersection)(nil), "google.bigtable.admin.table.v1.GcRule.Intersection")
 	proto.RegisterType((*GcRule_Union)(nil), "google.bigtable.admin.table.v1.GcRule.Union")
-	proto.RegisterEnum("google.bigtable.admin.table.v1.Table_TimestampGranularity", Table_TimestampGranularity_name, Table_TimestampGranularity_value)
 }
 
 func init() {
