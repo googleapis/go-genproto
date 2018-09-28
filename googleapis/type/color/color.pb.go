@@ -5,9 +5,10 @@ package color
 
 import (
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
