@@ -5,6 +5,8 @@ package serviceconfig
 
 import (
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	annotations "google.golang.org/genproto/googleapis/api/annotations"
@@ -12,7 +14,6 @@ import (
 	monitoredres "google.golang.org/genproto/googleapis/api/monitoredres"
 	api "google.golang.org/genproto/protobuf/api"
 	ptype "google.golang.org/genproto/protobuf/ptype"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

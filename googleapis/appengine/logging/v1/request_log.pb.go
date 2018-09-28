@@ -5,11 +5,12 @@ package logging
 
 import (
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_type "google.golang.org/genproto/googleapis/logging/type"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
