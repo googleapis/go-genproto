@@ -5,8 +5,6 @@ package logging
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	context "golang.org/x/net/context"
@@ -15,6 +13,7 @@ import (
 	metric "google.golang.org/genproto/googleapis/api/metric"
 	_ "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -5,8 +5,6 @@ package genomics
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"
 	empty "github.com/golang/protobuf/ptypes/empty"
@@ -16,6 +14,7 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	code "google.golang.org/genproto/googleapis/rpc/code"
 	grpc "google.golang.org/grpc"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
