@@ -5,12 +5,11 @@ package resultstore
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1671,18 +1670,21 @@ type ResultStoreDownloadClient interface {
 	// An error will be reported in the following cases:
 	// - If the invocation is not found.
 	// - If the given invocation name is badly formatted.
+	// - If no field mask was given.
 	GetInvocation(ctx context.Context, in *GetInvocationRequest, opts ...grpc.CallOption) (*Invocation, error)
 	// Searches for invocations matching the given query parameters.
 	//
 	//
 	// An error will be reported in the following cases:
 	// - If a query string is not provided
+	// - If no field mask was given.
 	SearchInvocations(ctx context.Context, in *SearchInvocationsRequest, opts ...grpc.CallOption) (*SearchInvocationsResponse, error)
 	// Retrieves the configuration with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the configuration or its parent invocation is not found.
 	// - If the given configuration name is badly formatted.
+	// - If no field mask was given.
 	GetConfiguration(ctx context.Context, in *GetConfigurationRequest, opts ...grpc.CallOption) (*Configuration, error)
 	// Retrieves all configurations for a parent invocation.
 	// This might be limited by user or server,
@@ -1691,12 +1693,14 @@ type ResultStoreDownloadClient interface {
 	// An error will be reported in the following cases:
 	// - If the parent invocation is not found.
 	// - If the given parent invocation name is badly formatted.
+	// - If no field mask was given.
 	ListConfigurations(ctx context.Context, in *ListConfigurationsRequest, opts ...grpc.CallOption) (*ListConfigurationsResponse, error)
 	// Retrieves the target with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the target or its parent invocation is not found.
 	// - If the given target name is badly formatted.
+	// - If no field mask was given.
 	GetTarget(ctx context.Context, in *GetTargetRequest, opts ...grpc.CallOption) (*Target, error)
 	// Retrieves all targets for a parent invocation.  This might be limited by
 	// user or server, in which case a continuation token is provided.
@@ -1704,12 +1708,14 @@ type ResultStoreDownloadClient interface {
 	// An error will be reported in the following cases:
 	// - If the parent is not found.
 	// - If the given parent name is badly formatted.
+	// - If no field mask was given.
 	ListTargets(ctx context.Context, in *ListTargetsRequest, opts ...grpc.CallOption) (*ListTargetsResponse, error)
 	// Retrieves the configured target with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the configured target is not found.
 	// - If the given name is badly formatted.
+	// - If no field mask was given.
 	GetConfiguredTarget(ctx context.Context, in *GetConfiguredTargetRequest, opts ...grpc.CallOption) (*ConfiguredTarget, error)
 	// Retrieves all configured targets for a parent invocation/target.
 	// This might be limited by user or server, in which case a continuation
@@ -1718,12 +1724,14 @@ type ResultStoreDownloadClient interface {
 	// An error will be reported in the following cases:
 	// - If the parent is not found.
 	// - If the given parent name is badly formatted.
+	// - If no field mask was given.
 	ListConfiguredTargets(ctx context.Context, in *ListConfiguredTargetsRequest, opts ...grpc.CallOption) (*ListConfiguredTargetsResponse, error)
 	// Retrieves the action with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the action is not found.
 	// - If the given name is badly formatted.
+	// - If no field mask was given.
 	GetAction(ctx context.Context, in *GetActionRequest, opts ...grpc.CallOption) (*Action, error)
 	// Retrieves all actions for a parent invocation/target/configuration.
 	// This might be limited by user or server, in which case a continuation
@@ -1735,12 +1743,14 @@ type ResultStoreDownloadClient interface {
 	// An error will be reported in the following cases:
 	// - If the parent is not found.
 	// - If the given parent name is badly formatted.
+	// - If no field mask was given.
 	ListActions(ctx context.Context, in *ListActionsRequest, opts ...grpc.CallOption) (*ListActionsResponse, error)
 	// Retrieves the file set with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the file set or its parent invocation is not found.
 	// - If the given file set name is badly formatted.
+	// - If no field mask was given.
 	GetFileSet(ctx context.Context, in *GetFileSetRequest, opts ...grpc.CallOption) (*FileSet, error)
 	// Retrieves all file sets for a parent invocation.
 	// This might be limited by user or server,
@@ -1749,6 +1759,7 @@ type ResultStoreDownloadClient interface {
 	// An error will be reported in the following cases:
 	// - If the parent invocation is not found.
 	// - If the given parent invocation name is badly formatted.
+	// - If no field mask was given.
 	ListFileSets(ctx context.Context, in *ListFileSetsRequest, opts ...grpc.CallOption) (*ListFileSetsResponse, error)
 }
 
@@ -1875,18 +1886,21 @@ type ResultStoreDownloadServer interface {
 	// An error will be reported in the following cases:
 	// - If the invocation is not found.
 	// - If the given invocation name is badly formatted.
+	// - If no field mask was given.
 	GetInvocation(context.Context, *GetInvocationRequest) (*Invocation, error)
 	// Searches for invocations matching the given query parameters.
 	//
 	//
 	// An error will be reported in the following cases:
 	// - If a query string is not provided
+	// - If no field mask was given.
 	SearchInvocations(context.Context, *SearchInvocationsRequest) (*SearchInvocationsResponse, error)
 	// Retrieves the configuration with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the configuration or its parent invocation is not found.
 	// - If the given configuration name is badly formatted.
+	// - If no field mask was given.
 	GetConfiguration(context.Context, *GetConfigurationRequest) (*Configuration, error)
 	// Retrieves all configurations for a parent invocation.
 	// This might be limited by user or server,
@@ -1895,12 +1909,14 @@ type ResultStoreDownloadServer interface {
 	// An error will be reported in the following cases:
 	// - If the parent invocation is not found.
 	// - If the given parent invocation name is badly formatted.
+	// - If no field mask was given.
 	ListConfigurations(context.Context, *ListConfigurationsRequest) (*ListConfigurationsResponse, error)
 	// Retrieves the target with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the target or its parent invocation is not found.
 	// - If the given target name is badly formatted.
+	// - If no field mask was given.
 	GetTarget(context.Context, *GetTargetRequest) (*Target, error)
 	// Retrieves all targets for a parent invocation.  This might be limited by
 	// user or server, in which case a continuation token is provided.
@@ -1908,12 +1924,14 @@ type ResultStoreDownloadServer interface {
 	// An error will be reported in the following cases:
 	// - If the parent is not found.
 	// - If the given parent name is badly formatted.
+	// - If no field mask was given.
 	ListTargets(context.Context, *ListTargetsRequest) (*ListTargetsResponse, error)
 	// Retrieves the configured target with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the configured target is not found.
 	// - If the given name is badly formatted.
+	// - If no field mask was given.
 	GetConfiguredTarget(context.Context, *GetConfiguredTargetRequest) (*ConfiguredTarget, error)
 	// Retrieves all configured targets for a parent invocation/target.
 	// This might be limited by user or server, in which case a continuation
@@ -1922,12 +1940,14 @@ type ResultStoreDownloadServer interface {
 	// An error will be reported in the following cases:
 	// - If the parent is not found.
 	// - If the given parent name is badly formatted.
+	// - If no field mask was given.
 	ListConfiguredTargets(context.Context, *ListConfiguredTargetsRequest) (*ListConfiguredTargetsResponse, error)
 	// Retrieves the action with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the action is not found.
 	// - If the given name is badly formatted.
+	// - If no field mask was given.
 	GetAction(context.Context, *GetActionRequest) (*Action, error)
 	// Retrieves all actions for a parent invocation/target/configuration.
 	// This might be limited by user or server, in which case a continuation
@@ -1939,12 +1959,14 @@ type ResultStoreDownloadServer interface {
 	// An error will be reported in the following cases:
 	// - If the parent is not found.
 	// - If the given parent name is badly formatted.
+	// - If no field mask was given.
 	ListActions(context.Context, *ListActionsRequest) (*ListActionsResponse, error)
 	// Retrieves the file set with the given name.
 	//
 	// An error will be reported in the following cases:
 	// - If the file set or its parent invocation is not found.
 	// - If the given file set name is badly formatted.
+	// - If no field mask was given.
 	GetFileSet(context.Context, *GetFileSetRequest) (*FileSet, error)
 	// Retrieves all file sets for a parent invocation.
 	// This might be limited by user or server,
@@ -1953,6 +1975,7 @@ type ResultStoreDownloadServer interface {
 	// An error will be reported in the following cases:
 	// - If the parent invocation is not found.
 	// - If the given parent invocation name is badly formatted.
+	// - If no field mask was given.
 	ListFileSets(context.Context, *ListFileSetsRequest) (*ListFileSetsResponse, error)
 }
 
