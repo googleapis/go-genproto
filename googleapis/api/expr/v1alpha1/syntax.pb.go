@@ -1151,6 +1151,7 @@ func (m *Constant) GetBytesValue() []byte {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (m *Constant) GetDurationValue() *duration.Duration {
 	if x, ok := m.GetConstantKind().(*Constant_DurationValue); ok {
 		return x.DurationValue
@@ -1158,6 +1159,7 @@ func (m *Constant) GetDurationValue() *duration.Duration {
 	return nil
 }
 
+// Deprecated: Do not use.
 func (m *Constant) GetTimestampValue() *timestamp.Timestamp {
 	if x, ok := m.GetConstantKind().(*Constant_TimestampValue); ok {
 		return x.TimestampValue
