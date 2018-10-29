@@ -3135,8 +3135,9 @@ type OutputStorageConfig struct {
 	// from the predefined schema that are missing will be added. No columns in
 	// the existing table will be deleted.
 	//
-	// If unspecified, then all available columns will be used for a new table,
-	// and no changes will be made to an existing table.
+	// If unspecified, then all available columns will be used for a new table or
+	// an (existing) table with no schema, and no changes will be made to an
+	// existing table that has a schema.
 	OutputSchema         OutputStorageConfig_OutputSchema `protobuf:"varint,3,opt,name=output_schema,json=outputSchema,proto3,enum=google.privacy.dlp.v2.OutputStorageConfig_OutputSchema" json:"output_schema,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                         `json:"-"`
 	XXX_unrecognized     []byte                           `json:"-"`
@@ -4360,7 +4361,7 @@ type PrivacyMetric_KAnonymityConfig struct {
 	QuasiIds []*FieldId `protobuf:"bytes,1,rep,name=quasi_ids,json=quasiIds,proto3" json:"quasi_ids,omitempty"`
 	// Optional message indicating that multiple rows might be associated to a
 	// single individual. If the same entity_id is associated to multiple
-	// quasi-identifier tuples over distict rows, we consider the entire
+	// quasi-identifier tuples over distinct rows, we consider the entire
 	// collection of tuples as the composite quasi-identifier. This collection
 	// is a multiset: the order in which the different tuples appear in the
 	// dataset is ignored, but their frequency is taken into account.
@@ -6700,6 +6701,7 @@ func _QuoteInfo_OneofSizer(msg proto.Message) (n int) {
 }
 
 // Message for a date time object.
+// e.g. 2018-01-01, 5th August.
 type DateTime struct {
 	// One or more of the following must be set. All fields are optional, but
 	// when set must be valid date or time values.
@@ -9928,7 +9930,7 @@ type JobTrigger struct {
 	// a single Schedule trigger and must have at least one object.
 	Triggers []*JobTrigger_Trigger `protobuf:"bytes,5,rep,name=triggers,proto3" json:"triggers,omitempty"`
 	// A stream of errors encountered when the trigger was activated. Repeated
-	// errors may result in the JobTrigger automaticaly being paused.
+	// errors may result in the JobTrigger automatically being paused.
 	// Will return the last 100 errors. Whenever the JobTrigger is modified
 	// this list will be cleared. Output only field.
 	Errors []*Error `protobuf:"bytes,6,rep,name=errors,proto3" json:"errors,omitempty"`

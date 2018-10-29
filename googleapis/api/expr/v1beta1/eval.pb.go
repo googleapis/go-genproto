@@ -6,7 +6,6 @@ package expr
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	v1beta "google.golang.org/genproto/googleapis/api/expr/v1beta"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	math "math"
 )
@@ -171,7 +170,7 @@ type isExprValue_Kind interface {
 }
 
 type ExprValue_Value struct {
-	Value *v1beta.Value `protobuf:"bytes,1,opt,name=value,proto3,oneof"`
+	Value *Value `protobuf:"bytes,1,opt,name=value,proto3,oneof"`
 }
 
 type ExprValue_Error struct {
@@ -195,7 +194,7 @@ func (m *ExprValue) GetKind() isExprValue_Kind {
 	return nil
 }
 
-func (m *ExprValue) GetValue() *v1beta.Value {
+func (m *ExprValue) GetValue() *Value {
 	if x, ok := m.GetKind().(*ExprValue_Value); ok {
 		return x.Value
 	}
@@ -258,7 +257,7 @@ func _ExprValue_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buff
 		if wire != proto.WireBytes {
 			return true, proto.ErrInternalBadWireType
 		}
-		msg := new(v1beta.Value)
+		msg := new(Value)
 		err := b.DecodeMessage(msg)
 		m.Kind = &ExprValue_Value{msg}
 		return true, err
