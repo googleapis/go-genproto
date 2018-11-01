@@ -70,7 +70,7 @@ func (m *RegisterDebuggeeRequest) GetDebuggee() *Debuggee {
 // Response for registering a debuggee.
 type RegisterDebuggeeResponse struct {
 	// Debuggee resource.
-	// The field `id` is guranteed to be set (in addition to the echoed fields).
+	// The field `id` is guaranteed to be set (in addition to the echoed fields).
 	// If the field `is_disabled` is set to `true`, the agent should disable
 	// itself by removing all breakpoints and detaching from the application.
 	// It should however continue to poll `RegisterDebuggee` until reenabled.
