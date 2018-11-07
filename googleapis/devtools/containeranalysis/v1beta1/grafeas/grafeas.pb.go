@@ -4,11 +4,11 @@
 package grafeas
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	attestation "google.golang.org/genproto/googleapis/devtools/containeranalysis/v1beta1/attestation"
 	build "google.golang.org/genproto/googleapis/devtools/containeranalysis/v1beta1/build"
