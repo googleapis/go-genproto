@@ -420,7 +420,7 @@ type Block struct {
 	//         |    |
 	//         1----0
 	//
-	//   and the vertice order will still be (0, 1, 2, 3).
+	//   and the vertex order will still be (0, 1, 2, 3).
 	BoundingBox *BoundingPoly `protobuf:"bytes,2,opt,name=bounding_box,json=boundingBox,proto3" json:"bounding_box,omitempty"`
 	// List of paragraphs in this block (if this blocks is of type text).
 	Paragraphs []*Paragraph `protobuf:"bytes,3,rep,name=paragraphs,proto3" json:"paragraphs,omitempty"`
@@ -511,7 +511,7 @@ type Paragraph struct {
 	//      2----3
 	//      |    |
 	//      1----0
-	//   and the vertice order will still be (0, 1, 2, 3).
+	//   and the vertex order will still be (0, 1, 2, 3).
 	BoundingBox *BoundingPoly `protobuf:"bytes,2,opt,name=bounding_box,json=boundingBox,proto3" json:"bounding_box,omitempty"`
 	// List of words in this paragraph.
 	Words []*Word `protobuf:"bytes,3,rep,name=words,proto3" json:"words,omitempty"`
@@ -593,7 +593,7 @@ type Word struct {
 	//      2----3
 	//      |    |
 	//      1----0
-	//   and the vertice order will still be (0, 1, 2, 3).
+	//   and the vertex order will still be (0, 1, 2, 3).
 	BoundingBox *BoundingPoly `protobuf:"bytes,2,opt,name=bounding_box,json=boundingBox,proto3" json:"bounding_box,omitempty"`
 	// List of symbols in the word.
 	// The order of the symbols follows the natural reading order.
