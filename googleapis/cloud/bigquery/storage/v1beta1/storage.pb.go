@@ -28,7 +28,6 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 type DataFormat int32
 
 const (
-	// Data format is unspecified.
 	DataFormat_DATA_FORMAT_UNSPECIFIED DataFormat = 0
 	// Avro is a standard open source row based file format.
 	// See https://avro.apache.org/ for more details.
@@ -53,7 +52,6 @@ func (DataFormat) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_2a3518a93fa439fd, []int{0}
 }
 
-// Information about a single data stream within a read session.
 type Stream struct {
 	// Name of the stream. In the form
 	// `/projects/{project_id}/stream/{stream_id}`
@@ -104,9 +102,7 @@ func (m *Stream) GetRowCount() int64 {
 	return 0
 }
 
-// Expresses a point within a given stream using an offset position.
 type StreamPosition struct {
-	// Identifier for a given Stream.
 	Stream *Stream `protobuf:"bytes,1,opt,name=stream,proto3" json:"stream,omitempty"`
 	// Position in the stream.
 	Offset               int64    `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
@@ -154,7 +150,6 @@ func (m *StreamPosition) GetOffset() int64 {
 	return 0
 }
 
-// Information returned from a `CreateReadSession` request.
 type ReadSession struct {
 	// Unique identifier for the session. In the form
 	// `projects/{project_id}/sessions/{session_id}`
@@ -319,14 +314,11 @@ func _ReadSession_OneofSizer(msg proto.Message) (n int) {
 	return n
 }
 
-// Creates a new read session, which may include additional options such as
-// requested parallelism, projection filters and constraints.
 type CreateReadSessionRequest struct {
 	// Required. Reference to the table to read.
 	TableReference *TableReference `protobuf:"bytes,1,opt,name=table_reference,json=tableReference,proto3" json:"table_reference,omitempty"`
-	// Required. String of the form "projects/your-project-id" indicating the
-	// project this ReadSession is associated with. This is the project that will
-	// be billed for usage.
+	// Required. Project which this ReadSession is associated with. This is the
+	// project that will be billed for usage.
 	Parent string `protobuf:"bytes,6,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. Any modifiers to the Table (e.g. snapshot timestamp).
 	TableModifiers *TableModifiers `protobuf:"bytes,2,opt,name=table_modifiers,json=tableModifiers,proto3" json:"table_modifiers,omitempty"`
@@ -414,7 +406,6 @@ func (m *CreateReadSessionRequest) GetFormat() DataFormat {
 	return DataFormat_DATA_FORMAT_UNSPECIFIED
 }
 
-// Requesting row data via `ReadRows` must provide Stream position information.
 type ReadRowsRequest struct {
 	// Required. Identifier of the position in the stream to start reading from.
 	// The offset requested must be less than the last row read from ReadRows.
@@ -457,7 +448,6 @@ func (m *ReadRowsRequest) GetReadPosition() *StreamPosition {
 	return nil
 }
 
-// Progress information for a given Stream.
 type StreamStatus struct {
 	// Number of estimated rows in the current stream. May change over time as
 	// different readers in the stream progress at rates which are relatively fast
@@ -542,11 +532,7 @@ func (m *ThrottleStatus) GetThrottlePercent() int32 {
 	return 0
 }
 
-// Response from calling `ReadRows` may include row data, progress and
-// throttling information.
 type ReadRowsResponse struct {
-	// Row data is returned in format specified during session creation.
-	//
 	// Types that are valid to be assigned to Rows:
 	//	*ReadRowsResponse_AvroRows
 	Rows isReadRowsResponse_Rows `protobuf_oneof:"rows"`
@@ -678,8 +664,6 @@ func _ReadRowsResponse_OneofSizer(msg proto.Message) (n int) {
 	return n
 }
 
-// Information needed to request additional streams for an established read
-// session.
 type BatchCreateReadSessionStreamsRequest struct {
 	// Required. Must be a non-expired session obtained from a call to
 	// CreateReadSession. Only the name field needs to be set.
@@ -732,8 +716,6 @@ func (m *BatchCreateReadSessionStreamsRequest) GetRequestedStreams() int32 {
 	return 0
 }
 
-// The response from `BatchCreateReadSessionStreams` returns the stream
-// identifiers for the newly created streams.
 type BatchCreateReadSessionStreamsResponse struct {
 	// Newly added streams.
 	Streams              []*Stream `protobuf:"bytes,1,rep,name=streams,proto3" json:"streams,omitempty"`
@@ -774,7 +756,6 @@ func (m *BatchCreateReadSessionStreamsResponse) GetStreams() []*Stream {
 	return nil
 }
 
-// Request information for invoking `FinalizeStream`.
 type FinalizeStreamRequest struct {
 	// Stream to finalize.
 	Stream               *Stream  `protobuf:"bytes,2,opt,name=stream,proto3" json:"stream,omitempty"`
@@ -815,7 +796,6 @@ func (m *FinalizeStreamRequest) GetStream() *Stream {
 	return nil
 }
 
-// Request information for `SplitReadStream`.
 type SplitReadStreamRequest struct {
 	// Stream to split.
 	OriginalStream       *Stream  `protobuf:"bytes,1,opt,name=original_stream,json=originalStream,proto3" json:"original_stream,omitempty"`
@@ -856,7 +836,6 @@ func (m *SplitReadStreamRequest) GetOriginalStream() *Stream {
 	return nil
 }
 
-// Response from `SplitReadStream`.
 type SplitReadStreamResponse struct {
 	// Primary stream. Will contain the beginning portion of
 	// |original_stream|.

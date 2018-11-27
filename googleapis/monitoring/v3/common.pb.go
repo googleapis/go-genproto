@@ -73,8 +73,8 @@ func (ComparisonType) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_013c57c1dcbb8d65, []int{0}
 }
 
-// The tier of service for a Workspace. Please see the
-// [service tiers documentation](https://cloud.google.com/monitoring/workspaces/tiers)
+// The tier of service for a Stackdriver account. Please see the
+// [service tiers documentation](https://cloud.google.com/monitoring/accounts/tiers)
 // for more details.
 type ServiceTier int32 // Deprecated: Do not use.
 const (
@@ -84,12 +84,12 @@ const (
 	// The Stackdriver Basic tier, a free tier of service that provides basic
 	// features, a moderate allotment of logs, and access to built-in metrics.
 	// A number of features are not available in this tier. For more details,
-	// see [the service tiers documentation](https://cloud.google.com/monitoring/workspaces/tiers).
+	// see [the service tiers documentation](https://cloud.google.com/monitoring/accounts/tiers).
 	ServiceTier_SERVICE_TIER_BASIC ServiceTier = 1
 	// The Stackdriver Premium tier, a higher, more expensive tier of service
 	// that provides access to all Stackdriver features, lets you use Stackdriver
 	// with AWS accounts, and has a larger allotments for logs and metrics. For
-	// more details, see [the service tiers documentation](https://cloud.google.com/monitoring/workspaces/tiers).
+	// more details, see [the service tiers documentation](https://cloud.google.com/monitoring/accounts/tiers).
 	ServiceTier_SERVICE_TIER_PREMIUM ServiceTier = 2
 )
 
