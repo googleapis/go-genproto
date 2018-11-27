@@ -2112,8 +2112,8 @@ type ProductSearchClient interface {
 	// * Returns INVALID_ARGUMENT if display_name is present in update_mask but
 	//   missing from the request or longer than 4096 characters.
 	UpdateProductSet(ctx context.Context, in *UpdateProductSetRequest, opts ...grpc.CallOption) (*ProductSet, error)
-	// Permanently deletes a ProductSet. Products and ReferenceImages in the
-	// ProductSet are not deleted.
+	// Permanently deletes a ProductSet. All Products and ReferenceImages in the
+	// ProductSet will be deleted.
 	//
 	// The actual image files are not deleted from Google Cloud Storage.
 	//
@@ -2452,8 +2452,8 @@ type ProductSearchServer interface {
 	// * Returns INVALID_ARGUMENT if display_name is present in update_mask but
 	//   missing from the request or longer than 4096 characters.
 	UpdateProductSet(context.Context, *UpdateProductSetRequest) (*ProductSet, error)
-	// Permanently deletes a ProductSet. Products and ReferenceImages in the
-	// ProductSet are not deleted.
+	// Permanently deletes a ProductSet. All Products and ReferenceImages in the
+	// ProductSet will be deleted.
 	//
 	// The actual image files are not deleted from Google Cloud Storage.
 	//
