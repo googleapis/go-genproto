@@ -519,7 +519,6 @@ type ListTimeSeriesRequest struct {
 	//
 	//     metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
 	//         metric.label.instance_name = "my-instance-name"
-	//
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The time interval for which results should be returned. Only time series
 	// that contain data points in the specified interval are included
