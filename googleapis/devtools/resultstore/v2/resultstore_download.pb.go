@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Request passed into GetInvocation
 type GetInvocationRequest struct {
@@ -169,69 +169,12 @@ func (m *SearchInvocationsRequest) GetProjectId() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*SearchInvocationsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _SearchInvocationsRequest_OneofMarshaler, _SearchInvocationsRequest_OneofUnmarshaler, _SearchInvocationsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*SearchInvocationsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*SearchInvocationsRequest_PageToken)(nil),
 		(*SearchInvocationsRequest_Offset)(nil),
 	}
-}
-
-func _SearchInvocationsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*SearchInvocationsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *SearchInvocationsRequest_PageToken:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.PageToken)
-	case *SearchInvocationsRequest_Offset:
-		b.EncodeVarint(3<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		return fmt.Errorf("SearchInvocationsRequest.PageStart has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _SearchInvocationsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*SearchInvocationsRequest)
-	switch tag {
-	case 2: // page_start.page_token
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.PageStart = &SearchInvocationsRequest_PageToken{x}
-		return true, err
-	case 3: // page_start.offset
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.PageStart = &SearchInvocationsRequest_Offset{int64(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _SearchInvocationsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*SearchInvocationsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *SearchInvocationsRequest_PageToken:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.PageToken)))
-		n += len(x.PageToken)
-	case *SearchInvocationsRequest_Offset:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Response from calling SearchInvocations
@@ -423,69 +366,12 @@ func (m *ListConfigurationsRequest) GetOffset() int64 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ListConfigurationsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ListConfigurationsRequest_OneofMarshaler, _ListConfigurationsRequest_OneofUnmarshaler, _ListConfigurationsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ListConfigurationsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ListConfigurationsRequest_PageToken)(nil),
 		(*ListConfigurationsRequest_Offset)(nil),
 	}
-}
-
-func _ListConfigurationsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ListConfigurationsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListConfigurationsRequest_PageToken:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.PageToken)
-	case *ListConfigurationsRequest_Offset:
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		return fmt.Errorf("ListConfigurationsRequest.PageStart has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ListConfigurationsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ListConfigurationsRequest)
-	switch tag {
-	case 3: // page_start.page_token
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.PageStart = &ListConfigurationsRequest_PageToken{x}
-		return true, err
-	case 4: // page_start.offset
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.PageStart = &ListConfigurationsRequest_Offset{int64(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ListConfigurationsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ListConfigurationsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListConfigurationsRequest_PageToken:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.PageToken)))
-		n += len(x.PageToken)
-	case *ListConfigurationsRequest_Offset:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Response from calling ListConfigurations
@@ -677,69 +563,12 @@ func (m *ListTargetsRequest) GetOffset() int64 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ListTargetsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ListTargetsRequest_OneofMarshaler, _ListTargetsRequest_OneofUnmarshaler, _ListTargetsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ListTargetsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ListTargetsRequest_PageToken)(nil),
 		(*ListTargetsRequest_Offset)(nil),
 	}
-}
-
-func _ListTargetsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ListTargetsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListTargetsRequest_PageToken:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.PageToken)
-	case *ListTargetsRequest_Offset:
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		return fmt.Errorf("ListTargetsRequest.PageStart has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ListTargetsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ListTargetsRequest)
-	switch tag {
-	case 3: // page_start.page_token
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.PageStart = &ListTargetsRequest_PageToken{x}
-		return true, err
-	case 4: // page_start.offset
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.PageStart = &ListTargetsRequest_Offset{int64(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ListTargetsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ListTargetsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListTargetsRequest_PageToken:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.PageToken)))
-		n += len(x.PageToken)
-	case *ListTargetsRequest_Offset:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Response from calling ListTargetsResponse
@@ -932,69 +761,12 @@ func (m *ListConfiguredTargetsRequest) GetOffset() int64 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ListConfiguredTargetsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ListConfiguredTargetsRequest_OneofMarshaler, _ListConfiguredTargetsRequest_OneofUnmarshaler, _ListConfiguredTargetsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ListConfiguredTargetsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ListConfiguredTargetsRequest_PageToken)(nil),
 		(*ListConfiguredTargetsRequest_Offset)(nil),
 	}
-}
-
-func _ListConfiguredTargetsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ListConfiguredTargetsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListConfiguredTargetsRequest_PageToken:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.PageToken)
-	case *ListConfiguredTargetsRequest_Offset:
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		return fmt.Errorf("ListConfiguredTargetsRequest.PageStart has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ListConfiguredTargetsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ListConfiguredTargetsRequest)
-	switch tag {
-	case 3: // page_start.page_token
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.PageStart = &ListConfiguredTargetsRequest_PageToken{x}
-		return true, err
-	case 4: // page_start.offset
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.PageStart = &ListConfiguredTargetsRequest_Offset{int64(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ListConfiguredTargetsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ListConfiguredTargetsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListConfiguredTargetsRequest_PageToken:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.PageToken)))
-		n += len(x.PageToken)
-	case *ListConfiguredTargetsRequest_Offset:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Response from calling ListConfiguredTargets
@@ -1187,69 +959,12 @@ func (m *ListActionsRequest) GetOffset() int64 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ListActionsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ListActionsRequest_OneofMarshaler, _ListActionsRequest_OneofUnmarshaler, _ListActionsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ListActionsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ListActionsRequest_PageToken)(nil),
 		(*ListActionsRequest_Offset)(nil),
 	}
-}
-
-func _ListActionsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ListActionsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListActionsRequest_PageToken:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.PageToken)
-	case *ListActionsRequest_Offset:
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		return fmt.Errorf("ListActionsRequest.PageStart has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ListActionsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ListActionsRequest)
-	switch tag {
-	case 3: // page_start.page_token
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.PageStart = &ListActionsRequest_PageToken{x}
-		return true, err
-	case 4: // page_start.offset
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.PageStart = &ListActionsRequest_Offset{int64(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ListActionsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ListActionsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListActionsRequest_PageToken:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.PageToken)))
-		n += len(x.PageToken)
-	case *ListActionsRequest_Offset:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Response from calling ListActions
@@ -1441,69 +1156,12 @@ func (m *ListFileSetsRequest) GetOffset() int64 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ListFileSetsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ListFileSetsRequest_OneofMarshaler, _ListFileSetsRequest_OneofUnmarshaler, _ListFileSetsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ListFileSetsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ListFileSetsRequest_PageToken)(nil),
 		(*ListFileSetsRequest_Offset)(nil),
 	}
-}
-
-func _ListFileSetsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ListFileSetsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListFileSetsRequest_PageToken:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.PageToken)
-	case *ListFileSetsRequest_Offset:
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		return fmt.Errorf("ListFileSetsRequest.PageStart has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ListFileSetsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ListFileSetsRequest)
-	switch tag {
-	case 3: // page_start.page_token
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.PageStart = &ListFileSetsRequest_PageToken{x}
-		return true, err
-	case 4: // page_start.offset
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.PageStart = &ListFileSetsRequest_Offset{int64(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ListFileSetsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ListFileSetsRequest)
-	// page_start
-	switch x := m.PageStart.(type) {
-	case *ListFileSetsRequest_PageToken:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.PageToken)))
-		n += len(x.PageToken)
-	case *ListFileSetsRequest_Offset:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Offset))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Response from calling ListFileSets

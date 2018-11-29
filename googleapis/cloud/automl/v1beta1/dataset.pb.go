@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A workspace for solving a single, particular machine learning (ML) problem.
 // A workspace contains examples that may be annotated.
@@ -153,97 +153,13 @@ func (m *Dataset) GetCreateTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Dataset) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Dataset_OneofMarshaler, _Dataset_OneofUnmarshaler, _Dataset_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Dataset) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Dataset_TranslationDatasetMetadata)(nil),
 		(*Dataset_ImageClassificationDatasetMetadata)(nil),
 		(*Dataset_TextClassificationDatasetMetadata)(nil),
 	}
-}
-
-func _Dataset_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Dataset)
-	// dataset_metadata
-	switch x := m.DatasetMetadata.(type) {
-	case *Dataset_TranslationDatasetMetadata:
-		b.EncodeVarint(23<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TranslationDatasetMetadata); err != nil {
-			return err
-		}
-	case *Dataset_ImageClassificationDatasetMetadata:
-		b.EncodeVarint(24<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ImageClassificationDatasetMetadata); err != nil {
-			return err
-		}
-	case *Dataset_TextClassificationDatasetMetadata:
-		b.EncodeVarint(25<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TextClassificationDatasetMetadata); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Dataset.DatasetMetadata has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Dataset_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Dataset)
-	switch tag {
-	case 23: // dataset_metadata.translation_dataset_metadata
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TranslationDatasetMetadata)
-		err := b.DecodeMessage(msg)
-		m.DatasetMetadata = &Dataset_TranslationDatasetMetadata{msg}
-		return true, err
-	case 24: // dataset_metadata.image_classification_dataset_metadata
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ImageClassificationDatasetMetadata)
-		err := b.DecodeMessage(msg)
-		m.DatasetMetadata = &Dataset_ImageClassificationDatasetMetadata{msg}
-		return true, err
-	case 25: // dataset_metadata.text_classification_dataset_metadata
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TextClassificationDatasetMetadata)
-		err := b.DecodeMessage(msg)
-		m.DatasetMetadata = &Dataset_TextClassificationDatasetMetadata{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Dataset_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Dataset)
-	// dataset_metadata
-	switch x := m.DatasetMetadata.(type) {
-	case *Dataset_TranslationDatasetMetadata:
-		s := proto.Size(x.TranslationDatasetMetadata)
-		n += 2 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Dataset_ImageClassificationDatasetMetadata:
-		s := proto.Size(x.ImageClassificationDatasetMetadata)
-		n += 2 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Dataset_TextClassificationDatasetMetadata:
-		s := proto.Size(x.TextClassificationDatasetMetadata)
-		n += 2 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

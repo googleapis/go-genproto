@@ -24,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The status of the transfer job.
 type TransferJob_Status int32
@@ -701,128 +701,14 @@ func (m *TransferSpec) GetTransferOptions() *TransferOptions {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*TransferSpec) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _TransferSpec_OneofMarshaler, _TransferSpec_OneofUnmarshaler, _TransferSpec_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*TransferSpec) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*TransferSpec_GcsDataSource)(nil),
 		(*TransferSpec_AwsS3DataSource)(nil),
 		(*TransferSpec_HttpDataSource)(nil),
 		(*TransferSpec_GcsDataSink)(nil),
 	}
-}
-
-func _TransferSpec_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*TransferSpec)
-	// data_source
-	switch x := m.DataSource.(type) {
-	case *TransferSpec_GcsDataSource:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.GcsDataSource); err != nil {
-			return err
-		}
-	case *TransferSpec_AwsS3DataSource:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AwsS3DataSource); err != nil {
-			return err
-		}
-	case *TransferSpec_HttpDataSource:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.HttpDataSource); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("TransferSpec.DataSource has unexpected type %T", x)
-	}
-	// data_sink
-	switch x := m.DataSink.(type) {
-	case *TransferSpec_GcsDataSink:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.GcsDataSink); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("TransferSpec.DataSink has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _TransferSpec_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*TransferSpec)
-	switch tag {
-	case 1: // data_source.gcs_data_source
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(GcsData)
-		err := b.DecodeMessage(msg)
-		m.DataSource = &TransferSpec_GcsDataSource{msg}
-		return true, err
-	case 2: // data_source.aws_s3_data_source
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AwsS3Data)
-		err := b.DecodeMessage(msg)
-		m.DataSource = &TransferSpec_AwsS3DataSource{msg}
-		return true, err
-	case 3: // data_source.http_data_source
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(HttpData)
-		err := b.DecodeMessage(msg)
-		m.DataSource = &TransferSpec_HttpDataSource{msg}
-		return true, err
-	case 4: // data_sink.gcs_data_sink
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(GcsData)
-		err := b.DecodeMessage(msg)
-		m.DataSink = &TransferSpec_GcsDataSink{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _TransferSpec_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*TransferSpec)
-	// data_source
-	switch x := m.DataSource.(type) {
-	case *TransferSpec_GcsDataSource:
-		s := proto.Size(x.GcsDataSource)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransferSpec_AwsS3DataSource:
-		s := proto.Size(x.AwsS3DataSource)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransferSpec_HttpDataSource:
-		s := proto.Size(x.HttpDataSource)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	// data_sink
-	switch x := m.DataSink.(type) {
-	case *TransferSpec_GcsDataSink:
-		s := proto.Size(x.GcsDataSink)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Transfers can be scheduled to recur or to run just once.

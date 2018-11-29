@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] specifies how cryptographic operations are performed.
 type ProtectionLevel int32
@@ -518,59 +518,11 @@ func (m *CryptoKey) GetLabels() map[string]string {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CryptoKey) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CryptoKey_OneofMarshaler, _CryptoKey_OneofUnmarshaler, _CryptoKey_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CryptoKey) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CryptoKey_RotationPeriod)(nil),
 	}
-}
-
-func _CryptoKey_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CryptoKey)
-	// rotation_schedule
-	switch x := m.RotationSchedule.(type) {
-	case *CryptoKey_RotationPeriod:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RotationPeriod); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("CryptoKey.RotationSchedule has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CryptoKey_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CryptoKey)
-	switch tag {
-	case 8: // rotation_schedule.rotation_period
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(duration.Duration)
-		err := b.DecodeMessage(msg)
-		m.RotationSchedule = &CryptoKey_RotationPeriod{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CryptoKey_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CryptoKey)
-	// rotation_schedule
-	switch x := m.RotationSchedule.(type) {
-	case *CryptoKey_RotationPeriod:
-		s := proto.Size(x.RotationPeriod)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A [CryptoKeyVersionTemplate][google.cloud.kms.v1.CryptoKeyVersionTemplate] specifies the properties to use when creating

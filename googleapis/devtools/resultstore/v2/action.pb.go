@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Indicates how/where this Action was executed.
 type ExecutionStrategy int32
@@ -362,78 +362,12 @@ func (m *Action) GetFileProcessingErrors() []*FileProcessingErrors {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Action) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Action_OneofMarshaler, _Action_OneofUnmarshaler, _Action_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Action) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Action_BuildAction)(nil),
 		(*Action_TestAction)(nil),
 	}
-}
-
-func _Action_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Action)
-	// action_type
-	switch x := m.ActionType.(type) {
-	case *Action_BuildAction:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.BuildAction); err != nil {
-			return err
-		}
-	case *Action_TestAction:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TestAction); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Action.ActionType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Action_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Action)
-	switch tag {
-	case 9: // action_type.build_action
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(BuildAction)
-		err := b.DecodeMessage(msg)
-		m.ActionType = &Action_BuildAction{msg}
-		return true, err
-	case 10: // action_type.test_action
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TestAction)
-		err := b.DecodeMessage(msg)
-		m.ActionType = &Action_TestAction{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Action_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Action)
-	// action_type
-	switch x := m.ActionType.(type) {
-	case *Action_BuildAction:
-		s := proto.Size(x.BuildAction)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Action_TestAction:
-		s := proto.Size(x.TestAction)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The resource ID components that identify the Action.
@@ -1114,78 +1048,12 @@ func (m *TestTiming) GetTestCaching() TestCaching {
 	return TestCaching_TEST_CACHING_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*TestTiming) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _TestTiming_OneofMarshaler, _TestTiming_OneofUnmarshaler, _TestTiming_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*TestTiming) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*TestTiming_Local)(nil),
 		(*TestTiming_Remote)(nil),
 	}
-}
-
-func _TestTiming_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*TestTiming)
-	// location
-	switch x := m.Location.(type) {
-	case *TestTiming_Local:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Local); err != nil {
-			return err
-		}
-	case *TestTiming_Remote:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Remote); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("TestTiming.Location has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _TestTiming_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*TestTiming)
-	switch tag {
-	case 1: // location.local
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(LocalTestTiming)
-		err := b.DecodeMessage(msg)
-		m.Location = &TestTiming_Local{msg}
-		return true, err
-	case 2: // location.remote
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(RemoteTestTiming)
-		err := b.DecodeMessage(msg)
-		m.Location = &TestTiming_Remote{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _TestTiming_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*TestTiming)
-	// location
-	switch x := m.Location.(type) {
-	case *TestTiming_Local:
-		s := proto.Size(x.Local)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TestTiming_Remote:
-		s := proto.Size(x.Remote)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A warning from a test execution.

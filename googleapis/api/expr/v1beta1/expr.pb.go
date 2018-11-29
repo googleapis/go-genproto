@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // An expression together with source information as returned by the parser.
 type ParsedExpr struct {
@@ -252,9 +252,9 @@ func (m *Expr) GetComprehensionExpr() *Expr_Comprehension {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Expr) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Expr_OneofMarshaler, _Expr_OneofUnmarshaler, _Expr_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Expr) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Expr_LiteralExpr)(nil),
 		(*Expr_IdentExpr)(nil),
 		(*Expr_SelectExpr)(nil),
@@ -263,162 +263,6 @@ func (*Expr) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, f
 		(*Expr_StructExpr)(nil),
 		(*Expr_ComprehensionExpr)(nil),
 	}
-}
-
-func _Expr_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Expr)
-	// expr_kind
-	switch x := m.ExprKind.(type) {
-	case *Expr_LiteralExpr:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.LiteralExpr); err != nil {
-			return err
-		}
-	case *Expr_IdentExpr:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.IdentExpr); err != nil {
-			return err
-		}
-	case *Expr_SelectExpr:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.SelectExpr); err != nil {
-			return err
-		}
-	case *Expr_CallExpr:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CallExpr); err != nil {
-			return err
-		}
-	case *Expr_ListExpr:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ListExpr); err != nil {
-			return err
-		}
-	case *Expr_StructExpr:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.StructExpr); err != nil {
-			return err
-		}
-	case *Expr_ComprehensionExpr:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ComprehensionExpr); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Expr.ExprKind has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Expr_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Expr)
-	switch tag {
-	case 3: // expr_kind.literal_expr
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Literal)
-		err := b.DecodeMessage(msg)
-		m.ExprKind = &Expr_LiteralExpr{msg}
-		return true, err
-	case 4: // expr_kind.ident_expr
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Expr_Ident)
-		err := b.DecodeMessage(msg)
-		m.ExprKind = &Expr_IdentExpr{msg}
-		return true, err
-	case 5: // expr_kind.select_expr
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Expr_Select)
-		err := b.DecodeMessage(msg)
-		m.ExprKind = &Expr_SelectExpr{msg}
-		return true, err
-	case 6: // expr_kind.call_expr
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Expr_Call)
-		err := b.DecodeMessage(msg)
-		m.ExprKind = &Expr_CallExpr{msg}
-		return true, err
-	case 7: // expr_kind.list_expr
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Expr_CreateList)
-		err := b.DecodeMessage(msg)
-		m.ExprKind = &Expr_ListExpr{msg}
-		return true, err
-	case 8: // expr_kind.struct_expr
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Expr_CreateStruct)
-		err := b.DecodeMessage(msg)
-		m.ExprKind = &Expr_StructExpr{msg}
-		return true, err
-	case 9: // expr_kind.comprehension_expr
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Expr_Comprehension)
-		err := b.DecodeMessage(msg)
-		m.ExprKind = &Expr_ComprehensionExpr{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Expr_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Expr)
-	// expr_kind
-	switch x := m.ExprKind.(type) {
-	case *Expr_LiteralExpr:
-		s := proto.Size(x.LiteralExpr)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Expr_IdentExpr:
-		s := proto.Size(x.IdentExpr)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Expr_SelectExpr:
-		s := proto.Size(x.SelectExpr)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Expr_CallExpr:
-		s := proto.Size(x.CallExpr)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Expr_ListExpr:
-		s := proto.Size(x.ListExpr)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Expr_StructExpr:
-		s := proto.Size(x.StructExpr)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Expr_ComprehensionExpr:
-		s := proto.Size(x.ComprehensionExpr)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // An identifier expression. e.g. `request`.
@@ -789,74 +633,12 @@ func (m *Expr_CreateStruct_Entry) GetValue() *Expr {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Expr_CreateStruct_Entry) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Expr_CreateStruct_Entry_OneofMarshaler, _Expr_CreateStruct_Entry_OneofUnmarshaler, _Expr_CreateStruct_Entry_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Expr_CreateStruct_Entry) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Expr_CreateStruct_Entry_FieldKey)(nil),
 		(*Expr_CreateStruct_Entry_MapKey)(nil),
 	}
-}
-
-func _Expr_CreateStruct_Entry_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Expr_CreateStruct_Entry)
-	// key_kind
-	switch x := m.KeyKind.(type) {
-	case *Expr_CreateStruct_Entry_FieldKey:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.FieldKey)
-	case *Expr_CreateStruct_Entry_MapKey:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.MapKey); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Expr_CreateStruct_Entry.KeyKind has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Expr_CreateStruct_Entry_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Expr_CreateStruct_Entry)
-	switch tag {
-	case 2: // key_kind.field_key
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.KeyKind = &Expr_CreateStruct_Entry_FieldKey{x}
-		return true, err
-	case 3: // key_kind.map_key
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Expr)
-		err := b.DecodeMessage(msg)
-		m.KeyKind = &Expr_CreateStruct_Entry_MapKey{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Expr_CreateStruct_Entry_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Expr_CreateStruct_Entry)
-	// key_kind
-	switch x := m.KeyKind.(type) {
-	case *Expr_CreateStruct_Entry_FieldKey:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.FieldKey)))
-		n += len(x.FieldKey)
-	case *Expr_CreateStruct_Entry_MapKey:
-		s := proto.Size(x.MapKey)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A comprehension expression applied to a list or map.
@@ -1142,9 +924,9 @@ func (m *Literal) GetBytesValue() []byte {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Literal) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Literal_OneofMarshaler, _Literal_OneofUnmarshaler, _Literal_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Literal) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Literal_NullValue)(nil),
 		(*Literal_BoolValue)(nil),
 		(*Literal_Int64Value)(nil),
@@ -1153,133 +935,6 @@ func (*Literal) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error
 		(*Literal_StringValue)(nil),
 		(*Literal_BytesValue)(nil),
 	}
-}
-
-func _Literal_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Literal)
-	// constant_kind
-	switch x := m.ConstantKind.(type) {
-	case *Literal_NullValue:
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.NullValue))
-	case *Literal_BoolValue:
-		t := uint64(0)
-		if x.BoolValue {
-			t = 1
-		}
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case *Literal_Int64Value:
-		b.EncodeVarint(3<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Int64Value))
-	case *Literal_Uint64Value:
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Uint64Value))
-	case *Literal_DoubleValue:
-		b.EncodeVarint(5<<3 | proto.WireFixed64)
-		b.EncodeFixed64(math.Float64bits(x.DoubleValue))
-	case *Literal_StringValue:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.StringValue)
-	case *Literal_BytesValue:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.BytesValue)
-	case nil:
-	default:
-		return fmt.Errorf("Literal.ConstantKind has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Literal_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Literal)
-	switch tag {
-	case 1: // constant_kind.null_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ConstantKind = &Literal_NullValue{_struct.NullValue(x)}
-		return true, err
-	case 2: // constant_kind.bool_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ConstantKind = &Literal_BoolValue{x != 0}
-		return true, err
-	case 3: // constant_kind.int64_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ConstantKind = &Literal_Int64Value{int64(x)}
-		return true, err
-	case 4: // constant_kind.uint64_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ConstantKind = &Literal_Uint64Value{x}
-		return true, err
-	case 5: // constant_kind.double_value
-		if wire != proto.WireFixed64 {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeFixed64()
-		m.ConstantKind = &Literal_DoubleValue{math.Float64frombits(x)}
-		return true, err
-	case 6: // constant_kind.string_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.ConstantKind = &Literal_StringValue{x}
-		return true, err
-	case 7: // constant_kind.bytes_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.ConstantKind = &Literal_BytesValue{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Literal_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Literal)
-	// constant_kind
-	switch x := m.ConstantKind.(type) {
-	case *Literal_NullValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.NullValue))
-	case *Literal_BoolValue:
-		n += 1 // tag and wire
-		n += 1
-	case *Literal_Int64Value:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Int64Value))
-	case *Literal_Uint64Value:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Uint64Value))
-	case *Literal_DoubleValue:
-		n += 1 // tag and wire
-		n += 8
-	case *Literal_StringValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.StringValue)))
-		n += len(x.StringValue)
-	case *Literal_BytesValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.BytesValue)))
-		n += len(x.BytesValue)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

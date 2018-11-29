@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Categorization of results based on how likely they are to represent a match,
 // based on the number of elements they contain which imply a match.
@@ -443,116 +443,14 @@ func (m *CustomInfoType) GetExclusionType() CustomInfoType_ExclusionType {
 	return CustomInfoType_EXCLUSION_TYPE_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CustomInfoType) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CustomInfoType_OneofMarshaler, _CustomInfoType_OneofUnmarshaler, _CustomInfoType_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CustomInfoType) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CustomInfoType_Dictionary_)(nil),
 		(*CustomInfoType_Regex_)(nil),
 		(*CustomInfoType_SurrogateType_)(nil),
 		(*CustomInfoType_StoredType)(nil),
 	}
-}
-
-func _CustomInfoType_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CustomInfoType)
-	// type
-	switch x := m.Type.(type) {
-	case *CustomInfoType_Dictionary_:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Dictionary); err != nil {
-			return err
-		}
-	case *CustomInfoType_Regex_:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Regex); err != nil {
-			return err
-		}
-	case *CustomInfoType_SurrogateType_:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.SurrogateType); err != nil {
-			return err
-		}
-	case *CustomInfoType_StoredType:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.StoredType); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("CustomInfoType.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CustomInfoType_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CustomInfoType)
-	switch tag {
-	case 2: // type.dictionary
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomInfoType_Dictionary)
-		err := b.DecodeMessage(msg)
-		m.Type = &CustomInfoType_Dictionary_{msg}
-		return true, err
-	case 3: // type.regex
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomInfoType_Regex)
-		err := b.DecodeMessage(msg)
-		m.Type = &CustomInfoType_Regex_{msg}
-		return true, err
-	case 4: // type.surrogate_type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomInfoType_SurrogateType)
-		err := b.DecodeMessage(msg)
-		m.Type = &CustomInfoType_SurrogateType_{msg}
-		return true, err
-	case 5: // type.stored_type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StoredType)
-		err := b.DecodeMessage(msg)
-		m.Type = &CustomInfoType_StoredType{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CustomInfoType_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CustomInfoType)
-	// type
-	switch x := m.Type.(type) {
-	case *CustomInfoType_Dictionary_:
-		s := proto.Size(x.Dictionary)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *CustomInfoType_Regex_:
-		s := proto.Size(x.Regex)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *CustomInfoType_SurrogateType_:
-		s := proto.Size(x.SurrogateType)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *CustomInfoType_StoredType:
-		s := proto.Size(x.StoredType)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Custom information type based on a dictionary of words or phrases. This can
@@ -650,78 +548,12 @@ func (m *CustomInfoType_Dictionary) GetCloudStoragePath() *CloudStoragePath {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CustomInfoType_Dictionary) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CustomInfoType_Dictionary_OneofMarshaler, _CustomInfoType_Dictionary_OneofUnmarshaler, _CustomInfoType_Dictionary_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CustomInfoType_Dictionary) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CustomInfoType_Dictionary_WordList_)(nil),
 		(*CustomInfoType_Dictionary_CloudStoragePath)(nil),
 	}
-}
-
-func _CustomInfoType_Dictionary_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CustomInfoType_Dictionary)
-	// source
-	switch x := m.Source.(type) {
-	case *CustomInfoType_Dictionary_WordList_:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.WordList); err != nil {
-			return err
-		}
-	case *CustomInfoType_Dictionary_CloudStoragePath:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CloudStoragePath); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("CustomInfoType_Dictionary.Source has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CustomInfoType_Dictionary_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CustomInfoType_Dictionary)
-	switch tag {
-	case 1: // source.word_list
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomInfoType_Dictionary_WordList)
-		err := b.DecodeMessage(msg)
-		m.Source = &CustomInfoType_Dictionary_WordList_{msg}
-		return true, err
-	case 3: // source.cloud_storage_path
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CloudStoragePath)
-		err := b.DecodeMessage(msg)
-		m.Source = &CustomInfoType_Dictionary_CloudStoragePath{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CustomInfoType_Dictionary_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CustomInfoType_Dictionary)
-	// source
-	switch x := m.Source.(type) {
-	case *CustomInfoType_Dictionary_WordList_:
-		s := proto.Size(x.WordList)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *CustomInfoType_Dictionary_CloudStoragePath:
-		s := proto.Size(x.CloudStoragePath)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Message defining a list of words or phrases to search for in the data.
@@ -910,59 +742,11 @@ func (m *CustomInfoType_DetectionRule) GetHotwordRule() *CustomInfoType_Detectio
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CustomInfoType_DetectionRule) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CustomInfoType_DetectionRule_OneofMarshaler, _CustomInfoType_DetectionRule_OneofUnmarshaler, _CustomInfoType_DetectionRule_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CustomInfoType_DetectionRule) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CustomInfoType_DetectionRule_HotwordRule_)(nil),
 	}
-}
-
-func _CustomInfoType_DetectionRule_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CustomInfoType_DetectionRule)
-	// type
-	switch x := m.Type.(type) {
-	case *CustomInfoType_DetectionRule_HotwordRule_:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.HotwordRule); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("CustomInfoType_DetectionRule.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CustomInfoType_DetectionRule_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CustomInfoType_DetectionRule)
-	switch tag {
-	case 1: // type.hotword_rule
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomInfoType_DetectionRule_HotwordRule)
-		err := b.DecodeMessage(msg)
-		m.Type = &CustomInfoType_DetectionRule_HotwordRule_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CustomInfoType_DetectionRule_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CustomInfoType_DetectionRule)
-	// type
-	switch x := m.Type.(type) {
-	case *CustomInfoType_DetectionRule_HotwordRule_:
-		s := proto.Size(x.HotwordRule)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Message for specifying a window around a finding to apply a detection
@@ -1098,68 +882,12 @@ func (m *CustomInfoType_DetectionRule_LikelihoodAdjustment) GetRelativeLikelihoo
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CustomInfoType_DetectionRule_LikelihoodAdjustment) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CustomInfoType_DetectionRule_LikelihoodAdjustment_OneofMarshaler, _CustomInfoType_DetectionRule_LikelihoodAdjustment_OneofUnmarshaler, _CustomInfoType_DetectionRule_LikelihoodAdjustment_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CustomInfoType_DetectionRule_LikelihoodAdjustment) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CustomInfoType_DetectionRule_LikelihoodAdjustment_FixedLikelihood)(nil),
 		(*CustomInfoType_DetectionRule_LikelihoodAdjustment_RelativeLikelihood)(nil),
 	}
-}
-
-func _CustomInfoType_DetectionRule_LikelihoodAdjustment_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CustomInfoType_DetectionRule_LikelihoodAdjustment)
-	// adjustment
-	switch x := m.Adjustment.(type) {
-	case *CustomInfoType_DetectionRule_LikelihoodAdjustment_FixedLikelihood:
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.FixedLikelihood))
-	case *CustomInfoType_DetectionRule_LikelihoodAdjustment_RelativeLikelihood:
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.RelativeLikelihood))
-	case nil:
-	default:
-		return fmt.Errorf("CustomInfoType_DetectionRule_LikelihoodAdjustment.Adjustment has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CustomInfoType_DetectionRule_LikelihoodAdjustment_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CustomInfoType_DetectionRule_LikelihoodAdjustment)
-	switch tag {
-	case 1: // adjustment.fixed_likelihood
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Adjustment = &CustomInfoType_DetectionRule_LikelihoodAdjustment_FixedLikelihood{Likelihood(x)}
-		return true, err
-	case 2: // adjustment.relative_likelihood
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Adjustment = &CustomInfoType_DetectionRule_LikelihoodAdjustment_RelativeLikelihood{int32(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CustomInfoType_DetectionRule_LikelihoodAdjustment_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CustomInfoType_DetectionRule_LikelihoodAdjustment)
-	// adjustment
-	switch x := m.Adjustment.(type) {
-	case *CustomInfoType_DetectionRule_LikelihoodAdjustment_FixedLikelihood:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.FixedLikelihood))
-	case *CustomInfoType_DetectionRule_LikelihoodAdjustment_RelativeLikelihood:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.RelativeLikelihood))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The rule that adjusts the likelihood of findings within a certain
@@ -1945,97 +1673,13 @@ func (m *StorageConfig) GetTimespanConfig() *StorageConfig_TimespanConfig {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*StorageConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _StorageConfig_OneofMarshaler, _StorageConfig_OneofUnmarshaler, _StorageConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*StorageConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*StorageConfig_DatastoreOptions)(nil),
 		(*StorageConfig_CloudStorageOptions)(nil),
 		(*StorageConfig_BigQueryOptions)(nil),
 	}
-}
-
-func _StorageConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*StorageConfig)
-	// type
-	switch x := m.Type.(type) {
-	case *StorageConfig_DatastoreOptions:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DatastoreOptions); err != nil {
-			return err
-		}
-	case *StorageConfig_CloudStorageOptions:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CloudStorageOptions); err != nil {
-			return err
-		}
-	case *StorageConfig_BigQueryOptions:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.BigQueryOptions); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("StorageConfig.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _StorageConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*StorageConfig)
-	switch tag {
-	case 2: // type.datastore_options
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DatastoreOptions)
-		err := b.DecodeMessage(msg)
-		m.Type = &StorageConfig_DatastoreOptions{msg}
-		return true, err
-	case 3: // type.cloud_storage_options
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CloudStorageOptions)
-		err := b.DecodeMessage(msg)
-		m.Type = &StorageConfig_CloudStorageOptions{msg}
-		return true, err
-	case 4: // type.big_query_options
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(BigQueryOptions)
-		err := b.DecodeMessage(msg)
-		m.Type = &StorageConfig_BigQueryOptions{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _StorageConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*StorageConfig)
-	// type
-	switch x := m.Type.(type) {
-	case *StorageConfig_DatastoreOptions:
-		s := proto.Size(x.DatastoreOptions)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *StorageConfig_CloudStorageOptions:
-		s := proto.Size(x.CloudStorageOptions)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *StorageConfig_BigQueryOptions:
-		s := proto.Size(x.BigQueryOptions)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Configuration of the timespan of the items to include in scanning.
@@ -2364,69 +2008,12 @@ func (m *Key_PathElement) GetName() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Key_PathElement) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Key_PathElement_OneofMarshaler, _Key_PathElement_OneofUnmarshaler, _Key_PathElement_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Key_PathElement) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Key_PathElement_Id)(nil),
 		(*Key_PathElement_Name)(nil),
 	}
-}
-
-func _Key_PathElement_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Key_PathElement)
-	// id_type
-	switch x := m.IdType.(type) {
-	case *Key_PathElement_Id:
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Id))
-	case *Key_PathElement_Name:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Name)
-	case nil:
-	default:
-		return fmt.Errorf("Key_PathElement.IdType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Key_PathElement_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Key_PathElement)
-	switch tag {
-	case 2: // id_type.id
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.IdType = &Key_PathElement_Id{int64(x)}
-		return true, err
-	case 3: // id_type.name
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.IdType = &Key_PathElement_Name{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Key_PathElement_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Key_PathElement)
-	// id_type
-	switch x := m.IdType.(type) {
-	case *Key_PathElement_Id:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Id))
-	case *Key_PathElement_Name:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Name)))
-		n += len(x.Name)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Message for a unique key indicating a record that contains a finding.
@@ -2502,78 +2089,12 @@ func (m *RecordKey) GetBigQueryKey() *BigQueryKey {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RecordKey) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RecordKey_OneofMarshaler, _RecordKey_OneofUnmarshaler, _RecordKey_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RecordKey) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RecordKey_DatastoreKey)(nil),
 		(*RecordKey_BigQueryKey)(nil),
 	}
-}
-
-func _RecordKey_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RecordKey)
-	// type
-	switch x := m.Type.(type) {
-	case *RecordKey_DatastoreKey:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DatastoreKey); err != nil {
-			return err
-		}
-	case *RecordKey_BigQueryKey:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.BigQueryKey); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("RecordKey.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RecordKey_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RecordKey)
-	switch tag {
-	case 2: // type.datastore_key
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DatastoreKey)
-		err := b.DecodeMessage(msg)
-		m.Type = &RecordKey_DatastoreKey{msg}
-		return true, err
-	case 3: // type.big_query_key
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(BigQueryKey)
-		err := b.DecodeMessage(msg)
-		m.Type = &RecordKey_BigQueryKey{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RecordKey_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RecordKey)
-	// type
-	switch x := m.Type.(type) {
-	case *RecordKey_DatastoreKey:
-		s := proto.Size(x.DatastoreKey)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *RecordKey_BigQueryKey:
-		s := proto.Size(x.BigQueryKey)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Message defining the location of a BigQuery table. A table is uniquely

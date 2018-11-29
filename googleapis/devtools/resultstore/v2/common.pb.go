@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // These correspond to the prefix of the rule name. Eg cc_test has language CC.
 type Language int32
@@ -467,85 +467,13 @@ func (m *Dependency) GetLabel() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Dependency) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Dependency_OneofMarshaler, _Dependency_OneofUnmarshaler, _Dependency_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Dependency) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Dependency_Target)(nil),
 		(*Dependency_ConfiguredTarget)(nil),
 		(*Dependency_Action)(nil),
 	}
-}
-
-func _Dependency_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Dependency)
-	// resource
-	switch x := m.Resource.(type) {
-	case *Dependency_Target:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Target)
-	case *Dependency_ConfiguredTarget:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.ConfiguredTarget)
-	case *Dependency_Action:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Action)
-	case nil:
-	default:
-		return fmt.Errorf("Dependency.Resource has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Dependency_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Dependency)
-	switch tag {
-	case 1: // resource.target
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Resource = &Dependency_Target{x}
-		return true, err
-	case 2: // resource.configured_target
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Resource = &Dependency_ConfiguredTarget{x}
-		return true, err
-	case 3: // resource.action
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Resource = &Dependency_Action{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Dependency_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Dependency)
-	// resource
-	switch x := m.Resource.(type) {
-	case *Dependency_Target:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Target)))
-		n += len(x.Target)
-	case *Dependency_ConfiguredTarget:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.ConfiguredTarget)))
-		n += len(x.ConfiguredTarget)
-	case *Dependency_Action:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Action)))
-		n += len(x.Action)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

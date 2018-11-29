@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Possible states of an instance.
 type Instance_State int32
@@ -440,78 +440,12 @@ func (m *AppProfile) GetSingleClusterRouting() *AppProfile_SingleClusterRouting 
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*AppProfile) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _AppProfile_OneofMarshaler, _AppProfile_OneofUnmarshaler, _AppProfile_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*AppProfile) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*AppProfile_MultiClusterRoutingUseAny_)(nil),
 		(*AppProfile_SingleClusterRouting_)(nil),
 	}
-}
-
-func _AppProfile_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*AppProfile)
-	// routing_policy
-	switch x := m.RoutingPolicy.(type) {
-	case *AppProfile_MultiClusterRoutingUseAny_:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.MultiClusterRoutingUseAny); err != nil {
-			return err
-		}
-	case *AppProfile_SingleClusterRouting_:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.SingleClusterRouting); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("AppProfile.RoutingPolicy has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _AppProfile_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*AppProfile)
-	switch tag {
-	case 5: // routing_policy.multi_cluster_routing_use_any
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AppProfile_MultiClusterRoutingUseAny)
-		err := b.DecodeMessage(msg)
-		m.RoutingPolicy = &AppProfile_MultiClusterRoutingUseAny_{msg}
-		return true, err
-	case 6: // routing_policy.single_cluster_routing
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AppProfile_SingleClusterRouting)
-		err := b.DecodeMessage(msg)
-		m.RoutingPolicy = &AppProfile_SingleClusterRouting_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _AppProfile_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*AppProfile)
-	// routing_policy
-	switch x := m.RoutingPolicy.(type) {
-	case *AppProfile_MultiClusterRoutingUseAny_:
-		s := proto.Size(x.MultiClusterRoutingUseAny)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *AppProfile_SingleClusterRouting_:
-		s := proto.Size(x.SingleClusterRouting)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Read/write requests may be routed to any cluster in the instance, and will

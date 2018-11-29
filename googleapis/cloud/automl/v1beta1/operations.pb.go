@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Metadata used across all long running operations returned by AutoML API.
 type OperationMetadata struct {
@@ -125,59 +125,11 @@ func (m *OperationMetadata) GetUpdateTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*OperationMetadata) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _OperationMetadata_OneofMarshaler, _OperationMetadata_OneofUnmarshaler, _OperationMetadata_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*OperationMetadata) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*OperationMetadata_CreateModelDetails)(nil),
 	}
-}
-
-func _OperationMetadata_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*OperationMetadata)
-	// details
-	switch x := m.Details.(type) {
-	case *OperationMetadata_CreateModelDetails:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CreateModelDetails); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("OperationMetadata.Details has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _OperationMetadata_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*OperationMetadata)
-	switch tag {
-	case 10: // details.create_model_details
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CreateModelOperationMetadata)
-		err := b.DecodeMessage(msg)
-		m.Details = &OperationMetadata_CreateModelDetails{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _OperationMetadata_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*OperationMetadata)
-	// details
-	switch x := m.Details.(type) {
-	case *OperationMetadata_CreateModelDetails:
-		s := proto.Size(x.CreateModelDetails)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Details of CreateModel operation.

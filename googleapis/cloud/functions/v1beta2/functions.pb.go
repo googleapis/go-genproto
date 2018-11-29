@@ -25,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Describes the current stage of a deployment.
 type CloudFunctionStatus int32
@@ -270,124 +270,14 @@ func (m *CloudFunction) GetUpdateTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CloudFunction) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CloudFunction_OneofMarshaler, _CloudFunction_OneofUnmarshaler, _CloudFunction_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CloudFunction) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CloudFunction_SourceArchiveUrl)(nil),
 		(*CloudFunction_SourceRepository)(nil),
 		(*CloudFunction_HttpsTrigger)(nil),
 		(*CloudFunction_EventTrigger)(nil),
 	}
-}
-
-func _CloudFunction_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CloudFunction)
-	// source_code
-	switch x := m.SourceCode.(type) {
-	case *CloudFunction_SourceArchiveUrl:
-		b.EncodeVarint(14<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.SourceArchiveUrl)
-	case *CloudFunction_SourceRepository:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.SourceRepository); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("CloudFunction.SourceCode has unexpected type %T", x)
-	}
-	// trigger
-	switch x := m.Trigger.(type) {
-	case *CloudFunction_HttpsTrigger:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.HttpsTrigger); err != nil {
-			return err
-		}
-	case *CloudFunction_EventTrigger:
-		b.EncodeVarint(12<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.EventTrigger); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("CloudFunction.Trigger has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CloudFunction_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CloudFunction)
-	switch tag {
-	case 14: // source_code.source_archive_url
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.SourceCode = &CloudFunction_SourceArchiveUrl{x}
-		return true, err
-	case 3: // source_code.source_repository
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(SourceRepository)
-		err := b.DecodeMessage(msg)
-		m.SourceCode = &CloudFunction_SourceRepository{msg}
-		return true, err
-	case 6: // trigger.https_trigger
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(HTTPSTrigger)
-		err := b.DecodeMessage(msg)
-		m.Trigger = &CloudFunction_HttpsTrigger{msg}
-		return true, err
-	case 12: // trigger.event_trigger
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(EventTrigger)
-		err := b.DecodeMessage(msg)
-		m.Trigger = &CloudFunction_EventTrigger{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CloudFunction_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CloudFunction)
-	// source_code
-	switch x := m.SourceCode.(type) {
-	case *CloudFunction_SourceArchiveUrl:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.SourceArchiveUrl)))
-		n += len(x.SourceArchiveUrl)
-	case *CloudFunction_SourceRepository:
-		s := proto.Size(x.SourceRepository)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	// trigger
-	switch x := m.Trigger.(type) {
-	case *CloudFunction_HttpsTrigger:
-		s := proto.Size(x.HttpsTrigger)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *CloudFunction_EventTrigger:
-		s := proto.Size(x.EventTrigger)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Describes HTTPSTrigger, could be used to connect web hooks to function.
@@ -621,85 +511,13 @@ func (m *SourceRepository) GetDeployedRevision() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*SourceRepository) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _SourceRepository_OneofMarshaler, _SourceRepository_OneofUnmarshaler, _SourceRepository_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*SourceRepository) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*SourceRepository_Branch)(nil),
 		(*SourceRepository_Tag)(nil),
 		(*SourceRepository_Revision)(nil),
 	}
-}
-
-func _SourceRepository_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*SourceRepository)
-	// version
-	switch x := m.Version.(type) {
-	case *SourceRepository_Branch:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Branch)
-	case *SourceRepository_Tag:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Tag)
-	case *SourceRepository_Revision:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Revision)
-	case nil:
-	default:
-		return fmt.Errorf("SourceRepository.Version has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _SourceRepository_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*SourceRepository)
-	switch tag {
-	case 3: // version.branch
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Version = &SourceRepository_Branch{x}
-		return true, err
-	case 4: // version.tag
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Version = &SourceRepository_Tag{x}
-		return true, err
-	case 5: // version.revision
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Version = &SourceRepository_Revision{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _SourceRepository_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*SourceRepository)
-	// version
-	switch x := m.Version.(type) {
-	case *SourceRepository_Branch:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Branch)))
-		n += len(x.Branch)
-	case *SourceRepository_Tag:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Tag)))
-		n += len(x.Tag)
-	case *SourceRepository_Revision:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Revision)))
-		n += len(x.Revision)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request for the `CreateFunction` method.

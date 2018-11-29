@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A Firestore document.
 //
@@ -327,9 +327,9 @@ func (m *Value) GetMapValue() *MapValue {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Value) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Value_OneofMarshaler, _Value_OneofUnmarshaler, _Value_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Value) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Value_NullValue)(nil),
 		(*Value_BooleanValue)(nil),
 		(*Value_IntegerValue)(nil),
@@ -342,206 +342,6 @@ func (*Value) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, 
 		(*Value_ArrayValue)(nil),
 		(*Value_MapValue)(nil),
 	}
-}
-
-func _Value_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Value)
-	// value_type
-	switch x := m.ValueType.(type) {
-	case *Value_NullValue:
-		b.EncodeVarint(11<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.NullValue))
-	case *Value_BooleanValue:
-		t := uint64(0)
-		if x.BooleanValue {
-			t = 1
-		}
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case *Value_IntegerValue:
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.IntegerValue))
-	case *Value_DoubleValue:
-		b.EncodeVarint(3<<3 | proto.WireFixed64)
-		b.EncodeFixed64(math.Float64bits(x.DoubleValue))
-	case *Value_TimestampValue:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TimestampValue); err != nil {
-			return err
-		}
-	case *Value_StringValue:
-		b.EncodeVarint(17<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.StringValue)
-	case *Value_BytesValue:
-		b.EncodeVarint(18<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.BytesValue)
-	case *Value_ReferenceValue:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.ReferenceValue)
-	case *Value_GeoPointValue:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.GeoPointValue); err != nil {
-			return err
-		}
-	case *Value_ArrayValue:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ArrayValue); err != nil {
-			return err
-		}
-	case *Value_MapValue:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.MapValue); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Value.ValueType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Value_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Value)
-	switch tag {
-	case 11: // value_type.null_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ValueType = &Value_NullValue{_struct.NullValue(x)}
-		return true, err
-	case 1: // value_type.boolean_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ValueType = &Value_BooleanValue{x != 0}
-		return true, err
-	case 2: // value_type.integer_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ValueType = &Value_IntegerValue{int64(x)}
-		return true, err
-	case 3: // value_type.double_value
-		if wire != proto.WireFixed64 {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeFixed64()
-		m.ValueType = &Value_DoubleValue{math.Float64frombits(x)}
-		return true, err
-	case 10: // value_type.timestamp_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.ValueType = &Value_TimestampValue{msg}
-		return true, err
-	case 17: // value_type.string_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.ValueType = &Value_StringValue{x}
-		return true, err
-	case 18: // value_type.bytes_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.ValueType = &Value_BytesValue{x}
-		return true, err
-	case 5: // value_type.reference_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.ValueType = &Value_ReferenceValue{x}
-		return true, err
-	case 8: // value_type.geo_point_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(latlng.LatLng)
-		err := b.DecodeMessage(msg)
-		m.ValueType = &Value_GeoPointValue{msg}
-		return true, err
-	case 9: // value_type.array_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ArrayValue)
-		err := b.DecodeMessage(msg)
-		m.ValueType = &Value_ArrayValue{msg}
-		return true, err
-	case 6: // value_type.map_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(MapValue)
-		err := b.DecodeMessage(msg)
-		m.ValueType = &Value_MapValue{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Value_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Value)
-	// value_type
-	switch x := m.ValueType.(type) {
-	case *Value_NullValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.NullValue))
-	case *Value_BooleanValue:
-		n += 1 // tag and wire
-		n += 1
-	case *Value_IntegerValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.IntegerValue))
-	case *Value_DoubleValue:
-		n += 1 // tag and wire
-		n += 8
-	case *Value_TimestampValue:
-		s := proto.Size(x.TimestampValue)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Value_StringValue:
-		n += 2 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.StringValue)))
-		n += len(x.StringValue)
-	case *Value_BytesValue:
-		n += 2 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.BytesValue)))
-		n += len(x.BytesValue)
-	case *Value_ReferenceValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.ReferenceValue)))
-		n += len(x.ReferenceValue)
-	case *Value_GeoPointValue:
-		s := proto.Size(x.GeoPointValue)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Value_ArrayValue:
-		s := proto.Size(x.ArrayValue)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Value_MapValue:
-		s := proto.Size(x.MapValue)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // An array value.

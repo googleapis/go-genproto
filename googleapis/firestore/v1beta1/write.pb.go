@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A value that is calculated by the server.
 type DocumentTransform_FieldTransform_ServerValue int32
@@ -169,93 +169,13 @@ func (m *Write) GetCurrentDocument() *Precondition {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Write) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Write_OneofMarshaler, _Write_OneofUnmarshaler, _Write_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Write) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Write_Update)(nil),
 		(*Write_Delete)(nil),
 		(*Write_Transform)(nil),
 	}
-}
-
-func _Write_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Write)
-	// operation
-	switch x := m.Operation.(type) {
-	case *Write_Update:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Update); err != nil {
-			return err
-		}
-	case *Write_Delete:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Delete)
-	case *Write_Transform:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Transform); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Write.Operation has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Write_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Write)
-	switch tag {
-	case 1: // operation.update
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Document)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Write_Update{msg}
-		return true, err
-	case 2: // operation.delete
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Operation = &Write_Delete{x}
-		return true, err
-	case 6: // operation.transform
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DocumentTransform)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Write_Transform{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Write_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Write)
-	// operation
-	switch x := m.Operation.(type) {
-	case *Write_Update:
-		s := proto.Size(x.Update)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Write_Delete:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Delete)))
-		n += len(x.Delete)
-	case *Write_Transform:
-		s := proto.Size(x.Transform)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A transformation of a document.
@@ -412,92 +332,13 @@ func (m *DocumentTransform_FieldTransform) GetRemoveAllFromArray() *ArrayValue {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*DocumentTransform_FieldTransform) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _DocumentTransform_FieldTransform_OneofMarshaler, _DocumentTransform_FieldTransform_OneofUnmarshaler, _DocumentTransform_FieldTransform_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*DocumentTransform_FieldTransform) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*DocumentTransform_FieldTransform_SetToServerValue)(nil),
 		(*DocumentTransform_FieldTransform_AppendMissingElements)(nil),
 		(*DocumentTransform_FieldTransform_RemoveAllFromArray)(nil),
 	}
-}
-
-func _DocumentTransform_FieldTransform_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*DocumentTransform_FieldTransform)
-	// transform_type
-	switch x := m.TransformType.(type) {
-	case *DocumentTransform_FieldTransform_SetToServerValue:
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.SetToServerValue))
-	case *DocumentTransform_FieldTransform_AppendMissingElements:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AppendMissingElements); err != nil {
-			return err
-		}
-	case *DocumentTransform_FieldTransform_RemoveAllFromArray:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RemoveAllFromArray); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("DocumentTransform_FieldTransform.TransformType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _DocumentTransform_FieldTransform_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*DocumentTransform_FieldTransform)
-	switch tag {
-	case 2: // transform_type.set_to_server_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.TransformType = &DocumentTransform_FieldTransform_SetToServerValue{DocumentTransform_FieldTransform_ServerValue(x)}
-		return true, err
-	case 6: // transform_type.append_missing_elements
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ArrayValue)
-		err := b.DecodeMessage(msg)
-		m.TransformType = &DocumentTransform_FieldTransform_AppendMissingElements{msg}
-		return true, err
-	case 7: // transform_type.remove_all_from_array
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ArrayValue)
-		err := b.DecodeMessage(msg)
-		m.TransformType = &DocumentTransform_FieldTransform_RemoveAllFromArray{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _DocumentTransform_FieldTransform_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*DocumentTransform_FieldTransform)
-	// transform_type
-	switch x := m.TransformType.(type) {
-	case *DocumentTransform_FieldTransform_SetToServerValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.SetToServerValue))
-	case *DocumentTransform_FieldTransform_AppendMissingElements:
-		s := proto.Size(x.AppendMissingElements)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *DocumentTransform_FieldTransform_RemoveAllFromArray:
-		s := proto.Size(x.RemoveAllFromArray)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The result of applying a write.

@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The state of an evaluation.
 //
@@ -215,97 +215,13 @@ func (m *ExprValue) GetUnknown() *UnknownSet {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ExprValue) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ExprValue_OneofMarshaler, _ExprValue_OneofUnmarshaler, _ExprValue_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ExprValue) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ExprValue_Value)(nil),
 		(*ExprValue_Error)(nil),
 		(*ExprValue_Unknown)(nil),
 	}
-}
-
-func _ExprValue_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ExprValue)
-	// kind
-	switch x := m.Kind.(type) {
-	case *ExprValue_Value:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Value); err != nil {
-			return err
-		}
-	case *ExprValue_Error:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Error); err != nil {
-			return err
-		}
-	case *ExprValue_Unknown:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Unknown); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ExprValue.Kind has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ExprValue_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ExprValue)
-	switch tag {
-	case 1: // kind.value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Value)
-		err := b.DecodeMessage(msg)
-		m.Kind = &ExprValue_Value{msg}
-		return true, err
-	case 2: // kind.error
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ErrorSet)
-		err := b.DecodeMessage(msg)
-		m.Kind = &ExprValue_Error{msg}
-		return true, err
-	case 3: // kind.unknown
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(UnknownSet)
-		err := b.DecodeMessage(msg)
-		m.Kind = &ExprValue_Unknown{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ExprValue_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ExprValue)
-	// kind
-	switch x := m.Kind.(type) {
-	case *ExprValue_Value:
-		s := proto.Size(x.Value)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ExprValue_Error:
-		s := proto.Size(x.Error)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ExprValue_Unknown:
-		s := proto.Size(x.Unknown)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A set of errors.

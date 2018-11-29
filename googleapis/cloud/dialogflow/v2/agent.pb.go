@@ -25,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Match mode determines how intents are detected from user queries.
 type Agent_MatchMode int32
@@ -524,70 +524,12 @@ func (m *ExportAgentResponse) GetAgentContent() []byte {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ExportAgentResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ExportAgentResponse_OneofMarshaler, _ExportAgentResponse_OneofUnmarshaler, _ExportAgentResponse_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ExportAgentResponse) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ExportAgentResponse_AgentUri)(nil),
 		(*ExportAgentResponse_AgentContent)(nil),
 	}
-}
-
-func _ExportAgentResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ExportAgentResponse)
-	// agent
-	switch x := m.Agent.(type) {
-	case *ExportAgentResponse_AgentUri:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.AgentUri)
-	case *ExportAgentResponse_AgentContent:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.AgentContent)
-	case nil:
-	default:
-		return fmt.Errorf("ExportAgentResponse.Agent has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ExportAgentResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ExportAgentResponse)
-	switch tag {
-	case 1: // agent.agent_uri
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Agent = &ExportAgentResponse_AgentUri{x}
-		return true, err
-	case 2: // agent.agent_content
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Agent = &ExportAgentResponse_AgentContent{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ExportAgentResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ExportAgentResponse)
-	// agent
-	switch x := m.Agent.(type) {
-	case *ExportAgentResponse_AgentUri:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AgentUri)))
-		n += len(x.AgentUri)
-	case *ExportAgentResponse_AgentContent:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AgentContent)))
-		n += len(x.AgentContent)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The request message for [Agents.ImportAgent][google.cloud.dialogflow.v2.Agents.ImportAgent].
@@ -675,70 +617,12 @@ func (m *ImportAgentRequest) GetAgentContent() []byte {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ImportAgentRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ImportAgentRequest_OneofMarshaler, _ImportAgentRequest_OneofUnmarshaler, _ImportAgentRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ImportAgentRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ImportAgentRequest_AgentUri)(nil),
 		(*ImportAgentRequest_AgentContent)(nil),
 	}
-}
-
-func _ImportAgentRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ImportAgentRequest)
-	// agent
-	switch x := m.Agent.(type) {
-	case *ImportAgentRequest_AgentUri:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.AgentUri)
-	case *ImportAgentRequest_AgentContent:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.AgentContent)
-	case nil:
-	default:
-		return fmt.Errorf("ImportAgentRequest.Agent has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ImportAgentRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ImportAgentRequest)
-	switch tag {
-	case 2: // agent.agent_uri
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Agent = &ImportAgentRequest_AgentUri{x}
-		return true, err
-	case 3: // agent.agent_content
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Agent = &ImportAgentRequest_AgentContent{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ImportAgentRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ImportAgentRequest)
-	// agent
-	switch x := m.Agent.(type) {
-	case *ImportAgentRequest_AgentUri:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AgentUri)))
-		n += len(x.AgentUri)
-	case *ImportAgentRequest_AgentContent:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AgentContent)))
-		n += len(x.AgentContent)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The request message for [Agents.RestoreAgent][google.cloud.dialogflow.v2.Agents.RestoreAgent].
@@ -826,70 +710,12 @@ func (m *RestoreAgentRequest) GetAgentContent() []byte {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RestoreAgentRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RestoreAgentRequest_OneofMarshaler, _RestoreAgentRequest_OneofUnmarshaler, _RestoreAgentRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RestoreAgentRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RestoreAgentRequest_AgentUri)(nil),
 		(*RestoreAgentRequest_AgentContent)(nil),
 	}
-}
-
-func _RestoreAgentRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RestoreAgentRequest)
-	// agent
-	switch x := m.Agent.(type) {
-	case *RestoreAgentRequest_AgentUri:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.AgentUri)
-	case *RestoreAgentRequest_AgentContent:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.AgentContent)
-	case nil:
-	default:
-		return fmt.Errorf("RestoreAgentRequest.Agent has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RestoreAgentRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RestoreAgentRequest)
-	switch tag {
-	case 2: // agent.agent_uri
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Agent = &RestoreAgentRequest_AgentUri{x}
-		return true, err
-	case 3: // agent.agent_content
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Agent = &RestoreAgentRequest_AgentContent{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RestoreAgentRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RestoreAgentRequest)
-	// agent
-	switch x := m.Agent.(type) {
-	case *RestoreAgentRequest_AgentUri:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AgentUri)))
-		n += len(x.AgentUri)
-	case *RestoreAgentRequest_AgentContent:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AgentContent)))
-		n += len(x.AgentContent)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

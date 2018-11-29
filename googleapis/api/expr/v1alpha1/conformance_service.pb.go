@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Severities of issues.
 type IssueDetails_Severity int32
@@ -399,78 +399,12 @@ func (m *EvalRequest) GetContainer() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*EvalRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _EvalRequest_OneofMarshaler, _EvalRequest_OneofUnmarshaler, _EvalRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*EvalRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*EvalRequest_ParsedExpr)(nil),
 		(*EvalRequest_CheckedExpr)(nil),
 	}
-}
-
-func _EvalRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*EvalRequest)
-	// expr_kind
-	switch x := m.ExprKind.(type) {
-	case *EvalRequest_ParsedExpr:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ParsedExpr); err != nil {
-			return err
-		}
-	case *EvalRequest_CheckedExpr:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CheckedExpr); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("EvalRequest.ExprKind has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _EvalRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*EvalRequest)
-	switch tag {
-	case 1: // expr_kind.parsed_expr
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ParsedExpr)
-		err := b.DecodeMessage(msg)
-		m.ExprKind = &EvalRequest_ParsedExpr{msg}
-		return true, err
-	case 2: // expr_kind.checked_expr
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CheckedExpr)
-		err := b.DecodeMessage(msg)
-		m.ExprKind = &EvalRequest_CheckedExpr{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _EvalRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*EvalRequest)
-	// expr_kind
-	switch x := m.ExprKind.(type) {
-	case *EvalRequest_ParsedExpr:
-		s := proto.Size(x.ParsedExpr)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *EvalRequest_CheckedExpr:
-		s := proto.Size(x.CheckedExpr)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Response message for the Eval method.

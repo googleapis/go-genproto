@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Represents a single metric value.
 type MetricValue struct {
@@ -175,120 +175,15 @@ func (m *MetricValue) GetDistributionValue() *Distribution {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*MetricValue) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _MetricValue_OneofMarshaler, _MetricValue_OneofUnmarshaler, _MetricValue_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*MetricValue) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*MetricValue_BoolValue)(nil),
 		(*MetricValue_Int64Value)(nil),
 		(*MetricValue_DoubleValue)(nil),
 		(*MetricValue_StringValue)(nil),
 		(*MetricValue_DistributionValue)(nil),
 	}
-}
-
-func _MetricValue_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*MetricValue)
-	// value
-	switch x := m.Value.(type) {
-	case *MetricValue_BoolValue:
-		t := uint64(0)
-		if x.BoolValue {
-			t = 1
-		}
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case *MetricValue_Int64Value:
-		b.EncodeVarint(5<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Int64Value))
-	case *MetricValue_DoubleValue:
-		b.EncodeVarint(6<<3 | proto.WireFixed64)
-		b.EncodeFixed64(math.Float64bits(x.DoubleValue))
-	case *MetricValue_StringValue:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.StringValue)
-	case *MetricValue_DistributionValue:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DistributionValue); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("MetricValue.Value has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _MetricValue_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*MetricValue)
-	switch tag {
-	case 4: // value.bool_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Value = &MetricValue_BoolValue{x != 0}
-		return true, err
-	case 5: // value.int64_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Value = &MetricValue_Int64Value{int64(x)}
-		return true, err
-	case 6: // value.double_value
-		if wire != proto.WireFixed64 {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeFixed64()
-		m.Value = &MetricValue_DoubleValue{math.Float64frombits(x)}
-		return true, err
-	case 7: // value.string_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Value = &MetricValue_StringValue{x}
-		return true, err
-	case 8: // value.distribution_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Distribution)
-		err := b.DecodeMessage(msg)
-		m.Value = &MetricValue_DistributionValue{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _MetricValue_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*MetricValue)
-	// value
-	switch x := m.Value.(type) {
-	case *MetricValue_BoolValue:
-		n += 1 // tag and wire
-		n += 1
-	case *MetricValue_Int64Value:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Int64Value))
-	case *MetricValue_DoubleValue:
-		n += 1 // tag and wire
-		n += 8
-	case *MetricValue_StringValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.StringValue)))
-		n += len(x.StringValue)
-	case *MetricValue_DistributionValue:
-		s := proto.Size(x.DistributionValue)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Represents a set of metric values in the same metric.

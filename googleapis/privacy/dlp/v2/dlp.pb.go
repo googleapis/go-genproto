@@ -29,7 +29,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Options describing which parts of the provided content should be scanned.
 type ContentOption int32
@@ -760,97 +760,13 @@ func (m *ExclusionRule) GetMatchingType() MatchingType {
 	return MatchingType_MATCHING_TYPE_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ExclusionRule) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ExclusionRule_OneofMarshaler, _ExclusionRule_OneofUnmarshaler, _ExclusionRule_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ExclusionRule) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ExclusionRule_Dictionary)(nil),
 		(*ExclusionRule_Regex)(nil),
 		(*ExclusionRule_ExcludeInfoTypes)(nil),
 	}
-}
-
-func _ExclusionRule_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ExclusionRule)
-	// type
-	switch x := m.Type.(type) {
-	case *ExclusionRule_Dictionary:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Dictionary); err != nil {
-			return err
-		}
-	case *ExclusionRule_Regex:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Regex); err != nil {
-			return err
-		}
-	case *ExclusionRule_ExcludeInfoTypes:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ExcludeInfoTypes); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ExclusionRule.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ExclusionRule_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ExclusionRule)
-	switch tag {
-	case 1: // type.dictionary
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomInfoType_Dictionary)
-		err := b.DecodeMessage(msg)
-		m.Type = &ExclusionRule_Dictionary{msg}
-		return true, err
-	case 2: // type.regex
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomInfoType_Regex)
-		err := b.DecodeMessage(msg)
-		m.Type = &ExclusionRule_Regex{msg}
-		return true, err
-	case 3: // type.exclude_info_types
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ExcludeInfoTypes)
-		err := b.DecodeMessage(msg)
-		m.Type = &ExclusionRule_ExcludeInfoTypes{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ExclusionRule_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ExclusionRule)
-	// type
-	switch x := m.Type.(type) {
-	case *ExclusionRule_Dictionary:
-		s := proto.Size(x.Dictionary)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ExclusionRule_Regex:
-		s := proto.Size(x.Regex)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ExclusionRule_ExcludeInfoTypes:
-		s := proto.Size(x.ExcludeInfoTypes)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A single inspection rule to be applied to infoTypes, specified in
@@ -927,78 +843,12 @@ func (m *InspectionRule) GetExclusionRule() *ExclusionRule {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*InspectionRule) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _InspectionRule_OneofMarshaler, _InspectionRule_OneofUnmarshaler, _InspectionRule_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*InspectionRule) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*InspectionRule_HotwordRule)(nil),
 		(*InspectionRule_ExclusionRule)(nil),
 	}
-}
-
-func _InspectionRule_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*InspectionRule)
-	// type
-	switch x := m.Type.(type) {
-	case *InspectionRule_HotwordRule:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.HotwordRule); err != nil {
-			return err
-		}
-	case *InspectionRule_ExclusionRule:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ExclusionRule); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("InspectionRule.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _InspectionRule_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*InspectionRule)
-	switch tag {
-	case 1: // type.hotword_rule
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomInfoType_DetectionRule_HotwordRule)
-		err := b.DecodeMessage(msg)
-		m.Type = &InspectionRule_HotwordRule{msg}
-		return true, err
-	case 2: // type.exclusion_rule
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ExclusionRule)
-		err := b.DecodeMessage(msg)
-		m.Type = &InspectionRule_ExclusionRule{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _InspectionRule_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*InspectionRule)
-	// type
-	switch x := m.Type.(type) {
-	case *InspectionRule_HotwordRule:
-		s := proto.Size(x.HotwordRule)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *InspectionRule_ExclusionRule:
-		s := proto.Size(x.ExclusionRule)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Rule set for modifying a set of infoTypes to alter behavior under certain
@@ -1433,93 +1283,13 @@ func (m *ContentItem) GetByteItem() *ByteContentItem {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ContentItem) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ContentItem_OneofMarshaler, _ContentItem_OneofUnmarshaler, _ContentItem_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ContentItem) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ContentItem_Value)(nil),
 		(*ContentItem_Table)(nil),
 		(*ContentItem_ByteItem)(nil),
 	}
-}
-
-func _ContentItem_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ContentItem)
-	// data_item
-	switch x := m.DataItem.(type) {
-	case *ContentItem_Value:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Value)
-	case *ContentItem_Table:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Table); err != nil {
-			return err
-		}
-	case *ContentItem_ByteItem:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ByteItem); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ContentItem.DataItem has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ContentItem_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ContentItem)
-	switch tag {
-	case 3: // data_item.value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.DataItem = &ContentItem_Value{x}
-		return true, err
-	case 4: // data_item.table
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Table)
-		err := b.DecodeMessage(msg)
-		m.DataItem = &ContentItem_Table{msg}
-		return true, err
-	case 5: // data_item.byte_item
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ByteContentItem)
-		err := b.DecodeMessage(msg)
-		m.DataItem = &ContentItem_ByteItem{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ContentItem_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ContentItem)
-	// data_item
-	switch x := m.DataItem.(type) {
-	case *ContentItem_Value:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Value)))
-		n += len(x.Value)
-	case *ContentItem_Table:
-		s := proto.Size(x.Table)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ContentItem_ByteItem:
-		s := proto.Size(x.ByteItem)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Structured content to inspect. Up to 50,000 `Value`s per request allowed.
@@ -1954,97 +1724,13 @@ func (m *ContentLocation) GetContainerVersion() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ContentLocation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ContentLocation_OneofMarshaler, _ContentLocation_OneofUnmarshaler, _ContentLocation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ContentLocation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ContentLocation_RecordLocation)(nil),
 		(*ContentLocation_ImageLocation)(nil),
 		(*ContentLocation_DocumentLocation)(nil),
 	}
-}
-
-func _ContentLocation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ContentLocation)
-	// location
-	switch x := m.Location.(type) {
-	case *ContentLocation_RecordLocation:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RecordLocation); err != nil {
-			return err
-		}
-	case *ContentLocation_ImageLocation:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ImageLocation); err != nil {
-			return err
-		}
-	case *ContentLocation_DocumentLocation:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DocumentLocation); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ContentLocation.Location has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ContentLocation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ContentLocation)
-	switch tag {
-	case 2: // location.record_location
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(RecordLocation)
-		err := b.DecodeMessage(msg)
-		m.Location = &ContentLocation_RecordLocation{msg}
-		return true, err
-	case 3: // location.image_location
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ImageLocation)
-		err := b.DecodeMessage(msg)
-		m.Location = &ContentLocation_ImageLocation{msg}
-		return true, err
-	case 5: // location.document_location
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DocumentLocation)
-		err := b.DecodeMessage(msg)
-		m.Location = &ContentLocation_DocumentLocation{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ContentLocation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ContentLocation)
-	// location
-	switch x := m.Location.(type) {
-	case *ContentLocation_RecordLocation:
-		s := proto.Size(x.RecordLocation)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ContentLocation_ImageLocation:
-		s := proto.Size(x.ImageLocation)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ContentLocation_DocumentLocation:
-		s := proto.Size(x.DocumentLocation)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Location of a finding within a document.
@@ -2516,77 +2202,12 @@ func (m *RedactImageRequest_ImageRedactionConfig) GetRedactionColor() *Color {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RedactImageRequest_ImageRedactionConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RedactImageRequest_ImageRedactionConfig_OneofMarshaler, _RedactImageRequest_ImageRedactionConfig_OneofUnmarshaler, _RedactImageRequest_ImageRedactionConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RedactImageRequest_ImageRedactionConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RedactImageRequest_ImageRedactionConfig_InfoType)(nil),
 		(*RedactImageRequest_ImageRedactionConfig_RedactAllText)(nil),
 	}
-}
-
-func _RedactImageRequest_ImageRedactionConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RedactImageRequest_ImageRedactionConfig)
-	// target
-	switch x := m.Target.(type) {
-	case *RedactImageRequest_ImageRedactionConfig_InfoType:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InfoType); err != nil {
-			return err
-		}
-	case *RedactImageRequest_ImageRedactionConfig_RedactAllText:
-		t := uint64(0)
-		if x.RedactAllText {
-			t = 1
-		}
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case nil:
-	default:
-		return fmt.Errorf("RedactImageRequest_ImageRedactionConfig.Target has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RedactImageRequest_ImageRedactionConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RedactImageRequest_ImageRedactionConfig)
-	switch tag {
-	case 1: // target.info_type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InfoType)
-		err := b.DecodeMessage(msg)
-		m.Target = &RedactImageRequest_ImageRedactionConfig_InfoType{msg}
-		return true, err
-	case 2: // target.redact_all_text
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Target = &RedactImageRequest_ImageRedactionConfig_RedactAllText{x != 0}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RedactImageRequest_ImageRedactionConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RedactImageRequest_ImageRedactionConfig)
-	// target
-	switch x := m.Target.(type) {
-	case *RedactImageRequest_ImageRedactionConfig_InfoType:
-		s := proto.Size(x.InfoType)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *RedactImageRequest_ImageRedactionConfig_RedactAllText:
-		n += 1 // tag and wire
-		n += 1
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Represents a color in the RGB color space.
@@ -3200,59 +2821,11 @@ func (m *OutputStorageConfig) GetOutputSchema() OutputStorageConfig_OutputSchema
 	return OutputStorageConfig_OUTPUT_SCHEMA_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*OutputStorageConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _OutputStorageConfig_OneofMarshaler, _OutputStorageConfig_OneofUnmarshaler, _OutputStorageConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*OutputStorageConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*OutputStorageConfig_Table)(nil),
 	}
-}
-
-func _OutputStorageConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*OutputStorageConfig)
-	// type
-	switch x := m.Type.(type) {
-	case *OutputStorageConfig_Table:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Table); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("OutputStorageConfig.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _OutputStorageConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*OutputStorageConfig)
-	switch tag {
-	case 1: // type.table
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(BigQueryTable)
-		err := b.DecodeMessage(msg)
-		m.Type = &OutputStorageConfig_Table{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _OutputStorageConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*OutputStorageConfig)
-	// type
-	switch x := m.Type.(type) {
-	case *OutputStorageConfig_Table:
-		s := proto.Size(x.Table)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Statistics regarding a specific InfoType.
@@ -3779,93 +3352,13 @@ func (m *QuasiId) GetInferred() *empty.Empty {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*QuasiId) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _QuasiId_OneofMarshaler, _QuasiId_OneofUnmarshaler, _QuasiId_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*QuasiId) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*QuasiId_InfoType)(nil),
 		(*QuasiId_CustomTag)(nil),
 		(*QuasiId_Inferred)(nil),
 	}
-}
-
-func _QuasiId_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*QuasiId)
-	// tag
-	switch x := m.Tag.(type) {
-	case *QuasiId_InfoType:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InfoType); err != nil {
-			return err
-		}
-	case *QuasiId_CustomTag:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.CustomTag)
-	case *QuasiId_Inferred:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Inferred); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("QuasiId.Tag has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _QuasiId_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*QuasiId)
-	switch tag {
-	case 2: // tag.info_type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InfoType)
-		err := b.DecodeMessage(msg)
-		m.Tag = &QuasiId_InfoType{msg}
-		return true, err
-	case 3: // tag.custom_tag
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Tag = &QuasiId_CustomTag{x}
-		return true, err
-	case 4: // tag.inferred
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(empty.Empty)
-		err := b.DecodeMessage(msg)
-		m.Tag = &QuasiId_Inferred{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _QuasiId_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*QuasiId)
-	// tag
-	switch x := m.Tag.(type) {
-	case *QuasiId_InfoType:
-		s := proto.Size(x.InfoType)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *QuasiId_CustomTag:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.CustomTag)))
-		n += len(x.CustomTag)
-	case *QuasiId_Inferred:
-		s := proto.Size(x.Inferred)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // An auxiliary table containing statistical information on the relative
@@ -4113,9 +3606,9 @@ func (m *PrivacyMetric) GetDeltaPresenceEstimationConfig() *PrivacyMetric_DeltaP
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*PrivacyMetric) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _PrivacyMetric_OneofMarshaler, _PrivacyMetric_OneofUnmarshaler, _PrivacyMetric_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*PrivacyMetric) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*PrivacyMetric_NumericalStatsConfig_)(nil),
 		(*PrivacyMetric_CategoricalStatsConfig_)(nil),
 		(*PrivacyMetric_KAnonymityConfig_)(nil),
@@ -4123,144 +3616,6 @@ func (*PrivacyMetric) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer)
 		(*PrivacyMetric_KMapEstimationConfig_)(nil),
 		(*PrivacyMetric_DeltaPresenceEstimationConfig_)(nil),
 	}
-}
-
-func _PrivacyMetric_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*PrivacyMetric)
-	// type
-	switch x := m.Type.(type) {
-	case *PrivacyMetric_NumericalStatsConfig_:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.NumericalStatsConfig); err != nil {
-			return err
-		}
-	case *PrivacyMetric_CategoricalStatsConfig_:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CategoricalStatsConfig); err != nil {
-			return err
-		}
-	case *PrivacyMetric_KAnonymityConfig_:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.KAnonymityConfig); err != nil {
-			return err
-		}
-	case *PrivacyMetric_LDiversityConfig_:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.LDiversityConfig); err != nil {
-			return err
-		}
-	case *PrivacyMetric_KMapEstimationConfig_:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.KMapEstimationConfig); err != nil {
-			return err
-		}
-	case *PrivacyMetric_DeltaPresenceEstimationConfig_:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DeltaPresenceEstimationConfig); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("PrivacyMetric.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _PrivacyMetric_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*PrivacyMetric)
-	switch tag {
-	case 1: // type.numerical_stats_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PrivacyMetric_NumericalStatsConfig)
-		err := b.DecodeMessage(msg)
-		m.Type = &PrivacyMetric_NumericalStatsConfig_{msg}
-		return true, err
-	case 2: // type.categorical_stats_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PrivacyMetric_CategoricalStatsConfig)
-		err := b.DecodeMessage(msg)
-		m.Type = &PrivacyMetric_CategoricalStatsConfig_{msg}
-		return true, err
-	case 3: // type.k_anonymity_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PrivacyMetric_KAnonymityConfig)
-		err := b.DecodeMessage(msg)
-		m.Type = &PrivacyMetric_KAnonymityConfig_{msg}
-		return true, err
-	case 4: // type.l_diversity_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PrivacyMetric_LDiversityConfig)
-		err := b.DecodeMessage(msg)
-		m.Type = &PrivacyMetric_LDiversityConfig_{msg}
-		return true, err
-	case 5: // type.k_map_estimation_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PrivacyMetric_KMapEstimationConfig)
-		err := b.DecodeMessage(msg)
-		m.Type = &PrivacyMetric_KMapEstimationConfig_{msg}
-		return true, err
-	case 6: // type.delta_presence_estimation_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PrivacyMetric_DeltaPresenceEstimationConfig)
-		err := b.DecodeMessage(msg)
-		m.Type = &PrivacyMetric_DeltaPresenceEstimationConfig_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _PrivacyMetric_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*PrivacyMetric)
-	// type
-	switch x := m.Type.(type) {
-	case *PrivacyMetric_NumericalStatsConfig_:
-		s := proto.Size(x.NumericalStatsConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrivacyMetric_CategoricalStatsConfig_:
-		s := proto.Size(x.CategoricalStatsConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrivacyMetric_KAnonymityConfig_:
-		s := proto.Size(x.KAnonymityConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrivacyMetric_LDiversityConfig_:
-		s := proto.Size(x.LDiversityConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrivacyMetric_KMapEstimationConfig_:
-		s := proto.Size(x.KMapEstimationConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrivacyMetric_DeltaPresenceEstimationConfig_:
-		s := proto.Size(x.DeltaPresenceEstimationConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Compute numerical stats over an individual column, including
@@ -4642,93 +3997,13 @@ func (m *PrivacyMetric_KMapEstimationConfig_TaggedField) GetInferred() *empty.Em
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*PrivacyMetric_KMapEstimationConfig_TaggedField) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _PrivacyMetric_KMapEstimationConfig_TaggedField_OneofMarshaler, _PrivacyMetric_KMapEstimationConfig_TaggedField_OneofUnmarshaler, _PrivacyMetric_KMapEstimationConfig_TaggedField_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*PrivacyMetric_KMapEstimationConfig_TaggedField) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*PrivacyMetric_KMapEstimationConfig_TaggedField_InfoType)(nil),
 		(*PrivacyMetric_KMapEstimationConfig_TaggedField_CustomTag)(nil),
 		(*PrivacyMetric_KMapEstimationConfig_TaggedField_Inferred)(nil),
 	}
-}
-
-func _PrivacyMetric_KMapEstimationConfig_TaggedField_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*PrivacyMetric_KMapEstimationConfig_TaggedField)
-	// tag
-	switch x := m.Tag.(type) {
-	case *PrivacyMetric_KMapEstimationConfig_TaggedField_InfoType:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InfoType); err != nil {
-			return err
-		}
-	case *PrivacyMetric_KMapEstimationConfig_TaggedField_CustomTag:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.CustomTag)
-	case *PrivacyMetric_KMapEstimationConfig_TaggedField_Inferred:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Inferred); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("PrivacyMetric_KMapEstimationConfig_TaggedField.Tag has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _PrivacyMetric_KMapEstimationConfig_TaggedField_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*PrivacyMetric_KMapEstimationConfig_TaggedField)
-	switch tag {
-	case 2: // tag.info_type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InfoType)
-		err := b.DecodeMessage(msg)
-		m.Tag = &PrivacyMetric_KMapEstimationConfig_TaggedField_InfoType{msg}
-		return true, err
-	case 3: // tag.custom_tag
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Tag = &PrivacyMetric_KMapEstimationConfig_TaggedField_CustomTag{x}
-		return true, err
-	case 4: // tag.inferred
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(empty.Empty)
-		err := b.DecodeMessage(msg)
-		m.Tag = &PrivacyMetric_KMapEstimationConfig_TaggedField_Inferred{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _PrivacyMetric_KMapEstimationConfig_TaggedField_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*PrivacyMetric_KMapEstimationConfig_TaggedField)
-	// tag
-	switch x := m.Tag.(type) {
-	case *PrivacyMetric_KMapEstimationConfig_TaggedField_InfoType:
-		s := proto.Size(x.InfoType)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrivacyMetric_KMapEstimationConfig_TaggedField_CustomTag:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.CustomTag)))
-		n += len(x.CustomTag)
-	case *PrivacyMetric_KMapEstimationConfig_TaggedField_Inferred:
-		s := proto.Size(x.Inferred)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // An auxiliary table contains statistical information on the relative
@@ -5076,9 +4351,9 @@ func (m *AnalyzeDataSourceRiskDetails) GetDeltaPresenceEstimationResult() *Analy
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*AnalyzeDataSourceRiskDetails) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _AnalyzeDataSourceRiskDetails_OneofMarshaler, _AnalyzeDataSourceRiskDetails_OneofUnmarshaler, _AnalyzeDataSourceRiskDetails_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*AnalyzeDataSourceRiskDetails) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*AnalyzeDataSourceRiskDetails_NumericalStatsResult_)(nil),
 		(*AnalyzeDataSourceRiskDetails_CategoricalStatsResult_)(nil),
 		(*AnalyzeDataSourceRiskDetails_KAnonymityResult_)(nil),
@@ -5086,144 +4361,6 @@ func (*AnalyzeDataSourceRiskDetails) XXX_OneofFuncs() (func(msg proto.Message, b
 		(*AnalyzeDataSourceRiskDetails_KMapEstimationResult_)(nil),
 		(*AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult_)(nil),
 	}
-}
-
-func _AnalyzeDataSourceRiskDetails_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*AnalyzeDataSourceRiskDetails)
-	// result
-	switch x := m.Result.(type) {
-	case *AnalyzeDataSourceRiskDetails_NumericalStatsResult_:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.NumericalStatsResult); err != nil {
-			return err
-		}
-	case *AnalyzeDataSourceRiskDetails_CategoricalStatsResult_:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CategoricalStatsResult); err != nil {
-			return err
-		}
-	case *AnalyzeDataSourceRiskDetails_KAnonymityResult_:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.KAnonymityResult); err != nil {
-			return err
-		}
-	case *AnalyzeDataSourceRiskDetails_LDiversityResult_:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.LDiversityResult); err != nil {
-			return err
-		}
-	case *AnalyzeDataSourceRiskDetails_KMapEstimationResult_:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.KMapEstimationResult); err != nil {
-			return err
-		}
-	case *AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult_:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DeltaPresenceEstimationResult); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("AnalyzeDataSourceRiskDetails.Result has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _AnalyzeDataSourceRiskDetails_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*AnalyzeDataSourceRiskDetails)
-	switch tag {
-	case 3: // result.numerical_stats_result
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AnalyzeDataSourceRiskDetails_NumericalStatsResult)
-		err := b.DecodeMessage(msg)
-		m.Result = &AnalyzeDataSourceRiskDetails_NumericalStatsResult_{msg}
-		return true, err
-	case 4: // result.categorical_stats_result
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AnalyzeDataSourceRiskDetails_CategoricalStatsResult)
-		err := b.DecodeMessage(msg)
-		m.Result = &AnalyzeDataSourceRiskDetails_CategoricalStatsResult_{msg}
-		return true, err
-	case 5: // result.k_anonymity_result
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AnalyzeDataSourceRiskDetails_KAnonymityResult)
-		err := b.DecodeMessage(msg)
-		m.Result = &AnalyzeDataSourceRiskDetails_KAnonymityResult_{msg}
-		return true, err
-	case 6: // result.l_diversity_result
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AnalyzeDataSourceRiskDetails_LDiversityResult)
-		err := b.DecodeMessage(msg)
-		m.Result = &AnalyzeDataSourceRiskDetails_LDiversityResult_{msg}
-		return true, err
-	case 7: // result.k_map_estimation_result
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AnalyzeDataSourceRiskDetails_KMapEstimationResult)
-		err := b.DecodeMessage(msg)
-		m.Result = &AnalyzeDataSourceRiskDetails_KMapEstimationResult_{msg}
-		return true, err
-	case 9: // result.delta_presence_estimation_result
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult)
-		err := b.DecodeMessage(msg)
-		m.Result = &AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _AnalyzeDataSourceRiskDetails_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*AnalyzeDataSourceRiskDetails)
-	// result
-	switch x := m.Result.(type) {
-	case *AnalyzeDataSourceRiskDetails_NumericalStatsResult_:
-		s := proto.Size(x.NumericalStatsResult)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *AnalyzeDataSourceRiskDetails_CategoricalStatsResult_:
-		s := proto.Size(x.CategoricalStatsResult)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *AnalyzeDataSourceRiskDetails_KAnonymityResult_:
-		s := proto.Size(x.KAnonymityResult)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *AnalyzeDataSourceRiskDetails_LDiversityResult_:
-		s := proto.Size(x.LDiversityResult)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *AnalyzeDataSourceRiskDetails_KMapEstimationResult_:
-		s := proto.Size(x.KMapEstimationResult)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult_:
-		s := proto.Size(x.DeltaPresenceEstimationResult)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Result of the numerical stats computation.
@@ -6416,9 +5553,9 @@ func (m *Value) GetDayOfWeekValue() dayofweek.DayOfWeek {
 	return dayofweek.DayOfWeek_DAY_OF_WEEK_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Value) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Value_OneofMarshaler, _Value_OneofUnmarshaler, _Value_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Value) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Value_IntegerValue)(nil),
 		(*Value_FloatValue)(nil),
 		(*Value_StringValue)(nil),
@@ -6428,160 +5565,6 @@ func (*Value) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, 
 		(*Value_DateValue)(nil),
 		(*Value_DayOfWeekValue)(nil),
 	}
-}
-
-func _Value_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Value)
-	// type
-	switch x := m.Type.(type) {
-	case *Value_IntegerValue:
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.IntegerValue))
-	case *Value_FloatValue:
-		b.EncodeVarint(2<<3 | proto.WireFixed64)
-		b.EncodeFixed64(math.Float64bits(x.FloatValue))
-	case *Value_StringValue:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.StringValue)
-	case *Value_BooleanValue:
-		t := uint64(0)
-		if x.BooleanValue {
-			t = 1
-		}
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case *Value_TimestampValue:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TimestampValue); err != nil {
-			return err
-		}
-	case *Value_TimeValue:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TimeValue); err != nil {
-			return err
-		}
-	case *Value_DateValue:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DateValue); err != nil {
-			return err
-		}
-	case *Value_DayOfWeekValue:
-		b.EncodeVarint(8<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.DayOfWeekValue))
-	case nil:
-	default:
-		return fmt.Errorf("Value.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Value_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Value)
-	switch tag {
-	case 1: // type.integer_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Type = &Value_IntegerValue{int64(x)}
-		return true, err
-	case 2: // type.float_value
-		if wire != proto.WireFixed64 {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeFixed64()
-		m.Type = &Value_FloatValue{math.Float64frombits(x)}
-		return true, err
-	case 3: // type.string_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Type = &Value_StringValue{x}
-		return true, err
-	case 4: // type.boolean_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Type = &Value_BooleanValue{x != 0}
-		return true, err
-	case 5: // type.timestamp_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.Type = &Value_TimestampValue{msg}
-		return true, err
-	case 6: // type.time_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timeofday.TimeOfDay)
-		err := b.DecodeMessage(msg)
-		m.Type = &Value_TimeValue{msg}
-		return true, err
-	case 7: // type.date_value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(date.Date)
-		err := b.DecodeMessage(msg)
-		m.Type = &Value_DateValue{msg}
-		return true, err
-	case 8: // type.day_of_week_value
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Type = &Value_DayOfWeekValue{dayofweek.DayOfWeek(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Value_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Value)
-	// type
-	switch x := m.Type.(type) {
-	case *Value_IntegerValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.IntegerValue))
-	case *Value_FloatValue:
-		n += 1 // tag and wire
-		n += 8
-	case *Value_StringValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.StringValue)))
-		n += len(x.StringValue)
-	case *Value_BooleanValue:
-		n += 1 // tag and wire
-		n += 1
-	case *Value_TimestampValue:
-		s := proto.Size(x.TimestampValue)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Value_TimeValue:
-		s := proto.Size(x.TimeValue)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Value_DateValue:
-		s := proto.Size(x.DateValue)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Value_DayOfWeekValue:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.DayOfWeekValue))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Message for infoType-dependent details parsed from quote.
@@ -6645,59 +5628,11 @@ func (m *QuoteInfo) GetDateTime() *DateTime {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*QuoteInfo) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _QuoteInfo_OneofMarshaler, _QuoteInfo_OneofUnmarshaler, _QuoteInfo_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*QuoteInfo) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*QuoteInfo_DateTime)(nil),
 	}
-}
-
-func _QuoteInfo_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*QuoteInfo)
-	// parsed_quote
-	switch x := m.ParsedQuote.(type) {
-	case *QuoteInfo_DateTime:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DateTime); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("QuoteInfo.ParsedQuote has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _QuoteInfo_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*QuoteInfo)
-	switch tag {
-	case 2: // parsed_quote.date_time
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DateTime)
-		err := b.DecodeMessage(msg)
-		m.ParsedQuote = &QuoteInfo_DateTime{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _QuoteInfo_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*QuoteInfo)
-	// parsed_quote
-	switch x := m.ParsedQuote.(type) {
-	case *QuoteInfo_DateTime:
-		s := proto.Size(x.DateTime)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Message for a date time object.
@@ -6881,78 +5816,12 @@ func (m *DeidentifyConfig) GetRecordTransformations() *RecordTransformations {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*DeidentifyConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _DeidentifyConfig_OneofMarshaler, _DeidentifyConfig_OneofUnmarshaler, _DeidentifyConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*DeidentifyConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*DeidentifyConfig_InfoTypeTransformations)(nil),
 		(*DeidentifyConfig_RecordTransformations)(nil),
 	}
-}
-
-func _DeidentifyConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*DeidentifyConfig)
-	// transformation
-	switch x := m.Transformation.(type) {
-	case *DeidentifyConfig_InfoTypeTransformations:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InfoTypeTransformations); err != nil {
-			return err
-		}
-	case *DeidentifyConfig_RecordTransformations:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RecordTransformations); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("DeidentifyConfig.Transformation has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _DeidentifyConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*DeidentifyConfig)
-	switch tag {
-	case 1: // transformation.info_type_transformations
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InfoTypeTransformations)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &DeidentifyConfig_InfoTypeTransformations{msg}
-		return true, err
-	case 2: // transformation.record_transformations
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(RecordTransformations)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &DeidentifyConfig_RecordTransformations{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _DeidentifyConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*DeidentifyConfig)
-	// transformation
-	switch x := m.Transformation.(type) {
-	case *DeidentifyConfig_InfoTypeTransformations:
-		s := proto.Size(x.InfoTypeTransformations)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *DeidentifyConfig_RecordTransformations:
-		s := proto.Size(x.RecordTransformations)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A rule for transforming a value.
@@ -7140,9 +6009,9 @@ func (m *PrimitiveTransformation) GetDateShiftConfig() *DateShiftConfig {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*PrimitiveTransformation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _PrimitiveTransformation_OneofMarshaler, _PrimitiveTransformation_OneofUnmarshaler, _PrimitiveTransformation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*PrimitiveTransformation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*PrimitiveTransformation_ReplaceConfig)(nil),
 		(*PrimitiveTransformation_RedactConfig)(nil),
 		(*PrimitiveTransformation_CharacterMaskConfig)(nil),
@@ -7154,216 +6023,6 @@ func (*PrimitiveTransformation) XXX_OneofFuncs() (func(msg proto.Message, b *pro
 		(*PrimitiveTransformation_CryptoHashConfig)(nil),
 		(*PrimitiveTransformation_DateShiftConfig)(nil),
 	}
-}
-
-func _PrimitiveTransformation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*PrimitiveTransformation)
-	// transformation
-	switch x := m.Transformation.(type) {
-	case *PrimitiveTransformation_ReplaceConfig:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReplaceConfig); err != nil {
-			return err
-		}
-	case *PrimitiveTransformation_RedactConfig:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RedactConfig); err != nil {
-			return err
-		}
-	case *PrimitiveTransformation_CharacterMaskConfig:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CharacterMaskConfig); err != nil {
-			return err
-		}
-	case *PrimitiveTransformation_CryptoReplaceFfxFpeConfig:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CryptoReplaceFfxFpeConfig); err != nil {
-			return err
-		}
-	case *PrimitiveTransformation_FixedSizeBucketingConfig:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.FixedSizeBucketingConfig); err != nil {
-			return err
-		}
-	case *PrimitiveTransformation_BucketingConfig:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.BucketingConfig); err != nil {
-			return err
-		}
-	case *PrimitiveTransformation_ReplaceWithInfoTypeConfig:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReplaceWithInfoTypeConfig); err != nil {
-			return err
-		}
-	case *PrimitiveTransformation_TimePartConfig:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TimePartConfig); err != nil {
-			return err
-		}
-	case *PrimitiveTransformation_CryptoHashConfig:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CryptoHashConfig); err != nil {
-			return err
-		}
-	case *PrimitiveTransformation_DateShiftConfig:
-		b.EncodeVarint(11<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DateShiftConfig); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("PrimitiveTransformation.Transformation has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _PrimitiveTransformation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*PrimitiveTransformation)
-	switch tag {
-	case 1: // transformation.replace_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ReplaceValueConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_ReplaceConfig{msg}
-		return true, err
-	case 2: // transformation.redact_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(RedactConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_RedactConfig{msg}
-		return true, err
-	case 3: // transformation.character_mask_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CharacterMaskConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_CharacterMaskConfig{msg}
-		return true, err
-	case 4: // transformation.crypto_replace_ffx_fpe_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CryptoReplaceFfxFpeConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_CryptoReplaceFfxFpeConfig{msg}
-		return true, err
-	case 5: // transformation.fixed_size_bucketing_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(FixedSizeBucketingConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_FixedSizeBucketingConfig{msg}
-		return true, err
-	case 6: // transformation.bucketing_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(BucketingConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_BucketingConfig{msg}
-		return true, err
-	case 7: // transformation.replace_with_info_type_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ReplaceWithInfoTypeConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_ReplaceWithInfoTypeConfig{msg}
-		return true, err
-	case 8: // transformation.time_part_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TimePartConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_TimePartConfig{msg}
-		return true, err
-	case 9: // transformation.crypto_hash_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CryptoHashConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_CryptoHashConfig{msg}
-		return true, err
-	case 11: // transformation.date_shift_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DateShiftConfig)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &PrimitiveTransformation_DateShiftConfig{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _PrimitiveTransformation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*PrimitiveTransformation)
-	// transformation
-	switch x := m.Transformation.(type) {
-	case *PrimitiveTransformation_ReplaceConfig:
-		s := proto.Size(x.ReplaceConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrimitiveTransformation_RedactConfig:
-		s := proto.Size(x.RedactConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrimitiveTransformation_CharacterMaskConfig:
-		s := proto.Size(x.CharacterMaskConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrimitiveTransformation_CryptoReplaceFfxFpeConfig:
-		s := proto.Size(x.CryptoReplaceFfxFpeConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrimitiveTransformation_FixedSizeBucketingConfig:
-		s := proto.Size(x.FixedSizeBucketingConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrimitiveTransformation_BucketingConfig:
-		s := proto.Size(x.BucketingConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrimitiveTransformation_ReplaceWithInfoTypeConfig:
-		s := proto.Size(x.ReplaceWithInfoTypeConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrimitiveTransformation_TimePartConfig:
-		s := proto.Size(x.TimePartConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrimitiveTransformation_CryptoHashConfig:
-		s := proto.Size(x.CryptoHashConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *PrimitiveTransformation_DateShiftConfig:
-		s := proto.Size(x.DateShiftConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
@@ -7634,69 +6293,12 @@ func (m *CharsToIgnore) GetCommonCharactersToIgnore() CharsToIgnore_CommonCharsT
 	return CharsToIgnore_COMMON_CHARS_TO_IGNORE_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CharsToIgnore) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CharsToIgnore_OneofMarshaler, _CharsToIgnore_OneofUnmarshaler, _CharsToIgnore_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CharsToIgnore) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CharsToIgnore_CharactersToSkip)(nil),
 		(*CharsToIgnore_CommonCharactersToIgnore)(nil),
 	}
-}
-
-func _CharsToIgnore_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CharsToIgnore)
-	// characters
-	switch x := m.Characters.(type) {
-	case *CharsToIgnore_CharactersToSkip:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.CharactersToSkip)
-	case *CharsToIgnore_CommonCharactersToIgnore:
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.CommonCharactersToIgnore))
-	case nil:
-	default:
-		return fmt.Errorf("CharsToIgnore.Characters has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CharsToIgnore_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CharsToIgnore)
-	switch tag {
-	case 1: // characters.characters_to_skip
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Characters = &CharsToIgnore_CharactersToSkip{x}
-		return true, err
-	case 2: // characters.common_characters_to_ignore
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Characters = &CharsToIgnore_CommonCharactersToIgnore{CharsToIgnore_CommonCharsToIgnore(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CharsToIgnore_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CharsToIgnore)
-	// characters
-	switch x := m.Characters.(type) {
-	case *CharsToIgnore_CharactersToSkip:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.CharactersToSkip)))
-		n += len(x.CharactersToSkip)
-	case *CharsToIgnore_CommonCharactersToIgnore:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.CommonCharactersToIgnore))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Partially mask a string by replacing a given number of characters with a
@@ -8140,83 +6742,13 @@ func (m *CryptoReplaceFfxFpeConfig) GetSurrogateInfoType() *InfoType {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CryptoReplaceFfxFpeConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CryptoReplaceFfxFpeConfig_OneofMarshaler, _CryptoReplaceFfxFpeConfig_OneofUnmarshaler, _CryptoReplaceFfxFpeConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CryptoReplaceFfxFpeConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CryptoReplaceFfxFpeConfig_CommonAlphabet)(nil),
 		(*CryptoReplaceFfxFpeConfig_CustomAlphabet)(nil),
 		(*CryptoReplaceFfxFpeConfig_Radix)(nil),
 	}
-}
-
-func _CryptoReplaceFfxFpeConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CryptoReplaceFfxFpeConfig)
-	// alphabet
-	switch x := m.Alphabet.(type) {
-	case *CryptoReplaceFfxFpeConfig_CommonAlphabet:
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.CommonAlphabet))
-	case *CryptoReplaceFfxFpeConfig_CustomAlphabet:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.CustomAlphabet)
-	case *CryptoReplaceFfxFpeConfig_Radix:
-		b.EncodeVarint(6<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Radix))
-	case nil:
-	default:
-		return fmt.Errorf("CryptoReplaceFfxFpeConfig.Alphabet has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CryptoReplaceFfxFpeConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CryptoReplaceFfxFpeConfig)
-	switch tag {
-	case 4: // alphabet.common_alphabet
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Alphabet = &CryptoReplaceFfxFpeConfig_CommonAlphabet{CryptoReplaceFfxFpeConfig_FfxCommonNativeAlphabet(x)}
-		return true, err
-	case 5: // alphabet.custom_alphabet
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Alphabet = &CryptoReplaceFfxFpeConfig_CustomAlphabet{x}
-		return true, err
-	case 6: // alphabet.radix
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Alphabet = &CryptoReplaceFfxFpeConfig_Radix{int32(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CryptoReplaceFfxFpeConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CryptoReplaceFfxFpeConfig)
-	// alphabet
-	switch x := m.Alphabet.(type) {
-	case *CryptoReplaceFfxFpeConfig_CommonAlphabet:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.CommonAlphabet))
-	case *CryptoReplaceFfxFpeConfig_CustomAlphabet:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.CustomAlphabet)))
-		n += len(x.CustomAlphabet)
-	case *CryptoReplaceFfxFpeConfig_Radix:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Radix))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // This is a data encryption key (DEK) (as opposed to
@@ -8310,97 +6842,13 @@ func (m *CryptoKey) GetKmsWrapped() *KmsWrappedCryptoKey {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CryptoKey) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CryptoKey_OneofMarshaler, _CryptoKey_OneofUnmarshaler, _CryptoKey_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CryptoKey) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CryptoKey_Transient)(nil),
 		(*CryptoKey_Unwrapped)(nil),
 		(*CryptoKey_KmsWrapped)(nil),
 	}
-}
-
-func _CryptoKey_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CryptoKey)
-	// source
-	switch x := m.Source.(type) {
-	case *CryptoKey_Transient:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Transient); err != nil {
-			return err
-		}
-	case *CryptoKey_Unwrapped:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Unwrapped); err != nil {
-			return err
-		}
-	case *CryptoKey_KmsWrapped:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.KmsWrapped); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("CryptoKey.Source has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CryptoKey_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CryptoKey)
-	switch tag {
-	case 1: // source.transient
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransientCryptoKey)
-		err := b.DecodeMessage(msg)
-		m.Source = &CryptoKey_Transient{msg}
-		return true, err
-	case 2: // source.unwrapped
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(UnwrappedCryptoKey)
-		err := b.DecodeMessage(msg)
-		m.Source = &CryptoKey_Unwrapped{msg}
-		return true, err
-	case 3: // source.kms_wrapped
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(KmsWrappedCryptoKey)
-		err := b.DecodeMessage(msg)
-		m.Source = &CryptoKey_KmsWrapped{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CryptoKey_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CryptoKey)
-	// source
-	switch x := m.Source.(type) {
-	case *CryptoKey_Transient:
-		s := proto.Size(x.Transient)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *CryptoKey_Unwrapped:
-		s := proto.Size(x.Unwrapped)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *CryptoKey_KmsWrapped:
-		s := proto.Size(x.KmsWrapped)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Use this to have a random data crypto key generated.
@@ -8644,59 +7092,11 @@ func (m *DateShiftConfig) GetCryptoKey() *CryptoKey {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*DateShiftConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _DateShiftConfig_OneofMarshaler, _DateShiftConfig_OneofUnmarshaler, _DateShiftConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*DateShiftConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*DateShiftConfig_CryptoKey)(nil),
 	}
-}
-
-func _DateShiftConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*DateShiftConfig)
-	// method
-	switch x := m.Method.(type) {
-	case *DateShiftConfig_CryptoKey:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CryptoKey); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("DateShiftConfig.Method has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _DateShiftConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*DateShiftConfig)
-	switch tag {
-	case 4: // method.crypto_key
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CryptoKey)
-		err := b.DecodeMessage(msg)
-		m.Method = &DateShiftConfig_CryptoKey{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _DateShiftConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*DateShiftConfig)
-	// method
-	switch x := m.Method.(type) {
-	case *DateShiftConfig_CryptoKey:
-		s := proto.Size(x.CryptoKey)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A type of transformation that will scan unstructured text and
@@ -8902,78 +7302,12 @@ func (m *FieldTransformation) GetInfoTypeTransformations() *InfoTypeTransformati
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*FieldTransformation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _FieldTransformation_OneofMarshaler, _FieldTransformation_OneofUnmarshaler, _FieldTransformation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*FieldTransformation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*FieldTransformation_PrimitiveTransformation)(nil),
 		(*FieldTransformation_InfoTypeTransformations)(nil),
 	}
-}
-
-func _FieldTransformation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*FieldTransformation)
-	// transformation
-	switch x := m.Transformation.(type) {
-	case *FieldTransformation_PrimitiveTransformation:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.PrimitiveTransformation); err != nil {
-			return err
-		}
-	case *FieldTransformation_InfoTypeTransformations:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InfoTypeTransformations); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("FieldTransformation.Transformation has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _FieldTransformation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*FieldTransformation)
-	switch tag {
-	case 4: // transformation.primitive_transformation
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PrimitiveTransformation)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &FieldTransformation_PrimitiveTransformation{msg}
-		return true, err
-	case 5: // transformation.info_type_transformations
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InfoTypeTransformations)
-		err := b.DecodeMessage(msg)
-		m.Transformation = &FieldTransformation_InfoTypeTransformations{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _FieldTransformation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*FieldTransformation)
-	// transformation
-	switch x := m.Transformation.(type) {
-	case *FieldTransformation_PrimitiveTransformation:
-		s := proto.Size(x.PrimitiveTransformation)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *FieldTransformation_InfoTypeTransformations:
-		s := proto.Size(x.InfoTypeTransformations)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A type of transformation that is applied over structured data such as a
@@ -9298,59 +7632,11 @@ func (m *RecordCondition_Expressions) GetConditions() *RecordCondition_Condition
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RecordCondition_Expressions) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RecordCondition_Expressions_OneofMarshaler, _RecordCondition_Expressions_OneofUnmarshaler, _RecordCondition_Expressions_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RecordCondition_Expressions) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RecordCondition_Expressions_Conditions)(nil),
 	}
-}
-
-func _RecordCondition_Expressions_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RecordCondition_Expressions)
-	// type
-	switch x := m.Type.(type) {
-	case *RecordCondition_Expressions_Conditions:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Conditions); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("RecordCondition_Expressions.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RecordCondition_Expressions_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RecordCondition_Expressions)
-	switch tag {
-	case 3: // type.conditions
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(RecordCondition_Conditions)
-		err := b.DecodeMessage(msg)
-		m.Type = &RecordCondition_Expressions_Conditions{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RecordCondition_Expressions_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RecordCondition_Expressions)
-	// type
-	switch x := m.Type.(type) {
-	case *RecordCondition_Expressions_Conditions:
-		s := proto.Size(x.Conditions)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Overview of the modifications that occurred.
@@ -9619,59 +7905,11 @@ func (m *Schedule) GetRecurrencePeriodDuration() *duration.Duration {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Schedule) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Schedule_OneofMarshaler, _Schedule_OneofUnmarshaler, _Schedule_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Schedule) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Schedule_RecurrencePeriodDuration)(nil),
 	}
-}
-
-func _Schedule_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Schedule)
-	// option
-	switch x := m.Option.(type) {
-	case *Schedule_RecurrencePeriodDuration:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RecurrencePeriodDuration); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Schedule.Option has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Schedule_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Schedule)
-	switch tag {
-	case 1: // option.recurrence_period_duration
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(duration.Duration)
-		err := b.DecodeMessage(msg)
-		m.Option = &Schedule_RecurrencePeriodDuration{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Schedule_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Schedule)
-	// option
-	switch x := m.Option.(type) {
-	case *Schedule_RecurrencePeriodDuration:
-		s := proto.Size(x.RecurrencePeriodDuration)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The inspectTemplate contains a configuration (set of types of sensitive data
@@ -10059,59 +8297,11 @@ func (m *JobTrigger) GetStatus() JobTrigger_Status {
 	return JobTrigger_STATUS_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*JobTrigger) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _JobTrigger_OneofMarshaler, _JobTrigger_OneofUnmarshaler, _JobTrigger_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*JobTrigger) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*JobTrigger_InspectJob)(nil),
 	}
-}
-
-func _JobTrigger_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*JobTrigger)
-	// job
-	switch x := m.Job.(type) {
-	case *JobTrigger_InspectJob:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InspectJob); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("JobTrigger.Job has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _JobTrigger_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*JobTrigger)
-	switch tag {
-	case 4: // job.inspect_job
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InspectJobConfig)
-		err := b.DecodeMessage(msg)
-		m.Job = &JobTrigger_InspectJob{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _JobTrigger_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*JobTrigger)
-	// job
-	switch x := m.Job.(type) {
-	case *JobTrigger_InspectJob:
-		s := proto.Size(x.InspectJob)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // What event needs to occur for a new job to be started.
@@ -10173,59 +8363,11 @@ func (m *JobTrigger_Trigger) GetSchedule() *Schedule {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*JobTrigger_Trigger) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _JobTrigger_Trigger_OneofMarshaler, _JobTrigger_Trigger_OneofUnmarshaler, _JobTrigger_Trigger_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*JobTrigger_Trigger) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*JobTrigger_Trigger_Schedule)(nil),
 	}
-}
-
-func _JobTrigger_Trigger_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*JobTrigger_Trigger)
-	// trigger
-	switch x := m.Trigger.(type) {
-	case *JobTrigger_Trigger_Schedule:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Schedule); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("JobTrigger_Trigger.Trigger has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _JobTrigger_Trigger_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*JobTrigger_Trigger)
-	switch tag {
-	case 1: // trigger.schedule
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Schedule)
-		err := b.DecodeMessage(msg)
-		m.Trigger = &JobTrigger_Trigger_Schedule{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _JobTrigger_Trigger_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*JobTrigger_Trigger)
-	// trigger
-	switch x := m.Trigger.(type) {
-	case *JobTrigger_Trigger_Schedule:
-		s := proto.Size(x.Schedule)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A task to execute on the completion of a job.
@@ -10316,97 +8458,13 @@ func (m *Action) GetPublishSummaryToCscc() *Action_PublishSummaryToCscc {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Action) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Action_OneofMarshaler, _Action_OneofUnmarshaler, _Action_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Action) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Action_SaveFindings_)(nil),
 		(*Action_PubSub)(nil),
 		(*Action_PublishSummaryToCscc_)(nil),
 	}
-}
-
-func _Action_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Action)
-	// action
-	switch x := m.Action.(type) {
-	case *Action_SaveFindings_:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.SaveFindings); err != nil {
-			return err
-		}
-	case *Action_PubSub:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.PubSub); err != nil {
-			return err
-		}
-	case *Action_PublishSummaryToCscc_:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.PublishSummaryToCscc); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Action.Action has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Action_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Action)
-	switch tag {
-	case 1: // action.save_findings
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Action_SaveFindings)
-		err := b.DecodeMessage(msg)
-		m.Action = &Action_SaveFindings_{msg}
-		return true, err
-	case 2: // action.pub_sub
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Action_PublishToPubSub)
-		err := b.DecodeMessage(msg)
-		m.Action = &Action_PubSub{msg}
-		return true, err
-	case 3: // action.publish_summary_to_cscc
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Action_PublishSummaryToCscc)
-		err := b.DecodeMessage(msg)
-		m.Action = &Action_PublishSummaryToCscc_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Action_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Action)
-	// action
-	switch x := m.Action.(type) {
-	case *Action_SaveFindings_:
-		s := proto.Size(x.SaveFindings)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Action_PubSub:
-		s := proto.Size(x.PubSub)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Action_PublishSummaryToCscc_:
-		s := proto.Size(x.PublishSummaryToCscc)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // If set, the detailed findings will be persisted to the specified
@@ -11144,78 +9202,12 @@ func (m *CreateDlpJobRequest) GetJobId() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CreateDlpJobRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CreateDlpJobRequest_OneofMarshaler, _CreateDlpJobRequest_OneofUnmarshaler, _CreateDlpJobRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CreateDlpJobRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CreateDlpJobRequest_InspectJob)(nil),
 		(*CreateDlpJobRequest_RiskJob)(nil),
 	}
-}
-
-func _CreateDlpJobRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CreateDlpJobRequest)
-	// job
-	switch x := m.Job.(type) {
-	case *CreateDlpJobRequest_InspectJob:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InspectJob); err != nil {
-			return err
-		}
-	case *CreateDlpJobRequest_RiskJob:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RiskJob); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("CreateDlpJobRequest.Job has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CreateDlpJobRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CreateDlpJobRequest)
-	switch tag {
-	case 2: // job.inspect_job
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InspectJobConfig)
-		err := b.DecodeMessage(msg)
-		m.Job = &CreateDlpJobRequest_InspectJob{msg}
-		return true, err
-	case 3: // job.risk_job
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(RiskAnalysisJobConfig)
-		err := b.DecodeMessage(msg)
-		m.Job = &CreateDlpJobRequest_RiskJob{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CreateDlpJobRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CreateDlpJobRequest)
-	// job
-	switch x := m.Job.(type) {
-	case *CreateDlpJobRequest_InspectJob:
-		s := proto.Size(x.InspectJob)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *CreateDlpJobRequest_RiskJob:
-		s := proto.Size(x.RiskJob)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request message for ListJobTriggers.
@@ -11610,78 +9602,12 @@ func (m *DlpJob) GetErrors() []*Error {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*DlpJob) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _DlpJob_OneofMarshaler, _DlpJob_OneofUnmarshaler, _DlpJob_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*DlpJob) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*DlpJob_RiskDetails)(nil),
 		(*DlpJob_InspectDetails)(nil),
 	}
-}
-
-func _DlpJob_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*DlpJob)
-	// details
-	switch x := m.Details.(type) {
-	case *DlpJob_RiskDetails:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RiskDetails); err != nil {
-			return err
-		}
-	case *DlpJob_InspectDetails:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InspectDetails); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("DlpJob.Details has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _DlpJob_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*DlpJob)
-	switch tag {
-	case 4: // details.risk_details
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AnalyzeDataSourceRiskDetails)
-		err := b.DecodeMessage(msg)
-		m.Details = &DlpJob_RiskDetails{msg}
-		return true, err
-	case 5: // details.inspect_details
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InspectDataSourceDetails)
-		err := b.DecodeMessage(msg)
-		m.Details = &DlpJob_InspectDetails{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _DlpJob_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*DlpJob)
-	// details
-	switch x := m.Details.(type) {
-	case *DlpJob_RiskDetails:
-		s := proto.Size(x.RiskDetails)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *DlpJob_InspectDetails:
-		s := proto.Size(x.InspectDetails)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The request message for [DlpJobs.GetDlpJob][].
@@ -12412,78 +10338,12 @@ func (m *LargeCustomDictionaryConfig) GetBigQueryField() *BigQueryField {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*LargeCustomDictionaryConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _LargeCustomDictionaryConfig_OneofMarshaler, _LargeCustomDictionaryConfig_OneofUnmarshaler, _LargeCustomDictionaryConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*LargeCustomDictionaryConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*LargeCustomDictionaryConfig_CloudStorageFileSet)(nil),
 		(*LargeCustomDictionaryConfig_BigQueryField)(nil),
 	}
-}
-
-func _LargeCustomDictionaryConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*LargeCustomDictionaryConfig)
-	// source
-	switch x := m.Source.(type) {
-	case *LargeCustomDictionaryConfig_CloudStorageFileSet:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CloudStorageFileSet); err != nil {
-			return err
-		}
-	case *LargeCustomDictionaryConfig_BigQueryField:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.BigQueryField); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("LargeCustomDictionaryConfig.Source has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _LargeCustomDictionaryConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*LargeCustomDictionaryConfig)
-	switch tag {
-	case 2: // source.cloud_storage_file_set
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CloudStorageFileSet)
-		err := b.DecodeMessage(msg)
-		m.Source = &LargeCustomDictionaryConfig_CloudStorageFileSet{msg}
-		return true, err
-	case 3: // source.big_query_field
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(BigQueryField)
-		err := b.DecodeMessage(msg)
-		m.Source = &LargeCustomDictionaryConfig_BigQueryField{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _LargeCustomDictionaryConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*LargeCustomDictionaryConfig)
-	// source
-	switch x := m.Source.(type) {
-	case *LargeCustomDictionaryConfig_CloudStorageFileSet:
-		s := proto.Size(x.CloudStorageFileSet)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *LargeCustomDictionaryConfig_BigQueryField:
-		s := proto.Size(x.BigQueryField)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Configuration for a StoredInfoType.
@@ -12563,59 +10423,11 @@ func (m *StoredInfoTypeConfig) GetLargeCustomDictionary() *LargeCustomDictionary
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*StoredInfoTypeConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _StoredInfoTypeConfig_OneofMarshaler, _StoredInfoTypeConfig_OneofUnmarshaler, _StoredInfoTypeConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*StoredInfoTypeConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*StoredInfoTypeConfig_LargeCustomDictionary)(nil),
 	}
-}
-
-func _StoredInfoTypeConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*StoredInfoTypeConfig)
-	// type
-	switch x := m.Type.(type) {
-	case *StoredInfoTypeConfig_LargeCustomDictionary:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.LargeCustomDictionary); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("StoredInfoTypeConfig.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _StoredInfoTypeConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*StoredInfoTypeConfig)
-	switch tag {
-	case 3: // type.large_custom_dictionary
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(LargeCustomDictionaryConfig)
-		err := b.DecodeMessage(msg)
-		m.Type = &StoredInfoTypeConfig_LargeCustomDictionary{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _StoredInfoTypeConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*StoredInfoTypeConfig)
-	// type
-	switch x := m.Type.(type) {
-	case *StoredInfoTypeConfig_LargeCustomDictionary:
-		s := proto.Size(x.LargeCustomDictionary)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Version of a StoredInfoType, including the configuration used to build it,

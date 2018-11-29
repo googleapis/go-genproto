@@ -18,7 +18,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A declaration.
 type Decl struct {
@@ -122,78 +122,12 @@ func (m *Decl) GetFunction() *FunctionDecl {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Decl) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Decl_OneofMarshaler, _Decl_OneofUnmarshaler, _Decl_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Decl) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Decl_Ident)(nil),
 		(*Decl_Function)(nil),
 	}
-}
-
-func _Decl_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Decl)
-	// kind
-	switch x := m.Kind.(type) {
-	case *Decl_Ident:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Ident); err != nil {
-			return err
-		}
-	case *Decl_Function:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Function); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Decl.Kind has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Decl_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Decl)
-	switch tag {
-	case 4: // kind.ident
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(IdentDecl)
-		err := b.DecodeMessage(msg)
-		m.Kind = &Decl_Ident{msg}
-		return true, err
-	case 5: // kind.function
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(FunctionDecl)
-		err := b.DecodeMessage(msg)
-		m.Kind = &Decl_Function{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Decl_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Decl)
-	// kind
-	switch x := m.Kind.(type) {
-	case *Decl_Ident:
-		s := proto.Size(x.Ident)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Decl_Function:
-		s := proto.Size(x.Function)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The declared type of a variable.

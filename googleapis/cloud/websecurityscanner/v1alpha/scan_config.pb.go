@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Type of user agents used for scanning.
 type ScanConfig_UserAgent int32
@@ -290,78 +290,12 @@ func (m *ScanConfig_Authentication) GetCustomAccount() *ScanConfig_Authenticatio
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ScanConfig_Authentication) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ScanConfig_Authentication_OneofMarshaler, _ScanConfig_Authentication_OneofUnmarshaler, _ScanConfig_Authentication_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ScanConfig_Authentication) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ScanConfig_Authentication_GoogleAccount_)(nil),
 		(*ScanConfig_Authentication_CustomAccount_)(nil),
 	}
-}
-
-func _ScanConfig_Authentication_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ScanConfig_Authentication)
-	// authentication
-	switch x := m.Authentication.(type) {
-	case *ScanConfig_Authentication_GoogleAccount_:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.GoogleAccount); err != nil {
-			return err
-		}
-	case *ScanConfig_Authentication_CustomAccount_:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CustomAccount); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ScanConfig_Authentication.Authentication has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ScanConfig_Authentication_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ScanConfig_Authentication)
-	switch tag {
-	case 1: // authentication.google_account
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ScanConfig_Authentication_GoogleAccount)
-		err := b.DecodeMessage(msg)
-		m.Authentication = &ScanConfig_Authentication_GoogleAccount_{msg}
-		return true, err
-	case 2: // authentication.custom_account
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ScanConfig_Authentication_CustomAccount)
-		err := b.DecodeMessage(msg)
-		m.Authentication = &ScanConfig_Authentication_CustomAccount_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ScanConfig_Authentication_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ScanConfig_Authentication)
-	// authentication
-	switch x := m.Authentication.(type) {
-	case *ScanConfig_Authentication_GoogleAccount_:
-		s := proto.Size(x.GoogleAccount)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ScanConfig_Authentication_CustomAccount_:
-		s := proto.Size(x.CustomAccount)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Describes authentication configuration that uses a Google account.

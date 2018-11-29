@@ -24,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // This resource represents a long-running operation that is the result of a
 // network API call.
@@ -138,78 +138,12 @@ func (m *Operation) GetResponse() *any.Any {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Operation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Operation_OneofMarshaler, _Operation_OneofUnmarshaler, _Operation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Operation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Operation_Error)(nil),
 		(*Operation_Response)(nil),
 	}
-}
-
-func _Operation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Operation)
-	// result
-	switch x := m.Result.(type) {
-	case *Operation_Error:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Error); err != nil {
-			return err
-		}
-	case *Operation_Response:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Response); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Operation.Result has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Operation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Operation)
-	switch tag {
-	case 4: // result.error
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(status.Status)
-		err := b.DecodeMessage(msg)
-		m.Result = &Operation_Error{msg}
-		return true, err
-	case 5: // result.response
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(any.Any)
-		err := b.DecodeMessage(msg)
-		m.Result = &Operation_Response{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Operation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Operation)
-	// result
-	switch x := m.Result.(type) {
-	case *Operation_Error:
-		s := proto.Size(x.Error)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Operation_Response:
-		s := proto.Size(x.Response)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The request message for [Operations.GetOperation][google.longrunning.Operations.GetOperation].

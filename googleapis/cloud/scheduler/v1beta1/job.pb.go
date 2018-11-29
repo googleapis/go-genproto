@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // State of the job.
 type Job_State int32
@@ -295,97 +295,13 @@ func (m *Job) GetRetryConfig() *RetryConfig {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Job) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Job_OneofMarshaler, _Job_OneofUnmarshaler, _Job_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Job) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Job_PubsubTarget)(nil),
 		(*Job_AppEngineHttpTarget)(nil),
 		(*Job_HttpTarget)(nil),
 	}
-}
-
-func _Job_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Job)
-	// target
-	switch x := m.Target.(type) {
-	case *Job_PubsubTarget:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.PubsubTarget); err != nil {
-			return err
-		}
-	case *Job_AppEngineHttpTarget:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AppEngineHttpTarget); err != nil {
-			return err
-		}
-	case *Job_HttpTarget:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.HttpTarget); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Job.Target has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Job_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Job)
-	switch tag {
-	case 4: // target.pubsub_target
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PubsubTarget)
-		err := b.DecodeMessage(msg)
-		m.Target = &Job_PubsubTarget{msg}
-		return true, err
-	case 5: // target.app_engine_http_target
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AppEngineHttpTarget)
-		err := b.DecodeMessage(msg)
-		m.Target = &Job_AppEngineHttpTarget{msg}
-		return true, err
-	case 6: // target.http_target
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(HttpTarget)
-		err := b.DecodeMessage(msg)
-		m.Target = &Job_HttpTarget{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Job_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Job)
-	// target
-	switch x := m.Target.(type) {
-	case *Job_PubsubTarget:
-		s := proto.Size(x.PubsubTarget)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Job_AppEngineHttpTarget:
-		s := proto.Size(x.AppEngineHttpTarget)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Job_HttpTarget:
-		s := proto.Size(x.HttpTarget)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Settings that determine the retry behavior.

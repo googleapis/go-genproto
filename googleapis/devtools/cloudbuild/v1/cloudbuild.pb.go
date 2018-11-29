@@ -28,7 +28,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Possible status of a build or build step.
 type Build_Status int32
@@ -565,85 +565,13 @@ func (m *RepoSource) GetDir() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RepoSource) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RepoSource_OneofMarshaler, _RepoSource_OneofUnmarshaler, _RepoSource_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RepoSource) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RepoSource_BranchName)(nil),
 		(*RepoSource_TagName)(nil),
 		(*RepoSource_CommitSha)(nil),
 	}
-}
-
-func _RepoSource_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RepoSource)
-	// revision
-	switch x := m.Revision.(type) {
-	case *RepoSource_BranchName:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.BranchName)
-	case *RepoSource_TagName:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.TagName)
-	case *RepoSource_CommitSha:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.CommitSha)
-	case nil:
-	default:
-		return fmt.Errorf("RepoSource.Revision has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RepoSource_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RepoSource)
-	switch tag {
-	case 3: // revision.branch_name
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Revision = &RepoSource_BranchName{x}
-		return true, err
-	case 4: // revision.tag_name
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Revision = &RepoSource_TagName{x}
-		return true, err
-	case 5: // revision.commit_sha
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Revision = &RepoSource_CommitSha{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RepoSource_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RepoSource)
-	// revision
-	switch x := m.Revision.(type) {
-	case *RepoSource_BranchName:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.BranchName)))
-		n += len(x.BranchName)
-	case *RepoSource_TagName:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.TagName)))
-		n += len(x.TagName)
-	case *RepoSource_CommitSha:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.CommitSha)))
-		n += len(x.CommitSha)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Location of the source in a supported storage service.
@@ -721,78 +649,12 @@ func (m *Source) GetRepoSource() *RepoSource {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Source) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Source_OneofMarshaler, _Source_OneofUnmarshaler, _Source_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Source) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Source_StorageSource)(nil),
 		(*Source_RepoSource)(nil),
 	}
-}
-
-func _Source_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Source)
-	// source
-	switch x := m.Source.(type) {
-	case *Source_StorageSource:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.StorageSource); err != nil {
-			return err
-		}
-	case *Source_RepoSource:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RepoSource); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Source.Source has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Source_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Source)
-	switch tag {
-	case 2: // source.storage_source
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StorageSource)
-		err := b.DecodeMessage(msg)
-		m.Source = &Source_StorageSource{msg}
-		return true, err
-	case 3: // source.repo_source
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(RepoSource)
-		err := b.DecodeMessage(msg)
-		m.Source = &Source_RepoSource{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Source_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Source)
-	// source
-	switch x := m.Source.(type) {
-	case *Source_StorageSource:
-		s := proto.Size(x.StorageSource)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Source_RepoSource:
-		s := proto.Size(x.RepoSource)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // An image built by the pipeline.
@@ -2404,74 +2266,12 @@ func (m *BuildTrigger) GetIncludedFiles() []string {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*BuildTrigger) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _BuildTrigger_OneofMarshaler, _BuildTrigger_OneofUnmarshaler, _BuildTrigger_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*BuildTrigger) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*BuildTrigger_Build)(nil),
 		(*BuildTrigger_Filename)(nil),
 	}
-}
-
-func _BuildTrigger_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*BuildTrigger)
-	// build_template
-	switch x := m.BuildTemplate.(type) {
-	case *BuildTrigger_Build:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Build); err != nil {
-			return err
-		}
-	case *BuildTrigger_Filename:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Filename)
-	case nil:
-	default:
-		return fmt.Errorf("BuildTrigger.BuildTemplate has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _BuildTrigger_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*BuildTrigger)
-	switch tag {
-	case 4: // build_template.build
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Build)
-		err := b.DecodeMessage(msg)
-		m.BuildTemplate = &BuildTrigger_Build{msg}
-		return true, err
-	case 8: // build_template.filename
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.BuildTemplate = &BuildTrigger_Filename{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _BuildTrigger_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*BuildTrigger)
-	// build_template
-	switch x := m.BuildTemplate.(type) {
-	case *BuildTrigger_Build:
-		s := proto.Size(x.Build)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *BuildTrigger_Filename:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Filename)))
-		n += len(x.Filename)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request to create a new `BuildTrigger`.

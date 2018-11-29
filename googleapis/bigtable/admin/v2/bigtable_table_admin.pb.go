@@ -25,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Request message for
 // [google.bigtable.admin.v2.BigtableTableAdmin.CreateTable][google.bigtable.admin.v2.BigtableTableAdmin.CreateTable]
@@ -311,73 +311,12 @@ func (m *DropRowRangeRequest) GetDeleteAllDataFromTable() bool {
 	return false
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*DropRowRangeRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _DropRowRangeRequest_OneofMarshaler, _DropRowRangeRequest_OneofUnmarshaler, _DropRowRangeRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*DropRowRangeRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*DropRowRangeRequest_RowKeyPrefix)(nil),
 		(*DropRowRangeRequest_DeleteAllDataFromTable)(nil),
 	}
-}
-
-func _DropRowRangeRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*DropRowRangeRequest)
-	// target
-	switch x := m.Target.(type) {
-	case *DropRowRangeRequest_RowKeyPrefix:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.RowKeyPrefix)
-	case *DropRowRangeRequest_DeleteAllDataFromTable:
-		t := uint64(0)
-		if x.DeleteAllDataFromTable {
-			t = 1
-		}
-		b.EncodeVarint(3<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case nil:
-	default:
-		return fmt.Errorf("DropRowRangeRequest.Target has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _DropRowRangeRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*DropRowRangeRequest)
-	switch tag {
-	case 2: // target.row_key_prefix
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Target = &DropRowRangeRequest_RowKeyPrefix{x}
-		return true, err
-	case 3: // target.delete_all_data_from_table
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Target = &DropRowRangeRequest_DeleteAllDataFromTable{x != 0}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _DropRowRangeRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*DropRowRangeRequest)
-	// target
-	switch x := m.Target.(type) {
-	case *DropRowRangeRequest_RowKeyPrefix:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.RowKeyPrefix)))
-		n += len(x.RowKeyPrefix)
-	case *DropRowRangeRequest_DeleteAllDataFromTable:
-		n += 1 // tag and wire
-		n += 1
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request message for
@@ -762,96 +701,13 @@ func (m *ModifyColumnFamiliesRequest_Modification) GetDrop() bool {
 	return false
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ModifyColumnFamiliesRequest_Modification) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ModifyColumnFamiliesRequest_Modification_OneofMarshaler, _ModifyColumnFamiliesRequest_Modification_OneofUnmarshaler, _ModifyColumnFamiliesRequest_Modification_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ModifyColumnFamiliesRequest_Modification) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ModifyColumnFamiliesRequest_Modification_Create)(nil),
 		(*ModifyColumnFamiliesRequest_Modification_Update)(nil),
 		(*ModifyColumnFamiliesRequest_Modification_Drop)(nil),
 	}
-}
-
-func _ModifyColumnFamiliesRequest_Modification_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ModifyColumnFamiliesRequest_Modification)
-	// mod
-	switch x := m.Mod.(type) {
-	case *ModifyColumnFamiliesRequest_Modification_Create:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Create); err != nil {
-			return err
-		}
-	case *ModifyColumnFamiliesRequest_Modification_Update:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Update); err != nil {
-			return err
-		}
-	case *ModifyColumnFamiliesRequest_Modification_Drop:
-		t := uint64(0)
-		if x.Drop {
-			t = 1
-		}
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case nil:
-	default:
-		return fmt.Errorf("ModifyColumnFamiliesRequest_Modification.Mod has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ModifyColumnFamiliesRequest_Modification_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ModifyColumnFamiliesRequest_Modification)
-	switch tag {
-	case 2: // mod.create
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ColumnFamily)
-		err := b.DecodeMessage(msg)
-		m.Mod = &ModifyColumnFamiliesRequest_Modification_Create{msg}
-		return true, err
-	case 3: // mod.update
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ColumnFamily)
-		err := b.DecodeMessage(msg)
-		m.Mod = &ModifyColumnFamiliesRequest_Modification_Update{msg}
-		return true, err
-	case 4: // mod.drop
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Mod = &ModifyColumnFamiliesRequest_Modification_Drop{x != 0}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ModifyColumnFamiliesRequest_Modification_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ModifyColumnFamiliesRequest_Modification)
-	// mod
-	switch x := m.Mod.(type) {
-	case *ModifyColumnFamiliesRequest_Modification_Create:
-		s := proto.Size(x.Create)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ModifyColumnFamiliesRequest_Modification_Update:
-		s := proto.Size(x.Update)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ModifyColumnFamiliesRequest_Modification_Drop:
-		n += 1 // tag and wire
-		n += 1
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request message for

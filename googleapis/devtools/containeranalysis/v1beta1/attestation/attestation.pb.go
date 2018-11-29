@@ -18,7 +18,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Type (for example schema) of the attestation payload that was signed.
 type PgpSignedAttestation_ContentType int32
@@ -150,55 +150,11 @@ func (m *PgpSignedAttestation) GetPgpKeyId() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*PgpSignedAttestation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _PgpSignedAttestation_OneofMarshaler, _PgpSignedAttestation_OneofUnmarshaler, _PgpSignedAttestation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*PgpSignedAttestation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*PgpSignedAttestation_PgpKeyId)(nil),
 	}
-}
-
-func _PgpSignedAttestation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*PgpSignedAttestation)
-	// key_id
-	switch x := m.KeyId.(type) {
-	case *PgpSignedAttestation_PgpKeyId:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.PgpKeyId)
-	case nil:
-	default:
-		return fmt.Errorf("PgpSignedAttestation.KeyId has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _PgpSignedAttestation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*PgpSignedAttestation)
-	switch tag {
-	case 2: // key_id.pgp_key_id
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.KeyId = &PgpSignedAttestation_PgpKeyId{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _PgpSignedAttestation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*PgpSignedAttestation)
-	// key_id
-	switch x := m.KeyId.(type) {
-	case *PgpSignedAttestation_PgpKeyId:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.PgpKeyId)))
-		n += len(x.PgpKeyId)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Note kind that represents a logical attestation "role" or "authority". For
@@ -407,59 +363,11 @@ func (m *Attestation) GetPgpSignedAttestation() *PgpSignedAttestation {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Attestation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Attestation_OneofMarshaler, _Attestation_OneofUnmarshaler, _Attestation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Attestation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Attestation_PgpSignedAttestation)(nil),
 	}
-}
-
-func _Attestation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Attestation)
-	// signature
-	switch x := m.Signature.(type) {
-	case *Attestation_PgpSignedAttestation:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.PgpSignedAttestation); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Attestation.Signature has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Attestation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Attestation)
-	switch tag {
-	case 1: // signature.pgp_signed_attestation
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PgpSignedAttestation)
-		err := b.DecodeMessage(msg)
-		m.Signature = &Attestation_PgpSignedAttestation{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Attestation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Attestation)
-	// signature
-	switch x := m.Signature.(type) {
-	case *Attestation_PgpSignedAttestation:
-		s := proto.Size(x.PgpSignedAttestation)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Evaluation results of a model.
 type ModelEvaluation struct {
@@ -143,78 +143,12 @@ func (m *ModelEvaluation) GetEvaluatedExampleCount() int32 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ModelEvaluation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ModelEvaluation_OneofMarshaler, _ModelEvaluation_OneofUnmarshaler, _ModelEvaluation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ModelEvaluation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ModelEvaluation_ClassificationEvaluationMetrics)(nil),
 		(*ModelEvaluation_TranslationEvaluationMetrics)(nil),
 	}
-}
-
-func _ModelEvaluation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ModelEvaluation)
-	// metrics
-	switch x := m.Metrics.(type) {
-	case *ModelEvaluation_ClassificationEvaluationMetrics:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ClassificationEvaluationMetrics); err != nil {
-			return err
-		}
-	case *ModelEvaluation_TranslationEvaluationMetrics:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TranslationEvaluationMetrics); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ModelEvaluation.Metrics has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ModelEvaluation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ModelEvaluation)
-	switch tag {
-	case 8: // metrics.classification_evaluation_metrics
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ClassificationEvaluationMetrics)
-		err := b.DecodeMessage(msg)
-		m.Metrics = &ModelEvaluation_ClassificationEvaluationMetrics{msg}
-		return true, err
-	case 9: // metrics.translation_evaluation_metrics
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TranslationEvaluationMetrics)
-		err := b.DecodeMessage(msg)
-		m.Metrics = &ModelEvaluation_TranslationEvaluationMetrics{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ModelEvaluation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ModelEvaluation)
-	// metrics
-	switch x := m.Metrics.(type) {
-	case *ModelEvaluation_ClassificationEvaluationMetrics:
-		s := proto.Size(x.ClassificationEvaluationMetrics)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ModelEvaluation_TranslationEvaluationMetrics:
-		s := proto.Size(x.TranslationEvaluationMetrics)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

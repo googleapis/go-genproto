@@ -26,7 +26,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The types of disks that may be attached to VMs.
 type PipelineResources_Disk_Type int32
@@ -321,59 +321,11 @@ func (m *Pipeline) GetPipelineId() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Pipeline) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Pipeline_OneofMarshaler, _Pipeline_OneofUnmarshaler, _Pipeline_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Pipeline) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Pipeline_Docker)(nil),
 	}
-}
-
-func _Pipeline_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Pipeline)
-	// executor
-	switch x := m.Executor.(type) {
-	case *Pipeline_Docker:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Docker); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Pipeline.Executor has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Pipeline_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Pipeline)
-	switch tag {
-	case 5: // executor.docker
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DockerExecutor)
-		err := b.DecodeMessage(msg)
-		m.Executor = &Pipeline_Docker{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Pipeline_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Pipeline)
-	// executor
-	switch x := m.Executor.(type) {
-	case *Pipeline_Docker:
-		s := proto.Size(x.Docker)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The request to create a pipeline. The pipeline field here should not have
@@ -644,74 +596,12 @@ func (m *RunPipelineRequest) GetPipelineArgs() *RunPipelineArgs {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RunPipelineRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RunPipelineRequest_OneofMarshaler, _RunPipelineRequest_OneofUnmarshaler, _RunPipelineRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RunPipelineRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RunPipelineRequest_PipelineId)(nil),
 		(*RunPipelineRequest_EphemeralPipeline)(nil),
 	}
-}
-
-func _RunPipelineRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RunPipelineRequest)
-	// pipeline
-	switch x := m.Pipeline.(type) {
-	case *RunPipelineRequest_PipelineId:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.PipelineId)
-	case *RunPipelineRequest_EphemeralPipeline:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.EphemeralPipeline); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("RunPipelineRequest.Pipeline has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RunPipelineRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RunPipelineRequest)
-	switch tag {
-	case 1: // pipeline.pipeline_id
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Pipeline = &RunPipelineRequest_PipelineId{x}
-		return true, err
-	case 2: // pipeline.ephemeral_pipeline
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Pipeline)
-		err := b.DecodeMessage(msg)
-		m.Pipeline = &RunPipelineRequest_EphemeralPipeline{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RunPipelineRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RunPipelineRequest)
-	// pipeline
-	switch x := m.Pipeline.(type) {
-	case *RunPipelineRequest_PipelineId:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.PipelineId)))
-		n += len(x.PipelineId)
-	case *RunPipelineRequest_EphemeralPipeline:
-		s := proto.Size(x.EphemeralPipeline)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A request to get a saved pipeline by id.

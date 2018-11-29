@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A representation of an image.
 type Image struct {
@@ -108,74 +108,12 @@ func (m *Image) GetThumbnailUri() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Image) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Image_OneofMarshaler, _Image_OneofUnmarshaler, _Image_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Image) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Image_ImageBytes)(nil),
 		(*Image_InputConfig)(nil),
 	}
-}
-
-func _Image_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Image)
-	// data
-	switch x := m.Data.(type) {
-	case *Image_ImageBytes:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.ImageBytes)
-	case *Image_InputConfig:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InputConfig); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Image.Data has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Image_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Image)
-	switch tag {
-	case 1: // data.image_bytes
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Data = &Image_ImageBytes{x}
-		return true, err
-	case 6: // data.input_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InputConfig)
-		err := b.DecodeMessage(msg)
-		m.Data = &Image_InputConfig{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Image_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Image)
-	// data
-	switch x := m.Data.(type) {
-	case *Image_ImageBytes:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.ImageBytes)))
-		n += len(x.ImageBytes)
-	case *Image_InputConfig:
-		s := proto.Size(x.InputConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A representation of a text snippet.
@@ -316,78 +254,12 @@ func (m *ExamplePayload) GetTextSnippet() *TextSnippet {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ExamplePayload) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ExamplePayload_OneofMarshaler, _ExamplePayload_OneofUnmarshaler, _ExamplePayload_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ExamplePayload) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ExamplePayload_Image)(nil),
 		(*ExamplePayload_TextSnippet)(nil),
 	}
-}
-
-func _ExamplePayload_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ExamplePayload)
-	// payload
-	switch x := m.Payload.(type) {
-	case *ExamplePayload_Image:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Image); err != nil {
-			return err
-		}
-	case *ExamplePayload_TextSnippet:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TextSnippet); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ExamplePayload.Payload has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ExamplePayload_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ExamplePayload)
-	switch tag {
-	case 1: // payload.image
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Image)
-		err := b.DecodeMessage(msg)
-		m.Payload = &ExamplePayload_Image{msg}
-		return true, err
-	case 2: // payload.text_snippet
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TextSnippet)
-		err := b.DecodeMessage(msg)
-		m.Payload = &ExamplePayload_TextSnippet{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ExamplePayload_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ExamplePayload)
-	// payload
-	switch x := m.Payload.(type) {
-	case *ExamplePayload_Image:
-		s := proto.Size(x.Image)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ExamplePayload_TextSnippet:
-		s := proto.Size(x.TextSnippet)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

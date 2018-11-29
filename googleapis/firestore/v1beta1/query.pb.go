@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A sort direction.
 type StructuredQuery_Direction int32
@@ -432,97 +432,13 @@ func (m *StructuredQuery_Filter) GetUnaryFilter() *StructuredQuery_UnaryFilter {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*StructuredQuery_Filter) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _StructuredQuery_Filter_OneofMarshaler, _StructuredQuery_Filter_OneofUnmarshaler, _StructuredQuery_Filter_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*StructuredQuery_Filter) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*StructuredQuery_Filter_CompositeFilter)(nil),
 		(*StructuredQuery_Filter_FieldFilter)(nil),
 		(*StructuredQuery_Filter_UnaryFilter)(nil),
 	}
-}
-
-func _StructuredQuery_Filter_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*StructuredQuery_Filter)
-	// filter_type
-	switch x := m.FilterType.(type) {
-	case *StructuredQuery_Filter_CompositeFilter:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CompositeFilter); err != nil {
-			return err
-		}
-	case *StructuredQuery_Filter_FieldFilter:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.FieldFilter); err != nil {
-			return err
-		}
-	case *StructuredQuery_Filter_UnaryFilter:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.UnaryFilter); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("StructuredQuery_Filter.FilterType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _StructuredQuery_Filter_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*StructuredQuery_Filter)
-	switch tag {
-	case 1: // filter_type.composite_filter
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StructuredQuery_CompositeFilter)
-		err := b.DecodeMessage(msg)
-		m.FilterType = &StructuredQuery_Filter_CompositeFilter{msg}
-		return true, err
-	case 2: // filter_type.field_filter
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StructuredQuery_FieldFilter)
-		err := b.DecodeMessage(msg)
-		m.FilterType = &StructuredQuery_Filter_FieldFilter{msg}
-		return true, err
-	case 3: // filter_type.unary_filter
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StructuredQuery_UnaryFilter)
-		err := b.DecodeMessage(msg)
-		m.FilterType = &StructuredQuery_Filter_UnaryFilter{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _StructuredQuery_Filter_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*StructuredQuery_Filter)
-	// filter_type
-	switch x := m.FilterType.(type) {
-	case *StructuredQuery_Filter_CompositeFilter:
-		s := proto.Size(x.CompositeFilter)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *StructuredQuery_Filter_FieldFilter:
-		s := proto.Size(x.FieldFilter)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *StructuredQuery_Filter_UnaryFilter:
-		s := proto.Size(x.UnaryFilter)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A filter that merges multiple other filters using the given operator.
@@ -705,59 +621,11 @@ func (m *StructuredQuery_UnaryFilter) GetField() *StructuredQuery_FieldReference
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*StructuredQuery_UnaryFilter) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _StructuredQuery_UnaryFilter_OneofMarshaler, _StructuredQuery_UnaryFilter_OneofUnmarshaler, _StructuredQuery_UnaryFilter_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*StructuredQuery_UnaryFilter) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*StructuredQuery_UnaryFilter_Field)(nil),
 	}
-}
-
-func _StructuredQuery_UnaryFilter_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*StructuredQuery_UnaryFilter)
-	// operand_type
-	switch x := m.OperandType.(type) {
-	case *StructuredQuery_UnaryFilter_Field:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Field); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("StructuredQuery_UnaryFilter.OperandType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _StructuredQuery_UnaryFilter_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*StructuredQuery_UnaryFilter)
-	switch tag {
-	case 2: // operand_type.field
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StructuredQuery_FieldReference)
-		err := b.DecodeMessage(msg)
-		m.OperandType = &StructuredQuery_UnaryFilter_Field{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _StructuredQuery_UnaryFilter_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*StructuredQuery_UnaryFilter)
-	// operand_type
-	switch x := m.OperandType.(type) {
-	case *StructuredQuery_UnaryFilter_Field:
-		s := proto.Size(x.Field)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // An order on a field.

@@ -25,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Represents kinds of entities.
 type EntityType_Kind int32
@@ -696,74 +696,12 @@ func (m *BatchUpdateEntityTypesRequest) GetUpdateMask() *field_mask.FieldMask {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*BatchUpdateEntityTypesRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _BatchUpdateEntityTypesRequest_OneofMarshaler, _BatchUpdateEntityTypesRequest_OneofUnmarshaler, _BatchUpdateEntityTypesRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*BatchUpdateEntityTypesRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*BatchUpdateEntityTypesRequest_EntityTypeBatchUri)(nil),
 		(*BatchUpdateEntityTypesRequest_EntityTypeBatchInline)(nil),
 	}
-}
-
-func _BatchUpdateEntityTypesRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*BatchUpdateEntityTypesRequest)
-	// entity_type_batch
-	switch x := m.EntityTypeBatch.(type) {
-	case *BatchUpdateEntityTypesRequest_EntityTypeBatchUri:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.EntityTypeBatchUri)
-	case *BatchUpdateEntityTypesRequest_EntityTypeBatchInline:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.EntityTypeBatchInline); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("BatchUpdateEntityTypesRequest.EntityTypeBatch has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _BatchUpdateEntityTypesRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*BatchUpdateEntityTypesRequest)
-	switch tag {
-	case 2: // entity_type_batch.entity_type_batch_uri
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.EntityTypeBatch = &BatchUpdateEntityTypesRequest_EntityTypeBatchUri{x}
-		return true, err
-	case 3: // entity_type_batch.entity_type_batch_inline
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(EntityTypeBatch)
-		err := b.DecodeMessage(msg)
-		m.EntityTypeBatch = &BatchUpdateEntityTypesRequest_EntityTypeBatchInline{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _BatchUpdateEntityTypesRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*BatchUpdateEntityTypesRequest)
-	// entity_type_batch
-	switch x := m.EntityTypeBatch.(type) {
-	case *BatchUpdateEntityTypesRequest_EntityTypeBatchUri:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.EntityTypeBatchUri)))
-		n += len(x.EntityTypeBatchUri)
-	case *BatchUpdateEntityTypesRequest_EntityTypeBatchInline:
-		s := proto.Size(x.EntityTypeBatchInline)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The response message for [EntityTypes.BatchUpdateEntityTypes][google.cloud.dialogflow.v2.EntityTypes.BatchUpdateEntityTypes].

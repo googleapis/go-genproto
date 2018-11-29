@@ -24,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The type of change.
 type TargetChange_TargetChangeType int32
@@ -175,74 +175,12 @@ func (m *GetDocumentRequest) GetReadTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*GetDocumentRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _GetDocumentRequest_OneofMarshaler, _GetDocumentRequest_OneofUnmarshaler, _GetDocumentRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*GetDocumentRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*GetDocumentRequest_Transaction)(nil),
 		(*GetDocumentRequest_ReadTime)(nil),
 	}
-}
-
-func _GetDocumentRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*GetDocumentRequest)
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *GetDocumentRequest_Transaction:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Transaction)
-	case *GetDocumentRequest_ReadTime:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadTime); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("GetDocumentRequest.ConsistencySelector has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _GetDocumentRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*GetDocumentRequest)
-	switch tag {
-	case 3: // consistency_selector.transaction
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.ConsistencySelector = &GetDocumentRequest_Transaction{x}
-		return true, err
-	case 5: // consistency_selector.read_time
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.ConsistencySelector = &GetDocumentRequest_ReadTime{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _GetDocumentRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*GetDocumentRequest)
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *GetDocumentRequest_Transaction:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Transaction)))
-		n += len(x.Transaction)
-	case *GetDocumentRequest_ReadTime:
-		s := proto.Size(x.ReadTime)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The request for [Firestore.ListDocuments][google.firestore.v1beta1.Firestore.ListDocuments].
@@ -399,74 +337,12 @@ func (m *ListDocumentsRequest) GetShowMissing() bool {
 	return false
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ListDocumentsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ListDocumentsRequest_OneofMarshaler, _ListDocumentsRequest_OneofUnmarshaler, _ListDocumentsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ListDocumentsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ListDocumentsRequest_Transaction)(nil),
 		(*ListDocumentsRequest_ReadTime)(nil),
 	}
-}
-
-func _ListDocumentsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ListDocumentsRequest)
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *ListDocumentsRequest_Transaction:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Transaction)
-	case *ListDocumentsRequest_ReadTime:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadTime); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ListDocumentsRequest.ConsistencySelector has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ListDocumentsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ListDocumentsRequest)
-	switch tag {
-	case 8: // consistency_selector.transaction
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.ConsistencySelector = &ListDocumentsRequest_Transaction{x}
-		return true, err
-	case 10: // consistency_selector.read_time
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.ConsistencySelector = &ListDocumentsRequest_ReadTime{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ListDocumentsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ListDocumentsRequest)
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *ListDocumentsRequest_Transaction:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Transaction)))
-		n += len(x.Transaction)
-	case *ListDocumentsRequest_ReadTime:
-		s := proto.Size(x.ReadTime)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The response for [Firestore.ListDocuments][google.firestore.v1beta1.Firestore.ListDocuments].
@@ -858,93 +734,13 @@ func (m *BatchGetDocumentsRequest) GetReadTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*BatchGetDocumentsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _BatchGetDocumentsRequest_OneofMarshaler, _BatchGetDocumentsRequest_OneofUnmarshaler, _BatchGetDocumentsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*BatchGetDocumentsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*BatchGetDocumentsRequest_Transaction)(nil),
 		(*BatchGetDocumentsRequest_NewTransaction)(nil),
 		(*BatchGetDocumentsRequest_ReadTime)(nil),
 	}
-}
-
-func _BatchGetDocumentsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*BatchGetDocumentsRequest)
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *BatchGetDocumentsRequest_Transaction:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Transaction)
-	case *BatchGetDocumentsRequest_NewTransaction:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.NewTransaction); err != nil {
-			return err
-		}
-	case *BatchGetDocumentsRequest_ReadTime:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadTime); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("BatchGetDocumentsRequest.ConsistencySelector has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _BatchGetDocumentsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*BatchGetDocumentsRequest)
-	switch tag {
-	case 4: // consistency_selector.transaction
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.ConsistencySelector = &BatchGetDocumentsRequest_Transaction{x}
-		return true, err
-	case 5: // consistency_selector.new_transaction
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions)
-		err := b.DecodeMessage(msg)
-		m.ConsistencySelector = &BatchGetDocumentsRequest_NewTransaction{msg}
-		return true, err
-	case 7: // consistency_selector.read_time
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.ConsistencySelector = &BatchGetDocumentsRequest_ReadTime{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _BatchGetDocumentsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*BatchGetDocumentsRequest)
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *BatchGetDocumentsRequest_Transaction:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Transaction)))
-		n += len(x.Transaction)
-	case *BatchGetDocumentsRequest_NewTransaction:
-		s := proto.Size(x.NewTransaction)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *BatchGetDocumentsRequest_ReadTime:
-		s := proto.Size(x.ReadTime)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The streamed response for [Firestore.BatchGetDocuments][google.firestore.v1beta1.Firestore.BatchGetDocuments].
@@ -1046,74 +842,12 @@ func (m *BatchGetDocumentsResponse) GetReadTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*BatchGetDocumentsResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _BatchGetDocumentsResponse_OneofMarshaler, _BatchGetDocumentsResponse_OneofUnmarshaler, _BatchGetDocumentsResponse_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*BatchGetDocumentsResponse) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*BatchGetDocumentsResponse_Found)(nil),
 		(*BatchGetDocumentsResponse_Missing)(nil),
 	}
-}
-
-func _BatchGetDocumentsResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*BatchGetDocumentsResponse)
-	// result
-	switch x := m.Result.(type) {
-	case *BatchGetDocumentsResponse_Found:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Found); err != nil {
-			return err
-		}
-	case *BatchGetDocumentsResponse_Missing:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Missing)
-	case nil:
-	default:
-		return fmt.Errorf("BatchGetDocumentsResponse.Result has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _BatchGetDocumentsResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*BatchGetDocumentsResponse)
-	switch tag {
-	case 1: // result.found
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Document)
-		err := b.DecodeMessage(msg)
-		m.Result = &BatchGetDocumentsResponse_Found{msg}
-		return true, err
-	case 2: // result.missing
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Result = &BatchGetDocumentsResponse_Missing{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _BatchGetDocumentsResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*BatchGetDocumentsResponse)
-	// result
-	switch x := m.Result.(type) {
-	case *BatchGetDocumentsResponse_Found:
-		s := proto.Size(x.Found)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *BatchGetDocumentsResponse_Missing:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Missing)))
-		n += len(x.Missing)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The request for [Firestore.BeginTransaction][google.firestore.v1beta1.Firestore.BeginTransaction].
@@ -1508,124 +1242,14 @@ func (m *RunQueryRequest) GetReadTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RunQueryRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RunQueryRequest_OneofMarshaler, _RunQueryRequest_OneofUnmarshaler, _RunQueryRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RunQueryRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RunQueryRequest_StructuredQuery)(nil),
 		(*RunQueryRequest_Transaction)(nil),
 		(*RunQueryRequest_NewTransaction)(nil),
 		(*RunQueryRequest_ReadTime)(nil),
 	}
-}
-
-func _RunQueryRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RunQueryRequest)
-	// query_type
-	switch x := m.QueryType.(type) {
-	case *RunQueryRequest_StructuredQuery:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.StructuredQuery); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("RunQueryRequest.QueryType has unexpected type %T", x)
-	}
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *RunQueryRequest_Transaction:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Transaction)
-	case *RunQueryRequest_NewTransaction:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.NewTransaction); err != nil {
-			return err
-		}
-	case *RunQueryRequest_ReadTime:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadTime); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("RunQueryRequest.ConsistencySelector has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RunQueryRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RunQueryRequest)
-	switch tag {
-	case 2: // query_type.structured_query
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StructuredQuery)
-		err := b.DecodeMessage(msg)
-		m.QueryType = &RunQueryRequest_StructuredQuery{msg}
-		return true, err
-	case 5: // consistency_selector.transaction
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.ConsistencySelector = &RunQueryRequest_Transaction{x}
-		return true, err
-	case 6: // consistency_selector.new_transaction
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions)
-		err := b.DecodeMessage(msg)
-		m.ConsistencySelector = &RunQueryRequest_NewTransaction{msg}
-		return true, err
-	case 7: // consistency_selector.read_time
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.ConsistencySelector = &RunQueryRequest_ReadTime{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RunQueryRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RunQueryRequest)
-	// query_type
-	switch x := m.QueryType.(type) {
-	case *RunQueryRequest_StructuredQuery:
-		s := proto.Size(x.StructuredQuery)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *RunQueryRequest_Transaction:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Transaction)))
-		n += len(x.Transaction)
-	case *RunQueryRequest_NewTransaction:
-		s := proto.Size(x.NewTransaction)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *RunQueryRequest_ReadTime:
-		s := proto.Size(x.ReadTime)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The response for [Firestore.RunQuery][google.firestore.v1beta1.Firestore.RunQuery].
@@ -1984,73 +1608,12 @@ func (m *ListenRequest) GetLabels() map[string]string {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ListenRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ListenRequest_OneofMarshaler, _ListenRequest_OneofUnmarshaler, _ListenRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ListenRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ListenRequest_AddTarget)(nil),
 		(*ListenRequest_RemoveTarget)(nil),
 	}
-}
-
-func _ListenRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ListenRequest)
-	// target_change
-	switch x := m.TargetChange.(type) {
-	case *ListenRequest_AddTarget:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AddTarget); err != nil {
-			return err
-		}
-	case *ListenRequest_RemoveTarget:
-		b.EncodeVarint(3<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.RemoveTarget))
-	case nil:
-	default:
-		return fmt.Errorf("ListenRequest.TargetChange has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ListenRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ListenRequest)
-	switch tag {
-	case 2: // target_change.add_target
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Target)
-		err := b.DecodeMessage(msg)
-		m.TargetChange = &ListenRequest_AddTarget{msg}
-		return true, err
-	case 3: // target_change.remove_target
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.TargetChange = &ListenRequest_RemoveTarget{int32(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ListenRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ListenRequest)
-	// target_change
-	switch x := m.TargetChange.(type) {
-	case *ListenRequest_AddTarget:
-		s := proto.Size(x.AddTarget)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ListenRequest_RemoveTarget:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.RemoveTarget))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The response for [Firestore.Listen][google.firestore.v1beta1.Firestore.Listen].
@@ -2170,135 +1733,15 @@ func (m *ListenResponse) GetFilter() *ExistenceFilter {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ListenResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ListenResponse_OneofMarshaler, _ListenResponse_OneofUnmarshaler, _ListenResponse_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ListenResponse) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ListenResponse_TargetChange)(nil),
 		(*ListenResponse_DocumentChange)(nil),
 		(*ListenResponse_DocumentDelete)(nil),
 		(*ListenResponse_DocumentRemove)(nil),
 		(*ListenResponse_Filter)(nil),
 	}
-}
-
-func _ListenResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ListenResponse)
-	// response_type
-	switch x := m.ResponseType.(type) {
-	case *ListenResponse_TargetChange:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TargetChange); err != nil {
-			return err
-		}
-	case *ListenResponse_DocumentChange:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DocumentChange); err != nil {
-			return err
-		}
-	case *ListenResponse_DocumentDelete:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DocumentDelete); err != nil {
-			return err
-		}
-	case *ListenResponse_DocumentRemove:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DocumentRemove); err != nil {
-			return err
-		}
-	case *ListenResponse_Filter:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Filter); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ListenResponse.ResponseType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ListenResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ListenResponse)
-	switch tag {
-	case 2: // response_type.target_change
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TargetChange)
-		err := b.DecodeMessage(msg)
-		m.ResponseType = &ListenResponse_TargetChange{msg}
-		return true, err
-	case 3: // response_type.document_change
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DocumentChange)
-		err := b.DecodeMessage(msg)
-		m.ResponseType = &ListenResponse_DocumentChange{msg}
-		return true, err
-	case 4: // response_type.document_delete
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DocumentDelete)
-		err := b.DecodeMessage(msg)
-		m.ResponseType = &ListenResponse_DocumentDelete{msg}
-		return true, err
-	case 6: // response_type.document_remove
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(DocumentRemove)
-		err := b.DecodeMessage(msg)
-		m.ResponseType = &ListenResponse_DocumentRemove{msg}
-		return true, err
-	case 5: // response_type.filter
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ExistenceFilter)
-		err := b.DecodeMessage(msg)
-		m.ResponseType = &ListenResponse_Filter{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ListenResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ListenResponse)
-	// response_type
-	switch x := m.ResponseType.(type) {
-	case *ListenResponse_TargetChange:
-		s := proto.Size(x.TargetChange)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ListenResponse_DocumentChange:
-		s := proto.Size(x.DocumentChange)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ListenResponse_DocumentDelete:
-		s := proto.Size(x.DocumentDelete)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ListenResponse_DocumentRemove:
-		s := proto.Size(x.DocumentRemove)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ListenResponse_Filter:
-		s := proto.Size(x.Filter)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A specification of a set of documents to listen to.
@@ -2447,124 +1890,14 @@ func (m *Target) GetOnce() bool {
 	return false
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Target) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Target_OneofMarshaler, _Target_OneofUnmarshaler, _Target_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Target) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Target_Query)(nil),
 		(*Target_Documents)(nil),
 		(*Target_ResumeToken)(nil),
 		(*Target_ReadTime)(nil),
 	}
-}
-
-func _Target_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Target)
-	// target_type
-	switch x := m.TargetType.(type) {
-	case *Target_Query:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Query); err != nil {
-			return err
-		}
-	case *Target_Documents:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Documents); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Target.TargetType has unexpected type %T", x)
-	}
-	// resume_type
-	switch x := m.ResumeType.(type) {
-	case *Target_ResumeToken:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.ResumeToken)
-	case *Target_ReadTime:
-		b.EncodeVarint(11<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadTime); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Target.ResumeType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Target_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Target)
-	switch tag {
-	case 2: // target_type.query
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Target_QueryTarget)
-		err := b.DecodeMessage(msg)
-		m.TargetType = &Target_Query{msg}
-		return true, err
-	case 3: // target_type.documents
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Target_DocumentsTarget)
-		err := b.DecodeMessage(msg)
-		m.TargetType = &Target_Documents{msg}
-		return true, err
-	case 4: // resume_type.resume_token
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.ResumeType = &Target_ResumeToken{x}
-		return true, err
-	case 11: // resume_type.read_time
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.ResumeType = &Target_ReadTime{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Target_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Target)
-	// target_type
-	switch x := m.TargetType.(type) {
-	case *Target_Query:
-		s := proto.Size(x.Query)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Target_Documents:
-		s := proto.Size(x.Documents)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	// resume_type
-	switch x := m.ResumeType.(type) {
-	case *Target_ResumeToken:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.ResumeToken)))
-		n += len(x.ResumeToken)
-	case *Target_ReadTime:
-		s := proto.Size(x.ReadTime)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A target specified by a set of documents names.
@@ -2686,59 +2019,11 @@ func (m *Target_QueryTarget) GetStructuredQuery() *StructuredQuery {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Target_QueryTarget) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Target_QueryTarget_OneofMarshaler, _Target_QueryTarget_OneofUnmarshaler, _Target_QueryTarget_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Target_QueryTarget) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Target_QueryTarget_StructuredQuery)(nil),
 	}
-}
-
-func _Target_QueryTarget_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Target_QueryTarget)
-	// query_type
-	switch x := m.QueryType.(type) {
-	case *Target_QueryTarget_StructuredQuery:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.StructuredQuery); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Target_QueryTarget.QueryType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Target_QueryTarget_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Target_QueryTarget)
-	switch tag {
-	case 2: // query_type.structured_query
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StructuredQuery)
-		err := b.DecodeMessage(msg)
-		m.QueryType = &Target_QueryTarget_StructuredQuery{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Target_QueryTarget_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Target_QueryTarget)
-	// query_type
-	switch x := m.QueryType.(type) {
-	case *Target_QueryTarget_StructuredQuery:
-		s := proto.Size(x.StructuredQuery)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Targets being watched have changed.

@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // State of the queue.
 type Queue_State int32
@@ -265,78 +265,12 @@ func (m *Queue) GetPurgeTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Queue) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Queue_OneofMarshaler, _Queue_OneofUnmarshaler, _Queue_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Queue) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Queue_AppEngineHttpTarget)(nil),
 		(*Queue_PullTarget)(nil),
 	}
-}
-
-func _Queue_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Queue)
-	// target_type
-	switch x := m.TargetType.(type) {
-	case *Queue_AppEngineHttpTarget:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AppEngineHttpTarget); err != nil {
-			return err
-		}
-	case *Queue_PullTarget:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.PullTarget); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Queue.TargetType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Queue_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Queue)
-	switch tag {
-	case 3: // target_type.app_engine_http_target
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AppEngineHttpTarget)
-		err := b.DecodeMessage(msg)
-		m.TargetType = &Queue_AppEngineHttpTarget{msg}
-		return true, err
-	case 4: // target_type.pull_target
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PullTarget)
-		err := b.DecodeMessage(msg)
-		m.TargetType = &Queue_PullTarget{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Queue_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Queue)
-	// target_type
-	switch x := m.TargetType.(type) {
-	case *Queue_AppEngineHttpTarget:
-		s := proto.Size(x.AppEngineHttpTarget)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Queue_PullTarget:
-		s := proto.Size(x.PullTarget)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Rate limits.
@@ -661,72 +595,12 @@ func (m *RetryConfig) GetMaxDoublings() int32 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RetryConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RetryConfig_OneofMarshaler, _RetryConfig_OneofUnmarshaler, _RetryConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RetryConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RetryConfig_MaxAttempts)(nil),
 		(*RetryConfig_UnlimitedAttempts)(nil),
 	}
-}
-
-func _RetryConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RetryConfig)
-	// num_attempts
-	switch x := m.NumAttempts.(type) {
-	case *RetryConfig_MaxAttempts:
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.MaxAttempts))
-	case *RetryConfig_UnlimitedAttempts:
-		t := uint64(0)
-		if x.UnlimitedAttempts {
-			t = 1
-		}
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case nil:
-	default:
-		return fmt.Errorf("RetryConfig.NumAttempts has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RetryConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RetryConfig)
-	switch tag {
-	case 1: // num_attempts.max_attempts
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.NumAttempts = &RetryConfig_MaxAttempts{int32(x)}
-		return true, err
-	case 2: // num_attempts.unlimited_attempts
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.NumAttempts = &RetryConfig_UnlimitedAttempts{x != 0}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RetryConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RetryConfig)
-	// num_attempts
-	switch x := m.NumAttempts.(type) {
-	case *RetryConfig_MaxAttempts:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.MaxAttempts))
-	case *RetryConfig_UnlimitedAttempts:
-		n += 1 // tag and wire
-		n += 1
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

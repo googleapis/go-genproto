@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Operators for combining conditions.
 type AlertPolicy_ConditionCombinerType int32
@@ -408,78 +408,12 @@ func (m *AlertPolicy_Condition) GetConditionAbsent() *AlertPolicy_Condition_Metr
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*AlertPolicy_Condition) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _AlertPolicy_Condition_OneofMarshaler, _AlertPolicy_Condition_OneofUnmarshaler, _AlertPolicy_Condition_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*AlertPolicy_Condition) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*AlertPolicy_Condition_ConditionThreshold)(nil),
 		(*AlertPolicy_Condition_ConditionAbsent)(nil),
 	}
-}
-
-func _AlertPolicy_Condition_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*AlertPolicy_Condition)
-	// condition
-	switch x := m.Condition.(type) {
-	case *AlertPolicy_Condition_ConditionThreshold:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ConditionThreshold); err != nil {
-			return err
-		}
-	case *AlertPolicy_Condition_ConditionAbsent:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ConditionAbsent); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("AlertPolicy_Condition.Condition has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _AlertPolicy_Condition_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*AlertPolicy_Condition)
-	switch tag {
-	case 1: // condition.condition_threshold
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AlertPolicy_Condition_MetricThreshold)
-		err := b.DecodeMessage(msg)
-		m.Condition = &AlertPolicy_Condition_ConditionThreshold{msg}
-		return true, err
-	case 2: // condition.condition_absent
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AlertPolicy_Condition_MetricAbsence)
-		err := b.DecodeMessage(msg)
-		m.Condition = &AlertPolicy_Condition_ConditionAbsent{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _AlertPolicy_Condition_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*AlertPolicy_Condition)
-	// condition
-	switch x := m.Condition.(type) {
-	case *AlertPolicy_Condition_ConditionThreshold:
-		s := proto.Size(x.ConditionThreshold)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *AlertPolicy_Condition_ConditionAbsent:
-		s := proto.Size(x.ConditionAbsent)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Specifies how many time series must fail a predicate to trigger a
@@ -558,68 +492,12 @@ func (m *AlertPolicy_Condition_Trigger) GetPercent() float64 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*AlertPolicy_Condition_Trigger) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _AlertPolicy_Condition_Trigger_OneofMarshaler, _AlertPolicy_Condition_Trigger_OneofUnmarshaler, _AlertPolicy_Condition_Trigger_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*AlertPolicy_Condition_Trigger) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*AlertPolicy_Condition_Trigger_Count)(nil),
 		(*AlertPolicy_Condition_Trigger_Percent)(nil),
 	}
-}
-
-func _AlertPolicy_Condition_Trigger_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*AlertPolicy_Condition_Trigger)
-	// type
-	switch x := m.Type.(type) {
-	case *AlertPolicy_Condition_Trigger_Count:
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Count))
-	case *AlertPolicy_Condition_Trigger_Percent:
-		b.EncodeVarint(2<<3 | proto.WireFixed64)
-		b.EncodeFixed64(math.Float64bits(x.Percent))
-	case nil:
-	default:
-		return fmt.Errorf("AlertPolicy_Condition_Trigger.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _AlertPolicy_Condition_Trigger_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*AlertPolicy_Condition_Trigger)
-	switch tag {
-	case 1: // type.count
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Type = &AlertPolicy_Condition_Trigger_Count{int32(x)}
-		return true, err
-	case 2: // type.percent
-		if wire != proto.WireFixed64 {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeFixed64()
-		m.Type = &AlertPolicy_Condition_Trigger_Percent{math.Float64frombits(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _AlertPolicy_Condition_Trigger_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*AlertPolicy_Condition_Trigger)
-	// type
-	switch x := m.Type.(type) {
-	case *AlertPolicy_Condition_Trigger_Count:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Count))
-	case *AlertPolicy_Condition_Trigger_Percent:
-		n += 1 // tag and wire
-		n += 8
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A condition type that compares a collection of time series

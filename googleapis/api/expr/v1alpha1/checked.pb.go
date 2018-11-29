@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // CEL primitive types.
 type Type_PrimitiveType int32
@@ -433,9 +433,9 @@ func (m *Type) GetAbstractType() *Type_AbstractType {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Type) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Type_OneofMarshaler, _Type_OneofUnmarshaler, _Type_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Type) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Type_Dyn)(nil),
 		(*Type_Null)(nil),
 		(*Type_Primitive)(nil),
@@ -450,242 +450,6 @@ func (*Type) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, f
 		(*Type_Error)(nil),
 		(*Type_AbstractType_)(nil),
 	}
-}
-
-func _Type_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Type)
-	// type_kind
-	switch x := m.TypeKind.(type) {
-	case *Type_Dyn:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Dyn); err != nil {
-			return err
-		}
-	case *Type_Null:
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Null))
-	case *Type_Primitive:
-		b.EncodeVarint(3<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Primitive))
-	case *Type_Wrapper:
-		b.EncodeVarint(4<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Wrapper))
-	case *Type_WellKnown:
-		b.EncodeVarint(5<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.WellKnown))
-	case *Type_ListType_:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ListType); err != nil {
-			return err
-		}
-	case *Type_MapType_:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.MapType); err != nil {
-			return err
-		}
-	case *Type_Function:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Function); err != nil {
-			return err
-		}
-	case *Type_MessageType:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.MessageType)
-	case *Type_TypeParam:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.TypeParam)
-	case *Type_Type:
-		b.EncodeVarint(11<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Type); err != nil {
-			return err
-		}
-	case *Type_Error:
-		b.EncodeVarint(12<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Error); err != nil {
-			return err
-		}
-	case *Type_AbstractType_:
-		b.EncodeVarint(14<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AbstractType); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Type.TypeKind has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Type_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Type)
-	switch tag {
-	case 1: // type_kind.dyn
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(empty.Empty)
-		err := b.DecodeMessage(msg)
-		m.TypeKind = &Type_Dyn{msg}
-		return true, err
-	case 2: // type_kind.null
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.TypeKind = &Type_Null{_struct.NullValue(x)}
-		return true, err
-	case 3: // type_kind.primitive
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.TypeKind = &Type_Primitive{Type_PrimitiveType(x)}
-		return true, err
-	case 4: // type_kind.wrapper
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.TypeKind = &Type_Wrapper{Type_PrimitiveType(x)}
-		return true, err
-	case 5: // type_kind.well_known
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.TypeKind = &Type_WellKnown{Type_WellKnownType(x)}
-		return true, err
-	case 6: // type_kind.list_type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Type_ListType)
-		err := b.DecodeMessage(msg)
-		m.TypeKind = &Type_ListType_{msg}
-		return true, err
-	case 7: // type_kind.map_type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Type_MapType)
-		err := b.DecodeMessage(msg)
-		m.TypeKind = &Type_MapType_{msg}
-		return true, err
-	case 8: // type_kind.function
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Type_FunctionType)
-		err := b.DecodeMessage(msg)
-		m.TypeKind = &Type_Function{msg}
-		return true, err
-	case 9: // type_kind.message_type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.TypeKind = &Type_MessageType{x}
-		return true, err
-	case 10: // type_kind.type_param
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.TypeKind = &Type_TypeParam{x}
-		return true, err
-	case 11: // type_kind.type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Type)
-		err := b.DecodeMessage(msg)
-		m.TypeKind = &Type_Type{msg}
-		return true, err
-	case 12: // type_kind.error
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(empty.Empty)
-		err := b.DecodeMessage(msg)
-		m.TypeKind = &Type_Error{msg}
-		return true, err
-	case 14: // type_kind.abstract_type
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Type_AbstractType)
-		err := b.DecodeMessage(msg)
-		m.TypeKind = &Type_AbstractType_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Type_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Type)
-	// type_kind
-	switch x := m.TypeKind.(type) {
-	case *Type_Dyn:
-		s := proto.Size(x.Dyn)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Type_Null:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Null))
-	case *Type_Primitive:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Primitive))
-	case *Type_Wrapper:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Wrapper))
-	case *Type_WellKnown:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.WellKnown))
-	case *Type_ListType_:
-		s := proto.Size(x.ListType)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Type_MapType_:
-		s := proto.Size(x.MapType)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Type_Function:
-		s := proto.Size(x.Function)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Type_MessageType:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.MessageType)))
-		n += len(x.MessageType)
-	case *Type_TypeParam:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.TypeParam)))
-		n += len(x.TypeParam)
-	case *Type_Type:
-		s := proto.Size(x.Type)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Type_Error:
-		s := proto.Size(x.Error)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Type_AbstractType_:
-		s := proto.Size(x.AbstractType)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // List type with typed elements, e.g. `list<example.proto.MyMessage>`.
@@ -975,78 +739,12 @@ func (m *Decl) GetFunction() *Decl_FunctionDecl {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Decl) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Decl_OneofMarshaler, _Decl_OneofUnmarshaler, _Decl_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Decl) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Decl_Ident)(nil),
 		(*Decl_Function)(nil),
 	}
-}
-
-func _Decl_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Decl)
-	// decl_kind
-	switch x := m.DeclKind.(type) {
-	case *Decl_Ident:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Ident); err != nil {
-			return err
-		}
-	case *Decl_Function:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Function); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Decl.DeclKind has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Decl_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Decl)
-	switch tag {
-	case 2: // decl_kind.ident
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Decl_IdentDecl)
-		err := b.DecodeMessage(msg)
-		m.DeclKind = &Decl_Ident{msg}
-		return true, err
-	case 3: // decl_kind.function
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Decl_FunctionDecl)
-		err := b.DecodeMessage(msg)
-		m.DeclKind = &Decl_Function{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Decl_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Decl)
-	// decl_kind
-	switch x := m.DeclKind.(type) {
-	case *Decl_Ident:
-		s := proto.Size(x.Ident)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Decl_Function:
-		s := proto.Size(x.Function)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Identifier declaration which specifies its type and optional `Expr` value.

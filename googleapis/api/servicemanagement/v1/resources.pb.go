@@ -28,7 +28,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Code describes the status of the operation (or one of its steps).
 type OperationMetadata_Status int32
@@ -772,78 +772,12 @@ func (m *Rollout) GetServiceName() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Rollout) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Rollout_OneofMarshaler, _Rollout_OneofUnmarshaler, _Rollout_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Rollout) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Rollout_TrafficPercentStrategy_)(nil),
 		(*Rollout_DeleteServiceStrategy_)(nil),
 	}
-}
-
-func _Rollout_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Rollout)
-	// strategy
-	switch x := m.Strategy.(type) {
-	case *Rollout_TrafficPercentStrategy_:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TrafficPercentStrategy); err != nil {
-			return err
-		}
-	case *Rollout_DeleteServiceStrategy_:
-		b.EncodeVarint(200<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DeleteServiceStrategy); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Rollout.Strategy has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Rollout_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Rollout)
-	switch tag {
-	case 5: // strategy.traffic_percent_strategy
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Rollout_TrafficPercentStrategy)
-		err := b.DecodeMessage(msg)
-		m.Strategy = &Rollout_TrafficPercentStrategy_{msg}
-		return true, err
-	case 200: // strategy.delete_service_strategy
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Rollout_DeleteServiceStrategy)
-		err := b.DecodeMessage(msg)
-		m.Strategy = &Rollout_DeleteServiceStrategy_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Rollout_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Rollout)
-	// strategy
-	switch x := m.Strategy.(type) {
-	case *Rollout_TrafficPercentStrategy_:
-		s := proto.Size(x.TrafficPercentStrategy)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Rollout_DeleteServiceStrategy_:
-		s := proto.Size(x.DeleteServiceStrategy)
-		n += 2 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Strategy that specifies how clients of Google Service Controller want to

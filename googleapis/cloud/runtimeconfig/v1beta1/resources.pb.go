@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The `VariableState` describes the last known state of the variable and is
 // used during a `variables().watch` call to distinguish the state of the
@@ -245,70 +245,12 @@ func (m *Variable) GetState() VariableState {
 	return VariableState_VARIABLE_STATE_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Variable) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Variable_OneofMarshaler, _Variable_OneofUnmarshaler, _Variable_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Variable) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Variable_Value)(nil),
 		(*Variable_Text)(nil),
 	}
-}
-
-func _Variable_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Variable)
-	// contents
-	switch x := m.Contents.(type) {
-	case *Variable_Value:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Value)
-	case *Variable_Text:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Text)
-	case nil:
-	default:
-		return fmt.Errorf("Variable.Contents has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Variable_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Variable)
-	switch tag {
-	case 2: // contents.value
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Contents = &Variable_Value{x}
-		return true, err
-	case 5: // contents.text
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Contents = &Variable_Text{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Variable_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Variable)
-	// contents
-	switch x := m.Contents.(type) {
-	case *Variable_Value:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Value)))
-		n += len(x.Value)
-	case *Variable_Text:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Text)))
-		n += len(x.Text)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The condition that a Waiter resource is waiting for.
@@ -373,59 +315,11 @@ func (m *EndCondition) GetCardinality() *EndCondition_Cardinality {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*EndCondition) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _EndCondition_OneofMarshaler, _EndCondition_OneofUnmarshaler, _EndCondition_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*EndCondition) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*EndCondition_Cardinality_)(nil),
 	}
-}
-
-func _EndCondition_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*EndCondition)
-	// condition
-	switch x := m.Condition.(type) {
-	case *EndCondition_Cardinality_:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Cardinality); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("EndCondition.Condition has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _EndCondition_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*EndCondition)
-	switch tag {
-	case 1: // condition.cardinality
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(EndCondition_Cardinality)
-		err := b.DecodeMessage(msg)
-		m.Condition = &EndCondition_Cardinality_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _EndCondition_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*EndCondition)
-	// condition
-	switch x := m.Condition.(type) {
-	case *EndCondition_Cardinality_:
-		s := proto.Size(x.Cardinality)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A Cardinality condition for the Waiter resource. A cardinality condition is

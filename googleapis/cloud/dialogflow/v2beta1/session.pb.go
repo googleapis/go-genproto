@@ -24,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Audio encoding of the audio content sent in the conversational query request.
 // Refer to the
@@ -586,97 +586,13 @@ func (m *QueryInput) GetEvent() *EventInput {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*QueryInput) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _QueryInput_OneofMarshaler, _QueryInput_OneofUnmarshaler, _QueryInput_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*QueryInput) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*QueryInput_AudioConfig)(nil),
 		(*QueryInput_Text)(nil),
 		(*QueryInput_Event)(nil),
 	}
-}
-
-func _QueryInput_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*QueryInput)
-	// input
-	switch x := m.Input.(type) {
-	case *QueryInput_AudioConfig:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AudioConfig); err != nil {
-			return err
-		}
-	case *QueryInput_Text:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Text); err != nil {
-			return err
-		}
-	case *QueryInput_Event:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Event); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("QueryInput.Input has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _QueryInput_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*QueryInput)
-	switch tag {
-	case 1: // input.audio_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(InputAudioConfig)
-		err := b.DecodeMessage(msg)
-		m.Input = &QueryInput_AudioConfig{msg}
-		return true, err
-	case 2: // input.text
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TextInput)
-		err := b.DecodeMessage(msg)
-		m.Input = &QueryInput_Text{msg}
-		return true, err
-	case 3: // input.event
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(EventInput)
-		err := b.DecodeMessage(msg)
-		m.Input = &QueryInput_Event{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _QueryInput_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*QueryInput)
-	// input
-	switch x := m.Input.(type) {
-	case *QueryInput_AudioConfig:
-		s := proto.Size(x.AudioConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *QueryInput_Text:
-		s := proto.Size(x.Text)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *QueryInput_Event:
-		s := proto.Size(x.Event)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Represents the result of conversational query or event processing.

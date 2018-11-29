@@ -24,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Request message for [KeyManagementService.ListKeyRings][google.cloud.kms.v1.KeyManagementService.ListKeyRings].
 type ListKeyRingsRequest struct {
@@ -1495,85 +1495,13 @@ func (m *Digest) GetSha512() []byte {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Digest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Digest_OneofMarshaler, _Digest_OneofUnmarshaler, _Digest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Digest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Digest_Sha256)(nil),
 		(*Digest_Sha384)(nil),
 		(*Digest_Sha512)(nil),
 	}
-}
-
-func _Digest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Digest)
-	// digest
-	switch x := m.Digest.(type) {
-	case *Digest_Sha256:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Sha256)
-	case *Digest_Sha384:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Sha384)
-	case *Digest_Sha512:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Sha512)
-	case nil:
-	default:
-		return fmt.Errorf("Digest.Digest has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Digest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Digest)
-	switch tag {
-	case 1: // digest.sha256
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Digest = &Digest_Sha256{x}
-		return true, err
-	case 2: // digest.sha384
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Digest = &Digest_Sha384{x}
-		return true, err
-	case 3: // digest.sha512
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Digest = &Digest_Sha512{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Digest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Digest)
-	// digest
-	switch x := m.Digest.(type) {
-	case *Digest_Sha256:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Sha256)))
-		n += len(x.Sha256)
-	case *Digest_Sha384:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Sha384)))
-		n += len(x.Sha384)
-	case *Digest_Sha512:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Sha512)))
-		n += len(x.Sha512)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Cloud KMS metadata for the given [google.cloud.location.Location][google.cloud.location.Location].

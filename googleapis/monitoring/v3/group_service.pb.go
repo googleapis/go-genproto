@@ -23,7 +23,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The `ListGroup` request.
 type ListGroupsRequest struct {
@@ -146,85 +146,13 @@ func (m *ListGroupsRequest) GetPageToken() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ListGroupsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ListGroupsRequest_OneofMarshaler, _ListGroupsRequest_OneofUnmarshaler, _ListGroupsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ListGroupsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ListGroupsRequest_ChildrenOfGroup)(nil),
 		(*ListGroupsRequest_AncestorsOfGroup)(nil),
 		(*ListGroupsRequest_DescendantsOfGroup)(nil),
 	}
-}
-
-func _ListGroupsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ListGroupsRequest)
-	// filter
-	switch x := m.Filter.(type) {
-	case *ListGroupsRequest_ChildrenOfGroup:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.ChildrenOfGroup)
-	case *ListGroupsRequest_AncestorsOfGroup:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.AncestorsOfGroup)
-	case *ListGroupsRequest_DescendantsOfGroup:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.DescendantsOfGroup)
-	case nil:
-	default:
-		return fmt.Errorf("ListGroupsRequest.Filter has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ListGroupsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ListGroupsRequest)
-	switch tag {
-	case 2: // filter.children_of_group
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Filter = &ListGroupsRequest_ChildrenOfGroup{x}
-		return true, err
-	case 3: // filter.ancestors_of_group
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Filter = &ListGroupsRequest_AncestorsOfGroup{x}
-		return true, err
-	case 4: // filter.descendants_of_group
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Filter = &ListGroupsRequest_DescendantsOfGroup{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ListGroupsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ListGroupsRequest)
-	// filter
-	switch x := m.Filter.(type) {
-	case *ListGroupsRequest_ChildrenOfGroup:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.ChildrenOfGroup)))
-		n += len(x.ChildrenOfGroup)
-	case *ListGroupsRequest_AncestorsOfGroup:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AncestorsOfGroup)))
-		n += len(x.AncestorsOfGroup)
-	case *ListGroupsRequest_DescendantsOfGroup:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.DescendantsOfGroup)))
-		n += len(x.DescendantsOfGroup)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The `ListGroups` response.

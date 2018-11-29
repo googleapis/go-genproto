@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The type of an Alias.
 type AliasContext_Kind int32
@@ -163,116 +163,14 @@ func (m *SourceContext) GetGit() *GitSourceContext {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*SourceContext) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _SourceContext_OneofMarshaler, _SourceContext_OneofUnmarshaler, _SourceContext_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*SourceContext) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*SourceContext_CloudRepo)(nil),
 		(*SourceContext_CloudWorkspace)(nil),
 		(*SourceContext_Gerrit)(nil),
 		(*SourceContext_Git)(nil),
 	}
-}
-
-func _SourceContext_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*SourceContext)
-	// context
-	switch x := m.Context.(type) {
-	case *SourceContext_CloudRepo:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CloudRepo); err != nil {
-			return err
-		}
-	case *SourceContext_CloudWorkspace:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CloudWorkspace); err != nil {
-			return err
-		}
-	case *SourceContext_Gerrit:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Gerrit); err != nil {
-			return err
-		}
-	case *SourceContext_Git:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Git); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("SourceContext.Context has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _SourceContext_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*SourceContext)
-	switch tag {
-	case 1: // context.cloud_repo
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CloudRepoSourceContext)
-		err := b.DecodeMessage(msg)
-		m.Context = &SourceContext_CloudRepo{msg}
-		return true, err
-	case 2: // context.cloud_workspace
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CloudWorkspaceSourceContext)
-		err := b.DecodeMessage(msg)
-		m.Context = &SourceContext_CloudWorkspace{msg}
-		return true, err
-	case 3: // context.gerrit
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(GerritSourceContext)
-		err := b.DecodeMessage(msg)
-		m.Context = &SourceContext_Gerrit{msg}
-		return true, err
-	case 6: // context.git
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(GitSourceContext)
-		err := b.DecodeMessage(msg)
-		m.Context = &SourceContext_Git{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _SourceContext_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*SourceContext)
-	// context
-	switch x := m.Context.(type) {
-	case *SourceContext_CloudRepo:
-		s := proto.Size(x.CloudRepo)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *SourceContext_CloudWorkspace:
-		s := proto.Size(x.CloudWorkspace)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *SourceContext_Gerrit:
-		s := proto.Size(x.Gerrit)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *SourceContext_Git:
-		s := proto.Size(x.Git)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // An ExtendedSourceContext is a SourceContext combined with additional
@@ -477,89 +375,13 @@ func (m *CloudRepoSourceContext) GetAliasContext() *AliasContext {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CloudRepoSourceContext) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CloudRepoSourceContext_OneofMarshaler, _CloudRepoSourceContext_OneofUnmarshaler, _CloudRepoSourceContext_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CloudRepoSourceContext) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CloudRepoSourceContext_RevisionId)(nil),
 		(*CloudRepoSourceContext_AliasName)(nil),
 		(*CloudRepoSourceContext_AliasContext)(nil),
 	}
-}
-
-func _CloudRepoSourceContext_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CloudRepoSourceContext)
-	// revision
-	switch x := m.Revision.(type) {
-	case *CloudRepoSourceContext_RevisionId:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.RevisionId)
-	case *CloudRepoSourceContext_AliasName:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.AliasName)
-	case *CloudRepoSourceContext_AliasContext:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AliasContext); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("CloudRepoSourceContext.Revision has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CloudRepoSourceContext_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CloudRepoSourceContext)
-	switch tag {
-	case 2: // revision.revision_id
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Revision = &CloudRepoSourceContext_RevisionId{x}
-		return true, err
-	case 3: // revision.alias_name
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Revision = &CloudRepoSourceContext_AliasName{x}
-		return true, err
-	case 4: // revision.alias_context
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AliasContext)
-		err := b.DecodeMessage(msg)
-		m.Revision = &CloudRepoSourceContext_AliasContext{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CloudRepoSourceContext_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CloudRepoSourceContext)
-	// revision
-	switch x := m.Revision.(type) {
-	case *CloudRepoSourceContext_RevisionId:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.RevisionId)))
-		n += len(x.RevisionId)
-	case *CloudRepoSourceContext_AliasName:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AliasName)))
-		n += len(x.AliasName)
-	case *CloudRepoSourceContext_AliasContext:
-		s := proto.Size(x.AliasContext)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A CloudWorkspaceSourceContext denotes a workspace at a particular snapshot.
@@ -724,89 +546,13 @@ func (m *GerritSourceContext) GetAliasContext() *AliasContext {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*GerritSourceContext) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _GerritSourceContext_OneofMarshaler, _GerritSourceContext_OneofUnmarshaler, _GerritSourceContext_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*GerritSourceContext) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*GerritSourceContext_RevisionId)(nil),
 		(*GerritSourceContext_AliasName)(nil),
 		(*GerritSourceContext_AliasContext)(nil),
 	}
-}
-
-func _GerritSourceContext_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*GerritSourceContext)
-	// revision
-	switch x := m.Revision.(type) {
-	case *GerritSourceContext_RevisionId:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.RevisionId)
-	case *GerritSourceContext_AliasName:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.AliasName)
-	case *GerritSourceContext_AliasContext:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AliasContext); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("GerritSourceContext.Revision has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _GerritSourceContext_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*GerritSourceContext)
-	switch tag {
-	case 3: // revision.revision_id
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Revision = &GerritSourceContext_RevisionId{x}
-		return true, err
-	case 4: // revision.alias_name
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Revision = &GerritSourceContext_AliasName{x}
-		return true, err
-	case 5: // revision.alias_context
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AliasContext)
-		err := b.DecodeMessage(msg)
-		m.Revision = &GerritSourceContext_AliasContext{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _GerritSourceContext_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*GerritSourceContext)
-	// revision
-	switch x := m.Revision.(type) {
-	case *GerritSourceContext_RevisionId:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.RevisionId)))
-		n += len(x.RevisionId)
-	case *GerritSourceContext_AliasName:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AliasName)))
-		n += len(x.AliasName)
-	case *GerritSourceContext_AliasContext:
-		s := proto.Size(x.AliasContext)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A GitSourceContext denotes a particular revision in a third party Git
@@ -937,74 +683,12 @@ func (m *RepoId) GetUid() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RepoId) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RepoId_OneofMarshaler, _RepoId_OneofUnmarshaler, _RepoId_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RepoId) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RepoId_ProjectRepoId)(nil),
 		(*RepoId_Uid)(nil),
 	}
-}
-
-func _RepoId_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RepoId)
-	// id
-	switch x := m.Id.(type) {
-	case *RepoId_ProjectRepoId:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ProjectRepoId); err != nil {
-			return err
-		}
-	case *RepoId_Uid:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Uid)
-	case nil:
-	default:
-		return fmt.Errorf("RepoId.Id has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RepoId_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RepoId)
-	switch tag {
-	case 1: // id.project_repo_id
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ProjectRepoId)
-		err := b.DecodeMessage(msg)
-		m.Id = &RepoId_ProjectRepoId{msg}
-		return true, err
-	case 2: // id.uid
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Id = &RepoId_Uid{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RepoId_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RepoId)
-	// id
-	switch x := m.Id.(type) {
-	case *RepoId_ProjectRepoId:
-		s := proto.Size(x.ProjectRepoId)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *RepoId_Uid:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Uid)))
-		n += len(x.Uid)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Selects a repo using a Google Cloud Platform project ID

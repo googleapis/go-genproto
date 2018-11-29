@@ -25,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type MessageStoragePolicy struct {
 	// The list of GCP regions where messages that are published to the topic may
@@ -2299,74 +2299,12 @@ func (m *SeekRequest) GetSnapshot() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*SeekRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _SeekRequest_OneofMarshaler, _SeekRequest_OneofUnmarshaler, _SeekRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*SeekRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*SeekRequest_Time)(nil),
 		(*SeekRequest_Snapshot)(nil),
 	}
-}
-
-func _SeekRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*SeekRequest)
-	// target
-	switch x := m.Target.(type) {
-	case *SeekRequest_Time:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Time); err != nil {
-			return err
-		}
-	case *SeekRequest_Snapshot:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Snapshot)
-	case nil:
-	default:
-		return fmt.Errorf("SeekRequest.Target has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _SeekRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*SeekRequest)
-	switch tag {
-	case 2: // target.time
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.Target = &SeekRequest_Time{msg}
-		return true, err
-	case 3: // target.snapshot
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Target = &SeekRequest_Snapshot{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _SeekRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*SeekRequest)
-	// target
-	switch x := m.Target.(type) {
-	case *SeekRequest_Time:
-		s := proto.Size(x.Time)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *SeekRequest_Snapshot:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Snapshot)))
-		n += len(x.Snapshot)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Response for the `Seek` method (this response is empty).

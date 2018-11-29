@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // # Transactions
 //
@@ -388,97 +388,13 @@ func (m *TransactionOptions) GetReadOnly() *TransactionOptions_ReadOnly {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*TransactionOptions) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _TransactionOptions_OneofMarshaler, _TransactionOptions_OneofUnmarshaler, _TransactionOptions_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*TransactionOptions) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*TransactionOptions_ReadWrite_)(nil),
 		(*TransactionOptions_PartitionedDml_)(nil),
 		(*TransactionOptions_ReadOnly_)(nil),
 	}
-}
-
-func _TransactionOptions_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*TransactionOptions)
-	// mode
-	switch x := m.Mode.(type) {
-	case *TransactionOptions_ReadWrite_:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadWrite); err != nil {
-			return err
-		}
-	case *TransactionOptions_PartitionedDml_:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.PartitionedDml); err != nil {
-			return err
-		}
-	case *TransactionOptions_ReadOnly_:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadOnly); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("TransactionOptions.Mode has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _TransactionOptions_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*TransactionOptions)
-	switch tag {
-	case 1: // mode.read_write
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions_ReadWrite)
-		err := b.DecodeMessage(msg)
-		m.Mode = &TransactionOptions_ReadWrite_{msg}
-		return true, err
-	case 3: // mode.partitioned_dml
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions_PartitionedDml)
-		err := b.DecodeMessage(msg)
-		m.Mode = &TransactionOptions_PartitionedDml_{msg}
-		return true, err
-	case 2: // mode.read_only
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions_ReadOnly)
-		err := b.DecodeMessage(msg)
-		m.Mode = &TransactionOptions_ReadOnly_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _TransactionOptions_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*TransactionOptions)
-	// mode
-	switch x := m.Mode.(type) {
-	case *TransactionOptions_ReadWrite_:
-		s := proto.Size(x.ReadWrite)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransactionOptions_PartitionedDml_:
-		s := proto.Size(x.PartitionedDml)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransactionOptions_ReadOnly_:
-		s := proto.Size(x.ReadOnly)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Message type to initiate a read-write transaction. Currently this
@@ -673,134 +589,15 @@ func (m *TransactionOptions_ReadOnly) GetReturnReadTimestamp() bool {
 	return false
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*TransactionOptions_ReadOnly) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _TransactionOptions_ReadOnly_OneofMarshaler, _TransactionOptions_ReadOnly_OneofUnmarshaler, _TransactionOptions_ReadOnly_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*TransactionOptions_ReadOnly) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*TransactionOptions_ReadOnly_Strong)(nil),
 		(*TransactionOptions_ReadOnly_MinReadTimestamp)(nil),
 		(*TransactionOptions_ReadOnly_MaxStaleness)(nil),
 		(*TransactionOptions_ReadOnly_ReadTimestamp)(nil),
 		(*TransactionOptions_ReadOnly_ExactStaleness)(nil),
 	}
-}
-
-func _TransactionOptions_ReadOnly_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*TransactionOptions_ReadOnly)
-	// timestamp_bound
-	switch x := m.TimestampBound.(type) {
-	case *TransactionOptions_ReadOnly_Strong:
-		t := uint64(0)
-		if x.Strong {
-			t = 1
-		}
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case *TransactionOptions_ReadOnly_MinReadTimestamp:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.MinReadTimestamp); err != nil {
-			return err
-		}
-	case *TransactionOptions_ReadOnly_MaxStaleness:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.MaxStaleness); err != nil {
-			return err
-		}
-	case *TransactionOptions_ReadOnly_ReadTimestamp:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadTimestamp); err != nil {
-			return err
-		}
-	case *TransactionOptions_ReadOnly_ExactStaleness:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ExactStaleness); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("TransactionOptions_ReadOnly.TimestampBound has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _TransactionOptions_ReadOnly_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*TransactionOptions_ReadOnly)
-	switch tag {
-	case 1: // timestamp_bound.strong
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.TimestampBound = &TransactionOptions_ReadOnly_Strong{x != 0}
-		return true, err
-	case 2: // timestamp_bound.min_read_timestamp
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.TimestampBound = &TransactionOptions_ReadOnly_MinReadTimestamp{msg}
-		return true, err
-	case 3: // timestamp_bound.max_staleness
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(duration.Duration)
-		err := b.DecodeMessage(msg)
-		m.TimestampBound = &TransactionOptions_ReadOnly_MaxStaleness{msg}
-		return true, err
-	case 4: // timestamp_bound.read_timestamp
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.TimestampBound = &TransactionOptions_ReadOnly_ReadTimestamp{msg}
-		return true, err
-	case 5: // timestamp_bound.exact_staleness
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(duration.Duration)
-		err := b.DecodeMessage(msg)
-		m.TimestampBound = &TransactionOptions_ReadOnly_ExactStaleness{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _TransactionOptions_ReadOnly_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*TransactionOptions_ReadOnly)
-	// timestamp_bound
-	switch x := m.TimestampBound.(type) {
-	case *TransactionOptions_ReadOnly_Strong:
-		n += 1 // tag and wire
-		n += 1
-	case *TransactionOptions_ReadOnly_MinReadTimestamp:
-		s := proto.Size(x.MinReadTimestamp)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransactionOptions_ReadOnly_MaxStaleness:
-		s := proto.Size(x.MaxStaleness)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransactionOptions_ReadOnly_ReadTimestamp:
-		s := proto.Size(x.ReadTimestamp)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransactionOptions_ReadOnly_ExactStaleness:
-		s := proto.Size(x.ExactStaleness)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A transaction.
@@ -959,93 +756,13 @@ func (m *TransactionSelector) GetBegin() *TransactionOptions {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*TransactionSelector) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _TransactionSelector_OneofMarshaler, _TransactionSelector_OneofUnmarshaler, _TransactionSelector_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*TransactionSelector) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*TransactionSelector_SingleUse)(nil),
 		(*TransactionSelector_Id)(nil),
 		(*TransactionSelector_Begin)(nil),
 	}
-}
-
-func _TransactionSelector_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*TransactionSelector)
-	// selector
-	switch x := m.Selector.(type) {
-	case *TransactionSelector_SingleUse:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.SingleUse); err != nil {
-			return err
-		}
-	case *TransactionSelector_Id:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Id)
-	case *TransactionSelector_Begin:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Begin); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("TransactionSelector.Selector has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _TransactionSelector_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*TransactionSelector)
-	switch tag {
-	case 1: // selector.single_use
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions)
-		err := b.DecodeMessage(msg)
-		m.Selector = &TransactionSelector_SingleUse{msg}
-		return true, err
-	case 2: // selector.id
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Selector = &TransactionSelector_Id{x}
-		return true, err
-	case 3: // selector.begin
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions)
-		err := b.DecodeMessage(msg)
-		m.Selector = &TransactionSelector_Begin{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _TransactionSelector_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*TransactionSelector)
-	// selector
-	switch x := m.Selector.(type) {
-	case *TransactionSelector_SingleUse:
-		s := proto.Size(x.SingleUse)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransactionSelector_Id:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Id)))
-		n += len(x.Id)
-	case *TransactionSelector_Begin:
-		s := proto.Size(x.Begin)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

@@ -24,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Represents the text encoding that the caller uses to process the output.
 // Providing an `EncodingType` is recommended because the API provides the
@@ -1220,70 +1220,12 @@ func (m *Document) GetLanguage() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Document) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Document_OneofMarshaler, _Document_OneofUnmarshaler, _Document_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Document) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Document_Content)(nil),
 		(*Document_GcsContentUri)(nil),
 	}
-}
-
-func _Document_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Document)
-	// source
-	switch x := m.Source.(type) {
-	case *Document_Content:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Content)
-	case *Document_GcsContentUri:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.GcsContentUri)
-	case nil:
-	default:
-		return fmt.Errorf("Document.Source has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Document_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Document)
-	switch tag {
-	case 2: // source.content
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Source = &Document_Content{x}
-		return true, err
-	case 3: // source.gcs_content_uri
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Source = &Document_GcsContentUri{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Document_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Document)
-	// source
-	switch x := m.Source.(type) {
-	case *Document_Content:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Content)))
-		n += len(x.Content)
-	case *Document_GcsContentUri:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.GcsContentUri)))
-		n += len(x.GcsContentUri)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Represents a sentence in the input document.

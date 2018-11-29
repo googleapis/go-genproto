@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Actions to take when the user is not logged in.
 type AuthFailAction int32
@@ -505,97 +505,13 @@ func (m *UrlMap) GetRedirectHttpResponseCode() UrlMap_RedirectHttpResponseCode {
 	return UrlMap_REDIRECT_HTTP_RESPONSE_CODE_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*UrlMap) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _UrlMap_OneofMarshaler, _UrlMap_OneofUnmarshaler, _UrlMap_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*UrlMap) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*UrlMap_StaticFiles)(nil),
 		(*UrlMap_Script)(nil),
 		(*UrlMap_ApiEndpoint)(nil),
 	}
-}
-
-func _UrlMap_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*UrlMap)
-	// handler_type
-	switch x := m.HandlerType.(type) {
-	case *UrlMap_StaticFiles:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.StaticFiles); err != nil {
-			return err
-		}
-	case *UrlMap_Script:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Script); err != nil {
-			return err
-		}
-	case *UrlMap_ApiEndpoint:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ApiEndpoint); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("UrlMap.HandlerType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _UrlMap_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*UrlMap)
-	switch tag {
-	case 2: // handler_type.static_files
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StaticFilesHandler)
-		err := b.DecodeMessage(msg)
-		m.HandlerType = &UrlMap_StaticFiles{msg}
-		return true, err
-	case 3: // handler_type.script
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ScriptHandler)
-		err := b.DecodeMessage(msg)
-		m.HandlerType = &UrlMap_Script{msg}
-		return true, err
-	case 4: // handler_type.api_endpoint
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ApiEndpointHandler)
-		err := b.DecodeMessage(msg)
-		m.HandlerType = &UrlMap_ApiEndpoint{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _UrlMap_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*UrlMap)
-	// handler_type
-	switch x := m.HandlerType.(type) {
-	case *UrlMap_StaticFiles:
-		s := proto.Size(x.StaticFiles)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *UrlMap_Script:
-		s := proto.Size(x.Script)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *UrlMap_ApiEndpoint:
-		s := proto.Size(x.ApiEndpoint)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Files served directly to the user for a given URL, such as images, CSS

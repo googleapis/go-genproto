@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // State of the queue.
 type Queue_State int32
@@ -247,59 +247,11 @@ func (m *Queue) GetPurgeTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Queue) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Queue_OneofMarshaler, _Queue_OneofUnmarshaler, _Queue_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Queue) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Queue_AppEngineHttpQueue)(nil),
 	}
-}
-
-func _Queue_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Queue)
-	// queue_type
-	switch x := m.QueueType.(type) {
-	case *Queue_AppEngineHttpQueue:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AppEngineHttpQueue); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Queue.QueueType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Queue_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Queue)
-	switch tag {
-	case 3: // queue_type.app_engine_http_queue
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AppEngineHttpQueue)
-		err := b.DecodeMessage(msg)
-		m.QueueType = &Queue_AppEngineHttpQueue{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Queue_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Queue)
-	// queue_type
-	switch x := m.QueueType.(type) {
-	case *Queue_AppEngineHttpQueue:
-		s := proto.Size(x.AppEngineHttpQueue)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Rate limits.

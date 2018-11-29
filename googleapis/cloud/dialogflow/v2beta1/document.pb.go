@@ -24,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The knowledge type of document content.
 type Document_KnowledgeType int32
@@ -216,70 +216,12 @@ func (m *Document) GetContent() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Document) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Document_OneofMarshaler, _Document_OneofUnmarshaler, _Document_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Document) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Document_ContentUri)(nil),
 		(*Document_Content)(nil),
 	}
-}
-
-func _Document_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Document)
-	// source
-	switch x := m.Source.(type) {
-	case *Document_ContentUri:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.ContentUri)
-	case *Document_Content:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Content)
-	case nil:
-	default:
-		return fmt.Errorf("Document.Source has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Document_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Document)
-	switch tag {
-	case 5: // source.content_uri
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Source = &Document_ContentUri{x}
-		return true, err
-	case 6: // source.content
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Source = &Document_Content{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Document_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Document)
-	// source
-	switch x := m.Source.(type) {
-	case *Document_ContentUri:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.ContentUri)))
-		n += len(x.ContentUri)
-	case *Document_Content:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Content)))
-		n += len(x.Content)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request message for [Documents.ListDocuments][google.cloud.dialogflow.v2beta1.Documents.ListDocuments].

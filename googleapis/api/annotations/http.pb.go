@@ -18,7 +18,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Defines the HTTP configuration for an API service. It contains a list of
 // [HttpRule][google.api.HttpRule], each specifying the mapping of an RPC method
@@ -473,9 +473,9 @@ func (m *HttpRule) GetAdditionalBindings() []*HttpRule {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*HttpRule) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _HttpRule_OneofMarshaler, _HttpRule_OneofUnmarshaler, _HttpRule_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*HttpRule) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*HttpRule_Get)(nil),
 		(*HttpRule_Put)(nil),
 		(*HttpRule_Post)(nil),
@@ -483,124 +483,6 @@ func (*HttpRule) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) erro
 		(*HttpRule_Patch)(nil),
 		(*HttpRule_Custom)(nil),
 	}
-}
-
-func _HttpRule_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*HttpRule)
-	// pattern
-	switch x := m.Pattern.(type) {
-	case *HttpRule_Get:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Get)
-	case *HttpRule_Put:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Put)
-	case *HttpRule_Post:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Post)
-	case *HttpRule_Delete:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Delete)
-	case *HttpRule_Patch:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Patch)
-	case *HttpRule_Custom:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Custom); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("HttpRule.Pattern has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _HttpRule_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*HttpRule)
-	switch tag {
-	case 2: // pattern.get
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Pattern = &HttpRule_Get{x}
-		return true, err
-	case 3: // pattern.put
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Pattern = &HttpRule_Put{x}
-		return true, err
-	case 4: // pattern.post
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Pattern = &HttpRule_Post{x}
-		return true, err
-	case 5: // pattern.delete
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Pattern = &HttpRule_Delete{x}
-		return true, err
-	case 6: // pattern.patch
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Pattern = &HttpRule_Patch{x}
-		return true, err
-	case 8: // pattern.custom
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CustomHttpPattern)
-		err := b.DecodeMessage(msg)
-		m.Pattern = &HttpRule_Custom{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _HttpRule_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*HttpRule)
-	// pattern
-	switch x := m.Pattern.(type) {
-	case *HttpRule_Get:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Get)))
-		n += len(x.Get)
-	case *HttpRule_Put:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Put)))
-		n += len(x.Put)
-	case *HttpRule_Post:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Post)))
-		n += len(x.Post)
-	case *HttpRule_Delete:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Delete)))
-		n += len(x.Delete)
-	case *HttpRule_Patch:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Patch)))
-		n += len(x.Patch)
-	case *HttpRule_Custom:
-		s := proto.Size(x.Custom)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A custom pattern is used for defining custom HTTP verb.

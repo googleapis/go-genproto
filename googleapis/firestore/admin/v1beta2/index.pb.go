@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Query Scope defines the scope at which a query is run. This is specified on
 // a StructuredQuery's `from` field.
@@ -341,68 +341,12 @@ func (m *Index_IndexField) GetArrayConfig() Index_IndexField_ArrayConfig {
 	return Index_IndexField_ARRAY_CONFIG_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Index_IndexField) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Index_IndexField_OneofMarshaler, _Index_IndexField_OneofUnmarshaler, _Index_IndexField_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Index_IndexField) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Index_IndexField_Order_)(nil),
 		(*Index_IndexField_ArrayConfig_)(nil),
 	}
-}
-
-func _Index_IndexField_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Index_IndexField)
-	// value_mode
-	switch x := m.ValueMode.(type) {
-	case *Index_IndexField_Order_:
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.Order))
-	case *Index_IndexField_ArrayConfig_:
-		b.EncodeVarint(3<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.ArrayConfig))
-	case nil:
-	default:
-		return fmt.Errorf("Index_IndexField.ValueMode has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Index_IndexField_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Index_IndexField)
-	switch tag {
-	case 2: // value_mode.order
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ValueMode = &Index_IndexField_Order_{Index_IndexField_Order(x)}
-		return true, err
-	case 3: // value_mode.array_config
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ValueMode = &Index_IndexField_ArrayConfig_{Index_IndexField_ArrayConfig(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Index_IndexField_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Index_IndexField)
-	// value_mode
-	switch x := m.ValueMode.(type) {
-	case *Index_IndexField_Order_:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.Order))
-	case *Index_IndexField_ArrayConfig_:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.ArrayConfig))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

@@ -26,7 +26,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Enumerates the possible states that the batch request can be in.
 type BatchOperationMetadata_State int32
@@ -1684,59 +1684,11 @@ func (m *ImportProductSetsInputConfig) GetGcsSource() *ImportProductSetsGcsSourc
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ImportProductSetsInputConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ImportProductSetsInputConfig_OneofMarshaler, _ImportProductSetsInputConfig_OneofUnmarshaler, _ImportProductSetsInputConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ImportProductSetsInputConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ImportProductSetsInputConfig_GcsSource)(nil),
 	}
-}
-
-func _ImportProductSetsInputConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ImportProductSetsInputConfig)
-	// source
-	switch x := m.Source.(type) {
-	case *ImportProductSetsInputConfig_GcsSource:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.GcsSource); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ImportProductSetsInputConfig.Source has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ImportProductSetsInputConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ImportProductSetsInputConfig)
-	switch tag {
-	case 1: // source.gcs_source
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ImportProductSetsGcsSource)
-		err := b.DecodeMessage(msg)
-		m.Source = &ImportProductSetsInputConfig_GcsSource{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ImportProductSetsInputConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ImportProductSetsInputConfig)
-	// source
-	switch x := m.Source.(type) {
-	case *ImportProductSetsInputConfig_GcsSource:
-		s := proto.Size(x.GcsSource)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request message for the `ImportProductSets` method.
@@ -2112,8 +2064,8 @@ type ProductSearchClient interface {
 	// * Returns INVALID_ARGUMENT if display_name is present in update_mask but
 	//   missing from the request or longer than 4096 characters.
 	UpdateProductSet(ctx context.Context, in *UpdateProductSetRequest, opts ...grpc.CallOption) (*ProductSet, error)
-	// Permanently deletes a ProductSet. All Products and ReferenceImages in the
-	// ProductSet will be deleted.
+	// Permanently deletes a ProductSet. Products and ReferenceImages in the
+	// ProductSet are not deleted.
 	//
 	// The actual image files are not deleted from Google Cloud Storage.
 	//
@@ -2452,8 +2404,8 @@ type ProductSearchServer interface {
 	// * Returns INVALID_ARGUMENT if display_name is present in update_mask but
 	//   missing from the request or longer than 4096 characters.
 	UpdateProductSet(context.Context, *UpdateProductSetRequest) (*ProductSet, error)
-	// Permanently deletes a ProductSet. All Products and ReferenceImages in the
-	// ProductSet will be deleted.
+	// Permanently deletes a ProductSet. Products and ReferenceImages in the
+	// ProductSet are not deleted.
 	//
 	// The actual image files are not deleted from Google Cloud Storage.
 	//

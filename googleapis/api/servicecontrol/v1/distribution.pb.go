@@ -18,7 +18,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Distribution represents a frequency distribution of double-valued sample
 // points. It contains the size of the population of sample points plus
@@ -206,97 +206,13 @@ func (m *Distribution) GetExplicitBuckets() *Distribution_ExplicitBuckets {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Distribution) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Distribution_OneofMarshaler, _Distribution_OneofUnmarshaler, _Distribution_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Distribution) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Distribution_LinearBuckets_)(nil),
 		(*Distribution_ExponentialBuckets_)(nil),
 		(*Distribution_ExplicitBuckets_)(nil),
 	}
-}
-
-func _Distribution_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Distribution)
-	// bucket_option
-	switch x := m.BucketOption.(type) {
-	case *Distribution_LinearBuckets_:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.LinearBuckets); err != nil {
-			return err
-		}
-	case *Distribution_ExponentialBuckets_:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ExponentialBuckets); err != nil {
-			return err
-		}
-	case *Distribution_ExplicitBuckets_:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ExplicitBuckets); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Distribution.BucketOption has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Distribution_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Distribution)
-	switch tag {
-	case 7: // bucket_option.linear_buckets
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Distribution_LinearBuckets)
-		err := b.DecodeMessage(msg)
-		m.BucketOption = &Distribution_LinearBuckets_{msg}
-		return true, err
-	case 8: // bucket_option.exponential_buckets
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Distribution_ExponentialBuckets)
-		err := b.DecodeMessage(msg)
-		m.BucketOption = &Distribution_ExponentialBuckets_{msg}
-		return true, err
-	case 9: // bucket_option.explicit_buckets
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Distribution_ExplicitBuckets)
-		err := b.DecodeMessage(msg)
-		m.BucketOption = &Distribution_ExplicitBuckets_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Distribution_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Distribution)
-	// bucket_option
-	switch x := m.BucketOption.(type) {
-	case *Distribution_LinearBuckets_:
-		s := proto.Size(x.LinearBuckets)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Distribution_ExponentialBuckets_:
-		s := proto.Size(x.ExponentialBuckets)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Distribution_ExplicitBuckets_:
-		s := proto.Size(x.ExplicitBuckets)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Describing buckets with constant width.

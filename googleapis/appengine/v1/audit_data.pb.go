@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // App Engine admin service audit log.
 type AuditData struct {
@@ -99,78 +99,12 @@ func (m *AuditData) GetCreateVersion() *CreateVersionMethod {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*AuditData) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _AuditData_OneofMarshaler, _AuditData_OneofUnmarshaler, _AuditData_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*AuditData) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*AuditData_UpdateService)(nil),
 		(*AuditData_CreateVersion)(nil),
 	}
-}
-
-func _AuditData_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*AuditData)
-	// method
-	switch x := m.Method.(type) {
-	case *AuditData_UpdateService:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.UpdateService); err != nil {
-			return err
-		}
-	case *AuditData_CreateVersion:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CreateVersion); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("AuditData.Method has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _AuditData_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*AuditData)
-	switch tag {
-	case 1: // method.update_service
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(UpdateServiceMethod)
-		err := b.DecodeMessage(msg)
-		m.Method = &AuditData_UpdateService{msg}
-		return true, err
-	case 2: // method.create_version
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(CreateVersionMethod)
-		err := b.DecodeMessage(msg)
-		m.Method = &AuditData_CreateVersion{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _AuditData_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*AuditData)
-	// method
-	switch x := m.Method.(type) {
-	case *AuditData_UpdateService:
-		s := proto.Size(x.UpdateService)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *AuditData_CreateVersion:
-		s := proto.Size(x.CreateVersion)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Detailed information about UpdateService call.

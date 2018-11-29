@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Deployment state of the model.
 type Model_DeploymentState int32
@@ -209,97 +209,13 @@ func (m *Model) GetDeploymentState() Model_DeploymentState {
 	return Model_DEPLOYMENT_STATE_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Model) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Model_OneofMarshaler, _Model_OneofUnmarshaler, _Model_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Model) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Model_ImageClassificationModelMetadata)(nil),
 		(*Model_TextClassificationModelMetadata)(nil),
 		(*Model_TranslationModelMetadata)(nil),
 	}
-}
-
-func _Model_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Model)
-	// model_metadata
-	switch x := m.ModelMetadata.(type) {
-	case *Model_ImageClassificationModelMetadata:
-		b.EncodeVarint(13<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ImageClassificationModelMetadata); err != nil {
-			return err
-		}
-	case *Model_TextClassificationModelMetadata:
-		b.EncodeVarint(14<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TextClassificationModelMetadata); err != nil {
-			return err
-		}
-	case *Model_TranslationModelMetadata:
-		b.EncodeVarint(15<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TranslationModelMetadata); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Model.ModelMetadata has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Model_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Model)
-	switch tag {
-	case 13: // model_metadata.image_classification_model_metadata
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ImageClassificationModelMetadata)
-		err := b.DecodeMessage(msg)
-		m.ModelMetadata = &Model_ImageClassificationModelMetadata{msg}
-		return true, err
-	case 14: // model_metadata.text_classification_model_metadata
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TextClassificationModelMetadata)
-		err := b.DecodeMessage(msg)
-		m.ModelMetadata = &Model_TextClassificationModelMetadata{msg}
-		return true, err
-	case 15: // model_metadata.translation_model_metadata
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TranslationModelMetadata)
-		err := b.DecodeMessage(msg)
-		m.ModelMetadata = &Model_TranslationModelMetadata{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Model_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Model)
-	// model_metadata
-	switch x := m.ModelMetadata.(type) {
-	case *Model_ImageClassificationModelMetadata:
-		s := proto.Size(x.ImageClassificationModelMetadata)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Model_TextClassificationModelMetadata:
-		s := proto.Size(x.TextClassificationModelMetadata)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Model_TranslationModelMetadata:
-		s := proto.Size(x.TranslationModelMetadata)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

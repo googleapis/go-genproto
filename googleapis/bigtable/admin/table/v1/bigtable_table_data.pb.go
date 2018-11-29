@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type Table_TimestampGranularity int32
 
@@ -310,111 +310,14 @@ func (m *GcRule) GetUnion() *GcRule_Union {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*GcRule) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _GcRule_OneofMarshaler, _GcRule_OneofUnmarshaler, _GcRule_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*GcRule) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*GcRule_MaxNumVersions)(nil),
 		(*GcRule_MaxAge)(nil),
 		(*GcRule_Intersection_)(nil),
 		(*GcRule_Union_)(nil),
 	}
-}
-
-func _GcRule_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*GcRule)
-	// rule
-	switch x := m.Rule.(type) {
-	case *GcRule_MaxNumVersions:
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.MaxNumVersions))
-	case *GcRule_MaxAge:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.MaxAge); err != nil {
-			return err
-		}
-	case *GcRule_Intersection_:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Intersection); err != nil {
-			return err
-		}
-	case *GcRule_Union_:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Union); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("GcRule.Rule has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _GcRule_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*GcRule)
-	switch tag {
-	case 1: // rule.max_num_versions
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Rule = &GcRule_MaxNumVersions{int32(x)}
-		return true, err
-	case 2: // rule.max_age
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(duration.Duration)
-		err := b.DecodeMessage(msg)
-		m.Rule = &GcRule_MaxAge{msg}
-		return true, err
-	case 3: // rule.intersection
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(GcRule_Intersection)
-		err := b.DecodeMessage(msg)
-		m.Rule = &GcRule_Intersection_{msg}
-		return true, err
-	case 4: // rule.union
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(GcRule_Union)
-		err := b.DecodeMessage(msg)
-		m.Rule = &GcRule_Union_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _GcRule_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*GcRule)
-	// rule
-	switch x := m.Rule.(type) {
-	case *GcRule_MaxNumVersions:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.MaxNumVersions))
-	case *GcRule_MaxAge:
-		s := proto.Size(x.MaxAge)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *GcRule_Intersection_:
-		s := proto.Size(x.Intersection)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *GcRule_Union_:
-		s := proto.Size(x.Union)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // A GcRule which deletes cells matching all of the given rules.

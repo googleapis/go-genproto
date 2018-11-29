@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Audio encoding of the data sent in the audio message.
 // Audio must be one-channel (mono). The only language supported is "en-US".
@@ -609,74 +609,12 @@ func (m *ConverseRequest) GetAudioIn() []byte {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ConverseRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ConverseRequest_OneofMarshaler, _ConverseRequest_OneofUnmarshaler, _ConverseRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ConverseRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ConverseRequest_Config)(nil),
 		(*ConverseRequest_AudioIn)(nil),
 	}
-}
-
-func _ConverseRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ConverseRequest)
-	// converse_request
-	switch x := m.ConverseRequest.(type) {
-	case *ConverseRequest_Config:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Config); err != nil {
-			return err
-		}
-	case *ConverseRequest_AudioIn:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.AudioIn)
-	case nil:
-	default:
-		return fmt.Errorf("ConverseRequest.ConverseRequest has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ConverseRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ConverseRequest)
-	switch tag {
-	case 1: // converse_request.config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ConverseConfig)
-		err := b.DecodeMessage(msg)
-		m.ConverseRequest = &ConverseRequest_Config{msg}
-		return true, err
-	case 2: // converse_request.audio_in
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.ConverseRequest = &ConverseRequest_AudioIn{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ConverseRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ConverseRequest)
-	// converse_request
-	switch x := m.ConverseRequest.(type) {
-	case *ConverseRequest_Config:
-		s := proto.Size(x.Config)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ConverseRequest_AudioIn:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AudioIn)))
-		n += len(x.AudioIn)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The top-level message received by the client. A series of one or more
@@ -783,111 +721,14 @@ func (m *ConverseResponse) GetResult() *ConverseResult {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ConverseResponse) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ConverseResponse_OneofMarshaler, _ConverseResponse_OneofUnmarshaler, _ConverseResponse_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ConverseResponse) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ConverseResponse_Error)(nil),
 		(*ConverseResponse_EventType_)(nil),
 		(*ConverseResponse_AudioOut)(nil),
 		(*ConverseResponse_Result)(nil),
 	}
-}
-
-func _ConverseResponse_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ConverseResponse)
-	// converse_response
-	switch x := m.ConverseResponse.(type) {
-	case *ConverseResponse_Error:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Error); err != nil {
-			return err
-		}
-	case *ConverseResponse_EventType_:
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.EventType))
-	case *ConverseResponse_AudioOut:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AudioOut); err != nil {
-			return err
-		}
-	case *ConverseResponse_Result:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Result); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ConverseResponse.ConverseResponse has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ConverseResponse_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ConverseResponse)
-	switch tag {
-	case 1: // converse_response.error
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(status.Status)
-		err := b.DecodeMessage(msg)
-		m.ConverseResponse = &ConverseResponse_Error{msg}
-		return true, err
-	case 2: // converse_response.event_type
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ConverseResponse = &ConverseResponse_EventType_{ConverseResponse_EventType(x)}
-		return true, err
-	case 3: // converse_response.audio_out
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(AudioOut)
-		err := b.DecodeMessage(msg)
-		m.ConverseResponse = &ConverseResponse_AudioOut{msg}
-		return true, err
-	case 5: // converse_response.result
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ConverseResult)
-		err := b.DecodeMessage(msg)
-		m.ConverseResponse = &ConverseResponse_Result{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ConverseResponse_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ConverseResponse)
-	// converse_response
-	switch x := m.ConverseResponse.(type) {
-	case *ConverseResponse_Error:
-		s := proto.Size(x.Error)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ConverseResponse_EventType_:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.EventType))
-	case *ConverseResponse_AudioOut:
-		s := proto.Size(x.AudioOut)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ConverseResponse_Result:
-		s := proto.Size(x.Result)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

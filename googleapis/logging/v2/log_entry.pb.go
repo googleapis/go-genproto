@@ -24,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // An individual entry in a log.
 type LogEntry struct {
@@ -300,93 +300,13 @@ func (m *LogEntry) GetSourceLocation() *LogEntrySourceLocation {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*LogEntry) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _LogEntry_OneofMarshaler, _LogEntry_OneofUnmarshaler, _LogEntry_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*LogEntry) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*LogEntry_ProtoPayload)(nil),
 		(*LogEntry_TextPayload)(nil),
 		(*LogEntry_JsonPayload)(nil),
 	}
-}
-
-func _LogEntry_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*LogEntry)
-	// payload
-	switch x := m.Payload.(type) {
-	case *LogEntry_ProtoPayload:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ProtoPayload); err != nil {
-			return err
-		}
-	case *LogEntry_TextPayload:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.TextPayload)
-	case *LogEntry_JsonPayload:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.JsonPayload); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("LogEntry.Payload has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _LogEntry_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*LogEntry)
-	switch tag {
-	case 2: // payload.proto_payload
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(any.Any)
-		err := b.DecodeMessage(msg)
-		m.Payload = &LogEntry_ProtoPayload{msg}
-		return true, err
-	case 3: // payload.text_payload
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Payload = &LogEntry_TextPayload{x}
-		return true, err
-	case 6: // payload.json_payload
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(_struct.Struct)
-		err := b.DecodeMessage(msg)
-		m.Payload = &LogEntry_JsonPayload{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _LogEntry_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*LogEntry)
-	// payload
-	switch x := m.Payload.(type) {
-	case *LogEntry_ProtoPayload:
-		s := proto.Size(x.ProtoPayload)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *LogEntry_TextPayload:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.TextPayload)))
-		n += len(x.TextPayload)
-	case *LogEntry_JsonPayload:
-		s := proto.Size(x.JsonPayload)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Additional information about a potentially long-running operation with which

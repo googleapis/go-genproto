@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Contains annotation information that is relevant to AutoML.
 type AnnotationPayload struct {
@@ -121,78 +121,12 @@ func (m *AnnotationPayload) GetDisplayName() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*AnnotationPayload) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _AnnotationPayload_OneofMarshaler, _AnnotationPayload_OneofUnmarshaler, _AnnotationPayload_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*AnnotationPayload) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*AnnotationPayload_Translation)(nil),
 		(*AnnotationPayload_Classification)(nil),
 	}
-}
-
-func _AnnotationPayload_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*AnnotationPayload)
-	// detail
-	switch x := m.Detail.(type) {
-	case *AnnotationPayload_Translation:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Translation); err != nil {
-			return err
-		}
-	case *AnnotationPayload_Classification:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Classification); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("AnnotationPayload.Detail has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _AnnotationPayload_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*AnnotationPayload)
-	switch tag {
-	case 2: // detail.translation
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TranslationAnnotation)
-		err := b.DecodeMessage(msg)
-		m.Detail = &AnnotationPayload_Translation{msg}
-		return true, err
-	case 3: // detail.classification
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(ClassificationAnnotation)
-		err := b.DecodeMessage(msg)
-		m.Detail = &AnnotationPayload_Classification{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _AnnotationPayload_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*AnnotationPayload)
-	// detail
-	switch x := m.Detail.(type) {
-	case *AnnotationPayload_Translation:
-		s := proto.Size(x.Translation)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *AnnotationPayload_Classification:
-		s := proto.Size(x.Classification)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {

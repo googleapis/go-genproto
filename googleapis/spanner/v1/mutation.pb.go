@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A modification to one or more Cloud Spanner rows.  Mutations can be
 // applied to a Cloud Spanner database by sending them in a
@@ -141,135 +141,15 @@ func (m *Mutation) GetDelete() *Mutation_Delete {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Mutation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Mutation_OneofMarshaler, _Mutation_OneofUnmarshaler, _Mutation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Mutation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Mutation_Insert)(nil),
 		(*Mutation_Update)(nil),
 		(*Mutation_InsertOrUpdate)(nil),
 		(*Mutation_Replace)(nil),
 		(*Mutation_Delete_)(nil),
 	}
-}
-
-func _Mutation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Mutation)
-	// operation
-	switch x := m.Operation.(type) {
-	case *Mutation_Insert:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Insert); err != nil {
-			return err
-		}
-	case *Mutation_Update:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Update); err != nil {
-			return err
-		}
-	case *Mutation_InsertOrUpdate:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.InsertOrUpdate); err != nil {
-			return err
-		}
-	case *Mutation_Replace:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Replace); err != nil {
-			return err
-		}
-	case *Mutation_Delete_:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Delete); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Mutation.Operation has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Mutation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Mutation)
-	switch tag {
-	case 1: // operation.insert
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Mutation_Write)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Mutation_Insert{msg}
-		return true, err
-	case 2: // operation.update
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Mutation_Write)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Mutation_Update{msg}
-		return true, err
-	case 3: // operation.insert_or_update
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Mutation_Write)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Mutation_InsertOrUpdate{msg}
-		return true, err
-	case 4: // operation.replace
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Mutation_Write)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Mutation_Replace{msg}
-		return true, err
-	case 5: // operation.delete
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Mutation_Delete)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Mutation_Delete_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Mutation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Mutation)
-	// operation
-	switch x := m.Operation.(type) {
-	case *Mutation_Insert:
-		s := proto.Size(x.Insert)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Mutation_Update:
-		s := proto.Size(x.Update)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Mutation_InsertOrUpdate:
-		s := proto.Size(x.InsertOrUpdate)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Mutation_Replace:
-		s := proto.Size(x.Replace)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Mutation_Delete_:
-		s := proto.Size(x.Delete)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Arguments to [insert][google.spanner.v1.Mutation.insert], [update][google.spanner.v1.Mutation.update], [insert_or_update][google.spanner.v1.Mutation.insert_or_update], and

@@ -33,7 +33,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // An instance of an analysis type that has been found on a resource.
 type Occurrence struct {
@@ -248,9 +248,9 @@ func (m *Occurrence) GetAttestation() *attestation.Details {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Occurrence) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Occurrence_OneofMarshaler, _Occurrence_OneofUnmarshaler, _Occurrence_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Occurrence) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Occurrence_Vulnerability)(nil),
 		(*Occurrence_Build)(nil),
 		(*Occurrence_DerivedImage)(nil),
@@ -259,162 +259,6 @@ func (*Occurrence) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) er
 		(*Occurrence_Discovered)(nil),
 		(*Occurrence_Attestation)(nil),
 	}
-}
-
-func _Occurrence_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Occurrence)
-	// details
-	switch x := m.Details.(type) {
-	case *Occurrence_Vulnerability:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Vulnerability); err != nil {
-			return err
-		}
-	case *Occurrence_Build:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Build); err != nil {
-			return err
-		}
-	case *Occurrence_DerivedImage:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.DerivedImage); err != nil {
-			return err
-		}
-	case *Occurrence_Installation:
-		b.EncodeVarint(11<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Installation); err != nil {
-			return err
-		}
-	case *Occurrence_Deployment:
-		b.EncodeVarint(12<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Deployment); err != nil {
-			return err
-		}
-	case *Occurrence_Discovered:
-		b.EncodeVarint(13<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Discovered); err != nil {
-			return err
-		}
-	case *Occurrence_Attestation:
-		b.EncodeVarint(14<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Attestation); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Occurrence.Details has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Occurrence_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Occurrence)
-	switch tag {
-	case 8: // details.vulnerability
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(vulnerability.Details)
-		err := b.DecodeMessage(msg)
-		m.Details = &Occurrence_Vulnerability{msg}
-		return true, err
-	case 9: // details.build
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(build.Details)
-		err := b.DecodeMessage(msg)
-		m.Details = &Occurrence_Build{msg}
-		return true, err
-	case 10: // details.derived_image
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(image.Details)
-		err := b.DecodeMessage(msg)
-		m.Details = &Occurrence_DerivedImage{msg}
-		return true, err
-	case 11: // details.installation
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(_package.Details)
-		err := b.DecodeMessage(msg)
-		m.Details = &Occurrence_Installation{msg}
-		return true, err
-	case 12: // details.deployment
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(deployment.Details)
-		err := b.DecodeMessage(msg)
-		m.Details = &Occurrence_Deployment{msg}
-		return true, err
-	case 13: // details.discovered
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(discovery.Details)
-		err := b.DecodeMessage(msg)
-		m.Details = &Occurrence_Discovered{msg}
-		return true, err
-	case 14: // details.attestation
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(attestation.Details)
-		err := b.DecodeMessage(msg)
-		m.Details = &Occurrence_Attestation{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Occurrence_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Occurrence)
-	// details
-	switch x := m.Details.(type) {
-	case *Occurrence_Vulnerability:
-		s := proto.Size(x.Vulnerability)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Occurrence_Build:
-		s := proto.Size(x.Build)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Occurrence_DerivedImage:
-		s := proto.Size(x.DerivedImage)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Occurrence_Installation:
-		s := proto.Size(x.Installation)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Occurrence_Deployment:
-		s := proto.Size(x.Deployment)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Occurrence_Discovered:
-		s := proto.Size(x.Discovered)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Occurrence_Attestation:
-		s := proto.Size(x.Attestation)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // An entity that can have metadata. For example, a Docker image.
@@ -708,9 +552,9 @@ func (m *Note) GetAttestationAuthority() *attestation.Authority {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Note) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Note_OneofMarshaler, _Note_OneofUnmarshaler, _Note_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Note) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Note_Vulnerability)(nil),
 		(*Note_Build)(nil),
 		(*Note_BaseImage)(nil),
@@ -719,162 +563,6 @@ func (*Note) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, f
 		(*Note_Discovery)(nil),
 		(*Note_AttestationAuthority)(nil),
 	}
-}
-
-func _Note_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Note)
-	// type
-	switch x := m.Type.(type) {
-	case *Note_Vulnerability:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Vulnerability); err != nil {
-			return err
-		}
-	case *Note_Build:
-		b.EncodeVarint(11<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Build); err != nil {
-			return err
-		}
-	case *Note_BaseImage:
-		b.EncodeVarint(12<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.BaseImage); err != nil {
-			return err
-		}
-	case *Note_Package:
-		b.EncodeVarint(13<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Package); err != nil {
-			return err
-		}
-	case *Note_Deployable:
-		b.EncodeVarint(14<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Deployable); err != nil {
-			return err
-		}
-	case *Note_Discovery:
-		b.EncodeVarint(15<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Discovery); err != nil {
-			return err
-		}
-	case *Note_AttestationAuthority:
-		b.EncodeVarint(16<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.AttestationAuthority); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Note.Type has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Note_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Note)
-	switch tag {
-	case 10: // type.vulnerability
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(vulnerability.Vulnerability)
-		err := b.DecodeMessage(msg)
-		m.Type = &Note_Vulnerability{msg}
-		return true, err
-	case 11: // type.build
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(build.Build)
-		err := b.DecodeMessage(msg)
-		m.Type = &Note_Build{msg}
-		return true, err
-	case 12: // type.base_image
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(image.Basis)
-		err := b.DecodeMessage(msg)
-		m.Type = &Note_BaseImage{msg}
-		return true, err
-	case 13: // type.package
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(_package.Package)
-		err := b.DecodeMessage(msg)
-		m.Type = &Note_Package{msg}
-		return true, err
-	case 14: // type.deployable
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(deployment.Deployable)
-		err := b.DecodeMessage(msg)
-		m.Type = &Note_Deployable{msg}
-		return true, err
-	case 15: // type.discovery
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(discovery.Discovery)
-		err := b.DecodeMessage(msg)
-		m.Type = &Note_Discovery{msg}
-		return true, err
-	case 16: // type.attestation_authority
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(attestation.Authority)
-		err := b.DecodeMessage(msg)
-		m.Type = &Note_AttestationAuthority{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Note_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Note)
-	// type
-	switch x := m.Type.(type) {
-	case *Note_Vulnerability:
-		s := proto.Size(x.Vulnerability)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Note_Build:
-		s := proto.Size(x.Build)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Note_BaseImage:
-		s := proto.Size(x.BaseImage)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Note_Package:
-		s := proto.Size(x.Package)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Note_Deployable:
-		s := proto.Size(x.Deployable)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Note_Discovery:
-		s := proto.Size(x.Discovery)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Note_AttestationAuthority:
-		s := proto.Size(x.AttestationAuthority)
-		n += 2 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request to get an occurrence.

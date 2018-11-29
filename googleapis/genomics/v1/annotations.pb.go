@@ -26,7 +26,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // When an [Annotation][google.genomics.v1.Annotation] or
 // [AnnotationSet][google.genomics.v1.AnnotationSet] is created, if `type` is
@@ -533,78 +533,12 @@ func (m *Annotation) GetInfo() map[string]*_struct.ListValue {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Annotation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Annotation_OneofMarshaler, _Annotation_OneofUnmarshaler, _Annotation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Annotation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Annotation_Variant)(nil),
 		(*Annotation_Transcript)(nil),
 	}
-}
-
-func _Annotation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Annotation)
-	// value
-	switch x := m.Value.(type) {
-	case *Annotation_Variant:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Variant); err != nil {
-			return err
-		}
-	case *Annotation_Transcript:
-		b.EncodeVarint(11<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Transcript); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Annotation.Value has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Annotation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Annotation)
-	switch tag {
-	case 10: // value.variant
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(VariantAnnotation)
-		err := b.DecodeMessage(msg)
-		m.Value = &Annotation_Variant{msg}
-		return true, err
-	case 11: // value.transcript
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Transcript)
-		err := b.DecodeMessage(msg)
-		m.Value = &Annotation_Transcript{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Annotation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Annotation)
-	// value
-	switch x := m.Value.(type) {
-	case *Annotation_Variant:
-		s := proto.Size(x.Variant)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Annotation_Transcript:
-		s := proto.Size(x.Transcript)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 type VariantAnnotation struct {
@@ -1824,70 +1758,12 @@ func (m *SearchAnnotationsRequest) GetPageSize() int32 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*SearchAnnotationsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _SearchAnnotationsRequest_OneofMarshaler, _SearchAnnotationsRequest_OneofUnmarshaler, _SearchAnnotationsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*SearchAnnotationsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*SearchAnnotationsRequest_ReferenceId)(nil),
 		(*SearchAnnotationsRequest_ReferenceName)(nil),
 	}
-}
-
-func _SearchAnnotationsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*SearchAnnotationsRequest)
-	// reference
-	switch x := m.Reference.(type) {
-	case *SearchAnnotationsRequest_ReferenceId:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.ReferenceId)
-	case *SearchAnnotationsRequest_ReferenceName:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.ReferenceName)
-	case nil:
-	default:
-		return fmt.Errorf("SearchAnnotationsRequest.Reference has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _SearchAnnotationsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*SearchAnnotationsRequest)
-	switch tag {
-	case 2: // reference.reference_id
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Reference = &SearchAnnotationsRequest_ReferenceId{x}
-		return true, err
-	case 3: // reference.reference_name
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.Reference = &SearchAnnotationsRequest_ReferenceName{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _SearchAnnotationsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*SearchAnnotationsRequest)
-	// reference
-	switch x := m.Reference.(type) {
-	case *SearchAnnotationsRequest_ReferenceId:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.ReferenceId)))
-		n += len(x.ReferenceId)
-	case *SearchAnnotationsRequest_ReferenceName:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.ReferenceName)))
-		n += len(x.ReferenceName)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 type SearchAnnotationsResponse struct {

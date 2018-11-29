@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Request message for BigtableServer.ReadRows.
 type ReadRowsRequest struct {
@@ -154,93 +154,13 @@ func (m *ReadRowsRequest) GetNumRowsLimit() int64 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ReadRowsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ReadRowsRequest_OneofMarshaler, _ReadRowsRequest_OneofUnmarshaler, _ReadRowsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ReadRowsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ReadRowsRequest_RowKey)(nil),
 		(*ReadRowsRequest_RowRange)(nil),
 		(*ReadRowsRequest_RowSet)(nil),
 	}
-}
-
-func _ReadRowsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ReadRowsRequest)
-	// target
-	switch x := m.Target.(type) {
-	case *ReadRowsRequest_RowKey:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.RowKey)
-	case *ReadRowsRequest_RowRange:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RowRange); err != nil {
-			return err
-		}
-	case *ReadRowsRequest_RowSet:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RowSet); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("ReadRowsRequest.Target has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ReadRowsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ReadRowsRequest)
-	switch tag {
-	case 2: // target.row_key
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.Target = &ReadRowsRequest_RowKey{x}
-		return true, err
-	case 3: // target.row_range
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(RowRange)
-		err := b.DecodeMessage(msg)
-		m.Target = &ReadRowsRequest_RowRange{msg}
-		return true, err
-	case 8: // target.row_set
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(RowSet)
-		err := b.DecodeMessage(msg)
-		m.Target = &ReadRowsRequest_RowSet{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ReadRowsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ReadRowsRequest)
-	// target
-	switch x := m.Target.(type) {
-	case *ReadRowsRequest_RowKey:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.RowKey)))
-		n += len(x.RowKey)
-	case *ReadRowsRequest_RowRange:
-		s := proto.Size(x.RowRange)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ReadRowsRequest_RowSet:
-		s := proto.Size(x.RowSet)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Response message for BigtableService.ReadRows.
@@ -383,95 +303,13 @@ func (m *ReadRowsResponse_Chunk) GetCommitRow() bool {
 	return false
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ReadRowsResponse_Chunk) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ReadRowsResponse_Chunk_OneofMarshaler, _ReadRowsResponse_Chunk_OneofUnmarshaler, _ReadRowsResponse_Chunk_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ReadRowsResponse_Chunk) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ReadRowsResponse_Chunk_RowContents)(nil),
 		(*ReadRowsResponse_Chunk_ResetRow)(nil),
 		(*ReadRowsResponse_Chunk_CommitRow)(nil),
 	}
-}
-
-func _ReadRowsResponse_Chunk_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ReadRowsResponse_Chunk)
-	// chunk
-	switch x := m.Chunk.(type) {
-	case *ReadRowsResponse_Chunk_RowContents:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.RowContents); err != nil {
-			return err
-		}
-	case *ReadRowsResponse_Chunk_ResetRow:
-		t := uint64(0)
-		if x.ResetRow {
-			t = 1
-		}
-		b.EncodeVarint(2<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case *ReadRowsResponse_Chunk_CommitRow:
-		t := uint64(0)
-		if x.CommitRow {
-			t = 1
-		}
-		b.EncodeVarint(3<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case nil:
-	default:
-		return fmt.Errorf("ReadRowsResponse_Chunk.Chunk has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ReadRowsResponse_Chunk_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ReadRowsResponse_Chunk)
-	switch tag {
-	case 1: // chunk.row_contents
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Family)
-		err := b.DecodeMessage(msg)
-		m.Chunk = &ReadRowsResponse_Chunk_RowContents{msg}
-		return true, err
-	case 2: // chunk.reset_row
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Chunk = &ReadRowsResponse_Chunk_ResetRow{x != 0}
-		return true, err
-	case 3: // chunk.commit_row
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.Chunk = &ReadRowsResponse_Chunk_CommitRow{x != 0}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ReadRowsResponse_Chunk_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ReadRowsResponse_Chunk)
-	// chunk
-	switch x := m.Chunk.(type) {
-	case *ReadRowsResponse_Chunk_RowContents:
-		s := proto.Size(x.RowContents)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *ReadRowsResponse_Chunk_ResetRow:
-		n += 1 // tag and wire
-		n += 1
-	case *ReadRowsResponse_Chunk_CommitRow:
-		n += 1 // tag and wire
-		n += 1
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request message for BigtableService.SampleRowKeys.

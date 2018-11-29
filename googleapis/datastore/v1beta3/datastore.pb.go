@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The modes available for commits.
 type CommitRequest_Mode int32
@@ -317,78 +317,12 @@ func (m *RunQueryRequest) GetGqlQuery() *GqlQuery {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RunQueryRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RunQueryRequest_OneofMarshaler, _RunQueryRequest_OneofUnmarshaler, _RunQueryRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RunQueryRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RunQueryRequest_Query)(nil),
 		(*RunQueryRequest_GqlQuery)(nil),
 	}
-}
-
-func _RunQueryRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RunQueryRequest)
-	// query_type
-	switch x := m.QueryType.(type) {
-	case *RunQueryRequest_Query:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Query); err != nil {
-			return err
-		}
-	case *RunQueryRequest_GqlQuery:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.GqlQuery); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("RunQueryRequest.QueryType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RunQueryRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RunQueryRequest)
-	switch tag {
-	case 3: // query_type.query
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Query)
-		err := b.DecodeMessage(msg)
-		m.QueryType = &RunQueryRequest_Query{msg}
-		return true, err
-	case 7: // query_type.gql_query
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(GqlQuery)
-		err := b.DecodeMessage(msg)
-		m.QueryType = &RunQueryRequest_GqlQuery{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RunQueryRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RunQueryRequest)
-	// query_type
-	switch x := m.QueryType.(type) {
-	case *RunQueryRequest_Query:
-		s := proto.Size(x.Query)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *RunQueryRequest_GqlQuery:
-		s := proto.Size(x.GqlQuery)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The response for [Datastore.RunQuery][google.datastore.v1beta3.Datastore.RunQuery].
@@ -716,55 +650,11 @@ func (m *CommitRequest) GetMutations() []*Mutation {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*CommitRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _CommitRequest_OneofMarshaler, _CommitRequest_OneofUnmarshaler, _CommitRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*CommitRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*CommitRequest_Transaction)(nil),
 	}
-}
-
-func _CommitRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*CommitRequest)
-	// transaction_selector
-	switch x := m.TransactionSelector.(type) {
-	case *CommitRequest_Transaction:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Transaction)
-	case nil:
-	default:
-		return fmt.Errorf("CommitRequest.TransactionSelector has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _CommitRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*CommitRequest)
-	switch tag {
-	case 1: // transaction_selector.transaction
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.TransactionSelector = &CommitRequest_Transaction{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _CommitRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*CommitRequest)
-	// transaction_selector
-	switch x := m.TransactionSelector.(type) {
-	case *CommitRequest_Transaction:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Transaction)))
-		n += len(x.Transaction)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The response for [Datastore.Commit][google.datastore.v1beta3.Datastore.Commit].
@@ -1145,142 +1035,15 @@ func (m *Mutation) GetBaseVersion() int64 {
 	return 0
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Mutation) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Mutation_OneofMarshaler, _Mutation_OneofUnmarshaler, _Mutation_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Mutation) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Mutation_Insert)(nil),
 		(*Mutation_Update)(nil),
 		(*Mutation_Upsert)(nil),
 		(*Mutation_Delete)(nil),
 		(*Mutation_BaseVersion)(nil),
 	}
-}
-
-func _Mutation_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Mutation)
-	// operation
-	switch x := m.Operation.(type) {
-	case *Mutation_Insert:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Insert); err != nil {
-			return err
-		}
-	case *Mutation_Update:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Update); err != nil {
-			return err
-		}
-	case *Mutation_Upsert:
-		b.EncodeVarint(6<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Upsert); err != nil {
-			return err
-		}
-	case *Mutation_Delete:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Delete); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Mutation.Operation has unexpected type %T", x)
-	}
-	// conflict_detection_strategy
-	switch x := m.ConflictDetectionStrategy.(type) {
-	case *Mutation_BaseVersion:
-		b.EncodeVarint(8<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.BaseVersion))
-	case nil:
-	default:
-		return fmt.Errorf("Mutation.ConflictDetectionStrategy has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Mutation_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Mutation)
-	switch tag {
-	case 4: // operation.insert
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Entity)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Mutation_Insert{msg}
-		return true, err
-	case 5: // operation.update
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Entity)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Mutation_Update{msg}
-		return true, err
-	case 6: // operation.upsert
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Entity)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Mutation_Upsert{msg}
-		return true, err
-	case 7: // operation.delete
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Key)
-		err := b.DecodeMessage(msg)
-		m.Operation = &Mutation_Delete{msg}
-		return true, err
-	case 8: // conflict_detection_strategy.base_version
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ConflictDetectionStrategy = &Mutation_BaseVersion{int64(x)}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Mutation_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Mutation)
-	// operation
-	switch x := m.Operation.(type) {
-	case *Mutation_Insert:
-		s := proto.Size(x.Insert)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Mutation_Update:
-		s := proto.Size(x.Update)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Mutation_Upsert:
-		s := proto.Size(x.Upsert)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Mutation_Delete:
-		s := proto.Size(x.Delete)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	// conflict_detection_strategy
-	switch x := m.ConflictDetectionStrategy.(type) {
-	case *Mutation_BaseVersion:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.BaseVersion))
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The result of applying a mutation.
@@ -1425,69 +1188,12 @@ func (m *ReadOptions) GetTransaction() []byte {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*ReadOptions) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _ReadOptions_OneofMarshaler, _ReadOptions_OneofUnmarshaler, _ReadOptions_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*ReadOptions) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*ReadOptions_ReadConsistency_)(nil),
 		(*ReadOptions_Transaction)(nil),
 	}
-}
-
-func _ReadOptions_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*ReadOptions)
-	// consistency_type
-	switch x := m.ConsistencyType.(type) {
-	case *ReadOptions_ReadConsistency_:
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(uint64(x.ReadConsistency))
-	case *ReadOptions_Transaction:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Transaction)
-	case nil:
-	default:
-		return fmt.Errorf("ReadOptions.ConsistencyType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _ReadOptions_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*ReadOptions)
-	switch tag {
-	case 1: // consistency_type.read_consistency
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ConsistencyType = &ReadOptions_ReadConsistency_{ReadOptions_ReadConsistency(x)}
-		return true, err
-	case 2: // consistency_type.transaction
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.ConsistencyType = &ReadOptions_Transaction{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _ReadOptions_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*ReadOptions)
-	// consistency_type
-	switch x := m.ConsistencyType.(type) {
-	case *ReadOptions_ReadConsistency_:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(x.ReadConsistency))
-	case *ReadOptions_Transaction:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Transaction)))
-		n += len(x.Transaction)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Options for beginning a new transaction.
@@ -1570,78 +1276,12 @@ func (m *TransactionOptions) GetReadOnly() *TransactionOptions_ReadOnly {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*TransactionOptions) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _TransactionOptions_OneofMarshaler, _TransactionOptions_OneofUnmarshaler, _TransactionOptions_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*TransactionOptions) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*TransactionOptions_ReadWrite_)(nil),
 		(*TransactionOptions_ReadOnly_)(nil),
 	}
-}
-
-func _TransactionOptions_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*TransactionOptions)
-	// mode
-	switch x := m.Mode.(type) {
-	case *TransactionOptions_ReadWrite_:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadWrite); err != nil {
-			return err
-		}
-	case *TransactionOptions_ReadOnly_:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadOnly); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("TransactionOptions.Mode has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _TransactionOptions_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*TransactionOptions)
-	switch tag {
-	case 1: // mode.read_write
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions_ReadWrite)
-		err := b.DecodeMessage(msg)
-		m.Mode = &TransactionOptions_ReadWrite_{msg}
-		return true, err
-	case 2: // mode.read_only
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions_ReadOnly)
-		err := b.DecodeMessage(msg)
-		m.Mode = &TransactionOptions_ReadOnly_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _TransactionOptions_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*TransactionOptions)
-	// mode
-	switch x := m.Mode.(type) {
-	case *TransactionOptions_ReadWrite_:
-		s := proto.Size(x.ReadWrite)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransactionOptions_ReadOnly_:
-		s := proto.Size(x.ReadOnly)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Options specific to read / write transactions.

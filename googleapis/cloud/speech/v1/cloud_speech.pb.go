@@ -27,7 +27,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The encoding of the audio data sent in the request.
 //
@@ -335,74 +335,12 @@ func (m *StreamingRecognizeRequest) GetAudioContent() []byte {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*StreamingRecognizeRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _StreamingRecognizeRequest_OneofMarshaler, _StreamingRecognizeRequest_OneofUnmarshaler, _StreamingRecognizeRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*StreamingRecognizeRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*StreamingRecognizeRequest_StreamingConfig)(nil),
 		(*StreamingRecognizeRequest_AudioContent)(nil),
 	}
-}
-
-func _StreamingRecognizeRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*StreamingRecognizeRequest)
-	// streaming_request
-	switch x := m.StreamingRequest.(type) {
-	case *StreamingRecognizeRequest_StreamingConfig:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.StreamingConfig); err != nil {
-			return err
-		}
-	case *StreamingRecognizeRequest_AudioContent:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.AudioContent)
-	case nil:
-	default:
-		return fmt.Errorf("StreamingRecognizeRequest.StreamingRequest has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _StreamingRecognizeRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*StreamingRecognizeRequest)
-	switch tag {
-	case 1: // streaming_request.streaming_config
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(StreamingRecognitionConfig)
-		err := b.DecodeMessage(msg)
-		m.StreamingRequest = &StreamingRecognizeRequest_StreamingConfig{msg}
-		return true, err
-	case 2: // streaming_request.audio_content
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.StreamingRequest = &StreamingRecognizeRequest_AudioContent{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _StreamingRecognizeRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*StreamingRecognizeRequest)
-	// streaming_request
-	switch x := m.StreamingRequest.(type) {
-	case *StreamingRecognizeRequest_StreamingConfig:
-		s := proto.Size(x.StreamingConfig)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *StreamingRecognizeRequest_AudioContent:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.AudioContent)))
-		n += len(x.AudioContent)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Provides information to the recognizer that specifies how to process the
@@ -800,70 +738,12 @@ func (m *RecognitionAudio) GetUri() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*RecognitionAudio) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _RecognitionAudio_OneofMarshaler, _RecognitionAudio_OneofUnmarshaler, _RecognitionAudio_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RecognitionAudio) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*RecognitionAudio_Content)(nil),
 		(*RecognitionAudio_Uri)(nil),
 	}
-}
-
-func _RecognitionAudio_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*RecognitionAudio)
-	// audio_source
-	switch x := m.AudioSource.(type) {
-	case *RecognitionAudio_Content:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		b.EncodeRawBytes(x.Content)
-	case *RecognitionAudio_Uri:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Uri)
-	case nil:
-	default:
-		return fmt.Errorf("RecognitionAudio.AudioSource has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _RecognitionAudio_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*RecognitionAudio)
-	switch tag {
-	case 1: // audio_source.content
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeRawBytes(true)
-		m.AudioSource = &RecognitionAudio_Content{x}
-		return true, err
-	case 2: // audio_source.uri
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.AudioSource = &RecognitionAudio_Uri{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _RecognitionAudio_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*RecognitionAudio)
-	// audio_source
-	switch x := m.AudioSource.(type) {
-	case *RecognitionAudio_Content:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Content)))
-		n += len(x.Content)
-	case *RecognitionAudio_Uri:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Uri)))
-		n += len(x.Uri)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The only message returned to the client by the `Recognize` method. It

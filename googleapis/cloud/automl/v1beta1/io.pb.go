@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Input configuration.
 type InputConfig struct {
@@ -82,59 +82,11 @@ func (m *InputConfig) GetGcsSource() *GcsSource {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*InputConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _InputConfig_OneofMarshaler, _InputConfig_OneofUnmarshaler, _InputConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*InputConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*InputConfig_GcsSource)(nil),
 	}
-}
-
-func _InputConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*InputConfig)
-	// source
-	switch x := m.Source.(type) {
-	case *InputConfig_GcsSource:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.GcsSource); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("InputConfig.Source has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _InputConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*InputConfig)
-	switch tag {
-	case 1: // source.gcs_source
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(GcsSource)
-		err := b.DecodeMessage(msg)
-		m.Source = &InputConfig_GcsSource{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _InputConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*InputConfig)
-	// source
-	switch x := m.Source.(type) {
-	case *InputConfig_GcsSource:
-		s := proto.Size(x.GcsSource)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Output configuration.
@@ -198,59 +150,11 @@ func (m *OutputConfig) GetGcsDestination() *GcsDestination {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*OutputConfig) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _OutputConfig_OneofMarshaler, _OutputConfig_OneofUnmarshaler, _OutputConfig_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*OutputConfig) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*OutputConfig_GcsDestination)(nil),
 	}
-}
-
-func _OutputConfig_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*OutputConfig)
-	// destination
-	switch x := m.Destination.(type) {
-	case *OutputConfig_GcsDestination:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.GcsDestination); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("OutputConfig.Destination has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _OutputConfig_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*OutputConfig)
-	switch tag {
-	case 1: // destination.gcs_destination
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(GcsDestination)
-		err := b.DecodeMessage(msg)
-		m.Destination = &OutputConfig_GcsDestination{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _OutputConfig_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*OutputConfig)
-	// destination
-	switch x := m.Destination.(type) {
-	case *OutputConfig_GcsDestination:
-		s := proto.Size(x.GcsDestination)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The GCS location for the input content.

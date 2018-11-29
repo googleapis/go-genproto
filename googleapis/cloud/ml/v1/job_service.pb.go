@@ -24,7 +24,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A scale tier is an abstract representation of the resources Cloud ML
 // will allocate to a training job. When selecting a scale tier for your
@@ -1078,85 +1078,13 @@ func (m *PredictionInput) GetRuntimeVersion() string {
 	return ""
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*PredictionInput) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _PredictionInput_OneofMarshaler, _PredictionInput_OneofUnmarshaler, _PredictionInput_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*PredictionInput) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*PredictionInput_ModelName)(nil),
 		(*PredictionInput_VersionName)(nil),
 		(*PredictionInput_Uri)(nil),
 	}
-}
-
-func _PredictionInput_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*PredictionInput)
-	// model_version
-	switch x := m.ModelVersion.(type) {
-	case *PredictionInput_ModelName:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.ModelName)
-	case *PredictionInput_VersionName:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.VersionName)
-	case *PredictionInput_Uri:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.Uri)
-	case nil:
-	default:
-		return fmt.Errorf("PredictionInput.ModelVersion has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _PredictionInput_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*PredictionInput)
-	switch tag {
-	case 1: // model_version.model_name
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.ModelVersion = &PredictionInput_ModelName{x}
-		return true, err
-	case 2: // model_version.version_name
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.ModelVersion = &PredictionInput_VersionName{x}
-		return true, err
-	case 9: // model_version.uri
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.ModelVersion = &PredictionInput_Uri{x}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _PredictionInput_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*PredictionInput)
-	// model_version
-	switch x := m.ModelVersion.(type) {
-	case *PredictionInput_ModelName:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.ModelName)))
-		n += len(x.ModelName)
-	case *PredictionInput_VersionName:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.VersionName)))
-		n += len(x.VersionName)
-	case *PredictionInput_Uri:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.Uri)))
-		n += len(x.Uri)
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Represents results of a prediction job.
@@ -1399,128 +1327,14 @@ func (m *Job) GetPredictionOutput() *PredictionOutput {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Job) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Job_OneofMarshaler, _Job_OneofUnmarshaler, _Job_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Job) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Job_TrainingInput)(nil),
 		(*Job_PredictionInput)(nil),
 		(*Job_TrainingOutput)(nil),
 		(*Job_PredictionOutput)(nil),
 	}
-}
-
-func _Job_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Job)
-	// input
-	switch x := m.Input.(type) {
-	case *Job_TrainingInput:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TrainingInput); err != nil {
-			return err
-		}
-	case *Job_PredictionInput:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.PredictionInput); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Job.Input has unexpected type %T", x)
-	}
-	// output
-	switch x := m.Output.(type) {
-	case *Job_TrainingOutput:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.TrainingOutput); err != nil {
-			return err
-		}
-	case *Job_PredictionOutput:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.PredictionOutput); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Job.Output has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Job_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Job)
-	switch tag {
-	case 2: // input.training_input
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TrainingInput)
-		err := b.DecodeMessage(msg)
-		m.Input = &Job_TrainingInput{msg}
-		return true, err
-	case 3: // input.prediction_input
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PredictionInput)
-		err := b.DecodeMessage(msg)
-		m.Input = &Job_PredictionInput{msg}
-		return true, err
-	case 9: // output.training_output
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TrainingOutput)
-		err := b.DecodeMessage(msg)
-		m.Output = &Job_TrainingOutput{msg}
-		return true, err
-	case 10: // output.prediction_output
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(PredictionOutput)
-		err := b.DecodeMessage(msg)
-		m.Output = &Job_PredictionOutput{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Job_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Job)
-	// input
-	switch x := m.Input.(type) {
-	case *Job_TrainingInput:
-		s := proto.Size(x.TrainingInput)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Job_PredictionInput:
-		s := proto.Size(x.PredictionInput)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	// output
-	switch x := m.Output.(type) {
-	case *Job_TrainingOutput:
-		s := proto.Size(x.TrainingOutput)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Job_PredictionOutput:
-		s := proto.Size(x.PredictionOutput)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Request message for the CreateJob method.

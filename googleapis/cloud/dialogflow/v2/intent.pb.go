@@ -25,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Represents the options for views of an intent.
 // An intent can be a sizable object. Therefore, we provide a resource view that
@@ -934,9 +934,9 @@ func (m *Intent_Message) GetPlatform() Intent_Message_Platform {
 	return Intent_Message_PLATFORM_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Intent_Message) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Intent_Message_OneofMarshaler, _Intent_Message_OneofUnmarshaler, _Intent_Message_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Intent_Message) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Intent_Message_Text_)(nil),
 		(*Intent_Message_Image_)(nil),
 		(*Intent_Message_QuickReplies_)(nil),
@@ -949,234 +949,6 @@ func (*Intent_Message) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer
 		(*Intent_Message_ListSelect_)(nil),
 		(*Intent_Message_CarouselSelect_)(nil),
 	}
-}
-
-func _Intent_Message_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Intent_Message)
-	// message
-	switch x := m.Message.(type) {
-	case *Intent_Message_Text_:
-		b.EncodeVarint(1<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Text); err != nil {
-			return err
-		}
-	case *Intent_Message_Image_:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Image); err != nil {
-			return err
-		}
-	case *Intent_Message_QuickReplies_:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.QuickReplies); err != nil {
-			return err
-		}
-	case *Intent_Message_Card_:
-		b.EncodeVarint(4<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Card); err != nil {
-			return err
-		}
-	case *Intent_Message_Payload:
-		b.EncodeVarint(5<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Payload); err != nil {
-			return err
-		}
-	case *Intent_Message_SimpleResponses_:
-		b.EncodeVarint(7<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.SimpleResponses); err != nil {
-			return err
-		}
-	case *Intent_Message_BasicCard_:
-		b.EncodeVarint(8<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.BasicCard); err != nil {
-			return err
-		}
-	case *Intent_Message_Suggestions_:
-		b.EncodeVarint(9<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.Suggestions); err != nil {
-			return err
-		}
-	case *Intent_Message_LinkOutSuggestion_:
-		b.EncodeVarint(10<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.LinkOutSuggestion); err != nil {
-			return err
-		}
-	case *Intent_Message_ListSelect_:
-		b.EncodeVarint(11<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ListSelect); err != nil {
-			return err
-		}
-	case *Intent_Message_CarouselSelect_:
-		b.EncodeVarint(12<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.CarouselSelect); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Intent_Message.Message has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Intent_Message_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Intent_Message)
-	switch tag {
-	case 1: // message.text
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_Text)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_Text_{msg}
-		return true, err
-	case 2: // message.image
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_Image)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_Image_{msg}
-		return true, err
-	case 3: // message.quick_replies
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_QuickReplies)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_QuickReplies_{msg}
-		return true, err
-	case 4: // message.card
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_Card)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_Card_{msg}
-		return true, err
-	case 5: // message.payload
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(_struct.Struct)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_Payload{msg}
-		return true, err
-	case 7: // message.simple_responses
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_SimpleResponses)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_SimpleResponses_{msg}
-		return true, err
-	case 8: // message.basic_card
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_BasicCard)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_BasicCard_{msg}
-		return true, err
-	case 9: // message.suggestions
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_Suggestions)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_Suggestions_{msg}
-		return true, err
-	case 10: // message.link_out_suggestion
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_LinkOutSuggestion)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_LinkOutSuggestion_{msg}
-		return true, err
-	case 11: // message.list_select
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_ListSelect)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_ListSelect_{msg}
-		return true, err
-	case 12: // message.carousel_select
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(Intent_Message_CarouselSelect)
-		err := b.DecodeMessage(msg)
-		m.Message = &Intent_Message_CarouselSelect_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Intent_Message_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Intent_Message)
-	// message
-	switch x := m.Message.(type) {
-	case *Intent_Message_Text_:
-		s := proto.Size(x.Text)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_Image_:
-		s := proto.Size(x.Image)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_QuickReplies_:
-		s := proto.Size(x.QuickReplies)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_Card_:
-		s := proto.Size(x.Card)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_Payload:
-		s := proto.Size(x.Payload)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_SimpleResponses_:
-		s := proto.Size(x.SimpleResponses)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_BasicCard_:
-		s := proto.Size(x.BasicCard)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_Suggestions_:
-		s := proto.Size(x.Suggestions)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_LinkOutSuggestion_:
-		s := proto.Size(x.LinkOutSuggestion)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_ListSelect_:
-		s := proto.Size(x.ListSelect)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *Intent_Message_CarouselSelect_:
-		s := proto.Size(x.CarouselSelect)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The text response message.
@@ -2688,74 +2460,12 @@ func (m *BatchUpdateIntentsRequest) GetIntentView() IntentView {
 	return IntentView_INTENT_VIEW_UNSPECIFIED
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*BatchUpdateIntentsRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _BatchUpdateIntentsRequest_OneofMarshaler, _BatchUpdateIntentsRequest_OneofUnmarshaler, _BatchUpdateIntentsRequest_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*BatchUpdateIntentsRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*BatchUpdateIntentsRequest_IntentBatchUri)(nil),
 		(*BatchUpdateIntentsRequest_IntentBatchInline)(nil),
 	}
-}
-
-func _BatchUpdateIntentsRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*BatchUpdateIntentsRequest)
-	// intent_batch
-	switch x := m.IntentBatch.(type) {
-	case *BatchUpdateIntentsRequest_IntentBatchUri:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		b.EncodeStringBytes(x.IntentBatchUri)
-	case *BatchUpdateIntentsRequest_IntentBatchInline:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.IntentBatchInline); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("BatchUpdateIntentsRequest.IntentBatch has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _BatchUpdateIntentsRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*BatchUpdateIntentsRequest)
-	switch tag {
-	case 2: // intent_batch.intent_batch_uri
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeStringBytes()
-		m.IntentBatch = &BatchUpdateIntentsRequest_IntentBatchUri{x}
-		return true, err
-	case 3: // intent_batch.intent_batch_inline
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(IntentBatch)
-		err := b.DecodeMessage(msg)
-		m.IntentBatch = &BatchUpdateIntentsRequest_IntentBatchInline{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _BatchUpdateIntentsRequest_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*BatchUpdateIntentsRequest)
-	// intent_batch
-	switch x := m.IntentBatch.(type) {
-	case *BatchUpdateIntentsRequest_IntentBatchUri:
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(len(x.IntentBatchUri)))
-		n += len(x.IntentBatchUri)
-	case *BatchUpdateIntentsRequest_IntentBatchInline:
-		s := proto.Size(x.IntentBatchInline)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // The response message for [Intents.BatchUpdateIntents][google.cloud.dialogflow.v2.Intents.BatchUpdateIntents].

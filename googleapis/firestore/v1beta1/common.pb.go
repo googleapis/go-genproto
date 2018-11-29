@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A set of field paths on a document.
 // Used to restrict a get or update operation on a document to a subset of its
@@ -143,77 +143,12 @@ func (m *Precondition) GetUpdateTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*Precondition) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _Precondition_OneofMarshaler, _Precondition_OneofUnmarshaler, _Precondition_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*Precondition) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*Precondition_Exists)(nil),
 		(*Precondition_UpdateTime)(nil),
 	}
-}
-
-func _Precondition_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*Precondition)
-	// condition_type
-	switch x := m.ConditionType.(type) {
-	case *Precondition_Exists:
-		t := uint64(0)
-		if x.Exists {
-			t = 1
-		}
-		b.EncodeVarint(1<<3 | proto.WireVarint)
-		b.EncodeVarint(t)
-	case *Precondition_UpdateTime:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.UpdateTime); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("Precondition.ConditionType has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _Precondition_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*Precondition)
-	switch tag {
-	case 1: // condition_type.exists
-		if wire != proto.WireVarint {
-			return true, proto.ErrInternalBadWireType
-		}
-		x, err := b.DecodeVarint()
-		m.ConditionType = &Precondition_Exists{x != 0}
-		return true, err
-	case 2: // condition_type.update_time
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.ConditionType = &Precondition_UpdateTime{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _Precondition_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*Precondition)
-	// condition_type
-	switch x := m.ConditionType.(type) {
-	case *Precondition_Exists:
-		n += 1 // tag and wire
-		n += 1
-	case *Precondition_UpdateTime:
-		s := proto.Size(x.UpdateTime)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Options for creating a new transaction.
@@ -291,78 +226,12 @@ func (m *TransactionOptions) GetReadWrite() *TransactionOptions_ReadWrite {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*TransactionOptions) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _TransactionOptions_OneofMarshaler, _TransactionOptions_OneofUnmarshaler, _TransactionOptions_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*TransactionOptions) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*TransactionOptions_ReadOnly_)(nil),
 		(*TransactionOptions_ReadWrite_)(nil),
 	}
-}
-
-func _TransactionOptions_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*TransactionOptions)
-	// mode
-	switch x := m.Mode.(type) {
-	case *TransactionOptions_ReadOnly_:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadOnly); err != nil {
-			return err
-		}
-	case *TransactionOptions_ReadWrite_:
-		b.EncodeVarint(3<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadWrite); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("TransactionOptions.Mode has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _TransactionOptions_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*TransactionOptions)
-	switch tag {
-	case 2: // mode.read_only
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions_ReadOnly)
-		err := b.DecodeMessage(msg)
-		m.Mode = &TransactionOptions_ReadOnly_{msg}
-		return true, err
-	case 3: // mode.read_write
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(TransactionOptions_ReadWrite)
-		err := b.DecodeMessage(msg)
-		m.Mode = &TransactionOptions_ReadWrite_{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _TransactionOptions_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*TransactionOptions)
-	// mode
-	switch x := m.Mode.(type) {
-	case *TransactionOptions_ReadOnly_:
-		s := proto.Size(x.ReadOnly)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case *TransactionOptions_ReadWrite_:
-		s := proto.Size(x.ReadWrite)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 // Options for a transaction that can be used to read and write documents.
@@ -468,59 +337,11 @@ func (m *TransactionOptions_ReadOnly) GetReadTime() *timestamp.Timestamp {
 	return nil
 }
 
-// XXX_OneofFuncs is for the internal use of the proto package.
-func (*TransactionOptions_ReadOnly) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
-	return _TransactionOptions_ReadOnly_OneofMarshaler, _TransactionOptions_ReadOnly_OneofUnmarshaler, _TransactionOptions_ReadOnly_OneofSizer, []interface{}{
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*TransactionOptions_ReadOnly) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
 		(*TransactionOptions_ReadOnly_ReadTime)(nil),
 	}
-}
-
-func _TransactionOptions_ReadOnly_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
-	m := msg.(*TransactionOptions_ReadOnly)
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *TransactionOptions_ReadOnly_ReadTime:
-		b.EncodeVarint(2<<3 | proto.WireBytes)
-		if err := b.EncodeMessage(x.ReadTime); err != nil {
-			return err
-		}
-	case nil:
-	default:
-		return fmt.Errorf("TransactionOptions_ReadOnly.ConsistencySelector has unexpected type %T", x)
-	}
-	return nil
-}
-
-func _TransactionOptions_ReadOnly_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
-	m := msg.(*TransactionOptions_ReadOnly)
-	switch tag {
-	case 2: // consistency_selector.read_time
-		if wire != proto.WireBytes {
-			return true, proto.ErrInternalBadWireType
-		}
-		msg := new(timestamp.Timestamp)
-		err := b.DecodeMessage(msg)
-		m.ConsistencySelector = &TransactionOptions_ReadOnly_ReadTime{msg}
-		return true, err
-	default:
-		return false, nil
-	}
-}
-
-func _TransactionOptions_ReadOnly_OneofSizer(msg proto.Message) (n int) {
-	m := msg.(*TransactionOptions_ReadOnly)
-	// consistency_selector
-	switch x := m.ConsistencySelector.(type) {
-	case *TransactionOptions_ReadOnly_ReadTime:
-		s := proto.Size(x.ReadTime)
-		n += 1 // tag and wire
-		n += proto.SizeVarint(uint64(s))
-		n += s
-	case nil:
-	default:
-		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
-	}
-	return n
 }
 
 func init() {
