@@ -15,7 +15,7 @@ go version
 
 # Set $GOPATH
 export GOPATH="$HOME/go"
-export GENPROTO_HOME=$GOPATH/src/google/go-genproto
+export GENPROTO_HOME=$GOPATH/src/google.golang.org/genproto
 export PATH="$GOPATH/bin:$PATH"
 mkdir -p $GENPROTO_HOME
 
