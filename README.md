@@ -1,7 +1,6 @@
 Go generated proto packages
 ===========================
 
-[![Build Status](https://travis-ci.org/google/go-genproto.svg?branch=master)](https://travis-ci.org/google/go-genproto)
 [![GoDoc](https://godoc.org/google.golang.org/genproto?status.svg)](https://godoc.org/google.golang.org/genproto)
 
 ```
