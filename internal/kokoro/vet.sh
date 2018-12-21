@@ -6,8 +6,10 @@ set -eo pipefail
 # Display commands being run
 set -x
 
-# Only run the linter on go1.11, since it needs type aliases (and we only care about its output once).
-# TODO(deklerk) We should pass an environment variable from kokoro to decide this logic instead.
+# Only run the linter on go1.11, since it needs type aliases (and we only care
+# about its output once).
+# TODO(deklerk) We should pass an environment variable from kokoro to decide
+# this logic instead.
 if [[ `go version` != *"go1.11"* ]]; then
     exit 0
 fi

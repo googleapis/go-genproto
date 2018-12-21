@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# TODO(deklerk) Add integration tests when it's secure to do so. b/64723143
-
 # Fail on any error
 set -eo pipefail
 
@@ -27,6 +25,7 @@ try3() { eval "$*" || eval "$*" || eval "$*"; }
 try3 go get -v -t ./...
 
 ./internal/kokoro/vet.sh
+./internal/kokoro/check_incompat_changes.sh
 
 # Run tests and tee output to log file, to be pushed to GCS as artifact.
 go test -race -v ./... 2>&1 | tee $KOKORO_ARTIFACTS_DIR/$KOKORO_GERRIT_CHANGE_NUMBER.txt
