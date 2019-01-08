@@ -28,8 +28,8 @@ type Source struct {
 	// Example:
 	// "organizations/123/sources/456"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The source’s display name.
-	// A source’s display name must be unique amongst its siblings, for example,
+	// The source's display name.
+	// A source's display name must be unique amongst its siblings, for example,
 	// two sources with the same parent can't share the same display name.
 	// The display name must start and end with a letter or digit, may contain
 	// letters, digits, spaces, hyphens, and underscores, and can be no longer
@@ -53,7 +53,7 @@ func (m *Source) Reset()         { *m = Source{} }
 func (m *Source) String() string { return proto.CompactTextString(m) }
 func (*Source) ProtoMessage()    {}
 func (*Source) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_e0c4f1f81c312886, []int{0}
+	return fileDescriptor_source_988f6ef603786e95, []int{0}
 }
 func (m *Source) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Source.Unmarshal(m, b)
@@ -99,10 +99,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/securitycenter/v1beta1/source.proto", fileDescriptor_source_e0c4f1f81c312886)
+	proto.RegisterFile("google/cloud/securitycenter/v1beta1/source.proto", fileDescriptor_source_988f6ef603786e95)
 }
 
-var fileDescriptor_source_e0c4f1f81c312886 = []byte{
+var fileDescriptor_source_988f6ef603786e95 = []byte{
 	// 217 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x90, 0x3f, 0x4b, 0xc5, 0x30,
 	0x14, 0xc5, 0xa9, 0x4a, 0xc1, 0xd4, 0x29, 0x53, 0x11, 0x87, 0xaa, 0x83, 0x4e, 0x89, 0xc5, 0xd1,
