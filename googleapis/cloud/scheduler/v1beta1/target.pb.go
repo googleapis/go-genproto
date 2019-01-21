@@ -67,7 +67,7 @@ func (x HttpMethod) String() string {
 	return proto.EnumName(HttpMethod_name, int32(x))
 }
 func (HttpMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_656bad66dfc2a213, []int{0}
+	return fileDescriptor_target_9c53d8b0fc6698b4, []int{0}
 }
 
 // Http target. The job will be pushed to the job handler by means of
@@ -117,7 +117,7 @@ func (m *HttpTarget) Reset()         { *m = HttpTarget{} }
 func (m *HttpTarget) String() string { return proto.CompactTextString(m) }
 func (*HttpTarget) ProtoMessage()    {}
 func (*HttpTarget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_656bad66dfc2a213, []int{0}
+	return fileDescriptor_target_9c53d8b0fc6698b4, []int{0}
 }
 func (m *HttpTarget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpTarget.Unmarshal(m, b)
@@ -219,7 +219,7 @@ type AppEngineHttpTarget struct {
 	//
 	// In addition, some App Engine headers, which contain
 	// job-specific information, are also be sent to the job handler; see
-	// [request headers](https://cloud.google.comappengine/docs/standard/python/config/cron#securing_urls_for_cron).
+	// [request headers](https://cloud.google.com/appengine/docs/standard/python/config/cron#securing_urls_for_cron).
 	Headers map[string]string `protobuf:"bytes,4,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Body.
 	//
@@ -236,7 +236,7 @@ func (m *AppEngineHttpTarget) Reset()         { *m = AppEngineHttpTarget{} }
 func (m *AppEngineHttpTarget) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpTarget) ProtoMessage()    {}
 func (*AppEngineHttpTarget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_656bad66dfc2a213, []int{1}
+	return fileDescriptor_target_9c53d8b0fc6698b4, []int{1}
 }
 func (m *AppEngineHttpTarget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpTarget.Unmarshal(m, b)
@@ -323,7 +323,7 @@ func (m *PubsubTarget) Reset()         { *m = PubsubTarget{} }
 func (m *PubsubTarget) String() string { return proto.CompactTextString(m) }
 func (*PubsubTarget) ProtoMessage()    {}
 func (*PubsubTarget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_656bad66dfc2a213, []int{2}
+	return fileDescriptor_target_9c53d8b0fc6698b4, []int{2}
 }
 func (m *PubsubTarget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PubsubTarget.Unmarshal(m, b)
@@ -461,7 +461,7 @@ func (m *AppEngineRouting) Reset()         { *m = AppEngineRouting{} }
 func (m *AppEngineRouting) String() string { return proto.CompactTextString(m) }
 func (*AppEngineRouting) ProtoMessage()    {}
 func (*AppEngineRouting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_656bad66dfc2a213, []int{3}
+	return fileDescriptor_target_9c53d8b0fc6698b4, []int{3}
 }
 func (m *AppEngineRouting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineRouting.Unmarshal(m, b)
@@ -521,10 +521,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/scheduler/v1beta1/target.proto", fileDescriptor_target_656bad66dfc2a213)
+	proto.RegisterFile("google/cloud/scheduler/v1beta1/target.proto", fileDescriptor_target_9c53d8b0fc6698b4)
 }
 
-var fileDescriptor_target_656bad66dfc2a213 = []byte{
+var fileDescriptor_target_9c53d8b0fc6698b4 = []byte{
 	// 623 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0xdb, 0x6e, 0xd3, 0x4c,
 	0x10, 0xfe, 0x1d, 0x27, 0x4d, 0x33, 0x89, 0x7e, 0xac, 0x05, 0x89, 0x10, 0x0e, 0x0a, 0xbd, 0x8a,

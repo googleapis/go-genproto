@@ -41,7 +41,7 @@ func (m *TemporalAsset) Reset()         { *m = TemporalAsset{} }
 func (m *TemporalAsset) String() string { return proto.CompactTextString(m) }
 func (*TemporalAsset) ProtoMessage()    {}
 func (*TemporalAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_f46e680fe1a42f8e, []int{0}
+	return fileDescriptor_assets_7befa3ac987ee657, []int{0}
 }
 func (m *TemporalAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TemporalAsset.Unmarshal(m, b)
@@ -82,11 +82,11 @@ func (m *TemporalAsset) GetAsset() *Asset {
 	return nil
 }
 
-// A time window of [start_time, end_time).
+// A time window of (start_time, end_time].
 type TimeWindow struct {
-	// Start time of the time window (inclusive).
+	// Start time of the time window (exclusive).
 	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	// End time of the time window (exclusive).
+	// End time of the time window (inclusive).
 	// Current timestamp if not specified.
 	EndTime              *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
@@ -98,7 +98,7 @@ func (m *TimeWindow) Reset()         { *m = TimeWindow{} }
 func (m *TimeWindow) String() string { return proto.CompactTextString(m) }
 func (*TimeWindow) ProtoMessage()    {}
 func (*TimeWindow) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_f46e680fe1a42f8e, []int{1}
+	return fileDescriptor_assets_7befa3ac987ee657, []int{1}
 }
 func (m *TimeWindow) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeWindow.Unmarshal(m, b)
@@ -139,7 +139,7 @@ type Asset struct {
 	// See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
 	// for more information.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Type of the asset. Example: "google.compute.disk".
+	// Type of the asset. Example: "google.compute.Disk".
 	AssetType string `protobuf:"bytes,2,opt,name=asset_type,json=assetType,proto3" json:"asset_type,omitempty"`
 	// Representation of the resource.
 	Resource *Resource `protobuf:"bytes,3,opt,name=resource,proto3" json:"resource,omitempty"`
@@ -155,7 +155,7 @@ func (m *Asset) Reset()         { *m = Asset{} }
 func (m *Asset) String() string { return proto.CompactTextString(m) }
 func (*Asset) ProtoMessage()    {}
 func (*Asset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_f46e680fe1a42f8e, []int{2}
+	return fileDescriptor_assets_7befa3ac987ee657, []int{2}
 }
 func (m *Asset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Asset.Unmarshal(m, b)
@@ -245,7 +245,7 @@ func (m *Resource) Reset()         { *m = Resource{} }
 func (m *Resource) String() string { return proto.CompactTextString(m) }
 func (*Resource) ProtoMessage()    {}
 func (*Resource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_f46e680fe1a42f8e, []int{3}
+	return fileDescriptor_assets_7befa3ac987ee657, []int{3}
 }
 func (m *Resource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Resource.Unmarshal(m, b)
@@ -315,10 +315,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/asset/v1beta1/assets.proto", fileDescriptor_assets_f46e680fe1a42f8e)
+	proto.RegisterFile("google/cloud/asset/v1beta1/assets.proto", fileDescriptor_assets_7befa3ac987ee657)
 }
 
-var fileDescriptor_assets_f46e680fe1a42f8e = []byte{
+var fileDescriptor_assets_7befa3ac987ee657 = []byte{
 	// 551 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x53, 0xdb, 0x6a, 0xd4, 0x40,
 	0x18, 0x26, 0xed, 0xee, 0x76, 0xf3, 0xd7, 0x7a, 0x31, 0x68, 0x8d, 0x4b, 0xd5, 0x76, 0xf1, 0x50,
