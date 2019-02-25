@@ -45,7 +45,7 @@ func (m *CreateIncidentRequest) Reset()         { *m = CreateIncidentRequest{} }
 func (m *CreateIncidentRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateIncidentRequest) ProtoMessage()    {}
 func (*CreateIncidentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{0}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{0}
 }
 func (m *CreateIncidentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateIncidentRequest.Unmarshal(m, b)
@@ -81,7 +81,7 @@ func (m *CreateIncidentRequest) GetParent() string {
 
 // Request for the GetIncident method.
 type GetIncidentRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -93,7 +93,7 @@ func (m *GetIncidentRequest) Reset()         { *m = GetIncidentRequest{} }
 func (m *GetIncidentRequest) String() string { return proto.CompactTextString(m) }
 func (*GetIncidentRequest) ProtoMessage()    {}
 func (*GetIncidentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{1}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{1}
 }
 func (m *GetIncidentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetIncidentRequest.Unmarshal(m, b)
@@ -135,7 +135,7 @@ func (m *UpdateIncidentRequest) Reset()         { *m = UpdateIncidentRequest{} }
 func (m *UpdateIncidentRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateIncidentRequest) ProtoMessage()    {}
 func (*UpdateIncidentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{2}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{2}
 }
 func (m *UpdateIncidentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateIncidentRequest.Unmarshal(m, b)
@@ -171,7 +171,7 @@ func (m *UpdateIncidentRequest) GetUpdateMask() *field_mask.FieldMask {
 
 // Request for the SearchSimilarIncidents method.
 type SearchSimilarIncidentsRequest struct {
-	// Resource name of the incident or signal, e.g.
+	// Resource name of the incident or signal, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Number of similar incidents to return.
@@ -187,7 +187,7 @@ func (m *SearchSimilarIncidentsRequest) Reset()         { *m = SearchSimilarInci
 func (m *SearchSimilarIncidentsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchSimilarIncidentsRequest) ProtoMessage()    {}
 func (*SearchSimilarIncidentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{3}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{3}
 }
 func (m *SearchSimilarIncidentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchSimilarIncidentsRequest.Unmarshal(m, b)
@@ -243,7 +243,7 @@ func (m *SearchSimilarIncidentsResponse) Reset()         { *m = SearchSimilarInc
 func (m *SearchSimilarIncidentsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchSimilarIncidentsResponse) ProtoMessage()    {}
 func (*SearchSimilarIncidentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{4}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{4}
 }
 func (m *SearchSimilarIncidentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchSimilarIncidentsResponse.Unmarshal(m, b)
@@ -292,7 +292,7 @@ func (m *SearchSimilarIncidentsResponse_Result) Reset()         { *m = SearchSim
 func (m *SearchSimilarIncidentsResponse_Result) String() string { return proto.CompactTextString(m) }
 func (*SearchSimilarIncidentsResponse_Result) ProtoMessage()    {}
 func (*SearchSimilarIncidentsResponse_Result) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{4, 0}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{4, 0}
 }
 func (m *SearchSimilarIncidentsResponse_Result) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchSimilarIncidentsResponse_Result.Unmarshal(m, b)
@@ -321,7 +321,7 @@ func (m *SearchSimilarIncidentsResponse_Result) GetIncident() *Incident {
 
 // Request for the CreateAnnotation method.
 type CreateAnnotationRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Only annotation.content is an input argument.
@@ -335,7 +335,7 @@ func (m *CreateAnnotationRequest) Reset()         { *m = CreateAnnotationRequest
 func (m *CreateAnnotationRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAnnotationRequest) ProtoMessage()    {}
 func (*CreateAnnotationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{5}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{5}
 }
 func (m *CreateAnnotationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAnnotationRequest.Unmarshal(m, b)
@@ -371,7 +371,7 @@ func (m *CreateAnnotationRequest) GetAnnotation() *Annotation {
 
 // Request for the ListAnnotations method.
 type ListAnnotationsRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Number of annotations to return.
@@ -387,7 +387,7 @@ func (m *ListAnnotationsRequest) Reset()         { *m = ListAnnotationsRequest{}
 func (m *ListAnnotationsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListAnnotationsRequest) ProtoMessage()    {}
 func (*ListAnnotationsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{6}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{6}
 }
 func (m *ListAnnotationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAnnotationsRequest.Unmarshal(m, b)
@@ -443,7 +443,7 @@ func (m *ListAnnotationsResponse) Reset()         { *m = ListAnnotationsResponse
 func (m *ListAnnotationsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListAnnotationsResponse) ProtoMessage()    {}
 func (*ListAnnotationsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{7}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{7}
 }
 func (m *ListAnnotationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAnnotationsResponse.Unmarshal(m, b)
@@ -479,7 +479,7 @@ func (m *ListAnnotationsResponse) GetNextPageToken() string {
 
 // Request for the CreateTag method.
 type CreateTagRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Tag to create. Only tag.display_name is an input argument.
@@ -493,7 +493,7 @@ func (m *CreateTagRequest) Reset()         { *m = CreateTagRequest{} }
 func (m *CreateTagRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateTagRequest) ProtoMessage()    {}
 func (*CreateTagRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{8}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{8}
 }
 func (m *CreateTagRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateTagRequest.Unmarshal(m, b)
@@ -540,7 +540,7 @@ func (m *DeleteTagRequest) Reset()         { *m = DeleteTagRequest{} }
 func (m *DeleteTagRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteTagRequest) ProtoMessage()    {}
 func (*DeleteTagRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{9}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{9}
 }
 func (m *DeleteTagRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteTagRequest.Unmarshal(m, b)
@@ -569,7 +569,7 @@ func (m *DeleteTagRequest) GetName() string {
 
 // Request for the ListTagsForIncident method.
 type ListTagsRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Number of tags to return.
@@ -585,7 +585,7 @@ func (m *ListTagsRequest) Reset()         { *m = ListTagsRequest{} }
 func (m *ListTagsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListTagsRequest) ProtoMessage()    {}
 func (*ListTagsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{10}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{10}
 }
 func (m *ListTagsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTagsRequest.Unmarshal(m, b)
@@ -641,7 +641,7 @@ func (m *ListTagsResponse) Reset()         { *m = ListTagsResponse{} }
 func (m *ListTagsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListTagsResponse) ProtoMessage()    {}
 func (*ListTagsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{11}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{11}
 }
 func (m *ListTagsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTagsResponse.Unmarshal(m, b)
@@ -675,55 +675,6 @@ func (m *ListTagsResponse) GetNextPageToken() string {
 	return ""
 }
 
-// Request for the UpdateAnnotation method.
-type UpdateAnnotationRequest struct {
-	// The annotation to update with the new values.
-	Annotation *Annotation `protobuf:"bytes,1,opt,name=annotation,proto3" json:"annotation,omitempty"`
-	// List of fields that should be updated.
-	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
-}
-
-func (m *UpdateAnnotationRequest) Reset()         { *m = UpdateAnnotationRequest{} }
-func (m *UpdateAnnotationRequest) String() string { return proto.CompactTextString(m) }
-func (*UpdateAnnotationRequest) ProtoMessage()    {}
-func (*UpdateAnnotationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{12}
-}
-func (m *UpdateAnnotationRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateAnnotationRequest.Unmarshal(m, b)
-}
-func (m *UpdateAnnotationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateAnnotationRequest.Marshal(b, m, deterministic)
-}
-func (dst *UpdateAnnotationRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateAnnotationRequest.Merge(dst, src)
-}
-func (m *UpdateAnnotationRequest) XXX_Size() int {
-	return xxx_messageInfo_UpdateAnnotationRequest.Size(m)
-}
-func (m *UpdateAnnotationRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateAnnotationRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateAnnotationRequest proto.InternalMessageInfo
-
-func (m *UpdateAnnotationRequest) GetAnnotation() *Annotation {
-	if m != nil {
-		return m.Annotation
-	}
-	return nil
-}
-
-func (m *UpdateAnnotationRequest) GetUpdateMask() *field_mask.FieldMask {
-	if m != nil {
-		return m.UpdateMask
-	}
-	return nil
-}
-
 // Request for the CreateSignal method.
 type CreateSignalRequest struct {
 	// The resource name of the hosting Stackdriver project which requested
@@ -740,7 +691,7 @@ func (m *CreateSignalRequest) Reset()         { *m = CreateSignalRequest{} }
 func (m *CreateSignalRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateSignalRequest) ProtoMessage()    {}
 func (*CreateSignalRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{13}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{12}
 }
 func (m *CreateSignalRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateSignalRequest.Unmarshal(m, b)
@@ -774,13 +725,13 @@ func (m *CreateSignalRequest) GetSignal() *Signal {
 	return nil
 }
 
-// Request for the ListSignals method.
-type ListSignalsRequest struct {
+// Request for the SearchSignals method.
+type SearchSignalsRequest struct {
 	// The resource name of the hosting Stackdriver project which requested
 	// incidents belong to.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Filter to specify which signals should be returned.
-	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
+	// Query to specify which signals should be returned.
+	Query string `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	// Maximum number of `signals` to return in the response.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Page token from an earlier query, as returned in `next_page_token`. All
@@ -792,61 +743,61 @@ type ListSignalsRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ListSignalsRequest) Reset()         { *m = ListSignalsRequest{} }
-func (m *ListSignalsRequest) String() string { return proto.CompactTextString(m) }
-func (*ListSignalsRequest) ProtoMessage()    {}
-func (*ListSignalsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{14}
+func (m *SearchSignalsRequest) Reset()         { *m = SearchSignalsRequest{} }
+func (m *SearchSignalsRequest) String() string { return proto.CompactTextString(m) }
+func (*SearchSignalsRequest) ProtoMessage()    {}
+func (*SearchSignalsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{13}
 }
-func (m *ListSignalsRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ListSignalsRequest.Unmarshal(m, b)
+func (m *SearchSignalsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SearchSignalsRequest.Unmarshal(m, b)
 }
-func (m *ListSignalsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ListSignalsRequest.Marshal(b, m, deterministic)
+func (m *SearchSignalsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SearchSignalsRequest.Marshal(b, m, deterministic)
 }
-func (dst *ListSignalsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListSignalsRequest.Merge(dst, src)
+func (dst *SearchSignalsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SearchSignalsRequest.Merge(dst, src)
 }
-func (m *ListSignalsRequest) XXX_Size() int {
-	return xxx_messageInfo_ListSignalsRequest.Size(m)
+func (m *SearchSignalsRequest) XXX_Size() int {
+	return xxx_messageInfo_SearchSignalsRequest.Size(m)
 }
-func (m *ListSignalsRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListSignalsRequest.DiscardUnknown(m)
+func (m *SearchSignalsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SearchSignalsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ListSignalsRequest proto.InternalMessageInfo
+var xxx_messageInfo_SearchSignalsRequest proto.InternalMessageInfo
 
-func (m *ListSignalsRequest) GetParent() string {
+func (m *SearchSignalsRequest) GetParent() string {
 	if m != nil {
 		return m.Parent
 	}
 	return ""
 }
 
-func (m *ListSignalsRequest) GetFilter() string {
+func (m *SearchSignalsRequest) GetQuery() string {
 	if m != nil {
-		return m.Filter
+		return m.Query
 	}
 	return ""
 }
 
-func (m *ListSignalsRequest) GetPageSize() int32 {
+func (m *SearchSignalsRequest) GetPageSize() int32 {
 	if m != nil {
 		return m.PageSize
 	}
 	return 0
 }
 
-func (m *ListSignalsRequest) GetPageToken() string {
+func (m *SearchSignalsRequest) GetPageToken() string {
 	if m != nil {
 		return m.PageToken
 	}
 	return ""
 }
 
-// Response for the ListSignals method.
-type ListSignalsResponse struct {
-	// List of signals that have not been moved into an incident yet.
+// Response for the SearchSignals method.
+type SearchSignalsResponse struct {
+	// Signals that matched the query in the request.
 	Signals []*Signal `protobuf:"bytes,1,rep,name=signals,proto3" json:"signals,omitempty"`
 	// Page token to fetch the next set of signals.
 	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
@@ -855,38 +806,38 @@ type ListSignalsResponse struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ListSignalsResponse) Reset()         { *m = ListSignalsResponse{} }
-func (m *ListSignalsResponse) String() string { return proto.CompactTextString(m) }
-func (*ListSignalsResponse) ProtoMessage()    {}
-func (*ListSignalsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{15}
+func (m *SearchSignalsResponse) Reset()         { *m = SearchSignalsResponse{} }
+func (m *SearchSignalsResponse) String() string { return proto.CompactTextString(m) }
+func (*SearchSignalsResponse) ProtoMessage()    {}
+func (*SearchSignalsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{14}
 }
-func (m *ListSignalsResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ListSignalsResponse.Unmarshal(m, b)
+func (m *SearchSignalsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SearchSignalsResponse.Unmarshal(m, b)
 }
-func (m *ListSignalsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ListSignalsResponse.Marshal(b, m, deterministic)
+func (m *SearchSignalsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SearchSignalsResponse.Marshal(b, m, deterministic)
 }
-func (dst *ListSignalsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListSignalsResponse.Merge(dst, src)
+func (dst *SearchSignalsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SearchSignalsResponse.Merge(dst, src)
 }
-func (m *ListSignalsResponse) XXX_Size() int {
-	return xxx_messageInfo_ListSignalsResponse.Size(m)
+func (m *SearchSignalsResponse) XXX_Size() int {
+	return xxx_messageInfo_SearchSignalsResponse.Size(m)
 }
-func (m *ListSignalsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListSignalsResponse.DiscardUnknown(m)
+func (m *SearchSignalsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SearchSignalsResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ListSignalsResponse proto.InternalMessageInfo
+var xxx_messageInfo_SearchSignalsResponse proto.InternalMessageInfo
 
-func (m *ListSignalsResponse) GetSignals() []*Signal {
+func (m *SearchSignalsResponse) GetSignals() []*Signal {
 	if m != nil {
 		return m.Signals
 	}
 	return nil
 }
 
-func (m *ListSignalsResponse) GetNextPageToken() string {
+func (m *SearchSignalsResponse) GetNextPageToken() string {
 	if m != nil {
 		return m.NextPageToken
 	}
@@ -895,7 +846,7 @@ func (m *ListSignalsResponse) GetNextPageToken() string {
 
 // Request for the GetSignal method.
 type GetSignalRequest struct {
-	// Resource name of the Signal resource, e.g.
+	// Resource name of the Signal resource, for example,
 	// "projects/{project_id}/signals/{signal_id}".
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -907,7 +858,7 @@ func (m *GetSignalRequest) Reset()         { *m = GetSignalRequest{} }
 func (m *GetSignalRequest) String() string { return proto.CompactTextString(m) }
 func (*GetSignalRequest) ProtoMessage()    {}
 func (*GetSignalRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{16}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{15}
 }
 func (m *GetSignalRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSignalRequest.Unmarshal(m, b)
@@ -949,7 +900,7 @@ func (m *UpdateSignalRequest) Reset()         { *m = UpdateSignalRequest{} }
 func (m *UpdateSignalRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateSignalRequest) ProtoMessage()    {}
 func (*UpdateSignalRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{17}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{16}
 }
 func (m *UpdateSignalRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSignalRequest.Unmarshal(m, b)
@@ -983,78 +934,6 @@ func (m *UpdateSignalRequest) GetUpdateMask() *field_mask.FieldMask {
 	return nil
 }
 
-// Request for the AcknowledgeSignal method.
-type AcknowledgeSignalRequest struct {
-	// Resource name of the Signal resource, e.g.
-	// "projects/{project_id}/signals/{signal_id}".
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *AcknowledgeSignalRequest) Reset()         { *m = AcknowledgeSignalRequest{} }
-func (m *AcknowledgeSignalRequest) String() string { return proto.CompactTextString(m) }
-func (*AcknowledgeSignalRequest) ProtoMessage()    {}
-func (*AcknowledgeSignalRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{18}
-}
-func (m *AcknowledgeSignalRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AcknowledgeSignalRequest.Unmarshal(m, b)
-}
-func (m *AcknowledgeSignalRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AcknowledgeSignalRequest.Marshal(b, m, deterministic)
-}
-func (dst *AcknowledgeSignalRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AcknowledgeSignalRequest.Merge(dst, src)
-}
-func (m *AcknowledgeSignalRequest) XXX_Size() int {
-	return xxx_messageInfo_AcknowledgeSignalRequest.Size(m)
-}
-func (m *AcknowledgeSignalRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_AcknowledgeSignalRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_AcknowledgeSignalRequest proto.InternalMessageInfo
-
-func (m *AcknowledgeSignalRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-// Response of the AcknowledgeSignal method.
-type AcknowledgeSignalResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *AcknowledgeSignalResponse) Reset()         { *m = AcknowledgeSignalResponse{} }
-func (m *AcknowledgeSignalResponse) String() string { return proto.CompactTextString(m) }
-func (*AcknowledgeSignalResponse) ProtoMessage()    {}
-func (*AcknowledgeSignalResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{19}
-}
-func (m *AcknowledgeSignalResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AcknowledgeSignalResponse.Unmarshal(m, b)
-}
-func (m *AcknowledgeSignalResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AcknowledgeSignalResponse.Marshal(b, m, deterministic)
-}
-func (dst *AcknowledgeSignalResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AcknowledgeSignalResponse.Merge(dst, src)
-}
-func (m *AcknowledgeSignalResponse) XXX_Size() int {
-	return xxx_messageInfo_AcknowledgeSignalResponse.Size(m)
-}
-func (m *AcknowledgeSignalResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_AcknowledgeSignalResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_AcknowledgeSignalResponse proto.InternalMessageInfo
-
 // Request for the SearchIncidents method.
 type SearchIncidentsRequest struct {
 	// The resource name of the hosting Stackdriver project which requested
@@ -1072,20 +951,22 @@ type SearchIncidentsRequest struct {
 	//   Incident.Stage enum). These are ordered, so `stage<resolved` is
 	//   equivalent to `stage:detected OR stage:triaged OR stage:mitigated`.
 	// * `severity` - (Incident.Severity) The severity of the incident.
-	//    + Supports matching on a specific severity (e.g., `severity:major`) or
-	//      on a range (e.g., `severity>medium`, `severity<=minor`, etc.).
+	//    + Supports matching on a specific severity (for example,
+	//    `severity:major`) or on a range (for example, `severity>medium`,
+	//    `severity<=minor`, etc.).
 	//
 	// Timestamp formats:
 	// * yyyy-MM-dd - an absolute date, treated as a calendar-day-wide window.
 	//   In other words, the "<" operator will match dates before that date, the
 	//   ">" operator will match dates after that date, and the ":" or "="
 	//   operators will match the entire day.
-	// * Nd (e.g. 7d) - a relative number of days ago, treated as a moment in time
-	//   (as opposed to a day-wide span) a multiple of 24 hours ago (as opposed to
-	//   calendar days).  In the case of daylight savings time, it will apply the
-	//   current timezone to both ends of the range.  Note that exact matching
-	//   (e.g. `start:7d`) is unlikely to be useful because that would only match
-	//   incidents created precisely at a particular instant in time.
+	// * Nd (for example, 7d) - a relative number of days ago, treated as a moment
+	//   in time (as opposed to a day-wide span). A multiple of 24 hours ago (as
+	//   opposed to calendar days).  In the case of daylight savings time, it will
+	//   apply the current timezone to both ends of the range.  Note that exact
+	//   matching (for example, `start:7d`) is unlikely to be useful because that
+	//   would only match incidents created precisely at a particular instant in
+	//   time.
 	//
 	// Examples:
 	//
@@ -1128,7 +1009,7 @@ func (m *SearchIncidentsRequest) Reset()         { *m = SearchIncidentsRequest{}
 func (m *SearchIncidentsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchIncidentsRequest) ProtoMessage()    {}
 func (*SearchIncidentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{20}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{17}
 }
 func (m *SearchIncidentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchIncidentsRequest.Unmarshal(m, b)
@@ -1198,7 +1079,7 @@ func (m *SearchIncidentsResponse) Reset()         { *m = SearchIncidentsResponse
 func (m *SearchIncidentsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchIncidentsResponse) ProtoMessage()    {}
 func (*SearchIncidentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{21}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{18}
 }
 func (m *SearchIncidentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchIncidentsResponse.Unmarshal(m, b)
@@ -1257,7 +1138,7 @@ func (m *EscalateIncidentRequest) Reset()         { *m = EscalateIncidentRequest
 func (m *EscalateIncidentRequest) String() string { return proto.CompactTextString(m) }
 func (*EscalateIncidentRequest) ProtoMessage()    {}
 func (*EscalateIncidentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{22}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{19}
 }
 func (m *EscalateIncidentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EscalateIncidentRequest.Unmarshal(m, b)
@@ -1340,7 +1221,7 @@ func (m *EscalateIncidentResponse) Reset()         { *m = EscalateIncidentRespon
 func (m *EscalateIncidentResponse) String() string { return proto.CompactTextString(m) }
 func (*EscalateIncidentResponse) ProtoMessage()    {}
 func (*EscalateIncidentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{23}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{20}
 }
 func (m *EscalateIncidentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EscalateIncidentResponse.Unmarshal(m, b)
@@ -1397,7 +1278,7 @@ func (m *EscalateIncidentResponse) GetArtifacts() []*Artifact {
 
 // Request for the CreateArtifact method.
 type CreateArtifactRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The artifact to create.
@@ -1411,7 +1292,7 @@ func (m *CreateArtifactRequest) Reset()         { *m = CreateArtifactRequest{} }
 func (m *CreateArtifactRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateArtifactRequest) ProtoMessage()    {}
 func (*CreateArtifactRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{24}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{21}
 }
 func (m *CreateArtifactRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateArtifactRequest.Unmarshal(m, b)
@@ -1447,7 +1328,7 @@ func (m *CreateArtifactRequest) GetArtifact() *Artifact {
 
 // Request for the ListArtifacts method.
 type ListArtifactsRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Number of artifacts to return.
@@ -1463,7 +1344,7 @@ func (m *ListArtifactsRequest) Reset()         { *m = ListArtifactsRequest{} }
 func (m *ListArtifactsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListArtifactsRequest) ProtoMessage()    {}
 func (*ListArtifactsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{25}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{22}
 }
 func (m *ListArtifactsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListArtifactsRequest.Unmarshal(m, b)
@@ -1519,7 +1400,7 @@ func (m *ListArtifactsResponse) Reset()         { *m = ListArtifactsResponse{} }
 func (m *ListArtifactsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListArtifactsResponse) ProtoMessage()    {}
 func (*ListArtifactsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{26}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{23}
 }
 func (m *ListArtifactsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListArtifactsResponse.Unmarshal(m, b)
@@ -1568,7 +1449,7 @@ func (m *UpdateArtifactRequest) Reset()         { *m = UpdateArtifactRequest{} }
 func (m *UpdateArtifactRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateArtifactRequest) ProtoMessage()    {}
 func (*UpdateArtifactRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{27}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{24}
 }
 func (m *UpdateArtifactRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateArtifactRequest.Unmarshal(m, b)
@@ -1615,7 +1496,7 @@ func (m *DeleteArtifactRequest) Reset()         { *m = DeleteArtifactRequest{} }
 func (m *DeleteArtifactRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteArtifactRequest) ProtoMessage()    {}
 func (*DeleteArtifactRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{28}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{25}
 }
 func (m *DeleteArtifactRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteArtifactRequest.Unmarshal(m, b)
@@ -1642,120 +1523,19 @@ func (m *DeleteArtifactRequest) GetName() string {
 	return ""
 }
 
-// GetShiftHandoffPresets RPC request.
-type GetShiftHandoffPresetsRequest struct {
-	// Resource name of the Stackdriver project that the presets belong to. e.g.
-	// `projects/{project_id}`
-	Parent               string   `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetShiftHandoffPresetsRequest) Reset()         { *m = GetShiftHandoffPresetsRequest{} }
-func (m *GetShiftHandoffPresetsRequest) String() string { return proto.CompactTextString(m) }
-func (*GetShiftHandoffPresetsRequest) ProtoMessage()    {}
-func (*GetShiftHandoffPresetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{29}
-}
-func (m *GetShiftHandoffPresetsRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetShiftHandoffPresetsRequest.Unmarshal(m, b)
-}
-func (m *GetShiftHandoffPresetsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetShiftHandoffPresetsRequest.Marshal(b, m, deterministic)
-}
-func (dst *GetShiftHandoffPresetsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetShiftHandoffPresetsRequest.Merge(dst, src)
-}
-func (m *GetShiftHandoffPresetsRequest) XXX_Size() int {
-	return xxx_messageInfo_GetShiftHandoffPresetsRequest.Size(m)
-}
-func (m *GetShiftHandoffPresetsRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetShiftHandoffPresetsRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetShiftHandoffPresetsRequest proto.InternalMessageInfo
-
-func (m *GetShiftHandoffPresetsRequest) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
-}
-
-// GetShiftHandoffPresets RPC response.
-type ShiftHandoffPresets struct {
-	// The recipients that the user might want to send the shift handoff to, in
-	// the form of email addresses, e.g. "user@example.com". Can be empty.
-	Recipients []string `protobuf:"bytes,1,rep,name=recipients,proto3" json:"recipients,omitempty"`
-	// The recipients that the user might want to CC on the shift handoff, in the
-	// form of email addresses, e.g. "user@example.com". Can be empty.
-	Cc []string `protobuf:"bytes,2,rep,name=cc,proto3" json:"cc,omitempty"`
-	// A suggested subject for the shift handoff email. Can be empty.
-	Subject              string   `protobuf:"bytes,3,opt,name=subject,proto3" json:"subject,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ShiftHandoffPresets) Reset()         { *m = ShiftHandoffPresets{} }
-func (m *ShiftHandoffPresets) String() string { return proto.CompactTextString(m) }
-func (*ShiftHandoffPresets) ProtoMessage()    {}
-func (*ShiftHandoffPresets) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{30}
-}
-func (m *ShiftHandoffPresets) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ShiftHandoffPresets.Unmarshal(m, b)
-}
-func (m *ShiftHandoffPresets) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ShiftHandoffPresets.Marshal(b, m, deterministic)
-}
-func (dst *ShiftHandoffPresets) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ShiftHandoffPresets.Merge(dst, src)
-}
-func (m *ShiftHandoffPresets) XXX_Size() int {
-	return xxx_messageInfo_ShiftHandoffPresets.Size(m)
-}
-func (m *ShiftHandoffPresets) XXX_DiscardUnknown() {
-	xxx_messageInfo_ShiftHandoffPresets.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ShiftHandoffPresets proto.InternalMessageInfo
-
-func (m *ShiftHandoffPresets) GetRecipients() []string {
-	if m != nil {
-		return m.Recipients
-	}
-	return nil
-}
-
-func (m *ShiftHandoffPresets) GetCc() []string {
-	if m != nil {
-		return m.Cc
-	}
-	return nil
-}
-
-func (m *ShiftHandoffPresets) GetSubject() string {
-	if m != nil {
-		return m.Subject
-	}
-	return ""
-}
-
 // SendShiftHandoff and PreviewShiftHandoff RPC request.
 type SendShiftHandoffRequest struct {
 	// The resource name of the Stackdriver project that the handoff is being sent
-	// from. e.g. `projects/{project_id}`
+	// from. for example, `projects/{project_id}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Email addresses of the recipients of the handoff, e.g. "user@example.com".
-	// Must contain at least one entry.
+	// Email addresses of the recipients of the handoff, for example,
+	// "user@example.com". Must contain at least one entry.
 	Recipients []string `protobuf:"bytes,2,rep,name=recipients,proto3" json:"recipients,omitempty"`
 	// Email addresses that should be CC'd on the handoff. Optional.
 	Cc []string `protobuf:"bytes,3,rep,name=cc,proto3" json:"cc,omitempty"`
 	// The subject of the email. Required.
 	Subject string `protobuf:"bytes,4,opt,name=subject,proto3" json:"subject,omitempty"`
-	// Content type string, e.g. 'text/plain' or 'text/html'.
+	// Content type string, for example, 'text/plain' or 'text/html'.
 	NotesContentType string `protobuf:"bytes,5,opt,name=notes_content_type,json=notesContentType,proto3" json:"notes_content_type,omitempty"`
 	// Additional notes to be included in the handoff. Optional.
 	NotesContent string `protobuf:"bytes,6,opt,name=notes_content,json=notesContent,proto3" json:"notes_content,omitempty"`
@@ -1773,7 +1553,7 @@ func (m *SendShiftHandoffRequest) Reset()         { *m = SendShiftHandoffRequest
 func (m *SendShiftHandoffRequest) String() string { return proto.CompactTextString(m) }
 func (*SendShiftHandoffRequest) ProtoMessage()    {}
 func (*SendShiftHandoffRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{31}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{26}
 }
 func (m *SendShiftHandoffRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SendShiftHandoffRequest.Unmarshal(m, b)
@@ -1853,7 +1633,7 @@ func (m *SendShiftHandoffRequest) GetPreviewOnly() bool {
 // This is wrapped in a message to provide flexibility for potentially
 // attaching additional data to each incident in the future.
 type SendShiftHandoffRequest_Incident struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1865,7 +1645,7 @@ func (m *SendShiftHandoffRequest_Incident) Reset()         { *m = SendShiftHando
 func (m *SendShiftHandoffRequest_Incident) String() string { return proto.CompactTextString(m) }
 func (*SendShiftHandoffRequest_Incident) ProtoMessage()    {}
 func (*SendShiftHandoffRequest_Incident) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{31, 0}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{26, 0}
 }
 func (m *SendShiftHandoffRequest_Incident) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SendShiftHandoffRequest_Incident.Unmarshal(m, b)
@@ -1894,7 +1674,7 @@ func (m *SendShiftHandoffRequest_Incident) GetName() string {
 
 // SendShiftHandoff and PreviewShiftHandoff RPC response.
 type SendShiftHandoffResponse struct {
-	// Content type string, e.g. 'text/plain' or 'text/html'.
+	// Content type string, for example, 'text/plain' or 'text/html'.
 	ContentType string `protobuf:"bytes,1,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`
 	// The contents of the handoff that was sent or would have been sent (if the
 	// request was preview_only).
@@ -1909,7 +1689,7 @@ func (m *SendShiftHandoffResponse) Reset()         { *m = SendShiftHandoffRespon
 func (m *SendShiftHandoffResponse) String() string { return proto.CompactTextString(m) }
 func (*SendShiftHandoffResponse) ProtoMessage()    {}
 func (*SendShiftHandoffResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{32}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{27}
 }
 func (m *SendShiftHandoffResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SendShiftHandoffResponse.Unmarshal(m, b)
@@ -1945,7 +1725,7 @@ func (m *SendShiftHandoffResponse) GetContent() string {
 
 // Request for the CreateSubscription method.
 type CreateSubscriptionRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The subscription to create.
@@ -1959,7 +1739,7 @@ func (m *CreateSubscriptionRequest) Reset()         { *m = CreateSubscriptionReq
 func (m *CreateSubscriptionRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateSubscriptionRequest) ProtoMessage()    {}
 func (*CreateSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{33}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{28}
 }
 func (m *CreateSubscriptionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateSubscriptionRequest.Unmarshal(m, b)
@@ -1993,9 +1773,58 @@ func (m *CreateSubscriptionRequest) GetSubscription() *Subscription {
 	return nil
 }
 
+// Request for the UpdateSubscription method.
+type UpdateSubscriptionRequest struct {
+	// The subscription to update, with new values.
+	Subscription *Subscription `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
+	// List of fields that should be updated.
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *UpdateSubscriptionRequest) Reset()         { *m = UpdateSubscriptionRequest{} }
+func (m *UpdateSubscriptionRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateSubscriptionRequest) ProtoMessage()    {}
+func (*UpdateSubscriptionRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{29}
+}
+func (m *UpdateSubscriptionRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateSubscriptionRequest.Unmarshal(m, b)
+}
+func (m *UpdateSubscriptionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateSubscriptionRequest.Marshal(b, m, deterministic)
+}
+func (dst *UpdateSubscriptionRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateSubscriptionRequest.Merge(dst, src)
+}
+func (m *UpdateSubscriptionRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdateSubscriptionRequest.Size(m)
+}
+func (m *UpdateSubscriptionRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateSubscriptionRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateSubscriptionRequest proto.InternalMessageInfo
+
+func (m *UpdateSubscriptionRequest) GetSubscription() *Subscription {
+	if m != nil {
+		return m.Subscription
+	}
+	return nil
+}
+
+func (m *UpdateSubscriptionRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
 // Request for the ListSubscriptions method.
 type ListSubscriptionsRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Number of subscriptions to return.
@@ -2011,7 +1840,7 @@ func (m *ListSubscriptionsRequest) Reset()         { *m = ListSubscriptionsReque
 func (m *ListSubscriptionsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListSubscriptionsRequest) ProtoMessage()    {}
 func (*ListSubscriptionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{34}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{30}
 }
 func (m *ListSubscriptionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSubscriptionsRequest.Unmarshal(m, b)
@@ -2067,7 +1896,7 @@ func (m *ListSubscriptionsResponse) Reset()         { *m = ListSubscriptionsResp
 func (m *ListSubscriptionsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListSubscriptionsResponse) ProtoMessage()    {}
 func (*ListSubscriptionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{35}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{31}
 }
 func (m *ListSubscriptionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSubscriptionsResponse.Unmarshal(m, b)
@@ -2114,7 +1943,7 @@ func (m *DeleteSubscriptionRequest) Reset()         { *m = DeleteSubscriptionReq
 func (m *DeleteSubscriptionRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteSubscriptionRequest) ProtoMessage()    {}
 func (*DeleteSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{36}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{32}
 }
 func (m *DeleteSubscriptionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteSubscriptionRequest.Unmarshal(m, b)
@@ -2143,7 +1972,7 @@ func (m *DeleteSubscriptionRequest) GetName() string {
 
 // Request for creating a role assignment.
 type CreateIncidentRoleAssignmentRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Role assignment to create.
@@ -2157,7 +1986,7 @@ func (m *CreateIncidentRoleAssignmentRequest) Reset()         { *m = CreateIncid
 func (m *CreateIncidentRoleAssignmentRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateIncidentRoleAssignmentRequest) ProtoMessage()    {}
 func (*CreateIncidentRoleAssignmentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{37}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{33}
 }
 func (m *CreateIncidentRoleAssignmentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateIncidentRoleAssignmentRequest.Unmarshal(m, b)
@@ -2204,7 +2033,7 @@ func (m *DeleteIncidentRoleAssignmentRequest) Reset()         { *m = DeleteIncid
 func (m *DeleteIncidentRoleAssignmentRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteIncidentRoleAssignmentRequest) ProtoMessage()    {}
 func (*DeleteIncidentRoleAssignmentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{38}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{34}
 }
 func (m *DeleteIncidentRoleAssignmentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteIncidentRoleAssignmentRequest.Unmarshal(m, b)
@@ -2233,7 +2062,7 @@ func (m *DeleteIncidentRoleAssignmentRequest) GetName() string {
 
 // Request to list role assignments of an incident.
 type ListIncidentRoleAssignmentsRequest struct {
-	// Resource name of the incident, e.g.
+	// Resource name of the incident, for example,
 	// "projects/{project_id}/incidents/{incident_id}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Number of assignments to return.
@@ -2249,7 +2078,7 @@ func (m *ListIncidentRoleAssignmentsRequest) Reset()         { *m = ListIncident
 func (m *ListIncidentRoleAssignmentsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListIncidentRoleAssignmentsRequest) ProtoMessage()    {}
 func (*ListIncidentRoleAssignmentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{39}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{35}
 }
 func (m *ListIncidentRoleAssignmentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIncidentRoleAssignmentsRequest.Unmarshal(m, b)
@@ -2305,7 +2134,7 @@ func (m *ListIncidentRoleAssignmentsResponse) Reset()         { *m = ListInciden
 func (m *ListIncidentRoleAssignmentsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListIncidentRoleAssignmentsResponse) ProtoMessage()    {}
 func (*ListIncidentRoleAssignmentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{40}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{36}
 }
 func (m *ListIncidentRoleAssignmentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIncidentRoleAssignmentsResponse.Unmarshal(m, b)
@@ -2354,7 +2183,7 @@ func (m *RequestIncidentRoleHandoverRequest) Reset()         { *m = RequestIncid
 func (m *RequestIncidentRoleHandoverRequest) String() string { return proto.CompactTextString(m) }
 func (*RequestIncidentRoleHandoverRequest) ProtoMessage()    {}
 func (*RequestIncidentRoleHandoverRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{41}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{37}
 }
 func (m *RequestIncidentRoleHandoverRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestIncidentRoleHandoverRequest.Unmarshal(m, b)
@@ -2404,7 +2233,7 @@ func (m *ConfirmIncidentRoleHandoverRequest) Reset()         { *m = ConfirmIncid
 func (m *ConfirmIncidentRoleHandoverRequest) String() string { return proto.CompactTextString(m) }
 func (*ConfirmIncidentRoleHandoverRequest) ProtoMessage()    {}
 func (*ConfirmIncidentRoleHandoverRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{42}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{38}
 }
 func (m *ConfirmIncidentRoleHandoverRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConfirmIncidentRoleHandoverRequest.Unmarshal(m, b)
@@ -2454,7 +2283,7 @@ func (m *ForceIncidentRoleHandoverRequest) Reset()         { *m = ForceIncidentR
 func (m *ForceIncidentRoleHandoverRequest) String() string { return proto.CompactTextString(m) }
 func (*ForceIncidentRoleHandoverRequest) ProtoMessage()    {}
 func (*ForceIncidentRoleHandoverRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{43}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{39}
 }
 func (m *ForceIncidentRoleHandoverRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForceIncidentRoleHandoverRequest.Unmarshal(m, b)
@@ -2505,7 +2334,7 @@ func (m *CancelIncidentRoleHandoverRequest) Reset()         { *m = CancelInciden
 func (m *CancelIncidentRoleHandoverRequest) String() string { return proto.CompactTextString(m) }
 func (*CancelIncidentRoleHandoverRequest) ProtoMessage()    {}
 func (*CancelIncidentRoleHandoverRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_f1859dadab0f5205, []int{44}
+	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{40}
 }
 func (m *CancelIncidentRoleHandoverRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelIncidentRoleHandoverRequest.Unmarshal(m, b)
@@ -2553,14 +2382,11 @@ func init() {
 	proto.RegisterType((*DeleteTagRequest)(nil), "google.cloud.irm.v1alpha2.DeleteTagRequest")
 	proto.RegisterType((*ListTagsRequest)(nil), "google.cloud.irm.v1alpha2.ListTagsRequest")
 	proto.RegisterType((*ListTagsResponse)(nil), "google.cloud.irm.v1alpha2.ListTagsResponse")
-	proto.RegisterType((*UpdateAnnotationRequest)(nil), "google.cloud.irm.v1alpha2.UpdateAnnotationRequest")
 	proto.RegisterType((*CreateSignalRequest)(nil), "google.cloud.irm.v1alpha2.CreateSignalRequest")
-	proto.RegisterType((*ListSignalsRequest)(nil), "google.cloud.irm.v1alpha2.ListSignalsRequest")
-	proto.RegisterType((*ListSignalsResponse)(nil), "google.cloud.irm.v1alpha2.ListSignalsResponse")
+	proto.RegisterType((*SearchSignalsRequest)(nil), "google.cloud.irm.v1alpha2.SearchSignalsRequest")
+	proto.RegisterType((*SearchSignalsResponse)(nil), "google.cloud.irm.v1alpha2.SearchSignalsResponse")
 	proto.RegisterType((*GetSignalRequest)(nil), "google.cloud.irm.v1alpha2.GetSignalRequest")
 	proto.RegisterType((*UpdateSignalRequest)(nil), "google.cloud.irm.v1alpha2.UpdateSignalRequest")
-	proto.RegisterType((*AcknowledgeSignalRequest)(nil), "google.cloud.irm.v1alpha2.AcknowledgeSignalRequest")
-	proto.RegisterType((*AcknowledgeSignalResponse)(nil), "google.cloud.irm.v1alpha2.AcknowledgeSignalResponse")
 	proto.RegisterType((*SearchIncidentsRequest)(nil), "google.cloud.irm.v1alpha2.SearchIncidentsRequest")
 	proto.RegisterType((*SearchIncidentsResponse)(nil), "google.cloud.irm.v1alpha2.SearchIncidentsResponse")
 	proto.RegisterType((*EscalateIncidentRequest)(nil), "google.cloud.irm.v1alpha2.EscalateIncidentRequest")
@@ -2570,12 +2396,11 @@ func init() {
 	proto.RegisterType((*ListArtifactsResponse)(nil), "google.cloud.irm.v1alpha2.ListArtifactsResponse")
 	proto.RegisterType((*UpdateArtifactRequest)(nil), "google.cloud.irm.v1alpha2.UpdateArtifactRequest")
 	proto.RegisterType((*DeleteArtifactRequest)(nil), "google.cloud.irm.v1alpha2.DeleteArtifactRequest")
-	proto.RegisterType((*GetShiftHandoffPresetsRequest)(nil), "google.cloud.irm.v1alpha2.GetShiftHandoffPresetsRequest")
-	proto.RegisterType((*ShiftHandoffPresets)(nil), "google.cloud.irm.v1alpha2.ShiftHandoffPresets")
 	proto.RegisterType((*SendShiftHandoffRequest)(nil), "google.cloud.irm.v1alpha2.SendShiftHandoffRequest")
 	proto.RegisterType((*SendShiftHandoffRequest_Incident)(nil), "google.cloud.irm.v1alpha2.SendShiftHandoffRequest.Incident")
 	proto.RegisterType((*SendShiftHandoffResponse)(nil), "google.cloud.irm.v1alpha2.SendShiftHandoffResponse")
 	proto.RegisterType((*CreateSubscriptionRequest)(nil), "google.cloud.irm.v1alpha2.CreateSubscriptionRequest")
+	proto.RegisterType((*UpdateSubscriptionRequest)(nil), "google.cloud.irm.v1alpha2.UpdateSubscriptionRequest")
 	proto.RegisterType((*ListSubscriptionsRequest)(nil), "google.cloud.irm.v1alpha2.ListSubscriptionsRequest")
 	proto.RegisterType((*ListSubscriptionsResponse)(nil), "google.cloud.irm.v1alpha2.ListSubscriptionsResponse")
 	proto.RegisterType((*DeleteSubscriptionRequest)(nil), "google.cloud.irm.v1alpha2.DeleteSubscriptionRequest")
@@ -2620,8 +2445,6 @@ type IncidentServiceClient interface {
 	// Lists annotations that are part of an incident. No assumptions should be
 	// made on the content-type of the annotation returned.
 	ListAnnotations(ctx context.Context, in *ListAnnotationsRequest, opts ...grpc.CallOption) (*ListAnnotationsResponse, error)
-	// Updates an annotation on an existing incident.
-	UpdateAnnotation(ctx context.Context, in *UpdateAnnotationRequest, opts ...grpc.CallOption) (*Annotation, error)
 	// Creates a tag on an existing incident.
 	CreateTag(ctx context.Context, in *CreateTagRequest, opts ...grpc.CallOption) (*Tag, error)
 	// Deletes an existing tag.
@@ -2632,15 +2455,12 @@ type IncidentServiceClient interface {
 	CreateSignal(ctx context.Context, in *CreateSignalRequest, opts ...grpc.CallOption) (*Signal, error)
 	// Lists signals that are part of an incident.
 	// Signals are returned in reverse chronological order.
-	ListSignals(ctx context.Context, in *ListSignalsRequest, opts ...grpc.CallOption) (*ListSignalsResponse, error)
+	SearchSignals(ctx context.Context, in *SearchSignalsRequest, opts ...grpc.CallOption) (*SearchSignalsResponse, error)
 	// Returns a signal by name.
 	GetSignal(ctx context.Context, in *GetSignalRequest, opts ...grpc.CallOption) (*Signal, error)
-	// Updates an existing signal (e.g. to assign/unassign it to an
+	// Updates an existing signal (for example, to assign/unassign it to an
 	// incident).
 	UpdateSignal(ctx context.Context, in *UpdateSignalRequest, opts ...grpc.CallOption) (*Signal, error)
-	// Acks a signal. This acknowledges the signal in the underlying system,
-	// indicating that the caller takes responsibility for looking into this.
-	AcknowledgeSignal(ctx context.Context, in *AcknowledgeSignalRequest, opts ...grpc.CallOption) (*AcknowledgeSignalResponse, error)
 	// Escalates an incident.
 	EscalateIncident(ctx context.Context, in *EscalateIncidentRequest, opts ...grpc.CallOption) (*EscalateIncidentResponse, error)
 	// Creates a new artifact.
@@ -2651,9 +2471,6 @@ type IncidentServiceClient interface {
 	UpdateArtifact(ctx context.Context, in *UpdateArtifactRequest, opts ...grpc.CallOption) (*Artifact, error)
 	// Deletes an existing artifact.
 	DeleteArtifact(ctx context.Context, in *DeleteArtifactRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// Returns "presets" specific to shift handoff (see SendShiftHandoff), e.g.
-	// default values for handoff message fields.
-	GetShiftHandoffPresets(ctx context.Context, in *GetShiftHandoffPresetsRequest, opts ...grpc.CallOption) (*ShiftHandoffPresets, error)
 	// Sends a summary of the shift for oncall handoff.
 	SendShiftHandoff(ctx context.Context, in *SendShiftHandoffRequest, opts ...grpc.CallOption) (*SendShiftHandoffResponse, error)
 	// Creates a new subscription.
@@ -2661,6 +2478,8 @@ type IncidentServiceClient interface {
 	//    a. there are too many (50) subscriptions in the incident already
 	//    b. a subscription using the given channel already exists
 	CreateSubscription(ctx context.Context, in *CreateSubscriptionRequest, opts ...grpc.CallOption) (*Subscription, error)
+	// Updates a subscription.
+	UpdateSubscription(ctx context.Context, in *UpdateSubscriptionRequest, opts ...grpc.CallOption) (*Subscription, error)
 	// Returns a list of subscriptions for an incident.
 	ListSubscriptions(ctx context.Context, in *ListSubscriptionsRequest, opts ...grpc.CallOption) (*ListSubscriptionsResponse, error)
 	// Deletes an existing subscription.
@@ -2766,15 +2585,6 @@ func (c *incidentServiceClient) ListAnnotations(ctx context.Context, in *ListAnn
 	return out, nil
 }
 
-func (c *incidentServiceClient) UpdateAnnotation(ctx context.Context, in *UpdateAnnotationRequest, opts ...grpc.CallOption) (*Annotation, error) {
-	out := new(Annotation)
-	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/UpdateAnnotation", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *incidentServiceClient) CreateTag(ctx context.Context, in *CreateTagRequest, opts ...grpc.CallOption) (*Tag, error) {
 	out := new(Tag)
 	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/CreateTag", in, out, opts...)
@@ -2811,9 +2621,9 @@ func (c *incidentServiceClient) CreateSignal(ctx context.Context, in *CreateSign
 	return out, nil
 }
 
-func (c *incidentServiceClient) ListSignals(ctx context.Context, in *ListSignalsRequest, opts ...grpc.CallOption) (*ListSignalsResponse, error) {
-	out := new(ListSignalsResponse)
-	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/ListSignals", in, out, opts...)
+func (c *incidentServiceClient) SearchSignals(ctx context.Context, in *SearchSignalsRequest, opts ...grpc.CallOption) (*SearchSignalsResponse, error) {
+	out := new(SearchSignalsResponse)
+	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/SearchSignals", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -2832,15 +2642,6 @@ func (c *incidentServiceClient) GetSignal(ctx context.Context, in *GetSignalRequ
 func (c *incidentServiceClient) UpdateSignal(ctx context.Context, in *UpdateSignalRequest, opts ...grpc.CallOption) (*Signal, error) {
 	out := new(Signal)
 	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/UpdateSignal", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *incidentServiceClient) AcknowledgeSignal(ctx context.Context, in *AcknowledgeSignalRequest, opts ...grpc.CallOption) (*AcknowledgeSignalResponse, error) {
-	out := new(AcknowledgeSignalResponse)
-	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/AcknowledgeSignal", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -2892,15 +2693,6 @@ func (c *incidentServiceClient) DeleteArtifact(ctx context.Context, in *DeleteAr
 	return out, nil
 }
 
-func (c *incidentServiceClient) GetShiftHandoffPresets(ctx context.Context, in *GetShiftHandoffPresetsRequest, opts ...grpc.CallOption) (*ShiftHandoffPresets, error) {
-	out := new(ShiftHandoffPresets)
-	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/GetShiftHandoffPresets", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *incidentServiceClient) SendShiftHandoff(ctx context.Context, in *SendShiftHandoffRequest, opts ...grpc.CallOption) (*SendShiftHandoffResponse, error) {
 	out := new(SendShiftHandoffResponse)
 	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/SendShiftHandoff", in, out, opts...)
@@ -2913,6 +2705,15 @@ func (c *incidentServiceClient) SendShiftHandoff(ctx context.Context, in *SendSh
 func (c *incidentServiceClient) CreateSubscription(ctx context.Context, in *CreateSubscriptionRequest, opts ...grpc.CallOption) (*Subscription, error) {
 	out := new(Subscription)
 	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/CreateSubscription", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *incidentServiceClient) UpdateSubscription(ctx context.Context, in *UpdateSubscriptionRequest, opts ...grpc.CallOption) (*Subscription, error) {
+	out := new(Subscription)
+	err := c.cc.Invoke(ctx, "/google.cloud.irm.v1alpha2.IncidentService/UpdateSubscription", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -3021,8 +2822,6 @@ type IncidentServiceServer interface {
 	// Lists annotations that are part of an incident. No assumptions should be
 	// made on the content-type of the annotation returned.
 	ListAnnotations(context.Context, *ListAnnotationsRequest) (*ListAnnotationsResponse, error)
-	// Updates an annotation on an existing incident.
-	UpdateAnnotation(context.Context, *UpdateAnnotationRequest) (*Annotation, error)
 	// Creates a tag on an existing incident.
 	CreateTag(context.Context, *CreateTagRequest) (*Tag, error)
 	// Deletes an existing tag.
@@ -3033,15 +2832,12 @@ type IncidentServiceServer interface {
 	CreateSignal(context.Context, *CreateSignalRequest) (*Signal, error)
 	// Lists signals that are part of an incident.
 	// Signals are returned in reverse chronological order.
-	ListSignals(context.Context, *ListSignalsRequest) (*ListSignalsResponse, error)
+	SearchSignals(context.Context, *SearchSignalsRequest) (*SearchSignalsResponse, error)
 	// Returns a signal by name.
 	GetSignal(context.Context, *GetSignalRequest) (*Signal, error)
-	// Updates an existing signal (e.g. to assign/unassign it to an
+	// Updates an existing signal (for example, to assign/unassign it to an
 	// incident).
 	UpdateSignal(context.Context, *UpdateSignalRequest) (*Signal, error)
-	// Acks a signal. This acknowledges the signal in the underlying system,
-	// indicating that the caller takes responsibility for looking into this.
-	AcknowledgeSignal(context.Context, *AcknowledgeSignalRequest) (*AcknowledgeSignalResponse, error)
 	// Escalates an incident.
 	EscalateIncident(context.Context, *EscalateIncidentRequest) (*EscalateIncidentResponse, error)
 	// Creates a new artifact.
@@ -3052,9 +2848,6 @@ type IncidentServiceServer interface {
 	UpdateArtifact(context.Context, *UpdateArtifactRequest) (*Artifact, error)
 	// Deletes an existing artifact.
 	DeleteArtifact(context.Context, *DeleteArtifactRequest) (*empty.Empty, error)
-	// Returns "presets" specific to shift handoff (see SendShiftHandoff), e.g.
-	// default values for handoff message fields.
-	GetShiftHandoffPresets(context.Context, *GetShiftHandoffPresetsRequest) (*ShiftHandoffPresets, error)
 	// Sends a summary of the shift for oncall handoff.
 	SendShiftHandoff(context.Context, *SendShiftHandoffRequest) (*SendShiftHandoffResponse, error)
 	// Creates a new subscription.
@@ -3062,6 +2855,8 @@ type IncidentServiceServer interface {
 	//    a. there are too many (50) subscriptions in the incident already
 	//    b. a subscription using the given channel already exists
 	CreateSubscription(context.Context, *CreateSubscriptionRequest) (*Subscription, error)
+	// Updates a subscription.
+	UpdateSubscription(context.Context, *UpdateSubscriptionRequest) (*Subscription, error)
 	// Returns a list of subscriptions for an incident.
 	ListSubscriptions(context.Context, *ListSubscriptionsRequest) (*ListSubscriptionsResponse, error)
 	// Deletes an existing subscription.
@@ -3226,24 +3021,6 @@ func _IncidentService_ListAnnotations_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _IncidentService_UpdateAnnotation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateAnnotationRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(IncidentServiceServer).UpdateAnnotation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/google.cloud.irm.v1alpha2.IncidentService/UpdateAnnotation",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IncidentServiceServer).UpdateAnnotation(ctx, req.(*UpdateAnnotationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _IncidentService_CreateTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateTagRequest)
 	if err := dec(in); err != nil {
@@ -3316,20 +3093,20 @@ func _IncidentService_CreateSignal_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _IncidentService_ListSignals_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListSignalsRequest)
+func _IncidentService_SearchSignals_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchSignalsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(IncidentServiceServer).ListSignals(ctx, in)
+		return srv.(IncidentServiceServer).SearchSignals(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/google.cloud.irm.v1alpha2.IncidentService/ListSignals",
+		FullMethod: "/google.cloud.irm.v1alpha2.IncidentService/SearchSignals",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IncidentServiceServer).ListSignals(ctx, req.(*ListSignalsRequest))
+		return srv.(IncidentServiceServer).SearchSignals(ctx, req.(*SearchSignalsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -3366,24 +3143,6 @@ func _IncidentService_UpdateSignal_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(IncidentServiceServer).UpdateSignal(ctx, req.(*UpdateSignalRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _IncidentService_AcknowledgeSignal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AcknowledgeSignalRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(IncidentServiceServer).AcknowledgeSignal(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/google.cloud.irm.v1alpha2.IncidentService/AcknowledgeSignal",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IncidentServiceServer).AcknowledgeSignal(ctx, req.(*AcknowledgeSignalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -3478,24 +3237,6 @@ func _IncidentService_DeleteArtifact_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _IncidentService_GetShiftHandoffPresets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetShiftHandoffPresetsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(IncidentServiceServer).GetShiftHandoffPresets(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/google.cloud.irm.v1alpha2.IncidentService/GetShiftHandoffPresets",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IncidentServiceServer).GetShiftHandoffPresets(ctx, req.(*GetShiftHandoffPresetsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _IncidentService_SendShiftHandoff_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SendShiftHandoffRequest)
 	if err := dec(in); err != nil {
@@ -3528,6 +3269,24 @@ func _IncidentService_CreateSubscription_Handler(srv interface{}, ctx context.Co
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(IncidentServiceServer).CreateSubscription(ctx, req.(*CreateSubscriptionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IncidentService_UpdateSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateSubscriptionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IncidentServiceServer).UpdateSubscription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.irm.v1alpha2.IncidentService/UpdateSubscription",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IncidentServiceServer).UpdateSubscription(ctx, req.(*UpdateSubscriptionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -3727,10 +3486,6 @@ var _IncidentService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _IncidentService_ListAnnotations_Handler,
 		},
 		{
-			MethodName: "UpdateAnnotation",
-			Handler:    _IncidentService_UpdateAnnotation_Handler,
-		},
-		{
 			MethodName: "CreateTag",
 			Handler:    _IncidentService_CreateTag_Handler,
 		},
@@ -3747,8 +3502,8 @@ var _IncidentService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _IncidentService_CreateSignal_Handler,
 		},
 		{
-			MethodName: "ListSignals",
-			Handler:    _IncidentService_ListSignals_Handler,
+			MethodName: "SearchSignals",
+			Handler:    _IncidentService_SearchSignals_Handler,
 		},
 		{
 			MethodName: "GetSignal",
@@ -3757,10 +3512,6 @@ var _IncidentService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateSignal",
 			Handler:    _IncidentService_UpdateSignal_Handler,
-		},
-		{
-			MethodName: "AcknowledgeSignal",
-			Handler:    _IncidentService_AcknowledgeSignal_Handler,
 		},
 		{
 			MethodName: "EscalateIncident",
@@ -3783,16 +3534,16 @@ var _IncidentService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _IncidentService_DeleteArtifact_Handler,
 		},
 		{
-			MethodName: "GetShiftHandoffPresets",
-			Handler:    _IncidentService_GetShiftHandoffPresets_Handler,
-		},
-		{
 			MethodName: "SendShiftHandoff",
 			Handler:    _IncidentService_SendShiftHandoff_Handler,
 		},
 		{
 			MethodName: "CreateSubscription",
 			Handler:    _IncidentService_CreateSubscription_Handler,
+		},
+		{
+			MethodName: "UpdateSubscription",
+			Handler:    _IncidentService_UpdateSubscription_Handler,
 		},
 		{
 			MethodName: "ListSubscriptions",
@@ -3836,162 +3587,154 @@ var _IncidentService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/irm/v1alpha2/incidents_service.proto", fileDescriptor_incidents_service_f1859dadab0f5205)
+	proto.RegisterFile("google/cloud/irm/v1alpha2/incidents_service.proto", fileDescriptor_incidents_service_a19cef89fc9d533c)
 }
 
-var fileDescriptor_incidents_service_f1859dadab0f5205 = []byte{
-	// 2433 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x5a, 0xef, 0x6f, 0x1c, 0x47,
-	0x19, 0xd6, 0xf8, 0x57, 0xec, 0xf7, 0x1c, 0xc7, 0x9d, 0x34, 0xf6, 0x79, 0xdd, 0xa4, 0xce, 0x58,
-	0x4d, 0x1c, 0xa7, 0xbd, 0xb3, 0xcf, 0x49, 0x83, 0xcf, 0x4e, 0x52, 0xc7, 0x4d, 0x9d, 0x88, 0xa6,
-	0x44, 0x67, 0x57, 0x88, 0x08, 0xe9, 0xb4, 0x59, 0x8f, 0xcf, 0x5b, 0xdf, 0xed, 0x5e, 0x77, 0xd7,
-	0x71, 0xec, 0x12, 0x09, 0x55, 0x48, 0xa0, 0x0a, 0xbe, 0x14, 0x55, 0x20, 0x55, 0xa8, 0x12, 0x48,
-	0x7c, 0x00, 0x09, 0xf8, 0x80, 0x54, 0x90, 0x40, 0x08, 0xf8, 0x13, 0xf8, 0xc0, 0xc7, 0x22, 0x04,
-	0xdf, 0x90, 0xf8, 0xca, 0x47, 0xb4, 0xb3, 0x33, 0x77, 0xb3, 0x77, 0x7b, 0xb3, 0x73, 0x67, 0xac,
-	0xf0, 0xcd, 0xb7, 0x3b, 0xef, 0xbc, 0xcf, 0xfb, 0xbc, 0xef, 0xcc, 0x3b, 0xfb, 0x8c, 0x61, 0xb1,
-	0xe2, 0xba, 0x95, 0x2a, 0xcd, 0x5b, 0x55, 0x77, 0x7f, 0x3b, 0x6f, 0x7b, 0xb5, 0xfc, 0x93, 0x45,
-	0xb3, 0x5a, 0xdf, 0x35, 0x0b, 0x79, 0xdb, 0xb1, 0xec, 0x6d, 0xea, 0x04, 0x7e, 0xd9, 0xa7, 0xde,
-	0x13, 0xdb, 0xa2, 0xb9, 0xba, 0xe7, 0x06, 0x2e, 0x9e, 0x8a, 0x4c, 0x72, 0xcc, 0x24, 0x67, 0x7b,
-	0xb5, 0x9c, 0x30, 0x31, 0x5e, 0xe2, 0xb3, 0x99, 0x75, 0x3b, 0x6f, 0x3a, 0x8e, 0x1b, 0x98, 0x81,
-	0xed, 0x3a, 0x7e, 0x64, 0x68, 0x5c, 0xd1, 0xf0, 0xc5, 0x87, 0x4e, 0xf3, 0xa1, 0xec, 0xd7, 0xe3,
-	0xfd, 0x9d, 0x3c, 0xad, 0xd5, 0x83, 0x43, 0xfe, 0x72, 0xa6, 0xf5, 0xe5, 0x8e, 0x4d, 0xab, 0xdb,
-	0xe5, 0x9a, 0xe9, 0xef, 0xf1, 0x11, 0x2f, 0xb7, 0x8e, 0x08, 0xec, 0x1a, 0xf5, 0x03, 0xb3, 0x56,
-	0x8f, 0x06, 0x90, 0x3a, 0x9c, 0x5b, 0xf7, 0xa8, 0x19, 0xd0, 0xfb, 0xdc, 0x71, 0x89, 0xbe, 0xbf,
-	0x4f, 0xfd, 0x00, 0xdf, 0x86, 0x61, 0x81, 0x25, 0x8b, 0x66, 0xd0, 0x5c, 0xa6, 0x30, 0x9b, 0xeb,
-	0x18, 0x6f, 0xae, 0x61, 0xdd, 0x30, 0xc2, 0x13, 0x30, 0x54, 0x37, 0xbd, 0xd0, 0xbc, 0x6f, 0x06,
-	0xcd, 0x8d, 0x94, 0xf8, 0x2f, 0x32, 0x07, 0x78, 0x83, 0x06, 0xad, 0xee, 0x30, 0x0c, 0x38, 0x66,
-	0x8d, 0x32, 0x57, 0x23, 0x25, 0xf6, 0x37, 0xf9, 0x04, 0xc1, 0xb9, 0x77, 0xeb, 0xdb, 0x27, 0x01,
-	0x6e, 0x05, 0x32, 0xfb, 0x6c, 0x66, 0x46, 0x16, 0x43, 0x98, 0x29, 0x18, 0x62, 0x0e, 0xc1, 0x56,
-	0xee, 0xad, 0x90, 0xcf, 0x07, 0xa6, 0xbf, 0x57, 0x82, 0x68, 0x78, 0xf8, 0x37, 0x71, 0xe1, 0xfc,
-	0x26, 0x35, 0x3d, 0x6b, 0x77, 0xd3, 0xae, 0xd9, 0x55, 0xd3, 0x13, 0xf3, 0xfb, 0x8a, 0x60, 0xf0,
-	0x34, 0x8c, 0xd4, 0xcd, 0x0a, 0x2d, 0xfb, 0xf6, 0x11, 0x65, 0xfe, 0x06, 0x4b, 0xc3, 0xe1, 0x83,
-	0x4d, 0xfb, 0x88, 0xe2, 0xf3, 0x00, 0xec, 0x65, 0xe0, 0xee, 0x51, 0x27, 0xdb, 0xcf, 0xcc, 0xd8,
-	0xf0, 0xad, 0xf0, 0x01, 0xf9, 0x37, 0x82, 0x0b, 0x9d, 0x3c, 0xfa, 0x75, 0xd7, 0xf1, 0x29, 0x7e,
-	0x04, 0xa7, 0x3c, 0xea, 0xef, 0x57, 0x03, 0x3f, 0x8b, 0x66, 0xfa, 0xe7, 0x32, 0x85, 0x37, 0x14,
-	0x84, 0xa8, 0xe7, 0xca, 0x95, 0xd8, 0x44, 0x25, 0x31, 0x21, 0xbe, 0x04, 0x67, 0x1c, 0xfa, 0x34,
-	0x28, 0x4b, 0x10, 0xa3, 0x94, 0x9e, 0x0e, 0x1f, 0x3f, 0x14, 0x30, 0x8d, 0xfb, 0x30, 0x14, 0x99,
-	0x1e, 0x3b, 0x3f, 0xe4, 0x29, 0x4c, 0x46, 0x65, 0xb9, 0xd6, 0x58, 0x3c, 0x82, 0xdc, 0x66, 0x5d,
-	0x21, 0xb9, 0xae, 0xf0, 0x5d, 0x80, 0xe6, 0x4a, 0xe3, 0x19, 0x7d, 0x45, 0xe1, 0x55, 0x9a, 0x59,
-	0x32, 0x24, 0x55, 0x98, 0x78, 0xdb, 0xf6, 0x83, 0xe6, 0x5b, 0x3f, 0xcd, 0xf1, 0x71, 0x32, 0xfb,
-	0x11, 0x82, 0xc9, 0x36, 0x77, 0x3c, 0xa5, 0x1b, 0x90, 0x91, 0xb6, 0x0e, 0x9e, 0x56, 0xcd, 0x88,
-	0x64, 0x4b, 0xdd, 0xfc, 0x91, 0xaf, 0xc3, 0x78, 0x44, 0xfa, 0x96, 0x59, 0x49, 0x0b, 0x7a, 0x01,
-	0xfa, 0x03, 0xb3, 0xc2, 0x69, 0xbe, 0xa0, 0x00, 0x15, 0xce, 0x15, 0x0e, 0x25, 0x97, 0x60, 0xfc,
-	0x4d, 0x5a, 0xa5, 0xb1, 0xd9, 0x93, 0x56, 0x3d, 0x85, 0x33, 0x21, 0x23, 0x5b, 0x66, 0xe5, 0x44,
-	0x99, 0x77, 0x60, 0xbc, 0xe9, 0x86, 0x33, 0x5e, 0x80, 0x81, 0xc0, 0xac, 0x08, 0xaa, 0xd3, 0xa2,
-	0x62, 0x63, 0xb5, 0xc9, 0xfd, 0x11, 0x82, 0xc9, 0x68, 0x33, 0x6b, 0x2f, 0xe9, 0x78, 0xe9, 0xa2,
-	0x1e, 0x4b, 0xf7, 0x78, 0x9b, 0xda, 0x2e, 0x9c, 0x8d, 0x92, 0xbf, 0x69, 0x57, 0x1c, 0xb3, 0x9a,
-	0x46, 0xfd, 0x32, 0x0c, 0xf9, 0x6c, 0x20, 0x77, 0x73, 0x51, 0xb5, 0xdd, 0x44, 0x33, 0x72, 0x03,
-	0xf2, 0x4d, 0x04, 0x38, 0xa4, 0x3e, 0x7a, 0x9c, 0x9a, 0xe4, 0x09, 0x18, 0xda, 0xb1, 0xab, 0x01,
-	0xf5, 0x44, 0x1f, 0x89, 0x7e, 0xc5, 0x93, 0xdf, 0xaf, 0x4c, 0xfe, 0x40, 0x6b, 0xf2, 0x8f, 0xe0,
-	0x6c, 0x0c, 0x01, 0xcf, 0xff, 0x0a, 0x9c, 0x8a, 0x30, 0x8a, 0x12, 0xd0, 0x88, 0x4a, 0x58, 0x68,
-	0x17, 0xc2, 0x25, 0x18, 0xdf, 0xa0, 0x41, 0x9c, 0xe5, 0xa4, 0x75, 0xf0, 0x3d, 0x04, 0x67, 0xa3,
-	0x82, 0x89, 0x8f, 0x6d, 0x32, 0x8f, 0xba, 0x64, 0xfe, 0x78, 0x05, 0x92, 0x83, 0xec, 0x9a, 0xb5,
-	0xe7, 0xb8, 0x07, 0x55, 0xba, 0x5d, 0xa1, 0xe9, 0xf8, 0xa7, 0x61, 0x2a, 0x61, 0x7c, 0xc4, 0x34,
-	0xf9, 0x0c, 0xc1, 0x44, 0xd4, 0x85, 0xda, 0x9a, 0x67, 0xa7, 0x3a, 0x78, 0x11, 0x06, 0xdf, 0xdf,
-	0xa7, 0xde, 0x21, 0x67, 0x35, 0xfa, 0x71, 0x9c, 0x2a, 0x08, 0x6d, 0xc3, 0xe3, 0x50, 0xf9, 0xc8,
-	0x75, 0x68, 0x76, 0x90, 0xbd, 0x1d, 0x0e, 0x1f, 0x3c, 0x72, 0x1d, 0x4a, 0xbe, 0x85, 0x60, 0xb2,
-	0x0d, 0x21, 0xaf, 0x93, 0x35, 0x18, 0x69, 0x9c, 0xd3, 0x78, 0xa5, 0x68, 0xf5, 0xb7, 0xa6, 0x95,
-	0x76, 0xb5, 0xfc, 0xb4, 0x1f, 0x26, 0xef, 0xfa, 0x96, 0x59, 0xfd, 0x7f, 0x3b, 0x05, 0xe1, 0x07,
-	0x70, 0xda, 0xdf, 0x7f, 0xec, 0x5b, 0x9e, 0x5d, 0x8f, 0x1a, 0x54, 0x3f, 0x23, 0xe2, 0xb2, 0xaa,
-	0x1c, 0xa5, 0xf1, 0xa5, 0xb8, 0x75, 0x63, 0xef, 0x1d, 0xe8, 0x62, 0xef, 0xdd, 0x80, 0x41, 0xcf,
-	0xad, 0x52, 0x3f, 0x3b, 0xc8, 0x8c, 0x16, 0x75, 0xa2, 0x77, 0xab, 0x74, 0xcd, 0x0f, 0xd7, 0x43,
-	0x2d, 0xfc, 0x15, 0xd9, 0x87, 0x09, 0x35, 0xbd, 0xc0, 0xde, 0x31, 0xad, 0xc0, 0xcf, 0x0e, 0xa5,
-	0x26, 0x74, 0x8d, 0x8f, 0x2d, 0x35, 0xad, 0xc8, 0xdf, 0xfa, 0x20, 0xdb, 0x9e, 0x28, 0x5e, 0x30,
-	0xc7, 0xce, 0x54, 0x1b, 0xd9, 0x7d, 0xff, 0x13, 0xb2, 0xfb, 0xbb, 0x20, 0xfb, 0xa6, 0x20, 0x7b,
-	0x20, 0xd5, 0xb5, 0x4c, 0x76, 0x22, 0xc5, 0x83, 0x3d, 0x51, 0xdc, 0xf8, 0x56, 0x69, 0xbc, 0x4c,
-	0xd9, 0x32, 0x6e, 0xc3, 0xb0, 0xb0, 0xe6, 0xc5, 0xad, 0xe5, 0xb2, 0x61, 0x44, 0xde, 0x83, 0x17,
-	0xd9, 0xe9, 0x4c, 0x40, 0x38, 0xc9, 0x03, 0xc9, 0x87, 0x08, 0xce, 0xb5, 0x38, 0x6b, 0x6e, 0x37,
-	0x4d, 0xea, 0x50, 0x2f, 0xd4, 0x69, 0x6f, 0x37, 0xcd, 0x4f, 0xae, 0x56, 0x8e, 0x65, 0x2e, 0x51,
-	0x0f, 0x5c, 0x1e, 0xaf, 0xf9, 0x5c, 0x85, 0x73, 0xd1, 0xe1, 0xb1, 0x15, 0x56, 0x52, 0xe7, 0xb9,
-	0x01, 0xe7, 0xc3, 0x0e, 0xbb, 0x6b, 0xef, 0x04, 0xf7, 0x4c, 0x67, 0xdb, 0xdd, 0xd9, 0x79, 0xe8,
-	0x51, 0x9f, 0xa6, 0xa6, 0x8f, 0x94, 0xe1, 0x6c, 0x82, 0x15, 0xbe, 0x00, 0xe0, 0x51, 0xcb, 0xae,
-	0xdb, 0x8d, 0xfd, 0x7e, 0xa4, 0x24, 0x3d, 0xc1, 0x63, 0xd0, 0x67, 0x59, 0x6c, 0x45, 0x8e, 0x94,
-	0xfa, 0x2c, 0x0b, 0x67, 0xe1, 0x94, 0xbf, 0xff, 0xf8, 0x3d, 0x6a, 0x05, 0x3c, 0xcb, 0xe2, 0x27,
-	0xf9, 0x57, 0x5f, 0xd8, 0x54, 0x9c, 0x6d, 0xd9, 0x4b, 0x5a, 0x4d, 0xc5, 0xbd, 0xf7, 0x75, 0xf0,
-	0xde, 0x9f, 0xe4, 0x7d, 0x20, 0xe6, 0x1d, 0xbf, 0x0a, 0xd8, 0x71, 0x03, 0xea, 0x97, 0x2d, 0xd7,
-	0x09, 0xa8, 0x13, 0x94, 0x83, 0xc3, 0xba, 0x68, 0x7c, 0xe3, 0xec, 0xcd, 0x7a, 0xf4, 0x62, 0xeb,
-	0xb0, 0x4e, 0xf1, 0x2c, 0x9c, 0x8e, 0x8d, 0xce, 0x0e, 0xb1, 0x81, 0xa3, 0xf2, 0x40, 0xfc, 0x35,
-	0xb9, 0x13, 0x9e, 0x62, 0xa5, 0xb9, 0xa2, 0xfc, 0xf0, 0x4c, 0x8c, 0x3d, 0xb1, 0x43, 0x5e, 0x84,
-	0xd1, 0xba, 0x47, 0x9f, 0xd8, 0xf4, 0xa0, 0xec, 0x3a, 0xd5, 0xc3, 0xec, 0xf0, 0x0c, 0x9a, 0x1b,
-	0x2e, 0x65, 0xf8, 0xb3, 0xaf, 0x38, 0xd5, 0x43, 0xe3, 0x02, 0x0c, 0x0b, 0xcb, 0xc4, 0x42, 0xf8,
-	0x2a, 0x64, 0xdb, 0x3d, 0xf2, 0x45, 0x75, 0x11, 0x46, 0x63, 0x34, 0x44, 0x76, 0x19, 0x4b, 0x62,
-	0x20, 0x0b, 0xa7, 0x44, 0xec, 0xd1, 0x62, 0x11, 0x3f, 0xc3, 0x23, 0xec, 0x14, 0x3f, 0x2d, 0xcb,
-	0xbb, 0x6c, 0x4a, 0x26, 0xbf, 0x0c, 0xa3, 0xf2, 0x36, 0xcc, 0x97, 0x80, 0xf6, 0x1e, 0x1e, 0x33,
-	0x26, 0x0e, 0x64, 0xd9, 0x11, 0x56, 0xde, 0xd7, 0x4f, 0x72, 0x7b, 0xfa, 0x18, 0xc1, 0x54, 0x82,
-	0x43, 0xce, 0x66, 0x5b, 0x7f, 0x42, 0xc7, 0xea, 0x4f, 0xba, 0xdb, 0x55, 0x1e, 0xa6, 0xa2, 0x6d,
-	0x21, 0x29, 0x0d, 0x49, 0x15, 0xf1, 0x33, 0x04, 0xb3, 0x2d, 0x7a, 0x57, 0xfc, 0x40, 0x90, 0xc2,
-	0xe0, 0x1e, 0x64, 0x45, 0x85, 0x96, 0xc3, 0xbe, 0x56, 0x36, 0x1b, 0xa6, 0x3c, 0x9d, 0x3d, 0x1c,
-	0x42, 0x26, 0xec, 0xc4, 0xe7, 0x64, 0x19, 0x66, 0xa3, 0xe8, 0xd4, 0x58, 0x93, 0xe2, 0x7c, 0x0a,
-	0x24, 0x4c, 0x56, 0xb2, 0xe1, 0x89, 0xd6, 0xc9, 0xef, 0x10, 0xcc, 0x2a, 0x5d, 0xf3, 0x8a, 0xa9,
-	0xc1, 0x54, 0x27, 0x26, 0x45, 0xf5, 0xf4, 0x40, 0xe5, 0x64, 0x32, 0x95, 0xfa, 0x15, 0xf5, 0x0d,
-	0x20, 0x9c, 0x1d, 0xd9, 0x03, 0xdb, 0x3c, 0x9e, 0x50, 0x4f, 0x25, 0xf0, 0xdd, 0x81, 0x51, 0x87,
-	0x1e, 0xf0, 0x30, 0x28, 0xe5, 0xe5, 0xf0, 0xb2, 0x22, 0x86, 0x77, 0x7d, 0xea, 0x95, 0x32, 0x0e,
-	0x3d, 0x58, 0xe3, 0x36, 0xa1, 0xf7, 0x75, 0xd7, 0xd9, 0xb1, 0xbd, 0xda, 0xf3, 0xf0, 0x7e, 0x04,
-	0x33, 0x6f, 0xb9, 0x9e, 0x45, 0x9f, 0x87, 0xef, 0x0f, 0xe0, 0xe2, 0xba, 0xe9, 0x58, 0xb4, 0xfa,
-	0x1c, 0x9c, 0x17, 0xbe, 0xbd, 0x00, 0x67, 0x84, 0xdf, 0xcd, 0x48, 0xe2, 0xc7, 0x3f, 0x46, 0x30,
-	0x16, 0xdf, 0x29, 0xf0, 0x82, 0x62, 0xd2, 0x44, 0x11, 0xdd, 0xd0, 0x39, 0xe5, 0x93, 0xe5, 0x0f,
-	0xff, 0xf2, 0x8f, 0xef, 0xf7, 0x2d, 0x91, 0xcb, 0xcd, 0x5b, 0x80, 0x0f, 0xa2, 0x85, 0x78, 0xb3,
-	0xee, 0xb9, 0x61, 0xe7, 0xf6, 0xf3, 0xf3, 0xcf, 0x9a, 0x37, 0x03, 0xc5, 0xe6, 0x67, 0xc1, 0xc7,
-	0x08, 0x32, 0x92, 0x98, 0x8e, 0x5f, 0x53, 0xf8, 0x6b, 0x17, 0xdd, 0xf5, 0xe0, 0xe5, 0x19, 0xbc,
-	0x2b, 0x58, 0x86, 0x17, 0x32, 0x2f, 0x81, 0x6b, 0x62, 0xcb, 0xcf, 0x3f, 0xc3, 0xbf, 0x42, 0x70,
-	0xa6, 0xe5, 0xcb, 0x19, 0x2f, 0xa6, 0xaa, 0xd1, 0xad, 0x3a, 0x80, 0x51, 0xe8, 0xc6, 0x84, 0xcb,
-	0x0a, 0xaf, 0x33, 0xac, 0x0b, 0x38, 0xa7, 0x4b, 0xa5, 0xcf, 0x26, 0xc2, 0x3f, 0x47, 0x30, 0x16,
-	0xbf, 0x69, 0x50, 0x26, 0x3b, 0xf1, 0x52, 0x42, 0x8f, 0xcd, 0x3b, 0x0c, 0xe1, 0x6a, 0x61, 0x41,
-	0x42, 0x28, 0xe0, 0xe4, 0x54, 0xb4, 0x4a, 0x59, 0xff, 0x6e, 0x9f, 0x10, 0x4f, 0x5a, 0x25, 0x7c,
-	0xfc, 0xa5, 0x1e, 0x54, 0xff, 0x08, 0xfd, 0x72, 0xcf, 0xf7, 0x05, 0xe4, 0x19, 0x8b, 0xe9, 0x00,
-	0x5f, 0xd7, 0xac, 0x10, 0xce, 0x3a, 0x9f, 0xef, 0xd1, 0x2d, 0xbc, 0xaa, 0x30, 0xe4, 0xf2, 0x5a,
-	0x9b, 0x59, 0x33, 0xe6, 0xdf, 0x20, 0xa1, 0x5b, 0x37, 0x75, 0x51, 0x5c, 0x48, 0x5d, 0xab, 0x6d,
-	0x32, 0xac, 0xa1, 0x27, 0xb9, 0x92, 0xfb, 0x2c, 0xdc, 0x75, 0x72, 0x5d, 0x55, 0x64, 0xb1, 0x80,
-	0xe5, 0x2b, 0xc0, 0xa2, 0xac, 0xd8, 0x7e, 0x8e, 0x22, 0xb1, 0x5b, 0x92, 0xff, 0x95, 0x4b, 0x25,
-	0xf9, 0x66, 0x42, 0xb9, 0x54, 0x3a, 0xdc, 0x2e, 0x90, 0x9b, 0x2c, 0x8a, 0x1b, 0xb8, 0xb7, 0x28,
-	0xf0, 0x9f, 0x11, 0x8c, 0xb7, 0xca, 0xd9, 0x4a, 0xd2, 0x3b, 0x68, 0xdf, 0xba, 0xa4, 0x6f, 0x31,
-	0xb8, 0xef, 0x14, 0xde, 0x90, 0xe0, 0x36, 0xf1, 0xa8, 0x56, 0x8e, 0x0c, 0x3b, 0xac, 0x22, 0x99,
-	0xff, 0x4f, 0x10, 0x8c, 0x34, 0xae, 0x3c, 0xf0, 0xd5, 0xd4, 0x9a, 0x69, 0x5e, 0x5d, 0x18, 0x29,
-	0xa2, 0x09, 0x59, 0x61, 0x80, 0xaf, 0x93, 0x9c, 0x3e, 0xbf, 0x81, 0x59, 0xf1, 0x8b, 0xfd, 0x81,
-	0x59, 0xc1, 0xdf, 0x41, 0x30, 0xd2, 0xb8, 0x2c, 0x51, 0xe2, 0x6a, 0xbd, 0x52, 0x31, 0x26, 0xda,
-	0xbe, 0xa8, 0xef, 0xd6, 0xea, 0xc1, 0xa1, 0xd8, 0x1a, 0xe7, 0x73, 0x7a, 0x8b, 0x94, 0x81, 0x09,
-	0x77, 0xf3, 0x4f, 0x11, 0x0c, 0x8b, 0x8b, 0x12, 0x3c, 0x9f, 0x52, 0x68, 0xd2, 0xa5, 0x8d, 0x71,
-	0x55, 0x6b, 0x6c, 0x37, 0x1b, 0x77, 0x3b, 0x5b, 0xf8, 0x87, 0x08, 0x46, 0xe5, 0x6b, 0x0b, 0x9c,
-	0x4b, 0xcd, 0x61, 0x4c, 0xb9, 0x36, 0xd2, 0xd5, 0x73, 0x72, 0x9d, 0x61, 0xcb, 0x93, 0x57, 0xd4,
-	0x4d, 0x85, 0x6f, 0x54, 0x45, 0x21, 0xb6, 0x7f, 0x8a, 0x20, 0x23, 0x5d, 0x32, 0x28, 0x7b, 0x73,
-	0xfb, 0x75, 0x88, 0x91, 0xd3, 0x1d, 0xce, 0x19, 0x7c, 0x8d, 0xa1, 0xbc, 0x8c, 0xf5, 0x50, 0xe2,
-	0x8f, 0x10, 0x8c, 0x34, 0xae, 0x21, 0x94, 0x15, 0xd6, 0x7a, 0x59, 0xa1, 0x43, 0x59, 0x12, 0x98,
-	0xce, 0x1b, 0x3b, 0xfe, 0x0c, 0xc1, 0xa8, 0x7c, 0xd5, 0xa1, 0xcc, 0x62, 0xc2, 0x9d, 0x88, 0x0e,
-	0xa4, 0x55, 0x06, 0xe9, 0xf5, 0xc2, 0xab, 0x12, 0xa4, 0x08, 0x42, 0x4e, 0xd1, 0x72, 0x44, 0x32,
-	0x7f, 0x8d, 0xe0, 0x85, 0xb6, 0xdb, 0x0c, 0xbc, 0xa4, 0xda, 0xbb, 0x3a, 0xdc, 0x95, 0x18, 0xd7,
-	0xba, 0x33, 0xe2, 0xe9, 0xbd, 0xc6, 0xe0, 0xe7, 0xc8, 0x15, 0xbd, 0x56, 0x69, 0x5a, 0x7b, 0x45,
-	0x34, 0x8f, 0xff, 0x88, 0x60, 0xbc, 0x55, 0x94, 0x56, 0xee, 0xd2, 0x1d, 0xae, 0x1a, 0x8c, 0xa5,
-	0xae, 0x6c, 0x38, 0xe6, 0x37, 0x19, 0xe6, 0x5b, 0x64, 0xb9, 0xeb, 0xb3, 0x0e, 0xe5, 0x53, 0x86,
-	0x31, 0xfc, 0xa2, 0x71, 0x10, 0x17, 0xda, 0x9f, 0xc6, 0x41, 0xbc, 0x45, 0x26, 0x34, 0x74, 0xb4,
-	0x4a, 0x72, 0x97, 0xe1, 0xbd, 0x4d, 0x96, 0xba, 0x68, 0x89, 0x42, 0x61, 0x2d, 0x36, 0x85, 0xce,
-	0x5f, 0x22, 0x38, 0x1d, 0x13, 0x72, 0x71, 0x3e, 0xad, 0x3f, 0xb7, 0xe8, 0xcb, 0xc6, 0x82, 0xbe,
-	0x01, 0xe7, 0x9a, 0xb7, 0x1b, 0xdc, 0x0b, 0xf6, 0xf0, 0x18, 0x32, 0x16, 0x57, 0x7d, 0x35, 0x8e,
-	0xbf, 0x3d, 0x51, 0xfc, 0x0e, 0x83, 0x79, 0xaf, 0x20, 0x9f, 0xf8, 0x04, 0x0e, 0x75, 0x13, 0x17,
-	0x60, 0xd9, 0x51, 0xb8, 0xc1, 0xf5, 0x0f, 0x10, 0x8c, 0xc5, 0x85, 0x61, 0x25, 0xf2, 0x44, 0x0d,
-	0xb9, 0x63, 0xcb, 0xe4, 0x9c, 0xce, 0x2f, 0x69, 0xb6, 0x4c, 0x19, 0x23, 0xfe, 0x3d, 0x82, 0x89,
-	0x64, 0x15, 0x5a, 0x79, 0x48, 0x57, 0x0a, 0xd7, 0xca, 0xa6, 0x90, 0x60, 0x26, 0x3e, 0x2d, 0xf1,
-	0x62, 0x4a, 0x53, 0x48, 0x00, 0xf9, 0x39, 0x82, 0xf1, 0x56, 0xf1, 0x14, 0x17, 0xba, 0xd7, 0x76,
-	0x95, 0x5b, 0x47, 0x27, 0x75, 0x96, 0x14, 0x19, 0xf0, 0x6b, 0x24, 0xaf, 0x0f, 0xbc, 0xe8, 0x53,
-	0x67, 0x3b, 0xdc, 0x30, 0xfe, 0x84, 0x00, 0xb7, 0x8b, 0xb3, 0xf8, 0x5a, 0xfa, 0xc9, 0xa0, 0x5d,
-	0x44, 0x34, 0x74, 0x15, 0x4c, 0xf2, 0x80, 0x21, 0xde, 0x20, 0x37, 0xf4, 0x17, 0x60, 0x4c, 0xf3,
-	0x2c, 0xc6, 0xe4, 0x5d, 0xfc, 0x07, 0x04, 0x2f, 0xb4, 0xc9, 0xad, 0xca, 0x86, 0xd3, 0x49, 0x0d,
-	0x56, 0x36, 0x9c, 0x8e, 0x8a, 0x2e, 0xb9, 0xcd, 0xe2, 0x59, 0xc6, 0xbd, 0xc6, 0x83, 0x7f, 0x82,
-	0x00, 0xb7, 0x8b, 0xb3, 0xca, 0x34, 0x74, 0xd4, 0x72, 0x3b, 0x2e, 0x51, 0x8e, 0x72, 0xfe, 0x86,
-	0xe6, 0x12, 0x8d, 0x41, 0x0c, 0x97, 0xe9, 0x5f, 0x11, 0xbc, 0xa4, 0x12, 0x84, 0xf1, 0x2d, 0x7d,
-	0xd1, 0x27, 0x49, 0x9d, 0x35, 0xba, 0x17, 0x31, 0x13, 0xfb, 0x66, 0x0a, 0xf5, 0x5e, 0x5c, 0xee,
-	0x0c, 0x97, 0xc1, 0x6f, 0x11, 0xbc, 0xa4, 0x92, 0x8f, 0x95, 0x91, 0x69, 0xe8, 0xce, 0x1d, 0x73,
-	0xb2, 0xc6, 0xe0, 0xaf, 0xcc, 0x2f, 0x6b, 0xe6, 0xa4, 0x05, 0x7b, 0x98, 0x95, 0x2f, 0x10, 0x4c,
-	0x2b, 0x44, 0x64, 0x7c, 0x33, 0xa5, 0xa4, 0xd5, 0xba, 0xb7, 0x71, 0xab, 0x57, 0x73, 0xbe, 0x36,
-	0x78, 0x84, 0xb8, 0xf7, 0x04, 0xe1, 0x7f, 0x22, 0x98, 0x56, 0x08, 0xcd, 0xca, 0x08, 0xd3, 0x05,
-	0xea, 0x5e, 0xaa, 0x8e, 0x7f, 0x61, 0x93, 0xfb, 0x3d, 0xa7, 0xad, 0xe8, 0x45, 0xde, 0x05, 0x98,
-	0xb0, 0x0a, 0xc3, 0x38, 0x15, 0x92, 0xb6, 0x32, 0xce, 0x74, 0x29, 0xfc, 0x39, 0xc5, 0x69, 0x45,
-	0xc0, 0xe4, 0x38, 0xbf, 0x40, 0x30, 0xd5, 0x51, 0x3c, 0xc7, 0xaa, 0x3b, 0xd1, 0x34, 0xc9, 0xbd,
-	0x97, 0x18, 0x4b, 0x2c, 0xc6, 0xb7, 0xc9, 0x46, 0xef, 0x31, 0xee, 0x84, 0xb0, 0xe4, 0x08, 0xff,
-	0x8e, 0xc0, 0xe8, 0x2c, 0xd1, 0xe3, 0x55, 0x55, 0x22, 0xd3, 0x94, 0xfd, 0x5e, 0x62, 0xdc, 0x64,
-	0x31, 0x3e, 0x20, 0xf7, 0x8e, 0x91, 0x47, 0x86, 0x4b, 0x0a, 0xf2, 0xce, 0x2e, 0xcc, 0x5a, 0x6e,
-	0x4d, 0x80, 0x09, 0x61, 0x88, 0x7f, 0xf9, 0x6f, 0xc0, 0x31, 0xeb, 0xf6, 0x43, 0xf4, 0x68, 0x95,
-	0x0f, 0xa9, 0xb8, 0x55, 0xd3, 0xa9, 0xe4, 0x5c, 0xaf, 0x92, 0xaf, 0x50, 0x87, 0xed, 0x84, 0xf9,
-	0xe8, 0x95, 0x59, 0xb7, 0xfd, 0x84, 0xff, 0xf0, 0x5f, 0xb1, 0xbd, 0xda, 0x7f, 0x10, 0x7a, 0x3c,
-	0xc4, 0xc6, 0x2e, 0xfd, 0x37, 0x00, 0x00, 0xff, 0xff, 0x4b, 0x0b, 0xd1, 0xee, 0x78, 0x30, 0x00,
-	0x00,
+var fileDescriptor_incidents_service_a19cef89fc9d533c = []byte{
+	// 2309 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x5a, 0xcd, 0x6f, 0x1c, 0x49,
+	0x15, 0x57, 0xd9, 0xf1, 0xd7, 0xf3, 0x47, 0x4c, 0x6d, 0x6c, 0x8f, 0x3b, 0xd9, 0xac, 0x53, 0x56,
+	0x12, 0xaf, 0xb3, 0x99, 0x71, 0xc6, 0xc9, 0x06, 0x8f, 0x9d, 0x04, 0xc7, 0xc9, 0x3a, 0x11, 0x9b,
+	0x65, 0x35, 0xf6, 0x0a, 0x61, 0x21, 0x8d, 0x3a, 0xed, 0xf2, 0xb8, 0x37, 0x33, 0xdd, 0xbd, 0xdd,
+	0xed, 0x24, 0xce, 0x6e, 0x24, 0xb4, 0xe2, 0x80, 0x56, 0x70, 0x59, 0xb4, 0x02, 0x89, 0xc3, 0x4a,
+	0x20, 0x10, 0x1f, 0x12, 0x70, 0x03, 0x24, 0x24, 0x04, 0xff, 0x00, 0x07, 0x0e, 0x1c, 0x17, 0x21,
+	0xb8, 0x21, 0x71, 0xe5, 0x88, 0xba, 0xba, 0x7a, 0xba, 0xba, 0xa7, 0xa7, 0xba, 0x66, 0x8c, 0xc9,
+	0xde, 0x3c, 0xdd, 0xf5, 0xea, 0xfd, 0xde, 0xef, 0x7d, 0x54, 0xcd, 0x6f, 0x0c, 0x57, 0xea, 0xb6,
+	0x5d, 0x6f, 0xd0, 0x92, 0xd1, 0xb0, 0x0f, 0x76, 0x4b, 0xa6, 0xdb, 0x2c, 0x3d, 0xbe, 0xa2, 0x37,
+	0x9c, 0x7d, 0xbd, 0x5c, 0x32, 0x2d, 0xc3, 0xdc, 0xa5, 0x96, 0xef, 0xd5, 0x3c, 0xea, 0x3e, 0x36,
+	0x0d, 0x5a, 0x74, 0x5c, 0xdb, 0xb7, 0xf1, 0x6c, 0x68, 0x52, 0x64, 0x26, 0x45, 0xd3, 0x6d, 0x16,
+	0x23, 0x13, 0xed, 0x0c, 0xdf, 0x4d, 0x77, 0xcc, 0x92, 0x6e, 0x59, 0xb6, 0xaf, 0xfb, 0xa6, 0x6d,
+	0x79, 0xa1, 0xa1, 0xf6, 0xaa, 0x82, 0x2f, 0xbe, 0xf4, 0x34, 0x5f, 0xca, 0x3e, 0x3d, 0x3c, 0xd8,
+	0x2b, 0xd1, 0xa6, 0xe3, 0x1f, 0xf2, 0x97, 0x73, 0xe9, 0x97, 0x7b, 0x26, 0x6d, 0xec, 0xd6, 0x9a,
+	0xba, 0xf7, 0x88, 0xaf, 0x78, 0x25, 0xbd, 0xc2, 0x37, 0x9b, 0xd4, 0xf3, 0xf5, 0xa6, 0x13, 0x2e,
+	0x20, 0x0e, 0x4c, 0x6d, 0xb8, 0x54, 0xf7, 0xe9, 0x7d, 0xee, 0xb8, 0x4a, 0xdf, 0x3b, 0xa0, 0x9e,
+	0x8f, 0x6f, 0xc1, 0x70, 0x84, 0xa5, 0x80, 0xe6, 0xd0, 0xc2, 0x68, 0x79, 0xbe, 0xd8, 0x31, 0xde,
+	0x62, 0xcb, 0xba, 0x65, 0x84, 0xa7, 0x61, 0xd0, 0xd1, 0xdd, 0xc0, 0xbc, 0x6f, 0x0e, 0x2d, 0x8c,
+	0x54, 0xf9, 0x27, 0xb2, 0x00, 0x78, 0x93, 0xfa, 0x69, 0x77, 0x18, 0x4e, 0x58, 0x7a, 0x93, 0x32,
+	0x57, 0x23, 0x55, 0xf6, 0x37, 0xf9, 0x04, 0xc1, 0xd4, 0x3b, 0xce, 0xee, 0x71, 0x80, 0x5b, 0x85,
+	0xd1, 0x03, 0xb6, 0x33, 0x23, 0x8b, 0x21, 0x1c, 0x2d, 0x6b, 0xd1, 0x1e, 0x11, 0x5b, 0xc5, 0x37,
+	0x02, 0x3e, 0x1f, 0xe8, 0xde, 0xa3, 0x2a, 0x84, 0xcb, 0x83, 0xbf, 0x89, 0x0d, 0x2f, 0x6f, 0x51,
+	0xdd, 0x35, 0xf6, 0xb7, 0xcc, 0xa6, 0xd9, 0xd0, 0xdd, 0x68, 0x7f, 0x4f, 0x12, 0x0c, 0x3e, 0x0d,
+	0x23, 0x8e, 0x5e, 0xa7, 0x35, 0xcf, 0x7c, 0x46, 0x99, 0xbf, 0x81, 0xea, 0x70, 0xf0, 0x60, 0xcb,
+	0x7c, 0x46, 0xf1, 0xcb, 0x00, 0xec, 0xa5, 0x6f, 0x3f, 0xa2, 0x56, 0xa1, 0x9f, 0x99, 0xb1, 0xe5,
+	0xdb, 0xc1, 0x03, 0xf2, 0x6f, 0x04, 0x67, 0x3b, 0x79, 0xf4, 0x1c, 0xdb, 0xf2, 0x28, 0xde, 0x81,
+	0x21, 0x97, 0x7a, 0x07, 0x0d, 0xdf, 0x2b, 0xa0, 0xb9, 0xfe, 0x85, 0xd1, 0xf2, 0x97, 0x24, 0x84,
+	0xc8, 0xf7, 0x2a, 0x56, 0xd9, 0x46, 0xd5, 0x68, 0x43, 0x7c, 0x01, 0x4e, 0x5a, 0xf4, 0xa9, 0x5f,
+	0x13, 0x20, 0x86, 0x29, 0x1d, 0x0f, 0x1e, 0xbf, 0x1d, 0xc1, 0xd4, 0xee, 0xc3, 0x60, 0x68, 0x7a,
+	0xe4, 0xfc, 0x90, 0xa7, 0x30, 0x13, 0x96, 0xe5, 0x7a, 0xab, 0x79, 0x22, 0x72, 0xe3, 0xba, 0x42,
+	0x62, 0x5d, 0xe1, 0xbb, 0x00, 0x71, 0xa7, 0xf1, 0x8c, 0x9e, 0x97, 0x78, 0x15, 0x76, 0x16, 0x0c,
+	0x49, 0x03, 0xa6, 0xdf, 0x34, 0x3d, 0x3f, 0x7e, 0xeb, 0xe5, 0x39, 0x3e, 0x4a, 0x66, 0x3f, 0x42,
+	0x30, 0xd3, 0xe6, 0x8e, 0xa7, 0x74, 0x13, 0x46, 0x85, 0xd1, 0xc1, 0xd3, 0xaa, 0x18, 0x91, 0x68,
+	0xa9, 0x9a, 0x3f, 0xf2, 0x75, 0x98, 0x0c, 0x49, 0xdf, 0xd6, 0xeb, 0x79, 0x41, 0x2f, 0x41, 0xbf,
+	0xaf, 0xd7, 0x39, 0xcd, 0x67, 0x25, 0xa0, 0x82, 0xbd, 0x82, 0xa5, 0xe4, 0x02, 0x4c, 0xde, 0xa1,
+	0x0d, 0x9a, 0xd8, 0x3d, 0xab, 0xeb, 0x29, 0x9c, 0x0c, 0x18, 0xd9, 0xd6, 0xeb, 0xc7, 0xca, 0xbc,
+	0x05, 0x93, 0xb1, 0x1b, 0xce, 0x78, 0x19, 0x4e, 0xf8, 0x7a, 0x3d, 0xa2, 0x3a, 0x2f, 0x2a, 0xb6,
+	0x56, 0x99, 0xdc, 0x7d, 0x78, 0x29, 0x24, 0x77, 0xcb, 0xac, 0x5b, 0x7a, 0x23, 0x2f, 0xb4, 0x15,
+	0x18, 0xf4, 0xd8, 0x42, 0x4e, 0xf1, 0x39, 0x59, 0x3b, 0x87, 0x3b, 0x72, 0x03, 0xf2, 0x0d, 0x04,
+	0xa7, 0xa2, 0x0e, 0x0f, 0x1e, 0xe4, 0xd2, 0x78, 0x0a, 0x06, 0xde, 0x3b, 0xa0, 0xee, 0x21, 0x07,
+	0x1e, 0x7e, 0x48, 0x92, 0xdb, 0x2f, 0x25, 0xf7, 0x44, 0x9a, 0xdc, 0x0f, 0x60, 0x2a, 0x85, 0x80,
+	0x33, 0xbc, 0x0a, 0x43, 0x21, 0xca, 0x88, 0x64, 0x85, 0xb8, 0x22, 0x0b, 0x65, 0xaa, 0x2f, 0xc0,
+	0xe4, 0x26, 0xf5, 0x93, 0x3c, 0x67, 0x55, 0xda, 0x77, 0x10, 0xbc, 0x14, 0x9e, 0x2f, 0xc9, 0xb5,
+	0x31, 0xf7, 0xa8, 0x4b, 0xee, 0x8f, 0x76, 0xae, 0x7c, 0x8a, 0x60, 0x3a, 0xa4, 0xad, 0xed, 0x44,
+	0xf9, 0xbf, 0xa5, 0x2e, 0xb0, 0x0d, 0xee, 0x08, 0xb5, 0x67, 0xb6, 0x45, 0x0b, 0x03, 0xec, 0xed,
+	0x70, 0xf0, 0x60, 0xc7, 0xb6, 0x28, 0xf9, 0x26, 0x82, 0x99, 0x36, 0x84, 0x3c, 0xb5, 0xeb, 0x30,
+	0xd2, 0xba, 0xbc, 0xf0, 0xe4, 0x2a, 0x0d, 0xfd, 0xd8, 0x4a, 0x39, 0xc1, 0x3f, 0xe9, 0x87, 0x99,
+	0xbb, 0x9e, 0xa1, 0x37, 0x3e, 0x6f, 0x57, 0x03, 0xfc, 0x00, 0xc6, 0xbd, 0x83, 0x87, 0x9e, 0xe1,
+	0x9a, 0x4e, 0x38, 0xb5, 0xfb, 0x19, 0x11, 0x17, 0x65, 0x15, 0x24, 0xac, 0xaf, 0x26, 0xad, 0x5b,
+	0x03, 0xe9, 0x44, 0x17, 0x03, 0x69, 0x13, 0x06, 0x5c, 0xbb, 0x41, 0xbd, 0xc2, 0x00, 0x33, 0xba,
+	0xa2, 0x12, 0xbd, 0xdd, 0xa0, 0xeb, 0x5e, 0x50, 0xc2, 0xcd, 0xe0, 0x53, 0x68, 0x1f, 0x24, 0x54,
+	0x77, 0x7d, 0x73, 0x4f, 0x37, 0x7c, 0xaf, 0x30, 0x98, 0x9b, 0xd0, 0x75, 0xbe, 0xb6, 0x1a, 0x5b,
+	0x91, 0xbf, 0xf5, 0x41, 0xa1, 0x3d, 0x51, 0xbc, 0x60, 0x8e, 0x9c, 0xa9, 0x36, 0xb2, 0xfb, 0xfe,
+	0x27, 0x64, 0xf7, 0x77, 0x41, 0xf6, 0x8d, 0x88, 0xec, 0x13, 0xb9, 0xae, 0x45, 0xb2, 0x33, 0x29,
+	0x1e, 0xe8, 0x89, 0xe2, 0xd6, 0x05, 0xbe, 0xf5, 0x32, 0x67, 0x64, 0xdc, 0x82, 0xe1, 0xc8, 0x9a,
+	0x17, 0xb7, 0x92, 0xcb, 0x96, 0x11, 0x79, 0x17, 0x4e, 0xb1, 0x2b, 0x4b, 0x04, 0xe1, 0x38, 0x4f,
+	0xe9, 0x0f, 0x11, 0x4c, 0xa5, 0x9c, 0xc5, 0xe3, 0x26, 0xa6, 0x0e, 0xf5, 0x42, 0x9d, 0xf2, 0xb8,
+	0x89, 0xbf, 0x87, 0xa4, 0x39, 0x16, 0xb9, 0x44, 0x3d, 0x70, 0x79, 0xb4, 0xf3, 0xe2, 0x12, 0x4c,
+	0x85, 0x37, 0xaa, 0x34, 0xac, 0xac, 0xc3, 0xee, 0x5f, 0x7d, 0xc1, 0xe8, 0xb6, 0x76, 0xb7, 0xf6,
+	0xcd, 0x3d, 0xff, 0x9e, 0x6e, 0xed, 0xda, 0x7b, 0x7b, 0x79, 0x99, 0x3b, 0x0b, 0xe0, 0x52, 0xc3,
+	0x74, 0x4c, 0x36, 0xd3, 0x83, 0xee, 0x1a, 0xa9, 0x0a, 0x4f, 0xf0, 0x04, 0xf4, 0x19, 0x06, 0xeb,
+	0x97, 0x91, 0x6a, 0x9f, 0x61, 0xe0, 0x02, 0x0c, 0x79, 0x07, 0x0f, 0xdf, 0xa5, 0x86, 0xcf, 0xcf,
+	0x95, 0xe8, 0x23, 0x7e, 0x0d, 0xb0, 0x65, 0xfb, 0xd4, 0xab, 0x19, 0xb6, 0xe5, 0x53, 0xcb, 0xaf,
+	0xf9, 0x87, 0x4e, 0x74, 0xbc, 0x4c, 0xb2, 0x37, 0x1b, 0xe1, 0x8b, 0xed, 0x43, 0x87, 0xe2, 0x79,
+	0x18, 0x4f, 0xac, 0x2e, 0x0c, 0xb2, 0x85, 0x63, 0xe2, 0x42, 0xfc, 0x35, 0xf1, 0xbc, 0x19, 0x62,
+	0x05, 0xb0, 0x2a, 0xfd, 0xce, 0x93, 0x19, 0x7b, 0xe6, 0x39, 0x74, 0x0e, 0xc6, 0x1c, 0x97, 0x3e,
+	0x36, 0xe9, 0x93, 0x9a, 0x6d, 0x35, 0x0e, 0x0b, 0xc3, 0x73, 0x68, 0x61, 0xb8, 0x3a, 0xca, 0x9f,
+	0x7d, 0xc5, 0x6a, 0x1c, 0x6a, 0x67, 0x61, 0x38, 0xb2, 0xcc, 0xa4, 0xfb, 0xab, 0x50, 0x68, 0xf7,
+	0xc8, 0x4b, 0xf7, 0x1c, 0x8c, 0x25, 0x68, 0x08, 0xed, 0x46, 0x0d, 0x81, 0x81, 0x02, 0x0c, 0x45,
+	0xb1, 0x87, 0x25, 0x19, 0x7d, 0x0c, 0x6e, 0x77, 0xb3, 0xfc, 0x22, 0x29, 0xce, 0xb2, 0x9c, 0x4c,
+	0x7e, 0x19, 0xc6, 0xc4, 0x61, 0xc7, 0x0b, 0x4d, 0x79, 0x52, 0x26, 0x8c, 0xc9, 0x8f, 0x11, 0xcc,
+	0xf2, 0x7b, 0x53, 0x06, 0x84, 0xb4, 0x2b, 0x74, 0x04, 0x57, 0x47, 0xeb, 0x0f, 0x0b, 0x0a, 0xc1,
+	0xec, 0x10, 0xb7, 0x3f, 0xd6, 0x61, 0xf5, 0x31, 0x82, 0xd9, 0x0c, 0x87, 0x3c, 0xeb, 0x6d, 0xa7,
+	0x15, 0x3a, 0xd2, 0x69, 0xa5, 0x3a, 0xbc, 0x4a, 0x30, 0x1b, 0x0e, 0x89, 0xac, 0x5c, 0x65, 0x55,
+	0xee, 0xcf, 0x11, 0xcc, 0xa7, 0x24, 0xa1, 0xe4, 0xf5, 0x20, 0x87, 0xc1, 0x47, 0x50, 0x88, 0x3a,
+	0xa9, 0x16, 0x9c, 0x72, 0x35, 0xbd, 0x65, 0xca, 0xf3, 0xd7, 0xc3, 0x95, 0x64, 0xda, 0xcc, 0x7c,
+	0x4e, 0x56, 0x60, 0x3e, 0x8c, 0x4e, 0x8e, 0x35, 0x2b, 0xce, 0xa7, 0x40, 0x82, 0x64, 0x65, 0x1b,
+	0x1e, 0x6b, 0x9d, 0xfc, 0x1e, 0xc1, 0xbc, 0xd4, 0x35, 0xaf, 0x98, 0x26, 0xcc, 0x76, 0x62, 0x32,
+	0xaa, 0x9e, 0x1e, 0xa8, 0x9c, 0xc9, 0xa6, 0x52, 0xbd, 0xa2, 0x3e, 0x00, 0xc2, 0xd9, 0x11, 0x3d,
+	0xb0, 0x21, 0xf7, 0x98, 0xba, 0x32, 0x0d, 0xec, 0x36, 0x8c, 0x59, 0xf4, 0x09, 0x0f, 0x83, 0x52,
+	0x5e, 0x0e, 0xaf, 0x48, 0x62, 0x78, 0xc7, 0xa3, 0x6e, 0x75, 0xd4, 0xa2, 0x4f, 0xd6, 0xb9, 0x4d,
+	0xe0, 0x7d, 0xc3, 0xb6, 0xf6, 0x4c, 0xb7, 0xf9, 0x22, 0xbc, 0x3f, 0x83, 0xb9, 0x37, 0x6c, 0xd7,
+	0xa0, 0x2f, 0xc2, 0xf7, 0xfb, 0x70, 0x6e, 0x43, 0xb7, 0x0c, 0xda, 0x78, 0x01, 0xce, 0xcb, 0x3f,
+	0xbb, 0x0c, 0x27, 0x23, 0xbf, 0x5b, 0xa1, 0x0a, 0x8e, 0x7f, 0x88, 0x60, 0x22, 0x39, 0x29, 0xf0,
+	0x92, 0x64, 0xd3, 0x4c, 0x9d, 0x59, 0x53, 0xb9, 0xf3, 0x93, 0x95, 0x0f, 0xff, 0xf2, 0x8f, 0xef,
+	0xf6, 0x2d, 0x93, 0x8b, 0xb1, 0x50, 0xfe, 0x7e, 0xd8, 0x88, 0x37, 0x1c, 0xd7, 0x0e, 0x6e, 0x18,
+	0x5e, 0x69, 0xf1, 0x79, 0x2c, 0x9e, 0x57, 0xe2, 0x2f, 0x09, 0x1f, 0x23, 0x18, 0x15, 0xf4, 0x66,
+	0x7c, 0x59, 0xe2, 0xaf, 0x5d, 0x97, 0x56, 0x83, 0x57, 0x62, 0xf0, 0x5e, 0xc5, 0x22, 0xbc, 0x80,
+	0x79, 0x01, 0x5c, 0x8c, 0xad, 0xb4, 0xf8, 0x1c, 0xff, 0x1a, 0xc1, 0xc9, 0xd4, 0xf7, 0x68, 0x7c,
+	0x25, 0x57, 0xb0, 0x4d, 0xab, 0x02, 0x5a, 0xb9, 0x1b, 0x93, 0x70, 0xa8, 0x90, 0xd7, 0x19, 0xd6,
+	0x25, 0x5c, 0x54, 0xa5, 0xd2, 0x63, 0x1b, 0xe1, 0x5f, 0x20, 0x98, 0x48, 0x8a, 0xf1, 0xd2, 0x64,
+	0x67, 0xea, 0xf6, 0x6a, 0x6c, 0xde, 0x66, 0x08, 0xd7, 0xca, 0x4b, 0x02, 0xc2, 0x08, 0x4e, 0x51,
+	0x46, 0xab, 0x90, 0xf5, 0x6f, 0xf7, 0x45, 0x52, 0x4a, 0x5a, 0xe5, 0xc6, 0x5f, 0xec, 0x41, 0x18,
+	0x0f, 0xd1, 0xaf, 0xf4, 0x2c, 0xa9, 0x93, 0xe7, 0x2c, 0xa6, 0x27, 0xf8, 0x9a, 0x62, 0x85, 0x70,
+	0xd6, 0xf9, 0x7e, 0x3b, 0x37, 0xf1, 0x9a, 0xc4, 0x90, 0xeb, 0x63, 0x6d, 0x66, 0x71, 0xcc, 0xbf,
+	0x45, 0x91, 0xb4, 0x1b, 0x6b, 0xc4, 0xb8, 0x9c, 0xdb, 0xab, 0x6d, 0xe2, 0xbb, 0xa6, 0x26, 0x3f,
+	0x93, 0xfb, 0x2c, 0xdc, 0x0d, 0x72, 0x4d, 0x56, 0x64, 0x89, 0x80, 0xc5, 0x5f, 0xc9, 0x2a, 0x82,
+	0x1e, 0x8f, 0x7f, 0x83, 0x42, 0x3d, 0x58, 0x50, 0xc8, 0xa5, 0xad, 0x92, 0x2d, 0xde, 0x4b, 0x5b,
+	0xa5, 0x83, 0x00, 0x4f, 0x6e, 0xb0, 0x28, 0xae, 0xe3, 0xde, 0xa2, 0xc0, 0x9f, 0x20, 0x18, 0x69,
+	0xe9, 0xe9, 0xf8, 0x52, 0x2e, 0xdb, 0xb1, 0x2e, 0xae, 0xe5, 0x88, 0x0f, 0x64, 0x95, 0x21, 0xbb,
+	0x46, 0x8a, 0xea, 0xc8, 0x7c, 0xbd, 0xee, 0x55, 0xfa, 0x7d, 0xbd, 0x8e, 0xbf, 0x85, 0x60, 0xa4,
+	0xa5, 0xc4, 0x4b, 0x71, 0xa5, 0xf5, 0x7a, 0x6d, 0xba, 0xed, 0xe6, 0x7d, 0xb7, 0xe9, 0xf8, 0x87,
+	0xd1, 0x50, 0x59, 0x2c, 0xaa, 0x95, 0x37, 0x03, 0x13, 0xcc, 0xc1, 0x1f, 0x20, 0x18, 0x8e, 0x54,
+	0x78, 0xbc, 0x98, 0x93, 0x22, 0xe1, 0x17, 0x01, 0xed, 0x92, 0xd2, 0xda, 0x6e, 0x46, 0x5e, 0x3b,
+	0x5b, 0xf8, 0xfb, 0x08, 0xc6, 0x44, 0xcd, 0x1e, 0x17, 0x73, 0x73, 0x98, 0x10, 0x92, 0xb5, 0x7c,
+	0xe1, 0x98, 0x5c, 0x63, 0xd8, 0x4a, 0xe4, 0xbc, 0x7c, 0x1c, 0xf3, 0x16, 0xaf, 0x44, 0x3a, 0xf3,
+	0x4f, 0x11, 0x8c, 0x27, 0x14, 0x76, 0x5c, 0x52, 0x18, 0x4e, 0xe2, 0xaf, 0x01, 0xda, 0x92, 0xba,
+	0x01, 0xe7, 0xf1, 0x2a, 0xc3, 0x5a, 0xc4, 0xaf, 0xa9, 0x61, 0xe5, 0x07, 0xc7, 0x47, 0x08, 0x46,
+	0x5a, 0x72, 0xbc, 0xb4, 0xdc, 0xd2, 0xa2, 0xbd, 0x0a, 0x7f, 0x97, 0x19, 0xa6, 0x8b, 0xf8, 0xbc,
+	0xd2, 0x7c, 0xc4, 0x9f, 0x22, 0x18, 0x13, 0x25, 0x7f, 0x69, 0x4a, 0x33, 0x7e, 0x1b, 0x50, 0x81,
+	0xb4, 0xc6, 0x20, 0xbd, 0x5e, 0x16, 0x69, 0x0a, 0x21, 0x14, 0x25, 0x93, 0x3b, 0xca, 0xec, 0x1f,
+	0x11, 0x4c, 0xa6, 0x25, 0x53, 0xe9, 0xa8, 0xee, 0x20, 0x84, 0x6b, 0xcb, 0x5d, 0xd9, 0xf0, 0x14,
+	0xdf, 0x61, 0xd8, 0x6f, 0x92, 0x95, 0xae, 0xcf, 0x5e, 0xca, 0xb7, 0xac, 0xa0, 0x45, 0xfc, 0xcb,
+	0xd6, 0xc5, 0x30, 0x52, 0xa6, 0x14, 0x2e, 0x86, 0x29, 0x11, 0x4b, 0x53, 0x51, 0xd2, 0xc8, 0x5d,
+	0x86, 0xf7, 0x16, 0x59, 0xee, 0x62, 0x44, 0x47, 0xfa, 0x5f, 0x25, 0x96, 0xe1, 0x7e, 0x85, 0x60,
+	0x3c, 0x21, 0x33, 0x4a, 0xdb, 0x29, 0x4b, 0xfd, 0x94, 0xb6, 0x53, 0xa6, 0x82, 0x19, 0x0d, 0x71,
+	0xdc, 0x0b, 0xf6, 0xe0, 0x58, 0x9c, 0x48, 0x6a, 0x92, 0x0a, 0xd7, 0xb1, 0x9e, 0x28, 0x7e, 0x8b,
+	0xc1, 0xbc, 0x57, 0x16, 0x6f, 0x20, 0x11, 0x0e, 0x59, 0x49, 0xc4, 0x60, 0xd9, 0xd5, 0xac, 0xc5,
+	0xf5, 0xf7, 0x10, 0x4c, 0x24, 0x65, 0x4b, 0x29, 0xf2, 0x4c, 0x85, 0xb3, 0xe3, 0x41, 0xc4, 0x39,
+	0x5d, 0x5c, 0x56, 0x3c, 0x88, 0x44, 0x8c, 0x01, 0xa7, 0x93, 0x69, 0xd1, 0x0e, 0x97, 0xbb, 0xd7,
+	0x14, 0xa5, 0xad, 0xd7, 0x49, 0x15, 0x24, 0x15, 0x06, 0xfd, 0x2a, 0x29, 0xe5, 0x4c, 0x57, 0xc1,
+	0xb6, 0xe2, 0x51, 0x6b, 0x37, 0x68, 0xb8, 0x3f, 0x21, 0xc0, 0xed, 0xa2, 0x20, 0xbe, 0x9a, 0x7f,
+	0x5e, 0xb5, 0x8b, 0x42, 0x9a, 0xaa, 0x22, 0x45, 0x1e, 0x30, 0xc4, 0x9b, 0xe4, 0xba, 0x7a, 0x01,
+	0x27, 0x34, 0xac, 0x4a, 0x52, 0xeb, 0xfb, 0x33, 0x02, 0xdc, 0x2e, 0x2b, 0x4a, 0x83, 0xe8, 0xa8,
+	0x42, 0xaa, 0x07, 0xb1, 0xc3, 0x82, 0xd8, 0x2e, 0xdf, 0x11, 0xa7, 0xb5, 0xb0, 0x40, 0x5a, 0xe2,
+	0x89, 0x70, 0x82, 0x32, 0x4f, 0x46, 0xf4, 0x07, 0x04, 0x5f, 0x68, 0x13, 0x04, 0xf1, 0x72, 0xce,
+	0xa4, 0xc8, 0xd2, 0x2b, 0xb5, 0xab, 0xdd, 0x19, 0xf1, 0x9a, 0xba, 0xc5, 0x82, 0x5b, 0xc1, 0xbd,
+	0x66, 0x08, 0xff, 0x08, 0x01, 0x6e, 0x97, 0x0f, 0xa5, 0x39, 0xe9, 0xa8, 0x36, 0x76, 0x6c, 0x5a,
+	0x8e, 0x72, 0xf1, 0xba, 0x62, 0xd3, 0xa6, 0x59, 0xc7, 0x7f, 0x45, 0x70, 0x46, 0x26, 0x59, 0xe2,
+	0x9b, 0xea, 0xb2, 0x44, 0x96, 0x7e, 0xa8, 0x75, 0x2f, 0xb3, 0x65, 0x9e, 0xa4, 0x39, 0xd4, 0xbb,
+	0x49, 0x41, 0x2e, 0x68, 0xec, 0xdf, 0x21, 0x38, 0x23, 0x13, 0x38, 0xa5, 0x91, 0x29, 0x28, 0xa3,
+	0x1d, 0x73, 0xb2, 0xce, 0xe0, 0xaf, 0x2e, 0xae, 0x28, 0xe6, 0x24, 0x85, 0x3d, 0xc8, 0xca, 0x67,
+	0x08, 0x4e, 0x4b, 0x64, 0x4e, 0x7c, 0x23, 0xa7, 0xa4, 0xe5, 0xca, 0xac, 0x76, 0xb3, 0x57, 0x73,
+	0xde, 0x1b, 0x3c, 0x42, 0xdc, 0x7b, 0x82, 0xf0, 0x3f, 0x11, 0x9c, 0x96, 0x48, 0xa1, 0xd2, 0x08,
+	0xf3, 0x25, 0xd4, 0x5e, 0xaa, 0x6e, 0x9b, 0x05, 0xf5, 0x16, 0xb9, 0xdf, 0x73, 0xda, 0x2a, 0x6e,
+	0xe8, 0x3d, 0x02, 0x13, 0x54, 0x61, 0x10, 0xa7, 0x44, 0x74, 0x95, 0xc6, 0x99, 0x2f, 0xd6, 0xbe,
+	0xa0, 0x38, 0x8d, 0x10, 0x98, 0x18, 0xe7, 0x67, 0x08, 0x66, 0x3b, 0xca, 0xbb, 0x58, 0xf6, 0xeb,
+	0x62, 0x9e, 0x28, 0xdc, 0x4b, 0x8c, 0x55, 0x16, 0xe3, 0x9b, 0x64, 0xb3, 0xf7, 0x18, 0xf7, 0x02,
+	0x58, 0x62, 0x84, 0x7f, 0x47, 0xa0, 0x75, 0x16, 0x91, 0xf1, 0x9a, 0x2c, 0x91, 0x79, 0xda, 0x73,
+	0x2f, 0x31, 0x6e, 0xb1, 0x18, 0x1f, 0x90, 0x7b, 0x47, 0xc8, 0x23, 0xc3, 0x25, 0x04, 0x79, 0x7b,
+	0x1f, 0xe6, 0x0d, 0xbb, 0x19, 0x81, 0x09, 0x60, 0x44, 0xff, 0xb7, 0xdd, 0x82, 0xa3, 0x3b, 0xe6,
+	0xdb, 0x68, 0x67, 0x8d, 0x2f, 0xa9, 0xdb, 0x0d, 0xdd, 0xaa, 0x17, 0x6d, 0xb7, 0x5e, 0xaa, 0x53,
+	0x8b, 0x4d, 0xc2, 0x52, 0xf8, 0x4a, 0x77, 0x4c, 0x2f, 0xe3, 0xdf, 0xb4, 0x57, 0x4d, 0xb7, 0xf9,
+	0x1f, 0x84, 0x1e, 0x0e, 0xb2, 0xb5, 0xcb, 0xff, 0x0d, 0x00, 0x00, 0xff, 0xff, 0xe5, 0xf4, 0xe1,
+	0x75, 0x3d, 0x2e, 0x00, 0x00,
 }
