@@ -10,6 +10,10 @@ if [[ `go version` != *"go1.11"* ]]; then
     exit 0
 fi
 
+if git log -1 | grep BREAKING_CHANGE_ACCEPTABLE; then
+  exit 0
+fi
+
 try3() { eval "$*" || eval "$*" || eval "$*"; }
 
 try3 go get -u golang.org/x/exp/cmd/apidiff
