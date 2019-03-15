@@ -42,7 +42,7 @@ func (m *CreateClientEventRequest) Reset()         { *m = CreateClientEventReque
 func (m *CreateClientEventRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateClientEventRequest) ProtoMessage()    {}
 func (*CreateClientEventRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_service_dcfd2a3e1b4292a0, []int{0}
+	return fileDescriptor_event_service_b04292c82e024b7f, []int{0}
 }
 func (m *CreateClientEventRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateClientEventRequest.Unmarshal(m, b)
@@ -97,7 +97,7 @@ type EventServiceClient interface {
 	// [self service
 	// tools](https://console.cloud.google.com/talent-solution/overview).
 	// [Learn
-	// more](https://cloud.google.com/talent-solution/job-search/docs/management-tools)
+	// more](https://cloud.google.com/talent-solution/docs/management-tools)
 	// about self service tools.
 	CreateClientEvent(ctx context.Context, in *CreateClientEventRequest, opts ...grpc.CallOption) (*ClientEvent, error)
 }
@@ -126,7 +126,7 @@ type EventServiceServer interface {
 	// [self service
 	// tools](https://console.cloud.google.com/talent-solution/overview).
 	// [Learn
-	// more](https://cloud.google.com/talent-solution/job-search/docs/management-tools)
+	// more](https://cloud.google.com/talent-solution/docs/management-tools)
 	// about self service tools.
 	CreateClientEvent(context.Context, *CreateClientEventRequest) (*ClientEvent, error)
 }
@@ -167,10 +167,10 @@ var _EventService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/event_service.proto", fileDescriptor_event_service_dcfd2a3e1b4292a0)
+	proto.RegisterFile("google/cloud/talent/v4beta1/event_service.proto", fileDescriptor_event_service_b04292c82e024b7f)
 }
 
-var fileDescriptor_event_service_dcfd2a3e1b4292a0 = []byte{
+var fileDescriptor_event_service_b04292c82e024b7f = []byte{
 	// 313 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xd2, 0x4f, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x4f, 0xce, 0xc9, 0x2f, 0x4d, 0xd1, 0x2f, 0x49, 0xcc, 0x49, 0xcd, 0x2b, 0xd1,

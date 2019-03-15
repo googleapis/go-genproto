@@ -7,6 +7,7 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 import _ "google.golang.org/genproto/googleapis/api/annotations"
+import expr "google.golang.org/genproto/googleapis/type/expr"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -18,6 +19,9 @@ var _ = math.Inf
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
+// Expr from public import google/type/expr.proto
+type Expr = expr.Expr
 
 // The type of action performed on a Binding in a policy.
 type BindingDelta_Action int32
@@ -46,19 +50,49 @@ func (x BindingDelta_Action) String() string {
 	return proto.EnumName(BindingDelta_Action_name, int32(x))
 }
 func (BindingDelta_Action) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_policy_76d1e02555c18b4a, []int{3, 0}
+	return fileDescriptor_policy_80ac7a01cec705db, []int{3, 0}
+}
+
+// The type of action performed on an audit configuration in a policy.
+type AuditConfigDelta_Action int32
+
+const (
+	// Unspecified.
+	AuditConfigDelta_ACTION_UNSPECIFIED AuditConfigDelta_Action = 0
+	// Addition of an audit configuration.
+	AuditConfigDelta_ADD AuditConfigDelta_Action = 1
+	// Removal of an audit configuration.
+	AuditConfigDelta_REMOVE AuditConfigDelta_Action = 2
+)
+
+var AuditConfigDelta_Action_name = map[int32]string{
+	0: "ACTION_UNSPECIFIED",
+	1: "ADD",
+	2: "REMOVE",
+}
+var AuditConfigDelta_Action_value = map[string]int32{
+	"ACTION_UNSPECIFIED": 0,
+	"ADD":                1,
+	"REMOVE":             2,
+}
+
+func (x AuditConfigDelta_Action) String() string {
+	return proto.EnumName(AuditConfigDelta_Action_name, int32(x))
+}
+func (AuditConfigDelta_Action) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_policy_80ac7a01cec705db, []int{4, 0}
 }
 
 // Defines an Identity and Access Management (IAM) policy. It is used to
 // specify access control policies for Cloud Platform resources.
 //
 //
-// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
 // `members` to a `role`, where the members can be user accounts, Google groups,
 // Google domains, and service accounts. A `role` is a named list of permissions
 // defined by IAM.
 //
-// **Example**
+// **JSON Example**
 //
 //     {
 //       "bindings": [
@@ -68,7 +102,7 @@ func (BindingDelta_Action) EnumDescriptor() ([]byte, []int) {
 //             "user:mike@example.com",
 //             "group:admins@example.com",
 //             "domain:google.com",
-//             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+//             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
 //           ]
 //         },
 //         {
@@ -78,13 +112,26 @@ func (BindingDelta_Action) EnumDescriptor() ([]byte, []int) {
 //       ]
 //     }
 //
+// **YAML Example**
+//
+//     bindings:
+//     - members:
+//       - user:mike@example.com
+//       - group:admins@example.com
+//       - domain:google.com
+//       - serviceAccount:my-other-app@appspot.gserviceaccount.com
+//       role: roles/owner
+//     - members:
+//       - user:sean@example.com
+//       role: roles/viewer
+//
+//
 // For a description of IAM and its features, see the
-// [IAM developer's guide](https://cloud.google.com/iam).
+// [IAM developer's guide](https://cloud.google.com/iam/docs).
 type Policy struct {
-	// Version of the `Policy`. The default version is 0.
-	Version int32 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"`
+	// Deprecated.
+	Version int32 `protobuf:"varint,1,opt,name=version,proto3" json:"version,omitempty"` // Deprecated: Do not use.
 	// Associates a list of `members` to a `role`.
-	// Multiple `bindings` must not be specified for the same `role`.
 	// `bindings` with no members will result in an error.
 	Bindings []*Binding `protobuf:"bytes,4,rep,name=bindings,proto3" json:"bindings,omitempty"`
 	// `etag` is used for optimistic concurrency control as a way to help
@@ -107,7 +154,7 @@ func (m *Policy) Reset()         { *m = Policy{} }
 func (m *Policy) String() string { return proto.CompactTextString(m) }
 func (*Policy) ProtoMessage()    {}
 func (*Policy) Descriptor() ([]byte, []int) {
-	return fileDescriptor_policy_76d1e02555c18b4a, []int{0}
+	return fileDescriptor_policy_80ac7a01cec705db, []int{0}
 }
 func (m *Policy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Policy.Unmarshal(m, b)
@@ -127,6 +174,7 @@ func (m *Policy) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Policy proto.InternalMessageInfo
 
+// Deprecated: Do not use.
 func (m *Policy) GetVersion() int32 {
 	if m != nil {
 		return m.Version
@@ -152,7 +200,6 @@ func (m *Policy) GetEtag() []byte {
 type Binding struct {
 	// Role that is assigned to `members`.
 	// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	// Required
 	Role string `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
 	// Specifies the identities requesting access for a Cloud Platform resource.
 	// `members` can have the following values:
@@ -164,7 +211,7 @@ type Binding struct {
 	//    who is authenticated with a Google account or a service account.
 	//
 	// * `user:{emailid}`: An email address that represents a specific Google
-	//    account. For example, `alice@gmail.com` or `joe@example.com`.
+	//    account. For example, `alice@gmail.com` .
 	//
 	//
 	// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -173,21 +220,27 @@ type Binding struct {
 	// * `group:{emailid}`: An email address that represents a Google group.
 	//    For example, `admins@example.com`.
 	//
-	// * `domain:{domain}`: A Google Apps domain name that represents all the
+	//
+	// * `domain:{domain}`: The G Suite domain (primary) that represents all the
 	//    users of that domain. For example, `google.com` or `example.com`.
 	//
 	//
-	Members              []string `protobuf:"bytes,2,rep,name=members,proto3" json:"members,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Members []string `protobuf:"bytes,2,rep,name=members,proto3" json:"members,omitempty"`
+	// Unimplemented. The condition that is associated with this binding.
+	// NOTE: an unsatisfied condition will not allow user access via current
+	// binding. Different bindings, including their conditions, are examined
+	// independently.
+	Condition            *expr.Expr `protobuf:"bytes,3,opt,name=condition,proto3" json:"condition,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
 func (m *Binding) Reset()         { *m = Binding{} }
 func (m *Binding) String() string { return proto.CompactTextString(m) }
 func (*Binding) ProtoMessage()    {}
 func (*Binding) Descriptor() ([]byte, []int) {
-	return fileDescriptor_policy_76d1e02555c18b4a, []int{1}
+	return fileDescriptor_policy_80ac7a01cec705db, []int{1}
 }
 func (m *Binding) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Binding.Unmarshal(m, b)
@@ -221,20 +274,29 @@ func (m *Binding) GetMembers() []string {
 	return nil
 }
 
+func (m *Binding) GetCondition() *expr.Expr {
+	if m != nil {
+		return m.Condition
+	}
+	return nil
+}
+
 // The difference delta between two policies.
 type PolicyDelta struct {
 	// The delta for Bindings between two policies.
-	BindingDeltas        []*BindingDelta `protobuf:"bytes,1,rep,name=binding_deltas,json=bindingDeltas,proto3" json:"binding_deltas,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	BindingDeltas []*BindingDelta `protobuf:"bytes,1,rep,name=binding_deltas,json=bindingDeltas,proto3" json:"binding_deltas,omitempty"`
+	// The delta for AuditConfigs between two policies.
+	AuditConfigDeltas    []*AuditConfigDelta `protobuf:"bytes,2,rep,name=audit_config_deltas,json=auditConfigDeltas,proto3" json:"audit_config_deltas,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *PolicyDelta) Reset()         { *m = PolicyDelta{} }
 func (m *PolicyDelta) String() string { return proto.CompactTextString(m) }
 func (*PolicyDelta) ProtoMessage()    {}
 func (*PolicyDelta) Descriptor() ([]byte, []int) {
-	return fileDescriptor_policy_76d1e02555c18b4a, []int{2}
+	return fileDescriptor_policy_80ac7a01cec705db, []int{2}
 }
 func (m *PolicyDelta) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PolicyDelta.Unmarshal(m, b)
@@ -261,6 +323,13 @@ func (m *PolicyDelta) GetBindingDeltas() []*BindingDelta {
 	return nil
 }
 
+func (m *PolicyDelta) GetAuditConfigDeltas() []*AuditConfigDelta {
+	if m != nil {
+		return m.AuditConfigDeltas
+	}
+	return nil
+}
+
 // One delta entry for Binding. Each individual change (only one member in each
 // entry) to a binding will be a separate entry.
 type BindingDelta struct {
@@ -274,17 +343,20 @@ type BindingDelta struct {
 	// A single identity requesting access for a Cloud Platform resource.
 	// Follows the same format of Binding.members.
 	// Required
-	Member               string   `protobuf:"bytes,3,opt,name=member,proto3" json:"member,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Member string `protobuf:"bytes,3,opt,name=member,proto3" json:"member,omitempty"`
+	// Unimplemented. The condition that is associated with this binding.
+	// This field is logged only for Cloud Audit Logging.
+	Condition            *expr.Expr `protobuf:"bytes,4,opt,name=condition,proto3" json:"condition,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
 func (m *BindingDelta) Reset()         { *m = BindingDelta{} }
 func (m *BindingDelta) String() string { return proto.CompactTextString(m) }
 func (*BindingDelta) ProtoMessage()    {}
 func (*BindingDelta) Descriptor() ([]byte, []int) {
-	return fileDescriptor_policy_76d1e02555c18b4a, []int{3}
+	return fileDescriptor_policy_80ac7a01cec705db, []int{3}
 }
 func (m *BindingDelta) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BindingDelta.Unmarshal(m, b)
@@ -325,42 +397,136 @@ func (m *BindingDelta) GetMember() string {
 	return ""
 }
 
+func (m *BindingDelta) GetCondition() *expr.Expr {
+	if m != nil {
+		return m.Condition
+	}
+	return nil
+}
+
+// One delta entry for AuditConfig. Each individual change (only one
+// exempted_member in each entry) to a AuditConfig will be a separate entry.
+type AuditConfigDelta struct {
+	// The action that was performed on an audit configuration in a policy.
+	// Required
+	Action AuditConfigDelta_Action `protobuf:"varint,1,opt,name=action,proto3,enum=google.iam.v1.AuditConfigDelta_Action" json:"action,omitempty"`
+	// Specifies a service that was configured for Cloud Audit Logging.
+	// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+	// `allServices` is a special value that covers all services.
+	// Required
+	Service string `protobuf:"bytes,2,opt,name=service,proto3" json:"service,omitempty"`
+	// A single identity that is exempted from "data access" audit
+	// logging for the `service` specified above.
+	// Follows the same format of Binding.members.
+	ExemptedMember string `protobuf:"bytes,3,opt,name=exempted_member,json=exemptedMember,proto3" json:"exempted_member,omitempty"`
+	// Specifies the log_type that was be enabled. ADMIN_ACTIVITY is always
+	// enabled, and cannot be configured.
+	// Required
+	LogType              string   `protobuf:"bytes,4,opt,name=log_type,json=logType,proto3" json:"log_type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AuditConfigDelta) Reset()         { *m = AuditConfigDelta{} }
+func (m *AuditConfigDelta) String() string { return proto.CompactTextString(m) }
+func (*AuditConfigDelta) ProtoMessage()    {}
+func (*AuditConfigDelta) Descriptor() ([]byte, []int) {
+	return fileDescriptor_policy_80ac7a01cec705db, []int{4}
+}
+func (m *AuditConfigDelta) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AuditConfigDelta.Unmarshal(m, b)
+}
+func (m *AuditConfigDelta) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AuditConfigDelta.Marshal(b, m, deterministic)
+}
+func (dst *AuditConfigDelta) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuditConfigDelta.Merge(dst, src)
+}
+func (m *AuditConfigDelta) XXX_Size() int {
+	return xxx_messageInfo_AuditConfigDelta.Size(m)
+}
+func (m *AuditConfigDelta) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuditConfigDelta.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuditConfigDelta proto.InternalMessageInfo
+
+func (m *AuditConfigDelta) GetAction() AuditConfigDelta_Action {
+	if m != nil {
+		return m.Action
+	}
+	return AuditConfigDelta_ACTION_UNSPECIFIED
+}
+
+func (m *AuditConfigDelta) GetService() string {
+	if m != nil {
+		return m.Service
+	}
+	return ""
+}
+
+func (m *AuditConfigDelta) GetExemptedMember() string {
+	if m != nil {
+		return m.ExemptedMember
+	}
+	return ""
+}
+
+func (m *AuditConfigDelta) GetLogType() string {
+	if m != nil {
+		return m.LogType
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*Policy)(nil), "google.iam.v1.Policy")
 	proto.RegisterType((*Binding)(nil), "google.iam.v1.Binding")
 	proto.RegisterType((*PolicyDelta)(nil), "google.iam.v1.PolicyDelta")
 	proto.RegisterType((*BindingDelta)(nil), "google.iam.v1.BindingDelta")
+	proto.RegisterType((*AuditConfigDelta)(nil), "google.iam.v1.AuditConfigDelta")
 	proto.RegisterEnum("google.iam.v1.BindingDelta_Action", BindingDelta_Action_name, BindingDelta_Action_value)
+	proto.RegisterEnum("google.iam.v1.AuditConfigDelta_Action", AuditConfigDelta_Action_name, AuditConfigDelta_Action_value)
 }
 
-func init() { proto.RegisterFile("google/iam/v1/policy.proto", fileDescriptor_policy_76d1e02555c18b4a) }
+func init() { proto.RegisterFile("google/iam/v1/policy.proto", fileDescriptor_policy_80ac7a01cec705db) }
 
-var fileDescriptor_policy_76d1e02555c18b4a = []byte{
-	// 403 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x52, 0x4d, 0xab, 0x13, 0x31,
-	0x14, 0x35, 0xed, 0x73, 0x6a, 0xef, 0xfb, 0xa0, 0x46, 0x28, 0xc3, 0xd3, 0x45, 0x99, 0x55, 0x57,
-	0x19, 0x5b, 0x11, 0x41, 0x57, 0xfd, 0x18, 0x65, 0x16, 0xbe, 0x37, 0x46, 0xed, 0x42, 0x0a, 0x8f,
-	0x4c, 0x1b, 0x42, 0x64, 0x92, 0x0c, 0x33, 0x63, 0xc1, 0xb5, 0xff, 0x46, 0xf0, 0x8f, 0xf8, 0x8b,
-	0x5c, 0xca, 0x24, 0x99, 0x47, 0x0b, 0xe2, 0x2e, 0xe7, 0x9e, 0x73, 0x72, 0xcf, 0xcd, 0x0d, 0x5c,
-	0x0b, 0x63, 0x44, 0xc1, 0x63, 0xc9, 0x54, 0x7c, 0x98, 0xc5, 0xa5, 0x29, 0xe4, 0xee, 0x3b, 0x29,
-	0x2b, 0xd3, 0x18, 0x7c, 0xe9, 0x38, 0x22, 0x99, 0x22, 0x87, 0xd9, 0xf5, 0x33, 0x2f, 0x65, 0xa5,
-	0x8c, 0x99, 0xd6, 0xa6, 0x61, 0x8d, 0x34, 0xba, 0x76, 0xe2, 0xe8, 0x2b, 0x04, 0x99, 0x35, 0xe3,
-	0x10, 0x06, 0x07, 0x5e, 0xd5, 0xd2, 0xe8, 0x10, 0x4d, 0xd0, 0xf4, 0x21, 0xed, 0x20, 0x9e, 0xc3,
-	0xa3, 0x5c, 0xea, 0xbd, 0xd4, 0xa2, 0x0e, 0xcf, 0x26, 0xfd, 0xe9, 0xf9, 0x7c, 0x4c, 0x4e, 0x7a,
-	0x90, 0xa5, 0xa3, 0xe9, 0xbd, 0x0e, 0x63, 0x38, 0xe3, 0x0d, 0x13, 0x61, 0x7f, 0x82, 0xa6, 0x17,
-	0xd4, 0x9e, 0xa3, 0x57, 0x30, 0xf0, 0xc2, 0x96, 0xae, 0x4c, 0xc1, 0x6d, 0xa7, 0x21, 0xb5, 0xe7,
-	0x36, 0x80, 0xe2, 0x2a, 0xe7, 0x55, 0x1d, 0xf6, 0x26, 0xfd, 0xe9, 0x90, 0x76, 0x30, 0xfa, 0x00,
-	0xe7, 0x2e, 0xe4, 0x9a, 0x17, 0x0d, 0xc3, 0x4b, 0xb8, 0xf2, 0x7d, 0xee, 0xf6, 0x6d, 0xa1, 0x0e,
-	0x91, 0x4d, 0xf5, 0xf4, 0xdf, 0xa9, 0xac, 0x89, 0x5e, 0xe6, 0x47, 0xa8, 0x8e, 0x7e, 0x21, 0xb8,
-	0x38, 0xe6, 0xf1, 0x6b, 0x08, 0xd8, 0xae, 0xe9, 0xa6, 0xbf, 0x9a, 0x47, 0xff, 0xb9, 0x8c, 0x2c,
-	0xac, 0x92, 0x7a, 0xc7, 0xfd, 0x34, 0xbd, 0xa3, 0x69, 0xc6, 0x10, 0xb8, 0xf8, 0xf6, 0x09, 0x86,
-	0xd4, 0xa3, 0xe8, 0x25, 0x04, 0xce, 0x8d, 0xc7, 0x80, 0x17, 0xab, 0x4f, 0xe9, 0xed, 0xcd, 0xdd,
-	0xe7, 0x9b, 0x8f, 0x59, 0xb2, 0x4a, 0xdf, 0xa6, 0xc9, 0x7a, 0xf4, 0x00, 0x0f, 0xa0, 0xbf, 0x58,
-	0xaf, 0x47, 0x08, 0x03, 0x04, 0x34, 0x79, 0x7f, 0xbb, 0x49, 0x46, 0xbd, 0xe5, 0x0f, 0x04, 0x8f,
-	0x77, 0x46, 0x9d, 0x86, 0x5a, 0xfa, 0x67, 0xc9, 0xda, 0x55, 0x66, 0xe8, 0xcb, 0x73, 0xcf, 0x0a,
-	0x53, 0x30, 0x2d, 0x88, 0xa9, 0x44, 0x2c, 0xb8, 0xb6, 0x8b, 0x8e, 0x1d, 0xc5, 0x4a, 0x59, 0xfb,
-	0x4f, 0xf3, 0x46, 0x32, 0xf5, 0x07, 0xa1, 0x9f, 0xbd, 0x27, 0xef, 0x9c, 0x6b, 0x55, 0x98, 0x6f,
-	0x7b, 0x92, 0x32, 0x45, 0x36, 0xb3, 0xdf, 0x5d, 0x75, 0x6b, 0xab, 0xdb, 0x94, 0xa9, 0xed, 0x66,
-	0x96, 0x07, 0xf6, 0xae, 0x17, 0x7f, 0x03, 0x00, 0x00, 0xff, 0xff, 0xfc, 0x18, 0xca, 0xaa, 0x7f,
-	0x02, 0x00, 0x00,
+var fileDescriptor_policy_80ac7a01cec705db = []byte{
+	// 554 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x53, 0xcb, 0x8e, 0xd3, 0x30,
+	0x14, 0x1d, 0xa7, 0x43, 0x32, 0xbd, 0xf3, 0xa0, 0xf5, 0x48, 0x55, 0x28, 0x23, 0x51, 0x65, 0x01,
+	0x5d, 0x25, 0xb4, 0x88, 0x0d, 0x48, 0x48, 0x7d, 0x81, 0xba, 0x98, 0x69, 0x15, 0x86, 0x2e, 0x50,
+	0xa5, 0xca, 0x4d, 0x4c, 0xb0, 0x94, 0xd8, 0x51, 0x92, 0xa9, 0xda, 0x35, 0x7f, 0xc2, 0x92, 0x4f,
+	0xe1, 0x23, 0xd8, 0xf2, 0x0b, 0x2c, 0x51, 0xec, 0xa4, 0xb4, 0x15, 0x02, 0xc4, 0xce, 0xf7, 0xdc,
+	0xe3, 0x73, 0xef, 0x39, 0x89, 0xa1, 0x19, 0x08, 0x11, 0x84, 0xd4, 0x61, 0x24, 0x72, 0x56, 0x1d,
+	0x27, 0x16, 0x21, 0xf3, 0x36, 0x76, 0x9c, 0x88, 0x4c, 0xe0, 0x73, 0xd5, 0xb3, 0x19, 0x89, 0xec,
+	0x55, 0xa7, 0xd9, 0x28, 0xa8, 0xd9, 0x26, 0xa6, 0x0e, 0x5d, 0xc7, 0x89, 0xa2, 0x35, 0xaf, 0x0a,
+	0x9c, 0xc4, 0xcc, 0x21, 0x9c, 0x8b, 0x8c, 0x64, 0x4c, 0xf0, 0x54, 0x75, 0x2d, 0x0e, 0xfa, 0x54,
+	0x8a, 0xe2, 0x2b, 0x30, 0x56, 0x34, 0x49, 0x99, 0xe0, 0x26, 0x6a, 0xa1, 0xf6, 0xbd, 0xbe, 0x66,
+	0x22, 0xb7, 0x84, 0x70, 0x17, 0x4e, 0x96, 0x8c, 0xfb, 0x8c, 0x07, 0xa9, 0x79, 0xdc, 0xaa, 0xb4,
+	0x4f, 0xbb, 0x0d, 0x7b, 0x6f, 0xbe, 0xdd, 0x57, 0x6d, 0x77, 0xcb, 0xc3, 0x18, 0x8e, 0x69, 0x46,
+	0x02, 0xb3, 0xd2, 0x42, 0xed, 0x33, 0x57, 0x9e, 0xad, 0x8f, 0x60, 0x14, 0xc4, 0xbc, 0x9d, 0x88,
+	0x90, 0xca, 0x69, 0x55, 0x57, 0x9e, 0xb1, 0x09, 0x46, 0x44, 0xa3, 0x25, 0x4d, 0x52, 0x53, 0x6b,
+	0x55, 0xda, 0x55, 0xb7, 0x2c, 0xb1, 0x03, 0x55, 0x4f, 0x70, 0x9f, 0xe5, 0xcb, 0x4b, 0xc5, 0xd3,
+	0x6e, 0xbd, 0xdc, 0x20, 0xb7, 0x6c, 0x8f, 0xd6, 0x71, 0xe2, 0xfe, 0xe2, 0x58, 0x9f, 0x11, 0x9c,
+	0x2a, 0x6b, 0x43, 0x1a, 0x66, 0x04, 0xf7, 0xe1, 0xa2, 0xd8, 0x6c, 0xe1, 0xe7, 0x40, 0x6a, 0x22,
+	0xe9, 0xe3, 0xe1, 0xef, 0x7d, 0xc8, 0x4b, 0xee, 0xf9, 0x72, 0xa7, 0x4a, 0xf1, 0x04, 0x2e, 0xc9,
+	0x9d, 0xcf, 0xb2, 0x85, 0x27, 0xf8, 0x07, 0xb6, 0x15, 0xd2, 0xa4, 0xd0, 0xa3, 0x03, 0xa1, 0x5e,
+	0xce, 0x1c, 0x48, 0xa2, 0x12, 0xab, 0x93, 0x03, 0x24, 0xb5, 0xbe, 0x21, 0x38, 0xdb, 0x1d, 0x88,
+	0x5f, 0x80, 0x4e, 0xbc, 0xac, 0xfc, 0x08, 0x17, 0x5d, 0xeb, 0x0f, 0xdb, 0xd9, 0x3d, 0xc9, 0x74,
+	0x8b, 0x1b, 0xdb, 0x40, 0xb5, 0x9d, 0x40, 0x1b, 0xa0, 0xab, 0x04, 0x65, 0x66, 0x55, 0xb7, 0xa8,
+	0xf6, 0xe3, 0x3c, 0xfe, 0x87, 0x38, 0x9f, 0x83, 0xae, 0xc6, 0xe1, 0x06, 0xe0, 0xde, 0xe0, 0x76,
+	0x3c, 0xb9, 0x59, 0xbc, 0xbb, 0x79, 0x3b, 0x1d, 0x0d, 0xc6, 0xaf, 0xc7, 0xa3, 0x61, 0xed, 0x08,
+	0x1b, 0x50, 0xe9, 0x0d, 0x87, 0x35, 0x84, 0x01, 0x74, 0x77, 0x74, 0x3d, 0x99, 0x8d, 0x6a, 0x9a,
+	0xf5, 0x1d, 0x41, 0xed, 0x30, 0x08, 0xfc, 0xea, 0xc0, 0xe4, 0xe3, 0xbf, 0x24, 0x77, 0x68, 0xd4,
+	0x04, 0x23, 0xa5, 0xc9, 0x8a, 0x79, 0xa5, 0xd7, 0xb2, 0xc4, 0x4f, 0xe0, 0x3e, 0x5d, 0xd3, 0x28,
+	0xce, 0xa8, 0xbf, 0xd8, 0xf3, 0x7d, 0x51, 0xc2, 0xd7, 0xca, 0xff, 0x03, 0x38, 0x09, 0x45, 0xb0,
+	0xc8, 0xad, 0x4a, 0xfb, 0x55, 0xd7, 0x08, 0x45, 0x70, 0xbb, 0x89, 0xe9, 0x7f, 0x3a, 0xed, 0x7f,
+	0x42, 0x50, 0xf7, 0x44, 0xb4, 0x6f, 0xa5, 0x5f, 0xfc, 0x82, 0xd3, 0xfc, 0xb1, 0x4d, 0xd1, 0xfb,
+	0xa7, 0x45, 0x37, 0x10, 0x21, 0xe1, 0x81, 0x2d, 0x92, 0xc0, 0x09, 0x28, 0x97, 0x4f, 0xd1, 0x51,
+	0x2d, 0x12, 0xb3, 0xb4, 0x78, 0xee, 0x2f, 0x19, 0x89, 0x7e, 0x20, 0xf4, 0x45, 0xbb, 0x7c, 0xa3,
+	0x6e, 0x0d, 0x42, 0x71, 0xe7, 0xdb, 0x63, 0x12, 0xd9, 0xb3, 0xce, 0xd7, 0x12, 0x9d, 0x4b, 0x74,
+	0x3e, 0x26, 0xd1, 0x7c, 0xd6, 0x99, 0x1e, 0x2d, 0x75, 0xa9, 0xf6, 0xec, 0x67, 0x00, 0x00, 0x00,
+	0xff, 0xff, 0xec, 0x5c, 0xf2, 0x88, 0x3b, 0x04, 0x00, 0x00,
 }
