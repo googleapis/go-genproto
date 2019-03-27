@@ -44,7 +44,7 @@ func (m *TableReadOptions) Reset()         { *m = TableReadOptions{} }
 func (m *TableReadOptions) String() string { return proto.CompactTextString(m) }
 func (*TableReadOptions) ProtoMessage()    {}
 func (*TableReadOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_read_options_2963abc7475c39e4, []int{0}
+	return fileDescriptor_read_options_182154d9d5771d09, []int{0}
 }
 func (m *TableReadOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TableReadOptions.Unmarshal(m, b)
@@ -83,10 +83,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/bigquery/storage/v1beta1/read_options.proto", fileDescriptor_read_options_2963abc7475c39e4)
+	proto.RegisterFile("google/cloud/bigquery/storage/v1beta1/read_options.proto", fileDescriptor_read_options_182154d9d5771d09)
 }
 
-var fileDescriptor_read_options_2963abc7475c39e4 = []byte{
+var fileDescriptor_read_options_182154d9d5771d09 = []byte{
 	// 213 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0xd0, 0x3f, 0x4b, 0xc6, 0x30,
 	0x10, 0x06, 0x70, 0x5e, 0x05, 0xc1, 0x0c, 0x2a, 0x9d, 0x3a, 0x16, 0x41, 0xd4, 0x25, 0xa1, 0xb8,
