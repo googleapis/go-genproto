@@ -135,7 +135,7 @@ func (x ConversionLagBucketEnum_ConversionLagBucket) String() string {
 	return proto.EnumName(ConversionLagBucketEnum_ConversionLagBucket_name, int32(x))
 }
 func (ConversionLagBucketEnum_ConversionLagBucket) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_lag_bucket_3d9824be1641c408, []int{0, 0}
+	return fileDescriptor_conversion_lag_bucket_f5b8411efb546dd4, []int{0, 0}
 }
 
 // Container for enum representing the number of days between impression and
@@ -150,7 +150,7 @@ func (m *ConversionLagBucketEnum) Reset()         { *m = ConversionLagBucketEnum
 func (m *ConversionLagBucketEnum) String() string { return proto.CompactTextString(m) }
 func (*ConversionLagBucketEnum) ProtoMessage()    {}
 func (*ConversionLagBucketEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_lag_bucket_3d9824be1641c408, []int{0}
+	return fileDescriptor_conversion_lag_bucket_f5b8411efb546dd4, []int{0}
 }
 func (m *ConversionLagBucketEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionLagBucketEnum.Unmarshal(m, b)
@@ -176,10 +176,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_lag_bucket.proto", fileDescriptor_conversion_lag_bucket_3d9824be1641c408)
+	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_lag_bucket.proto", fileDescriptor_conversion_lag_bucket_f5b8411efb546dd4)
 }
 
-var fileDescriptor_conversion_lag_bucket_3d9824be1641c408 = []byte{
+var fileDescriptor_conversion_lag_bucket_f5b8411efb546dd4 = []byte{
 	// 512 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x93, 0xd1, 0x6e, 0xda, 0x30,
 	0x14, 0x86, 0x07, 0x65, 0xed, 0x66, 0xb6, 0x91, 0x1a, 0x3a, 0xe8, 0x5a, 0x34, 0xb5, 0x0f, 0x90,

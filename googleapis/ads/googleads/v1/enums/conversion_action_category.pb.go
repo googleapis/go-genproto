@@ -66,7 +66,7 @@ func (x ConversionActionCategoryEnum_ConversionActionCategory) String() string {
 	return proto.EnumName(ConversionActionCategoryEnum_ConversionActionCategory_name, int32(x))
 }
 func (ConversionActionCategoryEnum_ConversionActionCategory) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_action_category_d8197bad50c3e6f7, []int{0, 0}
+	return fileDescriptor_conversion_action_category_b6bad8a0930ede9e, []int{0, 0}
 }
 
 // Container for enum describing the category of conversions that are associated
@@ -81,7 +81,7 @@ func (m *ConversionActionCategoryEnum) Reset()         { *m = ConversionActionCa
 func (m *ConversionActionCategoryEnum) String() string { return proto.CompactTextString(m) }
 func (*ConversionActionCategoryEnum) ProtoMessage()    {}
 func (*ConversionActionCategoryEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_action_category_d8197bad50c3e6f7, []int{0}
+	return fileDescriptor_conversion_action_category_b6bad8a0930ede9e, []int{0}
 }
 func (m *ConversionActionCategoryEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionActionCategoryEnum.Unmarshal(m, b)
@@ -107,10 +107,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_action_category.proto", fileDescriptor_conversion_action_category_d8197bad50c3e6f7)
+	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_action_category.proto", fileDescriptor_conversion_action_category_b6bad8a0930ede9e)
 }
 
-var fileDescriptor_conversion_action_category_d8197bad50c3e6f7 = []byte{
+var fileDescriptor_conversion_action_category_b6bad8a0930ede9e = []byte{
 	// 360 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xc1, 0x6a, 0xea, 0x40,
 	0x14, 0x7d, 0x89, 0x3e, 0xf5, 0x8d, 0xef, 0xf1, 0x86, 0xac, 0x4a, 0xd1, 0x85, 0x7e, 0xc0, 0x84,

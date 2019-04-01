@@ -46,7 +46,7 @@ func (x OperatorErrorEnum_OperatorError) String() string {
 	return proto.EnumName(OperatorErrorEnum_OperatorError_name, int32(x))
 }
 func (OperatorErrorEnum_OperatorError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_operator_error_fa7dcdbde7a1b7d9, []int{0, 0}
+	return fileDescriptor_operator_error_87b1e31e98dffa4f, []int{0, 0}
 }
 
 // Container for enum describing possible operator errors.
@@ -60,7 +60,7 @@ func (m *OperatorErrorEnum) Reset()         { *m = OperatorErrorEnum{} }
 func (m *OperatorErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*OperatorErrorEnum) ProtoMessage()    {}
 func (*OperatorErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operator_error_fa7dcdbde7a1b7d9, []int{0}
+	return fileDescriptor_operator_error_87b1e31e98dffa4f, []int{0}
 }
 func (m *OperatorErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperatorErrorEnum.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/operator_error.proto", fileDescriptor_operator_error_fa7dcdbde7a1b7d9)
+	proto.RegisterFile("google/ads/googleads/v1/errors/operator_error.proto", fileDescriptor_operator_error_87b1e31e98dffa4f)
 }
 
-var fileDescriptor_operator_error_fa7dcdbde7a1b7d9 = []byte{
+var fileDescriptor_operator_error_87b1e31e98dffa4f = []byte{
 	// 301 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xcf, 0x4a, 0x33, 0x31,
 	0x14, 0xc5, 0xbf, 0xce, 0x07, 0x0a, 0x29, 0x62, 0x9d, 0x85, 0x8b, 0x22, 0x5d, 0xcc, 0x03, 0x24,

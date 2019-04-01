@@ -46,7 +46,7 @@ func (x PolicyViolationErrorEnum_PolicyViolationError) String() string {
 	return proto.EnumName(PolicyViolationErrorEnum_PolicyViolationError_name, int32(x))
 }
 func (PolicyViolationErrorEnum_PolicyViolationError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_policy_violation_error_45717ca86da65769, []int{0, 0}
+	return fileDescriptor_policy_violation_error_14fd19f12b12fb77, []int{0, 0}
 }
 
 // Container for enum describing possible policy violation errors.
@@ -60,7 +60,7 @@ func (m *PolicyViolationErrorEnum) Reset()         { *m = PolicyViolationErrorEn
 func (m *PolicyViolationErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*PolicyViolationErrorEnum) ProtoMessage()    {}
 func (*PolicyViolationErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_policy_violation_error_45717ca86da65769, []int{0}
+	return fileDescriptor_policy_violation_error_14fd19f12b12fb77, []int{0}
 }
 func (m *PolicyViolationErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PolicyViolationErrorEnum.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/policy_violation_error.proto", fileDescriptor_policy_violation_error_45717ca86da65769)
+	proto.RegisterFile("google/ads/googleads/v1/errors/policy_violation_error.proto", fileDescriptor_policy_violation_error_14fd19f12b12fb77)
 }
 
-var fileDescriptor_policy_violation_error_45717ca86da65769 = []byte{
+var fileDescriptor_policy_violation_error_14fd19f12b12fb77 = []byte{
 	// 301 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xd1, 0x4a, 0x84, 0x40,
 	0x14, 0x86, 0xd3, 0xa0, 0x60, 0x36, 0x48, 0xa4, 0x8b, 0x8a, 0xd8, 0x0b, 0x1f, 0x60, 0x06, 0xe9,

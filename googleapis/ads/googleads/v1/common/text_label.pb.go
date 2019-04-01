@@ -38,7 +38,7 @@ func (m *TextLabel) Reset()         { *m = TextLabel{} }
 func (m *TextLabel) String() string { return proto.CompactTextString(m) }
 func (*TextLabel) ProtoMessage()    {}
 func (*TextLabel) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_label_8d5c96ee295f1e5f, []int{0}
+	return fileDescriptor_text_label_bccee6aa0f5153d1, []int{0}
 }
 func (m *TextLabel) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextLabel.Unmarshal(m, b)
@@ -77,10 +77,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/text_label.proto", fileDescriptor_text_label_8d5c96ee295f1e5f)
+	proto.RegisterFile("google/ads/googleads/v1/common/text_label.proto", fileDescriptor_text_label_bccee6aa0f5153d1)
 }
 
-var fileDescriptor_text_label_8d5c96ee295f1e5f = []byte{
+var fileDescriptor_text_label_bccee6aa0f5153d1 = []byte{
 	// 318 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x90, 0xc1, 0x4a, 0xfb, 0x30,
 	0x1c, 0xc7, 0x69, 0xff, 0xf0, 0x07, 0x3b, 0x50, 0xd9, 0x69, 0x8c, 0x31, 0x64, 0x27, 0x4f, 0x09,

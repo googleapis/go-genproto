@@ -43,7 +43,7 @@ func (m *CarrierConstant) Reset()         { *m = CarrierConstant{} }
 func (m *CarrierConstant) String() string { return proto.CompactTextString(m) }
 func (*CarrierConstant) ProtoMessage()    {}
 func (*CarrierConstant) Descriptor() ([]byte, []int) {
-	return fileDescriptor_carrier_constant_c3150d5a950bc73d, []int{0}
+	return fileDescriptor_carrier_constant_6d3464b8e5950dba, []int{0}
 }
 func (m *CarrierConstant) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CarrierConstant.Unmarshal(m, b)
@@ -96,10 +96,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/carrier_constant.proto", fileDescriptor_carrier_constant_c3150d5a950bc73d)
+	proto.RegisterFile("google/ads/googleads/v1/resources/carrier_constant.proto", fileDescriptor_carrier_constant_6d3464b8e5950dba)
 }
 
-var fileDescriptor_carrier_constant_c3150d5a950bc73d = []byte{
+var fileDescriptor_carrier_constant_6d3464b8e5950dba = []byte{
 	// 363 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x91, 0xc1, 0x4a, 0xeb, 0x40,
 	0x14, 0x86, 0x49, 0x5a, 0x2e, 0xdc, 0xb4, 0x97, 0x0b, 0xc1, 0x45, 0xa9, 0x45, 0x5a, 0xa5, 0x50,

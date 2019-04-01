@@ -50,7 +50,7 @@ func (x StringLengthErrorEnum_StringLengthError) String() string {
 	return proto.EnumName(StringLengthErrorEnum_StringLengthError_name, int32(x))
 }
 func (StringLengthErrorEnum_StringLengthError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_string_length_error_e0580fd39f78f99f, []int{0, 0}
+	return fileDescriptor_string_length_error_98f072ed39ca1b50, []int{0, 0}
 }
 
 // Container for enum describing possible string length errors.
@@ -64,7 +64,7 @@ func (m *StringLengthErrorEnum) Reset()         { *m = StringLengthErrorEnum{} }
 func (m *StringLengthErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*StringLengthErrorEnum) ProtoMessage()    {}
 func (*StringLengthErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_string_length_error_e0580fd39f78f99f, []int{0}
+	return fileDescriptor_string_length_error_98f072ed39ca1b50, []int{0}
 }
 func (m *StringLengthErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StringLengthErrorEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/string_length_error.proto", fileDescriptor_string_length_error_e0580fd39f78f99f)
+	proto.RegisterFile("google/ads/googleads/v1/errors/string_length_error.proto", fileDescriptor_string_length_error_98f072ed39ca1b50)
 }
 
-var fileDescriptor_string_length_error_e0580fd39f78f99f = []byte{
+var fileDescriptor_string_length_error_98f072ed39ca1b50 = []byte{
 	// 309 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0x4f, 0x4e, 0x84, 0x30,
 	0x14, 0xc6, 0x85, 0x49, 0xfc, 0xd3, 0xd1, 0x88, 0x24, 0xba, 0x30, 0x66, 0x16, 0x1c, 0xa0, 0x0d,

@@ -66,7 +66,7 @@ func (x LocationExtensionTargetingCriterionFieldEnum_LocationExtensionTargetingC
 	return proto.EnumName(LocationExtensionTargetingCriterionFieldEnum_LocationExtensionTargetingCriterionField_name, int32(x))
 }
 func (LocationExtensionTargetingCriterionFieldEnum_LocationExtensionTargetingCriterionField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_location_extension_targeting_criterion_field_fdd5fead05561590, []int{0, 0}
+	return fileDescriptor_location_extension_targeting_criterion_field_3d4f0aa0ea62357f, []int{0, 0}
 }
 
 // Values for Location Extension Targeting criterion fields.
@@ -84,7 +84,7 @@ func (m *LocationExtensionTargetingCriterionFieldEnum) String() string {
 }
 func (*LocationExtensionTargetingCriterionFieldEnum) ProtoMessage() {}
 func (*LocationExtensionTargetingCriterionFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_location_extension_targeting_criterion_field_fdd5fead05561590, []int{0}
+	return fileDescriptor_location_extension_targeting_criterion_field_3d4f0aa0ea62357f, []int{0}
 }
 func (m *LocationExtensionTargetingCriterionFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationExtensionTargetingCriterionFieldEnum.Unmarshal(m, b)
@@ -110,10 +110,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/location_extension_targeting_criterion_field.proto", fileDescriptor_location_extension_targeting_criterion_field_fdd5fead05561590)
+	proto.RegisterFile("google/ads/googleads/v1/enums/location_extension_targeting_criterion_field.proto", fileDescriptor_location_extension_targeting_criterion_field_3d4f0aa0ea62357f)
 }
 
-var fileDescriptor_location_extension_targeting_criterion_field_fdd5fead05561590 = []byte{
+var fileDescriptor_location_extension_targeting_criterion_field_3d4f0aa0ea62357f = []byte{
 	// 383 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x91, 0xc1, 0xae, 0x93, 0x40,
 	0x18, 0x85, 0x85, 0x7b, 0xbd, 0xf7, 0x66, 0xda, 0xe8, 0x64, 0x96, 0xc6, 0x2e, 0xda, 0x95, 0x0b,

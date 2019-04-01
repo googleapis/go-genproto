@@ -46,7 +46,7 @@ func (x FeedItemTargetDeviceEnum_FeedItemTargetDevice) String() string {
 	return proto.EnumName(FeedItemTargetDeviceEnum_FeedItemTargetDevice_name, int32(x))
 }
 func (FeedItemTargetDeviceEnum_FeedItemTargetDevice) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_target_device_041865c0ad9e3104, []int{0, 0}
+	return fileDescriptor_feed_item_target_device_4d7a90b6137db5eb, []int{0, 0}
 }
 
 // Container for enum describing possible data types for a feed item target
@@ -61,7 +61,7 @@ func (m *FeedItemTargetDeviceEnum) Reset()         { *m = FeedItemTargetDeviceEn
 func (m *FeedItemTargetDeviceEnum) String() string { return proto.CompactTextString(m) }
 func (*FeedItemTargetDeviceEnum) ProtoMessage()    {}
 func (*FeedItemTargetDeviceEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_target_device_041865c0ad9e3104, []int{0}
+	return fileDescriptor_feed_item_target_device_4d7a90b6137db5eb, []int{0}
 }
 func (m *FeedItemTargetDeviceEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedItemTargetDeviceEnum.Unmarshal(m, b)
@@ -87,10 +87,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/feed_item_target_device.proto", fileDescriptor_feed_item_target_device_041865c0ad9e3104)
+	proto.RegisterFile("google/ads/googleads/v1/enums/feed_item_target_device.proto", fileDescriptor_feed_item_target_device_4d7a90b6137db5eb)
 }
 
-var fileDescriptor_feed_item_target_device_041865c0ad9e3104 = []byte{
+var fileDescriptor_feed_item_target_device_4d7a90b6137db5eb = []byte{
 	// 303 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0xc3, 0x30,
 	0x1c, 0xc6, 0x5d, 0x85, 0x09, 0xd9, 0xc1, 0x51, 0x3c, 0xa8, 0xb8, 0xc3, 0xf6, 0x00, 0x09, 0xc5,

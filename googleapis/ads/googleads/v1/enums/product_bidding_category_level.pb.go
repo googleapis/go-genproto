@@ -62,7 +62,7 @@ func (x ProductBiddingCategoryLevelEnum_ProductBiddingCategoryLevel) String() st
 	return proto.EnumName(ProductBiddingCategoryLevelEnum_ProductBiddingCategoryLevel_name, int32(x))
 }
 func (ProductBiddingCategoryLevelEnum_ProductBiddingCategoryLevel) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_product_bidding_category_level_c1219073a6cb7cda, []int{0, 0}
+	return fileDescriptor_product_bidding_category_level_18cbb4e8d9f3d6a7, []int{0, 0}
 }
 
 // Level of a product bidding category.
@@ -76,7 +76,7 @@ func (m *ProductBiddingCategoryLevelEnum) Reset()         { *m = ProductBiddingC
 func (m *ProductBiddingCategoryLevelEnum) String() string { return proto.CompactTextString(m) }
 func (*ProductBiddingCategoryLevelEnum) ProtoMessage()    {}
 func (*ProductBiddingCategoryLevelEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_bidding_category_level_c1219073a6cb7cda, []int{0}
+	return fileDescriptor_product_bidding_category_level_18cbb4e8d9f3d6a7, []int{0}
 }
 func (m *ProductBiddingCategoryLevelEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductBiddingCategoryLevelEnum.Unmarshal(m, b)
@@ -102,10 +102,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/product_bidding_category_level.proto", fileDescriptor_product_bidding_category_level_c1219073a6cb7cda)
+	proto.RegisterFile("google/ads/googleads/v1/enums/product_bidding_category_level.proto", fileDescriptor_product_bidding_category_level_18cbb4e8d9f3d6a7)
 }
 
-var fileDescriptor_product_bidding_category_level_c1219073a6cb7cda = []byte{
+var fileDescriptor_product_bidding_category_level_18cbb4e8d9f3d6a7 = []byte{
 	// 329 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0x41, 0x4b, 0xfb, 0x30,
 	0x18, 0xc6, 0xff, 0xed, 0xfe, 0x4e, 0xc8, 0x0e, 0x86, 0x1e, 0xd5, 0xa1, 0xdb, 0x07, 0x48, 0xa9,

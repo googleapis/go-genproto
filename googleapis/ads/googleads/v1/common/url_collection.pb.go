@@ -39,7 +39,7 @@ func (m *UrlCollection) Reset()         { *m = UrlCollection{} }
 func (m *UrlCollection) String() string { return proto.CompactTextString(m) }
 func (*UrlCollection) ProtoMessage()    {}
 func (*UrlCollection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_url_collection_4ea5ff0665740994, []int{0}
+	return fileDescriptor_url_collection_54f50c0d21c2bb1b, []int{0}
 }
 func (m *UrlCollection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UrlCollection.Unmarshal(m, b)
@@ -92,10 +92,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/url_collection.proto", fileDescriptor_url_collection_4ea5ff0665740994)
+	proto.RegisterFile("google/ads/googleads/v1/common/url_collection.proto", fileDescriptor_url_collection_54f50c0d21c2bb1b)
 }
 
-var fileDescriptor_url_collection_4ea5ff0665740994 = []byte{
+var fileDescriptor_url_collection_54f50c0d21c2bb1b = []byte{
 	// 371 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xb1, 0x6a, 0xeb, 0x30,
 	0x14, 0x86, 0xb1, 0x73, 0xb9, 0x70, 0x7d, 0xb9, 0x84, 0xeb, 0x52, 0x08, 0x21, 0x84, 0x90, 0xa9,

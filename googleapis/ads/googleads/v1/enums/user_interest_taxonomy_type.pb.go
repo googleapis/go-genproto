@@ -62,7 +62,7 @@ func (x UserInterestTaxonomyTypeEnum_UserInterestTaxonomyType) String() string {
 	return proto.EnumName(UserInterestTaxonomyTypeEnum_UserInterestTaxonomyType_name, int32(x))
 }
 func (UserInterestTaxonomyTypeEnum_UserInterestTaxonomyType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_user_interest_taxonomy_type_b1bac0d8c427ee94, []int{0, 0}
+	return fileDescriptor_user_interest_taxonomy_type_8f66371abaf71501, []int{0, 0}
 }
 
 // Message describing a UserInterestTaxonomyType.
@@ -76,7 +76,7 @@ func (m *UserInterestTaxonomyTypeEnum) Reset()         { *m = UserInterestTaxono
 func (m *UserInterestTaxonomyTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*UserInterestTaxonomyTypeEnum) ProtoMessage()    {}
 func (*UserInterestTaxonomyTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_user_interest_taxonomy_type_b1bac0d8c427ee94, []int{0}
+	return fileDescriptor_user_interest_taxonomy_type_8f66371abaf71501, []int{0}
 }
 func (m *UserInterestTaxonomyTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserInterestTaxonomyTypeEnum.Unmarshal(m, b)
@@ -102,10 +102,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/user_interest_taxonomy_type.proto", fileDescriptor_user_interest_taxonomy_type_b1bac0d8c427ee94)
+	proto.RegisterFile("google/ads/googleads/v1/enums/user_interest_taxonomy_type.proto", fileDescriptor_user_interest_taxonomy_type_8f66371abaf71501)
 }
 
-var fileDescriptor_user_interest_taxonomy_type_b1bac0d8c427ee94 = []byte{
+var fileDescriptor_user_interest_taxonomy_type_8f66371abaf71501 = []byte{
 	// 387 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xcf, 0x8a, 0xd4, 0x30,
 	0x1c, 0xb6, 0xb3, 0xba, 0x6a, 0x76, 0xc5, 0x12, 0x04, 0x17, 0xdd, 0x39, 0xec, 0x3e, 0x40, 0x4a,

@@ -64,7 +64,7 @@ func (x DataDrivenModelStatusEnum_DataDrivenModelStatus) String() string {
 	return proto.EnumName(DataDrivenModelStatusEnum_DataDrivenModelStatus_name, int32(x))
 }
 func (DataDrivenModelStatusEnum_DataDrivenModelStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_data_driven_model_status_dcf5da9d8266ee42, []int{0, 0}
+	return fileDescriptor_data_driven_model_status_19a4f304eeeaf9be, []int{0, 0}
 }
 
 // Container for enum indicating data driven model status.
@@ -78,7 +78,7 @@ func (m *DataDrivenModelStatusEnum) Reset()         { *m = DataDrivenModelStatus
 func (m *DataDrivenModelStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*DataDrivenModelStatusEnum) ProtoMessage()    {}
 func (*DataDrivenModelStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_driven_model_status_dcf5da9d8266ee42, []int{0}
+	return fileDescriptor_data_driven_model_status_19a4f304eeeaf9be, []int{0}
 }
 func (m *DataDrivenModelStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DataDrivenModelStatusEnum.Unmarshal(m, b)
@@ -104,10 +104,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/data_driven_model_status.proto", fileDescriptor_data_driven_model_status_dcf5da9d8266ee42)
+	proto.RegisterFile("google/ads/googleads/v1/enums/data_driven_model_status.proto", fileDescriptor_data_driven_model_status_19a4f304eeeaf9be)
 }
 
-var fileDescriptor_data_driven_model_status_dcf5da9d8266ee42 = []byte{
+var fileDescriptor_data_driven_model_status_19a4f304eeeaf9be = []byte{
 	// 341 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcf, 0x4a, 0xc3, 0x30,
 	0x1c, 0xb6, 0x9d, 0x53, 0x96, 0x21, 0x2b, 0x15, 0x0f, 0x0e, 0x77, 0xd8, 0x1e, 0x20, 0xa5, 0x78,

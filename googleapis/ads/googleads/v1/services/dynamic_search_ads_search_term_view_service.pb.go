@@ -41,7 +41,7 @@ func (m *GetDynamicSearchAdsSearchTermViewRequest) Reset() {
 func (m *GetDynamicSearchAdsSearchTermViewRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDynamicSearchAdsSearchTermViewRequest) ProtoMessage()    {}
 func (*GetDynamicSearchAdsSearchTermViewRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dynamic_search_ads_search_term_view_service_ed8bf2ea2eb0b524, []int{0}
+	return fileDescriptor_dynamic_search_ads_search_term_view_service_818af03bdd020ada, []int{0}
 }
 func (m *GetDynamicSearchAdsSearchTermViewRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDynamicSearchAdsSearchTermViewRequest.Unmarshal(m, b)
@@ -147,10 +147,10 @@ var _DynamicSearchAdsSearchTermViewService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/dynamic_search_ads_search_term_view_service.proto", fileDescriptor_dynamic_search_ads_search_term_view_service_ed8bf2ea2eb0b524)
+	proto.RegisterFile("google/ads/googleads/v1/services/dynamic_search_ads_search_term_view_service.proto", fileDescriptor_dynamic_search_ads_search_term_view_service_818af03bdd020ada)
 }
 
-var fileDescriptor_dynamic_search_ads_search_term_view_service_ed8bf2ea2eb0b524 = []byte{
+var fileDescriptor_dynamic_search_ads_search_term_view_service_818af03bdd020ada = []byte{
 	// 391 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xcd, 0x6a, 0xdb, 0x40,
 	0x14, 0x85, 0x91, 0x0a, 0x85, 0x8a, 0x76, 0xa3, 0x55, 0x31, 0x5d, 0xb8, 0xae, 0x0b, 0xc6, 0x8b,

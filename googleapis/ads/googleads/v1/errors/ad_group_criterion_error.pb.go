@@ -200,7 +200,7 @@ func (x AdGroupCriterionErrorEnum_AdGroupCriterionError) String() string {
 	return proto.EnumName(AdGroupCriterionErrorEnum_AdGroupCriterionError_name, int32(x))
 }
 func (AdGroupCriterionErrorEnum_AdGroupCriterionError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_error_697f31de276b0971, []int{0, 0}
+	return fileDescriptor_ad_group_criterion_error_55f2e6281c5d5ae4, []int{0, 0}
 }
 
 // Container for enum describing possible ad group criterion errors.
@@ -214,7 +214,7 @@ func (m *AdGroupCriterionErrorEnum) Reset()         { *m = AdGroupCriterionError
 func (m *AdGroupCriterionErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*AdGroupCriterionErrorEnum) ProtoMessage()    {}
 func (*AdGroupCriterionErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_error_697f31de276b0971, []int{0}
+	return fileDescriptor_ad_group_criterion_error_55f2e6281c5d5ae4, []int{0}
 }
 func (m *AdGroupCriterionErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupCriterionErrorEnum.Unmarshal(m, b)
@@ -240,10 +240,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/ad_group_criterion_error.proto", fileDescriptor_ad_group_criterion_error_697f31de276b0971)
+	proto.RegisterFile("google/ads/googleads/v1/errors/ad_group_criterion_error.proto", fileDescriptor_ad_group_criterion_error_55f2e6281c5d5ae4)
 }
 
-var fileDescriptor_ad_group_criterion_error_697f31de276b0971 = []byte{
+var fileDescriptor_ad_group_criterion_error_55f2e6281c5d5ae4 = []byte{
 	// 976 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x55, 0xdd, 0x72, 0x1b, 0x35,
 	0x14, 0xa6, 0x29, 0xb4, 0xa0, 0x06, 0x2a, 0xc4, 0x4f, 0xdb, 0xfc, 0xb6, 0x29, 0xb4, 0xb4, 0x21,

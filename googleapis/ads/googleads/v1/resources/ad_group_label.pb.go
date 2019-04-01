@@ -39,7 +39,7 @@ func (m *AdGroupLabel) Reset()         { *m = AdGroupLabel{} }
 func (m *AdGroupLabel) String() string { return proto.CompactTextString(m) }
 func (*AdGroupLabel) ProtoMessage()    {}
 func (*AdGroupLabel) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_label_c946b58e5843748b, []int{0}
+	return fileDescriptor_ad_group_label_fdb4c422a3304734, []int{0}
 }
 func (m *AdGroupLabel) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupLabel.Unmarshal(m, b)
@@ -85,10 +85,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/ad_group_label.proto", fileDescriptor_ad_group_label_c946b58e5843748b)
+	proto.RegisterFile("google/ads/googleads/v1/resources/ad_group_label.proto", fileDescriptor_ad_group_label_fdb4c422a3304734)
 }
 
-var fileDescriptor_ad_group_label_c946b58e5843748b = []byte{
+var fileDescriptor_ad_group_label_fdb4c422a3304734 = []byte{
 	// 328 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x91, 0x4f, 0x4b, 0xf3, 0x30,
 	0x1c, 0xc7, 0x69, 0xc7, 0xf3, 0xa8, 0x75, 0x1e, 0xec, 0x69, 0x8c, 0x21, 0x9b, 0x32, 0xd8, 0x29,

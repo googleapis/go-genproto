@@ -41,7 +41,7 @@ func (m *GetCampaignCriterionRequest) Reset()         { *m = GetCampaignCriterio
 func (m *GetCampaignCriterionRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCampaignCriterionRequest) ProtoMessage()    {}
 func (*GetCampaignCriterionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_criterion_service_84e08a80cabf0cf4, []int{0}
+	return fileDescriptor_campaign_criterion_service_76ecc9bf710d7316, []int{0}
 }
 func (m *GetCampaignCriterionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCampaignCriterionRequest.Unmarshal(m, b)
@@ -91,7 +91,7 @@ func (m *MutateCampaignCriteriaRequest) Reset()         { *m = MutateCampaignCri
 func (m *MutateCampaignCriteriaRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignCriteriaRequest) ProtoMessage()    {}
 func (*MutateCampaignCriteriaRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_criterion_service_84e08a80cabf0cf4, []int{1}
+	return fileDescriptor_campaign_criterion_service_76ecc9bf710d7316, []int{1}
 }
 func (m *MutateCampaignCriteriaRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignCriteriaRequest.Unmarshal(m, b)
@@ -159,7 +159,7 @@ func (m *CampaignCriterionOperation) Reset()         { *m = CampaignCriterionOpe
 func (m *CampaignCriterionOperation) String() string { return proto.CompactTextString(m) }
 func (*CampaignCriterionOperation) ProtoMessage()    {}
 func (*CampaignCriterionOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_criterion_service_84e08a80cabf0cf4, []int{2}
+	return fileDescriptor_campaign_criterion_service_76ecc9bf710d7316, []int{2}
 }
 func (m *CampaignCriterionOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CampaignCriterionOperation.Unmarshal(m, b)
@@ -343,7 +343,7 @@ func (m *MutateCampaignCriteriaResponse) Reset()         { *m = MutateCampaignCr
 func (m *MutateCampaignCriteriaResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignCriteriaResponse) ProtoMessage()    {}
 func (*MutateCampaignCriteriaResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_criterion_service_84e08a80cabf0cf4, []int{3}
+	return fileDescriptor_campaign_criterion_service_76ecc9bf710d7316, []int{3}
 }
 func (m *MutateCampaignCriteriaResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignCriteriaResponse.Unmarshal(m, b)
@@ -390,7 +390,7 @@ func (m *MutateCampaignCriterionResult) Reset()         { *m = MutateCampaignCri
 func (m *MutateCampaignCriterionResult) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignCriterionResult) ProtoMessage()    {}
 func (*MutateCampaignCriterionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_criterion_service_84e08a80cabf0cf4, []int{4}
+	return fileDescriptor_campaign_criterion_service_76ecc9bf710d7316, []int{4}
 }
 func (m *MutateCampaignCriterionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignCriterionResult.Unmarshal(m, b)
@@ -535,10 +535,10 @@ var _CampaignCriterionService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/campaign_criterion_service.proto", fileDescriptor_campaign_criterion_service_84e08a80cabf0cf4)
+	proto.RegisterFile("google/ads/googleads/v1/services/campaign_criterion_service.proto", fileDescriptor_campaign_criterion_service_76ecc9bf710d7316)
 }
 
-var fileDescriptor_campaign_criterion_service_84e08a80cabf0cf4 = []byte{
+var fileDescriptor_campaign_criterion_service_76ecc9bf710d7316 = []byte{
 	// 721 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x95, 0x4f, 0x6b, 0xd4, 0x4c,
 	0x1c, 0xc7, 0x9f, 0x64, 0x1f, 0xfa, 0x3c, 0x9d, 0xad, 0x0a, 0xe3, 0xbf, 0xb0, 0xda, 0xba, 0xc4,

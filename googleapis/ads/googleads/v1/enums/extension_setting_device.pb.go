@@ -52,7 +52,7 @@ func (x ExtensionSettingDeviceEnum_ExtensionSettingDevice) String() string {
 	return proto.EnumName(ExtensionSettingDeviceEnum_ExtensionSettingDevice_name, int32(x))
 }
 func (ExtensionSettingDeviceEnum_ExtensionSettingDevice) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_extension_setting_device_9860ce9a5ed58739, []int{0, 0}
+	return fileDescriptor_extension_setting_device_1f5cc7a17d6f254a, []int{0, 0}
 }
 
 // Container for enum describing extension setting device types.
@@ -66,7 +66,7 @@ func (m *ExtensionSettingDeviceEnum) Reset()         { *m = ExtensionSettingDevi
 func (m *ExtensionSettingDeviceEnum) String() string { return proto.CompactTextString(m) }
 func (*ExtensionSettingDeviceEnum) ProtoMessage()    {}
 func (*ExtensionSettingDeviceEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_setting_device_9860ce9a5ed58739, []int{0}
+	return fileDescriptor_extension_setting_device_1f5cc7a17d6f254a, []int{0}
 }
 func (m *ExtensionSettingDeviceEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExtensionSettingDeviceEnum.Unmarshal(m, b)
@@ -92,10 +92,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/extension_setting_device.proto", fileDescriptor_extension_setting_device_9860ce9a5ed58739)
+	proto.RegisterFile("google/ads/googleads/v1/enums/extension_setting_device.proto", fileDescriptor_extension_setting_device_1f5cc7a17d6f254a)
 }
 
-var fileDescriptor_extension_setting_device_9860ce9a5ed58739 = []byte{
+var fileDescriptor_extension_setting_device_1f5cc7a17d6f254a = []byte{
 	// 311 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0x41, 0x4b, 0xfb, 0x30,
 	0x18, 0xc6, 0xff, 0xeb, 0x60, 0x7f, 0xc8, 0x0e, 0x96, 0x1e, 0x3c, 0x4c, 0x77, 0xd8, 0x3e, 0x40,

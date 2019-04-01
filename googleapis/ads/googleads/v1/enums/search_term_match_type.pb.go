@@ -62,7 +62,7 @@ func (x SearchTermMatchTypeEnum_SearchTermMatchType) String() string {
 	return proto.EnumName(SearchTermMatchTypeEnum_SearchTermMatchType_name, int32(x))
 }
 func (SearchTermMatchTypeEnum_SearchTermMatchType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_search_term_match_type_ebb90fc2b5c0e606, []int{0, 0}
+	return fileDescriptor_search_term_match_type_08c1c98e17fe56a1, []int{0, 0}
 }
 
 // Container for enum describing match types for a keyword triggering an ad.
@@ -76,7 +76,7 @@ func (m *SearchTermMatchTypeEnum) Reset()         { *m = SearchTermMatchTypeEnum
 func (m *SearchTermMatchTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*SearchTermMatchTypeEnum) ProtoMessage()    {}
 func (*SearchTermMatchTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_term_match_type_ebb90fc2b5c0e606, []int{0}
+	return fileDescriptor_search_term_match_type_08c1c98e17fe56a1, []int{0}
 }
 func (m *SearchTermMatchTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchTermMatchTypeEnum.Unmarshal(m, b)
@@ -102,10 +102,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/search_term_match_type.proto", fileDescriptor_search_term_match_type_ebb90fc2b5c0e606)
+	proto.RegisterFile("google/ads/googleads/v1/enums/search_term_match_type.proto", fileDescriptor_search_term_match_type_08c1c98e17fe56a1)
 }
 
-var fileDescriptor_search_term_match_type_ebb90fc2b5c0e606 = []byte{
+var fileDescriptor_search_term_match_type_08c1c98e17fe56a1 = []byte{
 	// 339 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xdf, 0x4a, 0xf3, 0x30,
 	0x18, 0xc6, 0xbf, 0x76, 0xdf, 0x26, 0x66, 0xa0, 0xa5, 0x1e, 0x28, 0xe2, 0x0e, 0xb6, 0x0b, 0x48,

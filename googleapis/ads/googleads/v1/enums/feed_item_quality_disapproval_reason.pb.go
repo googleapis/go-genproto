@@ -114,7 +114,7 @@ func (x FeedItemQualityDisapprovalReasonEnum_FeedItemQualityDisapprovalReason) S
 	return proto.EnumName(FeedItemQualityDisapprovalReasonEnum_FeedItemQualityDisapprovalReason_name, int32(x))
 }
 func (FeedItemQualityDisapprovalReasonEnum_FeedItemQualityDisapprovalReason) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_quality_disapproval_reason_67c5465da8bf006e, []int{0, 0}
+	return fileDescriptor_feed_item_quality_disapproval_reason_bbf803c5ab3b4f32, []int{0, 0}
 }
 
 // Container for enum describing possible quality evaluation disapproval reasons
@@ -129,7 +129,7 @@ func (m *FeedItemQualityDisapprovalReasonEnum) Reset()         { *m = FeedItemQu
 func (m *FeedItemQualityDisapprovalReasonEnum) String() string { return proto.CompactTextString(m) }
 func (*FeedItemQualityDisapprovalReasonEnum) ProtoMessage()    {}
 func (*FeedItemQualityDisapprovalReasonEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_quality_disapproval_reason_67c5465da8bf006e, []int{0}
+	return fileDescriptor_feed_item_quality_disapproval_reason_bbf803c5ab3b4f32, []int{0}
 }
 func (m *FeedItemQualityDisapprovalReasonEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedItemQualityDisapprovalReasonEnum.Unmarshal(m, b)
@@ -155,10 +155,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/feed_item_quality_disapproval_reason.proto", fileDescriptor_feed_item_quality_disapproval_reason_67c5465da8bf006e)
+	proto.RegisterFile("google/ads/googleads/v1/enums/feed_item_quality_disapproval_reason.proto", fileDescriptor_feed_item_quality_disapproval_reason_bbf803c5ab3b4f32)
 }
 
-var fileDescriptor_feed_item_quality_disapproval_reason_67c5465da8bf006e = []byte{
+var fileDescriptor_feed_item_quality_disapproval_reason_bbf803c5ab3b4f32 = []byte{
 	// 631 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x94, 0xcd, 0x72, 0xd3, 0x30,
 	0x10, 0xc7, 0x69, 0x0a, 0x29, 0xa8, 0x40, 0x85, 0xb8, 0x15, 0x5a, 0x68, 0xa0, 0x05, 0x0a, 0xd8,

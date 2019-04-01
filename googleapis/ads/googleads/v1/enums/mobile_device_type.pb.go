@@ -50,7 +50,7 @@ func (x MobileDeviceTypeEnum_MobileDeviceType) String() string {
 	return proto.EnumName(MobileDeviceTypeEnum_MobileDeviceType_name, int32(x))
 }
 func (MobileDeviceTypeEnum_MobileDeviceType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_mobile_device_type_b546337f6eb4f761, []int{0, 0}
+	return fileDescriptor_mobile_device_type_d451fb4923a698d7, []int{0, 0}
 }
 
 // Container for enum describing the types of mobile device.
@@ -64,7 +64,7 @@ func (m *MobileDeviceTypeEnum) Reset()         { *m = MobileDeviceTypeEnum{} }
 func (m *MobileDeviceTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*MobileDeviceTypeEnum) ProtoMessage()    {}
 func (*MobileDeviceTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mobile_device_type_b546337f6eb4f761, []int{0}
+	return fileDescriptor_mobile_device_type_d451fb4923a698d7, []int{0}
 }
 func (m *MobileDeviceTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MobileDeviceTypeEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/mobile_device_type.proto", fileDescriptor_mobile_device_type_b546337f6eb4f761)
+	proto.RegisterFile("google/ads/googleads/v1/enums/mobile_device_type.proto", fileDescriptor_mobile_device_type_d451fb4923a698d7)
 }
 
-var fileDescriptor_mobile_device_type_b546337f6eb4f761 = []byte{
+var fileDescriptor_mobile_device_type_d451fb4923a698d7 = []byte{
 	// 306 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x4f, 0x4b, 0xfb, 0x30,
 	0x18, 0xfe, 0xad, 0x83, 0xfd, 0x20, 0x3b, 0x58, 0x8a, 0x5e, 0xc4, 0x1d, 0xb6, 0x0f, 0x90, 0x50,

@@ -46,7 +46,7 @@ func (x NullErrorEnum_NullError) String() string {
 	return proto.EnumName(NullErrorEnum_NullError_name, int32(x))
 }
 func (NullErrorEnum_NullError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_null_error_cb6723cf4a5be0ce, []int{0, 0}
+	return fileDescriptor_null_error_4f331e342f3854d8, []int{0, 0}
 }
 
 // Container for enum describing possible null errors.
@@ -60,7 +60,7 @@ func (m *NullErrorEnum) Reset()         { *m = NullErrorEnum{} }
 func (m *NullErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*NullErrorEnum) ProtoMessage()    {}
 func (*NullErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_null_error_cb6723cf4a5be0ce, []int{0}
+	return fileDescriptor_null_error_4f331e342f3854d8, []int{0}
 }
 func (m *NullErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NullErrorEnum.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/null_error.proto", fileDescriptor_null_error_cb6723cf4a5be0ce)
+	proto.RegisterFile("google/ads/googleads/v1/errors/null_error.proto", fileDescriptor_null_error_4f331e342f3854d8)
 }
 
-var fileDescriptor_null_error_cb6723cf4a5be0ce = []byte{
+var fileDescriptor_null_error_4f331e342f3854d8 = []byte{
 	// 285 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xdf, 0x6a, 0x83, 0x30,
 	0x14, 0xc6, 0xa7, 0x83, 0x8d, 0xa5, 0xfb, 0x23, 0x5e, 0x8e, 0xd1, 0x0b, 0x1f, 0x20, 0x41, 0x76,

@@ -119,7 +119,7 @@ func (x AuthenticationErrorEnum_AuthenticationError) String() string {
 	return proto.EnumName(AuthenticationErrorEnum_AuthenticationError_name, int32(x))
 }
 func (AuthenticationErrorEnum_AuthenticationError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_error_91bf0148374362f4, []int{0, 0}
+	return fileDescriptor_authentication_error_2e3c2a7ef97ffe05, []int{0, 0}
 }
 
 // Container for enum describing possible authentication errors.
@@ -133,7 +133,7 @@ func (m *AuthenticationErrorEnum) Reset()         { *m = AuthenticationErrorEnum
 func (m *AuthenticationErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*AuthenticationErrorEnum) ProtoMessage()    {}
 func (*AuthenticationErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_authentication_error_91bf0148374362f4, []int{0}
+	return fileDescriptor_authentication_error_2e3c2a7ef97ffe05, []int{0}
 }
 func (m *AuthenticationErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthenticationErrorEnum.Unmarshal(m, b)
@@ -159,10 +159,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/authentication_error.proto", fileDescriptor_authentication_error_91bf0148374362f4)
+	proto.RegisterFile("google/ads/googleads/v1/errors/authentication_error.proto", fileDescriptor_authentication_error_2e3c2a7ef97ffe05)
 }
 
-var fileDescriptor_authentication_error_91bf0148374362f4 = []byte{
+var fileDescriptor_authentication_error_2e3c2a7ef97ffe05 = []byte{
 	// 558 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x53, 0xdd, 0x6e, 0xd3, 0x30,
 	0x14, 0x66, 0x65, 0xfc, 0x79, 0x83, 0x19, 0x77, 0xec, 0x4f, 0x30, 0x41, 0x35, 0x21, 0xb8, 0x20,

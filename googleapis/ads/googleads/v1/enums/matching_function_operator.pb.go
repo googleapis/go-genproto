@@ -68,7 +68,7 @@ func (x MatchingFunctionOperatorEnum_MatchingFunctionOperator) String() string {
 	return proto.EnumName(MatchingFunctionOperatorEnum_MatchingFunctionOperator_name, int32(x))
 }
 func (MatchingFunctionOperatorEnum_MatchingFunctionOperator) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_operator_031784094e38c630, []int{0, 0}
+	return fileDescriptor_matching_function_operator_bca31fb04efa2051, []int{0, 0}
 }
 
 // Container for enum describing matching function operator.
@@ -82,7 +82,7 @@ func (m *MatchingFunctionOperatorEnum) Reset()         { *m = MatchingFunctionOp
 func (m *MatchingFunctionOperatorEnum) String() string { return proto.CompactTextString(m) }
 func (*MatchingFunctionOperatorEnum) ProtoMessage()    {}
 func (*MatchingFunctionOperatorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_operator_031784094e38c630, []int{0}
+	return fileDescriptor_matching_function_operator_bca31fb04efa2051, []int{0}
 }
 func (m *MatchingFunctionOperatorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MatchingFunctionOperatorEnum.Unmarshal(m, b)
@@ -108,10 +108,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/matching_function_operator.proto", fileDescriptor_matching_function_operator_031784094e38c630)
+	proto.RegisterFile("google/ads/googleads/v1/enums/matching_function_operator.proto", fileDescriptor_matching_function_operator_bca31fb04efa2051)
 }
 
-var fileDescriptor_matching_function_operator_031784094e38c630 = []byte{
+var fileDescriptor_matching_function_operator_bca31fb04efa2051 = []byte{
 	// 345 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x4d, 0x6a, 0xf3, 0x30,
 	0x14, 0xfc, 0xec, 0x7c, 0x75, 0x8a, 0x12, 0xa8, 0xd0, 0xaa, 0x94, 0x64, 0x91, 0x1c, 0x40, 0xc6,

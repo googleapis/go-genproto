@@ -80,7 +80,7 @@ func (x LabelErrorEnum_LabelError) String() string {
 	return proto.EnumName(LabelErrorEnum_LabelError_name, int32(x))
 }
 func (LabelErrorEnum_LabelError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_label_error_1b6d397a9bc22971, []int{0, 0}
+	return fileDescriptor_label_error_0eb36a5f34c47723, []int{0, 0}
 }
 
 // Container for enum describing possible label errors.
@@ -94,7 +94,7 @@ func (m *LabelErrorEnum) Reset()         { *m = LabelErrorEnum{} }
 func (m *LabelErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*LabelErrorEnum) ProtoMessage()    {}
 func (*LabelErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_label_error_1b6d397a9bc22971, []int{0}
+	return fileDescriptor_label_error_0eb36a5f34c47723, []int{0}
 }
 func (m *LabelErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelErrorEnum.Unmarshal(m, b)
@@ -120,10 +120,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/label_error.proto", fileDescriptor_label_error_1b6d397a9bc22971)
+	proto.RegisterFile("google/ads/googleads/v1/errors/label_error.proto", fileDescriptor_label_error_0eb36a5f34c47723)
 }
 
-var fileDescriptor_label_error_1b6d397a9bc22971 = []byte{
+var fileDescriptor_label_error_0eb36a5f34c47723 = []byte{
 	// 465 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xc1, 0x6e, 0xd3, 0x40,
 	0x10, 0x40, 0x69, 0x02, 0x2d, 0x6c, 0xa5, 0xd6, 0xda, 0x03, 0x07, 0x28, 0x05, 0x72, 0xe0, 0x82,

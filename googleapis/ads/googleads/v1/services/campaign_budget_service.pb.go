@@ -41,7 +41,7 @@ func (m *GetCampaignBudgetRequest) Reset()         { *m = GetCampaignBudgetReque
 func (m *GetCampaignBudgetRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCampaignBudgetRequest) ProtoMessage()    {}
 func (*GetCampaignBudgetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_budget_service_3360c0ab652697e8, []int{0}
+	return fileDescriptor_campaign_budget_service_46f127f93ff7c20c, []int{0}
 }
 func (m *GetCampaignBudgetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCampaignBudgetRequest.Unmarshal(m, b)
@@ -91,7 +91,7 @@ func (m *MutateCampaignBudgetsRequest) Reset()         { *m = MutateCampaignBudg
 func (m *MutateCampaignBudgetsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignBudgetsRequest) ProtoMessage()    {}
 func (*MutateCampaignBudgetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_budget_service_3360c0ab652697e8, []int{1}
+	return fileDescriptor_campaign_budget_service_46f127f93ff7c20c, []int{1}
 }
 func (m *MutateCampaignBudgetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignBudgetsRequest.Unmarshal(m, b)
@@ -159,7 +159,7 @@ func (m *CampaignBudgetOperation) Reset()         { *m = CampaignBudgetOperation
 func (m *CampaignBudgetOperation) String() string { return proto.CompactTextString(m) }
 func (*CampaignBudgetOperation) ProtoMessage()    {}
 func (*CampaignBudgetOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_budget_service_3360c0ab652697e8, []int{2}
+	return fileDescriptor_campaign_budget_service_46f127f93ff7c20c, []int{2}
 }
 func (m *CampaignBudgetOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CampaignBudgetOperation.Unmarshal(m, b)
@@ -343,7 +343,7 @@ func (m *MutateCampaignBudgetsResponse) Reset()         { *m = MutateCampaignBud
 func (m *MutateCampaignBudgetsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignBudgetsResponse) ProtoMessage()    {}
 func (*MutateCampaignBudgetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_budget_service_3360c0ab652697e8, []int{3}
+	return fileDescriptor_campaign_budget_service_46f127f93ff7c20c, []int{3}
 }
 func (m *MutateCampaignBudgetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignBudgetsResponse.Unmarshal(m, b)
@@ -390,7 +390,7 @@ func (m *MutateCampaignBudgetResult) Reset()         { *m = MutateCampaignBudget
 func (m *MutateCampaignBudgetResult) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignBudgetResult) ProtoMessage()    {}
 func (*MutateCampaignBudgetResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_budget_service_3360c0ab652697e8, []int{4}
+	return fileDescriptor_campaign_budget_service_46f127f93ff7c20c, []int{4}
 }
 func (m *MutateCampaignBudgetResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignBudgetResult.Unmarshal(m, b)
@@ -537,10 +537,10 @@ var _CampaignBudgetService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/campaign_budget_service.proto", fileDescriptor_campaign_budget_service_3360c0ab652697e8)
+	proto.RegisterFile("google/ads/googleads/v1/services/campaign_budget_service.proto", fileDescriptor_campaign_budget_service_46f127f93ff7c20c)
 }
 
-var fileDescriptor_campaign_budget_service_3360c0ab652697e8 = []byte{
+var fileDescriptor_campaign_budget_service_46f127f93ff7c20c = []byte{
 	// 717 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0xc1, 0x6b, 0xd4, 0x4e,
 	0x14, 0xfe, 0x25, 0xfb, 0xa3, 0xda, 0xd9, 0xaa, 0x38, 0x52, 0xba, 0x84, 0xaa, 0x4b, 0x2c, 0x58,

@@ -59,7 +59,7 @@ func (x TargetCpaOptInRecommendationGoalEnum_TargetCpaOptInRecommendationGoal) S
 	return proto.EnumName(TargetCpaOptInRecommendationGoalEnum_TargetCpaOptInRecommendationGoal_name, int32(x))
 }
 func (TargetCpaOptInRecommendationGoalEnum_TargetCpaOptInRecommendationGoal) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_cpa_opt_in_recommendation_goal_bfab849445a35cbf, []int{0, 0}
+	return fileDescriptor_target_cpa_opt_in_recommendation_goal_f3c48de983f87648, []int{0, 0}
 }
 
 // Container for enum describing goals for TargetCpaOptIn recommendation.
@@ -73,7 +73,7 @@ func (m *TargetCpaOptInRecommendationGoalEnum) Reset()         { *m = TargetCpaO
 func (m *TargetCpaOptInRecommendationGoalEnum) String() string { return proto.CompactTextString(m) }
 func (*TargetCpaOptInRecommendationGoalEnum) ProtoMessage()    {}
 func (*TargetCpaOptInRecommendationGoalEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_cpa_opt_in_recommendation_goal_bfab849445a35cbf, []int{0}
+	return fileDescriptor_target_cpa_opt_in_recommendation_goal_f3c48de983f87648, []int{0}
 }
 func (m *TargetCpaOptInRecommendationGoalEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetCpaOptInRecommendationGoalEnum.Unmarshal(m, b)
@@ -99,10 +99,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/target_cpa_opt_in_recommendation_goal.proto", fileDescriptor_target_cpa_opt_in_recommendation_goal_bfab849445a35cbf)
+	proto.RegisterFile("google/ads/googleads/v1/enums/target_cpa_opt_in_recommendation_goal.proto", fileDescriptor_target_cpa_opt_in_recommendation_goal_f3c48de983f87648)
 }
 
-var fileDescriptor_target_cpa_opt_in_recommendation_goal_bfab849445a35cbf = []byte{
+var fileDescriptor_target_cpa_opt_in_recommendation_goal_f3c48de983f87648 = []byte{
 	// 357 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x91, 0xdd, 0x4a, 0xf3, 0x30,
 	0x18, 0xc7, 0xdf, 0x76, 0xef, 0x97, 0x99, 0x62, 0x29, 0x1e, 0x89, 0x03, 0x37, 0xf4, 0x34, 0xa5,

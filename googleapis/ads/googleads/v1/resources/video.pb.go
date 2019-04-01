@@ -44,7 +44,7 @@ func (m *Video) Reset()         { *m = Video{} }
 func (m *Video) String() string { return proto.CompactTextString(m) }
 func (*Video) ProtoMessage()    {}
 func (*Video) Descriptor() ([]byte, []int) {
-	return fileDescriptor_video_9679d74854027076, []int{0}
+	return fileDescriptor_video_d1102a1b9f400320, []int{0}
 }
 func (m *Video) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Video.Unmarshal(m, b)
@@ -104,10 +104,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/video.proto", fileDescriptor_video_9679d74854027076)
+	proto.RegisterFile("google/ads/googleads/v1/resources/video.proto", fileDescriptor_video_d1102a1b9f400320)
 }
 
-var fileDescriptor_video_9679d74854027076 = []byte{
+var fileDescriptor_video_d1102a1b9f400320 = []byte{
 	// 370 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x91, 0xcf, 0x4a, 0xf3, 0x40,
 	0x14, 0xc5, 0x49, 0xfa, 0xf5, 0x83, 0x8e, 0xff, 0x20, 0xab, 0x50, 0x8b, 0xb4, 0x4a, 0xa1, 0x0b,

@@ -80,7 +80,7 @@ func (x TargetingDimensionEnum_TargetingDimension) String() string {
 	return proto.EnumName(TargetingDimensionEnum_TargetingDimension_name, int32(x))
 }
 func (TargetingDimensionEnum_TargetingDimension) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_targeting_dimension_f2857fd086934b30, []int{0, 0}
+	return fileDescriptor_targeting_dimension_c92f3ab89cab34f3, []int{0, 0}
 }
 
 // The dimensions that can be targeted.
@@ -94,7 +94,7 @@ func (m *TargetingDimensionEnum) Reset()         { *m = TargetingDimensionEnum{}
 func (m *TargetingDimensionEnum) String() string { return proto.CompactTextString(m) }
 func (*TargetingDimensionEnum) ProtoMessage()    {}
 func (*TargetingDimensionEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_targeting_dimension_f2857fd086934b30, []int{0}
+	return fileDescriptor_targeting_dimension_c92f3ab89cab34f3, []int{0}
 }
 func (m *TargetingDimensionEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetingDimensionEnum.Unmarshal(m, b)
@@ -120,10 +120,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/targeting_dimension.proto", fileDescriptor_targeting_dimension_f2857fd086934b30)
+	proto.RegisterFile("google/ads/googleads/v1/enums/targeting_dimension.proto", fileDescriptor_targeting_dimension_c92f3ab89cab34f3)
 }
 
-var fileDescriptor_targeting_dimension_f2857fd086934b30 = []byte{
+var fileDescriptor_targeting_dimension_c92f3ab89cab34f3 = []byte{
 	// 378 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xdf, 0xaa, 0xd3, 0x30,
 	0x1c, 0xb6, 0x3d, 0x9e, 0x9d, 0xb3, 0x6c, 0xb2, 0x10, 0x41, 0x41, 0xdc, 0xc5, 0xf6, 0x00, 0x29,

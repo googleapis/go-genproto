@@ -134,7 +134,7 @@ func (x AccountBudgetProposalErrorEnum_AccountBudgetProposalError) String() stri
 	return proto.EnumName(AccountBudgetProposalErrorEnum_AccountBudgetProposalError_name, int32(x))
 }
 func (AccountBudgetProposalErrorEnum_AccountBudgetProposalError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_account_budget_proposal_error_dcb25eb1154be10e, []int{0, 0}
+	return fileDescriptor_account_budget_proposal_error_6f20f05b584e6c08, []int{0, 0}
 }
 
 // Container for enum describing possible account budget proposal errors.
@@ -148,7 +148,7 @@ func (m *AccountBudgetProposalErrorEnum) Reset()         { *m = AccountBudgetPro
 func (m *AccountBudgetProposalErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*AccountBudgetProposalErrorEnum) ProtoMessage()    {}
 func (*AccountBudgetProposalErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_budget_proposal_error_dcb25eb1154be10e, []int{0}
+	return fileDescriptor_account_budget_proposal_error_6f20f05b584e6c08, []int{0}
 }
 func (m *AccountBudgetProposalErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AccountBudgetProposalErrorEnum.Unmarshal(m, b)
@@ -174,10 +174,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/account_budget_proposal_error.proto", fileDescriptor_account_budget_proposal_error_dcb25eb1154be10e)
+	proto.RegisterFile("google/ads/googleads/v1/errors/account_budget_proposal_error.proto", fileDescriptor_account_budget_proposal_error_6f20f05b584e6c08)
 }
 
-var fileDescriptor_account_budget_proposal_error_dcb25eb1154be10e = []byte{
+var fileDescriptor_account_budget_proposal_error_6f20f05b584e6c08 = []byte{
 	// 686 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x54, 0xcb, 0x6e, 0x13, 0x3d,
 	0x14, 0xfe, 0x9b, 0xfe, 0xa4, 0xe0, 0x42, 0x6b, 0xdc, 0x0b, 0x25, 0xaa, 0x52, 0x14, 0x96, 0x48,

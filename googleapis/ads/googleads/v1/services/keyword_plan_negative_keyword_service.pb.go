@@ -42,7 +42,7 @@ func (m *GetKeywordPlanNegativeKeywordRequest) Reset()         { *m = GetKeyword
 func (m *GetKeywordPlanNegativeKeywordRequest) String() string { return proto.CompactTextString(m) }
 func (*GetKeywordPlanNegativeKeywordRequest) ProtoMessage()    {}
 func (*GetKeywordPlanNegativeKeywordRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_negative_keyword_service_d08d6fedc88da0eb, []int{0}
+	return fileDescriptor_keyword_plan_negative_keyword_service_94d86a6db7de5f92, []int{0}
 }
 func (m *GetKeywordPlanNegativeKeywordRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetKeywordPlanNegativeKeywordRequest.Unmarshal(m, b)
@@ -96,7 +96,7 @@ func (m *MutateKeywordPlanNegativeKeywordsRequest) Reset() {
 func (m *MutateKeywordPlanNegativeKeywordsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateKeywordPlanNegativeKeywordsRequest) ProtoMessage()    {}
 func (*MutateKeywordPlanNegativeKeywordsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_negative_keyword_service_d08d6fedc88da0eb, []int{1}
+	return fileDescriptor_keyword_plan_negative_keyword_service_94d86a6db7de5f92, []int{1}
 }
 func (m *MutateKeywordPlanNegativeKeywordsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateKeywordPlanNegativeKeywordsRequest.Unmarshal(m, b)
@@ -166,7 +166,7 @@ func (m *KeywordPlanNegativeKeywordOperation) Reset()         { *m = KeywordPlan
 func (m *KeywordPlanNegativeKeywordOperation) String() string { return proto.CompactTextString(m) }
 func (*KeywordPlanNegativeKeywordOperation) ProtoMessage()    {}
 func (*KeywordPlanNegativeKeywordOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_negative_keyword_service_d08d6fedc88da0eb, []int{2}
+	return fileDescriptor_keyword_plan_negative_keyword_service_94d86a6db7de5f92, []int{2}
 }
 func (m *KeywordPlanNegativeKeywordOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeywordPlanNegativeKeywordOperation.Unmarshal(m, b)
@@ -352,7 +352,7 @@ func (m *MutateKeywordPlanNegativeKeywordsResponse) Reset() {
 func (m *MutateKeywordPlanNegativeKeywordsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateKeywordPlanNegativeKeywordsResponse) ProtoMessage()    {}
 func (*MutateKeywordPlanNegativeKeywordsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_negative_keyword_service_d08d6fedc88da0eb, []int{3}
+	return fileDescriptor_keyword_plan_negative_keyword_service_94d86a6db7de5f92, []int{3}
 }
 func (m *MutateKeywordPlanNegativeKeywordsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateKeywordPlanNegativeKeywordsResponse.Unmarshal(m, b)
@@ -401,7 +401,7 @@ func (m *MutateKeywordPlanNegativeKeywordResult) Reset() {
 func (m *MutateKeywordPlanNegativeKeywordResult) String() string { return proto.CompactTextString(m) }
 func (*MutateKeywordPlanNegativeKeywordResult) ProtoMessage()    {}
 func (*MutateKeywordPlanNegativeKeywordResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_negative_keyword_service_d08d6fedc88da0eb, []int{4}
+	return fileDescriptor_keyword_plan_negative_keyword_service_94d86a6db7de5f92, []int{4}
 }
 func (m *MutateKeywordPlanNegativeKeywordResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateKeywordPlanNegativeKeywordResult.Unmarshal(m, b)
@@ -548,10 +548,10 @@ var _KeywordPlanNegativeKeywordService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/keyword_plan_negative_keyword_service.proto", fileDescriptor_keyword_plan_negative_keyword_service_d08d6fedc88da0eb)
+	proto.RegisterFile("google/ads/googleads/v1/services/keyword_plan_negative_keyword_service.proto", fileDescriptor_keyword_plan_negative_keyword_service_94d86a6db7de5f92)
 }
 
-var fileDescriptor_keyword_plan_negative_keyword_service_d08d6fedc88da0eb = []byte{
+var fileDescriptor_keyword_plan_negative_keyword_service_94d86a6db7de5f92 = []byte{
 	// 736 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x95, 0xcd, 0x6a, 0xdb, 0x4a,
 	0x14, 0xc7, 0xaf, 0x94, 0x90, 0x7b, 0x33, 0xca, 0x6d, 0x61, 0x4a, 0xa9, 0x31, 0xfd, 0x70, 0x94,

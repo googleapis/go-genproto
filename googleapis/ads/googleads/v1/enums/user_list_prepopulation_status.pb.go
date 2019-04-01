@@ -54,7 +54,7 @@ func (x UserListPrepopulationStatusEnum_UserListPrepopulationStatus) String() st
 	return proto.EnumName(UserListPrepopulationStatusEnum_UserListPrepopulationStatus_name, int32(x))
 }
 func (UserListPrepopulationStatusEnum_UserListPrepopulationStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_user_list_prepopulation_status_6365633556c22efc, []int{0, 0}
+	return fileDescriptor_user_list_prepopulation_status_e4a7774a4f8912e6, []int{0, 0}
 }
 
 // Indicates status of prepopulation based on the rule.
@@ -68,7 +68,7 @@ func (m *UserListPrepopulationStatusEnum) Reset()         { *m = UserListPrepopu
 func (m *UserListPrepopulationStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*UserListPrepopulationStatusEnum) ProtoMessage()    {}
 func (*UserListPrepopulationStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_user_list_prepopulation_status_6365633556c22efc, []int{0}
+	return fileDescriptor_user_list_prepopulation_status_e4a7774a4f8912e6, []int{0}
 }
 func (m *UserListPrepopulationStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserListPrepopulationStatusEnum.Unmarshal(m, b)
@@ -94,10 +94,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/user_list_prepopulation_status.proto", fileDescriptor_user_list_prepopulation_status_6365633556c22efc)
+	proto.RegisterFile("google/ads/googleads/v1/enums/user_list_prepopulation_status.proto", fileDescriptor_user_list_prepopulation_status_e4a7774a4f8912e6)
 }
 
-var fileDescriptor_user_list_prepopulation_status_6365633556c22efc = []byte{
+var fileDescriptor_user_list_prepopulation_status_e4a7774a4f8912e6 = []byte{
 	// 333 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xc1, 0x4e, 0xb3, 0x40,
 	0x18, 0xfc, 0xa1, 0x7f, 0xaa, 0x6e, 0x35, 0x12, 0x8e, 0x6a, 0xa3, 0xed, 0x03, 0x2c, 0x21, 0xde,

@@ -41,7 +41,7 @@ func (m *ClickLocation) Reset()         { *m = ClickLocation{} }
 func (m *ClickLocation) String() string { return proto.CompactTextString(m) }
 func (*ClickLocation) ProtoMessage()    {}
 func (*ClickLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_click_location_513e560ab99fa4cc, []int{0}
+	return fileDescriptor_click_location_008a8732139bd35d, []int{0}
 }
 func (m *ClickLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClickLocation.Unmarshal(m, b)
@@ -101,10 +101,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/click_location.proto", fileDescriptor_click_location_513e560ab99fa4cc)
+	proto.RegisterFile("google/ads/googleads/v1/common/click_location.proto", fileDescriptor_click_location_008a8732139bd35d)
 }
 
-var fileDescriptor_click_location_513e560ab99fa4cc = []byte{
+var fileDescriptor_click_location_008a8732139bd35d = []byte{
 	// 354 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xbf, 0x6a, 0xeb, 0x30,
 	0x14, 0xc6, 0xb1, 0xf3, 0xe7, 0x82, 0xee, 0xcd, 0xe2, 0xc9, 0x84, 0x10, 0x2e, 0x99, 0xee, 0x24,

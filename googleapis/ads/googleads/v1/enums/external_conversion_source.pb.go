@@ -150,7 +150,7 @@ func (x ExternalConversionSourceEnum_ExternalConversionSource) String() string {
 	return proto.EnumName(ExternalConversionSourceEnum_ExternalConversionSource_name, int32(x))
 }
 func (ExternalConversionSourceEnum_ExternalConversionSource) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_external_conversion_source_105d3975a7aece2a, []int{0, 0}
+	return fileDescriptor_external_conversion_source_e1c5a6df74c3d212, []int{0, 0}
 }
 
 // Container for enum describing the external conversion source that is
@@ -165,7 +165,7 @@ func (m *ExternalConversionSourceEnum) Reset()         { *m = ExternalConversion
 func (m *ExternalConversionSourceEnum) String() string { return proto.CompactTextString(m) }
 func (*ExternalConversionSourceEnum) ProtoMessage()    {}
 func (*ExternalConversionSourceEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_external_conversion_source_105d3975a7aece2a, []int{0}
+	return fileDescriptor_external_conversion_source_e1c5a6df74c3d212, []int{0}
 }
 func (m *ExternalConversionSourceEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExternalConversionSourceEnum.Unmarshal(m, b)
@@ -191,10 +191,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/external_conversion_source.proto", fileDescriptor_external_conversion_source_105d3975a7aece2a)
+	proto.RegisterFile("google/ads/googleads/v1/enums/external_conversion_source.proto", fileDescriptor_external_conversion_source_e1c5a6df74c3d212)
 }
 
-var fileDescriptor_external_conversion_source_105d3975a7aece2a = []byte{
+var fileDescriptor_external_conversion_source_e1c5a6df74c3d212 = []byte{
 	// 553 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x52, 0xdd, 0x6e, 0xda, 0x3c,
 	0x18, 0xfe, 0x4a, 0xfb, 0xf5, 0xc7, 0xfd, 0x73, 0xdd, 0xae, 0xea, 0xb6, 0xa2, 0xa9, 0xbd, 0x80,

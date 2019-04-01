@@ -59,7 +59,7 @@ func (x BiddingStrategyErrorEnum_BiddingStrategyError) String() string {
 	return proto.EnumName(BiddingStrategyErrorEnum_BiddingStrategyError_name, int32(x))
 }
 func (BiddingStrategyErrorEnum_BiddingStrategyError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_strategy_error_055745cc4e6b6a11, []int{0, 0}
+	return fileDescriptor_bidding_strategy_error_cf2f22f472512680, []int{0, 0}
 }
 
 // Container for enum describing possible bidding strategy errors.
@@ -73,7 +73,7 @@ func (m *BiddingStrategyErrorEnum) Reset()         { *m = BiddingStrategyErrorEn
 func (m *BiddingStrategyErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*BiddingStrategyErrorEnum) ProtoMessage()    {}
 func (*BiddingStrategyErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_strategy_error_055745cc4e6b6a11, []int{0}
+	return fileDescriptor_bidding_strategy_error_cf2f22f472512680, []int{0}
 }
 func (m *BiddingStrategyErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BiddingStrategyErrorEnum.Unmarshal(m, b)
@@ -99,10 +99,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/bidding_strategy_error.proto", fileDescriptor_bidding_strategy_error_055745cc4e6b6a11)
+	proto.RegisterFile("google/ads/googleads/v1/errors/bidding_strategy_error.proto", fileDescriptor_bidding_strategy_error_cf2f22f472512680)
 }
 
-var fileDescriptor_bidding_strategy_error_055745cc4e6b6a11 = []byte{
+var fileDescriptor_bidding_strategy_error_cf2f22f472512680 = []byte{
 	// 384 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xdd, 0xca, 0x94, 0x40,
 	0x18, 0xc7, 0xd3, 0xb7, 0x0f, 0x98, 0x85, 0x92, 0xa1, 0x83, 0x8a, 0x58, 0xc8, 0x88, 0xce, 0x46,

@@ -129,7 +129,7 @@ func (x RealEstatePlaceholderFieldEnum_RealEstatePlaceholderField) String() stri
 	return proto.EnumName(RealEstatePlaceholderFieldEnum_RealEstatePlaceholderField_name, int32(x))
 }
 func (RealEstatePlaceholderFieldEnum_RealEstatePlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_real_estate_placeholder_field_4e7670578041884e, []int{0, 0}
+	return fileDescriptor_real_estate_placeholder_field_c9d2f77c9d81d833, []int{0, 0}
 }
 
 // Values for Real Estate placeholder fields.
@@ -145,7 +145,7 @@ func (m *RealEstatePlaceholderFieldEnum) Reset()         { *m = RealEstatePlaceh
 func (m *RealEstatePlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*RealEstatePlaceholderFieldEnum) ProtoMessage()    {}
 func (*RealEstatePlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_real_estate_placeholder_field_4e7670578041884e, []int{0}
+	return fileDescriptor_real_estate_placeholder_field_c9d2f77c9d81d833, []int{0}
 }
 func (m *RealEstatePlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RealEstatePlaceholderFieldEnum.Unmarshal(m, b)
@@ -171,10 +171,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/real_estate_placeholder_field.proto", fileDescriptor_real_estate_placeholder_field_4e7670578041884e)
+	proto.RegisterFile("google/ads/googleads/v1/enums/real_estate_placeholder_field.proto", fileDescriptor_real_estate_placeholder_field_c9d2f77c9d81d833)
 }
 
-var fileDescriptor_real_estate_placeholder_field_4e7670578041884e = []byte{
+var fileDescriptor_real_estate_placeholder_field_c9d2f77c9d81d833 = []byte{
 	// 513 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xd1, 0x6e, 0xda, 0x3c,
 	0x14, 0xc7, 0x3f, 0xe0, 0x6b, 0x3b, 0x4c, 0x29, 0xc6, 0x6c, 0x9a, 0x54, 0xad, 0x9b, 0xda, 0x07,

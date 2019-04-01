@@ -50,7 +50,7 @@ func (x FeedMappingCriterionTypeEnum_FeedMappingCriterionType) String() string {
 	return proto.EnumName(FeedMappingCriterionTypeEnum_FeedMappingCriterionType_name, int32(x))
 }
 func (FeedMappingCriterionTypeEnum_FeedMappingCriterionType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_feed_mapping_criterion_type_1d80d842b5a3cb91, []int{0, 0}
+	return fileDescriptor_feed_mapping_criterion_type_588ae09f24160b6c, []int{0, 0}
 }
 
 // Container for enum describing possible criterion types for a feed mapping.
@@ -64,7 +64,7 @@ func (m *FeedMappingCriterionTypeEnum) Reset()         { *m = FeedMappingCriteri
 func (m *FeedMappingCriterionTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*FeedMappingCriterionTypeEnum) ProtoMessage()    {}
 func (*FeedMappingCriterionTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_mapping_criterion_type_1d80d842b5a3cb91, []int{0}
+	return fileDescriptor_feed_mapping_criterion_type_588ae09f24160b6c, []int{0}
 }
 func (m *FeedMappingCriterionTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedMappingCriterionTypeEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/feed_mapping_criterion_type.proto", fileDescriptor_feed_mapping_criterion_type_1d80d842b5a3cb91)
+	proto.RegisterFile("google/ads/googleads/v1/enums/feed_mapping_criterion_type.proto", fileDescriptor_feed_mapping_criterion_type_588ae09f24160b6c)
 }
 
-var fileDescriptor_feed_mapping_criterion_type_1d80d842b5a3cb91 = []byte{
+var fileDescriptor_feed_mapping_criterion_type_588ae09f24160b6c = []byte{
 	// 344 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x41, 0x6a, 0xe3, 0x30,
 	0x14, 0x1d, 0x27, 0xc3, 0x0c, 0x28, 0x0c, 0xe3, 0x7a, 0x55, 0x4a, 0x02, 0x4d, 0x0e, 0x20, 0x63,

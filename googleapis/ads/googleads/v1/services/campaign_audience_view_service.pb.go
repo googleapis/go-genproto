@@ -38,7 +38,7 @@ func (m *GetCampaignAudienceViewRequest) Reset()         { *m = GetCampaignAudie
 func (m *GetCampaignAudienceViewRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCampaignAudienceViewRequest) ProtoMessage()    {}
 func (*GetCampaignAudienceViewRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_audience_view_service_8fd4cc4331a36b24, []int{0}
+	return fileDescriptor_campaign_audience_view_service_5323c93934e79db8, []int{0}
 }
 func (m *GetCampaignAudienceViewRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCampaignAudienceViewRequest.Unmarshal(m, b)
@@ -144,10 +144,10 @@ var _CampaignAudienceViewService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/campaign_audience_view_service.proto", fileDescriptor_campaign_audience_view_service_8fd4cc4331a36b24)
+	proto.RegisterFile("google/ads/googleads/v1/services/campaign_audience_view_service.proto", fileDescriptor_campaign_audience_view_service_5323c93934e79db8)
 }
 
-var fileDescriptor_campaign_audience_view_service_8fd4cc4331a36b24 = []byte{
+var fileDescriptor_campaign_audience_view_service_5323c93934e79db8 = []byte{
 	// 378 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0x3d, 0x6b, 0xdb, 0x40,
 	0x18, 0x46, 0x2a, 0x14, 0x2a, 0xda, 0x45, 0x4b, 0x8b, 0x5b, 0x8a, 0x70, 0x3d, 0x14, 0x0f, 0x77,

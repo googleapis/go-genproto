@@ -46,7 +46,7 @@ func (x HeaderErrorEnum_HeaderError) String() string {
 	return proto.EnumName(HeaderErrorEnum_HeaderError_name, int32(x))
 }
 func (HeaderErrorEnum_HeaderError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_header_error_3f7405777cd94536, []int{0, 0}
+	return fileDescriptor_header_error_c9354993a1d8cefe, []int{0, 0}
 }
 
 // Container for enum describing possible header errors.
@@ -60,7 +60,7 @@ func (m *HeaderErrorEnum) Reset()         { *m = HeaderErrorEnum{} }
 func (m *HeaderErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*HeaderErrorEnum) ProtoMessage()    {}
 func (*HeaderErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_header_error_3f7405777cd94536, []int{0}
+	return fileDescriptor_header_error_c9354993a1d8cefe, []int{0}
 }
 func (m *HeaderErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HeaderErrorEnum.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/header_error.proto", fileDescriptor_header_error_3f7405777cd94536)
+	proto.RegisterFile("google/ads/googleads/v1/errors/header_error.proto", fileDescriptor_header_error_c9354993a1d8cefe)
 }
 
-var fileDescriptor_header_error_3f7405777cd94536 = []byte{
+var fileDescriptor_header_error_c9354993a1d8cefe = []byte{
 	// 300 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0xc3, 0x30,
 	0x1c, 0xc6, 0xdd, 0x06, 0x0a, 0xd9, 0x61, 0xa5, 0x37, 0x45, 0x77, 0xe8, 0x03, 0x24, 0x04, 0x6f,

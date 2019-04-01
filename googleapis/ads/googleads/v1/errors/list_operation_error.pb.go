@@ -50,7 +50,7 @@ func (x ListOperationErrorEnum_ListOperationError) String() string {
 	return proto.EnumName(ListOperationErrorEnum_ListOperationError_name, int32(x))
 }
 func (ListOperationErrorEnum_ListOperationError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_list_operation_error_236425db7fe6b524, []int{0, 0}
+	return fileDescriptor_list_operation_error_2c0250662bf392c1, []int{0, 0}
 }
 
 // Container for enum describing possible list operation errors.
@@ -64,7 +64,7 @@ func (m *ListOperationErrorEnum) Reset()         { *m = ListOperationErrorEnum{}
 func (m *ListOperationErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*ListOperationErrorEnum) ProtoMessage()    {}
 func (*ListOperationErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_list_operation_error_236425db7fe6b524, []int{0}
+	return fileDescriptor_list_operation_error_2c0250662bf392c1, []int{0}
 }
 func (m *ListOperationErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOperationErrorEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/list_operation_error.proto", fileDescriptor_list_operation_error_236425db7fe6b524)
+	proto.RegisterFile("google/ads/googleads/v1/errors/list_operation_error.proto", fileDescriptor_list_operation_error_2c0250662bf392c1)
 }
 
-var fileDescriptor_list_operation_error_236425db7fe6b524 = []byte{
+var fileDescriptor_list_operation_error_2c0250662bf392c1 = []byte{
 	// 326 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0xc3, 0x30,
 	0x1c, 0xc6, 0xdd, 0x04, 0x27, 0xd9, 0xc1, 0x52, 0x64, 0xc2, 0x90, 0x1d, 0xfa, 0x00, 0x29, 0xc5,

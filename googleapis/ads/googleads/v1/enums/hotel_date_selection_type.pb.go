@@ -50,7 +50,7 @@ func (x HotelDateSelectionTypeEnum_HotelDateSelectionType) String() string {
 	return proto.EnumName(HotelDateSelectionTypeEnum_HotelDateSelectionType_name, int32(x))
 }
 func (HotelDateSelectionTypeEnum_HotelDateSelectionType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_hotel_date_selection_type_6f727549b636f879, []int{0, 0}
+	return fileDescriptor_hotel_date_selection_type_9464cae88bbb2e76, []int{0, 0}
 }
 
 // Container for enum describing possible hotel date selection types
@@ -64,7 +64,7 @@ func (m *HotelDateSelectionTypeEnum) Reset()         { *m = HotelDateSelectionTy
 func (m *HotelDateSelectionTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*HotelDateSelectionTypeEnum) ProtoMessage()    {}
 func (*HotelDateSelectionTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_hotel_date_selection_type_6f727549b636f879, []int{0}
+	return fileDescriptor_hotel_date_selection_type_9464cae88bbb2e76, []int{0}
 }
 func (m *HotelDateSelectionTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelDateSelectionTypeEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/hotel_date_selection_type.proto", fileDescriptor_hotel_date_selection_type_6f727549b636f879)
+	proto.RegisterFile("google/ads/googleads/v1/enums/hotel_date_selection_type.proto", fileDescriptor_hotel_date_selection_type_9464cae88bbb2e76)
 }
 
-var fileDescriptor_hotel_date_selection_type_6f727549b636f879 = []byte{
+var fileDescriptor_hotel_date_selection_type_9464cae88bbb2e76 = []byte{
 	// 329 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xc1, 0x4e, 0xc2, 0x40,
 	0x14, 0x14, 0x4c, 0x34, 0x59, 0x62, 0x2c, 0x4d, 0xf4, 0x80, 0x72, 0x80, 0x0f, 0xd8, 0xa6, 0x72,

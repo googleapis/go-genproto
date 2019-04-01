@@ -96,7 +96,7 @@ func (x VanityPharmaTextEnum_VanityPharmaText) String() string {
 	return proto.EnumName(VanityPharmaTextEnum_VanityPharmaText_name, int32(x))
 }
 func (VanityPharmaTextEnum_VanityPharmaText) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_vanity_pharma_text_51890ee0923eaf4f, []int{0, 0}
+	return fileDescriptor_vanity_pharma_text_6dbe2808c52e77ea, []int{0, 0}
 }
 
 // The text that will be displayed in display URL of the text ad when website
@@ -111,7 +111,7 @@ func (m *VanityPharmaTextEnum) Reset()         { *m = VanityPharmaTextEnum{} }
 func (m *VanityPharmaTextEnum) String() string { return proto.CompactTextString(m) }
 func (*VanityPharmaTextEnum) ProtoMessage()    {}
 func (*VanityPharmaTextEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_vanity_pharma_text_51890ee0923eaf4f, []int{0}
+	return fileDescriptor_vanity_pharma_text_6dbe2808c52e77ea, []int{0}
 }
 func (m *VanityPharmaTextEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VanityPharmaTextEnum.Unmarshal(m, b)
@@ -137,10 +137,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/vanity_pharma_text.proto", fileDescriptor_vanity_pharma_text_51890ee0923eaf4f)
+	proto.RegisterFile("google/ads/googleads/v1/enums/vanity_pharma_text.proto", fileDescriptor_vanity_pharma_text_6dbe2808c52e77ea)
 }
 
-var fileDescriptor_vanity_pharma_text_51890ee0923eaf4f = []byte{
+var fileDescriptor_vanity_pharma_text_6dbe2808c52e77ea = []byte{
 	// 429 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xc1, 0x8a, 0x13, 0x31,
 	0x1c, 0xc6, 0x6d, 0xbb, 0xee, 0x6a, 0xaa, 0x18, 0x06, 0x3d, 0x28, 0x56, 0x69, 0x65, 0x0f, 0x5e,

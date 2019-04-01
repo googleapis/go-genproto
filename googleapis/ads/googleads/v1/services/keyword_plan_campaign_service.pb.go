@@ -41,7 +41,7 @@ func (m *GetKeywordPlanCampaignRequest) Reset()         { *m = GetKeywordPlanCam
 func (m *GetKeywordPlanCampaignRequest) String() string { return proto.CompactTextString(m) }
 func (*GetKeywordPlanCampaignRequest) ProtoMessage()    {}
 func (*GetKeywordPlanCampaignRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_campaign_service_76bf2725382da39b, []int{0}
+	return fileDescriptor_keyword_plan_campaign_service_70b1f6c99086bad6, []int{0}
 }
 func (m *GetKeywordPlanCampaignRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetKeywordPlanCampaignRequest.Unmarshal(m, b)
@@ -92,7 +92,7 @@ func (m *MutateKeywordPlanCampaignsRequest) Reset()         { *m = MutateKeyword
 func (m *MutateKeywordPlanCampaignsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateKeywordPlanCampaignsRequest) ProtoMessage()    {}
 func (*MutateKeywordPlanCampaignsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_campaign_service_76bf2725382da39b, []int{1}
+	return fileDescriptor_keyword_plan_campaign_service_70b1f6c99086bad6, []int{1}
 }
 func (m *MutateKeywordPlanCampaignsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateKeywordPlanCampaignsRequest.Unmarshal(m, b)
@@ -161,7 +161,7 @@ func (m *KeywordPlanCampaignOperation) Reset()         { *m = KeywordPlanCampaig
 func (m *KeywordPlanCampaignOperation) String() string { return proto.CompactTextString(m) }
 func (*KeywordPlanCampaignOperation) ProtoMessage()    {}
 func (*KeywordPlanCampaignOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_campaign_service_76bf2725382da39b, []int{2}
+	return fileDescriptor_keyword_plan_campaign_service_70b1f6c99086bad6, []int{2}
 }
 func (m *KeywordPlanCampaignOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeywordPlanCampaignOperation.Unmarshal(m, b)
@@ -345,7 +345,7 @@ func (m *MutateKeywordPlanCampaignsResponse) Reset()         { *m = MutateKeywor
 func (m *MutateKeywordPlanCampaignsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateKeywordPlanCampaignsResponse) ProtoMessage()    {}
 func (*MutateKeywordPlanCampaignsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_campaign_service_76bf2725382da39b, []int{3}
+	return fileDescriptor_keyword_plan_campaign_service_70b1f6c99086bad6, []int{3}
 }
 func (m *MutateKeywordPlanCampaignsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateKeywordPlanCampaignsResponse.Unmarshal(m, b)
@@ -392,7 +392,7 @@ func (m *MutateKeywordPlanCampaignResult) Reset()         { *m = MutateKeywordPl
 func (m *MutateKeywordPlanCampaignResult) String() string { return proto.CompactTextString(m) }
 func (*MutateKeywordPlanCampaignResult) ProtoMessage()    {}
 func (*MutateKeywordPlanCampaignResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_campaign_service_76bf2725382da39b, []int{4}
+	return fileDescriptor_keyword_plan_campaign_service_70b1f6c99086bad6, []int{4}
 }
 func (m *MutateKeywordPlanCampaignResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateKeywordPlanCampaignResult.Unmarshal(m, b)
@@ -539,10 +539,10 @@ var _KeywordPlanCampaignService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/keyword_plan_campaign_service.proto", fileDescriptor_keyword_plan_campaign_service_76bf2725382da39b)
+	proto.RegisterFile("google/ads/googleads/v1/services/keyword_plan_campaign_service.proto", fileDescriptor_keyword_plan_campaign_service_70b1f6c99086bad6)
 }
 
-var fileDescriptor_keyword_plan_campaign_service_76bf2725382da39b = []byte{
+var fileDescriptor_keyword_plan_campaign_service_70b1f6c99086bad6 = []byte{
 	// 728 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x95, 0x4f, 0x6b, 0xd4, 0x4c,
 	0x18, 0xc0, 0xdf, 0x64, 0x5f, 0xaa, 0x9d, 0x54, 0x85, 0x11, 0x75, 0x09, 0xd5, 0xae, 0xb1, 0x60,

@@ -46,7 +46,7 @@ func (x UserListClosingReasonEnum_UserListClosingReason) String() string {
 	return proto.EnumName(UserListClosingReasonEnum_UserListClosingReason_name, int32(x))
 }
 func (UserListClosingReasonEnum_UserListClosingReason) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_user_list_closing_reason_e104deb542398d47, []int{0, 0}
+	return fileDescriptor_user_list_closing_reason_06312d64bf678cf6, []int{0, 0}
 }
 
 // Indicates the reason why the userlist was closed.
@@ -61,7 +61,7 @@ func (m *UserListClosingReasonEnum) Reset()         { *m = UserListClosingReason
 func (m *UserListClosingReasonEnum) String() string { return proto.CompactTextString(m) }
 func (*UserListClosingReasonEnum) ProtoMessage()    {}
 func (*UserListClosingReasonEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_user_list_closing_reason_e104deb542398d47, []int{0}
+	return fileDescriptor_user_list_closing_reason_06312d64bf678cf6, []int{0}
 }
 func (m *UserListClosingReasonEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserListClosingReasonEnum.Unmarshal(m, b)
@@ -87,10 +87,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/user_list_closing_reason.proto", fileDescriptor_user_list_closing_reason_e104deb542398d47)
+	proto.RegisterFile("google/ads/googleads/v1/enums/user_list_closing_reason.proto", fileDescriptor_user_list_closing_reason_06312d64bf678cf6)
 }
 
-var fileDescriptor_user_list_closing_reason_e104deb542398d47 = []byte{
+var fileDescriptor_user_list_closing_reason_06312d64bf678cf6 = []byte{
 	// 302 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0xc3, 0x30,
 	0x1c, 0xc6, 0x5d, 0x85, 0x09, 0xd9, 0xc1, 0x51, 0xf0, 0xe0, 0x70, 0x87, 0xed, 0x01, 0x12, 0x8a,

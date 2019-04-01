@@ -36,7 +36,7 @@ func (m *LocationView) Reset()         { *m = LocationView{} }
 func (m *LocationView) String() string { return proto.CompactTextString(m) }
 func (*LocationView) ProtoMessage()    {}
 func (*LocationView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_location_view_2ddfb1e7f311b1ec, []int{0}
+	return fileDescriptor_location_view_8c6f3bc4a86201e8, []int{0}
 }
 func (m *LocationView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationView.Unmarshal(m, b)
@@ -68,10 +68,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/location_view.proto", fileDescriptor_location_view_2ddfb1e7f311b1ec)
+	proto.RegisterFile("google/ads/googleads/v1/resources/location_view.proto", fileDescriptor_location_view_8c6f3bc4a86201e8)
 }
 
-var fileDescriptor_location_view_2ddfb1e7f311b1ec = []byte{
+var fileDescriptor_location_view_8c6f3bc4a86201e8 = []byte{
 	// 264 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x32, 0x4d, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x4f, 0x4c, 0x29, 0xd6, 0x87, 0x30, 0x41, 0xac, 0x32, 0x43, 0xfd, 0xa2, 0xd4,

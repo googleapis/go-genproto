@@ -46,7 +46,7 @@ func (m *MerchantCenterLink) Reset()         { *m = MerchantCenterLink{} }
 func (m *MerchantCenterLink) String() string { return proto.CompactTextString(m) }
 func (*MerchantCenterLink) ProtoMessage()    {}
 func (*MerchantCenterLink) Descriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_b8f29c5594012c82, []int{0}
+	return fileDescriptor_merchant_center_link_53b21997d8161260, []int{0}
 }
 func (m *MerchantCenterLink) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MerchantCenterLink.Unmarshal(m, b)
@@ -99,10 +99,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/merchant_center_link.proto", fileDescriptor_merchant_center_link_b8f29c5594012c82)
+	proto.RegisterFile("google/ads/googleads/v1/resources/merchant_center_link.proto", fileDescriptor_merchant_center_link_53b21997d8161260)
 }
 
-var fileDescriptor_merchant_center_link_b8f29c5594012c82 = []byte{
+var fileDescriptor_merchant_center_link_53b21997d8161260 = []byte{
 	// 410 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xcf, 0x6a, 0xdb, 0x30,
 	0x18, 0xc7, 0xce, 0x16, 0x98, 0xf7, 0xe7, 0xe0, 0xcb, 0xb2, 0x2c, 0x8c, 0x64, 0x23, 0x10, 0x18,

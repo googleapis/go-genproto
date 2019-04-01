@@ -70,7 +70,7 @@ func (m *FeedItem) Reset()         { *m = FeedItem{} }
 func (m *FeedItem) String() string { return proto.CompactTextString(m) }
 func (*FeedItem) ProtoMessage()    {}
 func (*FeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_c9d65dee08780aa1, []int{0}
+	return fileDescriptor_feed_item_1965a7177a1e850a, []int{0}
 }
 func (m *FeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedItem.Unmarshal(m, b)
@@ -210,7 +210,7 @@ func (m *FeedItemAttributeValue) Reset()         { *m = FeedItemAttributeValue{}
 func (m *FeedItemAttributeValue) String() string { return proto.CompactTextString(m) }
 func (*FeedItemAttributeValue) ProtoMessage()    {}
 func (*FeedItemAttributeValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_c9d65dee08780aa1, []int{1}
+	return fileDescriptor_feed_item_1965a7177a1e850a, []int{1}
 }
 func (m *FeedItemAttributeValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedItemAttributeValue.Unmarshal(m, b)
@@ -331,7 +331,7 @@ func (m *FeedItemPlaceholderPolicyInfo) Reset()         { *m = FeedItemPlacehold
 func (m *FeedItemPlaceholderPolicyInfo) String() string { return proto.CompactTextString(m) }
 func (*FeedItemPlaceholderPolicyInfo) ProtoMessage()    {}
 func (*FeedItemPlaceholderPolicyInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_c9d65dee08780aa1, []int{2}
+	return fileDescriptor_feed_item_1965a7177a1e850a, []int{2}
 }
 func (m *FeedItemPlaceholderPolicyInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedItemPlaceholderPolicyInfo.Unmarshal(m, b)
@@ -439,7 +439,7 @@ func (m *FeedItemValidationError) Reset()         { *m = FeedItemValidationError
 func (m *FeedItemValidationError) String() string { return proto.CompactTextString(m) }
 func (*FeedItemValidationError) ProtoMessage()    {}
 func (*FeedItemValidationError) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_c9d65dee08780aa1, []int{3}
+	return fileDescriptor_feed_item_1965a7177a1e850a, []int{3}
 }
 func (m *FeedItemValidationError) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedItemValidationError.Unmarshal(m, b)
@@ -495,10 +495,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/feed_item.proto", fileDescriptor_feed_item_c9d65dee08780aa1)
+	proto.RegisterFile("google/ads/googleads/v1/resources/feed_item.proto", fileDescriptor_feed_item_1965a7177a1e850a)
 }
 
-var fileDescriptor_feed_item_c9d65dee08780aa1 = []byte{
+var fileDescriptor_feed_item_1965a7177a1e850a = []byte{
 	// 1213 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x57, 0xdb, 0x6e, 0xdc, 0x44,
 	0x18, 0xd6, 0x6e, 0xda, 0x34, 0x99, 0x3d, 0x24, 0x1d, 0x28, 0x71, 0xd3, 0x82, 0xd2, 0xa0, 0x48,

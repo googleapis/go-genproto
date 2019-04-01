@@ -36,7 +36,7 @@ func (m *CriterionCategoryAvailability) Reset()         { *m = CriterionCategory
 func (m *CriterionCategoryAvailability) String() string { return proto.CompactTextString(m) }
 func (*CriterionCategoryAvailability) ProtoMessage()    {}
 func (*CriterionCategoryAvailability) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_category_availability_c1665ae897f7ccc6, []int{0}
+	return fileDescriptor_criterion_category_availability_aa40e26a9a11ccdc, []int{0}
 }
 func (m *CriterionCategoryAvailability) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CriterionCategoryAvailability.Unmarshal(m, b)
@@ -98,7 +98,7 @@ func (m *CriterionCategoryChannelAvailability) Reset()         { *m = CriterionC
 func (m *CriterionCategoryChannelAvailability) String() string { return proto.CompactTextString(m) }
 func (*CriterionCategoryChannelAvailability) ProtoMessage()    {}
 func (*CriterionCategoryChannelAvailability) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_category_availability_c1665ae897f7ccc6, []int{1}
+	return fileDescriptor_criterion_category_availability_aa40e26a9a11ccdc, []int{1}
 }
 func (m *CriterionCategoryChannelAvailability) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CriterionCategoryChannelAvailability.Unmarshal(m, b)
@@ -166,7 +166,7 @@ func (m *CriterionCategoryLocaleAvailability) Reset()         { *m = CriterionCa
 func (m *CriterionCategoryLocaleAvailability) String() string { return proto.CompactTextString(m) }
 func (*CriterionCategoryLocaleAvailability) ProtoMessage()    {}
 func (*CriterionCategoryLocaleAvailability) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_category_availability_c1665ae897f7ccc6, []int{2}
+	return fileDescriptor_criterion_category_availability_aa40e26a9a11ccdc, []int{2}
 }
 func (m *CriterionCategoryLocaleAvailability) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CriterionCategoryLocaleAvailability.Unmarshal(m, b)
@@ -214,10 +214,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/criterion_category_availability.proto", fileDescriptor_criterion_category_availability_c1665ae897f7ccc6)
+	proto.RegisterFile("google/ads/googleads/v1/common/criterion_category_availability.proto", fileDescriptor_criterion_category_availability_aa40e26a9a11ccdc)
 }
 
-var fileDescriptor_criterion_category_availability_c1665ae897f7ccc6 = []byte{
+var fileDescriptor_criterion_category_availability_aa40e26a9a11ccdc = []byte{
 	// 609 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x95, 0x41, 0x8e, 0xd3, 0x30,
 	0x14, 0x86, 0x95, 0x74, 0x34, 0x48, 0xee, 0x30, 0x82, 0x2c, 0x50, 0xa9, 0xca, 0xa8, 0x0a, 0x2c,

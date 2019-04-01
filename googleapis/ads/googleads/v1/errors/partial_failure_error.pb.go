@@ -47,7 +47,7 @@ func (x PartialFailureErrorEnum_PartialFailureError) String() string {
 	return proto.EnumName(PartialFailureErrorEnum_PartialFailureError_name, int32(x))
 }
 func (PartialFailureErrorEnum_PartialFailureError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_partial_failure_error_fbb749ef1d8095fb, []int{0, 0}
+	return fileDescriptor_partial_failure_error_2879656353b11b88, []int{0, 0}
 }
 
 // Container for enum describing possible partial failure errors.
@@ -61,7 +61,7 @@ func (m *PartialFailureErrorEnum) Reset()         { *m = PartialFailureErrorEnum
 func (m *PartialFailureErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*PartialFailureErrorEnum) ProtoMessage()    {}
 func (*PartialFailureErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_partial_failure_error_fbb749ef1d8095fb, []int{0}
+	return fileDescriptor_partial_failure_error_2879656353b11b88, []int{0}
 }
 func (m *PartialFailureErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartialFailureErrorEnum.Unmarshal(m, b)
@@ -87,10 +87,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/partial_failure_error.proto", fileDescriptor_partial_failure_error_fbb749ef1d8095fb)
+	proto.RegisterFile("google/ads/googleads/v1/errors/partial_failure_error.proto", fileDescriptor_partial_failure_error_2879656353b11b88)
 }
 
-var fileDescriptor_partial_failure_error_fbb749ef1d8095fb = []byte{
+var fileDescriptor_partial_failure_error_2879656353b11b88 = []byte{
 	// 316 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4e, 0xb3, 0x40,
 	0x14, 0x85, 0xff, 0xf2, 0x27, 0x9a, 0x4c, 0x17, 0x36, 0xb8, 0xd0, 0x18, 0x6d, 0x22, 0x0f, 0x30,

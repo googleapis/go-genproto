@@ -52,7 +52,7 @@ func (m *AdGroupFeed) Reset()         { *m = AdGroupFeed{} }
 func (m *AdGroupFeed) String() string { return proto.CompactTextString(m) }
 func (*AdGroupFeed) ProtoMessage()    {}
 func (*AdGroupFeed) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_feed_31aad1b2b842f8c4, []int{0}
+	return fileDescriptor_ad_group_feed_61af86a925c6fe44, []int{0}
 }
 func (m *AdGroupFeed) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupFeed.Unmarshal(m, b)
@@ -119,10 +119,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/ad_group_feed.proto", fileDescriptor_ad_group_feed_31aad1b2b842f8c4)
+	proto.RegisterFile("google/ads/googleads/v1/resources/ad_group_feed.proto", fileDescriptor_ad_group_feed_61af86a925c6fe44)
 }
 
-var fileDescriptor_ad_group_feed_31aad1b2b842f8c4 = []byte{
+var fileDescriptor_ad_group_feed_61af86a925c6fe44 = []byte{
 	// 489 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0xdd, 0x6a, 0xd4, 0x40,
 	0x14, 0xc7, 0xc9, 0x6e, 0x5d, 0x75, 0xaa, 0x65, 0x9b, 0xab, 0x50, 0x8a, 0x6c, 0x95, 0xc2, 0x5e,

@@ -129,7 +129,7 @@ const (
 	ClickTypeEnum_HOTEL_PRICE ClickTypeEnum_ClickType = 53
 	// Price Extension.
 	ClickTypeEnum_PRICE_EXTENSION ClickTypeEnum_ClickType = 54
-	// Hotel Book-on-Google room selection.
+	// Book on Google hotel room selection.
 	ClickTypeEnum_HOTEL_BOOK_ON_GOOGLE_ROOM_SELECTION ClickTypeEnum_ClickType = 55
 )
 
@@ -250,7 +250,7 @@ func (x ClickTypeEnum_ClickType) String() string {
 	return proto.EnumName(ClickTypeEnum_ClickType_name, int32(x))
 }
 func (ClickTypeEnum_ClickType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_click_type_e2ac0f9b3e9ad506, []int{0, 0}
+	return fileDescriptor_click_type_d6ca6ec65af6cf28, []int{0, 0}
 }
 
 // Container for enumeration of Google Ads click types.
@@ -264,7 +264,7 @@ func (m *ClickTypeEnum) Reset()         { *m = ClickTypeEnum{} }
 func (m *ClickTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*ClickTypeEnum) ProtoMessage()    {}
 func (*ClickTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_click_type_e2ac0f9b3e9ad506, []int{0}
+	return fileDescriptor_click_type_d6ca6ec65af6cf28, []int{0}
 }
 func (m *ClickTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClickTypeEnum.Unmarshal(m, b)
@@ -290,10 +290,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/click_type.proto", fileDescriptor_click_type_e2ac0f9b3e9ad506)
+	proto.RegisterFile("google/ads/googleads/v1/enums/click_type.proto", fileDescriptor_click_type_d6ca6ec65af6cf28)
 }
 
-var fileDescriptor_click_type_e2ac0f9b3e9ad506 = []byte{
+var fileDescriptor_click_type_d6ca6ec65af6cf28 = []byte{
 	// 930 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x95, 0xdb, 0x6e, 0xdb, 0x36,
 	0x18, 0xc7, 0xd7, 0x74, 0x6d, 0x17, 0xe6, 0xc4, 0x32, 0x69, 0xd2, 0x1c, 0x9c, 0xd4, 0xce, 0x92,

@@ -34,7 +34,7 @@ func (m *RealTimeBiddingSetting) Reset()         { *m = RealTimeBiddingSetting{}
 func (m *RealTimeBiddingSetting) String() string { return proto.CompactTextString(m) }
 func (*RealTimeBiddingSetting) ProtoMessage()    {}
 func (*RealTimeBiddingSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_real_time_bidding_setting_63ac04fa23769a69, []int{0}
+	return fileDescriptor_real_time_bidding_setting_8e6df22ca701c597, []int{0}
 }
 func (m *RealTimeBiddingSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RealTimeBiddingSetting.Unmarshal(m, b)
@@ -66,10 +66,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/real_time_bidding_setting.proto", fileDescriptor_real_time_bidding_setting_63ac04fa23769a69)
+	proto.RegisterFile("google/ads/googleads/v1/common/real_time_bidding_setting.proto", fileDescriptor_real_time_bidding_setting_8e6df22ca701c597)
 }
 
-var fileDescriptor_real_time_bidding_setting_63ac04fa23769a69 = []byte{
+var fileDescriptor_real_time_bidding_setting_8e6df22ca701c597 = []byte{
 	// 303 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0xec, 0x30,
 	0x14, 0x86, 0xe9, 0x5c, 0xee, 0x2c, 0xea, 0x6e, 0x16, 0x22, 0xa3, 0x0c, 0x32, 0x2b, 0x57, 0x09,

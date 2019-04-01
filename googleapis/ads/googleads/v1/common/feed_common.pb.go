@@ -35,7 +35,7 @@ func (m *Money) Reset()         { *m = Money{} }
 func (m *Money) String() string { return proto.CompactTextString(m) }
 func (*Money) ProtoMessage()    {}
 func (*Money) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_common_e64b3728cd328166, []int{0}
+	return fileDescriptor_feed_common_b17b466fdc56ce06, []int{0}
 }
 func (m *Money) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Money.Unmarshal(m, b)
@@ -74,10 +74,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/feed_common.proto", fileDescriptor_feed_common_e64b3728cd328166)
+	proto.RegisterFile("google/ads/googleads/v1/common/feed_common.proto", fileDescriptor_feed_common_b17b466fdc56ce06)
 }
 
-var fileDescriptor_feed_common_e64b3728cd328166 = []byte{
+var fileDescriptor_feed_common_b17b466fdc56ce06 = []byte{
 	// 328 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0xf3, 0x40,
 	0x14, 0x85, 0x49, 0x7e, 0x7e, 0x17, 0xd1, 0x22, 0x74, 0x55, 0x6a, 0x29, 0xd2, 0x95, 0xab, 0x19,

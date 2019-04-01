@@ -50,7 +50,7 @@ func (m *CampaignBidModifier) Reset()         { *m = CampaignBidModifier{} }
 func (m *CampaignBidModifier) String() string { return proto.CompactTextString(m) }
 func (*CampaignBidModifier) ProtoMessage()    {}
 func (*CampaignBidModifier) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_bid_modifier_84a465f8617851ab, []int{0}
+	return fileDescriptor_campaign_bid_modifier_a5c42e12d670ab18, []int{0}
 }
 func (m *CampaignBidModifier) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CampaignBidModifier.Unmarshal(m, b)
@@ -182,10 +182,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/campaign_bid_modifier.proto", fileDescriptor_campaign_bid_modifier_84a465f8617851ab)
+	proto.RegisterFile("google/ads/googleads/v1/resources/campaign_bid_modifier.proto", fileDescriptor_campaign_bid_modifier_a5c42e12d670ab18)
 }
 
-var fileDescriptor_campaign_bid_modifier_84a465f8617851ab = []byte{
+var fileDescriptor_campaign_bid_modifier_a5c42e12d670ab18 = []byte{
 	// 440 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xdd, 0x8a, 0xd4, 0x30,
 	0x14, 0x76, 0xba, 0x2a, 0x6e, 0x66, 0x44, 0xa9, 0x37, 0x65, 0x5d, 0x64, 0x57, 0x59, 0xd8, 0x1b,

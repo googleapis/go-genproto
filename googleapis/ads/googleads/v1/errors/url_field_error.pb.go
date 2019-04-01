@@ -261,7 +261,7 @@ func (x UrlFieldErrorEnum_UrlFieldError) String() string {
 	return proto.EnumName(UrlFieldErrorEnum_UrlFieldError_name, int32(x))
 }
 func (UrlFieldErrorEnum_UrlFieldError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_url_field_error_1b567c6132de6d28, []int{0, 0}
+	return fileDescriptor_url_field_error_f9524ce57689233d, []int{0, 0}
 }
 
 // Container for enum describing possible url field errors.
@@ -275,7 +275,7 @@ func (m *UrlFieldErrorEnum) Reset()         { *m = UrlFieldErrorEnum{} }
 func (m *UrlFieldErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*UrlFieldErrorEnum) ProtoMessage()    {}
 func (*UrlFieldErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_url_field_error_1b567c6132de6d28, []int{0}
+	return fileDescriptor_url_field_error_f9524ce57689233d, []int{0}
 }
 func (m *UrlFieldErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UrlFieldErrorEnum.Unmarshal(m, b)
@@ -301,10 +301,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/url_field_error.proto", fileDescriptor_url_field_error_1b567c6132de6d28)
+	proto.RegisterFile("google/ads/googleads/v1/errors/url_field_error.proto", fileDescriptor_url_field_error_f9524ce57689233d)
 }
 
-var fileDescriptor_url_field_error_1b567c6132de6d28 = []byte{
+var fileDescriptor_url_field_error_f9524ce57689233d = []byte{
 	// 854 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x95, 0xeb, 0x6e, 0xdc, 0x44,
 	0x14, 0xc7, 0x49, 0x0a, 0x2d, 0x9c, 0x34, 0xc9, 0xe4, 0xa4, 0x69, 0x9b, 0x90, 0x6c, 0x93, 0xa5,

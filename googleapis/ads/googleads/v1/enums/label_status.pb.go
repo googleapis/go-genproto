@@ -50,7 +50,7 @@ func (x LabelStatusEnum_LabelStatus) String() string {
 	return proto.EnumName(LabelStatusEnum_LabelStatus_name, int32(x))
 }
 func (LabelStatusEnum_LabelStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_label_status_864c0a35be5d7ce6, []int{0, 0}
+	return fileDescriptor_label_status_0111faa1709830e9, []int{0, 0}
 }
 
 // Container for enum describing possible status of a label.
@@ -64,7 +64,7 @@ func (m *LabelStatusEnum) Reset()         { *m = LabelStatusEnum{} }
 func (m *LabelStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*LabelStatusEnum) ProtoMessage()    {}
 func (*LabelStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_label_status_864c0a35be5d7ce6, []int{0}
+	return fileDescriptor_label_status_0111faa1709830e9, []int{0}
 }
 func (m *LabelStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelStatusEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/label_status.proto", fileDescriptor_label_status_864c0a35be5d7ce6)
+	proto.RegisterFile("google/ads/googleads/v1/enums/label_status.proto", fileDescriptor_label_status_0111faa1709830e9)
 }
 
-var fileDescriptor_label_status_864c0a35be5d7ce6 = []byte{
+var fileDescriptor_label_status_0111faa1709830e9 = []byte{
 	// 293 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcf, 0x4a, 0xc3, 0x30,
 	0x18, 0x77, 0x1d, 0x28, 0xa4, 0x87, 0x95, 0x1e, 0xc5, 0x1d, 0xb6, 0x07, 0x48, 0x2c, 0xde, 0xe2,

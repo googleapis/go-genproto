@@ -47,7 +47,7 @@ func (m *MobileDeviceConstant) Reset()         { *m = MobileDeviceConstant{} }
 func (m *MobileDeviceConstant) String() string { return proto.CompactTextString(m) }
 func (*MobileDeviceConstant) ProtoMessage()    {}
 func (*MobileDeviceConstant) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mobile_device_constant_bb8f0eee204a71a8, []int{0}
+	return fileDescriptor_mobile_device_constant_27d78a6f88efd48d, []int{0}
 }
 func (m *MobileDeviceConstant) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MobileDeviceConstant.Unmarshal(m, b)
@@ -114,10 +114,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/mobile_device_constant.proto", fileDescriptor_mobile_device_constant_bb8f0eee204a71a8)
+	proto.RegisterFile("google/ads/googleads/v1/resources/mobile_device_constant.proto", fileDescriptor_mobile_device_constant_27d78a6f88efd48d)
 }
 
-var fileDescriptor_mobile_device_constant_bb8f0eee204a71a8 = []byte{
+var fileDescriptor_mobile_device_constant_27d78a6f88efd48d = []byte{
 	// 448 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xdf, 0x6a, 0x13, 0x41,
 	0x14, 0xc6, 0xd9, 0x4d, 0x2c, 0x38, 0xfe, 0x41, 0x57, 0x85, 0x58, 0x8b, 0xa4, 0x4a, 0x21, 0x20,

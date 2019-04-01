@@ -56,7 +56,7 @@ func (x CriterionCategoryChannelAvailabilityModeEnum_CriterionCategoryChannelAva
 	return proto.EnumName(CriterionCategoryChannelAvailabilityModeEnum_CriterionCategoryChannelAvailabilityMode_name, int32(x))
 }
 func (CriterionCategoryChannelAvailabilityModeEnum_CriterionCategoryChannelAvailabilityMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_category_channel_availability_mode_0c44268ba34cdc6f, []int{0, 0}
+	return fileDescriptor_criterion_category_channel_availability_mode_25131bc98eae7592, []int{0, 0}
 }
 
 // Describes channel availability mode for a criterion availability - whether
@@ -77,7 +77,7 @@ func (m *CriterionCategoryChannelAvailabilityModeEnum) String() string {
 }
 func (*CriterionCategoryChannelAvailabilityModeEnum) ProtoMessage() {}
 func (*CriterionCategoryChannelAvailabilityModeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_category_channel_availability_mode_0c44268ba34cdc6f, []int{0}
+	return fileDescriptor_criterion_category_channel_availability_mode_25131bc98eae7592, []int{0}
 }
 func (m *CriterionCategoryChannelAvailabilityModeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CriterionCategoryChannelAvailabilityModeEnum.Unmarshal(m, b)
@@ -103,10 +103,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/criterion_category_channel_availability_mode.proto", fileDescriptor_criterion_category_channel_availability_mode_0c44268ba34cdc6f)
+	proto.RegisterFile("google/ads/googleads/v1/enums/criterion_category_channel_availability_mode.proto", fileDescriptor_criterion_category_channel_availability_mode_25131bc98eae7592)
 }
 
-var fileDescriptor_criterion_category_channel_availability_mode_0c44268ba34cdc6f = []byte{
+var fileDescriptor_criterion_category_channel_availability_mode_25131bc98eae7592 = []byte{
 	// 374 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x51, 0x41, 0x6b, 0xdb, 0x30,
 	0x18, 0x9d, 0x9d, 0xb1, 0x81, 0x32, 0x98, 0xf1, 0x71, 0x2c, 0xb0, 0x84, 0x1d, 0x76, 0xd8, 0x64,

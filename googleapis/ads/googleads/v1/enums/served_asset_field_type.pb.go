@@ -64,7 +64,7 @@ func (x ServedAssetFieldTypeEnum_ServedAssetFieldType) String() string {
 	return proto.EnumName(ServedAssetFieldTypeEnum_ServedAssetFieldType_name, int32(x))
 }
 func (ServedAssetFieldTypeEnum_ServedAssetFieldType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_served_asset_field_type_e1ddb89f641fff17, []int{0, 0}
+	return fileDescriptor_served_asset_field_type_06bb3304784d6d6b, []int{0, 0}
 }
 
 // Container for enum describing possible asset field types.
@@ -78,7 +78,7 @@ func (m *ServedAssetFieldTypeEnum) Reset()         { *m = ServedAssetFieldTypeEn
 func (m *ServedAssetFieldTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*ServedAssetFieldTypeEnum) ProtoMessage()    {}
 func (*ServedAssetFieldTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_served_asset_field_type_e1ddb89f641fff17, []int{0}
+	return fileDescriptor_served_asset_field_type_06bb3304784d6d6b, []int{0}
 }
 func (m *ServedAssetFieldTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServedAssetFieldTypeEnum.Unmarshal(m, b)
@@ -104,10 +104,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/served_asset_field_type.proto", fileDescriptor_served_asset_field_type_e1ddb89f641fff17)
+	proto.RegisterFile("google/ads/googleads/v1/enums/served_asset_field_type.proto", fileDescriptor_served_asset_field_type_06bb3304784d6d6b)
 }
 
-var fileDescriptor_served_asset_field_type_e1ddb89f641fff17 = []byte{
+var fileDescriptor_served_asset_field_type_06bb3304784d6d6b = []byte{
 	// 344 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xdd, 0x4a, 0xc3, 0x30,
 	0x14, 0xb6, 0x9d, 0x4e, 0xc8, 0x50, 0x63, 0xf1, 0x42, 0xc5, 0x5d, 0x6c, 0x0f, 0x90, 0x92, 0xed,

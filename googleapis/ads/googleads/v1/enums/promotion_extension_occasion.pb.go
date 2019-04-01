@@ -190,7 +190,7 @@ func (x PromotionExtensionOccasionEnum_PromotionExtensionOccasion) String() stri
 	return proto.EnumName(PromotionExtensionOccasionEnum_PromotionExtensionOccasion_name, int32(x))
 }
 func (PromotionExtensionOccasionEnum_PromotionExtensionOccasion) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_promotion_extension_occasion_e447c55310caddd1, []int{0, 0}
+	return fileDescriptor_promotion_extension_occasion_059e7361e876afc1, []int{0, 0}
 }
 
 // Container for enum describing a promotion extension occasion.
@@ -206,7 +206,7 @@ func (m *PromotionExtensionOccasionEnum) Reset()         { *m = PromotionExtensi
 func (m *PromotionExtensionOccasionEnum) String() string { return proto.CompactTextString(m) }
 func (*PromotionExtensionOccasionEnum) ProtoMessage()    {}
 func (*PromotionExtensionOccasionEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_promotion_extension_occasion_e447c55310caddd1, []int{0}
+	return fileDescriptor_promotion_extension_occasion_059e7361e876afc1, []int{0}
 }
 func (m *PromotionExtensionOccasionEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PromotionExtensionOccasionEnum.Unmarshal(m, b)
@@ -232,10 +232,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/promotion_extension_occasion.proto", fileDescriptor_promotion_extension_occasion_e447c55310caddd1)
+	proto.RegisterFile("google/ads/googleads/v1/enums/promotion_extension_occasion.proto", fileDescriptor_promotion_extension_occasion_059e7361e876afc1)
 }
 
-var fileDescriptor_promotion_extension_occasion_e447c55310caddd1 = []byte{
+var fileDescriptor_promotion_extension_occasion_059e7361e876afc1 = []byte{
 	// 669 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x53, 0xcb, 0x6e, 0xdb, 0x3a,
 	0x10, 0xbd, 0x71, 0xde, 0xcc, 0x8b, 0x51, 0x72, 0x5f, 0xb9, 0x79, 0xdc, 0xe4, 0x3e, 0x96, 0x32,

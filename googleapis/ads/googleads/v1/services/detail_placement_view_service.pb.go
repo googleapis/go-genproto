@@ -38,7 +38,7 @@ func (m *GetDetailPlacementViewRequest) Reset()         { *m = GetDetailPlacemen
 func (m *GetDetailPlacementViewRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDetailPlacementViewRequest) ProtoMessage()    {}
 func (*GetDetailPlacementViewRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_detail_placement_view_service_73598892378e5113, []int{0}
+	return fileDescriptor_detail_placement_view_service_269035f375c1866f, []int{0}
 }
 func (m *GetDetailPlacementViewRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDetailPlacementViewRequest.Unmarshal(m, b)
@@ -144,10 +144,10 @@ var _DetailPlacementViewService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/detail_placement_view_service.proto", fileDescriptor_detail_placement_view_service_73598892378e5113)
+	proto.RegisterFile("google/ads/googleads/v1/services/detail_placement_view_service.proto", fileDescriptor_detail_placement_view_service_269035f375c1866f)
 }
 
-var fileDescriptor_detail_placement_view_service_73598892378e5113 = []byte{
+var fileDescriptor_detail_placement_view_service_269035f375c1866f = []byte{
 	// 373 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xbf, 0x4a, 0xfb, 0x40,
 	0x1c, 0x27, 0xf9, 0xc1, 0x0f, 0x0c, 0xba, 0x64, 0x10, 0x09, 0x8a, 0xa5, 0x76, 0x90, 0x0e, 0x77,

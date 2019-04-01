@@ -60,7 +60,7 @@ func (x GeoTargetConstantSuggestionErrorEnum_GeoTargetConstantSuggestionError) S
 	return proto.EnumName(GeoTargetConstantSuggestionErrorEnum_GeoTargetConstantSuggestionError_name, int32(x))
 }
 func (GeoTargetConstantSuggestionErrorEnum_GeoTargetConstantSuggestionError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_geo_target_constant_suggestion_error_4e9bece694505fa8, []int{0, 0}
+	return fileDescriptor_geo_target_constant_suggestion_error_1ac39808933d782b, []int{0, 0}
 }
 
 // Container for enum describing possible geo target constant suggestion errors.
@@ -74,7 +74,7 @@ func (m *GeoTargetConstantSuggestionErrorEnum) Reset()         { *m = GeoTargetC
 func (m *GeoTargetConstantSuggestionErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*GeoTargetConstantSuggestionErrorEnum) ProtoMessage()    {}
 func (*GeoTargetConstantSuggestionErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_geo_target_constant_suggestion_error_4e9bece694505fa8, []int{0}
+	return fileDescriptor_geo_target_constant_suggestion_error_1ac39808933d782b, []int{0}
 }
 func (m *GeoTargetConstantSuggestionErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GeoTargetConstantSuggestionErrorEnum.Unmarshal(m, b)
@@ -100,10 +100,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/geo_target_constant_suggestion_error.proto", fileDescriptor_geo_target_constant_suggestion_error_4e9bece694505fa8)
+	proto.RegisterFile("google/ads/googleads/v1/errors/geo_target_constant_suggestion_error.proto", fileDescriptor_geo_target_constant_suggestion_error_1ac39808933d782b)
 }
 
-var fileDescriptor_geo_target_constant_suggestion_error_4e9bece694505fa8 = []byte{
+var fileDescriptor_geo_target_constant_suggestion_error_1ac39808933d782b = []byte{
 	// 386 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x91, 0xcf, 0xaa, 0xd4, 0x30,
 	0x14, 0xc6, 0x6d, 0xaf, 0x7f, 0x20, 0x77, 0x61, 0xa9, 0x82, 0x17, 0xb9, 0x0c, 0x52, 0x74, 0x9b,

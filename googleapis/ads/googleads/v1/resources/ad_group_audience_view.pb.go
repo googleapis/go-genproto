@@ -38,7 +38,7 @@ func (m *AdGroupAudienceView) Reset()         { *m = AdGroupAudienceView{} }
 func (m *AdGroupAudienceView) String() string { return proto.CompactTextString(m) }
 func (*AdGroupAudienceView) ProtoMessage()    {}
 func (*AdGroupAudienceView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_audience_view_82d22ca0afbd8bf7, []int{0}
+	return fileDescriptor_ad_group_audience_view_253e5082ec00e503, []int{0}
 }
 func (m *AdGroupAudienceView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupAudienceView.Unmarshal(m, b)
@@ -70,10 +70,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/ad_group_audience_view.proto", fileDescriptor_ad_group_audience_view_82d22ca0afbd8bf7)
+	proto.RegisterFile("google/ads/googleads/v1/resources/ad_group_audience_view.proto", fileDescriptor_ad_group_audience_view_253e5082ec00e503)
 }
 
-var fileDescriptor_ad_group_audience_view_82d22ca0afbd8bf7 = []byte{
+var fileDescriptor_ad_group_audience_view_253e5082ec00e503 = []byte{
 	// 276 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0x4f, 0x4a, 0xc4, 0x30,
 	0x14, 0xc6, 0x99, 0x0a, 0x82, 0x45, 0x37, 0xe3, 0x66, 0x10, 0x17, 0x8e, 0x32, 0xe0, 0x2a, 0x21,

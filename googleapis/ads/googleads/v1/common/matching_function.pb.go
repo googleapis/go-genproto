@@ -59,7 +59,7 @@ func (m *MatchingFunction) Reset()         { *m = MatchingFunction{} }
 func (m *MatchingFunction) String() string { return proto.CompactTextString(m) }
 func (*MatchingFunction) ProtoMessage()    {}
 func (*MatchingFunction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_52b2512267ac3b83, []int{0}
+	return fileDescriptor_matching_function_bb47824ec6458466, []int{0}
 }
 func (m *MatchingFunction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MatchingFunction.Unmarshal(m, b)
@@ -126,7 +126,7 @@ func (m *Operand) Reset()         { *m = Operand{} }
 func (m *Operand) String() string { return proto.CompactTextString(m) }
 func (*Operand) ProtoMessage()    {}
 func (*Operand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_52b2512267ac3b83, []int{1}
+	return fileDescriptor_matching_function_bb47824ec6458466, []int{1}
 }
 func (m *Operand) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Operand.Unmarshal(m, b)
@@ -340,7 +340,7 @@ func (m *Operand_ConstantOperand) Reset()         { *m = Operand_ConstantOperand
 func (m *Operand_ConstantOperand) String() string { return proto.CompactTextString(m) }
 func (*Operand_ConstantOperand) ProtoMessage()    {}
 func (*Operand_ConstantOperand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_52b2512267ac3b83, []int{1, 0}
+	return fileDescriptor_matching_function_bb47824ec6458466, []int{1, 0}
 }
 func (m *Operand_ConstantOperand) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Operand_ConstantOperand.Unmarshal(m, b)
@@ -551,7 +551,7 @@ func (m *Operand_FeedAttributeOperand) Reset()         { *m = Operand_FeedAttrib
 func (m *Operand_FeedAttributeOperand) String() string { return proto.CompactTextString(m) }
 func (*Operand_FeedAttributeOperand) ProtoMessage()    {}
 func (*Operand_FeedAttributeOperand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_52b2512267ac3b83, []int{1, 1}
+	return fileDescriptor_matching_function_bb47824ec6458466, []int{1, 1}
 }
 func (m *Operand_FeedAttributeOperand) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Operand_FeedAttributeOperand.Unmarshal(m, b)
@@ -599,7 +599,7 @@ func (m *Operand_FunctionOperand) Reset()         { *m = Operand_FunctionOperand
 func (m *Operand_FunctionOperand) String() string { return proto.CompactTextString(m) }
 func (*Operand_FunctionOperand) ProtoMessage()    {}
 func (*Operand_FunctionOperand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_52b2512267ac3b83, []int{1, 2}
+	return fileDescriptor_matching_function_bb47824ec6458466, []int{1, 2}
 }
 func (m *Operand_FunctionOperand) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Operand_FunctionOperand.Unmarshal(m, b)
@@ -639,7 +639,7 @@ func (m *Operand_RequestContextOperand) Reset()         { *m = Operand_RequestCo
 func (m *Operand_RequestContextOperand) String() string { return proto.CompactTextString(m) }
 func (*Operand_RequestContextOperand) ProtoMessage()    {}
 func (*Operand_RequestContextOperand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_52b2512267ac3b83, []int{1, 3}
+	return fileDescriptor_matching_function_bb47824ec6458466, []int{1, 3}
 }
 func (m *Operand_RequestContextOperand) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Operand_RequestContextOperand.Unmarshal(m, b)
@@ -676,10 +676,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/matching_function.proto", fileDescriptor_matching_function_52b2512267ac3b83)
+	proto.RegisterFile("google/ads/googleads/v1/common/matching_function.proto", fileDescriptor_matching_function_bb47824ec6458466)
 }
 
-var fileDescriptor_matching_function_52b2512267ac3b83 = []byte{
+var fileDescriptor_matching_function_bb47824ec6458466 = []byte{
 	// 750 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x55, 0xcd, 0x4e, 0xdb, 0x4a,
 	0x14, 0x26, 0x09, 0x82, 0xcb, 0x24, 0x24, 0x60, 0x01, 0x37, 0x37, 0x20, 0x84, 0xb2, 0xb9, 0xac,

@@ -56,7 +56,7 @@ func (x CustomerMatchUploadKeyTypeEnum_CustomerMatchUploadKeyType) String() stri
 	return proto.EnumName(CustomerMatchUploadKeyTypeEnum_CustomerMatchUploadKeyType_name, int32(x))
 }
 func (CustomerMatchUploadKeyTypeEnum_CustomerMatchUploadKeyType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_customer_match_upload_key_type_7f0ef339699143a1, []int{0, 0}
+	return fileDescriptor_customer_match_upload_key_type_27ee75ce08817c6f, []int{0, 0}
 }
 
 // Indicates what type of data are the user list's members matched from.
@@ -70,7 +70,7 @@ func (m *CustomerMatchUploadKeyTypeEnum) Reset()         { *m = CustomerMatchUpl
 func (m *CustomerMatchUploadKeyTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*CustomerMatchUploadKeyTypeEnum) ProtoMessage()    {}
 func (*CustomerMatchUploadKeyTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_match_upload_key_type_7f0ef339699143a1, []int{0}
+	return fileDescriptor_customer_match_upload_key_type_27ee75ce08817c6f, []int{0}
 }
 func (m *CustomerMatchUploadKeyTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomerMatchUploadKeyTypeEnum.Unmarshal(m, b)
@@ -96,10 +96,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/customer_match_upload_key_type.proto", fileDescriptor_customer_match_upload_key_type_7f0ef339699143a1)
+	proto.RegisterFile("google/ads/googleads/v1/enums/customer_match_upload_key_type.proto", fileDescriptor_customer_match_upload_key_type_27ee75ce08817c6f)
 }
 
-var fileDescriptor_customer_match_upload_key_type_7f0ef339699143a1 = []byte{
+var fileDescriptor_customer_match_upload_key_type_27ee75ce08817c6f = []byte{
 	// 352 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0x41, 0x6a, 0x83, 0x40,
 	0x14, 0xad, 0xa6, 0xa4, 0x30, 0x29, 0x54, 0x84, 0x2e, 0x1a, 0x9a, 0x96, 0xe4, 0x00, 0x23, 0xd2,

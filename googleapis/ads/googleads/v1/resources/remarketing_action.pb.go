@@ -48,7 +48,7 @@ func (m *RemarketingAction) Reset()         { *m = RemarketingAction{} }
 func (m *RemarketingAction) String() string { return proto.CompactTextString(m) }
 func (*RemarketingAction) ProtoMessage()    {}
 func (*RemarketingAction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_remarketing_action_8a791798db6e5249, []int{0}
+	return fileDescriptor_remarketing_action_ef96d6f7b8f18901, []int{0}
 }
 func (m *RemarketingAction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemarketingAction.Unmarshal(m, b)
@@ -101,10 +101,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/remarketing_action.proto", fileDescriptor_remarketing_action_8a791798db6e5249)
+	proto.RegisterFile("google/ads/googleads/v1/resources/remarketing_action.proto", fileDescriptor_remarketing_action_ef96d6f7b8f18901)
 }
 
-var fileDescriptor_remarketing_action_8a791798db6e5249 = []byte{
+var fileDescriptor_remarketing_action_ef96d6f7b8f18901 = []byte{
 	// 390 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0xc1, 0x6a, 0xdb, 0x30,
 	0x1c, 0xc6, 0xb1, 0x13, 0x06, 0x73, 0xb2, 0xc3, 0x7c, 0x18, 0x21, 0x0b, 0x23, 0xd9, 0x08, 0x84,

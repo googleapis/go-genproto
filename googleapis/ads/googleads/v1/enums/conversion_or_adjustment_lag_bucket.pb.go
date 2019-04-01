@@ -246,7 +246,7 @@ func (x ConversionOrAdjustmentLagBucketEnum_ConversionOrAdjustmentLagBucket) Str
 	return proto.EnumName(ConversionOrAdjustmentLagBucketEnum_ConversionOrAdjustmentLagBucket_name, int32(x))
 }
 func (ConversionOrAdjustmentLagBucketEnum_ConversionOrAdjustmentLagBucket) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_or_adjustment_lag_bucket_527156cc7f65fdf9, []int{0, 0}
+	return fileDescriptor_conversion_or_adjustment_lag_bucket_5448d829ddc5cfd6, []int{0, 0}
 }
 
 // Container for enum representing the number of days between the impression and
@@ -261,7 +261,7 @@ func (m *ConversionOrAdjustmentLagBucketEnum) Reset()         { *m = ConversionO
 func (m *ConversionOrAdjustmentLagBucketEnum) String() string { return proto.CompactTextString(m) }
 func (*ConversionOrAdjustmentLagBucketEnum) ProtoMessage()    {}
 func (*ConversionOrAdjustmentLagBucketEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_or_adjustment_lag_bucket_527156cc7f65fdf9, []int{0}
+	return fileDescriptor_conversion_or_adjustment_lag_bucket_5448d829ddc5cfd6, []int{0}
 }
 func (m *ConversionOrAdjustmentLagBucketEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionOrAdjustmentLagBucketEnum.Unmarshal(m, b)
@@ -287,10 +287,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_or_adjustment_lag_bucket.proto", fileDescriptor_conversion_or_adjustment_lag_bucket_527156cc7f65fdf9)
+	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_or_adjustment_lag_bucket.proto", fileDescriptor_conversion_or_adjustment_lag_bucket_5448d829ddc5cfd6)
 }
 
-var fileDescriptor_conversion_or_adjustment_lag_bucket_527156cc7f65fdf9 = []byte{
+var fileDescriptor_conversion_or_adjustment_lag_bucket_5448d829ddc5cfd6 = []byte{
 	// 741 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x95, 0xdf, 0x72, 0xd2, 0x40,
 	0x14, 0xc6, 0x2d, 0xd5, 0x56, 0xb7, 0xd5, 0xe2, 0xaa, 0x55, 0xdb, 0x52, 0xca, 0x1f, 0xdb, 0xda,

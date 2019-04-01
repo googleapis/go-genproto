@@ -49,7 +49,7 @@ func (m *ClickView) Reset()         { *m = ClickView{} }
 func (m *ClickView) String() string { return proto.CompactTextString(m) }
 func (*ClickView) ProtoMessage()    {}
 func (*ClickView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_click_view_21a317714c29001f, []int{0}
+	return fileDescriptor_click_view_284865e183b9694e, []int{0}
 }
 func (m *ClickView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClickView.Unmarshal(m, b)
@@ -109,10 +109,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/click_view.proto", fileDescriptor_click_view_21a317714c29001f)
+	proto.RegisterFile("google/ads/googleads/v1/resources/click_view.proto", fileDescriptor_click_view_284865e183b9694e)
 }
 
-var fileDescriptor_click_view_21a317714c29001f = []byte{
+var fileDescriptor_click_view_284865e183b9694e = []byte{
 	// 429 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0xdf, 0x6a, 0xd4, 0x40,
 	0x14, 0x87, 0x49, 0x6a, 0x85, 0x4e, 0xb5, 0x48, 0xf0, 0x22, 0xd4, 0x22, 0xad, 0x52, 0xe8, 0x8d,

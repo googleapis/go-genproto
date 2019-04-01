@@ -41,7 +41,7 @@ func (m *GetLabelRequest) Reset()         { *m = GetLabelRequest{} }
 func (m *GetLabelRequest) String() string { return proto.CompactTextString(m) }
 func (*GetLabelRequest) ProtoMessage()    {}
 func (*GetLabelRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_label_service_b31c2628132d4a01, []int{0}
+	return fileDescriptor_label_service_e4053b8718be26c9, []int{0}
 }
 func (m *GetLabelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetLabelRequest.Unmarshal(m, b)
@@ -91,7 +91,7 @@ func (m *MutateLabelsRequest) Reset()         { *m = MutateLabelsRequest{} }
 func (m *MutateLabelsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateLabelsRequest) ProtoMessage()    {}
 func (*MutateLabelsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_label_service_b31c2628132d4a01, []int{1}
+	return fileDescriptor_label_service_e4053b8718be26c9, []int{1}
 }
 func (m *MutateLabelsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateLabelsRequest.Unmarshal(m, b)
@@ -159,7 +159,7 @@ func (m *LabelOperation) Reset()         { *m = LabelOperation{} }
 func (m *LabelOperation) String() string { return proto.CompactTextString(m) }
 func (*LabelOperation) ProtoMessage()    {}
 func (*LabelOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_label_service_b31c2628132d4a01, []int{2}
+	return fileDescriptor_label_service_e4053b8718be26c9, []int{2}
 }
 func (m *LabelOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelOperation.Unmarshal(m, b)
@@ -343,7 +343,7 @@ func (m *MutateLabelsResponse) Reset()         { *m = MutateLabelsResponse{} }
 func (m *MutateLabelsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateLabelsResponse) ProtoMessage()    {}
 func (*MutateLabelsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_label_service_b31c2628132d4a01, []int{3}
+	return fileDescriptor_label_service_e4053b8718be26c9, []int{3}
 }
 func (m *MutateLabelsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateLabelsResponse.Unmarshal(m, b)
@@ -390,7 +390,7 @@ func (m *MutateLabelResult) Reset()         { *m = MutateLabelResult{} }
 func (m *MutateLabelResult) String() string { return proto.CompactTextString(m) }
 func (*MutateLabelResult) ProtoMessage()    {}
 func (*MutateLabelResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_label_service_b31c2628132d4a01, []int{4}
+	return fileDescriptor_label_service_e4053b8718be26c9, []int{4}
 }
 func (m *MutateLabelResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateLabelResult.Unmarshal(m, b)
@@ -535,10 +535,10 @@ var _LabelService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/label_service.proto", fileDescriptor_label_service_b31c2628132d4a01)
+	proto.RegisterFile("google/ads/googleads/v1/services/label_service.proto", fileDescriptor_label_service_e4053b8718be26c9)
 }
 
-var fileDescriptor_label_service_b31c2628132d4a01 = []byte{
+var fileDescriptor_label_service_e4053b8718be26c9 = []byte{
 	// 699 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0x41, 0x6b, 0xd4, 0x40,
 	0x14, 0x36, 0xa9, 0xd4, 0x76, 0xb2, 0xb6, 0x74, 0xaa, 0xb8, 0x2c, 0xa2, 0x4b, 0x2c, 0xb8, 0xac,

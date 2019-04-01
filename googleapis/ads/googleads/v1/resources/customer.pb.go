@@ -66,7 +66,7 @@ func (m *Customer) Reset()         { *m = Customer{} }
 func (m *Customer) String() string { return proto.CompactTextString(m) }
 func (*Customer) ProtoMessage()    {}
 func (*Customer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_67cce403a0f5fba7, []int{0}
+	return fileDescriptor_customer_8c4081a628d1c994, []int{0}
 }
 func (m *Customer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Customer.Unmarshal(m, b)
@@ -204,7 +204,7 @@ func (m *CallReportingSetting) Reset()         { *m = CallReportingSetting{} }
 func (m *CallReportingSetting) String() string { return proto.CompactTextString(m) }
 func (*CallReportingSetting) ProtoMessage()    {}
 func (*CallReportingSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_67cce403a0f5fba7, []int{1}
+	return fileDescriptor_customer_8c4081a628d1c994, []int{1}
 }
 func (m *CallReportingSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CallReportingSetting.Unmarshal(m, b)
@@ -266,7 +266,7 @@ func (m *ConversionTrackingSetting) Reset()         { *m = ConversionTrackingSet
 func (m *ConversionTrackingSetting) String() string { return proto.CompactTextString(m) }
 func (*ConversionTrackingSetting) ProtoMessage()    {}
 func (*ConversionTrackingSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_67cce403a0f5fba7, []int{2}
+	return fileDescriptor_customer_8c4081a628d1c994, []int{2}
 }
 func (m *ConversionTrackingSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionTrackingSetting.Unmarshal(m, b)
@@ -313,7 +313,7 @@ func (m *RemarketingSetting) Reset()         { *m = RemarketingSetting{} }
 func (m *RemarketingSetting) String() string { return proto.CompactTextString(m) }
 func (*RemarketingSetting) ProtoMessage()    {}
 func (*RemarketingSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_67cce403a0f5fba7, []int{3}
+	return fileDescriptor_customer_8c4081a628d1c994, []int{3}
 }
 func (m *RemarketingSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemarketingSetting.Unmarshal(m, b)
@@ -348,10 +348,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/customer.proto", fileDescriptor_customer_67cce403a0f5fba7)
+	proto.RegisterFile("google/ads/googleads/v1/resources/customer.proto", fileDescriptor_customer_8c4081a628d1c994)
 }
 
-var fileDescriptor_customer_67cce403a0f5fba7 = []byte{
+var fileDescriptor_customer_8c4081a628d1c994 = []byte{
 	// 787 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x95, 0xdf, 0x6e, 0xdb, 0x36,
 	0x14, 0x87, 0x61, 0x75, 0x6b, 0x13, 0x26, 0x69, 0x03, 0xd6, 0x2b, 0xd4, 0xb4, 0x28, 0x92, 0x6c,

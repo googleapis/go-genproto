@@ -46,7 +46,7 @@ func (x AdxErrorEnum_AdxError) String() string {
 	return proto.EnumName(AdxErrorEnum_AdxError_name, int32(x))
 }
 func (AdxErrorEnum_AdxError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_adx_error_48a725841b9c4245, []int{0, 0}
+	return fileDescriptor_adx_error_65d2022b50578328, []int{0, 0}
 }
 
 // Container for enum describing possible adx errors.
@@ -60,7 +60,7 @@ func (m *AdxErrorEnum) Reset()         { *m = AdxErrorEnum{} }
 func (m *AdxErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*AdxErrorEnum) ProtoMessage()    {}
 func (*AdxErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_adx_error_48a725841b9c4245, []int{0}
+	return fileDescriptor_adx_error_65d2022b50578328, []int{0}
 }
 func (m *AdxErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdxErrorEnum.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/adx_error.proto", fileDescriptor_adx_error_48a725841b9c4245)
+	proto.RegisterFile("google/ads/googleads/v1/errors/adx_error.proto", fileDescriptor_adx_error_65d2022b50578328)
 }
 
-var fileDescriptor_adx_error_48a725841b9c4245 = []byte{
+var fileDescriptor_adx_error_65d2022b50578328 = []byte{
 	// 293 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xd1, 0x4a, 0xf3, 0x30,
 	0x14, 0xc7, 0xbf, 0xf6, 0x03, 0x95, 0x4c, 0xb1, 0xd4, 0x0b, 0x41, 0x64, 0x17, 0x7d, 0x80, 0x84,

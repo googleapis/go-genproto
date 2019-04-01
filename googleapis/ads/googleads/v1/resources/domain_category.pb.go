@@ -63,7 +63,7 @@ func (m *DomainCategory) Reset()         { *m = DomainCategory{} }
 func (m *DomainCategory) String() string { return proto.CompactTextString(m) }
 func (*DomainCategory) ProtoMessage()    {}
 func (*DomainCategory) Descriptor() ([]byte, []int) {
-	return fileDescriptor_domain_category_f39d2f502dcf7a0d, []int{0}
+	return fileDescriptor_domain_category_695d83200adb3248, []int{0}
 }
 func (m *DomainCategory) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DomainCategory.Unmarshal(m, b)
@@ -151,10 +151,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/domain_category.proto", fileDescriptor_domain_category_f39d2f502dcf7a0d)
+	proto.RegisterFile("google/ads/googleads/v1/resources/domain_category.proto", fileDescriptor_domain_category_695d83200adb3248)
 }
 
-var fileDescriptor_domain_category_f39d2f502dcf7a0d = []byte{
+var fileDescriptor_domain_category_695d83200adb3248 = []byte{
 	// 493 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0xd1, 0x6a, 0x14, 0x3d,
 	0x1c, 0xc5, 0xd9, 0x6d, 0xbf, 0xfd, 0xda, 0x74, 0x57, 0x74, 0xbc, 0x70, 0x58, 0x8b, 0xb4, 0x4a,

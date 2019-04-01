@@ -40,7 +40,7 @@ func (m *GetCustomerClientLinkRequest) Reset()         { *m = GetCustomerClientL
 func (m *GetCustomerClientLinkRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCustomerClientLinkRequest) ProtoMessage()    {}
 func (*GetCustomerClientLinkRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_client_link_service_1e663bab1293db02, []int{0}
+	return fileDescriptor_customer_client_link_service_dc0f8bcf1888ce74, []int{0}
 }
 func (m *GetCustomerClientLinkRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCustomerClientLinkRequest.Unmarshal(m, b)
@@ -82,7 +82,7 @@ func (m *MutateCustomerClientLinkRequest) Reset()         { *m = MutateCustomerC
 func (m *MutateCustomerClientLinkRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateCustomerClientLinkRequest) ProtoMessage()    {}
 func (*MutateCustomerClientLinkRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_client_link_service_1e663bab1293db02, []int{1}
+	return fileDescriptor_customer_client_link_service_dc0f8bcf1888ce74, []int{1}
 }
 func (m *MutateCustomerClientLinkRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCustomerClientLinkRequest.Unmarshal(m, b)
@@ -135,7 +135,7 @@ func (m *CustomerClientLinkOperation) Reset()         { *m = CustomerClientLinkO
 func (m *CustomerClientLinkOperation) String() string { return proto.CompactTextString(m) }
 func (*CustomerClientLinkOperation) ProtoMessage()    {}
 func (*CustomerClientLinkOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_client_link_service_1e663bab1293db02, []int{2}
+	return fileDescriptor_customer_client_link_service_dc0f8bcf1888ce74, []int{2}
 }
 func (m *CustomerClientLinkOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomerClientLinkOperation.Unmarshal(m, b)
@@ -286,7 +286,7 @@ func (m *MutateCustomerClientLinkResponse) Reset()         { *m = MutateCustomer
 func (m *MutateCustomerClientLinkResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateCustomerClientLinkResponse) ProtoMessage()    {}
 func (*MutateCustomerClientLinkResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_client_link_service_1e663bab1293db02, []int{3}
+	return fileDescriptor_customer_client_link_service_dc0f8bcf1888ce74, []int{3}
 }
 func (m *MutateCustomerClientLinkResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCustomerClientLinkResponse.Unmarshal(m, b)
@@ -326,7 +326,7 @@ func (m *MutateCustomerClientLinkResult) Reset()         { *m = MutateCustomerCl
 func (m *MutateCustomerClientLinkResult) String() string { return proto.CompactTextString(m) }
 func (*MutateCustomerClientLinkResult) ProtoMessage()    {}
 func (*MutateCustomerClientLinkResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_client_link_service_1e663bab1293db02, []int{4}
+	return fileDescriptor_customer_client_link_service_dc0f8bcf1888ce74, []int{4}
 }
 func (m *MutateCustomerClientLinkResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCustomerClientLinkResult.Unmarshal(m, b)
@@ -471,10 +471,10 @@ var _CustomerClientLinkService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/customer_client_link_service.proto", fileDescriptor_customer_client_link_service_1e663bab1293db02)
+	proto.RegisterFile("google/ads/googleads/v1/services/customer_client_link_service.proto", fileDescriptor_customer_client_link_service_dc0f8bcf1888ce74)
 }
 
-var fileDescriptor_customer_client_link_service_1e663bab1293db02 = []byte{
+var fileDescriptor_customer_client_link_service_dc0f8bcf1888ce74 = []byte{
 	// 612 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x94, 0x41, 0x8b, 0xd3, 0x40,
 	0x14, 0xc7, 0x4d, 0x56, 0x0a, 0x3b, 0xd5, 0x4b, 0x40, 0xa8, 0x75, 0xe9, 0x96, 0xb8, 0x87, 0xa5,

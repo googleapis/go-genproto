@@ -52,7 +52,7 @@ func (x ListingGroupTypeEnum_ListingGroupType) String() string {
 	return proto.EnumName(ListingGroupTypeEnum_ListingGroupType_name, int32(x))
 }
 func (ListingGroupTypeEnum_ListingGroupType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_listing_group_type_e5aee84568efd48e, []int{0, 0}
+	return fileDescriptor_listing_group_type_f7d64e1c6c9f2adb, []int{0, 0}
 }
 
 // Container for enum describing the type of the listing group.
@@ -66,7 +66,7 @@ func (m *ListingGroupTypeEnum) Reset()         { *m = ListingGroupTypeEnum{} }
 func (m *ListingGroupTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*ListingGroupTypeEnum) ProtoMessage()    {}
 func (*ListingGroupTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_listing_group_type_e5aee84568efd48e, []int{0}
+	return fileDescriptor_listing_group_type_f7d64e1c6c9f2adb, []int{0}
 }
 func (m *ListingGroupTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListingGroupTypeEnum.Unmarshal(m, b)
@@ -92,10 +92,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/listing_group_type.proto", fileDescriptor_listing_group_type_e5aee84568efd48e)
+	proto.RegisterFile("google/ads/googleads/v1/enums/listing_group_type.proto", fileDescriptor_listing_group_type_f7d64e1c6c9f2adb)
 }
 
-var fileDescriptor_listing_group_type_e5aee84568efd48e = []byte{
+var fileDescriptor_listing_group_type_f7d64e1c6c9f2adb = []byte{
 	// 306 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcf, 0x4a, 0xc3, 0x30,
 	0x18, 0x77, 0x9d, 0xa8, 0x64, 0x07, 0x4b, 0xd1, 0x8b, 0xb8, 0xc3, 0xf6, 0x00, 0x09, 0x45, 0xf0,

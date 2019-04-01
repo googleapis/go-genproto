@@ -39,7 +39,7 @@ func (m *ShoppingPerformanceView) Reset()         { *m = ShoppingPerformanceView
 func (m *ShoppingPerformanceView) String() string { return proto.CompactTextString(m) }
 func (*ShoppingPerformanceView) ProtoMessage()    {}
 func (*ShoppingPerformanceView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_shopping_performance_view_fc9cbf2fae6fabaa, []int{0}
+	return fileDescriptor_shopping_performance_view_e974dd982cd67dd4, []int{0}
 }
 func (m *ShoppingPerformanceView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ShoppingPerformanceView.Unmarshal(m, b)
@@ -71,10 +71,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/shopping_performance_view.proto", fileDescriptor_shopping_performance_view_fc9cbf2fae6fabaa)
+	proto.RegisterFile("google/ads/googleads/v1/resources/shopping_performance_view.proto", fileDescriptor_shopping_performance_view_e974dd982cd67dd4)
 }
 
-var fileDescriptor_shopping_performance_view_fc9cbf2fae6fabaa = []byte{
+var fileDescriptor_shopping_performance_view_e974dd982cd67dd4 = []byte{
 	// 278 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0x41, 0x4a, 0xc4, 0x30,
 	0x14, 0x86, 0x69, 0x05, 0xc1, 0xa2, 0x9b, 0xd9, 0x28, 0x32, 0x0b, 0x47, 0x19, 0x70, 0x95, 0x50,

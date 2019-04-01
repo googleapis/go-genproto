@@ -52,7 +52,7 @@ func (x AdGroupAdRotationModeEnum_AdGroupAdRotationMode) String() string {
 	return proto.EnumName(AdGroupAdRotationModeEnum_AdGroupAdRotationMode_name, int32(x))
 }
 func (AdGroupAdRotationModeEnum_AdGroupAdRotationMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_ad_rotation_mode_bf7f60d92f8402c8, []int{0, 0}
+	return fileDescriptor_ad_group_ad_rotation_mode_5c696ca55b61ca54, []int{0, 0}
 }
 
 // Container for enum describing possible ad rotation modes of ads within an
@@ -67,7 +67,7 @@ func (m *AdGroupAdRotationModeEnum) Reset()         { *m = AdGroupAdRotationMode
 func (m *AdGroupAdRotationModeEnum) String() string { return proto.CompactTextString(m) }
 func (*AdGroupAdRotationModeEnum) ProtoMessage()    {}
 func (*AdGroupAdRotationModeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_ad_rotation_mode_bf7f60d92f8402c8, []int{0}
+	return fileDescriptor_ad_group_ad_rotation_mode_5c696ca55b61ca54, []int{0}
 }
 func (m *AdGroupAdRotationModeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupAdRotationModeEnum.Unmarshal(m, b)
@@ -93,10 +93,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/ad_group_ad_rotation_mode.proto", fileDescriptor_ad_group_ad_rotation_mode_bf7f60d92f8402c8)
+	proto.RegisterFile("google/ads/googleads/v1/enums/ad_group_ad_rotation_mode.proto", fileDescriptor_ad_group_ad_rotation_mode_5c696ca55b61ca54)
 }
 
-var fileDescriptor_ad_group_ad_rotation_mode_bf7f60d92f8402c8 = []byte{
+var fileDescriptor_ad_group_ad_rotation_mode_5c696ca55b61ca54 = []byte{
 	// 321 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xd1, 0x4a, 0xfb, 0x30,
 	0x18, 0xc5, 0xff, 0xeb, 0xe0, 0xaf, 0x64, 0xa2, 0xa5, 0xe0, 0x85, 0xc3, 0x5d, 0x6c, 0x0f, 0x90,

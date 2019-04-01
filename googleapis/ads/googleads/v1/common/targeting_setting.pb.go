@@ -37,7 +37,7 @@ func (m *TargetingSetting) Reset()         { *m = TargetingSetting{} }
 func (m *TargetingSetting) String() string { return proto.CompactTextString(m) }
 func (*TargetingSetting) ProtoMessage()    {}
 func (*TargetingSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_targeting_setting_ed3db49f08c405f3, []int{0}
+	return fileDescriptor_targeting_setting_85aa67017683846c, []int{0}
 }
 func (m *TargetingSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetingSetting.Unmarshal(m, b)
@@ -85,7 +85,7 @@ func (m *TargetRestriction) Reset()         { *m = TargetRestriction{} }
 func (m *TargetRestriction) String() string { return proto.CompactTextString(m) }
 func (*TargetRestriction) ProtoMessage()    {}
 func (*TargetRestriction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_targeting_setting_ed3db49f08c405f3, []int{1}
+	return fileDescriptor_targeting_setting_85aa67017683846c, []int{1}
 }
 func (m *TargetRestriction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetRestriction.Unmarshal(m, b)
@@ -125,10 +125,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/targeting_setting.proto", fileDescriptor_targeting_setting_ed3db49f08c405f3)
+	proto.RegisterFile("google/ads/googleads/v1/common/targeting_setting.proto", fileDescriptor_targeting_setting_85aa67017683846c)
 }
 
-var fileDescriptor_targeting_setting_ed3db49f08c405f3 = []byte{
+var fileDescriptor_targeting_setting_85aa67017683846c = []byte{
 	// 392 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0x4f, 0x6b, 0xdb, 0x30,
 	0x18, 0xc6, 0xb1, 0x03, 0xdb, 0x70, 0x60, 0x6c, 0x1e, 0x83, 0x10, 0x46, 0x08, 0x3e, 0xe5, 0x24,

@@ -90,7 +90,7 @@ func (x MonthOfYearEnum_MonthOfYear) String() string {
 	return proto.EnumName(MonthOfYearEnum_MonthOfYear_name, int32(x))
 }
 func (MonthOfYearEnum_MonthOfYear) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_month_of_year_3a8c3e20a0696a12, []int{0, 0}
+	return fileDescriptor_month_of_year_d3748aaa46f664bb, []int{0, 0}
 }
 
 // Container for enumeration of months of the year, e.g., "January".
@@ -104,7 +104,7 @@ func (m *MonthOfYearEnum) Reset()         { *m = MonthOfYearEnum{} }
 func (m *MonthOfYearEnum) String() string { return proto.CompactTextString(m) }
 func (*MonthOfYearEnum) ProtoMessage()    {}
 func (*MonthOfYearEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_month_of_year_3a8c3e20a0696a12, []int{0}
+	return fileDescriptor_month_of_year_d3748aaa46f664bb, []int{0}
 }
 func (m *MonthOfYearEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MonthOfYearEnum.Unmarshal(m, b)
@@ -130,10 +130,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/month_of_year.proto", fileDescriptor_month_of_year_3a8c3e20a0696a12)
+	proto.RegisterFile("google/ads/googleads/v1/enums/month_of_year.proto", fileDescriptor_month_of_year_d3748aaa46f664bb)
 }
 
-var fileDescriptor_month_of_year_3a8c3e20a0696a12 = []byte{
+var fileDescriptor_month_of_year_d3748aaa46f664bb = []byte{
 	// 389 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xcb, 0x8e, 0xd3, 0x30,
 	0x14, 0x25, 0xe9, 0x4c, 0x1f, 0xce, 0x8c, 0xc6, 0xf2, 0x12, 0x31, 0x8b, 0x99, 0x0f, 0x70, 0x14,

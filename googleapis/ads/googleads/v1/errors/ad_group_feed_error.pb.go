@@ -72,7 +72,7 @@ func (x AdGroupFeedErrorEnum_AdGroupFeedError) String() string {
 	return proto.EnumName(AdGroupFeedErrorEnum_AdGroupFeedError_name, int32(x))
 }
 func (AdGroupFeedErrorEnum_AdGroupFeedError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_feed_error_e3378590655c5f0c, []int{0, 0}
+	return fileDescriptor_ad_group_feed_error_3bbc71aa1ff87493, []int{0, 0}
 }
 
 // Container for enum describing possible ad group feed errors.
@@ -86,7 +86,7 @@ func (m *AdGroupFeedErrorEnum) Reset()         { *m = AdGroupFeedErrorEnum{} }
 func (m *AdGroupFeedErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*AdGroupFeedErrorEnum) ProtoMessage()    {}
 func (*AdGroupFeedErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_feed_error_e3378590655c5f0c, []int{0}
+	return fileDescriptor_ad_group_feed_error_3bbc71aa1ff87493, []int{0}
 }
 func (m *AdGroupFeedErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupFeedErrorEnum.Unmarshal(m, b)
@@ -112,10 +112,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/ad_group_feed_error.proto", fileDescriptor_ad_group_feed_error_e3378590655c5f0c)
+	proto.RegisterFile("google/ads/googleads/v1/errors/ad_group_feed_error.proto", fileDescriptor_ad_group_feed_error_3bbc71aa1ff87493)
 }
 
-var fileDescriptor_ad_group_feed_error_e3378590655c5f0c = []byte{
+var fileDescriptor_ad_group_feed_error_3bbc71aa1ff87493 = []byte{
 	// 445 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xc1, 0x6a, 0xd4, 0x40,
 	0x1c, 0xc6, 0xdd, 0x54, 0x5b, 0x99, 0x1e, 0x0c, 0x41, 0x41, 0xb4, 0xac, 0x90, 0x43, 0x11, 0x91,

@@ -62,7 +62,7 @@ func (x ProductTypeLevelEnum_ProductTypeLevel) String() string {
 	return proto.EnumName(ProductTypeLevelEnum_ProductTypeLevel_name, int32(x))
 }
 func (ProductTypeLevelEnum_ProductTypeLevel) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_product_type_level_5e546855154aab58, []int{0, 0}
+	return fileDescriptor_product_type_level_f1d8fae3fede111f, []int{0, 0}
 }
 
 // Level of the type of a product offer.
@@ -76,7 +76,7 @@ func (m *ProductTypeLevelEnum) Reset()         { *m = ProductTypeLevelEnum{} }
 func (m *ProductTypeLevelEnum) String() string { return proto.CompactTextString(m) }
 func (*ProductTypeLevelEnum) ProtoMessage()    {}
 func (*ProductTypeLevelEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_type_level_5e546855154aab58, []int{0}
+	return fileDescriptor_product_type_level_f1d8fae3fede111f, []int{0}
 }
 func (m *ProductTypeLevelEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductTypeLevelEnum.Unmarshal(m, b)
@@ -102,10 +102,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/product_type_level.proto", fileDescriptor_product_type_level_5e546855154aab58)
+	proto.RegisterFile("google/ads/googleads/v1/enums/product_type_level.proto", fileDescriptor_product_type_level_f1d8fae3fede111f)
 }
 
-var fileDescriptor_product_type_level_5e546855154aab58 = []byte{
+var fileDescriptor_product_type_level_f1d8fae3fede111f = []byte{
 	// 315 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0x41, 0x4a, 0x03, 0x31,
 	0x18, 0x85, 0x9d, 0x0a, 0xad, 0xa6, 0x0b, 0xc3, 0xa0, 0x1b, 0xb1, 0x8b, 0xf6, 0x00, 0x09, 0xb1,

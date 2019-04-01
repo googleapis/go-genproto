@@ -38,7 +38,7 @@ func (m *GetGeographicViewRequest) Reset()         { *m = GetGeographicViewReque
 func (m *GetGeographicViewRequest) String() string { return proto.CompactTextString(m) }
 func (*GetGeographicViewRequest) ProtoMessage()    {}
 func (*GetGeographicViewRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_geographic_view_service_cd92fe72c7e3d46d, []int{0}
+	return fileDescriptor_geographic_view_service_3209ea15797ce738, []int{0}
 }
 func (m *GetGeographicViewRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGeographicViewRequest.Unmarshal(m, b)
@@ -144,10 +144,10 @@ var _GeographicViewService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/geographic_view_service.proto", fileDescriptor_geographic_view_service_cd92fe72c7e3d46d)
+	proto.RegisterFile("google/ads/googleads/v1/services/geographic_view_service.proto", fileDescriptor_geographic_view_service_3209ea15797ce738)
 }
 
-var fileDescriptor_geographic_view_service_cd92fe72c7e3d46d = []byte{
+var fileDescriptor_geographic_view_service_3209ea15797ce738 = []byte{
 	// 365 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0xbf, 0x4a, 0xc3, 0x40,
 	0x1c, 0xc7, 0x49, 0x04, 0xc1, 0xa0, 0x83, 0x01, 0xa1, 0x04, 0x87, 0x52, 0x3b, 0x48, 0x87, 0x3b,

@@ -51,7 +51,7 @@ func (x ConversionActionCountingTypeEnum_ConversionActionCountingType) String() 
 	return proto.EnumName(ConversionActionCountingTypeEnum_ConversionActionCountingType_name, int32(x))
 }
 func (ConversionActionCountingTypeEnum_ConversionActionCountingType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_action_counting_type_f8b1abd6302e4352, []int{0, 0}
+	return fileDescriptor_conversion_action_counting_type_1716f95c271033b4, []int{0, 0}
 }
 
 // Container for enum describing the conversion deduplication mode for
@@ -66,7 +66,7 @@ func (m *ConversionActionCountingTypeEnum) Reset()         { *m = ConversionActi
 func (m *ConversionActionCountingTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*ConversionActionCountingTypeEnum) ProtoMessage()    {}
 func (*ConversionActionCountingTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_action_counting_type_f8b1abd6302e4352, []int{0}
+	return fileDescriptor_conversion_action_counting_type_1716f95c271033b4, []int{0}
 }
 func (m *ConversionActionCountingTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionActionCountingTypeEnum.Unmarshal(m, b)
@@ -92,10 +92,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_action_counting_type.proto", fileDescriptor_conversion_action_counting_type_f8b1abd6302e4352)
+	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_action_counting_type.proto", fileDescriptor_conversion_action_counting_type_1716f95c271033b4)
 }
 
-var fileDescriptor_conversion_action_counting_type_f8b1abd6302e4352 = []byte{
+var fileDescriptor_conversion_action_counting_type_1716f95c271033b4 = []byte{
 	// 326 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xdf, 0x4a, 0xf3, 0x30,
 	0x1c, 0xfd, 0xda, 0xc1, 0x27, 0x64, 0xa8, 0xb3, 0x97, 0xb2, 0x81, 0xdb, 0x03, 0xa4, 0x14, 0xef,

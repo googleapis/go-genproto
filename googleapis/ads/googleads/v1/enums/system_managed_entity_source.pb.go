@@ -46,7 +46,7 @@ func (x SystemManagedResourceSourceEnum_SystemManagedResourceSource) String() st
 	return proto.EnumName(SystemManagedResourceSourceEnum_SystemManagedResourceSource_name, int32(x))
 }
 func (SystemManagedResourceSourceEnum_SystemManagedResourceSource) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_system_managed_entity_source_0dbea9251628a6f1, []int{0, 0}
+	return fileDescriptor_system_managed_entity_source_69e9c706f64200ef, []int{0, 0}
 }
 
 // Container for enum describing possible system managed entity sources.
@@ -60,7 +60,7 @@ func (m *SystemManagedResourceSourceEnum) Reset()         { *m = SystemManagedRe
 func (m *SystemManagedResourceSourceEnum) String() string { return proto.CompactTextString(m) }
 func (*SystemManagedResourceSourceEnum) ProtoMessage()    {}
 func (*SystemManagedResourceSourceEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_system_managed_entity_source_0dbea9251628a6f1, []int{0}
+	return fileDescriptor_system_managed_entity_source_69e9c706f64200ef, []int{0}
 }
 func (m *SystemManagedResourceSourceEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SystemManagedResourceSourceEnum.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/system_managed_entity_source.proto", fileDescriptor_system_managed_entity_source_0dbea9251628a6f1)
+	proto.RegisterFile("google/ads/googleads/v1/enums/system_managed_entity_source.proto", fileDescriptor_system_managed_entity_source_69e9c706f64200ef)
 }
 
-var fileDescriptor_system_managed_entity_source_0dbea9251628a6f1 = []byte{
+var fileDescriptor_system_managed_entity_source_69e9c706f64200ef = []byte{
 	// 318 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xd1, 0x4a, 0xf3, 0x30,
 	0x18, 0xfd, 0xd7, 0x1f, 0x14, 0x32, 0xc4, 0xd9, 0x4b, 0x75, 0xca, 0xf6, 0x00, 0x29, 0xc5, 0xbb,

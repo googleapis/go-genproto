@@ -124,7 +124,7 @@ func (x EducationPlaceholderFieldEnum_EducationPlaceholderField) String() string
 	return proto.EnumName(EducationPlaceholderFieldEnum_EducationPlaceholderField_name, int32(x))
 }
 func (EducationPlaceholderFieldEnum_EducationPlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_education_placeholder_field_5be77f20bd61227b, []int{0, 0}
+	return fileDescriptor_education_placeholder_field_b35221e4bb03002d, []int{0, 0}
 }
 
 // Values for Education placeholder fields.
@@ -140,7 +140,7 @@ func (m *EducationPlaceholderFieldEnum) Reset()         { *m = EducationPlacehol
 func (m *EducationPlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*EducationPlaceholderFieldEnum) ProtoMessage()    {}
 func (*EducationPlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_education_placeholder_field_5be77f20bd61227b, []int{0}
+	return fileDescriptor_education_placeholder_field_b35221e4bb03002d, []int{0}
 }
 func (m *EducationPlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EducationPlaceholderFieldEnum.Unmarshal(m, b)
@@ -166,10 +166,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/education_placeholder_field.proto", fileDescriptor_education_placeholder_field_5be77f20bd61227b)
+	proto.RegisterFile("google/ads/googleads/v1/enums/education_placeholder_field.proto", fileDescriptor_education_placeholder_field_b35221e4bb03002d)
 }
 
-var fileDescriptor_education_placeholder_field_5be77f20bd61227b = []byte{
+var fileDescriptor_education_placeholder_field_b35221e4bb03002d = []byte{
 	// 514 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xcf, 0x8e, 0xd3, 0x30,
 	0x10, 0xc6, 0xd9, 0x16, 0x76, 0xc1, 0xdd, 0x3f, 0x6e, 0x00, 0x21, 0x10, 0x05, 0xed, 0x72, 0x4f,

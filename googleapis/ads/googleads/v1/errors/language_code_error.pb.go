@@ -50,7 +50,7 @@ func (x LanguageCodeErrorEnum_LanguageCodeError) String() string {
 	return proto.EnumName(LanguageCodeErrorEnum_LanguageCodeError_name, int32(x))
 }
 func (LanguageCodeErrorEnum_LanguageCodeError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_language_code_error_b1c44d8be8fc9561, []int{0, 0}
+	return fileDescriptor_language_code_error_bfba6feb9fa216de, []int{0, 0}
 }
 
 // Container for enum describing language code errors.
@@ -64,7 +64,7 @@ func (m *LanguageCodeErrorEnum) Reset()         { *m = LanguageCodeErrorEnum{} }
 func (m *LanguageCodeErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*LanguageCodeErrorEnum) ProtoMessage()    {}
 func (*LanguageCodeErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_language_code_error_b1c44d8be8fc9561, []int{0}
+	return fileDescriptor_language_code_error_bfba6feb9fa216de, []int{0}
 }
 func (m *LanguageCodeErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LanguageCodeErrorEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/language_code_error.proto", fileDescriptor_language_code_error_b1c44d8be8fc9561)
+	proto.RegisterFile("google/ads/googleads/v1/errors/language_code_error.proto", fileDescriptor_language_code_error_bfba6feb9fa216de)
 }
 
-var fileDescriptor_language_code_error_b1c44d8be8fc9561 = []byte{
+var fileDescriptor_language_code_error_bfba6feb9fa216de = []byte{
 	// 325 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0x4f, 0x4a, 0xc3, 0x40,
 	0x14, 0xc6, 0x4d, 0x0a, 0x0a, 0xd3, 0x85, 0x31, 0x50, 0xc5, 0x3f, 0x74, 0x91, 0x03, 0x4c, 0x08,

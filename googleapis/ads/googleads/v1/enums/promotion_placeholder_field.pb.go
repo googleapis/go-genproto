@@ -107,7 +107,7 @@ func (x PromotionPlaceholderFieldEnum_PromotionPlaceholderField) String() string
 	return proto.EnumName(PromotionPlaceholderFieldEnum_PromotionPlaceholderField_name, int32(x))
 }
 func (PromotionPlaceholderFieldEnum_PromotionPlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_promotion_placeholder_field_c181e2418d798eec, []int{0, 0}
+	return fileDescriptor_promotion_placeholder_field_1395f2f01020eb66, []int{0, 0}
 }
 
 // Values for Promotion placeholder fields.
@@ -121,7 +121,7 @@ func (m *PromotionPlaceholderFieldEnum) Reset()         { *m = PromotionPlacehol
 func (m *PromotionPlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*PromotionPlaceholderFieldEnum) ProtoMessage()    {}
 func (*PromotionPlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_promotion_placeholder_field_c181e2418d798eec, []int{0}
+	return fileDescriptor_promotion_placeholder_field_1395f2f01020eb66, []int{0}
 }
 func (m *PromotionPlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PromotionPlaceholderFieldEnum.Unmarshal(m, b)
@@ -147,10 +147,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/promotion_placeholder_field.proto", fileDescriptor_promotion_placeholder_field_c181e2418d798eec)
+	proto.RegisterFile("google/ads/googleads/v1/enums/promotion_placeholder_field.proto", fileDescriptor_promotion_placeholder_field_1395f2f01020eb66)
 }
 
-var fileDescriptor_promotion_placeholder_field_c181e2418d798eec = []byte{
+var fileDescriptor_promotion_placeholder_field_1395f2f01020eb66 = []byte{
 	// 476 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xcf, 0x6e, 0x9b, 0x4e,
 	0x10, 0xc7, 0x7f, 0x26, 0xbf, 0x26, 0xe9, 0xda, 0xb1, 0x37, 0xdb, 0x3f, 0x52, 0xab, 0xba, 0x52,

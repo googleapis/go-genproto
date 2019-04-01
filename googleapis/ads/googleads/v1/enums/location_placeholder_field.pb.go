@@ -74,7 +74,7 @@ func (x LocationPlaceholderFieldEnum_LocationPlaceholderField) String() string {
 	return proto.EnumName(LocationPlaceholderFieldEnum_LocationPlaceholderField_name, int32(x))
 }
 func (LocationPlaceholderFieldEnum_LocationPlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_location_placeholder_field_385b0c1f5b48bf69, []int{0, 0}
+	return fileDescriptor_location_placeholder_field_483ffb73deaf67e6, []int{0, 0}
 }
 
 // Values for Location placeholder fields.
@@ -88,7 +88,7 @@ func (m *LocationPlaceholderFieldEnum) Reset()         { *m = LocationPlaceholde
 func (m *LocationPlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*LocationPlaceholderFieldEnum) ProtoMessage()    {}
 func (*LocationPlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_location_placeholder_field_385b0c1f5b48bf69, []int{0}
+	return fileDescriptor_location_placeholder_field_483ffb73deaf67e6, []int{0}
 }
 func (m *LocationPlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationPlaceholderFieldEnum.Unmarshal(m, b)
@@ -114,10 +114,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/location_placeholder_field.proto", fileDescriptor_location_placeholder_field_385b0c1f5b48bf69)
+	proto.RegisterFile("google/ads/googleads/v1/enums/location_placeholder_field.proto", fileDescriptor_location_placeholder_field_483ffb73deaf67e6)
 }
 
-var fileDescriptor_location_placeholder_field_385b0c1f5b48bf69 = []byte{
+var fileDescriptor_location_placeholder_field_483ffb73deaf67e6 = []byte{
 	// 392 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xc1, 0xae, 0x93, 0x40,
 	0x14, 0x15, 0xde, 0xf3, 0xbd, 0x3a, 0xef, 0xa9, 0xe3, 0xac, 0x8c, 0x69, 0x17, 0xed, 0x07, 0x0c,

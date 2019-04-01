@@ -91,7 +91,7 @@ func (x MultiplierErrorEnum_MultiplierError) String() string {
 	return proto.EnumName(MultiplierErrorEnum_MultiplierError_name, int32(x))
 }
 func (MultiplierErrorEnum_MultiplierError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_multiplier_error_18ac3353c14078a1, []int{0, 0}
+	return fileDescriptor_multiplier_error_b30db179a341a11f, []int{0, 0}
 }
 
 // Container for enum describing possible multiplier errors.
@@ -105,7 +105,7 @@ func (m *MultiplierErrorEnum) Reset()         { *m = MultiplierErrorEnum{} }
 func (m *MultiplierErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*MultiplierErrorEnum) ProtoMessage()    {}
 func (*MultiplierErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_multiplier_error_18ac3353c14078a1, []int{0}
+	return fileDescriptor_multiplier_error_b30db179a341a11f, []int{0}
 }
 func (m *MultiplierErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MultiplierErrorEnum.Unmarshal(m, b)
@@ -131,10 +131,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/multiplier_error.proto", fileDescriptor_multiplier_error_18ac3353c14078a1)
+	proto.RegisterFile("google/ads/googleads/v1/errors/multiplier_error.proto", fileDescriptor_multiplier_error_b30db179a341a11f)
 }
 
-var fileDescriptor_multiplier_error_18ac3353c14078a1 = []byte{
+var fileDescriptor_multiplier_error_b30db179a341a11f = []byte{
 	// 523 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x93, 0xd1, 0x6e, 0xd3, 0x3c,
 	0x14, 0xc7, 0xbf, 0x76, 0xfd, 0x36, 0x70, 0x41, 0xb3, 0x3c, 0xc4, 0xa4, 0x81, 0x7a, 0xd1, 0x5b,

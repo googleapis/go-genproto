@@ -40,7 +40,7 @@ func (m *GetCampaignSharedSetRequest) Reset()         { *m = GetCampaignSharedSe
 func (m *GetCampaignSharedSetRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCampaignSharedSetRequest) ProtoMessage()    {}
 func (*GetCampaignSharedSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_shared_set_service_9b1441038f53848e, []int{0}
+	return fileDescriptor_campaign_shared_set_service_3256d633b5e3dc55, []int{0}
 }
 func (m *GetCampaignSharedSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCampaignSharedSetRequest.Unmarshal(m, b)
@@ -90,7 +90,7 @@ func (m *MutateCampaignSharedSetsRequest) Reset()         { *m = MutateCampaignS
 func (m *MutateCampaignSharedSetsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignSharedSetsRequest) ProtoMessage()    {}
 func (*MutateCampaignSharedSetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_shared_set_service_9b1441038f53848e, []int{1}
+	return fileDescriptor_campaign_shared_set_service_3256d633b5e3dc55, []int{1}
 }
 func (m *MutateCampaignSharedSetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignSharedSetsRequest.Unmarshal(m, b)
@@ -155,7 +155,7 @@ func (m *CampaignSharedSetOperation) Reset()         { *m = CampaignSharedSetOpe
 func (m *CampaignSharedSetOperation) String() string { return proto.CompactTextString(m) }
 func (*CampaignSharedSetOperation) ProtoMessage()    {}
 func (*CampaignSharedSetOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_shared_set_service_9b1441038f53848e, []int{2}
+	return fileDescriptor_campaign_shared_set_service_3256d633b5e3dc55, []int{2}
 }
 func (m *CampaignSharedSetOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CampaignSharedSetOperation.Unmarshal(m, b)
@@ -300,7 +300,7 @@ func (m *MutateCampaignSharedSetsResponse) Reset()         { *m = MutateCampaign
 func (m *MutateCampaignSharedSetsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignSharedSetsResponse) ProtoMessage()    {}
 func (*MutateCampaignSharedSetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_shared_set_service_9b1441038f53848e, []int{3}
+	return fileDescriptor_campaign_shared_set_service_3256d633b5e3dc55, []int{3}
 }
 func (m *MutateCampaignSharedSetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignSharedSetsResponse.Unmarshal(m, b)
@@ -347,7 +347,7 @@ func (m *MutateCampaignSharedSetResult) Reset()         { *m = MutateCampaignSha
 func (m *MutateCampaignSharedSetResult) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignSharedSetResult) ProtoMessage()    {}
 func (*MutateCampaignSharedSetResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_shared_set_service_9b1441038f53848e, []int{4}
+	return fileDescriptor_campaign_shared_set_service_3256d633b5e3dc55, []int{4}
 }
 func (m *MutateCampaignSharedSetResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignSharedSetResult.Unmarshal(m, b)
@@ -492,10 +492,10 @@ var _CampaignSharedSetService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/campaign_shared_set_service.proto", fileDescriptor_campaign_shared_set_service_9b1441038f53848e)
+	proto.RegisterFile("google/ads/googleads/v1/services/campaign_shared_set_service.proto", fileDescriptor_campaign_shared_set_service_3256d633b5e3dc55)
 }
 
-var fileDescriptor_campaign_shared_set_service_9b1441038f53848e = []byte{
+var fileDescriptor_campaign_shared_set_service_3256d633b5e3dc55 = []byte{
 	// 671 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0x41, 0x6b, 0xd4, 0x4e,
 	0x14, 0xff, 0x67, 0xf7, 0x4f, 0xb5, 0xb3, 0x55, 0x61, 0x54, 0x0c, 0xab, 0xb5, 0x4b, 0x2c, 0x58,

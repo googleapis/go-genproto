@@ -59,7 +59,7 @@ func (x SearchTermTargetingStatusEnum_SearchTermTargetingStatus) String() string
 	return proto.EnumName(SearchTermTargetingStatusEnum_SearchTermTargetingStatus_name, int32(x))
 }
 func (SearchTermTargetingStatusEnum_SearchTermTargetingStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_search_term_targeting_status_ab7ef75ab4137195, []int{0, 0}
+	return fileDescriptor_search_term_targeting_status_6277c7943d498364, []int{0, 0}
 }
 
 // Container for enum indicating whether a search term is one of your targeted
@@ -74,7 +74,7 @@ func (m *SearchTermTargetingStatusEnum) Reset()         { *m = SearchTermTargeti
 func (m *SearchTermTargetingStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*SearchTermTargetingStatusEnum) ProtoMessage()    {}
 func (*SearchTermTargetingStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_term_targeting_status_ab7ef75ab4137195, []int{0}
+	return fileDescriptor_search_term_targeting_status_6277c7943d498364, []int{0}
 }
 func (m *SearchTermTargetingStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchTermTargetingStatusEnum.Unmarshal(m, b)
@@ -100,10 +100,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/search_term_targeting_status.proto", fileDescriptor_search_term_targeting_status_ab7ef75ab4137195)
+	proto.RegisterFile("google/ads/googleads/v1/enums/search_term_targeting_status.proto", fileDescriptor_search_term_targeting_status_6277c7943d498364)
 }
 
-var fileDescriptor_search_term_targeting_status_ab7ef75ab4137195 = []byte{
+var fileDescriptor_search_term_targeting_status_6277c7943d498364 = []byte{
 	// 335 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x4b, 0x4e, 0xc3, 0x30,
 	0x10, 0x25, 0x69, 0x0b, 0xc5, 0x45, 0x10, 0x79, 0x07, 0xa2, 0x48, 0xed, 0x01, 0x1c, 0x45, 0xec,

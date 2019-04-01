@@ -54,7 +54,7 @@ func (x KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel) String() st
 	return proto.EnumName(KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel_name, int32(x))
 }
 func (KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_competition_level_4b15b0c4b8edef23, []int{0, 0}
+	return fileDescriptor_keyword_plan_competition_level_23431f33ac7a257a, []int{0, 0}
 }
 
 // Container for enumeration of keyword competition levels. The competition
@@ -72,7 +72,7 @@ func (m *KeywordPlanCompetitionLevelEnum) Reset()         { *m = KeywordPlanComp
 func (m *KeywordPlanCompetitionLevelEnum) String() string { return proto.CompactTextString(m) }
 func (*KeywordPlanCompetitionLevelEnum) ProtoMessage()    {}
 func (*KeywordPlanCompetitionLevelEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_competition_level_4b15b0c4b8edef23, []int{0}
+	return fileDescriptor_keyword_plan_competition_level_23431f33ac7a257a, []int{0}
 }
 func (m *KeywordPlanCompetitionLevelEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeywordPlanCompetitionLevelEnum.Unmarshal(m, b)
@@ -98,10 +98,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/keyword_plan_competition_level.proto", fileDescriptor_keyword_plan_competition_level_4b15b0c4b8edef23)
+	proto.RegisterFile("google/ads/googleads/v1/enums/keyword_plan_competition_level.proto", fileDescriptor_keyword_plan_competition_level_23431f33ac7a257a)
 }
 
-var fileDescriptor_keyword_plan_competition_level_4b15b0c4b8edef23 = []byte{
+var fileDescriptor_keyword_plan_competition_level_23431f33ac7a257a = []byte{
 	// 325 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x41, 0x4f, 0xc2, 0x30,
 	0x18, 0x95, 0x41, 0xc0, 0x94, 0x83, 0xcb, 0x8e, 0x2a, 0x51, 0xf8, 0x01, 0x5d, 0x16, 0x6f, 0xf5,
