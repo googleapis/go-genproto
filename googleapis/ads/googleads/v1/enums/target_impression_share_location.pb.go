@@ -54,7 +54,7 @@ func (x TargetImpressionShareLocationEnum_TargetImpressionShareLocation) String(
 	return proto.EnumName(TargetImpressionShareLocationEnum_TargetImpressionShareLocation_name, int32(x))
 }
 func (TargetImpressionShareLocationEnum_TargetImpressionShareLocation) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_impression_share_location_afde56e98d556c34, []int{0, 0}
+	return fileDescriptor_target_impression_share_location_cbaea50b4413644e, []int{0, 0}
 }
 
 // Container for enum describing where on the first search results page the
@@ -70,7 +70,7 @@ func (m *TargetImpressionShareLocationEnum) Reset()         { *m = TargetImpress
 func (m *TargetImpressionShareLocationEnum) String() string { return proto.CompactTextString(m) }
 func (*TargetImpressionShareLocationEnum) ProtoMessage()    {}
 func (*TargetImpressionShareLocationEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_impression_share_location_afde56e98d556c34, []int{0}
+	return fileDescriptor_target_impression_share_location_cbaea50b4413644e, []int{0}
 }
 func (m *TargetImpressionShareLocationEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetImpressionShareLocationEnum.Unmarshal(m, b)
@@ -96,10 +96,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/target_impression_share_location.proto", fileDescriptor_target_impression_share_location_afde56e98d556c34)
+	proto.RegisterFile("google/ads/googleads/v1/enums/target_impression_share_location.proto", fileDescriptor_target_impression_share_location_cbaea50b4413644e)
 }
 
-var fileDescriptor_target_impression_share_location_afde56e98d556c34 = []byte{
+var fileDescriptor_target_impression_share_location_cbaea50b4413644e = []byte{
 	// 343 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xbd, 0x6a, 0xeb, 0x30,
 	0x18, 0xbd, 0x76, 0x2e, 0xf7, 0x82, 0x32, 0xd4, 0x98, 0x0c, 0xa5, 0x34, 0x43, 0xf2, 0x00, 0x32,

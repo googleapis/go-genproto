@@ -41,7 +41,7 @@ func (m *GetCampaignBidModifierRequest) Reset()         { *m = GetCampaignBidMod
 func (m *GetCampaignBidModifierRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCampaignBidModifierRequest) ProtoMessage()    {}
 func (*GetCampaignBidModifierRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_bid_modifier_service_d39aeaa5807d4148, []int{0}
+	return fileDescriptor_campaign_bid_modifier_service_650f1d7108efa56a, []int{0}
 }
 func (m *GetCampaignBidModifierRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCampaignBidModifierRequest.Unmarshal(m, b)
@@ -91,7 +91,7 @@ func (m *MutateCampaignBidModifiersRequest) Reset()         { *m = MutateCampaig
 func (m *MutateCampaignBidModifiersRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignBidModifiersRequest) ProtoMessage()    {}
 func (*MutateCampaignBidModifiersRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_bid_modifier_service_d39aeaa5807d4148, []int{1}
+	return fileDescriptor_campaign_bid_modifier_service_650f1d7108efa56a, []int{1}
 }
 func (m *MutateCampaignBidModifiersRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignBidModifiersRequest.Unmarshal(m, b)
@@ -159,7 +159,7 @@ func (m *CampaignBidModifierOperation) Reset()         { *m = CampaignBidModifie
 func (m *CampaignBidModifierOperation) String() string { return proto.CompactTextString(m) }
 func (*CampaignBidModifierOperation) ProtoMessage()    {}
 func (*CampaignBidModifierOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_bid_modifier_service_d39aeaa5807d4148, []int{2}
+	return fileDescriptor_campaign_bid_modifier_service_650f1d7108efa56a, []int{2}
 }
 func (m *CampaignBidModifierOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CampaignBidModifierOperation.Unmarshal(m, b)
@@ -343,7 +343,7 @@ func (m *MutateCampaignBidModifiersResponse) Reset()         { *m = MutateCampai
 func (m *MutateCampaignBidModifiersResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignBidModifiersResponse) ProtoMessage()    {}
 func (*MutateCampaignBidModifiersResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_bid_modifier_service_d39aeaa5807d4148, []int{3}
+	return fileDescriptor_campaign_bid_modifier_service_650f1d7108efa56a, []int{3}
 }
 func (m *MutateCampaignBidModifiersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignBidModifiersResponse.Unmarshal(m, b)
@@ -390,7 +390,7 @@ func (m *MutateCampaignBidModifierResult) Reset()         { *m = MutateCampaignB
 func (m *MutateCampaignBidModifierResult) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignBidModifierResult) ProtoMessage()    {}
 func (*MutateCampaignBidModifierResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_bid_modifier_service_d39aeaa5807d4148, []int{4}
+	return fileDescriptor_campaign_bid_modifier_service_650f1d7108efa56a, []int{4}
 }
 func (m *MutateCampaignBidModifierResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignBidModifierResult.Unmarshal(m, b)
@@ -537,10 +537,10 @@ var _CampaignBidModifierService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/campaign_bid_modifier_service.proto", fileDescriptor_campaign_bid_modifier_service_d39aeaa5807d4148)
+	proto.RegisterFile("google/ads/googleads/v1/services/campaign_bid_modifier_service.proto", fileDescriptor_campaign_bid_modifier_service_650f1d7108efa56a)
 }
 
-var fileDescriptor_campaign_bid_modifier_service_d39aeaa5807d4148 = []byte{
+var fileDescriptor_campaign_bid_modifier_service_650f1d7108efa56a = []byte{
 	// 728 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x95, 0x4f, 0x6e, 0xd3, 0x4c,
 	0x14, 0xc0, 0x3f, 0x3b, 0x9f, 0x0a, 0x9d, 0x14, 0x90, 0x06, 0x01, 0x51, 0x54, 0x68, 0x30, 0x95,

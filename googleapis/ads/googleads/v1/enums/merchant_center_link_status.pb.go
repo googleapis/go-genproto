@@ -52,7 +52,7 @@ func (x MerchantCenterLinkStatusEnum_MerchantCenterLinkStatus) String() string {
 	return proto.EnumName(MerchantCenterLinkStatusEnum_MerchantCenterLinkStatus_name, int32(x))
 }
 func (MerchantCenterLinkStatusEnum_MerchantCenterLinkStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_status_197dbaccbac935bc, []int{0, 0}
+	return fileDescriptor_merchant_center_link_status_74e88e0b85ea22b8, []int{0, 0}
 }
 
 // Container for enum describing possible statuses of a Google Merchant Center
@@ -67,7 +67,7 @@ func (m *MerchantCenterLinkStatusEnum) Reset()         { *m = MerchantCenterLink
 func (m *MerchantCenterLinkStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*MerchantCenterLinkStatusEnum) ProtoMessage()    {}
 func (*MerchantCenterLinkStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_status_197dbaccbac935bc, []int{0}
+	return fileDescriptor_merchant_center_link_status_74e88e0b85ea22b8, []int{0}
 }
 func (m *MerchantCenterLinkStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MerchantCenterLinkStatusEnum.Unmarshal(m, b)
@@ -93,10 +93,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/merchant_center_link_status.proto", fileDescriptor_merchant_center_link_status_197dbaccbac935bc)
+	proto.RegisterFile("google/ads/googleads/v1/enums/merchant_center_link_status.proto", fileDescriptor_merchant_center_link_status_74e88e0b85ea22b8)
 }
 
-var fileDescriptor_merchant_center_link_status_197dbaccbac935bc = []byte{
+var fileDescriptor_merchant_center_link_status_74e88e0b85ea22b8 = []byte{
 	// 315 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x41, 0x6a, 0xeb, 0x30,
 	0x14, 0xfc, 0x71, 0xe0, 0x17, 0x94, 0x45, 0x4d, 0x56, 0xa5, 0x24, 0x8b, 0xe4, 0x00, 0x12, 0xa6,

@@ -55,7 +55,7 @@ func (m *FeedMapping) Reset()         { *m = FeedMapping{} }
 func (m *FeedMapping) String() string { return proto.CompactTextString(m) }
 func (*FeedMapping) ProtoMessage()    {}
 func (*FeedMapping) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_mapping_f08dc24e8136e1ff, []int{0}
+	return fileDescriptor_feed_mapping_4a3c1739e045e1ca, []int{0}
 }
 func (m *FeedMapping) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedMapping.Unmarshal(m, b)
@@ -248,7 +248,7 @@ func (m *AttributeFieldMapping) Reset()         { *m = AttributeFieldMapping{} }
 func (m *AttributeFieldMapping) String() string { return proto.CompactTextString(m) }
 func (*AttributeFieldMapping) ProtoMessage()    {}
 func (*AttributeFieldMapping) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_mapping_f08dc24e8136e1ff, []int{1}
+	return fileDescriptor_feed_mapping_4a3c1739e045e1ca, []int{1}
 }
 func (m *AttributeFieldMapping) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AttributeFieldMapping.Unmarshal(m, b)
@@ -902,10 +902,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/feed_mapping.proto", fileDescriptor_feed_mapping_f08dc24e8136e1ff)
+	proto.RegisterFile("google/ads/googleads/v1/resources/feed_mapping.proto", fileDescriptor_feed_mapping_4a3c1739e045e1ca)
 }
 
-var fileDescriptor_feed_mapping_f08dc24e8136e1ff = []byte{
+var fileDescriptor_feed_mapping_4a3c1739e045e1ca = []byte{
 	// 1316 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x98, 0x4d, 0x6f, 0xe4, 0x44,
 	0x13, 0xc7, 0xed, 0x6c, 0x5e, 0x7b, 0xf2, 0x3a, 0x79, 0x36, 0xcf, 0x68, 0x59, 0x41, 0x36, 0x68,

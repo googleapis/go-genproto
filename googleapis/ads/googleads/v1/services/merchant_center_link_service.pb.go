@@ -40,7 +40,7 @@ func (m *ListMerchantCenterLinksRequest) Reset()         { *m = ListMerchantCent
 func (m *ListMerchantCenterLinksRequest) String() string { return proto.CompactTextString(m) }
 func (*ListMerchantCenterLinksRequest) ProtoMessage()    {}
 func (*ListMerchantCenterLinksRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_service_9a763f6d274f6ee2, []int{0}
+	return fileDescriptor_merchant_center_link_service_21e19ec8285c21ff, []int{0}
 }
 func (m *ListMerchantCenterLinksRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListMerchantCenterLinksRequest.Unmarshal(m, b)
@@ -80,7 +80,7 @@ func (m *ListMerchantCenterLinksResponse) Reset()         { *m = ListMerchantCen
 func (m *ListMerchantCenterLinksResponse) String() string { return proto.CompactTextString(m) }
 func (*ListMerchantCenterLinksResponse) ProtoMessage()    {}
 func (*ListMerchantCenterLinksResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_service_9a763f6d274f6ee2, []int{1}
+	return fileDescriptor_merchant_center_link_service_21e19ec8285c21ff, []int{1}
 }
 func (m *ListMerchantCenterLinksResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListMerchantCenterLinksResponse.Unmarshal(m, b)
@@ -120,7 +120,7 @@ func (m *GetMerchantCenterLinkRequest) Reset()         { *m = GetMerchantCenterL
 func (m *GetMerchantCenterLinkRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMerchantCenterLinkRequest) ProtoMessage()    {}
 func (*GetMerchantCenterLinkRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_service_9a763f6d274f6ee2, []int{2}
+	return fileDescriptor_merchant_center_link_service_21e19ec8285c21ff, []int{2}
 }
 func (m *GetMerchantCenterLinkRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetMerchantCenterLinkRequest.Unmarshal(m, b)
@@ -162,7 +162,7 @@ func (m *MutateMerchantCenterLinkRequest) Reset()         { *m = MutateMerchantC
 func (m *MutateMerchantCenterLinkRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateMerchantCenterLinkRequest) ProtoMessage()    {}
 func (*MutateMerchantCenterLinkRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_service_9a763f6d274f6ee2, []int{3}
+	return fileDescriptor_merchant_center_link_service_21e19ec8285c21ff, []int{3}
 }
 func (m *MutateMerchantCenterLinkRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateMerchantCenterLinkRequest.Unmarshal(m, b)
@@ -215,7 +215,7 @@ func (m *MerchantCenterLinkOperation) Reset()         { *m = MerchantCenterLinkO
 func (m *MerchantCenterLinkOperation) String() string { return proto.CompactTextString(m) }
 func (*MerchantCenterLinkOperation) ProtoMessage()    {}
 func (*MerchantCenterLinkOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_service_9a763f6d274f6ee2, []int{4}
+	return fileDescriptor_merchant_center_link_service_21e19ec8285c21ff, []int{4}
 }
 func (m *MerchantCenterLinkOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MerchantCenterLinkOperation.Unmarshal(m, b)
@@ -362,7 +362,7 @@ func (m *MutateMerchantCenterLinkResponse) Reset()         { *m = MutateMerchant
 func (m *MutateMerchantCenterLinkResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateMerchantCenterLinkResponse) ProtoMessage()    {}
 func (*MutateMerchantCenterLinkResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_service_9a763f6d274f6ee2, []int{5}
+	return fileDescriptor_merchant_center_link_service_21e19ec8285c21ff, []int{5}
 }
 func (m *MutateMerchantCenterLinkResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateMerchantCenterLinkResponse.Unmarshal(m, b)
@@ -402,7 +402,7 @@ func (m *MutateMerchantCenterLinkResult) Reset()         { *m = MutateMerchantCe
 func (m *MutateMerchantCenterLinkResult) String() string { return proto.CompactTextString(m) }
 func (*MutateMerchantCenterLinkResult) ProtoMessage()    {}
 func (*MutateMerchantCenterLinkResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_merchant_center_link_service_9a763f6d274f6ee2, []int{6}
+	return fileDescriptor_merchant_center_link_service_21e19ec8285c21ff, []int{6}
 }
 func (m *MutateMerchantCenterLinkResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateMerchantCenterLinkResult.Unmarshal(m, b)
@@ -584,10 +584,10 @@ var _MerchantCenterLinkService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/merchant_center_link_service.proto", fileDescriptor_merchant_center_link_service_9a763f6d274f6ee2)
+	proto.RegisterFile("google/ads/googleads/v1/services/merchant_center_link_service.proto", fileDescriptor_merchant_center_link_service_21e19ec8285c21ff)
 }
 
-var fileDescriptor_merchant_center_link_service_9a763f6d274f6ee2 = []byte{
+var fileDescriptor_merchant_center_link_service_21e19ec8285c21ff = []byte{
 	// 679 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0xcf, 0x6b, 0x13, 0x4f,
 	0x14, 0xff, 0x4e, 0xca, 0xb7, 0xd0, 0x89, 0x5e, 0x46, 0x8a, 0x31, 0x96, 0x36, 0xac, 0x3d, 0x94,

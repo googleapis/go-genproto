@@ -50,7 +50,7 @@ func (x ConversionAttributionEventTypeEnum_ConversionAttributionEventType) Strin
 	return proto.EnumName(ConversionAttributionEventTypeEnum_ConversionAttributionEventType_name, int32(x))
 }
 func (ConversionAttributionEventTypeEnum_ConversionAttributionEventType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_attribution_event_type_5c17043f87183e57, []int{0, 0}
+	return fileDescriptor_conversion_attribution_event_type_4687ee459e143dd0, []int{0, 0}
 }
 
 // Container for enum indicating the event type the conversion is attributed to.
@@ -64,7 +64,7 @@ func (m *ConversionAttributionEventTypeEnum) Reset()         { *m = ConversionAt
 func (m *ConversionAttributionEventTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*ConversionAttributionEventTypeEnum) ProtoMessage()    {}
 func (*ConversionAttributionEventTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_attribution_event_type_5c17043f87183e57, []int{0}
+	return fileDescriptor_conversion_attribution_event_type_4687ee459e143dd0, []int{0}
 }
 func (m *ConversionAttributionEventTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionAttributionEventTypeEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_attribution_event_type.proto", fileDescriptor_conversion_attribution_event_type_5c17043f87183e57)
+	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_attribution_event_type.proto", fileDescriptor_conversion_attribution_event_type_4687ee459e143dd0)
 }
 
-var fileDescriptor_conversion_attribution_event_type_5c17043f87183e57 = []byte{
+var fileDescriptor_conversion_attribution_event_type_4687ee459e143dd0 = []byte{
 	// 325 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xdf, 0x4a, 0xfb, 0x30,
 	0x18, 0xfd, 0xb5, 0x83, 0x9f, 0x90, 0x81, 0x8e, 0x5e, 0x8a, 0x13, 0x36, 0xef, 0x53, 0x8a, 0x77,

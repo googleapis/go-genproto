@@ -78,7 +78,7 @@ func (x PriceExtensionTypeEnum_PriceExtensionType) String() string {
 	return proto.EnumName(PriceExtensionTypeEnum_PriceExtensionType_name, int32(x))
 }
 func (PriceExtensionTypeEnum_PriceExtensionType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_price_extension_type_b804a6efd2b06f4f, []int{0, 0}
+	return fileDescriptor_price_extension_type_512e7afa6a10a1eb, []int{0, 0}
 }
 
 // Container for enum describing types for a price extension.
@@ -92,7 +92,7 @@ func (m *PriceExtensionTypeEnum) Reset()         { *m = PriceExtensionTypeEnum{}
 func (m *PriceExtensionTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*PriceExtensionTypeEnum) ProtoMessage()    {}
 func (*PriceExtensionTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_price_extension_type_b804a6efd2b06f4f, []int{0}
+	return fileDescriptor_price_extension_type_512e7afa6a10a1eb, []int{0}
 }
 func (m *PriceExtensionTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PriceExtensionTypeEnum.Unmarshal(m, b)
@@ -118,10 +118,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/price_extension_type.proto", fileDescriptor_price_extension_type_b804a6efd2b06f4f)
+	proto.RegisterFile("google/ads/googleads/v1/enums/price_extension_type.proto", fileDescriptor_price_extension_type_512e7afa6a10a1eb)
 }
 
-var fileDescriptor_price_extension_type_b804a6efd2b06f4f = []byte{
+var fileDescriptor_price_extension_type_512e7afa6a10a1eb = []byte{
 	// 394 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xd1, 0x6a, 0xd4, 0x40,
 	0x18, 0x85, 0xcd, 0x56, 0xb7, 0xed, 0xd4, 0xe2, 0x38, 0x17, 0x15, 0xc4, 0x5e, 0xb4, 0x0f, 0x30,

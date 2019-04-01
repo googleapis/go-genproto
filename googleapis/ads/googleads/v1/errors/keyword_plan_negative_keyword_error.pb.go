@@ -43,7 +43,7 @@ func (x KeywordPlanNegativeKeywordErrorEnum_KeywordPlanNegativeKeywordError) Str
 	return proto.EnumName(KeywordPlanNegativeKeywordErrorEnum_KeywordPlanNegativeKeywordError_name, int32(x))
 }
 func (KeywordPlanNegativeKeywordErrorEnum_KeywordPlanNegativeKeywordError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_negative_keyword_error_2b0731f70638c896, []int{0, 0}
+	return fileDescriptor_keyword_plan_negative_keyword_error_922ec46f4424ab92, []int{0, 0}
 }
 
 // Container for enum describing possible errors from applying a keyword plan
@@ -58,7 +58,7 @@ func (m *KeywordPlanNegativeKeywordErrorEnum) Reset()         { *m = KeywordPlan
 func (m *KeywordPlanNegativeKeywordErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*KeywordPlanNegativeKeywordErrorEnum) ProtoMessage()    {}
 func (*KeywordPlanNegativeKeywordErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_negative_keyword_error_2b0731f70638c896, []int{0}
+	return fileDescriptor_keyword_plan_negative_keyword_error_922ec46f4424ab92, []int{0}
 }
 func (m *KeywordPlanNegativeKeywordErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeywordPlanNegativeKeywordErrorEnum.Unmarshal(m, b)
@@ -84,10 +84,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/keyword_plan_negative_keyword_error.proto", fileDescriptor_keyword_plan_negative_keyword_error_2b0731f70638c896)
+	proto.RegisterFile("google/ads/googleads/v1/errors/keyword_plan_negative_keyword_error.proto", fileDescriptor_keyword_plan_negative_keyword_error_922ec46f4424ab92)
 }
 
-var fileDescriptor_keyword_plan_negative_keyword_error_2b0731f70638c896 = []byte{
+var fileDescriptor_keyword_plan_negative_keyword_error_922ec46f4424ab92 = []byte{
 	// 297 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0xc1, 0x4a, 0xf4, 0x30,
 	0x14, 0x85, 0xff, 0xf6, 0x07, 0x85, 0xcc, 0xc2, 0xa1, 0x4b, 0x91, 0x11, 0xaa, 0xeb, 0x84, 0xe2,

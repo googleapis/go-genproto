@@ -41,7 +41,7 @@ func (m *GetSharedSetRequest) Reset()         { *m = GetSharedSetRequest{} }
 func (m *GetSharedSetRequest) String() string { return proto.CompactTextString(m) }
 func (*GetSharedSetRequest) ProtoMessage()    {}
 func (*GetSharedSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_shared_set_service_224c25c48f1ca8b8, []int{0}
+	return fileDescriptor_shared_set_service_28fa254a14a0ae3b, []int{0}
 }
 func (m *GetSharedSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSharedSetRequest.Unmarshal(m, b)
@@ -91,7 +91,7 @@ func (m *MutateSharedSetsRequest) Reset()         { *m = MutateSharedSetsRequest
 func (m *MutateSharedSetsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateSharedSetsRequest) ProtoMessage()    {}
 func (*MutateSharedSetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_shared_set_service_224c25c48f1ca8b8, []int{1}
+	return fileDescriptor_shared_set_service_28fa254a14a0ae3b, []int{1}
 }
 func (m *MutateSharedSetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateSharedSetsRequest.Unmarshal(m, b)
@@ -159,7 +159,7 @@ func (m *SharedSetOperation) Reset()         { *m = SharedSetOperation{} }
 func (m *SharedSetOperation) String() string { return proto.CompactTextString(m) }
 func (*SharedSetOperation) ProtoMessage()    {}
 func (*SharedSetOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_shared_set_service_224c25c48f1ca8b8, []int{2}
+	return fileDescriptor_shared_set_service_28fa254a14a0ae3b, []int{2}
 }
 func (m *SharedSetOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SharedSetOperation.Unmarshal(m, b)
@@ -343,7 +343,7 @@ func (m *MutateSharedSetsResponse) Reset()         { *m = MutateSharedSetsRespon
 func (m *MutateSharedSetsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateSharedSetsResponse) ProtoMessage()    {}
 func (*MutateSharedSetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_shared_set_service_224c25c48f1ca8b8, []int{3}
+	return fileDescriptor_shared_set_service_28fa254a14a0ae3b, []int{3}
 }
 func (m *MutateSharedSetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateSharedSetsResponse.Unmarshal(m, b)
@@ -390,7 +390,7 @@ func (m *MutateSharedSetResult) Reset()         { *m = MutateSharedSetResult{} }
 func (m *MutateSharedSetResult) String() string { return proto.CompactTextString(m) }
 func (*MutateSharedSetResult) ProtoMessage()    {}
 func (*MutateSharedSetResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_shared_set_service_224c25c48f1ca8b8, []int{4}
+	return fileDescriptor_shared_set_service_28fa254a14a0ae3b, []int{4}
 }
 func (m *MutateSharedSetResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateSharedSetResult.Unmarshal(m, b)
@@ -535,10 +535,10 @@ var _SharedSetService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/shared_set_service.proto", fileDescriptor_shared_set_service_224c25c48f1ca8b8)
+	proto.RegisterFile("google/ads/googleads/v1/services/shared_set_service.proto", fileDescriptor_shared_set_service_28fa254a14a0ae3b)
 }
 
-var fileDescriptor_shared_set_service_224c25c48f1ca8b8 = []byte{
+var fileDescriptor_shared_set_service_28fa254a14a0ae3b = []byte{
 	// 705 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x55, 0xcf, 0x4e, 0xd4, 0x40,
 	0x1c, 0xb6, 0xbb, 0x06, 0x65, 0x8a, 0x4a, 0x86, 0x10, 0x9a, 0x8d, 0xd1, 0x4d, 0x25, 0x91, 0x6c,

@@ -35,7 +35,7 @@ func (m *TopicView) Reset()         { *m = TopicView{} }
 func (m *TopicView) String() string { return proto.CompactTextString(m) }
 func (*TopicView) ProtoMessage()    {}
 func (*TopicView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_topic_view_8b901d02d0a1a21d, []int{0}
+	return fileDescriptor_topic_view_7c6cf27967fbaddb, []int{0}
 }
 func (m *TopicView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TopicView.Unmarshal(m, b)
@@ -67,10 +67,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/topic_view.proto", fileDescriptor_topic_view_8b901d02d0a1a21d)
+	proto.RegisterFile("google/ads/googleads/v1/resources/topic_view.proto", fileDescriptor_topic_view_7c6cf27967fbaddb)
 }
 
-var fileDescriptor_topic_view_8b901d02d0a1a21d = []byte{
+var fileDescriptor_topic_view_7c6cf27967fbaddb = []byte{
 	// 263 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0x31, 0x4b, 0x03, 0x31,
 	0x14, 0xc7, 0xb9, 0x13, 0x84, 0x1e, 0xea, 0xd0, 0x49, 0xc4, 0xc1, 0x2a, 0x05, 0xa7, 0x17, 0xa3,

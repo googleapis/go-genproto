@@ -70,7 +70,7 @@ func (x SlotEnum_Slot) String() string {
 	return proto.EnumName(SlotEnum_Slot_name, int32(x))
 }
 func (SlotEnum_Slot) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_slot_ac82df17147d51b6, []int{0, 0}
+	return fileDescriptor_slot_dc72470503010f22, []int{0, 0}
 }
 
 // Container for enumeration of possible positions of the Ad.
@@ -84,7 +84,7 @@ func (m *SlotEnum) Reset()         { *m = SlotEnum{} }
 func (m *SlotEnum) String() string { return proto.CompactTextString(m) }
 func (*SlotEnum) ProtoMessage()    {}
 func (*SlotEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_slot_ac82df17147d51b6, []int{0}
+	return fileDescriptor_slot_dc72470503010f22, []int{0}
 }
 func (m *SlotEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SlotEnum.Unmarshal(m, b)
@@ -110,10 +110,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/slot.proto", fileDescriptor_slot_ac82df17147d51b6)
+	proto.RegisterFile("google/ads/googleads/v1/enums/slot.proto", fileDescriptor_slot_dc72470503010f22)
 }
 
-var fileDescriptor_slot_ac82df17147d51b6 = []byte{
+var fileDescriptor_slot_dc72470503010f22 = []byte{
 	// 347 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcd, 0x4a, 0xeb, 0x40,
 	0x18, 0xbd, 0x49, 0xff, 0xa7, 0x97, 0x7b, 0x87, 0x41, 0x44, 0xc4, 0x2e, 0xda, 0x95, 0xab, 0x09,

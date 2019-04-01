@@ -86,7 +86,7 @@ func (x AffiliateLocationPlaceholderFieldEnum_AffiliateLocationPlaceholderField)
 	return proto.EnumName(AffiliateLocationPlaceholderFieldEnum_AffiliateLocationPlaceholderField_name, int32(x))
 }
 func (AffiliateLocationPlaceholderFieldEnum_AffiliateLocationPlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_affiliate_location_placeholder_field_8307483ff07836a8, []int{0, 0}
+	return fileDescriptor_affiliate_location_placeholder_field_024fba99945e370b, []int{0, 0}
 }
 
 // Values for Affiliate Location placeholder fields.
@@ -100,7 +100,7 @@ func (m *AffiliateLocationPlaceholderFieldEnum) Reset()         { *m = Affiliate
 func (m *AffiliateLocationPlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*AffiliateLocationPlaceholderFieldEnum) ProtoMessage()    {}
 func (*AffiliateLocationPlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_affiliate_location_placeholder_field_8307483ff07836a8, []int{0}
+	return fileDescriptor_affiliate_location_placeholder_field_024fba99945e370b, []int{0}
 }
 func (m *AffiliateLocationPlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AffiliateLocationPlaceholderFieldEnum.Unmarshal(m, b)
@@ -126,10 +126,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/affiliate_location_placeholder_field.proto", fileDescriptor_affiliate_location_placeholder_field_8307483ff07836a8)
+	proto.RegisterFile("google/ads/googleads/v1/enums/affiliate_location_placeholder_field.proto", fileDescriptor_affiliate_location_placeholder_field_024fba99945e370b)
 }
 
-var fileDescriptor_affiliate_location_placeholder_field_8307483ff07836a8 = []byte{
+var fileDescriptor_affiliate_location_placeholder_field_024fba99945e370b = []byte{
 	// 431 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xc1, 0x8e, 0xd3, 0x30,
 	0x10, 0xa5, 0xd9, 0x65, 0xb7, 0xb8, 0x65, 0x31, 0x3e, 0x22, 0xf6, 0xd0, 0x95, 0xe0, 0xe8, 0x28,

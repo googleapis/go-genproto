@@ -40,7 +40,7 @@ func (m *CreateMutateJobRequest) Reset()         { *m = CreateMutateJobRequest{}
 func (m *CreateMutateJobRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateMutateJobRequest) ProtoMessage()    {}
 func (*CreateMutateJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_service_eb116885ce9d562c, []int{0}
+	return fileDescriptor_mutate_job_service_a0ae22f320850a68, []int{0}
 }
 func (m *CreateMutateJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateMutateJobRequest.Unmarshal(m, b)
@@ -80,7 +80,7 @@ func (m *CreateMutateJobResponse) Reset()         { *m = CreateMutateJobResponse
 func (m *CreateMutateJobResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateMutateJobResponse) ProtoMessage()    {}
 func (*CreateMutateJobResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_service_eb116885ce9d562c, []int{1}
+	return fileDescriptor_mutate_job_service_a0ae22f320850a68, []int{1}
 }
 func (m *CreateMutateJobResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateMutateJobResponse.Unmarshal(m, b)
@@ -120,7 +120,7 @@ func (m *GetMutateJobRequest) Reset()         { *m = GetMutateJobRequest{} }
 func (m *GetMutateJobRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMutateJobRequest) ProtoMessage()    {}
 func (*GetMutateJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_service_eb116885ce9d562c, []int{2}
+	return fileDescriptor_mutate_job_service_a0ae22f320850a68, []int{2}
 }
 func (m *GetMutateJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetMutateJobRequest.Unmarshal(m, b)
@@ -160,7 +160,7 @@ func (m *RunMutateJobRequest) Reset()         { *m = RunMutateJobRequest{} }
 func (m *RunMutateJobRequest) String() string { return proto.CompactTextString(m) }
 func (*RunMutateJobRequest) ProtoMessage()    {}
 func (*RunMutateJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_service_eb116885ce9d562c, []int{3}
+	return fileDescriptor_mutate_job_service_a0ae22f320850a68, []int{3}
 }
 func (m *RunMutateJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunMutateJobRequest.Unmarshal(m, b)
@@ -217,7 +217,7 @@ func (m *AddMutateJobOperationsRequest) Reset()         { *m = AddMutateJobOpera
 func (m *AddMutateJobOperationsRequest) String() string { return proto.CompactTextString(m) }
 func (*AddMutateJobOperationsRequest) ProtoMessage()    {}
 func (*AddMutateJobOperationsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_service_eb116885ce9d562c, []int{4}
+	return fileDescriptor_mutate_job_service_a0ae22f320850a68, []int{4}
 }
 func (m *AddMutateJobOperationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddMutateJobOperationsRequest.Unmarshal(m, b)
@@ -275,7 +275,7 @@ func (m *AddMutateJobOperationsResponse) Reset()         { *m = AddMutateJobOper
 func (m *AddMutateJobOperationsResponse) String() string { return proto.CompactTextString(m) }
 func (*AddMutateJobOperationsResponse) ProtoMessage()    {}
 func (*AddMutateJobOperationsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_service_eb116885ce9d562c, []int{5}
+	return fileDescriptor_mutate_job_service_a0ae22f320850a68, []int{5}
 }
 func (m *AddMutateJobOperationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddMutateJobOperationsResponse.Unmarshal(m, b)
@@ -331,7 +331,7 @@ func (m *ListMutateJobResultsRequest) Reset()         { *m = ListMutateJobResult
 func (m *ListMutateJobResultsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListMutateJobResultsRequest) ProtoMessage()    {}
 func (*ListMutateJobResultsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_service_eb116885ce9d562c, []int{6}
+	return fileDescriptor_mutate_job_service_a0ae22f320850a68, []int{6}
 }
 func (m *ListMutateJobResultsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListMutateJobResultsRequest.Unmarshal(m, b)
@@ -390,7 +390,7 @@ func (m *ListMutateJobResultsResponse) Reset()         { *m = ListMutateJobResul
 func (m *ListMutateJobResultsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListMutateJobResultsResponse) ProtoMessage()    {}
 func (*ListMutateJobResultsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_service_eb116885ce9d562c, []int{7}
+	return fileDescriptor_mutate_job_service_a0ae22f320850a68, []int{7}
 }
 func (m *ListMutateJobResultsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListMutateJobResultsResponse.Unmarshal(m, b)
@@ -426,7 +426,7 @@ func (m *ListMutateJobResultsResponse) GetNextPageToken() string {
 
 // MutateJob result.
 type MutateJobResult struct {
-	// Index of the Simply operation.
+	// Index of the mutate operation.
 	OperationIndex int64 `protobuf:"varint,1,opt,name=operation_index,json=operationIndex,proto3" json:"operation_index,omitempty"`
 	// Response for the mutate.
 	// May be empty if errors occurred.
@@ -442,7 +442,7 @@ func (m *MutateJobResult) Reset()         { *m = MutateJobResult{} }
 func (m *MutateJobResult) String() string { return proto.CompactTextString(m) }
 func (*MutateJobResult) ProtoMessage()    {}
 func (*MutateJobResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_service_eb116885ce9d562c, []int{8}
+	return fileDescriptor_mutate_job_service_a0ae22f320850a68, []int{8}
 }
 func (m *MutateJobResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateJobResult.Unmarshal(m, b)
@@ -720,10 +720,10 @@ var _MutateJobService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/mutate_job_service.proto", fileDescriptor_mutate_job_service_eb116885ce9d562c)
+	proto.RegisterFile("google/ads/googleads/v1/services/mutate_job_service.proto", fileDescriptor_mutate_job_service_a0ae22f320850a68)
 }
 
-var fileDescriptor_mutate_job_service_eb116885ce9d562c = []byte{
+var fileDescriptor_mutate_job_service_a0ae22f320850a68 = []byte{
 	// 867 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x56, 0x4f, 0x6f, 0xe3, 0x44,
 	0x14, 0xd7, 0x24, 0x62, 0x97, 0x9d, 0xb4, 0x9b, 0xee, 0x2c, 0x6c, 0x83, 0x77, 0x0b, 0x91, 0x77,

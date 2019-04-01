@@ -50,7 +50,7 @@ func (x CustomInterestMemberTypeEnum_CustomInterestMemberType) String() string {
 	return proto.EnumName(CustomInterestMemberTypeEnum_CustomInterestMemberType_name, int32(x))
 }
 func (CustomInterestMemberTypeEnum_CustomInterestMemberType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_member_type_eb2990fdaf54d76e, []int{0, 0}
+	return fileDescriptor_custom_interest_member_type_fa31dd0cd1587ed3, []int{0, 0}
 }
 
 // The types of custom interest member, either KEYWORD or URL.
@@ -64,7 +64,7 @@ func (m *CustomInterestMemberTypeEnum) Reset()         { *m = CustomInterestMemb
 func (m *CustomInterestMemberTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*CustomInterestMemberTypeEnum) ProtoMessage()    {}
 func (*CustomInterestMemberTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_member_type_eb2990fdaf54d76e, []int{0}
+	return fileDescriptor_custom_interest_member_type_fa31dd0cd1587ed3, []int{0}
 }
 func (m *CustomInterestMemberTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInterestMemberTypeEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/custom_interest_member_type.proto", fileDescriptor_custom_interest_member_type_eb2990fdaf54d76e)
+	proto.RegisterFile("google/ads/googleads/v1/enums/custom_interest_member_type.proto", fileDescriptor_custom_interest_member_type_fa31dd0cd1587ed3)
 }
 
-var fileDescriptor_custom_interest_member_type_eb2990fdaf54d76e = []byte{
+var fileDescriptor_custom_interest_member_type_fa31dd0cd1587ed3 = []byte{
 	// 313 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcf, 0x6a, 0xc2, 0x30,
 	0x18, 0x9f, 0x15, 0x26, 0xc4, 0xc3, 0x4a, 0x4f, 0x63, 0xe8, 0x41, 0x1f, 0x20, 0xa1, 0xec, 0x96,

@@ -66,7 +66,7 @@ func (x AdStrengthEnum_AdStrength) String() string {
 	return proto.EnumName(AdStrengthEnum_AdStrength_name, int32(x))
 }
 func (AdStrengthEnum_AdStrength) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ad_strength_bbe2a417fda86d2b, []int{0, 0}
+	return fileDescriptor_ad_strength_f0b2737c42edfc69, []int{0, 0}
 }
 
 // Container for enum describing possible ad strengths.
@@ -80,7 +80,7 @@ func (m *AdStrengthEnum) Reset()         { *m = AdStrengthEnum{} }
 func (m *AdStrengthEnum) String() string { return proto.CompactTextString(m) }
 func (*AdStrengthEnum) ProtoMessage()    {}
 func (*AdStrengthEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_strength_bbe2a417fda86d2b, []int{0}
+	return fileDescriptor_ad_strength_f0b2737c42edfc69, []int{0}
 }
 func (m *AdStrengthEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdStrengthEnum.Unmarshal(m, b)
@@ -106,10 +106,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/ad_strength.proto", fileDescriptor_ad_strength_bbe2a417fda86d2b)
+	proto.RegisterFile("google/ads/googleads/v1/enums/ad_strength.proto", fileDescriptor_ad_strength_f0b2737c42edfc69)
 }
 
-var fileDescriptor_ad_strength_bbe2a417fda86d2b = []byte{
+var fileDescriptor_ad_strength_f0b2737c42edfc69 = []byte{
 	// 331 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xdd, 0x4e, 0xc2, 0x30,
 	0x18, 0x75, 0x03, 0x41, 0x4b, 0x94, 0x66, 0x97, 0x46, 0x2e, 0xe0, 0x01, 0xba, 0x2c, 0xde, 0xd5,

@@ -82,7 +82,7 @@ func (x OperationAccessDeniedErrorEnum_OperationAccessDeniedError) String() stri
 	return proto.EnumName(OperationAccessDeniedErrorEnum_OperationAccessDeniedError_name, int32(x))
 }
 func (OperationAccessDeniedErrorEnum_OperationAccessDeniedError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_operation_access_denied_error_f8611b2072984148, []int{0, 0}
+	return fileDescriptor_operation_access_denied_error_566a62646392ef0b, []int{0, 0}
 }
 
 // Container for enum describing possible operation access denied errors.
@@ -96,7 +96,7 @@ func (m *OperationAccessDeniedErrorEnum) Reset()         { *m = OperationAccessD
 func (m *OperationAccessDeniedErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*OperationAccessDeniedErrorEnum) ProtoMessage()    {}
 func (*OperationAccessDeniedErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operation_access_denied_error_f8611b2072984148, []int{0}
+	return fileDescriptor_operation_access_denied_error_566a62646392ef0b, []int{0}
 }
 func (m *OperationAccessDeniedErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationAccessDeniedErrorEnum.Unmarshal(m, b)
@@ -122,10 +122,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/operation_access_denied_error.proto", fileDescriptor_operation_access_denied_error_f8611b2072984148)
+	proto.RegisterFile("google/ads/googleads/v1/errors/operation_access_denied_error.proto", fileDescriptor_operation_access_denied_error_566a62646392ef0b)
 }
 
-var fileDescriptor_operation_access_denied_error_f8611b2072984148 = []byte{
+var fileDescriptor_operation_access_denied_error_566a62646392ef0b = []byte{
 	// 448 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0xc1, 0x8a, 0xd3, 0x40,
 	0x1c, 0xc6, 0x6d, 0xab, 0xbb, 0x3a, 0x3d, 0x18, 0x06, 0x0f, 0xb2, 0x48, 0x17, 0x23, 0x0a, 0x8a,

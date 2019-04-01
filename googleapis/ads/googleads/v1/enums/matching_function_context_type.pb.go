@@ -50,7 +50,7 @@ func (x MatchingFunctionContextTypeEnum_MatchingFunctionContextType) String() st
 	return proto.EnumName(MatchingFunctionContextTypeEnum_MatchingFunctionContextType_name, int32(x))
 }
 func (MatchingFunctionContextTypeEnum_MatchingFunctionContextType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_context_type_0ff7e9b35f1bb12c, []int{0, 0}
+	return fileDescriptor_matching_function_context_type_d9171f55a83ec259, []int{0, 0}
 }
 
 // Container for context types for an operand in a matching function.
@@ -64,7 +64,7 @@ func (m *MatchingFunctionContextTypeEnum) Reset()         { *m = MatchingFunctio
 func (m *MatchingFunctionContextTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*MatchingFunctionContextTypeEnum) ProtoMessage()    {}
 func (*MatchingFunctionContextTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_matching_function_context_type_0ff7e9b35f1bb12c, []int{0}
+	return fileDescriptor_matching_function_context_type_d9171f55a83ec259, []int{0}
 }
 func (m *MatchingFunctionContextTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MatchingFunctionContextTypeEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/matching_function_context_type.proto", fileDescriptor_matching_function_context_type_0ff7e9b35f1bb12c)
+	proto.RegisterFile("google/ads/googleads/v1/enums/matching_function_context_type.proto", fileDescriptor_matching_function_context_type_d9171f55a83ec259)
 }
 
-var fileDescriptor_matching_function_context_type_0ff7e9b35f1bb12c = []byte{
+var fileDescriptor_matching_function_context_type_d9171f55a83ec259 = []byte{
 	// 326 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x41, 0x4b, 0xc3, 0x30,
 	0x18, 0xb5, 0x1d, 0x28, 0x64, 0x82, 0xa5, 0x47, 0x75, 0xe8, 0xf6, 0x03, 0x52, 0x8a, 0xb7, 0x78,

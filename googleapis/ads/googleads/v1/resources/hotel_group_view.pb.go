@@ -35,7 +35,7 @@ func (m *HotelGroupView) Reset()         { *m = HotelGroupView{} }
 func (m *HotelGroupView) String() string { return proto.CompactTextString(m) }
 func (*HotelGroupView) ProtoMessage()    {}
 func (*HotelGroupView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_hotel_group_view_36c2cd54b6d7396c, []int{0}
+	return fileDescriptor_hotel_group_view_63dd209963fe113e, []int{0}
 }
 func (m *HotelGroupView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelGroupView.Unmarshal(m, b)
@@ -67,10 +67,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/hotel_group_view.proto", fileDescriptor_hotel_group_view_36c2cd54b6d7396c)
+	proto.RegisterFile("google/ads/googleads/v1/resources/hotel_group_view.proto", fileDescriptor_hotel_group_view_63dd209963fe113e)
 }
 
-var fileDescriptor_hotel_group_view_36c2cd54b6d7396c = []byte{
+var fileDescriptor_hotel_group_view_63dd209963fe113e = []byte{
 	// 271 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0xb1, 0x4a, 0xc4, 0x30,
 	0x18, 0xc7, 0x69, 0x05, 0xc1, 0xa2, 0x0e, 0xe7, 0x22, 0xe2, 0xe0, 0x29, 0x07, 0x4e, 0x09, 0x41,

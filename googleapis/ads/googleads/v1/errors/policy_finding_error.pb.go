@@ -51,7 +51,7 @@ func (x PolicyFindingErrorEnum_PolicyFindingError) String() string {
 	return proto.EnumName(PolicyFindingErrorEnum_PolicyFindingError_name, int32(x))
 }
 func (PolicyFindingErrorEnum_PolicyFindingError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_policy_finding_error_deba93eb8f17a5fc, []int{0, 0}
+	return fileDescriptor_policy_finding_error_7a70e35c4d04952a, []int{0, 0}
 }
 
 // Container for enum describing possible policy finding errors.
@@ -65,7 +65,7 @@ func (m *PolicyFindingErrorEnum) Reset()         { *m = PolicyFindingErrorEnum{}
 func (m *PolicyFindingErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*PolicyFindingErrorEnum) ProtoMessage()    {}
 func (*PolicyFindingErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_policy_finding_error_deba93eb8f17a5fc, []int{0}
+	return fileDescriptor_policy_finding_error_7a70e35c4d04952a, []int{0}
 }
 func (m *PolicyFindingErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PolicyFindingErrorEnum.Unmarshal(m, b)
@@ -91,10 +91,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/policy_finding_error.proto", fileDescriptor_policy_finding_error_deba93eb8f17a5fc)
+	proto.RegisterFile("google/ads/googleads/v1/errors/policy_finding_error.proto", fileDescriptor_policy_finding_error_7a70e35c4d04952a)
 }
 
-var fileDescriptor_policy_finding_error_deba93eb8f17a5fc = []byte{
+var fileDescriptor_policy_finding_error_7a70e35c4d04952a = []byte{
 	// 323 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0xc3, 0x30,
 	0x1c, 0xc6, 0x5d, 0x07, 0x0a, 0x19, 0x68, 0xc9, 0x61, 0xc2, 0x90, 0x1d, 0xfa, 0x00, 0x29, 0xc5,

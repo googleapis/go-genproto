@@ -41,7 +41,7 @@ func (m *GetAdGroupCriterionLabelRequest) Reset()         { *m = GetAdGroupCrite
 func (m *GetAdGroupCriterionLabelRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAdGroupCriterionLabelRequest) ProtoMessage()    {}
 func (*GetAdGroupCriterionLabelRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_label_service_19f0d4e332ca0c91, []int{0}
+	return fileDescriptor_ad_group_criterion_label_service_71ec7fdbc52e2d73, []int{0}
 }
 func (m *GetAdGroupCriterionLabelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAdGroupCriterionLabelRequest.Unmarshal(m, b)
@@ -92,7 +92,7 @@ func (m *MutateAdGroupCriterionLabelsRequest) Reset()         { *m = MutateAdGro
 func (m *MutateAdGroupCriterionLabelsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupCriterionLabelsRequest) ProtoMessage()    {}
 func (*MutateAdGroupCriterionLabelsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_label_service_19f0d4e332ca0c91, []int{1}
+	return fileDescriptor_ad_group_criterion_label_service_71ec7fdbc52e2d73, []int{1}
 }
 func (m *MutateAdGroupCriterionLabelsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupCriterionLabelsRequest.Unmarshal(m, b)
@@ -157,7 +157,7 @@ func (m *AdGroupCriterionLabelOperation) Reset()         { *m = AdGroupCriterion
 func (m *AdGroupCriterionLabelOperation) String() string { return proto.CompactTextString(m) }
 func (*AdGroupCriterionLabelOperation) ProtoMessage()    {}
 func (*AdGroupCriterionLabelOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_label_service_19f0d4e332ca0c91, []int{2}
+	return fileDescriptor_ad_group_criterion_label_service_71ec7fdbc52e2d73, []int{2}
 }
 func (m *AdGroupCriterionLabelOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupCriterionLabelOperation.Unmarshal(m, b)
@@ -302,7 +302,7 @@ func (m *MutateAdGroupCriterionLabelsResponse) Reset()         { *m = MutateAdGr
 func (m *MutateAdGroupCriterionLabelsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupCriterionLabelsResponse) ProtoMessage()    {}
 func (*MutateAdGroupCriterionLabelsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_label_service_19f0d4e332ca0c91, []int{3}
+	return fileDescriptor_ad_group_criterion_label_service_71ec7fdbc52e2d73, []int{3}
 }
 func (m *MutateAdGroupCriterionLabelsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupCriterionLabelsResponse.Unmarshal(m, b)
@@ -349,7 +349,7 @@ func (m *MutateAdGroupCriterionLabelResult) Reset()         { *m = MutateAdGroup
 func (m *MutateAdGroupCriterionLabelResult) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupCriterionLabelResult) ProtoMessage()    {}
 func (*MutateAdGroupCriterionLabelResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_label_service_19f0d4e332ca0c91, []int{4}
+	return fileDescriptor_ad_group_criterion_label_service_71ec7fdbc52e2d73, []int{4}
 }
 func (m *MutateAdGroupCriterionLabelResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupCriterionLabelResult.Unmarshal(m, b)
@@ -496,10 +496,10 @@ var _AdGroupCriterionLabelService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_criterion_label_service.proto", fileDescriptor_ad_group_criterion_label_service_19f0d4e332ca0c91)
+	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_criterion_label_service.proto", fileDescriptor_ad_group_criterion_label_service_71ec7fdbc52e2d73)
 }
 
-var fileDescriptor_ad_group_criterion_label_service_19f0d4e332ca0c91 = []byte{
+var fileDescriptor_ad_group_criterion_label_service_71ec7fdbc52e2d73 = []byte{
 	// 677 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0xcf, 0x6b, 0xd4, 0x5e,
 	0x10, 0xff, 0x26, 0xfb, 0xa5, 0xda, 0xb7, 0x55, 0xe1, 0x89, 0x18, 0x96, 0xd2, 0x6e, 0xd3, 0x82,

@@ -46,7 +46,7 @@ func (x AppPaymentModelTypeEnum_AppPaymentModelType) String() string {
 	return proto.EnumName(AppPaymentModelTypeEnum_AppPaymentModelType_name, int32(x))
 }
 func (AppPaymentModelTypeEnum_AppPaymentModelType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_app_payment_model_type_4dca450fbcae1c58, []int{0, 0}
+	return fileDescriptor_app_payment_model_type_4e004d1824ba3296, []int{0, 0}
 }
 
 // Represents a criterion for targeting paid apps.
@@ -60,7 +60,7 @@ func (m *AppPaymentModelTypeEnum) Reset()         { *m = AppPaymentModelTypeEnum
 func (m *AppPaymentModelTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*AppPaymentModelTypeEnum) ProtoMessage()    {}
 func (*AppPaymentModelTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_app_payment_model_type_4dca450fbcae1c58, []int{0}
+	return fileDescriptor_app_payment_model_type_4e004d1824ba3296, []int{0}
 }
 func (m *AppPaymentModelTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppPaymentModelTypeEnum.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/app_payment_model_type.proto", fileDescriptor_app_payment_model_type_4dca450fbcae1c58)
+	proto.RegisterFile("google/ads/googleads/v1/enums/app_payment_model_type.proto", fileDescriptor_app_payment_model_type_4e004d1824ba3296)
 }
 
-var fileDescriptor_app_payment_model_type_4dca450fbcae1c58 = []byte{
+var fileDescriptor_app_payment_model_type_4e004d1824ba3296 = []byte{
 	// 302 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xd1, 0x4a, 0xf3, 0x30,
 	0x1c, 0xc5, 0xbf, 0xed, 0x13, 0x95, 0xec, 0xc2, 0x51, 0x2f, 0x14, 0x71, 0xc2, 0xf6, 0x00, 0x09,

@@ -63,7 +63,7 @@ func (x MutateJobErrorEnum_MutateJobError) String() string {
 	return proto.EnumName(MutateJobErrorEnum_MutateJobError_name, int32(x))
 }
 func (MutateJobErrorEnum_MutateJobError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_error_e678cc12e5cdd751, []int{0, 0}
+	return fileDescriptor_mutate_job_error_dee7c5cec33a7fe3, []int{0, 0}
 }
 
 // Container for enum describing possible mutate job errors.
@@ -77,7 +77,7 @@ func (m *MutateJobErrorEnum) Reset()         { *m = MutateJobErrorEnum{} }
 func (m *MutateJobErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*MutateJobErrorEnum) ProtoMessage()    {}
 func (*MutateJobErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_error_e678cc12e5cdd751, []int{0}
+	return fileDescriptor_mutate_job_error_dee7c5cec33a7fe3, []int{0}
 }
 func (m *MutateJobErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateJobErrorEnum.Unmarshal(m, b)
@@ -103,10 +103,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/mutate_job_error.proto", fileDescriptor_mutate_job_error_e678cc12e5cdd751)
+	proto.RegisterFile("google/ads/googleads/v1/errors/mutate_job_error.proto", fileDescriptor_mutate_job_error_dee7c5cec33a7fe3)
 }
 
-var fileDescriptor_mutate_job_error_e678cc12e5cdd751 = []byte{
+var fileDescriptor_mutate_job_error_dee7c5cec33a7fe3 = []byte{
 	// 399 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0x4f, 0x8e, 0xd3, 0x30,
 	0x18, 0xc5, 0x49, 0x07, 0x06, 0xc9, 0x23, 0x81, 0x31, 0x7f, 0x16, 0x23, 0x34, 0x8b, 0x2e, 0x59,

@@ -38,7 +38,7 @@ func (m *GetUserInterestRequest) Reset()         { *m = GetUserInterestRequest{}
 func (m *GetUserInterestRequest) String() string { return proto.CompactTextString(m) }
 func (*GetUserInterestRequest) ProtoMessage()    {}
 func (*GetUserInterestRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_user_interest_service_f0f53b0efc9abbb8, []int{0}
+	return fileDescriptor_user_interest_service_05ae6e270986e1c4, []int{0}
 }
 func (m *GetUserInterestRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetUserInterestRequest.Unmarshal(m, b)
@@ -144,10 +144,10 @@ var _UserInterestService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/user_interest_service.proto", fileDescriptor_user_interest_service_f0f53b0efc9abbb8)
+	proto.RegisterFile("google/ads/googleads/v1/services/user_interest_service.proto", fileDescriptor_user_interest_service_05ae6e270986e1c4)
 }
 
-var fileDescriptor_user_interest_service_f0f53b0efc9abbb8 = []byte{
+var fileDescriptor_user_interest_service_05ae6e270986e1c4 = []byte{
 	// 364 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0xcf, 0x4a, 0xeb, 0x40,
 	0x14, 0xc6, 0x49, 0x2e, 0x5c, 0xb8, 0xe1, 0x5e, 0x2e, 0x44, 0x90, 0x52, 0x5c, 0x94, 0xda, 0x85,

@@ -64,7 +64,7 @@ func (x ManagerLinkStatusEnum_ManagerLinkStatus) String() string {
 	return proto.EnumName(ManagerLinkStatusEnum_ManagerLinkStatus_name, int32(x))
 }
 func (ManagerLinkStatusEnum_ManagerLinkStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_manager_link_status_6cec21ba66429a37, []int{0, 0}
+	return fileDescriptor_manager_link_status_87bdc70d6439d948, []int{0, 0}
 }
 
 // Container for enum describing possible status of a manager and client link.
@@ -78,7 +78,7 @@ func (m *ManagerLinkStatusEnum) Reset()         { *m = ManagerLinkStatusEnum{} }
 func (m *ManagerLinkStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*ManagerLinkStatusEnum) ProtoMessage()    {}
 func (*ManagerLinkStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_manager_link_status_6cec21ba66429a37, []int{0}
+	return fileDescriptor_manager_link_status_87bdc70d6439d948, []int{0}
 }
 func (m *ManagerLinkStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ManagerLinkStatusEnum.Unmarshal(m, b)
@@ -104,10 +104,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/manager_link_status.proto", fileDescriptor_manager_link_status_6cec21ba66429a37)
+	proto.RegisterFile("google/ads/googleads/v1/enums/manager_link_status.proto", fileDescriptor_manager_link_status_87bdc70d6439d948)
 }
 
-var fileDescriptor_manager_link_status_6cec21ba66429a37 = []byte{
+var fileDescriptor_manager_link_status_87bdc70d6439d948 = []byte{
 	// 335 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xdf, 0x4a, 0xfb, 0x30,
 	0x14, 0xfe, 0xb5, 0xfb, 0x39, 0x25, 0x13, 0xac, 0x05, 0xbd, 0x10, 0x77, 0xb1, 0x3d, 0x40, 0x4a,

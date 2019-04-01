@@ -54,7 +54,7 @@ func (m *CustomerNegativeCriterion) Reset()         { *m = CustomerNegativeCrite
 func (m *CustomerNegativeCriterion) String() string { return proto.CompactTextString(m) }
 func (*CustomerNegativeCriterion) ProtoMessage()    {}
 func (*CustomerNegativeCriterion) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_negative_criterion_047c425ca9d53ca1, []int{0}
+	return fileDescriptor_customer_negative_criterion_6344a57ae468b749, []int{0}
 }
 func (m *CustomerNegativeCriterion) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomerNegativeCriterion.Unmarshal(m, b)
@@ -339,10 +339,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/customer_negative_criterion.proto", fileDescriptor_customer_negative_criterion_047c425ca9d53ca1)
+	proto.RegisterFile("google/ads/googleads/v1/resources/customer_negative_criterion.proto", fileDescriptor_customer_negative_criterion_6344a57ae468b749)
 }
 
-var fileDescriptor_customer_negative_criterion_047c425ca9d53ca1 = []byte{
+var fileDescriptor_customer_negative_criterion_6344a57ae468b749 = []byte{
 	// 575 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0xdd, 0x8a, 0xd3, 0x40,
 	0x14, 0xc7, 0x6d, 0xf6, 0x43, 0x3b, 0xfb, 0x21, 0xc6, 0x9b, 0xb8, 0xca, 0xd2, 0x55, 0x16, 0x0a,

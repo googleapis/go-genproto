@@ -38,7 +38,7 @@ func (m *GetClickViewRequest) Reset()         { *m = GetClickViewRequest{} }
 func (m *GetClickViewRequest) String() string { return proto.CompactTextString(m) }
 func (*GetClickViewRequest) ProtoMessage()    {}
 func (*GetClickViewRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_click_view_service_6a2224d7a7d3cbd4, []int{0}
+	return fileDescriptor_click_view_service_6f5c62a172610bbe, []int{0}
 }
 func (m *GetClickViewRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetClickViewRequest.Unmarshal(m, b)
@@ -144,10 +144,10 @@ var _ClickViewService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/click_view_service.proto", fileDescriptor_click_view_service_6a2224d7a7d3cbd4)
+	proto.RegisterFile("google/ads/googleads/v1/services/click_view_service.proto", fileDescriptor_click_view_service_6f5c62a172610bbe)
 }
 
-var fileDescriptor_click_view_service_6a2224d7a7d3cbd4 = []byte{
+var fileDescriptor_click_view_service_6f5c62a172610bbe = []byte{
 	// 362 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0xb1, 0x4a, 0xc3, 0x50,
 	0x14, 0x86, 0x49, 0x04, 0xc1, 0x50, 0x41, 0x22, 0x82, 0x14, 0x87, 0x52, 0x3b, 0x48, 0x29, 0xf7,

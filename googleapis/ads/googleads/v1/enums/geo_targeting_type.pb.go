@@ -50,7 +50,7 @@ func (x GeoTargetingTypeEnum_GeoTargetingType) String() string {
 	return proto.EnumName(GeoTargetingTypeEnum_GeoTargetingType_name, int32(x))
 }
 func (GeoTargetingTypeEnum_GeoTargetingType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_geo_targeting_type_56a7f9eff97ec2f3, []int{0, 0}
+	return fileDescriptor_geo_targeting_type_bee019ba0022abea, []int{0, 0}
 }
 
 // Container for enum describing possible geo targeting types.
@@ -64,7 +64,7 @@ func (m *GeoTargetingTypeEnum) Reset()         { *m = GeoTargetingTypeEnum{} }
 func (m *GeoTargetingTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*GeoTargetingTypeEnum) ProtoMessage()    {}
 func (*GeoTargetingTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_geo_targeting_type_56a7f9eff97ec2f3, []int{0}
+	return fileDescriptor_geo_targeting_type_bee019ba0022abea, []int{0}
 }
 func (m *GeoTargetingTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GeoTargetingTypeEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/geo_targeting_type.proto", fileDescriptor_geo_targeting_type_56a7f9eff97ec2f3)
+	proto.RegisterFile("google/ads/googleads/v1/enums/geo_targeting_type.proto", fileDescriptor_geo_targeting_type_bee019ba0022abea)
 }
 
-var fileDescriptor_geo_targeting_type_56a7f9eff97ec2f3 = []byte{
+var fileDescriptor_geo_targeting_type_bee019ba0022abea = []byte{
 	// 323 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xdf, 0x4a, 0xf3, 0x30,
 	0x1c, 0xfd, 0xd6, 0xc1, 0x27, 0x64, 0x17, 0x96, 0x32, 0x41, 0xc4, 0x5d, 0x6c, 0x0f, 0x90, 0x52,

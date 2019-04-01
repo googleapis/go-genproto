@@ -50,7 +50,7 @@ func (x AppStoreEnum_AppStore) String() string {
 	return proto.EnumName(AppStoreEnum_AppStore_name, int32(x))
 }
 func (AppStoreEnum_AppStore) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_app_store_262fcfa551129da2, []int{0, 0}
+	return fileDescriptor_app_store_e3ce800ec4e8457c, []int{0, 0}
 }
 
 // Container for enum describing app store type in an app extension.
@@ -64,7 +64,7 @@ func (m *AppStoreEnum) Reset()         { *m = AppStoreEnum{} }
 func (m *AppStoreEnum) String() string { return proto.CompactTextString(m) }
 func (*AppStoreEnum) ProtoMessage()    {}
 func (*AppStoreEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_app_store_262fcfa551129da2, []int{0}
+	return fileDescriptor_app_store_e3ce800ec4e8457c, []int{0}
 }
 func (m *AppStoreEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppStoreEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/app_store.proto", fileDescriptor_app_store_262fcfa551129da2)
+	proto.RegisterFile("google/ads/googleads/v1/enums/app_store.proto", fileDescriptor_app_store_e3ce800ec4e8457c)
 }
 
-var fileDescriptor_app_store_262fcfa551129da2 = []byte{
+var fileDescriptor_app_store_e3ce800ec4e8457c = []byte{
 	// 299 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0xc3, 0x30,
 	0x1c, 0xc6, 0x5d, 0x07, 0x2a, 0xd9, 0xc4, 0xd2, 0xa3, 0xb8, 0xc3, 0x76, 0x37, 0xa1, 0x78, 0x8b,

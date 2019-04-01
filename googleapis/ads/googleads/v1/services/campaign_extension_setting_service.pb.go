@@ -42,7 +42,7 @@ func (m *GetCampaignExtensionSettingRequest) Reset()         { *m = GetCampaignE
 func (m *GetCampaignExtensionSettingRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCampaignExtensionSettingRequest) ProtoMessage()    {}
 func (*GetCampaignExtensionSettingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_extension_setting_service_692d24465e6146e9, []int{0}
+	return fileDescriptor_campaign_extension_setting_service_8c62e14d8376037b, []int{0}
 }
 func (m *GetCampaignExtensionSettingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCampaignExtensionSettingRequest.Unmarshal(m, b)
@@ -97,7 +97,7 @@ func (m *MutateCampaignExtensionSettingsRequest) Reset() {
 func (m *MutateCampaignExtensionSettingsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignExtensionSettingsRequest) ProtoMessage()    {}
 func (*MutateCampaignExtensionSettingsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_extension_setting_service_692d24465e6146e9, []int{1}
+	return fileDescriptor_campaign_extension_setting_service_8c62e14d8376037b, []int{1}
 }
 func (m *MutateCampaignExtensionSettingsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignExtensionSettingsRequest.Unmarshal(m, b)
@@ -165,7 +165,7 @@ func (m *CampaignExtensionSettingOperation) Reset()         { *m = CampaignExten
 func (m *CampaignExtensionSettingOperation) String() string { return proto.CompactTextString(m) }
 func (*CampaignExtensionSettingOperation) ProtoMessage()    {}
 func (*CampaignExtensionSettingOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_extension_setting_service_692d24465e6146e9, []int{2}
+	return fileDescriptor_campaign_extension_setting_service_8c62e14d8376037b, []int{2}
 }
 func (m *CampaignExtensionSettingOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CampaignExtensionSettingOperation.Unmarshal(m, b)
@@ -351,7 +351,7 @@ func (m *MutateCampaignExtensionSettingsResponse) Reset() {
 func (m *MutateCampaignExtensionSettingsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignExtensionSettingsResponse) ProtoMessage()    {}
 func (*MutateCampaignExtensionSettingsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_extension_setting_service_692d24465e6146e9, []int{3}
+	return fileDescriptor_campaign_extension_setting_service_8c62e14d8376037b, []int{3}
 }
 func (m *MutateCampaignExtensionSettingsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignExtensionSettingsResponse.Unmarshal(m, b)
@@ -398,7 +398,7 @@ func (m *MutateCampaignExtensionSettingResult) Reset()         { *m = MutateCamp
 func (m *MutateCampaignExtensionSettingResult) String() string { return proto.CompactTextString(m) }
 func (*MutateCampaignExtensionSettingResult) ProtoMessage()    {}
 func (*MutateCampaignExtensionSettingResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_extension_setting_service_692d24465e6146e9, []int{4}
+	return fileDescriptor_campaign_extension_setting_service_8c62e14d8376037b, []int{4}
 }
 func (m *MutateCampaignExtensionSettingResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCampaignExtensionSettingResult.Unmarshal(m, b)
@@ -545,10 +545,10 @@ var _CampaignExtensionSettingService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/campaign_extension_setting_service.proto", fileDescriptor_campaign_extension_setting_service_692d24465e6146e9)
+	proto.RegisterFile("google/ads/googleads/v1/services/campaign_extension_setting_service.proto", fileDescriptor_campaign_extension_setting_service_8c62e14d8376037b)
 }
 
-var fileDescriptor_campaign_extension_setting_service_692d24465e6146e9 = []byte{
+var fileDescriptor_campaign_extension_setting_service_8c62e14d8376037b = []byte{
 	// 728 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x95, 0x41, 0x4f, 0xd4, 0x40,
 	0x14, 0xc7, 0x6d, 0x21, 0x28, 0x53, 0xd4, 0x64, 0x8c, 0x71, 0xb3, 0x1a, 0x59, 0xeb, 0x46, 0xc8,

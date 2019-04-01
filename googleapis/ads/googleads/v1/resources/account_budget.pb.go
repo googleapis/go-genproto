@@ -129,7 +129,7 @@ func (m *AccountBudget) Reset()         { *m = AccountBudget{} }
 func (m *AccountBudget) String() string { return proto.CompactTextString(m) }
 func (*AccountBudget) ProtoMessage()    {}
 func (*AccountBudget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_budget_28699e8240127b72, []int{0}
+	return fileDescriptor_account_budget_c7ea5a452ecc3e9d, []int{0}
 }
 func (m *AccountBudget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AccountBudget.Unmarshal(m, b)
@@ -716,7 +716,7 @@ func (m *AccountBudget_PendingAccountBudgetProposal) String() string {
 }
 func (*AccountBudget_PendingAccountBudgetProposal) ProtoMessage() {}
 func (*AccountBudget_PendingAccountBudgetProposal) Descriptor() ([]byte, []int) {
-	return fileDescriptor_account_budget_28699e8240127b72, []int{0, 0}
+	return fileDescriptor_account_budget_c7ea5a452ecc3e9d, []int{0, 0}
 }
 func (m *AccountBudget_PendingAccountBudgetProposal) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AccountBudget_PendingAccountBudgetProposal.Unmarshal(m, b)
@@ -983,10 +983,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/account_budget.proto", fileDescriptor_account_budget_28699e8240127b72)
+	proto.RegisterFile("google/ads/googleads/v1/resources/account_budget.proto", fileDescriptor_account_budget_c7ea5a452ecc3e9d)
 }
 
-var fileDescriptor_account_budget_28699e8240127b72 = []byte{
+var fileDescriptor_account_budget_c7ea5a452ecc3e9d = []byte{
 	// 1010 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x57, 0xdd, 0x6e, 0xdb, 0x36,
 	0x14, 0x9e, 0x6c, 0xe7, 0x8f, 0x89, 0xf3, 0x23, 0x37, 0xa9, 0xf2, 0x83, 0x22, 0xdd, 0x50, 0x20,

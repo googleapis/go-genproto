@@ -57,7 +57,7 @@ func (x KeywordPlanForecastIntervalEnum_KeywordPlanForecastInterval) String() st
 	return proto.EnumName(KeywordPlanForecastIntervalEnum_KeywordPlanForecastInterval_name, int32(x))
 }
 func (KeywordPlanForecastIntervalEnum_KeywordPlanForecastInterval) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_forecast_interval_b49785e23c9ed432, []int{0, 0}
+	return fileDescriptor_keyword_plan_forecast_interval_016b78992e53ce4c, []int{0, 0}
 }
 
 // Container for enumeration of forecast intervals.
@@ -71,7 +71,7 @@ func (m *KeywordPlanForecastIntervalEnum) Reset()         { *m = KeywordPlanFore
 func (m *KeywordPlanForecastIntervalEnum) String() string { return proto.CompactTextString(m) }
 func (*KeywordPlanForecastIntervalEnum) ProtoMessage()    {}
 func (*KeywordPlanForecastIntervalEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_plan_forecast_interval_b49785e23c9ed432, []int{0}
+	return fileDescriptor_keyword_plan_forecast_interval_016b78992e53ce4c, []int{0}
 }
 func (m *KeywordPlanForecastIntervalEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeywordPlanForecastIntervalEnum.Unmarshal(m, b)
@@ -97,10 +97,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/keyword_plan_forecast_interval.proto", fileDescriptor_keyword_plan_forecast_interval_b49785e23c9ed432)
+	proto.RegisterFile("google/ads/googleads/v1/enums/keyword_plan_forecast_interval.proto", fileDescriptor_keyword_plan_forecast_interval_016b78992e53ce4c)
 }
 
-var fileDescriptor_keyword_plan_forecast_interval_b49785e23c9ed432 = []byte{
+var fileDescriptor_keyword_plan_forecast_interval_016b78992e53ce4c = []byte{
 	// 339 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x4b, 0x4e, 0xc3, 0x30,
 	0x10, 0x25, 0x2d, 0x1f, 0xe1, 0xf2, 0x89, 0xb2, 0x04, 0x2a, 0x68, 0x0f, 0xe0, 0x28, 0x62, 0x67,

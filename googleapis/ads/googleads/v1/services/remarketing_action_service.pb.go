@@ -41,7 +41,7 @@ func (m *GetRemarketingActionRequest) Reset()         { *m = GetRemarketingActio
 func (m *GetRemarketingActionRequest) String() string { return proto.CompactTextString(m) }
 func (*GetRemarketingActionRequest) ProtoMessage()    {}
 func (*GetRemarketingActionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_remarketing_action_service_e3e53f7f7d9c4916, []int{0}
+	return fileDescriptor_remarketing_action_service_d3f61876c789c19c, []int{0}
 }
 func (m *GetRemarketingActionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetRemarketingActionRequest.Unmarshal(m, b)
@@ -91,7 +91,7 @@ func (m *MutateRemarketingActionsRequest) Reset()         { *m = MutateRemarketi
 func (m *MutateRemarketingActionsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateRemarketingActionsRequest) ProtoMessage()    {}
 func (*MutateRemarketingActionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_remarketing_action_service_e3e53f7f7d9c4916, []int{1}
+	return fileDescriptor_remarketing_action_service_d3f61876c789c19c, []int{1}
 }
 func (m *MutateRemarketingActionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateRemarketingActionsRequest.Unmarshal(m, b)
@@ -158,7 +158,7 @@ func (m *RemarketingActionOperation) Reset()         { *m = RemarketingActionOpe
 func (m *RemarketingActionOperation) String() string { return proto.CompactTextString(m) }
 func (*RemarketingActionOperation) ProtoMessage()    {}
 func (*RemarketingActionOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_remarketing_action_service_e3e53f7f7d9c4916, []int{2}
+	return fileDescriptor_remarketing_action_service_d3f61876c789c19c, []int{2}
 }
 func (m *RemarketingActionOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemarketingActionOperation.Unmarshal(m, b)
@@ -314,7 +314,7 @@ func (m *MutateRemarketingActionsResponse) Reset()         { *m = MutateRemarket
 func (m *MutateRemarketingActionsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateRemarketingActionsResponse) ProtoMessage()    {}
 func (*MutateRemarketingActionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_remarketing_action_service_e3e53f7f7d9c4916, []int{3}
+	return fileDescriptor_remarketing_action_service_d3f61876c789c19c, []int{3}
 }
 func (m *MutateRemarketingActionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateRemarketingActionsResponse.Unmarshal(m, b)
@@ -361,7 +361,7 @@ func (m *MutateRemarketingActionResult) Reset()         { *m = MutateRemarketing
 func (m *MutateRemarketingActionResult) String() string { return proto.CompactTextString(m) }
 func (*MutateRemarketingActionResult) ProtoMessage()    {}
 func (*MutateRemarketingActionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_remarketing_action_service_e3e53f7f7d9c4916, []int{4}
+	return fileDescriptor_remarketing_action_service_d3f61876c789c19c, []int{4}
 }
 func (m *MutateRemarketingActionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateRemarketingActionResult.Unmarshal(m, b)
@@ -506,10 +506,10 @@ var _RemarketingActionService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/remarketing_action_service.proto", fileDescriptor_remarketing_action_service_e3e53f7f7d9c4916)
+	proto.RegisterFile("google/ads/googleads/v1/services/remarketing_action_service.proto", fileDescriptor_remarketing_action_service_d3f61876c789c19c)
 }
 
-var fileDescriptor_remarketing_action_service_e3e53f7f7d9c4916 = []byte{
+var fileDescriptor_remarketing_action_service_d3f61876c789c19c = []byte{
 	// 705 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x95, 0xcf, 0x6a, 0xd4, 0x40,
 	0x1c, 0xc7, 0x4d, 0x56, 0xaa, 0x9d, 0x54, 0x85, 0x51, 0x31, 0xac, 0xd6, 0x2e, 0xb1, 0x60, 0xd9,

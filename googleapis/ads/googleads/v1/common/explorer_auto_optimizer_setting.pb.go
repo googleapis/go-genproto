@@ -35,7 +35,7 @@ func (m *ExplorerAutoOptimizerSetting) Reset()         { *m = ExplorerAutoOptimi
 func (m *ExplorerAutoOptimizerSetting) String() string { return proto.CompactTextString(m) }
 func (*ExplorerAutoOptimizerSetting) ProtoMessage()    {}
 func (*ExplorerAutoOptimizerSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_explorer_auto_optimizer_setting_d2af3f69dece3c83, []int{0}
+	return fileDescriptor_explorer_auto_optimizer_setting_bb177ca484642d88, []int{0}
 }
 func (m *ExplorerAutoOptimizerSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExplorerAutoOptimizerSetting.Unmarshal(m, b)
@@ -67,10 +67,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/explorer_auto_optimizer_setting.proto", fileDescriptor_explorer_auto_optimizer_setting_d2af3f69dece3c83)
+	proto.RegisterFile("google/ads/googleads/v1/common/explorer_auto_optimizer_setting.proto", fileDescriptor_explorer_auto_optimizer_setting_bb177ca484642d88)
 }
 
-var fileDescriptor_explorer_auto_optimizer_setting_d2af3f69dece3c83 = []byte{
+var fileDescriptor_explorer_auto_optimizer_setting_bb177ca484642d88 = []byte{
 	// 306 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xb1, 0x4e, 0xc3, 0x30,
 	0x10, 0x86, 0x95, 0x22, 0x3a, 0x84, 0xad, 0x13, 0xaa, 0xaa, 0x0a, 0x3a, 0x31, 0x9d, 0x65, 0xd8,

@@ -52,7 +52,7 @@ func (x ProductChannelExclusivityEnum_ProductChannelExclusivity) String() string
 	return proto.EnumName(ProductChannelExclusivityEnum_ProductChannelExclusivity_name, int32(x))
 }
 func (ProductChannelExclusivityEnum_ProductChannelExclusivity) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_product_channel_exclusivity_2f1bcf2e000486a7, []int{0, 0}
+	return fileDescriptor_product_channel_exclusivity_42ddb227adfa3a5e, []int{0, 0}
 }
 
 // Availability of a product offer.
@@ -66,7 +66,7 @@ func (m *ProductChannelExclusivityEnum) Reset()         { *m = ProductChannelExc
 func (m *ProductChannelExclusivityEnum) String() string { return proto.CompactTextString(m) }
 func (*ProductChannelExclusivityEnum) ProtoMessage()    {}
 func (*ProductChannelExclusivityEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_channel_exclusivity_2f1bcf2e000486a7, []int{0}
+	return fileDescriptor_product_channel_exclusivity_42ddb227adfa3a5e, []int{0}
 }
 func (m *ProductChannelExclusivityEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductChannelExclusivityEnum.Unmarshal(m, b)
@@ -92,10 +92,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/product_channel_exclusivity.proto", fileDescriptor_product_channel_exclusivity_2f1bcf2e000486a7)
+	proto.RegisterFile("google/ads/googleads/v1/enums/product_channel_exclusivity.proto", fileDescriptor_product_channel_exclusivity_42ddb227adfa3a5e)
 }
 
-var fileDescriptor_product_channel_exclusivity_2f1bcf2e000486a7 = []byte{
+var fileDescriptor_product_channel_exclusivity_42ddb227adfa3a5e = []byte{
 	// 324 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x41, 0x4b, 0xc3, 0x30,
 	0x18, 0xb5, 0x1d, 0x28, 0x64, 0xa8, 0xb3, 0x37, 0xc5, 0x09, 0xdb, 0x0f, 0x48, 0x29, 0xde, 0xe2,

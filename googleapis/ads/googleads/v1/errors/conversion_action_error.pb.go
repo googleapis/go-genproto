@@ -81,7 +81,7 @@ func (x ConversionActionErrorEnum_ConversionActionError) String() string {
 	return proto.EnumName(ConversionActionErrorEnum_ConversionActionError_name, int32(x))
 }
 func (ConversionActionErrorEnum_ConversionActionError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_action_error_6bc78838b2a5587b, []int{0, 0}
+	return fileDescriptor_conversion_action_error_acfd6444f5660d3b, []int{0, 0}
 }
 
 // Container for enum describing possible conversion action errors.
@@ -95,7 +95,7 @@ func (m *ConversionActionErrorEnum) Reset()         { *m = ConversionActionError
 func (m *ConversionActionErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*ConversionActionErrorEnum) ProtoMessage()    {}
 func (*ConversionActionErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_action_error_6bc78838b2a5587b, []int{0}
+	return fileDescriptor_conversion_action_error_acfd6444f5660d3b, []int{0}
 }
 func (m *ConversionActionErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionActionErrorEnum.Unmarshal(m, b)
@@ -121,10 +121,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/conversion_action_error.proto", fileDescriptor_conversion_action_error_6bc78838b2a5587b)
+	proto.RegisterFile("google/ads/googleads/v1/errors/conversion_action_error.proto", fileDescriptor_conversion_action_error_acfd6444f5660d3b)
 }
 
-var fileDescriptor_conversion_action_error_6bc78838b2a5587b = []byte{
+var fileDescriptor_conversion_action_error_acfd6444f5660d3b = []byte{
 	// 443 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0x41, 0x8b, 0xd3, 0x40,
 	0x14, 0xc7, 0x6d, 0x56, 0x77, 0x75, 0x16, 0x74, 0x18, 0x14, 0xd9, 0x55, 0xf7, 0x50, 0xf0, 0xe0,

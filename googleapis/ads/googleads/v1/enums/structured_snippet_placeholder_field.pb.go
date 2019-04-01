@@ -56,7 +56,7 @@ func (x StructuredSnippetPlaceholderFieldEnum_StructuredSnippetPlaceholderField)
 	return proto.EnumName(StructuredSnippetPlaceholderFieldEnum_StructuredSnippetPlaceholderField_name, int32(x))
 }
 func (StructuredSnippetPlaceholderFieldEnum_StructuredSnippetPlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_structured_snippet_placeholder_field_c7d17b8aac29caa0, []int{0, 0}
+	return fileDescriptor_structured_snippet_placeholder_field_cd5d32f750246465, []int{0, 0}
 }
 
 // Values for Structured Snippet placeholder fields.
@@ -70,7 +70,7 @@ func (m *StructuredSnippetPlaceholderFieldEnum) Reset()         { *m = Structure
 func (m *StructuredSnippetPlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*StructuredSnippetPlaceholderFieldEnum) ProtoMessage()    {}
 func (*StructuredSnippetPlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_structured_snippet_placeholder_field_c7d17b8aac29caa0, []int{0}
+	return fileDescriptor_structured_snippet_placeholder_field_cd5d32f750246465, []int{0}
 }
 func (m *StructuredSnippetPlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredSnippetPlaceholderFieldEnum.Unmarshal(m, b)
@@ -96,10 +96,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/structured_snippet_placeholder_field.proto", fileDescriptor_structured_snippet_placeholder_field_c7d17b8aac29caa0)
+	proto.RegisterFile("google/ads/googleads/v1/enums/structured_snippet_placeholder_field.proto", fileDescriptor_structured_snippet_placeholder_field_cd5d32f750246465)
 }
 
-var fileDescriptor_structured_snippet_placeholder_field_c7d17b8aac29caa0 = []byte{
+var fileDescriptor_structured_snippet_placeholder_field_cd5d32f750246465 = []byte{
 	// 329 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x50, 0xdf, 0x4a, 0xfb, 0x30,
 	0x18, 0xfd, 0xb5, 0x83, 0xfd, 0x24, 0x13, 0x2c, 0xbd, 0x14, 0x77, 0xb1, 0x81, 0x5e, 0xa6, 0x14,

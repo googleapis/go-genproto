@@ -50,7 +50,7 @@ func (x FeedMappingStatusEnum_FeedMappingStatus) String() string {
 	return proto.EnumName(FeedMappingStatusEnum_FeedMappingStatus_name, int32(x))
 }
 func (FeedMappingStatusEnum_FeedMappingStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_feed_mapping_status_59f48c7ea720559f, []int{0, 0}
+	return fileDescriptor_feed_mapping_status_26b03c993eecbc49, []int{0, 0}
 }
 
 // Container for enum describing possible statuses of a feed mapping.
@@ -64,7 +64,7 @@ func (m *FeedMappingStatusEnum) Reset()         { *m = FeedMappingStatusEnum{} }
 func (m *FeedMappingStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*FeedMappingStatusEnum) ProtoMessage()    {}
 func (*FeedMappingStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_mapping_status_59f48c7ea720559f, []int{0}
+	return fileDescriptor_feed_mapping_status_26b03c993eecbc49, []int{0}
 }
 func (m *FeedMappingStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedMappingStatusEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/feed_mapping_status.proto", fileDescriptor_feed_mapping_status_59f48c7ea720559f)
+	proto.RegisterFile("google/ads/googleads/v1/enums/feed_mapping_status.proto", fileDescriptor_feed_mapping_status_26b03c993eecbc49)
 }
 
-var fileDescriptor_feed_mapping_status_59f48c7ea720559f = []byte{
+var fileDescriptor_feed_mapping_status_26b03c993eecbc49 = []byte{
 	// 303 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcf, 0x4a, 0xc3, 0x30,
 	0x18, 0x77, 0x1d, 0x28, 0x64, 0x07, 0xeb, 0x40, 0x0f, 0xe2, 0x0e, 0xdb, 0x03, 0x24, 0x14, 0x0f,

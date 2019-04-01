@@ -105,7 +105,7 @@ func (x GoogleAdsFieldDataTypeEnum_GoogleAdsFieldDataType) String() string {
 	return proto.EnumName(GoogleAdsFieldDataTypeEnum_GoogleAdsFieldDataType_name, int32(x))
 }
 func (GoogleAdsFieldDataTypeEnum_GoogleAdsFieldDataType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_field_data_type_a3cc46400eb9f983, []int{0, 0}
+	return fileDescriptor_google_ads_field_data_type_68ac4fc618a46f38, []int{0, 0}
 }
 
 // Container holding the various data types.
@@ -119,7 +119,7 @@ func (m *GoogleAdsFieldDataTypeEnum) Reset()         { *m = GoogleAdsFieldDataTy
 func (m *GoogleAdsFieldDataTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*GoogleAdsFieldDataTypeEnum) ProtoMessage()    {}
 func (*GoogleAdsFieldDataTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_field_data_type_a3cc46400eb9f983, []int{0}
+	return fileDescriptor_google_ads_field_data_type_68ac4fc618a46f38, []int{0}
 }
 func (m *GoogleAdsFieldDataTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GoogleAdsFieldDataTypeEnum.Unmarshal(m, b)
@@ -145,10 +145,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/google_ads_field_data_type.proto", fileDescriptor_google_ads_field_data_type_a3cc46400eb9f983)
+	proto.RegisterFile("google/ads/googleads/v1/enums/google_ads_field_data_type.proto", fileDescriptor_google_ads_field_data_type_68ac4fc618a46f38)
 }
 
-var fileDescriptor_google_ads_field_data_type_a3cc46400eb9f983 = []byte{
+var fileDescriptor_google_ads_field_data_type_68ac4fc618a46f38 = []byte{
 	// 392 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xcf, 0x8e, 0x93, 0x40,
 	0x18, 0x17, 0x76, 0xb7, 0xbb, 0x3b, 0x8d, 0x71, 0xe4, 0xe0, 0x61, 0x75, 0x0f, 0xbb, 0x0f, 0x30,

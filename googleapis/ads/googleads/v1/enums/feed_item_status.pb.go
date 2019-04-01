@@ -50,7 +50,7 @@ func (x FeedItemStatusEnum_FeedItemStatus) String() string {
 	return proto.EnumName(FeedItemStatusEnum_FeedItemStatus_name, int32(x))
 }
 func (FeedItemStatusEnum_FeedItemStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_status_42314cfbafb743b4, []int{0, 0}
+	return fileDescriptor_feed_item_status_925161e4c519a9ac, []int{0, 0}
 }
 
 // Container for enum describing possible statuses of a feed item.
@@ -64,7 +64,7 @@ func (m *FeedItemStatusEnum) Reset()         { *m = FeedItemStatusEnum{} }
 func (m *FeedItemStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*FeedItemStatusEnum) ProtoMessage()    {}
 func (*FeedItemStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_status_42314cfbafb743b4, []int{0}
+	return fileDescriptor_feed_item_status_925161e4c519a9ac, []int{0}
 }
 func (m *FeedItemStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedItemStatusEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/feed_item_status.proto", fileDescriptor_feed_item_status_42314cfbafb743b4)
+	proto.RegisterFile("google/ads/googleads/v1/enums/feed_item_status.proto", fileDescriptor_feed_item_status_925161e4c519a9ac)
 }
 
-var fileDescriptor_feed_item_status_42314cfbafb743b4 = []byte{
+var fileDescriptor_feed_item_status_925161e4c519a9ac = []byte{
 	// 302 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xdf, 0x4a, 0xfb, 0x30,
 	0x14, 0xfe, 0xad, 0x83, 0x9f, 0x90, 0x81, 0x96, 0x7a, 0x27, 0xee, 0x62, 0x7b, 0x80, 0x84, 0xa2,

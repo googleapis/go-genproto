@@ -64,7 +64,7 @@ func (x InteractionEventTypeEnum_InteractionEventType) String() string {
 	return proto.EnumName(InteractionEventTypeEnum_InteractionEventType_name, int32(x))
 }
 func (InteractionEventTypeEnum_InteractionEventType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_interaction_event_type_a911aa949403082b, []int{0, 0}
+	return fileDescriptor_interaction_event_type_2d5b94e724a35766, []int{0, 0}
 }
 
 // Container for enum describing types of payable and free interactions.
@@ -78,7 +78,7 @@ func (m *InteractionEventTypeEnum) Reset()         { *m = InteractionEventTypeEn
 func (m *InteractionEventTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*InteractionEventTypeEnum) ProtoMessage()    {}
 func (*InteractionEventTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_interaction_event_type_a911aa949403082b, []int{0}
+	return fileDescriptor_interaction_event_type_2d5b94e724a35766, []int{0}
 }
 func (m *InteractionEventTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractionEventTypeEnum.Unmarshal(m, b)
@@ -104,10 +104,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/interaction_event_type.proto", fileDescriptor_interaction_event_type_a911aa949403082b)
+	proto.RegisterFile("google/ads/googleads/v1/enums/interaction_event_type.proto", fileDescriptor_interaction_event_type_2d5b94e724a35766)
 }
 
-var fileDescriptor_interaction_event_type_a911aa949403082b = []byte{
+var fileDescriptor_interaction_event_type_2d5b94e724a35766 = []byte{
 	// 335 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xd1, 0x4e, 0xf2, 0x30,
 	0x18, 0xfd, 0x37, 0xe0, 0x57, 0x4b, 0xa2, 0xcb, 0xe2, 0x85, 0x1a, 0xb9, 0x80, 0x07, 0xe8, 0xb2,

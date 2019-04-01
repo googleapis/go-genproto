@@ -51,7 +51,7 @@ func (x DsaPageFeedCriterionFieldEnum_DsaPageFeedCriterionField) String() string
 	return proto.EnumName(DsaPageFeedCriterionFieldEnum_DsaPageFeedCriterionField_name, int32(x))
 }
 func (DsaPageFeedCriterionFieldEnum_DsaPageFeedCriterionField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_dsa_page_feed_criterion_field_25cfd996a537f219, []int{0, 0}
+	return fileDescriptor_dsa_page_feed_criterion_field_e9797bc759a46566, []int{0, 0}
 }
 
 // Values for Dynamic Search Ad Page Feed criterion fields.
@@ -65,7 +65,7 @@ func (m *DsaPageFeedCriterionFieldEnum) Reset()         { *m = DsaPageFeedCriter
 func (m *DsaPageFeedCriterionFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*DsaPageFeedCriterionFieldEnum) ProtoMessage()    {}
 func (*DsaPageFeedCriterionFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dsa_page_feed_criterion_field_25cfd996a537f219, []int{0}
+	return fileDescriptor_dsa_page_feed_criterion_field_e9797bc759a46566, []int{0}
 }
 func (m *DsaPageFeedCriterionFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DsaPageFeedCriterionFieldEnum.Unmarshal(m, b)
@@ -91,10 +91,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/dsa_page_feed_criterion_field.proto", fileDescriptor_dsa_page_feed_criterion_field_25cfd996a537f219)
+	proto.RegisterFile("google/ads/googleads/v1/enums/dsa_page_feed_criterion_field.proto", fileDescriptor_dsa_page_feed_criterion_field_e9797bc759a46566)
 }
 
-var fileDescriptor_dsa_page_feed_criterion_field_25cfd996a537f219 = []byte{
+var fileDescriptor_dsa_page_feed_criterion_field_e9797bc759a46566 = []byte{
 	// 318 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcd, 0x4a, 0xc3, 0x40,
 	0x18, 0xb4, 0x29, 0xfe, 0x6d, 0x05, 0x43, 0x6e, 0x8a, 0x15, 0xda, 0x07, 0xd8, 0x10, 0xbc, 0xad,

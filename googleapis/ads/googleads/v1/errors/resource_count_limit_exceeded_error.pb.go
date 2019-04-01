@@ -94,7 +94,7 @@ func (x ResourceCountLimitExceededErrorEnum_ResourceCountLimitExceededError) Str
 	return proto.EnumName(ResourceCountLimitExceededErrorEnum_ResourceCountLimitExceededError_name, int32(x))
 }
 func (ResourceCountLimitExceededErrorEnum_ResourceCountLimitExceededError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resource_count_limit_exceeded_error_d502aa1f85e96955, []int{0, 0}
+	return fileDescriptor_resource_count_limit_exceeded_error_fe63b9af7eef9f16, []int{0, 0}
 }
 
 // Container for enum describing possible resource count limit exceeded errors.
@@ -108,7 +108,7 @@ func (m *ResourceCountLimitExceededErrorEnum) Reset()         { *m = ResourceCou
 func (m *ResourceCountLimitExceededErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*ResourceCountLimitExceededErrorEnum) ProtoMessage()    {}
 func (*ResourceCountLimitExceededErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resource_count_limit_exceeded_error_d502aa1f85e96955, []int{0}
+	return fileDescriptor_resource_count_limit_exceeded_error_fe63b9af7eef9f16, []int{0}
 }
 func (m *ResourceCountLimitExceededErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResourceCountLimitExceededErrorEnum.Unmarshal(m, b)
@@ -134,10 +134,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/resource_count_limit_exceeded_error.proto", fileDescriptor_resource_count_limit_exceeded_error_d502aa1f85e96955)
+	proto.RegisterFile("google/ads/googleads/v1/errors/resource_count_limit_exceeded_error.proto", fileDescriptor_resource_count_limit_exceeded_error_fe63b9af7eef9f16)
 }
 
-var fileDescriptor_resource_count_limit_exceeded_error_d502aa1f85e96955 = []byte{
+var fileDescriptor_resource_count_limit_exceeded_error_fe63b9af7eef9f16 = []byte{
 	// 428 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0xdf, 0x6a, 0xd4, 0x40,
 	0x18, 0xc5, 0xdd, 0x54, 0x5b, 0x9d, 0xa2, 0xa6, 0x83, 0xa2, 0xd8, 0xd2, 0xc2, 0xea, 0xf5, 0x84,

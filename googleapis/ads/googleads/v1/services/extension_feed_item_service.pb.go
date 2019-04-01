@@ -40,7 +40,7 @@ func (m *GetExtensionFeedItemRequest) Reset()         { *m = GetExtensionFeedIte
 func (m *GetExtensionFeedItemRequest) String() string { return proto.CompactTextString(m) }
 func (*GetExtensionFeedItemRequest) ProtoMessage()    {}
 func (*GetExtensionFeedItemRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_feed_item_service_600f2d34df06b74a, []int{0}
+	return fileDescriptor_extension_feed_item_service_8e271428739777a4, []int{0}
 }
 func (m *GetExtensionFeedItemRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetExtensionFeedItemRequest.Unmarshal(m, b)
@@ -86,7 +86,7 @@ func (m *MutateExtensionFeedItemsRequest) Reset()         { *m = MutateExtension
 func (m *MutateExtensionFeedItemsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateExtensionFeedItemsRequest) ProtoMessage()    {}
 func (*MutateExtensionFeedItemsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_feed_item_service_600f2d34df06b74a, []int{1}
+	return fileDescriptor_extension_feed_item_service_8e271428739777a4, []int{1}
 }
 func (m *MutateExtensionFeedItemsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateExtensionFeedItemsRequest.Unmarshal(m, b)
@@ -147,7 +147,7 @@ func (m *ExtensionFeedItemOperation) Reset()         { *m = ExtensionFeedItemOpe
 func (m *ExtensionFeedItemOperation) String() string { return proto.CompactTextString(m) }
 func (*ExtensionFeedItemOperation) ProtoMessage()    {}
 func (*ExtensionFeedItemOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_feed_item_service_600f2d34df06b74a, []int{2}
+	return fileDescriptor_extension_feed_item_service_8e271428739777a4, []int{2}
 }
 func (m *ExtensionFeedItemOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExtensionFeedItemOperation.Unmarshal(m, b)
@@ -326,7 +326,7 @@ func (m *MutateExtensionFeedItemsResponse) Reset()         { *m = MutateExtensio
 func (m *MutateExtensionFeedItemsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateExtensionFeedItemsResponse) ProtoMessage()    {}
 func (*MutateExtensionFeedItemsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_feed_item_service_600f2d34df06b74a, []int{3}
+	return fileDescriptor_extension_feed_item_service_8e271428739777a4, []int{3}
 }
 func (m *MutateExtensionFeedItemsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateExtensionFeedItemsResponse.Unmarshal(m, b)
@@ -366,7 +366,7 @@ func (m *MutateExtensionFeedItemResult) Reset()         { *m = MutateExtensionFe
 func (m *MutateExtensionFeedItemResult) String() string { return proto.CompactTextString(m) }
 func (*MutateExtensionFeedItemResult) ProtoMessage()    {}
 func (*MutateExtensionFeedItemResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_feed_item_service_600f2d34df06b74a, []int{4}
+	return fileDescriptor_extension_feed_item_service_8e271428739777a4, []int{4}
 }
 func (m *MutateExtensionFeedItemResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateExtensionFeedItemResult.Unmarshal(m, b)
@@ -513,10 +513,10 @@ var _ExtensionFeedItemService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/extension_feed_item_service.proto", fileDescriptor_extension_feed_item_service_600f2d34df06b74a)
+	proto.RegisterFile("google/ads/googleads/v1/services/extension_feed_item_service.proto", fileDescriptor_extension_feed_item_service_8e271428739777a4)
 }
 
-var fileDescriptor_extension_feed_item_service_600f2d34df06b74a = []byte{
+var fileDescriptor_extension_feed_item_service_8e271428739777a4 = []byte{
 	// 656 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x95, 0xcd, 0x6e, 0xd3, 0x40,
 	0x10, 0xc7, 0xb1, 0x83, 0x0a, 0xdd, 0x94, 0x8b, 0xc5, 0xc1, 0x0a, 0x94, 0x46, 0xa6, 0x87, 0x2a,

@@ -54,7 +54,7 @@ func (x FeedAttributeReferenceErrorEnum_FeedAttributeReferenceError) String() st
 	return proto.EnumName(FeedAttributeReferenceErrorEnum_FeedAttributeReferenceError_name, int32(x))
 }
 func (FeedAttributeReferenceErrorEnum_FeedAttributeReferenceError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_feed_attribute_reference_error_8aa5700c0ba3257c, []int{0, 0}
+	return fileDescriptor_feed_attribute_reference_error_eb6b9153d1da9072, []int{0, 0}
 }
 
 // Container for enum describing possible feed attribute reference errors.
@@ -68,7 +68,7 @@ func (m *FeedAttributeReferenceErrorEnum) Reset()         { *m = FeedAttributeRe
 func (m *FeedAttributeReferenceErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*FeedAttributeReferenceErrorEnum) ProtoMessage()    {}
 func (*FeedAttributeReferenceErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_attribute_reference_error_8aa5700c0ba3257c, []int{0}
+	return fileDescriptor_feed_attribute_reference_error_eb6b9153d1da9072, []int{0}
 }
 func (m *FeedAttributeReferenceErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedAttributeReferenceErrorEnum.Unmarshal(m, b)
@@ -94,10 +94,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/feed_attribute_reference_error.proto", fileDescriptor_feed_attribute_reference_error_8aa5700c0ba3257c)
+	proto.RegisterFile("google/ads/googleads/v1/errors/feed_attribute_reference_error.proto", fileDescriptor_feed_attribute_reference_error_eb6b9153d1da9072)
 }
 
-var fileDescriptor_feed_attribute_reference_error_8aa5700c0ba3257c = []byte{
+var fileDescriptor_feed_attribute_reference_error_eb6b9153d1da9072 = []byte{
 	// 364 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0x41, 0x6e, 0xa3, 0x30,
 	0x14, 0x86, 0x07, 0x32, 0x9a, 0x91, 0x9c, 0xc5, 0x30, 0x48, 0xb3, 0x99, 0xb4, 0x49, 0xcb, 0x01,

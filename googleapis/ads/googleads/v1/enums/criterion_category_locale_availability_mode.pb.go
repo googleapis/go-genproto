@@ -61,7 +61,7 @@ func (x CriterionCategoryLocaleAvailabilityModeEnum_CriterionCategoryLocaleAvail
 	return proto.EnumName(CriterionCategoryLocaleAvailabilityModeEnum_CriterionCategoryLocaleAvailabilityMode_name, int32(x))
 }
 func (CriterionCategoryLocaleAvailabilityModeEnum_CriterionCategoryLocaleAvailabilityMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_category_locale_availability_mode_e40b0784fe5f40a4, []int{0, 0}
+	return fileDescriptor_criterion_category_locale_availability_mode_c1833134bb1ca8cf, []int{0, 0}
 }
 
 // Describes locale availabilty mode for a criterion availability - whether
@@ -81,7 +81,7 @@ func (m *CriterionCategoryLocaleAvailabilityModeEnum) String() string {
 }
 func (*CriterionCategoryLocaleAvailabilityModeEnum) ProtoMessage() {}
 func (*CriterionCategoryLocaleAvailabilityModeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_category_locale_availability_mode_e40b0784fe5f40a4, []int{0}
+	return fileDescriptor_criterion_category_locale_availability_mode_c1833134bb1ca8cf, []int{0}
 }
 func (m *CriterionCategoryLocaleAvailabilityModeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CriterionCategoryLocaleAvailabilityModeEnum.Unmarshal(m, b)
@@ -107,10 +107,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/criterion_category_locale_availability_mode.proto", fileDescriptor_criterion_category_locale_availability_mode_e40b0784fe5f40a4)
+	proto.RegisterFile("google/ads/googleads/v1/enums/criterion_category_locale_availability_mode.proto", fileDescriptor_criterion_category_locale_availability_mode_c1833134bb1ca8cf)
 }
 
-var fileDescriptor_criterion_category_locale_availability_mode_e40b0784fe5f40a4 = []byte{
+var fileDescriptor_criterion_category_locale_availability_mode_c1833134bb1ca8cf = []byte{
 	// 381 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x51, 0x4f, 0x8b, 0x9b, 0x40,
 	0x1c, 0xad, 0xa6, 0x7f, 0x60, 0x72, 0xa8, 0x48, 0x0f, 0x6d, 0x68, 0x0a, 0xc9, 0xa5, 0x87, 0x96,

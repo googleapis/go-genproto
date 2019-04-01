@@ -74,7 +74,7 @@ func (x SitelinkPlaceholderFieldEnum_SitelinkPlaceholderField) String() string {
 	return proto.EnumName(SitelinkPlaceholderFieldEnum_SitelinkPlaceholderField_name, int32(x))
 }
 func (SitelinkPlaceholderFieldEnum_SitelinkPlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_sitelink_placeholder_field_1736d8300038c8e4, []int{0, 0}
+	return fileDescriptor_sitelink_placeholder_field_f4c9f90eceb5bd6f, []int{0, 0}
 }
 
 // Values for Sitelink placeholder fields.
@@ -88,7 +88,7 @@ func (m *SitelinkPlaceholderFieldEnum) Reset()         { *m = SitelinkPlaceholde
 func (m *SitelinkPlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*SitelinkPlaceholderFieldEnum) ProtoMessage()    {}
 func (*SitelinkPlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_sitelink_placeholder_field_1736d8300038c8e4, []int{0}
+	return fileDescriptor_sitelink_placeholder_field_f4c9f90eceb5bd6f, []int{0}
 }
 func (m *SitelinkPlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SitelinkPlaceholderFieldEnum.Unmarshal(m, b)
@@ -114,10 +114,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/sitelink_placeholder_field.proto", fileDescriptor_sitelink_placeholder_field_1736d8300038c8e4)
+	proto.RegisterFile("google/ads/googleads/v1/enums/sitelink_placeholder_field.proto", fileDescriptor_sitelink_placeholder_field_f4c9f90eceb5bd6f)
 }
 
-var fileDescriptor_sitelink_placeholder_field_1736d8300038c8e4 = []byte{
+var fileDescriptor_sitelink_placeholder_field_f4c9f90eceb5bd6f = []byte{
 	// 377 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xd1, 0x8e, 0x9a, 0x40,
 	0x14, 0x86, 0x0b, 0x5a, 0x35, 0x63, 0xd3, 0x4e, 0x27, 0x6d, 0xd2, 0x34, 0x7a, 0xa1, 0x0f, 0x30,

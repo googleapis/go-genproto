@@ -42,7 +42,7 @@ func (m *GetAdGroupExtensionSettingRequest) Reset()         { *m = GetAdGroupExt
 func (m *GetAdGroupExtensionSettingRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAdGroupExtensionSettingRequest) ProtoMessage()    {}
 func (*GetAdGroupExtensionSettingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_extension_setting_service_41ab6fd61fe76e23, []int{0}
+	return fileDescriptor_ad_group_extension_setting_service_8066a784ead7ffb9, []int{0}
 }
 func (m *GetAdGroupExtensionSettingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAdGroupExtensionSettingRequest.Unmarshal(m, b)
@@ -95,7 +95,7 @@ func (m *MutateAdGroupExtensionSettingsRequest) Reset()         { *m = MutateAdG
 func (m *MutateAdGroupExtensionSettingsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupExtensionSettingsRequest) ProtoMessage()    {}
 func (*MutateAdGroupExtensionSettingsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_extension_setting_service_41ab6fd61fe76e23, []int{1}
+	return fileDescriptor_ad_group_extension_setting_service_8066a784ead7ffb9, []int{1}
 }
 func (m *MutateAdGroupExtensionSettingsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupExtensionSettingsRequest.Unmarshal(m, b)
@@ -163,7 +163,7 @@ func (m *AdGroupExtensionSettingOperation) Reset()         { *m = AdGroupExtensi
 func (m *AdGroupExtensionSettingOperation) String() string { return proto.CompactTextString(m) }
 func (*AdGroupExtensionSettingOperation) ProtoMessage()    {}
 func (*AdGroupExtensionSettingOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_extension_setting_service_41ab6fd61fe76e23, []int{2}
+	return fileDescriptor_ad_group_extension_setting_service_8066a784ead7ffb9, []int{2}
 }
 func (m *AdGroupExtensionSettingOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupExtensionSettingOperation.Unmarshal(m, b)
@@ -349,7 +349,7 @@ func (m *MutateAdGroupExtensionSettingsResponse) Reset() {
 func (m *MutateAdGroupExtensionSettingsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupExtensionSettingsResponse) ProtoMessage()    {}
 func (*MutateAdGroupExtensionSettingsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_extension_setting_service_41ab6fd61fe76e23, []int{3}
+	return fileDescriptor_ad_group_extension_setting_service_8066a784ead7ffb9, []int{3}
 }
 func (m *MutateAdGroupExtensionSettingsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupExtensionSettingsResponse.Unmarshal(m, b)
@@ -396,7 +396,7 @@ func (m *MutateAdGroupExtensionSettingResult) Reset()         { *m = MutateAdGro
 func (m *MutateAdGroupExtensionSettingResult) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupExtensionSettingResult) ProtoMessage()    {}
 func (*MutateAdGroupExtensionSettingResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_extension_setting_service_41ab6fd61fe76e23, []int{4}
+	return fileDescriptor_ad_group_extension_setting_service_8066a784ead7ffb9, []int{4}
 }
 func (m *MutateAdGroupExtensionSettingResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupExtensionSettingResult.Unmarshal(m, b)
@@ -543,10 +543,10 @@ var _AdGroupExtensionSettingService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_extension_setting_service.proto", fileDescriptor_ad_group_extension_setting_service_41ab6fd61fe76e23)
+	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_extension_setting_service.proto", fileDescriptor_ad_group_extension_setting_service_8066a784ead7ffb9)
 }
 
-var fileDescriptor_ad_group_extension_setting_service_41ab6fd61fe76e23 = []byte{
+var fileDescriptor_ad_group_extension_setting_service_8066a784ead7ffb9 = []byte{
 	// 729 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x95, 0xc1, 0x6b, 0xd4, 0x4e,
 	0x14, 0xc7, 0x7f, 0x49, 0x4b, 0x7f, 0x76, 0x52, 0x15, 0x46, 0xc4, 0x65, 0x91, 0xba, 0xa6, 0x55,

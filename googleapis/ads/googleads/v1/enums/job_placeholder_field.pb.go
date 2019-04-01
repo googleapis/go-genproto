@@ -128,7 +128,7 @@ func (x JobPlaceholderFieldEnum_JobPlaceholderField) String() string {
 	return proto.EnumName(JobPlaceholderFieldEnum_JobPlaceholderField_name, int32(x))
 }
 func (JobPlaceholderFieldEnum_JobPlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_job_placeholder_field_e6a9fd409f1ddb38, []int{0, 0}
+	return fileDescriptor_job_placeholder_field_97a24396124ab4a9, []int{0, 0}
 }
 
 // Values for Job placeholder fields.
@@ -144,7 +144,7 @@ func (m *JobPlaceholderFieldEnum) Reset()         { *m = JobPlaceholderFieldEnum
 func (m *JobPlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*JobPlaceholderFieldEnum) ProtoMessage()    {}
 func (*JobPlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_job_placeholder_field_e6a9fd409f1ddb38, []int{0}
+	return fileDescriptor_job_placeholder_field_97a24396124ab4a9, []int{0}
 }
 func (m *JobPlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobPlaceholderFieldEnum.Unmarshal(m, b)
@@ -170,10 +170,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/job_placeholder_field.proto", fileDescriptor_job_placeholder_field_e6a9fd409f1ddb38)
+	proto.RegisterFile("google/ads/googleads/v1/enums/job_placeholder_field.proto", fileDescriptor_job_placeholder_field_97a24396124ab4a9)
 }
 
-var fileDescriptor_job_placeholder_field_e6a9fd409f1ddb38 = []byte{
+var fileDescriptor_job_placeholder_field_97a24396124ab4a9 = []byte{
 	// 494 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xd1, 0x6e, 0xd3, 0x30,
 	0x14, 0x86, 0x69, 0xc6, 0xba, 0xd5, 0x2d, 0xab, 0xe7, 0x82, 0x26, 0x10, 0xbb, 0xd8, 0x1e, 0x20,

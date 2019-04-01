@@ -56,7 +56,7 @@ func (x CallConversionReportingStateEnum_CallConversionReportingState) String() 
 	return proto.EnumName(CallConversionReportingStateEnum_CallConversionReportingState_name, int32(x))
 }
 func (CallConversionReportingStateEnum_CallConversionReportingState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_call_conversion_reporting_state_589d3ea2efa5c4dc, []int{0, 0}
+	return fileDescriptor_call_conversion_reporting_state_a22fccf91506fd0e, []int{0, 0}
 }
 
 // Container for enum describing possible data types for call conversion
@@ -71,7 +71,7 @@ func (m *CallConversionReportingStateEnum) Reset()         { *m = CallConversion
 func (m *CallConversionReportingStateEnum) String() string { return proto.CompactTextString(m) }
 func (*CallConversionReportingStateEnum) ProtoMessage()    {}
 func (*CallConversionReportingStateEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_call_conversion_reporting_state_589d3ea2efa5c4dc, []int{0}
+	return fileDescriptor_call_conversion_reporting_state_a22fccf91506fd0e, []int{0}
 }
 func (m *CallConversionReportingStateEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CallConversionReportingStateEnum.Unmarshal(m, b)
@@ -97,10 +97,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/call_conversion_reporting_state.proto", fileDescriptor_call_conversion_reporting_state_589d3ea2efa5c4dc)
+	proto.RegisterFile("google/ads/googleads/v1/enums/call_conversion_reporting_state.proto", fileDescriptor_call_conversion_reporting_state_a22fccf91506fd0e)
 }
 
-var fileDescriptor_call_conversion_reporting_state_589d3ea2efa5c4dc = []byte{
+var fileDescriptor_call_conversion_reporting_state_a22fccf91506fd0e = []byte{
 	// 365 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0x41, 0xeb, 0x9b, 0x30,
 	0x1c, 0x9d, 0x76, 0x6c, 0x23, 0x1d, 0x4c, 0x3c, 0x8e, 0x16, 0xd6, 0x9e, 0x36, 0xd8, 0x22, 0xb2,

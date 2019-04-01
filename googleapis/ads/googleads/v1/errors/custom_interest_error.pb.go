@@ -71,7 +71,7 @@ func (x CustomInterestErrorEnum_CustomInterestError) String() string {
 	return proto.EnumName(CustomInterestErrorEnum_CustomInterestError_name, int32(x))
 }
 func (CustomInterestErrorEnum_CustomInterestError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_error_ee5c8bd3ce621fac, []int{0, 0}
+	return fileDescriptor_custom_interest_error_3c255ac3d5744253, []int{0, 0}
 }
 
 // Container for enum describing possible custom interest errors.
@@ -85,7 +85,7 @@ func (m *CustomInterestErrorEnum) Reset()         { *m = CustomInterestErrorEnum
 func (m *CustomInterestErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*CustomInterestErrorEnum) ProtoMessage()    {}
 func (*CustomInterestErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_error_ee5c8bd3ce621fac, []int{0}
+	return fileDescriptor_custom_interest_error_3c255ac3d5744253, []int{0}
 }
 func (m *CustomInterestErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInterestErrorEnum.Unmarshal(m, b)
@@ -111,10 +111,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/custom_interest_error.proto", fileDescriptor_custom_interest_error_ee5c8bd3ce621fac)
+	proto.RegisterFile("google/ads/googleads/v1/errors/custom_interest_error.proto", fileDescriptor_custom_interest_error_3c255ac3d5744253)
 }
 
-var fileDescriptor_custom_interest_error_ee5c8bd3ce621fac = []byte{
+var fileDescriptor_custom_interest_error_3c255ac3d5744253 = []byte{
 	// 448 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xdf, 0x6a, 0xdb, 0x30,
 	0x18, 0xc5, 0x17, 0x77, 0x6b, 0x87, 0x7a, 0x31, 0x4f, 0x63, 0x7f, 0x28, 0x25, 0x8c, 0x0c, 0xb6,

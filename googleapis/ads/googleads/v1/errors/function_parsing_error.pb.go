@@ -86,7 +86,7 @@ func (x FunctionParsingErrorEnum_FunctionParsingError) String() string {
 	return proto.EnumName(FunctionParsingErrorEnum_FunctionParsingError_name, int32(x))
 }
 func (FunctionParsingErrorEnum_FunctionParsingError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_function_parsing_error_da230d4f5b74e6fc, []int{0, 0}
+	return fileDescriptor_function_parsing_error_e1db389b765f4d29, []int{0, 0}
 }
 
 // Container for enum describing possible function parsing errors.
@@ -100,7 +100,7 @@ func (m *FunctionParsingErrorEnum) Reset()         { *m = FunctionParsingErrorEn
 func (m *FunctionParsingErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*FunctionParsingErrorEnum) ProtoMessage()    {}
 func (*FunctionParsingErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_function_parsing_error_da230d4f5b74e6fc, []int{0}
+	return fileDescriptor_function_parsing_error_e1db389b765f4d29, []int{0}
 }
 func (m *FunctionParsingErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FunctionParsingErrorEnum.Unmarshal(m, b)
@@ -126,10 +126,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/function_parsing_error.proto", fileDescriptor_function_parsing_error_da230d4f5b74e6fc)
+	proto.RegisterFile("google/ads/googleads/v1/errors/function_parsing_error.proto", fileDescriptor_function_parsing_error_e1db389b765f4d29)
 }
 
-var fileDescriptor_function_parsing_error_da230d4f5b74e6fc = []byte{
+var fileDescriptor_function_parsing_error_e1db389b765f4d29 = []byte{
 	// 488 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xcd, 0x6e, 0xd3, 0x40,
 	0x14, 0x85, 0x49, 0x02, 0x2d, 0x4c, 0x40, 0xb8, 0xa3, 0xb6, 0x34, 0x01, 0xb2, 0xc8, 0x16, 0xc9,

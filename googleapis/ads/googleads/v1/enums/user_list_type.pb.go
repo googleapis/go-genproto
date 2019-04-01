@@ -67,7 +67,7 @@ func (x UserListTypeEnum_UserListType) String() string {
 	return proto.EnumName(UserListTypeEnum_UserListType_name, int32(x))
 }
 func (UserListTypeEnum_UserListType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_user_list_type_8353a4e0e2573303, []int{0, 0}
+	return fileDescriptor_user_list_type_d7f02328e63113a9, []int{0, 0}
 }
 
 // The user list types.
@@ -81,7 +81,7 @@ func (m *UserListTypeEnum) Reset()         { *m = UserListTypeEnum{} }
 func (m *UserListTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*UserListTypeEnum) ProtoMessage()    {}
 func (*UserListTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_user_list_type_8353a4e0e2573303, []int{0}
+	return fileDescriptor_user_list_type_d7f02328e63113a9, []int{0}
 }
 func (m *UserListTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserListTypeEnum.Unmarshal(m, b)
@@ -107,10 +107,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/user_list_type.proto", fileDescriptor_user_list_type_8353a4e0e2573303)
+	proto.RegisterFile("google/ads/googleads/v1/enums/user_list_type.proto", fileDescriptor_user_list_type_d7f02328e63113a9)
 }
 
-var fileDescriptor_user_list_type_8353a4e0e2573303 = []byte{
+var fileDescriptor_user_list_type_d7f02328e63113a9 = []byte{
 	// 360 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xcf, 0x4a, 0xeb, 0x40,
 	0x18, 0xc5, 0x6f, 0xd2, 0x7b, 0x5b, 0xee, 0xd4, 0x3f, 0x31, 0xb8, 0x10, 0xb1, 0x8b, 0xf6, 0x01,

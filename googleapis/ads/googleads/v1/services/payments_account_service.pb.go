@@ -38,7 +38,7 @@ func (m *ListPaymentsAccountsRequest) Reset()         { *m = ListPaymentsAccount
 func (m *ListPaymentsAccountsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListPaymentsAccountsRequest) ProtoMessage()    {}
 func (*ListPaymentsAccountsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_payments_account_service_309651f23e78f58c, []int{0}
+	return fileDescriptor_payments_account_service_faf896254bb6e656, []int{0}
 }
 func (m *ListPaymentsAccountsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListPaymentsAccountsRequest.Unmarshal(m, b)
@@ -78,7 +78,7 @@ func (m *ListPaymentsAccountsResponse) Reset()         { *m = ListPaymentsAccoun
 func (m *ListPaymentsAccountsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListPaymentsAccountsResponse) ProtoMessage()    {}
 func (*ListPaymentsAccountsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_payments_account_service_309651f23e78f58c, []int{1}
+	return fileDescriptor_payments_account_service_faf896254bb6e656, []int{1}
 }
 func (m *ListPaymentsAccountsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListPaymentsAccountsResponse.Unmarshal(m, b)
@@ -189,10 +189,10 @@ var _PaymentsAccountService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/payments_account_service.proto", fileDescriptor_payments_account_service_309651f23e78f58c)
+	proto.RegisterFile("google/ads/googleads/v1/services/payments_account_service.proto", fileDescriptor_payments_account_service_faf896254bb6e656)
 }
 
-var fileDescriptor_payments_account_service_309651f23e78f58c = []byte{
+var fileDescriptor_payments_account_service_faf896254bb6e656 = []byte{
 	// 399 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x52, 0xcf, 0x6a, 0xdb, 0x30,
 	0x18, 0xc7, 0x0e, 0x0c, 0xa6, 0x5c, 0x36, 0x33, 0x46, 0x48, 0x02, 0x33, 0x21, 0x87, 0xb0, 0x83,

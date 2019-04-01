@@ -56,7 +56,7 @@ func (x BiddingSourceEnum_BiddingSource) String() string {
 	return proto.EnumName(BiddingSourceEnum_BiddingSource_name, int32(x))
 }
 func (BiddingSourceEnum_BiddingSource) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_source_e2bdb43ac0b9f543, []int{0, 0}
+	return fileDescriptor_bidding_source_cb63232b9a57dcf9, []int{0, 0}
 }
 
 // Container for enum describing possible bidding sources.
@@ -70,7 +70,7 @@ func (m *BiddingSourceEnum) Reset()         { *m = BiddingSourceEnum{} }
 func (m *BiddingSourceEnum) String() string { return proto.CompactTextString(m) }
 func (*BiddingSourceEnum) ProtoMessage()    {}
 func (*BiddingSourceEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_source_e2bdb43ac0b9f543, []int{0}
+	return fileDescriptor_bidding_source_cb63232b9a57dcf9, []int{0}
 }
 func (m *BiddingSourceEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BiddingSourceEnum.Unmarshal(m, b)
@@ -96,10 +96,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/bidding_source.proto", fileDescriptor_bidding_source_e2bdb43ac0b9f543)
+	proto.RegisterFile("google/ads/googleads/v1/enums/bidding_source.proto", fileDescriptor_bidding_source_cb63232b9a57dcf9)
 }
 
-var fileDescriptor_bidding_source_e2bdb43ac0b9f543 = []byte{
+var fileDescriptor_bidding_source_cb63232b9a57dcf9 = []byte{
 	// 336 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xdf, 0x4a, 0xfb, 0x30,
 	0x18, 0xfd, 0x75, 0x3f, 0xdc, 0x24, 0x53, 0xac, 0xb9, 0x10, 0x14, 0x77, 0xb1, 0x3d, 0x40, 0x4a,

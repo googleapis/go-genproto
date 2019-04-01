@@ -41,7 +41,7 @@ func (m *GetCustomerNegativeCriterionRequest) Reset()         { *m = GetCustomer
 func (m *GetCustomerNegativeCriterionRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCustomerNegativeCriterionRequest) ProtoMessage()    {}
 func (*GetCustomerNegativeCriterionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_negative_criterion_service_66c9e3d4515b4c09, []int{0}
+	return fileDescriptor_customer_negative_criterion_service_5e6b766da9c4515f, []int{0}
 }
 func (m *GetCustomerNegativeCriterionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCustomerNegativeCriterionRequest.Unmarshal(m, b)
@@ -92,7 +92,7 @@ func (m *MutateCustomerNegativeCriteriaRequest) Reset()         { *m = MutateCus
 func (m *MutateCustomerNegativeCriteriaRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateCustomerNegativeCriteriaRequest) ProtoMessage()    {}
 func (*MutateCustomerNegativeCriteriaRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_negative_criterion_service_66c9e3d4515b4c09, []int{1}
+	return fileDescriptor_customer_negative_criterion_service_5e6b766da9c4515f, []int{1}
 }
 func (m *MutateCustomerNegativeCriteriaRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCustomerNegativeCriteriaRequest.Unmarshal(m, b)
@@ -157,7 +157,7 @@ func (m *CustomerNegativeCriterionOperation) Reset()         { *m = CustomerNega
 func (m *CustomerNegativeCriterionOperation) String() string { return proto.CompactTextString(m) }
 func (*CustomerNegativeCriterionOperation) ProtoMessage()    {}
 func (*CustomerNegativeCriterionOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_negative_criterion_service_66c9e3d4515b4c09, []int{2}
+	return fileDescriptor_customer_negative_criterion_service_5e6b766da9c4515f, []int{2}
 }
 func (m *CustomerNegativeCriterionOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomerNegativeCriterionOperation.Unmarshal(m, b)
@@ -304,7 +304,7 @@ func (m *MutateCustomerNegativeCriteriaResponse) Reset() {
 func (m *MutateCustomerNegativeCriteriaResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateCustomerNegativeCriteriaResponse) ProtoMessage()    {}
 func (*MutateCustomerNegativeCriteriaResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_negative_criterion_service_66c9e3d4515b4c09, []int{3}
+	return fileDescriptor_customer_negative_criterion_service_5e6b766da9c4515f, []int{3}
 }
 func (m *MutateCustomerNegativeCriteriaResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCustomerNegativeCriteriaResponse.Unmarshal(m, b)
@@ -351,7 +351,7 @@ func (m *MutateCustomerNegativeCriteriaResult) Reset()         { *m = MutateCust
 func (m *MutateCustomerNegativeCriteriaResult) String() string { return proto.CompactTextString(m) }
 func (*MutateCustomerNegativeCriteriaResult) ProtoMessage()    {}
 func (*MutateCustomerNegativeCriteriaResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_negative_criterion_service_66c9e3d4515b4c09, []int{4}
+	return fileDescriptor_customer_negative_criterion_service_5e6b766da9c4515f, []int{4}
 }
 func (m *MutateCustomerNegativeCriteriaResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCustomerNegativeCriteriaResult.Unmarshal(m, b)
@@ -496,10 +496,10 @@ var _CustomerNegativeCriterionService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/customer_negative_criterion_service.proto", fileDescriptor_customer_negative_criterion_service_66c9e3d4515b4c09)
+	proto.RegisterFile("google/ads/googleads/v1/services/customer_negative_criterion_service.proto", fileDescriptor_customer_negative_criterion_service_5e6b766da9c4515f)
 }
 
-var fileDescriptor_customer_negative_criterion_service_66c9e3d4515b4c09 = []byte{
+var fileDescriptor_customer_negative_criterion_service_5e6b766da9c4515f = []byte{
 	// 670 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x55, 0x4f, 0x6b, 0xd4, 0x40,
 	0x14, 0x37, 0x69, 0xa9, 0x76, 0xb6, 0x2a, 0x8c, 0x88, 0x4b, 0x29, 0x75, 0x49, 0x5b, 0x2d, 0x7b,

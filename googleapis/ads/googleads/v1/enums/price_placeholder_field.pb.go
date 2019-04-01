@@ -291,7 +291,7 @@ func (x PricePlaceholderFieldEnum_PricePlaceholderField) String() string {
 	return proto.EnumName(PricePlaceholderFieldEnum_PricePlaceholderField_name, int32(x))
 }
 func (PricePlaceholderFieldEnum_PricePlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_price_placeholder_field_e02348ce96dcba19, []int{0, 0}
+	return fileDescriptor_price_placeholder_field_db820191f1cfbadd, []int{0, 0}
 }
 
 // Values for Price placeholder fields.
@@ -305,7 +305,7 @@ func (m *PricePlaceholderFieldEnum) Reset()         { *m = PricePlaceholderField
 func (m *PricePlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*PricePlaceholderFieldEnum) ProtoMessage()    {}
 func (*PricePlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_price_placeholder_field_e02348ce96dcba19, []int{0}
+	return fileDescriptor_price_placeholder_field_db820191f1cfbadd, []int{0}
 }
 func (m *PricePlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PricePlaceholderFieldEnum.Unmarshal(m, b)
@@ -331,10 +331,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/price_placeholder_field.proto", fileDescriptor_price_placeholder_field_e02348ce96dcba19)
+	proto.RegisterFile("google/ads/googleads/v1/enums/price_placeholder_field.proto", fileDescriptor_price_placeholder_field_db820191f1cfbadd)
 }
 
-var fileDescriptor_price_placeholder_field_e02348ce96dcba19 = []byte{
+var fileDescriptor_price_placeholder_field_db820191f1cfbadd = []byte{
 	// 731 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0xd4, 0x49, 0x4f, 0xdb, 0x5a,
 	0x14, 0x07, 0xf0, 0xe7, 0x21, 0x7e, 0x70, 0xe1, 0x89, 0xcb, 0x7d, 0x0f, 0x5e, 0x8b, 0x60, 0x01,

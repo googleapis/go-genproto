@@ -50,7 +50,7 @@ func (x ContextErrorEnum_ContextError) String() string {
 	return proto.EnumName(ContextErrorEnum_ContextError_name, int32(x))
 }
 func (ContextErrorEnum_ContextError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_context_error_947690d5590518f2, []int{0, 0}
+	return fileDescriptor_context_error_bd8445167170b376, []int{0, 0}
 }
 
 // Container for enum describing possible context errors.
@@ -64,7 +64,7 @@ func (m *ContextErrorEnum) Reset()         { *m = ContextErrorEnum{} }
 func (m *ContextErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*ContextErrorEnum) ProtoMessage()    {}
 func (*ContextErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_context_error_947690d5590518f2, []int{0}
+	return fileDescriptor_context_error_bd8445167170b376, []int{0}
 }
 func (m *ContextErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ContextErrorEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/context_error.proto", fileDescriptor_context_error_947690d5590518f2)
+	proto.RegisterFile("google/ads/googleads/v1/errors/context_error.proto", fileDescriptor_context_error_bd8445167170b376)
 }
 
-var fileDescriptor_context_error_947690d5590518f2 = []byte{
+var fileDescriptor_context_error_bd8445167170b376 = []byte{
 	// 335 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0x41, 0x4a, 0xc3, 0x40,
 	0x18, 0x85, 0x4d, 0x0a, 0x0a, 0x53, 0xc1, 0x98, 0xa5, 0x48, 0x17, 0x71, 0xe1, 0x46, 0x26, 0x46,

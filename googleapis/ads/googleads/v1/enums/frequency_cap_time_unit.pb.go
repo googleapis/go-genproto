@@ -54,7 +54,7 @@ func (x FrequencyCapTimeUnitEnum_FrequencyCapTimeUnit) String() string {
 	return proto.EnumName(FrequencyCapTimeUnitEnum_FrequencyCapTimeUnit_name, int32(x))
 }
 func (FrequencyCapTimeUnitEnum_FrequencyCapTimeUnit) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_frequency_cap_time_unit_08559111b5af653e, []int{0, 0}
+	return fileDescriptor_frequency_cap_time_unit_d8858482f1696885, []int{0, 0}
 }
 
 // Container for enum describing the unit of time the cap is defined at.
@@ -68,7 +68,7 @@ func (m *FrequencyCapTimeUnitEnum) Reset()         { *m = FrequencyCapTimeUnitEn
 func (m *FrequencyCapTimeUnitEnum) String() string { return proto.CompactTextString(m) }
 func (*FrequencyCapTimeUnitEnum) ProtoMessage()    {}
 func (*FrequencyCapTimeUnitEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_frequency_cap_time_unit_08559111b5af653e, []int{0}
+	return fileDescriptor_frequency_cap_time_unit_d8858482f1696885, []int{0}
 }
 func (m *FrequencyCapTimeUnitEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FrequencyCapTimeUnitEnum.Unmarshal(m, b)
@@ -94,10 +94,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/frequency_cap_time_unit.proto", fileDescriptor_frequency_cap_time_unit_08559111b5af653e)
+	proto.RegisterFile("google/ads/googleads/v1/enums/frequency_cap_time_unit.proto", fileDescriptor_frequency_cap_time_unit_d8858482f1696885)
 }
 
-var fileDescriptor_frequency_cap_time_unit_08559111b5af653e = []byte{
+var fileDescriptor_frequency_cap_time_unit_d8858482f1696885 = []byte{
 	// 324 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xcf, 0x4e, 0xf2, 0x40,
 	0x14, 0xc5, 0x3f, 0x0a, 0x9f, 0xe8, 0xb0, 0xb0, 0x69, 0x5c, 0xa8, 0x91, 0x05, 0x3c, 0xc0, 0x34,

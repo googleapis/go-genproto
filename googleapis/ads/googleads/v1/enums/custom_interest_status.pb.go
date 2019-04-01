@@ -51,7 +51,7 @@ func (x CustomInterestStatusEnum_CustomInterestStatus) String() string {
 	return proto.EnumName(CustomInterestStatusEnum_CustomInterestStatus_name, int32(x))
 }
 func (CustomInterestStatusEnum_CustomInterestStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_status_d7ce5e3c45e87b9d, []int{0, 0}
+	return fileDescriptor_custom_interest_status_f31d37e876cc6f20, []int{0, 0}
 }
 
 // The status of custom interest.
@@ -65,7 +65,7 @@ func (m *CustomInterestStatusEnum) Reset()         { *m = CustomInterestStatusEn
 func (m *CustomInterestStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*CustomInterestStatusEnum) ProtoMessage()    {}
 func (*CustomInterestStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_status_d7ce5e3c45e87b9d, []int{0}
+	return fileDescriptor_custom_interest_status_f31d37e876cc6f20, []int{0}
 }
 func (m *CustomInterestStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInterestStatusEnum.Unmarshal(m, b)
@@ -91,10 +91,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/custom_interest_status.proto", fileDescriptor_custom_interest_status_d7ce5e3c45e87b9d)
+	proto.RegisterFile("google/ads/googleads/v1/enums/custom_interest_status.proto", fileDescriptor_custom_interest_status_f31d37e876cc6f20)
 }
 
-var fileDescriptor_custom_interest_status_d7ce5e3c45e87b9d = []byte{
+var fileDescriptor_custom_interest_status_f31d37e876cc6f20 = []byte{
 	// 306 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xc1, 0x4a, 0x03, 0x31,
 	0x10, 0xb5, 0x5b, 0x50, 0x48, 0x0f, 0x2e, 0xc5, 0x83, 0x8a, 0x3d, 0xb4, 0x1f, 0x90, 0xb0, 0x78,

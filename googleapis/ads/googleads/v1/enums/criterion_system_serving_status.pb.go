@@ -50,7 +50,7 @@ func (x CriterionSystemServingStatusEnum_CriterionSystemServingStatus) String() 
 	return proto.EnumName(CriterionSystemServingStatusEnum_CriterionSystemServingStatus_name, int32(x))
 }
 func (CriterionSystemServingStatusEnum_CriterionSystemServingStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_system_serving_status_fd409ffdfffa5d33, []int{0, 0}
+	return fileDescriptor_criterion_system_serving_status_683684aaf0544463, []int{0, 0}
 }
 
 // Container for enum describing possible criterion system serving statuses.
@@ -64,7 +64,7 @@ func (m *CriterionSystemServingStatusEnum) Reset()         { *m = CriterionSyste
 func (m *CriterionSystemServingStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*CriterionSystemServingStatusEnum) ProtoMessage()    {}
 func (*CriterionSystemServingStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_system_serving_status_fd409ffdfffa5d33, []int{0}
+	return fileDescriptor_criterion_system_serving_status_683684aaf0544463, []int{0}
 }
 func (m *CriterionSystemServingStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CriterionSystemServingStatusEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/criterion_system_serving_status.proto", fileDescriptor_criterion_system_serving_status_fd409ffdfffa5d33)
+	proto.RegisterFile("google/ads/googleads/v1/enums/criterion_system_serving_status.proto", fileDescriptor_criterion_system_serving_status_683684aaf0544463)
 }
 
-var fileDescriptor_criterion_system_serving_status_fd409ffdfffa5d33 = []byte{
+var fileDescriptor_criterion_system_serving_status_683684aaf0544463 = []byte{
 	// 328 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xc1, 0x4a, 0xf3, 0x40,
 	0x18, 0xfc, 0x93, 0xc2, 0xaf, 0x6c, 0x15, 0x63, 0x8e, 0xd2, 0x82, 0xed, 0x03, 0x6c, 0x08, 0xde,

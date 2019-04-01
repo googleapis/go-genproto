@@ -43,7 +43,7 @@ func (m *CustomerManagerLink) Reset()         { *m = CustomerManagerLink{} }
 func (m *CustomerManagerLink) String() string { return proto.CompactTextString(m) }
 func (*CustomerManagerLink) ProtoMessage()    {}
 func (*CustomerManagerLink) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_manager_link_093f14efc44370a8, []int{0}
+	return fileDescriptor_customer_manager_link_3460f909cc210d88, []int{0}
 }
 func (m *CustomerManagerLink) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomerManagerLink.Unmarshal(m, b)
@@ -96,10 +96,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/customer_manager_link.proto", fileDescriptor_customer_manager_link_093f14efc44370a8)
+	proto.RegisterFile("google/ads/googleads/v1/resources/customer_manager_link.proto", fileDescriptor_customer_manager_link_3460f909cc210d88)
 }
 
-var fileDescriptor_customer_manager_link_093f14efc44370a8 = []byte{
+var fileDescriptor_customer_manager_link_3460f909cc210d88 = []byte{
 	// 408 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xd1, 0xca, 0xd3, 0x30,
 	0x18, 0xa5, 0xfd, 0xf5, 0x07, 0xab, 0x73, 0x52, 0x6f, 0xca, 0x1c, 0xb2, 0x29, 0x83, 0x5d, 0x25,

@@ -40,7 +40,7 @@ func (m *GetAdGroupLabelRequest) Reset()         { *m = GetAdGroupLabelRequest{}
 func (m *GetAdGroupLabelRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAdGroupLabelRequest) ProtoMessage()    {}
 func (*GetAdGroupLabelRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_label_service_957aa6721b93b813, []int{0}
+	return fileDescriptor_ad_group_label_service_e6ee4fdf40e6148c, []int{0}
 }
 func (m *GetAdGroupLabelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAdGroupLabelRequest.Unmarshal(m, b)
@@ -90,7 +90,7 @@ func (m *MutateAdGroupLabelsRequest) Reset()         { *m = MutateAdGroupLabelsR
 func (m *MutateAdGroupLabelsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupLabelsRequest) ProtoMessage()    {}
 func (*MutateAdGroupLabelsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_label_service_957aa6721b93b813, []int{1}
+	return fileDescriptor_ad_group_label_service_e6ee4fdf40e6148c, []int{1}
 }
 func (m *MutateAdGroupLabelsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupLabelsRequest.Unmarshal(m, b)
@@ -155,7 +155,7 @@ func (m *AdGroupLabelOperation) Reset()         { *m = AdGroupLabelOperation{} }
 func (m *AdGroupLabelOperation) String() string { return proto.CompactTextString(m) }
 func (*AdGroupLabelOperation) ProtoMessage()    {}
 func (*AdGroupLabelOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_label_service_957aa6721b93b813, []int{2}
+	return fileDescriptor_ad_group_label_service_e6ee4fdf40e6148c, []int{2}
 }
 func (m *AdGroupLabelOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupLabelOperation.Unmarshal(m, b)
@@ -300,7 +300,7 @@ func (m *MutateAdGroupLabelsResponse) Reset()         { *m = MutateAdGroupLabels
 func (m *MutateAdGroupLabelsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupLabelsResponse) ProtoMessage()    {}
 func (*MutateAdGroupLabelsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_label_service_957aa6721b93b813, []int{3}
+	return fileDescriptor_ad_group_label_service_e6ee4fdf40e6148c, []int{3}
 }
 func (m *MutateAdGroupLabelsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupLabelsResponse.Unmarshal(m, b)
@@ -347,7 +347,7 @@ func (m *MutateAdGroupLabelResult) Reset()         { *m = MutateAdGroupLabelResu
 func (m *MutateAdGroupLabelResult) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupLabelResult) ProtoMessage()    {}
 func (*MutateAdGroupLabelResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_label_service_957aa6721b93b813, []int{4}
+	return fileDescriptor_ad_group_label_service_e6ee4fdf40e6148c, []int{4}
 }
 func (m *MutateAdGroupLabelResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupLabelResult.Unmarshal(m, b)
@@ -494,10 +494,10 @@ var _AdGroupLabelService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_label_service.proto", fileDescriptor_ad_group_label_service_957aa6721b93b813)
+	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_label_service.proto", fileDescriptor_ad_group_label_service_e6ee4fdf40e6148c)
 }
 
-var fileDescriptor_ad_group_label_service_957aa6721b93b813 = []byte{
+var fileDescriptor_ad_group_label_service_e6ee4fdf40e6148c = []byte{
 	// 663 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0x4f, 0x6b, 0xd4, 0x40,
 	0x14, 0x37, 0xbb, 0x52, 0xed, 0x6c, 0xb5, 0x30, 0xa5, 0x1a, 0x56, 0xd1, 0x25, 0x16, 0x2c, 0x7b,

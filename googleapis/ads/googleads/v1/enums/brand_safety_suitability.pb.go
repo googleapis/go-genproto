@@ -74,7 +74,7 @@ func (x BrandSafetySuitabilityEnum_BrandSafetySuitability) String() string {
 	return proto.EnumName(BrandSafetySuitabilityEnum_BrandSafetySuitability_name, int32(x))
 }
 func (BrandSafetySuitabilityEnum_BrandSafetySuitability) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_brand_safety_suitability_fa6a63586b4ace9f, []int{0, 0}
+	return fileDescriptor_brand_safety_suitability_9d82860afb461eab, []int{0, 0}
 }
 
 // Container for enum with 3-Tier brand safety suitability control.
@@ -88,7 +88,7 @@ func (m *BrandSafetySuitabilityEnum) Reset()         { *m = BrandSafetySuitabili
 func (m *BrandSafetySuitabilityEnum) String() string { return proto.CompactTextString(m) }
 func (*BrandSafetySuitabilityEnum) ProtoMessage()    {}
 func (*BrandSafetySuitabilityEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_brand_safety_suitability_fa6a63586b4ace9f, []int{0}
+	return fileDescriptor_brand_safety_suitability_9d82860afb461eab, []int{0}
 }
 func (m *BrandSafetySuitabilityEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BrandSafetySuitabilityEnum.Unmarshal(m, b)
@@ -114,10 +114,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/brand_safety_suitability.proto", fileDescriptor_brand_safety_suitability_fa6a63586b4ace9f)
+	proto.RegisterFile("google/ads/googleads/v1/enums/brand_safety_suitability.proto", fileDescriptor_brand_safety_suitability_9d82860afb461eab)
 }
 
-var fileDescriptor_brand_safety_suitability_fa6a63586b4ace9f = []byte{
+var fileDescriptor_brand_safety_suitability_9d82860afb461eab = []byte{
 	// 339 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x4d, 0x4b, 0xfb, 0x30,
 	0x1c, 0xfe, 0xb7, 0xfb, 0xa3, 0x90, 0x1d, 0x9c, 0x05, 0x77, 0x98, 0xee, 0xb0, 0x7d, 0x80, 0x94,

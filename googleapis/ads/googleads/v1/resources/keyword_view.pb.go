@@ -35,7 +35,7 @@ func (m *KeywordView) Reset()         { *m = KeywordView{} }
 func (m *KeywordView) String() string { return proto.CompactTextString(m) }
 func (*KeywordView) ProtoMessage()    {}
 func (*KeywordView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_keyword_view_db1f75d34f4f156e, []int{0}
+	return fileDescriptor_keyword_view_15ff53248b05bca6, []int{0}
 }
 func (m *KeywordView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeywordView.Unmarshal(m, b)
@@ -67,10 +67,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/keyword_view.proto", fileDescriptor_keyword_view_db1f75d34f4f156e)
+	proto.RegisterFile("google/ads/googleads/v1/resources/keyword_view.proto", fileDescriptor_keyword_view_15ff53248b05bca6)
 }
 
-var fileDescriptor_keyword_view_db1f75d34f4f156e = []byte{
+var fileDescriptor_keyword_view_15ff53248b05bca6 = []byte{
 	// 266 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0x41, 0x4a, 0xc4, 0x30,
 	0x14, 0x86, 0x69, 0x05, 0xc1, 0xaa, 0x20, 0xb3, 0x12, 0x71, 0xe1, 0x28, 0x03, 0xae, 0x12, 0xa2,

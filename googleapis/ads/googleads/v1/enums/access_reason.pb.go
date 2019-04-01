@@ -62,7 +62,7 @@ func (x AccessReasonEnum_AccessReason) String() string {
 	return proto.EnumName(AccessReasonEnum_AccessReason_name, int32(x))
 }
 func (AccessReasonEnum_AccessReason) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_access_reason_fdd0044bbadbed8a, []int{0, 0}
+	return fileDescriptor_access_reason_e636ebc33a4148d5, []int{0, 0}
 }
 
 // Indicates the way the resource such as user list is related to a user.
@@ -76,7 +76,7 @@ func (m *AccessReasonEnum) Reset()         { *m = AccessReasonEnum{} }
 func (m *AccessReasonEnum) String() string { return proto.CompactTextString(m) }
 func (*AccessReasonEnum) ProtoMessage()    {}
 func (*AccessReasonEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_access_reason_fdd0044bbadbed8a, []int{0}
+	return fileDescriptor_access_reason_e636ebc33a4148d5, []int{0}
 }
 func (m *AccessReasonEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AccessReasonEnum.Unmarshal(m, b)
@@ -102,10 +102,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/access_reason.proto", fileDescriptor_access_reason_fdd0044bbadbed8a)
+	proto.RegisterFile("google/ads/googleads/v1/enums/access_reason.proto", fileDescriptor_access_reason_e636ebc33a4148d5)
 }
 
-var fileDescriptor_access_reason_fdd0044bbadbed8a = []byte{
+var fileDescriptor_access_reason_e636ebc33a4148d5 = []byte{
 	// 336 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xd1, 0x4e, 0xf2, 0x30,
 	0x18, 0xfd, 0x37, 0x7e, 0x50, 0x0b, 0xd1, 0xda, 0x4b, 0x23, 0x17, 0xf0, 0x00, 0x5d, 0x16, 0xef,

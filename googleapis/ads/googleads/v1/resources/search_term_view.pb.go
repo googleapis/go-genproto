@@ -27,7 +27,7 @@ type SearchTermView struct {
 	// The resource name of the search term view.
 	// Search term view resource names have the form:
 	//
-	// `customers/{customer_id}/searchTermViews/{campaign_id}~{ad_group_id}_
+	// `customers/{customer_id}/searchTermViews/{campaign_id}~{ad_group_id}~
 	// {URL-base64 search term}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// The search term.
@@ -46,7 +46,7 @@ func (m *SearchTermView) Reset()         { *m = SearchTermView{} }
 func (m *SearchTermView) String() string { return proto.CompactTextString(m) }
 func (*SearchTermView) ProtoMessage()    {}
 func (*SearchTermView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_term_view_b320e72917d3ded0, []int{0}
+	return fileDescriptor_search_term_view_733d815a42669c80, []int{0}
 }
 func (m *SearchTermView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchTermView.Unmarshal(m, b)
@@ -99,10 +99,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/search_term_view.proto", fileDescriptor_search_term_view_b320e72917d3ded0)
+	proto.RegisterFile("google/ads/googleads/v1/resources/search_term_view.proto", fileDescriptor_search_term_view_733d815a42669c80)
 }
 
-var fileDescriptor_search_term_view_b320e72917d3ded0 = []byte{
+var fileDescriptor_search_term_view_733d815a42669c80 = []byte{
 	// 404 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0x4d, 0x6b, 0xdb, 0x40,
 	0x10, 0x45, 0x72, 0x71, 0xdb, 0x75, 0xeb, 0x83, 0x7a, 0x11, 0xc6, 0x14, 0xbb, 0xc5, 0xe0, 0xd3,

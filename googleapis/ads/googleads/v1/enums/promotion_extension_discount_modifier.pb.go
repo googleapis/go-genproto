@@ -46,7 +46,7 @@ func (x PromotionExtensionDiscountModifierEnum_PromotionExtensionDiscountModifie
 	return proto.EnumName(PromotionExtensionDiscountModifierEnum_PromotionExtensionDiscountModifier_name, int32(x))
 }
 func (PromotionExtensionDiscountModifierEnum_PromotionExtensionDiscountModifier) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_promotion_extension_discount_modifier_52d8e03e6e6bbe44, []int{0, 0}
+	return fileDescriptor_promotion_extension_discount_modifier_ea0205ff2ff47a07, []int{0, 0}
 }
 
 // Container for enum describing possible a promotion extension
@@ -63,7 +63,7 @@ func (m *PromotionExtensionDiscountModifierEnum) Reset() {
 func (m *PromotionExtensionDiscountModifierEnum) String() string { return proto.CompactTextString(m) }
 func (*PromotionExtensionDiscountModifierEnum) ProtoMessage()    {}
 func (*PromotionExtensionDiscountModifierEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_promotion_extension_discount_modifier_52d8e03e6e6bbe44, []int{0}
+	return fileDescriptor_promotion_extension_discount_modifier_ea0205ff2ff47a07, []int{0}
 }
 func (m *PromotionExtensionDiscountModifierEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PromotionExtensionDiscountModifierEnum.Unmarshal(m, b)
@@ -89,10 +89,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/promotion_extension_discount_modifier.proto", fileDescriptor_promotion_extension_discount_modifier_52d8e03e6e6bbe44)
+	proto.RegisterFile("google/ads/googleads/v1/enums/promotion_extension_discount_modifier.proto", fileDescriptor_promotion_extension_discount_modifier_ea0205ff2ff47a07)
 }
 
-var fileDescriptor_promotion_extension_discount_modifier_52d8e03e6e6bbe44 = []byte{
+var fileDescriptor_promotion_extension_discount_modifier_ea0205ff2ff47a07 = []byte{
 	// 311 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0xb1, 0x4e, 0xc3, 0x30,
 	0x10, 0x86, 0x69, 0x10, 0x20, 0xdc, 0x81, 0x2a, 0x23, 0xa2, 0x43, 0x3b, 0xc0, 0x66, 0x2b, 0x62,

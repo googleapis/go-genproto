@@ -81,7 +81,7 @@ func (x AppPlaceholderFieldEnum_AppPlaceholderField) String() string {
 	return proto.EnumName(AppPlaceholderFieldEnum_AppPlaceholderField_name, int32(x))
 }
 func (AppPlaceholderFieldEnum_AppPlaceholderField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_app_placeholder_field_a9580e13ffb1b3ff, []int{0, 0}
+	return fileDescriptor_app_placeholder_field_e9b299fca4b7b6bb, []int{0, 0}
 }
 
 // Values for App placeholder fields.
@@ -95,7 +95,7 @@ func (m *AppPlaceholderFieldEnum) Reset()         { *m = AppPlaceholderFieldEnum
 func (m *AppPlaceholderFieldEnum) String() string { return proto.CompactTextString(m) }
 func (*AppPlaceholderFieldEnum) ProtoMessage()    {}
 func (*AppPlaceholderFieldEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_app_placeholder_field_a9580e13ffb1b3ff, []int{0}
+	return fileDescriptor_app_placeholder_field_e9b299fca4b7b6bb, []int{0}
 }
 func (m *AppPlaceholderFieldEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppPlaceholderFieldEnum.Unmarshal(m, b)
@@ -121,10 +121,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/app_placeholder_field.proto", fileDescriptor_app_placeholder_field_a9580e13ffb1b3ff)
+	proto.RegisterFile("google/ads/googleads/v1/enums/app_placeholder_field.proto", fileDescriptor_app_placeholder_field_e9b299fca4b7b6bb)
 }
 
-var fileDescriptor_app_placeholder_field_a9580e13ffb1b3ff = []byte{
+var fileDescriptor_app_placeholder_field_e9b299fca4b7b6bb = []byte{
 	// 382 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xdd, 0xce, 0x93, 0x30,
 	0x18, 0x16, 0xe6, 0xb7, 0xb9, 0x7e, 0xfe, 0xd4, 0xaa, 0xd1, 0x18, 0x77, 0xb0, 0x5d, 0x40, 0x09,

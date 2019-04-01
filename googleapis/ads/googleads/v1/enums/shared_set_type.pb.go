@@ -50,7 +50,7 @@ func (x SharedSetTypeEnum_SharedSetType) String() string {
 	return proto.EnumName(SharedSetTypeEnum_SharedSetType_name, int32(x))
 }
 func (SharedSetTypeEnum_SharedSetType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_shared_set_type_74883a5d48078fb9, []int{0, 0}
+	return fileDescriptor_shared_set_type_6bb2efaed389b7a6, []int{0, 0}
 }
 
 // Container for enum describing types of shared sets.
@@ -64,7 +64,7 @@ func (m *SharedSetTypeEnum) Reset()         { *m = SharedSetTypeEnum{} }
 func (m *SharedSetTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*SharedSetTypeEnum) ProtoMessage()    {}
 func (*SharedSetTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_shared_set_type_74883a5d48078fb9, []int{0}
+	return fileDescriptor_shared_set_type_6bb2efaed389b7a6, []int{0}
 }
 func (m *SharedSetTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SharedSetTypeEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/shared_set_type.proto", fileDescriptor_shared_set_type_74883a5d48078fb9)
+	proto.RegisterFile("google/ads/googleads/v1/enums/shared_set_type.proto", fileDescriptor_shared_set_type_6bb2efaed389b7a6)
 }
 
-var fileDescriptor_shared_set_type_74883a5d48078fb9 = []byte{
+var fileDescriptor_shared_set_type_6bb2efaed389b7a6 = []byte{
 	// 318 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcf, 0x4a, 0xc3, 0x30,
 	0x1c, 0x76, 0x1d, 0x28, 0x64, 0x88, 0x5d, 0x45, 0x04, 0x71, 0x87, 0xed, 0x01, 0x52, 0xca, 0x6e,

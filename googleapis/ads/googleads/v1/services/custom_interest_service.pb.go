@@ -40,7 +40,7 @@ func (m *GetCustomInterestRequest) Reset()         { *m = GetCustomInterestReque
 func (m *GetCustomInterestRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCustomInterestRequest) ProtoMessage()    {}
 func (*GetCustomInterestRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_service_ed5fb704702278c6, []int{0}
+	return fileDescriptor_custom_interest_service_58ef1f41776944d6, []int{0}
 }
 func (m *GetCustomInterestRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCustomInterestRequest.Unmarshal(m, b)
@@ -85,7 +85,7 @@ func (m *MutateCustomInterestsRequest) Reset()         { *m = MutateCustomIntere
 func (m *MutateCustomInterestsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateCustomInterestsRequest) ProtoMessage()    {}
 func (*MutateCustomInterestsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_service_ed5fb704702278c6, []int{1}
+	return fileDescriptor_custom_interest_service_58ef1f41776944d6, []int{1}
 }
 func (m *MutateCustomInterestsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCustomInterestsRequest.Unmarshal(m, b)
@@ -145,7 +145,7 @@ func (m *CustomInterestOperation) Reset()         { *m = CustomInterestOperation
 func (m *CustomInterestOperation) String() string { return proto.CompactTextString(m) }
 func (*CustomInterestOperation) ProtoMessage()    {}
 func (*CustomInterestOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_service_ed5fb704702278c6, []int{2}
+	return fileDescriptor_custom_interest_service_58ef1f41776944d6, []int{2}
 }
 func (m *CustomInterestOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInterestOperation.Unmarshal(m, b)
@@ -296,7 +296,7 @@ func (m *MutateCustomInterestsResponse) Reset()         { *m = MutateCustomInter
 func (m *MutateCustomInterestsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateCustomInterestsResponse) ProtoMessage()    {}
 func (*MutateCustomInterestsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_service_ed5fb704702278c6, []int{3}
+	return fileDescriptor_custom_interest_service_58ef1f41776944d6, []int{3}
 }
 func (m *MutateCustomInterestsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCustomInterestsResponse.Unmarshal(m, b)
@@ -336,7 +336,7 @@ func (m *MutateCustomInterestResult) Reset()         { *m = MutateCustomInterest
 func (m *MutateCustomInterestResult) String() string { return proto.CompactTextString(m) }
 func (*MutateCustomInterestResult) ProtoMessage()    {}
 func (*MutateCustomInterestResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_service_ed5fb704702278c6, []int{4}
+	return fileDescriptor_custom_interest_service_58ef1f41776944d6, []int{4}
 }
 func (m *MutateCustomInterestResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateCustomInterestResult.Unmarshal(m, b)
@@ -481,10 +481,10 @@ var _CustomInterestService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/custom_interest_service.proto", fileDescriptor_custom_interest_service_ed5fb704702278c6)
+	proto.RegisterFile("google/ads/googleads/v1/services/custom_interest_service.proto", fileDescriptor_custom_interest_service_58ef1f41776944d6)
 }
 
-var fileDescriptor_custom_interest_service_ed5fb704702278c6 = []byte{
+var fileDescriptor_custom_interest_service_58ef1f41776944d6 = []byte{
 	// 633 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x94, 0x41, 0x6b, 0xd4, 0x40,
 	0x14, 0xc7, 0x4d, 0x2a, 0xd5, 0x4e, 0xea, 0xc1, 0x40, 0x71, 0x09, 0x55, 0x97, 0xd8, 0xc3, 0xb2,

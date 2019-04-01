@@ -50,7 +50,7 @@ func (x OperatingSystemVersionOperatorTypeEnum_OperatingSystemVersionOperatorTyp
 	return proto.EnumName(OperatingSystemVersionOperatorTypeEnum_OperatingSystemVersionOperatorType_name, int32(x))
 }
 func (OperatingSystemVersionOperatorTypeEnum_OperatingSystemVersionOperatorType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_operating_system_version_operator_type_17e9526c5ebfbefe, []int{0, 0}
+	return fileDescriptor_operating_system_version_operator_type_12b6da57356e1db5, []int{0, 0}
 }
 
 // Container for enum describing the type of OS operators.
@@ -66,7 +66,7 @@ func (m *OperatingSystemVersionOperatorTypeEnum) Reset() {
 func (m *OperatingSystemVersionOperatorTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*OperatingSystemVersionOperatorTypeEnum) ProtoMessage()    {}
 func (*OperatingSystemVersionOperatorTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operating_system_version_operator_type_17e9526c5ebfbefe, []int{0}
+	return fileDescriptor_operating_system_version_operator_type_12b6da57356e1db5, []int{0}
 }
 func (m *OperatingSystemVersionOperatorTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperatingSystemVersionOperatorTypeEnum.Unmarshal(m, b)
@@ -92,10 +92,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/operating_system_version_operator_type.proto", fileDescriptor_operating_system_version_operator_type_17e9526c5ebfbefe)
+	proto.RegisterFile("google/ads/googleads/v1/enums/operating_system_version_operator_type.proto", fileDescriptor_operating_system_version_operator_type_12b6da57356e1db5)
 }
 
-var fileDescriptor_operating_system_version_operator_type_17e9526c5ebfbefe = []byte{
+var fileDescriptor_operating_system_version_operator_type_12b6da57356e1db5 = []byte{
 	// 338 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x51, 0x4f, 0x4b, 0xc3, 0x30,
 	0x1c, 0xb5, 0x55, 0x14, 0x33, 0xc4, 0xd1, 0x83, 0x87, 0xe1, 0x0e, 0xdb, 0x41, 0x6f, 0x29, 0xc5,

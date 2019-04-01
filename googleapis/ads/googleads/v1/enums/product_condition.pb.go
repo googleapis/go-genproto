@@ -54,7 +54,7 @@ func (x ProductConditionEnum_ProductCondition) String() string {
 	return proto.EnumName(ProductConditionEnum_ProductCondition_name, int32(x))
 }
 func (ProductConditionEnum_ProductCondition) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_product_condition_def7c96e18fa1df6, []int{0, 0}
+	return fileDescriptor_product_condition_ba0ecb6001df35ca, []int{0, 0}
 }
 
 // Condition of a product offer.
@@ -68,7 +68,7 @@ func (m *ProductConditionEnum) Reset()         { *m = ProductConditionEnum{} }
 func (m *ProductConditionEnum) String() string { return proto.CompactTextString(m) }
 func (*ProductConditionEnum) ProtoMessage()    {}
 func (*ProductConditionEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_condition_def7c96e18fa1df6, []int{0}
+	return fileDescriptor_product_condition_ba0ecb6001df35ca, []int{0}
 }
 func (m *ProductConditionEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductConditionEnum.Unmarshal(m, b)
@@ -94,10 +94,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/product_condition.proto", fileDescriptor_product_condition_def7c96e18fa1df6)
+	proto.RegisterFile("google/ads/googleads/v1/enums/product_condition.proto", fileDescriptor_product_condition_ba0ecb6001df35ca)
 }
 
-var fileDescriptor_product_condition_def7c96e18fa1df6 = []byte{
+var fileDescriptor_product_condition_ba0ecb6001df35ca = []byte{
 	// 308 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcf, 0x4a, 0xc3, 0x30,
 	0x18, 0x77, 0x7f, 0x74, 0x92, 0x1d, 0x0c, 0x45, 0x2f, 0xe2, 0x0e, 0xdb, 0x03, 0x24, 0x14, 0xf1,

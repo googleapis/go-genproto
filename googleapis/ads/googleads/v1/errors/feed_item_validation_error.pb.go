@@ -415,7 +415,7 @@ func (x FeedItemValidationErrorEnum_FeedItemValidationError) String() string {
 	return proto.EnumName(FeedItemValidationErrorEnum_FeedItemValidationError_name, int32(x))
 }
 func (FeedItemValidationErrorEnum_FeedItemValidationError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_validation_error_20f50ad333872bd6, []int{0, 0}
+	return fileDescriptor_feed_item_validation_error_de5c2a0f47868d21, []int{0, 0}
 }
 
 // Container for enum describing possible validation errors of a feed item.
@@ -429,7 +429,7 @@ func (m *FeedItemValidationErrorEnum) Reset()         { *m = FeedItemValidationE
 func (m *FeedItemValidationErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*FeedItemValidationErrorEnum) ProtoMessage()    {}
 func (*FeedItemValidationErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_item_validation_error_20f50ad333872bd6, []int{0}
+	return fileDescriptor_feed_item_validation_error_de5c2a0f47868d21, []int{0}
 }
 func (m *FeedItemValidationErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedItemValidationErrorEnum.Unmarshal(m, b)
@@ -455,10 +455,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/feed_item_validation_error.proto", fileDescriptor_feed_item_validation_error_20f50ad333872bd6)
+	proto.RegisterFile("google/ads/googleads/v1/errors/feed_item_validation_error.proto", fileDescriptor_feed_item_validation_error_de5c2a0f47868d21)
 }
 
-var fileDescriptor_feed_item_validation_error_20f50ad333872bd6 = []byte{
+var fileDescriptor_feed_item_validation_error_de5c2a0f47868d21 = []byte{
 	// 1594 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x57, 0xef, 0x72, 0x1b, 0xb7,
 	0x11, 0xaf, 0x9d, 0x36, 0x69, 0xe1, 0x26, 0x86, 0xe1, 0x3f, 0xb2, 0x2d, 0x59, 0xb6, 0x65, 0xc7,

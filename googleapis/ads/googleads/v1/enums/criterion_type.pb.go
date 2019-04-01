@@ -158,7 +158,7 @@ func (x CriterionTypeEnum_CriterionType) String() string {
 	return proto.EnumName(CriterionTypeEnum_CriterionType_name, int32(x))
 }
 func (CriterionTypeEnum_CriterionType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_type_70e52fe08b7ff31c, []int{0, 0}
+	return fileDescriptor_criterion_type_a233df97709754bd, []int{0, 0}
 }
 
 // The possible types of a criterion.
@@ -172,7 +172,7 @@ func (m *CriterionTypeEnum) Reset()         { *m = CriterionTypeEnum{} }
 func (m *CriterionTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*CriterionTypeEnum) ProtoMessage()    {}
 func (*CriterionTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criterion_type_70e52fe08b7ff31c, []int{0}
+	return fileDescriptor_criterion_type_a233df97709754bd, []int{0}
 }
 func (m *CriterionTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CriterionTypeEnum.Unmarshal(m, b)
@@ -198,10 +198,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/criterion_type.proto", fileDescriptor_criterion_type_70e52fe08b7ff31c)
+	proto.RegisterFile("google/ads/googleads/v1/enums/criterion_type.proto", fileDescriptor_criterion_type_a233df97709754bd)
 }
 
-var fileDescriptor_criterion_type_70e52fe08b7ff31c = []byte{
+var fileDescriptor_criterion_type_a233df97709754bd = []byte{
 	// 612 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x53, 0xcb, 0x6e, 0xdb, 0x3a,
 	0x10, 0xbd, 0x71, 0xde, 0x4c, 0x7c, 0x43, 0x33, 0x37, 0x8f, 0x9b, 0x26, 0x05, 0x92, 0x0f, 0x90,

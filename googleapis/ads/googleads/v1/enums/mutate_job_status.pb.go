@@ -54,7 +54,7 @@ func (x MutateJobStatusEnum_MutateJobStatus) String() string {
 	return proto.EnumName(MutateJobStatusEnum_MutateJobStatus_name, int32(x))
 }
 func (MutateJobStatusEnum_MutateJobStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_status_42e97e4a75fb00f8, []int{0, 0}
+	return fileDescriptor_mutate_job_status_cafe1f0b0e70c359, []int{0, 0}
 }
 
 // Container for enum describing possible mutate job statuses.
@@ -68,7 +68,7 @@ func (m *MutateJobStatusEnum) Reset()         { *m = MutateJobStatusEnum{} }
 func (m *MutateJobStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*MutateJobStatusEnum) ProtoMessage()    {}
 func (*MutateJobStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_status_42e97e4a75fb00f8, []int{0}
+	return fileDescriptor_mutate_job_status_cafe1f0b0e70c359, []int{0}
 }
 func (m *MutateJobStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateJobStatusEnum.Unmarshal(m, b)
@@ -94,10 +94,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/mutate_job_status.proto", fileDescriptor_mutate_job_status_42e97e4a75fb00f8)
+	proto.RegisterFile("google/ads/googleads/v1/enums/mutate_job_status.proto", fileDescriptor_mutate_job_status_cafe1f0b0e70c359)
 }
 
-var fileDescriptor_mutate_job_status_42e97e4a75fb00f8 = []byte{
+var fileDescriptor_mutate_job_status_cafe1f0b0e70c359 = []byte{
 	// 309 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xd1, 0x4a, 0xc3, 0x30,
 	0x14, 0x75, 0xdd, 0x50, 0xc9, 0x1e, 0x56, 0xaa, 0x4f, 0xe2, 0x1e, 0xb6, 0x0f, 0x48, 0x28, 0xe2,

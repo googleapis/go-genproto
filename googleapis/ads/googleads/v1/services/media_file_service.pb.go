@@ -40,7 +40,7 @@ func (m *GetMediaFileRequest) Reset()         { *m = GetMediaFileRequest{} }
 func (m *GetMediaFileRequest) String() string { return proto.CompactTextString(m) }
 func (*GetMediaFileRequest) ProtoMessage()    {}
 func (*GetMediaFileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_service_b37208566b14a50c, []int{0}
+	return fileDescriptor_media_file_service_52854e541380429c, []int{0}
 }
 func (m *GetMediaFileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetMediaFileRequest.Unmarshal(m, b)
@@ -90,7 +90,7 @@ func (m *MutateMediaFilesRequest) Reset()         { *m = MutateMediaFilesRequest
 func (m *MutateMediaFilesRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateMediaFilesRequest) ProtoMessage()    {}
 func (*MutateMediaFilesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_service_b37208566b14a50c, []int{1}
+	return fileDescriptor_media_file_service_52854e541380429c, []int{1}
 }
 func (m *MutateMediaFilesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateMediaFilesRequest.Unmarshal(m, b)
@@ -154,7 +154,7 @@ func (m *MediaFileOperation) Reset()         { *m = MediaFileOperation{} }
 func (m *MediaFileOperation) String() string { return proto.CompactTextString(m) }
 func (*MediaFileOperation) ProtoMessage()    {}
 func (*MediaFileOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_service_b37208566b14a50c, []int{2}
+	return fileDescriptor_media_file_service_52854e541380429c, []int{2}
 }
 func (m *MediaFileOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaFileOperation.Unmarshal(m, b)
@@ -271,7 +271,7 @@ func (m *MutateMediaFilesResponse) Reset()         { *m = MutateMediaFilesRespon
 func (m *MutateMediaFilesResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateMediaFilesResponse) ProtoMessage()    {}
 func (*MutateMediaFilesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_service_b37208566b14a50c, []int{3}
+	return fileDescriptor_media_file_service_52854e541380429c, []int{3}
 }
 func (m *MutateMediaFilesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateMediaFilesResponse.Unmarshal(m, b)
@@ -318,7 +318,7 @@ func (m *MutateMediaFileResult) Reset()         { *m = MutateMediaFileResult{} }
 func (m *MutateMediaFileResult) String() string { return proto.CompactTextString(m) }
 func (*MutateMediaFileResult) ProtoMessage()    {}
 func (*MutateMediaFileResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_service_b37208566b14a50c, []int{4}
+	return fileDescriptor_media_file_service_52854e541380429c, []int{4}
 }
 func (m *MutateMediaFileResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateMediaFileResult.Unmarshal(m, b)
@@ -463,10 +463,10 @@ var _MediaFileService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/media_file_service.proto", fileDescriptor_media_file_service_b37208566b14a50c)
+	proto.RegisterFile("google/ads/googleads/v1/services/media_file_service.proto", fileDescriptor_media_file_service_52854e541380429c)
 }
 
-var fileDescriptor_media_file_service_b37208566b14a50c = []byte{
+var fileDescriptor_media_file_service_52854e541380429c = []byte{
 	// 646 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0xcd, 0x6e, 0xd3, 0x4c,
 	0x14, 0xfd, 0x9c, 0x7c, 0x2a, 0x74, 0x52, 0xa0, 0x9a, 0xaa, 0x6a, 0x14, 0x21, 0x88, 0x4c, 0x25,

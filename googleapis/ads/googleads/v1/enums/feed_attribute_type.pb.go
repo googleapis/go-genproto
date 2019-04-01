@@ -94,7 +94,7 @@ func (x FeedAttributeTypeEnum_FeedAttributeType) String() string {
 	return proto.EnumName(FeedAttributeTypeEnum_FeedAttributeType_name, int32(x))
 }
 func (FeedAttributeTypeEnum_FeedAttributeType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_feed_attribute_type_bf060fcf8dd49325, []int{0, 0}
+	return fileDescriptor_feed_attribute_type_8f52ef3e8b3a5d7e, []int{0, 0}
 }
 
 // Container for enum describing possible data types for a feed attribute.
@@ -108,7 +108,7 @@ func (m *FeedAttributeTypeEnum) Reset()         { *m = FeedAttributeTypeEnum{} }
 func (m *FeedAttributeTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*FeedAttributeTypeEnum) ProtoMessage()    {}
 func (*FeedAttributeTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_feed_attribute_type_bf060fcf8dd49325, []int{0}
+	return fileDescriptor_feed_attribute_type_8f52ef3e8b3a5d7e, []int{0}
 }
 func (m *FeedAttributeTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FeedAttributeTypeEnum.Unmarshal(m, b)
@@ -134,10 +134,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/feed_attribute_type.proto", fileDescriptor_feed_attribute_type_bf060fcf8dd49325)
+	proto.RegisterFile("google/ads/googleads/v1/enums/feed_attribute_type.proto", fileDescriptor_feed_attribute_type_8f52ef3e8b3a5d7e)
 }
 
-var fileDescriptor_feed_attribute_type_bf060fcf8dd49325 = []byte{
+var fileDescriptor_feed_attribute_type_8f52ef3e8b3a5d7e = []byte{
 	// 407 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xc1, 0x6a, 0xdb, 0x40,
 	0x14, 0xac, 0xe5, 0xc6, 0x8e, 0x9f, 0x1d, 0x77, 0xbb, 0xd0, 0x1e, 0x4a, 0x73, 0x48, 0x3e, 0x60,

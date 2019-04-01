@@ -62,7 +62,7 @@ func (x GoogleAdsFieldCategoryEnum_GoogleAdsFieldCategory) String() string {
 	return proto.EnumName(GoogleAdsFieldCategoryEnum_GoogleAdsFieldCategory_name, int32(x))
 }
 func (GoogleAdsFieldCategoryEnum_GoogleAdsFieldCategory) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_field_category_964e3bf29a6fd9b8, []int{0, 0}
+	return fileDescriptor_google_ads_field_category_fb9b5f5841065e71, []int{0, 0}
 }
 
 // Container for enum that determines if the described artifact is a resource
@@ -77,7 +77,7 @@ func (m *GoogleAdsFieldCategoryEnum) Reset()         { *m = GoogleAdsFieldCatego
 func (m *GoogleAdsFieldCategoryEnum) String() string { return proto.CompactTextString(m) }
 func (*GoogleAdsFieldCategoryEnum) ProtoMessage()    {}
 func (*GoogleAdsFieldCategoryEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_field_category_964e3bf29a6fd9b8, []int{0}
+	return fileDescriptor_google_ads_field_category_fb9b5f5841065e71, []int{0}
 }
 func (m *GoogleAdsFieldCategoryEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GoogleAdsFieldCategoryEnum.Unmarshal(m, b)
@@ -103,10 +103,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/google_ads_field_category.proto", fileDescriptor_google_ads_field_category_964e3bf29a6fd9b8)
+	proto.RegisterFile("google/ads/googleads/v1/enums/google_ads_field_category.proto", fileDescriptor_google_ads_field_category_fb9b5f5841065e71)
 }
 
-var fileDescriptor_google_ads_field_category_964e3bf29a6fd9b8 = []byte{
+var fileDescriptor_google_ads_field_category_fb9b5f5841065e71 = []byte{
 	// 336 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcf, 0x4a, 0xc3, 0x30,
 	0x18, 0xb7, 0x1d, 0x4e, 0xcd, 0x14, 0x4b, 0x0f, 0x1e, 0xa6, 0x3b, 0x6c, 0x0f, 0x90, 0x52, 0xbc,

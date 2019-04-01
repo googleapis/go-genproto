@@ -59,7 +59,7 @@ func (m *MediaFile) Reset()         { *m = MediaFile{} }
 func (m *MediaFile) String() string { return proto.CompactTextString(m) }
 func (*MediaFile) ProtoMessage()    {}
 func (*MediaFile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_23f23555173acd30, []int{0}
+	return fileDescriptor_media_file_d0b2dbd6c8251818, []int{0}
 }
 func (m *MediaFile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaFile.Unmarshal(m, b)
@@ -316,7 +316,7 @@ func (m *MediaImage) Reset()         { *m = MediaImage{} }
 func (m *MediaImage) String() string { return proto.CompactTextString(m) }
 func (*MediaImage) ProtoMessage()    {}
 func (*MediaImage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_23f23555173acd30, []int{1}
+	return fileDescriptor_media_file_d0b2dbd6c8251818, []int{1}
 }
 func (m *MediaImage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaImage.Unmarshal(m, b)
@@ -356,7 +356,7 @@ func (m *MediaBundle) Reset()         { *m = MediaBundle{} }
 func (m *MediaBundle) String() string { return proto.CompactTextString(m) }
 func (*MediaBundle) ProtoMessage()    {}
 func (*MediaBundle) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_23f23555173acd30, []int{2}
+	return fileDescriptor_media_file_d0b2dbd6c8251818, []int{2}
 }
 func (m *MediaBundle) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaBundle.Unmarshal(m, b)
@@ -396,7 +396,7 @@ func (m *MediaAudio) Reset()         { *m = MediaAudio{} }
 func (m *MediaAudio) String() string { return proto.CompactTextString(m) }
 func (*MediaAudio) ProtoMessage()    {}
 func (*MediaAudio) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_23f23555173acd30, []int{3}
+	return fileDescriptor_media_file_d0b2dbd6c8251818, []int{3}
 }
 func (m *MediaAudio) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaAudio.Unmarshal(m, b)
@@ -445,7 +445,7 @@ func (m *MediaVideo) Reset()         { *m = MediaVideo{} }
 func (m *MediaVideo) String() string { return proto.CompactTextString(m) }
 func (*MediaVideo) ProtoMessage()    {}
 func (*MediaVideo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_media_file_23f23555173acd30, []int{4}
+	return fileDescriptor_media_file_d0b2dbd6c8251818, []int{4}
 }
 func (m *MediaVideo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaVideo.Unmarshal(m, b)
@@ -502,10 +502,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/media_file.proto", fileDescriptor_media_file_23f23555173acd30)
+	proto.RegisterFile("google/ads/googleads/v1/resources/media_file.proto", fileDescriptor_media_file_d0b2dbd6c8251818)
 }
 
-var fileDescriptor_media_file_23f23555173acd30 = []byte{
+var fileDescriptor_media_file_d0b2dbd6c8251818 = []byte{
 	// 683 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x95, 0xdf, 0x6a, 0xd4, 0x4c,
 	0x18, 0xc6, 0xbb, 0xe9, 0xb6, 0xdf, 0x66, 0xb6, 0x5f, 0xa9, 0xe3, 0x49, 0xa8, 0x45, 0xda, 0x95,

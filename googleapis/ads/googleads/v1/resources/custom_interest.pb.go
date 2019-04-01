@@ -55,7 +55,7 @@ func (m *CustomInterest) Reset()         { *m = CustomInterest{} }
 func (m *CustomInterest) String() string { return proto.CompactTextString(m) }
 func (*CustomInterest) ProtoMessage()    {}
 func (*CustomInterest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_6ad6f34cbe12a64b, []int{0}
+	return fileDescriptor_custom_interest_92f43b64239155ee, []int{0}
 }
 func (m *CustomInterest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInterest.Unmarshal(m, b)
@@ -141,7 +141,7 @@ func (m *CustomInterestMember) Reset()         { *m = CustomInterestMember{} }
 func (m *CustomInterestMember) String() string { return proto.CompactTextString(m) }
 func (*CustomInterestMember) ProtoMessage()    {}
 func (*CustomInterestMember) Descriptor() ([]byte, []int) {
-	return fileDescriptor_custom_interest_6ad6f34cbe12a64b, []int{1}
+	return fileDescriptor_custom_interest_92f43b64239155ee, []int{1}
 }
 func (m *CustomInterestMember) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomInterestMember.Unmarshal(m, b)
@@ -181,10 +181,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/custom_interest.proto", fileDescriptor_custom_interest_6ad6f34cbe12a64b)
+	proto.RegisterFile("google/ads/googleads/v1/resources/custom_interest.proto", fileDescriptor_custom_interest_92f43b64239155ee)
 }
 
-var fileDescriptor_custom_interest_6ad6f34cbe12a64b = []byte{
+var fileDescriptor_custom_interest_92f43b64239155ee = []byte{
 	// 520 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xd1, 0x6e, 0xd3, 0x30,
 	0x14, 0x55, 0xd2, 0xd2, 0x69, 0x2e, 0xf4, 0xc1, 0xf0, 0x10, 0x8d, 0x09, 0x75, 0x43, 0x93, 0x2a,

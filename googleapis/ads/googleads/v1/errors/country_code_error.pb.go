@@ -46,7 +46,7 @@ func (x CountryCodeErrorEnum_CountryCodeError) String() string {
 	return proto.EnumName(CountryCodeErrorEnum_CountryCodeError_name, int32(x))
 }
 func (CountryCodeErrorEnum_CountryCodeError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_country_code_error_52c3b0feba4090ae, []int{0, 0}
+	return fileDescriptor_country_code_error_9241f9fbdf752c5c, []int{0, 0}
 }
 
 // Container for enum describing country code errors.
@@ -60,7 +60,7 @@ func (m *CountryCodeErrorEnum) Reset()         { *m = CountryCodeErrorEnum{} }
 func (m *CountryCodeErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*CountryCodeErrorEnum) ProtoMessage()    {}
 func (*CountryCodeErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_country_code_error_52c3b0feba4090ae, []int{0}
+	return fileDescriptor_country_code_error_9241f9fbdf752c5c, []int{0}
 }
 func (m *CountryCodeErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CountryCodeErrorEnum.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/country_code_error.proto", fileDescriptor_country_code_error_52c3b0feba4090ae)
+	proto.RegisterFile("google/ads/googleads/v1/errors/country_code_error.proto", fileDescriptor_country_code_error_9241f9fbdf752c5c)
 }
 
-var fileDescriptor_country_code_error_52c3b0feba4090ae = []byte{
+var fileDescriptor_country_code_error_9241f9fbdf752c5c = []byte{
 	// 306 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0xc3, 0x30,
 	0x1c, 0xc6, 0x5d, 0x05, 0x85, 0xec, 0x60, 0x29, 0x13, 0x44, 0x64, 0x87, 0x3e, 0x40, 0x42, 0xf1,

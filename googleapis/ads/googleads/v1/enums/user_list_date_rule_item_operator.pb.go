@@ -58,7 +58,7 @@ func (x UserListDateRuleItemOperatorEnum_UserListDateRuleItemOperator) String() 
 	return proto.EnumName(UserListDateRuleItemOperatorEnum_UserListDateRuleItemOperator_name, int32(x))
 }
 func (UserListDateRuleItemOperatorEnum_UserListDateRuleItemOperator) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_user_list_date_rule_item_operator_52b1325a9c30daf5, []int{0, 0}
+	return fileDescriptor_user_list_date_rule_item_operator_4c5a62a3adeb1fd9, []int{0, 0}
 }
 
 // Supported rule operator for date type.
@@ -72,7 +72,7 @@ func (m *UserListDateRuleItemOperatorEnum) Reset()         { *m = UserListDateRu
 func (m *UserListDateRuleItemOperatorEnum) String() string { return proto.CompactTextString(m) }
 func (*UserListDateRuleItemOperatorEnum) ProtoMessage()    {}
 func (*UserListDateRuleItemOperatorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_user_list_date_rule_item_operator_52b1325a9c30daf5, []int{0}
+	return fileDescriptor_user_list_date_rule_item_operator_4c5a62a3adeb1fd9, []int{0}
 }
 func (m *UserListDateRuleItemOperatorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserListDateRuleItemOperatorEnum.Unmarshal(m, b)
@@ -98,10 +98,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/user_list_date_rule_item_operator.proto", fileDescriptor_user_list_date_rule_item_operator_52b1325a9c30daf5)
+	proto.RegisterFile("google/ads/googleads/v1/enums/user_list_date_rule_item_operator.proto", fileDescriptor_user_list_date_rule_item_operator_4c5a62a3adeb1fd9)
 }
 
-var fileDescriptor_user_list_date_rule_item_operator_52b1325a9c30daf5 = []byte{
+var fileDescriptor_user_list_date_rule_item_operator_4c5a62a3adeb1fd9 = []byte{
 	// 346 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0x41, 0x6a, 0xeb, 0x30,
 	0x14, 0xfc, 0x76, 0x7e, 0x52, 0xaa, 0x40, 0x6b, 0xbc, 0x2c, 0x09, 0x34, 0x39, 0x80, 0x8c, 0xe9,

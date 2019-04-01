@@ -46,7 +46,7 @@ func (x PreferredContentTypeEnum_PreferredContentType) String() string {
 	return proto.EnumName(PreferredContentTypeEnum_PreferredContentType_name, int32(x))
 }
 func (PreferredContentTypeEnum_PreferredContentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_preferred_content_type_eb8d51c6e5258e7d, []int{0, 0}
+	return fileDescriptor_preferred_content_type_930b3c5e4dc21e65, []int{0, 0}
 }
 
 // Container for enumeration of preferred content criterion type.
@@ -60,7 +60,7 @@ func (m *PreferredContentTypeEnum) Reset()         { *m = PreferredContentTypeEn
 func (m *PreferredContentTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*PreferredContentTypeEnum) ProtoMessage()    {}
 func (*PreferredContentTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_preferred_content_type_eb8d51c6e5258e7d, []int{0}
+	return fileDescriptor_preferred_content_type_930b3c5e4dc21e65, []int{0}
 }
 func (m *PreferredContentTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PreferredContentTypeEnum.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/preferred_content_type.proto", fileDescriptor_preferred_content_type_eb8d51c6e5258e7d)
+	proto.RegisterFile("google/ads/googleads/v1/enums/preferred_content_type.proto", fileDescriptor_preferred_content_type_930b3c5e4dc21e65)
 }
 
-var fileDescriptor_preferred_content_type_eb8d51c6e5258e7d = []byte{
+var fileDescriptor_preferred_content_type_930b3c5e4dc21e65 = []byte{
 	// 316 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xd1, 0x4a, 0xfb, 0x30,
 	0x18, 0xc5, 0xff, 0xdb, 0xe0, 0x2f, 0x64, 0x17, 0x8e, 0xea, 0xc5, 0x14, 0x77, 0xb1, 0x3d, 0x40,

@@ -50,7 +50,7 @@ func (x ProximityRadiusUnitsEnum_ProximityRadiusUnits) String() string {
 	return proto.EnumName(ProximityRadiusUnitsEnum_ProximityRadiusUnits_name, int32(x))
 }
 func (ProximityRadiusUnitsEnum_ProximityRadiusUnits) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_proximity_radius_units_9767cab966548058, []int{0, 0}
+	return fileDescriptor_proximity_radius_units_900b61eff53e17de, []int{0, 0}
 }
 
 // Container for enum describing unit of radius in proximity.
@@ -64,7 +64,7 @@ func (m *ProximityRadiusUnitsEnum) Reset()         { *m = ProximityRadiusUnitsEn
 func (m *ProximityRadiusUnitsEnum) String() string { return proto.CompactTextString(m) }
 func (*ProximityRadiusUnitsEnum) ProtoMessage()    {}
 func (*ProximityRadiusUnitsEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_proximity_radius_units_9767cab966548058, []int{0}
+	return fileDescriptor_proximity_radius_units_900b61eff53e17de, []int{0}
 }
 func (m *ProximityRadiusUnitsEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProximityRadiusUnitsEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/proximity_radius_units.proto", fileDescriptor_proximity_radius_units_9767cab966548058)
+	proto.RegisterFile("google/ads/googleads/v1/enums/proximity_radius_units.proto", fileDescriptor_proximity_radius_units_900b61eff53e17de)
 }
 
-var fileDescriptor_proximity_radius_units_9767cab966548058 = []byte{
+var fileDescriptor_proximity_radius_units_900b61eff53e17de = []byte{
 	// 315 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xd1, 0x4a, 0xfb, 0x30,
 	0x18, 0xc5, 0xff, 0xeb, 0xf8, 0x2b, 0x66, 0xa0, 0xa5, 0x78, 0xa1, 0xe2, 0x2e, 0xb6, 0x07, 0x48,
