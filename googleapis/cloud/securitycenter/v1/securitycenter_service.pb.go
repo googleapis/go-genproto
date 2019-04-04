@@ -67,7 +67,7 @@ func (x ListAssetsResponse_ListAssetsResult_StateChange) String() string {
 	return proto.EnumName(ListAssetsResponse_ListAssetsResult_StateChange_name, int32(x))
 }
 func (ListAssetsResponse_ListAssetsResult_StateChange) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{12, 0, 0}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{12, 0, 0}
 }
 
 // The change in state of the finding.
@@ -115,7 +115,7 @@ func (x ListFindingsResponse_ListFindingsResult_StateChange) String() string {
 	return proto.EnumName(ListFindingsResponse_ListFindingsResult_StateChange_name, int32(x))
 }
 func (ListFindingsResponse_ListFindingsResult_StateChange) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{14, 0, 0}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{14, 0, 0}
 }
 
 // Request message for creating a finding.
@@ -139,7 +139,7 @@ func (m *CreateFindingRequest) Reset()         { *m = CreateFindingRequest{} }
 func (m *CreateFindingRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateFindingRequest) ProtoMessage()    {}
 func (*CreateFindingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{0}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{0}
 }
 func (m *CreateFindingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateFindingRequest.Unmarshal(m, b)
@@ -197,7 +197,7 @@ func (m *CreateSourceRequest) Reset()         { *m = CreateSourceRequest{} }
 func (m *CreateSourceRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateSourceRequest) ProtoMessage()    {}
 func (*CreateSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{1}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{1}
 }
 func (m *CreateSourceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateSourceRequest.Unmarshal(m, b)
@@ -245,7 +245,7 @@ func (m *GetOrganizationSettingsRequest) Reset()         { *m = GetOrganizationS
 func (m *GetOrganizationSettingsRequest) String() string { return proto.CompactTextString(m) }
 func (*GetOrganizationSettingsRequest) ProtoMessage()    {}
 func (*GetOrganizationSettingsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{2}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{2}
 }
 func (m *GetOrganizationSettingsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetOrganizationSettingsRequest.Unmarshal(m, b)
@@ -286,7 +286,7 @@ func (m *GetSourceRequest) Reset()         { *m = GetSourceRequest{} }
 func (m *GetSourceRequest) String() string { return proto.CompactTextString(m) }
 func (*GetSourceRequest) ProtoMessage()    {}
 func (*GetSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{3}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{3}
 }
 func (m *GetSourceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSourceRequest.Unmarshal(m, b)
@@ -343,6 +343,18 @@ type GroupAssetsRequest struct {
 	// * string literals in quotes.
 	// * integer literals without quotes.
 	// * boolean literals `true` and `false` without quotes.
+	//
+	// The following field and operator combinations are supported:
+	// name | `=`
+	// update_time | `>`, `<`, `>=`, `<=`
+	// iam_policy.policy_blob | '=', ':'
+	// resource_properties | '=', ':', `>`, `<`, `>=`, `<=`
+	// security_marks | '=', ':'
+	// security_center_properties.resource_name | '=', ':'
+	// security_center_properties.resource_type | '=', ':'
+	// security_center_properties.resource_parent | '=', ':'
+	// security_center_properties.resource_project | '=', ':'
+	// security_center_properties.resource_owners | '=', ':'
 	//
 	// For example, `resource_properties.size = 100` is a valid filter string.
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -410,7 +422,7 @@ func (m *GroupAssetsRequest) Reset()         { *m = GroupAssetsRequest{} }
 func (m *GroupAssetsRequest) String() string { return proto.CompactTextString(m) }
 func (*GroupAssetsRequest) ProtoMessage()    {}
 func (*GroupAssetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{4}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{4}
 }
 func (m *GroupAssetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GroupAssetsRequest.Unmarshal(m, b)
@@ -501,7 +513,7 @@ func (m *GroupAssetsResponse) Reset()         { *m = GroupAssetsResponse{} }
 func (m *GroupAssetsResponse) String() string { return proto.CompactTextString(m) }
 func (*GroupAssetsResponse) ProtoMessage()    {}
 func (*GroupAssetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{5}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{5}
 }
 func (m *GroupAssetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GroupAssetsResponse.Unmarshal(m, b)
@@ -580,6 +592,17 @@ type GroupFindingsRequest struct {
 	// * integer literals without quotes.
 	// * boolean literals `true` and `false` without quotes.
 	//
+	// The following field and operator combinations are supported:
+	// name | `=`
+	// parent | '=', ':'
+	// resource_name | '=', ':'
+	// state | '=', ':'
+	// category | '=', ':'
+	// external_uri | '=', ':'
+	// event_time | `>`, `<`, `>=`, `<=`
+	// security_marks | '=', ':'
+	// source_properties | '=', ':', `>`, `<`, `>=`, `<=`
+	//
 	// For example, `source_properties.size = 100` is a valid filter string.
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Expression that defines what assets fields to use for grouping (including
@@ -591,8 +614,11 @@ type GroupFindingsRequest struct {
 	// * resource_name
 	// * category
 	// * state
-	// * state_change
 	// * parent
+	//
+	// The following fields are supported when compare_duration is set:
+	//
+	// * state_change
 	GroupBy string `protobuf:"bytes,3,opt,name=group_by,json=groupBy,proto3" json:"group_by,omitempty"`
 	// Time used as a reference point when filtering findings. The filter is
 	// limited to findings existing at the supplied time and their values are
@@ -642,7 +668,7 @@ func (m *GroupFindingsRequest) Reset()         { *m = GroupFindingsRequest{} }
 func (m *GroupFindingsRequest) String() string { return proto.CompactTextString(m) }
 func (*GroupFindingsRequest) ProtoMessage()    {}
 func (*GroupFindingsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{6}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{6}
 }
 func (m *GroupFindingsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GroupFindingsRequest.Unmarshal(m, b)
@@ -733,7 +759,7 @@ func (m *GroupFindingsResponse) Reset()         { *m = GroupFindingsResponse{} }
 func (m *GroupFindingsResponse) String() string { return proto.CompactTextString(m) }
 func (*GroupFindingsResponse) ProtoMessage()    {}
 func (*GroupFindingsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{7}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{7}
 }
 func (m *GroupFindingsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GroupFindingsResponse.Unmarshal(m, b)
@@ -796,7 +822,7 @@ func (m *GroupResult) Reset()         { *m = GroupResult{} }
 func (m *GroupResult) String() string { return proto.CompactTextString(m) }
 func (*GroupResult) ProtoMessage()    {}
 func (*GroupResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{8}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{8}
 }
 func (m *GroupResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GroupResult.Unmarshal(m, b)
@@ -851,7 +877,7 @@ func (m *ListSourcesRequest) Reset()         { *m = ListSourcesRequest{} }
 func (m *ListSourcesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListSourcesRequest) ProtoMessage()    {}
 func (*ListSourcesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{9}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{9}
 }
 func (m *ListSourcesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSourcesRequest.Unmarshal(m, b)
@@ -908,7 +934,7 @@ func (m *ListSourcesResponse) Reset()         { *m = ListSourcesResponse{} }
 func (m *ListSourcesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListSourcesResponse) ProtoMessage()    {}
 func (*ListSourcesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{10}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{10}
 }
 func (m *ListSourcesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSourcesResponse.Unmarshal(m, b)
@@ -973,6 +999,18 @@ type ListAssetsRequest struct {
 	// * integer literals without quotes.
 	// * boolean literals `true` and `false` without quotes.
 	//
+	// The following are the allowed field and operator combinations:
+	// name | `=`
+	// update_time | `>`, `<`, `>=`, `<=`
+	// iam_policy.policy_blob | '=', ':'
+	// resource_properties | '=', ':', `>`, `<`, `>=`, `<=`
+	// security_marks | '=', ':'
+	// security_center_properties.resource_name | '=', ':'
+	// security_center_properties.resource_type | '=', ':'
+	// security_center_properties.resource_parent | '=', ':'
+	// security_center_properties.resource_project | '=', ':'
+	// security_center_properties.resource_owners | '=', ':'
+	//
 	// For example, `resource_properties.size = 100` is a valid filter string.
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Expression that defines what fields and order to use for sorting. The
@@ -983,6 +1021,16 @@ type ListAssetsRequest struct {
 	// desc,resource_properties.a_property". Redundant space characters in the
 	// syntax are insignificant. "name desc,resource_properties.a_property" and "
 	// name     desc  ,   resource_properties.a_property  " are equivalent.
+	//
+	// The following fields are supported:
+	// name
+	// update_time
+	// resource_properties
+	// security_marks
+	// security_center_properties.resource_name
+	// security_center_properties.resource_parent
+	// security_center_properties.resource_project
+	// security_center_properties.resource_type
 	OrderBy string `protobuf:"bytes,3,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	// Time used as a reference point when filtering assets. The filter is limited
 	// to assets existing at the supplied time and their values are those at that
@@ -1036,7 +1084,7 @@ func (m *ListAssetsRequest) Reset()         { *m = ListAssetsRequest{} }
 func (m *ListAssetsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListAssetsRequest) ProtoMessage()    {}
 func (*ListAssetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{11}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{11}
 }
 func (m *ListAssetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAssetsRequest.Unmarshal(m, b)
@@ -1132,7 +1180,7 @@ func (m *ListAssetsResponse) Reset()         { *m = ListAssetsResponse{} }
 func (m *ListAssetsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListAssetsResponse) ProtoMessage()    {}
 func (*ListAssetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{12}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{12}
 }
 func (m *ListAssetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAssetsResponse.Unmarshal(m, b)
@@ -1195,7 +1243,7 @@ func (m *ListAssetsResponse_ListAssetsResult) Reset()         { *m = ListAssetsR
 func (m *ListAssetsResponse_ListAssetsResult) String() string { return proto.CompactTextString(m) }
 func (*ListAssetsResponse_ListAssetsResult) ProtoMessage()    {}
 func (*ListAssetsResponse_ListAssetsResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{12, 0}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{12, 0}
 }
 func (m *ListAssetsResponse_ListAssetsResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAssetsResponse_ListAssetsResult.Unmarshal(m, b)
@@ -1260,6 +1308,17 @@ type ListFindingsRequest struct {
 	// * integer literals without quotes.
 	// * boolean literals `true` and `false` without quotes.
 	//
+	// The following field and operator combinations are supported:
+	// name | `=`
+	// parent | '=', ':'
+	// resource_name | '=', ':'
+	// state | '=', ':'
+	// category | '=', ':'
+	// external_uri | '=', ':'
+	// event_time | `>`, `<`, `>=`, `<=`
+	// security_marks | '=', ':'
+	// source_properties | '=', ':', `>`, `<`, `>=`, `<=`
+	//
 	// For example, `source_properties.size = 100` is a valid filter string.
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Expression that defines what fields and order to use for sorting. The
@@ -1270,6 +1329,16 @@ type ListFindingsRequest struct {
 	// desc,source_properties.a_property". Redundant space characters in the
 	// syntax are insignificant. "name desc,source_properties.a_property" and "
 	// name     desc  ,   source_properties.a_property  " are equivalent.
+	//
+	// The following fields are supported:
+	// name
+	// parent
+	// state
+	// category
+	// resource_name
+	// event_time
+	// source_properties
+	// security_marks
 	OrderBy string `protobuf:"bytes,3,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	// Time used as a reference point when filtering findings. The filter is
 	// limited to findings existing at the supplied time and their values are
@@ -1322,7 +1391,7 @@ func (m *ListFindingsRequest) Reset()         { *m = ListFindingsRequest{} }
 func (m *ListFindingsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListFindingsRequest) ProtoMessage()    {}
 func (*ListFindingsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{13}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{13}
 }
 func (m *ListFindingsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFindingsRequest.Unmarshal(m, b)
@@ -1418,7 +1487,7 @@ func (m *ListFindingsResponse) Reset()         { *m = ListFindingsResponse{} }
 func (m *ListFindingsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListFindingsResponse) ProtoMessage()    {}
 func (*ListFindingsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{14}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{14}
 }
 func (m *ListFindingsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFindingsResponse.Unmarshal(m, b)
@@ -1483,7 +1552,7 @@ func (m *ListFindingsResponse_ListFindingsResult) Reset() {
 func (m *ListFindingsResponse_ListFindingsResult) String() string { return proto.CompactTextString(m) }
 func (*ListFindingsResponse_ListFindingsResult) ProtoMessage()    {}
 func (*ListFindingsResponse_ListFindingsResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{14, 0}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{14, 0}
 }
 func (m *ListFindingsResponse_ListFindingsResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListFindingsResponse_ListFindingsResult.Unmarshal(m, b)
@@ -1537,7 +1606,7 @@ func (m *SetFindingStateRequest) Reset()         { *m = SetFindingStateRequest{}
 func (m *SetFindingStateRequest) String() string { return proto.CompactTextString(m) }
 func (*SetFindingStateRequest) ProtoMessage()    {}
 func (*SetFindingStateRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{15}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{15}
 }
 func (m *SetFindingStateRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetFindingStateRequest.Unmarshal(m, b)
@@ -1592,7 +1661,7 @@ func (m *RunAssetDiscoveryRequest) Reset()         { *m = RunAssetDiscoveryReque
 func (m *RunAssetDiscoveryRequest) String() string { return proto.CompactTextString(m) }
 func (*RunAssetDiscoveryRequest) ProtoMessage()    {}
 func (*RunAssetDiscoveryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{16}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{16}
 }
 func (m *RunAssetDiscoveryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunAssetDiscoveryRequest.Unmarshal(m, b)
@@ -1645,7 +1714,7 @@ func (m *UpdateFindingRequest) Reset()         { *m = UpdateFindingRequest{} }
 func (m *UpdateFindingRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateFindingRequest) ProtoMessage()    {}
 func (*UpdateFindingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{17}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{17}
 }
 func (m *UpdateFindingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateFindingRequest.Unmarshal(m, b)
@@ -1696,7 +1765,7 @@ func (m *UpdateOrganizationSettingsRequest) Reset()         { *m = UpdateOrganiz
 func (m *UpdateOrganizationSettingsRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateOrganizationSettingsRequest) ProtoMessage()    {}
 func (*UpdateOrganizationSettingsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{18}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{18}
 }
 func (m *UpdateOrganizationSettingsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateOrganizationSettingsRequest.Unmarshal(m, b)
@@ -1747,7 +1816,7 @@ func (m *UpdateSourceRequest) Reset()         { *m = UpdateSourceRequest{} }
 func (m *UpdateSourceRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateSourceRequest) ProtoMessage()    {}
 func (*UpdateSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{19}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{19}
 }
 func (m *UpdateSourceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSourceRequest.Unmarshal(m, b)
@@ -1804,7 +1873,7 @@ func (m *UpdateSecurityMarksRequest) Reset()         { *m = UpdateSecurityMarksR
 func (m *UpdateSecurityMarksRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateSecurityMarksRequest) ProtoMessage()    {}
 func (*UpdateSecurityMarksRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_securitycenter_service_4dd40508ffd8d524, []int{20}
+	return fileDescriptor_securitycenter_service_683b4d767e97812d, []int{20}
 }
 func (m *UpdateSecurityMarksRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSecurityMarksRequest.Unmarshal(m, b)
@@ -2574,10 +2643,10 @@ var _SecurityCenter_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/securitycenter/v1/securitycenter_service.proto", fileDescriptor_securitycenter_service_4dd40508ffd8d524)
+	proto.RegisterFile("google/cloud/securitycenter/v1/securitycenter_service.proto", fileDescriptor_securitycenter_service_683b4d767e97812d)
 }
 
-var fileDescriptor_securitycenter_service_4dd40508ffd8d524 = []byte{
+var fileDescriptor_securitycenter_service_683b4d767e97812d = []byte{
 	// 1971 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x5a, 0xcd, 0x8f, 0x1b, 0x49,
 	0x15, 0xa7, 0x7a, 0x3e, 0xfd, 0x3c, 0x93, 0x38, 0x35, 0x93, 0xe0, 0xed, 0xdd, 0x84, 0xa1, 0x77,
