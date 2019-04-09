@@ -66,14 +66,14 @@ func (x HttpMethod) String() string {
 	return proto.EnumName(HttpMethod_name, int32(x))
 }
 func (HttpMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_a001396d255f3c88, []int{0}
+	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{0}
 }
 
 // HTTP request.
 //
 // Warning: This is an [alpha](https://cloud.google.com/terms/launch-stages)
 // feature. If you haven't already joined, you can [use this form to sign
-// up](https://docs.google.com/forms/d/e/1FAIpQLSfc4uEy9CBHKYUSdnY1hdhKDCX7julVZHy3imOiR-XrU7bUNQ/viewform?usp=sf_link).
+// up](https://docs.google.com/forms/d/e/1FAIpQLSfc4uEy9CBHKYUSdnY1hdhKDCX7julVZHy3imOiR-XrU7bUNQ/viewform).
 //
 // The task will be pushed to the worker as an HTTP request. If the worker
 // or the redirected worker acknowledges the task by returning a successful HTTP
@@ -82,8 +82,7 @@ func (HttpMethod) EnumDescriptor() ([]byte, []int) {
 // task will be retried according to the following:
 //
 // * User-specified throttling: [retry configuration][Queue.RetryConfig],
-//   [rate limits][Queue.RateLimits], and the [queue's
-//   state][google.cloud.tasks.v2beta3.Queue.state].
+//   [rate limits][Queue.RateLimits], and the [queue's state][google.cloud.tasks.v2beta3.Queue.state].
 //
 // * System throttling: To prevent the worker from overloading, Cloud Tasks may
 //   temporarily reduce the queue's effective rate. User-specified settings
@@ -147,20 +146,28 @@ type HttpRequest struct {
 	// HTTP request body.
 	//
 	// A request body is allowed only if the
-	// [HTTP method][google.cloud.tasks.v2beta3.HttpRequest.http_method] is POST,
-	// PUT, or PATCH. It is an error to set body on a task with an incompatible
-	// [HttpMethod][google.cloud.tasks.v2beta3.HttpMethod].
-	Body                 []byte   `protobuf:"bytes,4,opt,name=body,proto3" json:"body,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	// [HTTP method][google.cloud.tasks.v2beta3.HttpRequest.http_method] is POST, PUT, or PATCH. It is an
+	// error to set body on a task with an incompatible [HttpMethod][google.cloud.tasks.v2beta3.HttpMethod].
+	Body []byte `protobuf:"bytes,4,opt,name=body,proto3" json:"body,omitempty"`
+	// The mode for generating an `Authorization` header for HTTP requests.
+	//
+	// If specified, all `Authorization` headers in the [HttpTarget.headers][]
+	// field will be overridden.
+	//
+	// Types that are valid to be assigned to AuthorizationHeader:
+	//	*HttpRequest_OauthToken
+	//	*HttpRequest_OidcToken
+	AuthorizationHeader  isHttpRequest_AuthorizationHeader `protobuf_oneof:"authorization_header"`
+	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
+	XXX_unrecognized     []byte                            `json:"-"`
+	XXX_sizecache        int32                             `json:"-"`
 }
 
 func (m *HttpRequest) Reset()         { *m = HttpRequest{} }
 func (m *HttpRequest) String() string { return proto.CompactTextString(m) }
 func (*HttpRequest) ProtoMessage()    {}
 func (*HttpRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_a001396d255f3c88, []int{0}
+	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{0}
 }
 func (m *HttpRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpRequest.Unmarshal(m, b)
@@ -208,18 +215,125 @@ func (m *HttpRequest) GetBody() []byte {
 	return nil
 }
 
+type isHttpRequest_AuthorizationHeader interface {
+	isHttpRequest_AuthorizationHeader()
+}
+
+type HttpRequest_OauthToken struct {
+	OauthToken *OAuthToken `protobuf:"bytes,5,opt,name=oauth_token,json=oauthToken,proto3,oneof"`
+}
+
+type HttpRequest_OidcToken struct {
+	OidcToken *OidcToken `protobuf:"bytes,6,opt,name=oidc_token,json=oidcToken,proto3,oneof"`
+}
+
+func (*HttpRequest_OauthToken) isHttpRequest_AuthorizationHeader() {}
+
+func (*HttpRequest_OidcToken) isHttpRequest_AuthorizationHeader() {}
+
+func (m *HttpRequest) GetAuthorizationHeader() isHttpRequest_AuthorizationHeader {
+	if m != nil {
+		return m.AuthorizationHeader
+	}
+	return nil
+}
+
+func (m *HttpRequest) GetOauthToken() *OAuthToken {
+	if x, ok := m.GetAuthorizationHeader().(*HttpRequest_OauthToken); ok {
+		return x.OauthToken
+	}
+	return nil
+}
+
+func (m *HttpRequest) GetOidcToken() *OidcToken {
+	if x, ok := m.GetAuthorizationHeader().(*HttpRequest_OidcToken); ok {
+		return x.OidcToken
+	}
+	return nil
+}
+
+// XXX_OneofFuncs is for the internal use of the proto package.
+func (*HttpRequest) XXX_OneofFuncs() (func(msg proto.Message, b *proto.Buffer) error, func(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error), func(msg proto.Message) (n int), []interface{}) {
+	return _HttpRequest_OneofMarshaler, _HttpRequest_OneofUnmarshaler, _HttpRequest_OneofSizer, []interface{}{
+		(*HttpRequest_OauthToken)(nil),
+		(*HttpRequest_OidcToken)(nil),
+	}
+}
+
+func _HttpRequest_OneofMarshaler(msg proto.Message, b *proto.Buffer) error {
+	m := msg.(*HttpRequest)
+	// authorization_header
+	switch x := m.AuthorizationHeader.(type) {
+	case *HttpRequest_OauthToken:
+		b.EncodeVarint(5<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.OauthToken); err != nil {
+			return err
+		}
+	case *HttpRequest_OidcToken:
+		b.EncodeVarint(6<<3 | proto.WireBytes)
+		if err := b.EncodeMessage(x.OidcToken); err != nil {
+			return err
+		}
+	case nil:
+	default:
+		return fmt.Errorf("HttpRequest.AuthorizationHeader has unexpected type %T", x)
+	}
+	return nil
+}
+
+func _HttpRequest_OneofUnmarshaler(msg proto.Message, tag, wire int, b *proto.Buffer) (bool, error) {
+	m := msg.(*HttpRequest)
+	switch tag {
+	case 5: // authorization_header.oauth_token
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(OAuthToken)
+		err := b.DecodeMessage(msg)
+		m.AuthorizationHeader = &HttpRequest_OauthToken{msg}
+		return true, err
+	case 6: // authorization_header.oidc_token
+		if wire != proto.WireBytes {
+			return true, proto.ErrInternalBadWireType
+		}
+		msg := new(OidcToken)
+		err := b.DecodeMessage(msg)
+		m.AuthorizationHeader = &HttpRequest_OidcToken{msg}
+		return true, err
+	default:
+		return false, nil
+	}
+}
+
+func _HttpRequest_OneofSizer(msg proto.Message) (n int) {
+	m := msg.(*HttpRequest)
+	// authorization_header
+	switch x := m.AuthorizationHeader.(type) {
+	case *HttpRequest_OauthToken:
+		s := proto.Size(x.OauthToken)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case *HttpRequest_OidcToken:
+		s := proto.Size(x.OidcToken)
+		n += 1 // tag and wire
+		n += proto.SizeVarint(uint64(s))
+		n += s
+	case nil:
+	default:
+		panic(fmt.Sprintf("proto: unexpected type %T in oneof", x))
+	}
+	return n
+}
+
 // App Engine HTTP queue.
 //
 // The task will be delivered to the App Engine application hostname
-// specified by its
-// [AppEngineHttpQueue][google.cloud.tasks.v2beta3.AppEngineHttpQueue] and
-// [AppEngineHttpRequest][google.cloud.tasks.v2beta3.AppEngineHttpRequest]. The
-// documentation for
-// [AppEngineHttpRequest][google.cloud.tasks.v2beta3.AppEngineHttpRequest]
-// explains how the task's host URL is constructed.
+// specified by its [AppEngineHttpQueue][google.cloud.tasks.v2beta3.AppEngineHttpQueue] and [AppEngineHttpRequest][google.cloud.tasks.v2beta3.AppEngineHttpRequest].
+// The documentation for [AppEngineHttpRequest][google.cloud.tasks.v2beta3.AppEngineHttpRequest] explains how the
+// task's host URL is constructed.
 //
-// Using [AppEngineHttpQueue][google.cloud.tasks.v2beta3.AppEngineHttpQueue]
-// requires
+// Using [AppEngineHttpQueue][google.cloud.tasks.v2beta3.AppEngineHttpQueue] requires
 // [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)
 // Google IAM permission for the project
 // and the following scope:
@@ -227,13 +341,11 @@ func (m *HttpRequest) GetBody() []byte {
 // `https://www.googleapis.com/auth/cloud-platform`
 type AppEngineHttpQueue struct {
 	// Overrides for the
-	// [task-level
-	// app_engine_routing][google.cloud.tasks.v2beta3.AppEngineHttpRequest.app_engine_routing].
+	// [task-level app_engine_routing][google.cloud.tasks.v2beta3.AppEngineHttpRequest.app_engine_routing].
 	//
 	// If set, `app_engine_routing_override` is used for all tasks in
 	// the queue, no matter what the setting is for the
-	// [task-level
-	// app_engine_routing][google.cloud.tasks.v2beta3.AppEngineHttpRequest.app_engine_routing].
+	// [task-level app_engine_routing][google.cloud.tasks.v2beta3.AppEngineHttpRequest.app_engine_routing].
 	AppEngineRoutingOverride *AppEngineRouting `protobuf:"bytes,1,opt,name=app_engine_routing_override,json=appEngineRoutingOverride,proto3" json:"app_engine_routing_override,omitempty"`
 	XXX_NoUnkeyedLiteral     struct{}          `json:"-"`
 	XXX_unrecognized         []byte            `json:"-"`
@@ -244,7 +356,7 @@ func (m *AppEngineHttpQueue) Reset()         { *m = AppEngineHttpQueue{} }
 func (m *AppEngineHttpQueue) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpQueue) ProtoMessage()    {}
 func (*AppEngineHttpQueue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_a001396d255f3c88, []int{1}
+	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{1}
 }
 func (m *AppEngineHttpQueue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpQueue.Unmarshal(m, b)
@@ -277,11 +389,9 @@ func (m *AppEngineHttpQueue) GetAppEngineRoutingOverride() *AppEngineRouting {
 // the task is dispatched.
 //
 // This proto can only be used for tasks in a queue which has
-// [app_engine_http_queue][google.cloud.tasks.v2beta3.Queue.app_engine_http_queue]
-// set.
+// [app_engine_http_queue][google.cloud.tasks.v2beta3.Queue.app_engine_http_queue] set.
 //
-// Using [AppEngineHttpRequest][google.cloud.tasks.v2beta3.AppEngineHttpRequest]
-// requires
+// Using [AppEngineHttpRequest][google.cloud.tasks.v2beta3.AppEngineHttpRequest] requires
 // [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)
 // Google IAM permission for the project
 // and the following scope:
@@ -301,16 +411,14 @@ func (m *AppEngineHttpQueue) GetAppEngineRoutingOverride() *AppEngineRouting {
 // The request to the handler, however, will appear to have used the HTTP
 // protocol.
 //
-// The [AppEngineRouting][google.cloud.tasks.v2beta3.AppEngineRouting] used to
-// construct the URL that the task is delivered to can be set at the queue-level
-// or task-level:
+// The [AppEngineRouting][google.cloud.tasks.v2beta3.AppEngineRouting] used to construct the URL that the task is
+// delivered to can be set at the queue-level or task-level:
 //
 // * If set,
 //    [app_engine_routing_override][google.cloud.tasks.v2beta3.AppEngineHttpQueue.app_engine_routing_override]
 //    is used for all tasks in the queue, no matter what the setting
 //    is for the
-//    [task-level
-//    app_engine_routing][google.cloud.tasks.v2beta3.AppEngineHttpRequest.app_engine_routing].
+//    [task-level app_engine_routing][google.cloud.tasks.v2beta3.AppEngineHttpRequest.app_engine_routing].
 //
 //
 // The `url` that the task will be sent to is:
@@ -353,8 +461,7 @@ type AppEngineHttpRequest struct {
 	// If set,
 	// [app_engine_routing_override][google.cloud.tasks.v2beta3.AppEngineHttpQueue.app_engine_routing_override]
 	// is used for all tasks in the queue, no matter what the setting is for the
-	// [task-level
-	// app_engine_routing][google.cloud.tasks.v2beta3.AppEngineHttpRequest.app_engine_routing].
+	// [task-level app_engine_routing][google.cloud.tasks.v2beta3.AppEngineHttpRequest.app_engine_routing].
 	AppEngineRouting *AppEngineRouting `protobuf:"bytes,2,opt,name=app_engine_routing,json=appEngineRouting,proto3" json:"app_engine_routing,omitempty"`
 	// The relative URI.
 	//
@@ -378,9 +485,8 @@ type AppEngineHttpRequest struct {
 	//   `"AppEngine-Google; (+http://code.google.com/appengine)"` to the
 	//   modified `User-Agent`.
 	//
-	// If the task has a
-	// [body][google.cloud.tasks.v2beta3.AppEngineHttpRequest.body], Cloud Tasks
-	// sets the following headers:
+	// If the task has a [body][google.cloud.tasks.v2beta3.AppEngineHttpRequest.body], Cloud
+	// Tasks sets the following headers:
 	//
 	// * `Content-Type`: By default, the `Content-Type` header is set to
 	//   `"application/octet-stream"`. The default can be overridden by explicitly
@@ -404,16 +510,13 @@ type AppEngineHttpRequest struct {
 	// visible when the task is returned in a Cloud Tasks response.
 	//
 	// Although there is no specific limit for the maximum number of headers or
-	// the size, there is a limit on the maximum size of the
-	// [Task][google.cloud.tasks.v2beta3.Task]. For more information, see the
-	// [CreateTask][google.cloud.tasks.v2beta3.CloudTasks.CreateTask]
-	// documentation.
+	// the size, there is a limit on the maximum size of the [Task][google.cloud.tasks.v2beta3.Task]. For more
+	// information, see the [CreateTask][google.cloud.tasks.v2beta3.CloudTasks.CreateTask] documentation.
 	Headers map[string]string `protobuf:"bytes,4,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// HTTP request body.
 	//
 	// A request body is allowed only if the HTTP method is POST or PUT. It is
-	// an error to set a body on a task with an incompatible
-	// [HttpMethod][google.cloud.tasks.v2beta3.HttpMethod].
+	// an error to set a body on a task with an incompatible [HttpMethod][google.cloud.tasks.v2beta3.HttpMethod].
 	Body                 []byte   `protobuf:"bytes,5,opt,name=body,proto3" json:"body,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -424,7 +527,7 @@ func (m *AppEngineHttpRequest) Reset()         { *m = AppEngineHttpRequest{} }
 func (m *AppEngineHttpRequest) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpRequest) ProtoMessage()    {}
 func (*AppEngineHttpRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_a001396d255f3c88, []int{2}
+	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{2}
 }
 func (m *AppEngineHttpRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpRequest.Unmarshal(m, b)
@@ -500,18 +603,16 @@ type AppEngineRouting struct {
 	// service when the task is attempted.
 	//
 	// For some queues or tasks which were created using the App Engine
-	// Task Queue API, [host][google.cloud.tasks.v2beta3.AppEngineRouting.host] is
-	// not parsable into
+	// Task Queue API, [host][google.cloud.tasks.v2beta3.AppEngineRouting.host] is not parsable
+	// into [service][google.cloud.tasks.v2beta3.AppEngineRouting.service],
+	// [version][google.cloud.tasks.v2beta3.AppEngineRouting.version], and
+	// [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance]. For example, some tasks
+	// which were created using the App Engine SDK use a custom domain
+	// name; custom domains are not parsed by Cloud Tasks. If
+	// [host][google.cloud.tasks.v2beta3.AppEngineRouting.host] is not parsable, then
 	// [service][google.cloud.tasks.v2beta3.AppEngineRouting.service],
 	// [version][google.cloud.tasks.v2beta3.AppEngineRouting.version], and
-	// [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance]. For
-	// example, some tasks which were created using the App Engine SDK use a
-	// custom domain name; custom domains are not parsed by Cloud Tasks. If
-	// [host][google.cloud.tasks.v2beta3.AppEngineRouting.host] is not parsable,
-	// then [service][google.cloud.tasks.v2beta3.AppEngineRouting.service],
-	// [version][google.cloud.tasks.v2beta3.AppEngineRouting.version], and
-	// [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance] are the
-	// empty string.
+	// [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance] are the empty string.
 	Service string `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
 	// App version.
 	//
@@ -519,18 +620,16 @@ type AppEngineRouting struct {
 	// version when the task is attempted.
 	//
 	// For some queues or tasks which were created using the App Engine
-	// Task Queue API, [host][google.cloud.tasks.v2beta3.AppEngineRouting.host] is
-	// not parsable into
+	// Task Queue API, [host][google.cloud.tasks.v2beta3.AppEngineRouting.host] is not parsable
+	// into [service][google.cloud.tasks.v2beta3.AppEngineRouting.service],
+	// [version][google.cloud.tasks.v2beta3.AppEngineRouting.version], and
+	// [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance]. For example, some tasks
+	// which were created using the App Engine SDK use a custom domain
+	// name; custom domains are not parsed by Cloud Tasks. If
+	// [host][google.cloud.tasks.v2beta3.AppEngineRouting.host] is not parsable, then
 	// [service][google.cloud.tasks.v2beta3.AppEngineRouting.service],
 	// [version][google.cloud.tasks.v2beta3.AppEngineRouting.version], and
-	// [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance]. For
-	// example, some tasks which were created using the App Engine SDK use a
-	// custom domain name; custom domains are not parsed by Cloud Tasks. If
-	// [host][google.cloud.tasks.v2beta3.AppEngineRouting.host] is not parsable,
-	// then [service][google.cloud.tasks.v2beta3.AppEngineRouting.service],
-	// [version][google.cloud.tasks.v2beta3.AppEngineRouting.version], and
-	// [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance] are the
-	// empty string.
+	// [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance] are the empty string.
 	Version string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
 	// App instance.
 	//
@@ -550,11 +649,9 @@ type AppEngineRouting struct {
 	//
 	// The host is constructed from the domain name of the app associated with
 	// the queue's project ID (for example <app-id>.appspot.com), and the
-	// [service][google.cloud.tasks.v2beta3.AppEngineRouting.service],
-	// [version][google.cloud.tasks.v2beta3.AppEngineRouting.version], and
-	// [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance]. Tasks
-	// which were created using the App Engine SDK might have a custom domain
-	// name.
+	// [service][google.cloud.tasks.v2beta3.AppEngineRouting.service], [version][google.cloud.tasks.v2beta3.AppEngineRouting.version],
+	// and [instance][google.cloud.tasks.v2beta3.AppEngineRouting.instance]. Tasks which were created using
+	// the App Engine SDK might have a custom domain name.
 	//
 	// For more information, see
 	// [How Requests are
@@ -569,7 +666,7 @@ func (m *AppEngineRouting) Reset()         { *m = AppEngineRouting{} }
 func (m *AppEngineRouting) String() string { return proto.CompactTextString(m) }
 func (*AppEngineRouting) ProtoMessage()    {}
 func (*AppEngineRouting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_a001396d255f3c88, []int{3}
+	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{3}
 }
 func (m *AppEngineRouting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineRouting.Unmarshal(m, b)
@@ -617,6 +714,122 @@ func (m *AppEngineRouting) GetHost() string {
 	return ""
 }
 
+// Contains information needed for generating an
+// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+// This type of authorization should be used when sending requests to a GCP
+// endpoint.
+type OAuthToken struct {
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+	// to be used for generating OAuth token.
+	// The service account must be within the same project as the queue. The
+	// caller must have iam.serviceAccounts.actAs permission for the service
+	// account.
+	ServiceAccountEmail string `protobuf:"bytes,1,opt,name=service_account_email,json=serviceAccountEmail,proto3" json:"service_account_email,omitempty"`
+	// OAuth scope to be used for generating OAuth access token.
+	// If not specified, "https://www.googleapis.com/auth/cloud-platform"
+	// will be used.
+	Scope                string   `protobuf:"bytes,2,opt,name=scope,proto3" json:"scope,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *OAuthToken) Reset()         { *m = OAuthToken{} }
+func (m *OAuthToken) String() string { return proto.CompactTextString(m) }
+func (*OAuthToken) ProtoMessage()    {}
+func (*OAuthToken) Descriptor() ([]byte, []int) {
+	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{4}
+}
+func (m *OAuthToken) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_OAuthToken.Unmarshal(m, b)
+}
+func (m *OAuthToken) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_OAuthToken.Marshal(b, m, deterministic)
+}
+func (dst *OAuthToken) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OAuthToken.Merge(dst, src)
+}
+func (m *OAuthToken) XXX_Size() int {
+	return xxx_messageInfo_OAuthToken.Size(m)
+}
+func (m *OAuthToken) XXX_DiscardUnknown() {
+	xxx_messageInfo_OAuthToken.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_OAuthToken proto.InternalMessageInfo
+
+func (m *OAuthToken) GetServiceAccountEmail() string {
+	if m != nil {
+		return m.ServiceAccountEmail
+	}
+	return ""
+}
+
+func (m *OAuthToken) GetScope() string {
+	if m != nil {
+		return m.Scope
+	}
+	return ""
+}
+
+// Contains information needed for generating an
+// [OpenID Connect
+// token](https://developers.google.com/identity/protocols/OpenIDConnect). This
+// type of authorization should be used when sending requests to third party
+// endpoints.
+type OidcToken struct {
+	// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+	// to be used for generating OIDC token.
+	// The service account must be within the same project as the queue. The
+	// caller must have iam.serviceAccounts.actAs permission for the service
+	// account.
+	ServiceAccountEmail string `protobuf:"bytes,1,opt,name=service_account_email,json=serviceAccountEmail,proto3" json:"service_account_email,omitempty"`
+	// Audience to be used when generating OIDC token. If not specified, the URI
+	// specified in target will be used.
+	Audience             string   `protobuf:"bytes,2,opt,name=audience,proto3" json:"audience,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *OidcToken) Reset()         { *m = OidcToken{} }
+func (m *OidcToken) String() string { return proto.CompactTextString(m) }
+func (*OidcToken) ProtoMessage()    {}
+func (*OidcToken) Descriptor() ([]byte, []int) {
+	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{5}
+}
+func (m *OidcToken) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_OidcToken.Unmarshal(m, b)
+}
+func (m *OidcToken) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_OidcToken.Marshal(b, m, deterministic)
+}
+func (dst *OidcToken) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OidcToken.Merge(dst, src)
+}
+func (m *OidcToken) XXX_Size() int {
+	return xxx_messageInfo_OidcToken.Size(m)
+}
+func (m *OidcToken) XXX_DiscardUnknown() {
+	xxx_messageInfo_OidcToken.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_OidcToken proto.InternalMessageInfo
+
+func (m *OidcToken) GetServiceAccountEmail() string {
+	if m != nil {
+		return m.ServiceAccountEmail
+	}
+	return ""
+}
+
+func (m *OidcToken) GetAudience() string {
+	if m != nil {
+		return m.Audience
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*HttpRequest)(nil), "google.cloud.tasks.v2beta3.HttpRequest")
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.tasks.v2beta3.HttpRequest.HeadersEntry")
@@ -624,49 +837,60 @@ func init() {
 	proto.RegisterType((*AppEngineHttpRequest)(nil), "google.cloud.tasks.v2beta3.AppEngineHttpRequest")
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.tasks.v2beta3.AppEngineHttpRequest.HeadersEntry")
 	proto.RegisterType((*AppEngineRouting)(nil), "google.cloud.tasks.v2beta3.AppEngineRouting")
+	proto.RegisterType((*OAuthToken)(nil), "google.cloud.tasks.v2beta3.OAuthToken")
+	proto.RegisterType((*OidcToken)(nil), "google.cloud.tasks.v2beta3.OidcToken")
 	proto.RegisterEnum("google.cloud.tasks.v2beta3.HttpMethod", HttpMethod_name, HttpMethod_value)
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2beta3/target.proto", fileDescriptor_target_a001396d255f3c88)
+	proto.RegisterFile("google/cloud/tasks/v2beta3/target.proto", fileDescriptor_target_da9b4c7f9a4f7f6c)
 }
 
-var fileDescriptor_target_a001396d255f3c88 = []byte{
-	// 575 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0x41, 0x6f, 0xd3, 0x4c,
-	0x10, 0xfd, 0x1c, 0x27, 0x4d, 0x33, 0xae, 0x3e, 0x59, 0xab, 0x4a, 0x58, 0x29, 0x42, 0xa1, 0x07,
-	0x88, 0x10, 0xb2, 0xa5, 0x94, 0x03, 0x2a, 0x42, 0xa8, 0x6d, 0x4c, 0x53, 0x89, 0x36, 0xc6, 0x75,
-	0x85, 0xd4, 0x8b, 0xb5, 0x4d, 0x46, 0xce, 0x2a, 0xe9, 0xae, 0x59, 0xaf, 0x2d, 0xe5, 0xc8, 0x09,
-	0x7e, 0x36, 0xf2, 0xc6, 0x6e, 0x21, 0x40, 0x29, 0x88, 0xdb, 0xcc, 0xec, 0xdb, 0x37, 0xf3, 0x66,
-	0x46, 0x03, 0x4f, 0x13, 0x21, 0x92, 0x05, 0x7a, 0x93, 0x85, 0xc8, 0xa7, 0x9e, 0xa2, 0xd9, 0x3c,
-	0xf3, 0x8a, 0xc1, 0x15, 0x2a, 0xba, 0xe7, 0x29, 0x2a, 0x13, 0x54, 0x6e, 0x2a, 0x85, 0x12, 0xa4,
-	0xbb, 0x02, 0xba, 0x1a, 0xe8, 0x6a, 0xa0, 0x5b, 0x01, 0xbb, 0x0f, 0x2b, 0x12, 0x9a, 0x32, 0x8f,
-	0x72, 0x2e, 0x14, 0x55, 0x4c, 0xf0, 0x6c, 0xf5, 0x73, 0xf7, 0x4b, 0x03, 0xac, 0x91, 0x52, 0x69,
-	0x88, 0x1f, 0x73, 0xcc, 0x14, 0xb1, 0xc1, 0xcc, 0xe5, 0xc2, 0x31, 0x7a, 0x46, 0xbf, 0x13, 0x96,
-	0x26, 0x39, 0x06, 0x6b, 0xa6, 0x54, 0x1a, 0x5f, 0xa3, 0x9a, 0x89, 0xa9, 0xd3, 0xe8, 0x19, 0xfd,
-	0xff, 0x07, 0x4f, 0xdc, 0x5f, 0x67, 0x74, 0x4b, 0xbe, 0x53, 0x8d, 0x0e, 0x61, 0x76, 0x63, 0x93,
-	0x33, 0x68, 0xcf, 0x90, 0x4e, 0x51, 0x66, 0x8e, 0xd9, 0x33, 0xfb, 0xd6, 0xe0, 0xc5, 0xef, 0x48,
-	0xaa, 0xa2, 0xdc, 0xd1, 0xea, 0x9b, 0xcf, 0x95, 0x5c, 0x86, 0x35, 0x09, 0x21, 0xd0, 0xbc, 0x12,
-	0xd3, 0xa5, 0xd3, 0xec, 0x19, 0xfd, 0xad, 0x50, 0xdb, 0xdd, 0x7d, 0xd8, 0xfa, 0x16, 0x5c, 0xca,
-	0x99, 0xe3, 0xb2, 0x96, 0x33, 0xc7, 0x25, 0xd9, 0x86, 0x56, 0x41, 0x17, 0x39, 0x6a, 0x21, 0x9d,
-	0x70, 0xe5, 0xec, 0x37, 0x5e, 0x1a, 0xbb, 0x9f, 0x0c, 0x20, 0x07, 0x69, 0xea, 0xf3, 0x84, 0x71,
-	0x2c, 0xd3, 0xbf, 0xcf, 0x31, 0x47, 0x32, 0x87, 0x1d, 0x9a, 0xa6, 0x31, 0xea, 0x70, 0x2c, 0x45,
-	0xae, 0x18, 0x4f, 0x62, 0x51, 0xa0, 0x94, 0x6c, 0x8a, 0x9a, 0xda, 0x1a, 0x3c, 0xbf, 0x4b, 0xca,
-	0x0d, 0x69, 0xb8, 0xfa, 0x1c, 0x3a, 0x74, 0x2d, 0x32, 0xae, 0xd8, 0x76, 0x3f, 0x9b, 0xb0, 0xfd,
-	0x5d, 0x0d, 0xf5, 0x5c, 0xd6, 0xa6, 0x60, 0xfc, 0xf5, 0x14, 0x2e, 0x81, 0xfc, 0x28, 0x47, 0x37,
-	0xe3, 0x4f, 0x55, 0xd8, 0xeb, 0x2a, 0xc8, 0x63, 0xd8, 0x92, 0xb8, 0xa0, 0x8a, 0x15, 0x18, 0xe7,
-	0x92, 0x39, 0xa6, 0x6e, 0xb1, 0x55, 0xc7, 0x2e, 0x24, 0x23, 0x1f, 0x6e, 0x97, 0xa0, 0xa9, 0x97,
-	0xe0, 0xf5, 0xbd, 0x72, 0xde, 0x7f, 0x1b, 0x5a, 0xff, 0x68, 0x1b, 0x0a, 0xb0, 0xd7, 0x15, 0x13,
-	0x07, 0xda, 0x19, 0xca, 0x82, 0x4d, 0xb0, 0xe2, 0xa8, 0xdd, 0xf2, 0xa5, 0x40, 0x99, 0x31, 0xc1,
-	0x2b, 0xa6, 0xda, 0x25, 0x5d, 0xd8, 0x64, 0x3c, 0x53, 0x94, 0x4f, 0xb0, 0xea, 0xc7, 0x8d, 0x5f,
-	0xd6, 0x3c, 0x13, 0x99, 0xd2, 0x1b, 0xdc, 0x09, 0xb5, 0xfd, 0x2c, 0x03, 0xb8, 0x9d, 0x1c, 0xd9,
-	0x81, 0x07, 0xa3, 0x28, 0x0a, 0xe2, 0x53, 0x3f, 0x1a, 0x8d, 0x87, 0xf1, 0xc5, 0xd9, 0x79, 0xe0,
-	0x1f, 0x9d, 0xbc, 0x3d, 0xf1, 0x87, 0xf6, 0x7f, 0x64, 0x13, 0x9a, 0xc1, 0xf8, 0x3c, 0xb2, 0x0d,
-	0xd2, 0x06, 0xf3, 0xd8, 0x8f, 0xec, 0x46, 0x19, 0x1a, 0xf9, 0x07, 0x43, 0xdb, 0x2c, 0x43, 0xc1,
-	0x45, 0x64, 0x37, 0x09, 0xc0, 0xc6, 0xd0, 0x7f, 0xe7, 0x47, 0xbe, 0xdd, 0x22, 0x1d, 0x68, 0x05,
-	0x07, 0xd1, 0xd1, 0xc8, 0xde, 0x20, 0x16, 0xb4, 0xc7, 0x41, 0x74, 0x32, 0x3e, 0x3b, 0xb7, 0xdb,
-	0x87, 0x29, 0x3c, 0x9a, 0x88, 0xeb, 0x3b, 0x26, 0x71, 0x68, 0x45, 0xfa, 0xde, 0x04, 0xe5, 0xd1,
-	0x08, 0x8c, 0xcb, 0x37, 0x15, 0x34, 0x11, 0x0b, 0xca, 0x13, 0x57, 0xc8, 0xc4, 0x4b, 0x90, 0xeb,
-	0x93, 0xe2, 0xad, 0x9e, 0x68, 0xca, 0xb2, 0x9f, 0x1d, 0xae, 0x57, 0xda, 0xbb, 0xda, 0xd0, 0xd8,
-	0xbd, 0xaf, 0x01, 0x00, 0x00, 0xff, 0xff, 0xf2, 0xdd, 0xa9, 0x83, 0xe3, 0x04, 0x00, 0x00,
+var fileDescriptor_target_da9b4c7f9a4f7f6c = []byte{
+	// 707 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0xdf, 0x6f, 0xd3, 0x3a,
+	0x14, 0x5e, 0x96, 0xfe, 0x58, 0x4f, 0xa6, 0xab, 0xc8, 0x77, 0xf7, 0xde, 0xa8, 0xbb, 0x42, 0xa5,
+	0x12, 0x50, 0x21, 0x94, 0x4a, 0x1d, 0x0f, 0x68, 0x08, 0xa1, 0x6e, 0xcd, 0xd6, 0x4a, 0x6c, 0x0d,
+	0x59, 0x06, 0xd2, 0x78, 0x88, 0xbc, 0xc4, 0x4a, 0xad, 0x76, 0x71, 0x70, 0x9c, 0x4a, 0xe5, 0x8d,
+	0x27, 0xfe, 0x20, 0xfe, 0x41, 0x14, 0x27, 0x69, 0xa1, 0x40, 0x19, 0xe3, 0xcd, 0xdf, 0x39, 0xc7,
+	0x9f, 0xcf, 0x77, 0xf2, 0xd9, 0x81, 0x47, 0x21, 0x63, 0xe1, 0x8c, 0x74, 0xfd, 0x19, 0x4b, 0x83,
+	0xae, 0xc0, 0xc9, 0x34, 0xe9, 0xce, 0x7b, 0xd7, 0x44, 0xe0, 0x83, 0xae, 0xc0, 0x3c, 0x24, 0xc2,
+	0x8c, 0x39, 0x13, 0x0c, 0x35, 0xf3, 0x42, 0x53, 0x16, 0x9a, 0xb2, 0xd0, 0x2c, 0x0a, 0x9b, 0xff,
+	0x17, 0x24, 0x38, 0xa6, 0x5d, 0x1c, 0x45, 0x4c, 0x60, 0x41, 0x59, 0x94, 0xe4, 0x3b, 0xdb, 0x9f,
+	0x55, 0xd0, 0x86, 0x42, 0xc4, 0x0e, 0x79, 0x9f, 0x92, 0x44, 0x20, 0x1d, 0xd4, 0x94, 0xcf, 0x0c,
+	0xa5, 0xa5, 0x74, 0x1a, 0x4e, 0xb6, 0x44, 0xa7, 0xa0, 0x4d, 0x84, 0x88, 0xbd, 0x1b, 0x22, 0x26,
+	0x2c, 0x30, 0xb6, 0x5b, 0x4a, 0xe7, 0xaf, 0xde, 0x43, 0xf3, 0xe7, 0x27, 0x9a, 0x19, 0xdf, 0x99,
+	0xac, 0x76, 0x60, 0xb2, 0x5c, 0xa3, 0x73, 0xa8, 0x4f, 0x08, 0x0e, 0x08, 0x4f, 0x0c, 0xb5, 0xa5,
+	0x76, 0xb4, 0xde, 0xd3, 0x5f, 0x91, 0x14, 0x4d, 0x99, 0xc3, 0x7c, 0x9b, 0x15, 0x09, 0xbe, 0x70,
+	0x4a, 0x12, 0x84, 0xa0, 0x72, 0xcd, 0x82, 0x85, 0x51, 0x69, 0x29, 0x9d, 0x5d, 0x47, 0xae, 0xd1,
+	0x08, 0x34, 0x86, 0x53, 0x31, 0xf1, 0x04, 0x9b, 0x92, 0xc8, 0xa8, 0xb6, 0x94, 0x8e, 0xb6, 0xb9,
+	0xd9, 0x71, 0x3f, 0x15, 0x13, 0x37, 0xab, 0x1e, 0x6e, 0x39, 0x20, 0x37, 0x4b, 0x84, 0x4e, 0x00,
+	0x18, 0x0d, 0xfc, 0x82, 0xa9, 0x26, 0x99, 0x1e, 0x6c, 0x64, 0xa2, 0x81, 0x5f, 0x12, 0x35, 0x58,
+	0x09, 0x9a, 0x87, 0xb0, 0xfb, 0x75, 0xff, 0xd9, 0x84, 0xa7, 0x64, 0x51, 0x4e, 0x78, 0x4a, 0x16,
+	0x68, 0x0f, 0xaa, 0x73, 0x3c, 0x4b, 0x89, 0x9c, 0x6d, 0xc3, 0xc9, 0xc1, 0xe1, 0xf6, 0x33, 0xe5,
+	0xe8, 0x5f, 0xd8, 0xcb, 0x1a, 0x62, 0x9c, 0x7e, 0x90, 0x5f, 0xcd, 0xcb, 0xb5, 0xb7, 0x3f, 0x2a,
+	0x80, 0xfa, 0x71, 0x6c, 0x45, 0x21, 0x8d, 0x48, 0x36, 0xa9, 0xd7, 0x29, 0x49, 0x09, 0x9a, 0xc2,
+	0x3e, 0x8e, 0x63, 0x8f, 0xc8, 0xb0, 0xc7, 0x59, 0x2a, 0x68, 0x14, 0x7a, 0x6c, 0x4e, 0x38, 0xa7,
+	0x01, 0x91, 0x47, 0x6a, 0xbd, 0x27, 0x9b, 0x34, 0x2c, 0x49, 0x9d, 0x7c, 0xb3, 0x63, 0xe0, 0xb5,
+	0xc8, 0xb8, 0x60, 0x6b, 0x7f, 0x52, 0x61, 0xef, 0x9b, 0x1e, 0x4a, 0x0b, 0xad, 0x19, 0x46, 0xb9,
+	0xb3, 0x61, 0xae, 0x00, 0x7d, 0x2f, 0x47, 0x0e, 0xe9, 0x77, 0x55, 0xe8, 0xeb, 0x2a, 0xd0, 0x7d,
+	0xd8, 0xe5, 0x64, 0x86, 0x05, 0x9d, 0x13, 0x2f, 0xe5, 0xd4, 0x50, 0xe5, 0xe8, 0xb5, 0x32, 0x76,
+	0xc9, 0x29, 0x7a, 0xbb, 0xf2, 0x6b, 0x45, 0xfa, 0xf5, 0xc5, 0xad, 0xce, 0xbc, 0xbd, 0x71, 0xab,
+	0x2b, 0xe3, 0xfe, 0x89, 0x4b, 0xda, 0x73, 0xd0, 0xd7, 0x15, 0x23, 0x03, 0xea, 0x09, 0xe1, 0x73,
+	0xea, 0x93, 0x82, 0xa3, 0x84, 0x59, 0x66, 0x4e, 0x78, 0x42, 0x59, 0x54, 0x30, 0x95, 0x10, 0x35,
+	0x61, 0x87, 0x46, 0x89, 0xc0, 0x91, 0x4f, 0x8a, 0x79, 0x2c, 0x71, 0xd6, 0xf3, 0x84, 0x25, 0x42,
+	0x5e, 0xb6, 0x86, 0x23, 0xd7, 0xed, 0x37, 0x00, 0xab, 0xdb, 0x83, 0x7a, 0xf0, 0x4f, 0x71, 0x84,
+	0x87, 0x7d, 0x9f, 0xa5, 0x91, 0xf0, 0xc8, 0x0d, 0xa6, 0xe5, 0x5b, 0xf2, 0x77, 0x91, 0xec, 0xe7,
+	0x39, 0x2b, 0x4b, 0x65, 0x9a, 0x12, 0x9f, 0xc5, 0x4b, 0x4d, 0x12, 0xb4, 0xdf, 0x41, 0x63, 0x79,
+	0x97, 0xee, 0x44, 0xdb, 0x84, 0x1d, 0x9c, 0x06, 0x94, 0x64, 0x42, 0x72, 0xe6, 0x25, 0x7e, 0x9c,
+	0x00, 0xac, 0xec, 0x86, 0xf6, 0xe1, 0xbf, 0xa1, 0xeb, 0xda, 0xde, 0x99, 0xe5, 0x0e, 0xc7, 0x03,
+	0xef, 0xf2, 0xfc, 0xc2, 0xb6, 0x8e, 0x47, 0x27, 0x23, 0x6b, 0xa0, 0x6f, 0xa1, 0x1d, 0xa8, 0xd8,
+	0xe3, 0x0b, 0x57, 0x57, 0x50, 0x1d, 0xd4, 0x53, 0xcb, 0xd5, 0xb7, 0xb3, 0xd0, 0xd0, 0xea, 0x0f,
+	0x74, 0x35, 0x0b, 0xd9, 0x97, 0xae, 0x5e, 0x41, 0x00, 0xb5, 0x81, 0xf5, 0xca, 0x72, 0x2d, 0xbd,
+	0x8a, 0x1a, 0x50, 0xb5, 0xfb, 0xee, 0xf1, 0x50, 0xaf, 0x21, 0x0d, 0xea, 0x63, 0xdb, 0x1d, 0x8d,
+	0xcf, 0x2f, 0xf4, 0xfa, 0x51, 0x0c, 0xf7, 0x7c, 0x76, 0xb3, 0xc1, 0x3e, 0x47, 0x9a, 0x2b, 0xdf,
+	0x73, 0x3b, 0x7b, 0x94, 0x6d, 0xe5, 0xea, 0x65, 0x51, 0x1a, 0xb2, 0x19, 0x8e, 0x42, 0x93, 0xf1,
+	0xb0, 0x1b, 0x92, 0x48, 0x3e, 0xd9, 0xdd, 0x3c, 0x85, 0x63, 0x9a, 0xfc, 0xe8, 0xc7, 0xf0, 0x5c,
+	0xa2, 0xeb, 0x9a, 0xac, 0x3d, 0xf8, 0x12, 0x00, 0x00, 0xff, 0xff, 0xf1, 0xca, 0x64, 0x96, 0x43,
+	0x06, 0x00, 0x00,
 }

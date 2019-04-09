@@ -44,10 +44,10 @@ const (
 	// A voicemail.
 	Phone_VOICEMAIL Phone_PhoneType = 6
 	// A virtual telephone number is a number that can be routed to another
-	// number and managed by the user via Web, SMS, IVR, etc.  It is associated
-	// with a particular person, and may be routed to either a MOBILE or
-	// LANDLINE number. The phone usage (see ContactInfoUsage above) should be
-	// set to PERSONAL for these phone types. Some more information can be
+	// number and managed by the user via Web, SMS, IVR, and so on.  It is
+	// associated with a particular person, and may be routed to either a MOBILE
+	// or LANDLINE number. The phone usage (see ContactInfoUsage above) should
+	// be set to PERSONAL for these phone types. Some more information can be
 	// found here: http://en.wikipedia.org/wiki/Personal_Numbers
 	Phone_VIRTUAL Phone_PhoneType = 7
 	// Voice over IP numbers. This includes TSoIP (Telephony Service over IP).
@@ -86,13 +86,12 @@ func (x Phone_PhoneType) String() string {
 	return proto.EnumName(Phone_PhoneType_name, int32(x))
 }
 func (Phone_PhoneType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{4, 0}
+	return fileDescriptor_profile_637e0db3490dca44, []int{4, 0}
 }
 
 // A resource that represents the profile for a job candidate (also referred to
-// as a "single-source profile"). A profile belongs to a
-// [Company][google.cloud.talent.v4beta1.Company], which is the
-// company/organization that owns the profile.
+// as a "single-source profile"). A profile belongs to a [Company][google.cloud.talent.v4beta1.Company], which is
+// the company/organization that owns the profile.
 type Profile struct {
 	// Required during profile update.
 	//
@@ -128,22 +127,17 @@ type Profile struct {
 	// The cluster id of the profile to associate with other profile(s) for the
 	// same candidate.
 	//
-	// A random UUID is assigned if
-	// [group_id][google.cloud.talent.v4beta1.Profile.group_id] isn't provided. To
-	// ensure global uniqueness, customized
-	// [group_id][google.cloud.talent.v4beta1.Profile.group_id] isn't supported.
-	// If [group_id][google.cloud.talent.v4beta1.Profile.group_id] is set, there
-	// must be at least one other profile with the same system generated
-	// [group_id][google.cloud.talent.v4beta1.Profile.group_id], otherwise an
-	// error is thrown.
+	// A random UUID is assigned if [group_id][google.cloud.talent.v4beta1.Profile.group_id] isn't provided. To ensure
+	// global uniqueness, customized [group_id][google.cloud.talent.v4beta1.Profile.group_id] isn't supported. If
+	// [group_id][google.cloud.talent.v4beta1.Profile.group_id] is set, there must be at least one other profile with the
+	// same system generated [group_id][google.cloud.talent.v4beta1.Profile.group_id], otherwise an error is thrown.
 	//
 	// This is used to link multiple profiles to the same candidate. For example,
 	// a client has a candidate with two profiles, where one was created recently
 	// and the other one was created 5 years ago. These two profiles may be very
 	// different. The clients can create the first profile and get a generated
-	// [group_id][google.cloud.talent.v4beta1.Profile.group_id], and assign it
-	// when the second profile is created, indicating these two profiles are
-	// referring to the same candidate.
+	// [group_id][google.cloud.talent.v4beta1.Profile.group_id], and assign it when the second profile is created,
+	// indicating these two profiles are referring to the same candidate.
 	GroupId string `protobuf:"bytes,5,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
 	// Optional.
 	//
@@ -163,21 +157,15 @@ type Profile struct {
 	// See http://schemas.liquid-technologies.com/hr-xml/2007-04-15/ for more
 	// information about Human Resources XML.
 	//
-	// Users can create a profile with only
-	// [resume_hrxml][google.cloud.talent.v4beta1.Profile.resume_hrxml] field. For
-	// example, the API parses the
-	// [resume_hrxml][google.cloud.talent.v4beta1.Profile.resume_hrxml] and
-	// creates a profile with all structured fields populated, for example.
-	// [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord],
-	// [EducationRecord][google.cloud.talent.v4beta1.EducationRecord], etc. An
-	// error is thrown if the
-	// [resume_hrxml][google.cloud.talent.v4beta1.Profile.resume_hrxml] can't be
-	// parsed.
+	// Users can create a profile with only [resume_hrxml][google.cloud.talent.v4beta1.Profile.resume_hrxml] field. For example,
+	// the API parses the [resume_hrxml][google.cloud.talent.v4beta1.Profile.resume_hrxml] and creates a profile with all
+	// structured fields populated, for example. [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord],
+	// [EducationRecord][google.cloud.talent.v4beta1.EducationRecord], and so on. An error is thrown if the [resume_hrxml][google.cloud.talent.v4beta1.Profile.resume_hrxml]
+	// can't be parsed.
 	//
-	// If the [resume_hrxml][google.cloud.talent.v4beta1.Profile.resume_hrxml] is
-	// provided during profile creation or update, any other structured data
-	// provided in the profile is ignored. The API populates these fields by
-	// parsing the HR-XML.
+	// If the [resume_hrxml][google.cloud.talent.v4beta1.Profile.resume_hrxml] is provided during profile creation or update,
+	// any other structured data provided in the profile is ignored. The
+	// API populates these fields by parsing the HR-XML.
 	ResumeHrxml string `protobuf:"bytes,10,opt,name=resume_hrxml,json=resumeHrxml,proto3" json:"resume_hrxml,omitempty"`
 	// Optional.
 	//
@@ -203,12 +191,8 @@ type Profile struct {
 	PersonalUris []*PersonalUri `protobuf:"bytes,15,rep,name=personal_uris,json=personalUris,proto3" json:"personal_uris,omitempty"`
 	// Optional.
 	//
-	// Available contact information besides
-	// [addresses][google.cloud.talent.v4beta1.Profile.addresses],
-	// [email_addresses][google.cloud.talent.v4beta1.Profile.email_addresses],
-	// [phone_numbers][google.cloud.talent.v4beta1.Profile.phone_numbers] and
-	// [personal_uris][google.cloud.talent.v4beta1.Profile.personal_uris]. For
-	// example, Hang-out, Skype.
+	// Available contact information besides [addresses][google.cloud.talent.v4beta1.Profile.addresses], [email_addresses][google.cloud.talent.v4beta1.Profile.email_addresses],
+	// [phone_numbers][google.cloud.talent.v4beta1.Profile.phone_numbers] and [personal_uris][google.cloud.talent.v4beta1.Profile.personal_uris]. For example, Hang-out, Skype.
 	AdditionalContactInfo []*AdditionalContactInfo `protobuf:"bytes,16,rep,name=additional_contact_info,json=additionalContactInfo,proto3" json:"additional_contact_info,omitempty"`
 	// Optional.
 	//
@@ -221,10 +205,8 @@ type Profile struct {
 	// change is.
 	// For example, only job title is changed from "software engineer" to "senior
 	// software engineer".
-	// * Provide
-	// [EmploymentRecord.is_current][google.cloud.talent.v4beta1.EmploymentRecord.is_current]
-	// for the current employment if possible. If not, it's inferred from user
-	// inputs.
+	// * Provide [EmploymentRecord.is_current][google.cloud.talent.v4beta1.EmploymentRecord.is_current] for the current employment if
+	// possible. If not, it's inferred from user inputs.
 	EmploymentRecords []*EmploymentRecord `protobuf:"bytes,17,rep,name=employment_records,json=employmentRecords,proto3" json:"employment_records,omitempty"`
 	// Optional.
 	//
@@ -236,10 +218,8 @@ type Profile struct {
 	// * List each education type separately, no matter how minor the change is.
 	// For example, the profile contains the education experience from the same
 	// school but different degrees.
-	// * Provide
-	// [EducationRecord.is_current][google.cloud.talent.v4beta1.EducationRecord.is_current]
-	// for the current education if possible. If not, it's inferred from user
-	// inputs.
+	// * Provide [EducationRecord.is_current][google.cloud.talent.v4beta1.EducationRecord.is_current] for the current education if
+	// possible. If not, it's inferred from user inputs.
 	EducationRecords []*EducationRecord `protobuf:"bytes,18,rep,name=education_records,json=educationRecords,proto3" json:"education_records,omitempty"`
 	// Optional.
 	//
@@ -250,8 +230,7 @@ type Profile struct {
 	//
 	// The individual or collaborative activities which the candidate has
 	// participated in, for example, open-source projects, class assignments that
-	// aren't listed in
-	// [employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
+	// aren't listed in [employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
 	Activities []*Activity `protobuf:"bytes,20,rep,name=activities,proto3" json:"activities,omitempty"`
 	// Optional.
 	//
@@ -273,8 +252,7 @@ type Profile struct {
 	//
 	// A map of fields to hold both filterable and non-filterable custom profile
 	// attributes that aren't covered by the provided structured fields. See
-	// [CustomAttribute][google.cloud.talent.v4beta1.CustomAttribute] for more
-	// details.
+	// [CustomAttribute][google.cloud.talent.v4beta1.CustomAttribute] for more details.
 	//
 	// At most 100 filterable and at most 100 unfilterable keys are supported. If
 	// limit is exceeded, an error is thrown. Custom attributes are `unfilterable`
@@ -305,7 +283,7 @@ func (m *Profile) Reset()         { *m = Profile{} }
 func (m *Profile) String() string { return proto.CompactTextString(m) }
 func (*Profile) ProtoMessage()    {}
 func (*Profile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{0}
+	return fileDescriptor_profile_637e0db3490dca44, []int{0}
 }
 func (m *Profile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Profile.Unmarshal(m, b)
@@ -536,7 +514,7 @@ func (m *PersonName) Reset()         { *m = PersonName{} }
 func (m *PersonName) String() string { return proto.CompactTextString(m) }
 func (*PersonName) ProtoMessage()    {}
 func (*PersonName) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{1}
+	return fileDescriptor_profile_637e0db3490dca44, []int{1}
 }
 func (m *PersonName) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PersonName.Unmarshal(m, b)
@@ -676,9 +654,7 @@ type PersonName_PersonStructuredName struct {
 	//
 	// Given/first name.
 	//
-	// It's derived from
-	// [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name]
-	// if not provided.
+	// It's derived from [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name] if not provided.
 	//
 	// Number of characters allowed is 100.
 	GivenName string `protobuf:"bytes,1,opt,name=given_name,json=givenName,proto3" json:"given_name,omitempty"`
@@ -686,9 +662,7 @@ type PersonName_PersonStructuredName struct {
 	//
 	// Middle initial.
 	//
-	// It's derived from
-	// [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name]
-	// if not provided.
+	// It's derived from [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name] if not provided.
 	//
 	// Number of characters allowed is 20.
 	MiddleInitial string `protobuf:"bytes,2,opt,name=middle_initial,json=middleInitial,proto3" json:"middle_initial,omitempty"`
@@ -696,9 +670,7 @@ type PersonName_PersonStructuredName struct {
 	//
 	// Family/last name.
 	//
-	// It's derived from
-	// [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name]
-	// if not provided.
+	// It's derived from [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name] if not provided.
 	//
 	// Number of characters allowed is 100.
 	FamilyName string `protobuf:"bytes,3,opt,name=family_name,json=familyName,proto3" json:"family_name,omitempty"`
@@ -723,7 +695,7 @@ func (m *PersonName_PersonStructuredName) Reset()         { *m = PersonName_Pers
 func (m *PersonName_PersonStructuredName) String() string { return proto.CompactTextString(m) }
 func (*PersonName_PersonStructuredName) ProtoMessage()    {}
 func (*PersonName_PersonStructuredName) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{1, 0}
+	return fileDescriptor_profile_637e0db3490dca44, []int{1, 0}
 }
 func (m *PersonName_PersonStructuredName) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PersonName_PersonStructuredName.Unmarshal(m, b)
@@ -804,7 +776,7 @@ func (m *Address) Reset()         { *m = Address{} }
 func (m *Address) String() string { return proto.CompactTextString(m) }
 func (*Address) ProtoMessage()    {}
 func (*Address) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{2}
+	return fileDescriptor_profile_637e0db3490dca44, []int{2}
 }
 func (m *Address) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Address.Unmarshal(m, b)
@@ -966,7 +938,7 @@ func (m *Email) Reset()         { *m = Email{} }
 func (m *Email) String() string { return proto.CompactTextString(m) }
 func (*Email) ProtoMessage()    {}
 func (*Email) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{3}
+	return fileDescriptor_profile_637e0db3490dca44, []int{3}
 }
 func (m *Email) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Email.Unmarshal(m, b)
@@ -1036,7 +1008,7 @@ func (m *Phone) Reset()         { *m = Phone{} }
 func (m *Phone) String() string { return proto.CompactTextString(m) }
 func (*Phone) ProtoMessage()    {}
 func (*Phone) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{4}
+	return fileDescriptor_profile_637e0db3490dca44, []int{4}
 }
 func (m *Phone) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Phone.Unmarshal(m, b)
@@ -1101,7 +1073,7 @@ func (m *PersonalUri) Reset()         { *m = PersonalUri{} }
 func (m *PersonalUri) String() string { return proto.CompactTextString(m) }
 func (*PersonalUri) ProtoMessage()    {}
 func (*PersonalUri) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{5}
+	return fileDescriptor_profile_637e0db3490dca44, []int{5}
 }
 func (m *PersonalUri) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PersonalUri.Unmarshal(m, b)
@@ -1158,7 +1130,7 @@ func (m *AdditionalContactInfo) Reset()         { *m = AdditionalContactInfo{} }
 func (m *AdditionalContactInfo) String() string { return proto.CompactTextString(m) }
 func (*AdditionalContactInfo) ProtoMessage()    {}
 func (*AdditionalContactInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{6}
+	return fileDescriptor_profile_637e0db3490dca44, []int{6}
 }
 func (m *AdditionalContactInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdditionalContactInfo.Unmarshal(m, b)
@@ -1226,7 +1198,7 @@ type EmploymentRecord struct {
 	//
 	// The name of the employer company/organization.
 	//
-	// For example, "Google", "Alphabet", etc.
+	// For example, "Google", "Alphabet", and so on.
 	//
 	// Number of characters allowed is 100.
 	EmployerName string `protobuf:"bytes,3,opt,name=employer_name,json=employerName,proto3" json:"employer_name,omitempty"`
@@ -1234,7 +1206,7 @@ type EmploymentRecord struct {
 	//
 	// The division name of the employment.
 	//
-	// For example, division, department, client, etc.
+	// For example, division, department, client, and so on.
 	//
 	// Number of characters allowed is 100.
 	DivisionName string `protobuf:"bytes,4,opt,name=division_name,json=divisionName,proto3" json:"division_name,omitempty"`
@@ -1246,7 +1218,7 @@ type EmploymentRecord struct {
 	//
 	// The job title of the employment.
 	//
-	// For example, "Software Engineer", "Data Scientist", etc.
+	// For example, "Software Engineer", "Data Scientist", and so on.
 	//
 	// Number of characters allowed is 100.
 	JobTitle string `protobuf:"bytes,6,opt,name=job_title,json=jobTitle,proto3" json:"job_title,omitempty"`
@@ -1258,7 +1230,7 @@ type EmploymentRecord struct {
 	JobDescription string `protobuf:"bytes,7,opt,name=job_description,json=jobDescription,proto3" json:"job_description,omitempty"`
 	// Optional.
 	//
-	// If it is a supervisor position.
+	// If the jobs is a supervisor position.
 	IsSupervisor *wrappers.BoolValue `protobuf:"bytes,8,opt,name=is_supervisor,json=isSupervisor,proto3" json:"is_supervisor,omitempty"`
 	// Optional.
 	//
@@ -1268,23 +1240,17 @@ type EmploymentRecord struct {
 	//
 	// If this employment is current.
 	IsCurrent *wrappers.BoolValue `protobuf:"bytes,10,opt,name=is_current,json=isCurrent,proto3" json:"is_current,omitempty"`
-	// Output only. The job title snippet shows how the
-	// [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
-	// related to a search query. It's empty if the
-	// [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
-	// related to the search query.
+	// Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
+	// to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
+	// search query.
 	JobTitleSnippet string `protobuf:"bytes,11,opt,name=job_title_snippet,json=jobTitleSnippet,proto3" json:"job_title_snippet,omitempty"`
-	// Output only. The job description snippet shows how the
-	// [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-	// is related to a search query. It's empty if the
-	// [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-	// isn't related to the search query.
+	// Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+	// is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
+	// related to the search query.
 	JobDescriptionSnippet string `protobuf:"bytes,12,opt,name=job_description_snippet,json=jobDescriptionSnippet,proto3" json:"job_description_snippet,omitempty"`
-	// Output only. The employer name snippet shows how the
-	// [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
-	// is related to a search query. It's empty if the
-	// [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
-	// isn't related to the search query.
+	// Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
+	// related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
+	// related to the search query.
 	EmployerNameSnippet  string   `protobuf:"bytes,13,opt,name=employer_name_snippet,json=employerNameSnippet,proto3" json:"employer_name_snippet,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1295,7 +1261,7 @@ func (m *EmploymentRecord) Reset()         { *m = EmploymentRecord{} }
 func (m *EmploymentRecord) String() string { return proto.CompactTextString(m) }
 func (*EmploymentRecord) ProtoMessage()    {}
 func (*EmploymentRecord) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{7}
+	return fileDescriptor_profile_637e0db3490dca44, []int{7}
 }
 func (m *EmploymentRecord) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EmploymentRecord.Unmarshal(m, b)
@@ -1424,7 +1390,7 @@ type EducationRecord struct {
 	//
 	// The name of the school or institution.
 	//
-	// For example, "Stanford University", "UC Berkeley", etc.
+	// For example, "Stanford University", "UC Berkeley", and so on.
 	//
 	// Number of characters allowed is 100.
 	SchoolName string `protobuf:"bytes,4,opt,name=school_name,json=schoolName,proto3" json:"school_name,omitempty"`
@@ -1449,17 +1415,13 @@ type EducationRecord struct {
 	//
 	// If this education is current.
 	IsCurrent *wrappers.BoolValue `protobuf:"bytes,9,opt,name=is_current,json=isCurrent,proto3" json:"is_current,omitempty"`
-	// Output only. The school name snippet shows how the
-	// [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
+	// Output only. The school name snippet shows how the [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
 	// related to a search query in search result. It's empty if the
-	// [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name]
-	// isn't related to the search query.
+	// [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] isn't related to the search query.
 	SchoolNameSnippet string `protobuf:"bytes,10,opt,name=school_name_snippet,json=schoolNameSnippet,proto3" json:"school_name_snippet,omitempty"`
-	// Output only. The job description snippet shows how the
-	// [degree][google.cloud.talent.v4beta1.degree] is related to a search query
-	// in search result. It's empty if the
-	// [degree][google.cloud.talent.v4beta1.degree] isn't related to the search
-	// query.
+	// Output only. The job description snippet shows how the [degree][google.cloud.talent.v4beta1.degree] is
+	// related to a search query in search result. It's empty if the [degree][google.cloud.talent.v4beta1.degree]
+	// isn't related to the search query.
 	DegreeSnippet        string   `protobuf:"bytes,11,opt,name=degree_snippet,json=degreeSnippet,proto3" json:"degree_snippet,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1470,7 +1432,7 @@ func (m *EducationRecord) Reset()         { *m = EducationRecord{} }
 func (m *EducationRecord) String() string { return proto.CompactTextString(m) }
 func (*EducationRecord) ProtoMessage()    {}
 func (*EducationRecord) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{8}
+	return fileDescriptor_profile_637e0db3490dca44, []int{8}
 }
 func (m *EducationRecord) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EducationRecord.Unmarshal(m, b)
@@ -1670,7 +1632,7 @@ type Degree struct {
 	//
 	// Full Degree name.
 	//
-	// For example, "B.S.", "Master of Arts", etc.
+	// For example, "B.S.", "Master of Arts", and so on.
 	//
 	// Number of characters allowed is 100.
 	DegreeName string `protobuf:"bytes,2,opt,name=degree_name,json=degreeName,proto3" json:"degree_name,omitempty"`
@@ -1691,7 +1653,7 @@ func (m *Degree) Reset()         { *m = Degree{} }
 func (m *Degree) String() string { return proto.CompactTextString(m) }
 func (*Degree) ProtoMessage()    {}
 func (*Degree) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{9}
+	return fileDescriptor_profile_637e0db3490dca44, []int{9}
 }
 func (m *Degree) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Degree.Unmarshal(m, b)
@@ -1734,7 +1696,7 @@ func (m *Degree) GetFieldsOfStudy() []string {
 
 // Resource that represents an individual or collaborative activity participated
 // in by a candidate, for example, an open-source project, a class assignment,
-// etc.
+// and so on.
 type Activity struct {
 	// Optional.
 	//
@@ -1772,23 +1734,17 @@ type Activity struct {
 	//
 	// A list of skills used in this activity.
 	SkillsUsed []*Skill `protobuf:"bytes,7,rep,name=skills_used,json=skillsUsed,proto3" json:"skills_used,omitempty"`
-	// Output only. Activity name snippet shows how the
-	// [display_name][google.cloud.talent.v4beta1.Activity.display_name] is
-	// related to a search query. It's empty if the
-	// [display_name][google.cloud.talent.v4beta1.Activity.display_name] isn't
-	// related to the search query.
+	// Output only. Activity name snippet shows how the [display_name][google.cloud.talent.v4beta1.Activity.display_name] is
+	// related to a search query. It's empty if the [display_name][google.cloud.talent.v4beta1.Activity.display_name] isn't related
+	// to the search query.
 	ActivityNameSnippet string `protobuf:"bytes,8,opt,name=activity_name_snippet,json=activityNameSnippet,proto3" json:"activity_name_snippet,omitempty"`
 	// Output only. Activity description snippet shows how the
-	// [description][google.cloud.talent.v4beta1.Activity.description] is related
-	// to a search query. It's empty if the
-	// [description][google.cloud.talent.v4beta1.Activity.description] isn't
-	// related to the search query.
+	// [description][google.cloud.talent.v4beta1.Activity.description] is related to a search query. It's empty if the
+	// [description][google.cloud.talent.v4beta1.Activity.description] isn't related to the search query.
 	ActivityDescriptionSnippet string `protobuf:"bytes,9,opt,name=activity_description_snippet,json=activityDescriptionSnippet,proto3" json:"activity_description_snippet,omitempty"`
 	// Output only. Skill used snippet shows how the corresponding
-	// [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related
-	// to a search query. It's empty if the corresponding
-	// [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not
-	// related to the search query.
+	// [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related to a search query. It's empty if the
+	// corresponding [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not related to the search query.
 	SkillsUsedSnippet    []string `protobuf:"bytes,10,rep,name=skills_used_snippet,json=skillsUsedSnippet,proto3" json:"skills_used_snippet,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1799,7 +1755,7 @@ func (m *Activity) Reset()         { *m = Activity{} }
 func (m *Activity) String() string { return proto.CompactTextString(m) }
 func (*Activity) ProtoMessage()    {}
 func (*Activity) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{10}
+	return fileDescriptor_profile_637e0db3490dca44, []int{10}
 }
 func (m *Activity) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Activity.Unmarshal(m, b)
@@ -1952,7 +1908,7 @@ func (m *Publication) Reset()         { *m = Publication{} }
 func (m *Publication) String() string { return proto.CompactTextString(m) }
 func (*Publication) ProtoMessage()    {}
 func (*Publication) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{11}
+	return fileDescriptor_profile_637e0db3490dca44, []int{11}
 }
 func (m *Publication) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Publication.Unmarshal(m, b)
@@ -2094,7 +2050,7 @@ func (m *Patent) Reset()         { *m = Patent{} }
 func (m *Patent) String() string { return proto.CompactTextString(m) }
 func (*Patent) ProtoMessage()    {}
 func (*Patent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_e7f0ff6ef67f503e, []int{12}
+	return fileDescriptor_profile_637e0db3490dca44, []int{12}
 }
 func (m *Patent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Patent.Unmarshal(m, b)
@@ -2197,10 +2153,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/profile.proto", fileDescriptor_profile_e7f0ff6ef67f503e)
+	proto.RegisterFile("google/cloud/talent/v4beta1/profile.proto", fileDescriptor_profile_637e0db3490dca44)
 }
 
-var fileDescriptor_profile_e7f0ff6ef67f503e = []byte{
+var fileDescriptor_profile_637e0db3490dca44 = []byte{
 	// 2205 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x58, 0x4b, 0x6f, 0x1b, 0xc9,
 	0x11, 0x16, 0x49, 0xf1, 0x31, 0xc5, 0x87, 0xa8, 0xb6, 0x25, 0x4f, 0x64, 0x6f, 0x2c, 0xd3, 0x71,

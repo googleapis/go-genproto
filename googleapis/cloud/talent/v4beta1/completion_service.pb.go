@@ -52,7 +52,7 @@ func (x CompleteQueryRequest_CompletionScope) String() string {
 	return proto.EnumName(CompleteQueryRequest_CompletionScope_name, int32(x))
 }
 func (CompleteQueryRequest_CompletionScope) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_63a049172403d28c, []int{0, 0}
+	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{0, 0}
 }
 
 // Enum to specify auto-completion topics.
@@ -86,7 +86,7 @@ func (x CompleteQueryRequest_CompletionType) String() string {
 	return proto.EnumName(CompleteQueryRequest_CompletionType_name, int32(x))
 }
 func (CompleteQueryRequest_CompletionType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_63a049172403d28c, []int{0, 1}
+	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{0, 1}
 }
 
 // Input only.
@@ -116,25 +116,16 @@ type CompleteQueryRequest struct {
 	// For more information, see
 	// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
 	//
-	// For
-	// [CompletionType.JOB_TITLE][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.JOB_TITLE]
-	// type, only open jobs with the same
-	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes]
-	// are returned.
+	// For [CompletionType.JOB_TITLE][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.JOB_TITLE] type, only open jobs with the same
+	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes] are returned.
 	//
-	// For
-	// [CompletionType.COMPANY_NAME][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMPANY_NAME]
-	// type, only companies having open jobs with the same
-	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes]
-	// are returned.
+	// For [CompletionType.COMPANY_NAME][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMPANY_NAME] type,
+	// only companies having open jobs with the same [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes] are
+	// returned.
 	//
-	// For
-	// [CompletionType.COMBINED][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMBINED]
-	// type, only open jobs with the same
-	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes]
-	// or companies having open jobs with the same
-	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes]
-	// are returned.
+	// For [CompletionType.COMBINED][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMBINED] type, only open jobs with the same
+	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes] or companies having open jobs with the same
+	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes] are returned.
 	//
 	// The maximum number of allowed characters is 255.
 	LanguageCodes []string `protobuf:"bytes,3,rep,name=language_codes,json=languageCodes,proto3" json:"language_codes,omitempty"`
@@ -157,13 +148,11 @@ type CompleteQueryRequest struct {
 	Company string `protobuf:"bytes,5,opt,name=company,proto3" json:"company,omitempty"`
 	// Optional.
 	//
-	// The scope of the completion. The defaults is
-	// [CompletionScope.PUBLIC][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionScope.PUBLIC].
+	// The scope of the completion. The defaults is [CompletionScope.PUBLIC][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionScope.PUBLIC].
 	Scope CompleteQueryRequest_CompletionScope `protobuf:"varint,6,opt,name=scope,proto3,enum=google.cloud.talent.v4beta1.CompleteQueryRequest_CompletionScope" json:"scope,omitempty"`
 	// Optional.
 	//
-	// The completion topic. The default is
-	// [CompletionType.COMBINED][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMBINED].
+	// The completion topic. The default is [CompletionType.COMBINED][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMBINED].
 	Type                 CompleteQueryRequest_CompletionType `protobuf:"varint,7,opt,name=type,proto3,enum=google.cloud.talent.v4beta1.CompleteQueryRequest_CompletionType" json:"type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
 	XXX_unrecognized     []byte                              `json:"-"`
@@ -174,7 +163,7 @@ func (m *CompleteQueryRequest) Reset()         { *m = CompleteQueryRequest{} }
 func (m *CompleteQueryRequest) String() string { return proto.CompactTextString(m) }
 func (*CompleteQueryRequest) ProtoMessage()    {}
 func (*CompleteQueryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_63a049172403d28c, []int{0}
+	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{0}
 }
 func (m *CompleteQueryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompleteQueryRequest.Unmarshal(m, b)
@@ -261,7 +250,7 @@ func (m *CompleteQueryResponse) Reset()         { *m = CompleteQueryResponse{} }
 func (m *CompleteQueryResponse) String() string { return proto.CompactTextString(m) }
 func (*CompleteQueryResponse) ProtoMessage()    {}
 func (*CompleteQueryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_63a049172403d28c, []int{1}
+	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{1}
 }
 func (m *CompleteQueryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompleteQueryResponse.Unmarshal(m, b)
@@ -316,7 +305,7 @@ func (m *CompleteQueryResponse_CompletionResult) Reset() {
 func (m *CompleteQueryResponse_CompletionResult) String() string { return proto.CompactTextString(m) }
 func (*CompleteQueryResponse_CompletionResult) ProtoMessage()    {}
 func (*CompleteQueryResponse_CompletionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_63a049172403d28c, []int{1, 0}
+	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{1, 0}
 }
 func (m *CompleteQueryResponse_CompletionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompleteQueryResponse_CompletionResult.Unmarshal(m, b)
@@ -442,10 +431,10 @@ var _Completion_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/completion_service.proto", fileDescriptor_completion_service_63a049172403d28c)
+	proto.RegisterFile("google/cloud/talent/v4beta1/completion_service.proto", fileDescriptor_completion_service_173bc7e96092a1f3)
 }
 
-var fileDescriptor_completion_service_63a049172403d28c = []byte{
+var fileDescriptor_completion_service_173bc7e96092a1f3 = []byte{
 	// 652 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0x6f, 0x6b, 0xd3, 0x5e,
 	0x14, 0xc7, 0x7f, 0x49, 0xd7, 0xae, 0x3d, 0xfb, 0xf3, 0x8b, 0x97, 0x39, 0x42, 0x37, 0x5c, 0x29,
