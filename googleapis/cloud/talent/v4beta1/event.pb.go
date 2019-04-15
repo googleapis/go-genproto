@@ -52,9 +52,7 @@ const (
 	// submitted an application for a job with a single click without
 	// entering information. If a job seeker performs this action, send only
 	// this event to the service. Do not also send
-	// [JobEventType.APPLICATION_START][google.cloud.talent.v4beta1.JobEvent.JobEventType.APPLICATION_START]
-	// or
-	// [JobEventType.APPLICATION_FINISH][google.cloud.talent.v4beta1.JobEvent.JobEventType.APPLICATION_FINISH]
+	// [JobEventType.APPLICATION_START][google.cloud.talent.v4beta1.JobEvent.JobEventType.APPLICATION_START] or [JobEventType.APPLICATION_FINISH][google.cloud.talent.v4beta1.JobEvent.JobEventType.APPLICATION_FINISH]
 	// events.
 	JobEvent_APPLICATION_QUICK_SUBMISSION JobEvent_JobEventType = 6
 	// The job seeker or other entity interacting with the service
@@ -71,12 +69,8 @@ const (
 	// (without viewing the details of the job posting), and is redirected
 	// to a different website to complete the application. If a candidate
 	// performs this action, send only this event to the service. Do not also
-	// send
-	// [JobEventType.APPLICATION_START][google.cloud.talent.v4beta1.JobEvent.JobEventType.APPLICATION_START],
-	// [JobEventType.APPLICATION_FINISH][google.cloud.talent.v4beta1.JobEvent.JobEventType.APPLICATION_FINISH]
-	// or
-	// [JobEventType.VIEW][google.cloud.talent.v4beta1.JobEvent.JobEventType.VIEW]
-	// events.
+	// send [JobEventType.APPLICATION_START][google.cloud.talent.v4beta1.JobEvent.JobEventType.APPLICATION_START],
+	// [JobEventType.APPLICATION_FINISH][google.cloud.talent.v4beta1.JobEvent.JobEventType.APPLICATION_FINISH] or [JobEventType.VIEW][google.cloud.talent.v4beta1.JobEvent.JobEventType.VIEW] events.
 	JobEvent_APPLICATION_REDIRECT_FROM_SEARCH JobEvent_JobEventType = 9
 	// This event should be used when a company submits an application
 	// on behalf of a job seeker. This event is intended for use by staffing
@@ -153,7 +147,7 @@ func (x JobEvent_JobEventType) String() string {
 	return proto.EnumName(JobEvent_JobEventType_name, int32(x))
 }
 func (JobEvent_JobEventType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_event_30ed8ed0b5821da9, []int{1, 0}
+	return fileDescriptor_event_63120bd8ed2e89e0, []int{1, 0}
 }
 
 // The enum represents types of client events for a candidate profile.
@@ -187,7 +181,7 @@ func (x ProfileEvent_ProfileEventType) String() string {
 	return proto.EnumName(ProfileEvent_ProfileEventType_name, int32(x))
 }
 func (ProfileEvent_ProfileEventType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_event_30ed8ed0b5821da9, []int{2, 0}
+	return fileDescriptor_event_63120bd8ed2e89e0, []int{2, 0}
 }
 
 // An event issued when an end user interacts with the application that
@@ -231,7 +225,7 @@ func (m *ClientEvent) Reset()         { *m = ClientEvent{} }
 func (m *ClientEvent) String() string { return proto.CompactTextString(m) }
 func (*ClientEvent) ProtoMessage()    {}
 func (*ClientEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_30ed8ed0b5821da9, []int{0}
+	return fileDescriptor_event_63120bd8ed2e89e0, []int{0}
 }
 func (m *ClientEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClientEvent.Unmarshal(m, b)
@@ -395,18 +389,15 @@ func _ClientEvent_OneofSizer(msg proto.Message) (n int) {
 type JobEvent struct {
 	// Required.
 	//
-	// The type of the event (see
-	// [JobEventType][google.cloud.talent.v4beta1.JobEvent.JobEventType]).
+	// The type of the event (see [JobEventType][google.cloud.talent.v4beta1.JobEvent.JobEventType]).
 	Type JobEvent_JobEventType `protobuf:"varint,1,opt,name=type,proto3,enum=google.cloud.talent.v4beta1.JobEvent_JobEventType" json:"type,omitempty"`
 	// Required.
 	//
-	// The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
-	// this event. For example, if this is an
-	// [impression][google.cloud.talent.v4beta1.JobEvent.JobEventType.IMPRESSION]
-	// event, this field contains the identifiers of all jobs shown to the job
-	// seeker. If this was a
-	// [view][google.cloud.talent.v4beta1.JobEvent.JobEventType.VIEW] event, this
-	// field contains the identifier of the viewed job.
+	// The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with this event.
+	// For example, if this is an [impression][google.cloud.talent.v4beta1.JobEvent.JobEventType.IMPRESSION] event,
+	// this field contains the identifiers of all jobs shown to the job seeker.
+	// If this was a [view][google.cloud.talent.v4beta1.JobEvent.JobEventType.VIEW] event, this field contains the
+	// identifier of the viewed job.
 	Jobs                 []string `protobuf:"bytes,2,rep,name=jobs,proto3" json:"jobs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -417,7 +408,7 @@ func (m *JobEvent) Reset()         { *m = JobEvent{} }
 func (m *JobEvent) String() string { return proto.CompactTextString(m) }
 func (*JobEvent) ProtoMessage()    {}
 func (*JobEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_30ed8ed0b5821da9, []int{1}
+	return fileDescriptor_event_63120bd8ed2e89e0, []int{1}
 }
 func (m *JobEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobEvent.Unmarshal(m, b)
@@ -460,8 +451,7 @@ type ProfileEvent struct {
 	Type ProfileEvent_ProfileEventType `protobuf:"varint,1,opt,name=type,proto3,enum=google.cloud.talent.v4beta1.ProfileEvent_ProfileEventType" json:"type,omitempty"`
 	// Required.
 	//
-	// The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated
-	// with this client event.
+	// The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
 	Profiles []string `protobuf:"bytes,2,rep,name=profiles,proto3" json:"profiles,omitempty"`
 	// Optional.
 	//
@@ -480,7 +470,7 @@ func (m *ProfileEvent) Reset()         { *m = ProfileEvent{} }
 func (m *ProfileEvent) String() string { return proto.CompactTextString(m) }
 func (*ProfileEvent) ProtoMessage()    {}
 func (*ProfileEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_30ed8ed0b5821da9, []int{2}
+	return fileDescriptor_event_63120bd8ed2e89e0, []int{2}
 }
 func (m *ProfileEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProfileEvent.Unmarshal(m, b)
@@ -530,10 +520,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/event.proto", fileDescriptor_event_30ed8ed0b5821da9)
+	proto.RegisterFile("google/cloud/talent/v4beta1/event.proto", fileDescriptor_event_63120bd8ed2e89e0)
 }
 
-var fileDescriptor_event_30ed8ed0b5821da9 = []byte{
+var fileDescriptor_event_63120bd8ed2e89e0 = []byte{
 	// 682 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0xdd, 0x6e, 0xd3, 0x4c,
 	0x10, 0x6d, 0xfe, 0x93, 0x49, 0x9a, 0x6f, 0xbb, 0xfa, 0x40, 0x21, 0xf4, 0x27, 0x44, 0x20, 0xca,
