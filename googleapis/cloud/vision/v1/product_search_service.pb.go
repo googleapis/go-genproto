@@ -67,7 +67,7 @@ func (x BatchOperationMetadata_State) String() string {
 	return proto.EnumName(BatchOperationMetadata_State_name, int32(x))
 }
 func (BatchOperationMetadata_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{28, 0}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{28, 0}
 }
 
 // A Product contains ReferenceImages.
@@ -109,7 +109,7 @@ func (m *Product) Reset()         { *m = Product{} }
 func (m *Product) String() string { return proto.CompactTextString(m) }
 func (*Product) ProtoMessage()    {}
 func (*Product) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{0}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{0}
 }
 func (m *Product) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Product.Unmarshal(m, b)
@@ -181,7 +181,7 @@ func (m *Product_KeyValue) Reset()         { *m = Product_KeyValue{} }
 func (m *Product_KeyValue) String() string { return proto.CompactTextString(m) }
 func (*Product_KeyValue) ProtoMessage()    {}
 func (*Product_KeyValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{0, 0}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{0, 0}
 }
 func (m *Product_KeyValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Product_KeyValue.Unmarshal(m, b)
@@ -231,7 +231,8 @@ type ProductSet struct {
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Output only. The time at which this ProductSet was last indexed. Query
 	// results will reflect all updates before this time. If this ProductSet has
-	// never been indexed, this field is 0.
+	// never been indexed, this timestamp is the default value
+	// "1970-01-01T00:00:00Z".
 	//
 	// This field is ignored when creating a ProductSet.
 	IndexTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=index_time,json=indexTime,proto3" json:"index_time,omitempty"`
@@ -249,7 +250,7 @@ func (m *ProductSet) Reset()         { *m = ProductSet{} }
 func (m *ProductSet) String() string { return proto.CompactTextString(m) }
 func (*ProductSet) ProtoMessage()    {}
 func (*ProductSet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{1}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{1}
 }
 func (m *ProductSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductSet.Unmarshal(m, b)
@@ -332,7 +333,7 @@ func (m *ReferenceImage) Reset()         { *m = ReferenceImage{} }
 func (m *ReferenceImage) String() string { return proto.CompactTextString(m) }
 func (*ReferenceImage) ProtoMessage()    {}
 func (*ReferenceImage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{2}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{2}
 }
 func (m *ReferenceImage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReferenceImage.Unmarshal(m, b)
@@ -396,7 +397,7 @@ func (m *CreateProductRequest) Reset()         { *m = CreateProductRequest{} }
 func (m *CreateProductRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateProductRequest) ProtoMessage()    {}
 func (*CreateProductRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{3}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{3}
 }
 func (m *CreateProductRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateProductRequest.Unmarshal(m, b)
@@ -457,7 +458,7 @@ func (m *ListProductsRequest) Reset()         { *m = ListProductsRequest{} }
 func (m *ListProductsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListProductsRequest) ProtoMessage()    {}
 func (*ListProductsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{4}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{4}
 }
 func (m *ListProductsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListProductsRequest.Unmarshal(m, b)
@@ -514,7 +515,7 @@ func (m *ListProductsResponse) Reset()         { *m = ListProductsResponse{} }
 func (m *ListProductsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListProductsResponse) ProtoMessage()    {}
 func (*ListProductsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{5}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{5}
 }
 func (m *ListProductsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListProductsResponse.Unmarshal(m, b)
@@ -564,7 +565,7 @@ func (m *GetProductRequest) Reset()         { *m = GetProductRequest{} }
 func (m *GetProductRequest) String() string { return proto.CompactTextString(m) }
 func (*GetProductRequest) ProtoMessage()    {}
 func (*GetProductRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{6}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{6}
 }
 func (m *GetProductRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetProductRequest.Unmarshal(m, b)
@@ -611,7 +612,7 @@ func (m *UpdateProductRequest) Reset()         { *m = UpdateProductRequest{} }
 func (m *UpdateProductRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateProductRequest) ProtoMessage()    {}
 func (*UpdateProductRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{7}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{7}
 }
 func (m *UpdateProductRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateProductRequest.Unmarshal(m, b)
@@ -661,7 +662,7 @@ func (m *DeleteProductRequest) Reset()         { *m = DeleteProductRequest{} }
 func (m *DeleteProductRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteProductRequest) ProtoMessage()    {}
 func (*DeleteProductRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{8}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{8}
 }
 func (m *DeleteProductRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteProductRequest.Unmarshal(m, b)
@@ -710,7 +711,7 @@ func (m *CreateProductSetRequest) Reset()         { *m = CreateProductSetRequest
 func (m *CreateProductSetRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateProductSetRequest) ProtoMessage()    {}
 func (*CreateProductSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{9}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{9}
 }
 func (m *CreateProductSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateProductSetRequest.Unmarshal(m, b)
@@ -770,7 +771,7 @@ func (m *ListProductSetsRequest) Reset()         { *m = ListProductSetsRequest{}
 func (m *ListProductSetsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListProductSetsRequest) ProtoMessage()    {}
 func (*ListProductSetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{10}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{10}
 }
 func (m *ListProductSetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListProductSetsRequest.Unmarshal(m, b)
@@ -827,7 +828,7 @@ func (m *ListProductSetsResponse) Reset()         { *m = ListProductSetsResponse
 func (m *ListProductSetsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListProductSetsResponse) ProtoMessage()    {}
 func (*ListProductSetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{11}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{11}
 }
 func (m *ListProductSetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListProductSetsResponse.Unmarshal(m, b)
@@ -877,7 +878,7 @@ func (m *GetProductSetRequest) Reset()         { *m = GetProductSetRequest{} }
 func (m *GetProductSetRequest) String() string { return proto.CompactTextString(m) }
 func (*GetProductSetRequest) ProtoMessage()    {}
 func (*GetProductSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{12}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{12}
 }
 func (m *GetProductSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetProductSetRequest.Unmarshal(m, b)
@@ -922,7 +923,7 @@ func (m *UpdateProductSetRequest) Reset()         { *m = UpdateProductSetRequest
 func (m *UpdateProductSetRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateProductSetRequest) ProtoMessage()    {}
 func (*UpdateProductSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{13}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{13}
 }
 func (m *UpdateProductSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateProductSetRequest.Unmarshal(m, b)
@@ -972,7 +973,7 @@ func (m *DeleteProductSetRequest) Reset()         { *m = DeleteProductSetRequest
 func (m *DeleteProductSetRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteProductSetRequest) ProtoMessage()    {}
 func (*DeleteProductSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{14}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{14}
 }
 func (m *DeleteProductSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteProductSetRequest.Unmarshal(m, b)
@@ -1023,7 +1024,7 @@ func (m *CreateReferenceImageRequest) Reset()         { *m = CreateReferenceImag
 func (m *CreateReferenceImageRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateReferenceImageRequest) ProtoMessage()    {}
 func (*CreateReferenceImageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{15}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{15}
 }
 func (m *CreateReferenceImageRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateReferenceImageRequest.Unmarshal(m, b)
@@ -1087,7 +1088,7 @@ func (m *ListReferenceImagesRequest) Reset()         { *m = ListReferenceImagesR
 func (m *ListReferenceImagesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListReferenceImagesRequest) ProtoMessage()    {}
 func (*ListReferenceImagesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{16}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{16}
 }
 func (m *ListReferenceImagesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListReferenceImagesRequest.Unmarshal(m, b)
@@ -1145,7 +1146,7 @@ func (m *ListReferenceImagesResponse) Reset()         { *m = ListReferenceImages
 func (m *ListReferenceImagesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListReferenceImagesResponse) ProtoMessage()    {}
 func (*ListReferenceImagesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{17}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{17}
 }
 func (m *ListReferenceImagesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListReferenceImagesResponse.Unmarshal(m, b)
@@ -1203,7 +1204,7 @@ func (m *GetReferenceImageRequest) Reset()         { *m = GetReferenceImageReque
 func (m *GetReferenceImageRequest) String() string { return proto.CompactTextString(m) }
 func (*GetReferenceImageRequest) ProtoMessage()    {}
 func (*GetReferenceImageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{18}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{18}
 }
 func (m *GetReferenceImageRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetReferenceImageRequest.Unmarshal(m, b)
@@ -1247,7 +1248,7 @@ func (m *DeleteReferenceImageRequest) Reset()         { *m = DeleteReferenceImag
 func (m *DeleteReferenceImageRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteReferenceImageRequest) ProtoMessage()    {}
 func (*DeleteReferenceImageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{19}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{19}
 }
 func (m *DeleteReferenceImageRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteReferenceImageRequest.Unmarshal(m, b)
@@ -1295,7 +1296,7 @@ func (m *AddProductToProductSetRequest) Reset()         { *m = AddProductToProdu
 func (m *AddProductToProductSetRequest) String() string { return proto.CompactTextString(m) }
 func (*AddProductToProductSetRequest) ProtoMessage()    {}
 func (*AddProductToProductSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{20}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{20}
 }
 func (m *AddProductToProductSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddProductToProductSetRequest.Unmarshal(m, b)
@@ -1350,7 +1351,7 @@ func (m *RemoveProductFromProductSetRequest) Reset()         { *m = RemoveProduc
 func (m *RemoveProductFromProductSetRequest) String() string { return proto.CompactTextString(m) }
 func (*RemoveProductFromProductSetRequest) ProtoMessage()    {}
 func (*RemoveProductFromProductSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{21}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{21}
 }
 func (m *RemoveProductFromProductSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RemoveProductFromProductSetRequest.Unmarshal(m, b)
@@ -1404,7 +1405,7 @@ func (m *ListProductsInProductSetRequest) Reset()         { *m = ListProductsInP
 func (m *ListProductsInProductSetRequest) String() string { return proto.CompactTextString(m) }
 func (*ListProductsInProductSetRequest) ProtoMessage()    {}
 func (*ListProductsInProductSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{22}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{22}
 }
 func (m *ListProductsInProductSetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListProductsInProductSetRequest.Unmarshal(m, b)
@@ -1461,7 +1462,7 @@ func (m *ListProductsInProductSetResponse) Reset()         { *m = ListProductsIn
 func (m *ListProductsInProductSetResponse) String() string { return proto.CompactTextString(m) }
 func (*ListProductsInProductSetResponse) ProtoMessage()    {}
 func (*ListProductsInProductSetResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{23}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{23}
 }
 func (m *ListProductsInProductSetResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListProductsInProductSetResponse.Unmarshal(m, b)
@@ -1571,7 +1572,7 @@ func (m *ImportProductSetsGcsSource) Reset()         { *m = ImportProductSetsGcs
 func (m *ImportProductSetsGcsSource) String() string { return proto.CompactTextString(m) }
 func (*ImportProductSetsGcsSource) ProtoMessage()    {}
 func (*ImportProductSetsGcsSource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{24}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{24}
 }
 func (m *ImportProductSetsGcsSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportProductSetsGcsSource.Unmarshal(m, b)
@@ -1614,7 +1615,7 @@ func (m *ImportProductSetsInputConfig) Reset()         { *m = ImportProductSetsI
 func (m *ImportProductSetsInputConfig) String() string { return proto.CompactTextString(m) }
 func (*ImportProductSetsInputConfig) ProtoMessage()    {}
 func (*ImportProductSetsInputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{25}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{25}
 }
 func (m *ImportProductSetsInputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportProductSetsInputConfig.Unmarshal(m, b)
@@ -1730,7 +1731,7 @@ func (m *ImportProductSetsRequest) Reset()         { *m = ImportProductSetsReque
 func (m *ImportProductSetsRequest) String() string { return proto.CompactTextString(m) }
 func (*ImportProductSetsRequest) ProtoMessage()    {}
 func (*ImportProductSetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{26}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{26}
 }
 func (m *ImportProductSetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportProductSetsRequest.Unmarshal(m, b)
@@ -1790,7 +1791,7 @@ func (m *ImportProductSetsResponse) Reset()         { *m = ImportProductSetsResp
 func (m *ImportProductSetsResponse) String() string { return proto.CompactTextString(m) }
 func (*ImportProductSetsResponse) ProtoMessage()    {}
 func (*ImportProductSetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{27}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{27}
 }
 func (m *ImportProductSetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportProductSetsResponse.Unmarshal(m, b)
@@ -1846,7 +1847,7 @@ func (m *BatchOperationMetadata) Reset()         { *m = BatchOperationMetadata{}
 func (m *BatchOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*BatchOperationMetadata) ProtoMessage()    {}
 func (*BatchOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_service_69ae292236718878, []int{28}
+	return fileDescriptor_product_search_service_05b23c95580d8dfa, []int{28}
 }
 func (m *BatchOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchOperationMetadata.Unmarshal(m, b)
@@ -1966,10 +1967,6 @@ type ProductSearchClient interface {
 	// ProductSet are not deleted.
 	//
 	// The actual image files are not deleted from Google Cloud Storage.
-	//
-	// Possible errors:
-	//
-	// * Returns NOT_FOUND if the ProductSet does not exist.
 	DeleteProductSet(ctx context.Context, in *DeleteProductSetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Creates and returns a new product resource.
 	//
@@ -2013,10 +2010,6 @@ type ProductSearchClient interface {
 	// Metadata of the product and all its images will be deleted right away, but
 	// search queries against ProductSets containing the product may still work
 	// until all related caches are refreshed.
-	//
-	// Possible errors:
-	//
-	// * Returns NOT_FOUND if the product does not exist.
 	DeleteProduct(ctx context.Context, in *DeleteProductRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Creates and returns a new ReferenceImage resource.
 	//
@@ -2045,10 +2038,6 @@ type ProductSearchClient interface {
 	// caches are refreshed.
 	//
 	// The actual image files are not deleted from Google Cloud Storage.
-	//
-	// Possible errors:
-	//
-	// * Returns NOT_FOUND if the reference image does not exist.
 	DeleteReferenceImage(ctx context.Context, in *DeleteReferenceImageRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Lists reference images.
 	//
@@ -2074,10 +2063,6 @@ type ProductSearchClient interface {
 	// * Returns NOT_FOUND if the Product or the ProductSet doesn't exist.
 	AddProductToProductSet(ctx context.Context, in *AddProductToProductSetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Removes a Product from the specified ProductSet.
-	//
-	// Possible errors:
-	//
-	// * Returns NOT_FOUND If the Product is not found under the ProductSet.
 	RemoveProductFromProductSet(ctx context.Context, in *RemoveProductFromProductSetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Lists the Products in a ProductSet, in an unspecified order. If the
 	// ProductSet does not exist, the products field of the response will be
@@ -2306,10 +2291,6 @@ type ProductSearchServer interface {
 	// ProductSet are not deleted.
 	//
 	// The actual image files are not deleted from Google Cloud Storage.
-	//
-	// Possible errors:
-	//
-	// * Returns NOT_FOUND if the ProductSet does not exist.
 	DeleteProductSet(context.Context, *DeleteProductSetRequest) (*empty.Empty, error)
 	// Creates and returns a new product resource.
 	//
@@ -2353,10 +2334,6 @@ type ProductSearchServer interface {
 	// Metadata of the product and all its images will be deleted right away, but
 	// search queries against ProductSets containing the product may still work
 	// until all related caches are refreshed.
-	//
-	// Possible errors:
-	//
-	// * Returns NOT_FOUND if the product does not exist.
 	DeleteProduct(context.Context, *DeleteProductRequest) (*empty.Empty, error)
 	// Creates and returns a new ReferenceImage resource.
 	//
@@ -2385,10 +2362,6 @@ type ProductSearchServer interface {
 	// caches are refreshed.
 	//
 	// The actual image files are not deleted from Google Cloud Storage.
-	//
-	// Possible errors:
-	//
-	// * Returns NOT_FOUND if the reference image does not exist.
 	DeleteReferenceImage(context.Context, *DeleteReferenceImageRequest) (*empty.Empty, error)
 	// Lists reference images.
 	//
@@ -2414,10 +2387,6 @@ type ProductSearchServer interface {
 	// * Returns NOT_FOUND if the Product or the ProductSet doesn't exist.
 	AddProductToProductSet(context.Context, *AddProductToProductSetRequest) (*empty.Empty, error)
 	// Removes a Product from the specified ProductSet.
-	//
-	// Possible errors:
-	//
-	// * Returns NOT_FOUND If the Product is not found under the ProductSet.
 	RemoveProductFromProductSet(context.Context, *RemoveProductFromProductSetRequest) (*empty.Empty, error)
 	// Lists the Products in a ProductSet, in an unspecified order. If the
 	// ProductSet does not exist, the products field of the response will be
@@ -2851,10 +2820,10 @@ var _ProductSearch_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/vision/v1/product_search_service.proto", fileDescriptor_product_search_service_69ae292236718878)
+	proto.RegisterFile("google/cloud/vision/v1/product_search_service.proto", fileDescriptor_product_search_service_05b23c95580d8dfa)
 }
 
-var fileDescriptor_product_search_service_69ae292236718878 = []byte{
+var fileDescriptor_product_search_service_05b23c95580d8dfa = []byte{
 	// 1853 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x59, 0x4f, 0x73, 0xdb, 0xc6,
 	0x15, 0xcf, 0x4a, 0x96, 0x2d, 0x3d, 0x8a, 0x12, 0xbd, 0x55, 0x25, 0x86, 0x8a, 0xc7, 0x2a, 0x9a,
