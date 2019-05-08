@@ -44,7 +44,7 @@ func (x AnnotationSource) String() string {
 	return proto.EnumName(AnnotationSource_name, int32(x))
 }
 func (AnnotationSource) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{0}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{0}
 }
 
 type AnnotationSentiment int32
@@ -72,7 +72,7 @@ func (x AnnotationSentiment) String() string {
 	return proto.EnumName(AnnotationSentiment_name, int32(x))
 }
 func (AnnotationSentiment) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{1}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{1}
 }
 
 type AnnotationType int32
@@ -145,7 +145,7 @@ func (x AnnotationType) String() string {
 	return proto.EnumName(AnnotationType_name, int32(x))
 }
 func (AnnotationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{2}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{2}
 }
 
 // Annotation for Example. Each example may have one or more annotations. For
@@ -175,7 +175,7 @@ func (m *Annotation) Reset()         { *m = Annotation{} }
 func (m *Annotation) String() string { return proto.CompactTextString(m) }
 func (*Annotation) ProtoMessage()    {}
 func (*Annotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{0}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{0}
 }
 func (m *Annotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Annotation.Unmarshal(m, b)
@@ -252,7 +252,7 @@ func (m *AnnotationValue) Reset()         { *m = AnnotationValue{} }
 func (m *AnnotationValue) String() string { return proto.CompactTextString(m) }
 func (*AnnotationValue) ProtoMessage()    {}
 func (*AnnotationValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{1}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{1}
 }
 func (m *AnnotationValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationValue.Unmarshal(m, b)
@@ -620,7 +620,7 @@ func (m *ImageClassificationAnnotation) Reset()         { *m = ImageClassificati
 func (m *ImageClassificationAnnotation) String() string { return proto.CompactTextString(m) }
 func (*ImageClassificationAnnotation) ProtoMessage()    {}
 func (*ImageClassificationAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{2}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{2}
 }
 func (m *ImageClassificationAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageClassificationAnnotation.Unmarshal(m, b)
@@ -663,7 +663,7 @@ func (m *Vertex) Reset()         { *m = Vertex{} }
 func (m *Vertex) String() string { return proto.CompactTextString(m) }
 func (*Vertex) ProtoMessage()    {}
 func (*Vertex) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{3}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{3}
 }
 func (m *Vertex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Vertex.Unmarshal(m, b)
@@ -714,7 +714,7 @@ func (m *NormalizedVertex) Reset()         { *m = NormalizedVertex{} }
 func (m *NormalizedVertex) String() string { return proto.CompactTextString(m) }
 func (*NormalizedVertex) ProtoMessage()    {}
 func (*NormalizedVertex) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{4}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{4}
 }
 func (m *NormalizedVertex) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NormalizedVertex.Unmarshal(m, b)
@@ -761,7 +761,7 @@ func (m *BoundingPoly) Reset()         { *m = BoundingPoly{} }
 func (m *BoundingPoly) String() string { return proto.CompactTextString(m) }
 func (*BoundingPoly) ProtoMessage()    {}
 func (*BoundingPoly) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{5}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{5}
 }
 func (m *BoundingPoly) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BoundingPoly.Unmarshal(m, b)
@@ -801,7 +801,7 @@ func (m *NormalizedBoundingPoly) Reset()         { *m = NormalizedBoundingPoly{}
 func (m *NormalizedBoundingPoly) String() string { return proto.CompactTextString(m) }
 func (*NormalizedBoundingPoly) ProtoMessage()    {}
 func (*NormalizedBoundingPoly) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{6}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{6}
 }
 func (m *NormalizedBoundingPoly) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NormalizedBoundingPoly.Unmarshal(m, b)
@@ -849,7 +849,7 @@ func (m *ImageBoundingPolyAnnotation) Reset()         { *m = ImageBoundingPolyAn
 func (m *ImageBoundingPolyAnnotation) String() string { return proto.CompactTextString(m) }
 func (*ImageBoundingPolyAnnotation) ProtoMessage()    {}
 func (*ImageBoundingPolyAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{7}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{7}
 }
 func (m *ImageBoundingPolyAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageBoundingPolyAnnotation.Unmarshal(m, b)
@@ -1001,7 +1001,7 @@ func (m *Polyline) Reset()         { *m = Polyline{} }
 func (m *Polyline) String() string { return proto.CompactTextString(m) }
 func (*Polyline) ProtoMessage()    {}
 func (*Polyline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{8}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{8}
 }
 func (m *Polyline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Polyline.Unmarshal(m, b)
@@ -1041,7 +1041,7 @@ func (m *NormalizedPolyline) Reset()         { *m = NormalizedPolyline{} }
 func (m *NormalizedPolyline) String() string { return proto.CompactTextString(m) }
 func (*NormalizedPolyline) ProtoMessage()    {}
 func (*NormalizedPolyline) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{9}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{9}
 }
 func (m *NormalizedPolyline) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NormalizedPolyline.Unmarshal(m, b)
@@ -1085,7 +1085,7 @@ func (m *ImagePolylineAnnotation) Reset()         { *m = ImagePolylineAnnotation
 func (m *ImagePolylineAnnotation) String() string { return proto.CompactTextString(m) }
 func (*ImagePolylineAnnotation) ProtoMessage()    {}
 func (*ImagePolylineAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{10}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{10}
 }
 func (m *ImagePolylineAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImagePolylineAnnotation.Unmarshal(m, b)
@@ -1242,7 +1242,7 @@ func (m *ImageSegmentationAnnotation) Reset()         { *m = ImageSegmentationAn
 func (m *ImageSegmentationAnnotation) String() string { return proto.CompactTextString(m) }
 func (*ImageSegmentationAnnotation) ProtoMessage()    {}
 func (*ImageSegmentationAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{11}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{11}
 }
 func (m *ImageSegmentationAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageSegmentationAnnotation.Unmarshal(m, b)
@@ -1296,7 +1296,7 @@ func (m *TextClassificationAnnotation) Reset()         { *m = TextClassification
 func (m *TextClassificationAnnotation) String() string { return proto.CompactTextString(m) }
 func (*TextClassificationAnnotation) ProtoMessage()    {}
 func (*TextClassificationAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{12}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{12}
 }
 func (m *TextClassificationAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextClassificationAnnotation.Unmarshal(m, b)
@@ -1340,7 +1340,7 @@ func (m *TimeSegment) Reset()         { *m = TimeSegment{} }
 func (m *TimeSegment) String() string { return proto.CompactTextString(m) }
 func (*TimeSegment) ProtoMessage()    {}
 func (*TimeSegment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{13}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{13}
 }
 func (m *TimeSegment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeSegment.Unmarshal(m, b)
@@ -1389,7 +1389,7 @@ func (m *VideoClassificationAnnotation) Reset()         { *m = VideoClassificati
 func (m *VideoClassificationAnnotation) String() string { return proto.CompactTextString(m) }
 func (*VideoClassificationAnnotation) ProtoMessage()    {}
 func (*VideoClassificationAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{14}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{14}
 }
 func (m *VideoClassificationAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoClassificationAnnotation.Unmarshal(m, b)
@@ -1442,7 +1442,7 @@ func (m *ObjectTrackingFrame) Reset()         { *m = ObjectTrackingFrame{} }
 func (m *ObjectTrackingFrame) String() string { return proto.CompactTextString(m) }
 func (*ObjectTrackingFrame) ProtoMessage()    {}
 func (*ObjectTrackingFrame) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{15}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{15}
 }
 func (m *ObjectTrackingFrame) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObjectTrackingFrame.Unmarshal(m, b)
@@ -1597,7 +1597,7 @@ func (m *VideoObjectTrackingAnnotation) Reset()         { *m = VideoObjectTracki
 func (m *VideoObjectTrackingAnnotation) String() string { return proto.CompactTextString(m) }
 func (*VideoObjectTrackingAnnotation) ProtoMessage()    {}
 func (*VideoObjectTrackingAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{16}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{16}
 }
 func (m *VideoObjectTrackingAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoObjectTrackingAnnotation.Unmarshal(m, b)
@@ -1653,7 +1653,7 @@ func (m *VideoEventAnnotation) Reset()         { *m = VideoEventAnnotation{} }
 func (m *VideoEventAnnotation) String() string { return proto.CompactTextString(m) }
 func (*VideoEventAnnotation) ProtoMessage()    {}
 func (*VideoEventAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{17}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{17}
 }
 func (m *VideoEventAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoEventAnnotation.Unmarshal(m, b)
@@ -1704,7 +1704,7 @@ func (m *AudioRecognitionAnnotation) Reset()         { *m = AudioRecognitionAnno
 func (m *AudioRecognitionAnnotation) String() string { return proto.CompactTextString(m) }
 func (*AudioRecognitionAnnotation) ProtoMessage()    {}
 func (*AudioRecognitionAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{18}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{18}
 }
 func (m *AudioRecognitionAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioRecognitionAnnotation.Unmarshal(m, b)
@@ -1758,7 +1758,7 @@ func (m *AnnotationMetadata) Reset()         { *m = AnnotationMetadata{} }
 func (m *AnnotationMetadata) String() string { return proto.CompactTextString(m) }
 func (*AnnotationMetadata) ProtoMessage()    {}
 func (*AnnotationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{19}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{19}
 }
 func (m *AnnotationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationMetadata.Unmarshal(m, b)
@@ -1805,7 +1805,7 @@ func (m *OperatorMetadata) Reset()         { *m = OperatorMetadata{} }
 func (m *OperatorMetadata) String() string { return proto.CompactTextString(m) }
 func (*OperatorMetadata) ProtoMessage()    {}
 func (*OperatorMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_1df8bdb649b04239, []int{20}
+	return fileDescriptor_annotation_7e34849fb820a58f, []int{20}
 }
 func (m *OperatorMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperatorMetadata.Unmarshal(m, b)
@@ -1882,10 +1882,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datalabeling/v1beta1/annotation.proto", fileDescriptor_annotation_1df8bdb649b04239)
+	proto.RegisterFile("google/cloud/datalabeling/v1beta1/annotation.proto", fileDescriptor_annotation_7e34849fb820a58f)
 }
 
-var fileDescriptor_annotation_1df8bdb649b04239 = []byte{
+var fileDescriptor_annotation_7e34849fb820a58f = []byte{
 	// 1630 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x58, 0xdd, 0x6f, 0xdb, 0x46,
 	0x12, 0x37, 0x29, 0xdb, 0x91, 0x47, 0x8a, 0xad, 0xac, 0x7d, 0x8e, 0x22, 0x7f, 0x46, 0x97, 0x1c,

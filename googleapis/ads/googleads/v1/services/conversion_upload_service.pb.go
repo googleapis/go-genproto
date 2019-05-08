@@ -46,7 +46,7 @@ func (m *UploadClickConversionsRequest) Reset()         { *m = UploadClickConver
 func (m *UploadClickConversionsRequest) String() string { return proto.CompactTextString(m) }
 func (*UploadClickConversionsRequest) ProtoMessage()    {}
 func (*UploadClickConversionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_service_dc50fb01fcc47887, []int{0}
+	return fileDescriptor_conversion_upload_service_97d02deb0eb593c3, []int{0}
 }
 func (m *UploadClickConversionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UploadClickConversionsRequest.Unmarshal(m, b)
@@ -94,7 +94,8 @@ type UploadClickConversionsResponse struct {
 	// outside the conversions (e.g. auth errors), we return an RPC level error.
 	PartialFailureError *status.Status `protobuf:"bytes,1,opt,name=partial_failure_error,json=partialFailureError,proto3" json:"partial_failure_error,omitempty"`
 	// Returned for successfully processed conversions. Proto will be empty for
-	// rows that received an error.
+	// rows that received an error. Results are not returned when validate_only is
+	// true.
 	Results              []*ClickConversionResult `protobuf:"bytes,2,rep,name=results,proto3" json:"results,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
 	XXX_unrecognized     []byte                   `json:"-"`
@@ -105,7 +106,7 @@ func (m *UploadClickConversionsResponse) Reset()         { *m = UploadClickConve
 func (m *UploadClickConversionsResponse) String() string { return proto.CompactTextString(m) }
 func (*UploadClickConversionsResponse) ProtoMessage()    {}
 func (*UploadClickConversionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_service_dc50fb01fcc47887, []int{1}
+	return fileDescriptor_conversion_upload_service_97d02deb0eb593c3, []int{1}
 }
 func (m *UploadClickConversionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UploadClickConversionsResponse.Unmarshal(m, b)
@@ -159,7 +160,7 @@ func (m *UploadCallConversionsRequest) Reset()         { *m = UploadCallConversi
 func (m *UploadCallConversionsRequest) String() string { return proto.CompactTextString(m) }
 func (*UploadCallConversionsRequest) ProtoMessage()    {}
 func (*UploadCallConversionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_service_dc50fb01fcc47887, []int{2}
+	return fileDescriptor_conversion_upload_service_97d02deb0eb593c3, []int{2}
 }
 func (m *UploadCallConversionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UploadCallConversionsRequest.Unmarshal(m, b)
@@ -207,7 +208,8 @@ type UploadCallConversionsResponse struct {
 	// outside the conversions (e.g. auth errors), we return an RPC level error.
 	PartialFailureError *status.Status `protobuf:"bytes,1,opt,name=partial_failure_error,json=partialFailureError,proto3" json:"partial_failure_error,omitempty"`
 	// Returned for successfully processed conversions. Proto will be empty for
-	// rows that received an error.
+	// rows that received an error. Results are not returned when validate_only is
+	// true.
 	Results              []*CallConversionResult `protobuf:"bytes,2,rep,name=results,proto3" json:"results,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
@@ -218,7 +220,7 @@ func (m *UploadCallConversionsResponse) Reset()         { *m = UploadCallConvers
 func (m *UploadCallConversionsResponse) String() string { return proto.CompactTextString(m) }
 func (*UploadCallConversionsResponse) ProtoMessage()    {}
 func (*UploadCallConversionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_service_dc50fb01fcc47887, []int{3}
+	return fileDescriptor_conversion_upload_service_97d02deb0eb593c3, []int{3}
 }
 func (m *UploadCallConversionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UploadCallConversionsResponse.Unmarshal(m, b)
@@ -286,7 +288,7 @@ func (m *ClickConversion) Reset()         { *m = ClickConversion{} }
 func (m *ClickConversion) String() string { return proto.CompactTextString(m) }
 func (*ClickConversion) ProtoMessage()    {}
 func (*ClickConversion) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_service_dc50fb01fcc47887, []int{4}
+	return fileDescriptor_conversion_upload_service_97d02deb0eb593c3, []int{4}
 }
 func (m *ClickConversion) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClickConversion.Unmarshal(m, b)
@@ -387,7 +389,7 @@ func (m *CallConversion) Reset()         { *m = CallConversion{} }
 func (m *CallConversion) String() string { return proto.CompactTextString(m) }
 func (*CallConversion) ProtoMessage()    {}
 func (*CallConversion) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_service_dc50fb01fcc47887, []int{5}
+	return fileDescriptor_conversion_upload_service_97d02deb0eb593c3, []int{5}
 }
 func (m *CallConversion) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CallConversion.Unmarshal(m, b)
@@ -465,7 +467,7 @@ func (m *ExternalAttributionData) Reset()         { *m = ExternalAttributionData
 func (m *ExternalAttributionData) String() string { return proto.CompactTextString(m) }
 func (*ExternalAttributionData) ProtoMessage()    {}
 func (*ExternalAttributionData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_service_dc50fb01fcc47887, []int{6}
+	return fileDescriptor_conversion_upload_service_97d02deb0eb593c3, []int{6}
 }
 func (m *ExternalAttributionData) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExternalAttributionData.Unmarshal(m, b)
@@ -517,7 +519,7 @@ func (m *ClickConversionResult) Reset()         { *m = ClickConversionResult{} }
 func (m *ClickConversionResult) String() string { return proto.CompactTextString(m) }
 func (*ClickConversionResult) ProtoMessage()    {}
 func (*ClickConversionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_service_dc50fb01fcc47887, []int{7}
+	return fileDescriptor_conversion_upload_service_97d02deb0eb593c3, []int{7}
 }
 func (m *ClickConversionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClickConversionResult.Unmarshal(m, b)
@@ -580,7 +582,7 @@ func (m *CallConversionResult) Reset()         { *m = CallConversionResult{} }
 func (m *CallConversionResult) String() string { return proto.CompactTextString(m) }
 func (*CallConversionResult) ProtoMessage()    {}
 func (*CallConversionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_service_dc50fb01fcc47887, []int{8}
+	return fileDescriptor_conversion_upload_service_97d02deb0eb593c3, []int{8}
 }
 func (m *CallConversionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CallConversionResult.Unmarshal(m, b)
@@ -750,10 +752,10 @@ var _ConversionUploadService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/conversion_upload_service.proto", fileDescriptor_conversion_upload_service_dc50fb01fcc47887)
+	proto.RegisterFile("google/ads/googleads/v1/services/conversion_upload_service.proto", fileDescriptor_conversion_upload_service_97d02deb0eb593c3)
 }
 
-var fileDescriptor_conversion_upload_service_dc50fb01fcc47887 = []byte{
+var fileDescriptor_conversion_upload_service_97d02deb0eb593c3 = []byte{
 	// 900 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x57, 0x4d, 0x6f, 0xe3, 0x44,
 	0x18, 0x96, 0x93, 0x7e, 0xed, 0x04, 0xb6, 0xec, 0xd0, 0x52, 0x6f, 0x28, 0x4b, 0x64, 0xad, 0x44,

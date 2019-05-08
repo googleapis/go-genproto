@@ -147,7 +147,7 @@ func (x JobEvent_JobEventType) String() string {
 	return proto.EnumName(JobEvent_JobEventType_name, int32(x))
 }
 func (JobEvent_JobEventType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_event_63120bd8ed2e89e0, []int{1, 0}
+	return fileDescriptor_event_89811e87550a0ace, []int{1, 0}
 }
 
 // The enum represents types of client events for a candidate profile.
@@ -181,7 +181,7 @@ func (x ProfileEvent_ProfileEventType) String() string {
 	return proto.EnumName(ProfileEvent_ProfileEventType_name, int32(x))
 }
 func (ProfileEvent_ProfileEventType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_event_63120bd8ed2e89e0, []int{2, 0}
+	return fileDescriptor_event_89811e87550a0ace, []int{2, 0}
 }
 
 // An event issued when an end user interacts with the application that
@@ -225,7 +225,7 @@ func (m *ClientEvent) Reset()         { *m = ClientEvent{} }
 func (m *ClientEvent) String() string { return proto.CompactTextString(m) }
 func (*ClientEvent) ProtoMessage()    {}
 func (*ClientEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_63120bd8ed2e89e0, []int{0}
+	return fileDescriptor_event_89811e87550a0ace, []int{0}
 }
 func (m *ClientEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClientEvent.Unmarshal(m, b)
@@ -408,7 +408,7 @@ func (m *JobEvent) Reset()         { *m = JobEvent{} }
 func (m *JobEvent) String() string { return proto.CompactTextString(m) }
 func (*JobEvent) ProtoMessage()    {}
 func (*JobEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_63120bd8ed2e89e0, []int{1}
+	return fileDescriptor_event_89811e87550a0ace, []int{1}
 }
 func (m *JobEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobEvent.Unmarshal(m, b)
@@ -470,7 +470,7 @@ func (m *ProfileEvent) Reset()         { *m = ProfileEvent{} }
 func (m *ProfileEvent) String() string { return proto.CompactTextString(m) }
 func (*ProfileEvent) ProtoMessage()    {}
 func (*ProfileEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_63120bd8ed2e89e0, []int{2}
+	return fileDescriptor_event_89811e87550a0ace, []int{2}
 }
 func (m *ProfileEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProfileEvent.Unmarshal(m, b)
@@ -520,10 +520,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/event.proto", fileDescriptor_event_63120bd8ed2e89e0)
+	proto.RegisterFile("google/cloud/talent/v4beta1/event.proto", fileDescriptor_event_89811e87550a0ace)
 }
 
-var fileDescriptor_event_63120bd8ed2e89e0 = []byte{
+var fileDescriptor_event_89811e87550a0ace = []byte{
 	// 682 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0xdd, 0x6e, 0xd3, 0x4c,
 	0x10, 0x6d, 0xfe, 0x93, 0x49, 0x9a, 0x6f, 0xbb, 0xfa, 0x40, 0x21, 0xf4, 0x27, 0x44, 0x20, 0xca,

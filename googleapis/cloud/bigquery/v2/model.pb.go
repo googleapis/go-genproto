@@ -57,7 +57,7 @@ func (x Model_ModelType) String() string {
 	return proto.EnumName(Model_ModelType_name, int32(x))
 }
 func (Model_ModelType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 0}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 0}
 }
 
 // Loss metric to evaluate model training performance.
@@ -86,7 +86,7 @@ func (x Model_LossType) String() string {
 	return proto.EnumName(Model_LossType_name, int32(x))
 }
 func (Model_LossType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 1}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 1}
 }
 
 // Distance metric used to compute the distance between two points.
@@ -115,7 +115,7 @@ func (x Model_DistanceType) String() string {
 	return proto.EnumName(Model_DistanceType_name, int32(x))
 }
 func (Model_DistanceType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 2}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 2}
 }
 
 // Indicates the method to split input data into multiple tables.
@@ -157,7 +157,7 @@ func (x Model_DataSplitMethod) String() string {
 	return proto.EnumName(Model_DataSplitMethod_name, int32(x))
 }
 func (Model_DataSplitMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 3}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 3}
 }
 
 // Indicates the learning rate optimization strategy to use.
@@ -186,7 +186,7 @@ func (x Model_LearnRateStrategy) String() string {
 	return proto.EnumName(Model_LearnRateStrategy_name, int32(x))
 }
 func (Model_LearnRateStrategy) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 4}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 4}
 }
 
 type Model struct {
@@ -243,7 +243,7 @@ func (m *Model) Reset()         { *m = Model{} }
 func (m *Model) String() string { return proto.CompactTextString(m) }
 func (*Model) ProtoMessage()    {}
 func (*Model) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0}
 }
 func (m *Model) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model.Unmarshal(m, b)
@@ -375,7 +375,7 @@ func (m *Model_RegressionMetrics) Reset()         { *m = Model_RegressionMetrics
 func (m *Model_RegressionMetrics) String() string { return proto.CompactTextString(m) }
 func (*Model_RegressionMetrics) ProtoMessage()    {}
 func (*Model_RegressionMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 0}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 0}
 }
 func (m *Model_RegressionMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_RegressionMetrics.Unmarshal(m, b)
@@ -468,7 +468,7 @@ func (m *Model_AggregateClassificationMetrics) Reset()         { *m = Model_Aggr
 func (m *Model_AggregateClassificationMetrics) String() string { return proto.CompactTextString(m) }
 func (*Model_AggregateClassificationMetrics) ProtoMessage()    {}
 func (*Model_AggregateClassificationMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 1}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 1}
 }
 func (m *Model_AggregateClassificationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_AggregateClassificationMetrics.Unmarshal(m, b)
@@ -552,7 +552,7 @@ func (m *Model_BinaryClassificationMetrics) Reset()         { *m = Model_BinaryC
 func (m *Model_BinaryClassificationMetrics) String() string { return proto.CompactTextString(m) }
 func (*Model_BinaryClassificationMetrics) ProtoMessage()    {}
 func (*Model_BinaryClassificationMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 2}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 2}
 }
 func (m *Model_BinaryClassificationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_BinaryClassificationMetrics.Unmarshal(m, b)
@@ -615,7 +615,7 @@ func (m *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) String() strin
 }
 func (*Model_BinaryClassificationMetrics_BinaryConfusionMatrix) ProtoMessage() {}
 func (*Model_BinaryClassificationMetrics_BinaryConfusionMatrix) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 2, 0}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 2, 0}
 }
 func (m *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_BinaryClassificationMetrics_BinaryConfusionMatrix.Unmarshal(m, b)
@@ -699,7 +699,7 @@ func (m *Model_MultiClassClassificationMetrics) Reset()         { *m = Model_Mul
 func (m *Model_MultiClassClassificationMetrics) String() string { return proto.CompactTextString(m) }
 func (*Model_MultiClassClassificationMetrics) ProtoMessage()    {}
 func (*Model_MultiClassClassificationMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 3}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 3}
 }
 func (m *Model_MultiClassClassificationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_MultiClassClassificationMetrics.Unmarshal(m, b)
@@ -753,7 +753,7 @@ func (m *Model_MultiClassClassificationMetrics_ConfusionMatrix) String() string 
 }
 func (*Model_MultiClassClassificationMetrics_ConfusionMatrix) ProtoMessage() {}
 func (*Model_MultiClassClassificationMetrics_ConfusionMatrix) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 3, 0}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 3, 0}
 }
 func (m *Model_MultiClassClassificationMetrics_ConfusionMatrix) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_MultiClassClassificationMetrics_ConfusionMatrix.Unmarshal(m, b)
@@ -808,7 +808,7 @@ func (m *Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry) String() s
 }
 func (*Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry) ProtoMessage() {}
 func (*Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 3, 0, 0}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 3, 0, 0}
 }
 func (m *Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry.Unmarshal(m, b)
@@ -861,7 +861,7 @@ func (m *Model_MultiClassClassificationMetrics_ConfusionMatrix_Row) String() str
 }
 func (*Model_MultiClassClassificationMetrics_ConfusionMatrix_Row) ProtoMessage() {}
 func (*Model_MultiClassClassificationMetrics_ConfusionMatrix_Row) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 3, 0, 1}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 3, 0, 1}
 }
 func (m *Model_MultiClassClassificationMetrics_ConfusionMatrix_Row) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_MultiClassClassificationMetrics_ConfusionMatrix_Row.Unmarshal(m, b)
@@ -910,7 +910,7 @@ func (m *Model_ClusteringMetrics) Reset()         { *m = Model_ClusteringMetrics
 func (m *Model_ClusteringMetrics) String() string { return proto.CompactTextString(m) }
 func (*Model_ClusteringMetrics) ProtoMessage()    {}
 func (*Model_ClusteringMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 4}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 4}
 }
 func (m *Model_ClusteringMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_ClusteringMetrics.Unmarshal(m, b)
@@ -963,7 +963,7 @@ func (m *Model_EvaluationMetrics) Reset()         { *m = Model_EvaluationMetrics
 func (m *Model_EvaluationMetrics) String() string { return proto.CompactTextString(m) }
 func (*Model_EvaluationMetrics) ProtoMessage()    {}
 func (*Model_EvaluationMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 5}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 5}
 }
 func (m *Model_EvaluationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_EvaluationMetrics.Unmarshal(m, b)
@@ -1179,7 +1179,7 @@ func (m *Model_TrainingRun) Reset()         { *m = Model_TrainingRun{} }
 func (m *Model_TrainingRun) String() string { return proto.CompactTextString(m) }
 func (*Model_TrainingRun) ProtoMessage()    {}
 func (*Model_TrainingRun) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 6}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 6}
 }
 func (m *Model_TrainingRun) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_TrainingRun.Unmarshal(m, b)
@@ -1286,7 +1286,7 @@ func (m *Model_TrainingRun_TrainingOptions) Reset()         { *m = Model_Trainin
 func (m *Model_TrainingRun_TrainingOptions) String() string { return proto.CompactTextString(m) }
 func (*Model_TrainingRun_TrainingOptions) ProtoMessage()    {}
 func (*Model_TrainingRun_TrainingOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 6, 0}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 6, 0}
 }
 func (m *Model_TrainingRun_TrainingOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_TrainingRun_TrainingOptions.Unmarshal(m, b)
@@ -1448,7 +1448,7 @@ func (m *Model_TrainingRun_IterationResult) Reset()         { *m = Model_Trainin
 func (m *Model_TrainingRun_IterationResult) String() string { return proto.CompactTextString(m) }
 func (*Model_TrainingRun_IterationResult) ProtoMessage()    {}
 func (*Model_TrainingRun_IterationResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 6, 1}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 6, 1}
 }
 func (m *Model_TrainingRun_IterationResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_TrainingRun_IterationResult.Unmarshal(m, b)
@@ -1532,7 +1532,7 @@ func (m *Model_TrainingRun_IterationResult_ClusterInfo) String() string {
 }
 func (*Model_TrainingRun_IterationResult_ClusterInfo) ProtoMessage() {}
 func (*Model_TrainingRun_IterationResult_ClusterInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{0, 6, 1, 0}
+	return fileDescriptor_model_5def960f0bdfad81, []int{0, 6, 1, 0}
 }
 func (m *Model_TrainingRun_IterationResult_ClusterInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model_TrainingRun_IterationResult_ClusterInfo.Unmarshal(m, b)
@@ -1589,7 +1589,7 @@ func (m *GetModelRequest) Reset()         { *m = GetModelRequest{} }
 func (m *GetModelRequest) String() string { return proto.CompactTextString(m) }
 func (*GetModelRequest) ProtoMessage()    {}
 func (*GetModelRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{1}
+	return fileDescriptor_model_5def960f0bdfad81, []int{1}
 }
 func (m *GetModelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetModelRequest.Unmarshal(m, b)
@@ -1650,7 +1650,7 @@ func (m *PatchModelRequest) Reset()         { *m = PatchModelRequest{} }
 func (m *PatchModelRequest) String() string { return proto.CompactTextString(m) }
 func (*PatchModelRequest) ProtoMessage()    {}
 func (*PatchModelRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{2}
+	return fileDescriptor_model_5def960f0bdfad81, []int{2}
 }
 func (m *PatchModelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PatchModelRequest.Unmarshal(m, b)
@@ -1714,7 +1714,7 @@ func (m *DeleteModelRequest) Reset()         { *m = DeleteModelRequest{} }
 func (m *DeleteModelRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteModelRequest) ProtoMessage()    {}
 func (*DeleteModelRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{3}
+	return fileDescriptor_model_5def960f0bdfad81, []int{3}
 }
 func (m *DeleteModelRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteModelRequest.Unmarshal(m, b)
@@ -1774,7 +1774,7 @@ func (m *ListModelsRequest) Reset()         { *m = ListModelsRequest{} }
 func (m *ListModelsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListModelsRequest) ProtoMessage()    {}
 func (*ListModelsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{4}
+	return fileDescriptor_model_5def960f0bdfad81, []int{4}
 }
 func (m *ListModelsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListModelsRequest.Unmarshal(m, b)
@@ -1838,7 +1838,7 @@ func (m *ListModelsResponse) Reset()         { *m = ListModelsResponse{} }
 func (m *ListModelsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListModelsResponse) ProtoMessage()    {}
 func (*ListModelsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_a27f597ae55804ce, []int{5}
+	return fileDescriptor_model_5def960f0bdfad81, []int{5}
 }
 func (m *ListModelsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListModelsResponse.Unmarshal(m, b)
@@ -2084,10 +2084,10 @@ var _ModelService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/bigquery/v2/model.proto", fileDescriptor_model_a27f597ae55804ce)
+	proto.RegisterFile("google/cloud/bigquery/v2/model.proto", fileDescriptor_model_5def960f0bdfad81)
 }
 
-var fileDescriptor_model_a27f597ae55804ce = []byte{
+var fileDescriptor_model_5def960f0bdfad81 = []byte{
 	// 2541 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x59, 0xdd, 0x73, 0x23, 0x47,
 	0x11, 0xb7, 0x2c, 0x7f, 0xa9, 0x65, 0x5b, 0xd2, 0xf8, 0x7c, 0xe8, 0x74, 0x77, 0x39, 0x47, 0xe1,

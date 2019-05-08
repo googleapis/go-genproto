@@ -84,7 +84,7 @@ func (x TypeCode) String() string {
 	return proto.EnumName(TypeCode_name, int32(x))
 }
 func (TypeCode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_data_types_cff11b677957fba8, []int{0}
+	return fileDescriptor_data_types_f857041c6e153cb1, []int{0}
 }
 
 // Indicated the type of data that can be stored in a structured data entity
@@ -110,7 +110,7 @@ func (m *DataType) Reset()         { *m = DataType{} }
 func (m *DataType) String() string { return proto.CompactTextString(m) }
 func (*DataType) ProtoMessage()    {}
 func (*DataType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_types_cff11b677957fba8, []int{0}
+	return fileDescriptor_data_types_f857041c6e153cb1, []int{0}
 }
 func (m *DataType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DataType.Unmarshal(m, b)
@@ -298,7 +298,7 @@ func (m *StructType) Reset()         { *m = StructType{} }
 func (m *StructType) String() string { return proto.CompactTextString(m) }
 func (*StructType) ProtoMessage()    {}
 func (*StructType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_types_cff11b677957fba8, []int{1}
+	return fileDescriptor_data_types_f857041c6e153cb1, []int{1}
 }
 func (m *StructType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructType.Unmarshal(m, b)
@@ -333,10 +333,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/data_types.proto", fileDescriptor_data_types_cff11b677957fba8)
+	proto.RegisterFile("google/cloud/automl/v1beta1/data_types.proto", fileDescriptor_data_types_f857041c6e153cb1)
 }
 
-var fileDescriptor_data_types_cff11b677957fba8 = []byte{
+var fileDescriptor_data_types_f857041c6e153cb1 = []byte{
 	// 528 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0x5f, 0x8b, 0xd3, 0x40,
 	0x10, 0xc0, 0x2f, 0xed, 0xb5, 0x97, 0x4c, 0xfc, 0x13, 0x17, 0x84, 0x5e, 0x4f, 0xb0, 0x1e, 0x8a,

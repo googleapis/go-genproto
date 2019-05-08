@@ -66,7 +66,7 @@ func (x ComparisonType) String() string {
 	return proto.EnumName(ComparisonType_name, int32(x))
 }
 func (ComparisonType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_a95521d463668240, []int{0}
+	return fileDescriptor_common_a64b14621f6e1d51, []int{0}
 }
 
 // The tier of service for a Workspace. Please see the
@@ -107,7 +107,7 @@ func (x ServiceTier) String() string {
 	return proto.EnumName(ServiceTier_name, int32(x))
 }
 func (ServiceTier) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_a95521d463668240, []int{1}
+	return fileDescriptor_common_a64b14621f6e1d51, []int{1}
 }
 
 // The Aligner describes how to bring the data points in a single
@@ -294,7 +294,7 @@ func (x Aggregation_Aligner) String() string {
 	return proto.EnumName(Aggregation_Aligner_name, int32(x))
 }
 func (Aggregation_Aligner) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_a95521d463668240, []int{2, 0}
+	return fileDescriptor_common_a64b14621f6e1d51, []int{2, 0}
 }
 
 // A Reducer describes how to aggregate data points from multiple
@@ -411,7 +411,7 @@ func (x Aggregation_Reducer) String() string {
 	return proto.EnumName(Aggregation_Reducer_name, int32(x))
 }
 func (Aggregation_Reducer) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_a95521d463668240, []int{2, 1}
+	return fileDescriptor_common_a64b14621f6e1d51, []int{2, 1}
 }
 
 // A single strongly-typed value.
@@ -434,7 +434,7 @@ func (m *TypedValue) Reset()         { *m = TypedValue{} }
 func (m *TypedValue) String() string { return proto.CompactTextString(m) }
 func (*TypedValue) ProtoMessage()    {}
 func (*TypedValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_a95521d463668240, []int{0}
+	return fileDescriptor_common_a64b14621f6e1d51, []int{0}
 }
 func (m *TypedValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TypedValue.Unmarshal(m, b)
@@ -665,7 +665,7 @@ func (m *TimeInterval) Reset()         { *m = TimeInterval{} }
 func (m *TimeInterval) String() string { return proto.CompactTextString(m) }
 func (*TimeInterval) ProtoMessage()    {}
 func (*TimeInterval) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_a95521d463668240, []int{1}
+	return fileDescriptor_common_a64b14621f6e1d51, []int{1}
 }
 func (m *TimeInterval) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeInterval.Unmarshal(m, b)
@@ -763,7 +763,7 @@ func (m *Aggregation) Reset()         { *m = Aggregation{} }
 func (m *Aggregation) String() string { return proto.CompactTextString(m) }
 func (*Aggregation) ProtoMessage()    {}
 func (*Aggregation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_a95521d463668240, []int{2}
+	return fileDescriptor_common_a64b14621f6e1d51, []int{2}
 }
 func (m *Aggregation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Aggregation.Unmarshal(m, b)
@@ -822,10 +822,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/monitoring/v3/common.proto", fileDescriptor_common_a95521d463668240)
+	proto.RegisterFile("google/monitoring/v3/common.proto", fileDescriptor_common_a64b14621f6e1d51)
 }
 
-var fileDescriptor_common_a95521d463668240 = []byte{
+var fileDescriptor_common_a64b14621f6e1d51 = []byte{
 	// 957 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x95, 0xc1, 0x6e, 0xe3, 0x44,
 	0x18, 0xc7, 0xe3, 0x64, 0xdb, 0x34, 0x9f, 0xdb, 0x66, 0x3a, 0xdb, 0xed, 0x86, 0x68, 0x61, 0xb3,

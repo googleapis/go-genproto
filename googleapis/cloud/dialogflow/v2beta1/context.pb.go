@@ -59,7 +59,7 @@ func (m *Context) Reset()         { *m = Context{} }
 func (m *Context) String() string { return proto.CompactTextString(m) }
 func (*Context) ProtoMessage()    {}
 func (*Context) Descriptor() ([]byte, []int) {
-	return fileDescriptor_context_0be30f6cc4e74d3e, []int{0}
+	return fileDescriptor_context_4c18307a7450af94, []int{0}
 }
 func (m *Context) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Context.Unmarshal(m, b)
@@ -123,7 +123,7 @@ func (m *ListContextsRequest) Reset()         { *m = ListContextsRequest{} }
 func (m *ListContextsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListContextsRequest) ProtoMessage()    {}
 func (*ListContextsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_context_0be30f6cc4e74d3e, []int{1}
+	return fileDescriptor_context_4c18307a7450af94, []int{1}
 }
 func (m *ListContextsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListContextsRequest.Unmarshal(m, b)
@@ -181,7 +181,7 @@ func (m *ListContextsResponse) Reset()         { *m = ListContextsResponse{} }
 func (m *ListContextsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListContextsResponse) ProtoMessage()    {}
 func (*ListContextsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_context_0be30f6cc4e74d3e, []int{2}
+	return fileDescriptor_context_4c18307a7450af94, []int{2}
 }
 func (m *ListContextsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListContextsResponse.Unmarshal(m, b)
@@ -233,7 +233,7 @@ func (m *GetContextRequest) Reset()         { *m = GetContextRequest{} }
 func (m *GetContextRequest) String() string { return proto.CompactTextString(m) }
 func (*GetContextRequest) ProtoMessage()    {}
 func (*GetContextRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_context_0be30f6cc4e74d3e, []int{3}
+	return fileDescriptor_context_4c18307a7450af94, []int{3}
 }
 func (m *GetContextRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetContextRequest.Unmarshal(m, b)
@@ -280,7 +280,7 @@ func (m *CreateContextRequest) Reset()         { *m = CreateContextRequest{} }
 func (m *CreateContextRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateContextRequest) ProtoMessage()    {}
 func (*CreateContextRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_context_0be30f6cc4e74d3e, []int{4}
+	return fileDescriptor_context_4c18307a7450af94, []int{4}
 }
 func (m *CreateContextRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateContextRequest.Unmarshal(m, b)
@@ -329,7 +329,7 @@ func (m *UpdateContextRequest) Reset()         { *m = UpdateContextRequest{} }
 func (m *UpdateContextRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateContextRequest) ProtoMessage()    {}
 func (*UpdateContextRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_context_0be30f6cc4e74d3e, []int{5}
+	return fileDescriptor_context_4c18307a7450af94, []int{5}
 }
 func (m *UpdateContextRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateContextRequest.Unmarshal(m, b)
@@ -381,7 +381,7 @@ func (m *DeleteContextRequest) Reset()         { *m = DeleteContextRequest{} }
 func (m *DeleteContextRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteContextRequest) ProtoMessage()    {}
 func (*DeleteContextRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_context_0be30f6cc4e74d3e, []int{6}
+	return fileDescriptor_context_4c18307a7450af94, []int{6}
 }
 func (m *DeleteContextRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteContextRequest.Unmarshal(m, b)
@@ -425,7 +425,7 @@ func (m *DeleteAllContextsRequest) Reset()         { *m = DeleteAllContextsReque
 func (m *DeleteAllContextsRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteAllContextsRequest) ProtoMessage()    {}
 func (*DeleteAllContextsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_context_0be30f6cc4e74d3e, []int{7}
+	return fileDescriptor_context_4c18307a7450af94, []int{7}
 }
 func (m *DeleteAllContextsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteAllContextsRequest.Unmarshal(m, b)
@@ -717,10 +717,10 @@ var _Contexts_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dialogflow/v2beta1/context.proto", fileDescriptor_context_0be30f6cc4e74d3e)
+	proto.RegisterFile("google/cloud/dialogflow/v2beta1/context.proto", fileDescriptor_context_4c18307a7450af94)
 }
 
-var fileDescriptor_context_0be30f6cc4e74d3e = []byte{
+var fileDescriptor_context_4c18307a7450af94 = []byte{
 	// 817 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x56, 0x4d, 0x6b, 0x1b, 0x47,
 	0x18, 0x66, 0xd6, 0xad, 0x3f, 0xc6, 0x56, 0x8b, 0xa7, 0xc2, 0x55, 0x65, 0x17, 0x8b, 0x2d, 0x6d,

@@ -58,7 +58,7 @@ func (x AdGroupCriterionApprovalStatusEnum_AdGroupCriterionApprovalStatus) Strin
 	return proto.EnumName(AdGroupCriterionApprovalStatusEnum_AdGroupCriterionApprovalStatus_name, int32(x))
 }
 func (AdGroupCriterionApprovalStatusEnum_AdGroupCriterionApprovalStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_approval_status_626a528bb78b09c2, []int{0, 0}
+	return fileDescriptor_ad_group_criterion_approval_status_57d27da9f8e80211, []int{0, 0}
 }
 
 // Container for enum describing possible AdGroupCriterion approval statuses.
@@ -72,7 +72,7 @@ func (m *AdGroupCriterionApprovalStatusEnum) Reset()         { *m = AdGroupCrite
 func (m *AdGroupCriterionApprovalStatusEnum) String() string { return proto.CompactTextString(m) }
 func (*AdGroupCriterionApprovalStatusEnum) ProtoMessage()    {}
 func (*AdGroupCriterionApprovalStatusEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_approval_status_626a528bb78b09c2, []int{0}
+	return fileDescriptor_ad_group_criterion_approval_status_57d27da9f8e80211, []int{0}
 }
 func (m *AdGroupCriterionApprovalStatusEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupCriterionApprovalStatusEnum.Unmarshal(m, b)
@@ -98,10 +98,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/ad_group_criterion_approval_status.proto", fileDescriptor_ad_group_criterion_approval_status_626a528bb78b09c2)
+	proto.RegisterFile("google/ads/googleads/v1/enums/ad_group_criterion_approval_status.proto", fileDescriptor_ad_group_criterion_approval_status_57d27da9f8e80211)
 }
 
-var fileDescriptor_ad_group_criterion_approval_status_626a528bb78b09c2 = []byte{
+var fileDescriptor_ad_group_criterion_approval_status_57d27da9f8e80211 = []byte{
 	// 349 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xcd, 0x6a, 0xab, 0x40,
 	0x18, 0xbd, 0x9a, 0x7b, 0x6f, 0xcb, 0x24, 0xb4, 0xe2, 0xb2, 0x34, 0x85, 0xa4, 0xfb, 0x11, 0xe9,

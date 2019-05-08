@@ -39,7 +39,7 @@ func (m *GetPolicyRequest) Reset()         { *m = GetPolicyRequest{} }
 func (m *GetPolicyRequest) String() string { return proto.CompactTextString(m) }
 func (*GetPolicyRequest) ProtoMessage()    {}
 func (*GetPolicyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_45b3f63a4fcd0a76, []int{0}
+	return fileDescriptor_service_416c3c6c0a0ebbdc, []int{0}
 }
 func (m *GetPolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetPolicyRequest.Unmarshal(m, b)
@@ -81,7 +81,7 @@ func (m *UpdatePolicyRequest) Reset()         { *m = UpdatePolicyRequest{} }
 func (m *UpdatePolicyRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdatePolicyRequest) ProtoMessage()    {}
 func (*UpdatePolicyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_45b3f63a4fcd0a76, []int{1}
+	return fileDescriptor_service_416c3c6c0a0ebbdc, []int{1}
 }
 func (m *UpdatePolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePolicyRequest.Unmarshal(m, b)
@@ -127,7 +127,7 @@ func (m *CreateAttestorRequest) Reset()         { *m = CreateAttestorRequest{} }
 func (m *CreateAttestorRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAttestorRequest) ProtoMessage()    {}
 func (*CreateAttestorRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_45b3f63a4fcd0a76, []int{2}
+	return fileDescriptor_service_416c3c6c0a0ebbdc, []int{2}
 }
 func (m *CreateAttestorRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAttestorRequest.Unmarshal(m, b)
@@ -182,7 +182,7 @@ func (m *GetAttestorRequest) Reset()         { *m = GetAttestorRequest{} }
 func (m *GetAttestorRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAttestorRequest) ProtoMessage()    {}
 func (*GetAttestorRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_45b3f63a4fcd0a76, []int{3}
+	return fileDescriptor_service_416c3c6c0a0ebbdc, []int{3}
 }
 func (m *GetAttestorRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAttestorRequest.Unmarshal(m, b)
@@ -224,7 +224,7 @@ func (m *UpdateAttestorRequest) Reset()         { *m = UpdateAttestorRequest{} }
 func (m *UpdateAttestorRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateAttestorRequest) ProtoMessage()    {}
 func (*UpdateAttestorRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_45b3f63a4fcd0a76, []int{4}
+	return fileDescriptor_service_416c3c6c0a0ebbdc, []int{4}
 }
 func (m *UpdateAttestorRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateAttestorRequest.Unmarshal(m, b)
@@ -272,7 +272,7 @@ func (m *ListAttestorsRequest) Reset()         { *m = ListAttestorsRequest{} }
 func (m *ListAttestorsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListAttestorsRequest) ProtoMessage()    {}
 func (*ListAttestorsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_45b3f63a4fcd0a76, []int{5}
+	return fileDescriptor_service_416c3c6c0a0ebbdc, []int{5}
 }
 func (m *ListAttestorsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAttestorsRequest.Unmarshal(m, b)
@@ -330,7 +330,7 @@ func (m *ListAttestorsResponse) Reset()         { *m = ListAttestorsResponse{} }
 func (m *ListAttestorsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListAttestorsResponse) ProtoMessage()    {}
 func (*ListAttestorsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_45b3f63a4fcd0a76, []int{6}
+	return fileDescriptor_service_416c3c6c0a0ebbdc, []int{6}
 }
 func (m *ListAttestorsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAttestorsResponse.Unmarshal(m, b)
@@ -378,7 +378,7 @@ func (m *DeleteAttestorRequest) Reset()         { *m = DeleteAttestorRequest{} }
 func (m *DeleteAttestorRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteAttestorRequest) ProtoMessage()    {}
 func (*DeleteAttestorRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_45b3f63a4fcd0a76, []int{7}
+	return fileDescriptor_service_416c3c6c0a0ebbdc, []int{7}
 }
 func (m *DeleteAttestorRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteAttestorRequest.Unmarshal(m, b)
@@ -725,10 +725,10 @@ var _BinauthzManagementServiceV1Beta1_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/binaryauthorization/v1beta1/service.proto", fileDescriptor_service_45b3f63a4fcd0a76)
+	proto.RegisterFile("google/cloud/binaryauthorization/v1beta1/service.proto", fileDescriptor_service_416c3c6c0a0ebbdc)
 }
 
-var fileDescriptor_service_45b3f63a4fcd0a76 = []byte{
+var fileDescriptor_service_416c3c6c0a0ebbdc = []byte{
 	// 701 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x96, 0xcf, 0x4f, 0x13, 0x41,
 	0x14, 0xc7, 0x33, 0xa0, 0x84, 0x3e, 0x04, 0xcd, 0x68, 0x49, 0xb3, 0x68, 0xc4, 0x35, 0x69, 0x2a,

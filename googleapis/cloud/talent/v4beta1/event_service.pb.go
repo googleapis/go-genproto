@@ -50,7 +50,7 @@ func (m *CreateClientEventRequest) Reset()         { *m = CreateClientEventReque
 func (m *CreateClientEventRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateClientEventRequest) ProtoMessage()    {}
 func (*CreateClientEventRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_event_service_7569293ff9f9114d, []int{0}
+	return fileDescriptor_event_service_e4985594ba4916cb, []int{0}
 }
 func (m *CreateClientEventRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateClientEventRequest.Unmarshal(m, b)
@@ -175,10 +175,10 @@ var _EventService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/event_service.proto", fileDescriptor_event_service_7569293ff9f9114d)
+	proto.RegisterFile("google/cloud/talent/v4beta1/event_service.proto", fileDescriptor_event_service_e4985594ba4916cb)
 }
 
-var fileDescriptor_event_service_7569293ff9f9114d = []byte{
+var fileDescriptor_event_service_e4985594ba4916cb = []byte{
 	// 327 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xb1, 0x4e, 0x3a, 0x41,
 	0x10, 0xc6, 0xb3, 0xfc, 0x13, 0x92, 0xff, 0x42, 0xc3, 0x15, 0x86, 0xa0, 0x89, 0xe4, 0x1a, 0x91,

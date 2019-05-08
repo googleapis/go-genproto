@@ -50,7 +50,7 @@ func (x AppCampaignAppStoreEnum_AppCampaignAppStore) String() string {
 	return proto.EnumName(AppCampaignAppStoreEnum_AppCampaignAppStore_name, int32(x))
 }
 func (AppCampaignAppStoreEnum_AppCampaignAppStore) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_app_campaign_app_store_7053f99b013d0af8, []int{0, 0}
+	return fileDescriptor_app_campaign_app_store_a6bc8941816fd21e, []int{0, 0}
 }
 
 // The application store that distributes mobile applications.
@@ -64,7 +64,7 @@ func (m *AppCampaignAppStoreEnum) Reset()         { *m = AppCampaignAppStoreEnum
 func (m *AppCampaignAppStoreEnum) String() string { return proto.CompactTextString(m) }
 func (*AppCampaignAppStoreEnum) ProtoMessage()    {}
 func (*AppCampaignAppStoreEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_app_campaign_app_store_7053f99b013d0af8, []int{0}
+	return fileDescriptor_app_campaign_app_store_a6bc8941816fd21e, []int{0}
 }
 func (m *AppCampaignAppStoreEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppCampaignAppStoreEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/app_campaign_app_store.proto", fileDescriptor_app_campaign_app_store_7053f99b013d0af8)
+	proto.RegisterFile("google/ads/googleads/v1/enums/app_campaign_app_store.proto", fileDescriptor_app_campaign_app_store_a6bc8941816fd21e)
 }
 
-var fileDescriptor_app_campaign_app_store_7053f99b013d0af8 = []byte{
+var fileDescriptor_app_campaign_app_store_a6bc8941816fd21e = []byte{
 	// 315 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xd1, 0x4a, 0xc3, 0x30,
 	0x14, 0x75, 0x1d, 0x28, 0x64, 0x0f, 0x2b, 0x9d, 0xa0, 0x88, 0x7b, 0xd8, 0x3e, 0x20, 0xa1, 0xf8,

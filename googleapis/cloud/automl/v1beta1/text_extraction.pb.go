@@ -35,7 +35,7 @@ func (m *TextExtractionAnnotation) Reset()         { *m = TextExtractionAnnotati
 func (m *TextExtractionAnnotation) String() string { return proto.CompactTextString(m) }
 func (*TextExtractionAnnotation) ProtoMessage()    {}
 func (*TextExtractionAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_extraction_e7807f189ec2397b, []int{0}
+	return fileDescriptor_text_extraction_819b64ab635b378e, []int{0}
 }
 func (m *TextExtractionAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextExtractionAnnotation.Unmarshal(m, b)
@@ -85,7 +85,7 @@ func (m *TextExtractionEvaluationMetrics) Reset()         { *m = TextExtractionE
 func (m *TextExtractionEvaluationMetrics) String() string { return proto.CompactTextString(m) }
 func (*TextExtractionEvaluationMetrics) ProtoMessage()    {}
 func (*TextExtractionEvaluationMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_extraction_e7807f189ec2397b, []int{1}
+	return fileDescriptor_text_extraction_819b64ab635b378e, []int{1}
 }
 func (m *TextExtractionEvaluationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextExtractionEvaluationMetrics.Unmarshal(m, b)
@@ -144,7 +144,7 @@ func (m *TextExtractionEvaluationMetrics_ConfidenceMetricsEntry) String() string
 }
 func (*TextExtractionEvaluationMetrics_ConfidenceMetricsEntry) ProtoMessage() {}
 func (*TextExtractionEvaluationMetrics_ConfidenceMetricsEntry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_extraction_e7807f189ec2397b, []int{1, 0}
+	return fileDescriptor_text_extraction_819b64ab635b378e, []int{1, 0}
 }
 func (m *TextExtractionEvaluationMetrics_ConfidenceMetricsEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextExtractionEvaluationMetrics_ConfidenceMetricsEntry.Unmarshal(m, b)
@@ -199,10 +199,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/text_extraction.proto", fileDescriptor_text_extraction_e7807f189ec2397b)
+	proto.RegisterFile("google/cloud/automl/v1beta1/text_extraction.proto", fileDescriptor_text_extraction_819b64ab635b378e)
 }
 
-var fileDescriptor_text_extraction_e7807f189ec2397b = []byte{
+var fileDescriptor_text_extraction_819b64ab635b378e = []byte{
 	// 406 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xcf, 0x6a, 0xdb, 0x30,
 	0x18, 0xc7, 0xee, 0x9a, 0x6d, 0xca, 0x4e, 0x5a, 0x57, 0xbc, 0xb4, 0xd0, 0xd0, 0x53, 0x4e, 0x32,

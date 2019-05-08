@@ -48,7 +48,7 @@ func (x ConsoleOutputStream) String() string {
 	return proto.EnumName(ConsoleOutputStream_name, int32(x))
 }
 func (ConsoleOutputStream) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{0}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{0}
 }
 
 // How did the event stream finish.
@@ -81,7 +81,7 @@ func (x BuildEvent_BuildComponentStreamFinished_FinishType) String() string {
 	return proto.EnumName(BuildEvent_BuildComponentStreamFinished_FinishType_name, int32(x))
 }
 func (BuildEvent_BuildComponentStreamFinished_FinishType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{0, 5, 0}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{0, 5, 0}
 }
 
 // Which build component generates this event stream. Each build component
@@ -116,7 +116,7 @@ func (x StreamId_BuildComponent) String() string {
 	return proto.EnumName(StreamId_BuildComponent_name, int32(x))
 }
 func (StreamId_BuildComponent) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{1, 0}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{1, 0}
 }
 
 // An event representing some state change that occurred in the build. This
@@ -148,7 +148,7 @@ func (m *BuildEvent) Reset()         { *m = BuildEvent{} }
 func (m *BuildEvent) String() string { return proto.CompactTextString(m) }
 func (*BuildEvent) ProtoMessage()    {}
 func (*BuildEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{0}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{0}
 }
 func (m *BuildEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent.Unmarshal(m, b)
@@ -527,7 +527,7 @@ func (m *BuildEvent_InvocationAttemptStarted) Reset()         { *m = BuildEvent_
 func (m *BuildEvent_InvocationAttemptStarted) String() string { return proto.CompactTextString(m) }
 func (*BuildEvent_InvocationAttemptStarted) ProtoMessage()    {}
 func (*BuildEvent_InvocationAttemptStarted) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{0, 0}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{0, 0}
 }
 func (m *BuildEvent_InvocationAttemptStarted) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_InvocationAttemptStarted.Unmarshal(m, b)
@@ -574,7 +574,7 @@ func (m *BuildEvent_InvocationAttemptFinished) Reset()         { *m = BuildEvent
 func (m *BuildEvent_InvocationAttemptFinished) String() string { return proto.CompactTextString(m) }
 func (*BuildEvent_InvocationAttemptFinished) ProtoMessage()    {}
 func (*BuildEvent_InvocationAttemptFinished) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{0, 1}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{0, 1}
 }
 func (m *BuildEvent_InvocationAttemptFinished) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_InvocationAttemptFinished.Unmarshal(m, b)
@@ -614,7 +614,7 @@ func (m *BuildEvent_BuildEnqueued) Reset()         { *m = BuildEvent_BuildEnqueu
 func (m *BuildEvent_BuildEnqueued) String() string { return proto.CompactTextString(m) }
 func (*BuildEvent_BuildEnqueued) ProtoMessage()    {}
 func (*BuildEvent_BuildEnqueued) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{0, 2}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{0, 2}
 }
 func (m *BuildEvent_BuildEnqueued) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_BuildEnqueued.Unmarshal(m, b)
@@ -656,7 +656,7 @@ func (m *BuildEvent_BuildFinished) Reset()         { *m = BuildEvent_BuildFinish
 func (m *BuildEvent_BuildFinished) String() string { return proto.CompactTextString(m) }
 func (*BuildEvent_BuildFinished) ProtoMessage()    {}
 func (*BuildEvent_BuildFinished) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{0, 3}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{0, 3}
 }
 func (m *BuildEvent_BuildFinished) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_BuildFinished.Unmarshal(m, b)
@@ -702,7 +702,7 @@ func (m *BuildEvent_ConsoleOutput) Reset()         { *m = BuildEvent_ConsoleOutp
 func (m *BuildEvent_ConsoleOutput) String() string { return proto.CompactTextString(m) }
 func (*BuildEvent_ConsoleOutput) ProtoMessage()    {}
 func (*BuildEvent_ConsoleOutput) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{0, 4}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{0, 4}
 }
 func (m *BuildEvent_ConsoleOutput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_ConsoleOutput.Unmarshal(m, b)
@@ -848,7 +848,7 @@ func (m *BuildEvent_BuildComponentStreamFinished) Reset() {
 func (m *BuildEvent_BuildComponentStreamFinished) String() string { return proto.CompactTextString(m) }
 func (*BuildEvent_BuildComponentStreamFinished) ProtoMessage()    {}
 func (*BuildEvent_BuildComponentStreamFinished) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{0, 5}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{0, 5}
 }
 func (m *BuildEvent_BuildComponentStreamFinished) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildEvent_BuildComponentStreamFinished.Unmarshal(m, b)
@@ -893,7 +893,7 @@ func (m *StreamId) Reset()         { *m = StreamId{} }
 func (m *StreamId) String() string { return proto.CompactTextString(m) }
 func (*StreamId) ProtoMessage()    {}
 func (*StreamId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_build_events_2e5c61003ea466eb, []int{1}
+	return fileDescriptor_build_events_fb145f4342778ee6, []int{1}
 }
 func (m *StreamId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamId.Unmarshal(m, b)
@@ -949,10 +949,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/build/v1/build_events.proto", fileDescriptor_build_events_2e5c61003ea466eb)
+	proto.RegisterFile("google/devtools/build/v1/build_events.proto", fileDescriptor_build_events_fb145f4342778ee6)
 }
 
-var fileDescriptor_build_events_2e5c61003ea466eb = []byte{
+var fileDescriptor_build_events_fb145f4342778ee6 = []byte{
 	// 896 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x96, 0x6d, 0x6f, 0xe3, 0x44,
 	0x10, 0xc7, 0xe3, 0xf6, 0x48, 0xd3, 0x69, 0x13, 0x7c, 0x7b, 0x9c, 0xce, 0xf1, 0x55, 0x02, 0x8a,

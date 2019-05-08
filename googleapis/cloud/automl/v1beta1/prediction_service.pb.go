@@ -59,7 +59,7 @@ func (m *PredictRequest) Reset()         { *m = PredictRequest{} }
 func (m *PredictRequest) String() string { return proto.CompactTextString(m) }
 func (*PredictRequest) ProtoMessage()    {}
 func (*PredictRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_prediction_service_6e047ecbf9a10807, []int{0}
+	return fileDescriptor_prediction_service_4cd94add91ccba6b, []int{0}
 }
 func (m *PredictRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredictRequest.Unmarshal(m, b)
@@ -130,7 +130,7 @@ func (m *PredictResponse) Reset()         { *m = PredictResponse{} }
 func (m *PredictResponse) String() string { return proto.CompactTextString(m) }
 func (*PredictResponse) ProtoMessage()    {}
 func (*PredictResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_prediction_service_6e047ecbf9a10807, []int{1}
+	return fileDescriptor_prediction_service_4cd94add91ccba6b, []int{1}
 }
 func (m *PredictResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PredictResponse.Unmarshal(m, b)
@@ -213,7 +213,7 @@ func (m *BatchPredictRequest) Reset()         { *m = BatchPredictRequest{} }
 func (m *BatchPredictRequest) String() string { return proto.CompactTextString(m) }
 func (*BatchPredictRequest) ProtoMessage()    {}
 func (*BatchPredictRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_prediction_service_6e047ecbf9a10807, []int{2}
+	return fileDescriptor_prediction_service_4cd94add91ccba6b, []int{2}
 }
 func (m *BatchPredictRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchPredictRequest.Unmarshal(m, b)
@@ -272,7 +272,7 @@ func (m *BatchPredictResult) Reset()         { *m = BatchPredictResult{} }
 func (m *BatchPredictResult) String() string { return proto.CompactTextString(m) }
 func (*BatchPredictResult) ProtoMessage()    {}
 func (*BatchPredictResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_prediction_service_6e047ecbf9a10807, []int{3}
+	return fileDescriptor_prediction_service_4cd94add91ccba6b, []int{3}
 }
 func (m *BatchPredictResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchPredictResult.Unmarshal(m, b)
@@ -458,10 +458,10 @@ var _PredictionService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/prediction_service.proto", fileDescriptor_prediction_service_6e047ecbf9a10807)
+	proto.RegisterFile("google/cloud/automl/v1beta1/prediction_service.proto", fileDescriptor_prediction_service_4cd94add91ccba6b)
 }
 
-var fileDescriptor_prediction_service_6e047ecbf9a10807 = []byte{
+var fileDescriptor_prediction_service_4cd94add91ccba6b = []byte{
 	// 634 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x54, 0xcd, 0x6e, 0xd4, 0x3c,
 	0x14, 0x95, 0x33, 0xfd, 0xf9, 0xea, 0x69, 0x3f, 0xc0, 0x54, 0x68, 0x94, 0x82, 0xa8, 0x02, 0x8b,

@@ -320,7 +320,7 @@ func (m *TransactionOptions) Reset()         { *m = TransactionOptions{} }
 func (m *TransactionOptions) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions) ProtoMessage()    {}
 func (*TransactionOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transaction_4419efde92dad332, []int{0}
+	return fileDescriptor_transaction_949bbf6c9797af8e, []int{0}
 }
 func (m *TransactionOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions.Unmarshal(m, b)
@@ -495,7 +495,7 @@ func (m *TransactionOptions_ReadWrite) Reset()         { *m = TransactionOptions
 func (m *TransactionOptions_ReadWrite) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions_ReadWrite) ProtoMessage()    {}
 func (*TransactionOptions_ReadWrite) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transaction_4419efde92dad332, []int{0, 0}
+	return fileDescriptor_transaction_949bbf6c9797af8e, []int{0, 0}
 }
 func (m *TransactionOptions_ReadWrite) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions_ReadWrite.Unmarshal(m, b)
@@ -526,7 +526,7 @@ func (m *TransactionOptions_PartitionedDml) Reset()         { *m = TransactionOp
 func (m *TransactionOptions_PartitionedDml) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions_PartitionedDml) ProtoMessage()    {}
 func (*TransactionOptions_PartitionedDml) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transaction_4419efde92dad332, []int{0, 1}
+	return fileDescriptor_transaction_949bbf6c9797af8e, []int{0, 1}
 }
 func (m *TransactionOptions_PartitionedDml) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions_PartitionedDml.Unmarshal(m, b)
@@ -570,7 +570,7 @@ func (m *TransactionOptions_ReadOnly) Reset()         { *m = TransactionOptions_
 func (m *TransactionOptions_ReadOnly) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions_ReadOnly) ProtoMessage()    {}
 func (*TransactionOptions_ReadOnly) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transaction_4419efde92dad332, []int{0, 2}
+	return fileDescriptor_transaction_949bbf6c9797af8e, []int{0, 2}
 }
 func (m *TransactionOptions_ReadOnly) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions_ReadOnly.Unmarshal(m, b)
@@ -830,7 +830,7 @@ func (m *Transaction) Reset()         { *m = Transaction{} }
 func (m *Transaction) String() string { return proto.CompactTextString(m) }
 func (*Transaction) ProtoMessage()    {}
 func (*Transaction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transaction_4419efde92dad332, []int{1}
+	return fileDescriptor_transaction_949bbf6c9797af8e, []int{1}
 }
 func (m *Transaction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Transaction.Unmarshal(m, b)
@@ -888,7 +888,7 @@ func (m *TransactionSelector) Reset()         { *m = TransactionSelector{} }
 func (m *TransactionSelector) String() string { return proto.CompactTextString(m) }
 func (*TransactionSelector) ProtoMessage()    {}
 func (*TransactionSelector) Descriptor() ([]byte, []int) {
-	return fileDescriptor_transaction_4419efde92dad332, []int{2}
+	return fileDescriptor_transaction_949bbf6c9797af8e, []int{2}
 }
 func (m *TransactionSelector) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionSelector.Unmarshal(m, b)
@@ -1057,10 +1057,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/spanner/v1/transaction.proto", fileDescriptor_transaction_4419efde92dad332)
+	proto.RegisterFile("google/spanner/v1/transaction.proto", fileDescriptor_transaction_949bbf6c9797af8e)
 }
 
-var fileDescriptor_transaction_4419efde92dad332 = []byte{
+var fileDescriptor_transaction_949bbf6c9797af8e = []byte{
 	// 573 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x94, 0xdf, 0x6e, 0xd3, 0x3e,
 	0x14, 0xc7, 0xd3, 0x6e, 0xab, 0xba, 0xd3, 0xae, 0xed, 0x3c, 0x4d, 0xbf, 0xfe, 0x22, 0x04, 0xa8,

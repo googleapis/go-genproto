@@ -211,10 +211,10 @@ var _ContainerAnalysis_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/containeranalysis/v1/containeranalysis.proto", fileDescriptor_containeranalysis_50dd09dafa8381b2)
+	proto.RegisterFile("google/devtools/containeranalysis/v1/containeranalysis.proto", fileDescriptor_containeranalysis_21b725fe07df89a8)
 }
 
-var fileDescriptor_containeranalysis_50dd09dafa8381b2 = []byte{
+var fileDescriptor_containeranalysis_21b725fe07df89a8 = []byte{
 	// 393 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x93, 0x4f, 0x6a, 0xdb, 0x40,
 	0x14, 0xc6, 0x91, 0x4b, 0xbb, 0x10, 0xdd, 0x54, 0xd0, 0x8d, 0x28, 0x35, 0x88, 0x2e, 0x5a, 0x2f,

@@ -61,7 +61,7 @@ func (x OperationType) String() string {
 	return proto.EnumName(OperationType_name, int32(x))
 }
 func (OperationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{0}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{0}
 }
 
 // The various possible states for an ongoing Operation.
@@ -113,7 +113,7 @@ func (x CommonMetadata_State) String() string {
 	return proto.EnumName(CommonMetadata_State_name, int32(x))
 }
 func (CommonMetadata_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{0, 0}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{0, 0}
 }
 
 // Metadata common to all Datastore Admin operations.
@@ -139,7 +139,7 @@ func (m *CommonMetadata) Reset()         { *m = CommonMetadata{} }
 func (m *CommonMetadata) String() string { return proto.CompactTextString(m) }
 func (*CommonMetadata) ProtoMessage()    {}
 func (*CommonMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{0}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{0}
 }
 func (m *CommonMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommonMetadata.Unmarshal(m, b)
@@ -211,7 +211,7 @@ func (m *Progress) Reset()         { *m = Progress{} }
 func (m *Progress) String() string { return proto.CompactTextString(m) }
 func (*Progress) ProtoMessage()    {}
 func (*Progress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{1}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{1}
 }
 func (m *Progress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Progress.Unmarshal(m, b)
@@ -282,7 +282,7 @@ func (m *ExportEntitiesRequest) Reset()         { *m = ExportEntitiesRequest{} }
 func (m *ExportEntitiesRequest) String() string { return proto.CompactTextString(m) }
 func (*ExportEntitiesRequest) ProtoMessage()    {}
 func (*ExportEntitiesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{2}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{2}
 }
 func (m *ExportEntitiesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportEntitiesRequest.Unmarshal(m, b)
@@ -365,7 +365,7 @@ func (m *ImportEntitiesRequest) Reset()         { *m = ImportEntitiesRequest{} }
 func (m *ImportEntitiesRequest) String() string { return proto.CompactTextString(m) }
 func (*ImportEntitiesRequest) ProtoMessage()    {}
 func (*ImportEntitiesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{3}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{3}
 }
 func (m *ImportEntitiesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportEntitiesRequest.Unmarshal(m, b)
@@ -430,7 +430,7 @@ func (m *ExportEntitiesResponse) Reset()         { *m = ExportEntitiesResponse{}
 func (m *ExportEntitiesResponse) String() string { return proto.CompactTextString(m) }
 func (*ExportEntitiesResponse) ProtoMessage()    {}
 func (*ExportEntitiesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{4}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{4}
 }
 func (m *ExportEntitiesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportEntitiesResponse.Unmarshal(m, b)
@@ -482,7 +482,7 @@ func (m *ExportEntitiesMetadata) Reset()         { *m = ExportEntitiesMetadata{}
 func (m *ExportEntitiesMetadata) String() string { return proto.CompactTextString(m) }
 func (*ExportEntitiesMetadata) ProtoMessage()    {}
 func (*ExportEntitiesMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{5}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{5}
 }
 func (m *ExportEntitiesMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportEntitiesMetadata.Unmarshal(m, b)
@@ -561,7 +561,7 @@ func (m *ImportEntitiesMetadata) Reset()         { *m = ImportEntitiesMetadata{}
 func (m *ImportEntitiesMetadata) String() string { return proto.CompactTextString(m) }
 func (*ImportEntitiesMetadata) ProtoMessage()    {}
 func (*ImportEntitiesMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{6}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{6}
 }
 func (m *ImportEntitiesMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportEntitiesMetadata.Unmarshal(m, b)
@@ -655,7 +655,7 @@ func (m *EntityFilter) Reset()         { *m = EntityFilter{} }
 func (m *EntityFilter) String() string { return proto.CompactTextString(m) }
 func (*EntityFilter) ProtoMessage()    {}
 func (*EntityFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{7}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{7}
 }
 func (m *EntityFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EntityFilter.Unmarshal(m, b)
@@ -705,7 +705,7 @@ func (m *GetIndexRequest) Reset()         { *m = GetIndexRequest{} }
 func (m *GetIndexRequest) String() string { return proto.CompactTextString(m) }
 func (*GetIndexRequest) ProtoMessage()    {}
 func (*GetIndexRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{8}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{8}
 }
 func (m *GetIndexRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetIndexRequest.Unmarshal(m, b)
@@ -759,7 +759,7 @@ func (m *ListIndexesRequest) Reset()         { *m = ListIndexesRequest{} }
 func (m *ListIndexesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListIndexesRequest) ProtoMessage()    {}
 func (*ListIndexesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{9}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{9}
 }
 func (m *ListIndexesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIndexesRequest.Unmarshal(m, b)
@@ -823,7 +823,7 @@ func (m *ListIndexesResponse) Reset()         { *m = ListIndexesResponse{} }
 func (m *ListIndexesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListIndexesResponse) ProtoMessage()    {}
 func (*ListIndexesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{10}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{10}
 }
 func (m *ListIndexesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIndexesResponse.Unmarshal(m, b)
@@ -874,7 +874,7 @@ func (m *IndexOperationMetadata) Reset()         { *m = IndexOperationMetadata{}
 func (m *IndexOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*IndexOperationMetadata) ProtoMessage()    {}
 func (*IndexOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_admin_b0c01b68e67af54e, []int{11}
+	return fileDescriptor_datastore_admin_35408641d3652505, []int{11}
 }
 func (m *IndexOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexOperationMetadata.Unmarshal(m, b)
@@ -1141,10 +1141,10 @@ var _DatastoreAdmin_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/datastore/admin/v1/datastore_admin.proto", fileDescriptor_datastore_admin_b0c01b68e67af54e)
+	proto.RegisterFile("google/datastore/admin/v1/datastore_admin.proto", fileDescriptor_datastore_admin_35408641d3652505)
 }
 
-var fileDescriptor_datastore_admin_b0c01b68e67af54e = []byte{
+var fileDescriptor_datastore_admin_35408641d3652505 = []byte{
 	// 1216 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x57, 0xcd, 0x92, 0xdb, 0xc4,
 	0x13, 0xff, 0x4b, 0xfe, 0x88, 0xdd, 0x5e, 0x7b, 0x9d, 0xc9, 0x3f, 0x5b, 0x8e, 0x21, 0xc4, 0x68,

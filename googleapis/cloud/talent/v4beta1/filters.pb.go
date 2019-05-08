@@ -52,7 +52,7 @@ func (x LocationFilter_TelecommutePreference) String() string {
 	return proto.EnumName(LocationFilter_TelecommutePreference_name, int32(x))
 }
 func (LocationFilter_TelecommutePreference) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{2, 0}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{2, 0}
 }
 
 // Specify the type of filtering.
@@ -106,7 +106,7 @@ func (x CompensationFilter_FilterType) String() string {
 	return proto.EnumName(CompensationFilter_FilterType_name, int32(x))
 }
 func (CompensationFilter_FilterType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{3, 0}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{3, 0}
 }
 
 // The traffic density to use when calculating commute time.
@@ -136,7 +136,7 @@ func (x CommuteFilter_RoadTraffic) String() string {
 	return proto.EnumName(CommuteFilter_RoadTraffic_name, int32(x))
 }
 func (CommuteFilter_RoadTraffic) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{4, 0}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{4, 0}
 }
 
 // Enum indicating which set of [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records] to search
@@ -172,7 +172,7 @@ func (x EmployerFilter_EmployerFilterMode) String() string {
 	return proto.EnumName(EmployerFilter_EmployerFilterMode_name, int32(x))
 }
 func (EmployerFilter_EmployerFilterMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{7, 0}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{7, 0}
 }
 
 // Time fields can be used in TimeFilter.
@@ -202,7 +202,7 @@ func (x TimeFilter_TimeField) String() string {
 	return proto.EnumName(TimeFilter_TimeField_name, int32(x))
 }
 func (TimeFilter_TimeField) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{13, 0}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{13, 0}
 }
 
 // Input only.
@@ -358,7 +358,7 @@ type JobQuery struct {
 	//
 	// This filter specifies a list of job names to be excluded during search.
 	//
-	// At most 200 excluded job names are allowed.
+	// At most 400 excluded job names are allowed.
 	ExcludedJobs         []string `protobuf:"bytes,13,rep,name=excluded_jobs,json=excludedJobs,proto3" json:"excluded_jobs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -369,7 +369,7 @@ func (m *JobQuery) Reset()         { *m = JobQuery{} }
 func (m *JobQuery) String() string { return proto.CompactTextString(m) }
 func (*JobQuery) ProtoMessage()    {}
 func (*JobQuery) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{0}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{0}
 }
 func (m *JobQuery) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobQuery.Unmarshal(m, b)
@@ -634,7 +634,7 @@ func (m *ProfileQuery) Reset()         { *m = ProfileQuery{} }
 func (m *ProfileQuery) String() string { return proto.CompactTextString(m) }
 func (*ProfileQuery) ProtoMessage()    {}
 func (*ProfileQuery) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{1}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{1}
 }
 func (m *ProfileQuery) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProfileQuery.Unmarshal(m, b)
@@ -813,7 +813,7 @@ func (m *LocationFilter) Reset()         { *m = LocationFilter{} }
 func (m *LocationFilter) String() string { return proto.CompactTextString(m) }
 func (*LocationFilter) ProtoMessage()    {}
 func (*LocationFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{2}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{2}
 }
 func (m *LocationFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationFilter.Unmarshal(m, b)
@@ -905,7 +905,7 @@ func (m *CompensationFilter) Reset()         { *m = CompensationFilter{} }
 func (m *CompensationFilter) String() string { return proto.CompactTextString(m) }
 func (*CompensationFilter) ProtoMessage()    {}
 func (*CompensationFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{3}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{3}
 }
 func (m *CompensationFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompensationFilter.Unmarshal(m, b)
@@ -995,7 +995,7 @@ func (m *CommuteFilter) Reset()         { *m = CommuteFilter{} }
 func (m *CommuteFilter) String() string { return proto.CompactTextString(m) }
 func (*CommuteFilter) ProtoMessage()    {}
 func (*CommuteFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{4}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{4}
 }
 func (m *CommuteFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommuteFilter.Unmarshal(m, b)
@@ -1171,7 +1171,7 @@ func (m *JobTitleFilter) Reset()         { *m = JobTitleFilter{} }
 func (m *JobTitleFilter) String() string { return proto.CompactTextString(m) }
 func (*JobTitleFilter) ProtoMessage()    {}
 func (*JobTitleFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{5}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{5}
 }
 func (m *JobTitleFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_JobTitleFilter.Unmarshal(m, b)
@@ -1227,7 +1227,7 @@ func (m *SkillFilter) Reset()         { *m = SkillFilter{} }
 func (m *SkillFilter) String() string { return proto.CompactTextString(m) }
 func (*SkillFilter) ProtoMessage()    {}
 func (*SkillFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{6}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{6}
 }
 func (m *SkillFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SkillFilter.Unmarshal(m, b)
@@ -1289,7 +1289,7 @@ func (m *EmployerFilter) Reset()         { *m = EmployerFilter{} }
 func (m *EmployerFilter) String() string { return proto.CompactTextString(m) }
 func (*EmployerFilter) ProtoMessage()    {}
 func (*EmployerFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{7}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{7}
 }
 func (m *EmployerFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EmployerFilter.Unmarshal(m, b)
@@ -1364,7 +1364,7 @@ func (m *EducationFilter) Reset()         { *m = EducationFilter{} }
 func (m *EducationFilter) String() string { return proto.CompactTextString(m) }
 func (*EducationFilter) ProtoMessage()    {}
 func (*EducationFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{8}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{8}
 }
 func (m *EducationFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EducationFilter.Unmarshal(m, b)
@@ -1436,7 +1436,7 @@ func (m *WorkExperienceFilter) Reset()         { *m = WorkExperienceFilter{} }
 func (m *WorkExperienceFilter) String() string { return proto.CompactTextString(m) }
 func (*WorkExperienceFilter) ProtoMessage()    {}
 func (*WorkExperienceFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{9}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{9}
 }
 func (m *WorkExperienceFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WorkExperienceFilter.Unmarshal(m, b)
@@ -1497,7 +1497,7 @@ func (m *ApplicationDateFilter) Reset()         { *m = ApplicationDateFilter{} }
 func (m *ApplicationDateFilter) String() string { return proto.CompactTextString(m) }
 func (*ApplicationDateFilter) ProtoMessage()    {}
 func (*ApplicationDateFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{10}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{10}
 }
 func (m *ApplicationDateFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplicationDateFilter.Unmarshal(m, b)
@@ -1555,7 +1555,7 @@ func (m *ApplicationOutcomeNotesFilter) Reset()         { *m = ApplicationOutcom
 func (m *ApplicationOutcomeNotesFilter) String() string { return proto.CompactTextString(m) }
 func (*ApplicationOutcomeNotesFilter) ProtoMessage()    {}
 func (*ApplicationOutcomeNotesFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{11}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{11}
 }
 func (m *ApplicationOutcomeNotesFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplicationOutcomeNotesFilter.Unmarshal(m, b)
@@ -1617,7 +1617,7 @@ func (m *ApplicationJobFilter) Reset()         { *m = ApplicationJobFilter{} }
 func (m *ApplicationJobFilter) String() string { return proto.CompactTextString(m) }
 func (*ApplicationJobFilter) ProtoMessage()    {}
 func (*ApplicationJobFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{12}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{12}
 }
 func (m *ApplicationJobFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplicationJobFilter.Unmarshal(m, b)
@@ -1689,7 +1689,7 @@ func (m *TimeFilter) Reset()         { *m = TimeFilter{} }
 func (m *TimeFilter) String() string { return proto.CompactTextString(m) }
 func (*TimeFilter) ProtoMessage()    {}
 func (*TimeFilter) Descriptor() ([]byte, []int) {
-	return fileDescriptor_filters_cda95aecfe32bf69, []int{13}
+	return fileDescriptor_filters_4fe13b05da0a66b7, []int{13}
 }
 func (m *TimeFilter) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeFilter.Unmarshal(m, b)
@@ -1753,10 +1753,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/filters.proto", fileDescriptor_filters_cda95aecfe32bf69)
+	proto.RegisterFile("google/cloud/talent/v4beta1/filters.proto", fileDescriptor_filters_4fe13b05da0a66b7)
 }
 
-var fileDescriptor_filters_cda95aecfe32bf69 = []byte{
+var fileDescriptor_filters_4fe13b05da0a66b7 = []byte{
 	// 1993 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x58, 0x5b, 0x73, 0x23, 0x47,
 	0x15, 0x5e, 0x49, 0x5e, 0xaf, 0x75, 0x74, 0xb1, 0xb6, 0x7d, 0x53, 0xbc, 0x4b, 0xd6, 0x28, 0x09,

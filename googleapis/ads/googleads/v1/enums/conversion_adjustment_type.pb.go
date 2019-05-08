@@ -52,7 +52,7 @@ func (x ConversionAdjustmentTypeEnum_ConversionAdjustmentType) String() string {
 	return proto.EnumName(ConversionAdjustmentTypeEnum_ConversionAdjustmentType_name, int32(x))
 }
 func (ConversionAdjustmentTypeEnum_ConversionAdjustmentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_type_e616529d7e414d64, []int{0, 0}
+	return fileDescriptor_conversion_adjustment_type_aa7254239d7954f6, []int{0, 0}
 }
 
 // Container for enum describing conversion adjustment types.
@@ -66,7 +66,7 @@ func (m *ConversionAdjustmentTypeEnum) Reset()         { *m = ConversionAdjustme
 func (m *ConversionAdjustmentTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*ConversionAdjustmentTypeEnum) ProtoMessage()    {}
 func (*ConversionAdjustmentTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_type_e616529d7e414d64, []int{0}
+	return fileDescriptor_conversion_adjustment_type_aa7254239d7954f6, []int{0}
 }
 func (m *ConversionAdjustmentTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionAdjustmentTypeEnum.Unmarshal(m, b)
@@ -92,10 +92,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_adjustment_type.proto", fileDescriptor_conversion_adjustment_type_e616529d7e414d64)
+	proto.RegisterFile("google/ads/googleads/v1/enums/conversion_adjustment_type.proto", fileDescriptor_conversion_adjustment_type_aa7254239d7954f6)
 }
 
-var fileDescriptor_conversion_adjustment_type_e616529d7e414d64 = []byte{
+var fileDescriptor_conversion_adjustment_type_aa7254239d7954f6 = []byte{
 	// 318 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xdf, 0x4a, 0xf3, 0x30,
 	0x1c, 0xfd, 0xd6, 0xc1, 0x27, 0x64, 0xa0, 0xa5, 0x57, 0x22, 0xdb, 0xc5, 0xf6, 0x00, 0x29, 0xc5,

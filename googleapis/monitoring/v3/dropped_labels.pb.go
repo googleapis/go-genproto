@@ -46,7 +46,7 @@ func (m *DroppedLabels) Reset()         { *m = DroppedLabels{} }
 func (m *DroppedLabels) String() string { return proto.CompactTextString(m) }
 func (*DroppedLabels) ProtoMessage()    {}
 func (*DroppedLabels) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dropped_labels_bd230525f7696d53, []int{0}
+	return fileDescriptor_dropped_labels_1340d25b5d2a29b0, []int{0}
 }
 func (m *DroppedLabels) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DroppedLabels.Unmarshal(m, b)
@@ -79,10 +79,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/monitoring/v3/dropped_labels.proto", fileDescriptor_dropped_labels_bd230525f7696d53)
+	proto.RegisterFile("google/monitoring/v3/dropped_labels.proto", fileDescriptor_dropped_labels_1340d25b5d2a29b0)
 }
 
-var fileDescriptor_dropped_labels_bd230525f7696d53 = []byte{
+var fileDescriptor_dropped_labels_1340d25b5d2a29b0 = []byte{
 	// 235 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x90, 0x31, 0x4b, 0x43, 0x31,
 	0x10, 0xc7, 0x49, 0x4b, 0x05, 0x4f, 0x04, 0x09, 0x1d, 0x42, 0x71, 0x28, 0x4e, 0x75, 0xb9, 0x80,

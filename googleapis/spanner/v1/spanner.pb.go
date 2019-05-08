@@ -57,7 +57,7 @@ func (x ExecuteSqlRequest_QueryMode) String() string {
 	return proto.EnumName(ExecuteSqlRequest_QueryMode_name, int32(x))
 }
 func (ExecuteSqlRequest_QueryMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{6, 0}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{6, 0}
 }
 
 // The request for [CreateSession][google.spanner.v1.Spanner.CreateSession].
@@ -75,7 +75,7 @@ func (m *CreateSessionRequest) Reset()         { *m = CreateSessionRequest{} }
 func (m *CreateSessionRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateSessionRequest) ProtoMessage()    {}
 func (*CreateSessionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{0}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{0}
 }
 func (m *CreateSessionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateSessionRequest.Unmarshal(m, b)
@@ -138,7 +138,7 @@ func (m *Session) Reset()         { *m = Session{} }
 func (m *Session) String() string { return proto.CompactTextString(m) }
 func (*Session) ProtoMessage()    {}
 func (*Session) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{1}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{1}
 }
 func (m *Session) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Session.Unmarshal(m, b)
@@ -199,7 +199,7 @@ func (m *GetSessionRequest) Reset()         { *m = GetSessionRequest{} }
 func (m *GetSessionRequest) String() string { return proto.CompactTextString(m) }
 func (*GetSessionRequest) ProtoMessage()    {}
 func (*GetSessionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{2}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{2}
 }
 func (m *GetSessionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSessionRequest.Unmarshal(m, b)
@@ -258,7 +258,7 @@ func (m *ListSessionsRequest) Reset()         { *m = ListSessionsRequest{} }
 func (m *ListSessionsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListSessionsRequest) ProtoMessage()    {}
 func (*ListSessionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{3}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{3}
 }
 func (m *ListSessionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSessionsRequest.Unmarshal(m, b)
@@ -323,7 +323,7 @@ func (m *ListSessionsResponse) Reset()         { *m = ListSessionsResponse{} }
 func (m *ListSessionsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListSessionsResponse) ProtoMessage()    {}
 func (*ListSessionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{4}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{4}
 }
 func (m *ListSessionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSessionsResponse.Unmarshal(m, b)
@@ -370,7 +370,7 @@ func (m *DeleteSessionRequest) Reset()         { *m = DeleteSessionRequest{} }
 func (m *DeleteSessionRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteSessionRequest) ProtoMessage()    {}
 func (*DeleteSessionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{5}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{5}
 }
 func (m *DeleteSessionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteSessionRequest.Unmarshal(m, b)
@@ -482,7 +482,7 @@ func (m *ExecuteSqlRequest) Reset()         { *m = ExecuteSqlRequest{} }
 func (m *ExecuteSqlRequest) String() string { return proto.CompactTextString(m) }
 func (*ExecuteSqlRequest) ProtoMessage()    {}
 func (*ExecuteSqlRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{6}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{6}
 }
 func (m *ExecuteSqlRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExecuteSqlRequest.Unmarshal(m, b)
@@ -594,7 +594,7 @@ func (m *ExecuteBatchDmlRequest) Reset()         { *m = ExecuteBatchDmlRequest{}
 func (m *ExecuteBatchDmlRequest) String() string { return proto.CompactTextString(m) }
 func (*ExecuteBatchDmlRequest) ProtoMessage()    {}
 func (*ExecuteBatchDmlRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{7}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{7}
 }
 func (m *ExecuteBatchDmlRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExecuteBatchDmlRequest.Unmarshal(m, b)
@@ -679,7 +679,7 @@ func (m *ExecuteBatchDmlRequest_Statement) Reset()         { *m = ExecuteBatchDm
 func (m *ExecuteBatchDmlRequest_Statement) String() string { return proto.CompactTextString(m) }
 func (*ExecuteBatchDmlRequest_Statement) ProtoMessage()    {}
 func (*ExecuteBatchDmlRequest_Statement) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{7, 0}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{7, 0}
 }
 func (m *ExecuteBatchDmlRequest_Statement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExecuteBatchDmlRequest_Statement.Unmarshal(m, b)
@@ -760,7 +760,7 @@ func (m *ExecuteBatchDmlResponse) Reset()         { *m = ExecuteBatchDmlResponse
 func (m *ExecuteBatchDmlResponse) String() string { return proto.CompactTextString(m) }
 func (*ExecuteBatchDmlResponse) ProtoMessage()    {}
 func (*ExecuteBatchDmlResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{8}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{8}
 }
 func (m *ExecuteBatchDmlResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExecuteBatchDmlResponse.Unmarshal(m, b)
@@ -822,7 +822,7 @@ func (m *PartitionOptions) Reset()         { *m = PartitionOptions{} }
 func (m *PartitionOptions) String() string { return proto.CompactTextString(m) }
 func (*PartitionOptions) ProtoMessage()    {}
 func (*PartitionOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{9}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{9}
 }
 func (m *PartitionOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartitionOptions.Unmarshal(m, b)
@@ -911,7 +911,7 @@ func (m *PartitionQueryRequest) Reset()         { *m = PartitionQueryRequest{} }
 func (m *PartitionQueryRequest) String() string { return proto.CompactTextString(m) }
 func (*PartitionQueryRequest) ProtoMessage()    {}
 func (*PartitionQueryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{10}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{10}
 }
 func (m *PartitionQueryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartitionQueryRequest.Unmarshal(m, b)
@@ -1014,7 +1014,7 @@ func (m *PartitionReadRequest) Reset()         { *m = PartitionReadRequest{} }
 func (m *PartitionReadRequest) String() string { return proto.CompactTextString(m) }
 func (*PartitionReadRequest) ProtoMessage()    {}
 func (*PartitionReadRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{11}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{11}
 }
 func (m *PartitionReadRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartitionReadRequest.Unmarshal(m, b)
@@ -1099,7 +1099,7 @@ func (m *Partition) Reset()         { *m = Partition{} }
 func (m *Partition) String() string { return proto.CompactTextString(m) }
 func (*Partition) ProtoMessage()    {}
 func (*Partition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{12}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{12}
 }
 func (m *Partition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Partition.Unmarshal(m, b)
@@ -1142,7 +1142,7 @@ func (m *PartitionResponse) Reset()         { *m = PartitionResponse{} }
 func (m *PartitionResponse) String() string { return proto.CompactTextString(m) }
 func (*PartitionResponse) ProtoMessage()    {}
 func (*PartitionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{13}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{13}
 }
 func (m *PartitionResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartitionResponse.Unmarshal(m, b)
@@ -1238,7 +1238,7 @@ func (m *ReadRequest) Reset()         { *m = ReadRequest{} }
 func (m *ReadRequest) String() string { return proto.CompactTextString(m) }
 func (*ReadRequest) ProtoMessage()    {}
 func (*ReadRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{14}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{14}
 }
 func (m *ReadRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadRequest.Unmarshal(m, b)
@@ -1337,7 +1337,7 @@ func (m *BeginTransactionRequest) Reset()         { *m = BeginTransactionRequest
 func (m *BeginTransactionRequest) String() string { return proto.CompactTextString(m) }
 func (*BeginTransactionRequest) ProtoMessage()    {}
 func (*BeginTransactionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{15}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{15}
 }
 func (m *BeginTransactionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BeginTransactionRequest.Unmarshal(m, b)
@@ -1394,7 +1394,7 @@ func (m *CommitRequest) Reset()         { *m = CommitRequest{} }
 func (m *CommitRequest) String() string { return proto.CompactTextString(m) }
 func (*CommitRequest) ProtoMessage()    {}
 func (*CommitRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{16}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{16}
 }
 func (m *CommitRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommitRequest.Unmarshal(m, b)
@@ -1548,7 +1548,7 @@ func (m *CommitResponse) Reset()         { *m = CommitResponse{} }
 func (m *CommitResponse) String() string { return proto.CompactTextString(m) }
 func (*CommitResponse) ProtoMessage()    {}
 func (*CommitResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{17}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{17}
 }
 func (m *CommitResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommitResponse.Unmarshal(m, b)
@@ -1590,7 +1590,7 @@ func (m *RollbackRequest) Reset()         { *m = RollbackRequest{} }
 func (m *RollbackRequest) String() string { return proto.CompactTextString(m) }
 func (*RollbackRequest) ProtoMessage()    {}
 func (*RollbackRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_spanner_e6205c7313670aad, []int{18}
+	return fileDescriptor_spanner_9927dc9412546f3a, []int{18}
 }
 func (m *RollbackRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RollbackRequest.Unmarshal(m, b)
@@ -2469,10 +2469,10 @@ var _Spanner_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/spanner/v1/spanner.proto", fileDescriptor_spanner_e6205c7313670aad)
+	proto.RegisterFile("google/spanner/v1/spanner.proto", fileDescriptor_spanner_9927dc9412546f3a)
 }
 
-var fileDescriptor_spanner_e6205c7313670aad = []byte{
+var fileDescriptor_spanner_9927dc9412546f3a = []byte{
 	// 1832 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe4, 0x59, 0xcd, 0x6f, 0x1b, 0xc7,
 	0x15, 0xf7, 0x92, 0x12, 0x25, 0x3e, 0xea, 0x73, 0xc2, 0x48, 0x0c, 0xed, 0x26, 0xca, 0x26, 0x8e,

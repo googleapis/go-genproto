@@ -58,7 +58,7 @@ func (x AlertPolicy_ConditionCombinerType) String() string {
 	return proto.EnumName(AlertPolicy_ConditionCombinerType_name, int32(x))
 }
 func (AlertPolicy_ConditionCombinerType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_alert_afae0e9f7858ca3e, []int{0, 0}
+	return fileDescriptor_alert_9493c79d6a8e0cc9, []int{0, 0}
 }
 
 // A description of the conditions under which some aspect of your system is
@@ -136,7 +136,7 @@ func (m *AlertPolicy) Reset()         { *m = AlertPolicy{} }
 func (m *AlertPolicy) String() string { return proto.CompactTextString(m) }
 func (*AlertPolicy) ProtoMessage()    {}
 func (*AlertPolicy) Descriptor() ([]byte, []int) {
-	return fileDescriptor_alert_afae0e9f7858ca3e, []int{0}
+	return fileDescriptor_alert_9493c79d6a8e0cc9, []int{0}
 }
 func (m *AlertPolicy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy.Unmarshal(m, b)
@@ -247,7 +247,7 @@ func (m *AlertPolicy_Documentation) Reset()         { *m = AlertPolicy_Documenta
 func (m *AlertPolicy_Documentation) String() string { return proto.CompactTextString(m) }
 func (*AlertPolicy_Documentation) ProtoMessage()    {}
 func (*AlertPolicy_Documentation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_alert_afae0e9f7858ca3e, []int{0, 0}
+	return fileDescriptor_alert_9493c79d6a8e0cc9, []int{0, 0}
 }
 func (m *AlertPolicy_Documentation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Documentation.Unmarshal(m, b)
@@ -330,7 +330,7 @@ func (m *AlertPolicy_Condition) Reset()         { *m = AlertPolicy_Condition{} }
 func (m *AlertPolicy_Condition) String() string { return proto.CompactTextString(m) }
 func (*AlertPolicy_Condition) ProtoMessage()    {}
 func (*AlertPolicy_Condition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_alert_afae0e9f7858ca3e, []int{0, 1}
+	return fileDescriptor_alert_9493c79d6a8e0cc9, []int{0, 1}
 }
 func (m *AlertPolicy_Condition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Condition.Unmarshal(m, b)
@@ -493,7 +493,7 @@ func (m *AlertPolicy_Condition_Trigger) Reset()         { *m = AlertPolicy_Condi
 func (m *AlertPolicy_Condition_Trigger) String() string { return proto.CompactTextString(m) }
 func (*AlertPolicy_Condition_Trigger) ProtoMessage()    {}
 func (*AlertPolicy_Condition_Trigger) Descriptor() ([]byte, []int) {
-	return fileDescriptor_alert_afae0e9f7858ca3e, []int{0, 1, 0}
+	return fileDescriptor_alert_9493c79d6a8e0cc9, []int{0, 1, 0}
 }
 func (m *AlertPolicy_Condition_Trigger) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Condition_Trigger.Unmarshal(m, b)
@@ -708,7 +708,7 @@ func (m *AlertPolicy_Condition_MetricThreshold) Reset()         { *m = AlertPoli
 func (m *AlertPolicy_Condition_MetricThreshold) String() string { return proto.CompactTextString(m) }
 func (*AlertPolicy_Condition_MetricThreshold) ProtoMessage()    {}
 func (*AlertPolicy_Condition_MetricThreshold) Descriptor() ([]byte, []int) {
-	return fileDescriptor_alert_afae0e9f7858ca3e, []int{0, 1, 1}
+	return fileDescriptor_alert_9493c79d6a8e0cc9, []int{0, 1, 1}
 }
 func (m *AlertPolicy_Condition_MetricThreshold) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Condition_MetricThreshold.Unmarshal(m, b)
@@ -835,7 +835,7 @@ func (m *AlertPolicy_Condition_MetricAbsence) Reset()         { *m = AlertPolicy
 func (m *AlertPolicy_Condition_MetricAbsence) String() string { return proto.CompactTextString(m) }
 func (*AlertPolicy_Condition_MetricAbsence) ProtoMessage()    {}
 func (*AlertPolicy_Condition_MetricAbsence) Descriptor() ([]byte, []int) {
-	return fileDescriptor_alert_afae0e9f7858ca3e, []int{0, 1, 2}
+	return fileDescriptor_alert_9493c79d6a8e0cc9, []int{0, 1, 2}
 }
 func (m *AlertPolicy_Condition_MetricAbsence) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AlertPolicy_Condition_MetricAbsence.Unmarshal(m, b)
@@ -895,10 +895,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/monitoring/v3/alert.proto", fileDescriptor_alert_afae0e9f7858ca3e)
+	proto.RegisterFile("google/monitoring/v3/alert.proto", fileDescriptor_alert_9493c79d6a8e0cc9)
 }
 
-var fileDescriptor_alert_afae0e9f7858ca3e = []byte{
+var fileDescriptor_alert_9493c79d6a8e0cc9 = []byte{
 	// 941 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x56, 0xeb, 0x6e, 0xe3, 0x44,
 	0x14, 0xae, 0x93, 0xe6, 0x76, 0xd2, 0x36, 0xd9, 0xd9, 0xee, 0xae, 0x31, 0x68, 0x95, 0xae, 0x90,

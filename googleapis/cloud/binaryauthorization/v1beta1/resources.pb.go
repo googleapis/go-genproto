@@ -46,7 +46,7 @@ func (x Policy_GlobalPolicyEvaluationMode) String() string {
 	return proto.EnumName(Policy_GlobalPolicyEvaluationMode_name, int32(x))
 }
 func (Policy_GlobalPolicyEvaluationMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{0, 0}
+	return fileDescriptor_resources_15311d1ac079a106, []int{0, 0}
 }
 
 type AdmissionRule_EvaluationMode int32
@@ -81,7 +81,7 @@ func (x AdmissionRule_EvaluationMode) String() string {
 	return proto.EnumName(AdmissionRule_EvaluationMode_name, int32(x))
 }
 func (AdmissionRule_EvaluationMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{2, 0}
+	return fileDescriptor_resources_15311d1ac079a106, []int{2, 0}
 }
 
 // Defines the possible actions when a pod creation is denied by an admission
@@ -113,7 +113,7 @@ func (x AdmissionRule_EnforcementMode) String() string {
 	return proto.EnumName(AdmissionRule_EnforcementMode_name, int32(x))
 }
 func (AdmissionRule_EnforcementMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{2, 1}
+	return fileDescriptor_resources_15311d1ac079a106, []int{2, 1}
 }
 
 // Represents a signature algorithm and other information necessary to verify
@@ -184,7 +184,7 @@ func (x PkixPublicKey_SignatureAlgorithm) String() string {
 	return proto.EnumName(PkixPublicKey_SignatureAlgorithm_name, int32(x))
 }
 func (PkixPublicKey_SignatureAlgorithm) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{5, 0}
+	return fileDescriptor_resources_15311d1ac079a106, []int{5, 0}
 }
 
 // A [policy][google.cloud.binaryauthorization.v1beta1.Policy] for container image binary authorization.
@@ -225,7 +225,7 @@ func (m *Policy) Reset()         { *m = Policy{} }
 func (m *Policy) String() string { return proto.CompactTextString(m) }
 func (*Policy) ProtoMessage()    {}
 func (*Policy) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{0}
+	return fileDescriptor_resources_15311d1ac079a106, []int{0}
 }
 func (m *Policy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Policy.Unmarshal(m, b)
@@ -310,7 +310,7 @@ func (m *AdmissionWhitelistPattern) Reset()         { *m = AdmissionWhitelistPat
 func (m *AdmissionWhitelistPattern) String() string { return proto.CompactTextString(m) }
 func (*AdmissionWhitelistPattern) ProtoMessage()    {}
 func (*AdmissionWhitelistPattern) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{1}
+	return fileDescriptor_resources_15311d1ac079a106, []int{1}
 }
 func (m *AdmissionWhitelistPattern) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdmissionWhitelistPattern.Unmarshal(m, b)
@@ -367,7 +367,7 @@ func (m *AdmissionRule) Reset()         { *m = AdmissionRule{} }
 func (m *AdmissionRule) String() string { return proto.CompactTextString(m) }
 func (*AdmissionRule) ProtoMessage()    {}
 func (*AdmissionRule) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{2}
+	return fileDescriptor_resources_15311d1ac079a106, []int{2}
 }
 func (m *AdmissionRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdmissionRule.Unmarshal(m, b)
@@ -438,7 +438,7 @@ func (m *Attestor) Reset()         { *m = Attestor{} }
 func (m *Attestor) String() string { return proto.CompactTextString(m) }
 func (*Attestor) ProtoMessage()    {}
 func (*Attestor) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{3}
+	return fileDescriptor_resources_15311d1ac079a106, []int{3}
 }
 func (m *Attestor) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Attestor.Unmarshal(m, b)
@@ -598,7 +598,7 @@ func (m *UserOwnedDrydockNote) Reset()         { *m = UserOwnedDrydockNote{} }
 func (m *UserOwnedDrydockNote) String() string { return proto.CompactTextString(m) }
 func (*UserOwnedDrydockNote) ProtoMessage()    {}
 func (*UserOwnedDrydockNote) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{4}
+	return fileDescriptor_resources_15311d1ac079a106, []int{4}
 }
 func (m *UserOwnedDrydockNote) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserOwnedDrydockNote.Unmarshal(m, b)
@@ -662,7 +662,7 @@ func (m *PkixPublicKey) Reset()         { *m = PkixPublicKey{} }
 func (m *PkixPublicKey) String() string { return proto.CompactTextString(m) }
 func (*PkixPublicKey) ProtoMessage()    {}
 func (*PkixPublicKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{5}
+	return fileDescriptor_resources_15311d1ac079a106, []int{5}
 }
 func (m *PkixPublicKey) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PkixPublicKey.Unmarshal(m, b)
@@ -725,7 +725,7 @@ func (m *AttestorPublicKey) Reset()         { *m = AttestorPublicKey{} }
 func (m *AttestorPublicKey) String() string { return proto.CompactTextString(m) }
 func (*AttestorPublicKey) ProtoMessage()    {}
 func (*AttestorPublicKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_681125b4209c9198, []int{6}
+	return fileDescriptor_resources_15311d1ac079a106, []int{6}
 }
 func (m *AttestorPublicKey) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AttestorPublicKey.Unmarshal(m, b)
@@ -882,10 +882,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/binaryauthorization/v1beta1/resources.proto", fileDescriptor_resources_681125b4209c9198)
+	proto.RegisterFile("google/cloud/binaryauthorization/v1beta1/resources.proto", fileDescriptor_resources_15311d1ac079a106)
 }
 
-var fileDescriptor_resources_681125b4209c9198 = []byte{
+var fileDescriptor_resources_15311d1ac079a106 = []byte{
 	// 1214 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x56, 0x5f, 0x73, 0xdb, 0xc4,
 	0x17, 0x8d, 0x9c, 0x7f, 0xcd, 0x75, 0xe2, 0xb8, 0xdb, 0xe6, 0x17, 0xd7, 0xbf, 0x94, 0x1a, 0x03,

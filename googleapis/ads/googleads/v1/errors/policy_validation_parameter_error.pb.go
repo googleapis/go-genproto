@@ -55,7 +55,7 @@ func (x PolicyValidationParameterErrorEnum_PolicyValidationParameterError) Strin
 	return proto.EnumName(PolicyValidationParameterErrorEnum_PolicyValidationParameterError_name, int32(x))
 }
 func (PolicyValidationParameterErrorEnum_PolicyValidationParameterError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_policy_validation_parameter_error_baa9018c5630f778, []int{0, 0}
+	return fileDescriptor_policy_validation_parameter_error_30d40d9e925110fb, []int{0, 0}
 }
 
 // Container for enum describing possible policy validation parameter errors.
@@ -69,7 +69,7 @@ func (m *PolicyValidationParameterErrorEnum) Reset()         { *m = PolicyValida
 func (m *PolicyValidationParameterErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*PolicyValidationParameterErrorEnum) ProtoMessage()    {}
 func (*PolicyValidationParameterErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_policy_validation_parameter_error_baa9018c5630f778, []int{0}
+	return fileDescriptor_policy_validation_parameter_error_30d40d9e925110fb, []int{0}
 }
 func (m *PolicyValidationParameterErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PolicyValidationParameterErrorEnum.Unmarshal(m, b)
@@ -95,10 +95,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/policy_validation_parameter_error.proto", fileDescriptor_policy_validation_parameter_error_baa9018c5630f778)
+	proto.RegisterFile("google/ads/googleads/v1/errors/policy_validation_parameter_error.proto", fileDescriptor_policy_validation_parameter_error_30d40d9e925110fb)
 }
 
-var fileDescriptor_policy_validation_parameter_error_baa9018c5630f778 = []byte{
+var fileDescriptor_policy_validation_parameter_error_30d40d9e925110fb = []byte{
 	// 391 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0x41, 0x8a, 0xdb, 0x30,
 	0x18, 0x85, 0x1b, 0x4f, 0x69, 0x41, 0xb3, 0x68, 0xf0, 0xb2, 0x94, 0x2c, 0xdc, 0xbd, 0x8c, 0x99,

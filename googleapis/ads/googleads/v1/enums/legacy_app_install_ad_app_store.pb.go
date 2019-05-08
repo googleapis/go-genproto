@@ -62,7 +62,7 @@ func (x LegacyAppInstallAdAppStoreEnum_LegacyAppInstallAdAppStore) String() stri
 	return proto.EnumName(LegacyAppInstallAdAppStoreEnum_LegacyAppInstallAdAppStore_name, int32(x))
 }
 func (LegacyAppInstallAdAppStoreEnum_LegacyAppInstallAdAppStore) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_legacy_app_install_ad_app_store_bf6a489599b74ffe, []int{0, 0}
+	return fileDescriptor_legacy_app_install_ad_app_store_985540f294b6708f, []int{0, 0}
 }
 
 // Container for enum describing app store type in a legacy app install ad.
@@ -76,7 +76,7 @@ func (m *LegacyAppInstallAdAppStoreEnum) Reset()         { *m = LegacyAppInstall
 func (m *LegacyAppInstallAdAppStoreEnum) String() string { return proto.CompactTextString(m) }
 func (*LegacyAppInstallAdAppStoreEnum) ProtoMessage()    {}
 func (*LegacyAppInstallAdAppStoreEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_legacy_app_install_ad_app_store_bf6a489599b74ffe, []int{0}
+	return fileDescriptor_legacy_app_install_ad_app_store_985540f294b6708f, []int{0}
 }
 func (m *LegacyAppInstallAdAppStoreEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LegacyAppInstallAdAppStoreEnum.Unmarshal(m, b)
@@ -102,10 +102,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/legacy_app_install_ad_app_store.proto", fileDescriptor_legacy_app_install_ad_app_store_bf6a489599b74ffe)
+	proto.RegisterFile("google/ads/googleads/v1/enums/legacy_app_install_ad_app_store.proto", fileDescriptor_legacy_app_install_ad_app_store_985540f294b6708f)
 }
 
-var fileDescriptor_legacy_app_install_ad_app_store_bf6a489599b74ffe = []byte{
+var fileDescriptor_legacy_app_install_ad_app_store_985540f294b6708f = []byte{
 	// 371 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0x41, 0x6b, 0xa3, 0x40,
 	0x18, 0x5d, 0xcd, 0x6e, 0x16, 0x26, 0xbb, 0xc4, 0x35, 0x87, 0x85, 0xb0, 0xd9, 0x25, 0xf9, 0x01,

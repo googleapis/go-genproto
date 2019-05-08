@@ -60,7 +60,7 @@ func (x StreamingRecognitionResult_MessageType) String() string {
 	return proto.EnumName(StreamingRecognitionResult_MessageType_name, int32(x))
 }
 func (StreamingRecognitionResult_MessageType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{7, 0}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{7, 0}
 }
 
 // The request to detect user's intent.
@@ -99,7 +99,7 @@ func (m *DetectIntentRequest) Reset()         { *m = DetectIntentRequest{} }
 func (m *DetectIntentRequest) String() string { return proto.CompactTextString(m) }
 func (*DetectIntentRequest) ProtoMessage()    {}
 func (*DetectIntentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{0}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{0}
 }
 func (m *DetectIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectIntentRequest.Unmarshal(m, b)
@@ -182,7 +182,7 @@ func (m *DetectIntentResponse) Reset()         { *m = DetectIntentResponse{} }
 func (m *DetectIntentResponse) String() string { return proto.CompactTextString(m) }
 func (*DetectIntentResponse) ProtoMessage()    {}
 func (*DetectIntentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{1}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{1}
 }
 func (m *DetectIntentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectIntentResponse.Unmarshal(m, b)
@@ -271,7 +271,7 @@ func (m *QueryParameters) Reset()         { *m = QueryParameters{} }
 func (m *QueryParameters) String() string { return proto.CompactTextString(m) }
 func (*QueryParameters) ProtoMessage()    {}
 func (*QueryParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{2}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{2}
 }
 func (m *QueryParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryParameters.Unmarshal(m, b)
@@ -365,7 +365,7 @@ func (m *QueryInput) Reset()         { *m = QueryInput{} }
 func (m *QueryInput) String() string { return proto.CompactTextString(m) }
 func (*QueryInput) ProtoMessage()    {}
 func (*QueryInput) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{3}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{3}
 }
 func (m *QueryInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryInput.Unmarshal(m, b)
@@ -604,7 +604,7 @@ func (m *QueryResult) Reset()         { *m = QueryResult{} }
 func (m *QueryResult) String() string { return proto.CompactTextString(m) }
 func (*QueryResult) ProtoMessage()    {}
 func (*QueryResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{4}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{4}
 }
 func (m *QueryResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryResult.Unmarshal(m, b)
@@ -785,7 +785,7 @@ func (m *StreamingDetectIntentRequest) Reset()         { *m = StreamingDetectInt
 func (m *StreamingDetectIntentRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamingDetectIntentRequest) ProtoMessage()    {}
 func (*StreamingDetectIntentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{5}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{5}
 }
 func (m *StreamingDetectIntentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingDetectIntentRequest.Unmarshal(m, b)
@@ -884,7 +884,7 @@ func (m *StreamingDetectIntentResponse) Reset()         { *m = StreamingDetectIn
 func (m *StreamingDetectIntentResponse) String() string { return proto.CompactTextString(m) }
 func (*StreamingDetectIntentResponse) ProtoMessage()    {}
 func (*StreamingDetectIntentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{6}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{6}
 }
 func (m *StreamingDetectIntentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingDetectIntentResponse.Unmarshal(m, b)
@@ -1007,7 +1007,7 @@ func (m *StreamingRecognitionResult) Reset()         { *m = StreamingRecognition
 func (m *StreamingRecognitionResult) String() string { return proto.CompactTextString(m) }
 func (*StreamingRecognitionResult) ProtoMessage()    {}
 func (*StreamingRecognitionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{7}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{7}
 }
 func (m *StreamingRecognitionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamingRecognitionResult.Unmarshal(m, b)
@@ -1074,7 +1074,7 @@ func (m *TextInput) Reset()         { *m = TextInput{} }
 func (m *TextInput) String() string { return proto.CompactTextString(m) }
 func (*TextInput) ProtoMessage()    {}
 func (*TextInput) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{8}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{8}
 }
 func (m *TextInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextInput.Unmarshal(m, b)
@@ -1132,7 +1132,7 @@ func (m *EventInput) Reset()         { *m = EventInput{} }
 func (m *EventInput) String() string { return proto.CompactTextString(m) }
 func (*EventInput) ProtoMessage()    {}
 func (*EventInput) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{9}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{9}
 }
 func (m *EventInput) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EventInput.Unmarshal(m, b)
@@ -1188,7 +1188,7 @@ func (m *SentimentAnalysisRequestConfig) Reset()         { *m = SentimentAnalysi
 func (m *SentimentAnalysisRequestConfig) String() string { return proto.CompactTextString(m) }
 func (*SentimentAnalysisRequestConfig) ProtoMessage()    {}
 func (*SentimentAnalysisRequestConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{10}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{10}
 }
 func (m *SentimentAnalysisRequestConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SentimentAnalysisRequestConfig.Unmarshal(m, b)
@@ -1229,7 +1229,7 @@ func (m *SentimentAnalysisResult) Reset()         { *m = SentimentAnalysisResult
 func (m *SentimentAnalysisResult) String() string { return proto.CompactTextString(m) }
 func (*SentimentAnalysisResult) ProtoMessage()    {}
 func (*SentimentAnalysisResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{11}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{11}
 }
 func (m *SentimentAnalysisResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SentimentAnalysisResult.Unmarshal(m, b)
@@ -1274,7 +1274,7 @@ func (m *Sentiment) Reset()         { *m = Sentiment{} }
 func (m *Sentiment) String() string { return proto.CompactTextString(m) }
 func (*Sentiment) ProtoMessage()    {}
 func (*Sentiment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_b0ebae769d2249cb, []int{12}
+	return fileDescriptor_session_f34861f1b5aa3372, []int{12}
 }
 func (m *Sentiment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Sentiment.Unmarshal(m, b)
@@ -1478,10 +1478,10 @@ var _Sessions_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dialogflow/v2/session.proto", fileDescriptor_session_b0ebae769d2249cb)
+	proto.RegisterFile("google/cloud/dialogflow/v2/session.proto", fileDescriptor_session_f34861f1b5aa3372)
 }
 
-var fileDescriptor_session_b0ebae769d2249cb = []byte{
+var fileDescriptor_session_f34861f1b5aa3372 = []byte{
 	// 1581 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x58, 0x4b, 0x73, 0x1b, 0xc7,
 	0x11, 0xe6, 0x82, 0x2f, 0xa0, 0x01, 0x91, 0xd4, 0x90, 0x09, 0xc1, 0x87, 0x18, 0x09, 0x2a, 0x45,

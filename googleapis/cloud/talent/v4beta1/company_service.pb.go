@@ -51,7 +51,7 @@ func (m *CreateCompanyRequest) Reset()         { *m = CreateCompanyRequest{} }
 func (m *CreateCompanyRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateCompanyRequest) ProtoMessage()    {}
 func (*CreateCompanyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_company_service_1d879da651d4da28, []int{0}
+	return fileDescriptor_company_service_29fd10eb96c7a7f1, []int{0}
 }
 func (m *CreateCompanyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateCompanyRequest.Unmarshal(m, b)
@@ -107,7 +107,7 @@ func (m *GetCompanyRequest) Reset()         { *m = GetCompanyRequest{} }
 func (m *GetCompanyRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCompanyRequest) ProtoMessage()    {}
 func (*GetCompanyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_company_service_1d879da651d4da28, []int{1}
+	return fileDescriptor_company_service_29fd10eb96c7a7f1, []int{1}
 }
 func (m *GetCompanyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCompanyRequest.Unmarshal(m, b)
@@ -158,7 +158,7 @@ func (m *UpdateCompanyRequest) Reset()         { *m = UpdateCompanyRequest{} }
 func (m *UpdateCompanyRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateCompanyRequest) ProtoMessage()    {}
 func (*UpdateCompanyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_company_service_1d879da651d4da28, []int{2}
+	return fileDescriptor_company_service_29fd10eb96c7a7f1, []int{2}
 }
 func (m *UpdateCompanyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateCompanyRequest.Unmarshal(m, b)
@@ -214,7 +214,7 @@ func (m *DeleteCompanyRequest) Reset()         { *m = DeleteCompanyRequest{} }
 func (m *DeleteCompanyRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteCompanyRequest) ProtoMessage()    {}
 func (*DeleteCompanyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_company_service_1d879da651d4da28, []int{3}
+	return fileDescriptor_company_service_29fd10eb96c7a7f1, []int{3}
 }
 func (m *DeleteCompanyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteCompanyRequest.Unmarshal(m, b)
@@ -280,7 +280,7 @@ func (m *ListCompaniesRequest) Reset()         { *m = ListCompaniesRequest{} }
 func (m *ListCompaniesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListCompaniesRequest) ProtoMessage()    {}
 func (*ListCompaniesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_company_service_1d879da651d4da28, []int{4}
+	return fileDescriptor_company_service_29fd10eb96c7a7f1, []int{4}
 }
 func (m *ListCompaniesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCompaniesRequest.Unmarshal(m, b)
@@ -348,7 +348,7 @@ func (m *ListCompaniesResponse) Reset()         { *m = ListCompaniesResponse{} }
 func (m *ListCompaniesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListCompaniesResponse) ProtoMessage()    {}
 func (*ListCompaniesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_company_service_1d879da651d4da28, []int{5}
+	return fileDescriptor_company_service_29fd10eb96c7a7f1, []int{5}
 }
 func (m *ListCompaniesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCompaniesResponse.Unmarshal(m, b)
@@ -615,10 +615,10 @@ var _CompanyService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/company_service.proto", fileDescriptor_company_service_1d879da651d4da28)
+	proto.RegisterFile("google/cloud/talent/v4beta1/company_service.proto", fileDescriptor_company_service_29fd10eb96c7a7f1)
 }
 
-var fileDescriptor_company_service_1d879da651d4da28 = []byte{
+var fileDescriptor_company_service_29fd10eb96c7a7f1 = []byte{
 	// 720 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x55, 0x4f, 0x6f, 0xd3, 0x4a,
 	0x10, 0xd7, 0xb6, 0x7d, 0x7d, 0xc9, 0x56, 0x79, 0x55, 0xf7, 0xe5, 0x55, 0x51, 0xfa, 0x10, 0x91,

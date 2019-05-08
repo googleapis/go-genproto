@@ -74,7 +74,7 @@ func (x Queue_State) String() string {
 	return proto.EnumName(Queue_State_name, int32(x))
 }
 func (Queue_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_queue_2809b10079c46221, []int{0, 0}
+	return fileDescriptor_queue_728c565dd0b3b59c, []int{0, 0}
 }
 
 // A queue is a container of related tasks. Queues are configured to manage
@@ -174,7 +174,7 @@ func (m *Queue) Reset()         { *m = Queue{} }
 func (m *Queue) String() string { return proto.CompactTextString(m) }
 func (*Queue) ProtoMessage()    {}
 func (*Queue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_queue_2809b10079c46221, []int{0}
+	return fileDescriptor_queue_728c565dd0b3b59c, []int{0}
 }
 func (m *Queue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Queue.Unmarshal(m, b)
@@ -395,7 +395,7 @@ func (m *RateLimits) Reset()         { *m = RateLimits{} }
 func (m *RateLimits) String() string { return proto.CompactTextString(m) }
 func (*RateLimits) ProtoMessage()    {}
 func (*RateLimits) Descriptor() ([]byte, []int) {
-	return fileDescriptor_queue_2809b10079c46221, []int{1}
+	return fileDescriptor_queue_728c565dd0b3b59c, []int{1}
 }
 func (m *RateLimits) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RateLimits.Unmarshal(m, b)
@@ -542,7 +542,7 @@ func (m *RetryConfig) Reset()         { *m = RetryConfig{} }
 func (m *RetryConfig) String() string { return proto.CompactTextString(m) }
 func (*RetryConfig) ProtoMessage()    {}
 func (*RetryConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_queue_2809b10079c46221, []int{2}
+	return fileDescriptor_queue_728c565dd0b3b59c, []int{2}
 }
 func (m *RetryConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RetryConfig.Unmarshal(m, b)
@@ -605,10 +605,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2beta3/queue.proto", fileDescriptor_queue_2809b10079c46221)
+	proto.RegisterFile("google/cloud/tasks/v2beta3/queue.proto", fileDescriptor_queue_728c565dd0b3b59c)
 }
 
-var fileDescriptor_queue_2809b10079c46221 = []byte{
+var fileDescriptor_queue_728c565dd0b3b59c = []byte{
 	// 683 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x94, 0x51, 0x4f, 0xdb, 0x30,
 	0x10, 0xc7, 0x09, 0xb4, 0x30, 0x2e, 0x1d, 0xea, 0x2c, 0xb1, 0x85, 0x6a, 0x62, 0x5d, 0x37, 0x41,

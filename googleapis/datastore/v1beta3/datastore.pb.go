@@ -53,7 +53,7 @@ func (x CommitRequest_Mode) String() string {
 	return proto.EnumName(CommitRequest_Mode_name, int32(x))
 }
 func (CommitRequest_Mode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{8, 0}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{8, 0}
 }
 
 // The possible values for read consistencies.
@@ -83,7 +83,7 @@ func (x ReadOptions_ReadConsistency) String() string {
 	return proto.EnumName(ReadOptions_ReadConsistency_name, int32(x))
 }
 func (ReadOptions_ReadConsistency) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{16, 0}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{16, 0}
 }
 
 // The request for
@@ -104,7 +104,7 @@ func (m *LookupRequest) Reset()         { *m = LookupRequest{} }
 func (m *LookupRequest) String() string { return proto.CompactTextString(m) }
 func (*LookupRequest) ProtoMessage()    {}
 func (*LookupRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{0}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{0}
 }
 func (m *LookupRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LookupRequest.Unmarshal(m, b)
@@ -169,7 +169,7 @@ func (m *LookupResponse) Reset()         { *m = LookupResponse{} }
 func (m *LookupResponse) String() string { return proto.CompactTextString(m) }
 func (*LookupResponse) ProtoMessage()    {}
 func (*LookupResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{1}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{1}
 }
 func (m *LookupResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LookupResponse.Unmarshal(m, b)
@@ -237,7 +237,7 @@ func (m *RunQueryRequest) Reset()         { *m = RunQueryRequest{} }
 func (m *RunQueryRequest) String() string { return proto.CompactTextString(m) }
 func (*RunQueryRequest) ProtoMessage()    {}
 func (*RunQueryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{2}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{2}
 }
 func (m *RunQueryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunQueryRequest.Unmarshal(m, b)
@@ -405,7 +405,7 @@ func (m *RunQueryResponse) Reset()         { *m = RunQueryResponse{} }
 func (m *RunQueryResponse) String() string { return proto.CompactTextString(m) }
 func (*RunQueryResponse) ProtoMessage()    {}
 func (*RunQueryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{3}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{3}
 }
 func (m *RunQueryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunQueryResponse.Unmarshal(m, b)
@@ -455,7 +455,7 @@ func (m *BeginTransactionRequest) Reset()         { *m = BeginTransactionRequest
 func (m *BeginTransactionRequest) String() string { return proto.CompactTextString(m) }
 func (*BeginTransactionRequest) ProtoMessage()    {}
 func (*BeginTransactionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{4}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{4}
 }
 func (m *BeginTransactionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BeginTransactionRequest.Unmarshal(m, b)
@@ -503,7 +503,7 @@ func (m *BeginTransactionResponse) Reset()         { *m = BeginTransactionRespon
 func (m *BeginTransactionResponse) String() string { return proto.CompactTextString(m) }
 func (*BeginTransactionResponse) ProtoMessage()    {}
 func (*BeginTransactionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{5}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{5}
 }
 func (m *BeginTransactionResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BeginTransactionResponse.Unmarshal(m, b)
@@ -547,7 +547,7 @@ func (m *RollbackRequest) Reset()         { *m = RollbackRequest{} }
 func (m *RollbackRequest) String() string { return proto.CompactTextString(m) }
 func (*RollbackRequest) ProtoMessage()    {}
 func (*RollbackRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{6}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{6}
 }
 func (m *RollbackRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RollbackRequest.Unmarshal(m, b)
@@ -594,7 +594,7 @@ func (m *RollbackResponse) Reset()         { *m = RollbackResponse{} }
 func (m *RollbackResponse) String() string { return proto.CompactTextString(m) }
 func (*RollbackResponse) ProtoMessage()    {}
 func (*RollbackResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{7}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{7}
 }
 func (m *RollbackResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RollbackResponse.Unmarshal(m, b)
@@ -649,7 +649,7 @@ func (m *CommitRequest) Reset()         { *m = CommitRequest{} }
 func (m *CommitRequest) String() string { return proto.CompactTextString(m) }
 func (*CommitRequest) ProtoMessage()    {}
 func (*CommitRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{8}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{8}
 }
 func (m *CommitRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommitRequest.Unmarshal(m, b)
@@ -783,7 +783,7 @@ func (m *CommitResponse) Reset()         { *m = CommitResponse{} }
 func (m *CommitResponse) String() string { return proto.CompactTextString(m) }
 func (*CommitResponse) ProtoMessage()    {}
 func (*CommitResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{9}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{9}
 }
 func (m *CommitResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CommitResponse.Unmarshal(m, b)
@@ -834,7 +834,7 @@ func (m *AllocateIdsRequest) Reset()         { *m = AllocateIdsRequest{} }
 func (m *AllocateIdsRequest) String() string { return proto.CompactTextString(m) }
 func (*AllocateIdsRequest) ProtoMessage()    {}
 func (*AllocateIdsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{10}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{10}
 }
 func (m *AllocateIdsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AllocateIdsRequest.Unmarshal(m, b)
@@ -883,7 +883,7 @@ func (m *AllocateIdsResponse) Reset()         { *m = AllocateIdsResponse{} }
 func (m *AllocateIdsResponse) String() string { return proto.CompactTextString(m) }
 func (*AllocateIdsResponse) ProtoMessage()    {}
 func (*AllocateIdsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{11}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{11}
 }
 func (m *AllocateIdsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AllocateIdsResponse.Unmarshal(m, b)
@@ -929,7 +929,7 @@ func (m *ReserveIdsRequest) Reset()         { *m = ReserveIdsRequest{} }
 func (m *ReserveIdsRequest) String() string { return proto.CompactTextString(m) }
 func (*ReserveIdsRequest) ProtoMessage()    {}
 func (*ReserveIdsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{12}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{12}
 }
 func (m *ReserveIdsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReserveIdsRequest.Unmarshal(m, b)
@@ -982,7 +982,7 @@ func (m *ReserveIdsResponse) Reset()         { *m = ReserveIdsResponse{} }
 func (m *ReserveIdsResponse) String() string { return proto.CompactTextString(m) }
 func (*ReserveIdsResponse) ProtoMessage()    {}
 func (*ReserveIdsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{13}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{13}
 }
 func (m *ReserveIdsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReserveIdsResponse.Unmarshal(m, b)
@@ -1035,7 +1035,7 @@ func (m *Mutation) Reset()         { *m = Mutation{} }
 func (m *Mutation) String() string { return proto.CompactTextString(m) }
 func (*Mutation) ProtoMessage()    {}
 func (*Mutation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{14}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{14}
 }
 func (m *Mutation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Mutation.Unmarshal(m, b)
@@ -1303,7 +1303,7 @@ func (m *MutationResult) Reset()         { *m = MutationResult{} }
 func (m *MutationResult) String() string { return proto.CompactTextString(m) }
 func (*MutationResult) ProtoMessage()    {}
 func (*MutationResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{15}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{15}
 }
 func (m *MutationResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutationResult.Unmarshal(m, b)
@@ -1363,7 +1363,7 @@ func (m *ReadOptions) Reset()         { *m = ReadOptions{} }
 func (m *ReadOptions) String() string { return proto.CompactTextString(m) }
 func (*ReadOptions) ProtoMessage()    {}
 func (*ReadOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{16}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{16}
 }
 func (m *ReadOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadOptions.Unmarshal(m, b)
@@ -1509,7 +1509,7 @@ func (m *TransactionOptions) Reset()         { *m = TransactionOptions{} }
 func (m *TransactionOptions) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions) ProtoMessage()    {}
 func (*TransactionOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{17}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{17}
 }
 func (m *TransactionOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions.Unmarshal(m, b)
@@ -1653,7 +1653,7 @@ func (m *TransactionOptions_ReadWrite) Reset()         { *m = TransactionOptions
 func (m *TransactionOptions_ReadWrite) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions_ReadWrite) ProtoMessage()    {}
 func (*TransactionOptions_ReadWrite) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{17, 0}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{17, 0}
 }
 func (m *TransactionOptions_ReadWrite) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions_ReadWrite.Unmarshal(m, b)
@@ -1691,7 +1691,7 @@ func (m *TransactionOptions_ReadOnly) Reset()         { *m = TransactionOptions_
 func (m *TransactionOptions_ReadOnly) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions_ReadOnly) ProtoMessage()    {}
 func (*TransactionOptions_ReadOnly) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datastore_acd128410de43961, []int{17, 1}
+	return fileDescriptor_datastore_062a2d11f20b0b0e, []int{17, 1}
 }
 func (m *TransactionOptions_ReadOnly) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions_ReadOnly.Unmarshal(m, b)
@@ -2027,10 +2027,10 @@ var _Datastore_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/datastore/v1beta3/datastore.proto", fileDescriptor_datastore_acd128410de43961)
+	proto.RegisterFile("google/datastore/v1beta3/datastore.proto", fileDescriptor_datastore_062a2d11f20b0b0e)
 }
 
-var fileDescriptor_datastore_acd128410de43961 = []byte{
+var fileDescriptor_datastore_062a2d11f20b0b0e = []byte{
 	// 1403 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x58, 0xcf, 0x6f, 0x1b, 0xc5,
 	0x17, 0xcf, 0x38, 0x89, 0x6b, 0x3f, 0xe7, 0x87, 0x33, 0xcd, 0xf7, 0x8b, 0x65, 0x5a, 0x6a, 0x6d,

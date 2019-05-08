@@ -49,7 +49,7 @@ func (x StringAggregationType) String() string {
 	return proto.EnumName(StringAggregationType_name, int32(x))
 }
 func (StringAggregationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{0}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{0}
 }
 
 // Configuration for how human labeling task should be done.
@@ -95,7 +95,7 @@ func (m *HumanAnnotationConfig) Reset()         { *m = HumanAnnotationConfig{} }
 func (m *HumanAnnotationConfig) String() string { return proto.CompactTextString(m) }
 func (*HumanAnnotationConfig) ProtoMessage()    {}
 func (*HumanAnnotationConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{0}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{0}
 }
 func (m *HumanAnnotationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HumanAnnotationConfig.Unmarshal(m, b)
@@ -189,7 +189,7 @@ func (m *ImageClassificationConfig) Reset()         { *m = ImageClassificationCo
 func (m *ImageClassificationConfig) String() string { return proto.CompactTextString(m) }
 func (*ImageClassificationConfig) ProtoMessage()    {}
 func (*ImageClassificationConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{1}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{1}
 }
 func (m *ImageClassificationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageClassificationConfig.Unmarshal(m, b)
@@ -245,7 +245,7 @@ func (m *BoundingPolyConfig) Reset()         { *m = BoundingPolyConfig{} }
 func (m *BoundingPolyConfig) String() string { return proto.CompactTextString(m) }
 func (*BoundingPolyConfig) ProtoMessage()    {}
 func (*BoundingPolyConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{2}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{2}
 }
 func (m *BoundingPolyConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BoundingPolyConfig.Unmarshal(m, b)
@@ -294,7 +294,7 @@ func (m *PolylineConfig) Reset()         { *m = PolylineConfig{} }
 func (m *PolylineConfig) String() string { return proto.CompactTextString(m) }
 func (*PolylineConfig) ProtoMessage()    {}
 func (*PolylineConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{3}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{3}
 }
 func (m *PolylineConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PolylineConfig.Unmarshal(m, b)
@@ -344,7 +344,7 @@ func (m *SegmentationConfig) Reset()         { *m = SegmentationConfig{} }
 func (m *SegmentationConfig) String() string { return proto.CompactTextString(m) }
 func (*SegmentationConfig) ProtoMessage()    {}
 func (*SegmentationConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{4}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{4}
 }
 func (m *SegmentationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SegmentationConfig.Unmarshal(m, b)
@@ -402,7 +402,7 @@ func (m *VideoClassificationConfig) Reset()         { *m = VideoClassificationCo
 func (m *VideoClassificationConfig) String() string { return proto.CompactTextString(m) }
 func (*VideoClassificationConfig) ProtoMessage()    {}
 func (*VideoClassificationConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{5}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{5}
 }
 func (m *VideoClassificationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoClassificationConfig.Unmarshal(m, b)
@@ -456,7 +456,7 @@ func (m *VideoClassificationConfig_AnnotationSpecSetConfig) String() string {
 }
 func (*VideoClassificationConfig_AnnotationSpecSetConfig) ProtoMessage() {}
 func (*VideoClassificationConfig_AnnotationSpecSetConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{5, 0}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{5, 0}
 }
 func (m *VideoClassificationConfig_AnnotationSpecSetConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoClassificationConfig_AnnotationSpecSetConfig.Unmarshal(m, b)
@@ -511,7 +511,7 @@ func (m *ObjectDetectionConfig) Reset()         { *m = ObjectDetectionConfig{} }
 func (m *ObjectDetectionConfig) String() string { return proto.CompactTextString(m) }
 func (*ObjectDetectionConfig) ProtoMessage()    {}
 func (*ObjectDetectionConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{6}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{6}
 }
 func (m *ObjectDetectionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObjectDetectionConfig.Unmarshal(m, b)
@@ -565,7 +565,7 @@ func (m *ObjectTrackingConfig) Reset()         { *m = ObjectTrackingConfig{} }
 func (m *ObjectTrackingConfig) String() string { return proto.CompactTextString(m) }
 func (*ObjectTrackingConfig) ProtoMessage()    {}
 func (*ObjectTrackingConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{7}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{7}
 }
 func (m *ObjectTrackingConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ObjectTrackingConfig.Unmarshal(m, b)
@@ -607,7 +607,7 @@ func (m *EventConfig) Reset()         { *m = EventConfig{} }
 func (m *EventConfig) String() string { return proto.CompactTextString(m) }
 func (*EventConfig) ProtoMessage()    {}
 func (*EventConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{8}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{8}
 }
 func (m *EventConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EventConfig.Unmarshal(m, b)
@@ -652,7 +652,7 @@ func (m *TextClassificationConfig) Reset()         { *m = TextClassificationConf
 func (m *TextClassificationConfig) String() string { return proto.CompactTextString(m) }
 func (*TextClassificationConfig) ProtoMessage()    {}
 func (*TextClassificationConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{9}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{9}
 }
 func (m *TextClassificationConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextClassificationConfig.Unmarshal(m, b)
@@ -708,7 +708,7 @@ func (m *SentimentConfig) Reset()         { *m = SentimentConfig{} }
 func (m *SentimentConfig) String() string { return proto.CompactTextString(m) }
 func (*SentimentConfig) ProtoMessage()    {}
 func (*SentimentConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{10}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{10}
 }
 func (m *SentimentConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SentimentConfig.Unmarshal(m, b)
@@ -748,7 +748,7 @@ func (m *TextEntityExtractionConfig) Reset()         { *m = TextEntityExtraction
 func (m *TextEntityExtractionConfig) String() string { return proto.CompactTextString(m) }
 func (*TextEntityExtractionConfig) ProtoMessage()    {}
 func (*TextEntityExtractionConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_human_annotation_config_d8ea29218baa00e7, []int{11}
+	return fileDescriptor_human_annotation_config_28dd7106b95baa9e, []int{11}
 }
 func (m *TextEntityExtractionConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextEntityExtractionConfig.Unmarshal(m, b)
@@ -793,10 +793,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datalabeling/v1beta1/human_annotation_config.proto", fileDescriptor_human_annotation_config_d8ea29218baa00e7)
+	proto.RegisterFile("google/cloud/datalabeling/v1beta1/human_annotation_config.proto", fileDescriptor_human_annotation_config_28dd7106b95baa9e)
 }
 
-var fileDescriptor_human_annotation_config_d8ea29218baa00e7 = []byte{
+var fileDescriptor_human_annotation_config_28dd7106b95baa9e = []byte{
 	// 912 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x56, 0xd1, 0x6e, 0xdb, 0x36,
 	0x14, 0x9d, 0xe2, 0xb5, 0x6b, 0xe8, 0x36, 0xb1, 0x99, 0x1a, 0x55, 0xd2, 0xb5, 0xf3, 0x54, 0x0c,

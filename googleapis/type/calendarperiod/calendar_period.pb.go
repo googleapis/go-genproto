@@ -71,7 +71,7 @@ func (x CalendarPeriod) String() string {
 	return proto.EnumName(CalendarPeriod_name, int32(x))
 }
 func (CalendarPeriod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_calendar_period_aeee52d35bedf9ec, []int{0}
+	return fileDescriptor_calendar_period_167ed11c4514c3c9, []int{0}
 }
 
 func init() {
@@ -79,10 +79,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/type/calendar_period.proto", fileDescriptor_calendar_period_aeee52d35bedf9ec)
+	proto.RegisterFile("google/type/calendar_period.proto", fileDescriptor_calendar_period_167ed11c4514c3c9)
 }
 
-var fileDescriptor_calendar_period_aeee52d35bedf9ec = []byte{
+var fileDescriptor_calendar_period_167ed11c4514c3c9 = []byte{
 	// 248 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x54, 0x8f, 0xb1, 0x4f, 0x83, 0x40,
 	0x14, 0x87, 0x6d, 0x69, 0x8b, 0x7d, 0x8d, 0x7a, 0x39, 0x47, 0x07, 0xe3, 0xea, 0x00, 0x83, 0xa3,

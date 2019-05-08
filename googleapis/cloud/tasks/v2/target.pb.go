@@ -66,7 +66,7 @@ func (x HttpMethod) String() string {
 	return proto.EnumName(HttpMethod_name, int32(x))
 }
 func (HttpMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_d53f5fa280c081f1, []int{0}
+	return fileDescriptor_target_83a965c577901646, []int{0}
 }
 
 // App Engine HTTP request.
@@ -213,7 +213,7 @@ func (m *AppEngineHttpRequest) Reset()         { *m = AppEngineHttpRequest{} }
 func (m *AppEngineHttpRequest) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpRequest) ProtoMessage()    {}
 func (*AppEngineHttpRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_d53f5fa280c081f1, []int{0}
+	return fileDescriptor_target_83a965c577901646, []int{0}
 }
 func (m *AppEngineHttpRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpRequest.Unmarshal(m, b)
@@ -352,7 +352,7 @@ func (m *AppEngineRouting) Reset()         { *m = AppEngineRouting{} }
 func (m *AppEngineRouting) String() string { return proto.CompactTextString(m) }
 func (*AppEngineRouting) ProtoMessage()    {}
 func (*AppEngineRouting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_d53f5fa280c081f1, []int{1}
+	return fileDescriptor_target_83a965c577901646, []int{1}
 }
 func (m *AppEngineRouting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineRouting.Unmarshal(m, b)
@@ -408,10 +408,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2/target.proto", fileDescriptor_target_d53f5fa280c081f1)
+	proto.RegisterFile("google/cloud/tasks/v2/target.proto", fileDescriptor_target_83a965c577901646)
 }
 
-var fileDescriptor_target_d53f5fa280c081f1 = []byte{
+var fileDescriptor_target_83a965c577901646 = []byte{
 	// 490 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x53, 0xcf, 0x6f, 0xda, 0x30,
 	0x18, 0x5d, 0xf8, 0x51, 0xca, 0x17, 0x34, 0x59, 0x56, 0xa7, 0x65, 0x6c, 0x07, 0xca, 0x65, 0x68,

@@ -48,7 +48,7 @@ func (m *CreateTenantRequest) Reset()         { *m = CreateTenantRequest{} }
 func (m *CreateTenantRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateTenantRequest) ProtoMessage()    {}
 func (*CreateTenantRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tenant_service_86e9a68cf930b482, []int{0}
+	return fileDescriptor_tenant_service_b3e8de717c6e6008, []int{0}
 }
 func (m *CreateTenantRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateTenantRequest.Unmarshal(m, b)
@@ -100,7 +100,7 @@ func (m *GetTenantRequest) Reset()         { *m = GetTenantRequest{} }
 func (m *GetTenantRequest) String() string { return proto.CompactTextString(m) }
 func (*GetTenantRequest) ProtoMessage()    {}
 func (*GetTenantRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tenant_service_86e9a68cf930b482, []int{1}
+	return fileDescriptor_tenant_service_b3e8de717c6e6008, []int{1}
 }
 func (m *GetTenantRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetTenantRequest.Unmarshal(m, b)
@@ -151,7 +151,7 @@ func (m *UpdateTenantRequest) Reset()         { *m = UpdateTenantRequest{} }
 func (m *UpdateTenantRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateTenantRequest) ProtoMessage()    {}
 func (*UpdateTenantRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tenant_service_86e9a68cf930b482, []int{2}
+	return fileDescriptor_tenant_service_b3e8de717c6e6008, []int{2}
 }
 func (m *UpdateTenantRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateTenantRequest.Unmarshal(m, b)
@@ -203,7 +203,7 @@ func (m *DeleteTenantRequest) Reset()         { *m = DeleteTenantRequest{} }
 func (m *DeleteTenantRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteTenantRequest) ProtoMessage()    {}
 func (*DeleteTenantRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tenant_service_86e9a68cf930b482, []int{3}
+	return fileDescriptor_tenant_service_b3e8de717c6e6008, []int{3}
 }
 func (m *DeleteTenantRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteTenantRequest.Unmarshal(m, b)
@@ -257,7 +257,7 @@ func (m *ListTenantsRequest) Reset()         { *m = ListTenantsRequest{} }
 func (m *ListTenantsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListTenantsRequest) ProtoMessage()    {}
 func (*ListTenantsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tenant_service_86e9a68cf930b482, []int{4}
+	return fileDescriptor_tenant_service_b3e8de717c6e6008, []int{4}
 }
 func (m *ListTenantsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTenantsRequest.Unmarshal(m, b)
@@ -318,7 +318,7 @@ func (m *ListTenantsResponse) Reset()         { *m = ListTenantsResponse{} }
 func (m *ListTenantsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListTenantsResponse) ProtoMessage()    {}
 func (*ListTenantsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tenant_service_86e9a68cf930b482, []int{5}
+	return fileDescriptor_tenant_service_b3e8de717c6e6008, []int{5}
 }
 func (m *ListTenantsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTenantsResponse.Unmarshal(m, b)
@@ -583,10 +583,10 @@ var _TenantService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/tenant_service.proto", fileDescriptor_tenant_service_86e9a68cf930b482)
+	proto.RegisterFile("google/cloud/talent/v4beta1/tenant_service.proto", fileDescriptor_tenant_service_b3e8de717c6e6008)
 }
 
-var fileDescriptor_tenant_service_86e9a68cf930b482 = []byte{
+var fileDescriptor_tenant_service_b3e8de717c6e6008 = []byte{
 	// 641 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x95, 0x4f, 0x4f, 0x13, 0x41,
 	0x18, 0xc6, 0x33, 0xa0, 0x95, 0xbe, 0x85, 0x68, 0xa6, 0x09, 0x69, 0x8a, 0xc6, 0x66, 0x35, 0xa4,

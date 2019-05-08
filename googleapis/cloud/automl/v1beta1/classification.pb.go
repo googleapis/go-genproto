@@ -46,7 +46,7 @@ func (x ClassificationType) String() string {
 	return proto.EnumName(ClassificationType_name, int32(x))
 }
 func (ClassificationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_classification_5f4503a7e7cbe522, []int{0}
+	return fileDescriptor_classification_337031297c7f069d, []int{0}
 }
 
 // Contains annotation details specific to classification.
@@ -66,7 +66,7 @@ func (m *ClassificationAnnotation) Reset()         { *m = ClassificationAnnotati
 func (m *ClassificationAnnotation) String() string { return proto.CompactTextString(m) }
 func (*ClassificationAnnotation) ProtoMessage()    {}
 func (*ClassificationAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_classification_5f4503a7e7cbe522, []int{0}
+	return fileDescriptor_classification_337031297c7f069d, []int{0}
 }
 func (m *ClassificationAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationAnnotation.Unmarshal(m, b)
@@ -133,7 +133,7 @@ func (m *VideoClassificationAnnotation) Reset()         { *m = VideoClassificati
 func (m *VideoClassificationAnnotation) String() string { return proto.CompactTextString(m) }
 func (*VideoClassificationAnnotation) ProtoMessage()    {}
 func (*VideoClassificationAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_classification_5f4503a7e7cbe522, []int{1}
+	return fileDescriptor_classification_337031297c7f069d, []int{1}
 }
 func (m *VideoClassificationAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoClassificationAnnotation.Unmarshal(m, b)
@@ -213,7 +213,7 @@ func (m *ClassificationEvaluationMetrics) Reset()         { *m = ClassificationE
 func (m *ClassificationEvaluationMetrics) String() string { return proto.CompactTextString(m) }
 func (*ClassificationEvaluationMetrics) ProtoMessage()    {}
 func (*ClassificationEvaluationMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_classification_5f4503a7e7cbe522, []int{2}
+	return fileDescriptor_classification_337031297c7f069d, []int{2}
 }
 func (m *ClassificationEvaluationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationEvaluationMetrics.Unmarshal(m, b)
@@ -340,7 +340,7 @@ func (m *ClassificationEvaluationMetrics_ConfidenceMetricsEntry) String() string
 }
 func (*ClassificationEvaluationMetrics_ConfidenceMetricsEntry) ProtoMessage() {}
 func (*ClassificationEvaluationMetrics_ConfidenceMetricsEntry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_classification_5f4503a7e7cbe522, []int{2, 0}
+	return fileDescriptor_classification_337031297c7f069d, []int{2, 0}
 }
 func (m *ClassificationEvaluationMetrics_ConfidenceMetricsEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationEvaluationMetrics_ConfidenceMetricsEntry.Unmarshal(m, b)
@@ -481,7 +481,7 @@ func (m *ClassificationEvaluationMetrics_ConfusionMatrix) String() string {
 }
 func (*ClassificationEvaluationMetrics_ConfusionMatrix) ProtoMessage() {}
 func (*ClassificationEvaluationMetrics_ConfusionMatrix) Descriptor() ([]byte, []int) {
-	return fileDescriptor_classification_5f4503a7e7cbe522, []int{2, 1}
+	return fileDescriptor_classification_337031297c7f069d, []int{2, 1}
 }
 func (m *ClassificationEvaluationMetrics_ConfusionMatrix) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationEvaluationMetrics_ConfusionMatrix.Unmarshal(m, b)
@@ -534,7 +534,7 @@ func (m *ClassificationEvaluationMetrics_ConfusionMatrix_Row) String() string {
 }
 func (*ClassificationEvaluationMetrics_ConfusionMatrix_Row) ProtoMessage() {}
 func (*ClassificationEvaluationMetrics_ConfusionMatrix_Row) Descriptor() ([]byte, []int) {
-	return fileDescriptor_classification_5f4503a7e7cbe522, []int{2, 1, 0}
+	return fileDescriptor_classification_337031297c7f069d, []int{2, 1, 0}
 }
 func (m *ClassificationEvaluationMetrics_ConfusionMatrix_Row) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClassificationEvaluationMetrics_ConfusionMatrix_Row.Unmarshal(m, b)
@@ -572,10 +572,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/classification.proto", fileDescriptor_classification_5f4503a7e7cbe522)
+	proto.RegisterFile("google/cloud/automl/v1beta1/classification.proto", fileDescriptor_classification_337031297c7f069d)
 }
 
-var fileDescriptor_classification_5f4503a7e7cbe522 = []byte{
+var fileDescriptor_classification_337031297c7f069d = []byte{
 	// 841 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x55, 0xd1, 0x6e, 0xdb, 0x36,
 	0x14, 0x9d, 0xec, 0x38, 0xad, 0xaf, 0xdd, 0xd6, 0x61, 0xb2, 0x4c, 0x75, 0x5b, 0xc4, 0x48, 0x5f,

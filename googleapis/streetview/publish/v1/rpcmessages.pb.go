@@ -45,7 +45,7 @@ func (x PhotoView) String() string {
 	return proto.EnumName(PhotoView_name, int32(x))
 }
 func (PhotoView) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{0}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{0}
 }
 
 // Request to create a [Photo][google.streetview.publish.v1.Photo].
@@ -61,7 +61,7 @@ func (m *CreatePhotoRequest) Reset()         { *m = CreatePhotoRequest{} }
 func (m *CreatePhotoRequest) String() string { return proto.CompactTextString(m) }
 func (*CreatePhotoRequest) ProtoMessage()    {}
 func (*CreatePhotoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{0}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{0}
 }
 func (m *CreatePhotoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreatePhotoRequest.Unmarshal(m, b)
@@ -118,7 +118,7 @@ func (m *GetPhotoRequest) Reset()         { *m = GetPhotoRequest{} }
 func (m *GetPhotoRequest) String() string { return proto.CompactTextString(m) }
 func (*GetPhotoRequest) ProtoMessage()    {}
 func (*GetPhotoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{1}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{1}
 }
 func (m *GetPhotoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetPhotoRequest.Unmarshal(m, b)
@@ -190,7 +190,7 @@ func (m *BatchGetPhotosRequest) Reset()         { *m = BatchGetPhotosRequest{} }
 func (m *BatchGetPhotosRequest) String() string { return proto.CompactTextString(m) }
 func (*BatchGetPhotosRequest) ProtoMessage()    {}
 func (*BatchGetPhotosRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{2}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{2}
 }
 func (m *BatchGetPhotosRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetPhotosRequest.Unmarshal(m, b)
@@ -247,7 +247,7 @@ func (m *BatchGetPhotosResponse) Reset()         { *m = BatchGetPhotosResponse{}
 func (m *BatchGetPhotosResponse) String() string { return proto.CompactTextString(m) }
 func (*BatchGetPhotosResponse) ProtoMessage()    {}
 func (*BatchGetPhotosResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{3}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{3}
 }
 func (m *BatchGetPhotosResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetPhotosResponse.Unmarshal(m, b)
@@ -296,7 +296,7 @@ func (m *PhotoResponse) Reset()         { *m = PhotoResponse{} }
 func (m *PhotoResponse) String() string { return proto.CompactTextString(m) }
 func (*PhotoResponse) ProtoMessage()    {}
 func (*PhotoResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{4}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{4}
 }
 func (m *PhotoResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PhotoResponse.Unmarshal(m, b)
@@ -380,7 +380,7 @@ func (m *ListPhotosRequest) Reset()         { *m = ListPhotosRequest{} }
 func (m *ListPhotosRequest) String() string { return proto.CompactTextString(m) }
 func (*ListPhotosRequest) ProtoMessage()    {}
 func (*ListPhotosRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{5}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{5}
 }
 func (m *ListPhotosRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListPhotosRequest.Unmarshal(m, b)
@@ -453,7 +453,7 @@ func (m *ListPhotosResponse) Reset()         { *m = ListPhotosResponse{} }
 func (m *ListPhotosResponse) String() string { return proto.CompactTextString(m) }
 func (*ListPhotosResponse) ProtoMessage()    {}
 func (*ListPhotosResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{6}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{6}
 }
 func (m *ListPhotosResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListPhotosResponse.Unmarshal(m, b)
@@ -530,7 +530,7 @@ func (m *UpdatePhotoRequest) Reset()         { *m = UpdatePhotoRequest{} }
 func (m *UpdatePhotoRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdatePhotoRequest) ProtoMessage()    {}
 func (*UpdatePhotoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{7}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{7}
 }
 func (m *UpdatePhotoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdatePhotoRequest.Unmarshal(m, b)
@@ -579,7 +579,7 @@ func (m *BatchUpdatePhotosRequest) Reset()         { *m = BatchUpdatePhotosReque
 func (m *BatchUpdatePhotosRequest) String() string { return proto.CompactTextString(m) }
 func (*BatchUpdatePhotosRequest) ProtoMessage()    {}
 func (*BatchUpdatePhotosRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{8}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{8}
 }
 func (m *BatchUpdatePhotosRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchUpdatePhotosRequest.Unmarshal(m, b)
@@ -622,7 +622,7 @@ func (m *BatchUpdatePhotosResponse) Reset()         { *m = BatchUpdatePhotosResp
 func (m *BatchUpdatePhotosResponse) String() string { return proto.CompactTextString(m) }
 func (*BatchUpdatePhotosResponse) ProtoMessage()    {}
 func (*BatchUpdatePhotosResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{9}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{9}
 }
 func (m *BatchUpdatePhotosResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchUpdatePhotosResponse.Unmarshal(m, b)
@@ -662,7 +662,7 @@ func (m *DeletePhotoRequest) Reset()         { *m = DeletePhotoRequest{} }
 func (m *DeletePhotoRequest) String() string { return proto.CompactTextString(m) }
 func (*DeletePhotoRequest) ProtoMessage()    {}
 func (*DeletePhotoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{10}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{10}
 }
 func (m *DeletePhotoRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeletePhotoRequest.Unmarshal(m, b)
@@ -704,7 +704,7 @@ func (m *BatchDeletePhotosRequest) Reset()         { *m = BatchDeletePhotosReque
 func (m *BatchDeletePhotosRequest) String() string { return proto.CompactTextString(m) }
 func (*BatchDeletePhotosRequest) ProtoMessage()    {}
 func (*BatchDeletePhotosRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{11}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{11}
 }
 func (m *BatchDeletePhotosRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchDeletePhotosRequest.Unmarshal(m, b)
@@ -746,7 +746,7 @@ func (m *BatchDeletePhotosResponse) Reset()         { *m = BatchDeletePhotosResp
 func (m *BatchDeletePhotosResponse) String() string { return proto.CompactTextString(m) }
 func (*BatchDeletePhotosResponse) ProtoMessage()    {}
 func (*BatchDeletePhotosResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rpcmessages_8c9ea656d647f358, []int{12}
+	return fileDescriptor_rpcmessages_3d6515828940d466, []int{12}
 }
 func (m *BatchDeletePhotosResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchDeletePhotosResponse.Unmarshal(m, b)
@@ -791,10 +791,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/streetview/publish/v1/rpcmessages.proto", fileDescriptor_rpcmessages_8c9ea656d647f358)
+	proto.RegisterFile("google/streetview/publish/v1/rpcmessages.proto", fileDescriptor_rpcmessages_3d6515828940d466)
 }
 
-var fileDescriptor_rpcmessages_8c9ea656d647f358 = []byte{
+var fileDescriptor_rpcmessages_3d6515828940d466 = []byte{
 	// 669 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x55, 0x5d, 0x4f, 0xd3, 0x5e,
 	0x18, 0xff, 0x17, 0xd8, 0x60, 0x0f, 0x7f, 0x04, 0x8f, 0x82, 0x65, 0x62, 0xb2, 0x94, 0x44, 0x17,

@@ -75,7 +75,7 @@ func (m *Document) Reset()         { *m = Document{} }
 func (m *Document) String() string { return proto.CompactTextString(m) }
 func (*Document) ProtoMessage()    {}
 func (*Document) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_2b4d69a5c971de0c, []int{0}
+	return fileDescriptor_document_8735c50e5ee5c345, []int{0}
 }
 func (m *Document) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Document.Unmarshal(m, b)
@@ -149,7 +149,7 @@ func (m *Value) Reset()         { *m = Value{} }
 func (m *Value) String() string { return proto.CompactTextString(m) }
 func (*Value) ProtoMessage()    {}
 func (*Value) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_2b4d69a5c971de0c, []int{1}
+	return fileDescriptor_document_8735c50e5ee5c345, []int{1}
 }
 func (m *Value) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Value.Unmarshal(m, b)
@@ -553,7 +553,7 @@ func (m *ArrayValue) Reset()         { *m = ArrayValue{} }
 func (m *ArrayValue) String() string { return proto.CompactTextString(m) }
 func (*ArrayValue) ProtoMessage()    {}
 func (*ArrayValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_2b4d69a5c971de0c, []int{2}
+	return fileDescriptor_document_8735c50e5ee5c345, []int{2}
 }
 func (m *ArrayValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ArrayValue.Unmarshal(m, b)
@@ -598,7 +598,7 @@ func (m *MapValue) Reset()         { *m = MapValue{} }
 func (m *MapValue) String() string { return proto.CompactTextString(m) }
 func (*MapValue) ProtoMessage()    {}
 func (*MapValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_2b4d69a5c971de0c, []int{3}
+	return fileDescriptor_document_8735c50e5ee5c345, []int{3}
 }
 func (m *MapValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MapValue.Unmarshal(m, b)
@@ -635,10 +635,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/v1beta1/document.proto", fileDescriptor_document_2b4d69a5c971de0c)
+	proto.RegisterFile("google/firestore/v1beta1/document.proto", fileDescriptor_document_8735c50e5ee5c345)
 }
 
-var fileDescriptor_document_2b4d69a5c971de0c = []byte{
+var fileDescriptor_document_8735c50e5ee5c345 = []byte{
 	// 655 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x94, 0xcf, 0x6e, 0xd3, 0x4e,
 	0x10, 0xc7, 0xe3, 0x24, 0x8d, 0x92, 0x71, 0xda, 0xfe, 0x7e, 0xe6, 0x12, 0x45, 0x15, 0x0d, 0x01,

@@ -44,7 +44,7 @@ func (x PgpSignedAttestation_ContentType) String() string {
 	return proto.EnumName(PgpSignedAttestation_ContentType_name, int32(x))
 }
 func (PgpSignedAttestation_ContentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_attestation_c9ed0362441a7a04, []int{0, 0}
+	return fileDescriptor_attestation_5f15fe591a16ad2d, []int{0, 0}
 }
 
 // An attestation wrapper with a PGP-compatible signature. This message only
@@ -87,7 +87,7 @@ func (m *PgpSignedAttestation) Reset()         { *m = PgpSignedAttestation{} }
 func (m *PgpSignedAttestation) String() string { return proto.CompactTextString(m) }
 func (*PgpSignedAttestation) ProtoMessage()    {}
 func (*PgpSignedAttestation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_attestation_c9ed0362441a7a04, []int{0}
+	return fileDescriptor_attestation_5f15fe591a16ad2d, []int{0}
 }
 func (m *PgpSignedAttestation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PgpSignedAttestation.Unmarshal(m, b)
@@ -216,7 +216,7 @@ func (m *Authority) Reset()         { *m = Authority{} }
 func (m *Authority) String() string { return proto.CompactTextString(m) }
 func (*Authority) ProtoMessage()    {}
 func (*Authority) Descriptor() ([]byte, []int) {
-	return fileDescriptor_attestation_c9ed0362441a7a04, []int{1}
+	return fileDescriptor_attestation_5f15fe591a16ad2d, []int{1}
 }
 func (m *Authority) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Authority.Unmarshal(m, b)
@@ -262,7 +262,7 @@ func (m *Authority_Hint) Reset()         { *m = Authority_Hint{} }
 func (m *Authority_Hint) String() string { return proto.CompactTextString(m) }
 func (*Authority_Hint) ProtoMessage()    {}
 func (*Authority_Hint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_attestation_c9ed0362441a7a04, []int{1, 0}
+	return fileDescriptor_attestation_5f15fe591a16ad2d, []int{1, 0}
 }
 func (m *Authority_Hint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Authority_Hint.Unmarshal(m, b)
@@ -302,7 +302,7 @@ func (m *Details) Reset()         { *m = Details{} }
 func (m *Details) String() string { return proto.CompactTextString(m) }
 func (*Details) ProtoMessage()    {}
 func (*Details) Descriptor() ([]byte, []int) {
-	return fileDescriptor_attestation_c9ed0362441a7a04, []int{2}
+	return fileDescriptor_attestation_5f15fe591a16ad2d, []int{2}
 }
 func (m *Details) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Details.Unmarshal(m, b)
@@ -354,7 +354,7 @@ func (m *Attestation) Reset()         { *m = Attestation{} }
 func (m *Attestation) String() string { return proto.CompactTextString(m) }
 func (*Attestation) ProtoMessage()    {}
 func (*Attestation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_attestation_c9ed0362441a7a04, []int{3}
+	return fileDescriptor_attestation_5f15fe591a16ad2d, []int{3}
 }
 func (m *Attestation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Attestation.Unmarshal(m, b)
@@ -463,10 +463,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/attestation/attestation.proto", fileDescriptor_attestation_c9ed0362441a7a04)
+	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/attestation/attestation.proto", fileDescriptor_attestation_5f15fe591a16ad2d)
 }
 
-var fileDescriptor_attestation_c9ed0362441a7a04 = []byte{
+var fileDescriptor_attestation_5f15fe591a16ad2d = []byte{
 	// 452 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x53, 0x5d, 0x6f, 0xd3, 0x30,
 	0x14, 0x6d, 0xba, 0x69, 0xac, 0x37, 0x08, 0x8d, 0x6c, 0x82, 0x0a, 0xa6, 0x69, 0xca, 0x53, 0x25,

@@ -38,7 +38,7 @@ func (m *Commission) Reset()         { *m = Commission{} }
 func (m *Commission) String() string { return proto.CompactTextString(m) }
 func (*Commission) ProtoMessage()    {}
 func (*Commission) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{0}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{0}
 }
 func (m *Commission) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Commission.Unmarshal(m, b)
@@ -78,7 +78,7 @@ func (m *EnhancedCpc) Reset()         { *m = EnhancedCpc{} }
 func (m *EnhancedCpc) String() string { return proto.CompactTextString(m) }
 func (*EnhancedCpc) ProtoMessage()    {}
 func (*EnhancedCpc) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{1}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{1}
 }
 func (m *EnhancedCpc) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EnhancedCpc.Unmarshal(m, b)
@@ -111,7 +111,7 @@ func (m *ManualCpc) Reset()         { *m = ManualCpc{} }
 func (m *ManualCpc) String() string { return proto.CompactTextString(m) }
 func (*ManualCpc) ProtoMessage()    {}
 func (*ManualCpc) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{2}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{2}
 }
 func (m *ManualCpc) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ManualCpc.Unmarshal(m, b)
@@ -149,7 +149,7 @@ func (m *ManualCpm) Reset()         { *m = ManualCpm{} }
 func (m *ManualCpm) String() string { return proto.CompactTextString(m) }
 func (*ManualCpm) ProtoMessage()    {}
 func (*ManualCpm) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{3}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{3}
 }
 func (m *ManualCpm) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ManualCpm.Unmarshal(m, b)
@@ -180,7 +180,7 @@ func (m *ManualCpv) Reset()         { *m = ManualCpv{} }
 func (m *ManualCpv) String() string { return proto.CompactTextString(m) }
 func (*ManualCpv) ProtoMessage()    {}
 func (*ManualCpv) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{4}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{4}
 }
 func (m *ManualCpv) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ManualCpv.Unmarshal(m, b)
@@ -212,7 +212,7 @@ func (m *MaximizeConversions) Reset()         { *m = MaximizeConversions{} }
 func (m *MaximizeConversions) String() string { return proto.CompactTextString(m) }
 func (*MaximizeConversions) ProtoMessage()    {}
 func (*MaximizeConversions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{5}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{5}
 }
 func (m *MaximizeConversions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MaximizeConversions.Unmarshal(m, b)
@@ -250,7 +250,7 @@ func (m *MaximizeConversionValue) Reset()         { *m = MaximizeConversionValue
 func (m *MaximizeConversionValue) String() string { return proto.CompactTextString(m) }
 func (*MaximizeConversionValue) ProtoMessage()    {}
 func (*MaximizeConversionValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{6}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{6}
 }
 func (m *MaximizeConversionValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MaximizeConversionValue.Unmarshal(m, b)
@@ -310,7 +310,7 @@ func (m *PageOnePromoted) Reset()         { *m = PageOnePromoted{} }
 func (m *PageOnePromoted) String() string { return proto.CompactTextString(m) }
 func (*PageOnePromoted) ProtoMessage()    {}
 func (*PageOnePromoted) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{7}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{7}
 }
 func (m *PageOnePromoted) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PageOnePromoted.Unmarshal(m, b)
@@ -394,7 +394,7 @@ func (m *TargetCpa) Reset()         { *m = TargetCpa{} }
 func (m *TargetCpa) String() string { return proto.CompactTextString(m) }
 func (*TargetCpa) ProtoMessage()    {}
 func (*TargetCpa) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{8}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{8}
 }
 func (m *TargetCpa) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetCpa.Unmarshal(m, b)
@@ -447,7 +447,7 @@ func (m *TargetCpm) Reset()         { *m = TargetCpm{} }
 func (m *TargetCpm) String() string { return proto.CompactTextString(m) }
 func (*TargetCpm) ProtoMessage()    {}
 func (*TargetCpm) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{9}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{9}
 }
 func (m *TargetCpm) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetCpm.Unmarshal(m, b)
@@ -490,7 +490,7 @@ func (m *TargetImpressionShare) Reset()         { *m = TargetImpressionShare{} }
 func (m *TargetImpressionShare) String() string { return proto.CompactTextString(m) }
 func (*TargetImpressionShare) ProtoMessage()    {}
 func (*TargetImpressionShare) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{10}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{10}
 }
 func (m *TargetImpressionShare) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetImpressionShare.Unmarshal(m, b)
@@ -564,7 +564,7 @@ func (m *TargetOutrankShare) Reset()         { *m = TargetOutrankShare{} }
 func (m *TargetOutrankShare) String() string { return proto.CompactTextString(m) }
 func (*TargetOutrankShare) ProtoMessage()    {}
 func (*TargetOutrankShare) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{11}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{11}
 }
 func (m *TargetOutrankShare) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetOutrankShare.Unmarshal(m, b)
@@ -640,7 +640,7 @@ func (m *TargetRoas) Reset()         { *m = TargetRoas{} }
 func (m *TargetRoas) String() string { return proto.CompactTextString(m) }
 func (*TargetRoas) ProtoMessage()    {}
 func (*TargetRoas) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{12}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{12}
 }
 func (m *TargetRoas) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetRoas.Unmarshal(m, b)
@@ -701,7 +701,7 @@ func (m *TargetSpend) Reset()         { *m = TargetSpend{} }
 func (m *TargetSpend) String() string { return proto.CompactTextString(m) }
 func (*TargetSpend) ProtoMessage()    {}
 func (*TargetSpend) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{13}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{13}
 }
 func (m *TargetSpend) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetSpend.Unmarshal(m, b)
@@ -757,7 +757,7 @@ func (m *PercentCpc) Reset()         { *m = PercentCpc{} }
 func (m *PercentCpc) String() string { return proto.CompactTextString(m) }
 func (*PercentCpc) ProtoMessage()    {}
 func (*PercentCpc) Descriptor() ([]byte, []int) {
-	return fileDescriptor_bidding_e5eb826532178520, []int{14}
+	return fileDescriptor_bidding_646e34114a6c9f78, []int{14}
 }
 func (m *PercentCpc) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PercentCpc.Unmarshal(m, b)
@@ -810,10 +810,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/bidding.proto", fileDescriptor_bidding_e5eb826532178520)
+	proto.RegisterFile("google/ads/googleads/v1/common/bidding.proto", fileDescriptor_bidding_646e34114a6c9f78)
 }
 
-var fileDescriptor_bidding_e5eb826532178520 = []byte{
+var fileDescriptor_bidding_646e34114a6c9f78 = []byte{
 	// 951 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x96, 0x51, 0x6f, 0x1b, 0x45,
 	0x10, 0x80, 0x65, 0xbb, 0xad, 0xe8, 0x3a, 0xa5, 0xe4, 0x92, 0x06, 0x2b, 0xad, 0xaa, 0xea, 0x24,

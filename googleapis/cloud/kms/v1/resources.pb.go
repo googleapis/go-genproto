@@ -49,7 +49,7 @@ func (x ProtectionLevel) String() string {
 	return proto.EnumName(ProtectionLevel_name, int32(x))
 }
 func (ProtectionLevel) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{0}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{0}
 }
 
 // [CryptoKeyPurpose][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose]
@@ -96,7 +96,7 @@ func (x CryptoKey_CryptoKeyPurpose) String() string {
 	return proto.EnumName(CryptoKey_CryptoKeyPurpose_name, int32(x))
 }
 func (CryptoKey_CryptoKeyPurpose) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{1, 0}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{1, 0}
 }
 
 // Attestion formats provided by the HSM.
@@ -127,7 +127,7 @@ func (x KeyOperationAttestation_AttestationFormat) String() string {
 	return proto.EnumName(KeyOperationAttestation_AttestationFormat_name, int32(x))
 }
 func (KeyOperationAttestation_AttestationFormat) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{3, 0}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{3, 0}
 }
 
 // The algorithm of the
@@ -231,7 +231,7 @@ func (x CryptoKeyVersion_CryptoKeyVersionAlgorithm) String() string {
 	return proto.EnumName(CryptoKeyVersion_CryptoKeyVersionAlgorithm_name, int32(x))
 }
 func (CryptoKeyVersion_CryptoKeyVersionAlgorithm) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{4, 0}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{4, 0}
 }
 
 // The state of a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion],
@@ -287,7 +287,7 @@ func (x CryptoKeyVersion_CryptoKeyVersionState) String() string {
 	return proto.EnumName(CryptoKeyVersion_CryptoKeyVersionState_name, int32(x))
 }
 func (CryptoKeyVersion_CryptoKeyVersionState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{4, 1}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{4, 1}
 }
 
 // A view for [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]s.
@@ -323,7 +323,7 @@ func (x CryptoKeyVersion_CryptoKeyVersionView) String() string {
 	return proto.EnumName(CryptoKeyVersion_CryptoKeyVersionView_name, int32(x))
 }
 func (CryptoKeyVersion_CryptoKeyVersionView) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{4, 2}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{4, 2}
 }
 
 // A [KeyRing][google.cloud.kms.v1.KeyRing] is a toplevel logical grouping of
@@ -345,7 +345,7 @@ func (m *KeyRing) Reset()         { *m = KeyRing{} }
 func (m *KeyRing) String() string { return proto.CompactTextString(m) }
 func (*KeyRing) ProtoMessage()    {}
 func (*KeyRing) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{0}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{0}
 }
 func (m *KeyRing) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeyRing.Unmarshal(m, b)
@@ -450,7 +450,7 @@ func (m *CryptoKey) Reset()         { *m = CryptoKey{} }
 func (m *CryptoKey) String() string { return proto.CompactTextString(m) }
 func (*CryptoKey) ProtoMessage()    {}
 func (*CryptoKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{1}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{1}
 }
 func (m *CryptoKey) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CryptoKey.Unmarshal(m, b)
@@ -630,7 +630,7 @@ func (m *CryptoKeyVersionTemplate) Reset()         { *m = CryptoKeyVersionTempla
 func (m *CryptoKeyVersionTemplate) String() string { return proto.CompactTextString(m) }
 func (*CryptoKeyVersionTemplate) ProtoMessage()    {}
 func (*CryptoKeyVersionTemplate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{2}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{2}
 }
 func (m *CryptoKeyVersionTemplate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CryptoKeyVersionTemplate.Unmarshal(m, b)
@@ -680,7 +680,7 @@ func (m *KeyOperationAttestation) Reset()         { *m = KeyOperationAttestation
 func (m *KeyOperationAttestation) String() string { return proto.CompactTextString(m) }
 func (*KeyOperationAttestation) ProtoMessage()    {}
 func (*KeyOperationAttestation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{3}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{3}
 }
 func (m *KeyOperationAttestation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeyOperationAttestation.Unmarshal(m, b)
@@ -775,7 +775,7 @@ func (m *CryptoKeyVersion) Reset()         { *m = CryptoKeyVersion{} }
 func (m *CryptoKeyVersion) String() string { return proto.CompactTextString(m) }
 func (*CryptoKeyVersion) ProtoMessage()    {}
 func (*CryptoKeyVersion) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{4}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{4}
 }
 func (m *CryptoKeyVersion) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CryptoKeyVersion.Unmarshal(m, b)
@@ -881,7 +881,7 @@ func (m *PublicKey) Reset()         { *m = PublicKey{} }
 func (m *PublicKey) String() string { return proto.CompactTextString(m) }
 func (*PublicKey) ProtoMessage()    {}
 func (*PublicKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_812ab0e7462a1529, []int{5}
+	return fileDescriptor_resources_0e872c1c601eedcd, []int{5}
 }
 func (m *PublicKey) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PublicKey.Unmarshal(m, b)
@@ -932,10 +932,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/kms/v1/resources.proto", fileDescriptor_resources_812ab0e7462a1529)
+	proto.RegisterFile("google/cloud/kms/v1/resources.proto", fileDescriptor_resources_0e872c1c601eedcd)
 }
 
-var fileDescriptor_resources_812ab0e7462a1529 = []byte{
+var fileDescriptor_resources_0e872c1c601eedcd = []byte{
 	// 1203 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x56, 0x5d, 0x6e, 0xdb, 0x46,
 	0x17, 0x0d, 0x25, 0xcb, 0xb2, 0xae, 0x9c, 0x98, 0x1e, 0xe7, 0x47, 0xf1, 0x17, 0x24, 0x86, 0x92,

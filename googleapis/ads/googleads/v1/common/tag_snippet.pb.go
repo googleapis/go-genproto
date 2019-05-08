@@ -43,7 +43,7 @@ func (m *TagSnippet) Reset()         { *m = TagSnippet{} }
 func (m *TagSnippet) String() string { return proto.CompactTextString(m) }
 func (*TagSnippet) ProtoMessage()    {}
 func (*TagSnippet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tag_snippet_9b2d0166dd1e41b8, []int{0}
+	return fileDescriptor_tag_snippet_8ac1c7c28c0f8743, []int{0}
 }
 func (m *TagSnippet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TagSnippet.Unmarshal(m, b)
@@ -96,10 +96,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/tag_snippet.proto", fileDescriptor_tag_snippet_9b2d0166dd1e41b8)
+	proto.RegisterFile("google/ads/googleads/v1/common/tag_snippet.proto", fileDescriptor_tag_snippet_8ac1c7c28c0f8743)
 }
 
-var fileDescriptor_tag_snippet_9b2d0166dd1e41b8 = []byte{
+var fileDescriptor_tag_snippet_8ac1c7c28c0f8743 = []byte{
 	// 421 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x52, 0x4f, 0x6b, 0xdb, 0x30,
 	0x14, 0xc7, 0x6e, 0xd9, 0x41, 0x5d, 0x57, 0xf0, 0x29, 0x94, 0x52, 0x4a, 0x4e, 0x3d, 0x49, 0x73,

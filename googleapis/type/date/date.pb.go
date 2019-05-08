@@ -48,7 +48,7 @@ func (m *Date) Reset()         { *m = Date{} }
 func (m *Date) String() string { return proto.CompactTextString(m) }
 func (*Date) ProtoMessage()    {}
 func (*Date) Descriptor() ([]byte, []int) {
-	return fileDescriptor_date_b06048f2ddf7def5, []int{0}
+	return fileDescriptor_date_c55f47ce38fcfb50, []int{0}
 }
 func (m *Date) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Date.Unmarshal(m, b)
@@ -93,9 +93,9 @@ func init() {
 	proto.RegisterType((*Date)(nil), "google.type.Date")
 }
 
-func init() { proto.RegisterFile("google/type/date.proto", fileDescriptor_date_b06048f2ddf7def5) }
+func init() { proto.RegisterFile("google/type/date.proto", fileDescriptor_date_c55f47ce38fcfb50) }
 
-var fileDescriptor_date_b06048f2ddf7def5 = []byte{
+var fileDescriptor_date_c55f47ce38fcfb50 = []byte{
 	// 172 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4b, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x2f, 0xa9, 0x2c, 0x48, 0xd5, 0x4f, 0x49, 0x2c, 0x49, 0xd5, 0x2b, 0x28, 0xca,

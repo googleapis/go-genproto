@@ -48,7 +48,7 @@ func (m *Authentication) Reset()         { *m = Authentication{} }
 func (m *Authentication) String() string { return proto.CompactTextString(m) }
 func (*Authentication) ProtoMessage()    {}
 func (*Authentication) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_b5477a273d62f01b, []int{0}
+	return fileDescriptor_auth_20a218c05ef5a30e, []int{0}
 }
 func (m *Authentication) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Authentication.Unmarshal(m, b)
@@ -111,7 +111,7 @@ func (m *AuthenticationRule) Reset()         { *m = AuthenticationRule{} }
 func (m *AuthenticationRule) String() string { return proto.CompactTextString(m) }
 func (*AuthenticationRule) ProtoMessage()    {}
 func (*AuthenticationRule) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_b5477a273d62f01b, []int{1}
+	return fileDescriptor_auth_20a218c05ef5a30e, []int{1}
 }
 func (m *AuthenticationRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthenticationRule.Unmarshal(m, b)
@@ -214,7 +214,7 @@ func (m *AuthProvider) Reset()         { *m = AuthProvider{} }
 func (m *AuthProvider) String() string { return proto.CompactTextString(m) }
 func (*AuthProvider) ProtoMessage()    {}
 func (*AuthProvider) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_b5477a273d62f01b, []int{2}
+	return fileDescriptor_auth_20a218c05ef5a30e, []int{2}
 }
 func (m *AuthProvider) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthProvider.Unmarshal(m, b)
@@ -305,7 +305,7 @@ func (m *OAuthRequirements) Reset()         { *m = OAuthRequirements{} }
 func (m *OAuthRequirements) String() string { return proto.CompactTextString(m) }
 func (*OAuthRequirements) ProtoMessage()    {}
 func (*OAuthRequirements) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_b5477a273d62f01b, []int{3}
+	return fileDescriptor_auth_20a218c05ef5a30e, []int{3}
 }
 func (m *OAuthRequirements) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OAuthRequirements.Unmarshal(m, b)
@@ -368,7 +368,7 @@ func (m *AuthRequirement) Reset()         { *m = AuthRequirement{} }
 func (m *AuthRequirement) String() string { return proto.CompactTextString(m) }
 func (*AuthRequirement) ProtoMessage()    {}
 func (*AuthRequirement) Descriptor() ([]byte, []int) {
-	return fileDescriptor_auth_b5477a273d62f01b, []int{4}
+	return fileDescriptor_auth_20a218c05ef5a30e, []int{4}
 }
 func (m *AuthRequirement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AuthRequirement.Unmarshal(m, b)
@@ -410,9 +410,9 @@ func init() {
 	proto.RegisterType((*AuthRequirement)(nil), "google.api.AuthRequirement")
 }
 
-func init() { proto.RegisterFile("google/api/auth.proto", fileDescriptor_auth_b5477a273d62f01b) }
+func init() { proto.RegisterFile("google/api/auth.proto", fileDescriptor_auth_20a218c05ef5a30e) }
 
-var fileDescriptor_auth_b5477a273d62f01b = []byte{
+var fileDescriptor_auth_20a218c05ef5a30e = []byte{
 	// 452 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x52, 0x4d, 0x6b, 0xdb, 0x40,
 	0x10, 0x45, 0x72, 0x9c, 0x58, 0xe3, 0xe0, 0x24, 0x0b, 0x0d, 0xea, 0xb7, 0xd1, 0xc9, 0xa5, 0x20,

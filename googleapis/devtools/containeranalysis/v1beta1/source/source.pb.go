@@ -50,7 +50,7 @@ func (x AliasContext_Kind) String() string {
 	return proto.EnumName(AliasContext_Kind_name, int32(x))
 }
 func (AliasContext_Kind) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_source_b7360f0d8c9ed1c8, []int{1, 0}
+	return fileDescriptor_source_41019e073d7a9204, []int{1, 0}
 }
 
 // A SourceContext is a reference to a tree of files. A SourceContext together
@@ -74,7 +74,7 @@ func (m *SourceContext) Reset()         { *m = SourceContext{} }
 func (m *SourceContext) String() string { return proto.CompactTextString(m) }
 func (*SourceContext) ProtoMessage()    {}
 func (*SourceContext) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_b7360f0d8c9ed1c8, []int{0}
+	return fileDescriptor_source_41019e073d7a9204, []int{0}
 }
 func (m *SourceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceContext.Unmarshal(m, b)
@@ -259,7 +259,7 @@ func (m *AliasContext) Reset()         { *m = AliasContext{} }
 func (m *AliasContext) String() string { return proto.CompactTextString(m) }
 func (*AliasContext) ProtoMessage()    {}
 func (*AliasContext) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_b7360f0d8c9ed1c8, []int{1}
+	return fileDescriptor_source_41019e073d7a9204, []int{1}
 }
 func (m *AliasContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AliasContext.Unmarshal(m, b)
@@ -314,7 +314,7 @@ func (m *CloudRepoSourceContext) Reset()         { *m = CloudRepoSourceContext{}
 func (m *CloudRepoSourceContext) String() string { return proto.CompactTextString(m) }
 func (*CloudRepoSourceContext) ProtoMessage()    {}
 func (*CloudRepoSourceContext) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_b7360f0d8c9ed1c8, []int{2}
+	return fileDescriptor_source_41019e073d7a9204, []int{2}
 }
 func (m *CloudRepoSourceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CloudRepoSourceContext.Unmarshal(m, b)
@@ -472,7 +472,7 @@ func (m *GerritSourceContext) Reset()         { *m = GerritSourceContext{} }
 func (m *GerritSourceContext) String() string { return proto.CompactTextString(m) }
 func (*GerritSourceContext) ProtoMessage()    {}
 func (*GerritSourceContext) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_b7360f0d8c9ed1c8, []int{3}
+	return fileDescriptor_source_41019e073d7a9204, []int{3}
 }
 func (m *GerritSourceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GerritSourceContext.Unmarshal(m, b)
@@ -629,7 +629,7 @@ func (m *GitSourceContext) Reset()         { *m = GitSourceContext{} }
 func (m *GitSourceContext) String() string { return proto.CompactTextString(m) }
 func (*GitSourceContext) ProtoMessage()    {}
 func (*GitSourceContext) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_b7360f0d8c9ed1c8, []int{4}
+	return fileDescriptor_source_41019e073d7a9204, []int{4}
 }
 func (m *GitSourceContext) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GitSourceContext.Unmarshal(m, b)
@@ -681,7 +681,7 @@ func (m *RepoId) Reset()         { *m = RepoId{} }
 func (m *RepoId) String() string { return proto.CompactTextString(m) }
 func (*RepoId) ProtoMessage()    {}
 func (*RepoId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_b7360f0d8c9ed1c8, []int{5}
+	return fileDescriptor_source_41019e073d7a9204, []int{5}
 }
 func (m *RepoId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RepoId.Unmarshal(m, b)
@@ -824,7 +824,7 @@ func (m *ProjectRepoId) Reset()         { *m = ProjectRepoId{} }
 func (m *ProjectRepoId) String() string { return proto.CompactTextString(m) }
 func (*ProjectRepoId) ProtoMessage()    {}
 func (*ProjectRepoId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_b7360f0d8c9ed1c8, []int{6}
+	return fileDescriptor_source_41019e073d7a9204, []int{6}
 }
 func (m *ProjectRepoId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProjectRepoId.Unmarshal(m, b)
@@ -871,10 +871,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/source/source.proto", fileDescriptor_source_b7360f0d8c9ed1c8)
+	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/source/source.proto", fileDescriptor_source_41019e073d7a9204)
 }
 
-var fileDescriptor_source_b7360f0d8c9ed1c8 = []byte{
+var fileDescriptor_source_41019e073d7a9204 = []byte{
 	// 640 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0xdd, 0x4e, 0xdb, 0x30,
 	0x18, 0x6d, 0xda, 0xd0, 0x92, 0xaf, 0x94, 0x45, 0x1e, 0x42, 0x65, 0xd3, 0x36, 0x16, 0x0d, 0x89,

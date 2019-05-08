@@ -38,7 +38,7 @@ func (m *ImportDataOperationResponse) Reset()         { *m = ImportDataOperation
 func (m *ImportDataOperationResponse) String() string { return proto.CompactTextString(m) }
 func (*ImportDataOperationResponse) ProtoMessage()    {}
 func (*ImportDataOperationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{0}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{0}
 }
 func (m *ImportDataOperationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportDataOperationResponse.Unmarshal(m, b)
@@ -101,7 +101,7 @@ func (m *ExportDataOperationResponse) Reset()         { *m = ExportDataOperation
 func (m *ExportDataOperationResponse) String() string { return proto.CompactTextString(m) }
 func (*ExportDataOperationResponse) ProtoMessage()    {}
 func (*ExportDataOperationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{1}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{1}
 }
 func (m *ExportDataOperationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportDataOperationResponse.Unmarshal(m, b)
@@ -174,7 +174,7 @@ func (m *ImportDataOperationMetadata) Reset()         { *m = ImportDataOperation
 func (m *ImportDataOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*ImportDataOperationMetadata) ProtoMessage()    {}
 func (*ImportDataOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{2}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{2}
 }
 func (m *ImportDataOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportDataOperationMetadata.Unmarshal(m, b)
@@ -226,7 +226,7 @@ func (m *ExportDataOperationMetadata) Reset()         { *m = ExportDataOperation
 func (m *ExportDataOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*ExportDataOperationMetadata) ProtoMessage()    {}
 func (*ExportDataOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{3}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{3}
 }
 func (m *ExportDataOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportDataOperationMetadata.Unmarshal(m, b)
@@ -296,7 +296,7 @@ func (m *LabelOperationMetadata) Reset()         { *m = LabelOperationMetadata{}
 func (m *LabelOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelOperationMetadata) ProtoMessage()    {}
 func (*LabelOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{4}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{4}
 }
 func (m *LabelOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelOperationMetadata.Unmarshal(m, b)
@@ -808,7 +808,7 @@ func (m *LabelImageClassificationOperationMetadata) Reset() {
 func (m *LabelImageClassificationOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelImageClassificationOperationMetadata) ProtoMessage()    {}
 func (*LabelImageClassificationOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{5}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{5}
 }
 func (m *LabelImageClassificationOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelImageClassificationOperationMetadata.Unmarshal(m, b)
@@ -850,7 +850,7 @@ func (m *LabelImageBoundingBoxOperationMetadata) Reset() {
 func (m *LabelImageBoundingBoxOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelImageBoundingBoxOperationMetadata) ProtoMessage()    {}
 func (*LabelImageBoundingBoxOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{6}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{6}
 }
 func (m *LabelImageBoundingBoxOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelImageBoundingBoxOperationMetadata.Unmarshal(m, b)
@@ -894,7 +894,7 @@ func (m *LabelImageOrientedBoundingBoxOperationMetadata) String() string {
 }
 func (*LabelImageOrientedBoundingBoxOperationMetadata) ProtoMessage() {}
 func (*LabelImageOrientedBoundingBoxOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{7}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{7}
 }
 func (m *LabelImageOrientedBoundingBoxOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelImageOrientedBoundingBoxOperationMetadata.Unmarshal(m, b)
@@ -936,7 +936,7 @@ func (m *LabelImageBoundingPolyOperationMetadata) Reset() {
 func (m *LabelImageBoundingPolyOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelImageBoundingPolyOperationMetadata) ProtoMessage()    {}
 func (*LabelImageBoundingPolyOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{8}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{8}
 }
 func (m *LabelImageBoundingPolyOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelImageBoundingPolyOperationMetadata.Unmarshal(m, b)
@@ -976,7 +976,7 @@ func (m *LabelImagePolylineOperationMetadata) Reset()         { *m = LabelImageP
 func (m *LabelImagePolylineOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelImagePolylineOperationMetadata) ProtoMessage()    {}
 func (*LabelImagePolylineOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{9}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{9}
 }
 func (m *LabelImagePolylineOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelImagePolylineOperationMetadata.Unmarshal(m, b)
@@ -1018,7 +1018,7 @@ func (m *LabelImageSegmentationOperationMetadata) Reset() {
 func (m *LabelImageSegmentationOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelImageSegmentationOperationMetadata) ProtoMessage()    {}
 func (*LabelImageSegmentationOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{10}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{10}
 }
 func (m *LabelImageSegmentationOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelImageSegmentationOperationMetadata.Unmarshal(m, b)
@@ -1060,7 +1060,7 @@ func (m *LabelVideoClassificationOperationMetadata) Reset() {
 func (m *LabelVideoClassificationOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelVideoClassificationOperationMetadata) ProtoMessage()    {}
 func (*LabelVideoClassificationOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{11}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{11}
 }
 func (m *LabelVideoClassificationOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelVideoClassificationOperationMetadata.Unmarshal(m, b)
@@ -1104,7 +1104,7 @@ func (m *LabelVideoObjectDetectionOperationMetadata) String() string {
 }
 func (*LabelVideoObjectDetectionOperationMetadata) ProtoMessage() {}
 func (*LabelVideoObjectDetectionOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{12}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{12}
 }
 func (m *LabelVideoObjectDetectionOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelVideoObjectDetectionOperationMetadata.Unmarshal(m, b)
@@ -1146,7 +1146,7 @@ func (m *LabelVideoObjectTrackingOperationMetadata) Reset() {
 func (m *LabelVideoObjectTrackingOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelVideoObjectTrackingOperationMetadata) ProtoMessage()    {}
 func (*LabelVideoObjectTrackingOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{13}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{13}
 }
 func (m *LabelVideoObjectTrackingOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelVideoObjectTrackingOperationMetadata.Unmarshal(m, b)
@@ -1186,7 +1186,7 @@ func (m *LabelVideoEventOperationMetadata) Reset()         { *m = LabelVideoEven
 func (m *LabelVideoEventOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelVideoEventOperationMetadata) ProtoMessage()    {}
 func (*LabelVideoEventOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{14}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{14}
 }
 func (m *LabelVideoEventOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelVideoEventOperationMetadata.Unmarshal(m, b)
@@ -1228,7 +1228,7 @@ func (m *LabelTextClassificationOperationMetadata) Reset() {
 func (m *LabelTextClassificationOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelTextClassificationOperationMetadata) ProtoMessage()    {}
 func (*LabelTextClassificationOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{15}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{15}
 }
 func (m *LabelTextClassificationOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelTextClassificationOperationMetadata.Unmarshal(m, b)
@@ -1269,7 +1269,7 @@ func (m *LabelAudioTranscriptionOperationMetadata) Reset() {
 func (m *LabelAudioTranscriptionOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LabelAudioTranscriptionOperationMetadata) ProtoMessage()    {}
 func (*LabelAudioTranscriptionOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{16}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{16}
 }
 func (m *LabelAudioTranscriptionOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelAudioTranscriptionOperationMetadata.Unmarshal(m, b)
@@ -1313,7 +1313,7 @@ func (m *LabelTextEntityExtractionOperationMetadata) String() string {
 }
 func (*LabelTextEntityExtractionOperationMetadata) ProtoMessage() {}
 func (*LabelTextEntityExtractionOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{17}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{17}
 }
 func (m *LabelTextEntityExtractionOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelTextEntityExtractionOperationMetadata.Unmarshal(m, b)
@@ -1358,7 +1358,7 @@ func (m *CreateInstructionMetadata) Reset()         { *m = CreateInstructionMeta
 func (m *CreateInstructionMetadata) String() string { return proto.CompactTextString(m) }
 func (*CreateInstructionMetadata) ProtoMessage()    {}
 func (*CreateInstructionMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_28eb112b8bb4d480, []int{18}
+	return fileDescriptor_operations_f915b1b50117c3fa, []int{18}
 }
 func (m *CreateInstructionMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateInstructionMetadata.Unmarshal(m, b)
@@ -1415,10 +1415,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datalabeling/v1beta1/operations.proto", fileDescriptor_operations_28eb112b8bb4d480)
+	proto.RegisterFile("google/cloud/datalabeling/v1beta1/operations.proto", fileDescriptor_operations_f915b1b50117c3fa)
 }
 
-var fileDescriptor_operations_28eb112b8bb4d480 = []byte{
+var fileDescriptor_operations_f915b1b50117c3fa = []byte{
 	// 1042 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x98, 0x61, 0x6f, 0xdb, 0x44,
 	0x18, 0xc7, 0xb9, 0x8e, 0xae, 0xf4, 0x71, 0x47, 0x87, 0x41, 0x5b, 0xd6, 0x0e, 0x9a, 0x75, 0x02,

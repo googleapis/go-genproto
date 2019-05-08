@@ -60,7 +60,7 @@ func (m *Asset) Reset()         { *m = Asset{} }
 func (m *Asset) String() string { return proto.CompactTextString(m) }
 func (*Asset) ProtoMessage()    {}
 func (*Asset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_6429e78996bd9cc5, []int{0}
+	return fileDescriptor_asset_450623263cfcc7ba, []int{0}
 }
 func (m *Asset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Asset.Unmarshal(m, b)
@@ -158,7 +158,7 @@ func (m *Asset_SecurityCenterProperties) Reset()         { *m = Asset_SecurityCe
 func (m *Asset_SecurityCenterProperties) String() string { return proto.CompactTextString(m) }
 func (*Asset_SecurityCenterProperties) ProtoMessage()    {}
 func (*Asset_SecurityCenterProperties) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_6429e78996bd9cc5, []int{0, 0}
+	return fileDescriptor_asset_450623263cfcc7ba, []int{0, 0}
 }
 func (m *Asset_SecurityCenterProperties) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Asset_SecurityCenterProperties.Unmarshal(m, b)
@@ -230,7 +230,7 @@ func (m *Asset_IamPolicy) Reset()         { *m = Asset_IamPolicy{} }
 func (m *Asset_IamPolicy) String() string { return proto.CompactTextString(m) }
 func (*Asset_IamPolicy) ProtoMessage()    {}
 func (*Asset_IamPolicy) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_6429e78996bd9cc5, []int{0, 1}
+	return fileDescriptor_asset_450623263cfcc7ba, []int{0, 1}
 }
 func (m *Asset_IamPolicy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Asset_IamPolicy.Unmarshal(m, b)
@@ -265,10 +265,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/securitycenter/v1/asset.proto", fileDescriptor_asset_6429e78996bd9cc5)
+	proto.RegisterFile("google/cloud/securitycenter/v1/asset.proto", fileDescriptor_asset_450623263cfcc7ba)
 }
 
-var fileDescriptor_asset_6429e78996bd9cc5 = []byte{
+var fileDescriptor_asset_450623263cfcc7ba = []byte{
 	// 581 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x54, 0xcd, 0x6e, 0xd3, 0x4c,
 	0x14, 0x95, 0x93, 0xe6, 0xeb, 0x97, 0x1b, 0xfa, 0xa3, 0x41, 0x02, 0xcb, 0x42, 0x6d, 0x28, 0x0b,

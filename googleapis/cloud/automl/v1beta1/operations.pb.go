@@ -59,7 +59,7 @@ func (m *OperationMetadata) Reset()         { *m = OperationMetadata{} }
 func (m *OperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*OperationMetadata) ProtoMessage()    {}
 func (*OperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{0}
+	return fileDescriptor_operations_3312906655c3448c, []int{0}
 }
 func (m *OperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationMetadata.Unmarshal(m, b)
@@ -453,7 +453,7 @@ func (m *DeleteOperationMetadata) Reset()         { *m = DeleteOperationMetadata
 func (m *DeleteOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*DeleteOperationMetadata) ProtoMessage()    {}
 func (*DeleteOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{1}
+	return fileDescriptor_operations_3312906655c3448c, []int{1}
 }
 func (m *DeleteOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteOperationMetadata.Unmarshal(m, b)
@@ -484,7 +484,7 @@ func (m *DeployModelOperationMetadata) Reset()         { *m = DeployModelOperati
 func (m *DeployModelOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*DeployModelOperationMetadata) ProtoMessage()    {}
 func (*DeployModelOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{2}
+	return fileDescriptor_operations_3312906655c3448c, []int{2}
 }
 func (m *DeployModelOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeployModelOperationMetadata.Unmarshal(m, b)
@@ -515,7 +515,7 @@ func (m *UndeployModelOperationMetadata) Reset()         { *m = UndeployModelOpe
 func (m *UndeployModelOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*UndeployModelOperationMetadata) ProtoMessage()    {}
 func (*UndeployModelOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{3}
+	return fileDescriptor_operations_3312906655c3448c, []int{3}
 }
 func (m *UndeployModelOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UndeployModelOperationMetadata.Unmarshal(m, b)
@@ -546,7 +546,7 @@ func (m *CreateModelOperationMetadata) Reset()         { *m = CreateModelOperati
 func (m *CreateModelOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*CreateModelOperationMetadata) ProtoMessage()    {}
 func (*CreateModelOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{4}
+	return fileDescriptor_operations_3312906655c3448c, []int{4}
 }
 func (m *CreateModelOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateModelOperationMetadata.Unmarshal(m, b)
@@ -577,7 +577,7 @@ func (m *ImportDataOperationMetadata) Reset()         { *m = ImportDataOperation
 func (m *ImportDataOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*ImportDataOperationMetadata) ProtoMessage()    {}
 func (*ImportDataOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{5}
+	return fileDescriptor_operations_3312906655c3448c, []int{5}
 }
 func (m *ImportDataOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportDataOperationMetadata.Unmarshal(m, b)
@@ -610,7 +610,7 @@ func (m *ExportDataOperationMetadata) Reset()         { *m = ExportDataOperation
 func (m *ExportDataOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*ExportDataOperationMetadata) ProtoMessage()    {}
 func (*ExportDataOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{6}
+	return fileDescriptor_operations_3312906655c3448c, []int{6}
 }
 func (m *ExportDataOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportDataOperationMetadata.Unmarshal(m, b)
@@ -660,7 +660,7 @@ func (m *ExportDataOperationMetadata_ExportDataOutputInfo) String() string {
 }
 func (*ExportDataOperationMetadata_ExportDataOutputInfo) ProtoMessage() {}
 func (*ExportDataOperationMetadata_ExportDataOutputInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{6, 0}
+	return fileDescriptor_operations_3312906655c3448c, []int{6, 0}
 }
 func (m *ExportDataOperationMetadata_ExportDataOutputInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportDataOperationMetadata_ExportDataOutputInfo.Unmarshal(m, b)
@@ -801,7 +801,7 @@ func (m *BatchPredictOperationMetadata) Reset()         { *m = BatchPredictOpera
 func (m *BatchPredictOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*BatchPredictOperationMetadata) ProtoMessage()    {}
 func (*BatchPredictOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{7}
+	return fileDescriptor_operations_3312906655c3448c, []int{7}
 }
 func (m *BatchPredictOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchPredictOperationMetadata.Unmarshal(m, b)
@@ -859,7 +859,7 @@ func (m *BatchPredictOperationMetadata_BatchPredictOutputInfo) String() string {
 }
 func (*BatchPredictOperationMetadata_BatchPredictOutputInfo) ProtoMessage() {}
 func (*BatchPredictOperationMetadata_BatchPredictOutputInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{7, 0}
+	return fileDescriptor_operations_3312906655c3448c, []int{7, 0}
 }
 func (m *BatchPredictOperationMetadata_BatchPredictOutputInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchPredictOperationMetadata_BatchPredictOutputInfo.Unmarshal(m, b)
@@ -998,7 +998,7 @@ func (m *ExportModelOperationMetadata) Reset()         { *m = ExportModelOperati
 func (m *ExportModelOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*ExportModelOperationMetadata) ProtoMessage()    {}
 func (*ExportModelOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{8}
+	return fileDescriptor_operations_3312906655c3448c, []int{8}
 }
 func (m *ExportModelOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportModelOperationMetadata.Unmarshal(m, b)
@@ -1046,7 +1046,7 @@ func (m *ExportModelOperationMetadata_ExportModelOutputInfo) String() string {
 }
 func (*ExportModelOperationMetadata_ExportModelOutputInfo) ProtoMessage() {}
 func (*ExportModelOperationMetadata_ExportModelOutputInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{8, 0}
+	return fileDescriptor_operations_3312906655c3448c, []int{8, 0}
 }
 func (m *ExportModelOperationMetadata_ExportModelOutputInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportModelOperationMetadata_ExportModelOutputInfo.Unmarshal(m, b)
@@ -1089,7 +1089,7 @@ func (m *ExportEvaluatedExamplesOperationMetadata) Reset() {
 func (m *ExportEvaluatedExamplesOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*ExportEvaluatedExamplesOperationMetadata) ProtoMessage()    {}
 func (*ExportEvaluatedExamplesOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{9}
+	return fileDescriptor_operations_3312906655c3448c, []int{9}
 }
 func (m *ExportEvaluatedExamplesOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportEvaluatedExamplesOperationMetadata.Unmarshal(m, b)
@@ -1137,7 +1137,7 @@ func (m *ExportEvaluatedExamplesOperationMetadata_ExportEvaluatedExamplesOutputI
 }
 func (*ExportEvaluatedExamplesOperationMetadata_ExportEvaluatedExamplesOutputInfo) ProtoMessage() {}
 func (*ExportEvaluatedExamplesOperationMetadata_ExportEvaluatedExamplesOutputInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_55f4ccdf029579f1, []int{9, 0}
+	return fileDescriptor_operations_3312906655c3448c, []int{9, 0}
 }
 func (m *ExportEvaluatedExamplesOperationMetadata_ExportEvaluatedExamplesOutputInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportEvaluatedExamplesOperationMetadata_ExportEvaluatedExamplesOutputInfo.Unmarshal(m, b)
@@ -1182,10 +1182,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/operations.proto", fileDescriptor_operations_55f4ccdf029579f1)
+	proto.RegisterFile("google/cloud/automl/v1beta1/operations.proto", fileDescriptor_operations_3312906655c3448c)
 }
 
-var fileDescriptor_operations_55f4ccdf029579f1 = []byte{
+var fileDescriptor_operations_3312906655c3448c = []byte{
 	// 884 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x96, 0xdd, 0x6e, 0x1b, 0x45,
 	0x14, 0xc7, 0x59, 0x87, 0xaf, 0x1e, 0x53, 0x92, 0x4c, 0x9d, 0xc4, 0x75, 0xd2, 0x34, 0x5d, 0x21,

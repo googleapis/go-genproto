@@ -47,7 +47,7 @@ func (x Model_DeploymentState) String() string {
 	return proto.EnumName(Model_DeploymentState_name, int32(x))
 }
 func (Model_DeploymentState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_model_045660f03fa00661, []int{0, 0}
+	return fileDescriptor_model_9828559028c2521f, []int{0, 0}
 }
 
 // API proto representing a trained machine learning model.
@@ -97,7 +97,7 @@ func (m *Model) Reset()         { *m = Model{} }
 func (m *Model) String() string { return proto.CompactTextString(m) }
 func (*Model) ProtoMessage()    {}
 func (*Model) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_045660f03fa00661, []int{0}
+	return fileDescriptor_model_9828559028c2521f, []int{0}
 }
 func (m *Model) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Model.Unmarshal(m, b)
@@ -468,10 +468,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/model.proto", fileDescriptor_model_045660f03fa00661)
+	proto.RegisterFile("google/cloud/automl/v1beta1/model.proto", fileDescriptor_model_9828559028c2521f)
 }
 
-var fileDescriptor_model_045660f03fa00661 = []byte{
+var fileDescriptor_model_9828559028c2521f = []byte{
 	// 673 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x95, 0x6f, 0x4f, 0xd3, 0x5e,
 	0x14, 0xc7, 0x29, 0xbf, 0x9f, 0x0a, 0x77, 0x38, 0x96, 0x8b, 0x7f, 0x9a, 0x01, 0x32, 0x30, 0xea,

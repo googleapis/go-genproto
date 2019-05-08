@@ -57,7 +57,7 @@ func (x ThreatType) String() string {
 	return proto.EnumName(ThreatType_name, int32(x))
 }
 func (ThreatType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{0}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{0}
 }
 
 // The ways in which threat entry sets can be compressed.
@@ -87,7 +87,7 @@ func (x CompressionType) String() string {
 	return proto.EnumName(CompressionType_name, int32(x))
 }
 func (CompressionType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{1}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{1}
 }
 
 // The type of response sent to the client.
@@ -119,7 +119,7 @@ func (x ComputeThreatListDiffResponse_ResponseType) String() string {
 	return proto.EnumName(ComputeThreatListDiffResponse_ResponseType_name, int32(x))
 }
 func (ComputeThreatListDiffResponse_ResponseType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{1, 0}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{1, 0}
 }
 
 // Describes an API diff request.
@@ -140,7 +140,7 @@ func (m *ComputeThreatListDiffRequest) Reset()         { *m = ComputeThreatListD
 func (m *ComputeThreatListDiffRequest) String() string { return proto.CompactTextString(m) }
 func (*ComputeThreatListDiffRequest) ProtoMessage()    {}
 func (*ComputeThreatListDiffRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{0}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{0}
 }
 func (m *ComputeThreatListDiffRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ComputeThreatListDiffRequest.Unmarshal(m, b)
@@ -204,7 +204,7 @@ func (m *ComputeThreatListDiffRequest_Constraints) Reset() {
 func (m *ComputeThreatListDiffRequest_Constraints) String() string { return proto.CompactTextString(m) }
 func (*ComputeThreatListDiffRequest_Constraints) ProtoMessage()    {}
 func (*ComputeThreatListDiffRequest_Constraints) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{0, 0}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{0, 0}
 }
 func (m *ComputeThreatListDiffRequest_Constraints) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ComputeThreatListDiffRequest_Constraints.Unmarshal(m, b)
@@ -275,7 +275,7 @@ func (m *ComputeThreatListDiffResponse) Reset()         { *m = ComputeThreatList
 func (m *ComputeThreatListDiffResponse) String() string { return proto.CompactTextString(m) }
 func (*ComputeThreatListDiffResponse) ProtoMessage()    {}
 func (*ComputeThreatListDiffResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{1}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{1}
 }
 func (m *ComputeThreatListDiffResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ComputeThreatListDiffResponse.Unmarshal(m, b)
@@ -353,7 +353,7 @@ func (m *ComputeThreatListDiffResponse_Checksum) Reset() {
 func (m *ComputeThreatListDiffResponse_Checksum) String() string { return proto.CompactTextString(m) }
 func (*ComputeThreatListDiffResponse_Checksum) ProtoMessage()    {}
 func (*ComputeThreatListDiffResponse_Checksum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{1, 0}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{1, 0}
 }
 func (m *ComputeThreatListDiffResponse_Checksum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ComputeThreatListDiffResponse_Checksum.Unmarshal(m, b)
@@ -395,7 +395,7 @@ func (m *SearchUrisRequest) Reset()         { *m = SearchUrisRequest{} }
 func (m *SearchUrisRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchUrisRequest) ProtoMessage()    {}
 func (*SearchUrisRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{2}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{2}
 }
 func (m *SearchUrisRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchUrisRequest.Unmarshal(m, b)
@@ -441,7 +441,7 @@ func (m *SearchUrisResponse) Reset()         { *m = SearchUrisResponse{} }
 func (m *SearchUrisResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchUrisResponse) ProtoMessage()    {}
 func (*SearchUrisResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{3}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{3}
 }
 func (m *SearchUrisResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchUrisResponse.Unmarshal(m, b)
@@ -484,7 +484,7 @@ func (m *SearchUrisResponse_ThreatUri) Reset()         { *m = SearchUrisResponse
 func (m *SearchUrisResponse_ThreatUri) String() string { return proto.CompactTextString(m) }
 func (*SearchUrisResponse_ThreatUri) ProtoMessage()    {}
 func (*SearchUrisResponse_ThreatUri) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{3, 0}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{3, 0}
 }
 func (m *SearchUrisResponse_ThreatUri) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchUrisResponse_ThreatUri.Unmarshal(m, b)
@@ -534,7 +534,7 @@ func (m *SearchHashesRequest) Reset()         { *m = SearchHashesRequest{} }
 func (m *SearchHashesRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchHashesRequest) ProtoMessage()    {}
 func (*SearchHashesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{4}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{4}
 }
 func (m *SearchHashesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchHashesRequest.Unmarshal(m, b)
@@ -584,7 +584,7 @@ func (m *SearchHashesResponse) Reset()         { *m = SearchHashesResponse{} }
 func (m *SearchHashesResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchHashesResponse) ProtoMessage()    {}
 func (*SearchHashesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{5}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{5}
 }
 func (m *SearchHashesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchHashesResponse.Unmarshal(m, b)
@@ -638,7 +638,7 @@ func (m *SearchHashesResponse_ThreatHash) Reset()         { *m = SearchHashesRes
 func (m *SearchHashesResponse_ThreatHash) String() string { return proto.CompactTextString(m) }
 func (*SearchHashesResponse_ThreatHash) ProtoMessage()    {}
 func (*SearchHashesResponse_ThreatHash) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{5, 0}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{5, 0}
 }
 func (m *SearchHashesResponse_ThreatHash) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchHashesResponse_ThreatHash.Unmarshal(m, b)
@@ -698,7 +698,7 @@ func (m *ThreatEntryAdditions) Reset()         { *m = ThreatEntryAdditions{} }
 func (m *ThreatEntryAdditions) String() string { return proto.CompactTextString(m) }
 func (*ThreatEntryAdditions) ProtoMessage()    {}
 func (*ThreatEntryAdditions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{6}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{6}
 }
 func (m *ThreatEntryAdditions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ThreatEntryAdditions.Unmarshal(m, b)
@@ -750,7 +750,7 @@ func (m *ThreatEntryRemovals) Reset()         { *m = ThreatEntryRemovals{} }
 func (m *ThreatEntryRemovals) String() string { return proto.CompactTextString(m) }
 func (*ThreatEntryRemovals) ProtoMessage()    {}
 func (*ThreatEntryRemovals) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{7}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{7}
 }
 func (m *ThreatEntryRemovals) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ThreatEntryRemovals.Unmarshal(m, b)
@@ -797,7 +797,7 @@ func (m *RawIndices) Reset()         { *m = RawIndices{} }
 func (m *RawIndices) String() string { return proto.CompactTextString(m) }
 func (*RawIndices) ProtoMessage()    {}
 func (*RawIndices) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{8}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{8}
 }
 func (m *RawIndices) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RawIndices.Unmarshal(m, b)
@@ -849,7 +849,7 @@ func (m *RawHashes) Reset()         { *m = RawHashes{} }
 func (m *RawHashes) String() string { return proto.CompactTextString(m) }
 func (*RawHashes) ProtoMessage()    {}
 func (*RawHashes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{9}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{9}
 }
 func (m *RawHashes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RawHashes.Unmarshal(m, b)
@@ -908,7 +908,7 @@ func (m *RiceDeltaEncoding) Reset()         { *m = RiceDeltaEncoding{} }
 func (m *RiceDeltaEncoding) String() string { return proto.CompactTextString(m) }
 func (*RiceDeltaEncoding) ProtoMessage()    {}
 func (*RiceDeltaEncoding) Descriptor() ([]byte, []int) {
-	return fileDescriptor_webrisk_7086364d22f8a427, []int{10}
+	return fileDescriptor_webrisk_6b128999d2c68f99, []int{10}
 }
 func (m *RiceDeltaEncoding) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RiceDeltaEncoding.Unmarshal(m, b)
@@ -1130,10 +1130,10 @@ var _WebRiskServiceV1Beta1_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/webrisk/v1beta1/webrisk.proto", fileDescriptor_webrisk_7086364d22f8a427)
+	proto.RegisterFile("google/cloud/webrisk/v1beta1/webrisk.proto", fileDescriptor_webrisk_6b128999d2c68f99)
 }
 
-var fileDescriptor_webrisk_7086364d22f8a427 = []byte{
+var fileDescriptor_webrisk_6b128999d2c68f99 = []byte{
 	// 1333 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x57, 0xcd, 0x6f, 0x1b, 0x45,
 	0x14, 0x67, 0xed, 0x7c, 0xbe, 0x75, 0x53, 0x67, 0x9a, 0x04, 0x63, 0x52, 0x1a, 0x16, 0x01, 0x56,

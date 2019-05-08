@@ -43,7 +43,7 @@ func (m *Explain) Reset()         { *m = Explain{} }
 func (m *Explain) String() string { return proto.CompactTextString(m) }
 func (*Explain) ProtoMessage()    {}
 func (*Explain) Descriptor() ([]byte, []int) {
-	return fileDescriptor_explain_fcb87931845c5427, []int{0}
+	return fileDescriptor_explain_9d6f7c319e1e26a4, []int{0}
 }
 func (m *Explain) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Explain.Unmarshal(m, b)
@@ -92,7 +92,7 @@ func (m *Explain_ExprStep) Reset()         { *m = Explain_ExprStep{} }
 func (m *Explain_ExprStep) String() string { return proto.CompactTextString(m) }
 func (*Explain_ExprStep) ProtoMessage()    {}
 func (*Explain_ExprStep) Descriptor() ([]byte, []int) {
-	return fileDescriptor_explain_fcb87931845c5427, []int{0, 0}
+	return fileDescriptor_explain_9d6f7c319e1e26a4, []int{0, 0}
 }
 func (m *Explain_ExprStep) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Explain_ExprStep.Unmarshal(m, b)
@@ -132,10 +132,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/api/expr/v1alpha1/explain.proto", fileDescriptor_explain_fcb87931845c5427)
+	proto.RegisterFile("google/api/expr/v1alpha1/explain.proto", fileDescriptor_explain_9d6f7c319e1e26a4)
 }
 
-var fileDescriptor_explain_fcb87931845c5427 = []byte{
+var fileDescriptor_explain_9d6f7c319e1e26a4 = []byte{
 	// 261 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x90, 0xb1, 0x4b, 0x03, 0x31,
 	0x14, 0xc6, 0x79, 0x29, 0x56, 0x7d, 0x15, 0x87, 0x4c, 0xa1, 0x08, 0x3d, 0x44, 0xe4, 0x70, 0x48,

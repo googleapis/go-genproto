@@ -40,7 +40,7 @@ func (m *TextSegment) Reset()         { *m = TextSegment{} }
 func (m *TextSegment) String() string { return proto.CompactTextString(m) }
 func (*TextSegment) ProtoMessage()    {}
 func (*TextSegment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_segment_7ab875eadb85ee2f, []int{0}
+	return fileDescriptor_text_segment_7b666583e5e1b1ed, []int{0}
 }
 func (m *TextSegment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextSegment.Unmarshal(m, b)
@@ -86,10 +86,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/text_segment.proto", fileDescriptor_text_segment_7ab875eadb85ee2f)
+	proto.RegisterFile("google/cloud/automl/v1beta1/text_segment.proto", fileDescriptor_text_segment_7b666583e5e1b1ed)
 }
 
-var fileDescriptor_text_segment_7ab875eadb85ee2f = []byte{
+var fileDescriptor_text_segment_7b666583e5e1b1ed = []byte{
 	// 255 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0xd0, 0xc1, 0x4a, 0x03, 0x31,
 	0x10, 0x06, 0x60, 0xd2, 0x82, 0xd2, 0xd4, 0x83, 0xec, 0x69, 0xb1, 0x8a, 0xd5, 0x53, 0x4f, 0x09,

@@ -41,7 +41,7 @@ func (m *Decl) Reset()         { *m = Decl{} }
 func (m *Decl) String() string { return proto.CompactTextString(m) }
 func (*Decl) ProtoMessage()    {}
 func (*Decl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_decl_6647d3ad822811d0, []int{0}
+	return fileDescriptor_decl_1e9fea2f12eba89c, []int{0}
 }
 func (m *Decl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Decl.Unmarshal(m, b)
@@ -214,7 +214,7 @@ func (m *DeclType) Reset()         { *m = DeclType{} }
 func (m *DeclType) String() string { return proto.CompactTextString(m) }
 func (*DeclType) ProtoMessage()    {}
 func (*DeclType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_decl_6647d3ad822811d0, []int{1}
+	return fileDescriptor_decl_1e9fea2f12eba89c, []int{1}
 }
 func (m *DeclType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeclType.Unmarshal(m, b)
@@ -270,7 +270,7 @@ func (m *IdentDecl) Reset()         { *m = IdentDecl{} }
 func (m *IdentDecl) String() string { return proto.CompactTextString(m) }
 func (*IdentDecl) ProtoMessage()    {}
 func (*IdentDecl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_decl_6647d3ad822811d0, []int{2}
+	return fileDescriptor_decl_1e9fea2f12eba89c, []int{2}
 }
 func (m *IdentDecl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IdentDecl.Unmarshal(m, b)
@@ -321,7 +321,7 @@ func (m *FunctionDecl) Reset()         { *m = FunctionDecl{} }
 func (m *FunctionDecl) String() string { return proto.CompactTextString(m) }
 func (*FunctionDecl) ProtoMessage()    {}
 func (*FunctionDecl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_decl_6647d3ad822811d0, []int{3}
+	return fileDescriptor_decl_1e9fea2f12eba89c, []int{3}
 }
 func (m *FunctionDecl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FunctionDecl.Unmarshal(m, b)
@@ -370,10 +370,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/api/expr/v1beta1/decl.proto", fileDescriptor_decl_6647d3ad822811d0)
+	proto.RegisterFile("google/api/expr/v1beta1/decl.proto", fileDescriptor_decl_1e9fea2f12eba89c)
 }
 
-var fileDescriptor_decl_6647d3ad822811d0 = []byte{
+var fileDescriptor_decl_1e9fea2f12eba89c = []byte{
 	// 398 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xcd, 0x4a, 0xeb, 0x40,
 	0x14, 0xc7, 0xef, 0x34, 0x49, 0x69, 0x4f, 0x2f, 0x97, 0xde, 0xd9, 0xdc, 0x70, 0x45, 0x88, 0x01,

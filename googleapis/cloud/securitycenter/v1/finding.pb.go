@@ -49,7 +49,7 @@ func (x Finding_State) String() string {
 	return proto.EnumName(Finding_State_name, int32(x))
 }
 func (Finding_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_finding_d1c4af5da1a4f432, []int{0, 0}
+	return fileDescriptor_finding_12e0037571a78005, []int{0, 0}
 }
 
 // Cloud Security Command Center (Cloud SCC) finding.
@@ -109,7 +109,7 @@ func (m *Finding) Reset()         { *m = Finding{} }
 func (m *Finding) String() string { return proto.CompactTextString(m) }
 func (*Finding) ProtoMessage()    {}
 func (*Finding) Descriptor() ([]byte, []int) {
-	return fileDescriptor_finding_d1c4af5da1a4f432, []int{0}
+	return fileDescriptor_finding_12e0037571a78005, []int{0}
 }
 func (m *Finding) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Finding.Unmarshal(m, b)
@@ -206,10 +206,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/securitycenter/v1/finding.proto", fileDescriptor_finding_d1c4af5da1a4f432)
+	proto.RegisterFile("google/cloud/securitycenter/v1/finding.proto", fileDescriptor_finding_12e0037571a78005)
 }
 
-var fileDescriptor_finding_d1c4af5da1a4f432 = []byte{
+var fileDescriptor_finding_12e0037571a78005 = []byte{
 	// 555 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0xcf, 0x6e, 0xda, 0x40,
 	0x10, 0xc6, 0x6b, 0x08, 0x04, 0x06, 0x12, 0x91, 0x95, 0x12, 0x59, 0xa8, 0x4a, 0x09, 0xbd, 0x70,

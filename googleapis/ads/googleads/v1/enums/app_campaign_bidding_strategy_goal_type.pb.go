@@ -65,7 +65,7 @@ func (x AppCampaignBiddingStrategyGoalTypeEnum_AppCampaignBiddingStrategyGoalTyp
 	return proto.EnumName(AppCampaignBiddingStrategyGoalTypeEnum_AppCampaignBiddingStrategyGoalType_name, int32(x))
 }
 func (AppCampaignBiddingStrategyGoalTypeEnum_AppCampaignBiddingStrategyGoalType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_app_campaign_bidding_strategy_goal_type_33c5e49b61e0e1a9, []int{0, 0}
+	return fileDescriptor_app_campaign_bidding_strategy_goal_type_f6a7d1f1531eb5da, []int{0, 0}
 }
 
 // Container for enum describing goal towards which the bidding strategy of an
@@ -82,7 +82,7 @@ func (m *AppCampaignBiddingStrategyGoalTypeEnum) Reset() {
 func (m *AppCampaignBiddingStrategyGoalTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*AppCampaignBiddingStrategyGoalTypeEnum) ProtoMessage()    {}
 func (*AppCampaignBiddingStrategyGoalTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_app_campaign_bidding_strategy_goal_type_33c5e49b61e0e1a9, []int{0}
+	return fileDescriptor_app_campaign_bidding_strategy_goal_type_f6a7d1f1531eb5da, []int{0}
 }
 func (m *AppCampaignBiddingStrategyGoalTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppCampaignBiddingStrategyGoalTypeEnum.Unmarshal(m, b)
@@ -108,10 +108,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/app_campaign_bidding_strategy_goal_type.proto", fileDescriptor_app_campaign_bidding_strategy_goal_type_33c5e49b61e0e1a9)
+	proto.RegisterFile("google/ads/googleads/v1/enums/app_campaign_bidding_strategy_goal_type.proto", fileDescriptor_app_campaign_bidding_strategy_goal_type_f6a7d1f1531eb5da)
 }
 
-var fileDescriptor_app_campaign_bidding_strategy_goal_type_33c5e49b61e0e1a9 = []byte{
+var fileDescriptor_app_campaign_bidding_strategy_goal_type_f6a7d1f1531eb5da = []byte{
 	// 413 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0xcd, 0x8a, 0xdb, 0x30,
 	0x10, 0x6e, 0xbc, 0xfd, 0x01, 0xed, 0xa1, 0xc1, 0xc7, 0xd2, 0x3d, 0x6c, 0xe8, 0xef, 0x45, 0xc6,

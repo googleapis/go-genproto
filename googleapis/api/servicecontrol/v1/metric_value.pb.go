@@ -56,7 +56,7 @@ func (m *MetricValue) Reset()         { *m = MetricValue{} }
 func (m *MetricValue) String() string { return proto.CompactTextString(m) }
 func (*MetricValue) ProtoMessage()    {}
 func (*MetricValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metric_value_53e5cc05481b2add, []int{0}
+	return fileDescriptor_metric_value_b13910fcfcfb831a, []int{0}
 }
 func (m *MetricValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MetricValue.Unmarshal(m, b)
@@ -306,7 +306,7 @@ func (m *MetricValueSet) Reset()         { *m = MetricValueSet{} }
 func (m *MetricValueSet) String() string { return proto.CompactTextString(m) }
 func (*MetricValueSet) ProtoMessage()    {}
 func (*MetricValueSet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_metric_value_53e5cc05481b2add, []int{1}
+	return fileDescriptor_metric_value_b13910fcfcfb831a, []int{1}
 }
 func (m *MetricValueSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MetricValueSet.Unmarshal(m, b)
@@ -347,10 +347,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/api/servicecontrol/v1/metric_value.proto", fileDescriptor_metric_value_53e5cc05481b2add)
+	proto.RegisterFile("google/api/servicecontrol/v1/metric_value.proto", fileDescriptor_metric_value_b13910fcfcfb831a)
 }
 
-var fileDescriptor_metric_value_53e5cc05481b2add = []byte{
+var fileDescriptor_metric_value_b13910fcfcfb831a = []byte{
 	// 482 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0xcf, 0x8b, 0xd3, 0x40,
 	0x14, 0xc7, 0x3b, 0x8d, 0xdb, 0x1f, 0x2f, 0xab, 0x68, 0x14, 0x0c, 0x65, 0xa1, 0x71, 0xbd, 0x44,

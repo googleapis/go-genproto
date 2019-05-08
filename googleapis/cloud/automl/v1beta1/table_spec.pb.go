@@ -63,7 +63,7 @@ func (m *TableSpec) Reset()         { *m = TableSpec{} }
 func (m *TableSpec) String() string { return proto.CompactTextString(m) }
 func (*TableSpec) ProtoMessage()    {}
 func (*TableSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_table_spec_53fcee33f0d41721, []int{0}
+	return fileDescriptor_table_spec_f59803a440a81f32, []int{0}
 }
 func (m *TableSpec) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TableSpec.Unmarshal(m, b)
@@ -130,10 +130,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/table_spec.proto", fileDescriptor_table_spec_53fcee33f0d41721)
+	proto.RegisterFile("google/cloud/automl/v1beta1/table_spec.proto", fileDescriptor_table_spec_f59803a440a81f32)
 }
 
-var fileDescriptor_table_spec_53fcee33f0d41721 = []byte{
+var fileDescriptor_table_spec_f59803a440a81f32 = []byte{
 	// 322 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xc1, 0x4a, 0x03, 0x31,
 	0x10, 0x86, 0xd9, 0x56, 0xab, 0x4d, 0x2b, 0xc8, 0x7a, 0x59, 0x5a, 0xc1, 0x2a, 0x1e, 0xf6, 0xa0,

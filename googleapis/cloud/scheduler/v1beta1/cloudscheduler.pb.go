@@ -57,7 +57,7 @@ func (m *ListJobsRequest) Reset()         { *m = ListJobsRequest{} }
 func (m *ListJobsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListJobsRequest) ProtoMessage()    {}
 func (*ListJobsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudscheduler_83896ba95dd284d1, []int{0}
+	return fileDescriptor_cloudscheduler_9fba0107986f2580, []int{0}
 }
 func (m *ListJobsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListJobsRequest.Unmarshal(m, b)
@@ -119,7 +119,7 @@ func (m *ListJobsResponse) Reset()         { *m = ListJobsResponse{} }
 func (m *ListJobsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListJobsResponse) ProtoMessage()    {}
 func (*ListJobsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudscheduler_83896ba95dd284d1, []int{1}
+	return fileDescriptor_cloudscheduler_9fba0107986f2580, []int{1}
 }
 func (m *ListJobsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListJobsResponse.Unmarshal(m, b)
@@ -169,7 +169,7 @@ func (m *GetJobRequest) Reset()         { *m = GetJobRequest{} }
 func (m *GetJobRequest) String() string { return proto.CompactTextString(m) }
 func (*GetJobRequest) ProtoMessage()    {}
 func (*GetJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudscheduler_83896ba95dd284d1, []int{2}
+	return fileDescriptor_cloudscheduler_9fba0107986f2580, []int{2}
 }
 func (m *GetJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetJobRequest.Unmarshal(m, b)
@@ -220,7 +220,7 @@ func (m *CreateJobRequest) Reset()         { *m = CreateJobRequest{} }
 func (m *CreateJobRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateJobRequest) ProtoMessage()    {}
 func (*CreateJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudscheduler_83896ba95dd284d1, []int{3}
+	return fileDescriptor_cloudscheduler_9fba0107986f2580, []int{3}
 }
 func (m *CreateJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateJobRequest.Unmarshal(m, b)
@@ -274,7 +274,7 @@ func (m *UpdateJobRequest) Reset()         { *m = UpdateJobRequest{} }
 func (m *UpdateJobRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateJobRequest) ProtoMessage()    {}
 func (*UpdateJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudscheduler_83896ba95dd284d1, []int{4}
+	return fileDescriptor_cloudscheduler_9fba0107986f2580, []int{4}
 }
 func (m *UpdateJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateJobRequest.Unmarshal(m, b)
@@ -325,7 +325,7 @@ func (m *DeleteJobRequest) Reset()         { *m = DeleteJobRequest{} }
 func (m *DeleteJobRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteJobRequest) ProtoMessage()    {}
 func (*DeleteJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudscheduler_83896ba95dd284d1, []int{5}
+	return fileDescriptor_cloudscheduler_9fba0107986f2580, []int{5}
 }
 func (m *DeleteJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteJobRequest.Unmarshal(m, b)
@@ -368,7 +368,7 @@ func (m *PauseJobRequest) Reset()         { *m = PauseJobRequest{} }
 func (m *PauseJobRequest) String() string { return proto.CompactTextString(m) }
 func (*PauseJobRequest) ProtoMessage()    {}
 func (*PauseJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudscheduler_83896ba95dd284d1, []int{6}
+	return fileDescriptor_cloudscheduler_9fba0107986f2580, []int{6}
 }
 func (m *PauseJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PauseJobRequest.Unmarshal(m, b)
@@ -411,7 +411,7 @@ func (m *ResumeJobRequest) Reset()         { *m = ResumeJobRequest{} }
 func (m *ResumeJobRequest) String() string { return proto.CompactTextString(m) }
 func (*ResumeJobRequest) ProtoMessage()    {}
 func (*ResumeJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudscheduler_83896ba95dd284d1, []int{7}
+	return fileDescriptor_cloudscheduler_9fba0107986f2580, []int{7}
 }
 func (m *ResumeJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResumeJobRequest.Unmarshal(m, b)
@@ -455,7 +455,7 @@ func (m *RunJobRequest) Reset()         { *m = RunJobRequest{} }
 func (m *RunJobRequest) String() string { return proto.CompactTextString(m) }
 func (*RunJobRequest) ProtoMessage()    {}
 func (*RunJobRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cloudscheduler_83896ba95dd284d1, []int{8}
+	return fileDescriptor_cloudscheduler_9fba0107986f2580, []int{8}
 }
 func (m *RunJobRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunJobRequest.Unmarshal(m, b)
@@ -858,10 +858,10 @@ var _CloudScheduler_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/scheduler/v1beta1/cloudscheduler.proto", fileDescriptor_cloudscheduler_83896ba95dd284d1)
+	proto.RegisterFile("google/cloud/scheduler/v1beta1/cloudscheduler.proto", fileDescriptor_cloudscheduler_9fba0107986f2580)
 }
 
-var fileDescriptor_cloudscheduler_83896ba95dd284d1 = []byte{
+var fileDescriptor_cloudscheduler_9fba0107986f2580 = []byte{
 	// 731 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x96, 0x4b, 0x4f, 0xdb, 0x4a,
 	0x14, 0xc7, 0x35, 0x3c, 0x22, 0x72, 0x10, 0x10, 0xcd, 0x02, 0xe5, 0x86, 0x7b, 0xaf, 0x22, 0xa3,

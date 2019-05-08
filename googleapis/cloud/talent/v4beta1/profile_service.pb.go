@@ -66,7 +66,7 @@ func (m *ListProfilesRequest) Reset()         { *m = ListProfilesRequest{} }
 func (m *ListProfilesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListProfilesRequest) ProtoMessage()    {}
 func (*ListProfilesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_service_ae08414b17ed6111, []int{0}
+	return fileDescriptor_profile_service_7ea8377f2d7ce92e, []int{0}
 }
 func (m *ListProfilesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListProfilesRequest.Unmarshal(m, b)
@@ -130,7 +130,7 @@ func (m *ListProfilesResponse) Reset()         { *m = ListProfilesResponse{} }
 func (m *ListProfilesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListProfilesResponse) ProtoMessage()    {}
 func (*ListProfilesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_service_ae08414b17ed6111, []int{1}
+	return fileDescriptor_profile_service_7ea8377f2d7ce92e, []int{1}
 }
 func (m *ListProfilesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListProfilesResponse.Unmarshal(m, b)
@@ -186,7 +186,7 @@ func (m *CreateProfileRequest) Reset()         { *m = CreateProfileRequest{} }
 func (m *CreateProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateProfileRequest) ProtoMessage()    {}
 func (*CreateProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_service_ae08414b17ed6111, []int{2}
+	return fileDescriptor_profile_service_7ea8377f2d7ce92e, []int{2}
 }
 func (m *CreateProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateProfileRequest.Unmarshal(m, b)
@@ -239,7 +239,7 @@ func (m *GetProfileRequest) Reset()         { *m = GetProfileRequest{} }
 func (m *GetProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*GetProfileRequest) ProtoMessage()    {}
 func (*GetProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_service_ae08414b17ed6111, []int{3}
+	return fileDescriptor_profile_service_7ea8377f2d7ce92e, []int{3}
 }
 func (m *GetProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetProfileRequest.Unmarshal(m, b)
@@ -313,7 +313,7 @@ func (m *UpdateProfileRequest) Reset()         { *m = UpdateProfileRequest{} }
 func (m *UpdateProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateProfileRequest) ProtoMessage()    {}
 func (*UpdateProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_service_ae08414b17ed6111, []int{4}
+	return fileDescriptor_profile_service_7ea8377f2d7ce92e, []int{4}
 }
 func (m *UpdateProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateProfileRequest.Unmarshal(m, b)
@@ -366,7 +366,7 @@ func (m *DeleteProfileRequest) Reset()         { *m = DeleteProfileRequest{} }
 func (m *DeleteProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteProfileRequest) ProtoMessage()    {}
 func (*DeleteProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_service_ae08414b17ed6111, []int{5}
+	return fileDescriptor_profile_service_7ea8377f2d7ce92e, []int{5}
 }
 func (m *DeleteProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteProfileRequest.Unmarshal(m, b)
@@ -535,15 +535,9 @@ type SearchProfilesRequest struct {
 	// * application_outcome_notes: The application outcome reason specifies the
 	// reasons behind the outcome of the job application.
 	// See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-	// * application_last_stage: The application last stage specifies the last
-	// stage of job application.
-	// See [ApplicationLastStageFilter][] for more details.
 	// * application_job_title: The application job title specifies the job
 	// applied for in the application.
 	// See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-	// * application_status: The application status specifies the status of job
-	// application.
-	// See [ApplicationStatusFilter][] for more details.
 	// * hirable_status: Hirable status specifies the profile's hirable status.
 	// * string_custom_attribute: String custom attributes. Values can be accessed
 	// via square bracket notation like string_custom_attribute["key1"].
@@ -568,7 +562,7 @@ func (m *SearchProfilesRequest) Reset()         { *m = SearchProfilesRequest{} }
 func (m *SearchProfilesRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchProfilesRequest) ProtoMessage()    {}
 func (*SearchProfilesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_service_ae08414b17ed6111, []int{6}
+	return fileDescriptor_profile_service_7ea8377f2d7ce92e, []int{6}
 }
 func (m *SearchProfilesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchProfilesRequest.Unmarshal(m, b)
@@ -686,7 +680,7 @@ func (m *SearchProfilesResponse) Reset()         { *m = SearchProfilesResponse{}
 func (m *SearchProfilesResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchProfilesResponse) ProtoMessage()    {}
 func (*SearchProfilesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_service_ae08414b17ed6111, []int{7}
+	return fileDescriptor_profile_service_7ea8377f2d7ce92e, []int{7}
 }
 func (m *SearchProfilesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchProfilesResponse.Unmarshal(m, b)
@@ -777,7 +771,7 @@ func (m *SummarizedProfile) Reset()         { *m = SummarizedProfile{} }
 func (m *SummarizedProfile) String() string { return proto.CompactTextString(m) }
 func (*SummarizedProfile) ProtoMessage()    {}
 func (*SummarizedProfile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_service_ae08414b17ed6111, []int{8}
+	return fileDescriptor_profile_service_7ea8377f2d7ce92e, []int{8}
 }
 func (m *SummarizedProfile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SummarizedProfile.Unmarshal(m, b)
@@ -1087,10 +1081,10 @@ var _ProfileService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/profile_service.proto", fileDescriptor_profile_service_ae08414b17ed6111)
+	proto.RegisterFile("google/cloud/talent/v4beta1/profile_service.proto", fileDescriptor_profile_service_7ea8377f2d7ce92e)
 }
 
-var fileDescriptor_profile_service_ae08414b17ed6111 = []byte{
+var fileDescriptor_profile_service_7ea8377f2d7ce92e = []byte{
 	// 1059 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x56, 0xdf, 0x6e, 0x1b, 0xc5,
 	0x17, 0xd6, 0xe6, 0xaf, 0x73, 0xd2, 0x34, 0xc9, 0x24, 0xcd, 0x6f, 0x7f, 0x2e, 0x08, 0x6b, 0x85,

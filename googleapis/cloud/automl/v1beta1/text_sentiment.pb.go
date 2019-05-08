@@ -43,7 +43,7 @@ func (m *TextSentimentAnnotation) Reset()         { *m = TextSentimentAnnotation
 func (m *TextSentimentAnnotation) String() string { return proto.CompactTextString(m) }
 func (*TextSentimentAnnotation) ProtoMessage()    {}
 func (*TextSentimentAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_sentiment_33b9f472f0a7750f, []int{0}
+	return fileDescriptor_text_sentiment_5175e400ab562620, []int{0}
 }
 func (m *TextSentimentAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextSentimentAnnotation.Unmarshal(m, b)
@@ -109,7 +109,7 @@ func (m *TextSentimentEvaluationMetrics) Reset()         { *m = TextSentimentEva
 func (m *TextSentimentEvaluationMetrics) String() string { return proto.CompactTextString(m) }
 func (*TextSentimentEvaluationMetrics) ProtoMessage()    {}
 func (*TextSentimentEvaluationMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_sentiment_33b9f472f0a7750f, []int{1}
+	return fileDescriptor_text_sentiment_5175e400ab562620, []int{1}
 }
 func (m *TextSentimentEvaluationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextSentimentEvaluationMetrics.Unmarshal(m, b)
@@ -198,10 +198,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/text_sentiment.proto", fileDescriptor_text_sentiment_33b9f472f0a7750f)
+	proto.RegisterFile("google/cloud/automl/v1beta1/text_sentiment.proto", fileDescriptor_text_sentiment_5175e400ab562620)
 }
 
-var fileDescriptor_text_sentiment_33b9f472f0a7750f = []byte{
+var fileDescriptor_text_sentiment_5175e400ab562620 = []byte{
 	// 452 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0x41, 0x6f, 0x13, 0x31,
 	0x10, 0x85, 0x95, 0x84, 0xa6, 0x8d, 0x8b, 0x68, 0x30, 0x12, 0x2c, 0x6d, 0x05, 0xa1, 0x17, 0x72,

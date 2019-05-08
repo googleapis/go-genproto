@@ -57,7 +57,7 @@ func (x NodeTaint_Effect) String() string {
 	return proto.EnumName(NodeTaint_Effect_name, int32(x))
 }
 func (NodeTaint_Effect) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{1, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{1, 0}
 }
 
 // Istio auth mode, https://istio.io/docs/concepts/security/mutual-tls.html
@@ -83,7 +83,7 @@ func (x IstioConfig_IstioAuthMode) String() string {
 	return proto.EnumName(IstioConfig_IstioAuthMode_name, int32(x))
 }
 func (IstioConfig_IstioAuthMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{10, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{10, 0}
 }
 
 // Allowed Network Policy providers.
@@ -109,7 +109,7 @@ func (x NetworkPolicy_Provider) String() string {
 	return proto.EnumName(NetworkPolicy_Provider_name, int32(x))
 }
 func (NetworkPolicy_Provider) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{14, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{14, 0}
 }
 
 // The current status of the cluster.
@@ -160,7 +160,7 @@ func (x Cluster_Status) String() string {
 	return proto.EnumName(Cluster_Status_name, int32(x))
 }
 func (Cluster_Status) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{18, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{18, 0}
 }
 
 // Current status of the operation.
@@ -198,7 +198,7 @@ func (x Operation_Status) String() string {
 	return proto.EnumName(Operation_Status_name, int32(x))
 }
 func (Operation_Status) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{20, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{20, 0}
 }
 
 // Operation type.
@@ -284,7 +284,7 @@ func (x Operation_Type) String() string {
 	return proto.EnumName(Operation_Type_name, int32(x))
 }
 func (Operation_Type) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{20, 1}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{20, 1}
 }
 
 // Operation type: what type update to perform.
@@ -321,7 +321,7 @@ func (x SetMasterAuthRequest_Action) String() string {
 	return proto.EnumName(SetMasterAuthRequest_Action_name, int32(x))
 }
 func (SetMasterAuthRequest_Action) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{32, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{32, 0}
 }
 
 // The current status of the node pool instance.
@@ -374,7 +374,7 @@ func (x NodePool_Status) String() string {
 	return proto.EnumName(NodePool_Status_name, int32(x))
 }
 func (NodePool_Status) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{46, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{46, 0}
 }
 
 // NodeMetadata is the configuration for if and how to expose the node
@@ -412,7 +412,7 @@ func (x WorkloadMetadataConfig_NodeMetadata) String() string {
 	return proto.EnumName(WorkloadMetadataConfig_NodeMetadata_name, int32(x))
 }
 func (WorkloadMetadataConfig_NodeMetadata) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{64, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{64, 0}
 }
 
 // LocationType is the type of GKE location, regional or zonal.
@@ -442,7 +442,7 @@ func (x Location_LocationType) String() string {
 	return proto.EnumName(Location_LocationType_name, int32(x))
 }
 func (Location_LocationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{69, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{69, 0}
 }
 
 // Code for each condition
@@ -482,7 +482,7 @@ func (x StatusCondition_Code) String() string {
 	return proto.EnumName(StatusCondition_Code_name, int32(x))
 }
 func (StatusCondition_Code) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{70, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{70, 0}
 }
 
 // Status shows the current usage of a secondary IP range.
@@ -524,7 +524,7 @@ func (x UsableSubnetworkSecondaryRange_Status) String() string {
 	return proto.EnumName(UsableSubnetworkSecondaryRange_Status_name, int32(x))
 }
 func (UsableSubnetworkSecondaryRange_Status) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{74, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{74, 0}
 }
 
 // Parameters that describe the nodes in a cluster.
@@ -643,7 +643,7 @@ func (m *NodeConfig) Reset()         { *m = NodeConfig{} }
 func (m *NodeConfig) String() string { return proto.CompactTextString(m) }
 func (*NodeConfig) ProtoMessage()    {}
 func (*NodeConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{0}
 }
 func (m *NodeConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NodeConfig.Unmarshal(m, b)
@@ -789,7 +789,7 @@ func (m *NodeTaint) Reset()         { *m = NodeTaint{} }
 func (m *NodeTaint) String() string { return proto.CompactTextString(m) }
 func (*NodeTaint) ProtoMessage()    {}
 func (*NodeTaint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{1}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{1}
 }
 func (m *NodeTaint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NodeTaint.Unmarshal(m, b)
@@ -865,7 +865,7 @@ func (m *MasterAuth) Reset()         { *m = MasterAuth{} }
 func (m *MasterAuth) String() string { return proto.CompactTextString(m) }
 func (*MasterAuth) ProtoMessage()    {}
 func (*MasterAuth) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{2}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{2}
 }
 func (m *MasterAuth) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MasterAuth.Unmarshal(m, b)
@@ -940,7 +940,7 @@ func (m *ClientCertificateConfig) Reset()         { *m = ClientCertificateConfig
 func (m *ClientCertificateConfig) String() string { return proto.CompactTextString(m) }
 func (*ClientCertificateConfig) ProtoMessage()    {}
 func (*ClientCertificateConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{3}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{3}
 }
 func (m *ClientCertificateConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClientCertificateConfig.Unmarshal(m, b)
@@ -999,7 +999,7 @@ func (m *AddonsConfig) Reset()         { *m = AddonsConfig{} }
 func (m *AddonsConfig) String() string { return proto.CompactTextString(m) }
 func (*AddonsConfig) ProtoMessage()    {}
 func (*AddonsConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{4}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{4}
 }
 func (m *AddonsConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddonsConfig.Unmarshal(m, b)
@@ -1077,7 +1077,7 @@ func (m *HttpLoadBalancing) Reset()         { *m = HttpLoadBalancing{} }
 func (m *HttpLoadBalancing) String() string { return proto.CompactTextString(m) }
 func (*HttpLoadBalancing) ProtoMessage()    {}
 func (*HttpLoadBalancing) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{5}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{5}
 }
 func (m *HttpLoadBalancing) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpLoadBalancing.Unmarshal(m, b)
@@ -1121,7 +1121,7 @@ func (m *HorizontalPodAutoscaling) Reset()         { *m = HorizontalPodAutoscali
 func (m *HorizontalPodAutoscaling) String() string { return proto.CompactTextString(m) }
 func (*HorizontalPodAutoscaling) ProtoMessage()    {}
 func (*HorizontalPodAutoscaling) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{6}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{6}
 }
 func (m *HorizontalPodAutoscaling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HorizontalPodAutoscaling.Unmarshal(m, b)
@@ -1161,7 +1161,7 @@ func (m *KubernetesDashboard) Reset()         { *m = KubernetesDashboard{} }
 func (m *KubernetesDashboard) String() string { return proto.CompactTextString(m) }
 func (*KubernetesDashboard) ProtoMessage()    {}
 func (*KubernetesDashboard) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{7}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{7}
 }
 func (m *KubernetesDashboard) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KubernetesDashboard.Unmarshal(m, b)
@@ -1203,7 +1203,7 @@ func (m *NetworkPolicyConfig) Reset()         { *m = NetworkPolicyConfig{} }
 func (m *NetworkPolicyConfig) String() string { return proto.CompactTextString(m) }
 func (*NetworkPolicyConfig) ProtoMessage()    {}
 func (*NetworkPolicyConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{8}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{8}
 }
 func (m *NetworkPolicyConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NetworkPolicyConfig.Unmarshal(m, b)
@@ -1256,7 +1256,7 @@ func (m *PrivateClusterConfig) Reset()         { *m = PrivateClusterConfig{} }
 func (m *PrivateClusterConfig) String() string { return proto.CompactTextString(m) }
 func (*PrivateClusterConfig) ProtoMessage()    {}
 func (*PrivateClusterConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{9}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{9}
 }
 func (m *PrivateClusterConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PrivateClusterConfig.Unmarshal(m, b)
@@ -1326,7 +1326,7 @@ func (m *IstioConfig) Reset()         { *m = IstioConfig{} }
 func (m *IstioConfig) String() string { return proto.CompactTextString(m) }
 func (*IstioConfig) ProtoMessage()    {}
 func (*IstioConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{10}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{10}
 }
 func (m *IstioConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IstioConfig.Unmarshal(m, b)
@@ -1373,7 +1373,7 @@ func (m *CloudRunConfig) Reset()         { *m = CloudRunConfig{} }
 func (m *CloudRunConfig) String() string { return proto.CompactTextString(m) }
 func (*CloudRunConfig) ProtoMessage()    {}
 func (*CloudRunConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{11}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{11}
 }
 func (m *CloudRunConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CloudRunConfig.Unmarshal(m, b)
@@ -1419,7 +1419,7 @@ func (m *MasterAuthorizedNetworksConfig) Reset()         { *m = MasterAuthorized
 func (m *MasterAuthorizedNetworksConfig) String() string { return proto.CompactTextString(m) }
 func (*MasterAuthorizedNetworksConfig) ProtoMessage()    {}
 func (*MasterAuthorizedNetworksConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{12}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{12}
 }
 func (m *MasterAuthorizedNetworksConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MasterAuthorizedNetworksConfig.Unmarshal(m, b)
@@ -1470,7 +1470,7 @@ func (m *MasterAuthorizedNetworksConfig_CidrBlock) Reset() {
 func (m *MasterAuthorizedNetworksConfig_CidrBlock) String() string { return proto.CompactTextString(m) }
 func (*MasterAuthorizedNetworksConfig_CidrBlock) ProtoMessage()    {}
 func (*MasterAuthorizedNetworksConfig_CidrBlock) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{12, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{12, 0}
 }
 func (m *MasterAuthorizedNetworksConfig_CidrBlock) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MasterAuthorizedNetworksConfig_CidrBlock.Unmarshal(m, b)
@@ -1521,7 +1521,7 @@ func (m *LegacyAbac) Reset()         { *m = LegacyAbac{} }
 func (m *LegacyAbac) String() string { return proto.CompactTextString(m) }
 func (*LegacyAbac) ProtoMessage()    {}
 func (*LegacyAbac) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{13}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{13}
 }
 func (m *LegacyAbac) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LegacyAbac.Unmarshal(m, b)
@@ -1564,7 +1564,7 @@ func (m *NetworkPolicy) Reset()         { *m = NetworkPolicy{} }
 func (m *NetworkPolicy) String() string { return proto.CompactTextString(m) }
 func (*NetworkPolicy) ProtoMessage()    {}
 func (*NetworkPolicy) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{14}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{14}
 }
 func (m *NetworkPolicy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NetworkPolicy.Unmarshal(m, b)
@@ -1717,7 +1717,7 @@ func (m *IPAllocationPolicy) Reset()         { *m = IPAllocationPolicy{} }
 func (m *IPAllocationPolicy) String() string { return proto.CompactTextString(m) }
 func (*IPAllocationPolicy) ProtoMessage()    {}
 func (*IPAllocationPolicy) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{15}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{15}
 }
 func (m *IPAllocationPolicy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IPAllocationPolicy.Unmarshal(m, b)
@@ -1845,7 +1845,7 @@ func (m *BinaryAuthorization) Reset()         { *m = BinaryAuthorization{} }
 func (m *BinaryAuthorization) String() string { return proto.CompactTextString(m) }
 func (*BinaryAuthorization) ProtoMessage()    {}
 func (*BinaryAuthorization) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{16}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{16}
 }
 func (m *BinaryAuthorization) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BinaryAuthorization.Unmarshal(m, b)
@@ -1886,7 +1886,7 @@ func (m *PodSecurityPolicyConfig) Reset()         { *m = PodSecurityPolicyConfig
 func (m *PodSecurityPolicyConfig) String() string { return proto.CompactTextString(m) }
 func (*PodSecurityPolicyConfig) ProtoMessage()    {}
 func (*PodSecurityPolicyConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{17}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{17}
 }
 func (m *PodSecurityPolicyConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PodSecurityPolicyConfig.Unmarshal(m, b)
@@ -2127,7 +2127,7 @@ func (m *Cluster) Reset()         { *m = Cluster{} }
 func (m *Cluster) String() string { return proto.CompactTextString(m) }
 func (*Cluster) ProtoMessage()    {}
 func (*Cluster) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{18}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{18}
 }
 func (m *Cluster) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Cluster.Unmarshal(m, b)
@@ -2584,7 +2584,7 @@ func (m *ClusterUpdate) Reset()         { *m = ClusterUpdate{} }
 func (m *ClusterUpdate) String() string { return proto.CompactTextString(m) }
 func (*ClusterUpdate) ProtoMessage()    {}
 func (*ClusterUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{19}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{19}
 }
 func (m *ClusterUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClusterUpdate.Unmarshal(m, b)
@@ -2757,7 +2757,7 @@ func (m *Operation) Reset()         { *m = Operation{} }
 func (m *Operation) String() string { return proto.CompactTextString(m) }
 func (*Operation) ProtoMessage()    {}
 func (*Operation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{20}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{20}
 }
 func (m *Operation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Operation.Unmarshal(m, b)
@@ -2902,7 +2902,7 @@ func (m *OperationProgress) Reset()         { *m = OperationProgress{} }
 func (m *OperationProgress) String() string { return proto.CompactTextString(m) }
 func (*OperationProgress) ProtoMessage()    {}
 func (*OperationProgress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{21}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{21}
 }
 func (m *OperationProgress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationProgress.Unmarshal(m, b)
@@ -2971,7 +2971,7 @@ func (m *OperationProgress_Metric) Reset()         { *m = OperationProgress_Metr
 func (m *OperationProgress_Metric) String() string { return proto.CompactTextString(m) }
 func (*OperationProgress_Metric) ProtoMessage()    {}
 func (*OperationProgress_Metric) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{21, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{21, 0}
 }
 func (m *OperationProgress_Metric) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationProgress_Metric.Unmarshal(m, b)
@@ -3153,7 +3153,7 @@ func (m *CreateClusterRequest) Reset()         { *m = CreateClusterRequest{} }
 func (m *CreateClusterRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateClusterRequest) ProtoMessage()    {}
 func (*CreateClusterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{22}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{22}
 }
 func (m *CreateClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateClusterRequest.Unmarshal(m, b)
@@ -3229,7 +3229,7 @@ func (m *GetClusterRequest) Reset()         { *m = GetClusterRequest{} }
 func (m *GetClusterRequest) String() string { return proto.CompactTextString(m) }
 func (*GetClusterRequest) ProtoMessage()    {}
 func (*GetClusterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{23}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{23}
 }
 func (m *GetClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetClusterRequest.Unmarshal(m, b)
@@ -3308,7 +3308,7 @@ func (m *UpdateClusterRequest) Reset()         { *m = UpdateClusterRequest{} }
 func (m *UpdateClusterRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateClusterRequest) ProtoMessage()    {}
 func (*UpdateClusterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{24}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{24}
 }
 func (m *UpdateClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateClusterRequest.Unmarshal(m, b)
@@ -3410,7 +3410,7 @@ func (m *UpdateNodePoolRequest) Reset()         { *m = UpdateNodePoolRequest{} }
 func (m *UpdateNodePoolRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateNodePoolRequest) ProtoMessage()    {}
 func (*UpdateNodePoolRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{25}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{25}
 }
 func (m *UpdateNodePoolRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateNodePoolRequest.Unmarshal(m, b)
@@ -3515,7 +3515,7 @@ func (m *SetNodePoolAutoscalingRequest) Reset()         { *m = SetNodePoolAutosc
 func (m *SetNodePoolAutoscalingRequest) String() string { return proto.CompactTextString(m) }
 func (*SetNodePoolAutoscalingRequest) ProtoMessage()    {}
 func (*SetNodePoolAutoscalingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{26}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{26}
 }
 func (m *SetNodePoolAutoscalingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetNodePoolAutoscalingRequest.Unmarshal(m, b)
@@ -3613,7 +3613,7 @@ func (m *SetLoggingServiceRequest) Reset()         { *m = SetLoggingServiceReque
 func (m *SetLoggingServiceRequest) String() string { return proto.CompactTextString(m) }
 func (*SetLoggingServiceRequest) ProtoMessage()    {}
 func (*SetLoggingServiceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{27}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{27}
 }
 func (m *SetLoggingServiceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetLoggingServiceRequest.Unmarshal(m, b)
@@ -3702,7 +3702,7 @@ func (m *SetMonitoringServiceRequest) Reset()         { *m = SetMonitoringServic
 func (m *SetMonitoringServiceRequest) String() string { return proto.CompactTextString(m) }
 func (*SetMonitoringServiceRequest) ProtoMessage()    {}
 func (*SetMonitoringServiceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{28}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{28}
 }
 func (m *SetMonitoringServiceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetMonitoringServiceRequest.Unmarshal(m, b)
@@ -3789,7 +3789,7 @@ func (m *SetAddonsConfigRequest) Reset()         { *m = SetAddonsConfigRequest{}
 func (m *SetAddonsConfigRequest) String() string { return proto.CompactTextString(m) }
 func (*SetAddonsConfigRequest) ProtoMessage()    {}
 func (*SetAddonsConfigRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{29}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{29}
 }
 func (m *SetAddonsConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetAddonsConfigRequest.Unmarshal(m, b)
@@ -3881,7 +3881,7 @@ func (m *SetLocationsRequest) Reset()         { *m = SetLocationsRequest{} }
 func (m *SetLocationsRequest) String() string { return proto.CompactTextString(m) }
 func (*SetLocationsRequest) ProtoMessage()    {}
 func (*SetLocationsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{30}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{30}
 }
 func (m *SetLocationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetLocationsRequest.Unmarshal(m, b)
@@ -3976,7 +3976,7 @@ func (m *UpdateMasterRequest) Reset()         { *m = UpdateMasterRequest{} }
 func (m *UpdateMasterRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateMasterRequest) ProtoMessage()    {}
 func (*UpdateMasterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{31}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{31}
 }
 func (m *UpdateMasterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateMasterRequest.Unmarshal(m, b)
@@ -4064,7 +4064,7 @@ func (m *SetMasterAuthRequest) Reset()         { *m = SetMasterAuthRequest{} }
 func (m *SetMasterAuthRequest) String() string { return proto.CompactTextString(m) }
 func (*SetMasterAuthRequest) ProtoMessage()    {}
 func (*SetMasterAuthRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{32}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{32}
 }
 func (m *SetMasterAuthRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetMasterAuthRequest.Unmarshal(m, b)
@@ -4155,7 +4155,7 @@ func (m *DeleteClusterRequest) Reset()         { *m = DeleteClusterRequest{} }
 func (m *DeleteClusterRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteClusterRequest) ProtoMessage()    {}
 func (*DeleteClusterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{33}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{33}
 }
 func (m *DeleteClusterRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteClusterRequest.Unmarshal(m, b)
@@ -4230,7 +4230,7 @@ func (m *ListClustersRequest) Reset()         { *m = ListClustersRequest{} }
 func (m *ListClustersRequest) String() string { return proto.CompactTextString(m) }
 func (*ListClustersRequest) ProtoMessage()    {}
 func (*ListClustersRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{34}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{34}
 }
 func (m *ListClustersRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListClustersRequest.Unmarshal(m, b)
@@ -4290,7 +4290,7 @@ func (m *ListClustersResponse) Reset()         { *m = ListClustersResponse{} }
 func (m *ListClustersResponse) String() string { return proto.CompactTextString(m) }
 func (*ListClustersResponse) ProtoMessage()    {}
 func (*ListClustersResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{35}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{35}
 }
 func (m *ListClustersResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListClustersResponse.Unmarshal(m, b)
@@ -4350,7 +4350,7 @@ func (m *GetOperationRequest) Reset()         { *m = GetOperationRequest{} }
 func (m *GetOperationRequest) String() string { return proto.CompactTextString(m) }
 func (*GetOperationRequest) ProtoMessage()    {}
 func (*GetOperationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{36}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{36}
 }
 func (m *GetOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetOperationRequest.Unmarshal(m, b)
@@ -4424,7 +4424,7 @@ func (m *ListOperationsRequest) Reset()         { *m = ListOperationsRequest{} }
 func (m *ListOperationsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListOperationsRequest) ProtoMessage()    {}
 func (*ListOperationsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{37}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{37}
 }
 func (m *ListOperationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOperationsRequest.Unmarshal(m, b)
@@ -4492,7 +4492,7 @@ func (m *CancelOperationRequest) Reset()         { *m = CancelOperationRequest{}
 func (m *CancelOperationRequest) String() string { return proto.CompactTextString(m) }
 func (*CancelOperationRequest) ProtoMessage()    {}
 func (*CancelOperationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{38}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{38}
 }
 func (m *CancelOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelOperationRequest.Unmarshal(m, b)
@@ -4559,7 +4559,7 @@ func (m *ListOperationsResponse) Reset()         { *m = ListOperationsResponse{}
 func (m *ListOperationsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListOperationsResponse) ProtoMessage()    {}
 func (*ListOperationsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{39}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{39}
 }
 func (m *ListOperationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOperationsResponse.Unmarshal(m, b)
@@ -4615,7 +4615,7 @@ func (m *GetServerConfigRequest) Reset()         { *m = GetServerConfigRequest{}
 func (m *GetServerConfigRequest) String() string { return proto.CompactTextString(m) }
 func (*GetServerConfigRequest) ProtoMessage()    {}
 func (*GetServerConfigRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{40}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{40}
 }
 func (m *GetServerConfigRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetServerConfigRequest.Unmarshal(m, b)
@@ -4679,7 +4679,7 @@ func (m *ServerConfig) Reset()         { *m = ServerConfig{} }
 func (m *ServerConfig) String() string { return proto.CompactTextString(m) }
 func (*ServerConfig) ProtoMessage()    {}
 func (*ServerConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{41}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{41}
 }
 func (m *ServerConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ServerConfig.Unmarshal(m, b)
@@ -4763,7 +4763,7 @@ func (m *CreateNodePoolRequest) Reset()         { *m = CreateNodePoolRequest{} }
 func (m *CreateNodePoolRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateNodePoolRequest) ProtoMessage()    {}
 func (*CreateNodePoolRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{42}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{42}
 }
 func (m *CreateNodePoolRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateNodePoolRequest.Unmarshal(m, b)
@@ -4851,7 +4851,7 @@ func (m *DeleteNodePoolRequest) Reset()         { *m = DeleteNodePoolRequest{} }
 func (m *DeleteNodePoolRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteNodePoolRequest) ProtoMessage()    {}
 func (*DeleteNodePoolRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{43}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{43}
 }
 func (m *DeleteNodePoolRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteNodePoolRequest.Unmarshal(m, b)
@@ -4936,7 +4936,7 @@ func (m *ListNodePoolsRequest) Reset()         { *m = ListNodePoolsRequest{} }
 func (m *ListNodePoolsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListNodePoolsRequest) ProtoMessage()    {}
 func (*ListNodePoolsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{44}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{44}
 }
 func (m *ListNodePoolsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNodePoolsRequest.Unmarshal(m, b)
@@ -5017,7 +5017,7 @@ func (m *GetNodePoolRequest) Reset()         { *m = GetNodePoolRequest{} }
 func (m *GetNodePoolRequest) String() string { return proto.CompactTextString(m) }
 func (*GetNodePoolRequest) ProtoMessage()    {}
 func (*GetNodePoolRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{45}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{45}
 }
 func (m *GetNodePoolRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNodePoolRequest.Unmarshal(m, b)
@@ -5124,7 +5124,7 @@ func (m *NodePool) Reset()         { *m = NodePool{} }
 func (m *NodePool) String() string { return proto.CompactTextString(m) }
 func (*NodePool) ProtoMessage()    {}
 func (*NodePool) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{46}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{46}
 }
 func (m *NodePool) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NodePool.Unmarshal(m, b)
@@ -5246,7 +5246,7 @@ func (m *NodeManagement) Reset()         { *m = NodeManagement{} }
 func (m *NodeManagement) String() string { return proto.CompactTextString(m) }
 func (*NodeManagement) ProtoMessage()    {}
 func (*NodeManagement) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{47}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{47}
 }
 func (m *NodeManagement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NodeManagement.Unmarshal(m, b)
@@ -5306,7 +5306,7 @@ func (m *AutoUpgradeOptions) Reset()         { *m = AutoUpgradeOptions{} }
 func (m *AutoUpgradeOptions) String() string { return proto.CompactTextString(m) }
 func (*AutoUpgradeOptions) ProtoMessage()    {}
 func (*AutoUpgradeOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{48}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{48}
 }
 func (m *AutoUpgradeOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AutoUpgradeOptions.Unmarshal(m, b)
@@ -5353,7 +5353,7 @@ func (m *MaintenancePolicy) Reset()         { *m = MaintenancePolicy{} }
 func (m *MaintenancePolicy) String() string { return proto.CompactTextString(m) }
 func (*MaintenancePolicy) ProtoMessage()    {}
 func (*MaintenancePolicy) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{49}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{49}
 }
 func (m *MaintenancePolicy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MaintenancePolicy.Unmarshal(m, b)
@@ -5397,7 +5397,7 @@ func (m *MaintenanceWindow) Reset()         { *m = MaintenanceWindow{} }
 func (m *MaintenanceWindow) String() string { return proto.CompactTextString(m) }
 func (*MaintenanceWindow) ProtoMessage()    {}
 func (*MaintenanceWindow) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{50}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{50}
 }
 func (m *MaintenanceWindow) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MaintenanceWindow.Unmarshal(m, b)
@@ -5513,7 +5513,7 @@ func (m *DailyMaintenanceWindow) Reset()         { *m = DailyMaintenanceWindow{}
 func (m *DailyMaintenanceWindow) String() string { return proto.CompactTextString(m) }
 func (*DailyMaintenanceWindow) ProtoMessage()    {}
 func (*DailyMaintenanceWindow) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{51}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{51}
 }
 func (m *DailyMaintenanceWindow) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DailyMaintenanceWindow.Unmarshal(m, b)
@@ -5580,7 +5580,7 @@ func (m *SetNodePoolManagementRequest) Reset()         { *m = SetNodePoolManagem
 func (m *SetNodePoolManagementRequest) String() string { return proto.CompactTextString(m) }
 func (*SetNodePoolManagementRequest) ProtoMessage()    {}
 func (*SetNodePoolManagementRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{52}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{52}
 }
 func (m *SetNodePoolManagementRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetNodePoolManagementRequest.Unmarshal(m, b)
@@ -5679,7 +5679,7 @@ func (m *SetNodePoolSizeRequest) Reset()         { *m = SetNodePoolSizeRequest{}
 func (m *SetNodePoolSizeRequest) String() string { return proto.CompactTextString(m) }
 func (*SetNodePoolSizeRequest) ProtoMessage()    {}
 func (*SetNodePoolSizeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{53}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{53}
 }
 func (m *SetNodePoolSizeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetNodePoolSizeRequest.Unmarshal(m, b)
@@ -5777,7 +5777,7 @@ func (m *RollbackNodePoolUpgradeRequest) Reset()         { *m = RollbackNodePool
 func (m *RollbackNodePoolUpgradeRequest) String() string { return proto.CompactTextString(m) }
 func (*RollbackNodePoolUpgradeRequest) ProtoMessage()    {}
 func (*RollbackNodePoolUpgradeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{54}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{54}
 }
 func (m *RollbackNodePoolUpgradeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RollbackNodePoolUpgradeRequest.Unmarshal(m, b)
@@ -5849,7 +5849,7 @@ func (m *ListNodePoolsResponse) Reset()         { *m = ListNodePoolsResponse{} }
 func (m *ListNodePoolsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListNodePoolsResponse) ProtoMessage()    {}
 func (*ListNodePoolsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{55}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{55}
 }
 func (m *ListNodePoolsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListNodePoolsResponse.Unmarshal(m, b)
@@ -5895,7 +5895,7 @@ func (m *ClusterAutoscaling) Reset()         { *m = ClusterAutoscaling{} }
 func (m *ClusterAutoscaling) String() string { return proto.CompactTextString(m) }
 func (*ClusterAutoscaling) ProtoMessage()    {}
 func (*ClusterAutoscaling) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{56}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{56}
 }
 func (m *ClusterAutoscaling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ClusterAutoscaling.Unmarshal(m, b)
@@ -5947,7 +5947,7 @@ func (m *ResourceLimit) Reset()         { *m = ResourceLimit{} }
 func (m *ResourceLimit) String() string { return proto.CompactTextString(m) }
 func (*ResourceLimit) ProtoMessage()    {}
 func (*ResourceLimit) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{57}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{57}
 }
 func (m *ResourceLimit) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResourceLimit.Unmarshal(m, b)
@@ -6010,7 +6010,7 @@ func (m *NodePoolAutoscaling) Reset()         { *m = NodePoolAutoscaling{} }
 func (m *NodePoolAutoscaling) String() string { return proto.CompactTextString(m) }
 func (*NodePoolAutoscaling) ProtoMessage()    {}
 func (*NodePoolAutoscaling) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{58}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{58}
 }
 func (m *NodePoolAutoscaling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NodePoolAutoscaling.Unmarshal(m, b)
@@ -6095,7 +6095,7 @@ func (m *SetLabelsRequest) Reset()         { *m = SetLabelsRequest{} }
 func (m *SetLabelsRequest) String() string { return proto.CompactTextString(m) }
 func (*SetLabelsRequest) ProtoMessage()    {}
 func (*SetLabelsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{59}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{59}
 }
 func (m *SetLabelsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetLabelsRequest.Unmarshal(m, b)
@@ -6189,7 +6189,7 @@ func (m *SetLegacyAbacRequest) Reset()         { *m = SetLegacyAbacRequest{} }
 func (m *SetLegacyAbacRequest) String() string { return proto.CompactTextString(m) }
 func (*SetLegacyAbacRequest) ProtoMessage()    {}
 func (*SetLegacyAbacRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{60}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{60}
 }
 func (m *SetLegacyAbacRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetLegacyAbacRequest.Unmarshal(m, b)
@@ -6276,7 +6276,7 @@ func (m *StartIPRotationRequest) Reset()         { *m = StartIPRotationRequest{}
 func (m *StartIPRotationRequest) String() string { return proto.CompactTextString(m) }
 func (*StartIPRotationRequest) ProtoMessage()    {}
 func (*StartIPRotationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{61}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{61}
 }
 func (m *StartIPRotationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StartIPRotationRequest.Unmarshal(m, b)
@@ -6360,7 +6360,7 @@ func (m *CompleteIPRotationRequest) Reset()         { *m = CompleteIPRotationReq
 func (m *CompleteIPRotationRequest) String() string { return proto.CompactTextString(m) }
 func (*CompleteIPRotationRequest) ProtoMessage()    {}
 func (*CompleteIPRotationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{62}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{62}
 }
 func (m *CompleteIPRotationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompleteIPRotationRequest.Unmarshal(m, b)
@@ -6427,7 +6427,7 @@ func (m *AcceleratorConfig) Reset()         { *m = AcceleratorConfig{} }
 func (m *AcceleratorConfig) String() string { return proto.CompactTextString(m) }
 func (*AcceleratorConfig) ProtoMessage()    {}
 func (*AcceleratorConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{63}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{63}
 }
 func (m *AcceleratorConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AcceleratorConfig.Unmarshal(m, b)
@@ -6476,7 +6476,7 @@ func (m *WorkloadMetadataConfig) Reset()         { *m = WorkloadMetadataConfig{}
 func (m *WorkloadMetadataConfig) String() string { return proto.CompactTextString(m) }
 func (*WorkloadMetadataConfig) ProtoMessage()    {}
 func (*WorkloadMetadataConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{64}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{64}
 }
 func (m *WorkloadMetadataConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WorkloadMetadataConfig.Unmarshal(m, b)
@@ -6531,7 +6531,7 @@ func (m *SetNetworkPolicyRequest) Reset()         { *m = SetNetworkPolicyRequest
 func (m *SetNetworkPolicyRequest) String() string { return proto.CompactTextString(m) }
 func (*SetNetworkPolicyRequest) ProtoMessage()    {}
 func (*SetNetworkPolicyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{65}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{65}
 }
 func (m *SetNetworkPolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetNetworkPolicyRequest.Unmarshal(m, b)
@@ -6616,7 +6616,7 @@ func (m *SetMaintenancePolicyRequest) Reset()         { *m = SetMaintenancePolic
 func (m *SetMaintenancePolicyRequest) String() string { return proto.CompactTextString(m) }
 func (*SetMaintenancePolicyRequest) ProtoMessage()    {}
 func (*SetMaintenancePolicyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{66}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{66}
 }
 func (m *SetMaintenancePolicyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SetMaintenancePolicyRequest.Unmarshal(m, b)
@@ -6685,7 +6685,7 @@ func (m *ListLocationsRequest) Reset()         { *m = ListLocationsRequest{} }
 func (m *ListLocationsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListLocationsRequest) ProtoMessage()    {}
 func (*ListLocationsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{67}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{67}
 }
 func (m *ListLocationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLocationsRequest.Unmarshal(m, b)
@@ -6731,7 +6731,7 @@ func (m *ListLocationsResponse) Reset()         { *m = ListLocationsResponse{} }
 func (m *ListLocationsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListLocationsResponse) ProtoMessage()    {}
 func (*ListLocationsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{68}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{68}
 }
 func (m *ListLocationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListLocationsResponse.Unmarshal(m, b)
@@ -6785,7 +6785,7 @@ func (m *Location) Reset()         { *m = Location{} }
 func (m *Location) String() string { return proto.CompactTextString(m) }
 func (*Location) ProtoMessage()    {}
 func (*Location) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{69}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{69}
 }
 func (m *Location) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Location.Unmarshal(m, b)
@@ -6842,7 +6842,7 @@ func (m *StatusCondition) Reset()         { *m = StatusCondition{} }
 func (m *StatusCondition) String() string { return proto.CompactTextString(m) }
 func (*StatusCondition) ProtoMessage()    {}
 func (*StatusCondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{70}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{70}
 }
 func (m *StatusCondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StatusCondition.Unmarshal(m, b)
@@ -6896,7 +6896,7 @@ func (m *NetworkConfig) Reset()         { *m = NetworkConfig{} }
 func (m *NetworkConfig) String() string { return proto.CompactTextString(m) }
 func (*NetworkConfig) ProtoMessage()    {}
 func (*NetworkConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{71}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{71}
 }
 func (m *NetworkConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NetworkConfig.Unmarshal(m, b)
@@ -6958,7 +6958,7 @@ func (m *ListUsableSubnetworksRequest) Reset()         { *m = ListUsableSubnetwo
 func (m *ListUsableSubnetworksRequest) String() string { return proto.CompactTextString(m) }
 func (*ListUsableSubnetworksRequest) ProtoMessage()    {}
 func (*ListUsableSubnetworksRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{72}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{72}
 }
 func (m *ListUsableSubnetworksRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListUsableSubnetworksRequest.Unmarshal(m, b)
@@ -7025,7 +7025,7 @@ func (m *ListUsableSubnetworksResponse) Reset()         { *m = ListUsableSubnetw
 func (m *ListUsableSubnetworksResponse) String() string { return proto.CompactTextString(m) }
 func (*ListUsableSubnetworksResponse) ProtoMessage()    {}
 func (*ListUsableSubnetworksResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{73}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{73}
 }
 func (m *ListUsableSubnetworksResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListUsableSubnetworksResponse.Unmarshal(m, b)
@@ -7077,7 +7077,7 @@ func (m *UsableSubnetworkSecondaryRange) Reset()         { *m = UsableSubnetwork
 func (m *UsableSubnetworkSecondaryRange) String() string { return proto.CompactTextString(m) }
 func (*UsableSubnetworkSecondaryRange) ProtoMessage()    {}
 func (*UsableSubnetworkSecondaryRange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{74}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{74}
 }
 func (m *UsableSubnetworkSecondaryRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UsableSubnetworkSecondaryRange.Unmarshal(m, b)
@@ -7145,7 +7145,7 @@ func (m *UsableSubnetwork) Reset()         { *m = UsableSubnetwork{} }
 func (m *UsableSubnetwork) String() string { return proto.CompactTextString(m) }
 func (*UsableSubnetwork) ProtoMessage()    {}
 func (*UsableSubnetwork) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{75}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{75}
 }
 func (m *UsableSubnetwork) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UsableSubnetwork.Unmarshal(m, b)
@@ -7215,7 +7215,7 @@ func (m *VerticalPodAutoscaling) Reset()         { *m = VerticalPodAutoscaling{}
 func (m *VerticalPodAutoscaling) String() string { return proto.CompactTextString(m) }
 func (*VerticalPodAutoscaling) ProtoMessage()    {}
 func (*VerticalPodAutoscaling) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{76}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{76}
 }
 func (m *VerticalPodAutoscaling) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VerticalPodAutoscaling.Unmarshal(m, b)
@@ -7255,7 +7255,7 @@ func (m *MaxPodsConstraint) Reset()         { *m = MaxPodsConstraint{} }
 func (m *MaxPodsConstraint) String() string { return proto.CompactTextString(m) }
 func (*MaxPodsConstraint) ProtoMessage()    {}
 func (*MaxPodsConstraint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{77}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{77}
 }
 func (m *MaxPodsConstraint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MaxPodsConstraint.Unmarshal(m, b)
@@ -7298,7 +7298,7 @@ func (m *ResourceUsageExportConfig) Reset()         { *m = ResourceUsageExportCo
 func (m *ResourceUsageExportConfig) String() string { return proto.CompactTextString(m) }
 func (*ResourceUsageExportConfig) ProtoMessage()    {}
 func (*ResourceUsageExportConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{78}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{78}
 }
 func (m *ResourceUsageExportConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResourceUsageExportConfig.Unmarshal(m, b)
@@ -7349,7 +7349,7 @@ func (m *ResourceUsageExportConfig_BigQueryDestination) String() string {
 }
 func (*ResourceUsageExportConfig_BigQueryDestination) ProtoMessage() {}
 func (*ResourceUsageExportConfig_BigQueryDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cluster_service_4b3d530a1685571f, []int{78, 0}
+	return fileDescriptor_cluster_service_b093026a38af0865, []int{78, 0}
 }
 func (m *ResourceUsageExportConfig_BigQueryDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResourceUsageExportConfig_BigQueryDestination.Unmarshal(m, b)
@@ -8687,10 +8687,10 @@ var _ClusterManager_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/container/v1beta1/cluster_service.proto", fileDescriptor_cluster_service_4b3d530a1685571f)
+	proto.RegisterFile("google/container/v1beta1/cluster_service.proto", fileDescriptor_cluster_service_b093026a38af0865)
 }
 
-var fileDescriptor_cluster_service_4b3d530a1685571f = []byte{
+var fileDescriptor_cluster_service_b093026a38af0865 = []byte{
 	// 7032 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x5d, 0x6b, 0x6c, 0x23, 0xd7,
 	0x75, 0xf6, 0x50, 0x94, 0x44, 0x1d, 0x49, 0x14, 0x75, 0xa5, 0xd5, 0x72, 0xb9, 0x0f, 0xef, 0x8e,

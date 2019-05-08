@@ -91,7 +91,7 @@ func (x StandardSqlDataType_TypeKind) String() string {
 	return proto.EnumName(StandardSqlDataType_TypeKind_name, int32(x))
 }
 func (StandardSqlDataType_TypeKind) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_standard_sql_5c4da24b2fc126a8, []int{0, 0}
+	return fileDescriptor_standard_sql_f6e17ae27add020e, []int{0, 0}
 }
 
 // The type of a variable, e.g., a function argument.
@@ -121,7 +121,7 @@ func (m *StandardSqlDataType) Reset()         { *m = StandardSqlDataType{} }
 func (m *StandardSqlDataType) String() string { return proto.CompactTextString(m) }
 func (*StandardSqlDataType) ProtoMessage()    {}
 func (*StandardSqlDataType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_standard_sql_5c4da24b2fc126a8, []int{0}
+	return fileDescriptor_standard_sql_f6e17ae27add020e, []int{0}
 }
 func (m *StandardSqlDataType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StandardSqlDataType.Unmarshal(m, b)
@@ -276,7 +276,7 @@ func (m *StandardSqlField) Reset()         { *m = StandardSqlField{} }
 func (m *StandardSqlField) String() string { return proto.CompactTextString(m) }
 func (*StandardSqlField) ProtoMessage()    {}
 func (*StandardSqlField) Descriptor() ([]byte, []int) {
-	return fileDescriptor_standard_sql_5c4da24b2fc126a8, []int{1}
+	return fileDescriptor_standard_sql_f6e17ae27add020e, []int{1}
 }
 func (m *StandardSqlField) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StandardSqlField.Unmarshal(m, b)
@@ -321,7 +321,7 @@ func (m *StandardSqlStructType) Reset()         { *m = StandardSqlStructType{} }
 func (m *StandardSqlStructType) String() string { return proto.CompactTextString(m) }
 func (*StandardSqlStructType) ProtoMessage()    {}
 func (*StandardSqlStructType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_standard_sql_5c4da24b2fc126a8, []int{2}
+	return fileDescriptor_standard_sql_f6e17ae27add020e, []int{2}
 }
 func (m *StandardSqlStructType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StandardSqlStructType.Unmarshal(m, b)
@@ -356,10 +356,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/bigquery/v2/standard_sql.proto", fileDescriptor_standard_sql_5c4da24b2fc126a8)
+	proto.RegisterFile("google/cloud/bigquery/v2/standard_sql.proto", fileDescriptor_standard_sql_f6e17ae27add020e)
 }
 
-var fileDescriptor_standard_sql_5c4da24b2fc126a8 = []byte{
+var fileDescriptor_standard_sql_f6e17ae27add020e = []byte{
 	// 491 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x93, 0x41, 0x6f, 0xd3, 0x30,
 	0x14, 0xc7, 0xd7, 0xad, 0xeb, 0xd2, 0x57, 0x40, 0xc6, 0xa3, 0x50, 0xd0, 0x0e, 0x55, 0x4f, 0x15,

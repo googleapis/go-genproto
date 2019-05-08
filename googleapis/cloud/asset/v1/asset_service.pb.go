@@ -53,7 +53,7 @@ func (x ContentType) String() string {
 	return proto.EnumName(ContentType_name, int32(x))
 }
 func (ContentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_177e75ca1bae2a05, []int{0}
+	return fileDescriptor_asset_service_4116b6e08342e761, []int{0}
 }
 
 // Export asset request.
@@ -90,7 +90,7 @@ func (m *ExportAssetsRequest) Reset()         { *m = ExportAssetsRequest{} }
 func (m *ExportAssetsRequest) String() string { return proto.CompactTextString(m) }
 func (*ExportAssetsRequest) ProtoMessage()    {}
 func (*ExportAssetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_177e75ca1bae2a05, []int{0}
+	return fileDescriptor_asset_service_4116b6e08342e761, []int{0}
 }
 func (m *ExportAssetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportAssetsRequest.Unmarshal(m, b)
@@ -163,7 +163,7 @@ func (m *ExportAssetsResponse) Reset()         { *m = ExportAssetsResponse{} }
 func (m *ExportAssetsResponse) String() string { return proto.CompactTextString(m) }
 func (*ExportAssetsResponse) ProtoMessage()    {}
 func (*ExportAssetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_177e75ca1bae2a05, []int{1}
+	return fileDescriptor_asset_service_4116b6e08342e761, []int{1}
 }
 func (m *ExportAssetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportAssetsResponse.Unmarshal(m, b)
@@ -231,7 +231,7 @@ func (m *BatchGetAssetsHistoryRequest) Reset()         { *m = BatchGetAssetsHist
 func (m *BatchGetAssetsHistoryRequest) String() string { return proto.CompactTextString(m) }
 func (*BatchGetAssetsHistoryRequest) ProtoMessage()    {}
 func (*BatchGetAssetsHistoryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_177e75ca1bae2a05, []int{2}
+	return fileDescriptor_asset_service_4116b6e08342e761, []int{2}
 }
 func (m *BatchGetAssetsHistoryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetAssetsHistoryRequest.Unmarshal(m, b)
@@ -292,7 +292,7 @@ func (m *BatchGetAssetsHistoryResponse) Reset()         { *m = BatchGetAssetsHis
 func (m *BatchGetAssetsHistoryResponse) String() string { return proto.CompactTextString(m) }
 func (*BatchGetAssetsHistoryResponse) ProtoMessage()    {}
 func (*BatchGetAssetsHistoryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_177e75ca1bae2a05, []int{3}
+	return fileDescriptor_asset_service_4116b6e08342e761, []int{3}
 }
 func (m *BatchGetAssetsHistoryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchGetAssetsHistoryResponse.Unmarshal(m, b)
@@ -335,7 +335,7 @@ func (m *OutputConfig) Reset()         { *m = OutputConfig{} }
 func (m *OutputConfig) String() string { return proto.CompactTextString(m) }
 func (*OutputConfig) ProtoMessage()    {}
 func (*OutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_177e75ca1bae2a05, []int{4}
+	return fileDescriptor_asset_service_4116b6e08342e761, []int{4}
 }
 func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputConfig.Unmarshal(m, b)
@@ -450,7 +450,7 @@ func (m *GcsDestination) Reset()         { *m = GcsDestination{} }
 func (m *GcsDestination) String() string { return proto.CompactTextString(m) }
 func (*GcsDestination) ProtoMessage()    {}
 func (*GcsDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_177e75ca1bae2a05, []int{5}
+	return fileDescriptor_asset_service_4116b6e08342e761, []int{5}
 }
 func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsDestination.Unmarshal(m, b)
@@ -683,10 +683,10 @@ var _AssetService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/asset/v1/asset_service.proto", fileDescriptor_asset_service_177e75ca1bae2a05)
+	proto.RegisterFile("google/cloud/asset/v1/asset_service.proto", fileDescriptor_asset_service_4116b6e08342e761)
 }
 
-var fileDescriptor_asset_service_177e75ca1bae2a05 = []byte{
+var fileDescriptor_asset_service_4116b6e08342e761 = []byte{
 	// 739 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x54, 0xc1, 0x6e, 0xd3, 0x4a,
 	0x14, 0xad, 0x9d, 0xf7, 0xaa, 0x76, 0x92, 0xe6, 0xe5, 0xcd, 0x7b, 0x45, 0x26, 0x6a, 0xd5, 0xe0,

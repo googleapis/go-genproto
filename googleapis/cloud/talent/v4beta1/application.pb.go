@@ -64,7 +64,7 @@ func (x Application_ApplicationState) String() string {
 	return proto.EnumName(Application_ApplicationState_name, int32(x))
 }
 func (Application_ApplicationState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_application_2755b08a642101bc, []int{0, 0}
+	return fileDescriptor_application_dbba57710742dc0d, []int{0, 0}
 }
 
 // The stage of the application.
@@ -119,7 +119,7 @@ func (x Application_ApplicationStage) String() string {
 	return proto.EnumName(Application_ApplicationStage_name, int32(x))
 }
 func (Application_ApplicationStage) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_application_2755b08a642101bc, []int{0, 1}
+	return fileDescriptor_application_dbba57710742dc0d, []int{0, 1}
 }
 
 // Resource that represents a job application record of a candidate.
@@ -136,13 +136,11 @@ type Application struct {
 	// Required.
 	//
 	// Client side application identifier, used to uniquely identify the
-	// recruiter.
+	// application.
 	//
 	// The maximum number of allowed characters is 255.
 	ExternalId string `protobuf:"bytes,31,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	// Required.
-	//
-	// Resource name of the candidate of this application.
+	// Output only. Resource name of the candidate of this application.
 	//
 	// The format is
 	// "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
@@ -225,7 +223,7 @@ func (m *Application) Reset()         { *m = Application{} }
 func (m *Application) String() string { return proto.CompactTextString(m) }
 func (*Application) ProtoMessage()    {}
 func (*Application) Descriptor() ([]byte, []int) {
-	return fileDescriptor_application_2755b08a642101bc, []int{0}
+	return fileDescriptor_application_dbba57710742dc0d, []int{0}
 }
 func (m *Application) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Application.Unmarshal(m, b)
@@ -364,10 +362,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/application.proto", fileDescriptor_application_2755b08a642101bc)
+	proto.RegisterFile("google/cloud/talent/v4beta1/application.proto", fileDescriptor_application_dbba57710742dc0d)
 }
 
-var fileDescriptor_application_2755b08a642101bc = []byte{
+var fileDescriptor_application_dbba57710742dc0d = []byte{
 	// 764 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x94, 0xdd, 0x6e, 0xe3, 0x44,
 	0x14, 0xc7, 0x71, 0xd3, 0x36, 0xdd, 0x31, 0xdd, 0xba, 0x03, 0xad, 0x86, 0xb2, 0x4b, 0x42, 0xf9,

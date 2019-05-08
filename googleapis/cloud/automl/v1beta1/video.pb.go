@@ -31,7 +31,7 @@ func (m *VideoClassificationDatasetMetadata) Reset()         { *m = VideoClassif
 func (m *VideoClassificationDatasetMetadata) String() string { return proto.CompactTextString(m) }
 func (*VideoClassificationDatasetMetadata) ProtoMessage()    {}
 func (*VideoClassificationDatasetMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_video_27bb772897a50d6c, []int{0}
+	return fileDescriptor_video_1ed0bfbdbbce0c1a, []int{0}
 }
 func (m *VideoClassificationDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoClassificationDatasetMetadata.Unmarshal(m, b)
@@ -62,7 +62,7 @@ func (m *VideoClassificationModelMetadata) Reset()         { *m = VideoClassific
 func (m *VideoClassificationModelMetadata) String() string { return proto.CompactTextString(m) }
 func (*VideoClassificationModelMetadata) ProtoMessage()    {}
 func (*VideoClassificationModelMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_video_27bb772897a50d6c, []int{1}
+	return fileDescriptor_video_1ed0bfbdbbce0c1a, []int{1}
 }
 func (m *VideoClassificationModelMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoClassificationModelMetadata.Unmarshal(m, b)
@@ -88,10 +88,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/video.proto", fileDescriptor_video_27bb772897a50d6c)
+	proto.RegisterFile("google/cloud/automl/v1beta1/video.proto", fileDescriptor_video_1ed0bfbdbbce0c1a)
 }
 
-var fileDescriptor_video_27bb772897a50d6c = []byte{
+var fileDescriptor_video_1ed0bfbdbbce0c1a = []byte{
 	// 225 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0xcf, 0x31, 0x4b, 0xc5, 0x30,
 	0x10, 0x07, 0x70, 0x9e, 0x83, 0x43, 0x46, 0xc7, 0xf7, 0x04, 0x25, 0x08, 0x6e, 0x89, 0x0f, 0x47,
