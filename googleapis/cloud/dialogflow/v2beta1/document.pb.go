@@ -62,7 +62,7 @@ func (x Document_KnowledgeType) String() string {
 	return proto.EnumName(Document_KnowledgeType_name, int32(x))
 }
 func (Document_KnowledgeType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{0, 0}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{0, 0}
 }
 
 // States of the operation.
@@ -96,7 +96,7 @@ func (x KnowledgeOperationMetadata_State) String() string {
 	return proto.EnumName(KnowledgeOperationMetadata_State_name, int32(x))
 }
 func (KnowledgeOperationMetadata_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{7, 0}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{7, 0}
 }
 
 // A document resource.
@@ -132,7 +132,7 @@ func (m *Document) Reset()         { *m = Document{} }
 func (m *Document) String() string { return proto.CompactTextString(m) }
 func (*Document) ProtoMessage()    {}
 func (*Document) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{0}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{0}
 }
 func (m *Document) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Document.Unmarshal(m, b)
@@ -330,7 +330,7 @@ func (m *ListDocumentsRequest) Reset()         { *m = ListDocumentsRequest{} }
 func (m *ListDocumentsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDocumentsRequest) ProtoMessage()    {}
 func (*ListDocumentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{1}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{1}
 }
 func (m *ListDocumentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDocumentsRequest.Unmarshal(m, b)
@@ -387,7 +387,7 @@ func (m *ListDocumentsResponse) Reset()         { *m = ListDocumentsResponse{} }
 func (m *ListDocumentsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDocumentsResponse) ProtoMessage()    {}
 func (*ListDocumentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{2}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{2}
 }
 func (m *ListDocumentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListDocumentsResponse.Unmarshal(m, b)
@@ -436,7 +436,7 @@ func (m *GetDocumentRequest) Reset()         { *m = GetDocumentRequest{} }
 func (m *GetDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDocumentRequest) ProtoMessage()    {}
 func (*GetDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{3}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{3}
 }
 func (m *GetDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDocumentRequest.Unmarshal(m, b)
@@ -479,7 +479,7 @@ func (m *CreateDocumentRequest) Reset()         { *m = CreateDocumentRequest{} }
 func (m *CreateDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateDocumentRequest) ProtoMessage()    {}
 func (*CreateDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{4}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{4}
 }
 func (m *CreateDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDocumentRequest.Unmarshal(m, b)
@@ -528,7 +528,7 @@ func (m *DeleteDocumentRequest) Reset()         { *m = DeleteDocumentRequest{} }
 func (m *DeleteDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteDocumentRequest) ProtoMessage()    {}
 func (*DeleteDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{5}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{5}
 }
 func (m *DeleteDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDocumentRequest.Unmarshal(m, b)
@@ -572,7 +572,7 @@ func (m *UpdateDocumentRequest) Reset()         { *m = UpdateDocumentRequest{} }
 func (m *UpdateDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateDocumentRequest) ProtoMessage()    {}
 func (*UpdateDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{6}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{6}
 }
 func (m *UpdateDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDocumentRequest.Unmarshal(m, b)
@@ -619,7 +619,7 @@ func (m *KnowledgeOperationMetadata) Reset()         { *m = KnowledgeOperationMe
 func (m *KnowledgeOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*KnowledgeOperationMetadata) ProtoMessage()    {}
 func (*KnowledgeOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{7}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{7}
 }
 func (m *KnowledgeOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KnowledgeOperationMetadata.Unmarshal(m, b)
@@ -661,7 +661,7 @@ func (m *ReloadDocumentRequest) Reset()         { *m = ReloadDocumentRequest{} }
 func (m *ReloadDocumentRequest) String() string { return proto.CompactTextString(m) }
 func (*ReloadDocumentRequest) ProtoMessage()    {}
 func (*ReloadDocumentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_document_38ae42bb38d9eae2, []int{8}
+	return fileDescriptor_document_b7905c72d2ee7910, []int{8}
 }
 func (m *ReloadDocumentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReloadDocumentRequest.Unmarshal(m, b)
@@ -978,10 +978,10 @@ var _Documents_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dialogflow/v2beta1/document.proto", fileDescriptor_document_38ae42bb38d9eae2)
+	proto.RegisterFile("google/cloud/dialogflow/v2beta1/document.proto", fileDescriptor_document_b7905c72d2ee7910)
 }
 
-var fileDescriptor_document_38ae42bb38d9eae2 = []byte{
+var fileDescriptor_document_b7905c72d2ee7910 = []byte{
 	// 1056 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x57, 0x4d, 0x6f, 0x1b, 0x45,
 	0x18, 0xce, 0x6c, 0xbe, 0x9c, 0xd7, 0x89, 0x9b, 0x8e, 0x08, 0x18, 0x97, 0xb6, 0xe9, 0x56, 0x42,

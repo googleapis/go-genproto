@@ -79,7 +79,7 @@ func (m *Monitoring) Reset()         { *m = Monitoring{} }
 func (m *Monitoring) String() string { return proto.CompactTextString(m) }
 func (*Monitoring) ProtoMessage()    {}
 func (*Monitoring) Descriptor() ([]byte, []int) {
-	return fileDescriptor_monitoring_607d42dbb71d0eb3, []int{0}
+	return fileDescriptor_monitoring_bee01dc8a7135913, []int{0}
 }
 func (m *Monitoring) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Monitoring.Unmarshal(m, b)
@@ -131,7 +131,7 @@ func (m *Monitoring_MonitoringDestination) Reset()         { *m = Monitoring_Mon
 func (m *Monitoring_MonitoringDestination) String() string { return proto.CompactTextString(m) }
 func (*Monitoring_MonitoringDestination) ProtoMessage()    {}
 func (*Monitoring_MonitoringDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_monitoring_607d42dbb71d0eb3, []int{0, 0}
+	return fileDescriptor_monitoring_bee01dc8a7135913, []int{0, 0}
 }
 func (m *Monitoring_MonitoringDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Monitoring_MonitoringDestination.Unmarshal(m, b)
@@ -171,10 +171,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/api/monitoring.proto", fileDescriptor_monitoring_607d42dbb71d0eb3)
+	proto.RegisterFile("google/api/monitoring.proto", fileDescriptor_monitoring_bee01dc8a7135913)
 }
 
-var fileDescriptor_monitoring_607d42dbb71d0eb3 = []byte{
+var fileDescriptor_monitoring_bee01dc8a7135913 = []byte{
 	// 263 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x91, 0xcf, 0x4a, 0xc4, 0x30,
 	0x10, 0xc6, 0xe9, 0x2a, 0xca, 0x46, 0x50, 0x0c, 0x2e, 0x14, 0xbd, 0x2c, 0x9e, 0xf6, 0xa0, 0x29,

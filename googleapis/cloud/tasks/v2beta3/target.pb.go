@@ -66,7 +66,7 @@ func (x HttpMethod) String() string {
 	return proto.EnumName(HttpMethod_name, int32(x))
 }
 func (HttpMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{0}
+	return fileDescriptor_target_6c51f433dca06861, []int{0}
 }
 
 // HTTP request.
@@ -167,7 +167,7 @@ func (m *HttpRequest) Reset()         { *m = HttpRequest{} }
 func (m *HttpRequest) String() string { return proto.CompactTextString(m) }
 func (*HttpRequest) ProtoMessage()    {}
 func (*HttpRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{0}
+	return fileDescriptor_target_6c51f433dca06861, []int{0}
 }
 func (m *HttpRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HttpRequest.Unmarshal(m, b)
@@ -356,7 +356,7 @@ func (m *AppEngineHttpQueue) Reset()         { *m = AppEngineHttpQueue{} }
 func (m *AppEngineHttpQueue) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpQueue) ProtoMessage()    {}
 func (*AppEngineHttpQueue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{1}
+	return fileDescriptor_target_6c51f433dca06861, []int{1}
 }
 func (m *AppEngineHttpQueue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpQueue.Unmarshal(m, b)
@@ -527,7 +527,7 @@ func (m *AppEngineHttpRequest) Reset()         { *m = AppEngineHttpRequest{} }
 func (m *AppEngineHttpRequest) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpRequest) ProtoMessage()    {}
 func (*AppEngineHttpRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{2}
+	return fileDescriptor_target_6c51f433dca06861, []int{2}
 }
 func (m *AppEngineHttpRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpRequest.Unmarshal(m, b)
@@ -666,7 +666,7 @@ func (m *AppEngineRouting) Reset()         { *m = AppEngineRouting{} }
 func (m *AppEngineRouting) String() string { return proto.CompactTextString(m) }
 func (*AppEngineRouting) ProtoMessage()    {}
 func (*AppEngineRouting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{3}
+	return fileDescriptor_target_6c51f433dca06861, []int{3}
 }
 func (m *AppEngineRouting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineRouting.Unmarshal(m, b)
@@ -738,7 +738,7 @@ func (m *OAuthToken) Reset()         { *m = OAuthToken{} }
 func (m *OAuthToken) String() string { return proto.CompactTextString(m) }
 func (*OAuthToken) ProtoMessage()    {}
 func (*OAuthToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{4}
+	return fileDescriptor_target_6c51f433dca06861, []int{4}
 }
 func (m *OAuthToken) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OAuthToken.Unmarshal(m, b)
@@ -796,7 +796,7 @@ func (m *OidcToken) Reset()         { *m = OidcToken{} }
 func (m *OidcToken) String() string { return proto.CompactTextString(m) }
 func (*OidcToken) ProtoMessage()    {}
 func (*OidcToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_da9b4c7f9a4f7f6c, []int{5}
+	return fileDescriptor_target_6c51f433dca06861, []int{5}
 }
 func (m *OidcToken) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OidcToken.Unmarshal(m, b)
@@ -843,10 +843,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2beta3/target.proto", fileDescriptor_target_da9b4c7f9a4f7f6c)
+	proto.RegisterFile("google/cloud/tasks/v2beta3/target.proto", fileDescriptor_target_6c51f433dca06861)
 }
 
-var fileDescriptor_target_da9b4c7f9a4f7f6c = []byte{
+var fileDescriptor_target_6c51f433dca06861 = []byte{
 	// 707 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x55, 0xdf, 0x6f, 0xd3, 0x3a,
 	0x14, 0x5e, 0x96, 0xfe, 0x58, 0x4f, 0xa6, 0xab, 0xc8, 0x77, 0xf7, 0xde, 0xa8, 0xbb, 0x42, 0xa5,

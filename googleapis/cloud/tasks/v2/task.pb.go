@@ -66,7 +66,7 @@ func (x Task_View) String() string {
 	return proto.EnumName(Task_View_name, int32(x))
 }
 func (Task_View) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_task_60667a36cc592bc9, []int{0, 0}
+	return fileDescriptor_task_798b1eb2476e0fcb, []int{0, 0}
 }
 
 // A unit of scheduled work.
@@ -163,7 +163,7 @@ func (m *Task) Reset()         { *m = Task{} }
 func (m *Task) String() string { return proto.CompactTextString(m) }
 func (*Task) ProtoMessage()    {}
 func (*Task) Descriptor() ([]byte, []int) {
-	return fileDescriptor_task_60667a36cc592bc9, []int{0}
+	return fileDescriptor_task_798b1eb2476e0fcb, []int{0}
 }
 func (m *Task) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Task.Unmarshal(m, b)
@@ -353,7 +353,7 @@ func (m *Attempt) Reset()         { *m = Attempt{} }
 func (m *Attempt) String() string { return proto.CompactTextString(m) }
 func (*Attempt) ProtoMessage()    {}
 func (*Attempt) Descriptor() ([]byte, []int) {
-	return fileDescriptor_task_60667a36cc592bc9, []int{1}
+	return fileDescriptor_task_798b1eb2476e0fcb, []int{1}
 }
 func (m *Attempt) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Attempt.Unmarshal(m, b)
@@ -408,10 +408,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2/task.proto", fileDescriptor_task_60667a36cc592bc9)
+	proto.RegisterFile("google/cloud/tasks/v2/task.proto", fileDescriptor_task_798b1eb2476e0fcb)
 }
 
-var fileDescriptor_task_60667a36cc592bc9 = []byte{
+var fileDescriptor_task_798b1eb2476e0fcb = []byte{
 	// 579 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0x51, 0x6b, 0xdb, 0x30,
 	0x10, 0xc7, 0xeb, 0xcc, 0x69, 0x1b, 0x25, 0xed, 0x32, 0xd1, 0x51, 0xb7, 0x8c, 0xce, 0x04, 0x06,

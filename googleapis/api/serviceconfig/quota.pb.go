@@ -84,7 +84,7 @@ func (m *Quota) Reset()         { *m = Quota{} }
 func (m *Quota) String() string { return proto.CompactTextString(m) }
 func (*Quota) ProtoMessage()    {}
 func (*Quota) Descriptor() ([]byte, []int) {
-	return fileDescriptor_quota_4b215e5a6820c815, []int{0}
+	return fileDescriptor_quota_129273d1f869e90d, []int{0}
 }
 func (m *Quota) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Quota.Unmarshal(m, b)
@@ -141,7 +141,7 @@ func (m *MetricRule) Reset()         { *m = MetricRule{} }
 func (m *MetricRule) String() string { return proto.CompactTextString(m) }
 func (*MetricRule) ProtoMessage()    {}
 func (*MetricRule) Descriptor() ([]byte, []int) {
-	return fileDescriptor_quota_4b215e5a6820c815, []int{1}
+	return fileDescriptor_quota_129273d1f869e90d, []int{1}
 }
 func (m *MetricRule) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MetricRule.Unmarshal(m, b)
@@ -259,7 +259,7 @@ func (m *QuotaLimit) Reset()         { *m = QuotaLimit{} }
 func (m *QuotaLimit) String() string { return proto.CompactTextString(m) }
 func (*QuotaLimit) ProtoMessage()    {}
 func (*QuotaLimit) Descriptor() ([]byte, []int) {
-	return fileDescriptor_quota_4b215e5a6820c815, []int{2}
+	return fileDescriptor_quota_129273d1f869e90d, []int{2}
 }
 func (m *QuotaLimit) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QuotaLimit.Unmarshal(m, b)
@@ -357,9 +357,9 @@ func init() {
 	proto.RegisterMapType((map[string]int64)(nil), "google.api.QuotaLimit.ValuesEntry")
 }
 
-func init() { proto.RegisterFile("google/api/quota.proto", fileDescriptor_quota_4b215e5a6820c815) }
+func init() { proto.RegisterFile("google/api/quota.proto", fileDescriptor_quota_129273d1f869e90d) }
 
-var fileDescriptor_quota_4b215e5a6820c815 = []byte{
+var fileDescriptor_quota_129273d1f869e90d = []byte{
 	// 453 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x53, 0xc1, 0x8e, 0xd3, 0x30,
 	0x10, 0x55, 0x9a, 0x6e, 0x68, 0xa7, 0x05, 0xad, 0x2c, 0x54, 0x59, 0xe5, 0x52, 0xca, 0x81, 0x9e,

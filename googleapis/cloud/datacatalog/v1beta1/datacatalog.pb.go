@@ -53,7 +53,7 @@ func (x EntryType) String() string {
 	return proto.EnumName(EntryType_name, int32(x))
 }
 func (EntryType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_datacatalog_4d76c63f2f954384, []int{0}
+	return fileDescriptor_datacatalog_2e06be1501804d5c, []int{0}
 }
 
 // Request message for
@@ -75,7 +75,7 @@ func (m *LookupEntryRequest) Reset()         { *m = LookupEntryRequest{} }
 func (m *LookupEntryRequest) String() string { return proto.CompactTextString(m) }
 func (*LookupEntryRequest) ProtoMessage()    {}
 func (*LookupEntryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datacatalog_4d76c63f2f954384, []int{0}
+	return fileDescriptor_datacatalog_2e06be1501804d5c, []int{0}
 }
 func (m *LookupEntryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LookupEntryRequest.Unmarshal(m, b)
@@ -247,7 +247,7 @@ func (m *Entry) Reset()         { *m = Entry{} }
 func (m *Entry) String() string { return proto.CompactTextString(m) }
 func (*Entry) ProtoMessage()    {}
 func (*Entry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_datacatalog_4d76c63f2f954384, []int{1}
+	return fileDescriptor_datacatalog_2e06be1501804d5c, []int{1}
 }
 func (m *Entry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Entry.Unmarshal(m, b)
@@ -480,10 +480,10 @@ var _DataCatalog_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datacatalog/v1beta1/datacatalog.proto", fileDescriptor_datacatalog_4d76c63f2f954384)
+	proto.RegisterFile("google/cloud/datacatalog/v1beta1/datacatalog.proto", fileDescriptor_datacatalog_2e06be1501804d5c)
 }
 
-var fileDescriptor_datacatalog_4d76c63f2f954384 = []byte{
+var fileDescriptor_datacatalog_2e06be1501804d5c = []byte{
 	// 563 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x53, 0x4d, 0x6f, 0xd3, 0x40,
 	0x10, 0x8d, 0xf3, 0x51, 0x94, 0x75, 0x68, 0xc3, 0x22, 0x15, 0x13, 0x55, 0x22, 0x84, 0x43, 0x03,

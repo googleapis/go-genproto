@@ -56,7 +56,7 @@ func (x IssueDetails_Severity) String() string {
 	return proto.EnumName(IssueDetails_Severity_name, int32(x))
 }
 func (IssueDetails_Severity) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conformance_service_61e1e6f4037f9b36, []int{6, 0}
+	return fileDescriptor_conformance_service_35e6de9bb7108510, []int{6, 0}
 }
 
 // Request message for the Parse method.
@@ -79,7 +79,7 @@ func (m *ParseRequest) Reset()         { *m = ParseRequest{} }
 func (m *ParseRequest) String() string { return proto.CompactTextString(m) }
 func (*ParseRequest) ProtoMessage()    {}
 func (*ParseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conformance_service_61e1e6f4037f9b36, []int{0}
+	return fileDescriptor_conformance_service_35e6de9bb7108510, []int{0}
 }
 func (m *ParseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ParseRequest.Unmarshal(m, b)
@@ -142,7 +142,7 @@ func (m *ParseResponse) Reset()         { *m = ParseResponse{} }
 func (m *ParseResponse) String() string { return proto.CompactTextString(m) }
 func (*ParseResponse) ProtoMessage()    {}
 func (*ParseResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conformance_service_61e1e6f4037f9b36, []int{1}
+	return fileDescriptor_conformance_service_35e6de9bb7108510, []int{1}
 }
 func (m *ParseResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ParseResponse.Unmarshal(m, b)
@@ -201,7 +201,7 @@ func (m *CheckRequest) Reset()         { *m = CheckRequest{} }
 func (m *CheckRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckRequest) ProtoMessage()    {}
 func (*CheckRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conformance_service_61e1e6f4037f9b36, []int{2}
+	return fileDescriptor_conformance_service_35e6de9bb7108510, []int{2}
 }
 func (m *CheckRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckRequest.Unmarshal(m, b)
@@ -264,7 +264,7 @@ func (m *CheckResponse) Reset()         { *m = CheckResponse{} }
 func (m *CheckResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckResponse) ProtoMessage()    {}
 func (*CheckResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conformance_service_61e1e6f4037f9b36, []int{3}
+	return fileDescriptor_conformance_service_35e6de9bb7108510, []int{3}
 }
 func (m *CheckResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckResponse.Unmarshal(m, b)
@@ -322,7 +322,7 @@ func (m *EvalRequest) Reset()         { *m = EvalRequest{} }
 func (m *EvalRequest) String() string { return proto.CompactTextString(m) }
 func (*EvalRequest) ProtoMessage()    {}
 func (*EvalRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conformance_service_61e1e6f4037f9b36, []int{4}
+	return fileDescriptor_conformance_service_35e6de9bb7108510, []int{4}
 }
 func (m *EvalRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EvalRequest.Unmarshal(m, b)
@@ -485,7 +485,7 @@ func (m *EvalResponse) Reset()         { *m = EvalResponse{} }
 func (m *EvalResponse) String() string { return proto.CompactTextString(m) }
 func (*EvalResponse) ProtoMessage()    {}
 func (*EvalResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conformance_service_61e1e6f4037f9b36, []int{5}
+	return fileDescriptor_conformance_service_35e6de9bb7108510, []int{5}
 }
 func (m *EvalResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EvalResponse.Unmarshal(m, b)
@@ -538,7 +538,7 @@ func (m *IssueDetails) Reset()         { *m = IssueDetails{} }
 func (m *IssueDetails) String() string { return proto.CompactTextString(m) }
 func (*IssueDetails) ProtoMessage()    {}
 func (*IssueDetails) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conformance_service_61e1e6f4037f9b36, []int{6}
+	return fileDescriptor_conformance_service_35e6de9bb7108510, []int{6}
 }
 func (m *IssueDetails) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IssueDetails.Unmarshal(m, b)
@@ -740,10 +740,10 @@ var _ConformanceService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/api/expr/v1alpha1/conformance_service.proto", fileDescriptor_conformance_service_61e1e6f4037f9b36)
+	proto.RegisterFile("google/api/expr/v1alpha1/conformance_service.proto", fileDescriptor_conformance_service_35e6de9bb7108510)
 }
 
-var fileDescriptor_conformance_service_61e1e6f4037f9b36 = []byte{
+var fileDescriptor_conformance_service_35e6de9bb7108510 = []byte{
 	// 807 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x55, 0x41, 0x6f, 0xdb, 0x36,
 	0x18, 0xb5, 0xe4, 0x24, 0xb5, 0x3f, 0xd9, 0xa9, 0x41, 0x0c, 0xa8, 0x61, 0x64, 0x43, 0xa0, 0x2e,

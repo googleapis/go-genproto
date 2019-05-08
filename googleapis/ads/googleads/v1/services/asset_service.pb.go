@@ -38,7 +38,7 @@ func (m *GetAssetRequest) Reset()         { *m = GetAssetRequest{} }
 func (m *GetAssetRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAssetRequest) ProtoMessage()    {}
 func (*GetAssetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6973137248fb30b8, []int{0}
+	return fileDescriptor_asset_service_f6d94be756c262a6, []int{0}
 }
 func (m *GetAssetRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAssetRequest.Unmarshal(m, b)
@@ -80,7 +80,7 @@ func (m *MutateAssetsRequest) Reset()         { *m = MutateAssetsRequest{} }
 func (m *MutateAssetsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateAssetsRequest) ProtoMessage()    {}
 func (*MutateAssetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6973137248fb30b8, []int{1}
+	return fileDescriptor_asset_service_f6d94be756c262a6, []int{1}
 }
 func (m *MutateAssetsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAssetsRequest.Unmarshal(m, b)
@@ -130,7 +130,7 @@ func (m *AssetOperation) Reset()         { *m = AssetOperation{} }
 func (m *AssetOperation) String() string { return proto.CompactTextString(m) }
 func (*AssetOperation) ProtoMessage()    {}
 func (*AssetOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6973137248fb30b8, []int{2}
+	return fileDescriptor_asset_service_f6d94be756c262a6, []int{2}
 }
 func (m *AssetOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssetOperation.Unmarshal(m, b)
@@ -242,7 +242,7 @@ func (m *MutateAssetsResponse) Reset()         { *m = MutateAssetsResponse{} }
 func (m *MutateAssetsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateAssetsResponse) ProtoMessage()    {}
 func (*MutateAssetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6973137248fb30b8, []int{3}
+	return fileDescriptor_asset_service_f6d94be756c262a6, []int{3}
 }
 func (m *MutateAssetsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAssetsResponse.Unmarshal(m, b)
@@ -282,7 +282,7 @@ func (m *MutateAssetResult) Reset()         { *m = MutateAssetResult{} }
 func (m *MutateAssetResult) String() string { return proto.CompactTextString(m) }
 func (*MutateAssetResult) ProtoMessage()    {}
 func (*MutateAssetResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_service_6973137248fb30b8, []int{4}
+	return fileDescriptor_asset_service_f6d94be756c262a6, []int{4}
 }
 func (m *MutateAssetResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAssetResult.Unmarshal(m, b)
@@ -427,10 +427,10 @@ var _AssetService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/asset_service.proto", fileDescriptor_asset_service_6973137248fb30b8)
+	proto.RegisterFile("google/ads/googleads/v1/services/asset_service.proto", fileDescriptor_asset_service_f6d94be756c262a6)
 }
 
-var fileDescriptor_asset_service_6973137248fb30b8 = []byte{
+var fileDescriptor_asset_service_f6d94be756c262a6 = []byte{
 	// 520 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xbf, 0x6f, 0xd3, 0x40,
 	0x14, 0xc6, 0xae, 0x54, 0xe8, 0x25, 0x80, 0x7a, 0x30, 0x54, 0x11, 0x12, 0x91, 0xe9, 0x10, 0x19,

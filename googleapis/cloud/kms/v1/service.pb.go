@@ -53,7 +53,7 @@ func (m *ListKeyRingsRequest) Reset()         { *m = ListKeyRingsRequest{} }
 func (m *ListKeyRingsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListKeyRingsRequest) ProtoMessage()    {}
 func (*ListKeyRingsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{0}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{0}
 }
 func (m *ListKeyRingsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListKeyRingsRequest.Unmarshal(m, b)
@@ -122,7 +122,7 @@ func (m *ListCryptoKeysRequest) Reset()         { *m = ListCryptoKeysRequest{} }
 func (m *ListCryptoKeysRequest) String() string { return proto.CompactTextString(m) }
 func (*ListCryptoKeysRequest) ProtoMessage()    {}
 func (*ListCryptoKeysRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{1}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{1}
 }
 func (m *ListCryptoKeysRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCryptoKeysRequest.Unmarshal(m, b)
@@ -199,7 +199,7 @@ func (m *ListCryptoKeyVersionsRequest) Reset()         { *m = ListCryptoKeyVersi
 func (m *ListCryptoKeyVersionsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListCryptoKeyVersionsRequest) ProtoMessage()    {}
 func (*ListCryptoKeyVersionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{2}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{2}
 }
 func (m *ListCryptoKeyVersionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCryptoKeyVersionsRequest.Unmarshal(m, b)
@@ -268,7 +268,7 @@ func (m *ListKeyRingsResponse) Reset()         { *m = ListKeyRingsResponse{} }
 func (m *ListKeyRingsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListKeyRingsResponse) ProtoMessage()    {}
 func (*ListKeyRingsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{3}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{3}
 }
 func (m *ListKeyRingsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListKeyRingsResponse.Unmarshal(m, b)
@@ -330,7 +330,7 @@ func (m *ListCryptoKeysResponse) Reset()         { *m = ListCryptoKeysResponse{}
 func (m *ListCryptoKeysResponse) String() string { return proto.CompactTextString(m) }
 func (*ListCryptoKeysResponse) ProtoMessage()    {}
 func (*ListCryptoKeysResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{4}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{4}
 }
 func (m *ListCryptoKeysResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCryptoKeysResponse.Unmarshal(m, b)
@@ -393,7 +393,7 @@ func (m *ListCryptoKeyVersionsResponse) Reset()         { *m = ListCryptoKeyVers
 func (m *ListCryptoKeyVersionsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListCryptoKeyVersionsResponse) ProtoMessage()    {}
 func (*ListCryptoKeyVersionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{5}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{5}
 }
 func (m *ListCryptoKeyVersionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListCryptoKeyVersionsResponse.Unmarshal(m, b)
@@ -449,7 +449,7 @@ func (m *GetKeyRingRequest) Reset()         { *m = GetKeyRingRequest{} }
 func (m *GetKeyRingRequest) String() string { return proto.CompactTextString(m) }
 func (*GetKeyRingRequest) ProtoMessage()    {}
 func (*GetKeyRingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{6}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{6}
 }
 func (m *GetKeyRingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetKeyRingRequest.Unmarshal(m, b)
@@ -491,7 +491,7 @@ func (m *GetCryptoKeyRequest) Reset()         { *m = GetCryptoKeyRequest{} }
 func (m *GetCryptoKeyRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCryptoKeyRequest) ProtoMessage()    {}
 func (*GetCryptoKeyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{7}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{7}
 }
 func (m *GetCryptoKeyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCryptoKeyRequest.Unmarshal(m, b)
@@ -533,7 +533,7 @@ func (m *GetCryptoKeyVersionRequest) Reset()         { *m = GetCryptoKeyVersionR
 func (m *GetCryptoKeyVersionRequest) String() string { return proto.CompactTextString(m) }
 func (*GetCryptoKeyVersionRequest) ProtoMessage()    {}
 func (*GetCryptoKeyVersionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{8}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{8}
 }
 func (m *GetCryptoKeyVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetCryptoKeyVersionRequest.Unmarshal(m, b)
@@ -575,7 +575,7 @@ func (m *GetPublicKeyRequest) Reset()         { *m = GetPublicKeyRequest{} }
 func (m *GetPublicKeyRequest) String() string { return proto.CompactTextString(m) }
 func (*GetPublicKeyRequest) ProtoMessage()    {}
 func (*GetPublicKeyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{9}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{9}
 }
 func (m *GetPublicKeyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetPublicKeyRequest.Unmarshal(m, b)
@@ -623,7 +623,7 @@ func (m *CreateKeyRingRequest) Reset()         { *m = CreateKeyRingRequest{} }
 func (m *CreateKeyRingRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateKeyRingRequest) ProtoMessage()    {}
 func (*CreateKeyRingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{10}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{10}
 }
 func (m *CreateKeyRingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateKeyRingRequest.Unmarshal(m, b)
@@ -684,7 +684,7 @@ func (m *CreateCryptoKeyRequest) Reset()         { *m = CreateCryptoKeyRequest{}
 func (m *CreateCryptoKeyRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateCryptoKeyRequest) ProtoMessage()    {}
 func (*CreateCryptoKeyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{11}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{11}
 }
 func (m *CreateCryptoKeyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateCryptoKeyRequest.Unmarshal(m, b)
@@ -744,7 +744,7 @@ func (m *CreateCryptoKeyVersionRequest) Reset()         { *m = CreateCryptoKeyVe
 func (m *CreateCryptoKeyVersionRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateCryptoKeyVersionRequest) ProtoMessage()    {}
 func (*CreateCryptoKeyVersionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{12}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{12}
 }
 func (m *CreateCryptoKeyVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateCryptoKeyVersionRequest.Unmarshal(m, b)
@@ -794,7 +794,7 @@ func (m *UpdateCryptoKeyRequest) Reset()         { *m = UpdateCryptoKeyRequest{}
 func (m *UpdateCryptoKeyRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateCryptoKeyRequest) ProtoMessage()    {}
 func (*UpdateCryptoKeyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{13}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{13}
 }
 func (m *UpdateCryptoKeyRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateCryptoKeyRequest.Unmarshal(m, b)
@@ -845,7 +845,7 @@ func (m *UpdateCryptoKeyVersionRequest) Reset()         { *m = UpdateCryptoKeyVe
 func (m *UpdateCryptoKeyVersionRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateCryptoKeyVersionRequest) ProtoMessage()    {}
 func (*UpdateCryptoKeyVersionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{14}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{14}
 }
 func (m *UpdateCryptoKeyVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateCryptoKeyVersionRequest.Unmarshal(m, b)
@@ -921,7 +921,7 @@ func (m *EncryptRequest) Reset()         { *m = EncryptRequest{} }
 func (m *EncryptRequest) String() string { return proto.CompactTextString(m) }
 func (*EncryptRequest) ProtoMessage()    {}
 func (*EncryptRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{15}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{15}
 }
 func (m *EncryptRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EncryptRequest.Unmarshal(m, b)
@@ -984,7 +984,7 @@ func (m *DecryptRequest) Reset()         { *m = DecryptRequest{} }
 func (m *DecryptRequest) String() string { return proto.CompactTextString(m) }
 func (*DecryptRequest) ProtoMessage()    {}
 func (*DecryptRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{16}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{16}
 }
 func (m *DecryptRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DecryptRequest.Unmarshal(m, b)
@@ -1045,7 +1045,7 @@ func (m *AsymmetricSignRequest) Reset()         { *m = AsymmetricSignRequest{} }
 func (m *AsymmetricSignRequest) String() string { return proto.CompactTextString(m) }
 func (*AsymmetricSignRequest) ProtoMessage()    {}
 func (*AsymmetricSignRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{17}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{17}
 }
 func (m *AsymmetricSignRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AsymmetricSignRequest.Unmarshal(m, b)
@@ -1099,7 +1099,7 @@ func (m *AsymmetricDecryptRequest) Reset()         { *m = AsymmetricDecryptReque
 func (m *AsymmetricDecryptRequest) String() string { return proto.CompactTextString(m) }
 func (*AsymmetricDecryptRequest) ProtoMessage()    {}
 func (*AsymmetricDecryptRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{18}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{18}
 }
 func (m *AsymmetricDecryptRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AsymmetricDecryptRequest.Unmarshal(m, b)
@@ -1148,7 +1148,7 @@ func (m *DecryptResponse) Reset()         { *m = DecryptResponse{} }
 func (m *DecryptResponse) String() string { return proto.CompactTextString(m) }
 func (*DecryptResponse) ProtoMessage()    {}
 func (*DecryptResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{19}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{19}
 }
 func (m *DecryptResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DecryptResponse.Unmarshal(m, b)
@@ -1193,7 +1193,7 @@ func (m *EncryptResponse) Reset()         { *m = EncryptResponse{} }
 func (m *EncryptResponse) String() string { return proto.CompactTextString(m) }
 func (*EncryptResponse) ProtoMessage()    {}
 func (*EncryptResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{20}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{20}
 }
 func (m *EncryptResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EncryptResponse.Unmarshal(m, b)
@@ -1241,7 +1241,7 @@ func (m *AsymmetricSignResponse) Reset()         { *m = AsymmetricSignResponse{}
 func (m *AsymmetricSignResponse) String() string { return proto.CompactTextString(m) }
 func (*AsymmetricSignResponse) ProtoMessage()    {}
 func (*AsymmetricSignResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{21}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{21}
 }
 func (m *AsymmetricSignResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AsymmetricSignResponse.Unmarshal(m, b)
@@ -1282,7 +1282,7 @@ func (m *AsymmetricDecryptResponse) Reset()         { *m = AsymmetricDecryptResp
 func (m *AsymmetricDecryptResponse) String() string { return proto.CompactTextString(m) }
 func (*AsymmetricDecryptResponse) ProtoMessage()    {}
 func (*AsymmetricDecryptResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{22}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{22}
 }
 func (m *AsymmetricDecryptResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AsymmetricDecryptResponse.Unmarshal(m, b)
@@ -1327,7 +1327,7 @@ func (m *UpdateCryptoKeyPrimaryVersionRequest) Reset()         { *m = UpdateCryp
 func (m *UpdateCryptoKeyPrimaryVersionRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateCryptoKeyPrimaryVersionRequest) ProtoMessage()    {}
 func (*UpdateCryptoKeyPrimaryVersionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{23}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{23}
 }
 func (m *UpdateCryptoKeyPrimaryVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateCryptoKeyPrimaryVersionRequest.Unmarshal(m, b)
@@ -1376,7 +1376,7 @@ func (m *DestroyCryptoKeyVersionRequest) Reset()         { *m = DestroyCryptoKey
 func (m *DestroyCryptoKeyVersionRequest) String() string { return proto.CompactTextString(m) }
 func (*DestroyCryptoKeyVersionRequest) ProtoMessage()    {}
 func (*DestroyCryptoKeyVersionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{24}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{24}
 }
 func (m *DestroyCryptoKeyVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DestroyCryptoKeyVersionRequest.Unmarshal(m, b)
@@ -1418,7 +1418,7 @@ func (m *RestoreCryptoKeyVersionRequest) Reset()         { *m = RestoreCryptoKey
 func (m *RestoreCryptoKeyVersionRequest) String() string { return proto.CompactTextString(m) }
 func (*RestoreCryptoKeyVersionRequest) ProtoMessage()    {}
 func (*RestoreCryptoKeyVersionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{25}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{25}
 }
 func (m *RestoreCryptoKeyVersionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RestoreCryptoKeyVersionRequest.Unmarshal(m, b)
@@ -1463,7 +1463,7 @@ func (m *Digest) Reset()         { *m = Digest{} }
 func (m *Digest) String() string { return proto.CompactTextString(m) }
 func (*Digest) ProtoMessage()    {}
 func (*Digest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{26}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{26}
 }
 func (m *Digest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Digest.Unmarshal(m, b)
@@ -1631,7 +1631,7 @@ func (m *LocationMetadata) Reset()         { *m = LocationMetadata{} }
 func (m *LocationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LocationMetadata) ProtoMessage()    {}
 func (*LocationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_e3326c98c2775f20, []int{27}
+	return fileDescriptor_service_cf5bcaac2fc87f37, []int{27}
 }
 func (m *LocationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationMetadata.Unmarshal(m, b)
@@ -2540,10 +2540,10 @@ var _KeyManagementService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/kms/v1/service.proto", fileDescriptor_service_e3326c98c2775f20)
+	proto.RegisterFile("google/cloud/kms/v1/service.proto", fileDescriptor_service_cf5bcaac2fc87f37)
 }
 
-var fileDescriptor_service_e3326c98c2775f20 = []byte{
+var fileDescriptor_service_cf5bcaac2fc87f37 = []byte{
 	// 1666 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x59, 0xcd, 0x73, 0x1b, 0xc5,
 	0x12, 0x7f, 0x63, 0xe7, 0x39, 0x76, 0xfb, 0x2b, 0x19, 0x27, 0x8e, 0x9f, 0x62, 0xbb, 0xfc, 0x26,

@@ -31,7 +31,7 @@ func (m *LocationMetadata) Reset()         { *m = LocationMetadata{} }
 func (m *LocationMetadata) String() string { return proto.CompactTextString(m) }
 func (*LocationMetadata) ProtoMessage()    {}
 func (*LocationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_location_4e9ba0eab7e666bb, []int{0}
+	return fileDescriptor_location_d0ba94c897950f24, []int{0}
 }
 func (m *LocationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationMetadata.Unmarshal(m, b)
@@ -56,10 +56,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/admin/v1/location.proto", fileDescriptor_location_4e9ba0eab7e666bb)
+	proto.RegisterFile("google/firestore/admin/v1/location.proto", fileDescriptor_location_d0ba94c897950f24)
 }
 
-var fileDescriptor_location_4e9ba0eab7e666bb = []byte{
+var fileDescriptor_location_d0ba94c897950f24 = []byte{
 	// 230 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xd2, 0x48, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x4f, 0xcb, 0x2c, 0x4a, 0x2d, 0x2e, 0xc9, 0x2f, 0x4a, 0xd5, 0x4f, 0x4c, 0xc9,

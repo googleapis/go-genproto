@@ -56,7 +56,7 @@ func (m *PartitionId) Reset()         { *m = PartitionId{} }
 func (m *PartitionId) String() string { return proto.CompactTextString(m) }
 func (*PartitionId) ProtoMessage()    {}
 func (*PartitionId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_entity_f9feb4c6afbf01a6, []int{0}
+	return fileDescriptor_entity_50acbc7f8774bafa, []int{0}
 }
 func (m *PartitionId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PartitionId.Unmarshal(m, b)
@@ -125,7 +125,7 @@ func (m *Key) Reset()         { *m = Key{} }
 func (m *Key) String() string { return proto.CompactTextString(m) }
 func (*Key) ProtoMessage()    {}
 func (*Key) Descriptor() ([]byte, []int) {
-	return fileDescriptor_entity_f9feb4c6afbf01a6, []int{1}
+	return fileDescriptor_entity_50acbc7f8774bafa, []int{1}
 }
 func (m *Key) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key.Unmarshal(m, b)
@@ -184,7 +184,7 @@ func (m *Key_PathElement) Reset()         { *m = Key_PathElement{} }
 func (m *Key_PathElement) String() string { return proto.CompactTextString(m) }
 func (*Key_PathElement) ProtoMessage()    {}
 func (*Key_PathElement) Descriptor() ([]byte, []int) {
-	return fileDescriptor_entity_f9feb4c6afbf01a6, []int{1, 0}
+	return fileDescriptor_entity_50acbc7f8774bafa, []int{1, 0}
 }
 func (m *Key_PathElement) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Key_PathElement.Unmarshal(m, b)
@@ -328,7 +328,7 @@ func (m *ArrayValue) Reset()         { *m = ArrayValue{} }
 func (m *ArrayValue) String() string { return proto.CompactTextString(m) }
 func (*ArrayValue) ProtoMessage()    {}
 func (*ArrayValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_entity_f9feb4c6afbf01a6, []int{2}
+	return fileDescriptor_entity_50acbc7f8774bafa, []int{2}
 }
 func (m *ArrayValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ArrayValue.Unmarshal(m, b)
@@ -387,7 +387,7 @@ func (m *Value) Reset()         { *m = Value{} }
 func (m *Value) String() string { return proto.CompactTextString(m) }
 func (*Value) ProtoMessage()    {}
 func (*Value) Descriptor() ([]byte, []int) {
-	return fileDescriptor_entity_f9feb4c6afbf01a6, []int{3}
+	return fileDescriptor_entity_50acbc7f8774bafa, []int{3}
 }
 func (m *Value) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Value.Unmarshal(m, b)
@@ -825,7 +825,7 @@ func (m *Entity) Reset()         { *m = Entity{} }
 func (m *Entity) String() string { return proto.CompactTextString(m) }
 func (*Entity) ProtoMessage()    {}
 func (*Entity) Descriptor() ([]byte, []int) {
-	return fileDescriptor_entity_f9feb4c6afbf01a6, []int{4}
+	return fileDescriptor_entity_50acbc7f8774bafa, []int{4}
 }
 func (m *Entity) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Entity.Unmarshal(m, b)
@@ -870,10 +870,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/datastore/v1beta3/entity.proto", fileDescriptor_entity_f9feb4c6afbf01a6)
+	proto.RegisterFile("google/datastore/v1beta3/entity.proto", fileDescriptor_entity_50acbc7f8774bafa)
 }
 
-var fileDescriptor_entity_f9feb4c6afbf01a6 = []byte{
+var fileDescriptor_entity_50acbc7f8774bafa = []byte{
 	// 789 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x95, 0xdf, 0x8e, 0xdb, 0x44,
 	0x14, 0xc6, 0xed, 0x64, 0xb3, 0x5d, 0x1f, 0xbb, 0xbb, 0x65, 0xda, 0x0b, 0x2b, 0x6a, 0xd9, 0x10,

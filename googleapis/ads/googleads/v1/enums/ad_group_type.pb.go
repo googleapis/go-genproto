@@ -88,7 +88,7 @@ func (x AdGroupTypeEnum_AdGroupType) String() string {
 	return proto.EnumName(AdGroupTypeEnum_AdGroupType_name, int32(x))
 }
 func (AdGroupTypeEnum_AdGroupType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_type_7f0b2073c53dd4dc, []int{0, 0}
+	return fileDescriptor_ad_group_type_8038a67ed0ccfa9a, []int{0, 0}
 }
 
 // Defines types of an ad group, specific to a particular campaign channel
@@ -104,7 +104,7 @@ func (m *AdGroupTypeEnum) Reset()         { *m = AdGroupTypeEnum{} }
 func (m *AdGroupTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*AdGroupTypeEnum) ProtoMessage()    {}
 func (*AdGroupTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_type_7f0b2073c53dd4dc, []int{0}
+	return fileDescriptor_ad_group_type_8038a67ed0ccfa9a, []int{0}
 }
 func (m *AdGroupTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupTypeEnum.Unmarshal(m, b)
@@ -130,10 +130,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/ad_group_type.proto", fileDescriptor_ad_group_type_7f0b2073c53dd4dc)
+	proto.RegisterFile("google/ads/googleads/v1/enums/ad_group_type.proto", fileDescriptor_ad_group_type_8038a67ed0ccfa9a)
 }
 
-var fileDescriptor_ad_group_type_7f0b2073c53dd4dc = []byte{
+var fileDescriptor_ad_group_type_8038a67ed0ccfa9a = []byte{
 	// 448 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x52, 0xd1, 0x6a, 0xdb, 0x3c,
 	0x18, 0xfd, 0xe3, 0xfe, 0xb4, 0xab, 0xd2, 0x12, 0xa1, 0x95, 0xb1, 0x95, 0x65, 0x90, 0x3e, 0x80,

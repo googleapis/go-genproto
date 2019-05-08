@@ -38,7 +38,7 @@ func (m *ImageObjectDetectionAnnotation) Reset()         { *m = ImageObjectDetec
 func (m *ImageObjectDetectionAnnotation) String() string { return proto.CompactTextString(m) }
 func (*ImageObjectDetectionAnnotation) ProtoMessage()    {}
 func (*ImageObjectDetectionAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_detection_2e416105206f01fb, []int{0}
+	return fileDescriptor_detection_fc1cbf42da607929, []int{0}
 }
 func (m *ImageObjectDetectionAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageObjectDetectionAnnotation.Unmarshal(m, b)
@@ -93,7 +93,7 @@ func (m *BoundingBoxMetricsEntry) Reset()         { *m = BoundingBoxMetricsEntry
 func (m *BoundingBoxMetricsEntry) String() string { return proto.CompactTextString(m) }
 func (*BoundingBoxMetricsEntry) ProtoMessage()    {}
 func (*BoundingBoxMetricsEntry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_detection_2e416105206f01fb, []int{1}
+	return fileDescriptor_detection_fc1cbf42da607929, []int{1}
 }
 func (m *BoundingBoxMetricsEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BoundingBoxMetricsEntry.Unmarshal(m, b)
@@ -157,7 +157,7 @@ func (m *BoundingBoxMetricsEntry_ConfidenceMetricsEntry) String() string {
 }
 func (*BoundingBoxMetricsEntry_ConfidenceMetricsEntry) ProtoMessage() {}
 func (*BoundingBoxMetricsEntry_ConfidenceMetricsEntry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_detection_2e416105206f01fb, []int{1, 0}
+	return fileDescriptor_detection_fc1cbf42da607929, []int{1, 0}
 }
 func (m *BoundingBoxMetricsEntry_ConfidenceMetricsEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BoundingBoxMetricsEntry_ConfidenceMetricsEntry.Unmarshal(m, b)
@@ -228,7 +228,7 @@ func (m *ImageObjectDetectionEvaluationMetrics) Reset()         { *m = ImageObje
 func (m *ImageObjectDetectionEvaluationMetrics) String() string { return proto.CompactTextString(m) }
 func (*ImageObjectDetectionEvaluationMetrics) ProtoMessage()    {}
 func (*ImageObjectDetectionEvaluationMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_detection_2e416105206f01fb, []int{2}
+	return fileDescriptor_detection_fc1cbf42da607929, []int{2}
 }
 func (m *ImageObjectDetectionEvaluationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageObjectDetectionEvaluationMetrics.Unmarshal(m, b)
@@ -277,10 +277,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/detection.proto", fileDescriptor_detection_2e416105206f01fb)
+	proto.RegisterFile("google/cloud/automl/v1beta1/detection.proto", fileDescriptor_detection_fc1cbf42da607929)
 }
 
-var fileDescriptor_detection_2e416105206f01fb = []byte{
+var fileDescriptor_detection_fc1cbf42da607929 = []byte{
 	// 537 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x53, 0xc1, 0x6e, 0xd3, 0x4c,
 	0x10, 0x96, 0x9d, 0xbf, 0xfd, 0x61, 0x5b, 0x2e, 0x4b, 0x55, 0xd2, 0x34, 0x6a, 0xab, 0x56, 0x48,

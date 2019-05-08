@@ -48,7 +48,7 @@ func (m *UploadConversionAdjustmentsRequest) Reset()         { *m = UploadConver
 func (m *UploadConversionAdjustmentsRequest) String() string { return proto.CompactTextString(m) }
 func (*UploadConversionAdjustmentsRequest) ProtoMessage()    {}
 func (*UploadConversionAdjustmentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_upload_service_359236ec23384117, []int{0}
+	return fileDescriptor_conversion_adjustment_upload_service_f73ceda272931531, []int{0}
 }
 func (m *UploadConversionAdjustmentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UploadConversionAdjustmentsRequest.Unmarshal(m, b)
@@ -98,7 +98,8 @@ type UploadConversionAdjustmentsResponse struct {
 	// level error.
 	PartialFailureError *status.Status `protobuf:"bytes,1,opt,name=partial_failure_error,json=partialFailureError,proto3" json:"partial_failure_error,omitempty"`
 	// Returned for successfully processed conversion adjustments. Proto will be
-	// empty for rows that received an error.
+	// empty for rows that received an error. Results are not returned when
+	// validate_only is true.
 	Results              []*ConversionAdjustmentResult `protobuf:"bytes,2,rep,name=results,proto3" json:"results,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
 	XXX_unrecognized     []byte                        `json:"-"`
@@ -109,7 +110,7 @@ func (m *UploadConversionAdjustmentsResponse) Reset()         { *m = UploadConve
 func (m *UploadConversionAdjustmentsResponse) String() string { return proto.CompactTextString(m) }
 func (*UploadConversionAdjustmentsResponse) ProtoMessage()    {}
 func (*UploadConversionAdjustmentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_upload_service_359236ec23384117, []int{1}
+	return fileDescriptor_conversion_adjustment_upload_service_f73ceda272931531, []int{1}
 }
 func (m *UploadConversionAdjustmentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UploadConversionAdjustmentsResponse.Unmarshal(m, b)
@@ -175,7 +176,7 @@ func (m *ConversionAdjustment) Reset()         { *m = ConversionAdjustment{} }
 func (m *ConversionAdjustment) String() string { return proto.CompactTextString(m) }
 func (*ConversionAdjustment) ProtoMessage()    {}
 func (*ConversionAdjustment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_upload_service_359236ec23384117, []int{2}
+	return fileDescriptor_conversion_adjustment_upload_service_f73ceda272931531, []int{2}
 }
 func (m *ConversionAdjustment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionAdjustment.Unmarshal(m, b)
@@ -354,7 +355,7 @@ func (m *RestatementValue) Reset()         { *m = RestatementValue{} }
 func (m *RestatementValue) String() string { return proto.CompactTextString(m) }
 func (*RestatementValue) ProtoMessage()    {}
 func (*RestatementValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_upload_service_359236ec23384117, []int{3}
+	return fileDescriptor_conversion_adjustment_upload_service_f73ceda272931531, []int{3}
 }
 func (m *RestatementValue) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RestatementValue.Unmarshal(m, b)
@@ -407,7 +408,7 @@ func (m *GclidDateTimePair) Reset()         { *m = GclidDateTimePair{} }
 func (m *GclidDateTimePair) String() string { return proto.CompactTextString(m) }
 func (*GclidDateTimePair) ProtoMessage()    {}
 func (*GclidDateTimePair) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_upload_service_359236ec23384117, []int{4}
+	return fileDescriptor_conversion_adjustment_upload_service_f73ceda272931531, []int{4}
 }
 func (m *GclidDateTimePair) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GclidDateTimePair.Unmarshal(m, b)
@@ -466,7 +467,7 @@ func (m *ConversionAdjustmentResult) Reset()         { *m = ConversionAdjustment
 func (m *ConversionAdjustmentResult) String() string { return proto.CompactTextString(m) }
 func (*ConversionAdjustmentResult) ProtoMessage()    {}
 func (*ConversionAdjustmentResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_upload_service_359236ec23384117, []int{5}
+	return fileDescriptor_conversion_adjustment_upload_service_f73ceda272931531, []int{5}
 }
 func (m *ConversionAdjustmentResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionAdjustmentResult.Unmarshal(m, b)
@@ -703,10 +704,10 @@ var _ConversionAdjustmentUploadService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/conversion_adjustment_upload_service.proto", fileDescriptor_conversion_adjustment_upload_service_359236ec23384117)
+	proto.RegisterFile("google/ads/googleads/v1/services/conversion_adjustment_upload_service.proto", fileDescriptor_conversion_adjustment_upload_service_f73ceda272931531)
 }
 
-var fileDescriptor_conversion_adjustment_upload_service_359236ec23384117 = []byte{
+var fileDescriptor_conversion_adjustment_upload_service_f73ceda272931531 = []byte{
 	// 821 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x56, 0xcb, 0x6f, 0xfb, 0x44,
 	0x10, 0xfe, 0xd9, 0xf9, 0x3d, 0xca, 0x86, 0x3e, 0xb2, 0xb4, 0x34, 0x0a, 0x15, 0x04, 0x53, 0x41,

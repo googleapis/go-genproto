@@ -70,7 +70,7 @@ func (x Task_View) String() string {
 	return proto.EnumName(Task_View_name, int32(x))
 }
 func (Task_View) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_task_1f97ae655065fb4c, []int{0, 0}
+	return fileDescriptor_task_bf54980d4c1d27a8, []int{0, 0}
 }
 
 // A unit of scheduled work.
@@ -136,7 +136,7 @@ func (m *Task) Reset()         { *m = Task{} }
 func (m *Task) String() string { return proto.CompactTextString(m) }
 func (*Task) ProtoMessage()    {}
 func (*Task) Descriptor() ([]byte, []int) {
-	return fileDescriptor_task_1f97ae655065fb4c, []int{0}
+	return fileDescriptor_task_bf54980d4c1d27a8, []int{0}
 }
 func (m *Task) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Task.Unmarshal(m, b)
@@ -339,7 +339,7 @@ func (m *TaskStatus) Reset()         { *m = TaskStatus{} }
 func (m *TaskStatus) String() string { return proto.CompactTextString(m) }
 func (*TaskStatus) ProtoMessage()    {}
 func (*TaskStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_task_1f97ae655065fb4c, []int{1}
+	return fileDescriptor_task_bf54980d4c1d27a8, []int{1}
 }
 func (m *TaskStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaskStatus.Unmarshal(m, b)
@@ -415,7 +415,7 @@ func (m *AttemptStatus) Reset()         { *m = AttemptStatus{} }
 func (m *AttemptStatus) String() string { return proto.CompactTextString(m) }
 func (*AttemptStatus) ProtoMessage()    {}
 func (*AttemptStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_task_1f97ae655065fb4c, []int{2}
+	return fileDescriptor_task_bf54980d4c1d27a8, []int{2}
 }
 func (m *AttemptStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AttemptStatus.Unmarshal(m, b)
@@ -471,10 +471,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2beta2/task.proto", fileDescriptor_task_1f97ae655065fb4c)
+	proto.RegisterFile("google/cloud/tasks/v2beta2/task.proto", fileDescriptor_task_bf54980d4c1d27a8)
 }
 
-var fileDescriptor_task_1f97ae655065fb4c = []byte{
+var fileDescriptor_task_bf54980d4c1d27a8 = []byte{
 	// 601 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0x5f, 0x6f, 0xda, 0x3c,
 	0x14, 0xc6, 0x1b, 0x9a, 0xf6, 0x2d, 0xe6, 0xcf, 0xcb, 0x3c, 0xb4, 0x46, 0x68, 0xda, 0x10, 0x52,

@@ -59,7 +59,7 @@ func (x HttpMethod) String() string {
 	return proto.EnumName(HttpMethod_name, int32(x))
 }
 func (HttpMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_target_85034d0cc39aee7f, []int{0}
+	return fileDescriptor_target_94aeace9d01cd65d, []int{0}
 }
 
 // Pull target.
@@ -73,7 +73,7 @@ func (m *PullTarget) Reset()         { *m = PullTarget{} }
 func (m *PullTarget) String() string { return proto.CompactTextString(m) }
 func (*PullTarget) ProtoMessage()    {}
 func (*PullTarget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_85034d0cc39aee7f, []int{0}
+	return fileDescriptor_target_94aeace9d01cd65d, []int{0}
 }
 func (m *PullTarget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PullTarget.Unmarshal(m, b)
@@ -132,7 +132,7 @@ func (m *PullMessage) Reset()         { *m = PullMessage{} }
 func (m *PullMessage) String() string { return proto.CompactTextString(m) }
 func (*PullMessage) ProtoMessage()    {}
 func (*PullMessage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_85034d0cc39aee7f, []int{1}
+	return fileDescriptor_target_94aeace9d01cd65d, []int{1}
 }
 func (m *PullMessage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PullMessage.Unmarshal(m, b)
@@ -202,7 +202,7 @@ func (m *AppEngineHttpTarget) Reset()         { *m = AppEngineHttpTarget{} }
 func (m *AppEngineHttpTarget) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpTarget) ProtoMessage()    {}
 func (*AppEngineHttpTarget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_85034d0cc39aee7f, []int{2}
+	return fileDescriptor_target_94aeace9d01cd65d, []int{2}
 }
 func (m *AppEngineHttpTarget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpTarget.Unmarshal(m, b)
@@ -368,7 +368,7 @@ func (m *AppEngineHttpRequest) Reset()         { *m = AppEngineHttpRequest{} }
 func (m *AppEngineHttpRequest) String() string { return proto.CompactTextString(m) }
 func (*AppEngineHttpRequest) ProtoMessage()    {}
 func (*AppEngineHttpRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_85034d0cc39aee7f, []int{3}
+	return fileDescriptor_target_94aeace9d01cd65d, []int{3}
 }
 func (m *AppEngineHttpRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineHttpRequest.Unmarshal(m, b)
@@ -563,7 +563,7 @@ func (m *AppEngineRouting) Reset()         { *m = AppEngineRouting{} }
 func (m *AppEngineRouting) String() string { return proto.CompactTextString(m) }
 func (*AppEngineRouting) ProtoMessage()    {}
 func (*AppEngineRouting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_target_85034d0cc39aee7f, []int{4}
+	return fileDescriptor_target_94aeace9d01cd65d, []int{4}
 }
 func (m *AppEngineRouting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppEngineRouting.Unmarshal(m, b)
@@ -622,10 +622,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/tasks/v2beta2/target.proto", fileDescriptor_target_85034d0cc39aee7f)
+	proto.RegisterFile("google/cloud/tasks/v2beta2/target.proto", fileDescriptor_target_94aeace9d01cd65d)
 }
 
-var fileDescriptor_target_85034d0cc39aee7f = []byte{
+var fileDescriptor_target_94aeace9d01cd65d = []byte{
 	// 557 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xcf, 0x6f, 0xd3, 0x4c,
 	0x10, 0xfd, 0x5c, 0xa7, 0xbf, 0xc6, 0xd1, 0x27, 0x6b, 0xa9, 0x84, 0x95, 0xa2, 0xaa, 0xe4, 0x00,

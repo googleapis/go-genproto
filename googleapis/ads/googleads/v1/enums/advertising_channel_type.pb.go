@@ -38,8 +38,8 @@ const (
 	AdvertisingChannelTypeEnum_HOTEL AdvertisingChannelTypeEnum_AdvertisingChannelType = 5
 	// Video campaigns.
 	AdvertisingChannelTypeEnum_VIDEO AdvertisingChannelTypeEnum_AdvertisingChannelType = 6
-	// Universal App Campaigns, including universal app install and universal
-	// app reengagement campaigns, that run across multiple channels.
+	// App Campaigns, and App Campaigns for Engagement, that run
+	// across multiple channels.
 	AdvertisingChannelTypeEnum_MULTI_CHANNEL AdvertisingChannelTypeEnum_AdvertisingChannelType = 7
 )
 
@@ -68,7 +68,7 @@ func (x AdvertisingChannelTypeEnum_AdvertisingChannelType) String() string {
 	return proto.EnumName(AdvertisingChannelTypeEnum_AdvertisingChannelType_name, int32(x))
 }
 func (AdvertisingChannelTypeEnum_AdvertisingChannelType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_advertising_channel_type_5d82ba2fb41708e4, []int{0, 0}
+	return fileDescriptor_advertising_channel_type_fa6d1db862c02c2d, []int{0, 0}
 }
 
 // The channel type a campaign may target to serve on.
@@ -82,7 +82,7 @@ func (m *AdvertisingChannelTypeEnum) Reset()         { *m = AdvertisingChannelTy
 func (m *AdvertisingChannelTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*AdvertisingChannelTypeEnum) ProtoMessage()    {}
 func (*AdvertisingChannelTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_advertising_channel_type_5d82ba2fb41708e4, []int{0}
+	return fileDescriptor_advertising_channel_type_fa6d1db862c02c2d, []int{0}
 }
 func (m *AdvertisingChannelTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdvertisingChannelTypeEnum.Unmarshal(m, b)
@@ -108,10 +108,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/advertising_channel_type.proto", fileDescriptor_advertising_channel_type_5d82ba2fb41708e4)
+	proto.RegisterFile("google/ads/googleads/v1/enums/advertising_channel_type.proto", fileDescriptor_advertising_channel_type_fa6d1db862c02c2d)
 }
 
-var fileDescriptor_advertising_channel_type_5d82ba2fb41708e4 = []byte{
+var fileDescriptor_advertising_channel_type_fa6d1db862c02c2d = []byte{
 	// 364 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0x41, 0x4e, 0xbb, 0x40,
 	0x18, 0xc5, 0xff, 0xd0, 0x7f, 0x5b, 0x9d, 0x6a, 0x1c, 0x59, 0xb8, 0xa8, 0x76, 0xd1, 0x1e, 0x60,

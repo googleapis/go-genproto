@@ -34,7 +34,7 @@ func (m *Fraction) Reset()         { *m = Fraction{} }
 func (m *Fraction) String() string { return proto.CompactTextString(m) }
 func (*Fraction) ProtoMessage()    {}
 func (*Fraction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fraction_b8dcff062bb9c31d, []int{0}
+	return fileDescriptor_fraction_4cfdd333c72eef64, []int{0}
 }
 func (m *Fraction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Fraction.Unmarshal(m, b)
@@ -73,10 +73,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/type/fraction.proto", fileDescriptor_fraction_b8dcff062bb9c31d)
+	proto.RegisterFile("google/type/fraction.proto", fileDescriptor_fraction_4cfdd333c72eef64)
 }
 
-var fileDescriptor_fraction_b8dcff062bb9c31d = []byte{
+var fileDescriptor_fraction_4cfdd333c72eef64 = []byte{
 	// 168 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x4a, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x2f, 0xa9, 0x2c, 0x48, 0xd5, 0x4f, 0x2b, 0x4a, 0x4c, 0x2e, 0xc9, 0xcc, 0xcf,

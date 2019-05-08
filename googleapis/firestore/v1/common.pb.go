@@ -38,7 +38,7 @@ func (m *DocumentMask) Reset()         { *m = DocumentMask{} }
 func (m *DocumentMask) String() string { return proto.CompactTextString(m) }
 func (*DocumentMask) ProtoMessage()    {}
 func (*DocumentMask) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_fa83f45090c97da5, []int{0}
+	return fileDescriptor_common_dddbf67b55d1e5f0, []int{0}
 }
 func (m *DocumentMask) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentMask.Unmarshal(m, b)
@@ -82,7 +82,7 @@ func (m *Precondition) Reset()         { *m = Precondition{} }
 func (m *Precondition) String() string { return proto.CompactTextString(m) }
 func (*Precondition) ProtoMessage()    {}
 func (*Precondition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_fa83f45090c97da5, []int{1}
+	return fileDescriptor_common_dddbf67b55d1e5f0, []int{1}
 }
 func (m *Precondition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Precondition.Unmarshal(m, b)
@@ -229,7 +229,7 @@ func (m *TransactionOptions) Reset()         { *m = TransactionOptions{} }
 func (m *TransactionOptions) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions) ProtoMessage()    {}
 func (*TransactionOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_fa83f45090c97da5, []int{2}
+	return fileDescriptor_common_dddbf67b55d1e5f0, []int{2}
 }
 func (m *TransactionOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions.Unmarshal(m, b)
@@ -373,7 +373,7 @@ func (m *TransactionOptions_ReadWrite) Reset()         { *m = TransactionOptions
 func (m *TransactionOptions_ReadWrite) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions_ReadWrite) ProtoMessage()    {}
 func (*TransactionOptions_ReadWrite) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_fa83f45090c97da5, []int{2, 0}
+	return fileDescriptor_common_dddbf67b55d1e5f0, []int{2, 0}
 }
 func (m *TransactionOptions_ReadWrite) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions_ReadWrite.Unmarshal(m, b)
@@ -417,7 +417,7 @@ func (m *TransactionOptions_ReadOnly) Reset()         { *m = TransactionOptions_
 func (m *TransactionOptions_ReadOnly) String() string { return proto.CompactTextString(m) }
 func (*TransactionOptions_ReadOnly) ProtoMessage()    {}
 func (*TransactionOptions_ReadOnly) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_fa83f45090c97da5, []int{2, 1}
+	return fileDescriptor_common_dddbf67b55d1e5f0, []int{2, 1}
 }
 func (m *TransactionOptions_ReadOnly) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TransactionOptions_ReadOnly.Unmarshal(m, b)
@@ -525,10 +525,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/v1/common.proto", fileDescriptor_common_fa83f45090c97da5)
+	proto.RegisterFile("google/firestore/v1/common.proto", fileDescriptor_common_dddbf67b55d1e5f0)
 }
 
-var fileDescriptor_common_fa83f45090c97da5 = []byte{
+var fileDescriptor_common_dddbf67b55d1e5f0 = []byte{
 	// 458 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x52, 0x5f, 0x8b, 0xd3, 0x40,
 	0x10, 0x6f, 0x7a, 0x47, 0x69, 0xa7, 0x45, 0xce, 0x28, 0x5a, 0x83, 0x70, 0xa5, 0x4f, 0x05, 0x61,

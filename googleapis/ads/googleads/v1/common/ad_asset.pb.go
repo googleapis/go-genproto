@@ -39,7 +39,7 @@ func (m *AdTextAsset) Reset()         { *m = AdTextAsset{} }
 func (m *AdTextAsset) String() string { return proto.CompactTextString(m) }
 func (*AdTextAsset) ProtoMessage()    {}
 func (*AdTextAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_asset_f6c685bb92eee707, []int{0}
+	return fileDescriptor_ad_asset_07bce9e3ba61c559, []int{0}
 }
 func (m *AdTextAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdTextAsset.Unmarshal(m, b)
@@ -86,7 +86,7 @@ func (m *AdImageAsset) Reset()         { *m = AdImageAsset{} }
 func (m *AdImageAsset) String() string { return proto.CompactTextString(m) }
 func (*AdImageAsset) ProtoMessage()    {}
 func (*AdImageAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_asset_f6c685bb92eee707, []int{1}
+	return fileDescriptor_ad_asset_07bce9e3ba61c559, []int{1}
 }
 func (m *AdImageAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdImageAsset.Unmarshal(m, b)
@@ -126,7 +126,7 @@ func (m *AdVideoAsset) Reset()         { *m = AdVideoAsset{} }
 func (m *AdVideoAsset) String() string { return proto.CompactTextString(m) }
 func (*AdVideoAsset) ProtoMessage()    {}
 func (*AdVideoAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_asset_f6c685bb92eee707, []int{2}
+	return fileDescriptor_ad_asset_07bce9e3ba61c559, []int{2}
 }
 func (m *AdVideoAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdVideoAsset.Unmarshal(m, b)
@@ -166,7 +166,7 @@ func (m *AdMediaBundleAsset) Reset()         { *m = AdMediaBundleAsset{} }
 func (m *AdMediaBundleAsset) String() string { return proto.CompactTextString(m) }
 func (*AdMediaBundleAsset) ProtoMessage()    {}
 func (*AdMediaBundleAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_asset_f6c685bb92eee707, []int{3}
+	return fileDescriptor_ad_asset_07bce9e3ba61c559, []int{3}
 }
 func (m *AdMediaBundleAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdMediaBundleAsset.Unmarshal(m, b)
@@ -201,10 +201,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/ad_asset.proto", fileDescriptor_ad_asset_f6c685bb92eee707)
+	proto.RegisterFile("google/ads/googleads/v1/common/ad_asset.proto", fileDescriptor_ad_asset_07bce9e3ba61c559)
 }
 
-var fileDescriptor_ad_asset_f6c685bb92eee707 = []byte{
+var fileDescriptor_ad_asset_07bce9e3ba61c559 = []byte{
 	// 401 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0xcd, 0x6a, 0xdc, 0x30,
 	0x10, 0xc7, 0xf1, 0xf6, 0xe3, 0xa0, 0x5d, 0x7a, 0xf0, 0x29, 0x84, 0x10, 0x82, 0x4f, 0xb9, 0x54,

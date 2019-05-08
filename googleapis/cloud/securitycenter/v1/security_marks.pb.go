@@ -47,7 +47,7 @@ func (m *SecurityMarks) Reset()         { *m = SecurityMarks{} }
 func (m *SecurityMarks) String() string { return proto.CompactTextString(m) }
 func (*SecurityMarks) ProtoMessage()    {}
 func (*SecurityMarks) Descriptor() ([]byte, []int) {
-	return fileDescriptor_security_marks_837e7f79b9854771, []int{0}
+	return fileDescriptor_security_marks_00c042d4d9bf7f29, []int{0}
 }
 func (m *SecurityMarks) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SecurityMarks.Unmarshal(m, b)
@@ -87,10 +87,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/securitycenter/v1/security_marks.proto", fileDescriptor_security_marks_837e7f79b9854771)
+	proto.RegisterFile("google/cloud/securitycenter/v1/security_marks.proto", fileDescriptor_security_marks_00c042d4d9bf7f29)
 }
 
-var fileDescriptor_security_marks_837e7f79b9854771 = []byte{
+var fileDescriptor_security_marks_00c042d4d9bf7f29 = []byte{
 	// 295 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x32, 0x4e, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x4f, 0xce, 0xc9, 0x2f, 0x4d, 0xd1, 0x2f, 0x4e, 0x4d, 0x2e, 0x2d, 0xca, 0x2c,

@@ -69,7 +69,7 @@ func (x OperationState) String() string {
 	return proto.EnumName(OperationState_name, int32(x))
 }
 func (OperationState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_operation_de849cb0d13dc7a4, []int{0}
+	return fileDescriptor_operation_b0b923bddd463673, []int{0}
 }
 
 // Specifies how the index is changing.
@@ -99,7 +99,7 @@ func (x FieldOperationMetadata_IndexConfigDelta_ChangeType) String() string {
 	return proto.EnumName(FieldOperationMetadata_IndexConfigDelta_ChangeType_name, int32(x))
 }
 func (FieldOperationMetadata_IndexConfigDelta_ChangeType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_operation_de849cb0d13dc7a4, []int{1, 0, 0}
+	return fileDescriptor_operation_b0b923bddd463673, []int{1, 0, 0}
 }
 
 // Metadata for [google.longrunning.Operation][google.longrunning.Operation] results from
@@ -128,7 +128,7 @@ func (m *IndexOperationMetadata) Reset()         { *m = IndexOperationMetadata{}
 func (m *IndexOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*IndexOperationMetadata) ProtoMessage()    {}
 func (*IndexOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operation_de849cb0d13dc7a4, []int{0}
+	return fileDescriptor_operation_b0b923bddd463673, []int{0}
 }
 func (m *IndexOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IndexOperationMetadata.Unmarshal(m, b)
@@ -219,7 +219,7 @@ func (m *FieldOperationMetadata) Reset()         { *m = FieldOperationMetadata{}
 func (m *FieldOperationMetadata) String() string { return proto.CompactTextString(m) }
 func (*FieldOperationMetadata) ProtoMessage()    {}
 func (*FieldOperationMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operation_de849cb0d13dc7a4, []int{1}
+	return fileDescriptor_operation_b0b923bddd463673, []int{1}
 }
 func (m *FieldOperationMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FieldOperationMetadata.Unmarshal(m, b)
@@ -305,7 +305,7 @@ func (m *FieldOperationMetadata_IndexConfigDelta) Reset() {
 func (m *FieldOperationMetadata_IndexConfigDelta) String() string { return proto.CompactTextString(m) }
 func (*FieldOperationMetadata_IndexConfigDelta) ProtoMessage()    {}
 func (*FieldOperationMetadata_IndexConfigDelta) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operation_de849cb0d13dc7a4, []int{1, 0}
+	return fileDescriptor_operation_b0b923bddd463673, []int{1, 0}
 }
 func (m *FieldOperationMetadata_IndexConfigDelta) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FieldOperationMetadata_IndexConfigDelta.Unmarshal(m, b)
@@ -366,7 +366,7 @@ func (m *ExportDocumentsMetadata) Reset()         { *m = ExportDocumentsMetadata
 func (m *ExportDocumentsMetadata) String() string { return proto.CompactTextString(m) }
 func (*ExportDocumentsMetadata) ProtoMessage()    {}
 func (*ExportDocumentsMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operation_de849cb0d13dc7a4, []int{2}
+	return fileDescriptor_operation_b0b923bddd463673, []int{2}
 }
 func (m *ExportDocumentsMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportDocumentsMetadata.Unmarshal(m, b)
@@ -462,7 +462,7 @@ func (m *ImportDocumentsMetadata) Reset()         { *m = ImportDocumentsMetadata
 func (m *ImportDocumentsMetadata) String() string { return proto.CompactTextString(m) }
 func (*ImportDocumentsMetadata) ProtoMessage()    {}
 func (*ImportDocumentsMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operation_de849cb0d13dc7a4, []int{3}
+	return fileDescriptor_operation_b0b923bddd463673, []int{3}
 }
 func (m *ImportDocumentsMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImportDocumentsMetadata.Unmarshal(m, b)
@@ -546,7 +546,7 @@ func (m *ExportDocumentsResponse) Reset()         { *m = ExportDocumentsResponse
 func (m *ExportDocumentsResponse) String() string { return proto.CompactTextString(m) }
 func (*ExportDocumentsResponse) ProtoMessage()    {}
 func (*ExportDocumentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operation_de849cb0d13dc7a4, []int{4}
+	return fileDescriptor_operation_b0b923bddd463673, []int{4}
 }
 func (m *ExportDocumentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportDocumentsResponse.Unmarshal(m, b)
@@ -590,7 +590,7 @@ func (m *Progress) Reset()         { *m = Progress{} }
 func (m *Progress) String() string { return proto.CompactTextString(m) }
 func (*Progress) ProtoMessage()    {}
 func (*Progress) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operation_de849cb0d13dc7a4, []int{5}
+	return fileDescriptor_operation_b0b923bddd463673, []int{5}
 }
 func (m *Progress) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Progress.Unmarshal(m, b)
@@ -637,10 +637,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/firestore/admin/v1/operation.proto", fileDescriptor_operation_de849cb0d13dc7a4)
+	proto.RegisterFile("google/firestore/admin/v1/operation.proto", fileDescriptor_operation_b0b923bddd463673)
 }
 
-var fileDescriptor_operation_de849cb0d13dc7a4 = []byte{
+var fileDescriptor_operation_b0b923bddd463673 = []byte{
 	// 850 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x56, 0x4f, 0x6f, 0xe3, 0x44,
 	0x1c, 0xc5, 0x71, 0x92, 0x6e, 0x7e, 0xa5, 0x59, 0x77, 0x40, 0xdb, 0xd0, 0x05, 0x35, 0x0a, 0x5a,

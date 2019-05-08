@@ -59,7 +59,7 @@ func (m *Instruction) Reset()         { *m = Instruction{} }
 func (m *Instruction) String() string { return proto.CompactTextString(m) }
 func (*Instruction) ProtoMessage()    {}
 func (*Instruction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_instruction_1a000bce9896ac69, []int{0}
+	return fileDescriptor_instruction_e84d048d533056c9, []int{0}
 }
 func (m *Instruction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Instruction.Unmarshal(m, b)
@@ -148,7 +148,7 @@ func (m *CsvInstruction) Reset()         { *m = CsvInstruction{} }
 func (m *CsvInstruction) String() string { return proto.CompactTextString(m) }
 func (*CsvInstruction) ProtoMessage()    {}
 func (*CsvInstruction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_instruction_1a000bce9896ac69, []int{1}
+	return fileDescriptor_instruction_e84d048d533056c9, []int{1}
 }
 func (m *CsvInstruction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CsvInstruction.Unmarshal(m, b)
@@ -188,7 +188,7 @@ func (m *PdfInstruction) Reset()         { *m = PdfInstruction{} }
 func (m *PdfInstruction) String() string { return proto.CompactTextString(m) }
 func (*PdfInstruction) ProtoMessage()    {}
 func (*PdfInstruction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_instruction_1a000bce9896ac69, []int{2}
+	return fileDescriptor_instruction_e84d048d533056c9, []int{2}
 }
 func (m *PdfInstruction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PdfInstruction.Unmarshal(m, b)
@@ -222,10 +222,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datalabeling/v1beta1/instruction.proto", fileDescriptor_instruction_1a000bce9896ac69)
+	proto.RegisterFile("google/cloud/datalabeling/v1beta1/instruction.proto", fileDescriptor_instruction_e84d048d533056c9)
 }
 
-var fileDescriptor_instruction_1a000bce9896ac69 = []byte{
+var fileDescriptor_instruction_e84d048d533056c9 = []byte{
 	// 398 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0x41, 0x8b, 0xdb, 0x30,
 	0x10, 0x85, 0x71, 0x77, 0xbb, 0x6d, 0xe4, 0x25, 0x05, 0x9f, 0x4c, 0x28, 0xd4, 0xbb, 0x50, 0x08,

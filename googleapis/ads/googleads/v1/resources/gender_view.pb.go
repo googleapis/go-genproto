@@ -35,7 +35,7 @@ func (m *GenderView) Reset()         { *m = GenderView{} }
 func (m *GenderView) String() string { return proto.CompactTextString(m) }
 func (*GenderView) ProtoMessage()    {}
 func (*GenderView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_gender_view_333ad0c62bf9be1a, []int{0}
+	return fileDescriptor_gender_view_a5fa3e0190fff0f4, []int{0}
 }
 func (m *GenderView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenderView.Unmarshal(m, b)
@@ -67,10 +67,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/gender_view.proto", fileDescriptor_gender_view_333ad0c62bf9be1a)
+	proto.RegisterFile("google/ads/googleads/v1/resources/gender_view.proto", fileDescriptor_gender_view_a5fa3e0190fff0f4)
 }
 
-var fileDescriptor_gender_view_333ad0c62bf9be1a = []byte{
+var fileDescriptor_gender_view_a5fa3e0190fff0f4 = []byte{
 	// 262 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0x31, 0x4b, 0xc4, 0x30,
 	0x14, 0xc7, 0x69, 0x05, 0xc1, 0xa0, 0x08, 0x37, 0x89, 0x38, 0x78, 0xca, 0x81, 0x53, 0x42, 0xb8,

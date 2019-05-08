@@ -65,7 +65,7 @@ func (x DayOfWeek) String() string {
 	return proto.EnumName(DayOfWeek_name, int32(x))
 }
 func (DayOfWeek) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_dayofweek_67223bb91ca8c6d5, []int{0}
+	return fileDescriptor_dayofweek_b79b7fd6c2a3d9e8, []int{0}
 }
 
 func init() {
@@ -73,10 +73,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/type/dayofweek.proto", fileDescriptor_dayofweek_67223bb91ca8c6d5)
+	proto.RegisterFile("google/type/dayofweek.proto", fileDescriptor_dayofweek_b79b7fd6c2a3d9e8)
 }
 
-var fileDescriptor_dayofweek_67223bb91ca8c6d5 = []byte{
+var fileDescriptor_dayofweek_b79b7fd6c2a3d9e8 = []byte{
 	// 235 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x4e, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x2f, 0xa9, 0x2c, 0x48, 0xd5, 0x4f, 0x49, 0xac, 0xcc, 0x4f, 0x2b, 0x4f, 0x4d,

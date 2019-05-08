@@ -43,7 +43,7 @@ func (x Hash_HashType) String() string {
 	return proto.EnumName(Hash_HashType_name, int32(x))
 }
 func (Hash_HashType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_provenance_89c76b14d17662a9, []int{3, 0}
+	return fileDescriptor_provenance_4fd1fd2866d3bc11, []int{3, 0}
 }
 
 // Provenance of a build. Contains all information needed to verify the full
@@ -87,7 +87,7 @@ func (m *BuildProvenance) Reset()         { *m = BuildProvenance{} }
 func (m *BuildProvenance) String() string { return proto.CompactTextString(m) }
 func (*BuildProvenance) ProtoMessage()    {}
 func (*BuildProvenance) Descriptor() ([]byte, []int) {
-	return fileDescriptor_provenance_89c76b14d17662a9, []int{0}
+	return fileDescriptor_provenance_4fd1fd2866d3bc11, []int{0}
 }
 func (m *BuildProvenance) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BuildProvenance.Unmarshal(m, b)
@@ -228,7 +228,7 @@ func (m *Source) Reset()         { *m = Source{} }
 func (m *Source) String() string { return proto.CompactTextString(m) }
 func (*Source) ProtoMessage()    {}
 func (*Source) Descriptor() ([]byte, []int) {
-	return fileDescriptor_provenance_89c76b14d17662a9, []int{1}
+	return fileDescriptor_provenance_4fd1fd2866d3bc11, []int{1}
 }
 func (m *Source) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Source.Unmarshal(m, b)
@@ -290,7 +290,7 @@ func (m *FileHashes) Reset()         { *m = FileHashes{} }
 func (m *FileHashes) String() string { return proto.CompactTextString(m) }
 func (*FileHashes) ProtoMessage()    {}
 func (*FileHashes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_provenance_89c76b14d17662a9, []int{2}
+	return fileDescriptor_provenance_4fd1fd2866d3bc11, []int{2}
 }
 func (m *FileHashes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FileHashes.Unmarshal(m, b)
@@ -332,7 +332,7 @@ func (m *Hash) Reset()         { *m = Hash{} }
 func (m *Hash) String() string { return proto.CompactTextString(m) }
 func (*Hash) ProtoMessage()    {}
 func (*Hash) Descriptor() ([]byte, []int) {
-	return fileDescriptor_provenance_89c76b14d17662a9, []int{3}
+	return fileDescriptor_provenance_4fd1fd2866d3bc11, []int{3}
 }
 func (m *Hash) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Hash.Unmarshal(m, b)
@@ -392,7 +392,7 @@ func (m *Command) Reset()         { *m = Command{} }
 func (m *Command) String() string { return proto.CompactTextString(m) }
 func (*Command) ProtoMessage()    {}
 func (*Command) Descriptor() ([]byte, []int) {
-	return fileDescriptor_provenance_89c76b14d17662a9, []int{4}
+	return fileDescriptor_provenance_4fd1fd2866d3bc11, []int{4}
 }
 func (m *Command) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Command.Unmarshal(m, b)
@@ -477,7 +477,7 @@ func (m *Artifact) Reset()         { *m = Artifact{} }
 func (m *Artifact) String() string { return proto.CompactTextString(m) }
 func (*Artifact) ProtoMessage()    {}
 func (*Artifact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_provenance_89c76b14d17662a9, []int{5}
+	return fileDescriptor_provenance_4fd1fd2866d3bc11, []int{5}
 }
 func (m *Artifact) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Artifact.Unmarshal(m, b)
@@ -531,10 +531,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/provenance/provenance.proto", fileDescriptor_provenance_89c76b14d17662a9)
+	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/provenance/provenance.proto", fileDescriptor_provenance_4fd1fd2866d3bc11)
 }
 
-var fileDescriptor_provenance_89c76b14d17662a9 = []byte{
+var fileDescriptor_provenance_4fd1fd2866d3bc11 = []byte{
 	// 848 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x55, 0x4b, 0x6f, 0x23, 0x45,
 	0x10, 0x66, 0xfc, 0x1c, 0x97, 0xb3, 0x49, 0xb6, 0x59, 0xa4, 0x8e, 0x51, 0x44, 0x64, 0x5e, 0xe1,

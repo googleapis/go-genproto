@@ -65,7 +65,7 @@ func (x NoteKind) String() string {
 	return proto.EnumName(NoteKind_name, int32(x))
 }
 func (NoteKind) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_bcbfdeee4a2611b3, []int{0}
+	return fileDescriptor_common_945c0ba544e58d51, []int{0}
 }
 
 // Metadata for any related URL information.
@@ -83,7 +83,7 @@ func (m *RelatedUrl) Reset()         { *m = RelatedUrl{} }
 func (m *RelatedUrl) String() string { return proto.CompactTextString(m) }
 func (*RelatedUrl) ProtoMessage()    {}
 func (*RelatedUrl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_bcbfdeee4a2611b3, []int{0}
+	return fileDescriptor_common_945c0ba544e58d51, []int{0}
 }
 func (m *RelatedUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RelatedUrl.Unmarshal(m, b)
@@ -123,10 +123,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/common/common.proto", fileDescriptor_common_bcbfdeee4a2611b3)
+	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/common/common.proto", fileDescriptor_common_945c0ba544e58d51)
 }
 
-var fileDescriptor_common_bcbfdeee4a2611b3 = []byte{
+var fileDescriptor_common_945c0ba544e58d51 = []byte{
 	// 322 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x90, 0x41, 0x6b, 0xea, 0x40,
 	0x14, 0x85, 0x5f, 0xf4, 0xa9, 0xcf, 0x2b, 0x3e, 0xa7, 0x43, 0x0b, 0xba, 0x2b, 0x5d, 0x95, 0x2e,

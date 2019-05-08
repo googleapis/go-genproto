@@ -47,7 +47,7 @@ func (x Index_AncestorMode) String() string {
 	return proto.EnumName(Index_AncestorMode_name, int32(x))
 }
 func (Index_AncestorMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_index_f584c9f4d3343f36, []int{0, 0}
+	return fileDescriptor_index_06304ce39414dba4, []int{0, 0}
 }
 
 // The direction determines how a property is indexed.
@@ -79,7 +79,7 @@ func (x Index_Direction) String() string {
 	return proto.EnumName(Index_Direction_name, int32(x))
 }
 func (Index_Direction) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_index_f584c9f4d3343f36, []int{0, 1}
+	return fileDescriptor_index_06304ce39414dba4, []int{0, 1}
 }
 
 // The possible set of states of an index.
@@ -130,7 +130,7 @@ func (x Index_State) String() string {
 	return proto.EnumName(Index_State_name, int32(x))
 }
 func (Index_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_index_f584c9f4d3343f36, []int{0, 2}
+	return fileDescriptor_index_06304ce39414dba4, []int{0, 2}
 }
 
 // A minimal index definition.
@@ -163,7 +163,7 @@ func (m *Index) Reset()         { *m = Index{} }
 func (m *Index) String() string { return proto.CompactTextString(m) }
 func (*Index) ProtoMessage()    {}
 func (*Index) Descriptor() ([]byte, []int) {
-	return fileDescriptor_index_f584c9f4d3343f36, []int{0}
+	return fileDescriptor_index_06304ce39414dba4, []int{0}
 }
 func (m *Index) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Index.Unmarshal(m, b)
@@ -242,7 +242,7 @@ func (m *Index_IndexedProperty) Reset()         { *m = Index_IndexedProperty{} }
 func (m *Index_IndexedProperty) String() string { return proto.CompactTextString(m) }
 func (*Index_IndexedProperty) ProtoMessage()    {}
 func (*Index_IndexedProperty) Descriptor() ([]byte, []int) {
-	return fileDescriptor_index_f584c9f4d3343f36, []int{0, 0}
+	return fileDescriptor_index_06304ce39414dba4, []int{0, 0}
 }
 func (m *Index_IndexedProperty) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Index_IndexedProperty.Unmarshal(m, b)
@@ -285,10 +285,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/datastore/admin/v1/index.proto", fileDescriptor_index_f584c9f4d3343f36)
+	proto.RegisterFile("google/datastore/admin/v1/index.proto", fileDescriptor_index_06304ce39414dba4)
 }
 
-var fileDescriptor_index_f584c9f4d3343f36 = []byte{
+var fileDescriptor_index_06304ce39414dba4 = []byte{
 	// 492 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x53, 0x6f, 0x6b, 0xd3, 0x4e,
 	0x1c, 0xff, 0xa5, 0x6d, 0xb6, 0xe6, 0xfb, 0xdb, 0x66, 0x76, 0x30, 0x48, 0x87, 0xc5, 0x52, 0x50,

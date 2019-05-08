@@ -41,7 +41,7 @@ func (m *UpstreamRequest) Reset()         { *m = UpstreamRequest{} }
 func (m *UpstreamRequest) String() string { return proto.CompactTextString(m) }
 func (*UpstreamRequest) ProtoMessage()    {}
 func (*UpstreamRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_connection_api_e2e68185fc0238ce, []int{0}
+	return fileDescriptor_connection_api_678fe704a2040da8, []int{0}
 }
 func (m *UpstreamRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpstreamRequest.Unmarshal(m, b)
@@ -156,7 +156,7 @@ func (m *DownstreamResponse) Reset()         { *m = DownstreamResponse{} }
 func (m *DownstreamResponse) String() string { return proto.CompactTextString(m) }
 func (*DownstreamResponse) ProtoMessage()    {}
 func (*DownstreamResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_connection_api_e2e68185fc0238ce, []int{1}
+	return fileDescriptor_connection_api_678fe704a2040da8, []int{1}
 }
 func (m *DownstreamResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DownstreamResponse.Unmarshal(m, b)
@@ -271,7 +271,7 @@ func (m *Ack) Reset()         { *m = Ack{} }
 func (m *Ack) String() string { return proto.CompactTextString(m) }
 func (*Ack) ProtoMessage()    {}
 func (*Ack) Descriptor() ([]byte, []int) {
-	return fileDescriptor_connection_api_e2e68185fc0238ce, []int{2}
+	return fileDescriptor_connection_api_678fe704a2040da8, []int{2}
 }
 func (m *Ack) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Ack.Unmarshal(m, b)
@@ -319,7 +319,7 @@ func (m *Message) Reset()         { *m = Message{} }
 func (m *Message) String() string { return proto.CompactTextString(m) }
 func (*Message) ProtoMessage()    {}
 func (*Message) Descriptor() ([]byte, []int) {
-	return fileDescriptor_connection_api_e2e68185fc0238ce, []int{3}
+	return fileDescriptor_connection_api_678fe704a2040da8, []int{3}
 }
 func (m *Message) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Message.Unmarshal(m, b)
@@ -504,10 +504,10 @@ var _ConnectionApi_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/firebase/fcm/connection/v1alpha1/connection_api.proto", fileDescriptor_connection_api_e2e68185fc0238ce)
+	proto.RegisterFile("google/firebase/fcm/connection/v1alpha1/connection_api.proto", fileDescriptor_connection_api_678fe704a2040da8)
 }
 
-var fileDescriptor_connection_api_e2e68185fc0238ce = []byte{
+var fileDescriptor_connection_api_678fe704a2040da8 = []byte{
 	// 453 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x93, 0xc1, 0x6e, 0x13, 0x31,
 	0x10, 0x86, 0xb3, 0xd9, 0x42, 0x94, 0x09, 0xa5, 0xc8, 0xe2, 0x10, 0xad, 0x40, 0x54, 0x11, 0x12,

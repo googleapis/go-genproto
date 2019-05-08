@@ -47,7 +47,7 @@ func (m *KnowledgeBase) Reset()         { *m = KnowledgeBase{} }
 func (m *KnowledgeBase) String() string { return proto.CompactTextString(m) }
 func (*KnowledgeBase) ProtoMessage()    {}
 func (*KnowledgeBase) Descriptor() ([]byte, []int) {
-	return fileDescriptor_knowledge_base_0f470f78f8eed158, []int{0}
+	return fileDescriptor_knowledge_base_54c2aba98392ab6e, []int{0}
 }
 func (m *KnowledgeBase) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KnowledgeBase.Unmarshal(m, b)
@@ -100,7 +100,7 @@ func (m *ListKnowledgeBasesRequest) Reset()         { *m = ListKnowledgeBasesReq
 func (m *ListKnowledgeBasesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListKnowledgeBasesRequest) ProtoMessage()    {}
 func (*ListKnowledgeBasesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_knowledge_base_0f470f78f8eed158, []int{1}
+	return fileDescriptor_knowledge_base_54c2aba98392ab6e, []int{1}
 }
 func (m *ListKnowledgeBasesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListKnowledgeBasesRequest.Unmarshal(m, b)
@@ -157,7 +157,7 @@ func (m *ListKnowledgeBasesResponse) Reset()         { *m = ListKnowledgeBasesRe
 func (m *ListKnowledgeBasesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListKnowledgeBasesResponse) ProtoMessage()    {}
 func (*ListKnowledgeBasesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_knowledge_base_0f470f78f8eed158, []int{2}
+	return fileDescriptor_knowledge_base_54c2aba98392ab6e, []int{2}
 }
 func (m *ListKnowledgeBasesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListKnowledgeBasesResponse.Unmarshal(m, b)
@@ -205,7 +205,7 @@ func (m *GetKnowledgeBaseRequest) Reset()         { *m = GetKnowledgeBaseRequest
 func (m *GetKnowledgeBaseRequest) String() string { return proto.CompactTextString(m) }
 func (*GetKnowledgeBaseRequest) ProtoMessage()    {}
 func (*GetKnowledgeBaseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_knowledge_base_0f470f78f8eed158, []int{3}
+	return fileDescriptor_knowledge_base_54c2aba98392ab6e, []int{3}
 }
 func (m *GetKnowledgeBaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetKnowledgeBaseRequest.Unmarshal(m, b)
@@ -248,7 +248,7 @@ func (m *CreateKnowledgeBaseRequest) Reset()         { *m = CreateKnowledgeBaseR
 func (m *CreateKnowledgeBaseRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateKnowledgeBaseRequest) ProtoMessage()    {}
 func (*CreateKnowledgeBaseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_knowledge_base_0f470f78f8eed158, []int{4}
+	return fileDescriptor_knowledge_base_54c2aba98392ab6e, []int{4}
 }
 func (m *CreateKnowledgeBaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateKnowledgeBaseRequest.Unmarshal(m, b)
@@ -299,7 +299,7 @@ func (m *DeleteKnowledgeBaseRequest) Reset()         { *m = DeleteKnowledgeBaseR
 func (m *DeleteKnowledgeBaseRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteKnowledgeBaseRequest) ProtoMessage()    {}
 func (*DeleteKnowledgeBaseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_knowledge_base_0f470f78f8eed158, []int{5}
+	return fileDescriptor_knowledge_base_54c2aba98392ab6e, []int{5}
 }
 func (m *DeleteKnowledgeBaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteKnowledgeBaseRequest.Unmarshal(m, b)
@@ -350,7 +350,7 @@ func (m *UpdateKnowledgeBaseRequest) Reset()         { *m = UpdateKnowledgeBaseR
 func (m *UpdateKnowledgeBaseRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateKnowledgeBaseRequest) ProtoMessage()    {}
 func (*UpdateKnowledgeBaseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_knowledge_base_0f470f78f8eed158, []int{6}
+	return fileDescriptor_knowledge_base_54c2aba98392ab6e, []int{6}
 }
 func (m *UpdateKnowledgeBaseRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateKnowledgeBaseRequest.Unmarshal(m, b)
@@ -609,10 +609,10 @@ var _KnowledgeBases_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dialogflow/v2beta1/knowledge_base.proto", fileDescriptor_knowledge_base_0f470f78f8eed158)
+	proto.RegisterFile("google/cloud/dialogflow/v2beta1/knowledge_base.proto", fileDescriptor_knowledge_base_54c2aba98392ab6e)
 }
 
-var fileDescriptor_knowledge_base_0f470f78f8eed158 = []byte{
+var fileDescriptor_knowledge_base_54c2aba98392ab6e = []byte{
 	// 736 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x56, 0xcf, 0x4f, 0x13, 0x41,
 	0x14, 0xce, 0x14, 0x21, 0xf0, 0x10, 0x30, 0x83, 0x41, 0x58, 0x34, 0xe0, 0x9a, 0x18, 0x52, 0xe3,

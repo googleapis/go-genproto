@@ -41,7 +41,7 @@ func (m *TemporalAsset) Reset()         { *m = TemporalAsset{} }
 func (m *TemporalAsset) String() string { return proto.CompactTextString(m) }
 func (*TemporalAsset) ProtoMessage()    {}
 func (*TemporalAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_6d29e9af2672d77e, []int{0}
+	return fileDescriptor_assets_6b5b5abd731d0fdc, []int{0}
 }
 func (m *TemporalAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TemporalAsset.Unmarshal(m, b)
@@ -98,7 +98,7 @@ func (m *TimeWindow) Reset()         { *m = TimeWindow{} }
 func (m *TimeWindow) String() string { return proto.CompactTextString(m) }
 func (*TimeWindow) ProtoMessage()    {}
 func (*TimeWindow) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_6d29e9af2672d77e, []int{1}
+	return fileDescriptor_assets_6b5b5abd731d0fdc, []int{1}
 }
 func (m *TimeWindow) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeWindow.Unmarshal(m, b)
@@ -157,7 +157,7 @@ func (m *Asset) Reset()         { *m = Asset{} }
 func (m *Asset) String() string { return proto.CompactTextString(m) }
 func (*Asset) ProtoMessage()    {}
 func (*Asset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_6d29e9af2672d77e, []int{2}
+	return fileDescriptor_assets_6b5b5abd731d0fdc, []int{2}
 }
 func (m *Asset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Asset.Unmarshal(m, b)
@@ -249,7 +249,7 @@ func (m *Resource) Reset()         { *m = Resource{} }
 func (m *Resource) String() string { return proto.CompactTextString(m) }
 func (*Resource) ProtoMessage()    {}
 func (*Resource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_assets_6d29e9af2672d77e, []int{3}
+	return fileDescriptor_assets_6b5b5abd731d0fdc, []int{3}
 }
 func (m *Resource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Resource.Unmarshal(m, b)
@@ -319,10 +319,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/asset/v1/assets.proto", fileDescriptor_assets_6d29e9af2672d77e)
+	proto.RegisterFile("google/cloud/asset/v1/assets.proto", fileDescriptor_assets_6b5b5abd731d0fdc)
 }
 
-var fileDescriptor_assets_6d29e9af2672d77e = []byte{
+var fileDescriptor_assets_6b5b5abd731d0fdc = []byte{
 	// 541 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x53, 0xdf, 0x6a, 0xdb, 0x3c,
 	0x14, 0xc7, 0x69, 0x92, 0xc6, 0xa7, 0x5f, 0xbf, 0x0b, 0xb1, 0x74, 0x6e, 0xc8, 0x68, 0x6b, 0x18,

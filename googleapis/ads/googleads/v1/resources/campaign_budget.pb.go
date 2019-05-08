@@ -47,7 +47,7 @@ type CampaignBudget struct {
 	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// The amount of the budget, in the local currency for the account.
 	// Amount is specified in micros, where one million is equivalent to one
-	// currency unit.
+	// currency unit. Monthly spend is capped at 30.4 times this amount.
 	AmountMicros *wrappers.Int64Value `protobuf:"bytes,5,opt,name=amount_micros,json=amountMicros,proto3" json:"amount_micros,omitempty"`
 	// The lifetime amount of the budget, in the local currency for the account.
 	// Amount is specified in micros, where one million is equivalent to one
@@ -122,7 +122,7 @@ func (m *CampaignBudget) Reset()         { *m = CampaignBudget{} }
 func (m *CampaignBudget) String() string { return proto.CompactTextString(m) }
 func (*CampaignBudget) ProtoMessage()    {}
 func (*CampaignBudget) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_budget_a7f53c1a4a44d279, []int{0}
+	return fileDescriptor_campaign_budget_b018f8e27e2503ef, []int{0}
 }
 func (m *CampaignBudget) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CampaignBudget.Unmarshal(m, b)
@@ -266,10 +266,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/campaign_budget.proto", fileDescriptor_campaign_budget_a7f53c1a4a44d279)
+	proto.RegisterFile("google/ads/googleads/v1/resources/campaign_budget.proto", fileDescriptor_campaign_budget_b018f8e27e2503ef)
 }
 
-var fileDescriptor_campaign_budget_a7f53c1a4a44d279 = []byte{
+var fileDescriptor_campaign_budget_b018f8e27e2503ef = []byte{
 	// 752 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x95, 0x5d, 0x6b, 0x2b, 0x45,
 	0x18, 0xc7, 0xd9, 0x9c, 0x5a, 0x3d, 0x73, 0xd2, 0xf4, 0x74, 0x8f, 0xc8, 0x52, 0x8f, 0x92, 0x2a,

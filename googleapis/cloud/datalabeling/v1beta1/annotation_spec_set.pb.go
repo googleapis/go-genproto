@@ -44,7 +44,7 @@ func (m *AnnotationSpecSet) Reset()         { *m = AnnotationSpecSet{} }
 func (m *AnnotationSpecSet) String() string { return proto.CompactTextString(m) }
 func (*AnnotationSpecSet) ProtoMessage()    {}
 func (*AnnotationSpecSet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_spec_set_147abcb702d5b987, []int{0}
+	return fileDescriptor_annotation_spec_set_b6f42ddbc1614a11, []int{0}
 }
 func (m *AnnotationSpecSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationSpecSet.Unmarshal(m, b)
@@ -108,7 +108,7 @@ func (m *AnnotationSpec) Reset()         { *m = AnnotationSpec{} }
 func (m *AnnotationSpec) String() string { return proto.CompactTextString(m) }
 func (*AnnotationSpec) ProtoMessage()    {}
 func (*AnnotationSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_spec_set_147abcb702d5b987, []int{1}
+	return fileDescriptor_annotation_spec_set_b6f42ddbc1614a11, []int{1}
 }
 func (m *AnnotationSpec) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationSpec.Unmarshal(m, b)
@@ -148,10 +148,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datalabeling/v1beta1/annotation_spec_set.proto", fileDescriptor_annotation_spec_set_147abcb702d5b987)
+	proto.RegisterFile("google/cloud/datalabeling/v1beta1/annotation_spec_set.proto", fileDescriptor_annotation_spec_set_b6f42ddbc1614a11)
 }
 
-var fileDescriptor_annotation_spec_set_147abcb702d5b987 = []byte{
+var fileDescriptor_annotation_spec_set_b6f42ddbc1614a11 = []byte{
 	// 268 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x91, 0x5f, 0x4b, 0xc3, 0x30,
 	0x14, 0xc5, 0xe9, 0x36, 0x04, 0x33, 0xf1, 0x4f, 0x9f, 0x8a, 0xf8, 0xd0, 0x0d, 0x84, 0x3d, 0x25,

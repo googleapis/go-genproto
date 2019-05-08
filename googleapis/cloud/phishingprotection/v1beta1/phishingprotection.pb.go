@@ -40,7 +40,7 @@ func (m *ReportPhishingRequest) Reset()         { *m = ReportPhishingRequest{} }
 func (m *ReportPhishingRequest) String() string { return proto.CompactTextString(m) }
 func (*ReportPhishingRequest) ProtoMessage()    {}
 func (*ReportPhishingRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_phishingprotection_5d8b81454baf3e84, []int{0}
+	return fileDescriptor_phishingprotection_3f3199ea7ffa4ad5, []int{0}
 }
 func (m *ReportPhishingRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportPhishingRequest.Unmarshal(m, b)
@@ -85,7 +85,7 @@ func (m *ReportPhishingResponse) Reset()         { *m = ReportPhishingResponse{}
 func (m *ReportPhishingResponse) String() string { return proto.CompactTextString(m) }
 func (*ReportPhishingResponse) ProtoMessage()    {}
 func (*ReportPhishingResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_phishingprotection_5d8b81454baf3e84, []int{1}
+	return fileDescriptor_phishingprotection_3f3199ea7ffa4ad5, []int{1}
 }
 func (m *ReportPhishingResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportPhishingResponse.Unmarshal(m, b)
@@ -195,10 +195,10 @@ var _PhishingProtectionServiceV1Beta1_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/phishingprotection/v1beta1/phishingprotection.proto", fileDescriptor_phishingprotection_5d8b81454baf3e84)
+	proto.RegisterFile("google/cloud/phishingprotection/v1beta1/phishingprotection.proto", fileDescriptor_phishingprotection_3f3199ea7ffa4ad5)
 }
 
-var fileDescriptor_phishingprotection_5d8b81454baf3e84 = []byte{
+var fileDescriptor_phishingprotection_3f3199ea7ffa4ad5 = []byte{
 	// 345 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x72, 0x48, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x4f, 0xce, 0xc9, 0x2f, 0x4d, 0xd1, 0x2f, 0xc8, 0xc8, 0x2c, 0xce, 0xc8, 0xcc,

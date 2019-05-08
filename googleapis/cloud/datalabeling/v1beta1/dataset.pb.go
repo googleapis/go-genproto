@@ -51,7 +51,7 @@ func (x DataType) String() string {
 	return proto.EnumName(DataType_name, int32(x))
 }
 func (DataType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{0}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{0}
 }
 
 // Dataset is the resource to hold your data. You can request multiple labeling
@@ -81,7 +81,7 @@ func (m *Dataset) Reset()         { *m = Dataset{} }
 func (m *Dataset) String() string { return proto.CompactTextString(m) }
 func (*Dataset) ProtoMessage()    {}
 func (*Dataset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{0}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{0}
 }
 func (m *Dataset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Dataset.Unmarshal(m, b)
@@ -154,7 +154,7 @@ func (m *InputConfig) Reset()         { *m = InputConfig{} }
 func (m *InputConfig) String() string { return proto.CompactTextString(m) }
 func (*InputConfig) ProtoMessage()    {}
 func (*InputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{1}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{1}
 }
 func (m *InputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputConfig.Unmarshal(m, b)
@@ -276,7 +276,7 @@ func (m *GcsSource) Reset()         { *m = GcsSource{} }
 func (m *GcsSource) String() string { return proto.CompactTextString(m) }
 func (*GcsSource) ProtoMessage()    {}
 func (*GcsSource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{2}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{2}
 }
 func (m *GcsSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsSource.Unmarshal(m, b)
@@ -327,7 +327,7 @@ func (m *OutputConfig) Reset()         { *m = OutputConfig{} }
 func (m *OutputConfig) String() string { return proto.CompactTextString(m) }
 func (*OutputConfig) ProtoMessage()    {}
 func (*OutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{3}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{3}
 }
 func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputConfig.Unmarshal(m, b)
@@ -476,7 +476,7 @@ func (m *GcsDestination) Reset()         { *m = GcsDestination{} }
 func (m *GcsDestination) String() string { return proto.CompactTextString(m) }
 func (*GcsDestination) ProtoMessage()    {}
 func (*GcsDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{4}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{4}
 }
 func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsDestination.Unmarshal(m, b)
@@ -523,7 +523,7 @@ func (m *GcsFolderDestination) Reset()         { *m = GcsFolderDestination{} }
 func (m *GcsFolderDestination) String() string { return proto.CompactTextString(m) }
 func (*GcsFolderDestination) ProtoMessage()    {}
 func (*GcsFolderDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{5}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{5}
 }
 func (m *GcsFolderDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsFolderDestination.Unmarshal(m, b)
@@ -572,7 +572,7 @@ func (m *DataItem) Reset()         { *m = DataItem{} }
 func (m *DataItem) String() string { return proto.CompactTextString(m) }
 func (*DataItem) ProtoMessage()    {}
 func (*DataItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{6}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{6}
 }
 func (m *DataItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DataItem.Unmarshal(m, b)
@@ -816,7 +816,7 @@ func (m *AnnotatedDataset) Reset()         { *m = AnnotatedDataset{} }
 func (m *AnnotatedDataset) String() string { return proto.CompactTextString(m) }
 func (*AnnotatedDataset) ProtoMessage()    {}
 func (*AnnotatedDataset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{7}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{7}
 }
 func (m *AnnotatedDataset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotatedDataset.Unmarshal(m, b)
@@ -934,7 +934,7 @@ func (m *AnnotatedDatasetMetadata) Reset()         { *m = AnnotatedDatasetMetada
 func (m *AnnotatedDatasetMetadata) String() string { return proto.CompactTextString(m) }
 func (*AnnotatedDatasetMetadata) ProtoMessage()    {}
 func (*AnnotatedDatasetMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{8}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{8}
 }
 func (m *AnnotatedDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotatedDatasetMetadata.Unmarshal(m, b)
@@ -1350,7 +1350,7 @@ func (m *LabelStats) Reset()         { *m = LabelStats{} }
 func (m *LabelStats) String() string { return proto.CompactTextString(m) }
 func (*LabelStats) ProtoMessage()    {}
 func (*LabelStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{9}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{9}
 }
 func (m *LabelStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LabelStats.Unmarshal(m, b)
@@ -1404,7 +1404,7 @@ func (m *Example) Reset()         { *m = Example{} }
 func (m *Example) String() string { return proto.CompactTextString(m) }
 func (*Example) ProtoMessage()    {}
 func (*Example) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{10}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{10}
 }
 func (m *Example) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Example.Unmarshal(m, b)
@@ -1630,7 +1630,7 @@ func (m *ImagePayload) Reset()         { *m = ImagePayload{} }
 func (m *ImagePayload) String() string { return proto.CompactTextString(m) }
 func (*ImagePayload) ProtoMessage()    {}
 func (*ImagePayload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{11}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{11}
 }
 func (m *ImagePayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImagePayload.Unmarshal(m, b)
@@ -1684,7 +1684,7 @@ func (m *TextPayload) Reset()         { *m = TextPayload{} }
 func (m *TextPayload) String() string { return proto.CompactTextString(m) }
 func (*TextPayload) ProtoMessage()    {}
 func (*TextPayload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{12}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{12}
 }
 func (m *TextPayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextPayload.Unmarshal(m, b)
@@ -1727,7 +1727,7 @@ func (m *VideoThumbnail) Reset()         { *m = VideoThumbnail{} }
 func (m *VideoThumbnail) String() string { return proto.CompactTextString(m) }
 func (*VideoThumbnail) ProtoMessage()    {}
 func (*VideoThumbnail) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{13}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{13}
 }
 func (m *VideoThumbnail) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoThumbnail.Unmarshal(m, b)
@@ -1780,7 +1780,7 @@ func (m *VideoPayload) Reset()         { *m = VideoPayload{} }
 func (m *VideoPayload) String() string { return proto.CompactTextString(m) }
 func (*VideoPayload) ProtoMessage()    {}
 func (*VideoPayload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{14}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{14}
 }
 func (m *VideoPayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VideoPayload.Unmarshal(m, b)
@@ -1846,7 +1846,7 @@ func (m *AudioPayload) Reset()         { *m = AudioPayload{} }
 func (m *AudioPayload) String() string { return proto.CompactTextString(m) }
 func (*AudioPayload) ProtoMessage()    {}
 func (*AudioPayload) Descriptor() ([]byte, []int) {
-	return fileDescriptor_dataset_b0759c67587c817f, []int{15}
+	return fileDescriptor_dataset_800ce425cbaef310, []int{15}
 }
 func (m *AudioPayload) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioPayload.Unmarshal(m, b)
@@ -1902,10 +1902,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datalabeling/v1beta1/dataset.proto", fileDescriptor_dataset_b0759c67587c817f)
+	proto.RegisterFile("google/cloud/datalabeling/v1beta1/dataset.proto", fileDescriptor_dataset_800ce425cbaef310)
 }
 
-var fileDescriptor_dataset_b0759c67587c817f = []byte{
+var fileDescriptor_dataset_800ce425cbaef310 = []byte{
 	// 1504 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x58, 0xef, 0x4e, 0x1b, 0x47,
 	0x10, 0xe7, 0x30, 0x06, 0x7b, 0xce, 0x80, 0xd9, 0x42, 0x63, 0x20, 0x69, 0x89, 0xab, 0xaa, 0x51,

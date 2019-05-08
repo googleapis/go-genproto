@@ -52,7 +52,7 @@ func (x CompleteQueryRequest_CompletionScope) String() string {
 	return proto.EnumName(CompleteQueryRequest_CompletionScope_name, int32(x))
 }
 func (CompleteQueryRequest_CompletionScope) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{0, 0}
+	return fileDescriptor_completion_service_14ea22e15a1c2a15, []int{0, 0}
 }
 
 // Enum to specify auto-completion topics.
@@ -86,7 +86,7 @@ func (x CompleteQueryRequest_CompletionType) String() string {
 	return proto.EnumName(CompleteQueryRequest_CompletionType_name, int32(x))
 }
 func (CompleteQueryRequest_CompletionType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{0, 1}
+	return fileDescriptor_completion_service_14ea22e15a1c2a15, []int{0, 1}
 }
 
 // Input only.
@@ -163,7 +163,7 @@ func (m *CompleteQueryRequest) Reset()         { *m = CompleteQueryRequest{} }
 func (m *CompleteQueryRequest) String() string { return proto.CompactTextString(m) }
 func (*CompleteQueryRequest) ProtoMessage()    {}
 func (*CompleteQueryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{0}
+	return fileDescriptor_completion_service_14ea22e15a1c2a15, []int{0}
 }
 func (m *CompleteQueryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompleteQueryRequest.Unmarshal(m, b)
@@ -250,7 +250,7 @@ func (m *CompleteQueryResponse) Reset()         { *m = CompleteQueryResponse{} }
 func (m *CompleteQueryResponse) String() string { return proto.CompactTextString(m) }
 func (*CompleteQueryResponse) ProtoMessage()    {}
 func (*CompleteQueryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{1}
+	return fileDescriptor_completion_service_14ea22e15a1c2a15, []int{1}
 }
 func (m *CompleteQueryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompleteQueryResponse.Unmarshal(m, b)
@@ -305,7 +305,7 @@ func (m *CompleteQueryResponse_CompletionResult) Reset() {
 func (m *CompleteQueryResponse_CompletionResult) String() string { return proto.CompactTextString(m) }
 func (*CompleteQueryResponse_CompletionResult) ProtoMessage()    {}
 func (*CompleteQueryResponse_CompletionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_completion_service_173bc7e96092a1f3, []int{1, 0}
+	return fileDescriptor_completion_service_14ea22e15a1c2a15, []int{1, 0}
 }
 func (m *CompleteQueryResponse_CompletionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompleteQueryResponse_CompletionResult.Unmarshal(m, b)
@@ -431,10 +431,10 @@ var _Completion_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/completion_service.proto", fileDescriptor_completion_service_173bc7e96092a1f3)
+	proto.RegisterFile("google/cloud/talent/v4beta1/completion_service.proto", fileDescriptor_completion_service_14ea22e15a1c2a15)
 }
 
-var fileDescriptor_completion_service_173bc7e96092a1f3 = []byte{
+var fileDescriptor_completion_service_14ea22e15a1c2a15 = []byte{
 	// 652 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0x6f, 0x6b, 0xd3, 0x5e,
 	0x14, 0xc7, 0x7f, 0x49, 0xd7, 0xae, 0x3d, 0xfb, 0xf3, 0x8b, 0x97, 0x39, 0x42, 0x37, 0x5c, 0x29,

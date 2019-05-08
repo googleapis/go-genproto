@@ -39,7 +39,7 @@ func (m *HistogramQuery) Reset()         { *m = HistogramQuery{} }
 func (m *HistogramQuery) String() string { return proto.CompactTextString(m) }
 func (*HistogramQuery) ProtoMessage()    {}
 func (*HistogramQuery) Descriptor() ([]byte, []int) {
-	return fileDescriptor_histogram_b860bbf47271fd27, []int{0}
+	return fileDescriptor_histogram_6fd84e257fb563ef, []int{0}
 }
 func (m *HistogramQuery) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HistogramQuery.Unmarshal(m, b)
@@ -91,7 +91,7 @@ func (m *HistogramQueryResult) Reset()         { *m = HistogramQueryResult{} }
 func (m *HistogramQueryResult) String() string { return proto.CompactTextString(m) }
 func (*HistogramQueryResult) ProtoMessage()    {}
 func (*HistogramQueryResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_histogram_b860bbf47271fd27, []int{1}
+	return fileDescriptor_histogram_6fd84e257fb563ef, []int{1}
 }
 func (m *HistogramQueryResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HistogramQueryResult.Unmarshal(m, b)
@@ -132,10 +132,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/histogram.proto", fileDescriptor_histogram_b860bbf47271fd27)
+	proto.RegisterFile("google/cloud/talent/v4beta1/histogram.proto", fileDescriptor_histogram_6fd84e257fb563ef)
 }
 
-var fileDescriptor_histogram_b860bbf47271fd27 = []byte{
+var fileDescriptor_histogram_6fd84e257fb563ef = []byte{
 	// 301 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xd2, 0x4e, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x4f, 0xce, 0xc9, 0x2f, 0x4d, 0xd1, 0x2f, 0x49, 0xcc, 0x49, 0xcd, 0x2b, 0xd1,

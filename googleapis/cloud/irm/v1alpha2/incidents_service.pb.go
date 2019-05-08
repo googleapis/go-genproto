@@ -45,7 +45,7 @@ func (m *CreateIncidentRequest) Reset()         { *m = CreateIncidentRequest{} }
 func (m *CreateIncidentRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateIncidentRequest) ProtoMessage()    {}
 func (*CreateIncidentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{0}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{0}
 }
 func (m *CreateIncidentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateIncidentRequest.Unmarshal(m, b)
@@ -93,7 +93,7 @@ func (m *GetIncidentRequest) Reset()         { *m = GetIncidentRequest{} }
 func (m *GetIncidentRequest) String() string { return proto.CompactTextString(m) }
 func (*GetIncidentRequest) ProtoMessage()    {}
 func (*GetIncidentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{1}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{1}
 }
 func (m *GetIncidentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetIncidentRequest.Unmarshal(m, b)
@@ -135,7 +135,7 @@ func (m *UpdateIncidentRequest) Reset()         { *m = UpdateIncidentRequest{} }
 func (m *UpdateIncidentRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateIncidentRequest) ProtoMessage()    {}
 func (*UpdateIncidentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{2}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{2}
 }
 func (m *UpdateIncidentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateIncidentRequest.Unmarshal(m, b)
@@ -187,7 +187,7 @@ func (m *SearchSimilarIncidentsRequest) Reset()         { *m = SearchSimilarInci
 func (m *SearchSimilarIncidentsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchSimilarIncidentsRequest) ProtoMessage()    {}
 func (*SearchSimilarIncidentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{3}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{3}
 }
 func (m *SearchSimilarIncidentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchSimilarIncidentsRequest.Unmarshal(m, b)
@@ -243,7 +243,7 @@ func (m *SearchSimilarIncidentsResponse) Reset()         { *m = SearchSimilarInc
 func (m *SearchSimilarIncidentsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchSimilarIncidentsResponse) ProtoMessage()    {}
 func (*SearchSimilarIncidentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{4}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{4}
 }
 func (m *SearchSimilarIncidentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchSimilarIncidentsResponse.Unmarshal(m, b)
@@ -292,7 +292,7 @@ func (m *SearchSimilarIncidentsResponse_Result) Reset()         { *m = SearchSim
 func (m *SearchSimilarIncidentsResponse_Result) String() string { return proto.CompactTextString(m) }
 func (*SearchSimilarIncidentsResponse_Result) ProtoMessage()    {}
 func (*SearchSimilarIncidentsResponse_Result) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{4, 0}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{4, 0}
 }
 func (m *SearchSimilarIncidentsResponse_Result) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchSimilarIncidentsResponse_Result.Unmarshal(m, b)
@@ -335,7 +335,7 @@ func (m *CreateAnnotationRequest) Reset()         { *m = CreateAnnotationRequest
 func (m *CreateAnnotationRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAnnotationRequest) ProtoMessage()    {}
 func (*CreateAnnotationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{5}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{5}
 }
 func (m *CreateAnnotationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAnnotationRequest.Unmarshal(m, b)
@@ -387,7 +387,7 @@ func (m *ListAnnotationsRequest) Reset()         { *m = ListAnnotationsRequest{}
 func (m *ListAnnotationsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListAnnotationsRequest) ProtoMessage()    {}
 func (*ListAnnotationsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{6}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{6}
 }
 func (m *ListAnnotationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAnnotationsRequest.Unmarshal(m, b)
@@ -443,7 +443,7 @@ func (m *ListAnnotationsResponse) Reset()         { *m = ListAnnotationsResponse
 func (m *ListAnnotationsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListAnnotationsResponse) ProtoMessage()    {}
 func (*ListAnnotationsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{7}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{7}
 }
 func (m *ListAnnotationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListAnnotationsResponse.Unmarshal(m, b)
@@ -493,7 +493,7 @@ func (m *CreateTagRequest) Reset()         { *m = CreateTagRequest{} }
 func (m *CreateTagRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateTagRequest) ProtoMessage()    {}
 func (*CreateTagRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{8}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{8}
 }
 func (m *CreateTagRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateTagRequest.Unmarshal(m, b)
@@ -540,7 +540,7 @@ func (m *DeleteTagRequest) Reset()         { *m = DeleteTagRequest{} }
 func (m *DeleteTagRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteTagRequest) ProtoMessage()    {}
 func (*DeleteTagRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{9}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{9}
 }
 func (m *DeleteTagRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteTagRequest.Unmarshal(m, b)
@@ -585,7 +585,7 @@ func (m *ListTagsRequest) Reset()         { *m = ListTagsRequest{} }
 func (m *ListTagsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListTagsRequest) ProtoMessage()    {}
 func (*ListTagsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{10}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{10}
 }
 func (m *ListTagsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTagsRequest.Unmarshal(m, b)
@@ -641,7 +641,7 @@ func (m *ListTagsResponse) Reset()         { *m = ListTagsResponse{} }
 func (m *ListTagsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListTagsResponse) ProtoMessage()    {}
 func (*ListTagsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{11}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{11}
 }
 func (m *ListTagsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListTagsResponse.Unmarshal(m, b)
@@ -691,7 +691,7 @@ func (m *CreateSignalRequest) Reset()         { *m = CreateSignalRequest{} }
 func (m *CreateSignalRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateSignalRequest) ProtoMessage()    {}
 func (*CreateSignalRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{12}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{12}
 }
 func (m *CreateSignalRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateSignalRequest.Unmarshal(m, b)
@@ -747,7 +747,7 @@ func (m *SearchSignalsRequest) Reset()         { *m = SearchSignalsRequest{} }
 func (m *SearchSignalsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchSignalsRequest) ProtoMessage()    {}
 func (*SearchSignalsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{13}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{13}
 }
 func (m *SearchSignalsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchSignalsRequest.Unmarshal(m, b)
@@ -810,7 +810,7 @@ func (m *SearchSignalsResponse) Reset()         { *m = SearchSignalsResponse{} }
 func (m *SearchSignalsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchSignalsResponse) ProtoMessage()    {}
 func (*SearchSignalsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{14}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{14}
 }
 func (m *SearchSignalsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchSignalsResponse.Unmarshal(m, b)
@@ -858,7 +858,7 @@ func (m *GetSignalRequest) Reset()         { *m = GetSignalRequest{} }
 func (m *GetSignalRequest) String() string { return proto.CompactTextString(m) }
 func (*GetSignalRequest) ProtoMessage()    {}
 func (*GetSignalRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{15}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{15}
 }
 func (m *GetSignalRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSignalRequest.Unmarshal(m, b)
@@ -900,7 +900,7 @@ func (m *UpdateSignalRequest) Reset()         { *m = UpdateSignalRequest{} }
 func (m *UpdateSignalRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateSignalRequest) ProtoMessage()    {}
 func (*UpdateSignalRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{16}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{16}
 }
 func (m *UpdateSignalRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSignalRequest.Unmarshal(m, b)
@@ -1009,7 +1009,7 @@ func (m *SearchIncidentsRequest) Reset()         { *m = SearchIncidentsRequest{}
 func (m *SearchIncidentsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchIncidentsRequest) ProtoMessage()    {}
 func (*SearchIncidentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{17}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{17}
 }
 func (m *SearchIncidentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchIncidentsRequest.Unmarshal(m, b)
@@ -1079,7 +1079,7 @@ func (m *SearchIncidentsResponse) Reset()         { *m = SearchIncidentsResponse
 func (m *SearchIncidentsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchIncidentsResponse) ProtoMessage()    {}
 func (*SearchIncidentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{18}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{18}
 }
 func (m *SearchIncidentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchIncidentsResponse.Unmarshal(m, b)
@@ -1138,7 +1138,7 @@ func (m *EscalateIncidentRequest) Reset()         { *m = EscalateIncidentRequest
 func (m *EscalateIncidentRequest) String() string { return proto.CompactTextString(m) }
 func (*EscalateIncidentRequest) ProtoMessage()    {}
 func (*EscalateIncidentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{19}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{19}
 }
 func (m *EscalateIncidentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EscalateIncidentRequest.Unmarshal(m, b)
@@ -1221,7 +1221,7 @@ func (m *EscalateIncidentResponse) Reset()         { *m = EscalateIncidentRespon
 func (m *EscalateIncidentResponse) String() string { return proto.CompactTextString(m) }
 func (*EscalateIncidentResponse) ProtoMessage()    {}
 func (*EscalateIncidentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{20}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{20}
 }
 func (m *EscalateIncidentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EscalateIncidentResponse.Unmarshal(m, b)
@@ -1292,7 +1292,7 @@ func (m *CreateArtifactRequest) Reset()         { *m = CreateArtifactRequest{} }
 func (m *CreateArtifactRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateArtifactRequest) ProtoMessage()    {}
 func (*CreateArtifactRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{21}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{21}
 }
 func (m *CreateArtifactRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateArtifactRequest.Unmarshal(m, b)
@@ -1344,7 +1344,7 @@ func (m *ListArtifactsRequest) Reset()         { *m = ListArtifactsRequest{} }
 func (m *ListArtifactsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListArtifactsRequest) ProtoMessage()    {}
 func (*ListArtifactsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{22}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{22}
 }
 func (m *ListArtifactsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListArtifactsRequest.Unmarshal(m, b)
@@ -1400,7 +1400,7 @@ func (m *ListArtifactsResponse) Reset()         { *m = ListArtifactsResponse{} }
 func (m *ListArtifactsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListArtifactsResponse) ProtoMessage()    {}
 func (*ListArtifactsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{23}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{23}
 }
 func (m *ListArtifactsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListArtifactsResponse.Unmarshal(m, b)
@@ -1449,7 +1449,7 @@ func (m *UpdateArtifactRequest) Reset()         { *m = UpdateArtifactRequest{} }
 func (m *UpdateArtifactRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateArtifactRequest) ProtoMessage()    {}
 func (*UpdateArtifactRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{24}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{24}
 }
 func (m *UpdateArtifactRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateArtifactRequest.Unmarshal(m, b)
@@ -1496,7 +1496,7 @@ func (m *DeleteArtifactRequest) Reset()         { *m = DeleteArtifactRequest{} }
 func (m *DeleteArtifactRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteArtifactRequest) ProtoMessage()    {}
 func (*DeleteArtifactRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{25}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{25}
 }
 func (m *DeleteArtifactRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteArtifactRequest.Unmarshal(m, b)
@@ -1553,7 +1553,7 @@ func (m *SendShiftHandoffRequest) Reset()         { *m = SendShiftHandoffRequest
 func (m *SendShiftHandoffRequest) String() string { return proto.CompactTextString(m) }
 func (*SendShiftHandoffRequest) ProtoMessage()    {}
 func (*SendShiftHandoffRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{26}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{26}
 }
 func (m *SendShiftHandoffRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SendShiftHandoffRequest.Unmarshal(m, b)
@@ -1645,7 +1645,7 @@ func (m *SendShiftHandoffRequest_Incident) Reset()         { *m = SendShiftHando
 func (m *SendShiftHandoffRequest_Incident) String() string { return proto.CompactTextString(m) }
 func (*SendShiftHandoffRequest_Incident) ProtoMessage()    {}
 func (*SendShiftHandoffRequest_Incident) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{26, 0}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{26, 0}
 }
 func (m *SendShiftHandoffRequest_Incident) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SendShiftHandoffRequest_Incident.Unmarshal(m, b)
@@ -1689,7 +1689,7 @@ func (m *SendShiftHandoffResponse) Reset()         { *m = SendShiftHandoffRespon
 func (m *SendShiftHandoffResponse) String() string { return proto.CompactTextString(m) }
 func (*SendShiftHandoffResponse) ProtoMessage()    {}
 func (*SendShiftHandoffResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{27}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{27}
 }
 func (m *SendShiftHandoffResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SendShiftHandoffResponse.Unmarshal(m, b)
@@ -1739,7 +1739,7 @@ func (m *CreateSubscriptionRequest) Reset()         { *m = CreateSubscriptionReq
 func (m *CreateSubscriptionRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateSubscriptionRequest) ProtoMessage()    {}
 func (*CreateSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{28}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{28}
 }
 func (m *CreateSubscriptionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateSubscriptionRequest.Unmarshal(m, b)
@@ -1788,7 +1788,7 @@ func (m *UpdateSubscriptionRequest) Reset()         { *m = UpdateSubscriptionReq
 func (m *UpdateSubscriptionRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateSubscriptionRequest) ProtoMessage()    {}
 func (*UpdateSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{29}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{29}
 }
 func (m *UpdateSubscriptionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSubscriptionRequest.Unmarshal(m, b)
@@ -1840,7 +1840,7 @@ func (m *ListSubscriptionsRequest) Reset()         { *m = ListSubscriptionsReque
 func (m *ListSubscriptionsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListSubscriptionsRequest) ProtoMessage()    {}
 func (*ListSubscriptionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{30}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{30}
 }
 func (m *ListSubscriptionsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSubscriptionsRequest.Unmarshal(m, b)
@@ -1896,7 +1896,7 @@ func (m *ListSubscriptionsResponse) Reset()         { *m = ListSubscriptionsResp
 func (m *ListSubscriptionsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListSubscriptionsResponse) ProtoMessage()    {}
 func (*ListSubscriptionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{31}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{31}
 }
 func (m *ListSubscriptionsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSubscriptionsResponse.Unmarshal(m, b)
@@ -1943,7 +1943,7 @@ func (m *DeleteSubscriptionRequest) Reset()         { *m = DeleteSubscriptionReq
 func (m *DeleteSubscriptionRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteSubscriptionRequest) ProtoMessage()    {}
 func (*DeleteSubscriptionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{32}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{32}
 }
 func (m *DeleteSubscriptionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteSubscriptionRequest.Unmarshal(m, b)
@@ -1986,7 +1986,7 @@ func (m *CreateIncidentRoleAssignmentRequest) Reset()         { *m = CreateIncid
 func (m *CreateIncidentRoleAssignmentRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateIncidentRoleAssignmentRequest) ProtoMessage()    {}
 func (*CreateIncidentRoleAssignmentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{33}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{33}
 }
 func (m *CreateIncidentRoleAssignmentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateIncidentRoleAssignmentRequest.Unmarshal(m, b)
@@ -2033,7 +2033,7 @@ func (m *DeleteIncidentRoleAssignmentRequest) Reset()         { *m = DeleteIncid
 func (m *DeleteIncidentRoleAssignmentRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteIncidentRoleAssignmentRequest) ProtoMessage()    {}
 func (*DeleteIncidentRoleAssignmentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{34}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{34}
 }
 func (m *DeleteIncidentRoleAssignmentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteIncidentRoleAssignmentRequest.Unmarshal(m, b)
@@ -2078,7 +2078,7 @@ func (m *ListIncidentRoleAssignmentsRequest) Reset()         { *m = ListIncident
 func (m *ListIncidentRoleAssignmentsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListIncidentRoleAssignmentsRequest) ProtoMessage()    {}
 func (*ListIncidentRoleAssignmentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{35}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{35}
 }
 func (m *ListIncidentRoleAssignmentsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIncidentRoleAssignmentsRequest.Unmarshal(m, b)
@@ -2134,7 +2134,7 @@ func (m *ListIncidentRoleAssignmentsResponse) Reset()         { *m = ListInciden
 func (m *ListIncidentRoleAssignmentsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListIncidentRoleAssignmentsResponse) ProtoMessage()    {}
 func (*ListIncidentRoleAssignmentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{36}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{36}
 }
 func (m *ListIncidentRoleAssignmentsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListIncidentRoleAssignmentsResponse.Unmarshal(m, b)
@@ -2183,7 +2183,7 @@ func (m *RequestIncidentRoleHandoverRequest) Reset()         { *m = RequestIncid
 func (m *RequestIncidentRoleHandoverRequest) String() string { return proto.CompactTextString(m) }
 func (*RequestIncidentRoleHandoverRequest) ProtoMessage()    {}
 func (*RequestIncidentRoleHandoverRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{37}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{37}
 }
 func (m *RequestIncidentRoleHandoverRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestIncidentRoleHandoverRequest.Unmarshal(m, b)
@@ -2233,7 +2233,7 @@ func (m *ConfirmIncidentRoleHandoverRequest) Reset()         { *m = ConfirmIncid
 func (m *ConfirmIncidentRoleHandoverRequest) String() string { return proto.CompactTextString(m) }
 func (*ConfirmIncidentRoleHandoverRequest) ProtoMessage()    {}
 func (*ConfirmIncidentRoleHandoverRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{38}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{38}
 }
 func (m *ConfirmIncidentRoleHandoverRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConfirmIncidentRoleHandoverRequest.Unmarshal(m, b)
@@ -2283,7 +2283,7 @@ func (m *ForceIncidentRoleHandoverRequest) Reset()         { *m = ForceIncidentR
 func (m *ForceIncidentRoleHandoverRequest) String() string { return proto.CompactTextString(m) }
 func (*ForceIncidentRoleHandoverRequest) ProtoMessage()    {}
 func (*ForceIncidentRoleHandoverRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{39}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{39}
 }
 func (m *ForceIncidentRoleHandoverRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ForceIncidentRoleHandoverRequest.Unmarshal(m, b)
@@ -2334,7 +2334,7 @@ func (m *CancelIncidentRoleHandoverRequest) Reset()         { *m = CancelInciden
 func (m *CancelIncidentRoleHandoverRequest) String() string { return proto.CompactTextString(m) }
 func (*CancelIncidentRoleHandoverRequest) ProtoMessage()    {}
 func (*CancelIncidentRoleHandoverRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_incidents_service_a19cef89fc9d533c, []int{40}
+	return fileDescriptor_incidents_service_6ca02351b7a08ec3, []int{40}
 }
 func (m *CancelIncidentRoleHandoverRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelIncidentRoleHandoverRequest.Unmarshal(m, b)
@@ -3587,10 +3587,10 @@ var _IncidentService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/irm/v1alpha2/incidents_service.proto", fileDescriptor_incidents_service_a19cef89fc9d533c)
+	proto.RegisterFile("google/cloud/irm/v1alpha2/incidents_service.proto", fileDescriptor_incidents_service_6ca02351b7a08ec3)
 }
 
-var fileDescriptor_incidents_service_a19cef89fc9d533c = []byte{
+var fileDescriptor_incidents_service_6ca02351b7a08ec3 = []byte{
 	// 2309 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x5a, 0xcd, 0x6f, 0x1c, 0x49,
 	0x15, 0x57, 0xd9, 0xf1, 0xd7, 0xf3, 0x47, 0x4c, 0x6d, 0x6c, 0x8f, 0x3b, 0xd9, 0xac, 0x53, 0x56,

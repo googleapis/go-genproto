@@ -62,7 +62,7 @@ func (x SessionEntityType_EntityOverrideMode) String() string {
 	return proto.EnumName(SessionEntityType_EntityOverrideMode_name, int32(x))
 }
 func (SessionEntityType_EntityOverrideMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_session_entity_type_0b020acc3115ba2a, []int{0, 0}
+	return fileDescriptor_session_entity_type_97b7b2145a2e309a, []int{0, 0}
 }
 
 // Represents a session entity type.
@@ -95,7 +95,7 @@ func (m *SessionEntityType) Reset()         { *m = SessionEntityType{} }
 func (m *SessionEntityType) String() string { return proto.CompactTextString(m) }
 func (*SessionEntityType) ProtoMessage()    {}
 func (*SessionEntityType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_entity_type_0b020acc3115ba2a, []int{0}
+	return fileDescriptor_session_entity_type_97b7b2145a2e309a, []int{0}
 }
 func (m *SessionEntityType) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SessionEntityType.Unmarshal(m, b)
@@ -155,7 +155,7 @@ func (m *ListSessionEntityTypesRequest) Reset()         { *m = ListSessionEntity
 func (m *ListSessionEntityTypesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListSessionEntityTypesRequest) ProtoMessage()    {}
 func (*ListSessionEntityTypesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_entity_type_0b020acc3115ba2a, []int{1}
+	return fileDescriptor_session_entity_type_97b7b2145a2e309a, []int{1}
 }
 func (m *ListSessionEntityTypesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSessionEntityTypesRequest.Unmarshal(m, b)
@@ -213,7 +213,7 @@ func (m *ListSessionEntityTypesResponse) Reset()         { *m = ListSessionEntit
 func (m *ListSessionEntityTypesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListSessionEntityTypesResponse) ProtoMessage()    {}
 func (*ListSessionEntityTypesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_entity_type_0b020acc3115ba2a, []int{2}
+	return fileDescriptor_session_entity_type_97b7b2145a2e309a, []int{2}
 }
 func (m *ListSessionEntityTypesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListSessionEntityTypesResponse.Unmarshal(m, b)
@@ -262,7 +262,7 @@ func (m *GetSessionEntityTypeRequest) Reset()         { *m = GetSessionEntityTyp
 func (m *GetSessionEntityTypeRequest) String() string { return proto.CompactTextString(m) }
 func (*GetSessionEntityTypeRequest) ProtoMessage()    {}
 func (*GetSessionEntityTypeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_entity_type_0b020acc3115ba2a, []int{3}
+	return fileDescriptor_session_entity_type_97b7b2145a2e309a, []int{3}
 }
 func (m *GetSessionEntityTypeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSessionEntityTypeRequest.Unmarshal(m, b)
@@ -305,7 +305,7 @@ func (m *CreateSessionEntityTypeRequest) Reset()         { *m = CreateSessionEnt
 func (m *CreateSessionEntityTypeRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateSessionEntityTypeRequest) ProtoMessage()    {}
 func (*CreateSessionEntityTypeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_entity_type_0b020acc3115ba2a, []int{4}
+	return fileDescriptor_session_entity_type_97b7b2145a2e309a, []int{4}
 }
 func (m *CreateSessionEntityTypeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateSessionEntityTypeRequest.Unmarshal(m, b)
@@ -356,7 +356,7 @@ func (m *UpdateSessionEntityTypeRequest) Reset()         { *m = UpdateSessionEnt
 func (m *UpdateSessionEntityTypeRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateSessionEntityTypeRequest) ProtoMessage()    {}
 func (*UpdateSessionEntityTypeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_entity_type_0b020acc3115ba2a, []int{5}
+	return fileDescriptor_session_entity_type_97b7b2145a2e309a, []int{5}
 }
 func (m *UpdateSessionEntityTypeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateSessionEntityTypeRequest.Unmarshal(m, b)
@@ -405,7 +405,7 @@ func (m *DeleteSessionEntityTypeRequest) Reset()         { *m = DeleteSessionEnt
 func (m *DeleteSessionEntityTypeRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteSessionEntityTypeRequest) ProtoMessage()    {}
 func (*DeleteSessionEntityTypeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_session_entity_type_0b020acc3115ba2a, []int{6}
+	return fileDescriptor_session_entity_type_97b7b2145a2e309a, []int{6}
 }
 func (m *DeleteSessionEntityTypeRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteSessionEntityTypeRequest.Unmarshal(m, b)
@@ -664,10 +664,10 @@ var _SessionEntityTypes_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dialogflow/v2/session_entity_type.proto", fileDescriptor_session_entity_type_0b020acc3115ba2a)
+	proto.RegisterFile("google/cloud/dialogflow/v2/session_entity_type.proto", fileDescriptor_session_entity_type_97b7b2145a2e309a)
 }
 
-var fileDescriptor_session_entity_type_0b020acc3115ba2a = []byte{
+var fileDescriptor_session_entity_type_97b7b2145a2e309a = []byte{
 	// 808 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x96, 0xcd, 0x4e, 0xdb, 0x58,
 	0x14, 0xc7, 0xe7, 0x9a, 0x19, 0x04, 0x17, 0xcd, 0x0c, 0xdc, 0x41, 0x21, 0x63, 0x86, 0x4c, 0xc6,

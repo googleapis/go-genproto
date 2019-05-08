@@ -45,7 +45,7 @@ func (x TableSourceType) String() string {
 	return proto.EnumName(TableSourceType_name, int32(x))
 }
 func (TableSourceType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_table_spec_ee8c5c4791953ab0, []int{0}
+	return fileDescriptor_table_spec_345702233622a222, []int{0}
 }
 
 // Describes a BigQuery table.
@@ -64,7 +64,7 @@ func (m *BigQueryTableSpec) Reset()         { *m = BigQueryTableSpec{} }
 func (m *BigQueryTableSpec) String() string { return proto.CompactTextString(m) }
 func (*BigQueryTableSpec) ProtoMessage()    {}
 func (*BigQueryTableSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_table_spec_ee8c5c4791953ab0, []int{0}
+	return fileDescriptor_table_spec_345702233622a222, []int{0}
 }
 func (m *BigQueryTableSpec) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BigQueryTableSpec.Unmarshal(m, b)
@@ -111,7 +111,7 @@ func (m *ViewSpec) Reset()         { *m = ViewSpec{} }
 func (m *ViewSpec) String() string { return proto.CompactTextString(m) }
 func (*ViewSpec) ProtoMessage()    {}
 func (*ViewSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_table_spec_ee8c5c4791953ab0, []int{1}
+	return fileDescriptor_table_spec_345702233622a222, []int{1}
 }
 func (m *ViewSpec) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ViewSpec.Unmarshal(m, b)
@@ -145,10 +145,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datacatalog/v1beta1/table_spec.proto", fileDescriptor_table_spec_ee8c5c4791953ab0)
+	proto.RegisterFile("google/cloud/datacatalog/v1beta1/table_spec.proto", fileDescriptor_table_spec_345702233622a222)
 }
 
-var fileDescriptor_table_spec_ee8c5c4791953ab0 = []byte{
+var fileDescriptor_table_spec_345702233622a222 = []byte{
 	// 319 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x91, 0xcf, 0x4b, 0x02, 0x41,
 	0x14, 0xc7, 0x1b, 0xa1, 0xd0, 0x89, 0xfc, 0x31, 0x27, 0x0f, 0x09, 0xe6, 0xc9, 0x3c, 0xcc, 0xb2,

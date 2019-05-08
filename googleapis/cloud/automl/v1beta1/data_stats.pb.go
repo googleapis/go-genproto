@@ -44,7 +44,7 @@ func (m *DataStats) Reset()         { *m = DataStats{} }
 func (m *DataStats) String() string { return proto.CompactTextString(m) }
 func (*DataStats) ProtoMessage()    {}
 func (*DataStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{0}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{0}
 }
 func (m *DataStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DataStats.Unmarshal(m, b)
@@ -343,7 +343,7 @@ func (m *Float64Stats) Reset()         { *m = Float64Stats{} }
 func (m *Float64Stats) String() string { return proto.CompactTextString(m) }
 func (*Float64Stats) ProtoMessage()    {}
 func (*Float64Stats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{1}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{1}
 }
 func (m *Float64Stats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Float64Stats.Unmarshal(m, b)
@@ -410,7 +410,7 @@ func (m *Float64Stats_HistogramBucket) Reset()         { *m = Float64Stats_Histo
 func (m *Float64Stats_HistogramBucket) String() string { return proto.CompactTextString(m) }
 func (*Float64Stats_HistogramBucket) ProtoMessage()    {}
 func (*Float64Stats_HistogramBucket) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{1, 0}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{1, 0}
 }
 func (m *Float64Stats_HistogramBucket) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Float64Stats_HistogramBucket.Unmarshal(m, b)
@@ -465,7 +465,7 @@ func (m *StringStats) Reset()         { *m = StringStats{} }
 func (m *StringStats) String() string { return proto.CompactTextString(m) }
 func (*StringStats) ProtoMessage()    {}
 func (*StringStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{2}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{2}
 }
 func (m *StringStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StringStats.Unmarshal(m, b)
@@ -507,7 +507,7 @@ func (m *StringStats_UnigramStats) Reset()         { *m = StringStats_UnigramSta
 func (m *StringStats_UnigramStats) String() string { return proto.CompactTextString(m) }
 func (*StringStats_UnigramStats) ProtoMessage()    {}
 func (*StringStats_UnigramStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{2, 0}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{2, 0}
 }
 func (m *StringStats_UnigramStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StringStats_UnigramStats.Unmarshal(m, b)
@@ -558,7 +558,7 @@ func (m *TimestampStats) Reset()         { *m = TimestampStats{} }
 func (m *TimestampStats) String() string { return proto.CompactTextString(m) }
 func (*TimestampStats) ProtoMessage()    {}
 func (*TimestampStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{3}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{3}
 }
 func (m *TimestampStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimestampStats.Unmarshal(m, b)
@@ -599,7 +599,7 @@ func (m *TimestampStats_GranularStats) Reset()         { *m = TimestampStats_Gra
 func (m *TimestampStats_GranularStats) String() string { return proto.CompactTextString(m) }
 func (*TimestampStats_GranularStats) ProtoMessage()    {}
 func (*TimestampStats_GranularStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{3, 0}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{3, 0}
 }
 func (m *TimestampStats_GranularStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimestampStats_GranularStats.Unmarshal(m, b)
@@ -640,7 +640,7 @@ func (m *ArrayStats) Reset()         { *m = ArrayStats{} }
 func (m *ArrayStats) String() string { return proto.CompactTextString(m) }
 func (*ArrayStats) ProtoMessage()    {}
 func (*ArrayStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{4}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{4}
 }
 func (m *ArrayStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ArrayStats.Unmarshal(m, b)
@@ -681,7 +681,7 @@ func (m *StructStats) Reset()         { *m = StructStats{} }
 func (m *StructStats) String() string { return proto.CompactTextString(m) }
 func (*StructStats) ProtoMessage()    {}
 func (*StructStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{5}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{5}
 }
 func (m *StructStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructStats.Unmarshal(m, b)
@@ -723,7 +723,7 @@ func (m *CategoryStats) Reset()         { *m = CategoryStats{} }
 func (m *CategoryStats) String() string { return proto.CompactTextString(m) }
 func (*CategoryStats) ProtoMessage()    {}
 func (*CategoryStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{6}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{6}
 }
 func (m *CategoryStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CategoryStats.Unmarshal(m, b)
@@ -765,7 +765,7 @@ func (m *CategoryStats_SingleCategoryStats) Reset()         { *m = CategoryStats
 func (m *CategoryStats_SingleCategoryStats) String() string { return proto.CompactTextString(m) }
 func (*CategoryStats_SingleCategoryStats) ProtoMessage()    {}
 func (*CategoryStats_SingleCategoryStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{6, 0}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{6, 0}
 }
 func (m *CategoryStats_SingleCategoryStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CategoryStats_SingleCategoryStats.Unmarshal(m, b)
@@ -814,7 +814,7 @@ func (m *CorrelationStats) Reset()         { *m = CorrelationStats{} }
 func (m *CorrelationStats) String() string { return proto.CompactTextString(m) }
 func (*CorrelationStats) ProtoMessage()    {}
 func (*CorrelationStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_data_stats_24815c5cf24a2eb3, []int{7}
+	return fileDescriptor_data_stats_e2571ab261ca3ffb, []int{7}
 }
 func (m *CorrelationStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CorrelationStats.Unmarshal(m, b)
@@ -860,10 +860,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/data_stats.proto", fileDescriptor_data_stats_24815c5cf24a2eb3)
+	proto.RegisterFile("google/cloud/automl/v1beta1/data_stats.proto", fileDescriptor_data_stats_e2571ab261ca3ffb)
 }
 
-var fileDescriptor_data_stats_24815c5cf24a2eb3 = []byte{
+var fileDescriptor_data_stats_e2571ab261ca3ffb = []byte{
 	// 830 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x96, 0xcb, 0x6f, 0xd3, 0x48,
 	0x18, 0xc0, 0xd7, 0x49, 0xd3, 0x36, 0x5f, 0x9e, 0x9d, 0xed, 0xa1, 0x4a, 0x2b, 0x6d, 0x95, 0xc3,

@@ -32,7 +32,7 @@ func (m *Schema) Reset()         { *m = Schema{} }
 func (m *Schema) String() string { return proto.CompactTextString(m) }
 func (*Schema) ProtoMessage()    {}
 func (*Schema) Descriptor() ([]byte, []int) {
-	return fileDescriptor_schema_3cda8417f7d2d075, []int{0}
+	return fileDescriptor_schema_be14e9cb1c70fc2b, []int{0}
 }
 func (m *Schema) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Schema.Unmarshal(m, b)
@@ -83,7 +83,7 @@ func (m *ColumnSchema) Reset()         { *m = ColumnSchema{} }
 func (m *ColumnSchema) String() string { return proto.CompactTextString(m) }
 func (*ColumnSchema) ProtoMessage()    {}
 func (*ColumnSchema) Descriptor() ([]byte, []int) {
-	return fileDescriptor_schema_3cda8417f7d2d075, []int{1}
+	return fileDescriptor_schema_be14e9cb1c70fc2b, []int{1}
 }
 func (m *ColumnSchema) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ColumnSchema.Unmarshal(m, b)
@@ -144,10 +144,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datacatalog/v1beta1/schema.proto", fileDescriptor_schema_3cda8417f7d2d075)
+	proto.RegisterFile("google/cloud/datacatalog/v1beta1/schema.proto", fileDescriptor_schema_be14e9cb1c70fc2b)
 }
 
-var fileDescriptor_schema_3cda8417f7d2d075 = []byte{
+var fileDescriptor_schema_be14e9cb1c70fc2b = []byte{
 	// 251 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x91, 0x31, 0x4b, 0x04, 0x31,
 	0x10, 0x85, 0xc9, 0x9d, 0xec, 0xe1, 0x9c, 0x55, 0x0a, 0x49, 0x61, 0xb1, 0x5c, 0x75, 0x8d, 0x09,

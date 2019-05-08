@@ -34,7 +34,7 @@ func (m *DoubleRange) Reset()         { *m = DoubleRange{} }
 func (m *DoubleRange) String() string { return proto.CompactTextString(m) }
 func (*DoubleRange) ProtoMessage()    {}
 func (*DoubleRange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ranges_48e0b2137316ecce, []int{0}
+	return fileDescriptor_ranges_d6420aeb5e8fc6d2, []int{0}
 }
 func (m *DoubleRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DoubleRange.Unmarshal(m, b)
@@ -73,10 +73,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/ranges.proto", fileDescriptor_ranges_48e0b2137316ecce)
+	proto.RegisterFile("google/cloud/automl/v1beta1/ranges.proto", fileDescriptor_ranges_d6420aeb5e8fc6d2)
 }
 
-var fileDescriptor_ranges_48e0b2137316ecce = []byte{
+var fileDescriptor_ranges_d6420aeb5e8fc6d2 = []byte{
 	// 222 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0xcf, 0xbf, 0x4a, 0xc5, 0x30,
 	0x14, 0x06, 0x70, 0x72, 0x45, 0x87, 0xdc, 0x45, 0x8a, 0xc3, 0xc5, 0x2b, 0x28, 0x4e, 0x77, 0x4a,

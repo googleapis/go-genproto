@@ -73,7 +73,7 @@ func (x CompanySize) String() string {
 	return proto.EnumName(CompanySize_name, int32(x))
 }
 func (CompanySize) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{0}
+	return fileDescriptor_common_fee8e853138cd909, []int{0}
 }
 
 // An enum that represents employee benefits included with the job.
@@ -145,7 +145,7 @@ func (x JobBenefit) String() string {
 	return proto.EnumName(JobBenefit_name, int32(x))
 }
 func (JobBenefit) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{1}
+	return fileDescriptor_common_fee8e853138cd909, []int{1}
 }
 
 // Educational degree level defined in International Standard Classification
@@ -224,7 +224,7 @@ func (x DegreeType) String() string {
 	return proto.EnumName(DegreeType_name, int32(x))
 }
 func (DegreeType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{2}
+	return fileDescriptor_common_fee8e853138cd909, []int{2}
 }
 
 // An enum that represents the employment type of a job.
@@ -299,7 +299,7 @@ func (x EmploymentType) String() string {
 	return proto.EnumName(EmploymentType_name, int32(x))
 }
 func (EmploymentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{3}
+	return fileDescriptor_common_fee8e853138cd909, []int{3}
 }
 
 // An enum that represents the required experience level required for the job.
@@ -343,7 +343,7 @@ func (x JobLevel) String() string {
 	return proto.EnumName(JobLevel_name, int32(x))
 }
 func (JobLevel) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{4}
+	return fileDescriptor_common_fee8e853138cd909, []int{4}
 }
 
 // An enum that represents the categorization or primary focus of specific
@@ -488,7 +488,7 @@ func (x JobCategory) String() string {
 	return proto.EnumName(JobCategory_name, int32(x))
 }
 func (JobCategory) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{5}
+	return fileDescriptor_common_fee8e853138cd909, []int{5}
 }
 
 // An enum that represents the job posting region. In most cases, job postings
@@ -538,7 +538,7 @@ func (x PostingRegion) String() string {
 	return proto.EnumName(PostingRegion_name, int32(x))
 }
 func (PostingRegion) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{6}
+	return fileDescriptor_common_fee8e853138cd909, []int{6}
 }
 
 // An enum that represents who has view access to the resource.
@@ -574,7 +574,7 @@ func (x Visibility) String() string {
 	return proto.EnumName(Visibility_name, int32(x))
 }
 func (Visibility) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{7}
+	return fileDescriptor_common_fee8e853138cd909, []int{7}
 }
 
 // Enum that represents the usage of the contact information.
@@ -608,7 +608,7 @@ func (x ContactInfoUsage) String() string {
 	return proto.EnumName(ContactInfoUsage_name, int32(x))
 }
 func (ContactInfoUsage) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{8}
+	return fileDescriptor_common_fee8e853138cd909, []int{8}
 }
 
 // Input only.
@@ -643,7 +643,7 @@ func (x HtmlSanitization) String() string {
 	return proto.EnumName(HtmlSanitization_name, int32(x))
 }
 func (HtmlSanitization) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{9}
+	return fileDescriptor_common_fee8e853138cd909, []int{9}
 }
 
 // Method for commute.
@@ -682,7 +682,7 @@ func (x CommuteMethod) String() string {
 	return proto.EnumName(CommuteMethod_name, int32(x))
 }
 func (CommuteMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{10}
+	return fileDescriptor_common_fee8e853138cd909, []int{10}
 }
 
 // Enum that represents the skill proficiency level.
@@ -728,7 +728,7 @@ func (x SkillProficiencyLevel) String() string {
 	return proto.EnumName(SkillProficiencyLevel_name, int32(x))
 }
 func (SkillProficiencyLevel) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{11}
+	return fileDescriptor_common_fee8e853138cd909, []int{11}
 }
 
 // The overall outcome /decision / result indicator.
@@ -771,7 +771,7 @@ func (x Outcome) String() string {
 	return proto.EnumName(Outcome_name, int32(x))
 }
 func (Outcome) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{12}
+	return fileDescriptor_common_fee8e853138cd909, []int{12}
 }
 
 // An enum which represents the type of a location.
@@ -837,7 +837,7 @@ func (x Location_LocationType) String() string {
 	return proto.EnumName(Location_LocationType_name, int32(x))
 }
 func (Location_LocationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{1, 0}
+	return fileDescriptor_common_fee8e853138cd909, []int{1, 0}
 }
 
 // An enumeration describing an API access portal and exposure mechanism.
@@ -886,7 +886,7 @@ func (x DeviceInfo_DeviceType) String() string {
 	return proto.EnumName(DeviceInfo_DeviceType_name, int32(x))
 }
 func (DeviceInfo_DeviceType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{4, 0}
+	return fileDescriptor_common_fee8e853138cd909, []int{4, 0}
 }
 
 // The type of compensation.
@@ -958,7 +958,7 @@ func (x CompensationInfo_CompensationType) String() string {
 	return proto.EnumName(CompensationInfo_CompensationType_name, int32(x))
 }
 func (CompensationInfo_CompensationType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{7, 0}
+	return fileDescriptor_common_fee8e853138cd909, []int{7, 0}
 }
 
 // Pay frequency.
@@ -1008,7 +1008,7 @@ func (x CompensationInfo_CompensationUnit) String() string {
 	return proto.EnumName(CompensationInfo_CompensationUnit_name, int32(x))
 }
 func (CompensationInfo_CompensationUnit) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{7, 1}
+	return fileDescriptor_common_fee8e853138cd909, []int{7, 1}
 }
 
 // Message representing a period of time between two timestamps.
@@ -1026,7 +1026,7 @@ func (m *TimestampRange) Reset()         { *m = TimestampRange{} }
 func (m *TimestampRange) String() string { return proto.CompactTextString(m) }
 func (*TimestampRange) ProtoMessage()    {}
 func (*TimestampRange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{0}
+	return fileDescriptor_common_fee8e853138cd909, []int{0}
 }
 func (m *TimestampRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimestampRange.Unmarshal(m, b)
@@ -1060,9 +1060,8 @@ func (m *TimestampRange) GetEndTime() *timestamp.Timestamp {
 	return nil
 }
 
-// Output only.
-//
-// A resource that represents a location with full geographic information.
+// Output only. A resource that represents a location with full geographic
+// information.
 type Location struct {
 	// The type of a location, which corresponds to the address lines field of
 	// [PostalAddress][]. For example, "Downtown, Atlanta, GA, USA" has a type of
@@ -1091,7 +1090,7 @@ func (m *Location) Reset()         { *m = Location{} }
 func (m *Location) String() string { return proto.CompactTextString(m) }
 func (*Location) ProtoMessage()    {}
 func (*Location) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{1}
+	return fileDescriptor_common_fee8e853138cd909, []int{1}
 }
 func (m *Location) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Location.Unmarshal(m, b)
@@ -1208,7 +1207,7 @@ func (m *RequestMetadata) Reset()         { *m = RequestMetadata{} }
 func (m *RequestMetadata) String() string { return proto.CompactTextString(m) }
 func (*RequestMetadata) ProtoMessage()    {}
 func (*RequestMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{2}
+	return fileDescriptor_common_fee8e853138cd909, []int{2}
 }
 func (m *RequestMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RequestMetadata.Unmarshal(m, b)
@@ -1263,9 +1262,8 @@ func (m *RequestMetadata) GetDeviceInfo() *DeviceInfo {
 	return nil
 }
 
-// Output only.
-//
-// Additional information returned to client, such as debugging information.
+// Output only. Additional information returned to client, such as debugging
+// information.
 type ResponseMetadata struct {
 	// A unique id associated with this call.
 	// This id is logged for tracking purposes.
@@ -1279,7 +1277,7 @@ func (m *ResponseMetadata) Reset()         { *m = ResponseMetadata{} }
 func (m *ResponseMetadata) String() string { return proto.CompactTextString(m) }
 func (*ResponseMetadata) ProtoMessage()    {}
 func (*ResponseMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{3}
+	return fileDescriptor_common_fee8e853138cd909, []int{3}
 }
 func (m *ResponseMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ResponseMetadata.Unmarshal(m, b)
@@ -1328,7 +1326,7 @@ func (m *DeviceInfo) Reset()         { *m = DeviceInfo{} }
 func (m *DeviceInfo) String() string { return proto.CompactTextString(m) }
 func (*DeviceInfo) ProtoMessage()    {}
 func (*DeviceInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{4}
+	return fileDescriptor_common_fee8e853138cd909, []int{4}
 }
 func (m *DeviceInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceInfo.Unmarshal(m, b)
@@ -1400,7 +1398,7 @@ func (m *CustomAttribute) Reset()         { *m = CustomAttribute{} }
 func (m *CustomAttribute) String() string { return proto.CompactTextString(m) }
 func (*CustomAttribute) ProtoMessage()    {}
 func (*CustomAttribute) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{5}
+	return fileDescriptor_common_fee8e853138cd909, []int{5}
 }
 func (m *CustomAttribute) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomAttribute.Unmarshal(m, b)
@@ -1441,9 +1439,7 @@ func (m *CustomAttribute) GetFilterable() bool {
 	return false
 }
 
-// Output only.
-//
-// Spell check result.
+// Output only. Spell check result.
 type SpellingCorrection struct {
 	// Indicates if the query was corrected by the spell checker.
 	Corrected bool `protobuf:"varint,1,opt,name=corrected,proto3" json:"corrected,omitempty"`
@@ -1466,7 +1462,7 @@ func (m *SpellingCorrection) Reset()         { *m = SpellingCorrection{} }
 func (m *SpellingCorrection) String() string { return proto.CompactTextString(m) }
 func (*SpellingCorrection) ProtoMessage()    {}
 func (*SpellingCorrection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{6}
+	return fileDescriptor_common_fee8e853138cd909, []int{6}
 }
 func (m *SpellingCorrection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpellingCorrection.Unmarshal(m, b)
@@ -1538,7 +1534,7 @@ func (m *CompensationInfo) Reset()         { *m = CompensationInfo{} }
 func (m *CompensationInfo) String() string { return proto.CompactTextString(m) }
 func (*CompensationInfo) ProtoMessage()    {}
 func (*CompensationInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{7}
+	return fileDescriptor_common_fee8e853138cd909, []int{7}
 }
 func (m *CompensationInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompensationInfo.Unmarshal(m, b)
@@ -1634,7 +1630,7 @@ func (m *CompensationInfo_CompensationEntry) Reset()         { *m = Compensation
 func (m *CompensationInfo_CompensationEntry) String() string { return proto.CompactTextString(m) }
 func (*CompensationInfo_CompensationEntry) ProtoMessage()    {}
 func (*CompensationInfo_CompensationEntry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{7, 0}
+	return fileDescriptor_common_fee8e853138cd909, []int{7, 0}
 }
 func (m *CompensationInfo_CompensationEntry) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompensationInfo_CompensationEntry.Unmarshal(m, b)
@@ -1819,7 +1815,7 @@ func (m *CompensationInfo_CompensationRange) Reset()         { *m = Compensation
 func (m *CompensationInfo_CompensationRange) String() string { return proto.CompactTextString(m) }
 func (*CompensationInfo_CompensationRange) ProtoMessage()    {}
 func (*CompensationInfo_CompensationRange) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{7, 1}
+	return fileDescriptor_common_fee8e853138cd909, []int{7, 1}
 }
 func (m *CompensationInfo_CompensationRange) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CompensationInfo_CompensationRange.Unmarshal(m, b)
@@ -1890,7 +1886,7 @@ func (m *Certification) Reset()         { *m = Certification{} }
 func (m *Certification) String() string { return proto.CompactTextString(m) }
 func (*Certification) ProtoMessage()    {}
 func (*Certification) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{8}
+	return fileDescriptor_common_fee8e853138cd909, []int{8}
 }
 func (m *Certification) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Certification.Unmarshal(m, b)
@@ -1983,7 +1979,7 @@ func (m *Skill) Reset()         { *m = Skill{} }
 func (m *Skill) String() string { return proto.CompactTextString(m) }
 func (*Skill) ProtoMessage()    {}
 func (*Skill) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{9}
+	return fileDescriptor_common_fee8e853138cd909, []int{9}
 }
 func (m *Skill) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Skill.Unmarshal(m, b)
@@ -2058,7 +2054,7 @@ func (m *Interview) Reset()         { *m = Interview{} }
 func (m *Interview) String() string { return proto.CompactTextString(m) }
 func (*Interview) ProtoMessage()    {}
 func (*Interview) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{10}
+	return fileDescriptor_common_fee8e853138cd909, []int{10}
 }
 func (m *Interview) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Interview.Unmarshal(m, b)
@@ -2112,7 +2108,7 @@ func (m *Rating) Reset()         { *m = Rating{} }
 func (m *Rating) String() string { return proto.CompactTextString(m) }
 func (*Rating) ProtoMessage()    {}
 func (*Rating) Descriptor() ([]byte, []int) {
-	return fileDescriptor_common_19119d4e40784cc8, []int{11}
+	return fileDescriptor_common_fee8e853138cd909, []int{11}
 }
 func (m *Rating) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Rating.Unmarshal(m, b)
@@ -2195,10 +2191,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/common.proto", fileDescriptor_common_19119d4e40784cc8)
+	proto.RegisterFile("google/cloud/talent/v4beta1/common.proto", fileDescriptor_common_fee8e853138cd909)
 }
 
-var fileDescriptor_common_19119d4e40784cc8 = []byte{
+var fileDescriptor_common_fee8e853138cd909 = []byte{
 	// 3039 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x59, 0xcd, 0x6f, 0x23, 0x47,
 	0x76, 0x37, 0x45, 0x89, 0x14, 0x9f, 0xbe, 0x6a, 0x7a, 0x3c, 0x23, 0x59, 0xf3, 0x25, 0xd3, 0x1b,

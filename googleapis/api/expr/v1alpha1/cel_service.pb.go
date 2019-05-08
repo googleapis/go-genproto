@@ -172,10 +172,10 @@ var _CelService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/api/expr/v1alpha1/cel_service.proto", fileDescriptor_cel_service_082dfec354944354)
+	proto.RegisterFile("google/api/expr/v1alpha1/cel_service.proto", fileDescriptor_cel_service_35d601a3638fea4b)
 }
 
-var fileDescriptor_cel_service_082dfec354944354 = []byte{
+var fileDescriptor_cel_service_35d601a3638fea4b = []byte{
 	// 240 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0xd1, 0x31, 0x4b, 0xc4, 0x30,
 	0x14, 0xc0, 0x71, 0x2b, 0xea, 0x90, 0x45, 0xc8, 0x24, 0x87, 0x93, 0xe0, 0x09, 0x0e, 0x09, 0x77,

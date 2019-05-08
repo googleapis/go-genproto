@@ -35,7 +35,7 @@ const (
 	DateRangeErrorEnum_CANNOT_SET_DATE_TO_PAST DateRangeErrorEnum_DateRangeError = 4
 	// A date was used that is past the system "last" date.
 	DateRangeErrorEnum_AFTER_MAXIMUM_ALLOWABLE_DATE DateRangeErrorEnum_DateRangeError = 5
-	// Trying to change start date on a campaign that has started.
+	// Trying to change start date on a resource that has started.
 	DateRangeErrorEnum_CANNOT_MODIFY_START_DATE_IF_ALREADY_STARTED DateRangeErrorEnum_DateRangeError = 6
 )
 
@@ -62,7 +62,7 @@ func (x DateRangeErrorEnum_DateRangeError) String() string {
 	return proto.EnumName(DateRangeErrorEnum_DateRangeError_name, int32(x))
 }
 func (DateRangeErrorEnum_DateRangeError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_date_range_error_93ac0847a733c955, []int{0, 0}
+	return fileDescriptor_date_range_error_4de96ce6b4f7f7c6, []int{0, 0}
 }
 
 // Container for enum describing possible date range errors.
@@ -76,7 +76,7 @@ func (m *DateRangeErrorEnum) Reset()         { *m = DateRangeErrorEnum{} }
 func (m *DateRangeErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*DateRangeErrorEnum) ProtoMessage()    {}
 func (*DateRangeErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_date_range_error_93ac0847a733c955, []int{0}
+	return fileDescriptor_date_range_error_4de96ce6b4f7f7c6, []int{0}
 }
 func (m *DateRangeErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DateRangeErrorEnum.Unmarshal(m, b)
@@ -102,10 +102,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/date_range_error.proto", fileDescriptor_date_range_error_93ac0847a733c955)
+	proto.RegisterFile("google/ads/googleads/v1/errors/date_range_error.proto", fileDescriptor_date_range_error_4de96ce6b4f7f7c6)
 }
 
-var fileDescriptor_date_range_error_93ac0847a733c955 = []byte{
+var fileDescriptor_date_range_error_4de96ce6b4f7f7c6 = []byte{
 	// 391 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xc1, 0x8e, 0x95, 0x30,
 	0x14, 0x86, 0xe5, 0x8e, 0x8e, 0x49, 0xc7, 0x28, 0xa9, 0x0b, 0xa3, 0x8e, 0x13, 0xc3, 0xd6, 0xa4,

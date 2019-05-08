@@ -42,7 +42,7 @@ func (m *GetAdGroupCriterionRequest) Reset()         { *m = GetAdGroupCriterionR
 func (m *GetAdGroupCriterionRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAdGroupCriterionRequest) ProtoMessage()    {}
 func (*GetAdGroupCriterionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_service_cabbacbf19674533, []int{0}
+	return fileDescriptor_ad_group_criterion_service_c15c43b9a0ae56f4, []int{0}
 }
 func (m *GetAdGroupCriterionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAdGroupCriterionRequest.Unmarshal(m, b)
@@ -92,7 +92,7 @@ func (m *MutateAdGroupCriteriaRequest) Reset()         { *m = MutateAdGroupCrite
 func (m *MutateAdGroupCriteriaRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupCriteriaRequest) ProtoMessage()    {}
 func (*MutateAdGroupCriteriaRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_service_cabbacbf19674533, []int{1}
+	return fileDescriptor_ad_group_criterion_service_c15c43b9a0ae56f4, []int{1}
 }
 func (m *MutateAdGroupCriteriaRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupCriteriaRequest.Unmarshal(m, b)
@@ -170,7 +170,7 @@ func (m *AdGroupCriterionOperation) Reset()         { *m = AdGroupCriterionOpera
 func (m *AdGroupCriterionOperation) String() string { return proto.CompactTextString(m) }
 func (*AdGroupCriterionOperation) ProtoMessage()    {}
 func (*AdGroupCriterionOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_service_cabbacbf19674533, []int{2}
+	return fileDescriptor_ad_group_criterion_service_c15c43b9a0ae56f4, []int{2}
 }
 func (m *AdGroupCriterionOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdGroupCriterionOperation.Unmarshal(m, b)
@@ -361,7 +361,7 @@ func (m *MutateAdGroupCriteriaResponse) Reset()         { *m = MutateAdGroupCrit
 func (m *MutateAdGroupCriteriaResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupCriteriaResponse) ProtoMessage()    {}
 func (*MutateAdGroupCriteriaResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_service_cabbacbf19674533, []int{3}
+	return fileDescriptor_ad_group_criterion_service_c15c43b9a0ae56f4, []int{3}
 }
 func (m *MutateAdGroupCriteriaResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupCriteriaResponse.Unmarshal(m, b)
@@ -408,7 +408,7 @@ func (m *MutateAdGroupCriterionResult) Reset()         { *m = MutateAdGroupCrite
 func (m *MutateAdGroupCriterionResult) String() string { return proto.CompactTextString(m) }
 func (*MutateAdGroupCriterionResult) ProtoMessage()    {}
 func (*MutateAdGroupCriterionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_service_cabbacbf19674533, []int{4}
+	return fileDescriptor_ad_group_criterion_service_c15c43b9a0ae56f4, []int{4}
 }
 func (m *MutateAdGroupCriterionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateAdGroupCriterionResult.Unmarshal(m, b)
@@ -553,10 +553,10 @@ var _AdGroupCriterionService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_criterion_service.proto", fileDescriptor_ad_group_criterion_service_cabbacbf19674533)
+	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_criterion_service.proto", fileDescriptor_ad_group_criterion_service_c15c43b9a0ae56f4)
 }
 
-var fileDescriptor_ad_group_criterion_service_cabbacbf19674533 = []byte{
+var fileDescriptor_ad_group_criterion_service_c15c43b9a0ae56f4 = []byte{
 	// 782 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x95, 0x41, 0x6f, 0xd3, 0x3c,
 	0x18, 0xc7, 0xdf, 0xb4, 0x2f, 0x83, 0xb9, 0x03, 0x24, 0x4f, 0xd3, 0xba, 0xaa, 0x40, 0x15, 0x26,

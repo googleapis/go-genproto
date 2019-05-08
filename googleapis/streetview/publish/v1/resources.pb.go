@@ -70,7 +70,7 @@ func (x Photo_TransferStatus) String() string {
 	return proto.EnumName(Photo_TransferStatus_name, int32(x))
 }
 func (Photo_TransferStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_b993b06e21d9eff4, []int{6, 0}
+	return fileDescriptor_resources_4fb97700fa63963a, []int{6, 0}
 }
 
 // Publication status of the photo in Google Maps.
@@ -100,7 +100,7 @@ func (x Photo_MapsPublishStatus) String() string {
 	return proto.EnumName(Photo_MapsPublishStatus_name, int32(x))
 }
 func (Photo_MapsPublishStatus) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_resources_b993b06e21d9eff4, []int{6, 1}
+	return fileDescriptor_resources_4fb97700fa63963a, []int{6, 1}
 }
 
 // Upload reference for media files.
@@ -118,7 +118,7 @@ func (m *UploadRef) Reset()         { *m = UploadRef{} }
 func (m *UploadRef) String() string { return proto.CompactTextString(m) }
 func (*UploadRef) ProtoMessage()    {}
 func (*UploadRef) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_b993b06e21d9eff4, []int{0}
+	return fileDescriptor_resources_4fb97700fa63963a, []int{0}
 }
 func (m *UploadRef) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UploadRef.Unmarshal(m, b)
@@ -158,7 +158,7 @@ func (m *PhotoId) Reset()         { *m = PhotoId{} }
 func (m *PhotoId) String() string { return proto.CompactTextString(m) }
 func (*PhotoId) ProtoMessage()    {}
 func (*PhotoId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_b993b06e21d9eff4, []int{1}
+	return fileDescriptor_resources_4fb97700fa63963a, []int{1}
 }
 func (m *PhotoId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PhotoId.Unmarshal(m, b)
@@ -204,7 +204,7 @@ func (m *Level) Reset()         { *m = Level{} }
 func (m *Level) String() string { return proto.CompactTextString(m) }
 func (*Level) ProtoMessage()    {}
 func (*Level) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_b993b06e21d9eff4, []int{2}
+	return fileDescriptor_resources_4fb97700fa63963a, []int{2}
 }
 func (m *Level) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Level.Unmarshal(m, b)
@@ -281,7 +281,7 @@ func (m *Pose) Reset()         { *m = Pose{} }
 func (m *Pose) String() string { return proto.CompactTextString(m) }
 func (*Pose) ProtoMessage()    {}
 func (*Pose) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_b993b06e21d9eff4, []int{3}
+	return fileDescriptor_resources_4fb97700fa63963a, []int{3}
 }
 func (m *Pose) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Pose.Unmarshal(m, b)
@@ -369,7 +369,7 @@ func (m *Place) Reset()         { *m = Place{} }
 func (m *Place) String() string { return proto.CompactTextString(m) }
 func (*Place) ProtoMessage()    {}
 func (*Place) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_b993b06e21d9eff4, []int{4}
+	return fileDescriptor_resources_4fb97700fa63963a, []int{4}
 }
 func (m *Place) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Place.Unmarshal(m, b)
@@ -424,7 +424,7 @@ func (m *Connection) Reset()         { *m = Connection{} }
 func (m *Connection) String() string { return proto.CompactTextString(m) }
 func (*Connection) ProtoMessage()    {}
 func (*Connection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_b993b06e21d9eff4, []int{5}
+	return fileDescriptor_resources_4fb97700fa63963a, []int{5}
 }
 func (m *Connection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Connection.Unmarshal(m, b)
@@ -497,7 +497,7 @@ func (m *Photo) Reset()         { *m = Photo{} }
 func (m *Photo) String() string { return proto.CompactTextString(m) }
 func (*Photo) ProtoMessage()    {}
 func (*Photo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_b993b06e21d9eff4, []int{6}
+	return fileDescriptor_resources_4fb97700fa63963a, []int{6}
 }
 func (m *Photo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Photo.Unmarshal(m, b)
@@ -614,10 +614,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/streetview/publish/v1/resources.proto", fileDescriptor_resources_b993b06e21d9eff4)
+	proto.RegisterFile("google/streetview/publish/v1/resources.proto", fileDescriptor_resources_4fb97700fa63963a)
 }
 
-var fileDescriptor_resources_b993b06e21d9eff4 = []byte{
+var fileDescriptor_resources_4fb97700fa63963a = []byte{
 	// 940 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x55, 0x6f, 0x6f, 0xdb, 0xb6,
 	0x13, 0xae, 0x9d, 0xd8, 0x8e, 0xcf, 0x4e, 0xe2, 0xb0, 0xed, 0xef, 0xa7, 0x64, 0x2b, 0x9a, 0x29,

@@ -69,7 +69,7 @@ func (x BatchTranslateMetadata_State) String() string {
 	return proto.EnumName(BatchTranslateMetadata_State_name, int32(x))
 }
 func (BatchTranslateMetadata_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{15, 0}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{15, 0}
 }
 
 // Enumerates the possible states that the creation request can be in.
@@ -112,7 +112,7 @@ func (x CreateGlossaryMetadata_State) String() string {
 	return proto.EnumName(CreateGlossaryMetadata_State_name, int32(x))
 }
 func (CreateGlossaryMetadata_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{24, 0}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{24, 0}
 }
 
 // Enumerates the possible states that the creation request can be in.
@@ -155,7 +155,7 @@ func (x DeleteGlossaryMetadata_State) String() string {
 	return proto.EnumName(DeleteGlossaryMetadata_State_name, int32(x))
 }
 func (DeleteGlossaryMetadata_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{25, 0}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{25, 0}
 }
 
 // Configures which glossary should be used for a specific target language,
@@ -176,7 +176,7 @@ func (m *TranslateTextGlossaryConfig) Reset()         { *m = TranslateTextGlossa
 func (m *TranslateTextGlossaryConfig) String() string { return proto.CompactTextString(m) }
 func (*TranslateTextGlossaryConfig) ProtoMessage()    {}
 func (*TranslateTextGlossaryConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{0}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{0}
 }
 func (m *TranslateTextGlossaryConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranslateTextGlossaryConfig.Unmarshal(m, b)
@@ -262,7 +262,7 @@ func (m *TranslateTextRequest) Reset()         { *m = TranslateTextRequest{} }
 func (m *TranslateTextRequest) String() string { return proto.CompactTextString(m) }
 func (*TranslateTextRequest) ProtoMessage()    {}
 func (*TranslateTextRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{1}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{1}
 }
 func (m *TranslateTextRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranslateTextRequest.Unmarshal(m, b)
@@ -349,7 +349,7 @@ func (m *TranslateTextResponse) Reset()         { *m = TranslateTextResponse{} }
 func (m *TranslateTextResponse) String() string { return proto.CompactTextString(m) }
 func (*TranslateTextResponse) ProtoMessage()    {}
 func (*TranslateTextResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{2}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{2}
 }
 func (m *TranslateTextResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TranslateTextResponse.Unmarshal(m, b)
@@ -406,7 +406,7 @@ func (m *Translation) Reset()         { *m = Translation{} }
 func (m *Translation) String() string { return proto.CompactTextString(m) }
 func (*Translation) ProtoMessage()    {}
 func (*Translation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{3}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{3}
 }
 func (m *Translation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Translation.Unmarshal(m, b)
@@ -484,7 +484,7 @@ func (m *DetectLanguageRequest) Reset()         { *m = DetectLanguageRequest{} }
 func (m *DetectLanguageRequest) String() string { return proto.CompactTextString(m) }
 func (*DetectLanguageRequest) ProtoMessage()    {}
 func (*DetectLanguageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{4}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{4}
 }
 func (m *DetectLanguageRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectLanguageRequest.Unmarshal(m, b)
@@ -616,7 +616,7 @@ func (m *DetectedLanguage) Reset()         { *m = DetectedLanguage{} }
 func (m *DetectedLanguage) String() string { return proto.CompactTextString(m) }
 func (*DetectedLanguage) ProtoMessage()    {}
 func (*DetectedLanguage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{5}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{5}
 }
 func (m *DetectedLanguage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectedLanguage.Unmarshal(m, b)
@@ -664,7 +664,7 @@ func (m *DetectLanguageResponse) Reset()         { *m = DetectLanguageResponse{}
 func (m *DetectLanguageResponse) String() string { return proto.CompactTextString(m) }
 func (*DetectLanguageResponse) ProtoMessage()    {}
 func (*DetectLanguageResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{6}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{6}
 }
 func (m *DetectLanguageResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DetectLanguageResponse.Unmarshal(m, b)
@@ -723,7 +723,7 @@ func (m *GetSupportedLanguagesRequest) Reset()         { *m = GetSupportedLangua
 func (m *GetSupportedLanguagesRequest) String() string { return proto.CompactTextString(m) }
 func (*GetSupportedLanguagesRequest) ProtoMessage()    {}
 func (*GetSupportedLanguagesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{7}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{7}
 }
 func (m *GetSupportedLanguagesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetSupportedLanguagesRequest.Unmarshal(m, b)
@@ -778,7 +778,7 @@ func (m *SupportedLanguages) Reset()         { *m = SupportedLanguages{} }
 func (m *SupportedLanguages) String() string { return proto.CompactTextString(m) }
 func (*SupportedLanguages) ProtoMessage()    {}
 func (*SupportedLanguages) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{8}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{8}
 }
 func (m *SupportedLanguages) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SupportedLanguages.Unmarshal(m, b)
@@ -829,7 +829,7 @@ func (m *SupportedLanguage) Reset()         { *m = SupportedLanguage{} }
 func (m *SupportedLanguage) String() string { return proto.CompactTextString(m) }
 func (*SupportedLanguage) ProtoMessage()    {}
 func (*SupportedLanguage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{9}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{9}
 }
 func (m *SupportedLanguage) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SupportedLanguage.Unmarshal(m, b)
@@ -890,7 +890,7 @@ func (m *GcsSource) Reset()         { *m = GcsSource{} }
 func (m *GcsSource) String() string { return proto.CompactTextString(m) }
 func (*GcsSource) ProtoMessage()    {}
 func (*GcsSource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{10}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{10}
 }
 func (m *GcsSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsSource.Unmarshal(m, b)
@@ -938,7 +938,7 @@ func (m *InputConfig) Reset()         { *m = InputConfig{} }
 func (m *InputConfig) String() string { return proto.CompactTextString(m) }
 func (*InputConfig) ProtoMessage()    {}
 func (*InputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{11}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{11}
 }
 func (m *InputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputConfig.Unmarshal(m, b)
@@ -1058,7 +1058,7 @@ func (m *GcsDestination) Reset()         { *m = GcsDestination{} }
 func (m *GcsDestination) String() string { return proto.CompactTextString(m) }
 func (*GcsDestination) ProtoMessage()    {}
 func (*GcsDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{12}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{12}
 }
 func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsDestination.Unmarshal(m, b)
@@ -1101,7 +1101,7 @@ func (m *OutputConfig) Reset()         { *m = OutputConfig{} }
 func (m *OutputConfig) String() string { return proto.CompactTextString(m) }
 func (*OutputConfig) ProtoMessage()    {}
 func (*OutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{13}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{13}
 }
 func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputConfig.Unmarshal(m, b)
@@ -1248,7 +1248,7 @@ func (m *BatchTranslateTextRequest) Reset()         { *m = BatchTranslateTextReq
 func (m *BatchTranslateTextRequest) String() string { return proto.CompactTextString(m) }
 func (*BatchTranslateTextRequest) ProtoMessage()    {}
 func (*BatchTranslateTextRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{14}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{14}
 }
 func (m *BatchTranslateTextRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchTranslateTextRequest.Unmarshal(m, b)
@@ -1341,7 +1341,7 @@ func (m *BatchTranslateMetadata) Reset()         { *m = BatchTranslateMetadata{}
 func (m *BatchTranslateMetadata) String() string { return proto.CompactTextString(m) }
 func (*BatchTranslateMetadata) ProtoMessage()    {}
 func (*BatchTranslateMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{15}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{15}
 }
 func (m *BatchTranslateMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchTranslateMetadata.Unmarshal(m, b)
@@ -1419,7 +1419,7 @@ func (m *BatchTranslateResponse) Reset()         { *m = BatchTranslateResponse{}
 func (m *BatchTranslateResponse) String() string { return proto.CompactTextString(m) }
 func (*BatchTranslateResponse) ProtoMessage()    {}
 func (*BatchTranslateResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{16}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{16}
 }
 func (m *BatchTranslateResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchTranslateResponse.Unmarshal(m, b)
@@ -1490,7 +1490,7 @@ func (m *GlossaryInputConfig) Reset()         { *m = GlossaryInputConfig{} }
 func (m *GlossaryInputConfig) String() string { return proto.CompactTextString(m) }
 func (*GlossaryInputConfig) ProtoMessage()    {}
 func (*GlossaryInputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{17}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{17}
 }
 func (m *GlossaryInputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GlossaryInputConfig.Unmarshal(m, b)
@@ -1618,7 +1618,7 @@ func (m *Glossary) Reset()         { *m = Glossary{} }
 func (m *Glossary) String() string { return proto.CompactTextString(m) }
 func (*Glossary) ProtoMessage()    {}
 func (*Glossary) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{18}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{18}
 }
 func (m *Glossary) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Glossary.Unmarshal(m, b)
@@ -1801,7 +1801,7 @@ func (m *Glossary_LanguageCodePair) Reset()         { *m = Glossary_LanguageCode
 func (m *Glossary_LanguageCodePair) String() string { return proto.CompactTextString(m) }
 func (*Glossary_LanguageCodePair) ProtoMessage()    {}
 func (*Glossary_LanguageCodePair) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{18, 0}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{18, 0}
 }
 func (m *Glossary_LanguageCodePair) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Glossary_LanguageCodePair.Unmarshal(m, b)
@@ -1850,7 +1850,7 @@ func (m *Glossary_LanguageCodesSet) Reset()         { *m = Glossary_LanguageCode
 func (m *Glossary_LanguageCodesSet) String() string { return proto.CompactTextString(m) }
 func (*Glossary_LanguageCodesSet) ProtoMessage()    {}
 func (*Glossary_LanguageCodesSet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{18, 1}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{18, 1}
 }
 func (m *Glossary_LanguageCodesSet) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Glossary_LanguageCodesSet.Unmarshal(m, b)
@@ -1892,7 +1892,7 @@ func (m *CreateGlossaryRequest) Reset()         { *m = CreateGlossaryRequest{} }
 func (m *CreateGlossaryRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateGlossaryRequest) ProtoMessage()    {}
 func (*CreateGlossaryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{19}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{19}
 }
 func (m *CreateGlossaryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateGlossaryRequest.Unmarshal(m, b)
@@ -1939,7 +1939,7 @@ func (m *GetGlossaryRequest) Reset()         { *m = GetGlossaryRequest{} }
 func (m *GetGlossaryRequest) String() string { return proto.CompactTextString(m) }
 func (*GetGlossaryRequest) ProtoMessage()    {}
 func (*GetGlossaryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{20}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{20}
 }
 func (m *GetGlossaryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGlossaryRequest.Unmarshal(m, b)
@@ -1979,7 +1979,7 @@ func (m *DeleteGlossaryRequest) Reset()         { *m = DeleteGlossaryRequest{} }
 func (m *DeleteGlossaryRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteGlossaryRequest) ProtoMessage()    {}
 func (*DeleteGlossaryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{21}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{21}
 }
 func (m *DeleteGlossaryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteGlossaryRequest.Unmarshal(m, b)
@@ -2031,7 +2031,7 @@ func (m *ListGlossariesRequest) Reset()         { *m = ListGlossariesRequest{} }
 func (m *ListGlossariesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListGlossariesRequest) ProtoMessage()    {}
 func (*ListGlossariesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{22}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{22}
 }
 func (m *ListGlossariesRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListGlossariesRequest.Unmarshal(m, b)
@@ -2096,7 +2096,7 @@ func (m *ListGlossariesResponse) Reset()         { *m = ListGlossariesResponse{}
 func (m *ListGlossariesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListGlossariesResponse) ProtoMessage()    {}
 func (*ListGlossariesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{23}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{23}
 }
 func (m *ListGlossariesResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListGlossariesResponse.Unmarshal(m, b)
@@ -2148,7 +2148,7 @@ func (m *CreateGlossaryMetadata) Reset()         { *m = CreateGlossaryMetadata{}
 func (m *CreateGlossaryMetadata) String() string { return proto.CompactTextString(m) }
 func (*CreateGlossaryMetadata) ProtoMessage()    {}
 func (*CreateGlossaryMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{24}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{24}
 }
 func (m *CreateGlossaryMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateGlossaryMetadata.Unmarshal(m, b)
@@ -2207,7 +2207,7 @@ func (m *DeleteGlossaryMetadata) Reset()         { *m = DeleteGlossaryMetadata{}
 func (m *DeleteGlossaryMetadata) String() string { return proto.CompactTextString(m) }
 func (*DeleteGlossaryMetadata) ProtoMessage()    {}
 func (*DeleteGlossaryMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{25}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{25}
 }
 func (m *DeleteGlossaryMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteGlossaryMetadata.Unmarshal(m, b)
@@ -2267,7 +2267,7 @@ func (m *DeleteGlossaryResponse) Reset()         { *m = DeleteGlossaryResponse{}
 func (m *DeleteGlossaryResponse) String() string { return proto.CompactTextString(m) }
 func (*DeleteGlossaryResponse) ProtoMessage()    {}
 func (*DeleteGlossaryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_translation_service_1ddc8fb980be5f8d, []int{26}
+	return fileDescriptor_translation_service_7ab926c836a43926, []int{26}
 }
 func (m *DeleteGlossaryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteGlossaryResponse.Unmarshal(m, b)
@@ -2687,10 +2687,10 @@ var _TranslationService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/translate/v3beta1/translation_service.proto", fileDescriptor_translation_service_1ddc8fb980be5f8d)
+	proto.RegisterFile("google/cloud/translate/v3beta1/translation_service.proto", fileDescriptor_translation_service_7ab926c836a43926)
 }
 
-var fileDescriptor_translation_service_1ddc8fb980be5f8d = []byte{
+var fileDescriptor_translation_service_7ab926c836a43926 = []byte{
 	// 1986 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x59, 0xcf, 0x73, 0x23, 0x47,
 	0xf5, 0xf7, 0x48, 0x96, 0x2d, 0x3d, 0x59, 0xb2, 0xb6, 0xd7, 0xf2, 0x57, 0x5f, 0x6d, 0x7e, 0x38,

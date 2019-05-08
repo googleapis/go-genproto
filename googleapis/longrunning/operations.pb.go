@@ -62,7 +62,7 @@ func (m *Operation) Reset()         { *m = Operation{} }
 func (m *Operation) String() string { return proto.CompactTextString(m) }
 func (*Operation) ProtoMessage()    {}
 func (*Operation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_6f052bba240fbc37, []int{0}
+	return fileDescriptor_operations_6d5856629ff294fa, []int{0}
 }
 func (m *Operation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Operation.Unmarshal(m, b)
@@ -227,7 +227,7 @@ func (m *GetOperationRequest) Reset()         { *m = GetOperationRequest{} }
 func (m *GetOperationRequest) String() string { return proto.CompactTextString(m) }
 func (*GetOperationRequest) ProtoMessage()    {}
 func (*GetOperationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_6f052bba240fbc37, []int{1}
+	return fileDescriptor_operations_6d5856629ff294fa, []int{1}
 }
 func (m *GetOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetOperationRequest.Unmarshal(m, b)
@@ -273,7 +273,7 @@ func (m *ListOperationsRequest) Reset()         { *m = ListOperationsRequest{} }
 func (m *ListOperationsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListOperationsRequest) ProtoMessage()    {}
 func (*ListOperationsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_6f052bba240fbc37, []int{2}
+	return fileDescriptor_operations_6d5856629ff294fa, []int{2}
 }
 func (m *ListOperationsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOperationsRequest.Unmarshal(m, b)
@@ -336,7 +336,7 @@ func (m *ListOperationsResponse) Reset()         { *m = ListOperationsResponse{}
 func (m *ListOperationsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListOperationsResponse) ProtoMessage()    {}
 func (*ListOperationsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_6f052bba240fbc37, []int{3}
+	return fileDescriptor_operations_6d5856629ff294fa, []int{3}
 }
 func (m *ListOperationsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListOperationsResponse.Unmarshal(m, b)
@@ -383,7 +383,7 @@ func (m *CancelOperationRequest) Reset()         { *m = CancelOperationRequest{}
 func (m *CancelOperationRequest) String() string { return proto.CompactTextString(m) }
 func (*CancelOperationRequest) ProtoMessage()    {}
 func (*CancelOperationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_6f052bba240fbc37, []int{4}
+	return fileDescriptor_operations_6d5856629ff294fa, []int{4}
 }
 func (m *CancelOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CancelOperationRequest.Unmarshal(m, b)
@@ -423,7 +423,7 @@ func (m *DeleteOperationRequest) Reset()         { *m = DeleteOperationRequest{}
 func (m *DeleteOperationRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteOperationRequest) ProtoMessage()    {}
 func (*DeleteOperationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_6f052bba240fbc37, []int{5}
+	return fileDescriptor_operations_6d5856629ff294fa, []int{5}
 }
 func (m *DeleteOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteOperationRequest.Unmarshal(m, b)
@@ -467,7 +467,7 @@ func (m *WaitOperationRequest) Reset()         { *m = WaitOperationRequest{} }
 func (m *WaitOperationRequest) String() string { return proto.CompactTextString(m) }
 func (*WaitOperationRequest) ProtoMessage()    {}
 func (*WaitOperationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_6f052bba240fbc37, []int{6}
+	return fileDescriptor_operations_6d5856629ff294fa, []int{6}
 }
 func (m *WaitOperationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WaitOperationRequest.Unmarshal(m, b)
@@ -539,7 +539,7 @@ func (m *OperationInfo) Reset()         { *m = OperationInfo{} }
 func (m *OperationInfo) String() string { return proto.CompactTextString(m) }
 func (*OperationInfo) ProtoMessage()    {}
 func (*OperationInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_operations_6f052bba240fbc37, []int{7}
+	return fileDescriptor_operations_6d5856629ff294fa, []int{7}
 }
 func (m *OperationInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperationInfo.Unmarshal(m, b)
@@ -871,10 +871,10 @@ var _Operations_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/longrunning/operations.proto", fileDescriptor_operations_6f052bba240fbc37)
+	proto.RegisterFile("google/longrunning/operations.proto", fileDescriptor_operations_6d5856629ff294fa)
 }
 
-var fileDescriptor_operations_6f052bba240fbc37 = []byte{
+var fileDescriptor_operations_6d5856629ff294fa = []byte{
 	// 741 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x55, 0xcd, 0x4e, 0x13, 0x51,
 	0x14, 0x66, 0x4a, 0xc1, 0xf6, 0x40, 0x69, 0x72, 0x85, 0x52, 0x8a, 0x60, 0x1d, 0x8c, 0x96, 0x86,

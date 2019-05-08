@@ -60,7 +60,7 @@ func (m *ColumnSpec) Reset()         { *m = ColumnSpec{} }
 func (m *ColumnSpec) String() string { return proto.CompactTextString(m) }
 func (*ColumnSpec) ProtoMessage()    {}
 func (*ColumnSpec) Descriptor() ([]byte, []int) {
-	return fileDescriptor_column_spec_1c93780f96bb3394, []int{0}
+	return fileDescriptor_column_spec_5bd50af362cf7442, []int{0}
 }
 func (m *ColumnSpec) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ColumnSpec.Unmarshal(m, b)
@@ -139,7 +139,7 @@ func (m *ColumnSpec_CorrelatedColumn) Reset()         { *m = ColumnSpec_Correlat
 func (m *ColumnSpec_CorrelatedColumn) String() string { return proto.CompactTextString(m) }
 func (*ColumnSpec_CorrelatedColumn) ProtoMessage()    {}
 func (*ColumnSpec_CorrelatedColumn) Descriptor() ([]byte, []int) {
-	return fileDescriptor_column_spec_1c93780f96bb3394, []int{0, 0}
+	return fileDescriptor_column_spec_5bd50af362cf7442, []int{0, 0}
 }
 func (m *ColumnSpec_CorrelatedColumn) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ColumnSpec_CorrelatedColumn.Unmarshal(m, b)
@@ -179,10 +179,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/column_spec.proto", fileDescriptor_column_spec_1c93780f96bb3394)
+	proto.RegisterFile("google/cloud/automl/v1beta1/column_spec.proto", fileDescriptor_column_spec_5bd50af362cf7442)
 }
 
-var fileDescriptor_column_spec_1c93780f96bb3394 = []byte{
+var fileDescriptor_column_spec_5bd50af362cf7442 = []byte{
 	// 396 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xd1, 0xea, 0xd3, 0x30,
 	0x14, 0xc6, 0xe9, 0x7f, 0x7f, 0x87, 0xcb, 0x86, 0xcc, 0x20, 0x52, 0x36, 0xc1, 0x29, 0x2a, 0xbb,

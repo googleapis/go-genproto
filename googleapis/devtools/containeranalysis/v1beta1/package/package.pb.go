@@ -45,7 +45,7 @@ func (x Architecture) String() string {
 	return proto.EnumName(Architecture_name, int32(x))
 }
 func (Architecture) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{0}
+	return fileDescriptor_package_bb5c882585bb63a7, []int{0}
 }
 
 // Whether this is an ordinary package version or a sentinel MIN/MAX version.
@@ -81,7 +81,7 @@ func (x Version_VersionKind) String() string {
 	return proto.EnumName(Version_VersionKind_name, int32(x))
 }
 func (Version_VersionKind) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{5, 0}
+	return fileDescriptor_package_bb5c882585bb63a7, []int{5, 0}
 }
 
 // This represents a particular channel of distribution for a given package.
@@ -111,7 +111,7 @@ func (m *Distribution) Reset()         { *m = Distribution{} }
 func (m *Distribution) String() string { return proto.CompactTextString(m) }
 func (*Distribution) ProtoMessage()    {}
 func (*Distribution) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{0}
+	return fileDescriptor_package_bb5c882585bb63a7, []int{0}
 }
 func (m *Distribution) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Distribution.Unmarshal(m, b)
@@ -192,7 +192,7 @@ func (m *Location) Reset()         { *m = Location{} }
 func (m *Location) String() string { return proto.CompactTextString(m) }
 func (*Location) ProtoMessage()    {}
 func (*Location) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{1}
+	return fileDescriptor_package_bb5c882585bb63a7, []int{1}
 }
 func (m *Location) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Location.Unmarshal(m, b)
@@ -250,7 +250,7 @@ func (m *Package) Reset()         { *m = Package{} }
 func (m *Package) String() string { return proto.CompactTextString(m) }
 func (*Package) ProtoMessage()    {}
 func (*Package) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{2}
+	return fileDescriptor_package_bb5c882585bb63a7, []int{2}
 }
 func (m *Package) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Package.Unmarshal(m, b)
@@ -297,7 +297,7 @@ func (m *Details) Reset()         { *m = Details{} }
 func (m *Details) String() string { return proto.CompactTextString(m) }
 func (*Details) ProtoMessage()    {}
 func (*Details) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{3}
+	return fileDescriptor_package_bb5c882585bb63a7, []int{3}
 }
 func (m *Details) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Details.Unmarshal(m, b)
@@ -341,7 +341,7 @@ func (m *Installation) Reset()         { *m = Installation{} }
 func (m *Installation) String() string { return proto.CompactTextString(m) }
 func (*Installation) ProtoMessage()    {}
 func (*Installation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{4}
+	return fileDescriptor_package_bb5c882585bb63a7, []int{4}
 }
 func (m *Installation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Installation.Unmarshal(m, b)
@@ -395,7 +395,7 @@ func (m *Version) Reset()         { *m = Version{} }
 func (m *Version) String() string { return proto.CompactTextString(m) }
 func (*Version) ProtoMessage()    {}
 func (*Version) Descriptor() ([]byte, []int) {
-	return fileDescriptor_package_98e063c9654a5d86, []int{5}
+	return fileDescriptor_package_bb5c882585bb63a7, []int{5}
 }
 func (m *Version) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Version.Unmarshal(m, b)
@@ -455,10 +455,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/package/package.proto", fileDescriptor_package_98e063c9654a5d86)
+	proto.RegisterFile("google/devtools/containeranalysis/v1beta1/package/package.proto", fileDescriptor_package_bb5c882585bb63a7)
 }
 
-var fileDescriptor_package_98e063c9654a5d86 = []byte{
+var fileDescriptor_package_bb5c882585bb63a7 = []byte{
 	// 575 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xff, 0x6a, 0xd4, 0x40,
 	0x10, 0x36, 0x49, 0x7b, 0x69, 0xe7, 0xce, 0x12, 0x16, 0xb1, 0x41, 0x44, 0x62, 0x40, 0x38, 0x44,

@@ -39,7 +39,7 @@ func (m *RegressionEvaluationMetrics) Reset()         { *m = RegressionEvaluatio
 func (m *RegressionEvaluationMetrics) String() string { return proto.CompactTextString(m) }
 func (*RegressionEvaluationMetrics) ProtoMessage()    {}
 func (*RegressionEvaluationMetrics) Descriptor() ([]byte, []int) {
-	return fileDescriptor_regression_47c515777663af72, []int{0}
+	return fileDescriptor_regression_ca949e981cd1d01b, []int{0}
 }
 func (m *RegressionEvaluationMetrics) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RegressionEvaluationMetrics.Unmarshal(m, b)
@@ -92,10 +92,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/regression.proto", fileDescriptor_regression_47c515777663af72)
+	proto.RegisterFile("google/cloud/automl/v1beta1/regression.proto", fileDescriptor_regression_ca949e981cd1d01b)
 }
 
-var fileDescriptor_regression_47c515777663af72 = []byte{
+var fileDescriptor_regression_ca949e981cd1d01b = []byte{
 	// 300 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xc1, 0x4a, 0x33, 0x31,
 	0x14, 0x85, 0x99, 0xfe, 0x3f, 0xa2, 0xd9, 0x88, 0x55, 0xb0, 0x38, 0xa2, 0xe2, 0xca, 0x85, 0x24,

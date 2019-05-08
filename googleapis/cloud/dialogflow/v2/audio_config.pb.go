@@ -88,7 +88,7 @@ func (x AudioEncoding) String() string {
 	return proto.EnumName(AudioEncoding_name, int32(x))
 }
 func (AudioEncoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_1b9deb1869936da6, []int{0}
+	return fileDescriptor_audio_config_af44fcb5715f52d7, []int{0}
 }
 
 // Variant of the specified [Speech model][google.cloud.dialogflow.v2.InputAudioConfig.model] to use.
@@ -150,7 +150,7 @@ func (x SpeechModelVariant) String() string {
 	return proto.EnumName(SpeechModelVariant_name, int32(x))
 }
 func (SpeechModelVariant) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_1b9deb1869936da6, []int{1}
+	return fileDescriptor_audio_config_af44fcb5715f52d7, []int{1}
 }
 
 // Gender of the voice as described in
@@ -186,7 +186,7 @@ func (x SsmlVoiceGender) String() string {
 	return proto.EnumName(SsmlVoiceGender_name, int32(x))
 }
 func (SsmlVoiceGender) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_1b9deb1869936da6, []int{2}
+	return fileDescriptor_audio_config_af44fcb5715f52d7, []int{2}
 }
 
 // Audio encoding of the output audio format in Text-To-Speech.
@@ -224,7 +224,7 @@ func (x OutputAudioEncoding) String() string {
 	return proto.EnumName(OutputAudioEncoding_name, int32(x))
 }
 func (OutputAudioEncoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_1b9deb1869936da6, []int{3}
+	return fileDescriptor_audio_config_af44fcb5715f52d7, []int{3}
 }
 
 // Instructs the speech recognizer how to process the audio content.
@@ -261,7 +261,7 @@ func (m *InputAudioConfig) Reset()         { *m = InputAudioConfig{} }
 func (m *InputAudioConfig) String() string { return proto.CompactTextString(m) }
 func (*InputAudioConfig) ProtoMessage()    {}
 func (*InputAudioConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_1b9deb1869936da6, []int{0}
+	return fileDescriptor_audio_config_af44fcb5715f52d7, []int{0}
 }
 func (m *InputAudioConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputAudioConfig.Unmarshal(m, b)
@@ -336,7 +336,7 @@ func (m *VoiceSelectionParams) Reset()         { *m = VoiceSelectionParams{} }
 func (m *VoiceSelectionParams) String() string { return proto.CompactTextString(m) }
 func (*VoiceSelectionParams) ProtoMessage()    {}
 func (*VoiceSelectionParams) Descriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_1b9deb1869936da6, []int{1}
+	return fileDescriptor_audio_config_af44fcb5715f52d7, []int{1}
 }
 func (m *VoiceSelectionParams) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VoiceSelectionParams.Unmarshal(m, b)
@@ -405,7 +405,7 @@ func (m *SynthesizeSpeechConfig) Reset()         { *m = SynthesizeSpeechConfig{}
 func (m *SynthesizeSpeechConfig) String() string { return proto.CompactTextString(m) }
 func (*SynthesizeSpeechConfig) ProtoMessage()    {}
 func (*SynthesizeSpeechConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_1b9deb1869936da6, []int{2}
+	return fileDescriptor_audio_config_af44fcb5715f52d7, []int{2}
 }
 func (m *SynthesizeSpeechConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SynthesizeSpeechConfig.Unmarshal(m, b)
@@ -481,7 +481,7 @@ func (m *OutputAudioConfig) Reset()         { *m = OutputAudioConfig{} }
 func (m *OutputAudioConfig) String() string { return proto.CompactTextString(m) }
 func (*OutputAudioConfig) ProtoMessage()    {}
 func (*OutputAudioConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_audio_config_1b9deb1869936da6, []int{3}
+	return fileDescriptor_audio_config_af44fcb5715f52d7, []int{3}
 }
 func (m *OutputAudioConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputAudioConfig.Unmarshal(m, b)
@@ -534,10 +534,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/dialogflow/v2/audio_config.proto", fileDescriptor_audio_config_1b9deb1869936da6)
+	proto.RegisterFile("google/cloud/dialogflow/v2/audio_config.proto", fileDescriptor_audio_config_af44fcb5715f52d7)
 }
 
-var fileDescriptor_audio_config_1b9deb1869936da6 = []byte{
+var fileDescriptor_audio_config_af44fcb5715f52d7 = []byte{
 	// 898 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x55, 0x4f, 0x6f, 0xe2, 0xc6,
 	0x1b, 0xfe, 0xd9, 0x24, 0xfb, 0x53, 0xde, 0x90, 0xac, 0x77, 0x36, 0xcd, 0x3a, 0x69, 0x92, 0x92,

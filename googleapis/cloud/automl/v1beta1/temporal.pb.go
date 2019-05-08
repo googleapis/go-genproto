@@ -37,7 +37,7 @@ func (m *TimeSegment) Reset()         { *m = TimeSegment{} }
 func (m *TimeSegment) String() string { return proto.CompactTextString(m) }
 func (*TimeSegment) ProtoMessage()    {}
 func (*TimeSegment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_temporal_0191edaad42bad2a, []int{0}
+	return fileDescriptor_temporal_20cabaedddc21db8, []int{0}
 }
 func (m *TimeSegment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TimeSegment.Unmarshal(m, b)
@@ -76,10 +76,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/temporal.proto", fileDescriptor_temporal_0191edaad42bad2a)
+	proto.RegisterFile("google/cloud/automl/v1beta1/temporal.proto", fileDescriptor_temporal_20cabaedddc21db8)
 }
 
-var fileDescriptor_temporal_0191edaad42bad2a = []byte{
+var fileDescriptor_temporal_20cabaedddc21db8 = []byte{
 	// 264 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x90, 0xbf, 0x4a, 0x34, 0x31,
 	0x14, 0xc5, 0xc9, 0x16, 0x5f, 0x91, 0xe5, 0x63, 0x71, 0x2a, 0xdd, 0x15, 0x15, 0x2b, 0xb1, 0x48,

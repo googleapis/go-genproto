@@ -50,7 +50,7 @@ func (x DataFormat) String() string {
 	return proto.EnumName(DataFormat_name, int32(x))
 }
 func (DataFormat) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{0}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{0}
 }
 
 // Information about a single data stream within a read session.
@@ -69,7 +69,7 @@ func (m *Stream) Reset()         { *m = Stream{} }
 func (m *Stream) String() string { return proto.CompactTextString(m) }
 func (*Stream) ProtoMessage()    {}
 func (*Stream) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{0}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{0}
 }
 func (m *Stream) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Stream.Unmarshal(m, b)
@@ -118,7 +118,7 @@ func (m *StreamPosition) Reset()         { *m = StreamPosition{} }
 func (m *StreamPosition) String() string { return proto.CompactTextString(m) }
 func (*StreamPosition) ProtoMessage()    {}
 func (*StreamPosition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{1}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{1}
 }
 func (m *StreamPosition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamPosition.Unmarshal(m, b)
@@ -182,7 +182,7 @@ func (m *ReadSession) Reset()         { *m = ReadSession{} }
 func (m *ReadSession) String() string { return proto.CompactTextString(m) }
 func (*ReadSession) ProtoMessage()    {}
 func (*ReadSession) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{2}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{2}
 }
 func (m *ReadSession) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadSession.Unmarshal(m, b)
@@ -348,7 +348,7 @@ func (m *CreateReadSessionRequest) Reset()         { *m = CreateReadSessionReque
 func (m *CreateReadSessionRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateReadSessionRequest) ProtoMessage()    {}
 func (*CreateReadSessionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{3}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{3}
 }
 func (m *CreateReadSessionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateReadSessionRequest.Unmarshal(m, b)
@@ -425,7 +425,7 @@ func (m *ReadRowsRequest) Reset()         { *m = ReadRowsRequest{} }
 func (m *ReadRowsRequest) String() string { return proto.CompactTextString(m) }
 func (*ReadRowsRequest) ProtoMessage()    {}
 func (*ReadRowsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{4}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{4}
 }
 func (m *ReadRowsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadRowsRequest.Unmarshal(m, b)
@@ -467,7 +467,7 @@ func (m *StreamStatus) Reset()         { *m = StreamStatus{} }
 func (m *StreamStatus) String() string { return proto.CompactTextString(m) }
 func (*StreamStatus) ProtoMessage()    {}
 func (*StreamStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{5}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{5}
 }
 func (m *StreamStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamStatus.Unmarshal(m, b)
@@ -508,7 +508,7 @@ func (m *ThrottleStatus) Reset()         { *m = ThrottleStatus{} }
 func (m *ThrottleStatus) String() string { return proto.CompactTextString(m) }
 func (*ThrottleStatus) ProtoMessage()    {}
 func (*ThrottleStatus) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{6}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{6}
 }
 func (m *ThrottleStatus) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ThrottleStatus.Unmarshal(m, b)
@@ -557,7 +557,7 @@ func (m *ReadRowsResponse) Reset()         { *m = ReadRowsResponse{} }
 func (m *ReadRowsResponse) String() string { return proto.CompactTextString(m) }
 func (*ReadRowsResponse) ProtoMessage()    {}
 func (*ReadRowsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{7}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{7}
 }
 func (m *ReadRowsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReadRowsResponse.Unmarshal(m, b)
@@ -689,7 +689,7 @@ func (m *BatchCreateReadSessionStreamsRequest) Reset()         { *m = BatchCreat
 func (m *BatchCreateReadSessionStreamsRequest) String() string { return proto.CompactTextString(m) }
 func (*BatchCreateReadSessionStreamsRequest) ProtoMessage()    {}
 func (*BatchCreateReadSessionStreamsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{8}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{8}
 }
 func (m *BatchCreateReadSessionStreamsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchCreateReadSessionStreamsRequest.Unmarshal(m, b)
@@ -737,7 +737,7 @@ func (m *BatchCreateReadSessionStreamsResponse) Reset()         { *m = BatchCrea
 func (m *BatchCreateReadSessionStreamsResponse) String() string { return proto.CompactTextString(m) }
 func (*BatchCreateReadSessionStreamsResponse) ProtoMessage()    {}
 func (*BatchCreateReadSessionStreamsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{9}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{9}
 }
 func (m *BatchCreateReadSessionStreamsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchCreateReadSessionStreamsResponse.Unmarshal(m, b)
@@ -777,7 +777,7 @@ func (m *FinalizeStreamRequest) Reset()         { *m = FinalizeStreamRequest{} }
 func (m *FinalizeStreamRequest) String() string { return proto.CompactTextString(m) }
 func (*FinalizeStreamRequest) ProtoMessage()    {}
 func (*FinalizeStreamRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{10}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{10}
 }
 func (m *FinalizeStreamRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FinalizeStreamRequest.Unmarshal(m, b)
@@ -817,7 +817,7 @@ func (m *SplitReadStreamRequest) Reset()         { *m = SplitReadStreamRequest{}
 func (m *SplitReadStreamRequest) String() string { return proto.CompactTextString(m) }
 func (*SplitReadStreamRequest) ProtoMessage()    {}
 func (*SplitReadStreamRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{11}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{11}
 }
 func (m *SplitReadStreamRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SplitReadStreamRequest.Unmarshal(m, b)
@@ -860,7 +860,7 @@ func (m *SplitReadStreamResponse) Reset()         { *m = SplitReadStreamResponse
 func (m *SplitReadStreamResponse) String() string { return proto.CompactTextString(m) }
 func (*SplitReadStreamResponse) ProtoMessage()    {}
 func (*SplitReadStreamResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_storage_e7e382437718b135, []int{12}
+	return fileDescriptor_storage_ba3968bfc61218b8, []int{12}
 }
 func (m *SplitReadStreamResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SplitReadStreamResponse.Unmarshal(m, b)
@@ -1246,10 +1246,10 @@ var _BigQueryStorage_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/bigquery/storage/v1beta1/storage.proto", fileDescriptor_storage_e7e382437718b135)
+	proto.RegisterFile("google/cloud/bigquery/storage/v1beta1/storage.proto", fileDescriptor_storage_ba3968bfc61218b8)
 }
 
-var fileDescriptor_storage_e7e382437718b135 = []byte{
+var fileDescriptor_storage_ba3968bfc61218b8 = []byte{
 	// 1160 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x57, 0xdd, 0x6e, 0x1b, 0x45,
 	0x14, 0xee, 0x3a, 0x89, 0xeb, 0x1e, 0xb7, 0xb6, 0x33, 0x88, 0xd4, 0x38, 0x20, 0xa2, 0x15, 0x95,

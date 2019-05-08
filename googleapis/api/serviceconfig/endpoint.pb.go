@@ -67,7 +67,7 @@ func (m *Endpoint) Reset()         { *m = Endpoint{} }
 func (m *Endpoint) String() string { return proto.CompactTextString(m) }
 func (*Endpoint) ProtoMessage()    {}
 func (*Endpoint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_endpoint_c5a971e7963d7d02, []int{0}
+	return fileDescriptor_endpoint_134b6a0db7c4f443, []int{0}
 }
 func (m *Endpoint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Endpoint.Unmarshal(m, b)
@@ -127,9 +127,9 @@ func init() {
 	proto.RegisterType((*Endpoint)(nil), "google.api.Endpoint")
 }
 
-func init() { proto.RegisterFile("google/api/endpoint.proto", fileDescriptor_endpoint_c5a971e7963d7d02) }
+func init() { proto.RegisterFile("google/api/endpoint.proto", fileDescriptor_endpoint_134b6a0db7c4f443) }
 
-var fileDescriptor_endpoint_c5a971e7963d7d02 = []byte{
+var fileDescriptor_endpoint_134b6a0db7c4f443 = []byte{
 	// 236 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x54, 0x8f, 0xc1, 0x4a, 0xc4, 0x30,
 	0x10, 0x86, 0x49, 0xad, 0x6b, 0x3b, 0xa0, 0x87, 0x1c, 0x24, 0x8a, 0x42, 0xf1, 0xd4, 0x53, 0x7b,

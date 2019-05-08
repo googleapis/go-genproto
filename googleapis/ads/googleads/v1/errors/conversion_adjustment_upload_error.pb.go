@@ -86,7 +86,7 @@ func (x ConversionAdjustmentUploadErrorEnum_ConversionAdjustmentUploadError) Str
 	return proto.EnumName(ConversionAdjustmentUploadErrorEnum_ConversionAdjustmentUploadError_name, int32(x))
 }
 func (ConversionAdjustmentUploadErrorEnum_ConversionAdjustmentUploadError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_upload_error_55a988440b7a072a, []int{0, 0}
+	return fileDescriptor_conversion_adjustment_upload_error_27a6081dae4d6cab, []int{0, 0}
 }
 
 // Container for enum describing possible conversion adjustment upload errors.
@@ -100,7 +100,7 @@ func (m *ConversionAdjustmentUploadErrorEnum) Reset()         { *m = ConversionA
 func (m *ConversionAdjustmentUploadErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*ConversionAdjustmentUploadErrorEnum) ProtoMessage()    {}
 func (*ConversionAdjustmentUploadErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_adjustment_upload_error_55a988440b7a072a, []int{0}
+	return fileDescriptor_conversion_adjustment_upload_error_27a6081dae4d6cab, []int{0}
 }
 func (m *ConversionAdjustmentUploadErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionAdjustmentUploadErrorEnum.Unmarshal(m, b)
@@ -126,10 +126,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/conversion_adjustment_upload_error.proto", fileDescriptor_conversion_adjustment_upload_error_55a988440b7a072a)
+	proto.RegisterFile("google/ads/googleads/v1/errors/conversion_adjustment_upload_error.proto", fileDescriptor_conversion_adjustment_upload_error_27a6081dae4d6cab)
 }
 
-var fileDescriptor_conversion_adjustment_upload_error_55a988440b7a072a = []byte{
+var fileDescriptor_conversion_adjustment_upload_error_27a6081dae4d6cab = []byte{
 	// 478 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0xd1, 0x6e, 0xd3, 0x30,
 	0x14, 0x86, 0x59, 0x0b, 0x1b, 0x78, 0x17, 0x44, 0x16, 0x20, 0x86, 0xb6, 0x02, 0x85, 0xeb, 0x44,

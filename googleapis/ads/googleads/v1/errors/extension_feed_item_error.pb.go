@@ -65,7 +65,8 @@ const (
 	// extension.
 	ExtensionFeedItemErrorEnum_CALLTRACKING_NOT_SUPPORTED_FOR_COUNTRY ExtensionFeedItemErrorEnum_ExtensionFeedItemError = 16
 	// Customer hasn't consented for call recording, which is required for
-	// creating/updating call feed items.
+	// creating/updating call feed items. Please see
+	// https://support.google.com/google-ads/answer/7412639.
 	ExtensionFeedItemErrorEnum_CUSTOMER_CONSENT_FOR_CALL_RECORDING_REQUIRED ExtensionFeedItemErrorEnum_ExtensionFeedItemError = 17
 	// App id provided for an app extension is invalid.
 	ExtensionFeedItemErrorEnum_INVALID_APP_ID ExtensionFeedItemErrorEnum_ExtensionFeedItemError = 18
@@ -228,7 +229,7 @@ func (x ExtensionFeedItemErrorEnum_ExtensionFeedItemError) String() string {
 	return proto.EnumName(ExtensionFeedItemErrorEnum_ExtensionFeedItemError_name, int32(x))
 }
 func (ExtensionFeedItemErrorEnum_ExtensionFeedItemError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_extension_feed_item_error_620418e9a72e0e82, []int{0, 0}
+	return fileDescriptor_extension_feed_item_error_4484ec81d93b3330, []int{0, 0}
 }
 
 // Container for enum describing possible extension feed item error.
@@ -242,7 +243,7 @@ func (m *ExtensionFeedItemErrorEnum) Reset()         { *m = ExtensionFeedItemErr
 func (m *ExtensionFeedItemErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*ExtensionFeedItemErrorEnum) ProtoMessage()    {}
 func (*ExtensionFeedItemErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_feed_item_error_620418e9a72e0e82, []int{0}
+	return fileDescriptor_extension_feed_item_error_4484ec81d93b3330, []int{0}
 }
 func (m *ExtensionFeedItemErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExtensionFeedItemErrorEnum.Unmarshal(m, b)
@@ -268,10 +269,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/extension_feed_item_error.proto", fileDescriptor_extension_feed_item_error_620418e9a72e0e82)
+	proto.RegisterFile("google/ads/googleads/v1/errors/extension_feed_item_error.proto", fileDescriptor_extension_feed_item_error_4484ec81d93b3330)
 }
 
-var fileDescriptor_extension_feed_item_error_620418e9a72e0e82 = []byte{
+var fileDescriptor_extension_feed_item_error_4484ec81d93b3330 = []byte{
 	// 1056 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x55, 0xdd, 0x8e, 0x53, 0x37,
 	0x10, 0x2e, 0x4b, 0x0b, 0xad, 0x29, 0x60, 0x5c, 0x58, 0x60, 0x17, 0x96, 0x12, 0xfe, 0x29, 0x24,

@@ -44,7 +44,7 @@ func (m *SourceInfo) Reset()         { *m = SourceInfo{} }
 func (m *SourceInfo) String() string { return proto.CompactTextString(m) }
 func (*SourceInfo) ProtoMessage()    {}
 func (*SourceInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_32ecb266d62c46ba, []int{0}
+	return fileDescriptor_source_9a101adf77e26b45, []int{0}
 }
 func (m *SourceInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourceInfo.Unmarshal(m, b)
@@ -106,7 +106,7 @@ func (m *SourcePosition) Reset()         { *m = SourcePosition{} }
 func (m *SourcePosition) String() string { return proto.CompactTextString(m) }
 func (*SourcePosition) ProtoMessage()    {}
 func (*SourcePosition) Descriptor() ([]byte, []int) {
-	return fileDescriptor_source_32ecb266d62c46ba, []int{1}
+	return fileDescriptor_source_9a101adf77e26b45, []int{1}
 }
 func (m *SourcePosition) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SourcePosition.Unmarshal(m, b)
@@ -161,10 +161,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/api/expr/v1beta1/source.proto", fileDescriptor_source_32ecb266d62c46ba)
+	proto.RegisterFile("google/api/expr/v1beta1/source.proto", fileDescriptor_source_9a101adf77e26b45)
 }
 
-var fileDescriptor_source_32ecb266d62c46ba = []byte{
+var fileDescriptor_source_9a101adf77e26b45 = []byte{
 	// 311 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x91, 0x41, 0x4b, 0x3b, 0x31,
 	0x10, 0xc5, 0x49, 0xb7, 0x5b, 0xfe, 0x9d, 0xfe, 0x29, 0x12, 0x44, 0x97, 0x7a, 0x59, 0x8b, 0x87,

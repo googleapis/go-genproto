@@ -53,7 +53,7 @@ func (x RunAssetDiscoveryResponse_State) String() string {
 	return proto.EnumName(RunAssetDiscoveryResponse_State_name, int32(x))
 }
 func (RunAssetDiscoveryResponse_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_run_asset_discovery_response_4d32921e360a7834, []int{0, 0}
+	return fileDescriptor_run_asset_discovery_response_3522292b1e727515, []int{0, 0}
 }
 
 // Response of asset discovery run
@@ -71,7 +71,7 @@ func (m *RunAssetDiscoveryResponse) Reset()         { *m = RunAssetDiscoveryResp
 func (m *RunAssetDiscoveryResponse) String() string { return proto.CompactTextString(m) }
 func (*RunAssetDiscoveryResponse) ProtoMessage()    {}
 func (*RunAssetDiscoveryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_run_asset_discovery_response_4d32921e360a7834, []int{0}
+	return fileDescriptor_run_asset_discovery_response_3522292b1e727515, []int{0}
 }
 func (m *RunAssetDiscoveryResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RunAssetDiscoveryResponse.Unmarshal(m, b)
@@ -111,10 +111,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/securitycenter/v1/run_asset_discovery_response.proto", fileDescriptor_run_asset_discovery_response_4d32921e360a7834)
+	proto.RegisterFile("google/cloud/securitycenter/v1/run_asset_discovery_response.proto", fileDescriptor_run_asset_discovery_response_3522292b1e727515)
 }
 
-var fileDescriptor_run_asset_discovery_response_4d32921e360a7834 = []byte{
+var fileDescriptor_run_asset_discovery_response_3522292b1e727515 = []byte{
 	// 377 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0xd1, 0xaa, 0xda, 0x30,
 	0x18, 0xc7, 0xd7, 0x0e, 0xc7, 0x96, 0x31, 0x71, 0x85, 0x81, 0xca, 0x70, 0xce, 0x2b, 0xaf, 0x12,

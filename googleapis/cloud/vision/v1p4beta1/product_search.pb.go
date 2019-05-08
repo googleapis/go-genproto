@@ -52,7 +52,7 @@ func (m *ProductSearchParams) Reset()         { *m = ProductSearchParams{} }
 func (m *ProductSearchParams) String() string { return proto.CompactTextString(m) }
 func (*ProductSearchParams) ProtoMessage()    {}
 func (*ProductSearchParams) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_fc962658d6fad09a, []int{0}
+	return fileDescriptor_product_search_573b317bf5620815, []int{0}
 }
 func (m *ProductSearchParams) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductSearchParams.Unmarshal(m, b)
@@ -121,7 +121,7 @@ func (m *ProductSearchResults) Reset()         { *m = ProductSearchResults{} }
 func (m *ProductSearchResults) String() string { return proto.CompactTextString(m) }
 func (*ProductSearchResults) ProtoMessage()    {}
 func (*ProductSearchResults) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_fc962658d6fad09a, []int{1}
+	return fileDescriptor_product_search_573b317bf5620815, []int{1}
 }
 func (m *ProductSearchResults) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductSearchResults.Unmarshal(m, b)
@@ -181,7 +181,7 @@ func (m *ProductSearchResults_Result) Reset()         { *m = ProductSearchResult
 func (m *ProductSearchResults_Result) String() string { return proto.CompactTextString(m) }
 func (*ProductSearchResults_Result) ProtoMessage()    {}
 func (*ProductSearchResults_Result) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_fc962658d6fad09a, []int{1, 0}
+	return fileDescriptor_product_search_573b317bf5620815, []int{1, 0}
 }
 func (m *ProductSearchResults_Result) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductSearchResults_Result.Unmarshal(m, b)
@@ -238,7 +238,7 @@ func (m *ProductSearchResults_GroupedResult) Reset()         { *m = ProductSearc
 func (m *ProductSearchResults_GroupedResult) String() string { return proto.CompactTextString(m) }
 func (*ProductSearchResults_GroupedResult) ProtoMessage()    {}
 func (*ProductSearchResults_GroupedResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_search_fc962658d6fad09a, []int{1, 1}
+	return fileDescriptor_product_search_573b317bf5620815, []int{1, 1}
 }
 func (m *ProductSearchResults_GroupedResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductSearchResults_GroupedResult.Unmarshal(m, b)
@@ -280,10 +280,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/vision/v1p4beta1/product_search.proto", fileDescriptor_product_search_fc962658d6fad09a)
+	proto.RegisterFile("google/cloud/vision/v1p4beta1/product_search.proto", fileDescriptor_product_search_573b317bf5620815)
 }
 
-var fileDescriptor_product_search_fc962658d6fad09a = []byte{
+var fileDescriptor_product_search_573b317bf5620815 = []byte{
 	// 495 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x53, 0xcd, 0x8e, 0xd3, 0x3c,
 	0x14, 0x95, 0xdb, 0x99, 0xf4, 0xab, 0xfb, 0xcd, 0x02, 0x33, 0x40, 0x14, 0x81, 0xa6, 0xcc, 0x02,

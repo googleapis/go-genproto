@@ -51,7 +51,7 @@ func (m *CheckRequest) Reset()         { *m = CheckRequest{} }
 func (m *CheckRequest) String() string { return proto.CompactTextString(m) }
 func (*CheckRequest) ProtoMessage()    {}
 func (*CheckRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_controller_63b84d9abfbd86ce, []int{0}
+	return fileDescriptor_service_controller_fa10647c90d68c28, []int{0}
 }
 func (m *CheckRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckRequest.Unmarshal(m, b)
@@ -117,7 +117,7 @@ func (m *CheckResponse) Reset()         { *m = CheckResponse{} }
 func (m *CheckResponse) String() string { return proto.CompactTextString(m) }
 func (*CheckResponse) ProtoMessage()    {}
 func (*CheckResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_controller_63b84d9abfbd86ce, []int{1}
+	return fileDescriptor_service_controller_fa10647c90d68c28, []int{1}
 }
 func (m *CheckResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckResponse.Unmarshal(m, b)
@@ -177,7 +177,7 @@ func (m *CheckResponse_CheckInfo) Reset()         { *m = CheckResponse_CheckInfo
 func (m *CheckResponse_CheckInfo) String() string { return proto.CompactTextString(m) }
 func (*CheckResponse_CheckInfo) ProtoMessage()    {}
 func (*CheckResponse_CheckInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_controller_63b84d9abfbd86ce, []int{1, 0}
+	return fileDescriptor_service_controller_fa10647c90d68c28, []int{1, 0}
 }
 func (m *CheckResponse_CheckInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckResponse_CheckInfo.Unmarshal(m, b)
@@ -218,7 +218,7 @@ func (m *CheckResponse_ConsumerInfo) Reset()         { *m = CheckResponse_Consum
 func (m *CheckResponse_ConsumerInfo) String() string { return proto.CompactTextString(m) }
 func (*CheckResponse_ConsumerInfo) ProtoMessage()    {}
 func (*CheckResponse_ConsumerInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_controller_63b84d9abfbd86ce, []int{1, 1}
+	return fileDescriptor_service_controller_fa10647c90d68c28, []int{1, 1}
 }
 func (m *CheckResponse_ConsumerInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CheckResponse_ConsumerInfo.Unmarshal(m, b)
@@ -281,7 +281,7 @@ func (m *ReportRequest) Reset()         { *m = ReportRequest{} }
 func (m *ReportRequest) String() string { return proto.CompactTextString(m) }
 func (*ReportRequest) ProtoMessage()    {}
 func (*ReportRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_controller_63b84d9abfbd86ce, []int{2}
+	return fileDescriptor_service_controller_fa10647c90d68c28, []int{2}
 }
 func (m *ReportRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportRequest.Unmarshal(m, b)
@@ -350,7 +350,7 @@ func (m *ReportResponse) Reset()         { *m = ReportResponse{} }
 func (m *ReportResponse) String() string { return proto.CompactTextString(m) }
 func (*ReportResponse) ProtoMessage()    {}
 func (*ReportResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_controller_63b84d9abfbd86ce, []int{3}
+	return fileDescriptor_service_controller_fa10647c90d68c28, []int{3}
 }
 func (m *ReportResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportResponse.Unmarshal(m, b)
@@ -403,7 +403,7 @@ func (m *ReportResponse_ReportError) Reset()         { *m = ReportResponse_Repor
 func (m *ReportResponse_ReportError) String() string { return proto.CompactTextString(m) }
 func (*ReportResponse_ReportError) ProtoMessage()    {}
 func (*ReportResponse_ReportError) Descriptor() ([]byte, []int) {
-	return fileDescriptor_service_controller_63b84d9abfbd86ce, []int{3, 0}
+	return fileDescriptor_service_controller_fa10647c90d68c28, []int{3, 0}
 }
 func (m *ReportResponse_ReportError) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportResponse_ReportError.Unmarshal(m, b)
@@ -611,10 +611,10 @@ var _ServiceController_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/api/servicecontrol/v1/service_controller.proto", fileDescriptor_service_controller_63b84d9abfbd86ce)
+	proto.RegisterFile("google/api/servicecontrol/v1/service_controller.proto", fileDescriptor_service_controller_fa10647c90d68c28)
 }
 
-var fileDescriptor_service_controller_63b84d9abfbd86ce = []byte{
+var fileDescriptor_service_controller_fa10647c90d68c28 = []byte{
 	// 619 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xc1, 0x6e, 0xd3, 0x4c,
 	0x10, 0xd6, 0x3a, 0x6d, 0xa4, 0x4c, 0x9c, 0xfe, 0xea, 0x1e, 0x7e, 0x22, 0xab, 0x87, 0xd4, 0x12,

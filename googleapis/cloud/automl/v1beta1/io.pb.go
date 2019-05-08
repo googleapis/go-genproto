@@ -269,7 +269,7 @@ func (m *InputConfig) Reset()         { *m = InputConfig{} }
 func (m *InputConfig) String() string { return proto.CompactTextString(m) }
 func (*InputConfig) ProtoMessage()    {}
 func (*InputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{0}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{0}
 }
 func (m *InputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InputConfig.Unmarshal(m, b)
@@ -545,7 +545,7 @@ func (m *BatchPredictInputConfig) Reset()         { *m = BatchPredictInputConfig
 func (m *BatchPredictInputConfig) String() string { return proto.CompactTextString(m) }
 func (*BatchPredictInputConfig) ProtoMessage()    {}
 func (*BatchPredictInputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{1}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{1}
 }
 func (m *BatchPredictInputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchPredictInputConfig.Unmarshal(m, b)
@@ -692,7 +692,7 @@ func (m *DocumentInputConfig) Reset()         { *m = DocumentInputConfig{} }
 func (m *DocumentInputConfig) String() string { return proto.CompactTextString(m) }
 func (*DocumentInputConfig) ProtoMessage()    {}
 func (*DocumentInputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{2}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{2}
 }
 func (m *DocumentInputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DocumentInputConfig.Unmarshal(m, b)
@@ -798,7 +798,7 @@ func (m *OutputConfig) Reset()         { *m = OutputConfig{} }
 func (m *OutputConfig) String() string { return proto.CompactTextString(m) }
 func (*OutputConfig) ProtoMessage()    {}
 func (*OutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{3}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{3}
 }
 func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutputConfig.Unmarshal(m, b)
@@ -1105,7 +1105,7 @@ func (m *BatchPredictOutputConfig) Reset()         { *m = BatchPredictOutputConf
 func (m *BatchPredictOutputConfig) String() string { return proto.CompactTextString(m) }
 func (*BatchPredictOutputConfig) ProtoMessage()    {}
 func (*BatchPredictOutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{4}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{4}
 }
 func (m *BatchPredictOutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BatchPredictOutputConfig.Unmarshal(m, b)
@@ -1284,7 +1284,7 @@ func (m *ModelExportOutputConfig) Reset()         { *m = ModelExportOutputConfig
 func (m *ModelExportOutputConfig) String() string { return proto.CompactTextString(m) }
 func (*ModelExportOutputConfig) ProtoMessage()    {}
 func (*ModelExportOutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{5}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{5}
 }
 func (m *ModelExportOutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ModelExportOutputConfig.Unmarshal(m, b)
@@ -1474,7 +1474,7 @@ func (m *ExportEvaluatedExamplesOutputConfig) Reset()         { *m = ExportEvalu
 func (m *ExportEvaluatedExamplesOutputConfig) String() string { return proto.CompactTextString(m) }
 func (*ExportEvaluatedExamplesOutputConfig) ProtoMessage()    {}
 func (*ExportEvaluatedExamplesOutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{6}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{6}
 }
 func (m *ExportEvaluatedExamplesOutputConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExportEvaluatedExamplesOutputConfig.Unmarshal(m, b)
@@ -1589,7 +1589,7 @@ func (m *GcsSource) Reset()         { *m = GcsSource{} }
 func (m *GcsSource) String() string { return proto.CompactTextString(m) }
 func (*GcsSource) ProtoMessage()    {}
 func (*GcsSource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{7}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{7}
 }
 func (m *GcsSource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsSource.Unmarshal(m, b)
@@ -1631,7 +1631,7 @@ func (m *BigQuerySource) Reset()         { *m = BigQuerySource{} }
 func (m *BigQuerySource) String() string { return proto.CompactTextString(m) }
 func (*BigQuerySource) ProtoMessage()    {}
 func (*BigQuerySource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{8}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{8}
 }
 func (m *BigQuerySource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BigQuerySource.Unmarshal(m, b)
@@ -1676,7 +1676,7 @@ func (m *GcsDestination) Reset()         { *m = GcsDestination{} }
 func (m *GcsDestination) String() string { return proto.CompactTextString(m) }
 func (*GcsDestination) ProtoMessage()    {}
 func (*GcsDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{9}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{9}
 }
 func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcsDestination.Unmarshal(m, b)
@@ -1718,7 +1718,7 @@ func (m *BigQueryDestination) Reset()         { *m = BigQueryDestination{} }
 func (m *BigQueryDestination) String() string { return proto.CompactTextString(m) }
 func (*BigQueryDestination) ProtoMessage()    {}
 func (*BigQueryDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{10}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{10}
 }
 func (m *BigQueryDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BigQueryDestination.Unmarshal(m, b)
@@ -1768,7 +1768,7 @@ func (m *GcrDestination) Reset()         { *m = GcrDestination{} }
 func (m *GcrDestination) String() string { return proto.CompactTextString(m) }
 func (*GcrDestination) ProtoMessage()    {}
 func (*GcrDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_io_f2a6680267708d76, []int{11}
+	return fileDescriptor_io_bc3ab7a921debf0e, []int{11}
 }
 func (m *GcrDestination) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GcrDestination.Unmarshal(m, b)
@@ -1813,10 +1813,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/io.proto", fileDescriptor_io_f2a6680267708d76)
+	proto.RegisterFile("google/cloud/automl/v1beta1/io.proto", fileDescriptor_io_bc3ab7a921debf0e)
 }
 
-var fileDescriptor_io_f2a6680267708d76 = []byte{
+var fileDescriptor_io_bc3ab7a921debf0e = []byte{
 	// 630 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x96, 0xcf, 0x6e, 0xd3, 0x4c,
 	0x14, 0xc5, 0x3f, 0xdb, 0x1f, 0x55, 0x7d, 0x5d, 0x5a, 0x70, 0x2b, 0xd5, 0x6a, 0x41, 0x14, 0x83,

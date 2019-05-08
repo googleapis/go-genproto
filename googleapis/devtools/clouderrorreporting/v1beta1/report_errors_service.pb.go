@@ -44,7 +44,7 @@ func (m *ReportErrorEventRequest) Reset()         { *m = ReportErrorEventRequest
 func (m *ReportErrorEventRequest) String() string { return proto.CompactTextString(m) }
 func (*ReportErrorEventRequest) ProtoMessage()    {}
 func (*ReportErrorEventRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_report_errors_service_34e6dc773fd5b8af, []int{0}
+	return fileDescriptor_report_errors_service_e8d1154fe6c98b5b, []int{0}
 }
 func (m *ReportErrorEventRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportErrorEventRequest.Unmarshal(m, b)
@@ -90,7 +90,7 @@ func (m *ReportErrorEventResponse) Reset()         { *m = ReportErrorEventRespon
 func (m *ReportErrorEventResponse) String() string { return proto.CompactTextString(m) }
 func (*ReportErrorEventResponse) ProtoMessage()    {}
 func (*ReportErrorEventResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_report_errors_service_34e6dc773fd5b8af, []int{1}
+	return fileDescriptor_report_errors_service_e8d1154fe6c98b5b, []int{1}
 }
 func (m *ReportErrorEventResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportErrorEventResponse.Unmarshal(m, b)
@@ -134,7 +134,7 @@ func (m *ReportedErrorEvent) Reset()         { *m = ReportedErrorEvent{} }
 func (m *ReportedErrorEvent) String() string { return proto.CompactTextString(m) }
 func (*ReportedErrorEvent) ProtoMessage()    {}
 func (*ReportedErrorEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_report_errors_service_34e6dc773fd5b8af, []int{2}
+	return fileDescriptor_report_errors_service_e8d1154fe6c98b5b, []int{2}
 }
 func (m *ReportedErrorEvent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ReportedErrorEvent.Unmarshal(m, b)
@@ -279,10 +279,10 @@ var _ReportErrorsService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/devtools/clouderrorreporting/v1beta1/report_errors_service.proto", fileDescriptor_report_errors_service_34e6dc773fd5b8af)
+	proto.RegisterFile("google/devtools/clouderrorreporting/v1beta1/report_errors_service.proto", fileDescriptor_report_errors_service_e8d1154fe6c98b5b)
 }
 
-var fileDescriptor_report_errors_service_34e6dc773fd5b8af = []byte{
+var fileDescriptor_report_errors_service_e8d1154fe6c98b5b = []byte{
 	// 490 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x93, 0xcd, 0x8a, 0x13, 0x41,
 	0x10, 0xc7, 0x99, 0xf8, 0xb1, 0x6c, 0x47, 0x54, 0xda, 0x83, 0xc3, 0x20, 0xb8, 0xc6, 0xcb, 0xa2,

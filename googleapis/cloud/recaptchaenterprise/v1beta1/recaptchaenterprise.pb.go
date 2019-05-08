@@ -52,7 +52,7 @@ func (x AnnotateAssessmentRequest_Annotation) String() string {
 	return proto.EnumName(AnnotateAssessmentRequest_Annotation_name, int32(x))
 }
 func (AnnotateAssessmentRequest_Annotation) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_recaptchaenterprise_7a4508970523454c, []int{1, 0}
+	return fileDescriptor_recaptchaenterprise_7acd4e5481c3d535, []int{1, 0}
 }
 
 // LINT.IfChange(classification_reason)
@@ -93,7 +93,7 @@ func (x Assessment_ClassificationReason) String() string {
 	return proto.EnumName(Assessment_ClassificationReason_name, int32(x))
 }
 func (Assessment_ClassificationReason) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_recaptchaenterprise_7a4508970523454c, []int{3, 0}
+	return fileDescriptor_recaptchaenterprise_7acd4e5481c3d535, []int{3, 0}
 }
 
 // Enum that represents the types of invalid token reasons.
@@ -142,7 +142,7 @@ func (x TokenProperties_InvalidReason) String() string {
 	return proto.EnumName(TokenProperties_InvalidReason_name, int32(x))
 }
 func (TokenProperties_InvalidReason) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_recaptchaenterprise_7a4508970523454c, []int{5, 0}
+	return fileDescriptor_recaptchaenterprise_7acd4e5481c3d535, []int{5, 0}
 }
 
 // The create assessment request message.
@@ -161,7 +161,7 @@ func (m *CreateAssessmentRequest) Reset()         { *m = CreateAssessmentRequest
 func (m *CreateAssessmentRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAssessmentRequest) ProtoMessage()    {}
 func (*CreateAssessmentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recaptchaenterprise_7a4508970523454c, []int{0}
+	return fileDescriptor_recaptchaenterprise_7acd4e5481c3d535, []int{0}
 }
 func (m *CreateAssessmentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateAssessmentRequest.Unmarshal(m, b)
@@ -211,7 +211,7 @@ func (m *AnnotateAssessmentRequest) Reset()         { *m = AnnotateAssessmentReq
 func (m *AnnotateAssessmentRequest) String() string { return proto.CompactTextString(m) }
 func (*AnnotateAssessmentRequest) ProtoMessage()    {}
 func (*AnnotateAssessmentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recaptchaenterprise_7a4508970523454c, []int{1}
+	return fileDescriptor_recaptchaenterprise_7acd4e5481c3d535, []int{1}
 }
 func (m *AnnotateAssessmentRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateAssessmentRequest.Unmarshal(m, b)
@@ -256,7 +256,7 @@ func (m *AnnotateAssessmentResponse) Reset()         { *m = AnnotateAssessmentRe
 func (m *AnnotateAssessmentResponse) String() string { return proto.CompactTextString(m) }
 func (*AnnotateAssessmentResponse) ProtoMessage()    {}
 func (*AnnotateAssessmentResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recaptchaenterprise_7a4508970523454c, []int{2}
+	return fileDescriptor_recaptchaenterprise_7acd4e5481c3d535, []int{2}
 }
 func (m *AnnotateAssessmentResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotateAssessmentResponse.Unmarshal(m, b)
@@ -300,7 +300,7 @@ func (m *Assessment) Reset()         { *m = Assessment{} }
 func (m *Assessment) String() string { return proto.CompactTextString(m) }
 func (*Assessment) ProtoMessage()    {}
 func (*Assessment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recaptchaenterprise_7a4508970523454c, []int{3}
+	return fileDescriptor_recaptchaenterprise_7acd4e5481c3d535, []int{3}
 }
 func (m *Assessment) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Assessment.Unmarshal(m, b)
@@ -371,7 +371,7 @@ func (m *Event) Reset()         { *m = Event{} }
 func (m *Event) String() string { return proto.CompactTextString(m) }
 func (*Event) ProtoMessage()    {}
 func (*Event) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recaptchaenterprise_7a4508970523454c, []int{4}
+	return fileDescriptor_recaptchaenterprise_7acd4e5481c3d535, []int{4}
 }
 func (m *Event) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Event.Unmarshal(m, b)
@@ -425,7 +425,7 @@ func (m *TokenProperties) Reset()         { *m = TokenProperties{} }
 func (m *TokenProperties) String() string { return proto.CompactTextString(m) }
 func (*TokenProperties) ProtoMessage()    {}
 func (*TokenProperties) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recaptchaenterprise_7a4508970523454c, []int{5}
+	return fileDescriptor_recaptchaenterprise_7acd4e5481c3d535, []int{5}
 }
 func (m *TokenProperties) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TokenProperties.Unmarshal(m, b)
@@ -604,10 +604,10 @@ var _RecaptchaEnterpriseServiceV1Beta1_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/recaptchaenterprise/v1beta1/recaptchaenterprise.proto", fileDescriptor_recaptchaenterprise_7a4508970523454c)
+	proto.RegisterFile("google/cloud/recaptchaenterprise/v1beta1/recaptchaenterprise.proto", fileDescriptor_recaptchaenterprise_7acd4e5481c3d535)
 }
 
-var fileDescriptor_recaptchaenterprise_7a4508970523454c = []byte{
+var fileDescriptor_recaptchaenterprise_7acd4e5481c3d535 = []byte{
 	// 945 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x56, 0xcd, 0x6f, 0xe3, 0x44,
 	0x14, 0xc7, 0xf9, 0xe8, 0xc7, 0xab, 0xda, 0x35, 0xa3, 0xd5, 0x92, 0x46, 0x0b, 0x74, 0x2d, 0x81,

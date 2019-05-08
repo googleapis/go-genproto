@@ -53,7 +53,7 @@ func (x AssistResponse_EventType) String() string {
 	return proto.EnumName(AssistResponse_EventType_name, int32(x))
 }
 func (AssistResponse_EventType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{1, 0}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{1, 0}
 }
 
 // Audio encoding of the data sent in the audio message.
@@ -91,7 +91,7 @@ func (x AudioInConfig_Encoding) String() string {
 	return proto.EnumName(AudioInConfig_Encoding_name, int32(x))
 }
 func (AudioInConfig_Encoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{4, 0}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{4, 0}
 }
 
 // Audio encoding of the data returned in the audio message. All encodings are
@@ -129,7 +129,7 @@ func (x AudioOutConfig_Encoding) String() string {
 	return proto.EnumName(AudioOutConfig_Encoding_name, int32(x))
 }
 func (AudioOutConfig_Encoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{5, 0}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{5, 0}
 }
 
 // Possible modes for visual screen-output on the device.
@@ -163,7 +163,7 @@ func (x ScreenOutConfig_ScreenMode) String() string {
 	return proto.EnumName(ScreenOutConfig_ScreenMode_name, int32(x))
 }
 func (ScreenOutConfig_ScreenMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{6, 0}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{6, 0}
 }
 
 // Possible formats of the screen data.
@@ -192,7 +192,7 @@ func (x ScreenOut_Format) String() string {
 	return proto.EnumName(ScreenOut_Format_name, int32(x))
 }
 func (ScreenOut_Format) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{10, 0}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{10, 0}
 }
 
 // Possible states of the microphone after a `Assist` RPC completes.
@@ -225,7 +225,7 @@ func (x DialogStateOut_MicrophoneMode) String() string {
 	return proto.EnumName(DialogStateOut_MicrophoneMode_name, int32(x))
 }
 func (DialogStateOut_MicrophoneMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{13, 0}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{13, 0}
 }
 
 // The top-level message sent by the client. Clients must send at least two, and
@@ -249,7 +249,7 @@ func (m *AssistRequest) Reset()         { *m = AssistRequest{} }
 func (m *AssistRequest) String() string { return proto.CompactTextString(m) }
 func (*AssistRequest) ProtoMessage()    {}
 func (*AssistRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{0}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{0}
 }
 func (m *AssistRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssistRequest.Unmarshal(m, b)
@@ -410,7 +410,7 @@ func (m *AssistResponse) Reset()         { *m = AssistResponse{} }
 func (m *AssistResponse) String() string { return proto.CompactTextString(m) }
 func (*AssistResponse) ProtoMessage()    {}
 func (*AssistResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{1}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{1}
 }
 func (m *AssistResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssistResponse.Unmarshal(m, b)
@@ -497,7 +497,7 @@ func (m *DebugInfo) Reset()         { *m = DebugInfo{} }
 func (m *DebugInfo) String() string { return proto.CompactTextString(m) }
 func (*DebugInfo) ProtoMessage()    {}
 func (*DebugInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{2}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{2}
 }
 func (m *DebugInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DebugInfo.Unmarshal(m, b)
@@ -550,7 +550,7 @@ func (m *AssistConfig) Reset()         { *m = AssistConfig{} }
 func (m *AssistConfig) String() string { return proto.CompactTextString(m) }
 func (*AssistConfig) ProtoMessage()    {}
 func (*AssistConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{3}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{3}
 }
 func (m *AssistConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssistConfig.Unmarshal(m, b)
@@ -734,7 +734,7 @@ func (m *AudioInConfig) Reset()         { *m = AudioInConfig{} }
 func (m *AudioInConfig) String() string { return proto.CompactTextString(m) }
 func (*AudioInConfig) ProtoMessage()    {}
 func (*AudioInConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{4}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{4}
 }
 func (m *AudioInConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioInConfig.Unmarshal(m, b)
@@ -789,7 +789,7 @@ func (m *AudioOutConfig) Reset()         { *m = AudioOutConfig{} }
 func (m *AudioOutConfig) String() string { return proto.CompactTextString(m) }
 func (*AudioOutConfig) ProtoMessage()    {}
 func (*AudioOutConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{5}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{5}
 }
 func (m *AudioOutConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioOutConfig.Unmarshal(m, b)
@@ -844,7 +844,7 @@ func (m *ScreenOutConfig) Reset()         { *m = ScreenOutConfig{} }
 func (m *ScreenOutConfig) String() string { return proto.CompactTextString(m) }
 func (*ScreenOutConfig) ProtoMessage()    {}
 func (*ScreenOutConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{6}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{6}
 }
 func (m *ScreenOutConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScreenOutConfig.Unmarshal(m, b)
@@ -906,7 +906,7 @@ func (m *DialogStateIn) Reset()         { *m = DialogStateIn{} }
 func (m *DialogStateIn) String() string { return proto.CompactTextString(m) }
 func (*DialogStateIn) ProtoMessage()    {}
 func (*DialogStateIn) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{7}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{7}
 }
 func (m *DialogStateIn) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DialogStateIn.Unmarshal(m, b)
@@ -986,7 +986,7 @@ func (m *DeviceConfig) Reset()         { *m = DeviceConfig{} }
 func (m *DeviceConfig) String() string { return proto.CompactTextString(m) }
 func (*DeviceConfig) ProtoMessage()    {}
 func (*DeviceConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{8}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{8}
 }
 func (m *DeviceConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceConfig.Unmarshal(m, b)
@@ -1036,7 +1036,7 @@ func (m *AudioOut) Reset()         { *m = AudioOut{} }
 func (m *AudioOut) String() string { return proto.CompactTextString(m) }
 func (*AudioOut) ProtoMessage()    {}
 func (*AudioOut) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{9}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{9}
 }
 func (m *AudioOut) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AudioOut.Unmarshal(m, b)
@@ -1080,7 +1080,7 @@ func (m *ScreenOut) Reset()         { *m = ScreenOut{} }
 func (m *ScreenOut) String() string { return proto.CompactTextString(m) }
 func (*ScreenOut) ProtoMessage()    {}
 func (*ScreenOut) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{10}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{10}
 }
 func (m *ScreenOut) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScreenOut.Unmarshal(m, b)
@@ -1133,7 +1133,7 @@ func (m *DeviceAction) Reset()         { *m = DeviceAction{} }
 func (m *DeviceAction) String() string { return proto.CompactTextString(m) }
 func (*DeviceAction) ProtoMessage()    {}
 func (*DeviceAction) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{11}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{11}
 }
 func (m *DeviceAction) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceAction.Unmarshal(m, b)
@@ -1179,7 +1179,7 @@ func (m *SpeechRecognitionResult) Reset()         { *m = SpeechRecognitionResult
 func (m *SpeechRecognitionResult) String() string { return proto.CompactTextString(m) }
 func (*SpeechRecognitionResult) ProtoMessage()    {}
 func (*SpeechRecognitionResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{12}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{12}
 }
 func (m *SpeechRecognitionResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SpeechRecognitionResult.Unmarshal(m, b)
@@ -1250,7 +1250,7 @@ func (m *DialogStateOut) Reset()         { *m = DialogStateOut{} }
 func (m *DialogStateOut) String() string { return proto.CompactTextString(m) }
 func (*DialogStateOut) ProtoMessage()    {}
 func (*DialogStateOut) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{13}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{13}
 }
 func (m *DialogStateOut) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DialogStateOut.Unmarshal(m, b)
@@ -1313,7 +1313,7 @@ func (m *DebugConfig) Reset()         { *m = DebugConfig{} }
 func (m *DebugConfig) String() string { return proto.CompactTextString(m) }
 func (*DebugConfig) ProtoMessage()    {}
 func (*DebugConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{14}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{14}
 }
 func (m *DebugConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DebugConfig.Unmarshal(m, b)
@@ -1361,7 +1361,7 @@ func (m *DeviceLocation) Reset()         { *m = DeviceLocation{} }
 func (m *DeviceLocation) String() string { return proto.CompactTextString(m) }
 func (*DeviceLocation) ProtoMessage()    {}
 func (*DeviceLocation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_embedded_assistant_31f36a6aca89d40d, []int{15}
+	return fileDescriptor_embedded_assistant_0b559f064bf1f88e, []int{15}
 }
 func (m *DeviceLocation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceLocation.Unmarshal(m, b)
@@ -1676,10 +1676,10 @@ var _EmbeddedAssistant_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/assistant/embedded/v1alpha2/embedded_assistant.proto", fileDescriptor_embedded_assistant_31f36a6aca89d40d)
+	proto.RegisterFile("google/assistant/embedded/v1alpha2/embedded_assistant.proto", fileDescriptor_embedded_assistant_0b559f064bf1f88e)
 }
 
-var fileDescriptor_embedded_assistant_31f36a6aca89d40d = []byte{
+var fileDescriptor_embedded_assistant_0b559f064bf1f88e = []byte{
 	// 1449 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x57, 0x41, 0x73, 0xdb, 0xc6,
 	0x15, 0x16, 0x28, 0x8a, 0x22, 0x1f, 0x29, 0x92, 0x5a, 0x7b, 0x6c, 0x56, 0x72, 0x6b, 0x0d, 0x3a,

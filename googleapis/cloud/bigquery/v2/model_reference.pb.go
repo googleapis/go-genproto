@@ -38,7 +38,7 @@ func (m *ModelReference) Reset()         { *m = ModelReference{} }
 func (m *ModelReference) String() string { return proto.CompactTextString(m) }
 func (*ModelReference) ProtoMessage()    {}
 func (*ModelReference) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_reference_2a1ed863c0ebf474, []int{0}
+	return fileDescriptor_model_reference_02ff0d475f40d0ab, []int{0}
 }
 func (m *ModelReference) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ModelReference.Unmarshal(m, b)
@@ -84,10 +84,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/bigquery/v2/model_reference.proto", fileDescriptor_model_reference_2a1ed863c0ebf474)
+	proto.RegisterFile("google/cloud/bigquery/v2/model_reference.proto", fileDescriptor_model_reference_02ff0d475f40d0ab)
 }
 
-var fileDescriptor_model_reference_2a1ed863c0ebf474 = []byte{
+var fileDescriptor_model_reference_02ff0d475f40d0ab = []byte{
 	// 223 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x90, 0x31, 0x4b, 0xc4, 0x30,
 	0x14, 0x80, 0x39, 0x05, 0xf5, 0x32, 0x38, 0xd4, 0xa5, 0xca, 0x09, 0xe2, 0xe4, 0x94, 0xc0, 0x39,

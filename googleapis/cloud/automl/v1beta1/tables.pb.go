@@ -91,7 +91,7 @@ func (m *TablesDatasetMetadata) Reset()         { *m = TablesDatasetMetadata{} }
 func (m *TablesDatasetMetadata) String() string { return proto.CompactTextString(m) }
 func (*TablesDatasetMetadata) ProtoMessage()    {}
 func (*TablesDatasetMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tables_61f65f5d47e1031c, []int{0}
+	return fileDescriptor_tables_2ffb928805ee705e, []int{0}
 }
 func (m *TablesDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TablesDatasetMetadata.Unmarshal(m, b)
@@ -240,7 +240,7 @@ func (m *TablesModelMetadata) Reset()         { *m = TablesModelMetadata{} }
 func (m *TablesModelMetadata) String() string { return proto.CompactTextString(m) }
 func (*TablesModelMetadata) ProtoMessage()    {}
 func (*TablesModelMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tables_61f65f5d47e1031c, []int{1}
+	return fileDescriptor_tables_2ffb928805ee705e, []int{1}
 }
 func (m *TablesModelMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TablesModelMetadata.Unmarshal(m, b)
@@ -346,7 +346,7 @@ func (m *TablesAnnotation) Reset()         { *m = TablesAnnotation{} }
 func (m *TablesAnnotation) String() string { return proto.CompactTextString(m) }
 func (*TablesAnnotation) ProtoMessage()    {}
 func (*TablesAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tables_61f65f5d47e1031c, []int{2}
+	return fileDescriptor_tables_2ffb928805ee705e, []int{2}
 }
 func (m *TablesAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TablesAnnotation.Unmarshal(m, b)
@@ -426,7 +426,7 @@ func (m *TablesModelColumnInfo) Reset()         { *m = TablesModelColumnInfo{} }
 func (m *TablesModelColumnInfo) String() string { return proto.CompactTextString(m) }
 func (*TablesModelColumnInfo) ProtoMessage()    {}
 func (*TablesModelColumnInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tables_61f65f5d47e1031c, []int{3}
+	return fileDescriptor_tables_2ffb928805ee705e, []int{3}
 }
 func (m *TablesModelColumnInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TablesModelColumnInfo.Unmarshal(m, b)
@@ -476,10 +476,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/tables.proto", fileDescriptor_tables_61f65f5d47e1031c)
+	proto.RegisterFile("google/cloud/automl/v1beta1/tables.proto", fileDescriptor_tables_2ffb928805ee705e)
 }
 
-var fileDescriptor_tables_61f65f5d47e1031c = []byte{
+var fileDescriptor_tables_2ffb928805ee705e = []byte{
 	// 797 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x55, 0xcd, 0x6e, 0xdb, 0x38,
 	0x10, 0x86, 0xec, 0xfc, 0x60, 0x69, 0x60, 0xd7, 0x66, 0xd6, 0x89, 0xd7, 0xd9, 0x20, 0x81, 0x2f,

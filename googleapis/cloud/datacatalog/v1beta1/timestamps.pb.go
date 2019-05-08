@@ -37,7 +37,7 @@ func (m *SystemTimestamps) Reset()         { *m = SystemTimestamps{} }
 func (m *SystemTimestamps) String() string { return proto.CompactTextString(m) }
 func (*SystemTimestamps) ProtoMessage()    {}
 func (*SystemTimestamps) Descriptor() ([]byte, []int) {
-	return fileDescriptor_timestamps_2c433979acbcfbeb, []int{0}
+	return fileDescriptor_timestamps_d8e8b54cbb1fb3a6, []int{0}
 }
 func (m *SystemTimestamps) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SystemTimestamps.Unmarshal(m, b)
@@ -83,10 +83,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/datacatalog/v1beta1/timestamps.proto", fileDescriptor_timestamps_2c433979acbcfbeb)
+	proto.RegisterFile("google/cloud/datacatalog/v1beta1/timestamps.proto", fileDescriptor_timestamps_d8e8b54cbb1fb3a6)
 }
 
-var fileDescriptor_timestamps_2c433979acbcfbeb = []byte{
+var fileDescriptor_timestamps_d8e8b54cbb1fb3a6 = []byte{
 	// 229 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0xd1, 0x3f, 0x4b, 0x03, 0x41,
 	0x10, 0x05, 0x70, 0x56, 0xc1, 0x62, 0xd3, 0x48, 0x2a, 0x09, 0x82, 0xc1, 0xca, 0x6a, 0x96, 0xd3,

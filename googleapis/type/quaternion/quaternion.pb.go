@@ -93,7 +93,7 @@ func (m *Quaternion) Reset()         { *m = Quaternion{} }
 func (m *Quaternion) String() string { return proto.CompactTextString(m) }
 func (*Quaternion) ProtoMessage()    {}
 func (*Quaternion) Descriptor() ([]byte, []int) {
-	return fileDescriptor_quaternion_ae7614a77eedc348, []int{0}
+	return fileDescriptor_quaternion_a8bd5c2f09ef2c54, []int{0}
 }
 func (m *Quaternion) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Quaternion.Unmarshal(m, b)
@@ -146,10 +146,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/type/quaternion.proto", fileDescriptor_quaternion_ae7614a77eedc348)
+	proto.RegisterFile("google/type/quaternion.proto", fileDescriptor_quaternion_a8bd5c2f09ef2c54)
 }
 
-var fileDescriptor_quaternion_ae7614a77eedc348 = []byte{
+var fileDescriptor_quaternion_a8bd5c2f09ef2c54 = []byte{
 	// 170 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x49, 0xcf, 0xcf, 0x4f,
 	0xcf, 0x49, 0xd5, 0x2f, 0xa9, 0x2c, 0x48, 0xd5, 0x2f, 0x2c, 0x4d, 0x2c, 0x49, 0x2d, 0xca, 0xcb,

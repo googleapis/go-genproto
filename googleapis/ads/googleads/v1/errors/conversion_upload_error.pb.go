@@ -149,7 +149,7 @@ func (x ConversionUploadErrorEnum_ConversionUploadError) String() string {
 	return proto.EnumName(ConversionUploadErrorEnum_ConversionUploadError_name, int32(x))
 }
 func (ConversionUploadErrorEnum_ConversionUploadError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_error_611ab7d61188daf1, []int{0, 0}
+	return fileDescriptor_conversion_upload_error_c36471db71103be7, []int{0, 0}
 }
 
 // Container for enum describing possible conversion upload errors.
@@ -163,7 +163,7 @@ func (m *ConversionUploadErrorEnum) Reset()         { *m = ConversionUploadError
 func (m *ConversionUploadErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*ConversionUploadErrorEnum) ProtoMessage()    {}
 func (*ConversionUploadErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_conversion_upload_error_611ab7d61188daf1, []int{0}
+	return fileDescriptor_conversion_upload_error_c36471db71103be7, []int{0}
 }
 func (m *ConversionUploadErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ConversionUploadErrorEnum.Unmarshal(m, b)
@@ -189,10 +189,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/conversion_upload_error.proto", fileDescriptor_conversion_upload_error_611ab7d61188daf1)
+	proto.RegisterFile("google/ads/googleads/v1/errors/conversion_upload_error.proto", fileDescriptor_conversion_upload_error_c36471db71103be7)
 }
 
-var fileDescriptor_conversion_upload_error_611ab7d61188daf1 = []byte{
+var fileDescriptor_conversion_upload_error_c36471db71103be7 = []byte{
 	// 638 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xcd, 0x6e, 0xd3, 0x4e,
 	0x10, 0xff, 0x37, 0xfd, 0x93, 0xc2, 0xf6, 0x6b, 0xbb, 0x6d, 0x0a, 0x2d, 0xa5, 0x54, 0x81, 0x23,

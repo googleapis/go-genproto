@@ -112,7 +112,7 @@ func (m *Company) Reset()         { *m = Company{} }
 func (m *Company) String() string { return proto.CompactTextString(m) }
 func (*Company) ProtoMessage()    {}
 func (*Company) Descriptor() ([]byte, []int) {
-	return fileDescriptor_company_f6322e1b321ec5f0, []int{0}
+	return fileDescriptor_company_b5be25b03cde4ac9, []int{0}
 }
 func (m *Company) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Company.Unmarshal(m, b)
@@ -237,7 +237,7 @@ func (m *Company_DerivedInfo) Reset()         { *m = Company_DerivedInfo{} }
 func (m *Company_DerivedInfo) String() string { return proto.CompactTextString(m) }
 func (*Company_DerivedInfo) ProtoMessage()    {}
 func (*Company_DerivedInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_company_f6322e1b321ec5f0, []int{0, 0}
+	return fileDescriptor_company_b5be25b03cde4ac9, []int{0, 0}
 }
 func (m *Company_DerivedInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Company_DerivedInfo.Unmarshal(m, b)
@@ -270,10 +270,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/company.proto", fileDescriptor_company_f6322e1b321ec5f0)
+	proto.RegisterFile("google/cloud/talent/v4beta1/company.proto", fileDescriptor_company_b5be25b03cde4ac9)
 }
 
-var fileDescriptor_company_f6322e1b321ec5f0 = []byte{
+var fileDescriptor_company_b5be25b03cde4ac9 = []byte{
 	// 526 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x93, 0x4f, 0x6f, 0xd3, 0x30,
 	0x18, 0xc6, 0x95, 0xb5, 0x5b, 0x5b, 0xa7, 0x05, 0xc9, 0x0c, 0x29, 0x74, 0x93, 0x56, 0xfe, 0x2a,

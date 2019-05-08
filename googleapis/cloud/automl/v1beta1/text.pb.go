@@ -33,7 +33,7 @@ func (m *TextClassificationDatasetMetadata) Reset()         { *m = TextClassific
 func (m *TextClassificationDatasetMetadata) String() string { return proto.CompactTextString(m) }
 func (*TextClassificationDatasetMetadata) ProtoMessage()    {}
 func (*TextClassificationDatasetMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_15092de8f39c6a71, []int{0}
+	return fileDescriptor_text_15189e358b88704e, []int{0}
 }
 func (m *TextClassificationDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextClassificationDatasetMetadata.Unmarshal(m, b)
@@ -71,7 +71,7 @@ func (m *TextClassificationModelMetadata) Reset()         { *m = TextClassificat
 func (m *TextClassificationModelMetadata) String() string { return proto.CompactTextString(m) }
 func (*TextClassificationModelMetadata) ProtoMessage()    {}
 func (*TextClassificationModelMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_15092de8f39c6a71, []int{1}
+	return fileDescriptor_text_15189e358b88704e, []int{1}
 }
 func (m *TextClassificationModelMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextClassificationModelMetadata.Unmarshal(m, b)
@@ -102,7 +102,7 @@ func (m *TextExtractionDatasetMetadata) Reset()         { *m = TextExtractionDat
 func (m *TextExtractionDatasetMetadata) String() string { return proto.CompactTextString(m) }
 func (*TextExtractionDatasetMetadata) ProtoMessage()    {}
 func (*TextExtractionDatasetMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_15092de8f39c6a71, []int{2}
+	return fileDescriptor_text_15189e358b88704e, []int{2}
 }
 func (m *TextExtractionDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextExtractionDatasetMetadata.Unmarshal(m, b)
@@ -133,7 +133,7 @@ func (m *TextExtractionModelMetadata) Reset()         { *m = TextExtractionModel
 func (m *TextExtractionModelMetadata) String() string { return proto.CompactTextString(m) }
 func (*TextExtractionModelMetadata) ProtoMessage()    {}
 func (*TextExtractionModelMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_15092de8f39c6a71, []int{3}
+	return fileDescriptor_text_15189e358b88704e, []int{3}
 }
 func (m *TextExtractionModelMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextExtractionModelMetadata.Unmarshal(m, b)
@@ -172,7 +172,7 @@ func (m *TextSentimentDatasetMetadata) Reset()         { *m = TextSentimentDatas
 func (m *TextSentimentDatasetMetadata) String() string { return proto.CompactTextString(m) }
 func (*TextSentimentDatasetMetadata) ProtoMessage()    {}
 func (*TextSentimentDatasetMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_15092de8f39c6a71, []int{4}
+	return fileDescriptor_text_15189e358b88704e, []int{4}
 }
 func (m *TextSentimentDatasetMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextSentimentDatasetMetadata.Unmarshal(m, b)
@@ -210,7 +210,7 @@ func (m *TextSentimentModelMetadata) Reset()         { *m = TextSentimentModelMe
 func (m *TextSentimentModelMetadata) String() string { return proto.CompactTextString(m) }
 func (*TextSentimentModelMetadata) ProtoMessage()    {}
 func (*TextSentimentModelMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_text_15092de8f39c6a71, []int{5}
+	return fileDescriptor_text_15189e358b88704e, []int{5}
 }
 func (m *TextSentimentModelMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextSentimentModelMetadata.Unmarshal(m, b)
@@ -240,10 +240,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/automl/v1beta1/text.proto", fileDescriptor_text_15092de8f39c6a71)
+	proto.RegisterFile("google/cloud/automl/v1beta1/text.proto", fileDescriptor_text_15189e358b88704e)
 }
 
-var fileDescriptor_text_15092de8f39c6a71 = []byte{
+var fileDescriptor_text_15189e358b88704e = []byte{
 	// 322 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0x4f, 0x4b, 0x03, 0x31,
 	0x10, 0xc5, 0x59, 0x41, 0xc1, 0xa0, 0x1e, 0xea, 0x45, 0xfa, 0x87, 0xda, 0x15, 0xc4, 0x53, 0x62,
