@@ -73,7 +73,7 @@ func (m *ExtensionFeedItem) Reset()         { *m = ExtensionFeedItem{} }
 func (m *ExtensionFeedItem) String() string { return proto.CompactTextString(m) }
 func (*ExtensionFeedItem) ProtoMessage()    {}
 func (*ExtensionFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_feed_item_3b0d7704bf91f757, []int{0}
+	return fileDescriptor_extension_feed_item_6407e2dd7daaad20, []int{0}
 }
 func (m *ExtensionFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExtensionFeedItem.Unmarshal(m, b)
@@ -514,10 +514,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/extension_feed_item.proto", fileDescriptor_extension_feed_item_3b0d7704bf91f757)
+	proto.RegisterFile("google/ads/googleads/v1/resources/extension_feed_item.proto", fileDescriptor_extension_feed_item_6407e2dd7daaad20)
 }
 
-var fileDescriptor_extension_feed_item_3b0d7704bf91f757 = []byte{
+var fileDescriptor_extension_feed_item_6407e2dd7daaad20 = []byte{
 	// 805 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x96, 0xdd, 0x8e, 0xdb, 0x44,
 	0x14, 0xc7, 0x49, 0x16, 0x16, 0x76, 0x92, 0xec, 0x76, 0xa7, 0x52, 0xe5, 0x56, 0x2b, 0x94, 0x82,

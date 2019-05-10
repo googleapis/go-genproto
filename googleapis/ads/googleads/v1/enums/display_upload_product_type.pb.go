@@ -101,7 +101,7 @@ func (x DisplayUploadProductTypeEnum_DisplayUploadProductType) String() string {
 	return proto.EnumName(DisplayUploadProductTypeEnum_DisplayUploadProductType_name, int32(x))
 }
 func (DisplayUploadProductTypeEnum_DisplayUploadProductType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_display_upload_product_type_d7c5a6f338709612, []int{0, 0}
+	return fileDescriptor_display_upload_product_type_a69091601d96ed9f, []int{0, 0}
 }
 
 // Container for display upload product types. Product types that have the word
@@ -119,7 +119,7 @@ func (m *DisplayUploadProductTypeEnum) Reset()         { *m = DisplayUploadProdu
 func (m *DisplayUploadProductTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*DisplayUploadProductTypeEnum) ProtoMessage()    {}
 func (*DisplayUploadProductTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_display_upload_product_type_d7c5a6f338709612, []int{0}
+	return fileDescriptor_display_upload_product_type_a69091601d96ed9f, []int{0}
 }
 func (m *DisplayUploadProductTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DisplayUploadProductTypeEnum.Unmarshal(m, b)
@@ -145,10 +145,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/display_upload_product_type.proto", fileDescriptor_display_upload_product_type_d7c5a6f338709612)
+	proto.RegisterFile("google/ads/googleads/v1/enums/display_upload_product_type.proto", fileDescriptor_display_upload_product_type_a69091601d96ed9f)
 }
 
-var fileDescriptor_display_upload_product_type_d7c5a6f338709612 = []byte{
+var fileDescriptor_display_upload_product_type_a69091601d96ed9f = []byte{
 	// 441 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xc1, 0xaa, 0xd3, 0x40,
 	0x14, 0x86, 0x6d, 0xae, 0xde, 0xab, 0xd3, 0xc5, 0x2d, 0xa3, 0xe8, 0xa5, 0xb6, 0x62, 0xef, 0x03,

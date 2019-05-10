@@ -61,7 +61,7 @@ func (m *CampaignCriterionSimulation) Reset()         { *m = CampaignCriterionSi
 func (m *CampaignCriterionSimulation) String() string { return proto.CompactTextString(m) }
 func (*CampaignCriterionSimulation) ProtoMessage()    {}
 func (*CampaignCriterionSimulation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_criterion_simulation_7330cdca86aa0af3, []int{0}
+	return fileDescriptor_campaign_criterion_simulation_2b4717675cb2395b, []int{0}
 }
 func (m *CampaignCriterionSimulation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CampaignCriterionSimulation.Unmarshal(m, b)
@@ -214,10 +214,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/campaign_criterion_simulation.proto", fileDescriptor_campaign_criterion_simulation_7330cdca86aa0af3)
+	proto.RegisterFile("google/ads/googleads/v1/resources/campaign_criterion_simulation.proto", fileDescriptor_campaign_criterion_simulation_2b4717675cb2395b)
 }
 
-var fileDescriptor_campaign_criterion_simulation_7330cdca86aa0af3 = []byte{
+var fileDescriptor_campaign_criterion_simulation_2b4717675cb2395b = []byte{
 	// 556 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x94, 0xdf, 0x6a, 0xdb, 0x30,
 	0x14, 0xc6, 0xe7, 0xf4, 0xbf, 0x9a, 0xed, 0xc2, 0x1b, 0xcc, 0xb4, 0x65, 0xa4, 0x1b, 0x85, 0x5c,

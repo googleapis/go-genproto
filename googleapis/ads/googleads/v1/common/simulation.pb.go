@@ -33,7 +33,7 @@ func (m *BidModifierSimulationPointList) Reset()         { *m = BidModifierSimul
 func (m *BidModifierSimulationPointList) String() string { return proto.CompactTextString(m) }
 func (*BidModifierSimulationPointList) ProtoMessage()    {}
 func (*BidModifierSimulationPointList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simulation_236f10bcdfcd99b7, []int{0}
+	return fileDescriptor_simulation_6e74b908b66df7a0, []int{0}
 }
 func (m *BidModifierSimulationPointList) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BidModifierSimulationPointList.Unmarshal(m, b)
@@ -73,7 +73,7 @@ func (m *CpcBidSimulationPointList) Reset()         { *m = CpcBidSimulationPoint
 func (m *CpcBidSimulationPointList) String() string { return proto.CompactTextString(m) }
 func (*CpcBidSimulationPointList) ProtoMessage()    {}
 func (*CpcBidSimulationPointList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simulation_236f10bcdfcd99b7, []int{1}
+	return fileDescriptor_simulation_6e74b908b66df7a0, []int{1}
 }
 func (m *CpcBidSimulationPointList) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CpcBidSimulationPointList.Unmarshal(m, b)
@@ -113,7 +113,7 @@ func (m *TargetCpaSimulationPointList) Reset()         { *m = TargetCpaSimulatio
 func (m *TargetCpaSimulationPointList) String() string { return proto.CompactTextString(m) }
 func (*TargetCpaSimulationPointList) ProtoMessage()    {}
 func (*TargetCpaSimulationPointList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simulation_236f10bcdfcd99b7, []int{2}
+	return fileDescriptor_simulation_6e74b908b66df7a0, []int{2}
 }
 func (m *TargetCpaSimulationPointList) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetCpaSimulationPointList.Unmarshal(m, b)
@@ -165,7 +165,7 @@ func (m *BidModifierSimulationPoint) Reset()         { *m = BidModifierSimulatio
 func (m *BidModifierSimulationPoint) String() string { return proto.CompactTextString(m) }
 func (*BidModifierSimulationPoint) ProtoMessage()    {}
 func (*BidModifierSimulationPoint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simulation_236f10bcdfcd99b7, []int{3}
+	return fileDescriptor_simulation_6e74b908b66df7a0, []int{3}
 }
 func (m *BidModifierSimulationPoint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_BidModifierSimulationPoint.Unmarshal(m, b)
@@ -260,7 +260,7 @@ func (m *CpcBidSimulationPoint) Reset()         { *m = CpcBidSimulationPoint{} }
 func (m *CpcBidSimulationPoint) String() string { return proto.CompactTextString(m) }
 func (*CpcBidSimulationPoint) ProtoMessage()    {}
 func (*CpcBidSimulationPoint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simulation_236f10bcdfcd99b7, []int{4}
+	return fileDescriptor_simulation_6e74b908b66df7a0, []int{4}
 }
 func (m *CpcBidSimulationPoint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CpcBidSimulationPoint.Unmarshal(m, b)
@@ -355,7 +355,7 @@ func (m *TargetCpaSimulationPoint) Reset()         { *m = TargetCpaSimulationPoi
 func (m *TargetCpaSimulationPoint) String() string { return proto.CompactTextString(m) }
 func (*TargetCpaSimulationPoint) ProtoMessage()    {}
 func (*TargetCpaSimulationPoint) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simulation_236f10bcdfcd99b7, []int{5}
+	return fileDescriptor_simulation_6e74b908b66df7a0, []int{5}
 }
 func (m *TargetCpaSimulationPoint) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TargetCpaSimulationPoint.Unmarshal(m, b)
@@ -434,10 +434,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/simulation.proto", fileDescriptor_simulation_236f10bcdfcd99b7)
+	proto.RegisterFile("google/ads/googleads/v1/common/simulation.proto", fileDescriptor_simulation_6e74b908b66df7a0)
 }
 
-var fileDescriptor_simulation_236f10bcdfcd99b7 = []byte{
+var fileDescriptor_simulation_6e74b908b66df7a0 = []byte{
 	// 570 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x96, 0xdf, 0x6a, 0xdb, 0x30,
 	0x18, 0xc5, 0x71, 0x9a, 0x65, 0xa0, 0x94, 0x95, 0x69, 0x1d, 0x78, 0x59, 0x29, 0x25, 0x57, 0xbd,

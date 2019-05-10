@@ -288,7 +288,7 @@ func (m *Job) Reset()         { *m = Job{} }
 func (m *Job) String() string { return proto.CompactTextString(m) }
 func (*Job) ProtoMessage()    {}
 func (*Job) Descriptor() ([]byte, []int) {
-	return fileDescriptor_job_1bcb1f20b417ba30, []int{0}
+	return fileDescriptor_job_a7f09c8b967f6b36, []int{0}
 }
 func (m *Job) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Job.Unmarshal(m, b)
@@ -553,7 +553,7 @@ func (m *Job_ApplicationInfo) Reset()         { *m = Job_ApplicationInfo{} }
 func (m *Job_ApplicationInfo) String() string { return proto.CompactTextString(m) }
 func (*Job_ApplicationInfo) ProtoMessage()    {}
 func (*Job_ApplicationInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_job_1bcb1f20b417ba30, []int{0, 0}
+	return fileDescriptor_job_a7f09c8b967f6b36, []int{0, 0}
 }
 func (m *Job_ApplicationInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Job_ApplicationInfo.Unmarshal(m, b)
@@ -614,7 +614,7 @@ func (m *Job_DerivedInfo) Reset()         { *m = Job_DerivedInfo{} }
 func (m *Job_DerivedInfo) String() string { return proto.CompactTextString(m) }
 func (*Job_DerivedInfo) ProtoMessage()    {}
 func (*Job_DerivedInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_job_1bcb1f20b417ba30, []int{0, 1}
+	return fileDescriptor_job_a7f09c8b967f6b36, []int{0, 1}
 }
 func (m *Job_DerivedInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Job_DerivedInfo.Unmarshal(m, b)
@@ -681,7 +681,7 @@ func (m *Job_ProcessingOptions) Reset()         { *m = Job_ProcessingOptions{} }
 func (m *Job_ProcessingOptions) String() string { return proto.CompactTextString(m) }
 func (*Job_ProcessingOptions) ProtoMessage()    {}
 func (*Job_ProcessingOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_job_1bcb1f20b417ba30, []int{0, 2}
+	return fileDescriptor_job_a7f09c8b967f6b36, []int{0, 2}
 }
 func (m *Job_ProcessingOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Job_ProcessingOptions.Unmarshal(m, b)
@@ -724,10 +724,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/job.proto", fileDescriptor_job_1bcb1f20b417ba30)
+	proto.RegisterFile("google/cloud/talent/v4beta1/job.proto", fileDescriptor_job_a7f09c8b967f6b36)
 }
 
-var fileDescriptor_job_1bcb1f20b417ba30 = []byte{
+var fileDescriptor_job_a7f09c8b967f6b36 = []byte{
 	// 1102 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x56, 0xd1, 0x72, 0x1b, 0x35,
 	0x17, 0x1e, 0xc7, 0x4d, 0x1b, 0xcb, 0x89, 0x63, 0xab, 0x69, 0x7f, 0xfd, 0x6e, 0x48, 0x0d, 0x4c,

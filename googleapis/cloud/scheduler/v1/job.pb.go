@@ -62,7 +62,7 @@ func (x Job_State) String() string {
 	return proto.EnumName(Job_State_name, int32(x))
 }
 func (Job_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_job_61d7bc76ec491cf9, []int{0, 0}
+	return fileDescriptor_job_bb1555e46baab0c7, []int{0, 0}
 }
 
 // Configuration for a job.
@@ -169,7 +169,7 @@ func (m *Job) Reset()         { *m = Job{} }
 func (m *Job) String() string { return proto.CompactTextString(m) }
 func (*Job) ProtoMessage()    {}
 func (*Job) Descriptor() ([]byte, []int) {
-	return fileDescriptor_job_61d7bc76ec491cf9, []int{0}
+	return fileDescriptor_job_bb1555e46baab0c7, []int{0}
 }
 func (m *Job) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Job.Unmarshal(m, b)
@@ -479,7 +479,7 @@ func (m *RetryConfig) Reset()         { *m = RetryConfig{} }
 func (m *RetryConfig) String() string { return proto.CompactTextString(m) }
 func (*RetryConfig) ProtoMessage()    {}
 func (*RetryConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_job_61d7bc76ec491cf9, []int{1}
+	return fileDescriptor_job_bb1555e46baab0c7, []int{1}
 }
 func (m *RetryConfig) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_RetryConfig.Unmarshal(m, b)
@@ -541,10 +541,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/scheduler/v1/job.proto", fileDescriptor_job_61d7bc76ec491cf9)
+	proto.RegisterFile("google/cloud/scheduler/v1/job.proto", fileDescriptor_job_bb1555e46baab0c7)
 }
 
-var fileDescriptor_job_61d7bc76ec491cf9 = []byte{
+var fileDescriptor_job_bb1555e46baab0c7 = []byte{
 	// 725 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x94, 0x5f, 0x4f, 0xdb, 0x3c,
 	0x14, 0xc6, 0x29, 0xb4, 0xa5, 0x9c, 0xb4, 0xd0, 0x9a, 0x3f, 0x6f, 0xe8, 0xbb, 0x8d, 0x0a, 0x36,

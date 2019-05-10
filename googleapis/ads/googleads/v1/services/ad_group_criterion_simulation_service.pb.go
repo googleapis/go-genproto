@@ -39,7 +39,7 @@ func (m *GetAdGroupCriterionSimulationRequest) Reset()         { *m = GetAdGroup
 func (m *GetAdGroupCriterionSimulationRequest) String() string { return proto.CompactTextString(m) }
 func (*GetAdGroupCriterionSimulationRequest) ProtoMessage()    {}
 func (*GetAdGroupCriterionSimulationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_group_criterion_simulation_service_1f923f60c32b966e, []int{0}
+	return fileDescriptor_ad_group_criterion_simulation_service_3e4c60ceac863cd2, []int{0}
 }
 func (m *GetAdGroupCriterionSimulationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetAdGroupCriterionSimulationRequest.Unmarshal(m, b)
@@ -145,10 +145,10 @@ var _AdGroupCriterionSimulationService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_criterion_simulation_service.proto", fileDescriptor_ad_group_criterion_simulation_service_1f923f60c32b966e)
+	proto.RegisterFile("google/ads/googleads/v1/services/ad_group_criterion_simulation_service.proto", fileDescriptor_ad_group_criterion_simulation_service_3e4c60ceac863cd2)
 }
 
-var fileDescriptor_ad_group_criterion_simulation_service_1f923f60c32b966e = []byte{
+var fileDescriptor_ad_group_criterion_simulation_service_3e4c60ceac863cd2 = []byte{
 	// 373 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xb1, 0x4a, 0xc3, 0x40,
 	0x1c, 0xc6, 0x49, 0x04, 0xc1, 0xa0, 0x4b, 0x26, 0x29, 0x0a, 0xb5, 0x16, 0x91, 0x0e, 0x77, 0x44,

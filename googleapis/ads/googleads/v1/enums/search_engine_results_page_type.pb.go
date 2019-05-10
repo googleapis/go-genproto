@@ -55,7 +55,7 @@ func (x SearchEngineResultsPageTypeEnum_SearchEngineResultsPageType) String() st
 	return proto.EnumName(SearchEngineResultsPageTypeEnum_SearchEngineResultsPageType_name, int32(x))
 }
 func (SearchEngineResultsPageTypeEnum_SearchEngineResultsPageType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_search_engine_results_page_type_8eeb6594cd669db9, []int{0, 0}
+	return fileDescriptor_search_engine_results_page_type_14d6bede2800791b, []int{0, 0}
 }
 
 // The type of the search engine results page.
@@ -69,7 +69,7 @@ func (m *SearchEngineResultsPageTypeEnum) Reset()         { *m = SearchEngineRes
 func (m *SearchEngineResultsPageTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*SearchEngineResultsPageTypeEnum) ProtoMessage()    {}
 func (*SearchEngineResultsPageTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_search_engine_results_page_type_8eeb6594cd669db9, []int{0}
+	return fileDescriptor_search_engine_results_page_type_14d6bede2800791b, []int{0}
 }
 func (m *SearchEngineResultsPageTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchEngineResultsPageTypeEnum.Unmarshal(m, b)
@@ -95,10 +95,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/search_engine_results_page_type.proto", fileDescriptor_search_engine_results_page_type_8eeb6594cd669db9)
+	proto.RegisterFile("google/ads/googleads/v1/enums/search_engine_results_page_type.proto", fileDescriptor_search_engine_results_page_type_14d6bede2800791b)
 }
 
-var fileDescriptor_search_engine_results_page_type_8eeb6594cd669db9 = []byte{
+var fileDescriptor_search_engine_results_page_type_14d6bede2800791b = []byte{
 	// 339 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0xd1, 0x4e, 0xc2, 0x30,
 	0x14, 0x75, 0xc3, 0xa8, 0x29, 0x24, 0x2c, 0xf3, 0x4d, 0x25, 0x0a, 0x1f, 0xd0, 0x65, 0xf1, 0xad,

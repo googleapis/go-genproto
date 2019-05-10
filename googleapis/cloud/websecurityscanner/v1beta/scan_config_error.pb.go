@@ -215,7 +215,7 @@ func (x ScanConfigError_Code) String() string {
 	return proto.EnumName(ScanConfigError_Code_name, int32(x))
 }
 func (ScanConfigError_Code) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_scan_config_error_4b32cc55957c457c, []int{0, 0}
+	return fileDescriptor_scan_config_error_36a81b332ccb4e21, []int{0, 0}
 }
 
 // Defines a custom error message used by CreateScanConfig and UpdateScanConfig
@@ -241,7 +241,7 @@ func (m *ScanConfigError) Reset()         { *m = ScanConfigError{} }
 func (m *ScanConfigError) String() string { return proto.CompactTextString(m) }
 func (*ScanConfigError) ProtoMessage()    {}
 func (*ScanConfigError) Descriptor() ([]byte, []int) {
-	return fileDescriptor_scan_config_error_4b32cc55957c457c, []int{0}
+	return fileDescriptor_scan_config_error_36a81b332ccb4e21, []int{0}
 }
 func (m *ScanConfigError) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanConfigError.Unmarshal(m, b)
@@ -281,10 +281,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/scan_config_error.proto", fileDescriptor_scan_config_error_4b32cc55957c457c)
+	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/scan_config_error.proto", fileDescriptor_scan_config_error_36a81b332ccb4e21)
 }
 
-var fileDescriptor_scan_config_error_4b32cc55957c457c = []byte{
+var fileDescriptor_scan_config_error_36a81b332ccb4e21 = []byte{
 	// 865 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x55, 0x5d, 0x53, 0x1b, 0x37,
 	0x14, 0x8d, 0x29, 0x43, 0x8b, 0xd2, 0x12, 0x8d, 0x42, 0xc1, 0xe1, 0x2b, 0x0e, 0x25, 0x84, 0x90,

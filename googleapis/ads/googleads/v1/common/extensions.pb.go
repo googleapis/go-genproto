@@ -52,7 +52,7 @@ func (m *AppFeedItem) Reset()         { *m = AppFeedItem{} }
 func (m *AppFeedItem) String() string { return proto.CompactTextString(m) }
 func (*AppFeedItem) ProtoMessage()    {}
 func (*AppFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{0}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{0}
 }
 func (m *AppFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppFeedItem.Unmarshal(m, b)
@@ -159,7 +159,7 @@ func (m *CallFeedItem) Reset()         { *m = CallFeedItem{} }
 func (m *CallFeedItem) String() string { return proto.CompactTextString(m) }
 func (*CallFeedItem) ProtoMessage()    {}
 func (*CallFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{1}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{1}
 }
 func (m *CallFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CallFeedItem.Unmarshal(m, b)
@@ -235,7 +235,7 @@ func (m *CalloutFeedItem) Reset()         { *m = CalloutFeedItem{} }
 func (m *CalloutFeedItem) String() string { return proto.CompactTextString(m) }
 func (*CalloutFeedItem) ProtoMessage()    {}
 func (*CalloutFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{2}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{2}
 }
 func (m *CalloutFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CalloutFeedItem.Unmarshal(m, b)
@@ -289,7 +289,7 @@ func (m *LocationFeedItem) Reset()         { *m = LocationFeedItem{} }
 func (m *LocationFeedItem) String() string { return proto.CompactTextString(m) }
 func (*LocationFeedItem) ProtoMessage()    {}
 func (*LocationFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{3}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{3}
 }
 func (m *LocationFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationFeedItem.Unmarshal(m, b)
@@ -396,7 +396,7 @@ func (m *AffiliateLocationFeedItem) Reset()         { *m = AffiliateLocationFeed
 func (m *AffiliateLocationFeedItem) String() string { return proto.CompactTextString(m) }
 func (*AffiliateLocationFeedItem) ProtoMessage()    {}
 func (*AffiliateLocationFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{4}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{4}
 }
 func (m *AffiliateLocationFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AffiliateLocationFeedItem.Unmarshal(m, b)
@@ -511,7 +511,7 @@ func (m *TextMessageFeedItem) Reset()         { *m = TextMessageFeedItem{} }
 func (m *TextMessageFeedItem) String() string { return proto.CompactTextString(m) }
 func (*TextMessageFeedItem) ProtoMessage()    {}
 func (*TextMessageFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{5}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{5}
 }
 func (m *TextMessageFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextMessageFeedItem.Unmarshal(m, b)
@@ -590,7 +590,7 @@ func (m *PriceFeedItem) Reset()         { *m = PriceFeedItem{} }
 func (m *PriceFeedItem) String() string { return proto.CompactTextString(m) }
 func (*PriceFeedItem) ProtoMessage()    {}
 func (*PriceFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{6}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{6}
 }
 func (m *PriceFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PriceFeedItem.Unmarshal(m, b)
@@ -675,7 +675,7 @@ func (m *PriceOffer) Reset()         { *m = PriceOffer{} }
 func (m *PriceOffer) String() string { return proto.CompactTextString(m) }
 func (*PriceOffer) ProtoMessage()    {}
 func (*PriceOffer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{7}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{7}
 }
 func (m *PriceOffer) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PriceOffer.Unmarshal(m, b)
@@ -790,7 +790,7 @@ func (m *PromotionFeedItem) Reset()         { *m = PromotionFeedItem{} }
 func (m *PromotionFeedItem) String() string { return proto.CompactTextString(m) }
 func (*PromotionFeedItem) ProtoMessage()    {}
 func (*PromotionFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{8}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{8}
 }
 func (m *PromotionFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PromotionFeedItem.Unmarshal(m, b)
@@ -1102,7 +1102,7 @@ func (m *StructuredSnippetFeedItem) Reset()         { *m = StructuredSnippetFeed
 func (m *StructuredSnippetFeedItem) String() string { return proto.CompactTextString(m) }
 func (*StructuredSnippetFeedItem) ProtoMessage()    {}
 func (*StructuredSnippetFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{9}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{9}
 }
 func (m *StructuredSnippetFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StructuredSnippetFeedItem.Unmarshal(m, b)
@@ -1170,7 +1170,7 @@ func (m *SitelinkFeedItem) Reset()         { *m = SitelinkFeedItem{} }
 func (m *SitelinkFeedItem) String() string { return proto.CompactTextString(m) }
 func (*SitelinkFeedItem) ProtoMessage()    {}
 func (*SitelinkFeedItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extensions_29e88682b0f69f9b, []int{10}
+	return fileDescriptor_extensions_cd7466b3e10b7351, []int{10}
 }
 func (m *SitelinkFeedItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SitelinkFeedItem.Unmarshal(m, b)
@@ -1261,10 +1261,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/extensions.proto", fileDescriptor_extensions_29e88682b0f69f9b)
+	proto.RegisterFile("google/ads/googleads/v1/common/extensions.proto", fileDescriptor_extensions_cd7466b3e10b7351)
 }
 
-var fileDescriptor_extensions_29e88682b0f69f9b = []byte{
+var fileDescriptor_extensions_cd7466b3e10b7351 = []byte{
 	// 1575 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x59, 0xdf, 0x4e, 0x1b, 0xc7,
 	0x1a, 0x8f, 0xc1, 0x10, 0xf8, 0x0c, 0x06, 0x96, 0xe4, 0xc8, 0xe1, 0x44, 0x39, 0x39, 0x96, 0x8e,

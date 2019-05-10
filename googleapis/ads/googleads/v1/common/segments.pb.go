@@ -191,7 +191,7 @@ func (m *Segments) Reset()         { *m = Segments{} }
 func (m *Segments) String() string { return proto.CompactTextString(m) }
 func (*Segments) ProtoMessage()    {}
 func (*Segments) Descriptor() ([]byte, []int) {
-	return fileDescriptor_segments_284023ab6b41c387, []int{0}
+	return fileDescriptor_segments_f996da0bb87fffb4, []int{0}
 }
 func (m *Segments) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Segments.Unmarshal(m, b)
@@ -730,7 +730,7 @@ func (m *Keyword) Reset()         { *m = Keyword{} }
 func (m *Keyword) String() string { return proto.CompactTextString(m) }
 func (*Keyword) ProtoMessage()    {}
 func (*Keyword) Descriptor() ([]byte, []int) {
-	return fileDescriptor_segments_284023ab6b41c387, []int{1}
+	return fileDescriptor_segments_f996da0bb87fffb4, []int{1}
 }
 func (m *Keyword) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Keyword.Unmarshal(m, b)
@@ -770,10 +770,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/segments.proto", fileDescriptor_segments_284023ab6b41c387)
+	proto.RegisterFile("google/ads/googleads/v1/common/segments.proto", fileDescriptor_segments_f996da0bb87fffb4)
 }
 
-var fileDescriptor_segments_284023ab6b41c387 = []byte{
+var fileDescriptor_segments_f996da0bb87fffb4 = []byte{
 	// 2031 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x99, 0x5d, 0x7b, 0xdb, 0xb6,
 	0x15, 0xc7, 0x1f, 0xa5, 0x6e, 0xd2, 0xc0, 0x75, 0x6c, 0xc3, 0x89, 0x8b, 0x38, 0xef, 0xee, 0xb6,

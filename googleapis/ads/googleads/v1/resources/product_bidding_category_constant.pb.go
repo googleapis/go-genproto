@@ -55,7 +55,7 @@ func (m *ProductBiddingCategoryConstant) Reset()         { *m = ProductBiddingCa
 func (m *ProductBiddingCategoryConstant) String() string { return proto.CompactTextString(m) }
 func (*ProductBiddingCategoryConstant) ProtoMessage()    {}
 func (*ProductBiddingCategoryConstant) Descriptor() ([]byte, []int) {
-	return fileDescriptor_product_bidding_category_constant_3b65021211328885, []int{0}
+	return fileDescriptor_product_bidding_category_constant_d0a899e5743d0566, []int{0}
 }
 func (m *ProductBiddingCategoryConstant) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductBiddingCategoryConstant.Unmarshal(m, b)
@@ -136,10 +136,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/product_bidding_category_constant.proto", fileDescriptor_product_bidding_category_constant_3b65021211328885)
+	proto.RegisterFile("google/ads/googleads/v1/resources/product_bidding_category_constant.proto", fileDescriptor_product_bidding_category_constant_d0a899e5743d0566)
 }
 
-var fileDescriptor_product_bidding_category_constant_3b65021211328885 = []byte{
+var fileDescriptor_product_bidding_category_constant_d0a899e5743d0566 = []byte{
 	// 510 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0x41, 0x6b, 0xdb, 0x30,
 	0x14, 0xc7, 0xb1, 0xbb, 0x64, 0x9b, 0x9a, 0xf4, 0xe0, 0x93, 0xe9, 0x4a, 0x49, 0xd7, 0x15, 0x02,

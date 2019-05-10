@@ -117,7 +117,7 @@ func (x AdTypeEnum_AdType) String() string {
 	return proto.EnumName(AdTypeEnum_AdType_name, int32(x))
 }
 func (AdTypeEnum_AdType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ad_type_8da0c2fb74489b69, []int{0, 0}
+	return fileDescriptor_ad_type_d90c7664e7e4e129, []int{0, 0}
 }
 
 // Container for enum describing possible types of an ad.
@@ -131,7 +131,7 @@ func (m *AdTypeEnum) Reset()         { *m = AdTypeEnum{} }
 func (m *AdTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*AdTypeEnum) ProtoMessage()    {}
 func (*AdTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ad_type_8da0c2fb74489b69, []int{0}
+	return fileDescriptor_ad_type_d90c7664e7e4e129, []int{0}
 }
 func (m *AdTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdTypeEnum.Unmarshal(m, b)
@@ -157,10 +157,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/ad_type.proto", fileDescriptor_ad_type_8da0c2fb74489b69)
+	proto.RegisterFile("google/ads/googleads/v1/enums/ad_type.proto", fileDescriptor_ad_type_d90c7664e7e4e129)
 }
 
-var fileDescriptor_ad_type_8da0c2fb74489b69 = []byte{
+var fileDescriptor_ad_type_d90c7664e7e4e129 = []byte{
 	// 495 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x52, 0xcd, 0x6e, 0xd3, 0x40,
 	0x10, 0xa6, 0x89, 0x94, 0x96, 0x49, 0x20, 0xee, 0xa6, 0xa1, 0x50, 0xb5, 0x88, 0xf6, 0x8a, 0x64,

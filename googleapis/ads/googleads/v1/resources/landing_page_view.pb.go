@@ -40,7 +40,7 @@ func (m *LandingPageView) Reset()         { *m = LandingPageView{} }
 func (m *LandingPageView) String() string { return proto.CompactTextString(m) }
 func (*LandingPageView) ProtoMessage()    {}
 func (*LandingPageView) Descriptor() ([]byte, []int) {
-	return fileDescriptor_landing_page_view_64530fca7fef0d58, []int{0}
+	return fileDescriptor_landing_page_view_05546bc2d7b592c5, []int{0}
 }
 func (m *LandingPageView) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LandingPageView.Unmarshal(m, b)
@@ -79,10 +79,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/landing_page_view.proto", fileDescriptor_landing_page_view_64530fca7fef0d58)
+	proto.RegisterFile("google/ads/googleads/v1/resources/landing_page_view.proto", fileDescriptor_landing_page_view_05546bc2d7b592c5)
 }
 
-var fileDescriptor_landing_page_view_64530fca7fef0d58 = []byte{
+var fileDescriptor_landing_page_view_05546bc2d7b592c5 = []byte{
 	// 340 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x91, 0x41, 0x4b, 0xc3, 0x30,
 	0x18, 0x86, 0x69, 0x05, 0xc1, 0xaa, 0x08, 0x65, 0x87, 0x31, 0x86, 0x6c, 0xca, 0x60, 0xa7, 0x94,

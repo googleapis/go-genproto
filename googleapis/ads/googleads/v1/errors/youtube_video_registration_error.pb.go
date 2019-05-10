@@ -50,7 +50,7 @@ func (x YoutubeVideoRegistrationErrorEnum_YoutubeVideoRegistrationError) String(
 	return proto.EnumName(YoutubeVideoRegistrationErrorEnum_YoutubeVideoRegistrationError_name, int32(x))
 }
 func (YoutubeVideoRegistrationErrorEnum_YoutubeVideoRegistrationError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_youtube_video_registration_error_b51a63b007d526e2, []int{0, 0}
+	return fileDescriptor_youtube_video_registration_error_229cf2e619eed5e7, []int{0, 0}
 }
 
 // Container for enum describing YouTube video registration errors.
@@ -64,7 +64,7 @@ func (m *YoutubeVideoRegistrationErrorEnum) Reset()         { *m = YoutubeVideoR
 func (m *YoutubeVideoRegistrationErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*YoutubeVideoRegistrationErrorEnum) ProtoMessage()    {}
 func (*YoutubeVideoRegistrationErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_youtube_video_registration_error_b51a63b007d526e2, []int{0}
+	return fileDescriptor_youtube_video_registration_error_229cf2e619eed5e7, []int{0}
 }
 func (m *YoutubeVideoRegistrationErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_YoutubeVideoRegistrationErrorEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/youtube_video_registration_error.proto", fileDescriptor_youtube_video_registration_error_b51a63b007d526e2)
+	proto.RegisterFile("google/ads/googleads/v1/errors/youtube_video_registration_error.proto", fileDescriptor_youtube_video_registration_error_229cf2e619eed5e7)
 }
 
-var fileDescriptor_youtube_video_registration_error_b51a63b007d526e2 = []byte{
+var fileDescriptor_youtube_video_registration_error_229cf2e619eed5e7 = []byte{
 	// 332 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0x41, 0x4a, 0xc3, 0x40,
 	0x14, 0x86, 0x4d, 0x0a, 0x0a, 0xd3, 0x45, 0x43, 0x74, 0x21, 0xa2, 0x05, 0x73, 0x80, 0x09, 0xc1,

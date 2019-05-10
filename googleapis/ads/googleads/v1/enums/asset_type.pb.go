@@ -58,7 +58,7 @@ func (x AssetTypeEnum_AssetType) String() string {
 	return proto.EnumName(AssetTypeEnum_AssetType_name, int32(x))
 }
 func (AssetTypeEnum_AssetType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_asset_type_6ee0f36116fdf786, []int{0, 0}
+	return fileDescriptor_asset_type_290a95386a703e23, []int{0, 0}
 }
 
 // Container for enum describing the types of asset.
@@ -72,7 +72,7 @@ func (m *AssetTypeEnum) Reset()         { *m = AssetTypeEnum{} }
 func (m *AssetTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*AssetTypeEnum) ProtoMessage()    {}
 func (*AssetTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_type_6ee0f36116fdf786, []int{0}
+	return fileDescriptor_asset_type_290a95386a703e23, []int{0}
 }
 func (m *AssetTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssetTypeEnum.Unmarshal(m, b)
@@ -98,10 +98,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/asset_type.proto", fileDescriptor_asset_type_6ee0f36116fdf786)
+	proto.RegisterFile("google/ads/googleads/v1/enums/asset_type.proto", fileDescriptor_asset_type_290a95386a703e23)
 }
 
-var fileDescriptor_asset_type_6ee0f36116fdf786 = []byte{
+var fileDescriptor_asset_type_290a95386a703e23 = []byte{
 	// 326 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0x4f, 0x4e, 0xf3, 0x30,
 	0x14, 0xc4, 0xbf, 0xa6, 0xed, 0x07, 0x75, 0x29, 0x18, 0x2f, 0x11, 0x5d, 0xb4, 0x07, 0x70, 0x14,

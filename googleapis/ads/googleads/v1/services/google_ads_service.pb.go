@@ -54,7 +54,7 @@ func (m *SearchGoogleAdsRequest) Reset()         { *m = SearchGoogleAdsRequest{}
 func (m *SearchGoogleAdsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchGoogleAdsRequest) ProtoMessage()    {}
 func (*SearchGoogleAdsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_service_75d9a9baabc9a843, []int{0}
+	return fileDescriptor_google_ads_service_3ebdd6bfcd330067, []int{0}
 }
 func (m *SearchGoogleAdsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchGoogleAdsRequest.Unmarshal(m, b)
@@ -132,7 +132,7 @@ func (m *SearchGoogleAdsResponse) Reset()         { *m = SearchGoogleAdsResponse
 func (m *SearchGoogleAdsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchGoogleAdsResponse) ProtoMessage()    {}
 func (*SearchGoogleAdsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_service_75d9a9baabc9a843, []int{1}
+	return fileDescriptor_google_ads_service_3ebdd6bfcd330067, []int{1}
 }
 func (m *SearchGoogleAdsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SearchGoogleAdsResponse.Unmarshal(m, b)
@@ -377,7 +377,7 @@ func (m *GoogleAdsRow) Reset()         { *m = GoogleAdsRow{} }
 func (m *GoogleAdsRow) String() string { return proto.CompactTextString(m) }
 func (*GoogleAdsRow) ProtoMessage()    {}
 func (*GoogleAdsRow) Descriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_service_75d9a9baabc9a843, []int{2}
+	return fileDescriptor_google_ads_service_3ebdd6bfcd330067, []int{2}
 }
 func (m *GoogleAdsRow) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GoogleAdsRow.Unmarshal(m, b)
@@ -1071,7 +1071,7 @@ func (m *MutateGoogleAdsRequest) Reset()         { *m = MutateGoogleAdsRequest{}
 func (m *MutateGoogleAdsRequest) String() string { return proto.CompactTextString(m) }
 func (*MutateGoogleAdsRequest) ProtoMessage()    {}
 func (*MutateGoogleAdsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_service_75d9a9baabc9a843, []int{3}
+	return fileDescriptor_google_ads_service_3ebdd6bfcd330067, []int{3}
 }
 func (m *MutateGoogleAdsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateGoogleAdsRequest.Unmarshal(m, b)
@@ -1137,7 +1137,7 @@ func (m *MutateGoogleAdsResponse) Reset()         { *m = MutateGoogleAdsResponse
 func (m *MutateGoogleAdsResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateGoogleAdsResponse) ProtoMessage()    {}
 func (*MutateGoogleAdsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_service_75d9a9baabc9a843, []int{4}
+	return fileDescriptor_google_ads_service_3ebdd6bfcd330067, []int{4}
 }
 func (m *MutateGoogleAdsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateGoogleAdsResponse.Unmarshal(m, b)
@@ -1223,7 +1223,7 @@ func (m *MutateOperation) Reset()         { *m = MutateOperation{} }
 func (m *MutateOperation) String() string { return proto.CompactTextString(m) }
 func (*MutateOperation) ProtoMessage()    {}
 func (*MutateOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_service_75d9a9baabc9a843, []int{5}
+	return fileDescriptor_google_ads_service_3ebdd6bfcd330067, []int{5}
 }
 func (m *MutateOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateOperation.Unmarshal(m, b)
@@ -2526,7 +2526,7 @@ func (m *MutateOperationResponse) Reset()         { *m = MutateOperationResponse
 func (m *MutateOperationResponse) String() string { return proto.CompactTextString(m) }
 func (*MutateOperationResponse) ProtoMessage()    {}
 func (*MutateOperationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_google_ads_service_75d9a9baabc9a843, []int{6}
+	return fileDescriptor_google_ads_service_3ebdd6bfcd330067, []int{6}
 }
 func (m *MutateOperationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateOperationResponse.Unmarshal(m, b)
@@ -3993,10 +3993,10 @@ var _GoogleAdsService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/google_ads_service.proto", fileDescriptor_google_ads_service_75d9a9baabc9a843)
+	proto.RegisterFile("google/ads/googleads/v1/services/google_ads_service.proto", fileDescriptor_google_ads_service_3ebdd6bfcd330067)
 }
 
-var fileDescriptor_google_ads_service_75d9a9baabc9a843 = []byte{
+var fileDescriptor_google_ads_service_3ebdd6bfcd330067 = []byte{
 	// 5126 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x5d, 0xcd, 0x73, 0xdd, 0x46,
 	0x72, 0xcf, 0x93, 0x56, 0x36, 0x35, 0xa4, 0xf8, 0x31, 0x24, 0xc5, 0x11, 0xf5, 0x69, 0x4a, 0xb6,

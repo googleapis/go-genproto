@@ -53,7 +53,7 @@ func (m *Asset) Reset()         { *m = Asset{} }
 func (m *Asset) String() string { return proto.CompactTextString(m) }
 func (*Asset) ProtoMessage()    {}
 func (*Asset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_06e147e85df80ec5, []int{0}
+	return fileDescriptor_asset_7039888b9b05b05a, []int{0}
 }
 func (m *Asset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Asset.Unmarshal(m, b)
@@ -281,10 +281,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/asset.proto", fileDescriptor_asset_06e147e85df80ec5)
+	proto.RegisterFile("google/ads/googleads/v1/resources/asset.proto", fileDescriptor_asset_7039888b9b05b05a)
 }
 
-var fileDescriptor_asset_06e147e85df80ec5 = []byte{
+var fileDescriptor_asset_7039888b9b05b05a = []byte{
 	// 508 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x93, 0xc1, 0x6e, 0xd3, 0x30,
 	0x18, 0xc7, 0x49, 0xd6, 0x0d, 0xe6, 0x0d, 0x04, 0xe6, 0x52, 0x8d, 0x09, 0x75, 0xa0, 0x49, 0x05,

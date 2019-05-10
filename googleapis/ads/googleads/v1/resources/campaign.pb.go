@@ -154,7 +154,7 @@ func (m *Campaign) Reset()         { *m = Campaign{} }
 func (m *Campaign) String() string { return proto.CompactTextString(m) }
 func (*Campaign) ProtoMessage()    {}
 func (*Campaign) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0}
 }
 func (m *Campaign) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign.Unmarshal(m, b)
@@ -876,7 +876,7 @@ func (m *Campaign_NetworkSettings) Reset()         { *m = Campaign_NetworkSettin
 func (m *Campaign_NetworkSettings) String() string { return proto.CompactTextString(m) }
 func (*Campaign_NetworkSettings) ProtoMessage()    {}
 func (*Campaign_NetworkSettings) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0, 0}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0, 0}
 }
 func (m *Campaign_NetworkSettings) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign_NetworkSettings.Unmarshal(m, b)
@@ -937,7 +937,7 @@ func (m *Campaign_HotelSettingInfo) Reset()         { *m = Campaign_HotelSetting
 func (m *Campaign_HotelSettingInfo) String() string { return proto.CompactTextString(m) }
 func (*Campaign_HotelSettingInfo) ProtoMessage()    {}
 func (*Campaign_HotelSettingInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0, 1}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0, 1}
 }
 func (m *Campaign_HotelSettingInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign_HotelSettingInfo.Unmarshal(m, b)
@@ -984,7 +984,7 @@ func (m *Campaign_DynamicSearchAdsSetting) Reset()         { *m = Campaign_Dynam
 func (m *Campaign_DynamicSearchAdsSetting) String() string { return proto.CompactTextString(m) }
 func (*Campaign_DynamicSearchAdsSetting) ProtoMessage()    {}
 func (*Campaign_DynamicSearchAdsSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0, 2}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0, 2}
 }
 func (m *Campaign_DynamicSearchAdsSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign_DynamicSearchAdsSetting.Unmarshal(m, b)
@@ -1045,7 +1045,7 @@ func (m *Campaign_TrackingSetting) Reset()         { *m = Campaign_TrackingSetti
 func (m *Campaign_TrackingSetting) String() string { return proto.CompactTextString(m) }
 func (*Campaign_TrackingSetting) ProtoMessage()    {}
 func (*Campaign_TrackingSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0, 3}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0, 3}
 }
 func (m *Campaign_TrackingSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign_TrackingSetting.Unmarshal(m, b)
@@ -1087,7 +1087,7 @@ func (m *Campaign_GeoTargetTypeSetting) Reset()         { *m = Campaign_GeoTarge
 func (m *Campaign_GeoTargetTypeSetting) String() string { return proto.CompactTextString(m) }
 func (*Campaign_GeoTargetTypeSetting) ProtoMessage()    {}
 func (*Campaign_GeoTargetTypeSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0, 4}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0, 4}
 }
 func (m *Campaign_GeoTargetTypeSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign_GeoTargetTypeSetting.Unmarshal(m, b)
@@ -1135,7 +1135,7 @@ func (m *Campaign_SelectiveOptimization) Reset()         { *m = Campaign_Selecti
 func (m *Campaign_SelectiveOptimization) String() string { return proto.CompactTextString(m) }
 func (*Campaign_SelectiveOptimization) ProtoMessage()    {}
 func (*Campaign_SelectiveOptimization) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0, 5}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0, 5}
 }
 func (m *Campaign_SelectiveOptimization) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign_SelectiveOptimization.Unmarshal(m, b)
@@ -1193,7 +1193,7 @@ func (m *Campaign_ShoppingSetting) Reset()         { *m = Campaign_ShoppingSetti
 func (m *Campaign_ShoppingSetting) String() string { return proto.CompactTextString(m) }
 func (*Campaign_ShoppingSetting) ProtoMessage()    {}
 func (*Campaign_ShoppingSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0, 6}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0, 6}
 }
 func (m *Campaign_ShoppingSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign_ShoppingSetting.Unmarshal(m, b)
@@ -1259,7 +1259,7 @@ func (m *Campaign_AppCampaignSetting) Reset()         { *m = Campaign_AppCampaig
 func (m *Campaign_AppCampaignSetting) String() string { return proto.CompactTextString(m) }
 func (*Campaign_AppCampaignSetting) ProtoMessage()    {}
 func (*Campaign_AppCampaignSetting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0, 7}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0, 7}
 }
 func (m *Campaign_AppCampaignSetting) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign_AppCampaignSetting.Unmarshal(m, b)
@@ -1316,7 +1316,7 @@ func (m *Campaign_VanityPharma) Reset()         { *m = Campaign_VanityPharma{} }
 func (m *Campaign_VanityPharma) String() string { return proto.CompactTextString(m) }
 func (*Campaign_VanityPharma) ProtoMessage()    {}
 func (*Campaign_VanityPharma) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_159b92ef9ae7a828, []int{0, 8}
+	return fileDescriptor_campaign_6d6417a0362a7599, []int{0, 8}
 }
 func (m *Campaign_VanityPharma) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Campaign_VanityPharma.Unmarshal(m, b)
@@ -1364,10 +1364,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/campaign.proto", fileDescriptor_campaign_159b92ef9ae7a828)
+	proto.RegisterFile("google/ads/googleads/v1/resources/campaign.proto", fileDescriptor_campaign_6d6417a0362a7599)
 }
 
-var fileDescriptor_campaign_159b92ef9ae7a828 = []byte{
+var fileDescriptor_campaign_6d6417a0362a7599 = []byte{
 	// 2205 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x59, 0x5b, 0x93, 0xdb, 0xb6,
 	0x15, 0x5e, 0xc9, 0x97, 0xda, 0xd8, 0xab, 0xb1, 0x37, 0x5a, 0x76, 0x5c, 0x3b, 0xad, 0x5b, 0x27,

@@ -37,7 +37,7 @@ func (m *FindingTypeStats) Reset()         { *m = FindingTypeStats{} }
 func (m *FindingTypeStats) String() string { return proto.CompactTextString(m) }
 func (*FindingTypeStats) ProtoMessage()    {}
 func (*FindingTypeStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_finding_type_stats_4b1a34a40ed70c6c, []int{0}
+	return fileDescriptor_finding_type_stats_b03395fae8325434, []int{0}
 }
 func (m *FindingTypeStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FindingTypeStats.Unmarshal(m, b)
@@ -76,10 +76,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/finding_type_stats.proto", fileDescriptor_finding_type_stats_4b1a34a40ed70c6c)
+	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/finding_type_stats.proto", fileDescriptor_finding_type_stats_b03395fae8325434)
 }
 
-var fileDescriptor_finding_type_stats_4b1a34a40ed70c6c = []byte{
+var fileDescriptor_finding_type_stats_b03395fae8325434 = []byte{
 	// 236 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0xd0, 0xc1, 0x4a, 0x03, 0x31,
 	0x10, 0x06, 0x60, 0x22, 0x28, 0x18, 0x15, 0x64, 0x41, 0x28, 0xe2, 0xa1, 0x2a, 0x48, 0xf1, 0x90,

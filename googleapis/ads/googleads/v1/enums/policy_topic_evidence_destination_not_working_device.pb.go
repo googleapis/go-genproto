@@ -56,7 +56,7 @@ func (x PolicyTopicEvidenceDestinationNotWorkingDeviceEnum_PolicyTopicEvidenceDe
 	return proto.EnumName(PolicyTopicEvidenceDestinationNotWorkingDeviceEnum_PolicyTopicEvidenceDestinationNotWorkingDevice_name, int32(x))
 }
 func (PolicyTopicEvidenceDestinationNotWorkingDeviceEnum_PolicyTopicEvidenceDestinationNotWorkingDevice) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_policy_topic_evidence_destination_not_working_device_c2cbfcd4d0456964, []int{0, 0}
+	return fileDescriptor_policy_topic_evidence_destination_not_working_device_6e2d8921a4583bfc, []int{0, 0}
 }
 
 // Container for enum describing possible policy topic evidence destination not
@@ -75,7 +75,7 @@ func (m *PolicyTopicEvidenceDestinationNotWorkingDeviceEnum) String() string {
 }
 func (*PolicyTopicEvidenceDestinationNotWorkingDeviceEnum) ProtoMessage() {}
 func (*PolicyTopicEvidenceDestinationNotWorkingDeviceEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_policy_topic_evidence_destination_not_working_device_c2cbfcd4d0456964, []int{0}
+	return fileDescriptor_policy_topic_evidence_destination_not_working_device_6e2d8921a4583bfc, []int{0}
 }
 func (m *PolicyTopicEvidenceDestinationNotWorkingDeviceEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PolicyTopicEvidenceDestinationNotWorkingDeviceEnum.Unmarshal(m, b)
@@ -101,10 +101,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/policy_topic_evidence_destination_not_working_device.proto", fileDescriptor_policy_topic_evidence_destination_not_working_device_c2cbfcd4d0456964)
+	proto.RegisterFile("google/ads/googleads/v1/enums/policy_topic_evidence_destination_not_working_device.proto", fileDescriptor_policy_topic_evidence_destination_not_working_device_6e2d8921a4583bfc)
 }
 
-var fileDescriptor_policy_topic_evidence_destination_not_working_device_c2cbfcd4d0456964 = []byte{
+var fileDescriptor_policy_topic_evidence_destination_not_working_device_6e2d8921a4583bfc = []byte{
 	// 350 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x91, 0xcf, 0x4a, 0xc3, 0x40,
 	0x10, 0xc6, 0x6d, 0x2a, 0x16, 0xd2, 0x83, 0x21, 0x47, 0xb1, 0x87, 0xf6, 0x01, 0x36, 0xc4, 0xde,

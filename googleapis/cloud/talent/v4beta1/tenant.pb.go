@@ -48,7 +48,7 @@ func (x Tenant_DataUsageType) String() string {
 	return proto.EnumName(Tenant_DataUsageType_name, int32(x))
 }
 func (Tenant_DataUsageType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_tenant_6085026e17b3c245, []int{0, 0}
+	return fileDescriptor_tenant_492ad28ca5ca1e55, []int{0, 0}
 }
 
 // A Tenant resource represents a tenant in the service. A tenant is a group or
@@ -95,7 +95,7 @@ func (m *Tenant) Reset()         { *m = Tenant{} }
 func (m *Tenant) String() string { return proto.CompactTextString(m) }
 func (*Tenant) ProtoMessage()    {}
 func (*Tenant) Descriptor() ([]byte, []int) {
-	return fileDescriptor_tenant_6085026e17b3c245, []int{0}
+	return fileDescriptor_tenant_492ad28ca5ca1e55, []int{0}
 }
 func (m *Tenant) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Tenant.Unmarshal(m, b)
@@ -149,10 +149,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/tenant.proto", fileDescriptor_tenant_6085026e17b3c245)
+	proto.RegisterFile("google/cloud/talent/v4beta1/tenant.proto", fileDescriptor_tenant_492ad28ca5ca1e55)
 }
 
-var fileDescriptor_tenant_6085026e17b3c245 = []byte{
+var fileDescriptor_tenant_492ad28ca5ca1e55 = []byte{
 	// 386 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xcd, 0x6e, 0xd3, 0x40,
 	0x10, 0x80, 0x71, 0x52, 0x55, 0x64, 0x81, 0xaa, 0x5a, 0x2e, 0x51, 0x8b, 0x94, 0xa8, 0x27, 0x1f,

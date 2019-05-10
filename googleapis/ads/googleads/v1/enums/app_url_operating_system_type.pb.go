@@ -50,7 +50,7 @@ func (x AppUrlOperatingSystemTypeEnum_AppUrlOperatingSystemType) String() string
 	return proto.EnumName(AppUrlOperatingSystemTypeEnum_AppUrlOperatingSystemType_name, int32(x))
 }
 func (AppUrlOperatingSystemTypeEnum_AppUrlOperatingSystemType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_app_url_operating_system_type_383fa34862fb8242, []int{0, 0}
+	return fileDescriptor_app_url_operating_system_type_9f0e3f339f338d8a, []int{0, 0}
 }
 
 // The possible OS types for a deeplink AppUrl.
@@ -64,7 +64,7 @@ func (m *AppUrlOperatingSystemTypeEnum) Reset()         { *m = AppUrlOperatingSy
 func (m *AppUrlOperatingSystemTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*AppUrlOperatingSystemTypeEnum) ProtoMessage()    {}
 func (*AppUrlOperatingSystemTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_app_url_operating_system_type_383fa34862fb8242, []int{0}
+	return fileDescriptor_app_url_operating_system_type_9f0e3f339f338d8a, []int{0}
 }
 func (m *AppUrlOperatingSystemTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppUrlOperatingSystemTypeEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/app_url_operating_system_type.proto", fileDescriptor_app_url_operating_system_type_383fa34862fb8242)
+	proto.RegisterFile("google/ads/googleads/v1/enums/app_url_operating_system_type.proto", fileDescriptor_app_url_operating_system_type_9f0e3f339f338d8a)
 }
 
-var fileDescriptor_app_url_operating_system_type_383fa34862fb8242 = []byte{
+var fileDescriptor_app_url_operating_system_type_9f0e3f339f338d8a = []byte{
 	// 314 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0x41, 0x4b, 0xc3, 0x30,
 	0x18, 0x75, 0x1d, 0x38, 0xc8, 0x0e, 0x96, 0xde, 0x14, 0x27, 0x6c, 0x3f, 0x20, 0xa1, 0x78, 0x8b,

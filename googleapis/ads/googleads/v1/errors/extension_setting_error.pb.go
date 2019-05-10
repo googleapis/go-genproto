@@ -319,7 +319,7 @@ func (x ExtensionSettingErrorEnum_ExtensionSettingError) String() string {
 	return proto.EnumName(ExtensionSettingErrorEnum_ExtensionSettingError_name, int32(x))
 }
 func (ExtensionSettingErrorEnum_ExtensionSettingError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_extension_setting_error_36d74918ab80bb6d, []int{0, 0}
+	return fileDescriptor_extension_setting_error_da5811f94277aabb, []int{0, 0}
 }
 
 // Container for enum describing validation errors of extension settings.
@@ -333,7 +333,7 @@ func (m *ExtensionSettingErrorEnum) Reset()         { *m = ExtensionSettingError
 func (m *ExtensionSettingErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*ExtensionSettingErrorEnum) ProtoMessage()    {}
 func (*ExtensionSettingErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_setting_error_36d74918ab80bb6d, []int{0}
+	return fileDescriptor_extension_setting_error_da5811f94277aabb, []int{0}
 }
 func (m *ExtensionSettingErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExtensionSettingErrorEnum.Unmarshal(m, b)
@@ -359,10 +359,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/extension_setting_error.proto", fileDescriptor_extension_setting_error_36d74918ab80bb6d)
+	proto.RegisterFile("google/ads/googleads/v1/errors/extension_setting_error.proto", fileDescriptor_extension_setting_error_da5811f94277aabb)
 }
 
-var fileDescriptor_extension_setting_error_36d74918ab80bb6d = []byte{
+var fileDescriptor_extension_setting_error_da5811f94277aabb = []byte{
 	// 1313 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x56, 0x5d, 0x73, 0x53, 0xb7,
 	0x16, 0xbd, 0x84, 0x7b, 0xe1, 0x5e, 0x71, 0x01, 0x21, 0x08, 0x90, 0x00, 0x01, 0xc2, 0x37, 0x2d,

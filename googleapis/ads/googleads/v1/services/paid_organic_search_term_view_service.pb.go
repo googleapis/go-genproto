@@ -39,7 +39,7 @@ func (m *GetPaidOrganicSearchTermViewRequest) Reset()         { *m = GetPaidOrga
 func (m *GetPaidOrganicSearchTermViewRequest) String() string { return proto.CompactTextString(m) }
 func (*GetPaidOrganicSearchTermViewRequest) ProtoMessage()    {}
 func (*GetPaidOrganicSearchTermViewRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_paid_organic_search_term_view_service_30d5905997917b5b, []int{0}
+	return fileDescriptor_paid_organic_search_term_view_service_ca197793315da770, []int{0}
 }
 func (m *GetPaidOrganicSearchTermViewRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetPaidOrganicSearchTermViewRequest.Unmarshal(m, b)
@@ -145,10 +145,10 @@ var _PaidOrganicSearchTermViewService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/paid_organic_search_term_view_service.proto", fileDescriptor_paid_organic_search_term_view_service_30d5905997917b5b)
+	proto.RegisterFile("google/ads/googleads/v1/services/paid_organic_search_term_view_service.proto", fileDescriptor_paid_organic_search_term_view_service_ca197793315da770)
 }
 
-var fileDescriptor_paid_organic_search_term_view_service_30d5905997917b5b = []byte{
+var fileDescriptor_paid_organic_search_term_view_service_ca197793315da770 = []byte{
 	// 389 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0x41, 0x8b, 0xd3, 0x40,
 	0x18, 0x86, 0x49, 0x04, 0xc1, 0xa0, 0x97, 0x9c, 0xa4, 0xf4, 0x10, 0xda, 0x0a, 0xd2, 0xc3, 0x0c,

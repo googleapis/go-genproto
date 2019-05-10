@@ -51,7 +51,7 @@ func (m *MutateJob) Reset()         { *m = MutateJob{} }
 func (m *MutateJob) String() string { return proto.CompactTextString(m) }
 func (*MutateJob) ProtoMessage()    {}
 func (*MutateJob) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_3bb9abe6bc3ebff0, []int{0}
+	return fileDescriptor_mutate_job_0b5a96912cc973f0, []int{0}
 }
 func (m *MutateJob) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateJob.Unmarshal(m, b)
@@ -139,7 +139,7 @@ func (m *MutateJob_MutateJobMetadata) Reset()         { *m = MutateJob_MutateJob
 func (m *MutateJob_MutateJobMetadata) String() string { return proto.CompactTextString(m) }
 func (*MutateJob_MutateJobMetadata) ProtoMessage()    {}
 func (*MutateJob_MutateJobMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_mutate_job_3bb9abe6bc3ebff0, []int{0, 0}
+	return fileDescriptor_mutate_job_0b5a96912cc973f0, []int{0, 0}
 }
 func (m *MutateJob_MutateJobMetadata) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MutateJob_MutateJobMetadata.Unmarshal(m, b)
@@ -200,10 +200,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/resources/mutate_job.proto", fileDescriptor_mutate_job_3bb9abe6bc3ebff0)
+	proto.RegisterFile("google/ads/googleads/v1/resources/mutate_job.proto", fileDescriptor_mutate_job_0b5a96912cc973f0)
 }
 
-var fileDescriptor_mutate_job_3bb9abe6bc3ebff0 = []byte{
+var fileDescriptor_mutate_job_0b5a96912cc973f0 = []byte{
 	// 581 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x94, 0xdd, 0x6a, 0xd4, 0x4c,
 	0x18, 0xc7, 0x49, 0xfa, 0x76, 0x79, 0x3b, 0x6a, 0xd5, 0xa1, 0xd4, 0xb0, 0x16, 0x69, 0x95, 0x42,

@@ -72,7 +72,7 @@ func (x CustomerPayPerConversionEligibilityFailureReasonEnum_CustomerPayPerConve
 	return proto.EnumName(CustomerPayPerConversionEligibilityFailureReasonEnum_CustomerPayPerConversionEligibilityFailureReason_name, int32(x))
 }
 func (CustomerPayPerConversionEligibilityFailureReasonEnum_CustomerPayPerConversionEligibilityFailureReason) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_customer_pay_per_conversion_eligibility_failure_reason_fe69e3f1bce20ba1, []int{0, 0}
+	return fileDescriptor_customer_pay_per_conversion_eligibility_failure_reason_01d57431f7147178, []int{0, 0}
 }
 
 // Container for enum describing reasons why a customer is not eligible to use
@@ -91,7 +91,7 @@ func (m *CustomerPayPerConversionEligibilityFailureReasonEnum) String() string {
 }
 func (*CustomerPayPerConversionEligibilityFailureReasonEnum) ProtoMessage() {}
 func (*CustomerPayPerConversionEligibilityFailureReasonEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_customer_pay_per_conversion_eligibility_failure_reason_fe69e3f1bce20ba1, []int{0}
+	return fileDescriptor_customer_pay_per_conversion_eligibility_failure_reason_01d57431f7147178, []int{0}
 }
 func (m *CustomerPayPerConversionEligibilityFailureReasonEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomerPayPerConversionEligibilityFailureReasonEnum.Unmarshal(m, b)
@@ -117,10 +117,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/customer_pay_per_conversion_eligibility_failure_reason.proto", fileDescriptor_customer_pay_per_conversion_eligibility_failure_reason_fe69e3f1bce20ba1)
+	proto.RegisterFile("google/ads/googleads/v1/enums/customer_pay_per_conversion_eligibility_failure_reason.proto", fileDescriptor_customer_pay_per_conversion_eligibility_failure_reason_01d57431f7147178)
 }
 
-var fileDescriptor_customer_pay_per_conversion_eligibility_failure_reason_fe69e3f1bce20ba1 = []byte{
+var fileDescriptor_customer_pay_per_conversion_eligibility_failure_reason_01d57431f7147178 = []byte{
 	// 476 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x92, 0x4f, 0x6f, 0x94, 0x40,
 	0x18, 0xc6, 0x2d, 0xb5, 0xad, 0x4e, 0x0f, 0x12, 0x12, 0x35, 0xd6, 0x36, 0xda, 0x7a, 0x07, 0x89,

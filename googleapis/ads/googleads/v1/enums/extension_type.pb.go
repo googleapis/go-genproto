@@ -90,7 +90,7 @@ func (x ExtensionTypeEnum_ExtensionType) String() string {
 	return proto.EnumName(ExtensionTypeEnum_ExtensionType_name, int32(x))
 }
 func (ExtensionTypeEnum_ExtensionType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_extension_type_daed22fceb6f35da, []int{0, 0}
+	return fileDescriptor_extension_type_040fb0a485e702bf, []int{0, 0}
 }
 
 // Container for enum describing possible data types for an extension in an
@@ -105,7 +105,7 @@ func (m *ExtensionTypeEnum) Reset()         { *m = ExtensionTypeEnum{} }
 func (m *ExtensionTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*ExtensionTypeEnum) ProtoMessage()    {}
 func (*ExtensionTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_extension_type_daed22fceb6f35da, []int{0}
+	return fileDescriptor_extension_type_040fb0a485e702bf, []int{0}
 }
 func (m *ExtensionTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ExtensionTypeEnum.Unmarshal(m, b)
@@ -131,10 +131,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/extension_type.proto", fileDescriptor_extension_type_daed22fceb6f35da)
+	proto.RegisterFile("google/ads/googleads/v1/enums/extension_type.proto", fileDescriptor_extension_type_040fb0a485e702bf)
 }
 
-var fileDescriptor_extension_type_daed22fceb6f35da = []byte{
+var fileDescriptor_extension_type_040fb0a485e702bf = []byte{
 	// 407 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x51, 0x4d, 0x6a, 0xdc, 0x30,
 	0x18, 0xad, 0x67, 0x92, 0xf9, 0xd1, 0x64, 0xa8, 0xaa, 0x45, 0x17, 0xa5, 0x59, 0x24, 0x07, 0x90,

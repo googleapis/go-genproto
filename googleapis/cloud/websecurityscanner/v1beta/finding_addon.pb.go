@@ -34,7 +34,7 @@ func (m *Form) Reset()         { *m = Form{} }
 func (m *Form) String() string { return proto.CompactTextString(m) }
 func (*Form) ProtoMessage()    {}
 func (*Form) Descriptor() ([]byte, []int) {
-	return fileDescriptor_finding_addon_2b00ebbf5c6ee79e, []int{0}
+	return fileDescriptor_finding_addon_2ce7b04f554b7428, []int{0}
 }
 func (m *Form) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Form.Unmarshal(m, b)
@@ -85,7 +85,7 @@ func (m *OutdatedLibrary) Reset()         { *m = OutdatedLibrary{} }
 func (m *OutdatedLibrary) String() string { return proto.CompactTextString(m) }
 func (*OutdatedLibrary) ProtoMessage()    {}
 func (*OutdatedLibrary) Descriptor() ([]byte, []int) {
-	return fileDescriptor_finding_addon_2b00ebbf5c6ee79e, []int{1}
+	return fileDescriptor_finding_addon_2ce7b04f554b7428, []int{1}
 }
 func (m *OutdatedLibrary) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OutdatedLibrary.Unmarshal(m, b)
@@ -142,7 +142,7 @@ func (m *ViolatingResource) Reset()         { *m = ViolatingResource{} }
 func (m *ViolatingResource) String() string { return proto.CompactTextString(m) }
 func (*ViolatingResource) ProtoMessage()    {}
 func (*ViolatingResource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_finding_addon_2b00ebbf5c6ee79e, []int{2}
+	return fileDescriptor_finding_addon_2ce7b04f554b7428, []int{2}
 }
 func (m *ViolatingResource) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ViolatingResource.Unmarshal(m, b)
@@ -189,7 +189,7 @@ func (m *VulnerableParameters) Reset()         { *m = VulnerableParameters{} }
 func (m *VulnerableParameters) String() string { return proto.CompactTextString(m) }
 func (*VulnerableParameters) ProtoMessage()    {}
 func (*VulnerableParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_finding_addon_2b00ebbf5c6ee79e, []int{3}
+	return fileDescriptor_finding_addon_2ce7b04f554b7428, []int{3}
 }
 func (m *VulnerableParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VulnerableParameters.Unmarshal(m, b)
@@ -231,7 +231,7 @@ func (m *VulnerableHeaders) Reset()         { *m = VulnerableHeaders{} }
 func (m *VulnerableHeaders) String() string { return proto.CompactTextString(m) }
 func (*VulnerableHeaders) ProtoMessage()    {}
 func (*VulnerableHeaders) Descriptor() ([]byte, []int) {
-	return fileDescriptor_finding_addon_2b00ebbf5c6ee79e, []int{4}
+	return fileDescriptor_finding_addon_2ce7b04f554b7428, []int{4}
 }
 func (m *VulnerableHeaders) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VulnerableHeaders.Unmarshal(m, b)
@@ -280,7 +280,7 @@ func (m *VulnerableHeaders_Header) Reset()         { *m = VulnerableHeaders_Head
 func (m *VulnerableHeaders_Header) String() string { return proto.CompactTextString(m) }
 func (*VulnerableHeaders_Header) ProtoMessage()    {}
 func (*VulnerableHeaders_Header) Descriptor() ([]byte, []int) {
-	return fileDescriptor_finding_addon_2b00ebbf5c6ee79e, []int{4, 0}
+	return fileDescriptor_finding_addon_2ce7b04f554b7428, []int{4, 0}
 }
 func (m *VulnerableHeaders_Header) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_VulnerableHeaders_Header.Unmarshal(m, b)
@@ -329,7 +329,7 @@ func (m *Xss) Reset()         { *m = Xss{} }
 func (m *Xss) String() string { return proto.CompactTextString(m) }
 func (*Xss) ProtoMessage()    {}
 func (*Xss) Descriptor() ([]byte, []int) {
-	return fileDescriptor_finding_addon_2b00ebbf5c6ee79e, []int{5}
+	return fileDescriptor_finding_addon_2ce7b04f554b7428, []int{5}
 }
 func (m *Xss) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Xss.Unmarshal(m, b)
@@ -374,10 +374,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/finding_addon.proto", fileDescriptor_finding_addon_2b00ebbf5c6ee79e)
+	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/finding_addon.proto", fileDescriptor_finding_addon_2ce7b04f554b7428)
 }
 
-var fileDescriptor_finding_addon_2b00ebbf5c6ee79e = []byte{
+var fileDescriptor_finding_addon_2ce7b04f554b7428 = []byte{
 	// 502 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x53, 0x41, 0x6f, 0xd3, 0x4c,
 	0x10, 0x55, 0x92, 0x7e, 0xa9, 0xb2, 0x69, 0x1b, 0x65, 0x55, 0x7d, 0xb2, 0x2a, 0x90, 0x8a, 0x91,

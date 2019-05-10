@@ -60,7 +60,7 @@ func (x PaymentModeEnum_PaymentMode) String() string {
 	return proto.EnumName(PaymentModeEnum_PaymentMode_name, int32(x))
 }
 func (PaymentModeEnum_PaymentMode) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_payment_mode_1e9387136819e800, []int{0, 0}
+	return fileDescriptor_payment_mode_43faaf78acb5c3c1, []int{0, 0}
 }
 
 // Container for enum describing possible payment modes.
@@ -74,7 +74,7 @@ func (m *PaymentModeEnum) Reset()         { *m = PaymentModeEnum{} }
 func (m *PaymentModeEnum) String() string { return proto.CompactTextString(m) }
 func (*PaymentModeEnum) ProtoMessage()    {}
 func (*PaymentModeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_payment_mode_1e9387136819e800, []int{0}
+	return fileDescriptor_payment_mode_43faaf78acb5c3c1, []int{0}
 }
 func (m *PaymentModeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PaymentModeEnum.Unmarshal(m, b)
@@ -100,10 +100,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/payment_mode.proto", fileDescriptor_payment_mode_1e9387136819e800)
+	proto.RegisterFile("google/ads/googleads/v1/enums/payment_mode.proto", fileDescriptor_payment_mode_43faaf78acb5c3c1)
 }
 
-var fileDescriptor_payment_mode_1e9387136819e800 = []byte{
+var fileDescriptor_payment_mode_43faaf78acb5c3c1 = []byte{
 	// 312 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcf, 0x4a, 0xc3, 0x30,
 	0x1c, 0x76, 0x53, 0x27, 0x64, 0x87, 0x85, 0xe2, 0x49, 0xdc, 0x61, 0x7b, 0x80, 0xd4, 0xe2, 0x2d,

@@ -50,7 +50,7 @@ func (x SizeLimitErrorEnum_SizeLimitError) String() string {
 	return proto.EnumName(SizeLimitErrorEnum_SizeLimitError_name, int32(x))
 }
 func (SizeLimitErrorEnum_SizeLimitError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_size_limit_error_92d39604b305e0fb, []int{0, 0}
+	return fileDescriptor_size_limit_error_f47034021ae86b55, []int{0, 0}
 }
 
 // Container for enum describing possible size limit errors.
@@ -64,7 +64,7 @@ func (m *SizeLimitErrorEnum) Reset()         { *m = SizeLimitErrorEnum{} }
 func (m *SizeLimitErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*SizeLimitErrorEnum) ProtoMessage()    {}
 func (*SizeLimitErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_size_limit_error_92d39604b305e0fb, []int{0}
+	return fileDescriptor_size_limit_error_f47034021ae86b55, []int{0}
 }
 func (m *SizeLimitErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SizeLimitErrorEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/size_limit_error.proto", fileDescriptor_size_limit_error_92d39604b305e0fb)
+	proto.RegisterFile("google/ads/googleads/v1/errors/size_limit_error.proto", fileDescriptor_size_limit_error_f47034021ae86b55)
 }
 
-var fileDescriptor_size_limit_error_92d39604b305e0fb = []byte{
+var fileDescriptor_size_limit_error_f47034021ae86b55 = []byte{
 	// 327 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0x41, 0x4a, 0xc3, 0x40,
 	0x14, 0x86, 0x4d, 0x0a, 0x0a, 0x53, 0xd0, 0x12, 0x77, 0x5a, 0xaa, 0xe4, 0x00, 0x13, 0x82, 0xb8,

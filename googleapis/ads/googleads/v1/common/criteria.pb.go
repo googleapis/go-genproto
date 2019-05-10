@@ -36,7 +36,7 @@ func (m *KeywordInfo) Reset()         { *m = KeywordInfo{} }
 func (m *KeywordInfo) String() string { return proto.CompactTextString(m) }
 func (*KeywordInfo) ProtoMessage()    {}
 func (*KeywordInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{0}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{0}
 }
 func (m *KeywordInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_KeywordInfo.Unmarshal(m, b)
@@ -86,7 +86,7 @@ func (m *PlacementInfo) Reset()         { *m = PlacementInfo{} }
 func (m *PlacementInfo) String() string { return proto.CompactTextString(m) }
 func (*PlacementInfo) ProtoMessage()    {}
 func (*PlacementInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{1}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{1}
 }
 func (m *PlacementInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PlacementInfo.Unmarshal(m, b)
@@ -126,7 +126,7 @@ func (m *MobileAppCategoryInfo) Reset()         { *m = MobileAppCategoryInfo{} }
 func (m *MobileAppCategoryInfo) String() string { return proto.CompactTextString(m) }
 func (*MobileAppCategoryInfo) ProtoMessage()    {}
 func (*MobileAppCategoryInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{2}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{2}
 }
 func (m *MobileAppCategoryInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MobileAppCategoryInfo.Unmarshal(m, b)
@@ -181,7 +181,7 @@ func (m *MobileApplicationInfo) Reset()         { *m = MobileApplicationInfo{} }
 func (m *MobileApplicationInfo) String() string { return proto.CompactTextString(m) }
 func (*MobileApplicationInfo) ProtoMessage()    {}
 func (*MobileApplicationInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{3}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{3}
 }
 func (m *MobileApplicationInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MobileApplicationInfo.Unmarshal(m, b)
@@ -228,7 +228,7 @@ func (m *LocationInfo) Reset()         { *m = LocationInfo{} }
 func (m *LocationInfo) String() string { return proto.CompactTextString(m) }
 func (*LocationInfo) ProtoMessage()    {}
 func (*LocationInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{4}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{4}
 }
 func (m *LocationInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationInfo.Unmarshal(m, b)
@@ -268,7 +268,7 @@ func (m *DeviceInfo) Reset()         { *m = DeviceInfo{} }
 func (m *DeviceInfo) String() string { return proto.CompactTextString(m) }
 func (*DeviceInfo) ProtoMessage()    {}
 func (*DeviceInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{5}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{5}
 }
 func (m *DeviceInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceInfo.Unmarshal(m, b)
@@ -308,7 +308,7 @@ func (m *PreferredContentInfo) Reset()         { *m = PreferredContentInfo{} }
 func (m *PreferredContentInfo) String() string { return proto.CompactTextString(m) }
 func (*PreferredContentInfo) ProtoMessage()    {}
 func (*PreferredContentInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{6}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{6}
 }
 func (m *PreferredContentInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PreferredContentInfo.Unmarshal(m, b)
@@ -354,7 +354,7 @@ func (m *ListingGroupInfo) Reset()         { *m = ListingGroupInfo{} }
 func (m *ListingGroupInfo) String() string { return proto.CompactTextString(m) }
 func (*ListingGroupInfo) ProtoMessage()    {}
 func (*ListingGroupInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{7}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{7}
 }
 func (m *ListingGroupInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListingGroupInfo.Unmarshal(m, b)
@@ -408,7 +408,7 @@ func (m *ListingScopeInfo) Reset()         { *m = ListingScopeInfo{} }
 func (m *ListingScopeInfo) String() string { return proto.CompactTextString(m) }
 func (*ListingScopeInfo) ProtoMessage()    {}
 func (*ListingScopeInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{8}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{8}
 }
 func (m *ListingScopeInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListingScopeInfo.Unmarshal(m, b)
@@ -464,7 +464,7 @@ func (m *ListingDimensionInfo) Reset()         { *m = ListingDimensionInfo{} }
 func (m *ListingDimensionInfo) String() string { return proto.CompactTextString(m) }
 func (*ListingDimensionInfo) ProtoMessage()    {}
 func (*ListingDimensionInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{9}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{9}
 }
 func (m *ListingDimensionInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListingDimensionInfo.Unmarshal(m, b)
@@ -992,7 +992,7 @@ func (m *ListingBrandInfo) Reset()         { *m = ListingBrandInfo{} }
 func (m *ListingBrandInfo) String() string { return proto.CompactTextString(m) }
 func (*ListingBrandInfo) ProtoMessage()    {}
 func (*ListingBrandInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{10}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{10}
 }
 func (m *ListingBrandInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListingBrandInfo.Unmarshal(m, b)
@@ -1032,7 +1032,7 @@ func (m *HotelIdInfo) Reset()         { *m = HotelIdInfo{} }
 func (m *HotelIdInfo) String() string { return proto.CompactTextString(m) }
 func (*HotelIdInfo) ProtoMessage()    {}
 func (*HotelIdInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{11}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{11}
 }
 func (m *HotelIdInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelIdInfo.Unmarshal(m, b)
@@ -1072,7 +1072,7 @@ func (m *HotelClassInfo) Reset()         { *m = HotelClassInfo{} }
 func (m *HotelClassInfo) String() string { return proto.CompactTextString(m) }
 func (*HotelClassInfo) ProtoMessage()    {}
 func (*HotelClassInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{12}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{12}
 }
 func (m *HotelClassInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelClassInfo.Unmarshal(m, b)
@@ -1112,7 +1112,7 @@ func (m *HotelCountryRegionInfo) Reset()         { *m = HotelCountryRegionInfo{}
 func (m *HotelCountryRegionInfo) String() string { return proto.CompactTextString(m) }
 func (*HotelCountryRegionInfo) ProtoMessage()    {}
 func (*HotelCountryRegionInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{13}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{13}
 }
 func (m *HotelCountryRegionInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelCountryRegionInfo.Unmarshal(m, b)
@@ -1152,7 +1152,7 @@ func (m *HotelStateInfo) Reset()         { *m = HotelStateInfo{} }
 func (m *HotelStateInfo) String() string { return proto.CompactTextString(m) }
 func (*HotelStateInfo) ProtoMessage()    {}
 func (*HotelStateInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{14}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{14}
 }
 func (m *HotelStateInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelStateInfo.Unmarshal(m, b)
@@ -1192,7 +1192,7 @@ func (m *HotelCityInfo) Reset()         { *m = HotelCityInfo{} }
 func (m *HotelCityInfo) String() string { return proto.CompactTextString(m) }
 func (*HotelCityInfo) ProtoMessage()    {}
 func (*HotelCityInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{15}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{15}
 }
 func (m *HotelCityInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelCityInfo.Unmarshal(m, b)
@@ -1234,7 +1234,7 @@ func (m *ListingCustomAttributeInfo) Reset()         { *m = ListingCustomAttribu
 func (m *ListingCustomAttributeInfo) String() string { return proto.CompactTextString(m) }
 func (*ListingCustomAttributeInfo) ProtoMessage()    {}
 func (*ListingCustomAttributeInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{16}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{16}
 }
 func (m *ListingCustomAttributeInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListingCustomAttributeInfo.Unmarshal(m, b)
@@ -1289,7 +1289,7 @@ func (m *ProductBiddingCategoryInfo) Reset()         { *m = ProductBiddingCatego
 func (m *ProductBiddingCategoryInfo) String() string { return proto.CompactTextString(m) }
 func (*ProductBiddingCategoryInfo) ProtoMessage()    {}
 func (*ProductBiddingCategoryInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{17}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{17}
 }
 func (m *ProductBiddingCategoryInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductBiddingCategoryInfo.Unmarshal(m, b)
@@ -1343,7 +1343,7 @@ func (m *ProductChannelInfo) Reset()         { *m = ProductChannelInfo{} }
 func (m *ProductChannelInfo) String() string { return proto.CompactTextString(m) }
 func (*ProductChannelInfo) ProtoMessage()    {}
 func (*ProductChannelInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{18}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{18}
 }
 func (m *ProductChannelInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductChannelInfo.Unmarshal(m, b)
@@ -1383,7 +1383,7 @@ func (m *ProductChannelExclusivityInfo) Reset()         { *m = ProductChannelExc
 func (m *ProductChannelExclusivityInfo) String() string { return proto.CompactTextString(m) }
 func (*ProductChannelExclusivityInfo) ProtoMessage()    {}
 func (*ProductChannelExclusivityInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{19}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{19}
 }
 func (m *ProductChannelExclusivityInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductChannelExclusivityInfo.Unmarshal(m, b)
@@ -1423,7 +1423,7 @@ func (m *ProductConditionInfo) Reset()         { *m = ProductConditionInfo{} }
 func (m *ProductConditionInfo) String() string { return proto.CompactTextString(m) }
 func (*ProductConditionInfo) ProtoMessage()    {}
 func (*ProductConditionInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{20}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{20}
 }
 func (m *ProductConditionInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductConditionInfo.Unmarshal(m, b)
@@ -1463,7 +1463,7 @@ func (m *ProductItemIdInfo) Reset()         { *m = ProductItemIdInfo{} }
 func (m *ProductItemIdInfo) String() string { return proto.CompactTextString(m) }
 func (*ProductItemIdInfo) ProtoMessage()    {}
 func (*ProductItemIdInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{21}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{21}
 }
 func (m *ProductItemIdInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductItemIdInfo.Unmarshal(m, b)
@@ -1505,7 +1505,7 @@ func (m *ProductTypeInfo) Reset()         { *m = ProductTypeInfo{} }
 func (m *ProductTypeInfo) String() string { return proto.CompactTextString(m) }
 func (*ProductTypeInfo) ProtoMessage()    {}
 func (*ProductTypeInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{22}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{22}
 }
 func (m *ProductTypeInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProductTypeInfo.Unmarshal(m, b)
@@ -1550,7 +1550,7 @@ func (m *UnknownListingDimensionInfo) Reset()         { *m = UnknownListingDimen
 func (m *UnknownListingDimensionInfo) String() string { return proto.CompactTextString(m) }
 func (*UnknownListingDimensionInfo) ProtoMessage()    {}
 func (*UnknownListingDimensionInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{23}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{23}
 }
 func (m *UnknownListingDimensionInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UnknownListingDimensionInfo.Unmarshal(m, b)
@@ -1583,7 +1583,7 @@ func (m *HotelDateSelectionTypeInfo) Reset()         { *m = HotelDateSelectionTy
 func (m *HotelDateSelectionTypeInfo) String() string { return proto.CompactTextString(m) }
 func (*HotelDateSelectionTypeInfo) ProtoMessage()    {}
 func (*HotelDateSelectionTypeInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{24}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{24}
 }
 func (m *HotelDateSelectionTypeInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelDateSelectionTypeInfo.Unmarshal(m, b)
@@ -1625,7 +1625,7 @@ func (m *HotelAdvanceBookingWindowInfo) Reset()         { *m = HotelAdvanceBooki
 func (m *HotelAdvanceBookingWindowInfo) String() string { return proto.CompactTextString(m) }
 func (*HotelAdvanceBookingWindowInfo) ProtoMessage()    {}
 func (*HotelAdvanceBookingWindowInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{25}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{25}
 }
 func (m *HotelAdvanceBookingWindowInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelAdvanceBookingWindowInfo.Unmarshal(m, b)
@@ -1674,7 +1674,7 @@ func (m *HotelLengthOfStayInfo) Reset()         { *m = HotelLengthOfStayInfo{} }
 func (m *HotelLengthOfStayInfo) String() string { return proto.CompactTextString(m) }
 func (*HotelLengthOfStayInfo) ProtoMessage()    {}
 func (*HotelLengthOfStayInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{26}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{26}
 }
 func (m *HotelLengthOfStayInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelLengthOfStayInfo.Unmarshal(m, b)
@@ -1721,7 +1721,7 @@ func (m *HotelCheckInDayInfo) Reset()         { *m = HotelCheckInDayInfo{} }
 func (m *HotelCheckInDayInfo) String() string { return proto.CompactTextString(m) }
 func (*HotelCheckInDayInfo) ProtoMessage()    {}
 func (*HotelCheckInDayInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{27}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{27}
 }
 func (m *HotelCheckInDayInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_HotelCheckInDayInfo.Unmarshal(m, b)
@@ -1761,7 +1761,7 @@ func (m *InteractionTypeInfo) Reset()         { *m = InteractionTypeInfo{} }
 func (m *InteractionTypeInfo) String() string { return proto.CompactTextString(m) }
 func (*InteractionTypeInfo) ProtoMessage()    {}
 func (*InteractionTypeInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{28}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{28}
 }
 func (m *InteractionTypeInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_InteractionTypeInfo.Unmarshal(m, b)
@@ -1832,7 +1832,7 @@ func (m *AdScheduleInfo) Reset()         { *m = AdScheduleInfo{} }
 func (m *AdScheduleInfo) String() string { return proto.CompactTextString(m) }
 func (*AdScheduleInfo) ProtoMessage()    {}
 func (*AdScheduleInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{29}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{29}
 }
 func (m *AdScheduleInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdScheduleInfo.Unmarshal(m, b)
@@ -1900,7 +1900,7 @@ func (m *AgeRangeInfo) Reset()         { *m = AgeRangeInfo{} }
 func (m *AgeRangeInfo) String() string { return proto.CompactTextString(m) }
 func (*AgeRangeInfo) ProtoMessage()    {}
 func (*AgeRangeInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{30}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{30}
 }
 func (m *AgeRangeInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AgeRangeInfo.Unmarshal(m, b)
@@ -1940,7 +1940,7 @@ func (m *GenderInfo) Reset()         { *m = GenderInfo{} }
 func (m *GenderInfo) String() string { return proto.CompactTextString(m) }
 func (*GenderInfo) ProtoMessage()    {}
 func (*GenderInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{31}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{31}
 }
 func (m *GenderInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GenderInfo.Unmarshal(m, b)
@@ -1980,7 +1980,7 @@ func (m *IncomeRangeInfo) Reset()         { *m = IncomeRangeInfo{} }
 func (m *IncomeRangeInfo) String() string { return proto.CompactTextString(m) }
 func (*IncomeRangeInfo) ProtoMessage()    {}
 func (*IncomeRangeInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{32}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{32}
 }
 func (m *IncomeRangeInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IncomeRangeInfo.Unmarshal(m, b)
@@ -2020,7 +2020,7 @@ func (m *ParentalStatusInfo) Reset()         { *m = ParentalStatusInfo{} }
 func (m *ParentalStatusInfo) String() string { return proto.CompactTextString(m) }
 func (*ParentalStatusInfo) ProtoMessage()    {}
 func (*ParentalStatusInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{33}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{33}
 }
 func (m *ParentalStatusInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ParentalStatusInfo.Unmarshal(m, b)
@@ -2060,7 +2060,7 @@ func (m *YouTubeVideoInfo) Reset()         { *m = YouTubeVideoInfo{} }
 func (m *YouTubeVideoInfo) String() string { return proto.CompactTextString(m) }
 func (*YouTubeVideoInfo) ProtoMessage()    {}
 func (*YouTubeVideoInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{34}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{34}
 }
 func (m *YouTubeVideoInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_YouTubeVideoInfo.Unmarshal(m, b)
@@ -2100,7 +2100,7 @@ func (m *YouTubeChannelInfo) Reset()         { *m = YouTubeChannelInfo{} }
 func (m *YouTubeChannelInfo) String() string { return proto.CompactTextString(m) }
 func (*YouTubeChannelInfo) ProtoMessage()    {}
 func (*YouTubeChannelInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{35}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{35}
 }
 func (m *YouTubeChannelInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_YouTubeChannelInfo.Unmarshal(m, b)
@@ -2141,7 +2141,7 @@ func (m *UserListInfo) Reset()         { *m = UserListInfo{} }
 func (m *UserListInfo) String() string { return proto.CompactTextString(m) }
 func (*UserListInfo) ProtoMessage()    {}
 func (*UserListInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{36}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{36}
 }
 func (m *UserListInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserListInfo.Unmarshal(m, b)
@@ -2194,7 +2194,7 @@ func (m *ProximityInfo) Reset()         { *m = ProximityInfo{} }
 func (m *ProximityInfo) String() string { return proto.CompactTextString(m) }
 func (*ProximityInfo) ProtoMessage()    {}
 func (*ProximityInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{37}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{37}
 }
 func (m *ProximityInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ProximityInfo.Unmarshal(m, b)
@@ -2257,7 +2257,7 @@ func (m *GeoPointInfo) Reset()         { *m = GeoPointInfo{} }
 func (m *GeoPointInfo) String() string { return proto.CompactTextString(m) }
 func (*GeoPointInfo) ProtoMessage()    {}
 func (*GeoPointInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{38}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{38}
 }
 func (m *GeoPointInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GeoPointInfo.Unmarshal(m, b)
@@ -2318,7 +2318,7 @@ func (m *AddressInfo) Reset()         { *m = AddressInfo{} }
 func (m *AddressInfo) String() string { return proto.CompactTextString(m) }
 func (*AddressInfo) ProtoMessage()    {}
 func (*AddressInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{39}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{39}
 }
 func (m *AddressInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressInfo.Unmarshal(m, b)
@@ -2407,7 +2407,7 @@ func (m *TopicInfo) Reset()         { *m = TopicInfo{} }
 func (m *TopicInfo) String() string { return proto.CompactTextString(m) }
 func (*TopicInfo) ProtoMessage()    {}
 func (*TopicInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{40}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{40}
 }
 func (m *TopicInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TopicInfo.Unmarshal(m, b)
@@ -2454,7 +2454,7 @@ func (m *LanguageInfo) Reset()         { *m = LanguageInfo{} }
 func (m *LanguageInfo) String() string { return proto.CompactTextString(m) }
 func (*LanguageInfo) ProtoMessage()    {}
 func (*LanguageInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{41}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{41}
 }
 func (m *LanguageInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LanguageInfo.Unmarshal(m, b)
@@ -2498,7 +2498,7 @@ func (m *IpBlockInfo) Reset()         { *m = IpBlockInfo{} }
 func (m *IpBlockInfo) String() string { return proto.CompactTextString(m) }
 func (*IpBlockInfo) ProtoMessage()    {}
 func (*IpBlockInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{42}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{42}
 }
 func (m *IpBlockInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_IpBlockInfo.Unmarshal(m, b)
@@ -2538,7 +2538,7 @@ func (m *ContentLabelInfo) Reset()         { *m = ContentLabelInfo{} }
 func (m *ContentLabelInfo) String() string { return proto.CompactTextString(m) }
 func (*ContentLabelInfo) ProtoMessage()    {}
 func (*ContentLabelInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{43}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{43}
 }
 func (m *ContentLabelInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ContentLabelInfo.Unmarshal(m, b)
@@ -2578,7 +2578,7 @@ func (m *CarrierInfo) Reset()         { *m = CarrierInfo{} }
 func (m *CarrierInfo) String() string { return proto.CompactTextString(m) }
 func (*CarrierInfo) ProtoMessage()    {}
 func (*CarrierInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{44}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{44}
 }
 func (m *CarrierInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CarrierInfo.Unmarshal(m, b)
@@ -2618,7 +2618,7 @@ func (m *UserInterestInfo) Reset()         { *m = UserInterestInfo{} }
 func (m *UserInterestInfo) String() string { return proto.CompactTextString(m) }
 func (*UserInterestInfo) ProtoMessage()    {}
 func (*UserInterestInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{45}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{45}
 }
 func (m *UserInterestInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UserInterestInfo.Unmarshal(m, b)
@@ -2670,7 +2670,7 @@ func (m *WebpageInfo) Reset()         { *m = WebpageInfo{} }
 func (m *WebpageInfo) String() string { return proto.CompactTextString(m) }
 func (*WebpageInfo) ProtoMessage()    {}
 func (*WebpageInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{46}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{46}
 }
 func (m *WebpageInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebpageInfo.Unmarshal(m, b)
@@ -2721,7 +2721,7 @@ func (m *WebpageConditionInfo) Reset()         { *m = WebpageConditionInfo{} }
 func (m *WebpageConditionInfo) String() string { return proto.CompactTextString(m) }
 func (*WebpageConditionInfo) ProtoMessage()    {}
 func (*WebpageConditionInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{47}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{47}
 }
 func (m *WebpageConditionInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WebpageConditionInfo.Unmarshal(m, b)
@@ -2775,7 +2775,7 @@ func (m *OperatingSystemVersionInfo) Reset()         { *m = OperatingSystemVersi
 func (m *OperatingSystemVersionInfo) String() string { return proto.CompactTextString(m) }
 func (*OperatingSystemVersionInfo) ProtoMessage()    {}
 func (*OperatingSystemVersionInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{48}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{48}
 }
 func (m *OperatingSystemVersionInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OperatingSystemVersionInfo.Unmarshal(m, b)
@@ -2815,7 +2815,7 @@ func (m *AppPaymentModelInfo) Reset()         { *m = AppPaymentModelInfo{} }
 func (m *AppPaymentModelInfo) String() string { return proto.CompactTextString(m) }
 func (*AppPaymentModelInfo) ProtoMessage()    {}
 func (*AppPaymentModelInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{49}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{49}
 }
 func (m *AppPaymentModelInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AppPaymentModelInfo.Unmarshal(m, b)
@@ -2855,7 +2855,7 @@ func (m *MobileDeviceInfo) Reset()         { *m = MobileDeviceInfo{} }
 func (m *MobileDeviceInfo) String() string { return proto.CompactTextString(m) }
 func (*MobileDeviceInfo) ProtoMessage()    {}
 func (*MobileDeviceInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{50}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{50}
 }
 func (m *MobileDeviceInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MobileDeviceInfo.Unmarshal(m, b)
@@ -2896,7 +2896,7 @@ func (m *CustomAffinityInfo) Reset()         { *m = CustomAffinityInfo{} }
 func (m *CustomAffinityInfo) String() string { return proto.CompactTextString(m) }
 func (*CustomAffinityInfo) ProtoMessage()    {}
 func (*CustomAffinityInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{51}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{51}
 }
 func (m *CustomAffinityInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomAffinityInfo.Unmarshal(m, b)
@@ -2937,7 +2937,7 @@ func (m *CustomIntentInfo) Reset()         { *m = CustomIntentInfo{} }
 func (m *CustomIntentInfo) String() string { return proto.CompactTextString(m) }
 func (*CustomIntentInfo) ProtoMessage()    {}
 func (*CustomIntentInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{52}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{52}
 }
 func (m *CustomIntentInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CustomIntentInfo.Unmarshal(m, b)
@@ -2987,7 +2987,7 @@ func (m *LocationGroupInfo) Reset()         { *m = LocationGroupInfo{} }
 func (m *LocationGroupInfo) String() string { return proto.CompactTextString(m) }
 func (*LocationGroupInfo) ProtoMessage()    {}
 func (*LocationGroupInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_criteria_e78ca570234fbeae, []int{53}
+	return fileDescriptor_criteria_a387108cd4c8c94e, []int{53}
 }
 func (m *LocationGroupInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationGroupInfo.Unmarshal(m, b)
@@ -3093,10 +3093,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/criteria.proto", fileDescriptor_criteria_e78ca570234fbeae)
+	proto.RegisterFile("google/ads/googleads/v1/common/criteria.proto", fileDescriptor_criteria_a387108cd4c8c94e)
 }
 
-var fileDescriptor_criteria_e78ca570234fbeae = []byte{
+var fileDescriptor_criteria_a387108cd4c8c94e = []byte{
 	// 2774 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x5a, 0x4f, 0x73, 0x1c, 0x47,
 	0x15, 0xcf, 0xae, 0x64, 0x4b, 0x7a, 0x2b, 0xc9, 0xf2, 0x58, 0x51, 0xd6, 0xca, 0x9f, 0x0a, 0x73,

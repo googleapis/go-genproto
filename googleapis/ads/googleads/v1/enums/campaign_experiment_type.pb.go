@@ -60,7 +60,7 @@ func (x CampaignExperimentTypeEnum_CampaignExperimentType) String() string {
 	return proto.EnumName(CampaignExperimentTypeEnum_CampaignExperimentType_name, int32(x))
 }
 func (CampaignExperimentTypeEnum_CampaignExperimentType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_experiment_type_1f7d6a53994657ce, []int{0, 0}
+	return fileDescriptor_campaign_experiment_type_45bce33694b11850, []int{0, 0}
 }
 
 // Container for enum describing campaign experiment type.
@@ -74,7 +74,7 @@ func (m *CampaignExperimentTypeEnum) Reset()         { *m = CampaignExperimentTy
 func (m *CampaignExperimentTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*CampaignExperimentTypeEnum) ProtoMessage()    {}
 func (*CampaignExperimentTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_campaign_experiment_type_1f7d6a53994657ce, []int{0}
+	return fileDescriptor_campaign_experiment_type_45bce33694b11850, []int{0}
 }
 func (m *CampaignExperimentTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CampaignExperimentTypeEnum.Unmarshal(m, b)
@@ -100,10 +100,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/campaign_experiment_type.proto", fileDescriptor_campaign_experiment_type_1f7d6a53994657ce)
+	proto.RegisterFile("google/ads/googleads/v1/enums/campaign_experiment_type.proto", fileDescriptor_campaign_experiment_type_45bce33694b11850)
 }
 
-var fileDescriptor_campaign_experiment_type_1f7d6a53994657ce = []byte{
+var fileDescriptor_campaign_experiment_type_45bce33694b11850 = []byte{
 	// 326 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0x4b, 0x4e, 0xf3, 0x30,
 	0x1c, 0xc4, 0xbf, 0xa6, 0xfd, 0x78, 0xb8, 0x12, 0x44, 0x59, 0xb0, 0x28, 0x74, 0xd1, 0x1e, 0xc0,

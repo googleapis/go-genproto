@@ -50,7 +50,7 @@ func (x LocationGroupRadiusUnitsEnum_LocationGroupRadiusUnits) String() string {
 	return proto.EnumName(LocationGroupRadiusUnitsEnum_LocationGroupRadiusUnits_name, int32(x))
 }
 func (LocationGroupRadiusUnitsEnum_LocationGroupRadiusUnits) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_location_group_radius_units_431f4b934ef27033, []int{0, 0}
+	return fileDescriptor_location_group_radius_units_b091a3e630f3417d, []int{0, 0}
 }
 
 // Container for enum describing unit of radius in location group.
@@ -64,7 +64,7 @@ func (m *LocationGroupRadiusUnitsEnum) Reset()         { *m = LocationGroupRadiu
 func (m *LocationGroupRadiusUnitsEnum) String() string { return proto.CompactTextString(m) }
 func (*LocationGroupRadiusUnitsEnum) ProtoMessage()    {}
 func (*LocationGroupRadiusUnitsEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_location_group_radius_units_431f4b934ef27033, []int{0}
+	return fileDescriptor_location_group_radius_units_b091a3e630f3417d, []int{0}
 }
 func (m *LocationGroupRadiusUnitsEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_LocationGroupRadiusUnitsEnum.Unmarshal(m, b)
@@ -90,10 +90,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/location_group_radius_units.proto", fileDescriptor_location_group_radius_units_431f4b934ef27033)
+	proto.RegisterFile("google/ads/googleads/v1/enums/location_group_radius_units.proto", fileDescriptor_location_group_radius_units_b091a3e630f3417d)
 }
 
-var fileDescriptor_location_group_radius_units_431f4b934ef27033 = []byte{
+var fileDescriptor_location_group_radius_units_b091a3e630f3417d = []byte{
 	// 314 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xcf, 0x6a, 0xf2, 0x40,
 	0x14, 0xc5, 0x3f, 0x23, 0x9f, 0xa5, 0xe3, 0xa2, 0x21, 0xab, 0x52, 0x74, 0xa1, 0x0f, 0x30, 0x43,

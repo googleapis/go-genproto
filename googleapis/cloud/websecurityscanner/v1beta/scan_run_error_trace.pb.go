@@ -68,7 +68,7 @@ func (x ScanRunErrorTrace_Code) String() string {
 	return proto.EnumName(ScanRunErrorTrace_Code_name, int32(x))
 }
 func (ScanRunErrorTrace_Code) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_scan_run_error_trace_3b9236ac69667833, []int{0, 0}
+	return fileDescriptor_scan_run_error_trace_e76b7c2273fc46e1, []int{0, 0}
 }
 
 // Output only.
@@ -96,7 +96,7 @@ func (m *ScanRunErrorTrace) Reset()         { *m = ScanRunErrorTrace{} }
 func (m *ScanRunErrorTrace) String() string { return proto.CompactTextString(m) }
 func (*ScanRunErrorTrace) ProtoMessage()    {}
 func (*ScanRunErrorTrace) Descriptor() ([]byte, []int) {
-	return fileDescriptor_scan_run_error_trace_3b9236ac69667833, []int{0}
+	return fileDescriptor_scan_run_error_trace_e76b7c2273fc46e1, []int{0}
 }
 func (m *ScanRunErrorTrace) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanRunErrorTrace.Unmarshal(m, b)
@@ -143,10 +143,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/scan_run_error_trace.proto", fileDescriptor_scan_run_error_trace_3b9236ac69667833)
+	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/scan_run_error_trace.proto", fileDescriptor_scan_run_error_trace_e76b7c2273fc46e1)
 }
 
-var fileDescriptor_scan_run_error_trace_3b9236ac69667833 = []byte{
+var fileDescriptor_scan_run_error_trace_e76b7c2273fc46e1 = []byte{
 	// 432 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x92, 0xcb, 0x6e, 0x13, 0x31,
 	0x14, 0x86, 0x99, 0x26, 0xed, 0xc2, 0x48, 0x65, 0x62, 0x95, 0x12, 0x51, 0x24, 0xa2, 0x2e, 0x50,

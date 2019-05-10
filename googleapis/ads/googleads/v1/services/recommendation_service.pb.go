@@ -42,7 +42,7 @@ func (m *GetRecommendationRequest) Reset()         { *m = GetRecommendationReque
 func (m *GetRecommendationRequest) String() string { return proto.CompactTextString(m) }
 func (*GetRecommendationRequest) ProtoMessage()    {}
 func (*GetRecommendationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{0}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{0}
 }
 func (m *GetRecommendationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetRecommendationRequest.Unmarshal(m, b)
@@ -91,7 +91,7 @@ func (m *ApplyRecommendationRequest) Reset()         { *m = ApplyRecommendationR
 func (m *ApplyRecommendationRequest) String() string { return proto.CompactTextString(m) }
 func (*ApplyRecommendationRequest) ProtoMessage()    {}
 func (*ApplyRecommendationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{1}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{1}
 }
 func (m *ApplyRecommendationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationRequest.Unmarshal(m, b)
@@ -158,7 +158,7 @@ func (m *ApplyRecommendationOperation) Reset()         { *m = ApplyRecommendatio
 func (m *ApplyRecommendationOperation) String() string { return proto.CompactTextString(m) }
 func (*ApplyRecommendationOperation) ProtoMessage()    {}
 func (*ApplyRecommendationOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{2}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{2}
 }
 func (m *ApplyRecommendationOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationOperation.Unmarshal(m, b)
@@ -509,7 +509,7 @@ func (m *ApplyRecommendationOperation_CampaignBudgetParameters) String() string 
 }
 func (*ApplyRecommendationOperation_CampaignBudgetParameters) ProtoMessage() {}
 func (*ApplyRecommendationOperation_CampaignBudgetParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{2, 0}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{2, 0}
 }
 func (m *ApplyRecommendationOperation_CampaignBudgetParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationOperation_CampaignBudgetParameters.Unmarshal(m, b)
@@ -554,7 +554,7 @@ func (m *ApplyRecommendationOperation_TextAdParameters) String() string {
 }
 func (*ApplyRecommendationOperation_TextAdParameters) ProtoMessage() {}
 func (*ApplyRecommendationOperation_TextAdParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{2, 1}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{2, 1}
 }
 func (m *ApplyRecommendationOperation_TextAdParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationOperation_TextAdParameters.Unmarshal(m, b)
@@ -603,7 +603,7 @@ func (m *ApplyRecommendationOperation_KeywordParameters) String() string {
 }
 func (*ApplyRecommendationOperation_KeywordParameters) ProtoMessage() {}
 func (*ApplyRecommendationOperation_KeywordParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{2, 2}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{2, 2}
 }
 func (m *ApplyRecommendationOperation_KeywordParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationOperation_KeywordParameters.Unmarshal(m, b)
@@ -664,7 +664,7 @@ func (m *ApplyRecommendationOperation_TargetCpaOptInParameters) String() string 
 }
 func (*ApplyRecommendationOperation_TargetCpaOptInParameters) ProtoMessage() {}
 func (*ApplyRecommendationOperation_TargetCpaOptInParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{2, 3}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{2, 3}
 }
 func (m *ApplyRecommendationOperation_TargetCpaOptInParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationOperation_TargetCpaOptInParameters.Unmarshal(m, b)
@@ -715,7 +715,7 @@ func (m *ApplyRecommendationOperation_CalloutExtensionParameters) String() strin
 }
 func (*ApplyRecommendationOperation_CalloutExtensionParameters) ProtoMessage() {}
 func (*ApplyRecommendationOperation_CalloutExtensionParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{2, 4}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{2, 4}
 }
 func (m *ApplyRecommendationOperation_CalloutExtensionParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationOperation_CalloutExtensionParameters.Unmarshal(m, b)
@@ -759,7 +759,7 @@ func (m *ApplyRecommendationOperation_CallExtensionParameters) String() string {
 }
 func (*ApplyRecommendationOperation_CallExtensionParameters) ProtoMessage() {}
 func (*ApplyRecommendationOperation_CallExtensionParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{2, 5}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{2, 5}
 }
 func (m *ApplyRecommendationOperation_CallExtensionParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationOperation_CallExtensionParameters.Unmarshal(m, b)
@@ -803,7 +803,7 @@ func (m *ApplyRecommendationOperation_SitelinkExtensionParameters) String() stri
 }
 func (*ApplyRecommendationOperation_SitelinkExtensionParameters) ProtoMessage() {}
 func (*ApplyRecommendationOperation_SitelinkExtensionParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{2, 6}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{2, 6}
 }
 func (m *ApplyRecommendationOperation_SitelinkExtensionParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationOperation_SitelinkExtensionParameters.Unmarshal(m, b)
@@ -848,7 +848,7 @@ func (m *ApplyRecommendationOperation_MoveUnusedBudgetParameters) String() strin
 }
 func (*ApplyRecommendationOperation_MoveUnusedBudgetParameters) ProtoMessage() {}
 func (*ApplyRecommendationOperation_MoveUnusedBudgetParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{2, 7}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{2, 7}
 }
 func (m *ApplyRecommendationOperation_MoveUnusedBudgetParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationOperation_MoveUnusedBudgetParameters.Unmarshal(m, b)
@@ -893,7 +893,7 @@ func (m *ApplyRecommendationResponse) Reset()         { *m = ApplyRecommendation
 func (m *ApplyRecommendationResponse) String() string { return proto.CompactTextString(m) }
 func (*ApplyRecommendationResponse) ProtoMessage()    {}
 func (*ApplyRecommendationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{3}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{3}
 }
 func (m *ApplyRecommendationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationResponse.Unmarshal(m, b)
@@ -940,7 +940,7 @@ func (m *ApplyRecommendationResult) Reset()         { *m = ApplyRecommendationRe
 func (m *ApplyRecommendationResult) String() string { return proto.CompactTextString(m) }
 func (*ApplyRecommendationResult) ProtoMessage()    {}
 func (*ApplyRecommendationResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{4}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{4}
 }
 func (m *ApplyRecommendationResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ApplyRecommendationResult.Unmarshal(m, b)
@@ -989,7 +989,7 @@ func (m *DismissRecommendationRequest) Reset()         { *m = DismissRecommendat
 func (m *DismissRecommendationRequest) String() string { return proto.CompactTextString(m) }
 func (*DismissRecommendationRequest) ProtoMessage()    {}
 func (*DismissRecommendationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{5}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{5}
 }
 func (m *DismissRecommendationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DismissRecommendationRequest.Unmarshal(m, b)
@@ -1047,7 +1047,7 @@ func (m *DismissRecommendationRequest_DismissRecommendationOperation) String() s
 }
 func (*DismissRecommendationRequest_DismissRecommendationOperation) ProtoMessage() {}
 func (*DismissRecommendationRequest_DismissRecommendationOperation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{5, 0}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{5, 0}
 }
 func (m *DismissRecommendationRequest_DismissRecommendationOperation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DismissRecommendationRequest_DismissRecommendationOperation.Unmarshal(m, b)
@@ -1092,7 +1092,7 @@ func (m *DismissRecommendationResponse) Reset()         { *m = DismissRecommenda
 func (m *DismissRecommendationResponse) String() string { return proto.CompactTextString(m) }
 func (*DismissRecommendationResponse) ProtoMessage()    {}
 func (*DismissRecommendationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{6}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{6}
 }
 func (m *DismissRecommendationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DismissRecommendationResponse.Unmarshal(m, b)
@@ -1143,7 +1143,7 @@ func (m *DismissRecommendationResponse_DismissRecommendationResult) String() str
 }
 func (*DismissRecommendationResponse_DismissRecommendationResult) ProtoMessage() {}
 func (*DismissRecommendationResponse_DismissRecommendationResult) Descriptor() ([]byte, []int) {
-	return fileDescriptor_recommendation_service_6b12c247ec5a1022, []int{6, 0}
+	return fileDescriptor_recommendation_service_d0c195b2c37999a9, []int{6, 0}
 }
 func (m *DismissRecommendationResponse_DismissRecommendationResult) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DismissRecommendationResponse_DismissRecommendationResult.Unmarshal(m, b)
@@ -1335,10 +1335,10 @@ var _RecommendationService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/recommendation_service.proto", fileDescriptor_recommendation_service_6b12c247ec5a1022)
+	proto.RegisterFile("google/ads/googleads/v1/services/recommendation_service.proto", fileDescriptor_recommendation_service_d0c195b2c37999a9)
 }
 
-var fileDescriptor_recommendation_service_6b12c247ec5a1022 = []byte{
+var fileDescriptor_recommendation_service_d0c195b2c37999a9 = []byte{
 	// 1333 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x58, 0xc1, 0x73, 0x14, 0x45,
 	0x17, 0xff, 0x66, 0xf2, 0x41, 0xe0, 0x05, 0x42, 0xb6, 0xa9, 0x14, 0xfb, 0x4d, 0x02, 0x5f, 0x5c,

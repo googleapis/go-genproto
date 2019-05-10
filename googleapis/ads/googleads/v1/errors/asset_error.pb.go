@@ -64,7 +64,7 @@ func (x AssetErrorEnum_AssetError) String() string {
 	return proto.EnumName(AssetErrorEnum_AssetError_name, int32(x))
 }
 func (AssetErrorEnum_AssetError) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_asset_error_d59e2d33636ee424, []int{0, 0}
+	return fileDescriptor_asset_error_c9e41ff0afa6aa76, []int{0, 0}
 }
 
 // Container for enum describing possible asset errors.
@@ -78,7 +78,7 @@ func (m *AssetErrorEnum) Reset()         { *m = AssetErrorEnum{} }
 func (m *AssetErrorEnum) String() string { return proto.CompactTextString(m) }
 func (*AssetErrorEnum) ProtoMessage()    {}
 func (*AssetErrorEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_error_d59e2d33636ee424, []int{0}
+	return fileDescriptor_asset_error_c9e41ff0afa6aa76, []int{0}
 }
 func (m *AssetErrorEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AssetErrorEnum.Unmarshal(m, b)
@@ -104,10 +104,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/errors/asset_error.proto", fileDescriptor_asset_error_d59e2d33636ee424)
+	proto.RegisterFile("google/ads/googleads/v1/errors/asset_error.proto", fileDescriptor_asset_error_c9e41ff0afa6aa76)
 }
 
-var fileDescriptor_asset_error_d59e2d33636ee424 = []byte{
+var fileDescriptor_asset_error_c9e41ff0afa6aa76 = []byte{
 	// 380 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x91, 0xc1, 0x8e, 0xd3, 0x30,
 	0x10, 0x86, 0x49, 0x16, 0x16, 0xc9, 0x2b, 0xd1, 0xc8, 0x80, 0xb4, 0xa0, 0xd5, 0x1e, 0x72, 0xe1,

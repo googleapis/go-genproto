@@ -35,7 +35,7 @@ func (m *YoutubeVideoAsset) Reset()         { *m = YoutubeVideoAsset{} }
 func (m *YoutubeVideoAsset) String() string { return proto.CompactTextString(m) }
 func (*YoutubeVideoAsset) ProtoMessage()    {}
 func (*YoutubeVideoAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_types_8b202aa014f30014, []int{0}
+	return fileDescriptor_asset_types_1a80ccf3d8556cfc, []int{0}
 }
 func (m *YoutubeVideoAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_YoutubeVideoAsset.Unmarshal(m, b)
@@ -78,7 +78,7 @@ func (m *MediaBundleAsset) Reset()         { *m = MediaBundleAsset{} }
 func (m *MediaBundleAsset) String() string { return proto.CompactTextString(m) }
 func (*MediaBundleAsset) ProtoMessage()    {}
 func (*MediaBundleAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_types_8b202aa014f30014, []int{1}
+	return fileDescriptor_asset_types_1a80ccf3d8556cfc, []int{1}
 }
 func (m *MediaBundleAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_MediaBundleAsset.Unmarshal(m, b)
@@ -124,7 +124,7 @@ func (m *ImageAsset) Reset()         { *m = ImageAsset{} }
 func (m *ImageAsset) String() string { return proto.CompactTextString(m) }
 func (*ImageAsset) ProtoMessage()    {}
 func (*ImageAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_types_8b202aa014f30014, []int{2}
+	return fileDescriptor_asset_types_1a80ccf3d8556cfc, []int{2}
 }
 func (m *ImageAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageAsset.Unmarshal(m, b)
@@ -189,7 +189,7 @@ func (m *ImageDimension) Reset()         { *m = ImageDimension{} }
 func (m *ImageDimension) String() string { return proto.CompactTextString(m) }
 func (*ImageDimension) ProtoMessage()    {}
 func (*ImageDimension) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_types_8b202aa014f30014, []int{3}
+	return fileDescriptor_asset_types_1a80ccf3d8556cfc, []int{3}
 }
 func (m *ImageDimension) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ImageDimension.Unmarshal(m, b)
@@ -243,7 +243,7 @@ func (m *TextAsset) Reset()         { *m = TextAsset{} }
 func (m *TextAsset) String() string { return proto.CompactTextString(m) }
 func (*TextAsset) ProtoMessage()    {}
 func (*TextAsset) Descriptor() ([]byte, []int) {
-	return fileDescriptor_asset_types_8b202aa014f30014, []int{4}
+	return fileDescriptor_asset_types_1a80ccf3d8556cfc, []int{4}
 }
 func (m *TextAsset) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TextAsset.Unmarshal(m, b)
@@ -279,10 +279,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/common/asset_types.proto", fileDescriptor_asset_types_8b202aa014f30014)
+	proto.RegisterFile("google/ads/googleads/v1/common/asset_types.proto", fileDescriptor_asset_types_1a80ccf3d8556cfc)
 }
 
-var fileDescriptor_asset_types_8b202aa014f30014 = []byte{
+var fileDescriptor_asset_types_1a80ccf3d8556cfc = []byte{
 	// 537 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x93, 0x41, 0x6b, 0xdb, 0x30,
 	0x14, 0xc7, 0x71, 0x12, 0x46, 0xa2, 0x76, 0x59, 0xe7, 0x53, 0xc8, 0x4a, 0x29, 0x3e, 0xf5, 0x32,

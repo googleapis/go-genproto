@@ -52,7 +52,7 @@ func (x ScanRun_ExecutionState) String() string {
 	return proto.EnumName(ScanRun_ExecutionState_name, int32(x))
 }
 func (ScanRun_ExecutionState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_scan_run_4ba20ab7789cc312, []int{0, 0}
+	return fileDescriptor_scan_run_1c1526dae1be57a2, []int{0, 0}
 }
 
 // Types of ScanRun result state.
@@ -87,7 +87,7 @@ func (x ScanRun_ResultState) String() string {
 	return proto.EnumName(ScanRun_ResultState_name, int32(x))
 }
 func (ScanRun_ResultState) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_scan_run_4ba20ab7789cc312, []int{0, 1}
+	return fileDescriptor_scan_run_1c1526dae1be57a2, []int{0, 1}
 }
 
 // A ScanRun is a output-only resource representing an actual run of the scan.
@@ -147,7 +147,7 @@ func (m *ScanRun) Reset()         { *m = ScanRun{} }
 func (m *ScanRun) String() string { return proto.CompactTextString(m) }
 func (*ScanRun) ProtoMessage()    {}
 func (*ScanRun) Descriptor() ([]byte, []int) {
-	return fileDescriptor_scan_run_4ba20ab7789cc312, []int{0}
+	return fileDescriptor_scan_run_1c1526dae1be57a2, []int{0}
 }
 func (m *ScanRun) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ScanRun.Unmarshal(m, b)
@@ -251,10 +251,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/scan_run.proto", fileDescriptor_scan_run_4ba20ab7789cc312)
+	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/scan_run.proto", fileDescriptor_scan_run_1c1526dae1be57a2)
 }
 
-var fileDescriptor_scan_run_4ba20ab7789cc312 = []byte{
+var fileDescriptor_scan_run_1c1526dae1be57a2 = []byte{
 	// 616 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0x5d, 0x4b, 0xdc, 0x4c,
 	0x14, 0xc7, 0x9f, 0xb8, 0xba, 0x2f, 0x27, 0x3e, 0x6b, 0x3a, 0xbd, 0x09, 0x56, 0x30, 0x78, 0x51,

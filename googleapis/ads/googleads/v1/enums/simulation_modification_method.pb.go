@@ -53,7 +53,7 @@ func (x SimulationModificationMethodEnum_SimulationModificationMethod) String() 
 	return proto.EnumName(SimulationModificationMethodEnum_SimulationModificationMethod_name, int32(x))
 }
 func (SimulationModificationMethodEnum_SimulationModificationMethod) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_simulation_modification_method_76c10895becc3924, []int{0, 0}
+	return fileDescriptor_simulation_modification_method_7cf42510280b8068, []int{0, 0}
 }
 
 // Container for enum describing the method by which a simulation modifies
@@ -68,7 +68,7 @@ func (m *SimulationModificationMethodEnum) Reset()         { *m = SimulationModi
 func (m *SimulationModificationMethodEnum) String() string { return proto.CompactTextString(m) }
 func (*SimulationModificationMethodEnum) ProtoMessage()    {}
 func (*SimulationModificationMethodEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_simulation_modification_method_76c10895becc3924, []int{0}
+	return fileDescriptor_simulation_modification_method_7cf42510280b8068, []int{0}
 }
 func (m *SimulationModificationMethodEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SimulationModificationMethodEnum.Unmarshal(m, b)
@@ -94,10 +94,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/simulation_modification_method.proto", fileDescriptor_simulation_modification_method_76c10895becc3924)
+	proto.RegisterFile("google/ads/googleads/v1/enums/simulation_modification_method.proto", fileDescriptor_simulation_modification_method_7cf42510280b8068)
 }
 
-var fileDescriptor_simulation_modification_method_76c10895becc3924 = []byte{
+var fileDescriptor_simulation_modification_method_7cf42510280b8068 = []byte{
 	// 308 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xd1, 0x4a, 0xc3, 0x30,
 	0x14, 0x75, 0x1d, 0x28, 0x64, 0x0f, 0x96, 0x3d, 0xca, 0x06, 0x6e, 0x1f, 0x90, 0x50, 0x7c, 0x8b,

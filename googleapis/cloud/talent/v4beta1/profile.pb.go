@@ -54,7 +54,7 @@ func (x Resume_ResumeType) String() string {
 	return proto.EnumName(Resume_ResumeType_name, int32(x))
 }
 func (Resume_ResumeType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{1, 0}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{1, 0}
 }
 
 // Enum that represents the type of the telephone.
@@ -118,7 +118,7 @@ func (x Phone_PhoneType) String() string {
 	return proto.EnumName(Phone_PhoneType_name, int32(x))
 }
 func (Phone_PhoneType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{5, 0}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{5, 0}
 }
 
 // A resource that represents the profile for a job candidate (also referred to
@@ -301,7 +301,7 @@ func (m *Profile) Reset()         { *m = Profile{} }
 func (m *Profile) String() string { return proto.CompactTextString(m) }
 func (*Profile) ProtoMessage()    {}
 func (*Profile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{0}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{0}
 }
 func (m *Profile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Profile.Unmarshal(m, b)
@@ -537,7 +537,7 @@ func (m *Resume) Reset()         { *m = Resume{} }
 func (m *Resume) String() string { return proto.CompactTextString(m) }
 func (*Resume) ProtoMessage()    {}
 func (*Resume) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{1}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{1}
 }
 func (m *Resume) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Resume.Unmarshal(m, b)
@@ -596,7 +596,7 @@ func (m *PersonName) Reset()         { *m = PersonName{} }
 func (m *PersonName) String() string { return proto.CompactTextString(m) }
 func (*PersonName) ProtoMessage()    {}
 func (*PersonName) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{2}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{2}
 }
 func (m *PersonName) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PersonName.Unmarshal(m, b)
@@ -783,7 +783,7 @@ func (m *PersonName_PersonStructuredName) Reset()         { *m = PersonName_Pers
 func (m *PersonName_PersonStructuredName) String() string { return proto.CompactTextString(m) }
 func (*PersonName_PersonStructuredName) ProtoMessage()    {}
 func (*PersonName_PersonStructuredName) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{2, 0}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{2, 0}
 }
 func (m *PersonName_PersonStructuredName) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PersonName_PersonStructuredName.Unmarshal(m, b)
@@ -871,7 +871,7 @@ func (m *Address) Reset()         { *m = Address{} }
 func (m *Address) String() string { return proto.CompactTextString(m) }
 func (*Address) ProtoMessage()    {}
 func (*Address) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{3}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{3}
 }
 func (m *Address) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Address.Unmarshal(m, b)
@@ -1033,7 +1033,7 @@ func (m *Email) Reset()         { *m = Email{} }
 func (m *Email) String() string { return proto.CompactTextString(m) }
 func (*Email) ProtoMessage()    {}
 func (*Email) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{4}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{4}
 }
 func (m *Email) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Email.Unmarshal(m, b)
@@ -1103,7 +1103,7 @@ func (m *Phone) Reset()         { *m = Phone{} }
 func (m *Phone) String() string { return proto.CompactTextString(m) }
 func (*Phone) ProtoMessage()    {}
 func (*Phone) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{5}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{5}
 }
 func (m *Phone) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Phone.Unmarshal(m, b)
@@ -1168,7 +1168,7 @@ func (m *PersonalUri) Reset()         { *m = PersonalUri{} }
 func (m *PersonalUri) String() string { return proto.CompactTextString(m) }
 func (*PersonalUri) ProtoMessage()    {}
 func (*PersonalUri) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{6}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{6}
 }
 func (m *PersonalUri) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_PersonalUri.Unmarshal(m, b)
@@ -1225,7 +1225,7 @@ func (m *AdditionalContactInfo) Reset()         { *m = AdditionalContactInfo{} }
 func (m *AdditionalContactInfo) String() string { return proto.CompactTextString(m) }
 func (*AdditionalContactInfo) ProtoMessage()    {}
 func (*AdditionalContactInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{7}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{7}
 }
 func (m *AdditionalContactInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AdditionalContactInfo.Unmarshal(m, b)
@@ -1343,7 +1343,7 @@ func (m *EmploymentRecord) Reset()         { *m = EmploymentRecord{} }
 func (m *EmploymentRecord) String() string { return proto.CompactTextString(m) }
 func (*EmploymentRecord) ProtoMessage()    {}
 func (*EmploymentRecord) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{8}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{8}
 }
 func (m *EmploymentRecord) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EmploymentRecord.Unmarshal(m, b)
@@ -1514,7 +1514,7 @@ func (m *EducationRecord) Reset()         { *m = EducationRecord{} }
 func (m *EducationRecord) String() string { return proto.CompactTextString(m) }
 func (*EducationRecord) ProtoMessage()    {}
 func (*EducationRecord) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{9}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{9}
 }
 func (m *EducationRecord) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EducationRecord.Unmarshal(m, b)
@@ -1735,7 +1735,7 @@ func (m *Degree) Reset()         { *m = Degree{} }
 func (m *Degree) String() string { return proto.CompactTextString(m) }
 func (*Degree) ProtoMessage()    {}
 func (*Degree) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{10}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{10}
 }
 func (m *Degree) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Degree.Unmarshal(m, b)
@@ -1837,7 +1837,7 @@ func (m *Activity) Reset()         { *m = Activity{} }
 func (m *Activity) String() string { return proto.CompactTextString(m) }
 func (*Activity) ProtoMessage()    {}
 func (*Activity) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{11}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{11}
 }
 func (m *Activity) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Activity.Unmarshal(m, b)
@@ -1990,7 +1990,7 @@ func (m *Publication) Reset()         { *m = Publication{} }
 func (m *Publication) String() string { return proto.CompactTextString(m) }
 func (*Publication) ProtoMessage()    {}
 func (*Publication) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{12}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{12}
 }
 func (m *Publication) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Publication.Unmarshal(m, b)
@@ -2132,7 +2132,7 @@ func (m *Patent) Reset()         { *m = Patent{} }
 func (m *Patent) String() string { return proto.CompactTextString(m) }
 func (*Patent) ProtoMessage()    {}
 func (*Patent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_profile_1ba3c938ea40ebf9, []int{13}
+	return fileDescriptor_profile_4e2aa539079b7888, []int{13}
 }
 func (m *Patent) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Patent.Unmarshal(m, b)
@@ -2237,10 +2237,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/talent/v4beta1/profile.proto", fileDescriptor_profile_1ba3c938ea40ebf9)
+	proto.RegisterFile("google/cloud/talent/v4beta1/profile.proto", fileDescriptor_profile_4e2aa539079b7888)
 }
 
-var fileDescriptor_profile_1ba3c938ea40ebf9 = []byte{
+var fileDescriptor_profile_4e2aa539079b7888 = []byte{
 	// 2288 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x59, 0xcd, 0x72, 0x1b, 0xb9,
 	0xf1, 0x17, 0x49, 0x89, 0x1f, 0xcd, 0x0f, 0x91, 0xb0, 0x25, 0xcf, 0x5f, 0xf6, 0xfe, 0xad, 0xe5,

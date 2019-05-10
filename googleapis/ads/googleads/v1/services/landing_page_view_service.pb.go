@@ -39,7 +39,7 @@ func (m *GetLandingPageViewRequest) Reset()         { *m = GetLandingPageViewReq
 func (m *GetLandingPageViewRequest) String() string { return proto.CompactTextString(m) }
 func (*GetLandingPageViewRequest) ProtoMessage()    {}
 func (*GetLandingPageViewRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_landing_page_view_service_969504292394555a, []int{0}
+	return fileDescriptor_landing_page_view_service_f1c6e2bb95c58e07, []int{0}
 }
 func (m *GetLandingPageViewRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetLandingPageViewRequest.Unmarshal(m, b)
@@ -145,10 +145,10 @@ var _LandingPageViewService_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/services/landing_page_view_service.proto", fileDescriptor_landing_page_view_service_969504292394555a)
+	proto.RegisterFile("google/ads/googleads/v1/services/landing_page_view_service.proto", fileDescriptor_landing_page_view_service_f1c6e2bb95c58e07)
 }
 
-var fileDescriptor_landing_page_view_service_969504292394555a = []byte{
+var fileDescriptor_landing_page_view_service_f1c6e2bb95c58e07 = []byte{
 	// 387 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xbf, 0x6a, 0xdb, 0x40,
 	0x18, 0x47, 0x2a, 0x14, 0x2a, 0xda, 0x45, 0x43, 0x69, 0xdd, 0x52, 0x8c, 0xeb, 0xa1, 0x78, 0xb8,

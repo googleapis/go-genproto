@@ -52,7 +52,7 @@ func (x NegativeGeoTargetTypeEnum_NegativeGeoTargetType) String() string {
 	return proto.EnumName(NegativeGeoTargetTypeEnum_NegativeGeoTargetType_name, int32(x))
 }
 func (NegativeGeoTargetTypeEnum_NegativeGeoTargetType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_negative_geo_target_type_835f17c79fca4c8e, []int{0, 0}
+	return fileDescriptor_negative_geo_target_type_eb1450f1257582ab, []int{0, 0}
 }
 
 // Container for enum describing possible negative geo target types.
@@ -66,7 +66,7 @@ func (m *NegativeGeoTargetTypeEnum) Reset()         { *m = NegativeGeoTargetType
 func (m *NegativeGeoTargetTypeEnum) String() string { return proto.CompactTextString(m) }
 func (*NegativeGeoTargetTypeEnum) ProtoMessage()    {}
 func (*NegativeGeoTargetTypeEnum) Descriptor() ([]byte, []int) {
-	return fileDescriptor_negative_geo_target_type_835f17c79fca4c8e, []int{0}
+	return fileDescriptor_negative_geo_target_type_eb1450f1257582ab, []int{0}
 }
 func (m *NegativeGeoTargetTypeEnum) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NegativeGeoTargetTypeEnum.Unmarshal(m, b)
@@ -92,10 +92,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/ads/googleads/v1/enums/negative_geo_target_type.proto", fileDescriptor_negative_geo_target_type_835f17c79fca4c8e)
+	proto.RegisterFile("google/ads/googleads/v1/enums/negative_geo_target_type.proto", fileDescriptor_negative_geo_target_type_eb1450f1257582ab)
 }
 
-var fileDescriptor_negative_geo_target_type_835f17c79fca4c8e = []byte{
+var fileDescriptor_negative_geo_target_type_eb1450f1257582ab = []byte{
 	// 332 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x90, 0xd1, 0x4a, 0xeb, 0x30,
 	0x1c, 0xc6, 0xcf, 0x3a, 0x38, 0x87, 0x93, 0x21, 0x96, 0xa2, 0xa0, 0xc3, 0x5d, 0x6c, 0x0f, 0x90,

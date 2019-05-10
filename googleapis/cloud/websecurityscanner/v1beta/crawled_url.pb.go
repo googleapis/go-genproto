@@ -42,7 +42,7 @@ func (m *CrawledUrl) Reset()         { *m = CrawledUrl{} }
 func (m *CrawledUrl) String() string { return proto.CompactTextString(m) }
 func (*CrawledUrl) ProtoMessage()    {}
 func (*CrawledUrl) Descriptor() ([]byte, []int) {
-	return fileDescriptor_crawled_url_47969d3dbeaecdf6, []int{0}
+	return fileDescriptor_crawled_url_b69cb5a45bdfc17f, []int{0}
 }
 func (m *CrawledUrl) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CrawledUrl.Unmarshal(m, b)
@@ -88,10 +88,10 @@ func init() {
 }
 
 func init() {
-	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/crawled_url.proto", fileDescriptor_crawled_url_47969d3dbeaecdf6)
+	proto.RegisterFile("google/cloud/websecurityscanner/v1beta/crawled_url.proto", fileDescriptor_crawled_url_b69cb5a45bdfc17f)
 }
 
-var fileDescriptor_crawled_url_47969d3dbeaecdf6 = []byte{
+var fileDescriptor_crawled_url_b69cb5a45bdfc17f = []byte{
 	// 235 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x90, 0x31, 0x4b, 0x04, 0x31,
 	0x10, 0x85, 0x59, 0x4f, 0x04, 0xc7, 0x42, 0x49, 0xb5, 0x88, 0xa0, 0x58, 0x88, 0x58, 0x24, 0x88,
