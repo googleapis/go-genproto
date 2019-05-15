@@ -2518,8 +2518,8 @@ type InputConfig struct {
 	// Currently, this field only works for BatchAnnotateFiles requests. It does
 	// not work for AsyncBatchAnnotateFiles requests.
 	Content []byte `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
-	// The type of the file. Currently only "application/pdf" and "image/tiff"
-	// are supported. Wildcards are not supported.
+	// The type of the file. Currently only "application/pdf", "image/tiff" and
+	// "image/gif" are supported. Wildcards are not supported.
 	MimeType             string   `protobuf:"bytes,2,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
