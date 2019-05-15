@@ -76,10 +76,6 @@ func (HttpMethod) EnumDescriptor() ([]byte, []int) {
 
 // HTTP request.
 //
-// Warning: This is an [alpha](https://cloud.google.com/terms/launch-stages)
-// feature. If you haven't already joined, you can [use this form to sign
-// up](https://docs.google.com/forms/d/e/1FAIpQLSfc4uEy9CBHKYUSdnY1hdhKDCX7julVZHy3imOiR-XrU7bUNQ/viewform).
-//
 // The task will be pushed to the worker as an HTTP request. If the worker
 // or the redirected worker acknowledges the task by returning a successful HTTP
 // response code ([`200` - `299`]), the task will removed from the queue. If
@@ -329,9 +325,6 @@ func (m *AppEngineHttpQueue) GetAppEngineRoutingOverride() *AppEngineRouting {
 // The message defines the HTTP request that is sent to an App Engine app when
 // the task is dispatched.
 //
-// This proto can only be used for tasks in a queue which has
-// [app_engine_http_queue][google.cloud.tasks.v2beta3.Queue.app_engine_http_queue] set.
-//
 // Using [AppEngineHttpRequest][google.cloud.tasks.v2beta3.AppEngineHttpRequest] requires
 // [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)
 // Google IAM permission for the project
@@ -377,13 +370,17 @@ func (m *AppEngineHttpQueue) GetAppEngineRoutingOverride() *AppEngineRouting {
 // required`](https://cloud.google.com/appengine/docs/standard/python/config/appref)
 // Task dispatches also do not follow redirects.
 //
-// The task attempt has succeeded if the app's request handler returns
-// an HTTP response code in the range [`200` - `299`]. `503` is
-// considered an App Engine system error instead of an application
-// error. Requests returning error `503` will be retried regardless of
-// retry configuration and not counted against retry counts.
-// Any other response code or a failure to receive a response before the
-// deadline is a failed attempt.
+// The task attempt has succeeded if the app's request handler returns an HTTP
+// response code in the range [`200` - `299`]. The task attempt has failed if
+// the app's handler returns a non-2xx response code or Cloud Tasks does
+// not receive response before the [deadline][google.cloud.tasks.v2beta3.Task.dispatch_deadline]. Failed
+// tasks will be retried according to the
+// [retry configuration][Queue.RetryConfig]. `503` (Service Unavailable) is
+// considered an App Engine system error instead of an application error and
+// will cause Cloud Tasks' traffic congestion control to temporarily throttle
+// the queue's dispatches. Unlike other types of task targets, a `429` (Too Many
+// Requests) response from an app handler does not cause traffic congestion
+// control to throttle the queue.
 type AppEngineHttpRequest struct {
 	// The HTTP method to use for the request. The default is POST.
 	//
@@ -659,8 +656,8 @@ func (m *AppEngineRouting) GetHost() string {
 
 // Contains information needed for generating an
 // [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
-// This type of authorization should be used when sending requests to a GCP
-// endpoint.
+// This type of authorization should generally only be used when calling Google
+// APIs hosted on *.googleapis.com.
 type OAuthToken struct {
 	// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
 	// to be used for generating OAuth token.
@@ -718,9 +715,10 @@ func (m *OAuthToken) GetScope() string {
 
 // Contains information needed for generating an
 // [OpenID Connect
-// token](https://developers.google.com/identity/protocols/OpenIDConnect). This
-// type of authorization should be used when sending requests to third party
-// endpoints.
+// token](https://developers.google.com/identity/protocols/OpenIDConnect).
+// This type of authorization can be used for many scenarios, including
+// calling Cloud Run, or endpoints where you intend to validate the token
+// yourself.
 type OidcToken struct {
 	// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
 	// to be used for generating OIDC token.
