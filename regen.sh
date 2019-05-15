@@ -73,4 +73,6 @@ go run regen.go -go_out "$root/src" -pkg_prefix "$PKG" "$apidir" "$protodir"
 echo 1>&2 "Checking that the libraries build..."
 go build -v ./...
 
+gofmt -s -l -w . && goimports -w .
+
 echo 1>&2 "All done!"
