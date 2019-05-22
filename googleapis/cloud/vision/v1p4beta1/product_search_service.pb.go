@@ -88,7 +88,9 @@ type Product struct {
 	// characters long.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// The category for the product identified by the reference image. This should
-	// be either "homegoods", "apparel", or "toys".
+	// be either "homegoods-v2", "apparel-v2", "toys-v2", or "packagedgoods". The
+	// legacy categories "homegoods", "apparel", and "toys" are still supported,
+	// but these should not be used for new products.
 	//
 	// This field is immutable.
 	ProductCategory string `protobuf:"bytes,4,opt,name=product_category,json=productCategory,proto3" json:"product_category,omitempty"`

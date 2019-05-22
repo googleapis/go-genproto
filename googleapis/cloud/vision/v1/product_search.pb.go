@@ -35,8 +35,9 @@ type ProductSearchParams struct {
 	// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
 	ProductSet string `protobuf:"bytes,6,opt,name=product_set,json=productSet,proto3" json:"product_set,omitempty"`
 	// The list of product categories to search in. Currently, we only consider
-	// the first category, and either "homegoods", "apparel", or "toys" should be
-	// specified.
+	// the first category, and either "homegoods-v2", "apparel-v2", or "toys-v2"
+	// should be specified. The legacy categories "homegoods", "apparel", and
+	// "toys" are still supported, but these should not be used for new products.
 	ProductCategories []string `protobuf:"bytes,7,rep,name=product_categories,json=productCategories,proto3" json:"product_categories,omitempty"`
 	// The filtering expression. This can be used to restrict search results based
 	// on Product labels. We currently support an AND of OR of key-value
