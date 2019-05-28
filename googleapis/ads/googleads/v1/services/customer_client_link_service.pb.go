@@ -27,7 +27,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [CustomerClientLinkService.GetCustomerClientLink][google.ads.googleads.v1.services.CustomerClientLinkService.GetCustomerClientLink].
+// Request message for
+// [CustomerClientLinkService.GetCustomerClientLink][google.ads.googleads.v1.services.CustomerClientLinkService.GetCustomerClientLink].
 type GetCustomerClientLinkRequest struct {
 	// The resource name of the customer client link to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -68,7 +69,8 @@ func (m *GetCustomerClientLinkRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [CustomerClientLinkService.MutateCustomerClientLink][google.ads.googleads.v1.services.CustomerClientLinkService.MutateCustomerClientLink].
+// Request message for
+// [CustomerClientLinkService.MutateCustomerClientLink][google.ads.googleads.v1.services.CustomerClientLinkService.MutateCustomerClientLink].
 type MutateCustomerClientLinkRequest struct {
 	// The ID of the customer whose customer link are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

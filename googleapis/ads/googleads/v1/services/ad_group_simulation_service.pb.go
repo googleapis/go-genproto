@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [AdGroupSimulationService.GetAdGroupSimulation][google.ads.googleads.v1.services.AdGroupSimulationService.GetAdGroupSimulation].
+// Request message for
+// [AdGroupSimulationService.GetAdGroupSimulation][google.ads.googleads.v1.services.AdGroupSimulationService.GetAdGroupSimulation].
 type GetAdGroupSimulationRequest struct {
 	// The resource name of the ad group simulation to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

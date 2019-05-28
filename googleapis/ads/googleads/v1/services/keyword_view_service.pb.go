@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [KeywordViewService.GetKeywordView][google.ads.googleads.v1.services.KeywordViewService.GetKeywordView].
+// Request message for
+// [KeywordViewService.GetKeywordView][google.ads.googleads.v1.services.KeywordViewService.GetKeywordView].
 type GetKeywordViewRequest struct {
 	// The resource name of the keyword view to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

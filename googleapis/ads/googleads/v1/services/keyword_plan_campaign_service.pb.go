@@ -28,7 +28,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [KeywordPlanCampaignService.GetKeywordPlanCampaign][google.ads.googleads.v1.services.KeywordPlanCampaignService.GetKeywordPlanCampaign].
+// Request message for
+// [KeywordPlanCampaignService.GetKeywordPlanCampaign][google.ads.googleads.v1.services.KeywordPlanCampaignService.GetKeywordPlanCampaign].
 type GetKeywordPlanCampaignRequest struct {
 	// The resource name of the Keyword Plan campaign to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

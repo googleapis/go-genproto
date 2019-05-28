@@ -27,7 +27,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [CustomerService.GetCustomer][google.ads.googleads.v1.services.CustomerService.GetCustomer].
+// Request message for
+// [CustomerService.GetCustomer][google.ads.googleads.v1.services.CustomerService.GetCustomer].
 type GetCustomerRequest struct {
 	// The resource name of the customer to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -68,7 +69,8 @@ func (m *GetCustomerRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [CustomerService.MutateCustomer][google.ads.googleads.v1.services.CustomerService.MutateCustomer].
+// Request message for
+// [CustomerService.MutateCustomer][google.ads.googleads.v1.services.CustomerService.MutateCustomer].
 type MutateCustomerRequest struct {
 	// The ID of the customer being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
@@ -128,7 +130,8 @@ func (m *MutateCustomerRequest) GetValidateOnly() bool {
 	return false
 }
 
-// Request message for [CustomerService.CreateCustomerClient][google.ads.googleads.v1.services.CustomerService.CreateCustomerClient].
+// Request message for
+// [CustomerService.CreateCustomerClient][google.ads.googleads.v1.services.CustomerService.CreateCustomerClient].
 type CreateCustomerClientRequest struct {
 	// The ID of the Manager under whom client customer is being created.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
@@ -352,7 +355,8 @@ func (m *MutateCustomerResult) GetResourceName() string {
 	return ""
 }
 
-// Request message for [CustomerService.ListAccessibleCustomers][google.ads.googleads.v1.services.CustomerService.ListAccessibleCustomers].
+// Request message for
+// [CustomerService.ListAccessibleCustomers][google.ads.googleads.v1.services.CustomerService.ListAccessibleCustomers].
 type ListAccessibleCustomersRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -384,7 +388,8 @@ func (m *ListAccessibleCustomersRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListAccessibleCustomersRequest proto.InternalMessageInfo
 
-// Response message for [CustomerService.ListAccessibleCustomers][google.ads.googleads.v1.services.CustomerService.ListAccessibleCustomers].
+// Response message for
+// [CustomerService.ListAccessibleCustomers][google.ads.googleads.v1.services.CustomerService.ListAccessibleCustomers].
 type ListAccessibleCustomersResponse struct {
 	// Resource name of customers directly accessible by the
 	// user authenticating the call.

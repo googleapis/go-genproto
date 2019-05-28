@@ -29,7 +29,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [KeywordPlanService.GetKeywordPlan][google.ads.googleads.v1.services.KeywordPlanService.GetKeywordPlan].
+// Request message for
+// [KeywordPlanService.GetKeywordPlan][google.ads.googleads.v1.services.KeywordPlanService.GetKeywordPlan].
 type GetKeywordPlanRequest struct {
 	// The resource name of the plan to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -70,7 +71,8 @@ func (m *GetKeywordPlanRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [KeywordPlanService.MutateKeywordPlans][google.ads.googleads.v1.services.KeywordPlanService.MutateKeywordPlans].
+// Request message for
+// [KeywordPlanService.MutateKeywordPlans][google.ads.googleads.v1.services.KeywordPlanService.MutateKeywordPlans].
 type MutateKeywordPlansRequest struct {
 	// The ID of the customer whose keyword plans are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
@@ -344,7 +346,8 @@ func (m *MutateKeywordPlansResult) GetResourceName() string {
 	return ""
 }
 
-// Request message for [KeywordPlanService.GenerateForecastMetrics][google.ads.googleads.v1.services.KeywordPlanService.GenerateForecastMetrics].
+// Request message for
+// [KeywordPlanService.GenerateForecastMetrics][google.ads.googleads.v1.services.KeywordPlanService.GenerateForecastMetrics].
 type GenerateForecastMetricsRequest struct {
 	// The resource name of the keyword plan to be forecasted.
 	KeywordPlan          string   `protobuf:"bytes,1,opt,name=keyword_plan,json=keywordPlan,proto3" json:"keyword_plan,omitempty"`
@@ -385,7 +388,8 @@ func (m *GenerateForecastMetricsRequest) GetKeywordPlan() string {
 	return ""
 }
 
-// Response message for [KeywordPlanService.GenerateForecastMetrics][google.ads.googleads.v1.services.KeywordPlanService.GenerateForecastMetrics].
+// Response message for
+// [KeywordPlanService.GenerateForecastMetrics][google.ads.googleads.v1.services.KeywordPlanService.GenerateForecastMetrics].
 type GenerateForecastMetricsResponse struct {
 	// List of campaign forecasts.
 	// One maximum.
@@ -679,7 +683,8 @@ func (m *ForecastMetrics) GetCostMicros() *wrappers.Int64Value {
 	return nil
 }
 
-// Request message for [KeywordPlanService.GenerateHistoricalMetrics][google.ads.googleads.v1.services.KeywordPlanService.GenerateHistoricalMetrics].
+// Request message for
+// [KeywordPlanService.GenerateHistoricalMetrics][google.ads.googleads.v1.services.KeywordPlanService.GenerateHistoricalMetrics].
 type GenerateHistoricalMetricsRequest struct {
 	// The resource name of the keyword plan of which historical metrics are
 	// requested.
@@ -721,7 +726,8 @@ func (m *GenerateHistoricalMetricsRequest) GetKeywordPlan() string {
 	return ""
 }
 
-// Response message for [KeywordPlanService.GenerateHistoricalMetrics][google.ads.googleads.v1.services.KeywordPlanService.GenerateHistoricalMetrics].
+// Response message for
+// [KeywordPlanService.GenerateHistoricalMetrics][google.ads.googleads.v1.services.KeywordPlanService.GenerateHistoricalMetrics].
 type GenerateHistoricalMetricsResponse struct {
 	// List of keyword historical metrics.
 	Metrics              []*KeywordPlanKeywordHistoricalMetrics `protobuf:"bytes,1,rep,name=metrics,proto3" json:"metrics,omitempty"`

@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [AdScheduleViewService.GetAdScheduleView][google.ads.googleads.v1.services.AdScheduleViewService.GetAdScheduleView].
+// Request message for
+// [AdScheduleViewService.GetAdScheduleView][google.ads.googleads.v1.services.AdScheduleViewService.GetAdScheduleView].
 type GetAdScheduleViewRequest struct {
 	// The resource name of the ad schedule view to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

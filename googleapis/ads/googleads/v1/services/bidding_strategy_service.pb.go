@@ -28,7 +28,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [BiddingStrategyService.GetBiddingStrategy][google.ads.googleads.v1.services.BiddingStrategyService.GetBiddingStrategy].
+// Request message for
+// [BiddingStrategyService.GetBiddingStrategy][google.ads.googleads.v1.services.BiddingStrategyService.GetBiddingStrategy].
 type GetBiddingStrategyRequest struct {
 	// The resource name of the bidding strategy to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -69,7 +70,8 @@ func (m *GetBiddingStrategyRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [BiddingStrategyService.MutateBiddingStrategies][google.ads.googleads.v1.services.BiddingStrategyService.MutateBiddingStrategies].
+// Request message for
+// [BiddingStrategyService.MutateBiddingStrategies][google.ads.googleads.v1.services.BiddingStrategyService.MutateBiddingStrategies].
 type MutateBiddingStrategiesRequest struct {
 	// The ID of the customer whose bidding strategies are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

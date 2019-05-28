@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [LocationViewService.GetLocationView][google.ads.googleads.v1.services.LocationViewService.GetLocationView].
+// Request message for
+// [LocationViewService.GetLocationView][google.ads.googleads.v1.services.LocationViewService.GetLocationView].
 type GetLocationViewRequest struct {
 	// The resource name of the location view to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

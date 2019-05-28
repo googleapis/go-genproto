@@ -27,7 +27,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [ExtensionFeedItemService.GetExtensionFeedItem][google.ads.googleads.v1.services.ExtensionFeedItemService.GetExtensionFeedItem].
+// Request message for
+// [ExtensionFeedItemService.GetExtensionFeedItem][google.ads.googleads.v1.services.ExtensionFeedItemService.GetExtensionFeedItem].
 type GetExtensionFeedItemRequest struct {
 	// The resource name of the extension feed item to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -68,7 +69,8 @@ func (m *GetExtensionFeedItemRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [ExtensionFeedItemService.MutateExtensionFeedItems][google.ads.googleads.v1.services.ExtensionFeedItemService.MutateExtensionFeedItems].
+// Request message for
+// [ExtensionFeedItemService.MutateExtensionFeedItems][google.ads.googleads.v1.services.ExtensionFeedItemService.MutateExtensionFeedItems].
 type MutateExtensionFeedItemsRequest struct {
 	// The ID of the customer whose extension feed items are being
 	// modified.

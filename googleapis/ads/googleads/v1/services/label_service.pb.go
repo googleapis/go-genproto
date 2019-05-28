@@ -28,7 +28,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [LabelService.GetLabel][google.ads.googleads.v1.services.LabelService.GetLabel].
+// Request message for
+// [LabelService.GetLabel][google.ads.googleads.v1.services.LabelService.GetLabel].
 type GetLabelRequest struct {
 	// The resource name of the label to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -69,7 +70,8 @@ func (m *GetLabelRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [LabelService.MutateLabels][google.ads.googleads.v1.services.LabelService.MutateLabels].
+// Request message for
+// [LabelService.MutateLabels][google.ads.googleads.v1.services.LabelService.MutateLabels].
 type MutateLabelsRequest struct {
 	// ID of the customer whose labels are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

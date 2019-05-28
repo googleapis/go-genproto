@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [GenderViewService.GetGenderView][google.ads.googleads.v1.services.GenderViewService.GetGenderView].
+// Request message for
+// [GenderViewService.GetGenderView][google.ads.googleads.v1.services.GenderViewService.GetGenderView].
 type GetGenderViewRequest struct {
 	// The resource name of the gender view to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

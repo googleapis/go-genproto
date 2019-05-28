@@ -27,7 +27,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [SharedCriterionService.GetSharedCriterion][google.ads.googleads.v1.services.SharedCriterionService.GetSharedCriterion].
+// Request message for
+// [SharedCriterionService.GetSharedCriterion][google.ads.googleads.v1.services.SharedCriterionService.GetSharedCriterion].
 type GetSharedCriterionRequest struct {
 	// The resource name of the shared criterion to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -68,7 +69,8 @@ func (m *GetSharedCriterionRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [SharedCriterionService.MutateSharedCriteria][google.ads.googleads.v1.services.SharedCriterionService.MutateSharedCriteria].
+// Request message for
+// [SharedCriterionService.MutateSharedCriteria][google.ads.googleads.v1.services.SharedCriterionService.MutateSharedCriteria].
 type MutateSharedCriteriaRequest struct {
 	// The ID of the customer whose shared criteria are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

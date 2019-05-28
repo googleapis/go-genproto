@@ -29,7 +29,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [AdGroupAdService.GetAdGroupAd][google.ads.googleads.v1.services.AdGroupAdService.GetAdGroupAd].
+// Request message for
+// [AdGroupAdService.GetAdGroupAd][google.ads.googleads.v1.services.AdGroupAdService.GetAdGroupAd].
 type GetAdGroupAdRequest struct {
 	// The resource name of the ad to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -70,7 +71,8 @@ func (m *GetAdGroupAdRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [AdGroupAdService.MutateAdGroupAds][google.ads.googleads.v1.services.AdGroupAdService.MutateAdGroupAds].
+// Request message for
+// [AdGroupAdService.MutateAdGroupAds][google.ads.googleads.v1.services.AdGroupAdService.MutateAdGroupAds].
 type MutateAdGroupAdsRequest struct {
 	// The ID of the customer whose ads are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

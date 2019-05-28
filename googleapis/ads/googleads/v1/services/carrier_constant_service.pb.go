@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [CarrierConstantService.GetCarrierConstant][google.ads.googleads.v1.services.CarrierConstantService.GetCarrierConstant].
+// Request message for
+// [CarrierConstantService.GetCarrierConstant][google.ads.googleads.v1.services.CarrierConstantService.GetCarrierConstant].
 type GetCarrierConstantRequest struct {
 	// Resource name of the carrier constant to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

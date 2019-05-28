@@ -26,10 +26,10 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // An ad group criterion simulation. Supported combinations of advertising
-// channel type, criterion types, simulation type, and simulation modification
+// channel type, criterion type, simulation type, and simulation modification
 // method are detailed below respectively.
 //
-// SEARCH  KEYWORDS  CPC_BID  UNIFORM
+// SEARCH  KEYWORD  CPC_BID  UNIFORM
 type AdGroupCriterionSimulation struct {
 	// The resource name of the ad group criterion simulation.
 	// Ad group criterion simulation resource names have the form:

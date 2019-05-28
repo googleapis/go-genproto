@@ -27,7 +27,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [CustomInterestService.GetCustomInterest][google.ads.googleads.v1.services.CustomInterestService.GetCustomInterest].
+// Request message for
+// [CustomInterestService.GetCustomInterest][google.ads.googleads.v1.services.CustomInterestService.GetCustomInterest].
 type GetCustomInterestRequest struct {
 	// The resource name of the custom interest to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -68,7 +69,8 @@ func (m *GetCustomInterestRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [CustomInterestService.MutateCustomInterests][google.ads.googleads.v1.services.CustomInterestService.MutateCustomInterests].
+// Request message for
+// [CustomInterestService.MutateCustomInterests][google.ads.googleads.v1.services.CustomInterestService.MutateCustomInterests].
 type MutateCustomInterestsRequest struct {
 	// The ID of the customer whose custom interests are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

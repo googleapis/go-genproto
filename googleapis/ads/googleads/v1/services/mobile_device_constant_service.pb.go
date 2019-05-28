@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [MobileDeviceConstantService.GetMobileDeviceConstant][google.ads.googleads.v1.services.MobileDeviceConstantService.GetMobileDeviceConstant].
+// Request message for
+// [MobileDeviceConstantService.GetMobileDeviceConstant][google.ads.googleads.v1.services.MobileDeviceConstantService.GetMobileDeviceConstant].
 type GetMobileDeviceConstantRequest struct {
 	// Resource name of the mobile device to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [FeedItemTargetService.GetFeedItemTarget][google.ads.googleads.v1.services.FeedItemTargetService.GetFeedItemTarget].
+// Request message for
+// [FeedItemTargetService.GetFeedItemTarget][google.ads.googleads.v1.services.FeedItemTargetService.GetFeedItemTarget].
 type GetFeedItemTargetRequest struct {
 	// The resource name of the feed item targets to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -66,7 +67,8 @@ func (m *GetFeedItemTargetRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [FeedItemTargetService.MutateFeedItemTargets][google.ads.googleads.v1.services.FeedItemTargetService.MutateFeedItemTargets].
+// Request message for
+// [FeedItemTargetService.MutateFeedItemTargets][google.ads.googleads.v1.services.FeedItemTargetService.MutateFeedItemTargets].
 type MutateFeedItemTargetsRequest struct {
 	// The ID of the customer whose feed item targets are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
