@@ -28,7 +28,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [CampaignService.GetCampaign][google.ads.googleads.v1.services.CampaignService.GetCampaign].
+// Request message for
+// [CampaignService.GetCampaign][google.ads.googleads.v1.services.CampaignService.GetCampaign].
 type GetCampaignRequest struct {
 	// The resource name of the campaign to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -69,7 +70,8 @@ func (m *GetCampaignRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [CampaignService.MutateCampaigns][google.ads.googleads.v1.services.CampaignService.MutateCampaigns].
+// Request message for
+// [CampaignService.MutateCampaigns][google.ads.googleads.v1.services.CampaignService.MutateCampaigns].
 type MutateCampaignsRequest struct {
 	// The ID of the customer whose campaigns are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

@@ -26,7 +26,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [MerchantCenterLinkService.ListMerchantCenterLinks][google.ads.googleads.v1.services.MerchantCenterLinkService.ListMerchantCenterLinks].
+// Request message for
+// [MerchantCenterLinkService.ListMerchantCenterLinks][google.ads.googleads.v1.services.MerchantCenterLinkService.ListMerchantCenterLinks].
 type ListMerchantCenterLinksRequest struct {
 	// The ID of the customer onto which to apply the Merchant Center link list
 	// operation.
@@ -68,7 +69,8 @@ func (m *ListMerchantCenterLinksRequest) GetCustomerId() string {
 	return ""
 }
 
-// Response message for [MerchantCenterLinkService.ListMerchantCenterLinks][google.ads.googleads.v1.services.MerchantCenterLinkService.ListMerchantCenterLinks].
+// Response message for
+// [MerchantCenterLinkService.ListMerchantCenterLinks][google.ads.googleads.v1.services.MerchantCenterLinkService.ListMerchantCenterLinks].
 type ListMerchantCenterLinksResponse struct {
 	// Merchant Center links available for the requested customer
 	MerchantCenterLinks  []*resources.MerchantCenterLink `protobuf:"bytes,1,rep,name=merchant_center_links,json=merchantCenterLinks,proto3" json:"merchant_center_links,omitempty"`
@@ -109,7 +111,8 @@ func (m *ListMerchantCenterLinksResponse) GetMerchantCenterLinks() []*resources.
 	return nil
 }
 
-// Request message for [MerchantCenterLinkService.GetMerchantCenterLink][google.ads.googleads.v1.services.MerchantCenterLinkService.GetMerchantCenterLink].
+// Request message for
+// [MerchantCenterLinkService.GetMerchantCenterLink][google.ads.googleads.v1.services.MerchantCenterLinkService.GetMerchantCenterLink].
 type GetMerchantCenterLinkRequest struct {
 	// Resource name of the Merchant Center link.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -150,7 +153,8 @@ func (m *GetMerchantCenterLinkRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [MerchantCenterLinkService.MutateMerchantCenterLink][google.ads.googleads.v1.services.MerchantCenterLinkService.MutateMerchantCenterLink].
+// Request message for
+// [MerchantCenterLinkService.MutateMerchantCenterLink][google.ads.googleads.v1.services.MerchantCenterLinkService.MutateMerchantCenterLink].
 type MutateMerchantCenterLinkRequest struct {
 	// The ID of the customer being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

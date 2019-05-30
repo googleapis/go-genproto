@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [AgeRangeViewService.GetAgeRangeView][google.ads.googleads.v1.services.AgeRangeViewService.GetAgeRangeView].
+// Request message for
+// [AgeRangeViewService.GetAgeRangeView][google.ads.googleads.v1.services.AgeRangeViewService.GetAgeRangeView].
 type GetAgeRangeViewRequest struct {
 	// The resource name of the age range view to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

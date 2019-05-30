@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [FeedPlaceholderViewService.GetFeedPlaceholderView][google.ads.googleads.v1.services.FeedPlaceholderViewService.GetFeedPlaceholderView].
+// Request message for
+// [FeedPlaceholderViewService.GetFeedPlaceholderView][google.ads.googleads.v1.services.FeedPlaceholderViewService.GetFeedPlaceholderView].
 type GetFeedPlaceholderViewRequest struct {
 	// The resource name of the feed placeholder view to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

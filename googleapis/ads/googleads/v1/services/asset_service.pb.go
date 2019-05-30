@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [AssetService.GetAsset][google.ads.googleads.v1.services.AssetService.GetAsset]
+// Request message for
+// [AssetService.GetAsset][google.ads.googleads.v1.services.AssetService.GetAsset]
 type GetAssetRequest struct {
 	// The resource name of the asset to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -66,7 +67,8 @@ func (m *GetAssetRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [AssetService.MutateAssets][google.ads.googleads.v1.services.AssetService.MutateAssets]
+// Request message for
+// [AssetService.MutateAssets][google.ads.googleads.v1.services.AssetService.MutateAssets]
 type MutateAssetsRequest struct {
 	// The ID of the customer whose assets are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
@@ -116,7 +118,9 @@ func (m *MutateAssetsRequest) GetOperations() []*AssetOperation {
 	return nil
 }
 
-// A single operation to create an asset.
+// A single operation to create an asset. Supported asset types are
+// YoutubeVideoAsset, MediaBundleAsset and ImageAsset. TextAsset should be
+// created with Ad inline.
 type AssetOperation struct {
 	// The mutate operation.
 	//

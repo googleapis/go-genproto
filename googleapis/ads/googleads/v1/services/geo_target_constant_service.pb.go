@@ -26,7 +26,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [GeoTargetConstantService.GetGeoTargetConstant][google.ads.googleads.v1.services.GeoTargetConstantService.GetGeoTargetConstant].
+// Request message for
+// [GeoTargetConstantService.GetGeoTargetConstant][google.ads.googleads.v1.services.GeoTargetConstantService.GetGeoTargetConstant].
 type GetGeoTargetConstantRequest struct {
 	// The resource name of the geo target constant to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -261,7 +262,8 @@ func (m *SuggestGeoTargetConstantsRequest_GeoTargets) GetGeoTargetConstants() []
 	return nil
 }
 
-// Response message for [GeoTargetConstantService.SuggestGeoTargetConstants][google.ads.googleads.v1.services.GeoTargetConstantService.SuggestGeoTargetConstants]
+// Response message for
+// [GeoTargetConstantService.SuggestGeoTargetConstants][google.ads.googleads.v1.services.GeoTargetConstantService.SuggestGeoTargetConstants]
 type SuggestGeoTargetConstantsResponse struct {
 	// Geo target constant suggestions.
 	GeoTargetConstantSuggestions []*GeoTargetConstantSuggestion `protobuf:"bytes,1,rep,name=geo_target_constant_suggestions,json=geoTargetConstantSuggestions,proto3" json:"geo_target_constant_suggestions,omitempty"`

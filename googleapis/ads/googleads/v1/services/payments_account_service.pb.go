@@ -66,7 +66,8 @@ func (m *ListPaymentsAccountsRequest) GetCustomerId() string {
 	return ""
 }
 
-// Response message for [PaymentsAccountService.ListPaymentsAccounts][google.ads.googleads.v1.services.PaymentsAccountService.ListPaymentsAccounts].
+// Response message for
+// [PaymentsAccountService.ListPaymentsAccounts][google.ads.googleads.v1.services.PaymentsAccountService.ListPaymentsAccounts].
 type ListPaymentsAccountsResponse struct {
 	// The list of accessible Payments accounts.
 	PaymentsAccounts     []*resources.PaymentsAccount `protobuf:"bytes,1,rep,name=payments_accounts,json=paymentsAccounts,proto3" json:"payments_accounts,omitempty"`

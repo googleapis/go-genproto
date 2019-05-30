@@ -28,7 +28,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [AdParameterService.GetAdParameter][google.ads.googleads.v1.services.AdParameterService.GetAdParameter]
+// Request message for
+// [AdParameterService.GetAdParameter][google.ads.googleads.v1.services.AdParameterService.GetAdParameter]
 type GetAdParameterRequest struct {
 	// The resource name of the ad parameter to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -69,7 +70,8 @@ func (m *GetAdParameterRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [AdParameterService.MutateAdParameters][google.ads.googleads.v1.services.AdParameterService.MutateAdParameters]
+// Request message for
+// [AdParameterService.MutateAdParameters][google.ads.googleads.v1.services.AdParameterService.MutateAdParameters]
 type MutateAdParametersRequest struct {
 	// The ID of the customer whose ad parameters are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

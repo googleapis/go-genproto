@@ -27,7 +27,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [FeedMappingService.GetFeedMapping][google.ads.googleads.v1.services.FeedMappingService.GetFeedMapping].
+// Request message for
+// [FeedMappingService.GetFeedMapping][google.ads.googleads.v1.services.FeedMappingService.GetFeedMapping].
 type GetFeedMappingRequest struct {
 	// The resource name of the feed mapping to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -68,7 +69,8 @@ func (m *GetFeedMappingRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [FeedMappingService.MutateFeedMappings][google.ads.googleads.v1.services.FeedMappingService.MutateFeedMappings].
+// Request message for
+// [FeedMappingService.MutateFeedMappings][google.ads.googleads.v1.services.FeedMappingService.MutateFeedMappings].
 type MutateFeedMappingsRequest struct {
 	// The ID of the customer whose feed mappings are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

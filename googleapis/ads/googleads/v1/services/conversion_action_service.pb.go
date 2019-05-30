@@ -28,7 +28,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [ConversionActionService.GetConversionAction][google.ads.googleads.v1.services.ConversionActionService.GetConversionAction].
+// Request message for
+// [ConversionActionService.GetConversionAction][google.ads.googleads.v1.services.ConversionActionService.GetConversionAction].
 type GetConversionActionRequest struct {
 	// The resource name of the conversion action to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -69,7 +70,8 @@ func (m *GetConversionActionRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [ConversionActionService.MutateConversionActions][google.ads.googleads.v1.services.ConversionActionService.MutateConversionActions].
+// Request message for
+// [ConversionActionService.MutateConversionActions][google.ads.googleads.v1.services.ConversionActionService.MutateConversionActions].
 type MutateConversionActionsRequest struct {
 	// The ID of the customer whose conversion actions are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
@@ -248,7 +250,8 @@ func (*ConversionActionOperation) XXX_OneofWrappers() []interface{} {
 	}
 }
 
-// Response message for [ConversionActionService.MutateConversionActions][google.ads.googleads.v1.services.ConversionActionService.MutateConversionActions].
+// Response message for
+// [ConversionActionService.MutateConversionActions][google.ads.googleads.v1.services.ConversionActionService.MutateConversionActions].
 type MutateConversionActionsResponse struct {
 	// Errors that pertain to operation failures in the partial failure mode.
 	// Returned only when partial_failure = true and all errors occur inside the

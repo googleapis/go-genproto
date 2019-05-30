@@ -28,7 +28,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [SharedSetService.GetSharedSet][google.ads.googleads.v1.services.SharedSetService.GetSharedSet].
+// Request message for
+// [SharedSetService.GetSharedSet][google.ads.googleads.v1.services.SharedSetService.GetSharedSet].
 type GetSharedSetRequest struct {
 	// The resource name of the shared set to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -69,7 +70,8 @@ func (m *GetSharedSetRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [SharedSetService.MutateSharedSets][google.ads.googleads.v1.services.SharedSetService.MutateSharedSets].
+// Request message for
+// [SharedSetService.MutateSharedSets][google.ads.googleads.v1.services.SharedSetService.MutateSharedSets].
 type MutateSharedSetsRequest struct {
 	// The ID of the customer whose shared sets are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

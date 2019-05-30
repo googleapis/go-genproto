@@ -29,7 +29,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [RecommendationService.GetRecommendation][google.ads.googleads.v1.services.RecommendationService.GetRecommendation].
+// Request message for
+// [RecommendationService.GetRecommendation][google.ads.googleads.v1.services.RecommendationService.GetRecommendation].
 type GetRecommendationRequest struct {
 	// The resource name of the recommendation to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -70,7 +71,8 @@ func (m *GetRecommendationRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [RecommendationService.ApplyRecommendation][google.ads.googleads.v1.services.RecommendationService.ApplyRecommendation].
+// Request message for
+// [RecommendationService.ApplyRecommendation][google.ads.googleads.v1.services.RecommendationService.ApplyRecommendation].
 type ApplyRecommendationRequest struct {
 	// The ID of the customer with the recommendation.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
@@ -621,7 +623,7 @@ func (m *ApplyRecommendationOperation_CallExtensionParameters) GetCallExtensions
 	return nil
 }
 
-// Parameters to use when applying call extension recommendation.
+// Parameters to use when applying sitelink extension recommendation.
 type ApplyRecommendationOperation_SitelinkExtensionParameters struct {
 	// Sitelink extensions to be added. This is a required field.
 	SitelinkExtensions   []*common.SitelinkFeedItem `protobuf:"bytes,1,rep,name=sitelink_extensions,json=sitelinkExtensions,proto3" json:"sitelink_extensions,omitempty"`
@@ -712,7 +714,8 @@ func (m *ApplyRecommendationOperation_MoveUnusedBudgetParameters) GetBudgetMicro
 	return nil
 }
 
-// Response message for [RecommendationService.ApplyRecommendation][google.ads.googleads.v1.services.RecommendationService.ApplyRecommendation].
+// Response message for
+// [RecommendationService.ApplyRecommendation][google.ads.googleads.v1.services.RecommendationService.ApplyRecommendation].
 type ApplyRecommendationResponse struct {
 	// Results of operations to apply recommendations.
 	Results []*ApplyRecommendationResult `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
@@ -806,7 +809,8 @@ func (m *ApplyRecommendationResult) GetResourceName() string {
 	return ""
 }
 
-// Request message for [RecommendationService.DismissRecommendation][google.ads.googleads.v1.services.RecommendationService.DismissRecommendation].
+// Request message for
+// [RecommendationService.DismissRecommendation][google.ads.googleads.v1.services.RecommendationService.DismissRecommendation].
 type DismissRecommendationRequest struct {
 	// The ID of the customer with the recommendation.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
@@ -915,7 +919,8 @@ func (m *DismissRecommendationRequest_DismissRecommendationOperation) GetResourc
 	return ""
 }
 
-// Response message for [RecommendationService.DismissRecommendation][google.ads.googleads.v1.services.RecommendationService.DismissRecommendation].
+// Response message for
+// [RecommendationService.DismissRecommendation][google.ads.googleads.v1.services.RecommendationService.DismissRecommendation].
 type DismissRecommendationResponse struct {
 	// Results of operations to dismiss recommendations.
 	Results []*DismissRecommendationResponse_DismissRecommendationResult `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`

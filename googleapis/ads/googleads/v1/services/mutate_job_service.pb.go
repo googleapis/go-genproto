@@ -109,7 +109,8 @@ func (m *CreateMutateJobResponse) GetResourceName() string {
 	return ""
 }
 
-// Request message for [MutateJobService.GetMutateJob][google.ads.googleads.v1.services.MutateJobService.GetMutateJob]
+// Request message for
+// [MutateJobService.GetMutateJob][google.ads.googleads.v1.services.MutateJobService.GetMutateJob]
 type GetMutateJobRequest struct {
 	// The resource name of the MutateJob to get.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -150,7 +151,8 @@ func (m *GetMutateJobRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [MutateJobService.RunMutateJob][google.ads.googleads.v1.services.MutateJobService.RunMutateJob]
+// Request message for
+// [MutateJobService.RunMutateJob][google.ads.googleads.v1.services.MutateJobService.RunMutateJob]
 type RunMutateJobRequest struct {
 	// The resource name of the MutateJob to run.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -191,7 +193,8 @@ func (m *RunMutateJobRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [MutateJobService.AddMutateJobOperations][google.ads.googleads.v1.services.MutateJobService.AddMutateJobOperations]
+// Request message for
+// [MutateJobService.AddMutateJobOperations][google.ads.googleads.v1.services.MutateJobService.AddMutateJobOperations]
 type AddMutateJobOperationsRequest struct {
 	// The resource name of the MutateJob.
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -263,7 +266,8 @@ func (m *AddMutateJobOperationsRequest) GetMutateOperations() []*MutateOperation
 	return nil
 }
 
-// Response message for [MutateJobService.AddMutateJobOperations][google.ads.googleads.v1.services.MutateJobService.AddMutateJobOperations]
+// Response message for
+// [MutateJobService.AddMutateJobOperations][google.ads.googleads.v1.services.MutateJobService.AddMutateJobOperations]
 type AddMutateJobOperationsResponse struct {
 	// The total number of operations added so far for this job.
 	TotalOperations int64 `protobuf:"varint,1,opt,name=total_operations,json=totalOperations,proto3" json:"total_operations,omitempty"`
@@ -315,7 +319,8 @@ func (m *AddMutateJobOperationsResponse) GetNextSequenceToken() string {
 	return ""
 }
 
-// Request message for [MutateJobService.ListMutateJobResults][google.ads.googleads.v1.services.MutateJobService.ListMutateJobResults].
+// Request message for
+// [MutateJobService.ListMutateJobResults][google.ads.googleads.v1.services.MutateJobService.ListMutateJobResults].
 type ListMutateJobResultsRequest struct {
 	// The resource name of the MutateJob whose results are being listed.
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -379,7 +384,8 @@ func (m *ListMutateJobResultsRequest) GetPageSize() int32 {
 	return 0
 }
 
-// Response message for [MutateJobService.ListMutateJobResults][google.ads.googleads.v1.services.MutateJobService.ListMutateJobResults].
+// Response message for
+// [MutateJobService.ListMutateJobResults][google.ads.googleads.v1.services.MutateJobService.ListMutateJobResults].
 type ListMutateJobResultsResponse struct {
 	// The list of rows that matched the query.
 	Results []*MutateJobResult `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`

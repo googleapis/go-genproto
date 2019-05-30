@@ -28,7 +28,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [CampaignBidModifierService.GetCampaignBidModifier][google.ads.googleads.v1.services.CampaignBidModifierService.GetCampaignBidModifier].
+// Request message for
+// [CampaignBidModifierService.GetCampaignBidModifier][google.ads.googleads.v1.services.CampaignBidModifierService.GetCampaignBidModifier].
 type GetCampaignBidModifierRequest struct {
 	// The resource name of the campaign bid modifier to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

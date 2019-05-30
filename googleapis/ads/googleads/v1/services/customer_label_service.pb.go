@@ -27,7 +27,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [CustomerLabelService.GetCustomerLabel][google.ads.googleads.v1.services.CustomerLabelService.GetCustomerLabel].
+// Request message for
+// [CustomerLabelService.GetCustomerLabel][google.ads.googleads.v1.services.CustomerLabelService.GetCustomerLabel].
 type GetCustomerLabelRequest struct {
 	// The resource name of the customer-label relationship to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -68,7 +69,8 @@ func (m *GetCustomerLabelRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [CustomerLabelService.MutateCustomerLabels][google.ads.googleads.v1.services.CustomerLabelService.MutateCustomerLabels].
+// Request message for
+// [CustomerLabelService.MutateCustomerLabels][google.ads.googleads.v1.services.CustomerLabelService.MutateCustomerLabels].
 type MutateCustomerLabelsRequest struct {
 	// ID of the customer whose customer-label relationships are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

@@ -27,7 +27,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [MediaFileService.GetMediaFile][google.ads.googleads.v1.services.MediaFileService.GetMediaFile]
+// Request message for
+// [MediaFileService.GetMediaFile][google.ads.googleads.v1.services.MediaFileService.GetMediaFile]
 type GetMediaFileRequest struct {
 	// The resource name of the media file to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -68,7 +69,8 @@ func (m *GetMediaFileRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [MediaFileService.MutateMediaFiles][google.ads.googleads.v1.services.MediaFileService.MutateMediaFiles]
+// Request message for
+// [MediaFileService.MutateMediaFiles][google.ads.googleads.v1.services.MediaFileService.MutateMediaFiles]
 type MutateMediaFilesRequest struct {
 	// The ID of the customer whose media files are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

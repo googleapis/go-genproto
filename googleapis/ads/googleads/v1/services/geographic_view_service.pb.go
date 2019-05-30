@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [GeographicViewService.GetGeographicView][google.ads.googleads.v1.services.GeographicViewService.GetGeographicView].
+// Request message for
+// [GeographicViewService.GetGeographicView][google.ads.googleads.v1.services.GeographicViewService.GetGeographicView].
 type GetGeographicViewRequest struct {
 	// The resource name of the geographic view to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

@@ -29,7 +29,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [AdGroupCriterionService.GetAdGroupCriterion][google.ads.googleads.v1.services.AdGroupCriterionService.GetAdGroupCriterion].
+// Request message for
+// [AdGroupCriterionService.GetAdGroupCriterion][google.ads.googleads.v1.services.AdGroupCriterionService.GetAdGroupCriterion].
 type GetAdGroupCriterionRequest struct {
 	// The resource name of the criterion to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -70,7 +71,8 @@ func (m *GetAdGroupCriterionRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [AdGroupCriterionService.MutateAdGroupCriteria][google.ads.googleads.v1.services.AdGroupCriterionService.MutateAdGroupCriteria].
+// Request message for
+// [AdGroupCriterionService.MutateAdGroupCriteria][google.ads.googleads.v1.services.AdGroupCriterionService.MutateAdGroupCriteria].
 type MutateAdGroupCriteriaRequest struct {
 	// ID of the customer whose criteria are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

@@ -27,7 +27,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [CampaignSharedSetService.GetCampaignSharedSet][google.ads.googleads.v1.services.CampaignSharedSetService.GetCampaignSharedSet].
+// Request message for
+// [CampaignSharedSetService.GetCampaignSharedSet][google.ads.googleads.v1.services.CampaignSharedSetService.GetCampaignSharedSet].
 type GetCampaignSharedSetRequest struct {
 	// The resource name of the campaign shared set to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -68,7 +69,8 @@ func (m *GetCampaignSharedSetRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [CampaignSharedSetService.MutateCampaignSharedSets][google.ads.googleads.v1.services.CampaignSharedSetService.MutateCampaignSharedSets].
+// Request message for
+// [CampaignSharedSetService.MutateCampaignSharedSets][google.ads.googleads.v1.services.CampaignSharedSetService.MutateCampaignSharedSets].
 type MutateCampaignSharedSetsRequest struct {
 	// The ID of the customer whose campaign shared sets are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`

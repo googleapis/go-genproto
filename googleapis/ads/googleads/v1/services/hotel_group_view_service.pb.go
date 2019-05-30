@@ -25,7 +25,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [HotelGroupViewService.GetHotelGroupView][google.ads.googleads.v1.services.HotelGroupViewService.GetHotelGroupView].
+// Request message for
+// [HotelGroupViewService.GetHotelGroupView][google.ads.googleads.v1.services.HotelGroupViewService.GetHotelGroupView].
 type GetHotelGroupViewRequest struct {
 	// Resource name of the Hotel Group View to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`

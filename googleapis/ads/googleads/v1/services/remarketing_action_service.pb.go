@@ -28,7 +28,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for [RemarketingActionService.GetRemarketingAction][google.ads.googleads.v1.services.RemarketingActionService.GetRemarketingAction].
+// Request message for
+// [RemarketingActionService.GetRemarketingAction][google.ads.googleads.v1.services.RemarketingActionService.GetRemarketingAction].
 type GetRemarketingActionRequest struct {
 	// The resource name of the remarketing action to fetch.
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
@@ -69,7 +70,8 @@ func (m *GetRemarketingActionRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [RemarketingActionService.MutateRemarketingActions][google.ads.googleads.v1.services.RemarketingActionService.MutateRemarketingActions].
+// Request message for
+// [RemarketingActionService.MutateRemarketingActions][google.ads.googleads.v1.services.RemarketingActionService.MutateRemarketingActions].
 type MutateRemarketingActionsRequest struct {
 	// The ID of the customer whose remarketing actions are being modified.
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
