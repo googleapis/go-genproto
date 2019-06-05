@@ -120,16 +120,25 @@ type CompleteQueryRequest struct {
 	// For more information, see
 	// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
 	//
-	// For [CompletionType.JOB_TITLE][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.JOB_TITLE] type, only open jobs with the same
-	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes] are returned.
+	// For
+	// [CompletionType.JOB_TITLE][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.JOB_TITLE]
+	// type, only open jobs with the same
+	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes]
+	// are returned.
 	//
-	// For [CompletionType.COMPANY_NAME][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMPANY_NAME] type,
-	// only companies having open jobs with the same [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes] are
-	// returned.
+	// For
+	// [CompletionType.COMPANY_NAME][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMPANY_NAME]
+	// type, only companies having open jobs with the same
+	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes]
+	// are returned.
 	//
-	// For [CompletionType.COMBINED][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMBINED] type, only open jobs with the same
-	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes] or companies having open jobs with the same
-	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes] are returned.
+	// For
+	// [CompletionType.COMBINED][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMBINED]
+	// type, only open jobs with the same
+	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes]
+	// or companies having open jobs with the same
+	// [language_codes][google.cloud.talent.v4beta1.CompleteQueryRequest.language_codes]
+	// are returned.
 	//
 	// The maximum number of allowed characters is 255.
 	LanguageCodes []string `protobuf:"bytes,3,rep,name=language_codes,json=languageCodes,proto3" json:"language_codes,omitempty"`
@@ -152,11 +161,13 @@ type CompleteQueryRequest struct {
 	Company string `protobuf:"bytes,5,opt,name=company,proto3" json:"company,omitempty"`
 	// Optional.
 	//
-	// The scope of the completion. The defaults is [CompletionScope.PUBLIC][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionScope.PUBLIC].
+	// The scope of the completion. The defaults is
+	// [CompletionScope.PUBLIC][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionScope.PUBLIC].
 	Scope CompleteQueryRequest_CompletionScope `protobuf:"varint,6,opt,name=scope,proto3,enum=google.cloud.talent.v4beta1.CompleteQueryRequest_CompletionScope" json:"scope,omitempty"`
 	// Optional.
 	//
-	// The completion topic. The default is [CompletionType.COMBINED][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMBINED].
+	// The completion topic. The default is
+	// [CompletionType.COMBINED][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMBINED].
 	Type                 CompleteQueryRequest_CompletionType `protobuf:"varint,7,opt,name=type,proto3,enum=google.cloud.talent.v4beta1.CompleteQueryRequest_CompletionType" json:"type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
 	XXX_unrecognized     []byte                              `json:"-"`
@@ -298,7 +309,8 @@ type CompleteQueryResponse_CompletionResult struct {
 	Suggestion string `protobuf:"bytes,1,opt,name=suggestion,proto3" json:"suggestion,omitempty"`
 	// The completion topic.
 	Type CompleteQueryRequest_CompletionType `protobuf:"varint,2,opt,name=type,proto3,enum=google.cloud.talent.v4beta1.CompleteQueryRequest_CompletionType" json:"type,omitempty"`
-	// The URI of the company image for [CompletionType.COMPANY_NAME][].
+	// The URI of the company image for
+	// [COMPANY_NAME][google.cloud.talent.v4beta1.CompleteQueryRequest.CompletionType.COMPANY_NAME].
 	ImageUri             string   `protobuf:"bytes,3,opt,name=image_uri,json=imageUri,proto3" json:"image_uri,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

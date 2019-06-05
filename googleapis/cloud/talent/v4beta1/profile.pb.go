@@ -83,9 +83,10 @@ const (
 	// A virtual telephone number is a number that can be routed to another
 	// number and managed by the user via Web, SMS, IVR, and so on.  It is
 	// associated with a particular person, and may be routed to either a MOBILE
-	// or LANDLINE number. The phone usage (see ContactInfoUsage above) should
-	// be set to PERSONAL for these phone types. Some more information can be
-	// found here: http://en.wikipedia.org/wiki/Personal_Numbers
+	// or LANDLINE number. The [phone
+	// usage][google.cloud.talent.v4beta1.ContactInfoUsage] should be set to
+	// PERSONAL for these phone types. Some more information can be found here:
+	// http://en.wikipedia.org/wiki/Personal_Numbers
 	Phone_VIRTUAL Phone_PhoneType = 7
 	// Voice over IP numbers. This includes TSoIP (Telephony Service over IP).
 	Phone_VOIP Phone_PhoneType = 8
@@ -129,8 +130,9 @@ func (Phone_PhoneType) EnumDescriptor() ([]byte, []int) {
 }
 
 // A resource that represents the profile for a job candidate (also referred to
-// as a "single-source profile"). A profile belongs to a [Company][google.cloud.talent.v4beta1.Company], which is
-// the company/organization that owns the profile.
+// as a "single-source profile"). A profile belongs to a
+// [Company][google.cloud.talent.v4beta1.Company], which is the
+// company/organization that owns the profile.
 type Profile struct {
 	// Required during profile update.
 	//
@@ -173,8 +175,9 @@ type Profile struct {
 	// a client has a candidate with two profiles, where one was created recently
 	// and the other one was created 5 years ago. These two profiles may be very
 	// different. The clients can create the first profile and get a generated
-	// [group_id][google.cloud.talent.v4beta1.Profile.group_id], and assign it when the second profile is created,
-	// indicating these two profiles are referring to the same candidate.
+	// [group_id][google.cloud.talent.v4beta1.Profile.group_id], and assign it
+	// when the second profile is created, indicating these two profiles are
+	// referring to the same candidate.
 	GroupId string `protobuf:"bytes,5,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
 	// Optional.
 	//
@@ -216,8 +219,12 @@ type Profile struct {
 	PersonalUris []*PersonalUri `protobuf:"bytes,15,rep,name=personal_uris,json=personalUris,proto3" json:"personal_uris,omitempty"`
 	// Optional.
 	//
-	// Available contact information besides [addresses][google.cloud.talent.v4beta1.Profile.addresses], [email_addresses][google.cloud.talent.v4beta1.Profile.email_addresses],
-	// [phone_numbers][google.cloud.talent.v4beta1.Profile.phone_numbers] and [personal_uris][google.cloud.talent.v4beta1.Profile.personal_uris]. For example, Hang-out, Skype.
+	// Available contact information besides
+	// [addresses][google.cloud.talent.v4beta1.Profile.addresses],
+	// [email_addresses][google.cloud.talent.v4beta1.Profile.email_addresses],
+	// [phone_numbers][google.cloud.talent.v4beta1.Profile.phone_numbers] and
+	// [personal_uris][google.cloud.talent.v4beta1.Profile.personal_uris]. For
+	// example, Hang-out, Skype.
 	AdditionalContactInfo []*AdditionalContactInfo `protobuf:"bytes,16,rep,name=additional_contact_info,json=additionalContactInfo,proto3" json:"additional_contact_info,omitempty"`
 	// Optional.
 	//
@@ -230,8 +237,10 @@ type Profile struct {
 	// change is.
 	// For example, only job title is changed from "software engineer" to "senior
 	// software engineer".
-	// * Provide [EmploymentRecord.is_current][google.cloud.talent.v4beta1.EmploymentRecord.is_current] for the current employment if
-	// possible. If not, it's inferred from user inputs.
+	// * Provide
+	// [EmploymentRecord.is_current][google.cloud.talent.v4beta1.EmploymentRecord.is_current]
+	// for the current employment if possible. If not, it's inferred from user
+	// inputs.
 	EmploymentRecords []*EmploymentRecord `protobuf:"bytes,17,rep,name=employment_records,json=employmentRecords,proto3" json:"employment_records,omitempty"`
 	// Optional.
 	//
@@ -243,8 +252,10 @@ type Profile struct {
 	// * List each education type separately, no matter how minor the change is.
 	// For example, the profile contains the education experience from the same
 	// school but different degrees.
-	// * Provide [EducationRecord.is_current][google.cloud.talent.v4beta1.EducationRecord.is_current] for the current education if
-	// possible. If not, it's inferred from user inputs.
+	// * Provide
+	// [EducationRecord.is_current][google.cloud.talent.v4beta1.EducationRecord.is_current]
+	// for the current education if possible. If not, it's inferred from user
+	// inputs.
 	EducationRecords []*EducationRecord `protobuf:"bytes,18,rep,name=education_records,json=educationRecords,proto3" json:"education_records,omitempty"`
 	// Optional.
 	//
@@ -255,7 +266,8 @@ type Profile struct {
 	//
 	// The individual or collaborative activities which the candidate has
 	// participated in, for example, open-source projects, class assignments that
-	// aren't listed in [employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
+	// aren't listed in
+	// [employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
 	Activities []*Activity `protobuf:"bytes,20,rep,name=activities,proto3" json:"activities,omitempty"`
 	// Optional.
 	//
@@ -277,7 +289,8 @@ type Profile struct {
 	//
 	// A map of fields to hold both filterable and non-filterable custom profile
 	// attributes that aren't covered by the provided structured fields. See
-	// [CustomAttribute][google.cloud.talent.v4beta1.CustomAttribute] for more details.
+	// [CustomAttribute][google.cloud.talent.v4beta1.CustomAttribute] for more
+	// details.
 	//
 	// At most 100 filterable and at most 100 unfilterable keys are supported. If
 	// limit is exceeded, an error is thrown. Custom attributes are `unfilterable`
@@ -297,7 +310,8 @@ type Profile struct {
 	// Output only. Indicates if the profile is fully processed and searchable.
 	Processed bool `protobuf:"varint,27,opt,name=processed,proto3" json:"processed,omitempty"`
 	// Output only. Keyword snippet shows how the search result is related to a
-	// search query.  This is only returned in [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse].
+	// search query.  This is only returned in
+	// [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse].
 	KeywordSnippet       string   `protobuf:"bytes,28,opt,name=keyword_snippet,json=keywordSnippet,proto3" json:"keyword_snippet,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -522,11 +536,14 @@ func (m *Profile) GetKeywordSnippet() string {
 type Resume struct {
 	// Optional.
 	//
-	// Users can create a profile with only this field field, if [resume_type][google.cloud.talent.v4beta1.Resume.resume_type]
-	// is [HRXML][]. For example, the API parses this field and creates a profile
-	// with all structured fields populated, for example. [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord],
-	// [EducationRecord][google.cloud.talent.v4beta1.EducationRecord], and so on. An error is thrown if this field cannot be
-	// parsed.
+	// Users can create a profile with only this field field, if
+	// [resume_type][google.cloud.talent.v4beta1.Resume.resume_type] is
+	// [HRXML][google.cloud.talent.v4beta1.Resume.ResumeType.HRXML]. For example,
+	// the API parses this field and creates a profile with all structured fields
+	// populated, for example.
+	// [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord],
+	// [EducationRecord][google.cloud.talent.v4beta1.EducationRecord], and so on.
+	// An error is thrown if this field cannot be parsed.
 	//
 	// If this field is provided during profile creation or update,
 	// any other structured data provided in the profile is ignored. The
@@ -534,7 +551,8 @@ type Resume struct {
 	StructuredResume string `protobuf:"bytes,1,opt,name=structured_resume,json=structuredResume,proto3" json:"structured_resume,omitempty"`
 	// Optional.
 	//
-	// The format of [structured_resume][google.cloud.talent.v4beta1.Resume.structured_resume].
+	// The format of
+	// [structured_resume][google.cloud.talent.v4beta1.Resume.structured_resume].
 	ResumeType           Resume_ResumeType `protobuf:"varint,2,opt,name=resume_type,json=resumeType,proto3,enum=google.cloud.talent.v4beta1.Resume_ResumeType" json:"resume_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
@@ -582,8 +600,9 @@ func (m *Resume) GetResumeType() Resume_ResumeType {
 
 // Resource that represents the name of a person.
 type PersonName struct {
-	// The name of a person. It can be one of [formatted_name][] or
-	// [structured_name][].
+	// The name of a person. It can be one of
+	// [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name] or
+	// [structured_name][google.cloud.talent.v4beta1.PersonName.structured_name].
 	//
 	// Types that are valid to be assigned to PersonName:
 	//	*PersonName_FormattedName
@@ -591,7 +610,8 @@ type PersonName struct {
 	PersonName isPersonName_PersonName `protobuf_oneof:"person_name"`
 	// Optional.
 	//
-	// Preferred name for the person. This field is ignored if [structured_name][google.cloud.talent.v4beta1.PersonName.structured_name]
+	// Preferred name for the person. This field is ignored if
+	// [structured_name][google.cloud.talent.v4beta1.PersonName.structured_name]
 	// is provided.
 	//
 	// Number of characters allowed is 100.
@@ -684,7 +704,9 @@ type PersonName_PersonStructuredName struct {
 	//
 	// Given/first name.
 	//
-	// It's derived from [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name] if not provided.
+	// It's derived from
+	// [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name]
+	// if not provided.
 	//
 	// Number of characters allowed is 100.
 	GivenName string `protobuf:"bytes,1,opt,name=given_name,json=givenName,proto3" json:"given_name,omitempty"`
@@ -698,7 +720,9 @@ type PersonName_PersonStructuredName struct {
 	//
 	// Middle initial.
 	//
-	// It's derived from [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name] if not provided.
+	// It's derived from
+	// [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name]
+	// if not provided.
 	//
 	// Number of characters allowed is 20.
 	MiddleInitial string `protobuf:"bytes,2,opt,name=middle_initial,json=middleInitial,proto3" json:"middle_initial,omitempty"`
@@ -706,7 +730,9 @@ type PersonName_PersonStructuredName struct {
 	//
 	// Family/last name.
 	//
-	// It's derived from [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name] if not provided.
+	// It's derived from
+	// [formatted_name][google.cloud.talent.v4beta1.PersonName.formatted_name]
+	// if not provided.
 	//
 	// Number of characters allowed is 100.
 	FamilyName string `protobuf:"bytes,3,opt,name=family_name,json=familyName,proto3" json:"family_name,omitempty"`
@@ -800,8 +826,10 @@ type Address struct {
 	//
 	// The usage of the address. For example, SCHOOL, WORK, PERSONAL.
 	Usage ContactInfoUsage `protobuf:"varint,1,opt,name=usage,proto3,enum=google.cloud.talent.v4beta1.ContactInfoUsage" json:"usage,omitempty"`
-	// The address of a person. It can be one of [unstructured_address][] or
-	// [structured_address][].
+	// The address of a person. It can be one of
+	// [unstructured_address][google.cloud.talent.v4beta1.Address.unstructured_address]
+	// or
+	// [structured_address][google.cloud.talent.v4beta1.Address.structured_address].
 	//
 	// Types that are valid to be assigned to Address:
 	//	*Address_UnstructuredAddress
@@ -1214,17 +1242,23 @@ type EmploymentRecord struct {
 	//
 	// If this employment is current.
 	IsCurrent *wrappers.BoolValue `protobuf:"bytes,10,opt,name=is_current,json=isCurrent,proto3" json:"is_current,omitempty"`
-	// Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-	// to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-	// search query.
+	// Output only. The job title snippet shows how the
+	// [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+	// related to a search query. It's empty if the
+	// [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+	// related to the search query.
 	JobTitleSnippet string `protobuf:"bytes,11,opt,name=job_title_snippet,json=jobTitleSnippet,proto3" json:"job_title_snippet,omitempty"`
-	// Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-	// is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-	// related to the search query.
+	// Output only. The job description snippet shows how the
+	// [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+	// is related to a search query. It's empty if the
+	// [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+	// isn't related to the search query.
 	JobDescriptionSnippet string `protobuf:"bytes,12,opt,name=job_description_snippet,json=jobDescriptionSnippet,proto3" json:"job_description_snippet,omitempty"`
-	// Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-	// related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-	// related to the search query.
+	// Output only. The employer name snippet shows how the
+	// [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+	// is related to a search query. It's empty if the
+	// [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+	// isn't related to the search query.
 	EmployerNameSnippet  string   `protobuf:"bytes,13,opt,name=employer_name_snippet,json=employerNameSnippet,proto3" json:"employer_name_snippet,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1373,8 +1407,10 @@ type EducationRecord struct {
 	//
 	// The physical address of the education institution.
 	Address *Address `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
-	// The degree information. It can be one of [degree_description][] or
-	// [structured_degree][].
+	// The degree information. It can be one of
+	// [degree_description][google.cloud.talent.v4beta1.EducationRecord.degree_description]
+	// or
+	// [structured_degree][google.cloud.talent.v4beta1.EducationRecord.structured_degree].
 	//
 	// Types that are valid to be assigned to Degree:
 	//	*EducationRecord_DegreeDescription
@@ -1390,13 +1426,17 @@ type EducationRecord struct {
 	//
 	// If this education is current.
 	IsCurrent *wrappers.BoolValue `protobuf:"bytes,9,opt,name=is_current,json=isCurrent,proto3" json:"is_current,omitempty"`
-	// Output only. The school name snippet shows how the [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
+	// Output only. The school name snippet shows how the
+	// [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
 	// related to a search query in search result. It's empty if the
-	// [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] isn't related to the search query.
-	SchoolNameSnippet string `protobuf:"bytes,10,opt,name=school_name_snippet,json=schoolNameSnippet,proto3" json:"school_name_snippet,omitempty"`
-	// Output only. The job description snippet shows how the [degree][google.cloud.talent.v4beta1.degree] is
-	// related to a search query in search result. It's empty if the [degree][google.cloud.talent.v4beta1.degree]
+	// [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name]
 	// isn't related to the search query.
+	SchoolNameSnippet string `protobuf:"bytes,10,opt,name=school_name_snippet,json=schoolNameSnippet,proto3" json:"school_name_snippet,omitempty"`
+	// Output only. The job description snippet shows how the
+	// [Degree][google.cloud.talent.v4beta1.Degree] is related to a search query
+	// in search result. It's empty if the
+	// [Degree][google.cloud.talent.v4beta1.Degree] isn't related to the search
+	// query.
 	DegreeSnippet        string   `protobuf:"bytes,11,opt,name=degree_snippet,json=degreeSnippet,proto3" json:"degree_snippet,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1649,17 +1689,23 @@ type Activity struct {
 	//
 	// A list of skills used in this activity.
 	SkillsUsed []*Skill `protobuf:"bytes,7,rep,name=skills_used,json=skillsUsed,proto3" json:"skills_used,omitempty"`
-	// Output only. Activity name snippet shows how the [display_name][google.cloud.talent.v4beta1.Activity.display_name] is
-	// related to a search query. It's empty if the [display_name][google.cloud.talent.v4beta1.Activity.display_name] isn't related
-	// to the search query.
+	// Output only. Activity name snippet shows how the
+	// [display_name][google.cloud.talent.v4beta1.Activity.display_name] is
+	// related to a search query. It's empty if the
+	// [display_name][google.cloud.talent.v4beta1.Activity.display_name] isn't
+	// related to the search query.
 	ActivityNameSnippet string `protobuf:"bytes,8,opt,name=activity_name_snippet,json=activityNameSnippet,proto3" json:"activity_name_snippet,omitempty"`
 	// Output only. Activity description snippet shows how the
-	// [description][google.cloud.talent.v4beta1.Activity.description] is related to a search query. It's empty if the
-	// [description][google.cloud.talent.v4beta1.Activity.description] isn't related to the search query.
+	// [description][google.cloud.talent.v4beta1.Activity.description] is related
+	// to a search query. It's empty if the
+	// [description][google.cloud.talent.v4beta1.Activity.description] isn't
+	// related to the search query.
 	ActivityDescriptionSnippet string `protobuf:"bytes,9,opt,name=activity_description_snippet,json=activityDescriptionSnippet,proto3" json:"activity_description_snippet,omitempty"`
 	// Output only. Skill used snippet shows how the corresponding
-	// [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related to a search query. It's empty if the
-	// corresponding [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not related to the search query.
+	// [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related
+	// to a search query. It's empty if the corresponding
+	// [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not
+	// related to the search query.
 	SkillsUsedSnippet    []string `protobuf:"bytes,10,rep,name=skills_used_snippet,json=skillsUsedSnippet,proto3" json:"skills_used_snippet,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
