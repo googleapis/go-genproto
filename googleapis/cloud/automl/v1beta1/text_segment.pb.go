@@ -23,7 +23,6 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A contiguous part of a text (string), assuming it has an UTF-8 NFC encoding.
-// .
 type TextSegment struct {
 	// Output only. The content of the TextSegment.
 	Content string `protobuf:"bytes,3,opt,name=content,proto3" json:"content,omitempty"`
