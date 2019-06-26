@@ -96,8 +96,7 @@ type SearchCatalogRequest struct {
 	//   <li> last_access_timestamp [asc|desc], defaults to descending if not
 	//   specified, </li>
 	//   <li> last_modified_timestamp [asc|desc], defaults to descending if not
-	//   specified, </li>
-	//   <li> title [asc|desc], defaults to ascending if not specified. </li>
+	//   specified. </li>
 	// </ul>
 	OrderBy              string   `protobuf:"bytes,5,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -491,6 +490,8 @@ type Entry struct {
 	// [UpdateEntryRequest][google.cloud.datacatalog.v1beta1.UpdateEntryRequest].
 	// The Data Catalog resource name of the entry in URL format. For example,
 	// "projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}".
+	// Note that this Entry and its child resources may not actually be stored in
+	// the location in this name.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The full name of the cloud resource the entry belongs to. See:
 	// https://cloud.google.com/apis/design/resource_names#full_resource_name
@@ -650,7 +651,9 @@ func (*Entry) XXX_OneofWrappers() []interface{} {
 // [CreateTagTemplate][google.cloud.datacatalog.v1beta1.DataCatalog.CreateTagTemplate].
 type CreateTagTemplateRequest struct {
 	// Required. The name of the project and the location this template is in.
-	// Example: "projects/{project_id}/locations/{location}".
+	// Example: "projects/{project_id}/locations/{location}". Note that this
+	// TagTemplate and its child resources may not actually be stored in the
+	// location in this name.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The id of the tag template to create.
 	TagTemplateId string `protobuf:"bytes,3,opt,name=tag_template_id,json=tagTemplateId,proto3" json:"tag_template_id,omitempty"`
@@ -868,6 +871,8 @@ type CreateTagRequest struct {
 	// The name of the resource to attach this tag to. Tags can be attached to
 	// Entries. (example:
 	// "projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}").
+	// Note that this Tag and its child resources may not actually be stored in
+	// the location in this name.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The tag to create.
 	Tag                  *Tag     `protobuf:"bytes,2,opt,name=tag,proto3" json:"tag,omitempty"`
@@ -1016,6 +1021,8 @@ func (m *DeleteTagRequest) GetName() string {
 type CreateTagTemplateFieldRequest struct {
 	// Required. The name of the project this template is in. Example:
 	// "projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}".
+	// Note that this TagTemplateField may not actually be stored in the location
+	// in this name.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The id of the tag template field to create.
 	// Field ids can contain letters (both uppercase and lowercase), numbers
@@ -1540,8 +1547,13 @@ type DataCatalogClient interface {
 	// the complete resource, only the resource identifier and high level
 	// fields. Clients can subsequentally call Get methods.
 	//
+	// Note that searches do not have full recall. There may be results that match
+	// your query but are not returned, even in subsequent pages of results. These
+	// missing results may vary across repeated calls to search. Do not rely on
+	// this method if you need to guarantee full recall.
+	//
 	// See [Data Catalog Search
-	// Syntax](/data-catalog/docs/how-to/search-reference)
+	// Syntax](/data-catalog/docs/how-to/search-reference) for more information.
 	SearchCatalog(ctx context.Context, in *SearchCatalogRequest, opts ...grpc.CallOption) (*SearchCatalogResponse, error)
 	// Updates an existing entry.
 	UpdateEntry(ctx context.Context, in *UpdateEntryRequest, opts ...grpc.CallOption) (*Entry, error)
@@ -1806,8 +1818,13 @@ type DataCatalogServer interface {
 	// the complete resource, only the resource identifier and high level
 	// fields. Clients can subsequentally call Get methods.
 	//
+	// Note that searches do not have full recall. There may be results that match
+	// your query but are not returned, even in subsequent pages of results. These
+	// missing results may vary across repeated calls to search. Do not rely on
+	// this method if you need to guarantee full recall.
+	//
 	// See [Data Catalog Search
-	// Syntax](/data-catalog/docs/how-to/search-reference)
+	// Syntax](/data-catalog/docs/how-to/search-reference) for more information.
 	SearchCatalog(context.Context, *SearchCatalogRequest) (*SearchCatalogResponse, error)
 	// Updates an existing entry.
 	UpdateEntry(context.Context, *UpdateEntryRequest) (*Entry, error)
