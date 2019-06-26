@@ -68,7 +68,8 @@ type Tag struct {
 	// [UpdateTagRequest][google.cloud.datacatalog.v1beta1.UpdateTagRequest]. The
 	// resource name of the tag in URL format. For example,
 	// projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}",
-	// where tag_id is a system-generated identifier.
+	// where tag_id is a system-generated identifier. Note that this Tag may not
+	// actually be stored in the location in this name.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The resource name of the tag template that this tag uses. For
 	// example,
@@ -365,6 +366,8 @@ type TagTemplate struct {
 	// [UpdateTagTemplateRequest][google.cloud.datacatalog.v1beta1.UpdateTagTemplateRequest].
 	// The resource name of the tag template in URL format. For example,
 	// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}.
+	// Note that this TagTemplate and its child resources may not actually be
+	// stored in the location in this name.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. The display name for this template. Default value is an empty
 	// string.
