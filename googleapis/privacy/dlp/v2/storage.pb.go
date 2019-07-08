@@ -703,9 +703,10 @@ func (m *CustomInfoType_SurrogateType) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CustomInfoType_SurrogateType proto.InternalMessageInfo
 
-// Rule for modifying a CustomInfoType to alter behavior under certain
-// circumstances, depending on the specific details of the rule. Not supported
-// for the `surrogate_type` custom info type.
+// Deprecated; use `InspectionRuleSet` instead. Rule for modifying a
+// `CustomInfoType` to alter behavior under certain circumstances, depending
+// on the specific details of the rule. Not supported for the `surrogate_type`
+// custom infoType.
 type CustomInfoType_DetectionRule struct {
 	// Types that are valid to be assigned to Type:
 	//	*CustomInfoType_DetectionRule_HotwordRule_
