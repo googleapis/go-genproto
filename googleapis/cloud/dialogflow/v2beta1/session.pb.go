@@ -111,7 +111,7 @@ type DetectIntentRequest struct {
 	// ID>/sessions/<Session ID>`. If `Environment ID` is not specified, we assume
 	// default 'draft' environment. If `User ID` is not specified, we are using
 	// "-". It's up to the API caller to choose an appropriate `Session ID` and
-	// `User Id`. They can be a random numbers or some type of user and session
+	// `User Id`. They can be a random number or some type of user and session
 	// identifiers (preferably hashed). The length of the `Session ID` and
 	// `User ID` must not exceed 36 characters.
 	Session string `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
@@ -581,6 +581,10 @@ type QueryResult struct {
 	Intent *Intent `protobuf:"bytes,11,opt,name=intent,proto3" json:"intent,omitempty"`
 	// The intent detection confidence. Values range from 0.0
 	// (completely uncertain) to 1.0 (completely certain).
+	// This value is for informational purpose only and is only used to
+	// help match the best intent within the classification threshold.
+	// This value may change for the same end-user expression at any time due to a
+	// model retraining or change in implementation.
 	// If there are `multiple knowledge_answers` messages, this value is set to
 	// the greatest `knowledgeAnswers.match_confidence` value in the list.
 	IntentDetectionConfidence float32 `protobuf:"fixed32,12,opt,name=intent_detection_confidence,json=intentDetectionConfidence,proto3" json:"intent_detection_confidence,omitempty"`
@@ -876,9 +880,9 @@ func (m *KnowledgeAnswers_Answer) GetMatchConfidence() float32 {
 // Multiple request messages should be sent in order:
 //
 // 1.  The first message must contain `session`, `query_input` plus optionally
-//     `query_params` and/or `single_utterance`. If the client wants to receive
-//     an audio response, it should also contain `output_audio_config`.
-//     The message must not contain `input_audio`.
+//     `query_params`. If the client wants to receive an audio response, it
+//     should also contain `output_audio_config`. The message must not contain
+//     `input_audio`.
 // 2.  If `query_input` was set to a streaming input audio config,
 //     all subsequent messages must contain `input_audio`. Otherwise, finish the request stream.
 type StreamingDetectIntentRequest struct {
@@ -889,7 +893,7 @@ type StreamingDetectIntentRequest struct {
 	// ID>/sessions/<Session ID>`. If `Environment ID` is not specified, we assume
 	// default 'draft' environment. If `User ID` is not specified, we are using
 	// "-". It's up to the API caller to choose an appropriate `Session ID` and
-	// `User Id`. They can be a random numbers or some type of user and session
+	// `User Id`. They can be a random number or some type of user and session
 	// identifiers (preferably hashed). The length of the `Session ID` and
 	// `User ID` must not exceed 36 characters.
 	Session string `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
@@ -904,6 +908,7 @@ type StreamingDetectIntentRequest struct {
 	//
 	// 3.  an event that specifies which intent to trigger.
 	QueryInput *QueryInput `protobuf:"bytes,3,opt,name=query_input,json=queryInput,proto3" json:"query_input,omitempty"`
+	// DEPRECATED. Please use [InputAudioConfig.single_utterance][google.cloud.dialogflow.v2beta1.InputAudioConfig.single_utterance] instead.
 	// Optional. If `false` (default), recognition does not cease until the
 	// client closes the stream.
 	// If `true`, the recognizer will detect a single spoken utterance in input
@@ -1137,7 +1142,7 @@ func (m *StreamingDetectIntentResponse) GetOutputAudioConfig() *OutputAudioConfi
 //
 // 6.  transcript: " that is"
 //
-// 7.  message_type: `MESSAGE_TYPE_END_OF_SINGLE_UTTERANCE`
+// 7.  message_type: `END_OF_SINGLE_UTTERANCE`
 //
 // 8.  transcript: " that is the question"
 //     is_final: true
@@ -1148,19 +1153,19 @@ func (m *StreamingDetectIntentResponse) GetOutputAudioConfig() *OutputAudioConfi
 //
 // In each response we populate:
 //
-// *  for `MESSAGE_TYPE_TRANSCRIPT`: `transcript` and possibly `is_final`.
+// *  for `TRANSCRIPT`: `transcript` and possibly `is_final`.
 //
-// *  for `MESSAGE_TYPE_END_OF_SINGLE_UTTERANCE`: only `message_type`.
+// *  for `END_OF_SINGLE_UTTERANCE`: only `message_type`.
 type StreamingRecognitionResult struct {
 	// Type of the result message.
 	MessageType StreamingRecognitionResult_MessageType `protobuf:"varint,1,opt,name=message_type,json=messageType,proto3,enum=google.cloud.dialogflow.v2beta1.StreamingRecognitionResult_MessageType" json:"message_type,omitempty"`
 	// Transcript text representing the words that the user spoke.
-	// Populated if and only if `message_type` = `MESSAGE_TYPE_TRANSCRIPT`.
+	// Populated if and only if `message_type` = `TRANSCRIPT`.
 	Transcript string `protobuf:"bytes,2,opt,name=transcript,proto3" json:"transcript,omitempty"`
 	// If `false`, the `StreamingRecognitionResult` represents an
 	// interim result that may change. If `true`, the recognizer will not return
 	// any further hypotheses about this piece of the audio. May only be populated
-	// for `message_type` = `MESSAGE_TYPE_TRANSCRIPT`.
+	// for `message_type` = `TRANSCRIPT`.
 	IsFinal bool `protobuf:"varint,3,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"`
 	// The Speech confidence between 0.0 and 1.0 for the current portion of audio.
 	// A higher number indicates an estimated greater likelihood that the
@@ -1174,17 +1179,16 @@ type StreamingRecognitionResult struct {
 	// not change its guess about this interim recognition result:
 	// * If the value is unspecified or 0.0, Dialogflow didn't compute the
 	//   stability. In particular, Dialogflow will only provide stability for
-	//   `MESSAGE_TYPE_TRANSCRIPT` results with `is_final = false`.
+	//   `TRANSCRIPT` results with `is_final = false`.
 	// * Otherwise, the value is in (0.0, 1.0] where 0.0 means completely
 	//   unstable and 1.0 means completely stable.
 	Stability float32 `protobuf:"fixed32,6,opt,name=stability,proto3" json:"stability,omitempty"`
 	// Word-specific information for the words recognized by Speech in
-	// [transcript][google.cloud.dialogflow.v2beta1.StreamingRecognitionResult.transcript]. Populated if and only if `message_type` =
-	// `MESSAGE_TYPE_TRANSCRIPT` and [InputAudioConfig.enable_word_info] is set.
+	// [transcript][google.cloud.dialogflow.v2beta1.StreamingRecognitionResult.transcript]. Populated if and only if `message_type` = `TRANSCRIPT` and
+	// [InputAudioConfig.enable_word_info] is set.
 	SpeechWordInfo []*SpeechWordInfo `protobuf:"bytes,7,rep,name=speech_word_info,json=speechWordInfo,proto3" json:"speech_word_info,omitempty"`
 	// Time offset of the end of this Speech recognition result relative to the
-	// beginning of the audio. Only populated for `message_type` =
-	// `MESSAGE_TYPE_TRANSCRIPT`.
+	// beginning of the audio. Only populated for `message_type` = `TRANSCRIPT`.
 	SpeechEndOffset      *duration.Duration `protobuf:"bytes,8,opt,name=speech_end_offset,json=speechEndOffset,proto3" json:"speech_end_offset,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
