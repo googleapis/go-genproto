@@ -9,6 +9,7 @@ import (
 	math "math"
 
 	proto "github.com/golang/protobuf/proto"
+	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
@@ -26,6 +27,58 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+// The operation for the request (e.g. Create(), Update(), etc.)
+type UploadRequest_UploadOperation int32
+
+const (
+	// Unspecified
+	UploadRequest_UPLOAD_OPERATION_UNSPECIFIED UploadRequest_UploadOperation = 0
+	// Create the given resources.
+	// For more information, check the Create APIs.
+	UploadRequest_CREATE UploadRequest_UploadOperation = 1
+	// Applies a standard update to the resource identified by the given
+	// proto's name. For more information, see the Update APIs.
+	// UploadBatch does not support arbitrary field masks. The list of allowed
+	// field masks can be found below.
+	UploadRequest_UPDATE UploadRequest_UploadOperation = 2
+	// Applies an merge update to the resource identified by the given
+	// proto's name. For more information, see the Merge APIs.
+	// Currently, only the "files" and "file_processing_errors" fields are
+	// supported by this operation.
+	UploadRequest_MERGE UploadRequest_UploadOperation = 3
+	// Declares the resource with the given name as finalized and immutable by
+	// the uploader. Only supported for Invocation, Target, ConfiguredTarget.
+	// There must be no operation on child resources after parent resource is
+	// Finalized. If there is a Finalize of Invocation, it must be the final
+	// UploadRequest. For more information, see the Finalize APIs.
+	// An empty resource should be provided below.
+	UploadRequest_FINALIZE UploadRequest_UploadOperation = 4
+)
+
+var UploadRequest_UploadOperation_name = map[int32]string{
+	0: "UPLOAD_OPERATION_UNSPECIFIED",
+	1: "CREATE",
+	2: "UPDATE",
+	3: "MERGE",
+	4: "FINALIZE",
+}
+
+var UploadRequest_UploadOperation_value = map[string]int32{
+	"UPLOAD_OPERATION_UNSPECIFIED": 0,
+	"CREATE":                       1,
+	"UPDATE":                       2,
+	"MERGE":                        3,
+	"FINALIZE":                     4,
+}
+
+func (x UploadRequest_UploadOperation) String() string {
+	return proto.EnumName(UploadRequest_UploadOperation_name, int32(x))
+}
+
+func (UploadRequest_UploadOperation) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{28, 0}
+}
+
 // Request passed into CreateInvocation
 type CreateInvocationRequest struct {
 	// A unique identifier for this request. Must be set to a different value for
@@ -33,11 +86,13 @@ type CreateInvocationRequest struct {
 	// for the operation to be idempotent. This is achieved by ignoring this
 	// request if the last successful operation on the resource had the same
 	// request ID. If set, invocation_id must also be provided.
-	// Restricted to 36 utf-8 bytes.
+	// Restricted to 36 Unicode characters.
 	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
-	// The invocation ID.  If left empty then a new unique ID will be
-	// assigned by the server. If populated, a RFC 4122-compliant v4 UUID is
-	// preferred, but v3 or v5 UUIDs are allowed too.
+	// The invocation ID. It is optional, but strongly recommended.
+	//
+	// If left empty then a new unique ID will be assigned by the server. If
+	// populated, a RFC 4122-compliant v4 UUID is preferred, but v3 or v5 UUIDs
+	// are allowed too.
 	InvocationId string `protobuf:"bytes,2,opt,name=invocation_id,json=invocationId,proto3" json:"invocation_id,omitempty"`
 	// The invocation to create.  Its name field will be ignored, since the name
 	// will be derived from the id field above and assigned by the server.
@@ -55,13 +110,43 @@ type CreateInvocationRequest struct {
 	// created, and storing them together during the upload. Essentially, this is
 	// a "password" to the invocation.
 	AuthorizationToken string `protobuf:"bytes,4,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
-	// By default, Invocations are auto-finished if they are not modified for 24
-	// hours. If you need auto-finish to happen sooner, set this field to the time
-	// you'd like auto-finish to occur.
-	AutoFinishTime       *timestamp.Timestamp `protobuf:"bytes,5,opt,name=auto_finish_time,json=autoFinishTime,proto3" json:"auto_finish_time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	// By default, Invocations are auto-finalized if they are not modified for 24
+	// hours. If you need auto-finalize to happen sooner, set this field to the
+	// time you'd like auto-finalize to occur.
+	AutoFinalizeTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=auto_finalize_time,json=autoFinalizeTime,proto3" json:"auto_finalize_time,omitempty"`
+	// Client provided unique token for batch upload to ensure data integrity and
+	// to provide a way to resume batch upload in case of a distributed failure on
+	// the client side. The standard uploading client is presumed to have many
+	// machines uploading to ResultStore, and that any given machine could process
+	// any given Invocation at any time. This field is used to coordinate between
+	// the client's machines, resolve concurrency issues, and enforce "exactly
+	// once" semantics on each batch within the upload.
+	//
+	// The typical usage of the resume_token is that it should contain a "key"
+	// indicating to the client where it is in the upload process, so that the
+	// client can use it to resume the upload by reconstructing the state of
+	// upload from the point where it was interrupted.
+	//
+	// If this matches the previously uploaded resume_token, then this request
+	// will silently do nothing, making CreateInvocation idempotent.
+	// If this token is provided, all further upload RPCs must be done through
+	// UploadBatch. This token must not be combined with request_id.
+	// Must be web safe Base64 encoded bytes.
+	InitialResumeToken string `protobuf:"bytes,7,opt,name=initial_resume_token,json=initialResumeToken,proto3" json:"initial_resume_token,omitempty"`
+	// Client-specific data used to resume batch upload if an error occurs and
+	// retry is needed. This serves a role closely related to resume_token, as
+	// both fields may be used to provide state required to restore a Batch
+	// Upload, but they differ in two important aspects:
+	//  - it is not compared to previous values, and as such does not provide
+	//    concurrency control;
+	//  - it allows for a larger payload, since the contents are never
+	//    inspected/compared;
+	// The size of the message must be within 1 MiB. Too large requests will be
+	// rejected.
+	UploaderState        []byte   `protobuf:"bytes,8,opt,name=uploader_state,json=uploaderState,proto3" json:"uploader_state,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *CreateInvocationRequest) Reset()         { *m = CreateInvocationRequest{} }
@@ -117,9 +202,23 @@ func (m *CreateInvocationRequest) GetAuthorizationToken() string {
 	return ""
 }
 
-func (m *CreateInvocationRequest) GetAutoFinishTime() *timestamp.Timestamp {
+func (m *CreateInvocationRequest) GetAutoFinalizeTime() *timestamp.Timestamp {
 	if m != nil {
-		return m.AutoFinishTime
+		return m.AutoFinalizeTime
+	}
+	return nil
+}
+
+func (m *CreateInvocationRequest) GetInitialResumeToken() string {
+	if m != nil {
+		return m.InitialResumeToken
+	}
+	return ""
+}
+
+func (m *CreateInvocationRequest) GetUploaderState() []byte {
+	if m != nil {
+		return m.UploaderState
 	}
 	return nil
 }
@@ -185,8 +284,227 @@ func (m *UpdateInvocationRequest) GetAuthorizationToken() string {
 	return ""
 }
 
-// Request passed into FinishInvocation
-type FinishInvocationRequest struct {
+// Request passed into MergeInvocation
+type MergeInvocationRequest struct {
+	// A unique identifier for this request. Must be set to a different value for
+	// each request that affects a given resource (eg. a random UUID). Required
+	// for the operation to be idempotent. This is achieved by ignoring this
+	// request if the last successful operation on the resource had the same
+	// request ID.  Restricted to 36 Unicode characters.
+	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	// Contains the name and the fields of the invocation to be merged.  The
+	// name format must be: invocations/${INVOCATION_ID}
+	Invocation *Invocation `protobuf:"bytes,3,opt,name=invocation,proto3" json:"invocation,omitempty"`
+	// Indicates which fields to merge.
+	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	// This is a token to authorize access to this invocation. It must be set to
+	// the same value that was provided in the CreateInvocationRequest.
+	AuthorizationToken   string   `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MergeInvocationRequest) Reset()         { *m = MergeInvocationRequest{} }
+func (m *MergeInvocationRequest) String() string { return proto.CompactTextString(m) }
+func (*MergeInvocationRequest) ProtoMessage()    {}
+func (*MergeInvocationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{2}
+}
+
+func (m *MergeInvocationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MergeInvocationRequest.Unmarshal(m, b)
+}
+func (m *MergeInvocationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MergeInvocationRequest.Marshal(b, m, deterministic)
+}
+func (m *MergeInvocationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MergeInvocationRequest.Merge(m, src)
+}
+func (m *MergeInvocationRequest) XXX_Size() int {
+	return xxx_messageInfo_MergeInvocationRequest.Size(m)
+}
+func (m *MergeInvocationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_MergeInvocationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MergeInvocationRequest proto.InternalMessageInfo
+
+func (m *MergeInvocationRequest) GetRequestId() string {
+	if m != nil {
+		return m.RequestId
+	}
+	return ""
+}
+
+func (m *MergeInvocationRequest) GetInvocation() *Invocation {
+	if m != nil {
+		return m.Invocation
+	}
+	return nil
+}
+
+func (m *MergeInvocationRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
+func (m *MergeInvocationRequest) GetAuthorizationToken() string {
+	if m != nil {
+		return m.AuthorizationToken
+	}
+	return ""
+}
+
+// Request passed into TouchInvocation
+type TouchInvocationRequest struct {
+	// The name of the invocation.  Its format must be:
+	// invocations/${INVOCATION_ID}
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// This is a token to authorize access to this invocation. It must be set to
+	// the same value that was provided in the CreateInvocationRequest.
+	AuthorizationToken   string   `protobuf:"bytes,2,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TouchInvocationRequest) Reset()         { *m = TouchInvocationRequest{} }
+func (m *TouchInvocationRequest) String() string { return proto.CompactTextString(m) }
+func (*TouchInvocationRequest) ProtoMessage()    {}
+func (*TouchInvocationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{3}
+}
+
+func (m *TouchInvocationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TouchInvocationRequest.Unmarshal(m, b)
+}
+func (m *TouchInvocationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TouchInvocationRequest.Marshal(b, m, deterministic)
+}
+func (m *TouchInvocationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TouchInvocationRequest.Merge(m, src)
+}
+func (m *TouchInvocationRequest) XXX_Size() int {
+	return xxx_messageInfo_TouchInvocationRequest.Size(m)
+}
+func (m *TouchInvocationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_TouchInvocationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TouchInvocationRequest proto.InternalMessageInfo
+
+func (m *TouchInvocationRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *TouchInvocationRequest) GetAuthorizationToken() string {
+	if m != nil {
+		return m.AuthorizationToken
+	}
+	return ""
+}
+
+// Response returned from TouchInvocation
+type TouchInvocationResponse struct {
+	// The name of the invocation.  Its format will be:
+	// invocations/${INVOCATION_ID}
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The resource ID components that identify the Invocation.
+	Id                   *Invocation_Id `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
+}
+
+func (m *TouchInvocationResponse) Reset()         { *m = TouchInvocationResponse{} }
+func (m *TouchInvocationResponse) String() string { return proto.CompactTextString(m) }
+func (*TouchInvocationResponse) ProtoMessage()    {}
+func (*TouchInvocationResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{4}
+}
+
+func (m *TouchInvocationResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TouchInvocationResponse.Unmarshal(m, b)
+}
+func (m *TouchInvocationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TouchInvocationResponse.Marshal(b, m, deterministic)
+}
+func (m *TouchInvocationResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TouchInvocationResponse.Merge(m, src)
+}
+func (m *TouchInvocationResponse) XXX_Size() int {
+	return xxx_messageInfo_TouchInvocationResponse.Size(m)
+}
+func (m *TouchInvocationResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_TouchInvocationResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TouchInvocationResponse proto.InternalMessageInfo
+
+func (m *TouchInvocationResponse) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *TouchInvocationResponse) GetId() *Invocation_Id {
+	if m != nil {
+		return m.Id
+	}
+	return nil
+}
+
+// Request passed into DeleteInvocation
+type DeleteInvocationRequest struct {
+	// The name of the invocation.  Its format must be:
+	// invocations/${INVOCATION_ID}
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteInvocationRequest) Reset()         { *m = DeleteInvocationRequest{} }
+func (m *DeleteInvocationRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteInvocationRequest) ProtoMessage()    {}
+func (*DeleteInvocationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{5}
+}
+
+func (m *DeleteInvocationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteInvocationRequest.Unmarshal(m, b)
+}
+func (m *DeleteInvocationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteInvocationRequest.Marshal(b, m, deterministic)
+}
+func (m *DeleteInvocationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteInvocationRequest.Merge(m, src)
+}
+func (m *DeleteInvocationRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteInvocationRequest.Size(m)
+}
+func (m *DeleteInvocationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteInvocationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteInvocationRequest proto.InternalMessageInfo
+
+func (m *DeleteInvocationRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+// Request passed into FinalizeInvocation
+type FinalizeInvocationRequest struct {
 	// The name of the invocation.  Its format must be:
 	// invocations/${INVOCATION_ID}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -198,47 +516,47 @@ type FinishInvocationRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *FinishInvocationRequest) Reset()         { *m = FinishInvocationRequest{} }
-func (m *FinishInvocationRequest) String() string { return proto.CompactTextString(m) }
-func (*FinishInvocationRequest) ProtoMessage()    {}
-func (*FinishInvocationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{2}
+func (m *FinalizeInvocationRequest) Reset()         { *m = FinalizeInvocationRequest{} }
+func (m *FinalizeInvocationRequest) String() string { return proto.CompactTextString(m) }
+func (*FinalizeInvocationRequest) ProtoMessage()    {}
+func (*FinalizeInvocationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{6}
 }
 
-func (m *FinishInvocationRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FinishInvocationRequest.Unmarshal(m, b)
+func (m *FinalizeInvocationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FinalizeInvocationRequest.Unmarshal(m, b)
 }
-func (m *FinishInvocationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FinishInvocationRequest.Marshal(b, m, deterministic)
+func (m *FinalizeInvocationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FinalizeInvocationRequest.Marshal(b, m, deterministic)
 }
-func (m *FinishInvocationRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FinishInvocationRequest.Merge(m, src)
+func (m *FinalizeInvocationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FinalizeInvocationRequest.Merge(m, src)
 }
-func (m *FinishInvocationRequest) XXX_Size() int {
-	return xxx_messageInfo_FinishInvocationRequest.Size(m)
+func (m *FinalizeInvocationRequest) XXX_Size() int {
+	return xxx_messageInfo_FinalizeInvocationRequest.Size(m)
 }
-func (m *FinishInvocationRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_FinishInvocationRequest.DiscardUnknown(m)
+func (m *FinalizeInvocationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_FinalizeInvocationRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_FinishInvocationRequest proto.InternalMessageInfo
+var xxx_messageInfo_FinalizeInvocationRequest proto.InternalMessageInfo
 
-func (m *FinishInvocationRequest) GetName() string {
+func (m *FinalizeInvocationRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *FinishInvocationRequest) GetAuthorizationToken() string {
+func (m *FinalizeInvocationRequest) GetAuthorizationToken() string {
 	if m != nil {
 		return m.AuthorizationToken
 	}
 	return ""
 }
 
-// Response returned from FinishInvocation
-type FinishInvocationResponse struct {
+// Response returned from FinalizeInvocation
+type FinalizeInvocationResponse struct {
 	// The name of the invocation.  Its format will be:
 	// invocations/${INVOCATION_ID}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -249,39 +567,39 @@ type FinishInvocationResponse struct {
 	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *FinishInvocationResponse) Reset()         { *m = FinishInvocationResponse{} }
-func (m *FinishInvocationResponse) String() string { return proto.CompactTextString(m) }
-func (*FinishInvocationResponse) ProtoMessage()    {}
-func (*FinishInvocationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{3}
+func (m *FinalizeInvocationResponse) Reset()         { *m = FinalizeInvocationResponse{} }
+func (m *FinalizeInvocationResponse) String() string { return proto.CompactTextString(m) }
+func (*FinalizeInvocationResponse) ProtoMessage()    {}
+func (*FinalizeInvocationResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{7}
 }
 
-func (m *FinishInvocationResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FinishInvocationResponse.Unmarshal(m, b)
+func (m *FinalizeInvocationResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FinalizeInvocationResponse.Unmarshal(m, b)
 }
-func (m *FinishInvocationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FinishInvocationResponse.Marshal(b, m, deterministic)
+func (m *FinalizeInvocationResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FinalizeInvocationResponse.Marshal(b, m, deterministic)
 }
-func (m *FinishInvocationResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FinishInvocationResponse.Merge(m, src)
+func (m *FinalizeInvocationResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FinalizeInvocationResponse.Merge(m, src)
 }
-func (m *FinishInvocationResponse) XXX_Size() int {
-	return xxx_messageInfo_FinishInvocationResponse.Size(m)
+func (m *FinalizeInvocationResponse) XXX_Size() int {
+	return xxx_messageInfo_FinalizeInvocationResponse.Size(m)
 }
-func (m *FinishInvocationResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_FinishInvocationResponse.DiscardUnknown(m)
+func (m *FinalizeInvocationResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_FinalizeInvocationResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_FinishInvocationResponse proto.InternalMessageInfo
+var xxx_messageInfo_FinalizeInvocationResponse proto.InternalMessageInfo
 
-func (m *FinishInvocationResponse) GetName() string {
+func (m *FinalizeInvocationResponse) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *FinishInvocationResponse) GetId() *Invocation_Id {
+func (m *FinalizeInvocationResponse) GetId() *Invocation_Id {
 	if m != nil {
 		return m.Id
 	}
@@ -294,13 +612,13 @@ type CreateTargetRequest struct {
 	// each request that affects a given resource (eg. a random UUID). Required
 	// for the operation to be idempotent. This is achieved by ignoring this
 	// request if the last successful operation on the resource had the same
-	// request ID.  Restricted to 36 utf-8 bytes.
+	// request ID.  Restricted to 36 Unicode characters.
 	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// The name of the parent invocation in which the target is created.
 	// Its format must be invocations/${INVOCATION_ID}
 	Parent string `protobuf:"bytes,2,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The target identifier.  It can be any UTF-8 string up to 1024 bytes long
-	// except for the reserved id '-'.
+	// The target identifier.  It can be any string up to 1024 Unicode characters
+	// long except for the reserved id '-'.
 	TargetId string `protobuf:"bytes,3,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
 	// The target to create.  Its name field will be ignored, since the name will
 	// be derived from the id field above and assigned by the server.
@@ -317,7 +635,7 @@ func (m *CreateTargetRequest) Reset()         { *m = CreateTargetRequest{} }
 func (m *CreateTargetRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateTargetRequest) ProtoMessage()    {}
 func (*CreateTargetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{4}
+	return fileDescriptor_3c379de3a2f884aa, []int{8}
 }
 
 func (m *CreateTargetRequest) XXX_Unmarshal(b []byte) error {
@@ -376,13 +694,17 @@ func (m *CreateTargetRequest) GetAuthorizationToken() string {
 // Request passed into UpdateTarget
 type UpdateTargetRequest struct {
 	// Contains the name and the fields of the target to be updated.  The name
-	// format must be: invocations/${INVOCATION_ID}/targets/${TARGET_ID}
+	// format must be:
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}
 	Target *Target `protobuf:"bytes,3,opt,name=target,proto3" json:"target,omitempty"`
 	// Indicates which fields to update.
 	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// This is a token to authorize access to this invocation. It must be set to
 	// the same value that was provided in the CreateInvocationRequest.
-	AuthorizationToken   string   `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	AuthorizationToken string `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// If true then the Update operation will become a Create operation if the
+	// Target is NOT_FOUND.
+	CreateIfNotFound     bool     `protobuf:"varint,6,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -392,7 +714,7 @@ func (m *UpdateTargetRequest) Reset()         { *m = UpdateTargetRequest{} }
 func (m *UpdateTargetRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateTargetRequest) ProtoMessage()    {}
 func (*UpdateTargetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{5}
+	return fileDescriptor_3c379de3a2f884aa, []int{9}
 }
 
 func (m *UpdateTargetRequest) XXX_Unmarshal(b []byte) error {
@@ -434,10 +756,102 @@ func (m *UpdateTargetRequest) GetAuthorizationToken() string {
 	return ""
 }
 
-// Request passed into FinishTarget
-type FinishTargetRequest struct {
+func (m *UpdateTargetRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
+// Request passed into MergeTarget
+type MergeTargetRequest struct {
+	// A unique identifier for this request. Must be set to a different value for
+	// each request that affects a given resource (eg. a random UUID). Required
+	// for the operation to be idempotent. This is achieved by ignoring this
+	// request if the last successful operation on the resource had the same
+	// request ID.  Restricted to 36 Unicode characters.
+	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	// Contains the name and the fields of the target to be merged.  The name
+	// format must be:
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}
+	Target *Target `protobuf:"bytes,3,opt,name=target,proto3" json:"target,omitempty"`
+	// Indicates which fields to merge.
+	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	// This is a token to authorize access to this invocation. It must be set to
+	// the same value that was provided in the CreateInvocationRequest.
+	AuthorizationToken string `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// If true then the Merge operation will become a Create operation if the
+	// Target is NOT_FOUND.
+	CreateIfNotFound     bool     `protobuf:"varint,6,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MergeTargetRequest) Reset()         { *m = MergeTargetRequest{} }
+func (m *MergeTargetRequest) String() string { return proto.CompactTextString(m) }
+func (*MergeTargetRequest) ProtoMessage()    {}
+func (*MergeTargetRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{10}
+}
+
+func (m *MergeTargetRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MergeTargetRequest.Unmarshal(m, b)
+}
+func (m *MergeTargetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MergeTargetRequest.Marshal(b, m, deterministic)
+}
+func (m *MergeTargetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MergeTargetRequest.Merge(m, src)
+}
+func (m *MergeTargetRequest) XXX_Size() int {
+	return xxx_messageInfo_MergeTargetRequest.Size(m)
+}
+func (m *MergeTargetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_MergeTargetRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MergeTargetRequest proto.InternalMessageInfo
+
+func (m *MergeTargetRequest) GetRequestId() string {
+	if m != nil {
+		return m.RequestId
+	}
+	return ""
+}
+
+func (m *MergeTargetRequest) GetTarget() *Target {
+	if m != nil {
+		return m.Target
+	}
+	return nil
+}
+
+func (m *MergeTargetRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
+func (m *MergeTargetRequest) GetAuthorizationToken() string {
+	if m != nil {
+		return m.AuthorizationToken
+	}
+	return ""
+}
+
+func (m *MergeTargetRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
+// Request passed into FinalizeTarget
+type FinalizeTargetRequest struct {
 	// The name of the target.  Its format must be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// This is a token to authorize access to this invocation. It must be set to
 	// the same value that was provided in the CreateInvocationRequest.
@@ -447,49 +861,49 @@ type FinishTargetRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *FinishTargetRequest) Reset()         { *m = FinishTargetRequest{} }
-func (m *FinishTargetRequest) String() string { return proto.CompactTextString(m) }
-func (*FinishTargetRequest) ProtoMessage()    {}
-func (*FinishTargetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{6}
+func (m *FinalizeTargetRequest) Reset()         { *m = FinalizeTargetRequest{} }
+func (m *FinalizeTargetRequest) String() string { return proto.CompactTextString(m) }
+func (*FinalizeTargetRequest) ProtoMessage()    {}
+func (*FinalizeTargetRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{11}
 }
 
-func (m *FinishTargetRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FinishTargetRequest.Unmarshal(m, b)
+func (m *FinalizeTargetRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FinalizeTargetRequest.Unmarshal(m, b)
 }
-func (m *FinishTargetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FinishTargetRequest.Marshal(b, m, deterministic)
+func (m *FinalizeTargetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FinalizeTargetRequest.Marshal(b, m, deterministic)
 }
-func (m *FinishTargetRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FinishTargetRequest.Merge(m, src)
+func (m *FinalizeTargetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FinalizeTargetRequest.Merge(m, src)
 }
-func (m *FinishTargetRequest) XXX_Size() int {
-	return xxx_messageInfo_FinishTargetRequest.Size(m)
+func (m *FinalizeTargetRequest) XXX_Size() int {
+	return xxx_messageInfo_FinalizeTargetRequest.Size(m)
 }
-func (m *FinishTargetRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_FinishTargetRequest.DiscardUnknown(m)
+func (m *FinalizeTargetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_FinalizeTargetRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_FinishTargetRequest proto.InternalMessageInfo
+var xxx_messageInfo_FinalizeTargetRequest proto.InternalMessageInfo
 
-func (m *FinishTargetRequest) GetName() string {
+func (m *FinalizeTargetRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *FinishTargetRequest) GetAuthorizationToken() string {
+func (m *FinalizeTargetRequest) GetAuthorizationToken() string {
 	if m != nil {
 		return m.AuthorizationToken
 	}
 	return ""
 }
 
-// Response returned from FinishTarget
-type FinishTargetResponse struct {
+// Response returned from FinalizeTarget
+type FinalizeTargetResponse struct {
 	// The name of the target.  Its format will be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The resource ID components that identify the Target.
 	Id                   *Target_Id `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
@@ -498,39 +912,39 @@ type FinishTargetResponse struct {
 	XXX_sizecache        int32      `json:"-"`
 }
 
-func (m *FinishTargetResponse) Reset()         { *m = FinishTargetResponse{} }
-func (m *FinishTargetResponse) String() string { return proto.CompactTextString(m) }
-func (*FinishTargetResponse) ProtoMessage()    {}
-func (*FinishTargetResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{7}
+func (m *FinalizeTargetResponse) Reset()         { *m = FinalizeTargetResponse{} }
+func (m *FinalizeTargetResponse) String() string { return proto.CompactTextString(m) }
+func (*FinalizeTargetResponse) ProtoMessage()    {}
+func (*FinalizeTargetResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{12}
 }
 
-func (m *FinishTargetResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FinishTargetResponse.Unmarshal(m, b)
+func (m *FinalizeTargetResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FinalizeTargetResponse.Unmarshal(m, b)
 }
-func (m *FinishTargetResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FinishTargetResponse.Marshal(b, m, deterministic)
+func (m *FinalizeTargetResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FinalizeTargetResponse.Marshal(b, m, deterministic)
 }
-func (m *FinishTargetResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FinishTargetResponse.Merge(m, src)
+func (m *FinalizeTargetResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FinalizeTargetResponse.Merge(m, src)
 }
-func (m *FinishTargetResponse) XXX_Size() int {
-	return xxx_messageInfo_FinishTargetResponse.Size(m)
+func (m *FinalizeTargetResponse) XXX_Size() int {
+	return xxx_messageInfo_FinalizeTargetResponse.Size(m)
 }
-func (m *FinishTargetResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_FinishTargetResponse.DiscardUnknown(m)
+func (m *FinalizeTargetResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_FinalizeTargetResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_FinishTargetResponse proto.InternalMessageInfo
+var xxx_messageInfo_FinalizeTargetResponse proto.InternalMessageInfo
 
-func (m *FinishTargetResponse) GetName() string {
+func (m *FinalizeTargetResponse) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *FinishTargetResponse) GetId() *Target_Id {
+func (m *FinalizeTargetResponse) GetId() *Target_Id {
 	if m != nil {
 		return m.Id
 	}
@@ -543,11 +957,11 @@ type CreateConfiguredTargetRequest struct {
 	// each request that affects a given resource (eg. a random UUID). Required
 	// for the operation to be idempotent. This is achieved by ignoring this
 	// request if the last successful operation on the resource had the same
-	// request ID.  Restricted to 36 utf-8 bytes.
+	// request ID.  Restricted to 36 Unicode characters.
 	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// The name of the parent target in which the configured target is created.
 	// Its format must be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}
 	Parent string `protobuf:"bytes,2,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The configuration identifier. This must match the ID of an existing
 	// Configuration under this Invocation. Cannot be the reserved id '-'.
@@ -567,7 +981,7 @@ func (m *CreateConfiguredTargetRequest) Reset()         { *m = CreateConfiguredT
 func (m *CreateConfiguredTargetRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateConfiguredTargetRequest) ProtoMessage()    {}
 func (*CreateConfiguredTargetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{8}
+	return fileDescriptor_3c379de3a2f884aa, []int{13}
 }
 
 func (m *CreateConfiguredTargetRequest) XXX_Unmarshal(b []byte) error {
@@ -627,13 +1041,16 @@ func (m *CreateConfiguredTargetRequest) GetAuthorizationToken() string {
 type UpdateConfiguredTargetRequest struct {
 	// Contains the name and the fields of the configured target to be updated.
 	// The name format must be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}/configuredTargets/${CONFIG_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${url_encode(CONFIG_ID)}
 	ConfiguredTarget *ConfiguredTarget `protobuf:"bytes,3,opt,name=configured_target,json=configuredTarget,proto3" json:"configured_target,omitempty"`
 	// Indicates which fields to update.
 	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// This is a token to authorize access to this invocation. It must be set to
 	// the same value that was provided in the CreateInvocationRequest.
-	AuthorizationToken   string   `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	AuthorizationToken string `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// If true then the Update operation will become a Create operation if the
+	// ConfiguredTarget is NOT_FOUND.
+	CreateIfNotFound     bool     `protobuf:"varint,6,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -643,7 +1060,7 @@ func (m *UpdateConfiguredTargetRequest) Reset()         { *m = UpdateConfiguredT
 func (m *UpdateConfiguredTargetRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateConfiguredTargetRequest) ProtoMessage()    {}
 func (*UpdateConfiguredTargetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{9}
+	return fileDescriptor_3c379de3a2f884aa, []int{14}
 }
 
 func (m *UpdateConfiguredTargetRequest) XXX_Unmarshal(b []byte) error {
@@ -685,10 +1102,102 @@ func (m *UpdateConfiguredTargetRequest) GetAuthorizationToken() string {
 	return ""
 }
 
-// Request passed into FinishConfiguredTarget
-type FinishConfiguredTargetRequest struct {
+func (m *UpdateConfiguredTargetRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
+// Request passed into MergeConfiguredTarget
+type MergeConfiguredTargetRequest struct {
+	// A unique identifier for this request. Must be set to a different value for
+	// each request that affects a given resource (eg. a random UUID). Required
+	// for the operation to be idempotent. This is achieved by ignoring this
+	// request if the last successful operation on the resource had the same
+	// request ID.  Restricted to 36 Unicode characters.
+	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	// Contains the name and the fields of the configured target to be merged.
+	// The name format must be:
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${url_encode(CONFIG_ID)}
+	ConfiguredTarget *ConfiguredTarget `protobuf:"bytes,3,opt,name=configured_target,json=configuredTarget,proto3" json:"configured_target,omitempty"`
+	// Indicates which fields to merge.
+	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	// This is a token to authorize access to this invocation. It must be set to
+	// the same value that was provided in the CreateInvocationRequest.
+	AuthorizationToken string `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// If true then the Merge operation will become a Create operation if the
+	// ConfiguredTarget is NOT_FOUND.
+	CreateIfNotFound     bool     `protobuf:"varint,6,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MergeConfiguredTargetRequest) Reset()         { *m = MergeConfiguredTargetRequest{} }
+func (m *MergeConfiguredTargetRequest) String() string { return proto.CompactTextString(m) }
+func (*MergeConfiguredTargetRequest) ProtoMessage()    {}
+func (*MergeConfiguredTargetRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{15}
+}
+
+func (m *MergeConfiguredTargetRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MergeConfiguredTargetRequest.Unmarshal(m, b)
+}
+func (m *MergeConfiguredTargetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MergeConfiguredTargetRequest.Marshal(b, m, deterministic)
+}
+func (m *MergeConfiguredTargetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MergeConfiguredTargetRequest.Merge(m, src)
+}
+func (m *MergeConfiguredTargetRequest) XXX_Size() int {
+	return xxx_messageInfo_MergeConfiguredTargetRequest.Size(m)
+}
+func (m *MergeConfiguredTargetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_MergeConfiguredTargetRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MergeConfiguredTargetRequest proto.InternalMessageInfo
+
+func (m *MergeConfiguredTargetRequest) GetRequestId() string {
+	if m != nil {
+		return m.RequestId
+	}
+	return ""
+}
+
+func (m *MergeConfiguredTargetRequest) GetConfiguredTarget() *ConfiguredTarget {
+	if m != nil {
+		return m.ConfiguredTarget
+	}
+	return nil
+}
+
+func (m *MergeConfiguredTargetRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
+func (m *MergeConfiguredTargetRequest) GetAuthorizationToken() string {
+	if m != nil {
+		return m.AuthorizationToken
+	}
+	return ""
+}
+
+func (m *MergeConfiguredTargetRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
+// Request passed into FinalizeConfiguredTarget
+type FinalizeConfiguredTargetRequest struct {
 	// The name of the configured target. Its format must be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}/configuredTargets/${CONFIG_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${url_encode(CONFIG_ID)}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// This is a token to authorize access to this invocation. It must be set to
 	// the same value that was provided in the CreateInvocationRequest.
@@ -698,49 +1207,49 @@ type FinishConfiguredTargetRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *FinishConfiguredTargetRequest) Reset()         { *m = FinishConfiguredTargetRequest{} }
-func (m *FinishConfiguredTargetRequest) String() string { return proto.CompactTextString(m) }
-func (*FinishConfiguredTargetRequest) ProtoMessage()    {}
-func (*FinishConfiguredTargetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{10}
+func (m *FinalizeConfiguredTargetRequest) Reset()         { *m = FinalizeConfiguredTargetRequest{} }
+func (m *FinalizeConfiguredTargetRequest) String() string { return proto.CompactTextString(m) }
+func (*FinalizeConfiguredTargetRequest) ProtoMessage()    {}
+func (*FinalizeConfiguredTargetRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{16}
 }
 
-func (m *FinishConfiguredTargetRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FinishConfiguredTargetRequest.Unmarshal(m, b)
+func (m *FinalizeConfiguredTargetRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FinalizeConfiguredTargetRequest.Unmarshal(m, b)
 }
-func (m *FinishConfiguredTargetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FinishConfiguredTargetRequest.Marshal(b, m, deterministic)
+func (m *FinalizeConfiguredTargetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FinalizeConfiguredTargetRequest.Marshal(b, m, deterministic)
 }
-func (m *FinishConfiguredTargetRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FinishConfiguredTargetRequest.Merge(m, src)
+func (m *FinalizeConfiguredTargetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FinalizeConfiguredTargetRequest.Merge(m, src)
 }
-func (m *FinishConfiguredTargetRequest) XXX_Size() int {
-	return xxx_messageInfo_FinishConfiguredTargetRequest.Size(m)
+func (m *FinalizeConfiguredTargetRequest) XXX_Size() int {
+	return xxx_messageInfo_FinalizeConfiguredTargetRequest.Size(m)
 }
-func (m *FinishConfiguredTargetRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_FinishConfiguredTargetRequest.DiscardUnknown(m)
+func (m *FinalizeConfiguredTargetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_FinalizeConfiguredTargetRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_FinishConfiguredTargetRequest proto.InternalMessageInfo
+var xxx_messageInfo_FinalizeConfiguredTargetRequest proto.InternalMessageInfo
 
-func (m *FinishConfiguredTargetRequest) GetName() string {
+func (m *FinalizeConfiguredTargetRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *FinishConfiguredTargetRequest) GetAuthorizationToken() string {
+func (m *FinalizeConfiguredTargetRequest) GetAuthorizationToken() string {
 	if m != nil {
 		return m.AuthorizationToken
 	}
 	return ""
 }
 
-// Response returned from FinishConfiguredTarget
-type FinishConfiguredTargetResponse struct {
+// Response returned from FinalizeConfiguredTarget
+type FinalizeConfiguredTargetResponse struct {
 	// The name of the configured target. Its format must be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}/configuredTargets/${CONFIG_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${url_encode(CONFIG_ID)}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The resource ID components that identify the ConfiguredTarget.
 	Id                   *ConfiguredTarget_Id `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
@@ -749,39 +1258,39 @@ type FinishConfiguredTargetResponse struct {
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *FinishConfiguredTargetResponse) Reset()         { *m = FinishConfiguredTargetResponse{} }
-func (m *FinishConfiguredTargetResponse) String() string { return proto.CompactTextString(m) }
-func (*FinishConfiguredTargetResponse) ProtoMessage()    {}
-func (*FinishConfiguredTargetResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{11}
+func (m *FinalizeConfiguredTargetResponse) Reset()         { *m = FinalizeConfiguredTargetResponse{} }
+func (m *FinalizeConfiguredTargetResponse) String() string { return proto.CompactTextString(m) }
+func (*FinalizeConfiguredTargetResponse) ProtoMessage()    {}
+func (*FinalizeConfiguredTargetResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{17}
 }
 
-func (m *FinishConfiguredTargetResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FinishConfiguredTargetResponse.Unmarshal(m, b)
+func (m *FinalizeConfiguredTargetResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FinalizeConfiguredTargetResponse.Unmarshal(m, b)
 }
-func (m *FinishConfiguredTargetResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FinishConfiguredTargetResponse.Marshal(b, m, deterministic)
+func (m *FinalizeConfiguredTargetResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FinalizeConfiguredTargetResponse.Marshal(b, m, deterministic)
 }
-func (m *FinishConfiguredTargetResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FinishConfiguredTargetResponse.Merge(m, src)
+func (m *FinalizeConfiguredTargetResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FinalizeConfiguredTargetResponse.Merge(m, src)
 }
-func (m *FinishConfiguredTargetResponse) XXX_Size() int {
-	return xxx_messageInfo_FinishConfiguredTargetResponse.Size(m)
+func (m *FinalizeConfiguredTargetResponse) XXX_Size() int {
+	return xxx_messageInfo_FinalizeConfiguredTargetResponse.Size(m)
 }
-func (m *FinishConfiguredTargetResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_FinishConfiguredTargetResponse.DiscardUnknown(m)
+func (m *FinalizeConfiguredTargetResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_FinalizeConfiguredTargetResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_FinishConfiguredTargetResponse proto.InternalMessageInfo
+var xxx_messageInfo_FinalizeConfiguredTargetResponse proto.InternalMessageInfo
 
-func (m *FinishConfiguredTargetResponse) GetName() string {
+func (m *FinalizeConfiguredTargetResponse) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *FinishConfiguredTargetResponse) GetId() *ConfiguredTarget_Id {
+func (m *FinalizeConfiguredTargetResponse) GetId() *ConfiguredTarget_Id {
 	if m != nil {
 		return m.Id
 	}
@@ -794,14 +1303,22 @@ type CreateActionRequest struct {
 	// each request that affects a given resource (eg. a random UUID). Required
 	// for the operation to be idempotent. This is achieved by ignoring this
 	// request if the last successful operation on the resource had the same
-	// request ID.  Restricted to 36 utf-8 bytes.
+	// request ID.  Restricted to 36 Unicode characters.
 	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// The name of the parent configured target in which the action is created.
 	// Its format must be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}/configuredTargets/${CONFIG_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${url_encode(CONFIG_ID)}
 	Parent string `protobuf:"bytes,2,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The action identifier. It can be any UTF-8 string up to 512 bytes long,
-	// except for the reserved id '-'.
+	// The action identifier. It can be any string up to 512 Unicode characters
+	// long, except for the reserved id '-'.
+	//
+	// Recommended IDs for Test Actions:
+	// "test": For a single test action.
+	// "test_shard0_run0_attempt0" ... "test_shard9_run9_attempt9": For tests with
+	//  shard/run/attempts.
+	//
+	// Recommended IDs for Build Actions:
+	// "build": If you only have a single build action.
 	ActionId string `protobuf:"bytes,3,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
 	// The action to create.  Its name field will be ignored, since the
 	// name will be derived from the id field above and assigned by the server.
@@ -818,7 +1335,7 @@ func (m *CreateActionRequest) Reset()         { *m = CreateActionRequest{} }
 func (m *CreateActionRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateActionRequest) ProtoMessage()    {}
 func (*CreateActionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{12}
+	return fileDescriptor_3c379de3a2f884aa, []int{18}
 }
 
 func (m *CreateActionRequest) XXX_Unmarshal(b []byte) error {
@@ -878,13 +1395,16 @@ func (m *CreateActionRequest) GetAuthorizationToken() string {
 type UpdateActionRequest struct {
 	// Contains the name and the fields of the action to be updated.  The
 	// name format must be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}/configuredTargets/${CONFIG_ID}/actions/${ACTION_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${url_encode(CONFIG_ID)}/actions/${url_encode(ACTION_ID)}
 	Action *Action `protobuf:"bytes,3,opt,name=action,proto3" json:"action,omitempty"`
 	// Indicates which fields to update.
 	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// This is a token to authorize access to this invocation. It must be set to
 	// the same value that was provided in the CreateInvocationRequest.
-	AuthorizationToken   string   `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	AuthorizationToken string `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// If true then the Update operation will become a Create operation if the
+	// Action is NOT_FOUND.
+	CreateIfNotFound     bool     `protobuf:"varint,6,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -894,7 +1414,7 @@ func (m *UpdateActionRequest) Reset()         { *m = UpdateActionRequest{} }
 func (m *UpdateActionRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateActionRequest) ProtoMessage()    {}
 func (*UpdateActionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{13}
+	return fileDescriptor_3c379de3a2f884aa, []int{19}
 }
 
 func (m *UpdateActionRequest) XXX_Unmarshal(b []byte) error {
@@ -936,20 +1456,113 @@ func (m *UpdateActionRequest) GetAuthorizationToken() string {
 	return ""
 }
 
+func (m *UpdateActionRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
+// Request passed into MergeAction
+type MergeActionRequest struct {
+	// A unique identifier for this request. Must be set to a different value for
+	// each request that affects a given resource (eg. a random UUID). Required
+	// for the operation to be idempotent. This is achieved by ignoring this
+	// request if the last successful operation on the resource had the same
+	// request ID.  Restricted to 36 Unicode characters.
+	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	// Contains the name and the fields of the action to be merged.  The
+	// name format must be:
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${url_encode(CONFIG_ID)}/actions/${url_encode(ACTION_ID)}
+	Action *Action `protobuf:"bytes,3,opt,name=action,proto3" json:"action,omitempty"`
+	// Indicates which fields to merge.
+	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	// This is a token to authorize access to this invocation. It must be set to
+	// the same value that was provided in the CreateInvocationRequest.
+	AuthorizationToken string `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// If true then the Merge operation will become a Create operation if the
+	// Action is NOT_FOUND.
+	CreateIfNotFound     bool     `protobuf:"varint,6,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MergeActionRequest) Reset()         { *m = MergeActionRequest{} }
+func (m *MergeActionRequest) String() string { return proto.CompactTextString(m) }
+func (*MergeActionRequest) ProtoMessage()    {}
+func (*MergeActionRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{20}
+}
+
+func (m *MergeActionRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MergeActionRequest.Unmarshal(m, b)
+}
+func (m *MergeActionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MergeActionRequest.Marshal(b, m, deterministic)
+}
+func (m *MergeActionRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MergeActionRequest.Merge(m, src)
+}
+func (m *MergeActionRequest) XXX_Size() int {
+	return xxx_messageInfo_MergeActionRequest.Size(m)
+}
+func (m *MergeActionRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_MergeActionRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MergeActionRequest proto.InternalMessageInfo
+
+func (m *MergeActionRequest) GetRequestId() string {
+	if m != nil {
+		return m.RequestId
+	}
+	return ""
+}
+
+func (m *MergeActionRequest) GetAction() *Action {
+	if m != nil {
+		return m.Action
+	}
+	return nil
+}
+
+func (m *MergeActionRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
+func (m *MergeActionRequest) GetAuthorizationToken() string {
+	if m != nil {
+		return m.AuthorizationToken
+	}
+	return ""
+}
+
+func (m *MergeActionRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
 // Request passed into CreateConfiguration
 type CreateConfigurationRequest struct {
 	// A unique identifier for this request. Must be set to a different value for
 	// each request that affects a given resource (eg. a random UUID). Required
 	// for the operation to be idempotent. This is achieved by ignoring this
 	// request if the last successful operation on the resource had the same
-	// request ID.  Restricted to 36 utf-8 bytes.
+	// request ID.  Restricted to 36 Unicode characters.
 	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// The name of the parent invocation in which the configuration is created.
 	// Its format must be invocations/${INVOCATION_ID}
 	Parent string `protobuf:"bytes,2,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The configuration identifier. It can be any UTF-8 string up to 256 bytes
-	// long. The configuration ID of "default" should be preferred for the default
-	// configuration in a single-config invocation. Cannot be the reserved id '-'.
+	// The configuration identifier. It can be any string up to 256 Unicode
+	// characters long. The configuration ID of "default" should be preferred for
+	// the default configuration in a single-config invocation. Cannot be the
+	// reserved id '-'.
 	ConfigId string `protobuf:"bytes,3,opt,name=config_id,json=configId,proto3" json:"config_id,omitempty"`
 	// The configuration to create. Its name field will be ignored, since the name
 	// will be derived from the id field above and assigned by the server.
@@ -966,7 +1579,7 @@ func (m *CreateConfigurationRequest) Reset()         { *m = CreateConfigurationR
 func (m *CreateConfigurationRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateConfigurationRequest) ProtoMessage()    {}
 func (*CreateConfigurationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{14}
+	return fileDescriptor_3c379de3a2f884aa, []int{21}
 }
 
 func (m *CreateConfigurationRequest) XXX_Unmarshal(b []byte) error {
@@ -1025,13 +1638,17 @@ func (m *CreateConfigurationRequest) GetAuthorizationToken() string {
 // Request passed into UpdateConfiguration
 type UpdateConfigurationRequest struct {
 	// Contains the name and fields of the configuration to be updated. The name
-	// format must be: invocations/${INVOCATION_ID}/configs/${CONFIG_ID}
+	// format must be:
+	// invocations/${INVOCATION_ID}/configs/${url_encode(CONFIG_ID)}
 	Configuration *Configuration `protobuf:"bytes,3,opt,name=configuration,proto3" json:"configuration,omitempty"`
 	// Indicates which fields to update.
 	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// This is a token to authorize access to this invocation. It must be set to
 	// the same value that was provided in the CreateInvocationRequest.
-	AuthorizationToken   string   `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	AuthorizationToken string `protobuf:"bytes,5,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// If true then the Update operation will become a Create operation if the
+	// Configuration is NOT_FOUND.
+	CreateIfNotFound     bool     `protobuf:"varint,6,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1041,7 +1658,7 @@ func (m *UpdateConfigurationRequest) Reset()         { *m = UpdateConfigurationR
 func (m *UpdateConfigurationRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateConfigurationRequest) ProtoMessage()    {}
 func (*UpdateConfigurationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{15}
+	return fileDescriptor_3c379de3a2f884aa, []int{22}
 }
 
 func (m *UpdateConfigurationRequest) XXX_Unmarshal(b []byte) error {
@@ -1083,18 +1700,26 @@ func (m *UpdateConfigurationRequest) GetAuthorizationToken() string {
 	return ""
 }
 
+func (m *UpdateConfigurationRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
 // Request passed into CreateFileSet
 type CreateFileSetRequest struct {
 	// A unique identifier for this request. Must be set to a different value for
 	// each request that affects a given resource (eg. a random UUID). Required
 	// for the operation to be idempotent. This is achieved by ignoring this
 	// request if the last successful operation on the resource had the same
-	// request ID.  Restricted to 36 utf-8 bytes.
+	// request ID.  Restricted to 36 Unicode characters.
 	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// The name of the parent invocation in which the file set is created.
 	// Its format must be invocations/${INVOCATION_ID}
 	Parent string `protobuf:"bytes,2,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The file set identifier. It can be any UTF-8 string up to 256 bytes long.
+	// The file set identifier. It can be any string up to 256 Unicode characters
+	// long.
 	FileSetId string `protobuf:"bytes,3,opt,name=file_set_id,json=fileSetId,proto3" json:"file_set_id,omitempty"`
 	// The file set to create. Its name field will be ignored, since the name will
 	// be derived from the id field above and assigned by the server.
@@ -1111,7 +1736,7 @@ func (m *CreateFileSetRequest) Reset()         { *m = CreateFileSetRequest{} }
 func (m *CreateFileSetRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateFileSetRequest) ProtoMessage()    {}
 func (*CreateFileSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{16}
+	return fileDescriptor_3c379de3a2f884aa, []int{23}
 }
 
 func (m *CreateFileSetRequest) XXX_Unmarshal(b []byte) error {
@@ -1170,13 +1795,16 @@ func (m *CreateFileSetRequest) GetAuthorizationToken() string {
 // Request passed into UpdateFileSet
 type UpdateFileSetRequest struct {
 	// Contains the name and fields of the file set to be updated. The name format
-	// must be: invocations/${INVOCATION_ID}/fileSets/${FILE_SET_ID}
+	// must be: invocations/${INVOCATION_ID}/fileSets/${url_encode(FILE_SET_ID)}
 	FileSet *FileSet `protobuf:"bytes,1,opt,name=file_set,json=fileSet,proto3" json:"file_set,omitempty"`
 	// Indicates which fields to update.
 	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// This is a token to authorize access to this invocation. It must be set to
 	// the same value that was provided in the CreateInvocationRequest.
-	AuthorizationToken   string   `protobuf:"bytes,3,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	AuthorizationToken string `protobuf:"bytes,3,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// If true then the Update operation will become a Create operation if the
+	// FileSet is NOT_FOUND.
+	CreateIfNotFound     bool     `protobuf:"varint,4,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1186,7 +1814,7 @@ func (m *UpdateFileSetRequest) Reset()         { *m = UpdateFileSetRequest{} }
 func (m *UpdateFileSetRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateFileSetRequest) ProtoMessage()    {}
 func (*UpdateFileSetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c379de3a2f884aa, []int{17}
+	return fileDescriptor_3c379de3a2f884aa, []int{24}
 }
 
 func (m *UpdateFileSetRequest) XXX_Unmarshal(b []byte) error {
@@ -1228,25 +1856,591 @@ func (m *UpdateFileSetRequest) GetAuthorizationToken() string {
 	return ""
 }
 
+func (m *UpdateFileSetRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
+// Request passed into MergeFileSet
+type MergeFileSetRequest struct {
+	// A unique identifier for this request. Must be set to a different value for
+	// each request that affects a given resource (eg. a random UUID). Required
+	// for the operation to be idempotent. This is achieved by ignoring this
+	// request if the last successful operation on the resource had the same
+	// request ID.  Restricted to 36 Unicode characters.
+	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	// Contains the name and fields of the file set to be merged. The name
+	// format must be:
+	// invocations/${INVOCATION_ID}/fileSets/${url_encode(FILE_SET_ID)}
+	FileSet *FileSet `protobuf:"bytes,2,opt,name=file_set,json=fileSet,proto3" json:"file_set,omitempty"`
+	// Indicates which fields to merge.
+	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	// This is a token to authorize access to this invocation. It must be set to
+	// the same value that was provided in the CreateInvocationRequest.
+	AuthorizationToken string `protobuf:"bytes,4,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// If true then the Merge operation will become a Create operation if the
+	// FileSet is NOT_FOUND.
+	CreateIfNotFound     bool     `protobuf:"varint,5,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MergeFileSetRequest) Reset()         { *m = MergeFileSetRequest{} }
+func (m *MergeFileSetRequest) String() string { return proto.CompactTextString(m) }
+func (*MergeFileSetRequest) ProtoMessage()    {}
+func (*MergeFileSetRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{25}
+}
+
+func (m *MergeFileSetRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MergeFileSetRequest.Unmarshal(m, b)
+}
+func (m *MergeFileSetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MergeFileSetRequest.Marshal(b, m, deterministic)
+}
+func (m *MergeFileSetRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MergeFileSetRequest.Merge(m, src)
+}
+func (m *MergeFileSetRequest) XXX_Size() int {
+	return xxx_messageInfo_MergeFileSetRequest.Size(m)
+}
+func (m *MergeFileSetRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_MergeFileSetRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MergeFileSetRequest proto.InternalMessageInfo
+
+func (m *MergeFileSetRequest) GetRequestId() string {
+	if m != nil {
+		return m.RequestId
+	}
+	return ""
+}
+
+func (m *MergeFileSetRequest) GetFileSet() *FileSet {
+	if m != nil {
+		return m.FileSet
+	}
+	return nil
+}
+
+func (m *MergeFileSetRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
+func (m *MergeFileSetRequest) GetAuthorizationToken() string {
+	if m != nil {
+		return m.AuthorizationToken
+	}
+	return ""
+}
+
+func (m *MergeFileSetRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
+// Request passed into UploadBatch
+type UploadBatchRequest struct {
+	// Required. The name of the invocation being modified.
+	// The name format must be: invocations/${INVOCATION_ID}
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
+	// Required. A UUID that must match the value provided in CreateInvocationRequest.
+	AuthorizationToken string `protobuf:"bytes,2,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	// Required. The token of this batch, that will be committed in this UploadBatchRequest.
+	// If this matches the previously uploaded resume_token, then this request
+	// will silently do nothing.
+	// See CreateInvocationRequest.initial_resume_token for more information.
+	// Must be web safe Base64 encoded bytes.
+	NextResumeToken string `protobuf:"bytes,3,opt,name=next_resume_token,json=nextResumeToken,proto3" json:"next_resume_token,omitempty"`
+	// Required. The token of the previous batch that was committed in a UploadBatchRequest.
+	// This will be checked after next_resume_token match is checked. If this does
+	// not match the previously uploaded resume_token, a 409 Conflict (HTTPS) or
+	// ABORTED (gRPC ) error code indicating a concurrency
+	// failure will be returned, and that the user should call
+	// GetInvocationUploadMetadata to fetch the current resume_token to
+	// reconstruct the state of the upload to resume it.
+	// See CreateInvocationRequest.initial_resume_token for more information.
+	// Must be web safe Base64 encoded bytes.
+	ResumeToken string `protobuf:"bytes,4,opt,name=resume_token,json=resumeToken,proto3" json:"resume_token,omitempty"`
+	// Client-specific data used to resume batch upload if an error occurs and
+	// retry is needed. This serves a role closely related to resume_token, as
+	// both fields may be used to provide state required to restore a Batch
+	// Upload, but they differ in two important aspects:
+	//  - it is not compared to previous values, and as such does not provide
+	//    concurrency control;
+	//  - it allows for a larger payload, since the contents are never
+	//    inspected/compared;
+	// The size of the message must be within 1 MiB. Too large requests will be
+	// rejected.
+	UploaderState []byte `protobuf:"bytes,6,opt,name=uploader_state,json=uploaderState,proto3" json:"uploader_state,omitempty"`
+	// The individual upload requests for this batch.
+	// The recommend total size for a batch is 10 MiB. Too large requests may be
+	// rejected.
+	// This field may be empty, allowing this RPC to be used like TouchInvocation.
+	UploadRequests       []*UploadRequest `protobuf:"bytes,5,rep,name=upload_requests,json=uploadRequests,proto3" json:"upload_requests,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *UploadBatchRequest) Reset()         { *m = UploadBatchRequest{} }
+func (m *UploadBatchRequest) String() string { return proto.CompactTextString(m) }
+func (*UploadBatchRequest) ProtoMessage()    {}
+func (*UploadBatchRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{26}
+}
+
+func (m *UploadBatchRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UploadBatchRequest.Unmarshal(m, b)
+}
+func (m *UploadBatchRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UploadBatchRequest.Marshal(b, m, deterministic)
+}
+func (m *UploadBatchRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UploadBatchRequest.Merge(m, src)
+}
+func (m *UploadBatchRequest) XXX_Size() int {
+	return xxx_messageInfo_UploadBatchRequest.Size(m)
+}
+func (m *UploadBatchRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UploadBatchRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UploadBatchRequest proto.InternalMessageInfo
+
+func (m *UploadBatchRequest) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
+func (m *UploadBatchRequest) GetAuthorizationToken() string {
+	if m != nil {
+		return m.AuthorizationToken
+	}
+	return ""
+}
+
+func (m *UploadBatchRequest) GetNextResumeToken() string {
+	if m != nil {
+		return m.NextResumeToken
+	}
+	return ""
+}
+
+func (m *UploadBatchRequest) GetResumeToken() string {
+	if m != nil {
+		return m.ResumeToken
+	}
+	return ""
+}
+
+func (m *UploadBatchRequest) GetUploaderState() []byte {
+	if m != nil {
+		return m.UploaderState
+	}
+	return nil
+}
+
+func (m *UploadBatchRequest) GetUploadRequests() []*UploadRequest {
+	if m != nil {
+		return m.UploadRequests
+	}
+	return nil
+}
+
+// Response for UploadBatch
+type UploadBatchResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UploadBatchResponse) Reset()         { *m = UploadBatchResponse{} }
+func (m *UploadBatchResponse) String() string { return proto.CompactTextString(m) }
+func (*UploadBatchResponse) ProtoMessage()    {}
+func (*UploadBatchResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{27}
+}
+
+func (m *UploadBatchResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UploadBatchResponse.Unmarshal(m, b)
+}
+func (m *UploadBatchResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UploadBatchResponse.Marshal(b, m, deterministic)
+}
+func (m *UploadBatchResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UploadBatchResponse.Merge(m, src)
+}
+func (m *UploadBatchResponse) XXX_Size() int {
+	return xxx_messageInfo_UploadBatchResponse.Size(m)
+}
+func (m *UploadBatchResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_UploadBatchResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UploadBatchResponse proto.InternalMessageInfo
+
+// The individual upload requests for this batch.
+type UploadRequest struct {
+	// The resource ID components that identify the resource being uploaded.
+	Id *UploadRequest_Id `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// The operation for the request (e.g. Create(), Update(), etc.)
+	UploadOperation UploadRequest_UploadOperation `protobuf:"varint,2,opt,name=upload_operation,json=uploadOperation,proto3,enum=google.devtools.resultstore.v2.UploadRequest_UploadOperation" json:"upload_operation,omitempty"`
+	// Required for Update and Merge operations.
+	// Ignored for Create and Finalize operations.
+	// Masks the fields of the resource being uploaded. Provides support for a
+	// more granular upload.
+	// FieldMask must match one of the follow patterns, where * means any single
+	// field name:
+	// Invocation: [*, status_attributes.*, timing.*, invocation_attributes.*,
+	// workspace_info.*].
+	// Target: [*, status_attributes.*, timing.*].
+	// Configuration: [*, status_attributes.*].
+	// ConfiguredTarget: [*, status_attributes.*].
+	// Action: [*, status_attributes.*, timing.*, test_action.test_suite,
+	// test_action.infrastructure_failure_info].
+	// FileSet: [*].
+	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	// If true then the Update, Merge operation will become a Create operation if
+	// the resource is NOT_FOUND.
+	CreateIfNotFound bool `protobuf:"varint,10,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
+	// The proto of the resource being uploaded.
+	//
+	// Types that are valid to be assigned to Resource:
+	//	*UploadRequest_Invocation
+	//	*UploadRequest_Target
+	//	*UploadRequest_Configuration
+	//	*UploadRequest_ConfiguredTarget
+	//	*UploadRequest_Action
+	//	*UploadRequest_FileSet
+	Resource             isUploadRequest_Resource `protobuf_oneof:"resource"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
+}
+
+func (m *UploadRequest) Reset()         { *m = UploadRequest{} }
+func (m *UploadRequest) String() string { return proto.CompactTextString(m) }
+func (*UploadRequest) ProtoMessage()    {}
+func (*UploadRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{28}
+}
+
+func (m *UploadRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UploadRequest.Unmarshal(m, b)
+}
+func (m *UploadRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UploadRequest.Marshal(b, m, deterministic)
+}
+func (m *UploadRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UploadRequest.Merge(m, src)
+}
+func (m *UploadRequest) XXX_Size() int {
+	return xxx_messageInfo_UploadRequest.Size(m)
+}
+func (m *UploadRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UploadRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UploadRequest proto.InternalMessageInfo
+
+func (m *UploadRequest) GetId() *UploadRequest_Id {
+	if m != nil {
+		return m.Id
+	}
+	return nil
+}
+
+func (m *UploadRequest) GetUploadOperation() UploadRequest_UploadOperation {
+	if m != nil {
+		return m.UploadOperation
+	}
+	return UploadRequest_UPLOAD_OPERATION_UNSPECIFIED
+}
+
+func (m *UploadRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
+func (m *UploadRequest) GetCreateIfNotFound() bool {
+	if m != nil {
+		return m.CreateIfNotFound
+	}
+	return false
+}
+
+type isUploadRequest_Resource interface {
+	isUploadRequest_Resource()
+}
+
+type UploadRequest_Invocation struct {
+	Invocation *Invocation `protobuf:"bytes,4,opt,name=invocation,proto3,oneof"`
+}
+
+type UploadRequest_Target struct {
+	Target *Target `protobuf:"bytes,5,opt,name=target,proto3,oneof"`
+}
+
+type UploadRequest_Configuration struct {
+	Configuration *Configuration `protobuf:"bytes,6,opt,name=configuration,proto3,oneof"`
+}
+
+type UploadRequest_ConfiguredTarget struct {
+	ConfiguredTarget *ConfiguredTarget `protobuf:"bytes,7,opt,name=configured_target,json=configuredTarget,proto3,oneof"`
+}
+
+type UploadRequest_Action struct {
+	Action *Action `protobuf:"bytes,8,opt,name=action,proto3,oneof"`
+}
+
+type UploadRequest_FileSet struct {
+	FileSet *FileSet `protobuf:"bytes,9,opt,name=file_set,json=fileSet,proto3,oneof"`
+}
+
+func (*UploadRequest_Invocation) isUploadRequest_Resource() {}
+
+func (*UploadRequest_Target) isUploadRequest_Resource() {}
+
+func (*UploadRequest_Configuration) isUploadRequest_Resource() {}
+
+func (*UploadRequest_ConfiguredTarget) isUploadRequest_Resource() {}
+
+func (*UploadRequest_Action) isUploadRequest_Resource() {}
+
+func (*UploadRequest_FileSet) isUploadRequest_Resource() {}
+
+func (m *UploadRequest) GetResource() isUploadRequest_Resource {
+	if m != nil {
+		return m.Resource
+	}
+	return nil
+}
+
+func (m *UploadRequest) GetInvocation() *Invocation {
+	if x, ok := m.GetResource().(*UploadRequest_Invocation); ok {
+		return x.Invocation
+	}
+	return nil
+}
+
+func (m *UploadRequest) GetTarget() *Target {
+	if x, ok := m.GetResource().(*UploadRequest_Target); ok {
+		return x.Target
+	}
+	return nil
+}
+
+func (m *UploadRequest) GetConfiguration() *Configuration {
+	if x, ok := m.GetResource().(*UploadRequest_Configuration); ok {
+		return x.Configuration
+	}
+	return nil
+}
+
+func (m *UploadRequest) GetConfiguredTarget() *ConfiguredTarget {
+	if x, ok := m.GetResource().(*UploadRequest_ConfiguredTarget); ok {
+		return x.ConfiguredTarget
+	}
+	return nil
+}
+
+func (m *UploadRequest) GetAction() *Action {
+	if x, ok := m.GetResource().(*UploadRequest_Action); ok {
+		return x.Action
+	}
+	return nil
+}
+
+func (m *UploadRequest) GetFileSet() *FileSet {
+	if x, ok := m.GetResource().(*UploadRequest_FileSet); ok {
+		return x.FileSet
+	}
+	return nil
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*UploadRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*UploadRequest_Invocation)(nil),
+		(*UploadRequest_Target)(nil),
+		(*UploadRequest_Configuration)(nil),
+		(*UploadRequest_ConfiguredTarget)(nil),
+		(*UploadRequest_Action)(nil),
+		(*UploadRequest_FileSet)(nil),
+	}
+}
+
+// The resource ID components that identify the resource being uploaded.
+type UploadRequest_Id struct {
+	// Required for Target, ConfiguredTarget, or Action.
+	// The Target ID.
+	TargetId string `protobuf:"bytes,1,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
+	// Required for Configuration, ConfiguredTarget, or Action.
+	// The Configuration ID.
+	ConfigurationId string `protobuf:"bytes,2,opt,name=configuration_id,json=configurationId,proto3" json:"configuration_id,omitempty"`
+	// Required for Action.
+	// The Action ID.
+	ActionId string `protobuf:"bytes,3,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
+	// Required for FileSet.
+	// The FileSet ID.
+	FileSetId            string   `protobuf:"bytes,4,opt,name=file_set_id,json=fileSetId,proto3" json:"file_set_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UploadRequest_Id) Reset()         { *m = UploadRequest_Id{} }
+func (m *UploadRequest_Id) String() string { return proto.CompactTextString(m) }
+func (*UploadRequest_Id) ProtoMessage()    {}
+func (*UploadRequest_Id) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{28, 0}
+}
+
+func (m *UploadRequest_Id) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UploadRequest_Id.Unmarshal(m, b)
+}
+func (m *UploadRequest_Id) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UploadRequest_Id.Marshal(b, m, deterministic)
+}
+func (m *UploadRequest_Id) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UploadRequest_Id.Merge(m, src)
+}
+func (m *UploadRequest_Id) XXX_Size() int {
+	return xxx_messageInfo_UploadRequest_Id.Size(m)
+}
+func (m *UploadRequest_Id) XXX_DiscardUnknown() {
+	xxx_messageInfo_UploadRequest_Id.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UploadRequest_Id proto.InternalMessageInfo
+
+func (m *UploadRequest_Id) GetTargetId() string {
+	if m != nil {
+		return m.TargetId
+	}
+	return ""
+}
+
+func (m *UploadRequest_Id) GetConfigurationId() string {
+	if m != nil {
+		return m.ConfigurationId
+	}
+	return ""
+}
+
+func (m *UploadRequest_Id) GetActionId() string {
+	if m != nil {
+		return m.ActionId
+	}
+	return ""
+}
+
+func (m *UploadRequest_Id) GetFileSetId() string {
+	if m != nil {
+		return m.FileSetId
+	}
+	return ""
+}
+
+// Request passed into GetInvocationUploadMetadata
+type GetInvocationUploadMetadataRequest struct {
+	// Required
+	// The name of the UploadMetadata being requested.
+	// The name format must be: invocations/${INVOCATION_ID}/uploadMetadata
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Required. A UUID that must match the value provided in CreateInvocationRequest.
+	AuthorizationToken   string   `protobuf:"bytes,2,opt,name=authorization_token,json=authorizationToken,proto3" json:"authorization_token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetInvocationUploadMetadataRequest) Reset()         { *m = GetInvocationUploadMetadataRequest{} }
+func (m *GetInvocationUploadMetadataRequest) String() string { return proto.CompactTextString(m) }
+func (*GetInvocationUploadMetadataRequest) ProtoMessage()    {}
+func (*GetInvocationUploadMetadataRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c379de3a2f884aa, []int{29}
+}
+
+func (m *GetInvocationUploadMetadataRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetInvocationUploadMetadataRequest.Unmarshal(m, b)
+}
+func (m *GetInvocationUploadMetadataRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetInvocationUploadMetadataRequest.Marshal(b, m, deterministic)
+}
+func (m *GetInvocationUploadMetadataRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetInvocationUploadMetadataRequest.Merge(m, src)
+}
+func (m *GetInvocationUploadMetadataRequest) XXX_Size() int {
+	return xxx_messageInfo_GetInvocationUploadMetadataRequest.Size(m)
+}
+func (m *GetInvocationUploadMetadataRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetInvocationUploadMetadataRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetInvocationUploadMetadataRequest proto.InternalMessageInfo
+
+func (m *GetInvocationUploadMetadataRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *GetInvocationUploadMetadataRequest) GetAuthorizationToken() string {
+	if m != nil {
+		return m.AuthorizationToken
+	}
+	return ""
+}
+
 func init() {
+	proto.RegisterEnum("google.devtools.resultstore.v2.UploadRequest_UploadOperation", UploadRequest_UploadOperation_name, UploadRequest_UploadOperation_value)
 	proto.RegisterType((*CreateInvocationRequest)(nil), "google.devtools.resultstore.v2.CreateInvocationRequest")
 	proto.RegisterType((*UpdateInvocationRequest)(nil), "google.devtools.resultstore.v2.UpdateInvocationRequest")
-	proto.RegisterType((*FinishInvocationRequest)(nil), "google.devtools.resultstore.v2.FinishInvocationRequest")
-	proto.RegisterType((*FinishInvocationResponse)(nil), "google.devtools.resultstore.v2.FinishInvocationResponse")
+	proto.RegisterType((*MergeInvocationRequest)(nil), "google.devtools.resultstore.v2.MergeInvocationRequest")
+	proto.RegisterType((*TouchInvocationRequest)(nil), "google.devtools.resultstore.v2.TouchInvocationRequest")
+	proto.RegisterType((*TouchInvocationResponse)(nil), "google.devtools.resultstore.v2.TouchInvocationResponse")
+	proto.RegisterType((*DeleteInvocationRequest)(nil), "google.devtools.resultstore.v2.DeleteInvocationRequest")
+	proto.RegisterType((*FinalizeInvocationRequest)(nil), "google.devtools.resultstore.v2.FinalizeInvocationRequest")
+	proto.RegisterType((*FinalizeInvocationResponse)(nil), "google.devtools.resultstore.v2.FinalizeInvocationResponse")
 	proto.RegisterType((*CreateTargetRequest)(nil), "google.devtools.resultstore.v2.CreateTargetRequest")
 	proto.RegisterType((*UpdateTargetRequest)(nil), "google.devtools.resultstore.v2.UpdateTargetRequest")
-	proto.RegisterType((*FinishTargetRequest)(nil), "google.devtools.resultstore.v2.FinishTargetRequest")
-	proto.RegisterType((*FinishTargetResponse)(nil), "google.devtools.resultstore.v2.FinishTargetResponse")
+	proto.RegisterType((*MergeTargetRequest)(nil), "google.devtools.resultstore.v2.MergeTargetRequest")
+	proto.RegisterType((*FinalizeTargetRequest)(nil), "google.devtools.resultstore.v2.FinalizeTargetRequest")
+	proto.RegisterType((*FinalizeTargetResponse)(nil), "google.devtools.resultstore.v2.FinalizeTargetResponse")
 	proto.RegisterType((*CreateConfiguredTargetRequest)(nil), "google.devtools.resultstore.v2.CreateConfiguredTargetRequest")
 	proto.RegisterType((*UpdateConfiguredTargetRequest)(nil), "google.devtools.resultstore.v2.UpdateConfiguredTargetRequest")
-	proto.RegisterType((*FinishConfiguredTargetRequest)(nil), "google.devtools.resultstore.v2.FinishConfiguredTargetRequest")
-	proto.RegisterType((*FinishConfiguredTargetResponse)(nil), "google.devtools.resultstore.v2.FinishConfiguredTargetResponse")
+	proto.RegisterType((*MergeConfiguredTargetRequest)(nil), "google.devtools.resultstore.v2.MergeConfiguredTargetRequest")
+	proto.RegisterType((*FinalizeConfiguredTargetRequest)(nil), "google.devtools.resultstore.v2.FinalizeConfiguredTargetRequest")
+	proto.RegisterType((*FinalizeConfiguredTargetResponse)(nil), "google.devtools.resultstore.v2.FinalizeConfiguredTargetResponse")
 	proto.RegisterType((*CreateActionRequest)(nil), "google.devtools.resultstore.v2.CreateActionRequest")
 	proto.RegisterType((*UpdateActionRequest)(nil), "google.devtools.resultstore.v2.UpdateActionRequest")
+	proto.RegisterType((*MergeActionRequest)(nil), "google.devtools.resultstore.v2.MergeActionRequest")
 	proto.RegisterType((*CreateConfigurationRequest)(nil), "google.devtools.resultstore.v2.CreateConfigurationRequest")
 	proto.RegisterType((*UpdateConfigurationRequest)(nil), "google.devtools.resultstore.v2.UpdateConfigurationRequest")
 	proto.RegisterType((*CreateFileSetRequest)(nil), "google.devtools.resultstore.v2.CreateFileSetRequest")
 	proto.RegisterType((*UpdateFileSetRequest)(nil), "google.devtools.resultstore.v2.UpdateFileSetRequest")
+	proto.RegisterType((*MergeFileSetRequest)(nil), "google.devtools.resultstore.v2.MergeFileSetRequest")
+	proto.RegisterType((*UploadBatchRequest)(nil), "google.devtools.resultstore.v2.UploadBatchRequest")
+	proto.RegisterType((*UploadBatchResponse)(nil), "google.devtools.resultstore.v2.UploadBatchResponse")
+	proto.RegisterType((*UploadRequest)(nil), "google.devtools.resultstore.v2.UploadRequest")
+	proto.RegisterType((*UploadRequest_Id)(nil), "google.devtools.resultstore.v2.UploadRequest.Id")
+	proto.RegisterType((*GetInvocationUploadMetadataRequest)(nil), "google.devtools.resultstore.v2.GetInvocationUploadMetadataRequest")
 }
 
 func init() {
@@ -1254,92 +2448,148 @@ func init() {
 }
 
 var fileDescriptor_3c379de3a2f884aa = []byte{
-	// 1348 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x99, 0xcf, 0x6f, 0xdc, 0x44,
-	0x14, 0xc7, 0x35, 0xbb, 0x6d, 0x69, 0x5e, 0x12, 0x48, 0x27, 0x51, 0x12, 0x19, 0x92, 0x46, 0x0e,
-	0x82, 0x26, 0x34, 0xeb, 0xe2, 0x84, 0xa6, 0xdd, 0x2a, 0x11, 0x4d, 0x50, 0xda, 0x2d, 0x42, 0x6a,
-	0x37, 0xa9, 0x90, 0x2a, 0x95, 0x95, 0xbb, 0x9e, 0xdd, 0x5a, 0xd9, 0xb5, 0xb7, 0x6b, 0x6f, 0x24,
-	0x40, 0x5c, 0xe0, 0x4f, 0xe0, 0x8a, 0x04, 0x17, 0x38, 0xf2, 0x43, 0xe2, 0x86, 0x38, 0xc1, 0x01,
-	0xce, 0xbd, 0x21, 0x24, 0x04, 0xe2, 0x88, 0x38, 0x72, 0x46, 0x9e, 0x19, 0xef, 0xce, 0xf8, 0xc7,
-	0xda, 0xde, 0xae, 0x72, 0xb3, 0xbd, 0xf3, 0xec, 0xcf, 0x77, 0xde, 0xd7, 0x33, 0xef, 0x79, 0x61,
-	0xbb, 0xe9, 0x38, 0xcd, 0x16, 0xd1, 0x4c, 0x72, 0xe2, 0x39, 0x4e, 0xcb, 0xd5, 0xba, 0xc4, 0xed,
-	0xb5, 0x3c, 0xd7, 0x73, 0xba, 0x44, 0x3b, 0xd1, 0xc5, 0xd3, 0x5a, 0xaf, 0xd3, 0x72, 0x0c, 0xb3,
-	0xd4, 0xe9, 0x3a, 0x9e, 0x83, 0x97, 0x59, 0x60, 0x29, 0x08, 0x2c, 0x09, 0x23, 0x4b, 0x27, 0xba,
-	0xf2, 0x12, 0xbf, 0xb1, 0xd1, 0xb1, 0x34, 0xc3, 0xb6, 0x1d, 0xcf, 0xf0, 0x2c, 0xc7, 0x76, 0x59,
-	0xb4, 0xf2, 0x5a, 0xca, 0x63, 0x8d, 0xba, 0x3f, 0x9a, 0x0f, 0xd6, 0x53, 0x06, 0xd7, 0x1d, 0xbb,
-	0x61, 0x35, 0x7b, 0x5d, 0x43, 0x88, 0xb9, 0x9a, 0x31, 0x86, 0x98, 0x35, 0xcf, 0xe8, 0x36, 0x89,
-	0xc7, 0xe3, 0x36, 0x52, 0xe2, 0x1a, 0x56, 0x8b, 0xd4, 0xdc, 0xfe, 0x70, 0x2d, 0x65, 0xb8, 0x65,
-	0x9f, 0x38, 0x75, 0x91, 0x2b, 0x4d, 0xb8, 0x04, 0xb3, 0xc2, 0x07, 0xd3, 0xb3, 0x47, 0xbd, 0x86,
-	0xd6, 0xb0, 0x48, 0xcb, 0xac, 0xb5, 0x0d, 0xf7, 0x98, 0x8f, 0xb8, 0x18, 0x1e, 0xe1, 0x59, 0x6d,
-	0xe2, 0x7a, 0x46, 0xbb, 0xc3, 0x06, 0xa8, 0x5f, 0x14, 0x60, 0x61, 0xbf, 0x4b, 0x0c, 0x8f, 0x54,
-	0xfa, 0x28, 0x55, 0xf2, 0xa4, 0x47, 0x5c, 0x0f, 0x2f, 0x01, 0x74, 0xd9, 0x61, 0xcd, 0x32, 0x17,
-	0xd1, 0x0a, 0xba, 0x34, 0x51, 0x9d, 0xe0, 0x57, 0x2a, 0x26, 0x5e, 0x85, 0xe9, 0x01, 0xbe, 0x3f,
-	0xa2, 0x40, 0x47, 0x4c, 0x0d, 0x2e, 0x56, 0x4c, 0x7c, 0x07, 0x60, 0x70, 0xbe, 0x58, 0x5c, 0x41,
-	0x97, 0x26, 0xf5, 0xf5, 0xd2, 0x70, 0x6f, 0x94, 0x04, 0x14, 0x21, 0x1a, 0x6b, 0x30, 0x6b, 0xf4,
-	0xbc, 0xc7, 0x4e, 0xd7, 0xfa, 0x80, 0x3d, 0xd3, 0x73, 0x8e, 0x89, 0xbd, 0x78, 0x86, 0x3e, 0x16,
-	0x4b, 0x3f, 0x1d, 0xf9, 0xbf, 0xe0, 0xb7, 0x60, 0xc6, 0xe8, 0x79, 0x4e, 0xad, 0x61, 0xd9, 0x96,
-	0xfb, 0xb8, 0xe6, 0x6b, 0x5f, 0x3c, 0x4b, 0x11, 0x94, 0x00, 0x21, 0x98, 0x98, 0xd2, 0x51, 0x30,
-	0x31, 0xd5, 0xe7, 0xfd, 0x98, 0x03, 0x1a, 0xe2, 0x5f, 0x54, 0x9f, 0x22, 0x58, 0xb8, 0xdf, 0x31,
-	0x63, 0xa7, 0x68, 0x9c, 0xf2, 0x6e, 0xc0, 0x64, 0x8f, 0x3e, 0x86, 0x26, 0x90, 0xca, 0x8a, 0x03,
-	0x3d, 0xf0, 0x73, 0xfc, 0x8e, 0xe1, 0x1e, 0x57, 0x81, 0x0d, 0xf7, 0x8f, 0x93, 0xe6, 0xe6, 0x6c,
-	0xd2, 0xdc, 0xa8, 0xef, 0xc1, 0x02, 0xd3, 0x18, 0x15, 0x85, 0xe1, 0x8c, 0x6d, 0xb4, 0x09, 0xcf,
-	0x38, 0x3d, 0x4e, 0xba, 0x7f, 0x31, 0xf1, 0xfe, 0x6d, 0x58, 0x8c, 0xde, 0xdf, 0xed, 0x38, 0xb6,
-	0x4b, 0x62, 0x1f, 0xb0, 0x03, 0x05, 0x6e, 0xa1, 0x49, 0x7d, 0x23, 0xfb, 0x0c, 0x96, 0x2a, 0x66,
-	0xb5, 0x60, 0x99, 0xea, 0x6f, 0x08, 0x66, 0x99, 0x8f, 0x8f, 0xe8, 0x1b, 0x92, 0xd1, 0xc3, 0xf3,
-	0x70, 0xae, 0x63, 0x74, 0x89, 0xed, 0x71, 0xf3, 0xf2, 0x33, 0xfc, 0x22, 0x4c, 0xb0, 0x37, 0xcd,
-	0x8f, 0x62, 0x22, 0xcf, 0xb3, 0x0b, 0x15, 0x13, 0xef, 0xc2, 0x39, 0x76, 0xcc, 0x73, 0xf4, 0x4a,
-	0x1a, 0x2e, 0x47, 0xe2, 0x51, 0xf9, 0x73, 0xf5, 0x13, 0x82, 0x59, 0xe6, 0x40, 0x59, 0xdc, 0x00,
-	0xa4, 0x38, 0x12, 0xc8, 0xe9, 0x3a, 0xee, 0x01, 0xcc, 0xf2, 0xb7, 0x4a, 0x12, 0x31, 0x16, 0xb7,
-	0x11, 0x98, 0x93, 0xef, 0x3d, 0xc4, 0x69, 0xd7, 0x05, 0xa7, 0xad, 0x65, 0x9b, 0xb1, 0xc0, 0x65,
-	0x9f, 0x14, 0x60, 0x89, 0xb9, 0x6c, 0xbf, 0xbf, 0x3f, 0x8c, 0xcb, 0x6f, 0x6c, 0xc7, 0x11, 0xfc,
-	0xc6, 0x2e, 0x54, 0x4c, 0xfc, 0x10, 0x2e, 0x44, 0xb6, 0x23, 0x9e, 0xac, 0x2b, 0x69, 0xfc, 0x11,
-	0xce, 0x99, 0x7a, 0xe8, 0x4a, 0xfe, 0x44, 0xfe, 0x83, 0x60, 0x89, 0xd9, 0x31, 0x69, 0x16, 0x62,
-	0x89, 0x8b, 0x63, 0x23, 0x3e, 0x5d, 0xdf, 0x9a, 0xb0, 0xc4, 0xbc, 0x95, 0xa4, 0x76, 0x2c, 0x0e,
-	0x7e, 0x1f, 0x96, 0x93, 0x9e, 0x32, 0xc4, 0xcb, 0xfb, 0x82, 0x97, 0x37, 0xf3, 0xce, 0x6c, 0x74,
-	0xed, 0xbc, 0x59, 0xcf, 0xb1, 0xff, 0x0f, 0xf1, 0x32, 0x2b, 0xcf, 0x04, 0x2f, 0xb3, 0x0b, 0x6c,
-	0xed, 0x64, 0xc7, 0x59, 0xd7, 0x4e, 0x8e, 0xc4, 0xa3, 0x9e, 0x65, 0xed, 0x94, 0xc5, 0x0d, 0x40,
-	0x8a, 0x23, 0x81, 0x9c, 0xae, 0x07, 0xff, 0x43, 0xa0, 0xc8, 0x0b, 0x8f, 0x31, 0x9e, 0x4c, 0x25,
-	0xaf, 0x3a, 0x87, 0x30, 0x2d, 0x15, 0xce, 0x5c, 0xe2, 0x46, 0x56, 0x97, 0x31, 0x40, 0xf9, 0x1e,
-	0xf9, 0x85, 0xff, 0x81, 0x40, 0x91, 0xd7, 0x1a, 0x49, 0x78, 0x04, 0xb2, 0x38, 0x06, 0xc8, 0xd3,
-	0x4d, 0xed, 0x5f, 0x08, 0xe6, 0x58, 0x6a, 0x0f, 0xac, 0x16, 0x39, 0x7c, 0xe6, 0xad, 0x64, 0x19,
-	0x26, 0x83, 0x26, 0x64, 0x90, 0xd6, 0x89, 0x06, 0xbb, 0x77, 0xc5, 0xc4, 0x7b, 0x70, 0x3e, 0xf8,
-	0x9d, 0x4b, 0x7b, 0x35, 0x6d, 0xb6, 0x02, 0xb0, 0xe7, 0xf8, 0x5d, 0xf2, 0x8b, 0xfc, 0x05, 0xc1,
-	0x1c, 0x4b, 0x63, 0x48, 0xa4, 0x48, 0x83, 0x46, 0xa4, 0x09, 0xe5, 0xab, 0x30, 0x8e, 0x7c, 0x25,
-	0x2e, 0xd4, 0xfa, 0xf7, 0xf3, 0x70, 0xa1, 0x4a, 0x89, 0x0e, 0x7d, 0xa2, 0xfb, 0xb4, 0xe9, 0xc5,
-	0x9f, 0x21, 0x98, 0x09, 0xf7, 0x51, 0x78, 0x3b, 0xd5, 0x86, 0xf1, 0x9d, 0x97, 0x92, 0xa3, 0x85,
-	0x50, 0x57, 0x3f, 0x7e, 0xfa, 0xf7, 0xa7, 0x85, 0x25, 0xf5, 0x05, 0xb9, 0x9f, 0x74, 0xcb, 0x62,
-	0x6f, 0xf1, 0x2d, 0x82, 0x99, 0x70, 0x0f, 0x93, 0x8e, 0x97, 0xd0, 0xf5, 0xe4, 0xc2, 0xdb, 0xa6,
-	0x78, 0xaf, 0xeb, 0xab, 0x3e, 0xde, 0x87, 0x42, 0xbf, 0xeb, 0xef, 0x5f, 0x3b, 0x02, 0xaf, 0xb6,
-	0xfe, 0x91, 0x84, 0xfc, 0x1d, 0x82, 0x99, 0x70, 0x07, 0x91, 0x8e, 0x9c, 0xd0, 0xd3, 0x28, 0xd7,
-	0xf2, 0x07, 0xb2, 0x6d, 0x57, 0x5d, 0xa7, 0x02, 0x5e, 0x56, 0x2f, 0x52, 0x01, 0x71, 0xd4, 0xac,
-	0xbd, 0x2c, 0xa3, 0x75, 0xfc, 0x39, 0x82, 0x29, 0xb1, 0x0b, 0xc1, 0x9b, 0xd9, 0x1c, 0x20, 0xd5,
-	0x13, 0x4a, 0xc6, 0x32, 0x5e, 0xd5, 0x29, 0xd9, 0x65, 0x55, 0xa5, 0x64, 0xec, 0xf5, 0x0f, 0xb1,
-	0xf1, 0xef, 0x05, 0x6e, 0x39, 0x28, 0xf9, 0xbf, 0x42, 0x30, 0x25, 0xb6, 0x12, 0xe9, 0x84, 0x31,
-	0x8d, 0x47, 0x66, 0xc2, 0xeb, 0x94, 0x70, 0x53, 0x5f, 0xa3, 0x84, 0xfc, 0xdb, 0x45, 0x74, 0x0a,
-	0x03, 0x4a, 0x7f, 0x32, 0x03, 0xd0, 0x6f, 0x10, 0x4c, 0x89, 0x25, 0x7d, 0x3a, 0x68, 0x4c, 0x73,
-	0xa1, 0x6c, 0xe5, 0x0b, 0xe2, 0x29, 0xdf, 0xa2, 0xd8, 0x25, 0x75, 0x2d, 0x21, 0xe5, 0x22, 0xef,
-	0x20, 0xf9, 0xbf, 0x23, 0x98, 0x8f, 0x6f, 0x0e, 0xf0, 0x4e, 0x36, 0x1b, 0x24, 0x14, 0x98, 0x4a,
-	0xee, 0x9a, 0x59, 0xbd, 0x47, 0x15, 0xbc, 0xad, 0x5e, 0x4d, 0xb4, 0x86, 0xa0, 0x41, 0x0b, 0x17,
-	0xd8, 0x6e, 0x39, 0x5a, 0xbe, 0xe3, 0x7f, 0x11, 0xcc, 0xc7, 0x57, 0xfd, 0xe9, 0xf2, 0x86, 0x76,
-	0x0b, 0x23, 0xc8, 0xab, 0x53, 0x79, 0x0f, 0xf5, 0xdb, 0x54, 0x5e, 0xf4, 0x5b, 0xdd, 0xb0, 0x94,
-	0x45, 0xd5, 0xfa, 0x69, 0x8c, 0x11, 0xfc, 0x27, 0x82, 0xf9, 0xf8, 0x92, 0x3c, 0x5d, 0xf0, 0xd0,
-	0x86, 0x41, 0xd9, 0x1d, 0x35, 0x9c, 0xfb, 0xf3, 0x36, 0x95, 0xbf, 0xa7, 0xee, 0xa4, 0xfa, 0x33,
-	0x5e, 0xec, 0xc0, 0xb3, 0x3f, 0xf6, 0x17, 0x2c, 0x56, 0xde, 0x66, 0x5d, 0xb0, 0xa4, 0x5a, 0x5a,
-	0xc9, 0x58, 0x3b, 0xab, 0x77, 0x29, 0xf7, 0x1d, 0xf5, 0xcd, 0x0c, 0xae, 0x8c, 0x25, 0xe7, 0xdf,
-	0x7d, 0xdd, 0x72, 0x50, 0x85, 0xff, 0xdc, 0x5f, 0xce, 0xb2, 0xf2, 0xc7, 0xf4, 0x02, 0x99, 0xf9,
-	0xdf, 0xa5, 0xfc, 0xf7, 0xf4, 0x5b, 0x94, 0x9f, 0x7f, 0x83, 0xce, 0x3b, 0xfd, 0x81, 0x06, 0xba,
-	0xd8, 0x71, 0x19, 0x3f, 0xf4, 0x3b, 0x30, 0xa9, 0x30, 0xc5, 0xe5, 0x7c, 0xeb, 0x86, 0xb4, 0xe3,
-	0xe5, 0xab, 0x81, 0x83, 0xa5, 0x7a, 0xe8, 0x66, 0xc2, 0xd4, 0xb8, 0xe5, 0x50, 0xbd, 0xfc, 0x6b,
-	0xbf, 0xc5, 0xca, 0x49, 0x9f, 0x5c, 0xd8, 0xe7, 0xa5, 0xbf, 0x45, 0xe9, 0x6f, 0xea, 0x57, 0xa4,
-	0x05, 0x21, 0xa9, 0xd0, 0x08, 0x84, 0xf8, 0x29, 0x08, 0x69, 0xf9, 0x12, 0xc1, 0xb4, 0x54, 0x8d,
-	0xe3, 0xad, 0x6c, 0x39, 0x90, 0xeb, 0x5a, 0x25, 0x6b, 0x15, 0xab, 0xbe, 0x41, 0xc9, 0x35, 0x75,
-	0x75, 0xc8, 0xbc, 0xf3, 0x42, 0xd7, 0x2d, 0xf7, 0x6b, 0x65, 0xfc, 0x35, 0x82, 0x69, 0xa9, 0xa0,
-	0x4e, 0xe7, 0x8c, 0xab, 0xbf, 0xb3, 0x73, 0xee, 0x52, 0xce, 0x6b, 0xfa, 0x65, 0xca, 0xd9, 0xff,
-	0x9b, 0x23, 0x66, 0x72, 0x03, 0x5a, 0x7f, 0x76, 0xfb, 0xc0, 0x7b, 0x4f, 0x40, 0xad, 0x3b, 0xed,
-	0x94, 0xa7, 0xdd, 0x45, 0x0f, 0x2a, 0x7c, 0x44, 0xd3, 0x69, 0x19, 0x76, 0xb3, 0xe4, 0x74, 0x9b,
-	0x5a, 0x93, 0xd8, 0xb4, 0x88, 0xe7, 0x7f, 0xa6, 0x18, 0x1d, 0xcb, 0x4d, 0xfa, 0x7f, 0xe4, 0x86,
-	0x70, 0xfa, 0xe8, 0x1c, 0x8d, 0xda, 0xfc, 0x3f, 0x00, 0x00, 0xff, 0xff, 0x5e, 0xa6, 0x1a, 0x3d,
-	0xc4, 0x1a, 0x00, 0x00,
+	// 2245 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe4, 0x5a, 0x4f, 0x6c, 0xe4, 0x56,
+	0x19, 0xcf, 0x9b, 0x49, 0xb2, 0xc9, 0x97, 0xa4, 0x99, 0x7d, 0xd9, 0x4d, 0x82, 0xf7, 0x4f, 0x53,
+	0x47, 0x74, 0x37, 0xe9, 0x66, 0xbc, 0x4c, 0xb6, 0x09, 0x3b, 0x25, 0x6d, 0xfe, 0x4d, 0x36, 0xb3,
+	0x6c, 0xb2, 0xe9, 0x24, 0xe1, 0x4f, 0xc5, 0x6a, 0xf0, 0x8e, 0xdf, 0x4c, 0xac, 0x9d, 0xb1, 0xa7,
+	0x63, 0xcf, 0x2e, 0x6d, 0xd5, 0x0b, 0x88, 0x03, 0x17, 0x84, 0x84, 0x38, 0x81, 0xc4, 0xa9, 0x1c,
+	0x58, 0x81, 0xb8, 0xa1, 0x0a, 0x71, 0x01, 0x2e, 0x70, 0xa4, 0x37, 0xc4, 0xa9, 0xe2, 0xc2, 0x05,
+	0x09, 0xa4, 0xc2, 0x09, 0x09, 0xf9, 0xbd, 0x67, 0x8f, 0xed, 0xb1, 0xc7, 0xf6, 0xec, 0x80, 0xda,
+	0x72, 0xb3, 0x9f, 0xdf, 0xf7, 0xde, 0xef, 0xfb, 0xff, 0xde, 0xf7, 0x19, 0xd6, 0x6b, 0xba, 0x5e,
+	0xab, 0x13, 0x49, 0x21, 0x8f, 0x4d, 0x5d, 0xaf, 0x1b, 0x52, 0x8b, 0x18, 0xed, 0xba, 0x69, 0x98,
+	0x7a, 0x8b, 0x48, 0x8f, 0x73, 0xee, 0xd7, 0x72, 0xbb, 0x59, 0xd7, 0x65, 0x25, 0xdb, 0x6c, 0xe9,
+	0xa6, 0x8e, 0xaf, 0x32, 0xc2, 0xac, 0x4d, 0x98, 0x75, 0xcd, 0xcc, 0x3e, 0xce, 0x09, 0x97, 0xf9,
+	0xc2, 0x72, 0x53, 0x95, 0x64, 0x4d, 0xd3, 0x4d, 0xd9, 0x54, 0x75, 0xcd, 0x60, 0xd4, 0xc2, 0x4b,
+	0x11, 0xdb, 0xca, 0x15, 0x6b, 0x36, 0x9f, 0x9c, 0x8b, 0x98, 0x5c, 0xd1, 0xb5, 0xaa, 0x5a, 0x6b,
+	0xb7, 0x64, 0x17, 0xcd, 0x5a, 0x4c, 0x1a, 0xa2, 0x94, 0x4d, 0xb9, 0x55, 0x23, 0x26, 0xa7, 0x5b,
+	0x89, 0xa0, 0xab, 0xaa, 0x75, 0x52, 0x36, 0x9c, 0xe9, 0x52, 0xc4, 0x74, 0x55, 0x7b, 0xac, 0x57,
+	0xdc, 0xb8, 0xa2, 0x18, 0xf7, 0x80, 0xb9, 0x15, 0x31, 0x99, 0x29, 0xa4, 0xdc, 0x20, 0xa6, 0xac,
+	0xc8, 0xa6, 0xcc, 0xa9, 0x2e, 0x71, 0x2a, 0xfa, 0xf6, 0xb0, 0x5d, 0x95, 0x48, 0xa3, 0x69, 0xbe,
+	0xc5, 0x3f, 0x2e, 0xf8, 0x3f, 0x56, 0x55, 0x52, 0x57, 0xca, 0x0d, 0xd9, 0x78, 0xc4, 0x67, 0x3c,
+	0xef, 0x9f, 0x61, 0xaa, 0x0d, 0x62, 0x98, 0x72, 0xa3, 0xc9, 0x27, 0xcc, 0xb9, 0x34, 0x5b, 0xa9,
+	0xab, 0x44, 0xe3, 0x70, 0xc5, 0x7f, 0xa7, 0x60, 0x6e, 0xa7, 0x45, 0x64, 0x93, 0x14, 0x1d, 0xb6,
+	0x4b, 0xe4, 0xcd, 0x36, 0x31, 0x4c, 0x7c, 0x05, 0xa0, 0xc5, 0x1e, 0xcb, 0xaa, 0x32, 0x8f, 0x16,
+	0xd0, 0xf5, 0xf1, 0xd2, 0x38, 0x1f, 0x29, 0x2a, 0x78, 0x11, 0xa6, 0x3a, 0xa2, 0xb2, 0x66, 0xa4,
+	0xe8, 0x8c, 0xc9, 0xce, 0x60, 0x51, 0xc1, 0x77, 0x01, 0x3a, 0xef, 0xf3, 0xe9, 0x05, 0x74, 0x7d,
+	0x22, 0xb7, 0x9c, 0xed, 0x6d, 0x87, 0x59, 0x17, 0x14, 0x17, 0x35, 0x96, 0x60, 0x46, 0x6e, 0x9b,
+	0x67, 0x7a, 0x4b, 0x7d, 0x9b, 0xed, 0x69, 0xea, 0x8f, 0x88, 0x36, 0x3f, 0x4c, 0xb7, 0xc5, 0x9e,
+	0x4f, 0x27, 0xd6, 0x17, 0xbc, 0x0f, 0xd6, 0xa8, 0x5e, 0xae, 0xaa, 0x9a, 0x5c, 0x57, 0xdf, 0x26,
+	0x65, 0x4b, 0x2c, 0xf3, 0xa3, 0x14, 0x84, 0x60, 0x83, 0xb0, 0x65, 0x96, 0x3d, 0xb1, 0x65, 0x56,
+	0xca, 0x58, 0x54, 0x7b, 0x9c, 0xc8, 0x1a, 0xc6, 0x37, 0xe1, 0x82, 0xaa, 0xa9, 0xa6, 0x2a, 0xd7,
+	0xcb, 0x16, 0xd6, 0x06, 0xe1, 0x7b, 0x9f, 0x63, 0x7b, 0xf3, 0x6f, 0x25, 0xfa, 0x89, 0xed, 0xfd,
+	0x59, 0x78, 0x8e, 0xa9, 0x9a, 0xb4, 0xca, 0x86, 0x29, 0x9b, 0x64, 0x7e, 0x6c, 0x01, 0x5d, 0x9f,
+	0x2c, 0x4d, 0xd9, 0xa3, 0xc7, 0xd6, 0xa0, 0xf8, 0x01, 0x82, 0xb9, 0xd3, 0xa6, 0x12, 0x28, 0xff,
+	0x41, 0xca, 0xee, 0x15, 0x98, 0x68, 0xd3, 0x6d, 0xa8, 0xd9, 0x50, 0x99, 0x05, 0xc9, 0x60, 0xcf,
+	0xb2, 0xac, 0x03, 0xd9, 0x78, 0x54, 0x02, 0x36, 0xdd, 0x7a, 0x0e, 0x13, 0xfc, 0x48, 0x98, 0xe0,
+	0xc5, 0xbf, 0x23, 0x98, 0x3d, 0x20, 0xad, 0x5a, 0x72, 0xa3, 0xfa, 0xe4, 0xf2, 0xfc, 0x00, 0x66,
+	0x4f, 0xf4, 0x76, 0xe5, 0xac, 0x9b, 0x65, 0x0c, 0xc3, 0x9a, 0xdc, 0x20, 0x9c, 0x59, 0xfa, 0x1c,
+	0xb6, 0x7c, 0x2a, 0x74, 0xf9, 0x3a, 0xcc, 0x75, 0x2d, 0x6f, 0x34, 0x75, 0xcd, 0x20, 0x81, 0xeb,
+	0x6f, 0x40, 0x8a, 0x7b, 0xe4, 0x44, 0x6e, 0x25, 0xbe, 0xfc, 0xb2, 0x45, 0xa5, 0x94, 0x52, 0x15,
+	0x71, 0x05, 0xe6, 0x76, 0x49, 0x9d, 0x04, 0x59, 0x65, 0xc0, 0x6e, 0xe2, 0xd7, 0xe1, 0x33, 0xb6,
+	0xbb, 0x3c, 0x13, 0xfb, 0xe9, 0x50, 0xf6, 0x75, 0x10, 0x82, 0x76, 0xf8, 0xef, 0x49, 0xe0, 0x4f,
+	0x08, 0x66, 0x58, 0x60, 0x3c, 0xa1, 0xe1, 0x3d, 0xa6, 0xfd, 0xce, 0xc2, 0x68, 0x53, 0x6e, 0x11,
+	0xcd, 0xe4, 0xaa, 0xe4, 0x6f, 0xf8, 0x12, 0x8c, 0xb3, 0x34, 0x61, 0x51, 0x31, 0x36, 0xc7, 0xd8,
+	0x40, 0x51, 0xc1, 0xaf, 0xc2, 0x28, 0x7b, 0xe6, 0x36, 0xfa, 0x62, 0x14, 0x5c, 0x0e, 0x89, 0x53,
+	0x25, 0xb7, 0xd5, 0x7f, 0x20, 0x98, 0x61, 0x51, 0xc7, 0xcb, 0x5c, 0x07, 0x48, 0xba, 0x2f, 0x20,
+	0xff, 0x53, 0x8f, 0xc3, 0x2b, 0x30, 0x53, 0xa1, 0x1a, 0x2a, 0xab, 0xd5, 0xb2, 0xa6, 0x9b, 0xe5,
+	0xaa, 0xde, 0xd6, 0x14, 0x1a, 0xdf, 0xc7, 0x4a, 0x19, 0xf6, 0xa9, 0x58, 0x3d, 0xd4, 0xcd, 0x3d,
+	0x6b, 0x5c, 0xfc, 0x5e, 0x0a, 0x30, 0x0d, 0x4a, 0x89, 0x14, 0xfa, 0xa9, 0x16, 0xc9, 0xd7, 0xe0,
+	0xa2, 0x93, 0xe6, 0x3c, 0x42, 0x19, 0x88, 0xcf, 0xd6, 0x60, 0xd6, 0xbf, 0x7a, 0x0f, 0x7f, 0xbd,
+	0xed, 0xf2, 0xd7, 0xa5, 0x78, 0x42, 0xb6, 0x7d, 0xf5, 0x5b, 0x29, 0xb8, 0xc2, 0x7c, 0x75, 0xc7,
+	0x39, 0x22, 0x0e, 0xca, 0x6b, 0xd9, 0xa1, 0xd3, 0xe5, 0xb5, 0x6c, 0xa0, 0xa8, 0xe0, 0x07, 0x70,
+	0xbe, 0xeb, 0x44, 0xca, 0xf5, 0x7b, 0x33, 0x0a, 0x7f, 0x17, 0xce, 0x4c, 0xc5, 0x37, 0x92, 0xdc,
+	0xa9, 0x7f, 0x98, 0x82, 0x2b, 0xcc, 0xa9, 0xc3, 0xa4, 0x10, 0x88, 0x38, 0x3d, 0x30, 0xc4, 0x1f,
+	0x6b, 0x53, 0x7f, 0x3f, 0x05, 0x97, 0xa9, 0xf7, 0xf7, 0x69, 0x22, 0xff, 0xcf, 0xb2, 0xab, 0xc2,
+	0xf3, 0xb6, 0x23, 0x87, 0x49, 0x6f, 0x20, 0x01, 0xe3, 0x1d, 0x58, 0x08, 0xdf, 0xa7, 0x47, 0xe8,
+	0xd8, 0x71, 0x85, 0x8e, 0xd5, 0xa4, 0xca, 0xe8, 0x4e, 0xf8, 0x5b, 0x95, 0x04, 0x07, 0xd6, 0x1e,
+	0xa1, 0x83, 0x5d, 0x88, 0x5d, 0xa1, 0x83, 0x0d, 0xb0, 0xa4, 0xc2, 0x9e, 0xe3, 0x26, 0x7c, 0x0e,
+	0x89, 0x53, 0x3d, 0x4b, 0xc2, 0xf7, 0x32, 0xd7, 0x01, 0x92, 0xee, 0x0b, 0xc8, 0x27, 0x23, 0xe1,
+	0x27, 0x52, 0xe8, 0xa7, 0x5a, 0x24, 0xff, 0x44, 0x20, 0x78, 0x33, 0xa5, 0x3c, 0x18, 0x5b, 0x0f,
+	0x4f, 0x93, 0xc7, 0x30, 0xe5, 0x29, 0xf6, 0x70, 0x89, 0xac, 0xc4, 0xf5, 0x53, 0x06, 0xd0, 0xbb,
+	0x46, 0x72, 0x07, 0xf8, 0x6e, 0x0a, 0x04, 0x6f, 0x72, 0xf4, 0x30, 0xde, 0x05, 0x32, 0x3d, 0x00,
+	0x90, 0x1f, 0x6b, 0x4b, 0xf8, 0x10, 0xc1, 0x05, 0x66, 0x09, 0x7b, 0x6a, 0x9d, 0x1c, 0x3f, 0xf3,
+	0x51, 0xe9, 0x2a, 0x4c, 0xd8, 0x75, 0xb6, 0x8e, 0x15, 0x8c, 0x57, 0xd9, 0xda, 0x45, 0x05, 0x6f,
+	0xc3, 0x98, 0xfd, 0x9d, 0x4b, 0xe2, 0x5a, 0x94, 0x70, 0x6d, 0x60, 0xe7, 0xf8, 0x2a, 0xc9, 0xb5,
+	0xfe, 0x2f, 0x04, 0x17, 0x98, 0xd6, 0x7d, 0x4c, 0xba, 0xd1, 0xa0, 0x3e, 0xd1, 0xf8, 0xd4, 0x9b,
+	0x1a, 0x84, 0x7a, 0xd3, 0x49, 0xd5, 0x3b, 0x1c, 0xa2, 0xde, 0x1f, 0xa4, 0x60, 0x86, 0xc6, 0xbe,
+	0x64, 0xda, 0x75, 0xcb, 0x25, 0x35, 0x18, 0xb9, 0xa4, 0x07, 0x21, 0x97, 0xe1, 0xa4, 0x72, 0x19,
+	0x09, 0x91, 0xcb, 0xd3, 0x14, 0xe0, 0x53, 0x5a, 0x81, 0xdb, 0x96, 0xcd, 0xca, 0x99, 0x2d, 0x96,
+	0x8e, 0x55, 0x23, 0x8f, 0x55, 0x27, 0x2d, 0xd3, 0xe0, 0x65, 0x38, 0xaf, 0x91, 0x6f, 0x98, 0xde,
+	0x2a, 0x21, 0xd3, 0xea, 0xb4, 0xf5, 0xc1, 0x5d, 0x22, 0x7c, 0x01, 0x26, 0x3d, 0xd3, 0x18, 0x93,
+	0x13, 0xad, 0x9e, 0x55, 0xc4, 0xd1, 0x80, 0x2a, 0x22, 0xfe, 0x12, 0x4c, 0xf3, 0xba, 0x32, 0x57,
+	0xa5, 0x31, 0x3f, 0xb2, 0x90, 0x8e, 0x13, 0xc0, 0x98, 0x2c, 0xb8, 0x18, 0x4a, 0x7c, 0x33, 0xfe,
+	0x6a, 0x88, 0x17, 0xad, 0x53, 0x83, 0x4b, 0x58, 0xec, 0x0c, 0x26, 0x7e, 0x74, 0x0e, 0xa6, 0x3c,
+	0x84, 0x78, 0x93, 0x9e, 0xc0, 0x50, 0xbc, 0xe3, 0xb0, 0x87, 0x94, 0x1f, 0xbf, 0xf0, 0x19, 0x64,
+	0x38, 0x0b, 0x7a, 0x93, 0xf0, 0x20, 0x6c, 0x89, 0xf9, 0xb9, 0xdc, 0x46, 0xb2, 0xf5, 0xd8, 0xdb,
+	0x7d, 0x7b, 0x91, 0x12, 0x97, 0x8c, 0x33, 0xf0, 0x6c, 0xf6, 0x19, 0x62, 0x6e, 0x10, 0x6c, 0x6e,
+	0xf8, 0x9e, 0xa7, 0x9c, 0x39, 0x9c, 0xb4, 0x9c, 0xb9, 0x3f, 0xe4, 0x29, 0x68, 0x6e, 0x3a, 0xb5,
+	0x88, 0x91, 0x24, 0xb5, 0x88, 0xfd, 0x21, 0xa7, 0x1a, 0x71, 0xea, 0xcf, 0x73, 0xa3, 0x7d, 0xe4,
+	0xb9, 0xfd, 0x21, 0x7f, 0xa6, 0x2b, 0x07, 0x5d, 0x8e, 0xce, 0xf5, 0x77, 0x39, 0xda, 0x1f, 0x0a,
+	0xb8, 0x1e, 0x6d, 0x3a, 0x87, 0xb2, 0xb1, 0x24, 0x87, 0x32, 0x8b, 0x73, 0x7e, 0x2c, 0xdb, 0x75,
+	0x45, 0xb6, 0xf1, 0x44, 0x91, 0x6d, 0x7f, 0xc8, 0x89, 0x6d, 0xc2, 0x77, 0x10, 0xa4, 0x8a, 0x8a,
+	0xb7, 0x9a, 0x87, 0x7c, 0xd5, 0xbc, 0x25, 0xc8, 0x78, 0xa4, 0xd3, 0x69, 0x8d, 0x4c, 0x7b, 0xc6,
+	0xd9, 0x3a, 0xe1, 0x97, 0x04, 0x5f, 0x46, 0x1d, 0xf6, 0x65, 0x54, 0x51, 0x81, 0x69, 0x9f, 0xad,
+	0xe3, 0x05, 0xb8, 0x7c, 0x7a, 0x74, 0xef, 0xfe, 0xd6, 0x6e, 0xf9, 0xfe, 0x51, 0xa1, 0xb4, 0x75,
+	0x52, 0xbc, 0x7f, 0x58, 0x3e, 0x3d, 0x3c, 0x3e, 0x2a, 0xec, 0x14, 0xf7, 0x8a, 0x85, 0xdd, 0xcc,
+	0x10, 0x06, 0x18, 0xdd, 0x29, 0x15, 0xb6, 0x4e, 0x0a, 0x19, 0x64, 0x3d, 0x9f, 0x1e, 0xed, 0x5a,
+	0xcf, 0x29, 0x3c, 0x0e, 0x23, 0x07, 0x85, 0xd2, 0x9d, 0x42, 0x26, 0x8d, 0x27, 0x61, 0x6c, 0xaf,
+	0x78, 0xb8, 0x75, 0xaf, 0xf8, 0x46, 0x21, 0x33, 0xbc, 0x0d, 0x30, 0xd6, 0x22, 0x86, 0xde, 0x6e,
+	0x55, 0x88, 0xa8, 0x82, 0x78, 0x87, 0x98, 0x1d, 0xf3, 0x64, 0xdb, 0x1f, 0xf0, 0x56, 0xd6, 0x20,
+	0xcb, 0xdd, 0xb9, 0x8f, 0x16, 0xe1, 0x7c, 0x89, 0xaa, 0xe3, 0xd8, 0x52, 0x07, 0xdb, 0x09, 0xff,
+	0x08, 0x41, 0xc6, 0xdf, 0xad, 0xc2, 0xeb, 0x91, 0x16, 0x16, 0xdc, 0xdf, 0x12, 0x12, 0x38, 0xa2,
+	0xb8, 0xf8, 0xcd, 0x0f, 0xfe, 0xf2, 0xfd, 0xd4, 0x15, 0x71, 0xda, 0xdb, 0x21, 0x34, 0xf2, 0x6e,
+	0xff, 0xfc, 0x05, 0x82, 0x8c, 0xbf, 0x99, 0x13, 0x0d, 0x2f, 0xa4, 0xfd, 0x93, 0x08, 0xde, 0x3a,
+	0x85, 0xf7, 0xb9, 0xdc, 0xa2, 0x05, 0xef, 0x1d, 0x57, 0x07, 0xd3, 0x92, 0xfe, 0x86, 0x0b, 0xaf,
+	0xb4, 0xfc, 0xae, 0x07, 0xf2, 0x53, 0x04, 0xd3, 0xbe, 0x4e, 0x0d, 0x5e, 0x8b, 0xda, 0x38, 0xb8,
+	0xb5, 0x93, 0x08, 0xf0, 0x2d, 0x0a, 0x38, 0x2b, 0x2e, 0xc5, 0x01, 0xdc, 0xb0, 0xf6, 0xcb, 0xa3,
+	0x65, 0xfc, 0x33, 0x04, 0xd3, 0xbe, 0x2e, 0x48, 0x34, 0xda, 0xe0, 0xae, 0x8c, 0xb0, 0x9e, 0x98,
+	0x8e, 0x67, 0xbf, 0x25, 0x0a, 0x7d, 0x51, 0xbc, 0x4a, 0xa1, 0x07, 0xe1, 0x35, 0x2d, 0x4a, 0x0b,
+	0xef, 0xfb, 0x08, 0x70, 0x77, 0xdb, 0x02, 0xdf, 0x8e, 0x8e, 0x3c, 0x21, 0xcd, 0x14, 0x21, 0xdf,
+	0x0f, 0x29, 0x07, 0x7e, 0x83, 0x02, 0x7f, 0x51, 0x7c, 0x21, 0x14, 0xb8, 0xdd, 0x28, 0xb5, 0xb0,
+	0x7f, 0x1b, 0x41, 0xc6, 0xdf, 0x03, 0x8a, 0x36, 0xe6, 0x90, 0xae, 0x91, 0x30, 0xdb, 0x95, 0x5f,
+	0x0b, 0x8d, 0xa6, 0xf9, 0x96, 0xb8, 0x40, 0x31, 0x09, 0xcb, 0xf3, 0x61, 0x98, 0xf0, 0x8f, 0x11,
+	0x4c, 0xba, 0x1b, 0x31, 0x78, 0x35, 0x9e, 0xbf, 0x7b, 0xea, 0x53, 0x42, 0xcc, 0x54, 0x29, 0xe6,
+	0x28, 0x9e, 0x1b, 0xa2, 0x48, 0xf1, 0xb0, 0x53, 0xa0, 0x0f, 0x11, 0xef, 0xf7, 0x1b, 0x79, 0x3b,
+	0xa9, 0xfe, 0x04, 0xc1, 0xa4, 0xbb, 0x9b, 0x12, 0x8d, 0x30, 0xa0, 0xf7, 0x12, 0x1b, 0xe1, 0x6d,
+	0x8a, 0x70, 0x35, 0xc7, 0x3c, 0x87, 0xff, 0x7b, 0xd0, 0x2d, 0x38, 0x1b, 0xa5, 0xa5, 0x56, 0x1b,
+	0xe8, 0x7b, 0x08, 0x26, 0x5c, 0x1d, 0x10, 0x9c, 0x8b, 0xe5, 0xe8, 0xfd, 0xc1, 0xcc, 0x53, 0x98,
+	0xb7, 0x44, 0x29, 0x3e, 0x4c, 0xc7, 0xcd, 0x7f, 0x89, 0xe0, 0x39, 0x6f, 0xe7, 0x00, 0xbf, 0x1c,
+	0xd7, 0xee, 0xbd, 0x68, 0xd7, 0x92, 0x92, 0x71, 0x57, 0x59, 0xa3, 0xe8, 0x6f, 0x8a, 0x2f, 0x85,
+	0x98, 0xa5, 0x1b, 0xb6, 0xdb, 0x69, 0xfe, 0x8c, 0x60, 0x36, 0xb8, 0x13, 0x81, 0x37, 0xe2, 0x99,
+	0x6d, 0x48, 0x81, 0x55, 0x48, 0x7c, 0x8e, 0x12, 0x5f, 0xa7, 0x3c, 0x7c, 0x51, 0x5c, 0x0b, 0x35,
+	0x65, 0x17, 0x17, 0x92, 0xff, 0xc8, 0x65, 0xe4, 0xbb, 0x8f, 0x74, 0xf8, 0x6f, 0x08, 0x66, 0x83,
+	0x5b, 0x0c, 0x78, 0x23, 0x9e, 0xcd, 0x0f, 0x8e, 0xbd, 0x0a, 0x65, 0xef, 0x41, 0x6e, 0x9f, 0xb2,
+	0xd7, 0xfd, 0x6f, 0x50, 0x2f, 0xa5, 0x75, 0x73, 0x6b, 0x29, 0x32, 0x80, 0xe1, 0x0f, 0x11, 0x5c,
+	0x0c, 0xec, 0x1a, 0xe0, 0x2f, 0xc4, 0xf2, 0x9d, 0xc1, 0xb1, 0xfb, 0x55, 0xca, 0xee, 0xb1, 0x78,
+	0x38, 0x30, 0x76, 0x1d, 0x77, 0xfb, 0x2b, 0x82, 0xf9, 0xb0, 0xba, 0x3b, 0x7e, 0x2d, 0xae, 0x07,
+	0x85, 0xb1, 0xba, 0xd9, 0xff, 0x02, 0xdc, 0x19, 0xef, 0x52, 0xd6, 0x77, 0xc5, 0xd7, 0x22, 0x9d,
+	0x31, 0x98, 0x51, 0xb7, 0x83, 0xfe, 0xda, 0xc9, 0x26, 0xec, 0x86, 0x10, 0x37, 0x9b, 0x78, 0x4a,
+	0xc8, 0x42, 0xcc, 0xeb, 0x87, 0x78, 0x44, 0x91, 0xdf, 0x15, 0x37, 0x63, 0xb8, 0x60, 0x20, 0x76,
+	0xfe, 0x53, 0x9d, 0x91, 0xb7, 0xaf, 0x31, 0xbf, 0x73, 0x72, 0x4d, 0x5c, 0xfc, 0x01, 0x65, 0xff,
+	0xd8, 0xf8, 0xbf, 0x4c, 0xf1, 0xbf, 0x9e, 0xbb, 0x43, 0xf1, 0xf3, 0x1f, 0xfc, 0x92, 0x2a, 0xc0,
+	0xe6, 0x81, 0x66, 0x22, 0xce, 0xc6, 0x6f, 0xed, 0x4c, 0xc4, 0xb9, 0x88, 0x97, 0x89, 0xfa, 0x63,
+	0xe2, 0x2b, 0x94, 0x89, 0x92, 0x78, 0x30, 0x28, 0x26, 0x1c, 0xc7, 0xf9, 0x95, 0xd3, 0x32, 0xf2,
+	0xdc, 0x8f, 0x71, 0x3e, 0x59, 0xa8, 0xf7, 0x1c, 0x94, 0x92, 0x5d, 0xc5, 0xed, 0xd3, 0x40, 0xcf,
+	0xf3, 0x0a, 0x63, 0xc7, 0xc8, 0xfb, 0x2e, 0xed, 0xbf, 0x77, 0x7a, 0x42, 0x09, 0xd1, 0x87, 0xd7,
+	0xd1, 0x93, 0xa2, 0xbf, 0x43, 0xd1, 0x6f, 0xe5, 0x6e, 0x7a, 0x82, 0x5a, 0xd8, 0x45, 0xc0, 0x66,
+	0xc4, 0xd2, 0x81, 0x8f, 0x97, 0xf7, 0x10, 0x4c, 0x79, 0xaa, 0xd9, 0xf8, 0x56, 0x3c, 0x1d, 0x78,
+	0xcb, 0xa3, 0x42, 0xdc, 0x9a, 0x80, 0xf8, 0x32, 0x45, 0x2e, 0x89, 0x8b, 0x3d, 0xe4, 0xce, 0xaf,
+	0xea, 0x46, 0xde, 0xa9, 0x3c, 0xe0, 0x9f, 0x23, 0x98, 0xf2, 0x14, 0xa4, 0xa3, 0x71, 0x06, 0xd5,
+	0xaf, 0xe3, 0xe3, 0x7c, 0x95, 0xe2, 0xfc, 0x7c, 0xee, 0x06, 0xc5, 0xe9, 0xfc, 0x09, 0x1b, 0x20,
+	0x5c, 0x1b, 0xad, 0x25, 0xdd, 0x0e, 0xe0, 0xa7, 0x08, 0x26, 0xdd, 0x75, 0xe4, 0xe8, 0x78, 0x13,
+	0x50, 0x75, 0x8e, 0x0f, 0x77, 0x83, 0xc2, 0x5d, 0x17, 0x73, 0x89, 0xe0, 0x3a, 0x0e, 0xf9, 0x53,
+	0x04, 0x13, 0xae, 0x82, 0x65, 0x74, 0x58, 0xe9, 0x2e, 0x05, 0x0b, 0xab, 0x89, 0x68, 0x78, 0x8a,
+	0xb2, 0xaf, 0x0d, 0xd7, 0x7a, 0x98, 0xc3, 0x43, 0x8b, 0x22, 0xcf, 0xaa, 0x91, 0x16, 0xd8, 0xdf,
+	0x20, 0xb8, 0xd4, 0xa3, 0x9c, 0x82, 0xb7, 0xa3, 0x80, 0x44, 0xd7, 0x62, 0x84, 0x6c, 0x3c, 0x66,
+	0x6c, 0x32, 0x51, 0xa2, 0x7c, 0x2c, 0xe1, 0x6b, 0x61, 0xa9, 0xb6, 0xed, 0x99, 0xff, 0xae, 0x70,
+	0xf8, 0x87, 0x2d, 0xc1, 0xbd, 0x24, 0xdb, 0x4e, 0x6e, 0xaa, 0x46, 0xb6, 0xa2, 0x37, 0xfe, 0xb8,
+	0x95, 0x3d, 0x33, 0xcd, 0xa6, 0x91, 0x97, 0xa4, 0x27, 0x4f, 0x9e, 0xf8, 0x3e, 0x4a, 0x72, 0xdb,
+	0x3c, 0x93, 0x2a, 0x75, 0xbd, 0xad, 0xac, 0x34, 0xeb, 0xb2, 0x59, 0xd5, 0x5b, 0x8d, 0xed, 0x37,
+	0x41, 0xac, 0xe8, 0x8d, 0x08, 0xd4, 0x47, 0xe8, 0x8d, 0x22, 0x9f, 0x51, 0xd3, 0xeb, 0xb2, 0x56,
+	0xcb, 0xea, 0xad, 0x9a, 0x54, 0x23, 0x1a, 0xbd, 0x5c, 0x4a, 0x9d, 0x6d, 0xc2, 0xfe, 0xc2, 0x7e,
+	0xc5, 0xf5, 0xfa, 0x70, 0x94, 0x52, 0xad, 0xfe, 0x27, 0x00, 0x00, 0xff, 0xff, 0xf3, 0x0c, 0x10,
+	0x4d, 0x57, 0x2f, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1354,9 +2604,10 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ResultStoreUploadClient interface {
-	// Creates the given invocation. Generally, a unique ID will be assigned to
-	// the invocation's name field by the server. This is not an implicitly
-	// idempotent API, so a request id is required to make it idempotent.
+	// Creates the given invocation.
+	//
+	// This is not an implicitly idempotent API, so a request id is required to
+	// make it idempotent.
 	//
 	// Returns an empty Invocation proto with only the name and ID fields
 	// populated.
@@ -1375,18 +2626,53 @@ type ResultStoreUploadClient interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the invocation does not exist.
-	// - If the invocation is finished.
+	// - If the invocation is finalized.
 	// - If no field mask was given.
 	UpdateInvocation(ctx context.Context, in *UpdateInvocationRequest, opts ...grpc.CallOption) (*Invocation, error)
-	// Declares the invocation with the given name as finished and immutable.
-	// This is an implicitly idempotent API.
+	// Applies a merge update to the invocation identified by the given proto's
+	// name.  For primitive and message fields, replaces them with the ones in
+	// the given proto if they are covered under the field mask paths.  For
+	// repeated fields, merges to them with the given ones if they are covered
+	// under the field mask paths. This is not an implicitly idempotent API, so a
+	// request id is required to make it idempotent.
+	//
+	// Returns an empty Invocation proto with only the name and ID fields
+	// populated.
+	//
+	//
+	// An error will be reported in the following cases:
+	// - If the invocation does not exist.
+	// - If the invocation is finalized.
+	// - If no field mask was given.
+	MergeInvocation(ctx context.Context, in *MergeInvocationRequest, opts ...grpc.CallOption) (*Invocation, error)
+	// Touches the invocation identified by the given proto's name.
+	//
+	// This is useful when you need to notify ResultStore that you haven't
+	// abandoned the upload, since abandoned uploads will be automatically
+	// finalized after a set period.
+	//
+	// An error will be reported in the following cases:
+	// - If the invocation does not exist.
+	// - If the invocation is finalized.
+	TouchInvocation(ctx context.Context, in *TouchInvocationRequest, opts ...grpc.CallOption) (*TouchInvocationResponse, error)
+	// Declares the invocation with the given name as finalized and immutable by
+	// the user. It may still be mutated by post-processing. This is an implicitly
+	// idempotent API.
 	//
 	// If an Invocation is not updated for 24 hours, some time after that
 	// this will be called automatically.
 	//
 	// An error will be reported in the following cases:
 	// - If the invocation does not exist.
-	FinishInvocation(ctx context.Context, in *FinishInvocationRequest, opts ...grpc.CallOption) (*FinishInvocationResponse, error)
+	FinalizeInvocation(ctx context.Context, in *FinalizeInvocationRequest, opts ...grpc.CallOption) (*FinalizeInvocationResponse, error)
+	// Deletes an immutable invocation (permanently)
+	// Note: this does not delete indirect data, e.g. files stored in other
+	// services.
+	//
+	// An error will be reported in the following cases:
+	// - If the invocation does not exist.
+	// - If the invocation is not finalized.  This can be retried until it is.
+	DeleteInvocation(ctx context.Context, in *DeleteInvocationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Creates the given target under the given parent invocation. The given
 	// target ID is URL encoded, converted to the full resource name, and assigned
 	// to the target's name field. This is not an implicitly idempotent API, so a
@@ -1397,7 +2683,7 @@ type ResultStoreUploadClient interface {
 	// An error will be reported in the following cases:
 	// - If no target ID is provided.
 	// - If the parent invocation does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	// - If a target with the same name already exists.
 	CreateTarget(ctx context.Context, in *CreateTargetRequest, opts ...grpc.CallOption) (*Target, error)
 	// Applies a standard update to the target identified by the given proto's
@@ -1410,15 +2696,31 @@ type ResultStoreUploadClient interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the target does not exist.
-	// - If the target or parent invocation is finished.
+	// - If the target or parent invocation is finalized.
 	// - If no field mask was given.
 	UpdateTarget(ctx context.Context, in *UpdateTargetRequest, opts ...grpc.CallOption) (*Target, error)
-	// Declares the target with the given name as finished and immutable.
-	// This is an implicitly idempotent API.
+	// Applies a merge update to the target identified by the given proto's
+	// name. For primitive and message fields, replaces them with the ones in the
+	// given proto if they are covered under the field mask paths.  For repeated
+	// fields, merges to them with the given ones if they are covered under the
+	// field mask paths. This is not an implicitly idempotent API, so a request
+	// id is required to make it idempotent.
+	//
+	// Returns an empty Target proto with only the name and ID fields populated.
+	//
 	//
 	// An error will be reported in the following cases:
 	// - If the target does not exist.
-	FinishTarget(ctx context.Context, in *FinishTargetRequest, opts ...grpc.CallOption) (*FinishTargetResponse, error)
+	// - If the target or parent invocation is finalized.
+	// - If no field mask was given.
+	MergeTarget(ctx context.Context, in *MergeTargetRequest, opts ...grpc.CallOption) (*Target, error)
+	// Declares the target with the given name as finalized and immutable by the
+	// user. It may still be mutated by post-processing. This is an implicitly
+	// idempotent API.
+	//
+	// An error will be reported in the following cases:
+	// - If the target does not exist.
+	FinalizeTarget(ctx context.Context, in *FinalizeTargetRequest, opts ...grpc.CallOption) (*FinalizeTargetResponse, error)
 	// Creates the given configured target under the given parent target.
 	// The given configured target ID is URL encoded, converted to the full
 	// resource name, and assigned to the configured target's name field.
@@ -1432,7 +2734,7 @@ type ResultStoreUploadClient interface {
 	// - If no config ID is provided.
 	// - If a configured target with the same ID already exists.
 	// - If the parent target does not exist.
-	// - If the parent target or invocation is finished.
+	// - If the parent target or invocation is finalized.
 	CreateConfiguredTarget(ctx context.Context, in *CreateConfiguredTargetRequest, opts ...grpc.CallOption) (*ConfiguredTarget, error)
 	// Applies a standard update to the configured target identified by the given
 	// proto's name. For all types of fields (primitive, message, or repeated),
@@ -1445,15 +2747,32 @@ type ResultStoreUploadClient interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the configured target does not exist.
-	// - If the parent target or invocation is finished.
+	// - If the parent target or invocation is finalized.
 	// - If no field mask was given.
 	UpdateConfiguredTarget(ctx context.Context, in *UpdateConfiguredTargetRequest, opts ...grpc.CallOption) (*ConfiguredTarget, error)
-	// Declares the configured target with the given name as finished and
-	// immutable. This is an implicitly idempotent API.
+	// Applies a merge update to the configured target identified by the given
+	// proto's name. For primitive and message fields, replaces them with the
+	// ones in the given proto if they are covered under the field mask paths.
+	// For repeated fields, merges to them with the given ones if they are
+	// covered under the field mask paths. This is not an implicitly idempotent
+	// API, so a request id is required to make it idempotent.
+	//
+	// Returns an empty ConfiguredTarget proto with only the name and ID fields
+	// populated.
+	//
 	//
 	// An error will be reported in the following cases:
 	// - If the configured target does not exist.
-	FinishConfiguredTarget(ctx context.Context, in *FinishConfiguredTargetRequest, opts ...grpc.CallOption) (*FinishConfiguredTargetResponse, error)
+	// - If the parent target or invocation is finalized.
+	// - If no field mask was given.
+	MergeConfiguredTarget(ctx context.Context, in *MergeConfiguredTargetRequest, opts ...grpc.CallOption) (*ConfiguredTarget, error)
+	// Declares the configured target with the given name as finalized and
+	// immutable by the user. It may still be mutated by post-processing. This is
+	// an implicitly idempotent API.
+	//
+	// An error will be reported in the following cases:
+	// - If the configured target does not exist.
+	FinalizeConfiguredTarget(ctx context.Context, in *FinalizeConfiguredTargetRequest, opts ...grpc.CallOption) (*FinalizeConfiguredTargetResponse, error)
 	// Creates the given action under the given configured target. The given
 	// action ID is URL encoded, converted to the full resource name, and
 	// assigned to the action's name field. This is not an implicitly
@@ -1464,7 +2783,7 @@ type ResultStoreUploadClient interface {
 	// An error will be reported in the following cases:
 	// - If no action ID provided.
 	// - If the parent configured target does not exist.
-	// - If the parent target or invocation is finished.
+	// - If the parent target or invocation is finalized.
 	// - If an action  with the same name already exists.
 	CreateAction(ctx context.Context, in *CreateActionRequest, opts ...grpc.CallOption) (*Action, error)
 	// Applies a standard update to the action identified by the given
@@ -1477,9 +2796,24 @@ type ResultStoreUploadClient interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the action does not exist.
-	// - If the parent target or invocation is finished.
+	// - If the parent target or invocation is finalized.
 	// - If no field mask was given.
 	UpdateAction(ctx context.Context, in *UpdateActionRequest, opts ...grpc.CallOption) (*Action, error)
+	// Applies a merge update to the action identified by the given
+	// proto's name.  For primitive and message fields, replaces them with the
+	// ones in the given proto if they are covered under the field mask paths.
+	// For repeated fields, merges to them with the given ones if they are
+	// covered under the field mask paths. This is not an implicitly idempotent
+	// API, so a request id is required to make it idempotent.
+	//
+	// Returns an empty Action proto with only the name and ID fields populated.
+	//
+	//
+	// An error will be reported in the following cases:
+	// - If the action does not exist.
+	// - If the parent target or invocation is finalized.
+	// - If no field mask was given.
+	MergeAction(ctx context.Context, in *MergeActionRequest, opts ...grpc.CallOption) (*Action, error)
 	// Creates the given configuration under the given parent invocation. The
 	// given configuration ID is URL encoded, converted to the full resource name,
 	// and assigned to the configuration's name field. The configuration ID of
@@ -1493,7 +2827,7 @@ type ResultStoreUploadClient interface {
 	// An error will be reported in the following cases:
 	// - If no configuration ID is provided.
 	// - If the parent invocation does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	// - If a configuration with the same name already exists.
 	CreateConfiguration(ctx context.Context, in *CreateConfigurationRequest, opts ...grpc.CallOption) (*Configuration, error)
 	// Applies a standard update to the configuration identified by the given
@@ -1507,7 +2841,7 @@ type ResultStoreUploadClient interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the configuration does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	// - If no field mask was given.
 	// - If a given field mask path is not valid.
 	UpdateConfiguration(ctx context.Context, in *UpdateConfigurationRequest, opts ...grpc.CallOption) (*Configuration, error)
@@ -1522,7 +2856,7 @@ type ResultStoreUploadClient interface {
 	// - If no file set ID is provided.
 	// - If a file set with the same name already exists.
 	// - If the parent invocation does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	CreateFileSet(ctx context.Context, in *CreateFileSetRequest, opts ...grpc.CallOption) (*FileSet, error)
 	// Applies a standard update to the file set identified by the given proto's
 	// name. For all types of fields (primitive, message, or repeated), replaces
@@ -1534,10 +2868,48 @@ type ResultStoreUploadClient interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the file set does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	// - If no field mask was given.
 	// - If a given field mask path is not valid.
 	UpdateFileSet(ctx context.Context, in *UpdateFileSetRequest, opts ...grpc.CallOption) (*FileSet, error)
+	// Applies a merge update to the file set identified by the given proto's
+	// name. For primitive and message fields, updates them with the ones in the
+	// given proto if they are covered under the field mask paths. For repeated
+	// fields, merges to them with the given ones if they are covered under the
+	// field mask paths. This is not an implicitly idempotent API, so a request
+	// id is required to make it idempotent.
+	//
+	// Returns an empty FileSet proto with only the name and ID fields populated.
+	//
+	//
+	// An error will be reported in the following cases:
+	// - If the file set does not exist.
+	// - If the parent invocation is finalized.
+	// - If a given field mask path is not valid.
+	// - If no field mask was given.
+	MergeFileSet(ctx context.Context, in *MergeFileSetRequest, opts ...grpc.CallOption) (*FileSet, error)
+	// This is the RPC used for batch upload. It supports uploading multiple
+	// resources for an invocation in a transaction safe manner.
+	//
+	// To use this RPC, the CreateInvocationRequest must have been provided a
+	// resume_token.
+	//
+	// Combining batch upload with normal upload on a single Invocation is not
+	// supported. If an Invocation is created with a resume_token, all further
+	// calls must be through UploadBatch. If an Invocation is created without
+	// resume_token normal upload, all further upload calls must be through normal
+	// upload RPCs.
+	UploadBatch(ctx context.Context, in *UploadBatchRequest, opts ...grpc.CallOption) (*UploadBatchResponse, error)
+	// Provides a way to read the metadata for an invocation.
+	// The UploadMetadata could still be retrieved by this RPC even the Invocation
+	// has been finalized.
+	// This API requires setting a response FieldMask via 'fields' URL query
+	// parameter or X-Goog-FieldMask HTTP/gRPC header.
+	//
+	// An error will be reported in the following case:
+	// - If the invocation does not exist.
+	// - If no field mask was given.
+	GetInvocationUploadMetadata(ctx context.Context, in *GetInvocationUploadMetadataRequest, opts ...grpc.CallOption) (*UploadMetadata, error)
 }
 
 type resultStoreUploadClient struct {
@@ -1566,9 +2938,36 @@ func (c *resultStoreUploadClient) UpdateInvocation(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *resultStoreUploadClient) FinishInvocation(ctx context.Context, in *FinishInvocationRequest, opts ...grpc.CallOption) (*FinishInvocationResponse, error) {
-	out := new(FinishInvocationResponse)
-	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/FinishInvocation", in, out, opts...)
+func (c *resultStoreUploadClient) MergeInvocation(ctx context.Context, in *MergeInvocationRequest, opts ...grpc.CallOption) (*Invocation, error) {
+	out := new(Invocation)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/MergeInvocation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resultStoreUploadClient) TouchInvocation(ctx context.Context, in *TouchInvocationRequest, opts ...grpc.CallOption) (*TouchInvocationResponse, error) {
+	out := new(TouchInvocationResponse)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/TouchInvocation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resultStoreUploadClient) FinalizeInvocation(ctx context.Context, in *FinalizeInvocationRequest, opts ...grpc.CallOption) (*FinalizeInvocationResponse, error) {
+	out := new(FinalizeInvocationResponse)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/FinalizeInvocation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resultStoreUploadClient) DeleteInvocation(ctx context.Context, in *DeleteInvocationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/DeleteInvocation", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1593,9 +2992,18 @@ func (c *resultStoreUploadClient) UpdateTarget(ctx context.Context, in *UpdateTa
 	return out, nil
 }
 
-func (c *resultStoreUploadClient) FinishTarget(ctx context.Context, in *FinishTargetRequest, opts ...grpc.CallOption) (*FinishTargetResponse, error) {
-	out := new(FinishTargetResponse)
-	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/FinishTarget", in, out, opts...)
+func (c *resultStoreUploadClient) MergeTarget(ctx context.Context, in *MergeTargetRequest, opts ...grpc.CallOption) (*Target, error) {
+	out := new(Target)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/MergeTarget", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resultStoreUploadClient) FinalizeTarget(ctx context.Context, in *FinalizeTargetRequest, opts ...grpc.CallOption) (*FinalizeTargetResponse, error) {
+	out := new(FinalizeTargetResponse)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/FinalizeTarget", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1620,9 +3028,18 @@ func (c *resultStoreUploadClient) UpdateConfiguredTarget(ctx context.Context, in
 	return out, nil
 }
 
-func (c *resultStoreUploadClient) FinishConfiguredTarget(ctx context.Context, in *FinishConfiguredTargetRequest, opts ...grpc.CallOption) (*FinishConfiguredTargetResponse, error) {
-	out := new(FinishConfiguredTargetResponse)
-	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/FinishConfiguredTarget", in, out, opts...)
+func (c *resultStoreUploadClient) MergeConfiguredTarget(ctx context.Context, in *MergeConfiguredTargetRequest, opts ...grpc.CallOption) (*ConfiguredTarget, error) {
+	out := new(ConfiguredTarget)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/MergeConfiguredTarget", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resultStoreUploadClient) FinalizeConfiguredTarget(ctx context.Context, in *FinalizeConfiguredTargetRequest, opts ...grpc.CallOption) (*FinalizeConfiguredTargetResponse, error) {
+	out := new(FinalizeConfiguredTargetResponse)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/FinalizeConfiguredTarget", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1641,6 +3058,15 @@ func (c *resultStoreUploadClient) CreateAction(ctx context.Context, in *CreateAc
 func (c *resultStoreUploadClient) UpdateAction(ctx context.Context, in *UpdateActionRequest, opts ...grpc.CallOption) (*Action, error) {
 	out := new(Action)
 	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/UpdateAction", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resultStoreUploadClient) MergeAction(ctx context.Context, in *MergeActionRequest, opts ...grpc.CallOption) (*Action, error) {
+	out := new(Action)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/MergeAction", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1683,11 +3109,39 @@ func (c *resultStoreUploadClient) UpdateFileSet(ctx context.Context, in *UpdateF
 	return out, nil
 }
 
+func (c *resultStoreUploadClient) MergeFileSet(ctx context.Context, in *MergeFileSetRequest, opts ...grpc.CallOption) (*FileSet, error) {
+	out := new(FileSet)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/MergeFileSet", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resultStoreUploadClient) UploadBatch(ctx context.Context, in *UploadBatchRequest, opts ...grpc.CallOption) (*UploadBatchResponse, error) {
+	out := new(UploadBatchResponse)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/UploadBatch", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *resultStoreUploadClient) GetInvocationUploadMetadata(ctx context.Context, in *GetInvocationUploadMetadataRequest, opts ...grpc.CallOption) (*UploadMetadata, error) {
+	out := new(UploadMetadata)
+	err := c.cc.Invoke(ctx, "/google.devtools.resultstore.v2.ResultStoreUpload/GetInvocationUploadMetadata", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ResultStoreUploadServer is the server API for ResultStoreUpload service.
 type ResultStoreUploadServer interface {
-	// Creates the given invocation. Generally, a unique ID will be assigned to
-	// the invocation's name field by the server. This is not an implicitly
-	// idempotent API, so a request id is required to make it idempotent.
+	// Creates the given invocation.
+	//
+	// This is not an implicitly idempotent API, so a request id is required to
+	// make it idempotent.
 	//
 	// Returns an empty Invocation proto with only the name and ID fields
 	// populated.
@@ -1706,18 +3160,53 @@ type ResultStoreUploadServer interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the invocation does not exist.
-	// - If the invocation is finished.
+	// - If the invocation is finalized.
 	// - If no field mask was given.
 	UpdateInvocation(context.Context, *UpdateInvocationRequest) (*Invocation, error)
-	// Declares the invocation with the given name as finished and immutable.
-	// This is an implicitly idempotent API.
+	// Applies a merge update to the invocation identified by the given proto's
+	// name.  For primitive and message fields, replaces them with the ones in
+	// the given proto if they are covered under the field mask paths.  For
+	// repeated fields, merges to them with the given ones if they are covered
+	// under the field mask paths. This is not an implicitly idempotent API, so a
+	// request id is required to make it idempotent.
+	//
+	// Returns an empty Invocation proto with only the name and ID fields
+	// populated.
+	//
+	//
+	// An error will be reported in the following cases:
+	// - If the invocation does not exist.
+	// - If the invocation is finalized.
+	// - If no field mask was given.
+	MergeInvocation(context.Context, *MergeInvocationRequest) (*Invocation, error)
+	// Touches the invocation identified by the given proto's name.
+	//
+	// This is useful when you need to notify ResultStore that you haven't
+	// abandoned the upload, since abandoned uploads will be automatically
+	// finalized after a set period.
+	//
+	// An error will be reported in the following cases:
+	// - If the invocation does not exist.
+	// - If the invocation is finalized.
+	TouchInvocation(context.Context, *TouchInvocationRequest) (*TouchInvocationResponse, error)
+	// Declares the invocation with the given name as finalized and immutable by
+	// the user. It may still be mutated by post-processing. This is an implicitly
+	// idempotent API.
 	//
 	// If an Invocation is not updated for 24 hours, some time after that
 	// this will be called automatically.
 	//
 	// An error will be reported in the following cases:
 	// - If the invocation does not exist.
-	FinishInvocation(context.Context, *FinishInvocationRequest) (*FinishInvocationResponse, error)
+	FinalizeInvocation(context.Context, *FinalizeInvocationRequest) (*FinalizeInvocationResponse, error)
+	// Deletes an immutable invocation (permanently)
+	// Note: this does not delete indirect data, e.g. files stored in other
+	// services.
+	//
+	// An error will be reported in the following cases:
+	// - If the invocation does not exist.
+	// - If the invocation is not finalized.  This can be retried until it is.
+	DeleteInvocation(context.Context, *DeleteInvocationRequest) (*empty.Empty, error)
 	// Creates the given target under the given parent invocation. The given
 	// target ID is URL encoded, converted to the full resource name, and assigned
 	// to the target's name field. This is not an implicitly idempotent API, so a
@@ -1728,7 +3217,7 @@ type ResultStoreUploadServer interface {
 	// An error will be reported in the following cases:
 	// - If no target ID is provided.
 	// - If the parent invocation does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	// - If a target with the same name already exists.
 	CreateTarget(context.Context, *CreateTargetRequest) (*Target, error)
 	// Applies a standard update to the target identified by the given proto's
@@ -1741,15 +3230,31 @@ type ResultStoreUploadServer interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the target does not exist.
-	// - If the target or parent invocation is finished.
+	// - If the target or parent invocation is finalized.
 	// - If no field mask was given.
 	UpdateTarget(context.Context, *UpdateTargetRequest) (*Target, error)
-	// Declares the target with the given name as finished and immutable.
-	// This is an implicitly idempotent API.
+	// Applies a merge update to the target identified by the given proto's
+	// name. For primitive and message fields, replaces them with the ones in the
+	// given proto if they are covered under the field mask paths.  For repeated
+	// fields, merges to them with the given ones if they are covered under the
+	// field mask paths. This is not an implicitly idempotent API, so a request
+	// id is required to make it idempotent.
+	//
+	// Returns an empty Target proto with only the name and ID fields populated.
+	//
 	//
 	// An error will be reported in the following cases:
 	// - If the target does not exist.
-	FinishTarget(context.Context, *FinishTargetRequest) (*FinishTargetResponse, error)
+	// - If the target or parent invocation is finalized.
+	// - If no field mask was given.
+	MergeTarget(context.Context, *MergeTargetRequest) (*Target, error)
+	// Declares the target with the given name as finalized and immutable by the
+	// user. It may still be mutated by post-processing. This is an implicitly
+	// idempotent API.
+	//
+	// An error will be reported in the following cases:
+	// - If the target does not exist.
+	FinalizeTarget(context.Context, *FinalizeTargetRequest) (*FinalizeTargetResponse, error)
 	// Creates the given configured target under the given parent target.
 	// The given configured target ID is URL encoded, converted to the full
 	// resource name, and assigned to the configured target's name field.
@@ -1763,7 +3268,7 @@ type ResultStoreUploadServer interface {
 	// - If no config ID is provided.
 	// - If a configured target with the same ID already exists.
 	// - If the parent target does not exist.
-	// - If the parent target or invocation is finished.
+	// - If the parent target or invocation is finalized.
 	CreateConfiguredTarget(context.Context, *CreateConfiguredTargetRequest) (*ConfiguredTarget, error)
 	// Applies a standard update to the configured target identified by the given
 	// proto's name. For all types of fields (primitive, message, or repeated),
@@ -1776,15 +3281,32 @@ type ResultStoreUploadServer interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the configured target does not exist.
-	// - If the parent target or invocation is finished.
+	// - If the parent target or invocation is finalized.
 	// - If no field mask was given.
 	UpdateConfiguredTarget(context.Context, *UpdateConfiguredTargetRequest) (*ConfiguredTarget, error)
-	// Declares the configured target with the given name as finished and
-	// immutable. This is an implicitly idempotent API.
+	// Applies a merge update to the configured target identified by the given
+	// proto's name. For primitive and message fields, replaces them with the
+	// ones in the given proto if they are covered under the field mask paths.
+	// For repeated fields, merges to them with the given ones if they are
+	// covered under the field mask paths. This is not an implicitly idempotent
+	// API, so a request id is required to make it idempotent.
+	//
+	// Returns an empty ConfiguredTarget proto with only the name and ID fields
+	// populated.
+	//
 	//
 	// An error will be reported in the following cases:
 	// - If the configured target does not exist.
-	FinishConfiguredTarget(context.Context, *FinishConfiguredTargetRequest) (*FinishConfiguredTargetResponse, error)
+	// - If the parent target or invocation is finalized.
+	// - If no field mask was given.
+	MergeConfiguredTarget(context.Context, *MergeConfiguredTargetRequest) (*ConfiguredTarget, error)
+	// Declares the configured target with the given name as finalized and
+	// immutable by the user. It may still be mutated by post-processing. This is
+	// an implicitly idempotent API.
+	//
+	// An error will be reported in the following cases:
+	// - If the configured target does not exist.
+	FinalizeConfiguredTarget(context.Context, *FinalizeConfiguredTargetRequest) (*FinalizeConfiguredTargetResponse, error)
 	// Creates the given action under the given configured target. The given
 	// action ID is URL encoded, converted to the full resource name, and
 	// assigned to the action's name field. This is not an implicitly
@@ -1795,7 +3317,7 @@ type ResultStoreUploadServer interface {
 	// An error will be reported in the following cases:
 	// - If no action ID provided.
 	// - If the parent configured target does not exist.
-	// - If the parent target or invocation is finished.
+	// - If the parent target or invocation is finalized.
 	// - If an action  with the same name already exists.
 	CreateAction(context.Context, *CreateActionRequest) (*Action, error)
 	// Applies a standard update to the action identified by the given
@@ -1808,9 +3330,24 @@ type ResultStoreUploadServer interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the action does not exist.
-	// - If the parent target or invocation is finished.
+	// - If the parent target or invocation is finalized.
 	// - If no field mask was given.
 	UpdateAction(context.Context, *UpdateActionRequest) (*Action, error)
+	// Applies a merge update to the action identified by the given
+	// proto's name.  For primitive and message fields, replaces them with the
+	// ones in the given proto if they are covered under the field mask paths.
+	// For repeated fields, merges to them with the given ones if they are
+	// covered under the field mask paths. This is not an implicitly idempotent
+	// API, so a request id is required to make it idempotent.
+	//
+	// Returns an empty Action proto with only the name and ID fields populated.
+	//
+	//
+	// An error will be reported in the following cases:
+	// - If the action does not exist.
+	// - If the parent target or invocation is finalized.
+	// - If no field mask was given.
+	MergeAction(context.Context, *MergeActionRequest) (*Action, error)
 	// Creates the given configuration under the given parent invocation. The
 	// given configuration ID is URL encoded, converted to the full resource name,
 	// and assigned to the configuration's name field. The configuration ID of
@@ -1824,7 +3361,7 @@ type ResultStoreUploadServer interface {
 	// An error will be reported in the following cases:
 	// - If no configuration ID is provided.
 	// - If the parent invocation does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	// - If a configuration with the same name already exists.
 	CreateConfiguration(context.Context, *CreateConfigurationRequest) (*Configuration, error)
 	// Applies a standard update to the configuration identified by the given
@@ -1838,7 +3375,7 @@ type ResultStoreUploadServer interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the configuration does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	// - If no field mask was given.
 	// - If a given field mask path is not valid.
 	UpdateConfiguration(context.Context, *UpdateConfigurationRequest) (*Configuration, error)
@@ -1853,7 +3390,7 @@ type ResultStoreUploadServer interface {
 	// - If no file set ID is provided.
 	// - If a file set with the same name already exists.
 	// - If the parent invocation does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	CreateFileSet(context.Context, *CreateFileSetRequest) (*FileSet, error)
 	// Applies a standard update to the file set identified by the given proto's
 	// name. For all types of fields (primitive, message, or repeated), replaces
@@ -1865,10 +3402,48 @@ type ResultStoreUploadServer interface {
 	//
 	// An error will be reported in the following cases:
 	// - If the file set does not exist.
-	// - If the parent invocation is finished.
+	// - If the parent invocation is finalized.
 	// - If no field mask was given.
 	// - If a given field mask path is not valid.
 	UpdateFileSet(context.Context, *UpdateFileSetRequest) (*FileSet, error)
+	// Applies a merge update to the file set identified by the given proto's
+	// name. For primitive and message fields, updates them with the ones in the
+	// given proto if they are covered under the field mask paths. For repeated
+	// fields, merges to them with the given ones if they are covered under the
+	// field mask paths. This is not an implicitly idempotent API, so a request
+	// id is required to make it idempotent.
+	//
+	// Returns an empty FileSet proto with only the name and ID fields populated.
+	//
+	//
+	// An error will be reported in the following cases:
+	// - If the file set does not exist.
+	// - If the parent invocation is finalized.
+	// - If a given field mask path is not valid.
+	// - If no field mask was given.
+	MergeFileSet(context.Context, *MergeFileSetRequest) (*FileSet, error)
+	// This is the RPC used for batch upload. It supports uploading multiple
+	// resources for an invocation in a transaction safe manner.
+	//
+	// To use this RPC, the CreateInvocationRequest must have been provided a
+	// resume_token.
+	//
+	// Combining batch upload with normal upload on a single Invocation is not
+	// supported. If an Invocation is created with a resume_token, all further
+	// calls must be through UploadBatch. If an Invocation is created without
+	// resume_token normal upload, all further upload calls must be through normal
+	// upload RPCs.
+	UploadBatch(context.Context, *UploadBatchRequest) (*UploadBatchResponse, error)
+	// Provides a way to read the metadata for an invocation.
+	// The UploadMetadata could still be retrieved by this RPC even the Invocation
+	// has been finalized.
+	// This API requires setting a response FieldMask via 'fields' URL query
+	// parameter or X-Goog-FieldMask HTTP/gRPC header.
+	//
+	// An error will be reported in the following case:
+	// - If the invocation does not exist.
+	// - If no field mask was given.
+	GetInvocationUploadMetadata(context.Context, *GetInvocationUploadMetadataRequest) (*UploadMetadata, error)
 }
 
 func RegisterResultStoreUploadServer(s *grpc.Server, srv ResultStoreUploadServer) {
@@ -1911,20 +3486,74 @@ func _ResultStoreUpload_UpdateInvocation_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ResultStoreUpload_FinishInvocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FinishInvocationRequest)
+func _ResultStoreUpload_MergeInvocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MergeInvocationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ResultStoreUploadServer).FinishInvocation(ctx, in)
+		return srv.(ResultStoreUploadServer).MergeInvocation(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/FinishInvocation",
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/MergeInvocation",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResultStoreUploadServer).FinishInvocation(ctx, req.(*FinishInvocationRequest))
+		return srv.(ResultStoreUploadServer).MergeInvocation(ctx, req.(*MergeInvocationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResultStoreUpload_TouchInvocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TouchInvocationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResultStoreUploadServer).TouchInvocation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/TouchInvocation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResultStoreUploadServer).TouchInvocation(ctx, req.(*TouchInvocationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResultStoreUpload_FinalizeInvocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FinalizeInvocationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResultStoreUploadServer).FinalizeInvocation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/FinalizeInvocation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResultStoreUploadServer).FinalizeInvocation(ctx, req.(*FinalizeInvocationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResultStoreUpload_DeleteInvocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteInvocationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResultStoreUploadServer).DeleteInvocation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/DeleteInvocation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResultStoreUploadServer).DeleteInvocation(ctx, req.(*DeleteInvocationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1965,20 +3594,38 @@ func _ResultStoreUpload_UpdateTarget_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ResultStoreUpload_FinishTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FinishTargetRequest)
+func _ResultStoreUpload_MergeTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MergeTargetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ResultStoreUploadServer).FinishTarget(ctx, in)
+		return srv.(ResultStoreUploadServer).MergeTarget(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/FinishTarget",
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/MergeTarget",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResultStoreUploadServer).FinishTarget(ctx, req.(*FinishTargetRequest))
+		return srv.(ResultStoreUploadServer).MergeTarget(ctx, req.(*MergeTargetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResultStoreUpload_FinalizeTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FinalizeTargetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResultStoreUploadServer).FinalizeTarget(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/FinalizeTarget",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResultStoreUploadServer).FinalizeTarget(ctx, req.(*FinalizeTargetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2019,20 +3666,38 @@ func _ResultStoreUpload_UpdateConfiguredTarget_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ResultStoreUpload_FinishConfiguredTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(FinishConfiguredTargetRequest)
+func _ResultStoreUpload_MergeConfiguredTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MergeConfiguredTargetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ResultStoreUploadServer).FinishConfiguredTarget(ctx, in)
+		return srv.(ResultStoreUploadServer).MergeConfiguredTarget(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/FinishConfiguredTarget",
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/MergeConfiguredTarget",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ResultStoreUploadServer).FinishConfiguredTarget(ctx, req.(*FinishConfiguredTargetRequest))
+		return srv.(ResultStoreUploadServer).MergeConfiguredTarget(ctx, req.(*MergeConfiguredTargetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResultStoreUpload_FinalizeConfiguredTarget_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FinalizeConfiguredTargetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResultStoreUploadServer).FinalizeConfiguredTarget(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/FinalizeConfiguredTarget",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResultStoreUploadServer).FinalizeConfiguredTarget(ctx, req.(*FinalizeConfiguredTargetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2069,6 +3734,24 @@ func _ResultStoreUpload_UpdateAction_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ResultStoreUploadServer).UpdateAction(ctx, req.(*UpdateActionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResultStoreUpload_MergeAction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MergeActionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResultStoreUploadServer).MergeAction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/MergeAction",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResultStoreUploadServer).MergeAction(ctx, req.(*MergeActionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2145,6 +3828,60 @@ func _ResultStoreUpload_UpdateFileSet_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ResultStoreUpload_MergeFileSet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MergeFileSetRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResultStoreUploadServer).MergeFileSet(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/MergeFileSet",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResultStoreUploadServer).MergeFileSet(ctx, req.(*MergeFileSetRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResultStoreUpload_UploadBatch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadBatchRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResultStoreUploadServer).UploadBatch(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/UploadBatch",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResultStoreUploadServer).UploadBatch(ctx, req.(*UploadBatchRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ResultStoreUpload_GetInvocationUploadMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetInvocationUploadMetadataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ResultStoreUploadServer).GetInvocationUploadMetadata(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.devtools.resultstore.v2.ResultStoreUpload/GetInvocationUploadMetadata",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ResultStoreUploadServer).GetInvocationUploadMetadata(ctx, req.(*GetInvocationUploadMetadataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _ResultStoreUpload_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "google.devtools.resultstore.v2.ResultStoreUpload",
 	HandlerType: (*ResultStoreUploadServer)(nil),
@@ -2158,8 +3895,20 @@ var _ResultStoreUpload_serviceDesc = grpc.ServiceDesc{
 			Handler:    _ResultStoreUpload_UpdateInvocation_Handler,
 		},
 		{
-			MethodName: "FinishInvocation",
-			Handler:    _ResultStoreUpload_FinishInvocation_Handler,
+			MethodName: "MergeInvocation",
+			Handler:    _ResultStoreUpload_MergeInvocation_Handler,
+		},
+		{
+			MethodName: "TouchInvocation",
+			Handler:    _ResultStoreUpload_TouchInvocation_Handler,
+		},
+		{
+			MethodName: "FinalizeInvocation",
+			Handler:    _ResultStoreUpload_FinalizeInvocation_Handler,
+		},
+		{
+			MethodName: "DeleteInvocation",
+			Handler:    _ResultStoreUpload_DeleteInvocation_Handler,
 		},
 		{
 			MethodName: "CreateTarget",
@@ -2170,8 +3919,12 @@ var _ResultStoreUpload_serviceDesc = grpc.ServiceDesc{
 			Handler:    _ResultStoreUpload_UpdateTarget_Handler,
 		},
 		{
-			MethodName: "FinishTarget",
-			Handler:    _ResultStoreUpload_FinishTarget_Handler,
+			MethodName: "MergeTarget",
+			Handler:    _ResultStoreUpload_MergeTarget_Handler,
+		},
+		{
+			MethodName: "FinalizeTarget",
+			Handler:    _ResultStoreUpload_FinalizeTarget_Handler,
 		},
 		{
 			MethodName: "CreateConfiguredTarget",
@@ -2182,8 +3935,12 @@ var _ResultStoreUpload_serviceDesc = grpc.ServiceDesc{
 			Handler:    _ResultStoreUpload_UpdateConfiguredTarget_Handler,
 		},
 		{
-			MethodName: "FinishConfiguredTarget",
-			Handler:    _ResultStoreUpload_FinishConfiguredTarget_Handler,
+			MethodName: "MergeConfiguredTarget",
+			Handler:    _ResultStoreUpload_MergeConfiguredTarget_Handler,
+		},
+		{
+			MethodName: "FinalizeConfiguredTarget",
+			Handler:    _ResultStoreUpload_FinalizeConfiguredTarget_Handler,
 		},
 		{
 			MethodName: "CreateAction",
@@ -2192,6 +3949,10 @@ var _ResultStoreUpload_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateAction",
 			Handler:    _ResultStoreUpload_UpdateAction_Handler,
+		},
+		{
+			MethodName: "MergeAction",
+			Handler:    _ResultStoreUpload_MergeAction_Handler,
 		},
 		{
 			MethodName: "CreateConfiguration",
@@ -2208,6 +3969,18 @@ var _ResultStoreUpload_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateFileSet",
 			Handler:    _ResultStoreUpload_UpdateFileSet_Handler,
+		},
+		{
+			MethodName: "MergeFileSet",
+			Handler:    _ResultStoreUpload_MergeFileSet_Handler,
+		},
+		{
+			MethodName: "UploadBatch",
+			Handler:    _ResultStoreUpload_UploadBatch_Handler,
+		},
+		{
+			MethodName: "GetInvocationUploadMetadata",
+			Handler:    _ResultStoreUpload_GetInvocationUploadMetadata_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

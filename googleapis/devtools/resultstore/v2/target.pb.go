@@ -114,7 +114,7 @@ func (TestSize) EnumDescriptor() ([]byte, []int) {
 // the data.
 type Target struct {
 	// The resource name.  Its format must be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The resource ID components that identify the Target. They must match the
 	// resource name after proper encoding.

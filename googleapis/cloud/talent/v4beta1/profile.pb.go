@@ -210,6 +210,8 @@ type Profile struct {
 	// [EmploymentRecord.is_current][google.cloud.talent.v4beta1.EmploymentRecord.is_current]
 	// for the current employment if possible. If not, it's inferred from user
 	// inputs.
+	//
+	// The limitation for max number of employment records is 50.
 	EmploymentRecords []*EmploymentRecord `protobuf:"bytes,17,rep,name=employment_records,json=employmentRecords,proto3" json:"employment_records,omitempty"`
 	// Optional. The education history record of the candidate. It's highly
 	// recommended to input this information as accurately as possible to help
@@ -223,16 +225,24 @@ type Profile struct {
 	// [EducationRecord.is_current][google.cloud.talent.v4beta1.EducationRecord.is_current]
 	// for the current education if possible. If not, it's inferred from user
 	// inputs.
+	//
+	// The limitation for max number of education records is 10.
 	EducationRecords []*EducationRecord `protobuf:"bytes,18,rep,name=education_records,json=educationRecords,proto3" json:"education_records,omitempty"`
 	// Optional. The skill set of the candidate. It's highly recommended to
 	// provide as much information as possible to help improve the search quality.
+	//
+	// The limitation for max number of skills is 100.
 	Skills []*Skill `protobuf:"bytes,19,rep,name=skills,proto3" json:"skills,omitempty"`
 	// Optional. The individual or collaborative activities which the candidate
 	// has participated in, for example, open-source projects, class assignments
 	// that aren't listed in
 	// [employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
+	//
+	// The limitation for max number of activities is 50.
 	Activities []*Activity `protobuf:"bytes,20,rep,name=activities,proto3" json:"activities,omitempty"`
 	// Optional. The publications published by the candidate.
+	//
+	// The limitation for max number of publications is 50.
 	Publications []*Publication `protobuf:"bytes,21,rep,name=publications,proto3" json:"publications,omitempty"`
 	// Optional. The patents acquired by the candidate.
 	Patents []*Patent `protobuf:"bytes,22,rep,name=patents,proto3" json:"patents,omitempty"`
@@ -1552,8 +1562,12 @@ type Activity struct {
 	// Optional. A list of team members involved in this activity.
 	//
 	// Number of characters allowed is 100.
+	//
+	// The limitation for max number of team members is 50.
 	TeamMembers []string `protobuf:"bytes,6,rep,name=team_members,json=teamMembers,proto3" json:"team_members,omitempty"`
 	// Optional. A list of skills used in this activity.
+	//
+	// The limitation for max number of skills used is 50.
 	SkillsUsed []*Skill `protobuf:"bytes,7,rep,name=skills_used,json=skillsUsed,proto3" json:"skills_used,omitempty"`
 	// Output only. Activity name snippet shows how the
 	// [display_name][google.cloud.talent.v4beta1.Activity.display_name] is

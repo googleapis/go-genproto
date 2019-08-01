@@ -39,11 +39,13 @@ const (
 	// The batch operation is done and no item has been successfully processed.
 	BatchOperationMetadata_FAILED BatchOperationMetadata_State = 4
 	// The batch operation is in the process of cancelling after
-	// [google.longrunning.Operation.CancelOperation] is called.
+	// [google.longrunning.Operations.CancelOperation][google.longrunning.Operations.CancelOperation]
+	// is called.
 	BatchOperationMetadata_CANCELLING BatchOperationMetadata_State = 5
 	// The batch operation is done after
-	// [google.longrunning.Operation.CancelOperation] is called. Any items
-	// processed before cancelling are returned in the response.
+	// [google.longrunning.Operations.CancelOperation][google.longrunning.Operations.CancelOperation]
+	// is called. Any items processed before cancelling are returned in the
+	// response.
 	BatchOperationMetadata_CANCELLED BatchOperationMetadata_State = 6
 )
 
@@ -189,8 +191,11 @@ func (m *BatchOperationMetadata) GetEndTime() *timestamp.Timestamp {
 
 // Output only.
 //
-// The result of [BatchCreateJobs][] or [BatchUpdateJobs][] APIs. It's used to
-// replace
+// The result of
+// [JobService.BatchCreateJobs][google.cloud.talent.v4beta1.JobService.BatchCreateJobs]
+// or
+// [JobService.BatchUpdateJobs][google.cloud.talent.v4beta1.JobService.BatchUpdateJobs]
+// APIs. It's used to replace
 // [google.longrunning.Operation.response][google.longrunning.Operation.response]
 // in case of success.
 type JobOperationResult struct {

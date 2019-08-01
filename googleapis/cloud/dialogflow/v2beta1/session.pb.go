@@ -577,7 +577,7 @@ type QueryResult struct {
 	OutputContexts []*Context `protobuf:"bytes,10,rep,name=output_contexts,json=outputContexts,proto3" json:"output_contexts,omitempty"`
 	// The intent that matched the conversational query. Some, not
 	// all fields are filled in this message, including but not limited to:
-	// `name`, `display_name` and `webhook_state`.
+	// `name`, `display_name`, `end_interaction` and `is_fallback`.
 	Intent *Intent `protobuf:"bytes,11,opt,name=intent,proto3" json:"intent,omitempty"`
 	// The intent detection confidence. Values range from 0.0
 	// (completely uncertain) to 1.0 (completely certain).
