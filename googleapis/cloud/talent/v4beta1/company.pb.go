@@ -38,7 +38,7 @@ type Company struct {
 	// Tenant id is optional and the default tenant is used if unspecified, for
 	// example, "projects/api-test-project/companies/bar".
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The display name of the company, for example, "Google, LLC".
+	// Required. The display name of the company, for example, "Google LLC".
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Required. Client side company identifier, used to uniquely identify the
 	// company.

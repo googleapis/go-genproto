@@ -29,7 +29,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // more info on this.
 type ConfiguredTarget struct {
 	// The resource name.  Its format must be:
-	// invocations/${INVOCATION_ID}/targets/${TARGET_ID}/configuredTargets/${CONFIG_ID}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${url_encode(CONFIG_ID)}
 	// where ${CONFIG_ID} must match the ID of an existing Configuration under
 	// this Invocation.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`

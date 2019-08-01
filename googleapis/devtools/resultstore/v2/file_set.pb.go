@@ -21,10 +21,21 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Represents a set of files within an Invocation. Can contain other file sets.
+// This resource represents a set of Files and other (nested) FileSets.
+// A FileSet is a node in the graph, and the file_sets field represents the
+// outgoing edges. A resource may reference various nodes in the graph to
+// represent the transitive closure of all files from those nodes.
+// The FileSets must form a directed acyclic graph. The Upload API is unable to
+// enforce that the graph is acyclic at write time, and if cycles are written,
+// it may cause issues at read time.
+//
+// A FileSet may be referenced by other resources in conjunction with Files. A
+// File is preferred for something that can only be ever referenced by one
+// resource, and a FileSet is preferred if it can be reference by multiple
+// resources.
 type FileSet struct {
 	// The format of this FileSet resource name must be:
-	// invocations/${INVOCATION_ID}/fileSets/${FILE_SET_ID}
+	// invocations/${INVOCATION_ID}/fileSets/${url_encode(FILE_SET_ID)}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The resource ID components that identify the file set. They must match the
 	// resource name after proper encoding.
@@ -34,6 +45,7 @@ type FileSet struct {
 	// format must be: invocations/${INVOCATION_ID}/fileSets/${FILE_SET_ID}
 	FileSets []string `protobuf:"bytes,3,rep,name=file_sets,json=fileSets,proto3" json:"file_sets,omitempty"`
 	// Files that are contained within this file set.
+	// The uid field in the file should be unique for the Invocation.
 	Files                []*File  `protobuf:"bytes,4,rep,name=files,proto3" json:"files,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
