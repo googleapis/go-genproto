@@ -126,9 +126,9 @@ type TextSnippet struct {
 	// Required. The content of the text snippet as a string. Up to 250000
 	// characters long.
 	Content string `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
-	// The format of the source text. Currently the only two allowed values are
-	// "text/html" and "text/plain". If left blank the format is automatically
-	// determined from the type of the uploaded content.
+	// Optional. The format of [content][google.cloud.automl.v1beta1.TextSnippet.content]. Currently the only two allowed
+	// values are "text/html" and "text/plain". If left blank, the format is
+	// automatically determined from the type of the uploaded [content][google.cloud.automl.v1beta1.TextSnippet.content].
 	MimeType string `protobuf:"bytes,2,opt,name=mime_type,json=mimeType,proto3" json:"mime_type,omitempty"`
 	// Output only. HTTP URI where you can download the content.
 	ContentUri           string   `protobuf:"bytes,4,opt,name=content_uri,json=contentUri,proto3" json:"content_uri,omitempty"`
@@ -226,18 +226,18 @@ func (m *Document) GetInputConfig() *DocumentInputConfig {
 
 // A representation of a row in a relational table.
 type Row struct {
-	// Input Only.
 	// The resource IDs of the column specs describing the columns of the row.
-	// If set must contain, but possibly in a different order, all input feature
+	// If set must contain, but possibly in a different order, all input
+	// feature
 	//
 	// [column_spec_ids][google.cloud.automl.v1beta1.TablesModelMetadata.input_feature_column_specs]
 	// of the Model this row is being passed to.
 	// Note: The below `values` field must match order of this field, if this
 	// field is set.
 	ColumnSpecIds []string `protobuf:"bytes,2,rep,name=column_spec_ids,json=columnSpecIds,proto3" json:"column_spec_ids,omitempty"`
-	// Input Only.
-	// The values of the row cells, given in the same order as the
-	// column_spec_ids, or, if not set, then in the same order as input feature
+	// Required. The values of the row cells, given in the same order as the
+	// column_spec_ids, or, if not set, then in the same order as input
+	// feature
 	//
 	// [column_specs][google.cloud.automl.v1beta1.TablesModelMetadata.input_feature_column_specs]
 	// of the Model this row is being passed to.

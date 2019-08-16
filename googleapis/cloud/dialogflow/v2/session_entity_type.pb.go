@@ -527,17 +527,37 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SessionEntityTypesClient interface {
 	// Returns the list of all session entity types in the specified session.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	ListSessionEntityTypes(ctx context.Context, in *ListSessionEntityTypesRequest, opts ...grpc.CallOption) (*ListSessionEntityTypesResponse, error)
 	// Retrieves the specified session entity type.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	GetSessionEntityType(ctx context.Context, in *GetSessionEntityTypeRequest, opts ...grpc.CallOption) (*SessionEntityType, error)
 	// Creates a session entity type.
 	//
 	// If the specified session entity type already exists, overrides the session
 	// entity type.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	CreateSessionEntityType(ctx context.Context, in *CreateSessionEntityTypeRequest, opts ...grpc.CallOption) (*SessionEntityType, error)
 	// Updates the specified session entity type.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	UpdateSessionEntityType(ctx context.Context, in *UpdateSessionEntityTypeRequest, opts ...grpc.CallOption) (*SessionEntityType, error)
 	// Deletes the specified session entity type.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	DeleteSessionEntityType(ctx context.Context, in *DeleteSessionEntityTypeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
@@ -597,17 +617,37 @@ func (c *sessionEntityTypesClient) DeleteSessionEntityType(ctx context.Context, 
 // SessionEntityTypesServer is the server API for SessionEntityTypes service.
 type SessionEntityTypesServer interface {
 	// Returns the list of all session entity types in the specified session.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	ListSessionEntityTypes(context.Context, *ListSessionEntityTypesRequest) (*ListSessionEntityTypesResponse, error)
 	// Retrieves the specified session entity type.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	GetSessionEntityType(context.Context, *GetSessionEntityTypeRequest) (*SessionEntityType, error)
 	// Creates a session entity type.
 	//
 	// If the specified session entity type already exists, overrides the session
 	// entity type.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	CreateSessionEntityType(context.Context, *CreateSessionEntityTypeRequest) (*SessionEntityType, error)
 	// Updates the specified session entity type.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	UpdateSessionEntityType(context.Context, *UpdateSessionEntityTypeRequest) (*SessionEntityType, error)
 	// Deletes the specified session entity type.
+	//
+	// This method doesn't work with Google Assistant integration.
+	// Contact Dialogflow support if you need to use session entities
+	// with Google Assistant integration.
 	DeleteSessionEntityType(context.Context, *DeleteSessionEntityTypeRequest) (*empty.Empty, error)
 }
 

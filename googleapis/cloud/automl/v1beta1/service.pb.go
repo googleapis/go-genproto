@@ -250,12 +250,7 @@ func (m *ListDatasetsResponse) GetNextPageToken() string {
 type UpdateDatasetRequest struct {
 	// The dataset which replaces the resource on the server.
 	Dataset *Dataset `protobuf:"bytes,1,opt,name=dataset,proto3" json:"dataset,omitempty"`
-	// The update mask applies to the resource. For the `FieldMask` definition,
-	// see
-	//
-	// https:
-	// //developers.google.com/protocol-buffers
-	// // /docs/reference/google.protobuf#fieldmask
+	// The update mask applies to the resource.
 	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -671,12 +666,7 @@ func (m *ListTableSpecsResponse) GetNextPageToken() string {
 type UpdateTableSpecRequest struct {
 	// The table spec which replaces the resource on the server.
 	TableSpec *TableSpec `protobuf:"bytes,1,opt,name=table_spec,json=tableSpec,proto3" json:"table_spec,omitempty"`
-	// The update mask applies to the resource. For the `FieldMask` definition,
-	// see
-	//
-	// https:
-	// //developers.google.com/protocol-buffers
-	// // /docs/reference/google.protobuf#fieldmask
+	// The update mask applies to the resource.
 	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -908,12 +898,7 @@ func (m *ListColumnSpecsResponse) GetNextPageToken() string {
 type UpdateColumnSpecRequest struct {
 	// The column spec which replaces the resource on the server.
 	ColumnSpec *ColumnSpec `protobuf:"bytes,1,opt,name=column_spec,json=columnSpec,proto3" json:"column_spec,omitempty"`
-	// The update mask applies to the resource. For the `FieldMask` definition,
-	// see
-	//
-	// https:
-	// //developers.google.com/protocol-buffers
-	// // /docs/reference/google.protobuf#fieldmask
+	// The update mask applies to the resource.
 	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -1852,8 +1837,7 @@ type AutoMlClient interface {
 	// [node_number][google.cloud.automl.v1beta1.ImageObjectDetectionModelDeploymentMetadata.node_number])
 	//  will reset the deployment state without pausing the model's availability.
 	//
-	// Only applicable for Text Classification, Image Object Detection and Tables;
-	// all other domains manage deployment automatically.
+	// Only applicable for Text Classification, Image Object Detection and Tables; all other domains manage deployment automatically.
 	//
 	// Returns an empty response in the
 	// [response][google.longrunning.Operation.response] field when it completes.
@@ -2187,8 +2171,7 @@ type AutoMlServer interface {
 	// [node_number][google.cloud.automl.v1beta1.ImageObjectDetectionModelDeploymentMetadata.node_number])
 	//  will reset the deployment state without pausing the model's availability.
 	//
-	// Only applicable for Text Classification, Image Object Detection and Tables;
-	// all other domains manage deployment automatically.
+	// Only applicable for Text Classification, Image Object Detection and Tables; all other domains manage deployment automatically.
 	//
 	// Returns an empty response in the
 	// [response][google.longrunning.Operation.response] field when it completes.
