@@ -36,14 +36,12 @@ type ModelEvaluation struct {
 	//	*ModelEvaluation_TextSentimentEvaluationMetrics
 	//	*ModelEvaluation_TextExtractionEvaluationMetrics
 	Metrics isModelEvaluation_Metrics `protobuf_oneof:"metrics"`
-	// Output only.
-	// Resource name of the model evaluation.
+	// Output only. Resource name of the model evaluation.
 	// Format:
 	//
 	// `projects/{project_id}/locations/{location_id}/models/{model_id}/modelEvaluations/{model_evaluation_id}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Output only.
-	// The ID of the annotation spec that the model evaluation applies to. The
+	// Output only. The ID of the annotation spec that the model evaluation applies to. The
 	// The ID is empty for the overall model evaluation.
 	// For Tables annotation specs in the dataset do not exist and this ID is
 	// always not set, but for CLASSIFICATION
@@ -54,7 +52,7 @@ type ModelEvaluation struct {
 	// field is used.
 	AnnotationSpecId string `protobuf:"bytes,2,opt,name=annotation_spec_id,json=annotationSpecId,proto3" json:"annotation_spec_id,omitempty"`
 	// Output only. The value of
-	// [display_name][google.cloud.automl.v1beta1.AnnotationSpec.dispay_name] at
+	// [display_name][google.cloud.automl.v1beta1.AnnotationSpec.display_name] at
 	// the moment when the model was trained. Because this field returns a value
 	// at model training time, for different models trained from the same dataset,
 	// the values may differ, since display names could had been changed between
@@ -66,11 +64,9 @@ type ModelEvaluation struct {
 	// are populated here.
 	// The display_name is empty for the overall model evaluation.
 	DisplayName string `protobuf:"bytes,15,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// Output only.
-	// Timestamp when this model evaluation was created.
+	// Output only. Timestamp when this model evaluation was created.
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// Output only.
-	// The number of examples used for model evaluation, i.e. for
+	// Output only. The number of examples used for model evaluation, i.e. for
 	// which ground truth from time of model creation is compared against the
 	// predicted annotations created by the model.
 	// For overall ModelEvaluation (i.e. with annotation_spec_id not set) this is

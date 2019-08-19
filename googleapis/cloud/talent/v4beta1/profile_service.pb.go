@@ -268,7 +268,6 @@ type UpdateProfileRequest struct {
 	// A full update is performed if it is unset.
 	//
 	// Valid values are:
-	//
 	// * external_id
 	// * source
 	// * uri
@@ -285,13 +284,33 @@ type UpdateProfileRequest struct {
 	// * employment_records
 	// * education_records
 	// * skills
-	// * projects
+	// * activities
 	// * publications
 	// * patents
 	// * certifications
 	// * recruiting_notes
 	// * custom_attributes
 	// * group_id
+	// * external_system
+	// * source_note
+	// * primary_responsibilities
+	// * citizenships
+	// * work_authorizations
+	// * employee_types
+	// * language_code
+	// * qualification_summary
+	// * allowed_contact_types
+	// * preferred_contact_types
+	// * contact_availability
+	// * language_fluencies
+	// * work_preference
+	// * industry_experiences
+	// * work_environment_experiences
+	// * work_availability
+	// * security_clearances
+	// * references
+	// * assessments
+	// * interviews
 	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -432,11 +451,11 @@ type SearchProfilesRequest struct {
 	//
 	// * "relevance desc": By descending relevance, as determined by the API
 	//    algorithms.
-	// * "update_time desc": Sort by
+	// * "update_date desc": Sort by
 	// [Profile.update_time][google.cloud.talent.v4beta1.Profile.update_time] in
 	// descending order
 	//   (recently updated profiles first).
-	// * "create_time desc": Sort by
+	// * "create_date desc": Sort by
 	// [Profile.create_time][google.cloud.talent.v4beta1.Profile.create_time] in
 	// descending order
 	//   (recently created profiles first).

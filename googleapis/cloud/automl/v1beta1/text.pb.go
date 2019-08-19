@@ -24,8 +24,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Dataset metadata for classification.
 type TextClassificationDatasetMetadata struct {
-	// Required.
-	// Type of the classification problem.
+	// Required. Type of the classification problem.
 	ClassificationType   ClassificationType `protobuf:"varint,1,opt,name=classification_type,json=classificationType,proto3,enum=google.cloud.automl.v1beta1.ClassificationType" json:"classification_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
@@ -162,8 +161,7 @@ var xxx_messageInfo_TextExtractionModelMetadata proto.InternalMessageInfo
 
 // Dataset metadata for text sentiment.
 type TextSentimentDatasetMetadata struct {
-	// Required.
-	// A sentiment is expressed as an integer ordinal, where higher value
+	// Required. A sentiment is expressed as an integer ordinal, where higher value
 	// means a more positive sentiment. The range of sentiments that will be used
 	// is between 0 and sentiment_max (inclusive on both ends), and all the values
 	// in the range must be represented in the dataset before a model can be
