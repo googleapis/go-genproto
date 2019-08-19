@@ -44,12 +44,7 @@ type ColumnSpec struct {
 	// Dataset.tables_dataset_metadata.stats_update_time field
 	// for the timestamp at which these stats were last updated.
 	DataStats *DataStats `protobuf:"bytes,4,opt,name=data_stats,json=dataStats,proto3" json:"data_stats,omitempty"`
-	// Output only. Top 10 most correlated with this column columns of the table,
-	// ordered by
-	// [cramers_v][google.cloud.automl.v1beta1.CorrelationStats.cramers_v] metric.
-	// This field may be stale, see the ancestor's
-	// Dataset.tables_dataset_metadata.stats_update_time field
-	// for the timestamp at which these stats were last updated.
+	// Deprecated.
 	TopCorrelatedColumns []*ColumnSpec_CorrelatedColumn `protobuf:"bytes,5,rep,name=top_correlated_columns,json=topCorrelatedColumns,proto3" json:"top_correlated_columns,omitempty"`
 	// Used to perform consistent read-modify-write updates. If not set, a blind
 	// "overwrite" update happens.

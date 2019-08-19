@@ -72,8 +72,7 @@ type Model struct {
 	//	*Model_TablesModelMetadata
 	//	*Model_TextSentimentModelMetadata
 	ModelMetadata isModel_ModelMetadata `protobuf_oneof:"model_metadata"`
-	// Output only.
-	// Resource name of the model.
+	// Output only. Resource name of the model.
 	// Format: `projects/{project_id}/locations/{location_id}/models/{model_id}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The name of the model to show in the interface. The name can be
@@ -81,15 +80,12 @@ type Model struct {
 	// and a-z, underscores
 	// (_), and ASCII digits 0-9. It must start with a letter.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// Required.
-	// The resource ID of the dataset used to create the model. The dataset must
+	// Required. The resource ID of the dataset used to create the model. The dataset must
 	// come from the same ancestor project and location.
 	DatasetId string `protobuf:"bytes,3,opt,name=dataset_id,json=datasetId,proto3" json:"dataset_id,omitempty"`
-	// Output only.
-	// Timestamp when the model training finished  and can be used for prediction.
+	// Output only. Timestamp when the model training finished  and can be used for prediction.
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// Output only.
-	// Timestamp when this model was last updated.
+	// Output only. Timestamp when this model was last updated.
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. Deployment state of the model. A model can only serve
 	// prediction requests after it gets deployed.

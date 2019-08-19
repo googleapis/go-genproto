@@ -25,11 +25,9 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Annotation details for image object detection.
 type ImageObjectDetectionAnnotation struct {
-	// Output only.
-	// The rectangle representing the object location.
+	// Output only. The rectangle representing the object location.
 	BoundingBox *BoundingPoly `protobuf:"bytes,1,opt,name=bounding_box,json=boundingBox,proto3" json:"bounding_box,omitempty"`
-	// Output only.
-	// The confidence that this annotation is positive for the parent example,
+	// Output only. The confidence that this annotation is positive for the parent example,
 	// value in [0, 1], higher means higher positivity confidence.
 	Score                float32  `protobuf:"fixed32,2,opt,name=score,proto3" json:"score,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -78,8 +76,7 @@ func (m *ImageObjectDetectionAnnotation) GetScore() float32 {
 
 // Annotation details for video object tracking.
 type VideoObjectTrackingAnnotation struct {
-	// Optional.
-	// The instance of the object, expressed as a positive integer. Used to tell
+	// Optional. The instance of the object, expressed as a positive integer. Used to tell
 	// apart objects of the same type (i.e. AnnotationSpec) when multiple are
 	// present on a single example.
 	// NOTE: Instance ID prediction quality is not a part of model evaluation and
@@ -93,8 +90,7 @@ type VideoObjectTrackingAnnotation struct {
 	// Required. The rectangle representing the object location on the frame (i.e.
 	// at the time_offset of the video).
 	BoundingBox *BoundingPoly `protobuf:"bytes,3,opt,name=bounding_box,json=boundingBox,proto3" json:"bounding_box,omitempty"`
-	// Output only.
-	// The confidence that this annotation is positive for the video at
+	// Output only. The confidence that this annotation is positive for the video at
 	// the time_offset, value in [0, 1], higher means higher positivity
 	// confidence. For annotations created by the user the score is 1. When
 	// user approves an annotation, the original float score is kept (and not

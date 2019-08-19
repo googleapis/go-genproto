@@ -493,6 +493,7 @@ func (m *ListFeedsRequest) GetParent() string {
 	return ""
 }
 
+// List asset feeds response.
 type ListFeedsResponse struct {
 	// A list of feeds.
 	Feeds                []*Feed  `protobuf:"bytes,1,rep,name=feeds,proto3" json:"feeds,omitempty"`
@@ -589,6 +590,7 @@ func (m *UpdateFeedRequest) GetUpdateMask() *field_mask.FieldMask {
 	return nil
 }
 
+// Delete asset feed request.
 type DeleteFeedRequest struct {
 	// The name of the feed and it must be in the format of:
 	// projects/project_number/feeds/feed_id
