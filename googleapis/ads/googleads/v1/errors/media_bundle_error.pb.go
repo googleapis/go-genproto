@@ -104,13 +104,13 @@ var MediaBundleErrorEnum_MediaBundleError_name = map[int32]string{
 }
 
 var MediaBundleErrorEnum_MediaBundleError_value = map[string]int32{
-	"UNSPECIFIED":                    0,
-	"UNKNOWN":                        1,
-	"BAD_REQUEST":                    3,
-	"DOUBLECLICK_BUNDLE_NOT_ALLOWED": 4,
-	"EXTERNAL_URL_NOT_ALLOWED":       5,
-	"FILE_TOO_LARGE":                 6,
-	"GOOGLE_WEB_DESIGNER_ZIP_FILE_NOT_PUBLISHED": 7,
+	"UNSPECIFIED":                                 0,
+	"UNKNOWN":                                     1,
+	"BAD_REQUEST":                                 3,
+	"DOUBLECLICK_BUNDLE_NOT_ALLOWED":              4,
+	"EXTERNAL_URL_NOT_ALLOWED":                    5,
+	"FILE_TOO_LARGE":                              6,
+	"GOOGLE_WEB_DESIGNER_ZIP_FILE_NOT_PUBLISHED":  7,
 	"INVALID_INPUT":                               8,
 	"INVALID_MEDIA_BUNDLE":                        9,
 	"INVALID_MEDIA_BUNDLE_ENTRY":                  10,

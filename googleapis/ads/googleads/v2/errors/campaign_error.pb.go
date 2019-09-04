@@ -173,10 +173,10 @@ var CampaignErrorEnum_CampaignError_name = map[int32]string{
 }
 
 var CampaignErrorEnum_CampaignError_value = map[string]int32{
-	"UNSPECIFIED":                   0,
-	"UNKNOWN":                       1,
-	"CANNOT_TARGET_CONTENT_NETWORK": 3,
-	"CANNOT_TARGET_SEARCH_NETWORK":  4,
+	"UNSPECIFIED":                                                             0,
+	"UNKNOWN":                                                                 1,
+	"CANNOT_TARGET_CONTENT_NETWORK":                                           3,
+	"CANNOT_TARGET_SEARCH_NETWORK":                                            4,
 	"CANNOT_TARGET_SEARCH_NETWORK_WITHOUT_GOOGLE_SEARCH":                      5,
 	"CANNOT_TARGET_GOOGLE_SEARCH_FOR_CPM_CAMPAIGN":                            6,
 	"CAMPAIGN_MUST_TARGET_AT_LEAST_ONE_NETWORK":                               7,
@@ -211,10 +211,10 @@ var CampaignErrorEnum_CampaignError_value = map[string]int32{
 	"INVALID_HOTEL_CUSTOMER_LINK":                                             38,
 	"MISSING_HOTEL_SETTING":                                                   39,
 	"CANNOT_USE_SHARED_CAMPAIGN_BUDGET_WHILE_PART_OF_CAMPAIGN_GROUP":          40,
-	"APP_NOT_FOUND":                                                           41,
-	"SHOPPING_ENABLE_LOCAL_NOT_SUPPORTED_FOR_CAMPAIGN_TYPE":                   42,
-	"MERCHANT_NOT_ALLOWED_FOR_COMPARISON_LISTING_ADS":                         43,
-	"INSUFFICIENT_APP_INSTALLS_COUNT":                                         44,
+	"APP_NOT_FOUND":                                         41,
+	"SHOPPING_ENABLE_LOCAL_NOT_SUPPORTED_FOR_CAMPAIGN_TYPE": 42,
+	"MERCHANT_NOT_ALLOWED_FOR_COMPARISON_LISTING_ADS":       43,
+	"INSUFFICIENT_APP_INSTALLS_COUNT":                       44,
 }
 
 func (x CampaignErrorEnum_CampaignError) String() string {

@@ -44,9 +44,9 @@ var ContextErrorEnum_ContextError_name = map[int32]string{
 }
 
 var ContextErrorEnum_ContextError_value = map[string]int32{
-	"UNSPECIFIED":                         0,
-	"UNKNOWN":                             1,
-	"OPERATION_NOT_PERMITTED_FOR_CONTEXT": 2,
+	"UNSPECIFIED": 0,
+	"UNKNOWN":     1,
+	"OPERATION_NOT_PERMITTED_FOR_CONTEXT":          2,
 	"OPERATION_NOT_PERMITTED_FOR_REMOVED_RESOURCE": 3,
 }
 

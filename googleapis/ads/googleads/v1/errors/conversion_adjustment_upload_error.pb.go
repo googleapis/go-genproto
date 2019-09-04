@@ -73,16 +73,16 @@ var ConversionAdjustmentUploadErrorEnum_ConversionAdjustmentUploadError_name = m
 }
 
 var ConversionAdjustmentUploadErrorEnum_ConversionAdjustmentUploadError_value = map[string]int32{
-	"UNSPECIFIED":                    0,
-	"UNKNOWN":                        1,
-	"TOO_RECENT_CONVERSION_ACTION":   2,
-	"INVALID_CONVERSION_ACTION":      3,
-	"CONVERSION_ALREADY_RETRACTED":   4,
-	"CONVERSION_NOT_FOUND":           5,
-	"CONVERSION_EXPIRED":             6,
-	"ADJUSTMENT_PRECEDES_CONVERSION": 7,
-	"MORE_RECENT_RESTATEMENT_FOUND":  8,
-	"TOO_RECENT_CONVERSION":          9,
+	"UNSPECIFIED":                                                                0,
+	"UNKNOWN":                                                                    1,
+	"TOO_RECENT_CONVERSION_ACTION":                                               2,
+	"INVALID_CONVERSION_ACTION":                                                  3,
+	"CONVERSION_ALREADY_RETRACTED":                                               4,
+	"CONVERSION_NOT_FOUND":                                                       5,
+	"CONVERSION_EXPIRED":                                                         6,
+	"ADJUSTMENT_PRECEDES_CONVERSION":                                             7,
+	"MORE_RECENT_RESTATEMENT_FOUND":                                              8,
+	"TOO_RECENT_CONVERSION":                                                      9,
 	"CANNOT_RESTATE_CONVERSION_ACTION_THAT_ALWAYS_USES_DEFAULT_CONVERSION_VALUE": 10,
 }
 

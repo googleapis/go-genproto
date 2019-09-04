@@ -82,8 +82,8 @@ var CompressionType_name = map[int32]string{
 
 var CompressionType_value = map[string]int32{
 	"COMPRESSION_TYPE_UNSPECIFIED": 0,
-	"RAW":                          1,
-	"RICE":                         2,
+	"RAW":  1,
+	"RICE": 2,
 }
 
 func (x CompressionType) String() string {
@@ -116,8 +116,8 @@ var ComputeThreatListDiffResponse_ResponseType_name = map[int32]string{
 
 var ComputeThreatListDiffResponse_ResponseType_value = map[string]int32{
 	"RESPONSE_TYPE_UNSPECIFIED": 0,
-	"DIFF":                      1,
-	"RESET":                     2,
+	"DIFF":  1,
+	"RESET": 2,
 }
 
 func (x ComputeThreatListDiffResponse_ResponseType) String() string {

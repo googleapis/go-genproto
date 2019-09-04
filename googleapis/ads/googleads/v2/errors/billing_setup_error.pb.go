@@ -95,8 +95,8 @@ var BillingSetupErrorEnum_BillingSetupError_name = map[int32]string{
 }
 
 var BillingSetupErrorEnum_BillingSetupError_value = map[string]int32{
-	"UNSPECIFIED":                                       0,
-	"UNKNOWN":                                           1,
+	"UNSPECIFIED": 0,
+	"UNKNOWN":     1,
 	"CANNOT_USE_EXISTING_AND_NEW_ACCOUNT":               2,
 	"CANNOT_REMOVE_STARTED_BILLING_SETUP":               3,
 	"CANNOT_CHANGE_BILLING_TO_SAME_PAYMENTS_ACCOUNT":    4,

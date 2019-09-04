@@ -112,13 +112,13 @@ var Application_ApplicationStage_name = map[int32]string{
 
 var Application_ApplicationStage_value = map[string]int32{
 	"APPLICATION_STAGE_UNSPECIFIED": 0,
-	"NEW":                           1,
-	"SCREEN":                        2,
-	"HIRING_MANAGER_REVIEW":         3,
-	"INTERVIEW":                     4,
-	"OFFER_EXTENDED":                5,
-	"OFFER_ACCEPTED":                6,
-	"STARTED":                       7,
+	"NEW":                   1,
+	"SCREEN":                2,
+	"HIRING_MANAGER_REVIEW": 3,
+	"INTERVIEW":             4,
+	"OFFER_EXTENDED":        5,
+	"OFFER_ACCEPTED":        6,
+	"STARTED":               7,
 }
 
 func (x Application_ApplicationStage) String() string {

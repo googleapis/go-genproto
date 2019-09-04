@@ -88,12 +88,12 @@ var CampaignBudgetErrorEnum_CampaignBudgetError_name = map[int32]string{
 }
 
 var CampaignBudgetErrorEnum_CampaignBudgetError_value = map[string]int32{
-	"UNSPECIFIED":                          0,
-	"UNKNOWN":                              1,
-	"CAMPAIGN_BUDGET_CANNOT_BE_SHARED":     17,
-	"CAMPAIGN_BUDGET_REMOVED":              2,
-	"CAMPAIGN_BUDGET_IN_USE":               3,
-	"CAMPAIGN_BUDGET_PERIOD_NOT_AVAILABLE": 4,
+	"UNSPECIFIED":                                                          0,
+	"UNKNOWN":                                                              1,
+	"CAMPAIGN_BUDGET_CANNOT_BE_SHARED":                                     17,
+	"CAMPAIGN_BUDGET_REMOVED":                                              2,
+	"CAMPAIGN_BUDGET_IN_USE":                                               3,
+	"CAMPAIGN_BUDGET_PERIOD_NOT_AVAILABLE":                                 4,
 	"CANNOT_MODIFY_FIELD_OF_IMPLICITLY_SHARED_CAMPAIGN_BUDGET":             6,
 	"CANNOT_UPDATE_CAMPAIGN_BUDGET_TO_IMPLICITLY_SHARED":                   7,
 	"CANNOT_UPDATE_CAMPAIGN_BUDGET_TO_EXPLICITLY_SHARED_WITHOUT_NAME":      8,

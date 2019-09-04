@@ -69,10 +69,10 @@ var ConversionActionErrorEnum_ConversionActionError_name = map[int32]string{
 }
 
 var ConversionActionErrorEnum_ConversionActionError_value = map[string]int32{
-	"UNSPECIFIED":      0,
-	"UNKNOWN":          1,
-	"DUPLICATE_NAME":   2,
-	"DUPLICATE_APP_ID": 3,
+	"UNSPECIFIED":                                         0,
+	"UNKNOWN":                                             1,
+	"DUPLICATE_NAME":                                      2,
+	"DUPLICATE_APP_ID":                                    3,
 	"TWO_CONVERSION_ACTIONS_BIDDING_ON_SAME_APP_DOWNLOAD": 4,
 	"BIDDING_ON_SAME_APP_DOWNLOAD_AS_GLOBAL_ACTION":       5,
 	"DATA_DRIVEN_MODEL_WAS_NEVER_GENERATED":               6,

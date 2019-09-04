@@ -340,7 +340,7 @@ var CryptoKeyVersion_CryptoKeyVersionView_name = map[int32]string{
 
 var CryptoKeyVersion_CryptoKeyVersionView_value = map[string]int32{
 	"CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED": 0,
-	"FULL":                                1,
+	"FULL": 1,
 }
 
 func (x CryptoKeyVersion_CryptoKeyVersionView) String() string {

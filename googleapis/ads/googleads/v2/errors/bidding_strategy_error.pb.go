@@ -55,12 +55,12 @@ var BiddingStrategyErrorEnum_BiddingStrategyError_name = map[int32]string{
 }
 
 var BiddingStrategyErrorEnum_BiddingStrategyError_value = map[string]int32{
-	"UNSPECIFIED":                         0,
-	"UNKNOWN":                             1,
-	"DUPLICATE_NAME":                      2,
-	"CANNOT_CHANGE_BIDDING_STRATEGY_TYPE": 3,
-	"CANNOT_REMOVE_ASSOCIATED_STRATEGY":   4,
-	"BIDDING_STRATEGY_NOT_SUPPORTED":      5,
+	"UNSPECIFIED":                                                  0,
+	"UNKNOWN":                                                      1,
+	"DUPLICATE_NAME":                                               2,
+	"CANNOT_CHANGE_BIDDING_STRATEGY_TYPE":                          3,
+	"CANNOT_REMOVE_ASSOCIATED_STRATEGY":                            4,
+	"BIDDING_STRATEGY_NOT_SUPPORTED":                               5,
 	"INCOMPATIBLE_BIDDING_STRATEGY_AND_BIDDING_STRATEGY_GOAL_TYPE": 6,
 }
 

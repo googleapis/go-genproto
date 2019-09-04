@@ -453,8 +453,8 @@ var Location_LocationType_name = map[int32]string{
 
 var Location_LocationType_value = map[string]int32{
 	"LOCATION_TYPE_UNSPECIFIED": 0,
-	"ZONE":                      1,
-	"REGION":                    2,
+	"ZONE":   1,
+	"REGION": 2,
 }
 
 func (x Location_LocationType) String() string {

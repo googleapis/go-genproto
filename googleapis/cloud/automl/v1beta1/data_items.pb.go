@@ -48,9 +48,9 @@ var DocumentDimensions_DocumentDimensionUnit_name = map[int32]string{
 
 var DocumentDimensions_DocumentDimensionUnit_value = map[string]int32{
 	"DOCUMENT_DIMENSION_UNIT_UNSPECIFIED": 0,
-	"INCH":                                1,
-	"CENTIMETER":                          2,
-	"POINT":                               3,
+	"INCH":       1,
+	"CENTIMETER": 2,
+	"POINT":      3,
 }
 
 func (x DocumentDimensions_DocumentDimensionUnit) String() string {
@@ -112,15 +112,15 @@ var Document_Layout_TextSegmentType_name = map[int32]string{
 
 var Document_Layout_TextSegmentType_value = map[string]int32{
 	"TEXT_SEGMENT_TYPE_UNSPECIFIED": 0,
-	"TOKEN":                         1,
-	"PARAGRAPH":                     2,
-	"FORM_FIELD":                    3,
-	"FORM_FIELD_NAME":               4,
-	"FORM_FIELD_CONTENTS":           5,
-	"TABLE":                         6,
-	"TABLE_HEADER":                  7,
-	"TABLE_ROW":                     8,
-	"TABLE_CELL":                    9,
+	"TOKEN":               1,
+	"PARAGRAPH":           2,
+	"FORM_FIELD":          3,
+	"FORM_FIELD_NAME":     4,
+	"FORM_FIELD_CONTENTS": 5,
+	"TABLE":               6,
+	"TABLE_HEADER":        7,
+	"TABLE_ROW":           8,
+	"TABLE_CELL":          9,
 }
 
 func (x Document_Layout_TextSegmentType) String() string {

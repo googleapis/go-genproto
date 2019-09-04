@@ -339,8 +339,8 @@ var Intent_Message_RbmStandaloneCard_ThumbnailImageAlignment_name = map[int32]st
 
 var Intent_Message_RbmStandaloneCard_ThumbnailImageAlignment_value = map[string]int32{
 	"THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED": 0,
-	"LEFT":                                  1,
-	"RIGHT":                                 2,
+	"LEFT":  1,
+	"RIGHT": 2,
 }
 
 func (x Intent_Message_RbmStandaloneCard_ThumbnailImageAlignment) String() string {

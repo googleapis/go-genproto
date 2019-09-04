@@ -182,10 +182,10 @@ var ExtensionFeedItemErrorEnum_ExtensionFeedItemError_name = map[int32]string{
 }
 
 var ExtensionFeedItemErrorEnum_ExtensionFeedItemError_value = map[string]int32{
-	"UNSPECIFIED":        0,
-	"UNKNOWN":            1,
-	"VALUE_OUT_OF_RANGE": 2,
-	"URL_LIST_TOO_LONG":  3,
+	"UNSPECIFIED":                                              0,
+	"UNKNOWN":                                                  1,
+	"VALUE_OUT_OF_RANGE":                                       2,
+	"URL_LIST_TOO_LONG":                                        3,
 	"CANNOT_HAVE_RESTRICTION_ON_EMPTY_GEO_TARGETING":           4,
 	"CANNOT_SET_WITH_FINAL_URLS":                               5,
 	"CANNOT_SET_WITHOUT_FINAL_URLS":                            6,

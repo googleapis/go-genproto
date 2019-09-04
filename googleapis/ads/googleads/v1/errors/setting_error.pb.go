@@ -99,9 +99,9 @@ var SettingErrorEnum_SettingError_name = map[int32]string{
 }
 
 var SettingErrorEnum_SettingError_value = map[string]int32{
-	"UNSPECIFIED":                   0,
-	"UNKNOWN":                       1,
-	"SETTING_TYPE_IS_NOT_AVAILABLE": 3,
+	"UNSPECIFIED":                                                                              0,
+	"UNKNOWN":                                                                                  1,
+	"SETTING_TYPE_IS_NOT_AVAILABLE":                                                            3,
 	"SETTING_TYPE_IS_NOT_COMPATIBLE_WITH_CAMPAIGN":                                             4,
 	"TARGETING_SETTING_CONTAINS_INVALID_CRITERION_TYPE_GROUP":                                  5,
 	"TARGETING_SETTING_DEMOGRAPHIC_CRITERION_TYPE_GROUPS_MUST_BE_SET_TO_TARGET_ALL":            6,

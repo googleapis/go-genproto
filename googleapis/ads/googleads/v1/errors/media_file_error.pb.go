@@ -107,9 +107,9 @@ var MediaFileErrorEnum_MediaFileError_name = map[int32]string{
 }
 
 var MediaFileErrorEnum_MediaFileError_value = map[string]int32{
-	"UNSPECIFIED":                 0,
-	"UNKNOWN":                     1,
-	"CANNOT_CREATE_STANDARD_ICON": 2,
+	"UNSPECIFIED":                                  0,
+	"UNKNOWN":                                      1,
+	"CANNOT_CREATE_STANDARD_ICON":                  2,
 	"CANNOT_SELECT_STANDARD_ICON_WITH_OTHER_TYPES": 3,
 	"CANNOT_SPECIFY_MEDIA_FILE_ID_AND_DATA":        4,
 	"DUPLICATE_MEDIA":                              5,

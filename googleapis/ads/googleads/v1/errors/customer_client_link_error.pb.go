@@ -59,8 +59,8 @@ var CustomerClientLinkErrorEnum_CustomerClientLinkError_name = map[int32]string{
 }
 
 var CustomerClientLinkErrorEnum_CustomerClientLinkError_value = map[string]int32{
-	"UNSPECIFIED":                               0,
-	"UNKNOWN":                                   1,
+	"UNSPECIFIED": 0,
+	"UNKNOWN":     1,
 	"CLIENT_ALREADY_INVITED_BY_THIS_MANAGER":    2,
 	"CLIENT_ALREADY_MANAGED_IN_HIERARCHY":       3,
 	"CYCLIC_LINK_NOT_ALLOWED":                   4,

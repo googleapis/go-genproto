@@ -44,8 +44,8 @@ var AdParameterErrorEnum_AdParameterError_name = map[int32]string{
 }
 
 var AdParameterErrorEnum_AdParameterError_value = map[string]int32{
-	"UNSPECIFIED":                        0,
-	"UNKNOWN":                            1,
+	"UNSPECIFIED": 0,
+	"UNKNOWN":     1,
 	"AD_GROUP_CRITERION_MUST_BE_KEYWORD": 2,
 	"INVALID_INSERTION_TEXT_FORMAT":      3,
 }

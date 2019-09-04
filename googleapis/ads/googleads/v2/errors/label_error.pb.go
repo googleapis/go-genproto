@@ -67,9 +67,9 @@ var LabelErrorEnum_LabelError_name = map[int32]string{
 }
 
 var LabelErrorEnum_LabelError_value = map[string]int32{
-	"UNSPECIFIED":                 0,
-	"UNKNOWN":                     1,
-	"CANNOT_APPLY_INACTIVE_LABEL": 2,
+	"UNSPECIFIED":                                       0,
+	"UNKNOWN":                                           1,
+	"CANNOT_APPLY_INACTIVE_LABEL":                       2,
 	"CANNOT_APPLY_LABEL_TO_DISABLED_AD_GROUP_CRITERION": 3,
 	"CANNOT_APPLY_LABEL_TO_NEGATIVE_AD_GROUP_CRITERION": 4,
 	"EXCEEDED_LABEL_LIMIT_PER_TYPE":                     5,
