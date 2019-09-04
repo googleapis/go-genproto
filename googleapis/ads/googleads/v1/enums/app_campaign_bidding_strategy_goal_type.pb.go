@@ -57,9 +57,9 @@ var AppCampaignBiddingStrategyGoalTypeEnum_AppCampaignBiddingStrategyGoalType_na
 }
 
 var AppCampaignBiddingStrategyGoalTypeEnum_AppCampaignBiddingStrategyGoalType_value = map[string]int32{
-	"UNSPECIFIED": 0,
-	"UNKNOWN":     1,
-	"OPTIMIZE_INSTALLS_TARGET_INSTALL_COST":              2,
+	"UNSPECIFIED":                           0,
+	"UNKNOWN":                               1,
+	"OPTIMIZE_INSTALLS_TARGET_INSTALL_COST": 2,
 	"OPTIMIZE_IN_APP_CONVERSIONS_TARGET_INSTALL_COST":    3,
 	"OPTIMIZE_IN_APP_CONVERSIONS_TARGET_CONVERSION_COST": 4,
 	"OPTIMIZE_RETURN_ON_ADVERTISING_SPEND":               5,
