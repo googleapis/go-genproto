@@ -8,7 +8,6 @@ import (
 	math "math"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 )
 
@@ -100,8 +99,7 @@ func (m *PullTarget) XXX_DiscardUnknown() {
 var xxx_messageInfo_PullTarget proto.InternalMessageInfo
 
 // The pull message contains data that can be used by the caller of
-// [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] to process the
-// task.
+// [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] to process the task.
 //
 // This proto can only be used for tasks in a queue which has
 // [pull_target][google.cloud.tasks.v2beta2.Queue.pull_target] set.
@@ -112,11 +110,10 @@ type PullMessage struct {
 	//
 	// Tags allow similar tasks to be processed in a batch. If you label
 	// tasks with a tag, your worker can
-	// [lease tasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] with the
-	// same tag using
-	// [filter][google.cloud.tasks.v2beta2.LeaseTasksRequest.filter]. For example,
-	// if you want to aggregate the events associated with a specific user once a
-	// day, you could tag tasks with the user ID.
+	// [lease tasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] with the same tag using
+	// [filter][google.cloud.tasks.v2beta2.LeaseTasksRequest.filter]. For example, if you want to
+	// aggregate the events associated with a specific user once a day,
+	// you could tag tasks with the user ID.
 	//
 	// The task's tag can only be set when the
 	// [task is created][google.cloud.tasks.v2beta2.CloudTasks.CreateTask].
@@ -176,15 +173,11 @@ func (m *PullMessage) GetTag() string {
 // App Engine HTTP target.
 //
 // The task will be delivered to the App Engine application hostname
-// specified by its
-// [AppEngineHttpTarget][google.cloud.tasks.v2beta2.AppEngineHttpTarget] and
-// [AppEngineHttpRequest][google.cloud.tasks.v2beta2.AppEngineHttpRequest]. The
-// documentation for
-// [AppEngineHttpRequest][google.cloud.tasks.v2beta2.AppEngineHttpRequest]
-// explains how the task's host URL is constructed.
+// specified by its [AppEngineHttpTarget][google.cloud.tasks.v2beta2.AppEngineHttpTarget] and [AppEngineHttpRequest][google.cloud.tasks.v2beta2.AppEngineHttpRequest].
+// The documentation for [AppEngineHttpRequest][google.cloud.tasks.v2beta2.AppEngineHttpRequest] explains how the
+// task's host URL is constructed.
 //
-// Using [AppEngineHttpTarget][google.cloud.tasks.v2beta2.AppEngineHttpTarget]
-// requires
+// Using [AppEngineHttpTarget][google.cloud.tasks.v2beta2.AppEngineHttpTarget] requires
 // [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)
 // Google IAM permission for the project
 // and the following scope:
@@ -192,13 +185,11 @@ func (m *PullMessage) GetTag() string {
 // `https://www.googleapis.com/auth/cloud-platform`
 type AppEngineHttpTarget struct {
 	// Overrides for the
-	// [task-level
-	// app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
+	// [task-level app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
 	//
 	// If set, `app_engine_routing_override` is used for all tasks in
 	// the queue, no matter what the setting is for the
-	// [task-level
-	// app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
+	// [task-level app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
 	AppEngineRoutingOverride *AppEngineRouting `protobuf:"bytes,1,opt,name=app_engine_routing_override,json=appEngineRoutingOverride,proto3" json:"app_engine_routing_override,omitempty"`
 	XXX_NoUnkeyedLiteral     struct{}          `json:"-"`
 	XXX_unrecognized         []byte            `json:"-"`
@@ -243,11 +234,9 @@ func (m *AppEngineHttpTarget) GetAppEngineRoutingOverride() *AppEngineRouting {
 // the task is dispatched.
 //
 // This proto can only be used for tasks in a queue which has
-// [app_engine_http_target][google.cloud.tasks.v2beta2.Queue.app_engine_http_target]
-// set.
+// [app_engine_http_target][google.cloud.tasks.v2beta2.Queue.app_engine_http_target] set.
 //
-// Using [AppEngineHttpRequest][google.cloud.tasks.v2beta2.AppEngineHttpRequest]
-// requires
+// Using [AppEngineHttpRequest][google.cloud.tasks.v2beta2.AppEngineHttpRequest] requires
 // [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)
 // Google IAM permission for the project
 // and the following scope:
@@ -261,17 +250,20 @@ func (m *AppEngineHttpTarget) GetAppEngineRoutingOverride() *AppEngineRouting {
 // and how routing is affected by
 // [dispatch
 // files](https://cloud.google.com/appengine/docs/python/config/dispatchref).
+// Traffic is encrypted during transport and never leaves Google datacenters.
+// Because this traffic is carried over a communication mechanism internal to
+// Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS).
+// The request to the handler, however, will appear to have used the HTTP
+// protocol.
 //
-// The [AppEngineRouting][google.cloud.tasks.v2beta2.AppEngineRouting] used to
-// construct the URL that the task is delivered to can be set at the queue-level
-// or task-level:
+// The [AppEngineRouting][google.cloud.tasks.v2beta2.AppEngineRouting] used to construct the URL that the task is
+// delivered to can be set at the queue-level or task-level:
 //
 // * If set,
 //    [app_engine_routing_override][google.cloud.tasks.v2beta2.AppEngineHttpTarget.app_engine_routing_override]
 //    is used for all tasks in the queue, no matter what the setting
 //    is for the
-//    [task-level
-//    app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
+//    [task-level app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
 //
 //
 // The `url` that the task will be sent to is:
@@ -279,13 +271,27 @@ func (m *AppEngineHttpTarget) GetAppEngineRoutingOverride() *AppEngineRouting {
 // * `url =` [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] `+`
 //   [relative_url][google.cloud.tasks.v2beta2.AppEngineHttpRequest.relative_url]
 //
-// The task attempt has succeeded if the app's request handler returns
-// an HTTP response code in the range [`200` - `299`]. `503` is
-// considered an App Engine system error instead of an application
-// error. Requests returning error `503` will be retried regardless of
-// retry configuration and not counted against retry counts.
-// Any other response code or a failure to receive a response before the
-// deadline is a failed attempt.
+// Tasks can be dispatched to secure app handlers, unsecure app handlers, and
+// URIs restricted with
+// [`login:
+// admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref).
+// Because tasks are not run as any user, they cannot be dispatched to URIs
+// restricted with
+// [`login:
+// required`](https://cloud.google.com/appengine/docs/standard/python/config/appref)
+// Task dispatches also do not follow redirects.
+//
+// The task attempt has succeeded if the app's request handler returns an HTTP
+// response code in the range [`200` - `299`]. The task attempt has failed if
+// the app's handler returns a non-2xx response code or Cloud Tasks does
+// not receive response before the [deadline][Task.dispatch_deadline]. Failed
+// tasks will be retried according to the
+// [retry configuration][google.cloud.tasks.v2beta2.Queue.retry_config]. `503` (Service Unavailable) is
+// considered an App Engine system error instead of an application error and
+// will cause Cloud Tasks' traffic congestion control to temporarily throttle
+// the queue's dispatches. Unlike other types of task targets, a `429` (Too Many
+// Requests) response from an app handler does not cause traffic congestion
+// control to throttle the queue.
 type AppEngineHttpRequest struct {
 	// The HTTP method to use for the request. The default is POST.
 	//
@@ -304,8 +310,7 @@ type AppEngineHttpRequest struct {
 	// If set,
 	// [app_engine_routing_override][google.cloud.tasks.v2beta2.AppEngineHttpTarget.app_engine_routing_override]
 	// is used for all tasks in the queue, no matter what the setting is for the
-	// [task-level
-	// app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
+	// [task-level app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
 	AppEngineRouting *AppEngineRouting `protobuf:"bytes,2,opt,name=app_engine_routing,json=appEngineRouting,proto3" json:"app_engine_routing,omitempty"`
 	// The relative URL.
 	//
@@ -329,8 +334,7 @@ type AppEngineHttpRequest struct {
 	//   `"AppEngine-Google; (+http://code.google.com/appengine)"` to the
 	//   modified `User-Agent`.
 	//
-	// If the task has a
-	// [payload][google.cloud.tasks.v2beta2.AppEngineHttpRequest.payload], Cloud
+	// If the task has a [payload][google.cloud.tasks.v2beta2.AppEngineHttpRequest.payload], Cloud
 	// Tasks sets the following headers:
 	//
 	// * `Content-Type`: By default, the `Content-Type` header is set to
@@ -355,10 +359,8 @@ type AppEngineHttpRequest struct {
 	// visible when the task is returned in a Cloud Tasks response.
 	//
 	// Although there is no specific limit for the maximum number of headers or
-	// the size, there is a limit on the maximum size of the
-	// [Task][google.cloud.tasks.v2beta2.Task]. For more information, see the
-	// [CreateTask][google.cloud.tasks.v2beta2.CloudTasks.CreateTask]
-	// documentation.
+	// the size, there is a limit on the maximum size of the [Task][google.cloud.tasks.v2beta2.Task]. For more
+	// information, see the [CreateTask][google.cloud.tasks.v2beta2.CloudTasks.CreateTask] documentation.
 	Headers map[string]string `protobuf:"bytes,4,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Payload.
 	//
@@ -434,6 +436,9 @@ func (m *AppEngineHttpRequest) GetPayload() []byte {
 
 // App Engine Routing.
 //
+// Defines routing characteristics specific to App Engine - service, version,
+// and instance.
+//
 // For more information about services, versions, and instances see
 // [An Overview of App
 // Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine),
@@ -450,18 +455,16 @@ type AppEngineRouting struct {
 	// service when the task is attempted.
 	//
 	// For some queues or tasks which were created using the App Engine
-	// Task Queue API, [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] is
-	// not parsable into
+	// Task Queue API, [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] is not parsable
+	// into [service][google.cloud.tasks.v2beta2.AppEngineRouting.service],
+	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version], and
+	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance]. For example, some tasks
+	// which were created using the App Engine SDK use a custom domain
+	// name; custom domains are not parsed by Cloud Tasks. If
+	// [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] is not parsable, then
 	// [service][google.cloud.tasks.v2beta2.AppEngineRouting.service],
 	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version], and
-	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance]. For
-	// example, some tasks which were created using the App Engine SDK use a
-	// custom domain name; custom domains are not parsed by Cloud Tasks. If
-	// [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] is not parsable,
-	// then [service][google.cloud.tasks.v2beta2.AppEngineRouting.service],
-	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version], and
-	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] are the
-	// empty string.
+	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] are the empty string.
 	Service string `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
 	// App version.
 	//
@@ -469,18 +472,16 @@ type AppEngineRouting struct {
 	// version when the task is attempted.
 	//
 	// For some queues or tasks which were created using the App Engine
-	// Task Queue API, [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] is
-	// not parsable into
+	// Task Queue API, [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] is not parsable
+	// into [service][google.cloud.tasks.v2beta2.AppEngineRouting.service],
+	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version], and
+	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance]. For example, some tasks
+	// which were created using the App Engine SDK use a custom domain
+	// name; custom domains are not parsed by Cloud Tasks. If
+	// [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] is not parsable, then
 	// [service][google.cloud.tasks.v2beta2.AppEngineRouting.service],
 	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version], and
-	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance]. For
-	// example, some tasks which were created using the App Engine SDK use a
-	// custom domain name; custom domains are not parsed by Cloud Tasks. If
-	// [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] is not parsable,
-	// then [service][google.cloud.tasks.v2beta2.AppEngineRouting.service],
-	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version], and
-	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] are the
-	// empty string.
+	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] are the empty string.
 	Version string `protobuf:"bytes,2,opt,name=version,proto3" json:"version,omitempty"`
 	// App instance.
 	//
@@ -519,49 +520,44 @@ type AppEngineRouting struct {
 	//   queue's project ID. Some tasks which were created using the App Engine
 	//   SDK use a custom domain name.
 	//
-	// * `service =`
-	// [service][google.cloud.tasks.v2beta2.AppEngineRouting.service]
+	// * `service =` [service][google.cloud.tasks.v2beta2.AppEngineRouting.service]
 	//
-	// * `version =`
-	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version]
+	// * `version =` [version][google.cloud.tasks.v2beta2.AppEngineRouting.version]
 	//
 	// * `version_dot_service =`
 	//   [version][google.cloud.tasks.v2beta2.AppEngineRouting.version] `+ '.' +`
 	//   [service][google.cloud.tasks.v2beta2.AppEngineRouting.service]
 	//
-	// * `instance =`
-	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance]
+	// * `instance =` [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance]
 	//
 	// * `instance_dot_service =`
-	//   [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] `+ '.'
-	//   +` [service][google.cloud.tasks.v2beta2.AppEngineRouting.service]
+	//   [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] `+ '.' +`
+	//   [service][google.cloud.tasks.v2beta2.AppEngineRouting.service]
 	//
 	// * `instance_dot_version =`
-	//   [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] `+ '.'
-	//   +` [version][google.cloud.tasks.v2beta2.AppEngineRouting.version]
+	//   [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] `+ '.' +`
+	//   [version][google.cloud.tasks.v2beta2.AppEngineRouting.version]
 	//
 	// * `instance_dot_version_dot_service =`
-	//   [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] `+ '.'
-	//   +` [version][google.cloud.tasks.v2beta2.AppEngineRouting.version] `+ '.'
-	//   +` [service][google.cloud.tasks.v2beta2.AppEngineRouting.service]
+	//   [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] `+ '.' +`
+	//   [version][google.cloud.tasks.v2beta2.AppEngineRouting.version] `+ '.' +`
+	//   [service][google.cloud.tasks.v2beta2.AppEngineRouting.service]
 	//
-	// If [service][google.cloud.tasks.v2beta2.AppEngineRouting.service] is empty,
-	// then the task will be sent to the service which is the default service when
-	// the task is attempted.
+	// If [service][google.cloud.tasks.v2beta2.AppEngineRouting.service] is empty, then the task will be sent
+	// to the service which is the default service when the task is attempted.
 	//
-	// If [version][google.cloud.tasks.v2beta2.AppEngineRouting.version] is empty,
-	// then the task will be sent to the version which is the default version when
-	// the task is attempted.
+	// If [version][google.cloud.tasks.v2beta2.AppEngineRouting.version] is empty, then the task will be sent
+	// to the version which is the default version when the task is attempted.
 	//
-	// If [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] is
-	// empty, then the task will be sent to an instance which is available when
-	// the task is attempted.
+	// If [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] is empty, then the task
+	// will be sent to an instance which is available when the task is
+	// attempted.
 	//
 	// If [service][google.cloud.tasks.v2beta2.AppEngineRouting.service],
 	// [version][google.cloud.tasks.v2beta2.AppEngineRouting.version], or
-	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] is
-	// invalid, then the task will be sent to the default version of the default
-	// service when the task is attempted.
+	// [instance][google.cloud.tasks.v2beta2.AppEngineRouting.instance] is invalid, then the task
+	// will be sent to the default version of the default service when
+	// the task is attempted.
 	Host                 string   `protobuf:"bytes,4,opt,name=host,proto3" json:"host,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -636,40 +632,39 @@ func init() {
 }
 
 var fileDescriptor_ad20693261d55153 = []byte{
-	// 557 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x54, 0xcf, 0x6f, 0xd3, 0x4c,
-	0x10, 0xfd, 0x5c, 0xa7, 0xbf, 0xc6, 0xd1, 0x27, 0x6b, 0xa9, 0x84, 0x95, 0xa2, 0xaa, 0xe4, 0x00,
-	0x15, 0x42, 0xb6, 0x14, 0x2e, 0x50, 0x84, 0x50, 0x4b, 0x4c, 0x53, 0x89, 0x12, 0xcb, 0x75, 0x84,
-	0x54, 0x0e, 0xd6, 0x26, 0x19, 0x1c, 0x2b, 0xee, 0xae, 0xd9, 0x5d, 0x5b, 0xca, 0x95, 0x3b, 0xff,
-	0x33, 0xf2, 0xda, 0x09, 0x69, 0x80, 0x0a, 0x6e, 0xf3, 0x66, 0xde, 0xbc, 0xc9, 0xbc, 0xf1, 0x06,
-	0x9e, 0x26, 0x9c, 0x27, 0x19, 0x7a, 0x93, 0x8c, 0x17, 0x53, 0x4f, 0x51, 0x39, 0x97, 0x5e, 0xd9,
-	0x1b, 0xa3, 0xa2, 0x3d, 0x4f, 0x51, 0x91, 0xa0, 0x72, 0x73, 0xc1, 0x15, 0x27, 0x9d, 0x9a, 0xe8,
-	0x6a, 0xa2, 0xab, 0x89, 0x6e, 0x43, 0xec, 0x3c, 0x6a, 0x44, 0x68, 0x9e, 0x7a, 0x94, 0x31, 0xae,
-	0xa8, 0x4a, 0x39, 0x93, 0x75, 0x67, 0xe7, 0xa8, 0xa9, 0x6a, 0x34, 0x2e, 0xbe, 0x78, 0xd3, 0x42,
-	0x68, 0x42, 0x5d, 0xef, 0xb6, 0x01, 0x82, 0x22, 0xcb, 0x22, 0x3d, 0xad, 0xfb, 0x0a, 0xac, 0x0a,
-	0x5d, 0xa1, 0x94, 0x34, 0x41, 0xe2, 0xc0, 0x6e, 0x4e, 0x17, 0x19, 0xa7, 0x53, 0xc7, 0x38, 0x36,
-	0x4e, 0xda, 0xe1, 0x12, 0x12, 0x1b, 0x4c, 0x45, 0x13, 0x67, 0xeb, 0xd8, 0x38, 0xd9, 0x0f, 0xab,
-	0xb0, 0xfb, 0xcd, 0x80, 0x07, 0x67, 0x79, 0xee, 0xb3, 0x24, 0x65, 0x38, 0x50, 0x2a, 0xaf, 0x25,
-	0xc9, 0x1c, 0x0e, 0x69, 0x9e, 0xc7, 0xa8, 0xf3, 0xb1, 0xe0, 0x85, 0x4a, 0x59, 0x12, 0xf3, 0x12,
-	0x85, 0x48, 0xa7, 0xa8, 0x75, 0xad, 0xde, 0x73, 0xf7, 0xcf, 0x0b, 0xba, 0x2b, 0xd5, 0xb0, 0x6e,
-	0x0e, 0x1d, 0xba, 0x91, 0x19, 0x36, 0x6a, 0xdd, 0xef, 0x26, 0x1c, 0xdc, 0xf9, 0x11, 0x21, 0x7e,
-	0x2d, 0x50, 0x2a, 0x72, 0x01, 0xd6, 0x4c, 0xa9, 0x3c, 0xbe, 0x45, 0x35, 0xe3, 0xf5, 0x36, 0xff,
-	0xf7, 0x9e, 0xdc, 0x37, 0xb5, 0xea, 0xbe, 0xd2, 0xec, 0x10, 0x66, 0xab, 0x98, 0xdc, 0x00, 0xf9,
-	0x75, 0x1d, 0xed, 0xc3, 0xbf, 0x6e, 0x61, 0x6f, 0x6e, 0x41, 0x1e, 0x43, 0x5b, 0x60, 0x46, 0x55,
-	0x5a, 0x62, 0x5c, 0x88, 0xcc, 0x31, 0xb5, 0xbb, 0xd6, 0x32, 0x37, 0x12, 0x19, 0xf9, 0x04, 0xbb,
-	0x33, 0xa4, 0x53, 0x14, 0xd2, 0x69, 0x1d, 0x9b, 0x27, 0x56, 0xef, 0xcd, 0x5f, 0xcd, 0x5c, 0xb3,
-	0xc2, 0x1d, 0xd4, 0xfd, 0x3e, 0x53, 0x62, 0x11, 0x2e, 0xd5, 0xd6, 0x4f, 0xbd, 0x7d, 0xe7, 0xd4,
-	0x9d, 0x53, 0x68, 0xaf, 0xb7, 0x54, 0xa7, 0x9f, 0xe3, 0x42, 0x5b, 0xb8, 0x1f, 0x56, 0x21, 0x39,
-	0x80, 0xed, 0x92, 0x66, 0x05, 0x36, 0x9f, 0x43, 0x0d, 0x4e, 0xb7, 0x5e, 0x1a, 0xdd, 0x12, 0xec,
-	0xcd, 0xbd, 0xab, 0x49, 0x12, 0x45, 0x99, 0x4e, 0xb0, 0xd1, 0x58, 0xc2, 0xaa, 0x52, 0xa2, 0x90,
-	0x29, 0x67, 0x8d, 0xd2, 0x12, 0x92, 0x0e, 0xec, 0xa5, 0x4c, 0x2a, 0xca, 0x26, 0xd8, 0xb8, 0xb2,
-	0xc2, 0x84, 0x40, 0x6b, 0xc6, 0xa5, 0x72, 0x5a, 0x3a, 0xaf, 0xe3, 0x67, 0x9f, 0x01, 0x7e, 0xde,
-	0x8f, 0x1c, 0xc2, 0xc3, 0x41, 0x14, 0x05, 0xf1, 0x95, 0x1f, 0x0d, 0x86, 0xfd, 0x78, 0xf4, 0xf1,
-	0x3a, 0xf0, 0xdf, 0x5d, 0xbe, 0xbf, 0xf4, 0xfb, 0xf6, 0x7f, 0x64, 0x0f, 0x5a, 0xc1, 0xf0, 0x3a,
-	0xb2, 0x0d, 0xb2, 0x0b, 0xe6, 0x85, 0x1f, 0xd9, 0x5b, 0x55, 0x6a, 0xe0, 0x9f, 0xf5, 0x6d, 0xb3,
-	0x4a, 0x05, 0xa3, 0xc8, 0x6e, 0x11, 0x80, 0x9d, 0xbe, 0xff, 0xc1, 0x8f, 0x7c, 0x7b, 0xfb, 0x3c,
-	0x87, 0xa3, 0x09, 0xbf, 0xbd, 0xc7, 0xf7, 0x73, 0xab, 0xfe, 0xf6, 0x83, 0xea, 0x85, 0x05, 0xc6,
-	0xcd, 0xdb, 0x86, 0x9a, 0xf0, 0x8c, 0xb2, 0xc4, 0xe5, 0x22, 0xf1, 0x12, 0x64, 0xfa, 0xfd, 0x79,
-	0x75, 0x89, 0xe6, 0xa9, 0xfc, 0xdd, 0xbf, 0xc0, 0x6b, 0x8d, 0xc6, 0x3b, 0x9a, 0xfb, 0xe2, 0x47,
-	0x00, 0x00, 0x00, 0xff, 0xff, 0xbb, 0x5d, 0x40, 0x26, 0x30, 0x04, 0x00, 0x00,
+	// 541 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x53, 0xdf, 0x8b, 0xd3, 0x4c,
+	0x14, 0xfd, 0xb2, 0xe9, 0xfe, 0xba, 0x29, 0x1f, 0x61, 0x5c, 0x30, 0x74, 0x45, 0xd6, 0x3e, 0x68,
+	0x11, 0x49, 0xa0, 0xbe, 0xe8, 0x8a, 0xc8, 0xae, 0x8d, 0xdb, 0x05, 0x6b, 0x43, 0x36, 0x45, 0x58,
+	0x1f, 0xc2, 0x6c, 0x7b, 0x49, 0x43, 0xb3, 0x33, 0x71, 0x66, 0x12, 0xe8, 0xab, 0xef, 0xfe, 0xcf,
+	0x92, 0x49, 0x5a, 0xbb, 0x55, 0x17, 0x7d, 0xbb, 0xe7, 0xe6, 0xdc, 0x33, 0x39, 0xe7, 0xce, 0xc0,
+	0xb3, 0x84, 0xf3, 0x24, 0x43, 0x6f, 0x9a, 0xf1, 0x62, 0xe6, 0x29, 0x2a, 0x17, 0xd2, 0x2b, 0xfb,
+	0x37, 0xa8, 0x68, 0xdf, 0x53, 0x54, 0x24, 0xa8, 0xdc, 0x5c, 0x70, 0xc5, 0x49, 0xa7, 0x26, 0xba,
+	0x9a, 0xe8, 0x6a, 0xa2, 0xdb, 0x10, 0x3b, 0x8f, 0x1a, 0x11, 0x9a, 0xa7, 0x1e, 0x65, 0x8c, 0x2b,
+	0xaa, 0x52, 0xce, 0x64, 0x3d, 0xd9, 0x6d, 0x03, 0x04, 0x45, 0x96, 0x45, 0x5a, 0xad, 0xfb, 0x1a,
+	0xac, 0x0a, 0x8d, 0x50, 0x4a, 0x9a, 0x20, 0x71, 0x60, 0x3f, 0xa7, 0xcb, 0x8c, 0xd3, 0x99, 0x63,
+	0x9c, 0x18, 0xbd, 0x76, 0xb8, 0x82, 0xc4, 0x06, 0x53, 0xd1, 0xc4, 0xd9, 0x39, 0x31, 0x7a, 0x87,
+	0x61, 0x55, 0x76, 0xbf, 0x19, 0xf0, 0xe0, 0x2c, 0xcf, 0x7d, 0x96, 0xa4, 0x0c, 0x87, 0x4a, 0xe5,
+	0xb5, 0x24, 0x59, 0xc0, 0x31, 0xcd, 0xf3, 0x18, 0x75, 0x3f, 0x16, 0xbc, 0x50, 0x29, 0x4b, 0x62,
+	0x5e, 0xa2, 0x10, 0xe9, 0x0c, 0xb5, 0xae, 0xd5, 0x7f, 0xe1, 0xfe, 0xd9, 0x80, 0xbb, 0x56, 0x0d,
+	0xeb, 0xe1, 0xd0, 0xa1, 0x5b, 0x9d, 0x71, 0xa3, 0xd6, 0xfd, 0x6e, 0xc2, 0xd1, 0x9d, 0x9f, 0x08,
+	0xf1, 0x6b, 0x81, 0x52, 0x91, 0x0b, 0xb0, 0xe6, 0x4a, 0xe5, 0xf1, 0x2d, 0xaa, 0x39, 0xaf, 0xdd,
+	0xfc, 0xdf, 0x7f, 0x7a, 0xdf, 0xa9, 0xd5, 0xf4, 0x48, 0xb3, 0x43, 0x98, 0xaf, 0x6b, 0x72, 0x0d,
+	0xe4, 0x57, 0x3b, 0x3a, 0x87, 0x7f, 0x75, 0x61, 0x6f, 0xbb, 0x20, 0x4f, 0xa0, 0x2d, 0x30, 0xa3,
+	0x2a, 0x2d, 0x31, 0x2e, 0x44, 0xe6, 0x98, 0x3a, 0x5d, 0x6b, 0xd5, 0x9b, 0x88, 0x8c, 0x7c, 0x86,
+	0xfd, 0x39, 0xd2, 0x19, 0x0a, 0xe9, 0xb4, 0x4e, 0xcc, 0x9e, 0xd5, 0x7f, 0xfb, 0x57, 0x67, 0x6e,
+	0x44, 0xe1, 0x0e, 0xeb, 0x79, 0x9f, 0x29, 0xb1, 0x0c, 0x57, 0x6a, 0x9b, 0xab, 0xde, 0xbd, 0xb3,
+	0xea, 0xce, 0x29, 0xb4, 0x37, 0x47, 0xaa, 0xd5, 0x2f, 0x70, 0xa9, 0x23, 0x3c, 0x0c, 0xab, 0x92,
+	0x1c, 0xc1, 0x6e, 0x49, 0xb3, 0x02, 0x9b, 0xeb, 0x50, 0x83, 0xd3, 0x9d, 0x57, 0x46, 0xb7, 0x04,
+	0x7b, 0xdb, 0x77, 0x75, 0x92, 0x44, 0x51, 0xa6, 0x53, 0x6c, 0x34, 0x56, 0xb0, 0xfa, 0x52, 0xa2,
+	0x90, 0x29, 0x67, 0x8d, 0xd2, 0x0a, 0x92, 0x0e, 0x1c, 0xa4, 0x4c, 0x2a, 0xca, 0xa6, 0xd8, 0xa4,
+	0xb2, 0xc6, 0x84, 0x40, 0x6b, 0xce, 0xa5, 0x72, 0x5a, 0xba, 0xaf, 0xeb, 0xe7, 0x5f, 0x00, 0x7e,
+	0xee, 0x8f, 0x1c, 0xc3, 0xc3, 0x61, 0x14, 0x05, 0xf1, 0xc8, 0x8f, 0x86, 0xe3, 0x41, 0x3c, 0xf9,
+	0x74, 0x15, 0xf8, 0xef, 0x2f, 0x3f, 0x5c, 0xfa, 0x03, 0xfb, 0x3f, 0x72, 0x00, 0xad, 0x60, 0x7c,
+	0x15, 0xd9, 0x06, 0xd9, 0x07, 0xf3, 0xc2, 0x8f, 0xec, 0x9d, 0xaa, 0x35, 0xf4, 0xcf, 0x06, 0xb6,
+	0x59, 0xb5, 0x82, 0x49, 0x64, 0xb7, 0x08, 0xc0, 0xde, 0xc0, 0xff, 0xe8, 0x47, 0xbe, 0xbd, 0x7b,
+	0x9e, 0xc3, 0xe3, 0x29, 0xbf, 0xbd, 0x27, 0xf7, 0x73, 0xab, 0xbe, 0xfb, 0x41, 0xf5, 0xc2, 0x02,
+	0xe3, 0xfa, 0x5d, 0x43, 0x4d, 0x78, 0x46, 0x59, 0xe2, 0x72, 0x91, 0x78, 0x09, 0x32, 0xfd, 0xfe,
+	0xbc, 0xfa, 0x13, 0xcd, 0x53, 0xf9, 0xbb, 0x57, 0xfe, 0x46, 0xa3, 0x9b, 0x3d, 0xcd, 0x7d, 0xf9,
+	0x23, 0x00, 0x00, 0xff, 0xff, 0x7c, 0x8f, 0x47, 0xe7, 0x10, 0x04, 0x00, 0x00,
 }
