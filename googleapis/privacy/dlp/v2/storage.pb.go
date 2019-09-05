@@ -164,8 +164,8 @@ var CloudStorageOptions_SampleMethod_name = map[int32]string{
 
 var CloudStorageOptions_SampleMethod_value = map[string]int32{
 	"SAMPLE_METHOD_UNSPECIFIED": 0,
-	"TOP":          1,
-	"RANDOM_START": 2,
+	"TOP":                       1,
+	"RANDOM_START":              2,
 }
 
 func (x CloudStorageOptions_SampleMethod) String() string {
@@ -197,8 +197,8 @@ var BigQueryOptions_SampleMethod_name = map[int32]string{
 
 var BigQueryOptions_SampleMethod_value = map[string]int32{
 	"SAMPLE_METHOD_UNSPECIFIED": 0,
-	"TOP":          1,
-	"RANDOM_START": 2,
+	"TOP":                       1,
+	"RANDOM_START":              2,
 }
 
 func (x BigQueryOptions_SampleMethod) String() string {

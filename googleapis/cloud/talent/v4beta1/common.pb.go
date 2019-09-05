@@ -64,13 +64,13 @@ var CompanySize_name = map[int32]string{
 
 var CompanySize_value = map[string]int32{
 	"COMPANY_SIZE_UNSPECIFIED": 0,
-	"MINI":    1,
-	"SMALL":   2,
-	"SMEDIUM": 3,
-	"MEDIUM":  4,
-	"BIG":     5,
-	"BIGGER":  6,
-	"GIANT":   7,
+	"MINI":                     1,
+	"SMALL":                    2,
+	"SMEDIUM":                  3,
+	"MEDIUM":                   4,
+	"BIG":                      5,
+	"BIGGER":                   6,
+	"GIANT":                    7,
 }
 
 func (x CompanySize) String() string {
@@ -483,20 +483,20 @@ var JobCategory_value = map[string]int32{
 	"HEALTHCARE":                          14,
 	"HUMAN_RESOURCES":                     15,
 	"INSTALLATION_MAINTENANCE_AND_REPAIR": 16,
-	"LEGAL":                            17,
-	"MANAGEMENT":                       18,
-	"MANUFACTURING_AND_WAREHOUSE":      19,
-	"MEDIA_COMMUNICATIONS_AND_WRITING": 20,
-	"OIL_GAS_AND_MINING":               21,
-	"PERSONAL_CARE_AND_SERVICES":       22,
-	"PROTECTIVE_SERVICES":              23,
-	"REAL_ESTATE":                      24,
-	"RESTAURANT_AND_HOSPITALITY":       25,
-	"SALES_AND_RETAIL":                 26,
-	"SCIENCE_AND_ENGINEERING":          27,
-	"SOCIAL_SERVICES_AND_NON_PROFIT":   28,
-	"SPORTS_FITNESS_AND_RECREATION":    29,
-	"TRANSPORTATION_AND_LOGISTICS":     30,
+	"LEGAL":                               17,
+	"MANAGEMENT":                          18,
+	"MANUFACTURING_AND_WAREHOUSE":         19,
+	"MEDIA_COMMUNICATIONS_AND_WRITING":    20,
+	"OIL_GAS_AND_MINING":                  21,
+	"PERSONAL_CARE_AND_SERVICES":          22,
+	"PROTECTIVE_SERVICES":                 23,
+	"REAL_ESTATE":                         24,
+	"RESTAURANT_AND_HOSPITALITY":          25,
+	"SALES_AND_RETAIL":                    26,
+	"SCIENCE_AND_ENGINEERING":             27,
+	"SOCIAL_SERVICES_AND_NON_PROFIT":      28,
+	"SPORTS_FITNESS_AND_RECREATION":       29,
+	"TRANSPORTATION_AND_LOGISTICS":        30,
 }
 
 func (x JobCategory) String() string {
@@ -915,12 +915,12 @@ var DeviceInfo_DeviceType_name = map[int32]string{
 
 var DeviceInfo_DeviceType_value = map[string]int32{
 	"DEVICE_TYPE_UNSPECIFIED": 0,
-	"WEB":        1,
-	"MOBILE_WEB": 2,
-	"ANDROID":    3,
-	"IOS":        4,
-	"BOT":        5,
-	"OTHER":      6,
+	"WEB":                     1,
+	"MOBILE_WEB":              2,
+	"ANDROID":                 3,
+	"IOS":                     4,
+	"BOT":                     5,
+	"OTHER":                   6,
 }
 
 func (x DeviceInfo_DeviceType) String() string {
@@ -998,14 +998,14 @@ var CompensationInfo_CompensationType_name = map[int32]string{
 
 var CompensationInfo_CompensationType_value = map[string]int32{
 	"COMPENSATION_TYPE_UNSPECIFIED": 0,
-	"BASE":           1,
-	"BONUS":          2,
-	"SIGNING_BONUS":  3,
-	"EQUITY":         4,
-	"PROFIT_SHARING": 5,
-	"COMMISSIONS":    6,
-	"TIPS":           7,
-	"OTHER_COMPENSATION_TYPE": 8,
+	"BASE":                          1,
+	"BONUS":                         2,
+	"SIGNING_BONUS":                 3,
+	"EQUITY":                        4,
+	"PROFIT_SHARING":                5,
+	"COMMISSIONS":                   6,
+	"TIPS":                          7,
+	"OTHER_COMPENSATION_TYPE":       8,
 }
 
 func (x CompensationInfo_CompensationType) String() string {

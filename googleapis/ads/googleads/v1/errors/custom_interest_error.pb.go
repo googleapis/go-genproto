@@ -60,9 +60,9 @@ var CustomInterestErrorEnum_CustomInterestError_name = map[int32]string{
 }
 
 var CustomInterestErrorEnum_CustomInterestError_value = map[string]int32{
-	"UNSPECIFIED":                                                        0,
-	"UNKNOWN":                                                            1,
-	"NAME_ALREADY_USED":                                                  2,
+	"UNSPECIFIED":       0,
+	"UNKNOWN":           1,
+	"NAME_ALREADY_USED": 2,
 	"CUSTOM_INTEREST_MEMBER_ID_AND_TYPE_PARAMETER_NOT_PRESENT_IN_REMOVE": 3,
 	"TYPE_AND_PARAMETER_NOT_FOUND":                                       4,
 	"TYPE_AND_PARAMETER_ALREADY_EXISTED":                                 5,

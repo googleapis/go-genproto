@@ -53,12 +53,12 @@ var DateRangeErrorEnum_DateRangeError_name = map[int32]string{
 }
 
 var DateRangeErrorEnum_DateRangeError_value = map[string]int32{
-	"UNSPECIFIED":                                 0,
-	"UNKNOWN":                                     1,
-	"INVALID_DATE":                                2,
-	"START_DATE_AFTER_END_DATE":                   3,
-	"CANNOT_SET_DATE_TO_PAST":                     4,
-	"AFTER_MAXIMUM_ALLOWABLE_DATE":                5,
+	"UNSPECIFIED":                  0,
+	"UNKNOWN":                      1,
+	"INVALID_DATE":                 2,
+	"START_DATE_AFTER_END_DATE":    3,
+	"CANNOT_SET_DATE_TO_PAST":      4,
+	"AFTER_MAXIMUM_ALLOWABLE_DATE": 5,
 	"CANNOT_MODIFY_START_DATE_IF_ALREADY_STARTED": 6,
 }
 

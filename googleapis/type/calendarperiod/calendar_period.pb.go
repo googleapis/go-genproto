@@ -62,13 +62,13 @@ var CalendarPeriod_name = map[int32]string{
 
 var CalendarPeriod_value = map[string]int32{
 	"CALENDAR_PERIOD_UNSPECIFIED": 0,
-	"DAY":       1,
-	"WEEK":      2,
-	"FORTNIGHT": 3,
-	"MONTH":     4,
-	"QUARTER":   5,
-	"HALF":      6,
-	"YEAR":      7,
+	"DAY":                         1,
+	"WEEK":                        2,
+	"FORTNIGHT":                   3,
+	"MONTH":                       4,
+	"QUARTER":                     5,
+	"HALF":                        6,
+	"YEAR":                        7,
 }
 
 func (x CalendarPeriod) String() string {

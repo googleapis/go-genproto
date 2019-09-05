@@ -91,14 +91,14 @@ var FeedMappingErrorEnum_FeedMappingError_name = map[int32]string{
 }
 
 var FeedMappingErrorEnum_FeedMappingError_value = map[string]int32{
-	"UNSPECIFIED":                                             0,
-	"UNKNOWN":                                                 1,
-	"INVALID_PLACEHOLDER_FIELD":                               2,
-	"INVALID_CRITERION_FIELD":                                 3,
-	"INVALID_PLACEHOLDER_TYPE":                                4,
-	"INVALID_CRITERION_TYPE":                                  5,
-	"NO_ATTRIBUTE_FIELD_MAPPINGS":                             7,
-	"FEED_ATTRIBUTE_TYPE_MISMATCH":                            8,
+	"UNSPECIFIED":                  0,
+	"UNKNOWN":                      1,
+	"INVALID_PLACEHOLDER_FIELD":    2,
+	"INVALID_CRITERION_FIELD":      3,
+	"INVALID_PLACEHOLDER_TYPE":     4,
+	"INVALID_CRITERION_TYPE":       5,
+	"NO_ATTRIBUTE_FIELD_MAPPINGS":  7,
+	"FEED_ATTRIBUTE_TYPE_MISMATCH": 8,
 	"CANNOT_OPERATE_ON_MAPPINGS_FOR_SYSTEM_GENERATED_FEED":    9,
 	"MULTIPLE_MAPPINGS_FOR_PLACEHOLDER_TYPE":                  10,
 	"MULTIPLE_MAPPINGS_FOR_CRITERION_TYPE":                    11,

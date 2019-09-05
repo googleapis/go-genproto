@@ -45,9 +45,9 @@ var File_HashType_name = map[int32]string{
 
 var File_HashType_value = map[string]int32{
 	"HASH_TYPE_UNSPECIFIED": 0,
-	"MD5":    1,
-	"SHA1":   2,
-	"SHA256": 3,
+	"MD5":                   1,
+	"SHA1":                  2,
+	"SHA256":                3,
 }
 
 func (x File_HashType) String() string {

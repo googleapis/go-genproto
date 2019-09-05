@@ -46,8 +46,8 @@ var DataFormat_name = map[int32]string{
 
 var DataFormat_value = map[string]int32{
 	"DATA_FORMAT_UNSPECIFIED": 0,
-	"AVRO":  1,
-	"ARROW": 3,
+	"AVRO":                    1,
+	"ARROW":                   3,
 }
 
 func (x DataFormat) String() string {

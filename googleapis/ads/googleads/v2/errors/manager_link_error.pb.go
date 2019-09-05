@@ -81,8 +81,8 @@ var ManagerLinkErrorEnum_ManagerLinkError_name = map[int32]string{
 }
 
 var ManagerLinkErrorEnum_ManagerLinkError_value = map[string]int32{
-	"UNSPECIFIED": 0,
-	"UNKNOWN":     1,
+	"UNSPECIFIED":                          0,
+	"UNKNOWN":                              1,
 	"ACCOUNTS_NOT_COMPATIBLE_FOR_LINKING":  2,
 	"TOO_MANY_MANAGERS":                    3,
 	"TOO_MANY_INVITES":                     4,

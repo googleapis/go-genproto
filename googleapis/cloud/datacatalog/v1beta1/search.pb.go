@@ -46,9 +46,9 @@ var SearchResultType_name = map[int32]string{
 
 var SearchResultType_value = map[string]int32{
 	"SEARCH_RESULT_TYPE_UNSPECIFIED": 0,
-	"ENTRY":        1,
-	"TAG_TEMPLATE": 2,
-	"ENTRY_GROUP":  3,
+	"ENTRY":                          1,
+	"TAG_TEMPLATE":                   2,
+	"ENTRY_GROUP":                    3,
 }
 
 func (x SearchResultType) String() string {

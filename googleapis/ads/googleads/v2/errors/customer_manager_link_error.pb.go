@@ -65,10 +65,10 @@ var CustomerManagerLinkErrorEnum_CustomerManagerLinkError_name = map[int32]strin
 }
 
 var CustomerManagerLinkErrorEnum_CustomerManagerLinkError_value = map[string]int32{
-	"UNSPECIFIED":                                    0,
-	"UNKNOWN":                                        1,
-	"NO_PENDING_INVITE":                              2,
-	"SAME_CLIENT_MORE_THAN_ONCE_PER_CALL":            3,
+	"UNSPECIFIED":                         0,
+	"UNKNOWN":                             1,
+	"NO_PENDING_INVITE":                   2,
+	"SAME_CLIENT_MORE_THAN_ONCE_PER_CALL": 3,
 	"MANAGER_HAS_MAX_NUMBER_OF_LINKED_ACCOUNTS":      4,
 	"CANNOT_UNLINK_ACCOUNT_WITHOUT_ACTIVE_USER":      5,
 	"CANNOT_REMOVE_LAST_CLIENT_ACCOUNT_OWNER":        6,

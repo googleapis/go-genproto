@@ -251,11 +251,11 @@ var ExtensionSettingErrorEnum_ExtensionSettingError_name = map[int32]string{
 }
 
 var ExtensionSettingErrorEnum_ExtensionSettingError_value = map[string]int32{
-	"UNSPECIFIED":                                                0,
-	"UNKNOWN":                                                    1,
-	"EXTENSIONS_REQUIRED":                                        2,
-	"FEED_TYPE_EXTENSION_TYPE_MISMATCH":                          3,
-	"INVALID_FEED_TYPE":                                          4,
+	"UNSPECIFIED":                       0,
+	"UNKNOWN":                           1,
+	"EXTENSIONS_REQUIRED":               2,
+	"FEED_TYPE_EXTENSION_TYPE_MISMATCH": 3,
+	"INVALID_FEED_TYPE":                 4,
 	"INVALID_FEED_TYPE_FOR_CUSTOMER_EXTENSION_SETTING":           5,
 	"CANNOT_CHANGE_FEED_ITEM_ON_CREATE":                          6,
 	"CANNOT_UPDATE_NEWLY_CREATED_EXTENSION":                      7,

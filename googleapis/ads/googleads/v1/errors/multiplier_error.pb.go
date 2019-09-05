@@ -75,11 +75,11 @@ var MultiplierErrorEnum_MultiplierError_name = map[int32]string{
 }
 
 var MultiplierErrorEnum_MultiplierError_value = map[string]int32{
-	"UNSPECIFIED":                                     0,
-	"UNKNOWN":                                         1,
-	"MULTIPLIER_TOO_HIGH":                             2,
-	"MULTIPLIER_TOO_LOW":                              3,
-	"TOO_MANY_FRACTIONAL_DIGITS":                      4,
+	"UNSPECIFIED":                0,
+	"UNKNOWN":                    1,
+	"MULTIPLIER_TOO_HIGH":        2,
+	"MULTIPLIER_TOO_LOW":         3,
+	"TOO_MANY_FRACTIONAL_DIGITS": 4,
 	"MULTIPLIER_NOT_ALLOWED_FOR_BIDDING_STRATEGY":     5,
 	"MULTIPLIER_NOT_ALLOWED_WHEN_BASE_BID_IS_MISSING": 6,
 	"NO_MULTIPLIER_SPECIFIED":                         7,

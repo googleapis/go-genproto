@@ -75,10 +75,10 @@ var CampaignExperimentErrorEnum_CampaignExperimentError_name = map[int32]string{
 }
 
 var CampaignExperimentErrorEnum_CampaignExperimentError_value = map[string]int32{
-	"UNSPECIFIED":                                          0,
-	"UNKNOWN":                                              1,
-	"DUPLICATE_NAME":                                       2,
-	"INVALID_TRANSITION":                                   3,
+	"UNSPECIFIED":        0,
+	"UNKNOWN":            1,
+	"DUPLICATE_NAME":     2,
+	"INVALID_TRANSITION": 3,
 	"CANNOT_CREATE_EXPERIMENT_WITH_SHARED_BUDGET":          4,
 	"CANNOT_CREATE_EXPERIMENT_FOR_REMOVED_BASE_CAMPAIGN":   5,
 	"CANNOT_CREATE_EXPERIMENT_FOR_NON_PROPOSED_DRAFT":      6,

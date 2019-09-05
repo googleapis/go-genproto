@@ -214,12 +214,12 @@ var SearchJobsRequest_CustomRankingInfo_ImportanceLevel_name = map[int32]string{
 
 var SearchJobsRequest_CustomRankingInfo_ImportanceLevel_value = map[string]int32{
 	"IMPORTANCE_LEVEL_UNSPECIFIED": 0,
-	"NONE":    1,
-	"LOW":     2,
-	"MILD":    3,
-	"MEDIUM":  4,
-	"HIGH":    5,
-	"EXTREME": 6,
+	"NONE":                         1,
+	"LOW":                          2,
+	"MILD":                         3,
+	"MEDIUM":                       4,
+	"HIGH":                         5,
+	"EXTREME":                      6,
 }
 
 func (x SearchJobsRequest_CustomRankingInfo_ImportanceLevel) String() string {

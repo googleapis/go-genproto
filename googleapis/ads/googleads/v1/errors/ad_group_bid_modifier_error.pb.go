@@ -45,9 +45,9 @@ var AdGroupBidModifierErrorEnum_AdGroupBidModifierError_name = map[int32]string{
 }
 
 var AdGroupBidModifierErrorEnum_AdGroupBidModifierError_value = map[string]int32{
-	"UNSPECIFIED":                                               0,
-	"UNKNOWN":                                                   1,
-	"CRITERION_ID_NOT_SUPPORTED":                                2,
+	"UNSPECIFIED":                0,
+	"UNKNOWN":                    1,
+	"CRITERION_ID_NOT_SUPPORTED": 2,
 	"CANNOT_OVERRIDE_OPTED_OUT_CAMPAIGN_CRITERION_BID_MODIFIER": 3,
 }
 

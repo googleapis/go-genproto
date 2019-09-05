@@ -116,7 +116,7 @@ var RecognitionConfig_AudioEncoding_value = map[string]int32{
 	"AMR_WB":                 5,
 	"OGG_OPUS":               6,
 	"SPEEX_WITH_HEADER_BYTE": 7,
-	"MP3": 8,
+	"MP3":                    8,
 }
 
 func (x RecognitionConfig_AudioEncoding) String() string {
@@ -249,8 +249,8 @@ var RecognitionMetadata_OriginalMediaType_name = map[int32]string{
 
 var RecognitionMetadata_OriginalMediaType_value = map[string]int32{
 	"ORIGINAL_MEDIA_TYPE_UNSPECIFIED": 0,
-	"AUDIO": 1,
-	"VIDEO": 2,
+	"AUDIO":                           1,
+	"VIDEO":                           2,
 }
 
 func (x RecognitionMetadata_OriginalMediaType) String() string {

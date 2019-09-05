@@ -61,12 +61,12 @@ var Type_PrimitiveType_name = map[int32]string{
 
 var Type_PrimitiveType_value = map[string]int32{
 	"PRIMITIVE_TYPE_UNSPECIFIED": 0,
-	"BOOL":   1,
-	"INT64":  2,
-	"UINT64": 3,
-	"DOUBLE": 4,
-	"STRING": 5,
-	"BYTES":  6,
+	"BOOL":                       1,
+	"INT64":                      2,
+	"UINT64":                     3,
+	"DOUBLE":                     4,
+	"STRING":                     5,
+	"BYTES":                      6,
 }
 
 func (x Type_PrimitiveType) String() string {
@@ -104,9 +104,9 @@ var Type_WellKnownType_name = map[int32]string{
 
 var Type_WellKnownType_value = map[string]int32{
 	"WELL_KNOWN_TYPE_UNSPECIFIED": 0,
-	"ANY":       1,
-	"TIMESTAMP": 2,
-	"DURATION":  3,
+	"ANY":                         1,
+	"TIMESTAMP":                   2,
+	"DURATION":                    3,
 }
 
 func (x Type_WellKnownType) String() string {

@@ -53,9 +53,9 @@ var SharedSetErrorEnum_SharedSetError_value = map[string]int32{
 	"UNSPECIFIED": 0,
 	"UNKNOWN":     1,
 	"CUSTOMER_CANNOT_CREATE_SHARED_SET_OF_THIS_TYPE": 2,
-	"DUPLICATE_NAME":                                 3,
-	"SHARED_SET_REMOVED":                             4,
-	"SHARED_SET_IN_USE":                              5,
+	"DUPLICATE_NAME":     3,
+	"SHARED_SET_REMOVED": 4,
+	"SHARED_SET_IN_USE":  5,
 }
 
 func (x SharedSetErrorEnum_SharedSetError) String() string {
