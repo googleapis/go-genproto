@@ -23,25 +23,25 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// A Payments account, which can be used to set up billing for an Ads customer.
+// A payments account, which can be used to set up billing for an Ads customer.
 type PaymentsAccount struct {
-	// The resource name of the Payments account.
+	// The resource name of the payments account.
 	// PaymentsAccount resource names have the form:
 	//
 	// `customers/{customer_id}/paymentsAccounts/{payments_account_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
-	// A 16 digit ID used to identify a Payments account.
+	// A 16 digit ID used to identify a payments account.
 	PaymentsAccountId *wrappers.StringValue `protobuf:"bytes,2,opt,name=payments_account_id,json=paymentsAccountId,proto3" json:"payments_account_id,omitempty"`
-	// The name of the Payments account.
+	// The name of the payments account.
 	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// The currency code of the Payments account.
+	// The currency code of the payments account.
 	// A subset of the currency codes derived from the ISO 4217 standard is
 	// supported.
 	CurrencyCode *wrappers.StringValue `protobuf:"bytes,4,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
-	// A 12 digit ID used to identify the Payments profile associated with the
-	// Payments account.
+	// A 12 digit ID used to identify the payments profile associated with the
+	// payments account.
 	PaymentsProfileId *wrappers.StringValue `protobuf:"bytes,5,opt,name=payments_profile_id,json=paymentsProfileId,proto3" json:"payments_profile_id,omitempty"`
-	// A secondary Payments profile ID present in uncommon situations, e.g.
+	// A secondary payments profile ID present in uncommon situations, e.g.
 	// when a sequential liability agreement has been arranged.
 	SecondaryPaymentsProfileId *wrappers.StringValue `protobuf:"bytes,6,opt,name=secondary_payments_profile_id,json=secondaryPaymentsProfileId,proto3" json:"secondary_payments_profile_id,omitempty"`
 	XXX_NoUnkeyedLiteral       struct{}              `json:"-"`

@@ -25,7 +25,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Request message for fetching all accessible Payments accounts.
+// Request message for fetching all accessible payments accounts.
 type ListPaymentsAccountsRequest struct {
 	// The ID of the customer to apply the PaymentsAccount list operation to.
 	CustomerId           string   `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
@@ -68,7 +68,7 @@ func (m *ListPaymentsAccountsRequest) GetCustomerId() string {
 
 // Response message for [PaymentsAccountService.ListPaymentsAccounts][google.ads.googleads.v2.services.PaymentsAccountService.ListPaymentsAccounts].
 type ListPaymentsAccountsResponse struct {
-	// The list of accessible Payments accounts.
+	// The list of accessible payments accounts.
 	PaymentsAccounts     []*resources.PaymentsAccount `protobuf:"bytes,1,rep,name=payments_accounts,json=paymentsAccounts,proto3" json:"payments_accounts,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
 	XXX_unrecognized     []byte                       `json:"-"`
@@ -159,7 +159,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type PaymentsAccountServiceClient interface {
-	// Returns all Payments accounts associated with all managers
+	// Returns all payments accounts associated with all managers
 	// between the login customer ID and specified serving customer in the
 	// hierarchy, inclusive.
 	ListPaymentsAccounts(ctx context.Context, in *ListPaymentsAccountsRequest, opts ...grpc.CallOption) (*ListPaymentsAccountsResponse, error)
@@ -184,7 +184,7 @@ func (c *paymentsAccountServiceClient) ListPaymentsAccounts(ctx context.Context,
 
 // PaymentsAccountServiceServer is the server API for PaymentsAccountService service.
 type PaymentsAccountServiceServer interface {
-	// Returns all Payments accounts associated with all managers
+	// Returns all payments accounts associated with all managers
 	// between the login customer ID and specified serving customer in the
 	// hierarchy, inclusive.
 	ListPaymentsAccounts(context.Context, *ListPaymentsAccountsRequest) (*ListPaymentsAccountsResponse, error)

@@ -8,3 +8,5 @@ require (
 	google.golang.org/grpc v1.19.0
 	honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099
 )
+
+go 1.9
