@@ -24,9 +24,8 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// A billing setup across Ads and Payments systems; an association between a
-// Payments account and an advertiser. A billing setup is specific to one
-// advertiser.
+// A billing setup, which associates a payments account and an advertiser. A
+// billing setup is specific to one advertiser.
 type BillingSetup struct {
 	// The resource name of the billing setup.
 	// BillingSetup resource names have the form:
@@ -37,17 +36,17 @@ type BillingSetup struct {
 	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// The status of the billing setup.
 	Status enums.BillingSetupStatusEnum_BillingSetupStatus `protobuf:"varint,3,opt,name=status,proto3,enum=google.ads.googleads.v2.enums.BillingSetupStatusEnum_BillingSetupStatus" json:"status,omitempty"`
-	// The resource name of the Payments account associated with this billing
+	// The resource name of the payments account associated with this billing
 	// setup. Payments resource names have the form:
 	//
 	// `customers/{customer_id}/paymentsAccounts/{payments_account_id}`
-	// When setting up billing, this is used to signup with an existing Payments
+	// When setting up billing, this is used to signup with an existing payments
 	// account (and then payments_account_info should not be set).
 	// When getting a billing setup, this and payments_account_info will be
 	// populated.
 	PaymentsAccount *wrappers.StringValue `protobuf:"bytes,11,opt,name=payments_account,json=paymentsAccount,proto3" json:"payments_account,omitempty"`
-	// The Payments account information associated with this billing setup.
-	// When setting up billing, this is used to signup with a new Payments account
+	// The payments account information associated with this billing setup.
+	// When setting up billing, this is used to signup with a new payments account
 	// (and then payments_account should not be set).
 	// When getting a billing setup, this and payments_account will be
 	// populated.
@@ -220,26 +219,26 @@ func (*BillingSetup) XXX_OneofWrappers() []interface{} {
 	}
 }
 
-// Container of Payments account information for this billing.
+// Container of payments account information for this billing.
 type BillingSetup_PaymentsAccountInfo struct {
-	// A 16 digit id used to identify the Payments account associated with the
+	// A 16 digit id used to identify the payments account associated with the
 	// billing setup.
 	//
 	// This must be passed as a string with dashes, e.g. "1234-5678-9012-3456".
 	PaymentsAccountId *wrappers.StringValue `protobuf:"bytes,1,opt,name=payments_account_id,json=paymentsAccountId,proto3" json:"payments_account_id,omitempty"`
-	// The name of the Payments account associated with the billing setup.
+	// The name of the payments account associated with the billing setup.
 	//
-	// This enables the user to specify a meaningful name for a Payments account
+	// This enables the user to specify a meaningful name for a payments account
 	// to aid in reconciling monthly invoices.
 	//
 	// This name will be printed in the monthly invoices.
 	PaymentsAccountName *wrappers.StringValue `protobuf:"bytes,2,opt,name=payments_account_name,json=paymentsAccountName,proto3" json:"payments_account_name,omitempty"`
-	// A 12 digit id used to identify the Payments profile associated with the
+	// A 12 digit id used to identify the payments profile associated with the
 	// billing setup.
 	//
 	// This must be passed in as a string with dashes, e.g. "1234-5678-9012".
 	PaymentsProfileId *wrappers.StringValue `protobuf:"bytes,3,opt,name=payments_profile_id,json=paymentsProfileId,proto3" json:"payments_profile_id,omitempty"`
-	// The name of the Payments profile associated with the billing setup.
+	// The name of the payments profile associated with the billing setup.
 	PaymentsProfileName *wrappers.StringValue `protobuf:"bytes,4,opt,name=payments_profile_name,json=paymentsProfileName,proto3" json:"payments_profile_name,omitempty"`
 	// A secondary payments profile id present in uncommon situations, e.g.
 	// when a sequential liability agreement has been arranged.
