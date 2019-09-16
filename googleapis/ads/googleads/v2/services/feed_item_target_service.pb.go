@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -384,6 +386,17 @@ type FeedItemTargetServiceServer interface {
 	GetFeedItemTarget(context.Context, *GetFeedItemTargetRequest) (*resources.FeedItemTarget, error)
 	// Creates or removes feed item targets. Operation statuses are returned.
 	MutateFeedItemTargets(context.Context, *MutateFeedItemTargetsRequest) (*MutateFeedItemTargetsResponse, error)
+}
+
+// UnimplementedFeedItemTargetServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedFeedItemTargetServiceServer struct {
+}
+
+func (*UnimplementedFeedItemTargetServiceServer) GetFeedItemTarget(ctx context.Context, req *GetFeedItemTargetRequest) (*resources.FeedItemTarget, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFeedItemTarget not implemented")
+}
+func (*UnimplementedFeedItemTargetServiceServer) MutateFeedItemTargets(ctx context.Context, req *MutateFeedItemTargetsRequest) (*MutateFeedItemTargetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateFeedItemTargets not implemented")
 }
 
 func RegisterFeedItemTargetServiceServer(s *grpc.Server, srv FeedItemTargetServiceServer) {

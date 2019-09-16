@@ -12,6 +12,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -238,6 +240,29 @@ type BigtableServiceServer interface {
 	// max(existing timestamp, current server time) based on pre-defined
 	// read/modify/write rules. Returns the new contents of all modified cells.
 	ReadModifyWriteRow(context.Context, *ReadModifyWriteRowRequest) (*Row, error)
+}
+
+// UnimplementedBigtableServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedBigtableServiceServer struct {
+}
+
+func (*UnimplementedBigtableServiceServer) ReadRows(req *ReadRowsRequest, srv BigtableService_ReadRowsServer) error {
+	return status.Errorf(codes.Unimplemented, "method ReadRows not implemented")
+}
+func (*UnimplementedBigtableServiceServer) SampleRowKeys(req *SampleRowKeysRequest, srv BigtableService_SampleRowKeysServer) error {
+	return status.Errorf(codes.Unimplemented, "method SampleRowKeys not implemented")
+}
+func (*UnimplementedBigtableServiceServer) MutateRow(ctx context.Context, req *MutateRowRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateRow not implemented")
+}
+func (*UnimplementedBigtableServiceServer) MutateRows(ctx context.Context, req *MutateRowsRequest) (*MutateRowsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateRows not implemented")
+}
+func (*UnimplementedBigtableServiceServer) CheckAndMutateRow(ctx context.Context, req *CheckAndMutateRowRequest) (*CheckAndMutateRowResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckAndMutateRow not implemented")
+}
+func (*UnimplementedBigtableServiceServer) ReadModifyWriteRow(ctx context.Context, req *ReadModifyWriteRowRequest) (*Row, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReadModifyWriteRow not implemented")
 }
 
 func RegisterBigtableServiceServer(s *grpc.Server, srv BigtableServiceServer) {

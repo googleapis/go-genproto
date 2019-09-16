@@ -12,6 +12,8 @@ import (
 	_ "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -583,6 +585,20 @@ type ByteStreamServer interface {
 	// resource name, the sequence of returned `committed_size` values will be
 	// non-decreasing.
 	QueryWriteStatus(context.Context, *QueryWriteStatusRequest) (*QueryWriteStatusResponse, error)
+}
+
+// UnimplementedByteStreamServer can be embedded to have forward compatible implementations.
+type UnimplementedByteStreamServer struct {
+}
+
+func (*UnimplementedByteStreamServer) Read(req *ReadRequest, srv ByteStream_ReadServer) error {
+	return status.Errorf(codes.Unimplemented, "method Read not implemented")
+}
+func (*UnimplementedByteStreamServer) Write(srv ByteStream_WriteServer) error {
+	return status.Errorf(codes.Unimplemented, "method Write not implemented")
+}
+func (*UnimplementedByteStreamServer) QueryWriteStatus(ctx context.Context, req *QueryWriteStatusRequest) (*QueryWriteStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method QueryWriteStatus not implemented")
 }
 
 func RegisterByteStreamServer(s *grpc.Server, srv ByteStreamServer) {

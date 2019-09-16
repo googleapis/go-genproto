@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -399,6 +401,17 @@ type ResultStoreFileDownloadServer interface {
 	// - If the File is not found.
 	// - If the given File uri is badly formatted.
 	GetFileTail(context.Context, *GetFileTailRequest) (*GetFileTailResponse, error)
+}
+
+// UnimplementedResultStoreFileDownloadServer can be embedded to have forward compatible implementations.
+type UnimplementedResultStoreFileDownloadServer struct {
+}
+
+func (*UnimplementedResultStoreFileDownloadServer) GetFile(req *GetFileRequest, srv ResultStoreFileDownload_GetFileServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetFile not implemented")
+}
+func (*UnimplementedResultStoreFileDownloadServer) GetFileTail(ctx context.Context, req *GetFileTailRequest) (*GetFileTailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFileTail not implemented")
 }
 
 func RegisterResultStoreFileDownloadServer(s *grpc.Server, srv ResultStoreFileDownloadServer) {

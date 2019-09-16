@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -141,6 +143,14 @@ func (c *mobileAppCategoryConstantServiceClient) GetMobileAppCategoryConstant(ct
 type MobileAppCategoryConstantServiceServer interface {
 	// Returns the requested mobile app category constant.
 	GetMobileAppCategoryConstant(context.Context, *GetMobileAppCategoryConstantRequest) (*resources.MobileAppCategoryConstant, error)
+}
+
+// UnimplementedMobileAppCategoryConstantServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedMobileAppCategoryConstantServiceServer struct {
+}
+
+func (*UnimplementedMobileAppCategoryConstantServiceServer) GetMobileAppCategoryConstant(ctx context.Context, req *GetMobileAppCategoryConstantRequest) (*resources.MobileAppCategoryConstant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMobileAppCategoryConstant not implemented")
 }
 
 func RegisterMobileAppCategoryConstantServiceServer(s *grpc.Server, srv MobileAppCategoryConstantServiceServer) {

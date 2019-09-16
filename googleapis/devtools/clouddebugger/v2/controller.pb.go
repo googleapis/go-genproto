@@ -12,6 +12,8 @@ import (
 	_ "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -502,6 +504,20 @@ type Controller2Server interface {
 	// semantics. These may only make changes such as canonicalizing a value
 	// or snapping the location to the correct line of code.
 	UpdateActiveBreakpoint(context.Context, *UpdateActiveBreakpointRequest) (*UpdateActiveBreakpointResponse, error)
+}
+
+// UnimplementedController2Server can be embedded to have forward compatible implementations.
+type UnimplementedController2Server struct {
+}
+
+func (*UnimplementedController2Server) RegisterDebuggee(ctx context.Context, req *RegisterDebuggeeRequest) (*RegisterDebuggeeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterDebuggee not implemented")
+}
+func (*UnimplementedController2Server) ListActiveBreakpoints(ctx context.Context, req *ListActiveBreakpointsRequest) (*ListActiveBreakpointsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListActiveBreakpoints not implemented")
+}
+func (*UnimplementedController2Server) UpdateActiveBreakpoint(ctx context.Context, req *UpdateActiveBreakpointRequest) (*UpdateActiveBreakpointResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateActiveBreakpoint not implemented")
 }
 
 func RegisterController2Server(s *grpc.Server, srv Controller2Server) {

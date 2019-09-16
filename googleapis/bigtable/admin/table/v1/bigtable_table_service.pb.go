@@ -12,6 +12,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -215,6 +217,38 @@ type BigtableTableServiceServer interface {
 	DeleteColumnFamily(context.Context, *DeleteColumnFamilyRequest) (*empty.Empty, error)
 	// Delete all rows in a table corresponding to a particular prefix
 	BulkDeleteRows(context.Context, *BulkDeleteRowsRequest) (*empty.Empty, error)
+}
+
+// UnimplementedBigtableTableServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedBigtableTableServiceServer struct {
+}
+
+func (*UnimplementedBigtableTableServiceServer) CreateTable(ctx context.Context, req *CreateTableRequest) (*Table, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTable not implemented")
+}
+func (*UnimplementedBigtableTableServiceServer) ListTables(ctx context.Context, req *ListTablesRequest) (*ListTablesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTables not implemented")
+}
+func (*UnimplementedBigtableTableServiceServer) GetTable(ctx context.Context, req *GetTableRequest) (*Table, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTable not implemented")
+}
+func (*UnimplementedBigtableTableServiceServer) DeleteTable(ctx context.Context, req *DeleteTableRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTable not implemented")
+}
+func (*UnimplementedBigtableTableServiceServer) RenameTable(ctx context.Context, req *RenameTableRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RenameTable not implemented")
+}
+func (*UnimplementedBigtableTableServiceServer) CreateColumnFamily(ctx context.Context, req *CreateColumnFamilyRequest) (*ColumnFamily, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateColumnFamily not implemented")
+}
+func (*UnimplementedBigtableTableServiceServer) UpdateColumnFamily(ctx context.Context, req *ColumnFamily) (*ColumnFamily, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateColumnFamily not implemented")
+}
+func (*UnimplementedBigtableTableServiceServer) DeleteColumnFamily(ctx context.Context, req *DeleteColumnFamilyRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteColumnFamily not implemented")
+}
+func (*UnimplementedBigtableTableServiceServer) BulkDeleteRows(ctx context.Context, req *BulkDeleteRowsRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BulkDeleteRows not implemented")
 }
 
 func RegisterBigtableTableServiceServer(s *grpc.Server, srv BigtableTableServiceServer) {

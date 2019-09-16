@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +142,14 @@ func (c *adGroupAdAssetViewServiceClient) GetAdGroupAdAssetView(ctx context.Cont
 type AdGroupAdAssetViewServiceServer interface {
 	// Returns the requested ad group ad asset view in full detail.
 	GetAdGroupAdAssetView(context.Context, *GetAdGroupAdAssetViewRequest) (*resources.AdGroupAdAssetView, error)
+}
+
+// UnimplementedAdGroupAdAssetViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAdGroupAdAssetViewServiceServer struct {
+}
+
+func (*UnimplementedAdGroupAdAssetViewServiceServer) GetAdGroupAdAssetView(ctx context.Context, req *GetAdGroupAdAssetViewRequest) (*resources.AdGroupAdAssetView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAdGroupAdAssetView not implemented")
 }
 
 func RegisterAdGroupAdAssetViewServiceServer(s *grpc.Server, srv AdGroupAdAssetViewServiceServer) {

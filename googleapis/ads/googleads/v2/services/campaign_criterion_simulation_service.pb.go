@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -141,6 +143,14 @@ func (c *campaignCriterionSimulationServiceClient) GetCampaignCriterionSimulatio
 type CampaignCriterionSimulationServiceServer interface {
 	// Returns the requested campaign criterion simulation in full detail.
 	GetCampaignCriterionSimulation(context.Context, *GetCampaignCriterionSimulationRequest) (*resources.CampaignCriterionSimulation, error)
+}
+
+// UnimplementedCampaignCriterionSimulationServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCampaignCriterionSimulationServiceServer struct {
+}
+
+func (*UnimplementedCampaignCriterionSimulationServiceServer) GetCampaignCriterionSimulation(ctx context.Context, req *GetCampaignCriterionSimulationRequest) (*resources.CampaignCriterionSimulation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCampaignCriterionSimulation not implemented")
 }
 
 func RegisterCampaignCriterionSimulationServiceServer(s *grpc.Server, srv CampaignCriterionSimulationServiceServer) {

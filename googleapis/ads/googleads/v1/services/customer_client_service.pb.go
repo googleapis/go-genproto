@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,6 +141,14 @@ func (c *customerClientServiceClient) GetCustomerClient(ctx context.Context, in 
 type CustomerClientServiceServer interface {
 	// Returns the requested client in full detail.
 	GetCustomerClient(context.Context, *GetCustomerClientRequest) (*resources.CustomerClient, error)
+}
+
+// UnimplementedCustomerClientServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCustomerClientServiceServer struct {
+}
+
+func (*UnimplementedCustomerClientServiceServer) GetCustomerClient(ctx context.Context, req *GetCustomerClientRequest) (*resources.CustomerClient, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCustomerClient not implemented")
 }
 
 func RegisterCustomerClientServiceServer(s *grpc.Server, srv CustomerClientServiceServer) {

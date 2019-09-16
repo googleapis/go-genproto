@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -754,6 +756,26 @@ type CloudBillingServer interface {
 	// disable billing, you should always call this method with the name of an
 	// *open* billing account.
 	UpdateProjectBillingInfo(context.Context, *UpdateProjectBillingInfoRequest) (*ProjectBillingInfo, error)
+}
+
+// UnimplementedCloudBillingServer can be embedded to have forward compatible implementations.
+type UnimplementedCloudBillingServer struct {
+}
+
+func (*UnimplementedCloudBillingServer) GetBillingAccount(ctx context.Context, req *GetBillingAccountRequest) (*BillingAccount, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBillingAccount not implemented")
+}
+func (*UnimplementedCloudBillingServer) ListBillingAccounts(ctx context.Context, req *ListBillingAccountsRequest) (*ListBillingAccountsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBillingAccounts not implemented")
+}
+func (*UnimplementedCloudBillingServer) ListProjectBillingInfo(ctx context.Context, req *ListProjectBillingInfoRequest) (*ListProjectBillingInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListProjectBillingInfo not implemented")
+}
+func (*UnimplementedCloudBillingServer) GetProjectBillingInfo(ctx context.Context, req *GetProjectBillingInfoRequest) (*ProjectBillingInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProjectBillingInfo not implemented")
+}
+func (*UnimplementedCloudBillingServer) UpdateProjectBillingInfo(ctx context.Context, req *UpdateProjectBillingInfoRequest) (*ProjectBillingInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProjectBillingInfo not implemented")
 }
 
 func RegisterCloudBillingServer(s *grpc.Server, srv CloudBillingServer) {

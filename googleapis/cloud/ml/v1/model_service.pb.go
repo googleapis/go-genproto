@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/serviceconfig"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1165,6 +1167,38 @@ type ModelServiceServer interface {
 	// default. You must make any subsequent changes to the default version
 	// setting manually using this method.
 	SetDefaultVersion(context.Context, *SetDefaultVersionRequest) (*Version, error)
+}
+
+// UnimplementedModelServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedModelServiceServer struct {
+}
+
+func (*UnimplementedModelServiceServer) CreateModel(ctx context.Context, req *CreateModelRequest) (*Model, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateModel not implemented")
+}
+func (*UnimplementedModelServiceServer) ListModels(ctx context.Context, req *ListModelsRequest) (*ListModelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListModels not implemented")
+}
+func (*UnimplementedModelServiceServer) GetModel(ctx context.Context, req *GetModelRequest) (*Model, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetModel not implemented")
+}
+func (*UnimplementedModelServiceServer) DeleteModel(ctx context.Context, req *DeleteModelRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteModel not implemented")
+}
+func (*UnimplementedModelServiceServer) CreateVersion(ctx context.Context, req *CreateVersionRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVersion not implemented")
+}
+func (*UnimplementedModelServiceServer) ListVersions(ctx context.Context, req *ListVersionsRequest) (*ListVersionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVersions not implemented")
+}
+func (*UnimplementedModelServiceServer) GetVersion(ctx context.Context, req *GetVersionRequest) (*Version, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVersion not implemented")
+}
+func (*UnimplementedModelServiceServer) DeleteVersion(ctx context.Context, req *DeleteVersionRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVersion not implemented")
+}
+func (*UnimplementedModelServiceServer) SetDefaultVersion(ctx context.Context, req *SetDefaultVersionRequest) (*Version, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetDefaultVersion not implemented")
 }
 
 func RegisterModelServiceServer(s *grpc.Server, srv ModelServiceServer) {

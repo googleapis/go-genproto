@@ -15,6 +15,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1169,6 +1171,23 @@ type InstancesServer interface {
 	DebugInstance(context.Context, *DebugInstanceRequest) (*longrunning.Operation, error)
 }
 
+// UnimplementedInstancesServer can be embedded to have forward compatible implementations.
+type UnimplementedInstancesServer struct {
+}
+
+func (*UnimplementedInstancesServer) ListInstances(ctx context.Context, req *ListInstancesRequest) (*ListInstancesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListInstances not implemented")
+}
+func (*UnimplementedInstancesServer) GetInstance(ctx context.Context, req *GetInstanceRequest) (*Instance, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInstance not implemented")
+}
+func (*UnimplementedInstancesServer) DeleteInstance(ctx context.Context, req *DeleteInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteInstance not implemented")
+}
+func (*UnimplementedInstancesServer) DebugInstance(ctx context.Context, req *DebugInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DebugInstance not implemented")
+}
+
 func RegisterInstancesServer(s *grpc.Server, srv InstancesServer) {
 	s.RegisterService(&_Instances_serviceDesc, srv)
 }
@@ -1385,6 +1404,26 @@ type VersionsServer interface {
 	DeleteVersion(context.Context, *DeleteVersionRequest) (*longrunning.Operation, error)
 }
 
+// UnimplementedVersionsServer can be embedded to have forward compatible implementations.
+type UnimplementedVersionsServer struct {
+}
+
+func (*UnimplementedVersionsServer) ListVersions(ctx context.Context, req *ListVersionsRequest) (*ListVersionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVersions not implemented")
+}
+func (*UnimplementedVersionsServer) GetVersion(ctx context.Context, req *GetVersionRequest) (*Version, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVersion not implemented")
+}
+func (*UnimplementedVersionsServer) CreateVersion(ctx context.Context, req *CreateVersionRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVersion not implemented")
+}
+func (*UnimplementedVersionsServer) UpdateVersion(ctx context.Context, req *UpdateVersionRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVersion not implemented")
+}
+func (*UnimplementedVersionsServer) DeleteVersion(ctx context.Context, req *DeleteVersionRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVersion not implemented")
+}
+
 func RegisterVersionsServer(s *grpc.Server, srv VersionsServer) {
 	s.RegisterService(&_Versions_serviceDesc, srv)
 }
@@ -1578,6 +1617,23 @@ type ServicesServer interface {
 	DeleteService(context.Context, *DeleteServiceRequest) (*longrunning.Operation, error)
 }
 
+// UnimplementedServicesServer can be embedded to have forward compatible implementations.
+type UnimplementedServicesServer struct {
+}
+
+func (*UnimplementedServicesServer) ListServices(ctx context.Context, req *ListServicesRequest) (*ListServicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListServices not implemented")
+}
+func (*UnimplementedServicesServer) GetService(ctx context.Context, req *GetServiceRequest) (*Service, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetService not implemented")
+}
+func (*UnimplementedServicesServer) UpdateService(ctx context.Context, req *UpdateServiceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateService not implemented")
+}
+func (*UnimplementedServicesServer) DeleteService(ctx context.Context, req *DeleteServiceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteService not implemented")
+}
+
 func RegisterServicesServer(s *grpc.Server, srv ServicesServer) {
 	s.RegisterService(&_Services_serviceDesc, srv)
 }
@@ -1727,6 +1783,17 @@ type ApplicationsServer interface {
 	// Use this method if you receive an error message about a missing feature,
 	// for example "*Error retrieving the App Engine service account*".
 	RepairApplication(context.Context, *RepairApplicationRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedApplicationsServer can be embedded to have forward compatible implementations.
+type UnimplementedApplicationsServer struct {
+}
+
+func (*UnimplementedApplicationsServer) GetApplication(ctx context.Context, req *GetApplicationRequest) (*Application, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetApplication not implemented")
+}
+func (*UnimplementedApplicationsServer) RepairApplication(ctx context.Context, req *RepairApplicationRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RepairApplication not implemented")
 }
 
 func RegisterApplicationsServer(s *grpc.Server, srv ApplicationsServer) {

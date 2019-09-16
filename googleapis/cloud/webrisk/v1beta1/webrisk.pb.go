@@ -12,6 +12,8 @@ import (
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1161,6 +1163,20 @@ type WebRiskServiceV1Beta1Server interface {
 	// so the client must query this method to determine if there is a full
 	// hash match of a threat.
 	SearchHashes(context.Context, *SearchHashesRequest) (*SearchHashesResponse, error)
+}
+
+// UnimplementedWebRiskServiceV1Beta1Server can be embedded to have forward compatible implementations.
+type UnimplementedWebRiskServiceV1Beta1Server struct {
+}
+
+func (*UnimplementedWebRiskServiceV1Beta1Server) ComputeThreatListDiff(ctx context.Context, req *ComputeThreatListDiffRequest) (*ComputeThreatListDiffResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ComputeThreatListDiff not implemented")
+}
+func (*UnimplementedWebRiskServiceV1Beta1Server) SearchUris(ctx context.Context, req *SearchUrisRequest) (*SearchUrisResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchUris not implemented")
+}
+func (*UnimplementedWebRiskServiceV1Beta1Server) SearchHashes(ctx context.Context, req *SearchHashesRequest) (*SearchHashesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchHashes not implemented")
 }
 
 func RegisterWebRiskServiceV1Beta1Server(s *grpc.Server, srv WebRiskServiceV1Beta1Server) {

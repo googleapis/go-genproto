@@ -14,6 +14,8 @@ import (
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1516,6 +1518,59 @@ type CloudTasksServer interface {
 	// [NOT_FOUND][google.rpc.Code.NOT_FOUND] when it is called on a
 	// task that has already succeeded or permanently failed.
 	RunTask(context.Context, *RunTaskRequest) (*Task, error)
+}
+
+// UnimplementedCloudTasksServer can be embedded to have forward compatible implementations.
+type UnimplementedCloudTasksServer struct {
+}
+
+func (*UnimplementedCloudTasksServer) ListQueues(ctx context.Context, req *ListQueuesRequest) (*ListQueuesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListQueues not implemented")
+}
+func (*UnimplementedCloudTasksServer) GetQueue(ctx context.Context, req *GetQueueRequest) (*Queue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetQueue not implemented")
+}
+func (*UnimplementedCloudTasksServer) CreateQueue(ctx context.Context, req *CreateQueueRequest) (*Queue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateQueue not implemented")
+}
+func (*UnimplementedCloudTasksServer) UpdateQueue(ctx context.Context, req *UpdateQueueRequest) (*Queue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateQueue not implemented")
+}
+func (*UnimplementedCloudTasksServer) DeleteQueue(ctx context.Context, req *DeleteQueueRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteQueue not implemented")
+}
+func (*UnimplementedCloudTasksServer) PurgeQueue(ctx context.Context, req *PurgeQueueRequest) (*Queue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PurgeQueue not implemented")
+}
+func (*UnimplementedCloudTasksServer) PauseQueue(ctx context.Context, req *PauseQueueRequest) (*Queue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PauseQueue not implemented")
+}
+func (*UnimplementedCloudTasksServer) ResumeQueue(ctx context.Context, req *ResumeQueueRequest) (*Queue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResumeQueue not implemented")
+}
+func (*UnimplementedCloudTasksServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedCloudTasksServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedCloudTasksServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
+}
+func (*UnimplementedCloudTasksServer) ListTasks(ctx context.Context, req *ListTasksRequest) (*ListTasksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTasks not implemented")
+}
+func (*UnimplementedCloudTasksServer) GetTask(ctx context.Context, req *GetTaskRequest) (*Task, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTask not implemented")
+}
+func (*UnimplementedCloudTasksServer) CreateTask(ctx context.Context, req *CreateTaskRequest) (*Task, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTask not implemented")
+}
+func (*UnimplementedCloudTasksServer) DeleteTask(ctx context.Context, req *DeleteTaskRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTask not implemented")
+}
+func (*UnimplementedCloudTasksServer) RunTask(ctx context.Context, req *RunTaskRequest) (*Task, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunTask not implemented")
 }
 
 func RegisterCloudTasksServer(s *grpc.Server, srv CloudTasksServer) {

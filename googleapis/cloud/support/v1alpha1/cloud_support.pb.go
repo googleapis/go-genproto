@@ -14,6 +14,8 @@ import (
 	common "google.golang.org/genproto/googleapis/cloud/support/common"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -850,6 +852,38 @@ type CloudSupportServer interface {
 	// Retrieves the taxonomy of product categories and components to be used
 	// while creating a support case.
 	GetIssueTaxonomy(context.Context, *GetIssueTaxonomyRequest) (*common.IssueTaxonomy, error)
+}
+
+// UnimplementedCloudSupportServer can be embedded to have forward compatible implementations.
+type UnimplementedCloudSupportServer struct {
+}
+
+func (*UnimplementedCloudSupportServer) GetSupportAccount(ctx context.Context, req *GetSupportAccountRequest) (*common.SupportAccount, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSupportAccount not implemented")
+}
+func (*UnimplementedCloudSupportServer) ListSupportAccounts(ctx context.Context, req *ListSupportAccountsRequest) (*ListSupportAccountsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSupportAccounts not implemented")
+}
+func (*UnimplementedCloudSupportServer) GetCase(ctx context.Context, req *GetCaseRequest) (*common.Case, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCase not implemented")
+}
+func (*UnimplementedCloudSupportServer) ListCases(ctx context.Context, req *ListCasesRequest) (*ListCasesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCases not implemented")
+}
+func (*UnimplementedCloudSupportServer) ListComments(ctx context.Context, req *ListCommentsRequest) (*ListCommentsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListComments not implemented")
+}
+func (*UnimplementedCloudSupportServer) CreateCase(ctx context.Context, req *CreateCaseRequest) (*common.Case, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCase not implemented")
+}
+func (*UnimplementedCloudSupportServer) UpdateCase(ctx context.Context, req *UpdateCaseRequest) (*common.Case, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCase not implemented")
+}
+func (*UnimplementedCloudSupportServer) CreateComment(ctx context.Context, req *CreateCommentRequest) (*common.Comment, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateComment not implemented")
+}
+func (*UnimplementedCloudSupportServer) GetIssueTaxonomy(ctx context.Context, req *GetIssueTaxonomyRequest) (*common.IssueTaxonomy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIssueTaxonomy not implemented")
 }
 
 func RegisterCloudSupportServer(s *grpc.Server, srv CloudSupportServer) {

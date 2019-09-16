@@ -14,6 +14,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -455,6 +457,17 @@ type ConversionActionServiceServer interface {
 	// Creates, updates or removes conversion actions. Operation statuses are
 	// returned.
 	MutateConversionActions(context.Context, *MutateConversionActionsRequest) (*MutateConversionActionsResponse, error)
+}
+
+// UnimplementedConversionActionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedConversionActionServiceServer struct {
+}
+
+func (*UnimplementedConversionActionServiceServer) GetConversionAction(ctx context.Context, req *GetConversionActionRequest) (*resources.ConversionAction, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetConversionAction not implemented")
+}
+func (*UnimplementedConversionActionServiceServer) MutateConversionActions(ctx context.Context, req *MutateConversionActionsRequest) (*MutateConversionActionsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateConversionActions not implemented")
 }
 
 func RegisterConversionActionServiceServer(s *grpc.Server, srv ConversionActionServiceServer) {

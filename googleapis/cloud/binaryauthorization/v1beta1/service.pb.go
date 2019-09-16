@@ -12,6 +12,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -615,6 +617,32 @@ type BinauthzManagementServiceV1Beta1Server interface {
 	// Deletes an [attestor][google.cloud.binaryauthorization.v1beta1.Attestor]. Returns NOT_FOUND if the
 	// [attestor][google.cloud.binaryauthorization.v1beta1.Attestor] does not exist.
 	DeleteAttestor(context.Context, *DeleteAttestorRequest) (*empty.Empty, error)
+}
+
+// UnimplementedBinauthzManagementServiceV1Beta1Server can be embedded to have forward compatible implementations.
+type UnimplementedBinauthzManagementServiceV1Beta1Server struct {
+}
+
+func (*UnimplementedBinauthzManagementServiceV1Beta1Server) GetPolicy(ctx context.Context, req *GetPolicyRequest) (*Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPolicy not implemented")
+}
+func (*UnimplementedBinauthzManagementServiceV1Beta1Server) UpdatePolicy(ctx context.Context, req *UpdatePolicyRequest) (*Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePolicy not implemented")
+}
+func (*UnimplementedBinauthzManagementServiceV1Beta1Server) CreateAttestor(ctx context.Context, req *CreateAttestorRequest) (*Attestor, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAttestor not implemented")
+}
+func (*UnimplementedBinauthzManagementServiceV1Beta1Server) GetAttestor(ctx context.Context, req *GetAttestorRequest) (*Attestor, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAttestor not implemented")
+}
+func (*UnimplementedBinauthzManagementServiceV1Beta1Server) UpdateAttestor(ctx context.Context, req *UpdateAttestorRequest) (*Attestor, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAttestor not implemented")
+}
+func (*UnimplementedBinauthzManagementServiceV1Beta1Server) ListAttestors(ctx context.Context, req *ListAttestorsRequest) (*ListAttestorsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAttestors not implemented")
+}
+func (*UnimplementedBinauthzManagementServiceV1Beta1Server) DeleteAttestor(ctx context.Context, req *DeleteAttestorRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAttestor not implemented")
 }
 
 func RegisterBinauthzManagementServiceV1Beta1Server(s *grpc.Server, srv BinauthzManagementServiceV1Beta1Server) {

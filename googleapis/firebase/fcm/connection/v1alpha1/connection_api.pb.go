@@ -12,6 +12,8 @@ import (
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -401,6 +403,14 @@ type ConnectionApiServer interface {
 	// The project's API key also needs to be sent to authorize the project.
 	// That can be set in the X-Goog-Api-Key Metadata header.
 	Connect(ConnectionApi_ConnectServer) error
+}
+
+// UnimplementedConnectionApiServer can be embedded to have forward compatible implementations.
+type UnimplementedConnectionApiServer struct {
+}
+
+func (*UnimplementedConnectionApiServer) Connect(srv ConnectionApi_ConnectServer) error {
+	return status.Errorf(codes.Unimplemented, "method Connect not implemented")
 }
 
 func RegisterConnectionApiServer(s *grpc.Server, srv ConnectionApiServer) {

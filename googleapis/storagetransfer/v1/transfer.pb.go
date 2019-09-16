@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -645,6 +647,32 @@ type StorageTransferServiceServer interface {
 	PauseTransferOperation(context.Context, *PauseTransferOperationRequest) (*empty.Empty, error)
 	// Resumes a transfer operation that is paused.
 	ResumeTransferOperation(context.Context, *ResumeTransferOperationRequest) (*empty.Empty, error)
+}
+
+// UnimplementedStorageTransferServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedStorageTransferServiceServer struct {
+}
+
+func (*UnimplementedStorageTransferServiceServer) GetGoogleServiceAccount(ctx context.Context, req *GetGoogleServiceAccountRequest) (*GoogleServiceAccount, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGoogleServiceAccount not implemented")
+}
+func (*UnimplementedStorageTransferServiceServer) CreateTransferJob(ctx context.Context, req *CreateTransferJobRequest) (*TransferJob, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTransferJob not implemented")
+}
+func (*UnimplementedStorageTransferServiceServer) UpdateTransferJob(ctx context.Context, req *UpdateTransferJobRequest) (*TransferJob, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTransferJob not implemented")
+}
+func (*UnimplementedStorageTransferServiceServer) GetTransferJob(ctx context.Context, req *GetTransferJobRequest) (*TransferJob, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransferJob not implemented")
+}
+func (*UnimplementedStorageTransferServiceServer) ListTransferJobs(ctx context.Context, req *ListTransferJobsRequest) (*ListTransferJobsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTransferJobs not implemented")
+}
+func (*UnimplementedStorageTransferServiceServer) PauseTransferOperation(ctx context.Context, req *PauseTransferOperationRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PauseTransferOperation not implemented")
+}
+func (*UnimplementedStorageTransferServiceServer) ResumeTransferOperation(ctx context.Context, req *ResumeTransferOperationRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResumeTransferOperation not implemented")
 }
 
 func RegisterStorageTransferServiceServer(s *grpc.Server, srv StorageTransferServiceServer) {

@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -141,6 +143,14 @@ func (c *feedPlaceholderViewServiceClient) GetFeedPlaceholderView(ctx context.Co
 type FeedPlaceholderViewServiceServer interface {
 	// Returns the requested feed placeholder view in full detail.
 	GetFeedPlaceholderView(context.Context, *GetFeedPlaceholderViewRequest) (*resources.FeedPlaceholderView, error)
+}
+
+// UnimplementedFeedPlaceholderViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedFeedPlaceholderViewServiceServer struct {
+}
+
+func (*UnimplementedFeedPlaceholderViewServiceServer) GetFeedPlaceholderView(ctx context.Context, req *GetFeedPlaceholderViewRequest) (*resources.FeedPlaceholderView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFeedPlaceholderView not implemented")
 }
 
 func RegisterFeedPlaceholderViewServiceServer(s *grpc.Server, srv FeedPlaceholderViewServiceServer) {

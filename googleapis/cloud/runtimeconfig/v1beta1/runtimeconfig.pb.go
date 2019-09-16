@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1436,6 +1438,56 @@ type RuntimeConfigManagerServer interface {
 	CreateWaiter(context.Context, *CreateWaiterRequest) (*longrunning.Operation, error)
 	// Deletes the waiter with the specified name.
 	DeleteWaiter(context.Context, *DeleteWaiterRequest) (*empty.Empty, error)
+}
+
+// UnimplementedRuntimeConfigManagerServer can be embedded to have forward compatible implementations.
+type UnimplementedRuntimeConfigManagerServer struct {
+}
+
+func (*UnimplementedRuntimeConfigManagerServer) ListConfigs(ctx context.Context, req *ListConfigsRequest) (*ListConfigsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListConfigs not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) GetConfig(ctx context.Context, req *GetConfigRequest) (*RuntimeConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetConfig not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) CreateConfig(ctx context.Context, req *CreateConfigRequest) (*RuntimeConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateConfig not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) UpdateConfig(ctx context.Context, req *UpdateConfigRequest) (*RuntimeConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateConfig not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) DeleteConfig(ctx context.Context, req *DeleteConfigRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteConfig not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) ListVariables(ctx context.Context, req *ListVariablesRequest) (*ListVariablesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVariables not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) GetVariable(ctx context.Context, req *GetVariableRequest) (*Variable, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVariable not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) WatchVariable(ctx context.Context, req *WatchVariableRequest) (*Variable, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WatchVariable not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) CreateVariable(ctx context.Context, req *CreateVariableRequest) (*Variable, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVariable not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) UpdateVariable(ctx context.Context, req *UpdateVariableRequest) (*Variable, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVariable not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) DeleteVariable(ctx context.Context, req *DeleteVariableRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVariable not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) ListWaiters(ctx context.Context, req *ListWaitersRequest) (*ListWaitersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListWaiters not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) GetWaiter(ctx context.Context, req *GetWaiterRequest) (*Waiter, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetWaiter not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) CreateWaiter(ctx context.Context, req *CreateWaiterRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateWaiter not implemented")
+}
+func (*UnimplementedRuntimeConfigManagerServer) DeleteWaiter(ctx context.Context, req *DeleteWaiterRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteWaiter not implemented")
 }
 
 func RegisterRuntimeConfigManagerServer(s *grpc.Server, srv RuntimeConfigManagerServer) {

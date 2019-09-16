@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,6 +141,14 @@ func (c *genderViewServiceClient) GetGenderView(ctx context.Context, in *GetGend
 type GenderViewServiceServer interface {
 	// Returns the requested gender view in full detail.
 	GetGenderView(context.Context, *GetGenderViewRequest) (*resources.GenderView, error)
+}
+
+// UnimplementedGenderViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedGenderViewServiceServer struct {
+}
+
+func (*UnimplementedGenderViewServiceServer) GetGenderView(ctx context.Context, req *GetGenderViewRequest) (*resources.GenderView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGenderView not implemented")
 }
 
 func RegisterGenderViewServiceServer(s *grpc.Server, srv GenderViewServiceServer) {

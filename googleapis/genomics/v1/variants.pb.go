@@ -15,6 +15,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2441,6 +2443,14 @@ type StreamingVariantServiceServer interface {
 	StreamVariants(*StreamVariantsRequest, StreamingVariantService_StreamVariantsServer) error
 }
 
+// UnimplementedStreamingVariantServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedStreamingVariantServiceServer struct {
+}
+
+func (*UnimplementedStreamingVariantServiceServer) StreamVariants(req *StreamVariantsRequest, srv StreamingVariantService_StreamVariantsServer) error {
+	return status.Errorf(codes.Unimplemented, "method StreamVariants not implemented")
+}
+
 func RegisterStreamingVariantServiceServer(s *grpc.Server, srv StreamingVariantServiceServer) {
 	s.RegisterService(&_StreamingVariantService_serviceDesc, srv)
 }
@@ -3110,6 +3120,65 @@ type VariantServiceV1Server interface {
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 	GetCallSet(context.Context, *GetCallSetRequest) (*CallSet, error)
+}
+
+// UnimplementedVariantServiceV1Server can be embedded to have forward compatible implementations.
+type UnimplementedVariantServiceV1Server struct {
+}
+
+func (*UnimplementedVariantServiceV1Server) ImportVariants(ctx context.Context, req *ImportVariantsRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportVariants not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) CreateVariantSet(ctx context.Context, req *CreateVariantSetRequest) (*VariantSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVariantSet not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) ExportVariantSet(ctx context.Context, req *ExportVariantSetRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportVariantSet not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) GetVariantSet(ctx context.Context, req *GetVariantSetRequest) (*VariantSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVariantSet not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) SearchVariantSets(ctx context.Context, req *SearchVariantSetsRequest) (*SearchVariantSetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchVariantSets not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) DeleteVariantSet(ctx context.Context, req *DeleteVariantSetRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVariantSet not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) UpdateVariantSet(ctx context.Context, req *UpdateVariantSetRequest) (*VariantSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVariantSet not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) SearchVariants(ctx context.Context, req *SearchVariantsRequest) (*SearchVariantsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchVariants not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) CreateVariant(ctx context.Context, req *CreateVariantRequest) (*Variant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateVariant not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) UpdateVariant(ctx context.Context, req *UpdateVariantRequest) (*Variant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateVariant not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) DeleteVariant(ctx context.Context, req *DeleteVariantRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteVariant not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) GetVariant(ctx context.Context, req *GetVariantRequest) (*Variant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVariant not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) MergeVariants(ctx context.Context, req *MergeVariantsRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MergeVariants not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) SearchCallSets(ctx context.Context, req *SearchCallSetsRequest) (*SearchCallSetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchCallSets not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) CreateCallSet(ctx context.Context, req *CreateCallSetRequest) (*CallSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCallSet not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) UpdateCallSet(ctx context.Context, req *UpdateCallSetRequest) (*CallSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCallSet not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) DeleteCallSet(ctx context.Context, req *DeleteCallSetRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCallSet not implemented")
+}
+func (*UnimplementedVariantServiceV1Server) GetCallSet(ctx context.Context, req *GetCallSetRequest) (*CallSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCallSet not implemented")
 }
 
 func RegisterVariantServiceV1Server(s *grpc.Server, srv VariantServiceV1Server) {
