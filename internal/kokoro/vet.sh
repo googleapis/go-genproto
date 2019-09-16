@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Fail on any error
-set -eo pipefail
+set -eo
 
 # Display commands being run
 set -x
 
-# Only run the linter on go1.12, since it needs type aliases (and we only care
+# Only run the linter on go1.13, since it needs type aliases (and we only care
 # about its output once).
-if [[ `go version` != *"go1.12"* ]]; then
+if [[ `go version` != *"go1.13"* ]]; then
     exit 0
 fi
 
@@ -26,7 +26,8 @@ git diff go.sum | tee /dev/stderr | (! read)
 pwd
 
 # Look at all .go files (ignoring .pb.go files) and make sure they have a Copyright. Fail if any don't.
-git ls-files "*[^.pb].go" | xargs grep -L "\(Copyright [0-9]\{4,\}\)" 2>&1 | tee /dev/stderr | (! read)
+find . -type f -name "*.go" ! -name "*.pb.go" -exec grep -L "\(Copyright [0-9]\{4,\}\)" {} \; 2>&1 | tee /dev/stderr | (! read)
+
 gofmt -s -d -l . 2>&1 | tee /dev/stderr | (! read)
 goimports -l . 2>&1 | tee /dev/stderr | (! read)
 
