@@ -12,6 +12,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -6453,6 +6455,101 @@ type ClusterManagerServer interface {
 	SetNetworkPolicy(context.Context, *SetNetworkPolicyRequest) (*Operation, error)
 	// Sets the maintenance policy for a cluster.
 	SetMaintenancePolicy(context.Context, *SetMaintenancePolicyRequest) (*Operation, error)
+}
+
+// UnimplementedClusterManagerServer can be embedded to have forward compatible implementations.
+type UnimplementedClusterManagerServer struct {
+}
+
+func (*UnimplementedClusterManagerServer) ListClusters(ctx context.Context, req *ListClustersRequest) (*ListClustersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListClusters not implemented")
+}
+func (*UnimplementedClusterManagerServer) GetCluster(ctx context.Context, req *GetClusterRequest) (*Cluster, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCluster not implemented")
+}
+func (*UnimplementedClusterManagerServer) CreateCluster(ctx context.Context, req *CreateClusterRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCluster not implemented")
+}
+func (*UnimplementedClusterManagerServer) UpdateCluster(ctx context.Context, req *UpdateClusterRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCluster not implemented")
+}
+func (*UnimplementedClusterManagerServer) UpdateNodePool(ctx context.Context, req *UpdateNodePoolRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNodePool not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetNodePoolAutoscaling(ctx context.Context, req *SetNodePoolAutoscalingRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetNodePoolAutoscaling not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetLoggingService(ctx context.Context, req *SetLoggingServiceRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetLoggingService not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetMonitoringService(ctx context.Context, req *SetMonitoringServiceRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetMonitoringService not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetAddonsConfig(ctx context.Context, req *SetAddonsConfigRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetAddonsConfig not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetLocations(ctx context.Context, req *SetLocationsRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetLocations not implemented")
+}
+func (*UnimplementedClusterManagerServer) UpdateMaster(ctx context.Context, req *UpdateMasterRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMaster not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetMasterAuth(ctx context.Context, req *SetMasterAuthRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetMasterAuth not implemented")
+}
+func (*UnimplementedClusterManagerServer) DeleteCluster(ctx context.Context, req *DeleteClusterRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCluster not implemented")
+}
+func (*UnimplementedClusterManagerServer) ListOperations(ctx context.Context, req *ListOperationsRequest) (*ListOperationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListOperations not implemented")
+}
+func (*UnimplementedClusterManagerServer) GetOperation(ctx context.Context, req *GetOperationRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOperation not implemented")
+}
+func (*UnimplementedClusterManagerServer) CancelOperation(ctx context.Context, req *CancelOperationRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelOperation not implemented")
+}
+func (*UnimplementedClusterManagerServer) GetServerConfig(ctx context.Context, req *GetServerConfigRequest) (*ServerConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServerConfig not implemented")
+}
+func (*UnimplementedClusterManagerServer) ListNodePools(ctx context.Context, req *ListNodePoolsRequest) (*ListNodePoolsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNodePools not implemented")
+}
+func (*UnimplementedClusterManagerServer) GetNodePool(ctx context.Context, req *GetNodePoolRequest) (*NodePool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNodePool not implemented")
+}
+func (*UnimplementedClusterManagerServer) CreateNodePool(ctx context.Context, req *CreateNodePoolRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNodePool not implemented")
+}
+func (*UnimplementedClusterManagerServer) DeleteNodePool(ctx context.Context, req *DeleteNodePoolRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteNodePool not implemented")
+}
+func (*UnimplementedClusterManagerServer) RollbackNodePoolUpgrade(ctx context.Context, req *RollbackNodePoolUpgradeRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RollbackNodePoolUpgrade not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetNodePoolManagement(ctx context.Context, req *SetNodePoolManagementRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetNodePoolManagement not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetLabels(ctx context.Context, req *SetLabelsRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetLabels not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetLegacyAbac(ctx context.Context, req *SetLegacyAbacRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetLegacyAbac not implemented")
+}
+func (*UnimplementedClusterManagerServer) StartIPRotation(ctx context.Context, req *StartIPRotationRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartIPRotation not implemented")
+}
+func (*UnimplementedClusterManagerServer) CompleteIPRotation(ctx context.Context, req *CompleteIPRotationRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompleteIPRotation not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetNodePoolSize(ctx context.Context, req *SetNodePoolSizeRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetNodePoolSize not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetNetworkPolicy(ctx context.Context, req *SetNetworkPolicyRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetNetworkPolicy not implemented")
+}
+func (*UnimplementedClusterManagerServer) SetMaintenancePolicy(ctx context.Context, req *SetMaintenancePolicyRequest) (*Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetMaintenancePolicy not implemented")
 }
 
 func RegisterClusterManagerServer(s *grpc.Server, srv ClusterManagerServer) {

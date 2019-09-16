@@ -18,6 +18,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2110,6 +2112,65 @@ type SecurityCenterServer interface {
 	UpdateSource(context.Context, *UpdateSourceRequest) (*Source, error)
 	// Updates security marks.
 	UpdateSecurityMarks(context.Context, *UpdateSecurityMarksRequest) (*SecurityMarks, error)
+}
+
+// UnimplementedSecurityCenterServer can be embedded to have forward compatible implementations.
+type UnimplementedSecurityCenterServer struct {
+}
+
+func (*UnimplementedSecurityCenterServer) CreateSource(ctx context.Context, req *CreateSourceRequest) (*Source, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSource not implemented")
+}
+func (*UnimplementedSecurityCenterServer) CreateFinding(ctx context.Context, req *CreateFindingRequest) (*Finding, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateFinding not implemented")
+}
+func (*UnimplementedSecurityCenterServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedSecurityCenterServer) GetOrganizationSettings(ctx context.Context, req *GetOrganizationSettingsRequest) (*OrganizationSettings, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOrganizationSettings not implemented")
+}
+func (*UnimplementedSecurityCenterServer) GetSource(ctx context.Context, req *GetSourceRequest) (*Source, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSource not implemented")
+}
+func (*UnimplementedSecurityCenterServer) GroupAssets(ctx context.Context, req *GroupAssetsRequest) (*GroupAssetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GroupAssets not implemented")
+}
+func (*UnimplementedSecurityCenterServer) GroupFindings(ctx context.Context, req *GroupFindingsRequest) (*GroupFindingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GroupFindings not implemented")
+}
+func (*UnimplementedSecurityCenterServer) ListAssets(ctx context.Context, req *ListAssetsRequest) (*ListAssetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAssets not implemented")
+}
+func (*UnimplementedSecurityCenterServer) ListFindings(ctx context.Context, req *ListFindingsRequest) (*ListFindingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFindings not implemented")
+}
+func (*UnimplementedSecurityCenterServer) ListSources(ctx context.Context, req *ListSourcesRequest) (*ListSourcesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSources not implemented")
+}
+func (*UnimplementedSecurityCenterServer) RunAssetDiscovery(ctx context.Context, req *RunAssetDiscoveryRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunAssetDiscovery not implemented")
+}
+func (*UnimplementedSecurityCenterServer) SetFindingState(ctx context.Context, req *SetFindingStateRequest) (*Finding, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetFindingState not implemented")
+}
+func (*UnimplementedSecurityCenterServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedSecurityCenterServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
+}
+func (*UnimplementedSecurityCenterServer) UpdateFinding(ctx context.Context, req *UpdateFindingRequest) (*Finding, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateFinding not implemented")
+}
+func (*UnimplementedSecurityCenterServer) UpdateOrganizationSettings(ctx context.Context, req *UpdateOrganizationSettingsRequest) (*OrganizationSettings, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateOrganizationSettings not implemented")
+}
+func (*UnimplementedSecurityCenterServer) UpdateSource(ctx context.Context, req *UpdateSourceRequest) (*Source, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSource not implemented")
+}
+func (*UnimplementedSecurityCenterServer) UpdateSecurityMarks(ctx context.Context, req *UpdateSecurityMarksRequest) (*SecurityMarks, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSecurityMarks not implemented")
 }
 
 func RegisterSecurityCenterServer(s *grpc.Server, srv SecurityCenterServer) {

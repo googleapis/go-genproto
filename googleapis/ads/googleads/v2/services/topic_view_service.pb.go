@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,6 +141,14 @@ func (c *topicViewServiceClient) GetTopicView(ctx context.Context, in *GetTopicV
 type TopicViewServiceServer interface {
 	// Returns the requested topic view in full detail.
 	GetTopicView(context.Context, *GetTopicViewRequest) (*resources.TopicView, error)
+}
+
+// UnimplementedTopicViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedTopicViewServiceServer struct {
+}
+
+func (*UnimplementedTopicViewServiceServer) GetTopicView(ctx context.Context, req *GetTopicViewRequest) (*resources.TopicView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTopicView not implemented")
 }
 
 func RegisterTopicViewServiceServer(s *grpc.Server, srv TopicViewServiceServer) {

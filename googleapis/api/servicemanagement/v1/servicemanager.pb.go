@@ -17,6 +17,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/rpc/status"
 	_ "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1692,6 +1694,56 @@ type ServiceManagerServer interface {
 	//
 	// Operation<response: DisableServiceResponse>
 	DisableService(context.Context, *DisableServiceRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedServiceManagerServer can be embedded to have forward compatible implementations.
+type UnimplementedServiceManagerServer struct {
+}
+
+func (*UnimplementedServiceManagerServer) ListServices(ctx context.Context, req *ListServicesRequest) (*ListServicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListServices not implemented")
+}
+func (*UnimplementedServiceManagerServer) GetService(ctx context.Context, req *GetServiceRequest) (*ManagedService, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetService not implemented")
+}
+func (*UnimplementedServiceManagerServer) CreateService(ctx context.Context, req *CreateServiceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateService not implemented")
+}
+func (*UnimplementedServiceManagerServer) DeleteService(ctx context.Context, req *DeleteServiceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteService not implemented")
+}
+func (*UnimplementedServiceManagerServer) UndeleteService(ctx context.Context, req *UndeleteServiceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UndeleteService not implemented")
+}
+func (*UnimplementedServiceManagerServer) ListServiceConfigs(ctx context.Context, req *ListServiceConfigsRequest) (*ListServiceConfigsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListServiceConfigs not implemented")
+}
+func (*UnimplementedServiceManagerServer) GetServiceConfig(ctx context.Context, req *GetServiceConfigRequest) (*serviceconfig.Service, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServiceConfig not implemented")
+}
+func (*UnimplementedServiceManagerServer) CreateServiceConfig(ctx context.Context, req *CreateServiceConfigRequest) (*serviceconfig.Service, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateServiceConfig not implemented")
+}
+func (*UnimplementedServiceManagerServer) SubmitConfigSource(ctx context.Context, req *SubmitConfigSourceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitConfigSource not implemented")
+}
+func (*UnimplementedServiceManagerServer) ListServiceRollouts(ctx context.Context, req *ListServiceRolloutsRequest) (*ListServiceRolloutsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListServiceRollouts not implemented")
+}
+func (*UnimplementedServiceManagerServer) GetServiceRollout(ctx context.Context, req *GetServiceRolloutRequest) (*Rollout, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServiceRollout not implemented")
+}
+func (*UnimplementedServiceManagerServer) CreateServiceRollout(ctx context.Context, req *CreateServiceRolloutRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateServiceRollout not implemented")
+}
+func (*UnimplementedServiceManagerServer) GenerateConfigReport(ctx context.Context, req *GenerateConfigReportRequest) (*GenerateConfigReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateConfigReport not implemented")
+}
+func (*UnimplementedServiceManagerServer) EnableService(ctx context.Context, req *EnableServiceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableService not implemented")
+}
+func (*UnimplementedServiceManagerServer) DisableService(ctx context.Context, req *DisableServiceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DisableService not implemented")
 }
 
 func RegisterServiceManagerServer(s *grpc.Server, srv ServiceManagerServer) {

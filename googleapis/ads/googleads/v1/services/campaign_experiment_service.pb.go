@@ -17,6 +17,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -978,6 +980,32 @@ type CampaignExperimentServiceServer interface {
 	// promote (whichever occurred last).
 	// Supports standard list paging.
 	ListCampaignExperimentAsyncErrors(context.Context, *ListCampaignExperimentAsyncErrorsRequest) (*ListCampaignExperimentAsyncErrorsResponse, error)
+}
+
+// UnimplementedCampaignExperimentServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCampaignExperimentServiceServer struct {
+}
+
+func (*UnimplementedCampaignExperimentServiceServer) GetCampaignExperiment(ctx context.Context, req *GetCampaignExperimentRequest) (*resources.CampaignExperiment, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCampaignExperiment not implemented")
+}
+func (*UnimplementedCampaignExperimentServiceServer) CreateCampaignExperiment(ctx context.Context, req *CreateCampaignExperimentRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateCampaignExperiment not implemented")
+}
+func (*UnimplementedCampaignExperimentServiceServer) MutateCampaignExperiments(ctx context.Context, req *MutateCampaignExperimentsRequest) (*MutateCampaignExperimentsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCampaignExperiments not implemented")
+}
+func (*UnimplementedCampaignExperimentServiceServer) GraduateCampaignExperiment(ctx context.Context, req *GraduateCampaignExperimentRequest) (*GraduateCampaignExperimentResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GraduateCampaignExperiment not implemented")
+}
+func (*UnimplementedCampaignExperimentServiceServer) PromoteCampaignExperiment(ctx context.Context, req *PromoteCampaignExperimentRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method PromoteCampaignExperiment not implemented")
+}
+func (*UnimplementedCampaignExperimentServiceServer) EndCampaignExperiment(ctx context.Context, req *EndCampaignExperimentRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method EndCampaignExperiment not implemented")
+}
+func (*UnimplementedCampaignExperimentServiceServer) ListCampaignExperimentAsyncErrors(ctx context.Context, req *ListCampaignExperimentAsyncErrorsRequest) (*ListCampaignExperimentAsyncErrorsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListCampaignExperimentAsyncErrors not implemented")
 }
 
 func RegisterCampaignExperimentServiceServer(s *grpc.Server, srv CampaignExperimentServiceServer) {

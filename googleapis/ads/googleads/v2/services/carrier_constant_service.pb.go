@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,6 +141,14 @@ func (c *carrierConstantServiceClient) GetCarrierConstant(ctx context.Context, i
 type CarrierConstantServiceServer interface {
 	// Returns the requested carrier constant in full detail.
 	GetCarrierConstant(context.Context, *GetCarrierConstantRequest) (*resources.CarrierConstant, error)
+}
+
+// UnimplementedCarrierConstantServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCarrierConstantServiceServer struct {
+}
+
+func (*UnimplementedCarrierConstantServiceServer) GetCarrierConstant(ctx context.Context, req *GetCarrierConstantRequest) (*resources.CarrierConstant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCarrierConstant not implemented")
 }
 
 func RegisterCarrierConstantServiceServer(s *grpc.Server, srv CarrierConstantServiceServer) {

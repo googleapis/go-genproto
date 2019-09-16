@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -527,6 +529,29 @@ type ContainerAnalysisV1Beta1Server interface {
 	ListScanConfigs(context.Context, *ListScanConfigsRequest) (*ListScanConfigsResponse, error)
 	// Updates the specified scan configuration.
 	UpdateScanConfig(context.Context, *UpdateScanConfigRequest) (*ScanConfig, error)
+}
+
+// UnimplementedContainerAnalysisV1Beta1Server can be embedded to have forward compatible implementations.
+type UnimplementedContainerAnalysisV1Beta1Server struct {
+}
+
+func (*UnimplementedContainerAnalysisV1Beta1Server) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedContainerAnalysisV1Beta1Server) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedContainerAnalysisV1Beta1Server) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
+}
+func (*UnimplementedContainerAnalysisV1Beta1Server) GetScanConfig(ctx context.Context, req *GetScanConfigRequest) (*ScanConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetScanConfig not implemented")
+}
+func (*UnimplementedContainerAnalysisV1Beta1Server) ListScanConfigs(ctx context.Context, req *ListScanConfigsRequest) (*ListScanConfigsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListScanConfigs not implemented")
+}
+func (*UnimplementedContainerAnalysisV1Beta1Server) UpdateScanConfig(ctx context.Context, req *UpdateScanConfigRequest) (*ScanConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateScanConfig not implemented")
 }
 
 func RegisterContainerAnalysisV1Beta1Server(s *grpc.Server, srv ContainerAnalysisV1Beta1Server) {

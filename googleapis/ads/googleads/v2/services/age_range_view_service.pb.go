@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +142,14 @@ func (c *ageRangeViewServiceClient) GetAgeRangeView(ctx context.Context, in *Get
 type AgeRangeViewServiceServer interface {
 	// Returns the requested age range view in full detail.
 	GetAgeRangeView(context.Context, *GetAgeRangeViewRequest) (*resources.AgeRangeView, error)
+}
+
+// UnimplementedAgeRangeViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAgeRangeViewServiceServer struct {
+}
+
+func (*UnimplementedAgeRangeViewServiceServer) GetAgeRangeView(ctx context.Context, req *GetAgeRangeViewRequest) (*resources.AgeRangeView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAgeRangeView not implemented")
 }
 
 func RegisterAgeRangeViewServiceServer(s *grpc.Server, srv AgeRangeViewServiceServer) {

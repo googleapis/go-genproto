@@ -16,6 +16,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	code "google.golang.org/genproto/googleapis/rpc/code"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2048,6 +2050,32 @@ type PipelinesV1Alpha2Server interface {
 	// description) are appended to TimestampEvents. Should only be called by VMs
 	// created by the Pipelines Service and not by end users.
 	SetOperationStatus(context.Context, *SetOperationStatusRequest) (*empty.Empty, error)
+}
+
+// UnimplementedPipelinesV1Alpha2Server can be embedded to have forward compatible implementations.
+type UnimplementedPipelinesV1Alpha2Server struct {
+}
+
+func (*UnimplementedPipelinesV1Alpha2Server) CreatePipeline(ctx context.Context, req *CreatePipelineRequest) (*Pipeline, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePipeline not implemented")
+}
+func (*UnimplementedPipelinesV1Alpha2Server) RunPipeline(ctx context.Context, req *RunPipelineRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunPipeline not implemented")
+}
+func (*UnimplementedPipelinesV1Alpha2Server) GetPipeline(ctx context.Context, req *GetPipelineRequest) (*Pipeline, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPipeline not implemented")
+}
+func (*UnimplementedPipelinesV1Alpha2Server) ListPipelines(ctx context.Context, req *ListPipelinesRequest) (*ListPipelinesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPipelines not implemented")
+}
+func (*UnimplementedPipelinesV1Alpha2Server) DeletePipeline(ctx context.Context, req *DeletePipelineRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePipeline not implemented")
+}
+func (*UnimplementedPipelinesV1Alpha2Server) GetControllerConfig(ctx context.Context, req *GetControllerConfigRequest) (*ControllerConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetControllerConfig not implemented")
+}
+func (*UnimplementedPipelinesV1Alpha2Server) SetOperationStatus(ctx context.Context, req *SetOperationStatusRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetOperationStatus not implemented")
 }
 
 func RegisterPipelinesV1Alpha2Server(s *grpc.Server, srv PipelinesV1Alpha2Server) {

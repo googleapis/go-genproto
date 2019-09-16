@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -141,6 +143,14 @@ func (c *accountBudgetServiceClient) GetAccountBudget(ctx context.Context, in *G
 type AccountBudgetServiceServer interface {
 	// Returns an account-level budget in full detail.
 	GetAccountBudget(context.Context, *GetAccountBudgetRequest) (*resources.AccountBudget, error)
+}
+
+// UnimplementedAccountBudgetServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAccountBudgetServiceServer struct {
+}
+
+func (*UnimplementedAccountBudgetServiceServer) GetAccountBudget(ctx context.Context, req *GetAccountBudgetRequest) (*resources.AccountBudget, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAccountBudget not implemented")
 }
 
 func RegisterAccountBudgetServiceServer(s *grpc.Server, srv AccountBudgetServiceServer) {

@@ -15,6 +15,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -455,6 +457,17 @@ type UserListServiceServer interface {
 	GetUserList(context.Context, *GetUserListRequest) (*resources.UserList, error)
 	// Creates or updates user lists. Operation statuses are returned.
 	MutateUserLists(context.Context, *MutateUserListsRequest) (*MutateUserListsResponse, error)
+}
+
+// UnimplementedUserListServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedUserListServiceServer struct {
+}
+
+func (*UnimplementedUserListServiceServer) GetUserList(ctx context.Context, req *GetUserListRequest) (*resources.UserList, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetUserList not implemented")
+}
+func (*UnimplementedUserListServiceServer) MutateUserLists(ctx context.Context, req *MutateUserListsRequest) (*MutateUserListsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateUserLists not implemented")
 }
 
 func RegisterUserListServiceServer(s *grpc.Server, srv UserListServiceServer) {

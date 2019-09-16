@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -368,6 +370,17 @@ type AssetServiceServer interface {
 	GetAsset(context.Context, *GetAssetRequest) (*resources.Asset, error)
 	// Creates assets. Operation statuses are returned.
 	MutateAssets(context.Context, *MutateAssetsRequest) (*MutateAssetsResponse, error)
+}
+
+// UnimplementedAssetServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAssetServiceServer struct {
+}
+
+func (*UnimplementedAssetServiceServer) GetAsset(ctx context.Context, req *GetAssetRequest) (*resources.Asset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAsset not implemented")
+}
+func (*UnimplementedAssetServiceServer) MutateAssets(ctx context.Context, req *MutateAssetsRequest) (*MutateAssetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateAssets not implemented")
 }
 
 func RegisterAssetServiceServer(s *grpc.Server, srv AssetServiceServer) {

@@ -16,6 +16,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1347,6 +1349,41 @@ type InstanceAdminServer interface {
 	// permission on the containing Google Cloud Project. Otherwise returns an
 	// empty set of permissions.
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
+}
+
+// UnimplementedInstanceAdminServer can be embedded to have forward compatible implementations.
+type UnimplementedInstanceAdminServer struct {
+}
+
+func (*UnimplementedInstanceAdminServer) ListInstanceConfigs(ctx context.Context, req *ListInstanceConfigsRequest) (*ListInstanceConfigsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListInstanceConfigs not implemented")
+}
+func (*UnimplementedInstanceAdminServer) GetInstanceConfig(ctx context.Context, req *GetInstanceConfigRequest) (*InstanceConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInstanceConfig not implemented")
+}
+func (*UnimplementedInstanceAdminServer) ListInstances(ctx context.Context, req *ListInstancesRequest) (*ListInstancesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListInstances not implemented")
+}
+func (*UnimplementedInstanceAdminServer) GetInstance(ctx context.Context, req *GetInstanceRequest) (*Instance, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInstance not implemented")
+}
+func (*UnimplementedInstanceAdminServer) CreateInstance(ctx context.Context, req *CreateInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateInstance not implemented")
+}
+func (*UnimplementedInstanceAdminServer) UpdateInstance(ctx context.Context, req *UpdateInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateInstance not implemented")
+}
+func (*UnimplementedInstanceAdminServer) DeleteInstance(ctx context.Context, req *DeleteInstanceRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteInstance not implemented")
+}
+func (*UnimplementedInstanceAdminServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedInstanceAdminServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedInstanceAdminServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
 }
 
 func RegisterInstanceAdminServer(s *grpc.Server, srv InstanceAdminServer) {

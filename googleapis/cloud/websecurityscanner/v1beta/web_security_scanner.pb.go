@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1254,6 +1256,50 @@ type WebSecurityScannerServer interface {
 	ListFindings(context.Context, *ListFindingsRequest) (*ListFindingsResponse, error)
 	// List all FindingTypeStats under a given ScanRun.
 	ListFindingTypeStats(context.Context, *ListFindingTypeStatsRequest) (*ListFindingTypeStatsResponse, error)
+}
+
+// UnimplementedWebSecurityScannerServer can be embedded to have forward compatible implementations.
+type UnimplementedWebSecurityScannerServer struct {
+}
+
+func (*UnimplementedWebSecurityScannerServer) CreateScanConfig(ctx context.Context, req *CreateScanConfigRequest) (*ScanConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateScanConfig not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) DeleteScanConfig(ctx context.Context, req *DeleteScanConfigRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteScanConfig not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) GetScanConfig(ctx context.Context, req *GetScanConfigRequest) (*ScanConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetScanConfig not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) ListScanConfigs(ctx context.Context, req *ListScanConfigsRequest) (*ListScanConfigsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListScanConfigs not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) UpdateScanConfig(ctx context.Context, req *UpdateScanConfigRequest) (*ScanConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateScanConfig not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) StartScanRun(ctx context.Context, req *StartScanRunRequest) (*ScanRun, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartScanRun not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) GetScanRun(ctx context.Context, req *GetScanRunRequest) (*ScanRun, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetScanRun not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) ListScanRuns(ctx context.Context, req *ListScanRunsRequest) (*ListScanRunsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListScanRuns not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) StopScanRun(ctx context.Context, req *StopScanRunRequest) (*ScanRun, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopScanRun not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) ListCrawledUrls(ctx context.Context, req *ListCrawledUrlsRequest) (*ListCrawledUrlsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCrawledUrls not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) GetFinding(ctx context.Context, req *GetFindingRequest) (*Finding, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFinding not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) ListFindings(ctx context.Context, req *ListFindingsRequest) (*ListFindingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFindings not implemented")
+}
+func (*UnimplementedWebSecurityScannerServer) ListFindingTypeStats(ctx context.Context, req *ListFindingTypeStatsRequest) (*ListFindingTypeStatsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFindingTypeStats not implemented")
 }
 
 func RegisterWebSecurityScannerServer(s *grpc.Server, srv WebSecurityScannerServer) {

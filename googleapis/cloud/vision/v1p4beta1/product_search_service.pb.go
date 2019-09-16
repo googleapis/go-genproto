@@ -16,6 +16,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -88,12 +90,9 @@ type Product struct {
 	// characters long.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// The category for the product identified by the reference image. This should
-	// be either "homegoods-v2", "apparel-v2", "toys-v2", or "packagedgoods-v1".
-	// The legacy categories "homegoods", "apparel", and "toys" are still
-	// supported but will be deprecated. For new products, please use
-	// "homegoods-v2", "apparel-v2", or "toys-v2" for better product search
-	// accuracy. It is recommended to migrate existing products to these
-	// categories as well.
+	// be either "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1", or
+	// "general-v1" The legacy categories "homegoods", "apparel", and "toys" are
+	// still supported, but these should not be used for new products.
 	//
 	// This field is immutable.
 	ProductCategory string `protobuf:"bytes,4,opt,name=product_category,json=productCategory,proto3" json:"product_category,omitempty"`
@@ -2555,6 +2554,65 @@ type ProductSearchServer interface {
 	// For the format of the csv file please see
 	// [ImportProductSetsGcsSource.csv_file_uri][google.cloud.vision.v1p4beta1.ImportProductSetsGcsSource.csv_file_uri].
 	ImportProductSets(context.Context, *ImportProductSetsRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedProductSearchServer can be embedded to have forward compatible implementations.
+type UnimplementedProductSearchServer struct {
+}
+
+func (*UnimplementedProductSearchServer) CreateProductSet(ctx context.Context, req *CreateProductSetRequest) (*ProductSet, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateProductSet not implemented")
+}
+func (*UnimplementedProductSearchServer) ListProductSets(ctx context.Context, req *ListProductSetsRequest) (*ListProductSetsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListProductSets not implemented")
+}
+func (*UnimplementedProductSearchServer) GetProductSet(ctx context.Context, req *GetProductSetRequest) (*ProductSet, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetProductSet not implemented")
+}
+func (*UnimplementedProductSearchServer) UpdateProductSet(ctx context.Context, req *UpdateProductSetRequest) (*ProductSet, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateProductSet not implemented")
+}
+func (*UnimplementedProductSearchServer) DeleteProductSet(ctx context.Context, req *DeleteProductSetRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteProductSet not implemented")
+}
+func (*UnimplementedProductSearchServer) CreateProduct(ctx context.Context, req *CreateProductRequest) (*Product, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateProduct not implemented")
+}
+func (*UnimplementedProductSearchServer) ListProducts(ctx context.Context, req *ListProductsRequest) (*ListProductsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListProducts not implemented")
+}
+func (*UnimplementedProductSearchServer) GetProduct(ctx context.Context, req *GetProductRequest) (*Product, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetProduct not implemented")
+}
+func (*UnimplementedProductSearchServer) UpdateProduct(ctx context.Context, req *UpdateProductRequest) (*Product, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateProduct not implemented")
+}
+func (*UnimplementedProductSearchServer) DeleteProduct(ctx context.Context, req *DeleteProductRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteProduct not implemented")
+}
+func (*UnimplementedProductSearchServer) CreateReferenceImage(ctx context.Context, req *CreateReferenceImageRequest) (*ReferenceImage, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateReferenceImage not implemented")
+}
+func (*UnimplementedProductSearchServer) DeleteReferenceImage(ctx context.Context, req *DeleteReferenceImageRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteReferenceImage not implemented")
+}
+func (*UnimplementedProductSearchServer) ListReferenceImages(ctx context.Context, req *ListReferenceImagesRequest) (*ListReferenceImagesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListReferenceImages not implemented")
+}
+func (*UnimplementedProductSearchServer) GetReferenceImage(ctx context.Context, req *GetReferenceImageRequest) (*ReferenceImage, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetReferenceImage not implemented")
+}
+func (*UnimplementedProductSearchServer) AddProductToProductSet(ctx context.Context, req *AddProductToProductSetRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method AddProductToProductSet not implemented")
+}
+func (*UnimplementedProductSearchServer) RemoveProductFromProductSet(ctx context.Context, req *RemoveProductFromProductSetRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method RemoveProductFromProductSet not implemented")
+}
+func (*UnimplementedProductSearchServer) ListProductsInProductSet(ctx context.Context, req *ListProductsInProductSetRequest) (*ListProductsInProductSetResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListProductsInProductSet not implemented")
+}
+func (*UnimplementedProductSearchServer) ImportProductSets(ctx context.Context, req *ImportProductSetsRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ImportProductSets not implemented")
 }
 
 func RegisterProductSearchServer(s *grpc.Server, srv ProductSearchServer) {

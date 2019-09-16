@@ -13,6 +13,8 @@ import (
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1076,6 +1078,20 @@ type ErrorStatsServiceServer interface {
 	ListEvents(context.Context, *ListEventsRequest) (*ListEventsResponse, error)
 	// Deletes all error events of a given project.
 	DeleteEvents(context.Context, *DeleteEventsRequest) (*DeleteEventsResponse, error)
+}
+
+// UnimplementedErrorStatsServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedErrorStatsServiceServer struct {
+}
+
+func (*UnimplementedErrorStatsServiceServer) ListGroupStats(ctx context.Context, req *ListGroupStatsRequest) (*ListGroupStatsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGroupStats not implemented")
+}
+func (*UnimplementedErrorStatsServiceServer) ListEvents(ctx context.Context, req *ListEventsRequest) (*ListEventsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListEvents not implemented")
+}
+func (*UnimplementedErrorStatsServiceServer) DeleteEvents(ctx context.Context, req *DeleteEventsRequest) (*DeleteEventsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteEvents not implemented")
 }
 
 func RegisterErrorStatsServiceServer(s *grpc.Server, srv ErrorStatsServiceServer) {

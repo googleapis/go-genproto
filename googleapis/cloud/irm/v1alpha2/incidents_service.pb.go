@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -3249,6 +3251,107 @@ type IncidentServiceServer interface {
 	// the IncidentRoleAssignment is not equal to the 'new_assignee' field of the
 	// request.
 	CancelIncidentRoleHandover(context.Context, *CancelIncidentRoleHandoverRequest) (*IncidentRoleAssignment, error)
+}
+
+// UnimplementedIncidentServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedIncidentServiceServer struct {
+}
+
+func (*UnimplementedIncidentServiceServer) CreateIncident(ctx context.Context, req *CreateIncidentRequest) (*Incident, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateIncident not implemented")
+}
+func (*UnimplementedIncidentServiceServer) GetIncident(ctx context.Context, req *GetIncidentRequest) (*Incident, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIncident not implemented")
+}
+func (*UnimplementedIncidentServiceServer) SearchIncidents(ctx context.Context, req *SearchIncidentsRequest) (*SearchIncidentsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchIncidents not implemented")
+}
+func (*UnimplementedIncidentServiceServer) UpdateIncident(ctx context.Context, req *UpdateIncidentRequest) (*Incident, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateIncident not implemented")
+}
+func (*UnimplementedIncidentServiceServer) SearchSimilarIncidents(ctx context.Context, req *SearchSimilarIncidentsRequest) (*SearchSimilarIncidentsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchSimilarIncidents not implemented")
+}
+func (*UnimplementedIncidentServiceServer) CreateAnnotation(ctx context.Context, req *CreateAnnotationRequest) (*Annotation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAnnotation not implemented")
+}
+func (*UnimplementedIncidentServiceServer) ListAnnotations(ctx context.Context, req *ListAnnotationsRequest) (*ListAnnotationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAnnotations not implemented")
+}
+func (*UnimplementedIncidentServiceServer) CreateTag(ctx context.Context, req *CreateTagRequest) (*Tag, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTag not implemented")
+}
+func (*UnimplementedIncidentServiceServer) DeleteTag(ctx context.Context, req *DeleteTagRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTag not implemented")
+}
+func (*UnimplementedIncidentServiceServer) ListTags(ctx context.Context, req *ListTagsRequest) (*ListTagsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTags not implemented")
+}
+func (*UnimplementedIncidentServiceServer) CreateSignal(ctx context.Context, req *CreateSignalRequest) (*Signal, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSignal not implemented")
+}
+func (*UnimplementedIncidentServiceServer) SearchSignals(ctx context.Context, req *SearchSignalsRequest) (*SearchSignalsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchSignals not implemented")
+}
+func (*UnimplementedIncidentServiceServer) LookupSignal(ctx context.Context, req *LookupSignalRequest) (*Signal, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LookupSignal not implemented")
+}
+func (*UnimplementedIncidentServiceServer) GetSignal(ctx context.Context, req *GetSignalRequest) (*Signal, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSignal not implemented")
+}
+func (*UnimplementedIncidentServiceServer) UpdateSignal(ctx context.Context, req *UpdateSignalRequest) (*Signal, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSignal not implemented")
+}
+func (*UnimplementedIncidentServiceServer) EscalateIncident(ctx context.Context, req *EscalateIncidentRequest) (*EscalateIncidentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EscalateIncident not implemented")
+}
+func (*UnimplementedIncidentServiceServer) CreateArtifact(ctx context.Context, req *CreateArtifactRequest) (*Artifact, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateArtifact not implemented")
+}
+func (*UnimplementedIncidentServiceServer) ListArtifacts(ctx context.Context, req *ListArtifactsRequest) (*ListArtifactsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListArtifacts not implemented")
+}
+func (*UnimplementedIncidentServiceServer) UpdateArtifact(ctx context.Context, req *UpdateArtifactRequest) (*Artifact, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateArtifact not implemented")
+}
+func (*UnimplementedIncidentServiceServer) DeleteArtifact(ctx context.Context, req *DeleteArtifactRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteArtifact not implemented")
+}
+func (*UnimplementedIncidentServiceServer) SendShiftHandoff(ctx context.Context, req *SendShiftHandoffRequest) (*SendShiftHandoffResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendShiftHandoff not implemented")
+}
+func (*UnimplementedIncidentServiceServer) CreateSubscription(ctx context.Context, req *CreateSubscriptionRequest) (*Subscription, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSubscription not implemented")
+}
+func (*UnimplementedIncidentServiceServer) UpdateSubscription(ctx context.Context, req *UpdateSubscriptionRequest) (*Subscription, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSubscription not implemented")
+}
+func (*UnimplementedIncidentServiceServer) ListSubscriptions(ctx context.Context, req *ListSubscriptionsRequest) (*ListSubscriptionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSubscriptions not implemented")
+}
+func (*UnimplementedIncidentServiceServer) DeleteSubscription(ctx context.Context, req *DeleteSubscriptionRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSubscription not implemented")
+}
+func (*UnimplementedIncidentServiceServer) CreateIncidentRoleAssignment(ctx context.Context, req *CreateIncidentRoleAssignmentRequest) (*IncidentRoleAssignment, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateIncidentRoleAssignment not implemented")
+}
+func (*UnimplementedIncidentServiceServer) DeleteIncidentRoleAssignment(ctx context.Context, req *DeleteIncidentRoleAssignmentRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIncidentRoleAssignment not implemented")
+}
+func (*UnimplementedIncidentServiceServer) ListIncidentRoleAssignments(ctx context.Context, req *ListIncidentRoleAssignmentsRequest) (*ListIncidentRoleAssignmentsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIncidentRoleAssignments not implemented")
+}
+func (*UnimplementedIncidentServiceServer) RequestIncidentRoleHandover(ctx context.Context, req *RequestIncidentRoleHandoverRequest) (*IncidentRoleAssignment, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RequestIncidentRoleHandover not implemented")
+}
+func (*UnimplementedIncidentServiceServer) ConfirmIncidentRoleHandover(ctx context.Context, req *ConfirmIncidentRoleHandoverRequest) (*IncidentRoleAssignment, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConfirmIncidentRoleHandover not implemented")
+}
+func (*UnimplementedIncidentServiceServer) ForceIncidentRoleHandover(ctx context.Context, req *ForceIncidentRoleHandoverRequest) (*IncidentRoleAssignment, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ForceIncidentRoleHandover not implemented")
+}
+func (*UnimplementedIncidentServiceServer) CancelIncidentRoleHandover(ctx context.Context, req *CancelIncidentRoleHandoverRequest) (*IncidentRoleAssignment, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelIncidentRoleHandover not implemented")
 }
 
 func RegisterIncidentServiceServer(s *grpc.Server, srv IncidentServiceServer) {

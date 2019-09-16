@@ -15,6 +15,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -464,6 +466,17 @@ type CustomerExtensionSettingServiceServer interface {
 	// Creates, updates, or removes customer extension settings. Operation
 	// statuses are returned.
 	MutateCustomerExtensionSettings(context.Context, *MutateCustomerExtensionSettingsRequest) (*MutateCustomerExtensionSettingsResponse, error)
+}
+
+// UnimplementedCustomerExtensionSettingServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCustomerExtensionSettingServiceServer struct {
+}
+
+func (*UnimplementedCustomerExtensionSettingServiceServer) GetCustomerExtensionSetting(ctx context.Context, req *GetCustomerExtensionSettingRequest) (*resources.CustomerExtensionSetting, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCustomerExtensionSetting not implemented")
+}
+func (*UnimplementedCustomerExtensionSettingServiceServer) MutateCustomerExtensionSettings(ctx context.Context, req *MutateCustomerExtensionSettingsRequest) (*MutateCustomerExtensionSettingsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCustomerExtensionSettings not implemented")
 }
 
 func RegisterCustomerExtensionSettingServiceServer(s *grpc.Server, srv CustomerExtensionSettingServiceServer) {

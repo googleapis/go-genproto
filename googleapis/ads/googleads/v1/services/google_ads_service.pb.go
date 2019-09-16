@@ -15,6 +15,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2968,6 +2970,17 @@ type GoogleAdsServiceServer interface {
 	// example, mutating 10 campaigns then 10 ad groups is like 2 calls, while
 	// mutating 1 campaign, 1 ad group, 1 campaign, 1 ad group is like 4 calls.
 	Mutate(context.Context, *MutateGoogleAdsRequest) (*MutateGoogleAdsResponse, error)
+}
+
+// UnimplementedGoogleAdsServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedGoogleAdsServiceServer struct {
+}
+
+func (*UnimplementedGoogleAdsServiceServer) Search(ctx context.Context, req *SearchGoogleAdsRequest) (*SearchGoogleAdsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method Search not implemented")
+}
+func (*UnimplementedGoogleAdsServiceServer) Mutate(ctx context.Context, req *MutateGoogleAdsRequest) (*MutateGoogleAdsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method Mutate not implemented")
 }
 
 func RegisterGoogleAdsServiceServer(s *grpc.Server, srv GoogleAdsServiceServer) {

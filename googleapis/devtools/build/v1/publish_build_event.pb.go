@@ -13,6 +13,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -477,6 +479,17 @@ type PublishBuildEventServer interface {
 	// Publish build tool events belonging to the same stream to a backend job
 	// using bidirectional streaming.
 	PublishBuildToolEventStream(PublishBuildEvent_PublishBuildToolEventStreamServer) error
+}
+
+// UnimplementedPublishBuildEventServer can be embedded to have forward compatible implementations.
+type UnimplementedPublishBuildEventServer struct {
+}
+
+func (*UnimplementedPublishBuildEventServer) PublishLifecycleEvent(ctx context.Context, req *PublishLifecycleEventRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PublishLifecycleEvent not implemented")
+}
+func (*UnimplementedPublishBuildEventServer) PublishBuildToolEventStream(srv PublishBuildEvent_PublishBuildToolEventStreamServer) error {
+	return status.Errorf(codes.Unimplemented, "method PublishBuildToolEventStream not implemented")
 }
 
 func RegisterPublishBuildEventServer(s *grpc.Server, srv PublishBuildEventServer) {

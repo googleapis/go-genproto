@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -3444,6 +3446,83 @@ type ResultStoreUploadServer interface {
 	// - If the invocation does not exist.
 	// - If no field mask was given.
 	GetInvocationUploadMetadata(context.Context, *GetInvocationUploadMetadataRequest) (*UploadMetadata, error)
+}
+
+// UnimplementedResultStoreUploadServer can be embedded to have forward compatible implementations.
+type UnimplementedResultStoreUploadServer struct {
+}
+
+func (*UnimplementedResultStoreUploadServer) CreateInvocation(ctx context.Context, req *CreateInvocationRequest) (*Invocation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateInvocation not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) UpdateInvocation(ctx context.Context, req *UpdateInvocationRequest) (*Invocation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateInvocation not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) MergeInvocation(ctx context.Context, req *MergeInvocationRequest) (*Invocation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MergeInvocation not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) TouchInvocation(ctx context.Context, req *TouchInvocationRequest) (*TouchInvocationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TouchInvocation not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) FinalizeInvocation(ctx context.Context, req *FinalizeInvocationRequest) (*FinalizeInvocationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FinalizeInvocation not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) DeleteInvocation(ctx context.Context, req *DeleteInvocationRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteInvocation not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) CreateTarget(ctx context.Context, req *CreateTargetRequest) (*Target, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTarget not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) UpdateTarget(ctx context.Context, req *UpdateTargetRequest) (*Target, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTarget not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) MergeTarget(ctx context.Context, req *MergeTargetRequest) (*Target, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MergeTarget not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) FinalizeTarget(ctx context.Context, req *FinalizeTargetRequest) (*FinalizeTargetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FinalizeTarget not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) CreateConfiguredTarget(ctx context.Context, req *CreateConfiguredTargetRequest) (*ConfiguredTarget, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateConfiguredTarget not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) UpdateConfiguredTarget(ctx context.Context, req *UpdateConfiguredTargetRequest) (*ConfiguredTarget, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateConfiguredTarget not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) MergeConfiguredTarget(ctx context.Context, req *MergeConfiguredTargetRequest) (*ConfiguredTarget, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MergeConfiguredTarget not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) FinalizeConfiguredTarget(ctx context.Context, req *FinalizeConfiguredTargetRequest) (*FinalizeConfiguredTargetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FinalizeConfiguredTarget not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) CreateAction(ctx context.Context, req *CreateActionRequest) (*Action, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAction not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) UpdateAction(ctx context.Context, req *UpdateActionRequest) (*Action, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAction not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) MergeAction(ctx context.Context, req *MergeActionRequest) (*Action, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MergeAction not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) CreateConfiguration(ctx context.Context, req *CreateConfigurationRequest) (*Configuration, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateConfiguration not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) UpdateConfiguration(ctx context.Context, req *UpdateConfigurationRequest) (*Configuration, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateConfiguration not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) CreateFileSet(ctx context.Context, req *CreateFileSetRequest) (*FileSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateFileSet not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) UpdateFileSet(ctx context.Context, req *UpdateFileSetRequest) (*FileSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateFileSet not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) MergeFileSet(ctx context.Context, req *MergeFileSetRequest) (*FileSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MergeFileSet not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) UploadBatch(ctx context.Context, req *UploadBatchRequest) (*UploadBatchResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UploadBatch not implemented")
+}
+func (*UnimplementedResultStoreUploadServer) GetInvocationUploadMetadata(ctx context.Context, req *GetInvocationUploadMetadataRequest) (*UploadMetadata, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInvocationUploadMetadata not implemented")
 }
 
 func RegisterResultStoreUploadServer(s *grpc.Server, srv ResultStoreUploadServer) {

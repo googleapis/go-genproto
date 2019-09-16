@@ -16,6 +16,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2299,6 +2301,53 @@ type DataTransferServiceServer interface {
 	// token for the particular user, which is a pre-requisite before user can
 	// create a transfer config.
 	CheckValidCreds(context.Context, *CheckValidCredsRequest) (*CheckValidCredsResponse, error)
+}
+
+// UnimplementedDataTransferServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedDataTransferServiceServer struct {
+}
+
+func (*UnimplementedDataTransferServiceServer) GetDataSource(ctx context.Context, req *GetDataSourceRequest) (*DataSource, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDataSource not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) ListDataSources(ctx context.Context, req *ListDataSourcesRequest) (*ListDataSourcesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDataSources not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) CreateTransferConfig(ctx context.Context, req *CreateTransferConfigRequest) (*TransferConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTransferConfig not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) UpdateTransferConfig(ctx context.Context, req *UpdateTransferConfigRequest) (*TransferConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTransferConfig not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) DeleteTransferConfig(ctx context.Context, req *DeleteTransferConfigRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTransferConfig not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) GetTransferConfig(ctx context.Context, req *GetTransferConfigRequest) (*TransferConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransferConfig not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) ListTransferConfigs(ctx context.Context, req *ListTransferConfigsRequest) (*ListTransferConfigsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTransferConfigs not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) ScheduleTransferRuns(ctx context.Context, req *ScheduleTransferRunsRequest) (*ScheduleTransferRunsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ScheduleTransferRuns not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) StartManualTransferRuns(ctx context.Context, req *StartManualTransferRunsRequest) (*StartManualTransferRunsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartManualTransferRuns not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) GetTransferRun(ctx context.Context, req *GetTransferRunRequest) (*TransferRun, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransferRun not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) DeleteTransferRun(ctx context.Context, req *DeleteTransferRunRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTransferRun not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) ListTransferRuns(ctx context.Context, req *ListTransferRunsRequest) (*ListTransferRunsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTransferRuns not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) ListTransferLogs(ctx context.Context, req *ListTransferLogsRequest) (*ListTransferLogsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTransferLogs not implemented")
+}
+func (*UnimplementedDataTransferServiceServer) CheckValidCreds(ctx context.Context, req *CheckValidCredsRequest) (*CheckValidCredsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckValidCreds not implemented")
 }
 
 func RegisterDataTransferServiceServer(s *grpc.Server, srv DataTransferServiceServer) {

@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1496,6 +1498,35 @@ type SubscriberServer interface {
 	ModifyPushConfig(context.Context, *ModifyPushConfigRequest) (*empty.Empty, error)
 }
 
+// UnimplementedSubscriberServer can be embedded to have forward compatible implementations.
+type UnimplementedSubscriberServer struct {
+}
+
+func (*UnimplementedSubscriberServer) CreateSubscription(ctx context.Context, req *Subscription) (*Subscription, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSubscription not implemented")
+}
+func (*UnimplementedSubscriberServer) GetSubscription(ctx context.Context, req *GetSubscriptionRequest) (*Subscription, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSubscription not implemented")
+}
+func (*UnimplementedSubscriberServer) ListSubscriptions(ctx context.Context, req *ListSubscriptionsRequest) (*ListSubscriptionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSubscriptions not implemented")
+}
+func (*UnimplementedSubscriberServer) DeleteSubscription(ctx context.Context, req *DeleteSubscriptionRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSubscription not implemented")
+}
+func (*UnimplementedSubscriberServer) ModifyAckDeadline(ctx context.Context, req *ModifyAckDeadlineRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ModifyAckDeadline not implemented")
+}
+func (*UnimplementedSubscriberServer) Acknowledge(ctx context.Context, req *AcknowledgeRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Acknowledge not implemented")
+}
+func (*UnimplementedSubscriberServer) Pull(ctx context.Context, req *PullRequest) (*PullResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Pull not implemented")
+}
+func (*UnimplementedSubscriberServer) ModifyPushConfig(ctx context.Context, req *ModifyPushConfigRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ModifyPushConfig not implemented")
+}
+
 func RegisterSubscriberServer(s *grpc.Server, srv SubscriberServer) {
 	s.RegisterService(&_Subscriber_serviceDesc, srv)
 }
@@ -1789,6 +1820,29 @@ type PublisherServer interface {
 	// configuration or subscriptions. Existing subscriptions to this topic are
 	// not deleted.
 	DeleteTopic(context.Context, *DeleteTopicRequest) (*empty.Empty, error)
+}
+
+// UnimplementedPublisherServer can be embedded to have forward compatible implementations.
+type UnimplementedPublisherServer struct {
+}
+
+func (*UnimplementedPublisherServer) CreateTopic(ctx context.Context, req *Topic) (*Topic, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTopic not implemented")
+}
+func (*UnimplementedPublisherServer) Publish(ctx context.Context, req *PublishRequest) (*PublishResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Publish not implemented")
+}
+func (*UnimplementedPublisherServer) GetTopic(ctx context.Context, req *GetTopicRequest) (*Topic, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTopic not implemented")
+}
+func (*UnimplementedPublisherServer) ListTopics(ctx context.Context, req *ListTopicsRequest) (*ListTopicsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTopics not implemented")
+}
+func (*UnimplementedPublisherServer) ListTopicSubscriptions(ctx context.Context, req *ListTopicSubscriptionsRequest) (*ListTopicSubscriptionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTopicSubscriptions not implemented")
+}
+func (*UnimplementedPublisherServer) DeleteTopic(ctx context.Context, req *DeleteTopicRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTopic not implemented")
 }
 
 func RegisterPublisherServer(s *grpc.Server, srv PublisherServer) {

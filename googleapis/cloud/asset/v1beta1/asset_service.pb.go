@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -596,6 +598,17 @@ type AssetServiceServer interface {
 	// For IAM_POLICY content, this API outputs history when the asset and its
 	// attached IAM POLICY both exist. This can create gaps in the output history.
 	BatchGetAssetsHistory(context.Context, *BatchGetAssetsHistoryRequest) (*BatchGetAssetsHistoryResponse, error)
+}
+
+// UnimplementedAssetServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAssetServiceServer struct {
+}
+
+func (*UnimplementedAssetServiceServer) ExportAssets(ctx context.Context, req *ExportAssetsRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportAssets not implemented")
+}
+func (*UnimplementedAssetServiceServer) BatchGetAssetsHistory(ctx context.Context, req *BatchGetAssetsHistoryRequest) (*BatchGetAssetsHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchGetAssetsHistory not implemented")
 }
 
 func RegisterAssetServiceServer(s *grpc.Server, srv AssetServiceServer) {

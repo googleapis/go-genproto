@@ -12,6 +12,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	_ "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -596,6 +598,26 @@ type RecommenderServer interface {
 	// Requires the recommender.*.update IAM permission for the specified
 	// recommender.
 	MarkRecommendationFailed(context.Context, *MarkRecommendationFailedRequest) (*Recommendation, error)
+}
+
+// UnimplementedRecommenderServer can be embedded to have forward compatible implementations.
+type UnimplementedRecommenderServer struct {
+}
+
+func (*UnimplementedRecommenderServer) ListRecommendations(ctx context.Context, req *ListRecommendationsRequest) (*ListRecommendationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRecommendations not implemented")
+}
+func (*UnimplementedRecommenderServer) GetRecommendation(ctx context.Context, req *GetRecommendationRequest) (*Recommendation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRecommendation not implemented")
+}
+func (*UnimplementedRecommenderServer) MarkRecommendationClaimed(ctx context.Context, req *MarkRecommendationClaimedRequest) (*Recommendation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MarkRecommendationClaimed not implemented")
+}
+func (*UnimplementedRecommenderServer) MarkRecommendationSucceeded(ctx context.Context, req *MarkRecommendationSucceededRequest) (*Recommendation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MarkRecommendationSucceeded not implemented")
+}
+func (*UnimplementedRecommenderServer) MarkRecommendationFailed(ctx context.Context, req *MarkRecommendationFailedRequest) (*Recommendation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MarkRecommendationFailed not implemented")
 }
 
 func RegisterRecommenderServer(s *grpc.Server, srv RecommenderServer) {
