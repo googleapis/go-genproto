@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2102,6 +2104,32 @@ type WorkflowTemplateServiceServer interface {
 	ListWorkflowTemplates(context.Context, *ListWorkflowTemplatesRequest) (*ListWorkflowTemplatesResponse, error)
 	// Deletes a workflow template. It does not cancel in-progress workflows.
 	DeleteWorkflowTemplate(context.Context, *DeleteWorkflowTemplateRequest) (*empty.Empty, error)
+}
+
+// UnimplementedWorkflowTemplateServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedWorkflowTemplateServiceServer struct {
+}
+
+func (*UnimplementedWorkflowTemplateServiceServer) CreateWorkflowTemplate(ctx context.Context, req *CreateWorkflowTemplateRequest) (*WorkflowTemplate, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateWorkflowTemplate not implemented")
+}
+func (*UnimplementedWorkflowTemplateServiceServer) GetWorkflowTemplate(ctx context.Context, req *GetWorkflowTemplateRequest) (*WorkflowTemplate, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetWorkflowTemplate not implemented")
+}
+func (*UnimplementedWorkflowTemplateServiceServer) InstantiateWorkflowTemplate(ctx context.Context, req *InstantiateWorkflowTemplateRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InstantiateWorkflowTemplate not implemented")
+}
+func (*UnimplementedWorkflowTemplateServiceServer) InstantiateInlineWorkflowTemplate(ctx context.Context, req *InstantiateInlineWorkflowTemplateRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InstantiateInlineWorkflowTemplate not implemented")
+}
+func (*UnimplementedWorkflowTemplateServiceServer) UpdateWorkflowTemplate(ctx context.Context, req *UpdateWorkflowTemplateRequest) (*WorkflowTemplate, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateWorkflowTemplate not implemented")
+}
+func (*UnimplementedWorkflowTemplateServiceServer) ListWorkflowTemplates(ctx context.Context, req *ListWorkflowTemplatesRequest) (*ListWorkflowTemplatesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListWorkflowTemplates not implemented")
+}
+func (*UnimplementedWorkflowTemplateServiceServer) DeleteWorkflowTemplate(ctx context.Context, req *DeleteWorkflowTemplateRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteWorkflowTemplate not implemented")
 }
 
 func RegisterWorkflowTemplateServiceServer(s *grpc.Server, srv WorkflowTemplateServiceServer) {

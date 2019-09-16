@@ -15,6 +15,8 @@ import (
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -752,6 +754,38 @@ type DatasetServiceV1Server interface {
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
+}
+
+// UnimplementedDatasetServiceV1Server can be embedded to have forward compatible implementations.
+type UnimplementedDatasetServiceV1Server struct {
+}
+
+func (*UnimplementedDatasetServiceV1Server) ListDatasets(ctx context.Context, req *ListDatasetsRequest) (*ListDatasetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDatasets not implemented")
+}
+func (*UnimplementedDatasetServiceV1Server) CreateDataset(ctx context.Context, req *CreateDatasetRequest) (*Dataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDataset not implemented")
+}
+func (*UnimplementedDatasetServiceV1Server) GetDataset(ctx context.Context, req *GetDatasetRequest) (*Dataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDataset not implemented")
+}
+func (*UnimplementedDatasetServiceV1Server) UpdateDataset(ctx context.Context, req *UpdateDatasetRequest) (*Dataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDataset not implemented")
+}
+func (*UnimplementedDatasetServiceV1Server) DeleteDataset(ctx context.Context, req *DeleteDatasetRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDataset not implemented")
+}
+func (*UnimplementedDatasetServiceV1Server) UndeleteDataset(ctx context.Context, req *UndeleteDatasetRequest) (*Dataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UndeleteDataset not implemented")
+}
+func (*UnimplementedDatasetServiceV1Server) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedDatasetServiceV1Server) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedDatasetServiceV1Server) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
 }
 
 func RegisterDatasetServiceV1Server(s *grpc.Server, srv DatasetServiceV1Server) {

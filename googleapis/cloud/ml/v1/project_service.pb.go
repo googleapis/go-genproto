@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -193,6 +195,14 @@ type ProjectManagementServiceServer interface {
 	// the Google Cloud Storage location where you put your model training code
 	// for training the model with Google Cloud Machine Learning.
 	GetConfig(context.Context, *GetConfigRequest) (*GetConfigResponse, error)
+}
+
+// UnimplementedProjectManagementServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedProjectManagementServiceServer struct {
+}
+
+func (*UnimplementedProjectManagementServiceServer) GetConfig(ctx context.Context, req *GetConfigRequest) (*GetConfigResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetConfig not implemented")
 }
 
 func RegisterProjectManagementServiceServer(s *grpc.Server, srv ProjectManagementServiceServer) {

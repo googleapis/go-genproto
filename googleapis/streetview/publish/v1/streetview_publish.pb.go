@@ -12,6 +12,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -492,6 +494,38 @@ type StreetViewPublishServiceServer interface {
 	// [DeletePhoto][google.streetview.publish.v1.StreetViewPublishService.DeletePhoto]
 	// for specific failures that can occur per photo.
 	BatchDeletePhotos(context.Context, *BatchDeletePhotosRequest) (*BatchDeletePhotosResponse, error)
+}
+
+// UnimplementedStreetViewPublishServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedStreetViewPublishServiceServer struct {
+}
+
+func (*UnimplementedStreetViewPublishServiceServer) StartUpload(ctx context.Context, req *empty.Empty) (*UploadRef, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartUpload not implemented")
+}
+func (*UnimplementedStreetViewPublishServiceServer) CreatePhoto(ctx context.Context, req *CreatePhotoRequest) (*Photo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePhoto not implemented")
+}
+func (*UnimplementedStreetViewPublishServiceServer) GetPhoto(ctx context.Context, req *GetPhotoRequest) (*Photo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPhoto not implemented")
+}
+func (*UnimplementedStreetViewPublishServiceServer) BatchGetPhotos(ctx context.Context, req *BatchGetPhotosRequest) (*BatchGetPhotosResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchGetPhotos not implemented")
+}
+func (*UnimplementedStreetViewPublishServiceServer) ListPhotos(ctx context.Context, req *ListPhotosRequest) (*ListPhotosResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPhotos not implemented")
+}
+func (*UnimplementedStreetViewPublishServiceServer) UpdatePhoto(ctx context.Context, req *UpdatePhotoRequest) (*Photo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePhoto not implemented")
+}
+func (*UnimplementedStreetViewPublishServiceServer) BatchUpdatePhotos(ctx context.Context, req *BatchUpdatePhotosRequest) (*BatchUpdatePhotosResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchUpdatePhotos not implemented")
+}
+func (*UnimplementedStreetViewPublishServiceServer) DeletePhoto(ctx context.Context, req *DeletePhotoRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePhoto not implemented")
+}
+func (*UnimplementedStreetViewPublishServiceServer) BatchDeletePhotos(ctx context.Context, req *BatchDeletePhotosRequest) (*BatchDeletePhotosResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchDeletePhotos not implemented")
 }
 
 func RegisterStreetViewPublishServiceServer(s *grpc.Server, srv StreetViewPublishServiceServer) {

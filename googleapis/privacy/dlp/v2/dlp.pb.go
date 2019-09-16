@@ -19,6 +19,8 @@ import (
 	timeofday "google.golang.org/genproto/googleapis/type/timeofday"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -12724,6 +12726,104 @@ type DlpServiceServer interface {
 	// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
 	// learn more.
 	DeleteStoredInfoType(context.Context, *DeleteStoredInfoTypeRequest) (*empty.Empty, error)
+}
+
+// UnimplementedDlpServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedDlpServiceServer struct {
+}
+
+func (*UnimplementedDlpServiceServer) InspectContent(ctx context.Context, req *InspectContentRequest) (*InspectContentResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method InspectContent not implemented")
+}
+func (*UnimplementedDlpServiceServer) RedactImage(ctx context.Context, req *RedactImageRequest) (*RedactImageResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method RedactImage not implemented")
+}
+func (*UnimplementedDlpServiceServer) DeidentifyContent(ctx context.Context, req *DeidentifyContentRequest) (*DeidentifyContentResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeidentifyContent not implemented")
+}
+func (*UnimplementedDlpServiceServer) ReidentifyContent(ctx context.Context, req *ReidentifyContentRequest) (*ReidentifyContentResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ReidentifyContent not implemented")
+}
+func (*UnimplementedDlpServiceServer) ListInfoTypes(ctx context.Context, req *ListInfoTypesRequest) (*ListInfoTypesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListInfoTypes not implemented")
+}
+func (*UnimplementedDlpServiceServer) CreateInspectTemplate(ctx context.Context, req *CreateInspectTemplateRequest) (*InspectTemplate, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateInspectTemplate not implemented")
+}
+func (*UnimplementedDlpServiceServer) UpdateInspectTemplate(ctx context.Context, req *UpdateInspectTemplateRequest) (*InspectTemplate, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateInspectTemplate not implemented")
+}
+func (*UnimplementedDlpServiceServer) GetInspectTemplate(ctx context.Context, req *GetInspectTemplateRequest) (*InspectTemplate, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetInspectTemplate not implemented")
+}
+func (*UnimplementedDlpServiceServer) ListInspectTemplates(ctx context.Context, req *ListInspectTemplatesRequest) (*ListInspectTemplatesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListInspectTemplates not implemented")
+}
+func (*UnimplementedDlpServiceServer) DeleteInspectTemplate(ctx context.Context, req *DeleteInspectTemplateRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteInspectTemplate not implemented")
+}
+func (*UnimplementedDlpServiceServer) CreateDeidentifyTemplate(ctx context.Context, req *CreateDeidentifyTemplateRequest) (*DeidentifyTemplate, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateDeidentifyTemplate not implemented")
+}
+func (*UnimplementedDlpServiceServer) UpdateDeidentifyTemplate(ctx context.Context, req *UpdateDeidentifyTemplateRequest) (*DeidentifyTemplate, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateDeidentifyTemplate not implemented")
+}
+func (*UnimplementedDlpServiceServer) GetDeidentifyTemplate(ctx context.Context, req *GetDeidentifyTemplateRequest) (*DeidentifyTemplate, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetDeidentifyTemplate not implemented")
+}
+func (*UnimplementedDlpServiceServer) ListDeidentifyTemplates(ctx context.Context, req *ListDeidentifyTemplatesRequest) (*ListDeidentifyTemplatesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListDeidentifyTemplates not implemented")
+}
+func (*UnimplementedDlpServiceServer) DeleteDeidentifyTemplate(ctx context.Context, req *DeleteDeidentifyTemplateRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteDeidentifyTemplate not implemented")
+}
+func (*UnimplementedDlpServiceServer) CreateJobTrigger(ctx context.Context, req *CreateJobTriggerRequest) (*JobTrigger, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateJobTrigger not implemented")
+}
+func (*UnimplementedDlpServiceServer) UpdateJobTrigger(ctx context.Context, req *UpdateJobTriggerRequest) (*JobTrigger, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateJobTrigger not implemented")
+}
+func (*UnimplementedDlpServiceServer) GetJobTrigger(ctx context.Context, req *GetJobTriggerRequest) (*JobTrigger, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetJobTrigger not implemented")
+}
+func (*UnimplementedDlpServiceServer) ListJobTriggers(ctx context.Context, req *ListJobTriggersRequest) (*ListJobTriggersResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListJobTriggers not implemented")
+}
+func (*UnimplementedDlpServiceServer) DeleteJobTrigger(ctx context.Context, req *DeleteJobTriggerRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteJobTrigger not implemented")
+}
+func (*UnimplementedDlpServiceServer) ActivateJobTrigger(ctx context.Context, req *ActivateJobTriggerRequest) (*DlpJob, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ActivateJobTrigger not implemented")
+}
+func (*UnimplementedDlpServiceServer) CreateDlpJob(ctx context.Context, req *CreateDlpJobRequest) (*DlpJob, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateDlpJob not implemented")
+}
+func (*UnimplementedDlpServiceServer) ListDlpJobs(ctx context.Context, req *ListDlpJobsRequest) (*ListDlpJobsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListDlpJobs not implemented")
+}
+func (*UnimplementedDlpServiceServer) GetDlpJob(ctx context.Context, req *GetDlpJobRequest) (*DlpJob, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetDlpJob not implemented")
+}
+func (*UnimplementedDlpServiceServer) DeleteDlpJob(ctx context.Context, req *DeleteDlpJobRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteDlpJob not implemented")
+}
+func (*UnimplementedDlpServiceServer) CancelDlpJob(ctx context.Context, req *CancelDlpJobRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CancelDlpJob not implemented")
+}
+func (*UnimplementedDlpServiceServer) CreateStoredInfoType(ctx context.Context, req *CreateStoredInfoTypeRequest) (*StoredInfoType, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateStoredInfoType not implemented")
+}
+func (*UnimplementedDlpServiceServer) UpdateStoredInfoType(ctx context.Context, req *UpdateStoredInfoTypeRequest) (*StoredInfoType, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateStoredInfoType not implemented")
+}
+func (*UnimplementedDlpServiceServer) GetStoredInfoType(ctx context.Context, req *GetStoredInfoTypeRequest) (*StoredInfoType, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetStoredInfoType not implemented")
+}
+func (*UnimplementedDlpServiceServer) ListStoredInfoTypes(ctx context.Context, req *ListStoredInfoTypesRequest) (*ListStoredInfoTypesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListStoredInfoTypes not implemented")
+}
+func (*UnimplementedDlpServiceServer) DeleteStoredInfoType(ctx context.Context, req *DeleteStoredInfoTypeRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteStoredInfoType not implemented")
 }
 
 func RegisterDlpServiceServer(s *grpc.Server, srv DlpServiceServer) {

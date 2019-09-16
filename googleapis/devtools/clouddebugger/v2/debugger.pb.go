@@ -12,6 +12,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -760,6 +762,26 @@ type Debugger2Server interface {
 	ListBreakpoints(context.Context, *ListBreakpointsRequest) (*ListBreakpointsResponse, error)
 	// Lists all the debuggees that the user has access to.
 	ListDebuggees(context.Context, *ListDebuggeesRequest) (*ListDebuggeesResponse, error)
+}
+
+// UnimplementedDebugger2Server can be embedded to have forward compatible implementations.
+type UnimplementedDebugger2Server struct {
+}
+
+func (*UnimplementedDebugger2Server) SetBreakpoint(ctx context.Context, req *SetBreakpointRequest) (*SetBreakpointResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetBreakpoint not implemented")
+}
+func (*UnimplementedDebugger2Server) GetBreakpoint(ctx context.Context, req *GetBreakpointRequest) (*GetBreakpointResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBreakpoint not implemented")
+}
+func (*UnimplementedDebugger2Server) DeleteBreakpoint(ctx context.Context, req *DeleteBreakpointRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBreakpoint not implemented")
+}
+func (*UnimplementedDebugger2Server) ListBreakpoints(ctx context.Context, req *ListBreakpointsRequest) (*ListBreakpointsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBreakpoints not implemented")
+}
+func (*UnimplementedDebugger2Server) ListDebuggees(ctx context.Context, req *ListDebuggeesRequest) (*ListDebuggeesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDebuggees not implemented")
 }
 
 func RegisterDebugger2Server(s *grpc.Server, srv Debugger2Server) {

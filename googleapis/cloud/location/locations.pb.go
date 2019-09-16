@@ -12,6 +12,8 @@ import (
 	any "github.com/golang/protobuf/ptypes/any"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -368,6 +370,17 @@ type LocationsServer interface {
 	ListLocations(context.Context, *ListLocationsRequest) (*ListLocationsResponse, error)
 	// Gets information about a location.
 	GetLocation(context.Context, *GetLocationRequest) (*Location, error)
+}
+
+// UnimplementedLocationsServer can be embedded to have forward compatible implementations.
+type UnimplementedLocationsServer struct {
+}
+
+func (*UnimplementedLocationsServer) ListLocations(ctx context.Context, req *ListLocationsRequest) (*ListLocationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListLocations not implemented")
+}
+func (*UnimplementedLocationsServer) GetLocation(ctx context.Context, req *GetLocationRequest) (*Location, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLocation not implemented")
 }
 
 func RegisterLocationsServer(s *grpc.Server, srv LocationsServer) {

@@ -13,6 +13,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -497,6 +499,17 @@ type GeoTargetConstantServiceServer interface {
 	GetGeoTargetConstant(context.Context, *GetGeoTargetConstantRequest) (*resources.GeoTargetConstant, error)
 	// Returns GeoTargetConstant suggestions by location name or by resource name.
 	SuggestGeoTargetConstants(context.Context, *SuggestGeoTargetConstantsRequest) (*SuggestGeoTargetConstantsResponse, error)
+}
+
+// UnimplementedGeoTargetConstantServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedGeoTargetConstantServiceServer struct {
+}
+
+func (*UnimplementedGeoTargetConstantServiceServer) GetGeoTargetConstant(ctx context.Context, req *GetGeoTargetConstantRequest) (*resources.GeoTargetConstant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGeoTargetConstant not implemented")
+}
+func (*UnimplementedGeoTargetConstantServiceServer) SuggestGeoTargetConstants(ctx context.Context, req *SuggestGeoTargetConstantsRequest) (*SuggestGeoTargetConstantsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SuggestGeoTargetConstants not implemented")
 }
 
 func RegisterGeoTargetConstantServiceServer(s *grpc.Server, srv GeoTargetConstantServiceServer) {

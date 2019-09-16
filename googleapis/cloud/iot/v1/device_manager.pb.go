@@ -17,6 +17,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1806,6 +1808,68 @@ type DeviceManagerServer interface {
 	BindDeviceToGateway(context.Context, *BindDeviceToGatewayRequest) (*BindDeviceToGatewayResponse, error)
 	// Deletes the association between the device and the gateway.
 	UnbindDeviceFromGateway(context.Context, *UnbindDeviceFromGatewayRequest) (*UnbindDeviceFromGatewayResponse, error)
+}
+
+// UnimplementedDeviceManagerServer can be embedded to have forward compatible implementations.
+type UnimplementedDeviceManagerServer struct {
+}
+
+func (*UnimplementedDeviceManagerServer) CreateDeviceRegistry(ctx context.Context, req *CreateDeviceRegistryRequest) (*DeviceRegistry, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDeviceRegistry not implemented")
+}
+func (*UnimplementedDeviceManagerServer) GetDeviceRegistry(ctx context.Context, req *GetDeviceRegistryRequest) (*DeviceRegistry, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDeviceRegistry not implemented")
+}
+func (*UnimplementedDeviceManagerServer) UpdateDeviceRegistry(ctx context.Context, req *UpdateDeviceRegistryRequest) (*DeviceRegistry, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDeviceRegistry not implemented")
+}
+func (*UnimplementedDeviceManagerServer) DeleteDeviceRegistry(ctx context.Context, req *DeleteDeviceRegistryRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDeviceRegistry not implemented")
+}
+func (*UnimplementedDeviceManagerServer) ListDeviceRegistries(ctx context.Context, req *ListDeviceRegistriesRequest) (*ListDeviceRegistriesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDeviceRegistries not implemented")
+}
+func (*UnimplementedDeviceManagerServer) CreateDevice(ctx context.Context, req *CreateDeviceRequest) (*Device, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDevice not implemented")
+}
+func (*UnimplementedDeviceManagerServer) GetDevice(ctx context.Context, req *GetDeviceRequest) (*Device, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDevice not implemented")
+}
+func (*UnimplementedDeviceManagerServer) UpdateDevice(ctx context.Context, req *UpdateDeviceRequest) (*Device, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDevice not implemented")
+}
+func (*UnimplementedDeviceManagerServer) DeleteDevice(ctx context.Context, req *DeleteDeviceRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDevice not implemented")
+}
+func (*UnimplementedDeviceManagerServer) ListDevices(ctx context.Context, req *ListDevicesRequest) (*ListDevicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDevices not implemented")
+}
+func (*UnimplementedDeviceManagerServer) ModifyCloudToDeviceConfig(ctx context.Context, req *ModifyCloudToDeviceConfigRequest) (*DeviceConfig, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ModifyCloudToDeviceConfig not implemented")
+}
+func (*UnimplementedDeviceManagerServer) ListDeviceConfigVersions(ctx context.Context, req *ListDeviceConfigVersionsRequest) (*ListDeviceConfigVersionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDeviceConfigVersions not implemented")
+}
+func (*UnimplementedDeviceManagerServer) ListDeviceStates(ctx context.Context, req *ListDeviceStatesRequest) (*ListDeviceStatesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDeviceStates not implemented")
+}
+func (*UnimplementedDeviceManagerServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedDeviceManagerServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedDeviceManagerServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
+}
+func (*UnimplementedDeviceManagerServer) SendCommandToDevice(ctx context.Context, req *SendCommandToDeviceRequest) (*SendCommandToDeviceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendCommandToDevice not implemented")
+}
+func (*UnimplementedDeviceManagerServer) BindDeviceToGateway(ctx context.Context, req *BindDeviceToGatewayRequest) (*BindDeviceToGatewayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BindDeviceToGateway not implemented")
+}
+func (*UnimplementedDeviceManagerServer) UnbindDeviceFromGateway(ctx context.Context, req *UnbindDeviceFromGatewayRequest) (*UnbindDeviceFromGatewayResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnbindDeviceFromGateway not implemented")
 }
 
 func RegisterDeviceManagerServer(s *grpc.Server, srv DeviceManagerServer) {

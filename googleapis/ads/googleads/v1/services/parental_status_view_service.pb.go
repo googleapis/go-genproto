@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +142,14 @@ func (c *parentalStatusViewServiceClient) GetParentalStatusView(ctx context.Cont
 type ParentalStatusViewServiceServer interface {
 	// Returns the requested parental status view in full detail.
 	GetParentalStatusView(context.Context, *GetParentalStatusViewRequest) (*resources.ParentalStatusView, error)
+}
+
+// UnimplementedParentalStatusViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedParentalStatusViewServiceServer struct {
+}
+
+func (*UnimplementedParentalStatusViewServiceServer) GetParentalStatusView(ctx context.Context, req *GetParentalStatusViewRequest) (*resources.ParentalStatusView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetParentalStatusView not implemented")
 }
 
 func RegisterParentalStatusViewServiceServer(s *grpc.Server, srv ParentalStatusViewServiceServer) {

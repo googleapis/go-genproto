@@ -14,6 +14,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -3490,6 +3492,113 @@ type DataLabelingServiceServer interface {
 	// Lists all evaluation jobs within a project with possible filters.
 	// Pagination is supported.
 	ListEvaluationJobs(context.Context, *ListEvaluationJobsRequest) (*ListEvaluationJobsResponse, error)
+}
+
+// UnimplementedDataLabelingServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedDataLabelingServiceServer struct {
+}
+
+func (*UnimplementedDataLabelingServiceServer) CreateDataset(ctx context.Context, req *CreateDatasetRequest) (*Dataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDataset not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) GetDataset(ctx context.Context, req *GetDatasetRequest) (*Dataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDataset not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ListDatasets(ctx context.Context, req *ListDatasetsRequest) (*ListDatasetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDatasets not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) DeleteDataset(ctx context.Context, req *DeleteDatasetRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDataset not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ImportData(ctx context.Context, req *ImportDataRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportData not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ExportData(ctx context.Context, req *ExportDataRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportData not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) GetDataItem(ctx context.Context, req *GetDataItemRequest) (*DataItem, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDataItem not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ListDataItems(ctx context.Context, req *ListDataItemsRequest) (*ListDataItemsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDataItems not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) GetAnnotatedDataset(ctx context.Context, req *GetAnnotatedDatasetRequest) (*AnnotatedDataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAnnotatedDataset not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ListAnnotatedDatasets(ctx context.Context, req *ListAnnotatedDatasetsRequest) (*ListAnnotatedDatasetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAnnotatedDatasets not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) DeleteAnnotatedDataset(ctx context.Context, req *DeleteAnnotatedDatasetRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAnnotatedDataset not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) LabelImage(ctx context.Context, req *LabelImageRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LabelImage not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) LabelVideo(ctx context.Context, req *LabelVideoRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LabelVideo not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) LabelText(ctx context.Context, req *LabelTextRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LabelText not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) GetExample(ctx context.Context, req *GetExampleRequest) (*Example, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetExample not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ListExamples(ctx context.Context, req *ListExamplesRequest) (*ListExamplesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListExamples not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) CreateAnnotationSpecSet(ctx context.Context, req *CreateAnnotationSpecSetRequest) (*AnnotationSpecSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAnnotationSpecSet not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) GetAnnotationSpecSet(ctx context.Context, req *GetAnnotationSpecSetRequest) (*AnnotationSpecSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAnnotationSpecSet not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ListAnnotationSpecSets(ctx context.Context, req *ListAnnotationSpecSetsRequest) (*ListAnnotationSpecSetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAnnotationSpecSets not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) DeleteAnnotationSpecSet(ctx context.Context, req *DeleteAnnotationSpecSetRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAnnotationSpecSet not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) CreateInstruction(ctx context.Context, req *CreateInstructionRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateInstruction not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) GetInstruction(ctx context.Context, req *GetInstructionRequest) (*Instruction, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInstruction not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ListInstructions(ctx context.Context, req *ListInstructionsRequest) (*ListInstructionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListInstructions not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) DeleteInstruction(ctx context.Context, req *DeleteInstructionRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteInstruction not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) GetEvaluation(ctx context.Context, req *GetEvaluationRequest) (*Evaluation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetEvaluation not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) SearchEvaluations(ctx context.Context, req *SearchEvaluationsRequest) (*SearchEvaluationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchEvaluations not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) SearchExampleComparisons(ctx context.Context, req *SearchExampleComparisonsRequest) (*SearchExampleComparisonsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchExampleComparisons not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) CreateEvaluationJob(ctx context.Context, req *CreateEvaluationJobRequest) (*EvaluationJob, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateEvaluationJob not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) UpdateEvaluationJob(ctx context.Context, req *UpdateEvaluationJobRequest) (*EvaluationJob, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateEvaluationJob not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) GetEvaluationJob(ctx context.Context, req *GetEvaluationJobRequest) (*EvaluationJob, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetEvaluationJob not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) PauseEvaluationJob(ctx context.Context, req *PauseEvaluationJobRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PauseEvaluationJob not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ResumeEvaluationJob(ctx context.Context, req *ResumeEvaluationJobRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResumeEvaluationJob not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) DeleteEvaluationJob(ctx context.Context, req *DeleteEvaluationJobRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteEvaluationJob not implemented")
+}
+func (*UnimplementedDataLabelingServiceServer) ListEvaluationJobs(ctx context.Context, req *ListEvaluationJobsRequest) (*ListEvaluationJobsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListEvaluationJobs not implemented")
 }
 
 func RegisterDataLabelingServiceServer(s *grpc.Server, srv DataLabelingServiceServer) {

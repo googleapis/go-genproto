@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +142,14 @@ func (c *adGroupCriterionSimulationServiceClient) GetAdGroupCriterionSimulation(
 type AdGroupCriterionSimulationServiceServer interface {
 	// Returns the requested ad group criterion simulation in full detail.
 	GetAdGroupCriterionSimulation(context.Context, *GetAdGroupCriterionSimulationRequest) (*resources.AdGroupCriterionSimulation, error)
+}
+
+// UnimplementedAdGroupCriterionSimulationServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAdGroupCriterionSimulationServiceServer struct {
+}
+
+func (*UnimplementedAdGroupCriterionSimulationServiceServer) GetAdGroupCriterionSimulation(ctx context.Context, req *GetAdGroupCriterionSimulationRequest) (*resources.AdGroupCriterionSimulation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAdGroupCriterionSimulation not implemented")
 }
 
 func RegisterAdGroupCriterionSimulationServiceServer(s *grpc.Server, srv AdGroupCriterionSimulationServiceServer) {

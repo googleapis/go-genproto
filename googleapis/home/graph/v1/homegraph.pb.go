@@ -13,6 +13,8 @@ import (
 	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1149,6 +1151,26 @@ type HomeGraphApiServiceServer interface {
 	// Third-party user's identity is passed in as agent_user_id. Agent is
 	// identified by the JWT signed by the third-party partner's service account.
 	Sync(context.Context, *SyncRequest) (*SyncResponse, error)
+}
+
+// UnimplementedHomeGraphApiServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedHomeGraphApiServiceServer struct {
+}
+
+func (*UnimplementedHomeGraphApiServiceServer) RequestSyncDevices(ctx context.Context, req *RequestSyncDevicesRequest) (*RequestSyncDevicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RequestSyncDevices not implemented")
+}
+func (*UnimplementedHomeGraphApiServiceServer) ReportStateAndNotification(ctx context.Context, req *ReportStateAndNotificationRequest) (*ReportStateAndNotificationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReportStateAndNotification not implemented")
+}
+func (*UnimplementedHomeGraphApiServiceServer) DeleteAgentUser(ctx context.Context, req *DeleteAgentUserRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAgentUser not implemented")
+}
+func (*UnimplementedHomeGraphApiServiceServer) Query(ctx context.Context, req *QueryRequest) (*QueryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Query not implemented")
+}
+func (*UnimplementedHomeGraphApiServiceServer) Sync(ctx context.Context, req *SyncRequest) (*SyncResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Sync not implemented")
 }
 
 func RegisterHomeGraphApiServiceServer(s *grpc.Server, srv HomeGraphApiServiceServer) {

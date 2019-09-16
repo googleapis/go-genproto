@@ -14,6 +14,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -453,6 +455,17 @@ type FeedServiceServer interface {
 	// Creates, updates, or removes feeds. Operation statuses are
 	// returned.
 	MutateFeeds(context.Context, *MutateFeedsRequest) (*MutateFeedsResponse, error)
+}
+
+// UnimplementedFeedServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedFeedServiceServer struct {
+}
+
+func (*UnimplementedFeedServiceServer) GetFeed(ctx context.Context, req *GetFeedRequest) (*resources.Feed, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetFeed not implemented")
+}
+func (*UnimplementedFeedServiceServer) MutateFeeds(ctx context.Context, req *MutateFeedsRequest) (*MutateFeedsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateFeeds not implemented")
 }
 
 func RegisterFeedServiceServer(s *grpc.Server, srv FeedServiceServer) {

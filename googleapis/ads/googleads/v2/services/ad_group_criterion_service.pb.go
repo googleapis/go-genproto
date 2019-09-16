@@ -15,6 +15,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -475,6 +477,17 @@ type AdGroupCriterionServiceServer interface {
 	GetAdGroupCriterion(context.Context, *GetAdGroupCriterionRequest) (*resources.AdGroupCriterion, error)
 	// Creates, updates, or removes criteria. Operation statuses are returned.
 	MutateAdGroupCriteria(context.Context, *MutateAdGroupCriteriaRequest) (*MutateAdGroupCriteriaResponse, error)
+}
+
+// UnimplementedAdGroupCriterionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAdGroupCriterionServiceServer struct {
+}
+
+func (*UnimplementedAdGroupCriterionServiceServer) GetAdGroupCriterion(ctx context.Context, req *GetAdGroupCriterionRequest) (*resources.AdGroupCriterion, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetAdGroupCriterion not implemented")
+}
+func (*UnimplementedAdGroupCriterionServiceServer) MutateAdGroupCriteria(ctx context.Context, req *MutateAdGroupCriteriaRequest) (*MutateAdGroupCriteriaResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateAdGroupCriteria not implemented")
 }
 
 func RegisterAdGroupCriterionServiceServer(s *grpc.Server, srv AdGroupCriterionServiceServer) {

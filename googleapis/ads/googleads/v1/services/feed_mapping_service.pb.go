@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -429,6 +431,17 @@ type FeedMappingServiceServer interface {
 	// Creates or removes feed mappings. Operation statuses are
 	// returned.
 	MutateFeedMappings(context.Context, *MutateFeedMappingsRequest) (*MutateFeedMappingsResponse, error)
+}
+
+// UnimplementedFeedMappingServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedFeedMappingServiceServer struct {
+}
+
+func (*UnimplementedFeedMappingServiceServer) GetFeedMapping(ctx context.Context, req *GetFeedMappingRequest) (*resources.FeedMapping, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetFeedMapping not implemented")
+}
+func (*UnimplementedFeedMappingServiceServer) MutateFeedMappings(ctx context.Context, req *MutateFeedMappingsRequest) (*MutateFeedMappingsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateFeedMappings not implemented")
 }
 
 func RegisterFeedMappingServiceServer(s *grpc.Server, srv FeedMappingServiceServer) {

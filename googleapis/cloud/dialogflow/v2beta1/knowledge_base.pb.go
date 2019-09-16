@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -578,6 +580,26 @@ type KnowledgeBasesServer interface {
 	// Note: The `projects.agent.knowledgeBases` resource is deprecated;
 	// only use `projects.knowledgeBases`.
 	UpdateKnowledgeBase(context.Context, *UpdateKnowledgeBaseRequest) (*KnowledgeBase, error)
+}
+
+// UnimplementedKnowledgeBasesServer can be embedded to have forward compatible implementations.
+type UnimplementedKnowledgeBasesServer struct {
+}
+
+func (*UnimplementedKnowledgeBasesServer) ListKnowledgeBases(ctx context.Context, req *ListKnowledgeBasesRequest) (*ListKnowledgeBasesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKnowledgeBases not implemented")
+}
+func (*UnimplementedKnowledgeBasesServer) GetKnowledgeBase(ctx context.Context, req *GetKnowledgeBaseRequest) (*KnowledgeBase, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKnowledgeBase not implemented")
+}
+func (*UnimplementedKnowledgeBasesServer) CreateKnowledgeBase(ctx context.Context, req *CreateKnowledgeBaseRequest) (*KnowledgeBase, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateKnowledgeBase not implemented")
+}
+func (*UnimplementedKnowledgeBasesServer) DeleteKnowledgeBase(ctx context.Context, req *DeleteKnowledgeBaseRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteKnowledgeBase not implemented")
+}
+func (*UnimplementedKnowledgeBasesServer) UpdateKnowledgeBase(ctx context.Context, req *UpdateKnowledgeBaseRequest) (*KnowledgeBase, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateKnowledgeBase not implemented")
 }
 
 func RegisterKnowledgeBasesServer(s *grpc.Server, srv KnowledgeBasesServer) {

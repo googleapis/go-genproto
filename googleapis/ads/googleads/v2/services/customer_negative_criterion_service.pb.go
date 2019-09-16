@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -429,6 +431,17 @@ type CustomerNegativeCriterionServiceServer interface {
 	GetCustomerNegativeCriterion(context.Context, *GetCustomerNegativeCriterionRequest) (*resources.CustomerNegativeCriterion, error)
 	// Creates or removes criteria. Operation statuses are returned.
 	MutateCustomerNegativeCriteria(context.Context, *MutateCustomerNegativeCriteriaRequest) (*MutateCustomerNegativeCriteriaResponse, error)
+}
+
+// UnimplementedCustomerNegativeCriterionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCustomerNegativeCriterionServiceServer struct {
+}
+
+func (*UnimplementedCustomerNegativeCriterionServiceServer) GetCustomerNegativeCriterion(ctx context.Context, req *GetCustomerNegativeCriterionRequest) (*resources.CustomerNegativeCriterion, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCustomerNegativeCriterion not implemented")
+}
+func (*UnimplementedCustomerNegativeCriterionServiceServer) MutateCustomerNegativeCriteria(ctx context.Context, req *MutateCustomerNegativeCriteriaRequest) (*MutateCustomerNegativeCriteriaResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCustomerNegativeCriteria not implemented")
 }
 
 func RegisterCustomerNegativeCriterionServiceServer(s *grpc.Server, srv CustomerNegativeCriterionServiceServer) {

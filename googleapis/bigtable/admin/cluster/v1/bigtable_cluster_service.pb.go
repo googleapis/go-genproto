@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -314,6 +316,32 @@ type BigtableClusterServiceServer interface {
 	// The embedded operation's "response" field type is
 	// [Cluster][google.bigtable.admin.cluster.v1.Cluster], if successful.
 	UndeleteCluster(context.Context, *UndeleteClusterRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedBigtableClusterServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedBigtableClusterServiceServer struct {
+}
+
+func (*UnimplementedBigtableClusterServiceServer) ListZones(ctx context.Context, req *ListZonesRequest) (*ListZonesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListZones not implemented")
+}
+func (*UnimplementedBigtableClusterServiceServer) GetCluster(ctx context.Context, req *GetClusterRequest) (*Cluster, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCluster not implemented")
+}
+func (*UnimplementedBigtableClusterServiceServer) ListClusters(ctx context.Context, req *ListClustersRequest) (*ListClustersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListClusters not implemented")
+}
+func (*UnimplementedBigtableClusterServiceServer) CreateCluster(ctx context.Context, req *CreateClusterRequest) (*Cluster, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCluster not implemented")
+}
+func (*UnimplementedBigtableClusterServiceServer) UpdateCluster(ctx context.Context, req *Cluster) (*Cluster, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCluster not implemented")
+}
+func (*UnimplementedBigtableClusterServiceServer) DeleteCluster(ctx context.Context, req *DeleteClusterRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCluster not implemented")
+}
+func (*UnimplementedBigtableClusterServiceServer) UndeleteCluster(ctx context.Context, req *UndeleteClusterRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UndeleteCluster not implemented")
 }
 
 func RegisterBigtableClusterServiceServer(s *grpc.Server, srv BigtableClusterServiceServer) {

@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -379,6 +381,17 @@ type AdServiceServer interface {
 	GetAd(context.Context, *GetAdRequest) (*resources.Ad, error)
 	// Updates ads. Operation statuses are returned.
 	MutateAds(context.Context, *MutateAdsRequest) (*MutateAdsResponse, error)
+}
+
+// UnimplementedAdServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAdServiceServer struct {
+}
+
+func (*UnimplementedAdServiceServer) GetAd(ctx context.Context, req *GetAdRequest) (*resources.Ad, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAd not implemented")
+}
+func (*UnimplementedAdServiceServer) MutateAds(ctx context.Context, req *MutateAdsRequest) (*MutateAdsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateAds not implemented")
 }
 
 func RegisterAdServiceServer(s *grpc.Server, srv AdServiceServer) {

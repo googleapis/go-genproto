@@ -15,6 +15,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -3496,6 +3498,14 @@ type VideoIntelligenceServiceServer interface {
 	AnnotateVideo(context.Context, *AnnotateVideoRequest) (*longrunning.Operation, error)
 }
 
+// UnimplementedVideoIntelligenceServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedVideoIntelligenceServiceServer struct {
+}
+
+func (*UnimplementedVideoIntelligenceServiceServer) AnnotateVideo(ctx context.Context, req *AnnotateVideoRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method AnnotateVideo not implemented")
+}
+
 func RegisterVideoIntelligenceServiceServer(s *grpc.Server, srv VideoIntelligenceServiceServer) {
 	s.RegisterService(&_VideoIntelligenceService_serviceDesc, srv)
 }
@@ -3586,6 +3596,14 @@ type StreamingVideoIntelligenceServiceServer interface {
 	// while sending video/audio bytes.
 	// This method is only available via the gRPC API (not REST).
 	StreamingAnnotateVideo(StreamingVideoIntelligenceService_StreamingAnnotateVideoServer) error
+}
+
+// UnimplementedStreamingVideoIntelligenceServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedStreamingVideoIntelligenceServiceServer struct {
+}
+
+func (*UnimplementedStreamingVideoIntelligenceServiceServer) StreamingAnnotateVideo(srv StreamingVideoIntelligenceService_StreamingAnnotateVideoServer) error {
+	return status1.Errorf(codes.Unimplemented, "method StreamingAnnotateVideo not implemented")
 }
 
 func RegisterStreamingVideoIntelligenceServiceServer(s *grpc.Server, srv StreamingVideoIntelligenceServiceServer) {

@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -613,6 +615,32 @@ type SourceRepoServer interface {
 	// If the resource does not exist, this will return an empty set of
 	// permissions, not a NOT_FOUND error.
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
+}
+
+// UnimplementedSourceRepoServer can be embedded to have forward compatible implementations.
+type UnimplementedSourceRepoServer struct {
+}
+
+func (*UnimplementedSourceRepoServer) ListRepos(ctx context.Context, req *ListReposRequest) (*ListReposResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRepos not implemented")
+}
+func (*UnimplementedSourceRepoServer) GetRepo(ctx context.Context, req *GetRepoRequest) (*Repo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRepo not implemented")
+}
+func (*UnimplementedSourceRepoServer) CreateRepo(ctx context.Context, req *CreateRepoRequest) (*Repo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRepo not implemented")
+}
+func (*UnimplementedSourceRepoServer) DeleteRepo(ctx context.Context, req *DeleteRepoRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRepo not implemented")
+}
+func (*UnimplementedSourceRepoServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedSourceRepoServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedSourceRepoServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
 }
 
 func RegisterSourceRepoServer(s *grpc.Server, srv SourceRepoServer) {

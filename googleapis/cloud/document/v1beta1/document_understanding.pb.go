@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1122,6 +1124,14 @@ func (c *documentUnderstandingServiceClient) BatchProcessDocuments(ctx context.C
 type DocumentUnderstandingServiceServer interface {
 	// LRO endpoint to batch process many documents.
 	BatchProcessDocuments(context.Context, *BatchProcessDocumentsRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedDocumentUnderstandingServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedDocumentUnderstandingServiceServer struct {
+}
+
+func (*UnimplementedDocumentUnderstandingServiceServer) BatchProcessDocuments(ctx context.Context, req *BatchProcessDocumentsRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchProcessDocuments not implemented")
 }
 
 func RegisterDocumentUnderstandingServiceServer(s *grpc.Server, srv DocumentUnderstandingServiceServer) {

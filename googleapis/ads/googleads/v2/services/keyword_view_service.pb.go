@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +142,14 @@ func (c *keywordViewServiceClient) GetKeywordView(ctx context.Context, in *GetKe
 type KeywordViewServiceServer interface {
 	// Returns the requested keyword view in full detail.
 	GetKeywordView(context.Context, *GetKeywordViewRequest) (*resources.KeywordView, error)
+}
+
+// UnimplementedKeywordViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedKeywordViewServiceServer struct {
+}
+
+func (*UnimplementedKeywordViewServiceServer) GetKeywordView(ctx context.Context, req *GetKeywordViewRequest) (*resources.KeywordView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKeywordView not implemented")
 }
 
 func RegisterKeywordViewServiceServer(s *grpc.Server, srv KeywordViewServiceServer) {

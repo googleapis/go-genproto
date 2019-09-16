@@ -14,6 +14,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -672,6 +674,26 @@ type MutateJobServiceServer interface {
 	RunMutateJob(context.Context, *RunMutateJobRequest) (*longrunning.Operation, error)
 	// Add operations to the mutate job.
 	AddMutateJobOperations(context.Context, *AddMutateJobOperationsRequest) (*AddMutateJobOperationsResponse, error)
+}
+
+// UnimplementedMutateJobServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedMutateJobServiceServer struct {
+}
+
+func (*UnimplementedMutateJobServiceServer) CreateMutateJob(ctx context.Context, req *CreateMutateJobRequest) (*CreateMutateJobResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateMutateJob not implemented")
+}
+func (*UnimplementedMutateJobServiceServer) GetMutateJob(ctx context.Context, req *GetMutateJobRequest) (*resources.MutateJob, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetMutateJob not implemented")
+}
+func (*UnimplementedMutateJobServiceServer) ListMutateJobResults(ctx context.Context, req *ListMutateJobResultsRequest) (*ListMutateJobResultsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListMutateJobResults not implemented")
+}
+func (*UnimplementedMutateJobServiceServer) RunMutateJob(ctx context.Context, req *RunMutateJobRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method RunMutateJob not implemented")
+}
+func (*UnimplementedMutateJobServiceServer) AddMutateJobOperations(ctx context.Context, req *AddMutateJobOperationsRequest) (*AddMutateJobOperationsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method AddMutateJobOperations not implemented")
 }
 
 func RegisterMutateJobServiceServer(s *grpc.Server, srv MutateJobServiceServer) {

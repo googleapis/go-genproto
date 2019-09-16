@@ -22,8 +22,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Input Only.
-//
 // The histogram request.
 type HistogramQuery struct {
 	// An expression specifies a histogram request against matching resources
@@ -72,8 +70,6 @@ func (m *HistogramQuery) GetHistogramQuery() string {
 	return ""
 }
 
-// Output only.
-//
 // Histogram result that matches
 // [HistogramQuery][google.cloud.talent.v4beta1.HistogramQuery] specified in
 // searches.
