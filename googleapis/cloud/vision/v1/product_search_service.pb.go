@@ -90,9 +90,9 @@ type Product struct {
 	// characters long.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Immutable. The category for the product identified by the reference image. This should
-	// be either "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1", or
-	// "general-v1" The legacy categories "homegoods", "apparel", and "toys" are
-	// still supported, but these should not be used for new products.
+	// be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
+	// "homegoods", "apparel", and "toys" are still supported, but these should
+	// not be used for new products.
 	ProductCategory string `protobuf:"bytes,4,opt,name=product_category,json=productCategory,proto3" json:"product_category,omitempty"`
 	// Key-value pairs that can be attached to a product. At query time,
 	// constraints can be specified based on the product_labels.
