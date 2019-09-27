@@ -12,8 +12,6 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -142,14 +140,6 @@ func (c *managedPlacementViewServiceClient) GetManagedPlacementView(ctx context.
 type ManagedPlacementViewServiceServer interface {
 	// Returns the requested Managed Placement view in full detail.
 	GetManagedPlacementView(context.Context, *GetManagedPlacementViewRequest) (*resources.ManagedPlacementView, error)
-}
-
-// UnimplementedManagedPlacementViewServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedManagedPlacementViewServiceServer struct {
-}
-
-func (*UnimplementedManagedPlacementViewServiceServer) GetManagedPlacementView(ctx context.Context, req *GetManagedPlacementViewRequest) (*resources.ManagedPlacementView, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetManagedPlacementView not implemented")
 }
 
 func RegisterManagedPlacementViewServiceServer(s *grpc.Server, srv ManagedPlacementViewServiceServer) {

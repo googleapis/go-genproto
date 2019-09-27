@@ -14,8 +14,6 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -654,29 +652,6 @@ type UptimeCheckServiceServer interface {
 	DeleteUptimeCheckConfig(context.Context, *DeleteUptimeCheckConfigRequest) (*empty.Empty, error)
 	// Returns the list of IPs that checkers run from
 	ListUptimeCheckIps(context.Context, *ListUptimeCheckIpsRequest) (*ListUptimeCheckIpsResponse, error)
-}
-
-// UnimplementedUptimeCheckServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedUptimeCheckServiceServer struct {
-}
-
-func (*UnimplementedUptimeCheckServiceServer) ListUptimeCheckConfigs(ctx context.Context, req *ListUptimeCheckConfigsRequest) (*ListUptimeCheckConfigsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListUptimeCheckConfigs not implemented")
-}
-func (*UnimplementedUptimeCheckServiceServer) GetUptimeCheckConfig(ctx context.Context, req *GetUptimeCheckConfigRequest) (*UptimeCheckConfig, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUptimeCheckConfig not implemented")
-}
-func (*UnimplementedUptimeCheckServiceServer) CreateUptimeCheckConfig(ctx context.Context, req *CreateUptimeCheckConfigRequest) (*UptimeCheckConfig, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateUptimeCheckConfig not implemented")
-}
-func (*UnimplementedUptimeCheckServiceServer) UpdateUptimeCheckConfig(ctx context.Context, req *UpdateUptimeCheckConfigRequest) (*UptimeCheckConfig, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUptimeCheckConfig not implemented")
-}
-func (*UnimplementedUptimeCheckServiceServer) DeleteUptimeCheckConfig(ctx context.Context, req *DeleteUptimeCheckConfigRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUptimeCheckConfig not implemented")
-}
-func (*UnimplementedUptimeCheckServiceServer) ListUptimeCheckIps(ctx context.Context, req *ListUptimeCheckIpsRequest) (*ListUptimeCheckIpsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListUptimeCheckIps not implemented")
 }
 
 func RegisterUptimeCheckServiceServer(s *grpc.Server, srv UptimeCheckServiceServer) {

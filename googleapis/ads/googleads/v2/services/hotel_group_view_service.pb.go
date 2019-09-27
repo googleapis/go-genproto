@@ -12,8 +12,6 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -142,14 +140,6 @@ func (c *hotelGroupViewServiceClient) GetHotelGroupView(ctx context.Context, in 
 type HotelGroupViewServiceServer interface {
 	// Returns the requested Hotel Group View in full detail.
 	GetHotelGroupView(context.Context, *GetHotelGroupViewRequest) (*resources.HotelGroupView, error)
-}
-
-// UnimplementedHotelGroupViewServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedHotelGroupViewServiceServer struct {
-}
-
-func (*UnimplementedHotelGroupViewServiceServer) GetHotelGroupView(ctx context.Context, req *GetHotelGroupViewRequest) (*resources.HotelGroupView, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetHotelGroupView not implemented")
 }
 
 func RegisterHotelGroupViewServiceServer(s *grpc.Server, srv HotelGroupViewServiceServer) {
