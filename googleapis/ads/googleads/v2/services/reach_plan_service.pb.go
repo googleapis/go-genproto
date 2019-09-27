@@ -14,8 +14,6 @@ import (
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1397,23 +1395,6 @@ type ReachPlanServiceServer interface {
 	GenerateProductMixIdeas(context.Context, *GenerateProductMixIdeasRequest) (*GenerateProductMixIdeasResponse, error)
 	// Generates a reach forecast for a given targeting / product mix.
 	GenerateReachForecast(context.Context, *GenerateReachForecastRequest) (*GenerateReachForecastResponse, error)
-}
-
-// UnimplementedReachPlanServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedReachPlanServiceServer struct {
-}
-
-func (*UnimplementedReachPlanServiceServer) ListPlannableLocations(ctx context.Context, req *ListPlannableLocationsRequest) (*ListPlannableLocationsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListPlannableLocations not implemented")
-}
-func (*UnimplementedReachPlanServiceServer) ListPlannableProducts(ctx context.Context, req *ListPlannableProductsRequest) (*ListPlannableProductsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListPlannableProducts not implemented")
-}
-func (*UnimplementedReachPlanServiceServer) GenerateProductMixIdeas(ctx context.Context, req *GenerateProductMixIdeasRequest) (*GenerateProductMixIdeasResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GenerateProductMixIdeas not implemented")
-}
-func (*UnimplementedReachPlanServiceServer) GenerateReachForecast(ctx context.Context, req *GenerateReachForecastRequest) (*GenerateReachForecastResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GenerateReachForecast not implemented")
 }
 
 func RegisterReachPlanServiceServer(s *grpc.Server, srv ReachPlanServiceServer) {

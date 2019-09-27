@@ -16,8 +16,6 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -876,20 +874,6 @@ type BotsServer interface {
 	// revisions of this API; we may simply want to replace it with StackDriver or
 	// some other common interface.
 	PostBotEventTemp(context.Context, *PostBotEventTempRequest) (*empty.Empty, error)
-}
-
-// UnimplementedBotsServer can be embedded to have forward compatible implementations.
-type UnimplementedBotsServer struct {
-}
-
-func (*UnimplementedBotsServer) CreateBotSession(ctx context.Context, req *CreateBotSessionRequest) (*BotSession, error) {
-	return nil, status1.Errorf(codes.Unimplemented, "method CreateBotSession not implemented")
-}
-func (*UnimplementedBotsServer) UpdateBotSession(ctx context.Context, req *UpdateBotSessionRequest) (*BotSession, error) {
-	return nil, status1.Errorf(codes.Unimplemented, "method UpdateBotSession not implemented")
-}
-func (*UnimplementedBotsServer) PostBotEventTemp(ctx context.Context, req *PostBotEventTempRequest) (*empty.Empty, error) {
-	return nil, status1.Errorf(codes.Unimplemented, "method PostBotEventTemp not implemented")
 }
 
 func RegisterBotsServer(s *grpc.Server, srv BotsServer) {

@@ -12,8 +12,6 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -142,14 +140,6 @@ func (c *groupPlacementViewServiceClient) GetGroupPlacementView(ctx context.Cont
 type GroupPlacementViewServiceServer interface {
 	// Returns the requested Group Placement view in full detail.
 	GetGroupPlacementView(context.Context, *GetGroupPlacementViewRequest) (*resources.GroupPlacementView, error)
-}
-
-// UnimplementedGroupPlacementViewServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedGroupPlacementViewServiceServer struct {
-}
-
-func (*UnimplementedGroupPlacementViewServiceServer) GetGroupPlacementView(ctx context.Context, req *GetGroupPlacementViewRequest) (*resources.GroupPlacementView, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetGroupPlacementView not implemented")
 }
 
 func RegisterGroupPlacementViewServiceServer(s *grpc.Server, srv GroupPlacementViewServiceServer) {
