@@ -5,6 +5,8 @@ package logging
 
 import (
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	any "github.com/golang/protobuf/ptypes/any"
 	_struct "github.com/golang/protobuf/ptypes/struct"
@@ -13,7 +15,6 @@ import (
 	monitoredres "google.golang.org/genproto/googleapis/api/monitoredres"
 	_type "google.golang.org/genproto/googleapis/logging/type"
 	_ "google.golang.org/genproto/googleapis/rpc/status"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

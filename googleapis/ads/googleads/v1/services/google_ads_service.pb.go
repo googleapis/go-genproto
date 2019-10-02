@@ -6,6 +6,8 @@ package services
 import (
 	context "context"
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v1/common"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
@@ -15,7 +17,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

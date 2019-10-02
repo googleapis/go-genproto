@@ -5,11 +5,12 @@ package document
 
 import (
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	color "google.golang.org/genproto/googleapis/type/color"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

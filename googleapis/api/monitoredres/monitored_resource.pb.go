@@ -5,11 +5,12 @@ package monitoredres
 
 import (
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	_struct "github.com/golang/protobuf/ptypes/struct"
 	api "google.golang.org/genproto/googleapis/api"
 	label "google.golang.org/genproto/googleapis/api/label"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
