@@ -5,11 +5,10 @@ package provenance
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	source "google.golang.org/genproto/googleapis/devtools/containeranalysis/v1beta1/source"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

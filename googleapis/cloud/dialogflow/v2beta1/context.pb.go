@@ -6,14 +6,15 @@ package dialogflow
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -645,6 +646,29 @@ type ContextsServer interface {
 	DeleteContext(context.Context, *DeleteContextRequest) (*empty.Empty, error)
 	// Deletes all active contexts in the specified session.
 	DeleteAllContexts(context.Context, *DeleteAllContextsRequest) (*empty.Empty, error)
+}
+
+// UnimplementedContextsServer can be embedded to have forward compatible implementations.
+type UnimplementedContextsServer struct {
+}
+
+func (*UnimplementedContextsServer) ListContexts(ctx context.Context, req *ListContextsRequest) (*ListContextsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListContexts not implemented")
+}
+func (*UnimplementedContextsServer) GetContext(ctx context.Context, req *GetContextRequest) (*Context, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContext not implemented")
+}
+func (*UnimplementedContextsServer) CreateContext(ctx context.Context, req *CreateContextRequest) (*Context, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateContext not implemented")
+}
+func (*UnimplementedContextsServer) UpdateContext(ctx context.Context, req *UpdateContextRequest) (*Context, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateContext not implemented")
+}
+func (*UnimplementedContextsServer) DeleteContext(ctx context.Context, req *DeleteContextRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteContext not implemented")
+}
+func (*UnimplementedContextsServer) DeleteAllContexts(ctx context.Context, req *DeleteAllContextsRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAllContexts not implemented")
 }
 
 func RegisterContextsServer(s *grpc.Server, srv ContextsServer) {

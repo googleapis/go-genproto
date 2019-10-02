@@ -6,8 +6,6 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/wrappers"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
@@ -15,6 +13,9 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -457,6 +458,17 @@ type CampaignBudgetServiceServer interface {
 	// Creates, updates, or removes campaign budgets. Operation statuses are
 	// returned.
 	MutateCampaignBudgets(context.Context, *MutateCampaignBudgetsRequest) (*MutateCampaignBudgetsResponse, error)
+}
+
+// UnimplementedCampaignBudgetServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCampaignBudgetServiceServer struct {
+}
+
+func (*UnimplementedCampaignBudgetServiceServer) GetCampaignBudget(ctx context.Context, req *GetCampaignBudgetRequest) (*resources.CampaignBudget, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCampaignBudget not implemented")
+}
+func (*UnimplementedCampaignBudgetServiceServer) MutateCampaignBudgets(ctx context.Context, req *MutateCampaignBudgetsRequest) (*MutateCampaignBudgetsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCampaignBudgets not implemented")
 }
 
 func RegisterCampaignBudgetServiceServer(s *grpc.Server, srv CampaignBudgetServiceServer) {

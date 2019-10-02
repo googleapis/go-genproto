@@ -6,8 +6,6 @@ package speech
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/any"
 	duration "github.com/golang/protobuf/ptypes/duration"
@@ -16,6 +14,9 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2136,6 +2137,20 @@ type SpeechServer interface {
 	// Performs bidirectional streaming speech recognition: receive results while
 	// sending audio. This method is only available via the gRPC API (not REST).
 	StreamingRecognize(Speech_StreamingRecognizeServer) error
+}
+
+// UnimplementedSpeechServer can be embedded to have forward compatible implementations.
+type UnimplementedSpeechServer struct {
+}
+
+func (*UnimplementedSpeechServer) Recognize(ctx context.Context, req *RecognizeRequest) (*RecognizeResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method Recognize not implemented")
+}
+func (*UnimplementedSpeechServer) LongRunningRecognize(ctx context.Context, req *LongRunningRecognizeRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method LongRunningRecognize not implemented")
+}
+func (*UnimplementedSpeechServer) StreamingRecognize(srv Speech_StreamingRecognizeServer) error {
+	return status1.Errorf(codes.Unimplemented, "method StreamingRecognize not implemented")
 }
 
 func RegisterSpeechServer(s *grpc.Server, srv SpeechServer) {

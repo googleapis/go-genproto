@@ -6,8 +6,6 @@ package vision
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
@@ -16,6 +14,9 @@ import (
 	color "google.golang.org/genproto/googleapis/type/color"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2808,6 +2809,17 @@ type ImageAnnotatorServer interface {
 	// `Operation.metadata` contains `OperationMetadata` (metadata).
 	// `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).
 	AsyncBatchAnnotateFiles(context.Context, *AsyncBatchAnnotateFilesRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedImageAnnotatorServer can be embedded to have forward compatible implementations.
+type UnimplementedImageAnnotatorServer struct {
+}
+
+func (*UnimplementedImageAnnotatorServer) BatchAnnotateImages(ctx context.Context, req *BatchAnnotateImagesRequest) (*BatchAnnotateImagesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BatchAnnotateImages not implemented")
+}
+func (*UnimplementedImageAnnotatorServer) AsyncBatchAnnotateFiles(ctx context.Context, req *AsyncBatchAnnotateFilesRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method AsyncBatchAnnotateFiles not implemented")
 }
 
 func RegisterImageAnnotatorServer(s *grpc.Server, srv ImageAnnotatorServer) {

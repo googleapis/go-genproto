@@ -5,11 +5,10 @@ package monitoring
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"
 	monitoredres "google.golang.org/genproto/googleapis/api/monitoredres"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -23,11 +22,11 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// The regions from which an uptime check can be run.
+// The regions from which an Uptime check can be run.
 type UptimeCheckRegion int32
 
 const (
-	// Default value if no region is specified. Will result in uptime checks
+	// Default value if no region is specified. Will result in Uptime checks
 	// running from all regions.
 	UptimeCheckRegion_REGION_UNSPECIFIED UptimeCheckRegion = 0
 	// Allows checks to run from locations within the United States of America.
@@ -110,12 +109,16 @@ const (
 	// An internal checker should never be in the unspecified state.
 	InternalChecker_UNSPECIFIED InternalChecker_State = 0
 	// The checker is being created, provisioned, and configured. A checker in
-	// this state can be returned by ListInternalCheckers or GetInternalChecker,
-	// as well as by examining the longrunning.Operation that created it.
+	// this state can be returned by `ListInternalCheckers` or
+	// `GetInternalChecker`, as well as by examining the [long running
+	// Operation](https://cloud.google.com/apis/design/design_patterns#long_running_operations)
+	// that created it.
 	InternalChecker_CREATING InternalChecker_State = 1
 	// The checker is running and available for use. A checker in this state
-	// can be returned by ListInternalCheckers or GetInternalChecker as well
-	// as by examining the longrunning.Operation that created it.
+	// can be returned by `ListInternalCheckers` or `GetInternalChecker` as
+	// well as by examining the [long running
+	// Operation](https://cloud.google.com/apis/design/design_patterns#long_running_operations)
+	// that created it.
 	// If a checker is being torn down, it is neither visible nor usable, so
 	// there is no "deleting" or "down" state.
 	InternalChecker_RUNNING InternalChecker_State = 2
@@ -145,17 +148,24 @@ func (InternalChecker_State) EnumDescriptor() ([]byte, []int) {
 type UptimeCheckConfig_ContentMatcher_ContentMatcherOption int32
 
 const (
-	// No content macher option specified. Treated as CONTAINS_STRING.
+	// No content matcher type specified (maintained for backward
+	// compatibility, but deprecated for future use).
+	// Treated as `CONTAINS_STRING`.
 	UptimeCheckConfig_ContentMatcher_CONTENT_MATCHER_OPTION_UNSPECIFIED UptimeCheckConfig_ContentMatcher_ContentMatcherOption = 0
-	// Allows checking substring matching.
-	// Default value for previous versions without option.
+	// Selects substring matching (there is a match if the output contains
+	// the `content` string).  This is the default value for checks without
+	// a `matcher` option, or where the value of `matcher` is
+	// `CONTENT_MATCHER_OPTION_UNSPECIFIED`.
 	UptimeCheckConfig_ContentMatcher_CONTAINS_STRING UptimeCheckConfig_ContentMatcher_ContentMatcherOption = 1
-	// Allows checking negation of substring matching (doesn't contain the
-	// substring).
+	// Selects negation of substring matching (there is a match if the output
+	// does NOT contain the `content` string).
 	UptimeCheckConfig_ContentMatcher_NOT_CONTAINS_STRING UptimeCheckConfig_ContentMatcher_ContentMatcherOption = 2
-	// Allows checking regular expression matching.
+	// Selects regular expression matching (there is a match of the output
+	// matches the regular expression specified in the `content` string).
 	UptimeCheckConfig_ContentMatcher_MATCHES_REGEX UptimeCheckConfig_ContentMatcher_ContentMatcherOption = 3
-	// Allows checking negation of regular expression matching.
+	// Selects negation of regular expression matching (there is a match if
+	// the output does NOT match the regular expression specified in the
+	// `content` string).
 	UptimeCheckConfig_ContentMatcher_NOT_MATCHES_REGEX UptimeCheckConfig_ContentMatcher_ContentMatcherOption = 4
 )
 
@@ -183,7 +193,7 @@ func (UptimeCheckConfig_ContentMatcher_ContentMatcherOption) EnumDescriptor() ([
 	return fileDescriptor_7ca0e36dfc8221d8, []int{1, 3, 0}
 }
 
-// An internal checker allows uptime checks to run on private/internal GCP
+// An internal checker allows Uptime checks to run on private/internal GCP
 // resources.
 //
 // Deprecated: Do not use.
@@ -192,8 +202,8 @@ type InternalChecker struct {
 	//
 	//   `projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID]`.
 	//
-	// PROJECT_ID is the stackdriver workspace project for the
-	// uptime check config associated with the internal checker.
+	// `[PROJECT_ID]` is the Stackdriver Workspace project for the
+	// Uptime check config associated with the internal checker.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The checker's human-readable name. The display name
 	// should be unique within a Stackdriver Workspace in order to make it easier
@@ -202,11 +212,11 @@ type InternalChecker struct {
 	// The [GCP VPC network](https://cloud.google.com/vpc/docs/vpc) where the
 	// internal resource lives (ex: "default").
 	Network string `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
-	// The GCP zone the uptime check should egress from. Only respected for
-	// internal uptime checks, where internal_network is specified.
+	// The GCP zone the Uptime check should egress from. Only respected for
+	// internal Uptime checks, where internal_network is specified.
 	GcpZone string `protobuf:"bytes,4,opt,name=gcp_zone,json=gcpZone,proto3" json:"gcp_zone,omitempty"`
-	// The GCP project_id where the internal checker lives. Not necessary
-	// the same as the workspace project.
+	// The GCP project ID where the internal checker lives. Not necessary
+	// the same as the Workspace project.
 	PeerProjectId string `protobuf:"bytes,6,opt,name=peer_project_id,json=peerProjectId,proto3" json:"peer_project_id,omitempty"`
 	// The current operational state of the internal checker.
 	State                InternalChecker_State `protobuf:"varint,7,opt,name=state,proto3,enum=google.monitoring.v3.InternalChecker_State" json:"state,omitempty"`
@@ -285,16 +295,15 @@ func (m *InternalChecker) GetState() InternalChecker_State {
 // This message configures which resources and services to monitor for
 // availability.
 type UptimeCheckConfig struct {
-	// A unique resource name for this UptimeCheckConfig. The format is:
-	//
+	// A unique resource name for this Uptime check configuration. The format is:
 	//
 	//   `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
 	//
-	// This field should be omitted when creating the uptime check configuration;
+	// This field should be omitted when creating the Uptime check configuration;
 	// on create, the resource name is assigned by the server and included in the
 	// response.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// A human-friendly name for the uptime check configuration. The display name
+	// A human-friendly name for the Uptime check configuration. The display name
 	// should be unique within a Stackdriver Workspace in order to make it easier
 	// to identify; however, uniqueness is not enforced. Required.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
@@ -304,13 +313,13 @@ type UptimeCheckConfig struct {
 	//	*UptimeCheckConfig_MonitoredResource
 	//	*UptimeCheckConfig_ResourceGroup_
 	Resource isUptimeCheckConfig_Resource `protobuf_oneof:"resource"`
-	// The type of uptime check request.
+	// The type of Uptime check request.
 	//
 	// Types that are valid to be assigned to CheckRequestType:
 	//	*UptimeCheckConfig_HttpCheck_
 	//	*UptimeCheckConfig_TcpCheck_
 	CheckRequestType isUptimeCheckConfig_CheckRequestType `protobuf_oneof:"check_request_type"`
-	// How often, in seconds, the uptime check is performed.
+	// How often, in seconds, the Uptime check is performed.
 	// Currently, the only supported values are `60s` (1 minute), `300s`
 	// (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
 	// defaults to `60s`.
@@ -318,22 +327,22 @@ type UptimeCheckConfig struct {
 	// The maximum amount of time to wait for the request to complete (must be
 	// between 1 and 60 seconds). Required.
 	Timeout *duration.Duration `protobuf:"bytes,8,opt,name=timeout,proto3" json:"timeout,omitempty"`
-	// The expected content on the page the check is run against.
-	// Currently, only the first entry in the list is supported, and other entries
-	// will be ignored. The server will look for an exact match of the string in
-	// the page response's content. This field is optional and should only be
-	// specified if a content match is required.
+	// The content that is expected to appear in the data returned by the target
+	// server against which the check is run.  Currently, only the first entry
+	// in the `content_matchers` list is supported, and additional entries will
+	// be ignored. This field is optional and should only be specified if a
+	// content match is required as part of the/ Uptime check.
 	ContentMatchers []*UptimeCheckConfig_ContentMatcher `protobuf:"bytes,9,rep,name=content_matchers,json=contentMatchers,proto3" json:"content_matchers,omitempty"`
 	// The list of regions from which the check will be run.
 	// Some regions contain one location, and others contain more than one.
-	// If this field is specified, enough regions to include a minimum of
-	// 3 locations must be provided, or an error message is returned.
-	// Not specifying this field will result in uptime checks running from all
-	// regions.
+	// If this field is specified, enough regions must be provided to include a
+	// minimum of 3 locations.  Not specifying this field will result in Uptime
+	// checks running from all available regions.
 	SelectedRegions []UptimeCheckRegion `protobuf:"varint,10,rep,packed,name=selected_regions,json=selectedRegions,proto3,enum=google.monitoring.v3.UptimeCheckRegion" json:"selected_regions,omitempty"`
 	// The internal checkers that this check will egress from. If `is_internal` is
-	// true and this list is empty, the check will egress from all the
-	// InternalCheckers configured for the project that owns this CheckConfig.
+	// `true` and this list is empty, the check will egress from all the
+	// InternalCheckers configured for the project that owns this
+	// `UptimeCheckConfig`.
 	InternalCheckers     []*InternalChecker `protobuf:"bytes,14,rep,name=internal_checkers,json=internalCheckers,proto3" json:"internal_checkers,omitempty"` // Deprecated: Do not use.
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
@@ -502,8 +511,8 @@ func (*UptimeCheckConfig) XXX_OneofWrappers() []interface{} {
 // The resource submessage for group checks. It can be used instead of a
 // monitored resource, when multiple resources are being monitored.
 type UptimeCheckConfig_ResourceGroup struct {
-	// The group of resources being monitored. Should be only the
-	// group_id, not projects/<project_id>/groups/<group_id>.
+	// The group of resources being monitored. Should be only the `[GROUP_ID]`,
+	// and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
 	GroupId string `protobuf:"bytes,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
 	// The resource type of the group members.
 	ResourceType         GroupResourceType `protobuf:"varint,2,opt,name=resource_type,json=resourceType,proto3,enum=google.monitoring.v3.GroupResourceType" json:"resource_type,omitempty"`
@@ -551,18 +560,20 @@ func (m *UptimeCheckConfig_ResourceGroup) GetResourceType() GroupResourceType {
 	return GroupResourceType_RESOURCE_TYPE_UNSPECIFIED
 }
 
-// Information involved in an HTTP/HTTPS uptime check request.
+// Information involved in an HTTP/HTTPS Uptime check request.
 type UptimeCheckConfig_HttpCheck struct {
-	// If true, use HTTPS instead of HTTP to run the check.
+	// If `true`, use HTTPS instead of HTTP to run the check.
 	UseSsl bool `protobuf:"varint,1,opt,name=use_ssl,json=useSsl,proto3" json:"use_ssl,omitempty"`
-	// The path to the page to run the check against. Will be combined with the
-	// host (specified within the MonitoredResource) and port to construct the
-	// full URL. Optional (defaults to "/"). If the provided path does not
-	// begin with "/", it will be prepended automatically.
+	// Optional (defaults to "/"). The path to the page against which to run
+	// the check. Will be combined with the `host` (specified within the
+	// `monitored_resource`) and `port` to construct the full URL. If the
+	// provided path does not begin with "/", a "/" will be prepended
+	// automatically.
 	Path string `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
-	// The port to the page to run the check against. Will be combined with host
-	// (specified within the MonitoredResource) and path to construct the full
-	// URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+	// Optional (defaults to 80 when `use_ssl` is `false`, and 443 when
+	// `use_ssl` is `true`). The TCP port on the HTTP server against which to
+	// run the check. Will be combined with host (specified within the
+	// `monitored_resource`) and `path` to construct the full URL.
 	Port int32 `protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
 	// The authentication information. Optional when creating an HTTP check;
 	// defaults to empty.
@@ -571,10 +582,10 @@ type UptimeCheckConfig_HttpCheck struct {
 	// Encryption should be specified for any headers related to authentication
 	// that you do not wish to be seen when retrieving the configuration. The
 	// server will be responsible for encrypting the headers.
-	// On Get/List calls, if mask_headers is set to True then the headers
-	// will be obscured with ******.
+	// On Get/List calls, if `mask_headers` is set to `true` then the headers
+	// will be obscured with `******.`
 	MaskHeaders bool `protobuf:"varint,5,opt,name=mask_headers,json=maskHeaders,proto3" json:"mask_headers,omitempty"`
-	// The list of headers to send as part of the uptime check request.
+	// The list of headers to send as part of the Uptime check request.
 	// If two headers have the same key and different values, they should
 	// be entered as a single header, with the value being a comma-separated
 	// list of all the desired values as described at
@@ -583,9 +594,10 @@ type UptimeCheckConfig_HttpCheck struct {
 	// cause the first to be overwritten by the second.
 	// The maximum number of headers allowed is 100.
 	Headers map[string]string `protobuf:"bytes,6,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Boolean specifying whether to validate SSL certificates.
-	// Only applies to uptime_url checks. If use_ssl is false, setting this to
-	// true has no effect.
+	// Boolean specifying whether to include SSL certificate validation as a
+	// part of the Uptime check. Only applies to checks where
+	// `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`,
+	// setting `validate_ssl` to `true` has no effect.
 	ValidateSsl          bool     `protobuf:"varint,7,opt,name=validate_ssl,json=validateSsl,proto3" json:"validate_ssl,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -666,13 +678,14 @@ func (m *UptimeCheckConfig_HttpCheck) GetValidateSsl() bool {
 	return false
 }
 
-// A type of authentication to perform against the specified resource or URL
-// that uses username and password.
-// Currently, only Basic authentication is supported in Uptime Monitoring.
+// The authentication parameters to provide to the specified resource or
+// URL that requires a username and password. Currently, only
+// [Basic HTTP authentication](https://tools.ietf.org/html/rfc7617) is
+// supported in Uptime checks.
 type UptimeCheckConfig_HttpCheck_BasicAuthentication struct {
-	// The username to authenticate.
+	// The username to use when authenticating with the HTTP server.
 	Username string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	// The password to authenticate.
+	// The password to use when authenticating with the HTTP server.
 	Password             string   `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -722,11 +735,11 @@ func (m *UptimeCheckConfig_HttpCheck_BasicAuthentication) GetPassword() string {
 	return ""
 }
 
-// Information required for a TCP uptime check request.
+// Information required for a TCP Uptime check request.
 type UptimeCheckConfig_TcpCheck struct {
-	// The port to the page to run the check against. Will be combined with host
-	// (specified within the MonitoredResource) to construct the full URL.
-	// Required.
+	// The TCP port on the server against which to run the check. Will be
+	// combined with host (specified within the `monitored_resource`) to
+	// construct the full URL. Required.
 	Port                 int32    `protobuf:"varint,1,opt,name=port,proto3" json:"port,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -770,9 +783,8 @@ func (m *UptimeCheckConfig_TcpCheck) GetPort() int32 {
 type UptimeCheckConfig_ContentMatcher struct {
 	// String or regex content to match (max 1024 bytes)
 	Content string `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
-	// The matcher representing content match options which the check will run
-	// with. If the field is not specified (in previous versions), the option is
-	// set to be CONTAINS_STRING which performs content substring matching.
+	// The type of content matcher that will be applied to the server output,
+	// compared to the `content` string when the check is run.
 	Matcher              UptimeCheckConfig_ContentMatcher_ContentMatcherOption `protobuf:"varint,2,opt,name=matcher,proto3,enum=google.monitoring.v3.UptimeCheckConfig_ContentMatcher_ContentMatcherOption" json:"matcher,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                              `json:"-"`
 	XXX_unrecognized     []byte                                                `json:"-"`
@@ -827,10 +839,10 @@ type UptimeCheckIp struct {
 	// a particular city/town/metro (and its containing state/province or country)
 	// within the broader umbrella region category.
 	Location string `protobuf:"bytes,2,opt,name=location,proto3" json:"location,omitempty"`
-	// The IP address from which the uptime check originates. This is a full
-	// IP address (not an IP address range). Most IP addresses, as of this
-	// publication, are in IPv4 format; however, one should not rely on the
-	// IP addresses being in IPv4 format indefinitely and should support
+	// The IP address from which the Uptime check originates. This is a fully
+	// specified IP address (not an IP address range). Most IP addresses, as of
+	// this publication, are in IPv4 format; however, one should not rely on the
+	// IP addresses being in IPv4 format indefinitely, and should support
 	// interpreting this field in either IPv4 or IPv6 format.
 	IpAddress            string   `protobuf:"bytes,3,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`

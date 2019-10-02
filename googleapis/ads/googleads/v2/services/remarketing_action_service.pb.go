@@ -6,14 +6,15 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -437,6 +438,17 @@ type RemarketingActionServiceServer interface {
 	GetRemarketingAction(context.Context, *GetRemarketingActionRequest) (*resources.RemarketingAction, error)
 	// Creates or updates remarketing actions. Operation statuses are returned.
 	MutateRemarketingActions(context.Context, *MutateRemarketingActionsRequest) (*MutateRemarketingActionsResponse, error)
+}
+
+// UnimplementedRemarketingActionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedRemarketingActionServiceServer struct {
+}
+
+func (*UnimplementedRemarketingActionServiceServer) GetRemarketingAction(ctx context.Context, req *GetRemarketingActionRequest) (*resources.RemarketingAction, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetRemarketingAction not implemented")
+}
+func (*UnimplementedRemarketingActionServiceServer) MutateRemarketingActions(ctx context.Context, req *MutateRemarketingActionsRequest) (*MutateRemarketingActionsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateRemarketingActions not implemented")
 }
 
 func RegisterRemarketingActionServiceServer(s *grpc.Server, srv RemarketingActionServiceServer) {

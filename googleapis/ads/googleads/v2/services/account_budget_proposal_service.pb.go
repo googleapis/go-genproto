@@ -6,13 +6,14 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -418,6 +419,17 @@ type AccountBudgetProposalServiceServer interface {
 	// Creates, updates, or removes account budget proposals.  Operation statuses
 	// are returned.
 	MutateAccountBudgetProposal(context.Context, *MutateAccountBudgetProposalRequest) (*MutateAccountBudgetProposalResponse, error)
+}
+
+// UnimplementedAccountBudgetProposalServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAccountBudgetProposalServiceServer struct {
+}
+
+func (*UnimplementedAccountBudgetProposalServiceServer) GetAccountBudgetProposal(ctx context.Context, req *GetAccountBudgetProposalRequest) (*resources.AccountBudgetProposal, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAccountBudgetProposal not implemented")
+}
+func (*UnimplementedAccountBudgetProposalServiceServer) MutateAccountBudgetProposal(ctx context.Context, req *MutateAccountBudgetProposalRequest) (*MutateAccountBudgetProposalResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateAccountBudgetProposal not implemented")
 }
 
 func RegisterAccountBudgetProposalServiceServer(s *grpc.Server, srv AccountBudgetProposalServiceServer) {

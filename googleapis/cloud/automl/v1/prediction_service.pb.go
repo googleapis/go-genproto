@@ -6,12 +6,13 @@ package automl
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	_ "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -234,6 +235,14 @@ type PredictionServiceServer interface {
 	// * Translation - TextSnippet, content up to 25,000 characters, UTF-8
 	//                 encoded.
 	Predict(context.Context, *PredictRequest) (*PredictResponse, error)
+}
+
+// UnimplementedPredictionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedPredictionServiceServer struct {
+}
+
+func (*UnimplementedPredictionServiceServer) Predict(ctx context.Context, req *PredictRequest) (*PredictResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Predict not implemented")
 }
 
 func RegisterPredictionServiceServer(s *grpc.Server, srv PredictionServiceServer) {

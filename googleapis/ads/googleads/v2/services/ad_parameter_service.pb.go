@@ -6,14 +6,15 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -454,6 +455,17 @@ type AdParameterServiceServer interface {
 	// Creates, updates, or removes ad parameters. Operation statuses are
 	// returned.
 	MutateAdParameters(context.Context, *MutateAdParametersRequest) (*MutateAdParametersResponse, error)
+}
+
+// UnimplementedAdParameterServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAdParameterServiceServer struct {
+}
+
+func (*UnimplementedAdParameterServiceServer) GetAdParameter(ctx context.Context, req *GetAdParameterRequest) (*resources.AdParameter, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetAdParameter not implemented")
+}
+func (*UnimplementedAdParameterServiceServer) MutateAdParameters(ctx context.Context, req *MutateAdParametersRequest) (*MutateAdParametersResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateAdParameters not implemented")
 }
 
 func RegisterAdParameterServiceServer(s *grpc.Server, srv AdParameterServiceServer) {

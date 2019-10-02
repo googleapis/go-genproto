@@ -6,13 +6,14 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -429,6 +430,17 @@ type AdGroupCriterionLabelServiceServer interface {
 	// Creates and removes ad group criterion labels.
 	// Operation statuses are returned.
 	MutateAdGroupCriterionLabels(context.Context, *MutateAdGroupCriterionLabelsRequest) (*MutateAdGroupCriterionLabelsResponse, error)
+}
+
+// UnimplementedAdGroupCriterionLabelServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAdGroupCriterionLabelServiceServer struct {
+}
+
+func (*UnimplementedAdGroupCriterionLabelServiceServer) GetAdGroupCriterionLabel(ctx context.Context, req *GetAdGroupCriterionLabelRequest) (*resources.AdGroupCriterionLabel, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetAdGroupCriterionLabel not implemented")
+}
+func (*UnimplementedAdGroupCriterionLabelServiceServer) MutateAdGroupCriterionLabels(ctx context.Context, req *MutateAdGroupCriterionLabelsRequest) (*MutateAdGroupCriterionLabelsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateAdGroupCriterionLabels not implemented")
 }
 
 func RegisterAdGroupCriterionLabelServiceServer(s *grpc.Server, srv AdGroupCriterionLabelServiceServer) {

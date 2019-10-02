@@ -5,11 +5,10 @@ package ptype
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	any "github.com/golang/protobuf/ptypes/any"
 	source_context "google.golang.org/genproto/protobuf/source_context"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

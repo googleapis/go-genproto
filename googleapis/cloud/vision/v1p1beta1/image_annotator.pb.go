@@ -6,14 +6,15 @@ package vision
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	color "google.golang.org/genproto/googleapis/type/color"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1988,6 +1989,14 @@ func (c *imageAnnotatorClient) BatchAnnotateImages(ctx context.Context, in *Batc
 type ImageAnnotatorServer interface {
 	// Run image detection and annotation for a batch of images.
 	BatchAnnotateImages(context.Context, *BatchAnnotateImagesRequest) (*BatchAnnotateImagesResponse, error)
+}
+
+// UnimplementedImageAnnotatorServer can be embedded to have forward compatible implementations.
+type UnimplementedImageAnnotatorServer struct {
+}
+
+func (*UnimplementedImageAnnotatorServer) BatchAnnotateImages(ctx context.Context, req *BatchAnnotateImagesRequest) (*BatchAnnotateImagesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BatchAnnotateImages not implemented")
 }
 
 func RegisterImageAnnotatorServer(s *grpc.Server, srv ImageAnnotatorServer) {

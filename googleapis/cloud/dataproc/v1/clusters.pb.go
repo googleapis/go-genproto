@@ -6,8 +6,6 @@ package dataproc
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
@@ -15,6 +13,9 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2045,6 +2046,29 @@ type ClusterControllerServer interface {
 	// After the operation completes, the Operation.response field
 	// contains `DiagnoseClusterOutputLocation`.
 	DiagnoseCluster(context.Context, *DiagnoseClusterRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedClusterControllerServer can be embedded to have forward compatible implementations.
+type UnimplementedClusterControllerServer struct {
+}
+
+func (*UnimplementedClusterControllerServer) CreateCluster(ctx context.Context, req *CreateClusterRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCluster not implemented")
+}
+func (*UnimplementedClusterControllerServer) UpdateCluster(ctx context.Context, req *UpdateClusterRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCluster not implemented")
+}
+func (*UnimplementedClusterControllerServer) DeleteCluster(ctx context.Context, req *DeleteClusterRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCluster not implemented")
+}
+func (*UnimplementedClusterControllerServer) GetCluster(ctx context.Context, req *GetClusterRequest) (*Cluster, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCluster not implemented")
+}
+func (*UnimplementedClusterControllerServer) ListClusters(ctx context.Context, req *ListClustersRequest) (*ListClustersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListClusters not implemented")
+}
+func (*UnimplementedClusterControllerServer) DiagnoseCluster(ctx context.Context, req *DiagnoseClusterRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DiagnoseCluster not implemented")
 }
 
 func RegisterClusterControllerServer(s *grpc.Server, srv ClusterControllerServer) {

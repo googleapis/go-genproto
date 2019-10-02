@@ -6,13 +6,14 @@ package cloudtrace
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -168,6 +169,17 @@ type TraceServiceServer interface {
 	BatchWriteSpans(context.Context, *BatchWriteSpansRequest) (*empty.Empty, error)
 	// Creates a new span.
 	CreateSpan(context.Context, *Span) (*Span, error)
+}
+
+// UnimplementedTraceServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedTraceServiceServer struct {
+}
+
+func (*UnimplementedTraceServiceServer) BatchWriteSpans(ctx context.Context, req *BatchWriteSpansRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchWriteSpans not implemented")
+}
+func (*UnimplementedTraceServiceServer) CreateSpan(ctx context.Context, req *Span) (*Span, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSpan not implemented")
 }
 
 func RegisterTraceServiceServer(s *grpc.Server, srv TraceServiceServer) {

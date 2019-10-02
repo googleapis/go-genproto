@@ -6,13 +6,14 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -448,7 +449,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MerchantCenterLinkServiceClient interface {
-	// Returns Merchant Center links available tor this customer.
+	// Returns Merchant Center links available for this customer.
 	ListMerchantCenterLinks(ctx context.Context, in *ListMerchantCenterLinksRequest, opts ...grpc.CallOption) (*ListMerchantCenterLinksResponse, error)
 	// Returns the Merchant Center link in full detail.
 	GetMerchantCenterLink(ctx context.Context, in *GetMerchantCenterLinkRequest, opts ...grpc.CallOption) (*resources.MerchantCenterLink, error)
@@ -493,12 +494,26 @@ func (c *merchantCenterLinkServiceClient) MutateMerchantCenterLink(ctx context.C
 
 // MerchantCenterLinkServiceServer is the server API for MerchantCenterLinkService service.
 type MerchantCenterLinkServiceServer interface {
-	// Returns Merchant Center links available tor this customer.
+	// Returns Merchant Center links available for this customer.
 	ListMerchantCenterLinks(context.Context, *ListMerchantCenterLinksRequest) (*ListMerchantCenterLinksResponse, error)
 	// Returns the Merchant Center link in full detail.
 	GetMerchantCenterLink(context.Context, *GetMerchantCenterLinkRequest) (*resources.MerchantCenterLink, error)
 	// Updates status or removes a Merchant Center link.
 	MutateMerchantCenterLink(context.Context, *MutateMerchantCenterLinkRequest) (*MutateMerchantCenterLinkResponse, error)
+}
+
+// UnimplementedMerchantCenterLinkServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedMerchantCenterLinkServiceServer struct {
+}
+
+func (*UnimplementedMerchantCenterLinkServiceServer) ListMerchantCenterLinks(ctx context.Context, req *ListMerchantCenterLinksRequest) (*ListMerchantCenterLinksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMerchantCenterLinks not implemented")
+}
+func (*UnimplementedMerchantCenterLinkServiceServer) GetMerchantCenterLink(ctx context.Context, req *GetMerchantCenterLinkRequest) (*resources.MerchantCenterLink, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMerchantCenterLink not implemented")
+}
+func (*UnimplementedMerchantCenterLinkServiceServer) MutateMerchantCenterLink(ctx context.Context, req *MutateMerchantCenterLinkRequest) (*MutateMerchantCenterLinkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateMerchantCenterLink not implemented")
 }
 
 func RegisterMerchantCenterLinkServiceServer(s *grpc.Server, srv MerchantCenterLinkServiceServer) {

@@ -6,13 +6,14 @@ package talent
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -503,6 +504,26 @@ type TenantServiceServer interface {
 	DeleteTenant(context.Context, *DeleteTenantRequest) (*empty.Empty, error)
 	// Lists all tenants associated with the project.
 	ListTenants(context.Context, *ListTenantsRequest) (*ListTenantsResponse, error)
+}
+
+// UnimplementedTenantServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedTenantServiceServer struct {
+}
+
+func (*UnimplementedTenantServiceServer) CreateTenant(ctx context.Context, req *CreateTenantRequest) (*Tenant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTenant not implemented")
+}
+func (*UnimplementedTenantServiceServer) GetTenant(ctx context.Context, req *GetTenantRequest) (*Tenant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTenant not implemented")
+}
+func (*UnimplementedTenantServiceServer) UpdateTenant(ctx context.Context, req *UpdateTenantRequest) (*Tenant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTenant not implemented")
+}
+func (*UnimplementedTenantServiceServer) DeleteTenant(ctx context.Context, req *DeleteTenantRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTenant not implemented")
+}
+func (*UnimplementedTenantServiceServer) ListTenants(ctx context.Context, req *ListTenantsRequest) (*ListTenantsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTenants not implemented")
 }
 
 func RegisterTenantServiceServer(s *grpc.Server, srv TenantServiceServer) {

@@ -5,13 +5,12 @@ package recommender
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"
 	_struct "github.com/golang/protobuf/ptypes/struct"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	money "google.golang.org/genproto/googleapis/type/money"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

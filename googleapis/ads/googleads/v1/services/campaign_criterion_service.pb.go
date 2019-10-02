@@ -6,8 +6,6 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/wrappers"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
@@ -15,6 +13,9 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -456,6 +457,17 @@ type CampaignCriterionServiceServer interface {
 	GetCampaignCriterion(context.Context, *GetCampaignCriterionRequest) (*resources.CampaignCriterion, error)
 	// Creates, updates, or removes criteria. Operation statuses are returned.
 	MutateCampaignCriteria(context.Context, *MutateCampaignCriteriaRequest) (*MutateCampaignCriteriaResponse, error)
+}
+
+// UnimplementedCampaignCriterionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCampaignCriterionServiceServer struct {
+}
+
+func (*UnimplementedCampaignCriterionServiceServer) GetCampaignCriterion(ctx context.Context, req *GetCampaignCriterionRequest) (*resources.CampaignCriterion, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCampaignCriterion not implemented")
+}
+func (*UnimplementedCampaignCriterionServiceServer) MutateCampaignCriteria(ctx context.Context, req *MutateCampaignCriteriaRequest) (*MutateCampaignCriteriaResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCampaignCriteria not implemented")
 }
 
 func RegisterCampaignCriterionServiceServer(s *grpc.Server, srv CampaignCriterionServiceServer) {

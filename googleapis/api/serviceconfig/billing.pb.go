@@ -5,10 +5,9 @@ package serviceconfig
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/metric"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

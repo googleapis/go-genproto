@@ -6,8 +6,6 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
@@ -15,6 +13,9 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -677,6 +678,23 @@ type CampaignDraftServiceServer interface {
 	// error if called before campaign draft is promoted.
 	// Supports standard list paging.
 	ListCampaignDraftAsyncErrors(context.Context, *ListCampaignDraftAsyncErrorsRequest) (*ListCampaignDraftAsyncErrorsResponse, error)
+}
+
+// UnimplementedCampaignDraftServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCampaignDraftServiceServer struct {
+}
+
+func (*UnimplementedCampaignDraftServiceServer) GetCampaignDraft(ctx context.Context, req *GetCampaignDraftRequest) (*resources.CampaignDraft, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCampaignDraft not implemented")
+}
+func (*UnimplementedCampaignDraftServiceServer) MutateCampaignDrafts(ctx context.Context, req *MutateCampaignDraftsRequest) (*MutateCampaignDraftsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCampaignDrafts not implemented")
+}
+func (*UnimplementedCampaignDraftServiceServer) PromoteCampaignDraft(ctx context.Context, req *PromoteCampaignDraftRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method PromoteCampaignDraft not implemented")
+}
+func (*UnimplementedCampaignDraftServiceServer) ListCampaignDraftAsyncErrors(ctx context.Context, req *ListCampaignDraftAsyncErrorsRequest) (*ListCampaignDraftAsyncErrorsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListCampaignDraftAsyncErrors not implemented")
 }
 
 func RegisterCampaignDraftServiceServer(s *grpc.Server, srv CampaignDraftServiceServer) {

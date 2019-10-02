@@ -6,14 +6,15 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/wrappers"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -399,6 +400,17 @@ type CustomerClientLinkServiceServer interface {
 	GetCustomerClientLink(context.Context, *GetCustomerClientLinkRequest) (*resources.CustomerClientLink, error)
 	// Creates or updates a customer client link. Operation statuses are returned.
 	MutateCustomerClientLink(context.Context, *MutateCustomerClientLinkRequest) (*MutateCustomerClientLinkResponse, error)
+}
+
+// UnimplementedCustomerClientLinkServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCustomerClientLinkServiceServer struct {
+}
+
+func (*UnimplementedCustomerClientLinkServiceServer) GetCustomerClientLink(ctx context.Context, req *GetCustomerClientLinkRequest) (*resources.CustomerClientLink, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCustomerClientLink not implemented")
+}
+func (*UnimplementedCustomerClientLinkServiceServer) MutateCustomerClientLink(ctx context.Context, req *MutateCustomerClientLinkRequest) (*MutateCustomerClientLinkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateCustomerClientLink not implemented")
 }
 
 func RegisterCustomerClientLinkServiceServer(s *grpc.Server, srv CustomerClientLinkServiceServer) {

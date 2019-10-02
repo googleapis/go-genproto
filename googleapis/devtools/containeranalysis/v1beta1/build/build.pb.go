@@ -5,10 +5,9 @@ package build
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	provenance "google.golang.org/genproto/googleapis/devtools/containeranalysis/v1beta1/provenance"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

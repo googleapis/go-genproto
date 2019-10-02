@@ -6,14 +6,15 @@ package ml
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	_ "google.golang.org/genproto/googleapis/api/serviceconfig"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1842,6 +1843,23 @@ type JobServiceServer interface {
 	GetJob(context.Context, *GetJobRequest) (*Job, error)
 	// Cancels a running job.
 	CancelJob(context.Context, *CancelJobRequest) (*empty.Empty, error)
+}
+
+// UnimplementedJobServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedJobServiceServer struct {
+}
+
+func (*UnimplementedJobServiceServer) CreateJob(ctx context.Context, req *CreateJobRequest) (*Job, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateJob not implemented")
+}
+func (*UnimplementedJobServiceServer) ListJobs(ctx context.Context, req *ListJobsRequest) (*ListJobsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListJobs not implemented")
+}
+func (*UnimplementedJobServiceServer) GetJob(ctx context.Context, req *GetJobRequest) (*Job, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetJob not implemented")
+}
+func (*UnimplementedJobServiceServer) CancelJob(ctx context.Context, req *CancelJobRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelJob not implemented")
 }
 
 func RegisterJobServiceServer(s *grpc.Server, srv JobServiceServer) {

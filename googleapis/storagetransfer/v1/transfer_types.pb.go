@@ -5,8 +5,6 @@ package storagetransfer
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
@@ -14,6 +12,7 @@ import (
 	code "google.golang.org/genproto/googleapis/rpc/code"
 	date "google.golang.org/genproto/googleapis/type/date"
 	timeofday "google.golang.org/genproto/googleapis/type/timeofday"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
