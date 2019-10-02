@@ -6,14 +6,15 @@ package videointelligence
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1248,6 +1249,14 @@ type VideoIntelligenceServiceServer interface {
 	// `Operation.metadata` contains `AnnotateVideoProgress` (progress).
 	// `Operation.response` contains `AnnotateVideoResponse` (results).
 	AnnotateVideo(context.Context, *AnnotateVideoRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedVideoIntelligenceServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedVideoIntelligenceServiceServer struct {
+}
+
+func (*UnimplementedVideoIntelligenceServiceServer) AnnotateVideo(ctx context.Context, req *AnnotateVideoRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method AnnotateVideo not implemented")
 }
 
 func RegisterVideoIntelligenceServiceServer(s *grpc.Server, srv VideoIntelligenceServiceServer) {

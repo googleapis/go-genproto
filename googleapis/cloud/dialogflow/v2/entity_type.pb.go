@@ -6,14 +6,15 @@ package dialogflow
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1379,6 +1380,41 @@ type EntityTypesServer interface {
 	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
 	BatchDeleteEntities(context.Context, *BatchDeleteEntitiesRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedEntityTypesServer can be embedded to have forward compatible implementations.
+type UnimplementedEntityTypesServer struct {
+}
+
+func (*UnimplementedEntityTypesServer) ListEntityTypes(ctx context.Context, req *ListEntityTypesRequest) (*ListEntityTypesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListEntityTypes not implemented")
+}
+func (*UnimplementedEntityTypesServer) GetEntityType(ctx context.Context, req *GetEntityTypeRequest) (*EntityType, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetEntityType not implemented")
+}
+func (*UnimplementedEntityTypesServer) CreateEntityType(ctx context.Context, req *CreateEntityTypeRequest) (*EntityType, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateEntityType not implemented")
+}
+func (*UnimplementedEntityTypesServer) UpdateEntityType(ctx context.Context, req *UpdateEntityTypeRequest) (*EntityType, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateEntityType not implemented")
+}
+func (*UnimplementedEntityTypesServer) DeleteEntityType(ctx context.Context, req *DeleteEntityTypeRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteEntityType not implemented")
+}
+func (*UnimplementedEntityTypesServer) BatchUpdateEntityTypes(ctx context.Context, req *BatchUpdateEntityTypesRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchUpdateEntityTypes not implemented")
+}
+func (*UnimplementedEntityTypesServer) BatchDeleteEntityTypes(ctx context.Context, req *BatchDeleteEntityTypesRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchDeleteEntityTypes not implemented")
+}
+func (*UnimplementedEntityTypesServer) BatchCreateEntities(ctx context.Context, req *BatchCreateEntitiesRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchCreateEntities not implemented")
+}
+func (*UnimplementedEntityTypesServer) BatchUpdateEntities(ctx context.Context, req *BatchUpdateEntitiesRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchUpdateEntities not implemented")
+}
+func (*UnimplementedEntityTypesServer) BatchDeleteEntities(ctx context.Context, req *BatchDeleteEntitiesRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchDeleteEntities not implemented")
 }
 
 func RegisterEntityTypesServer(s *grpc.Server, srv EntityTypesServer) {

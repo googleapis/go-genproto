@@ -6,12 +6,13 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +141,14 @@ func (c *detailPlacementViewServiceClient) GetDetailPlacementView(ctx context.Co
 type DetailPlacementViewServiceServer interface {
 	// Returns the requested Detail Placement view in full detail.
 	GetDetailPlacementView(context.Context, *GetDetailPlacementViewRequest) (*resources.DetailPlacementView, error)
+}
+
+// UnimplementedDetailPlacementViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedDetailPlacementViewServiceServer struct {
+}
+
+func (*UnimplementedDetailPlacementViewServiceServer) GetDetailPlacementView(ctx context.Context, req *GetDetailPlacementViewRequest) (*resources.DetailPlacementView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDetailPlacementView not implemented")
 }
 
 func RegisterDetailPlacementViewServiceServer(s *grpc.Server, srv DetailPlacementViewServiceServer) {

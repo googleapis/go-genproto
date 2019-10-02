@@ -6,14 +6,15 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1325,7 +1326,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ReachPlanServiceClient interface {
-	// Returns the list of plannable locations (e.g. countries, DMAs).
+	// Returns the list of plannable locations (for example, countries & DMAs).
 	ListPlannableLocations(ctx context.Context, in *ListPlannableLocationsRequest, opts ...grpc.CallOption) (*ListPlannableLocationsResponse, error)
 	// Returns the list of per-location plannable YouTube ad formats with allowed
 	// targeting.
@@ -1384,7 +1385,7 @@ func (c *reachPlanServiceClient) GenerateReachForecast(ctx context.Context, in *
 
 // ReachPlanServiceServer is the server API for ReachPlanService service.
 type ReachPlanServiceServer interface {
-	// Returns the list of plannable locations (e.g. countries, DMAs).
+	// Returns the list of plannable locations (for example, countries & DMAs).
 	ListPlannableLocations(context.Context, *ListPlannableLocationsRequest) (*ListPlannableLocationsResponse, error)
 	// Returns the list of per-location plannable YouTube ad formats with allowed
 	// targeting.
@@ -1395,6 +1396,23 @@ type ReachPlanServiceServer interface {
 	GenerateProductMixIdeas(context.Context, *GenerateProductMixIdeasRequest) (*GenerateProductMixIdeasResponse, error)
 	// Generates a reach forecast for a given targeting / product mix.
 	GenerateReachForecast(context.Context, *GenerateReachForecastRequest) (*GenerateReachForecastResponse, error)
+}
+
+// UnimplementedReachPlanServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedReachPlanServiceServer struct {
+}
+
+func (*UnimplementedReachPlanServiceServer) ListPlannableLocations(ctx context.Context, req *ListPlannableLocationsRequest) (*ListPlannableLocationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPlannableLocations not implemented")
+}
+func (*UnimplementedReachPlanServiceServer) ListPlannableProducts(ctx context.Context, req *ListPlannableProductsRequest) (*ListPlannableProductsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPlannableProducts not implemented")
+}
+func (*UnimplementedReachPlanServiceServer) GenerateProductMixIdeas(ctx context.Context, req *GenerateProductMixIdeasRequest) (*GenerateProductMixIdeasResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateProductMixIdeas not implemented")
+}
+func (*UnimplementedReachPlanServiceServer) GenerateReachForecast(ctx context.Context, req *GenerateReachForecastRequest) (*GenerateReachForecastResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateReachForecast not implemented")
 }
 
 func RegisterReachPlanServiceServer(s *grpc.Server, srv ReachPlanServiceServer) {

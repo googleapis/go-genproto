@@ -6,12 +6,13 @@ package ml
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -336,6 +337,14 @@ type OnlinePredictionServiceServer interface {
 	//
 	// **** REMOVE FROM GENERATED DOCUMENTATION
 	Predict(context.Context, *PredictRequest) (*httpbody.HttpBody, error)
+}
+
+// UnimplementedOnlinePredictionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedOnlinePredictionServiceServer struct {
+}
+
+func (*UnimplementedOnlinePredictionServiceServer) Predict(ctx context.Context, req *PredictRequest) (*httpbody.HttpBody, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Predict not implemented")
 }
 
 func RegisterOnlinePredictionServiceServer(s *grpc.Server, srv OnlinePredictionServiceServer) {

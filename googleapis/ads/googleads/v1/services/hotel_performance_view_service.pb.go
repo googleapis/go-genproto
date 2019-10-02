@@ -6,12 +6,13 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +141,14 @@ func (c *hotelPerformanceViewServiceClient) GetHotelPerformanceView(ctx context.
 type HotelPerformanceViewServiceServer interface {
 	// Returns the requested Hotel Performance View in full detail.
 	GetHotelPerformanceView(context.Context, *GetHotelPerformanceViewRequest) (*resources.HotelPerformanceView, error)
+}
+
+// UnimplementedHotelPerformanceViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedHotelPerformanceViewServiceServer struct {
+}
+
+func (*UnimplementedHotelPerformanceViewServiceServer) GetHotelPerformanceView(ctx context.Context, req *GetHotelPerformanceViewRequest) (*resources.HotelPerformanceView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetHotelPerformanceView not implemented")
 }
 
 func RegisterHotelPerformanceViewServiceServer(s *grpc.Server, srv HotelPerformanceViewServiceServer) {

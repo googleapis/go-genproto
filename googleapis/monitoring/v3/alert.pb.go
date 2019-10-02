@@ -5,12 +5,11 @@ package monitoring
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	duration "github.com/golang/protobuf/ptypes/duration"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	status "google.golang.org/genproto/googleapis/rpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -544,11 +543,7 @@ type AlertPolicy_Condition_MetricThreshold struct {
 	// the time series specified by the `filter` field will be used as the
 	// numerator.
 	//
-	// The filter is similar to the one that is specified in the
-	// [`MetricService.ListTimeSeries`
-	// request](/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that
-	// call is useful to verify the time series that will be retrieved /
-	// processed) and must specify the metric type and optionally may contain
+	// The filter must specify the metric type and optionally may contain
 	// restrictions on resource type, resource labels, and metric labels.
 	// This field may not exceed 2048 Unicode characters in length.
 	DenominatorFilter string `protobuf:"bytes,9,opt,name=denominator_filter,json=denominatorFilter,proto3" json:"denominator_filter,omitempty"`
@@ -562,12 +557,6 @@ type AlertPolicy_Condition_MetricThreshold struct {
 	// When computing ratios, the `aggregations` and
 	// `denominator_aggregations` fields must use the same alignment period
 	// and produce time series that have the same periodicity and labels.
-	//
-	// This field is similar to the one in the
-	// [`MetricService.ListTimeSeries`
-	// request](/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It
-	// is advisable to use the `ListTimeSeries` method when debugging this
-	// field.
 	DenominatorAggregations []*Aggregation `protobuf:"bytes,10,rep,name=denominator_aggregations,json=denominatorAggregations,proto3" json:"denominator_aggregations,omitempty"`
 	// The comparison to apply between the time series (indicated by `filter`
 	// and `aggregation`) and the threshold (indicated by `threshold_value`).

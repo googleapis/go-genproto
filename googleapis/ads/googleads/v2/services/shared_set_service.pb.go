@@ -6,14 +6,15 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -452,6 +453,17 @@ type SharedSetServiceServer interface {
 	GetSharedSet(context.Context, *GetSharedSetRequest) (*resources.SharedSet, error)
 	// Creates, updates, or removes shared sets. Operation statuses are returned.
 	MutateSharedSets(context.Context, *MutateSharedSetsRequest) (*MutateSharedSetsResponse, error)
+}
+
+// UnimplementedSharedSetServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedSharedSetServiceServer struct {
+}
+
+func (*UnimplementedSharedSetServiceServer) GetSharedSet(ctx context.Context, req *GetSharedSetRequest) (*resources.SharedSet, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetSharedSet not implemented")
+}
+func (*UnimplementedSharedSetServiceServer) MutateSharedSets(ctx context.Context, req *MutateSharedSetsRequest) (*MutateSharedSetsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateSharedSets not implemented")
 }
 
 func RegisterSharedSetServiceServer(s *grpc.Server, srv SharedSetServiceServer) {

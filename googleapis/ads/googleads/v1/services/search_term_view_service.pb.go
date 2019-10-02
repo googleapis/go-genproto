@@ -6,12 +6,13 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +141,14 @@ func (c *searchTermViewServiceClient) GetSearchTermView(ctx context.Context, in 
 type SearchTermViewServiceServer interface {
 	// Returns the attributes of the requested search term view.
 	GetSearchTermView(context.Context, *GetSearchTermViewRequest) (*resources.SearchTermView, error)
+}
+
+// UnimplementedSearchTermViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedSearchTermViewServiceServer struct {
+}
+
+func (*UnimplementedSearchTermViewServiceServer) GetSearchTermView(ctx context.Context, req *GetSearchTermViewRequest) (*resources.SearchTermView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSearchTermView not implemented")
 }
 
 func RegisterSearchTermViewServiceServer(s *grpc.Server, srv SearchTermViewServiceServer) {

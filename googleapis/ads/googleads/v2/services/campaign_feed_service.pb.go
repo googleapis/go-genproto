@@ -6,14 +6,15 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -455,6 +456,17 @@ type CampaignFeedServiceServer interface {
 	// Creates, updates, or removes campaign feeds. Operation statuses are
 	// returned.
 	MutateCampaignFeeds(context.Context, *MutateCampaignFeedsRequest) (*MutateCampaignFeedsResponse, error)
+}
+
+// UnimplementedCampaignFeedServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCampaignFeedServiceServer struct {
+}
+
+func (*UnimplementedCampaignFeedServiceServer) GetCampaignFeed(ctx context.Context, req *GetCampaignFeedRequest) (*resources.CampaignFeed, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCampaignFeed not implemented")
+}
+func (*UnimplementedCampaignFeedServiceServer) MutateCampaignFeeds(ctx context.Context, req *MutateCampaignFeedsRequest) (*MutateCampaignFeedsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCampaignFeeds not implemented")
 }
 
 func RegisterCampaignFeedServiceServer(s *grpc.Server, srv CampaignFeedServiceServer) {

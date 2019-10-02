@@ -6,13 +6,14 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/wrappers"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -142,6 +143,14 @@ func (c *landingPageViewServiceClient) GetLandingPageView(ctx context.Context, i
 type LandingPageViewServiceServer interface {
 	// Returns the requested landing page view in full detail.
 	GetLandingPageView(context.Context, *GetLandingPageViewRequest) (*resources.LandingPageView, error)
+}
+
+// UnimplementedLandingPageViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedLandingPageViewServiceServer struct {
+}
+
+func (*UnimplementedLandingPageViewServiceServer) GetLandingPageView(ctx context.Context, req *GetLandingPageViewRequest) (*resources.LandingPageView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLandingPageView not implemented")
 }
 
 func RegisterLandingPageViewServiceServer(s *grpc.Server, srv LandingPageViewServiceServer) {

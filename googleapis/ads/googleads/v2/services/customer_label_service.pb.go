@@ -6,13 +6,14 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -426,6 +427,17 @@ type CustomerLabelServiceServer interface {
 	// Creates and removes customer-label relationships.
 	// Operation statuses are returned.
 	MutateCustomerLabels(context.Context, *MutateCustomerLabelsRequest) (*MutateCustomerLabelsResponse, error)
+}
+
+// UnimplementedCustomerLabelServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCustomerLabelServiceServer struct {
+}
+
+func (*UnimplementedCustomerLabelServiceServer) GetCustomerLabel(ctx context.Context, req *GetCustomerLabelRequest) (*resources.CustomerLabel, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCustomerLabel not implemented")
+}
+func (*UnimplementedCustomerLabelServiceServer) MutateCustomerLabels(ctx context.Context, req *MutateCustomerLabelsRequest) (*MutateCustomerLabelsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCustomerLabels not implemented")
 }
 
 func RegisterCustomerLabelServiceServer(s *grpc.Server, srv CustomerLabelServiceServer) {

@@ -5,12 +5,11 @@ package datastore
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	_ "google.golang.org/genproto/googleapis/type/latlng"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

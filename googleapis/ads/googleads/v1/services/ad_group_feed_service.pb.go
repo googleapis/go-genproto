@@ -6,8 +6,6 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/golang/protobuf/ptypes/wrappers"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
@@ -15,6 +13,9 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -457,6 +458,17 @@ type AdGroupFeedServiceServer interface {
 	// Creates, updates, or removes ad group feeds. Operation statuses are
 	// returned.
 	MutateAdGroupFeeds(context.Context, *MutateAdGroupFeedsRequest) (*MutateAdGroupFeedsResponse, error)
+}
+
+// UnimplementedAdGroupFeedServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAdGroupFeedServiceServer struct {
+}
+
+func (*UnimplementedAdGroupFeedServiceServer) GetAdGroupFeed(ctx context.Context, req *GetAdGroupFeedRequest) (*resources.AdGroupFeed, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetAdGroupFeed not implemented")
+}
+func (*UnimplementedAdGroupFeedServiceServer) MutateAdGroupFeeds(ctx context.Context, req *MutateAdGroupFeedsRequest) (*MutateAdGroupFeedsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateAdGroupFeeds not implemented")
 }
 
 func RegisterAdGroupFeedServiceServer(s *grpc.Server, srv AdGroupFeedServiceServer) {

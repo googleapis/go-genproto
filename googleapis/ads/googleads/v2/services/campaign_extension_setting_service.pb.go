@@ -6,14 +6,15 @@ package services
 import (
 	context "context"
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -464,6 +465,17 @@ type CampaignExtensionSettingServiceServer interface {
 	// Creates, updates, or removes campaign extension settings. Operation
 	// statuses are returned.
 	MutateCampaignExtensionSettings(context.Context, *MutateCampaignExtensionSettingsRequest) (*MutateCampaignExtensionSettingsResponse, error)
+}
+
+// UnimplementedCampaignExtensionSettingServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCampaignExtensionSettingServiceServer struct {
+}
+
+func (*UnimplementedCampaignExtensionSettingServiceServer) GetCampaignExtensionSetting(ctx context.Context, req *GetCampaignExtensionSettingRequest) (*resources.CampaignExtensionSetting, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCampaignExtensionSetting not implemented")
+}
+func (*UnimplementedCampaignExtensionSettingServiceServer) MutateCampaignExtensionSettings(ctx context.Context, req *MutateCampaignExtensionSettingsRequest) (*MutateCampaignExtensionSettingsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCampaignExtensionSettings not implemented")
 }
 
 func RegisterCampaignExtensionSettingServiceServer(s *grpc.Server, srv CampaignExtensionSettingServiceServer) {
