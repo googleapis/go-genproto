@@ -14,8 +14,6 @@ import (
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2548,83 +2546,6 @@ type DataCatalogServer interface {
 	// A caller is not required to have Google IAM permission to make this
 	// request.
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
-}
-
-// UnimplementedDataCatalogServer can be embedded to have forward compatible implementations.
-type UnimplementedDataCatalogServer struct {
-}
-
-func (*UnimplementedDataCatalogServer) SearchCatalog(ctx context.Context, req *SearchCatalogRequest) (*SearchCatalogResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchCatalog not implemented")
-}
-func (*UnimplementedDataCatalogServer) CreateEntryGroup(ctx context.Context, req *CreateEntryGroupRequest) (*EntryGroup, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateEntryGroup not implemented")
-}
-func (*UnimplementedDataCatalogServer) GetEntryGroup(ctx context.Context, req *GetEntryGroupRequest) (*EntryGroup, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEntryGroup not implemented")
-}
-func (*UnimplementedDataCatalogServer) DeleteEntryGroup(ctx context.Context, req *DeleteEntryGroupRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteEntryGroup not implemented")
-}
-func (*UnimplementedDataCatalogServer) CreateEntry(ctx context.Context, req *CreateEntryRequest) (*Entry, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateEntry not implemented")
-}
-func (*UnimplementedDataCatalogServer) UpdateEntry(ctx context.Context, req *UpdateEntryRequest) (*Entry, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateEntry not implemented")
-}
-func (*UnimplementedDataCatalogServer) DeleteEntry(ctx context.Context, req *DeleteEntryRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteEntry not implemented")
-}
-func (*UnimplementedDataCatalogServer) GetEntry(ctx context.Context, req *GetEntryRequest) (*Entry, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetEntry not implemented")
-}
-func (*UnimplementedDataCatalogServer) LookupEntry(ctx context.Context, req *LookupEntryRequest) (*Entry, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LookupEntry not implemented")
-}
-func (*UnimplementedDataCatalogServer) CreateTagTemplate(ctx context.Context, req *CreateTagTemplateRequest) (*TagTemplate, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateTagTemplate not implemented")
-}
-func (*UnimplementedDataCatalogServer) GetTagTemplate(ctx context.Context, req *GetTagTemplateRequest) (*TagTemplate, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTagTemplate not implemented")
-}
-func (*UnimplementedDataCatalogServer) UpdateTagTemplate(ctx context.Context, req *UpdateTagTemplateRequest) (*TagTemplate, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateTagTemplate not implemented")
-}
-func (*UnimplementedDataCatalogServer) DeleteTagTemplate(ctx context.Context, req *DeleteTagTemplateRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteTagTemplate not implemented")
-}
-func (*UnimplementedDataCatalogServer) CreateTagTemplateField(ctx context.Context, req *CreateTagTemplateFieldRequest) (*TagTemplateField, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateTagTemplateField not implemented")
-}
-func (*UnimplementedDataCatalogServer) UpdateTagTemplateField(ctx context.Context, req *UpdateTagTemplateFieldRequest) (*TagTemplateField, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateTagTemplateField not implemented")
-}
-func (*UnimplementedDataCatalogServer) RenameTagTemplateField(ctx context.Context, req *RenameTagTemplateFieldRequest) (*TagTemplateField, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RenameTagTemplateField not implemented")
-}
-func (*UnimplementedDataCatalogServer) DeleteTagTemplateField(ctx context.Context, req *DeleteTagTemplateFieldRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteTagTemplateField not implemented")
-}
-func (*UnimplementedDataCatalogServer) CreateTag(ctx context.Context, req *CreateTagRequest) (*Tag, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateTag not implemented")
-}
-func (*UnimplementedDataCatalogServer) UpdateTag(ctx context.Context, req *UpdateTagRequest) (*Tag, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateTag not implemented")
-}
-func (*UnimplementedDataCatalogServer) DeleteTag(ctx context.Context, req *DeleteTagRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteTag not implemented")
-}
-func (*UnimplementedDataCatalogServer) ListTags(ctx context.Context, req *ListTagsRequest) (*ListTagsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListTags not implemented")
-}
-func (*UnimplementedDataCatalogServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
-}
-func (*UnimplementedDataCatalogServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
-}
-func (*UnimplementedDataCatalogServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
 }
 
 func RegisterDataCatalogServer(s *grpc.Server, srv DataCatalogServer) {

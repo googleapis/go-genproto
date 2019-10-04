@@ -11,8 +11,6 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -168,14 +166,6 @@ type EventServiceServer interface {
 	// more](https://cloud.google.com/talent-solution/docs/management-tools)
 	// about self service tools.
 	CreateClientEvent(context.Context, *CreateClientEventRequest) (*ClientEvent, error)
-}
-
-// UnimplementedEventServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedEventServiceServer struct {
-}
-
-func (*UnimplementedEventServiceServer) CreateClientEvent(ctx context.Context, req *CreateClientEventRequest) (*ClientEvent, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateClientEvent not implemented")
 }
 
 func RegisterEventServiceServer(s *grpc.Server, srv EventServiceServer) {

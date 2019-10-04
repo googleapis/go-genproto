@@ -12,8 +12,6 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -142,14 +140,6 @@ func (c *productGroupViewServiceClient) GetProductGroupView(ctx context.Context,
 type ProductGroupViewServiceServer interface {
 	// Returns the requested product group view in full detail.
 	GetProductGroupView(context.Context, *GetProductGroupViewRequest) (*resources.ProductGroupView, error)
-}
-
-// UnimplementedProductGroupViewServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedProductGroupViewServiceServer struct {
-}
-
-func (*UnimplementedProductGroupViewServiceServer) GetProductGroupView(ctx context.Context, req *GetProductGroupViewRequest) (*resources.ProductGroupView, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetProductGroupView not implemented")
 }
 
 func RegisterProductGroupViewServiceServer(s *grpc.Server, srv ProductGroupViewServiceServer) {
