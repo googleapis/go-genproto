@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -408,6 +410,17 @@ type CustomInterestServiceServer interface {
 	GetCustomInterest(context.Context, *GetCustomInterestRequest) (*resources.CustomInterest, error)
 	// Creates or updates custom interests. Operation statuses are returned.
 	MutateCustomInterests(context.Context, *MutateCustomInterestsRequest) (*MutateCustomInterestsResponse, error)
+}
+
+// UnimplementedCustomInterestServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCustomInterestServiceServer struct {
+}
+
+func (*UnimplementedCustomInterestServiceServer) GetCustomInterest(ctx context.Context, req *GetCustomInterestRequest) (*resources.CustomInterest, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCustomInterest not implemented")
+}
+func (*UnimplementedCustomInterestServiceServer) MutateCustomInterests(ctx context.Context, req *MutateCustomInterestsRequest) (*MutateCustomInterestsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateCustomInterests not implemented")
 }
 
 func RegisterCustomInterestServiceServer(s *grpc.Server, srv CustomInterestServiceServer) {

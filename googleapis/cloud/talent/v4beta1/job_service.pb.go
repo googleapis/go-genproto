@@ -17,6 +17,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2035,6 +2037,41 @@ type JobServiceServer interface {
 	// the database, and only returns jobs the caller has permission to search
 	// against.
 	SearchJobsForAlert(context.Context, *SearchJobsRequest) (*SearchJobsResponse, error)
+}
+
+// UnimplementedJobServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedJobServiceServer struct {
+}
+
+func (*UnimplementedJobServiceServer) CreateJob(ctx context.Context, req *CreateJobRequest) (*Job, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateJob not implemented")
+}
+func (*UnimplementedJobServiceServer) BatchCreateJobs(ctx context.Context, req *BatchCreateJobsRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BatchCreateJobs not implemented")
+}
+func (*UnimplementedJobServiceServer) GetJob(ctx context.Context, req *GetJobRequest) (*Job, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetJob not implemented")
+}
+func (*UnimplementedJobServiceServer) UpdateJob(ctx context.Context, req *UpdateJobRequest) (*Job, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateJob not implemented")
+}
+func (*UnimplementedJobServiceServer) BatchUpdateJobs(ctx context.Context, req *BatchUpdateJobsRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BatchUpdateJobs not implemented")
+}
+func (*UnimplementedJobServiceServer) DeleteJob(ctx context.Context, req *DeleteJobRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteJob not implemented")
+}
+func (*UnimplementedJobServiceServer) BatchDeleteJobs(ctx context.Context, req *BatchDeleteJobsRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BatchDeleteJobs not implemented")
+}
+func (*UnimplementedJobServiceServer) ListJobs(ctx context.Context, req *ListJobsRequest) (*ListJobsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListJobs not implemented")
+}
+func (*UnimplementedJobServiceServer) SearchJobs(ctx context.Context, req *SearchJobsRequest) (*SearchJobsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method SearchJobs not implemented")
+}
+func (*UnimplementedJobServiceServer) SearchJobsForAlert(ctx context.Context, req *SearchJobsRequest) (*SearchJobsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method SearchJobsForAlert not implemented")
 }
 
 func RegisterJobServiceServer(s *grpc.Server, srv JobServiceServer) {

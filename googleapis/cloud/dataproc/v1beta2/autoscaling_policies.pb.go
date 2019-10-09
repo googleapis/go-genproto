@@ -13,6 +13,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -906,6 +908,26 @@ type AutoscalingPolicyServiceServer interface {
 	// Deletes an autoscaling policy. It is an error to delete an autoscaling
 	// policy that is in use by one or more clusters.
 	DeleteAutoscalingPolicy(context.Context, *DeleteAutoscalingPolicyRequest) (*empty.Empty, error)
+}
+
+// UnimplementedAutoscalingPolicyServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAutoscalingPolicyServiceServer struct {
+}
+
+func (*UnimplementedAutoscalingPolicyServiceServer) CreateAutoscalingPolicy(ctx context.Context, req *CreateAutoscalingPolicyRequest) (*AutoscalingPolicy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAutoscalingPolicy not implemented")
+}
+func (*UnimplementedAutoscalingPolicyServiceServer) UpdateAutoscalingPolicy(ctx context.Context, req *UpdateAutoscalingPolicyRequest) (*AutoscalingPolicy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAutoscalingPolicy not implemented")
+}
+func (*UnimplementedAutoscalingPolicyServiceServer) GetAutoscalingPolicy(ctx context.Context, req *GetAutoscalingPolicyRequest) (*AutoscalingPolicy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAutoscalingPolicy not implemented")
+}
+func (*UnimplementedAutoscalingPolicyServiceServer) ListAutoscalingPolicies(ctx context.Context, req *ListAutoscalingPoliciesRequest) (*ListAutoscalingPoliciesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAutoscalingPolicies not implemented")
+}
+func (*UnimplementedAutoscalingPolicyServiceServer) DeleteAutoscalingPolicy(ctx context.Context, req *DeleteAutoscalingPolicyRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAutoscalingPolicy not implemented")
 }
 
 func RegisterAutoscalingPolicyServiceServer(s *grpc.Server, srv AutoscalingPolicyServiceServer) {

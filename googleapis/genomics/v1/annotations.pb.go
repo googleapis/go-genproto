@@ -16,6 +16,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2282,6 +2284,44 @@ type AnnotationServiceV1Server interface {
 	// across their respective streams of paginated responses. Caller must have
 	// READ permission for the queried annotation sets.
 	SearchAnnotations(context.Context, *SearchAnnotationsRequest) (*SearchAnnotationsResponse, error)
+}
+
+// UnimplementedAnnotationServiceV1Server can be embedded to have forward compatible implementations.
+type UnimplementedAnnotationServiceV1Server struct {
+}
+
+func (*UnimplementedAnnotationServiceV1Server) CreateAnnotationSet(ctx context.Context, req *CreateAnnotationSetRequest) (*AnnotationSet, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateAnnotationSet not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) GetAnnotationSet(ctx context.Context, req *GetAnnotationSetRequest) (*AnnotationSet, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetAnnotationSet not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) UpdateAnnotationSet(ctx context.Context, req *UpdateAnnotationSetRequest) (*AnnotationSet, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateAnnotationSet not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) DeleteAnnotationSet(ctx context.Context, req *DeleteAnnotationSetRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteAnnotationSet not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) SearchAnnotationSets(ctx context.Context, req *SearchAnnotationSetsRequest) (*SearchAnnotationSetsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method SearchAnnotationSets not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) CreateAnnotation(ctx context.Context, req *CreateAnnotationRequest) (*Annotation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateAnnotation not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) BatchCreateAnnotations(ctx context.Context, req *BatchCreateAnnotationsRequest) (*BatchCreateAnnotationsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BatchCreateAnnotations not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) GetAnnotation(ctx context.Context, req *GetAnnotationRequest) (*Annotation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetAnnotation not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) UpdateAnnotation(ctx context.Context, req *UpdateAnnotationRequest) (*Annotation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateAnnotation not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) DeleteAnnotation(ctx context.Context, req *DeleteAnnotationRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteAnnotation not implemented")
+}
+func (*UnimplementedAnnotationServiceV1Server) SearchAnnotations(ctx context.Context, req *SearchAnnotationsRequest) (*SearchAnnotationsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method SearchAnnotations not implemented")
 }
 
 func RegisterAnnotationServiceV1Server(s *grpc.Server, srv AnnotationServiceV1Server) {

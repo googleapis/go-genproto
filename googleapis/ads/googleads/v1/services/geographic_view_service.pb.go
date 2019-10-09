@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,6 +141,14 @@ func (c *geographicViewServiceClient) GetGeographicView(ctx context.Context, in 
 type GeographicViewServiceServer interface {
 	// Returns the requested geographic view in full detail.
 	GetGeographicView(context.Context, *GetGeographicViewRequest) (*resources.GeographicView, error)
+}
+
+// UnimplementedGeographicViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedGeographicViewServiceServer struct {
+}
+
+func (*UnimplementedGeographicViewServiceServer) GetGeographicView(ctx context.Context, req *GetGeographicViewRequest) (*resources.GeographicView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGeographicView not implemented")
 }
 
 func RegisterGeographicViewServiceServer(s *grpc.Server, srv GeographicViewServiceServer) {

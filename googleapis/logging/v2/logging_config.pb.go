@@ -15,6 +15,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1475,6 +1477,41 @@ type ConfigServiceV2Server interface {
 	UpdateExclusion(context.Context, *UpdateExclusionRequest) (*LogExclusion, error)
 	// Deletes an exclusion.
 	DeleteExclusion(context.Context, *DeleteExclusionRequest) (*empty.Empty, error)
+}
+
+// UnimplementedConfigServiceV2Server can be embedded to have forward compatible implementations.
+type UnimplementedConfigServiceV2Server struct {
+}
+
+func (*UnimplementedConfigServiceV2Server) ListSinks(ctx context.Context, req *ListSinksRequest) (*ListSinksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSinks not implemented")
+}
+func (*UnimplementedConfigServiceV2Server) GetSink(ctx context.Context, req *GetSinkRequest) (*LogSink, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSink not implemented")
+}
+func (*UnimplementedConfigServiceV2Server) CreateSink(ctx context.Context, req *CreateSinkRequest) (*LogSink, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSink not implemented")
+}
+func (*UnimplementedConfigServiceV2Server) UpdateSink(ctx context.Context, req *UpdateSinkRequest) (*LogSink, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSink not implemented")
+}
+func (*UnimplementedConfigServiceV2Server) DeleteSink(ctx context.Context, req *DeleteSinkRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSink not implemented")
+}
+func (*UnimplementedConfigServiceV2Server) ListExclusions(ctx context.Context, req *ListExclusionsRequest) (*ListExclusionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListExclusions not implemented")
+}
+func (*UnimplementedConfigServiceV2Server) GetExclusion(ctx context.Context, req *GetExclusionRequest) (*LogExclusion, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetExclusion not implemented")
+}
+func (*UnimplementedConfigServiceV2Server) CreateExclusion(ctx context.Context, req *CreateExclusionRequest) (*LogExclusion, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateExclusion not implemented")
+}
+func (*UnimplementedConfigServiceV2Server) UpdateExclusion(ctx context.Context, req *UpdateExclusionRequest) (*LogExclusion, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateExclusion not implemented")
+}
+func (*UnimplementedConfigServiceV2Server) DeleteExclusion(ctx context.Context, req *DeleteExclusionRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteExclusion not implemented")
 }
 
 func RegisterConfigServiceV2Server(s *grpc.Server, srv ConfigServiceV2Server) {

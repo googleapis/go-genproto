@@ -14,6 +14,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -540,6 +542,20 @@ type TasksServer interface {
 	// by the bot if it wants to create a new log; the server can also predefine
 	// logs that do not need to be created (e.g. `stdout`).
 	AddTaskLog(context.Context, *AddTaskLogRequest) (*AddTaskLogResponse, error)
+}
+
+// UnimplementedTasksServer can be embedded to have forward compatible implementations.
+type UnimplementedTasksServer struct {
+}
+
+func (*UnimplementedTasksServer) GetTask(ctx context.Context, req *GetTaskRequest) (*Task, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetTask not implemented")
+}
+func (*UnimplementedTasksServer) UpdateTaskResult(ctx context.Context, req *UpdateTaskResultRequest) (*TaskResult, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateTaskResult not implemented")
+}
+func (*UnimplementedTasksServer) AddTaskLog(ctx context.Context, req *AddTaskLogRequest) (*AddTaskLogResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method AddTaskLog not implemented")
 }
 
 func RegisterTasksServer(s *grpc.Server, srv TasksServer) {

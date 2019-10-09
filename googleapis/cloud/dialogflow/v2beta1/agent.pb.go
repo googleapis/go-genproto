@@ -14,6 +14,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1274,6 +1276,38 @@ type AgentsServer interface {
 	// Gets agent validation result. Agent validation is performed during
 	// training time and is updated automatically when training is completed.
 	GetValidationResult(context.Context, *GetValidationResultRequest) (*ValidationResult, error)
+}
+
+// UnimplementedAgentsServer can be embedded to have forward compatible implementations.
+type UnimplementedAgentsServer struct {
+}
+
+func (*UnimplementedAgentsServer) GetAgent(ctx context.Context, req *GetAgentRequest) (*Agent, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAgent not implemented")
+}
+func (*UnimplementedAgentsServer) SetAgent(ctx context.Context, req *SetAgentRequest) (*Agent, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetAgent not implemented")
+}
+func (*UnimplementedAgentsServer) DeleteAgent(ctx context.Context, req *DeleteAgentRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAgent not implemented")
+}
+func (*UnimplementedAgentsServer) SearchAgents(ctx context.Context, req *SearchAgentsRequest) (*SearchAgentsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchAgents not implemented")
+}
+func (*UnimplementedAgentsServer) TrainAgent(ctx context.Context, req *TrainAgentRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TrainAgent not implemented")
+}
+func (*UnimplementedAgentsServer) ExportAgent(ctx context.Context, req *ExportAgentRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportAgent not implemented")
+}
+func (*UnimplementedAgentsServer) ImportAgent(ctx context.Context, req *ImportAgentRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportAgent not implemented")
+}
+func (*UnimplementedAgentsServer) RestoreAgent(ctx context.Context, req *RestoreAgentRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RestoreAgent not implemented")
+}
+func (*UnimplementedAgentsServer) GetValidationResult(ctx context.Context, req *GetValidationResultRequest) (*ValidationResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetValidationResult not implemented")
 }
 
 func RegisterAgentsServer(s *grpc.Server, srv AgentsServer) {

@@ -16,6 +16,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -932,6 +934,29 @@ type DocumentsServer interface {
 	// Operation <response: [Document][google.cloud.dialogflow.v2beta1.Document],
 	//            metadata: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2beta1.KnowledgeOperationMetadata]>
 	ReloadDocument(context.Context, *ReloadDocumentRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedDocumentsServer can be embedded to have forward compatible implementations.
+type UnimplementedDocumentsServer struct {
+}
+
+func (*UnimplementedDocumentsServer) ListDocuments(ctx context.Context, req *ListDocumentsRequest) (*ListDocumentsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDocuments not implemented")
+}
+func (*UnimplementedDocumentsServer) GetDocument(ctx context.Context, req *GetDocumentRequest) (*Document, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDocument not implemented")
+}
+func (*UnimplementedDocumentsServer) CreateDocument(ctx context.Context, req *CreateDocumentRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDocument not implemented")
+}
+func (*UnimplementedDocumentsServer) DeleteDocument(ctx context.Context, req *DeleteDocumentRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDocument not implemented")
+}
+func (*UnimplementedDocumentsServer) UpdateDocument(ctx context.Context, req *UpdateDocumentRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDocument not implemented")
+}
+func (*UnimplementedDocumentsServer) ReloadDocument(ctx context.Context, req *ReloadDocumentRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReloadDocument not implemented")
 }
 
 func RegisterDocumentsServer(s *grpc.Server, srv DocumentsServer) {

@@ -12,6 +12,8 @@ import (
 	_ "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -3027,6 +3029,29 @@ type LanguageServiceServer interface {
 	// A convenience method that provides all syntax, sentiment, entity, and
 	// classification features in one call.
 	AnnotateText(context.Context, *AnnotateTextRequest) (*AnnotateTextResponse, error)
+}
+
+// UnimplementedLanguageServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedLanguageServiceServer struct {
+}
+
+func (*UnimplementedLanguageServiceServer) AnalyzeSentiment(ctx context.Context, req *AnalyzeSentimentRequest) (*AnalyzeSentimentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AnalyzeSentiment not implemented")
+}
+func (*UnimplementedLanguageServiceServer) AnalyzeEntities(ctx context.Context, req *AnalyzeEntitiesRequest) (*AnalyzeEntitiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AnalyzeEntities not implemented")
+}
+func (*UnimplementedLanguageServiceServer) AnalyzeEntitySentiment(ctx context.Context, req *AnalyzeEntitySentimentRequest) (*AnalyzeEntitySentimentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AnalyzeEntitySentiment not implemented")
+}
+func (*UnimplementedLanguageServiceServer) AnalyzeSyntax(ctx context.Context, req *AnalyzeSyntaxRequest) (*AnalyzeSyntaxResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AnalyzeSyntax not implemented")
+}
+func (*UnimplementedLanguageServiceServer) ClassifyText(ctx context.Context, req *ClassifyTextRequest) (*ClassifyTextResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ClassifyText not implemented")
+}
+func (*UnimplementedLanguageServiceServer) AnnotateText(ctx context.Context, req *AnnotateTextRequest) (*AnnotateTextResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AnnotateText not implemented")
 }
 
 func RegisterLanguageServiceServer(s *grpc.Server, srv LanguageServiceServer) {

@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -429,6 +431,17 @@ type CampaignLabelServiceServer interface {
 	// Creates and removes campaign-label relationships.
 	// Operation statuses are returned.
 	MutateCampaignLabels(context.Context, *MutateCampaignLabelsRequest) (*MutateCampaignLabelsResponse, error)
+}
+
+// UnimplementedCampaignLabelServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCampaignLabelServiceServer struct {
+}
+
+func (*UnimplementedCampaignLabelServiceServer) GetCampaignLabel(ctx context.Context, req *GetCampaignLabelRequest) (*resources.CampaignLabel, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCampaignLabel not implemented")
+}
+func (*UnimplementedCampaignLabelServiceServer) MutateCampaignLabels(ctx context.Context, req *MutateCampaignLabelsRequest) (*MutateCampaignLabelsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCampaignLabels not implemented")
 }
 
 func RegisterCampaignLabelServiceServer(s *grpc.Server, srv CampaignLabelServiceServer) {

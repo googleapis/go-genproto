@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -144,6 +146,14 @@ func (c *dynamicSearchAdsSearchTermViewServiceClient) GetDynamicSearchAdsSearchT
 type DynamicSearchAdsSearchTermViewServiceServer interface {
 	// Returns the requested dynamic search ads search term view in full detail.
 	GetDynamicSearchAdsSearchTermView(context.Context, *GetDynamicSearchAdsSearchTermViewRequest) (*resources.DynamicSearchAdsSearchTermView, error)
+}
+
+// UnimplementedDynamicSearchAdsSearchTermViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedDynamicSearchAdsSearchTermViewServiceServer struct {
+}
+
+func (*UnimplementedDynamicSearchAdsSearchTermViewServiceServer) GetDynamicSearchAdsSearchTermView(ctx context.Context, req *GetDynamicSearchAdsSearchTermViewRequest) (*resources.DynamicSearchAdsSearchTermView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDynamicSearchAdsSearchTermView not implemented")
 }
 
 func RegisterDynamicSearchAdsSearchTermViewServiceServer(s *grpc.Server, srv DynamicSearchAdsSearchTermViewServiceServer) {

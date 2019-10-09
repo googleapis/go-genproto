@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2541,6 +2543,35 @@ type TranslationServiceServer interface {
 	// if the glossary isn't created yet.
 	// Returns NOT_FOUND, if the glossary doesn't exist.
 	DeleteGlossary(context.Context, *DeleteGlossaryRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedTranslationServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedTranslationServiceServer struct {
+}
+
+func (*UnimplementedTranslationServiceServer) TranslateText(ctx context.Context, req *TranslateTextRequest) (*TranslateTextResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TranslateText not implemented")
+}
+func (*UnimplementedTranslationServiceServer) DetectLanguage(ctx context.Context, req *DetectLanguageRequest) (*DetectLanguageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DetectLanguage not implemented")
+}
+func (*UnimplementedTranslationServiceServer) GetSupportedLanguages(ctx context.Context, req *GetSupportedLanguagesRequest) (*SupportedLanguages, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSupportedLanguages not implemented")
+}
+func (*UnimplementedTranslationServiceServer) BatchTranslateText(ctx context.Context, req *BatchTranslateTextRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchTranslateText not implemented")
+}
+func (*UnimplementedTranslationServiceServer) CreateGlossary(ctx context.Context, req *CreateGlossaryRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateGlossary not implemented")
+}
+func (*UnimplementedTranslationServiceServer) ListGlossaries(ctx context.Context, req *ListGlossariesRequest) (*ListGlossariesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGlossaries not implemented")
+}
+func (*UnimplementedTranslationServiceServer) GetGlossary(ctx context.Context, req *GetGlossaryRequest) (*Glossary, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGlossary not implemented")
+}
+func (*UnimplementedTranslationServiceServer) DeleteGlossary(ctx context.Context, req *DeleteGlossaryRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteGlossary not implemented")
 }
 
 func RegisterTranslationServiceServer(s *grpc.Server, srv TranslationServiceServer) {

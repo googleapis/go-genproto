@@ -15,6 +15,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1090,6 +1092,41 @@ type NotificationChannelServiceServer interface {
 	// delivered to the channel as a result of calling
 	// `SendNotificationChannelVerificationCode`.
 	VerifyNotificationChannel(context.Context, *VerifyNotificationChannelRequest) (*NotificationChannel, error)
+}
+
+// UnimplementedNotificationChannelServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedNotificationChannelServiceServer struct {
+}
+
+func (*UnimplementedNotificationChannelServiceServer) ListNotificationChannelDescriptors(ctx context.Context, req *ListNotificationChannelDescriptorsRequest) (*ListNotificationChannelDescriptorsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNotificationChannelDescriptors not implemented")
+}
+func (*UnimplementedNotificationChannelServiceServer) GetNotificationChannelDescriptor(ctx context.Context, req *GetNotificationChannelDescriptorRequest) (*NotificationChannelDescriptor, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNotificationChannelDescriptor not implemented")
+}
+func (*UnimplementedNotificationChannelServiceServer) ListNotificationChannels(ctx context.Context, req *ListNotificationChannelsRequest) (*ListNotificationChannelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListNotificationChannels not implemented")
+}
+func (*UnimplementedNotificationChannelServiceServer) GetNotificationChannel(ctx context.Context, req *GetNotificationChannelRequest) (*NotificationChannel, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNotificationChannel not implemented")
+}
+func (*UnimplementedNotificationChannelServiceServer) CreateNotificationChannel(ctx context.Context, req *CreateNotificationChannelRequest) (*NotificationChannel, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNotificationChannel not implemented")
+}
+func (*UnimplementedNotificationChannelServiceServer) UpdateNotificationChannel(ctx context.Context, req *UpdateNotificationChannelRequest) (*NotificationChannel, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNotificationChannel not implemented")
+}
+func (*UnimplementedNotificationChannelServiceServer) DeleteNotificationChannel(ctx context.Context, req *DeleteNotificationChannelRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteNotificationChannel not implemented")
+}
+func (*UnimplementedNotificationChannelServiceServer) SendNotificationChannelVerificationCode(ctx context.Context, req *SendNotificationChannelVerificationCodeRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendNotificationChannelVerificationCode not implemented")
+}
+func (*UnimplementedNotificationChannelServiceServer) GetNotificationChannelVerificationCode(ctx context.Context, req *GetNotificationChannelVerificationCodeRequest) (*GetNotificationChannelVerificationCodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNotificationChannelVerificationCode not implemented")
+}
+func (*UnimplementedNotificationChannelServiceServer) VerifyNotificationChannel(ctx context.Context, req *VerifyNotificationChannelRequest) (*NotificationChannel, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VerifyNotificationChannel not implemented")
 }
 
 func RegisterNotificationChannelServiceServer(s *grpc.Server, srv NotificationChannelServiceServer) {

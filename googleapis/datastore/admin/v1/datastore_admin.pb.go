@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1137,6 +1139,23 @@ type DatastoreAdminServer interface {
 	// eventually consistent query to fetch the list of indexes and may
 	// occasionally return stale results.
 	ListIndexes(context.Context, *ListIndexesRequest) (*ListIndexesResponse, error)
+}
+
+// UnimplementedDatastoreAdminServer can be embedded to have forward compatible implementations.
+type UnimplementedDatastoreAdminServer struct {
+}
+
+func (*UnimplementedDatastoreAdminServer) ExportEntities(ctx context.Context, req *ExportEntitiesRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportEntities not implemented")
+}
+func (*UnimplementedDatastoreAdminServer) ImportEntities(ctx context.Context, req *ImportEntitiesRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportEntities not implemented")
+}
+func (*UnimplementedDatastoreAdminServer) GetIndex(ctx context.Context, req *GetIndexRequest) (*Index, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIndex not implemented")
+}
+func (*UnimplementedDatastoreAdminServer) ListIndexes(ctx context.Context, req *ListIndexesRequest) (*ListIndexesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIndexes not implemented")
 }
 
 func RegisterDatastoreAdminServer(s *grpc.Server, srv DatastoreAdminServer) {

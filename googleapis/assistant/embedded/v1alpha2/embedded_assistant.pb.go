@@ -12,6 +12,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1583,6 +1585,14 @@ type EmbeddedAssistantServer interface {
 	// `AssistResponse.audio_out` messages will always contain sequential portions
 	// of audio.
 	Assist(EmbeddedAssistant_AssistServer) error
+}
+
+// UnimplementedEmbeddedAssistantServer can be embedded to have forward compatible implementations.
+type UnimplementedEmbeddedAssistantServer struct {
+}
+
+func (*UnimplementedEmbeddedAssistantServer) Assist(srv EmbeddedAssistant_AssistServer) error {
+	return status.Errorf(codes.Unimplemented, "method Assist not implemented")
 }
 
 func RegisterEmbeddedAssistantServer(s *grpc.Server, srv EmbeddedAssistantServer) {

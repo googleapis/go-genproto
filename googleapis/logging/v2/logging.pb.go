@@ -16,6 +16,8 @@ import (
 	monitoredres "google.golang.org/genproto/googleapis/api/monitoredres"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -918,6 +920,26 @@ type LoggingServiceV2Server interface {
 	// Lists the logs in projects, organizations, folders, or billing accounts.
 	// Only logs that have entries are listed.
 	ListLogs(context.Context, *ListLogsRequest) (*ListLogsResponse, error)
+}
+
+// UnimplementedLoggingServiceV2Server can be embedded to have forward compatible implementations.
+type UnimplementedLoggingServiceV2Server struct {
+}
+
+func (*UnimplementedLoggingServiceV2Server) DeleteLog(ctx context.Context, req *DeleteLogRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteLog not implemented")
+}
+func (*UnimplementedLoggingServiceV2Server) WriteLogEntries(ctx context.Context, req *WriteLogEntriesRequest) (*WriteLogEntriesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method WriteLogEntries not implemented")
+}
+func (*UnimplementedLoggingServiceV2Server) ListLogEntries(ctx context.Context, req *ListLogEntriesRequest) (*ListLogEntriesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListLogEntries not implemented")
+}
+func (*UnimplementedLoggingServiceV2Server) ListMonitoredResourceDescriptors(ctx context.Context, req *ListMonitoredResourceDescriptorsRequest) (*ListMonitoredResourceDescriptorsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListMonitoredResourceDescriptors not implemented")
+}
+func (*UnimplementedLoggingServiceV2Server) ListLogs(ctx context.Context, req *ListLogsRequest) (*ListLogsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListLogs not implemented")
 }
 
 func RegisterLoggingServiceV2Server(s *grpc.Server, srv LoggingServiceV2Server) {

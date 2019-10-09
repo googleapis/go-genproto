@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -775,6 +777,17 @@ type TextToSpeechServer interface {
 	// Synthesizes speech synchronously: receive results after all text input
 	// has been processed.
 	SynthesizeSpeech(context.Context, *SynthesizeSpeechRequest) (*SynthesizeSpeechResponse, error)
+}
+
+// UnimplementedTextToSpeechServer can be embedded to have forward compatible implementations.
+type UnimplementedTextToSpeechServer struct {
+}
+
+func (*UnimplementedTextToSpeechServer) ListVoices(ctx context.Context, req *ListVoicesRequest) (*ListVoicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVoices not implemented")
+}
+func (*UnimplementedTextToSpeechServer) SynthesizeSpeech(ctx context.Context, req *SynthesizeSpeechRequest) (*SynthesizeSpeechResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SynthesizeSpeech not implemented")
 }
 
 func RegisterTextToSpeechServer(s *grpc.Server, srv TextToSpeechServer) {

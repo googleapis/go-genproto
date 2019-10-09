@@ -15,6 +15,8 @@ import (
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2674,6 +2676,77 @@ type IAMServer interface {
 	// Lists the permissions testable on a resource.
 	// A permission is testable if it can be tested for an identity on a resource.
 	QueryTestablePermissions(context.Context, *QueryTestablePermissionsRequest) (*QueryTestablePermissionsResponse, error)
+}
+
+// UnimplementedIAMServer can be embedded to have forward compatible implementations.
+type UnimplementedIAMServer struct {
+}
+
+func (*UnimplementedIAMServer) ListServiceAccounts(ctx context.Context, req *ListServiceAccountsRequest) (*ListServiceAccountsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListServiceAccounts not implemented")
+}
+func (*UnimplementedIAMServer) GetServiceAccount(ctx context.Context, req *GetServiceAccountRequest) (*ServiceAccount, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServiceAccount not implemented")
+}
+func (*UnimplementedIAMServer) CreateServiceAccount(ctx context.Context, req *CreateServiceAccountRequest) (*ServiceAccount, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateServiceAccount not implemented")
+}
+func (*UnimplementedIAMServer) UpdateServiceAccount(ctx context.Context, req *ServiceAccount) (*ServiceAccount, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateServiceAccount not implemented")
+}
+func (*UnimplementedIAMServer) DeleteServiceAccount(ctx context.Context, req *DeleteServiceAccountRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteServiceAccount not implemented")
+}
+func (*UnimplementedIAMServer) ListServiceAccountKeys(ctx context.Context, req *ListServiceAccountKeysRequest) (*ListServiceAccountKeysResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListServiceAccountKeys not implemented")
+}
+func (*UnimplementedIAMServer) GetServiceAccountKey(ctx context.Context, req *GetServiceAccountKeyRequest) (*ServiceAccountKey, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServiceAccountKey not implemented")
+}
+func (*UnimplementedIAMServer) CreateServiceAccountKey(ctx context.Context, req *CreateServiceAccountKeyRequest) (*ServiceAccountKey, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateServiceAccountKey not implemented")
+}
+func (*UnimplementedIAMServer) DeleteServiceAccountKey(ctx context.Context, req *DeleteServiceAccountKeyRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteServiceAccountKey not implemented")
+}
+func (*UnimplementedIAMServer) SignBlob(ctx context.Context, req *SignBlobRequest) (*SignBlobResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SignBlob not implemented")
+}
+func (*UnimplementedIAMServer) SignJwt(ctx context.Context, req *SignJwtRequest) (*SignJwtResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SignJwt not implemented")
+}
+func (*UnimplementedIAMServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedIAMServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedIAMServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
+}
+func (*UnimplementedIAMServer) QueryGrantableRoles(ctx context.Context, req *QueryGrantableRolesRequest) (*QueryGrantableRolesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method QueryGrantableRoles not implemented")
+}
+func (*UnimplementedIAMServer) ListRoles(ctx context.Context, req *ListRolesRequest) (*ListRolesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRoles not implemented")
+}
+func (*UnimplementedIAMServer) GetRole(ctx context.Context, req *GetRoleRequest) (*Role, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRole not implemented")
+}
+func (*UnimplementedIAMServer) CreateRole(ctx context.Context, req *CreateRoleRequest) (*Role, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRole not implemented")
+}
+func (*UnimplementedIAMServer) UpdateRole(ctx context.Context, req *UpdateRoleRequest) (*Role, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRole not implemented")
+}
+func (*UnimplementedIAMServer) DeleteRole(ctx context.Context, req *DeleteRoleRequest) (*Role, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRole not implemented")
+}
+func (*UnimplementedIAMServer) UndeleteRole(ctx context.Context, req *UndeleteRoleRequest) (*Role, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UndeleteRole not implemented")
+}
+func (*UnimplementedIAMServer) QueryTestablePermissions(ctx context.Context, req *QueryTestablePermissionsRequest) (*QueryTestablePermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method QueryTestablePermissions not implemented")
 }
 
 func RegisterIAMServer(s *grpc.Server, srv IAMServer) {

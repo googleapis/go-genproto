@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -560,6 +562,14 @@ type QuotaControllerServer interface {
 	// reliability, the server may inject these errors to prohibit any hard
 	// dependency on the quota functionality.
 	AllocateQuota(context.Context, *AllocateQuotaRequest) (*AllocateQuotaResponse, error)
+}
+
+// UnimplementedQuotaControllerServer can be embedded to have forward compatible implementations.
+type UnimplementedQuotaControllerServer struct {
+}
+
+func (*UnimplementedQuotaControllerServer) AllocateQuota(ctx context.Context, req *AllocateQuotaRequest) (*AllocateQuotaResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AllocateQuota not implemented")
 }
 
 func RegisterQuotaControllerServer(s *grpc.Server, srv QuotaControllerServer) {

@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -447,6 +449,14 @@ type CompletionServer interface {
 	// Completes the specified prefix with keyword suggestions.
 	// Intended for use by a job search auto-complete search box.
 	CompleteQuery(context.Context, *CompleteQueryRequest) (*CompleteQueryResponse, error)
+}
+
+// UnimplementedCompletionServer can be embedded to have forward compatible implementations.
+type UnimplementedCompletionServer struct {
+}
+
+func (*UnimplementedCompletionServer) CompleteQuery(ctx context.Context, req *CompleteQueryRequest) (*CompleteQueryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompleteQuery not implemented")
 }
 
 func RegisterCompletionServer(s *grpc.Server, srv CompletionServer) {

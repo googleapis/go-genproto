@@ -13,6 +13,8 @@ import (
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1359,6 +1361,26 @@ type BigQueryStorageServer interface {
 	//
 	// This method is guaranteed to be idempotent.
 	SplitReadStream(context.Context, *SplitReadStreamRequest) (*SplitReadStreamResponse, error)
+}
+
+// UnimplementedBigQueryStorageServer can be embedded to have forward compatible implementations.
+type UnimplementedBigQueryStorageServer struct {
+}
+
+func (*UnimplementedBigQueryStorageServer) CreateReadSession(ctx context.Context, req *CreateReadSessionRequest) (*ReadSession, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateReadSession not implemented")
+}
+func (*UnimplementedBigQueryStorageServer) ReadRows(req *ReadRowsRequest, srv BigQueryStorage_ReadRowsServer) error {
+	return status.Errorf(codes.Unimplemented, "method ReadRows not implemented")
+}
+func (*UnimplementedBigQueryStorageServer) BatchCreateReadSessionStreams(ctx context.Context, req *BatchCreateReadSessionStreamsRequest) (*BatchCreateReadSessionStreamsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchCreateReadSessionStreams not implemented")
+}
+func (*UnimplementedBigQueryStorageServer) FinalizeStream(ctx context.Context, req *FinalizeStreamRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FinalizeStream not implemented")
+}
+func (*UnimplementedBigQueryStorageServer) SplitReadStream(ctx context.Context, req *SplitReadStreamRequest) (*SplitReadStreamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SplitReadStream not implemented")
 }
 
 func RegisterBigQueryStorageServer(s *grpc.Server, srv BigQueryStorageServer) {

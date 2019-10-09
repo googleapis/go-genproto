@@ -13,6 +13,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2230,6 +2232,83 @@ type AutoMlServer interface {
 	GetModelEvaluation(context.Context, *GetModelEvaluationRequest) (*ModelEvaluation, error)
 	// Lists model evaluations.
 	ListModelEvaluations(context.Context, *ListModelEvaluationsRequest) (*ListModelEvaluationsResponse, error)
+}
+
+// UnimplementedAutoMlServer can be embedded to have forward compatible implementations.
+type UnimplementedAutoMlServer struct {
+}
+
+func (*UnimplementedAutoMlServer) CreateDataset(ctx context.Context, req *CreateDatasetRequest) (*Dataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDataset not implemented")
+}
+func (*UnimplementedAutoMlServer) GetDataset(ctx context.Context, req *GetDatasetRequest) (*Dataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDataset not implemented")
+}
+func (*UnimplementedAutoMlServer) ListDatasets(ctx context.Context, req *ListDatasetsRequest) (*ListDatasetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDatasets not implemented")
+}
+func (*UnimplementedAutoMlServer) UpdateDataset(ctx context.Context, req *UpdateDatasetRequest) (*Dataset, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDataset not implemented")
+}
+func (*UnimplementedAutoMlServer) DeleteDataset(ctx context.Context, req *DeleteDatasetRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDataset not implemented")
+}
+func (*UnimplementedAutoMlServer) ImportData(ctx context.Context, req *ImportDataRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportData not implemented")
+}
+func (*UnimplementedAutoMlServer) ExportData(ctx context.Context, req *ExportDataRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportData not implemented")
+}
+func (*UnimplementedAutoMlServer) GetAnnotationSpec(ctx context.Context, req *GetAnnotationSpecRequest) (*AnnotationSpec, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAnnotationSpec not implemented")
+}
+func (*UnimplementedAutoMlServer) GetTableSpec(ctx context.Context, req *GetTableSpecRequest) (*TableSpec, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTableSpec not implemented")
+}
+func (*UnimplementedAutoMlServer) ListTableSpecs(ctx context.Context, req *ListTableSpecsRequest) (*ListTableSpecsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTableSpecs not implemented")
+}
+func (*UnimplementedAutoMlServer) UpdateTableSpec(ctx context.Context, req *UpdateTableSpecRequest) (*TableSpec, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTableSpec not implemented")
+}
+func (*UnimplementedAutoMlServer) GetColumnSpec(ctx context.Context, req *GetColumnSpecRequest) (*ColumnSpec, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetColumnSpec not implemented")
+}
+func (*UnimplementedAutoMlServer) ListColumnSpecs(ctx context.Context, req *ListColumnSpecsRequest) (*ListColumnSpecsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListColumnSpecs not implemented")
+}
+func (*UnimplementedAutoMlServer) UpdateColumnSpec(ctx context.Context, req *UpdateColumnSpecRequest) (*ColumnSpec, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateColumnSpec not implemented")
+}
+func (*UnimplementedAutoMlServer) CreateModel(ctx context.Context, req *CreateModelRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateModel not implemented")
+}
+func (*UnimplementedAutoMlServer) GetModel(ctx context.Context, req *GetModelRequest) (*Model, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetModel not implemented")
+}
+func (*UnimplementedAutoMlServer) ListModels(ctx context.Context, req *ListModelsRequest) (*ListModelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListModels not implemented")
+}
+func (*UnimplementedAutoMlServer) DeleteModel(ctx context.Context, req *DeleteModelRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteModel not implemented")
+}
+func (*UnimplementedAutoMlServer) DeployModel(ctx context.Context, req *DeployModelRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeployModel not implemented")
+}
+func (*UnimplementedAutoMlServer) UndeployModel(ctx context.Context, req *UndeployModelRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UndeployModel not implemented")
+}
+func (*UnimplementedAutoMlServer) ExportModel(ctx context.Context, req *ExportModelRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportModel not implemented")
+}
+func (*UnimplementedAutoMlServer) ExportEvaluatedExamples(ctx context.Context, req *ExportEvaluatedExamplesRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportEvaluatedExamples not implemented")
+}
+func (*UnimplementedAutoMlServer) GetModelEvaluation(ctx context.Context, req *GetModelEvaluationRequest) (*ModelEvaluation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetModelEvaluation not implemented")
+}
+func (*UnimplementedAutoMlServer) ListModelEvaluations(ctx context.Context, req *ListModelEvaluationsRequest) (*ListModelEvaluationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListModelEvaluations not implemented")
 }
 
 func RegisterAutoMlServer(s *grpc.Server, srv AutoMlServer) {

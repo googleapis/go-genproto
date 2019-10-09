@@ -13,6 +13,8 @@ import (
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -799,6 +801,20 @@ type TraceServiceServer interface {
 	// and any new fields provided are merged with the existing trace data. If the
 	// ID does not match, a new trace is created.
 	PatchTraces(context.Context, *PatchTracesRequest) (*empty.Empty, error)
+}
+
+// UnimplementedTraceServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedTraceServiceServer struct {
+}
+
+func (*UnimplementedTraceServiceServer) ListTraces(ctx context.Context, req *ListTracesRequest) (*ListTracesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTraces not implemented")
+}
+func (*UnimplementedTraceServiceServer) GetTrace(ctx context.Context, req *GetTraceRequest) (*Trace, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTrace not implemented")
+}
+func (*UnimplementedTraceServiceServer) PatchTraces(ctx context.Context, req *PatchTracesRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PatchTraces not implemented")
 }
 
 func RegisterTraceServiceServer(s *grpc.Server, srv TraceServiceServer) {

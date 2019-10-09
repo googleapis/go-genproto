@@ -16,6 +16,8 @@ import (
 	metric "google.golang.org/genproto/googleapis/api/metric"
 	_ "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -749,6 +751,26 @@ type MetricsServiceV2Server interface {
 	UpdateLogMetric(context.Context, *UpdateLogMetricRequest) (*LogMetric, error)
 	// Deletes a logs-based metric.
 	DeleteLogMetric(context.Context, *DeleteLogMetricRequest) (*empty.Empty, error)
+}
+
+// UnimplementedMetricsServiceV2Server can be embedded to have forward compatible implementations.
+type UnimplementedMetricsServiceV2Server struct {
+}
+
+func (*UnimplementedMetricsServiceV2Server) ListLogMetrics(ctx context.Context, req *ListLogMetricsRequest) (*ListLogMetricsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListLogMetrics not implemented")
+}
+func (*UnimplementedMetricsServiceV2Server) GetLogMetric(ctx context.Context, req *GetLogMetricRequest) (*LogMetric, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLogMetric not implemented")
+}
+func (*UnimplementedMetricsServiceV2Server) CreateLogMetric(ctx context.Context, req *CreateLogMetricRequest) (*LogMetric, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateLogMetric not implemented")
+}
+func (*UnimplementedMetricsServiceV2Server) UpdateLogMetric(ctx context.Context, req *UpdateLogMetricRequest) (*LogMetric, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateLogMetric not implemented")
+}
+func (*UnimplementedMetricsServiceV2Server) DeleteLogMetric(ctx context.Context, req *DeleteLogMetricRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteLogMetric not implemented")
 }
 
 func RegisterMetricsServiceV2Server(s *grpc.Server, srv MetricsServiceV2Server) {

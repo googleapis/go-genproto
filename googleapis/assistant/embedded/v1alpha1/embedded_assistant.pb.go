@@ -12,6 +12,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -951,6 +953,14 @@ type EmbeddedAssistantServer interface {
 	// ConverseResponse.audio_out messages will always contain sequential portions
 	// of audio.
 	Converse(EmbeddedAssistant_ConverseServer) error
+}
+
+// UnimplementedEmbeddedAssistantServer can be embedded to have forward compatible implementations.
+type UnimplementedEmbeddedAssistantServer struct {
+}
+
+func (*UnimplementedEmbeddedAssistantServer) Converse(srv EmbeddedAssistant_ConverseServer) error {
+	return status1.Errorf(codes.Unimplemented, "method Converse not implemented")
 }
 
 func RegisterEmbeddedAssistantServer(s *grpc.Server, srv EmbeddedAssistantServer) {

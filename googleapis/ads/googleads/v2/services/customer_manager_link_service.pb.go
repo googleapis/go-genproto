@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -385,6 +387,17 @@ type CustomerManagerLinkServiceServer interface {
 	GetCustomerManagerLink(context.Context, *GetCustomerManagerLinkRequest) (*resources.CustomerManagerLink, error)
 	// Creates or updates customer manager links. Operation statuses are returned.
 	MutateCustomerManagerLink(context.Context, *MutateCustomerManagerLinkRequest) (*MutateCustomerManagerLinkResponse, error)
+}
+
+// UnimplementedCustomerManagerLinkServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCustomerManagerLinkServiceServer struct {
+}
+
+func (*UnimplementedCustomerManagerLinkServiceServer) GetCustomerManagerLink(ctx context.Context, req *GetCustomerManagerLinkRequest) (*resources.CustomerManagerLink, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCustomerManagerLink not implemented")
+}
+func (*UnimplementedCustomerManagerLinkServiceServer) MutateCustomerManagerLink(ctx context.Context, req *MutateCustomerManagerLinkRequest) (*MutateCustomerManagerLinkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateCustomerManagerLink not implemented")
 }
 
 func RegisterCustomerManagerLinkServiceServer(s *grpc.Server, srv CustomerManagerLinkServiceServer) {

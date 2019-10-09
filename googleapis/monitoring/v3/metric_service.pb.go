@@ -16,6 +16,8 @@ import (
 	monitoredres "google.golang.org/genproto/googleapis/api/monitoredres"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1037,6 +1039,35 @@ type MetricServiceServer interface {
 	// If any time series could not be written, a corresponding failure message is
 	// included in the error response.
 	CreateTimeSeries(context.Context, *CreateTimeSeriesRequest) (*empty.Empty, error)
+}
+
+// UnimplementedMetricServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedMetricServiceServer struct {
+}
+
+func (*UnimplementedMetricServiceServer) ListMonitoredResourceDescriptors(ctx context.Context, req *ListMonitoredResourceDescriptorsRequest) (*ListMonitoredResourceDescriptorsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListMonitoredResourceDescriptors not implemented")
+}
+func (*UnimplementedMetricServiceServer) GetMonitoredResourceDescriptor(ctx context.Context, req *GetMonitoredResourceDescriptorRequest) (*monitoredres.MonitoredResourceDescriptor, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetMonitoredResourceDescriptor not implemented")
+}
+func (*UnimplementedMetricServiceServer) ListMetricDescriptors(ctx context.Context, req *ListMetricDescriptorsRequest) (*ListMetricDescriptorsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListMetricDescriptors not implemented")
+}
+func (*UnimplementedMetricServiceServer) GetMetricDescriptor(ctx context.Context, req *GetMetricDescriptorRequest) (*metric.MetricDescriptor, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetMetricDescriptor not implemented")
+}
+func (*UnimplementedMetricServiceServer) CreateMetricDescriptor(ctx context.Context, req *CreateMetricDescriptorRequest) (*metric.MetricDescriptor, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateMetricDescriptor not implemented")
+}
+func (*UnimplementedMetricServiceServer) DeleteMetricDescriptor(ctx context.Context, req *DeleteMetricDescriptorRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteMetricDescriptor not implemented")
+}
+func (*UnimplementedMetricServiceServer) ListTimeSeries(ctx context.Context, req *ListTimeSeriesRequest) (*ListTimeSeriesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListTimeSeries not implemented")
+}
+func (*UnimplementedMetricServiceServer) CreateTimeSeries(ctx context.Context, req *CreateTimeSeriesRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateTimeSeries not implemented")
 }
 
 func RegisterMetricServiceServer(s *grpc.Server, srv MetricServiceServer) {

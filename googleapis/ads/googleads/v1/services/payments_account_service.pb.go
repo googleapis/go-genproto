@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -187,6 +189,14 @@ type PaymentsAccountServiceServer interface {
 	// between the login customer ID and specified serving customer in the
 	// hierarchy, inclusive.
 	ListPaymentsAccounts(context.Context, *ListPaymentsAccountsRequest) (*ListPaymentsAccountsResponse, error)
+}
+
+// UnimplementedPaymentsAccountServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedPaymentsAccountServiceServer struct {
+}
+
+func (*UnimplementedPaymentsAccountServiceServer) ListPaymentsAccounts(ctx context.Context, req *ListPaymentsAccountsRequest) (*ListPaymentsAccountsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPaymentsAccounts not implemented")
 }
 
 func RegisterPaymentsAccountServiceServer(s *grpc.Server, srv PaymentsAccountServiceServer) {

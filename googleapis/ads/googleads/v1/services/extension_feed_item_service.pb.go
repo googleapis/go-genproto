@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -429,6 +431,17 @@ type ExtensionFeedItemServiceServer interface {
 	// Creates, updates, or removes extension feed items. Operation
 	// statuses are returned.
 	MutateExtensionFeedItems(context.Context, *MutateExtensionFeedItemsRequest) (*MutateExtensionFeedItemsResponse, error)
+}
+
+// UnimplementedExtensionFeedItemServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedExtensionFeedItemServiceServer struct {
+}
+
+func (*UnimplementedExtensionFeedItemServiceServer) GetExtensionFeedItem(ctx context.Context, req *GetExtensionFeedItemRequest) (*resources.ExtensionFeedItem, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetExtensionFeedItem not implemented")
+}
+func (*UnimplementedExtensionFeedItemServiceServer) MutateExtensionFeedItems(ctx context.Context, req *MutateExtensionFeedItemsRequest) (*MutateExtensionFeedItemsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateExtensionFeedItems not implemented")
 }
 
 func RegisterExtensionFeedItemServiceServer(s *grpc.Server, srv ExtensionFeedItemServiceServer) {

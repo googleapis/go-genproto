@@ -14,6 +14,8 @@ import (
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2575,6 +2577,23 @@ type ModelServiceServer interface {
 	PatchModel(context.Context, *PatchModelRequest) (*Model, error)
 	// Deletes the model specified by modelId from the dataset.
 	DeleteModel(context.Context, *DeleteModelRequest) (*empty.Empty, error)
+}
+
+// UnimplementedModelServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedModelServiceServer struct {
+}
+
+func (*UnimplementedModelServiceServer) GetModel(ctx context.Context, req *GetModelRequest) (*Model, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetModel not implemented")
+}
+func (*UnimplementedModelServiceServer) ListModels(ctx context.Context, req *ListModelsRequest) (*ListModelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListModels not implemented")
+}
+func (*UnimplementedModelServiceServer) PatchModel(ctx context.Context, req *PatchModelRequest) (*Model, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PatchModel not implemented")
+}
+func (*UnimplementedModelServiceServer) DeleteModel(ctx context.Context, req *DeleteModelRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteModel not implemented")
 }
 
 func RegisterModelServiceServer(s *grpc.Server, srv ModelServiceServer) {

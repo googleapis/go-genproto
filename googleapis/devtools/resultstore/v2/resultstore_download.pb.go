@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2014,6 +2016,53 @@ type ResultStoreDownloadServer interface {
 	// - If the given resource name is badly formatted.
 	// - If no field mask was given.
 	TraverseFileSets(context.Context, *TraverseFileSetsRequest) (*TraverseFileSetsResponse, error)
+}
+
+// UnimplementedResultStoreDownloadServer can be embedded to have forward compatible implementations.
+type UnimplementedResultStoreDownloadServer struct {
+}
+
+func (*UnimplementedResultStoreDownloadServer) GetInvocation(ctx context.Context, req *GetInvocationRequest) (*Invocation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInvocation not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) SearchInvocations(ctx context.Context, req *SearchInvocationsRequest) (*SearchInvocationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchInvocations not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) GetInvocationDownloadMetadata(ctx context.Context, req *GetInvocationDownloadMetadataRequest) (*DownloadMetadata, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInvocationDownloadMetadata not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) GetConfiguration(ctx context.Context, req *GetConfigurationRequest) (*Configuration, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetConfiguration not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) ListConfigurations(ctx context.Context, req *ListConfigurationsRequest) (*ListConfigurationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListConfigurations not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) GetTarget(ctx context.Context, req *GetTargetRequest) (*Target, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTarget not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) ListTargets(ctx context.Context, req *ListTargetsRequest) (*ListTargetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTargets not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) GetConfiguredTarget(ctx context.Context, req *GetConfiguredTargetRequest) (*ConfiguredTarget, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetConfiguredTarget not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) ListConfiguredTargets(ctx context.Context, req *ListConfiguredTargetsRequest) (*ListConfiguredTargetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListConfiguredTargets not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) GetAction(ctx context.Context, req *GetActionRequest) (*Action, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAction not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) ListActions(ctx context.Context, req *ListActionsRequest) (*ListActionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListActions not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) GetFileSet(ctx context.Context, req *GetFileSetRequest) (*FileSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFileSet not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) ListFileSets(ctx context.Context, req *ListFileSetsRequest) (*ListFileSetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFileSets not implemented")
+}
+func (*UnimplementedResultStoreDownloadServer) TraverseFileSets(ctx context.Context, req *TraverseFileSetsRequest) (*TraverseFileSetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TraverseFileSets not implemented")
 }
 
 func RegisterResultStoreDownloadServer(s *grpc.Server, srv ResultStoreDownloadServer) {

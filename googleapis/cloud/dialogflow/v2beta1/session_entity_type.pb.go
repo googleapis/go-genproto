@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -680,6 +682,26 @@ type SessionEntityTypesServer interface {
 	// Contact Dialogflow support if you need to use session entities
 	// with Google Assistant integration.
 	DeleteSessionEntityType(context.Context, *DeleteSessionEntityTypeRequest) (*empty.Empty, error)
+}
+
+// UnimplementedSessionEntityTypesServer can be embedded to have forward compatible implementations.
+type UnimplementedSessionEntityTypesServer struct {
+}
+
+func (*UnimplementedSessionEntityTypesServer) ListSessionEntityTypes(ctx context.Context, req *ListSessionEntityTypesRequest) (*ListSessionEntityTypesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListSessionEntityTypes not implemented")
+}
+func (*UnimplementedSessionEntityTypesServer) GetSessionEntityType(ctx context.Context, req *GetSessionEntityTypeRequest) (*SessionEntityType, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSessionEntityType not implemented")
+}
+func (*UnimplementedSessionEntityTypesServer) CreateSessionEntityType(ctx context.Context, req *CreateSessionEntityTypeRequest) (*SessionEntityType, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateSessionEntityType not implemented")
+}
+func (*UnimplementedSessionEntityTypesServer) UpdateSessionEntityType(ctx context.Context, req *UpdateSessionEntityTypeRequest) (*SessionEntityType, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSessionEntityType not implemented")
+}
+func (*UnimplementedSessionEntityTypesServer) DeleteSessionEntityType(ctx context.Context, req *DeleteSessionEntityTypeRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSessionEntityType not implemented")
 }
 
 func RegisterSessionEntityTypesServer(s *grpc.Server, srv SessionEntityTypesServer) {

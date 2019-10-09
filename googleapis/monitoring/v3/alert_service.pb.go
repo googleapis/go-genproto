@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -552,6 +554,26 @@ type AlertPolicyServiceServer interface {
 	// specifying the fields to be updated via `updateMask`. Returns the
 	// updated alerting policy.
 	UpdateAlertPolicy(context.Context, *UpdateAlertPolicyRequest) (*AlertPolicy, error)
+}
+
+// UnimplementedAlertPolicyServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAlertPolicyServiceServer struct {
+}
+
+func (*UnimplementedAlertPolicyServiceServer) ListAlertPolicies(ctx context.Context, req *ListAlertPoliciesRequest) (*ListAlertPoliciesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAlertPolicies not implemented")
+}
+func (*UnimplementedAlertPolicyServiceServer) GetAlertPolicy(ctx context.Context, req *GetAlertPolicyRequest) (*AlertPolicy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAlertPolicy not implemented")
+}
+func (*UnimplementedAlertPolicyServiceServer) CreateAlertPolicy(ctx context.Context, req *CreateAlertPolicyRequest) (*AlertPolicy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAlertPolicy not implemented")
+}
+func (*UnimplementedAlertPolicyServiceServer) DeleteAlertPolicy(ctx context.Context, req *DeleteAlertPolicyRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAlertPolicy not implemented")
+}
+func (*UnimplementedAlertPolicyServiceServer) UpdateAlertPolicy(ctx context.Context, req *UpdateAlertPolicyRequest) (*AlertPolicy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAlertPolicy not implemented")
 }
 
 func RegisterAlertPolicyServiceServer(s *grpc.Server, srv AlertPolicyServiceServer) {

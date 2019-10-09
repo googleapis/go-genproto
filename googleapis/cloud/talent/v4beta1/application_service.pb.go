@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -510,6 +512,26 @@ type ApplicationServiceServer interface {
 	DeleteApplication(context.Context, *DeleteApplicationRequest) (*empty.Empty, error)
 	// Lists all applications associated with the profile.
 	ListApplications(context.Context, *ListApplicationsRequest) (*ListApplicationsResponse, error)
+}
+
+// UnimplementedApplicationServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedApplicationServiceServer struct {
+}
+
+func (*UnimplementedApplicationServiceServer) CreateApplication(ctx context.Context, req *CreateApplicationRequest) (*Application, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateApplication not implemented")
+}
+func (*UnimplementedApplicationServiceServer) GetApplication(ctx context.Context, req *GetApplicationRequest) (*Application, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetApplication not implemented")
+}
+func (*UnimplementedApplicationServiceServer) UpdateApplication(ctx context.Context, req *UpdateApplicationRequest) (*Application, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateApplication not implemented")
+}
+func (*UnimplementedApplicationServiceServer) DeleteApplication(ctx context.Context, req *DeleteApplicationRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteApplication not implemented")
+}
+func (*UnimplementedApplicationServiceServer) ListApplications(ctx context.Context, req *ListApplicationsRequest) (*ListApplicationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListApplications not implemented")
 }
 
 func RegisterApplicationServiceServer(s *grpc.Server, srv ApplicationServiceServer) {

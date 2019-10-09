@@ -14,6 +14,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -462,6 +464,17 @@ type AdGroupExtensionSettingServiceServer interface {
 	// Creates, updates, or removes ad group extension settings. Operation
 	// statuses are returned.
 	MutateAdGroupExtensionSettings(context.Context, *MutateAdGroupExtensionSettingsRequest) (*MutateAdGroupExtensionSettingsResponse, error)
+}
+
+// UnimplementedAdGroupExtensionSettingServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAdGroupExtensionSettingServiceServer struct {
+}
+
+func (*UnimplementedAdGroupExtensionSettingServiceServer) GetAdGroupExtensionSetting(ctx context.Context, req *GetAdGroupExtensionSettingRequest) (*resources.AdGroupExtensionSetting, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetAdGroupExtensionSetting not implemented")
+}
+func (*UnimplementedAdGroupExtensionSettingServiceServer) MutateAdGroupExtensionSettings(ctx context.Context, req *MutateAdGroupExtensionSettingsRequest) (*MutateAdGroupExtensionSettingsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateAdGroupExtensionSettings not implemented")
 }
 
 func RegisterAdGroupExtensionSettingServiceServer(s *grpc.Server, srv AdGroupExtensionSettingServiceServer) {

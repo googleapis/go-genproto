@@ -16,6 +16,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2998,6 +3000,32 @@ type IntentsServer interface {
 	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
 	BatchDeleteIntents(context.Context, *BatchDeleteIntentsRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedIntentsServer can be embedded to have forward compatible implementations.
+type UnimplementedIntentsServer struct {
+}
+
+func (*UnimplementedIntentsServer) ListIntents(ctx context.Context, req *ListIntentsRequest) (*ListIntentsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIntents not implemented")
+}
+func (*UnimplementedIntentsServer) GetIntent(ctx context.Context, req *GetIntentRequest) (*Intent, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIntent not implemented")
+}
+func (*UnimplementedIntentsServer) CreateIntent(ctx context.Context, req *CreateIntentRequest) (*Intent, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateIntent not implemented")
+}
+func (*UnimplementedIntentsServer) UpdateIntent(ctx context.Context, req *UpdateIntentRequest) (*Intent, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateIntent not implemented")
+}
+func (*UnimplementedIntentsServer) DeleteIntent(ctx context.Context, req *DeleteIntentRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIntent not implemented")
+}
+func (*UnimplementedIntentsServer) BatchUpdateIntents(ctx context.Context, req *BatchUpdateIntentsRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchUpdateIntents not implemented")
+}
+func (*UnimplementedIntentsServer) BatchDeleteIntents(ctx context.Context, req *BatchDeleteIntentsRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchDeleteIntents not implemented")
 }
 
 func RegisterIntentsServer(s *grpc.Server, srv IntentsServer) {

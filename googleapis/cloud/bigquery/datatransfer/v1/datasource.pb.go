@@ -16,6 +16,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1693,6 +1695,38 @@ type DataSourceServiceServer interface {
 	GetDataSourceDefinition(context.Context, *GetDataSourceDefinitionRequest) (*DataSourceDefinition, error)
 	// Lists supported data source definitions.
 	ListDataSourceDefinitions(context.Context, *ListDataSourceDefinitionsRequest) (*ListDataSourceDefinitionsResponse, error)
+}
+
+// UnimplementedDataSourceServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedDataSourceServiceServer struct {
+}
+
+func (*UnimplementedDataSourceServiceServer) UpdateTransferRun(ctx context.Context, req *UpdateTransferRunRequest) (*TransferRun, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateTransferRun not implemented")
+}
+func (*UnimplementedDataSourceServiceServer) LogTransferRunMessages(ctx context.Context, req *LogTransferRunMessagesRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LogTransferRunMessages not implemented")
+}
+func (*UnimplementedDataSourceServiceServer) StartBigQueryJobs(ctx context.Context, req *StartBigQueryJobsRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartBigQueryJobs not implemented")
+}
+func (*UnimplementedDataSourceServiceServer) FinishRun(ctx context.Context, req *FinishRunRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FinishRun not implemented")
+}
+func (*UnimplementedDataSourceServiceServer) CreateDataSourceDefinition(ctx context.Context, req *CreateDataSourceDefinitionRequest) (*DataSourceDefinition, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDataSourceDefinition not implemented")
+}
+func (*UnimplementedDataSourceServiceServer) UpdateDataSourceDefinition(ctx context.Context, req *UpdateDataSourceDefinitionRequest) (*DataSourceDefinition, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDataSourceDefinition not implemented")
+}
+func (*UnimplementedDataSourceServiceServer) DeleteDataSourceDefinition(ctx context.Context, req *DeleteDataSourceDefinitionRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDataSourceDefinition not implemented")
+}
+func (*UnimplementedDataSourceServiceServer) GetDataSourceDefinition(ctx context.Context, req *GetDataSourceDefinitionRequest) (*DataSourceDefinition, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDataSourceDefinition not implemented")
+}
+func (*UnimplementedDataSourceServiceServer) ListDataSourceDefinitions(ctx context.Context, req *ListDataSourceDefinitionsRequest) (*ListDataSourceDefinitionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDataSourceDefinitions not implemented")
 }
 
 func RegisterDataSourceServiceServer(s *grpc.Server, srv DataSourceServiceServer) {

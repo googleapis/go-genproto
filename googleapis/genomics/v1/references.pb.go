@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -976,6 +978,26 @@ type ReferenceServiceV1Server interface {
 	// Implements
 	// [GlobalAllianceApi.getReferenceBases](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/referencemethods.avdl#L221).
 	ListBases(context.Context, *ListBasesRequest) (*ListBasesResponse, error)
+}
+
+// UnimplementedReferenceServiceV1Server can be embedded to have forward compatible implementations.
+type UnimplementedReferenceServiceV1Server struct {
+}
+
+func (*UnimplementedReferenceServiceV1Server) SearchReferenceSets(ctx context.Context, req *SearchReferenceSetsRequest) (*SearchReferenceSetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchReferenceSets not implemented")
+}
+func (*UnimplementedReferenceServiceV1Server) GetReferenceSet(ctx context.Context, req *GetReferenceSetRequest) (*ReferenceSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReferenceSet not implemented")
+}
+func (*UnimplementedReferenceServiceV1Server) SearchReferences(ctx context.Context, req *SearchReferencesRequest) (*SearchReferencesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchReferences not implemented")
+}
+func (*UnimplementedReferenceServiceV1Server) GetReference(ctx context.Context, req *GetReferenceRequest) (*Reference, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReference not implemented")
+}
+func (*UnimplementedReferenceServiceV1Server) ListBases(ctx context.Context, req *ListBasesRequest) (*ListBasesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBases not implemented")
 }
 
 func RegisterReferenceServiceV1Server(s *grpc.Server, srv ReferenceServiceV1Server) {

@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -728,6 +730,35 @@ type CloudSchedulerServer interface {
 	// When this method is called, Cloud Scheduler will dispatch the job, even
 	// if the job is already running.
 	RunJob(context.Context, *RunJobRequest) (*Job, error)
+}
+
+// UnimplementedCloudSchedulerServer can be embedded to have forward compatible implementations.
+type UnimplementedCloudSchedulerServer struct {
+}
+
+func (*UnimplementedCloudSchedulerServer) ListJobs(ctx context.Context, req *ListJobsRequest) (*ListJobsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListJobs not implemented")
+}
+func (*UnimplementedCloudSchedulerServer) GetJob(ctx context.Context, req *GetJobRequest) (*Job, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetJob not implemented")
+}
+func (*UnimplementedCloudSchedulerServer) CreateJob(ctx context.Context, req *CreateJobRequest) (*Job, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateJob not implemented")
+}
+func (*UnimplementedCloudSchedulerServer) UpdateJob(ctx context.Context, req *UpdateJobRequest) (*Job, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateJob not implemented")
+}
+func (*UnimplementedCloudSchedulerServer) DeleteJob(ctx context.Context, req *DeleteJobRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteJob not implemented")
+}
+func (*UnimplementedCloudSchedulerServer) PauseJob(ctx context.Context, req *PauseJobRequest) (*Job, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PauseJob not implemented")
+}
+func (*UnimplementedCloudSchedulerServer) ResumeJob(ctx context.Context, req *ResumeJobRequest) (*Job, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResumeJob not implemented")
+}
+func (*UnimplementedCloudSchedulerServer) RunJob(ctx context.Context, req *RunJobRequest) (*Job, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunJob not implemented")
 }
 
 func RegisterCloudSchedulerServer(s *grpc.Server, srv CloudSchedulerServer) {

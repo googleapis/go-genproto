@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -429,6 +431,17 @@ type AdGroupLabelServiceServer interface {
 	// Creates and removes ad group labels.
 	// Operation statuses are returned.
 	MutateAdGroupLabels(context.Context, *MutateAdGroupLabelsRequest) (*MutateAdGroupLabelsResponse, error)
+}
+
+// UnimplementedAdGroupLabelServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedAdGroupLabelServiceServer struct {
+}
+
+func (*UnimplementedAdGroupLabelServiceServer) GetAdGroupLabel(ctx context.Context, req *GetAdGroupLabelRequest) (*resources.AdGroupLabel, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetAdGroupLabel not implemented")
+}
+func (*UnimplementedAdGroupLabelServiceServer) MutateAdGroupLabels(ctx context.Context, req *MutateAdGroupLabelsRequest) (*MutateAdGroupLabelsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateAdGroupLabels not implemented")
 }
 
 func RegisterAdGroupLabelServiceServer(s *grpc.Server, srv AdGroupLabelServiceServer) {

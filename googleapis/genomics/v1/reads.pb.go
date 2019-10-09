@@ -14,6 +14,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1252,6 +1254,14 @@ type StreamingReadServiceServer interface {
 	StreamReads(*StreamReadsRequest, StreamingReadService_StreamReadsServer) error
 }
 
+// UnimplementedStreamingReadServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedStreamingReadServiceServer struct {
+}
+
+func (*UnimplementedStreamingReadServiceServer) StreamReads(req *StreamReadsRequest, srv StreamingReadService_StreamReadsServer) error {
+	return status.Errorf(codes.Unimplemented, "method StreamReads not implemented")
+}
+
 func RegisterStreamingReadServiceServer(s *grpc.Server, srv StreamingReadServiceServer) {
 	s.RegisterService(&_StreamingReadService_serviceDesc, srv)
 }
@@ -1575,6 +1585,35 @@ type ReadServiceV1Server interface {
 	// Implements
 	// [GlobalAllianceApi.searchReads](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/avro/readmethods.avdl#L85).
 	SearchReads(context.Context, *SearchReadsRequest) (*SearchReadsResponse, error)
+}
+
+// UnimplementedReadServiceV1Server can be embedded to have forward compatible implementations.
+type UnimplementedReadServiceV1Server struct {
+}
+
+func (*UnimplementedReadServiceV1Server) ImportReadGroupSets(ctx context.Context, req *ImportReadGroupSetsRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportReadGroupSets not implemented")
+}
+func (*UnimplementedReadServiceV1Server) ExportReadGroupSet(ctx context.Context, req *ExportReadGroupSetRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportReadGroupSet not implemented")
+}
+func (*UnimplementedReadServiceV1Server) SearchReadGroupSets(ctx context.Context, req *SearchReadGroupSetsRequest) (*SearchReadGroupSetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchReadGroupSets not implemented")
+}
+func (*UnimplementedReadServiceV1Server) UpdateReadGroupSet(ctx context.Context, req *UpdateReadGroupSetRequest) (*ReadGroupSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateReadGroupSet not implemented")
+}
+func (*UnimplementedReadServiceV1Server) DeleteReadGroupSet(ctx context.Context, req *DeleteReadGroupSetRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteReadGroupSet not implemented")
+}
+func (*UnimplementedReadServiceV1Server) GetReadGroupSet(ctx context.Context, req *GetReadGroupSetRequest) (*ReadGroupSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReadGroupSet not implemented")
+}
+func (*UnimplementedReadServiceV1Server) ListCoverageBuckets(ctx context.Context, req *ListCoverageBucketsRequest) (*ListCoverageBucketsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCoverageBuckets not implemented")
+}
+func (*UnimplementedReadServiceV1Server) SearchReads(ctx context.Context, req *SearchReadsRequest) (*SearchReadsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchReads not implemented")
 }
 
 func RegisterReadServiceV1Server(s *grpc.Server, srv ReadServiceV1Server) {
