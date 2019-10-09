@@ -14,6 +14,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1656,6 +1658,35 @@ type CloudRedisServer interface {
 	// Deletes a specific Redis instance.  Instance stops serving and data is
 	// deleted.
 	DeleteInstance(context.Context, *DeleteInstanceRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedCloudRedisServer can be embedded to have forward compatible implementations.
+type UnimplementedCloudRedisServer struct {
+}
+
+func (*UnimplementedCloudRedisServer) ListInstances(ctx context.Context, req *ListInstancesRequest) (*ListInstancesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListInstances not implemented")
+}
+func (*UnimplementedCloudRedisServer) GetInstance(ctx context.Context, req *GetInstanceRequest) (*Instance, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetInstance not implemented")
+}
+func (*UnimplementedCloudRedisServer) CreateInstance(ctx context.Context, req *CreateInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateInstance not implemented")
+}
+func (*UnimplementedCloudRedisServer) UpdateInstance(ctx context.Context, req *UpdateInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateInstance not implemented")
+}
+func (*UnimplementedCloudRedisServer) ImportInstance(ctx context.Context, req *ImportInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportInstance not implemented")
+}
+func (*UnimplementedCloudRedisServer) ExportInstance(ctx context.Context, req *ExportInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportInstance not implemented")
+}
+func (*UnimplementedCloudRedisServer) FailoverInstance(ctx context.Context, req *FailoverInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FailoverInstance not implemented")
+}
+func (*UnimplementedCloudRedisServer) DeleteInstance(ctx context.Context, req *DeleteInstanceRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteInstance not implemented")
 }
 
 func RegisterCloudRedisServer(s *grpc.Server, srv CloudRedisServer) {

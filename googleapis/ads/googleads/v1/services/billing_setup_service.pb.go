@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -385,6 +387,17 @@ type BillingSetupServiceServer interface {
 	GetBillingSetup(context.Context, *GetBillingSetupRequest) (*resources.BillingSetup, error)
 	// Creates a billing setup, or cancels an existing billing setup.
 	MutateBillingSetup(context.Context, *MutateBillingSetupRequest) (*MutateBillingSetupResponse, error)
+}
+
+// UnimplementedBillingSetupServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedBillingSetupServiceServer struct {
+}
+
+func (*UnimplementedBillingSetupServiceServer) GetBillingSetup(ctx context.Context, req *GetBillingSetupRequest) (*resources.BillingSetup, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBillingSetup not implemented")
+}
+func (*UnimplementedBillingSetupServiceServer) MutateBillingSetup(ctx context.Context, req *MutateBillingSetupRequest) (*MutateBillingSetupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateBillingSetup not implemented")
 }
 
 func RegisterBillingSetupServiceServer(s *grpc.Server, srv BillingSetupServiceServer) {

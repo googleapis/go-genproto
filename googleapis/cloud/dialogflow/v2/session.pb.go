@@ -15,6 +15,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1481,6 +1483,17 @@ type SessionsServer interface {
 	// and returns structured, actionable data as a result. This method is only
 	// available via the gRPC API (not REST).
 	StreamingDetectIntent(Sessions_StreamingDetectIntentServer) error
+}
+
+// UnimplementedSessionsServer can be embedded to have forward compatible implementations.
+type UnimplementedSessionsServer struct {
+}
+
+func (*UnimplementedSessionsServer) DetectIntent(ctx context.Context, req *DetectIntentRequest) (*DetectIntentResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DetectIntent not implemented")
+}
+func (*UnimplementedSessionsServer) StreamingDetectIntent(srv Sessions_StreamingDetectIntentServer) error {
+	return status1.Errorf(codes.Unimplemented, "method StreamingDetectIntent not implemented")
 }
 
 func RegisterSessionsServer(s *grpc.Server, srv SessionsServer) {

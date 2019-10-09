@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +142,14 @@ func (c *distanceViewServiceClient) GetDistanceView(ctx context.Context, in *Get
 type DistanceViewServiceServer interface {
 	// Returns the attributes of the requested distance view.
 	GetDistanceView(context.Context, *GetDistanceViewRequest) (*resources.DistanceView, error)
+}
+
+// UnimplementedDistanceViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedDistanceViewServiceServer struct {
+}
+
+func (*UnimplementedDistanceViewServiceServer) GetDistanceView(ctx context.Context, req *GetDistanceViewRequest) (*resources.DistanceView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDistanceView not implemented")
 }
 
 func RegisterDistanceViewServiceServer(s *grpc.Server, srv DistanceViewServiceServer) {

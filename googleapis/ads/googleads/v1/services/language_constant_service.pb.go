@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,6 +141,14 @@ func (c *languageConstantServiceClient) GetLanguageConstant(ctx context.Context,
 type LanguageConstantServiceServer interface {
 	// Returns the requested language constant.
 	GetLanguageConstant(context.Context, *GetLanguageConstantRequest) (*resources.LanguageConstant, error)
+}
+
+// UnimplementedLanguageConstantServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedLanguageConstantServiceServer struct {
+}
+
+func (*UnimplementedLanguageConstantServiceServer) GetLanguageConstant(ctx context.Context, req *GetLanguageConstantRequest) (*resources.LanguageConstant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLanguageConstant not implemented")
 }
 
 func RegisterLanguageConstantServiceServer(s *grpc.Server, srv LanguageConstantServiceServer) {

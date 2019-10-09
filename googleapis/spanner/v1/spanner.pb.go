@@ -15,6 +15,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2355,6 +2357,56 @@ type SpannerServer interface {
 	// old.  When any of these happen, it is not possible to resume the read, and
 	// the whole operation must be restarted from the beginning.
 	PartitionRead(context.Context, *PartitionReadRequest) (*PartitionResponse, error)
+}
+
+// UnimplementedSpannerServer can be embedded to have forward compatible implementations.
+type UnimplementedSpannerServer struct {
+}
+
+func (*UnimplementedSpannerServer) CreateSession(ctx context.Context, req *CreateSessionRequest) (*Session, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateSession not implemented")
+}
+func (*UnimplementedSpannerServer) BatchCreateSessions(ctx context.Context, req *BatchCreateSessionsRequest) (*BatchCreateSessionsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BatchCreateSessions not implemented")
+}
+func (*UnimplementedSpannerServer) GetSession(ctx context.Context, req *GetSessionRequest) (*Session, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetSession not implemented")
+}
+func (*UnimplementedSpannerServer) ListSessions(ctx context.Context, req *ListSessionsRequest) (*ListSessionsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListSessions not implemented")
+}
+func (*UnimplementedSpannerServer) DeleteSession(ctx context.Context, req *DeleteSessionRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteSession not implemented")
+}
+func (*UnimplementedSpannerServer) ExecuteSql(ctx context.Context, req *ExecuteSqlRequest) (*ResultSet, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ExecuteSql not implemented")
+}
+func (*UnimplementedSpannerServer) ExecuteStreamingSql(req *ExecuteSqlRequest, srv Spanner_ExecuteStreamingSqlServer) error {
+	return status1.Errorf(codes.Unimplemented, "method ExecuteStreamingSql not implemented")
+}
+func (*UnimplementedSpannerServer) ExecuteBatchDml(ctx context.Context, req *ExecuteBatchDmlRequest) (*ExecuteBatchDmlResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ExecuteBatchDml not implemented")
+}
+func (*UnimplementedSpannerServer) Read(ctx context.Context, req *ReadRequest) (*ResultSet, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method Read not implemented")
+}
+func (*UnimplementedSpannerServer) StreamingRead(req *ReadRequest, srv Spanner_StreamingReadServer) error {
+	return status1.Errorf(codes.Unimplemented, "method StreamingRead not implemented")
+}
+func (*UnimplementedSpannerServer) BeginTransaction(ctx context.Context, req *BeginTransactionRequest) (*Transaction, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BeginTransaction not implemented")
+}
+func (*UnimplementedSpannerServer) Commit(ctx context.Context, req *CommitRequest) (*CommitResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method Commit not implemented")
+}
+func (*UnimplementedSpannerServer) Rollback(ctx context.Context, req *RollbackRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method Rollback not implemented")
+}
+func (*UnimplementedSpannerServer) PartitionQuery(ctx context.Context, req *PartitionQueryRequest) (*PartitionResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method PartitionQuery not implemented")
+}
+func (*UnimplementedSpannerServer) PartitionRead(ctx context.Context, req *PartitionReadRequest) (*PartitionResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method PartitionRead not implemented")
 }
 
 func RegisterSpannerServer(s *grpc.Server, srv SpannerServer) {

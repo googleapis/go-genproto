@@ -15,6 +15,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -459,6 +461,17 @@ type KeywordPlanAdGroupServiceServer interface {
 	// Creates, updates, or removes Keyword Plan ad groups. Operation statuses are
 	// returned.
 	MutateKeywordPlanAdGroups(context.Context, *MutateKeywordPlanAdGroupsRequest) (*MutateKeywordPlanAdGroupsResponse, error)
+}
+
+// UnimplementedKeywordPlanAdGroupServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedKeywordPlanAdGroupServiceServer struct {
+}
+
+func (*UnimplementedKeywordPlanAdGroupServiceServer) GetKeywordPlanAdGroup(ctx context.Context, req *GetKeywordPlanAdGroupRequest) (*resources.KeywordPlanAdGroup, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetKeywordPlanAdGroup not implemented")
+}
+func (*UnimplementedKeywordPlanAdGroupServiceServer) MutateKeywordPlanAdGroups(ctx context.Context, req *MutateKeywordPlanAdGroupsRequest) (*MutateKeywordPlanAdGroupsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateKeywordPlanAdGroups not implemented")
 }
 
 func RegisterKeywordPlanAdGroupServiceServer(s *grpc.Server, srv KeywordPlanAdGroupServiceServer) {

@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,6 +141,14 @@ func (c *clickViewServiceClient) GetClickView(ctx context.Context, in *GetClickV
 type ClickViewServiceServer interface {
 	// Returns the requested click view in full detail.
 	GetClickView(context.Context, *GetClickViewRequest) (*resources.ClickView, error)
+}
+
+// UnimplementedClickViewServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedClickViewServiceServer struct {
+}
+
+func (*UnimplementedClickViewServiceServer) GetClickView(ctx context.Context, req *GetClickViewRequest) (*resources.ClickView, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetClickView not implemented")
 }
 
 func RegisterClickViewServiceServer(s *grpc.Server, srv ClickViewServiceServer) {

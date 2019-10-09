@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v1/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -142,6 +144,14 @@ func (c *productBiddingCategoryConstantServiceClient) GetProductBiddingCategoryC
 type ProductBiddingCategoryConstantServiceServer interface {
 	// Returns the requested Product Bidding Category in full detail.
 	GetProductBiddingCategoryConstant(context.Context, *GetProductBiddingCategoryConstantRequest) (*resources.ProductBiddingCategoryConstant, error)
+}
+
+// UnimplementedProductBiddingCategoryConstantServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedProductBiddingCategoryConstantServiceServer struct {
+}
+
+func (*UnimplementedProductBiddingCategoryConstantServiceServer) GetProductBiddingCategoryConstant(ctx context.Context, req *GetProductBiddingCategoryConstantRequest) (*resources.ProductBiddingCategoryConstant, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProductBiddingCategoryConstant not implemented")
 }
 
 func RegisterProductBiddingCategoryConstantServiceServer(s *grpc.Server, srv ProductBiddingCategoryConstantServiceServer) {

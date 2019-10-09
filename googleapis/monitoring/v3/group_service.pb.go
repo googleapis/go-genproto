@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	monitoredres "google.golang.org/genproto/googleapis/api/monitoredres"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -746,6 +748,29 @@ type GroupServiceServer interface {
 	DeleteGroup(context.Context, *DeleteGroupRequest) (*empty.Empty, error)
 	// Lists the monitored resources that are members of a group.
 	ListGroupMembers(context.Context, *ListGroupMembersRequest) (*ListGroupMembersResponse, error)
+}
+
+// UnimplementedGroupServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedGroupServiceServer struct {
+}
+
+func (*UnimplementedGroupServiceServer) ListGroups(ctx context.Context, req *ListGroupsRequest) (*ListGroupsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGroups not implemented")
+}
+func (*UnimplementedGroupServiceServer) GetGroup(ctx context.Context, req *GetGroupRequest) (*Group, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGroup not implemented")
+}
+func (*UnimplementedGroupServiceServer) CreateGroup(ctx context.Context, req *CreateGroupRequest) (*Group, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateGroup not implemented")
+}
+func (*UnimplementedGroupServiceServer) UpdateGroup(ctx context.Context, req *UpdateGroupRequest) (*Group, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateGroup not implemented")
+}
+func (*UnimplementedGroupServiceServer) DeleteGroup(ctx context.Context, req *DeleteGroupRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteGroup not implemented")
+}
+func (*UnimplementedGroupServiceServer) ListGroupMembers(ctx context.Context, req *ListGroupMembersRequest) (*ListGroupMembersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGroupMembers not implemented")
 }
 
 func RegisterGroupServiceServer(s *grpc.Server, srv GroupServiceServer) {

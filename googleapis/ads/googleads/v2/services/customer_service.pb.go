@@ -15,6 +15,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -598,6 +600,23 @@ type CustomerServiceServer interface {
 	ListAccessibleCustomers(context.Context, *ListAccessibleCustomersRequest) (*ListAccessibleCustomersResponse, error)
 	// Creates a new client under manager. The new client customer is returned.
 	CreateCustomerClient(context.Context, *CreateCustomerClientRequest) (*CreateCustomerClientResponse, error)
+}
+
+// UnimplementedCustomerServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCustomerServiceServer struct {
+}
+
+func (*UnimplementedCustomerServiceServer) GetCustomer(ctx context.Context, req *GetCustomerRequest) (*resources.Customer, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCustomer not implemented")
+}
+func (*UnimplementedCustomerServiceServer) MutateCustomer(ctx context.Context, req *MutateCustomerRequest) (*MutateCustomerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateCustomer not implemented")
+}
+func (*UnimplementedCustomerServiceServer) ListAccessibleCustomers(ctx context.Context, req *ListAccessibleCustomersRequest) (*ListAccessibleCustomersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAccessibleCustomers not implemented")
+}
+func (*UnimplementedCustomerServiceServer) CreateCustomerClient(ctx context.Context, req *CreateCustomerClientRequest) (*CreateCustomerClientResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCustomerClient not implemented")
 }
 
 func RegisterCustomerServiceServer(s *grpc.Server, srv CustomerServiceServer) {

@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -427,6 +429,17 @@ type SharedCriterionServiceServer interface {
 	GetSharedCriterion(context.Context, *GetSharedCriterionRequest) (*resources.SharedCriterion, error)
 	// Creates or removes shared criteria. Operation statuses are returned.
 	MutateSharedCriteria(context.Context, *MutateSharedCriteriaRequest) (*MutateSharedCriteriaResponse, error)
+}
+
+// UnimplementedSharedCriterionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedSharedCriterionServiceServer struct {
+}
+
+func (*UnimplementedSharedCriterionServiceServer) GetSharedCriterion(ctx context.Context, req *GetSharedCriterionRequest) (*resources.SharedCriterion, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetSharedCriterion not implemented")
+}
+func (*UnimplementedSharedCriterionServiceServer) MutateSharedCriteria(ctx context.Context, req *MutateSharedCriteriaRequest) (*MutateSharedCriteriaResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateSharedCriteria not implemented")
 }
 
 func RegisterSharedCriterionServiceServer(s *grpc.Server, srv SharedCriterionServiceServer) {

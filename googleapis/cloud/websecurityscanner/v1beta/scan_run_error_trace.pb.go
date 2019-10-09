@@ -44,7 +44,7 @@ const (
 	ScanRunErrorTrace_TOO_MANY_REDIRECTS ScanRunErrorTrace_Code = 5
 	// Indicates that a scan encountered numerous errors from the web site
 	// pages. When available, most_common_http_error_code field indicates the
-	// the most common HTTP error code encountered during the scan.
+	// most common HTTP error code encountered during the scan.
 	ScanRunErrorTrace_TOO_MANY_HTTP_ERRORS ScanRunErrorTrace_Code = 6
 )
 
@@ -79,15 +79,12 @@ func (ScanRunErrorTrace_Code) EnumDescriptor() ([]byte, []int) {
 // Output only.
 // Defines an error trace message for a ScanRun.
 type ScanRunErrorTrace struct {
-	// Output only.
 	// Indicates the error reason code.
 	Code ScanRunErrorTrace_Code `protobuf:"varint,1,opt,name=code,proto3,enum=google.cloud.websecurityscanner.v1beta.ScanRunErrorTrace_Code" json:"code,omitempty"`
-	// Output only.
 	// If the scan encounters SCAN_CONFIG_ISSUE error, this field has the error
 	// message encountered during scan configuration validation that is performed
 	// before each scan run.
 	ScanConfigError *ScanConfigError `protobuf:"bytes,2,opt,name=scan_config_error,json=scanConfigError,proto3" json:"scan_config_error,omitempty"`
-	// Output only.
 	// If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most
 	// common HTTP error code, if such is available. For example, if this code is
 	// 404, the scan has encountered too many NOT_FOUND responses.

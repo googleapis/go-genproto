@@ -12,6 +12,8 @@ import (
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -641,6 +643,17 @@ type RecaptchaEnterpriseServiceV1Beta1Server interface {
 	// Annotates a previously created Assessment to provide additional information
 	// on whether the event turned out to be authentic or fradulent.
 	AnnotateAssessment(context.Context, *AnnotateAssessmentRequest) (*AnnotateAssessmentResponse, error)
+}
+
+// UnimplementedRecaptchaEnterpriseServiceV1Beta1Server can be embedded to have forward compatible implementations.
+type UnimplementedRecaptchaEnterpriseServiceV1Beta1Server struct {
+}
+
+func (*UnimplementedRecaptchaEnterpriseServiceV1Beta1Server) CreateAssessment(ctx context.Context, req *CreateAssessmentRequest) (*Assessment, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAssessment not implemented")
+}
+func (*UnimplementedRecaptchaEnterpriseServiceV1Beta1Server) AnnotateAssessment(ctx context.Context, req *AnnotateAssessmentRequest) (*AnnotateAssessmentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AnnotateAssessment not implemented")
 }
 
 func RegisterRecaptchaEnterpriseServiceV1Beta1Server(s *grpc.Server, srv RecaptchaEnterpriseServiceV1Beta1Server) {

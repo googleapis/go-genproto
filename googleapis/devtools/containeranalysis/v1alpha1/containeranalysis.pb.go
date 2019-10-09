@@ -18,6 +18,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -3603,6 +3605,74 @@ type ContainerAnalysisServer interface {
 	ListScanConfigs(context.Context, *ListScanConfigsRequest) (*ListScanConfigsResponse, error)
 	// Updates the scan configuration to a new value.
 	UpdateScanConfig(context.Context, *UpdateScanConfigRequest) (*ScanConfig, error)
+}
+
+// UnimplementedContainerAnalysisServer can be embedded to have forward compatible implementations.
+type UnimplementedContainerAnalysisServer struct {
+}
+
+func (*UnimplementedContainerAnalysisServer) GetOccurrence(ctx context.Context, req *GetOccurrenceRequest) (*Occurrence, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetOccurrence not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) ListOccurrences(ctx context.Context, req *ListOccurrencesRequest) (*ListOccurrencesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListOccurrences not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) DeleteOccurrence(ctx context.Context, req *DeleteOccurrenceRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteOccurrence not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) CreateOccurrence(ctx context.Context, req *CreateOccurrenceRequest) (*Occurrence, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateOccurrence not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) UpdateOccurrence(ctx context.Context, req *UpdateOccurrenceRequest) (*Occurrence, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateOccurrence not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) GetOccurrenceNote(ctx context.Context, req *GetOccurrenceNoteRequest) (*Note, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetOccurrenceNote not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) GetNote(ctx context.Context, req *GetNoteRequest) (*Note, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetNote not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) ListNotes(ctx context.Context, req *ListNotesRequest) (*ListNotesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListNotes not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) DeleteNote(ctx context.Context, req *DeleteNoteRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteNote not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) CreateNote(ctx context.Context, req *CreateNoteRequest) (*Note, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateNote not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) UpdateNote(ctx context.Context, req *UpdateNoteRequest) (*Note, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateNote not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) ListNoteOccurrences(ctx context.Context, req *ListNoteOccurrencesRequest) (*ListNoteOccurrencesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListNoteOccurrences not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) GetVulnzOccurrencesSummary(ctx context.Context, req *GetVulnzOccurrencesSummaryRequest) (*GetVulnzOccurrencesSummaryResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetVulnzOccurrencesSummary not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) CreateOperation(ctx context.Context, req *CreateOperationRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateOperation not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) UpdateOperation(ctx context.Context, req *UpdateOperationRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateOperation not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) GetScanConfig(ctx context.Context, req *GetScanConfigRequest) (*ScanConfig, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetScanConfig not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) ListScanConfigs(ctx context.Context, req *ListScanConfigsRequest) (*ListScanConfigsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListScanConfigs not implemented")
+}
+func (*UnimplementedContainerAnalysisServer) UpdateScanConfig(ctx context.Context, req *UpdateScanConfigRequest) (*ScanConfig, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateScanConfig not implemented")
 }
 
 func RegisterContainerAnalysisServer(s *grpc.Server, srv ContainerAnalysisServer) {

@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -411,6 +413,17 @@ type MediaFileServiceServer interface {
 	GetMediaFile(context.Context, *GetMediaFileRequest) (*resources.MediaFile, error)
 	// Creates media files. Operation statuses are returned.
 	MutateMediaFiles(context.Context, *MutateMediaFilesRequest) (*MutateMediaFilesResponse, error)
+}
+
+// UnimplementedMediaFileServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedMediaFileServiceServer struct {
+}
+
+func (*UnimplementedMediaFileServiceServer) GetMediaFile(ctx context.Context, req *GetMediaFileRequest) (*resources.MediaFile, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetMediaFile not implemented")
+}
+func (*UnimplementedMediaFileServiceServer) MutateMediaFiles(ctx context.Context, req *MutateMediaFilesRequest) (*MutateMediaFilesResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateMediaFiles not implemented")
 }
 
 func RegisterMediaFileServiceServer(s *grpc.Server, srv MediaFileServiceServer) {

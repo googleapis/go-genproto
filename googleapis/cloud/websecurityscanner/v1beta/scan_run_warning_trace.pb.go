@@ -23,7 +23,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Output only.
 // Defines a warning message code.
-// Next id: 5
+// Next id: 6
 type ScanRunWarningTrace_Code int32
 
 const (
@@ -72,7 +72,6 @@ func (ScanRunWarningTrace_Code) EnumDescriptor() ([]byte, []int) {
 // Defines a warning trace message for ScanRun. Warning traces provide customers
 // with useful information that helps make the scanning process more effective.
 type ScanRunWarningTrace struct {
-	// Output only.
 	// Indicates the warning code.
 	Code                 ScanRunWarningTrace_Code `protobuf:"varint,1,opt,name=code,proto3,enum=google.cloud.websecurityscanner.v1beta.ScanRunWarningTrace_Code" json:"code,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`

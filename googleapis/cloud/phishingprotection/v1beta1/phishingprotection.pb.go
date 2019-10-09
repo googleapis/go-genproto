@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -199,6 +201,14 @@ type PhishingProtectionServiceV1Beta1Server interface {
 	// lists](https://support.google.com/webmasters/answer/6350487/) in order to
 	// protect users that could get exposed to this threat in the future.
 	ReportPhishing(context.Context, *ReportPhishingRequest) (*ReportPhishingResponse, error)
+}
+
+// UnimplementedPhishingProtectionServiceV1Beta1Server can be embedded to have forward compatible implementations.
+type UnimplementedPhishingProtectionServiceV1Beta1Server struct {
+}
+
+func (*UnimplementedPhishingProtectionServiceV1Beta1Server) ReportPhishing(ctx context.Context, req *ReportPhishingRequest) (*ReportPhishingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReportPhishing not implemented")
 }
 
 func RegisterPhishingProtectionServiceV1Beta1Server(s *grpc.Server, srv PhishingProtectionServiceV1Beta1Server) {

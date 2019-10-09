@@ -12,6 +12,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1060,6 +1062,44 @@ type LibraryServiceServer interface {
 	// Moves a book to another shelf, and returns the new book. The book
 	// id of the new book may not be the same as the original book.
 	MoveBook(context.Context, *MoveBookRequest) (*Book, error)
+}
+
+// UnimplementedLibraryServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedLibraryServiceServer struct {
+}
+
+func (*UnimplementedLibraryServiceServer) CreateShelf(ctx context.Context, req *CreateShelfRequest) (*Shelf, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateShelf not implemented")
+}
+func (*UnimplementedLibraryServiceServer) GetShelf(ctx context.Context, req *GetShelfRequest) (*Shelf, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetShelf not implemented")
+}
+func (*UnimplementedLibraryServiceServer) ListShelves(ctx context.Context, req *ListShelvesRequest) (*ListShelvesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListShelves not implemented")
+}
+func (*UnimplementedLibraryServiceServer) DeleteShelf(ctx context.Context, req *DeleteShelfRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteShelf not implemented")
+}
+func (*UnimplementedLibraryServiceServer) MergeShelves(ctx context.Context, req *MergeShelvesRequest) (*Shelf, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MergeShelves not implemented")
+}
+func (*UnimplementedLibraryServiceServer) CreateBook(ctx context.Context, req *CreateBookRequest) (*Book, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBook not implemented")
+}
+func (*UnimplementedLibraryServiceServer) GetBook(ctx context.Context, req *GetBookRequest) (*Book, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBook not implemented")
+}
+func (*UnimplementedLibraryServiceServer) ListBooks(ctx context.Context, req *ListBooksRequest) (*ListBooksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBooks not implemented")
+}
+func (*UnimplementedLibraryServiceServer) DeleteBook(ctx context.Context, req *DeleteBookRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBook not implemented")
+}
+func (*UnimplementedLibraryServiceServer) UpdateBook(ctx context.Context, req *UpdateBookRequest) (*Book, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBook not implemented")
+}
+func (*UnimplementedLibraryServiceServer) MoveBook(ctx context.Context, req *MoveBookRequest) (*Book, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MoveBook not implemented")
 }
 
 func RegisterLibraryServiceServer(s *grpc.Server, srv LibraryServiceServer) {

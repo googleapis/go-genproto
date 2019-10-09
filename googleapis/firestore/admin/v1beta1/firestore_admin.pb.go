@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1124,6 +1126,29 @@ type FirestoreAdminServer interface {
 	// created. If an ImportDocuments operation is cancelled, it is possible
 	// that a subset of the data has already been imported to Cloud Firestore.
 	ImportDocuments(context.Context, *ImportDocumentsRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedFirestoreAdminServer can be embedded to have forward compatible implementations.
+type UnimplementedFirestoreAdminServer struct {
+}
+
+func (*UnimplementedFirestoreAdminServer) CreateIndex(ctx context.Context, req *CreateIndexRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateIndex not implemented")
+}
+func (*UnimplementedFirestoreAdminServer) ListIndexes(ctx context.Context, req *ListIndexesRequest) (*ListIndexesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIndexes not implemented")
+}
+func (*UnimplementedFirestoreAdminServer) GetIndex(ctx context.Context, req *GetIndexRequest) (*Index, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIndex not implemented")
+}
+func (*UnimplementedFirestoreAdminServer) DeleteIndex(ctx context.Context, req *DeleteIndexRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIndex not implemented")
+}
+func (*UnimplementedFirestoreAdminServer) ExportDocuments(ctx context.Context, req *ExportDocumentsRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExportDocuments not implemented")
+}
+func (*UnimplementedFirestoreAdminServer) ImportDocuments(ctx context.Context, req *ImportDocumentsRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportDocuments not implemented")
 }
 
 func RegisterFirestoreAdminServer(s *grpc.Server, srv FirestoreAdminServer) {

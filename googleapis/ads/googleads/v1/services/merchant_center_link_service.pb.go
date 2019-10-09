@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -502,6 +504,20 @@ type MerchantCenterLinkServiceServer interface {
 	GetMerchantCenterLink(context.Context, *GetMerchantCenterLinkRequest) (*resources.MerchantCenterLink, error)
 	// Updates status or removes a Merchant Center link.
 	MutateMerchantCenterLink(context.Context, *MutateMerchantCenterLinkRequest) (*MutateMerchantCenterLinkResponse, error)
+}
+
+// UnimplementedMerchantCenterLinkServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedMerchantCenterLinkServiceServer struct {
+}
+
+func (*UnimplementedMerchantCenterLinkServiceServer) ListMerchantCenterLinks(ctx context.Context, req *ListMerchantCenterLinksRequest) (*ListMerchantCenterLinksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListMerchantCenterLinks not implemented")
+}
+func (*UnimplementedMerchantCenterLinkServiceServer) GetMerchantCenterLink(ctx context.Context, req *GetMerchantCenterLinkRequest) (*resources.MerchantCenterLink, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMerchantCenterLink not implemented")
+}
+func (*UnimplementedMerchantCenterLinkServiceServer) MutateMerchantCenterLink(ctx context.Context, req *MutateMerchantCenterLinkRequest) (*MutateMerchantCenterLinkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MutateMerchantCenterLink not implemented")
 }
 
 func RegisterMerchantCenterLinkServiceServer(s *grpc.Server, srv MerchantCenterLinkServiceServer) {

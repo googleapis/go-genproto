@@ -15,6 +15,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/serviceconfig"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1145,6 +1147,29 @@ type CloudFunctionsServiceServer interface {
 	// Invokes synchronously deployed function. To be used for testing, very
 	// limited traffic allowed.
 	CallFunction(context.Context, *CallFunctionRequest) (*CallFunctionResponse, error)
+}
+
+// UnimplementedCloudFunctionsServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCloudFunctionsServiceServer struct {
+}
+
+func (*UnimplementedCloudFunctionsServiceServer) ListFunctions(ctx context.Context, req *ListFunctionsRequest) (*ListFunctionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFunctions not implemented")
+}
+func (*UnimplementedCloudFunctionsServiceServer) GetFunction(ctx context.Context, req *GetFunctionRequest) (*CloudFunction, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFunction not implemented")
+}
+func (*UnimplementedCloudFunctionsServiceServer) CreateFunction(ctx context.Context, req *CreateFunctionRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateFunction not implemented")
+}
+func (*UnimplementedCloudFunctionsServiceServer) UpdateFunction(ctx context.Context, req *UpdateFunctionRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateFunction not implemented")
+}
+func (*UnimplementedCloudFunctionsServiceServer) DeleteFunction(ctx context.Context, req *DeleteFunctionRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFunction not implemented")
+}
+func (*UnimplementedCloudFunctionsServiceServer) CallFunction(ctx context.Context, req *CallFunctionRequest) (*CallFunctionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CallFunction not implemented")
 }
 
 func RegisterCloudFunctionsServiceServer(s *grpc.Server, srv CloudFunctionsServiceServer) {

@@ -11,6 +11,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -134,6 +136,23 @@ type IAMCredentialsServer interface {
 	SignBlob(context.Context, *SignBlobRequest) (*SignBlobResponse, error)
 	// Signs a JWT using a service account's system-managed private key.
 	SignJwt(context.Context, *SignJwtRequest) (*SignJwtResponse, error)
+}
+
+// UnimplementedIAMCredentialsServer can be embedded to have forward compatible implementations.
+type UnimplementedIAMCredentialsServer struct {
+}
+
+func (*UnimplementedIAMCredentialsServer) GenerateAccessToken(ctx context.Context, req *GenerateAccessTokenRequest) (*GenerateAccessTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateAccessToken not implemented")
+}
+func (*UnimplementedIAMCredentialsServer) GenerateIdToken(ctx context.Context, req *GenerateIdTokenRequest) (*GenerateIdTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateIdToken not implemented")
+}
+func (*UnimplementedIAMCredentialsServer) SignBlob(ctx context.Context, req *SignBlobRequest) (*SignBlobResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SignBlob not implemented")
+}
+func (*UnimplementedIAMCredentialsServer) SignJwt(ctx context.Context, req *SignJwtRequest) (*SignJwtResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SignJwt not implemented")
 }
 
 func RegisterIAMCredentialsServer(s *grpc.Server, srv IAMCredentialsServer) {

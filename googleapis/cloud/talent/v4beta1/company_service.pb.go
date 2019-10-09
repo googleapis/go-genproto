@@ -13,6 +13,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -536,6 +538,26 @@ type CompanyServiceServer interface {
 	DeleteCompany(context.Context, *DeleteCompanyRequest) (*empty.Empty, error)
 	// Lists all companies associated with the project.
 	ListCompanies(context.Context, *ListCompaniesRequest) (*ListCompaniesResponse, error)
+}
+
+// UnimplementedCompanyServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCompanyServiceServer struct {
+}
+
+func (*UnimplementedCompanyServiceServer) CreateCompany(ctx context.Context, req *CreateCompanyRequest) (*Company, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCompany not implemented")
+}
+func (*UnimplementedCompanyServiceServer) GetCompany(ctx context.Context, req *GetCompanyRequest) (*Company, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCompany not implemented")
+}
+func (*UnimplementedCompanyServiceServer) UpdateCompany(ctx context.Context, req *UpdateCompanyRequest) (*Company, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCompany not implemented")
+}
+func (*UnimplementedCompanyServiceServer) DeleteCompany(ctx context.Context, req *DeleteCompanyRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCompany not implemented")
+}
+func (*UnimplementedCompanyServiceServer) ListCompanies(ctx context.Context, req *ListCompaniesRequest) (*ListCompaniesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCompanies not implemented")
 }
 
 func RegisterCompanyServiceServer(s *grpc.Server, srv CompanyServiceServer) {

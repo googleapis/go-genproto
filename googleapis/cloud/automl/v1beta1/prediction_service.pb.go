@@ -12,6 +12,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -550,6 +552,17 @@ type PredictionServiceServer interface {
 	// * Video Object Tracking * Text Extraction
 	// * Tables
 	BatchPredict(context.Context, *BatchPredictRequest) (*longrunning.Operation, error)
+}
+
+// UnimplementedPredictionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedPredictionServiceServer struct {
+}
+
+func (*UnimplementedPredictionServiceServer) Predict(ctx context.Context, req *PredictRequest) (*PredictResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Predict not implemented")
+}
+func (*UnimplementedPredictionServiceServer) BatchPredict(ctx context.Context, req *BatchPredictRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchPredict not implemented")
 }
 
 func RegisterPredictionServiceServer(s *grpc.Server, srv PredictionServiceServer) {

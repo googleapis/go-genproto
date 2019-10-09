@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -592,6 +594,20 @@ type ProfilerServiceServer interface {
 	// offline mode is currently not supported: the profile content must be
 	// provided at the time of the profile creation.
 	UpdateProfile(context.Context, *UpdateProfileRequest) (*Profile, error)
+}
+
+// UnimplementedProfilerServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedProfilerServiceServer struct {
+}
+
+func (*UnimplementedProfilerServiceServer) CreateProfile(ctx context.Context, req *CreateProfileRequest) (*Profile, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateProfile not implemented")
+}
+func (*UnimplementedProfilerServiceServer) CreateOfflineProfile(ctx context.Context, req *CreateOfflineProfileRequest) (*Profile, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOfflineProfile not implemented")
+}
+func (*UnimplementedProfilerServiceServer) UpdateProfile(ctx context.Context, req *UpdateProfileRequest) (*Profile, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProfile not implemented")
 }
 
 func RegisterProfilerServiceServer(s *grpc.Server, srv ProfilerServiceServer) {

@@ -14,6 +14,8 @@ import (
 	common "google.golang.org/genproto/googleapis/cloud/oslogin/common"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -606,6 +608,29 @@ type OsLoginServiceServer interface {
 	// Updates an SSH public key and returns the profile information. This method
 	// supports patch semantics.
 	UpdateSshPublicKey(context.Context, *UpdateSshPublicKeyRequest) (*common.SshPublicKey, error)
+}
+
+// UnimplementedOsLoginServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedOsLoginServiceServer struct {
+}
+
+func (*UnimplementedOsLoginServiceServer) DeletePosixAccount(ctx context.Context, req *DeletePosixAccountRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePosixAccount not implemented")
+}
+func (*UnimplementedOsLoginServiceServer) DeleteSshPublicKey(ctx context.Context, req *DeleteSshPublicKeyRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSshPublicKey not implemented")
+}
+func (*UnimplementedOsLoginServiceServer) GetLoginProfile(ctx context.Context, req *GetLoginProfileRequest) (*LoginProfile, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLoginProfile not implemented")
+}
+func (*UnimplementedOsLoginServiceServer) GetSshPublicKey(ctx context.Context, req *GetSshPublicKeyRequest) (*common.SshPublicKey, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSshPublicKey not implemented")
+}
+func (*UnimplementedOsLoginServiceServer) ImportSshPublicKey(ctx context.Context, req *ImportSshPublicKeyRequest) (*ImportSshPublicKeyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ImportSshPublicKey not implemented")
+}
+func (*UnimplementedOsLoginServiceServer) UpdateSshPublicKey(ctx context.Context, req *UpdateSshPublicKeyRequest) (*common.SshPublicKey, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateSshPublicKey not implemented")
 }
 
 func RegisterOsLoginServiceServer(s *grpc.Server, srv OsLoginServiceServer) {

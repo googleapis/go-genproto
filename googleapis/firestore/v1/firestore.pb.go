@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2696,6 +2698,50 @@ type FirestoreServer interface {
 	Listen(Firestore_ListenServer) error
 	// Lists all the collection IDs underneath a document.
 	ListCollectionIds(context.Context, *ListCollectionIdsRequest) (*ListCollectionIdsResponse, error)
+}
+
+// UnimplementedFirestoreServer can be embedded to have forward compatible implementations.
+type UnimplementedFirestoreServer struct {
+}
+
+func (*UnimplementedFirestoreServer) GetDocument(ctx context.Context, req *GetDocumentRequest) (*Document, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetDocument not implemented")
+}
+func (*UnimplementedFirestoreServer) ListDocuments(ctx context.Context, req *ListDocumentsRequest) (*ListDocumentsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListDocuments not implemented")
+}
+func (*UnimplementedFirestoreServer) CreateDocument(ctx context.Context, req *CreateDocumentRequest) (*Document, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method CreateDocument not implemented")
+}
+func (*UnimplementedFirestoreServer) UpdateDocument(ctx context.Context, req *UpdateDocumentRequest) (*Document, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateDocument not implemented")
+}
+func (*UnimplementedFirestoreServer) DeleteDocument(ctx context.Context, req *DeleteDocumentRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method DeleteDocument not implemented")
+}
+func (*UnimplementedFirestoreServer) BatchGetDocuments(req *BatchGetDocumentsRequest, srv Firestore_BatchGetDocumentsServer) error {
+	return status1.Errorf(codes.Unimplemented, "method BatchGetDocuments not implemented")
+}
+func (*UnimplementedFirestoreServer) BeginTransaction(ctx context.Context, req *BeginTransactionRequest) (*BeginTransactionResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BeginTransaction not implemented")
+}
+func (*UnimplementedFirestoreServer) Commit(ctx context.Context, req *CommitRequest) (*CommitResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method Commit not implemented")
+}
+func (*UnimplementedFirestoreServer) Rollback(ctx context.Context, req *RollbackRequest) (*empty.Empty, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method Rollback not implemented")
+}
+func (*UnimplementedFirestoreServer) RunQuery(req *RunQueryRequest, srv Firestore_RunQueryServer) error {
+	return status1.Errorf(codes.Unimplemented, "method RunQuery not implemented")
+}
+func (*UnimplementedFirestoreServer) Write(srv Firestore_WriteServer) error {
+	return status1.Errorf(codes.Unimplemented, "method Write not implemented")
+}
+func (*UnimplementedFirestoreServer) Listen(srv Firestore_ListenServer) error {
+	return status1.Errorf(codes.Unimplemented, "method Listen not implemented")
+}
+func (*UnimplementedFirestoreServer) ListCollectionIds(ctx context.Context, req *ListCollectionIdsRequest) (*ListCollectionIdsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method ListCollectionIds not implemented")
 }
 
 func RegisterFirestoreServer(s *grpc.Server, srv FirestoreServer) {

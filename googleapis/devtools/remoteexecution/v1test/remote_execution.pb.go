@@ -14,6 +14,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2465,6 +2467,14 @@ type ExecutionServer interface {
 	Execute(context.Context, *ExecuteRequest) (*longrunning.Operation, error)
 }
 
+// UnimplementedExecutionServer can be embedded to have forward compatible implementations.
+type UnimplementedExecutionServer struct {
+}
+
+func (*UnimplementedExecutionServer) Execute(ctx context.Context, req *ExecuteRequest) (*longrunning.Operation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method Execute not implemented")
+}
+
 func RegisterExecutionServer(s *grpc.Server, srv ExecutionServer) {
 	s.RegisterService(&_Execution_serviceDesc, srv)
 }
@@ -2568,6 +2578,17 @@ type ActionCacheServer interface {
 	// * `RESOURCE_EXHAUSTED`: There is insufficient storage space to add the
 	//   entry to the cache.
 	UpdateActionResult(context.Context, *UpdateActionResultRequest) (*ActionResult, error)
+}
+
+// UnimplementedActionCacheServer can be embedded to have forward compatible implementations.
+type UnimplementedActionCacheServer struct {
+}
+
+func (*UnimplementedActionCacheServer) GetActionResult(ctx context.Context, req *GetActionResultRequest) (*ActionResult, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetActionResult not implemented")
+}
+func (*UnimplementedActionCacheServer) UpdateActionResult(ctx context.Context, req *UpdateActionResultRequest) (*ActionResult, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateActionResult not implemented")
 }
 
 func RegisterActionCacheServer(s *grpc.Server, srv ActionCacheServer) {
@@ -2756,6 +2777,20 @@ type ContentAddressableStorageServer interface {
 	//
 	// * `NOT_FOUND`: The requested tree root is not present in the CAS.
 	GetTree(context.Context, *GetTreeRequest) (*GetTreeResponse, error)
+}
+
+// UnimplementedContentAddressableStorageServer can be embedded to have forward compatible implementations.
+type UnimplementedContentAddressableStorageServer struct {
+}
+
+func (*UnimplementedContentAddressableStorageServer) FindMissingBlobs(ctx context.Context, req *FindMissingBlobsRequest) (*FindMissingBlobsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method FindMissingBlobs not implemented")
+}
+func (*UnimplementedContentAddressableStorageServer) BatchUpdateBlobs(ctx context.Context, req *BatchUpdateBlobsRequest) (*BatchUpdateBlobsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method BatchUpdateBlobs not implemented")
+}
+func (*UnimplementedContentAddressableStorageServer) GetTree(ctx context.Context, req *GetTreeRequest) (*GetTreeResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetTree not implemented")
 }
 
 func RegisterContentAddressableStorageServer(s *grpc.Server, srv ContentAddressableStorageServer) {

@@ -15,6 +15,8 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status1 "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -457,6 +459,17 @@ type CustomerFeedServiceServer interface {
 	// Creates, updates, or removes customer feeds. Operation statuses are
 	// returned.
 	MutateCustomerFeeds(context.Context, *MutateCustomerFeedsRequest) (*MutateCustomerFeedsResponse, error)
+}
+
+// UnimplementedCustomerFeedServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedCustomerFeedServiceServer struct {
+}
+
+func (*UnimplementedCustomerFeedServiceServer) GetCustomerFeed(ctx context.Context, req *GetCustomerFeedRequest) (*resources.CustomerFeed, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetCustomerFeed not implemented")
+}
+func (*UnimplementedCustomerFeedServiceServer) MutateCustomerFeeds(ctx context.Context, req *MutateCustomerFeedsRequest) (*MutateCustomerFeedsResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MutateCustomerFeeds not implemented")
 }
 
 func RegisterCustomerFeedServiceServer(s *grpc.Server, srv CustomerFeedServiceServer) {

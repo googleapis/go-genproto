@@ -12,6 +12,8 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -140,6 +142,14 @@ func (c *userInterestServiceClient) GetUserInterest(ctx context.Context, in *Get
 type UserInterestServiceServer interface {
 	// Returns the requested user interest in full detail
 	GetUserInterest(context.Context, *GetUserInterestRequest) (*resources.UserInterest, error)
+}
+
+// UnimplementedUserInterestServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedUserInterestServiceServer struct {
+}
+
+func (*UnimplementedUserInterestServiceServer) GetUserInterest(ctx context.Context, req *GetUserInterestRequest) (*resources.UserInterest, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserInterest not implemented")
 }
 
 func RegisterUserInterestServiceServer(s *grpc.Server, srv UserInterestServiceServer) {

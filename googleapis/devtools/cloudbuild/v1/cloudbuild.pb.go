@@ -15,6 +15,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -4384,6 +4386,59 @@ type CloudBuildServer interface {
 	//
 	// This API is experimental.
 	ListWorkerPools(context.Context, *ListWorkerPoolsRequest) (*ListWorkerPoolsResponse, error)
+}
+
+// UnimplementedCloudBuildServer can be embedded to have forward compatible implementations.
+type UnimplementedCloudBuildServer struct {
+}
+
+func (*UnimplementedCloudBuildServer) CreateBuild(ctx context.Context, req *CreateBuildRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBuild not implemented")
+}
+func (*UnimplementedCloudBuildServer) GetBuild(ctx context.Context, req *GetBuildRequest) (*Build, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBuild not implemented")
+}
+func (*UnimplementedCloudBuildServer) ListBuilds(ctx context.Context, req *ListBuildsRequest) (*ListBuildsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBuilds not implemented")
+}
+func (*UnimplementedCloudBuildServer) CancelBuild(ctx context.Context, req *CancelBuildRequest) (*Build, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelBuild not implemented")
+}
+func (*UnimplementedCloudBuildServer) RetryBuild(ctx context.Context, req *RetryBuildRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RetryBuild not implemented")
+}
+func (*UnimplementedCloudBuildServer) CreateBuildTrigger(ctx context.Context, req *CreateBuildTriggerRequest) (*BuildTrigger, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBuildTrigger not implemented")
+}
+func (*UnimplementedCloudBuildServer) GetBuildTrigger(ctx context.Context, req *GetBuildTriggerRequest) (*BuildTrigger, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBuildTrigger not implemented")
+}
+func (*UnimplementedCloudBuildServer) ListBuildTriggers(ctx context.Context, req *ListBuildTriggersRequest) (*ListBuildTriggersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBuildTriggers not implemented")
+}
+func (*UnimplementedCloudBuildServer) DeleteBuildTrigger(ctx context.Context, req *DeleteBuildTriggerRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBuildTrigger not implemented")
+}
+func (*UnimplementedCloudBuildServer) UpdateBuildTrigger(ctx context.Context, req *UpdateBuildTriggerRequest) (*BuildTrigger, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBuildTrigger not implemented")
+}
+func (*UnimplementedCloudBuildServer) RunBuildTrigger(ctx context.Context, req *RunBuildTriggerRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RunBuildTrigger not implemented")
+}
+func (*UnimplementedCloudBuildServer) CreateWorkerPool(ctx context.Context, req *CreateWorkerPoolRequest) (*WorkerPool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateWorkerPool not implemented")
+}
+func (*UnimplementedCloudBuildServer) GetWorkerPool(ctx context.Context, req *GetWorkerPoolRequest) (*WorkerPool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetWorkerPool not implemented")
+}
+func (*UnimplementedCloudBuildServer) DeleteWorkerPool(ctx context.Context, req *DeleteWorkerPoolRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteWorkerPool not implemented")
+}
+func (*UnimplementedCloudBuildServer) UpdateWorkerPool(ctx context.Context, req *UpdateWorkerPoolRequest) (*WorkerPool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateWorkerPool not implemented")
+}
+func (*UnimplementedCloudBuildServer) ListWorkerPools(ctx context.Context, req *ListWorkerPoolsRequest) (*ListWorkerPoolsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListWorkerPools not implemented")
 }
 
 func RegisterCloudBuildServer(s *grpc.Server, srv CloudBuildServer) {

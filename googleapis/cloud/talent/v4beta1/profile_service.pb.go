@@ -14,6 +14,8 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1133,6 +1135,29 @@ type ProfileServiceServer interface {
 	// [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest]
 	// for more information.
 	SearchProfiles(context.Context, *SearchProfilesRequest) (*SearchProfilesResponse, error)
+}
+
+// UnimplementedProfileServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedProfileServiceServer struct {
+}
+
+func (*UnimplementedProfileServiceServer) ListProfiles(ctx context.Context, req *ListProfilesRequest) (*ListProfilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListProfiles not implemented")
+}
+func (*UnimplementedProfileServiceServer) CreateProfile(ctx context.Context, req *CreateProfileRequest) (*Profile, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateProfile not implemented")
+}
+func (*UnimplementedProfileServiceServer) GetProfile(ctx context.Context, req *GetProfileRequest) (*Profile, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetProfile not implemented")
+}
+func (*UnimplementedProfileServiceServer) UpdateProfile(ctx context.Context, req *UpdateProfileRequest) (*Profile, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateProfile not implemented")
+}
+func (*UnimplementedProfileServiceServer) DeleteProfile(ctx context.Context, req *DeleteProfileRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteProfile not implemented")
+}
+func (*UnimplementedProfileServiceServer) SearchProfiles(ctx context.Context, req *SearchProfilesRequest) (*SearchProfilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchProfiles not implemented")
 }
 
 func RegisterProfileServiceServer(s *grpc.Server, srv ProfileServiceServer) {

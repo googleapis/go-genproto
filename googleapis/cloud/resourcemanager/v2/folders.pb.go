@@ -15,6 +15,8 @@ import (
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1268,6 +1270,44 @@ type FoldersServer interface {
 	//
 	// There are no permissions required for making this API call.
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
+}
+
+// UnimplementedFoldersServer can be embedded to have forward compatible implementations.
+type UnimplementedFoldersServer struct {
+}
+
+func (*UnimplementedFoldersServer) ListFolders(ctx context.Context, req *ListFoldersRequest) (*ListFoldersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFolders not implemented")
+}
+func (*UnimplementedFoldersServer) SearchFolders(ctx context.Context, req *SearchFoldersRequest) (*SearchFoldersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchFolders not implemented")
+}
+func (*UnimplementedFoldersServer) GetFolder(ctx context.Context, req *GetFolderRequest) (*Folder, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFolder not implemented")
+}
+func (*UnimplementedFoldersServer) CreateFolder(ctx context.Context, req *CreateFolderRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateFolder not implemented")
+}
+func (*UnimplementedFoldersServer) UpdateFolder(ctx context.Context, req *UpdateFolderRequest) (*Folder, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateFolder not implemented")
+}
+func (*UnimplementedFoldersServer) MoveFolder(ctx context.Context, req *MoveFolderRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MoveFolder not implemented")
+}
+func (*UnimplementedFoldersServer) DeleteFolder(ctx context.Context, req *DeleteFolderRequest) (*Folder, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFolder not implemented")
+}
+func (*UnimplementedFoldersServer) UndeleteFolder(ctx context.Context, req *UndeleteFolderRequest) (*Folder, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UndeleteFolder not implemented")
+}
+func (*UnimplementedFoldersServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedFoldersServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedFoldersServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
 }
 
 func RegisterFoldersServer(s *grpc.Server, srv FoldersServer) {

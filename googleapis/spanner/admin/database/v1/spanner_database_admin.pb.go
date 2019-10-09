@@ -15,6 +15,8 @@ import (
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -957,6 +959,38 @@ type DatabaseAdminServer interface {
 	// the containing Cloud Spanner instance. Otherwise returns an empty set of
 	// permissions.
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
+}
+
+// UnimplementedDatabaseAdminServer can be embedded to have forward compatible implementations.
+type UnimplementedDatabaseAdminServer struct {
+}
+
+func (*UnimplementedDatabaseAdminServer) ListDatabases(ctx context.Context, req *ListDatabasesRequest) (*ListDatabasesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDatabases not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) CreateDatabase(ctx context.Context, req *CreateDatabaseRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDatabase not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) GetDatabase(ctx context.Context, req *GetDatabaseRequest) (*Database, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDatabase not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) UpdateDatabaseDdl(ctx context.Context, req *UpdateDatabaseDdlRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDatabaseDdl not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) DropDatabase(ctx context.Context, req *DropDatabaseRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DropDatabase not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) GetDatabaseDdl(ctx context.Context, req *GetDatabaseDdlRequest) (*GetDatabaseDdlResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDatabaseDdl not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
 }
 
 func RegisterDatabaseAdminServer(s *grpc.Server, srv DatabaseAdminServer) {
