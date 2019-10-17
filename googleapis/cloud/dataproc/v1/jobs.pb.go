@@ -14,8 +14,6 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2576,29 +2574,6 @@ type JobControllerServer interface {
 	// Deletes the job from the project. If the job is active, the delete fails,
 	// and the response returns `FAILED_PRECONDITION`.
 	DeleteJob(context.Context, *DeleteJobRequest) (*empty.Empty, error)
-}
-
-// UnimplementedJobControllerServer can be embedded to have forward compatible implementations.
-type UnimplementedJobControllerServer struct {
-}
-
-func (*UnimplementedJobControllerServer) SubmitJob(ctx context.Context, req *SubmitJobRequest) (*Job, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SubmitJob not implemented")
-}
-func (*UnimplementedJobControllerServer) GetJob(ctx context.Context, req *GetJobRequest) (*Job, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetJob not implemented")
-}
-func (*UnimplementedJobControllerServer) ListJobs(ctx context.Context, req *ListJobsRequest) (*ListJobsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListJobs not implemented")
-}
-func (*UnimplementedJobControllerServer) UpdateJob(ctx context.Context, req *UpdateJobRequest) (*Job, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateJob not implemented")
-}
-func (*UnimplementedJobControllerServer) CancelJob(ctx context.Context, req *CancelJobRequest) (*Job, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CancelJob not implemented")
-}
-func (*UnimplementedJobControllerServer) DeleteJob(ctx context.Context, req *DeleteJobRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteJob not implemented")
 }
 
 func RegisterJobControllerServer(s *grpc.Server, srv JobControllerServer) {

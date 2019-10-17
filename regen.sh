@@ -57,7 +57,7 @@ fi
 wait
 
 # Nuke everything, we'll generate them back
-rm -r googleapis protobuf generated || true
+rm -rf googleapis protobuf generated || true
 
 mkdir generated
 go run regen.go -go_out generated -pkg_prefix "$PKG" "$apidir" "$protodir"

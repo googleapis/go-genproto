@@ -15,8 +15,6 @@ import (
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
-	codes "google.golang.org/grpc/codes"
-	status "google.golang.org/grpc/status"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -993,38 +991,6 @@ type ConnectionServiceServer interface {
 	// UIs and command-line tools, not for authorization checking. This operation
 	// may "fail open" without warning.
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
-}
-
-// UnimplementedConnectionServiceServer can be embedded to have forward compatible implementations.
-type UnimplementedConnectionServiceServer struct {
-}
-
-func (*UnimplementedConnectionServiceServer) CreateConnection(ctx context.Context, req *CreateConnectionRequest) (*Connection, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateConnection not implemented")
-}
-func (*UnimplementedConnectionServiceServer) GetConnection(ctx context.Context, req *GetConnectionRequest) (*Connection, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetConnection not implemented")
-}
-func (*UnimplementedConnectionServiceServer) ListConnections(ctx context.Context, req *ListConnectionsRequest) (*ListConnectionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListConnections not implemented")
-}
-func (*UnimplementedConnectionServiceServer) UpdateConnection(ctx context.Context, req *UpdateConnectionRequest) (*Connection, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateConnection not implemented")
-}
-func (*UnimplementedConnectionServiceServer) UpdateConnectionCredential(ctx context.Context, req *UpdateConnectionCredentialRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateConnectionCredential not implemented")
-}
-func (*UnimplementedConnectionServiceServer) DeleteConnection(ctx context.Context, req *DeleteConnectionRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteConnection not implemented")
-}
-func (*UnimplementedConnectionServiceServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
-}
-func (*UnimplementedConnectionServiceServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
-}
-func (*UnimplementedConnectionServiceServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
 }
 
 func RegisterConnectionServiceServer(s *grpc.Server, srv ConnectionServiceServer) {
