@@ -99,6 +99,10 @@ type SearchInvocationsRequest struct {
 	// Fields that support comparison ("<", "<=", ">", ">=") restrictions;
 	//
 	// timing.start_time
+	//
+	// Supported custom function global restrictions:
+	//
+	// propertyEquals("key", "value")
 	Query string `protobuf:"bytes,4,opt,name=query,proto3" json:"query,omitempty"`
 	// The project id to search under.
 	ProjectId string `protobuf:"bytes,5,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
@@ -1360,7 +1364,7 @@ type TraverseFileSetsRequest struct {
 	// This returns the transitive closure of FileSets referenced by the given
 	// FileSet, including itself.
 	//
-	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${Curl_encode(CONFIGURATION_ID)}/actions/${url_encode(ACTION_ID)}
+	// invocations/${INVOCATION_ID}/targets/${url_encode(TARGET_ID)}/configuredTargets/${url_encode(CONFIGURATION_ID)}/actions/${url_encode(ACTION_ID)}
 	// This returns the transitive closure of FileSets referenced by the given
 	// Action. If ${ACTION_ID} is "-", this returns the transitive closure of
 	// FileSets referenced by all Actions under the given ConfiguredTarget.

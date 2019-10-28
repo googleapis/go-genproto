@@ -135,9 +135,11 @@ func (Document_Layout_TextSegmentType) EnumDescriptor() ([]byte, []int) {
 // Only images up to 30MB in size are supported.
 type Image struct {
 	// Input only. The data representing the image.
-	// For Predict calls [image_bytes][] must be set, as other options are not
-	// currently supported by prediction API. You can read the contents of an
-	// uploaded image by using the [content_uri][] field.
+	// For Predict calls
+	// [image_bytes][google.cloud.automl.v1beta1.Image.image_bytes] must be set,
+	// as other options are not currently supported by prediction API. You can
+	// read the contents of an uploaded image by using the
+	// [content_uri][google.cloud.automl.v1beta1.Image.content_uri] field.
 	//
 	// Types that are valid to be assigned to Data:
 	//	*Image_ImageBytes

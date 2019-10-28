@@ -4347,6 +4347,11 @@ type BatchUpdateIntentsRequest struct {
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The source of the intent batch.
 	//
+	// For each intent in the batch:
+	//
+	// *    If `name` is specified, we update an existing intent.
+	// *    If `name` is not specified, we create a new intent.
+	//
 	// Types that are valid to be assigned to IntentBatch:
 	//	*BatchUpdateIntentsRequest_IntentBatchUri
 	//	*BatchUpdateIntentsRequest_IntentBatchInline

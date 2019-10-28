@@ -2115,7 +2115,7 @@ type UploadRequest struct {
 	// FileSet: [*].
 	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// If true then the Update, Merge operation will become a Create operation if
-	// the resource is NOT_FOUND.
+	// the resource is NOT_FOUND. Not supported for Invocation resource.
 	CreateIfNotFound bool `protobuf:"varint,10,opt,name=create_if_not_found,json=createIfNotFound,proto3" json:"create_if_not_found,omitempty"`
 	// The proto of the resource being uploaded.
 	//
