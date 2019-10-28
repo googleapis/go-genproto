@@ -35,8 +35,8 @@ type GcsFilesetSpec struct {
 	//                              `a/*/b` pattern, such as `a/c/b`, `a/d/b`
 	//  * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
 	FilePatterns []string `protobuf:"bytes,1,rep,name=file_patterns,json=filePatterns,proto3" json:"file_patterns,omitempty"`
-	// Output only. Sample files contained in this fileset, not all files contained in this
-	// fileset are represented here.
+	// Output only. Sample files contained in this fileset, not all files
+	// contained in this fileset are represented here.
 	SampleGcsFileSpecs   []*GcsFileSpec `protobuf:"bytes,2,rep,name=sample_gcs_file_specs,json=sampleGcsFileSpecs,proto3" json:"sample_gcs_file_specs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`

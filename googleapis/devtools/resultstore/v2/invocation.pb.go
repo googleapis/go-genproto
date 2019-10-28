@@ -405,13 +405,15 @@ func (m *CommandLine) GetCommand() string {
 
 // Attributes that apply to all invocations.
 type InvocationAttributes struct {
-	// Immutable.
-	// The Cloud Project that owns this invocation (this is different than the
+	// Immutable. The Cloud Project that owns this invocation (this is different than the
 	// Consumer Cloud Project that calls this API).
 	// This must be set in the CreateInvocation call, and can't be changed.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// The list of users in the command chain.  The first user in this sequence
-	// is the one who instigated the first command in the chain.
+	// is the one who instigated the first command in the chain. For example,
+	// this might contain just the user that ran a Bazel command, or a robot
+	// that tested a change as part of a CI system. It could also contain the user
+	// that manually triggered a CI test, then the robot that ran the test.
 	Users []string `protobuf:"bytes,2,rep,name=users,proto3" json:"users,omitempty"`
 	// Labels to categorize this invocation.
 	// This is implemented as a set. All labels will be unique. Any duplicate
