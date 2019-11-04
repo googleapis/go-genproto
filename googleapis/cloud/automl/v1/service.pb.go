@@ -1371,7 +1371,7 @@ type AutoMlClient interface {
 	// same parameters has no effect. Deploying with different parametrs
 	// (as e.g. changing
 	//
-	// [node_number][google.cloud.automl.v1p1beta.ImageObjectDetectionModelDeploymentMetadata.node_number])
+	// [node_number][google.cloud.automl.v1.ImageObjectDetectionModelDeploymentMetadata.node_number])
 	//  will reset the deployment state without pausing the model's availability.
 	//
 	// Only applicable for Text Classification, Image Object Detection; all other
@@ -1618,7 +1618,7 @@ type AutoMlServer interface {
 	// same parameters has no effect. Deploying with different parametrs
 	// (as e.g. changing
 	//
-	// [node_number][google.cloud.automl.v1p1beta.ImageObjectDetectionModelDeploymentMetadata.node_number])
+	// [node_number][google.cloud.automl.v1.ImageObjectDetectionModelDeploymentMetadata.node_number])
 	//  will reset the deployment state without pausing the model's availability.
 	//
 	// Only applicable for Text Classification, Image Object Detection; all other
