@@ -40,7 +40,7 @@ type AnnotationPayload struct {
 	// ancestor dataset, or the dataset that was used to train the model in use.
 	AnnotationSpecId string `protobuf:"bytes,1,opt,name=annotation_spec_id,json=annotationSpecId,proto3" json:"annotation_spec_id,omitempty"`
 	// Output only. The value of
-	// [display_name][google.cloud.automl.v1p1beta.AnnotationSpec.display_name]
+	// [display_name][google.cloud.automl.v1.AnnotationSpec.display_name]
 	// when the model was trained. Because this field returns a value at model
 	// training time, for different models trained using the same dataset, the
 	// returned value could be different as model owner could update the
