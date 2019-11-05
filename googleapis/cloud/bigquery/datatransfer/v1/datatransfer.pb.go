@@ -2112,6 +2112,8 @@ type DataTransferServiceClient interface {
 	// range, one transfer run is created.
 	// Note that runs are created per UTC time in the time range.
 	// DEPRECATED: use StartManualTransferRuns instead.
+	//
+	// Deprecated: Do not use.
 	ScheduleTransferRuns(ctx context.Context, in *ScheduleTransferRunsRequest, opts ...grpc.CallOption) (*ScheduleTransferRunsResponse, error)
 	// Start manual transfer runs to be executed now with schedule_time equal to
 	// current time. The transfer runs can be created for a time range where the
@@ -2295,6 +2297,8 @@ type DataTransferServiceServer interface {
 	// range, one transfer run is created.
 	// Note that runs are created per UTC time in the time range.
 	// DEPRECATED: use StartManualTransferRuns instead.
+	//
+	// Deprecated: Do not use.
 	ScheduleTransferRuns(context.Context, *ScheduleTransferRunsRequest) (*ScheduleTransferRunsResponse, error)
 	// Start manual transfer runs to be executed now with schedule_time equal to
 	// current time. The transfer runs can be created for a time range where the

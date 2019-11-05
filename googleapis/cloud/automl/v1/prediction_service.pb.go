@@ -113,15 +113,15 @@ type PredictResponse struct {
 	// Empty if AutoML does not preprocess the input example.
 	// * For Text Extraction:
 	//   If the input is a .pdf file, the OCR'ed text will be provided in
-	//   [document_text][google.cloud.automl.v1p1beta.Document.document_text].
+	//   [document_text][google.cloud.automl.v1.Document.document_text].
 	//
 	// * For Text Classification:
 	//   If the input is a .pdf file, the OCR'ed trucated text will be provided in
-	//   [document_text][google.cloud.automl.v1p1beta.Document.document_text].
+	//   [document_text][google.cloud.automl.v1.Document.document_text].
 	//
 	// * For Text Sentiment:
 	//   If the input is a .pdf file, the OCR'ed trucated text will be provided in
-	//   [document_text][google.cloud.automl.v1p1beta.Document.document_text].
+	//   [document_text][google.cloud.automl.v1.Document.document_text].
 	PreprocessedInput *ExamplePayload `protobuf:"bytes,3,opt,name=preprocessed_input,json=preprocessedInput,proto3" json:"preprocessed_input,omitempty"`
 	// Additional domain-specific prediction response metadata.
 	//
