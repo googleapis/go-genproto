@@ -515,7 +515,7 @@ type Paragraph struct {
 	//      1----0
 	//   and the vertex order will still be (0, 1, 2, 3).
 	BoundingBox *BoundingPoly `protobuf:"bytes,2,opt,name=bounding_box,json=boundingBox,proto3" json:"bounding_box,omitempty"`
-	// List of words in this paragraph.
+	// List of all words in this paragraph.
 	Words []*Word `protobuf:"bytes,3,rep,name=words,proto3" json:"words,omitempty"`
 	// Confidence of the OCR results for the paragraph. Range [0, 1].
 	Confidence           float32  `protobuf:"fixed32,4,opt,name=confidence,proto3" json:"confidence,omitempty"`
@@ -678,7 +678,7 @@ type Symbol struct {
 	//      2----3
 	//      |    |
 	//      1----0
-	//   and the vertice order will still be (0, 1, 2, 3).
+	//   and the vertex order will still be (0, 1, 2, 3).
 	BoundingBox *BoundingPoly `protobuf:"bytes,2,opt,name=bounding_box,json=boundingBox,proto3" json:"bounding_box,omitempty"`
 	// The actual UTF-8 representation of the symbol.
 	Text string `protobuf:"bytes,3,opt,name=text,proto3" json:"text,omitempty"`
