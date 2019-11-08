@@ -34,7 +34,7 @@ const (
 	// Default value.
 	Resume_RESUME_TYPE_UNSPECIFIED Resume_ResumeType = 0
 	// The profile contents in HR-XML format.
-	// See http://schemas.liquid-technologies.com/hr-xml/2007-04-15/ for more
+	// See https://schemas.liquid-technologies.com/hr-xml/2007-04-15/ for more
 	// information about Human Resources XML.
 	Resume_HRXML Resume_ResumeType = 1
 	// Resume type not specified.
@@ -85,7 +85,7 @@ const (
 	// or LANDLINE number. The [phone
 	// usage][google.cloud.talent.v4beta1.ContactInfoUsage] should be set to
 	// PERSONAL for these phone types. Some more information can be found here:
-	// http://en.wikipedia.org/wiki/Personal_Numbers
+	// https://en.wikipedia.org/wiki/Personal_Numbers
 	Phone_VIRTUAL Phone_PhoneType = 7
 	// Voice over IP numbers. This includes TSoIP (Telephony Service over IP).
 	Phone_VOIP Phone_PhoneType = 8
