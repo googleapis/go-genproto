@@ -425,7 +425,7 @@ type Intent struct {
 	// Optional. Indicates whether this is a fallback intent.
 	IsFallback bool `protobuf:"varint,4,opt,name=is_fallback,json=isFallback,proto3" json:"is_fallback,omitempty"`
 	// Optional. Indicates whether Machine Learning is disabled for the intent.
-	// Note: If `ml_diabled` setting is set to true, then this intent is not
+	// Note: If `ml_disabled` setting is set to true, then this intent is not
 	// taken into account during inference in `ML ONLY` match mode. Also,
 	// auto-markup in the UI is turned off.
 	MlDisabled bool `protobuf:"varint,19,opt,name=ml_disabled,json=mlDisabled,proto3" json:"ml_disabled,omitempty"`
