@@ -208,7 +208,7 @@ const (
 	// Uncompressed 16-bit signed little-endian samples (Linear PCM).
 	// Audio content returned as LINEAR16 also contains a WAV header.
 	OutputAudioEncoding_OUTPUT_AUDIO_ENCODING_LINEAR_16 OutputAudioEncoding = 1
-	// MP3 audio.
+	// MP3 audio at 32kbps.
 	OutputAudioEncoding_OUTPUT_AUDIO_ENCODING_MP3 OutputAudioEncoding = 2
 	// Opus encoded audio wrapped in an ogg container. The result will be a
 	// file which can be played natively on Android, and in browsers (at least
