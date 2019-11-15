@@ -30,7 +30,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Request for CreateBudget
 type CreateBudgetRequest struct {
-	// Required. the name of the billing account to create the budget in. Values
+	// Required. The name of the billing account to create the budget in. Values
 	// are of the form `billingAccounts/{billingAccountId}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. Budget to create.
@@ -408,14 +408,15 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type BudgetServiceClient interface {
-	// Creates a new budget if none exists. There is a limit of 1,000 budgets
-	// per billing account.
+	// Creates a new budget. See
+	// <a href="https://cloud.google.com/billing/quotas">Quotas and limits</a>
+	// for more information on the limits of the number of budgets you can create.
 	CreateBudget(ctx context.Context, in *CreateBudgetRequest, opts ...grpc.CallOption) (*Budget, error)
 	// Updates a budget and returns the updated budget.
 	UpdateBudget(ctx context.Context, in *UpdateBudgetRequest, opts ...grpc.CallOption) (*Budget, error)
 	// Returns a budget.
 	GetBudget(ctx context.Context, in *GetBudgetRequest, opts ...grpc.CallOption) (*Budget, error)
-	// Returns the budgets for a billing account.
+	// Returns a list of budgets for a billing account.
 	ListBudgets(ctx context.Context, in *ListBudgetsRequest, opts ...grpc.CallOption) (*ListBudgetsResponse, error)
 	// Deletes a budget. Returns successfully if already deleted.
 	DeleteBudget(ctx context.Context, in *DeleteBudgetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -476,14 +477,15 @@ func (c *budgetServiceClient) DeleteBudget(ctx context.Context, in *DeleteBudget
 
 // BudgetServiceServer is the server API for BudgetService service.
 type BudgetServiceServer interface {
-	// Creates a new budget if none exists. There is a limit of 1,000 budgets
-	// per billing account.
+	// Creates a new budget. See
+	// <a href="https://cloud.google.com/billing/quotas">Quotas and limits</a>
+	// for more information on the limits of the number of budgets you can create.
 	CreateBudget(context.Context, *CreateBudgetRequest) (*Budget, error)
 	// Updates a budget and returns the updated budget.
 	UpdateBudget(context.Context, *UpdateBudgetRequest) (*Budget, error)
 	// Returns a budget.
 	GetBudget(context.Context, *GetBudgetRequest) (*Budget, error)
-	// Returns the budgets for a billing account.
+	// Returns a list of budgets for a billing account.
 	ListBudgets(context.Context, *ListBudgetsRequest) (*ListBudgetsResponse, error)
 	// Deletes a budget. Returns successfully if already deleted.
 	DeleteBudget(context.Context, *DeleteBudgetRequest) (*empty.Empty, error)
