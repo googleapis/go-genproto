@@ -75,8 +75,7 @@ func (EntryType) EnumDescriptor() ([]byte, []int) {
 type SearchCatalogRequest struct {
 	// Required. The scope of this search request.
 	Scope *SearchCatalogRequest_Scope `protobuf:"bytes,6,opt,name=scope,proto3" json:"scope,omitempty"`
-	// Required. The query string in search query syntax. The query must be
-	// non-empty.
+	// Required. The query string in search query syntax. The query must be non-empty.
 	//
 	// Query strings can be simple as "x" or more qualified as:
 	//
@@ -92,8 +91,8 @@ type SearchCatalogRequest struct {
 	// for page_size is 1000. Throws an invalid argument for page_size > 1000.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. Pagination token returned in an earlier
-	// [SearchCatalogResponse.next_page_token][google.cloud.datacatalog.v1beta1.SearchCatalogResponse.next_page_token],
-	// which indicates that this is a continuation of a prior
+	// [SearchCatalogResponse.next_page_token][google.cloud.datacatalog.v1beta1.SearchCatalogResponse.next_page_token], which
+	// indicates that this is a continuation of a prior
 	// [SearchCatalogRequest][google.cloud.datacatalog.v1beta1.DataCatalog.SearchCatalog]
 	// call, and that the system should return the next page of data. If empty,
 	// the first page is returned.
@@ -987,8 +986,7 @@ type EntryGroup struct {
 	// paragraphs that describe entry group contents. Default value is an empty
 	// string.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// Output only. Timestamps about this EntryGroup. Default value is empty
-	// timestamps.
+	// Output only. Timestamps about this EntryGroup. Default value is empty timestamps.
 	DataCatalogTimestamps *SystemTimestamps `protobuf:"bytes,4,opt,name=data_catalog_timestamps,json=dataCatalogTimestamps,proto3" json:"data_catalog_timestamps,omitempty"`
 	XXX_NoUnkeyedLiteral  struct{}          `json:"-"`
 	XXX_unrecognized      []byte            `json:"-"`
@@ -1273,8 +1271,8 @@ func (m *DeleteTagTemplateRequest) GetForce() bool {
 // Request message for
 // [CreateTag][google.cloud.datacatalog.v1beta1.DataCatalog.CreateTag].
 type CreateTagRequest struct {
-	// Required. The name of the resource to attach this tag to. Tags can be
-	// attached to Entries. Example:
+	// Required. The name of the resource to attach this tag to. Tags can be attached to
+	// Entries. Example:
 	//
 	// * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
 	//
@@ -1572,8 +1570,7 @@ type RenameTagTemplateFieldRequest struct {
 	//
 	// * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The new ID of this tag template field. For example,
-	// `my_new_field`.
+	// Required. The new ID of this tag template field. For example, `my_new_field`.
 	NewTagTemplateFieldId string   `protobuf:"bytes,2,opt,name=new_tag_template_field_id,json=newTagTemplateFieldId,proto3" json:"new_tag_template_field_id,omitempty"`
 	XXX_NoUnkeyedLiteral  struct{} `json:"-"`
 	XXX_unrecognized      []byte   `json:"-"`

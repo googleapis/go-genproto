@@ -24,8 +24,8 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
 type Schema struct {
-	// Required. Schema of columns. A maximum of 10,000 columns and sub-columns
-	// can be specified.
+	// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be
+	// specified.
 	Columns              []*ColumnSchema `protobuf:"bytes,2,rep,name=columns,proto3" json:"columns,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
@@ -73,12 +73,11 @@ type ColumnSchema struct {
 	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	// Optional. Description of the column. Default value is an empty string.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	// Optional. A column's mode indicates whether the values in this column are
-	// required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
-	// supported. Default mode is `NULLABLE`.
+	// Optional. A column's mode indicates whether the values in this column are required,
+	// nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported.
+	// Default mode is `NULLABLE`.
 	Mode string `protobuf:"bytes,3,opt,name=mode,proto3" json:"mode,omitempty"`
-	// Optional. Schema of sub-columns. A column can have zero or more
-	// sub-columns.
+	// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
 	Subcolumns           []*ColumnSchema `protobuf:"bytes,7,rep,name=subcolumns,proto3" json:"subcolumns,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`

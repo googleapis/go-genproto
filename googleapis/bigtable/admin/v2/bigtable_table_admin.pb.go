@@ -1561,7 +1561,7 @@ type BigtableTableAdminClient interface {
 	// recommended for production use. It is not subject to any SLA or deprecation
 	// policy.
 	DeleteSnapshot(ctx context.Context, in *DeleteSnapshotRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// Gets the access control policy for an instance resource. Returns an empty
+	// Gets the access control policy for a table resource. Returns an empty
 	// policy if an table exists but does not have a policy set.
 	GetIamPolicy(ctx context.Context, in *v1.GetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
 	// Sets the access control policy on a table resource. Replaces any existing
@@ -1795,7 +1795,7 @@ type BigtableTableAdminServer interface {
 	// recommended for production use. It is not subject to any SLA or deprecation
 	// policy.
 	DeleteSnapshot(context.Context, *DeleteSnapshotRequest) (*empty.Empty, error)
-	// Gets the access control policy for an instance resource. Returns an empty
+	// Gets the access control policy for a table resource. Returns an empty
 	// policy if an table exists but does not have a policy set.
 	GetIamPolicy(context.Context, *v1.GetIamPolicyRequest) (*v1.Policy, error)
 	// Sets the access control policy on a table resource. Replaces any existing
