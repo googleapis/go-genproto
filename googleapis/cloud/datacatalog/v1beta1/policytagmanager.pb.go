@@ -58,22 +58,25 @@ func (Taxonomy_PolicyType) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_059587cf652b217c, []int{0, 0}
 }
 
-// A taxonomy is a collection of policy tags of business significance, typically
-// associated with the substance of the policy tag (e.g. credit card, SSN), or
-// how it is used (e.g. account name, user ID).
+// A taxonomy is a collection of policy tags that classify data along a common
+// axis. For instance a data *sensitivity* taxonomy could contain policy tags
+// denoting PII such as age, zipcode, and SSN. A data *origin* taxonomy could
+// contain policy tags to distinguish user data, employee data, partner data,
+// public data.
 type Taxonomy struct {
-	// Output only. Resource name of the taxonomy, whose format is:
+	// Output only. Resource name of this taxonomy, whose format is:
 	// "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. Human readable name of this taxonomy. Max 200 bytes when encoded
-	// in UTF-8.
+	// Required. User defined name of this taxonomy. It must: contain only unicode letters,
+	// numbers, underscores, dashes and spaces; not start or end with spaces; and
+	// be at most 200 bytes long when encoded in UTF-8.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// Optional. Description of the taxonomy. The length of the description is
-	// limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an
-	// empty description.
+	// Optional. Description of this taxonomy. It must: contain only unicode characters,
+	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
+	// long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// Optional. A list of policy types that are activated for the taxonomy. If
-	// not set, defaults to an empty list of activated policy types.
+	// Optional. A list of policy types that are activated for this taxonomy. If not set,
+	// defaults to an empty list.
 	ActivatedPolicyTypes []Taxonomy_PolicyType `protobuf:"varint,6,rep,packed,name=activated_policy_types,json=activatedPolicyTypes,proto3,enum=google.cloud.datacatalog.v1beta1.Taxonomy_PolicyType" json:"activated_policy_types,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -143,21 +146,25 @@ func (m *Taxonomy) GetActivatedPolicyTypes() []Taxonomy_PolicyType {
 // PolicyTag "Geolocation" contains three child policy tags: "LatLong",
 // "City", and "ZipCode".
 type PolicyTag struct {
-	// Output only. Resource name of the policy tag, whose format is:
+	// Output only. Resource name of this policy tag, whose format is:
 	// "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. Human readable name of this policy tag. Max 200 bytes when
+	// Required. User defined name of this policy tag. It must: be unique within the parent
+	// taxonomy; contain only unicode letters, numbers, underscores, dashes and
+	// spaces; not start or end with spaces; and be at most 200 bytes long when
 	// encoded in UTF-8.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// Description of the policy tag. The length of the description is limited to
-	// 2000 bytes when encoded in UTF-8. If not set, defaults to an empty
-	// description.
+	// Description of this policy tag. It must: contain only unicode characters,
+	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
+	// long when encoded in UTF-8. If not set, defaults to an empty description.
+	// If not set, defaults to an empty description.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// Resource name of the parent policy tag to this policy tag (e.g. for policy
-	// tag "LatLong" in the example above, this field contains the resource name
-	// of policy tag "Geolocation"). If empty, it means this policy tag is a top
-	// level policy tag (e.g. this field is empty for policy tag "Geolocation" in
-	// the example above). If not set, defaults to an empty string.
+	// Resource name of this policy tag's parent policy tag (e.g. for the
+	// "LatLong" policy tag in the example above, this field contains the
+	// resource name of the "Geolocation" policy tag). If empty, it means this
+	// policy tag is a top level policy tag (e.g. this field is empty for the
+	// "Geolocation" policy tag in the example above). If not set, defaults to an
+	// empty string.
 	ParentPolicyTag string `protobuf:"bytes,4,opt,name=parent_policy_tag,json=parentPolicyTag,proto3" json:"parent_policy_tag,omitempty"`
 	// Output only. Resource names of child policy tags of this policy tag.
 	ChildPolicyTags      []string `protobuf:"bytes,5,rep,name=child_policy_tags,json=childPolicyTags,proto3" json:"child_policy_tags,omitempty"`
@@ -229,11 +236,9 @@ func (m *PolicyTag) GetChildPolicyTags() []string {
 // Request message for
 // [CreateTaxonomy][google.cloud.datacatalog.v1beta1.PolicyTagManager.CreateTaxonomy].
 type CreateTaxonomyRequest struct {
-	// Required. Resource name of the project that the newly created taxonomy
-	// belongs to.
+	// Required. Resource name of the project that the taxonomy will belong to.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The taxonomy to be created. The name field must be left blank. The
-	// display_name field is mandatory.
+	// The taxonomy to be created.
 	Taxonomy             *Taxonomy `protobuf:"bytes,2,opt,name=taxonomy,proto3" json:"taxonomy,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
@@ -380,9 +385,10 @@ func (m *UpdateTaxonomyRequest) GetUpdateMask() *field_mask.FieldMask {
 // Request message for
 // [ListTaxonomies][google.cloud.datacatalog.v1beta1.PolicyTagManager.ListTaxonomies].
 type ListTaxonomiesRequest struct {
-	// Required. Resource name of a project to list the taxonomies of.
+	// Required. Resource name of the project to list the taxonomies of.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The maximum number of items to return. If not set, defaults to 50.
+	// The maximum number of items to return. Must be a value between 1 and 1000.
+	// If not set, defaults to 50.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The next_page_token value returned from a previous list request, if any. If
 	// not set, defaults to an empty string.
@@ -443,7 +449,7 @@ func (m *ListTaxonomiesRequest) GetPageToken() string {
 type ListTaxonomiesResponse struct {
 	// Taxonomies that the project contains.
 	Taxonomies []*Taxonomy `protobuf:"bytes,1,rep,name=taxonomies,proto3" json:"taxonomies,omitempty"`
-	// Token to retrieve the next page of results, or empty if there are no
+	// Token used to retrieve the next page of results, or empty if there are no
 	// more results in the list.
 	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -493,7 +499,7 @@ func (m *ListTaxonomiesResponse) GetNextPageToken() string {
 // Request message for
 // [GetTaxonomy][google.cloud.datacatalog.v1beta1.PolicyTagManager.GetTaxonomy].
 type GetTaxonomyRequest struct {
-	// Required. Resource name of the taxonomy to be returned.
+	// Required. Resource name of the requested taxonomy.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -535,12 +541,9 @@ func (m *GetTaxonomyRequest) GetName() string {
 // Request message for
 // [CreatePolicyTag][google.cloud.datacatalog.v1beta1.PolicyTagManager.CreatePolicyTag].
 type CreatePolicyTagRequest struct {
-	// Required. Resource name of the taxonomy that the newly created policy tag
-	// belongs to.
+	// Required. Resource name of the taxonomy that the policy tag will belong to.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The policy tag to be created. The name, and taxonomy_display_name field
-	// must be left blank. The display_name field is mandatory and must not be
-	// duplicated with existing policy tags in the same taxonomy.
+	// The policy tag to be created.
 	PolicyTag            *PolicyTag `protobuf:"bytes,2,opt,name=policy_tag,json=policyTag,proto3" json:"policy_tag,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
 	XXX_unrecognized     []byte     `json:"-"`
@@ -589,7 +592,7 @@ func (m *CreatePolicyTagRequest) GetPolicyTag() *PolicyTag {
 // Request message for
 // [DeletePolicyTag][google.cloud.datacatalog.v1beta1.PolicyTagManager.DeletePolicyTag].
 type DeletePolicyTagRequest struct {
-	// Required. Resource name of the policy tag to be deleted. All its descendant
+	// Required. Resource name of the policy tag to be deleted. All of its descendant
 	// policy tags will also be deleted.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -690,9 +693,10 @@ func (m *UpdatePolicyTagRequest) GetUpdateMask() *field_mask.FieldMask {
 // Request message for
 // [ListPolicyTags][google.cloud.datacatalog.v1beta1.PolicyTagManager.ListPolicyTags].
 type ListPolicyTagsRequest struct {
-	// Required. Resource name of a taxonomy to list the policy tags of.
+	// Required. Resource name of the taxonomy to list the policy tags of.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The maximum number of items to return. If not set, defaults to 50.
+	// The maximum number of items to return. Must be a value between 1 and 1000.
+	// If not set, defaults to 50.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The next_page_token value returned from a previous List request, if any. If
 	// not set, defaults to an empty string.
@@ -751,9 +755,9 @@ func (m *ListPolicyTagsRequest) GetPageToken() string {
 // Response message for
 // [ListPolicyTags][google.cloud.datacatalog.v1beta1.PolicyTagManager.ListPolicyTags].
 type ListPolicyTagsResponse struct {
-	// Policy Tags that are in this taxonomy.
+	// The policy tags that are in the requested taxonomy.
 	PolicyTags []*PolicyTag `protobuf:"bytes,1,rep,name=policy_tags,json=policyTags,proto3" json:"policy_tags,omitempty"`
-	// Token to retrieve the next page of results, or empty if there are no
+	// Token used to retrieve the next page of results, or empty if there are no
 	// more results in the list.
 	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -803,7 +807,7 @@ func (m *ListPolicyTagsResponse) GetNextPageToken() string {
 // Request message for
 // [GetPolicyTag][google.cloud.datacatalog.v1beta1.PolicyTagManager.GetPolicyTag].
 type GetPolicyTagRequest struct {
-	// Required. Resource name of the policy tag to be returned.
+	// Required. Resource name of the requested policy tag.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -971,18 +975,19 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type PolicyTagManagerClient interface {
-	// Creates a new taxonomy in a given project.
+	// Creates a taxonomy in the specified project.
 	CreateTaxonomy(ctx context.Context, in *CreateTaxonomyRequest, opts ...grpc.CallOption) (*Taxonomy, error)
 	// Deletes a taxonomy. This operation will also delete all
-	// policy tags in this taxonomy.
+	// policy tags in this taxonomy along with their associated policies.
 	DeleteTaxonomy(ctx context.Context, in *DeleteTaxonomyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Updates a taxonomy.
 	UpdateTaxonomy(ctx context.Context, in *UpdateTaxonomyRequest, opts ...grpc.CallOption) (*Taxonomy, error)
-	// Lists all taxonomies in a project in a particular location.
+	// Lists all taxonomies in a project in a particular location that the caller
+	// has permission to view.
 	ListTaxonomies(ctx context.Context, in *ListTaxonomiesRequest, opts ...grpc.CallOption) (*ListTaxonomiesResponse, error)
 	// Gets a taxonomy.
 	GetTaxonomy(ctx context.Context, in *GetTaxonomyRequest, opts ...grpc.CallOption) (*Taxonomy, error)
-	// Creates a policy tag in a taxonomy.
+	// Creates a policy tag in the specified taxonomy.
 	CreatePolicyTag(ctx context.Context, in *CreatePolicyTagRequest, opts ...grpc.CallOption) (*PolicyTag, error)
 	// Deletes a policy tag. Also deletes all of its descendant policy tags.
 	DeletePolicyTag(ctx context.Context, in *DeletePolicyTagRequest, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -996,7 +1001,8 @@ type PolicyTagManagerClient interface {
 	GetIamPolicy(ctx context.Context, in *v1.GetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
 	// Sets the IAM policy for a taxonomy or a policy tag.
 	SetIamPolicy(ctx context.Context, in *v1.SetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
-	// Returns permissions that a caller has on specified resources.
+	// Returns the permissions that a caller has on the specified taxonomy or
+	// policy tag.
 	TestIamPermissions(ctx context.Context, in *v1.TestIamPermissionsRequest, opts ...grpc.CallOption) (*v1.TestIamPermissionsResponse, error)
 }
 
@@ -1127,18 +1133,19 @@ func (c *policyTagManagerClient) TestIamPermissions(ctx context.Context, in *v1.
 
 // PolicyTagManagerServer is the server API for PolicyTagManager service.
 type PolicyTagManagerServer interface {
-	// Creates a new taxonomy in a given project.
+	// Creates a taxonomy in the specified project.
 	CreateTaxonomy(context.Context, *CreateTaxonomyRequest) (*Taxonomy, error)
 	// Deletes a taxonomy. This operation will also delete all
-	// policy tags in this taxonomy.
+	// policy tags in this taxonomy along with their associated policies.
 	DeleteTaxonomy(context.Context, *DeleteTaxonomyRequest) (*empty.Empty, error)
 	// Updates a taxonomy.
 	UpdateTaxonomy(context.Context, *UpdateTaxonomyRequest) (*Taxonomy, error)
-	// Lists all taxonomies in a project in a particular location.
+	// Lists all taxonomies in a project in a particular location that the caller
+	// has permission to view.
 	ListTaxonomies(context.Context, *ListTaxonomiesRequest) (*ListTaxonomiesResponse, error)
 	// Gets a taxonomy.
 	GetTaxonomy(context.Context, *GetTaxonomyRequest) (*Taxonomy, error)
-	// Creates a policy tag in a taxonomy.
+	// Creates a policy tag in the specified taxonomy.
 	CreatePolicyTag(context.Context, *CreatePolicyTagRequest) (*PolicyTag, error)
 	// Deletes a policy tag. Also deletes all of its descendant policy tags.
 	DeletePolicyTag(context.Context, *DeletePolicyTagRequest) (*empty.Empty, error)
@@ -1152,7 +1159,8 @@ type PolicyTagManagerServer interface {
 	GetIamPolicy(context.Context, *v1.GetIamPolicyRequest) (*v1.Policy, error)
 	// Sets the IAM policy for a taxonomy or a policy tag.
 	SetIamPolicy(context.Context, *v1.SetIamPolicyRequest) (*v1.Policy, error)
-	// Returns permissions that a caller has on specified resources.
+	// Returns the permissions that a caller has on the specified taxonomy or
+	// policy tag.
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
 }
 
