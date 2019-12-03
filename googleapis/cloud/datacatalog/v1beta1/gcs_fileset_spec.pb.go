@@ -24,19 +24,24 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Describes a Cloud Storage fileset entry.
 type GcsFilesetSpec struct {
-	// Required. Patterns to identify a set of files in Google Cloud Storage.
+	// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud
+	// Storage documentation](storage/docs/gsutil/addlhelp/WildcardNames) for
+	// more information. Note that bucket wildcards are currently not supported.
 	//
 	// Examples of valid file_patterns:
 	//
-	//  * `gs://bucket_name/*`: matches all files in `bucket_name`
+	//  * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir`
+	//                              directory.
+	//  * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir`
+	//                               spanning all subdirectories.
 	//  * `gs://bucket_name/file*`: matches files prefixed by `file` in
 	//                              `bucket_name`
 	//  * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match
 	//                              `a/*/b` pattern, such as `a/c/b`, `a/d/b`
 	//  * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
 	FilePatterns []string `protobuf:"bytes,1,rep,name=file_patterns,json=filePatterns,proto3" json:"file_patterns,omitempty"`
-	// Output only. Sample files contained in this fileset, not all files
-	// contained in this fileset are represented here.
+	// Output only. Sample files contained in this fileset, not all files contained in this
+	// fileset are represented here.
 	SampleGcsFileSpecs   []*GcsFileSpec `protobuf:"bytes,2,rep,name=sample_gcs_file_specs,json=sampleGcsFileSpecs,proto3" json:"sample_gcs_file_specs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`

@@ -59,7 +59,7 @@ func (StringAggregationType) EnumDescriptor() ([]byte, []int) {
 
 // Configuration for how human labeling task should be done.
 type HumanAnnotationConfig struct {
-	// Required except for LabelAudio case. Instruction resource name.
+	// Required. Instruction resource name.
 	Instruction string `protobuf:"bytes,1,opt,name=instruction,proto3" json:"instruction,omitempty"`
 	// Required. A human-readable name for AnnotatedDataset defined by
 	// users. Maximum of 64 characters
@@ -75,7 +75,7 @@ type HumanAnnotationConfig struct {
 	// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
 	// Default value is en-US.
 	// Only need to set this when task is language related. For example, French
-	// text classification or Chinese audio transcription.
+	// text classification.
 	LanguageCode string `protobuf:"bytes,5,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// Optional. Replication of questions. Each question will be sent to up to
 	// this number of contributors to label. Aggregated answers will be returned.

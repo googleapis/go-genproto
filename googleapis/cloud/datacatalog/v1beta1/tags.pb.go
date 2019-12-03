@@ -75,8 +75,7 @@ type Tag struct {
 	// where `tag_id` is a system-generated identifier.
 	// Note that this Tag may not actually be stored in the location in this name.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The resource name of the tag template that this tag uses.
-	// Example:
+	// Required. The resource name of the tag template that this tag uses. Example:
 	//
 	// * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
 	//
@@ -92,9 +91,9 @@ type Tag struct {
 	// Types that are valid to be assigned to Scope:
 	//	*Tag_Column
 	Scope isTag_Scope `protobuf_oneof:"scope"`
-	// Required. This maps the ID of a tag field to the value of and additional
-	// information about that field. Valid field IDs are defined by the tag's
-	// template. A tag must have at least 1 field and at most 500 fields.
+	// Required. This maps the ID of a tag field to the value of and additional information
+	// about that field. Valid field IDs are defined by the tag's template. A tag
+	// must have at least 1 field and at most 500 fields.
 	Fields               map[string]*TagField `protobuf:"bytes,3,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
@@ -439,8 +438,7 @@ func (m *TagTemplate) GetFields() map[string]*TagTemplateField {
 
 // The template for an individual field within a tag template.
 type TagTemplateField struct {
-	// Output only. The resource name of the tag template field in URL format.
-	// Example:
+	// Output only. The resource name of the tag template field in URL format. Example:
 	//
 	// * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field}
 	//
@@ -630,8 +628,7 @@ func (m *FieldType_EnumType) GetAllowedValues() []*FieldType_EnumType_EnumValue 
 }
 
 type FieldType_EnumType_EnumValue struct {
-	// Required. The display name of the enum value. Must not be an empty
-	// string.
+	// Required. The display name of the enum value. Must not be an empty string.
 	DisplayName          string   `protobuf:"bytes,1,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
