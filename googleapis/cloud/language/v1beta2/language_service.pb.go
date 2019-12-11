@@ -2937,7 +2937,7 @@ type LanguageServiceClient interface {
 	// sentiment associated with each entity and its mentions.
 	AnalyzeEntitySentiment(ctx context.Context, in *AnalyzeEntitySentimentRequest, opts ...grpc.CallOption) (*AnalyzeEntitySentimentResponse, error)
 	// Analyzes the syntax of the text and provides sentence boundaries and
-	// tokenization along with part of speech tags, dependency trees, and other
+	// tokenization along with part-of-speech tags, dependency trees, and other
 	// properties.
 	AnalyzeSyntax(ctx context.Context, in *AnalyzeSyntaxRequest, opts ...grpc.CallOption) (*AnalyzeSyntaxResponse, error)
 	// Classifies a document into categories.
@@ -3021,7 +3021,7 @@ type LanguageServiceServer interface {
 	// sentiment associated with each entity and its mentions.
 	AnalyzeEntitySentiment(context.Context, *AnalyzeEntitySentimentRequest) (*AnalyzeEntitySentimentResponse, error)
 	// Analyzes the syntax of the text and provides sentence boundaries and
-	// tokenization along with part of speech tags, dependency trees, and other
+	// tokenization along with part-of-speech tags, dependency trees, and other
 	// properties.
 	AnalyzeSyntax(context.Context, *AnalyzeSyntaxRequest) (*AnalyzeSyntaxResponse, error)
 	// Classifies a document into categories.

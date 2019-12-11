@@ -348,7 +348,7 @@ const (
 	WorkerPool_CREATING WorkerPool_Status = 1
 	// `WorkerPool` is running.
 	WorkerPool_RUNNING WorkerPool_Status = 2
-	// `WorkerPool` is being deleting: cancelling builds and draining workers.
+	// `WorkerPool` is being deleted: cancelling builds and draining workers.
 	WorkerPool_DELETING WorkerPool_Status = 3
 	// `WorkerPool` is deleted.
 	WorkerPool_DELETED WorkerPool_Status = 4
