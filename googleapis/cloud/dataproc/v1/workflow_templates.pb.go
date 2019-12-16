@@ -110,7 +110,7 @@ func (WorkflowNode_NodeState) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_a839f5a867063db9, []int{12, 0}
 }
 
-// A Cloud Dataproc workflow template resource.
+// A Dataproc workflow template resource.
 type WorkflowTemplate struct {
 	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. The resource name of the workflow template, as described
@@ -958,7 +958,7 @@ func (m *ValueValidation) GetValues() []string {
 	return nil
 }
 
-// A Cloud Dataproc workflow template resource.
+// A Dataproc workflow template resource.
 type WorkflowMetadata struct {
 	// Output only. The resource name of the workflow template as described
 	// in https://cloud.google.com/apis/design/resource_names.
