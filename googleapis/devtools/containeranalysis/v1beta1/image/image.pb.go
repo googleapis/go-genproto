@@ -27,39 +27,39 @@ type Layer_Directive int32
 const (
 	// Default value for unsupported/missing directive.
 	Layer_DIRECTIVE_UNSPECIFIED Layer_Directive = 0
-	// https://docs.docker.com/reference/builder/#maintainer
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_MAINTAINER Layer_Directive = 1
-	// https://docs.docker.com/reference/builder/#run
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_RUN Layer_Directive = 2
-	// https://docs.docker.com/reference/builder/#cmd
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_CMD Layer_Directive = 3
-	// https://docs.docker.com/reference/builder/#label
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_LABEL Layer_Directive = 4
-	// https://docs.docker.com/reference/builder/#expose
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_EXPOSE Layer_Directive = 5
-	// https://docs.docker.com/reference/builder/#env
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_ENV Layer_Directive = 6
-	// https://docs.docker.com/reference/builder/#add
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_ADD Layer_Directive = 7
-	// https://docs.docker.com/reference/builder/#copy
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_COPY Layer_Directive = 8
-	// https://docs.docker.com/reference/builder/#entrypoint
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_ENTRYPOINT Layer_Directive = 9
-	// https://docs.docker.com/reference/builder/#volume
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_VOLUME Layer_Directive = 10
-	// https://docs.docker.com/reference/builder/#user
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_USER Layer_Directive = 11
-	// https://docs.docker.com/reference/builder/#workdir
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_WORKDIR Layer_Directive = 12
-	// https://docs.docker.com/reference/builder/#arg
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_ARG Layer_Directive = 13
-	// https://docs.docker.com/reference/builder/#onbuild
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_ONBUILD Layer_Directive = 14
-	// https://docs.docker.com/reference/builder/#stopsignal
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_STOPSIGNAL Layer_Directive = 15
-	// https://docs.docker.com/reference/builder/#healthcheck
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_HEALTHCHECK Layer_Directive = 16
-	// https://docs.docker.com/reference/builder/#shell
+	// https://docs.docker.com/engine/reference/builder/
 	Layer_SHELL Layer_Directive = 17
 )
 
@@ -115,7 +115,7 @@ func (Layer_Directive) EnumDescriptor() ([]byte, []int) {
 
 // Layer holds metadata specific to a layer of a Docker image.
 type Layer struct {
-	// The recovered Dockerfile directive used to construct this layer.
+	// Required. The recovered Dockerfile directive used to construct this layer.
 	Directive Layer_Directive `protobuf:"varint,1,opt,name=directive,proto3,enum=grafeas.v1beta1.image.Layer_Directive" json:"directive,omitempty"`
 	// The recovered arguments to the Dockerfile directive.
 	Arguments            string   `protobuf:"bytes,2,opt,name=arguments,proto3" json:"arguments,omitempty"`
@@ -165,9 +165,10 @@ func (m *Layer) GetArguments() string {
 
 // A set of properties that uniquely identify a given Docker image.
 type Fingerprint struct {
-	// The layer-id of the final layer in the Docker image's v1 representation.
+	// Required. The layer ID of the final layer in the Docker image's v1
+	// representation.
 	V1Name string `protobuf:"bytes,1,opt,name=v1_name,json=v1Name,proto3" json:"v1_name,omitempty"`
-	// The ordered list of v2 blobs that represent a given image.
+	// Required. The ordered list of v2 blobs that represent a given image.
 	V2Blob []string `protobuf:"bytes,2,rep,name=v2_blob,json=v2Blob,proto3" json:"v2_blob,omitempty"`
 	// Output only. The name of the image's v2 blobs computed via:
 	//   [bottom] := v2_blob[bottom]
@@ -231,10 +232,10 @@ func (m *Fingerprint) GetV2Name() string {
 //   FROM <Basis.resource_url>
 // Or an equivalent reference, e.g. a tag of the resource_url.
 type Basis struct {
-	// The resource_url for the resource representing the basis of
-	// associated occurrence images.
+	// Required. Immutable. The resource_url for the resource representing the
+	// basis of associated occurrence images.
 	ResourceUrl string `protobuf:"bytes,1,opt,name=resource_url,json=resourceUrl,proto3" json:"resource_url,omitempty"`
-	// The fingerprint of the base image.
+	// Required. Immutable. The fingerprint of the base image.
 	Fingerprint          *Fingerprint `protobuf:"bytes,2,opt,name=fingerprint,proto3" json:"fingerprint,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
@@ -282,7 +283,7 @@ func (m *Basis) GetFingerprint() *Fingerprint {
 
 // Details of an image occurrence.
 type Details struct {
-	// The child image derived from the base image.
+	// Required. Immutable. The child image derived from the base image.
 	DerivedImage         *Derived `protobuf:"bytes,1,opt,name=derived_image,json=derivedImage,proto3" json:"derived_image,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -325,7 +326,7 @@ func (m *Details) GetDerivedImage() *Derived {
 // relationship. This image would be produced from a Dockerfile with FROM
 // <DockerImage.Basis in attached Note>.
 type Derived struct {
-	// The fingerprint of the derived image.
+	// Required. The fingerprint of the derived image.
 	Fingerprint *Fingerprint `protobuf:"bytes,1,opt,name=fingerprint,proto3" json:"fingerprint,omitempty"`
 	// Output only. The number of layers by which this image differs from the
 	// associated image basis.

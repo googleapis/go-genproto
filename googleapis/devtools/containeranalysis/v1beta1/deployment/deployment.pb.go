@@ -60,7 +60,7 @@ func (Deployment_Platform) EnumDescriptor() ([]byte, []int) {
 
 // An artifact that can be deployed in some runtime.
 type Deployable struct {
-	// Resource URI for the artifact being deployed.
+	// Required. Resource URI for the artifact being deployed.
 	ResourceUri          []string `protobuf:"bytes,1,rep,name=resource_uri,json=resourceUri,proto3" json:"resource_uri,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -101,7 +101,7 @@ func (m *Deployable) GetResourceUri() []string {
 
 // Details of a deployment occurrence.
 type Details struct {
-	// Deployment history for the resource.
+	// Required. Deployment history for the resource.
 	Deployment           *Deployment `protobuf:"bytes,1,opt,name=deployment,proto3" json:"deployment,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`
@@ -144,7 +144,7 @@ func (m *Details) GetDeployment() *Deployment {
 type Deployment struct {
 	// Identity of the user that triggered this deployment.
 	UserEmail string `protobuf:"bytes,1,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
-	// Beginning of the lifetime of this deployment.
+	// Required. Beginning of the lifetime of this deployment.
 	DeployTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=deploy_time,json=deployTime,proto3" json:"deploy_time,omitempty"`
 	// End of the lifetime of this deployment.
 	UndeployTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=undeploy_time,json=undeployTime,proto3" json:"undeploy_time,omitempty"`
