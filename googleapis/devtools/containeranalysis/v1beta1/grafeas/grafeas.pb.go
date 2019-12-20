@@ -46,8 +46,8 @@ type Occurrence struct {
 	// Required. Immutable. The resource for which the occurrence applies.
 	Resource *Resource `protobuf:"bytes,2,opt,name=resource,proto3" json:"resource,omitempty"`
 	// Required. Immutable. The analysis note associated with this occurrence, in
-	// the form of `projects[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used
-	// as a filter in list requests.
+	// the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be
+	// used as a filter in list requests.
 	NoteName string `protobuf:"bytes,3,opt,name=note_name,json=noteName,proto3" json:"note_name,omitempty"`
 	// Output only. This explicitly denotes which of the occurrence details are
 	// specified. This field can be used as a filter in list requests.
@@ -269,7 +269,7 @@ type Resource struct {
 	// The name of the resource. For example, the name of a Docker image -
 	// "Debian".
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The unique URI of the resource. For example,
+	// Required. The unique URI of the resource. For example,
 	// `https://gcr.io/project/image@sha256:foo` for a Docker image.
 	Uri string `protobuf:"bytes,2,opt,name=uri,proto3" json:"uri,omitempty"`
 	// The hash of the resource content. For example, the Docker digest.
@@ -1649,7 +1649,7 @@ func (m *VulnerabilityOccurrencesSummary) GetCounts() []*VulnerabilityOccurrence
 	return nil
 }
 
-// Per resource and severity counts of fixable and total vulnerabilites.
+// Per resource and severity counts of fixable and total vulnerabilities.
 type VulnerabilityOccurrencesSummary_FixableTotalByDigest struct {
 	// The affected resource.
 	Resource *Resource `protobuf:"bytes,1,opt,name=resource,proto3" json:"resource,omitempty"`

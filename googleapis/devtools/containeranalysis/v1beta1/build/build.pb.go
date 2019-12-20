@@ -22,7 +22,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Public key formats
+// Public key formats.
 type BuildSignature_KeyType int32
 
 const (
@@ -55,12 +55,12 @@ func (BuildSignature_KeyType) EnumDescriptor() ([]byte, []int) {
 }
 
 // Note holding the version of the provider's builder and the signature of the
-// provenance message in linked BuildDetails.
+// provenance message in the build details occurrence.
 type Build struct {
-	// Version of the builder which produced this Note.
+	// Required. Immutable. Version of the builder which produced this build.
 	BuilderVersion string `protobuf:"bytes,1,opt,name=builder_version,json=builderVersion,proto3" json:"builder_version,omitempty"`
-	// Signature of the build in Occurrences pointing to the Note containing this
-	// `BuilderDetails`.
+	// Signature of the build in occurrences pointing to this build note
+	// containing build details.
 	Signature            *BuildSignature `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
@@ -114,24 +114,24 @@ type BuildSignature struct {
 	//
 	// This field may be empty if `key_id` references an external key.
 	//
-	// For Cloud Container Builder based signatures, this is a PEM encoded public
-	// key. To verify the Cloud Container Builder signature, place the contents of
+	// For Cloud Build based signatures, this is a PEM encoded public
+	// key. To verify the Cloud Build signature, place the contents of
 	// this field into a file (public.pem). The signature field is base64-decoded
 	// into its binary representation in signature.bin, and the provenance bytes
 	// from `BuildDetails` are base64-decoded into a binary representation in
 	// signed.bin. OpenSSL can then verify the signature:
 	// `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
 	PublicKey string `protobuf:"bytes,1,opt,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
-	// Signature of the related `BuildProvenance`. In JSON, this is base-64
-	// encoded.
+	// Required. Signature of the related `BuildProvenance`. In JSON, this is
+	// base-64 encoded.
 	Signature []byte `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
-	// An ID for the key used to sign. This could be either an Id for the key
-	// stored in `public_key` (such as the Id or fingerprint for a PGP key, or the
+	// An ID for the key used to sign. This could be either an ID for the key
+	// stored in `public_key` (such as the ID or fingerprint for a PGP key, or the
 	// CN for a cert), or a reference to an external key (such as a reference to a
 	// key in Cloud Key Management Service).
 	KeyId string `protobuf:"bytes,3,opt,name=key_id,json=keyId,proto3" json:"key_id,omitempty"`
 	// The type of the key, either stored in `public_key` or referenced in
-	// `key_id`
+	// `key_id`.
 	KeyType              BuildSignature_KeyType `protobuf:"varint,4,opt,name=key_type,json=keyType,proto3,enum=grafeas.v1beta1.build.BuildSignature_KeyType" json:"key_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
 	XXX_unrecognized     []byte                 `json:"-"`
@@ -193,10 +193,10 @@ func (m *BuildSignature) GetKeyType() BuildSignature_KeyType {
 
 // Details of a build occurrence.
 type Details struct {
-	// The actual provenance for the build.
+	// Required. The actual provenance for the build.
 	Provenance *provenance.BuildProvenance `protobuf:"bytes,1,opt,name=provenance,proto3" json:"provenance,omitempty"`
 	// Serialized JSON representation of the provenance, used in generating the
-	// `BuildSignature` in the corresponding Result. After verifying the
+	// build signature in the corresponding build note. After verifying the
 	// signature, `provenance_bytes` can be unmarshalled and compared to the
 	// provenance to confirm that it is unchanged. A base64-encoded string
 	// representation of the provenance bytes is used for the signature in order

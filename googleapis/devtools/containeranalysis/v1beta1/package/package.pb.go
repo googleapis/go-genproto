@@ -59,13 +59,11 @@ type Version_VersionKind int32
 const (
 	// Unknown.
 	Version_VERSION_KIND_UNSPECIFIED Version_VersionKind = 0
-	// A standard package version, defined by the other fields.
+	// A standard package version.
 	Version_NORMAL Version_VersionKind = 1
-	// A special version representing negative infinity, other fields are
-	// ignored.
+	// A special version representing negative infinity.
 	Version_MINIMUM Version_VersionKind = 2
-	// A special version representing positive infinity, other fields are
-	// ignored.
+	// A special version representing positive infinity.
 	Version_MAXIMUM Version_VersionKind = 3
 )
 
@@ -94,14 +92,13 @@ func (Version_VersionKind) EnumDescriptor() ([]byte, []int) {
 // This represents a particular channel of distribution for a given package.
 // E.g., Debian's jessie-backports dpkg mirror.
 type Distribution struct {
-	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/)
+	// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/)
 	// denoting the package manager version distributing a package.
 	CpeUri string `protobuf:"bytes,1,opt,name=cpe_uri,json=cpeUri,proto3" json:"cpe_uri,omitempty"`
 	// The CPU architecture for which packages in this distribution channel were
 	// built.
 	Architecture Architecture `protobuf:"varint,2,opt,name=architecture,proto3,enum=grafeas.v1beta1.package.Architecture" json:"architecture,omitempty"`
-	// The latest available version of this package in this distribution
-	// channel.
+	// The latest available version of this package in this distribution channel.
 	LatestVersion *Version `protobuf:"bytes,3,opt,name=latest_version,json=latestVersion,proto3" json:"latest_version,omitempty"`
 	// A freeform string denoting the maintainer of this package.
 	Maintainer string `protobuf:"bytes,4,opt,name=maintainer,proto3" json:"maintainer,omitempty"`
@@ -182,9 +179,9 @@ func (m *Distribution) GetDescription() string {
 }
 
 // An occurrence of a particular package installation found within a system's
-// filesystem. E.g., glibc was found in /var/lib/dpkg/status.
+// filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type Location struct {
-	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/)
+	// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
 	// denoting the package manager version distributing a package.
 	CpeUri string `protobuf:"bytes,1,opt,name=cpe_uri,json=cpeUri,proto3" json:"cpe_uri,omitempty"`
 	// The version installed at this location.
@@ -246,7 +243,7 @@ func (m *Location) GetPath() string {
 // channels. E.g., glibc (aka libc6) is distributed by many, at various
 // versions.
 type Package struct {
-	// The name of the package.
+	// Required. Immutable. The name of the package.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The various channels by which a package is distributed.
 	Distribution         []*Distribution `protobuf:"bytes,10,rep,name=distribution,proto3" json:"distribution,omitempty"`
@@ -296,7 +293,7 @@ func (m *Package) GetDistribution() []*Distribution {
 
 // Details of a package occurrence.
 type Details struct {
-	// Where the package was installed.
+	// Required. Where the package was installed.
 	Installation         *Installation `protobuf:"bytes,1,opt,name=installation,proto3" json:"installation,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
 	XXX_unrecognized     []byte        `json:"-"`
@@ -340,7 +337,7 @@ func (m *Details) GetInstallation() *Installation {
 type Installation struct {
 	// Output only. The name of the installed package.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// All of the places within the filesystem versions of this package
+	// Required. All of the places within the filesystem versions of this package
 	// have been found.
 	Location             []*Location `protobuf:"bytes,2,rep,name=location,proto3" json:"location,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
@@ -391,12 +388,13 @@ func (m *Installation) GetLocation() []*Location {
 type Version struct {
 	// Used to correct mistakes in the version numbering scheme.
 	Epoch int32 `protobuf:"varint,1,opt,name=epoch,proto3" json:"epoch,omitempty"`
-	// The main part of the version name.
+	// Required only when version kind is NORMAL. The main part of the version
+	// name.
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// The iteration of the package build from the above version.
 	Revision string `protobuf:"bytes,3,opt,name=revision,proto3" json:"revision,omitempty"`
-	// Distinguish between sentinel MIN/MAX versions and normal versions. If
-	// kind is not NORMAL, then the other fields are ignored.
+	// Required. Distinguishes between sentinel MIN/MAX versions and normal
+	// versions.
 	Kind                 Version_VersionKind `protobuf:"varint,4,opt,name=kind,proto3,enum=grafeas.v1beta1.package.Version_VersionKind" json:"kind,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`

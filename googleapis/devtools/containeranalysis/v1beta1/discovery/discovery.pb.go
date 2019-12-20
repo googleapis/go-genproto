@@ -106,7 +106,8 @@ func (Discovered_AnalysisStatus) EnumDescriptor() ([]byte, []int) {
 // exists in a provider's project. A `Discovery` occurrence is created in a
 // consumer's project at the start of analysis.
 type Discovery struct {
-	// The kind of analysis that is handled by this discovery.
+	// Required. Immutable. The kind of analysis that is handled by this
+	// discovery.
 	AnalysisKind         common.NoteKind `protobuf:"varint,1,opt,name=analysis_kind,json=analysisKind,proto3,enum=grafeas.v1beta1.NoteKind" json:"analysis_kind,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
@@ -147,7 +148,7 @@ func (m *Discovery) GetAnalysisKind() common.NoteKind {
 
 // Details of a discovery occurrence.
 type Details struct {
-	// Analysis status for the discovered resource.
+	// Required. Analysis status for the discovered resource.
 	Discovered           *Discovered `protobuf:"bytes,1,opt,name=discovered,proto3" json:"discovered,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`

@@ -23,7 +23,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Specifies the hash algorithm, if any.
+// Specifies the hash algorithm.
 type Hash_HashType int32
 
 const (
@@ -54,7 +54,7 @@ func (Hash_HashType) EnumDescriptor() ([]byte, []int) {
 // Provenance of a build. Contains all information needed to verify the full
 // details about the build from source to completion.
 type BuildProvenance struct {
-	// Unique identifier of the build.
+	// Required. Unique identifier of the build.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// ID of the project.
 	ProjectId string `protobuf:"bytes,2,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
@@ -283,10 +283,10 @@ func (m *Source) GetAdditionalContexts() []*source.SourceContext {
 	return nil
 }
 
-// Container message for hashes of byte content of files, used in Source
+// Container message for hashes of byte content of files, used in source
 // messages to verify integrity of source input to the build.
 type FileHashes struct {
-	// Collection of file hashes.
+	// Required. Collection of file hashes.
 	FileHash             []*Hash  `protobuf:"bytes,1,rep,name=file_hash,json=fileHash,proto3" json:"file_hash,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -327,9 +327,9 @@ func (m *FileHashes) GetFileHash() []*Hash {
 
 // Container message for hash values.
 type Hash struct {
-	// The type of hash that was performed.
+	// Required. The type of hash that was performed.
 	Type Hash_HashType `protobuf:"varint,1,opt,name=type,proto3,enum=grafeas.v1beta1.provenance.Hash_HashType" json:"type,omitempty"`
-	// The hash value.
+	// Required. The hash value.
 	Value                []byte   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -377,8 +377,8 @@ func (m *Hash) GetValue() []byte {
 
 // Command describes a step performed as part of the build pipeline.
 type Command struct {
-	// Name of the command, as presented on the command line, or if the command is
-	// packaged as a Docker container, as presented to `docker pull`.
+	// Required. Name of the command, as presented on the command line, or if the
+	// command is packaged as a Docker container, as presented to `docker pull`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Environment variables set before running this command.
 	Env []string `protobuf:"bytes,2,rep,name=env,proto3" json:"env,omitempty"`
