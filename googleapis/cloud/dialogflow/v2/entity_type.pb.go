@@ -1241,9 +1241,11 @@ type EntityTypesClient interface {
 	// method does not affect entities in the entity type that aren't explicitly
 	// specified in the request.
 	//
+	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
 	BatchUpdateEntities(ctx context.Context, in *BatchUpdateEntitiesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes entities in the specified entity type.
+	//
 	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
 	BatchDeleteEntities(ctx context.Context, in *BatchDeleteEntitiesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
@@ -1375,9 +1377,11 @@ type EntityTypesServer interface {
 	// method does not affect entities in the entity type that aren't explicitly
 	// specified in the request.
 	//
+	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
 	BatchUpdateEntities(context.Context, *BatchUpdateEntitiesRequest) (*longrunning.Operation, error)
 	// Deletes entities in the specified entity type.
+	//
 	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
 	BatchDeleteEntities(context.Context, *BatchDeleteEntitiesRequest) (*longrunning.Operation, error)

@@ -207,7 +207,7 @@ func (m *ListKnowledgeBasesResponse) GetNextPageToken() string {
 	return ""
 }
 
-// Request message for [KnowledgeBase.GetDocument][].
+// Request message for [KnowledgeBases.GetKnowledgeBase][google.cloud.dialogflow.v2beta1.KnowledgeBases.GetKnowledgeBase].
 type GetKnowledgeBaseRequest struct {
 	// Required. The name of the knowledge base to retrieve.
 	// Format `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
