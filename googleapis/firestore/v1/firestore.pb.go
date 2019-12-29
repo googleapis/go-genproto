@@ -1015,7 +1015,8 @@ type CommitResponse struct {
 	// This i-th write result corresponds to the i-th write in the
 	// request.
 	WriteResults []*WriteResult `protobuf:"bytes,1,rep,name=write_results,json=writeResults,proto3" json:"write_results,omitempty"`
-	// The time at which the commit occurred.
+	// The time at which the commit occurred. Any read with an equal or greater
+	// `read_time` is guaranteed to see the effects of the commit.
 	CommitTime           *timestamp.Timestamp `protobuf:"bytes,2,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
@@ -1457,7 +1458,8 @@ type WriteResponse struct {
 	// This i-th write result corresponds to the i-th write in the
 	// request.
 	WriteResults []*WriteResult `protobuf:"bytes,3,rep,name=write_results,json=writeResults,proto3" json:"write_results,omitempty"`
-	// The time at which the commit occurred.
+	// The time at which the commit occurred. Any read with an equal or greater
+	// `read_time` is guaranteed to see the effects of the write.
 	CommitTime           *timestamp.Timestamp `protobuf:"bytes,4,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
