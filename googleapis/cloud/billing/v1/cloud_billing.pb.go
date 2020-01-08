@@ -10,6 +10,8 @@ import (
 
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
+	v1 "google.golang.org/genproto/googleapis/iam/v1"
+	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -26,22 +28,27 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// A billing account in [Google Cloud
-// Console](https://console.cloud.google.com/). You can assign a billing account
-// to one or more projects.
+// A billing account in [GCP Console](https://console.cloud.google.com/).
+// You can assign a billing account to one or more projects.
 type BillingAccount struct {
 	// The resource name of the billing account. The resource name has the form
 	// `billingAccounts/{billing_account_id}`. For example,
 	// `billingAccounts/012345-567890-ABCDEF` would be the resource name for
 	// billing account `012345-567890-ABCDEF`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// True if the billing account is open, and will therefore be charged for any
+	// Output only. True if the billing account is open, and will therefore be charged for any
 	// usage on associated projects. False if the billing account is closed, and
 	// therefore projects associated with it will be unable to use paid services.
 	Open bool `protobuf:"varint,2,opt,name=open,proto3" json:"open,omitempty"`
 	// The display name given to the billing account, such as `My Billing
-	// Account`. This name is displayed in the Google Cloud Console.
-	DisplayName          string   `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	// Account`. This name is displayed in the GCP Console.
+	DisplayName string `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	// If this account is a
+	// [subaccount](https://cloud.google.com/billing/docs/concepts), then this
+	// will be the resource name of the master billing account that it is being
+	// resold through.
+	// Otherwise this will be empty.
+	MasterBillingAccount string   `protobuf:"bytes,4,opt,name=master_billing_account,json=masterBillingAccount,proto3" json:"master_billing_account,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -93,7 +100,14 @@ func (m *BillingAccount) GetDisplayName() string {
 	return ""
 }
 
-// Encapsulation of billing information for a Cloud Console project. A project
+func (m *BillingAccount) GetMasterBillingAccount() string {
+	if m != nil {
+		return m.MasterBillingAccount
+	}
+	return ""
+}
+
+// Encapsulation of billing information for a GCP Console project. A project
 // has at most one associated billing account at a time (but a billing account
 // can be assigned to multiple projects).
 type ProjectBillingInfo struct {
@@ -174,7 +188,7 @@ func (m *ProjectBillingInfo) GetBillingEnabled() bool {
 
 // Request message for `GetBillingAccount`.
 type GetBillingAccountRequest struct {
-	// The resource name of the billing account to retrieve. For example,
+	// Required. The resource name of the billing account to retrieve. For example,
 	// `billingAccounts/012345-567890-ABCDEF`.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -222,7 +236,14 @@ type ListBillingAccountsRequest struct {
 	// A token identifying a page of results to return. This should be a
 	// `next_page_token` value returned from a previous `ListBillingAccounts`
 	// call. If unspecified, the first page of results is returned.
-	PageToken            string   `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	// Options for how to filter the returned billing accounts.
+	// Currently this only supports filtering for
+	// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
+	// single provided reseller billing account.
+	// (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF").
+	// Boolean algebra and other fields are not currently supported.
+	Filter               string   `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -263,6 +284,13 @@ func (m *ListBillingAccountsRequest) GetPageSize() int32 {
 func (m *ListBillingAccountsRequest) GetPageToken() string {
 	if m != nil {
 		return m.PageToken
+	}
+	return ""
+}
+
+func (m *ListBillingAccountsRequest) GetFilter() string {
+	if m != nil {
+		return m.Filter
 	}
 	return ""
 }
@@ -319,9 +347,113 @@ func (m *ListBillingAccountsResponse) GetNextPageToken() string {
 	return ""
 }
 
+// Request message for `CreateBillingAccount`.
+type CreateBillingAccountRequest struct {
+	// Required. The billing account resource to create.
+	// Currently CreateBillingAccount only supports subaccount creation, so
+	// any created billing accounts must be under a provided master billing
+	// account.
+	BillingAccount       *BillingAccount `protobuf:"bytes,1,opt,name=billing_account,json=billingAccount,proto3" json:"billing_account,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *CreateBillingAccountRequest) Reset()         { *m = CreateBillingAccountRequest{} }
+func (m *CreateBillingAccountRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateBillingAccountRequest) ProtoMessage()    {}
+func (*CreateBillingAccountRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_47fe072480332805, []int{5}
+}
+
+func (m *CreateBillingAccountRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateBillingAccountRequest.Unmarshal(m, b)
+}
+func (m *CreateBillingAccountRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateBillingAccountRequest.Marshal(b, m, deterministic)
+}
+func (m *CreateBillingAccountRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateBillingAccountRequest.Merge(m, src)
+}
+func (m *CreateBillingAccountRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateBillingAccountRequest.Size(m)
+}
+func (m *CreateBillingAccountRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateBillingAccountRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateBillingAccountRequest proto.InternalMessageInfo
+
+func (m *CreateBillingAccountRequest) GetBillingAccount() *BillingAccount {
+	if m != nil {
+		return m.BillingAccount
+	}
+	return nil
+}
+
+// Request message for `UpdateBillingAccount`.
+type UpdateBillingAccountRequest struct {
+	// Required. The name of the billing account resource to be updated.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Required. The billing account resource to replace the resource on the server.
+	Account *BillingAccount `protobuf:"bytes,2,opt,name=account,proto3" json:"account,omitempty"`
+	// The update mask applied to the resource.
+	// Only "display_name" is currently supported.
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *UpdateBillingAccountRequest) Reset()         { *m = UpdateBillingAccountRequest{} }
+func (m *UpdateBillingAccountRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateBillingAccountRequest) ProtoMessage()    {}
+func (*UpdateBillingAccountRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_47fe072480332805, []int{6}
+}
+
+func (m *UpdateBillingAccountRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateBillingAccountRequest.Unmarshal(m, b)
+}
+func (m *UpdateBillingAccountRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateBillingAccountRequest.Marshal(b, m, deterministic)
+}
+func (m *UpdateBillingAccountRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateBillingAccountRequest.Merge(m, src)
+}
+func (m *UpdateBillingAccountRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdateBillingAccountRequest.Size(m)
+}
+func (m *UpdateBillingAccountRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateBillingAccountRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateBillingAccountRequest proto.InternalMessageInfo
+
+func (m *UpdateBillingAccountRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *UpdateBillingAccountRequest) GetAccount() *BillingAccount {
+	if m != nil {
+		return m.Account
+	}
+	return nil
+}
+
+func (m *UpdateBillingAccountRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
 // Request message for `ListProjectBillingInfo`.
 type ListProjectBillingInfoRequest struct {
-	// The resource name of the billing account associated with the projects that
+	// Required. The resource name of the billing account associated with the projects that
 	// you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Requested page size. The maximum page size is 100; this is also the
@@ -340,7 +472,7 @@ func (m *ListProjectBillingInfoRequest) Reset()         { *m = ListProjectBillin
 func (m *ListProjectBillingInfoRequest) String() string { return proto.CompactTextString(m) }
 func (*ListProjectBillingInfoRequest) ProtoMessage()    {}
 func (*ListProjectBillingInfoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_47fe072480332805, []int{5}
+	return fileDescriptor_47fe072480332805, []int{7}
 }
 
 func (m *ListProjectBillingInfoRequest) XXX_Unmarshal(b []byte) error {
@@ -400,7 +532,7 @@ func (m *ListProjectBillingInfoResponse) Reset()         { *m = ListProjectBilli
 func (m *ListProjectBillingInfoResponse) String() string { return proto.CompactTextString(m) }
 func (*ListProjectBillingInfoResponse) ProtoMessage()    {}
 func (*ListProjectBillingInfoResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_47fe072480332805, []int{6}
+	return fileDescriptor_47fe072480332805, []int{8}
 }
 
 func (m *ListProjectBillingInfoResponse) XXX_Unmarshal(b []byte) error {
@@ -437,7 +569,7 @@ func (m *ListProjectBillingInfoResponse) GetNextPageToken() string {
 
 // Request message for `GetProjectBillingInfo`.
 type GetProjectBillingInfoRequest struct {
-	// The resource name of the project for which billing information is
+	// Required. The resource name of the project for which billing information is
 	// retrieved. For example, `projects/tokyo-rain-123`.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -449,7 +581,7 @@ func (m *GetProjectBillingInfoRequest) Reset()         { *m = GetProjectBillingI
 func (m *GetProjectBillingInfoRequest) String() string { return proto.CompactTextString(m) }
 func (*GetProjectBillingInfoRequest) ProtoMessage()    {}
 func (*GetProjectBillingInfoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_47fe072480332805, []int{7}
+	return fileDescriptor_47fe072480332805, []int{9}
 }
 
 func (m *GetProjectBillingInfoRequest) XXX_Unmarshal(b []byte) error {
@@ -479,11 +611,11 @@ func (m *GetProjectBillingInfoRequest) GetName() string {
 
 // Request message for `UpdateProjectBillingInfo`.
 type UpdateProjectBillingInfoRequest struct {
-	// The resource name of the project associated with the billing information
+	// Required. The resource name of the project associated with the billing information
 	// that you want to update. For example, `projects/tokyo-rain-123`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The new billing information for the project. Read-only fields are ignored;
-	// thus, you may leave empty all fields except `billing_account_name`.
+	// thus, you can leave empty all fields except `billing_account_name`.
 	ProjectBillingInfo   *ProjectBillingInfo `protobuf:"bytes,2,opt,name=project_billing_info,json=projectBillingInfo,proto3" json:"project_billing_info,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
@@ -494,7 +626,7 @@ func (m *UpdateProjectBillingInfoRequest) Reset()         { *m = UpdateProjectBi
 func (m *UpdateProjectBillingInfoRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateProjectBillingInfoRequest) ProtoMessage()    {}
 func (*UpdateProjectBillingInfoRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_47fe072480332805, []int{8}
+	return fileDescriptor_47fe072480332805, []int{10}
 }
 
 func (m *UpdateProjectBillingInfoRequest) XXX_Unmarshal(b []byte) error {
@@ -535,6 +667,8 @@ func init() {
 	proto.RegisterType((*GetBillingAccountRequest)(nil), "google.cloud.billing.v1.GetBillingAccountRequest")
 	proto.RegisterType((*ListBillingAccountsRequest)(nil), "google.cloud.billing.v1.ListBillingAccountsRequest")
 	proto.RegisterType((*ListBillingAccountsResponse)(nil), "google.cloud.billing.v1.ListBillingAccountsResponse")
+	proto.RegisterType((*CreateBillingAccountRequest)(nil), "google.cloud.billing.v1.CreateBillingAccountRequest")
+	proto.RegisterType((*UpdateBillingAccountRequest)(nil), "google.cloud.billing.v1.UpdateBillingAccountRequest")
 	proto.RegisterType((*ListProjectBillingInfoRequest)(nil), "google.cloud.billing.v1.ListProjectBillingInfoRequest")
 	proto.RegisterType((*ListProjectBillingInfoResponse)(nil), "google.cloud.billing.v1.ListProjectBillingInfoResponse")
 	proto.RegisterType((*GetProjectBillingInfoRequest)(nil), "google.cloud.billing.v1.GetProjectBillingInfoRequest")
@@ -546,49 +680,79 @@ func init() {
 }
 
 var fileDescriptor_47fe072480332805 = []byte{
-	// 667 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x56, 0xdd, 0x4e, 0xd4, 0x40,
-	0x14, 0xce, 0x00, 0x12, 0xf6, 0x80, 0x20, 0x03, 0xe8, 0x66, 0x17, 0x10, 0xea, 0x0f, 0x28, 0xb1,
-	0x15, 0xf0, 0xdf, 0xa8, 0x11, 0x63, 0x08, 0x89, 0x31, 0x9b, 0xaa, 0x89, 0xd1, 0x98, 0x66, 0x76,
-	0x3b, 0x34, 0xd5, 0x32, 0x53, 0x77, 0x0a, 0x51, 0x8c, 0x37, 0xbe, 0x82, 0x7a, 0xe1, 0x85, 0x37,
-	0x5e, 0xe8, 0x2b, 0x78, 0xed, 0x2b, 0xf8, 0x0a, 0xde, 0xfb, 0x0a, 0x66, 0xa6, 0x53, 0x65, 0xbb,
-	0x9d, 0x85, 0xc6, 0xbb, 0xe6, 0x9b, 0x73, 0xfa, 0x7d, 0xe7, 0x9b, 0xef, 0x6c, 0x17, 0x96, 0x02,
-	0xce, 0x83, 0x88, 0x3a, 0xad, 0x88, 0x6f, 0xfb, 0x4e, 0x33, 0x8c, 0xa2, 0x90, 0x05, 0xce, 0xce,
-	0x72, 0x0a, 0x78, 0x1a, 0xb0, 0xe3, 0x36, 0x4f, 0x38, 0x3e, 0x96, 0x16, 0xdb, 0xea, 0xcc, 0xce,
-	0xce, 0x76, 0x96, 0x6b, 0xd3, 0xfa, 0x2d, 0x24, 0x0e, 0x1d, 0xc2, 0x18, 0x4f, 0x48, 0x12, 0x72,
-	0x26, 0xd2, 0x36, 0xeb, 0x29, 0x8c, 0xae, 0xa5, 0xb5, 0xb7, 0x5b, 0x2d, 0xbe, 0xcd, 0x12, 0x8c,
-	0x61, 0x80, 0x91, 0x2d, 0x5a, 0x45, 0x73, 0x68, 0xb1, 0xe2, 0xaa, 0x67, 0x89, 0xf1, 0x98, 0xb2,
-	0x6a, 0xdf, 0x1c, 0x5a, 0x1c, 0x72, 0xd5, 0x33, 0x9e, 0x87, 0x11, 0x3f, 0x14, 0x71, 0x44, 0x5e,
-	0x7b, 0xaa, 0xbe, 0x5f, 0xd5, 0x0f, 0x6b, 0xec, 0x3e, 0xd9, 0xa2, 0xd6, 0x17, 0x04, 0xb8, 0xd1,
-	0xe6, 0xcf, 0x69, 0x2b, 0xd1, 0x24, 0x1b, 0x6c, 0x93, 0x17, 0x32, 0xcc, 0x00, 0xc4, 0x69, 0xa5,
-	0x17, 0xfa, 0x8a, 0xa7, 0xe2, 0x56, 0x34, 0xb2, 0xe1, 0xe3, 0xf3, 0x30, 0xa9, 0x47, 0xf2, 0x48,
-	0xaa, 0x73, 0x2f, 0x29, 0x6e, 0x76, 0x8c, 0x20, 0xb9, 0xf1, 0x02, 0x8c, 0x65, 0x1d, 0x94, 0x91,
-	0x66, 0x44, 0xfd, 0xea, 0x80, 0x52, 0x3f, 0xaa, 0xe1, 0xbb, 0x29, 0x6a, 0xd9, 0x50, 0x5d, 0xa7,
-	0x49, 0xa7, 0x09, 0x2e, 0x7d, 0xb9, 0x4d, 0x45, 0xa1, 0x17, 0xd6, 0x63, 0xa8, 0xdd, 0x0b, 0x45,
-	0xae, 0x41, 0x64, 0x1d, 0x75, 0xa8, 0xc4, 0x24, 0xa0, 0x9e, 0x08, 0x77, 0xd3, 0xb6, 0x43, 0xee,
-	0x90, 0x04, 0x1e, 0x84, 0xbb, 0xe9, 0x90, 0xf2, 0x30, 0xe1, 0x2f, 0xb4, 0x99, 0x72, 0x48, 0x12,
-	0xd0, 0x87, 0x12, 0xb0, 0x3e, 0x21, 0xa8, 0x17, 0xbe, 0x5a, 0xc4, 0x9c, 0x09, 0x8a, 0x5d, 0x38,
-	0x92, 0x33, 0x41, 0x54, 0xd1, 0x5c, 0xff, 0xe2, 0xf0, 0xca, 0x82, 0x6d, 0xb8, 0x7d, 0x3b, 0x37,
-	0xd7, 0x58, 0xa7, 0x53, 0x02, 0x9f, 0x86, 0x31, 0x46, 0x5f, 0x25, 0x5e, 0x97, 0xae, 0xc3, 0x12,
-	0x6e, 0xfc, 0xd5, 0xc6, 0x61, 0x46, 0x4a, 0xeb, 0xbe, 0xcd, 0x1e, 0x56, 0x75, 0x9a, 0xd1, 0xd7,
-	0xd3, 0x8c, 0xfe, 0xbc, 0x19, 0xdf, 0x10, 0xcc, 0x9a, 0x18, 0xb5, 0x1f, 0xcf, 0x60, 0x32, 0xcb,
-	0x4c, 0xe6, 0x4b, 0xc8, 0x36, 0xb9, 0xf6, 0x64, 0xc9, 0xe8, 0x49, 0xc1, 0x2b, 0x71, 0xdc, 0x1d,
-	0xd3, 0x83, 0x5a, 0xb3, 0x02, 0xd3, 0xeb, 0xb4, 0x9c, 0x33, 0xd6, 0x07, 0x04, 0xc7, 0x1f, 0xc5,
-	0x3e, 0x49, 0x68, 0x39, 0x47, 0x4d, 0x23, 0x4b, 0x61, 0xff, 0x3f, 0xf2, 0xca, 0xef, 0x41, 0x18,
-	0xb9, 0x23, 0x7b, 0x35, 0x88, 0x3f, 0x22, 0x18, 0xef, 0xda, 0x0e, 0xbc, 0x6c, 0xe4, 0x31, 0x6d,
-	0x52, 0xed, 0xa0, 0x09, 0xb5, 0x4e, 0xbe, 0xfb, 0xf9, 0xeb, 0x7d, 0xdf, 0x2c, 0x9e, 0x96, 0x3f,
-	0x74, 0x6f, 0xe4, 0xd0, 0x37, 0x72, 0x99, 0x75, 0xce, 0xbe, 0xc5, 0x9f, 0x11, 0x4c, 0x14, 0xac,
-	0x0a, 0x5e, 0x35, 0xd2, 0x98, 0x77, 0xb6, 0x76, 0xa1, 0x5c, 0x53, 0x9a, 0x3e, 0xab, 0xae, 0x84,
-	0x4e, 0xe1, 0x09, 0x29, 0x34, 0xbf, 0x56, 0xdf, 0x11, 0x1c, 0x2d, 0x4e, 0x2f, 0xbe, 0xd4, 0x93,
-	0xcd, 0x18, 0x87, 0xda, 0xe5, 0xd2, 0x7d, 0x5a, 0xe8, 0x39, 0x25, 0x74, 0x01, 0x9f, 0xea, 0xe5,
-	0xa8, 0xa3, 0xd3, 0x20, 0xf0, 0x57, 0x04, 0x53, 0x85, 0x79, 0xc6, 0x17, 0x7b, 0x5d, 0xbb, 0x59,
-	0x78, 0x99, 0x54, 0x5a, 0x67, 0x94, 0xd8, 0x13, 0x78, 0xfe, 0x9f, 0xd8, 0x4c, 0x99, 0x54, 0xd9,
-	0xdc, 0x23, 0xe7, 0x07, 0x82, 0xaa, 0x69, 0x87, 0xf0, 0x15, 0x23, 0xe9, 0x3e, 0x6b, 0x57, 0x4e,
-	0xee, 0x2d, 0x25, 0xf7, 0x6a, 0x6d, 0x7f, 0xb9, 0xd7, 0x0a, 0x17, 0x77, 0xad, 0x0d, 0xf5, 0x16,
-	0xdf, 0x32, 0x51, 0xae, 0x8d, 0xef, 0xdd, 0xc6, 0x86, 0xfc, 0x62, 0x37, 0xd0, 0x93, 0x9b, 0xba,
-	0x3a, 0xe0, 0x11, 0x61, 0x81, 0xcd, 0xdb, 0x81, 0x13, 0x50, 0xa6, 0xbe, 0xe7, 0x4e, 0x7a, 0x44,
-	0xe2, 0x50, 0x74, 0xfd, 0x6d, 0xb8, 0xae, 0x1f, 0x9b, 0x83, 0xaa, 0x74, 0xf5, 0x4f, 0x00, 0x00,
-	0x00, 0xff, 0xff, 0xc0, 0x01, 0x24, 0x32, 0x60, 0x08, 0x00, 0x00,
+	// 1148 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x57, 0xcd, 0x73, 0xdb, 0x44,
+	0x1c, 0x9d, 0x75, 0x42, 0x49, 0x36, 0x21, 0xa1, 0x5b, 0x27, 0x71, 0xed, 0x34, 0x4d, 0xc5, 0xd0,
+	0x84, 0x24, 0xb5, 0x1a, 0x27, 0xd0, 0xe2, 0x42, 0x07, 0x25, 0x43, 0x32, 0x61, 0xf8, 0xc8, 0x38,
+	0xcd, 0x05, 0x86, 0xf1, 0xac, 0xed, 0xb5, 0x22, 0x22, 0x69, 0x85, 0x56, 0x4e, 0x68, 0x19, 0x2e,
+	0x5c, 0x39, 0x32, 0x1c, 0x3a, 0x03, 0x17, 0x38, 0x70, 0xe2, 0xc4, 0x70, 0x86, 0x1b, 0x0c, 0x47,
+	0xb8, 0xf9, 0xc0, 0xf4, 0xc0, 0x89, 0x3f, 0x81, 0x13, 0xb3, 0xab, 0xdd, 0x44, 0x96, 0x25, 0xc5,
+	0x29, 0xb9, 0xd9, 0xbf, 0x8f, 0xfd, 0xbd, 0x7d, 0xfb, 0xf6, 0x49, 0x82, 0xcb, 0x26, 0xa5, 0xa6,
+	0x4d, 0xf4, 0xa6, 0x4d, 0x3b, 0x2d, 0xbd, 0x61, 0xd9, 0xb6, 0xe5, 0x9a, 0xfa, 0xd1, 0x6a, 0x18,
+	0xa8, 0xcb, 0x40, 0xd9, 0xf3, 0x69, 0x40, 0xd1, 0x4c, 0x58, 0x5c, 0x16, 0xb9, 0xb2, 0xca, 0x1d,
+	0xad, 0x16, 0x67, 0xe5, 0x2a, 0xd8, 0xb3, 0x74, 0xec, 0xba, 0x34, 0xc0, 0x81, 0x45, 0x5d, 0x16,
+	0xb6, 0x15, 0x67, 0x22, 0xd9, 0xa6, 0x6d, 0x11, 0x37, 0x90, 0x89, 0xeb, 0x91, 0x44, 0xdb, 0x22,
+	0x76, 0xab, 0xde, 0x20, 0x07, 0xf8, 0xc8, 0xa2, 0xbe, 0x2c, 0xb8, 0x1a, 0x29, 0xf0, 0x09, 0xa3,
+	0x1d, 0xbf, 0x49, 0x64, 0x6a, 0x4e, 0xa6, 0x2c, 0xec, 0x70, 0xb8, 0x16, 0x76, 0xea, 0x1e, 0xb5,
+	0xad, 0xe6, 0x43, 0x99, 0x2f, 0xf6, 0xe6, 0x7b, 0x72, 0xf3, 0x32, 0x27, 0xfe, 0x35, 0x3a, 0x6d,
+	0x39, 0xdc, 0xc1, 0xec, 0x30, 0xac, 0xd0, 0x7e, 0x05, 0x70, 0x62, 0x23, 0xdc, 0x9f, 0xd1, 0x6c,
+	0xd2, 0x8e, 0x1b, 0xa0, 0x4d, 0x38, 0xec, 0x62, 0x87, 0x14, 0xc0, 0x3c, 0x58, 0x1c, 0xdd, 0xd0,
+	0xff, 0x35, 0x56, 0xe0, 0x92, 0x20, 0x42, 0xf1, 0x10, 0x2e, 0x8a, 0x3d, 0x8b, 0x95, 0x9b, 0xd4,
+	0xd1, 0x7b, 0xdb, 0x6b, 0xa2, 0x19, 0xcd, 0xc0, 0x61, 0xea, 0x11, 0xb7, 0x90, 0x9b, 0x07, 0x8b,
+	0x23, 0x1b, 0x43, 0x4f, 0x8c, 0xa1, 0x9a, 0x08, 0xa0, 0x1b, 0x70, 0xbc, 0x65, 0x31, 0xcf, 0xc6,
+	0x0f, 0xeb, 0x62, 0xca, 0x10, 0x9f, 0x52, 0x1b, 0x93, 0xb1, 0x77, 0x79, 0xef, 0x3a, 0x9c, 0x76,
+	0x30, 0x0b, 0x88, 0xaf, 0x4e, 0xa5, 0x8e, 0xc3, 0xb5, 0x0b, 0xc3, 0xa2, 0x38, 0x1f, 0x66, 0x7b,
+	0xe7, 0x6a, 0xdf, 0x02, 0x88, 0x76, 0x7d, 0xfa, 0x11, 0x69, 0x06, 0x32, 0xb3, 0xe3, 0xb6, 0x29,
+	0x42, 0xd1, 0xdd, 0x48, 0x70, 0xd7, 0x20, 0xf4, 0xc2, 0xca, 0xba, 0xd5, 0x12, 0x10, 0x47, 0x6b,
+	0xa3, 0x32, 0xb2, 0xd3, 0x42, 0xb7, 0x61, 0x3e, 0x36, 0x38, 0x0a, 0x15, 0x35, 0x7a, 0xe6, 0x0a,
+	0xc4, 0x0b, 0x70, 0x52, 0x75, 0x10, 0x17, 0x37, 0x6c, 0xd2, 0x12, 0x50, 0x47, 0x6a, 0x13, 0x32,
+	0xfc, 0x66, 0x18, 0xd5, 0x1a, 0xb0, 0xb0, 0x4d, 0x82, 0x18, 0x63, 0xe4, 0xe3, 0x0e, 0x61, 0x01,
+	0xda, 0xea, 0xe1, 0xbd, 0xf2, 0xc4, 0xc8, 0x3d, 0x15, 0xf5, 0x9a, 0x07, 0x8b, 0x6f, 0x5b, 0x2c,
+	0x36, 0x84, 0xa9, 0x29, 0x25, 0x38, 0xea, 0x61, 0x93, 0xd4, 0x99, 0xf5, 0x28, 0x1c, 0xf5, 0x4c,
+	0x6d, 0x84, 0x07, 0xf6, 0xac, 0x47, 0x21, 0x31, 0x3c, 0x19, 0xd0, 0x43, 0x79, 0x76, 0x9c, 0x18,
+	0x6c, 0x92, 0x07, 0x3c, 0x80, 0xa6, 0xe1, 0xa5, 0xb6, 0x65, 0x07, 0xc4, 0x97, 0x54, 0xc8, 0x7f,
+	0xda, 0x63, 0x00, 0x4b, 0x89, 0x23, 0x99, 0x47, 0x5d, 0x46, 0x50, 0x0d, 0x3e, 0x1f, 0x23, 0x94,
+	0x15, 0xc0, 0xfc, 0xd0, 0xe2, 0x58, 0x65, 0xa1, 0x9c, 0x72, 0xd3, 0xca, 0xb1, 0xad, 0x4d, 0xf6,
+	0xb2, 0xce, 0xd0, 0x4d, 0x38, 0xe9, 0x92, 0x4f, 0x82, 0x7a, 0x1f, 0xde, 0xe7, 0x78, 0x78, 0x57,
+	0x61, 0xd6, 0x02, 0x58, 0xda, 0xf4, 0x09, 0x0e, 0x48, 0x32, 0xe9, 0xfb, 0xa7, 0x27, 0xa7, 0x44,
+	0xc6, 0x49, 0x19, 0x1c, 0x19, 0xd7, 0x76, 0xee, 0xe4, 0x9c, 0x95, 0x18, 0xff, 0x01, 0xb0, 0xb4,
+	0xef, 0xb5, 0x52, 0xc7, 0x5e, 0xd0, 0x59, 0xa3, 0x2d, 0xf8, 0xac, 0x82, 0x9d, 0x7b, 0x0a, 0xd8,
+	0xaa, 0x19, 0xdd, 0x83, 0x63, 0x1d, 0x01, 0x57, 0x78, 0x83, 0x38, 0xde, 0xb1, 0x4a, 0x51, 0xad,
+	0xa5, 0xec, 0xa3, 0xbc, 0xc5, 0xed, 0xe3, 0x1d, 0xcc, 0x0e, 0x6b, 0x30, 0x2c, 0xe7, 0xbf, 0xb5,
+	0xef, 0x00, 0xbc, 0xc6, 0x8f, 0xbf, 0xff, 0xf6, 0x5d, 0xf4, 0x76, 0x7b, 0xc4, 0x9b, 0xcb, 0x14,
+	0xef, 0x50, 0x4c, 0xbc, 0xda, 0xf7, 0x00, 0xce, 0xa5, 0xa1, 0x94, 0x3a, 0xfd, 0x10, 0xe6, 0x95,
+	0x2f, 0x28, 0x51, 0x58, 0x6e, 0x9b, 0x4a, 0xad, 0x2e, 0xa7, 0x52, 0x9b, 0xb0, 0x24, 0xf2, 0xfa,
+	0xad, 0x68, 0x50, 0xc9, 0xde, 0x81, 0xb3, 0xdb, 0x24, 0x83, 0xcd, 0x99, 0x1e, 0x36, 0xc5, 0x41,
+	0x86, 0x37, 0xff, 0x31, 0x80, 0xd7, 0x43, 0xd5, 0x9d, 0xbf, 0x39, 0x75, 0xf3, 0xa1, 0xae, 0xfe,
+	0xef, 0xe6, 0x2b, 0xbf, 0x4d, 0xc0, 0xf1, 0x4d, 0xde, 0x2b, 0x83, 0xe8, 0x6b, 0x00, 0x2f, 0xf7,
+	0x79, 0x21, 0x5a, 0x4d, 0x9d, 0x93, 0xe6, 0x9b, 0xc5, 0x41, 0x25, 0xaf, 0x2d, 0x77, 0x0d, 0xb1,
+	0xd5, 0xcf, 0xff, 0xfc, 0xfb, 0xcb, 0xdc, 0x1c, 0x9a, 0xe5, 0x8f, 0xcb, 0x4f, 0x79, 0xe0, 0xf5,
+	0x98, 0xb9, 0xe8, 0x4b, 0x9f, 0xa1, 0x6f, 0x00, 0xbc, 0x92, 0xe0, 0x69, 0x68, 0x2d, 0x75, 0x5a,
+	0xba, 0xe9, 0x16, 0xd7, 0xcf, 0xd7, 0x14, 0xca, 0x51, 0x2b, 0x09, 0xa0, 0x53, 0xe8, 0x0a, 0x07,
+	0x1a, 0xf7, 0xbf, 0x1f, 0x01, 0xcc, 0x27, 0x39, 0x0c, 0x4a, 0x9f, 0x95, 0x61, 0x48, 0x83, 0x93,
+	0xf8, 0x5a, 0xd7, 0x18, 0xe7, 0x9c, 0xad, 0x48, 0xeb, 0x10, 0x18, 0x17, 0x2a, 0x99, 0x64, 0x56,
+	0x4f, 0x7c, 0xe6, 0x27, 0x00, 0xf3, 0x49, 0x76, 0x9c, 0x81, 0x3a, 0xc3, 0xbd, 0x07, 0x47, 0x7d,
+	0xbf, 0x6b, 0xc4, 0x7d, 0x5e, 0x00, 0xbf, 0xa9, 0x25, 0x91, 0x5b, 0x8d, 0xd7, 0xa2, 0x9f, 0x01,
+	0x9c, 0x4e, 0x36, 0x0f, 0xf4, 0x4a, 0xe6, 0xd9, 0xa6, 0x5e, 0xc4, 0xe2, 0x9d, 0x73, 0xf7, 0x49,
+	0x59, 0xac, 0x47, 0x65, 0xbc, 0x80, 0x5e, 0xcc, 0x62, 0x5e, 0x97, 0x37, 0x91, 0xa1, 0x1f, 0x00,
+	0x9c, 0x4a, 0x74, 0x15, 0xf4, 0x72, 0xd6, 0x95, 0x4b, 0xc7, 0x7f, 0x1e, 0x47, 0xd0, 0x6e, 0x47,
+	0x31, 0xbf, 0x80, 0x6e, 0x9c, 0x62, 0x56, 0x00, 0x39, 0xd8, 0x46, 0x04, 0xd5, 0x5f, 0x00, 0x16,
+	0xd2, 0xbc, 0x0c, 0xdd, 0x3d, 0x43, 0xe3, 0x17, 0x84, 0xfa, 0x83, 0xae, 0x71, 0x55, 0x68, 0x3d,
+	0xc9, 0x18, 0xc5, 0x56, 0x5e, 0x2d, 0x9e, 0xbd, 0x95, 0x6a, 0xa2, 0xaf, 0xa2, 0x2f, 0x00, 0x1c,
+	0xdf, 0x26, 0xc1, 0x0e, 0x76, 0x76, 0xc5, 0x2b, 0x3b, 0xd2, 0x14, 0x34, 0x0b, 0x3b, 0x92, 0xfd,
+	0x93, 0xa4, 0x82, 0x3f, 0x15, 0xab, 0x09, 0xb3, 0xda, 0x1b, 0x5d, 0x63, 0x44, 0x7d, 0x36, 0x08,
+	0x5c, 0x3a, 0xba, 0x25, 0x70, 0xa9, 0x60, 0xd2, 0xa5, 0x34, 0xa3, 0xc3, 0xbf, 0x02, 0x70, 0x7c,
+	0x2f, 0x0b, 0xcd, 0xde, 0xe0, 0x68, 0xde, 0xea, 0x1a, 0x93, 0x6a, 0xf0, 0x4a, 0xf8, 0x3d, 0x22,
+	0x40, 0x55, 0xb4, 0xb3, 0x41, 0xb1, 0xc8, 0x98, 0x2a, 0x58, 0x42, 0xbf, 0x00, 0x88, 0x1e, 0x10,
+	0x26, 0x82, 0xc4, 0x77, 0x2c, 0xc6, 0xf8, 0xf7, 0x16, 0x5a, 0x8c, 0x4d, 0xee, 0x2f, 0x51, 0x18,
+	0x5f, 0x1a, 0xa0, 0x52, 0x5e, 0xac, 0xfd, 0xae, 0x91, 0x3f, 0xc5, 0x7d, 0x5a, 0x20, 0xc0, 0xdf,
+	0xd5, 0xd6, 0xce, 0x04, 0x1f, 0xf4, 0xad, 0x5d, 0x05, 0x4b, 0xc5, 0xf7, 0x7e, 0x37, 0x4a, 0x19,
+	0x6f, 0x3a, 0x7f, 0x18, 0xe5, 0x83, 0x20, 0xf0, 0x58, 0x55, 0xd7, 0x8f, 0x8f, 0x8f, 0xe3, 0xaf,
+	0x41, 0xb8, 0x13, 0x1c, 0x84, 0x9f, 0xa8, 0xb7, 0x3c, 0x1b, 0x07, 0x6d, 0xea, 0x3b, 0x1b, 0x3e,
+	0x2c, 0x35, 0xa9, 0x93, 0x26, 0xe4, 0x8d, 0xcb, 0xd1, 0xc7, 0xec, 0x2e, 0x7f, 0x75, 0xdb, 0x05,
+	0xef, 0xdf, 0x97, 0xd5, 0x26, 0xb5, 0xb1, 0x6b, 0x96, 0xa9, 0x6f, 0xea, 0x26, 0x71, 0xc5, 0x8b,
+	0x9d, 0x7e, 0x3a, 0xb2, 0xef, 0xeb, 0xf8, 0x9e, 0xfc, 0xd9, 0xb8, 0x24, 0x4a, 0xd7, 0xfe, 0x0b,
+	0x00, 0x00, 0xff, 0xff, 0x59, 0xe4, 0x5a, 0x6c, 0x47, 0x0f, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -604,15 +768,35 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type CloudBillingClient interface {
 	// Gets information about a billing account. The current authenticated user
-	// must be an [owner of the billing
-	// account](https://support.google.com/cloud/answer/4430947).
+	// must be a [viewer of the billing
+	// account](https://cloud.google.com/billing/docs/how-to/billing-access).
 	GetBillingAccount(ctx context.Context, in *GetBillingAccountRequest, opts ...grpc.CallOption) (*BillingAccount, error)
-	// Lists the billing accounts that the current authenticated user
-	// [owns](https://support.google.com/cloud/answer/4430947).
+	// Lists the billing accounts that the current authenticated user has
+	// permission to
+	// [view](https://cloud.google.com/billing/docs/how-to/billing-access).
 	ListBillingAccounts(ctx context.Context, in *ListBillingAccountsRequest, opts ...grpc.CallOption) (*ListBillingAccountsResponse, error)
+	// Updates a billing account's fields.
+	// Currently the only field that can be edited is `display_name`.
+	// The current authenticated user must have the `billing.accounts.update`
+	// IAM permission, which is typically given to the
+	// [administrator](https://cloud.google.com/billing/docs/how-to/billing-access)
+	// of the billing account.
+	UpdateBillingAccount(ctx context.Context, in *UpdateBillingAccountRequest, opts ...grpc.CallOption) (*BillingAccount, error)
+	// Creates a billing account.
+	// This method can only be used to create
+	// [billing subaccounts](https://cloud.google.com/billing/docs/concepts)
+	// by GCP resellers.
+	// When creating a subaccount, the current authenticated user must have the
+	// `billing.accounts.update` IAM permission on the master account, which is
+	// typically given to billing account
+	// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+	// This method will return an error if the master account has not been
+	// provisioned as a reseller account.
+	CreateBillingAccount(ctx context.Context, in *CreateBillingAccountRequest, opts ...grpc.CallOption) (*BillingAccount, error)
 	// Lists the projects associated with a billing account. The current
-	// authenticated user must be an [owner of the billing
-	// account](https://support.google.com/cloud/answer/4430947).
+	// authenticated user must have the `billing.resourceAssociations.list` IAM
+	// permission, which is often given to billing account
+	// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
 	ListProjectBillingInfo(ctx context.Context, in *ListProjectBillingInfoRequest, opts ...grpc.CallOption) (*ListProjectBillingInfoResponse, error)
 	// Gets the billing information for a project. The current authenticated user
 	// must have [permission to view the
@@ -628,14 +812,14 @@ type CloudBillingClient interface {
 	// usage charges.
 	//
 	// *Note:* Incurred charges that have not yet been reported in the transaction
-	// history of the Google Cloud Console may be billed to the new billing
+	// history of the GCP Console might be billed to the new billing
 	// account, even if the charge occurred before the new billing account was
 	// assigned to the project.
 	//
 	// The current authenticated user must have ownership privileges for both the
 	// [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
 	// ) and the [billing
-	// account](https://support.google.com/cloud/answer/4430947).
+	// account](https://cloud.google.com/billing/docs/how-to/billing-access).
 	//
 	// You can disable billing on the project by setting the
 	// `billing_account_name` field to empty. This action disassociates the
@@ -651,6 +835,21 @@ type CloudBillingClient interface {
 	// disable billing, you should always call this method with the name of an
 	// *open* billing account.
 	UpdateProjectBillingInfo(ctx context.Context, in *UpdateProjectBillingInfoRequest, opts ...grpc.CallOption) (*ProjectBillingInfo, error)
+	// Gets the access control policy for a billing account.
+	// The caller must have the `billing.accounts.getIamPolicy` permission on the
+	// account, which is often given to billing account
+	// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+	GetIamPolicy(ctx context.Context, in *v1.GetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
+	// Sets the access control policy for a billing account. Replaces any existing
+	// policy.
+	// The caller must have the `billing.accounts.setIamPolicy` permission on the
+	// account, which is often given to billing account
+	// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+	SetIamPolicy(ctx context.Context, in *v1.SetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
+	// Tests the access control policy for a billing account. This method takes
+	// the resource and a set of permissions as input and returns the subset of
+	// the input permissions that the caller is allowed for that resource.
+	TestIamPermissions(ctx context.Context, in *v1.TestIamPermissionsRequest, opts ...grpc.CallOption) (*v1.TestIamPermissionsResponse, error)
 }
 
 type cloudBillingClient struct {
@@ -673,6 +872,24 @@ func (c *cloudBillingClient) GetBillingAccount(ctx context.Context, in *GetBilli
 func (c *cloudBillingClient) ListBillingAccounts(ctx context.Context, in *ListBillingAccountsRequest, opts ...grpc.CallOption) (*ListBillingAccountsResponse, error) {
 	out := new(ListBillingAccountsResponse)
 	err := c.cc.Invoke(ctx, "/google.cloud.billing.v1.CloudBilling/ListBillingAccounts", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudBillingClient) UpdateBillingAccount(ctx context.Context, in *UpdateBillingAccountRequest, opts ...grpc.CallOption) (*BillingAccount, error) {
+	out := new(BillingAccount)
+	err := c.cc.Invoke(ctx, "/google.cloud.billing.v1.CloudBilling/UpdateBillingAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudBillingClient) CreateBillingAccount(ctx context.Context, in *CreateBillingAccountRequest, opts ...grpc.CallOption) (*BillingAccount, error) {
+	out := new(BillingAccount)
+	err := c.cc.Invoke(ctx, "/google.cloud.billing.v1.CloudBilling/CreateBillingAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -706,18 +923,65 @@ func (c *cloudBillingClient) UpdateProjectBillingInfo(ctx context.Context, in *U
 	return out, nil
 }
 
+func (c *cloudBillingClient) GetIamPolicy(ctx context.Context, in *v1.GetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error) {
+	out := new(v1.Policy)
+	err := c.cc.Invoke(ctx, "/google.cloud.billing.v1.CloudBilling/GetIamPolicy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudBillingClient) SetIamPolicy(ctx context.Context, in *v1.SetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error) {
+	out := new(v1.Policy)
+	err := c.cc.Invoke(ctx, "/google.cloud.billing.v1.CloudBilling/SetIamPolicy", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudBillingClient) TestIamPermissions(ctx context.Context, in *v1.TestIamPermissionsRequest, opts ...grpc.CallOption) (*v1.TestIamPermissionsResponse, error) {
+	out := new(v1.TestIamPermissionsResponse)
+	err := c.cc.Invoke(ctx, "/google.cloud.billing.v1.CloudBilling/TestIamPermissions", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CloudBillingServer is the server API for CloudBilling service.
 type CloudBillingServer interface {
 	// Gets information about a billing account. The current authenticated user
-	// must be an [owner of the billing
-	// account](https://support.google.com/cloud/answer/4430947).
+	// must be a [viewer of the billing
+	// account](https://cloud.google.com/billing/docs/how-to/billing-access).
 	GetBillingAccount(context.Context, *GetBillingAccountRequest) (*BillingAccount, error)
-	// Lists the billing accounts that the current authenticated user
-	// [owns](https://support.google.com/cloud/answer/4430947).
+	// Lists the billing accounts that the current authenticated user has
+	// permission to
+	// [view](https://cloud.google.com/billing/docs/how-to/billing-access).
 	ListBillingAccounts(context.Context, *ListBillingAccountsRequest) (*ListBillingAccountsResponse, error)
+	// Updates a billing account's fields.
+	// Currently the only field that can be edited is `display_name`.
+	// The current authenticated user must have the `billing.accounts.update`
+	// IAM permission, which is typically given to the
+	// [administrator](https://cloud.google.com/billing/docs/how-to/billing-access)
+	// of the billing account.
+	UpdateBillingAccount(context.Context, *UpdateBillingAccountRequest) (*BillingAccount, error)
+	// Creates a billing account.
+	// This method can only be used to create
+	// [billing subaccounts](https://cloud.google.com/billing/docs/concepts)
+	// by GCP resellers.
+	// When creating a subaccount, the current authenticated user must have the
+	// `billing.accounts.update` IAM permission on the master account, which is
+	// typically given to billing account
+	// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+	// This method will return an error if the master account has not been
+	// provisioned as a reseller account.
+	CreateBillingAccount(context.Context, *CreateBillingAccountRequest) (*BillingAccount, error)
 	// Lists the projects associated with a billing account. The current
-	// authenticated user must be an [owner of the billing
-	// account](https://support.google.com/cloud/answer/4430947).
+	// authenticated user must have the `billing.resourceAssociations.list` IAM
+	// permission, which is often given to billing account
+	// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
 	ListProjectBillingInfo(context.Context, *ListProjectBillingInfoRequest) (*ListProjectBillingInfoResponse, error)
 	// Gets the billing information for a project. The current authenticated user
 	// must have [permission to view the
@@ -733,14 +997,14 @@ type CloudBillingServer interface {
 	// usage charges.
 	//
 	// *Note:* Incurred charges that have not yet been reported in the transaction
-	// history of the Google Cloud Console may be billed to the new billing
+	// history of the GCP Console might be billed to the new billing
 	// account, even if the charge occurred before the new billing account was
 	// assigned to the project.
 	//
 	// The current authenticated user must have ownership privileges for both the
 	// [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
 	// ) and the [billing
-	// account](https://support.google.com/cloud/answer/4430947).
+	// account](https://cloud.google.com/billing/docs/how-to/billing-access).
 	//
 	// You can disable billing on the project by setting the
 	// `billing_account_name` field to empty. This action disassociates the
@@ -756,6 +1020,21 @@ type CloudBillingServer interface {
 	// disable billing, you should always call this method with the name of an
 	// *open* billing account.
 	UpdateProjectBillingInfo(context.Context, *UpdateProjectBillingInfoRequest) (*ProjectBillingInfo, error)
+	// Gets the access control policy for a billing account.
+	// The caller must have the `billing.accounts.getIamPolicy` permission on the
+	// account, which is often given to billing account
+	// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+	GetIamPolicy(context.Context, *v1.GetIamPolicyRequest) (*v1.Policy, error)
+	// Sets the access control policy for a billing account. Replaces any existing
+	// policy.
+	// The caller must have the `billing.accounts.setIamPolicy` permission on the
+	// account, which is often given to billing account
+	// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+	SetIamPolicy(context.Context, *v1.SetIamPolicyRequest) (*v1.Policy, error)
+	// Tests the access control policy for a billing account. This method takes
+	// the resource and a set of permissions as input and returns the subset of
+	// the input permissions that the caller is allowed for that resource.
+	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
 }
 
 // UnimplementedCloudBillingServer can be embedded to have forward compatible implementations.
@@ -768,6 +1047,12 @@ func (*UnimplementedCloudBillingServer) GetBillingAccount(ctx context.Context, r
 func (*UnimplementedCloudBillingServer) ListBillingAccounts(ctx context.Context, req *ListBillingAccountsRequest) (*ListBillingAccountsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBillingAccounts not implemented")
 }
+func (*UnimplementedCloudBillingServer) UpdateBillingAccount(ctx context.Context, req *UpdateBillingAccountRequest) (*BillingAccount, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBillingAccount not implemented")
+}
+func (*UnimplementedCloudBillingServer) CreateBillingAccount(ctx context.Context, req *CreateBillingAccountRequest) (*BillingAccount, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBillingAccount not implemented")
+}
 func (*UnimplementedCloudBillingServer) ListProjectBillingInfo(ctx context.Context, req *ListProjectBillingInfoRequest) (*ListProjectBillingInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListProjectBillingInfo not implemented")
 }
@@ -776,6 +1061,15 @@ func (*UnimplementedCloudBillingServer) GetProjectBillingInfo(ctx context.Contex
 }
 func (*UnimplementedCloudBillingServer) UpdateProjectBillingInfo(ctx context.Context, req *UpdateProjectBillingInfoRequest) (*ProjectBillingInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateProjectBillingInfo not implemented")
+}
+func (*UnimplementedCloudBillingServer) GetIamPolicy(ctx context.Context, req *v1.GetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIamPolicy not implemented")
+}
+func (*UnimplementedCloudBillingServer) SetIamPolicy(ctx context.Context, req *v1.SetIamPolicyRequest) (*v1.Policy, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIamPolicy not implemented")
+}
+func (*UnimplementedCloudBillingServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
 }
 
 func RegisterCloudBillingServer(s *grpc.Server, srv CloudBillingServer) {
@@ -814,6 +1108,42 @@ func _CloudBilling_ListBillingAccounts_Handler(srv interface{}, ctx context.Cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CloudBillingServer).ListBillingAccounts(ctx, req.(*ListBillingAccountsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudBilling_UpdateBillingAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBillingAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudBillingServer).UpdateBillingAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.billing.v1.CloudBilling/UpdateBillingAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudBillingServer).UpdateBillingAccount(ctx, req.(*UpdateBillingAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudBilling_CreateBillingAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateBillingAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudBillingServer).CreateBillingAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.billing.v1.CloudBilling/CreateBillingAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudBillingServer).CreateBillingAccount(ctx, req.(*CreateBillingAccountRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -872,6 +1202,60 @@ func _CloudBilling_UpdateProjectBillingInfo_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CloudBilling_GetIamPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v1.GetIamPolicyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudBillingServer).GetIamPolicy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.billing.v1.CloudBilling/GetIamPolicy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudBillingServer).GetIamPolicy(ctx, req.(*v1.GetIamPolicyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudBilling_SetIamPolicy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v1.SetIamPolicyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudBillingServer).SetIamPolicy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.billing.v1.CloudBilling/SetIamPolicy",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudBillingServer).SetIamPolicy(ctx, req.(*v1.SetIamPolicyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudBilling_TestIamPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v1.TestIamPermissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudBillingServer).TestIamPermissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.billing.v1.CloudBilling/TestIamPermissions",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudBillingServer).TestIamPermissions(ctx, req.(*v1.TestIamPermissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _CloudBilling_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "google.cloud.billing.v1.CloudBilling",
 	HandlerType: (*CloudBillingServer)(nil),
@@ -885,6 +1269,14 @@ var _CloudBilling_serviceDesc = grpc.ServiceDesc{
 			Handler:    _CloudBilling_ListBillingAccounts_Handler,
 		},
 		{
+			MethodName: "UpdateBillingAccount",
+			Handler:    _CloudBilling_UpdateBillingAccount_Handler,
+		},
+		{
+			MethodName: "CreateBillingAccount",
+			Handler:    _CloudBilling_CreateBillingAccount_Handler,
+		},
+		{
 			MethodName: "ListProjectBillingInfo",
 			Handler:    _CloudBilling_ListProjectBillingInfo_Handler,
 		},
@@ -895,6 +1287,18 @@ var _CloudBilling_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateProjectBillingInfo",
 			Handler:    _CloudBilling_UpdateProjectBillingInfo_Handler,
+		},
+		{
+			MethodName: "GetIamPolicy",
+			Handler:    _CloudBilling_GetIamPolicy_Handler,
+		},
+		{
+			MethodName: "SetIamPolicy",
+			Handler:    _CloudBilling_SetIamPolicy_Handler,
+		},
+		{
+			MethodName: "TestIamPermissions",
+			Handler:    _CloudBilling_TestIamPermissions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
