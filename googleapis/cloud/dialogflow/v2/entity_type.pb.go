@@ -35,10 +35,10 @@ type EntityType_Kind int32
 const (
 	// Not specified. This value should be never used.
 	EntityType_KIND_UNSPECIFIED EntityType_Kind = 0
-	// Map entity types allow mapping of a group of synonyms to a canonical
+	// Map entity types allow mapping of a group of synonyms to a reference
 	// value.
 	EntityType_KIND_MAP EntityType_Kind = 1
-	// List entity types contain a set of entries that do not map to canonical
+	// List entity types contain a set of entries that do not map to reference
 	// values. However, list entity types can contain references to other entity
 	// types (with or without aliases).
 	EntityType_KIND_LIST EntityType_Kind = 2
@@ -200,7 +200,7 @@ type EntityType_Entity struct {
 	//
 	// For `KIND_MAP` entity types:
 	//
-	// *   A canonical value to be used in place of synonyms.
+	// *   A reference value to be used in place of synonyms.
 	//
 	// For `KIND_LIST` entity types:
 	//
@@ -973,7 +973,7 @@ type BatchDeleteEntitiesRequest struct {
 	// Required. The name of the entity type to delete entries for. Format:
 	// `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The canonical `values` of the entities to delete. Note that
+	// Required. The reference `values` of the entities to delete. Note that
 	// these are not fully-qualified names, i.e. they don't start with
 	// `projects/<Project ID>`.
 	EntityValues []string `protobuf:"bytes,2,rep,name=entity_values,json=entityValues,proto3" json:"entity_values,omitempty"`

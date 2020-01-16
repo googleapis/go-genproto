@@ -39,7 +39,7 @@ const (
 	// use of templates syntax and composite entities.
 	Agent_MATCH_MODE_HYBRID Agent_MatchMode = 1
 	// Can be used for agents with a large number of examples in intents,
-	// especially the ones using @sys.any or very large developer entities.
+	// especially the ones using @sys.any or very large custom entities.
 	Agent_MATCH_MODE_ML_ONLY Agent_MatchMode = 2
 )
 
