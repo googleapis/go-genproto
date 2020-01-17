@@ -35,16 +35,16 @@ const (
 	// Not specified. This value should be never used.
 	SessionEntityType_ENTITY_OVERRIDE_MODE_UNSPECIFIED SessionEntityType_EntityOverrideMode = 0
 	// The collection of session entities overrides the collection of entities
-	// in the corresponding developer entity type.
+	// in the corresponding custom entity type.
 	SessionEntityType_ENTITY_OVERRIDE_MODE_OVERRIDE SessionEntityType_EntityOverrideMode = 1
 	// The collection of session entities extends the collection of entities in
-	// the corresponding developer entity type.
+	// the corresponding custom entity type.
 	//
 	// Note: Even in this override mode calls to `ListSessionEntityTypes`,
 	// `GetSessionEntityType`, `CreateSessionEntityType` and
 	// `UpdateSessionEntityType` only return the additional entities added in
 	// this session entity type. If you want to get the supplemented list,
-	// please call [EntityTypes.GetEntityType][google.cloud.dialogflow.v2beta1.EntityTypes.GetEntityType] on the developer entity type
+	// please call [EntityTypes.GetEntityType][google.cloud.dialogflow.v2beta1.EntityTypes.GetEntityType] on the custom entity type
 	// and merge.
 	SessionEntityType_ENTITY_OVERRIDE_MODE_SUPPLEMENT SessionEntityType_EntityOverrideMode = 2
 )
@@ -71,8 +71,8 @@ func (SessionEntityType_EntityOverrideMode) EnumDescriptor() ([]byte, []int) {
 
 // Represents a session entity type.
 //
-// Extends or replaces a developer entity type at the user session level (we
-// refer to the entity types defined at the agent level as "developer entity
+// Extends or replaces a custom entity type at the user session level (we
+// refer to the entity types defined at the agent level as "custom entity
 // types").
 //
 // Note: session entity types apply to all queries, regardless of the language.
@@ -89,7 +89,7 @@ type SessionEntityType struct {
 	// type in the same agent that will be overridden or supplemented.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. Indicates whether the additional data should override or
-	// supplement the developer entity type definition.
+	// supplement the custom entity type definition.
 	EntityOverrideMode SessionEntityType_EntityOverrideMode `protobuf:"varint,2,opt,name=entity_override_mode,json=entityOverrideMode,proto3,enum=google.cloud.dialogflow.v2beta1.SessionEntityType_EntityOverrideMode" json:"entity_override_mode,omitempty"`
 	// Required. The collection of entities associated with this session entity
 	// type.
