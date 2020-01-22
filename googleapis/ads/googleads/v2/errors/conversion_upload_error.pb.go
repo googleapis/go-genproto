@@ -42,7 +42,7 @@ const (
 	// specified conversion action.
 	ConversionUploadErrorEnum_EXPIRED_GCLID ConversionUploadErrorEnum_ConversionUploadError = 5
 	// The click associated with the given gclid occurred too recently. Please
-	// try uploading again after 24 hours have passed since the click occurred.
+	// try uploading again after 6 hours have passed since the click occurred.
 	ConversionUploadErrorEnum_TOO_RECENT_GCLID ConversionUploadErrorEnum_ConversionUploadError = 6
 	// The click associated with the given gclid could not be found in the
 	// system. This can happen if Google Click IDs are collected for non Google
@@ -78,7 +78,7 @@ const (
 	// The request contained two or more conversions with the same order id and
 	// conversion action combination.
 	ConversionUploadErrorEnum_DUPLICATE_ORDER_ID ConversionUploadErrorEnum_ConversionUploadError = 16
-	// The call occurred too recently. Please try uploading again after 24 hours
+	// The call occurred too recently. Please try uploading again after 6 hours
 	// have passed since the call occurred.
 	ConversionUploadErrorEnum_TOO_RECENT_CALL ConversionUploadErrorEnum_ConversionUploadError = 17
 	// The click that initiated the call is too old for this conversion to be

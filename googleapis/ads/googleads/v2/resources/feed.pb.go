@@ -68,7 +68,9 @@ type Feed struct {
 	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Name of the feed. Required.
 	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// The Feed's attributes. Required on CREATE.
+	// The Feed's attributes. Required on CREATE, unless
+	// system_feed_generation_data is provided, in which case Google Ads will
+	// update the feed with the correct attributes.
 	// Disallowed on UPDATE. Use attribute_operations to add new attributes.
 	Attributes []*FeedAttribute `protobuf:"bytes,4,rep,name=attributes,proto3" json:"attributes,omitempty"`
 	// The list of operations changing the feed attributes. Attributes can only
