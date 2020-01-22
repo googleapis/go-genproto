@@ -257,6 +257,8 @@ type RouteTravelAdvisory struct {
 	// Populated if this journey contains toll roads.
 	// This is an aggregation of the toll information for each RouteLeg into a
 	// single price per every relevant currency.
+	// If this field is set but the estimated_price subfield is not populated,
+	// we know that road contains tolls but we do not know the exact price.
 	TollInfo             *TollInfo `protobuf:"bytes,2,opt,name=toll_info,json=tollInfo,proto3" json:"toll_info,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
@@ -548,12 +550,14 @@ func (m *RouteLeg) GetTravelAdvisory() *RouteLegTravelAdvisory {
 	return nil
 }
 
+// Encapsulates toll information on a `Route` or on a `RouteLeg`.
 type TollInfo struct {
-	// The monetary amount for the corresponding leg of the journey or the amount
-	// for the entire journey (depending on whether TollInfo is hosted by
-	// RouteLegTravelAdvisory or RouteTravelAdvisory, respectively),
-	// for every relevant currency (multiple entries if paying in multiple
-	// currencies), set if known.
+	// The monetary amount of tolls for the corresponding Route or RouteLeg.
+	// This list contains a money amount for each currency that is expected
+	// to be charged by the toll stations. Typically this list will contain only
+	// one item for routes with tolls in one currency. For international trips,
+	// this list may contain multiple items to reflect tolls in different
+	// currencies.
 	EstimatedPrice       []*money.Money `protobuf:"bytes,2,rep,name=estimated_price,json=estimatedPrice,proto3" json:"estimated_price,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
