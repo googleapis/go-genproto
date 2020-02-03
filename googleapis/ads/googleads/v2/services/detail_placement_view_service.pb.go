@@ -107,11 +107,11 @@ var fileDescriptor_24eb6ba92ccb047b = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // DetailPlacementViewServiceClient is the client API for DetailPlacementViewService service.
 //
@@ -122,10 +122,10 @@ type DetailPlacementViewServiceClient interface {
 }
 
 type detailPlacementViewServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDetailPlacementViewServiceClient(cc *grpc.ClientConn) DetailPlacementViewServiceClient {
+func NewDetailPlacementViewServiceClient(cc grpc.ClientConnInterface) DetailPlacementViewServiceClient {
 	return &detailPlacementViewServiceClient{cc}
 }
 

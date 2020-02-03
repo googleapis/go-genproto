@@ -36,9 +36,9 @@ const (
 	HotelRateTypeEnum_PUBLIC_RATE HotelRateTypeEnum_HotelRateType = 3
 	// A membership program rate is available and satisfies basic requirements
 	// like having a public rate available. UI treatment will strikethrough the
-	// public rate and indicate that a discount is available to the user. See
+	// public rate and indicate that a discount is available to the user. For
+	// more on Qualified Rates, visit
 	// https://developers.google.com/hotels/hotel-ads/dev-guide/qualified-rates
-	// for more information.
 	HotelRateTypeEnum_QUALIFIED_RATE HotelRateTypeEnum_HotelRateType = 4
 	// Rates available to users that satisfy some eligibility criteria. e.g.
 	// all signed-in users, 20% of mobile users, all mobile users in Canada,

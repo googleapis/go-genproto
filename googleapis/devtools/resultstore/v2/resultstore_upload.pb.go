@@ -2596,11 +2596,11 @@ var fileDescriptor_3c379de3a2f884aa = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ResultStoreUploadClient is the client API for ResultStoreUpload service.
 //
@@ -2915,10 +2915,10 @@ type ResultStoreUploadClient interface {
 }
 
 type resultStoreUploadClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewResultStoreUploadClient(cc *grpc.ClientConn) ResultStoreUploadClient {
+func NewResultStoreUploadClient(cc grpc.ClientConnInterface) ResultStoreUploadClient {
 	return &resultStoreUploadClient{cc}
 }
 

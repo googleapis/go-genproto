@@ -3227,11 +3227,11 @@ var fileDescriptor_49e74116a4d6fd69 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ImageAnnotatorClient is the client API for ImageAnnotator service.
 //
@@ -3267,10 +3267,10 @@ type ImageAnnotatorClient interface {
 }
 
 type imageAnnotatorClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewImageAnnotatorClient(cc *grpc.ClientConn) ImageAnnotatorClient {
+func NewImageAnnotatorClient(cc grpc.ClientConnInterface) ImageAnnotatorClient {
 	return &imageAnnotatorClient{cc}
 }
 

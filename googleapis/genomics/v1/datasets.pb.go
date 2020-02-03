@@ -505,11 +505,11 @@ var fileDescriptor_ddd0efa223187e29 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // DatasetServiceV1Client is the client API for DatasetServiceV1 service.
 //
@@ -591,10 +591,10 @@ type DatasetServiceV1Client interface {
 }
 
 type datasetServiceV1Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDatasetServiceV1Client(cc *grpc.ClientConn) DatasetServiceV1Client {
+func NewDatasetServiceV1Client(cc grpc.ClientConnInterface) DatasetServiceV1Client {
 	return &datasetServiceV1Client{cc}
 }
 

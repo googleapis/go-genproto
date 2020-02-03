@@ -758,11 +758,11 @@ var fileDescriptor_47fe072480332805 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // CloudBillingClient is the client API for CloudBilling service.
 //
@@ -854,10 +854,10 @@ type CloudBillingClient interface {
 }
 
 type cloudBillingClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewCloudBillingClient(cc *grpc.ClientConn) CloudBillingClient {
+func NewCloudBillingClient(cc grpc.ClientConnInterface) CloudBillingClient {
 	return &cloudBillingClient{cc}
 }
 

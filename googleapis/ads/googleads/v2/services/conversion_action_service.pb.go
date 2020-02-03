@@ -407,11 +407,11 @@ var fileDescriptor_5fb0932d53188564 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ConversionActionServiceClient is the client API for ConversionActionService service.
 //
@@ -425,10 +425,10 @@ type ConversionActionServiceClient interface {
 }
 
 type conversionActionServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewConversionActionServiceClient(cc *grpc.ClientConn) ConversionActionServiceClient {
+func NewConversionActionServiceClient(cc grpc.ClientConnInterface) ConversionActionServiceClient {
 	return &conversionActionServiceClient{cc}
 }
 

@@ -599,11 +599,11 @@ var fileDescriptor_f4f9d0517c05d712 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // BigQueryWriteClient is the client API for BigQueryWrite service.
 //
@@ -645,10 +645,10 @@ type BigQueryWriteClient interface {
 }
 
 type bigQueryWriteClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewBigQueryWriteClient(cc *grpc.ClientConn) BigQueryWriteClient {
+func NewBigQueryWriteClient(cc grpc.ClientConnInterface) BigQueryWriteClient {
 	return &bigQueryWriteClient{cc}
 }
 

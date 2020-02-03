@@ -843,11 +843,11 @@ var fileDescriptor_57d65490f51d0d62 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ConnectionServiceClient is the client API for ConnectionService service.
 //
@@ -886,10 +886,10 @@ type ConnectionServiceClient interface {
 }
 
 type connectionServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewConnectionServiceClient(cc *grpc.ClientConn) ConnectionServiceClient {
+func NewConnectionServiceClient(cc grpc.ClientConnInterface) ConnectionServiceClient {
 	return &connectionServiceClient{cc}
 }
 

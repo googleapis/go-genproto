@@ -108,11 +108,11 @@ var fileDescriptor_b48bc0ab6a318568 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ShoppingPerformanceViewServiceClient is the client API for ShoppingPerformanceViewService service.
 //
@@ -123,10 +123,10 @@ type ShoppingPerformanceViewServiceClient interface {
 }
 
 type shoppingPerformanceViewServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewShoppingPerformanceViewServiceClient(cc *grpc.ClientConn) ShoppingPerformanceViewServiceClient {
+func NewShoppingPerformanceViewServiceClient(cc grpc.ClientConnInterface) ShoppingPerformanceViewServiceClient {
 	return &shoppingPerformanceViewServiceClient{cc}
 }
 

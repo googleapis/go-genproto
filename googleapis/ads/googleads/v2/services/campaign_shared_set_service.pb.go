@@ -378,11 +378,11 @@ var fileDescriptor_24fe31a9a037f76b = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // CampaignSharedSetServiceClient is the client API for CampaignSharedSetService service.
 //
@@ -395,10 +395,10 @@ type CampaignSharedSetServiceClient interface {
 }
 
 type campaignSharedSetServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewCampaignSharedSetServiceClient(cc *grpc.ClientConn) CampaignSharedSetServiceClient {
+func NewCampaignSharedSetServiceClient(cc grpc.ClientConnInterface) CampaignSharedSetServiceClient {
 	return &campaignSharedSetServiceClient{cc}
 }
 

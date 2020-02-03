@@ -407,11 +407,11 @@ var fileDescriptor_7d72c61c2a3fadce = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // CampaignBudgetServiceClient is the client API for CampaignBudgetService service.
 //
@@ -425,10 +425,10 @@ type CampaignBudgetServiceClient interface {
 }
 
 type campaignBudgetServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewCampaignBudgetServiceClient(cc *grpc.ClientConn) CampaignBudgetServiceClient {
+func NewCampaignBudgetServiceClient(cc grpc.ClientConnInterface) CampaignBudgetServiceClient {
 	return &campaignBudgetServiceClient{cc}
 }
 

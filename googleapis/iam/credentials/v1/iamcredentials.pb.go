@@ -68,11 +68,11 @@ var fileDescriptor_ad032f4dbfa7437c = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // IAMCredentialsClient is the client API for IAMCredentials service.
 //
@@ -89,10 +89,10 @@ type IAMCredentialsClient interface {
 }
 
 type iAMCredentialsClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewIAMCredentialsClient(cc *grpc.ClientConn) IAMCredentialsClient {
+func NewIAMCredentialsClient(cc grpc.ClientConnInterface) IAMCredentialsClient {
 	return &iAMCredentialsClient{cc}
 }
 

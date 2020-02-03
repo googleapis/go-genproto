@@ -457,11 +457,11 @@ var fileDescriptor_5cad9891eddcc8ab = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // KeywordPlanIdeaServiceClient is the client API for KeywordPlanIdeaService service.
 //
@@ -472,10 +472,10 @@ type KeywordPlanIdeaServiceClient interface {
 }
 
 type keywordPlanIdeaServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewKeywordPlanIdeaServiceClient(cc *grpc.ClientConn) KeywordPlanIdeaServiceClient {
+func NewKeywordPlanIdeaServiceClient(cc grpc.ClientConnInterface) KeywordPlanIdeaServiceClient {
 	return &keywordPlanIdeaServiceClient{cc}
 }
 

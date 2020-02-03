@@ -525,11 +525,11 @@ var fileDescriptor_8f215053b51b20e0 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ServiceControllerClient is the client API for ServiceController service.
 //
@@ -569,10 +569,10 @@ type ServiceControllerClient interface {
 }
 
 type serviceControllerClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewServiceControllerClient(cc *grpc.ClientConn) ServiceControllerClient {
+func NewServiceControllerClient(cc grpc.ClientConnInterface) ServiceControllerClient {
 	return &serviceControllerClient{cc}
 }
 

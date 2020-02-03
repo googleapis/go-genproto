@@ -451,11 +451,11 @@ var fileDescriptor_b0b34171a7a67e99 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // GeoTargetConstantServiceClient is the client API for GeoTargetConstantService service.
 //
@@ -468,10 +468,10 @@ type GeoTargetConstantServiceClient interface {
 }
 
 type geoTargetConstantServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewGeoTargetConstantServiceClient(cc *grpc.ClientConn) GeoTargetConstantServiceClient {
+func NewGeoTargetConstantServiceClient(cc grpc.ClientConnInterface) GeoTargetConstantServiceClient {
 	return &geoTargetConstantServiceClient{cc}
 }
 

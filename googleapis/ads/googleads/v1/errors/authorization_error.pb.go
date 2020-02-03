@@ -31,10 +31,9 @@ const (
 	// The received error code is not known in this version.
 	AuthorizationErrorEnum_UNKNOWN AuthorizationErrorEnum_AuthorizationError = 1
 	// User doesn't have permission to access customer. Note: If you're
-	// accessing a client customer, the manager's customer id must be set in the
-	// 'login-customer-id' header. See
-	// https://developers.google.com/google-ads/api/docs/concepts/
-	// call-structure#login-customer-id
+	// accessing a client customer, the manager's customer ID must be set in the
+	// `login-customer-id` header. Learn more at
+	// https://developers.google.com/google-ads/api/docs/concepts/call-structure#cid
 	AuthorizationErrorEnum_USER_PERMISSION_DENIED AuthorizationErrorEnum_AuthorizationError = 2
 	// The developer token is not whitelisted.
 	AuthorizationErrorEnum_DEVELOPER_TOKEN_NOT_WHITELISTED AuthorizationErrorEnum_AuthorizationError = 3

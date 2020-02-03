@@ -809,11 +809,11 @@ var fileDescriptor_6a8ba408154557e4 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // LoggingServiceV2Client is the client API for LoggingServiceV2 service.
 //
@@ -844,10 +844,10 @@ type LoggingServiceV2Client interface {
 }
 
 type loggingServiceV2Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewLoggingServiceV2Client(cc *grpc.ClientConn) LoggingServiceV2Client {
+func NewLoggingServiceV2Client(cc grpc.ClientConnInterface) LoggingServiceV2Client {
 	return &loggingServiceV2Client{cc}
 }
 

@@ -2593,11 +2593,11 @@ var fileDescriptor_20fb118582e1d7de = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // JobControllerClient is the client API for JobController service.
 //
@@ -2623,10 +2623,10 @@ type JobControllerClient interface {
 }
 
 type jobControllerClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewJobControllerClient(cc *grpc.ClientConn) JobControllerClient {
+func NewJobControllerClient(cc grpc.ClientConnInterface) JobControllerClient {
 	return &jobControllerClient{cc}
 }
 

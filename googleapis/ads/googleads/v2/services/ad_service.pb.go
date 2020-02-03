@@ -333,11 +333,11 @@ var fileDescriptor_5b4b1037e2d66699 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // AdServiceClient is the client API for AdService service.
 //
@@ -350,10 +350,10 @@ type AdServiceClient interface {
 }
 
 type adServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewAdServiceClient(cc *grpc.ClientConn) AdServiceClient {
+func NewAdServiceClient(cc grpc.ClientConnInterface) AdServiceClient {
 	return &adServiceClient{cc}
 }
 

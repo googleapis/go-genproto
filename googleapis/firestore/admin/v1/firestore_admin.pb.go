@@ -738,11 +738,11 @@ var fileDescriptor_1b39559c0814b3d0 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // FirestoreAdminClient is the client API for FirestoreAdmin service.
 //
@@ -799,10 +799,10 @@ type FirestoreAdminClient interface {
 }
 
 type firestoreAdminClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewFirestoreAdminClient(cc *grpc.ClientConn) FirestoreAdminClient {
+func NewFirestoreAdminClient(cc grpc.ClientConnInterface) FirestoreAdminClient {
 	return &firestoreAdminClient{cc}
 }
 

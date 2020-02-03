@@ -144,15 +144,16 @@ func (m *UserEvent) GetEventTime() *timestamp.Timestamp {
 
 // Information of end users.
 type UserInfo struct {
-	// Required. A unique identifier for tracking visitors.
+	// Required. A unique identifier for tracking visitors with a length limit of
+	// 128 bytes.
 	//
 	// For example, this could be implemented with a http cookie, which should be
 	// able to uniquely identify a visitor on a single device. This unique
 	// identifier should not change if the visitor log in/out of the website.
 	// Maximum length 128 bytes. Cannot be empty.
 	VisitorId string `protobuf:"bytes,1,opt,name=visitor_id,json=visitorId,proto3" json:"visitor_id,omitempty"`
-	// Optional. Unique identifier for logged-in user. Required only for
-	// logged-in users.
+	// Optional. Unique identifier for logged-in user with a length limit of 128
+	// bytes. Required only for logged-in users.
 	UserId string `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	// Optional. The below fields should *not* be set if using the javascript
 	// pixel. IP address of the user. Optional. This could be either IPv4 (e.g.
@@ -161,8 +162,11 @@ type UserInfo struct {
 	// `direct_user_request` is set. Used to extract location information for
 	// personalization.
 	IpAddress string `protobuf:"bytes,3,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
-	// Optional. User agent as included in the HTTP header. This should *not* be
-	// set when using the javascript pixel or if `directUserRequest` is set.
+	// Optional. User agent as included in the HTTP header. UTF-8 encoded string
+	// with a length limit of 1 KiB.
+	//
+	// This should *not* be set when using the javascript pixel or if
+	// `directUserRequest` is set.
 	UserAgent string `protobuf:"bytes,4,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
 	// Optional. Indicates if the request is made directly from the end user
 	// in which case the user_agent and ip_address fields can be populated
@@ -357,9 +361,8 @@ func (m *EventDetail) GetEventAttributes() *FeatureMap {
 // ProductEventDetail captures user event information specific to retail
 // products.
 type ProductEventDetail struct {
-	// Required for `search` events. Other event types should not set
-	// this field. The user's search query as UTF-8 encoded text with a length
-	// limit of 1250 characters.
+	// Required for `search` events. Other event types should not set this field.
+	// The user's search query as UTF-8 encoded text with a length limit of 5 KiB.
 	SearchQuery string `protobuf:"bytes,1,opt,name=search_query,json=searchQuery,proto3" json:"search_query,omitempty"`
 	// Required for `category-page-view` events. Other event types should not set
 	// this field.
@@ -481,7 +484,7 @@ func (m *ProductEventDetail) GetPurchaseTransaction() *PurchaseTransaction {
 
 // A transaction represents the entire purchase transaction.
 type PurchaseTransaction struct {
-	// Optional. The transaction ID.
+	// Optional. The transaction ID with a length limit of 128 bytes.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Required. Total revenue or grand total associated with the transaction.
 	// This value include shipping, tax, or other adjustments to total revenue

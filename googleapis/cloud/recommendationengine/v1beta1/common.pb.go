@@ -89,7 +89,7 @@ func (m *FeatureMap) GetNumericalFeatures() map[string]*FeatureMap_FloatList {
 
 // A list of string features.
 type FeatureMap_StringList struct {
-	// String feature value.
+	// String feature value with a length limit of 128 bytes.
 	Value                []string `protobuf:"bytes,1,rep,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

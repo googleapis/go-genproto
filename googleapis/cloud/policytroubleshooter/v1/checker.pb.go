@@ -170,11 +170,11 @@ var fileDescriptor_c898537025beb094 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // IamCheckerClient is the client API for IamChecker service.
 //
@@ -186,10 +186,10 @@ type IamCheckerClient interface {
 }
 
 type iamCheckerClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewIamCheckerClient(cc *grpc.ClientConn) IamCheckerClient {
+func NewIamCheckerClient(cc grpc.ClientConnInterface) IamCheckerClient {
 	return &iamCheckerClient{cc}
 }
 

@@ -1155,11 +1155,11 @@ var fileDescriptor_a3e972e4a9f12181 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // RuntimeConfigManagerClient is the client API for RuntimeConfigManager service.
 //
@@ -1231,10 +1231,10 @@ type RuntimeConfigManagerClient interface {
 }
 
 type runtimeConfigManagerClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewRuntimeConfigManagerClient(cc *grpc.ClientConn) RuntimeConfigManagerClient {
+func NewRuntimeConfigManagerClient(cc grpc.ClientConnInterface) RuntimeConfigManagerClient {
 	return &runtimeConfigManagerClient{cc}
 }
 

@@ -1305,11 +1305,11 @@ var fileDescriptor_775871f9b2cdbeb8 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ConfigServiceV2Client is the client API for ConfigServiceV2 service.
 //
@@ -1348,10 +1348,10 @@ type ConfigServiceV2Client interface {
 }
 
 type configServiceV2Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewConfigServiceV2Client(cc *grpc.ClientConn) ConfigServiceV2Client {
+func NewConfigServiceV2Client(cc grpc.ClientConnInterface) ConfigServiceV2Client {
 	return &configServiceV2Client{cc}
 }
 

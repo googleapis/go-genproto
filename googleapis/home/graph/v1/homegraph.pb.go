@@ -980,11 +980,11 @@ var fileDescriptor_7c06ecdbcb0515e5 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // HomeGraphApiServiceClient is the client API for HomeGraphApiService service.
 //
@@ -1045,10 +1045,10 @@ type HomeGraphApiServiceClient interface {
 }
 
 type homeGraphApiServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewHomeGraphApiServiceClient(cc *grpc.ClientConn) HomeGraphApiServiceClient {
+func NewHomeGraphApiServiceClient(cc grpc.ClientConnInterface) HomeGraphApiServiceClient {
 	return &homeGraphApiServiceClient{cc}
 }
 

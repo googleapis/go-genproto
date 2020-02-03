@@ -407,11 +407,11 @@ var fileDescriptor_152e871f58d907b5 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // BiddingStrategyServiceClient is the client API for BiddingStrategyService service.
 //
@@ -425,10 +425,10 @@ type BiddingStrategyServiceClient interface {
 }
 
 type biddingStrategyServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewBiddingStrategyServiceClient(cc *grpc.ClientConn) BiddingStrategyServiceClient {
+func NewBiddingStrategyServiceClient(cc grpc.ClientConnInterface) BiddingStrategyServiceClient {
 	return &biddingStrategyServiceClient{cc}
 }
 

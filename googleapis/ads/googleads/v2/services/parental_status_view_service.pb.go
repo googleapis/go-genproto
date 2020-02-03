@@ -107,11 +107,11 @@ var fileDescriptor_3677998f9a8d2f2f = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ParentalStatusViewServiceClient is the client API for ParentalStatusViewService service.
 //
@@ -122,10 +122,10 @@ type ParentalStatusViewServiceClient interface {
 }
 
 type parentalStatusViewServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewParentalStatusViewServiceClient(cc *grpc.ClientConn) ParentalStatusViewServiceClient {
+func NewParentalStatusViewServiceClient(cc grpc.ClientConnInterface) ParentalStatusViewServiceClient {
 	return &parentalStatusViewServiceClient{cc}
 }
 

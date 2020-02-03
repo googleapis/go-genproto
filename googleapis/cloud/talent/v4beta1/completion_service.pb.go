@@ -412,11 +412,11 @@ var fileDescriptor_a6e2d15ed940916e = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // CompletionClient is the client API for Completion service.
 //
@@ -428,10 +428,10 @@ type CompletionClient interface {
 }
 
 type completionClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewCompletionClient(cc *grpc.ClientConn) CompletionClient {
+func NewCompletionClient(cc grpc.ClientConnInterface) CompletionClient {
 	return &completionClient{cc}
 }
 

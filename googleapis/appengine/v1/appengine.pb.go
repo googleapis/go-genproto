@@ -1081,11 +1081,11 @@ var fileDescriptor_b28c1d276df09fd1 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // InstancesClient is the client API for Instances service.
 //
@@ -1109,10 +1109,10 @@ type InstancesClient interface {
 }
 
 type instancesClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewInstancesClient(cc *grpc.ClientConn) InstancesClient {
+func NewInstancesClient(cc grpc.ClientConnInterface) InstancesClient {
 	return &instancesClient{cc}
 }
 
@@ -1322,10 +1322,10 @@ type VersionsClient interface {
 }
 
 type versionsClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewVersionsClient(cc *grpc.ClientConn) VersionsClient {
+func NewVersionsClient(cc grpc.ClientConnInterface) VersionsClient {
 	return &versionsClient{cc}
 }
 
@@ -1562,10 +1562,10 @@ type ServicesClient interface {
 }
 
 type servicesClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewServicesClient(cc *grpc.ClientConn) ServicesClient {
+func NewServicesClient(cc grpc.ClientConnInterface) ServicesClient {
 	return &servicesClient{cc}
 }
 
@@ -1749,10 +1749,10 @@ type ApplicationsClient interface {
 }
 
 type applicationsClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewApplicationsClient(cc *grpc.ClientConn) ApplicationsClient {
+func NewApplicationsClient(cc grpc.ClientConnInterface) ApplicationsClient {
 	return &applicationsClient{cc}
 }
 

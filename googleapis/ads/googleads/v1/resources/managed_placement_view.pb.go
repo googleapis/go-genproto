@@ -27,7 +27,6 @@ type ManagedPlacementView struct {
 	// The resource name of the Managed Placement view.
 	// Managed placement view resource names have the form:
 	//
-	//
 	// `customers/{customer_id}/managedPlacementViews/{ad_group_id}~{criterion_id}`
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`

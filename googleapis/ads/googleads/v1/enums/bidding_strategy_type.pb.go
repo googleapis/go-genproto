@@ -52,6 +52,7 @@ const (
 	BiddingStrategyTypeEnum_MAXIMIZE_CONVERSION_VALUE BiddingStrategyTypeEnum_BiddingStrategyType = 11
 	// Page-One Promoted bidding scheme, which sets max cpc bids to
 	// target impressions on page one or page one promoted slots on google.com.
+	// This enum value is deprecated.
 	BiddingStrategyTypeEnum_PAGE_ONE_PROMOTED BiddingStrategyTypeEnum_BiddingStrategyType = 5
 	// Percent Cpc is bidding strategy where bids are a fraction of the
 	// advertised price for some good or service.
@@ -71,6 +72,7 @@ const (
 	// Target Outrank Share is an automated bidding strategy that sets bids
 	// based on the target fraction of auctions where the advertiser
 	// should outrank a specific competitor.
+	// This enum value is deprecated.
 	BiddingStrategyTypeEnum_TARGET_OUTRANK_SHARE BiddingStrategyTypeEnum_BiddingStrategyType = 7
 	// Target ROAS is an automated bidding strategy
 	// that helps you maximize revenue while averaging

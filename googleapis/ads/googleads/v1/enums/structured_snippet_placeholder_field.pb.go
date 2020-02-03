@@ -31,10 +31,9 @@ const (
 	// Used for return value only. Represents value unknown in this version.
 	StructuredSnippetPlaceholderFieldEnum_UNKNOWN StructuredSnippetPlaceholderFieldEnum_StructuredSnippetPlaceholderField = 1
 	// Data Type: STRING. The category of snippet of your products/services.
-	// Must match one of the predefined structured snippets headers exactly.
-	// See
-	// https://developers.google.com/adwords/api
-	// /docs/appendix/structured-snippet-headers
+	// Must match exactly one of the predefined structured snippets headers.
+	// For a list, visit
+	// https://developers.google.com/adwords/api/docs/appendix/structured-snippet-headers
 	StructuredSnippetPlaceholderFieldEnum_HEADER StructuredSnippetPlaceholderFieldEnum_StructuredSnippetPlaceholderField = 2
 	// Data Type: STRING_LIST. Text values that describe your products/services.
 	// All text must be family safe. Special or non-ASCII characters are not

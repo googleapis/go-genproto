@@ -106,11 +106,11 @@ var fileDescriptor_c94f6646097cdc15 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // VideoServiceClient is the client API for VideoService service.
 //
@@ -121,10 +121,10 @@ type VideoServiceClient interface {
 }
 
 type videoServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewVideoServiceClient(cc *grpc.ClientConn) VideoServiceClient {
+func NewVideoServiceClient(cc grpc.ClientConnInterface) VideoServiceClient {
 	return &videoServiceClient{cc}
 }
 

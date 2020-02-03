@@ -107,11 +107,11 @@ var fileDescriptor_3e985cbf2545305b = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // AdGroupSimulationServiceClient is the client API for AdGroupSimulationService service.
 //
@@ -122,10 +122,10 @@ type AdGroupSimulationServiceClient interface {
 }
 
 type adGroupSimulationServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewAdGroupSimulationServiceClient(cc *grpc.ClientConn) AdGroupSimulationServiceClient {
+func NewAdGroupSimulationServiceClient(cc grpc.ClientConnInterface) AdGroupSimulationServiceClient {
 	return &adGroupSimulationServiceClient{cc}
 }
 

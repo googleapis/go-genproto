@@ -1101,11 +1101,11 @@ var fileDescriptor_39d7fa5775f5f7c7 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // WebRiskServiceV1Beta1Client is the client API for WebRiskServiceV1Beta1 service.
 //
@@ -1124,10 +1124,10 @@ type WebRiskServiceV1Beta1Client interface {
 }
 
 type webRiskServiceV1Beta1Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewWebRiskServiceV1Beta1Client(cc *grpc.ClientConn) WebRiskServiceV1Beta1Client {
+func NewWebRiskServiceV1Beta1Client(cc grpc.ClientConnInterface) WebRiskServiceV1Beta1Client {
 	return &webRiskServiceV1Beta1Client{cc}
 }
 

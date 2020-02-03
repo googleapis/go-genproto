@@ -67,7 +67,7 @@ func (ProductCatalogItem_StockState) EnumDescriptor() ([]byte, []int) {
 // CatalogItem captures all metadata information of items to be recommended.
 type CatalogItem struct {
 	// Required. Catalog item identifier. UTF-8 encoded string with a length limit
-	// of 128 characters.
+	// of 128 bytes.
 	//
 	// This id must be unique among all catalog items within the same catalog. It
 	// should also be used when logging user events in order for the user events
@@ -86,11 +86,11 @@ type CatalogItem struct {
 	//        { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] }
 	//      ]
 	CategoryHierarchies []*CatalogItem_CategoryHierarchy `protobuf:"bytes,2,rep,name=category_hierarchies,json=categoryHierarchies,proto3" json:"category_hierarchies,omitempty"`
-	// Required. Catalog item title. UTF-8 encoded string with a length limit of
-	// 1250 characters.
+	// Required. Catalog item title. UTF-8 encoded string with a length limit of 1
+	// KiB.
 	Title string `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
 	// Optional. Catalog item description. UTF-8 encoded string with a length
-	// limit of 1250 characters.
+	// limit of 5 KiB.
 	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	// Optional (but highly encouraged). Extra catalog item attributes to be
 	// included in the recommendation model. For example, for retail products,
@@ -104,16 +104,18 @@ type CatalogItem struct {
 	// 'ja', 'ko', 'sv', 'ro', 'nl'. For other languages, contact
 	// your Google account manager.
 	LanguageCode string `protobuf:"bytes,6,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
-	// Optional. Filtering tags associated with the catalog item. This tag can be
-	// used for filtering recommendation results by passing the tag as part of the
-	// predict request filter. The tags have to satisfy the following
-	// restrictions:
+	// Optional. Filtering tags associated with the catalog item. Each tag should
+	// be a UTF-8 encoded string with a length limit of 1 KiB.
+	//
+	// This tag can be used for filtering recommendation results by passing the
+	// tag as part of the predict request filter. The tags have to satisfy the
+	// following restrictions:
 	//
 	// * Only contain alphanumeric characters (`a-z`, `A-Z`, `0-9`), underscores
 	//   (`_`) and dashes (`-`).
 	Tags []string `protobuf:"bytes,8,rep,name=tags,proto3" json:"tags,omitempty"`
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded
-	// string with a length limit of 128 characters.
+	// string with a length limit of 128 bytes.
 	//
 	// This field must be enabled before it can be used. [Learn
 	// more](/recommendations-ai/docs/catalog#item-group-id).
@@ -242,8 +244,11 @@ func (*CatalogItem) XXX_OneofWrappers() []interface{} {
 
 // Category represents catalog item category hierarchy.
 type CatalogItem_CategoryHierarchy struct {
-	// Catalog item categories. Note that the order in the list denotes the
-	// specificity (from least to most specific). Required.
+	// Required. Catalog item categories. Each category should be a UTF-8
+	// encoded string with a length limit of 1 KiB.
+	//
+	// Note that the order in the list denotes the specificity (from least to
+	// most specific).
 	Categories           []string `protobuf:"bytes,1,rep,name=categories,proto3" json:"categories,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -306,7 +311,8 @@ type ProductCatalogItem struct {
 	StockState ProductCatalogItem_StockState `protobuf:"varint,5,opt,name=stock_state,json=stockState,proto3,enum=google.cloud.recommendationengine.v1beta1.ProductCatalogItem_StockState" json:"stock_state,omitempty"`
 	// Optional. The available quantity of the item.
 	AvailableQuantity int64 `protobuf:"varint,6,opt,name=available_quantity,json=availableQuantity,proto3" json:"available_quantity,omitempty"`
-	// Optional. Canonical URL directly linking to the item detail page.
+	// Optional. Canonical URL directly linking to the item detail page with a
+	// length limit of 5 KiB..
 	CanonicalProductUri string `protobuf:"bytes,7,opt,name=canonical_product_uri,json=canonicalProductUri,proto3" json:"canonical_product_uri,omitempty"`
 	// Optional. Product images for the catalog item.
 	Images               []*Image `protobuf:"bytes,8,rep,name=images,proto3" json:"images,omitempty"`
@@ -531,7 +537,7 @@ func (m *ProductCatalogItem_PriceRange) GetMax() float32 {
 
 // Catalog item thumbnail/detail image.
 type Image struct {
-	// Required. URL of the image.
+	// Required. URL of the image with a length limit of 5 KiB.
 	Uri string `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
 	// Optional. Height of the image in number of pixels.
 	Height int32 `protobuf:"varint,2,opt,name=height,proto3" json:"height,omitempty"`

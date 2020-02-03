@@ -1994,11 +1994,11 @@ var fileDescriptor_2054d97e7b16f897 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // DataCatalogClient is the client API for DataCatalog service.
 //
@@ -2166,10 +2166,10 @@ type DataCatalogClient interface {
 }
 
 type dataCatalogClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDataCatalogClient(cc *grpc.ClientConn) DataCatalogClient {
+func NewDataCatalogClient(cc grpc.ClientConnInterface) DataCatalogClient {
 	return &dataCatalogClient{cc}
 }
 

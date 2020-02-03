@@ -583,11 +583,11 @@ var fileDescriptor_b67b598bbe7bc214 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // CampaignDraftServiceClient is the client API for CampaignDraftService service.
 //
@@ -615,10 +615,10 @@ type CampaignDraftServiceClient interface {
 }
 
 type campaignDraftServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewCampaignDraftServiceClient(cc *grpc.ClientConn) CampaignDraftServiceClient {
+func NewCampaignDraftServiceClient(cc grpc.ClientConnInterface) CampaignDraftServiceClient {
 	return &campaignDraftServiceClient{cc}
 }
 

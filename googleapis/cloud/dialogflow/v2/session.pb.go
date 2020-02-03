@@ -1434,11 +1434,11 @@ var fileDescriptor_2f8892c06d516e44 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // SessionsClient is the client API for Sessions service.
 //
@@ -1456,10 +1456,10 @@ type SessionsClient interface {
 }
 
 type sessionsClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewSessionsClient(cc *grpc.ClientConn) SessionsClient {
+func NewSessionsClient(cc grpc.ClientConnInterface) SessionsClient {
 	return &sessionsClient{cc}
 }
 

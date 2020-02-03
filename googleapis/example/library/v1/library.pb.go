@@ -875,11 +875,11 @@ var fileDescriptor_40bd7925372a20e3 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // LibraryServiceClient is the client API for LibraryService service.
 //
@@ -921,10 +921,10 @@ type LibraryServiceClient interface {
 }
 
 type libraryServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewLibraryServiceClient(cc *grpc.ClientConn) LibraryServiceClient {
+func NewLibraryServiceClient(cc grpc.ClientConnInterface) LibraryServiceClient {
 	return &libraryServiceClient{cc}
 }
 

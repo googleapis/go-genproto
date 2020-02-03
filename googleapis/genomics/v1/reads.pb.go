@@ -1192,11 +1192,11 @@ var fileDescriptor_6b02d5d0c80a106c = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // StreamingReadServiceClient is the client API for StreamingReadService service.
 //
@@ -1208,10 +1208,10 @@ type StreamingReadServiceClient interface {
 }
 
 type streamingReadServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewStreamingReadServiceClient(cc *grpc.ClientConn) StreamingReadServiceClient {
+func NewStreamingReadServiceClient(cc grpc.ClientConnInterface) StreamingReadServiceClient {
 	return &streamingReadServiceClient{cc}
 }
 
@@ -1406,10 +1406,10 @@ type ReadServiceV1Client interface {
 }
 
 type readServiceV1Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewReadServiceV1Client(cc *grpc.ClientConn) ReadServiceV1Client {
+func NewReadServiceV1Client(cc grpc.ClientConnInterface) ReadServiceV1Client {
 	return &readServiceV1Client{cc}
 }
 

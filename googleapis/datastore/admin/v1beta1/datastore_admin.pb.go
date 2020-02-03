@@ -784,11 +784,11 @@ var fileDescriptor_b63216f38706ce20 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // DatastoreAdminClient is the client API for DatastoreAdmin service.
 //
@@ -812,10 +812,10 @@ type DatastoreAdminClient interface {
 }
 
 type datastoreAdminClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDatastoreAdminClient(cc *grpc.ClientConn) DatastoreAdminClient {
+func NewDatastoreAdminClient(cc grpc.ClientConnInterface) DatastoreAdminClient {
 	return &datastoreAdminClient{cc}
 }
 
