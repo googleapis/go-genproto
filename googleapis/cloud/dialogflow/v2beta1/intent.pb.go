@@ -4976,11 +4976,11 @@ var fileDescriptor_5bdb4dcc248bd417 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // IntentsClient is the client API for Intents service.
 //
@@ -5007,10 +5007,10 @@ type IntentsClient interface {
 }
 
 type intentsClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewIntentsClient(cc *grpc.ClientConn) IntentsClient {
+func NewIntentsClient(cc grpc.ClientConnInterface) IntentsClient {
 	return &intentsClient{cc}
 }
 

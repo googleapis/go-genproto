@@ -475,11 +475,11 @@ var fileDescriptor_9cdbbb049e0ce16a = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // KnowledgeBasesClient is the client API for KnowledgeBases service.
 //
@@ -513,10 +513,10 @@ type KnowledgeBasesClient interface {
 }
 
 type knowledgeBasesClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewKnowledgeBasesClient(cc *grpc.ClientConn) KnowledgeBasesClient {
+func NewKnowledgeBasesClient(cc grpc.ClientConnInterface) KnowledgeBasesClient {
 	return &knowledgeBasesClient{cc}
 }
 

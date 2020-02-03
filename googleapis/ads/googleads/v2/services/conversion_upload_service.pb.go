@@ -743,11 +743,11 @@ var fileDescriptor_962dfdf4c09453fe = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ConversionUploadServiceClient is the client API for ConversionUploadService service.
 //
@@ -760,10 +760,10 @@ type ConversionUploadServiceClient interface {
 }
 
 type conversionUploadServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewConversionUploadServiceClient(cc *grpc.ClientConn) ConversionUploadServiceClient {
+func NewConversionUploadServiceClient(cc grpc.ClientConnInterface) ConversionUploadServiceClient {
 	return &conversionUploadServiceClient{cc}
 }
 

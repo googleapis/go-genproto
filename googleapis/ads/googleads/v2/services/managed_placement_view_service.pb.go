@@ -107,11 +107,11 @@ var fileDescriptor_48879207a9e4f5e2 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ManagedPlacementViewServiceClient is the client API for ManagedPlacementViewService service.
 //
@@ -122,10 +122,10 @@ type ManagedPlacementViewServiceClient interface {
 }
 
 type managedPlacementViewServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewManagedPlacementViewServiceClient(cc *grpc.ClientConn) ManagedPlacementViewServiceClient {
+func NewManagedPlacementViewServiceClient(cc grpc.ClientConnInterface) ManagedPlacementViewServiceClient {
 	return &managedPlacementViewServiceClient{cc}
 }
 

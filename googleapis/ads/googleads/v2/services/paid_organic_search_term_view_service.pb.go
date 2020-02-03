@@ -109,11 +109,11 @@ var fileDescriptor_0056f29523bf8aaf = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // PaidOrganicSearchTermViewServiceClient is the client API for PaidOrganicSearchTermViewService service.
 //
@@ -124,10 +124,10 @@ type PaidOrganicSearchTermViewServiceClient interface {
 }
 
 type paidOrganicSearchTermViewServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewPaidOrganicSearchTermViewServiceClient(cc *grpc.ClientConn) PaidOrganicSearchTermViewServiceClient {
+func NewPaidOrganicSearchTermViewServiceClient(cc grpc.ClientConnInterface) PaidOrganicSearchTermViewServiceClient {
 	return &paidOrganicSearchTermViewServiceClient{cc}
 }
 

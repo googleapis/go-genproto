@@ -741,11 +741,11 @@ var fileDescriptor_91f8d9fbc62846cf = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // TraceServiceClient is the client API for TraceService service.
 //
@@ -764,10 +764,10 @@ type TraceServiceClient interface {
 }
 
 type traceServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewTraceServiceClient(cc *grpc.ClientConn) TraceServiceClient {
+func NewTraceServiceClient(cc grpc.ClientConnInterface) TraceServiceClient {
 	return &traceServiceClient{cc}
 }
 

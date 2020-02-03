@@ -682,11 +682,11 @@ var fileDescriptor_682c945d4794189b = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // Debugger2Client is the client API for Debugger2 service.
 //
@@ -705,10 +705,10 @@ type Debugger2Client interface {
 }
 
 type debugger2Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDebugger2Client(cc *grpc.ClientConn) Debugger2Client {
+func NewDebugger2Client(cc grpc.ClientConnInterface) Debugger2Client {
 	return &debugger2Client{cc}
 }
 

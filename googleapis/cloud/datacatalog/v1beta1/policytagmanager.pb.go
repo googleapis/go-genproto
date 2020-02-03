@@ -965,11 +965,11 @@ var fileDescriptor_059587cf652b217c = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // PolicyTagManagerClient is the client API for PolicyTagManager service.
 //
@@ -1007,10 +1007,10 @@ type PolicyTagManagerClient interface {
 }
 
 type policyTagManagerClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewPolicyTagManagerClient(cc *grpc.ClientConn) PolicyTagManagerClient {
+func NewPolicyTagManagerClient(cc grpc.ClientConnInterface) PolicyTagManagerClient {
 	return &policyTagManagerClient{cc}
 }
 

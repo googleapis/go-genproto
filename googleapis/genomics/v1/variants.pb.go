@@ -2381,11 +2381,11 @@ var fileDescriptor_c2de6f9e5b6e8ed2 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // StreamingVariantServiceClient is the client API for StreamingVariantService service.
 //
@@ -2397,10 +2397,10 @@ type StreamingVariantServiceClient interface {
 }
 
 type streamingVariantServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewStreamingVariantServiceClient(cc *grpc.ClientConn) StreamingVariantServiceClient {
+func NewStreamingVariantServiceClient(cc grpc.ClientConnInterface) StreamingVariantServiceClient {
 	return &streamingVariantServiceClient{cc}
 }
 
@@ -2723,10 +2723,10 @@ type VariantServiceV1Client interface {
 }
 
 type variantServiceV1Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewVariantServiceV1Client(cc *grpc.ClientConn) VariantServiceV1Client {
+func NewVariantServiceV1Client(cc grpc.ClientConnInterface) VariantServiceV1Client {
 	return &variantServiceV1Client{cc}
 }
 

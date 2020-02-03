@@ -1102,11 +1102,11 @@ var fileDescriptor_55a53db6ba9d94ef = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // DocumentUnderstandingServiceClient is the client API for DocumentUnderstandingService service.
 //
@@ -1117,10 +1117,10 @@ type DocumentUnderstandingServiceClient interface {
 }
 
 type documentUnderstandingServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDocumentUnderstandingServiceClient(cc *grpc.ClientConn) DocumentUnderstandingServiceClient {
+func NewDocumentUnderstandingServiceClient(cc grpc.ClientConnInterface) DocumentUnderstandingServiceClient {
 	return &documentUnderstandingServiceClient{cc}
 }
 

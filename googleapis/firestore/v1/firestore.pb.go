@@ -2418,11 +2418,11 @@ var fileDescriptor_f56aaf8ee76b5544 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // FirestoreClient is the client API for Firestore service.
 //
@@ -2460,10 +2460,10 @@ type FirestoreClient interface {
 }
 
 type firestoreClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewFirestoreClient(cc *grpc.ClientConn) FirestoreClient {
+func NewFirestoreClient(cc grpc.ClientConnInterface) FirestoreClient {
 	return &firestoreClient{cc}
 }
 

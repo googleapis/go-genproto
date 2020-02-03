@@ -340,11 +340,11 @@ var fileDescriptor_4870990e51228b9d = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // BillingSetupServiceClient is the client API for BillingSetupService service.
 //
@@ -357,10 +357,10 @@ type BillingSetupServiceClient interface {
 }
 
 type billingSetupServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewBillingSetupServiceClient(cc *grpc.ClientConn) BillingSetupServiceClient {
+func NewBillingSetupServiceClient(cc grpc.ClientConnInterface) BillingSetupServiceClient {
 	return &billingSetupServiceClient{cc}
 }
 

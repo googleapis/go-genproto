@@ -108,11 +108,11 @@ var fileDescriptor_cb15af8e20123b1c = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // DomainCategoryServiceClient is the client API for DomainCategoryService service.
 //
@@ -123,10 +123,10 @@ type DomainCategoryServiceClient interface {
 }
 
 type domainCategoryServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDomainCategoryServiceClient(cc *grpc.ClientConn) DomainCategoryServiceClient {
+func NewDomainCategoryServiceClient(cc grpc.ClientConnInterface) DomainCategoryServiceClient {
 	return &domainCategoryServiceClient{cc}
 }
 

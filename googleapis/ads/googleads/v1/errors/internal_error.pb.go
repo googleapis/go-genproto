@@ -32,8 +32,8 @@ const (
 	InternalErrorEnum_UNKNOWN InternalErrorEnum_InternalError = 1
 	// Google Ads API encountered unexpected internal error.
 	InternalErrorEnum_INTERNAL_ERROR InternalErrorEnum_InternalError = 2
-	// The intended error code doesn't exist in any API version. This will be
-	// fixed by adding a new error code as soon as possible.
+	// The intended error code doesn't exist in specified API version. It will
+	// be released in a future API version.
 	InternalErrorEnum_ERROR_CODE_NOT_PUBLISHED InternalErrorEnum_InternalError = 3
 	// Google Ads API encountered an unexpected transient error. The user
 	// should retry their request in these cases.

@@ -3075,11 +3075,11 @@ var fileDescriptor_a21c40690da1750b = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // DataLabelingServiceClient is the client API for DataLabelingService service.
 //
@@ -3176,10 +3176,10 @@ type DataLabelingServiceClient interface {
 }
 
 type dataLabelingServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDataLabelingServiceClient(cc *grpc.ClientConn) DataLabelingServiceClient {
+func NewDataLabelingServiceClient(cc grpc.ClientConnInterface) DataLabelingServiceClient {
 	return &dataLabelingServiceClient{cc}
 }
 

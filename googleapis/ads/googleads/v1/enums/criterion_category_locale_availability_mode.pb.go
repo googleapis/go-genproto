@@ -69,7 +69,7 @@ func (CriterionCategoryLocaleAvailabilityModeEnum_CriterionCategoryLocaleAvailab
 	return fileDescriptor_cab68ed8e76c6679, []int{0, 0}
 }
 
-// Describes locale availabilty mode for a criterion availability - whether
+// Describes locale availability mode for a criterion availability - whether
 // it's available globally, or a particular country with all languages, or a
 // particular language with all countries, or a country-language pair.
 type CriterionCategoryLocaleAvailabilityModeEnum struct {

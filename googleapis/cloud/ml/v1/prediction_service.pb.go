@@ -299,11 +299,11 @@ var fileDescriptor_ca7339bffd66a462 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // OnlinePredictionServiceClient is the client API for OnlinePredictionService service.
 //
@@ -316,10 +316,10 @@ type OnlinePredictionServiceClient interface {
 }
 
 type onlinePredictionServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewOnlinePredictionServiceClient(cc *grpc.ClientConn) OnlinePredictionServiceClient {
+func NewOnlinePredictionServiceClient(cc grpc.ClientConnInterface) OnlinePredictionServiceClient {
 	return &onlinePredictionServiceClient{cc}
 }
 

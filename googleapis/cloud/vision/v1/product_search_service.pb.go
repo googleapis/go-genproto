@@ -2212,11 +2212,11 @@ var fileDescriptor_7cf22baa8e45dc96 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ProductSearchClient is the client API for ProductSearch service.
 //
@@ -2400,10 +2400,10 @@ type ProductSearchClient interface {
 }
 
 type productSearchClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewProductSearchClient(cc *grpc.ClientConn) ProductSearchClient {
+func NewProductSearchClient(cc grpc.ClientConnInterface) ProductSearchClient {
 	return &productSearchClient{cc}
 }
 

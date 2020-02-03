@@ -1130,11 +1130,11 @@ var fileDescriptor_f11a792b35286279 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // RecommendationServiceClient is the client API for RecommendationService service.
 //
@@ -1149,10 +1149,10 @@ type RecommendationServiceClient interface {
 }
 
 type recommendationServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewRecommendationServiceClient(cc *grpc.ClientConn) RecommendationServiceClient {
+func NewRecommendationServiceClient(cc grpc.ClientConnInterface) RecommendationServiceClient {
 	return &recommendationServiceClient{cc}
 }
 

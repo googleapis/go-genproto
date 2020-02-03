@@ -107,11 +107,11 @@ var fileDescriptor_ceb1a60c4f1c0c60 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // UserLocationViewServiceClient is the client API for UserLocationViewService service.
 //
@@ -122,10 +122,10 @@ type UserLocationViewServiceClient interface {
 }
 
 type userLocationViewServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewUserLocationViewServiceClient(cc *grpc.ClientConn) UserLocationViewServiceClient {
+func NewUserLocationViewServiceClient(cc grpc.ClientConnInterface) UserLocationViewServiceClient {
 	return &userLocationViewServiceClient{cc}
 }
 

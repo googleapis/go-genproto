@@ -107,11 +107,11 @@ var fileDescriptor_13bf764e5e04adb1 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // HotelPerformanceViewServiceClient is the client API for HotelPerformanceViewService service.
 //
@@ -122,10 +122,10 @@ type HotelPerformanceViewServiceClient interface {
 }
 
 type hotelPerformanceViewServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewHotelPerformanceViewServiceClient(cc *grpc.ClientConn) HotelPerformanceViewServiceClient {
+func NewHotelPerformanceViewServiceClient(cc grpc.ClientConnInterface) HotelPerformanceViewServiceClient {
 	return &hotelPerformanceViewServiceClient{cc}
 }
 

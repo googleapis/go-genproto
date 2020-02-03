@@ -389,11 +389,11 @@ var fileDescriptor_81da11d19c4841eb = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // PublishBuildEventClient is the client API for PublishBuildEvent service.
 //
@@ -416,10 +416,10 @@ type PublishBuildEventClient interface {
 }
 
 type publishBuildEventClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewPublishBuildEventClient(cc *grpc.ClientConn) PublishBuildEventClient {
+func NewPublishBuildEventClient(cc grpc.ClientConnInterface) PublishBuildEventClient {
 	return &publishBuildEventClient{cc}
 }
 

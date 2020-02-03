@@ -491,11 +491,11 @@ var fileDescriptor_b5f16bed3f845be4 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // BinauthzManagementServiceV1Beta1Client is the client API for BinauthzManagementServiceV1Beta1 service.
 //
@@ -535,10 +535,10 @@ type BinauthzManagementServiceV1Beta1Client interface {
 }
 
 type binauthzManagementServiceV1Beta1Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewBinauthzManagementServiceV1Beta1Client(cc *grpc.ClientConn) BinauthzManagementServiceV1Beta1Client {
+func NewBinauthzManagementServiceV1Beta1Client(cc grpc.ClientConnInterface) BinauthzManagementServiceV1Beta1Client {
 	return &binauthzManagementServiceV1Beta1Client{cc}
 }
 

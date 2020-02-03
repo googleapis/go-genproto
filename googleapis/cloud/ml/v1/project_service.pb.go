@@ -154,11 +154,11 @@ var fileDescriptor_9d9ea4142d12cde4 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ProjectManagementServiceClient is the client API for ProjectManagementService service.
 //
@@ -172,10 +172,10 @@ type ProjectManagementServiceClient interface {
 }
 
 type projectManagementServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewProjectManagementServiceClient(cc *grpc.ClientConn) ProjectManagementServiceClient {
+func NewProjectManagementServiceClient(cc grpc.ClientConnInterface) ProjectManagementServiceClient {
 	return &projectManagementServiceClient{cc}
 }
 

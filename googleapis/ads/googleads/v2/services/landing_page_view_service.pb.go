@@ -107,11 +107,11 @@ var fileDescriptor_4c82fb57b246174b = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // LandingPageViewServiceClient is the client API for LandingPageViewService service.
 //
@@ -122,10 +122,10 @@ type LandingPageViewServiceClient interface {
 }
 
 type landingPageViewServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewLandingPageViewServiceClient(cc *grpc.ClientConn) LandingPageViewServiceClient {
+func NewLandingPageViewServiceClient(cc grpc.ClientConnInterface) LandingPageViewServiceClient {
 	return &landingPageViewServiceClient{cc}
 }
 

@@ -821,11 +821,11 @@ var fileDescriptor_008bb4c9c386df7c = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ReferenceServiceV1Client is the client API for ReferenceServiceV1 service.
 //
@@ -879,10 +879,10 @@ type ReferenceServiceV1Client interface {
 }
 
 type referenceServiceV1Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewReferenceServiceV1Client(cc *grpc.ClientConn) ReferenceServiceV1Client {
+func NewReferenceServiceV1Client(cc grpc.ClientConnInterface) ReferenceServiceV1Client {
 	return &referenceServiceV1Client{cc}
 }
 

@@ -2118,11 +2118,11 @@ var fileDescriptor_8edec8f64c27b8a4 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // DataTransferServiceClient is the client API for DataTransferService service.
 //
@@ -2177,10 +2177,10 @@ type DataTransferServiceClient interface {
 }
 
 type dataTransferServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDataTransferServiceClient(cc *grpc.ClientConn) DataTransferServiceClient {
+func NewDataTransferServiceClient(cc grpc.ClientConnInterface) DataTransferServiceClient {
 	return &dataTransferServiceClient{cc}
 }
 

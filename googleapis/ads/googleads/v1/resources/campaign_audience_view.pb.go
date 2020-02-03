@@ -31,7 +31,6 @@ type CampaignAudienceView struct {
 	// The resource name of the campaign audience view.
 	// Campaign audience view resource names have the form:
 	//
-	//
 	// `customers/{customer_id}/campaignAudienceViews/{campaign_id}~{criterion_id}`
 	ResourceName         string   `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`

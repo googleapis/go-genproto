@@ -1028,11 +1028,11 @@ var fileDescriptor_4ca652323baa1561 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // CloudCatalogClient is the client API for CloudCatalog service.
 //
@@ -1045,10 +1045,10 @@ type CloudCatalogClient interface {
 }
 
 type cloudCatalogClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewCloudCatalogClient(cc *grpc.ClientConn) CloudCatalogClient {
+func NewCloudCatalogClient(cc grpc.ClientConnInterface) CloudCatalogClient {
 	return &cloudCatalogClient{cc}
 }
 

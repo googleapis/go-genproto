@@ -1632,11 +1632,11 @@ var fileDescriptor_466641838cdba1d1 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ResultStoreDownloadClient is the client API for ResultStoreDownload service.
 //
@@ -1765,10 +1765,10 @@ type ResultStoreDownloadClient interface {
 }
 
 type resultStoreDownloadClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewResultStoreDownloadClient(cc *grpc.ClientConn) ResultStoreDownloadClient {
+func NewResultStoreDownloadClient(cc grpc.ClientConnInterface) ResultStoreDownloadClient {
 	return &resultStoreDownloadClient{cc}
 }
 

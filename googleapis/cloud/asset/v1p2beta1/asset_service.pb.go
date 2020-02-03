@@ -10,9 +10,9 @@ import (
 
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
+	_ "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	longrunning "google.golang.org/genproto/googleapis/longrunning"
+	_ "google.golang.org/genproto/googleapis/longrunning"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
@@ -40,29 +40,18 @@ const (
 	ContentType_RESOURCE ContentType = 1
 	// The actual IAM policy set on a resource.
 	ContentType_IAM_POLICY ContentType = 2
-	// The IAM policy name for the IAM policy set on a resource.
-	ContentType_IAM_POLICY_NAME ContentType = 3
-	ContentType_ORG_POLICY      ContentType = 4
-	// The Cloud Access context mananger Policy set on an asset.
-	ContentType_ACCESS_POLICY ContentType = 5
 )
 
 var ContentType_name = map[int32]string{
 	0: "CONTENT_TYPE_UNSPECIFIED",
 	1: "RESOURCE",
 	2: "IAM_POLICY",
-	3: "IAM_POLICY_NAME",
-	4: "ORG_POLICY",
-	5: "ACCESS_POLICY",
 }
 
 var ContentType_value = map[string]int32{
 	"CONTENT_TYPE_UNSPECIFIED": 0,
 	"RESOURCE":                 1,
 	"IAM_POLICY":               2,
-	"IAM_POLICY_NAME":          3,
-	"ORG_POLICY":               4,
-	"ACCESS_POLICY":            5,
 }
 
 func (x ContentType) String() string {
@@ -71,273 +60,6 @@ func (x ContentType) String() string {
 
 func (ContentType) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_266ed218574f68b8, []int{0}
-}
-
-// Export asset request.
-type ExportAssetsRequest struct {
-	// Required. The relative name of the root asset. This can only be an
-	// organization number (such as "organizations/123"), a project ID (such as
-	// "projects/my-project-id"), or a project number (such as "projects/12345").
-	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Timestamp to take an asset snapshot. This can only be set to a timestamp
-	// between 2018-10-02 UTC (inclusive) and the current time. If not specified,
-	// the current time will be used. Due to delays in resource data collection
-	// and indexing, there is a volatile window during which running the same
-	// query may get different results.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
-	// A list of asset types of which to take a snapshot for. For example:
-	// "compute.googleapis.com/Disk". If specified, only matching assets will be
-	// returned. See [Introduction to Cloud Asset
-	// Inventory](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/overview)
-	// for all supported asset types.
-	AssetTypes []string `protobuf:"bytes,3,rep,name=asset_types,json=assetTypes,proto3" json:"asset_types,omitempty"`
-	// Asset content type. If not specified, no content but the asset name will be
-	// returned.
-	ContentType ContentType `protobuf:"varint,4,opt,name=content_type,json=contentType,proto3,enum=google.cloud.asset.v1p2beta1.ContentType" json:"content_type,omitempty"`
-	// Required. Output configuration indicating where the results will be output
-	// to. All results will be in newline delimited JSON format.
-	OutputConfig         *OutputConfig `protobuf:"bytes,5,opt,name=output_config,json=outputConfig,proto3" json:"output_config,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *ExportAssetsRequest) Reset()         { *m = ExportAssetsRequest{} }
-func (m *ExportAssetsRequest) String() string { return proto.CompactTextString(m) }
-func (*ExportAssetsRequest) ProtoMessage()    {}
-func (*ExportAssetsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{0}
-}
-
-func (m *ExportAssetsRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ExportAssetsRequest.Unmarshal(m, b)
-}
-func (m *ExportAssetsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ExportAssetsRequest.Marshal(b, m, deterministic)
-}
-func (m *ExportAssetsRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExportAssetsRequest.Merge(m, src)
-}
-func (m *ExportAssetsRequest) XXX_Size() int {
-	return xxx_messageInfo_ExportAssetsRequest.Size(m)
-}
-func (m *ExportAssetsRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ExportAssetsRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ExportAssetsRequest proto.InternalMessageInfo
-
-func (m *ExportAssetsRequest) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
-}
-
-func (m *ExportAssetsRequest) GetReadTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.ReadTime
-	}
-	return nil
-}
-
-func (m *ExportAssetsRequest) GetAssetTypes() []string {
-	if m != nil {
-		return m.AssetTypes
-	}
-	return nil
-}
-
-func (m *ExportAssetsRequest) GetContentType() ContentType {
-	if m != nil {
-		return m.ContentType
-	}
-	return ContentType_CONTENT_TYPE_UNSPECIFIED
-}
-
-func (m *ExportAssetsRequest) GetOutputConfig() *OutputConfig {
-	if m != nil {
-		return m.OutputConfig
-	}
-	return nil
-}
-
-// The export asset response. This message is returned by the
-// [google.longrunning.Operations.GetOperation][google.longrunning.Operations.GetOperation] method in the returned
-// [google.longrunning.Operation.response][google.longrunning.Operation.response] field.
-type ExportAssetsResponse struct {
-	// Time the snapshot was taken.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
-	// Output configuration indicating where the results were output to.
-	// All results are in JSON format.
-	OutputConfig         *OutputConfig `protobuf:"bytes,2,opt,name=output_config,json=outputConfig,proto3" json:"output_config,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *ExportAssetsResponse) Reset()         { *m = ExportAssetsResponse{} }
-func (m *ExportAssetsResponse) String() string { return proto.CompactTextString(m) }
-func (*ExportAssetsResponse) ProtoMessage()    {}
-func (*ExportAssetsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{1}
-}
-
-func (m *ExportAssetsResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ExportAssetsResponse.Unmarshal(m, b)
-}
-func (m *ExportAssetsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ExportAssetsResponse.Marshal(b, m, deterministic)
-}
-func (m *ExportAssetsResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ExportAssetsResponse.Merge(m, src)
-}
-func (m *ExportAssetsResponse) XXX_Size() int {
-	return xxx_messageInfo_ExportAssetsResponse.Size(m)
-}
-func (m *ExportAssetsResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ExportAssetsResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ExportAssetsResponse proto.InternalMessageInfo
-
-func (m *ExportAssetsResponse) GetReadTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.ReadTime
-	}
-	return nil
-}
-
-func (m *ExportAssetsResponse) GetOutputConfig() *OutputConfig {
-	if m != nil {
-		return m.OutputConfig
-	}
-	return nil
-}
-
-// Batch get assets history request.
-type BatchGetAssetsHistoryRequest struct {
-	// Required. The relative name of the root asset. It can only be an
-	// organization number (such as "organizations/123"), a project ID (such as
-	// "projects/my-project-id")", or a project number (such as "projects/12345").
-	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// A list of the full names of the assets. For example:
-	// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
-	// See [Resource
-	// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-	// and [Resource Name
-	// Format](https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/resource-name-format)
-	// for more info.
-	//
-	// The request becomes a no-op if the asset name list is empty, and the max
-	// size of the asset name list is 100 in one request.
-	AssetNames []string `protobuf:"bytes,2,rep,name=asset_names,json=assetNames,proto3" json:"asset_names,omitempty"`
-	// Required. The content type.
-	ContentType ContentType `protobuf:"varint,3,opt,name=content_type,json=contentType,proto3,enum=google.cloud.asset.v1p2beta1.ContentType" json:"content_type,omitempty"`
-	// Optional. The time window for the asset history. Both start_time and
-	// end_time are optional and if set, it must be after 2018-10-02 UTC. If
-	// end_time is not set, it is default to current timestamp. If start_time is
-	// not set, the snapshot of the assets at end_time will be returned. The
-	// returned results contain all temporal assets whose time window overlap with
-	// read_time_window.
-	ReadTimeWindow       *TimeWindow `protobuf:"bytes,4,opt,name=read_time_window,json=readTimeWindow,proto3" json:"read_time_window,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
-	XXX_unrecognized     []byte      `json:"-"`
-	XXX_sizecache        int32       `json:"-"`
-}
-
-func (m *BatchGetAssetsHistoryRequest) Reset()         { *m = BatchGetAssetsHistoryRequest{} }
-func (m *BatchGetAssetsHistoryRequest) String() string { return proto.CompactTextString(m) }
-func (*BatchGetAssetsHistoryRequest) ProtoMessage()    {}
-func (*BatchGetAssetsHistoryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{2}
-}
-
-func (m *BatchGetAssetsHistoryRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_BatchGetAssetsHistoryRequest.Unmarshal(m, b)
-}
-func (m *BatchGetAssetsHistoryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_BatchGetAssetsHistoryRequest.Marshal(b, m, deterministic)
-}
-func (m *BatchGetAssetsHistoryRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BatchGetAssetsHistoryRequest.Merge(m, src)
-}
-func (m *BatchGetAssetsHistoryRequest) XXX_Size() int {
-	return xxx_messageInfo_BatchGetAssetsHistoryRequest.Size(m)
-}
-func (m *BatchGetAssetsHistoryRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_BatchGetAssetsHistoryRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_BatchGetAssetsHistoryRequest proto.InternalMessageInfo
-
-func (m *BatchGetAssetsHistoryRequest) GetParent() string {
-	if m != nil {
-		return m.Parent
-	}
-	return ""
-}
-
-func (m *BatchGetAssetsHistoryRequest) GetAssetNames() []string {
-	if m != nil {
-		return m.AssetNames
-	}
-	return nil
-}
-
-func (m *BatchGetAssetsHistoryRequest) GetContentType() ContentType {
-	if m != nil {
-		return m.ContentType
-	}
-	return ContentType_CONTENT_TYPE_UNSPECIFIED
-}
-
-func (m *BatchGetAssetsHistoryRequest) GetReadTimeWindow() *TimeWindow {
-	if m != nil {
-		return m.ReadTimeWindow
-	}
-	return nil
-}
-
-// Batch get assets history response.
-type BatchGetAssetsHistoryResponse struct {
-	// A list of assets with valid time windows.
-	Assets               []*TemporalAsset `protobuf:"bytes,1,rep,name=assets,proto3" json:"assets,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
-}
-
-func (m *BatchGetAssetsHistoryResponse) Reset()         { *m = BatchGetAssetsHistoryResponse{} }
-func (m *BatchGetAssetsHistoryResponse) String() string { return proto.CompactTextString(m) }
-func (*BatchGetAssetsHistoryResponse) ProtoMessage()    {}
-func (*BatchGetAssetsHistoryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{3}
-}
-
-func (m *BatchGetAssetsHistoryResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_BatchGetAssetsHistoryResponse.Unmarshal(m, b)
-}
-func (m *BatchGetAssetsHistoryResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_BatchGetAssetsHistoryResponse.Marshal(b, m, deterministic)
-}
-func (m *BatchGetAssetsHistoryResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BatchGetAssetsHistoryResponse.Merge(m, src)
-}
-func (m *BatchGetAssetsHistoryResponse) XXX_Size() int {
-	return xxx_messageInfo_BatchGetAssetsHistoryResponse.Size(m)
-}
-func (m *BatchGetAssetsHistoryResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_BatchGetAssetsHistoryResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_BatchGetAssetsHistoryResponse proto.InternalMessageInfo
-
-func (m *BatchGetAssetsHistoryResponse) GetAssets() []*TemporalAsset {
-	if m != nil {
-		return m.Assets
-	}
-	return nil
 }
 
 // Create asset feed request.
@@ -351,7 +73,7 @@ type CreateFeedRequest struct {
 	// Required. This is the client-assigned asset feed identifier and it needs to
 	// be unique under a specific parent project/folder/organization.
 	FeedId string `protobuf:"bytes,2,opt,name=feed_id,json=feedId,proto3" json:"feed_id,omitempty"`
-	// The feed details. The field `name` must be empty and it will be generated
+	// Required. The feed details. The field `name` must be empty and it will be generated
 	// in the format of:
 	// projects/project_number/feeds/feed_id
 	// folders/folder_number/feeds/feed_id
@@ -366,7 +88,7 @@ func (m *CreateFeedRequest) Reset()         { *m = CreateFeedRequest{} }
 func (m *CreateFeedRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateFeedRequest) ProtoMessage()    {}
 func (*CreateFeedRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{4}
+	return fileDescriptor_266ed218574f68b8, []int{0}
 }
 
 func (m *CreateFeedRequest) XXX_Unmarshal(b []byte) error {
@@ -410,7 +132,7 @@ func (m *CreateFeedRequest) GetFeed() *Feed {
 
 // Get asset feed request.
 type GetFeedRequest struct {
-	// The name of the Feed and it must be in the format of:
+	// Required. The name of the Feed and it must be in the format of:
 	// projects/project_number/feeds/feed_id
 	// folders/folder_number/feeds/feed_id
 	// organizations/organization_number/feeds/feed_id
@@ -424,7 +146,7 @@ func (m *GetFeedRequest) Reset()         { *m = GetFeedRequest{} }
 func (m *GetFeedRequest) String() string { return proto.CompactTextString(m) }
 func (*GetFeedRequest) ProtoMessage()    {}
 func (*GetFeedRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{5}
+	return fileDescriptor_266ed218574f68b8, []int{1}
 }
 
 func (m *GetFeedRequest) XXX_Unmarshal(b []byte) error {
@@ -467,7 +189,7 @@ func (m *ListFeedsRequest) Reset()         { *m = ListFeedsRequest{} }
 func (m *ListFeedsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListFeedsRequest) ProtoMessage()    {}
 func (*ListFeedsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{6}
+	return fileDescriptor_266ed218574f68b8, []int{2}
 }
 
 func (m *ListFeedsRequest) XXX_Unmarshal(b []byte) error {
@@ -495,7 +217,6 @@ func (m *ListFeedsRequest) GetParent() string {
 	return ""
 }
 
-// List asset feeds response.
 type ListFeedsResponse struct {
 	// A list of feeds.
 	Feeds                []*Feed  `protobuf:"bytes,1,rep,name=feeds,proto3" json:"feeds,omitempty"`
@@ -508,7 +229,7 @@ func (m *ListFeedsResponse) Reset()         { *m = ListFeedsResponse{} }
 func (m *ListFeedsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListFeedsResponse) ProtoMessage()    {}
 func (*ListFeedsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{7}
+	return fileDescriptor_266ed218574f68b8, []int{3}
 }
 
 func (m *ListFeedsResponse) XXX_Unmarshal(b []byte) error {
@@ -538,13 +259,13 @@ func (m *ListFeedsResponse) GetFeeds() []*Feed {
 
 // Update asset feed request.
 type UpdateFeedRequest struct {
-	// The new values of feed details. It must match an existing feed and the
+	// Required. The new values of feed details. It must match an existing feed and the
 	// field `name` must be in the format of:
 	// projects/project_number/feeds/feed_id or
 	// folders/folder_number/feeds/feed_id or
 	// organizations/organization_number/feeds/feed_id.
 	Feed *Feed `protobuf:"bytes,1,opt,name=feed,proto3" json:"feed,omitempty"`
-	// Only updates the `feed` fields indicated by this mask.
+	// Required. Only updates the `feed` fields indicated by this mask.
 	// The field mask must not be empty, and it must not contain fields that
 	// are immutable or only set by the server.
 	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
@@ -557,7 +278,7 @@ func (m *UpdateFeedRequest) Reset()         { *m = UpdateFeedRequest{} }
 func (m *UpdateFeedRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateFeedRequest) ProtoMessage()    {}
 func (*UpdateFeedRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{8}
+	return fileDescriptor_266ed218574f68b8, []int{4}
 }
 
 func (m *UpdateFeedRequest) XXX_Unmarshal(b []byte) error {
@@ -592,9 +313,8 @@ func (m *UpdateFeedRequest) GetUpdateMask() *field_mask.FieldMask {
 	return nil
 }
 
-// Delete asset feed request.
 type DeleteFeedRequest struct {
-	// The name of the feed and it must be in the format of:
+	// Required. The name of the feed and it must be in the format of:
 	// projects/project_number/feeds/feed_id
 	// folders/folder_number/feeds/feed_id
 	// organizations/organization_number/feeds/feed_id
@@ -608,7 +328,7 @@ func (m *DeleteFeedRequest) Reset()         { *m = DeleteFeedRequest{} }
 func (m *DeleteFeedRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteFeedRequest) ProtoMessage()    {}
 func (*DeleteFeedRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{9}
+	return fileDescriptor_266ed218574f68b8, []int{5}
 }
 
 func (m *DeleteFeedRequest) XXX_Unmarshal(b []byte) error {
@@ -642,7 +362,6 @@ type OutputConfig struct {
 	//
 	// Types that are valid to be assigned to Destination:
 	//	*OutputConfig_GcsDestination
-	//	*OutputConfig_BigqueryDestination
 	Destination          isOutputConfig_Destination `protobuf_oneof:"destination"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
@@ -653,7 +372,7 @@ func (m *OutputConfig) Reset()         { *m = OutputConfig{} }
 func (m *OutputConfig) String() string { return proto.CompactTextString(m) }
 func (*OutputConfig) ProtoMessage()    {}
 func (*OutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{10}
+	return fileDescriptor_266ed218574f68b8, []int{6}
 }
 
 func (m *OutputConfig) XXX_Unmarshal(b []byte) error {
@@ -682,13 +401,7 @@ type OutputConfig_GcsDestination struct {
 	GcsDestination *GcsDestination `protobuf:"bytes,1,opt,name=gcs_destination,json=gcsDestination,proto3,oneof"`
 }
 
-type OutputConfig_BigqueryDestination struct {
-	BigqueryDestination *BigQueryDestination `protobuf:"bytes,2,opt,name=bigquery_destination,json=bigqueryDestination,proto3,oneof"`
-}
-
 func (*OutputConfig_GcsDestination) isOutputConfig_Destination() {}
-
-func (*OutputConfig_BigqueryDestination) isOutputConfig_Destination() {}
 
 func (m *OutputConfig) GetDestination() isOutputConfig_Destination {
 	if m != nil {
@@ -704,18 +417,10 @@ func (m *OutputConfig) GetGcsDestination() *GcsDestination {
 	return nil
 }
 
-func (m *OutputConfig) GetBigqueryDestination() *BigQueryDestination {
-	if x, ok := m.GetDestination().(*OutputConfig_BigqueryDestination); ok {
-		return x.BigqueryDestination
-	}
-	return nil
-}
-
 // XXX_OneofWrappers is for the internal use of the proto package.
 func (*OutputConfig) XXX_OneofWrappers() []interface{} {
 	return []interface{}{
 		(*OutputConfig_GcsDestination)(nil),
-		(*OutputConfig_BigqueryDestination)(nil),
 	}
 }
 
@@ -725,7 +430,6 @@ type GcsDestination struct {
 	//
 	// Types that are valid to be assigned to ObjectUri:
 	//	*GcsDestination_Uri
-	//	*GcsDestination_UriPrefix
 	ObjectUri            isGcsDestination_ObjectUri `protobuf_oneof:"object_uri"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
@@ -736,7 +440,7 @@ func (m *GcsDestination) Reset()         { *m = GcsDestination{} }
 func (m *GcsDestination) String() string { return proto.CompactTextString(m) }
 func (*GcsDestination) ProtoMessage()    {}
 func (*GcsDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{11}
+	return fileDescriptor_266ed218574f68b8, []int{7}
 }
 
 func (m *GcsDestination) XXX_Unmarshal(b []byte) error {
@@ -765,13 +469,7 @@ type GcsDestination_Uri struct {
 	Uri string `protobuf:"bytes,1,opt,name=uri,proto3,oneof"`
 }
 
-type GcsDestination_UriPrefix struct {
-	UriPrefix string `protobuf:"bytes,2,opt,name=uri_prefix,json=uriPrefix,proto3,oneof"`
-}
-
 func (*GcsDestination_Uri) isGcsDestination_ObjectUri() {}
-
-func (*GcsDestination_UriPrefix) isGcsDestination_ObjectUri() {}
 
 func (m *GcsDestination) GetObjectUri() isGcsDestination_ObjectUri {
 	if m != nil {
@@ -787,86 +485,11 @@ func (m *GcsDestination) GetUri() string {
 	return ""
 }
 
-func (m *GcsDestination) GetUriPrefix() string {
-	if x, ok := m.GetObjectUri().(*GcsDestination_UriPrefix); ok {
-		return x.UriPrefix
-	}
-	return ""
-}
-
 // XXX_OneofWrappers is for the internal use of the proto package.
 func (*GcsDestination) XXX_OneofWrappers() []interface{} {
 	return []interface{}{
 		(*GcsDestination_Uri)(nil),
-		(*GcsDestination_UriPrefix)(nil),
 	}
-}
-
-// A Bigquery destination.
-type BigQueryDestination struct {
-	// Required. The BigQuery dataset in format
-	// "projects/projectId/datasets/datasetId", to which the snapshot result
-	// should be exported. If this dataset does not exist, the export call returns
-	// an error.
-	Dataset string `protobuf:"bytes,1,opt,name=dataset,proto3" json:"dataset,omitempty"`
-	// Required. The BigQuery table to which the snapshot result should be
-	// written. If this table does not exist, a new table with the given name
-	// will be created.
-	Table string `protobuf:"bytes,2,opt,name=table,proto3" json:"table,omitempty"`
-	// If the destination table already exists and this flag is `TRUE`, the
-	// table will be overwritten by the contents of assets snapshot. If the flag
-	// is not set and the destination table already exists, the export call
-	// returns an error.
-	Force                bool     `protobuf:"varint,3,opt,name=force,proto3" json:"force,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *BigQueryDestination) Reset()         { *m = BigQueryDestination{} }
-func (m *BigQueryDestination) String() string { return proto.CompactTextString(m) }
-func (*BigQueryDestination) ProtoMessage()    {}
-func (*BigQueryDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{12}
-}
-
-func (m *BigQueryDestination) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_BigQueryDestination.Unmarshal(m, b)
-}
-func (m *BigQueryDestination) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_BigQueryDestination.Marshal(b, m, deterministic)
-}
-func (m *BigQueryDestination) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BigQueryDestination.Merge(m, src)
-}
-func (m *BigQueryDestination) XXX_Size() int {
-	return xxx_messageInfo_BigQueryDestination.Size(m)
-}
-func (m *BigQueryDestination) XXX_DiscardUnknown() {
-	xxx_messageInfo_BigQueryDestination.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_BigQueryDestination proto.InternalMessageInfo
-
-func (m *BigQueryDestination) GetDataset() string {
-	if m != nil {
-		return m.Dataset
-	}
-	return ""
-}
-
-func (m *BigQueryDestination) GetTable() string {
-	if m != nil {
-		return m.Table
-	}
-	return ""
-}
-
-func (m *BigQueryDestination) GetForce() bool {
-	if m != nil {
-		return m.Force
-	}
-	return false
 }
 
 // A Cloud Pubsub destination.
@@ -883,7 +506,7 @@ func (m *PubsubDestination) Reset()         { *m = PubsubDestination{} }
 func (m *PubsubDestination) String() string { return proto.CompactTextString(m) }
 func (*PubsubDestination) ProtoMessage()    {}
 func (*PubsubDestination) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{13}
+	return fileDescriptor_266ed218574f68b8, []int{8}
 }
 
 func (m *PubsubDestination) XXX_Unmarshal(b []byte) error {
@@ -927,7 +550,7 @@ func (m *FeedOutputConfig) Reset()         { *m = FeedOutputConfig{} }
 func (m *FeedOutputConfig) String() string { return proto.CompactTextString(m) }
 func (*FeedOutputConfig) ProtoMessage()    {}
 func (*FeedOutputConfig) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{14}
+	return fileDescriptor_266ed218574f68b8, []int{9}
 }
 
 func (m *FeedOutputConfig) XXX_Unmarshal(b []byte) error {
@@ -1025,7 +648,7 @@ func (m *Feed) Reset()         { *m = Feed{} }
 func (m *Feed) String() string { return proto.CompactTextString(m) }
 func (*Feed) ProtoMessage()    {}
 func (*Feed) Descriptor() ([]byte, []int) {
-	return fileDescriptor_266ed218574f68b8, []int{15}
+	return fileDescriptor_266ed218574f68b8, []int{10}
 }
 
 func (m *Feed) XXX_Unmarshal(b []byte) error {
@@ -1083,10 +706,6 @@ func (m *Feed) GetFeedOutputConfig() *FeedOutputConfig {
 
 func init() {
 	proto.RegisterEnum("google.cloud.asset.v1p2beta1.ContentType", ContentType_name, ContentType_value)
-	proto.RegisterType((*ExportAssetsRequest)(nil), "google.cloud.asset.v1p2beta1.ExportAssetsRequest")
-	proto.RegisterType((*ExportAssetsResponse)(nil), "google.cloud.asset.v1p2beta1.ExportAssetsResponse")
-	proto.RegisterType((*BatchGetAssetsHistoryRequest)(nil), "google.cloud.asset.v1p2beta1.BatchGetAssetsHistoryRequest")
-	proto.RegisterType((*BatchGetAssetsHistoryResponse)(nil), "google.cloud.asset.v1p2beta1.BatchGetAssetsHistoryResponse")
 	proto.RegisterType((*CreateFeedRequest)(nil), "google.cloud.asset.v1p2beta1.CreateFeedRequest")
 	proto.RegisterType((*GetFeedRequest)(nil), "google.cloud.asset.v1p2beta1.GetFeedRequest")
 	proto.RegisterType((*ListFeedsRequest)(nil), "google.cloud.asset.v1p2beta1.ListFeedsRequest")
@@ -1095,7 +714,6 @@ func init() {
 	proto.RegisterType((*DeleteFeedRequest)(nil), "google.cloud.asset.v1p2beta1.DeleteFeedRequest")
 	proto.RegisterType((*OutputConfig)(nil), "google.cloud.asset.v1p2beta1.OutputConfig")
 	proto.RegisterType((*GcsDestination)(nil), "google.cloud.asset.v1p2beta1.GcsDestination")
-	proto.RegisterType((*BigQueryDestination)(nil), "google.cloud.asset.v1p2beta1.BigQueryDestination")
 	proto.RegisterType((*PubsubDestination)(nil), "google.cloud.asset.v1p2beta1.PubsubDestination")
 	proto.RegisterType((*FeedOutputConfig)(nil), "google.cloud.asset.v1p2beta1.FeedOutputConfig")
 	proto.RegisterType((*Feed)(nil), "google.cloud.asset.v1p2beta1.Feed")
@@ -1106,115 +724,89 @@ func init() {
 }
 
 var fileDescriptor_266ed218574f68b8 = []byte{
-	// 1314 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x57, 0xcd, 0x6e, 0xdb, 0x46,
-	0x10, 0x36, 0xe5, 0x9f, 0xd8, 0x23, 0xc5, 0x91, 0xd6, 0x69, 0xa2, 0xaa, 0x0e, 0x2c, 0xb0, 0x29,
-	0x22, 0xab, 0x0d, 0x59, 0xab, 0xe8, 0x0f, 0x1c, 0xf4, 0x20, 0x29, 0x8a, 0x6d, 0x20, 0xb6, 0x54,
-	0xda, 0x69, 0x90, 0xd6, 0x00, 0x4b, 0x51, 0x2b, 0x86, 0x8d, 0xc4, 0x65, 0xc8, 0x65, 0x1c, 0xa3,
-	0xc9, 0xa1, 0xe9, 0x25, 0x40, 0x2f, 0x2d, 0xf2, 0x02, 0x3d, 0xf5, 0xd0, 0x27, 0xe8, 0x1b, 0x14,
-	0xc8, 0xb1, 0xbd, 0xf7, 0xd4, 0x57, 0xe8, 0xa1, 0xb7, 0x62, 0x77, 0x49, 0x8b, 0xfa, 0xb1, 0xe8,
-	0x34, 0x40, 0x6f, 0x9a, 0xdd, 0x99, 0xf9, 0xbe, 0xfd, 0x46, 0x3b, 0xb3, 0x84, 0xf7, 0x2d, 0x42,
-	0xac, 0x1e, 0x56, 0xcd, 0x1e, 0x09, 0x3a, 0xaa, 0xe1, 0xfb, 0x98, 0xaa, 0x8f, 0x36, 0xdc, 0x4a,
-	0x1b, 0x53, 0x63, 0x43, 0xd8, 0xba, 0x8f, 0xbd, 0x47, 0xb6, 0x89, 0x15, 0xd7, 0x23, 0x94, 0xa0,
-	0x55, 0x11, 0xa1, 0xf0, 0x08, 0x85, 0x7b, 0x28, 0x27, 0x11, 0x85, 0x70, 0x57, 0x35, 0x5c, 0x5b,
-	0x35, 0x1c, 0x87, 0x50, 0x83, 0xda, 0xc4, 0xf1, 0x45, 0x6c, 0x61, 0x3d, 0x19, 0x2d, 0x72, 0x7d,
-	0x3b, 0x74, 0xed, 0x11, 0xc7, 0xf2, 0x02, 0xc7, 0xb1, 0x1d, 0x4b, 0x25, 0x2e, 0xf6, 0x86, 0xf2,
-	0xbd, 0x15, 0x3a, 0x71, 0xab, 0x1d, 0x74, 0x55, 0xdc, 0x77, 0xe9, 0x71, 0xb8, 0x59, 0x1c, 0xdd,
-	0xec, 0xda, 0xb8, 0xd7, 0xd1, 0xfb, 0x86, 0xff, 0x20, 0xf4, 0x58, 0x1b, 0xf5, 0xa0, 0x76, 0x1f,
-	0xfb, 0xd4, 0xe8, 0xbb, 0xa1, 0xc3, 0xe5, 0xd8, 0x69, 0xcc, 0x9e, 0x8d, 0x1d, 0x2a, 0x36, 0xe4,
-	0x9f, 0x53, 0xb0, 0xd2, 0x78, 0xec, 0x12, 0x8f, 0x56, 0x39, 0x69, 0x0d, 0x3f, 0x0c, 0xb0, 0x4f,
-	0xd1, 0x25, 0x58, 0x70, 0x0d, 0x0f, 0x3b, 0x34, 0x2f, 0x15, 0xa5, 0xd2, 0x92, 0x16, 0x5a, 0xe8,
-	0x63, 0x58, 0xf2, 0xb0, 0xd1, 0xd1, 0x19, 0x40, 0x3e, 0x55, 0x94, 0x4a, 0xe9, 0x4a, 0x41, 0x09,
-	0x85, 0x8c, 0xd0, 0x95, 0x83, 0x08, 0x5d, 0x5b, 0x64, 0xce, 0xcc, 0x44, 0x6b, 0x90, 0x16, 0x45,
-	0xa0, 0xc7, 0x2e, 0xf6, 0xf3, 0xb3, 0xc5, 0xd9, 0xd2, 0x92, 0x06, 0x7c, 0xe9, 0x80, 0xad, 0xa0,
-	0xdb, 0x90, 0x31, 0x89, 0x43, 0xb1, 0x23, 0x5c, 0xf2, 0x73, 0x45, 0xa9, 0xb4, 0x5c, 0x59, 0x57,
-	0xa6, 0x55, 0x49, 0xa9, 0x8b, 0x08, 0x96, 0x41, 0x4b, 0x9b, 0x03, 0x03, 0x35, 0xe1, 0x3c, 0x09,
-	0xa8, 0x1b, 0x50, 0xdd, 0x24, 0x4e, 0xd7, 0xb6, 0xf2, 0xf3, 0x9c, 0x6b, 0x79, 0x7a, 0xba, 0x26,
-	0x0f, 0xa9, 0xf3, 0x08, 0x2d, 0x43, 0x62, 0x96, 0xfc, 0x93, 0x04, 0x17, 0x87, 0x85, 0xf2, 0x5d,
-	0xe2, 0xf8, 0x78, 0x58, 0x11, 0xe9, 0x15, 0x14, 0x19, 0xa3, 0x98, 0x7a, 0x4d, 0x8a, 0xff, 0x48,
-	0xb0, 0x5a, 0x33, 0xa8, 0x79, 0x7f, 0x0b, 0x87, 0x24, 0xb7, 0x6d, 0x9f, 0x12, 0xef, 0x38, 0xa9,
-	0xa8, 0x27, 0xb5, 0x71, 0x8c, 0x3e, 0xf6, 0xf3, 0xa9, 0x58, 0x6d, 0xf6, 0xd8, 0xca, 0x58, 0x6d,
-	0x66, 0x5f, 0xab, 0x36, 0x1a, 0x64, 0x4f, 0x14, 0xd3, 0x8f, 0x6c, 0xa7, 0x43, 0x8e, 0x78, 0xb5,
-	0xd3, 0x95, 0xd2, 0xf4, 0x8c, 0x4c, 0xb6, 0xbb, 0xdc, 0x5f, 0x5b, 0x8e, 0x64, 0x14, 0xb6, 0xdc,
-	0x81, 0x2b, 0xa7, 0x1c, 0x3d, 0x2c, 0x53, 0x1d, 0x16, 0xc4, 0xb5, 0xcc, 0x4b, 0xc5, 0xd9, 0x52,
-	0xba, 0xf2, 0x6e, 0x02, 0x14, 0xee, 0xbb, 0xc4, 0x33, 0x7a, 0x3c, 0x99, 0x16, 0x86, 0xca, 0x4f,
-	0x20, 0x57, 0xf7, 0xb0, 0x41, 0xf1, 0x2d, 0x8c, 0x3b, 0x49, 0xaa, 0x5e, 0x86, 0x73, 0x5d, 0x8c,
-	0x3b, 0xba, 0xdd, 0xe1, 0x95, 0x5d, 0xd2, 0x16, 0x98, 0xb9, 0xd3, 0x41, 0x1f, 0xc1, 0x1c, 0xfb,
-	0xc5, 0x55, 0x4c, 0x57, 0xe4, 0xe9, 0x44, 0x38, 0x12, 0xf7, 0x97, 0xaf, 0xc2, 0xf2, 0x16, 0xa6,
-	0x71, 0x68, 0x04, 0x73, 0xac, 0x64, 0x21, 0x30, 0xff, 0x2d, 0x97, 0x21, 0x7b, 0xdb, 0xf6, 0xb9,
-	0x5b, 0xd2, 0x6d, 0x96, 0x77, 0x21, 0x17, 0xf3, 0x0d, 0x95, 0xfa, 0x04, 0xe6, 0x19, 0x5c, 0x24,
-	0xd4, 0x59, 0xf8, 0x89, 0x00, 0xf9, 0xb9, 0x04, 0xb9, 0x3b, 0x6e, 0x67, 0x44, 0x9f, 0xe8, 0xb8,
-	0xd2, 0xab, 0x1d, 0x17, 0xdd, 0x80, 0x74, 0xc0, 0x93, 0xf1, 0x4e, 0x77, 0x6a, 0xb3, 0xb9, 0xc5,
-	0x9a, 0xe1, 0xae, 0xe1, 0x3f, 0xd0, 0x40, 0xb8, 0xb3, 0xdf, 0xf2, 0x35, 0xc8, 0xdd, 0xc4, 0x3d,
-	0x3c, 0xcc, 0x64, 0x92, 0x5c, 0x7f, 0x4a, 0x90, 0x89, 0xdf, 0x29, 0x74, 0x17, 0x2e, 0x58, 0xa6,
-	0xaf, 0x77, 0xb0, 0x4f, 0x6d, 0x87, 0x37, 0xe9, 0x90, 0xf9, 0x7b, 0xd3, 0x99, 0x6f, 0x99, 0xfe,
-	0xcd, 0x41, 0xcc, 0xf6, 0x8c, 0xb6, 0x6c, 0x0d, 0xad, 0xa0, 0x2e, 0x5c, 0x6c, 0xdb, 0xd6, 0xc3,
-	0x00, 0x7b, 0xc7, 0x43, 0xd9, 0xc5, 0xc1, 0x36, 0xa6, 0x67, 0xaf, 0xd9, 0xd6, 0x67, 0x2c, 0x72,
-	0x18, 0x62, 0x25, 0x4a, 0x18, 0x5b, 0xae, 0x9d, 0x87, 0x74, 0x2c, 0xbd, 0xbc, 0x0f, 0xcb, 0xc3,
-	0xd4, 0x10, 0x82, 0xd9, 0xc0, 0xb3, 0x85, 0x0a, 0xdb, 0x33, 0x1a, 0x33, 0xd0, 0x1a, 0x40, 0xe0,
-	0xd9, 0xba, 0xeb, 0xe1, 0xae, 0xfd, 0x58, 0xfc, 0x5f, 0xb7, 0x67, 0xb4, 0xa5, 0xc0, 0xb3, 0x5b,
-	0x7c, 0xa9, 0x96, 0x01, 0x20, 0xed, 0xaf, 0xb1, 0x49, 0xf5, 0xc0, 0xb3, 0xe5, 0x2f, 0x61, 0x65,
-	0x02, 0x23, 0x94, 0x87, 0x73, 0x1d, 0x83, 0x1a, 0x3e, 0x8e, 0xfe, 0x68, 0x91, 0x89, 0x2e, 0xc2,
-	0x3c, 0x35, 0xda, 0x3d, 0x1c, 0x5e, 0x05, 0x61, 0xb0, 0xd5, 0x2e, 0xf1, 0x4c, 0xd1, 0x50, 0x16,
-	0x35, 0x61, 0xc8, 0xeb, 0x90, 0x6b, 0x05, 0x6d, 0x3f, 0x68, 0xc7, 0x53, 0xb3, 0x04, 0xc4, 0xb5,
-	0xcd, 0x30, 0xb1, 0x30, 0xe4, 0xef, 0x24, 0xc8, 0xb2, 0x0a, 0x0f, 0x55, 0xf0, 0x2b, 0x40, 0x2e,
-	0x8f, 0x9f, 0x50, 0x44, 0x75, 0xba, 0xcc, 0x63, 0xb8, 0xdb, 0x33, 0x5a, 0xce, 0x1d, 0x5d, 0x1c,
-	0x95, 0xf8, 0x79, 0x0a, 0xe6, 0x18, 0x8b, 0x49, 0x7f, 0xb0, 0xe4, 0xe6, 0xfa, 0x3f, 0x4f, 0xc6,
-	0x43, 0x40, 0xbc, 0x2d, 0x4d, 0x1a, 0x8f, 0x4a, 0xf2, 0xe5, 0x1c, 0x9a, 0x3f, 0xd9, 0xee, 0xc8,
-	0x4a, 0xf9, 0x5b, 0x09, 0xd2, 0x31, 0x68, 0xb4, 0x0a, 0xf9, 0x7a, 0x73, 0xef, 0xa0, 0xb1, 0x77,
-	0xa0, 0x1f, 0xdc, 0x6b, 0x35, 0xf4, 0x3b, 0x7b, 0xfb, 0xad, 0x46, 0x7d, 0xe7, 0xd6, 0x4e, 0xe3,
-	0x66, 0x76, 0x06, 0x65, 0x60, 0x51, 0x6b, 0xec, 0x37, 0xef, 0x68, 0xf5, 0x46, 0x56, 0x42, 0xcb,
-	0x00, 0x3b, 0xd5, 0x5d, 0xbd, 0xd5, 0xbc, 0xbd, 0x53, 0xbf, 0x97, 0x4d, 0xa1, 0x15, 0xb8, 0x30,
-	0xb0, 0xf5, 0xbd, 0xea, 0x6e, 0x23, 0x3b, 0xcb, 0x9c, 0x9a, 0xda, 0x56, 0xe4, 0x34, 0x87, 0x72,
-	0x70, 0xbe, 0x5a, 0xaf, 0x37, 0xf6, 0xf7, 0xa3, 0xa5, 0xf9, 0xca, 0xdf, 0x8b, 0x90, 0xe1, 0x7d,
-	0x7b, 0x5f, 0xbc, 0xf7, 0xd0, 0x8f, 0x12, 0x64, 0xe2, 0xb3, 0x1b, 0x25, 0x5c, 0xb6, 0x09, 0x0f,
-	0xa2, 0xc2, 0x95, 0x28, 0x24, 0xf6, 0x8e, 0x53, 0x9a, 0xd1, 0x3b, 0x4e, 0x56, 0x9f, 0xfd, 0xf1,
-	0xd7, 0x8b, 0xd4, 0xba, 0x7c, 0x35, 0xf6, 0x0c, 0xfc, 0x46, 0x74, 0xd9, 0x4f, 0xcb, 0x6a, 0xf9,
-	0xe9, 0x26, 0x8e, 0xe5, 0xdc, 0x94, 0xca, 0xe8, 0x37, 0x09, 0xde, 0x98, 0x38, 0xb1, 0xd0, 0x66,
-	0x42, 0x27, 0x98, 0x32, 0xe1, 0x0b, 0x37, 0xfe, 0x53, 0xac, 0x68, 0xfc, 0xf2, 0x87, 0xfc, 0x0c,
-	0x2a, 0xba, 0x7e, 0xda, 0x19, 0xda, 0x13, 0xf9, 0x7e, 0x2f, 0x01, 0x0c, 0xa6, 0x22, 0x4a, 0xb8,
-	0x61, 0x63, 0xf3, 0xb3, 0x70, 0x86, 0x89, 0x20, 0x97, 0x38, 0x35, 0x59, 0xbe, 0x72, 0x0a, 0x35,
-	0x95, 0x0f, 0x20, 0xa6, 0xeb, 0x33, 0x09, 0xce, 0x85, 0x53, 0x12, 0x25, 0x75, 0xec, 0xa1, 0x61,
-	0x7a, 0x26, 0x1e, 0xef, 0x70, 0x1e, 0x6b, 0x68, 0x88, 0x07, 0xbb, 0xd8, 0x8c, 0x85, 0x20, 0xa1,
-	0x96, 0x9f, 0xa2, 0x17, 0x12, 0x2c, 0x9d, 0x0c, 0x56, 0x94, 0x70, 0xab, 0x46, 0xa7, 0x75, 0x41,
-	0x3d, 0xb3, 0x7f, 0x58, 0xb8, 0x89, 0xac, 0xc6, 0xd4, 0x41, 0x3f, 0x48, 0x00, 0x83, 0xf1, 0x9c,
-	0x54, 0xa8, 0xb1, 0x41, 0x7e, 0x26, 0x81, 0xae, 0x73, 0x2a, 0xd7, 0x2a, 0x72, 0x9c, 0x0a, 0x83,
-	0x57, 0xc6, 0x54, 0x62, 0xd5, 0x7a, 0x02, 0x30, 0x18, 0xd3, 0x49, 0x8c, 0xc6, 0x06, 0x7a, 0xe1,
-	0xd2, 0xd8, 0x6b, 0xa0, 0xc1, 0xbe, 0x9b, 0x22, 0x41, 0xca, 0xd3, 0xcb, 0x54, 0xd8, 0x7d, 0x59,
-	0x7d, 0x93, 0x43, 0x09, 0x24, 0x91, 0xcb, 0x70, 0x6d, 0x5f, 0x31, 0x49, 0xff, 0xf7, 0xaa, 0x72,
-	0x9f, 0x52, 0xd7, 0xdf, 0x54, 0xd5, 0xa3, 0xa3, 0xa3, 0x91, 0x4d, 0xd5, 0x08, 0xe8, 0x7d, 0xf1,
-	0xf5, 0x77, 0xdd, 0xed, 0x19, 0xb4, 0x4b, 0xbc, 0x7e, 0xed, 0x57, 0x09, 0x8a, 0x26, 0xe9, 0x4f,
-	0x3d, 0x44, 0x2d, 0x17, 0xef, 0x4c, 0x2d, 0x46, 0xbb, 0x25, 0x7d, 0x51, 0x0d, 0x43, 0x2c, 0xd2,
-	0x33, 0x1c, 0x4b, 0x21, 0x9e, 0xa5, 0x5a, 0xd8, 0xe1, 0x87, 0x52, 0x07, 0xc0, 0x93, 0xbf, 0x36,
-	0x6f, 0x70, 0xfb, 0x97, 0xd4, 0xea, 0x96, 0xc8, 0x51, 0xe7, 0xb0, 0x1c, 0x45, 0xf9, 0x7c, 0xc3,
-	0xad, 0xd4, 0x98, 0xd3, 0xcb, 0x68, 0xfb, 0x90, 0x6f, 0x1f, 0xf2, 0xed, 0xc3, 0x93, 0xed, 0xf6,
-	0x02, 0xc7, 0xfa, 0xe0, 0xdf, 0x00, 0x00, 0x00, 0xff, 0xff, 0x76, 0x29, 0x46, 0x9f, 0x46, 0x0f,
-	0x00, 0x00,
+	// 1084 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x56, 0xbf, 0x6f, 0x23, 0x45,
+	0x14, 0xce, 0xd8, 0xb9, 0x1c, 0x79, 0x0e, 0xc1, 0x1e, 0x21, 0xce, 0xe7, 0xcb, 0x11, 0x6b, 0x91,
+	0x20, 0xb1, 0x8e, 0x5d, 0x62, 0x28, 0x50, 0x4e, 0x48, 0xac, 0x1d, 0x27, 0xb1, 0x94, 0x1f, 0x96,
+	0x93, 0x80, 0x0e, 0x45, 0x32, 0xeb, 0xf5, 0x78, 0xb3, 0x9c, 0xbd, 0xb3, 0xec, 0xcc, 0x26, 0x3a,
+	0xa2, 0x34, 0x5c, 0x85, 0x10, 0x05, 0x3f, 0x24, 0x1a, 0x6a, 0x0a, 0xfe, 0x02, 0x3a, 0xfa, 0x2b,
+	0xa1, 0x4b, 0x75, 0x05, 0x15, 0x7f, 0x02, 0x15, 0x9a, 0x99, 0x75, 0xbc, 0x5e, 0x1f, 0xb6, 0x05,
+	0x95, 0x3d, 0xef, 0xbd, 0x6f, 0xe6, 0xfb, 0xde, 0x9b, 0x79, 0x6f, 0xe1, 0x1d, 0x87, 0x52, 0xa7,
+	0x47, 0x0c, 0xbb, 0x47, 0xc3, 0x8e, 0x61, 0x31, 0x46, 0xb8, 0x71, 0xbe, 0xe1, 0x97, 0xdb, 0x84,
+	0x5b, 0x1b, 0x6a, 0xdd, 0x62, 0x24, 0x38, 0x77, 0x6d, 0xa2, 0xfb, 0x01, 0xe5, 0x14, 0xaf, 0x28,
+	0x84, 0x2e, 0x11, 0xba, 0x8c, 0xd0, 0x6f, 0x10, 0x85, 0xc8, 0x6b, 0x58, 0xbe, 0x6b, 0x58, 0x9e,
+	0x47, 0xb9, 0xc5, 0x5d, 0xea, 0x31, 0x85, 0x2d, 0xdc, 0x89, 0x79, 0xed, 0x9e, 0x4b, 0x3c, 0x1e,
+	0x39, 0x56, 0x63, 0x8e, 0xae, 0x4b, 0x7a, 0x9d, 0x56, 0x9b, 0x9c, 0x59, 0xe7, 0x2e, 0x0d, 0xa2,
+	0x80, 0xbb, 0xb1, 0x80, 0x80, 0x30, 0x1a, 0x06, 0x03, 0x42, 0x85, 0xf5, 0xe9, 0x12, 0x06, 0xe7,
+	0xbf, 0x11, 0x85, 0xf6, 0xa8, 0xe7, 0x04, 0xa1, 0xe7, 0xb9, 0x9e, 0x63, 0x50, 0x9f, 0x04, 0x23,
+	0x24, 0xef, 0x45, 0x41, 0x72, 0xd5, 0x0e, 0xbb, 0x06, 0xe9, 0xfb, 0xfc, 0x49, 0xe4, 0x2c, 0x26,
+	0x9d, 0x8a, 0x6d, 0xdf, 0x62, 0x8f, 0x13, 0x52, 0x6e, 0x22, 0xb8, 0xdb, 0x27, 0x8c, 0x5b, 0x7d,
+	0x5f, 0x05, 0x68, 0x5f, 0x23, 0xc8, 0x55, 0x03, 0x62, 0x71, 0xb2, 0x4d, 0x48, 0xa7, 0x49, 0x3e,
+	0x0f, 0x09, 0xe3, 0xf8, 0x1e, 0x2c, 0xf8, 0x56, 0x40, 0x3c, 0x9e, 0x47, 0x45, 0xb4, 0xb6, 0x58,
+	0x49, 0x3f, 0x37, 0x53, 0xcd, 0xc8, 0x84, 0x57, 0xe0, 0x76, 0x97, 0x90, 0x4e, 0xcb, 0xed, 0xe4,
+	0x53, 0x31, 0xaf, 0xb0, 0xd5, 0x3b, 0xf8, 0x21, 0xcc, 0x8b, 0x7f, 0xf9, 0x74, 0x11, 0xad, 0x65,
+	0xca, 0x9a, 0x3e, 0xa9, 0x40, 0xba, 0x38, 0x53, 0xc1, 0x25, 0x48, 0xdb, 0x83, 0xe5, 0x1d, 0xc2,
+	0xe3, 0x4c, 0x36, 0x61, 0xde, 0xb3, 0xfa, 0x24, 0xe2, 0xf1, 0xe6, 0x73, 0x33, 0xf5, 0xb7, 0x59,
+	0x84, 0xd7, 0xe5, 0x76, 0x6a, 0x37, 0x75, 0x80, 0xe5, 0xbb, 0x4c, 0xb7, 0x69, 0xdf, 0x90, 0x60,
+	0x89, 0xd1, 0x0c, 0xc8, 0xee, 0xb9, 0x4c, 0x6e, 0xc7, 0x66, 0x51, 0xa6, 0xed, 0x43, 0x2e, 0x06,
+	0x60, 0x3e, 0xf5, 0x18, 0xc1, 0xef, 0xc3, 0x2d, 0xc1, 0x8d, 0xe5, 0x51, 0x31, 0x3d, 0x9b, 0xa2,
+	0xa6, 0x02, 0x68, 0xdf, 0x21, 0xc8, 0x9d, 0xf8, 0x9d, 0x44, 0x6e, 0x07, 0x09, 0x42, 0xff, 0x21,
+	0x41, 0xf8, 0x43, 0xc8, 0x84, 0x72, 0x47, 0x59, 0x64, 0x99, 0xff, 0x4c, 0xb9, 0x30, 0xd8, 0x63,
+	0x50, 0x65, 0x7d, 0x5b, 0xdc, 0x83, 0x7d, 0x8b, 0x3d, 0x56, 0x58, 0x50, 0x18, 0x61, 0xd0, 0x0e,
+	0x21, 0xb7, 0x45, 0x7a, 0x64, 0x94, 0xd3, 0xff, 0xc9, 0xf2, 0x39, 0x2c, 0x1d, 0x86, 0xdc, 0x0f,
+	0x79, 0x95, 0x7a, 0x5d, 0xd7, 0xc1, 0x1f, 0xc3, 0x2b, 0x8e, 0xcd, 0x5a, 0x1d, 0xc2, 0xb8, 0xeb,
+	0xc9, 0xbb, 0x1c, 0x49, 0x7d, 0x30, 0x59, 0xea, 0x8e, 0xcd, 0xb6, 0x86, 0x98, 0xdd, 0xb9, 0xe6,
+	0xb2, 0x33, 0x62, 0xa9, 0xbc, 0x0c, 0x99, 0xd8, 0xa6, 0x5a, 0x19, 0x96, 0x47, 0x21, 0x18, 0x43,
+	0x3a, 0x0c, 0x5c, 0x25, 0x62, 0x77, 0xae, 0x29, 0x16, 0x95, 0x25, 0x00, 0xda, 0xfe, 0x8c, 0xd8,
+	0xbc, 0x15, 0x06, 0xae, 0xb6, 0x0e, 0xb9, 0x46, 0xd8, 0x66, 0x61, 0x3b, 0x0e, 0x7b, 0x15, 0x6e,
+	0x71, 0xea, 0xbb, 0xb6, 0x02, 0x36, 0xd5, 0x42, 0x7b, 0x8a, 0x20, 0x2b, 0x54, 0x8e, 0x68, 0xfb,
+	0x14, 0xb0, 0x2f, 0xf1, 0x2f, 0x90, 0x67, 0x4c, 0x96, 0x37, 0x76, 0xee, 0xee, 0x5c, 0x33, 0xe7,
+	0x27, 0x8d, 0x49, 0x91, 0x3f, 0xa7, 0x61, 0x5e, 0xb0, 0xc0, 0x77, 0x46, 0x2a, 0xa4, 0x6e, 0x84,
+	0x30, 0xe0, 0x55, 0xc8, 0xa8, 0xc6, 0x28, 0x56, 0x2c, 0x9f, 0x2a, 0xa6, 0xd7, 0x16, 0x9b, 0x20,
+	0x4d, 0x07, 0xc2, 0x32, 0x0c, 0xe0, 0x4f, 0x7c, 0xc2, 0xf2, 0xe9, 0x58, 0xc0, 0xb1, 0xb0, 0xe0,
+	0x3d, 0x58, 0xb2, 0xa9, 0xc7, 0x89, 0xa7, 0x42, 0xf2, 0xf3, 0x45, 0xb4, 0xb6, 0x5c, 0x5e, 0x9f,
+	0x2c, 0xa7, 0xaa, 0x10, 0x62, 0x87, 0x66, 0xc6, 0x1e, 0x2e, 0xb0, 0x05, 0x58, 0x76, 0x07, 0x2a,
+	0xf3, 0xd6, 0xb2, 0x65, 0xe2, 0xf2, 0xb7, 0x64, 0x8a, 0xf4, 0xe9, 0x97, 0x3d, 0x9e, 0x6e, 0x25,
+	0x33, 0xdb, 0x4d, 0x98, 0x37, 0xbf, 0x45, 0x7f, 0x99, 0xdf, 0xa0, 0x69, 0xd7, 0x13, 0xaf, 0xfa,
+	0x01, 0x15, 0x95, 0x67, 0xc6, 0x65, 0xf4, 0xef, 0xca, 0x90, 0x0f, 0xd3, 0xb8, 0x14, 0x3f, 0x57,
+	0xf8, 0x7e, 0x97, 0xf6, 0x3a, 0x24, 0x10, 0x6b, 0xf9, 0x27, 0xe1, 0x5e, 0xa7, 0x81, 0x63, 0x79,
+	0xee, 0x17, 0xaa, 0x1f, 0x1b, 0x97, 0xf1, 0xe5, 0x68, 0x68, 0x11, 0x95, 0xea, 0x90, 0x89, 0xa5,
+	0x04, 0xaf, 0x40, 0xbe, 0x7a, 0x78, 0x70, 0x5c, 0x3b, 0x38, 0x6e, 0x1d, 0x3f, 0x6a, 0xd4, 0x5a,
+	0x27, 0x07, 0x47, 0x8d, 0x5a, 0xb5, 0xbe, 0x5d, 0xaf, 0x6d, 0x65, 0xe7, 0xf0, 0x12, 0xbc, 0xd4,
+	0xac, 0x1d, 0x1d, 0x9e, 0x34, 0xab, 0xb5, 0x2c, 0xc2, 0xcb, 0x00, 0x75, 0x73, 0xbf, 0xd5, 0x38,
+	0xdc, 0xab, 0x57, 0x1f, 0x65, 0x53, 0xe5, 0xdf, 0x16, 0x60, 0xc9, 0x14, 0xaa, 0x8e, 0xd4, 0xa8,
+	0xc3, 0x3f, 0x20, 0x80, 0x61, 0x8f, 0xc6, 0x53, 0x2e, 0xda, 0x58, 0x37, 0x2f, 0xcc, 0xd0, 0x63,
+	0xb4, 0x8d, 0x6b, 0x33, 0xea, 0x82, 0x5f, 0xfe, 0xf1, 0xe7, 0xf7, 0x29, 0x4d, 0xbb, 0x1f, 0x1b,
+	0x5b, 0x97, 0xca, 0xf3, 0x41, 0xc9, 0x28, 0x45, 0xc2, 0x37, 0x51, 0x09, 0x7f, 0x85, 0xe0, 0x76,
+	0xd4, 0xad, 0xf1, 0xb4, 0xb7, 0x3d, 0xd2, 0xd4, 0x67, 0x22, 0xf4, 0xe0, 0xda, 0x94, 0x17, 0x5c,
+	0xd2, 0x59, 0xc5, 0x23, 0x74, 0x84, 0x5d, 0x90, 0x89, 0x8a, 0x50, 0xba, 0xc2, 0x3f, 0x21, 0x58,
+	0xbc, 0x69, 0xdd, 0x78, 0xca, 0x3d, 0x4b, 0x0e, 0x85, 0x82, 0x31, 0x73, 0xbc, 0x9a, 0x09, 0x9a,
+	0x3e, 0x9a, 0xad, 0x04, 0xbd, 0xb1, 0x6c, 0xe1, 0x1f, 0x11, 0xc0, 0x70, 0x12, 0x4c, 0xab, 0xe0,
+	0xd8, 0xcc, 0x98, 0x29, 0x61, 0xef, 0x5d, 0x9b, 0x72, 0x46, 0x48, 0x46, 0x6f, 0x95, 0xb5, 0x38,
+	0x23, 0x61, 0xd7, 0xc7, 0xb2, 0x26, 0x8a, 0xf8, 0x14, 0x01, 0x0c, 0xe7, 0xc1, 0x34, 0x66, 0x63,
+	0x93, 0xa3, 0xf0, 0xda, 0xd8, 0xec, 0xa9, 0x89, 0x0f, 0x94, 0x44, 0xf9, 0x4a, 0x93, 0xcb, 0x57,
+	0xd8, 0x7f, 0x66, 0xde, 0xfd, 0xd7, 0xd7, 0xfc, 0xbb, 0xa9, 0x9f, 0x71, 0xee, 0xb3, 0x4d, 0xc3,
+	0xb8, 0xb8, 0xb8, 0x48, 0x3e, 0x75, 0x2b, 0xe4, 0x67, 0xea, 0x6b, 0xeb, 0x6d, 0xbf, 0x67, 0xf1,
+	0x2e, 0x0d, 0xfa, 0x95, 0x5f, 0x11, 0x14, 0x6d, 0xda, 0x9f, 0xa8, 0xa5, 0x92, 0x8b, 0xbf, 0xb1,
+	0x86, 0x60, 0xdf, 0x40, 0x9f, 0x98, 0x11, 0xc4, 0xa1, 0x3d, 0xcb, 0x73, 0x74, 0x1a, 0x38, 0x86,
+	0x43, 0x3c, 0xa9, 0xcd, 0x18, 0x1e, 0xfc, 0xe2, 0xaf, 0xbb, 0x87, 0x72, 0xfd, 0x4b, 0x6a, 0x65,
+	0x47, 0xed, 0x51, 0x95, 0xc7, 0xca, 0x53, 0xf4, 0x8f, 0x36, 0xfc, 0x72, 0x45, 0x04, 0x3d, 0x1b,
+	0xb8, 0x4f, 0xa5, 0xfb, 0x54, 0xba, 0x4f, 0x6f, 0xdc, 0xed, 0x05, 0x79, 0xd6, 0xbb, 0xff, 0x04,
+	0x00, 0x00, 0xff, 0xff, 0x05, 0x30, 0xf7, 0x65, 0x0b, 0x0b, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // AssetServiceClient is the client API for AssetService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type AssetServiceClient interface {
-	// Exports assets with time and resource types to a given Cloud Storage
-	// location. The output format is newline-delimited JSON.
-	// This API implements the [google.longrunning.Operation][google.longrunning.Operation] API allowing you
-	// to keep track of the export.
-	ExportAssets(ctx context.Context, in *ExportAssetsRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Batch gets the update history of assets that overlap a time window.
-	// For RESOURCE content, this API outputs history with asset in both
-	// non-delete or deleted status.
-	// For IAM_POLICY content, this API outputs history when the asset and its
-	// attached IAM POLICY both exist. This can create gaps in the output history.
-	BatchGetAssetsHistory(ctx context.Context, in *BatchGetAssetsHistoryRequest, opts ...grpc.CallOption) (*BatchGetAssetsHistoryResponse, error)
 	// Creates a feed in a parent project/folder/organization to listen to its
 	// asset updates.
 	CreateFeed(ctx context.Context, in *CreateFeedRequest, opts ...grpc.CallOption) (*Feed, error)
@@ -1229,29 +821,11 @@ type AssetServiceClient interface {
 }
 
 type assetServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewAssetServiceClient(cc *grpc.ClientConn) AssetServiceClient {
+func NewAssetServiceClient(cc grpc.ClientConnInterface) AssetServiceClient {
 	return &assetServiceClient{cc}
-}
-
-func (c *assetServiceClient) ExportAssets(ctx context.Context, in *ExportAssetsRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
-	out := new(longrunning.Operation)
-	err := c.cc.Invoke(ctx, "/google.cloud.asset.v1p2beta1.AssetService/ExportAssets", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *assetServiceClient) BatchGetAssetsHistory(ctx context.Context, in *BatchGetAssetsHistoryRequest, opts ...grpc.CallOption) (*BatchGetAssetsHistoryResponse, error) {
-	out := new(BatchGetAssetsHistoryResponse)
-	err := c.cc.Invoke(ctx, "/google.cloud.asset.v1p2beta1.AssetService/BatchGetAssetsHistory", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *assetServiceClient) CreateFeed(ctx context.Context, in *CreateFeedRequest, opts ...grpc.CallOption) (*Feed, error) {
@@ -1301,17 +875,6 @@ func (c *assetServiceClient) DeleteFeed(ctx context.Context, in *DeleteFeedReque
 
 // AssetServiceServer is the server API for AssetService service.
 type AssetServiceServer interface {
-	// Exports assets with time and resource types to a given Cloud Storage
-	// location. The output format is newline-delimited JSON.
-	// This API implements the [google.longrunning.Operation][google.longrunning.Operation] API allowing you
-	// to keep track of the export.
-	ExportAssets(context.Context, *ExportAssetsRequest) (*longrunning.Operation, error)
-	// Batch gets the update history of assets that overlap a time window.
-	// For RESOURCE content, this API outputs history with asset in both
-	// non-delete or deleted status.
-	// For IAM_POLICY content, this API outputs history when the asset and its
-	// attached IAM POLICY both exist. This can create gaps in the output history.
-	BatchGetAssetsHistory(context.Context, *BatchGetAssetsHistoryRequest) (*BatchGetAssetsHistoryResponse, error)
 	// Creates a feed in a parent project/folder/organization to listen to its
 	// asset updates.
 	CreateFeed(context.Context, *CreateFeedRequest) (*Feed, error)
@@ -1329,12 +892,6 @@ type AssetServiceServer interface {
 type UnimplementedAssetServiceServer struct {
 }
 
-func (*UnimplementedAssetServiceServer) ExportAssets(ctx context.Context, req *ExportAssetsRequest) (*longrunning.Operation, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ExportAssets not implemented")
-}
-func (*UnimplementedAssetServiceServer) BatchGetAssetsHistory(ctx context.Context, req *BatchGetAssetsHistoryRequest) (*BatchGetAssetsHistoryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BatchGetAssetsHistory not implemented")
-}
 func (*UnimplementedAssetServiceServer) CreateFeed(ctx context.Context, req *CreateFeedRequest) (*Feed, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateFeed not implemented")
 }
@@ -1353,42 +910,6 @@ func (*UnimplementedAssetServiceServer) DeleteFeed(ctx context.Context, req *Del
 
 func RegisterAssetServiceServer(s *grpc.Server, srv AssetServiceServer) {
 	s.RegisterService(&_AssetService_serviceDesc, srv)
-}
-
-func _AssetService_ExportAssets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ExportAssetsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AssetServiceServer).ExportAssets(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/google.cloud.asset.v1p2beta1.AssetService/ExportAssets",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AssetServiceServer).ExportAssets(ctx, req.(*ExportAssetsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AssetService_BatchGetAssetsHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BatchGetAssetsHistoryRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AssetServiceServer).BatchGetAssetsHistory(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/google.cloud.asset.v1p2beta1.AssetService/BatchGetAssetsHistory",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AssetServiceServer).BatchGetAssetsHistory(ctx, req.(*BatchGetAssetsHistoryRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _AssetService_CreateFeed_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -1485,14 +1006,6 @@ var _AssetService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "google.cloud.asset.v1p2beta1.AssetService",
 	HandlerType: (*AssetServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "ExportAssets",
-			Handler:    _AssetService_ExportAssets_Handler,
-		},
-		{
-			MethodName: "BatchGetAssetsHistory",
-			Handler:    _AssetService_BatchGetAssetsHistory_Handler,
-		},
 		{
 			MethodName: "CreateFeed",
 			Handler:    _AssetService_CreateFeed_Handler,

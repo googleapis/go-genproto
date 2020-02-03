@@ -499,11 +499,11 @@ var fileDescriptor_74a10a5851161432 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ProfilerServiceClient is the client API for ProfilerService service.
 //
@@ -535,10 +535,10 @@ type ProfilerServiceClient interface {
 }
 
 type profilerServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewProfilerServiceClient(cc *grpc.ClientConn) ProfilerServiceClient {
+func NewProfilerServiceClient(cc grpc.ClientConnInterface) ProfilerServiceClient {
 	return &profilerServiceClient{cc}
 }
 

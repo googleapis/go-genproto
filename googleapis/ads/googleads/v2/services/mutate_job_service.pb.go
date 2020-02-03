@@ -574,11 +574,11 @@ var fileDescriptor_af26f119a5b9156e = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // MutateJobServiceClient is the client API for MutateJobService service.
 //
@@ -602,10 +602,10 @@ type MutateJobServiceClient interface {
 }
 
 type mutateJobServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewMutateJobServiceClient(cc *grpc.ClientConn) MutateJobServiceClient {
+func NewMutateJobServiceClient(cc grpc.ClientConnInterface) MutateJobServiceClient {
 	return &mutateJobServiceClient{cc}
 }
 

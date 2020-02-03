@@ -886,7 +886,7 @@ type GetProductSetRequest struct {
 	// Required. Resource name of the ProductSet to get.
 	//
 	// Format is:
-	// `projects/PROJECT_ID/locations/LOG_ID/productSets/PRODUCT_SET_ID`
+	// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -2220,11 +2220,11 @@ var fileDescriptor_3ac817753c311f0a = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ProductSearchClient is the client API for ProductSearch service.
 //
@@ -2408,10 +2408,10 @@ type ProductSearchClient interface {
 }
 
 type productSearchClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewProductSearchClient(cc *grpc.ClientConn) ProductSearchClient {
+func NewProductSearchClient(cc grpc.ClientConnInterface) ProductSearchClient {
 	return &productSearchClient{cc}
 }
 

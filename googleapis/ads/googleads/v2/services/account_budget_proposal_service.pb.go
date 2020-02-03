@@ -370,11 +370,11 @@ var fileDescriptor_f1f46d07b5a8af03 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // AccountBudgetProposalServiceClient is the client API for AccountBudgetProposalService service.
 //
@@ -388,10 +388,10 @@ type AccountBudgetProposalServiceClient interface {
 }
 
 type accountBudgetProposalServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewAccountBudgetProposalServiceClient(cc *grpc.ClientConn) AccountBudgetProposalServiceClient {
+func NewAccountBudgetProposalServiceClient(cc grpc.ClientConnInterface) AccountBudgetProposalServiceClient {
 	return &accountBudgetProposalServiceClient{cc}
 }
 

@@ -378,11 +378,11 @@ var fileDescriptor_8693fa91b2cc8640 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // AdGroupLabelServiceClient is the client API for AdGroupLabelService service.
 //
@@ -396,10 +396,10 @@ type AdGroupLabelServiceClient interface {
 }
 
 type adGroupLabelServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewAdGroupLabelServiceClient(cc *grpc.ClientConn) AdGroupLabelServiceClient {
+func NewAdGroupLabelServiceClient(cc grpc.ClientConnInterface) AdGroupLabelServiceClient {
 	return &adGroupLabelServiceClient{cc}
 }
 

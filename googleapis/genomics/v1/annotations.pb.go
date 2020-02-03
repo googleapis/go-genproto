@@ -1999,11 +1999,11 @@ var fileDescriptor_4c5f02d3172d33a8 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // AnnotationServiceV1Client is the client API for AnnotationServiceV1 service.
 //
@@ -2094,10 +2094,10 @@ type AnnotationServiceV1Client interface {
 }
 
 type annotationServiceV1Client struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewAnnotationServiceV1Client(cc *grpc.ClientConn) AnnotationServiceV1Client {
+func NewAnnotationServiceV1Client(cc grpc.ClientConnInterface) AnnotationServiceV1Client {
 	return &annotationServiceV1Client{cc}
 }
 

@@ -32,12 +32,18 @@ const (
 	PositiveGeoTargetTypeEnum_UNKNOWN PositiveGeoTargetTypeEnum_PositiveGeoTargetType = 1
 	// Specifies that an ad is triggered if the user is in,
 	// or shows interest in, advertiser's targeted locations.
+	// DONT_CARE is removed in V2, use PRESENCE_OR_INTEREST
+	// instead.
 	PositiveGeoTargetTypeEnum_DONT_CARE PositiveGeoTargetTypeEnum_PositiveGeoTargetType = 2
 	// Specifies that an ad is triggered if the user
 	// searches for advertiser's targeted locations.
+	// AREA_OF_INTEREST is removed in V2, use
+	// SEARCH_INTEREST instead.
 	PositiveGeoTargetTypeEnum_AREA_OF_INTEREST PositiveGeoTargetTypeEnum_PositiveGeoTargetType = 3
 	// Specifies that an ad is triggered if the user is in
 	// or regularly in advertiser's targeted locations.
+	// LOCATION_OF_PRESENCE is removed in V2, use PRESENCE
+	// instead.
 	PositiveGeoTargetTypeEnum_LOCATION_OF_PRESENCE PositiveGeoTargetTypeEnum_PositiveGeoTargetType = 4
 )
 

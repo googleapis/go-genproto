@@ -378,11 +378,11 @@ var fileDescriptor_65bc127b03981ed2 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // CustomerLabelServiceClient is the client API for CustomerLabelService service.
 //
@@ -396,10 +396,10 @@ type CustomerLabelServiceClient interface {
 }
 
 type customerLabelServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewCustomerLabelServiceClient(cc *grpc.ClientConn) CustomerLabelServiceClient {
+func NewCustomerLabelServiceClient(cc grpc.ClientConnInterface) CustomerLabelServiceClient {
 	return &customerLabelServiceClient{cc}
 }
 

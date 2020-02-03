@@ -70,11 +70,11 @@ var fileDescriptor_a9a2f3a013379609 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // BigtableServiceClient is the client API for BigtableService service.
 //
@@ -107,10 +107,10 @@ type BigtableServiceClient interface {
 }
 
 type bigtableServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewBigtableServiceClient(cc *grpc.ClientConn) BigtableServiceClient {
+func NewBigtableServiceClient(cc grpc.ClientConnInterface) BigtableServiceClient {
 	return &bigtableServiceClient{cc}
 }
 

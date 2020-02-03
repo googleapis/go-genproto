@@ -77,8 +77,8 @@ type PredictRequest struct {
 	//    specified tags. Boolean operators `OR` and `NOT` are supported if the
 	//    expression is enclosed in parentheses, and must be separated from the
 	//    tag values by a space. `-"tagA"` is also supported and is equivalent to
-	//    `NOT "tagA"`. Tag values must be enclosed in double quotes, and can
-	//    contain only alphanumeric characters, underscores, and dashes.
+	//    `NOT "tagA"`. Tag values must be double quoted UTF-8 encoded strings
+	//    with a size limit of 1 KiB.
 	//
 	//  * filterOutOfStockItems. Restricts predictions to items that do not have a
 	//    stockState value of OUT_OF_STOCK.
@@ -304,6 +304,8 @@ type PredictResponse_PredictionResult struct {
 	//
 	// * `catalogItem`: JSON representation of the catalogItem. Will be set if
 	//   `returnCatalogItem` is set to true in `PredictRequest.params`.
+	// * `score`: Prediction score in double value. Will be set if
+	//   `returnItemScore` is set to true in `PredictRequest.params`.
 	ItemMetadata         map[string]*_struct.Value `protobuf:"bytes,2,rep,name=item_metadata,json=itemMetadata,proto3" json:"item_metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
 	XXX_unrecognized     []byte                    `json:"-"`
@@ -420,11 +422,11 @@ var fileDescriptor_73deb4cba861f96f = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // PredictionServiceClient is the client API for PredictionService service.
 //
@@ -438,10 +440,10 @@ type PredictionServiceClient interface {
 }
 
 type predictionServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewPredictionServiceClient(cc *grpc.ClientConn) PredictionServiceClient {
+func NewPredictionServiceClient(cc grpc.ClientConnInterface) PredictionServiceClient {
 	return &predictionServiceClient{cc}
 }
 

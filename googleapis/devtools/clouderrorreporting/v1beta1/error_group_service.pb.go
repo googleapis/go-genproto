@@ -162,11 +162,11 @@ var fileDescriptor_cada5d349d61e784 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ErrorGroupServiceClient is the client API for ErrorGroupService service.
 //
@@ -180,10 +180,10 @@ type ErrorGroupServiceClient interface {
 }
 
 type errorGroupServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewErrorGroupServiceClient(cc *grpc.ClientConn) ErrorGroupServiceClient {
+func NewErrorGroupServiceClient(cc grpc.ClientConnInterface) ErrorGroupServiceClient {
 	return &errorGroupServiceClient{cc}
 }
 

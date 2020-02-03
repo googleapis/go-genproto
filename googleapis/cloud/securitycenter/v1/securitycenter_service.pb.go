@@ -2276,11 +2276,11 @@ var fileDescriptor_dd84f222a6a48f30 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // SecurityCenterClient is the client API for SecurityCenter service.
 //
@@ -2340,10 +2340,10 @@ type SecurityCenterClient interface {
 }
 
 type securityCenterClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewSecurityCenterClient(cc *grpc.ClientConn) SecurityCenterClient {
+func NewSecurityCenterClient(cc grpc.ClientConnInterface) SecurityCenterClient {
 	return &securityCenterClient{cc}
 }
 

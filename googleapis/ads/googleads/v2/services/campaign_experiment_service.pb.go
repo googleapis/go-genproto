@@ -830,11 +830,11 @@ var fileDescriptor_fe5841845e481fad = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // CampaignExperimentServiceClient is the client API for CampaignExperimentService service.
 //
@@ -876,10 +876,10 @@ type CampaignExperimentServiceClient interface {
 }
 
 type campaignExperimentServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewCampaignExperimentServiceClient(cc *grpc.ClientConn) CampaignExperimentServiceClient {
+func NewCampaignExperimentServiceClient(cc grpc.ClientConnInterface) CampaignExperimentServiceClient {
 	return &campaignExperimentServiceClient{cc}
 }
 

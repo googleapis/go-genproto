@@ -419,11 +419,11 @@ var fileDescriptor_6100cff1a3faa6ff = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // KeywordPlanNegativeKeywordServiceClient is the client API for KeywordPlanNegativeKeywordService service.
 //
@@ -437,10 +437,10 @@ type KeywordPlanNegativeKeywordServiceClient interface {
 }
 
 type keywordPlanNegativeKeywordServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewKeywordPlanNegativeKeywordServiceClient(cc *grpc.ClientConn) KeywordPlanNegativeKeywordServiceClient {
+func NewKeywordPlanNegativeKeywordServiceClient(cc grpc.ClientConnInterface) KeywordPlanNegativeKeywordServiceClient {
 	return &keywordPlanNegativeKeywordServiceClient{cc}
 }
 

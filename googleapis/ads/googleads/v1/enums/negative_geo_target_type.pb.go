@@ -32,9 +32,13 @@ const (
 	NegativeGeoTargetTypeEnum_UNKNOWN NegativeGeoTargetTypeEnum_NegativeGeoTargetType = 1
 	// Specifies that a user is excluded from seeing the ad if they
 	// are in, or show interest in, advertiser's excluded locations.
+	// DONT_CARE is removed in V2, use PRESENCE_OR_INTEREST
+	// instead.
 	NegativeGeoTargetTypeEnum_DONT_CARE NegativeGeoTargetTypeEnum_NegativeGeoTargetType = 2
 	// Specifies that a user is excluded from seeing the ad if they
 	// are in advertiser's excluded locations.
+	// LOCATION_OF_PRESENCE is removed in V2, use PRESENCE
+	// instead.
 	NegativeGeoTargetTypeEnum_LOCATION_OF_PRESENCE NegativeGeoTargetTypeEnum_NegativeGeoTargetType = 3
 )
 

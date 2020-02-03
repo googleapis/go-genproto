@@ -1316,11 +1316,11 @@ var fileDescriptor_2b98a574e1e7c287 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // SubscriberClient is the client API for Subscriber service.
 //
@@ -1372,10 +1372,10 @@ type SubscriberClient interface {
 }
 
 type subscriberClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewSubscriberClient(cc *grpc.ClientConn) SubscriberClient {
+func NewSubscriberClient(cc grpc.ClientConnInterface) SubscriberClient {
 	return &subscriberClient{cc}
 }
 
@@ -1740,10 +1740,10 @@ type PublisherClient interface {
 }
 
 type publisherClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewPublisherClient(cc *grpc.ClientConn) PublisherClient {
+func NewPublisherClient(cc grpc.ClientConnInterface) PublisherClient {
 	return &publisherClient{cc}
 }
 

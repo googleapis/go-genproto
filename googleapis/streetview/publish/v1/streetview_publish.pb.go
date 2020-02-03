@@ -71,11 +71,11 @@ var fileDescriptor_39e5f334059d9d6e = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // StreetViewPublishServiceClient is the client API for StreetViewPublishService service.
 //
@@ -244,10 +244,10 @@ type StreetViewPublishServiceClient interface {
 }
 
 type streetViewPublishServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewStreetViewPublishServiceClient(cc *grpc.ClientConn) StreetViewPublishServiceClient {
+func NewStreetViewPublishServiceClient(cc grpc.ClientConnInterface) StreetViewPublishServiceClient {
 	return &streetViewPublishServiceClient{cc}
 }
 
