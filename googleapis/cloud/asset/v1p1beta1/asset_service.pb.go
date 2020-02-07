@@ -39,12 +39,13 @@ type SearchResourcesRequest struct {
 	// Optional. A list of asset types that this request searches for. If empty, it will
 	// search all the supported asset types.
 	AssetTypes []string `protobuf:"bytes,3,rep,name=asset_types,json=assetTypes,proto3" json:"asset_types,omitempty"`
-	// Optional. The page size for search result pagination. Returned results may be fewer
-	// than requested. The value of this field is capped at 2000.  If set to the
-	// zero value, server will pick an appropriate default.
+	// Optional. The page size for search result pagination. Page size is capped at 500 even
+	// if a larger value is given. If set to zero, server will pick an appropriate
+	// default. Returned results may be fewer than requested. When this happens,
+	// there could be more results as long as `next_page_token` is returned.
 	PageSize int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the preceding call
-	// to this method.  `page_token` must be the value of `next_page_token` from
+	// to this method. `page_token` must be the value of `next_page_token` from
 	// the previous response. The values of all other method parameters, must be
 	// identical to those in the previous call.
 	PageToken            string   `protobuf:"bytes,5,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
@@ -178,9 +179,10 @@ type SearchIamPoliciesRequest struct {
 	// * "policy:myuser@mydomain.com"
 	// * "policy:(myuser@mydomain.com viewer)"
 	Query string `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	// Optional. The page size for search result pagination. Returned results may be fewer
-	// than requested. The maximum is 2000. If set to the zero value, the server
-	// will pick an appropriate default.
+	// Optional. The page size for search result pagination. Page size is capped at 500 even
+	// if a larger value is given. If set to zero, server will pick an appropriate
+	// default. Returned results may be fewer than requested. When this happens,
+	// there could be more results as long as `next_page_token` is returned.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. If present, retrieve the next batch of results from the preceding call to
 	// this method. `page_token` must be the value of `next_page_token` from the
@@ -311,9 +313,10 @@ type SearchAllResourcesRequest struct {
 	// Optional. A list of asset types that this request searches for. If empty, it will
 	// search all the supported asset types.
 	AssetTypes []string `protobuf:"bytes,3,rep,name=asset_types,json=assetTypes,proto3" json:"asset_types,omitempty"`
-	// Optional. The page size for search result pagination. Returned results may be fewer
-	// than requested. The value of this field is capped at 2000.  If set to the
-	// zero value, server will pick an appropriate default.
+	// Optional. The page size for search result pagination. Page size is capped at 500 even
+	// if a larger value is given. If set to zero, server will pick an appropriate
+	// default. Returned results may be fewer than requested. When this happens,
+	// there could be more results as long as `next_page_token` is returned.
 	PageSize int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. If present, then retrieve the next batch of results from the preceding call
 	// to this method.  `page_token` must be the value of `next_page_token` from
@@ -450,9 +453,10 @@ type SearchAllIamPoliciesRequest struct {
 	// * "policy:myuser@mydomain.com"
 	// * "policy:(myuser@mydomain.com viewer)"
 	Query string `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
-	// Optional. The page size for search result pagination. Returned results may be fewer
-	// than requested. The maximum is 2000. If set to the zero value, the server
-	// will pick an appropriate default.
+	// Optional. The page size for search result pagination. Page size is capped at 500 even
+	// if a larger value is given. If set to zero, server will pick an appropriate
+	// default. Returned results may be fewer than requested. When this happens,
+	// there could be more results as long as `next_page_token` is returned.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. If present, retrieve the next batch of results from the preceding call to
 	// this method. `page_token` must be the value of `next_page_token` from the

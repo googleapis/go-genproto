@@ -691,6 +691,8 @@ func (m *SynthesizeSpeechConfig) GetVoice() *VoiceSelectionParams {
 }
 
 // Instructs the speech synthesizer on how to generate the output audio content.
+// If this audio config is supplied in a request, it overrides all existing
+// text-to-speech settings applied to the agent.
 type OutputAudioConfig struct {
 	// Required. Audio encoding of the synthesized audio content.
 	AudioEncoding OutputAudioEncoding `protobuf:"varint,1,opt,name=audio_encoding,json=audioEncoding,proto3,enum=google.cloud.dialogflow.v2.OutputAudioEncoding" json:"audio_encoding,omitempty"`

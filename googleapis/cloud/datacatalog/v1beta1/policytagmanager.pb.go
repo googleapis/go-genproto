@@ -137,14 +137,9 @@ func (m *Taxonomy) GetActivatedPolicyTypes() []Taxonomy_PolicyType {
 }
 
 // Denotes one policy tag in a taxonomy (e.g. ssn). Policy Tags can be defined
-// in a hierarchy. For example, consider the following hierachy:
-//               Geolocation
-//                    |
-//   ------------------------------------
-//   |                |                 |
-// LatLong          City              ZipCode
-// PolicyTag "Geolocation" contains three child policy tags: "LatLong",
-// "City", and "ZipCode".
+// in a hierarchy. For example, consider the following hierarchy:
+// Geolocation -&gt; (LatLong, City, ZipCode). PolicyTag "Geolocation"
+// contains three child policy tags: "LatLong", "City", and "ZipCode".
 type PolicyTag struct {
 	// Output only. Resource name of this policy tag, whose format is:
 	// "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
