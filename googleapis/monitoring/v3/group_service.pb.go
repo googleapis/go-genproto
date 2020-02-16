@@ -30,8 +30,9 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The `ListGroup` request.
 type ListGroupsRequest struct {
-	// Required. The project whose groups are to be listed. The format is
-	// `"projects/{project_id_or_number}"`.
+	// Required. The project whose groups are to be listed. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]
 	Name string `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
 	// An optional filter consisting of a single group name.  The filters limit
 	// the groups returned based on their parent-child relationship with the
@@ -44,7 +45,7 @@ type ListGroupsRequest struct {
 	Filter isListGroupsRequest_Filter `protobuf_oneof:"filter"`
 	// A positive number that is the maximum number of results to return.
 	PageSize int32 `protobuf:"varint,5,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// If this field is not empty then it must contain the `nextPageToken` value
+	// If this field is not empty then it must contain the `next_page_token` value
 	// returned by a previous call to this method.  Using this field causes the
 	// method to return additional results from the previous method call.
 	PageToken            string   `protobuf:"bytes,6,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
@@ -164,7 +165,7 @@ type ListGroupsResponse struct {
 	Group []*Group `protobuf:"bytes,1,rep,name=group,proto3" json:"group,omitempty"`
 	// If there are more results than have been returned, then this field is set
 	// to a non-empty value.  To see the additional results,
-	// use that value as `pageToken` in the next call to this method.
+	// use that value as `page_token` in the next call to this method.
 	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -212,8 +213,9 @@ func (m *ListGroupsResponse) GetNextPageToken() string {
 
 // The `GetGroup` request.
 type GetGroupRequest struct {
-	// Required. The group to retrieve. The format is
-	// `"projects/{project_id_or_number}/groups/{group_id}"`.
+	// Required. The group to retrieve. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -254,8 +256,9 @@ func (m *GetGroupRequest) GetName() string {
 
 // The `CreateGroup` request.
 type CreateGroupRequest struct {
-	// Required. The project in which to create the group. The format is
-	// `"projects/{project_id_or_number}"`.
+	// Required. The project in which to create the group. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]
 	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. A group definition. It is an error to define the `name` field because
 	// the system assigns the name.
@@ -367,8 +370,9 @@ func (m *UpdateGroupRequest) GetValidateOnly() bool {
 // The `DeleteGroup` request. The default behavior is to be able to delete a
 // single group without any descendants.
 type DeleteGroupRequest struct {
-	// Required. The group to delete. The format is
-	// `"projects/{project_id_or_number}/groups/{group_id}"`.
+	// Required. The group to delete. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// If this field is true, then the request means to delete a group with all
 	// its descendants. Otherwise, the request means to delete a group only when
@@ -420,22 +424,24 @@ func (m *DeleteGroupRequest) GetRecursive() bool {
 
 // The `ListGroupMembers` request.
 type ListGroupMembersRequest struct {
-	// Required. The group whose members are listed. The format is
-	// `"projects/{project_id_or_number}/groups/{group_id}"`.
+	// Required. The group whose members are listed. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
 	Name string `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
 	// A positive number that is the maximum number of results to return.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// If this field is not empty then it must contain the `nextPageToken` value
+	// If this field is not empty then it must contain the `next_page_token` value
 	// returned by a previous call to this method.  Using this field causes the
 	// method to return additional results from the previous method call.
 	PageToken string `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// An optional [list filter](/monitoring/api/learn_more#filtering) describing
-	// the members to be returned.  The filter may reference the type, labels, and
-	// metadata of monitored resources that comprise the group.
-	// For example, to return only resources representing Compute Engine VM
-	// instances, use this filter:
+	// An optional [list
+	// filter](https://cloud.google.com/monitoring/api/learn_more#filtering)
+	// describing the members to be returned.  The filter may reference the type,
+	// labels, and metadata of monitored resources that comprise the group. For
+	// example, to return only resources representing Compute Engine VM instances,
+	// use this filter:
 	//
-	//     resource.type = "gce_instance"
+	//     `resource.type = "gce_instance"`
 	Filter string `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
 	// An optional time interval for which results should be returned. Only
 	// members that were part of the group during the specified interval are
@@ -513,7 +519,7 @@ type ListGroupMembersResponse struct {
 	Members []*monitoredres.MonitoredResource `protobuf:"bytes,1,rep,name=members,proto3" json:"members,omitempty"`
 	// If there are more results than have been returned, then this field is
 	// set to a non-empty value.  To see the additional results, use that value as
-	// `pageToken` in the next call to this method.
+	// `page_token` in the next call to this method.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	// The total number of elements matching this request.
 	TotalSize            int32    `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`

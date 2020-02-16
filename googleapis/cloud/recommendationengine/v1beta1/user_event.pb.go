@@ -81,7 +81,7 @@ type UserEvent struct {
 	// * `remove-from-list` Items being removed from a list.
 	// * `search` Product search.
 	// * `shopping-cart-page-view` User viewing a shopping cart.
-	// * `impression` A list of items displayed to the user.
+	// * `impression` List of items displayed. Used by Google Tag Manager.
 	EventType string `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
 	// Required. User information.
 	UserInfo *UserInfo `protobuf:"bytes,2,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
@@ -116,8 +116,8 @@ type UserEvent struct {
 	// Optional. Only required for ImportUserEvents method. Timestamp of user
 	// event created.
 	EventTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=event_time,json=eventTime,proto3" json:"event_time,omitempty"`
-	// Optional. The field below should *not* be set if using javascript pixel
-	// or Recommendations AI Tag.
+	// Optional. This field should *not* be set when using JavaScript pixel
+	// or the Recommendations AI Tag. Defaults to `EVENT_SOURCE_UNSPECIFIED`.
 	EventSource          UserEvent_EventSource `protobuf:"varint,6,opt,name=event_source,json=eventSource,proto3,enum=google.cloud.recommendationengine.v1beta1.UserEvent_EventSource" json:"event_source,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -204,17 +204,15 @@ type UserInfo struct {
 	// Optional. Unique identifier for logged-in user with a length limit of 128
 	// bytes. Required only for logged-in users.
 	UserId string `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	// Optional. The below fields should *not* be set if using the javascript
-	// pixel. IP address of the user. Optional. This could be either IPv4 (e.g.
-	// 104.133.9.80) or IPv6 (e.g. 2001:0db8:85a3:0000:0000:8a2e:0370:7334). This
-	// should *not* be set when using the javascript pixel or if
-	// `direct_user_request` is set. Used to extract location information for
-	// personalization.
+	// Optional. IP address of the user. This could be either IPv4 (e.g. 104.133.9.80) or
+	// IPv6 (e.g. 2001:0db8:85a3:0000:0000:8a2e:0370:7334). This should *not* be
+	// set when using the javascript pixel or if `direct_user_request` is set.
+	// Used to extract location information for personalization.
 	IpAddress string `protobuf:"bytes,3,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
 	// Optional. User agent as included in the HTTP header. UTF-8 encoded string
 	// with a length limit of 1 KiB.
 	//
-	// This should *not* be set when using the javascript pixel or if
+	// This should *not* be set when using the JavaScript pixel or if
 	// `directUserRequest` is set.
 	UserAgent string `protobuf:"bytes,4,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
 	// Optional. Indicates if the request is made directly from the end user
@@ -292,11 +290,11 @@ func (m *UserInfo) GetDirectUserRequest() bool {
 // User event details shared by all recommendation types.
 type EventDetail struct {
 	// Optional. Complete url (window.location.href) of the user's current page.
-	// When using the JavaScript pixel, this is filled in automatically.
+	// When using the JavaScript pixel, this value is filled in automatically.
 	// Maximum length 5KB.
 	Uri string `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
-	// Optional. This is the referrer url of the current page. When using
-	// the JavaScript pixel, this is filled in automatically.
+	// Optional. The referrer url of the current page. When using
+	// the JavaScript pixel, this value is filled in automatically.
 	ReferrerUri string `protobuf:"bytes,6,opt,name=referrer_uri,json=referrerUri,proto3" json:"referrer_uri,omitempty"`
 	// Optional. A unique id of a web page view.
 	// This should be kept the same for all user events triggered from the same

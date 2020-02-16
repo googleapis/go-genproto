@@ -32,7 +32,7 @@ const (
 	// An unspecified combiner.
 	AlertPolicy_COMBINE_UNSPECIFIED AlertPolicy_ConditionCombinerType = 0
 	// Combine conditions using the logical `AND` operator. An
-	// incident is created only if all conditions are met
+	// incident is created only if all the conditions are met
 	// simultaneously. This combiner is satisfied if all conditions are
 	// met, even if they are met on completely different resources.
 	AlertPolicy_AND AlertPolicy_ConditionCombinerType = 1
@@ -73,9 +73,9 @@ func (AlertPolicy_ConditionCombinerType) EnumDescriptor() ([]byte, []int) {
 // [Introduction to Alerting](/monitoring/alerts/).
 type AlertPolicy struct {
 	// Required if the policy exists. The resource name for this policy. The
-	// syntax is:
+	// format is:
 	//
-	//     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+	//     projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
 	//
 	// `[ALERT_POLICY_ID]` is assigned by Stackdriver Monitoring when the policy
 	// is created.  When calling the
@@ -106,13 +106,13 @@ type AlertPolicy struct {
 	// OR according to the `combiner` field. If the combined conditions evaluate
 	// to true, then an incident is created. A policy can have from one to six
 	// conditions.
-	// If |condition_time_series_uery_language| is present, it must be the only
-	// |condition|.
+	// If `condition_time_series_query_language` is present, it must be the only
+	// `condition`.
 	Conditions []*AlertPolicy_Condition `protobuf:"bytes,12,rep,name=conditions,proto3" json:"conditions,omitempty"`
 	// How to combine the results of multiple conditions to determine if an
 	// incident should be opened.
-	// If condition_time_series_query_language is present, this must be
-	// COMBINE_UNSPECIFIED.
+	// If `condition_time_series_query_language` is present, this must be
+	// `COMBINE_UNSPECIFIED`.
 	Combiner AlertPolicy_ConditionCombinerType `protobuf:"varint,6,opt,name=combiner,proto3,enum=google.monitoring.v3.AlertPolicy_ConditionCombinerType" json:"combiner,omitempty"`
 	// Whether or not the policy is enabled. On write, the default interpretation
 	// if unset is that the policy is enabled. On read, clients should not make
@@ -130,9 +130,9 @@ type AlertPolicy struct {
 	// [`NotificationChannel`][google.monitoring.v3.NotificationChannel]
 	// objects that are returned from the [`ListNotificationChannels`]
 	// [google.monitoring.v3.NotificationChannelService.ListNotificationChannels]
-	// method. The syntax of the entries in this field is:
+	// method. The format of the entries in this field is:
 	//
-	//     projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+	//     projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
 	NotificationChannels []string `protobuf:"bytes,14,rep,name=notification_channels,json=notificationChannels,proto3" json:"notification_channels,omitempty"`
 	// A read-only record of the creation of the alerting policy. If provided
 	// in a call to create or update, this field will be ignored.
@@ -308,9 +308,9 @@ func (m *AlertPolicy_Documentation) GetMimeType() string {
 // that something is wrong.
 type AlertPolicy_Condition struct {
 	// Required if the condition exists. The unique resource name for this
-	// condition. Its syntax is:
+	// condition. Its format is:
 	//
-	//     projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+	//     projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
 	//
 	// `[CONDITION_ID]` is assigned by Stackdriver Monitoring when the
 	// condition is created as part of a new or updated alerting policy.
@@ -519,7 +519,7 @@ func (*AlertPolicy_Condition_Trigger) XXX_OneofWrappers() []interface{} {
 // A condition type that compares a collection of time series
 // against a threshold.
 type AlertPolicy_Condition_MetricThreshold struct {
-	// A [filter](/monitoring/api/v3/filters) that
+	// A [filter](https://cloud.google.com/monitoring/api/v3/filters) that
 	// identifies which time series should be compared with the threshold.
 	//
 	// The filter is similar to the one that is specified in the
@@ -542,11 +542,11 @@ type AlertPolicy_Condition_MetricThreshold struct {
 	// is advisable to use the `ListTimeSeries` method when debugging this
 	// field.
 	Aggregations []*Aggregation `protobuf:"bytes,8,rep,name=aggregations,proto3" json:"aggregations,omitempty"`
-	// A [filter](/monitoring/api/v3/filters) that identifies a time
-	// series that should be used as the denominator of a ratio that will be
-	// compared with the threshold. If a `denominator_filter` is specified,
-	// the time series specified by the `filter` field will be used as the
-	// numerator.
+	// A [filter](https://cloud.google.com/monitoring/api/v3/filters) that
+	// identifies a time series that should be used as the denominator of a
+	// ratio that will be compared with the threshold. If a
+	// `denominator_filter` is specified, the time series specified by the
+	// `filter` field will be used as the numerator.
 	//
 	// The filter must specify the metric type and optionally may contain
 	// restrictions on resource type, resource labels, and metric labels.
@@ -682,7 +682,7 @@ func (m *AlertPolicy_Condition_MetricThreshold) GetTrigger() *AlertPolicy_Condit
 // when a time series for the specified metric of a monitored
 // resource does not include any data in the specified `duration`.
 type AlertPolicy_Condition_MetricAbsence struct {
-	// A [filter](/monitoring/api/v3/filters) that
+	// A [filter](https://cloud.google.com/monitoring/api/v3/filters) that
 	// identifies which time series should be compared with the threshold.
 	//
 	// The filter is similar to the one that is specified in the

@@ -35,7 +35,7 @@ type ListNotificationChannelDescriptorsRequest struct {
 	// Required. The REST resource name of the parent from which to retrieve
 	// the notification channel descriptors. The expected syntax is:
 	//
-	//     projects/[PROJECT_ID]
+	//     projects/[PROJECT_ID_OR_NUMBER]
 	//
 	// Note that this names the parent container in which to look for the
 	// descriptors; to retrieve a single descriptor by name, use the
@@ -163,8 +163,9 @@ func (m *ListNotificationChannelDescriptorsResponse) GetNextPageToken() string {
 
 // The `GetNotificationChannelDescriptor` response.
 type GetNotificationChannelDescriptorRequest struct {
-	// Required. The channel type for which to execute the request. The format is
-	// `projects/[PROJECT_ID]/notificationChannelDescriptors/{channel_type}`.
+	// Required. The channel type for which to execute the request. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[CHANNEL_TYPE]
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -209,10 +210,10 @@ func (m *GetNotificationChannelDescriptorRequest) GetName() string {
 type CreateNotificationChannelRequest struct {
 	// Required. The project on which to execute the request. The format is:
 	//
-	//     projects/[PROJECT_ID]
+	//     projects/[PROJECT_ID_OR_NUMBER]
 	//
-	// Note that this names the container into which the channel will be
-	// written. This does not name the newly created channel. The resulting
+	// This names the container into which the channel will be
+	// written, this does not name the newly created channel. The resulting
 	// channel's name will have a normalized version of this field as a prefix,
 	// but will add `/notificationChannels/[CHANNEL_ID]` to identify the channel.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
@@ -264,8 +265,11 @@ func (m *CreateNotificationChannelRequest) GetNotificationChannel() *Notificatio
 
 // The `ListNotificationChannels` request.
 type ListNotificationChannelsRequest struct {
-	// Required. The project on which to execute the request. The format is
-	// `projects/[PROJECT_ID]`. That is, this names the container
+	// Required. The project on which to execute the request. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]
+	//
+	// This names the container
 	// in which to look for the notification channels; it does not name a
 	// specific channel. To query a specific channel by REST resource name, use
 	// the
@@ -276,14 +280,14 @@ type ListNotificationChannelsRequest struct {
 	// notification channels to be included in the response.
 	//
 	// For more details, see [sorting and
-	// filtering](/monitoring/api/v3/sorting-and-filtering).
+	// filtering](https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
 	Filter string `protobuf:"bytes,6,opt,name=filter,proto3" json:"filter,omitempty"`
 	// A comma-separated list of fields by which to sort the result. Supports
 	// the same set of fields as in `filter`. Entries can be prefixed with
 	// a minus sign to sort in descending rather than ascending order.
 	//
 	// For more details, see [sorting and
-	// filtering](/monitoring/api/v3/sorting-and-filtering).
+	// filtering](https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
 	OrderBy string `protobuf:"bytes,7,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	// The maximum number of results to return in a single response. If
 	// not set to a positive number, a reasonable value will be chosen by the
@@ -413,8 +417,9 @@ func (m *ListNotificationChannelsResponse) GetNextPageToken() string {
 
 // The `GetNotificationChannel` request.
 type GetNotificationChannelRequest struct {
-	// Required. The channel for which to execute the request. The format is
-	// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`.
+	// Required. The channel for which to execute the request. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -508,8 +513,9 @@ func (m *UpdateNotificationChannelRequest) GetNotificationChannel() *Notificatio
 
 // The `DeleteNotificationChannel` request.
 type DeleteNotificationChannelRequest struct {
-	// Required. The channel for which to execute the request. The format is
-	// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`.
+	// Required. The channel for which to execute the request. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// If true, the notification channel will be deleted regardless of its
 	// use in alert policies (the policies will be updated to remove the
