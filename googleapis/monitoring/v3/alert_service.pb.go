@@ -30,18 +30,20 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The protocol for the `CreateAlertPolicy` request.
 type CreateAlertPolicyRequest struct {
-	// Required. The project in which to create the alerting policy. The format is
-	// `projects/[PROJECT_ID]`.
+	// Required. The project in which to create the alerting policy. The format is:
+	//
+	//     projects/[PROJECT_ID_OR_NUMBER]
 	//
 	// Note that this field names the parent container in which the alerting
 	// policy will be written, not the name of the created policy. The alerting
 	// policy that is returned will have a name that contains a normalized
 	// representation of this name as a prefix but adds a suffix of the form
-	// `/alertPolicies/[POLICY_ID]`, identifying the policy in the container.
+	// `/alertPolicies/[ALERT_POLICY_ID]`, identifying the policy in the
+	// container.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The requested alerting policy. You should omit the `name` field in this
 	// policy. The name will be returned in the new policy, including
-	// a new [ALERT_POLICY_ID] value.
+	// a new `[ALERT_POLICY_ID]` value.
 	AlertPolicy          *AlertPolicy `protobuf:"bytes,2,opt,name=alert_policy,json=alertPolicy,proto3" json:"alert_policy,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
@@ -89,9 +91,9 @@ func (m *CreateAlertPolicyRequest) GetAlertPolicy() *AlertPolicy {
 
 // The protocol for the `GetAlertPolicy` request.
 type GetAlertPolicyRequest struct {
-	// Required. The alerting policy to retrieve. The format is
+	// Required. The alerting policy to retrieve. The format is:
 	//
-	//     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+	//     projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -132,9 +134,9 @@ func (m *GetAlertPolicyRequest) GetName() string {
 
 // The protocol for the `ListAlertPolicies` request.
 type ListAlertPoliciesRequest struct {
-	// Required. The project whose alert policies are to be listed. The format is
+	// Required. The project whose alert policies are to be listed. The format is:
 	//
-	//     projects/[PROJECT_ID]
+	//     projects/[PROJECT_ID_OR_NUMBER]
 	//
 	// Note that this field names the parent container in which the alerting
 	// policies to be listed are stored. To retrieve a single alerting policy
@@ -146,14 +148,14 @@ type ListAlertPoliciesRequest struct {
 	// alert policies to be included in the response.
 	//
 	// For more details, see [sorting and
-	// filtering](/monitoring/api/v3/sorting-and-filtering).
+	// filtering](https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
 	Filter string `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
 	// A comma-separated list of fields by which to sort the result. Supports
 	// the same set of field references as the `filter` field. Entries can be
 	// prefixed with a minus sign to sort by the field in descending order.
 	//
 	// For more details, see [sorting and
-	// filtering](/monitoring/api/v3/sorting-and-filtering).
+	// filtering](https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
 	OrderBy string `protobuf:"bytes,6,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	// The maximum number of results to return in a single response.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -232,7 +234,7 @@ type ListAlertPoliciesResponse struct {
 	AlertPolicies []*AlertPolicy `protobuf:"bytes,3,rep,name=alert_policies,json=alertPolicies,proto3" json:"alert_policies,omitempty"`
 	// If there might be more results than were returned, then this field is set
 	// to a non-empty value. To see the additional results,
-	// use that value as `pageToken` in the next call to this method.
+	// use that value as `page_token` in the next call to this method.
 	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -355,7 +357,7 @@ func (m *UpdateAlertPolicyRequest) GetAlertPolicy() *AlertPolicy {
 type DeleteAlertPolicyRequest struct {
 	// Required. The alerting policy to delete. The format is:
 	//
-	//     projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+	//     projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
 	//
 	// For more information, see [AlertPolicy][google.monitoring.v3.AlertPolicy].
 	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
