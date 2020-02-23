@@ -295,14 +295,7 @@ type Instance struct {
 	// as the string:  name + "_" + value  would prove problematic if we were to
 	// allow "_" in a future release.
 	Labels map[string]string `protobuf:"bytes,7,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Output only. The endpoint URIs based on the instance config.
-	// For example, instances located in a specific cloud region (or multi region)
-	// such as nam3, would have a nam3 specific endpoint URI.
-	// This URI is to be used implictly by SDK clients, with fallback to default
-	// URI. These endpoints are intended to optimize the network routing between
-	// the client and the instance's serving resources.
-	// If multiple endpoints are present, client may establish connections using
-	// any of the given URIs.
+	// Deprecated. This field is not populated.
 	EndpointUris         []string `protobuf:"bytes,8,rep,name=endpoint_uris,json=endpointUris,proto3" json:"endpoint_uris,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
