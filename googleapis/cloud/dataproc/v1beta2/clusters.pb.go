@@ -2649,7 +2649,7 @@ type ClusterControllerClient interface {
 	// After the operation completes,
 	// [Operation.response][google.longrunning.Operation.response]
 	// contains
-	// [Empty](google.protobuf.Empty).
+	// [Empty][google.protobuf.Empty].
 	DiagnoseCluster(ctx context.Context, in *DiagnoseClusterRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -2739,7 +2739,7 @@ type ClusterControllerServer interface {
 	// After the operation completes,
 	// [Operation.response][google.longrunning.Operation.response]
 	// contains
-	// [Empty](google.protobuf.Empty).
+	// [Empty][google.protobuf.Empty].
 	DiagnoseCluster(context.Context, *DiagnoseClusterRequest) (*longrunning.Operation, error)
 }
 
