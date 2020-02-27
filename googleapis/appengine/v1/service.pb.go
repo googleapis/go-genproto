@@ -195,7 +195,9 @@ func init() {
 	proto.RegisterMapType((map[string]float64)(nil), "google.appengine.v1.TrafficSplit.AllocationsEntry")
 }
 
-func init() { proto.RegisterFile("google/appengine/v1/service.proto", fileDescriptor_c1fc975248a879f7) }
+func init() {
+	proto.RegisterFile("google/appengine/v1/service.proto", fileDescriptor_c1fc975248a879f7)
+}
 
 var fileDescriptor_c1fc975248a879f7 = []byte{
 	// 356 bytes of a gzipped FileDescriptorProto

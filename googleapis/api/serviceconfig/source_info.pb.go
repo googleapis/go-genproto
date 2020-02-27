@@ -67,7 +67,9 @@ func init() {
 	proto.RegisterType((*SourceInfo)(nil), "google.api.SourceInfo")
 }
 
-func init() { proto.RegisterFile("google/api/source_info.proto", fileDescriptor_733a5fd590cc34b8) }
+func init() {
+	proto.RegisterFile("google/api/source_info.proto", fileDescriptor_733a5fd590cc34b8)
+}
 
 var fileDescriptor_733a5fd590cc34b8 = []byte{
 	// 198 bytes of a gzipped FileDescriptorProto

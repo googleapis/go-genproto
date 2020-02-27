@@ -292,7 +292,9 @@ func init() {
 	proto.RegisterMapType((map[string]string)(nil), "google.cloud.automl.v1.Model.LabelsEntry")
 }
 
-func init() { proto.RegisterFile("google/cloud/automl/v1/model.proto", fileDescriptor_452845e4ed6fce9d) }
+func init() {
+	proto.RegisterFile("google/cloud/automl/v1/model.proto", fileDescriptor_452845e4ed6fce9d)
+}
 
 var fileDescriptor_452845e4ed6fce9d = []byte{
 	// 765 bytes of a gzipped FileDescriptorProto

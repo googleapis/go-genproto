@@ -363,7 +363,9 @@ func init() {
 	proto.RegisterMapType((map[string]int64)(nil), "google.api.QuotaLimit.ValuesEntry")
 }
 
-func init() { proto.RegisterFile("google/api/quota.proto", fileDescriptor_6822ef0454b3845a) }
+func init() {
+	proto.RegisterFile("google/api/quota.proto", fileDescriptor_6822ef0454b3845a)
+}
 
 var fileDescriptor_6822ef0454b3845a = []byte{
 	// 453 bytes of a gzipped FileDescriptorProto

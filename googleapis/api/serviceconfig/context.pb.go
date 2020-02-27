@@ -186,7 +186,9 @@ func init() {
 	proto.RegisterType((*ContextRule)(nil), "google.api.ContextRule")
 }
 
-func init() { proto.RegisterFile("google/api/context.proto", fileDescriptor_48d8be90143bd46c) }
+func init() {
+	proto.RegisterFile("google/api/context.proto", fileDescriptor_48d8be90143bd46c)
+}
 
 var fileDescriptor_48d8be90143bd46c = []byte{
 	// 281 bytes of a gzipped FileDescriptorProto

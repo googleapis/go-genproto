@@ -249,7 +249,9 @@ func init() {
 	proto.RegisterType((*TimeZone)(nil), "google.type.TimeZone")
 }
 
-func init() { proto.RegisterFile("google/type/datetime.proto", fileDescriptor_247e8eac669493f4) }
+func init() {
+	proto.RegisterFile("google/type/datetime.proto", fileDescriptor_247e8eac669493f4)
+}
 
 var fileDescriptor_247e8eac669493f4 = []byte{
 	// 349 bytes of a gzipped FileDescriptorProto

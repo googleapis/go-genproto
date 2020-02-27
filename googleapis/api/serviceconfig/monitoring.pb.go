@@ -175,7 +175,9 @@ func init() {
 	proto.RegisterType((*Monitoring_MonitoringDestination)(nil), "google.api.Monitoring.MonitoringDestination")
 }
 
-func init() { proto.RegisterFile("google/api/monitoring.proto", fileDescriptor_6e2076230a37a7e3) }
+func init() {
+	proto.RegisterFile("google/api/monitoring.proto", fileDescriptor_6e2076230a37a7e3)
+}
 
 var fileDescriptor_6e2076230a37a7e3 = []byte{
 	// 263 bytes of a gzipped FileDescriptorProto

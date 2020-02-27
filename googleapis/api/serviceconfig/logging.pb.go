@@ -165,7 +165,9 @@ func init() {
 	proto.RegisterType((*Logging_LoggingDestination)(nil), "google.api.Logging.LoggingDestination")
 }
 
-func init() { proto.RegisterFile("google/api/logging.proto", fileDescriptor_9505b080db6dcefe) }
+func init() {
+	proto.RegisterFile("google/api/logging.proto", fileDescriptor_9505b080db6dcefe)
+}
 
 var fileDescriptor_9505b080db6dcefe = []byte{
 	// 260 bytes of a gzipped FileDescriptorProto

@@ -1100,7 +1100,9 @@ func init() {
 	proto.RegisterType((*StreamReadsResponse)(nil), "google.genomics.v1.StreamReadsResponse")
 }
 
-func init() { proto.RegisterFile("google/genomics/v1/reads.proto", fileDescriptor_6b02d5d0c80a106c) }
+func init() {
+	proto.RegisterFile("google/genomics/v1/reads.proto", fileDescriptor_6b02d5d0c80a106c)
+}
 
 var fileDescriptor_6b02d5d0c80a106c = []byte{
 	// 1333 bytes of a gzipped FileDescriptorProto

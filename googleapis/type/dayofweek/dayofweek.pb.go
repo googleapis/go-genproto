@@ -77,7 +77,9 @@ func init() {
 	proto.RegisterEnum("google.type.DayOfWeek", DayOfWeek_name, DayOfWeek_value)
 }
 
-func init() { proto.RegisterFile("google/type/dayofweek.proto", fileDescriptor_7d916f1831ff5ed9) }
+func init() {
+	proto.RegisterFile("google/type/dayofweek.proto", fileDescriptor_7d916f1831ff5ed9)
+}
 
 var fileDescriptor_7d916f1831ff5ed9 = []byte{
 	// 235 bytes of a gzipped FileDescriptorProto

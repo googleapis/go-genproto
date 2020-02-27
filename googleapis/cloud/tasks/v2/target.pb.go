@@ -732,7 +732,9 @@ func init() {
 	proto.RegisterType((*OidcToken)(nil), "google.cloud.tasks.v2.OidcToken")
 }
 
-func init() { proto.RegisterFile("google/cloud/tasks/v2/target.proto", fileDescriptor_9ccba55e885aeacf) }
+func init() {
+	proto.RegisterFile("google/cloud/tasks/v2/target.proto", fileDescriptor_9ccba55e885aeacf)
+}
 
 var fileDescriptor_9ccba55e885aeacf = []byte{
 	// 685 bytes of a gzipped FileDescriptorProto

@@ -2021,7 +2021,9 @@ func init() {
 	proto.RegisterType((*LocationMetadata)(nil), "google.cloud.kms.v1.LocationMetadata")
 }
 
-func init() { proto.RegisterFile("google/cloud/kms/v1/service.proto", fileDescriptor_723aeaeb61739a25) }
+func init() {
+	proto.RegisterFile("google/cloud/kms/v1/service.proto", fileDescriptor_723aeaeb61739a25)
+}
 
 var fileDescriptor_723aeaeb61739a25 = []byte{
 	// 2304 bytes of a gzipped FileDescriptorProto

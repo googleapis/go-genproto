@@ -970,7 +970,9 @@ func init() {
 	proto.RegisterMapType((map[string]*IssueTaxonomy_Component)(nil), "google.cloud.support.common.IssueTaxonomy.Category.ComponentsEntry")
 }
 
-func init() { proto.RegisterFile("google/cloud/support/common.proto", fileDescriptor_f71dd4106e21c931) }
+func init() {
+	proto.RegisterFile("google/cloud/support/common.proto", fileDescriptor_f71dd4106e21c931)
+}
 
 var fileDescriptor_f71dd4106e21c931 = []byte{
 	// 1336 bytes of a gzipped FileDescriptorProto

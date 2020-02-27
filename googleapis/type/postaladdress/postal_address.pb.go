@@ -230,7 +230,9 @@ func init() {
 	proto.RegisterType((*PostalAddress)(nil), "google.type.PostalAddress")
 }
 
-func init() { proto.RegisterFile("google/type/postal_address.proto", fileDescriptor_17c0e9bca935790c) }
+func init() {
+	proto.RegisterFile("google/type/postal_address.proto", fileDescriptor_17c0e9bca935790c)
+}
 
 var fileDescriptor_17c0e9bca935790c = []byte{
 	// 343 bytes of a gzipped FileDescriptorProto

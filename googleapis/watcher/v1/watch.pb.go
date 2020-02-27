@@ -303,7 +303,9 @@ func init() {
 	proto.RegisterType((*Change)(nil), "google.watcher.v1.Change")
 }
 
-func init() { proto.RegisterFile("google/watcher/v1/watch.proto", fileDescriptor_fbde036e07af626b) }
+func init() {
+	proto.RegisterFile("google/watcher/v1/watch.proto", fileDescriptor_fbde036e07af626b)
+}
 
 var fileDescriptor_fbde036e07af626b = []byte{
 	// 449 bytes of a gzipped FileDescriptorProto

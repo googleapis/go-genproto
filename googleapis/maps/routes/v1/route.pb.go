@@ -749,7 +749,9 @@ func init() {
 	proto.RegisterType((*NavigationInstruction)(nil), "google.maps.routes.v1.NavigationInstruction")
 }
 
-func init() { proto.RegisterFile("google/maps/routes/v1/route.proto", fileDescriptor_294c3406019f26b4) }
+func init() {
+	proto.RegisterFile("google/maps/routes/v1/route.proto", fileDescriptor_294c3406019f26b4)
+}
 
 var fileDescriptor_294c3406019f26b4 = []byte{
 	// 1029 bytes of a gzipped FileDescriptorProto

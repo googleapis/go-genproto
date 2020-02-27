@@ -314,7 +314,9 @@ func init() {
 	proto.RegisterType((*KeySet)(nil), "google.spanner.v1.KeySet")
 }
 
-func init() { proto.RegisterFile("google/spanner/v1/keys.proto", fileDescriptor_558e8abca28348dd) }
+func init() {
+	proto.RegisterFile("google/spanner/v1/keys.proto", fileDescriptor_558e8abca28348dd)
+}
 
 var fileDescriptor_558e8abca28348dd = []byte{
 	// 372 bytes of a gzipped FileDescriptorProto

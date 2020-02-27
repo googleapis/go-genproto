@@ -144,7 +144,9 @@ func init() {
 	proto.RegisterType((*Billing_BillingDestination)(nil), "google.api.Billing.BillingDestination")
 }
 
-func init() { proto.RegisterFile("google/api/billing.proto", fileDescriptor_21f14814cad56ddb) }
+func init() {
+	proto.RegisterFile("google/api/billing.proto", fileDescriptor_21f14814cad56ddb)
+}
 
 var fileDescriptor_21f14814cad56ddb = []byte{
 	// 255 bytes of a gzipped FileDescriptorProto

@@ -90,7 +90,9 @@ func init() {
 	proto.RegisterType((*Money)(nil), "google.type.Money")
 }
 
-func init() { proto.RegisterFile("google/type/money.proto", fileDescriptor_f093d3d05ab4bbee) }
+func init() {
+	proto.RegisterFile("google/type/money.proto", fileDescriptor_f093d3d05ab4bbee)
+}
 
 var fileDescriptor_f093d3d05ab4bbee = []byte{
 	// 193 bytes of a gzipped FileDescriptorProto
