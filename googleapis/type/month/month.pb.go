@@ -97,7 +97,9 @@ func init() {
 	proto.RegisterEnum("google.type.Month", Month_name, Month_value)
 }
 
-func init() { proto.RegisterFile("google/type/month.proto", fileDescriptor_3bd21fd11ded5e73) }
+func init() {
+	proto.RegisterFile("google/type/month.proto", fileDescriptor_3bd21fd11ded5e73)
+}
 
 var fileDescriptor_3bd21fd11ded5e73 = []byte{
 	// 262 bytes of a gzipped FileDescriptorProto

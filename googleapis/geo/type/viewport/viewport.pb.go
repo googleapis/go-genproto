@@ -110,7 +110,9 @@ func init() {
 	proto.RegisterType((*Viewport)(nil), "google.geo.type.Viewport")
 }
 
-func init() { proto.RegisterFile("google/geo/type/viewport.proto", fileDescriptor_52240f0f30767909) }
+func init() {
+	proto.RegisterFile("google/geo/type/viewport.proto", fileDescriptor_52240f0f30767909)
+}
 
 var fileDescriptor_52240f0f30767909 = []byte{
 	// 195 bytes of a gzipped FileDescriptorProto

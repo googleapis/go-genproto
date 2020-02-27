@@ -447,7 +447,9 @@ func init() {
 	proto.RegisterType((*GetDatasetRequest)(nil), "google.genomics.v1.GetDatasetRequest")
 }
 
-func init() { proto.RegisterFile("google/genomics/v1/datasets.proto", fileDescriptor_ddd0efa223187e29) }
+func init() {
+	proto.RegisterFile("google/genomics/v1/datasets.proto", fileDescriptor_ddd0efa223187e29)
+}
 
 var fileDescriptor_ddd0efa223187e29 = []byte{
 	// 786 bytes of a gzipped FileDescriptorProto

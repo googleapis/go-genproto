@@ -174,7 +174,9 @@ func init() {
 	proto.RegisterType((*CigarUnit)(nil), "google.genomics.v1.CigarUnit")
 }
 
-func init() { proto.RegisterFile("google/genomics/v1/cigar.proto", fileDescriptor_353bda9a6ec457b8) }
+func init() {
+	proto.RegisterFile("google/genomics/v1/cigar.proto", fileDescriptor_353bda9a6ec457b8)
+}
 
 var fileDescriptor_353bda9a6ec457b8 = []byte{
 	// 367 bytes of a gzipped FileDescriptorProto

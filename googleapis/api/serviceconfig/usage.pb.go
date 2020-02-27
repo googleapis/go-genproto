@@ -186,7 +186,9 @@ func init() {
 	proto.RegisterType((*UsageRule)(nil), "google.api.UsageRule")
 }
 
-func init() { proto.RegisterFile("google/api/usage.proto", fileDescriptor_701aa74a03c68f0a) }
+func init() {
+	proto.RegisterFile("google/api/usage.proto", fileDescriptor_701aa74a03c68f0a)
+}
 
 var fileDescriptor_701aa74a03c68f0a = []byte{
 	// 319 bytes of a gzipped FileDescriptorProto

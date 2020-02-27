@@ -349,7 +349,9 @@ func init() {
 	proto.RegisterType((*BackendRule)(nil), "google.api.BackendRule")
 }
 
-func init() { proto.RegisterFile("google/api/backend.proto", fileDescriptor_87d0f28daa3f64f0) }
+func init() {
+	proto.RegisterFile("google/api/backend.proto", fileDescriptor_87d0f28daa3f64f0)
+}
 
 var fileDescriptor_87d0f28daa3f64f0 = []byte{
 	// 442 bytes of a gzipped FileDescriptorProto

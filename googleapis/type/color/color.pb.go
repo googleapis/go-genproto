@@ -222,7 +222,9 @@ func init() {
 	proto.RegisterType((*Color)(nil), "google.type.Color")
 }
 
-func init() { proto.RegisterFile("google/type/color.proto", fileDescriptor_8454902cb8a2d34f) }
+func init() {
+	proto.RegisterFile("google/type/color.proto", fileDescriptor_8454902cb8a2d34f)
+}
 
 var fileDescriptor_8454902cb8a2d34f = []byte{
 	// 228 bytes of a gzipped FileDescriptorProto

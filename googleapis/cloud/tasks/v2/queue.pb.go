@@ -592,7 +592,9 @@ func init() {
 	proto.RegisterType((*StackdriverLoggingConfig)(nil), "google.cloud.tasks.v2.StackdriverLoggingConfig")
 }
 
-func init() { proto.RegisterFile("google/cloud/tasks/v2/queue.proto", fileDescriptor_a4a1833e2495b95c) }
+func init() {
+	proto.RegisterFile("google/cloud/tasks/v2/queue.proto", fileDescriptor_a4a1833e2495b95c)
+}
 
 var fileDescriptor_a4a1833e2495b95c = []byte{
 	// 755 bytes of a gzipped FileDescriptorProto

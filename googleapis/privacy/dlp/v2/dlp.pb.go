@@ -11821,7 +11821,9 @@ func init() {
 	proto.RegisterType((*DeleteStoredInfoTypeRequest)(nil), "google.privacy.dlp.v2.DeleteStoredInfoTypeRequest")
 }
 
-func init() { proto.RegisterFile("google/privacy/dlp/v2/dlp.proto", fileDescriptor_6872a91dcb80f8dc) }
+func init() {
+	proto.RegisterFile("google/privacy/dlp/v2/dlp.proto", fileDescriptor_6872a91dcb80f8dc)
+}
 
 var fileDescriptor_6872a91dcb80f8dc = []byte{
 	// 10586 bytes of a gzipped FileDescriptorProto

@@ -148,7 +148,9 @@ func init() {
 	proto.RegisterType((*Quaternion)(nil), "google.type.Quaternion")
 }
 
-func init() { proto.RegisterFile("google/type/quaternion.proto", fileDescriptor_6b847e1bdd83ff5e) }
+func init() {
+	proto.RegisterFile("google/type/quaternion.proto", fileDescriptor_6b847e1bdd83ff5e)
+}
 
 var fileDescriptor_6b847e1bdd83ff5e = []byte{
 	// 170 bytes of a gzipped FileDescriptorProto

@@ -365,7 +365,9 @@ func init() {
 	proto.RegisterType((*AgentOtherDeviceId)(nil), "google.home.graph.v1.AgentOtherDeviceId")
 }
 
-func init() { proto.RegisterFile("google/home/graph/v1/device.proto", fileDescriptor_1729f8e53993f499) }
+func init() {
+	proto.RegisterFile("google/home/graph/v1/device.proto", fileDescriptor_1729f8e53993f499)
+}
 
 var fileDescriptor_1729f8e53993f499 = []byte{
 	// 571 bytes of a gzipped FileDescriptorProto

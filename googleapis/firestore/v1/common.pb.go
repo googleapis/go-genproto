@@ -353,7 +353,9 @@ func init() {
 	proto.RegisterType((*TransactionOptions_ReadOnly)(nil), "google.firestore.v1.TransactionOptions.ReadOnly")
 }
 
-func init() { proto.RegisterFile("google/firestore/v1/common.proto", fileDescriptor_b2e1854e17ece251) }
+func init() {
+	proto.RegisterFile("google/firestore/v1/common.proto", fileDescriptor_b2e1854e17ece251)
+}
 
 var fileDescriptor_b2e1854e17ece251 = []byte{
 	// 458 bytes of a gzipped FileDescriptorProto

@@ -472,7 +472,9 @@ func init() {
 	proto.RegisterType((*ImageObjectDetectionModelDeploymentMetadata)(nil), "google.cloud.automl.v1.ImageObjectDetectionModelDeploymentMetadata")
 }
 
-func init() { proto.RegisterFile("google/cloud/automl/v1/image.proto", fileDescriptor_651f5a2c51022614) }
+func init() {
+	proto.RegisterFile("google/cloud/automl/v1/image.proto", fileDescriptor_651f5a2c51022614)
+}
 
 var fileDescriptor_651f5a2c51022614 = []byte{
 	// 572 bytes of a gzipped FileDescriptorProto

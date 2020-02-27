@@ -5440,7 +5440,9 @@ func init() {
 	proto.RegisterType((*ServiceConstants)(nil), "google.storage.v1.ServiceConstants")
 }
 
-func init() { proto.RegisterFile("google/storage/v1/storage.proto", fileDescriptor_cfff1fb85921a0a4) }
+func init() {
+	proto.RegisterFile("google/storage/v1/storage.proto", fileDescriptor_cfff1fb85921a0a4)
+}
 
 var fileDescriptor_cfff1fb85921a0a4 = []byte{
 	// 4394 bytes of a gzipped FileDescriptorProto

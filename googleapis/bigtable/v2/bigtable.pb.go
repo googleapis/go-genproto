@@ -1046,7 +1046,9 @@ func init() {
 	proto.RegisterType((*ReadModifyWriteRowResponse)(nil), "google.bigtable.v2.ReadModifyWriteRowResponse")
 }
 
-func init() { proto.RegisterFile("google/bigtable/v2/bigtable.proto", fileDescriptor_7e9247725ec9a6cf) }
+func init() {
+	proto.RegisterFile("google/bigtable/v2/bigtable.proto", fileDescriptor_7e9247725ec9a6cf)
+}
 
 var fileDescriptor_7e9247725ec9a6cf = []byte{
 	// 1469 bytes of a gzipped FileDescriptorProto

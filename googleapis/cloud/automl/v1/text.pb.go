@@ -254,7 +254,9 @@ func init() {
 	proto.RegisterType((*TextSentimentModelMetadata)(nil), "google.cloud.automl.v1.TextSentimentModelMetadata")
 }
 
-func init() { proto.RegisterFile("google/cloud/automl/v1/text.proto", fileDescriptor_ffc003fc1ed6094b) }
+func init() {
+	proto.RegisterFile("google/cloud/automl/v1/text.proto", fileDescriptor_ffc003fc1ed6094b)
+}
 
 var fileDescriptor_ffc003fc1ed6094b = []byte{
 	// 354 bytes of a gzipped FileDescriptorProto

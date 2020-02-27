@@ -377,7 +377,9 @@ func init() {
 	proto.RegisterType((*Mixin)(nil), "google.protobuf.Mixin")
 }
 
-func init() { proto.RegisterFile("google/protobuf/api.proto", fileDescriptor_a2ec32096296c143) }
+func init() {
+	proto.RegisterFile("google/protobuf/api.proto", fileDescriptor_a2ec32096296c143)
+}
 
 var fileDescriptor_a2ec32096296c143 = []byte{
 	// 432 bytes of a gzipped FileDescriptorProto

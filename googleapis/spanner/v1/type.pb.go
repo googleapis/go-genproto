@@ -271,7 +271,9 @@ func init() {
 	proto.RegisterType((*StructType_Field)(nil), "google.spanner.v1.StructType.Field")
 }
 
-func init() { proto.RegisterFile("google/spanner/v1/type.proto", fileDescriptor_dc1f2442a7aeba2a) }
+func init() {
+	proto.RegisterFile("google/spanner/v1/type.proto", fileDescriptor_dc1f2442a7aeba2a)
+}
 
 var fileDescriptor_dc1f2442a7aeba2a = []byte{
 	// 444 bytes of a gzipped FileDescriptorProto

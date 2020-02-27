@@ -418,7 +418,9 @@ func init() {
 	proto.RegisterType((*AuthRequirement)(nil), "google.api.AuthRequirement")
 }
 
-func init() { proto.RegisterFile("google/api/auth.proto", fileDescriptor_d6570d3c90e2b8ac) }
+func init() {
+	proto.RegisterFile("google/api/auth.proto", fileDescriptor_d6570d3c90e2b8ac)
+}
 
 var fileDescriptor_d6570d3c90e2b8ac = []byte{
 	// 452 bytes of a gzipped FileDescriptorProto

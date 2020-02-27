@@ -228,7 +228,10 @@ func (m *Mutation_Write) GetValues() []*_struct.ListValue {
 type Mutation_Delete struct {
 	// Required. The table whose rows will be deleted.
 	Table string `protobuf:"bytes,1,opt,name=table,proto3" json:"table,omitempty"`
-	// Required. The primary keys of the rows within [table][google.spanner.v1.Mutation.Delete.table] to delete.
+	// Required. The primary keys of the rows within [table][google.spanner.v1.Mutation.Delete.table] to delete.  The
+	// primary keys must be specified in the order in which they appear in the
+	// `PRIMARY KEY()` clause of the table's equivalent DDL statement (the DDL
+	// statement used to create the table).
 	// Delete is idempotent. The transaction will succeed even if some or all
 	// rows do not exist.
 	KeySet               *KeySet  `protobuf:"bytes,2,opt,name=key_set,json=keySet,proto3" json:"key_set,omitempty"`
@@ -282,7 +285,9 @@ func init() {
 	proto.RegisterType((*Mutation_Delete)(nil), "google.spanner.v1.Mutation.Delete")
 }
 
-func init() { proto.RegisterFile("google/spanner/v1/mutation.proto", fileDescriptor_069356a524fd0232) }
+func init() {
+	proto.RegisterFile("google/spanner/v1/mutation.proto", fileDescriptor_069356a524fd0232)
+}
 
 var fileDescriptor_069356a524fd0232 = []byte{
 	// 413 bytes of a gzipped FileDescriptorProto

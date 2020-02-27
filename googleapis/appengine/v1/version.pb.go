@@ -1125,7 +1125,9 @@ func init() {
 	proto.RegisterType((*Resources)(nil), "google.appengine.v1.Resources")
 }
 
-func init() { proto.RegisterFile("google/appengine/v1/version.proto", fileDescriptor_fbe3eca208d62f7c) }
+func init() {
+	proto.RegisterFile("google/appengine/v1/version.proto", fileDescriptor_fbe3eca208d62f7c)
+}
 
 var fileDescriptor_fbe3eca208d62f7c = []byte{
 	// 1767 bytes of a gzipped FileDescriptorProto

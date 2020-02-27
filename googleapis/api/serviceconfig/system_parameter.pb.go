@@ -222,7 +222,9 @@ func init() {
 	proto.RegisterType((*SystemParameter)(nil), "google.api.SystemParameter")
 }
 
-func init() { proto.RegisterFile("google/api/system_parameter.proto", fileDescriptor_c69d4a5e03567ede) }
+func init() {
+	proto.RegisterFile("google/api/system_parameter.proto", fileDescriptor_c69d4a5e03567ede)
+}
 
 var fileDescriptor_c69d4a5e03567ede = []byte{
 	// 286 bytes of a gzipped FileDescriptorProto

@@ -1292,7 +1292,9 @@ func init() {
 	proto.RegisterType((*GcsDestination)(nil), "google.cloud.automl.v1.GcsDestination")
 }
 
-func init() { proto.RegisterFile("google/cloud/automl/v1/io.proto", fileDescriptor_929966d18309cd53) }
+func init() {
+	proto.RegisterFile("google/cloud/automl/v1/io.proto", fileDescriptor_929966d18309cd53)
+}
 
 var fileDescriptor_929966d18309cd53 = []byte{
 	// 542 bytes of a gzipped FileDescriptorProto

@@ -348,7 +348,9 @@ func init() {
 	proto.RegisterType((*ListNearestRoadsResponse)(nil), "google.maps.roads.v1op.ListNearestRoadsResponse")
 }
 
-func init() { proto.RegisterFile("google/maps/roads/v1op/roads.proto", fileDescriptor_c8e70e24aafa772e) }
+func init() {
+	proto.RegisterFile("google/maps/roads/v1op/roads.proto", fileDescriptor_c8e70e24aafa772e)
+}
 
 var fileDescriptor_c8e70e24aafa772e = []byte{
 	// 609 bytes of a gzipped FileDescriptorProto
