@@ -262,8 +262,7 @@ type ReadSession_TableReadOptions struct {
 	// unrelated to the order of fields in selected_fields.
 	SelectedFields []string `protobuf:"bytes,1,rep,name=selected_fields,json=selectedFields,proto3" json:"selected_fields,omitempty"`
 	// SQL text filtering statement, similar to a WHERE clause in a query.
-	// Currently, only a single predicate that is a comparison between a column
-	// and a constant value is supported. Aggregates are not supported.
+	// Aggregates are not supported.
 	//
 	// Examples: "int_field > 5"
 	//           "date_field = CAST('2014-9-27' as DATE)"
