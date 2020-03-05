@@ -100,6 +100,8 @@ func (m *ClassificationAnnotation) GetScore() float32 {
 }
 
 // Model evaluation metrics for classification problems.
+// Note: For Video Classification this metrics only describe quality of the
+// Video Classification predictions of "segment_classification" type.
 type ClassificationEvaluationMetrics struct {
 	// Output only. The Area Under Precision-Recall Curve metric. Micro-averaged
 	// for the overall evaluation.
@@ -226,10 +228,7 @@ type ClassificationEvaluationMetrics_ConfidenceMetricsEntry struct {
 	// has the highest prediction score and not below the confidence threshold
 	// for each example.
 	FalsePositiveRateAt1 float32 `protobuf:"fixed32,9,opt,name=false_positive_rate_at1,json=falsePositiveRateAt1,proto3" json:"false_positive_rate_at1,omitempty"`
-	// Output only. The harmonic mean of
-	// [recall_at1][google.cloud.automl.v1.ClassificationEvaluationMetrics.ConfidenceMetricsEntry.recall_at1]
-	// and
-	// [precision_at1][google.cloud.automl.v1.ClassificationEvaluationMetrics.ConfidenceMetricsEntry.precision_at1].
+	// Output only. The harmonic mean of [recall_at1][google.cloud.automl.v1.ClassificationEvaluationMetrics.ConfidenceMetricsEntry.recall_at1] and [precision_at1][google.cloud.automl.v1.ClassificationEvaluationMetrics.ConfidenceMetricsEntry.precision_at1].
 	F1ScoreAt1 float32 `protobuf:"fixed32,7,opt,name=f1_score_at1,json=f1ScoreAt1,proto3" json:"f1_score_at1,omitempty"`
 	// Output only. The number of model created labels that match a ground truth
 	// label.
@@ -378,9 +377,18 @@ func (m *ClassificationEvaluationMetrics_ConfidenceMetricsEntry) GetTrueNegative
 // Confusion matrix of the model running the classification.
 type ClassificationEvaluationMetrics_ConfusionMatrix struct {
 	// Output only. IDs of the annotation specs used in the confusion matrix.
+	// For Tables CLASSIFICATION
+	//
+	// [prediction_type][google.cloud.automl.v1p1beta.TablesModelMetadata.prediction_type]
+	// only list of [annotation_spec_display_name-s][] is populated.
 	AnnotationSpecId []string `protobuf:"bytes,1,rep,name=annotation_spec_id,json=annotationSpecId,proto3" json:"annotation_spec_id,omitempty"`
 	// Output only. Display name of the annotation specs used in the confusion
-	// matrix, as they were at the moment of the evaluation.
+	// matrix, as they were at the moment of the evaluation. For Tables
+	// CLASSIFICATION
+	//
+	// [prediction_type-s][google.cloud.automl.v1p1beta.TablesModelMetadata.prediction_type],
+	// distinct values of the target column at the moment of the model
+	// evaluation are populated here.
 	DisplayName []string `protobuf:"bytes,3,rep,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Output only. Rows in the confusion matrix. The number of rows is equal to
 	// the size of `annotation_spec_id`.
@@ -448,9 +456,7 @@ type ClassificationEvaluationMetrics_ConfusionMatrix_Row struct {
 	// Output only. Value of the specific cell in the confusion matrix.
 	// The number of values each row has (i.e. the length of the row) is equal
 	// to the length of the `annotation_spec_id` field or, if that one is not
-	// populated, length of the
-	// [display_name][google.cloud.automl.v1.ClassificationEvaluationMetrics.ConfusionMatrix.display_name]
-	// field.
+	// populated, length of the [display_name][google.cloud.automl.v1.ClassificationEvaluationMetrics.ConfusionMatrix.display_name] field.
 	ExampleCount         []int32  `protobuf:"varint,1,rep,packed,name=example_count,json=exampleCount,proto3" json:"example_count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
