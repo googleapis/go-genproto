@@ -108,11 +108,7 @@ type CatalogItem struct {
 	// be a UTF-8 encoded string with a length limit of 1 KiB.
 	//
 	// This tag can be used for filtering recommendation results by passing the
-	// tag as part of the predict request filter. The tags have to satisfy the
-	// following restrictions:
-	//
-	// * Only contain alphanumeric characters (`a-z`, `A-Z`, `0-9`), underscores
-	//   (`_`) and dashes (`-`).
+	// tag as part of the predict request filter.
 	Tags []string `protobuf:"bytes,8,rep,name=tags,proto3" json:"tags,omitempty"`
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded
 	// string with a length limit of 128 bytes.
@@ -245,7 +241,7 @@ func (*CatalogItem) XXX_OneofWrappers() []interface{} {
 // Category represents catalog item category hierarchy.
 type CatalogItem_CategoryHierarchy struct {
 	// Required. Catalog item categories. Each category should be a UTF-8
-	// encoded string with a length limit of 1 KiB.
+	// encoded string with a length limit of 2 KiB.
 	//
 	// Note that the order in the list denotes the specificity (from least to
 	// most specific).
