@@ -30,29 +30,36 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Commitment plan defines the end of the committed period.
+// Commitment plan defines the current committed period. Capacity commitment
+// cannot be deleted during it's committed period.
 type CapacityCommitment_CommitmentPlan int32
 
 const (
 	// Invalid plan value. Requests with this value will be rejected with
 	// error code `google.rpc.Code.INVALID_ARGUMENT`.
 	CapacityCommitment_COMMITMENT_PLAN_UNSPECIFIED CapacityCommitment_CommitmentPlan = 0
-	// Capacity commitment cannot be removed for 30 days after becoming ACTIVE.
+	// Flex commitments have committed period of 1 minute after becoming ACTIVE.
+	// After that, they are not in a committed period anymore and can be removed
+	// any time.
+	CapacityCommitment_FLEX CapacityCommitment_CommitmentPlan = 3
+	// Monthly commitments have a committed period of 30 days after becoming
+	// ACTIVE.
 	CapacityCommitment_MONTHLY CapacityCommitment_CommitmentPlan = 2
-	// Capacity commitment cannot be removed for 365 days after becoming ACTIVE.
-	// Note: annual commitments are automatically downgraded to monthly after
-	// 365 days.
+	// Annual commitments have a committed period of 365 days after becoming
+	// ACTIVE.
 	CapacityCommitment_ANNUAL CapacityCommitment_CommitmentPlan = 4
 )
 
 var CapacityCommitment_CommitmentPlan_name = map[int32]string{
 	0: "COMMITMENT_PLAN_UNSPECIFIED",
+	3: "FLEX",
 	2: "MONTHLY",
 	4: "ANNUAL",
 }
 
 var CapacityCommitment_CommitmentPlan_value = map[string]int32{
 	"COMMITMENT_PLAN_UNSPECIFIED": 0,
+	"FLEX":                        3,
 	"MONTHLY":                     2,
 	"ANNUAL":                      4,
 }
@@ -66,7 +73,7 @@ func (CapacityCommitment_CommitmentPlan) EnumDescriptor() ([]byte, []int) {
 }
 
 // Capacity commitment can either become ACTIVE right away or transition
-// from PENDING to ACTIVE.
+// from PENDING to ACTIVE or FAILED.
 type CapacityCommitment_State int32
 
 const (
@@ -134,7 +141,7 @@ func (x Assignment_JobType) String() string {
 }
 
 func (Assignment_JobType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{12, 0}
+	return fileDescriptor_8b47fa8b6617477f, []int{16, 0}
 }
 
 // Assignment will remain in PENDING state if no active capacity commitment is
@@ -169,7 +176,7 @@ func (x Assignment_State) String() string {
 }
 
 func (Assignment_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{12, 1}
+	return fileDescriptor_8b47fa8b6617477f, []int{16, 1}
 }
 
 // A reservation is a mechanism used to guarantee slots to users.
@@ -242,11 +249,10 @@ func (m *Reservation) GetIgnoreIdleSlots() bool {
 }
 
 // Capacity commitment is a way to purchase compute capacity for BigQuery jobs
-// (in the form of slots) with some minimum committed period of usage. Capacity
-// commitment is immutable and cannot be deleted until the end of the commitment
-// period. After the end of the commitment period, slots are still available but
-// can be freely removed any time. Annual commitments will automatically be
-// downgraded to monthly after the commitment ends.
+// (in the form of slots) with some committed period of usage. Monthly and
+// annual commitments renew by default. Only flex commitments can be removed. In
+// order to remove monthly or annual commitments, their plan needs to be changed
+// to flex first.
 //
 // A capacity commitment resource exists as a child resource of the admin
 // project.
@@ -260,16 +266,18 @@ type CapacityCommitment struct {
 	Plan CapacityCommitment_CommitmentPlan `protobuf:"varint,3,opt,name=plan,proto3,enum=google.cloud.bigquery.reservation.v1beta1.CapacityCommitment_CommitmentPlan" json:"plan,omitempty"`
 	// Output only. State of the commitment.
 	State CapacityCommitment_State `protobuf:"varint,4,opt,name=state,proto3,enum=google.cloud.bigquery.reservation.v1beta1.CapacityCommitment_State" json:"state,omitempty"`
-	// Output only. The end of the commitment period. Capacity commitment cannot be
-	// removed before commitment_end_time. It is applicable only for ACTIVE
-	// capacity commitments and is computed as a combination of the plan and the
-	// time when the capacity commitment became ACTIVE.
+	// Output only. The end of the current commitment period. It is applicable
+	// only for ACTIVE capacity commitments.
 	CommitmentEndTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=commitment_end_time,json=commitmentEndTime,proto3" json:"commitment_end_time,omitempty"`
 	// Output only. For FAILED commitment plan, provides the reason of failure.
-	FailureStatus        *status.Status `protobuf:"bytes,7,opt,name=failure_status,json=failureStatus,proto3" json:"failure_status,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
+	FailureStatus *status.Status `protobuf:"bytes,7,opt,name=failure_status,json=failureStatus,proto3" json:"failure_status,omitempty"`
+	// The plan this capacity commitment is converted to after commitment_end_time
+	// passes. Once the plan is changed, committed period is extended according to
+	// commitment plan. Only applicable for MONTHLY and ANNUAL commitments.
+	RenewalPlan          CapacityCommitment_CommitmentPlan `protobuf:"varint,8,opt,name=renewal_plan,json=renewalPlan,proto3,enum=google.cloud.bigquery.reservation.v1beta1.CapacityCommitment_CommitmentPlan" json:"renewal_plan,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
+	XXX_unrecognized     []byte                            `json:"-"`
+	XXX_sizecache        int32                             `json:"-"`
 }
 
 func (m *CapacityCommitment) Reset()         { *m = CapacityCommitment{} }
@@ -339,9 +347,17 @@ func (m *CapacityCommitment) GetFailureStatus() *status.Status {
 	return nil
 }
 
-// The request for [ReservationService.CreateReservation][google.cloud.bigquery.reservation.v1beta1.ReservationService.CreateReservation].
+func (m *CapacityCommitment) GetRenewalPlan() CapacityCommitment_CommitmentPlan {
+	if m != nil {
+		return m.RenewalPlan
+	}
+	return CapacityCommitment_COMMITMENT_PLAN_UNSPECIFIED
+}
+
+// The request for
+// [ReservationService.CreateReservation][google.cloud.bigquery.reservation.v1beta1.ReservationService.CreateReservation].
 type CreateReservationRequest struct {
-	// Project, location. E.g.,
+	// Required. Project, location. E.g.,
 	//    projects/myproject/locations/US
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The reservation ID. This field must only contain lower case alphanumeric
@@ -400,9 +416,10 @@ func (m *CreateReservationRequest) GetReservation() *Reservation {
 	return nil
 }
 
-// The request for [ReservationService.ListReservations][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListReservations].
+// The request for
+// [ReservationService.ListReservations][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListReservations].
 type ListReservationsRequest struct {
-	// The parent resource name containing project and location, e.g.:
+	// Required. The parent resource name containing project and location, e.g.:
 	//   "projects/myproject/locations/US"
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of items to return.
@@ -473,7 +490,8 @@ func (m *ListReservationsRequest) GetFilter() string {
 	return ""
 }
 
-// The response for [ReservationService.ListReservations][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListReservations].
+// The response for
+// [ReservationService.ListReservations][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListReservations].
 type ListReservationsResponse struct {
 	// List of reservations visible to the user.
 	Reservations []*Reservation `protobuf:"bytes,1,rep,name=reservations,proto3" json:"reservations,omitempty"`
@@ -524,9 +542,10 @@ func (m *ListReservationsResponse) GetNextPageToken() string {
 	return ""
 }
 
-// The request for [ReservationService.GetReservation][google.cloud.bigquery.reservation.v1beta1.ReservationService.GetReservation].
+// The request for
+// [ReservationService.GetReservation][google.cloud.bigquery.reservation.v1beta1.ReservationService.GetReservation].
 type GetReservationRequest struct {
-	// Resource name of the reservation to retrieve. E.g.,
+	// Required. Resource name of the reservation to retrieve. E.g.,
 	//    projects/myproject/locations/US/reservations/team1-prod
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -566,9 +585,10 @@ func (m *GetReservationRequest) GetName() string {
 	return ""
 }
 
-// The request for [ReservationService.DeleteReservation][google.cloud.bigquery.reservation.v1beta1.ReservationService.DeleteReservation].
+// The request for
+// [ReservationService.DeleteReservation][google.cloud.bigquery.reservation.v1beta1.ReservationService.DeleteReservation].
 type DeleteReservationRequest struct {
-	// Resource name of the reservation to retrieve. E.g.,
+	// Required. Resource name of the reservation to retrieve. E.g.,
 	//    projects/myproject/locations/US/reservations/team1-prod
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -608,7 +628,8 @@ func (m *DeleteReservationRequest) GetName() string {
 	return ""
 }
 
-// The request for [ReservationService.UpdateReservation][google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateReservation].
+// The request for
+// [ReservationService.UpdateReservation][google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateReservation].
 type UpdateReservationRequest struct {
 	// Content of the reservation to update.
 	Reservation *Reservation `protobuf:"bytes,1,opt,name=reservation,proto3" json:"reservation,omitempty"`
@@ -658,9 +679,10 @@ func (m *UpdateReservationRequest) GetUpdateMask() *field_mask.FieldMask {
 	return nil
 }
 
-// The request for [ReservationService.ListCapacityCommitments][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListCapacityCommitments].
+// The request for
+// [ReservationService.ListCapacityCommitments][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListCapacityCommitments].
 type ListCapacityCommitmentsRequest struct {
-	// Resource name of the parent reservation. E.g.,
+	// Required. Resource name of the parent reservation. E.g.,
 	//    projects/myproject/locations/US
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of items to return.
@@ -718,7 +740,8 @@ func (m *ListCapacityCommitmentsRequest) GetPageToken() string {
 	return ""
 }
 
-// The response for [ReservationService.ListCapacityCommitments][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListCapacityCommitments].
+// The response for
+// [ReservationService.ListCapacityCommitments][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListCapacityCommitments].
 type ListCapacityCommitmentsResponse struct {
 	// List of capacity commitments visible to the user.
 	CapacityCommitments []*CapacityCommitment `protobuf:"bytes,1,rep,name=capacity_commitments,json=capacityCommitments,proto3" json:"capacity_commitments,omitempty"`
@@ -769,9 +792,10 @@ func (m *ListCapacityCommitmentsResponse) GetNextPageToken() string {
 	return ""
 }
 
-// The request for [ReservationService.GetCapacityCommitment][google.cloud.bigquery.reservation.v1beta1.ReservationService.GetCapacityCommitment].
+// The request for
+// [ReservationService.GetCapacityCommitment][google.cloud.bigquery.reservation.v1beta1.ReservationService.GetCapacityCommitment].
 type GetCapacityCommitmentRequest struct {
-	// Resource name of the capacity commitment to retrieve. E.g.,
+	// Required. Resource name of the capacity commitment to retrieve. E.g.,
 	//    projects/myproject/locations/US/capacityCommitments/123
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -811,9 +835,10 @@ func (m *GetCapacityCommitmentRequest) GetName() string {
 	return ""
 }
 
-// The request for [ReservationService.DeleteCapacityCommitment][google.cloud.bigquery.reservation.v1beta1.ReservationService.DeleteCapacityCommitment].
+// The request for
+// [ReservationService.DeleteCapacityCommitment][google.cloud.bigquery.reservation.v1beta1.ReservationService.DeleteCapacityCommitment].
 type DeleteCapacityCommitmentRequest struct {
-	// Resource name of the capacity commitment to delete. E.g.,
+	// Required. Resource name of the capacity commitment to delete. E.g.,
 	//    projects/myproject/locations/US/capacityCommitments/123
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -853,6 +878,214 @@ func (m *DeleteCapacityCommitmentRequest) GetName() string {
 	return ""
 }
 
+// The request for
+// [ReservationService.UpdateCapacityCommitment][google.cloud.bigquery.reservation.v1beta1.ReservationService.UpdateCapacityCommitment].
+type UpdateCapacityCommitmentRequest struct {
+	// Content of the capacity commitment to update.
+	CapacityCommitment *CapacityCommitment `protobuf:"bytes,1,opt,name=capacity_commitment,json=capacityCommitment,proto3" json:"capacity_commitment,omitempty"`
+	// Standard field mask for the set of fields to be updated.
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *UpdateCapacityCommitmentRequest) Reset()         { *m = UpdateCapacityCommitmentRequest{} }
+func (m *UpdateCapacityCommitmentRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateCapacityCommitmentRequest) ProtoMessage()    {}
+func (*UpdateCapacityCommitmentRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8b47fa8b6617477f, []int{12}
+}
+
+func (m *UpdateCapacityCommitmentRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateCapacityCommitmentRequest.Unmarshal(m, b)
+}
+func (m *UpdateCapacityCommitmentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateCapacityCommitmentRequest.Marshal(b, m, deterministic)
+}
+func (m *UpdateCapacityCommitmentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateCapacityCommitmentRequest.Merge(m, src)
+}
+func (m *UpdateCapacityCommitmentRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdateCapacityCommitmentRequest.Size(m)
+}
+func (m *UpdateCapacityCommitmentRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateCapacityCommitmentRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateCapacityCommitmentRequest proto.InternalMessageInfo
+
+func (m *UpdateCapacityCommitmentRequest) GetCapacityCommitment() *CapacityCommitment {
+	if m != nil {
+		return m.CapacityCommitment
+	}
+	return nil
+}
+
+func (m *UpdateCapacityCommitmentRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
+// The request for
+// [ReservationService.SplitCapacityCommitment][google.cloud.bigquery.reservation.v1beta1.ReservationService.SplitCapacityCommitment].
+type SplitCapacityCommitmentRequest struct {
+	// Required. The resource name e.g.,:
+	//   projects/myproject/locations/US/capacityCommitments/123
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Number of slots in the capacity commitment after the split.
+	SlotCount            int64    `protobuf:"varint,2,opt,name=slot_count,json=slotCount,proto3" json:"slot_count,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SplitCapacityCommitmentRequest) Reset()         { *m = SplitCapacityCommitmentRequest{} }
+func (m *SplitCapacityCommitmentRequest) String() string { return proto.CompactTextString(m) }
+func (*SplitCapacityCommitmentRequest) ProtoMessage()    {}
+func (*SplitCapacityCommitmentRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8b47fa8b6617477f, []int{13}
+}
+
+func (m *SplitCapacityCommitmentRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SplitCapacityCommitmentRequest.Unmarshal(m, b)
+}
+func (m *SplitCapacityCommitmentRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SplitCapacityCommitmentRequest.Marshal(b, m, deterministic)
+}
+func (m *SplitCapacityCommitmentRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SplitCapacityCommitmentRequest.Merge(m, src)
+}
+func (m *SplitCapacityCommitmentRequest) XXX_Size() int {
+	return xxx_messageInfo_SplitCapacityCommitmentRequest.Size(m)
+}
+func (m *SplitCapacityCommitmentRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SplitCapacityCommitmentRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SplitCapacityCommitmentRequest proto.InternalMessageInfo
+
+func (m *SplitCapacityCommitmentRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *SplitCapacityCommitmentRequest) GetSlotCount() int64 {
+	if m != nil {
+		return m.SlotCount
+	}
+	return 0
+}
+
+// The response for
+// [ReservationService.SplitCapacityCommitment][google.cloud.bigquery.reservation.v1beta1.ReservationService.SplitCapacityCommitment].
+type SplitCapacityCommitmentResponse struct {
+	// First capacity commitment, result of a split.
+	First *CapacityCommitment `protobuf:"bytes,1,opt,name=first,proto3" json:"first,omitempty"`
+	// Second capacity commitment, result of a split.
+	Second               *CapacityCommitment `protobuf:"bytes,2,opt,name=second,proto3" json:"second,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
+}
+
+func (m *SplitCapacityCommitmentResponse) Reset()         { *m = SplitCapacityCommitmentResponse{} }
+func (m *SplitCapacityCommitmentResponse) String() string { return proto.CompactTextString(m) }
+func (*SplitCapacityCommitmentResponse) ProtoMessage()    {}
+func (*SplitCapacityCommitmentResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8b47fa8b6617477f, []int{14}
+}
+
+func (m *SplitCapacityCommitmentResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SplitCapacityCommitmentResponse.Unmarshal(m, b)
+}
+func (m *SplitCapacityCommitmentResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SplitCapacityCommitmentResponse.Marshal(b, m, deterministic)
+}
+func (m *SplitCapacityCommitmentResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SplitCapacityCommitmentResponse.Merge(m, src)
+}
+func (m *SplitCapacityCommitmentResponse) XXX_Size() int {
+	return xxx_messageInfo_SplitCapacityCommitmentResponse.Size(m)
+}
+func (m *SplitCapacityCommitmentResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SplitCapacityCommitmentResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SplitCapacityCommitmentResponse proto.InternalMessageInfo
+
+func (m *SplitCapacityCommitmentResponse) GetFirst() *CapacityCommitment {
+	if m != nil {
+		return m.First
+	}
+	return nil
+}
+
+func (m *SplitCapacityCommitmentResponse) GetSecond() *CapacityCommitment {
+	if m != nil {
+		return m.Second
+	}
+	return nil
+}
+
+// The request for
+// [ReservationService.MergeCapacityCommitments][google.cloud.bigquery.reservation.v1beta1.ReservationService.MergeCapacityCommitments].
+type MergeCapacityCommitmentsRequest struct {
+	// Parent resource that identifies admin project and location e.g.,
+	// projects/myproject/locations/us
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
+	// Ids of capacity commitments to merge.
+	// These capacity commitments must exist under admin project and location
+	// specified in the parent.
+	CapacityCommitmentIds []string `protobuf:"bytes,2,rep,name=capacity_commitment_ids,json=capacityCommitmentIds,proto3" json:"capacity_commitment_ids,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{} `json:"-"`
+	XXX_unrecognized      []byte   `json:"-"`
+	XXX_sizecache         int32    `json:"-"`
+}
+
+func (m *MergeCapacityCommitmentsRequest) Reset()         { *m = MergeCapacityCommitmentsRequest{} }
+func (m *MergeCapacityCommitmentsRequest) String() string { return proto.CompactTextString(m) }
+func (*MergeCapacityCommitmentsRequest) ProtoMessage()    {}
+func (*MergeCapacityCommitmentsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8b47fa8b6617477f, []int{15}
+}
+
+func (m *MergeCapacityCommitmentsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MergeCapacityCommitmentsRequest.Unmarshal(m, b)
+}
+func (m *MergeCapacityCommitmentsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MergeCapacityCommitmentsRequest.Marshal(b, m, deterministic)
+}
+func (m *MergeCapacityCommitmentsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MergeCapacityCommitmentsRequest.Merge(m, src)
+}
+func (m *MergeCapacityCommitmentsRequest) XXX_Size() int {
+	return xxx_messageInfo_MergeCapacityCommitmentsRequest.Size(m)
+}
+func (m *MergeCapacityCommitmentsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_MergeCapacityCommitmentsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MergeCapacityCommitmentsRequest proto.InternalMessageInfo
+
+func (m *MergeCapacityCommitmentsRequest) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
+func (m *MergeCapacityCommitmentsRequest) GetCapacityCommitmentIds() []string {
+	if m != nil {
+		return m.CapacityCommitmentIds
+	}
+	return nil
+}
+
 // A Assignment allows a project to submit jobs
 // of a certain type using slots from the specified reservation.
 type Assignment struct {
@@ -875,7 +1108,7 @@ func (m *Assignment) Reset()         { *m = Assignment{} }
 func (m *Assignment) String() string { return proto.CompactTextString(m) }
 func (*Assignment) ProtoMessage()    {}
 func (*Assignment) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{12}
+	return fileDescriptor_8b47fa8b6617477f, []int{16}
 }
 
 func (m *Assignment) XXX_Unmarshal(b []byte) error {
@@ -924,11 +1157,12 @@ func (m *Assignment) GetState() Assignment_State {
 	return Assignment_STATE_UNSPECIFIED
 }
 
-// The request for [ReservationService.CreateAssignment][google.cloud.bigquery.reservation.v1beta1.ReservationService.CreateAssignment].
+// The request for
+// [ReservationService.CreateAssignment][google.cloud.bigquery.reservation.v1beta1.ReservationService.CreateAssignment].
 // Note: "bigquery.reservationAssignments.create" permission is required on the
 // related assignee.
 type CreateAssignmentRequest struct {
-	// The parent resource name of the assignment
+	// Required. The parent resource name of the assignment
 	// E.g.: projects/myproject/locations/US/reservations/team1-prod
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Assignment resource to create.
@@ -942,7 +1176,7 @@ func (m *CreateAssignmentRequest) Reset()         { *m = CreateAssignmentRequest
 func (m *CreateAssignmentRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateAssignmentRequest) ProtoMessage()    {}
 func (*CreateAssignmentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{13}
+	return fileDescriptor_8b47fa8b6617477f, []int{17}
 }
 
 func (m *CreateAssignmentRequest) XXX_Unmarshal(b []byte) error {
@@ -977,9 +1211,10 @@ func (m *CreateAssignmentRequest) GetAssignment() *Assignment {
 	return nil
 }
 
-// The request for [ReservationService.ListAssignments][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListAssignments].
+// The request for
+// [ReservationService.ListAssignments][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListAssignments].
 type ListAssignmentsRequest struct {
-	// The parent resource name e.g.:
+	// Required. The parent resource name e.g.:
 	// projects/myproject/locations/US/reservations/team1-prod
 	// Or:
 	// projects/myproject/locations/US/reservations/-
@@ -997,7 +1232,7 @@ func (m *ListAssignmentsRequest) Reset()         { *m = ListAssignmentsRequest{}
 func (m *ListAssignmentsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListAssignmentsRequest) ProtoMessage()    {}
 func (*ListAssignmentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{14}
+	return fileDescriptor_8b47fa8b6617477f, []int{18}
 }
 
 func (m *ListAssignmentsRequest) XXX_Unmarshal(b []byte) error {
@@ -1039,7 +1274,8 @@ func (m *ListAssignmentsRequest) GetPageToken() string {
 	return ""
 }
 
-// The response for [ReservationService.ListAssignments][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListAssignments].
+// The response for
+// [ReservationService.ListAssignments][google.cloud.bigquery.reservation.v1beta1.ReservationService.ListAssignments].
 type ListAssignmentsResponse struct {
 	// List of assignments visible to the user.
 	Assignments []*Assignment `protobuf:"bytes,1,rep,name=assignments,proto3" json:"assignments,omitempty"`
@@ -1055,7 +1291,7 @@ func (m *ListAssignmentsResponse) Reset()         { *m = ListAssignmentsResponse
 func (m *ListAssignmentsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListAssignmentsResponse) ProtoMessage()    {}
 func (*ListAssignmentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{15}
+	return fileDescriptor_8b47fa8b6617477f, []int{19}
 }
 
 func (m *ListAssignmentsResponse) XXX_Unmarshal(b []byte) error {
@@ -1090,11 +1326,12 @@ func (m *ListAssignmentsResponse) GetNextPageToken() string {
 	return ""
 }
 
-// The request for [ReservationService.DeleteAssignment][google.cloud.bigquery.reservation.v1beta1.ReservationService.DeleteAssignment].
+// The request for
+// [ReservationService.DeleteAssignment][google.cloud.bigquery.reservation.v1beta1.ReservationService.DeleteAssignment].
 // Note: "bigquery.reservationAssignments.delete" permission is required on the
 // related assignee.
 type DeleteAssignmentRequest struct {
-	// Name of the resource, e.g.:
+	// Required. Name of the resource, e.g.:
 	//   projects/myproject/locations/US/reservations/team1-prod/assignments/123
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1106,7 +1343,7 @@ func (m *DeleteAssignmentRequest) Reset()         { *m = DeleteAssignmentRequest
 func (m *DeleteAssignmentRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteAssignmentRequest) ProtoMessage()    {}
 func (*DeleteAssignmentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{16}
+	return fileDescriptor_8b47fa8b6617477f, []int{20}
 }
 
 func (m *DeleteAssignmentRequest) XXX_Unmarshal(b []byte) error {
@@ -1139,8 +1376,8 @@ func (m *DeleteAssignmentRequest) GetName() string {
 // Note: "bigquery.reservationAssignments.search" permission is required on the
 // related assignee.
 type SearchAssignmentsRequest struct {
-	// The resource name of the admin project(containing project and location),
-	// e.g.:
+	// Required. The resource name of the admin project(containing project and
+	// location), e.g.:
 	//   "projects/myproject/locations/US".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Please specify resource name as assignee in the query.
@@ -1161,7 +1398,7 @@ func (m *SearchAssignmentsRequest) Reset()         { *m = SearchAssignmentsReque
 func (m *SearchAssignmentsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchAssignmentsRequest) ProtoMessage()    {}
 func (*SearchAssignmentsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{17}
+	return fileDescriptor_8b47fa8b6617477f, []int{21}
 }
 
 func (m *SearchAssignmentsRequest) XXX_Unmarshal(b []byte) error {
@@ -1210,7 +1447,8 @@ func (m *SearchAssignmentsRequest) GetPageToken() string {
 	return ""
 }
 
-// The response for [ReservationService.SearchAssignments][google.cloud.bigquery.reservation.v1beta1.ReservationService.SearchAssignments].
+// The response for
+// [ReservationService.SearchAssignments][google.cloud.bigquery.reservation.v1beta1.ReservationService.SearchAssignments].
 type SearchAssignmentsResponse struct {
 	// List of assignments visible to the user.
 	Assignments []*Assignment `protobuf:"bytes,1,rep,name=assignments,proto3" json:"assignments,omitempty"`
@@ -1226,7 +1464,7 @@ func (m *SearchAssignmentsResponse) Reset()         { *m = SearchAssignmentsResp
 func (m *SearchAssignmentsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchAssignmentsResponse) ProtoMessage()    {}
 func (*SearchAssignmentsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{18}
+	return fileDescriptor_8b47fa8b6617477f, []int{22}
 }
 
 func (m *SearchAssignmentsResponse) XXX_Unmarshal(b []byte) error {
@@ -1268,7 +1506,7 @@ func (m *SearchAssignmentsResponse) GetNextPageToken() string {
 // "bigquery.reservationAssignments.delete" permission is required on the
 // related assignee.
 type MoveAssignmentRequest struct {
-	// The resource name of the assignment,
+	// Required. The resource name of the assignment,
 	// e.g.:
 	//   projects/myproject/locations/US/reservations/team1-prod/assignments/123
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -1284,7 +1522,7 @@ func (m *MoveAssignmentRequest) Reset()         { *m = MoveAssignmentRequest{} }
 func (m *MoveAssignmentRequest) String() string { return proto.CompactTextString(m) }
 func (*MoveAssignmentRequest) ProtoMessage()    {}
 func (*MoveAssignmentRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_8b47fa8b6617477f, []int{19}
+	return fileDescriptor_8b47fa8b6617477f, []int{23}
 }
 
 func (m *MoveAssignmentRequest) XXX_Unmarshal(b []byte) error {
@@ -1319,6 +1557,159 @@ func (m *MoveAssignmentRequest) GetDestinationId() string {
 	return ""
 }
 
+// Represents a BI Reservation.
+type BiReservation struct {
+	// The resource name of the singleton BI reservation.
+	// Reservation names have the form
+	// `projects/{project_id}/locations/{location_id}/bireservation`.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Output only. The last update timestamp of a reservation.
+	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	// Size of a reservation, in bytes.
+	Size                 int64    `protobuf:"varint,4,opt,name=size,proto3" json:"size,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *BiReservation) Reset()         { *m = BiReservation{} }
+func (m *BiReservation) String() string { return proto.CompactTextString(m) }
+func (*BiReservation) ProtoMessage()    {}
+func (*BiReservation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8b47fa8b6617477f, []int{24}
+}
+
+func (m *BiReservation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BiReservation.Unmarshal(m, b)
+}
+func (m *BiReservation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BiReservation.Marshal(b, m, deterministic)
+}
+func (m *BiReservation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BiReservation.Merge(m, src)
+}
+func (m *BiReservation) XXX_Size() int {
+	return xxx_messageInfo_BiReservation.Size(m)
+}
+func (m *BiReservation) XXX_DiscardUnknown() {
+	xxx_messageInfo_BiReservation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BiReservation proto.InternalMessageInfo
+
+func (m *BiReservation) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *BiReservation) GetUpdateTime() *timestamp.Timestamp {
+	if m != nil {
+		return m.UpdateTime
+	}
+	return nil
+}
+
+func (m *BiReservation) GetSize() int64 {
+	if m != nil {
+		return m.Size
+	}
+	return 0
+}
+
+// A request to get a singleton BI reservation.
+type GetBiReservationRequest struct {
+	// Required. Name of the requested reservation, for example:
+	// `projects/{project_id}/locations/{location_id}/bireservation`
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetBiReservationRequest) Reset()         { *m = GetBiReservationRequest{} }
+func (m *GetBiReservationRequest) String() string { return proto.CompactTextString(m) }
+func (*GetBiReservationRequest) ProtoMessage()    {}
+func (*GetBiReservationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8b47fa8b6617477f, []int{25}
+}
+
+func (m *GetBiReservationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetBiReservationRequest.Unmarshal(m, b)
+}
+func (m *GetBiReservationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetBiReservationRequest.Marshal(b, m, deterministic)
+}
+func (m *GetBiReservationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetBiReservationRequest.Merge(m, src)
+}
+func (m *GetBiReservationRequest) XXX_Size() int {
+	return xxx_messageInfo_GetBiReservationRequest.Size(m)
+}
+func (m *GetBiReservationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetBiReservationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetBiReservationRequest proto.InternalMessageInfo
+
+func (m *GetBiReservationRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+// A request to update a BI reservation.
+type UpdateBiReservationRequest struct {
+	// A reservation to update.
+	Reservation *BiReservation `protobuf:"bytes,1,opt,name=reservation,proto3" json:"reservation,omitempty"`
+	// A list of fields to be updated in this request.
+	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *UpdateBiReservationRequest) Reset()         { *m = UpdateBiReservationRequest{} }
+func (m *UpdateBiReservationRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateBiReservationRequest) ProtoMessage()    {}
+func (*UpdateBiReservationRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8b47fa8b6617477f, []int{26}
+}
+
+func (m *UpdateBiReservationRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateBiReservationRequest.Unmarshal(m, b)
+}
+func (m *UpdateBiReservationRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateBiReservationRequest.Marshal(b, m, deterministic)
+}
+func (m *UpdateBiReservationRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateBiReservationRequest.Merge(m, src)
+}
+func (m *UpdateBiReservationRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdateBiReservationRequest.Size(m)
+}
+func (m *UpdateBiReservationRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateBiReservationRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateBiReservationRequest proto.InternalMessageInfo
+
+func (m *UpdateBiReservationRequest) GetReservation() *BiReservation {
+	if m != nil {
+		return m.Reservation
+	}
+	return nil
+}
+
+func (m *UpdateBiReservationRequest) GetUpdateMask() *field_mask.FieldMask {
+	if m != nil {
+		return m.UpdateMask
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterEnum("google.cloud.bigquery.reservation.v1beta1.CapacityCommitment_CommitmentPlan", CapacityCommitment_CommitmentPlan_name, CapacityCommitment_CommitmentPlan_value)
 	proto.RegisterEnum("google.cloud.bigquery.reservation.v1beta1.CapacityCommitment_State", CapacityCommitment_State_name, CapacityCommitment_State_value)
@@ -1336,6 +1727,10 @@ func init() {
 	proto.RegisterType((*ListCapacityCommitmentsResponse)(nil), "google.cloud.bigquery.reservation.v1beta1.ListCapacityCommitmentsResponse")
 	proto.RegisterType((*GetCapacityCommitmentRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.GetCapacityCommitmentRequest")
 	proto.RegisterType((*DeleteCapacityCommitmentRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.DeleteCapacityCommitmentRequest")
+	proto.RegisterType((*UpdateCapacityCommitmentRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.UpdateCapacityCommitmentRequest")
+	proto.RegisterType((*SplitCapacityCommitmentRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.SplitCapacityCommitmentRequest")
+	proto.RegisterType((*SplitCapacityCommitmentResponse)(nil), "google.cloud.bigquery.reservation.v1beta1.SplitCapacityCommitmentResponse")
+	proto.RegisterType((*MergeCapacityCommitmentsRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.MergeCapacityCommitmentsRequest")
 	proto.RegisterType((*Assignment)(nil), "google.cloud.bigquery.reservation.v1beta1.Assignment")
 	proto.RegisterType((*CreateAssignmentRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.CreateAssignmentRequest")
 	proto.RegisterType((*ListAssignmentsRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.ListAssignmentsRequest")
@@ -1344,6 +1739,9 @@ func init() {
 	proto.RegisterType((*SearchAssignmentsRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.SearchAssignmentsRequest")
 	proto.RegisterType((*SearchAssignmentsResponse)(nil), "google.cloud.bigquery.reservation.v1beta1.SearchAssignmentsResponse")
 	proto.RegisterType((*MoveAssignmentRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.MoveAssignmentRequest")
+	proto.RegisterType((*BiReservation)(nil), "google.cloud.bigquery.reservation.v1beta1.BiReservation")
+	proto.RegisterType((*GetBiReservationRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.GetBiReservationRequest")
+	proto.RegisterType((*UpdateBiReservationRequest)(nil), "google.cloud.bigquery.reservation.v1beta1.UpdateBiReservationRequest")
 }
 
 func init() {
@@ -1351,107 +1749,150 @@ func init() {
 }
 
 var fileDescriptor_8b47fa8b6617477f = []byte{
-	// 1594 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x59, 0xdd, 0x6f, 0x1b, 0xc5,
-	0x16, 0xbf, 0x93, 0xef, 0x9c, 0x34, 0xa9, 0x33, 0xfd, 0x88, 0xaf, 0xdb, 0x7b, 0x13, 0xed, 0xd5,
-	0x45, 0xc1, 0x50, 0xaf, 0x1a, 0x54, 0x2a, 0x25, 0x6d, 0x85, 0xe3, 0xb8, 0xa9, 0x43, 0xe2, 0xb8,
-	0x6b, 0xa7, 0x5f, 0x0f, 0x2c, 0x1b, 0x7b, 0xe2, 0x6c, 0xbb, 0xde, 0xdd, 0xee, 0x8e, 0x53, 0x52,
-	0x54, 0x21, 0x21, 0x10, 0xbc, 0xf3, 0x86, 0x10, 0xff, 0x02, 0x20, 0x1e, 0x78, 0xe8, 0x2b, 0x2f,
-	0xf0, 0x08, 0x6f, 0x08, 0x21, 0x84, 0x00, 0x21, 0xfe, 0x00, 0x9e, 0xd1, 0xce, 0xce, 0xda, 0x6b,
-	0xef, 0x6e, 0xea, 0xb5, 0x53, 0x89, 0xb7, 0xdd, 0x99, 0x33, 0x67, 0x7e, 0xbf, 0x39, 0xe7, 0xcc,
-	0xf9, 0xad, 0x0d, 0x2b, 0x75, 0xc3, 0xa8, 0x6b, 0x44, 0xac, 0x6a, 0x46, 0xb3, 0x26, 0xee, 0xaa,
-	0xf5, 0x87, 0x4d, 0x62, 0x1d, 0x8a, 0x16, 0xb1, 0x89, 0x75, 0xa0, 0x50, 0xd5, 0xd0, 0xc5, 0x83,
-	0x8b, 0xbb, 0x84, 0x2a, 0x17, 0xfd, 0x63, 0x19, 0xd3, 0x32, 0xa8, 0x81, 0x5f, 0x74, 0x17, 0x67,
-	0xd8, 0xe2, 0x8c, 0xb7, 0x38, 0xe3, 0x37, 0xe4, 0x8b, 0x53, 0xe7, 0xf9, 0x3e, 0x8a, 0xa9, 0x8a,
-	0x8a, 0xae, 0x1b, 0x94, 0x4d, 0xdb, 0xae, 0xa3, 0xd4, 0xbc, 0x6f, 0x76, 0x4f, 0x25, 0x5a, 0x4d,
-	0xde, 0x25, 0xfb, 0xca, 0x81, 0x6a, 0x58, 0xdc, 0xe0, 0x1c, 0x37, 0x60, 0x6f, 0xbb, 0xcd, 0x3d,
-	0x91, 0x34, 0x4c, 0x7a, 0xc8, 0x27, 0x17, 0xba, 0x27, 0x5d, 0x17, 0x0d, 0xc5, 0x7e, 0xd0, 0xe5,
-	0xbf, 0x65, 0x41, 0xd5, 0x06, 0xb1, 0xa9, 0xd2, 0x30, 0xb9, 0xc1, 0x1c, 0x37, 0xb0, 0xcc, 0xaa,
-	0x68, 0x53, 0x85, 0x36, 0xed, 0xae, 0x09, 0x07, 0x59, 0x55, 0x53, 0x89, 0x4e, 0xdd, 0x09, 0xc1,
-	0x82, 0x29, 0xa9, 0xcd, 0x13, 0x63, 0x18, 0xd1, 0x95, 0x06, 0x49, 0xa2, 0x05, 0xb4, 0x38, 0x29,
-	0xb1, 0x67, 0xfc, 0x3f, 0x98, 0xb6, 0x35, 0x83, 0xca, 0x55, 0xc5, 0x54, 0xaa, 0x2a, 0x3d, 0x4c,
-	0x0e, 0x2d, 0xa0, 0xc5, 0x61, 0xe9, 0x84, 0x33, 0x98, 0xe3, 0x63, 0x38, 0x0d, 0xb3, 0x6a, 0x5d,
-	0x37, 0x2c, 0x22, 0xab, 0x35, 0x8d, 0xc8, 0xce, 0x9c, 0x9d, 0x1c, 0x59, 0x40, 0x8b, 0x13, 0xd2,
-	0x49, 0x77, 0xa2, 0x50, 0xd3, 0x48, 0xd9, 0x19, 0x16, 0x3e, 0x1f, 0x01, 0xec, 0x2d, 0xcc, 0x19,
-	0x8d, 0x86, 0x4a, 0x1b, 0x44, 0xa7, 0x78, 0xce, 0xbf, 0xf7, 0xea, 0xf0, 0xcf, 0xd9, 0x61, 0x0e,
-	0xe0, 0x3f, 0x00, 0x2e, 0x00, 0xa3, 0xa9, 0x53, 0xbe, 0xfb, 0x24, 0xdb, 0xdd, 0x19, 0xc0, 0x6f,
-	0xc2, 0x88, 0xa9, 0x29, 0x7a, 0x72, 0x78, 0x01, 0x2d, 0xce, 0x2c, 0x6d, 0x66, 0x7a, 0x8e, 0x66,
-	0x26, 0x08, 0x22, 0xd3, 0x7e, 0x2c, 0x69, 0x8a, 0x2e, 0x31, 0xcf, 0xf8, 0x0d, 0x18, 0x75, 0x4e,
-	0x93, 0x30, 0x42, 0x33, 0x4b, 0xb9, 0xc1, 0xb6, 0x28, 0x3b, 0xae, 0x5c, 0x7e, 0xae, 0x5b, 0xbc,
-	0x0d, 0xa7, 0xaa, 0xad, 0x79, 0x99, 0xe8, 0x35, 0xd9, 0x09, 0x6c, 0x72, 0x74, 0x01, 0x2d, 0x4e,
-	0x2d, 0xa5, 0xbc, 0xdd, 0xbc, 0xa8, 0x67, 0x2a, 0x5e, 0xd4, 0x5d, 0x27, 0xb3, 0xed, 0xb5, 0x79,
-	0xbd, 0xe6, 0x4c, 0xe2, 0x6b, 0x30, 0xb3, 0xa7, 0xa8, 0x5a, 0xd3, 0x22, 0xb2, 0x9b, 0x06, 0xc9,
-	0x71, 0xe6, 0x0b, 0x7b, 0xbe, 0x2c, 0xb3, 0xca, 0x70, 0x34, 0x6d, 0xd7, 0xc7, 0x34, 0x37, 0x77,
-	0xc7, 0x84, 0x0d, 0x98, 0xe9, 0x3c, 0x08, 0x3c, 0x0f, 0xe7, 0x72, 0xdb, 0x5b, 0x5b, 0x85, 0xca,
-	0x56, 0xbe, 0x58, 0x91, 0x4b, 0x9b, 0xd9, 0xa2, 0xbc, 0x53, 0x2c, 0x97, 0xf2, 0xb9, 0xc2, 0xf5,
-	0x42, 0x7e, 0x2d, 0xf1, 0x2f, 0x3c, 0x05, 0xe3, 0x5b, 0xdb, 0xc5, 0xca, 0x8d, 0xcd, 0xbb, 0x89,
-	0x21, 0x0c, 0x30, 0x96, 0x2d, 0x16, 0x77, 0xb2, 0x9b, 0x89, 0x11, 0x21, 0x07, 0xa3, 0x8c, 0x31,
-	0x3e, 0x03, 0xb3, 0xe5, 0x4a, 0xb6, 0x92, 0x0f, 0x2e, 0x2c, 0xe5, 0x8b, 0x6b, 0x85, 0xe2, 0x7a,
-	0x02, 0xb1, 0x85, 0xb9, 0x4a, 0xe1, 0x56, 0xde, 0x75, 0x72, 0x3d, 0x5b, 0xd8, 0xcc, 0xaf, 0x25,
-	0x86, 0x85, 0x2f, 0x11, 0x24, 0x73, 0x16, 0x51, 0x28, 0xf1, 0x65, 0xab, 0x44, 0x1e, 0x36, 0x89,
-	0x4d, 0xf1, 0x59, 0x18, 0x33, 0x15, 0x8b, 0xe8, 0x94, 0xa7, 0x2d, 0x7f, 0xc3, 0xff, 0x87, 0x19,
-	0x5f, 0x48, 0x64, 0xb5, 0xc6, 0x72, 0x67, 0x52, 0x9a, 0xf6, 0x8d, 0x16, 0x6a, 0xf8, 0x0e, 0x4c,
-	0xf9, 0x06, 0x58, 0x1a, 0x4d, 0x2d, 0xbd, 0x1a, 0x23, 0xc6, 0x7e, 0x48, 0x7e, 0x57, 0xc2, 0xfb,
-	0x08, 0xe6, 0x36, 0x55, 0x9b, 0xfa, 0x0c, 0xec, 0x67, 0x81, 0x3e, 0x07, 0x93, 0xa6, 0x52, 0x27,
-	0xb2, 0xad, 0x3e, 0x26, 0x0c, 0xef, 0xa8, 0x34, 0xe1, 0x0c, 0x94, 0xd5, 0xc7, 0xac, 0x12, 0xd8,
-	0x24, 0x35, 0x1e, 0x10, 0x17, 0xe9, 0xa4, 0xc4, 0xcc, 0x2b, 0xce, 0x80, 0xe3, 0x73, 0x4f, 0xd5,
-	0x28, 0xb1, 0x58, 0xa2, 0x4e, 0x4a, 0xfc, 0x4d, 0xf8, 0x14, 0x41, 0x32, 0x88, 0xc3, 0x36, 0x0d,
-	0xdd, 0x26, 0xf8, 0x1e, 0x9c, 0xf0, 0x61, 0xb6, 0x93, 0x68, 0x61, 0x78, 0x00, 0xfe, 0x1d, 0xbe,
-	0xf0, 0x0b, 0x70, 0x52, 0x27, 0x6f, 0x51, 0xd9, 0x07, 0x9a, 0x87, 0xc0, 0x19, 0x2e, 0x79, 0xc0,
-	0x85, 0x97, 0xe0, 0xcc, 0x3a, 0xa1, 0x21, 0xa1, 0x0d, 0xb9, 0x8f, 0x84, 0x0c, 0x24, 0xd7, 0x88,
-	0x46, 0x42, 0x53, 0x21, 0xcc, 0xfe, 0x0b, 0x04, 0xc9, 0x1d, 0xb3, 0x16, 0x9e, 0x3b, 0x5d, 0xc1,
-	0x47, 0xc7, 0x16, 0x7c, 0xbc, 0x02, 0x53, 0x4d, 0xb6, 0x2b, 0xbb, 0xc1, 0x19, 0xef, 0xb0, 0x62,
-	0xbe, 0xee, 0x5c, 0xf2, 0x5b, 0x8a, 0xfd, 0x40, 0x02, 0xd7, 0xdc, 0x79, 0x16, 0x28, 0xfc, 0xd7,
-	0x09, 0x58, 0xf0, 0xf6, 0x78, 0x9e, 0xf9, 0x23, 0x3c, 0x45, 0x30, 0x1f, 0xb9, 0x2d, 0x4f, 0x17,
-	0x13, 0x4e, 0x7b, 0x8d, 0x40, 0x6e, 0x5f, 0x3c, 0x5e, 0xda, 0x5c, 0x1d, 0xe8, 0x6a, 0x94, 0x4e,
-	0x55, 0x83, 0x3b, 0xf7, 0x9c, 0x44, 0x4b, 0x70, 0x7e, 0x9d, 0x84, 0x60, 0x3f, 0x2a, 0x37, 0x2e,
-	0xc1, 0xbc, 0x9b, 0x4b, 0xf1, 0x96, 0xfd, 0x39, 0x04, 0x90, 0xb5, 0x6d, 0xb5, 0xae, 0x1f, 0xdd,
-	0xb9, 0x52, 0x30, 0xa1, 0x30, 0x33, 0x42, 0x78, 0x49, 0xb6, 0xde, 0xf1, 0x1d, 0x98, 0xb8, 0x6f,
-	0xec, 0xca, 0xf4, 0xd0, 0x24, 0xbc, 0x75, 0xc5, 0x39, 0xbc, 0xf6, 0xee, 0x99, 0x0d, 0x63, 0xb7,
-	0x72, 0x68, 0x12, 0x69, 0xfc, 0xbe, 0xfb, 0x80, 0x6f, 0x79, 0xed, 0x6a, 0x8c, 0xb9, 0x5d, 0xe9,
-	0xcf, 0x6d, 0xa0, 0x4d, 0x09, 0x57, 0x60, 0x9c, 0xef, 0x85, 0x93, 0x70, 0x7a, 0x63, 0x7b, 0x55,
-	0xae, 0xdc, 0x2d, 0x75, 0x5f, 0xe7, 0x27, 0x60, 0xa2, 0x54, 0x28, 0xe5, 0x37, 0x0b, 0xc5, 0x7c,
-	0x02, 0xe1, 0x49, 0x18, 0xbd, 0xb9, 0x93, 0x97, 0xee, 0x26, 0x86, 0x84, 0xcb, 0x7d, 0xf6, 0x01,
-	0xe1, 0x43, 0x04, 0x73, 0xee, 0xdd, 0xdf, 0x46, 0xf7, 0xac, 0x2a, 0xd8, 0x01, 0x50, 0x5a, 0xc6,
-	0xbc, 0xf6, 0x2e, 0xf5, 0x75, 0x0e, 0x92, 0xcf, 0x91, 0xa0, 0xc1, 0x59, 0xa7, 0x3e, 0xda, 0xb3,
-	0xcf, 0xb5, 0x1c, 0x3f, 0xe6, 0xed, 0xa3, 0x63, 0x3b, 0x5e, 0x86, 0xb7, 0x61, 0xaa, 0x8d, 0xcb,
-	0xab, 0xbe, 0x3e, 0x19, 0xfa, 0x3d, 0xf5, 0x5c, 0x6d, 0x17, 0x60, 0xce, 0xad, 0x9c, 0x60, 0x50,
-	0xc2, 0x2a, 0xe6, 0x3d, 0x04, 0xc9, 0x32, 0x51, 0xac, 0xea, 0x7e, 0x8c, 0xc3, 0x3b, 0x0d, 0xa3,
-	0x8c, 0x00, 0x47, 0xe0, 0xbe, 0x74, 0x1e, 0xe9, 0xf0, 0x91, 0x47, 0x3a, 0xd2, 0x7d, 0xa4, 0x9f,
-	0x20, 0xf8, 0x77, 0x08, 0x8c, 0x7f, 0xca, 0xa1, 0x4a, 0x70, 0x66, 0xcb, 0x38, 0xe8, 0xed, 0x48,
-	0x1d, 0x79, 0x53, 0x23, 0x36, 0x55, 0xf5, 0x96, 0xbc, 0x71, 0x33, 0x68, 0xda, 0x37, 0x5a, 0xa8,
-	0x2d, 0x7d, 0x35, 0x07, 0xd8, 0xd7, 0xa4, 0xca, 0xc4, 0x3a, 0x50, 0xab, 0x04, 0xff, 0x88, 0x60,
-	0x36, 0xa0, 0xa8, 0x70, 0x2c, 0x69, 0x1b, 0xa1, 0xc7, 0x52, 0x7d, 0xb6, 0x4f, 0x61, 0xe3, 0xdd,
-	0xef, 0x7f, 0xfd, 0x68, 0x68, 0x4d, 0xb8, 0xd4, 0xfa, 0x56, 0x7b, 0xdb, 0x4d, 0x84, 0xab, 0xa6,
-	0x65, 0xdc, 0x27, 0x55, 0x6a, 0x8b, 0x69, 0x51, 0x33, 0xaa, 0xae, 0xb8, 0x10, 0xd3, 0x4f, 0xfc,
-	0xdf, 0x72, 0xf6, 0x72, 0x47, 0xf7, 0xfd, 0x01, 0x41, 0xa2, 0x5b, 0xf2, 0xe0, 0xd5, 0x18, 0xc0,
-	0x22, 0x74, 0x5b, 0x2a, 0x37, 0x90, 0x0f, 0x37, 0xd1, 0x84, 0xab, 0x8c, 0xe9, 0x65, 0xdc, 0x1f,
-	0x53, 0xfc, 0x0d, 0x82, 0x99, 0x4e, 0xbd, 0x84, 0x5f, 0x8b, 0x01, 0x2b, 0x54, 0x6a, 0xf5, 0x1d,
-	0xb5, 0x10, 0x2e, 0x4e, 0x7a, 0x46, 0x30, 0xe9, 0x20, 0x22, 0xa6, 0x9f, 0xe0, 0xcf, 0x10, 0xcc,
-	0x06, 0xe4, 0x5c, 0xac, 0x3c, 0x8c, 0x12, 0x83, 0xa9, 0xb3, 0x01, 0xb1, 0x95, 0x77, 0x3e, 0xb7,
-	0x3d, 0xc4, 0xe9, 0x3e, 0x11, 0xff, 0x81, 0x60, 0x36, 0xa0, 0x27, 0x63, 0x21, 0x8e, 0x52, 0xa3,
-	0x7d, 0xc7, 0xe0, 0x16, 0x63, 0x54, 0x5a, 0xca, 0xb6, 0x19, 0xf9, 0x97, 0xc4, 0x60, 0xd7, 0x59,
-	0x45, 0x7f, 0xf1, 0x0e, 0x14, 0x22, 0x08, 0x71, 0x21, 0x66, 0x21, 0x44, 0x6b, 0xd9, 0xd4, 0xc6,
-	0x71, 0xb8, 0xe2, 0xa5, 0xb5, 0xc6, 0x8e, 0xe2, 0x1a, 0xbe, 0xd2, 0x73, 0x69, 0x85, 0x69, 0xce,
-	0xdf, 0x10, 0xfb, 0x22, 0x09, 0xf9, 0x95, 0x62, 0x3d, 0x5e, 0xa1, 0x45, 0xea, 0xca, 0xd4, 0x60,
-	0x52, 0x39, 0x8c, 0xe7, 0x51, 0x61, 0x0e, 0x21, 0xe9, 0xe4, 0xf2, 0xd7, 0xc8, 0xfb, 0x98, 0x0a,
-	0xa1, 0xba, 0x11, 0xbb, 0x08, 0xa3, 0xd9, 0x46, 0xd5, 0x22, 0xa7, 0x91, 0x1e, 0x8c, 0xc6, 0xef,
-	0x08, 0x12, 0xdd, 0x12, 0x31, 0xd6, 0x6d, 0x1f, 0xa1, 0x2f, 0x53, 0xfd, 0x35, 0x7f, 0xe1, 0x36,
-	0x63, 0x75, 0x53, 0xc8, 0xf5, 0x98, 0x84, 0xdd, 0x55, 0x28, 0xfa, 0xc4, 0xc3, 0xb2, 0x4f, 0x80,
-	0x3a, 0x79, 0x79, 0xb2, 0x4b, 0x12, 0xe2, 0x6c, 0xcc, 0xea, 0x09, 0x0a, 0xb0, 0xd4, 0xea, 0x20,
-	0x2e, 0x78, 0xe1, 0xbd, 0xce, 0x38, 0xe7, 0xf1, 0x71, 0x70, 0xc6, 0x4f, 0x11, 0x24, 0xba, 0xe5,
-	0x65, 0xac, 0x80, 0x46, 0x68, 0xd3, 0xc8, 0x3c, 0xe4, 0xe8, 0xd3, 0xb9, 0x7e, 0x7a, 0x82, 0x1f,
-	0xba, 0x93, 0x8e, 0xbf, 0x20, 0x98, 0x0d, 0xa8, 0xcc, 0x58, 0x1d, 0x22, 0x4a, 0x2a, 0xa7, 0xd6,
-	0x06, 0x73, 0xc2, 0x63, 0xb5, 0xca, 0xd8, 0x5e, 0xc1, 0xcb, 0xbd, 0x5e, 0x92, 0xcb, 0x76, 0x80,
-	0xce, 0x4f, 0x08, 0x66, 0x3a, 0xc5, 0x6a, 0x2c, 0x11, 0x12, 0xaa, 0x73, 0xfb, 0xad, 0xb7, 0x32,
-	0xe3, 0xb3, 0x25, 0xdc, 0x38, 0x86, 0xe8, 0x2d, 0x37, 0x8c, 0x03, 0xb2, 0x8c, 0xd2, 0xa9, 0x77,
-	0xbe, 0xcd, 0x0a, 0x1e, 0x00, 0xff, 0xfe, 0x2e, 0x42, 0xc5, 0x54, 0xed, 0x4c, 0xd5, 0x68, 0x7c,
-	0x97, 0xbd, 0xbd, 0x4f, 0xa9, 0x69, 0x2f, 0x8b, 0xe2, 0xa3, 0x47, 0x8f, 0xba, 0x26, 0x45, 0xa5,
-	0x49, 0xf7, 0x5b, 0x7f, 0x47, 0xbc, 0xfc, 0x2c, 0x43, 0x46, 0xfa, 0x82, 0xa9, 0x29, 0x74, 0xcf,
-	0xb0, 0x1a, 0xab, 0x1f, 0x20, 0xb8, 0x50, 0x35, 0x1a, 0xbd, 0x1f, 0x49, 0x09, 0xdd, 0xab, 0x70,
-	0xe3, 0xba, 0xa1, 0x29, 0x7a, 0x3d, 0x63, 0x58, 0x75, 0xb1, 0x4e, 0x74, 0x96, 0xec, 0x62, 0x7b,
-	0xcb, 0x1e, 0xfe, 0x27, 0x59, 0xf1, 0x8d, 0xed, 0x8e, 0x31, 0x07, 0xaf, 0xfc, 0x1d, 0x00, 0x00,
-	0xff, 0xff, 0xcd, 0x53, 0x04, 0xa0, 0x67, 0x19, 0x00, 0x00,
+	// 2282 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x5a, 0xdd, 0x6f, 0x1b, 0x59,
+	0x15, 0xe7, 0xda, 0x49, 0x9a, 0x9c, 0xb4, 0xa9, 0x73, 0xbb, 0x6d, 0xbc, 0xee, 0xd2, 0x64, 0xa7,
+	0x02, 0x65, 0xad, 0xd6, 0xb3, 0x6b, 0x48, 0xbb, 0x72, 0xdb, 0x55, 0xc7, 0x8e, 0x93, 0x75, 0xb0,
+	0x1d, 0xc7, 0x71, 0x76, 0xdb, 0x22, 0x61, 0xc6, 0xf6, 0x8d, 0x3b, 0xad, 0x3d, 0x33, 0x9d, 0x19,
+	0x27, 0x64, 0xa3, 0x08, 0xb4, 0x12, 0x42, 0x5a, 0x21, 0x3e, 0xc5, 0x0b, 0x42, 0xbc, 0xf0, 0x07,
+	0x00, 0x42, 0xb0, 0x0f, 0xb0, 0x42, 0xe2, 0x11, 0x04, 0x42, 0x20, 0x5e, 0xfc, 0xb4, 0x12, 0x48,
+	0x48, 0x05, 0x21, 0x21, 0xf1, 0xd4, 0x17, 0xd0, 0xdc, 0xb9, 0xb6, 0x67, 0xec, 0x99, 0xc4, 0x63,
+	0xa7, 0x15, 0x6f, 0xe3, 0xfb, 0x71, 0xee, 0xf9, 0xf8, 0x9d, 0x73, 0xef, 0xf9, 0x25, 0x70, 0xab,
+	0xae, 0x28, 0xf5, 0x06, 0xe1, 0xab, 0x0d, 0xa5, 0x55, 0xe3, 0x2b, 0x52, 0xfd, 0x49, 0x8b, 0x68,
+	0x07, 0xbc, 0x46, 0x74, 0xa2, 0xed, 0x89, 0x86, 0xa4, 0xc8, 0xfc, 0xde, 0x1b, 0x15, 0x62, 0x88,
+	0x6f, 0xd8, 0xc7, 0x62, 0xaa, 0xa6, 0x18, 0x0a, 0x7e, 0xcd, 0xda, 0x1c, 0xa3, 0x9b, 0x63, 0x9d,
+	0xcd, 0x31, 0xfb, 0x42, 0xb6, 0x39, 0xf2, 0x0a, 0x3b, 0x47, 0x54, 0x25, 0x5e, 0x94, 0x65, 0xc5,
+	0xa0, 0xd3, 0xba, 0x25, 0x28, 0xb2, 0x60, 0x9b, 0xad, 0x36, 0x24, 0x22, 0x1b, 0x6c, 0x62, 0xd1,
+	0x36, 0xb1, 0x2b, 0x91, 0x46, 0xad, 0x5c, 0x21, 0x0f, 0xc5, 0x3d, 0x49, 0xd1, 0xd8, 0x82, 0x97,
+	0x6d, 0x0b, 0x34, 0xa2, 0x2b, 0x2d, 0xad, 0x4a, 0xd8, 0xd4, 0x65, 0x36, 0x45, 0x7f, 0x55, 0x5a,
+	0xbb, 0x3c, 0x69, 0xaa, 0xc6, 0x01, 0x9b, 0x5c, 0xea, 0x9f, 0xb4, 0xa4, 0x37, 0x45, 0xfd, 0x71,
+	0xdf, 0xd1, 0xdd, 0x15, 0x86, 0xd4, 0x24, 0xba, 0x21, 0x36, 0xd5, 0x3e, 0xa5, 0x35, 0xb5, 0xca,
+	0xeb, 0x86, 0x68, 0xb4, 0x98, 0x35, 0xdc, 0x3f, 0x10, 0xcc, 0x16, 0x7b, 0x3e, 0xc0, 0x18, 0x26,
+	0x64, 0xb1, 0x49, 0xc2, 0x68, 0x09, 0x2d, 0xcf, 0x14, 0xe9, 0x37, 0xbe, 0x0a, 0xe7, 0xf4, 0x86,
+	0x62, 0x94, 0xab, 0xa2, 0x2a, 0x56, 0x25, 0xe3, 0x20, 0x1c, 0x58, 0x42, 0xcb, 0xc1, 0xe2, 0x59,
+	0x73, 0x30, 0xc5, 0xc6, 0x70, 0x14, 0xe6, 0xa5, 0xba, 0xac, 0x68, 0xa4, 0x2c, 0xd5, 0x1a, 0xa4,
+	0x6c, 0xce, 0xe9, 0xe1, 0x89, 0x25, 0xb4, 0x3c, 0x5d, 0x3c, 0x6f, 0x4d, 0x64, 0x6a, 0x0d, 0xb2,
+	0x6d, 0x0e, 0x27, 0xf6, 0x9f, 0x0a, 0x06, 0x74, 0x63, 0x60, 0x0f, 0x81, 0xa5, 0xa6, 0xa8, 0x4a,
+	0x7a, 0xac, 0xaa, 0x34, 0x79, 0xbb, 0x66, 0x49, 0x55, 0x53, 0x1e, 0x91, 0xaa, 0xa1, 0xf3, 0x87,
+	0xec, 0xeb, 0x88, 0x6f, 0x28, 0x55, 0x2b, 0x36, 0xfc, 0x61, 0xe7, 0xf3, 0xc8, 0x1e, 0x7b, 0x9d,
+	0x3f, 0xb4, 0xfd, 0x3a, 0xe2, 0x7e, 0x35, 0x05, 0xb8, 0xa3, 0x71, 0x4a, 0x69, 0x36, 0x25, 0xa3,
+	0x49, 0x64, 0x03, 0x2f, 0xd8, 0x8d, 0x4e, 0x06, 0x3f, 0x16, 0x82, 0xcc, 0xf2, 0x4f, 0x02, 0x58,
+	0x96, 0x2b, 0x2d, 0xd9, 0x60, 0x66, 0xcf, 0x50, 0xb3, 0xcd, 0x01, 0xfc, 0x45, 0x98, 0x50, 0x1b,
+	0xa2, 0x1c, 0x0e, 0x2e, 0xa1, 0xe5, 0xb9, 0x78, 0x36, 0x36, 0x34, 0xc4, 0x62, 0x83, 0x4a, 0xc4,
+	0x7a, 0x9f, 0x85, 0x86, 0x28, 0x17, 0xa9, 0x64, 0xfc, 0x05, 0x98, 0x34, 0xc3, 0x45, 0xa8, 0x27,
+	0xe7, 0xe2, 0xa9, 0xf1, 0x8e, 0xd8, 0x36, 0x45, 0x59, 0xf6, 0x59, 0x62, 0xf1, 0x26, 0x5c, 0xa8,
+	0x76, 0xe7, 0xcb, 0x44, 0xae, 0x95, 0x4d, 0xe4, 0x84, 0x27, 0x97, 0xd0, 0xf2, 0x6c, 0x3c, 0xd2,
+	0x39, 0xad, 0x03, 0xab, 0x58, 0xa9, 0x03, 0x2b, 0x4b, 0xc8, 0x7c, 0x6f, 0x6f, 0x5a, 0xae, 0x99,
+	0x93, 0xf8, 0x2d, 0x98, 0xdb, 0x15, 0xa5, 0x46, 0x4b, 0x23, 0x65, 0x0b, 0x67, 0xe1, 0x33, 0x54,
+	0x16, 0xee, 0xc8, 0xd2, 0xd4, 0x2a, 0xd5, 0xa3, 0xa5, 0x5b, 0x32, 0xce, 0xb1, 0xe5, 0xd6, 0x18,
+	0x56, 0xe0, 0xac, 0x46, 0x64, 0xb2, 0x2f, 0x36, 0xca, 0xd4, 0xb5, 0xd3, 0xcf, 0xc1, 0xb5, 0xb3,
+	0xec, 0x04, 0xf3, 0x07, 0x57, 0x82, 0x39, 0xe7, 0x34, 0x5e, 0x84, 0xcb, 0xa9, 0xcd, 0x5c, 0x2e,
+	0x53, 0xca, 0xa5, 0xf3, 0xa5, 0x72, 0x21, 0x2b, 0xe4, 0xcb, 0x3b, 0xf9, 0xed, 0x42, 0x3a, 0x95,
+	0x59, 0xcb, 0xa4, 0x57, 0x43, 0x9f, 0xc0, 0xd3, 0x30, 0xb1, 0x96, 0x4d, 0xdf, 0x0b, 0x05, 0xf1,
+	0x2c, 0x9c, 0xc9, 0x6d, 0xe6, 0x4b, 0x6f, 0x67, 0xef, 0x87, 0x02, 0x18, 0x60, 0x4a, 0xc8, 0xe7,
+	0x77, 0x84, 0x6c, 0x68, 0x82, 0x4b, 0xc1, 0x24, 0x75, 0x36, 0xbe, 0x08, 0xf3, 0xdb, 0x25, 0xa1,
+	0x94, 0xee, 0x13, 0x31, 0x0b, 0x67, 0x0a, 0xe9, 0xfc, 0x6a, 0x26, 0xbf, 0x1e, 0x42, 0x74, 0x63,
+	0xaa, 0x94, 0x79, 0x27, 0x6d, 0x09, 0x59, 0x13, 0x32, 0xd9, 0xf4, 0x6a, 0x28, 0x98, 0xf8, 0x06,
+	0x7a, 0x2a, 0x7c, 0x80, 0x60, 0x65, 0x88, 0x44, 0x71, 0x01, 0xf5, 0xd6, 0xb0, 0xf9, 0x52, 0x1d,
+	0xd8, 0xab, 0xf3, 0x87, 0x9d, 0xc1, 0x72, 0x2f, 0xc4, 0x47, 0x66, 0xb1, 0x08, 0xa7, 0x34, 0x22,
+	0x1a, 0xc4, 0x96, 0x98, 0x45, 0xf2, 0xa4, 0x45, 0x74, 0x03, 0xe7, 0x61, 0x4a, 0x15, 0x35, 0x22,
+	0x1b, 0x2c, 0x8d, 0x6e, 0x7c, 0x2c, 0x04, 0x9e, 0x09, 0xaf, 0x63, 0x9f, 0x79, 0x5e, 0x64, 0x52,
+	0xf0, 0xa7, 0x60, 0xce, 0xb6, 0xa3, 0x2c, 0xd5, 0x68, 0xfe, 0xcd, 0x14, 0xcf, 0xd9, 0x46, 0x33,
+	0x35, 0x7c, 0x0f, 0x66, 0x6d, 0x03, 0x34, 0x15, 0x67, 0xe3, 0x37, 0x7c, 0xe0, 0xc5, 0x7e, 0xb6,
+	0x5d, 0x14, 0xf7, 0x11, 0x82, 0x85, 0xac, 0xa4, 0x1b, 0xb6, 0x05, 0xfa, 0xf3, 0x32, 0xf6, 0x32,
+	0xcc, 0xa8, 0x62, 0x9d, 0x94, 0x75, 0xe9, 0x3d, 0x42, 0xed, 0x9c, 0x2c, 0x4e, 0x9b, 0x03, 0xdb,
+	0xd2, 0x7b, 0xb4, 0x0a, 0xd1, 0x49, 0x43, 0x79, 0x4c, 0x2c, 0x0b, 0x67, 0x8a, 0x74, 0x79, 0xc9,
+	0x1c, 0xc0, 0x97, 0x60, 0x6a, 0x57, 0x6a, 0x18, 0x44, 0xa3, 0x45, 0x62, 0xa6, 0xc8, 0x7e, 0x71,
+	0x3f, 0x44, 0x10, 0x1e, 0xd4, 0x5f, 0x57, 0x15, 0x59, 0x27, 0xf8, 0x81, 0x99, 0x67, 0xbd, 0xf1,
+	0x30, 0x5a, 0x0a, 0x8e, 0xe1, 0x37, 0x87, 0x2c, 0xfc, 0x69, 0x38, 0x2f, 0x93, 0x2f, 0x19, 0x65,
+	0x9b, 0xd2, 0x2c, 0x74, 0xe6, 0x70, 0xa1, 0xa3, 0x38, 0x57, 0x85, 0x8b, 0xeb, 0xc4, 0x70, 0x81,
+	0xd2, 0x86, 0xa3, 0x1e, 0x33, 0xdf, 0xfa, 0xbd, 0x30, 0xac, 0x12, 0xce, 0xed, 0x42, 0x78, 0x95,
+	0x34, 0x88, 0x2b, 0x64, 0x4f, 0xf3, 0x9c, 0x9f, 0x22, 0x08, 0xef, 0xa8, 0x35, 0xf7, 0xdc, 0xe8,
+	0x03, 0x29, 0x3a, 0x35, 0x90, 0xe2, 0x5b, 0x30, 0xdb, 0xa2, 0xa7, 0xd2, 0xe7, 0x00, 0xf5, 0xb3,
+	0x5b, 0xe1, 0x5e, 0x33, 0x5f, 0x0c, 0x39, 0x51, 0x7f, 0x5c, 0x04, 0x6b, 0xb9, 0xf9, 0xcd, 0xfd,
+	0x0c, 0xc1, 0x15, 0x13, 0x21, 0x83, 0xd5, 0xa3, 0x0b, 0xf4, 0x9d, 0x3e, 0xa0, 0xdf, 0xa1, 0x4e,
+	0xba, 0x89, 0x47, 0x2b, 0x4a, 0xa7, 0x81, 0x77, 0xee, 0x97, 0x08, 0x16, 0x3d, 0xb5, 0x66, 0xf0,
+	0x56, 0xe1, 0x25, 0x97, 0x0a, 0xd6, 0x81, 0xf9, 0x9d, 0xb1, 0xae, 0x93, 0xe2, 0x05, 0x97, 0x8a,
+	0x39, 0x34, 0xe8, 0x9f, 0xc0, 0x2b, 0xeb, 0xc4, 0x45, 0xf7, 0x8e, 0xc3, 0xb7, 0x1c, 0x98, 0x64,
+	0xee, 0x1e, 0xf1, 0x0e, 0x60, 0xd0, 0x34, 0x60, 0xd1, 0x4a, 0x81, 0x17, 0x7a, 0xea, 0x1f, 0x10,
+	0x2c, 0x5a, 0x09, 0xe1, 0x7d, 0xac, 0x0c, 0x17, 0x5c, 0xc2, 0xc4, 0xf2, 0x63, 0xcc, 0x28, 0xe1,
+	0xc1, 0x28, 0x8d, 0x97, 0x2d, 0xdf, 0x41, 0x70, 0x65, 0x5b, 0x6d, 0x48, 0x2f, 0x34, 0x78, 0x27,
+	0x3c, 0x41, 0xb9, 0xdf, 0x23, 0x58, 0xf4, 0x54, 0x8a, 0x25, 0xc3, 0x36, 0x4c, 0xee, 0x4a, 0x9a,
+	0x7e, 0x4a, 0x7e, 0xb5, 0x64, 0x99, 0x85, 0x41, 0x27, 0x55, 0x45, 0xae, 0x31, 0x2f, 0x8e, 0x29,
+	0x95, 0x09, 0xe3, 0x7e, 0x82, 0x60, 0x31, 0x47, 0xb4, 0x3a, 0x79, 0xf1, 0x35, 0xe9, 0x06, 0x2c,
+	0xb8, 0x80, 0xb1, 0x2c, 0xd5, 0xf4, 0x70, 0x60, 0x29, 0xb8, 0x3c, 0x53, 0xbc, 0x38, 0x88, 0xa8,
+	0x4c, 0x4d, 0xe7, 0xbe, 0x3a, 0x01, 0x20, 0xe8, 0xba, 0x54, 0x97, 0x8f, 0x6f, 0x26, 0x38, 0x98,
+	0x16, 0xe9, 0x32, 0x62, 0x3d, 0xe7, 0x67, 0x92, 0x53, 0xcf, 0x84, 0x20, 0xa0, 0x68, 0xb1, 0x3b,
+	0x8e, 0xef, 0xc1, 0xf4, 0x23, 0xa5, 0x52, 0x36, 0x0e, 0x54, 0xc2, 0xba, 0x0a, 0x3f, 0x7e, 0xed,
+	0x69, 0x11, 0xdb, 0x50, 0x2a, 0xa5, 0x03, 0x95, 0x14, 0xcf, 0x3c, 0xb2, 0x3e, 0xf0, 0x3b, 0x9d,
+	0x4e, 0x62, 0x8a, 0x8a, 0xbd, 0x35, 0x9a, 0xd8, 0x81, 0x0e, 0x82, 0xbb, 0x0d, 0x67, 0xd8, 0x59,
+	0x38, 0x0c, 0x2f, 0x6d, 0x6c, 0x26, 0xcb, 0xa5, 0xfb, 0x85, 0xfe, 0xe7, 0xee, 0x59, 0x98, 0x2e,
+	0x64, 0x0a, 0xe9, 0x6c, 0x26, 0x9f, 0x0e, 0x21, 0x3c, 0x03, 0x93, 0x5b, 0x3b, 0xe9, 0xe2, 0xfd,
+	0x50, 0x80, 0xbb, 0x39, 0xe2, 0x3b, 0x39, 0xf1, 0x2d, 0xf4, 0x54, 0xf8, 0x3a, 0x82, 0xeb, 0x43,
+	0x84, 0xdc, 0x16, 0x9b, 0xcf, 0x8f, 0xdf, 0x43, 0xf2, 0x62, 0x57, 0x9c, 0xce, 0x1f, 0xf6, 0x7e,
+	0x1c, 0x71, 0xbf, 0x46, 0xb0, 0x60, 0xbd, 0x8e, 0x7b, 0x27, 0x76, 0x20, 0x9b, 0xeb, 0x83, 0xec,
+	0x0a, 0x85, 0x2c, 0x8f, 0xfd, 0xe9, 0xdf, 0x85, 0xea, 0x0e, 0x40, 0xef, 0x64, 0x96, 0x80, 0x2b,
+	0x23, 0x45, 0xb4, 0x68, 0x13, 0xc4, 0xfd, 0x08, 0xc1, 0x25, 0xf3, 0x66, 0xed, 0x4d, 0xeb, 0xcf,
+	0xc9, 0x80, 0x71, 0xee, 0xff, 0xef, 0xb3, 0x77, 0xb9, 0x43, 0x4b, 0x56, 0xea, 0xde, 0x85, 0x59,
+	0x5b, 0x7c, 0xd8, 0x75, 0x3f, 0xa2, 0x67, 0xec, 0x92, 0x86, 0xbe, 0xde, 0x6b, 0xb0, 0x60, 0xdd,
+	0xb5, 0x83, 0x18, 0xc8, 0x38, 0x0a, 0x03, 0x73, 0xa0, 0x4f, 0x04, 0xb3, 0xbb, 0xf5, 0xc7, 0x08,
+	0xc2, 0xdb, 0x44, 0xd4, 0xaa, 0x0f, 0x5d, 0x42, 0x25, 0xf4, 0x85, 0xea, 0x35, 0x7a, 0xd2, 0x55,
+	0x78, 0xb5, 0x8b, 0xf4, 0x7e, 0xf9, 0x59, 0x36, 0xd1, 0x0d, 0xcf, 0x4b, 0x30, 0x49, 0x75, 0x62,
+	0x36, 0x5a, 0x3f, 0x9c, 0x41, 0x0b, 0x1e, 0x1b, 0xb4, 0x89, 0xfe, 0xa0, 0xfd, 0x00, 0xc1, 0xcb,
+	0x2e, 0x1a, 0xff, 0xbf, 0x84, 0xed, 0x23, 0x04, 0x17, 0x73, 0xca, 0xde, 0x73, 0x8d, 0x1a, 0xbe,
+	0x0f, 0x73, 0x35, 0xa2, 0x1b, 0x92, 0xdc, 0xed, 0x68, 0x29, 0xb6, 0x93, 0xf1, 0x11, 0x12, 0xe9,
+	0x9c, 0x4d, 0x52, 0xa6, 0xc6, 0xfd, 0x1d, 0xc1, 0xb9, 0xa4, 0x74, 0x12, 0x91, 0x77, 0xb7, 0xfb,
+	0xfc, 0xa1, 0x2c, 0x4f, 0x70, 0x38, 0x96, 0x87, 0xbd, 0x81, 0x28, 0xbd, 0x83, 0x61, 0x82, 0x46,
+	0x7f, 0x82, 0xbe, 0x43, 0xe8, 0x77, 0xa2, 0xf1, 0x54, 0x90, 0xe0, 0xf5, 0x21, 0xd4, 0x77, 0x2a,
+	0xb8, 0x32, 0x6c, 0x2d, 0xae, 0x48, 0xf6, 0xae, 0xbc, 0x0e, 0x0b, 0xeb, 0xc4, 0x70, 0x88, 0xea,
+	0x84, 0x2a, 0xeb, 0x08, 0xd5, 0x9b, 0x34, 0x54, 0x71, 0xff, 0x9a, 0xb1, 0x1c, 0xfb, 0x39, 0x82,
+	0x88, 0xf5, 0x7e, 0x75, 0x3d, 0xec, 0x81, 0x5b, 0x4b, 0xf7, 0xa6, 0x0f, 0xc8, 0x3a, 0xa5, 0x9e,
+	0x5a, 0x53, 0x17, 0xff, 0xf0, 0x2a, 0x60, 0x9b, 0xe4, 0x6d, 0xa2, 0xed, 0x49, 0x55, 0x82, 0xbf,
+	0x12, 0x80, 0xf9, 0x01, 0xee, 0x06, 0xfb, 0x22, 0x14, 0x3d, 0x98, 0x9f, 0xc8, 0x88, 0x8d, 0x2c,
+	0x27, 0xb7, 0x85, 0x57, 0xad, 0x82, 0x73, 0xcd, 0xb6, 0xf4, 0x9a, 0x93, 0xf5, 0x79, 0xff, 0xcf,
+	0x7f, 0xfb, 0x6e, 0x60, 0x95, 0x5b, 0xe9, 0x52, 0xfb, 0x87, 0xd6, 0x96, 0x3b, 0x5d, 0xf8, 0x44,
+	0x6d, 0xb0, 0x89, 0x3a, 0xaf, 0xee, 0x84, 0xc3, 0xad, 0x7f, 0x45, 0x10, 0xea, 0x27, 0x44, 0x70,
+	0xd2, 0x87, 0xf2, 0x1e, 0x6c, 0x50, 0x24, 0x35, 0x96, 0x0c, 0xab, 0x06, 0x72, 0x6b, 0x6d, 0x81,
+	0x95, 0x5f, 0x6a, 0xf2, 0x4d, 0x3c, 0x9a, 0xc9, 0xf8, 0x8f, 0x08, 0xe6, 0x9c, 0xb4, 0x0a, 0xbe,
+	0xeb, 0x43, 0x3f, 0x57, 0x46, 0x66, 0xe4, 0x10, 0xaf, 0xb6, 0x05, 0x9a, 0x4d, 0x83, 0x26, 0x99,
+	0xa3, 0x1e, 0x06, 0x39, 0x5f, 0x5f, 0xd1, 0x23, 0xfc, 0x0b, 0x04, 0xf3, 0x03, 0x24, 0x8e, 0x2f,
+	0xec, 0x7a, 0x51, 0x40, 0x91, 0x4b, 0x03, 0x59, 0x95, 0x6e, 0xaa, 0xc6, 0x41, 0x9f, 0xe2, 0xd1,
+	0x11, 0x15, 0x7f, 0x3f, 0x00, 0xf3, 0x03, 0xa4, 0x90, 0x2f, 0xc5, 0xbd, 0x28, 0xa5, 0x91, 0x23,
+	0xa2, 0xb6, 0x85, 0x05, 0x7b, 0xb6, 0xd9, 0x0a, 0x0d, 0xb5, 0xb5, 0x10, 0x17, 0x7a, 0xb6, 0xda,
+	0x85, 0xf9, 0xb0, 0xdb, 0x99, 0x76, 0xff, 0x65, 0xef, 0x35, 0x97, 0x8e, 0x0e, 0x67, 0x7c, 0x66,
+	0x8e, 0x77, 0x57, 0x18, 0xd9, 0x38, 0x0d, 0x51, 0x2c, 0x17, 0x73, 0xce, 0x5c, 0x7c, 0x0b, 0xdf,
+	0x1e, 0x3a, 0x17, 0xdd, 0xb8, 0xa1, 0x7f, 0x22, 0xca, 0x74, 0xba, 0x90, 0xf4, 0xeb, 0xfe, 0x32,
+	0xd3, 0x93, 0x79, 0x88, 0x8c, 0xd7, 0x7e, 0x73, 0x9f, 0xb3, 0xc3, 0xdd, 0x61, 0xee, 0x71, 0x61,
+	0x77, 0xfb, 0xcb, 0x41, 0xf4, 0x08, 0xff, 0x0e, 0x75, 0x38, 0x57, 0x17, 0x8b, 0x37, 0x7c, 0x67,
+	0xad, 0xb7, 0xd1, 0x5e, 0xc9, 0xeb, 0xb4, 0x26, 0x3a, 0x9e, 0x35, 0x1f, 0x06, 0x3a, 0xc4, 0xee,
+	0x98, 0xd6, 0x9c, 0x40, 0x86, 0x8d, 0x1b, 0xc2, 0x6f, 0xa2, 0xb6, 0xb0, 0xe8, 0x42, 0x60, 0x0c,
+	0x64, 0x78, 0x3d, 0x5e, 0xe8, 0x39, 0xc4, 0x65, 0x43, 0xcc, 0xbf, 0x93, 0x12, 0x6e, 0x34, 0x1e,
+	0xfe, 0x76, 0x00, 0x16, 0x3c, 0xb8, 0x29, 0x5f, 0x89, 0x7f, 0x3c, 0xe9, 0xe6, 0x2b, 0xf1, 0x4f,
+	0xa0, 0xca, 0xb8, 0x72, 0x5b, 0x38, 0x6f, 0x9a, 0x7f, 0xad, 0xc7, 0xb9, 0x51, 0x9f, 0xad, 0x73,
+	0xc9, 0x71, 0x40, 0x94, 0xd0, 0xcd, 0x73, 0x13, 0x28, 0x8a, 0xbf, 0x17, 0x80, 0xb0, 0x17, 0xbf,
+	0xe5, 0x0b, 0x4d, 0x27, 0x90, 0x64, 0xe3, 0xa2, 0x49, 0x6e, 0x0b, 0x57, 0xd8, 0xdb, 0xcc, 0x83,
+	0x14, 0x1b, 0xf4, 0x8b, 0xff, 0xca, 0x98, 0x68, 0x9a, 0x56, 0x98, 0x7e, 0x79, 0x86, 0x20, 0xd4,
+	0x4f, 0x9e, 0xf8, 0x7a, 0x9b, 0x79, 0x30, 0x2f, 0x91, 0xd1, 0xba, 0x48, 0xee, 0x71, 0x5b, 0x98,
+	0x67, 0xf6, 0xf7, 0xfa, 0x49, 0x6a, 0xf2, 0x16, 0x97, 0x1a, 0xd2, 0xe4, 0xfe, 0x6b, 0xd1, 0x4e,
+	0x1d, 0x25, 0x6c, 0xbc, 0x0b, 0xfe, 0x17, 0x82, 0xf3, 0x7d, 0x8c, 0x06, 0x16, 0x7c, 0x5e, 0x67,
+	0x83, 0x44, 0x40, 0x24, 0x39, 0x8e, 0x08, 0x96, 0x10, 0x25, 0xe7, 0x4d, 0x98, 0xc6, 0xa7, 0x61,
+	0x3c, 0xfe, 0x0d, 0x82, 0x50, 0x3f, 0x4d, 0xe2, 0x2b, 0xda, 0x1e, 0x1c, 0x8b, 0xe7, 0x8d, 0x50,
+	0xb4, 0xdf, 0x08, 0xe9, 0x68, 0x6a, 0x94, 0xe7, 0x9c, 0x83, 0xf9, 0x8b, 0x1e, 0xe1, 0x7f, 0x23,
+	0x98, 0x1f, 0xa0, 0x34, 0x7c, 0x3d, 0xee, 0xbc, 0x28, 0x9c, 0xc8, 0xea, 0x78, 0x42, 0x58, 0xec,
+	0xb6, 0xda, 0xc2, 0x59, 0x86, 0x61, 0xba, 0x9d, 0x1a, 0x7f, 0x1b, 0x27, 0x86, 0xcd, 0xd8, 0x84,
+	0x3e, 0x60, 0xdd, 0x7f, 0x10, 0xcc, 0x39, 0x79, 0x12, 0x5f, 0xcd, 0x85, 0x2b, 0xc5, 0x32, 0x6a,
+	0x8a, 0x4a, 0x6d, 0xe1, 0x02, 0xad, 0xd5, 0x4e, 0x52, 0x85, 0x5a, 0x99, 0xe3, 0xde, 0x3e, 0x85,
+	0x10, 0x27, 0x9a, 0xca, 0x1e, 0xad, 0x4e, 0x7f, 0x41, 0x10, 0xea, 0x67, 0x1d, 0x7c, 0xe1, 0xd5,
+	0x83, 0xb2, 0x88, 0x8c, 0x4c, 0x18, 0x70, 0x29, 0x3b, 0xa2, 0x6f, 0xe0, 0xcf, 0x0e, 0x67, 0x6e,
+	0xc5, 0x2e, 0xe3, 0x08, 0x7f, 0x10, 0x80, 0x0b, 0x2e, 0x1c, 0x07, 0x4e, 0xfb, 0x7e, 0xd6, 0x9c,
+	0xb2, 0x75, 0x5a, 0x5b, 0x88, 0x54, 0xa4, 0xf2, 0x71, 0x8d, 0xca, 0x66, 0xfc, 0xae, 0xff, 0x46,
+	0xc5, 0x69, 0xbf, 0xa3, 0x4f, 0x89, 0x7c, 0xf9, 0xb7, 0x02, 0x77, 0x32, 0x57, 0xf4, 0x27, 0xe1,
+	0xdd, 0x87, 0x86, 0xa1, 0xea, 0x09, 0x9e, 0xdf, 0xdf, 0xdf, 0xef, 0x27, 0x92, 0xc4, 0x96, 0xf1,
+	0xb0, 0xfb, 0x9f, 0x89, 0xd7, 0x4e, 0x5a, 0x48, 0xdd, 0x72, 0x5d, 0x6d, 0x88, 0xc6, 0xae, 0xa2,
+	0x35, 0x93, 0x5f, 0x43, 0x70, 0xbd, 0xaa, 0x34, 0x87, 0x77, 0x5a, 0x01, 0x3d, 0x28, 0xb1, 0xc5,
+	0x75, 0xa5, 0x21, 0xca, 0xf5, 0x98, 0xa2, 0xd5, 0xf9, 0x3a, 0x91, 0x69, 0xf5, 0xe3, 0x7b, 0x47,
+	0x0e, 0xf1, 0x2f, 0x93, 0xb7, 0x6c, 0x63, 0x95, 0x29, 0x2a, 0xe0, 0x33, 0xff, 0x0b, 0x00, 0x00,
+	0xff, 0xff, 0x8d, 0x80, 0x47, 0x95, 0x72, 0x29, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1486,6 +1927,21 @@ type ReservationServiceClient interface {
 	// before its commitment_end_time will fail with the error code
 	// `google.rpc.Code.FAILED_PRECONDITION`.
 	DeleteCapacityCommitment(ctx context.Context, in *DeleteCapacityCommitmentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Updates an existing capacity commitment.
+	//
+	// Only renewal_plan field can be updated.
+	UpdateCapacityCommitment(ctx context.Context, in *UpdateCapacityCommitmentRequest, opts ...grpc.CallOption) (*CapacityCommitment, error)
+	// Splits capacity commitment to two commitments of the same plan and
+	// commitment_end_time. A common use case to do that is to perform a downgrade
+	// e.g., in order to downgrade from 10000 slots to 8000, one might split 10000
+	// capacity commitment to 2000 and 8000, change the plan of the first one to
+	// flex and then delete it.
+	SplitCapacityCommitment(ctx context.Context, in *SplitCapacityCommitmentRequest, opts ...grpc.CallOption) (*SplitCapacityCommitmentResponse, error)
+	// Merges capacity commitments of the same plan into one. Resulting capacity
+	// commitment has the longer commitment_end_time out of the two. Attempting to
+	// merge capacity commitments of different plan will fail with the error code
+	// `google.rpc.Code.FAILED_PRECONDITION`.
+	MergeCapacityCommitments(ctx context.Context, in *MergeCapacityCommitmentsRequest, opts ...grpc.CallOption) (*CapacityCommitment, error)
 	// Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have
 	// 'bigquery.admin' permissions on the project using the reservation
 	// and the project that owns this reservation.
@@ -1540,6 +1996,15 @@ type ReservationServiceClient interface {
 	// Without the method customers might see some queries run on-demand which
 	// might be unexpected.
 	MoveAssignment(ctx context.Context, in *MoveAssignmentRequest, opts ...grpc.CallOption) (*Assignment, error)
+	// Retrieves a BI reservation.
+	GetBiReservation(ctx context.Context, in *GetBiReservationRequest, opts ...grpc.CallOption) (*BiReservation, error)
+	// Updates a BI reservation.
+	// Only fields specified in the field_mask are updated.
+	// Singleton BI reservation always exists with default size 0.
+	// In order to reserve BI capacity it needs to be updated to an amount
+	// greater than 0. In order to release BI capacity reservation size
+	// must be set to 0.
+	UpdateBiReservation(ctx context.Context, in *UpdateBiReservationRequest, opts ...grpc.CallOption) (*BiReservation, error)
 }
 
 type reservationServiceClient struct {
@@ -1622,6 +2087,33 @@ func (c *reservationServiceClient) DeleteCapacityCommitment(ctx context.Context,
 	return out, nil
 }
 
+func (c *reservationServiceClient) UpdateCapacityCommitment(ctx context.Context, in *UpdateCapacityCommitmentRequest, opts ...grpc.CallOption) (*CapacityCommitment, error) {
+	out := new(CapacityCommitment)
+	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.reservation.v1beta1.ReservationService/UpdateCapacityCommitment", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *reservationServiceClient) SplitCapacityCommitment(ctx context.Context, in *SplitCapacityCommitmentRequest, opts ...grpc.CallOption) (*SplitCapacityCommitmentResponse, error) {
+	out := new(SplitCapacityCommitmentResponse)
+	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.reservation.v1beta1.ReservationService/SplitCapacityCommitment", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *reservationServiceClient) MergeCapacityCommitments(ctx context.Context, in *MergeCapacityCommitmentsRequest, opts ...grpc.CallOption) (*CapacityCommitment, error) {
+	out := new(CapacityCommitment)
+	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.reservation.v1beta1.ReservationService/MergeCapacityCommitments", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *reservationServiceClient) CreateAssignment(ctx context.Context, in *CreateAssignmentRequest, opts ...grpc.CallOption) (*Assignment, error) {
 	out := new(Assignment)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.reservation.v1beta1.ReservationService/CreateAssignment", in, out, opts...)
@@ -1667,6 +2159,24 @@ func (c *reservationServiceClient) MoveAssignment(ctx context.Context, in *MoveA
 	return out, nil
 }
 
+func (c *reservationServiceClient) GetBiReservation(ctx context.Context, in *GetBiReservationRequest, opts ...grpc.CallOption) (*BiReservation, error) {
+	out := new(BiReservation)
+	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.reservation.v1beta1.ReservationService/GetBiReservation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *reservationServiceClient) UpdateBiReservation(ctx context.Context, in *UpdateBiReservationRequest, opts ...grpc.CallOption) (*BiReservation, error) {
+	out := new(BiReservation)
+	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.reservation.v1beta1.ReservationService/UpdateBiReservation", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ReservationServiceServer is the server API for ReservationService service.
 type ReservationServiceServer interface {
 	// Creates a new reservation resource.
@@ -1689,6 +2199,21 @@ type ReservationServiceServer interface {
 	// before its commitment_end_time will fail with the error code
 	// `google.rpc.Code.FAILED_PRECONDITION`.
 	DeleteCapacityCommitment(context.Context, *DeleteCapacityCommitmentRequest) (*empty.Empty, error)
+	// Updates an existing capacity commitment.
+	//
+	// Only renewal_plan field can be updated.
+	UpdateCapacityCommitment(context.Context, *UpdateCapacityCommitmentRequest) (*CapacityCommitment, error)
+	// Splits capacity commitment to two commitments of the same plan and
+	// commitment_end_time. A common use case to do that is to perform a downgrade
+	// e.g., in order to downgrade from 10000 slots to 8000, one might split 10000
+	// capacity commitment to 2000 and 8000, change the plan of the first one to
+	// flex and then delete it.
+	SplitCapacityCommitment(context.Context, *SplitCapacityCommitmentRequest) (*SplitCapacityCommitmentResponse, error)
+	// Merges capacity commitments of the same plan into one. Resulting capacity
+	// commitment has the longer commitment_end_time out of the two. Attempting to
+	// merge capacity commitments of different plan will fail with the error code
+	// `google.rpc.Code.FAILED_PRECONDITION`.
+	MergeCapacityCommitments(context.Context, *MergeCapacityCommitmentsRequest) (*CapacityCommitment, error)
 	// Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have
 	// 'bigquery.admin' permissions on the project using the reservation
 	// and the project that owns this reservation.
@@ -1743,6 +2268,15 @@ type ReservationServiceServer interface {
 	// Without the method customers might see some queries run on-demand which
 	// might be unexpected.
 	MoveAssignment(context.Context, *MoveAssignmentRequest) (*Assignment, error)
+	// Retrieves a BI reservation.
+	GetBiReservation(context.Context, *GetBiReservationRequest) (*BiReservation, error)
+	// Updates a BI reservation.
+	// Only fields specified in the field_mask are updated.
+	// Singleton BI reservation always exists with default size 0.
+	// In order to reserve BI capacity it needs to be updated to an amount
+	// greater than 0. In order to release BI capacity reservation size
+	// must be set to 0.
+	UpdateBiReservation(context.Context, *UpdateBiReservationRequest) (*BiReservation, error)
 }
 
 // UnimplementedReservationServiceServer can be embedded to have forward compatible implementations.
@@ -1773,6 +2307,15 @@ func (*UnimplementedReservationServiceServer) GetCapacityCommitment(ctx context.
 func (*UnimplementedReservationServiceServer) DeleteCapacityCommitment(ctx context.Context, req *DeleteCapacityCommitmentRequest) (*empty.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteCapacityCommitment not implemented")
 }
+func (*UnimplementedReservationServiceServer) UpdateCapacityCommitment(ctx context.Context, req *UpdateCapacityCommitmentRequest) (*CapacityCommitment, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateCapacityCommitment not implemented")
+}
+func (*UnimplementedReservationServiceServer) SplitCapacityCommitment(ctx context.Context, req *SplitCapacityCommitmentRequest) (*SplitCapacityCommitmentResponse, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method SplitCapacityCommitment not implemented")
+}
+func (*UnimplementedReservationServiceServer) MergeCapacityCommitments(ctx context.Context, req *MergeCapacityCommitmentsRequest) (*CapacityCommitment, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method MergeCapacityCommitments not implemented")
+}
 func (*UnimplementedReservationServiceServer) CreateAssignment(ctx context.Context, req *CreateAssignmentRequest) (*Assignment, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method CreateAssignment not implemented")
 }
@@ -1787,6 +2330,12 @@ func (*UnimplementedReservationServiceServer) SearchAssignments(ctx context.Cont
 }
 func (*UnimplementedReservationServiceServer) MoveAssignment(ctx context.Context, req *MoveAssignmentRequest) (*Assignment, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method MoveAssignment not implemented")
+}
+func (*UnimplementedReservationServiceServer) GetBiReservation(ctx context.Context, req *GetBiReservationRequest) (*BiReservation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method GetBiReservation not implemented")
+}
+func (*UnimplementedReservationServiceServer) UpdateBiReservation(ctx context.Context, req *UpdateBiReservationRequest) (*BiReservation, error) {
+	return nil, status1.Errorf(codes.Unimplemented, "method UpdateBiReservation not implemented")
 }
 
 func RegisterReservationServiceServer(s *grpc.Server, srv ReservationServiceServer) {
@@ -1937,6 +2486,60 @@ func _ReservationService_DeleteCapacityCommitment_Handler(srv interface{}, ctx c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ReservationService_UpdateCapacityCommitment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCapacityCommitmentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReservationServiceServer).UpdateCapacityCommitment(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.bigquery.reservation.v1beta1.ReservationService/UpdateCapacityCommitment",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReservationServiceServer).UpdateCapacityCommitment(ctx, req.(*UpdateCapacityCommitmentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReservationService_SplitCapacityCommitment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SplitCapacityCommitmentRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReservationServiceServer).SplitCapacityCommitment(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.bigquery.reservation.v1beta1.ReservationService/SplitCapacityCommitment",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReservationServiceServer).SplitCapacityCommitment(ctx, req.(*SplitCapacityCommitmentRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReservationService_MergeCapacityCommitments_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MergeCapacityCommitmentsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReservationServiceServer).MergeCapacityCommitments(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.bigquery.reservation.v1beta1.ReservationService/MergeCapacityCommitments",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReservationServiceServer).MergeCapacityCommitments(ctx, req.(*MergeCapacityCommitmentsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ReservationService_CreateAssignment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateAssignmentRequest)
 	if err := dec(in); err != nil {
@@ -2027,6 +2630,42 @@ func _ReservationService_MoveAssignment_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ReservationService_GetBiReservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBiReservationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReservationServiceServer).GetBiReservation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.bigquery.reservation.v1beta1.ReservationService/GetBiReservation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReservationServiceServer).GetBiReservation(ctx, req.(*GetBiReservationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReservationService_UpdateBiReservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBiReservationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReservationServiceServer).UpdateBiReservation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.bigquery.reservation.v1beta1.ReservationService/UpdateBiReservation",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReservationServiceServer).UpdateBiReservation(ctx, req.(*UpdateBiReservationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _ReservationService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "google.cloud.bigquery.reservation.v1beta1.ReservationService",
 	HandlerType: (*ReservationServiceServer)(nil),
@@ -2064,6 +2703,18 @@ var _ReservationService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _ReservationService_DeleteCapacityCommitment_Handler,
 		},
 		{
+			MethodName: "UpdateCapacityCommitment",
+			Handler:    _ReservationService_UpdateCapacityCommitment_Handler,
+		},
+		{
+			MethodName: "SplitCapacityCommitment",
+			Handler:    _ReservationService_SplitCapacityCommitment_Handler,
+		},
+		{
+			MethodName: "MergeCapacityCommitments",
+			Handler:    _ReservationService_MergeCapacityCommitments_Handler,
+		},
+		{
 			MethodName: "CreateAssignment",
 			Handler:    _ReservationService_CreateAssignment_Handler,
 		},
@@ -2082,6 +2733,14 @@ var _ReservationService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "MoveAssignment",
 			Handler:    _ReservationService_MoveAssignment_Handler,
+		},
+		{
+			MethodName: "GetBiReservation",
+			Handler:    _ReservationService_GetBiReservation_Handler,
+		},
+		{
+			MethodName: "UpdateBiReservation",
+			Handler:    _ReservationService_UpdateBiReservation_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
