@@ -318,7 +318,7 @@ type Metrics struct {
 	RelativeCtr *wrappers.DoubleValue `protobuf:"bytes,46,opt,name=relative_ctr,json=relativeCtr,proto3" json:"relative_ctr,omitempty"`
 	// The percentage of the customer's Shopping or Search ad impressions that are
 	// shown in the most prominent Shopping position. See
-	// [this article](https://support.google.com/google-ads/answer/7501826)
+	// https://support.google.com/google-ads/answer/7501826
 	// for details. Any value below 0.1 is reported as 0.0999.
 	SearchAbsoluteTopImpressionShare *wrappers.DoubleValue `protobuf:"bytes,78,opt,name=search_absolute_top_impression_share,json=searchAbsoluteTopImpressionShare,proto3" json:"search_absolute_top_impression_share,omitempty"`
 	// The number estimating how often your ad wasn't the very first ad above the

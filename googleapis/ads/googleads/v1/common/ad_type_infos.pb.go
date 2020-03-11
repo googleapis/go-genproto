@@ -1852,7 +1852,7 @@ type ResponsiveDisplayAdInfo struct {
 	// Descriptive texts for the ad. The maximum length is 90 characters. At
 	// least 1 and max 5 headlines can be specified.
 	Descriptions []*AdTextAsset `protobuf:"bytes,7,rep,name=descriptions,proto3" json:"descriptions,omitempty"`
-	// Optional YouTube vidoes for the ad. A maximum of 5 videos can be specified.
+	// Optional YouTube videos for the ad. A maximum of 5 videos can be specified.
 	YoutubeVideos []*AdVideoAsset `protobuf:"bytes,8,rep,name=youtube_videos,json=youtubeVideos,proto3" json:"youtube_videos,omitempty"`
 	// The advertiser/brand name. Maximum display width is 25.
 	BusinessName *wrappers.StringValue `protobuf:"bytes,9,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
