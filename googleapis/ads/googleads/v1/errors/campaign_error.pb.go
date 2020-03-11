@@ -59,10 +59,10 @@ const (
 	CampaignErrorEnum_INVALID_CAMPAIGN_NAME CampaignErrorEnum_CampaignError = 14
 	// Given status is invalid.
 	CampaignErrorEnum_INVALID_AD_SERVING_OPTIMIZATION_STATUS CampaignErrorEnum_CampaignError = 15
-	// Error in the campaign level tracking url.
+	// Error in the campaign level tracking URL.
 	CampaignErrorEnum_INVALID_TRACKING_URL CampaignErrorEnum_CampaignError = 16
-	// Cannot set both tracking url template and tracking setting. An user has
-	// to clear legacy tracking setting in order to add tracking url template.
+	// Cannot set both tracking URL template and tracking setting. A user has
+	// to clear legacy tracking setting in order to add tracking URL template.
 	CampaignErrorEnum_CANNOT_SET_BOTH_TRACKING_URL_TEMPLATE_AND_TRACKING_SETTING CampaignErrorEnum_CampaignError = 17
 	// The maximum number of impressions for Frequency Cap should be an integer
 	// greater than 0.

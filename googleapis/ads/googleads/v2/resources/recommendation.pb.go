@@ -27,22 +27,22 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // A recommendation.
 type Recommendation struct {
-	// The resource name of the recommendation.
+	// Immutable. The resource name of the recommendation.
 	//
 	// `customers/{customer_id}/recommendations/{recommendation_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
-	// The type of recommendation.
+	// Output only. The type of recommendation.
 	Type enums.RecommendationTypeEnum_RecommendationType `protobuf:"varint,2,opt,name=type,proto3,enum=google.ads.googleads.v2.enums.RecommendationTypeEnum_RecommendationType" json:"type,omitempty"`
-	// The impact on account performance as a result of applying the
+	// Output only. The impact on account performance as a result of applying the
 	// recommendation.
 	Impact *Recommendation_RecommendationImpact `protobuf:"bytes,3,opt,name=impact,proto3" json:"impact,omitempty"`
-	// The budget targeted by this recommendation. This will be set only when
+	// Output only. The budget targeted by this recommendation. This will be set only when
 	// the recommendation affects a single campaign budget.
 	//
 	// This field will be set for the following recommendation types:
 	// CAMPAIGN_BUDGET, MOVE_UNUSED_BUDGET
 	CampaignBudget *wrappers.StringValue `protobuf:"bytes,5,opt,name=campaign_budget,json=campaignBudget,proto3" json:"campaign_budget,omitempty"`
-	// The campaign targeted by this recommendation. This will be set only when
+	// Output only. The campaign targeted by this recommendation. This will be set only when
 	// the recommendation affects a single campaign.
 	//
 	// This field will be set for the following recommendation types:
@@ -51,13 +51,13 @@ type Recommendation struct {
 	// OPTIMIZE_AD_ROTATION, SEARCH_PARTNERS_OPT_IN, SITELINK_EXTENSION,
 	// TARGET_CPA_OPT_IN, TEXT_AD
 	Campaign *wrappers.StringValue `protobuf:"bytes,6,opt,name=campaign,proto3" json:"campaign,omitempty"`
-	// The ad group targeted by this recommendation. This will be set only when
+	// Output only. The ad group targeted by this recommendation. This will be set only when
 	// the recommendation affects a single ad group.
 	//
 	// This field will be set for the following recommendation types:
 	// KEYWORD, OPTIMIZE_AD_ROTATION, TEXT_AD
 	AdGroup *wrappers.StringValue `protobuf:"bytes,7,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
-	// Whether the recommendation is dismissed or not.
+	// Output only. Whether the recommendation is dismissed or not.
 	Dismissed *wrappers.BoolValue `protobuf:"bytes,13,opt,name=dismissed,proto3" json:"dismissed,omitempty"`
 	// The details of recommendation.
 	//
@@ -372,9 +372,9 @@ func (*Recommendation) XXX_OneofWrappers() []interface{} {
 // The impact of making the change as described in the recommendation.
 // Some types of recommendations may not have impact information.
 type Recommendation_RecommendationImpact struct {
-	// Base metrics at the time the recommendation was generated.
+	// Output only. Base metrics at the time the recommendation was generated.
 	BaseMetrics *Recommendation_RecommendationMetrics `protobuf:"bytes,1,opt,name=base_metrics,json=baseMetrics,proto3" json:"base_metrics,omitempty"`
-	// Estimated metrics if the recommendation is applied.
+	// Output only. Estimated metrics if the recommendation is applied.
 	PotentialMetrics     *Recommendation_RecommendationMetrics `protobuf:"bytes,2,opt,name=potential_metrics,json=potentialMetrics,proto3" json:"potential_metrics,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                              `json:"-"`
 	XXX_unrecognized     []byte                                `json:"-"`
@@ -423,15 +423,15 @@ func (m *Recommendation_RecommendationImpact) GetPotentialMetrics() *Recommendat
 // Weekly account performance metrics. For some recommendation types, these
 // are averaged over the past 90-day period and hence can be fractional.
 type Recommendation_RecommendationMetrics struct {
-	// Number of ad impressions.
+	// Output only. Number of ad impressions.
 	Impressions *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=impressions,proto3" json:"impressions,omitempty"`
-	// Number of ad clicks.
+	// Output only. Number of ad clicks.
 	Clicks *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=clicks,proto3" json:"clicks,omitempty"`
-	// Cost (in micros) for advertising, in the local currency for the account.
+	// Output only. Cost (in micros) for advertising, in the local currency for the account.
 	CostMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=cost_micros,json=costMicros,proto3" json:"cost_micros,omitempty"`
-	// Number of conversions.
+	// Output only. Number of conversions.
 	Conversions *wrappers.DoubleValue `protobuf:"bytes,4,opt,name=conversions,proto3" json:"conversions,omitempty"`
-	// Number of video views for a video ad campaign.
+	// Output only. Number of video views for a video ad campaign.
 	VideoViews           *wrappers.DoubleValue `protobuf:"bytes,5,opt,name=video_views,json=videoViews,proto3" json:"video_views,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -500,11 +500,11 @@ func (m *Recommendation_RecommendationMetrics) GetVideoViews() *wrappers.DoubleV
 
 // The budget recommendation for budget constrained campaigns.
 type Recommendation_CampaignBudgetRecommendation struct {
-	// The current budget amount in micros.
+	// Output only. The current budget amount in micros.
 	CurrentBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=current_budget_amount_micros,json=currentBudgetAmountMicros,proto3" json:"current_budget_amount_micros,omitempty"`
-	// The recommended budget amount in micros.
+	// Output only. The recommended budget amount in micros.
 	RecommendedBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
-	// The budget amounts and associated impact estimates for some values of
+	// Output only. The budget amounts and associated impact estimates for some values of
 	// possible budget amounts.
 	BudgetOptions        []*Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendationOption `protobuf:"bytes,3,rep,name=budget_options,json=budgetOptions,proto3" json:"budget_options,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                                                          `json:"-"`
@@ -564,9 +564,9 @@ func (m *Recommendation_CampaignBudgetRecommendation) GetBudgetOptions() []*Reco
 
 // The impact estimates for a given budget amount.
 type Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendationOption struct {
-	// The budget amount for this option.
+	// Output only. The budget amount for this option.
 	BudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=budget_amount_micros,json=budgetAmountMicros,proto3" json:"budget_amount_micros,omitempty"`
-	// The impact estimate if budget is changed to amount specified in this
+	// Output only. The impact estimate if budget is changed to amount specified in this
 	// option.
 	Impact               *Recommendation_RecommendationImpact `protobuf:"bytes,2,opt,name=impact,proto3" json:"impact,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                             `json:"-"`
@@ -620,9 +620,9 @@ func (m *Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendatio
 
 // The keyword recommendation.
 type Recommendation_KeywordRecommendation struct {
-	// The recommended keyword.
+	// Output only. The recommended keyword.
 	Keyword *common.KeywordInfo `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
-	// The recommended CPC (cost-per-click) bid.
+	// Output only. The recommended CPC (cost-per-click) bid.
 	RecommendedCpcBidMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=recommended_cpc_bid_micros,json=recommendedCpcBidMicros,proto3" json:"recommended_cpc_bid_micros,omitempty"`
 	XXX_NoUnkeyedLiteral    struct{}             `json:"-"`
 	XXX_unrecognized        []byte               `json:"-"`
@@ -668,11 +668,244 @@ func (m *Recommendation_KeywordRecommendation) GetRecommendedCpcBidMicros() *wra
 	return nil
 }
 
+// The Search Partners Opt-In recommendation.
+type Recommendation_SearchPartnersOptInRecommendation struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Recommendation_SearchPartnersOptInRecommendation) Reset() {
+	*m = Recommendation_SearchPartnersOptInRecommendation{}
+}
+func (m *Recommendation_SearchPartnersOptInRecommendation) String() string {
+	return proto.CompactTextString(m)
+}
+func (*Recommendation_SearchPartnersOptInRecommendation) ProtoMessage() {}
+func (*Recommendation_SearchPartnersOptInRecommendation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0f6630579339be78, []int{0, 4}
+}
+
+func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.Unmarshal(m, b)
+}
+func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.Marshal(b, m, deterministic)
+}
+func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.Merge(m, src)
+}
+func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_Size() int {
+	return xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.Size(m)
+}
+func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation proto.InternalMessageInfo
+
+// The Optimize Ad Rotation recommendation.
+type Recommendation_OptimizeAdRotationRecommendation struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Recommendation_OptimizeAdRotationRecommendation) Reset() {
+	*m = Recommendation_OptimizeAdRotationRecommendation{}
+}
+func (m *Recommendation_OptimizeAdRotationRecommendation) String() string {
+	return proto.CompactTextString(m)
+}
+func (*Recommendation_OptimizeAdRotationRecommendation) ProtoMessage() {}
+func (*Recommendation_OptimizeAdRotationRecommendation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0f6630579339be78, []int{0, 5}
+}
+
+func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.Unmarshal(m, b)
+}
+func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.Marshal(b, m, deterministic)
+}
+func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.Merge(m, src)
+}
+func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_Size() int {
+	return xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.Size(m)
+}
+func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation proto.InternalMessageInfo
+
+// The Call extension recommendation.
+type Recommendation_CallExtensionRecommendation struct {
+	// Output only. Call extensions recommended to be added.
+	RecommendedExtensions []*common.CallFeedItem `protobuf:"bytes,1,rep,name=recommended_extensions,json=recommendedExtensions,proto3" json:"recommended_extensions,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{}               `json:"-"`
+	XXX_unrecognized      []byte                 `json:"-"`
+	XXX_sizecache         int32                  `json:"-"`
+}
+
+func (m *Recommendation_CallExtensionRecommendation) Reset() {
+	*m = Recommendation_CallExtensionRecommendation{}
+}
+func (m *Recommendation_CallExtensionRecommendation) String() string {
+	return proto.CompactTextString(m)
+}
+func (*Recommendation_CallExtensionRecommendation) ProtoMessage() {}
+func (*Recommendation_CallExtensionRecommendation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0f6630579339be78, []int{0, 6}
+}
+
+func (m *Recommendation_CallExtensionRecommendation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Recommendation_CallExtensionRecommendation.Unmarshal(m, b)
+}
+func (m *Recommendation_CallExtensionRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Recommendation_CallExtensionRecommendation.Marshal(b, m, deterministic)
+}
+func (m *Recommendation_CallExtensionRecommendation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Recommendation_CallExtensionRecommendation.Merge(m, src)
+}
+func (m *Recommendation_CallExtensionRecommendation) XXX_Size() int {
+	return xxx_messageInfo_Recommendation_CallExtensionRecommendation.Size(m)
+}
+func (m *Recommendation_CallExtensionRecommendation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Recommendation_CallExtensionRecommendation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Recommendation_CallExtensionRecommendation proto.InternalMessageInfo
+
+func (m *Recommendation_CallExtensionRecommendation) GetRecommendedExtensions() []*common.CallFeedItem {
+	if m != nil {
+		return m.RecommendedExtensions
+	}
+	return nil
+}
+
+// The keyword match type recommendation.
+type Recommendation_KeywordMatchTypeRecommendation struct {
+	// Output only. The existing keyword where the match type should be more broad.
+	Keyword *common.KeywordInfo `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
+	// Output only. The recommended new match type.
+	RecommendedMatchType enums.KeywordMatchTypeEnum_KeywordMatchType `protobuf:"varint,2,opt,name=recommended_match_type,json=recommendedMatchType,proto3,enum=google.ads.googleads.v2.enums.KeywordMatchTypeEnum_KeywordMatchType" json:"recommended_match_type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                    `json:"-"`
+	XXX_unrecognized     []byte                                      `json:"-"`
+	XXX_sizecache        int32                                       `json:"-"`
+}
+
+func (m *Recommendation_KeywordMatchTypeRecommendation) Reset() {
+	*m = Recommendation_KeywordMatchTypeRecommendation{}
+}
+func (m *Recommendation_KeywordMatchTypeRecommendation) String() string {
+	return proto.CompactTextString(m)
+}
+func (*Recommendation_KeywordMatchTypeRecommendation) ProtoMessage() {}
+func (*Recommendation_KeywordMatchTypeRecommendation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0f6630579339be78, []int{0, 7}
+}
+
+func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.Unmarshal(m, b)
+}
+func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.Marshal(b, m, deterministic)
+}
+func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.Merge(m, src)
+}
+func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_Size() int {
+	return xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.Size(m)
+}
+func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation proto.InternalMessageInfo
+
+func (m *Recommendation_KeywordMatchTypeRecommendation) GetKeyword() *common.KeywordInfo {
+	if m != nil {
+		return m.Keyword
+	}
+	return nil
+}
+
+func (m *Recommendation_KeywordMatchTypeRecommendation) GetRecommendedMatchType() enums.KeywordMatchTypeEnum_KeywordMatchType {
+	if m != nil {
+		return m.RecommendedMatchType
+	}
+	return enums.KeywordMatchTypeEnum_UNSPECIFIED
+}
+
+// The text ad recommendation.
+type Recommendation_TextAdRecommendation struct {
+	// Output only. Recommended ad.
+	Ad *Ad `protobuf:"bytes,1,opt,name=ad,proto3" json:"ad,omitempty"`
+	// Output only. Creation date of the recommended ad.
+	// YYYY-MM-DD format, e.g., 2018-04-17.
+	CreationDate *wrappers.StringValue `protobuf:"bytes,2,opt,name=creation_date,json=creationDate,proto3" json:"creation_date,omitempty"`
+	// Output only. Date, if present, is the earliest when the recommendation will be auto
+	// applied.
+	// YYYY-MM-DD format, e.g., 2018-04-17.
+	AutoApplyDate        *wrappers.StringValue `protobuf:"bytes,3,opt,name=auto_apply_date,json=autoApplyDate,proto3" json:"auto_apply_date,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *Recommendation_TextAdRecommendation) Reset()         { *m = Recommendation_TextAdRecommendation{} }
+func (m *Recommendation_TextAdRecommendation) String() string { return proto.CompactTextString(m) }
+func (*Recommendation_TextAdRecommendation) ProtoMessage()    {}
+func (*Recommendation_TextAdRecommendation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0f6630579339be78, []int{0, 8}
+}
+
+func (m *Recommendation_TextAdRecommendation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Recommendation_TextAdRecommendation.Unmarshal(m, b)
+}
+func (m *Recommendation_TextAdRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Recommendation_TextAdRecommendation.Marshal(b, m, deterministic)
+}
+func (m *Recommendation_TextAdRecommendation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Recommendation_TextAdRecommendation.Merge(m, src)
+}
+func (m *Recommendation_TextAdRecommendation) XXX_Size() int {
+	return xxx_messageInfo_Recommendation_TextAdRecommendation.Size(m)
+}
+func (m *Recommendation_TextAdRecommendation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Recommendation_TextAdRecommendation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Recommendation_TextAdRecommendation proto.InternalMessageInfo
+
+func (m *Recommendation_TextAdRecommendation) GetAd() *Ad {
+	if m != nil {
+		return m.Ad
+	}
+	return nil
+}
+
+func (m *Recommendation_TextAdRecommendation) GetCreationDate() *wrappers.StringValue {
+	if m != nil {
+		return m.CreationDate
+	}
+	return nil
+}
+
+func (m *Recommendation_TextAdRecommendation) GetAutoApplyDate() *wrappers.StringValue {
+	if m != nil {
+		return m.AutoApplyDate
+	}
+	return nil
+}
+
 // The Target CPA opt-in recommendation.
 type Recommendation_TargetCpaOptInRecommendation struct {
-	// The available goals and corresponding options for Target CPA strategy.
+	// Output only. The available goals and corresponding options for Target CPA strategy.
 	Options []*Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption `protobuf:"bytes,1,rep,name=options,proto3" json:"options,omitempty"`
-	// The recommended average CPA target. See required budget amount and impact
+	// Output only. The recommended average CPA target. See required budget amount and impact
 	// of using this recommendation in options list.
 	RecommendedTargetCpaMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=recommended_target_cpa_micros,json=recommendedTargetCpaMicros,proto3" json:"recommended_target_cpa_micros,omitempty"`
 	XXX_NoUnkeyedLiteral       struct{}             `json:"-"`
@@ -688,7 +921,7 @@ func (m *Recommendation_TargetCpaOptInRecommendation) String() string {
 }
 func (*Recommendation_TargetCpaOptInRecommendation) ProtoMessage() {}
 func (*Recommendation_TargetCpaOptInRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 4}
+	return fileDescriptor_0f6630579339be78, []int{0, 9}
 }
 
 func (m *Recommendation_TargetCpaOptInRecommendation) XXX_Unmarshal(b []byte) error {
@@ -725,16 +958,16 @@ func (m *Recommendation_TargetCpaOptInRecommendation) GetRecommendedTargetCpaMic
 
 // The Target CPA opt-in option with impact estimate.
 type Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption struct {
-	// The goal achieved by this option.
+	// Output only. The goal achieved by this option.
 	Goal enums.TargetCpaOptInRecommendationGoalEnum_TargetCpaOptInRecommendationGoal `protobuf:"varint,1,opt,name=goal,proto3,enum=google.ads.googleads.v2.enums.TargetCpaOptInRecommendationGoalEnum_TargetCpaOptInRecommendationGoal" json:"goal,omitempty"`
-	// Average CPA target.
+	// Output only. Average CPA target.
 	TargetCpaMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=target_cpa_micros,json=targetCpaMicros,proto3" json:"target_cpa_micros,omitempty"`
-	// The minimum campaign budget, in local currency for the account,
+	// Output only. The minimum campaign budget, in local currency for the account,
 	// required to achieve the target CPA.
 	// Amount is specified in micros, where one million is equivalent to one
 	// currency unit.
 	RequiredCampaignBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=required_campaign_budget_amount_micros,json=requiredCampaignBudgetAmountMicros,proto3" json:"required_campaign_budget_amount_micros,omitempty"`
-	// The impact estimate if this option is selected.
+	// Output only. The impact estimate if this option is selected.
 	Impact               *Recommendation_RecommendationImpact `protobuf:"bytes,4,opt,name=impact,proto3" json:"impact,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                             `json:"-"`
 	XXX_unrecognized     []byte                               `json:"-"`
@@ -750,7 +983,7 @@ func (m *Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendatio
 func (*Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption) ProtoMessage() {
 }
 func (*Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 4, 0}
+	return fileDescriptor_0f6630579339be78, []int{0, 9, 0}
 }
 
 func (m *Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption) XXX_Unmarshal(b []byte) error {
@@ -799,170 +1032,9 @@ func (m *Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendatio
 	return nil
 }
 
-// The text ad recommendation.
-type Recommendation_TextAdRecommendation struct {
-	// Recommended ad.
-	Ad *Ad `protobuf:"bytes,1,opt,name=ad,proto3" json:"ad,omitempty"`
-	// Creation date of the recommended ad.
-	// YYYY-MM-DD format, e.g., 2018-04-17.
-	CreationDate *wrappers.StringValue `protobuf:"bytes,2,opt,name=creation_date,json=creationDate,proto3" json:"creation_date,omitempty"`
-	// Date, if present, is the earliest when the recommendation will be auto
-	// applied.
-	// YYYY-MM-DD format, e.g., 2018-04-17.
-	AutoApplyDate        *wrappers.StringValue `protobuf:"bytes,3,opt,name=auto_apply_date,json=autoApplyDate,proto3" json:"auto_apply_date,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
-}
-
-func (m *Recommendation_TextAdRecommendation) Reset()         { *m = Recommendation_TextAdRecommendation{} }
-func (m *Recommendation_TextAdRecommendation) String() string { return proto.CompactTextString(m) }
-func (*Recommendation_TextAdRecommendation) ProtoMessage()    {}
-func (*Recommendation_TextAdRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 5}
-}
-
-func (m *Recommendation_TextAdRecommendation) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Recommendation_TextAdRecommendation.Unmarshal(m, b)
-}
-func (m *Recommendation_TextAdRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Recommendation_TextAdRecommendation.Marshal(b, m, deterministic)
-}
-func (m *Recommendation_TextAdRecommendation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Recommendation_TextAdRecommendation.Merge(m, src)
-}
-func (m *Recommendation_TextAdRecommendation) XXX_Size() int {
-	return xxx_messageInfo_Recommendation_TextAdRecommendation.Size(m)
-}
-func (m *Recommendation_TextAdRecommendation) XXX_DiscardUnknown() {
-	xxx_messageInfo_Recommendation_TextAdRecommendation.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Recommendation_TextAdRecommendation proto.InternalMessageInfo
-
-func (m *Recommendation_TextAdRecommendation) GetAd() *Ad {
-	if m != nil {
-		return m.Ad
-	}
-	return nil
-}
-
-func (m *Recommendation_TextAdRecommendation) GetCreationDate() *wrappers.StringValue {
-	if m != nil {
-		return m.CreationDate
-	}
-	return nil
-}
-
-func (m *Recommendation_TextAdRecommendation) GetAutoApplyDate() *wrappers.StringValue {
-	if m != nil {
-		return m.AutoApplyDate
-	}
-	return nil
-}
-
-// The Sitelink extension recommendation.
-type Recommendation_SitelinkExtensionRecommendation struct {
-	// Sitelink extensions recommended to be added.
-	RecommendedExtensions []*common.SitelinkFeedItem `protobuf:"bytes,1,rep,name=recommended_extensions,json=recommendedExtensions,proto3" json:"recommended_extensions,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}                   `json:"-"`
-	XXX_unrecognized      []byte                     `json:"-"`
-	XXX_sizecache         int32                      `json:"-"`
-}
-
-func (m *Recommendation_SitelinkExtensionRecommendation) Reset() {
-	*m = Recommendation_SitelinkExtensionRecommendation{}
-}
-func (m *Recommendation_SitelinkExtensionRecommendation) String() string {
-	return proto.CompactTextString(m)
-}
-func (*Recommendation_SitelinkExtensionRecommendation) ProtoMessage() {}
-func (*Recommendation_SitelinkExtensionRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 6}
-}
-
-func (m *Recommendation_SitelinkExtensionRecommendation) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.Unmarshal(m, b)
-}
-func (m *Recommendation_SitelinkExtensionRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.Marshal(b, m, deterministic)
-}
-func (m *Recommendation_SitelinkExtensionRecommendation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.Merge(m, src)
-}
-func (m *Recommendation_SitelinkExtensionRecommendation) XXX_Size() int {
-	return xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.Size(m)
-}
-func (m *Recommendation_SitelinkExtensionRecommendation) XXX_DiscardUnknown() {
-	xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation proto.InternalMessageInfo
-
-func (m *Recommendation_SitelinkExtensionRecommendation) GetRecommendedExtensions() []*common.SitelinkFeedItem {
-	if m != nil {
-		return m.RecommendedExtensions
-	}
-	return nil
-}
-
-// The move unused budget recommendation.
-type Recommendation_MoveUnusedBudgetRecommendation struct {
-	// The excess budget's resource_name.
-	ExcessCampaignBudget *wrappers.StringValue `protobuf:"bytes,1,opt,name=excess_campaign_budget,json=excessCampaignBudget,proto3" json:"excess_campaign_budget,omitempty"`
-	// The recommendation for the constrained budget to increase.
-	BudgetRecommendation *Recommendation_CampaignBudgetRecommendation `protobuf:"bytes,2,opt,name=budget_recommendation,json=budgetRecommendation,proto3" json:"budget_recommendation,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                     `json:"-"`
-	XXX_unrecognized     []byte                                       `json:"-"`
-	XXX_sizecache        int32                                        `json:"-"`
-}
-
-func (m *Recommendation_MoveUnusedBudgetRecommendation) Reset() {
-	*m = Recommendation_MoveUnusedBudgetRecommendation{}
-}
-func (m *Recommendation_MoveUnusedBudgetRecommendation) String() string {
-	return proto.CompactTextString(m)
-}
-func (*Recommendation_MoveUnusedBudgetRecommendation) ProtoMessage() {}
-func (*Recommendation_MoveUnusedBudgetRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 7}
-}
-
-func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.Unmarshal(m, b)
-}
-func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.Marshal(b, m, deterministic)
-}
-func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.Merge(m, src)
-}
-func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_Size() int {
-	return xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.Size(m)
-}
-func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_DiscardUnknown() {
-	xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation proto.InternalMessageInfo
-
-func (m *Recommendation_MoveUnusedBudgetRecommendation) GetExcessCampaignBudget() *wrappers.StringValue {
-	if m != nil {
-		return m.ExcessCampaignBudget
-	}
-	return nil
-}
-
-func (m *Recommendation_MoveUnusedBudgetRecommendation) GetBudgetRecommendation() *Recommendation_CampaignBudgetRecommendation {
-	if m != nil {
-		return m.BudgetRecommendation
-	}
-	return nil
-}
-
 // The Maximize Conversions Opt-In recommendation.
 type Recommendation_MaximizeConversionsOptInRecommendation struct {
-	// The recommended new budget amount.
+	// Output only. The recommended new budget amount.
 	RecommendedBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
 	XXX_NoUnkeyedLiteral          struct{}             `json:"-"`
 	XXX_unrecognized              []byte               `json:"-"`
@@ -977,7 +1049,7 @@ func (m *Recommendation_MaximizeConversionsOptInRecommendation) String() string 
 }
 func (*Recommendation_MaximizeConversionsOptInRecommendation) ProtoMessage() {}
 func (*Recommendation_MaximizeConversionsOptInRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 8}
+	return fileDescriptor_0f6630579339be78, []int{0, 10}
 }
 
 func (m *Recommendation_MaximizeConversionsOptInRecommendation) XXX_Unmarshal(b []byte) error {
@@ -1005,6 +1077,51 @@ func (m *Recommendation_MaximizeConversionsOptInRecommendation) GetRecommendedBu
 	return nil
 }
 
+// The Sitelink extension recommendation.
+type Recommendation_SitelinkExtensionRecommendation struct {
+	// Output only. Sitelink extensions recommended to be added.
+	RecommendedExtensions []*common.SitelinkFeedItem `protobuf:"bytes,1,rep,name=recommended_extensions,json=recommendedExtensions,proto3" json:"recommended_extensions,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{}                   `json:"-"`
+	XXX_unrecognized      []byte                     `json:"-"`
+	XXX_sizecache         int32                      `json:"-"`
+}
+
+func (m *Recommendation_SitelinkExtensionRecommendation) Reset() {
+	*m = Recommendation_SitelinkExtensionRecommendation{}
+}
+func (m *Recommendation_SitelinkExtensionRecommendation) String() string {
+	return proto.CompactTextString(m)
+}
+func (*Recommendation_SitelinkExtensionRecommendation) ProtoMessage() {}
+func (*Recommendation_SitelinkExtensionRecommendation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_0f6630579339be78, []int{0, 11}
+}
+
+func (m *Recommendation_SitelinkExtensionRecommendation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.Unmarshal(m, b)
+}
+func (m *Recommendation_SitelinkExtensionRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.Marshal(b, m, deterministic)
+}
+func (m *Recommendation_SitelinkExtensionRecommendation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.Merge(m, src)
+}
+func (m *Recommendation_SitelinkExtensionRecommendation) XXX_Size() int {
+	return xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.Size(m)
+}
+func (m *Recommendation_SitelinkExtensionRecommendation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Recommendation_SitelinkExtensionRecommendation proto.InternalMessageInfo
+
+func (m *Recommendation_SitelinkExtensionRecommendation) GetRecommendedExtensions() []*common.SitelinkFeedItem {
+	if m != nil {
+		return m.RecommendedExtensions
+	}
+	return nil
+}
+
 // The Enhanced Cost-Per-Click Opt-In recommendation.
 type Recommendation_EnhancedCpcOptInRecommendation struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1020,7 +1137,7 @@ func (m *Recommendation_EnhancedCpcOptInRecommendation) String() string {
 }
 func (*Recommendation_EnhancedCpcOptInRecommendation) ProtoMessage() {}
 func (*Recommendation_EnhancedCpcOptInRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 9}
+	return fileDescriptor_0f6630579339be78, []int{0, 12}
 }
 
 func (m *Recommendation_EnhancedCpcOptInRecommendation) XXX_Unmarshal(b []byte) error {
@@ -1041,99 +1158,9 @@ func (m *Recommendation_EnhancedCpcOptInRecommendation) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Recommendation_EnhancedCpcOptInRecommendation proto.InternalMessageInfo
 
-// The keyword match type recommendation.
-type Recommendation_KeywordMatchTypeRecommendation struct {
-	// The existing keyword where the match type should be more broad.
-	Keyword *common.KeywordInfo `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
-	// The recommended new match type.
-	RecommendedMatchType enums.KeywordMatchTypeEnum_KeywordMatchType `protobuf:"varint,2,opt,name=recommended_match_type,json=recommendedMatchType,proto3,enum=google.ads.googleads.v2.enums.KeywordMatchTypeEnum_KeywordMatchType" json:"recommended_match_type,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                    `json:"-"`
-	XXX_unrecognized     []byte                                      `json:"-"`
-	XXX_sizecache        int32                                       `json:"-"`
-}
-
-func (m *Recommendation_KeywordMatchTypeRecommendation) Reset() {
-	*m = Recommendation_KeywordMatchTypeRecommendation{}
-}
-func (m *Recommendation_KeywordMatchTypeRecommendation) String() string {
-	return proto.CompactTextString(m)
-}
-func (*Recommendation_KeywordMatchTypeRecommendation) ProtoMessage() {}
-func (*Recommendation_KeywordMatchTypeRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 10}
-}
-
-func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.Unmarshal(m, b)
-}
-func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.Marshal(b, m, deterministic)
-}
-func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.Merge(m, src)
-}
-func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_Size() int {
-	return xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.Size(m)
-}
-func (m *Recommendation_KeywordMatchTypeRecommendation) XXX_DiscardUnknown() {
-	xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Recommendation_KeywordMatchTypeRecommendation proto.InternalMessageInfo
-
-func (m *Recommendation_KeywordMatchTypeRecommendation) GetKeyword() *common.KeywordInfo {
-	if m != nil {
-		return m.Keyword
-	}
-	return nil
-}
-
-func (m *Recommendation_KeywordMatchTypeRecommendation) GetRecommendedMatchType() enums.KeywordMatchTypeEnum_KeywordMatchType {
-	if m != nil {
-		return m.RecommendedMatchType
-	}
-	return enums.KeywordMatchTypeEnum_UNSPECIFIED
-}
-
-// The Search Partners Opt-In recommendation.
-type Recommendation_SearchPartnersOptInRecommendation struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *Recommendation_SearchPartnersOptInRecommendation) Reset() {
-	*m = Recommendation_SearchPartnersOptInRecommendation{}
-}
-func (m *Recommendation_SearchPartnersOptInRecommendation) String() string {
-	return proto.CompactTextString(m)
-}
-func (*Recommendation_SearchPartnersOptInRecommendation) ProtoMessage() {}
-func (*Recommendation_SearchPartnersOptInRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 11}
-}
-
-func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.Unmarshal(m, b)
-}
-func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.Marshal(b, m, deterministic)
-}
-func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.Merge(m, src)
-}
-func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_Size() int {
-	return xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.Size(m)
-}
-func (m *Recommendation_SearchPartnersOptInRecommendation) XXX_DiscardUnknown() {
-	xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Recommendation_SearchPartnersOptInRecommendation proto.InternalMessageInfo
-
 // The Maximize Clicks opt-in recommendation.
 type Recommendation_MaximizeClicksOptInRecommendation struct {
-	// The recommended new budget amount.
+	// Output only. The recommended new budget amount.
 	// Only set if the current budget is too high.
 	RecommendedBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
 	XXX_NoUnkeyedLiteral          struct{}             `json:"-"`
@@ -1149,7 +1176,7 @@ func (m *Recommendation_MaximizeClicksOptInRecommendation) String() string {
 }
 func (*Recommendation_MaximizeClicksOptInRecommendation) ProtoMessage() {}
 func (*Recommendation_MaximizeClicksOptInRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 12}
+	return fileDescriptor_0f6630579339be78, []int{0, 13}
 }
 
 func (m *Recommendation_MaximizeClicksOptInRecommendation) XXX_Unmarshal(b []byte) error {
@@ -1177,45 +1204,9 @@ func (m *Recommendation_MaximizeClicksOptInRecommendation) GetRecommendedBudgetA
 	return nil
 }
 
-// The Optimize Ad Rotation recommendation.
-type Recommendation_OptimizeAdRotationRecommendation struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *Recommendation_OptimizeAdRotationRecommendation) Reset() {
-	*m = Recommendation_OptimizeAdRotationRecommendation{}
-}
-func (m *Recommendation_OptimizeAdRotationRecommendation) String() string {
-	return proto.CompactTextString(m)
-}
-func (*Recommendation_OptimizeAdRotationRecommendation) ProtoMessage() {}
-func (*Recommendation_OptimizeAdRotationRecommendation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_0f6630579339be78, []int{0, 13}
-}
-
-func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.Unmarshal(m, b)
-}
-func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.Marshal(b, m, deterministic)
-}
-func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.Merge(m, src)
-}
-func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_Size() int {
-	return xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.Size(m)
-}
-func (m *Recommendation_OptimizeAdRotationRecommendation) XXX_DiscardUnknown() {
-	xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Recommendation_OptimizeAdRotationRecommendation proto.InternalMessageInfo
-
 // The Callout extension recommendation.
 type Recommendation_CalloutExtensionRecommendation struct {
-	// Callout extensions recommended to be added.
+	// Output only. Callout extensions recommended to be added.
 	RecommendedExtensions []*common.CalloutFeedItem `protobuf:"bytes,1,rep,name=recommended_extensions,json=recommendedExtensions,proto3" json:"recommended_extensions,omitempty"`
 	XXX_NoUnkeyedLiteral  struct{}                  `json:"-"`
 	XXX_unrecognized      []byte                    `json:"-"`
@@ -1258,47 +1249,56 @@ func (m *Recommendation_CalloutExtensionRecommendation) GetRecommendedExtensions
 	return nil
 }
 
-// The Call extension recommendation.
-type Recommendation_CallExtensionRecommendation struct {
-	// Call extensions recommended to be added.
-	RecommendedExtensions []*common.CallFeedItem `protobuf:"bytes,1,rep,name=recommended_extensions,json=recommendedExtensions,proto3" json:"recommended_extensions,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}               `json:"-"`
-	XXX_unrecognized      []byte                 `json:"-"`
-	XXX_sizecache         int32                  `json:"-"`
+// The move unused budget recommendation.
+type Recommendation_MoveUnusedBudgetRecommendation struct {
+	// Output only. The excess budget's resource_name.
+	ExcessCampaignBudget *wrappers.StringValue `protobuf:"bytes,1,opt,name=excess_campaign_budget,json=excessCampaignBudget,proto3" json:"excess_campaign_budget,omitempty"`
+	// Output only. The recommendation for the constrained budget to increase.
+	BudgetRecommendation *Recommendation_CampaignBudgetRecommendation `protobuf:"bytes,2,opt,name=budget_recommendation,json=budgetRecommendation,proto3" json:"budget_recommendation,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                     `json:"-"`
+	XXX_unrecognized     []byte                                       `json:"-"`
+	XXX_sizecache        int32                                        `json:"-"`
 }
 
-func (m *Recommendation_CallExtensionRecommendation) Reset() {
-	*m = Recommendation_CallExtensionRecommendation{}
+func (m *Recommendation_MoveUnusedBudgetRecommendation) Reset() {
+	*m = Recommendation_MoveUnusedBudgetRecommendation{}
 }
-func (m *Recommendation_CallExtensionRecommendation) String() string {
+func (m *Recommendation_MoveUnusedBudgetRecommendation) String() string {
 	return proto.CompactTextString(m)
 }
-func (*Recommendation_CallExtensionRecommendation) ProtoMessage() {}
-func (*Recommendation_CallExtensionRecommendation) Descriptor() ([]byte, []int) {
+func (*Recommendation_MoveUnusedBudgetRecommendation) ProtoMessage() {}
+func (*Recommendation_MoveUnusedBudgetRecommendation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0f6630579339be78, []int{0, 15}
 }
 
-func (m *Recommendation_CallExtensionRecommendation) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Recommendation_CallExtensionRecommendation.Unmarshal(m, b)
+func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.Unmarshal(m, b)
 }
-func (m *Recommendation_CallExtensionRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Recommendation_CallExtensionRecommendation.Marshal(b, m, deterministic)
+func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.Marshal(b, m, deterministic)
 }
-func (m *Recommendation_CallExtensionRecommendation) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Recommendation_CallExtensionRecommendation.Merge(m, src)
+func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.Merge(m, src)
 }
-func (m *Recommendation_CallExtensionRecommendation) XXX_Size() int {
-	return xxx_messageInfo_Recommendation_CallExtensionRecommendation.Size(m)
+func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_Size() int {
+	return xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.Size(m)
 }
-func (m *Recommendation_CallExtensionRecommendation) XXX_DiscardUnknown() {
-	xxx_messageInfo_Recommendation_CallExtensionRecommendation.DiscardUnknown(m)
+func (m *Recommendation_MoveUnusedBudgetRecommendation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Recommendation_CallExtensionRecommendation proto.InternalMessageInfo
+var xxx_messageInfo_Recommendation_MoveUnusedBudgetRecommendation proto.InternalMessageInfo
 
-func (m *Recommendation_CallExtensionRecommendation) GetRecommendedExtensions() []*common.CallFeedItem {
+func (m *Recommendation_MoveUnusedBudgetRecommendation) GetExcessCampaignBudget() *wrappers.StringValue {
 	if m != nil {
-		return m.RecommendedExtensions
+		return m.ExcessCampaignBudget
+	}
+	return nil
+}
+
+func (m *Recommendation_MoveUnusedBudgetRecommendation) GetBudgetRecommendation() *Recommendation_CampaignBudgetRecommendation {
+	if m != nil {
+		return m.BudgetRecommendation
 	}
 	return nil
 }
@@ -1310,19 +1310,19 @@ func init() {
 	proto.RegisterType((*Recommendation_CampaignBudgetRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.CampaignBudgetRecommendation")
 	proto.RegisterType((*Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendationOption)(nil), "google.ads.googleads.v2.resources.Recommendation.CampaignBudgetRecommendation.CampaignBudgetRecommendationOption")
 	proto.RegisterType((*Recommendation_KeywordRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.KeywordRecommendation")
+	proto.RegisterType((*Recommendation_SearchPartnersOptInRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.SearchPartnersOptInRecommendation")
+	proto.RegisterType((*Recommendation_OptimizeAdRotationRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.OptimizeAdRotationRecommendation")
+	proto.RegisterType((*Recommendation_CallExtensionRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.CallExtensionRecommendation")
+	proto.RegisterType((*Recommendation_KeywordMatchTypeRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.KeywordMatchTypeRecommendation")
+	proto.RegisterType((*Recommendation_TextAdRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.TextAdRecommendation")
 	proto.RegisterType((*Recommendation_TargetCpaOptInRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.TargetCpaOptInRecommendation")
 	proto.RegisterType((*Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption)(nil), "google.ads.googleads.v2.resources.Recommendation.TargetCpaOptInRecommendation.TargetCpaOptInRecommendationOption")
-	proto.RegisterType((*Recommendation_TextAdRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.TextAdRecommendation")
-	proto.RegisterType((*Recommendation_SitelinkExtensionRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.SitelinkExtensionRecommendation")
-	proto.RegisterType((*Recommendation_MoveUnusedBudgetRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.MoveUnusedBudgetRecommendation")
 	proto.RegisterType((*Recommendation_MaximizeConversionsOptInRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.MaximizeConversionsOptInRecommendation")
+	proto.RegisterType((*Recommendation_SitelinkExtensionRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.SitelinkExtensionRecommendation")
 	proto.RegisterType((*Recommendation_EnhancedCpcOptInRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.EnhancedCpcOptInRecommendation")
-	proto.RegisterType((*Recommendation_KeywordMatchTypeRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.KeywordMatchTypeRecommendation")
-	proto.RegisterType((*Recommendation_SearchPartnersOptInRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.SearchPartnersOptInRecommendation")
 	proto.RegisterType((*Recommendation_MaximizeClicksOptInRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.MaximizeClicksOptInRecommendation")
-	proto.RegisterType((*Recommendation_OptimizeAdRotationRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.OptimizeAdRotationRecommendation")
 	proto.RegisterType((*Recommendation_CalloutExtensionRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.CalloutExtensionRecommendation")
-	proto.RegisterType((*Recommendation_CallExtensionRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.CallExtensionRecommendation")
+	proto.RegisterType((*Recommendation_MoveUnusedBudgetRecommendation)(nil), "google.ads.googleads.v2.resources.Recommendation.MoveUnusedBudgetRecommendation")
 }
 
 func init() {
@@ -1330,110 +1330,118 @@ func init() {
 }
 
 var fileDescriptor_0f6630579339be78 = []byte{
-	// 1666 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x59, 0x5b, 0x6f, 0xdc, 0xc4,
-	0x17, 0xff, 0xcf, 0x26, 0x4d, 0xda, 0x93, 0x5b, 0x3b, 0x4d, 0xf2, 0x5f, 0xdc, 0x74, 0xbb, 0x49,
-	0x95, 0x2a, 0x2a, 0xb0, 0x0b, 0x4b, 0x69, 0xab, 0xe5, 0x22, 0x6d, 0x2e, 0x4d, 0x03, 0x4a, 0x1b,
-	0xdc, 0x12, 0x55, 0x28, 0xaa, 0x35, 0xb1, 0xa7, 0x5b, 0x93, 0xb5, 0xc7, 0xb5, 0x67, 0xd3, 0xa4,
-	0x0f, 0xa8, 0x82, 0x17, 0x2e, 0x12, 0x2f, 0x48, 0xa8, 0x0f, 0x40, 0x25, 0x78, 0x40, 0xe2, 0x03,
-	0xa0, 0x7e, 0x03, 0xa4, 0xbe, 0x56, 0xe2, 0x0b, 0xf0, 0xc6, 0x27, 0x40, 0x3c, 0x21, 0x8f, 0xc7,
-	0x8e, 0xf7, 0x62, 0x7b, 0xb3, 0xb4, 0xbc, 0xd9, 0x9e, 0xf3, 0xfb, 0x9d, 0xdf, 0xcc, 0x9c, 0x33,
-	0x73, 0x66, 0x0c, 0x17, 0xeb, 0x8c, 0xd5, 0x1b, 0xb4, 0x4c, 0x0c, 0xaf, 0x1c, 0x3c, 0xfa, 0x4f,
-	0xbb, 0x95, 0xb2, 0x4b, 0x3d, 0xd6, 0x74, 0x75, 0xea, 0x95, 0x5d, 0xaa, 0x33, 0xcb, 0xa2, 0xb6,
-	0x41, 0xb8, 0xc9, 0xec, 0x92, 0xe3, 0x32, 0xce, 0xf0, 0x6c, 0x60, 0x5c, 0x22, 0x86, 0x57, 0x8a,
-	0x70, 0xa5, 0xdd, 0x4a, 0x29, 0xc2, 0x29, 0xaf, 0x26, 0x51, 0xfb, 0x74, 0xcc, 0x2e, 0xeb, 0xae,
-	0xc9, 0xa9, 0x6b, 0x92, 0x80, 0x51, 0x29, 0x67, 0x98, 0xd3, 0x3d, 0x4e, 0x6d, 0xcf, 0x64, 0xb6,
-	0x27, 0x01, 0x89, 0xd2, 0xa9, 0xdd, 0xb4, 0xbc, 0xf2, 0x0e, 0xdd, 0xbf, 0xcf, 0x5c, 0x43, 0xb3,
-	0x08, 0xd7, 0xef, 0x6a, 0x7c, 0xdf, 0xa1, 0x12, 0x77, 0x29, 0x1d, 0xd7, 0xda, 0xdd, 0x38, 0x70,
-	0x2d, 0x1d, 0xc8, 0x89, 0x5b, 0xa7, 0x5c, 0xd3, 0x1d, 0xa2, 0x31, 0x87, 0x6b, 0xa6, 0xad, 0xb5,
-	0x51, 0xd5, 0x19, 0x69, 0x48, 0xaa, 0xf3, 0xd9, 0xc3, 0x4e, 0x0c, 0x69, 0x5b, 0x90, 0xb6, 0xe2,
-	0x6d, 0xbb, 0x79, 0xa7, 0x7c, 0xdf, 0x25, 0x8e, 0x43, 0xdd, 0x70, 0x1c, 0x66, 0x42, 0x2e, 0xc7,
-	0x2c, 0x13, 0xdb, 0x66, 0x5c, 0x78, 0x93, 0xad, 0x73, 0x8f, 0x5f, 0x87, 0x71, 0xb5, 0x45, 0x07,
-	0x3e, 0x0b, 0x63, 0xa1, 0x1b, 0xcd, 0x26, 0x16, 0xcd, 0xa3, 0x22, 0x5a, 0x38, 0xa6, 0x8e, 0x86,
-	0x1f, 0xaf, 0x11, 0x8b, 0xe2, 0x2d, 0x18, 0xf4, 0xbb, 0x9e, 0xcf, 0x15, 0xd1, 0xc2, 0x78, 0xe5,
-	0x6a, 0x29, 0x69, 0xbe, 0x45, 0xdf, 0x4b, 0xad, 0x1e, 0x6e, 0xee, 0x3b, 0x74, 0xc5, 0x6e, 0x5a,
-	0x5d, 0x3e, 0xab, 0x82, 0x15, 0xdf, 0x86, 0x21, 0xd3, 0x72, 0x88, 0xce, 0xf3, 0x03, 0x45, 0xb4,
-	0x30, 0x52, 0xb9, 0x52, 0xca, 0x8c, 0xa7, 0x36, 0xb2, 0xb6, 0xd7, 0x35, 0xc1, 0xa6, 0x4a, 0x56,
-	0xbc, 0x02, 0x13, 0x3a, 0xb1, 0x1c, 0x62, 0xd6, 0x6d, 0x6d, 0xbb, 0x69, 0xd4, 0x29, 0xcf, 0x1f,
-	0x11, 0x8e, 0x66, 0x42, 0x47, 0xe1, 0x68, 0x96, 0x6e, 0x70, 0xd7, 0xb4, 0xeb, 0x9b, 0xa4, 0xd1,
-	0xa4, 0xea, 0x78, 0x08, 0x5a, 0x14, 0x18, 0x7c, 0x19, 0x8e, 0x86, 0x5f, 0xf2, 0x43, 0x3d, 0xe0,
-	0x23, 0x6b, 0x7c, 0x09, 0x8e, 0x12, 0x43, 0xab, 0xbb, 0xac, 0xe9, 0xe4, 0x87, 0x7b, 0x40, 0x0e,
-	0x13, 0x63, 0xd5, 0x37, 0xc6, 0x97, 0xe1, 0x98, 0x61, 0x7a, 0x96, 0xe9, 0x79, 0xd4, 0xc8, 0x8f,
-	0x09, 0xa4, 0xd2, 0x81, 0x5c, 0x64, 0xac, 0x11, 0xe0, 0x0e, 0x8c, 0xf1, 0xb7, 0x08, 0x0a, 0x6d,
-	0x9d, 0x6e, 0x8b, 0xc0, 0xfc, 0xa0, 0xe0, 0xbb, 0x76, 0xf8, 0xc1, 0x5e, 0x6a, 0x19, 0x97, 0xd6,
-	0xc6, 0xab, 0xff, 0x53, 0x67, 0xf4, 0x94, 0x76, 0xfc, 0x10, 0xc1, 0x74, 0x98, 0x8d, 0x6d, 0x82,
-	0x8e, 0x0a, 0x41, 0xab, 0x87, 0x17, 0xf4, 0x7e, 0xc0, 0xd7, 0xa1, 0x64, 0x6a, 0xa7, 0x5b, 0x03,
-	0xfe, 0x04, 0xa6, 0x39, 0xdd, 0xe3, 0x1a, 0xe9, 0x50, 0x70, 0xac, 0xdf, 0xf8, 0xbb, 0x49, 0xf7,
-	0x78, 0xad, 0x53, 0xc0, 0x24, 0xef, 0xf2, 0x1d, 0x3f, 0x42, 0x50, 0xcc, 0x5a, 0x1f, 0xf2, 0xd0,
-	0xef, 0xec, 0xdc, 0x14, 0xcc, 0x4b, 0x0e, 0xb9, 0xee, 0xf0, 0x35, 0xbb, 0x73, 0x76, 0x78, 0x4a,
-	0x3b, 0xfe, 0x15, 0xc1, 0x79, 0x8b, 0xec, 0x99, 0x96, 0xf9, 0x80, 0x6a, 0x3a, 0xb3, 0x77, 0xa9,
-	0x2b, 0x56, 0xd9, 0x04, 0x91, 0x23, 0x42, 0xe4, 0xad, 0xc3, 0x8b, 0x5c, 0x97, 0x3e, 0x96, 0x0e,
-	0x5c, 0x74, 0x97, 0x7b, 0xce, 0xea, 0xc9, 0x12, 0xff, 0x80, 0x60, 0x8e, 0xda, 0x77, 0x89, 0xad,
-	0x53, 0x43, 0xd3, 0x1d, 0x3d, 0x41, 0xf0, 0xa8, 0x10, 0xbc, 0x71, 0x78, 0xc1, 0x2b, 0x92, 0x7b,
-	0xc9, 0xd1, 0xbb, 0x0b, 0x2d, 0xd0, 0x54, 0x0b, 0xfc, 0x33, 0x82, 0x79, 0x8f, 0x12, 0x57, 0xbf,
-	0xab, 0x39, 0xc4, 0xe5, 0x36, 0x75, 0x93, 0x06, 0x75, 0x5c, 0x68, 0xbc, 0x71, 0x78, 0x8d, 0x37,
-	0x04, 0xfd, 0x86, 0x64, 0xef, 0x2e, 0x73, 0xd6, 0xcb, 0x32, 0x12, 0x4a, 0x0f, 0x62, 0xa0, 0x61,
-	0xea, 0x3b, 0x49, 0x4a, 0x27, 0xfa, 0x55, 0x1a, 0x4d, 0xbf, 0x60, 0x4f, 0x50, 0x6a, 0x65, 0x19,
-	0xe1, 0x9f, 0x10, 0x9c, 0x65, 0x0e, 0x0f, 0x94, 0xfa, 0xd9, 0x2c, 0xb7, 0xbb, 0x76, 0x9d, 0xc7,
-	0x85, 0x4e, 0xf5, 0xf0, 0x3a, 0xaf, 0x4b, 0xf2, 0x9a, 0xa1, 0x4a, 0xea, 0x0e, 0x99, 0x45, 0x96,
-	0x61, 0x83, 0xbf, 0x43, 0x50, 0xd4, 0x49, 0xa3, 0xc1, 0x9a, 0x5c, 0x8b, 0xea, 0x96, 0x76, 0x89,
-	0x27, 0xfa, 0x0d, 0xcc, 0xa5, 0x80, 0x79, 0x25, 0x24, 0xee, 0x0c, 0x4c, 0x3d, 0xd5, 0x02, 0x3f,
-	0x46, 0x30, 0xeb, 0x99, 0x9c, 0x36, 0x4c, 0x7b, 0x27, 0x59, 0x1f, 0x16, 0xfa, 0x3e, 0xe8, 0x23,
-	0x28, 0x25, 0x75, 0xb2, 0xc0, 0x33, 0x5e, 0xba, 0x09, 0xfe, 0x06, 0xc1, 0x69, 0xbf, 0x13, 0xc9,
-	0xea, 0x4e, 0x0a, 0x75, 0xeb, 0xfd, 0x8d, 0x5e, 0xb2, 0xb2, 0x53, 0x7a, 0x72, 0x33, 0xfe, 0x1e,
-	0xc1, 0x6c, 0x67, 0x59, 0xd9, 0xae, 0x6c, 0xb2, 0xdf, 0x79, 0x95, 0x7b, 0xda, 0xba, 0xcf, 0x2c,
-	0x6a, 0xa5, 0x8e, 0x79, 0xdd, 0x49, 0xb5, 0x10, 0xfa, 0x2c, 0xb6, 0x4b, 0xb5, 0xa6, 0xdd, 0xf4,
-	0xa8, 0x91, 0x50, 0x04, 0x4c, 0xf5, 0xab, 0x6f, 0x9d, 0xed, 0xd2, 0x0f, 0x05, 0x73, 0x42, 0x19,
-	0x50, 0xb0, 0x52, 0x2d, 0x94, 0xbf, 0x10, 0x4c, 0x76, 0x2b, 0xdb, 0xf0, 0xc7, 0x30, 0xba, 0x4d,
-	0x3c, 0xaa, 0x59, 0x94, 0xbb, 0xa6, 0xee, 0x89, 0x82, 0xb4, 0xaf, 0xb2, 0xa0, 0xf5, 0x75, 0x3d,
-	0xa0, 0x53, 0x47, 0x7c, 0x72, 0xf9, 0x82, 0x39, 0x9c, 0x70, 0x18, 0xa7, 0x36, 0x37, 0x49, 0x23,
-	0x72, 0x98, 0x7b, 0xbe, 0x0e, 0x8f, 0x47, 0x1e, 0xe4, 0x17, 0xe5, 0x69, 0x0e, 0xa6, 0xba, 0xda,
-	0xe2, 0x77, 0x61, 0xc4, 0xb4, 0x1c, 0x97, 0x7a, 0x62, 0xa3, 0x93, 0x5d, 0xef, 0x2c, 0x16, 0x97,
-	0x59, 0x73, 0xbb, 0x41, 0x83, 0xa2, 0x2f, 0x0e, 0xc0, 0x17, 0x60, 0x28, 0x58, 0xb1, 0x65, 0x27,
-	0xd2, 0xa1, 0xd2, 0x16, 0xbf, 0x0d, 0x23, 0x3a, 0xf3, 0xb8, 0x66, 0x99, 0xba, 0xcb, 0x3c, 0x59,
-	0x85, 0x9f, 0xea, 0x80, 0xae, 0xd9, 0xfc, 0xe2, 0x85, 0x00, 0x09, 0xbe, 0xfd, 0xba, 0x30, 0xf7,
-	0x35, 0xc7, 0x2a, 0x05, 0x59, 0x56, 0x66, 0x68, 0x8e, 0x01, 0xf0, 0x3b, 0x30, 0xb2, 0x6b, 0x1a,
-	0x94, 0x69, 0xbb, 0x26, 0xbd, 0xef, 0x25, 0x96, 0xe6, 0x71, 0x3c, 0x08, 0xc0, 0xa6, 0x6f, 0xaf,
-	0x3c, 0x1b, 0x84, 0x99, 0xb4, 0x8a, 0x14, 0x6f, 0xc1, 0x8c, 0xde, 0x74, 0x5d, 0x6a, 0xf3, 0x30,
-	0x07, 0x88, 0xc5, 0x9a, 0x76, 0xd4, 0x5d, 0x94, 0xdd, 0xdd, 0x97, 0x24, 0x41, 0xc0, 0x5f, 0x13,
-	0x70, 0xd9, 0x7b, 0x03, 0x8a, 0x51, 0x4a, 0x1d, 0x64, 0x59, 0xab, 0x87, 0x5c, 0xb6, 0x87, 0xd3,
-	0x31, 0x92, 0x2e, 0x5e, 0x1e, 0x21, 0x18, 0x97, 0xd4, 0xfe, 0x7e, 0xe3, 0x8f, 0xf3, 0x40, 0x71,
-	0x60, 0x61, 0xa4, 0x72, 0xef, 0xf9, 0x96, 0xef, 0xa9, 0x8d, 0xd7, 0x85, 0x67, 0x75, 0x2c, 0x10,
-	0x12, 0xbc, 0x79, 0xca, 0x33, 0x04, 0x73, 0xd9, 0x28, 0xbc, 0x0e, 0x93, 0xfd, 0x8e, 0x3e, 0xde,
-	0xee, 0x1c, 0x90, 0x83, 0x33, 0x63, 0xee, 0x45, 0x9c, 0x19, 0x95, 0x27, 0x08, 0xa6, 0xba, 0x1e,
-	0x2b, 0xf0, 0x0a, 0x0c, 0xcb, 0x95, 0x57, 0x6a, 0x7f, 0x39, 0xd1, 0x75, 0x70, 0x59, 0x11, 0x2e,
-	0xe5, 0x6b, 0xf6, 0x1d, 0xa6, 0x86, 0x58, 0x7c, 0x0b, 0x94, 0x78, 0xdc, 0xf8, 0x25, 0xeb, 0xb6,
-	0x69, 0x1c, 0x22, 0x62, 0xfe, 0x1f, 0x83, 0x2f, 0x39, 0xfa, 0xa2, 0x69, 0x04, 0x43, 0xa3, 0xfc,
-	0x76, 0x04, 0x66, 0xd2, 0x0e, 0x01, 0xf8, 0x2b, 0x04, 0xc3, 0x61, 0x14, 0xa1, 0x7e, 0xa3, 0x28,
-	0xcd, 0x43, 0x6a, 0xa3, 0x8c, 0xa2, 0x50, 0x01, 0xbe, 0x0d, 0xf1, 0xd8, 0xd7, 0x62, 0x07, 0xa3,
-	0xde, 0xc7, 0x22, 0x3e, 0x94, 0x91, 0x6f, 0x39, 0x1c, 0x4f, 0x06, 0x60, 0x2e, 0x5b, 0x0f, 0xde,
-	0x83, 0xc1, 0x3a, 0x23, 0x0d, 0x31, 0xa7, 0xe3, 0x15, 0x23, 0xe3, 0x8a, 0x23, 0x8d, 0x70, 0x95,
-	0x91, 0x86, 0xb8, 0xf0, 0xc8, 0x32, 0x52, 0x85, 0x47, 0xbc, 0x0a, 0x27, 0xfa, 0xea, 0xf4, 0x04,
-	0x6f, 0xed, 0x29, 0x66, 0x70, 0xce, 0xa5, 0xf7, 0x9a, 0xa6, 0xeb, 0xc7, 0x53, 0xdb, 0xd9, 0xbf,
-	0x35, 0xe9, 0x7a, 0x58, 0xe1, 0xe7, 0x42, 0xaa, 0xd6, 0xdc, 0x4e, 0x48, 0xc2, 0xc1, 0x17, 0x92,
-	0x84, 0xbf, 0x23, 0x98, 0xec, 0x76, 0xb2, 0xc6, 0x6f, 0x42, 0x8e, 0x84, 0xe9, 0x37, 0xdf, 0x83,
-	0xd3, 0x9a, 0xa1, 0xe6, 0x88, 0x81, 0x6b, 0x30, 0xa6, 0xbb, 0x34, 0x38, 0x22, 0x18, 0x84, 0xd3,
-	0xc4, 0x4d, 0x32, 0x7e, 0x19, 0x33, 0x1a, 0x42, 0x96, 0x09, 0xa7, 0x78, 0x19, 0x26, 0x48, 0x93,
-	0x33, 0x8d, 0x38, 0x4e, 0x63, 0x3f, 0x20, 0x19, 0xe8, 0x81, 0x64, 0xcc, 0x07, 0xd5, 0x7c, 0x8c,
-	0xcf, 0xa2, 0x7c, 0x89, 0xe0, 0x4c, 0x46, 0x61, 0x8c, 0xeb, 0x30, 0x1d, 0xcf, 0x8b, 0x83, 0x1b,
-	0x4f, 0x99, 0xb3, 0xaf, 0x65, 0x2d, 0x3b, 0xa1, 0x83, 0x2b, 0x94, 0x1a, 0x6b, 0x9c, 0x5a, 0xea,
-	0x54, 0x8c, 0x2f, 0xf2, 0xea, 0x29, 0x7f, 0x23, 0x28, 0xa4, 0x57, 0x73, 0x58, 0x85, 0x69, 0xba,
-	0xa7, 0x53, 0xcf, 0x6b, 0x8f, 0xab, 0xc4, 0x0a, 0x25, 0xde, 0xf9, 0xc9, 0x00, 0xdb, 0x1a, 0x48,
-	0xf8, 0x33, 0x04, 0x53, 0xdd, 0x6b, 0xd2, 0xdc, 0x8b, 0xb8, 0x98, 0x52, 0xe5, 0xf6, 0xd3, 0x56,
-	0x85, 0x7e, 0x8d, 0xe0, 0x5c, 0x6f, 0x97, 0x11, 0x3d, 0xed, 0xf4, 0xe8, 0xdf, 0xee, 0xf4, 0x4a,
-	0x11, 0x0a, 0xe9, 0x77, 0x0d, 0xca, 0x1f, 0x08, 0x0a, 0xe9, 0xa7, 0x83, 0xe7, 0xb5, 0x47, 0x3d,
-	0x68, 0x0d, 0xc1, 0x83, 0x53, 0x8e, 0xbc, 0x08, 0x5e, 0xce, 0x58, 0x25, 0xdb, 0x55, 0x8a, 0x55,
-	0xb1, 0x43, 0xfa, 0x64, 0xcc, 0x47, 0xf4, 0x55, 0x39, 0x0b, 0xb3, 0x99, 0xf7, 0x19, 0xca, 0x17,
-	0x08, 0x66, 0x33, 0xef, 0x12, 0xfe, 0xa3, 0x89, 0x9b, 0x83, 0x62, 0xd6, 0x75, 0x81, 0xf2, 0x39,
-	0x82, 0x42, 0xfa, 0x81, 0x1d, 0xdf, 0xc9, 0x48, 0xfb, 0x72, 0xd6, 0x4c, 0x4a, 0xfe, 0xac, 0xac,
-	0xff, 0x14, 0xc1, 0xa9, 0x94, 0xd3, 0x2f, 0xd6, 0x33, 0x74, 0xbc, 0xd2, 0x8b, 0x8e, 0x0c, 0x11,
-	0x8b, 0xc7, 0x61, 0xbc, 0x35, 0xf7, 0x17, 0x1f, 0xe6, 0x60, 0x5e, 0x67, 0x56, 0x76, 0xee, 0x2f,
-	0x9e, 0x6c, 0x15, 0xbc, 0xe1, 0xcf, 0xd8, 0x06, 0xfa, 0xe8, 0x3d, 0x89, 0xac, 0xb3, 0x06, 0xb1,
-	0xeb, 0x25, 0xe6, 0xd6, 0xcb, 0x75, 0x6a, 0x8b, 0xf9, 0x0c, 0x7f, 0xae, 0x38, 0xa6, 0x97, 0xf2,
-	0xaf, 0xe5, 0xad, 0xe8, 0xe9, 0xc7, 0xdc, 0xc0, 0x6a, 0xad, 0xf6, 0x4b, 0x6e, 0x76, 0x35, 0xa0,
-	0xac, 0x19, 0x5e, 0x29, 0x78, 0xf4, 0x9f, 0x36, 0x2b, 0x25, 0x35, 0xb4, 0x7c, 0x1a, 0xda, 0x6c,
-	0xd5, 0x0c, 0x6f, 0x2b, 0xb2, 0xd9, 0xda, 0xac, 0x6c, 0x45, 0x36, 0x7f, 0xe6, 0xe6, 0x83, 0x86,
-	0x6a, 0xb5, 0x66, 0x78, 0xd5, 0x6a, 0x64, 0x55, 0xad, 0x6e, 0x56, 0xaa, 0xd5, 0xc8, 0x6e, 0x7b,
-	0x48, 0x88, 0x7d, 0xe3, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xf0, 0x7f, 0x81, 0x9c, 0x8e, 0x1b,
-	0x00, 0x00,
+	// 1803 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x59, 0xcd, 0x6f, 0x1c, 0x49,
+	0x15, 0xa7, 0x66, 0x9c, 0xaf, 0xe7, 0xd8, 0x49, 0x6a, 0xed, 0x30, 0xdb, 0xf1, 0x3a, 0x63, 0x47,
+	0x09, 0xde, 0x05, 0x66, 0xd0, 0xc0, 0x2e, 0x62, 0x10, 0x87, 0x19, 0x27, 0xf1, 0x7a, 0xc1, 0x9b,
+	0x30, 0x09, 0x06, 0xa1, 0xa0, 0xa6, 0x5c, 0x5d, 0x19, 0xb7, 0x3c, 0xdd, 0xd5, 0xdb, 0x55, 0x3d,
+	0xb1, 0x59, 0x45, 0x20, 0x3e, 0x04, 0x17, 0x3e, 0x24, 0x2e, 0x48, 0x68, 0x0f, 0x2c, 0x1c, 0x10,
+	0xe2, 0xc2, 0x99, 0x1b, 0x47, 0xc4, 0xbf, 0x80, 0xb4, 0x12, 0xda, 0xcb, 0x0a, 0xfe, 0x01, 0x4e,
+	0xa8, 0xab, 0xab, 0x7b, 0xba, 0xc7, 0xd3, 0xdd, 0x33, 0x43, 0xbc, 0xb7, 0x9e, 0xaa, 0xf7, 0x7e,
+	0xbf, 0xdf, 0x7b, 0xf5, 0xf5, 0xaa, 0x06, 0xde, 0xe8, 0x73, 0xde, 0x1f, 0xb0, 0x26, 0xb1, 0x44,
+	0x33, 0xfa, 0x0c, 0xbf, 0x86, 0xad, 0xa6, 0xcf, 0x04, 0x0f, 0x7c, 0xca, 0x44, 0xd3, 0x67, 0x94,
+	0x3b, 0x0e, 0x73, 0x2d, 0x22, 0x6d, 0xee, 0x36, 0x3c, 0x9f, 0x4b, 0x8e, 0x37, 0x22, 0xe3, 0x06,
+	0xb1, 0x44, 0x23, 0xf1, 0x6b, 0x0c, 0x5b, 0x8d, 0xc4, 0xcf, 0xf8, 0x6c, 0x1e, 0x74, 0x08, 0xc7,
+	0xdd, 0x26, 0xf5, 0x6d, 0xc9, 0x7c, 0x9b, 0x44, 0x88, 0x46, 0xb3, 0xc4, 0x9c, 0x1d, 0x4b, 0xe6,
+	0x0a, 0x9b, 0xbb, 0x42, 0x3b, 0xe4, 0x4a, 0x67, 0x6e, 0xe0, 0x88, 0xe6, 0x11, 0x3b, 0x79, 0xc6,
+	0x7d, 0xcb, 0x74, 0x88, 0xa4, 0x87, 0xa6, 0x3c, 0xf1, 0x98, 0xf6, 0xfb, 0x62, 0xb1, 0x5f, 0x36,
+	0xdc, 0xb4, 0xe3, 0x6e, 0xb1, 0xa3, 0x24, 0x7e, 0x9f, 0x49, 0x93, 0x7a, 0xc4, 0xe4, 0x9e, 0x34,
+	0x6d, 0xd7, 0x1c, 0x83, 0xea, 0x73, 0x32, 0xd0, 0x50, 0xaf, 0x95, 0xa7, 0x9d, 0x58, 0xda, 0xf6,
+	0x66, 0x6c, 0xeb, 0xd9, 0xcd, 0xa7, 0x36, 0x1b, 0x58, 0xe6, 0x01, 0x3b, 0x24, 0x43, 0x9b, 0xfb,
+	0xda, 0xe0, 0xe5, 0x94, 0x41, 0xec, 0xaf, 0xbb, 0xd6, 0x75, 0x97, 0xfa, 0x75, 0x10, 0x3c, 0x6d,
+	0x3e, 0xf3, 0x89, 0xe7, 0x31, 0x3f, 0xce, 0xe1, 0x5a, 0xca, 0x95, 0xb8, 0x2e, 0x97, 0x4a, 0xa9,
+	0xee, 0xdd, 0xfc, 0xcb, 0xeb, 0xb0, 0xdc, 0xcb, 0xc4, 0x80, 0x1f, 0xc3, 0x52, 0x4c, 0x61, 0xba,
+	0xc4, 0x61, 0x35, 0x54, 0x47, 0x5b, 0x97, 0xba, 0xcd, 0x0f, 0x3a, 0xe7, 0xfe, 0xdb, 0x79, 0x15,
+	0x3e, 0x35, 0x9a, 0x0b, 0xfa, 0xcb, 0xb3, 0x45, 0x83, 0x72, 0xa7, 0x99, 0xc5, 0xe9, 0x5d, 0x8e,
+	0x51, 0xde, 0x26, 0x0e, 0xc3, 0x04, 0x16, 0xc2, 0x3c, 0xd7, 0x2a, 0x75, 0xb4, 0xb5, 0xdc, 0x7a,
+	0xb3, 0x91, 0x37, 0xb9, 0x54, 0xa2, 0x1b, 0x59, 0xa8, 0xc7, 0x27, 0x1e, 0xbb, 0xe7, 0x06, 0xce,
+	0x84, 0xe6, 0x6e, 0xf5, 0x83, 0x4e, 0xb5, 0xa7, 0xa0, 0x31, 0x85, 0xf3, 0xb6, 0xe3, 0x11, 0x2a,
+	0x6b, 0xd5, 0x3a, 0xda, 0x5a, 0x6c, 0xdd, 0x6f, 0x94, 0xce, 0xe0, 0x31, 0xc4, 0xb1, 0x9f, 0xbb,
+	0x0a, 0x2d, 0xa2, 0xd0, 0xd0, 0x78, 0x08, 0x57, 0x28, 0x71, 0x3c, 0x62, 0xf7, 0x5d, 0xf3, 0x20,
+	0xb0, 0xfa, 0x4c, 0xd6, 0xce, 0x29, 0xb6, 0xb5, 0x98, 0x2d, 0x1e, 0x88, 0xc6, 0x23, 0xe9, 0xdb,
+	0x6e, 0x7f, 0x9f, 0x0c, 0x02, 0x16, 0x66, 0xaf, 0x5a, 0x9c, 0xbd, 0x6d, 0x8d, 0xda, 0x55, 0xa0,
+	0xbd, 0x65, 0x9a, 0xf9, 0x8d, 0x29, 0x5c, 0x8c, 0x5b, 0x6a, 0xe7, 0xa7, 0x20, 0x7c, 0x55, 0x11,
+	0xde, 0x82, 0x8d, 0x52, 0xc2, 0x5e, 0x02, 0x8c, 0x09, 0x5c, 0x24, 0x96, 0xd9, 0xf7, 0x79, 0xe0,
+	0xd5, 0x2e, 0x4c, 0x41, 0xb2, 0xa5, 0x48, 0x36, 0xa1, 0x9e, 0x4b, 0xd2, 0xb1, 0x76, 0x42, 0xb4,
+	0xde, 0x05, 0x12, 0x7d, 0xe0, 0xaf, 0xc0, 0x25, 0xcb, 0x16, 0x8e, 0x2d, 0x04, 0xb3, 0x6a, 0x4b,
+	0x8a, 0xc3, 0x38, 0xc5, 0xd1, 0xe5, 0x7c, 0x10, 0x31, 0xa8, 0xdc, 0x8f, 0x3c, 0xf0, 0x6f, 0x11,
+	0xac, 0x8f, 0xe5, 0x7f, 0x6c, 0x0d, 0xd6, 0x16, 0x14, 0xe8, 0xdb, 0xb3, 0x0f, 0xfe, 0xd8, 0x08,
+	0x64, 0x3a, 0x95, 0x90, 0x37, 0x3f, 0xd1, 0x5b, 0xa3, 0x05, 0x46, 0xf8, 0x27, 0x08, 0xae, 0xc7,
+	0x9b, 0xd2, 0x98, 0xaa, 0x8b, 0x4a, 0xd5, 0xce, 0xec, 0xaa, 0xbe, 0x1a, 0xe1, 0x4d, 0x96, 0xb3,
+	0x7a, 0x34, 0xa9, 0x17, 0xff, 0x08, 0xc1, 0x75, 0xc9, 0x8e, 0xa5, 0x49, 0x4e, 0xe9, 0xb8, 0x34,
+	0xef, 0xd2, 0x78, 0xcc, 0x8e, 0x65, 0x27, 0x47, 0xc6, 0x8a, 0x9c, 0xd0, 0x89, 0xdf, 0x43, 0x50,
+	0x2f, 0xdb, 0x31, 0x6b, 0x30, 0xef, 0x68, 0x3d, 0x56, 0xc8, 0xdb, 0x1e, 0x79, 0xe0, 0xc9, 0x5d,
+	0x37, 0x67, 0xb4, 0x64, 0x81, 0x11, 0xfe, 0x2b, 0x82, 0xd7, 0x1c, 0x72, 0x6c, 0x3b, 0xf6, 0xf7,
+	0x98, 0x49, 0xb9, 0x3b, 0x64, 0xbe, 0x3a, 0x7c, 0x72, 0x94, 0x2e, 0x2a, 0xa5, 0xdf, 0x9a, 0x5d,
+	0xe9, 0x9e, 0xe6, 0xd8, 0x1e, 0x51, 0x14, 0x68, 0xbe, 0xe3, 0x4c, 0x65, 0x8e, 0x7f, 0x8f, 0x60,
+	0x93, 0xb9, 0x87, 0xc4, 0xa5, 0xcc, 0x32, 0xa9, 0x47, 0x73, 0x54, 0x5f, 0x56, 0xaa, 0x1f, 0xce,
+	0xae, 0xfa, 0x9e, 0xc6, 0xde, 0xf6, 0x68, 0x81, 0xda, 0x75, 0x56, 0x68, 0x86, 0xff, 0x8c, 0xe0,
+	0xb6, 0x60, 0xc4, 0xa7, 0x87, 0xa6, 0x47, 0x7c, 0xe9, 0x32, 0x3f, 0x2f, 0xbd, 0xcb, 0x4a, 0xe8,
+	0xa3, 0xd9, 0x85, 0x3e, 0x52, 0xf0, 0x0f, 0x35, 0x7a, 0x81, 0xd6, 0x0d, 0x51, 0x66, 0xa9, 0xe4,
+	0x8e, 0xa6, 0xc4, 0xc0, 0xa6, 0x47, 0x79, 0x72, 0xaf, 0xcc, 0x2b, 0x37, 0x99, 0x0d, 0x0a, 0xbd,
+	0x48, 0xae, 0x53, 0x66, 0x89, 0xff, 0x88, 0xe0, 0x16, 0xf7, 0x64, 0x24, 0x37, 0x5c, 0xeb, 0xfa,
+	0x74, 0x1f, 0x17, 0x7b, 0x55, 0x89, 0xed, 0xcd, 0x2e, 0xf6, 0x81, 0x06, 0xef, 0x58, 0x3d, 0x0d,
+	0x3d, 0x59, 0x6b, 0x9d, 0x97, 0x18, 0xe2, 0xdf, 0x21, 0xa8, 0x53, 0x32, 0x18, 0xf0, 0x40, 0x9a,
+	0x49, 0x9d, 0x37, 0xae, 0xf3, 0xda, 0xbc, 0x93, 0x75, 0x3b, 0x42, 0xbe, 0x17, 0x03, 0xe7, 0x4c,
+	0x56, 0x5a, 0x68, 0x86, 0xff, 0x80, 0x60, 0x43, 0xd8, 0x92, 0x0d, 0x6c, 0xf7, 0x28, 0x5f, 0x24,
+	0x56, 0x22, 0xbf, 0x3e, 0xc7, 0x44, 0xd5, 0xd0, 0x25, 0x2a, 0x6f, 0x8a, 0x62, 0x3b, 0xfc, 0x1b,
+	0x04, 0xaf, 0x84, 0x91, 0xe4, 0x4b, 0x7c, 0x49, 0x49, 0xdc, 0x9b, 0x2f, 0x8f, 0x25, 0xf2, 0x6e,
+	0xd0, 0x7c, 0x1b, 0xfc, 0x3e, 0x82, 0x8d, 0xd3, 0x55, 0xf9, 0xb8, 0xbc, 0x95, 0x79, 0x87, 0x59,
+	0x9f, 0x85, 0x7b, 0x21, 0x72, 0x58, 0xfd, 0xe5, 0x0c, 0xf3, 0x51, 0xa1, 0x99, 0x12, 0xe9, 0xf0,
+	0x21, 0x33, 0x03, 0x37, 0x10, 0xcc, 0xca, 0x29, 0x23, 0x56, 0xe7, 0x15, 0xb9, 0xc7, 0x87, 0xec,
+	0x1b, 0x0a, 0xb9, 0xa8, 0x90, 0x58, 0x77, 0x0a, 0xcd, 0x8c, 0x1f, 0x56, 0x60, 0x65, 0x52, 0x35,
+	0x8a, 0x39, 0x5c, 0x3e, 0x20, 0x82, 0x99, 0x0e, 0x93, 0xbe, 0x4d, 0x85, 0xaa, 0xce, 0xe7, 0x2a,
+	0x2c, 0xb2, 0x3f, 0xf7, 0x22, 0xb8, 0xa8, 0xe0, 0x5a, 0x0c, 0x19, 0x74, 0x0b, 0x3e, 0x81, 0x6b,
+	0x1e, 0x97, 0xcc, 0x95, 0x36, 0x19, 0x24, 0xac, 0x95, 0x33, 0x60, 0xbd, 0x9a, 0xd0, 0xe8, 0x66,
+	0xe3, 0x5f, 0x15, 0x58, 0x9d, 0xe8, 0x80, 0xb7, 0x61, 0xd1, 0x76, 0x3c, 0x9f, 0x09, 0x75, 0x3e,
+	0xea, 0x24, 0x9c, 0x2e, 0x56, 0xef, 0xf2, 0xe0, 0x60, 0xc0, 0x52, 0xa5, 0x64, 0xda, 0x0b, 0x7f,
+	0x09, 0xce, 0x47, 0x7b, 0xbc, 0x0e, 0x67, 0x0a, 0x7f, 0xed, 0x80, 0x3b, 0xb0, 0x48, 0xb9, 0x90,
+	0xa6, 0x63, 0x53, 0x9f, 0x0b, 0x7d, 0xe1, 0xb8, 0x71, 0xca, 0x7f, 0xd7, 0x95, 0x6f, 0x7c, 0x21,
+	0xe5, 0x0e, 0xa1, 0xd3, 0x9e, 0xf2, 0x09, 0x43, 0x48, 0x15, 0x1d, 0xba, 0x6c, 0x9d, 0x26, 0x84,
+	0x94, 0x17, 0xee, 0xc2, 0xe2, 0xd0, 0xb6, 0x18, 0x37, 0x87, 0x36, 0x7b, 0x26, 0x72, 0xaf, 0x22,
+	0xa7, 0x40, 0x40, 0x79, 0xed, 0x87, 0x4e, 0xc6, 0xbf, 0x17, 0x60, 0xad, 0xa8, 0xf6, 0xc5, 0x04,
+	0xd6, 0x68, 0xe0, 0xfb, 0xcc, 0x95, 0xf1, 0x5a, 0x21, 0x0e, 0x0f, 0xdc, 0x24, 0x7a, 0x34, 0x65,
+	0xf4, 0x2f, 0x6b, 0x94, 0x88, 0xa4, 0xa3, 0x30, 0x74, 0x32, 0x6c, 0xa8, 0x27, 0xeb, 0x6f, 0xb4,
+	0x24, 0xb3, 0x34, 0x95, 0x29, 0x69, 0x5e, 0x49, 0x21, 0x4d, 0xa0, 0x7a, 0x0f, 0xc1, 0xb2, 0xc6,
+	0x0f, 0x4f, 0xad, 0x30, 0xf7, 0xd5, 0x7a, 0x75, 0x6b, 0xb1, 0xf5, 0xce, 0x8b, 0xbd, 0x32, 0x14,
+	0x76, 0x3e, 0xf0, 0x92, 0xcd, 0xa0, 0xb7, 0x14, 0xa9, 0x89, 0x9a, 0x84, 0xf1, 0x4f, 0x04, 0x9b,
+	0xe5, 0xae, 0xb8, 0x07, 0x2b, 0xff, 0xd7, 0x60, 0xe0, 0x83, 0xd3, 0xa9, 0x19, 0xdd, 0xa0, 0x2b,
+	0x67, 0x76, 0x83, 0x36, 0xfe, 0x86, 0x60, 0x75, 0xe2, 0xa5, 0x06, 0xbf, 0x05, 0x17, 0xf4, 0xd6,
+	0xad, 0xa3, 0xf8, 0x74, 0x2e, 0x7f, 0xf4, 0x62, 0x14, 0x1f, 0x08, 0xbb, 0xee, 0x53, 0x1e, 0x91,
+	0xc4, 0x00, 0xf8, 0x3b, 0x60, 0xa4, 0x27, 0x54, 0x58, 0x20, 0x1f, 0xd8, 0xd6, 0xac, 0x53, 0xe9,
+	0x93, 0x29, 0x8c, 0x6d, 0x8f, 0x76, 0x6d, 0x2b, 0xca, 0x94, 0x71, 0x0b, 0x36, 0x4a, 0xeb, 0x4e,
+	0x63, 0x13, 0xea, 0x65, 0x05, 0x94, 0xf1, 0x53, 0x04, 0x37, 0x0a, 0x4e, 0x5d, 0x7c, 0x08, 0xd7,
+	0xd3, 0x71, 0x8c, 0x9e, 0xc8, 0x6a, 0x48, 0x4d, 0xda, 0xcf, 0x94, 0xa5, 0x28, 0x04, 0xbf, 0xcf,
+	0x98, 0xb5, 0x2b, 0x99, 0x13, 0x05, 0xb5, 0x9a, 0x02, 0x4c, 0x68, 0x85, 0xf1, 0x1f, 0x04, 0xeb,
+	0xc5, 0x07, 0xec, 0x0b, 0x1d, 0xa0, 0xef, 0x67, 0x03, 0x1b, 0x55, 0x0b, 0xfa, 0x89, 0xe8, 0x6e,
+	0xc9, 0x13, 0xd1, 0xb8, 0x54, 0xf5, 0x40, 0x34, 0xde, 0x18, 0x71, 0xae, 0xa4, 0x88, 0x92, 0x2e,
+	0xe3, 0x43, 0x04, 0x2b, 0x93, 0x2e, 0xb5, 0xb8, 0x0d, 0x15, 0x12, 0x07, 0x78, 0x7b, 0x8a, 0x15,
+	0xd0, 0xb1, 0x22, 0x9a, 0x0a, 0xb1, 0xf0, 0x7d, 0x58, 0xa2, 0x3e, 0x8b, 0x8a, 0x70, 0x8b, 0x48,
+	0x96, 0x7b, 0xb2, 0xa4, 0x9f, 0x51, 0x94, 0xf7, 0xe5, 0xd8, 0xef, 0x2e, 0x91, 0x0c, 0xef, 0xc2,
+	0x15, 0x12, 0x48, 0x6e, 0x12, 0xcf, 0x1b, 0x9c, 0x44, 0x48, 0xd5, 0x69, 0x91, 0x96, 0x42, 0xcf,
+	0x4e, 0xe8, 0x18, 0x42, 0x19, 0x1f, 0x9e, 0x83, 0xb5, 0xa2, 0xcb, 0x32, 0xfe, 0x15, 0x82, 0x0b,
+	0xf1, 0x4e, 0x88, 0xe6, 0xdd, 0x09, 0x8b, 0x18, 0x0a, 0x3b, 0xd3, 0x3b, 0x61, 0x2c, 0x03, 0x53,
+	0x48, 0x6f, 0xe2, 0x66, 0xea, 0x15, 0x61, 0xc6, 0x05, 0x9c, 0xde, 0x04, 0x12, 0x15, 0x7a, 0x0d,
+	0xff, 0xa3, 0x0a, 0x9b, 0xe5, 0xca, 0xf0, 0x73, 0x58, 0xe8, 0x73, 0x32, 0x50, 0x13, 0x62, 0xb9,
+	0x65, 0x95, 0x4c, 0xcb, 0x22, 0xc0, 0x1d, 0x4e, 0x06, 0x6a, 0x9a, 0x96, 0x19, 0xe9, 0x57, 0xcd,
+	0x90, 0x16, 0x7f, 0x0d, 0xae, 0xcd, 0x1f, 0xfe, 0x15, 0x99, 0x8d, 0x19, 0x4b, 0xb8, 0xe3, 0xb3,
+	0x77, 0x02, 0xdb, 0x0f, 0xf7, 0xc4, 0xb1, 0x77, 0xb4, 0xec, 0x39, 0x32, 0x6d, 0x49, 0xb3, 0x19,
+	0xe3, 0x65, 0xcf, 0xac, 0x9c, 0x73, 0x65, 0xe1, 0xec, 0xce, 0x95, 0x5f, 0x23, 0xb8, 0x33, 0xdd,
+	0x53, 0xcb, 0x54, 0xd5, 0x06, 0x7a, 0x21, 0xd5, 0x86, 0xf1, 0x4b, 0x04, 0x37, 0x4b, 0x2e, 0x7e,
+	0x78, 0x50, 0xb2, 0xc7, 0x7f, 0xae, 0x6c, 0x97, 0x8d, 0x09, 0xa6, 0xda, 0xe7, 0xeb, 0xb0, 0x5e,
+	0xfc, 0xb6, 0x63, 0xfc, 0x02, 0xc1, 0x46, 0xe9, 0x33, 0xc5, 0xc7, 0x99, 0xc4, 0x9f, 0x23, 0x58,
+	0x2f, 0xbe, 0xe2, 0xe3, 0xa3, 0x92, 0x1c, 0x36, 0xa7, 0x39, 0x27, 0x79, 0x20, 0xa7, 0x4a, 0xe1,
+	0x8f, 0x2b, 0xb0, 0x5e, 0x7c, 0xcd, 0xc3, 0xdf, 0x84, 0xeb, 0xec, 0x98, 0x32, 0x21, 0xc6, 0x97,
+	0x59, 0xee, 0x5d, 0xe5, 0xd4, 0x3e, 0xbe, 0x12, 0x01, 0x64, 0xd7, 0x15, 0xfe, 0x19, 0x82, 0xd5,
+	0xc9, 0x37, 0xd6, 0xca, 0x99, 0x3d, 0x7c, 0xf7, 0x74, 0xa9, 0x99, 0xed, 0x6a, 0xd3, 0x8f, 0x3a,
+	0xdf, 0x9d, 0xfa, 0xff, 0x20, 0xfc, 0x3a, 0x0d, 0x84, 0xe4, 0x0e, 0xf3, 0x45, 0xf3, 0xdd, 0xf8,
+	0xf3, 0xf9, 0xd8, 0x7f, 0x71, 0xa2, 0xf9, 0x6e, 0xb6, 0xe1, 0x79, 0xf7, 0x2a, 0x2c, 0x67, 0x9b,
+	0xba, 0x3f, 0xa8, 0xc0, 0x6d, 0xca, 0x9d, 0xf2, 0x38, 0xbb, 0x2f, 0x65, 0x25, 0x3c, 0x0c, 0x53,
+	0xfd, 0x10, 0x7d, 0xfb, 0x2d, 0xed, 0xd9, 0xe7, 0x03, 0xe2, 0xf6, 0x1b, 0xdc, 0xef, 0x37, 0xfb,
+	0xcc, 0x55, 0x03, 0xd1, 0x1c, 0xc5, 0x50, 0xf0, 0xcf, 0xdd, 0x97, 0x93, 0xaf, 0xf7, 0x2b, 0xd5,
+	0x9d, 0x4e, 0xe7, 0x4f, 0x95, 0x8d, 0x9d, 0x08, 0xb2, 0x63, 0x89, 0x46, 0xf4, 0x19, 0x7e, 0xed,
+	0xb7, 0x1a, 0xbd, 0xd8, 0xf2, 0xef, 0xb1, 0xcd, 0x93, 0x8e, 0x25, 0x9e, 0x24, 0x36, 0x4f, 0xf6,
+	0x5b, 0x4f, 0x12, 0x9b, 0x8f, 0x2a, 0xb7, 0xa3, 0x8e, 0x76, 0xbb, 0x63, 0x89, 0x76, 0x3b, 0xb1,
+	0x6a, 0xb7, 0xf7, 0x5b, 0xed, 0x76, 0x62, 0x77, 0x70, 0x5e, 0x89, 0xfd, 0xfc, 0xff, 0x02, 0x00,
+	0x00, 0xff, 0xff, 0x32, 0x95, 0x7c, 0xf9, 0xdc, 0x1d, 0x00, 0x00,
 }

@@ -30,6 +30,34 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+// Indicates the type of the restore source.
+type RestoreSourceType int32
+
+const (
+	// No restore associated.
+	RestoreSourceType_TYPE_UNSPECIFIED RestoreSourceType = 0
+	// A backup was used as the source of the restore.
+	RestoreSourceType_BACKUP RestoreSourceType = 1
+)
+
+var RestoreSourceType_name = map[int32]string{
+	0: "TYPE_UNSPECIFIED",
+	1: "BACKUP",
+}
+
+var RestoreSourceType_value = map[string]int32{
+	"TYPE_UNSPECIFIED": 0,
+	"BACKUP":           1,
+}
+
+func (x RestoreSourceType) String() string {
+	return proto.EnumName(RestoreSourceType_name, int32(x))
+}
+
+func (RestoreSourceType) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_9422939aee7fc2d7, []int{0}
+}
+
 // Indicates the current state of the database.
 type Database_State int32
 
@@ -41,18 +69,29 @@ const (
 	Database_CREATING Database_State = 1
 	// The database is fully created and ready for use.
 	Database_READY Database_State = 2
+	// The database is fully created and ready for use, but is still
+	// being optimized for performance and cannot handle full load.
+	//
+	// In this state, the database still references the backup
+	// it was restore from, preventing the backup
+	// from being deleted. When optimizations are complete, the full performance
+	// of the database will be restored, and the database will transition to
+	// `READY` state.
+	Database_READY_OPTIMIZING Database_State = 3
 )
 
 var Database_State_name = map[int32]string{
 	0: "STATE_UNSPECIFIED",
 	1: "CREATING",
 	2: "READY",
+	3: "READY_OPTIMIZING",
 }
 
 var Database_State_value = map[string]int32{
 	"STATE_UNSPECIFIED": 0,
 	"CREATING":          1,
 	"READY":             2,
+	"READY_OPTIMIZING":  3,
 }
 
 func (x Database_State) String() string {
@@ -60,7 +99,84 @@ func (x Database_State) String() string {
 }
 
 func (Database_State) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{0, 0}
+	return fileDescriptor_9422939aee7fc2d7, []int{1, 0}
+}
+
+// Information about the database restore.
+type RestoreInfo struct {
+	// The type of the restore source.
+	SourceType RestoreSourceType `protobuf:"varint,1,opt,name=source_type,json=sourceType,proto3,enum=google.spanner.admin.database.v1.RestoreSourceType" json:"source_type,omitempty"`
+	// Information about the source used to restore the database.
+	//
+	// Types that are valid to be assigned to SourceInfo:
+	//	*RestoreInfo_BackupInfo
+	SourceInfo           isRestoreInfo_SourceInfo `protobuf_oneof:"source_info"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
+}
+
+func (m *RestoreInfo) Reset()         { *m = RestoreInfo{} }
+func (m *RestoreInfo) String() string { return proto.CompactTextString(m) }
+func (*RestoreInfo) ProtoMessage()    {}
+func (*RestoreInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9422939aee7fc2d7, []int{0}
+}
+
+func (m *RestoreInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RestoreInfo.Unmarshal(m, b)
+}
+func (m *RestoreInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RestoreInfo.Marshal(b, m, deterministic)
+}
+func (m *RestoreInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RestoreInfo.Merge(m, src)
+}
+func (m *RestoreInfo) XXX_Size() int {
+	return xxx_messageInfo_RestoreInfo.Size(m)
+}
+func (m *RestoreInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_RestoreInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RestoreInfo proto.InternalMessageInfo
+
+func (m *RestoreInfo) GetSourceType() RestoreSourceType {
+	if m != nil {
+		return m.SourceType
+	}
+	return RestoreSourceType_TYPE_UNSPECIFIED
+}
+
+type isRestoreInfo_SourceInfo interface {
+	isRestoreInfo_SourceInfo()
+}
+
+type RestoreInfo_BackupInfo struct {
+	BackupInfo *BackupInfo `protobuf:"bytes,2,opt,name=backup_info,json=backupInfo,proto3,oneof"`
+}
+
+func (*RestoreInfo_BackupInfo) isRestoreInfo_SourceInfo() {}
+
+func (m *RestoreInfo) GetSourceInfo() isRestoreInfo_SourceInfo {
+	if m != nil {
+		return m.SourceInfo
+	}
+	return nil
+}
+
+func (m *RestoreInfo) GetBackupInfo() *BackupInfo {
+	if x, ok := m.GetSourceInfo().(*RestoreInfo_BackupInfo); ok {
+		return x.BackupInfo
+	}
+	return nil
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RestoreInfo) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*RestoreInfo_BackupInfo)(nil),
+	}
 }
 
 // A Cloud Spanner database.
@@ -72,17 +188,22 @@ type Database struct {
 	// identify the database.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The current database state.
-	State                Database_State `protobuf:"varint,2,opt,name=state,proto3,enum=google.spanner.admin.database.v1.Database_State" json:"state,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
+	State Database_State `protobuf:"varint,2,opt,name=state,proto3,enum=google.spanner.admin.database.v1.Database_State" json:"state,omitempty"`
+	// Output only. If exists, the time at which the database creation started.
+	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	// Output only. Applicable only for restored databases. Contains information
+	// about the restore source.
+	RestoreInfo          *RestoreInfo `protobuf:"bytes,4,opt,name=restore_info,json=restoreInfo,proto3" json:"restore_info,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
 }
 
 func (m *Database) Reset()         { *m = Database{} }
 func (m *Database) String() string { return proto.CompactTextString(m) }
 func (*Database) ProtoMessage()    {}
 func (*Database) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{0}
+	return fileDescriptor_9422939aee7fc2d7, []int{1}
 }
 
 func (m *Database) XXX_Unmarshal(b []byte) error {
@@ -117,6 +238,20 @@ func (m *Database) GetState() Database_State {
 	return Database_STATE_UNSPECIFIED
 }
 
+func (m *Database) GetCreateTime() *timestamp.Timestamp {
+	if m != nil {
+		return m.CreateTime
+	}
+	return nil
+}
+
+func (m *Database) GetRestoreInfo() *RestoreInfo {
+	if m != nil {
+		return m.RestoreInfo
+	}
+	return nil
+}
+
 // The request for [ListDatabases][google.spanner.admin.database.v1.DatabaseAdmin.ListDatabases].
 type ListDatabasesRequest struct {
 	// Required. The instance whose databases should be listed.
@@ -138,7 +273,7 @@ func (m *ListDatabasesRequest) Reset()         { *m = ListDatabasesRequest{} }
 func (m *ListDatabasesRequest) String() string { return proto.CompactTextString(m) }
 func (*ListDatabasesRequest) ProtoMessage()    {}
 func (*ListDatabasesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{1}
+	return fileDescriptor_9422939aee7fc2d7, []int{2}
 }
 
 func (m *ListDatabasesRequest) XXX_Unmarshal(b []byte) error {
@@ -197,7 +332,7 @@ func (m *ListDatabasesResponse) Reset()         { *m = ListDatabasesResponse{} }
 func (m *ListDatabasesResponse) String() string { return proto.CompactTextString(m) }
 func (*ListDatabasesResponse) ProtoMessage()    {}
 func (*ListDatabasesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{2}
+	return fileDescriptor_9422939aee7fc2d7, []int{3}
 }
 
 func (m *ListDatabasesResponse) XXX_Unmarshal(b []byte) error {
@@ -243,7 +378,7 @@ type CreateDatabaseRequest struct {
 	// If the database ID is a reserved word or if it contains a hyphen, the
 	// database ID must be enclosed in backticks (`` ` ``).
 	CreateStatement string `protobuf:"bytes,2,opt,name=create_statement,json=createStatement,proto3" json:"create_statement,omitempty"`
-	// An optional list of DDL statements to run inside the newly created
+	// Optional. A list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These
 	// statements execute atomically with the creation of the database:
 	// if there is an error in any statement, the database is not created.
@@ -257,7 +392,7 @@ func (m *CreateDatabaseRequest) Reset()         { *m = CreateDatabaseRequest{} }
 func (m *CreateDatabaseRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateDatabaseRequest) ProtoMessage()    {}
 func (*CreateDatabaseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{3}
+	return fileDescriptor_9422939aee7fc2d7, []int{4}
 }
 
 func (m *CreateDatabaseRequest) XXX_Unmarshal(b []byte) error {
@@ -313,7 +448,7 @@ func (m *CreateDatabaseMetadata) Reset()         { *m = CreateDatabaseMetadata{}
 func (m *CreateDatabaseMetadata) String() string { return proto.CompactTextString(m) }
 func (*CreateDatabaseMetadata) ProtoMessage()    {}
 func (*CreateDatabaseMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{4}
+	return fileDescriptor_9422939aee7fc2d7, []int{5}
 }
 
 func (m *CreateDatabaseMetadata) XXX_Unmarshal(b []byte) error {
@@ -355,7 +490,7 @@ func (m *GetDatabaseRequest) Reset()         { *m = GetDatabaseRequest{} }
 func (m *GetDatabaseRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDatabaseRequest) ProtoMessage()    {}
 func (*GetDatabaseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{5}
+	return fileDescriptor_9422939aee7fc2d7, []int{6}
 }
 
 func (m *GetDatabaseRequest) XXX_Unmarshal(b []byte) error {
@@ -433,7 +568,7 @@ func (m *UpdateDatabaseDdlRequest) Reset()         { *m = UpdateDatabaseDdlReque
 func (m *UpdateDatabaseDdlRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateDatabaseDdlRequest) ProtoMessage()    {}
 func (*UpdateDatabaseDdlRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{6}
+	return fileDescriptor_9422939aee7fc2d7, []int{7}
 }
 
 func (m *UpdateDatabaseDdlRequest) XXX_Unmarshal(b []byte) error {
@@ -496,7 +631,7 @@ func (m *UpdateDatabaseDdlMetadata) Reset()         { *m = UpdateDatabaseDdlMeta
 func (m *UpdateDatabaseDdlMetadata) String() string { return proto.CompactTextString(m) }
 func (*UpdateDatabaseDdlMetadata) ProtoMessage()    {}
 func (*UpdateDatabaseDdlMetadata) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{7}
+	return fileDescriptor_9422939aee7fc2d7, []int{8}
 }
 
 func (m *UpdateDatabaseDdlMetadata) XXX_Unmarshal(b []byte) error {
@@ -551,7 +686,7 @@ func (m *DropDatabaseRequest) Reset()         { *m = DropDatabaseRequest{} }
 func (m *DropDatabaseRequest) String() string { return proto.CompactTextString(m) }
 func (*DropDatabaseRequest) ProtoMessage()    {}
 func (*DropDatabaseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{8}
+	return fileDescriptor_9422939aee7fc2d7, []int{9}
 }
 
 func (m *DropDatabaseRequest) XXX_Unmarshal(b []byte) error {
@@ -592,7 +727,7 @@ func (m *GetDatabaseDdlRequest) Reset()         { *m = GetDatabaseDdlRequest{} }
 func (m *GetDatabaseDdlRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDatabaseDdlRequest) ProtoMessage()    {}
 func (*GetDatabaseDdlRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{9}
+	return fileDescriptor_9422939aee7fc2d7, []int{10}
 }
 
 func (m *GetDatabaseDdlRequest) XXX_Unmarshal(b []byte) error {
@@ -634,7 +769,7 @@ func (m *GetDatabaseDdlResponse) Reset()         { *m = GetDatabaseDdlResponse{}
 func (m *GetDatabaseDdlResponse) String() string { return proto.CompactTextString(m) }
 func (*GetDatabaseDdlResponse) ProtoMessage()    {}
 func (*GetDatabaseDdlResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_9422939aee7fc2d7, []int{10}
+	return fileDescriptor_9422939aee7fc2d7, []int{11}
 }
 
 func (m *GetDatabaseDdlResponse) XXX_Unmarshal(b []byte) error {
@@ -662,8 +797,464 @@ func (m *GetDatabaseDdlResponse) GetStatements() []string {
 	return nil
 }
 
+// The request for
+// [ListDatabaseOperations][google.spanner.admin.database.v1.DatabaseAdmin.ListDatabaseOperations].
+type ListDatabaseOperationsRequest struct {
+	// Required. The instance of the database operations.
+	// Values are of the form `projects/<project>/instances/<instance>`.
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
+	// An expression that filters the list of returned operations.
+	//
+	// A filter expression consists of a field name, a
+	// comparison operator, and a value for filtering.
+	// The value must be a string, a number, or a boolean. The comparison operator
+	// must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`, or `:`.
+	// Colon `:` is the contains operator. Filter rules are not case sensitive.
+	//
+	// The following fields in the [Operation][google.longrunning.Operation]
+	// are eligible for filtering:
+	//
+	//   * `name` - The name of the long-running operation
+	//   * `done` - False if the operation is in progress, else true.
+	//   * `metadata.@type` - the type of metadata. For example, the type string
+	//      for [RestoreDatabaseMetadata][google.spanner.admin.database.v1.RestoreDatabaseMetadata] is
+	//      `type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata`.
+	//   * `metadata.<field_name>` - any field in metadata.value.
+	//   * `error` - Error associated with the long-running operation.
+	//   * `response.@type` - the type of response.
+	//   * `response.<field_name>` - any field in response.value.
+	//
+	// You can combine multiple expressions by enclosing each expression in
+	// parentheses. By default, expressions are combined with AND logic. However,
+	// you can specify AND, OR, and NOT logic explicitly.
+	//
+	// Here are a few examples:
+	//
+	//   * `done:true` - The operation is complete.
+	//   * `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata) AND` <br/>
+	//     `(metadata.source_type:BACKUP) AND` <br/>
+	//     `(metadata.backup_info.backup:backup_howl) AND` <br/>
+	//     `(metadata.name:restored_howl) AND` <br/>
+	//     `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND` <br/>
+	//     `(error:*)` - Return operations where:
+	//     * The operation's metadata type is [RestoreDatabaseMetadata][google.spanner.admin.database.v1.RestoreDatabaseMetadata].
+	//     * The database is restored from a backup.
+	//     * The backup name contains "backup_howl".
+	//     * The restored database's name contains "restored_howl".
+	//     * The operation started before 2018-03-28T14:50:00Z.
+	//     * The operation resulted in an error.
+	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
+	// Number of operations to be returned in the response. If 0 or
+	// less, defaults to the server's maximum allowed page size.
+	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	// If non-empty, `page_token` should contain a
+	// [next_page_token][google.spanner.admin.database.v1.ListDatabaseOperationsResponse.next_page_token]
+	// from a previous [ListDatabaseOperationsResponse][google.spanner.admin.database.v1.ListDatabaseOperationsResponse] to the
+	// same `parent` and with the same `filter`.
+	PageToken            string   `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ListDatabaseOperationsRequest) Reset()         { *m = ListDatabaseOperationsRequest{} }
+func (m *ListDatabaseOperationsRequest) String() string { return proto.CompactTextString(m) }
+func (*ListDatabaseOperationsRequest) ProtoMessage()    {}
+func (*ListDatabaseOperationsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9422939aee7fc2d7, []int{12}
+}
+
+func (m *ListDatabaseOperationsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListDatabaseOperationsRequest.Unmarshal(m, b)
+}
+func (m *ListDatabaseOperationsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListDatabaseOperationsRequest.Marshal(b, m, deterministic)
+}
+func (m *ListDatabaseOperationsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDatabaseOperationsRequest.Merge(m, src)
+}
+func (m *ListDatabaseOperationsRequest) XXX_Size() int {
+	return xxx_messageInfo_ListDatabaseOperationsRequest.Size(m)
+}
+func (m *ListDatabaseOperationsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListDatabaseOperationsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListDatabaseOperationsRequest proto.InternalMessageInfo
+
+func (m *ListDatabaseOperationsRequest) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
+func (m *ListDatabaseOperationsRequest) GetFilter() string {
+	if m != nil {
+		return m.Filter
+	}
+	return ""
+}
+
+func (m *ListDatabaseOperationsRequest) GetPageSize() int32 {
+	if m != nil {
+		return m.PageSize
+	}
+	return 0
+}
+
+func (m *ListDatabaseOperationsRequest) GetPageToken() string {
+	if m != nil {
+		return m.PageToken
+	}
+	return ""
+}
+
+// The response for
+// [ListDatabaseOperations][google.spanner.admin.database.v1.DatabaseAdmin.ListDatabaseOperations].
+type ListDatabaseOperationsResponse struct {
+	// The list of matching database [long-running
+	// operations][google.longrunning.Operation]. Each operation's name will be
+	// prefixed by the database's name. The operation's
+	// [metadata][google.longrunning.Operation.metadata] field type
+	// `metadata.type_url` describes the type of the metadata.
+	Operations []*longrunning.Operation `protobuf:"bytes,1,rep,name=operations,proto3" json:"operations,omitempty"`
+	// `next_page_token` can be sent in a subsequent
+	// [ListDatabaseOperations][google.spanner.admin.database.v1.DatabaseAdmin.ListDatabaseOperations]
+	// call to fetch more of the matching metadata.
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ListDatabaseOperationsResponse) Reset()         { *m = ListDatabaseOperationsResponse{} }
+func (m *ListDatabaseOperationsResponse) String() string { return proto.CompactTextString(m) }
+func (*ListDatabaseOperationsResponse) ProtoMessage()    {}
+func (*ListDatabaseOperationsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9422939aee7fc2d7, []int{13}
+}
+
+func (m *ListDatabaseOperationsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListDatabaseOperationsResponse.Unmarshal(m, b)
+}
+func (m *ListDatabaseOperationsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListDatabaseOperationsResponse.Marshal(b, m, deterministic)
+}
+func (m *ListDatabaseOperationsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListDatabaseOperationsResponse.Merge(m, src)
+}
+func (m *ListDatabaseOperationsResponse) XXX_Size() int {
+	return xxx_messageInfo_ListDatabaseOperationsResponse.Size(m)
+}
+func (m *ListDatabaseOperationsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListDatabaseOperationsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListDatabaseOperationsResponse proto.InternalMessageInfo
+
+func (m *ListDatabaseOperationsResponse) GetOperations() []*longrunning.Operation {
+	if m != nil {
+		return m.Operations
+	}
+	return nil
+}
+
+func (m *ListDatabaseOperationsResponse) GetNextPageToken() string {
+	if m != nil {
+		return m.NextPageToken
+	}
+	return ""
+}
+
+// The request for
+// [RestoreDatabase][google.spanner.admin.database.v1.DatabaseAdmin.RestoreDatabase].
+type RestoreDatabaseRequest struct {
+	// Required. The name of the instance in which to create the
+	// restored database. This instance must be in the same project and
+	// have the same instance configuration as the instance containing
+	// the source backup. Values are of the form
+	// `projects/<project>/instances/<instance>`.
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
+	// Required. The id of the database to create and restore to. This
+	// database must not already exist. The `database_id` appended to
+	// `parent` forms the full database name of the form
+	// `projects/<project>/instances/<instance>/databases/<database_id>`.
+	DatabaseId string `protobuf:"bytes,2,opt,name=database_id,json=databaseId,proto3" json:"database_id,omitempty"`
+	// Required. The source from which to restore.
+	//
+	// Types that are valid to be assigned to Source:
+	//	*RestoreDatabaseRequest_Backup
+	Source               isRestoreDatabaseRequest_Source `protobuf_oneof:"source"`
+	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
+	XXX_unrecognized     []byte                          `json:"-"`
+	XXX_sizecache        int32                           `json:"-"`
+}
+
+func (m *RestoreDatabaseRequest) Reset()         { *m = RestoreDatabaseRequest{} }
+func (m *RestoreDatabaseRequest) String() string { return proto.CompactTextString(m) }
+func (*RestoreDatabaseRequest) ProtoMessage()    {}
+func (*RestoreDatabaseRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9422939aee7fc2d7, []int{14}
+}
+
+func (m *RestoreDatabaseRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RestoreDatabaseRequest.Unmarshal(m, b)
+}
+func (m *RestoreDatabaseRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RestoreDatabaseRequest.Marshal(b, m, deterministic)
+}
+func (m *RestoreDatabaseRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RestoreDatabaseRequest.Merge(m, src)
+}
+func (m *RestoreDatabaseRequest) XXX_Size() int {
+	return xxx_messageInfo_RestoreDatabaseRequest.Size(m)
+}
+func (m *RestoreDatabaseRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RestoreDatabaseRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RestoreDatabaseRequest proto.InternalMessageInfo
+
+func (m *RestoreDatabaseRequest) GetParent() string {
+	if m != nil {
+		return m.Parent
+	}
+	return ""
+}
+
+func (m *RestoreDatabaseRequest) GetDatabaseId() string {
+	if m != nil {
+		return m.DatabaseId
+	}
+	return ""
+}
+
+type isRestoreDatabaseRequest_Source interface {
+	isRestoreDatabaseRequest_Source()
+}
+
+type RestoreDatabaseRequest_Backup struct {
+	Backup string `protobuf:"bytes,3,opt,name=backup,proto3,oneof"`
+}
+
+func (*RestoreDatabaseRequest_Backup) isRestoreDatabaseRequest_Source() {}
+
+func (m *RestoreDatabaseRequest) GetSource() isRestoreDatabaseRequest_Source {
+	if m != nil {
+		return m.Source
+	}
+	return nil
+}
+
+func (m *RestoreDatabaseRequest) GetBackup() string {
+	if x, ok := m.GetSource().(*RestoreDatabaseRequest_Backup); ok {
+		return x.Backup
+	}
+	return ""
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RestoreDatabaseRequest) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*RestoreDatabaseRequest_Backup)(nil),
+	}
+}
+
+// Metadata type for the long-running operation returned by
+// [RestoreDatabase][google.spanner.admin.database.v1.DatabaseAdmin.RestoreDatabase].
+type RestoreDatabaseMetadata struct {
+	// Name of the database being created and restored to.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The type of the restore source.
+	SourceType RestoreSourceType `protobuf:"varint,2,opt,name=source_type,json=sourceType,proto3,enum=google.spanner.admin.database.v1.RestoreSourceType" json:"source_type,omitempty"`
+	// Information about the source used to restore the database, as specified by
+	// `source` in [RestoreDatabaseRequest][google.spanner.admin.database.v1.RestoreDatabaseRequest].
+	//
+	// Types that are valid to be assigned to SourceInfo:
+	//	*RestoreDatabaseMetadata_BackupInfo
+	SourceInfo isRestoreDatabaseMetadata_SourceInfo `protobuf_oneof:"source_info"`
+	// The progress of the
+	// [RestoreDatabase][google.spanner.admin.database.v1.DatabaseAdmin.RestoreDatabase]
+	// operation.
+	Progress *OperationProgress `protobuf:"bytes,4,opt,name=progress,proto3" json:"progress,omitempty"`
+	// The time at which cancellation of this operation was received.
+	// [Operations.CancelOperation][google.longrunning.Operations.CancelOperation]
+	// starts asynchronous cancellation on a long-running operation. The server
+	// makes a best effort to cancel the operation, but success is not guaranteed.
+	// Clients can use
+	// [Operations.GetOperation][google.longrunning.Operations.GetOperation] or
+	// other methods to check whether the cancellation succeeded or whether the
+	// operation completed despite cancellation. On successful cancellation,
+	// the operation is not deleted; instead, it becomes an operation with
+	// an [Operation.error][google.longrunning.Operation.error] value with a
+	// [google.rpc.Status.code][google.rpc.Status.code] of 1, corresponding to `Code.CANCELLED`.
+	CancelTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=cancel_time,json=cancelTime,proto3" json:"cancel_time,omitempty"`
+	// If exists, the name of the long-running operation that will be used to
+	// track the post-restore optimization process to optimize the performance of
+	// the restored database, and remove the dependency on the restore source.
+	// The name is of the form
+	// `projects/<project>/instances/<instance>/databases/<database>/operations/<operation>`
+	// where the <database> is the name of database being created and restored to.
+	// The metadata type of the  long-running operation is
+	// [OptimizeRestoredDatabaseMetadata][google.spanner.admin.database.v1.OptimizeRestoredDatabaseMetadata]. This long-running operation will be
+	// automatically created by the system after the RestoreDatabase long-running
+	// operation completes successfully. This operation will not be created if the
+	// restore was not successful.
+	OptimizeDatabaseOperationName string   `protobuf:"bytes,6,opt,name=optimize_database_operation_name,json=optimizeDatabaseOperationName,proto3" json:"optimize_database_operation_name,omitempty"`
+	XXX_NoUnkeyedLiteral          struct{} `json:"-"`
+	XXX_unrecognized              []byte   `json:"-"`
+	XXX_sizecache                 int32    `json:"-"`
+}
+
+func (m *RestoreDatabaseMetadata) Reset()         { *m = RestoreDatabaseMetadata{} }
+func (m *RestoreDatabaseMetadata) String() string { return proto.CompactTextString(m) }
+func (*RestoreDatabaseMetadata) ProtoMessage()    {}
+func (*RestoreDatabaseMetadata) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9422939aee7fc2d7, []int{15}
+}
+
+func (m *RestoreDatabaseMetadata) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RestoreDatabaseMetadata.Unmarshal(m, b)
+}
+func (m *RestoreDatabaseMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RestoreDatabaseMetadata.Marshal(b, m, deterministic)
+}
+func (m *RestoreDatabaseMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RestoreDatabaseMetadata.Merge(m, src)
+}
+func (m *RestoreDatabaseMetadata) XXX_Size() int {
+	return xxx_messageInfo_RestoreDatabaseMetadata.Size(m)
+}
+func (m *RestoreDatabaseMetadata) XXX_DiscardUnknown() {
+	xxx_messageInfo_RestoreDatabaseMetadata.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RestoreDatabaseMetadata proto.InternalMessageInfo
+
+func (m *RestoreDatabaseMetadata) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *RestoreDatabaseMetadata) GetSourceType() RestoreSourceType {
+	if m != nil {
+		return m.SourceType
+	}
+	return RestoreSourceType_TYPE_UNSPECIFIED
+}
+
+type isRestoreDatabaseMetadata_SourceInfo interface {
+	isRestoreDatabaseMetadata_SourceInfo()
+}
+
+type RestoreDatabaseMetadata_BackupInfo struct {
+	BackupInfo *BackupInfo `protobuf:"bytes,3,opt,name=backup_info,json=backupInfo,proto3,oneof"`
+}
+
+func (*RestoreDatabaseMetadata_BackupInfo) isRestoreDatabaseMetadata_SourceInfo() {}
+
+func (m *RestoreDatabaseMetadata) GetSourceInfo() isRestoreDatabaseMetadata_SourceInfo {
+	if m != nil {
+		return m.SourceInfo
+	}
+	return nil
+}
+
+func (m *RestoreDatabaseMetadata) GetBackupInfo() *BackupInfo {
+	if x, ok := m.GetSourceInfo().(*RestoreDatabaseMetadata_BackupInfo); ok {
+		return x.BackupInfo
+	}
+	return nil
+}
+
+func (m *RestoreDatabaseMetadata) GetProgress() *OperationProgress {
+	if m != nil {
+		return m.Progress
+	}
+	return nil
+}
+
+func (m *RestoreDatabaseMetadata) GetCancelTime() *timestamp.Timestamp {
+	if m != nil {
+		return m.CancelTime
+	}
+	return nil
+}
+
+func (m *RestoreDatabaseMetadata) GetOptimizeDatabaseOperationName() string {
+	if m != nil {
+		return m.OptimizeDatabaseOperationName
+	}
+	return ""
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RestoreDatabaseMetadata) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*RestoreDatabaseMetadata_BackupInfo)(nil),
+	}
+}
+
+// Metadata type for the long-running operation used to track the progress
+// of optimizations performed on a newly restored database. This long-running
+// operation is automatically created by the system after the successful
+// completion of a database restore, and cannot be cancelled.
+type OptimizeRestoredDatabaseMetadata struct {
+	// Name of the restored database being optimized.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The progress of the post-restore optimizations.
+	Progress             *OperationProgress `protobuf:"bytes,2,opt,name=progress,proto3" json:"progress,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *OptimizeRestoredDatabaseMetadata) Reset()         { *m = OptimizeRestoredDatabaseMetadata{} }
+func (m *OptimizeRestoredDatabaseMetadata) String() string { return proto.CompactTextString(m) }
+func (*OptimizeRestoredDatabaseMetadata) ProtoMessage()    {}
+func (*OptimizeRestoredDatabaseMetadata) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9422939aee7fc2d7, []int{16}
+}
+
+func (m *OptimizeRestoredDatabaseMetadata) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_OptimizeRestoredDatabaseMetadata.Unmarshal(m, b)
+}
+func (m *OptimizeRestoredDatabaseMetadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_OptimizeRestoredDatabaseMetadata.Marshal(b, m, deterministic)
+}
+func (m *OptimizeRestoredDatabaseMetadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_OptimizeRestoredDatabaseMetadata.Merge(m, src)
+}
+func (m *OptimizeRestoredDatabaseMetadata) XXX_Size() int {
+	return xxx_messageInfo_OptimizeRestoredDatabaseMetadata.Size(m)
+}
+func (m *OptimizeRestoredDatabaseMetadata) XXX_DiscardUnknown() {
+	xxx_messageInfo_OptimizeRestoredDatabaseMetadata.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_OptimizeRestoredDatabaseMetadata proto.InternalMessageInfo
+
+func (m *OptimizeRestoredDatabaseMetadata) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *OptimizeRestoredDatabaseMetadata) GetProgress() *OperationProgress {
+	if m != nil {
+		return m.Progress
+	}
+	return nil
+}
+
 func init() {
+	proto.RegisterEnum("google.spanner.admin.database.v1.RestoreSourceType", RestoreSourceType_name, RestoreSourceType_value)
 	proto.RegisterEnum("google.spanner.admin.database.v1.Database_State", Database_State_name, Database_State_value)
+	proto.RegisterType((*RestoreInfo)(nil), "google.spanner.admin.database.v1.RestoreInfo")
 	proto.RegisterType((*Database)(nil), "google.spanner.admin.database.v1.Database")
 	proto.RegisterType((*ListDatabasesRequest)(nil), "google.spanner.admin.database.v1.ListDatabasesRequest")
 	proto.RegisterType((*ListDatabasesResponse)(nil), "google.spanner.admin.database.v1.ListDatabasesResponse")
@@ -675,6 +1266,11 @@ func init() {
 	proto.RegisterType((*DropDatabaseRequest)(nil), "google.spanner.admin.database.v1.DropDatabaseRequest")
 	proto.RegisterType((*GetDatabaseDdlRequest)(nil), "google.spanner.admin.database.v1.GetDatabaseDdlRequest")
 	proto.RegisterType((*GetDatabaseDdlResponse)(nil), "google.spanner.admin.database.v1.GetDatabaseDdlResponse")
+	proto.RegisterType((*ListDatabaseOperationsRequest)(nil), "google.spanner.admin.database.v1.ListDatabaseOperationsRequest")
+	proto.RegisterType((*ListDatabaseOperationsResponse)(nil), "google.spanner.admin.database.v1.ListDatabaseOperationsResponse")
+	proto.RegisterType((*RestoreDatabaseRequest)(nil), "google.spanner.admin.database.v1.RestoreDatabaseRequest")
+	proto.RegisterType((*RestoreDatabaseMetadata)(nil), "google.spanner.admin.database.v1.RestoreDatabaseMetadata")
+	proto.RegisterType((*OptimizeRestoredDatabaseMetadata)(nil), "google.spanner.admin.database.v1.OptimizeRestoredDatabaseMetadata")
 }
 
 func init() {
@@ -682,91 +1278,133 @@ func init() {
 }
 
 var fileDescriptor_9422939aee7fc2d7 = []byte{
-	// 1341 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x58, 0xcf, 0x6f, 0x13, 0x47,
-	0x14, 0xee, 0x6c, 0x08, 0x4a, 0x26, 0x81, 0x24, 0x03, 0x09, 0xc6, 0x14, 0x08, 0x0b, 0x82, 0x60,
-	0x85, 0xdd, 0x26, 0x94, 0x06, 0x99, 0x1f, 0xed, 0x26, 0x0e, 0x26, 0x55, 0x4b, 0xd3, 0x75, 0x40,
-	0x2a, 0xb2, 0x64, 0x8d, 0xed, 0xc1, 0x6c, 0xf1, 0xfe, 0xe8, 0xce, 0x98, 0x5f, 0x51, 0x2e, 0xad,
-	0x54, 0xa9, 0xd7, 0x72, 0xe9, 0xa1, 0x55, 0x0f, 0xad, 0x54, 0xa9, 0x02, 0xa9, 0x52, 0x4f, 0xbd,
-	0xf5, 0xd4, 0x43, 0xa4, 0x5e, 0xda, 0x9b, 0x4f, 0x1c, 0x38, 0xd1, 0xff, 0xa0, 0xa7, 0x6a, 0x67,
-	0x77, 0xd6, 0xbb, 0x6b, 0x07, 0xaf, 0x4b, 0x6e, 0xeb, 0x79, 0xdf, 0x7b, 0xf3, 0xbd, 0x6f, 0x66,
-	0xbe, 0x9d, 0x35, 0xbc, 0xd2, 0xb0, 0xed, 0x46, 0x93, 0xa8, 0xd4, 0xc1, 0x96, 0x45, 0x5c, 0x15,
-	0xd7, 0x4d, 0xc3, 0x52, 0xeb, 0x98, 0xe1, 0x2a, 0xa6, 0x44, 0xbd, 0xbf, 0x20, 0x22, 0x15, 0x31,
-	0x56, 0xe1, 0x10, 0xc5, 0x71, 0x6d, 0x66, 0xa3, 0x59, 0x3f, 0x5d, 0x09, 0x40, 0x8a, 0x1f, 0x13,
-	0x50, 0xe5, 0xfe, 0x42, 0xf6, 0xcd, 0x60, 0x02, 0xec, 0x18, 0x2a, 0xb6, 0x2c, 0x9b, 0x61, 0x66,
-	0xd8, 0x16, 0xf5, 0xf3, 0xb3, 0x87, 0x22, 0xd1, 0x5a, 0xd3, 0x20, 0x16, 0x0b, 0x02, 0xc7, 0x23,
-	0x81, 0x3b, 0x06, 0x69, 0xd6, 0x2b, 0x55, 0x72, 0x17, 0xdf, 0x37, 0x6c, 0x37, 0x00, 0x1c, 0x8e,
-	0x00, 0x5c, 0x42, 0xed, 0x96, 0x5b, 0x23, 0x41, 0xe8, 0x58, 0x10, 0x32, 0xb0, 0xe9, 0x35, 0x60,
-	0x60, 0xb3, 0xe2, 0xd8, 0x4d, 0xa3, 0xf6, 0x28, 0x88, 0x67, 0xe3, 0xf1, 0x58, 0xec, 0x64, 0x10,
-	0x6b, 0xda, 0x56, 0xc3, 0x6d, 0x59, 0x96, 0x61, 0x35, 0x54, 0xdb, 0x21, 0x6e, 0x8c, 0xf5, 0x91,
-	0x00, 0xc4, 0x7f, 0x55, 0x5b, 0x77, 0x54, 0x62, 0x3a, 0xec, 0x51, 0x82, 0x79, 0x18, 0x64, 0x86,
-	0x49, 0x28, 0xc3, 0xa6, 0xe3, 0x03, 0xe4, 0x2f, 0x24, 0x38, 0x52, 0x08, 0x14, 0x42, 0x08, 0xee,
-	0xb1, 0xb0, 0x49, 0x32, 0x60, 0x16, 0xcc, 0x8d, 0xea, 0xfc, 0x19, 0x5d, 0x83, 0xc3, 0x94, 0x61,
-	0x46, 0x32, 0xd2, 0x2c, 0x98, 0xdb, 0xbf, 0xf8, 0x96, 0xd2, 0x4f, 0x64, 0x45, 0x94, 0x53, 0x4a,
-	0x5e, 0x9e, 0xee, 0xa7, 0xcb, 0x4b, 0x70, 0x98, 0xff, 0x46, 0xd3, 0x70, 0xaa, 0xb4, 0xa1, 0x6d,
-	0xac, 0x56, 0x6e, 0xde, 0x28, 0xad, 0xaf, 0xae, 0xac, 0x5d, 0x5b, 0x5b, 0x2d, 0x4c, 0xbe, 0x81,
-	0xc6, 0xe1, 0xc8, 0x8a, 0xbe, 0xaa, 0x6d, 0xac, 0xdd, 0x28, 0x4e, 0x02, 0x34, 0x0a, 0x87, 0xf5,
-	0x55, 0xad, 0xf0, 0xc9, 0xa4, 0x94, 0xaf, 0xbe, 0xd4, 0x2a, 0xf0, 0xb8, 0x98, 0xce, 0x9f, 0x1d,
-	0x3b, 0x06, 0x55, 0x6a, 0xb6, 0xa9, 0x86, 0xd4, 0x2f, 0x3b, 0xae, 0xfd, 0x29, 0xa9, 0x31, 0xaa,
-	0x6e, 0x06, 0x4f, 0x5b, 0xaa, 0x61, 0x51, 0x86, 0xad, 0x1a, 0xa1, 0xea, 0xa6, 0x78, 0xdc, 0x0a,
-	0x77, 0x13, 0x55, 0x37, 0xc5, 0xe3, 0x96, 0xfc, 0x04, 0xc0, 0x83, 0x1f, 0x18, 0x94, 0x89, 0x72,
-	0x54, 0x27, 0x9f, 0xb5, 0x08, 0x65, 0xe8, 0x5d, 0xb8, 0xd7, 0xc1, 0x2e, 0xb1, 0x98, 0xaf, 0xc9,
-	0xf2, 0x99, 0xe7, 0x9a, 0xf4, 0xaf, 0x76, 0x62, 0x47, 0x3e, 0x6b, 0xc1, 0x3c, 0x7a, 0x90, 0x86,
-	0x8e, 0xc0, 0x51, 0x07, 0x37, 0x48, 0x85, 0x1a, 0x8f, 0x49, 0x66, 0x68, 0x16, 0xcc, 0x0d, 0xeb,
-	0x23, 0xde, 0x40, 0xc9, 0x78, 0x4c, 0xd0, 0x51, 0x08, 0x79, 0x90, 0xd9, 0xf7, 0x88, 0x95, 0xd9,
-	0xc3, 0x55, 0xe7, 0xf0, 0x0d, 0x6f, 0x40, 0xfe, 0x0a, 0xc0, 0xe9, 0x04, 0x2b, 0xea, 0xd8, 0x16,
-	0x25, 0xe8, 0x3a, 0x1c, 0x0d, 0xfb, 0xc8, 0x80, 0xd9, 0xa1, 0xb9, 0xb1, 0xc5, 0x5c, 0xfa, 0x85,
-	0xd1, 0x3b, 0xc9, 0xe8, 0x34, 0x9c, 0xb0, 0xc8, 0x43, 0x56, 0x89, 0xf0, 0x90, 0x38, 0x8f, 0x7d,
-	0xde, 0xf0, 0x7a, 0xc8, 0xe5, 0x57, 0x00, 0xa7, 0x57, 0x5c, 0x82, 0x19, 0x09, 0xab, 0xec, 0x96,
-	0x44, 0x0a, 0x9c, 0xac, 0xf1, 0xca, 0x15, 0xbe, 0x53, 0x4c, 0xaf, 0x14, 0xe7, 0xb0, 0x3c, 0xf4,
-	0x5c, 0x93, 0xf4, 0x09, 0x3f, 0x58, 0x12, 0x31, 0x74, 0x16, 0x4e, 0x92, 0x87, 0xcc, 0xc5, 0x1d,
-	0x38, 0xcd, 0x0c, 0xcd, 0x0e, 0xcd, 0x8d, 0xea, 0x13, 0x7c, 0x3c, 0x44, 0x52, 0xf9, 0x36, 0x9c,
-	0x89, 0x93, 0xfe, 0x90, 0x30, 0xec, 0x35, 0x8f, 0xde, 0x83, 0x23, 0x42, 0x84, 0x80, 0xf7, 0xa9,
-	0x57, 0x91, 0x0e, 0x9b, 0x0e, 0xb3, 0xe4, 0x8f, 0x21, 0x2a, 0x12, 0x96, 0x54, 0xe3, 0x52, 0xf4,
-	0x08, 0xf5, 0xd5, 0x22, 0xcc, 0xe6, 0x49, 0xf2, 0x4f, 0x00, 0x66, 0x6e, 0x3a, 0xf5, 0x08, 0xdf,
-	0x42, 0xbd, 0x29, 0x2a, 0xaf, 0x74, 0x31, 0x4e, 0x5d, 0x3d, 0x4c, 0x44, 0x27, 0x21, 0x8c, 0xa8,
-	0x26, 0x79, 0xaa, 0xf9, 0x2a, 0x47, 0x86, 0xd1, 0x09, 0x38, 0x1e, 0xba, 0x4c, 0xc5, 0xa8, 0xf3,
-	0x6d, 0x3b, 0xaa, 0x8f, 0x85, 0x63, 0x6b, 0x75, 0xf9, 0x0f, 0x00, 0x0f, 0x77, 0x31, 0xdd, 0x3d,
-	0x71, 0xd1, 0xb1, 0x6e, 0x9e, 0x31, 0x8a, 0x45, 0x38, 0x55, 0xb3, 0x4d, 0xd3, 0x60, 0x95, 0xd0,
-	0xd0, 0xfc, 0x4d, 0x30, 0xb6, 0x98, 0x15, 0x07, 0x41, 0x78, 0x9e, 0xb2, 0x21, 0x20, 0xfa, 0xa4,
-	0x9f, 0x14, 0x0e, 0x78, 0x3b, 0xe4, 0x40, 0xc1, 0xb5, 0x9d, 0xe4, 0x32, 0xee, 0x86, 0xd8, 0x72,
-	0x19, 0x4e, 0x47, 0x76, 0xc8, 0x2e, 0x2f, 0xa5, 0x7c, 0x11, 0xce, 0x24, 0xab, 0x07, 0xee, 0x10,
-	0x17, 0x0f, 0x24, 0xc5, 0x5b, 0x7c, 0x36, 0x05, 0xf7, 0x89, 0x3c, 0xcd, 0x73, 0x09, 0xf4, 0x3b,
-	0x80, 0xfb, 0x62, 0x4e, 0x83, 0xde, 0xe9, 0x6f, 0x27, 0xbd, 0x0c, 0x33, 0xbb, 0x34, 0x70, 0x9e,
-	0x4f, 0x5a, 0xbe, 0xda, 0xd6, 0x02, 0x43, 0xf8, 0xfc, 0xef, 0x17, 0x4f, 0x24, 0x15, 0x9d, 0xf3,
-	0x5e, 0x87, 0x9b, 0xfe, 0xd0, 0x95, 0xd0, 0xdd, 0x73, 0x11, 0x57, 0xcf, 0x45, 0xdc, 0x1c, 0xfd,
-	0x28, 0xc1, 0xfd, 0xf1, 0xb3, 0x8e, 0x52, 0x70, 0xe9, 0x69, 0x69, 0xd9, 0xa3, 0x22, 0x31, 0xf2,
-	0xe2, 0x55, 0x3e, 0x12, 0xdb, 0x5f, 0xfe, 0x0d, 0x6c, 0x6b, 0x75, 0x78, 0x36, 0xb5, 0xdf, 0xa2,
-	0xa5, 0x01, 0x79, 0x88, 0x83, 0xd4, 0xd6, 0x0e, 0xf9, 0xfd, 0xcf, 0x27, 0x0d, 0x92, 0x6b, 0xb4,
-	0x28, 0x0f, 0xa6, 0x51, 0x1e, 0xe4, 0xd0, 0x33, 0x00, 0xc7, 0x22, 0xdb, 0x06, 0xbd, 0xdd, 0x5f,
-	0xa3, 0x6e, 0x97, 0xcb, 0x0e, 0xf0, 0xb2, 0x91, 0x2f, 0xb7, 0x35, 0xee, 0x6e, 0xb1, 0x65, 0xf5,
-	0x06, 0x76, 0x20, 0x1c, 0x79, 0x43, 0xe7, 0xb6, 0xd0, 0x77, 0x12, 0x9c, 0xea, 0x32, 0x1a, 0x94,
-	0xef, 0x3f, 0xff, 0x4e, 0x3e, 0xda, 0x6f, 0x71, 0x9f, 0x82, 0x6d, 0xad, 0x04, 0xa7, 0x93, 0x1e,
-	0xb2, 0xea, 0x5d, 0xaa, 0x50, 0x7e, 0xf0, 0x69, 0x3b, 0x6b, 0x79, 0x40, 0xe0, 0xe6, 0x3b, 0x67,
-	0x91, 0x8b, 0x92, 0x5f, 0xbc, 0xc0, 0x45, 0x11, 0xf1, 0x34, 0xc2, 0xa8, 0xf5, 0x7a, 0xd3, 0x5b,
-	0xcf, 0x1f, 0x00, 0x1c, 0x8f, 0x1a, 0x18, 0xba, 0x90, 0x62, 0x69, 0xba, 0x0d, 0x2f, 0x3b, 0xa3,
-	0xf4, 0xec, 0x58, 0x2e, 0xb4, 0xb5, 0xd0, 0x72, 0x38, 0xd9, 0xf3, 0xb9, 0x85, 0x81, 0xc9, 0xa2,
-	0x3f, 0x01, 0xdc, 0x1f, 0x37, 0xab, 0x34, 0x87, 0xb3, 0xa7, 0x79, 0x66, 0x2f, 0x0e, 0x9e, 0x18,
-	0x58, 0xcc, 0xf5, 0x64, 0x2f, 0x4b, 0xe8, 0xff, 0x09, 0x8f, 0xfe, 0x01, 0x70, 0xbc, 0x44, 0xd8,
-	0x1a, 0x36, 0xd7, 0xf9, 0x7d, 0x1d, 0xc9, 0x82, 0x94, 0x81, 0x4d, 0x8f, 0x41, 0x34, 0x28, 0x88,
-	0x4f, 0x27, 0x30, 0x7e, 0x54, 0xfe, 0x1e, 0xb4, 0xb5, 0x09, 0xf1, 0xd1, 0x30, 0xef, 0xdf, 0xff,
-	0x39, 0xbb, 0x2f, 0x81, 0x7c, 0x95, 0xd3, 0x13, 0xc1, 0x34, 0xf4, 0xf2, 0x34, 0x32, 0x73, 0x1e,
-	0xe4, 0x6e, 0x6b, 0xf2, 0xe5, 0x54, 0x45, 0xaa, 0xb8, 0x76, 0xaf, 0xe5, 0xf4, 0x2a, 0x81, 0x5e,
-	0x00, 0x38, 0x5e, 0x7c, 0x55, 0xb7, 0xc5, 0xf4, 0xdd, 0x7e, 0x03, 0xda, 0xda, 0x88, 0xe0, 0xf2,
-	0x1a, 0x6d, 0x36, 0x5e, 0xbf, 0xcd, 0x44, 0x09, 0xf4, 0xad, 0x04, 0xd1, 0x06, 0xa1, 0x7c, 0x90,
-	0xb8, 0xa6, 0x41, 0xa9, 0xf7, 0x95, 0x85, 0xe6, 0x12, 0x8d, 0x74, 0x43, 0x44, 0xcb, 0x67, 0x53,
-	0x20, 0x83, 0xad, 0xf8, 0x0b, 0x68, 0x6b, 0x07, 0x3b, 0x8b, 0xde, 0x41, 0x70, 0x49, 0xbe, 0x06,
-	0x72, 0x61, 0x70, 0x49, 0x58, 0xd7, 0x74, 0x9e, 0x30, 0x45, 0x79, 0x79, 0x50, 0x61, 0x7a, 0x16,
-	0xca, 0x3e, 0xdc, 0xd6, 0x66, 0x7a, 0xdf, 0x4e, 0xfe, 0xd2, 0xca, 0x77, 0x19, 0x73, 0x68, 0x5e,
-	0x55, 0x1f, 0x3c, 0x78, 0x90, 0xbc, 0xba, 0xe0, 0x16, 0xbb, 0xab, 0xd6, 0x9a, 0x76, 0xab, 0x7e,
-	0xce, 0x69, 0x62, 0x76, 0xc7, 0x76, 0xcd, 0xf9, 0x7e, 0xf0, 0xd8, 0xd1, 0x5e, 0x7e, 0x2a, 0xbd,
-	0xd4, 0xde, 0xef, 0xfb, 0x3d, 0x81, 0xce, 0xa4, 0xfc, 0x04, 0x84, 0xa7, 0x6a, 0xb6, 0xd9, 0xd7,
-	0x44, 0x96, 0x0f, 0x97, 0xfc, 0x50, 0xec, 0xa6, 0xb4, 0xee, 0xb9, 0xe3, 0x3a, 0xb8, 0x7d, 0x3d,
-	0x48, 0x6f, 0xd8, 0x4d, 0x6c, 0x35, 0x14, 0xdb, 0x6d, 0xa8, 0x0d, 0x62, 0x71, 0xef, 0x54, 0x3b,
-	0xfc, 0x76, 0xfe, 0x23, 0xe3, 0x92, 0x78, 0xfe, 0x59, 0x3a, 0x5d, 0xf4, 0x4b, 0xad, 0x78, 0x12,
-	0x29, 0xc1, 0xa4, 0x0a, 0x9f, 0xad, 0xf3, 0x29, 0x7d, 0x6b, 0x61, 0x5b, 0x00, 0xcb, 0x1c, 0x58,
-	0x0e, 0x80, 0x65, 0x0e, 0x2c, 0x0b, 0x60, 0xf9, 0xd6, 0x42, 0x75, 0x2f, 0xa7, 0x71, 0xfe, 0xbf,
-	0x00, 0x00, 0x00, 0xff, 0xff, 0xa6, 0x50, 0xe7, 0x0d, 0x4e, 0x11, 0x00, 0x00,
+	// 2013 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x59, 0x4d, 0x6c, 0x1c, 0x49,
+	0x15, 0x4e, 0xcd, 0xac, 0x2d, 0xfb, 0x8d, 0x13, 0x3b, 0xb5, 0xb1, 0xe3, 0xcc, 0xe2, 0xc4, 0xdb,
+	0x1b, 0xed, 0x7a, 0xbd, 0xf6, 0x34, 0x9e, 0xac, 0x13, 0x6b, 0xe2, 0xfc, 0xf4, 0xd8, 0x66, 0x3c,
+	0x2c, 0x89, 0x87, 0x9e, 0xc9, 0xa2, 0x8d, 0x2c, 0x8d, 0xda, 0x33, 0xe5, 0x49, 0x93, 0xe9, 0x1f,
+	0xba, 0xdb, 0xf9, 0x55, 0x2e, 0x1c, 0x58, 0x71, 0x65, 0x0f, 0x80, 0x04, 0xe2, 0x00, 0x08, 0x09,
+	0x2d, 0x12, 0x48, 0x1c, 0x16, 0xc4, 0x01, 0x09, 0x04, 0xc8, 0x12, 0x17, 0xb8, 0x59, 0x1c, 0xf6,
+	0xb0, 0xa7, 0xe5, 0xc6, 0x71, 0x0f, 0x08, 0x75, 0xfd, 0xf4, 0x74, 0xf7, 0xd8, 0x99, 0xee, 0xc4,
+	0xdc, 0x7a, 0xaa, 0xde, 0x7b, 0xf5, 0xbd, 0xaf, 0x5e, 0xbf, 0xfa, 0xba, 0x06, 0xae, 0x75, 0x2c,
+	0xab, 0xd3, 0x25, 0xb2, 0x6b, 0x6b, 0xa6, 0x49, 0x1c, 0x59, 0x6b, 0x1b, 0xba, 0x29, 0xb7, 0x35,
+	0x4f, 0xdb, 0xd1, 0x5c, 0x22, 0x3f, 0x58, 0x12, 0x33, 0x4d, 0x31, 0xd6, 0xa4, 0x26, 0x05, 0xdb,
+	0xb1, 0x3c, 0x0b, 0xcf, 0x32, 0xf7, 0x02, 0x37, 0x2a, 0xb0, 0x39, 0x61, 0x5a, 0x78, 0xb0, 0x94,
+	0xff, 0x12, 0x5f, 0x40, 0xb3, 0x75, 0x59, 0x33, 0x4d, 0xcb, 0xd3, 0x3c, 0xdd, 0x32, 0x5d, 0xe6,
+	0x9f, 0x3f, 0x1b, 0x9a, 0x6d, 0x75, 0x75, 0x62, 0x7a, 0x7c, 0xe2, 0x42, 0x68, 0x62, 0x57, 0x27,
+	0xdd, 0x76, 0x73, 0x87, 0xdc, 0xd3, 0x1e, 0xe8, 0x96, 0xc3, 0x0d, 0xce, 0x85, 0x0c, 0x1c, 0xe2,
+	0x5a, 0x7b, 0x4e, 0x8b, 0xf0, 0xa9, 0xf3, 0x7c, 0x4a, 0xd7, 0x0c, 0x3f, 0x01, 0x5d, 0x33, 0x9a,
+	0xb6, 0xd5, 0xd5, 0x5b, 0x8f, 0xf9, 0x7c, 0x3e, 0x3a, 0x1f, 0x99, 0x7b, 0x83, 0xcf, 0x75, 0x2d,
+	0xb3, 0xe3, 0xec, 0x99, 0xa6, 0x6e, 0x76, 0x64, 0xcb, 0x26, 0x4e, 0x04, 0xf5, 0x6b, 0xdc, 0x88,
+	0xfe, 0xda, 0xd9, 0xdb, 0x95, 0x89, 0x61, 0x7b, 0x8f, 0x63, 0xc8, 0x83, 0x49, 0x4f, 0x37, 0x88,
+	0xeb, 0x69, 0x86, 0xcd, 0x0d, 0x16, 0x07, 0x52, 0xbe, 0xa3, 0xb5, 0xee, 0xef, 0x25, 0x37, 0x6f,
+	0x59, 0x86, 0x61, 0xf1, 0x1d, 0x91, 0xfe, 0x84, 0x20, 0xa7, 0x12, 0xd7, 0xb3, 0x1c, 0x52, 0x35,
+	0x77, 0x2d, 0xdc, 0x80, 0x1c, 0x23, 0xa7, 0xe9, 0x3d, 0xb6, 0xc9, 0x34, 0x9a, 0x45, 0x73, 0xa7,
+	0x8a, 0x97, 0x0a, 0x83, 0xf6, 0xad, 0xc0, 0x63, 0xd4, 0xa9, 0x6f, 0xe3, 0xb1, 0x4d, 0x54, 0x70,
+	0x83, 0x67, 0xbc, 0x05, 0x39, 0x06, 0xb2, 0xa9, 0x9b, 0xbb, 0xd6, 0x74, 0x66, 0x16, 0xcd, 0xe5,
+	0x8a, 0x0b, 0x83, 0xa3, 0x96, 0xa9, 0x93, 0x0f, 0x6c, 0xf3, 0x84, 0x0a, 0x3b, 0xc1, 0xaf, 0xf2,
+	0xc9, 0x00, 0xa6, 0x1f, 0x50, 0xfa, 0x43, 0x16, 0x46, 0xd6, 0xb9, 0x1f, 0x3e, 0x0b, 0xaf, 0x98,
+	0x9a, 0xc1, 0xb0, 0x8f, 0x96, 0xb3, 0x9f, 0x2a, 0x19, 0x95, 0x0e, 0xe0, 0xf7, 0x60, 0xc8, 0xf5,
+	0x34, 0x8f, 0xd0, 0xf5, 0x4f, 0x15, 0xbf, 0x3c, 0x78, 0x7d, 0x11, 0xb3, 0x50, 0xf7, 0xfd, 0xfc,
+	0x58, 0x59, 0x95, 0xc5, 0xc0, 0x37, 0x21, 0xd7, 0x72, 0x88, 0xe6, 0x91, 0xa6, 0xbf, 0x61, 0xd3,
+	0x59, 0x9a, 0x52, 0x5e, 0x84, 0x14, 0xbb, 0x59, 0x68, 0x88, 0xdd, 0x64, 0xce, 0xc0, 0x7c, 0xfc,
+	0x51, 0x7c, 0x07, 0xc6, 0x1c, 0xc6, 0x1a, 0x63, 0xe5, 0x15, 0x1a, 0x62, 0x31, 0x31, 0xd7, 0x94,
+	0x08, 0x1a, 0x35, 0xe7, 0xf4, 0x46, 0xa4, 0x5b, 0x30, 0x44, 0xd1, 0xe2, 0x49, 0x38, 0x5d, 0x6f,
+	0x28, 0x8d, 0x8d, 0xe6, 0x9d, 0xdb, 0xf5, 0xda, 0xc6, 0x5a, 0xf5, 0x2b, 0xd5, 0x8d, 0xf5, 0x89,
+	0x13, 0x78, 0x0c, 0x46, 0xd6, 0xd4, 0x0d, 0xa5, 0x51, 0xbd, 0x5d, 0x99, 0x40, 0x78, 0x14, 0x86,
+	0xd4, 0x0d, 0x65, 0xfd, 0x83, 0x89, 0x0c, 0x3e, 0x03, 0x13, 0xf4, 0xb1, 0xb9, 0x55, 0x6b, 0x54,
+	0x6f, 0x55, 0xef, 0xfa, 0x06, 0xd9, 0xd2, 0xce, 0xe7, 0x4a, 0x13, 0x2e, 0x08, 0x30, 0x0c, 0x9b,
+	0x66, 0xeb, 0x6e, 0xa1, 0x65, 0x19, 0x72, 0xc0, 0xf9, 0xaa, 0xed, 0x58, 0xdf, 0x24, 0x2d, 0xcf,
+	0x95, 0x9f, 0xf2, 0xa7, 0x67, 0xb2, 0x6e, 0xba, 0x9e, 0x66, 0xb6, 0x88, 0x2b, 0x3f, 0x15, 0x8f,
+	0xcf, 0x82, 0x42, 0x74, 0xe5, 0xa7, 0xe2, 0xf1, 0x99, 0xf4, 0x11, 0x82, 0x33, 0x5f, 0xd3, 0x5d,
+	0x4f, 0x84, 0x73, 0x55, 0xf2, 0xad, 0x3d, 0xe2, 0x7a, 0xf8, 0x06, 0x0c, 0xdb, 0x9a, 0x43, 0x4c,
+	0x8f, 0x6f, 0xe6, 0x5b, 0x9f, 0x2a, 0x99, 0x2f, 0x94, 0xd7, 0x8f, 0xc4, 0x53, 0xe5, 0xeb, 0xa8,
+	0xdc, 0x0d, 0xbf, 0x06, 0xa3, 0xb6, 0xd6, 0x21, 0x4d, 0x57, 0x7f, 0xc2, 0xf6, 0x68, 0x48, 0x1d,
+	0xf1, 0x07, 0xea, 0xfa, 0x13, 0x82, 0x67, 0x00, 0xe8, 0xa4, 0x67, 0xdd, 0x27, 0x26, 0xa5, 0x7f,
+	0x54, 0xa5, 0xe6, 0x0d, 0x7f, 0x40, 0xfa, 0x2e, 0x82, 0xc9, 0x18, 0x2a, 0xd7, 0xb6, 0x4c, 0x97,
+	0xe0, 0x4d, 0x18, 0x0d, 0xf2, 0x98, 0x46, 0xb3, 0xd9, 0xb9, 0x5c, 0x71, 0x3e, 0x79, 0x31, 0xa9,
+	0x3d, 0x67, 0xfc, 0x26, 0x8c, 0x9b, 0xe4, 0x91, 0xd7, 0x0c, 0xe1, 0xc8, 0x50, 0x1c, 0x27, 0xfd,
+	0xe1, 0x5a, 0x80, 0xe5, 0x13, 0x04, 0x93, 0x6b, 0xb4, 0x74, 0x82, 0x28, 0xc7, 0x45, 0x51, 0x01,
+	0x26, 0x78, 0x21, 0xd3, 0xc2, 0x36, 0xfc, 0x50, 0x99, 0xde, 0xab, 0x33, 0xce, 0x26, 0xeb, 0x62,
+	0xce, 0xb7, 0x27, 0x8f, 0x3c, 0x47, 0xeb, 0x99, 0xbb, 0xd3, 0xd9, 0xd9, 0x2c, 0xb3, 0x47, 0xea,
+	0x38, 0x9d, 0x0c, 0xcc, 0x5d, 0xe9, 0x2e, 0x4c, 0x45, 0x91, 0xdf, 0x22, 0x9e, 0xe6, 0x33, 0x80,
+	0x6f, 0xc2, 0x88, 0x60, 0x82, 0x83, 0xbf, 0xf8, 0x3c, 0xe4, 0x41, 0xe6, 0x81, 0x97, 0xf4, 0x75,
+	0xc0, 0x15, 0xe2, 0xc5, 0x29, 0xb9, 0x1a, 0x69, 0x00, 0x83, 0x08, 0x09, 0xbc, 0xa9, 0x93, 0xf4,
+	0x0b, 0x04, 0xd3, 0x77, 0xec, 0x76, 0x08, 0xef, 0x7a, 0xbb, 0x2b, 0x22, 0xaf, 0xf5, 0x21, 0x4e,
+	0x1c, 0x3d, 0x70, 0xc4, 0x6f, 0x00, 0x84, 0xa8, 0xcb, 0x08, 0xea, 0x32, 0x6a, 0x68, 0x18, 0xbf,
+	0x0e, 0x63, 0xc1, 0x39, 0xd2, 0xd4, 0xdb, 0xb4, 0x76, 0x47, 0xd5, 0x5c, 0x30, 0x56, 0x6d, 0x4b,
+	0x7f, 0x41, 0x70, 0xae, 0x0f, 0xe9, 0xf1, 0x91, 0x8b, 0xcf, 0xf7, 0xe3, 0x8c, 0x40, 0xac, 0xc0,
+	0x69, 0xff, 0x28, 0xd1, 0xbd, 0x66, 0x70, 0x64, 0xb1, 0x4a, 0x78, 0x6e, 0x1f, 0x54, 0x27, 0x98,
+	0x53, 0x30, 0xe0, 0x57, 0xc8, 0xab, 0xeb, 0x8e, 0x65, 0xc7, 0xb7, 0xf1, 0x38, 0xc8, 0x96, 0xb6,
+	0x61, 0x32, 0x54, 0x21, 0xc7, 0xbc, 0x95, 0xd2, 0x0a, 0x4c, 0xc5, 0xa3, 0xf3, 0x16, 0x11, 0x25,
+	0x0f, 0xc5, 0xc9, 0x93, 0x7e, 0x8b, 0x60, 0x26, 0xdc, 0x5c, 0xb6, 0x02, 0xd1, 0x70, 0x6c, 0x2f,
+	0xf6, 0x14, 0x0c, 0xef, 0xea, 0x5d, 0x8f, 0x38, 0xbc, 0xa5, 0xf0, 0x5f, 0x2f, 0xd5, 0x13, 0x3f,
+	0x44, 0x70, 0xfe, 0x28, 0xd8, 0x3c, 0xf3, 0x6b, 0x00, 0x3d, 0x05, 0xc4, 0xbb, 0xe3, 0x8c, 0xa8,
+	0x87, 0x90, 0x4e, 0x2a, 0x04, 0xbe, 0x6a, 0xc8, 0x21, 0x71, 0x47, 0xfc, 0x2b, 0x82, 0x29, 0x7e,
+	0x10, 0x1e, 0x7b, 0x4b, 0xbc, 0x08, 0xb9, 0x40, 0xbe, 0xea, 0xed, 0x70, 0x37, 0x04, 0x31, 0x5e,
+	0x6d, 0xe3, 0x55, 0x18, 0x66, 0x8a, 0x84, 0xbd, 0x9c, 0x65, 0xe9, 0x0b, 0xe5, 0x02, 0xcc, 0x1c,
+	0xb1, 0x06, 0x53, 0x32, 0x9b, 0x27, 0x54, 0xee, 0x53, 0x1e, 0x81, 0x61, 0xa6, 0x60, 0xa4, 0xdf,
+	0x67, 0xe1, 0x6c, 0x2c, 0x93, 0xe0, 0x2d, 0xc6, 0xe1, 0x56, 0xc6, 0x65, 0x4c, 0x4c, 0xa2, 0x65,
+	0xfe, 0x2f, 0x12, 0x2d, 0xfb, 0xb2, 0x12, 0x0d, 0x6f, 0xc1, 0x88, 0xed, 0x58, 0x1d, 0x87, 0xb8,
+	0x2e, 0x97, 0x36, 0x09, 0x30, 0x06, 0x35, 0x51, 0xe3, 0xae, 0x6a, 0x10, 0x04, 0x5f, 0x85, 0x5c,
+	0xcb, 0xdf, 0xa6, 0x2e, 0x53, 0x5c, 0x43, 0x83, 0x14, 0x97, 0x0a, 0xcc, 0x9c, 0x8a, 0xad, 0x0a,
+	0xcc, 0x5a, 0xb6, 0xa7, 0x1b, 0xfa, 0x13, 0xd2, 0xfb, 0x34, 0xe9, 0x75, 0x58, 0x4a, 0xf2, 0x30,
+	0x25, 0x79, 0x46, 0xd8, 0xf5, 0xd5, 0xf8, 0x6d, 0xcd, 0x20, 0x71, 0xe5, 0xf9, 0x21, 0x82, 0xd9,
+	0x2d, 0xee, 0xc0, 0x09, 0x6e, 0x27, 0xda, 0xc5, 0x30, 0x3d, 0x99, 0x63, 0xa0, 0x67, 0x7e, 0x19,
+	0x4e, 0xf7, 0xed, 0xb0, 0xaf, 0xe9, 0x1a, 0x1f, 0xd4, 0xe2, 0x12, 0x10, 0x60, 0xb8, 0xac, 0xac,
+	0xbd, 0x77, 0xa7, 0x36, 0x81, 0x8a, 0xff, 0x39, 0x0f, 0x27, 0x05, 0x60, 0xc5, 0x5f, 0x10, 0xff,
+	0x11, 0xc1, 0xc9, 0x88, 0xee, 0xc1, 0x97, 0x07, 0x23, 0x3b, 0x4c, 0xbe, 0xe5, 0xaf, 0xa4, 0xf6,
+	0x63, 0x3d, 0x44, 0xba, 0x7e, 0xa0, 0xf0, 0x77, 0xf1, 0xdb, 0xff, 0xfc, 0xec, 0xa3, 0x8c, 0x8c,
+	0x17, 0xfd, 0x0f, 0x97, 0xa7, 0x6c, 0xe8, 0x5a, 0xa0, 0x35, 0xe7, 0x43, 0x1a, 0x73, 0x3e, 0xa4,
+	0x2d, 0xf1, 0xcf, 0x32, 0x70, 0x2a, 0x2a, 0x3a, 0x70, 0x02, 0x2c, 0x87, 0x0a, 0xac, 0xfc, 0xf3,
+	0x7b, 0x97, 0xf4, 0x3b, 0xb4, 0xaf, 0xb4, 0xe1, 0xed, 0xc4, 0xea, 0x0f, 0x5f, 0x49, 0x89, 0x43,
+	0x54, 0xd1, 0x81, 0x72, 0x96, 0xe5, 0xbf, 0x10, 0x97, 0x6b, 0x94, 0xa3, 0xa2, 0x94, 0x8e, 0xa3,
+	0x12, 0x9a, 0xc7, 0xbf, 0x42, 0x90, 0x0b, 0x9d, 0x5f, 0xf8, 0xdd, 0xc1, 0x1c, 0xf5, 0xcb, 0xad,
+	0x7c, 0x0a, 0xe9, 0x2b, 0xad, 0x1e, 0x28, 0xb4, 0xfc, 0x23, 0xdb, 0xea, 0x0f, 0x1c, 0x01, 0x38,
+	0xf4, 0xbd, 0x30, 0xff, 0x0c, 0xff, 0x38, 0x03, 0xa7, 0xfb, 0x14, 0x0f, 0x2e, 0x0d, 0x5e, 0xff,
+	0x28, 0x41, 0x37, 0x68, 0x73, 0x3f, 0x46, 0xfb, 0x4a, 0x1d, 0x26, 0xe3, 0x2d, 0x66, 0xc3, 0xff,
+	0x7e, 0xc7, 0xa5, 0xf4, 0xcb, 0xf6, 0xf6, 0xf2, 0x55, 0x61, 0xb7, 0xd0, 0x13, 0x05, 0x94, 0x94,
+	0x52, 0x71, 0x99, 0x92, 0x22, 0xe6, 0x93, 0x10, 0x23, 0xb7, 0xdb, 0x5d, 0x7f, 0x3f, 0x7f, 0x8a,
+	0x60, 0x2c, 0xac, 0xa4, 0xf0, 0x72, 0x82, 0xad, 0xe9, 0x57, 0x5e, 0xf9, 0xa9, 0xc2, 0xa1, 0x19,
+	0x4b, 0xeb, 0x07, 0x4a, 0xa0, 0x7d, 0x28, 0xd8, 0x4b, 0xf3, 0x4b, 0xa9, 0xc1, 0xe2, 0xbf, 0x23,
+	0x38, 0x15, 0x55, 0x4d, 0x49, 0x5e, 0xce, 0x43, 0x55, 0x5c, 0x7e, 0x25, 0xbd, 0x23, 0x6f, 0x31,
+	0x9b, 0xf1, 0x5c, 0xae, 0xe0, 0x17, 0x23, 0x1e, 0xff, 0x1b, 0xc1, 0x58, 0x9d, 0x78, 0x55, 0xcd,
+	0xa8, 0xd1, 0xab, 0x21, 0x2c, 0x09, 0x50, 0xba, 0x66, 0xf8, 0x08, 0xc2, 0x93, 0x02, 0xf8, 0x64,
+	0xcc, 0x86, 0xcd, 0x4a, 0x3f, 0x41, 0x07, 0xca, 0xb8, 0xb8, 0x9f, 0x5a, 0x60, 0x57, 0x4d, 0x14,
+	0xdd, 0x77, 0x90, 0x74, 0x9d, 0xc2, 0x13, 0x93, 0x49, 0xe0, 0x95, 0xdc, 0xd0, 0xca, 0x25, 0x34,
+	0x7f, 0x57, 0x91, 0x56, 0x13, 0x05, 0x61, 0xc7, 0xf8, 0x61, 0x21, 0xf0, 0x67, 0x08, 0xc6, 0x2a,
+	0xcf, 0xcb, 0xb6, 0x92, 0x3c, 0xdb, 0x1f, 0xa0, 0x03, 0x65, 0x44, 0x60, 0x79, 0x89, 0x34, 0x3b,
+	0x2f, 0x9f, 0x66, 0x2c, 0x04, 0xfe, 0x51, 0x06, 0x70, 0x83, 0xb8, 0x74, 0x90, 0x38, 0x86, 0xee,
+	0xba, 0x54, 0x9d, 0xce, 0xc5, 0x12, 0xe9, 0x37, 0x11, 0x29, 0xbf, 0x9d, 0xc0, 0x92, 0x97, 0xe2,
+	0xaf, 0xd1, 0x81, 0x72, 0xa6, 0xb7, 0xe9, 0x3d, 0x0b, 0x4a, 0xc9, 0xf7, 0x90, 0xb4, 0x9e, 0x9e,
+	0x12, 0xaf, 0x6f, 0x39, 0x9f, 0x98, 0x8a, 0x54, 0x4e, 0x4b, 0xcc, 0xa1, 0x81, 0xf0, 0x7f, 0x11,
+	0x8c, 0xb1, 0x63, 0x8a, 0xe9, 0xbf, 0x24, 0x9d, 0x26, 0x6c, 0x9f, 0xb0, 0xff, 0x7e, 0x1f, 0xed,
+	0x2b, 0x37, 0x60, 0x58, 0xac, 0x91, 0x6a, 0x89, 0xfe, 0x73, 0x93, 0x65, 0xb5, 0x20, 0x64, 0x6e,
+	0x9b, 0xd2, 0xbb, 0x2c, 0xbd, 0x93, 0xe4, 0xdc, 0xe4, 0x8c, 0x94, 0xb8, 0x7c, 0xc7, 0x3f, 0x47,
+	0x30, 0x5a, 0x21, 0x1e, 0x47, 0x56, 0x4c, 0xd4, 0x86, 0xa2, 0xa9, 0xcf, 0x25, 0xd5, 0xd6, 0x52,
+	0x29, 0x7c, 0x68, 0x2e, 0xe2, 0x77, 0x06, 0x1e, 0x9a, 0xbd, 0xed, 0xc3, 0x7f, 0x43, 0x30, 0xc6,
+	0x8e, 0xa1, 0xe4, 0x1b, 0x15, 0xb6, 0x4f, 0x8f, 0xf6, 0x1b, 0x07, 0x0a, 0xe6, 0x4c, 0xef, 0xd1,
+	0x40, 0x4d, 0x43, 0x73, 0xef, 0x53, 0xec, 0xab, 0xc5, 0x22, 0xc5, 0xce, 0x2f, 0xac, 0x93, 0xa5,
+	0x10, 0x50, 0xfe, 0x43, 0xff, 0x74, 0x23, 0x5d, 0x92, 0x26, 0x95, 0xb0, 0xfd, 0xa0, 0xd3, 0x2d,
+	0x4a, 0xf3, 0x7c, 0x2a, 0x9a, 0x3f, 0x41, 0x90, 0xf3, 0xa5, 0x2c, 0x5b, 0xc9, 0x4d, 0xa2, 0xa4,
+	0x42, 0xe6, 0x02, 0xd9, 0x72, 0x4a, 0x2f, 0xde, 0x3f, 0x56, 0xa3, 0x6a, 0x59, 0x54, 0x48, 0xb2,
+	0x8a, 0xc6, 0xbf, 0xc9, 0xc0, 0x78, 0xec, 0xf3, 0x13, 0xaf, 0x24, 0xfe, 0x9a, 0x4c, 0xa9, 0x96,
+	0xff, 0x8c, 0xf6, 0x15, 0x92, 0x46, 0x2d, 0xaf, 0xa4, 0x05, 0xd2, 0x7b, 0xed, 0xcf, 0xf1, 0xd7,
+	0x3e, 0xf4, 0x29, 0xcf, 0xdf, 0x7d, 0x26, 0xb4, 0xa4, 0xe5, 0x74, 0x82, 0x99, 0x5f, 0xb2, 0xf3,
+	0x43, 0x70, 0xea, 0xf0, 0x6b, 0x10, 0x7c, 0x23, 0xdd, 0x37, 0x4f, 0xdf, 0xbd, 0x4f, 0xfe, 0xe6,
+	0x8b, 0x07, 0xe0, 0xf5, 0x50, 0x89, 0xd6, 0xc3, 0x0a, 0xbe, 0x9c, 0x26, 0xd1, 0x50, 0x2e, 0xff,
+	0xe2, 0xf7, 0xf2, 0xac, 0xe0, 0x42, 0x13, 0xd7, 0xd2, 0x14, 0x6a, 0x7f, 0x8a, 0xd7, 0x5f, 0xd4,
+	0x9d, 0x27, 0xb8, 0x11, 0x4d, 0xf0, 0x32, 0x7e, 0x37, 0x79, 0xc1, 0xf7, 0xc2, 0xe5, 0x1f, 0xed,
+	0x2b, 0x53, 0x87, 0x5f, 0xd7, 0xfc, 0x43, 0xd9, 0xbe, 0xe7, 0x79, 0xb6, 0x5b, 0x92, 0xe5, 0x87,
+	0x0f, 0x1f, 0xc6, 0xef, 0x72, 0xb4, 0x3d, 0xef, 0x9e, 0xdc, 0xea, 0x5a, 0x7b, 0xed, 0x45, 0xbb,
+	0xab, 0x79, 0xbb, 0x96, 0x63, 0x2c, 0x0c, 0x32, 0x8f, 0x64, 0x5a, 0xfe, 0x38, 0xf3, 0xb9, 0xf2,
+	0xd5, 0x81, 0xf7, 0x51, 0xf8, 0xad, 0x84, 0xff, 0xaa, 0xc0, 0xc5, 0x96, 0x65, 0x0c, 0xe4, 0xb4,
+	0x7c, 0xae, 0xce, 0xa6, 0x22, 0x9f, 0xfb, 0x35, 0xbf, 0x09, 0xd6, 0xd0, 0xdd, 0x4d, 0xee, 0xde,
+	0xb1, 0xba, 0x9a, 0xd9, 0x29, 0x58, 0x4e, 0x47, 0xee, 0x10, 0x93, 0xb6, 0x48, 0xb9, 0x87, 0xef,
+	0xe8, 0xbf, 0x15, 0xaf, 0x8a, 0xe7, 0x5f, 0x66, 0xde, 0xac, 0xb0, 0x50, 0x6b, 0x3e, 0x45, 0x05,
+	0xbe, 0x68, 0x81, 0xae, 0xd6, 0xfb, 0x47, 0xed, 0xfd, 0xa5, 0x7d, 0x61, 0xb8, 0x4d, 0x0d, 0xb7,
+	0xb9, 0xe1, 0x36, 0x35, 0xdc, 0x16, 0x86, 0xdb, 0xef, 0x2f, 0xed, 0x0c, 0x53, 0x18, 0x97, 0xfe,
+	0x17, 0x00, 0x00, 0xff, 0xff, 0x13, 0x65, 0x7a, 0x45, 0x7e, 0x1e, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -803,31 +1441,102 @@ type DatabaseAdminClient interface {
 	// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].  The operation has no response.
 	UpdateDatabaseDdl(ctx context.Context, in *UpdateDatabaseDdlRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Drops (aka deletes) a Cloud Spanner database.
+	// Completed backups for the database will be retained according to their
+	// `expire_time`.
 	DropDatabase(ctx context.Context, in *DropDatabaseRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Returns the schema of a Cloud Spanner database as a list of formatted
 	// DDL statements. This method does not show pending schema updates, those may
 	// be queried using the [Operations][google.longrunning.Operations] API.
 	GetDatabaseDdl(ctx context.Context, in *GetDatabaseDdlRequest, opts ...grpc.CallOption) (*GetDatabaseDdlResponse, error)
-	// Sets the access control policy on a database resource.
+	// Sets the access control policy on a database or backup resource.
 	// Replaces any existing policy.
 	//
 	// Authorization requires `spanner.databases.setIamPolicy`
 	// permission on [resource][google.iam.v1.SetIamPolicyRequest.resource].
+	// For backups, authorization requires `spanner.backups.setIamPolicy`
+	// permission on [resource][google.iam.v1.SetIamPolicyRequest.resource].
 	SetIamPolicy(ctx context.Context, in *v1.SetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
-	// Gets the access control policy for a database resource.
-	// Returns an empty policy if a database exists but does
-	// not have a policy set.
+	// Gets the access control policy for a database or backup resource.
+	// Returns an empty policy if a database or backup exists but does not have a
+	// policy set.
 	//
 	// Authorization requires `spanner.databases.getIamPolicy` permission on
 	// [resource][google.iam.v1.GetIamPolicyRequest.resource].
+	// For backups, authorization requires `spanner.backups.getIamPolicy`
+	// permission on [resource][google.iam.v1.GetIamPolicyRequest.resource].
 	GetIamPolicy(ctx context.Context, in *v1.GetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
-	// Returns permissions that the caller has on the specified database resource.
+	// Returns permissions that the caller has on the specified database or backup
+	// resource.
 	//
 	// Attempting this RPC on a non-existent Cloud Spanner database will
 	// result in a NOT_FOUND error if the user has
 	// `spanner.databases.list` permission on the containing Cloud
 	// Spanner instance. Otherwise returns an empty set of permissions.
+	// Calling this method on a backup that does not exist will
+	// result in a NOT_FOUND error if the user has
+	// `spanner.backups.list` permission on the containing instance.
 	TestIamPermissions(ctx context.Context, in *v1.TestIamPermissionsRequest, opts ...grpc.CallOption) (*v1.TestIamPermissionsResponse, error)
+	// Starts creating a new Cloud Spanner Backup.
+	// The returned backup [long-running operation][google.longrunning.Operation]
+	// will have a name of the format
+	// `projects/<project>/instances/<instance>/backups/<backup>/operations/<operation_id>`
+	// and can be used to track creation of the backup. The
+	// [metadata][google.longrunning.Operation.metadata] field type is
+	// [CreateBackupMetadata][google.spanner.admin.database.v1.CreateBackupMetadata]. The
+	// [response][google.longrunning.Operation.response] field type is
+	// [Backup][google.spanner.admin.database.v1.Backup], if successful. Cancelling the returned operation will stop the
+	// creation and delete the backup.
+	// There can be only one pending backup creation per database. Backup creation
+	// of different databases can run concurrently.
+	CreateBackup(ctx context.Context, in *CreateBackupRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
+	// Gets metadata on a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
+	GetBackup(ctx context.Context, in *GetBackupRequest, opts ...grpc.CallOption) (*Backup, error)
+	// Updates a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
+	UpdateBackup(ctx context.Context, in *UpdateBackupRequest, opts ...grpc.CallOption) (*Backup, error)
+	// Deletes a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
+	DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Lists completed and pending backups.
+	// Backups returned are ordered by `create_time` in descending order,
+	// starting from the most recent `create_time`.
+	ListBackups(ctx context.Context, in *ListBackupsRequest, opts ...grpc.CallOption) (*ListBackupsResponse, error)
+	// Create a new database by restoring from a completed backup. The new
+	// database must be in the same project and in an instance with the same
+	// instance configuration as the instance containing
+	// the backup. The returned database [long-running
+	// operation][google.longrunning.Operation] has a name of the format
+	// `projects/<project>/instances/<instance>/databases/<database>/operations/<operation_id>`,
+	// and can be used to track the progress of the operation, and to cancel it.
+	// The [metadata][google.longrunning.Operation.metadata] field type is
+	// [RestoreDatabaseMetadata][google.spanner.admin.database.v1.RestoreDatabaseMetadata].
+	// The [response][google.longrunning.Operation.response] type
+	// is [Database][google.spanner.admin.database.v1.Database], if
+	// successful. Cancelling the returned operation will stop the restore and
+	// delete the database.
+	// There can be only one database being restored into an instance at a time.
+	// Once the restore operation completes, a new restore operation can be
+	// initiated, without waiting for the optimize operation associated with the
+	// first restore to complete.
+	RestoreDatabase(ctx context.Context, in *RestoreDatabaseRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
+	// Lists database [longrunning-operations][google.longrunning.Operation].
+	// A database operation has a name of the form
+	// `projects/<project>/instances/<instance>/databases/<database>/operations/<operation>`.
+	// The long-running operation
+	// [metadata][google.longrunning.Operation.metadata] field type
+	// `metadata.type_url` describes the type of the metadata. Operations returned
+	// include those that have completed/failed/canceled within the last 7 days,
+	// and pending operations.
+	ListDatabaseOperations(ctx context.Context, in *ListDatabaseOperationsRequest, opts ...grpc.CallOption) (*ListDatabaseOperationsResponse, error)
+	// Lists the backup [long-running operations][google.longrunning.Operation] in
+	// the given instance. A backup operation has a name of the form
+	// `projects/<project>/instances/<instance>/backups/<backup>/operations/<operation>`.
+	// The long-running operation
+	// [metadata][google.longrunning.Operation.metadata] field type
+	// `metadata.type_url` describes the type of the metadata. Operations returned
+	// include those that have completed/failed/canceled within the last 7 days,
+	// and pending operations. Operations returned are ordered by
+	// `operation.metadata.value.progress.start_time` in descending order starting
+	// from the most recently started operation.
+	ListBackupOperations(ctx context.Context, in *ListBackupOperationsRequest, opts ...grpc.CallOption) (*ListBackupOperationsResponse, error)
 }
 
 type databaseAdminClient struct {
@@ -919,6 +1628,78 @@ func (c *databaseAdminClient) TestIamPermissions(ctx context.Context, in *v1.Tes
 	return out, nil
 }
 
+func (c *databaseAdminClient) CreateBackup(ctx context.Context, in *CreateBackupRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
+	out := new(longrunning.Operation)
+	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/CreateBackup", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *databaseAdminClient) GetBackup(ctx context.Context, in *GetBackupRequest, opts ...grpc.CallOption) (*Backup, error) {
+	out := new(Backup)
+	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/GetBackup", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *databaseAdminClient) UpdateBackup(ctx context.Context, in *UpdateBackupRequest, opts ...grpc.CallOption) (*Backup, error) {
+	out := new(Backup)
+	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/UpdateBackup", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *databaseAdminClient) DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/DeleteBackup", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *databaseAdminClient) ListBackups(ctx context.Context, in *ListBackupsRequest, opts ...grpc.CallOption) (*ListBackupsResponse, error) {
+	out := new(ListBackupsResponse)
+	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/ListBackups", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *databaseAdminClient) RestoreDatabase(ctx context.Context, in *RestoreDatabaseRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
+	out := new(longrunning.Operation)
+	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/RestoreDatabase", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *databaseAdminClient) ListDatabaseOperations(ctx context.Context, in *ListDatabaseOperationsRequest, opts ...grpc.CallOption) (*ListDatabaseOperationsResponse, error) {
+	out := new(ListDatabaseOperationsResponse)
+	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/ListDatabaseOperations", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *databaseAdminClient) ListBackupOperations(ctx context.Context, in *ListBackupOperationsRequest, opts ...grpc.CallOption) (*ListBackupOperationsResponse, error) {
+	out := new(ListBackupOperationsResponse)
+	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/ListBackupOperations", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DatabaseAdminServer is the server API for DatabaseAdmin service.
 type DatabaseAdminServer interface {
 	// Lists Cloud Spanner databases.
@@ -943,31 +1724,102 @@ type DatabaseAdminServer interface {
 	// [UpdateDatabaseDdlMetadata][google.spanner.admin.database.v1.UpdateDatabaseDdlMetadata].  The operation has no response.
 	UpdateDatabaseDdl(context.Context, *UpdateDatabaseDdlRequest) (*longrunning.Operation, error)
 	// Drops (aka deletes) a Cloud Spanner database.
+	// Completed backups for the database will be retained according to their
+	// `expire_time`.
 	DropDatabase(context.Context, *DropDatabaseRequest) (*empty.Empty, error)
 	// Returns the schema of a Cloud Spanner database as a list of formatted
 	// DDL statements. This method does not show pending schema updates, those may
 	// be queried using the [Operations][google.longrunning.Operations] API.
 	GetDatabaseDdl(context.Context, *GetDatabaseDdlRequest) (*GetDatabaseDdlResponse, error)
-	// Sets the access control policy on a database resource.
+	// Sets the access control policy on a database or backup resource.
 	// Replaces any existing policy.
 	//
 	// Authorization requires `spanner.databases.setIamPolicy`
 	// permission on [resource][google.iam.v1.SetIamPolicyRequest.resource].
+	// For backups, authorization requires `spanner.backups.setIamPolicy`
+	// permission on [resource][google.iam.v1.SetIamPolicyRequest.resource].
 	SetIamPolicy(context.Context, *v1.SetIamPolicyRequest) (*v1.Policy, error)
-	// Gets the access control policy for a database resource.
-	// Returns an empty policy if a database exists but does
-	// not have a policy set.
+	// Gets the access control policy for a database or backup resource.
+	// Returns an empty policy if a database or backup exists but does not have a
+	// policy set.
 	//
 	// Authorization requires `spanner.databases.getIamPolicy` permission on
 	// [resource][google.iam.v1.GetIamPolicyRequest.resource].
+	// For backups, authorization requires `spanner.backups.getIamPolicy`
+	// permission on [resource][google.iam.v1.GetIamPolicyRequest.resource].
 	GetIamPolicy(context.Context, *v1.GetIamPolicyRequest) (*v1.Policy, error)
-	// Returns permissions that the caller has on the specified database resource.
+	// Returns permissions that the caller has on the specified database or backup
+	// resource.
 	//
 	// Attempting this RPC on a non-existent Cloud Spanner database will
 	// result in a NOT_FOUND error if the user has
 	// `spanner.databases.list` permission on the containing Cloud
 	// Spanner instance. Otherwise returns an empty set of permissions.
+	// Calling this method on a backup that does not exist will
+	// result in a NOT_FOUND error if the user has
+	// `spanner.backups.list` permission on the containing instance.
 	TestIamPermissions(context.Context, *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error)
+	// Starts creating a new Cloud Spanner Backup.
+	// The returned backup [long-running operation][google.longrunning.Operation]
+	// will have a name of the format
+	// `projects/<project>/instances/<instance>/backups/<backup>/operations/<operation_id>`
+	// and can be used to track creation of the backup. The
+	// [metadata][google.longrunning.Operation.metadata] field type is
+	// [CreateBackupMetadata][google.spanner.admin.database.v1.CreateBackupMetadata]. The
+	// [response][google.longrunning.Operation.response] field type is
+	// [Backup][google.spanner.admin.database.v1.Backup], if successful. Cancelling the returned operation will stop the
+	// creation and delete the backup.
+	// There can be only one pending backup creation per database. Backup creation
+	// of different databases can run concurrently.
+	CreateBackup(context.Context, *CreateBackupRequest) (*longrunning.Operation, error)
+	// Gets metadata on a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
+	GetBackup(context.Context, *GetBackupRequest) (*Backup, error)
+	// Updates a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
+	UpdateBackup(context.Context, *UpdateBackupRequest) (*Backup, error)
+	// Deletes a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
+	DeleteBackup(context.Context, *DeleteBackupRequest) (*empty.Empty, error)
+	// Lists completed and pending backups.
+	// Backups returned are ordered by `create_time` in descending order,
+	// starting from the most recent `create_time`.
+	ListBackups(context.Context, *ListBackupsRequest) (*ListBackupsResponse, error)
+	// Create a new database by restoring from a completed backup. The new
+	// database must be in the same project and in an instance with the same
+	// instance configuration as the instance containing
+	// the backup. The returned database [long-running
+	// operation][google.longrunning.Operation] has a name of the format
+	// `projects/<project>/instances/<instance>/databases/<database>/operations/<operation_id>`,
+	// and can be used to track the progress of the operation, and to cancel it.
+	// The [metadata][google.longrunning.Operation.metadata] field type is
+	// [RestoreDatabaseMetadata][google.spanner.admin.database.v1.RestoreDatabaseMetadata].
+	// The [response][google.longrunning.Operation.response] type
+	// is [Database][google.spanner.admin.database.v1.Database], if
+	// successful. Cancelling the returned operation will stop the restore and
+	// delete the database.
+	// There can be only one database being restored into an instance at a time.
+	// Once the restore operation completes, a new restore operation can be
+	// initiated, without waiting for the optimize operation associated with the
+	// first restore to complete.
+	RestoreDatabase(context.Context, *RestoreDatabaseRequest) (*longrunning.Operation, error)
+	// Lists database [longrunning-operations][google.longrunning.Operation].
+	// A database operation has a name of the form
+	// `projects/<project>/instances/<instance>/databases/<database>/operations/<operation>`.
+	// The long-running operation
+	// [metadata][google.longrunning.Operation.metadata] field type
+	// `metadata.type_url` describes the type of the metadata. Operations returned
+	// include those that have completed/failed/canceled within the last 7 days,
+	// and pending operations.
+	ListDatabaseOperations(context.Context, *ListDatabaseOperationsRequest) (*ListDatabaseOperationsResponse, error)
+	// Lists the backup [long-running operations][google.longrunning.Operation] in
+	// the given instance. A backup operation has a name of the form
+	// `projects/<project>/instances/<instance>/backups/<backup>/operations/<operation>`.
+	// The long-running operation
+	// [metadata][google.longrunning.Operation.metadata] field type
+	// `metadata.type_url` describes the type of the metadata. Operations returned
+	// include those that have completed/failed/canceled within the last 7 days,
+	// and pending operations. Operations returned are ordered by
+	// `operation.metadata.value.progress.start_time` in descending order starting
+	// from the most recently started operation.
+	ListBackupOperations(context.Context, *ListBackupOperationsRequest) (*ListBackupOperationsResponse, error)
 }
 
 // UnimplementedDatabaseAdminServer can be embedded to have forward compatible implementations.
@@ -1000,6 +1852,30 @@ func (*UnimplementedDatabaseAdminServer) GetIamPolicy(ctx context.Context, req *
 }
 func (*UnimplementedDatabaseAdminServer) TestIamPermissions(ctx context.Context, req *v1.TestIamPermissionsRequest) (*v1.TestIamPermissionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TestIamPermissions not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) CreateBackup(ctx context.Context, req *CreateBackupRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateBackup not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) GetBackup(ctx context.Context, req *GetBackupRequest) (*Backup, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBackup not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) UpdateBackup(ctx context.Context, req *UpdateBackupRequest) (*Backup, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBackup not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) DeleteBackup(ctx context.Context, req *DeleteBackupRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackup not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) ListBackups(ctx context.Context, req *ListBackupsRequest) (*ListBackupsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBackups not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) RestoreDatabase(ctx context.Context, req *RestoreDatabaseRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RestoreDatabase not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) ListDatabaseOperations(ctx context.Context, req *ListDatabaseOperationsRequest) (*ListDatabaseOperationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDatabaseOperations not implemented")
+}
+func (*UnimplementedDatabaseAdminServer) ListBackupOperations(ctx context.Context, req *ListBackupOperationsRequest) (*ListBackupOperationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBackupOperations not implemented")
 }
 
 func RegisterDatabaseAdminServer(s *grpc.Server, srv DatabaseAdminServer) {
@@ -1168,6 +2044,150 @@ func _DatabaseAdmin_TestIamPermissions_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DatabaseAdmin_CreateBackup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateBackupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseAdminServer).CreateBackup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.spanner.admin.database.v1.DatabaseAdmin/CreateBackup",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseAdminServer).CreateBackup(ctx, req.(*CreateBackupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DatabaseAdmin_GetBackup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBackupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseAdminServer).GetBackup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.spanner.admin.database.v1.DatabaseAdmin/GetBackup",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseAdminServer).GetBackup(ctx, req.(*GetBackupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DatabaseAdmin_UpdateBackup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBackupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseAdminServer).UpdateBackup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.spanner.admin.database.v1.DatabaseAdmin/UpdateBackup",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseAdminServer).UpdateBackup(ctx, req.(*UpdateBackupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DatabaseAdmin_DeleteBackup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteBackupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseAdminServer).DeleteBackup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.spanner.admin.database.v1.DatabaseAdmin/DeleteBackup",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseAdminServer).DeleteBackup(ctx, req.(*DeleteBackupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DatabaseAdmin_ListBackups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBackupsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseAdminServer).ListBackups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.spanner.admin.database.v1.DatabaseAdmin/ListBackups",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseAdminServer).ListBackups(ctx, req.(*ListBackupsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DatabaseAdmin_RestoreDatabase_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RestoreDatabaseRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseAdminServer).RestoreDatabase(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.spanner.admin.database.v1.DatabaseAdmin/RestoreDatabase",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseAdminServer).RestoreDatabase(ctx, req.(*RestoreDatabaseRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DatabaseAdmin_ListDatabaseOperations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDatabaseOperationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseAdminServer).ListDatabaseOperations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.spanner.admin.database.v1.DatabaseAdmin/ListDatabaseOperations",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseAdminServer).ListDatabaseOperations(ctx, req.(*ListDatabaseOperationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DatabaseAdmin_ListBackupOperations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBackupOperationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseAdminServer).ListBackupOperations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.spanner.admin.database.v1.DatabaseAdmin/ListBackupOperations",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseAdminServer).ListBackupOperations(ctx, req.(*ListBackupOperationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _DatabaseAdmin_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "google.spanner.admin.database.v1.DatabaseAdmin",
 	HandlerType: (*DatabaseAdminServer)(nil),
@@ -1207,6 +2227,38 @@ var _DatabaseAdmin_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TestIamPermissions",
 			Handler:    _DatabaseAdmin_TestIamPermissions_Handler,
+		},
+		{
+			MethodName: "CreateBackup",
+			Handler:    _DatabaseAdmin_CreateBackup_Handler,
+		},
+		{
+			MethodName: "GetBackup",
+			Handler:    _DatabaseAdmin_GetBackup_Handler,
+		},
+		{
+			MethodName: "UpdateBackup",
+			Handler:    _DatabaseAdmin_UpdateBackup_Handler,
+		},
+		{
+			MethodName: "DeleteBackup",
+			Handler:    _DatabaseAdmin_DeleteBackup_Handler,
+		},
+		{
+			MethodName: "ListBackups",
+			Handler:    _DatabaseAdmin_ListBackups_Handler,
+		},
+		{
+			MethodName: "RestoreDatabase",
+			Handler:    _DatabaseAdmin_RestoreDatabase_Handler,
+		},
+		{
+			MethodName: "ListDatabaseOperations",
+			Handler:    _DatabaseAdmin_ListDatabaseOperations_Handler,
+		},
+		{
+			MethodName: "ListBackupOperations",
+			Handler:    _DatabaseAdmin_ListBackupOperations_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
