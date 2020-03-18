@@ -76,7 +76,7 @@ type ReadSession struct {
 	//	*ReadSession_ArrowSchema
 	Schema isReadSession_Schema `protobuf_oneof:"schema"`
 	// Immutable. Table that this ReadSession is reading from, in the form
-	// `projects/{project_id}/datasets/{dataset_id}/tables/{table_id}
+	// `projects/{project_id}/datasets/{dataset_id}/tables/{table_id}`
 	Table string `protobuf:"bytes,6,opt,name=table,proto3" json:"table,omitempty"`
 	// Optional. Any modifiers which are applied when reading from the specified table.
 	TableModifiers *ReadSession_TableModifiers `protobuf:"bytes,7,opt,name=table_modifiers,json=tableModifiers,proto3" json:"table_modifiers,omitempty"`
