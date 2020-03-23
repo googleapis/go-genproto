@@ -436,6 +436,7 @@ type Intent struct {
 	// Optional. The collection of event names that trigger the intent.
 	// If the collection of input contexts is not empty, all of the contexts must
 	// be present in the active user session for an event to trigger this intent.
+	// Event names are limited to 150 characters.
 	Events []string `protobuf:"bytes,8,rep,name=events,proto3" json:"events,omitempty"`
 	// Optional. The collection of examples that the agent is
 	// trained on.
