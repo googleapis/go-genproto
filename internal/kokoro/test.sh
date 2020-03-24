@@ -37,10 +37,9 @@ go test -race -v ./... 2>&1 | tee $KOKORO_ARTIFACTS_DIR/sponge_log.log
 cat $KOKORO_ARTIFACTS_DIR/sponge_log.log | go-junit-report -set-exit-code > $KOKORO_ARTIFACTS_DIR/sponge_log.xml
 
 # Send logs to the Build Cop Bot for continuous builds.
-# TODO: Uncomment when this works for a PR.
-# if [[ $KOKORO_BUILD_ARTIFACTS_SUBDIR = *"continuous"* ]]; then
+if [[ $KOKORO_BUILD_ARTIFACTS_SUBDIR = *"continuous"* ]]; then
   chmod +x $KOKORO_GFILE_DIR/linux_amd64/buildcop
   $KOKORO_GFILE_DIR/linux_amd64/buildcop \
     -logs_dir=$KOKORO_ARTIFACTS_DIR \
     -repo=googleapis/go-genproto
-# fi
+fi
