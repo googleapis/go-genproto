@@ -31,10 +31,13 @@ try3 go mod download
 
 go get github.com/jstemmer/go-junit-report
 
+set +e
+
 # Run tests and tee output to log file, to be pushed to GCS as artifact.
 go test -race -v ./... 2>&1 | tee $KOKORO_ARTIFACTS_DIR/sponge_log.log
 
 cat $KOKORO_ARTIFACTS_DIR/sponge_log.log | go-junit-report -set-exit-code > $KOKORO_ARTIFACTS_DIR/sponge_log.xml
+exit_code=$?
 
 # Send logs to the Build Cop Bot for continuous builds.
 if [[ $KOKORO_BUILD_ARTIFACTS_SUBDIR = *"continuous"* ]]; then
@@ -43,3 +46,5 @@ if [[ $KOKORO_BUILD_ARTIFACTS_SUBDIR = *"continuous"* ]]; then
     -logs_dir=$KOKORO_ARTIFACTS_DIR \
     -repo=googleapis/go-genproto
 fi
+
+exit $exit_code
