@@ -29,5 +29,18 @@ try3() { eval "$*" || eval "$*" || eval "$*"; }
 try3 go mod download
 ./internal/kokoro/vet.sh
 
+go get github.com/jstemmer/go-junit-report
+
 # Run tests and tee output to log file, to be pushed to GCS as artifact.
-go test -race -v ./... 2>&1 | tee $KOKORO_ARTIFACTS_DIR/$KOKORO_GERRIT_CHANGE_NUMBER.txt
+go test -race -v ./... 2>&1 | tee $KOKORO_ARTIFACTS_DIR/sponge_log.log
+
+cat $KOKORO_ARTIFACTS_DIR/sponge_log.log | /go/bin/go-junit-report -set-exit-code > $KOKORO_ARTIFACTS_DIR/sponge_log.xml
+
+# Send logs to the Build Cop Bot for continuous builds.
+# TODO: Uncomment when this works for a PR.
+# if [[ $KOKORO_BUILD_ARTIFACTS_SUBDIR = *"continuous"* ]]; then
+  chmod +x $KOKORO_GFILE_DIR/linux_amd64/buildcop
+  $KOKORO_GFILE_DIR/linux_amd64/buildcop \
+    -logs_dir=$KOKORO_ARTIFACTS_DIR \
+    -repo=googleapis/go-genproto
+# fi
