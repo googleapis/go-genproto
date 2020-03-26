@@ -44,7 +44,7 @@ const (
 	// https://cloud.google.com/bigquery-ml/docs/bigqueryml-intro
 	EntryType_MODEL EntryType = 5
 	// Output only. An entry type which is used for streaming entries. Example:
-	// Cloud Pub/Sub topic.
+	// Pub/Sub topic.
 	EntryType_DATA_STREAM EntryType = 3
 	// An entry type which is a set of files or objects. Example:
 	// Cloud Storage fileset.
@@ -946,7 +946,7 @@ func (*LookupEntryRequest) XXX_OneofWrappers() []interface{} {
 
 // Entry Metadata.
 // A Data Catalog Entry resource represents another resource in Google
-// Cloud Platform (such as a BigQuery dataset or a Cloud Pub/Sub topic) or
+// Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic) or
 // outside of Google Cloud Platform. Clients can use the `linked_resource` field
 // in the Entry resource to refer to the original resource ID of the source
 // system.
@@ -2553,9 +2553,8 @@ type DataCatalogClient interface {
 	//   - Tag templates.
 	//   - Entries.
 	//   - Entry groups.
-	// Note, this method cannot be used to manage policies for BigQuery, Cloud
-	// Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-	// Data Catalog.
+	// Note, this method cannot be used to manage policies for BigQuery, Pub/Sub
+	// and any external Google Cloud Platform resources synced to Data Catalog.
 	//
 	// Callers must have following Google IAM permission
 	//   - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag
@@ -2571,9 +2570,8 @@ type DataCatalogClient interface {
 	//   - Tag templates.
 	//   - Entries.
 	//   - Entry groups.
-	// Note, this method cannot be used to manage policies for BigQuery, Cloud
-	// Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-	// Data Catalog.
+	// Note, this method cannot be used to manage policies for BigQuery, Pub/Sub
+	// and any external Google Cloud Platform resources synced to Data Catalog.
 	//
 	// Callers must have following Google IAM permission
 	//   - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag
@@ -2589,9 +2587,8 @@ type DataCatalogClient interface {
 	//   - Tag templates.
 	//   - Entries.
 	//   - Entry groups.
-	// Note, this method cannot be used to manage policies for BigQuery, Cloud
-	// Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-	// Data Catalog.
+	// Note, this method cannot be used to manage policies for BigQuery, Pub/Sub
+	// and any external Google Cloud Platform resources synced to Data Catalog.
 	//
 	// A caller is not required to have Google IAM permission to make this
 	// request.
@@ -2989,9 +2986,8 @@ type DataCatalogServer interface {
 	//   - Tag templates.
 	//   - Entries.
 	//   - Entry groups.
-	// Note, this method cannot be used to manage policies for BigQuery, Cloud
-	// Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-	// Data Catalog.
+	// Note, this method cannot be used to manage policies for BigQuery, Pub/Sub
+	// and any external Google Cloud Platform resources synced to Data Catalog.
 	//
 	// Callers must have following Google IAM permission
 	//   - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag
@@ -3007,9 +3003,8 @@ type DataCatalogServer interface {
 	//   - Tag templates.
 	//   - Entries.
 	//   - Entry groups.
-	// Note, this method cannot be used to manage policies for BigQuery, Cloud
-	// Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-	// Data Catalog.
+	// Note, this method cannot be used to manage policies for BigQuery, Pub/Sub
+	// and any external Google Cloud Platform resources synced to Data Catalog.
 	//
 	// Callers must have following Google IAM permission
 	//   - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag
@@ -3025,9 +3020,8 @@ type DataCatalogServer interface {
 	//   - Tag templates.
 	//   - Entries.
 	//   - Entry groups.
-	// Note, this method cannot be used to manage policies for BigQuery, Cloud
-	// Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-	// Data Catalog.
+	// Note, this method cannot be used to manage policies for BigQuery, Pub/Sub
+	// and any external Google Cloud Platform resources synced to Data Catalog.
 	//
 	// A caller is not required to have Google IAM permission to make this
 	// request.
