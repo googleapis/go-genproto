@@ -22,49 +22,50 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Third-party partner's device definition.
+// Third-party device definition.
 type Device struct {
-	// Third-party partner's device ID.
+	// Third-party device ID.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Hardware type of the device (e.g. light, outlet, etc).
+	// Hardware type of the device.
+	// See [device
+	// types](https://developers.google.com/assistant/smarthome/guides).
 	Type string `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
 	// Traits supported by the device.
+	// See [device
+	// traits](https://developers.google.com/assistant/smarthome/traits).
 	Traits []string `protobuf:"bytes,3,rep,name=traits,proto3" json:"traits,omitempty"`
-	// Name of the device given by the third party. This includes names given to
-	// the device via third party device manufacturer's app, model names for the
-	// device, etc.
+	// Names given to this device by your smart home Action.
 	Name *DeviceNames `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	// Indicates whether the state of this device is being reported to Google
-	// through ReportStateAndNotification call.
+	// Indicates whether your smart home Action will report state of this device
+	// to Google via [ReportStateAndNotification][].
 	WillReportState bool `protobuf:"varint,5,opt,name=will_report_state,json=willReportState,proto3" json:"will_report_state,omitempty"`
-	// If the third-party partner's cloud configuration includes placing devices
-	// in rooms, the name of the room can be provided here.
+	// Suggested name for the room where this device is installed.
+	// Google attempts to use this value during user setup.
 	RoomHint string `protobuf:"bytes,6,opt,name=room_hint,json=roomHint,proto3" json:"room_hint,omitempty"`
-	// As in roomHint, for structures that users set up in the partner's system.
+	// Suggested name for the structure where this device is installed.
+	// Google attempts to use this value during user setup.
 	StructureHint string `protobuf:"bytes,7,opt,name=structure_hint,json=structureHint,proto3" json:"structure_hint,omitempty"`
 	// Device manufacturer, model, hardware version, and software version.
 	DeviceInfo *DeviceInfo `protobuf:"bytes,8,opt,name=device_info,json=deviceInfo,proto3" json:"device_info,omitempty"`
 	// Attributes for the traits supported by the device.
 	Attributes *_struct.Struct `protobuf:"bytes,9,opt,name=attributes,proto3" json:"attributes,omitempty"`
-	// Custom JSON data provided by the manufacturer and attached to QUERY and
-	// EXECUTE requests in AoG.
+	// Custom device attributes stored in Home Graph and provided to your
+	// smart home Action in each
+	// [QUERY](https://developers.google.com/assistant/smarthome/reference/intent/query)
+	// and
+	// [EXECUTE](https://developers.google.com/assistant/smarthome/reference/intent/execute)
+	// intent.
 	CustomData *_struct.Struct `protobuf:"bytes,10,opt,name=custom_data,json=customData,proto3" json:"custom_data,omitempty"`
-	// IDs of other devices associated with this device. This is used to
-	// represent a device group (e.g. bonded zone) or "facets" synced
-	// through different flows (e.g. Google Nest Hub Max with a Nest Camera).
-	//
-	// This may also be used to pass in alternate IDs used to identify a cloud
-	// synced device for local execution (i.e. local verification). If used for
-	// local verification, this field is synced from the cloud.
+	// Alternate IDs associated with this device.
+	// This is used to identify cloud synced devices enabled for
+	// [local
+	// execution](https://developers.google.com/assistant/smarthome/concepts/local).
 	OtherDeviceIds []*AgentOtherDeviceId `protobuf:"bytes,11,rep,name=other_device_ids,json=otherDeviceIds,proto3" json:"other_device_ids,omitempty"`
-	// Indicates whether the device is capable of sending notifications. This
-	// field will be set by the agent (partner) on an incoming SYNC. If a device
-	// is not capable of generating notifications, the partner should set this
-	// flag to false. If a partner is not capable of calling
-	// ReportStateAndNotification to send notifications to Google, the partner
-	// should set this flag to false. If there is a user setting in the partner
-	// app to enable notifications and it is turned off, the partner should set
-	// this flag to false.
+	// Indicates whether your smart home Action will report notifications
+	// to Google for this device via [ReportStateAndNotification][].
+	//
+	// If your smart home Action enables users to control device notifications,
+	// you should update this field and call [RequestSyncDevices][].
 	NotificationSupportedByAgent bool     `protobuf:"varint,12,opt,name=notification_supported_by_agent,json=notificationSupportedByAgent,proto3" json:"notification_supported_by_agent,omitempty"`
 	XXX_NoUnkeyedLiteral         struct{} `json:"-"`
 	XXX_unrecognized             []byte   `json:"-"`
@@ -180,14 +181,14 @@ func (m *Device) GetNotificationSupportedByAgent() bool {
 	return false
 }
 
-// Different names for the device.
+// Identifiers used to describe the device.
 type DeviceNames struct {
 	// Primary name of the device, generally provided by the user.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Additional names provided by the user for the device.
 	Nicknames []string `protobuf:"bytes,2,rep,name=nicknames,proto3" json:"nicknames,omitempty"`
-	// List of names provided by the partner rather than the user, often
-	// manufacturer names, SKUs, etc.
+	// List of names provided by the manufacturer rather than the user, such as
+	// serial numbers, SKUs, etc.
 	DefaultNames         []string `protobuf:"bytes,3,rep,name=default_names,json=defaultNames,proto3" json:"default_names,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -308,11 +309,11 @@ func (m *DeviceInfo) GetSwVersion() string {
 	return ""
 }
 
-// Identifies a device in the third party or first party system.
+// Alternate third-party device ID.
 type AgentOtherDeviceId struct {
-	// The agent's ID. Generally it is the agent's AoG project id.
+	// Project ID for your smart home Action.
 	AgentId string `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
-	// Device ID defined by the agent. The device_id must be unique.
+	// Unique third-party device ID.
 	DeviceId             string   `protobuf:"bytes,2,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

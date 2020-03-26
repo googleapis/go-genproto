@@ -239,7 +239,7 @@ func (m *QuotaFailure_Violation) GetDescription() string {
 //
 // Example of an error when contacting the "pubsub.googleapis.com" API when it
 // is not enabled:
-//     { "type":   "API_DISABLED"
+//     { "reason": "API_DISABLED"
 //       "domain": "googleapis.com"
 //       "metadata": {
 //         "resource": "projects/123",
@@ -250,10 +250,10 @@ func (m *QuotaFailure_Violation) GetDescription() string {
 //
 // Example of an error that is returned when attempting to create a Spanner
 // instance in a region that is out of stock:
-//     { "type":   "STOCKOUT"
+//     { "reason": "STOCKOUT"
 //       "domain": "spanner.googleapis.com",
 //       "metadata": {
-//         "availableRegions": ""us-central1,us-east2"
+//         "availableRegions": "us-central1,us-east2"
 //       }
 //     }
 //

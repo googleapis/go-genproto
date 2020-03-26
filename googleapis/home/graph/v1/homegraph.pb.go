@@ -32,8 +32,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices)
 // call.
 type RequestSyncDevicesRequest struct {
-	// Required. Third-party user ID issued by agent's third-party identity
-	// provider.
+	// Required. Third-party user ID.
 	AgentUserId string `protobuf:"bytes,1,opt,name=agent_user_id,json=agentUserId,proto3" json:"agent_user_id,omitempty"`
 	// Optional. If set, the request will be added to a queue and a response will
 	// be returned immediately. The queue allows for de-duplication of
@@ -85,7 +84,9 @@ func (m *RequestSyncDevicesRequest) GetAsync() bool {
 
 // Response type for the
 // [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices)
-// call. Intentionally empty upon success. An HTTP response code is returned
+// call.
+//
+// Intentionally empty upon success. An HTTP response code is returned
 // with more details upon failure.
 type RequestSyncDevicesResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -120,11 +121,11 @@ var xxx_messageInfo_RequestSyncDevicesResponse proto.InternalMessageInfo
 
 // Request type for the
 // [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification)
-// call. It may include States, Notifications, or both. This request uses
-// globally unique flattened state names instead of namespaces based on traits
-// to align with the existing QUERY and EXECUTE APIs implemented by 90+ Smart
-// Home partners. States and notifications are defined per `device_id` (for example, "123"
-// and "456" in the following example). # Example
+// call. It may include states, notifications, or both. States and notifications
+// are defined per `device_id` (for example, "123" and "456" in the following
+// example).
+// # Example
+//
 // ```json
 // {
 //   "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
@@ -153,16 +154,7 @@ type ReportStateAndNotificationRequest struct {
 	AgentUserId string `protobuf:"bytes,2,opt,name=agent_user_id,json=agentUserId,proto3" json:"agent_user_id,omitempty"`
 	// Token to maintain state in the follow up notification response.
 	FollowUpToken string `protobuf:"bytes,5,opt,name=follow_up_token,json=followUpToken,proto3" json:"follow_up_token,omitempty"`
-	// Required. State of devices to update and notification metadata for devices. For
-	// example, if a user turns a light on manually, a state update should be
-	// sent so that the information is always the current status of the device.
-	// Notifications are independent from the state and its piece of the payload
-	// should contain everything necessary to notify the user. Although it may be
-	// related to a state change, it does not need to be. For example, if a
-	// device can turn on/off and change temperature, the states reported would
-	// include both "on" and "70 degrees" but the 3p may choose not to send any
-	// notification for that, or to only say that the "the room is heating up",
-	// keeping state and notification independent.
+	// Required. State of devices to update and notification metadata for devices.
 	Payload              *StateAndNotificationPayload `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
 	XXX_unrecognized     []byte                       `json:"-"`
@@ -315,9 +307,13 @@ func (m *StateAndNotificationPayload) GetDevices() *ReportStateAndNotificationDe
 
 // The states and notifications specific to a device.
 type ReportStateAndNotificationDevice struct {
-	// States of devices to update.
+	// States of devices to update. See the **Device STATES** section
+	// of the individual trait [reference
+	// guides](https://developers.google.com/assistant/smarthome/traits).
 	States *_struct.Struct `protobuf:"bytes,1,opt,name=states,proto3" json:"states,omitempty"`
-	// Notifications metadata for devices.
+	// Notifications metadata for devices. See the **Device NOTIFICATIONS**
+	// section of the individual trait [reference
+	// guides](https://developers.google.com/assistant/smarthome/traits).
 	Notifications        *_struct.Struct `protobuf:"bytes,2,opt,name=notifications,proto3" json:"notifications,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
@@ -416,17 +412,13 @@ func (m *DeleteAgentUserRequest) GetAgentUserId() string {
 }
 
 // Request type for the
-// [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should
-// be the same format as the Actions on Google `action.devices.QUERY`
-// [request](/actions/smarthome/create-app#actiondevicesquery) with the
-// exception of the extra `agent_user_id` and no `intent` and `customData`
-// fields.
+// [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.
 type QueryRequest struct {
 	// Request ID used for debugging.
 	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// Required. Third-party user ID.
 	AgentUserId string `protobuf:"bytes,2,opt,name=agent_user_id,json=agentUserId,proto3" json:"agent_user_id,omitempty"`
-	// Required. Inputs containing third-party partner's device IDs for which to
+	// Required. Inputs containing third-party device IDs for which to
 	// get the device states.
 	Inputs               []*QueryRequestInput `protobuf:"bytes,3,rep,name=inputs,proto3" json:"inputs,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
@@ -482,7 +474,7 @@ func (m *QueryRequest) GetInputs() []*QueryRequestInput {
 
 // Device ID inputs to [QueryRequest][google.home.graph.v1.QueryRequest].
 type QueryRequestInput struct {
-	// Payload containing third-party partner's device IDs.
+	// Payload containing third-party device IDs.
 	Payload              *QueryRequestPayload `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
@@ -523,7 +515,7 @@ func (m *QueryRequestInput) GetPayload() *QueryRequestPayload {
 
 // Payload containing device IDs.
 type QueryRequestPayload struct {
-	// Third-party partner's device IDs for which to get the device states.
+	// Third-party device IDs for which to get the device states.
 	Devices              []*AgentDeviceId `protobuf:"bytes,1,rep,name=devices,proto3" json:"devices,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
@@ -562,9 +554,9 @@ func (m *QueryRequestPayload) GetDevices() []*AgentDeviceId {
 	return nil
 }
 
-// Third-party partner's device ID for one device.
+// Third-party device ID for one device.
 type AgentDeviceId struct {
-	// Third-party partner's device ID.
+	// Third-party device ID.
 	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -604,9 +596,10 @@ func (m *AgentDeviceId) GetId() string {
 }
 
 // Response type for the
-// [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should
-// follow the same format as the Actions on Google `action.devices.QUERY`
-// [response](/actions/smarthome/create-app#actiondevicesquery).
+// [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.
+// This should follow the same format as the Google smart home
+// `action.devices.QUERY`
+// [response](https://developers.google.com/assistant/smarthome/reference/intent/query).
 // # Example
 //
 // ```json
@@ -723,10 +716,7 @@ func (m *QueryResponsePayload) GetDevices() map[string]*_struct.Struct {
 }
 
 // Request type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync)
-// call. This should follow the same format as the Actions on Google
-// `action.devices.SYNC`
-// [request](/actions/smarthome/create-app#actiondevicessync) with the exception
-// of the extra `agent_user_id` and no `intent` field.
+// call.
 type SyncRequest struct {
 	// Request ID used for debugging.
 	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
@@ -777,9 +767,10 @@ func (m *SyncRequest) GetAgentUserId() string {
 }
 
 // Response type for the
-// [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. This should
-// follow the same format as the Actions on Google `action.devices.SYNC`
-// [response](/actions/smarthome/create-app#actiondevicessync).
+// [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call.
+// This should follow the same format as the Google smart home
+// `action.devices.SYNC`
+// [response](https://developers.google.com/assistant/smarthome/reference/intent/sync).
 // # Example
 //
 // ```json
@@ -1018,66 +1009,59 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type HomeGraphApiServiceClient interface {
-	// Requests a `SYNC` call from Google to a 3p partner's home control agent for
-	// a user.
+	// Requests Google to send an `action.devices.SYNC`
+	// [intent](https://developers.google.com/assistant/smarthome/reference/intent/sync)
+	// to your smart home Action to update device metadata for the given user.
 	//
 	//
-	// The third-party user's identity is passed in as `agent_user_id`
-	// (see [RequestSyncDevicesRequest][google.home.graph.v1.RequestSyncDevicesRequest]) and forwarded back to the agent.
-	// The agent is identified by the API key or JWT signed by the partner's
-	// service account.
+	// The third-party user's identity is passed via the `agent_user_id`
+	// (see [RequestSyncDevicesRequest][google.home.graph.v1.RequestSyncDevicesRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	RequestSyncDevices(ctx context.Context, in *RequestSyncDevicesRequest, opts ...grpc.CallOption) (*RequestSyncDevicesResponse, error)
-	// Reports device state and optionally sends device notifications. Called by
-	// an agent when the device state of a third-party changes or the agent wants
-	// to send a notification about the device. See
-	// [Implement Report State](/actions/smarthome/report-state) for more
-	// information.
-	// This method updates a predefined set of states for a device, which all
-	// devices have according to their prescribed traits (for example, a light
-	// will have the [OnOff](/actions/smarthome/traits/onoff) trait that reports
-	// the state `on` as a boolean value).
-	// A new state may not be created and an INVALID_ARGUMENT code will be thrown
-	// if so. It also optionally takes in a list of Notifications that may be
-	// created, which are associated to this state change.
+	// Reports device state and optionally sends device notifications.
+	// Called by your smart home Action when the state of a third-party device
+	// changes or you need to send a notification about the device.
+	// See [Implement Report
+	// State](https://developers.google.com/assistant/smarthome/develop/report-state)
+	// for more information.
 	//
-	// The third-party user's identity is passed in as `agent_user_id`.
-	// The agent is identified by the JWT signed by the partner's service account.
+	// This method updates the device state according to its declared
+	// [traits](https://developers.google.com/assistant/smarthome/concepts/devices-traits).
+	// Publishing a new state value outside of these traits will result in an
+	// `INVALID_ARGUMENT` error response.
+	//
+	// The third-party user's identity is passed in via the `agent_user_id`
+	// (see [ReportStateAndNotificationRequest][google.home.graph.v1.ReportStateAndNotificationRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	ReportStateAndNotification(ctx context.Context, in *ReportStateAndNotificationRequest, opts ...grpc.CallOption) (*ReportStateAndNotificationResponse, error)
-	// Unlinks an agent user from Google. As a result, all data related to this
-	// user will be deleted.
+	// Unlinks the given third-party user from your smart home Action.
+	// All data related to this user will be deleted.
 	//
-	// Here is how the agent user is created in Google:
+	// For more details on how users link their accounts, see
+	// [fulfillment and
+	// authentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).
 	//
-	// 1.  When a user opens their Google Home App, they can begin linking a 3p
-	//     partner.
-	// 2.  User is guided through the OAuth process.
-	// 3.  After entering the 3p credentials, Google gets the 3p OAuth token and
-	//     uses it to make a Sync call to the 3p partner and gets back all of the
-	//     user's data, including `agent_user_id` and devices.
-	// 4.  Google creates the agent user and stores a mapping from the
-	//     `agent_user_id` -> Google ID mapping. Google also
-	//     stores all of the user's devices under that Google ID.
-	//
-	// The mapping from `agent_user_id` to Google ID is many to many, since one
-	// Google user can have multiple 3p accounts, and multiple Google users can
-	// map to one `agent_user_id` (e.g., a husband and wife share one Nest account
-	// username/password).
-	//
-	// The third-party user's identity is passed in as `agent_user_id`.
-	// The agent is identified by the JWT signed by the partner's service account.
-	//
-	// Note: Special characters (except "/") in `agent_user_id` must be
-	// URL-encoded.
+	// The third-party user's identity is passed in via the `agent_user_id`
+	// (see [DeleteAgentUserRequest][google.home.graph.v1.DeleteAgentUserRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	DeleteAgentUser(ctx context.Context, in *DeleteAgentUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// Gets the device states for the devices in [QueryRequest][google.home.graph.v1.QueryRequest].
-	// The third-party user's identity is passed in as `agent_user_id`. The agent
-	// is identified by the JWT signed by the third-party partner's service
-	// account.
+	// Gets the current states in Home Graph for the given set of the third-party
+	// user's devices.
+	//
+	// The third-party user's identity is passed in via the `agent_user_id`
+	// (see [QueryRequest][google.home.graph.v1.QueryRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*QueryResponse, error)
 	// Gets all the devices associated with the given third-party user.
-	// The third-party user's identity is passed in as `agent_user_id`. The agent
-	// is identified by the JWT signed by the third-party partner's service
-	// account.
+	//
+	// The third-party user's identity is passed in via the `agent_user_id`
+	// (see [SyncRequest][google.home.graph.v1.SyncRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	Sync(ctx context.Context, in *SyncRequest, opts ...grpc.CallOption) (*SyncResponse, error)
 }
 
@@ -1136,66 +1120,59 @@ func (c *homeGraphApiServiceClient) Sync(ctx context.Context, in *SyncRequest, o
 
 // HomeGraphApiServiceServer is the server API for HomeGraphApiService service.
 type HomeGraphApiServiceServer interface {
-	// Requests a `SYNC` call from Google to a 3p partner's home control agent for
-	// a user.
+	// Requests Google to send an `action.devices.SYNC`
+	// [intent](https://developers.google.com/assistant/smarthome/reference/intent/sync)
+	// to your smart home Action to update device metadata for the given user.
 	//
 	//
-	// The third-party user's identity is passed in as `agent_user_id`
-	// (see [RequestSyncDevicesRequest][google.home.graph.v1.RequestSyncDevicesRequest]) and forwarded back to the agent.
-	// The agent is identified by the API key or JWT signed by the partner's
-	// service account.
+	// The third-party user's identity is passed via the `agent_user_id`
+	// (see [RequestSyncDevicesRequest][google.home.graph.v1.RequestSyncDevicesRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	RequestSyncDevices(context.Context, *RequestSyncDevicesRequest) (*RequestSyncDevicesResponse, error)
-	// Reports device state and optionally sends device notifications. Called by
-	// an agent when the device state of a third-party changes or the agent wants
-	// to send a notification about the device. See
-	// [Implement Report State](/actions/smarthome/report-state) for more
-	// information.
-	// This method updates a predefined set of states for a device, which all
-	// devices have according to their prescribed traits (for example, a light
-	// will have the [OnOff](/actions/smarthome/traits/onoff) trait that reports
-	// the state `on` as a boolean value).
-	// A new state may not be created and an INVALID_ARGUMENT code will be thrown
-	// if so. It also optionally takes in a list of Notifications that may be
-	// created, which are associated to this state change.
+	// Reports device state and optionally sends device notifications.
+	// Called by your smart home Action when the state of a third-party device
+	// changes or you need to send a notification about the device.
+	// See [Implement Report
+	// State](https://developers.google.com/assistant/smarthome/develop/report-state)
+	// for more information.
 	//
-	// The third-party user's identity is passed in as `agent_user_id`.
-	// The agent is identified by the JWT signed by the partner's service account.
+	// This method updates the device state according to its declared
+	// [traits](https://developers.google.com/assistant/smarthome/concepts/devices-traits).
+	// Publishing a new state value outside of these traits will result in an
+	// `INVALID_ARGUMENT` error response.
+	//
+	// The third-party user's identity is passed in via the `agent_user_id`
+	// (see [ReportStateAndNotificationRequest][google.home.graph.v1.ReportStateAndNotificationRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	ReportStateAndNotification(context.Context, *ReportStateAndNotificationRequest) (*ReportStateAndNotificationResponse, error)
-	// Unlinks an agent user from Google. As a result, all data related to this
-	// user will be deleted.
+	// Unlinks the given third-party user from your smart home Action.
+	// All data related to this user will be deleted.
 	//
-	// Here is how the agent user is created in Google:
+	// For more details on how users link their accounts, see
+	// [fulfillment and
+	// authentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).
 	//
-	// 1.  When a user opens their Google Home App, they can begin linking a 3p
-	//     partner.
-	// 2.  User is guided through the OAuth process.
-	// 3.  After entering the 3p credentials, Google gets the 3p OAuth token and
-	//     uses it to make a Sync call to the 3p partner and gets back all of the
-	//     user's data, including `agent_user_id` and devices.
-	// 4.  Google creates the agent user and stores a mapping from the
-	//     `agent_user_id` -> Google ID mapping. Google also
-	//     stores all of the user's devices under that Google ID.
-	//
-	// The mapping from `agent_user_id` to Google ID is many to many, since one
-	// Google user can have multiple 3p accounts, and multiple Google users can
-	// map to one `agent_user_id` (e.g., a husband and wife share one Nest account
-	// username/password).
-	//
-	// The third-party user's identity is passed in as `agent_user_id`.
-	// The agent is identified by the JWT signed by the partner's service account.
-	//
-	// Note: Special characters (except "/") in `agent_user_id` must be
-	// URL-encoded.
+	// The third-party user's identity is passed in via the `agent_user_id`
+	// (see [DeleteAgentUserRequest][google.home.graph.v1.DeleteAgentUserRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	DeleteAgentUser(context.Context, *DeleteAgentUserRequest) (*empty.Empty, error)
-	// Gets the device states for the devices in [QueryRequest][google.home.graph.v1.QueryRequest].
-	// The third-party user's identity is passed in as `agent_user_id`. The agent
-	// is identified by the JWT signed by the third-party partner's service
-	// account.
+	// Gets the current states in Home Graph for the given set of the third-party
+	// user's devices.
+	//
+	// The third-party user's identity is passed in via the `agent_user_id`
+	// (see [QueryRequest][google.home.graph.v1.QueryRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	Query(context.Context, *QueryRequest) (*QueryResponse, error)
 	// Gets all the devices associated with the given third-party user.
-	// The third-party user's identity is passed in as `agent_user_id`. The agent
-	// is identified by the JWT signed by the third-party partner's service
-	// account.
+	//
+	// The third-party user's identity is passed in via the `agent_user_id`
+	// (see [SyncRequest][google.home.graph.v1.SyncRequest]).
+	// This request must be authorized using service account credentials from your
+	// Actions console project.
 	Sync(context.Context, *SyncRequest) (*SyncResponse, error)
 }
 
