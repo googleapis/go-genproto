@@ -237,7 +237,7 @@ func (m *UserListRuleItemGroupInfo) GetRuleItems() []*UserListRuleItemInfo {
 	return nil
 }
 
-// An atomic rule fragment.
+// An atomic rule item.
 type UserListRuleItemInfo struct {
 	// Rule variable name. It should match the corresponding key name fired
 	// by the pixel.
@@ -248,7 +248,7 @@ type UserListRuleItemInfo struct {
 	// referrer URL (name = 'ref_url__').
 	// This field must be populated when creating a new rule item.
 	Name *wrappers.StringValue `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// An atomic rule fragment.
+	// An atomic rule item.
 	//
 	// Types that are valid to be assigned to RuleItem:
 	//	*UserListRuleItemInfo_NumberRuleItem
@@ -351,7 +351,7 @@ func (*UserListRuleItemInfo) XXX_OneofWrappers() []interface{} {
 	}
 }
 
-// A rule item composed of date operation.
+// A rule item composed of a date operation.
 type UserListDateRuleItemInfo struct {
 	// Date comparison operator.
 	// This field is required and must be populated when creating new date
@@ -416,7 +416,7 @@ func (m *UserListDateRuleItemInfo) GetOffsetInDays() *wrappers.Int64Value {
 	return nil
 }
 
-// A rule item composed of number operation.
+// A rule item composed of a number operation.
 type UserListNumberRuleItemInfo struct {
 	// Number comparison operator.
 	// This field is required and must be populated when creating a new number
@@ -470,7 +470,7 @@ func (m *UserListNumberRuleItemInfo) GetValue() *wrappers.DoubleValue {
 	return nil
 }
 
-// A rule item fragment composed of date operation.
+// A rule item composed of a string operation.
 type UserListStringRuleItemInfo struct {
 	// String comparison operator.
 	// This field is required and must be populated when creating a new string
