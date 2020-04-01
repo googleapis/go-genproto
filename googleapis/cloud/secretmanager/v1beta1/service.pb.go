@@ -159,6 +159,10 @@ type CreateSecretRequest struct {
 	// [Secret][google.cloud.secrets.v1beta1.Secret], in the format `projects/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. This must be unique within the project.
+	//
+	// A secret ID is a string with a maximum length of 255 characters and can
+	// contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+	// underscore (`_`) characters.
 	SecretId string `protobuf:"bytes,2,opt,name=secret_id,json=secretId,proto3" json:"secret_id,omitempty"`
 	// A [Secret][google.cloud.secrets.v1beta1.Secret] with initial field values.
 	Secret               *Secret  `protobuf:"bytes,3,opt,name=secret,proto3" json:"secret,omitempty"`
