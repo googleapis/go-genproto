@@ -790,12 +790,11 @@ func (m *AlertPolicy_Condition_MetricAbsence) GetTrigger() *AlertPolicy_Conditio
 	return nil
 }
 
-// A condition type that allows alert policies to be defined using the
-// time series query language.
+// A condition type that allows alert policies to be defined using
+// Monitoring Query Language.
 type AlertPolicy_Condition_TimeSeriesQueryLanguageCondition struct {
-	// A query in the time series query language format that generates time
-	// series indicating points in time that the condition should be
-	// considered active.
+	// Monitoring Query Language query that generates time series data and
+	// describes a condition for alerting on that data.
 	Query string `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	// A short explanation of what the query represents. For example:
 	//
