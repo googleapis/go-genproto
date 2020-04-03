@@ -930,7 +930,7 @@ type QueryTimeSeriesRequest struct {
 	//
 	//     projects/[PROJECT_ID_OR_NUMBER]
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The query in the time series query language format. The default
+	// Required. The query in the monitoring query language format. The default
 	// time zone is in UTC.
 	Query string `protobuf:"bytes,7,opt,name=query,proto3" json:"query,omitempty"`
 	// A positive number that is the maximum number of time_series_data to return.
