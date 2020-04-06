@@ -217,9 +217,9 @@ type LogSink struct {
 	// The sink's `writer_identity`, set when the sink is created, must
 	// have permission to write to the destination or else the log
 	// entries are not exported. For more information, see
-	// [Exporting Logs with Sinks](/logging/docs/api/tasks/exporting-logs).
+	// [Exporting Logs with Sinks](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
 	Destination string `protobuf:"bytes,3,opt,name=destination,proto3" json:"destination,omitempty"`
-	// Optional. An [advanced logs filter](/logging/docs/view/advanced-queries). The only
+	// Optional. An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-queries). The only
 	// exported log entries are those that are in the resource owning the sink and
 	// that match the filter. For example:
 	//
@@ -243,7 +243,7 @@ type LogSink struct {
 	// Until you grant this identity write-access to the destination, log entry
 	// exports from this sink will fail. For more information,
 	// see [Granting Access for a
-	// Resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource).
+	// Resource](https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource).
 	// Consult the destination service's documentation to determine the
 	// appropriate IAM roles to assign to the identity.
 	WriterIdentity string `protobuf:"bytes,8,opt,name=writer_identity,json=writerIdentity,proto3" json:"writer_identity,omitempty"`
@@ -409,11 +409,11 @@ func (*LogSink) XXX_OneofWrappers() []interface{} {
 // Options that change functionality of a sink exporting data to BigQuery.
 type BigQueryOptions struct {
 	// Optional. Whether to use [BigQuery's partition
-	// tables](/bigquery/docs/partitioned-tables). By default, Logging
+	// tables](https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging
 	// creates dated tables based on the log entries' timestamps, e.g.
 	// syslog_20170523. With partitioned tables the date suffix is no longer
 	// present and [special query
-	// syntax](/bigquery/docs/querying-partitioned-tables) has to be used instead.
+	// syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead.
 	// In both cases, tables are sharded based on UTC timezone.
 	UsePartitionedTables bool `protobuf:"varint,1,opt,name=use_partitioned_tables,json=usePartitionedTables,proto3" json:"use_partitioned_tables,omitempty"`
 	// Output only. True if new timestamp column based partitioning is in use,
@@ -1126,9 +1126,9 @@ type LogExclusion struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. A description of this exclusion.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	// Required. An [advanced logs filter](/logging/docs/view/advanced-queries)
+	// Required. An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-queries)
 	// that matches the log entries to be excluded. By using the
-	// [sample function](/logging/docs/view/advanced-queries#sample),
+	// [sample function](https://cloud.google.com/logging/docs/view/advanced-queries#sample),
 	// you can exclude less than 100% of the matching log entries.
 	// For example, the following query matches 99% of low-severity log
 	// entries from Google Cloud Storage buckets:
@@ -1571,7 +1571,7 @@ func (m *DeleteExclusionRequest) GetName() string {
 // The parameters to
 // [GetCmekSettings][google.logging.v2.ConfigServiceV2.GetCmekSettings].
 //
-// See [Enabling CMEK for Logs Router](/logging/docs/routing/managed-encryption)
+// See [Enabling CMEK for Logs Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
 // for more information.
 type GetCmekSettingsRequest struct {
 	// Required. The resource for which to retrieve CMEK settings.
@@ -1627,7 +1627,7 @@ func (m *GetCmekSettingsRequest) GetName() string {
 // The parameters to
 // [UpdateCmekSettings][google.logging.v2.ConfigServiceV2.UpdateCmekSettings].
 //
-// See [Enabling CMEK for Logs Router](/logging/docs/routing/managed-encryption)
+// See [Enabling CMEK for Logs Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
 // for more information.
 type UpdateCmekSettingsRequest struct {
 	// Required. The resource name for the CMEK settings to update.
@@ -1646,7 +1646,7 @@ type UpdateCmekSettingsRequest struct {
 	// Required. The CMEK settings to update.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 	CmekSettings *CmekSettings `protobuf:"bytes,2,opt,name=cmek_settings,json=cmekSettings,proto3" json:"cmek_settings,omitempty"`
 	// Optional. Field mask identifying which fields from `cmek_settings` should
 	// be updated. A field will be overwritten if and only if it is in the update
@@ -1714,7 +1714,7 @@ func (m *UpdateCmekSettingsRequest) GetUpdateMask() *field_mask.FieldMask {
 // organizations. Once configured, it applies to all projects and folders in the
 // GCP organization.
 //
-// See [Enabling CMEK for Logs Router](/logging/docs/routing/managed-encryption)
+// See [Enabling CMEK for Logs Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
 // for more information.
 type CmekSettings struct {
 	// Output only. The resource name of the CMEK settings.
@@ -1742,7 +1742,7 @@ type CmekSettings struct {
 	// To disable CMEK for the Logs Router, set this field to an empty string.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 	KmsKeyName string `protobuf:"bytes,2,opt,name=kms_key_name,json=kmsKeyName,proto3" json:"kms_key_name,omitempty"`
 	// Output only. The service account that will be used by the Logs Router to access your
 	// Cloud KMS key.
@@ -1754,7 +1754,7 @@ type CmekSettings struct {
 	// obtain the service account ID.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 	ServiceAccountId     string   `protobuf:"bytes,3,opt,name=service_account_id,json=serviceAccountId,proto3" json:"service_account_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -2078,7 +2078,7 @@ type ConfigServiceV2Client interface {
 	// the GCP organization.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 	GetCmekSettings(ctx context.Context, in *GetCmekSettingsRequest, opts ...grpc.CallOption) (*CmekSettings, error)
 	// Updates the Logs Router CMEK settings for the given resource.
 	//
@@ -2093,7 +2093,7 @@ type ConfigServiceV2Client interface {
 	// 3) access to the key is disabled.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 	UpdateCmekSettings(ctx context.Context, in *UpdateCmekSettingsRequest, opts ...grpc.CallOption) (*CmekSettings, error)
 }
 
@@ -2295,7 +2295,7 @@ type ConfigServiceV2Server interface {
 	// the GCP organization.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 	GetCmekSettings(context.Context, *GetCmekSettingsRequest) (*CmekSettings, error)
 	// Updates the Logs Router CMEK settings for the given resource.
 	//
@@ -2310,7 +2310,7 @@ type ConfigServiceV2Server interface {
 	// 3) access to the key is disabled.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
 	UpdateCmekSettings(context.Context, *UpdateCmekSettingsRequest) (*CmekSettings, error)
 }
 

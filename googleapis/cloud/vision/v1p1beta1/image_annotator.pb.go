@@ -1425,7 +1425,7 @@ type ImageContext struct {
 	// setting a hint will help get better results (although it will be a
 	// significant hindrance if the hint is wrong). Text detection returns an
 	// error if one or more of the specified languages is not one of the
-	// [supported languages](/vision/docs/languages).
+	// [supported languages](https://cloud.google.com/vision/docs/languages).
 	LanguageHints []string `protobuf:"bytes,2,rep,name=language_hints,json=languageHints,proto3" json:"language_hints,omitempty"`
 	// Parameters for crop hints annotation request.
 	CropHintsParams *CropHintsParams `protobuf:"bytes,4,opt,name=crop_hints_params,json=cropHintsParams,proto3" json:"crop_hints_params,omitempty"`
