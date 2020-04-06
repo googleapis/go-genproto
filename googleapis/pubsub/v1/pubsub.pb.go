@@ -1227,7 +1227,7 @@ func (m *ExpirationPolicy) GetTtl() *duration.Duration {
 // Configuration for a push delivery endpoint.
 type PushConfig struct {
 	// A URL locating the endpoint to which messages should be pushed.
-	// For example, a Webhook endpoint might use "https://example.com/push".
+	// For example, a Webhook endpoint might use `https://example.com/push`.
 	PushEndpoint string `protobuf:"bytes,1,opt,name=push_endpoint,json=pushEndpoint,proto3" json:"push_endpoint,omitempty"`
 	// Endpoint configuration attributes that can be used to control different
 	// aspects of the message delivery.

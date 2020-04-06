@@ -75,10 +75,10 @@ type LogEntry struct {
 	// the fractional seconds might be omitted when the timestamp is displayed.
 	//
 	// Incoming log entries should have timestamps that are no more than the [logs
-	// retention period](/logging/quotas) in the past, and no more than 24 hours
+	// retention period](https://cloud.google.com/logging/quotas) in the past, and no more than 24 hours
 	// in the future. Log entries outside those time boundaries will not be
 	// available when calling `entries.list`, but those log entries can still be
-	// [exported with LogSinks](/logging/docs/api/tasks/exporting-logs).
+	// [exported with LogSinks](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
 	Timestamp *timestamp.Timestamp `protobuf:"bytes,9,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	// Output only. The time the log entry was received by Logging.
 	ReceiveTimestamp *timestamp.Timestamp `protobuf:"bytes,24,opt,name=receive_timestamp,json=receiveTimestamp,proto3" json:"receive_timestamp,omitempty"`

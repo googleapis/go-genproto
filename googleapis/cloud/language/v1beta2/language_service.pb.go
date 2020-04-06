@@ -1191,11 +1191,11 @@ type Document struct {
 	// The language of the document (if not specified, the language is
 	// automatically detected). Both ISO and BCP-47 language codes are
 	// accepted.<br>
-	// [Language Support](/natural-language/docs/languages)
-	// lists currently supported languages for each API method.
-	// If the language (either specified by the caller or automatically detected)
-	// is not supported by the called API method, an `INVALID_ARGUMENT` error
-	// is returned.
+	// [Language
+	// Support](https://cloud.google.com/natural-language/docs/languages) lists
+	// currently supported languages for each API method. If the language (either
+	// specified by the caller or automatically detected) is not supported by the
+	// called API method, an `INVALID_ARGUMENT` error is returned.
 	Language             string   `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1873,7 +1873,7 @@ func (m *TextSpan) GetBeginOffset() int32 {
 // Represents a category returned from the text classifier.
 type ClassificationCategory struct {
 	// The name of the category representing the document, from the [predefined
-	// taxonomy](/natural-language/docs/categories).
+	// taxonomy](https://cloud.google.com/natural-language/docs/categories).
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The classifier's confidence of the category. Number represents how certain
 	// the classifier is that this category represents the given text.
@@ -2505,7 +2505,8 @@ type AnnotateTextRequest_Features struct {
 	ExtractEntitySentiment bool `protobuf:"varint,4,opt,name=extract_entity_sentiment,json=extractEntitySentiment,proto3" json:"extract_entity_sentiment,omitempty"`
 	// Classify the full document into categories. If this is true,
 	// the API will use the default model which classifies into a
-	// [predefined taxonomy](/natural-language/docs/categories).
+	// [predefined
+	// taxonomy](https://cloud.google.com/natural-language/docs/categories).
 	ClassifyText         bool     `protobuf:"varint,6,opt,name=classify_text,json=classifyText,proto3" json:"classify_text,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
