@@ -403,7 +403,7 @@ type CreateAutoscalingPolicyRequest struct {
 	//   of the location has the following format:
 	//   `projects/{project_id}/locations/{location}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The autoscaling policy to create.
+	// Required. The autoscaling policy to create.
 	Policy               *AutoscalingPolicy `protobuf:"bytes,2,opt,name=policy,proto3" json:"policy,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
