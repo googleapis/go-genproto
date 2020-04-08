@@ -250,7 +250,7 @@ func (m *Asset_SecurityCenterProperties) GetResourceProjectDisplayName() string 
 // resource and cannot be modified by the user.
 type Asset_IamPolicy struct {
 	// The JSON representation of the Policy associated with the asset.
-	// See https://cloud.google.com/iam/reference/rest/v1p1beta1/Policy for
+	// See https://cloud.google.com/iam/reference/rest/v1/Policy for
 	// format details.
 	PolicyBlob           string   `protobuf:"bytes,1,opt,name=policy_blob,json=policyBlob,proto3" json:"policy_blob,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`

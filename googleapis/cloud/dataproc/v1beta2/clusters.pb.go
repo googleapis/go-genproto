@@ -288,7 +288,7 @@ type ClusterConfig struct {
 	// Compute Engine zone where your cluster is deployed, and then create
 	// and manage this project-level, per-location bucket (see
 	// [Dataproc staging
-	// bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+	// bucket](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
 	ConfigBucket string `protobuf:"bytes,1,opt,name=config_bucket,json=configBucket,proto3" json:"config_bucket,omitempty"`
 	// Optional. The shared Compute Engine config settings for
 	// all instances in a cluster.
@@ -713,7 +713,8 @@ type GceClusterConfig struct {
 	// communications. Cannot be specified with subnetwork_uri. If neither
 	// `network_uri` nor `subnetwork_uri` is specified, the "default" network of
 	// the project is used, if it exists. Cannot be a "Custom Subnet Network" (see
-	// [Using Subnetworks](/compute/docs/subnetworks) for more information).
+	// [Using Subnetworks](https://cloud.google.com/compute/docs/subnetworks) for
+	// more information).
 	//
 	// A full URL, partial URI, or short name are valid. Examples:
 	//
@@ -738,15 +739,15 @@ type GceClusterConfig struct {
 	// configured to be accessible without external IP addresses.
 	InternalIpOnly bool `protobuf:"varint,7,opt,name=internal_ip_only,json=internalIpOnly,proto3" json:"internal_ip_only,omitempty"`
 	// Optional. The [Dataproc service
-	// account](/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_cloud_dataproc)
+	// account](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_cloud_dataproc)
 	// (also see [VM Data Plane
-	// identity](/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity))
+	// identity](https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity))
 	// used by Dataproc cluster VM instances to access Google Cloud Platform
 	// services.
 	//
 	// If not specified, the
 	// [Compute Engine default service
-	// account](/compute/docs/access/service-accounts#default_service_account)
+	// account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account)
 	// is used.
 	ServiceAccount string `protobuf:"bytes,8,opt,name=service_account,json=serviceAccount,proto3" json:"service_account,omitempty"`
 	// Optional. The URIs of service account scopes to be included in
@@ -764,8 +765,8 @@ type GceClusterConfig struct {
 	// * https://www.googleapis.com/auth/bigtable.data
 	// * https://www.googleapis.com/auth/devstorage.full_control
 	ServiceAccountScopes []string `protobuf:"bytes,3,rep,name=service_account_scopes,json=serviceAccountScopes,proto3" json:"service_account_scopes,omitempty"`
-	// The Compute Engine tags to add to all instances (see
-	// [Tagging instances](/compute/docs/label-or-tag-resources#tags)).
+	// The Compute Engine tags to add to all instances (see [Tagging
+	// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
 	Tags []string `protobuf:"bytes,4,rep,name=tags,proto3" json:"tags,omitempty"`
 	// The Compute Engine metadata entries to add to all instances (see
 	// [Project and instance
@@ -904,7 +905,7 @@ type InstanceGroupConfig struct {
 	//
 	// **Auto Zone Exception**: If you are using the Dataproc
 	// [Auto Zone
-	// Placement](/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
+	// Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
 	// feature, you must use the short name of the machine type
 	// resource, for example, `n1-standard-2`.
 	MachineTypeUri string `protobuf:"bytes,4,opt,name=machine_type_uri,json=machineTypeUri,proto3" json:"machine_type_uri,omitempty"`
@@ -921,8 +922,8 @@ type InstanceGroupConfig struct {
 	// instances.
 	Accelerators []*AcceleratorConfig `protobuf:"bytes,8,rep,name=accelerators,proto3" json:"accelerators,omitempty"`
 	// Specifies the minimum cpu platform for the Instance Group.
-	// See [Dataproc&rarr;Minimum CPU Platform]
-	// (/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	// See [Dataproc -> Minimum CPU
+	// Platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform       string   `protobuf:"bytes,9,opt,name=min_cpu_platform,json=minCpuPlatform,proto3" json:"min_cpu_platform,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1069,12 +1070,13 @@ func (m *ManagedGroupConfig) GetInstanceGroupManagerName() string {
 }
 
 // Specifies the type and number of accelerator cards attached to the instances
-// of an instance group (see [GPUs on Compute Engine](/compute/docs/gpus/)).
+// of an instance group (see [GPUs on Compute
+// Engine](https://cloud.google.com/compute/docs/gpus/)).
 type AcceleratorConfig struct {
 	// Full URL, partial URI, or short name of the accelerator type resource to
 	// expose to this instance. See
 	// [Compute Engine
-	// AcceleratorTypes](/compute/docs/reference/beta/acceleratorTypes)
+	// AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes)
 	//
 	// Examples
 	// * `https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80`
@@ -1083,7 +1085,7 @@ type AcceleratorConfig struct {
 	//
 	// **Auto Zone Exception**: If you are using the Dataproc
 	// [Auto Zone
-	// Placement](/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
+	// Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
 	// feature, you must use the short name of the accelerator type
 	// resource, for example, `nvidia-tesla-k80`.
 	AcceleratorTypeUri string `protobuf:"bytes,1,opt,name=accelerator_type_uri,json=acceleratorTypeUri,proto3" json:"accelerator_type_uri,omitempty"`
@@ -1669,10 +1671,10 @@ func (m *ClusterStatus) GetSubstate() ClusterStatus_Substate {
 type SoftwareConfig struct {
 	// Optional. The version of software inside the cluster. It must be one of the
 	// supported [Dataproc
-	// Versions](/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions),
+	// Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions),
 	// such as "1.2" (including a subminor version, such as "1.2.29"), or the
 	// ["preview"
-	// version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
+	// version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
 	// If unspecified, it defaults to the latest Debian version.
 	ImageVersion string `protobuf:"bytes,1,opt,name=image_version,json=imageVersion,proto3" json:"image_version,omitempty"`
 	// Optional. The properties to set on daemon config files.
@@ -1691,8 +1693,8 @@ type SoftwareConfig struct {
 	// * spark:  `spark-defaults.conf`
 	// * yarn:   `yarn-site.xml`
 	//
-	// For more information, see
-	// [Cluster properties](/dataproc/docs/concepts/cluster-properties).
+	// For more information, see [Cluster
+	// properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
 	Properties map[string]string `protobuf:"bytes,2,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// The set of optional components to activate on the cluster.
 	OptionalComponents   []Component `protobuf:"varint,3,rep,packed,name=optional_components,json=optionalComponents,proto3,enum=google.cloud.dataproc.v1beta2.Component" json:"optional_components,omitempty"`
