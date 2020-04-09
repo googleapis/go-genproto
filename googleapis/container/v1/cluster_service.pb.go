@@ -494,7 +494,7 @@ func (UsableSubnetworkSecondaryRange_Status) EnumDescriptor() ([]byte, []int) {
 // Parameters that describe the nodes in a cluster.
 type NodeConfig struct {
 	// The name of a Google Compute Engine [machine
-	// type](/compute/docs/machine-types) (e.g.
+	// type](https://cloud.google.com/compute/docs/machine-types) (e.g.
 	// `n1-standard-1`).
 	//
 	// If unspecified, the default machine type is
@@ -515,7 +515,7 @@ type NodeConfig struct {
 	// persistent storage on your nodes.
 	// * `https://www.googleapis.com/auth/devstorage.read_only` is required for
 	// communicating with **gcr.io**
-	// (the [Google Container Registry](/container-registry/)).
+	// (the [Google Container Registry](https://cloud.google.com/container-registry/)).
 	//
 	// If unspecified, no scopes are added, unless Cloud Logging or Cloud
 	// Monitoring are enabled, in which case their required scopes will be added.
@@ -1955,7 +1955,7 @@ type Cluster struct {
 	// * if left as an empty string, `monitoring.googleapis.com` will be used.
 	MonitoringService string `protobuf:"bytes,7,opt,name=monitoring_service,json=monitoringService,proto3" json:"monitoring_service,omitempty"`
 	// The name of the Google Compute Engine
-	// [network](/compute/docs/networks-and-firewalls#networks) to which the
+	// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the
 	// cluster is connected. If left unspecified, the `default` network
 	// will be used.
 	Network string `protobuf:"bytes,8,opt,name=network,proto3" json:"network,omitempty"`
@@ -1967,7 +1967,7 @@ type Cluster struct {
 	// Configurations for the various addons available to run in the cluster.
 	AddonsConfig *AddonsConfig `protobuf:"bytes,10,opt,name=addons_config,json=addonsConfig,proto3" json:"addons_config,omitempty"`
 	// The name of the Google Compute Engine
-	// [subnetwork](/compute/docs/subnetworks) to which the
+	// [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the
 	// cluster is connected.
 	Subnetwork string `protobuf:"bytes,11,opt,name=subnetwork,proto3" json:"subnetwork,omitempty"`
 	// The node pools associated with this cluster.
@@ -1975,7 +1975,7 @@ type Cluster struct {
 	// specified.
 	NodePools []*NodePool `protobuf:"bytes,12,rep,name=node_pools,json=nodePools,proto3" json:"node_pools,omitempty"`
 	// The list of Google Compute Engine
-	// [zones](/compute/docs/zones#available) in which the cluster's nodes
+	// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes
 	// should be located.
 	Locations []string `protobuf:"bytes,13,rep,name=locations,proto3" json:"locations,omitempty"`
 	// Kubernetes alpha features are enabled on this cluster. This includes alpha
@@ -2024,7 +2024,7 @@ type Cluster struct {
 	// [Output only] Server-defined URL for the resource.
 	SelfLink string `protobuf:"bytes,100,opt,name=self_link,json=selfLink,proto3" json:"self_link,omitempty"`
 	// [Output only] The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field is deprecated, use location instead.
 	Zone string `protobuf:"bytes,101,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -2052,7 +2052,7 @@ type Cluster struct {
 	// [Output only] The current software version of the master endpoint.
 	CurrentMasterVersion string `protobuf:"bytes,104,opt,name=current_master_version,json=currentMasterVersion,proto3" json:"current_master_version,omitempty"`
 	// [Output only] Deprecated, use
-	// [NodePools.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools)
+	// [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools)
 	// instead. The current version of the node software components. If they are
 	// currently at multiple versions because they're in the process of being
 	// upgraded, this reflects the minimum version of all nodes.
@@ -2085,8 +2085,8 @@ type Cluster struct {
 	// deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	ExpireTime string `protobuf:"bytes,113,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 	// [Output only] The name of the Google Compute Engine
-	// [zone](/compute/docs/regions-zones/regions-zones#available) or
-	// [region](/compute/docs/regions-zones/regions-zones#available) in which
+	// [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or
+	// [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
 	// the cluster resides.
 	Location string `protobuf:"bytes,114,opt,name=location,proto3" json:"location,omitempty"`
 	// Enable the ability to use Cloud TPUs in this cluster.
@@ -2511,7 +2511,7 @@ type ClusterUpdate struct {
 	// the change applies to that single node pool.
 	DesiredNodePoolAutoscaling *NodePoolAutoscaling `protobuf:"bytes,9,opt,name=desired_node_pool_autoscaling,json=desiredNodePoolAutoscaling,proto3" json:"desired_node_pool_autoscaling,omitempty"`
 	// The desired list of Google Compute Engine
-	// [zones](/compute/docs/zones#available) in which the cluster's nodes
+	// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes
 	// should be located. Changing the locations a cluster is in will result
 	// in nodes being either created or removed from the cluster, depending on
 	// whether locations are being added or removed.
@@ -2697,7 +2697,7 @@ type Operation struct {
 	// The server-assigned ID for the operation.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the operation
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the operation
 	// is taking place.
 	// This field is deprecated, use location instead.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -2714,8 +2714,8 @@ type Operation struct {
 	// Server-defined URL for the target of the operation.
 	TargetLink string `protobuf:"bytes,7,opt,name=target_link,json=targetLink,proto3" json:"target_link,omitempty"`
 	// [Output only] The name of the Google Compute Engine
-	// [zone](/compute/docs/regions-zones/regions-zones#available) or
-	// [region](/compute/docs/regions-zones/regions-zones#available) in which
+	// [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or
+	// [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which
 	// the cluster resides.
 	Location string `protobuf:"bytes,9,opt,name=location,proto3" json:"location,omitempty"`
 	// [Output only] The time the operation started, in
@@ -2857,12 +2857,12 @@ type CreateClusterRequest struct {
 	// This field has been deprecated and replaced by the parent field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the parent field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
 	// Required. A [cluster
-	// resource](/container-engine/reference/rest/v1/projects.zones.clusters)
+	// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters)
 	Cluster *Cluster `protobuf:"bytes,3,opt,name=cluster,proto3" json:"cluster,omitempty"`
 	// The parent (project and location) where the cluster will be created.
 	// Specified in the format 'projects/*/locations/*'.
@@ -2934,7 +2934,7 @@ type GetClusterRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3012,7 +3012,7 @@ type UpdateClusterRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3099,7 +3099,7 @@ type UpdateNodePoolRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3217,7 +3217,7 @@ type SetNodePoolAutoscalingRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3316,7 +3316,7 @@ type SetLoggingServiceRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3407,7 +3407,7 @@ type SetMonitoringServiceRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3500,7 +3500,7 @@ type SetAddonsConfigRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3588,7 +3588,7 @@ type SetLocationsRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3596,7 +3596,7 @@ type SetLocationsRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ClusterId string `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"` // Deprecated: Do not use.
 	// Required. The desired list of Google Compute Engine
-	// [zones](/compute/docs/zones#available) in which the cluster's nodes
+	// [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes
 	// should be located. Changing the locations a cluster is in will result
 	// in nodes being either created or removed from the cluster, depending on
 	// whether locations are being added or removed.
@@ -3681,7 +3681,7 @@ type UpdateMasterRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3777,7 +3777,7 @@ type SetMasterAuthRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3873,7 +3873,7 @@ type DeleteClusterRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -3951,7 +3951,7 @@ type ListClustersRequest struct {
 	// This field has been deprecated and replaced by the parent field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides, or "-" for all zones.
 	// This field has been deprecated and replaced by the parent field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -4071,7 +4071,7 @@ type GetOperationRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -4149,7 +4149,7 @@ type ListOperationsRequest struct {
 	// This field has been deprecated and replaced by the parent field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) to return operations for, or `-` for
+	// [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for, or `-` for
 	// all zones. This field has been deprecated and replaced by the parent field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
 	// The parent (project and location) where the operations will be listed.
@@ -4216,7 +4216,7 @@ type CancelOperationRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the operation resides.
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the operation resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The server-assigned `name` of the operation.
@@ -4344,7 +4344,7 @@ type GetServerConfigRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) to return operations for.
+	// [zone](https://cloud.google.com/compute/docs/zones#available) to return operations for.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
 	// The name (project and location) of the server config to get,
@@ -4487,7 +4487,7 @@ type CreateNodePoolRequest struct {
 	// This field has been deprecated and replaced by the parent field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the parent field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -4575,7 +4575,7 @@ type DeleteNodePoolRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -4665,7 +4665,7 @@ type ListNodePoolsRequest struct {
 	// This field has been deprecated and replaced by the parent field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the parent field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -4743,7 +4743,7 @@ type GetNodePoolRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -4847,7 +4847,7 @@ type NodePool struct {
 	// The version of the Kubernetes of this node.
 	Version string `protobuf:"bytes,101,opt,name=version,proto3" json:"version,omitempty"`
 	// [Output only] The resource URLs of the [managed instance
-	// groups](/compute/docs/instance-groups/creating-groups-of-managed-instances)
+	// groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
 	// associated with this node pool.
 	InstanceGroupUrls []string `protobuf:"bytes,102,rep,name=instance_group_urls,json=instanceGroupUrls,proto3" json:"instance_group_urls,omitempty"`
 	// [Output only] The status of the nodes in this pool instance.
@@ -5442,7 +5442,7 @@ type SetNodePoolManagementRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -5542,7 +5542,7 @@ type SetNodePoolSizeRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -5643,7 +5643,7 @@ type RollbackNodePoolUpgradeRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -5780,7 +5780,7 @@ type ClusterAutoscaling struct {
 	// AutoprovisioningNodePoolDefaults contains defaults for a node pool
 	// created by NAP.
 	AutoprovisioningNodePoolDefaults *AutoprovisioningNodePoolDefaults `protobuf:"bytes,4,opt,name=autoprovisioning_node_pool_defaults,json=autoprovisioningNodePoolDefaults,proto3" json:"autoprovisioning_node_pool_defaults,omitempty"`
-	// The list of Google Compute Engine [zones](/compute/docs/zones#available)
+	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available)
 	// in which the NodePool's nodes can be created by NAP.
 	AutoprovisioningLocations []string `protobuf:"bytes,5,rep,name=autoprovisioning_locations,json=autoprovisioningLocations,proto3" json:"autoprovisioning_locations,omitempty"`
 	XXX_NoUnkeyedLiteral      struct{} `json:"-"`
@@ -6034,7 +6034,7 @@ type SetLabelsRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -6136,7 +6136,7 @@ type SetLegacyAbacRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -6224,7 +6224,7 @@ type StartIPRotationRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -6311,7 +6311,7 @@ type CompleteIPRotationRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -6387,7 +6387,7 @@ type AcceleratorConfig struct {
 	// The number of the accelerator cards exposed to an instance.
 	AcceleratorCount int64 `protobuf:"varint,1,opt,name=accelerator_count,json=acceleratorCount,proto3" json:"accelerator_count,omitempty"`
 	// The accelerator type resource name. List of supported accelerators
-	// [here](/compute/docs/gpus)
+	// [here](https://cloud.google.com/compute/docs/gpus)
 	AcceleratorType      string   `protobuf:"bytes,2,opt,name=accelerator_type,json=acceleratorType,proto3" json:"accelerator_type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -6440,7 +6440,7 @@ type SetNetworkPolicyRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"` // Deprecated: Do not use.
 	// Deprecated. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
@@ -6526,7 +6526,7 @@ type SetMaintenancePolicyRequest struct {
 	// number](https://support.google.com/cloud/answer/6158840).
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// Required. The name of the Google Compute Engine
-	// [zone](/compute/docs/zones#available) in which the cluster
+	// [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster
 	// resides.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"`
 	// Required. The name of the cluster to update.
@@ -6657,12 +6657,12 @@ func (m *StatusCondition) GetMessage() string {
 // NetworkConfig reports the relative names of network & subnetwork.
 type NetworkConfig struct {
 	// Output only. The relative name of the Google Compute Engine
-	// [network][google.container.v1.NetworkConfig.network](/compute/docs/networks-and-firewalls#networks) to which
+	// [network][google.container.v1.NetworkConfig.network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which
 	// the cluster is connected.
 	// Example: projects/my-project/global/networks/my-network
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	// Output only. The relative name of the Google Compute Engine
-	// [subnetwork](/compute/docs/vpc) to which the cluster is connected.
+	// [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected.
 	// Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
 	Subnetwork string `protobuf:"bytes,2,opt,name=subnetwork,proto3" json:"subnetwork,omitempty"`
 	// Whether Intra-node visibility is enabled for this cluster.
@@ -7917,7 +7917,7 @@ type ClusterManagerClient interface {
 	// Compute Engine instances.
 	//
 	// By default, the cluster is created in the project's
-	// [default network](/compute/docs/networks-and-firewalls#networks).
+	// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
 	//
 	// One firewall is added for the cluster. After cluster creation,
 	// the Kubelet creates routes for each node to allow the containers
@@ -8294,7 +8294,7 @@ type ClusterManagerServer interface {
 	// Compute Engine instances.
 	//
 	// By default, the cluster is created in the project's
-	// [default network](/compute/docs/networks-and-firewalls#networks).
+	// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
 	//
 	// One firewall is added for the cluster. After cluster creation,
 	// the Kubelet creates routes for each node to allow the containers
