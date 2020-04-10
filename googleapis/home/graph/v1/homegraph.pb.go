@@ -35,8 +35,8 @@ type RequestSyncDevicesRequest struct {
 	// Required. Third-party user ID.
 	AgentUserId string `protobuf:"bytes,1,opt,name=agent_user_id,json=agentUserId,proto3" json:"agent_user_id,omitempty"`
 	// Optional. If set, the request will be added to a queue and a response will
-	// be returned immediately. The queue allows for de-duplication of
-	// simultaneous requests.
+	// be returned immediately. This enables concurrent requests for the given
+	// `agent_user_id`, but the caller will not receive any error responses.
 	Async                bool     `protobuf:"varint,2,opt,name=async,proto3" json:"async,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`

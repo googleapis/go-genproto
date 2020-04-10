@@ -365,12 +365,7 @@ func (m *CreateSessionEntityTypeRequest) GetSessionEntityType() *SessionEntityTy
 
 // The request message for [SessionEntityTypes.UpdateSessionEntityType][google.cloud.dialogflow.v2beta1.SessionEntityTypes.UpdateSessionEntityType].
 type UpdateSessionEntityTypeRequest struct {
-	// Required. The entity type to update. Format:
-	// `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
-	// Display Name>` or `projects/<Project ID>/agent/environments/<Environment
-	// ID>/users/<User ID>/sessions/<Session ID>/entityTypes/<Entity Type Display
-	// Name>`. If `Environment ID` is not specified, we assume default 'draft'
-	// environment. If `User ID` is not specified, we assume default '-' user.
+	// Required. The session entity type to update.
 	SessionEntityType *SessionEntityType `protobuf:"bytes,1,opt,name=session_entity_type,json=sessionEntityType,proto3" json:"session_entity_type,omitempty"`
 	// Optional. The mask to control which fields get updated.
 	UpdateMask           *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`

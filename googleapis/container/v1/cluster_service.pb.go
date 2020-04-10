@@ -2865,7 +2865,7 @@ type CreateClusterRequest struct {
 	// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters)
 	Cluster *Cluster `protobuf:"bytes,3,opt,name=cluster,proto3" json:"cluster,omitempty"`
 	// The parent (project and location) where the cluster will be created.
-	// Specified in the format 'projects/*/locations/*'.
+	// Specified in the format `projects/*/locations/*`.
 	Parent               string   `protobuf:"bytes,5,opt,name=parent,proto3" json:"parent,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -2942,7 +2942,7 @@ type GetClusterRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ClusterId string `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"` // Deprecated: Do not use.
 	// The name (project, location, cluster) of the cluster to retrieve.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3022,7 +3022,7 @@ type UpdateClusterRequest struct {
 	// Required. A description of the update.
 	Update *ClusterUpdate `protobuf:"bytes,4,opt,name=update,proto3" json:"update,omitempty"`
 	// The name (project, location, cluster) of the cluster to update.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3125,7 +3125,7 @@ type UpdateNodePoolRequest struct {
 	ImageType string `protobuf:"bytes,6,opt,name=image_type,json=imageType,proto3" json:"image_type,omitempty"`
 	// The name (project, location, cluster, node pool) of the node pool to
 	// update. Specified in the format
-	// 'projects/*/locations/*/clusters/*/nodePools/*'.
+	// `projects/*/locations/*/clusters/*/nodePools/*`.
 	Name                 string   `protobuf:"bytes,8,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3231,7 +3231,7 @@ type SetNodePoolAutoscalingRequest struct {
 	Autoscaling *NodePoolAutoscaling `protobuf:"bytes,5,opt,name=autoscaling,proto3" json:"autoscaling,omitempty"`
 	// The name (project, location, cluster, node pool) of the node pool to set
 	// autoscaler settings. Specified in the format
-	// 'projects/*/locations/*/clusters/*/nodePools/*'.
+	// `projects/*/locations/*/clusters/*/nodePools/*`.
 	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3330,7 +3330,7 @@ type SetLoggingServiceRequest struct {
 	// * "none" - no metrics will be exported from the cluster
 	LoggingService string `protobuf:"bytes,4,opt,name=logging_service,json=loggingService,proto3" json:"logging_service,omitempty"`
 	// The name (project, location, cluster) of the cluster to set logging.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3423,7 +3423,7 @@ type SetMonitoringServiceRequest struct {
 	// * "none" - no metrics will be exported from the cluster
 	MonitoringService string `protobuf:"bytes,4,opt,name=monitoring_service,json=monitoringService,proto3" json:"monitoring_service,omitempty"`
 	// The name (project, location, cluster) of the cluster to set monitoring.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3511,7 +3511,7 @@ type SetAddonsConfigRequest struct {
 	// cluster.
 	AddonsConfig *AddonsConfig `protobuf:"bytes,4,opt,name=addons_config,json=addonsConfig,proto3" json:"addons_config,omitempty"`
 	// The name (project, location, cluster) of the cluster to set addons.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3604,7 +3604,7 @@ type SetLocationsRequest struct {
 	// This list must always include the cluster's primary zone.
 	Locations []string `protobuf:"bytes,4,rep,name=locations,proto3" json:"locations,omitempty"`
 	// The name (project, location, cluster) of the cluster to set locations.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3700,7 +3700,7 @@ type UpdateMasterRequest struct {
 	// - "-": picks the default Kubernetes version
 	MasterVersion string `protobuf:"bytes,4,opt,name=master_version,json=masterVersion,proto3" json:"master_version,omitempty"`
 	// The name (project, location, cluster) of the cluster to update.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3789,7 +3789,7 @@ type SetMasterAuthRequest struct {
 	// Required. A description of the update.
 	Update *MasterAuth `protobuf:"bytes,5,opt,name=update,proto3" json:"update,omitempty"`
 	// The name (project, location, cluster) of the cluster to set auth.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3881,7 +3881,7 @@ type DeleteClusterRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ClusterId string `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"` // Deprecated: Do not use.
 	// The name (project, location, cluster) of the cluster to delete.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -3956,7 +3956,7 @@ type ListClustersRequest struct {
 	// This field has been deprecated and replaced by the parent field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
 	// The parent (project and location) where the clusters will be listed.
-	// Specified in the format 'projects/*/locations/*'.
+	// Specified in the format `projects/*/locations/*`.
 	// Location "-" matches all zones and all regions.
 	Parent               string   `protobuf:"bytes,4,opt,name=parent,proto3" json:"parent,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -4079,7 +4079,7 @@ type GetOperationRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	OperationId string `protobuf:"bytes,3,opt,name=operation_id,json=operationId,proto3" json:"operation_id,omitempty"` // Deprecated: Do not use.
 	// The name (project, location, operation id) of the operation to get.
-	// Specified in the format 'projects/*/locations/*/operations/*'.
+	// Specified in the format `projects/*/locations/*/operations/*`.
 	Name                 string   `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -4153,7 +4153,7 @@ type ListOperationsRequest struct {
 	// all zones. This field has been deprecated and replaced by the parent field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
 	// The parent (project and location) where the operations will be listed.
-	// Specified in the format 'projects/*/locations/*'.
+	// Specified in the format `projects/*/locations/*`.
 	// Location "-" matches all zones and all regions.
 	Parent               string   `protobuf:"bytes,4,opt,name=parent,proto3" json:"parent,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -4223,7 +4223,7 @@ type CancelOperationRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	OperationId string `protobuf:"bytes,3,opt,name=operation_id,json=operationId,proto3" json:"operation_id,omitempty"` // Deprecated: Do not use.
 	// The name (project, location, operation id) of the operation to cancel.
-	// Specified in the format 'projects/*/locations/*/operations/*'.
+	// Specified in the format `projects/*/locations/*/operations/*`.
 	Name                 string   `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -4348,7 +4348,7 @@ type GetServerConfigRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	Zone string `protobuf:"bytes,2,opt,name=zone,proto3" json:"zone,omitempty"` // Deprecated: Do not use.
 	// The name (project and location) of the server config to get,
-	// specified in the format 'projects/*/locations/*'.
+	// specified in the format `projects/*/locations/*`.
 	Name                 string   `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -4498,7 +4498,7 @@ type CreateNodePoolRequest struct {
 	NodePool *NodePool `protobuf:"bytes,4,opt,name=node_pool,json=nodePool,proto3" json:"node_pool,omitempty"`
 	// The parent (project, location, cluster id) where the node pool will be
 	// created. Specified in the format
-	// 'projects/*/locations/*/clusters/*'.
+	// `projects/*/locations/*/clusters/*`.
 	Parent               string   `protobuf:"bytes,6,opt,name=parent,proto3" json:"parent,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -4587,7 +4587,7 @@ type DeleteNodePoolRequest struct {
 	NodePoolId string `protobuf:"bytes,4,opt,name=node_pool_id,json=nodePoolId,proto3" json:"node_pool_id,omitempty"` // Deprecated: Do not use.
 	// The name (project, location, cluster, node pool id) of the node pool to
 	// delete. Specified in the format
-	// 'projects/*/locations/*/clusters/*/nodePools/*'.
+	// `projects/*/locations/*/clusters/*/nodePools/*`.
 	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -4673,7 +4673,7 @@ type ListNodePoolsRequest struct {
 	// This field has been deprecated and replaced by the parent field.
 	ClusterId string `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"` // Deprecated: Do not use.
 	// The parent (project, location, cluster id) where the node pools will be
-	// listed. Specified in the format 'projects/*/locations/*/clusters/*'.
+	// listed. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent               string   `protobuf:"bytes,5,opt,name=parent,proto3" json:"parent,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -4755,7 +4755,7 @@ type GetNodePoolRequest struct {
 	NodePoolId string `protobuf:"bytes,4,opt,name=node_pool_id,json=nodePoolId,proto3" json:"node_pool_id,omitempty"` // Deprecated: Do not use.
 	// The name (project, location, cluster, node pool id) of the node pool to
 	// get. Specified in the format
-	// 'projects/*/locations/*/clusters/*/nodePools/*'.
+	// `projects/*/locations/*/clusters/*/nodePools/*`.
 	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -5456,7 +5456,7 @@ type SetNodePoolManagementRequest struct {
 	Management *NodeManagement `protobuf:"bytes,5,opt,name=management,proto3" json:"management,omitempty"`
 	// The name (project, location, cluster, node pool id) of the node pool to set
 	// management properties. Specified in the format
-	// 'projects/*/locations/*/clusters/*/nodePools/*'.
+	// `projects/*/locations/*/clusters/*/nodePools/*`.
 	Name                 string   `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -5556,7 +5556,7 @@ type SetNodePoolSizeRequest struct {
 	NodeCount int32 `protobuf:"varint,5,opt,name=node_count,json=nodeCount,proto3" json:"node_count,omitempty"`
 	// The name (project, location, cluster, node pool id) of the node pool to set
 	// size.
-	// Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
 	Name                 string   `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -5655,7 +5655,7 @@ type RollbackNodePoolUpgradeRequest struct {
 	NodePoolId string `protobuf:"bytes,4,opt,name=node_pool_id,json=nodePoolId,proto3" json:"node_pool_id,omitempty"` // Deprecated: Do not use.
 	// The name (project, location, cluster, node pool id) of the node poll to
 	// rollback upgrade.
-	// Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
 	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -6051,7 +6051,7 @@ type SetLabelsRequest struct {
 	// resource to get the latest fingerprint.
 	LabelFingerprint string `protobuf:"bytes,5,opt,name=label_fingerprint,json=labelFingerprint,proto3" json:"label_fingerprint,omitempty"`
 	// The name (project, location, cluster id) of the cluster to set labels.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -6146,7 +6146,7 @@ type SetLegacyAbacRequest struct {
 	// Required. Whether ABAC authorization will be enabled in the cluster.
 	Enabled bool `protobuf:"varint,4,opt,name=enabled,proto3" json:"enabled,omitempty"`
 	// The name (project, location, cluster id) of the cluster to set legacy abac.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -6232,7 +6232,7 @@ type StartIPRotationRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ClusterId string `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"` // Deprecated: Do not use.
 	// The name (project, location, cluster id) of the cluster to start IP
-	// rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
+	// rotation. Specified in the format `projects/*/locations/*/clusters/*`.
 	Name string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	// Whether to rotate credentials during IP rotation.
 	RotateCredentials    bool     `protobuf:"varint,7,opt,name=rotate_credentials,json=rotateCredentials,proto3" json:"rotate_credentials,omitempty"`
@@ -6319,7 +6319,7 @@ type CompleteIPRotationRequest struct {
 	// This field has been deprecated and replaced by the name field.
 	ClusterId string `protobuf:"bytes,3,opt,name=cluster_id,json=clusterId,proto3" json:"cluster_id,omitempty"` // Deprecated: Do not use.
 	// The name (project, location, cluster id) of the cluster to complete IP
-	// rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
+	// rotation. Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -6450,7 +6450,7 @@ type SetNetworkPolicyRequest struct {
 	// Required. Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicy `protobuf:"bytes,4,opt,name=network_policy,json=networkPolicy,proto3" json:"network_policy,omitempty"`
 	// The name (project, location, cluster id) of the cluster to set networking
-	// policy. Specified in the format 'projects/*/locations/*/clusters/*'.
+	// policy. Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -6536,7 +6536,7 @@ type SetMaintenancePolicyRequest struct {
 	MaintenancePolicy *MaintenancePolicy `protobuf:"bytes,4,opt,name=maintenance_policy,json=maintenancePolicy,proto3" json:"maintenance_policy,omitempty"`
 	// The name (project, location, cluster id) of the cluster to set maintenance
 	// policy.
-	// Specified in the format 'projects/*/locations/*/clusters/*'.
+	// Specified in the format `projects/*/locations/*/clusters/*`.
 	Name                 string   `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -6857,7 +6857,7 @@ func (m *DatabaseEncryption) GetKeyName() string {
 // available to a user for creating clusters.
 type ListUsableSubnetworksRequest struct {
 	// The parent project where subnetworks are usable.
-	// Specified in the format 'projects/*'.
+	// Specified in the format `projects/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Filtering currently only supports equality on the networkProjectId and must
 	// be in the form: "networkProjectId=[PROJECTID]", where `networkProjectId`
