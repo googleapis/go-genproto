@@ -57,9 +57,8 @@ type Device struct {
 	// intent.
 	CustomData *_struct.Struct `protobuf:"bytes,10,opt,name=custom_data,json=customData,proto3" json:"custom_data,omitempty"`
 	// Alternate IDs associated with this device.
-	// This is used to identify cloud synced devices enabled for
-	// [local
-	// execution](https://developers.google.com/assistant/smarthome/concepts/local).
+	// This is used to identify cloud synced devices enabled for [local
+	// fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).
 	OtherDeviceIds []*AgentOtherDeviceId `protobuf:"bytes,11,rep,name=other_device_ids,json=otherDeviceIds,proto3" json:"other_device_ids,omitempty"`
 	// Indicates whether your smart home Action will report notifications
 	// to Google for this device via [ReportStateAndNotification][].
