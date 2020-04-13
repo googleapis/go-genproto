@@ -85,7 +85,8 @@ type RoutesPreferredClient interface {
 	//   `X-Goog-FieldMask: *`
 	// * Field mask of Route-level duration, distance, and polyline (an example
 	// production setup):
-	//   `X-Goog-FieldMask: routes.duration,routes.distanceMeters,routes.polyline`
+	//   `X-Goog-FieldMask:
+	//   routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline`
 	//
 	// Google discourage the use of the wildcard (`*`) response field mask, or
 	// specifying the field mask at the top level (`routes`), because:
@@ -141,7 +142,8 @@ type RoutesPreferredServer interface {
 	//   `X-Goog-FieldMask: *`
 	// * Field mask of Route-level duration, distance, and polyline (an example
 	// production setup):
-	//   `X-Goog-FieldMask: routes.duration,routes.distanceMeters,routes.polyline`
+	//   `X-Goog-FieldMask:
+	//   routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline`
 	//
 	// Google discourage the use of the wildcard (`*`) response field mask, or
 	// specifying the field mask at the top level (`routes`), because:

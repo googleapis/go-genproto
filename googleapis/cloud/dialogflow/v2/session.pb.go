@@ -69,7 +69,6 @@ func (StreamingRecognitionResult_MessageType) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_2f8892c06d516e44, []int{7, 0}
 }
 
-// Requests and responses for custom methods.
 // The request to detect user's intent.
 type DetectIntentRequest struct {
 	// Required. The name of the session this query is sent to. Format:
@@ -506,6 +505,20 @@ type QueryResult struct {
 	// The action name from the matched intent.
 	Action string `protobuf:"bytes,3,opt,name=action,proto3" json:"action,omitempty"`
 	// The collection of extracted parameters.
+	//
+	// Depending on your protocol or client library language, this is a
+	// map, associative array, symbol table, dictionary, or JSON object
+	// composed of a collection of (MapKey, MapValue) pairs:
+	//
+	// -   MapKey type: string
+	// -   MapKey value: parameter name
+	// -   MapValue type:
+	//     -   If parameter's entity type is a composite entity: map
+	//     -   Else: string or number, depending on parameter value type
+	// -   MapValue value:
+	//     -   If parameter's entity type is a composite entity:
+	//         map from composite entity property names to property values
+	//     -   Else: parameter value
 	Parameters *_struct.Struct `protobuf:"bytes,4,opt,name=parameters,proto3" json:"parameters,omitempty"`
 	// This field is set to:
 	//
@@ -1143,6 +1156,20 @@ type EventInput struct {
 	// Required. The unique identifier of the event.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The collection of parameters associated with the event.
+	//
+	// Depending on your protocol or client library language, this is a
+	// map, associative array, symbol table, dictionary, or JSON object
+	// composed of a collection of (MapKey, MapValue) pairs:
+	//
+	// -   MapKey type: string
+	// -   MapKey value: parameter name
+	// -   MapValue type:
+	//     -   If parameter's entity type is a composite entity: map
+	//     -   Else: string or number, depending on parameter value type
+	// -   MapValue value:
+	//     -   If parameter's entity type is a composite entity:
+	//         map from composite entity property names to property values
+	//     -   Else: parameter value
 	Parameters *_struct.Struct `protobuf:"bytes,2,opt,name=parameters,proto3" json:"parameters,omitempty"`
 	// Required. The language of this query. See [Language
 	// Support](https://cloud.google.com/dialogflow/docs/reference/language)
