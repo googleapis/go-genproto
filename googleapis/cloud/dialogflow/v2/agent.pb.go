@@ -431,8 +431,6 @@ func (m *DeleteAgentRequest) GetParent() string {
 	return ""
 }
 
-// ============================================================================
-// Requests and responses for custom methods.
 // The request message for [Agents.SearchAgents][google.cloud.dialogflow.v2.Agents.SearchAgents].
 type SearchAgentsRequest struct {
 	// Required. The project to list agents from.
