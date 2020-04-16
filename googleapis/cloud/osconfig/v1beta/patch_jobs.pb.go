@@ -251,7 +251,7 @@ const (
 	// critical, important, moderate, or low." [1]
 	WindowsUpdateSettings_SECURITY WindowsUpdateSettings_Classification = 2
 	// "A widely released and frequent software update that contains additions
-	// to a product’s definition database. Definition databases are often used
+	// to a product's definition database. Definition databases are often used
 	// to detect objects that have specific attributes, such as malicious code,
 	// phishing websites, or junk mail." [1]
 	WindowsUpdateSettings_DEFINITION WindowsUpdateSettings_Classification = 3
@@ -349,15 +349,16 @@ func (ExecStepConfig_Interpreter) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_e487840145e9d53d, []int{17, 0}
 }
 
-// A request message to initiate patching across GCE instances.
+// A request message to initiate patching across Google Compute Engine
+// instances.
 type ExecutePatchJobRequest struct {
 	// Required. The project in which to run this patch in the form `projects/*`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Description of the patch job. Length of the description is limited
 	// to 1024 characters.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	// Required. Instances to patch, either explicitly or filtered by some
-	// criteria such as zone or labels.
+	// Required. Instances to patch, either explicitly or filtered by some criteria such
+	// as zone or labels.
 	InstanceFilter *PatchInstanceFilter `protobuf:"bytes,7,opt,name=instance_filter,json=instanceFilter,proto3" json:"instance_filter,omitempty"`
 	// Patch configuration being applied. If omitted, instances are
 	// patched using the default configurations.
@@ -492,8 +493,7 @@ func (m *GetPatchJobRequest) GetName() string {
 
 // Request to list details for all instances that are part of a patch job.
 type ListPatchJobInstanceDetailsRequest struct {
-	// Required. The parent for the instances are in the form of
-	// `projects/*/patchJobs/*`.
+	// Required. The parent for the instances are in the form of `projects/*/patchJobs/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of instance details records to return.  Default is 100.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -612,7 +612,10 @@ func (m *ListPatchJobInstanceDetailsResponse) GetNextPageToken() string {
 	return ""
 }
 
-// Patch details for a VM instance.
+// Patch details for a VM instance. For more information about reviewing VM
+// instance details, see
+// [Listing all VM instance details for a specific patch
+// job](/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
 type PatchJobInstanceDetails struct {
 	// The instance name in the form `projects/*/zones/*/instances/*`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -816,6 +819,9 @@ func (m *ListPatchJobsResponse) GetNextPageToken() string {
 //
 // Instances details are not included in the job. To paginate through instance
 // details, use ListPatchJobInstanceDetails.
+//
+// For more information about patch jobs, see
+// [Creating patch jobs](/compute/docs/os-patch-management/create-patch-job).
 type PatchJob struct {
 	// Unique identifier for this patch job in the form
 	// `projects/*/patchJobs/*`
@@ -1721,8 +1727,8 @@ type ExecStepConfig struct {
 	AllowedSuccessCodes []int32 `protobuf:"varint,3,rep,packed,name=allowed_success_codes,json=allowedSuccessCodes,proto3" json:"allowed_success_codes,omitempty"`
 	// The script interpreter to use to run the script. If no interpreter is
 	// specified the script will be executed directly, which will likely
-	// only succeed for scripts with shebang lines.
-	// [Wikipedia shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)).
+	// only succeed for scripts with [shebang lines]
+	// (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
 	Interpreter          ExecStepConfig_Interpreter `protobuf:"varint,4,opt,name=interpreter,proto3,enum=google.cloud.osconfig.v1beta.ExecStepConfig_Interpreter" json:"interpreter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
@@ -1813,14 +1819,14 @@ func (*ExecStepConfig) XXX_OneofWrappers() []interface{} {
 	}
 }
 
-// GCS object representation.
+// Google Cloud Storage object representation.
 type GcsObject struct {
-	// Required. Bucket of the GCS object.
+	// Required. Bucket of the Google Cloud Storage object.
 	Bucket string `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
-	// Required. Name of the GCS object.
+	// Required. Name of the Google Cloud Storage object.
 	Object string `protobuf:"bytes,2,opt,name=object,proto3" json:"object,omitempty"`
-	// Required. Generation number of the GCS object. This is used to ensure that
-	// the ExecStep specified by this PatchJob does not change.
+	// Required. Generation number of the Google Cloud Storage object. This is used to
+	// ensure that the ExecStep specified by this PatchJob does not change.
 	GenerationNumber     int64    `protobuf:"varint,3,opt,name=generation_number,json=generationNumber,proto3" json:"generation_number,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1894,7 +1900,7 @@ type PatchInstanceFilter struct {
 	Instances []string `protobuf:"bytes,4,rep,name=instances,proto3" json:"instances,omitempty"`
 	// Targets VMs whose name starts with one of these prefixes. Similar to
 	// labels, this is another way to group VMs when targeting configs, for
-	// example prefix=”prod-”.
+	// example prefix="prod-".
 	InstanceNamePrefixes []string `protobuf:"bytes,5,rep,name=instance_name_prefixes,json=instanceNamePrefixes,proto3" json:"instance_name_prefixes,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -1964,8 +1970,8 @@ func (m *PatchInstanceFilter) GetInstanceNamePrefixes() []string {
 // Represents a group of VMs that can be identified as having all these
 // labels, for example "env=prod and app=web".
 type PatchInstanceFilter_GroupLabel struct {
-	// GCE instance labels that must be present for a VM instance to be targeted
-	// by this filter.
+	// Google Compute Engine instance labels that must be present for a VM
+	// instance to be targeted by this filter.
 	Labels               map[string]string `protobuf:"bytes,1,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`

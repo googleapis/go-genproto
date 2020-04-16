@@ -224,8 +224,8 @@ func (SoftwareRecipe_Step_RunScript_Interpreter) EnumDescriptor() ([]byte, []int
 // including packages to install or remove, package repository configurations,
 // and software to install.
 type GuestPolicy struct {
-	// Required. Unique name of the resource in this project using one of the
-	// following forms:
+	// Required. Unique name of the resource in this project using one of the following
+	// forms:
 	// `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Description of the guest policy. Length of the description is limited
@@ -235,33 +235,16 @@ type GuestPolicy struct {
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Last time this guest policy was updated.
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	// Required. Specifies the VM instances that are assigned to this policy. This
-	// allows you to target sets or groups of VM instances by different parameters
-	// such as labels, names, OS, or zones.
+	// Required. Specifies the VM instances that are assigned to this policy. This allows
+	// you to target sets or groups of VM instances by different parameters such
+	// as labels, names, OS, or zones.
 	//
 	// If left empty, all VM instances underneath this policy are targeted.
 	//
-	//
-	// Conflict Management
-	//
 	// At the same level in the resource hierarchy (that is within a project), the
 	// service prevents the creation of multiple policies that conflict with
-	// each other. If there are multiple policies that specify the same config
-	// (eg. package, software recipe, repository, etc.), the service ensures
-	// that no VM instance could potentially receive instructions from both
-	// policies. To create multiple policies that specify different versions of a
-	// package or different configs for different operating systems, each policy
-	// must be mutually exclusive in their targeting according to labels, OS, or
-	// other criteria.
-	//
-	// Different configs are identified for conflicts in different ways. Packages
-	// are identified by their name and the package manager(s) they target.
-	// Package repositories are identified by their unique id where applicable.
-	// Some package managers don't have a unique identifier for repositories and
-	// where that's the case, no uniqueness is validated by the service.
-	//
-	// Note that if OS Inventory is disabled, a VM instance cannot assign a policy
-	// that targets by OS because the service sees the OS as unknown.
+	// each other. For more information, see how the service [handles assignment
+	// conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	Assignment *Assignment `protobuf:"bytes,6,opt,name=assignment,proto3" json:"assignment,omitempty"`
 	// The software packages to be managed by this policy.
 	Packages []*Package `protobuf:"bytes,7,rep,name=packages,proto3" json:"packages,omitempty"`
@@ -399,7 +382,7 @@ type Assignment struct {
 	// Targets VM instances whose name starts with one of these prefixes.
 	//
 	// Like labels, this is another way to group VM instances when targeting
-	// configs, for example prefix=”prod-”.
+	// configs, for example prefix="prod-".
 	//
 	// Only supported for project-level policies.
 	InstanceNamePrefixes []string `protobuf:"bytes,4,rep,name=instance_name_prefixes,json=instanceNamePrefixes,proto3" json:"instance_name_prefixes,omitempty"`
@@ -476,8 +459,8 @@ func (m *Assignment) GetOsTypes() []*Assignment_OsType {
 // Represents a group of VM intances that can be identified as having all
 // these labels, for example "env=prod and app=web".
 type Assignment_GroupLabel struct {
-	// GCE instance labels that must be present for an instance to be included
-	// in this assignment group.
+	// Google Compute Engine instance labels that must be present for an
+	// instance to be included in this assignment group.
 	Labels               map[string]string `protobuf:"bytes,1,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
@@ -602,9 +585,9 @@ func (m *Assignment_OsType) GetOsArchitecture() string {
 // install: `googet -noconfirm install package1 package2 package3`
 // remove: `googet -noconfirm remove package1 package2 package3`
 type Package struct {
-	// Required. The name of the package. A package is uniquely identified for
-	// conflict validation by checking the package name and the manager(s) that
-	// the package targets.
+	// Required. The name of the package. A package is uniquely identified for conflict
+	// validation by checking the package name and the manager(s) that the
+	// package targets.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The desired_state the agent should maintain for this package. The
 	// default is to ensure the package is installed.
@@ -680,8 +663,7 @@ type AptRepository struct {
 	Uri string `protobuf:"bytes,2,opt,name=uri,proto3" json:"uri,omitempty"`
 	// Required. Distribution of this repository.
 	Distribution string `protobuf:"bytes,3,opt,name=distribution,proto3" json:"distribution,omitempty"`
-	// Required. List of components for this repository. Must contain at least one
-	// item.
+	// Required. List of components for this repository. Must contain at least one item.
 	Components []string `protobuf:"bytes,4,rep,name=components,proto3" json:"components,omitempty"`
 	// URI of the key file for this repository. The agent maintains
 	// a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing
@@ -1084,8 +1066,8 @@ func (*PackageRepository) XXX_OneofWrappers() []interface{} {
 // Each script or execution step is run in its own temporary directory which
 // is deleted after completing the step.
 type SoftwareRecipe struct {
-	// Required. Unique identifier for the recipe. Only one recipe with a given
-	// name is installed on an instance.
+	// Required. Unique identifier for the recipe. Only one recipe with a given name is
+	// installed on an instance.
 	//
 	// Names are also used to identify resources which helps to determine whether
 	// guest policies have conflicts. This means that requests to create multiple
@@ -1191,8 +1173,8 @@ func (m *SoftwareRecipe) GetDesiredState() DesiredState {
 
 // Specifies a resource to be used in the recipe.
 type SoftwareRecipe_Artifact struct {
-	// Required. Id of the artifact, which the installation and update steps of
-	// this recipe can reference. Artifacts in a recipe cannot have the same id.
+	// Required. Id of the artifact, which the installation and update steps of this
+	// recipe can reference. Artifacts in a recipe cannot have the same id.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// A specific type of artifact.
 	//
@@ -1204,7 +1186,7 @@ type SoftwareRecipe_Artifact struct {
 	// based on the artifact type:
 	//
 	// Remote: A checksum must be specified, and only protocols with
-	//         transport-layer security are permitted.
+	// transport-layer security are permitted.
 	// GCS:    An object generation number must be specified.
 	AllowInsecure        bool     `protobuf:"varint,4,opt,name=allow_insecure,json=allowInsecure,proto3" json:"allow_insecure,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1351,14 +1333,14 @@ func (m *SoftwareRecipe_Artifact_Remote) GetChecksum() string {
 	return ""
 }
 
-// Specifies an artifact available as a Cloud Storage object.
+// Specifies an artifact available as a Google Cloud Storage object.
 type SoftwareRecipe_Artifact_Gcs struct {
-	// Bucket of the Cloud Storage object.
+	// Bucket of the Google Cloud Storage object.
 	// Given an example URL:
 	// `https://storage.googleapis.com/my-bucket/foo/bar#1234567`
 	// this value would be `my-bucket`.
 	Bucket string `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
-	// Name of the Cloud Storage object.
+	// Name of the Google Cloud Storage object.
 	// As specified [here]
 	// (https://cloud.google.com/storage/docs/naming#objectnames)
 	// Given an example URL:
@@ -1366,7 +1348,7 @@ type SoftwareRecipe_Artifact_Gcs struct {
 	// this value would be `foo/bar`.
 	Object string `protobuf:"bytes,2,opt,name=object,proto3" json:"object,omitempty"`
 	// Must be provided if allow_insecure is false.
-	// Generation number of the Cloud Storage object.
+	// Generation number of the Google Cloud Storage object.
 	// `https://storage.googleapis.com/my-bucket/foo/bar#1234567`
 	// this value would be `1234567`.
 	Generation           int64    `protobuf:"varint,3,opt,name=generation,proto3" json:"generation,omitempty"`
@@ -1976,7 +1958,7 @@ type SoftwareRecipe_Step_RunScript struct {
 	// The script interpreter to use to run the script. If no interpreter is
 	// specified the script is executed directly, which likely
 	// only succeed for scripts with
-	// [shebang lines](https://en.wikipedia.org/wiki/Shebang_(Unix)).
+	// [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
 	Interpreter          SoftwareRecipe_Step_RunScript_Interpreter `protobuf:"varint,3,opt,name=interpreter,proto3,enum=google.cloud.osconfig.v1beta.SoftwareRecipe_Step_RunScript_Interpreter" json:"interpreter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                  `json:"-"`
 	XXX_unrecognized     []byte                                    `json:"-"`
@@ -2098,8 +2080,8 @@ func (m *CreateGuestPolicyRequest) GetGuestPolicy() *GuestPolicy {
 
 // A request message for retrieving a guest policy.
 type GetGuestPolicyRequest struct {
-	// Required. The resource name of the guest policy using one of the following
-	// forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	// Required. The resource name of the guest policy using one of the following forms:
+	// `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -2303,8 +2285,8 @@ func (m *UpdateGuestPolicyRequest) GetUpdateMask() *field_mask.FieldMask {
 
 // A request message for deleting a guest policy.
 type DeleteGuestPolicyRequest struct {
-	// Required. The resource name of the guest policy  using one of the following
-	// forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	// Required. The resource name of the guest policy  using one of the following forms:
+	// `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -2349,15 +2331,15 @@ type LookupEffectiveGuestPolicyRequest struct {
 	// Required. The VM instance whose policies are being looked up.
 	Instance string `protobuf:"bytes,1,opt,name=instance,proto3" json:"instance,omitempty"`
 	// Short name of the OS running on the instance. The OS Config agent only
-	// provideS this field for targeting if OS Inventory is enabled for that
+	// provides this field for targeting if OS Inventory is enabled for that
 	// instance.
 	OsShortName string `protobuf:"bytes,2,opt,name=os_short_name,json=osShortName,proto3" json:"os_short_name,omitempty"`
 	// Version of the OS running on the instance. The OS Config agent only
-	// provide this field for targeting if OS Inventory is enabled for that
+	// provides this field for targeting if OS Inventory is enabled for that
 	// VM instance.
 	OsVersion string `protobuf:"bytes,3,opt,name=os_version,json=osVersion,proto3" json:"os_version,omitempty"`
 	// Architecture of OS running on the instance. The OS Config agent only
-	// provide this field for targeting if OS Inventory is enabled for that
+	// provides this field for targeting if OS Inventory is enabled for that
 	// instance.
 	OsArchitecture       string   `protobuf:"bytes,4,opt,name=os_architecture,json=osArchitecture,proto3" json:"os_architecture,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`

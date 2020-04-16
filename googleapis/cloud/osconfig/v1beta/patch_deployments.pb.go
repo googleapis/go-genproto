@@ -63,22 +63,23 @@ func (RecurringSchedule_Frequency) EnumDescriptor() ([]byte, []int) {
 
 // Patch deployments are configurations that individual patch jobs use to
 // complete a patch. These configurations include instance filter, package
-// repository settings, and a schedule.
+// repository settings, and a schedule. For more information about creating and
+// managing patch deployments, see [Scheduling patch
+// jobs](/compute/docs/os-patch-management/schedule-patch-jobs).
 type PatchDeployment struct {
 	// Unique name for the patch deployment resource in a project. The patch
 	// deployment name is in the form:
 	// `projects/{project_id}/patchDeployments/{patch_deployment_id}`.
 	// This field is ignored when you create a new patch deployment.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Optional. Description of the patch deployment. Length of the description is
-	// limited to 1024 characters.
+	// Optional. Description of the patch deployment. Length of the description is limited
+	// to 1024 characters.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Required. VM instances to patch.
 	InstanceFilter *PatchInstanceFilter `protobuf:"bytes,3,opt,name=instance_filter,json=instanceFilter,proto3" json:"instance_filter,omitempty"`
 	// Optional. Patch configuration that is applied.
 	PatchConfig *PatchConfig `protobuf:"bytes,4,opt,name=patch_config,json=patchConfig,proto3" json:"patch_config,omitempty"`
-	// Optional. Duration of the patch. After the duration ends, the patch times
-	// out.
+	// Optional. Duration of the patch. After the duration ends, the patch times out.
 	Duration *duration.Duration `protobuf:"bytes,5,opt,name=duration,proto3" json:"duration,omitempty"`
 	// Schedule for the patch.
 	//
@@ -281,8 +282,8 @@ type RecurringSchedule struct {
 	// Optional. The time that the recurring schedule becomes effective.
 	// Defaults to `create_time` of the patch deployment.
 	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	// Optional. The end time at which a recurring patch deployment schedule is no
-	// longer active.
+	// Optional. The end time at which a recurring patch deployment schedule is no longer
+	// active.
 	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Required. Time of the day to run a recurring deployment.
 	TimeOfDay *timeofday.TimeOfDay `protobuf:"bytes,4,opt,name=time_of_day,json=timeOfDay,proto3" json:"time_of_day,omitempty"`
@@ -550,8 +551,8 @@ func (*MonthlySchedule) XXX_OneofWrappers() []interface{} {
 
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonth struct {
-	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the
-	// month. -1 indicates the last week of the month.
+	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1
+	// indicates the last week of the month.
 	WeekOrdinal int32 `protobuf:"varint,1,opt,name=week_ordinal,json=weekOrdinal,proto3" json:"week_ordinal,omitempty"`
 	// Required. A day of the week.
 	DayOfWeek            dayofweek.DayOfWeek `protobuf:"varint,2,opt,name=day_of_week,json=dayOfWeek,proto3,enum=google.type.DayOfWeek" json:"day_of_week,omitempty"`
@@ -601,11 +602,10 @@ func (m *WeekDayOfMonth) GetDayOfWeek() dayofweek.DayOfWeek {
 
 // A request message for creating a patch deployment.
 type CreatePatchDeploymentRequest struct {
-	// Required. The project to apply this patch deployment to in the form
-	// `projects/*`.
+	// Required. The project to apply this patch deployment to in the form `projects/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. A name for the patch deployment in the project. When creating a
-	// name the following rules apply:
+	// Required. A name for the patch deployment in the project. When creating a name
+	// the following rules apply:
 	// * Must contain only lowercase letters, numbers, and hyphens.
 	// * Must start with a letter.
 	// * Must be between 1-63 characters.
@@ -711,12 +711,10 @@ func (m *GetPatchDeploymentRequest) GetName() string {
 type ListPatchDeploymentsRequest struct {
 	// Required. The resource name of the parent in the form `projects/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. The maximum number of patch deployments to return. Default is
-	// 100.
+	// Optional. The maximum number of patch deployments to return. Default is 100.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// Optional. A pagination token returned from a previous call to
-	// ListPatchDeployments that indicates where this listing should continue
-	// from.
+	// Optional. A pagination token returned from a previous call to ListPatchDeployments
+	// that indicates where this listing should continue from.
 	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
