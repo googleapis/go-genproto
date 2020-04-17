@@ -37,7 +37,8 @@ type Device struct {
 	// Names given to this device by your smart home Action.
 	Name *DeviceNames `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// Indicates whether your smart home Action will report state of this device
-	// to Google via [ReportStateAndNotification][].
+	// to Google via
+	// [ReportStateAndNotification][google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification].
 	WillReportState bool `protobuf:"varint,5,opt,name=will_report_state,json=willReportState,proto3" json:"will_report_state,omitempty"`
 	// Suggested name for the room where this device is installed.
 	// Google attempts to use this value during user setup.
@@ -61,10 +62,12 @@ type Device struct {
 	// fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).
 	OtherDeviceIds []*AgentOtherDeviceId `protobuf:"bytes,11,rep,name=other_device_ids,json=otherDeviceIds,proto3" json:"other_device_ids,omitempty"`
 	// Indicates whether your smart home Action will report notifications
-	// to Google for this device via [ReportStateAndNotification][].
+	// to Google for this device via
+	// [ReportStateAndNotification][google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification].
 	//
 	// If your smart home Action enables users to control device notifications,
-	// you should update this field and call [RequestSyncDevices][].
+	// you should update this field and call
+	// [RequestSyncDevices][google.home.graph.v1.HomeGraphApiService.RequestSyncDevices].
 	NotificationSupportedByAgent bool     `protobuf:"varint,12,opt,name=notification_supported_by_agent,json=notificationSupportedByAgent,proto3" json:"notification_supported_by_agent,omitempty"`
 	XXX_NoUnkeyedLiteral         struct{} `json:"-"`
 	XXX_unrecognized             []byte   `json:"-"`

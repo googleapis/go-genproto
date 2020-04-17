@@ -65,7 +65,7 @@ func (RecurringSchedule_Frequency) EnumDescriptor() ([]byte, []int) {
 // complete a patch. These configurations include instance filter, package
 // repository settings, and a schedule. For more information about creating and
 // managing patch deployments, see [Scheduling patch
-// jobs](/compute/docs/os-patch-management/schedule-patch-jobs).
+// jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-jobs).
 type PatchDeployment struct {
 	// Unique name for the patch deployment resource in a project. The patch
 	// deployment name is in the form:
@@ -88,17 +88,14 @@ type PatchDeployment struct {
 	//	*PatchDeployment_RecurringSchedule
 	Schedule isPatchDeployment_Schedule `protobuf_oneof:"schedule"`
 	// Output only. Time the patch deployment was created. Timestamp is in
-	// <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-	// text format.
+	// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time the patch deployment was last updated. Timestamp is in
-	// <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-	// text format.
+	// [RFC3339]("https://www.ietf.org/rfc/rfc3339.txt) text format.
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,9,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. The last time a patch job was started by this deployment.
-	// Timestamp is in
-	// <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-	// text format.
+	// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
+	// format.
 	LastExecuteTime      *timestamp.Timestamp `protobuf:"bytes,10,opt,name=last_execute_time,json=lastExecuteTime,proto3" json:"last_execute_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
@@ -232,8 +229,7 @@ func (*PatchDeployment) XXX_OneofWrappers() []interface{} {
 }
 
 // Sets the time for a one time patch deployment. Timestamp is in
-// <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-// text format.
+// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 type OneTimeSchedule struct {
 	// Required. The desired patch job execution time.
 	ExecuteTime          *timestamp.Timestamp `protobuf:"bytes,1,opt,name=execute_time,json=executeTime,proto3" json:"execute_time,omitempty"`

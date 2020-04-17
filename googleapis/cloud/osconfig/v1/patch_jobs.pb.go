@@ -349,7 +349,7 @@ func (ExecStepConfig_Interpreter) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_17f359040d82dc99, []int{17, 0}
 }
 
-// A request message to initiate patching across Google Compute Engine
+// A request message to initiate patching across Compute Engine
 // instances.
 type ExecutePatchJobRequest struct {
 	// Required. The project in which to run this patch in the form `projects/*`
@@ -615,7 +615,7 @@ func (m *ListPatchJobInstanceDetailsResponse) GetNextPageToken() string {
 // Patch details for a VM instance. For more information about reviewing VM
 // instance details, see
 // [Listing all VM instance details for a specific patch
-// job](/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
+// job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
 type PatchJobInstanceDetails struct {
 	// The instance name in the form `projects/*/zones/*/instances/*`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -821,7 +821,8 @@ func (m *ListPatchJobsResponse) GetNextPageToken() string {
 // details, use ListPatchJobInstanceDetails.
 //
 // For more information about patch jobs, see
-// [Creating patch jobs](/compute/docs/os-patch-management/create-patch-job).
+// [Creating patch
+// jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).
 type PatchJob struct {
 	// Unique identifier for this patch job in the form
 	// `projects/*/patchJobs/*`
@@ -1819,13 +1820,13 @@ func (*ExecStepConfig) XXX_OneofWrappers() []interface{} {
 	}
 }
 
-// Google Cloud Storage object representation.
+// Cloud Storage object representation.
 type GcsObject struct {
-	// Required. Bucket of the Google Cloud Storage object.
+	// Required. Bucket of the Cloud Storage object.
 	Bucket string `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
-	// Required. Name of the Google Cloud Storage object.
+	// Required. Name of the Cloud Storage object.
 	Object string `protobuf:"bytes,2,opt,name=object,proto3" json:"object,omitempty"`
-	// Required. Generation number of the Google Cloud Storage object. This is used to
+	// Required. Generation number of the Cloud Storage object. This is used to
 	// ensure that the ExecStep specified by this PatchJob does not change.
 	GenerationNumber     int64    `protobuf:"varint,3,opt,name=generation_number,json=generationNumber,proto3" json:"generation_number,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1887,8 +1888,8 @@ type PatchInstanceFilter struct {
 	// Target all VM instances in the project. If true, no other criteria is
 	// permitted.
 	All bool `protobuf:"varint,1,opt,name=all,proto3" json:"all,omitempty"`
-	// Targets VM instances matching at least one of these label sets. This allows
-	// targeting of disparate groups, for example "env=prod or env=staging".
+	// Targets VM instances matching ANY of these GroupLabels. This allows
+	// targeting of disparate groups of VM instances.
 	GroupLabels []*PatchInstanceFilter_GroupLabel `protobuf:"bytes,2,rep,name=group_labels,json=groupLabels,proto3" json:"group_labels,omitempty"`
 	// Targets VM instances in ANY of these zones. Leave empty to target VM
 	// instances in any zone.
@@ -1967,10 +1968,16 @@ func (m *PatchInstanceFilter) GetInstanceNamePrefixes() []string {
 	return nil
 }
 
-// Represents a group of VMs that can be identified as having all these
-// labels, for example "env=prod and app=web".
+// Targets a group of VM instances by using their [assigned
+// labels](https://cloud.google.com/compute/docs/labeling-resources). Labels
+// are key-value pairs. A `GroupLabel` is a combination of labels
+// that is used to target VMs for a patch job.
+//
+// For example, a patch job can target VMs that have the following
+// `GroupLabel`: `{"env":"test", "app":"web"}`. This means that the patch job
+// is applied to VMs that have both the labels `env=test` and `app=web`.
 type PatchInstanceFilter_GroupLabel struct {
-	// Google Compute Engine instance labels that must be present for a VM
+	// Compute Engine instance labels that must be present for a VM
 	// instance to be targeted by this filter.
 	Labels               map[string]string `protobuf:"bytes,1,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
