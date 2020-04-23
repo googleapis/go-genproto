@@ -122,18 +122,24 @@ func (m *WebhookRequest) GetOriginalDetectIntentRequest() *OriginalDetectIntentR
 // [Protocol Buffers Language
 // Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
 type WebhookResponse struct {
-	// Optional. The text to be shown on the screen. This value is passed directly
-	// to `QueryResult.fulfillment_text`.
-	FulfillmentText string `protobuf:"bytes,1,opt,name=fulfillment_text,json=fulfillmentText,proto3" json:"fulfillment_text,omitempty"`
-	// Optional. The collection of rich messages to present to the user. This
-	// value is passed directly to `QueryResult.fulfillment_messages`.
-	FulfillmentMessages []*Intent_Message `protobuf:"bytes,2,rep,name=fulfillment_messages,json=fulfillmentMessages,proto3" json:"fulfillment_messages,omitempty"`
-	// Optional. This value is passed directly to `QueryResult.webhook_source`.
-	Source string `protobuf:"bytes,3,opt,name=source,proto3" json:"source,omitempty"`
-	// Optional. This field can be used to pass custom data from your webhook to the API
-	// caller. Arbitrary JSON objects are supported.
+	// Optional. The text response message intended for the end-user.
+	// It is recommended to use `fulfillment_messages.text.text[0]` instead.
 	// When provided, Dialogflow uses this field to populate
-	// `QueryResult.webhook_payload` sent to the API caller.
+	// [QueryResult.fulfillment_text][google.cloud.dialogflow.v2beta1.QueryResult.fulfillment_text] sent to the integration or API caller.
+	FulfillmentText string `protobuf:"bytes,1,opt,name=fulfillment_text,json=fulfillmentText,proto3" json:"fulfillment_text,omitempty"`
+	// Optional. The rich response messages intended for the end-user.
+	// When provided, Dialogflow uses this field to populate
+	// [QueryResult.fulfillment_messages][google.cloud.dialogflow.v2beta1.QueryResult.fulfillment_messages] sent to the integration or API caller.
+	FulfillmentMessages []*Intent_Message `protobuf:"bytes,2,rep,name=fulfillment_messages,json=fulfillmentMessages,proto3" json:"fulfillment_messages,omitempty"`
+	// Optional. A custom field used to identify the webhook source.
+	// Arbitrary strings are supported.
+	// When provided, Dialogflow uses this field to populate
+	// [QueryResult.webhook_source][google.cloud.dialogflow.v2beta1.QueryResult.webhook_source] sent to the integration or API caller.
+	Source string `protobuf:"bytes,3,opt,name=source,proto3" json:"source,omitempty"`
+	// Optional. This field can be used to pass custom data from your webhook to the
+	// integration or API caller. Arbitrary JSON objects are supported.
+	// When provided, Dialogflow uses this field to populate
+	// [QueryResult.webhook_payload][google.cloud.dialogflow.v2beta1.QueryResult.webhook_payload] sent to the integration or API caller.
 	// This field is also used by the
 	// [Google Assistant
 	// integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
@@ -141,11 +147,12 @@ type WebhookResponse struct {
 	// See the format definition at [Google Assistant Dialogflow webhook
 	// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
 	Payload *_struct.Struct `protobuf:"bytes,4,opt,name=payload,proto3" json:"payload,omitempty"`
-	// Optional. The collection of output contexts. This value is passed directly
-	// to `QueryResult.output_contexts`.
+	// Optional. The collection of output contexts that will overwrite currently
+	// active contexts for the session and reset their lifespans.
+	// When provided, Dialogflow uses this field to populate
+	// [QueryResult.output_contexts][google.cloud.dialogflow.v2beta1.QueryResult.output_contexts] sent to the integration or API caller.
 	OutputContexts []*Context `protobuf:"bytes,5,rep,name=output_contexts,json=outputContexts,proto3" json:"output_contexts,omitempty"`
-	// Optional. Makes the platform immediately invoke another `DetectIntent` call
-	// internally with the specified event as input.
+	// Optional. Invokes the supplied events.
 	// When this field is set, Dialogflow ignores the `fulfillment_text`,
 	// `fulfillment_messages`, and `payload` fields.
 	FollowupEventInput *EventInput `protobuf:"bytes,6,opt,name=followup_event_input,json=followupEventInput,proto3" json:"followup_event_input,omitempty"`
@@ -155,9 +162,9 @@ type WebhookResponse struct {
 	EndInteraction bool `protobuf:"varint,8,opt,name=end_interaction,json=endInteraction,proto3" json:"end_interaction,omitempty"`
 	// Optional. Additional session entity types to replace or extend developer
 	// entity types with. The entity synonyms apply to all languages and persist
-	// for the session of this query. Setting the session entity types inside
-	// webhook overwrites the session entity types that have been set through
-	// `DetectIntentRequest.query_params.session_entity_types`.
+	// for the session. Setting this data from a webhook overwrites
+	// the session entity types that have been set using `detectIntent`,
+	// `streamingDetectIntent` or [SessionEntityType][google.cloud.dialogflow.v2beta1.SessionEntityType] management methods.
 	SessionEntityTypes   []*SessionEntityType `protobuf:"bytes,10,rep,name=session_entity_types,json=sessionEntityTypes,proto3" json:"session_entity_types,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
