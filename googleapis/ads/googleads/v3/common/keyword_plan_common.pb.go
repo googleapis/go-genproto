@@ -24,9 +24,13 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Historical metrics.
+// Historical metrics specific to the targeting options selected.
+// Targeting options include geographies, network, etc.
+// Refer to https://support.google.com/google-ads/answer/3022575 for more
+// details.
 type KeywordPlanHistoricalMetrics struct {
-	// Average monthly searches for the past 12 months.
+	// Approximate number of monthly searches on this query averaged
+	// for the past 12 months.
 	AvgMonthlySearches *wrappers.Int64Value `protobuf:"bytes,1,opt,name=avg_monthly_searches,json=avgMonthlySearches,proto3" json:"avg_monthly_searches,omitempty"`
 	// The competition level for the query.
 	Competition          enums.KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel `protobuf:"varint,2,opt,name=competition,proto3,enum=google.ads.googleads.v3.enums.KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel" json:"competition,omitempty"`

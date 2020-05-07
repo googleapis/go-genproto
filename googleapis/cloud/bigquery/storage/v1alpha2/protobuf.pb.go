@@ -24,9 +24,8 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Protobuf schema is an API presentation the proto buffer schema.
 type ProtoSchema struct {
-	// Message descriptor for the data. The descriptor has to be self contained
-	// to include all the nested type definition, excepted for proto buffer well
-	// known types
+	// Descriptor for input message. The descriptor has to be self contained,
+	// including all the nested types, excepted for proto buffer well known types
 	// (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf)
 	// and zetasql public protos
 	// (https://github.com/google/zetasql/tree/master/zetasql/public/proto).

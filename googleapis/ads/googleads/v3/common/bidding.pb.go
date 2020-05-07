@@ -387,7 +387,7 @@ var xxx_messageInfo_TargetCpm proto.InternalMessageInfo
 // An automated bidding strategy that sets bids so that a certain percentage of
 // search ads are shown at the top of the first page (or other targeted
 // location).
-// Next Id = 4
+// next tag = 4
 type TargetImpressionShare struct {
 	// The targeted location on the search results page.
 	Location enums.TargetImpressionShareLocationEnum_TargetImpressionShareLocation `protobuf:"varint,1,opt,name=location,proto3,enum=google.ads.googleads.v3.enums.TargetImpressionShareLocationEnum_TargetImpressionShareLocation" json:"location,omitempty"`

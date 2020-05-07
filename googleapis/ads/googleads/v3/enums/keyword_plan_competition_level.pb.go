@@ -30,11 +30,11 @@ const (
 	KeywordPlanCompetitionLevelEnum_UNSPECIFIED KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel = 0
 	// The value is unknown in this version.
 	KeywordPlanCompetitionLevelEnum_UNKNOWN KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel = 1
-	// Low competition.
+	// Low competition. The Competition Index range for this is [0, 33].
 	KeywordPlanCompetitionLevelEnum_LOW KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel = 2
-	// Medium competition.
+	// Medium competition. The Competition Index range for this is [34, 66].
 	KeywordPlanCompetitionLevelEnum_MEDIUM KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel = 3
-	// High competition.
+	// High competition. The Competition Index range for this is [67, 100].
 	KeywordPlanCompetitionLevelEnum_HIGH KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel = 4
 )
 

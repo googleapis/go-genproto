@@ -645,7 +645,7 @@ type GenerateReachForecastRequest struct {
 	// This is equivalent to the frequency cap exposed in Google Ads when creating
 	// a campaign, it represents the maximum number of times an ad can be shown to
 	// the same user.
-	// If not specified no cap is applied.
+	// If not specified, no cap is applied.
 	CookieFrequencyCap *wrappers.Int32Value `protobuf:"bytes,4,opt,name=cookie_frequency_cap,json=cookieFrequencyCap,proto3" json:"cookie_frequency_cap,omitempty"`
 	// Desired minimum effective frequency (the number of times a person was
 	// exposed to the ad) for the reported reach metrics [1-10].
@@ -657,15 +657,13 @@ type GenerateReachForecastRequest struct {
 	// This is planned targeting: execution details might vary based on the
 	// advertising product, please consult an implementation specialist.
 	//
-	// If no targeting dimensions are specified, then campaigns will target
-	// everywhere and everyone.
-	//
 	// See specific metrics for details on how targeting affects them.
 	//
 	// In some cases, targeting may be overridden using the
 	// PlannedProduct.advanced_product_targeting field.
 	Targeting *Targeting `protobuf:"bytes,6,opt,name=targeting,proto3" json:"targeting,omitempty"`
-	// Required. The product to be planned.
+	// Required. The products to be forecast.
+	// The max number of allowed planned products is 15.
 	PlannedProducts      []*PlannedProduct `protobuf:"bytes,7,rep,name=planned_products,json=plannedProducts,proto3" json:"planned_products,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
@@ -751,14 +749,19 @@ type Targeting struct {
 	// Required. The ID of the selected location.
 	// Plannable locations ID can be obtained from ListPlannableLocations.
 	PlannableLocationId *wrappers.StringValue `protobuf:"bytes,1,opt,name=plannable_location_id,json=plannableLocationId,proto3" json:"plannable_location_id,omitempty"`
-	// Required
-	// Selected age range to be planned on.
+	// Targeted age range.
+	// If not specified, targets all age ranges.
 	AgeRange enums.ReachPlanAgeRangeEnum_ReachPlanAgeRange `protobuf:"varint,2,opt,name=age_range,json=ageRange,proto3,enum=google.ads.googleads.v3.enums.ReachPlanAgeRangeEnum_ReachPlanAgeRange" json:"age_range,omitempty"`
-	// Targetable genders for the ad product.
+	// Targeted genders.
+	// If not specified, targets all genders.
 	Genders []*common.GenderInfo `protobuf:"bytes,3,rep,name=genders,proto3" json:"genders,omitempty"`
-	// Targetable devices for the ad product.
+	// Targeted devices.
+	// If not specified, targets all applicable devices. Applicable devices vary
+	// by product and region and can be obtained from ListPlannableProducts.
 	Devices []*common.DeviceInfo `protobuf:"bytes,4,rep,name=devices,proto3" json:"devices,omitempty"`
 	// Targetable network for the ad product.
+	// If not specified, targets all applicable networks. Applicable networks vary
+	// by product and region and can be obtained from ListPlannableProducts.
 	Network              enums.ReachPlanNetworkEnum_ReachPlanNetwork `protobuf:"varint,5,opt,name=network,proto3,enum=google.ads.googleads.v3.enums.ReachPlanNetworkEnum_ReachPlanNetwork" json:"network,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                    `json:"-"`
 	XXX_unrecognized     []byte                                      `json:"-"`
@@ -1083,7 +1086,7 @@ type Forecast struct {
 	// Number of ad impressions that exactly matches the Targeting.
 	OnTargetImpressions *wrappers.Int64Value `protobuf:"bytes,3,opt,name=on_target_impressions,json=onTargetImpressions,proto3" json:"on_target_impressions,omitempty"`
 	// Total number of ad impressions. This includes impressions that may fall
-	// outside the specified Targeting, due to insufficent information on
+	// outside the specified Targeting, due to insufficient information on
 	// signed-in users.
 	TotalImpressions     *wrappers.Int64Value `protobuf:"bytes,4,opt,name=total_impressions,json=totalImpressions,proto3" json:"total_impressions,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
