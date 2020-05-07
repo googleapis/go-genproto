@@ -451,7 +451,7 @@ func (m *GenerateForecastMetricsResponse) GetKeywordForecasts() []*KeywordPlanKe
 type KeywordPlanCampaignForecast struct {
 	// The resource name of the Keyword Plan campaign related to the forecast.
 	//
-	// `customers/{customer_id}/keywordPlanCampaigns/{keyword+plan_campaign_id}`
+	// `customers/{customer_id}/keywordPlanCampaigns/{keyword_plan_campaign_id}`
 	KeywordPlanCampaign *wrappers.StringValue `protobuf:"bytes,1,opt,name=keyword_plan_campaign,json=keywordPlanCampaign,proto3" json:"keyword_plan_campaign,omitempty"`
 	// The forecast for the Keyword Plan campaign.
 	CampaignForecast     *ForecastMetrics `protobuf:"bytes,2,opt,name=campaign_forecast,json=campaignForecast,proto3" json:"campaign_forecast,omitempty"`

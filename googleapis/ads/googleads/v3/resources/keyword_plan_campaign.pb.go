@@ -145,7 +145,6 @@ func (m *KeywordPlanCampaign) GetGeoTargets() []*KeywordPlanGeoTarget {
 }
 
 // A geo target.
-// Next ID: 3
 type KeywordPlanGeoTarget struct {
 	// Required. The resource name of the geo target.
 	GeoTargetConstant    *wrappers.StringValue `protobuf:"bytes,1,opt,name=geo_target_constant,json=geoTargetConstant,proto3" json:"geo_target_constant,omitempty"`

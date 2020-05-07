@@ -23,7 +23,6 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Set of errors that are related to requests dealing with Customer.
-// Next id: 26
 type CustomerErrorEnum_CustomerError int32
 
 const (
