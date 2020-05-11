@@ -1399,8 +1399,11 @@ type ReceivedMessage struct {
 	AckId string `protobuf:"bytes,1,opt,name=ack_id,json=ackId,proto3" json:"ack_id,omitempty"`
 	// The message.
 	Message *PubsubMessage `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	// Delivery attempt counter is 1 + (the sum of number of NACKs and number of
-	// ack_deadline exceeds) for this message.
+	// The approximate number of times that Cloud Pub/Sub has attempted to deliver
+	// the associated message to a subscriber.
+	//
+	// More precisely, this is 1 + (number of NACKs) +
+	// (number of ack_deadline exceeds) for this message.
 	//
 	// A NACK is any call to ModifyAckDeadline with a 0 deadline. An ack_deadline
 	// exceeds event is whenever a message is not acknowledged within
@@ -1408,13 +1411,10 @@ type ReceivedMessage struct {
 	// Subscription.ackDeadlineSeconds, but may get extended automatically by
 	// the client library.
 	//
-	// The first delivery of a given message will have this value as 1. The value
-	// is calculated at best effort and is approximate.
+	// Upon the first delivery of a given message, `delivery_attempt` will have a
+	// value of 1. The value is calculated at best effort and is approximate.
 	//
 	// If a DeadLetterPolicy is not set on the subscription, this will be 0.
-	// <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
-	// API might be changed in backward-incompatible ways and is not recommended
-	// for production use. It is not subject to any SLA or deprecation policy.
 	DeliveryAttempt      int32    `protobuf:"varint,3,opt,name=delivery_attempt,json=deliveryAttempt,proto3" json:"delivery_attempt,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
