@@ -83,8 +83,10 @@ type CreatePredictionApiKeyRegistrationRequest struct {
 func (m *CreatePredictionApiKeyRegistrationRequest) Reset() {
 	*m = CreatePredictionApiKeyRegistrationRequest{}
 }
-func (m *CreatePredictionApiKeyRegistrationRequest) String() string { return proto.CompactTextString(m) }
-func (*CreatePredictionApiKeyRegistrationRequest) ProtoMessage()    {}
+func (m *CreatePredictionApiKeyRegistrationRequest) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CreatePredictionApiKeyRegistrationRequest) ProtoMessage() {}
 func (*CreatePredictionApiKeyRegistrationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dc7c074fb118b00d, []int{1}
 }
@@ -199,8 +201,10 @@ type ListPredictionApiKeyRegistrationsResponse struct {
 func (m *ListPredictionApiKeyRegistrationsResponse) Reset() {
 	*m = ListPredictionApiKeyRegistrationsResponse{}
 }
-func (m *ListPredictionApiKeyRegistrationsResponse) String() string { return proto.CompactTextString(m) }
-func (*ListPredictionApiKeyRegistrationsResponse) ProtoMessage()    {}
+func (m *ListPredictionApiKeyRegistrationsResponse) String() string {
+	return proto.CompactTextString(m)
+}
+func (*ListPredictionApiKeyRegistrationsResponse) ProtoMessage() {}
 func (*ListPredictionApiKeyRegistrationsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dc7c074fb118b00d, []int{3}
 }
@@ -250,8 +254,10 @@ type DeletePredictionApiKeyRegistrationRequest struct {
 func (m *DeletePredictionApiKeyRegistrationRequest) Reset() {
 	*m = DeletePredictionApiKeyRegistrationRequest{}
 }
-func (m *DeletePredictionApiKeyRegistrationRequest) String() string { return proto.CompactTextString(m) }
-func (*DeletePredictionApiKeyRegistrationRequest) ProtoMessage()    {}
+func (m *DeletePredictionApiKeyRegistrationRequest) String() string {
+	return proto.CompactTextString(m)
+}
+func (*DeletePredictionApiKeyRegistrationRequest) ProtoMessage() {}
 func (*DeletePredictionApiKeyRegistrationRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dc7c074fb118b00d, []int{4}
 }
