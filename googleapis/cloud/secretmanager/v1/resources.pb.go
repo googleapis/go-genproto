@@ -221,6 +221,7 @@ func (m *SecretVersion) GetState() SecretVersion_State {
 }
 
 // A policy that defines the replication configuration of data.
+//
 type Replication struct {
 	// The replication policy for this secret.
 	//
@@ -423,7 +424,7 @@ func (m *Replication_UserManaged_Replica) GetLocation() string {
 }
 
 // A secret payload resource in the Secret Manager API. This contains the
-// sensitive secret data that is associated with a [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+// sensitive secret payload that is associated with a [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
 type SecretPayload struct {
 	// The secret data. Must be no larger than 64KiB.
 	Data                 []byte   `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
