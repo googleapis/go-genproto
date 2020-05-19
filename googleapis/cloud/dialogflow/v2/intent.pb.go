@@ -1602,6 +1602,7 @@ type Intent_Parameter struct {
 	// Required. The name of the parameter.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Optional. The definition of the parameter value. It can be:
+	//
 	// - a constant string,
 	// - a parameter value defined as `$parameter_name`,
 	// - an original parameter value defined as `$parameter_name.original`,

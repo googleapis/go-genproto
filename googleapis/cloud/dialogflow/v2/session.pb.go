@@ -247,6 +247,10 @@ type DetectIntentResponse struct {
 	// multiple default text responses exist, they will be concatenated when
 	// generating audio. If no default platform text responses exist, the
 	// generated audio content will be empty.
+	//
+	// In some scenarios, multiple output audio fields may be present in the
+	// response structure. In these cases, only the top-most-level audio output
+	// has content.
 	OutputAudio []byte `protobuf:"bytes,4,opt,name=output_audio,json=outputAudio,proto3" json:"output_audio,omitempty"`
 	// The config used by the speech synthesizer to generate the output audio.
 	OutputAudioConfig *OutputAudioConfig `protobuf:"bytes,6,opt,name=output_audio_config,json=outputAudioConfig,proto3" json:"output_audio_config,omitempty"`
@@ -975,6 +979,10 @@ type StreamingDetectIntentResponse struct {
 	// multiple default text responses exist, they will be concatenated when
 	// generating audio. If no default platform text responses exist, the
 	// generated audio content will be empty.
+	//
+	// In some scenarios, multiple output audio fields may be present in the
+	// response structure. In these cases, only the top-most-level audio output
+	// has content.
 	OutputAudio []byte `protobuf:"bytes,5,opt,name=output_audio,json=outputAudio,proto3" json:"output_audio,omitempty"`
 	// The config used by the speech synthesizer to generate the output audio.
 	OutputAudioConfig *OutputAudioConfig `protobuf:"bytes,6,opt,name=output_audio_config,json=outputAudioConfig,proto3" json:"output_audio_config,omitempty"`
