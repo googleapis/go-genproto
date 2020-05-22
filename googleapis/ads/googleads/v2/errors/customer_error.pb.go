@@ -42,7 +42,6 @@ const (
 const _ = proto.ProtoPackageIsVersion4
 
 // Set of errors that are related to requests dealing with Customer.
-// Next id: 26
 type CustomerErrorEnum_CustomerError int32
 
 const (

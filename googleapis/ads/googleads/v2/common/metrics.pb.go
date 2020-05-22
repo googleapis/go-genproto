@@ -248,7 +248,7 @@ type Metrics struct {
 	// An engagement occurs when a viewer expands your Lightbox ad. Also, in the
 	// future, other ad types may support engagement metrics.
 	Engagements *wrappers.Int64Value `protobuf:"bytes,32,opt,name=engagements,proto3" json:"engagements,omitempty"`
-	// Average lead value of hotel.
+	// Average lead value based on clicks.
 	HotelAverageLeadValueMicros *wrappers.DoubleValue `protobuf:"bytes,75,opt,name=hotel_average_lead_value_micros,json=hotelAverageLeadValueMicros,proto3" json:"hotel_average_lead_value_micros,omitempty"`
 	// The average price difference between the price offered by reporting hotel
 	// advertiser and the cheapest price offered by the competing advertiser.

@@ -172,7 +172,6 @@ func (x *KeywordPlanCampaign) GetGeoTargets() []*KeywordPlanGeoTarget {
 }
 
 // A geo target.
-// Next ID: 3
 type KeywordPlanGeoTarget struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
