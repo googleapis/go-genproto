@@ -65,6 +65,7 @@ type Ad struct {
 	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,12,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 	// The list of mappings that can be used to substitute custom parameter tags
 	// in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
+	// For mutates, please use url custom parameter operations.
 	UrlCustomParameters []*common.CustomParameter `protobuf:"bytes,10,rep,name=url_custom_parameters,json=urlCustomParameters,proto3" json:"url_custom_parameters,omitempty"`
 	// The URL that appears in the ad description for some ad formats.
 	DisplayUrl *wrappers.StringValue `protobuf:"bytes,4,opt,name=display_url,json=displayUrl,proto3" json:"display_url,omitempty"`
