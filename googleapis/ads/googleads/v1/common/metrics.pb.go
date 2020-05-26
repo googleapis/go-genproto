@@ -253,7 +253,7 @@ type Metrics struct {
 	// An engagement occurs when a viewer expands your Lightbox ad. Also, in the
 	// future, other ad types may support engagement metrics.
 	Engagements *wrappers.Int64Value `protobuf:"bytes,32,opt,name=engagements,proto3" json:"engagements,omitempty"`
-	// Average lead value of hotel.
+	// Average lead value based on clicks.
 	HotelAverageLeadValueMicros *wrappers.DoubleValue `protobuf:"bytes,75,opt,name=hotel_average_lead_value_micros,json=hotelAverageLeadValueMicros,proto3" json:"hotel_average_lead_value_micros,omitempty"`
 	// The creative historical quality score.
 	HistoricalCreativeQualityScore enums.QualityScoreBucketEnum_QualityScoreBucket `protobuf:"varint,80,opt,name=historical_creative_quality_score,json=historicalCreativeQualityScore,proto3,enum=google.ads.googleads.v1.enums.QualityScoreBucketEnum_QualityScoreBucket" json:"historical_creative_quality_score,omitempty"`

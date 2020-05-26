@@ -100,7 +100,6 @@ type Invoice struct {
 	// Output only. The resource name of the original invoice corrected, wrote off, or canceled
 	// by this invoice, if applicable. If `corrected_invoice` is set,
 	// `replaced_invoices` will not be set.
-	//
 	// Invoice resource names have the form:
 	//
 	// `customers/{customer_id}/invoices/{invoice_id}`
