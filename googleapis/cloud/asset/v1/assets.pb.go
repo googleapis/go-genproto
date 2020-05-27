@@ -115,7 +115,7 @@ func (x *TemporalAsset) GetAsset() *Asset {
 	return nil
 }
 
-// A time window specified by its "start_time" and "end_time".
+// A time window specified by its `start_time` and `end_time`.
 type TimeWindow struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -185,13 +185,13 @@ type Asset struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The full name of the asset. For example:
-	// "//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1"
+	// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
 	//
 	// See [Resource
 	// names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
 	// for more information.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The type of the asset. For example: "compute.googleapis.com/Disk"
+	// The type of the asset. For example: `compute.googleapis.com/Disk`
 	//
 	// See [Supported asset
 	// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
@@ -363,24 +363,24 @@ type Resource struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The API version. For example: "v1"
+	// The API version. For example: `v1`
 	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 	// The URL of the discovery document containing the resource's JSON schema.
 	// For example:
-	// "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest"
+	// `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`
 	//
 	// This value is unspecified for resources that do not have an API based on a
 	// discovery document, such as Cloud Bigtable.
 	DiscoveryDocumentUri string `protobuf:"bytes,2,opt,name=discovery_document_uri,json=discoveryDocumentUri,proto3" json:"discovery_document_uri,omitempty"`
 	// The JSON schema name listed in the discovery document. For example:
-	// "Project"
+	// `Project`
 	//
 	// This value is unspecified for resources that do not have an API based on a
 	// discovery document, such as Cloud Bigtable.
 	DiscoveryName string `protobuf:"bytes,3,opt,name=discovery_name,json=discoveryName,proto3" json:"discovery_name,omitempty"`
 	// The REST URL for accessing the resource. An HTTP `GET` request using this
 	// URL returns the resource itself. For example:
-	// "https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123"
+	// `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`
 	//
 	// This value is unspecified for resources without a REST API.
 	ResourceUrl string `protobuf:"bytes,4,opt,name=resource_url,json=resourceUrl,proto3" json:"resource_url,omitempty"`
@@ -393,7 +393,7 @@ type Resource struct {
 	// [Cloud IAM policy
 	// hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
 	// For example:
-	// "//cloudresourcemanager.googleapis.com/projects/my_project_123"
+	// `//cloudresourcemanager.googleapis.com/projects/my_project_123`
 	//
 	// For third-party assets, this field may be set differently.
 	Parent string `protobuf:"bytes,5,opt,name=parent,proto3" json:"parent,omitempty"`
@@ -493,7 +493,7 @@ type ResourceSearchResult struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The full resource name of this resource. Example:
-	// "//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1".
+	// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
 	// See [Cloud Asset Inventory Resource Name
 	// Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
 	// for more information.
@@ -503,7 +503,7 @@ type ResourceSearchResult struct {
 	// * use a field query. Example: `name : "instance1"`
 	// * use a free text query. Example: `"instance1"`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The type of this resource. Example: "compute.googleapis.com/Disk".
+	// The type of this resource. Example: `compute.googleapis.com/Disk`.
 	//
 	// To search against the `asset_type`:
 	//
@@ -531,8 +531,8 @@ type ResourceSearchResult struct {
 	// * use a field query. Example: `description : "*important instance*"`
 	// * use a free text query. Example: `"*important instance*"`
 	Description string `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
-	// Location can be "global", regional like "us-east1", or zonal like
-	// "us-west1-b".
+	// Location can be `global`, regional like `us-east1`, or zonal like
+	// `us-west1-b`.
 	//
 	// To search against the `location`:
 	//
@@ -562,13 +562,13 @@ type ResourceSearchResult struct {
 	// * use a free text query. Example: `"internal"`
 	NetworkTags []string `protobuf:"bytes,8,rep,name=network_tags,json=networkTags,proto3" json:"network_tags,omitempty"`
 	// The additional attributes of this resource. The attributes may vary from
-	// one resource type to another. Examples: "projectId" for Project,
-	// "dnsName" for DNS ManagedZone.
+	// one resource type to another. Examples: `projectId` for Project,
+	// `dnsName` for DNS ManagedZone.
 	//
 	// To search against the `additional_attributes`:
 	//
 	// * use a free text query to match the attributes values. Example: to search
-	//   additional_attributes = { dnsName: "foobar" }, you can issue a query
+	//   `additional_attributes = { dnsName: "foobar" }`, you can issue a query
 	//   `"foobar"`.
 	AdditionalAttributes *_struct.Struct `protobuf:"bytes,9,opt,name=additional_attributes,json=additionalAttributes,proto3" json:"additional_attributes,omitempty"`
 }
@@ -676,7 +676,7 @@ type IamPolicySearchResult struct {
 
 	// The full resource name of the resource associated with this IAM policy.
 	// Example:
-	// "//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1".
+	// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
 	// See [Cloud Asset Inventory Resource Name
 	// Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
 	// for more information.
@@ -785,7 +785,7 @@ type IamPolicySearchResult_Explanation struct {
 	// permission query (i.e., a query containing `policy.role.permissions:`).
 	// Example: if query `policy.role.permissions : "compute.disk.get"`
 	// matches a policy binding that contains owner role, the
-	// matched_permissions will be {"roles/owner": ["compute.disk.get"]}. The
+	// matched_permissions will be `{"roles/owner": ["compute.disk.get"]}`. The
 	// roles can also be found in the returned `policy` bindings. Note that the
 	// map is populated only for requests with permission queries.
 	MatchedPermissions map[string]*IamPolicySearchResult_Explanation_Permissions `protobuf:"bytes,1,rep,name=matched_permissions,json=matchedPermissions,proto3" json:"matched_permissions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
@@ -836,7 +836,7 @@ type IamPolicySearchResult_Explanation_Permissions struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A list of permissions. A sample permission string: "compute.disk.get".
+	// A list of permissions. A sample permission string: `compute.disk.get`.
 	Permissions []string `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
 }
 
