@@ -120,12 +120,12 @@ type PlayableLocation struct {
 	//
 	// Type information might not be available for all playable locations.
 	Types []string `protobuf:"bytes,4,rep,name=types,proto3" json:"types,omitempty"`
-	// Required. The latitude and longitude associated with the center of the playable
-	// location.
+	// Required. The latitude and longitude associated with the center of the
+	// playable location.
 	//
 	// By default, the set of playable locations returned from
-	// [SamplePlayableLocations][google.maps.playablelocations.v3.PlayableLocations.SamplePlayableLocations] use
-	// center-point coordinates.
+	// [SamplePlayableLocations][google.maps.playablelocations.v3.PlayableLocations.SamplePlayableLocations]
+	// use center-point coordinates.
 	CenterPoint *latlng.LatLng `protobuf:"bytes,5,opt,name=center_point,json=centerPoint,proto3" json:"center_point,omitempty"`
 	// The playable location's coordinates, snapped to the sidewalk of the
 	// nearest road, if a nearby road exists.
@@ -237,9 +237,8 @@ type SpacingOptions struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The minimum spacing between any two playable locations, measured in meters.
-	// The minimum value is 200.
-	// The maximum value is 1000.
+	// Required. The minimum spacing between any two playable locations, measured
+	// in meters. The minimum value is 30. The maximum value is 1000.
 	//
 	// Inputs will be rounded up to the next 10 meter interval.
 	//
@@ -342,7 +341,7 @@ type Filter struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Specifies the maximum number of playable locations to return. This value
-	// must not be greater than 500. The default value is 100.
+	// must not be greater than 1000. The default value is 100.
 	//
 	// Only the top-ranking playable locations are returned.
 	MaxLocationCount int32 `protobuf:"varint,1,opt,name=max_location_count,json=maxLocationCount,proto3" json:"max_location_count,omitempty"`
@@ -414,9 +413,10 @@ type Criterion struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. An arbitrary, developer-defined identifier of the type of game object that
-	// the playable location is used for. This field allows you to specify
-	// criteria per game object type when searching for playable locations.
+	// Required. An arbitrary, developer-defined identifier of the type of game
+	// object that the playable location is used for. This field allows you to
+	// specify criteria per game object type when searching for playable
+	// locations.
 	//
 	// You should assign a unique `game_object_type` ID across all
 	// `request_criteria` to represent a distinct type of game object. For
@@ -501,8 +501,8 @@ type AreaFilter struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The S2 cell ID of the area you want. This must be between cell level 11 and
-	// 14 (inclusive).
+	// Required. The S2 cell ID of the area you want. This must be between cell
+	// level 11 and 14 (inclusive).
 	//
 	// S2 cells are 64-bit integers that identify areas on the Earth. They are
 	// hierarchical, and can therefore be used for spatial indexing.
