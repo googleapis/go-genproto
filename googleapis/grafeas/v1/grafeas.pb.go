@@ -1620,7 +1620,7 @@ var fileDescriptor_3546117bddf8439b = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
@@ -1666,10 +1666,10 @@ type GrafeasClient interface {
 }
 
 type grafeasClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewGrafeasClient(cc *grpc.ClientConn) GrafeasClient {
+func NewGrafeasClient(cc grpc.ClientConnInterface) GrafeasClient {
 	return &grafeasClient{cc}
 }
 
