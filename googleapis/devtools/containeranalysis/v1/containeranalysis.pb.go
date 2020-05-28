@@ -65,7 +65,7 @@ var fileDescriptor_e74edb4ed33b4f81 = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
@@ -104,10 +104,10 @@ type ContainerAnalysisClient interface {
 }
 
 type containerAnalysisClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewContainerAnalysisClient(cc *grpc.ClientConn) ContainerAnalysisClient {
+func NewContainerAnalysisClient(cc grpc.ClientConnInterface) ContainerAnalysisClient {
 	return &containerAnalysisClient{cc}
 }
 
