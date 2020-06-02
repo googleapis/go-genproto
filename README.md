@@ -22,7 +22,7 @@ The sources for the proto files used in this repository:
   repo. The packages here contain types specifically for interacting with Google
   APIs.
 
-Historically, the pacakges in the `protobuf` directory used to contain
+Historically, the packages in the `protobuf` directory used to contain
 generated code for certain well-known types hosted by [google/protobuf][3].
 These types are now hosted by the [`google.golang.org/protobuf`][4] module
 and type aliases are used to forward declarations in this module over to
