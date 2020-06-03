@@ -378,7 +378,7 @@ type Instance struct {
 	// Required. Redis memory size in GiB.
 	MemorySizeGb int32 `protobuf:"varint,18,opt,name=memory_size_gb,json=memorySizeGb,proto3" json:"memory_size_gb,omitempty"`
 	// Optional. The full name of the Google Compute Engine
-	// [network](/compute/docs/networks-and-firewalls#networks) to which the
+	// [network](https://cloud.google.com/vpc/docs/vpc) to which the
 	// instance is connected. If left unspecified, the `default` network
 	// will be used.
 	AuthorizedNetwork string `protobuf:"bytes,20,opt,name=authorized_network,json=authorizedNetwork,proto3" json:"authorized_network,omitempty"`
@@ -2314,7 +2314,7 @@ type CloudRedisClient interface {
 	// Creates a Redis instance based on the specified tier and memory size.
 	//
 	// By default, the instance is accessible from the project's
-	// [default network](/compute/docs/networks-and-firewalls#networks).
+	// [default network](https://cloud.google.com/vpc/docs/vpc).
 	//
 	// The creation is executed asynchronously and callers may check the returned
 	// operation to track its progress. Once the operation is completed the Redis
@@ -2451,7 +2451,7 @@ type CloudRedisServer interface {
 	// Creates a Redis instance based on the specified tier and memory size.
 	//
 	// By default, the instance is accessible from the project's
-	// [default network](/compute/docs/networks-and-firewalls#networks).
+	// [default network](https://cloud.google.com/vpc/docs/vpc).
 	//
 	// The creation is executed asynchronously and callers may check the returned
 	// operation to track its progress. Once the operation is completed the Redis
