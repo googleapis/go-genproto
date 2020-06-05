@@ -742,7 +742,7 @@ type CryptoKey struct {
 	// auto-rotation are controlled by this template.
 	VersionTemplate *CryptoKeyVersionTemplate `protobuf:"bytes,11,opt,name=version_template,json=versionTemplate,proto3" json:"version_template,omitempty"`
 	// Labels with user-defined metadata. For more information, see
-	// [Labeling Keys](/kms/docs/labeling-keys).
+	// [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels map[string]string `protobuf:"bytes,10,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 

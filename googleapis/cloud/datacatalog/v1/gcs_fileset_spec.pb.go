@@ -47,9 +47,11 @@ type GcsFilesetSpec struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud
-	// Storage documentation](/storage/docs/gsutil/addlhelp/WildcardNames) for
-	// more information. Note that bucket wildcards are currently not supported.
+	// Required. Patterns to identify a set of files in Google Cloud Storage.
+	// See [Cloud Storage
+	// documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
+	// for more information. Note that bucket wildcards are currently not
+	// supported.
 	//
 	// Examples of valid file_patterns:
 	//

@@ -52,14 +52,12 @@ type GetGroupRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The group resource name. Written as
-	// <code>projects/<var>projectID</var>/groups/<var>group_name</var></code>.
-	// Call
-	// <a href="/error-reporting/reference/rest/v1beta1/projects.groupStats/list">
-	// <code>groupStats.list</code></a> to return a list of groups belonging to
-	// this project.
+	// The group resource name. Written as
+	// `projects/{projectID}/groups/{group_name}`. Call
+	// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+	// to return a list of groups belonging to this project.
 	//
-	// Example: <code>projects/my-project-123/groups/my-group</code>
+	// Example: `projects/my-project-123/groups/my-group`
 	GroupName string `protobuf:"bytes,1,opt,name=group_name,json=groupName,proto3" json:"group_name,omitempty"`
 }
 

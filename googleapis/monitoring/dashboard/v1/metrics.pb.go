@@ -222,7 +222,7 @@ type TimeSeriesQuery struct {
 	// The unit of data contained in fetched time series. If non-empty, this
 	// unit will override any unit that accompanies fetched data. The format is
 	// the same as the
-	// [`unit`](/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)
+	// [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors)
 	// field in `MetricDescriptor`.
 	UnitOverride string `protobuf:"bytes,5,opt,name=unit_override,json=unitOverride,proto3" json:"unit_override,omitempty"`
 }
@@ -307,14 +307,14 @@ func (*TimeSeriesQuery_TimeSeriesFilterRatio) isTimeSeriesQuery_Source() {}
 
 // A filter that defines a subset of time series data that is displayed in a
 // widget. Time series data is fetched using the
-// [`ListTimeSeries`](/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list)
+// [`ListTimeSeries`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list)
 // method.
 type TimeSeriesFilter struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [monitoring filter](/monitoring/api/v3/filters) that identifies the
+	// Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the
 	// metric types, resources, and projects to query.
 	Filter string `protobuf:"bytes,1,opt,name=filter,proto3" json:"filter,omitempty"`
 	// By default, the raw time series data is returned.
@@ -614,7 +614,7 @@ type TimeSeriesFilterRatio_RatioPart struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [monitoring filter](/monitoring/api/v3/filters) that identifies the
+	// Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the
 	// metric types, resources, and projects to query.
 	Filter string `protobuf:"bytes,1,opt,name=filter,proto3" json:"filter,omitempty"`
 	// By default, the raw time series data is returned.
