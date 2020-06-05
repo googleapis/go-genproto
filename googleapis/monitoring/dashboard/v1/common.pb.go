@@ -564,7 +564,7 @@ func (StatisticalTimeSeriesFilter_Method) EnumDescriptor() ([]byte, []int) {
 // series (`alignment_period` and `per_series_aligner`) followed by an optional
 // reduction step of the data across the aligned time series
 // (`cross_series_reducer` and `group_by_fields`).  For more details, see
-// [Aggregation](/monitoring/api/learn_more#aggregation).
+// [Aggregation](https://cloud.google.com/monitoring/api/learn_more#aggregation).
 type Aggregation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

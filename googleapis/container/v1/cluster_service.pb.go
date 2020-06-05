@@ -2244,7 +2244,7 @@ type Cluster struct {
 	// An optional description of this cluster.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// The number of nodes to create in this cluster. You must ensure that your
-	// Compute Engine <a href="/compute/docs/resource-quotas">resource quota</a>
+	// Compute Engine [resource quota](https://cloud.google.com/compute/quotas)
 	// is sufficient for this number of instances. You must also have available
 	// firewall and routes quota.
 	// For requests, this field should only be used in lieu of a
