@@ -5528,7 +5528,7 @@ type NodePool struct {
 	// The node configuration of the pool.
 	Config *NodeConfig `protobuf:"bytes,2,opt,name=config,proto3" json:"config,omitempty"`
 	// The initial node count for the pool. You must ensure that your
-	// Compute Engine <a href="/compute/docs/resource-quotas">resource quota</a>
+	// Compute Engine [resource quota](https://cloud.google.com/compute/quotas)
 	// is sufficient for this number of instances. You must also have available
 	// firewall and routes quota.
 	InitialNodeCount int32 `protobuf:"varint,3,opt,name=initial_node_count,json=initialNodeCount,proto3" json:"initial_node_count,omitempty"`
