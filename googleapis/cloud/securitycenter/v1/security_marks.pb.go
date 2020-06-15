@@ -41,9 +41,9 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// User specified security marks that are attached to the parent Cloud Security
-// Command Center (Cloud SCC) resource. Security marks are scoped within a Cloud
-// SCC organization -- they can be modified and viewed by all users who have
+// User specified security marks that are attached to the parent Security
+// Command Center resource. Security marks are scoped within a Security Command
+// Center organization -- they can be modified and viewed by all users who have
 // proper permissions on the organization.
 type SecurityMarks struct {
 	state         protoimpl.MessageState

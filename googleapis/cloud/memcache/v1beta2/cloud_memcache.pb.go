@@ -291,7 +291,7 @@ type Instance struct {
 	// https://cloud.google.com/compute/docs/labeling-resources
 	Labels map[string]string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Optional. The full name of the Google Compute Engine
-	// [network](/compute/docs/networks-and-firewalls#networks) to which the
+	// [network](https://cloud.google.com/vpc/docs/vpc) to which the
 	// instance is connected. If left unspecified, the `default` network
 	// will be used.
 	AuthorizedNetwork string `protobuf:"bytes,4,opt,name=authorized_network,json=authorizedNetwork,proto3" json:"authorized_network,omitempty"`

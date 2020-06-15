@@ -104,8 +104,8 @@ func (OrganizationSettings_AssetDiscoveryConfig_InclusionMode) EnumDescriptor() 
 	return file_google_cloud_securitycenter_v1_organization_settings_proto_rawDescGZIP(), []int{0, 0, 0}
 }
 
-// User specified settings that are attached to the Cloud Security Command
-// Center (Cloud SCC) organization.
+// User specified settings that are attached to the Security Command
+// Center organization.
 type OrganizationSettings struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

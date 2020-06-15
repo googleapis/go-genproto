@@ -206,7 +206,8 @@ type PubsubMessage struct {
 	// at least one attribute.
 	Data []byte `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
 	// Attributes for this message. If this field is empty, the message must
-	// contain non-empty data.
+	// contain non-empty data. This can be used to filter messages on the
+	// subscription.
 	Attributes map[string]string `protobuf:"bytes,2,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// ID of this message, assigned by the server when the message is published.
 	// Guaranteed to be unique within the topic. This value may be read by a
@@ -1122,7 +1123,8 @@ type Subscription struct {
 	// *default policy* with `ttl` of 31 days will be used. The minimum allowed
 	// value for `expiration_policy.ttl` is 1 day.
 	ExpirationPolicy *ExpirationPolicy `protobuf:"bytes,11,opt,name=expiration_policy,json=expirationPolicy,proto3" json:"expiration_policy,omitempty"`
-	// An expression written in the Cloud Pub/Sub filter language. If non-empty,
+	// An expression written in the Pub/Sub [filter
+	// language](https://cloud.google.com/pubsub/docs/filtering). If non-empty,
 	// then only `PubsubMessage`s whose `attributes` field matches the filter are
 	// delivered on this subscription. If empty, then no messages are filtered
 	// out.
