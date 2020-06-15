@@ -394,8 +394,8 @@ type CapacityCommitment struct {
 	Plan CapacityCommitment_CommitmentPlan `protobuf:"varint,3,opt,name=plan,proto3,enum=google.cloud.bigquery.reservation.v1.CapacityCommitment_CommitmentPlan" json:"plan,omitempty"`
 	// Output only. State of the commitment.
 	State CapacityCommitment_State `protobuf:"varint,4,opt,name=state,proto3,enum=google.cloud.bigquery.reservation.v1.CapacityCommitment_State" json:"state,omitempty"`
-	// Output only. The end of the current commitment period. It is applicable
-	// only for ACTIVE capacity commitments.
+	// Output only. The end of the current commitment period. It is applicable only for ACTIVE
+	// capacity commitments.
 	CommitmentEndTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=commitment_end_time,json=commitmentEndTime,proto3" json:"commitment_end_time,omitempty"`
 	// Output only. For FAILED commitment plan, provides the reason of failure.
 	FailureStatus *status.Status `protobuf:"bytes,7,opt,name=failure_status,json=failureStatus,proto3" json:"failure_status,omitempty"`
@@ -486,8 +486,7 @@ func (x *CapacityCommitment) GetRenewalPlan() CapacityCommitment_CommitmentPlan 
 	return CapacityCommitment_COMMITMENT_PLAN_UNSPECIFIED
 }
 
-// The request for
-// [ReservationService.CreateReservation][google.cloud.bigquery.reservation.v1.ReservationService.CreateReservation].
+// The request for [ReservationService.CreateReservation][google.cloud.bigquery.reservation.v1.ReservationService.CreateReservation].
 type CreateReservationRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -556,15 +555,14 @@ func (x *CreateReservationRequest) GetReservation() *Reservation {
 	return nil
 }
 
-// The request for
-// [ReservationService.ListReservations][google.cloud.bigquery.reservation.v1.ReservationService.ListReservations].
+// The request for [ReservationService.ListReservations][google.cloud.bigquery.reservation.v1.ReservationService.ListReservations].
 type ListReservationsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The parent resource name containing project and location, e.g.:
-	//   "projects/myproject/locations/US"
+	//   `projects/myproject/locations/US`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of items to return per page.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -625,8 +623,7 @@ func (x *ListReservationsRequest) GetPageToken() string {
 	return ""
 }
 
-// The response for
-// [ReservationService.ListReservations][google.cloud.bigquery.reservation.v1.ReservationService.ListReservations].
+// The response for [ReservationService.ListReservations][google.cloud.bigquery.reservation.v1.ReservationService.ListReservations].
 type ListReservationsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -685,8 +682,7 @@ func (x *ListReservationsResponse) GetNextPageToken() string {
 	return ""
 }
 
-// The request for
-// [ReservationService.GetReservation][google.cloud.bigquery.reservation.v1.ReservationService.GetReservation].
+// The request for [ReservationService.GetReservation][google.cloud.bigquery.reservation.v1.ReservationService.GetReservation].
 type GetReservationRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -736,8 +732,7 @@ func (x *GetReservationRequest) GetName() string {
 	return ""
 }
 
-// The request for
-// [ReservationService.DeleteReservation][google.cloud.bigquery.reservation.v1.ReservationService.DeleteReservation].
+// The request for [ReservationService.DeleteReservation][google.cloud.bigquery.reservation.v1.ReservationService.DeleteReservation].
 type DeleteReservationRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -787,8 +782,7 @@ func (x *DeleteReservationRequest) GetName() string {
 	return ""
 }
 
-// The request for
-// [ReservationService.UpdateReservation][google.cloud.bigquery.reservation.v1.ReservationService.UpdateReservation].
+// The request for [ReservationService.UpdateReservation][google.cloud.bigquery.reservation.v1.ReservationService.UpdateReservation].
 type UpdateReservationRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -846,15 +840,14 @@ func (x *UpdateReservationRequest) GetUpdateMask() *field_mask.FieldMask {
 	return nil
 }
 
-// The request for
-// [ReservationService.CreateCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.CreateCapacityCommitment].
+// The request for [ReservationService.CreateCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.CreateCapacityCommitment].
 type CreateCapacityCommitmentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Resource name of the parent reservation. E.g.,
-	//    projects/myproject/locations/US
+	//    `projects/myproject/locations/US`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Content of the capacity commitment to create.
 	CapacityCommitment *CapacityCommitment `protobuf:"bytes,2,opt,name=capacity_commitment,json=capacityCommitment,proto3" json:"capacity_commitment,omitempty"`
@@ -916,15 +909,14 @@ func (x *CreateCapacityCommitmentRequest) GetEnforceSingleAdminProjectPerOrg() b
 	return false
 }
 
-// The request for
-// [ReservationService.ListCapacityCommitments][google.cloud.bigquery.reservation.v1.ReservationService.ListCapacityCommitments].
+// The request for [ReservationService.ListCapacityCommitments][google.cloud.bigquery.reservation.v1.ReservationService.ListCapacityCommitments].
 type ListCapacityCommitmentsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Resource name of the parent reservation. E.g.,
-	//    projects/myproject/locations/US
+	//    `projects/myproject/locations/US`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of items to return.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -985,8 +977,7 @@ func (x *ListCapacityCommitmentsRequest) GetPageToken() string {
 	return ""
 }
 
-// The response for
-// [ReservationService.ListCapacityCommitments][google.cloud.bigquery.reservation.v1.ReservationService.ListCapacityCommitments].
+// The response for [ReservationService.ListCapacityCommitments][google.cloud.bigquery.reservation.v1.ReservationService.ListCapacityCommitments].
 type ListCapacityCommitmentsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1045,15 +1036,14 @@ func (x *ListCapacityCommitmentsResponse) GetNextPageToken() string {
 	return ""
 }
 
-// The request for
-// [ReservationService.GetCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.GetCapacityCommitment].
+// The request for [ReservationService.GetCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.GetCapacityCommitment].
 type GetCapacityCommitmentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Resource name of the capacity commitment to retrieve. E.g.,
-	//    projects/myproject/locations/US/capacityCommitments/123
+	//    `projects/myproject/locations/US/capacityCommitments/123`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1096,15 +1086,14 @@ func (x *GetCapacityCommitmentRequest) GetName() string {
 	return ""
 }
 
-// The request for
-// [ReservationService.DeleteCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.DeleteCapacityCommitment].
+// The request for [ReservationService.DeleteCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.DeleteCapacityCommitment].
 type DeleteCapacityCommitmentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Resource name of the capacity commitment to delete. E.g.,
-	//    projects/myproject/locations/US/capacityCommitments/123
+	//    `projects/myproject/locations/US/capacityCommitments/123`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1147,8 +1136,7 @@ func (x *DeleteCapacityCommitmentRequest) GetName() string {
 	return ""
 }
 
-// The request for
-// [ReservationService.UpdateCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.UpdateCapacityCommitment].
+// The request for [ReservationService.UpdateCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.UpdateCapacityCommitment].
 type UpdateCapacityCommitmentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1206,15 +1194,14 @@ func (x *UpdateCapacityCommitmentRequest) GetUpdateMask() *field_mask.FieldMask 
 	return nil
 }
 
-// The request for
-// [ReservationService.SplitCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.SplitCapacityCommitment].
+// The request for [ReservationService.SplitCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.SplitCapacityCommitment].
 type SplitCapacityCommitmentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name e.g.,:
-	//   projects/myproject/locations/US/capacityCommitments/123
+	//  `projects/myproject/locations/US/capacityCommitments/123`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Number of slots in the capacity commitment after the split.
 	SlotCount int64 `protobuf:"varint,2,opt,name=slot_count,json=slotCount,proto3" json:"slot_count,omitempty"`
@@ -1266,8 +1253,7 @@ func (x *SplitCapacityCommitmentRequest) GetSlotCount() int64 {
 	return 0
 }
 
-// The response for
-// [ReservationService.SplitCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.SplitCapacityCommitment].
+// The response for [ReservationService.SplitCapacityCommitment][google.cloud.bigquery.reservation.v1.ReservationService.SplitCapacityCommitment].
 type SplitCapacityCommitmentResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1325,19 +1311,20 @@ func (x *SplitCapacityCommitmentResponse) GetSecond() *CapacityCommitment {
 	return nil
 }
 
-// The request for
-// [ReservationService.MergeCapacityCommitments][google.cloud.bigquery.reservation.v1.ReservationService.MergeCapacityCommitments].
+// The request for [ReservationService.MergeCapacityCommitments][google.cloud.bigquery.reservation.v1.ReservationService.MergeCapacityCommitments].
 type MergeCapacityCommitmentsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Parent resource that identifies admin project and location e.g.,
-	// projects/myproject/locations/us
+	//  `projects/myproject/locations/us`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Ids of capacity commitments to merge.
 	// These capacity commitments must exist under admin project and location
 	// specified in the parent.
+	// ID is the last portion of capacity commitment name e.g., 'abc' for
+	// projects/myproject/locations/US/capacityCommitments/abc
 	CapacityCommitmentIds []string `protobuf:"bytes,2,rep,name=capacity_commitment_ids,json=capacityCommitmentIds,proto3" json:"capacity_commitment_ids,omitempty"`
 }
 
@@ -1466,8 +1453,7 @@ func (x *Assignment) GetState() Assignment_State {
 	return Assignment_STATE_UNSPECIFIED
 }
 
-// The request for
-// [ReservationService.CreateAssignment][google.cloud.bigquery.reservation.v1.ReservationService.CreateAssignment].
+// The request for [ReservationService.CreateAssignment][google.cloud.bigquery.reservation.v1.ReservationService.CreateAssignment].
 // Note: "bigquery.reservationAssignments.create" permission is required on the
 // related assignee.
 type CreateAssignmentRequest struct {
@@ -1528,8 +1514,7 @@ func (x *CreateAssignmentRequest) GetAssignment() *Assignment {
 	return nil
 }
 
-// The request for
-// [ReservationService.ListAssignments][google.cloud.bigquery.reservation.v1.ReservationService.ListAssignments].
+// The request for [ReservationService.ListAssignments][google.cloud.bigquery.reservation.v1.ReservationService.ListAssignments].
 type ListAssignmentsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1602,8 +1587,7 @@ func (x *ListAssignmentsRequest) GetPageToken() string {
 	return ""
 }
 
-// The response for
-// [ReservationService.ListAssignments][google.cloud.bigquery.reservation.v1.ReservationService.ListAssignments].
+// The response for [ReservationService.ListAssignments][google.cloud.bigquery.reservation.v1.ReservationService.ListAssignments].
 type ListAssignmentsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1662,8 +1646,7 @@ func (x *ListAssignmentsResponse) GetNextPageToken() string {
 	return ""
 }
 
-// The request for
-// [ReservationService.DeleteAssignment][google.cloud.bigquery.reservation.v1.ReservationService.DeleteAssignment].
+// The request for [ReservationService.DeleteAssignment][google.cloud.bigquery.reservation.v1.ReservationService.DeleteAssignment].
 // Note: "bigquery.reservationAssignments.delete" permission is required on the
 // related assignee.
 type DeleteAssignmentRequest struct {
@@ -1724,9 +1707,9 @@ type SearchAssignmentsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the admin project(containing project and
-	// location), e.g.:
-	//   "projects/myproject/locations/US".
+	// Required. The resource name of the admin project(containing project and location),
+	// e.g.:
+	//   `projects/myproject/locations/US`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Please specify resource name as assignee in the query.
 	//
@@ -1802,8 +1785,7 @@ func (x *SearchAssignmentsRequest) GetPageToken() string {
 	return ""
 }
 
-// The response for
-// [ReservationService.SearchAssignments][google.cloud.bigquery.reservation.v1.ReservationService.SearchAssignments].
+// The response for [ReservationService.SearchAssignments][google.cloud.bigquery.reservation.v1.ReservationService.SearchAssignments].
 type SearchAssignmentsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2779,7 +2761,7 @@ var file_google_cloud_bigquery_reservation_v1_reservation_proto_rawDesc = []byte
 	0x79, 0x2c, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f,
 	0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74,
 	0x68, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d,
-	0x42, 0x8f, 0x01, 0x0a, 0x28, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x42, 0xb6, 0x01, 0x0a, 0x28, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
 	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x62, 0x69, 0x67, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x72,
 	0x65, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x42, 0x10, 0x52,
 	0x65, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50,
@@ -2788,7 +2770,10 @@ var file_google_cloud_bigquery_reservation_v1_reservation_proto_rawDesc = []byte
 	0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x62,
 	0x69, 0x67, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2f, 0x72, 0x65, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74,
 	0x69, 0x6f, 0x6e, 0x2f, 0x76, 0x31, 0x3b, 0x72, 0x65, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6e, 0xaa, 0x02, 0x24, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75,
+	0x64, 0x2e, 0x42, 0x69, 0x67, 0x51, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x52, 0x65, 0x73, 0x65, 0x72,
+	0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
