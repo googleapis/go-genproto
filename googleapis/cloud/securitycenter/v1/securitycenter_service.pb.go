@@ -4150,8 +4150,8 @@ type SecurityCenterClient interface {
 	// Creates or updates a finding. The corresponding source must exist for a
 	// finding creation to succeed.
 	UpdateFinding(ctx context.Context, in *UpdateFindingRequest, opts ...grpc.CallOption) (*Finding, error)
-	//
-	// Updates a notification config.
+	// Updates a notification config. The following update
+	// fields are allowed: description, pubsub_topic, streaming_config.filter
 	UpdateNotificationConfig(ctx context.Context, in *UpdateNotificationConfigRequest, opts ...grpc.CallOption) (*NotificationConfig, error)
 	// Updates an organization's settings.
 	UpdateOrganizationSettings(ctx context.Context, in *UpdateOrganizationSettingsRequest, opts ...grpc.CallOption) (*OrganizationSettings, error)
@@ -4431,8 +4431,8 @@ type SecurityCenterServer interface {
 	// Creates or updates a finding. The corresponding source must exist for a
 	// finding creation to succeed.
 	UpdateFinding(context.Context, *UpdateFindingRequest) (*Finding, error)
-	//
-	// Updates a notification config.
+	// Updates a notification config. The following update
+	// fields are allowed: description, pubsub_topic, streaming_config.filter
 	UpdateNotificationConfig(context.Context, *UpdateNotificationConfigRequest) (*NotificationConfig, error)
 	// Updates an organization's settings.
 	UpdateOrganizationSettings(context.Context, *UpdateOrganizationSettingsRequest) (*OrganizationSettings, error)
