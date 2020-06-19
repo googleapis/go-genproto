@@ -218,17 +218,17 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type RealmsServiceClient interface {
-	// Lists Realms in a given project and Location.
+	// Lists realms in a given project and location.
 	ListRealms(ctx context.Context, in *ListRealmsRequest, opts ...grpc.CallOption) (*ListRealmsResponse, error)
-	// Gets details of a single Realm.
+	// Gets details of a single realm.
 	GetRealm(ctx context.Context, in *GetRealmRequest, opts ...grpc.CallOption) (*Realm, error)
-	// Creates a new Realm in a given project and Location.
+	// Creates a new realm in a given project and location.
 	CreateRealm(ctx context.Context, in *CreateRealmRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Deletes a single Realm.
+	// Deletes a single realm.
 	DeleteRealm(ctx context.Context, in *DeleteRealmRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Patches a single Realm.
+	// Patches a single realm.
 	UpdateRealm(ctx context.Context, in *UpdateRealmRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Previews patches to a single Realm.
+	// Previews patches to a single realm.
 	PreviewRealmUpdate(ctx context.Context, in *PreviewRealmUpdateRequest, opts ...grpc.CallOption) (*PreviewRealmUpdateResponse, error)
 }
 
@@ -296,17 +296,17 @@ func (c *realmsServiceClient) PreviewRealmUpdate(ctx context.Context, in *Previe
 
 // RealmsServiceServer is the server API for RealmsService service.
 type RealmsServiceServer interface {
-	// Lists Realms in a given project and Location.
+	// Lists realms in a given project and location.
 	ListRealms(context.Context, *ListRealmsRequest) (*ListRealmsResponse, error)
-	// Gets details of a single Realm.
+	// Gets details of a single realm.
 	GetRealm(context.Context, *GetRealmRequest) (*Realm, error)
-	// Creates a new Realm in a given project and Location.
+	// Creates a new realm in a given project and location.
 	CreateRealm(context.Context, *CreateRealmRequest) (*longrunning.Operation, error)
-	// Deletes a single Realm.
+	// Deletes a single realm.
 	DeleteRealm(context.Context, *DeleteRealmRequest) (*longrunning.Operation, error)
-	// Patches a single Realm.
+	// Patches a single realm.
 	UpdateRealm(context.Context, *UpdateRealmRequest) (*longrunning.Operation, error)
-	// Previews patches to a single Realm.
+	// Previews patches to a single realm.
 	PreviewRealmUpdate(context.Context, *PreviewRealmUpdateRequest) (*PreviewRealmUpdateResponse, error)
 }
 

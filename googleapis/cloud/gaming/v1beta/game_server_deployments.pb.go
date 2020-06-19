@@ -52,8 +52,8 @@ type ListGameServerDeploymentsRequest struct {
 	// Required. The parent resource name. Uses the form:
 	// `projects/{project}/locations/{location}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. The maximum number of items to return.  If unspecified, server
-	// will pick an appropriate default. Server may return fewer items than
+	// Optional. The maximum number of items to return.  If unspecified, the server
+	// will pick an appropriate default. The server may return fewer items than
 	// requested. A caller should only rely on response's
 	// [next_page_token][google.cloud.gaming.v1beta.ListGameServerDeploymentsResponse.next_page_token] to
 	// determine if there are more GameServerDeployments left to be queried.
@@ -141,12 +141,12 @@ type ListGameServerDeploymentsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The list of Game Server Delpoyments.
+	// The list of game server deployments.
 	GameServerDeployments []*GameServerDeployment `protobuf:"bytes,1,rep,name=game_server_deployments,json=gameServerDeployments,proto3" json:"game_server_deployments,omitempty"`
 	// Token to retrieve the next page of results, or empty if there are no more
 	// results in the list.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// List of Locations that could not be reached.
+	// List of locations that could not be reached.
 	Unreachable []string `protobuf:"bytes,4,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
 }
 
@@ -209,7 +209,7 @@ type GetGameServerDeploymentRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Game Server Deployment to retrieve. Uses the form:
+	// Required. The name of the game server delpoyment to retrieve. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -261,7 +261,7 @@ type GetGameServerDeploymentRolloutRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Game Server Deployment to retrieve. Uses the form:
+	// Required. The name of the game server delpoyment to retrieve. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -315,9 +315,9 @@ type CreateGameServerDeploymentRequest struct {
 	// Required. The parent resource name. Uses the form:
 	// `projects/{project}/locations/{location}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The ID of the Game Server Deployment resource to be created.
+	// Required. The ID of the game server delpoyment resource to be created.
 	DeploymentId string `protobuf:"bytes,2,opt,name=deployment_id,json=deploymentId,proto3" json:"deployment_id,omitempty"`
-	// Required. The Game Server Deployment resource to be created.
+	// Required. The game server delpoyment resource to be created.
 	GameServerDeployment *GameServerDeployment `protobuf:"bytes,3,opt,name=game_server_deployment,json=gameServerDeployment,proto3" json:"game_server_deployment,omitempty"`
 }
 
@@ -380,7 +380,7 @@ type DeleteGameServerDeploymentRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Game Server Deployment to delete. Uses the form:
+	// Required. The name of the game server delpoyment to delete. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -432,7 +432,7 @@ type UpdateGameServerDeploymentRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The Game Server Deployment to be updated.
+	// Required. The game server delpoyment to be updated.
 	// Only fields specified in update_mask are updated.
 	GameServerDeployment *GameServerDeployment `protobuf:"bytes,1,opt,name=game_server_deployment,json=gameServerDeployment,proto3" json:"game_server_deployment,omitempty"`
 	// Required. Mask of fields to update. At least one path must be supplied in
@@ -497,7 +497,7 @@ type UpdateGameServerDeploymentRolloutRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The Game Server Deployment Rollout to be updated.
+	// Required. The game server delpoyment rollout to be updated.
 	// Only fields specified in update_mask are updated.
 	Rollout *GameServerDeploymentRollout `protobuf:"bytes,1,opt,name=rollout,proto3" json:"rollout,omitempty"`
 	// Required. Mask of fields to update. At least one path must be supplied in
@@ -561,7 +561,7 @@ type FetchDeploymentStateRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Game Server Deployment. Uses the form:
+	// Required. The name of the game server delpoyment. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -612,9 +612,9 @@ type FetchDeploymentStateResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The state of the Game Server Deployment in each Game Server Cluster.
+	// The state of the game server deployment in each game server cluster.
 	ClusterState []*FetchDeploymentStateResponse_DeployedClusterState `protobuf:"bytes,1,rep,name=cluster_state,json=clusterState,proto3" json:"cluster_state,omitempty"`
-	// List of Locations that could not be reached.
+	// List of locations that could not be reached.
 	Unavailable []string `protobuf:"bytes,2,rep,name=unavailable,proto3" json:"unavailable,omitempty"`
 }
 
@@ -664,13 +664,13 @@ func (x *FetchDeploymentStateResponse) GetUnavailable() []string {
 	return nil
 }
 
-// A Game Server Deployment resource.
+// A game server deployment resource.
 type GameServerDeployment struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the Game Server Deployment. Uses the form:
+	// The resource name of the game server deployment. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
 	// For example,
@@ -681,12 +681,12 @@ type GameServerDeployment struct {
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last-modified time.
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	// The labels associated with this Game Server Deployment. Each label is a
+	// The labels associated with this game server deployment. Each label is a
 	// key-value pair.
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// ETag of the resource.
 	Etag string `protobuf:"bytes,7,opt,name=etag,proto3" json:"etag,omitempty"`
-	// Human readable description of the Game Server Deployment.
+	// Human readable description of the game server delpoyment.
 	Description string `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
 }
 
@@ -764,18 +764,18 @@ func (x *GameServerDeployment) GetDescription() string {
 	return ""
 }
 
-// A Game Server Config override.
+// A game server config override.
 type GameServerConfigOverride struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Selector chooses the Game Server Config targets.
+	// Selector chooses the game server config targets.
 	//
 	// Types that are assignable to Selector:
 	//	*GameServerConfigOverride_RealmsSelector
 	Selector isGameServerConfigOverride_Selector `protobuf_oneof:"selector"`
-	// Selects the Game Server Config and how it should be applied.
+	// Selects the game server config and how it should be applied.
 	//
 	// Types that are assignable to Change:
 	//	*GameServerConfigOverride_ConfigVersion
@@ -864,14 +864,14 @@ type GameServerConfigOverride_ConfigVersion struct {
 
 func (*GameServerConfigOverride_ConfigVersion) isGameServerConfigOverride_Change() {}
 
-// The Game Server Deployment Rollout which represents the desired rollout
+// The game server deployment rollout which represents the desired rollout
 // state.
 type GameServerDeploymentRollout struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the Game Server Deployment Rollout. Uses the form:
+	// The resource name of the game server deployment rollout. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
 	// For example,
@@ -882,13 +882,13 @@ type GameServerDeploymentRollout struct {
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last-modified time.
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	// The default Game Server Config is applied to all Realms unless overridden
-	// in the Rollout. For example,
+	// The default game server config is applied to all realms unless overridden
+	// in the rollout. For example,
 	//
 	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	DefaultGameServerConfig string `protobuf:"bytes,4,opt,name=default_game_server_config,json=defaultGameServerConfig,proto3" json:"default_game_server_config,omitempty"`
-	// Contains the Game Server Config Rollout overrides. Overrides are processed
-	// in the order they are listed. Once a match is found for a Realm, the rest
+	// Contains the game server config rollout overrides. Overrides are processed
+	// in the order they are listed. Once a match is found for a realm, the rest
 	// of the list is not processed.
 	GameServerConfigOverrides []*GameServerConfigOverride `protobuf:"bytes,5,rep,name=game_server_config_overrides,json=gameServerConfigOverrides,proto3" json:"game_server_config_overrides,omitempty"`
 	// ETag of the resource.
@@ -975,7 +975,7 @@ type PreviewGameServerDeploymentRolloutRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The Game Server Deployment Rollout to be updated.
+	// Required. The game server deployment rollout to be updated.
 	// Only fields specified in update_mask are updated.
 	Rollout *GameServerDeploymentRollout `protobuf:"bytes,1,opt,name=rollout,proto3" json:"rollout,omitempty"`
 	// Optional. Mask of fields to update. At least one path must be supplied in
@@ -986,7 +986,7 @@ type PreviewGameServerDeploymentRolloutRequest struct {
 	// // /docs/reference/google.protobuf#fieldmask
 	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. The target timestamp to compute the preview. Defaults to the immediately
-	// after the proposed Rollout completes.
+	// after the proposed rollout completes.
 	PreviewTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=preview_time,json=previewTime,proto3" json:"preview_time,omitempty"`
 }
 
@@ -1052,7 +1052,7 @@ type PreviewGameServerDeploymentRolloutResponse struct {
 
 	// Locations that could not be reached on this request.
 	Unavailable []string `protobuf:"bytes,2,rep,name=unavailable,proto3" json:"unavailable,omitempty"`
-	// ETag of the Game Server Deployment.
+	// ETag of the game server deployment.
 	Etag string `protobuf:"bytes,3,opt,name=etag,proto3" json:"etag,omitempty"`
 	// The target state.
 	TargetState *TargetState `protobuf:"bytes,4,opt,name=target_state,json=targetState,proto3" json:"target_state,omitempty"`
@@ -1111,7 +1111,7 @@ func (x *PreviewGameServerDeploymentRolloutResponse) GetTargetState() *TargetSta
 	return nil
 }
 
-// The Game Server Cluster changes made by the Game Server Deployment.
+// The game server cluster changes made by the game server deployment.
 type FetchDeploymentStateResponse_DeployedClusterState struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1120,7 +1120,7 @@ type FetchDeploymentStateResponse_DeployedClusterState struct {
 	// The name of the cluster.
 	Cluster string `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
 	// The details about the Agones fleets and autoscalers created in the
-	// Game Server Cluster.
+	// game server cluster.
 	FleetDetails []*DeployedFleetDetails `protobuf:"bytes,2,rep,name=fleet_details,json=fleetDetails,proto3" json:"fleet_details,omitempty"`
 }
 

@@ -202,17 +202,17 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GameServerConfigsServiceClient interface {
-	// Lists Game Server Configs in a given project, Location, and Game Server
-	// Deployment.
+	// Lists game server configs in a given project, location, and game server
+	// deployment.
 	ListGameServerConfigs(ctx context.Context, in *ListGameServerConfigsRequest, opts ...grpc.CallOption) (*ListGameServerConfigsResponse, error)
-	// Gets details of a single Game Server Config.
+	// Gets details of a single game server config.
 	GetGameServerConfig(ctx context.Context, in *GetGameServerConfigRequest, opts ...grpc.CallOption) (*GameServerConfig, error)
-	// Creates a new Game Server Config in a given project, Location, and Game
-	// Server Deployment. Game Server Configs are immutable, and are not applied
-	// until referenced in the Game Server Deployment Rollout resource.
+	// Creates a new game server config in a given project, location, and game
+	// server deployment. Game server configs are immutable, and are not applied
+	// until referenced in the game server deployment rollout resource.
 	CreateGameServerConfig(ctx context.Context, in *CreateGameServerConfigRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Deletes a single Game Server Config. The deletion will fail if the Game
-	// Server Config is referenced in a Game Server Deployment Rollout.
+	// Deletes a single game server config. The deletion will fail if the game
+	// server config is referenced in a game server deployment rollout.
 	DeleteGameServerConfig(ctx context.Context, in *DeleteGameServerConfigRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -262,17 +262,17 @@ func (c *gameServerConfigsServiceClient) DeleteGameServerConfig(ctx context.Cont
 
 // GameServerConfigsServiceServer is the server API for GameServerConfigsService service.
 type GameServerConfigsServiceServer interface {
-	// Lists Game Server Configs in a given project, Location, and Game Server
-	// Deployment.
+	// Lists game server configs in a given project, location, and game server
+	// deployment.
 	ListGameServerConfigs(context.Context, *ListGameServerConfigsRequest) (*ListGameServerConfigsResponse, error)
-	// Gets details of a single Game Server Config.
+	// Gets details of a single game server config.
 	GetGameServerConfig(context.Context, *GetGameServerConfigRequest) (*GameServerConfig, error)
-	// Creates a new Game Server Config in a given project, Location, and Game
-	// Server Deployment. Game Server Configs are immutable, and are not applied
-	// until referenced in the Game Server Deployment Rollout resource.
+	// Creates a new game server config in a given project, location, and game
+	// server deployment. Game server configs are immutable, and are not applied
+	// until referenced in the game server deployment rollout resource.
 	CreateGameServerConfig(context.Context, *CreateGameServerConfigRequest) (*longrunning.Operation, error)
-	// Deletes a single Game Server Config. The deletion will fail if the Game
-	// Server Config is referenced in a Game Server Deployment Rollout.
+	// Deletes a single game server config. The deletion will fail if the game
+	// server config is referenced in a game server deployment rollout.
 	DeleteGameServerConfig(context.Context, *DeleteGameServerConfigRequest) (*longrunning.Operation, error)
 }
 
