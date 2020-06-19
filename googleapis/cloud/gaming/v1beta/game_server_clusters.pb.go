@@ -52,8 +52,8 @@ type ListGameServerClustersRequest struct {
 	// Required. The parent resource name. Uses the form:
 	// "projects/{project}/locations/{location}/realms/{realm}".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. The maximum number of items to return.  If unspecified, server
-	// will pick an appropriate default. Server may return fewer items than
+	// Optional. The maximum number of items to return.  If unspecified, the server
+	// will pick an appropriate default. The server may return fewer items than
 	// requested. A caller should only rely on response's
 	// [next_page_token][google.cloud.gaming.v1beta.ListGameServerClustersResponse.next_page_token] to
 	// determine if there are more GameServerClusters left to be queried.
@@ -140,12 +140,12 @@ type ListGameServerClustersResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The list of Game Server Clusters.
+	// The list of game server clusters.
 	GameServerClusters []*GameServerCluster `protobuf:"bytes,1,rep,name=game_server_clusters,json=gameServerClusters,proto3" json:"game_server_clusters,omitempty"`
 	// Token to retrieve the next page of results, or empty if there are no more
 	// results in the list.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// List of Locations that could not be reached.
+	// List of locations that could not be reached.
 	Unreachable []string `protobuf:"bytes,4,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
 }
 
@@ -208,7 +208,7 @@ type GetGameServerClusterRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Game Server Cluster to retrieve. Uses the form:
+	// Required. The name of the game server cluster to retrieve. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/realms/{realm-id}/gameServerClusters/{cluster}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -262,9 +262,9 @@ type CreateGameServerClusterRequest struct {
 	// Required. The parent resource name. Uses the form:
 	// `projects/{project}/locations/{location}/realms/{realm-id}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The ID of the Game Server Cluster resource to be created.
+	// Required. The ID of the game server cluster resource to be created.
 	GameServerClusterId string `protobuf:"bytes,2,opt,name=game_server_cluster_id,json=gameServerClusterId,proto3" json:"game_server_cluster_id,omitempty"`
-	// Required. The Game Server Cluster resource to be created.
+	// Required. The game server cluster resource to be created.
 	GameServerCluster *GameServerCluster `protobuf:"bytes,3,opt,name=game_server_cluster,json=gameServerCluster,proto3" json:"game_server_cluster,omitempty"`
 }
 
@@ -330,9 +330,9 @@ type PreviewCreateGameServerClusterRequest struct {
 	// Required. The parent resource name. Uses the form:
 	// `projects/{project}/locations/{location}/realms/{realm}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The ID of the Game Server Cluster resource to be created.
+	// Required. The ID of the game server cluster resource to be created.
 	GameServerClusterId string `protobuf:"bytes,2,opt,name=game_server_cluster_id,json=gameServerClusterId,proto3" json:"game_server_cluster_id,omitempty"`
-	// Required. The Game Server Cluster resource to be created.
+	// Required. The game server cluster resource to be created.
 	GameServerCluster *GameServerCluster `protobuf:"bytes,3,opt,name=game_server_cluster,json=gameServerCluster,proto3" json:"game_server_cluster,omitempty"`
 	// Optional. The target timestamp to compute the preview.
 	PreviewTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=preview_time,json=previewTime,proto3" json:"preview_time,omitempty"`
@@ -463,7 +463,7 @@ type DeleteGameServerClusterRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Game Server Cluster to delete. Uses the form:
+	// Required. The name of the game server cluster to delete. Uses the form:
 	// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -513,7 +513,7 @@ type PreviewDeleteGameServerClusterRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Game Server Cluster to delete. Uses the form:
+	// Required. The name of the game server cluster to delete. Uses the form:
 	// `projects/{project}/locations/{location}/gameServerClusters/{cluster}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. The target timestamp to compute the preview.
@@ -631,7 +631,7 @@ type UpdateGameServerClusterRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The Game Server Cluster to be updated.
+	// Required. The game server cluster to be updated.
 	// Only fields specified in update_mask are updated.
 	GameServerCluster *GameServerCluster `protobuf:"bytes,1,opt,name=game_server_cluster,json=gameServerCluster,proto3" json:"game_server_cluster,omitempty"`
 	// Required. Mask of fields to update. At least one path must be supplied in
@@ -695,7 +695,7 @@ type PreviewUpdateGameServerClusterRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The Game Server Cluster to be updated.
+	// Required. The game server cluster to be updated.
 	// Only fields specified in update_mask are updated.
 	GameServerCluster *GameServerCluster `protobuf:"bytes,1,opt,name=game_server_cluster,json=gameServerCluster,proto3" json:"game_server_cluster,omitempty"`
 	// Required. Mask of fields to update. At least one path must be supplied in
@@ -820,7 +820,7 @@ func (x *PreviewUpdateGameServerClusterResponse) GetTargetState() *TargetState {
 	return nil
 }
 
-// The Game Server Cluster connection information.
+// The game server cluster connection information.
 type GameServerClusterConnectionInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -831,7 +831,7 @@ type GameServerClusterConnectionInfo struct {
 	// Types that are assignable to ClusterReference:
 	//	*GameServerClusterConnectionInfo_GkeClusterReference
 	ClusterReference isGameServerClusterConnectionInfo_ClusterReference `protobuf_oneof:"cluster_reference"`
-	// Namespace designated on the Game Server Cluster where the Agones game
+	// Namespace designated on the game server cluster where the Agones game
 	// server instances will be created. Existence of the namespace will be
 	// validated during creation.
 	Namespace string `protobuf:"bytes,5,opt,name=namespace,proto3" json:"namespace,omitempty"`
@@ -958,13 +958,13 @@ func (x *GkeClusterReference) GetCluster() string {
 	return ""
 }
 
-// A Game Server Cluster resource.
+// A game server cluster resource.
 type GameServerCluster struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the Game Server Cluster. Uses the form:
+	// Required. The resource name of the game server cluster. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
 	// For example,
@@ -975,11 +975,11 @@ type GameServerCluster struct {
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last-modified time.
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	// The labels associated with this Game Server Cluster. Each label is a
+	// The labels associated with this game server cluster. Each label is a
 	// key-value pair.
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Game Server Cluster connection information. This information is used to
-	// manage Game Server Clusters.
+	// The game server cluster connection information. This information is used to
+	// manage game server clusters.
 	ConnectionInfo *GameServerClusterConnectionInfo `protobuf:"bytes,5,opt,name=connection_info,json=connectionInfo,proto3" json:"connection_info,omitempty"`
 	// ETag of the resource.
 	Etag string `protobuf:"bytes,6,opt,name=etag,proto3" json:"etag,omitempty"`

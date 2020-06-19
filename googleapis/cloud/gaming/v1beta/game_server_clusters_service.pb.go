@@ -291,7 +291,7 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GameServerClustersServiceClient interface {
-	// Lists Game Server Clusters in a given project and location.
+	// Lists game server clusters in a given project and location.
 	ListGameServerClusters(ctx context.Context, in *ListGameServerClustersRequest, opts ...grpc.CallOption) (*ListGameServerClustersResponse, error)
 	// Gets details of a single game server cluster.
 	GetGameServerCluster(ctx context.Context, in *GetGameServerClusterRequest, opts ...grpc.CallOption) (*GameServerCluster, error)
@@ -392,7 +392,7 @@ func (c *gameServerClustersServiceClient) PreviewUpdateGameServerCluster(ctx con
 
 // GameServerClustersServiceServer is the server API for GameServerClustersService service.
 type GameServerClustersServiceServer interface {
-	// Lists Game Server Clusters in a given project and location.
+	// Lists game server clusters in a given project and location.
 	ListGameServerClusters(context.Context, *ListGameServerClustersRequest) (*ListGameServerClustersResponse, error)
 	// Gets details of a single game server cluster.
 	GetGameServerCluster(context.Context, *GetGameServerClusterRequest) (*GameServerCluster, error)

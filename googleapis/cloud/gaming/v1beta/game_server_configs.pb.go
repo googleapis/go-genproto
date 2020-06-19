@@ -58,7 +58,7 @@ type ListGameServerConfigsRequest struct {
 	// [next_page_token][google.cloud.gaming.v1beta.ListGameServerConfigsResponse.next_page_token] to
 	// determine if there are more GameServerConfigs left to be queried.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// Optional. The next_page_token value returned from a previous List request, if any.
+	// Optional. The next_page_token value returned from a previous list request, if any.
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional. The filter to apply to list results.
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -140,12 +140,12 @@ type ListGameServerConfigsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The list of Game Server Configs.
+	// The list of game server configs.
 	GameServerConfigs []*GameServerConfig `protobuf:"bytes,1,rep,name=game_server_configs,json=gameServerConfigs,proto3" json:"game_server_configs,omitempty"`
 	// Token to retrieve the next page of results, or empty if there are no more
 	// results in the list.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// List of Locations that could not be reached.
+	// List of locations that could not be reached.
 	Unreachable []string `protobuf:"bytes,4,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
 }
 
@@ -208,7 +208,7 @@ type GetGameServerConfigRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Game Server Config to retrieve. Uses the form:
+	// Required. The name of the game server config to retrieve. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -263,9 +263,9 @@ type CreateGameServerConfigRequest struct {
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The ID of the Game Server Config resource to be created.
+	// Required. The ID of the game server config resource to be created.
 	ConfigId string `protobuf:"bytes,2,opt,name=config_id,json=configId,proto3" json:"config_id,omitempty"`
-	// Required. The Game Server Config resource to be created.
+	// Required. The game server config resource to be created.
 	GameServerConfig *GameServerConfig `protobuf:"bytes,3,opt,name=game_server_config,json=gameServerConfig,proto3" json:"game_server_config,omitempty"`
 }
 
@@ -328,7 +328,7 @@ type DeleteGameServerConfigRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Game Server Config to delete. Uses the form:
+	// Required. The name of the game server config to delete. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -384,8 +384,8 @@ type ScalingConfig struct {
 	// Required. Agones fleet autoscaler spec. Example spec:
 	// https://agones.dev/site/docs/reference/fleetautoscaler/
 	FleetAutoscalerSpec string `protobuf:"bytes,2,opt,name=fleet_autoscaler_spec,json=fleetAutoscalerSpec,proto3" json:"fleet_autoscaler_spec,omitempty"`
-	// Labels used to identify the Game Server Clusters to which this Agones
-	// scaling config applies. A Game Server Cluster is subject to this Agones
+	// Labels used to identify the game server clusters to which this Agones
+	// scaling config applies. A game server cluster is subject to this Agones
 	// scaling config if its labels match any of the selector entries.
 	Selectors []*LabelSelector `protobuf:"bytes,4,rep,name=selectors,proto3" json:"selectors,omitempty"`
 	// The schedules to which this Scaling Config applies.
@@ -511,13 +511,13 @@ func (x *FleetConfig) GetName() string {
 	return ""
 }
 
-// A Game Server Config resource.
+// A game server config resource.
 type GameServerConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the Game Server Config. Uses the form:
+	// The resource name of the game server config. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
 	// For example,
@@ -528,7 +528,7 @@ type GameServerConfig struct {
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last-modified time.
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	// The labels associated with this Game Server Config. Each label is a
+	// The labels associated with this game server config. Each label is a
 	// key-value pair.
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig
@@ -536,7 +536,7 @@ type GameServerConfig struct {
 	FleetConfigs []*FleetConfig `protobuf:"bytes,5,rep,name=fleet_configs,json=fleetConfigs,proto3" json:"fleet_configs,omitempty"`
 	// The autoscaling settings.
 	ScalingConfigs []*ScalingConfig `protobuf:"bytes,6,rep,name=scaling_configs,json=scalingConfigs,proto3" json:"scaling_configs,omitempty"`
-	// The description of the Game Server Config.
+	// The description of the game server config.
 	Description string `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
 }
 
