@@ -56,7 +56,7 @@ type ListRealmsRequest struct {
 	// will pick an appropriate default. Server may return fewer items than
 	// requested. A caller should only rely on response's
 	// [next_page_token][google.cloud.gaming.v1beta.ListRealmsResponse.next_page_token] to
-	// determine if there are more Realms left to be queried.
+	// determine if there are more realms left to be queried.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. The next_page_token value returned from a previous List request,
 	// if any.
@@ -141,12 +141,12 @@ type ListRealmsResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The list of Realms.
+	// The list of realms.
 	Realms []*Realm `protobuf:"bytes,1,rep,name=realms,proto3" json:"realms,omitempty"`
 	// Token to retrieve the next page of results, or empty if there are no more
 	// results in the list.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// List of Locations that could not be reached.
+	// List of locations that could not be reached.
 	Unreachable []string `protobuf:"bytes,3,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
 }
 
@@ -209,7 +209,7 @@ type GetRealmRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Realm to retrieve. Uses the form:
+	// Required. The name of the realm to retrieve. Uses the form:
 	// `projects/{project}/locations/{location}/realms/{realm}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -262,9 +262,9 @@ type CreateRealmRequest struct {
 	// Required. The parent resource name. Uses the form:
 	// `projects/{project}/locations/{location}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The ID of the Realm resource to be created.
+	// Required. The ID of the realm resource to be created.
 	RealmId string `protobuf:"bytes,2,opt,name=realm_id,json=realmId,proto3" json:"realm_id,omitempty"`
-	// Required. The Realm resource to be created.
+	// Required. The realm resource to be created.
 	Realm *Realm `protobuf:"bytes,3,opt,name=realm,proto3" json:"realm,omitempty"`
 }
 
@@ -327,7 +327,7 @@ type DeleteRealmRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Realm to delete. Uses the form:
+	// Required. The name of the realm to delete. Uses the form:
 	// `projects/{project}/locations/{location}/realms/{realm}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -377,7 +377,7 @@ type UpdateRealmRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The Realm to be updated.
+	// Required. The realm to be updated.
 	// Only fields specified in update_mask are updated.
 	Realm *Realm `protobuf:"bytes,1,opt,name=realm,proto3" json:"realm,omitempty"`
 	// Required. The update mask applies to the resource. For the `FieldMask`
@@ -441,7 +441,7 @@ type PreviewRealmUpdateRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The Realm to be updated.
+	// Required. The realm to be updated.
 	// Only fields specified in update_mask are updated.
 	Realm *Realm `protobuf:"bytes,1,opt,name=realm,proto3" json:"realm,omitempty"`
 	// Required. The update mask applies to the resource. For the `FieldMask`
@@ -566,13 +566,13 @@ func (x *PreviewRealmUpdateResponse) GetTargetState() *TargetState {
 	return nil
 }
 
-// A Realm resource.
+// A realm resource.
 type Realm struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the Realm. Uses the form:
+	// The resource name of the realm. Uses the form:
 	// `projects/{project}/locations/{location}/realms/{realm}`. For
 	// example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -580,15 +580,15 @@ type Realm struct {
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last-modified time.
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	// The labels associated with this Realm. Each label is a key-value pair.
+	// The labels associated with this realm. Each label is a key-value pair.
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Required. Time zone where all policies targeting this Realm are evaluated. The value
+	// Required. Time zone where all policies targeting this realm are evaluated. The value
 	// of this field must be from the IANA time zone database:
 	// https://www.iana.org/time-zones.
 	TimeZone string `protobuf:"bytes,6,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
 	// ETag of the resource.
 	Etag string `protobuf:"bytes,7,opt,name=etag,proto3" json:"etag,omitempty"`
-	// Human readable description of the Realm.
+	// Human readable description of the realm.
 	Description string `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
 }
 

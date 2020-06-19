@@ -120,7 +120,7 @@ type OperationMetadata struct {
 	ApiVersion string `protobuf:"bytes,7,opt,name=api_version,json=apiVersion,proto3" json:"api_version,omitempty"`
 	// Output only. List of Locations that could not be reached.
 	Unreachable []string `protobuf:"bytes,8,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
-	// Output only. Operation status for gameservices API operations. Operation status is in
+	// Output only. Operation status for Game Services API operations. Operation status is in
 	// the form of key-value pairs where keys are resource IDs and the values show
 	// the status of the operation. In case of failures, the value includes an
 	// error code and error message.
@@ -337,13 +337,13 @@ func (x *LabelSelector) GetLabels() map[string]string {
 	return nil
 }
 
-// The Realm selector, used to match Realm resources.
+// The realm selector, used to match realm resources.
 type RealmSelector struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// List of Realms to match.
+	// List of realms to match.
 	Realms []string `protobuf:"bytes,1,rep,name=realms,proto3" json:"realms,omitempty"`
 }
 
@@ -408,7 +408,7 @@ type Schedule struct {
 	CronJobDuration *duration.Duration `protobuf:"bytes,3,opt,name=cron_job_duration,json=cronJobDuration,proto3" json:"cron_job_duration,omitempty"`
 	// The cron definition of the scheduled event. See
 	// https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as
-	// defined by the Realm.
+	// defined by the realm.
 	CronSpec string `protobuf:"bytes,4,opt,name=cron_spec,json=cronSpec,proto3" json:"cron_spec,omitempty"`
 }
 
@@ -478,7 +478,7 @@ type SpecSource struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The Game Server Config resource. Uses the form:
+	// The game server config resource. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}`.
 	GameServerConfigName string `protobuf:"bytes,1,opt,name=game_server_config_name,json=gameServerConfigName,proto3" json:"game_server_config_name,omitempty"`
@@ -539,15 +539,15 @@ type TargetDetails struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The Game Server Cluster name. Uses the form:
+	// The game server cluster name. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
 	GameServerClusterName string `protobuf:"bytes,1,opt,name=game_server_cluster_name,json=gameServerClusterName,proto3" json:"game_server_cluster_name,omitempty"`
-	// The Game Server Deployment name. Uses the form:
+	// The game server deployment name. Uses the form:
 	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}`.
 	GameServerDeploymentName string `protobuf:"bytes,2,opt,name=game_server_deployment_name,json=gameServerDeploymentName,proto3" json:"game_server_deployment_name,omitempty"`
-	// Agones fleet details for Game Server Clusters and Game Server Deployments.
+	// Agones fleet details for game server clusters and game server deployments.
 	FleetDetails []*TargetDetails_TargetFleetDetails `protobuf:"bytes,3,rep,name=fleet_details,json=fleetDetails,proto3" json:"fleet_details,omitempty"`
 }
 

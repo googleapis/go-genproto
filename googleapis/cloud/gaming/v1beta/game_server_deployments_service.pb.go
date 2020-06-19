@@ -309,31 +309,31 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GameServerDeploymentsServiceClient interface {
-	// Lists Game Server Deployments in a given project and Location.
+	// Lists game server deployments in a given project and location.
 	ListGameServerDeployments(ctx context.Context, in *ListGameServerDeploymentsRequest, opts ...grpc.CallOption) (*ListGameServerDeploymentsResponse, error)
-	// Gets details of a single Game Server Deployment.
+	// Gets details of a single game server deployment.
 	GetGameServerDeployment(ctx context.Context, in *GetGameServerDeploymentRequest, opts ...grpc.CallOption) (*GameServerDeployment, error)
-	// Creates a new Game Server Deployment in a given project and Location.
+	// Creates a new game server deployment in a given project and location.
 	CreateGameServerDeployment(ctx context.Context, in *CreateGameServerDeploymentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Deletes a single Game Server Deployment.
+	// Deletes a single game server deployment.
 	DeleteGameServerDeployment(ctx context.Context, in *DeleteGameServerDeploymentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Patches a Game Server Deployment.
+	// Patches a game server deployment.
 	UpdateGameServerDeployment(ctx context.Context, in *UpdateGameServerDeploymentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Gets details a single Game Server Deployment Rollout.
+	// Gets details a single game server deployment rollout.
 	GetGameServerDeploymentRollout(ctx context.Context, in *GetGameServerDeploymentRolloutRequest, opts ...grpc.CallOption) (*GameServerDeploymentRollout, error)
-	// Patches a single Game Server Deployment Rollout.
+	// Patches a single game server deployment rollout.
 	// The method will not return an error if the update does not affect any
 	// existing realms. For example - if the default_game_server_config is changed
 	// but all existing realms use the override, that is valid. Similarly, if a
 	// non existing realm is explicitly called out in game_server_config_overrides
 	// field, that will also not result in an error.
 	UpdateGameServerDeploymentRollout(ctx context.Context, in *UpdateGameServerDeploymentRolloutRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Previews the Game Server Deployment Rollout. This API does not mutate the
-	// Rollout resource.
+	// Previews the game server deployment rollout. This API does not mutate the
+	// rollout resource.
 	PreviewGameServerDeploymentRollout(ctx context.Context, in *PreviewGameServerDeploymentRolloutRequest, opts ...grpc.CallOption) (*PreviewGameServerDeploymentRolloutResponse, error)
-	// Retrieves information about the current state of the Game Server
-	// Ddeployment. Gathers all the Agones fleets and Agones autoscalers,
-	// including fleets running an older version of the Game Server Deployment.
+	// Retrieves information about the current state of the game server
+	// deployment. Gathers all the Agones fleets and Agones autoscalers,
+	// including fleets running an older version of the game server deployment.
 	FetchDeploymentState(ctx context.Context, in *FetchDeploymentStateRequest, opts ...grpc.CallOption) (*FetchDeploymentStateResponse, error)
 }
 
@@ -428,31 +428,31 @@ func (c *gameServerDeploymentsServiceClient) FetchDeploymentState(ctx context.Co
 
 // GameServerDeploymentsServiceServer is the server API for GameServerDeploymentsService service.
 type GameServerDeploymentsServiceServer interface {
-	// Lists Game Server Deployments in a given project and Location.
+	// Lists game server deployments in a given project and location.
 	ListGameServerDeployments(context.Context, *ListGameServerDeploymentsRequest) (*ListGameServerDeploymentsResponse, error)
-	// Gets details of a single Game Server Deployment.
+	// Gets details of a single game server deployment.
 	GetGameServerDeployment(context.Context, *GetGameServerDeploymentRequest) (*GameServerDeployment, error)
-	// Creates a new Game Server Deployment in a given project and Location.
+	// Creates a new game server deployment in a given project and location.
 	CreateGameServerDeployment(context.Context, *CreateGameServerDeploymentRequest) (*longrunning.Operation, error)
-	// Deletes a single Game Server Deployment.
+	// Deletes a single game server deployment.
 	DeleteGameServerDeployment(context.Context, *DeleteGameServerDeploymentRequest) (*longrunning.Operation, error)
-	// Patches a Game Server Deployment.
+	// Patches a game server deployment.
 	UpdateGameServerDeployment(context.Context, *UpdateGameServerDeploymentRequest) (*longrunning.Operation, error)
-	// Gets details a single Game Server Deployment Rollout.
+	// Gets details a single game server deployment rollout.
 	GetGameServerDeploymentRollout(context.Context, *GetGameServerDeploymentRolloutRequest) (*GameServerDeploymentRollout, error)
-	// Patches a single Game Server Deployment Rollout.
+	// Patches a single game server deployment rollout.
 	// The method will not return an error if the update does not affect any
 	// existing realms. For example - if the default_game_server_config is changed
 	// but all existing realms use the override, that is valid. Similarly, if a
 	// non existing realm is explicitly called out in game_server_config_overrides
 	// field, that will also not result in an error.
 	UpdateGameServerDeploymentRollout(context.Context, *UpdateGameServerDeploymentRolloutRequest) (*longrunning.Operation, error)
-	// Previews the Game Server Deployment Rollout. This API does not mutate the
-	// Rollout resource.
+	// Previews the game server deployment rollout. This API does not mutate the
+	// rollout resource.
 	PreviewGameServerDeploymentRollout(context.Context, *PreviewGameServerDeploymentRolloutRequest) (*PreviewGameServerDeploymentRolloutResponse, error)
-	// Retrieves information about the current state of the Game Server
-	// Ddeployment. Gathers all the Agones fleets and Agones autoscalers,
-	// including fleets running an older version of the Game Server Deployment.
+	// Retrieves information about the current state of the game server
+	// deployment. Gathers all the Agones fleets and Agones autoscalers,
+	// including fleets running an older version of the game server deployment.
 	FetchDeploymentState(context.Context, *FetchDeploymentStateRequest) (*FetchDeploymentStateResponse, error)
 }
 
