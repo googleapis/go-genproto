@@ -1831,18 +1831,30 @@ type AgentsClient interface {
 	//
 	// Uploads new intents and entity types without deleting the existing ones.
 	// Intents and entity types with the same name are replaced with the new
-	// versions from ImportAgentRequest.
+	// versions from [ImportAgentRequest][google.cloud.dialogflow.v2beta1.ImportAgentRequest]. After the import, the imported draft
+	// agent will be trained automatically (unless disabled in agent settings).
+	// However, once the import is done, training may not be completed yet. Please
+	// call [TrainAgent][google.cloud.dialogflow.v2beta1.Agents.TrainAgent] and wait for the operation it returns in order to train
+	// explicitly.
 	//
 	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// An operation which tracks when importing is complete. It only tracks
+	// when the draft agent is updated not when it is done training.
 	ImportAgent(ctx context.Context, in *ImportAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Restores the specified agent from a ZIP file.
 	//
 	// Replaces the current agent version with a new one. All the intents and
-	// entity types in the older version are deleted.
+	// entity types in the older version are deleted. After the restore, the
+	// restored draft agent will be trained automatically (unless disabled in
+	// agent settings). However, once the restore is done, training may not be
+	// completed yet. Please call [TrainAgent][google.cloud.dialogflow.v2beta1.Agents.TrainAgent] and wait for the operation it
+	// returns in order to train explicitly.
 	//
 	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// An operation which tracks when restoring is complete. It only tracks
+	// when the draft agent is updated not when it is done training.
 	RestoreAgent(ctx context.Context, in *RestoreAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Gets agent validation result. Agent validation is performed during
 	// training time and is updated automatically when training is completed.
@@ -1967,18 +1979,30 @@ type AgentsServer interface {
 	//
 	// Uploads new intents and entity types without deleting the existing ones.
 	// Intents and entity types with the same name are replaced with the new
-	// versions from ImportAgentRequest.
+	// versions from [ImportAgentRequest][google.cloud.dialogflow.v2beta1.ImportAgentRequest]. After the import, the imported draft
+	// agent will be trained automatically (unless disabled in agent settings).
+	// However, once the import is done, training may not be completed yet. Please
+	// call [TrainAgent][google.cloud.dialogflow.v2beta1.Agents.TrainAgent] and wait for the operation it returns in order to train
+	// explicitly.
 	//
 	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// An operation which tracks when importing is complete. It only tracks
+	// when the draft agent is updated not when it is done training.
 	ImportAgent(context.Context, *ImportAgentRequest) (*longrunning.Operation, error)
 	// Restores the specified agent from a ZIP file.
 	//
 	// Replaces the current agent version with a new one. All the intents and
-	// entity types in the older version are deleted.
+	// entity types in the older version are deleted. After the restore, the
+	// restored draft agent will be trained automatically (unless disabled in
+	// agent settings). However, once the restore is done, training may not be
+	// completed yet. Please call [TrainAgent][google.cloud.dialogflow.v2beta1.Agents.TrainAgent] and wait for the operation it
+	// returns in order to train explicitly.
 	//
 	//
 	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// An operation which tracks when restoring is complete. It only tracks
+	// when the draft agent is updated not when it is done training.
 	RestoreAgent(context.Context, *RestoreAgentRequest) (*longrunning.Operation, error)
 	// Gets agent validation result. Agent validation is performed during
 	// training time and is updated automatically when training is completed.
