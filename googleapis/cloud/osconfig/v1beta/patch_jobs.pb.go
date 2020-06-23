@@ -2015,7 +2015,7 @@ type PatchInstanceFilter struct {
 	// instances in any zone.
 	Zones []string `protobuf:"bytes,3,rep,name=zones,proto3" json:"zones,omitempty"`
 	// Targets any of the VM instances specified. Instances are specified by their
-	// URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME],
+	// URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`,
 	// `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
 	// `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
 	Instances []string `protobuf:"bytes,4,rep,name=instances,proto3" json:"instances,omitempty"`
