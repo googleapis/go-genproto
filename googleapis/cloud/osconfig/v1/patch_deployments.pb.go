@@ -135,7 +135,7 @@ type PatchDeployment struct {
 	// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time the patch deployment was last updated. Timestamp is in
-	// [RFC3339]("https://www.ietf.org/rfc/rfc3339.txt) text format.
+	// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	UpdateTime *timestamp.Timestamp `protobuf:"bytes,9,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. The last time a patch job was started by this deployment.
 	// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
