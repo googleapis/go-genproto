@@ -864,64 +864,6 @@ type StructuredQuery_UnaryFilter_Field struct {
 
 func (*StructuredQuery_UnaryFilter_Field) isStructuredQuery_UnaryFilter_OperandType() {}
 
-// An order on a field.
-type StructuredQuery_Order struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// The field to order by.
-	Field *StructuredQuery_FieldReference `protobuf:"bytes,1,opt,name=field,proto3" json:"field,omitempty"`
-	// The direction to order by. Defaults to `ASCENDING`.
-	Direction StructuredQuery_Direction `protobuf:"varint,2,opt,name=direction,proto3,enum=google.firestore.v1.StructuredQuery_Direction" json:"direction,omitempty"`
-}
-
-func (x *StructuredQuery_Order) Reset() {
-	*x = StructuredQuery_Order{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *StructuredQuery_Order) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*StructuredQuery_Order) ProtoMessage() {}
-
-func (x *StructuredQuery_Order) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use StructuredQuery_Order.ProtoReflect.Descriptor instead.
-func (*StructuredQuery_Order) Descriptor() ([]byte, []int) {
-	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{0, 5}
-}
-
-func (x *StructuredQuery_Order) GetField() *StructuredQuery_FieldReference {
-	if x != nil {
-		return x.Field
-	}
-	return nil
-}
-
-func (x *StructuredQuery_Order) GetDirection() StructuredQuery_Direction {
-	if x != nil {
-		return x.Direction
-	}
-	return StructuredQuery_DIRECTION_UNSPECIFIED
-}
-
 // A reference to a field, such as `max(messages.time) as max_time`.
 type StructuredQuery_FieldReference struct {
 	state         protoimpl.MessageState
@@ -934,7 +876,7 @@ type StructuredQuery_FieldReference struct {
 func (x *StructuredQuery_FieldReference) Reset() {
 	*x = StructuredQuery_FieldReference{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[8]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -947,7 +889,7 @@ func (x *StructuredQuery_FieldReference) String() string {
 func (*StructuredQuery_FieldReference) ProtoMessage() {}
 
 func (x *StructuredQuery_FieldReference) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[8]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -960,7 +902,7 @@ func (x *StructuredQuery_FieldReference) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StructuredQuery_FieldReference.ProtoReflect.Descriptor instead.
 func (*StructuredQuery_FieldReference) Descriptor() ([]byte, []int) {
-	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{0, 6}
+	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{0, 5}
 }
 
 func (x *StructuredQuery_FieldReference) GetFieldPath() string {
@@ -986,7 +928,7 @@ type StructuredQuery_Projection struct {
 func (x *StructuredQuery_Projection) Reset() {
 	*x = StructuredQuery_Projection{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[9]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -999,7 +941,7 @@ func (x *StructuredQuery_Projection) String() string {
 func (*StructuredQuery_Projection) ProtoMessage() {}
 
 func (x *StructuredQuery_Projection) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[9]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1012,7 +954,7 @@ func (x *StructuredQuery_Projection) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StructuredQuery_Projection.ProtoReflect.Descriptor instead.
 func (*StructuredQuery_Projection) Descriptor() ([]byte, []int) {
-	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{0, 7}
+	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{0, 6}
 }
 
 func (x *StructuredQuery_Projection) GetFields() []*StructuredQuery_FieldReference {
@@ -1020,6 +962,64 @@ func (x *StructuredQuery_Projection) GetFields() []*StructuredQuery_FieldReferen
 		return x.Fields
 	}
 	return nil
+}
+
+// An order on a field.
+type StructuredQuery_Order struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The field to order by.
+	Field *StructuredQuery_FieldReference `protobuf:"bytes,1,opt,name=field,proto3" json:"field,omitempty"`
+	// The direction to order by. Defaults to `ASCENDING`.
+	Direction StructuredQuery_Direction `protobuf:"varint,2,opt,name=direction,proto3,enum=google.firestore.v1.StructuredQuery_Direction" json:"direction,omitempty"`
+}
+
+func (x *StructuredQuery_Order) Reset() {
+	*x = StructuredQuery_Order{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_firestore_v1_query_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StructuredQuery_Order) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StructuredQuery_Order) ProtoMessage() {}
+
+func (x *StructuredQuery_Order) ProtoReflect() protoreflect.Message {
+	mi := &file_google_firestore_v1_query_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StructuredQuery_Order.ProtoReflect.Descriptor instead.
+func (*StructuredQuery_Order) Descriptor() ([]byte, []int) {
+	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{0, 7}
+}
+
+func (x *StructuredQuery_Order) GetField() *StructuredQuery_FieldReference {
+	if x != nil {
+		return x.Field
+	}
+	return nil
+}
+
+func (x *StructuredQuery_Order) GetDirection() StructuredQuery_Direction {
+	if x != nil {
+		return x.Direction
+	}
+	return StructuredQuery_DIRECTION_UNSPECIFIED
 }
 
 var File_google_firestore_v1_query_proto protoreflect.FileDescriptor
@@ -1144,26 +1144,26 @@ var file_google_firestore_v1_query_proto_rawDesc = []byte{
 	0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0a, 0x0a, 0x06, 0x49,
 	0x53, 0x5f, 0x4e, 0x41, 0x4e, 0x10, 0x02, 0x12, 0x0b, 0x0a, 0x07, 0x49, 0x53, 0x5f, 0x4e, 0x55,
 	0x4c, 0x4c, 0x10, 0x03, 0x42, 0x0e, 0x0a, 0x0c, 0x6f, 0x70, 0x65, 0x72, 0x61, 0x6e, 0x64, 0x5f,
-	0x74, 0x79, 0x70, 0x65, 0x1a, 0xa0, 0x01, 0x0a, 0x05, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x49,
-	0x0a, 0x05, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x33, 0x2e,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65,
-	0x2e, 0x76, 0x31, 0x2e, 0x53, 0x74, 0x72, 0x75, 0x63, 0x74, 0x75, 0x72, 0x65, 0x64, 0x51, 0x75,
-	0x65, 0x72, 0x79, 0x2e, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e,
-	0x63, 0x65, 0x52, 0x05, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x12, 0x4c, 0x0a, 0x09, 0x64, 0x69, 0x72,
-	0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2e, 0x2e, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e,
-	0x76, 0x31, 0x2e, 0x53, 0x74, 0x72, 0x75, 0x63, 0x74, 0x75, 0x72, 0x65, 0x64, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x2e, 0x44, 0x69, 0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x09, 0x64, 0x69,
-	0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x2f, 0x0a, 0x0e, 0x46, 0x69, 0x65, 0x6c, 0x64,
-	0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x66, 0x69, 0x65,
-	0x6c, 0x64, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x66,
-	0x69, 0x65, 0x6c, 0x64, 0x50, 0x61, 0x74, 0x68, 0x1a, 0x59, 0x0a, 0x0a, 0x50, 0x72, 0x6f, 0x6a,
-	0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x4b, 0x0a, 0x06, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x73,
-	0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x33, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
-	0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x74, 0x72,
-	0x75, 0x63, 0x74, 0x75, 0x72, 0x65, 0x64, 0x51, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x46, 0x69, 0x65,
-	0x6c, 0x64, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x06, 0x66, 0x69, 0x65,
-	0x6c, 0x64, 0x73, 0x22, 0x45, 0x0a, 0x09, 0x44, 0x69, 0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e,
+	0x74, 0x79, 0x70, 0x65, 0x1a, 0x2f, 0x0a, 0x0e, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x52, 0x65, 0x66,
+	0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f,
+	0x70, 0x61, 0x74, 0x68, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x66, 0x69, 0x65, 0x6c,
+	0x64, 0x50, 0x61, 0x74, 0x68, 0x1a, 0x59, 0x0a, 0x0a, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x12, 0x4b, 0x0a, 0x06, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x73, 0x18, 0x02, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x33, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72,
+	0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x74, 0x72, 0x75, 0x63, 0x74,
+	0x75, 0x72, 0x65, 0x64, 0x51, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x52,
+	0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x06, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x73,
+	0x1a, 0xa0, 0x01, 0x0a, 0x05, 0x4f, 0x72, 0x64, 0x65, 0x72, 0x12, 0x49, 0x0a, 0x05, 0x66, 0x69,
+	0x65, 0x6c, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x33, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x2e,
+	0x53, 0x74, 0x72, 0x75, 0x63, 0x74, 0x75, 0x72, 0x65, 0x64, 0x51, 0x75, 0x65, 0x72, 0x79, 0x2e,
+	0x46, 0x69, 0x65, 0x6c, 0x64, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x05,
+	0x66, 0x69, 0x65, 0x6c, 0x64, 0x12, 0x4c, 0x0a, 0x09, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2e, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x53,
+	0x74, 0x72, 0x75, 0x63, 0x74, 0x75, 0x72, 0x65, 0x64, 0x51, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x44,
+	0x69, 0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x09, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74,
+	0x69, 0x6f, 0x6e, 0x22, 0x45, 0x0a, 0x09, 0x44, 0x69, 0x72, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e,
 	0x12, 0x19, 0x0a, 0x15, 0x44, 0x49, 0x52, 0x45, 0x43, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x55, 0x4e,
 	0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0d, 0x0a, 0x09, 0x41,
 	0x53, 0x43, 0x45, 0x4e, 0x44, 0x49, 0x4e, 0x47, 0x10, 0x01, 0x12, 0x0e, 0x0a, 0x0a, 0x44, 0x45,
@@ -1214,17 +1214,17 @@ var file_google_firestore_v1_query_proto_goTypes = []interface{}{
 	(*StructuredQuery_CompositeFilter)(nil),       // 8: google.firestore.v1.StructuredQuery.CompositeFilter
 	(*StructuredQuery_FieldFilter)(nil),           // 9: google.firestore.v1.StructuredQuery.FieldFilter
 	(*StructuredQuery_UnaryFilter)(nil),           // 10: google.firestore.v1.StructuredQuery.UnaryFilter
-	(*StructuredQuery_Order)(nil),                 // 11: google.firestore.v1.StructuredQuery.Order
-	(*StructuredQuery_FieldReference)(nil),        // 12: google.firestore.v1.StructuredQuery.FieldReference
-	(*StructuredQuery_Projection)(nil),            // 13: google.firestore.v1.StructuredQuery.Projection
+	(*StructuredQuery_FieldReference)(nil),        // 11: google.firestore.v1.StructuredQuery.FieldReference
+	(*StructuredQuery_Projection)(nil),            // 12: google.firestore.v1.StructuredQuery.Projection
+	(*StructuredQuery_Order)(nil),                 // 13: google.firestore.v1.StructuredQuery.Order
 	(*wrappers.Int32Value)(nil),                   // 14: google.protobuf.Int32Value
 	(*Value)(nil),                                 // 15: google.firestore.v1.Value
 }
 var file_google_firestore_v1_query_proto_depIdxs = []int32{
-	13, // 0: google.firestore.v1.StructuredQuery.select:type_name -> google.firestore.v1.StructuredQuery.Projection
+	12, // 0: google.firestore.v1.StructuredQuery.select:type_name -> google.firestore.v1.StructuredQuery.Projection
 	6,  // 1: google.firestore.v1.StructuredQuery.from:type_name -> google.firestore.v1.StructuredQuery.CollectionSelector
 	7,  // 2: google.firestore.v1.StructuredQuery.where:type_name -> google.firestore.v1.StructuredQuery.Filter
-	11, // 3: google.firestore.v1.StructuredQuery.order_by:type_name -> google.firestore.v1.StructuredQuery.Order
+	13, // 3: google.firestore.v1.StructuredQuery.order_by:type_name -> google.firestore.v1.StructuredQuery.Order
 	5,  // 4: google.firestore.v1.StructuredQuery.start_at:type_name -> google.firestore.v1.Cursor
 	5,  // 5: google.firestore.v1.StructuredQuery.end_at:type_name -> google.firestore.v1.Cursor
 	14, // 6: google.firestore.v1.StructuredQuery.limit:type_name -> google.protobuf.Int32Value
@@ -1234,14 +1234,14 @@ var file_google_firestore_v1_query_proto_depIdxs = []int32{
 	10, // 10: google.firestore.v1.StructuredQuery.Filter.unary_filter:type_name -> google.firestore.v1.StructuredQuery.UnaryFilter
 	1,  // 11: google.firestore.v1.StructuredQuery.CompositeFilter.op:type_name -> google.firestore.v1.StructuredQuery.CompositeFilter.Operator
 	7,  // 12: google.firestore.v1.StructuredQuery.CompositeFilter.filters:type_name -> google.firestore.v1.StructuredQuery.Filter
-	12, // 13: google.firestore.v1.StructuredQuery.FieldFilter.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
+	11, // 13: google.firestore.v1.StructuredQuery.FieldFilter.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
 	2,  // 14: google.firestore.v1.StructuredQuery.FieldFilter.op:type_name -> google.firestore.v1.StructuredQuery.FieldFilter.Operator
 	15, // 15: google.firestore.v1.StructuredQuery.FieldFilter.value:type_name -> google.firestore.v1.Value
 	3,  // 16: google.firestore.v1.StructuredQuery.UnaryFilter.op:type_name -> google.firestore.v1.StructuredQuery.UnaryFilter.Operator
-	12, // 17: google.firestore.v1.StructuredQuery.UnaryFilter.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
-	12, // 18: google.firestore.v1.StructuredQuery.Order.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
-	0,  // 19: google.firestore.v1.StructuredQuery.Order.direction:type_name -> google.firestore.v1.StructuredQuery.Direction
-	12, // 20: google.firestore.v1.StructuredQuery.Projection.fields:type_name -> google.firestore.v1.StructuredQuery.FieldReference
+	11, // 17: google.firestore.v1.StructuredQuery.UnaryFilter.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
+	11, // 18: google.firestore.v1.StructuredQuery.Projection.fields:type_name -> google.firestore.v1.StructuredQuery.FieldReference
+	11, // 19: google.firestore.v1.StructuredQuery.Order.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
+	0,  // 20: google.firestore.v1.StructuredQuery.Order.direction:type_name -> google.firestore.v1.StructuredQuery.Direction
 	21, // [21:21] is the sub-list for method output_type
 	21, // [21:21] is the sub-list for method input_type
 	21, // [21:21] is the sub-list for extension type_name
@@ -1341,18 +1341,6 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StructuredQuery_Order); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_google_firestore_v1_query_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StructuredQuery_FieldReference); i {
 			case 0:
 				return &v.state
@@ -1364,8 +1352,20 @@ func file_google_firestore_v1_query_proto_init() {
 				return nil
 			}
 		}
-		file_google_firestore_v1_query_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+		file_google_firestore_v1_query_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StructuredQuery_Projection); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_firestore_v1_query_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StructuredQuery_Order); i {
 			case 0:
 				return &v.state
 			case 1:

@@ -232,7 +232,8 @@ type ComputeRoutesRequest struct {
 	// Required. Destination waypoint.
 	Destination *Waypoint `protobuf:"bytes,2,opt,name=destination,proto3" json:"destination,omitempty"`
 	// Optional. A set of waypoints along the route (excluding terminal points),
-	// for either stopping at or passing by.
+	// for either stopping at or passing by. Up to 25 intermediate waypoints are
+	// supported.
 	Intermediates []*Waypoint `protobuf:"bytes,3,rep,name=intermediates,proto3" json:"intermediates,omitempty"`
 	// Optional. Specifies the mode of transportation.
 	TravelMode RouteTravelMode `protobuf:"varint,4,opt,name=travel_mode,json=travelMode,proto3,enum=google.maps.routes.v1.RouteTravelMode" json:"travel_mode,omitempty"`
@@ -386,17 +387,21 @@ type RouteModifiers struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Specifies whether to avoid toll roads. Applies only to the `DRIVE` and
+	// Specifies whether to avoid toll roads where reasonable. Preference will be
+	// given to routes not containing toll roads. Applies only to the `DRIVE` and
 	// `TWO_WHEELER` travel modes.
 	AvoidTolls bool `protobuf:"varint,1,opt,name=avoid_tolls,json=avoidTolls,proto3" json:"avoid_tolls,omitempty"`
-	// Specifies whether to avoid highways. Applies only to the `DRIVE` and
+	// Specifies whether to avoid highways where reasonable. Preference will be
+	// given to routes not containing highways. Applies only to the `DRIVE` and
 	// `TWO_WHEELER` travel modes.
 	AvoidHighways bool `protobuf:"varint,2,opt,name=avoid_highways,json=avoidHighways,proto3" json:"avoid_highways,omitempty"`
-	// Specifies whether to avoid ferries. Applies only to the `DRIVE` and
-	// `TWO_WHEELER` travel modes.
+	// Specifies whether to avoid ferries where reasonable. Preference will be
+	// given to routes not containing travel by ferries.
+	// Applies only to the `DRIVE` and`TWO_WHEELER` travel modes.
 	AvoidFerries bool `protobuf:"varint,3,opt,name=avoid_ferries,json=avoidFerries,proto3" json:"avoid_ferries,omitempty"`
-	// Specifies whether to avoid navigating indoors. Applies only to the `WALK`
-	// travel mode.
+	// Specifies whether to avoid navigating indoors where reasonable. Preference
+	// will be given to routes not containing indoor navigation.
+	// Applies only to the `WALK` travel mode.
 	AvoidIndoor bool `protobuf:"varint,4,opt,name=avoid_indoor,json=avoidIndoor,proto3" json:"avoid_indoor,omitempty"`
 	// Optional. Specifies the vehicle information.
 	VehicleInfo *VehicleInfo `protobuf:"bytes,5,opt,name=vehicle_info,json=vehicleInfo,proto3" json:"vehicle_info,omitempty"`
