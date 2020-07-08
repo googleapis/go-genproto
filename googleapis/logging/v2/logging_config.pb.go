@@ -103,9 +103,7 @@ func (LifecycleState) EnumDescriptor() ([]byte, []int) {
 	return file_google_logging_v2_logging_config_proto_rawDescGZIP(), []int{0}
 }
 
-// Available log entry formats. Log entries can be written to
-// Logging in either format and can be exported in either format.
-// Version 2 is the preferred format.
+// Deprecated. This is unused.
 type LogSink_VersionFormat int32
 
 const (
@@ -290,11 +288,13 @@ type LogSink struct {
 	// The sink's `writer_identity`, set when the sink is created, must
 	// have permission to write to the destination or else the log
 	// entries are not exported. For more information, see
-	// [Exporting Logs with Sinks](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+	// [Exporting Logs with
+	// Sinks](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
 	Destination string `protobuf:"bytes,3,opt,name=destination,proto3" json:"destination,omitempty"`
-	// Optional. An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-queries). The only
-	// exported log entries are those that are in the resource owning the sink and
-	// that match the filter. For example:
+	// Optional. An [advanced logs
+	// filter](https://cloud.google.com/logging/docs/view/advanced-queries). The
+	// only exported log entries are those that are in the resource owning the
+	// sink and that match the filter. For example:
 	//
 	//     logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
 	Filter string `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -304,8 +304,7 @@ type LogSink struct {
 	// Optional. If set to True, then this sink is disabled and it does not
 	// export any log entries.
 	Disabled bool `protobuf:"varint,19,opt,name=disabled,proto3" json:"disabled,omitempty"`
-	// Deprecated. The log entry format to use for this sink's exported log
-	// entries. The v2 format is used by default and cannot be changed.
+	// Deprecated. This field is unused.
 	//
 	// Deprecated: Do not use.
 	OutputVersionFormat LogSink_VersionFormat `protobuf:"varint,6,opt,name=output_version_format,json=outputVersionFormat,proto3,enum=google.logging.v2.LogSink_VersionFormat" json:"output_version_format,omitempty"`
@@ -486,12 +485,13 @@ type BigQueryOptions struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Optional. Whether to use [BigQuery's partition
-	// tables](https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging
-	// creates dated tables based on the log entries' timestamps, e.g.
-	// syslog_20170523. With partitioned tables the date suffix is no longer
+	// tables](https://cloud.google.com/bigquery/docs/partitioned-tables). By
+	// default, Logging creates dated tables based on the log entries' timestamps,
+	// e.g. syslog_20170523. With partitioned tables the date suffix is no longer
 	// present and [special query
-	// syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead.
-	// In both cases, tables are sharded based on UTC timezone.
+	// syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
+	// has to be used instead. In both cases, tables are sharded based on UTC
+	// timezone.
 	UsePartitionedTables bool `protobuf:"varint,1,opt,name=use_partitioned_tables,json=usePartitionedTables,proto3" json:"use_partitioned_tables,omitempty"`
 	// Output only. True if new timestamp column based partitioning is in use,
 	// false if legacy ingestion-time partitioning is in use.
@@ -1291,9 +1291,10 @@ type LogExclusion struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. A description of this exclusion.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	// Required. An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-queries)
-	// that matches the log entries to be excluded. By using the
-	// [sample function](https://cloud.google.com/logging/docs/view/advanced-queries#sample),
+	// Required. An [advanced logs
+	// filter](https://cloud.google.com/logging/docs/view/advanced-queries) that
+	// matches the log entries to be excluded. By using the [sample
+	// function](https://cloud.google.com/logging/docs/view/advanced-queries#sample),
 	// you can exclude less than 100% of the matching log entries.
 	// For example, the following query matches 99% of low-severity log
 	// entries from Google Cloud Storage buckets:
@@ -1788,8 +1789,9 @@ func (x *DeleteExclusionRequest) GetName() string {
 // The parameters to
 // [GetCmekSettings][google.logging.v2.ConfigServiceV2.GetCmekSettings].
 //
-// See [Enabling CMEK for Logs Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
-// for more information.
+// See [Enabling CMEK for Logs
+// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for
+// more information.
 type GetCmekSettingsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1852,8 +1854,9 @@ func (x *GetCmekSettingsRequest) GetName() string {
 // The parameters to
 // [UpdateCmekSettings][google.logging.v2.ConfigServiceV2.UpdateCmekSettings].
 //
-// See [Enabling CMEK for Logs Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
-// for more information.
+// See [Enabling CMEK for Logs
+// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for
+// more information.
 type UpdateCmekSettingsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1875,7 +1878,8 @@ type UpdateCmekSettingsRequest struct {
 	// Required. The CMEK settings to update.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
+	// for more information.
 	CmekSettings *CmekSettings `protobuf:"bytes,2,opt,name=cmek_settings,json=cmekSettings,proto3" json:"cmek_settings,omitempty"`
 	// Optional. Field mask identifying which fields from `cmek_settings` should
 	// be updated. A field will be overwritten if and only if it is in the update
@@ -1947,8 +1951,9 @@ func (x *UpdateCmekSettingsRequest) GetUpdateMask() *field_mask.FieldMask {
 // organizations. Once configured, it applies to all projects and folders in the
 // GCP organization.
 //
-// See [Enabling CMEK for Logs Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
-// for more information.
+// See [Enabling CMEK for Logs
+// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for
+// more information.
 type CmekSettings struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1979,7 +1984,8 @@ type CmekSettings struct {
 	// To disable CMEK for the Logs Router, set this field to an empty string.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
+	// for more information.
 	KmsKeyName string `protobuf:"bytes,2,opt,name=kms_key_name,json=kmsKeyName,proto3" json:"kms_key_name,omitempty"`
 	// Output only. The service account that will be used by the Logs Router to access your
 	// Cloud KMS key.
@@ -1991,7 +1997,8 @@ type CmekSettings struct {
 	// obtain the service account ID.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
+	// for more information.
 	ServiceAccountId string `protobuf:"bytes,3,opt,name=service_account_id,json=serviceAccountId,proto3" json:"service_account_id,omitempty"`
 }
 
@@ -3219,7 +3226,8 @@ type ConfigServiceV2Client interface {
 	// the GCP organization.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
+	// for more information.
 	GetCmekSettings(ctx context.Context, in *GetCmekSettingsRequest, opts ...grpc.CallOption) (*CmekSettings, error)
 	// Updates the Logs Router CMEK settings for the given resource.
 	//
@@ -3234,7 +3242,8 @@ type ConfigServiceV2Client interface {
 	// 3) access to the key is disabled.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
+	// for more information.
 	UpdateCmekSettings(ctx context.Context, in *UpdateCmekSettingsRequest, opts ...grpc.CallOption) (*CmekSettings, error)
 }
 
@@ -3436,7 +3445,8 @@ type ConfigServiceV2Server interface {
 	// the GCP organization.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
+	// for more information.
 	GetCmekSettings(context.Context, *GetCmekSettingsRequest) (*CmekSettings, error)
 	// Updates the Logs Router CMEK settings for the given resource.
 	//
@@ -3451,7 +3461,8 @@ type ConfigServiceV2Server interface {
 	// 3) access to the key is disabled.
 	//
 	// See [Enabling CMEK for Logs
-	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption) for more information.
+	// Router](https://cloud.google.com/logging/docs/routing/managed-encryption)
+	// for more information.
 	UpdateCmekSettings(context.Context, *UpdateCmekSettingsRequest) (*CmekSettings, error)
 }
 
