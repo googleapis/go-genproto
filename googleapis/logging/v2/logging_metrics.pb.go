@@ -129,9 +129,9 @@ type LogMetric struct {
 	// Optional. A description of this metric, which is used in documentation.
 	// The maximum length of the description is 8000 characters.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	// Required. An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced_filters) which is
-	// used to match log entries.
-	// Example:
+	// Required. An [advanced logs
+	// filter](https://cloud.google.com/logging/docs/view/advanced_filters) which
+	// is used to match log entries. Example:
 	//
 	//     "resource.type=gae_app AND severity>=ERROR"
 	//
