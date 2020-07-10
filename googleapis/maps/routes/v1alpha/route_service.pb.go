@@ -165,12 +165,12 @@ type RoutesAlphaClient interface {
 	// of terminal and intermediate waypoints.
 	//
 	// **NOTE:** This method requires that you specify a response field mask in
-	// the input. You can provide the response field mask by using URL parameter
-	// `$fields` or `fields`, or by using an HTTP/gRPC header `X-Goog-FieldMask`
-	// (see the [available URL parameters and
+	// the input. You can provide the response field mask by using the URL
+	// parameter `$fields` or `fields`, or by using the HTTP/gRPC header
+	// `X-Goog-FieldMask` (see the [available URL parameters and
 	// headers](https://cloud.google.com/apis/docs/system-parameters). The value
-	// is a comma separated list of field paths. See detailed documentation about
-	// [how to construct the field
+	// is a comma separated list of field paths. See this detailed documentation
+	// about [how to construct the field
 	// paths](https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/field_mask.proto).
 	//
 	// For example, in this method:
@@ -182,23 +182,54 @@ type RoutesAlphaClient interface {
 	//   `X-Goog-FieldMask:
 	//   routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline`
 	//
-	// Google discourage the use of the wildcard (`*`) response field mask, or
+	// Google discourages the use of the wildcard (`*`) response field mask, or
 	// specifying the field mask at the top level (`routes`), because:
 	//
 	// * Selecting only the fields that you need helps our server save computation
 	// cycles, allowing us to return the result to you with a lower latency.
-	// * Selecting only the fields that you need
-	// in your production job ensures stable latency performance. We might add
-	// more response fields in the future, and those new fields might require
-	// extra computation time. If you select all fields, or if you select all
-	// fields at the top level, then you might experience performance degradation
-	// because any new field we add will be automatically included in the
-	// response.
+	// * Selecting only the fields that you need in your production job ensures
+	// stable latency performance. We might add more response fields in the
+	// future, and those new fields might require extra computation time. If you
+	// select all fields, or if you select all fields at the top level, then you
+	// might experience performance degradation because any new field we add will
+	// be automatically included in the response.
 	// * Selecting only the fields that you need results in a smaller response
 	// size, and thus higher network throughput.
 	ComputeRoutes(ctx context.Context, in *v1.ComputeRoutesRequest, opts ...grpc.CallOption) (*v1.ComputeRoutesResponse, error)
 	// Takes in a list of origins and destinations and returns a stream containing
 	// route information for each combination of origin and destination.
+	//
+	// **NOTE:** This method requires that you specify a response field mask in
+	// the input. You can provide the response field mask by using the URL
+	// parameter `$fields` or `fields`, or by using the HTTP/gRPC header
+	// `X-Goog-FieldMask` (see the [available URL parameters and
+	// headers](https://cloud.google.com/apis/docs/system-parameters). The value
+	// is a comma separated list of field paths. See this detailed documentation
+	// about [how to construct the field
+	// paths](https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/field_mask.proto).
+	//
+	// For example, in this method:
+	//
+	// * Field mask of all available fields (for manual inspection):
+	//   `X-Goog-FieldMask: *`
+	// * Field mask of route durations, distances, element status, and element
+	//   indices (an example production setup):
+	//   `X-Goog-FieldMask:
+	//   originIndex,destinationIndex,status,distanceMeters,duration`
+	//
+	// Google discourages the use of the wildcard (`*`) response field mask,
+	// because:
+	//
+	// * Selecting only the fields that you need helps our server save computation
+	// cycles, allowing us to return the result to you with a lower latency.
+	// * Selecting only the fields that you need in your production job ensures
+	// stable latency performance. We might add more response fields in the
+	// future, and those new fields might require extra computation time. If you
+	// select all fields, or if you select all fields at the top level, then you
+	// might experience performance degradation because any new field we add will
+	// be automatically included in the response.
+	// * Selecting only the fields that you need results in a smaller response
+	// size, and thus higher network throughput.
 	ComputeRouteMatrix(ctx context.Context, in *v1.ComputeRouteMatrixRequest, opts ...grpc.CallOption) (RoutesAlpha_ComputeRouteMatrixClient, error)
 }
 
@@ -257,12 +288,12 @@ type RoutesAlphaServer interface {
 	// of terminal and intermediate waypoints.
 	//
 	// **NOTE:** This method requires that you specify a response field mask in
-	// the input. You can provide the response field mask by using URL parameter
-	// `$fields` or `fields`, or by using an HTTP/gRPC header `X-Goog-FieldMask`
-	// (see the [available URL parameters and
+	// the input. You can provide the response field mask by using the URL
+	// parameter `$fields` or `fields`, or by using the HTTP/gRPC header
+	// `X-Goog-FieldMask` (see the [available URL parameters and
 	// headers](https://cloud.google.com/apis/docs/system-parameters). The value
-	// is a comma separated list of field paths. See detailed documentation about
-	// [how to construct the field
+	// is a comma separated list of field paths. See this detailed documentation
+	// about [how to construct the field
 	// paths](https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/field_mask.proto).
 	//
 	// For example, in this method:
@@ -274,23 +305,54 @@ type RoutesAlphaServer interface {
 	//   `X-Goog-FieldMask:
 	//   routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline`
 	//
-	// Google discourage the use of the wildcard (`*`) response field mask, or
+	// Google discourages the use of the wildcard (`*`) response field mask, or
 	// specifying the field mask at the top level (`routes`), because:
 	//
 	// * Selecting only the fields that you need helps our server save computation
 	// cycles, allowing us to return the result to you with a lower latency.
-	// * Selecting only the fields that you need
-	// in your production job ensures stable latency performance. We might add
-	// more response fields in the future, and those new fields might require
-	// extra computation time. If you select all fields, or if you select all
-	// fields at the top level, then you might experience performance degradation
-	// because any new field we add will be automatically included in the
-	// response.
+	// * Selecting only the fields that you need in your production job ensures
+	// stable latency performance. We might add more response fields in the
+	// future, and those new fields might require extra computation time. If you
+	// select all fields, or if you select all fields at the top level, then you
+	// might experience performance degradation because any new field we add will
+	// be automatically included in the response.
 	// * Selecting only the fields that you need results in a smaller response
 	// size, and thus higher network throughput.
 	ComputeRoutes(context.Context, *v1.ComputeRoutesRequest) (*v1.ComputeRoutesResponse, error)
 	// Takes in a list of origins and destinations and returns a stream containing
 	// route information for each combination of origin and destination.
+	//
+	// **NOTE:** This method requires that you specify a response field mask in
+	// the input. You can provide the response field mask by using the URL
+	// parameter `$fields` or `fields`, or by using the HTTP/gRPC header
+	// `X-Goog-FieldMask` (see the [available URL parameters and
+	// headers](https://cloud.google.com/apis/docs/system-parameters). The value
+	// is a comma separated list of field paths. See this detailed documentation
+	// about [how to construct the field
+	// paths](https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/field_mask.proto).
+	//
+	// For example, in this method:
+	//
+	// * Field mask of all available fields (for manual inspection):
+	//   `X-Goog-FieldMask: *`
+	// * Field mask of route durations, distances, element status, and element
+	//   indices (an example production setup):
+	//   `X-Goog-FieldMask:
+	//   originIndex,destinationIndex,status,distanceMeters,duration`
+	//
+	// Google discourages the use of the wildcard (`*`) response field mask,
+	// because:
+	//
+	// * Selecting only the fields that you need helps our server save computation
+	// cycles, allowing us to return the result to you with a lower latency.
+	// * Selecting only the fields that you need in your production job ensures
+	// stable latency performance. We might add more response fields in the
+	// future, and those new fields might require extra computation time. If you
+	// select all fields, or if you select all fields at the top level, then you
+	// might experience performance degradation because any new field we add will
+	// be automatically included in the response.
+	// * Selecting only the fields that you need results in a smaller response
+	// size, and thus higher network throughput.
 	ComputeRouteMatrix(*v1.ComputeRouteMatrixRequest, RoutesAlpha_ComputeRouteMatrixServer) error
 }
 

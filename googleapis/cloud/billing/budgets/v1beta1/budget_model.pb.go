@@ -177,8 +177,8 @@ type Budget struct {
 	// Optional. Rules that trigger alerts (notifications of thresholds
 	// being crossed) when spend exceeds the specified percentages of the budget.
 	ThresholdRules []*ThresholdRule `protobuf:"bytes,5,rep,name=threshold_rules,json=thresholdRules,proto3" json:"threshold_rules,omitempty"`
-	// Optional. Rules to apply to all updates to the actual spend, regardless
-	// of the thresholds set in `threshold_rules`.
+	// Optional. Rules to apply to notifications sent based on budget spend and
+	// thresholds.
 	AllUpdatesRule *AllUpdatesRule `protobuf:"bytes,6,opt,name=all_updates_rule,json=allUpdatesRule,proto3" json:"all_updates_rule,omitempty"`
 	// Optional. Etag to validate that the object is unchanged for a
 	// read-modify-write operation.
@@ -465,18 +465,17 @@ func (x *ThresholdRule) GetSpendBasis() ThresholdRule_Basis {
 	return ThresholdRule_BASIS_UNSPECIFIED
 }
 
-// AllUpdatesRule defines notifications that are sent on every update to the
-// billing account's spend, regardless of the thresholds defined using
-// threshold rules.
+// AllUpdatesRule defines notifications that are sent based on budget spend
+// and thresholds.
 type AllUpdatesRule struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the Cloud Pub/Sub topic where budget related messages will be
-	// published, in the form `projects/{project_id}/topics/{topic_id}`. Updates
-	// are sent at regular intervals to the topic.
-	// The topic needs to be created before the budget is created; see
+	// Required. The name of the Cloud Pub/Sub topic where budget related messages
+	// will be published, in the form `projects/{project_id}/topics/{topic_id}`.
+	// Updates are sent at regular intervals to the topic. The topic needs to be
+	// created before the budget is created; see
 	// https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications
 	// for more details.
 	// Caller is expected to have
@@ -485,10 +484,17 @@ type AllUpdatesRule struct {
 	// https://cloud.google.com/pubsub/docs/access-control for more details on
 	// Pub/Sub roles and permissions.
 	PubsubTopic string `protobuf:"bytes,1,opt,name=pubsub_topic,json=pubsubTopic,proto3" json:"pubsub_topic,omitempty"`
-	// Required. The schema version of the notification.
+	// Required. The schema version of the notification sent to `pubsub_topic`.
 	// Only "1.0" is accepted. It represents the JSON schema as defined in
 	// https://cloud.google.com/billing/docs/how-to/budgets#notification_format
 	SchemaVersion string `protobuf:"bytes,2,opt,name=schema_version,json=schemaVersion,proto3" json:"schema_version,omitempty"`
+	// Optional. Targets to send notifications to when a threshold is exceeded.
+	// This is in addition to default recipients who have billing account roles.
+	// The value is the full REST resource name of a monitoring notification
+	// channel with the form
+	// `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5
+	// channels are allowed.
+	MonitoringNotificationChannels []string `protobuf:"bytes,3,rep,name=monitoring_notification_channels,json=monitoringNotificationChannels,proto3" json:"monitoring_notification_channels,omitempty"`
 }
 
 func (x *AllUpdatesRule) Reset() {
@@ -537,6 +543,13 @@ func (x *AllUpdatesRule) GetSchemaVersion() string {
 	return ""
 }
 
+func (x *AllUpdatesRule) GetMonitoringNotificationChannels() []string {
+	if x != nil {
+		return x.MonitoringNotificationChannels
+	}
+	return nil
+}
+
 // A filter for a budget, limiting the scope of the cost to calculate.
 type Filter struct {
 	state         protoimpl.MessageState
@@ -558,16 +571,17 @@ type Filter struct {
 	// The service names are available through the Catalog API:
 	// https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services []string `protobuf:"bytes,3,rep,name=services,proto3" json:"services,omitempty"`
-	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying
-	// that usage from only this set of subaccounts should be included in the
-	// budget. If a subaccount is set to the name of the master account, usage
-	// from the master account will be included. If omitted, the report will
-	// include usage from the master account and all subaccounts, if they exist.
+	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`,
+	// specifying that usage from only this set of subaccounts should be included
+	// in the budget. If a subaccount is set to the name of the reseller account,
+	// usage from the reseller account will be included. If omitted, the report
+	// will include usage from the reseller account and all subaccounts, if they
+	// exist.
 	Subaccounts []string `protobuf:"bytes,5,rep,name=subaccounts,proto3" json:"subaccounts,omitempty"`
-	// Optional. A single label and value pair specifying that usage from only this set of
-	// labeled resources should be included in the budget. Multiple entries or
-	// multiple values per entry are not allowed. If omitted, the report will
-	// include all labeled and unlabeled usage.
+	// Optional. A single label and value pair specifying that usage from only
+	// this set of labeled resources should be included in the budget. Currently,
+	// multiple entries or multiple values per entry are not allowed. If omitted,
+	// the report will include all labeled and unlabeled usage.
 	Labels map[string]*_struct.ListValue `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
@@ -718,13 +732,18 @@ var file_google_cloud_billing_budgets_v1beta1_budget_model_proto_rawDesc = []byt
 	0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x11, 0x0a, 0x0d, 0x43, 0x55, 0x52, 0x52, 0x45, 0x4e,
 	0x54, 0x5f, 0x53, 0x50, 0x45, 0x4e, 0x44, 0x10, 0x01, 0x12, 0x14, 0x0a, 0x10, 0x46, 0x4f, 0x52,
 	0x45, 0x43, 0x41, 0x53, 0x54, 0x45, 0x44, 0x5f, 0x53, 0x50, 0x45, 0x4e, 0x44, 0x10, 0x02, 0x22,
-	0x64, 0x0a, 0x0e, 0x41, 0x6c, 0x6c, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x73, 0x52, 0x75, 0x6c,
-	0x65, 0x12, 0x26, 0x0a, 0x0c, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x5f, 0x74, 0x6f, 0x70, 0x69,
-	0x63, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0b, 0x70, 0x75,
-	0x62, 0x73, 0x75, 0x62, 0x54, 0x6f, 0x70, 0x69, 0x63, 0x12, 0x2a, 0x0a, 0x0e, 0x73, 0x63, 0x68,
-	0x65, 0x6d, 0x61, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0d, 0x73, 0x63, 0x68, 0x65, 0x6d, 0x61, 0x56, 0x65,
-	0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0x8f, 0x04, 0x0a, 0x06, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72,
+	0xb3, 0x01, 0x0a, 0x0e, 0x41, 0x6c, 0x6c, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x73, 0x52, 0x75,
+	0x6c, 0x65, 0x12, 0x26, 0x0a, 0x0c, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x5f, 0x74, 0x6f, 0x70,
+	0x69, 0x63, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0b, 0x70,
+	0x75, 0x62, 0x73, 0x75, 0x62, 0x54, 0x6f, 0x70, 0x69, 0x63, 0x12, 0x2a, 0x0a, 0x0e, 0x73, 0x63,
+	0x68, 0x65, 0x6d, 0x61, 0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0d, 0x73, 0x63, 0x68, 0x65, 0x6d, 0x61, 0x56,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x4d, 0x0a, 0x20, 0x6d, 0x6f, 0x6e, 0x69, 0x74, 0x6f,
+	0x72, 0x69, 0x6e, 0x67, 0x5f, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x5f, 0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09,
+	0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x1e, 0x6d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x69, 0x6e,
+	0x67, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x68, 0x61,
+	0x6e, 0x6e, 0x65, 0x6c, 0x73, 0x22, 0x8f, 0x04, 0x0a, 0x06, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72,
 	0x12, 0x1f, 0x0a, 0x08, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03,
 	0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x08, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74,
 	0x73, 0x12, 0x7c, 0x0a, 0x16, 0x63, 0x72, 0x65, 0x64, 0x69, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65,
