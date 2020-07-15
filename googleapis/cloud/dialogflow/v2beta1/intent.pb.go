@@ -753,9 +753,15 @@ func (Intent_Message_ColumnProperties_HorizontalAlignment) EnumDescriptor() ([]b
 	return file_google_cloud_dialogflow_v2beta1_intent_proto_rawDescGZIP(), []int{0, 2, 26, 0}
 }
 
-// Represents an intent.
-// Intents convert a number of user expressions or patterns into an action. An
-// action is an extraction of a user command or sentence semantics.
+// An intent categorizes an end-user's intention for one conversation turn. For
+// each agent, you define many intents, where your combined intents can handle a
+// complete conversation. When an end-user writes or says something, referred to
+// as an end-user expression or end-user input, Dialogflow matches the end-user
+// input to the best intent in your agent. Matching an intent is also known as
+// intent classification.
+//
+// For more information, see the [intent
+// guide](https://cloud.google.com/dialogflow/docs/intents-overview).
 type Intent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
