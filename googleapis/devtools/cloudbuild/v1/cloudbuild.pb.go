@@ -4193,7 +4193,7 @@ func (x *UpdateWorkerPoolRequest) GetWorkerPool() *WorkerPool {
 	return nil
 }
 
-// Request to list `WorkerPool`s.
+// Request to list `WorkerPools`.
 type ListWorkerPoolsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -6089,7 +6089,7 @@ type CloudBuildClient interface {
 	//
 	// This API is experimental.
 	UpdateWorkerPool(ctx context.Context, in *UpdateWorkerPoolRequest, opts ...grpc.CallOption) (*WorkerPool, error)
-	// List project's `WorkerPool`s.
+	// List project's `WorkerPools`.
 	//
 	// This API is experimental.
 	ListWorkerPools(ctx context.Context, in *ListWorkerPoolsRequest, opts ...grpc.CallOption) (*ListWorkerPoolsResponse, error)
@@ -6333,7 +6333,7 @@ type CloudBuildServer interface {
 	//
 	// This API is experimental.
 	UpdateWorkerPool(context.Context, *UpdateWorkerPoolRequest) (*WorkerPool, error)
-	// List project's `WorkerPool`s.
+	// List project's `WorkerPools`.
 	//
 	// This API is experimental.
 	ListWorkerPools(context.Context, *ListWorkerPoolsRequest) (*ListWorkerPoolsResponse, error)
