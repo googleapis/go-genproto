@@ -657,6 +657,251 @@ func (*SubscribeResponse_Seek) isSubscribeResponse_Response() {}
 
 func (*SubscribeResponse_Messages) isSubscribeResponse_Response() {}
 
+// The first request that must be sent on a newly-opened stream. The client must
+// wait for the response before sending subsequent requests on the stream.
+type InitialPartitionAssignmentRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The subscription name. Structured like:
+	// projects/<project number>/locations/<zone name>/subscriptions/<subscription
+	// id>
+	Subscription string `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
+	// An opaque, unique client identifier. This field must be exactly 16 bytes
+	// long and is interpreted as an unsigned 128 bit integer. Other size values
+	// will be rejected and the stream will be failed with a non-retryable error.
+	//
+	// This field is large enough to fit a uuid from standard uuid algorithms like
+	// uuid1 or uuid4, which should be used to generate this number. The same
+	// identifier should be reused following disconnections with retryable stream
+	// errors.
+	ClientId []byte `protobuf:"bytes,2,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+}
+
+func (x *InitialPartitionAssignmentRequest) Reset() {
+	*x = InitialPartitionAssignmentRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InitialPartitionAssignmentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InitialPartitionAssignmentRequest) ProtoMessage() {}
+
+func (x *InitialPartitionAssignmentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InitialPartitionAssignmentRequest.ProtoReflect.Descriptor instead.
+func (*InitialPartitionAssignmentRequest) Descriptor() ([]byte, []int) {
+	return file_google_cloud_pubsublite_v1_subscriber_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *InitialPartitionAssignmentRequest) GetSubscription() string {
+	if x != nil {
+		return x.Subscription
+	}
+	return ""
+}
+
+func (x *InitialPartitionAssignmentRequest) GetClientId() []byte {
+	if x != nil {
+		return x.ClientId
+	}
+	return nil
+}
+
+// PartitionAssignments should not race with acknowledgements. There
+// should be exactly one unacknowledged PartitionAssignment at a time. If not,
+// the client must break the stream.
+type PartitionAssignment struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The list of partition numbers this subscriber is assigned to.
+	Partitions []int64 `protobuf:"varint,1,rep,packed,name=partitions,proto3" json:"partitions,omitempty"`
+}
+
+func (x *PartitionAssignment) Reset() {
+	*x = PartitionAssignment{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PartitionAssignment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PartitionAssignment) ProtoMessage() {}
+
+func (x *PartitionAssignment) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PartitionAssignment.ProtoReflect.Descriptor instead.
+func (*PartitionAssignment) Descriptor() ([]byte, []int) {
+	return file_google_cloud_pubsublite_v1_subscriber_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *PartitionAssignment) GetPartitions() []int64 {
+	if x != nil {
+		return x.Partitions
+	}
+	return nil
+}
+
+// Acknowledge receipt and handling of the previous assignment.
+// If not sent within a short period after receiving the assignment,
+// partitions may remain unassigned for a period of time until the
+// client is known to be inactive, after which time the server will break the
+// stream.
+type PartitionAssignmentAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *PartitionAssignmentAck) Reset() {
+	*x = PartitionAssignmentAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PartitionAssignmentAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PartitionAssignmentAck) ProtoMessage() {}
+
+func (x *PartitionAssignmentAck) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PartitionAssignmentAck.ProtoReflect.Descriptor instead.
+func (*PartitionAssignmentAck) Descriptor() ([]byte, []int) {
+	return file_google_cloud_pubsublite_v1_subscriber_proto_rawDescGZIP(), []int{10}
+}
+
+// A request on the PartitionAssignment stream.
+type PartitionAssignmentRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Types that are assignable to Request:
+	//	*PartitionAssignmentRequest_Initial
+	//	*PartitionAssignmentRequest_Ack
+	Request isPartitionAssignmentRequest_Request `protobuf_oneof:"request"`
+}
+
+func (x *PartitionAssignmentRequest) Reset() {
+	*x = PartitionAssignmentRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PartitionAssignmentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PartitionAssignmentRequest) ProtoMessage() {}
+
+func (x *PartitionAssignmentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PartitionAssignmentRequest.ProtoReflect.Descriptor instead.
+func (*PartitionAssignmentRequest) Descriptor() ([]byte, []int) {
+	return file_google_cloud_pubsublite_v1_subscriber_proto_rawDescGZIP(), []int{11}
+}
+
+func (m *PartitionAssignmentRequest) GetRequest() isPartitionAssignmentRequest_Request {
+	if m != nil {
+		return m.Request
+	}
+	return nil
+}
+
+func (x *PartitionAssignmentRequest) GetInitial() *InitialPartitionAssignmentRequest {
+	if x, ok := x.GetRequest().(*PartitionAssignmentRequest_Initial); ok {
+		return x.Initial
+	}
+	return nil
+}
+
+func (x *PartitionAssignmentRequest) GetAck() *PartitionAssignmentAck {
+	if x, ok := x.GetRequest().(*PartitionAssignmentRequest_Ack); ok {
+		return x.Ack
+	}
+	return nil
+}
+
+type isPartitionAssignmentRequest_Request interface {
+	isPartitionAssignmentRequest_Request()
+}
+
+type PartitionAssignmentRequest_Initial struct {
+	// Initial request on the stream.
+	Initial *InitialPartitionAssignmentRequest `protobuf:"bytes,1,opt,name=initial,proto3,oneof"`
+}
+
+type PartitionAssignmentRequest_Ack struct {
+	// Acknowledgement of a partition assignment.
+	Ack *PartitionAssignmentAck `protobuf:"bytes,2,opt,name=ack,proto3,oneof"`
+}
+
+func (*PartitionAssignmentRequest_Initial) isPartitionAssignmentRequest_Request() {}
+
+func (*PartitionAssignmentRequest_Ack) isPartitionAssignmentRequest_Request() {}
+
 var File_google_cloud_pubsublite_v1_subscriber_proto protoreflect.FileDescriptor
 
 var file_google_cloud_pubsublite_v1_subscriber_proto_rawDesc = []byte{
@@ -745,28 +990,68 @@ var file_google_cloud_pubsublite_v1_subscriber_proto_rawDesc = []byte{
 	0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61,
 	0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x48, 0x00, 0x52, 0x08, 0x6d, 0x65,
 	0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x42, 0x0a, 0x0a, 0x08, 0x72, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x32, 0xd2, 0x01, 0x0a, 0x11, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65,
-	0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x6e, 0x0a, 0x09, 0x53, 0x75, 0x62, 0x73,
-	0x63, 0x72, 0x69, 0x62, 0x65, 0x12, 0x2c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
-	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e,
-	0x76, 0x31, 0x2e, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x2d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f,
-	0x75, 0x64, 0x2e, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e, 0x76, 0x31,
-	0x2e, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x22, 0x00, 0x28, 0x01, 0x30, 0x01, 0x1a, 0x4d, 0xca, 0x41, 0x19, 0x70, 0x75, 0x62,
-	0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70,
-	0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0xd2, 0x41, 0x2e, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f,
-	0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e,
-	0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70,
-	0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x42, 0x7f, 0x0a, 0x21, 0x63, 0x6f, 0x6d, 0x2e, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x70, 0x75, 0x62, 0x73,
-	0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x42, 0x0f, 0x53, 0x75,
-	0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x72, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a,
-	0x44, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f,
-	0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x70, 0x75, 0x62,
-	0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2f, 0x76, 0x31, 0x3b, 0x70, 0x75, 0x62, 0x73, 0x75,
-	0x62, 0x6c, 0x69, 0x74, 0x65, 0xf8, 0x01, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x65, 0x22, 0x64, 0x0a, 0x21, 0x49, 0x6e, 0x69, 0x74, 0x69, 0x61, 0x6c, 0x50, 0x61, 0x72,
+	0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x41, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x6d, 0x65, 0x6e, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x73, 0x75, 0x62, 0x73, 0x63,
+	0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x73,
+	0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1b, 0x0a, 0x09, 0x63,
+	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x08,
+	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x22, 0x35, 0x0a, 0x13, 0x50, 0x61, 0x72, 0x74,
+	0x69, 0x74, 0x69, 0x6f, 0x6e, 0x41, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x12,
+	0x1e, 0x0a, 0x0a, 0x70, 0x61, 0x72, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x61, 0x72, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22,
+	0x18, 0x0a, 0x16, 0x50, 0x61, 0x72, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x41, 0x73, 0x73, 0x69,
+	0x67, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x41, 0x63, 0x6b, 0x22, 0xca, 0x01, 0x0a, 0x1a, 0x50, 0x61,
+	0x72, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x41, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x6d, 0x65, 0x6e,
+	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x59, 0x0a, 0x07, 0x69, 0x6e, 0x69, 0x74,
+	0x69, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x3d, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c,
+	0x69, 0x74, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x6e, 0x69, 0x74, 0x69, 0x61, 0x6c, 0x50, 0x61,
+	0x72, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x41, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x6d, 0x65, 0x6e,
+	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x48, 0x00, 0x52, 0x07, 0x69, 0x6e, 0x69, 0x74,
+	0x69, 0x61, 0x6c, 0x12, 0x46, 0x0a, 0x03, 0x61, 0x63, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x32, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e,
+	0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61,
+	0x72, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x41, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x6d, 0x65, 0x6e,
+	0x74, 0x41, 0x63, 0x6b, 0x48, 0x00, 0x52, 0x03, 0x61, 0x63, 0x6b, 0x42, 0x09, 0x0a, 0x07, 0x72,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x32, 0xd2, 0x01, 0x0a, 0x11, 0x53, 0x75, 0x62, 0x73, 0x63,
+	0x72, 0x69, 0x62, 0x65, 0x72, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x6e, 0x0a, 0x09,
+	0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x12, 0x2c, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c,
+	0x69, 0x74, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74,
+	0x65, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x28, 0x01, 0x30, 0x01, 0x1a, 0x4d, 0xca, 0x41,
+	0x19, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0xd2, 0x41, 0x2e, 0x68, 0x74, 0x74,
+	0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61,
+	0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x63, 0x6c, 0x6f,
+	0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x32, 0xef, 0x01, 0x0a, 0x1a,
+	0x50, 0x61, 0x72, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x41, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x6d,
+	0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x81, 0x01, 0x0a, 0x10, 0x41,
+	0x73, 0x73, 0x69, 0x67, 0x6e, 0x50, 0x61, 0x72, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12,
+	0x36, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x70,
+	0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x72,
+	0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x41, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x6d, 0x65, 0x6e, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2f, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74,
+	0x65, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x72, 0x74, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x41, 0x73,
+	0x73, 0x69, 0x67, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x22, 0x00, 0x28, 0x01, 0x30, 0x01, 0x1a, 0x4d,
+	0xca, 0x41, 0x19, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0xd2, 0x41, 0x2e, 0x68,
+	0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x63,
+	0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x42, 0x7f, 0x0a,
+	0x21, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75,
+	0x64, 0x2e, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x42, 0x0f, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x62, 0x65, 0x72, 0x50, 0x72,
+	0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x44, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f,
+	0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f,
+	0x75, 0x64, 0x2f, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0x2f, 0x76, 0x31,
+	0x3b, 0x70, 0x75, 0x62, 0x73, 0x75, 0x62, 0x6c, 0x69, 0x74, 0x65, 0xf8, 0x01, 0x01, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -782,39 +1067,47 @@ func file_google_cloud_pubsublite_v1_subscriber_proto_rawDescGZIP() []byte {
 }
 
 var file_google_cloud_pubsublite_v1_subscriber_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_google_cloud_pubsublite_v1_subscriber_proto_goTypes = []interface{}{
-	(SeekRequest_NamedTarget)(0),     // 0: google.cloud.pubsublite.v1.SeekRequest.NamedTarget
-	(*InitialSubscribeRequest)(nil),  // 1: google.cloud.pubsublite.v1.InitialSubscribeRequest
-	(*InitialSubscribeResponse)(nil), // 2: google.cloud.pubsublite.v1.InitialSubscribeResponse
-	(*SeekRequest)(nil),              // 3: google.cloud.pubsublite.v1.SeekRequest
-	(*SeekResponse)(nil),             // 4: google.cloud.pubsublite.v1.SeekResponse
-	(*FlowControlRequest)(nil),       // 5: google.cloud.pubsublite.v1.FlowControlRequest
-	(*SubscribeRequest)(nil),         // 6: google.cloud.pubsublite.v1.SubscribeRequest
-	(*MessageResponse)(nil),          // 7: google.cloud.pubsublite.v1.MessageResponse
-	(*SubscribeResponse)(nil),        // 8: google.cloud.pubsublite.v1.SubscribeResponse
-	(*Cursor)(nil),                   // 9: google.cloud.pubsublite.v1.Cursor
-	(*SequencedMessage)(nil),         // 10: google.cloud.pubsublite.v1.SequencedMessage
+	(SeekRequest_NamedTarget)(0),              // 0: google.cloud.pubsublite.v1.SeekRequest.NamedTarget
+	(*InitialSubscribeRequest)(nil),           // 1: google.cloud.pubsublite.v1.InitialSubscribeRequest
+	(*InitialSubscribeResponse)(nil),          // 2: google.cloud.pubsublite.v1.InitialSubscribeResponse
+	(*SeekRequest)(nil),                       // 3: google.cloud.pubsublite.v1.SeekRequest
+	(*SeekResponse)(nil),                      // 4: google.cloud.pubsublite.v1.SeekResponse
+	(*FlowControlRequest)(nil),                // 5: google.cloud.pubsublite.v1.FlowControlRequest
+	(*SubscribeRequest)(nil),                  // 6: google.cloud.pubsublite.v1.SubscribeRequest
+	(*MessageResponse)(nil),                   // 7: google.cloud.pubsublite.v1.MessageResponse
+	(*SubscribeResponse)(nil),                 // 8: google.cloud.pubsublite.v1.SubscribeResponse
+	(*InitialPartitionAssignmentRequest)(nil), // 9: google.cloud.pubsublite.v1.InitialPartitionAssignmentRequest
+	(*PartitionAssignment)(nil),               // 10: google.cloud.pubsublite.v1.PartitionAssignment
+	(*PartitionAssignmentAck)(nil),            // 11: google.cloud.pubsublite.v1.PartitionAssignmentAck
+	(*PartitionAssignmentRequest)(nil),        // 12: google.cloud.pubsublite.v1.PartitionAssignmentRequest
+	(*Cursor)(nil),                            // 13: google.cloud.pubsublite.v1.Cursor
+	(*SequencedMessage)(nil),                  // 14: google.cloud.pubsublite.v1.SequencedMessage
 }
 var file_google_cloud_pubsublite_v1_subscriber_proto_depIdxs = []int32{
-	9,  // 0: google.cloud.pubsublite.v1.InitialSubscribeResponse.cursor:type_name -> google.cloud.pubsublite.v1.Cursor
+	13, // 0: google.cloud.pubsublite.v1.InitialSubscribeResponse.cursor:type_name -> google.cloud.pubsublite.v1.Cursor
 	0,  // 1: google.cloud.pubsublite.v1.SeekRequest.named_target:type_name -> google.cloud.pubsublite.v1.SeekRequest.NamedTarget
-	9,  // 2: google.cloud.pubsublite.v1.SeekRequest.cursor:type_name -> google.cloud.pubsublite.v1.Cursor
-	9,  // 3: google.cloud.pubsublite.v1.SeekResponse.cursor:type_name -> google.cloud.pubsublite.v1.Cursor
+	13, // 2: google.cloud.pubsublite.v1.SeekRequest.cursor:type_name -> google.cloud.pubsublite.v1.Cursor
+	13, // 3: google.cloud.pubsublite.v1.SeekResponse.cursor:type_name -> google.cloud.pubsublite.v1.Cursor
 	1,  // 4: google.cloud.pubsublite.v1.SubscribeRequest.initial:type_name -> google.cloud.pubsublite.v1.InitialSubscribeRequest
 	3,  // 5: google.cloud.pubsublite.v1.SubscribeRequest.seek:type_name -> google.cloud.pubsublite.v1.SeekRequest
 	5,  // 6: google.cloud.pubsublite.v1.SubscribeRequest.flow_control:type_name -> google.cloud.pubsublite.v1.FlowControlRequest
-	10, // 7: google.cloud.pubsublite.v1.MessageResponse.messages:type_name -> google.cloud.pubsublite.v1.SequencedMessage
+	14, // 7: google.cloud.pubsublite.v1.MessageResponse.messages:type_name -> google.cloud.pubsublite.v1.SequencedMessage
 	2,  // 8: google.cloud.pubsublite.v1.SubscribeResponse.initial:type_name -> google.cloud.pubsublite.v1.InitialSubscribeResponse
 	4,  // 9: google.cloud.pubsublite.v1.SubscribeResponse.seek:type_name -> google.cloud.pubsublite.v1.SeekResponse
 	7,  // 10: google.cloud.pubsublite.v1.SubscribeResponse.messages:type_name -> google.cloud.pubsublite.v1.MessageResponse
-	6,  // 11: google.cloud.pubsublite.v1.SubscriberService.Subscribe:input_type -> google.cloud.pubsublite.v1.SubscribeRequest
-	8,  // 12: google.cloud.pubsublite.v1.SubscriberService.Subscribe:output_type -> google.cloud.pubsublite.v1.SubscribeResponse
-	12, // [12:13] is the sub-list for method output_type
-	11, // [11:12] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	9,  // 11: google.cloud.pubsublite.v1.PartitionAssignmentRequest.initial:type_name -> google.cloud.pubsublite.v1.InitialPartitionAssignmentRequest
+	11, // 12: google.cloud.pubsublite.v1.PartitionAssignmentRequest.ack:type_name -> google.cloud.pubsublite.v1.PartitionAssignmentAck
+	6,  // 13: google.cloud.pubsublite.v1.SubscriberService.Subscribe:input_type -> google.cloud.pubsublite.v1.SubscribeRequest
+	12, // 14: google.cloud.pubsublite.v1.PartitionAssignmentService.AssignPartitions:input_type -> google.cloud.pubsublite.v1.PartitionAssignmentRequest
+	8,  // 15: google.cloud.pubsublite.v1.SubscriberService.Subscribe:output_type -> google.cloud.pubsublite.v1.SubscribeResponse
+	10, // 16: google.cloud.pubsublite.v1.PartitionAssignmentService.AssignPartitions:output_type -> google.cloud.pubsublite.v1.PartitionAssignment
+	15, // [15:17] is the sub-list for method output_type
+	13, // [13:15] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_pubsublite_v1_subscriber_proto_init() }
@@ -920,6 +1213,54 @@ func file_google_cloud_pubsublite_v1_subscriber_proto_init() {
 				return nil
 			}
 		}
+		file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InitialPartitionAssignmentRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PartitionAssignment); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PartitionAssignmentAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PartitionAssignmentRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[2].OneofWrappers = []interface{}{
 		(*SeekRequest_NamedTarget_)(nil),
@@ -935,15 +1276,19 @@ func file_google_cloud_pubsublite_v1_subscriber_proto_init() {
 		(*SubscribeResponse_Seek)(nil),
 		(*SubscribeResponse_Messages)(nil),
 	}
+	file_google_cloud_pubsublite_v1_subscriber_proto_msgTypes[11].OneofWrappers = []interface{}{
+		(*PartitionAssignmentRequest_Initial)(nil),
+		(*PartitionAssignmentRequest_Ack)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_pubsublite_v1_subscriber_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   8,
+			NumMessages:   12,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   2,
 		},
 		GoTypes:           file_google_cloud_pubsublite_v1_subscriber_proto_goTypes,
 		DependencyIndexes: file_google_cloud_pubsublite_v1_subscriber_proto_depIdxs,
@@ -1063,6 +1408,124 @@ var _SubscriberService_serviceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "Subscribe",
 			Handler:       _SubscriberService_Subscribe_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
+	Metadata: "google/cloud/pubsublite/v1/subscriber.proto",
+}
+
+// PartitionAssignmentServiceClient is the client API for PartitionAssignmentService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type PartitionAssignmentServiceClient interface {
+	// Assign partitions for this client to handle for the specified subscription.
+	//
+	// The client must send an InitialPartitionAssignmentRequest first.
+	// The server will then send at most one unacknowledged PartitionAssignment
+	// outstanding on the stream at a time.
+	// The client should send a PartitionAssignmentAck after updating the
+	// partitions it is connected to to reflect the new assignment.
+	AssignPartitions(ctx context.Context, opts ...grpc.CallOption) (PartitionAssignmentService_AssignPartitionsClient, error)
+}
+
+type partitionAssignmentServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewPartitionAssignmentServiceClient(cc grpc.ClientConnInterface) PartitionAssignmentServiceClient {
+	return &partitionAssignmentServiceClient{cc}
+}
+
+func (c *partitionAssignmentServiceClient) AssignPartitions(ctx context.Context, opts ...grpc.CallOption) (PartitionAssignmentService_AssignPartitionsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_PartitionAssignmentService_serviceDesc.Streams[0], "/google.cloud.pubsublite.v1.PartitionAssignmentService/AssignPartitions", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &partitionAssignmentServiceAssignPartitionsClient{stream}
+	return x, nil
+}
+
+type PartitionAssignmentService_AssignPartitionsClient interface {
+	Send(*PartitionAssignmentRequest) error
+	Recv() (*PartitionAssignment, error)
+	grpc.ClientStream
+}
+
+type partitionAssignmentServiceAssignPartitionsClient struct {
+	grpc.ClientStream
+}
+
+func (x *partitionAssignmentServiceAssignPartitionsClient) Send(m *PartitionAssignmentRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *partitionAssignmentServiceAssignPartitionsClient) Recv() (*PartitionAssignment, error) {
+	m := new(PartitionAssignment)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+// PartitionAssignmentServiceServer is the server API for PartitionAssignmentService service.
+type PartitionAssignmentServiceServer interface {
+	// Assign partitions for this client to handle for the specified subscription.
+	//
+	// The client must send an InitialPartitionAssignmentRequest first.
+	// The server will then send at most one unacknowledged PartitionAssignment
+	// outstanding on the stream at a time.
+	// The client should send a PartitionAssignmentAck after updating the
+	// partitions it is connected to to reflect the new assignment.
+	AssignPartitions(PartitionAssignmentService_AssignPartitionsServer) error
+}
+
+// UnimplementedPartitionAssignmentServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedPartitionAssignmentServiceServer struct {
+}
+
+func (*UnimplementedPartitionAssignmentServiceServer) AssignPartitions(PartitionAssignmentService_AssignPartitionsServer) error {
+	return status.Errorf(codes.Unimplemented, "method AssignPartitions not implemented")
+}
+
+func RegisterPartitionAssignmentServiceServer(s *grpc.Server, srv PartitionAssignmentServiceServer) {
+	s.RegisterService(&_PartitionAssignmentService_serviceDesc, srv)
+}
+
+func _PartitionAssignmentService_AssignPartitions_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(PartitionAssignmentServiceServer).AssignPartitions(&partitionAssignmentServiceAssignPartitionsServer{stream})
+}
+
+type PartitionAssignmentService_AssignPartitionsServer interface {
+	Send(*PartitionAssignment) error
+	Recv() (*PartitionAssignmentRequest, error)
+	grpc.ServerStream
+}
+
+type partitionAssignmentServiceAssignPartitionsServer struct {
+	grpc.ServerStream
+}
+
+func (x *partitionAssignmentServiceAssignPartitionsServer) Send(m *PartitionAssignment) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *partitionAssignmentServiceAssignPartitionsServer) Recv() (*PartitionAssignmentRequest, error) {
+	m := new(PartitionAssignmentRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+var _PartitionAssignmentService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "google.cloud.pubsublite.v1.PartitionAssignmentService",
+	HandlerType: (*PartitionAssignmentServiceServer)(nil),
+	Methods:     []grpc.MethodDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "AssignPartitions",
+			Handler:       _PartitionAssignmentService_AssignPartitions_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
