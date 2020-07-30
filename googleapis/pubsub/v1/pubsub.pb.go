@@ -115,8 +115,8 @@ type Topic struct {
 	// signs (`%`). It must be between 3 and 255 characters in length, and it
 	// must not start with `"goog"`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-	// managing labels</a>.
+	// See [Creating and managing labels]
+	// (https://cloud.google.com/pubsub/docs/labels).
 	Labels map[string]string `protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Policy constraining the set of Google Cloud Platform regions where messages
 	// published to the topic may be stored. If not present, then no constraints
@@ -192,11 +192,11 @@ func (x *Topic) GetKmsKeyName() string {
 // A message that is published by publishers and consumed by subscribers. The
 // message must contain either a non-empty data field or at least one attribute.
 // Note that client libraries represent this object differently
-// depending on the language. See the corresponding
-// <a href="https://cloud.google.com/pubsub/docs/reference/libraries">client
-// library documentation</a> for more information. See
-// <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
-// for more information about message limits.
+// depending on the language. See the corresponding [client library
+// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
+// more information. See [quotas and limits]
+// (https://cloud.google.com/pubsub/quotas) for more information about message
+// limits.
 type PubsubMessage struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -224,9 +224,6 @@ type PubsubMessage struct {
 	// delivered to subscribers in the order in which they are received by the
 	// Pub/Sub system. All `PubsubMessage`s published in a given `PublishRequest`
 	// must specify the same `ordering_key` value.
-	// <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
-	// API might be changed in backward-incompatible ways and is not recommended
-	// for production use. It is not subject to any SLA or deprecation policy.
 	OrderingKey string `protobuf:"bytes,5,opt,name=ordering_key,json=orderingKey,proto3" json:"ordering_key,omitempty"`
 }
 
@@ -1093,10 +1090,8 @@ type Subscription struct {
 	// Indicates whether to retain acknowledged messages. If true, then
 	// messages are not expunged from the subscription's backlog, even if they are
 	// acknowledged, until they fall out of the `message_retention_duration`
-	// window. This must be true if you would like to
-	// <a
-	// href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">
-	// Seek to a timestamp</a>.
+	// window. This must be true if you would like to [Seek to a timestamp]
+	// (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
 	RetainAckedMessages bool `protobuf:"varint,7,opt,name=retain_acked_messages,json=retainAckedMessages,proto3" json:"retain_acked_messages,omitempty"`
 	// How long to retain unacknowledged messages in the subscription's backlog,
 	// from the moment a message is published.
@@ -1112,9 +1107,6 @@ type Subscription struct {
 	// will be delivered to the subscribers in the order in which they
 	// are received by the Pub/Sub system. Otherwise, they may be delivered in
 	// any order.
-	// <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
-	// API might be changed in backward-incompatible ways and is not recommended
-	// for production use. It is not subject to any SLA or deprecation policy.
 	EnableMessageOrdering bool `protobuf:"varint,10,opt,name=enable_message_ordering,json=enableMessageOrdering,proto3" json:"enable_message_ordering,omitempty"`
 	// A policy that specifies the conditions for this subscription's expiration.
 	// A subscription is considered active as long as any connected subscriber is
@@ -2650,11 +2642,10 @@ func (x *UpdateSnapshotRequest) GetUpdateMask() *field_mask.FieldMask {
 }
 
 // A snapshot resource. Snapshots are used in
-// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-// operations, which allow
-// you to manage message acknowledgments in bulk. That is, you can set the
-// acknowledgment state of messages in an existing subscription to the state
-// captured by a snapshot.
+// [Seek](https://cloud.google.com/pubsub/docs/replay-overview)
+// operations, which allow you to manage message acknowledgments in bulk. That
+// is, you can set the acknowledgment state of messages in an existing
+// subscription to the state captured by a snapshot.
 type Snapshot struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2675,8 +2666,8 @@ type Snapshot struct {
 	// exists -- will expire in 4 days. The service will refuse to create a
 	// snapshot that would expire in less than 1 hour after creation.
 	ExpireTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
-	// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
-	// managing labels</a>.
+	// See [Creating and managing labels]
+	// (https://cloud.google.com/pubsub/docs/labels).
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
@@ -4681,9 +4672,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type PublisherClient interface {
-	// Creates the given topic with the given name. See the
-	// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-	// resource name rules</a>.
+	// Creates the given topic with the given name. See the [resource name rules](
+	// https://cloud.google.com/pubsub/docs/admin#resource_names).
 	CreateTopic(ctx context.Context, in *Topic, opts ...grpc.CallOption) (*Topic, error)
 	// Updates an existing topic. Note that certain properties of a
 	// topic are not modifiable.
@@ -4698,11 +4688,10 @@ type PublisherClient interface {
 	// Lists the names of the attached subscriptions on this topic.
 	ListTopicSubscriptions(ctx context.Context, in *ListTopicSubscriptionsRequest, opts ...grpc.CallOption) (*ListTopicSubscriptionsResponse, error)
 	// Lists the names of the snapshots on this topic. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot.
+	// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+	// which allow you to manage message acknowledgments in bulk. That is, you can
+	// set the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot.
 	ListTopicSnapshots(ctx context.Context, in *ListTopicSnapshotsRequest, opts ...grpc.CallOption) (*ListTopicSnapshotsResponse, error)
 	// Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
 	// does not exist. After a topic is deleted, a new topic may be created with
@@ -4808,9 +4797,8 @@ func (c *publisherClient) DetachSubscription(ctx context.Context, in *DetachSubs
 
 // PublisherServer is the server API for Publisher service.
 type PublisherServer interface {
-	// Creates the given topic with the given name. See the
-	// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-	// resource name rules</a>.
+	// Creates the given topic with the given name. See the [resource name rules](
+	// https://cloud.google.com/pubsub/docs/admin#resource_names).
 	CreateTopic(context.Context, *Topic) (*Topic, error)
 	// Updates an existing topic. Note that certain properties of a
 	// topic are not modifiable.
@@ -4825,11 +4813,10 @@ type PublisherServer interface {
 	// Lists the names of the attached subscriptions on this topic.
 	ListTopicSubscriptions(context.Context, *ListTopicSubscriptionsRequest) (*ListTopicSubscriptionsResponse, error)
 	// Lists the names of the snapshots on this topic. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot.
+	// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+	// which allow you to manage message acknowledgments in bulk. That is, you can
+	// set the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot.
 	ListTopicSnapshots(context.Context, *ListTopicSnapshotsRequest) (*ListTopicSnapshotsResponse, error)
 	// Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
 	// does not exist. After a topic is deleted, a new topic may be created with
@@ -5091,19 +5078,17 @@ var _Publisher_serviceDesc = grpc.ServiceDesc{
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SubscriberClient interface {
-	// Creates a subscription to a given topic. See the
-	// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-	// resource name rules</a>.
+	// Creates a subscription to a given topic. See the [resource name rules]
+	// (https://cloud.google.com/pubsub/docs/admin#resource_names).
 	// If the subscription already exists, returns `ALREADY_EXISTS`.
 	// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
 	//
 	// If the name is not provided in the request, the server will assign a random
 	// name for this subscription on the same project as the topic, conforming
-	// to the
-	// [resource name
-	// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-	// generated name is populated in the returned Subscription object. Note that
-	// for REST API requests, you must specify a name in the request.
+	// to the [resource name format]
+	// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
+	// name is populated in the returned Subscription object. Note that for REST
+	// API requests, you must specify a name in the request.
 	CreateSubscription(ctx context.Context, in *Subscription, opts ...grpc.CallOption) (*Subscription, error)
 	// Gets the configuration details of a subscription.
 	GetSubscription(ctx context.Context, in *GetSubscriptionRequest, opts ...grpc.CallOption) (*Subscription, error)
@@ -5157,29 +5142,26 @@ type SubscriberClient interface {
 	// is, you can set the acknowledgment state of messages in an existing
 	// subscription to the state captured by a snapshot.
 	GetSnapshot(ctx context.Context, in *GetSnapshotRequest, opts ...grpc.CallOption) (*Snapshot, error)
-	// Lists the existing snapshots. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot.
+	// Lists the existing snapshots. Snapshots are used in [Seek](
+	// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+	// allow you to manage message acknowledgments in bulk. That is, you can set
+	// the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot.
 	ListSnapshots(ctx context.Context, in *ListSnapshotsRequest, opts ...grpc.CallOption) (*ListSnapshotsResponse, error)
 	// Creates a snapshot from the requested subscription. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot.
-	// <br><br>If the snapshot already exists, returns `ALREADY_EXISTS`.
+	// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+	// which allow you to manage message acknowledgments in bulk. That is, you can
+	// set the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot.
+	// If the snapshot already exists, returns `ALREADY_EXISTS`.
 	// If the requested subscription doesn't exist, returns `NOT_FOUND`.
 	// If the backlog in the subscription is too old -- and the resulting snapshot
 	// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
 	// See also the `Snapshot.expire_time` field. If the name is not provided in
 	// the request, the server will assign a random
 	// name for this snapshot on the same project as the subscription, conforming
-	// to the
-	// [resource name
-	// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+	// to the [resource name format]
+	// (https://cloud.google.com/pubsub/docs/admin#resource_names). The
 	// generated name is populated in the returned Snapshot object. Note that for
 	// REST API requests, you must specify a name in the request.
 	CreateSnapshot(ctx context.Context, in *CreateSnapshotRequest, opts ...grpc.CallOption) (*Snapshot, error)
@@ -5190,25 +5172,23 @@ type SubscriberClient interface {
 	// acknowledgment state of messages in an existing subscription to the state
 	// captured by a snapshot.
 	UpdateSnapshot(ctx context.Context, in *UpdateSnapshotRequest, opts ...grpc.CallOption) (*Snapshot, error)
-	// Removes an existing snapshot. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot.<br><br>
+	// Removes an existing snapshot. Snapshots are used in [Seek]
+	// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+	// allow you to manage message acknowledgments in bulk. That is, you can set
+	// the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot.
 	// When the snapshot is deleted, all messages retained in the snapshot
 	// are immediately dropped. After a snapshot is deleted, a new one may be
 	// created with the same name, but the new one has no association with the old
 	// snapshot or its subscription, unless the same subscription is specified.
 	DeleteSnapshot(ctx context.Context, in *DeleteSnapshotRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Seeks an existing subscription to a point in time or to a given snapshot,
-	// whichever is provided in the request. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot. Note that both the subscription and the snapshot
-	// must be on the same topic.
+	// whichever is provided in the request. Snapshots are used in [Seek](
+	// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+	// allow you to manage message acknowledgments in bulk. That is, you can set
+	// the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot. Note that both the subscription and the
+	// snapshot must be on the same topic.
 	Seek(ctx context.Context, in *SeekRequest, opts ...grpc.CallOption) (*SeekResponse, error)
 }
 
@@ -5388,19 +5368,17 @@ func (c *subscriberClient) Seek(ctx context.Context, in *SeekRequest, opts ...gr
 
 // SubscriberServer is the server API for Subscriber service.
 type SubscriberServer interface {
-	// Creates a subscription to a given topic. See the
-	// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-	// resource name rules</a>.
+	// Creates a subscription to a given topic. See the [resource name rules]
+	// (https://cloud.google.com/pubsub/docs/admin#resource_names).
 	// If the subscription already exists, returns `ALREADY_EXISTS`.
 	// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
 	//
 	// If the name is not provided in the request, the server will assign a random
 	// name for this subscription on the same project as the topic, conforming
-	// to the
-	// [resource name
-	// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-	// generated name is populated in the returned Subscription object. Note that
-	// for REST API requests, you must specify a name in the request.
+	// to the [resource name format]
+	// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
+	// name is populated in the returned Subscription object. Note that for REST
+	// API requests, you must specify a name in the request.
 	CreateSubscription(context.Context, *Subscription) (*Subscription, error)
 	// Gets the configuration details of a subscription.
 	GetSubscription(context.Context, *GetSubscriptionRequest) (*Subscription, error)
@@ -5454,29 +5432,26 @@ type SubscriberServer interface {
 	// is, you can set the acknowledgment state of messages in an existing
 	// subscription to the state captured by a snapshot.
 	GetSnapshot(context.Context, *GetSnapshotRequest) (*Snapshot, error)
-	// Lists the existing snapshots. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot.
+	// Lists the existing snapshots. Snapshots are used in [Seek](
+	// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+	// allow you to manage message acknowledgments in bulk. That is, you can set
+	// the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot.
 	ListSnapshots(context.Context, *ListSnapshotsRequest) (*ListSnapshotsResponse, error)
 	// Creates a snapshot from the requested subscription. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot.
-	// <br><br>If the snapshot already exists, returns `ALREADY_EXISTS`.
+	// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+	// which allow you to manage message acknowledgments in bulk. That is, you can
+	// set the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot.
+	// If the snapshot already exists, returns `ALREADY_EXISTS`.
 	// If the requested subscription doesn't exist, returns `NOT_FOUND`.
 	// If the backlog in the subscription is too old -- and the resulting snapshot
 	// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned.
 	// See also the `Snapshot.expire_time` field. If the name is not provided in
 	// the request, the server will assign a random
 	// name for this snapshot on the same project as the subscription, conforming
-	// to the
-	// [resource name
-	// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+	// to the [resource name format]
+	// (https://cloud.google.com/pubsub/docs/admin#resource_names). The
 	// generated name is populated in the returned Snapshot object. Note that for
 	// REST API requests, you must specify a name in the request.
 	CreateSnapshot(context.Context, *CreateSnapshotRequest) (*Snapshot, error)
@@ -5487,25 +5462,23 @@ type SubscriberServer interface {
 	// acknowledgment state of messages in an existing subscription to the state
 	// captured by a snapshot.
 	UpdateSnapshot(context.Context, *UpdateSnapshotRequest) (*Snapshot, error)
-	// Removes an existing snapshot. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot.<br><br>
+	// Removes an existing snapshot. Snapshots are used in [Seek]
+	// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+	// allow you to manage message acknowledgments in bulk. That is, you can set
+	// the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot.
 	// When the snapshot is deleted, all messages retained in the snapshot
 	// are immediately dropped. After a snapshot is deleted, a new one may be
 	// created with the same name, but the new one has no association with the old
 	// snapshot or its subscription, unless the same subscription is specified.
 	DeleteSnapshot(context.Context, *DeleteSnapshotRequest) (*empty.Empty, error)
 	// Seeks an existing subscription to a point in time or to a given snapshot,
-	// whichever is provided in the request. Snapshots are used in
-	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
-	// operations, which allow
-	// you to manage message acknowledgments in bulk. That is, you can set the
-	// acknowledgment state of messages in an existing subscription to the state
-	// captured by a snapshot. Note that both the subscription and the snapshot
-	// must be on the same topic.
+	// whichever is provided in the request. Snapshots are used in [Seek](
+	// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+	// allow you to manage message acknowledgments in bulk. That is, you can set
+	// the acknowledgment state of messages in an existing subscription to the
+	// state captured by a snapshot. Note that both the subscription and the
+	// snapshot must be on the same topic.
 	Seek(context.Context, *SeekRequest) (*SeekResponse, error)
 }
 
