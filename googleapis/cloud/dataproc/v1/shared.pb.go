@@ -45,7 +45,7 @@ const _ = proto.ProtoPackageIsVersion4
 type Component int32
 
 const (
-	// Unspecified component.
+	// Unspecified component. Specifying this will cause Cluster creation to fail.
 	Component_COMPONENT_UNSPECIFIED Component = 0
 	// The Anaconda python distribution.
 	Component_ANACONDA Component = 5
