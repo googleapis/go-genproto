@@ -105,14 +105,14 @@ const (
 	AccessReason_TYPE_UNSPECIFIED AccessReason_Type = 0
 	// Customer made a request or raised an issue that required the principal to
 	// access customer data. `detail` is of the form ("#####" is the issue ID):
-	// <ol>
-	//   <li>"Feedback Report: #####"</li>
-	//   <li>"Case Number: #####"</li>
-	//   <li>"Case ID: #####"</li>
-	//   <li>"E-PIN Reference: #####"</li>
-	//   <li>"Google-#####"</li>
-	//   <li>"T-#####"</li>
-	// </ol>
+	//
+	// - "Feedback Report: #####"
+	// - "Case Number: #####"
+	// - "Case ID: #####"
+	// - "E-PIN Reference: #####"
+	// - "Google-#####"
+	// - "T-#####"
+	//
 	AccessReason_CUSTOMER_INITIATED_SUPPORT AccessReason_Type = 1
 	// The principal accessed customer data in order to diagnose or resolve a
 	// suspected issue in services or a known outage. Often this access is used
@@ -178,32 +178,32 @@ type AccessLocations struct {
 	// limited situations Google systems may refer refer to a region code instead
 	// of a country code.
 	// Possible Region Codes:
-	// <ol>
-	//   <li>ASI: Asia</li>
-	//   <li>EUR: Europe</li>
-	//   <li>OCE: Oceania</li>
-	//   <li>AFR: Africa</li>
-	//   <li>NAM: North America</li>
-	//   <li>SAM: South America</li>
-	//   <li>ANT: Antarctica</li>
-	//   <li>ANY: Any location</li>
-	// </ol>
+	//
+	// - ASI: Asia
+	// - EUR: Europe
+	// - OCE: Oceania
+	// - AFR: Africa
+	// - NAM: North America
+	// - SAM: South America
+	// - ANT: Antarctica
+	// - ANY: Any location
+	//
 	PrincipalOfficeCountry string `protobuf:"bytes,1,opt,name=principal_office_country,json=principalOfficeCountry,proto3" json:"principal_office_country,omitempty"`
 	// Physical location of the principal at the time of the access. A
 	// two-letter country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or
 	// a region code. In some limited situations Google systems may refer refer to
 	// a region code instead of a country code.
 	// Possible Region Codes:
-	// <ol>
-	//   <li>ASI: Asia</li>
-	//   <li>EUR: Europe</li>
-	//   <li>OCE: Oceania</li>
-	//   <li>AFR: Africa</li>
-	//   <li>NAM: North America</li>
-	//   <li>SAM: South America</li>
-	//   <li>ANT: Antarctica</li>
-	//   <li>ANY: Any location</li>
-	// </ol>
+	//
+	// - ASI: Asia
+	// - EUR: Europe
+	// - OCE: Oceania
+	// - AFR: Africa
+	// - NAM: North America
+	// - SAM: South America
+	// - ANT: Antarctica
+	// - ANY: Any location
+	//
 	PrincipalPhysicalLocationCountry string `protobuf:"bytes,2,opt,name=principal_physical_location_country,json=principalPhysicalLocationCountry,proto3" json:"principal_physical_location_country,omitempty"`
 }
 
@@ -631,18 +631,18 @@ type EnrolledService struct {
 
 	// The product for which Access Approval will be enrolled. Allowed values are
 	// listed below (case-sensitive):
-	// <ol>
-	//   <li>all</li>
-	//   <li>appengine.googleapis.com</li>
-	//   <li>bigquery.googleapis.com</li>
-	//   <li>bigtable.googleapis.com</li>
-	//   <li>cloudkms.googleapis.com</li>
-	//   <li>compute.googleapis.com</li>
-	//   <li>dataflow.googleapis.com</li>
-	//   <li>iam.googleapis.com</li>
-	//   <li>pubsub.googleapis.com</li>
-	//   <li>storage.googleapis.com</li>
-	// <ol>
+	//
+	// - all
+	// - appengine.googleapis.com
+	// - bigquery.googleapis.com
+	// - bigtable.googleapis.com
+	// - cloudkms.googleapis.com
+	// - compute.googleapis.com
+	// - dataflow.googleapis.com
+	// - iam.googleapis.com
+	// - pubsub.googleapis.com
+	// - storage.googleapis.com
+	//
 	CloudProduct string `protobuf:"bytes,1,opt,name=cloud_product,json=cloudProduct,proto3" json:"cloud_product,omitempty"`
 	// The enrollment level of the service.
 	EnrollmentLevel EnrollmentLevel `protobuf:"varint,2,opt,name=enrollment_level,json=enrollmentLevel,proto3,enum=google.cloud.accessapproval.v1.EnrollmentLevel" json:"enrollment_level,omitempty"`
@@ -701,11 +701,11 @@ type AccessApprovalSettings struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The resource name of the settings. Format is one of:
-	// <ol>
-	//   <li>"projects/{project_id}/accessApprovalSettings"</li>
-	//   <li>"folders/{folder_id}/accessApprovalSettings"</li>
-	//   <li>"organizations/{organization_id}/accessApprovalSettings"</li>
-	// <ol>
+	//
+	// - "projects/{project_id}/accessApprovalSettings"
+	// - "folders/{folder_id}/accessApprovalSettings"
+	// - "organizations/{organization_id}/accessApprovalSettings"
+	//
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// A list of email addresses to which notifications relating to approval
 	// requests should be sent. Notifications relating to a resource will be sent
@@ -803,13 +803,13 @@ type ListApprovalRequestsMessage struct {
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// A filter on the type of approval requests to retrieve. Must be one of the
 	// following values:
-	// <ol>
-	//   <li>[not set]: Requests that are pending or have active approvals.</li>
-	//   <li>ALL: All requests.</li>
-	//   <li>PENDING: Only pending requests.</li>
-	//   <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-	//   <li>DISMISSED: Only dismissed (including expired) requests.</li>
-	// </ol>
+	//
+	// - [not set]: Requests that are pending or have active approvals.
+	// - ALL: All requests.
+	// - PENDING: Only pending requests.
+	// - ACTIVE: Only active (i.e. currently approved) requests.
+	// - DISMISSED: Only dismissed (including expired) requests.
+	//
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Requested page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
