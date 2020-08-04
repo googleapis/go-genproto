@@ -3523,7 +3523,7 @@ type BuildOptions struct {
 	// Storage.
 	LogStreamingOption BuildOptions_LogStreamingOption `protobuf:"varint,5,opt,name=log_streaming_option,json=logStreamingOption,proto3,enum=google.devtools.cloudbuild.v1.BuildOptions_LogStreamingOption" json:"log_streaming_option,omitempty"`
 	// Option to specify a `WorkerPool` for the build.
-	// Format: projects/{project}/workerPools/{workerPool}
+	// Format: projects/{project}/locations/{location}/workerPools/{workerPool}
 	//
 	// This field is experimental.
 	WorkerPool string `protobuf:"bytes,7,opt,name=worker_pool,json=workerPool,proto3" json:"worker_pool,omitempty"`
