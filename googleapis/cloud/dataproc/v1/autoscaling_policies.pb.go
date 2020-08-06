@@ -246,7 +246,7 @@ type BasicYarnAutoscalingConfig struct {
 	// aggressive scaling). A scale-up factor closer to 0 will result in a smaller
 	// magnitude of scaling up (less aggressive scaling).
 	// See [How autoscaling
-	// works](/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
+	// works](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
 	// for more information.
 	//
 	// Bounds: [0.0, 1.0].
@@ -257,7 +257,7 @@ type BasicYarnAutoscalingConfig struct {
 	// update (more aggressive scaling). A scale-down factor of 0 disables
 	// removing workers, which can be beneficial for autoscaling a single job.
 	// See [How autoscaling
-	// works](/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
+	// works](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
 	// for more information.
 	//
 	// Bounds: [0.0, 1.0].
