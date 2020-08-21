@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -514,7 +514,7 @@ type ExecutePatchJobRequest struct {
 	PatchConfig *PatchConfig `protobuf:"bytes,4,opt,name=patch_config,json=patchConfig,proto3" json:"patch_config,omitempty"`
 	// Duration of the patch job. After the duration ends, the patch job
 	// times out.
-	Duration *duration.Duration `protobuf:"bytes,5,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,5,opt,name=duration,proto3" json:"duration,omitempty"`
 	// If this patch is a dry-run only, instances are contacted but
 	// will do nothing.
 	DryRun bool `protobuf:"varint,6,opt,name=dry_run,json=dryRun,proto3" json:"dry_run,omitempty"`
@@ -582,7 +582,7 @@ func (x *ExecutePatchJobRequest) GetPatchConfig() *PatchConfig {
 	return nil
 }
 
-func (x *ExecutePatchJobRequest) GetDuration() *duration.Duration {
+func (x *ExecutePatchJobRequest) GetDuration() *durationpb.Duration {
 	if x != nil {
 		return x.Duration
 	}
@@ -1038,9 +1038,9 @@ type PatchJob struct {
 	// to 1024 characters.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Time this patch job was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Last time this patch job was updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The current state of the PatchJob .
 	State PatchJob_State `protobuf:"varint,5,opt,name=state,proto3,enum=google.cloud.osconfig.v1.PatchJob_State" json:"state,omitempty"`
 	// Instances to patch.
@@ -1049,7 +1049,7 @@ type PatchJob struct {
 	PatchConfig *PatchConfig `protobuf:"bytes,7,opt,name=patch_config,json=patchConfig,proto3" json:"patch_config,omitempty"`
 	// Duration of the patch job. After the duration ends, the
 	// patch job times out.
-	Duration *duration.Duration `protobuf:"bytes,8,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,8,opt,name=duration,proto3" json:"duration,omitempty"`
 	// Summary of instance details.
 	InstanceDetailsSummary *PatchJob_InstanceDetailsSummary `protobuf:"bytes,9,opt,name=instance_details_summary,json=instanceDetailsSummary,proto3" json:"instance_details_summary,omitempty"`
 	// If this patch job is a dry run, the agent reports that it has
@@ -1118,14 +1118,14 @@ func (x *PatchJob) GetDescription() string {
 	return ""
 }
 
-func (x *PatchJob) GetCreateTime() *timestamp.Timestamp {
+func (x *PatchJob) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *PatchJob) GetUpdateTime() *timestamp.Timestamp {
+func (x *PatchJob) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -1153,7 +1153,7 @@ func (x *PatchJob) GetPatchConfig() *PatchConfig {
 	return nil
 }
 
-func (x *PatchJob) GetDuration() *duration.Duration {
+func (x *PatchJob) GetDuration() *durationpb.Duration {
 	if x != nil {
 		return x.Duration
 	}
@@ -2819,8 +2819,8 @@ var file_google_cloud_osconfig_v1_patch_jobs_proto_goTypes = []interface{}{
 	(*PatchJob_InstanceDetailsSummary)(nil),     // 26: google.cloud.osconfig.v1.PatchJob.InstanceDetailsSummary
 	(*PatchInstanceFilter_GroupLabel)(nil),      // 27: google.cloud.osconfig.v1.PatchInstanceFilter.GroupLabel
 	nil,                                         // 28: google.cloud.osconfig.v1.PatchInstanceFilter.GroupLabel.LabelsEntry
-	(*duration.Duration)(nil),                   // 29: google.protobuf.Duration
-	(*timestamp.Timestamp)(nil),                 // 30: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                 // 29: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),               // 30: google.protobuf.Timestamp
 }
 var file_google_cloud_osconfig_v1_patch_jobs_proto_depIdxs = []int32{
 	25, // 0: google.cloud.osconfig.v1.ExecutePatchJobRequest.instance_filter:type_name -> google.cloud.osconfig.v1.PatchInstanceFilter

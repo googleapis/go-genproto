@@ -48,15 +48,12 @@ const (
 	// This is never used in `CheckResponse`.
 	CheckError_ERROR_CODE_UNSPECIFIED CheckError_Code = 0
 	// The consumer's project id, network container, or resource container was
-	// not found. Same as
-	// [google.rpc.Code.NOT_FOUND][google.rpc.Code.NOT_FOUND].
+	// not found. Same as [google.rpc.Code.NOT_FOUND][google.rpc.Code.NOT_FOUND].
 	CheckError_NOT_FOUND CheckError_Code = 5
 	// The consumer doesn't have access to the specified resource.
-	// Same as
-	// [google.rpc.Code.PERMISSION_DENIED][google.rpc.Code.PERMISSION_DENIED].
+	// Same as [google.rpc.Code.PERMISSION_DENIED][google.rpc.Code.PERMISSION_DENIED].
 	CheckError_PERMISSION_DENIED CheckError_Code = 7
-	// Quota check failed. Same as
-	// [google.rpc.Code.RESOURCE_EXHAUSTED][google.rpc.Code.RESOURCE_EXHAUSTED].
+	// Quota check failed. Same as [google.rpc.Code.RESOURCE_EXHAUSTED][google.rpc.Code.RESOURCE_EXHAUSTED].
 	CheckError_RESOURCE_EXHAUSTED CheckError_Code = 8
 	// The consumer hasn't activated the service.
 	CheckError_SERVICE_NOT_ACTIVATED CheckError_Code = 104

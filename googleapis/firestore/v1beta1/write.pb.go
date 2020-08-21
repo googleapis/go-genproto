@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -297,7 +297,7 @@ type WriteResult struct {
 	//
 	// If the write did not actually change the document, this will be the
 	// previous update_time.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The results of applying each [DocumentTransform.FieldTransform][google.firestore.v1beta1.DocumentTransform.FieldTransform], in the
 	// same order.
 	TransformResults []*Value `protobuf:"bytes,2,rep,name=transform_results,json=transformResults,proto3" json:"transform_results,omitempty"`
@@ -335,7 +335,7 @@ func (*WriteResult) Descriptor() ([]byte, []int) {
 	return file_google_firestore_v1beta1_write_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *WriteResult) GetUpdateTime() *timestamp.Timestamp {
+func (x *WriteResult) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -443,7 +443,7 @@ type DocumentDelete struct {
 	// The read timestamp at which the delete was observed.
 	//
 	// Greater or equal to the `commit_time` of the delete.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 }
 
 func (x *DocumentDelete) Reset() {
@@ -492,7 +492,7 @@ func (x *DocumentDelete) GetRemovedTargetIds() []int32 {
 	return nil
 }
 
-func (x *DocumentDelete) GetReadTime() *timestamp.Timestamp {
+func (x *DocumentDelete) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -519,7 +519,7 @@ type DocumentRemove struct {
 	// The read timestamp at which the remove was observed.
 	//
 	// Greater or equal to the `commit_time` of the change/delete/remove.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 }
 
 func (x *DocumentRemove) Reset() {
@@ -568,7 +568,7 @@ func (x *DocumentRemove) GetRemovedTargetIds() []int32 {
 	return nil
 }
 
-func (x *DocumentRemove) GetReadTime() *timestamp.Timestamp {
+func (x *DocumentRemove) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -1019,7 +1019,7 @@ var file_google_firestore_v1beta1_write_proto_goTypes = []interface{}{
 	(*Document)(nil),                         // 9: google.firestore.v1beta1.Document
 	(*DocumentMask)(nil),                     // 10: google.firestore.v1beta1.DocumentMask
 	(*Precondition)(nil),                     // 11: google.firestore.v1beta1.Precondition
-	(*timestamp.Timestamp)(nil),              // 12: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),            // 12: google.protobuf.Timestamp
 	(*Value)(nil),                            // 13: google.firestore.v1beta1.Value
 	(*ArrayValue)(nil),                       // 14: google.firestore.v1beta1.ArrayValue
 }

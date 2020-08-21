@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,21 +54,21 @@ type PaymentsAccount struct {
 	// `customers/{customer_id}/paymentsAccounts/{payments_account_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. A 16 digit ID used to identify a payments account.
-	PaymentsAccountId *wrappers.StringValue `protobuf:"bytes,2,opt,name=payments_account_id,json=paymentsAccountId,proto3" json:"payments_account_id,omitempty"`
+	PaymentsAccountId *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=payments_account_id,json=paymentsAccountId,proto3" json:"payments_account_id,omitempty"`
 	// Output only. The name of the payments account.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The currency code of the payments account.
 	// A subset of the currency codes derived from the ISO 4217 standard is
 	// supported.
-	CurrencyCode *wrappers.StringValue `protobuf:"bytes,4,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
+	CurrencyCode *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
 	// Output only. A 12 digit ID used to identify the payments profile associated with the
 	// payments account.
-	PaymentsProfileId *wrappers.StringValue `protobuf:"bytes,5,opt,name=payments_profile_id,json=paymentsProfileId,proto3" json:"payments_profile_id,omitempty"`
+	PaymentsProfileId *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=payments_profile_id,json=paymentsProfileId,proto3" json:"payments_profile_id,omitempty"`
 	// Output only. A secondary payments profile ID present in uncommon situations, e.g.
 	// when a sequential liability agreement has been arranged.
-	SecondaryPaymentsProfileId *wrappers.StringValue `protobuf:"bytes,6,opt,name=secondary_payments_profile_id,json=secondaryPaymentsProfileId,proto3" json:"secondary_payments_profile_id,omitempty"`
+	SecondaryPaymentsProfileId *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=secondary_payments_profile_id,json=secondaryPaymentsProfileId,proto3" json:"secondary_payments_profile_id,omitempty"`
 	// Output only. Paying manager of this payment account.
-	PayingManagerCustomer *wrappers.StringValue `protobuf:"bytes,7,opt,name=paying_manager_customer,json=payingManagerCustomer,proto3" json:"paying_manager_customer,omitempty"`
+	PayingManagerCustomer *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=paying_manager_customer,json=payingManagerCustomer,proto3" json:"paying_manager_customer,omitempty"`
 }
 
 func (x *PaymentsAccount) Reset() {
@@ -110,42 +110,42 @@ func (x *PaymentsAccount) GetResourceName() string {
 	return ""
 }
 
-func (x *PaymentsAccount) GetPaymentsAccountId() *wrappers.StringValue {
+func (x *PaymentsAccount) GetPaymentsAccountId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PaymentsAccountId
 	}
 	return nil
 }
 
-func (x *PaymentsAccount) GetName() *wrappers.StringValue {
+func (x *PaymentsAccount) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *PaymentsAccount) GetCurrencyCode() *wrappers.StringValue {
+func (x *PaymentsAccount) GetCurrencyCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CurrencyCode
 	}
 	return nil
 }
 
-func (x *PaymentsAccount) GetPaymentsProfileId() *wrappers.StringValue {
+func (x *PaymentsAccount) GetPaymentsProfileId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PaymentsProfileId
 	}
 	return nil
 }
 
-func (x *PaymentsAccount) GetSecondaryPaymentsProfileId() *wrappers.StringValue {
+func (x *PaymentsAccount) GetSecondaryPaymentsProfileId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SecondaryPaymentsProfileId
 	}
 	return nil
 }
 
-func (x *PaymentsAccount) GetPayingManagerCustomer() *wrappers.StringValue {
+func (x *PaymentsAccount) GetPayingManagerCustomer() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PayingManagerCustomer
 	}
@@ -245,8 +245,8 @@ func file_google_ads_googleads_v3_resources_payments_account_proto_rawDescGZIP()
 
 var file_google_ads_googleads_v3_resources_payments_account_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_payments_account_proto_goTypes = []interface{}{
-	(*PaymentsAccount)(nil),      // 0: google.ads.googleads.v3.resources.PaymentsAccount
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*PaymentsAccount)(nil),        // 0: google.ads.googleads.v3.resources.PaymentsAccount
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v3_resources_payments_account_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v3.resources.PaymentsAccount.payments_account_id:type_name -> google.protobuf.StringValue

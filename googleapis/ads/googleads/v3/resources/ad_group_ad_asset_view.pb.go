@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v3/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,9 +56,9 @@ type AdGroupAdAssetView struct {
 	// `customers/{customer_id}/adGroupAdAssets/{AdGroupAdAsset.ad_group_id}~{AdGroupAdAsset.ad.ad_id}~{AdGroupAdAsset.asset_id}~{AdGroupAdAsset.asset_field_type}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ad group ad to which the asset is linked.
-	AdGroupAd *wrappers.StringValue `protobuf:"bytes,5,opt,name=ad_group_ad,json=adGroupAd,proto3" json:"ad_group_ad,omitempty"`
+	AdGroupAd *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=ad_group_ad,json=adGroupAd,proto3" json:"ad_group_ad,omitempty"`
 	// Output only. The asset which is linked to the ad group ad.
-	Asset *wrappers.StringValue `protobuf:"bytes,6,opt,name=asset,proto3" json:"asset,omitempty"`
+	Asset *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=asset,proto3" json:"asset,omitempty"`
 	// Output only. Role that the asset takes in the ad.
 	FieldType enums.AssetFieldTypeEnum_AssetFieldType `protobuf:"varint,2,opt,name=field_type,json=fieldType,proto3,enum=google.ads.googleads.v3.enums.AssetFieldTypeEnum_AssetFieldType" json:"field_type,omitempty"`
 	// Output only. Policy information for the ad group ad asset.
@@ -106,14 +106,14 @@ func (x *AdGroupAdAssetView) GetResourceName() string {
 	return ""
 }
 
-func (x *AdGroupAdAssetView) GetAdGroupAd() *wrappers.StringValue {
+func (x *AdGroupAdAssetView) GetAdGroupAd() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroupAd
 	}
 	return nil
 }
 
-func (x *AdGroupAdAssetView) GetAsset() *wrappers.StringValue {
+func (x *AdGroupAdAssetView) GetAsset() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Asset
 	}
@@ -350,7 +350,7 @@ var file_google_ads_googleads_v3_resources_ad_group_ad_asset_view_proto_msgTypes
 var file_google_ads_googleads_v3_resources_ad_group_ad_asset_view_proto_goTypes = []interface{}{
 	(*AdGroupAdAssetView)(nil),                                 // 0: google.ads.googleads.v3.resources.AdGroupAdAssetView
 	(*AdGroupAdAssetPolicySummary)(nil),                        // 1: google.ads.googleads.v3.resources.AdGroupAdAssetPolicySummary
-	(*wrappers.StringValue)(nil),                               // 2: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                             // 2: google.protobuf.StringValue
 	(enums.AssetFieldTypeEnum_AssetFieldType)(0),               // 3: google.ads.googleads.v3.enums.AssetFieldTypeEnum.AssetFieldType
 	(enums.AssetPerformanceLabelEnum_AssetPerformanceLabel)(0), // 4: google.ads.googleads.v3.enums.AssetPerformanceLabelEnum.AssetPerformanceLabel
 	(*common.PolicyTopicEntry)(nil),                            // 5: google.ads.googleads.v3.common.PolicyTopicEntry

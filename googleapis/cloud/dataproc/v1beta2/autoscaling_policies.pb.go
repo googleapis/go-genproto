@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -177,7 +177,7 @@ type BasicAutoscalingAlgorithm struct {
 	// the update operation from the previous event has completed.
 	//
 	// Bounds: [2m, 1d]. Default: 2m.
-	CooldownPeriod *duration.Duration `protobuf:"bytes,2,opt,name=cooldown_period,json=cooldownPeriod,proto3" json:"cooldown_period,omitempty"`
+	CooldownPeriod *durationpb.Duration `protobuf:"bytes,2,opt,name=cooldown_period,json=cooldownPeriod,proto3" json:"cooldown_period,omitempty"`
 }
 
 func (x *BasicAutoscalingAlgorithm) Reset() {
@@ -219,7 +219,7 @@ func (x *BasicAutoscalingAlgorithm) GetYarnConfig() *BasicYarnAutoscalingConfig 
 	return nil
 }
 
-func (x *BasicAutoscalingAlgorithm) GetCooldownPeriod() *duration.Duration {
+func (x *BasicAutoscalingAlgorithm) GetCooldownPeriod() *durationpb.Duration {
 	if x != nil {
 		return x.CooldownPeriod
 	}
@@ -238,7 +238,7 @@ type BasicYarnAutoscalingConfig struct {
 	// downscaling operations.
 	//
 	// Bounds: [0s, 1d].
-	GracefulDecommissionTimeout *duration.Duration `protobuf:"bytes,5,opt,name=graceful_decommission_timeout,json=gracefulDecommissionTimeout,proto3" json:"graceful_decommission_timeout,omitempty"`
+	GracefulDecommissionTimeout *durationpb.Duration `protobuf:"bytes,5,opt,name=graceful_decommission_timeout,json=gracefulDecommissionTimeout,proto3" json:"graceful_decommission_timeout,omitempty"`
 	// Required. Fraction of average pending memory in the last cooldown period
 	// for which to add workers. A scale-up factor of 1.0 will result in scaling
 	// up so that there is no pending memory remaining after the update (more
@@ -305,7 +305,7 @@ func (*BasicYarnAutoscalingConfig) Descriptor() ([]byte, []int) {
 	return file_google_cloud_dataproc_v1beta2_autoscaling_policies_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *BasicYarnAutoscalingConfig) GetGracefulDecommissionTimeout() *duration.Duration {
+func (x *BasicYarnAutoscalingConfig) GetGracefulDecommissionTimeout() *durationpb.Duration {
 	if x != nil {
 		return x.GracefulDecommissionTimeout
 	}
@@ -1099,8 +1099,8 @@ var file_google_cloud_dataproc_v1beta2_autoscaling_policies_proto_goTypes = []in
 	(*DeleteAutoscalingPolicyRequest)(nil),       // 7: google.cloud.dataproc.v1beta2.DeleteAutoscalingPolicyRequest
 	(*ListAutoscalingPoliciesRequest)(nil),       // 8: google.cloud.dataproc.v1beta2.ListAutoscalingPoliciesRequest
 	(*ListAutoscalingPoliciesResponse)(nil),      // 9: google.cloud.dataproc.v1beta2.ListAutoscalingPoliciesResponse
-	(*duration.Duration)(nil),                    // 10: google.protobuf.Duration
-	(*empty.Empty)(nil),                          // 11: google.protobuf.Empty
+	(*durationpb.Duration)(nil),                  // 10: google.protobuf.Duration
+	(*emptypb.Empty)(nil),                        // 11: google.protobuf.Empty
 }
 var file_google_cloud_dataproc_v1beta2_autoscaling_policies_proto_depIdxs = []int32{
 	1,  // 0: google.cloud.dataproc.v1beta2.AutoscalingPolicy.basic_algorithm:type_name -> google.cloud.dataproc.v1beta2.BasicAutoscalingAlgorithm
@@ -1304,7 +1304,7 @@ type AutoscalingPolicyServiceClient interface {
 	ListAutoscalingPolicies(ctx context.Context, in *ListAutoscalingPoliciesRequest, opts ...grpc.CallOption) (*ListAutoscalingPoliciesResponse, error)
 	// Deletes an autoscaling policy. It is an error to delete an autoscaling
 	// policy that is in use by one or more clusters.
-	DeleteAutoscalingPolicy(ctx context.Context, in *DeleteAutoscalingPolicyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAutoscalingPolicy(ctx context.Context, in *DeleteAutoscalingPolicyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type autoscalingPolicyServiceClient struct {
@@ -1351,8 +1351,8 @@ func (c *autoscalingPolicyServiceClient) ListAutoscalingPolicies(ctx context.Con
 	return out, nil
 }
 
-func (c *autoscalingPolicyServiceClient) DeleteAutoscalingPolicy(ctx context.Context, in *DeleteAutoscalingPolicyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *autoscalingPolicyServiceClient) DeleteAutoscalingPolicy(ctx context.Context, in *DeleteAutoscalingPolicyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.dataproc.v1beta2.AutoscalingPolicyService/DeleteAutoscalingPolicy", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1375,7 +1375,7 @@ type AutoscalingPolicyServiceServer interface {
 	ListAutoscalingPolicies(context.Context, *ListAutoscalingPoliciesRequest) (*ListAutoscalingPoliciesResponse, error)
 	// Deletes an autoscaling policy. It is an error to delete an autoscaling
 	// policy that is in use by one or more clusters.
-	DeleteAutoscalingPolicy(context.Context, *DeleteAutoscalingPolicyRequest) (*empty.Empty, error)
+	DeleteAutoscalingPolicy(context.Context, *DeleteAutoscalingPolicyRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedAutoscalingPolicyServiceServer can be embedded to have forward compatible implementations.
@@ -1394,7 +1394,7 @@ func (*UnimplementedAutoscalingPolicyServiceServer) GetAutoscalingPolicy(context
 func (*UnimplementedAutoscalingPolicyServiceServer) ListAutoscalingPolicies(context.Context, *ListAutoscalingPoliciesRequest) (*ListAutoscalingPoliciesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAutoscalingPolicies not implemented")
 }
-func (*UnimplementedAutoscalingPolicyServiceServer) DeleteAutoscalingPolicy(context.Context, *DeleteAutoscalingPolicyRequest) (*empty.Empty, error) {
+func (*UnimplementedAutoscalingPolicyServiceServer) DeleteAutoscalingPolicy(context.Context, *DeleteAutoscalingPolicyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAutoscalingPolicy not implemented")
 }
 

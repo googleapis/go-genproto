@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -61,12 +61,12 @@ type CampaignExtensionSetting struct {
 	// Campaign resource names have the form:
 	//
 	// `customers/{customer_id}/campaigns/{campaign_id}`
-	Campaign *wrappers.StringValue `protobuf:"bytes,3,opt,name=campaign,proto3" json:"campaign,omitempty"`
+	Campaign *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=campaign,proto3" json:"campaign,omitempty"`
 	// The resource names of the extension feed items to serve under the campaign.
 	// ExtensionFeedItem resource names have the form:
 	//
 	// `customers/{customer_id}/extensionFeedItems/{feed_item_id}`
-	ExtensionFeedItems []*wrappers.StringValue `protobuf:"bytes,4,rep,name=extension_feed_items,json=extensionFeedItems,proto3" json:"extension_feed_items,omitempty"`
+	ExtensionFeedItems []*wrapperspb.StringValue `protobuf:"bytes,4,rep,name=extension_feed_items,json=extensionFeedItems,proto3" json:"extension_feed_items,omitempty"`
 	// The device for which the extensions will serve. Optional.
 	Device enums.ExtensionSettingDeviceEnum_ExtensionSettingDevice `protobuf:"varint,5,opt,name=device,proto3,enum=google.ads.googleads.v2.enums.ExtensionSettingDeviceEnum_ExtensionSettingDevice" json:"device,omitempty"`
 }
@@ -117,14 +117,14 @@ func (x *CampaignExtensionSetting) GetExtensionType() enums.ExtensionTypeEnum_Ex
 	return enums.ExtensionTypeEnum_UNSPECIFIED
 }
 
-func (x *CampaignExtensionSetting) GetCampaign() *wrappers.StringValue {
+func (x *CampaignExtensionSetting) GetCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Campaign
 	}
 	return nil
 }
 
-func (x *CampaignExtensionSetting) GetExtensionFeedItems() []*wrappers.StringValue {
+func (x *CampaignExtensionSetting) GetExtensionFeedItems() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.ExtensionFeedItems
 	}
@@ -242,7 +242,7 @@ var file_google_ads_googleads_v2_resources_campaign_extension_setting_proto_msgT
 var file_google_ads_googleads_v2_resources_campaign_extension_setting_proto_goTypes = []interface{}{
 	(*CampaignExtensionSetting)(nil),                             // 0: google.ads.googleads.v2.resources.CampaignExtensionSetting
 	(enums.ExtensionTypeEnum_ExtensionType)(0),                   // 1: google.ads.googleads.v2.enums.ExtensionTypeEnum.ExtensionType
-	(*wrappers.StringValue)(nil),                                 // 2: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                               // 2: google.protobuf.StringValue
 	(enums.ExtensionSettingDeviceEnum_ExtensionSettingDevice)(0), // 3: google.ads.googleads.v2.enums.ExtensionSettingDeviceEnum.ExtensionSettingDevice
 }
 var file_google_ads_googleads_v2_resources_campaign_extension_setting_proto_depIdxs = []int32{

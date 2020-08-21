@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -318,11 +318,11 @@ func (m *Value) GetValueType() isValue_ValueType {
 	return nil
 }
 
-func (x *Value) GetNullValue() _struct.NullValue {
+func (x *Value) GetNullValue() structpb.NullValue {
 	if x, ok := x.GetValueType().(*Value_NullValue); ok {
 		return x.NullValue
 	}
-	return _struct.NullValue_NULL_VALUE
+	return structpb.NullValue_NULL_VALUE
 }
 
 func (x *Value) GetBooleanValue() bool {
@@ -346,7 +346,7 @@ func (x *Value) GetDoubleValue() float64 {
 	return 0
 }
 
-func (x *Value) GetTimestampValue() *timestamp.Timestamp {
+func (x *Value) GetTimestampValue() *timestamppb.Timestamp {
 	if x, ok := x.GetValueType().(*Value_TimestampValue); ok {
 		return x.TimestampValue
 	}
@@ -415,7 +415,7 @@ type isValue_ValueType interface {
 
 type Value_NullValue struct {
 	// A null value.
-	NullValue _struct.NullValue `protobuf:"varint,11,opt,name=null_value,json=nullValue,proto3,enum=google.protobuf.NullValue,oneof"`
+	NullValue structpb.NullValue `protobuf:"varint,11,opt,name=null_value,json=nullValue,proto3,enum=google.protobuf.NullValue,oneof"`
 }
 
 type Value_BooleanValue struct {
@@ -437,7 +437,7 @@ type Value_TimestampValue struct {
 	// A timestamp value.
 	// When stored in the Datastore, precise only to microseconds;
 	// any additional precision is rounded down.
-	TimestampValue *timestamp.Timestamp `protobuf:"bytes,10,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
+	TimestampValue *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
 }
 
 type Value_KeyValue struct {
@@ -808,16 +808,16 @@ func file_google_datastore_v1beta3_entity_proto_rawDescGZIP() []byte {
 
 var file_google_datastore_v1beta3_entity_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_google_datastore_v1beta3_entity_proto_goTypes = []interface{}{
-	(*PartitionId)(nil),         // 0: google.datastore.v1beta3.PartitionId
-	(*Key)(nil),                 // 1: google.datastore.v1beta3.Key
-	(*ArrayValue)(nil),          // 2: google.datastore.v1beta3.ArrayValue
-	(*Value)(nil),               // 3: google.datastore.v1beta3.Value
-	(*Entity)(nil),              // 4: google.datastore.v1beta3.Entity
-	(*Key_PathElement)(nil),     // 5: google.datastore.v1beta3.Key.PathElement
-	nil,                         // 6: google.datastore.v1beta3.Entity.PropertiesEntry
-	(_struct.NullValue)(0),      // 7: google.protobuf.NullValue
-	(*timestamp.Timestamp)(nil), // 8: google.protobuf.Timestamp
-	(*latlng.LatLng)(nil),       // 9: google.type.LatLng
+	(*PartitionId)(nil),           // 0: google.datastore.v1beta3.PartitionId
+	(*Key)(nil),                   // 1: google.datastore.v1beta3.Key
+	(*ArrayValue)(nil),            // 2: google.datastore.v1beta3.ArrayValue
+	(*Value)(nil),                 // 3: google.datastore.v1beta3.Value
+	(*Entity)(nil),                // 4: google.datastore.v1beta3.Entity
+	(*Key_PathElement)(nil),       // 5: google.datastore.v1beta3.Key.PathElement
+	nil,                           // 6: google.datastore.v1beta3.Entity.PropertiesEntry
+	(structpb.NullValue)(0),       // 7: google.protobuf.NullValue
+	(*timestamppb.Timestamp)(nil), // 8: google.protobuf.Timestamp
+	(*latlng.LatLng)(nil),         // 9: google.type.LatLng
 }
 var file_google_datastore_v1beta3_entity_proto_depIdxs = []int32{
 	0,  // 0: google.datastore.v1beta3.Key.partition_id:type_name -> google.datastore.v1beta3.PartitionId

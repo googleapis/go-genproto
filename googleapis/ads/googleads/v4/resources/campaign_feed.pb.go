@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,9 +56,9 @@ type CampaignFeed struct {
 	// `customers/{customer_id}/campaignFeeds/{campaign_id}~{feed_id}
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The feed to which the CampaignFeed belongs.
-	Feed *wrappers.StringValue `protobuf:"bytes,2,opt,name=feed,proto3" json:"feed,omitempty"`
+	Feed *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=feed,proto3" json:"feed,omitempty"`
 	// Immutable. The campaign to which the CampaignFeed belongs.
-	Campaign *wrappers.StringValue `protobuf:"bytes,3,opt,name=campaign,proto3" json:"campaign,omitempty"`
+	Campaign *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=campaign,proto3" json:"campaign,omitempty"`
 	// Indicates which placeholder types the feed may populate under the connected
 	// campaign. Required.
 	PlaceholderTypes []enums.PlaceholderTypeEnum_PlaceholderType `protobuf:"varint,4,rep,packed,name=placeholder_types,json=placeholderTypes,proto3,enum=google.ads.googleads.v4.enums.PlaceholderTypeEnum_PlaceholderType" json:"placeholder_types,omitempty"`
@@ -110,14 +110,14 @@ func (x *CampaignFeed) GetResourceName() string {
 	return ""
 }
 
-func (x *CampaignFeed) GetFeed() *wrappers.StringValue {
+func (x *CampaignFeed) GetFeed() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Feed
 	}
 	return nil
 }
 
-func (x *CampaignFeed) GetCampaign() *wrappers.StringValue {
+func (x *CampaignFeed) GetCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Campaign
 	}
@@ -249,7 +249,7 @@ func file_google_ads_googleads_v4_resources_campaign_feed_proto_rawDescGZIP() []
 var file_google_ads_googleads_v4_resources_campaign_feed_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_campaign_feed_proto_goTypes = []interface{}{
 	(*CampaignFeed)(nil),                           // 0: google.ads.googleads.v4.resources.CampaignFeed
-	(*wrappers.StringValue)(nil),                   // 1: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                 // 1: google.protobuf.StringValue
 	(enums.PlaceholderTypeEnum_PlaceholderType)(0), // 2: google.ads.googleads.v4.enums.PlaceholderTypeEnum.PlaceholderType
 	(*common.MatchingFunction)(nil),                // 3: google.ads.googleads.v4.common.MatchingFunction
 	(enums.FeedLinkStatusEnum_FeedLinkStatus)(0),   // 4: google.ads.googleads.v4.enums.FeedLinkStatusEnum.FeedLinkStatus

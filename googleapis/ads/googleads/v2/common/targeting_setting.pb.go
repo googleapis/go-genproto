@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -110,7 +110,7 @@ type TargetRestriction struct {
 	// apply bid modifiers, and not affect targeting. A value of `false` means
 	// that these criteria will restrict targeting as well as applying bid
 	// modifiers.
-	BidOnly *wrappers.BoolValue `protobuf:"bytes,2,opt,name=bid_only,json=bidOnly,proto3" json:"bid_only,omitempty"`
+	BidOnly *wrapperspb.BoolValue `protobuf:"bytes,2,opt,name=bid_only,json=bidOnly,proto3" json:"bid_only,omitempty"`
 }
 
 func (x *TargetRestriction) Reset() {
@@ -152,7 +152,7 @@ func (x *TargetRestriction) GetTargetingDimension() enums.TargetingDimensionEnum
 	return enums.TargetingDimensionEnum_UNSPECIFIED
 }
 
-func (x *TargetRestriction) GetBidOnly() *wrappers.BoolValue {
+func (x *TargetRestriction) GetBidOnly() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.BidOnly
 	}
@@ -230,7 +230,7 @@ var file_google_ads_googleads_v2_common_targeting_setting_proto_goTypes = []inte
 	(*TargetingSetting)(nil),                             // 0: google.ads.googleads.v2.common.TargetingSetting
 	(*TargetRestriction)(nil),                            // 1: google.ads.googleads.v2.common.TargetRestriction
 	(enums.TargetingDimensionEnum_TargetingDimension)(0), // 2: google.ads.googleads.v2.enums.TargetingDimensionEnum.TargetingDimension
-	(*wrappers.BoolValue)(nil),                           // 3: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                         // 3: google.protobuf.BoolValue
 }
 var file_google_ads_googleads_v2_common_targeting_setting_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v2.common.TargetingSetting.target_restrictions:type_name -> google.ads.googleads.v2.common.TargetRestriction

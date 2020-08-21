@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -277,7 +277,7 @@ type CloudFunction struct {
 	// The function execution timeout. Execution is considered failed and
 	// can be terminated if the function is not completed at the end of the
 	// timeout period. Defaults to 60 seconds.
-	Timeout *duration.Duration `protobuf:"bytes,9,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	Timeout *durationpb.Duration `protobuf:"bytes,9,opt,name=timeout,proto3" json:"timeout,omitempty"`
 	// The amount of memory in MB available for a function.
 	// Defaults to 256MB.
 	AvailableMemoryMb int32 `protobuf:"varint,10,opt,name=available_memory_mb,json=availableMemoryMb,proto3" json:"available_memory_mb,omitempty"`
@@ -285,7 +285,7 @@ type CloudFunction struct {
 	// `{project_id}@appspot.gserviceaccount.com`.
 	ServiceAccountEmail string `protobuf:"bytes,11,opt,name=service_account_email,json=serviceAccountEmail,proto3" json:"service_account_email,omitempty"`
 	// Output only. The last update timestamp of a Cloud Function.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,12,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. The version identifier of the Cloud Function. Each deployment attempt
 	// results in a new version of a function being created.
 	VersionId int64 `protobuf:"varint,14,opt,name=version_id,json=versionId,proto3" json:"version_id,omitempty"`
@@ -449,7 +449,7 @@ func (x *CloudFunction) GetRuntime() string {
 	return ""
 }
 
-func (x *CloudFunction) GetTimeout() *duration.Duration {
+func (x *CloudFunction) GetTimeout() *durationpb.Duration {
 	if x != nil {
 		return x.Timeout
 	}
@@ -470,7 +470,7 @@ func (x *CloudFunction) GetServiceAccountEmail() string {
 	return ""
 }
 
-func (x *CloudFunction) GetUpdateTime() *timestamp.Timestamp {
+func (x *CloudFunction) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -960,7 +960,7 @@ type UpdateFunctionRequest struct {
 	// Required. New version of the function.
 	Function *CloudFunction `protobuf:"bytes,1,opt,name=function,proto3" json:"function,omitempty"`
 	// Required list of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateFunctionRequest) Reset() {
@@ -1002,7 +1002,7 @@ func (x *UpdateFunctionRequest) GetFunction() *CloudFunction {
 	return nil
 }
 
-func (x *UpdateFunctionRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateFunctionRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2083,9 +2083,9 @@ var file_google_cloud_functions_v1_functions_proto_goTypes = []interface{}{
 	nil,                                           // 20: google.cloud.functions.v1.CloudFunction.LabelsEntry
 	nil,                                           // 21: google.cloud.functions.v1.CloudFunction.EnvironmentVariablesEntry
 	(*FailurePolicy_Retry)(nil),                   // 22: google.cloud.functions.v1.FailurePolicy.Retry
-	(*duration.Duration)(nil),                     // 23: google.protobuf.Duration
-	(*timestamp.Timestamp)(nil),                   // 24: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),                  // 25: google.protobuf.FieldMask
+	(*durationpb.Duration)(nil),                   // 23: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),                 // 24: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),                 // 25: google.protobuf.FieldMask
 	(*v1.SetIamPolicyRequest)(nil),                // 26: google.iam.v1.SetIamPolicyRequest
 	(*v1.GetIamPolicyRequest)(nil),                // 27: google.iam.v1.GetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),          // 28: google.iam.v1.TestIamPermissionsRequest

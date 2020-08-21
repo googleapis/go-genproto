@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -306,7 +306,7 @@ type ProductSearchResults struct {
 	ProductCategory string `protobuf:"bytes,4,opt,name=product_category,json=productCategory,proto3" json:"product_category,omitempty"`
 	// Timestamp of the index which provided these results. Changes made after
 	// this time are not reflected in the current results.
-	IndexTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=index_time,json=indexTime,proto3" json:"index_time,omitempty"`
+	IndexTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=index_time,json=indexTime,proto3" json:"index_time,omitempty"`
 	// List of detected products.
 	Products []*ProductSearchResults_ProductInfo `protobuf:"bytes,3,rep,name=products,proto3" json:"products,omitempty"`
 	// List of results, one for each product match.
@@ -359,7 +359,7 @@ func (x *ProductSearchResults) GetProductCategory() string {
 	return ""
 }
 
-func (x *ProductSearchResults) GetIndexTime() *timestamp.Timestamp {
+func (x *ProductSearchResults) GetIndexTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.IndexTime
 	}
@@ -664,7 +664,7 @@ var file_google_cloud_vision_v1p3beta1_product_search_proto_goTypes = []interfac
 	(*ProductSearchResults_Result)(nil),      // 5: google.cloud.vision.v1p3beta1.ProductSearchResults.Result
 	(*NormalizedBoundingPoly)(nil),           // 6: google.cloud.vision.v1p3beta1.NormalizedBoundingPoly
 	(*BoundingPoly)(nil),                     // 7: google.cloud.vision.v1p3beta1.BoundingPoly
-	(*timestamp.Timestamp)(nil),              // 8: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),            // 8: google.protobuf.Timestamp
 	(*Product)(nil),                          // 9: google.cloud.vision.v1p3beta1.Product
 }
 var file_google_cloud_vision_v1p3beta1_product_search_proto_depIdxs = []int32{

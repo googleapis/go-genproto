@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -408,7 +408,7 @@ type UpdateTaxonomyRequest struct {
 	// see
 	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
 	// If not set, defaults to all of the fields that are allowed to update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateTaxonomyRequest) Reset() {
@@ -450,7 +450,7 @@ func (x *UpdateTaxonomyRequest) GetTaxonomy() *Taxonomy {
 	return nil
 }
 
-func (x *UpdateTaxonomyRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateTaxonomyRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -764,7 +764,7 @@ type UpdatePolicyTagRequest struct {
 	// `FieldMask` definition, see
 	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
 	// If not set, defaults to all of the fields that are allowed to update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdatePolicyTagRequest) Reset() {
@@ -806,7 +806,7 @@ func (x *UpdatePolicyTagRequest) GetPolicyTag() *PolicyTag {
 	return nil
 }
 
-func (x *UpdatePolicyTagRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdatePolicyTagRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1399,11 +1399,11 @@ var file_google_cloud_datacatalog_v1beta1_policytagmanager_proto_goTypes = []int
 	(*ListPolicyTagsRequest)(nil),         // 12: google.cloud.datacatalog.v1beta1.ListPolicyTagsRequest
 	(*ListPolicyTagsResponse)(nil),        // 13: google.cloud.datacatalog.v1beta1.ListPolicyTagsResponse
 	(*GetPolicyTagRequest)(nil),           // 14: google.cloud.datacatalog.v1beta1.GetPolicyTagRequest
-	(*field_mask.FieldMask)(nil),          // 15: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),         // 15: google.protobuf.FieldMask
 	(*v1.GetIamPolicyRequest)(nil),        // 16: google.iam.v1.GetIamPolicyRequest
 	(*v1.SetIamPolicyRequest)(nil),        // 17: google.iam.v1.SetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),  // 18: google.iam.v1.TestIamPermissionsRequest
-	(*empty.Empty)(nil),                   // 19: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                 // 19: google.protobuf.Empty
 	(*v1.Policy)(nil),                     // 20: google.iam.v1.Policy
 	(*v1.TestIamPermissionsResponse)(nil), // 21: google.iam.v1.TestIamPermissionsResponse
 }
@@ -1663,7 +1663,7 @@ type PolicyTagManagerClient interface {
 	CreateTaxonomy(ctx context.Context, in *CreateTaxonomyRequest, opts ...grpc.CallOption) (*Taxonomy, error)
 	// Deletes a taxonomy. This operation will also delete all
 	// policy tags in this taxonomy along with their associated policies.
-	DeleteTaxonomy(ctx context.Context, in *DeleteTaxonomyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTaxonomy(ctx context.Context, in *DeleteTaxonomyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates a taxonomy.
 	UpdateTaxonomy(ctx context.Context, in *UpdateTaxonomyRequest, opts ...grpc.CallOption) (*Taxonomy, error)
 	// Lists all taxonomies in a project in a particular location that the caller
@@ -1674,7 +1674,7 @@ type PolicyTagManagerClient interface {
 	// Creates a policy tag in the specified taxonomy.
 	CreatePolicyTag(ctx context.Context, in *CreatePolicyTagRequest, opts ...grpc.CallOption) (*PolicyTag, error)
 	// Deletes a policy tag. Also deletes all of its descendant policy tags.
-	DeletePolicyTag(ctx context.Context, in *DeletePolicyTagRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeletePolicyTag(ctx context.Context, in *DeletePolicyTagRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates a policy tag.
 	UpdatePolicyTag(ctx context.Context, in *UpdatePolicyTagRequest, opts ...grpc.CallOption) (*PolicyTag, error)
 	// Lists all policy tags in a taxonomy.
@@ -1707,8 +1707,8 @@ func (c *policyTagManagerClient) CreateTaxonomy(ctx context.Context, in *CreateT
 	return out, nil
 }
 
-func (c *policyTagManagerClient) DeleteTaxonomy(ctx context.Context, in *DeleteTaxonomyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *policyTagManagerClient) DeleteTaxonomy(ctx context.Context, in *DeleteTaxonomyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datacatalog.v1beta1.PolicyTagManager/DeleteTaxonomy", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1752,8 +1752,8 @@ func (c *policyTagManagerClient) CreatePolicyTag(ctx context.Context, in *Create
 	return out, nil
 }
 
-func (c *policyTagManagerClient) DeletePolicyTag(ctx context.Context, in *DeletePolicyTagRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *policyTagManagerClient) DeletePolicyTag(ctx context.Context, in *DeletePolicyTagRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datacatalog.v1beta1.PolicyTagManager/DeletePolicyTag", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1821,7 +1821,7 @@ type PolicyTagManagerServer interface {
 	CreateTaxonomy(context.Context, *CreateTaxonomyRequest) (*Taxonomy, error)
 	// Deletes a taxonomy. This operation will also delete all
 	// policy tags in this taxonomy along with their associated policies.
-	DeleteTaxonomy(context.Context, *DeleteTaxonomyRequest) (*empty.Empty, error)
+	DeleteTaxonomy(context.Context, *DeleteTaxonomyRequest) (*emptypb.Empty, error)
 	// Updates a taxonomy.
 	UpdateTaxonomy(context.Context, *UpdateTaxonomyRequest) (*Taxonomy, error)
 	// Lists all taxonomies in a project in a particular location that the caller
@@ -1832,7 +1832,7 @@ type PolicyTagManagerServer interface {
 	// Creates a policy tag in the specified taxonomy.
 	CreatePolicyTag(context.Context, *CreatePolicyTagRequest) (*PolicyTag, error)
 	// Deletes a policy tag. Also deletes all of its descendant policy tags.
-	DeletePolicyTag(context.Context, *DeletePolicyTagRequest) (*empty.Empty, error)
+	DeletePolicyTag(context.Context, *DeletePolicyTagRequest) (*emptypb.Empty, error)
 	// Updates a policy tag.
 	UpdatePolicyTag(context.Context, *UpdatePolicyTagRequest) (*PolicyTag, error)
 	// Lists all policy tags in a taxonomy.
@@ -1855,7 +1855,7 @@ type UnimplementedPolicyTagManagerServer struct {
 func (*UnimplementedPolicyTagManagerServer) CreateTaxonomy(context.Context, *CreateTaxonomyRequest) (*Taxonomy, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTaxonomy not implemented")
 }
-func (*UnimplementedPolicyTagManagerServer) DeleteTaxonomy(context.Context, *DeleteTaxonomyRequest) (*empty.Empty, error) {
+func (*UnimplementedPolicyTagManagerServer) DeleteTaxonomy(context.Context, *DeleteTaxonomyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTaxonomy not implemented")
 }
 func (*UnimplementedPolicyTagManagerServer) UpdateTaxonomy(context.Context, *UpdateTaxonomyRequest) (*Taxonomy, error) {
@@ -1870,7 +1870,7 @@ func (*UnimplementedPolicyTagManagerServer) GetTaxonomy(context.Context, *GetTax
 func (*UnimplementedPolicyTagManagerServer) CreatePolicyTag(context.Context, *CreatePolicyTagRequest) (*PolicyTag, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreatePolicyTag not implemented")
 }
-func (*UnimplementedPolicyTagManagerServer) DeletePolicyTag(context.Context, *DeletePolicyTagRequest) (*empty.Empty, error) {
+func (*UnimplementedPolicyTagManagerServer) DeletePolicyTag(context.Context, *DeletePolicyTagRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePolicyTag not implemented")
 }
 func (*UnimplementedPolicyTagManagerServer) UpdatePolicyTag(context.Context, *UpdatePolicyTagRequest) (*PolicyTag, error) {

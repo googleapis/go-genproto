@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	any "github.com/golang/protobuf/ptypes/any"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -88,7 +88,7 @@ type AttributeContext struct {
 	// Represents an API operation that is involved to a network activity.
 	Api *AttributeContext_Api `protobuf:"bytes,6,opt,name=api,proto3" json:"api,omitempty"`
 	// Supports extensions for advanced use cases, such as logs and metrics.
-	Extensions []*any.Any `protobuf:"bytes,8,rep,name=extensions,proto3" json:"extensions,omitempty"`
+	Extensions []*anypb.Any `protobuf:"bytes,8,rep,name=extensions,proto3" json:"extensions,omitempty"`
 }
 
 func (x *AttributeContext) Reset() {
@@ -172,7 +172,7 @@ func (x *AttributeContext) GetApi() *AttributeContext_Api {
 	return nil
 }
 
-func (x *AttributeContext) GetExtensions() []*any.Any {
+func (x *AttributeContext) GetExtensions() []*anypb.Any {
 	if x != nil {
 		return x.Extensions
 	}
@@ -404,7 +404,7 @@ type AttributeContext_Auth struct {
 	//
 	// SAML assertions are similarly specified, but with an identity provider
 	// dependent structure.
-	Claims *_struct.Struct `protobuf:"bytes,4,opt,name=claims,proto3" json:"claims,omitempty"`
+	Claims *structpb.Struct `protobuf:"bytes,4,opt,name=claims,proto3" json:"claims,omitempty"`
 	// A list of access level resource names that allow resources to be
 	// accessed by authenticated requester. It is part of Secure GCP processing
 	// for the incoming request. An access level string has the format:
@@ -468,7 +468,7 @@ func (x *AttributeContext_Auth) GetPresenter() string {
 	return ""
 }
 
-func (x *AttributeContext_Auth) GetClaims() *_struct.Struct {
+func (x *AttributeContext_Auth) GetClaims() *structpb.Struct {
 	if x != nil {
 		return x.Claims
 	}
@@ -511,7 +511,7 @@ type AttributeContext_Request struct {
 	Query string `protobuf:"bytes,7,opt,name=query,proto3" json:"query,omitempty"`
 	// The timestamp when the `destination` service receives the first byte of
 	// the request.
-	Time *timestamp.Timestamp `protobuf:"bytes,9,opt,name=time,proto3" json:"time,omitempty"`
+	Time *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=time,proto3" json:"time,omitempty"`
 	// The HTTP request size in bytes. If unknown, it must be -1.
 	Size int64 `protobuf:"varint,10,opt,name=size,proto3" json:"size,omitempty"`
 	// The network protocol used with the request, such as "http/1.1",
@@ -608,7 +608,7 @@ func (x *AttributeContext_Request) GetQuery() string {
 	return ""
 }
 
-func (x *AttributeContext_Request) GetTime() *timestamp.Timestamp {
+func (x *AttributeContext_Request) GetTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Time
 	}
@@ -660,7 +660,7 @@ type AttributeContext_Response struct {
 	Headers map[string]string `protobuf:"bytes,3,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// The timestamp when the `destination` service generates the first byte of
 	// the response.
-	Time *timestamp.Timestamp `protobuf:"bytes,4,opt,name=time,proto3" json:"time,omitempty"`
+	Time *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=time,proto3" json:"time,omitempty"`
 }
 
 func (x *AttributeContext_Response) Reset() {
@@ -716,7 +716,7 @@ func (x *AttributeContext_Response) GetHeaders() map[string]string {
 	return nil
 }
 
-func (x *AttributeContext_Response) GetTime() *timestamp.Timestamp {
+func (x *AttributeContext_Response) GetTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Time
 	}
@@ -996,9 +996,9 @@ var file_google_rpc_context_attribute_context_proto_goTypes = []interface{}{
 	nil,                               // 8: google.rpc.context.AttributeContext.Request.HeadersEntry
 	nil,                               // 9: google.rpc.context.AttributeContext.Response.HeadersEntry
 	nil,                               // 10: google.rpc.context.AttributeContext.Resource.LabelsEntry
-	(*any.Any)(nil),                   // 11: google.protobuf.Any
-	(*_struct.Struct)(nil),            // 12: google.protobuf.Struct
-	(*timestamp.Timestamp)(nil),       // 13: google.protobuf.Timestamp
+	(*anypb.Any)(nil),                 // 11: google.protobuf.Any
+	(*structpb.Struct)(nil),           // 12: google.protobuf.Struct
+	(*timestamppb.Timestamp)(nil),     // 13: google.protobuf.Timestamp
 }
 var file_google_rpc_context_attribute_context_proto_depIdxs = []int32{
 	1,  // 0: google.rpc.context.AttributeContext.origin:type_name -> google.rpc.context.AttributeContext.Peer

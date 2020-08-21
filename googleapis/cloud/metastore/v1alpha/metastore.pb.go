@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -296,9 +296,9 @@ type Service struct {
 	// "projects/{project_id}/locations/{location_id}/services/{service_id}".
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The time when the metastore service was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The time when the metastore service was last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// User-defined labels for the metastore service.
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Configuration properties specific to the underlying metastore service
@@ -368,14 +368,14 @@ func (x *Service) GetName() string {
 	return ""
 }
 
-func (x *Service) GetCreateTime() *timestamp.Timestamp {
+func (x *Service) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Service) GetUpdateTime() *timestamp.Timestamp {
+func (x *Service) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -691,9 +691,9 @@ type MetadataImport struct {
 	// The description of the metadata import.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Output only. The time when the metadata import was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The time when the metadata import was last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. The current state of the metadata import.
 	State MetadataImport_State `protobuf:"varint,5,opt,name=state,proto3,enum=google.cloud.metastore.v1alpha.MetadataImport_State" json:"state,omitempty"`
 	// The metadata to be imported.
@@ -749,14 +749,14 @@ func (x *MetadataImport) GetDescription() string {
 	return ""
 }
 
-func (x *MetadataImport) GetCreateTime() *timestamp.Timestamp {
+func (x *MetadataImport) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *MetadataImport) GetUpdateTime() *timestamp.Timestamp {
+func (x *MetadataImport) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -1121,7 +1121,7 @@ type UpdateServiceRequest struct {
 	// metastore service resource by the update.
 	// Fields specified in the `update_mask` are relative to the resource (not
 	// to the full request). A field is overwritten if it is in the mask.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,1,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,1,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Required. The metastore service to update. The server only merges fields
 	// in the service if they are specified in `update_mask`.
 	//
@@ -1175,7 +1175,7 @@ func (*UpdateServiceRequest) Descriptor() ([]byte, []int) {
 	return file_google_cloud_metastore_v1alpha_metastore_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *UpdateServiceRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateServiceRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1594,7 +1594,7 @@ type UpdateMetadataImportRequest struct {
 	// metadata import resource by the update.
 	// Fields specified in the `update_mask` are relative to the resource (not
 	// to the full request). A field is overwritten if it is in the mask.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,1,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,1,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Required. The metadata import to update. The server only merges fields
 	// in the import if they are specified in `update_mask`.
 	//
@@ -1648,7 +1648,7 @@ func (*UpdateMetadataImportRequest) Descriptor() ([]byte, []int) {
 	return file_google_cloud_metastore_v1alpha_metastore_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *UpdateMetadataImportRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateMetadataImportRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1676,9 +1676,9 @@ type OperationMetadata struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The time the operation was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The time the operation finished running.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Output only. Server-defined resource path for the target of the operation.
 	Target string `protobuf:"bytes,3,opt,name=target,proto3" json:"target,omitempty"`
 	// Output only. Name of the verb executed by the operation.
@@ -1726,14 +1726,14 @@ func (*OperationMetadata) Descriptor() ([]byte, []int) {
 	return file_google_cloud_metastore_v1alpha_metastore_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *OperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -2490,8 +2490,8 @@ var file_google_cloud_metastore_v1alpha_metastore_proto_goTypes = []interface{}{
 	nil,                                           // 23: google.cloud.metastore.v1alpha.HiveMetastoreConfig.ConfigOverridesEntry
 	(*MetadataImport_DatabaseDump)(nil),           // 24: google.cloud.metastore.v1alpha.MetadataImport.DatabaseDump
 	(*LocationMetadata_HiveMetastoreVersion)(nil), // 25: google.cloud.metastore.v1alpha.LocationMetadata.HiveMetastoreVersion
-	(*timestamp.Timestamp)(nil),                   // 26: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),                  // 27: google.protobuf.FieldMask
+	(*timestamppb.Timestamp)(nil),                 // 26: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),                 // 27: google.protobuf.FieldMask
 	(*longrunning.Operation)(nil),                 // 28: google.longrunning.Operation
 }
 var file_google_cloud_metastore_v1alpha_metastore_proto_depIdxs = []int32{

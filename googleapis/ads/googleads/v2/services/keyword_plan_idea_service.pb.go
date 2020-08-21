@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
@@ -35,6 +34,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -58,10 +58,10 @@ type GenerateKeywordIdeasRequest struct {
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
 	// Required. The resource name of the language to target.
 	// Required
-	Language *wrappers.StringValue `protobuf:"bytes,7,opt,name=language,proto3" json:"language,omitempty"`
+	Language *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=language,proto3" json:"language,omitempty"`
 	// The resource names of the location to target.
 	// Max 10
-	GeoTargetConstants []*wrappers.StringValue `protobuf:"bytes,8,rep,name=geo_target_constants,json=geoTargetConstants,proto3" json:"geo_target_constants,omitempty"`
+	GeoTargetConstants []*wrapperspb.StringValue `protobuf:"bytes,8,rep,name=geo_target_constants,json=geoTargetConstants,proto3" json:"geo_target_constants,omitempty"`
 	// Targeting network.
 	KeywordPlanNetwork enums.KeywordPlanNetworkEnum_KeywordPlanNetwork `protobuf:"varint,9,opt,name=keyword_plan_network,json=keywordPlanNetwork,proto3,enum=google.ads.googleads.v2.enums.KeywordPlanNetworkEnum_KeywordPlanNetwork" json:"keyword_plan_network,omitempty"`
 	// The type of seed to generate keyword ideas.
@@ -112,14 +112,14 @@ func (x *GenerateKeywordIdeasRequest) GetCustomerId() string {
 	return ""
 }
 
-func (x *GenerateKeywordIdeasRequest) GetLanguage() *wrappers.StringValue {
+func (x *GenerateKeywordIdeasRequest) GetLanguage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Language
 	}
 	return nil
 }
 
-func (x *GenerateKeywordIdeasRequest) GetGeoTargetConstants() []*wrappers.StringValue {
+func (x *GenerateKeywordIdeasRequest) GetGeoTargetConstants() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetConstants
 	}
@@ -194,9 +194,9 @@ type KeywordAndUrlSeed struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The URL to crawl in order to generate keyword ideas.
-	Url *wrappers.StringValue `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	Url *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
 	// Requires at least one keyword.
-	Keywords []*wrappers.StringValue `protobuf:"bytes,2,rep,name=keywords,proto3" json:"keywords,omitempty"`
+	Keywords []*wrapperspb.StringValue `protobuf:"bytes,2,rep,name=keywords,proto3" json:"keywords,omitempty"`
 }
 
 func (x *KeywordAndUrlSeed) Reset() {
@@ -231,14 +231,14 @@ func (*KeywordAndUrlSeed) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_services_keyword_plan_idea_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *KeywordAndUrlSeed) GetUrl() *wrappers.StringValue {
+func (x *KeywordAndUrlSeed) GetUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Url
 	}
 	return nil
 }
 
-func (x *KeywordAndUrlSeed) GetKeywords() []*wrappers.StringValue {
+func (x *KeywordAndUrlSeed) GetKeywords() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Keywords
 	}
@@ -252,7 +252,7 @@ type KeywordSeed struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Requires at least one keyword.
-	Keywords []*wrappers.StringValue `protobuf:"bytes,1,rep,name=keywords,proto3" json:"keywords,omitempty"`
+	Keywords []*wrapperspb.StringValue `protobuf:"bytes,1,rep,name=keywords,proto3" json:"keywords,omitempty"`
 }
 
 func (x *KeywordSeed) Reset() {
@@ -287,7 +287,7 @@ func (*KeywordSeed) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_services_keyword_plan_idea_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *KeywordSeed) GetKeywords() []*wrappers.StringValue {
+func (x *KeywordSeed) GetKeywords() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Keywords
 	}
@@ -301,7 +301,7 @@ type UrlSeed struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The URL to crawl in order to generate keyword ideas.
-	Url *wrappers.StringValue `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	Url *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
 }
 
 func (x *UrlSeed) Reset() {
@@ -336,7 +336,7 @@ func (*UrlSeed) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_services_keyword_plan_idea_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *UrlSeed) GetUrl() *wrappers.StringValue {
+func (x *UrlSeed) GetUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Url
 	}
@@ -402,7 +402,7 @@ type GenerateKeywordIdeaResult struct {
 	// As in Keyword Plan historical metrics, this text may not be an actual
 	// keyword, but the canonical form of multiple keywords.
 	// See KeywordPlanKeywordHistoricalMetrics message in KeywordPlanService.
-	Text *wrappers.StringValue `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	Text *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
 	// The historical metrics for the keyword
 	KeywordIdeaMetrics *common.KeywordPlanHistoricalMetrics `protobuf:"bytes,3,opt,name=keyword_idea_metrics,json=keywordIdeaMetrics,proto3" json:"keyword_idea_metrics,omitempty"`
 }
@@ -439,7 +439,7 @@ func (*GenerateKeywordIdeaResult) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_services_keyword_plan_idea_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GenerateKeywordIdeaResult) GetText() *wrappers.StringValue {
+func (x *GenerateKeywordIdeaResult) GetText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Text
 	}
@@ -606,7 +606,7 @@ var file_google_ads_googleads_v2_services_keyword_plan_idea_service_proto_goType
 	(*UrlSeed)(nil),                                      // 3: google.ads.googleads.v2.services.UrlSeed
 	(*GenerateKeywordIdeaResponse)(nil),                  // 4: google.ads.googleads.v2.services.GenerateKeywordIdeaResponse
 	(*GenerateKeywordIdeaResult)(nil),                    // 5: google.ads.googleads.v2.services.GenerateKeywordIdeaResult
-	(*wrappers.StringValue)(nil),                         // 6: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                       // 6: google.protobuf.StringValue
 	(enums.KeywordPlanNetworkEnum_KeywordPlanNetwork)(0), // 7: google.ads.googleads.v2.enums.KeywordPlanNetworkEnum.KeywordPlanNetwork
 	(*common.KeywordPlanHistoricalMetrics)(nil),          // 8: google.ads.googleads.v2.common.KeywordPlanHistoricalMetrics
 }

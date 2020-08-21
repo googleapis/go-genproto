@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -165,7 +165,7 @@ type PubSubMessage struct {
 	// Optional attributes that can be used for message metadata/headers.
 	Attributes map[string]*AttributeValues `protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// An optional, user-specified event time.
-	EventTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=event_time,json=eventTime,proto3" json:"event_time,omitempty"`
+	EventTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=event_time,json=eventTime,proto3" json:"event_time,omitempty"`
 }
 
 func (x *PubSubMessage) Reset() {
@@ -221,7 +221,7 @@ func (x *PubSubMessage) GetAttributes() map[string]*AttributeValues {
 	return nil
 }
 
-func (x *PubSubMessage) GetEventTime() *timestamp.Timestamp {
+func (x *PubSubMessage) GetEventTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EventTime
 	}
@@ -287,7 +287,7 @@ type SequencedMessage struct {
 	Cursor *Cursor `protobuf:"bytes,1,opt,name=cursor,proto3" json:"cursor,omitempty"`
 	// The time when the message was received by the server when it was first
 	// published.
-	PublishTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=publish_time,json=publishTime,proto3" json:"publish_time,omitempty"`
+	PublishTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=publish_time,json=publishTime,proto3" json:"publish_time,omitempty"`
 	// The user message.
 	Message *PubSubMessage `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 	// The size in bytes of this message for flow control and quota purposes.
@@ -333,7 +333,7 @@ func (x *SequencedMessage) GetCursor() *Cursor {
 	return nil
 }
 
-func (x *SequencedMessage) GetPublishTime() *timestamp.Timestamp {
+func (x *SequencedMessage) GetPublishTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.PublishTime
 	}
@@ -604,7 +604,7 @@ type Topic_RetentionConfig struct {
 	// How long a published message is retained. If unset, messages will be
 	// retained as long as the bytes retained for each partition is below
 	// `per_partition_bytes`.
-	Period *duration.Duration `protobuf:"bytes,2,opt,name=period,proto3" json:"period,omitempty"`
+	Period *durationpb.Duration `protobuf:"bytes,2,opt,name=period,proto3" json:"period,omitempty"`
 }
 
 func (x *Topic_RetentionConfig) Reset() {
@@ -646,7 +646,7 @@ func (x *Topic_RetentionConfig) GetPerPartitionBytes() int64 {
 	return 0
 }
 
-func (x *Topic_RetentionConfig) GetPeriod() *duration.Duration {
+func (x *Topic_RetentionConfig) GetPeriod() *durationpb.Duration {
 	if x != nil {
 		return x.Period
 	}
@@ -932,8 +932,8 @@ var file_google_cloud_pubsublite_v1_common_proto_goTypes = []interface{}{
 	(*Topic_RetentionConfig)(nil),                        // 9: google.cloud.pubsublite.v1.Topic.RetentionConfig
 	(*Topic_PartitionConfig_Capacity)(nil),               // 10: google.cloud.pubsublite.v1.Topic.PartitionConfig.Capacity
 	(*Subscription_DeliveryConfig)(nil),                  // 11: google.cloud.pubsublite.v1.Subscription.DeliveryConfig
-	(*timestamp.Timestamp)(nil),                          // 12: google.protobuf.Timestamp
-	(*duration.Duration)(nil),                            // 13: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),                        // 12: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                          // 13: google.protobuf.Duration
 }
 var file_google_cloud_pubsublite_v1_common_proto_depIdxs = []int32{
 	7,  // 0: google.cloud.pubsublite.v1.PubSubMessage.attributes:type_name -> google.cloud.pubsublite.v1.PubSubMessage.AttributesEntry

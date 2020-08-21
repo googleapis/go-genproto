@@ -26,18 +26,18 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	expr "google.golang.org/genproto/googleapis/type/expr"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -128,7 +128,7 @@ type ExportAssetsRequest struct {
 	// If not specified, the current time will be used. Due to delays in resource
 	// data collection and indexing, there is a volatile window during which
 	// running the same query may get different results.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 	// A list of asset types to take a snapshot for. For example:
 	// "compute.googleapis.com/Disk".
 	//
@@ -194,7 +194,7 @@ func (x *ExportAssetsRequest) GetParent() string {
 	return ""
 }
 
-func (x *ExportAssetsRequest) GetReadTime() *timestamp.Timestamp {
+func (x *ExportAssetsRequest) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -231,7 +231,7 @@ type ExportAssetsResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Time the snapshot was taken.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 	// Output configuration indicating where the results were output to.
 	OutputConfig *OutputConfig `protobuf:"bytes,2,opt,name=output_config,json=outputConfig,proto3" json:"output_config,omitempty"`
 	// Output result indicating where the assets were exported to. For example, a
@@ -274,7 +274,7 @@ func (*ExportAssetsResponse) Descriptor() ([]byte, []int) {
 	return file_google_cloud_asset_v1_asset_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ExportAssetsResponse) GetReadTime() *timestamp.Timestamp {
+func (x *ExportAssetsResponse) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -676,7 +676,7 @@ type UpdateFeedRequest struct {
 	// Required. Only updates the `feed` fields indicated by this mask.
 	// The field mask must not be empty, and it must not contain fields that
 	// are immutable or only set by the server.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateFeedRequest) Reset() {
@@ -718,7 +718,7 @@ func (x *UpdateFeedRequest) GetFeed() *Feed {
 	return nil
 }
 
-func (x *UpdateFeedRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateFeedRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2188,15 +2188,15 @@ var file_google_cloud_asset_v1_asset_service_proto_goTypes = []interface{}{
 	(*SearchAllResourcesResponse)(nil),    // 20: google.cloud.asset.v1.SearchAllResourcesResponse
 	(*SearchAllIamPoliciesRequest)(nil),   // 21: google.cloud.asset.v1.SearchAllIamPoliciesRequest
 	(*SearchAllIamPoliciesResponse)(nil),  // 22: google.cloud.asset.v1.SearchAllIamPoliciesResponse
-	(*timestamp.Timestamp)(nil),           // 23: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),         // 23: google.protobuf.Timestamp
 	(*TimeWindow)(nil),                    // 24: google.cloud.asset.v1.TimeWindow
 	(*TemporalAsset)(nil),                 // 25: google.cloud.asset.v1.TemporalAsset
-	(*field_mask.FieldMask)(nil),          // 26: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),         // 26: google.protobuf.FieldMask
 	(*expr.Expr)(nil),                     // 27: google.type.Expr
 	(*ResourceSearchResult)(nil),          // 28: google.cloud.asset.v1.ResourceSearchResult
 	(*IamPolicySearchResult)(nil),         // 29: google.cloud.asset.v1.IamPolicySearchResult
 	(*longrunning.Operation)(nil),         // 30: google.longrunning.Operation
-	(*empty.Empty)(nil),                   // 31: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                 // 31: google.protobuf.Empty
 }
 var file_google_cloud_asset_v1_asset_service_proto_depIdxs = []int32{
 	23, // 0: google.cloud.asset.v1.ExportAssetsRequest.read_time:type_name -> google.protobuf.Timestamp
@@ -2594,7 +2594,7 @@ type AssetServiceClient interface {
 	// Updates an asset feed configuration.
 	UpdateFeed(ctx context.Context, in *UpdateFeedRequest, opts ...grpc.CallOption) (*Feed, error)
 	// Deletes an asset feed.
-	DeleteFeed(ctx context.Context, in *DeleteFeedRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteFeed(ctx context.Context, in *DeleteFeedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Searches all Cloud resources within the specified scope, such as a project,
 	// folder, or organization. The caller must be granted the
 	// `cloudasset.assets.searchAllResources` permission on the desired scope,
@@ -2669,8 +2669,8 @@ func (c *assetServiceClient) UpdateFeed(ctx context.Context, in *UpdateFeedReque
 	return out, nil
 }
 
-func (c *assetServiceClient) DeleteFeed(ctx context.Context, in *DeleteFeedRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *assetServiceClient) DeleteFeed(ctx context.Context, in *DeleteFeedRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.asset.v1.AssetService/DeleteFeed", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2727,7 +2727,7 @@ type AssetServiceServer interface {
 	// Updates an asset feed configuration.
 	UpdateFeed(context.Context, *UpdateFeedRequest) (*Feed, error)
 	// Deletes an asset feed.
-	DeleteFeed(context.Context, *DeleteFeedRequest) (*empty.Empty, error)
+	DeleteFeed(context.Context, *DeleteFeedRequest) (*emptypb.Empty, error)
 	// Searches all Cloud resources within the specified scope, such as a project,
 	// folder, or organization. The caller must be granted the
 	// `cloudasset.assets.searchAllResources` permission on the desired scope,
@@ -2762,7 +2762,7 @@ func (*UnimplementedAssetServiceServer) ListFeeds(context.Context, *ListFeedsReq
 func (*UnimplementedAssetServiceServer) UpdateFeed(context.Context, *UpdateFeedRequest) (*Feed, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateFeed not implemented")
 }
-func (*UnimplementedAssetServiceServer) DeleteFeed(context.Context, *DeleteFeedRequest) (*empty.Empty, error) {
+func (*UnimplementedAssetServiceServer) DeleteFeed(context.Context, *DeleteFeedRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteFeed not implemented")
 }
 func (*UnimplementedAssetServiceServer) SearchAllResources(context.Context, *SearchAllResourcesRequest) (*SearchAllResourcesResponse, error) {

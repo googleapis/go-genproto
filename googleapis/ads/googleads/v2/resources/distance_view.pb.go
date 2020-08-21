@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -61,7 +61,7 @@ type DistanceView struct {
 	// Output only. Grouping of user distance from location extensions.
 	DistanceBucket enums.DistanceBucketEnum_DistanceBucket `protobuf:"varint,2,opt,name=distance_bucket,json=distanceBucket,proto3,enum=google.ads.googleads.v2.enums.DistanceBucketEnum_DistanceBucket" json:"distance_bucket,omitempty"`
 	// Output only. True if the DistanceBucket is using the metric system, false otherwise.
-	MetricSystem *wrappers.BoolValue `protobuf:"bytes,3,opt,name=metric_system,json=metricSystem,proto3" json:"metric_system,omitempty"`
+	MetricSystem *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=metric_system,json=metricSystem,proto3" json:"metric_system,omitempty"`
 }
 
 func (x *DistanceView) Reset() {
@@ -110,7 +110,7 @@ func (x *DistanceView) GetDistanceBucket() enums.DistanceBucketEnum_DistanceBuck
 	return enums.DistanceBucketEnum_UNSPECIFIED
 }
 
-func (x *DistanceView) GetMetricSystem() *wrappers.BoolValue {
+func (x *DistanceView) GetMetricSystem() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.MetricSystem
 	}
@@ -195,7 +195,7 @@ var file_google_ads_googleads_v2_resources_distance_view_proto_msgTypes = make([
 var file_google_ads_googleads_v2_resources_distance_view_proto_goTypes = []interface{}{
 	(*DistanceView)(nil),                         // 0: google.ads.googleads.v2.resources.DistanceView
 	(enums.DistanceBucketEnum_DistanceBucket)(0), // 1: google.ads.googleads.v2.enums.DistanceBucketEnum.DistanceBucket
-	(*wrappers.BoolValue)(nil),                   // 2: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                 // 2: google.protobuf.BoolValue
 }
 var file_google_ads_googleads_v2_resources_distance_view_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v2.resources.DistanceView.distance_bucket:type_name -> google.ads.googleads.v2.enums.DistanceBucketEnum.DistanceBucket

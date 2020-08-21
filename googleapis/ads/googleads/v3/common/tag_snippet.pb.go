@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,10 +56,10 @@ type TagSnippet struct {
 	PageFormat enums.TrackingCodePageFormatEnum_TrackingCodePageFormat `protobuf:"varint,2,opt,name=page_format,json=pageFormat,proto3,enum=google.ads.googleads.v3.enums.TrackingCodePageFormatEnum_TrackingCodePageFormat" json:"page_format,omitempty"`
 	// The site tag that adds visitors to your basic remarketing lists and sets
 	// new cookies on your domain.
-	GlobalSiteTag *wrappers.StringValue `protobuf:"bytes,3,opt,name=global_site_tag,json=globalSiteTag,proto3" json:"global_site_tag,omitempty"`
+	GlobalSiteTag *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=global_site_tag,json=globalSiteTag,proto3" json:"global_site_tag,omitempty"`
 	// The event snippet that works with the site tag to track actions that
 	// should be counted as conversions.
-	EventSnippet *wrappers.StringValue `protobuf:"bytes,4,opt,name=event_snippet,json=eventSnippet,proto3" json:"event_snippet,omitempty"`
+	EventSnippet *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=event_snippet,json=eventSnippet,proto3" json:"event_snippet,omitempty"`
 }
 
 func (x *TagSnippet) Reset() {
@@ -108,14 +108,14 @@ func (x *TagSnippet) GetPageFormat() enums.TrackingCodePageFormatEnum_TrackingCo
 	return enums.TrackingCodePageFormatEnum_UNSPECIFIED
 }
 
-func (x *TagSnippet) GetGlobalSiteTag() *wrappers.StringValue {
+func (x *TagSnippet) GetGlobalSiteTag() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GlobalSiteTag
 	}
 	return nil
 }
 
-func (x *TagSnippet) GetEventSnippet() *wrappers.StringValue {
+func (x *TagSnippet) GetEventSnippet() *wrapperspb.StringValue {
 	if x != nil {
 		return x.EventSnippet
 	}
@@ -199,7 +199,7 @@ var file_google_ads_googleads_v3_common_tag_snippet_proto_goTypes = []interface{
 	(*TagSnippet)(nil), // 0: google.ads.googleads.v3.common.TagSnippet
 	(enums.TrackingCodeTypeEnum_TrackingCodeType)(0),             // 1: google.ads.googleads.v3.enums.TrackingCodeTypeEnum.TrackingCodeType
 	(enums.TrackingCodePageFormatEnum_TrackingCodePageFormat)(0), // 2: google.ads.googleads.v3.enums.TrackingCodePageFormatEnum.TrackingCodePageFormat
-	(*wrappers.StringValue)(nil),                                 // 3: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                               // 3: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v3_common_tag_snippet_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v3.common.TagSnippet.type:type_name -> google.ads.googleads.v3.enums.TrackingCodeTypeEnum.TrackingCodeType

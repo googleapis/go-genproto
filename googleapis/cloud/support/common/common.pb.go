@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -449,7 +449,7 @@ type SupportAccount struct {
 	State SupportAccount_State `protobuf:"varint,5,opt,name=state,proto3,enum=google.cloud.support.common.SupportAccount_State" json:"state,omitempty"`
 	// Time when this account was created.
 	// Output only.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The resource name of a billing account associated with this support
 	// account. For example, `billingAccounts/ABCDEF-012345-567890`.
 	BillingAccountName string `protobuf:"bytes,7,opt,name=billing_account_name,json=billingAccountName,proto3" json:"billing_account_name,omitempty"`
@@ -525,7 +525,7 @@ func (x *SupportAccount) GetState() SupportAccount_State {
 	return SupportAccount_STATE_UNSPECIFIED
 }
 
-func (x *SupportAccount) GetCreateTime() *timestamp.Timestamp {
+func (x *SupportAccount) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -587,10 +587,10 @@ type Case struct {
 	State Case_State `protobuf:"varint,12,opt,name=state,proto3,enum=google.cloud.support.common.Case_State" json:"state,omitempty"`
 	// Time when this case was created.
 	// Output only.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,13,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Time when this case was last updated.
 	// Output only.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,14,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Email address of user who created this case.
 	// Output only. It is inferred from credentials supplied during case creation.
 	CreatorEmail string `protobuf:"bytes,15,opt,name=creator_email,json=creatorEmail,proto3" json:"creator_email,omitempty"`
@@ -707,14 +707,14 @@ func (x *Case) GetState() Case_State {
 	return Case_STATE_UNSPECIFIED
 }
 
-func (x *Case) GetCreateTime() *timestamp.Timestamp {
+func (x *Case) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Case) GetUpdateTime() *timestamp.Timestamp {
+func (x *Case) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -751,13 +751,13 @@ type CustomerIssue struct {
 	State CustomerIssue_IssueState `protobuf:"varint,2,opt,name=state,proto3,enum=google.cloud.support.common.CustomerIssue_IssueState" json:"state,omitempty"`
 	// Time when the internal issue was created.
 	// Output only.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Time when the internal issue was marked as resolved.
 	// Output only.
-	ResolveTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=resolve_time,json=resolveTime,proto3" json:"resolve_time,omitempty"`
+	ResolveTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=resolve_time,json=resolveTime,proto3" json:"resolve_time,omitempty"`
 	// Time when the internal issue was last updated.
 	// Output only.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *CustomerIssue) Reset() {
@@ -806,21 +806,21 @@ func (x *CustomerIssue) GetState() CustomerIssue_IssueState {
 	return CustomerIssue_ISSUE_STATE_UNSPECIFIED
 }
 
-func (x *CustomerIssue) GetCreateTime() *timestamp.Timestamp {
+func (x *CustomerIssue) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *CustomerIssue) GetResolveTime() *timestamp.Timestamp {
+func (x *CustomerIssue) GetResolveTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ResolveTime
 	}
 	return nil
 }
 
-func (x *CustomerIssue) GetUpdateTime() *timestamp.Timestamp {
+func (x *CustomerIssue) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -896,7 +896,7 @@ type Comment struct {
 	Text string `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
 	// Time when this update was created.
 	// Output only.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The email address/name of user who created this comment.
 	// Output only.
 	Author string `protobuf:"bytes,3,opt,name=author,proto3" json:"author,omitempty"`
@@ -945,7 +945,7 @@ func (x *Comment) GetText() string {
 	return ""
 }
 
-func (x *Comment) GetCreateTime() *timestamp.Timestamp {
+func (x *Comment) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1401,7 +1401,7 @@ var file_google_cloud_support_common_proto_goTypes = []interface{}{
 	(*IssueTaxonomy_Category)(nil),   // 13: google.cloud.support.common.IssueTaxonomy.Category
 	nil,                              // 14: google.cloud.support.common.IssueTaxonomy.CategoriesEntry
 	nil,                              // 15: google.cloud.support.common.IssueTaxonomy.Category.ComponentsEntry
-	(*timestamp.Timestamp)(nil),      // 16: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),    // 16: google.protobuf.Timestamp
 }
 var file_google_cloud_support_common_proto_depIdxs = []int32{
 	0,  // 0: google.cloud.support.common.SupportAccount.state:type_name -> google.cloud.support.common.SupportAccount.State

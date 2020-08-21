@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/any"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	configchange "google.golang.org/genproto/googleapis/api/configchange"
 	_ "google.golang.org/genproto/googleapis/api/metric"
 	_ "google.golang.org/genproto/googleapis/api/serviceconfig"
 	_ "google.golang.org/genproto/googleapis/longrunning"
 	_ "google.golang.org/genproto/googleapis/rpc/status"
-	_ "google.golang.org/genproto/protobuf/field_mask"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/anypb"
+	_ "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -384,7 +384,7 @@ type OperationMetadata struct {
 	// Percentage of completion of this operation, ranging from 0 to 100.
 	ProgressPercentage int32 `protobuf:"varint,3,opt,name=progress_percentage,json=progressPercentage,proto3" json:"progress_percentage,omitempty"`
 	// The start time of the operation.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 }
 
 func (x *OperationMetadata) Reset() {
@@ -440,7 +440,7 @@ func (x *OperationMetadata) GetProgressPercentage() int32 {
 	return 0
 }
 
-func (x *OperationMetadata) GetStartTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
@@ -767,7 +767,7 @@ type Rollout struct {
 	// An example of the generated rollout_id is '2016-02-16r1'
 	RolloutId string `protobuf:"bytes,1,opt,name=rollout_id,json=rolloutId,proto3" json:"rollout_id,omitempty"`
 	// Creation time of the rollout. Readonly.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The user who created the Rollout. Readonly.
 	CreatedBy string `protobuf:"bytes,3,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	// The status of this rollout. Readonly. In case of a failed rollout,
@@ -825,7 +825,7 @@ func (x *Rollout) GetRolloutId() string {
 	return ""
 }
 
-func (x *Rollout) GetCreateTime() *timestamp.Timestamp {
+func (x *Rollout) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1284,7 +1284,7 @@ var file_google_api_servicemanagement_v1_resources_proto_goTypes = []interface{}
 	(*Rollout_TrafficPercentStrategy)(nil), // 13: google.api.servicemanagement.v1.Rollout.TrafficPercentStrategy
 	(*Rollout_DeleteServiceStrategy)(nil),  // 14: google.api.servicemanagement.v1.Rollout.DeleteServiceStrategy
 	nil,                                    // 15: google.api.servicemanagement.v1.Rollout.TrafficPercentStrategy.PercentagesEntry
-	(*timestamp.Timestamp)(nil),            // 16: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),          // 16: google.protobuf.Timestamp
 	(*configchange.ConfigChange)(nil),      // 17: google.api.ConfigChange
 }
 var file_google_api_servicemanagement_v1_resources_proto_depIdxs = []int32{

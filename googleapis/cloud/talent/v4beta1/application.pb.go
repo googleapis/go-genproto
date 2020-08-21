@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	date "google.golang.org/genproto/googleapis/type/date"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -241,11 +241,11 @@ type Application struct {
 	// timestamp, feedback, and so on).
 	Interviews []*Interview `protobuf:"bytes,16,rep,name=interviews,proto3" json:"interviews,omitempty"`
 	// If the candidate is referred by a employee.
-	Referral *wrappers.BoolValue `protobuf:"bytes,18,opt,name=referral,proto3" json:"referral,omitempty"`
+	Referral *wrapperspb.BoolValue `protobuf:"bytes,18,opt,name=referral,proto3" json:"referral,omitempty"`
 	// Required. Reflects the time that the application was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,19,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The last update timestamp.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,20,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Free text reason behind the recruitement outcome (for example, reason for
 	// withdraw / reject, reason for an unsuccessful finish, and so on).
 	//
@@ -256,7 +256,7 @@ type Application struct {
 	// Output only. Indicates whether this job application is a match to
 	// application related filters. This value is only applicable in profile
 	// search response.
-	IsMatch *wrappers.BoolValue `protobuf:"bytes,28,opt,name=is_match,json=isMatch,proto3" json:"is_match,omitempty"`
+	IsMatch *wrapperspb.BoolValue `protobuf:"bytes,28,opt,name=is_match,json=isMatch,proto3" json:"is_match,omitempty"`
 	// Output only. Job title snippet shows how the job title is related to a
 	// search query. It's empty if the job title isn't related to the search
 	// query.
@@ -358,21 +358,21 @@ func (x *Application) GetInterviews() []*Interview {
 	return nil
 }
 
-func (x *Application) GetReferral() *wrappers.BoolValue {
+func (x *Application) GetReferral() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.Referral
 	}
 	return nil
 }
 
-func (x *Application) GetCreateTime() *timestamp.Timestamp {
+func (x *Application) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Application) GetUpdateTime() *timestamp.Timestamp {
+func (x *Application) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -393,7 +393,7 @@ func (x *Application) GetOutcome() Outcome {
 	return Outcome_OUTCOME_UNSPECIFIED
 }
 
-func (x *Application) GetIsMatch() *wrappers.BoolValue {
+func (x *Application) GetIsMatch() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.IsMatch
 	}
@@ -544,8 +544,8 @@ var file_google_cloud_talent_v4beta1_application_proto_goTypes = []interface{}{
 	(*Application)(nil),               // 2: google.cloud.talent.v4beta1.Application
 	(*date.Date)(nil),                 // 3: google.type.Date
 	(*Interview)(nil),                 // 4: google.cloud.talent.v4beta1.Interview
-	(*wrappers.BoolValue)(nil),        // 5: google.protobuf.BoolValue
-	(*timestamp.Timestamp)(nil),       // 6: google.protobuf.Timestamp
+	(*wrapperspb.BoolValue)(nil),      // 5: google.protobuf.BoolValue
+	(*timestamppb.Timestamp)(nil),     // 6: google.protobuf.Timestamp
 	(Outcome)(0),                      // 7: google.cloud.talent.v4beta1.Outcome
 }
 var file_google_cloud_talent_v4beta1_application_proto_depIdxs = []int32{

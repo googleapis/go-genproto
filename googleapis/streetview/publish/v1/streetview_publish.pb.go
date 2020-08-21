@@ -25,13 +25,13 @@ import (
 	reflect "reflect"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -163,7 +163,7 @@ var file_google_streetview_publish_v1_streetview_publish_proto_rawDesc = []byte{
 }
 
 var file_google_streetview_publish_v1_streetview_publish_proto_goTypes = []interface{}{
-	(*empty.Empty)(nil),               // 0: google.protobuf.Empty
+	(*emptypb.Empty)(nil),             // 0: google.protobuf.Empty
 	(*CreatePhotoRequest)(nil),        // 1: google.streetview.publish.v1.CreatePhotoRequest
 	(*GetPhotoRequest)(nil),           // 2: google.streetview.publish.v1.GetPhotoRequest
 	(*BatchGetPhotosRequest)(nil),     // 3: google.streetview.publish.v1.BatchGetPhotosRequest
@@ -263,7 +263,7 @@ type StreetViewPublishServiceClient interface {
 	// [UploadRef][google.streetview.publish.v1.UploadRef] with
 	// [CreatePhoto][google.streetview.publish.v1.StreetViewPublishService.CreatePhoto]
 	// to create the [Photo][google.streetview.publish.v1.Photo] object entry.
-	StartUpload(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*UploadRef, error)
+	StartUpload(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*UploadRef, error)
 	// After the client finishes uploading the photo with the returned
 	// [UploadRef][google.streetview.publish.v1.UploadRef],
 	// [CreatePhoto][google.streetview.publish.v1.StreetViewPublishService.CreatePhoto]
@@ -385,7 +385,7 @@ type StreetViewPublishServiceClient interface {
 	// the requesting user did not create the requested photo.
 	// * [google.rpc.Code.NOT_FOUND][google.rpc.Code.NOT_FOUND] if the photo ID
 	// does not exist.
-	DeletePhoto(ctx context.Context, in *DeletePhotoRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeletePhoto(ctx context.Context, in *DeletePhotoRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Deletes a list of [Photos][google.streetview.publish.v1.Photo] and their
 	// metadata.
 	//
@@ -413,7 +413,7 @@ func NewStreetViewPublishServiceClient(cc grpc.ClientConnInterface) StreetViewPu
 	return &streetViewPublishServiceClient{cc}
 }
 
-func (c *streetViewPublishServiceClient) StartUpload(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*UploadRef, error) {
+func (c *streetViewPublishServiceClient) StartUpload(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*UploadRef, error) {
 	out := new(UploadRef)
 	err := c.cc.Invoke(ctx, "/google.streetview.publish.v1.StreetViewPublishService/StartUpload", in, out, opts...)
 	if err != nil {
@@ -476,8 +476,8 @@ func (c *streetViewPublishServiceClient) BatchUpdatePhotos(ctx context.Context, 
 	return out, nil
 }
 
-func (c *streetViewPublishServiceClient) DeletePhoto(ctx context.Context, in *DeletePhotoRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *streetViewPublishServiceClient) DeletePhoto(ctx context.Context, in *DeletePhotoRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.streetview.publish.v1.StreetViewPublishService/DeletePhoto", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -516,7 +516,7 @@ type StreetViewPublishServiceServer interface {
 	// [UploadRef][google.streetview.publish.v1.UploadRef] with
 	// [CreatePhoto][google.streetview.publish.v1.StreetViewPublishService.CreatePhoto]
 	// to create the [Photo][google.streetview.publish.v1.Photo] object entry.
-	StartUpload(context.Context, *empty.Empty) (*UploadRef, error)
+	StartUpload(context.Context, *emptypb.Empty) (*UploadRef, error)
 	// After the client finishes uploading the photo with the returned
 	// [UploadRef][google.streetview.publish.v1.UploadRef],
 	// [CreatePhoto][google.streetview.publish.v1.StreetViewPublishService.CreatePhoto]
@@ -638,7 +638,7 @@ type StreetViewPublishServiceServer interface {
 	// the requesting user did not create the requested photo.
 	// * [google.rpc.Code.NOT_FOUND][google.rpc.Code.NOT_FOUND] if the photo ID
 	// does not exist.
-	DeletePhoto(context.Context, *DeletePhotoRequest) (*empty.Empty, error)
+	DeletePhoto(context.Context, *DeletePhotoRequest) (*emptypb.Empty, error)
 	// Deletes a list of [Photos][google.streetview.publish.v1.Photo] and their
 	// metadata.
 	//
@@ -662,7 +662,7 @@ type StreetViewPublishServiceServer interface {
 type UnimplementedStreetViewPublishServiceServer struct {
 }
 
-func (*UnimplementedStreetViewPublishServiceServer) StartUpload(context.Context, *empty.Empty) (*UploadRef, error) {
+func (*UnimplementedStreetViewPublishServiceServer) StartUpload(context.Context, *emptypb.Empty) (*UploadRef, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StartUpload not implemented")
 }
 func (*UnimplementedStreetViewPublishServiceServer) CreatePhoto(context.Context, *CreatePhotoRequest) (*Photo, error) {
@@ -683,7 +683,7 @@ func (*UnimplementedStreetViewPublishServiceServer) UpdatePhoto(context.Context,
 func (*UnimplementedStreetViewPublishServiceServer) BatchUpdatePhotos(context.Context, *BatchUpdatePhotosRequest) (*BatchUpdatePhotosResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BatchUpdatePhotos not implemented")
 }
-func (*UnimplementedStreetViewPublishServiceServer) DeletePhoto(context.Context, *DeletePhotoRequest) (*empty.Empty, error) {
+func (*UnimplementedStreetViewPublishServiceServer) DeletePhoto(context.Context, *DeletePhotoRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePhoto not implemented")
 }
 func (*UnimplementedStreetViewPublishServiceServer) BatchDeletePhotos(context.Context, *BatchDeletePhotosRequest) (*BatchDeletePhotosResponse, error) {
@@ -695,7 +695,7 @@ func RegisterStreetViewPublishServiceServer(s *grpc.Server, srv StreetViewPublis
 }
 
 func _StreetViewPublishService_StartUpload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(empty.Empty)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -707,7 +707,7 @@ func _StreetViewPublishService_StartUpload_Handler(srv interface{}, ctx context.
 		FullMethod: "/google.streetview.publish.v1.StreetViewPublishService/StartUpload",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StreetViewPublishServiceServer).StartUpload(ctx, req.(*empty.Empty))
+		return srv.(StreetViewPublishServiceServer).StartUpload(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

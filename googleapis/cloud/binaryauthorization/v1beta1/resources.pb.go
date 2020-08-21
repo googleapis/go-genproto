@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -334,7 +334,7 @@ type Policy struct {
 	// kubernetes-service-account, or per-istio-service-identity admission rule.
 	DefaultAdmissionRule *AdmissionRule `protobuf:"bytes,4,opt,name=default_admission_rule,json=defaultAdmissionRule,proto3" json:"default_admission_rule,omitempty"`
 	// Output only. Time when the policy was last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *Policy) Reset() {
@@ -411,7 +411,7 @@ func (x *Policy) GetDefaultAdmissionRule() *AdmissionRule {
 	return nil
 }
 
-func (x *Policy) GetUpdateTime() *timestamp.Timestamp {
+func (x *Policy) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -574,7 +574,7 @@ type Attestor struct {
 	//	*Attestor_UserOwnedDrydockNote
 	AttestorType isAttestor_AttestorType `protobuf_oneof:"attestor_type"`
 	// Output only. Time when the attestor was last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *Attestor) Reset() {
@@ -637,7 +637,7 @@ func (x *Attestor) GetUserOwnedDrydockNote() *UserOwnedDrydockNote {
 	return nil
 }
 
-func (x *Attestor) GetUpdateTime() *timestamp.Timestamp {
+func (x *Attestor) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -1175,7 +1175,7 @@ var file_google_cloud_binaryauthorization_v1beta1_resources_proto_goTypes = []in
 	(*PkixPublicKey)(nil),                  // 9: google.cloud.binaryauthorization.v1beta1.PkixPublicKey
 	(*AttestorPublicKey)(nil),              // 10: google.cloud.binaryauthorization.v1beta1.AttestorPublicKey
 	nil,                                    // 11: google.cloud.binaryauthorization.v1beta1.Policy.ClusterAdmissionRulesEntry
-	(*timestamp.Timestamp)(nil),            // 12: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),          // 12: google.protobuf.Timestamp
 }
 var file_google_cloud_binaryauthorization_v1beta1_resources_proto_depIdxs = []int32{
 	0,  // 0: google.cloud.binaryauthorization.v1beta1.Policy.global_policy_evaluation_mode:type_name -> google.cloud.binaryauthorization.v1beta1.Policy.GlobalPolicyEvaluationMode

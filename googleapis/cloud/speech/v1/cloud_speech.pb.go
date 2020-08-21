@@ -27,9 +27,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/any"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
@@ -38,6 +35,9 @@ import (
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/anypb"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1525,9 +1525,9 @@ type LongRunningRecognizeMetadata struct {
 	// when the audio is fully processed and the results are available.
 	ProgressPercent int32 `protobuf:"varint,1,opt,name=progress_percent,json=progressPercent,proto3" json:"progress_percent,omitempty"`
 	// Time when the request was received.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time of the most recent processing update.
-	LastUpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=last_update_time,json=lastUpdateTime,proto3" json:"last_update_time,omitempty"`
+	LastUpdateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=last_update_time,json=lastUpdateTime,proto3" json:"last_update_time,omitempty"`
 }
 
 func (x *LongRunningRecognizeMetadata) Reset() {
@@ -1569,14 +1569,14 @@ func (x *LongRunningRecognizeMetadata) GetProgressPercent() int32 {
 	return 0
 }
 
-func (x *LongRunningRecognizeMetadata) GetStartTime() *timestamp.Timestamp {
+func (x *LongRunningRecognizeMetadata) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *LongRunningRecognizeMetadata) GetLastUpdateTime() *timestamp.Timestamp {
+func (x *LongRunningRecognizeMetadata) GetLastUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastUpdateTime
 	}
@@ -1728,7 +1728,7 @@ type StreamingRecognitionResult struct {
 	Stability float32 `protobuf:"fixed32,3,opt,name=stability,proto3" json:"stability,omitempty"`
 	// Time offset of the end of this result relative to the
 	// beginning of the audio.
-	ResultEndTime *duration.Duration `protobuf:"bytes,4,opt,name=result_end_time,json=resultEndTime,proto3" json:"result_end_time,omitempty"`
+	ResultEndTime *durationpb.Duration `protobuf:"bytes,4,opt,name=result_end_time,json=resultEndTime,proto3" json:"result_end_time,omitempty"`
 	// For multi-channel audio, this is the channel number corresponding to the
 	// recognized result for the audio from that channel.
 	// For audio_channel_count = N, its output values can range from '1' to 'N'.
@@ -1792,7 +1792,7 @@ func (x *StreamingRecognitionResult) GetStability() float32 {
 	return 0
 }
 
-func (x *StreamingRecognitionResult) GetResultEndTime() *duration.Duration {
+func (x *StreamingRecognitionResult) GetResultEndTime() *durationpb.Duration {
 	if x != nil {
 		return x.ResultEndTime
 	}
@@ -1963,14 +1963,14 @@ type WordInfo struct {
 	// in the top hypothesis.
 	// This is an experimental feature and the accuracy of the time offset can
 	// vary.
-	StartTime *duration.Duration `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *durationpb.Duration `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time offset relative to the beginning of the audio,
 	// and corresponding to the end of the spoken word.
 	// This field is only set if `enable_word_time_offsets=true` and only
 	// in the top hypothesis.
 	// This is an experimental feature and the accuracy of the time offset can
 	// vary.
-	EndTime *duration.Duration `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *durationpb.Duration `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The word corresponding to this set of information.
 	Word string `protobuf:"bytes,3,opt,name=word,proto3" json:"word,omitempty"`
 	// A distinct integer value is assigned for every speaker within
@@ -2013,14 +2013,14 @@ func (*WordInfo) Descriptor() ([]byte, []int) {
 	return file_google_cloud_speech_v1_cloud_speech_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *WordInfo) GetStartTime() *duration.Duration {
+func (x *WordInfo) GetStartTime() *durationpb.Duration {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *WordInfo) GetEndTime() *duration.Duration {
+func (x *WordInfo) GetEndTime() *durationpb.Duration {
 	if x != nil {
 		return x.EndTime
 	}
@@ -2449,9 +2449,9 @@ var file_google_cloud_speech_v1_cloud_speech_proto_goTypes = []interface{}{
 	(*SpeechRecognitionResult)(nil),                 // 20: google.cloud.speech.v1.SpeechRecognitionResult
 	(*SpeechRecognitionAlternative)(nil),            // 21: google.cloud.speech.v1.SpeechRecognitionAlternative
 	(*WordInfo)(nil),                                // 22: google.cloud.speech.v1.WordInfo
-	(*timestamp.Timestamp)(nil),                     // 23: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                   // 23: google.protobuf.Timestamp
 	(*status.Status)(nil),                           // 24: google.rpc.Status
-	(*duration.Duration)(nil),                       // 25: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                     // 25: google.protobuf.Duration
 	(*longrunning.Operation)(nil),                   // 26: google.longrunning.Operation
 }
 var file_google_cloud_speech_v1_cloud_speech_proto_depIdxs = []int32{

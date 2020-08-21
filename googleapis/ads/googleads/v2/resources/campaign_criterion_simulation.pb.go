@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -62,17 +62,17 @@ type CampaignCriterionSimulation struct {
 	// `customers/{customer_id}/campaignCriterionSimulations/{campaign_id}~{criterion_id}~{type}~{modification_method}~{start_date}~{end_date}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. Campaign ID of the simulation.
-	CampaignId *wrappers.Int64Value `protobuf:"bytes,2,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
+	CampaignId *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=campaign_id,json=campaignId,proto3" json:"campaign_id,omitempty"`
 	// Output only. Criterion ID of the simulation.
-	CriterionId *wrappers.Int64Value `protobuf:"bytes,3,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
+	CriterionId *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
 	// Output only. The field that the simulation modifies.
 	Type enums.SimulationTypeEnum_SimulationType `protobuf:"varint,4,opt,name=type,proto3,enum=google.ads.googleads.v2.enums.SimulationTypeEnum_SimulationType" json:"type,omitempty"`
 	// Output only. How the simulation modifies the field.
 	ModificationMethod enums.SimulationModificationMethodEnum_SimulationModificationMethod `protobuf:"varint,5,opt,name=modification_method,json=modificationMethod,proto3,enum=google.ads.googleads.v2.enums.SimulationModificationMethodEnum_SimulationModificationMethod" json:"modification_method,omitempty"`
 	// Output only. First day on which the simulation is based, in YYYY-MM-DD format.
-	StartDate *wrappers.StringValue `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	StartDate *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
 	// Output only. Last day on which the simulation is based, in YYYY-MM-DD format.
-	EndDate *wrappers.StringValue `protobuf:"bytes,7,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
+	EndDate *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
 	// List of simulation points.
 	//
 	// Types that are assignable to PointList:
@@ -119,14 +119,14 @@ func (x *CampaignCriterionSimulation) GetResourceName() string {
 	return ""
 }
 
-func (x *CampaignCriterionSimulation) GetCampaignId() *wrappers.Int64Value {
+func (x *CampaignCriterionSimulation) GetCampaignId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CampaignId
 	}
 	return nil
 }
 
-func (x *CampaignCriterionSimulation) GetCriterionId() *wrappers.Int64Value {
+func (x *CampaignCriterionSimulation) GetCriterionId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CriterionId
 	}
@@ -147,14 +147,14 @@ func (x *CampaignCriterionSimulation) GetModificationMethod() enums.SimulationMo
 	return enums.SimulationModificationMethodEnum_UNSPECIFIED
 }
 
-func (x *CampaignCriterionSimulation) GetStartDate() *wrappers.StringValue {
+func (x *CampaignCriterionSimulation) GetStartDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StartDate
 	}
 	return nil
 }
 
-func (x *CampaignCriterionSimulation) GetEndDate() *wrappers.StringValue {
+func (x *CampaignCriterionSimulation) GetEndDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.EndDate
 	}
@@ -306,10 +306,10 @@ func file_google_ads_googleads_v2_resources_campaign_criterion_simulation_proto_
 var file_google_ads_googleads_v2_resources_campaign_criterion_simulation_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_campaign_criterion_simulation_proto_goTypes = []interface{}{
 	(*CampaignCriterionSimulation)(nil),                                      // 0: google.ads.googleads.v2.resources.CampaignCriterionSimulation
-	(*wrappers.Int64Value)(nil),                                              // 1: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                            // 1: google.protobuf.Int64Value
 	(enums.SimulationTypeEnum_SimulationType)(0),                             // 2: google.ads.googleads.v2.enums.SimulationTypeEnum.SimulationType
 	(enums.SimulationModificationMethodEnum_SimulationModificationMethod)(0), // 3: google.ads.googleads.v2.enums.SimulationModificationMethodEnum.SimulationModificationMethod
-	(*wrappers.StringValue)(nil),                                             // 4: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                           // 4: google.protobuf.StringValue
 	(*common.BidModifierSimulationPointList)(nil),                            // 5: google.ads.googleads.v2.common.BidModifierSimulationPointList
 }
 var file_google_ads_googleads_v2_resources_campaign_criterion_simulation_proto_depIdxs = []int32{

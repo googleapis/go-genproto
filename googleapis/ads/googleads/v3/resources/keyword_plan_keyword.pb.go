@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,16 +56,16 @@ type KeywordPlanKeyword struct {
 	// `customers/{customer_id}/keywordPlanKeywords/{kp_ad_group_keyword_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// The Keyword Plan ad group to which this keyword belongs.
-	KeywordPlanAdGroup *wrappers.StringValue `protobuf:"bytes,2,opt,name=keyword_plan_ad_group,json=keywordPlanAdGroup,proto3" json:"keyword_plan_ad_group,omitempty"`
+	KeywordPlanAdGroup *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=keyword_plan_ad_group,json=keywordPlanAdGroup,proto3" json:"keyword_plan_ad_group,omitempty"`
 	// Output only. The ID of the Keyword Plan keyword.
-	Id *wrappers.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
 	// The keyword text.
-	Text *wrappers.StringValue `protobuf:"bytes,4,opt,name=text,proto3" json:"text,omitempty"`
+	Text *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=text,proto3" json:"text,omitempty"`
 	// The keyword match type.
 	MatchType enums.KeywordMatchTypeEnum_KeywordMatchType `protobuf:"varint,5,opt,name=match_type,json=matchType,proto3,enum=google.ads.googleads.v3.enums.KeywordMatchTypeEnum_KeywordMatchType" json:"match_type,omitempty"`
 	// A keyword level max cpc bid in micros, in the account currency, that
 	// overrides the keyword plan ad group cpc bid.
-	CpcBidMicros *wrappers.Int64Value `protobuf:"bytes,6,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
+	CpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
 }
 
 func (x *KeywordPlanKeyword) Reset() {
@@ -107,21 +107,21 @@ func (x *KeywordPlanKeyword) GetResourceName() string {
 	return ""
 }
 
-func (x *KeywordPlanKeyword) GetKeywordPlanAdGroup() *wrappers.StringValue {
+func (x *KeywordPlanKeyword) GetKeywordPlanAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.KeywordPlanAdGroup
 	}
 	return nil
 }
 
-func (x *KeywordPlanKeyword) GetId() *wrappers.Int64Value {
+func (x *KeywordPlanKeyword) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *KeywordPlanKeyword) GetText() *wrappers.StringValue {
+func (x *KeywordPlanKeyword) GetText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Text
 	}
@@ -135,7 +135,7 @@ func (x *KeywordPlanKeyword) GetMatchType() enums.KeywordMatchTypeEnum_KeywordMa
 	return enums.KeywordMatchTypeEnum_UNSPECIFIED
 }
 
-func (x *KeywordPlanKeyword) GetCpcBidMicros() *wrappers.Int64Value {
+func (x *KeywordPlanKeyword) GetCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidMicros
 	}
@@ -236,8 +236,8 @@ func file_google_ads_googleads_v3_resources_keyword_plan_keyword_proto_rawDescGZ
 var file_google_ads_googleads_v3_resources_keyword_plan_keyword_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_keyword_plan_keyword_proto_goTypes = []interface{}{
 	(*KeywordPlanKeyword)(nil),                       // 0: google.ads.googleads.v3.resources.KeywordPlanKeyword
-	(*wrappers.StringValue)(nil),                     // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                      // 2: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                   // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                    // 2: google.protobuf.Int64Value
 	(enums.KeywordMatchTypeEnum_KeywordMatchType)(0), // 3: google.ads.googleads.v3.enums.KeywordMatchTypeEnum.KeywordMatchType
 }
 var file_google_ads_googleads_v3_resources_keyword_plan_keyword_proto_depIdxs = []int32{

@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,9 +56,9 @@ type AdGroupFeed struct {
 	// `customers/{customer_id}/adGroupFeeds/{ad_group_id}~{feed_id}
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The feed being linked to the ad group.
-	Feed *wrappers.StringValue `protobuf:"bytes,2,opt,name=feed,proto3" json:"feed,omitempty"`
+	Feed *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=feed,proto3" json:"feed,omitempty"`
 	// Immutable. The ad group being linked to the feed.
-	AdGroup *wrappers.StringValue `protobuf:"bytes,3,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
+	AdGroup *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
 	// Indicates which placeholder types the feed may populate under the connected
 	// ad group. Required.
 	PlaceholderTypes []enums.PlaceholderTypeEnum_PlaceholderType `protobuf:"varint,4,rep,packed,name=placeholder_types,json=placeholderTypes,proto3,enum=google.ads.googleads.v2.enums.PlaceholderTypeEnum_PlaceholderType" json:"placeholder_types,omitempty"`
@@ -110,14 +110,14 @@ func (x *AdGroupFeed) GetResourceName() string {
 	return ""
 }
 
-func (x *AdGroupFeed) GetFeed() *wrappers.StringValue {
+func (x *AdGroupFeed) GetFeed() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Feed
 	}
 	return nil
 }
 
-func (x *AdGroupFeed) GetAdGroup() *wrappers.StringValue {
+func (x *AdGroupFeed) GetAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroup
 	}
@@ -248,7 +248,7 @@ func file_google_ads_googleads_v2_resources_ad_group_feed_proto_rawDescGZIP() []
 var file_google_ads_googleads_v2_resources_ad_group_feed_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_ad_group_feed_proto_goTypes = []interface{}{
 	(*AdGroupFeed)(nil),                            // 0: google.ads.googleads.v2.resources.AdGroupFeed
-	(*wrappers.StringValue)(nil),                   // 1: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                 // 1: google.protobuf.StringValue
 	(enums.PlaceholderTypeEnum_PlaceholderType)(0), // 2: google.ads.googleads.v2.enums.PlaceholderTypeEnum.PlaceholderType
 	(*common.MatchingFunction)(nil),                // 3: google.ads.googleads.v2.common.MatchingFunction
 	(enums.FeedLinkStatusEnum_FeedLinkStatus)(0),   // 4: google.ads.googleads.v2.enums.FeedLinkStatusEnum.FeedLinkStatus

@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,9 +56,9 @@ type SearchTermView struct {
 	// `customers/{customer_id}/searchTermViews/{campaign_id}~{ad_group_id}~{URL-base64_search_term}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The search term.
-	SearchTerm *wrappers.StringValue `protobuf:"bytes,2,opt,name=search_term,json=searchTerm,proto3" json:"search_term,omitempty"`
+	SearchTerm *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=search_term,json=searchTerm,proto3" json:"search_term,omitempty"`
 	// Output only. The ad group the search term served in.
-	AdGroup *wrappers.StringValue `protobuf:"bytes,3,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
+	AdGroup *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
 	// Output only. Indicates whether the search term is currently one of your
 	// targeted or excluded keywords.
 	Status enums.SearchTermTargetingStatusEnum_SearchTermTargetingStatus `protobuf:"varint,4,opt,name=status,proto3,enum=google.ads.googleads.v3.enums.SearchTermTargetingStatusEnum_SearchTermTargetingStatus" json:"status,omitempty"`
@@ -103,14 +103,14 @@ func (x *SearchTermView) GetResourceName() string {
 	return ""
 }
 
-func (x *SearchTermView) GetSearchTerm() *wrappers.StringValue {
+func (x *SearchTermView) GetSearchTerm() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SearchTerm
 	}
 	return nil
 }
 
-func (x *SearchTermView) GetAdGroup() *wrappers.StringValue {
+func (x *SearchTermView) GetAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroup
 	}
@@ -208,8 +208,8 @@ func file_google_ads_googleads_v3_resources_search_term_view_proto_rawDescGZIP()
 
 var file_google_ads_googleads_v3_resources_search_term_view_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_search_term_view_proto_goTypes = []interface{}{
-	(*SearchTermView)(nil),       // 0: google.ads.googleads.v3.resources.SearchTermView
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*SearchTermView)(nil),         // 0: google.ads.googleads.v3.resources.SearchTermView
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
 	(enums.SearchTermTargetingStatusEnum_SearchTermTargetingStatus)(0), // 2: google.ads.googleads.v3.enums.SearchTermTargetingStatusEnum.SearchTermTargetingStatus
 }
 var file_google_ads_googleads_v3_resources_search_term_view_proto_depIdxs = []int32{

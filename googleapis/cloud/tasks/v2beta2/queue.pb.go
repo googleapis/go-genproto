@@ -26,11 +26,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -213,7 +213,7 @@ type Queue struct {
 	//
 	// Purge time will be truncated to the nearest microsecond. Purge
 	// time will be unset if the queue has never been purged.
-	PurgeTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=purge_time,json=purgeTime,proto3" json:"purge_time,omitempty"`
+	PurgeTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=purge_time,json=purgeTime,proto3" json:"purge_time,omitempty"`
 }
 
 func (x *Queue) Reset() {
@@ -297,7 +297,7 @@ func (x *Queue) GetState() Queue_State {
 	return Queue_STATE_UNSPECIFIED
 }
 
-func (x *Queue) GetPurgeTime() *timestamp.Timestamp {
+func (x *Queue) GetPurgeTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.PurgeTime
 	}
@@ -506,7 +506,7 @@ type RetryConfig struct {
 	// This field has the same meaning as
 	// [task_age_limit in
 	// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-	MaxRetryDuration *duration.Duration `protobuf:"bytes,3,opt,name=max_retry_duration,json=maxRetryDuration,proto3" json:"max_retry_duration,omitempty"`
+	MaxRetryDuration *durationpb.Duration `protobuf:"bytes,3,opt,name=max_retry_duration,json=maxRetryDuration,proto3" json:"max_retry_duration,omitempty"`
 	// A task will be [scheduled][google.cloud.tasks.v2beta2.Task.schedule_time] for retry between
 	// [min_backoff][google.cloud.tasks.v2beta2.RetryConfig.min_backoff] and
 	// [max_backoff][google.cloud.tasks.v2beta2.RetryConfig.max_backoff] duration after it fails,
@@ -524,7 +524,7 @@ type RetryConfig struct {
 	// This field has the same meaning as
 	// [min_backoff_seconds in
 	// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-	MinBackoff *duration.Duration `protobuf:"bytes,4,opt,name=min_backoff,json=minBackoff,proto3" json:"min_backoff,omitempty"`
+	MinBackoff *durationpb.Duration `protobuf:"bytes,4,opt,name=min_backoff,json=minBackoff,proto3" json:"min_backoff,omitempty"`
 	// A task will be [scheduled][google.cloud.tasks.v2beta2.Task.schedule_time] for retry between
 	// [min_backoff][google.cloud.tasks.v2beta2.RetryConfig.min_backoff] and
 	// [max_backoff][google.cloud.tasks.v2beta2.RetryConfig.max_backoff] duration after it fails,
@@ -542,7 +542,7 @@ type RetryConfig struct {
 	// This field has the same meaning as
 	// [max_backoff_seconds in
 	// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-	MaxBackoff *duration.Duration `protobuf:"bytes,5,opt,name=max_backoff,json=maxBackoff,proto3" json:"max_backoff,omitempty"`
+	MaxBackoff *durationpb.Duration `protobuf:"bytes,5,opt,name=max_backoff,json=maxBackoff,proto3" json:"max_backoff,omitempty"`
 	// The time between retries will double `max_doublings` times.
 	//
 	// A task's retry interval starts at
@@ -627,21 +627,21 @@ func (x *RetryConfig) GetUnlimitedAttempts() bool {
 	return false
 }
 
-func (x *RetryConfig) GetMaxRetryDuration() *duration.Duration {
+func (x *RetryConfig) GetMaxRetryDuration() *durationpb.Duration {
 	if x != nil {
 		return x.MaxRetryDuration
 	}
 	return nil
 }
 
-func (x *RetryConfig) GetMinBackoff() *duration.Duration {
+func (x *RetryConfig) GetMinBackoff() *durationpb.Duration {
 	if x != nil {
 		return x.MinBackoff
 	}
 	return nil
 }
 
-func (x *RetryConfig) GetMaxBackoff() *duration.Duration {
+func (x *RetryConfig) GetMaxBackoff() *durationpb.Duration {
 	if x != nil {
 		return x.MaxBackoff
 	}
@@ -793,14 +793,14 @@ func file_google_cloud_tasks_v2beta2_queue_proto_rawDescGZIP() []byte {
 var file_google_cloud_tasks_v2beta2_queue_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_google_cloud_tasks_v2beta2_queue_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_google_cloud_tasks_v2beta2_queue_proto_goTypes = []interface{}{
-	(Queue_State)(0),            // 0: google.cloud.tasks.v2beta2.Queue.State
-	(*Queue)(nil),               // 1: google.cloud.tasks.v2beta2.Queue
-	(*RateLimits)(nil),          // 2: google.cloud.tasks.v2beta2.RateLimits
-	(*RetryConfig)(nil),         // 3: google.cloud.tasks.v2beta2.RetryConfig
-	(*AppEngineHttpTarget)(nil), // 4: google.cloud.tasks.v2beta2.AppEngineHttpTarget
-	(*PullTarget)(nil),          // 5: google.cloud.tasks.v2beta2.PullTarget
-	(*timestamp.Timestamp)(nil), // 6: google.protobuf.Timestamp
-	(*duration.Duration)(nil),   // 7: google.protobuf.Duration
+	(Queue_State)(0),              // 0: google.cloud.tasks.v2beta2.Queue.State
+	(*Queue)(nil),                 // 1: google.cloud.tasks.v2beta2.Queue
+	(*RateLimits)(nil),            // 2: google.cloud.tasks.v2beta2.RateLimits
+	(*RetryConfig)(nil),           // 3: google.cloud.tasks.v2beta2.RetryConfig
+	(*AppEngineHttpTarget)(nil),   // 4: google.cloud.tasks.v2beta2.AppEngineHttpTarget
+	(*PullTarget)(nil),            // 5: google.cloud.tasks.v2beta2.PullTarget
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),   // 7: google.protobuf.Duration
 }
 var file_google_cloud_tasks_v2beta2_queue_proto_depIdxs = []int32{
 	4, // 0: google.cloud.tasks.v2beta2.Queue.app_engine_http_target:type_name -> google.cloud.tasks.v2beta2.AppEngineHttpTarget

@@ -27,17 +27,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -349,7 +349,7 @@ type UpdateQueueRequest struct {
 	// A mask used to specify which fields of the queue are being updated.
 	//
 	// If empty, then all fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateQueueRequest) Reset() {
@@ -391,7 +391,7 @@ func (x *UpdateQueueRequest) GetQueue() *Queue {
 	return nil
 }
 
-func (x *UpdateQueueRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateQueueRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1038,7 +1038,7 @@ type LeaseTasksRequest struct {
 	//
 	// The maximum lease duration is 1 week.
 	// `lease_duration` will be truncated to the nearest second.
-	LeaseDuration *duration.Duration `protobuf:"bytes,3,opt,name=lease_duration,json=leaseDuration,proto3" json:"lease_duration,omitempty"`
+	LeaseDuration *durationpb.Duration `protobuf:"bytes,3,opt,name=lease_duration,json=leaseDuration,proto3" json:"lease_duration,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -1130,7 +1130,7 @@ func (x *LeaseTasksRequest) GetMaxTasks() int32 {
 	return 0
 }
 
-func (x *LeaseTasksRequest) GetLeaseDuration() *duration.Duration {
+func (x *LeaseTasksRequest) GetLeaseDuration() *durationpb.Duration {
 	if x != nil {
 		return x.LeaseDuration
 	}
@@ -1215,7 +1215,7 @@ type AcknowledgeTaskRequest struct {
 	// [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] response or
 	// [RenewLease][google.cloud.tasks.v2beta2.CloudTasks.RenewLease] response. This restriction is
 	// to ensure that your worker currently holds the lease.
-	ScheduleTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
+	ScheduleTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
 }
 
 func (x *AcknowledgeTaskRequest) Reset() {
@@ -1257,7 +1257,7 @@ func (x *AcknowledgeTaskRequest) GetName() string {
 	return ""
 }
 
-func (x *AcknowledgeTaskRequest) GetScheduleTime() *timestamp.Timestamp {
+func (x *AcknowledgeTaskRequest) GetScheduleTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ScheduleTime
 	}
@@ -1279,13 +1279,13 @@ type RenewLeaseRequest struct {
 	// [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] response or
 	// [RenewLease][google.cloud.tasks.v2beta2.CloudTasks.RenewLease] response. This restriction is
 	// to ensure that your worker currently holds the lease.
-	ScheduleTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
+	ScheduleTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
 	// Required. The desired new lease duration, starting from now.
 	//
 	//
 	// The maximum lease duration is 1 week.
 	// `lease_duration` will be truncated to the nearest second.
-	LeaseDuration *duration.Duration `protobuf:"bytes,3,opt,name=lease_duration,json=leaseDuration,proto3" json:"lease_duration,omitempty"`
+	LeaseDuration *durationpb.Duration `protobuf:"bytes,3,opt,name=lease_duration,json=leaseDuration,proto3" json:"lease_duration,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -1340,14 +1340,14 @@ func (x *RenewLeaseRequest) GetName() string {
 	return ""
 }
 
-func (x *RenewLeaseRequest) GetScheduleTime() *timestamp.Timestamp {
+func (x *RenewLeaseRequest) GetScheduleTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ScheduleTime
 	}
 	return nil
 }
 
-func (x *RenewLeaseRequest) GetLeaseDuration() *duration.Duration {
+func (x *RenewLeaseRequest) GetLeaseDuration() *durationpb.Duration {
 	if x != nil {
 		return x.LeaseDuration
 	}
@@ -1376,7 +1376,7 @@ type CancelLeaseRequest struct {
 	// [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks] response or
 	// [RenewLease][google.cloud.tasks.v2beta2.CloudTasks.RenewLease] response. This restriction is
 	// to ensure that your worker currently holds the lease.
-	ScheduleTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
+	ScheduleTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
 	// The response_view specifies which subset of the [Task][google.cloud.tasks.v2beta2.Task] will be
 	// returned.
 	//
@@ -1431,7 +1431,7 @@ func (x *CancelLeaseRequest) GetName() string {
 	return ""
 }
 
-func (x *CancelLeaseRequest) GetScheduleTime() *timestamp.Timestamp {
+func (x *CancelLeaseRequest) GetScheduleTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ScheduleTime
 	}
@@ -2010,15 +2010,15 @@ var file_google_cloud_tasks_v2beta2_cloudtasks_proto_goTypes = []interface{}{
 	(*CancelLeaseRequest)(nil),            // 18: google.cloud.tasks.v2beta2.CancelLeaseRequest
 	(*RunTaskRequest)(nil),                // 19: google.cloud.tasks.v2beta2.RunTaskRequest
 	(*Queue)(nil),                         // 20: google.cloud.tasks.v2beta2.Queue
-	(*field_mask.FieldMask)(nil),          // 21: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),         // 21: google.protobuf.FieldMask
 	(Task_View)(0),                        // 22: google.cloud.tasks.v2beta2.Task.View
 	(*Task)(nil),                          // 23: google.cloud.tasks.v2beta2.Task
-	(*duration.Duration)(nil),             // 24: google.protobuf.Duration
-	(*timestamp.Timestamp)(nil),           // 25: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),           // 24: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),         // 25: google.protobuf.Timestamp
 	(*v1.GetIamPolicyRequest)(nil),        // 26: google.iam.v1.GetIamPolicyRequest
 	(*v1.SetIamPolicyRequest)(nil),        // 27: google.iam.v1.SetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),  // 28: google.iam.v1.TestIamPermissionsRequest
-	(*empty.Empty)(nil),                   // 29: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                 // 29: google.protobuf.Empty
 	(*v1.Policy)(nil),                     // 30: google.iam.v1.Policy
 	(*v1.TestIamPermissionsResponse)(nil), // 31: google.iam.v1.TestIamPermissionsResponse
 }
@@ -2418,7 +2418,7 @@ type CloudTasksClient interface {
 	// [Overview of Queue Management and
 	// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
 	// this method.
-	DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Purges a queue by deleting all of its tasks.
 	//
 	// All tasks created before this method is called are permanently deleted.
@@ -2503,7 +2503,7 @@ type CloudTasksClient interface {
 	// A task can be deleted if it is scheduled or dispatched. A task
 	// cannot be deleted if it has completed successfully or permanently
 	// failed.
-	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Leases tasks from a pull queue for
 	// [lease_duration][google.cloud.tasks.v2beta2.LeaseTasksRequest.lease_duration].
 	//
@@ -2540,7 +2540,7 @@ type CloudTasksClient interface {
 	// by a later [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks],
 	// [GetTask][google.cloud.tasks.v2beta2.CloudTasks.GetTask], or
 	// [ListTasks][google.cloud.tasks.v2beta2.CloudTasks.ListTasks].
-	AcknowledgeTask(ctx context.Context, in *AcknowledgeTaskRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	AcknowledgeTask(ctx context.Context, in *AcknowledgeTaskRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Renew the current lease of a pull task.
 	//
 	// The worker can use this method to extend the lease by a new
@@ -2628,8 +2628,8 @@ func (c *cloudTasksClient) UpdateQueue(ctx context.Context, in *UpdateQueueReque
 	return out, nil
 }
 
-func (c *cloudTasksClient) DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *cloudTasksClient) DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.tasks.v2beta2.CloudTasks/DeleteQueue", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2718,8 +2718,8 @@ func (c *cloudTasksClient) CreateTask(ctx context.Context, in *CreateTaskRequest
 	return out, nil
 }
 
-func (c *cloudTasksClient) DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *cloudTasksClient) DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.tasks.v2beta2.CloudTasks/DeleteTask", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2736,8 +2736,8 @@ func (c *cloudTasksClient) LeaseTasks(ctx context.Context, in *LeaseTasksRequest
 	return out, nil
 }
 
-func (c *cloudTasksClient) AcknowledgeTask(ctx context.Context, in *AcknowledgeTaskRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *cloudTasksClient) AcknowledgeTask(ctx context.Context, in *AcknowledgeTaskRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.tasks.v2beta2.CloudTasks/AcknowledgeTask", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2822,7 +2822,7 @@ type CloudTasksServer interface {
 	// [Overview of Queue Management and
 	// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
 	// this method.
-	DeleteQueue(context.Context, *DeleteQueueRequest) (*empty.Empty, error)
+	DeleteQueue(context.Context, *DeleteQueueRequest) (*emptypb.Empty, error)
 	// Purges a queue by deleting all of its tasks.
 	//
 	// All tasks created before this method is called are permanently deleted.
@@ -2907,7 +2907,7 @@ type CloudTasksServer interface {
 	// A task can be deleted if it is scheduled or dispatched. A task
 	// cannot be deleted if it has completed successfully or permanently
 	// failed.
-	DeleteTask(context.Context, *DeleteTaskRequest) (*empty.Empty, error)
+	DeleteTask(context.Context, *DeleteTaskRequest) (*emptypb.Empty, error)
 	// Leases tasks from a pull queue for
 	// [lease_duration][google.cloud.tasks.v2beta2.LeaseTasksRequest.lease_duration].
 	//
@@ -2944,7 +2944,7 @@ type CloudTasksServer interface {
 	// by a later [LeaseTasks][google.cloud.tasks.v2beta2.CloudTasks.LeaseTasks],
 	// [GetTask][google.cloud.tasks.v2beta2.CloudTasks.GetTask], or
 	// [ListTasks][google.cloud.tasks.v2beta2.CloudTasks.ListTasks].
-	AcknowledgeTask(context.Context, *AcknowledgeTaskRequest) (*empty.Empty, error)
+	AcknowledgeTask(context.Context, *AcknowledgeTaskRequest) (*emptypb.Empty, error)
 	// Renew the current lease of a pull task.
 	//
 	// The worker can use this method to extend the lease by a new
@@ -3004,7 +3004,7 @@ func (*UnimplementedCloudTasksServer) CreateQueue(context.Context, *CreateQueueR
 func (*UnimplementedCloudTasksServer) UpdateQueue(context.Context, *UpdateQueueRequest) (*Queue, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateQueue not implemented")
 }
-func (*UnimplementedCloudTasksServer) DeleteQueue(context.Context, *DeleteQueueRequest) (*empty.Empty, error) {
+func (*UnimplementedCloudTasksServer) DeleteQueue(context.Context, *DeleteQueueRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteQueue not implemented")
 }
 func (*UnimplementedCloudTasksServer) PurgeQueue(context.Context, *PurgeQueueRequest) (*Queue, error) {
@@ -3034,13 +3034,13 @@ func (*UnimplementedCloudTasksServer) GetTask(context.Context, *GetTaskRequest) 
 func (*UnimplementedCloudTasksServer) CreateTask(context.Context, *CreateTaskRequest) (*Task, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTask not implemented")
 }
-func (*UnimplementedCloudTasksServer) DeleteTask(context.Context, *DeleteTaskRequest) (*empty.Empty, error) {
+func (*UnimplementedCloudTasksServer) DeleteTask(context.Context, *DeleteTaskRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTask not implemented")
 }
 func (*UnimplementedCloudTasksServer) LeaseTasks(context.Context, *LeaseTasksRequest) (*LeaseTasksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LeaseTasks not implemented")
 }
-func (*UnimplementedCloudTasksServer) AcknowledgeTask(context.Context, *AcknowledgeTaskRequest) (*empty.Empty, error) {
+func (*UnimplementedCloudTasksServer) AcknowledgeTask(context.Context, *AcknowledgeTaskRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AcknowledgeTask not implemented")
 }
 func (*UnimplementedCloudTasksServer) RenewLease(context.Context, *RenewLeaseRequest) (*Task, error) {

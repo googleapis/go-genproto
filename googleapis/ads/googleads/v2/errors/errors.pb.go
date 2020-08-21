@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -2082,7 +2082,7 @@ type ErrorLocation_FieldPathElement struct {
 	// The name of a field or a oneof
 	FieldName string `protobuf:"bytes,1,opt,name=field_name,json=fieldName,proto3" json:"field_name,omitempty"`
 	// If field_name is a repeated field, this is the element that failed
-	Index *wrappers.Int64Value `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+	Index *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
 }
 
 func (x *ErrorLocation_FieldPathElement) Reset() {
@@ -2124,7 +2124,7 @@ func (x *ErrorLocation_FieldPathElement) GetFieldName() string {
 	return ""
 }
 
-func (x *ErrorLocation_FieldPathElement) GetIndex() *wrappers.Int64Value {
+func (x *ErrorLocation_FieldPathElement) GetIndex() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Index
 	}
@@ -3584,7 +3584,7 @@ var file_google_ads_googleads_v2_errors_errors_proto_goTypes = []interface{}{
 	(InvoiceErrorEnum_InvoiceError)(0),                                         // 114: google.ads.googleads.v2.errors.InvoiceErrorEnum.InvoiceError
 	(*common.PolicyViolationKey)(nil),                                          // 115: google.ads.googleads.v2.common.PolicyViolationKey
 	(*common.PolicyTopicEntry)(nil),                                            // 116: google.ads.googleads.v2.common.PolicyTopicEntry
-	(*wrappers.Int64Value)(nil),                                                // 117: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                              // 117: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v2_errors_errors_proto_depIdxs = []int32{
 	1,   // 0: google.ads.googleads.v2.errors.GoogleAdsFailure.errors:type_name -> google.ads.googleads.v2.errors.GoogleAdsError

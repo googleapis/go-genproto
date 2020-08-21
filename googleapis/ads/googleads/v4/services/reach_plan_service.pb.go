@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
@@ -35,6 +34,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -148,14 +148,14 @@ type PlannableLocation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The location identifier.
-	Id *wrappers.StringValue `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// The unique location name in english.
-	Name *wrappers.StringValue `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// The parent country code, not present if location is a country.
 	// If present will always be a criterion id: additional information, such as
 	// country name are returned both via ListPlannableLocations or directly by
 	// accessing GeoTargetConstantService with the criterion id.
-	ParentCountryId *wrappers.Int64Value `protobuf:"bytes,3,opt,name=parent_country_id,json=parentCountryId,proto3" json:"parent_country_id,omitempty"`
+	ParentCountryId *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=parent_country_id,json=parentCountryId,proto3" json:"parent_country_id,omitempty"`
 }
 
 func (x *PlannableLocation) Reset() {
@@ -190,21 +190,21 @@ func (*PlannableLocation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *PlannableLocation) GetId() *wrappers.StringValue {
+func (x *PlannableLocation) GetId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *PlannableLocation) GetName() *wrappers.StringValue {
+func (x *PlannableLocation) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *PlannableLocation) GetParentCountryId() *wrappers.Int64Value {
+func (x *PlannableLocation) GetParentCountryId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ParentCountryId
 	}
@@ -219,7 +219,7 @@ type ListPlannableProductsRequest struct {
 
 	// Required. The ID of the selected location for planning. To list the available
 	// plannable location ids use ListPlannableLocations.
-	PlannableLocationId *wrappers.StringValue `protobuf:"bytes,1,opt,name=plannable_location_id,json=plannableLocationId,proto3" json:"plannable_location_id,omitempty"`
+	PlannableLocationId *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=plannable_location_id,json=plannableLocationId,proto3" json:"plannable_location_id,omitempty"`
 }
 
 func (x *ListPlannableProductsRequest) Reset() {
@@ -254,7 +254,7 @@ func (*ListPlannableProductsRequest) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ListPlannableProductsRequest) GetPlannableLocationId() *wrappers.StringValue {
+func (x *ListPlannableProductsRequest) GetPlannableLocationId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PlannableLocationId
 	}
@@ -318,7 +318,7 @@ type ProductMetadata struct {
 
 	// The code associated with the ad product. E.g. Trueview, Bumper
 	// To list the available plannable product codes use ListPlannableProducts.
-	PlannableProductCode *wrappers.StringValue `protobuf:"bytes,1,opt,name=plannable_product_code,json=plannableProductCode,proto3" json:"plannable_product_code,omitempty"`
+	PlannableProductCode *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=plannable_product_code,json=plannableProductCode,proto3" json:"plannable_product_code,omitempty"`
 	// The allowed plannable targeting for this product.
 	PlannableTargeting *PlannableTargeting `protobuf:"bytes,2,opt,name=plannable_targeting,json=plannableTargeting,proto3" json:"plannable_targeting,omitempty"`
 }
@@ -355,7 +355,7 @@ func (*ProductMetadata) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ProductMetadata) GetPlannableProductCode() *wrappers.StringValue {
+func (x *ProductMetadata) GetPlannableProductCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PlannableProductCode
 	}
@@ -457,13 +457,13 @@ type GenerateProductMixIdeasRequest struct {
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
 	// Required. The ID of the location, this is one of the ids returned by
 	// ListPlannableLocations.
-	PlannableLocationId *wrappers.StringValue `protobuf:"bytes,2,opt,name=plannable_location_id,json=plannableLocationId,proto3" json:"plannable_location_id,omitempty"`
+	PlannableLocationId *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=plannable_location_id,json=plannableLocationId,proto3" json:"plannable_location_id,omitempty"`
 	// Required. Currency code.
 	// Three-character ISO 4217 currency code.
-	CurrencyCode *wrappers.StringValue `protobuf:"bytes,3,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
+	CurrencyCode *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
 	// Required. Total budget.
 	// Amount in micros. One million is equivalent to one unit.
-	BudgetMicros *wrappers.Int64Value `protobuf:"bytes,4,opt,name=budget_micros,json=budgetMicros,proto3" json:"budget_micros,omitempty"`
+	BudgetMicros *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=budget_micros,json=budgetMicros,proto3" json:"budget_micros,omitempty"`
 	// The preferences of the suggested product mix.
 	// An unset preference is interpreted as all possible values are allowed,
 	// unless explicitly specified.
@@ -509,21 +509,21 @@ func (x *GenerateProductMixIdeasRequest) GetCustomerId() string {
 	return ""
 }
 
-func (x *GenerateProductMixIdeasRequest) GetPlannableLocationId() *wrappers.StringValue {
+func (x *GenerateProductMixIdeasRequest) GetPlannableLocationId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PlannableLocationId
 	}
 	return nil
 }
 
-func (x *GenerateProductMixIdeasRequest) GetCurrencyCode() *wrappers.StringValue {
+func (x *GenerateProductMixIdeasRequest) GetCurrencyCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CurrencyCode
 	}
 	return nil
 }
 
-func (x *GenerateProductMixIdeasRequest) GetBudgetMicros() *wrappers.Int64Value {
+func (x *GenerateProductMixIdeasRequest) GetBudgetMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.BudgetMicros
 	}
@@ -545,20 +545,20 @@ type Preferences struct {
 
 	// True if ad skippable.
 	// If not set, default is any value.
-	IsSkippable *wrappers.BoolValue `protobuf:"bytes,1,opt,name=is_skippable,json=isSkippable,proto3" json:"is_skippable,omitempty"`
+	IsSkippable *wrapperspb.BoolValue `protobuf:"bytes,1,opt,name=is_skippable,json=isSkippable,proto3" json:"is_skippable,omitempty"`
 	// True if ad start with sound.
 	// If not set, default is any value.
-	StartsWithSound *wrappers.BoolValue `protobuf:"bytes,2,opt,name=starts_with_sound,json=startsWithSound,proto3" json:"starts_with_sound,omitempty"`
+	StartsWithSound *wrapperspb.BoolValue `protobuf:"bytes,2,opt,name=starts_with_sound,json=startsWithSound,proto3" json:"starts_with_sound,omitempty"`
 	// The length of the ad.
 	// If not set, default is any value.
 	AdLength enums.ReachPlanAdLengthEnum_ReachPlanAdLength `protobuf:"varint,3,opt,name=ad_length,json=adLength,proto3,enum=google.ads.googleads.v4.enums.ReachPlanAdLengthEnum_ReachPlanAdLength" json:"ad_length,omitempty"`
 	// True if ad will only show on the top content.
 	// If not set, default is false.
-	TopContentOnly *wrappers.BoolValue `protobuf:"bytes,4,opt,name=top_content_only,json=topContentOnly,proto3" json:"top_content_only,omitempty"`
+	TopContentOnly *wrapperspb.BoolValue `protobuf:"bytes,4,opt,name=top_content_only,json=topContentOnly,proto3" json:"top_content_only,omitempty"`
 	// True if the price guaranteed. The cost of serving the ad is agreed upfront
 	// and not subject to an auction.
 	// If not set, default is any value.
-	HasGuaranteedPrice *wrappers.BoolValue `protobuf:"bytes,5,opt,name=has_guaranteed_price,json=hasGuaranteedPrice,proto3" json:"has_guaranteed_price,omitempty"`
+	HasGuaranteedPrice *wrapperspb.BoolValue `protobuf:"bytes,5,opt,name=has_guaranteed_price,json=hasGuaranteedPrice,proto3" json:"has_guaranteed_price,omitempty"`
 }
 
 func (x *Preferences) Reset() {
@@ -593,14 +593,14 @@ func (*Preferences) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *Preferences) GetIsSkippable() *wrappers.BoolValue {
+func (x *Preferences) GetIsSkippable() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.IsSkippable
 	}
 	return nil
 }
 
-func (x *Preferences) GetStartsWithSound() *wrappers.BoolValue {
+func (x *Preferences) GetStartsWithSound() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.StartsWithSound
 	}
@@ -614,14 +614,14 @@ func (x *Preferences) GetAdLength() enums.ReachPlanAdLengthEnum_ReachPlanAdLengt
 	return enums.ReachPlanAdLengthEnum_UNSPECIFIED
 }
 
-func (x *Preferences) GetTopContentOnly() *wrappers.BoolValue {
+func (x *Preferences) GetTopContentOnly() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.TopContentOnly
 	}
 	return nil
 }
 
-func (x *Preferences) GetHasGuaranteedPrice() *wrappers.BoolValue {
+func (x *Preferences) GetHasGuaranteedPrice() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.HasGuaranteedPrice
 	}
@@ -686,10 +686,10 @@ type ProductAllocation struct {
 	// Selected product for planning. The product codes returned are within the
 	// set of the ones returned by ListPlannableProducts when using the same
 	// location id.
-	PlannableProductCode *wrappers.StringValue `protobuf:"bytes,1,opt,name=plannable_product_code,json=plannableProductCode,proto3" json:"plannable_product_code,omitempty"`
+	PlannableProductCode *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=plannable_product_code,json=plannableProductCode,proto3" json:"plannable_product_code,omitempty"`
 	// The value to be allocated for the suggested product in requested currency.
 	// Amount in micros. One million is equivalent to one unit.
-	BudgetMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=budget_micros,json=budgetMicros,proto3" json:"budget_micros,omitempty"`
+	BudgetMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=budget_micros,json=budgetMicros,proto3" json:"budget_micros,omitempty"`
 }
 
 func (x *ProductAllocation) Reset() {
@@ -724,14 +724,14 @@ func (*ProductAllocation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *ProductAllocation) GetPlannableProductCode() *wrappers.StringValue {
+func (x *ProductAllocation) GetPlannableProductCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PlannableProductCode
 	}
 	return nil
 }
 
-func (x *ProductAllocation) GetBudgetMicros() *wrappers.Int64Value {
+func (x *ProductAllocation) GetBudgetMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.BudgetMicros
 	}
@@ -748,7 +748,7 @@ type GenerateReachForecastRequest struct {
 	CustomerId string `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
 	// The currency code.
 	// Three-character ISO 4217 currency code.
-	CurrencyCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
+	CurrencyCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
 	// Required. Campaign duration.
 	CampaignDuration *CampaignDuration `protobuf:"bytes,3,opt,name=campaign_duration,json=campaignDuration,proto3" json:"campaign_duration,omitempty"`
 	// Desired cookie frequency cap that will be applied to each planned product.
@@ -759,7 +759,7 @@ type GenerateReachForecastRequest struct {
 	//
 	// This field is deprecated in v4 and will eventually be removed.
 	// Please use cookie_frequency_cap_setting instead.
-	CookieFrequencyCap *wrappers.Int32Value `protobuf:"bytes,4,opt,name=cookie_frequency_cap,json=cookieFrequencyCap,proto3" json:"cookie_frequency_cap,omitempty"`
+	CookieFrequencyCap *wrapperspb.Int32Value `protobuf:"bytes,4,opt,name=cookie_frequency_cap,json=cookieFrequencyCap,proto3" json:"cookie_frequency_cap,omitempty"`
 	// Desired cookie frequency cap that will be applied to each planned product.
 	// This is equivalent to the frequency cap exposed in Google Ads when creating
 	// a campaign, it represents the maximum number of times an ad can be shown to
@@ -772,7 +772,7 @@ type GenerateReachForecastRequest struct {
 	// exposed to the ad) for the reported reach metrics [1-10].
 	// This won't affect the targeting, but just the reporting.
 	// If not specified, a default of 1 is applied.
-	MinEffectiveFrequency *wrappers.Int32Value `protobuf:"bytes,5,opt,name=min_effective_frequency,json=minEffectiveFrequency,proto3" json:"min_effective_frequency,omitempty"`
+	MinEffectiveFrequency *wrapperspb.Int32Value `protobuf:"bytes,5,opt,name=min_effective_frequency,json=minEffectiveFrequency,proto3" json:"min_effective_frequency,omitempty"`
 	// The targeting to be applied to all products selected in the product mix.
 	//
 	// This is planned targeting: execution details might vary based on the
@@ -827,7 +827,7 @@ func (x *GenerateReachForecastRequest) GetCustomerId() string {
 	return ""
 }
 
-func (x *GenerateReachForecastRequest) GetCurrencyCode() *wrappers.StringValue {
+func (x *GenerateReachForecastRequest) GetCurrencyCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CurrencyCode
 	}
@@ -841,7 +841,7 @@ func (x *GenerateReachForecastRequest) GetCampaignDuration() *CampaignDuration {
 	return nil
 }
 
-func (x *GenerateReachForecastRequest) GetCookieFrequencyCap() *wrappers.Int32Value {
+func (x *GenerateReachForecastRequest) GetCookieFrequencyCap() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.CookieFrequencyCap
 	}
@@ -855,7 +855,7 @@ func (x *GenerateReachForecastRequest) GetCookieFrequencyCapSetting() *Frequency
 	return nil
 }
 
-func (x *GenerateReachForecastRequest) GetMinEffectiveFrequency() *wrappers.Int32Value {
+func (x *GenerateReachForecastRequest) GetMinEffectiveFrequency() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.MinEffectiveFrequency
 	}
@@ -884,7 +884,7 @@ type FrequencyCap struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The number of impressions, inclusive.
-	Impressions *wrappers.Int32Value `protobuf:"bytes,1,opt,name=impressions,proto3" json:"impressions,omitempty"`
+	Impressions *wrapperspb.Int32Value `protobuf:"bytes,1,opt,name=impressions,proto3" json:"impressions,omitempty"`
 	// Required. The type of time unit.
 	TimeUnit enums.FrequencyCapTimeUnitEnum_FrequencyCapTimeUnit `protobuf:"varint,2,opt,name=time_unit,json=timeUnit,proto3,enum=google.ads.googleads.v4.enums.FrequencyCapTimeUnitEnum_FrequencyCapTimeUnit" json:"time_unit,omitempty"`
 }
@@ -921,7 +921,7 @@ func (*FrequencyCap) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *FrequencyCap) GetImpressions() *wrappers.Int32Value {
+func (x *FrequencyCap) GetImpressions() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.Impressions
 	}
@@ -943,7 +943,7 @@ type Targeting struct {
 
 	// Required. The ID of the selected location.
 	// Plannable locations ID can be obtained from ListPlannableLocations.
-	PlannableLocationId *wrappers.StringValue `protobuf:"bytes,1,opt,name=plannable_location_id,json=plannableLocationId,proto3" json:"plannable_location_id,omitempty"`
+	PlannableLocationId *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=plannable_location_id,json=plannableLocationId,proto3" json:"plannable_location_id,omitempty"`
 	// Targeted age range.
 	// If not specified, targets all age ranges.
 	AgeRange enums.ReachPlanAgeRangeEnum_ReachPlanAgeRange `protobuf:"varint,2,opt,name=age_range,json=ageRange,proto3,enum=google.ads.googleads.v4.enums.ReachPlanAgeRangeEnum_ReachPlanAgeRange" json:"age_range,omitempty"`
@@ -992,7 +992,7 @@ func (*Targeting) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *Targeting) GetPlannableLocationId() *wrappers.StringValue {
+func (x *Targeting) GetPlannableLocationId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PlannableLocationId
 	}
@@ -1034,7 +1034,7 @@ type CampaignDuration struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The duration value in days.
-	DurationInDays *wrappers.Int32Value `protobuf:"bytes,1,opt,name=duration_in_days,json=durationInDays,proto3" json:"duration_in_days,omitempty"`
+	DurationInDays *wrapperspb.Int32Value `protobuf:"bytes,1,opt,name=duration_in_days,json=durationInDays,proto3" json:"duration_in_days,omitempty"`
 }
 
 func (x *CampaignDuration) Reset() {
@@ -1069,7 +1069,7 @@ func (*CampaignDuration) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *CampaignDuration) GetDurationInDays() *wrappers.Int32Value {
+func (x *CampaignDuration) GetDurationInDays() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.DurationInDays
 	}
@@ -1084,11 +1084,11 @@ type PlannedProduct struct {
 
 	// Required. Selected product for planning.
 	// Plannable products codes can be obtained from ListPlannableProducts.
-	PlannableProductCode *wrappers.StringValue `protobuf:"bytes,1,opt,name=plannable_product_code,json=plannableProductCode,proto3" json:"plannable_product_code,omitempty"`
+	PlannableProductCode *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=plannable_product_code,json=plannableProductCode,proto3" json:"plannable_product_code,omitempty"`
 	// Required. Maximum budget allocation in micros for the selected product.
 	// The value is specified in the selected planning currency_code.
 	// E.g. 1 000 000$ = 1 000 000 000 000 micros.
-	BudgetMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=budget_micros,json=budgetMicros,proto3" json:"budget_micros,omitempty"`
+	BudgetMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=budget_micros,json=budgetMicros,proto3" json:"budget_micros,omitempty"`
 }
 
 func (x *PlannedProduct) Reset() {
@@ -1123,14 +1123,14 @@ func (*PlannedProduct) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *PlannedProduct) GetPlannableProductCode() *wrappers.StringValue {
+func (x *PlannedProduct) GetPlannableProductCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PlannableProductCode
 	}
 	return nil
 }
 
-func (x *PlannedProduct) GetBudgetMicros() *wrappers.Int64Value {
+func (x *PlannedProduct) GetBudgetMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.BudgetMicros
 	}
@@ -1251,7 +1251,7 @@ type ReachForecast struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The cost in micros.
-	CostMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=cost_micros,json=costMicros,proto3" json:"cost_micros,omitempty"`
+	CostMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=cost_micros,json=costMicros,proto3" json:"cost_micros,omitempty"`
 	// Forecasted traffic metrics for this point.
 	Forecast *Forecast `protobuf:"bytes,2,opt,name=forecast,proto3" json:"forecast,omitempty"`
 	// The forecasted allocation. This differs from the input allocation if one
@@ -1291,7 +1291,7 @@ func (*ReachForecast) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *ReachForecast) GetCostMicros() *wrappers.Int64Value {
+func (x *ReachForecast) GetCostMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CostMicros
 	}
@@ -1321,17 +1321,17 @@ type Forecast struct {
 	// Number of unique people reached at least
 	// GenerateReachForecastRequest.min_effective_frequency times that exactly
 	// matches the Targeting.
-	OnTargetReach *wrappers.Int64Value `protobuf:"bytes,1,opt,name=on_target_reach,json=onTargetReach,proto3" json:"on_target_reach,omitempty"`
+	OnTargetReach *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=on_target_reach,json=onTargetReach,proto3" json:"on_target_reach,omitempty"`
 	// Total number of unique people reached at least
 	// GenerateReachForecastRequest.min_effective_frequency times. This includes
 	// people that may fall outside the specified Targeting.
-	TotalReach *wrappers.Int64Value `protobuf:"bytes,2,opt,name=total_reach,json=totalReach,proto3" json:"total_reach,omitempty"`
+	TotalReach *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=total_reach,json=totalReach,proto3" json:"total_reach,omitempty"`
 	// Number of ad impressions that exactly matches the Targeting.
-	OnTargetImpressions *wrappers.Int64Value `protobuf:"bytes,3,opt,name=on_target_impressions,json=onTargetImpressions,proto3" json:"on_target_impressions,omitempty"`
+	OnTargetImpressions *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=on_target_impressions,json=onTargetImpressions,proto3" json:"on_target_impressions,omitempty"`
 	// Total number of ad impressions. This includes impressions that may fall
 	// outside the specified Targeting, due to insufficient information on
 	// signed-in users.
-	TotalImpressions *wrappers.Int64Value `protobuf:"bytes,4,opt,name=total_impressions,json=totalImpressions,proto3" json:"total_impressions,omitempty"`
+	TotalImpressions *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=total_impressions,json=totalImpressions,proto3" json:"total_impressions,omitempty"`
 }
 
 func (x *Forecast) Reset() {
@@ -1366,28 +1366,28 @@ func (*Forecast) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *Forecast) GetOnTargetReach() *wrappers.Int64Value {
+func (x *Forecast) GetOnTargetReach() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.OnTargetReach
 	}
 	return nil
 }
 
-func (x *Forecast) GetTotalReach() *wrappers.Int64Value {
+func (x *Forecast) GetTotalReach() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TotalReach
 	}
 	return nil
 }
 
-func (x *Forecast) GetOnTargetImpressions() *wrappers.Int64Value {
+func (x *Forecast) GetOnTargetImpressions() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.OnTargetImpressions
 	}
 	return nil
 }
 
-func (x *Forecast) GetTotalImpressions() *wrappers.Int64Value {
+func (x *Forecast) GetTotalImpressions() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TotalImpressions
 	}
@@ -1406,9 +1406,9 @@ type OnTargetAudienceMetrics struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Reference audience size matching the considered targeting for YouTube.
-	YoutubeAudienceSize *wrappers.Int64Value `protobuf:"bytes,1,opt,name=youtube_audience_size,json=youtubeAudienceSize,proto3" json:"youtube_audience_size,omitempty"`
+	YoutubeAudienceSize *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=youtube_audience_size,json=youtubeAudienceSize,proto3" json:"youtube_audience_size,omitempty"`
 	// Reference audience size matching the considered targeting for Census.
-	CensusAudienceSize *wrappers.Int64Value `protobuf:"bytes,2,opt,name=census_audience_size,json=censusAudienceSize,proto3" json:"census_audience_size,omitempty"`
+	CensusAudienceSize *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=census_audience_size,json=censusAudienceSize,proto3" json:"census_audience_size,omitempty"`
 }
 
 func (x *OnTargetAudienceMetrics) Reset() {
@@ -1443,14 +1443,14 @@ func (*OnTargetAudienceMetrics) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_reach_plan_service_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *OnTargetAudienceMetrics) GetYoutubeAudienceSize() *wrappers.Int64Value {
+func (x *OnTargetAudienceMetrics) GetYoutubeAudienceSize() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.YoutubeAudienceSize
 	}
 	return nil
 }
 
-func (x *OnTargetAudienceMetrics) GetCensusAudienceSize() *wrappers.Int64Value {
+func (x *OnTargetAudienceMetrics) GetCensusAudienceSize() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CensusAudienceSize
 	}
@@ -1918,15 +1918,15 @@ var file_google_ads_googleads_v4_services_reach_plan_service_proto_goTypes = []i
 	(*ReachForecast)(nil),                                    // 18: google.ads.googleads.v4.services.ReachForecast
 	(*Forecast)(nil),                                         // 19: google.ads.googleads.v4.services.Forecast
 	(*OnTargetAudienceMetrics)(nil),                          // 20: google.ads.googleads.v4.services.OnTargetAudienceMetrics
-	(*wrappers.StringValue)(nil),                             // 21: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                              // 22: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                           // 21: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                            // 22: google.protobuf.Int64Value
 	(enums.ReachPlanAgeRangeEnum_ReachPlanAgeRange)(0),       // 23: google.ads.googleads.v4.enums.ReachPlanAgeRangeEnum.ReachPlanAgeRange
 	(*common.GenderInfo)(nil),                                // 24: google.ads.googleads.v4.common.GenderInfo
 	(*common.DeviceInfo)(nil),                                // 25: google.ads.googleads.v4.common.DeviceInfo
 	(enums.ReachPlanNetworkEnum_ReachPlanNetwork)(0),         // 26: google.ads.googleads.v4.enums.ReachPlanNetworkEnum.ReachPlanNetwork
-	(*wrappers.BoolValue)(nil),                               // 27: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                             // 27: google.protobuf.BoolValue
 	(enums.ReachPlanAdLengthEnum_ReachPlanAdLength)(0),       // 28: google.ads.googleads.v4.enums.ReachPlanAdLengthEnum.ReachPlanAdLength
-	(*wrappers.Int32Value)(nil),                              // 29: google.protobuf.Int32Value
+	(*wrapperspb.Int32Value)(nil),                            // 29: google.protobuf.Int32Value
 	(enums.FrequencyCapTimeUnitEnum_FrequencyCapTimeUnit)(0), // 30: google.ads.googleads.v4.enums.FrequencyCapTimeUnitEnum.FrequencyCapTimeUnit
 }
 var file_google_ads_googleads_v4_services_reach_plan_service_proto_depIdxs = []int32{

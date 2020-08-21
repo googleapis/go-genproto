@@ -26,11 +26,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -211,7 +211,7 @@ type ImportDataOperationMetadata struct {
 	// Status details field will contain standard GCP error details.
 	PartialFailures []*status.Status `protobuf:"bytes,2,rep,name=partial_failures,json=partialFailures,proto3" json:"partial_failures,omitempty"`
 	// Output only. Timestamp when import dataset request was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 }
 
 func (x *ImportDataOperationMetadata) Reset() {
@@ -260,7 +260,7 @@ func (x *ImportDataOperationMetadata) GetPartialFailures() []*status.Status {
 	return nil
 }
 
-func (x *ImportDataOperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *ImportDataOperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -281,7 +281,7 @@ type ExportDataOperationMetadata struct {
 	// Status details field will contain standard GCP error details.
 	PartialFailures []*status.Status `protobuf:"bytes,2,rep,name=partial_failures,json=partialFailures,proto3" json:"partial_failures,omitempty"`
 	// Output only. Timestamp when export dataset request was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 }
 
 func (x *ExportDataOperationMetadata) Reset() {
@@ -330,7 +330,7 @@ func (x *ExportDataOperationMetadata) GetPartialFailures() []*status.Status {
 	return nil
 }
 
-func (x *ExportDataOperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *ExportDataOperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -367,7 +367,7 @@ type LabelOperationMetadata struct {
 	// Status details field will contain standard GCP error details.
 	PartialFailures []*status.Status `protobuf:"bytes,2,rep,name=partial_failures,json=partialFailures,proto3" json:"partial_failures,omitempty"`
 	// Output only. Timestamp when labeling request was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,16,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 }
 
 func (x *LabelOperationMetadata) Reset() {
@@ -507,7 +507,7 @@ func (x *LabelOperationMetadata) GetPartialFailures() []*status.Status {
 	return nil
 }
 
-func (x *LabelOperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *LabelOperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1204,7 +1204,7 @@ type CreateInstructionMetadata struct {
 	// Status details field will contain standard GCP error details.
 	PartialFailures []*status.Status `protobuf:"bytes,2,rep,name=partial_failures,json=partialFailures,proto3" json:"partial_failures,omitempty"`
 	// Timestamp when create instruction request was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 }
 
 func (x *CreateInstructionMetadata) Reset() {
@@ -1253,7 +1253,7 @@ func (x *CreateInstructionMetadata) GetPartialFailures() []*status.Status {
 	return nil
 }
 
-func (x *CreateInstructionMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *CreateInstructionMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1612,7 +1612,7 @@ var file_google_cloud_datalabeling_v1beta1_operations_proto_goTypes = []interfac
 	(*LabelStats)(nil),                                     // 18: google.cloud.datalabeling.v1beta1.LabelStats
 	(*OutputConfig)(nil),                                   // 19: google.cloud.datalabeling.v1beta1.OutputConfig
 	(*status.Status)(nil),                                  // 20: google.rpc.Status
-	(*timestamp.Timestamp)(nil),                            // 21: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                          // 21: google.protobuf.Timestamp
 	(*HumanAnnotationConfig)(nil),                          // 22: google.cloud.datalabeling.v1beta1.HumanAnnotationConfig
 }
 var file_google_cloud_datalabeling_v1beta1_operations_proto_depIdxs = []int32{

@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -188,14 +188,14 @@ func (m *KeyRange) GetStartKeyType() isKeyRange_StartKeyType {
 	return nil
 }
 
-func (x *KeyRange) GetStartClosed() *_struct.ListValue {
+func (x *KeyRange) GetStartClosed() *structpb.ListValue {
 	if x, ok := x.GetStartKeyType().(*KeyRange_StartClosed); ok {
 		return x.StartClosed
 	}
 	return nil
 }
 
-func (x *KeyRange) GetStartOpen() *_struct.ListValue {
+func (x *KeyRange) GetStartOpen() *structpb.ListValue {
 	if x, ok := x.GetStartKeyType().(*KeyRange_StartOpen); ok {
 		return x.StartOpen
 	}
@@ -209,14 +209,14 @@ func (m *KeyRange) GetEndKeyType() isKeyRange_EndKeyType {
 	return nil
 }
 
-func (x *KeyRange) GetEndClosed() *_struct.ListValue {
+func (x *KeyRange) GetEndClosed() *structpb.ListValue {
 	if x, ok := x.GetEndKeyType().(*KeyRange_EndClosed); ok {
 		return x.EndClosed
 	}
 	return nil
 }
 
-func (x *KeyRange) GetEndOpen() *_struct.ListValue {
+func (x *KeyRange) GetEndOpen() *structpb.ListValue {
 	if x, ok := x.GetEndKeyType().(*KeyRange_EndOpen); ok {
 		return x.EndOpen
 	}
@@ -230,13 +230,13 @@ type isKeyRange_StartKeyType interface {
 type KeyRange_StartClosed struct {
 	// If the start is closed, then the range includes all rows whose
 	// first `len(start_closed)` key columns exactly match `start_closed`.
-	StartClosed *_struct.ListValue `protobuf:"bytes,1,opt,name=start_closed,json=startClosed,proto3,oneof"`
+	StartClosed *structpb.ListValue `protobuf:"bytes,1,opt,name=start_closed,json=startClosed,proto3,oneof"`
 }
 
 type KeyRange_StartOpen struct {
 	// If the start is open, then the range excludes rows whose first
 	// `len(start_open)` key columns exactly match `start_open`.
-	StartOpen *_struct.ListValue `protobuf:"bytes,2,opt,name=start_open,json=startOpen,proto3,oneof"`
+	StartOpen *structpb.ListValue `protobuf:"bytes,2,opt,name=start_open,json=startOpen,proto3,oneof"`
 }
 
 func (*KeyRange_StartClosed) isKeyRange_StartKeyType() {}
@@ -250,13 +250,13 @@ type isKeyRange_EndKeyType interface {
 type KeyRange_EndClosed struct {
 	// If the end is closed, then the range includes all rows whose
 	// first `len(end_closed)` key columns exactly match `end_closed`.
-	EndClosed *_struct.ListValue `protobuf:"bytes,3,opt,name=end_closed,json=endClosed,proto3,oneof"`
+	EndClosed *structpb.ListValue `protobuf:"bytes,3,opt,name=end_closed,json=endClosed,proto3,oneof"`
 }
 
 type KeyRange_EndOpen struct {
 	// If the end is open, then the range excludes rows whose first
 	// `len(end_open)` key columns exactly match `end_open`.
-	EndOpen *_struct.ListValue `protobuf:"bytes,4,opt,name=end_open,json=endOpen,proto3,oneof"`
+	EndOpen *structpb.ListValue `protobuf:"bytes,4,opt,name=end_open,json=endOpen,proto3,oneof"`
 }
 
 func (*KeyRange_EndClosed) isKeyRange_EndKeyType() {}
@@ -279,7 +279,7 @@ type KeySet struct {
 	// many elements as there are columns in the primary or index key
 	// with which this `KeySet` is used.  Individual key values are
 	// encoded as described [here][google.spanner.v1.TypeCode].
-	Keys []*_struct.ListValue `protobuf:"bytes,1,rep,name=keys,proto3" json:"keys,omitempty"`
+	Keys []*structpb.ListValue `protobuf:"bytes,1,rep,name=keys,proto3" json:"keys,omitempty"`
 	// A list of key ranges. See [KeyRange][google.spanner.v1.KeyRange] for more information about
 	// key range specifications.
 	Ranges []*KeyRange `protobuf:"bytes,2,rep,name=ranges,proto3" json:"ranges,omitempty"`
@@ -321,7 +321,7 @@ func (*KeySet) Descriptor() ([]byte, []int) {
 	return file_google_spanner_v1_keys_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *KeySet) GetKeys() []*_struct.ListValue {
+func (x *KeySet) GetKeys() []*structpb.ListValue {
 	if x != nil {
 		return x.Keys
 	}
@@ -406,9 +406,9 @@ func file_google_spanner_v1_keys_proto_rawDescGZIP() []byte {
 
 var file_google_spanner_v1_keys_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_google_spanner_v1_keys_proto_goTypes = []interface{}{
-	(*KeyRange)(nil),          // 0: google.spanner.v1.KeyRange
-	(*KeySet)(nil),            // 1: google.spanner.v1.KeySet
-	(*_struct.ListValue)(nil), // 2: google.protobuf.ListValue
+	(*KeyRange)(nil),           // 0: google.spanner.v1.KeyRange
+	(*KeySet)(nil),             // 1: google.spanner.v1.KeySet
+	(*structpb.ListValue)(nil), // 2: google.protobuf.ListValue
 }
 var file_google_spanner_v1_keys_proto_depIdxs = []int32{
 	2, // 0: google.spanner.v1.KeyRange.start_closed:type_name -> google.protobuf.ListValue

@@ -27,14 +27,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -292,7 +292,7 @@ type UpdateScanConfigRequest struct {
 	// Required. The update mask applies to the resource. For the `FieldMask` definition,
 	// see
 	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateScanConfigRequest) Reset() {
@@ -334,7 +334,7 @@ func (x *UpdateScanConfigRequest) GetScanConfig() *ScanConfig {
 	return nil
 }
 
-func (x *UpdateScanConfigRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateScanConfigRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1530,12 +1530,12 @@ var file_google_cloud_websecurityscanner_v1alpha_web_security_scanner_proto_goTy
 	(*ListFindingTypeStatsRequest)(nil),  // 16: google.cloud.websecurityscanner.v1alpha.ListFindingTypeStatsRequest
 	(*ListFindingTypeStatsResponse)(nil), // 17: google.cloud.websecurityscanner.v1alpha.ListFindingTypeStatsResponse
 	(*ScanConfig)(nil),                   // 18: google.cloud.websecurityscanner.v1alpha.ScanConfig
-	(*field_mask.FieldMask)(nil),         // 19: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),        // 19: google.protobuf.FieldMask
 	(*ScanRun)(nil),                      // 20: google.cloud.websecurityscanner.v1alpha.ScanRun
 	(*CrawledUrl)(nil),                   // 21: google.cloud.websecurityscanner.v1alpha.CrawledUrl
 	(*Finding)(nil),                      // 22: google.cloud.websecurityscanner.v1alpha.Finding
 	(*FindingTypeStats)(nil),             // 23: google.cloud.websecurityscanner.v1alpha.FindingTypeStats
-	(*empty.Empty)(nil),                  // 24: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                // 24: google.protobuf.Empty
 }
 var file_google_cloud_websecurityscanner_v1alpha_web_security_scanner_proto_depIdxs = []int32{
 	18, // 0: google.cloud.websecurityscanner.v1alpha.CreateScanConfigRequest.scan_config:type_name -> google.cloud.websecurityscanner.v1alpha.ScanConfig
@@ -1842,7 +1842,7 @@ type WebSecurityScannerClient interface {
 	// Creates a new ScanConfig.
 	CreateScanConfig(ctx context.Context, in *CreateScanConfigRequest, opts ...grpc.CallOption) (*ScanConfig, error)
 	// Deletes an existing ScanConfig and its child resources.
-	DeleteScanConfig(ctx context.Context, in *DeleteScanConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteScanConfig(ctx context.Context, in *DeleteScanConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets a ScanConfig.
 	GetScanConfig(ctx context.Context, in *GetScanConfigRequest, opts ...grpc.CallOption) (*ScanConfig, error)
 	// Lists ScanConfigs under a given project.
@@ -1885,8 +1885,8 @@ func (c *webSecurityScannerClient) CreateScanConfig(ctx context.Context, in *Cre
 	return out, nil
 }
 
-func (c *webSecurityScannerClient) DeleteScanConfig(ctx context.Context, in *DeleteScanConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *webSecurityScannerClient) DeleteScanConfig(ctx context.Context, in *DeleteScanConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.websecurityscanner.v1alpha.WebSecurityScanner/DeleteScanConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1998,7 +1998,7 @@ type WebSecurityScannerServer interface {
 	// Creates a new ScanConfig.
 	CreateScanConfig(context.Context, *CreateScanConfigRequest) (*ScanConfig, error)
 	// Deletes an existing ScanConfig and its child resources.
-	DeleteScanConfig(context.Context, *DeleteScanConfigRequest) (*empty.Empty, error)
+	DeleteScanConfig(context.Context, *DeleteScanConfigRequest) (*emptypb.Empty, error)
 	// Gets a ScanConfig.
 	GetScanConfig(context.Context, *GetScanConfigRequest) (*ScanConfig, error)
 	// Lists ScanConfigs under a given project.
@@ -2031,7 +2031,7 @@ type UnimplementedWebSecurityScannerServer struct {
 func (*UnimplementedWebSecurityScannerServer) CreateScanConfig(context.Context, *CreateScanConfigRequest) (*ScanConfig, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateScanConfig not implemented")
 }
-func (*UnimplementedWebSecurityScannerServer) DeleteScanConfig(context.Context, *DeleteScanConfigRequest) (*empty.Empty, error) {
+func (*UnimplementedWebSecurityScannerServer) DeleteScanConfig(context.Context, *DeleteScanConfigRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteScanConfig not implemented")
 }
 func (*UnimplementedWebSecurityScannerServer) GetScanConfig(context.Context, *GetScanConfigRequest) (*ScanConfig, error) {

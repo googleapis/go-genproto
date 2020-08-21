@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -289,12 +289,12 @@ type ScheduleOptions struct {
 	// defined in the schedule string. The start time can be changed at any
 	// moment. The time when a data transfer can be trigerred manually is not
 	// limited by this option.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Defines time to stop scheduling transfer runs. A transfer run cannot be
 	// scheduled at or after the end time. The end time can be changed at any
 	// moment. The time when a data transfer can be trigerred manually is not
 	// limited by this option.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *ScheduleOptions) Reset() {
@@ -336,14 +336,14 @@ func (x *ScheduleOptions) GetDisableAutoScheduling() bool {
 	return false
 }
 
-func (x *ScheduleOptions) GetStartTime() *timestamp.Timestamp {
+func (x *ScheduleOptions) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *ScheduleOptions) GetEndTime() *timestamp.Timestamp {
+func (x *ScheduleOptions) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -379,7 +379,7 @@ type TransferConfig struct {
 	// Data source id. Cannot be changed once data transfer is created.
 	DataSourceId string `protobuf:"bytes,5,opt,name=data_source_id,json=dataSourceId,proto3" json:"data_source_id,omitempty"`
 	// Data transfer specific parameters.
-	Params *_struct.Struct `protobuf:"bytes,9,opt,name=params,proto3" json:"params,omitempty"`
+	Params *structpb.Struct `protobuf:"bytes,9,opt,name=params,proto3" json:"params,omitempty"`
 	// Data transfer schedule.
 	// If the data source does not support a custom schedule, this should be
 	// empty. If it is empty, the default value for the data source will be
@@ -406,9 +406,9 @@ type TransferConfig struct {
 	// for a given transfer.
 	Disabled bool `protobuf:"varint,13,opt,name=disabled,proto3" json:"disabled,omitempty"`
 	// Output only. Data transfer modification time. Ignored by server on input.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. Next time when data transfer will run.
-	NextRunTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=next_run_time,json=nextRunTime,proto3" json:"next_run_time,omitempty"`
+	NextRunTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=next_run_time,json=nextRunTime,proto3" json:"next_run_time,omitempty"`
 	// Output only. State of the most recently updated transfer run.
 	State TransferState `protobuf:"varint,10,opt,name=state,proto3,enum=google.cloud.bigquery.datatransfer.v1.TransferState" json:"state,omitempty"`
 	// Deprecated. Unique ID of the user on whose behalf transfer is done.
@@ -490,7 +490,7 @@ func (x *TransferConfig) GetDataSourceId() string {
 	return ""
 }
 
-func (x *TransferConfig) GetParams() *_struct.Struct {
+func (x *TransferConfig) GetParams() *structpb.Struct {
 	if x != nil {
 		return x.Params
 	}
@@ -525,14 +525,14 @@ func (x *TransferConfig) GetDisabled() bool {
 	return false
 }
 
-func (x *TransferConfig) GetUpdateTime() *timestamp.Timestamp {
+func (x *TransferConfig) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
 	return nil
 }
 
-func (x *TransferConfig) GetNextRunTime() *timestamp.Timestamp {
+func (x *TransferConfig) GetNextRunTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.NextRunTime
 	}
@@ -597,22 +597,22 @@ type TransferRun struct {
 	// The name is ignored when creating a transfer run.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Minimum time after which a transfer run can be started.
-	ScheduleTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
+	ScheduleTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=schedule_time,json=scheduleTime,proto3" json:"schedule_time,omitempty"`
 	// For batch transfer runs, specifies the date and time of the data should be
 	// ingested.
-	RunTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=run_time,json=runTime,proto3" json:"run_time,omitempty"`
+	RunTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=run_time,json=runTime,proto3" json:"run_time,omitempty"`
 	// Status of the transfer run.
 	ErrorStatus *status.Status `protobuf:"bytes,21,opt,name=error_status,json=errorStatus,proto3" json:"error_status,omitempty"`
 	// Output only. Time when transfer run was started.
 	// Parameter ignored by server for input requests.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Output only. Time when transfer run ended.
 	// Parameter ignored by server for input requests.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Output only. Last time the data transfer run state was updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. Data transfer specific parameters.
-	Params *_struct.Struct `protobuf:"bytes,9,opt,name=params,proto3" json:"params,omitempty"`
+	Params *structpb.Struct `protobuf:"bytes,9,opt,name=params,proto3" json:"params,omitempty"`
 	// Data transfer destination.
 	//
 	// Types that are assignable to Destination:
@@ -678,14 +678,14 @@ func (x *TransferRun) GetName() string {
 	return ""
 }
 
-func (x *TransferRun) GetScheduleTime() *timestamp.Timestamp {
+func (x *TransferRun) GetScheduleTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ScheduleTime
 	}
 	return nil
 }
 
-func (x *TransferRun) GetRunTime() *timestamp.Timestamp {
+func (x *TransferRun) GetRunTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.RunTime
 	}
@@ -699,28 +699,28 @@ func (x *TransferRun) GetErrorStatus() *status.Status {
 	return nil
 }
 
-func (x *TransferRun) GetStartTime() *timestamp.Timestamp {
+func (x *TransferRun) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *TransferRun) GetEndTime() *timestamp.Timestamp {
+func (x *TransferRun) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
 	return nil
 }
 
-func (x *TransferRun) GetUpdateTime() *timestamp.Timestamp {
+func (x *TransferRun) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
 	return nil
 }
 
-func (x *TransferRun) GetParams() *_struct.Struct {
+func (x *TransferRun) GetParams() *structpb.Struct {
 	if x != nil {
 		return x.Params
 	}
@@ -801,7 +801,7 @@ type TransferMessage struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Time when message was logged.
-	MessageTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=message_time,json=messageTime,proto3" json:"message_time,omitempty"`
+	MessageTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=message_time,json=messageTime,proto3" json:"message_time,omitempty"`
 	// Message severity.
 	Severity TransferMessage_MessageSeverity `protobuf:"varint,2,opt,name=severity,proto3,enum=google.cloud.bigquery.datatransfer.v1.TransferMessage_MessageSeverity" json:"severity,omitempty"`
 	// Message text.
@@ -840,7 +840,7 @@ func (*TransferMessage) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_datatransfer_v1_transfer_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *TransferMessage) GetMessageTime() *timestamp.Timestamp {
+func (x *TransferMessage) GetMessageTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.MessageTime
 	}
@@ -1105,8 +1105,8 @@ var file_google_cloud_bigquery_datatransfer_v1_transfer_proto_goTypes = []interf
 	(*TransferConfig)(nil),               // 5: google.cloud.bigquery.datatransfer.v1.TransferConfig
 	(*TransferRun)(nil),                  // 6: google.cloud.bigquery.datatransfer.v1.TransferRun
 	(*TransferMessage)(nil),              // 7: google.cloud.bigquery.datatransfer.v1.TransferMessage
-	(*timestamp.Timestamp)(nil),          // 8: google.protobuf.Timestamp
-	(*_struct.Struct)(nil),               // 9: google.protobuf.Struct
+	(*timestamppb.Timestamp)(nil),        // 8: google.protobuf.Timestamp
+	(*structpb.Struct)(nil),              // 9: google.protobuf.Struct
 	(*status.Status)(nil),                // 10: google.rpc.Status
 }
 var file_google_cloud_bigquery_datatransfer_v1_transfer_proto_depIdxs = []int32{

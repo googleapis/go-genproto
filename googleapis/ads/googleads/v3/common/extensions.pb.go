@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -52,26 +52,26 @@ type AppFeedItem struct {
 	// The visible text displayed when the link is rendered in an ad.
 	// This string must not be empty, and the length of this string should
 	// be between 1 and 25, inclusive.
-	LinkText *wrappers.StringValue `protobuf:"bytes,1,opt,name=link_text,json=linkText,proto3" json:"link_text,omitempty"`
+	LinkText *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=link_text,json=linkText,proto3" json:"link_text,omitempty"`
 	// The store-specific ID for the target application.
 	// This string must not be empty.
-	AppId *wrappers.StringValue `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppId *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 	// The application store that the target application belongs to.
 	// This field is required.
 	AppStore enums.AppStoreEnum_AppStore `protobuf:"varint,3,opt,name=app_store,json=appStore,proto3,enum=google.ads.googleads.v3.enums.AppStoreEnum_AppStore" json:"app_store,omitempty"`
 	// A list of possible final URLs after all cross domain redirects.
 	// This list must not be empty.
-	FinalUrls []*wrappers.StringValue `protobuf:"bytes,4,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
+	FinalUrls []*wrapperspb.StringValue `protobuf:"bytes,4,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
 	// A list of possible final mobile URLs after all cross domain redirects.
-	FinalMobileUrls []*wrappers.StringValue `protobuf:"bytes,5,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
+	FinalMobileUrls []*wrapperspb.StringValue `protobuf:"bytes,5,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
 	// URL template for constructing a tracking URL. Default value is "{lpurl}".
-	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,6,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
+	TrackingUrlTemplate *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 	// A list of mappings to be used for substituting URL custom parameter tags in
 	// the tracking_url_template, final_urls, and/or final_mobile_urls.
 	UrlCustomParameters []*CustomParameter `protobuf:"bytes,7,rep,name=url_custom_parameters,json=urlCustomParameters,proto3" json:"url_custom_parameters,omitempty"`
 	// URL template for appending params to landing page URLs served with parallel
 	// tracking.
-	FinalUrlSuffix *wrappers.StringValue `protobuf:"bytes,8,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
+	FinalUrlSuffix *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
 }
 
 func (x *AppFeedItem) Reset() {
@@ -106,14 +106,14 @@ func (*AppFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AppFeedItem) GetLinkText() *wrappers.StringValue {
+func (x *AppFeedItem) GetLinkText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LinkText
 	}
 	return nil
 }
 
-func (x *AppFeedItem) GetAppId() *wrappers.StringValue {
+func (x *AppFeedItem) GetAppId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AppId
 	}
@@ -127,21 +127,21 @@ func (x *AppFeedItem) GetAppStore() enums.AppStoreEnum_AppStore {
 	return enums.AppStoreEnum_UNSPECIFIED
 }
 
-func (x *AppFeedItem) GetFinalUrls() []*wrappers.StringValue {
+func (x *AppFeedItem) GetFinalUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrls
 	}
 	return nil
 }
 
-func (x *AppFeedItem) GetFinalMobileUrls() []*wrappers.StringValue {
+func (x *AppFeedItem) GetFinalMobileUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalMobileUrls
 	}
 	return nil
 }
 
-func (x *AppFeedItem) GetTrackingUrlTemplate() *wrappers.StringValue {
+func (x *AppFeedItem) GetTrackingUrlTemplate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrlTemplate
 	}
@@ -155,7 +155,7 @@ func (x *AppFeedItem) GetUrlCustomParameters() []*CustomParameter {
 	return nil
 }
 
-func (x *AppFeedItem) GetFinalUrlSuffix() *wrappers.StringValue {
+func (x *AppFeedItem) GetFinalUrlSuffix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrlSuffix
 	}
@@ -170,20 +170,20 @@ type CallFeedItem struct {
 
 	// The advertiser's phone number to append to the ad.
 	// This string must not be empty.
-	PhoneNumber *wrappers.StringValue `protobuf:"bytes,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	PhoneNumber *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
 	// Uppercase two-letter country code of the advertiser's phone number.
 	// This string must not be empty.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// Indicates whether call tracking is enabled. By default, call tracking is
 	// not enabled.
-	CallTrackingEnabled *wrappers.BoolValue `protobuf:"bytes,3,opt,name=call_tracking_enabled,json=callTrackingEnabled,proto3" json:"call_tracking_enabled,omitempty"`
+	CallTrackingEnabled *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=call_tracking_enabled,json=callTrackingEnabled,proto3" json:"call_tracking_enabled,omitempty"`
 	// The conversion action to attribute a call conversion to. If not set a
 	// default conversion action is used. This field only has effect if
 	// call_tracking_enabled is set to true. Otherwise this field is ignored.
-	CallConversionAction *wrappers.StringValue `protobuf:"bytes,4,opt,name=call_conversion_action,json=callConversionAction,proto3" json:"call_conversion_action,omitempty"`
+	CallConversionAction *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=call_conversion_action,json=callConversionAction,proto3" json:"call_conversion_action,omitempty"`
 	// If true, disable call conversion tracking. call_conversion_action should
 	// not be set if this is true. Optional.
-	CallConversionTrackingDisabled *wrappers.BoolValue `protobuf:"bytes,5,opt,name=call_conversion_tracking_disabled,json=callConversionTrackingDisabled,proto3" json:"call_conversion_tracking_disabled,omitempty"`
+	CallConversionTrackingDisabled *wrapperspb.BoolValue `protobuf:"bytes,5,opt,name=call_conversion_tracking_disabled,json=callConversionTrackingDisabled,proto3" json:"call_conversion_tracking_disabled,omitempty"`
 	// Enum value that indicates whether this call extension uses its own call
 	// conversion setting (or just have call conversion disabled), or following
 	// the account level setting.
@@ -222,35 +222,35 @@ func (*CallFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CallFeedItem) GetPhoneNumber() *wrappers.StringValue {
+func (x *CallFeedItem) GetPhoneNumber() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PhoneNumber
 	}
 	return nil
 }
 
-func (x *CallFeedItem) GetCountryCode() *wrappers.StringValue {
+func (x *CallFeedItem) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
 	return nil
 }
 
-func (x *CallFeedItem) GetCallTrackingEnabled() *wrappers.BoolValue {
+func (x *CallFeedItem) GetCallTrackingEnabled() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.CallTrackingEnabled
 	}
 	return nil
 }
 
-func (x *CallFeedItem) GetCallConversionAction() *wrappers.StringValue {
+func (x *CallFeedItem) GetCallConversionAction() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CallConversionAction
 	}
 	return nil
 }
 
-func (x *CallFeedItem) GetCallConversionTrackingDisabled() *wrappers.BoolValue {
+func (x *CallFeedItem) GetCallConversionTrackingDisabled() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.CallConversionTrackingDisabled
 	}
@@ -272,7 +272,7 @@ type CalloutFeedItem struct {
 
 	// The callout text.
 	// The length of this string should be between 1 and 25, inclusive.
-	CalloutText *wrappers.StringValue `protobuf:"bytes,1,opt,name=callout_text,json=calloutText,proto3" json:"callout_text,omitempty"`
+	CalloutText *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=callout_text,json=calloutText,proto3" json:"callout_text,omitempty"`
 }
 
 func (x *CalloutFeedItem) Reset() {
@@ -307,7 +307,7 @@ func (*CalloutFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CalloutFeedItem) GetCalloutText() *wrappers.StringValue {
+func (x *CalloutFeedItem) GetCalloutText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CalloutText
 	}
@@ -321,21 +321,21 @@ type LocationFeedItem struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The name of the business.
-	BusinessName *wrappers.StringValue `protobuf:"bytes,1,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
+	BusinessName *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
 	// Line 1 of the business address.
-	AddressLine_1 *wrappers.StringValue `protobuf:"bytes,2,opt,name=address_line_1,json=addressLine1,proto3" json:"address_line_1,omitempty"`
+	AddressLine_1 *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=address_line_1,json=addressLine1,proto3" json:"address_line_1,omitempty"`
 	// Line 2 of the business address.
-	AddressLine_2 *wrappers.StringValue `protobuf:"bytes,3,opt,name=address_line_2,json=addressLine2,proto3" json:"address_line_2,omitempty"`
+	AddressLine_2 *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=address_line_2,json=addressLine2,proto3" json:"address_line_2,omitempty"`
 	// City of the business address.
-	City *wrappers.StringValue `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
+	City *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
 	// Province of the business address.
-	Province *wrappers.StringValue `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
+	Province *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
 	// Postal code of the business address.
-	PostalCode *wrappers.StringValue `protobuf:"bytes,6,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	PostalCode *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
 	// Country code of the business address.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,7,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// Phone number of the business.
-	PhoneNumber *wrappers.StringValue `protobuf:"bytes,8,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	PhoneNumber *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
 }
 
 func (x *LocationFeedItem) Reset() {
@@ -370,56 +370,56 @@ func (*LocationFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *LocationFeedItem) GetBusinessName() *wrappers.StringValue {
+func (x *LocationFeedItem) GetBusinessName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BusinessName
 	}
 	return nil
 }
 
-func (x *LocationFeedItem) GetAddressLine_1() *wrappers.StringValue {
+func (x *LocationFeedItem) GetAddressLine_1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AddressLine_1
 	}
 	return nil
 }
 
-func (x *LocationFeedItem) GetAddressLine_2() *wrappers.StringValue {
+func (x *LocationFeedItem) GetAddressLine_2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AddressLine_2
 	}
 	return nil
 }
 
-func (x *LocationFeedItem) GetCity() *wrappers.StringValue {
+func (x *LocationFeedItem) GetCity() *wrapperspb.StringValue {
 	if x != nil {
 		return x.City
 	}
 	return nil
 }
 
-func (x *LocationFeedItem) GetProvince() *wrappers.StringValue {
+func (x *LocationFeedItem) GetProvince() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Province
 	}
 	return nil
 }
 
-func (x *LocationFeedItem) GetPostalCode() *wrappers.StringValue {
+func (x *LocationFeedItem) GetPostalCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PostalCode
 	}
 	return nil
 }
 
-func (x *LocationFeedItem) GetCountryCode() *wrappers.StringValue {
+func (x *LocationFeedItem) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
 	return nil
 }
 
-func (x *LocationFeedItem) GetPhoneNumber() *wrappers.StringValue {
+func (x *LocationFeedItem) GetPhoneNumber() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PhoneNumber
 	}
@@ -433,25 +433,25 @@ type AffiliateLocationFeedItem struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The name of the business.
-	BusinessName *wrappers.StringValue `protobuf:"bytes,1,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
+	BusinessName *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
 	// Line 1 of the business address.
-	AddressLine_1 *wrappers.StringValue `protobuf:"bytes,2,opt,name=address_line_1,json=addressLine1,proto3" json:"address_line_1,omitempty"`
+	AddressLine_1 *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=address_line_1,json=addressLine1,proto3" json:"address_line_1,omitempty"`
 	// Line 2 of the business address.
-	AddressLine_2 *wrappers.StringValue `protobuf:"bytes,3,opt,name=address_line_2,json=addressLine2,proto3" json:"address_line_2,omitempty"`
+	AddressLine_2 *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=address_line_2,json=addressLine2,proto3" json:"address_line_2,omitempty"`
 	// City of the business address.
-	City *wrappers.StringValue `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
+	City *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=city,proto3" json:"city,omitempty"`
 	// Province of the business address.
-	Province *wrappers.StringValue `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
+	Province *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=province,proto3" json:"province,omitempty"`
 	// Postal code of the business address.
-	PostalCode *wrappers.StringValue `protobuf:"bytes,6,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	PostalCode *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
 	// Country code of the business address.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,7,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// Phone number of the business.
-	PhoneNumber *wrappers.StringValue `protobuf:"bytes,8,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	PhoneNumber *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
 	// Id of the retail chain that is advertised as a seller of your product.
-	ChainId *wrappers.Int64Value `protobuf:"bytes,9,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	ChainId *wrapperspb.Int64Value `protobuf:"bytes,9,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
 	// Name of chain.
-	ChainName *wrappers.StringValue `protobuf:"bytes,10,opt,name=chain_name,json=chainName,proto3" json:"chain_name,omitempty"`
+	ChainName *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=chain_name,json=chainName,proto3" json:"chain_name,omitempty"`
 }
 
 func (x *AffiliateLocationFeedItem) Reset() {
@@ -486,70 +486,70 @@ func (*AffiliateLocationFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *AffiliateLocationFeedItem) GetBusinessName() *wrappers.StringValue {
+func (x *AffiliateLocationFeedItem) GetBusinessName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BusinessName
 	}
 	return nil
 }
 
-func (x *AffiliateLocationFeedItem) GetAddressLine_1() *wrappers.StringValue {
+func (x *AffiliateLocationFeedItem) GetAddressLine_1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AddressLine_1
 	}
 	return nil
 }
 
-func (x *AffiliateLocationFeedItem) GetAddressLine_2() *wrappers.StringValue {
+func (x *AffiliateLocationFeedItem) GetAddressLine_2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AddressLine_2
 	}
 	return nil
 }
 
-func (x *AffiliateLocationFeedItem) GetCity() *wrappers.StringValue {
+func (x *AffiliateLocationFeedItem) GetCity() *wrapperspb.StringValue {
 	if x != nil {
 		return x.City
 	}
 	return nil
 }
 
-func (x *AffiliateLocationFeedItem) GetProvince() *wrappers.StringValue {
+func (x *AffiliateLocationFeedItem) GetProvince() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Province
 	}
 	return nil
 }
 
-func (x *AffiliateLocationFeedItem) GetPostalCode() *wrappers.StringValue {
+func (x *AffiliateLocationFeedItem) GetPostalCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PostalCode
 	}
 	return nil
 }
 
-func (x *AffiliateLocationFeedItem) GetCountryCode() *wrappers.StringValue {
+func (x *AffiliateLocationFeedItem) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
 	return nil
 }
 
-func (x *AffiliateLocationFeedItem) GetPhoneNumber() *wrappers.StringValue {
+func (x *AffiliateLocationFeedItem) GetPhoneNumber() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PhoneNumber
 	}
 	return nil
 }
 
-func (x *AffiliateLocationFeedItem) GetChainId() *wrappers.Int64Value {
+func (x *AffiliateLocationFeedItem) GetChainId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ChainId
 	}
 	return nil
 }
 
-func (x *AffiliateLocationFeedItem) GetChainName() *wrappers.StringValue {
+func (x *AffiliateLocationFeedItem) GetChainName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ChainName
 	}
@@ -565,17 +565,17 @@ type TextMessageFeedItem struct {
 
 	// The business name to prepend to the message text.
 	// This field is required.
-	BusinessName *wrappers.StringValue `protobuf:"bytes,1,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
+	BusinessName *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
 	// Uppercase two-letter country code of the advertiser's phone number.
 	// This field is required.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// The advertiser's phone number the message will be sent to. Required.
-	PhoneNumber *wrappers.StringValue `protobuf:"bytes,3,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	PhoneNumber *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
 	// The text to show in the ad.
 	// This field is required.
-	Text *wrappers.StringValue `protobuf:"bytes,4,opt,name=text,proto3" json:"text,omitempty"`
+	Text *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=text,proto3" json:"text,omitempty"`
 	// The message text populated in the messaging app.
-	ExtensionText *wrappers.StringValue `protobuf:"bytes,5,opt,name=extension_text,json=extensionText,proto3" json:"extension_text,omitempty"`
+	ExtensionText *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=extension_text,json=extensionText,proto3" json:"extension_text,omitempty"`
 }
 
 func (x *TextMessageFeedItem) Reset() {
@@ -610,35 +610,35 @@ func (*TextMessageFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *TextMessageFeedItem) GetBusinessName() *wrappers.StringValue {
+func (x *TextMessageFeedItem) GetBusinessName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BusinessName
 	}
 	return nil
 }
 
-func (x *TextMessageFeedItem) GetCountryCode() *wrappers.StringValue {
+func (x *TextMessageFeedItem) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
 	return nil
 }
 
-func (x *TextMessageFeedItem) GetPhoneNumber() *wrappers.StringValue {
+func (x *TextMessageFeedItem) GetPhoneNumber() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PhoneNumber
 	}
 	return nil
 }
 
-func (x *TextMessageFeedItem) GetText() *wrappers.StringValue {
+func (x *TextMessageFeedItem) GetText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Text
 	}
 	return nil
 }
 
-func (x *TextMessageFeedItem) GetExtensionText() *wrappers.StringValue {
+func (x *TextMessageFeedItem) GetExtensionText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ExtensionText
 	}
@@ -656,14 +656,14 @@ type PriceFeedItem struct {
 	// Price qualifier for all offers of this price extension.
 	PriceQualifier enums.PriceExtensionPriceQualifierEnum_PriceExtensionPriceQualifier `protobuf:"varint,2,opt,name=price_qualifier,json=priceQualifier,proto3,enum=google.ads.googleads.v3.enums.PriceExtensionPriceQualifierEnum_PriceExtensionPriceQualifier" json:"price_qualifier,omitempty"`
 	// Tracking URL template for all offers of this price extension.
-	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,3,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
+	TrackingUrlTemplate *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 	// The code of the language used for this price extension.
-	LanguageCode *wrappers.StringValue `protobuf:"bytes,4,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	LanguageCode *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// The price offerings in this price extension.
 	PriceOfferings []*PriceOffer `protobuf:"bytes,5,rep,name=price_offerings,json=priceOfferings,proto3" json:"price_offerings,omitempty"`
 	// URL template for appending params to landing page URLs served with parallel
 	// tracking.
-	FinalUrlSuffix *wrappers.StringValue `protobuf:"bytes,6,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
+	FinalUrlSuffix *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
 }
 
 func (x *PriceFeedItem) Reset() {
@@ -712,14 +712,14 @@ func (x *PriceFeedItem) GetPriceQualifier() enums.PriceExtensionPriceQualifierEn
 	return enums.PriceExtensionPriceQualifierEnum_UNSPECIFIED
 }
 
-func (x *PriceFeedItem) GetTrackingUrlTemplate() *wrappers.StringValue {
+func (x *PriceFeedItem) GetTrackingUrlTemplate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrlTemplate
 	}
 	return nil
 }
 
-func (x *PriceFeedItem) GetLanguageCode() *wrappers.StringValue {
+func (x *PriceFeedItem) GetLanguageCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LanguageCode
 	}
@@ -733,7 +733,7 @@ func (x *PriceFeedItem) GetPriceOfferings() []*PriceOffer {
 	return nil
 }
 
-func (x *PriceFeedItem) GetFinalUrlSuffix() *wrappers.StringValue {
+func (x *PriceFeedItem) GetFinalUrlSuffix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrlSuffix
 	}
@@ -747,17 +747,17 @@ type PriceOffer struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Header text of this offer.
-	Header *wrappers.StringValue `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
+	Header *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
 	// Description text of this offer.
-	Description *wrappers.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Price value of this offer.
 	Price *Money `protobuf:"bytes,3,opt,name=price,proto3" json:"price,omitempty"`
 	// Price unit for this offer.
 	Unit enums.PriceExtensionPriceUnitEnum_PriceExtensionPriceUnit `protobuf:"varint,4,opt,name=unit,proto3,enum=google.ads.googleads.v3.enums.PriceExtensionPriceUnitEnum_PriceExtensionPriceUnit" json:"unit,omitempty"`
 	// A list of possible final URLs after all cross domain redirects.
-	FinalUrls []*wrappers.StringValue `protobuf:"bytes,5,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
+	FinalUrls []*wrapperspb.StringValue `protobuf:"bytes,5,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
 	// A list of possible final mobile URLs after all cross domain redirects.
-	FinalMobileUrls []*wrappers.StringValue `protobuf:"bytes,6,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
+	FinalMobileUrls []*wrapperspb.StringValue `protobuf:"bytes,6,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
 }
 
 func (x *PriceOffer) Reset() {
@@ -792,14 +792,14 @@ func (*PriceOffer) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *PriceOffer) GetHeader() *wrappers.StringValue {
+func (x *PriceOffer) GetHeader() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Header
 	}
 	return nil
 }
 
-func (x *PriceOffer) GetDescription() *wrappers.StringValue {
+func (x *PriceOffer) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
@@ -820,14 +820,14 @@ func (x *PriceOffer) GetUnit() enums.PriceExtensionPriceUnitEnum_PriceExtensionP
 	return enums.PriceExtensionPriceUnitEnum_UNSPECIFIED
 }
 
-func (x *PriceOffer) GetFinalUrls() []*wrappers.StringValue {
+func (x *PriceOffer) GetFinalUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrls
 	}
 	return nil
 }
 
-func (x *PriceOffer) GetFinalMobileUrls() []*wrappers.StringValue {
+func (x *PriceOffer) GetFinalMobileUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalMobileUrls
 	}
@@ -842,33 +842,33 @@ type PromotionFeedItem struct {
 
 	// A freeform description of what the promotion is targeting.
 	// This field is required.
-	PromotionTarget *wrappers.StringValue `protobuf:"bytes,1,opt,name=promotion_target,json=promotionTarget,proto3" json:"promotion_target,omitempty"`
+	PromotionTarget *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=promotion_target,json=promotionTarget,proto3" json:"promotion_target,omitempty"`
 	// Enum that modifies the qualification of the discount.
 	DiscountModifier enums.PromotionExtensionDiscountModifierEnum_PromotionExtensionDiscountModifier `protobuf:"varint,2,opt,name=discount_modifier,json=discountModifier,proto3,enum=google.ads.googleads.v3.enums.PromotionExtensionDiscountModifierEnum_PromotionExtensionDiscountModifier" json:"discount_modifier,omitempty"`
 	// Start date of when the promotion is eligible to be redeemed.
-	PromotionStartDate *wrappers.StringValue `protobuf:"bytes,7,opt,name=promotion_start_date,json=promotionStartDate,proto3" json:"promotion_start_date,omitempty"`
+	PromotionStartDate *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=promotion_start_date,json=promotionStartDate,proto3" json:"promotion_start_date,omitempty"`
 	// End date of when the promotion is eligible to be redeemed.
-	PromotionEndDate *wrappers.StringValue `protobuf:"bytes,8,opt,name=promotion_end_date,json=promotionEndDate,proto3" json:"promotion_end_date,omitempty"`
+	PromotionEndDate *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=promotion_end_date,json=promotionEndDate,proto3" json:"promotion_end_date,omitempty"`
 	// The occasion the promotion was intended for.
 	// If an occasion is set, the redemption window will need to fall within
 	// the date range associated with the occasion.
 	Occasion enums.PromotionExtensionOccasionEnum_PromotionExtensionOccasion `protobuf:"varint,9,opt,name=occasion,proto3,enum=google.ads.googleads.v3.enums.PromotionExtensionOccasionEnum_PromotionExtensionOccasion" json:"occasion,omitempty"`
 	// A list of possible final URLs after all cross domain redirects.
 	// This field is required.
-	FinalUrls []*wrappers.StringValue `protobuf:"bytes,10,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
+	FinalUrls []*wrapperspb.StringValue `protobuf:"bytes,10,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
 	// A list of possible final mobile URLs after all cross domain redirects.
-	FinalMobileUrls []*wrappers.StringValue `protobuf:"bytes,11,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
+	FinalMobileUrls []*wrapperspb.StringValue `protobuf:"bytes,11,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
 	// URL template for constructing a tracking URL.
-	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,12,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
+	TrackingUrlTemplate *wrapperspb.StringValue `protobuf:"bytes,12,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 	// A list of mappings to be used for substituting URL custom parameter tags in
 	// the tracking_url_template, final_urls, and/or final_mobile_urls.
 	UrlCustomParameters []*CustomParameter `protobuf:"bytes,13,rep,name=url_custom_parameters,json=urlCustomParameters,proto3" json:"url_custom_parameters,omitempty"`
 	// URL template for appending params to landing page URLs served with parallel
 	// tracking.
-	FinalUrlSuffix *wrappers.StringValue `protobuf:"bytes,14,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
+	FinalUrlSuffix *wrapperspb.StringValue `protobuf:"bytes,14,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
 	// The language of the promotion.
 	// Represented as BCP 47 language tag.
-	LanguageCode *wrappers.StringValue `protobuf:"bytes,15,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	LanguageCode *wrapperspb.StringValue `protobuf:"bytes,15,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// Discount type, can be percentage off or amount off.
 	//
 	// Types that are assignable to DiscountType:
@@ -916,7 +916,7 @@ func (*PromotionFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *PromotionFeedItem) GetPromotionTarget() *wrappers.StringValue {
+func (x *PromotionFeedItem) GetPromotionTarget() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PromotionTarget
 	}
@@ -930,14 +930,14 @@ func (x *PromotionFeedItem) GetDiscountModifier() enums.PromotionExtensionDiscou
 	return enums.PromotionExtensionDiscountModifierEnum_UNSPECIFIED
 }
 
-func (x *PromotionFeedItem) GetPromotionStartDate() *wrappers.StringValue {
+func (x *PromotionFeedItem) GetPromotionStartDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PromotionStartDate
 	}
 	return nil
 }
 
-func (x *PromotionFeedItem) GetPromotionEndDate() *wrappers.StringValue {
+func (x *PromotionFeedItem) GetPromotionEndDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PromotionEndDate
 	}
@@ -951,21 +951,21 @@ func (x *PromotionFeedItem) GetOccasion() enums.PromotionExtensionOccasionEnum_P
 	return enums.PromotionExtensionOccasionEnum_UNSPECIFIED
 }
 
-func (x *PromotionFeedItem) GetFinalUrls() []*wrappers.StringValue {
+func (x *PromotionFeedItem) GetFinalUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrls
 	}
 	return nil
 }
 
-func (x *PromotionFeedItem) GetFinalMobileUrls() []*wrappers.StringValue {
+func (x *PromotionFeedItem) GetFinalMobileUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalMobileUrls
 	}
 	return nil
 }
 
-func (x *PromotionFeedItem) GetTrackingUrlTemplate() *wrappers.StringValue {
+func (x *PromotionFeedItem) GetTrackingUrlTemplate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrlTemplate
 	}
@@ -979,14 +979,14 @@ func (x *PromotionFeedItem) GetUrlCustomParameters() []*CustomParameter {
 	return nil
 }
 
-func (x *PromotionFeedItem) GetFinalUrlSuffix() *wrappers.StringValue {
+func (x *PromotionFeedItem) GetFinalUrlSuffix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrlSuffix
 	}
 	return nil
 }
 
-func (x *PromotionFeedItem) GetLanguageCode() *wrappers.StringValue {
+func (x *PromotionFeedItem) GetLanguageCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LanguageCode
 	}
@@ -1000,7 +1000,7 @@ func (m *PromotionFeedItem) GetDiscountType() isPromotionFeedItem_DiscountType {
 	return nil
 }
 
-func (x *PromotionFeedItem) GetPercentOff() *wrappers.Int64Value {
+func (x *PromotionFeedItem) GetPercentOff() *wrapperspb.Int64Value {
 	if x, ok := x.GetDiscountType().(*PromotionFeedItem_PercentOff); ok {
 		return x.PercentOff
 	}
@@ -1021,7 +1021,7 @@ func (m *PromotionFeedItem) GetPromotionTrigger() isPromotionFeedItem_PromotionT
 	return nil
 }
 
-func (x *PromotionFeedItem) GetPromotionCode() *wrappers.StringValue {
+func (x *PromotionFeedItem) GetPromotionCode() *wrapperspb.StringValue {
 	if x, ok := x.GetPromotionTrigger().(*PromotionFeedItem_PromotionCode); ok {
 		return x.PromotionCode
 	}
@@ -1043,7 +1043,7 @@ type PromotionFeedItem_PercentOff struct {
 	// Percentage off discount in the promotion in micros.
 	// One million is equivalent to one percent.
 	// Either this or money_off_amount is required.
-	PercentOff *wrappers.Int64Value `protobuf:"bytes,3,opt,name=percent_off,json=percentOff,proto3,oneof"`
+	PercentOff *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=percent_off,json=percentOff,proto3,oneof"`
 }
 
 type PromotionFeedItem_MoneyAmountOff struct {
@@ -1062,7 +1062,7 @@ type isPromotionFeedItem_PromotionTrigger interface {
 
 type PromotionFeedItem_PromotionCode struct {
 	// A code the user should use in order to be eligible for the promotion.
-	PromotionCode *wrappers.StringValue `protobuf:"bytes,5,opt,name=promotion_code,json=promotionCode,proto3,oneof"`
+	PromotionCode *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=promotion_code,json=promotionCode,proto3,oneof"`
 }
 
 type PromotionFeedItem_OrdersOverAmount struct {
@@ -1083,10 +1083,10 @@ type StructuredSnippetFeedItem struct {
 
 	// The header of the snippet.
 	// This string must not be empty.
-	Header *wrappers.StringValue `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
+	Header *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
 	// The values in the snippet.
 	// The maximum size of this collection is 10.
-	Values []*wrappers.StringValue `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
+	Values []*wrapperspb.StringValue `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
 }
 
 func (x *StructuredSnippetFeedItem) Reset() {
@@ -1121,14 +1121,14 @@ func (*StructuredSnippetFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *StructuredSnippetFeedItem) GetHeader() *wrappers.StringValue {
+func (x *StructuredSnippetFeedItem) GetHeader() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Header
 	}
 	return nil
 }
 
-func (x *StructuredSnippetFeedItem) GetValues() []*wrappers.StringValue {
+func (x *StructuredSnippetFeedItem) GetValues() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Values
 	}
@@ -1143,27 +1143,27 @@ type SitelinkFeedItem struct {
 
 	// URL display text for the sitelink.
 	// The length of this string should be between 1 and 25, inclusive.
-	LinkText *wrappers.StringValue `protobuf:"bytes,1,opt,name=link_text,json=linkText,proto3" json:"link_text,omitempty"`
+	LinkText *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=link_text,json=linkText,proto3" json:"link_text,omitempty"`
 	// First line of the description for the sitelink.
 	// If this value is set, line2 must also be set.
 	// The length of this string should be between 0 and 35, inclusive.
-	Line1 *wrappers.StringValue `protobuf:"bytes,2,opt,name=line1,proto3" json:"line1,omitempty"`
+	Line1 *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=line1,proto3" json:"line1,omitempty"`
 	// Second line of the description for the sitelink.
 	// If this value is set, line1 must also be set.
 	// The length of this string should be between 0 and 35, inclusive.
-	Line2 *wrappers.StringValue `protobuf:"bytes,3,opt,name=line2,proto3" json:"line2,omitempty"`
+	Line2 *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=line2,proto3" json:"line2,omitempty"`
 	// A list of possible final URLs after all cross domain redirects.
-	FinalUrls []*wrappers.StringValue `protobuf:"bytes,4,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
+	FinalUrls []*wrapperspb.StringValue `protobuf:"bytes,4,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
 	// A list of possible final mobile URLs after all cross domain redirects.
-	FinalMobileUrls []*wrappers.StringValue `protobuf:"bytes,5,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
+	FinalMobileUrls []*wrapperspb.StringValue `protobuf:"bytes,5,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
 	// URL template for constructing a tracking URL.
-	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,6,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
+	TrackingUrlTemplate *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 	// A list of mappings to be used for substituting URL custom parameter tags in
 	// the tracking_url_template, final_urls, and/or final_mobile_urls.
 	UrlCustomParameters []*CustomParameter `protobuf:"bytes,7,rep,name=url_custom_parameters,json=urlCustomParameters,proto3" json:"url_custom_parameters,omitempty"`
 	// Final URL suffix to be appended to landing page URLs served with
 	// parallel tracking.
-	FinalUrlSuffix *wrappers.StringValue `protobuf:"bytes,8,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
+	FinalUrlSuffix *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
 }
 
 func (x *SitelinkFeedItem) Reset() {
@@ -1198,42 +1198,42 @@ func (*SitelinkFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *SitelinkFeedItem) GetLinkText() *wrappers.StringValue {
+func (x *SitelinkFeedItem) GetLinkText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LinkText
 	}
 	return nil
 }
 
-func (x *SitelinkFeedItem) GetLine1() *wrappers.StringValue {
+func (x *SitelinkFeedItem) GetLine1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Line1
 	}
 	return nil
 }
 
-func (x *SitelinkFeedItem) GetLine2() *wrappers.StringValue {
+func (x *SitelinkFeedItem) GetLine2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Line2
 	}
 	return nil
 }
 
-func (x *SitelinkFeedItem) GetFinalUrls() []*wrappers.StringValue {
+func (x *SitelinkFeedItem) GetFinalUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrls
 	}
 	return nil
 }
 
-func (x *SitelinkFeedItem) GetFinalMobileUrls() []*wrappers.StringValue {
+func (x *SitelinkFeedItem) GetFinalMobileUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalMobileUrls
 	}
 	return nil
 }
 
-func (x *SitelinkFeedItem) GetTrackingUrlTemplate() *wrappers.StringValue {
+func (x *SitelinkFeedItem) GetTrackingUrlTemplate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrlTemplate
 	}
@@ -1247,7 +1247,7 @@ func (x *SitelinkFeedItem) GetUrlCustomParameters() []*CustomParameter {
 	return nil
 }
 
-func (x *SitelinkFeedItem) GetFinalUrlSuffix() *wrappers.StringValue {
+func (x *SitelinkFeedItem) GetFinalUrlSuffix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrlSuffix
 	}
@@ -1262,10 +1262,10 @@ type HotelCalloutFeedItem struct {
 
 	// The callout text.
 	// The length of this string should be between 1 and 25, inclusive.
-	Text *wrappers.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	Text *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
 	// The language of the hotel callout text.
 	// IETF BCP 47 compliant language code.
-	LanguageCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	LanguageCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 }
 
 func (x *HotelCalloutFeedItem) Reset() {
@@ -1300,14 +1300,14 @@ func (*HotelCalloutFeedItem) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_extensions_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *HotelCalloutFeedItem) GetText() *wrappers.StringValue {
+func (x *HotelCalloutFeedItem) GetText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Text
 	}
 	return nil
 }
 
-func (x *HotelCalloutFeedItem) GetLanguageCode() *wrappers.StringValue {
+func (x *HotelCalloutFeedItem) GetLanguageCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LanguageCode
 	}
@@ -1776,12 +1776,12 @@ var file_google_ads_googleads_v3_common_extensions_proto_goTypes = []interface{}
 	(*StructuredSnippetFeedItem)(nil), // 9: google.ads.googleads.v3.common.StructuredSnippetFeedItem
 	(*SitelinkFeedItem)(nil),          // 10: google.ads.googleads.v3.common.SitelinkFeedItem
 	(*HotelCalloutFeedItem)(nil),      // 11: google.ads.googleads.v3.common.HotelCalloutFeedItem
-	(*wrappers.StringValue)(nil),      // 12: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),    // 12: google.protobuf.StringValue
 	(enums.AppStoreEnum_AppStore)(0),  // 13: google.ads.googleads.v3.enums.AppStoreEnum.AppStore
 	(*CustomParameter)(nil),           // 14: google.ads.googleads.v3.common.CustomParameter
-	(*wrappers.BoolValue)(nil),        // 15: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),      // 15: google.protobuf.BoolValue
 	(enums.CallConversionReportingStateEnum_CallConversionReportingState)(0), // 16: google.ads.googleads.v3.enums.CallConversionReportingStateEnum.CallConversionReportingState
-	(*wrappers.Int64Value)(nil),                                              // 17: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                            // 17: google.protobuf.Int64Value
 	(enums.PriceExtensionTypeEnum_PriceExtensionType)(0),                     // 18: google.ads.googleads.v3.enums.PriceExtensionTypeEnum.PriceExtensionType
 	(enums.PriceExtensionPriceQualifierEnum_PriceExtensionPriceQualifier)(0), // 19: google.ads.googleads.v3.enums.PriceExtensionPriceQualifierEnum.PriceExtensionPriceQualifier
 	(*Money)(nil), // 20: google.ads.googleads.v3.common.Money

@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -51,13 +51,13 @@ type PolicyViolationKey struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Unique ID of the violated policy.
-	PolicyName *wrappers.StringValue `protobuf:"bytes,1,opt,name=policy_name,json=policyName,proto3" json:"policy_name,omitempty"`
+	PolicyName *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=policy_name,json=policyName,proto3" json:"policy_name,omitempty"`
 	// The text that violates the policy if specified.
 	// Otherwise, refers to the policy in general
 	// (e.g., when requesting to be exempt from the whole policy).
 	// If not specified for criterion exemptions, the whole policy is implied.
 	// Must be specified for ad exemptions.
-	ViolatingText *wrappers.StringValue `protobuf:"bytes,2,opt,name=violating_text,json=violatingText,proto3" json:"violating_text,omitempty"`
+	ViolatingText *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=violating_text,json=violatingText,proto3" json:"violating_text,omitempty"`
 }
 
 func (x *PolicyViolationKey) Reset() {
@@ -92,14 +92,14 @@ func (*PolicyViolationKey) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_policy_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *PolicyViolationKey) GetPolicyName() *wrappers.StringValue {
+func (x *PolicyViolationKey) GetPolicyName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PolicyName
 	}
 	return nil
 }
 
-func (x *PolicyViolationKey) GetViolatingText() *wrappers.StringValue {
+func (x *PolicyViolationKey) GetViolatingText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ViolatingText
 	}
@@ -122,7 +122,7 @@ type PolicyValidationParameter struct {
 	// to serve. They may begin serving at a later time due to a change in
 	// policies, re-review of the resource, or a change in advertiser
 	// certificates.
-	IgnorablePolicyTopics []*wrappers.StringValue `protobuf:"bytes,1,rep,name=ignorable_policy_topics,json=ignorablePolicyTopics,proto3" json:"ignorable_policy_topics,omitempty"`
+	IgnorablePolicyTopics []*wrapperspb.StringValue `protobuf:"bytes,1,rep,name=ignorable_policy_topics,json=ignorablePolicyTopics,proto3" json:"ignorable_policy_topics,omitempty"`
 	// The list of policy violation keys that should not cause a
 	// PolicyViolationError to be reported. Not all policy violations are
 	// exemptable, please refer to the is_exemptible field in the returned
@@ -167,7 +167,7 @@ func (*PolicyValidationParameter) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_policy_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *PolicyValidationParameter) GetIgnorablePolicyTopics() []*wrappers.StringValue {
+func (x *PolicyValidationParameter) GetIgnorablePolicyTopics() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.IgnorablePolicyTopics
 	}
@@ -198,7 +198,7 @@ type PolicyTopicEntry struct {
 	// "TRADEMARKS_IN_AD_TEXT", or "DESTINATION_NOT_WORKING". The set of possible
 	// policy topics is not fixed for a particular API version and may change
 	// at any time.
-	Topic *wrappers.StringValue `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
+	Topic *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	// Describes the negative or positive effect this policy will have on serving.
 	Type enums.PolicyTopicEntryTypeEnum_PolicyTopicEntryType `protobuf:"varint,2,opt,name=type,proto3,enum=google.ads.googleads.v2.enums.PolicyTopicEntryTypeEnum_PolicyTopicEntryType" json:"type,omitempty"`
 	// Additional information that explains policy finding
@@ -241,7 +241,7 @@ func (*PolicyTopicEntry) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_policy_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *PolicyTopicEntry) GetTopic() *wrappers.StringValue {
+func (x *PolicyTopicEntry) GetTopic() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Topic
 	}
@@ -340,7 +340,7 @@ func (x *PolicyTopicEvidence) GetTextList() *PolicyTopicEvidence_TextList {
 	return nil
 }
 
-func (x *PolicyTopicEvidence) GetLanguageCode() *wrappers.StringValue {
+func (x *PolicyTopicEvidence) GetLanguageCode() *wrapperspb.StringValue {
 	if x, ok := x.GetValue().(*PolicyTopicEvidence_LanguageCode); ok {
 		return x.LanguageCode
 	}
@@ -385,7 +385,7 @@ type PolicyTopicEvidence_TextList_ struct {
 type PolicyTopicEvidence_LanguageCode struct {
 	// The language the resource was detected to be written in.
 	// This is an IETF language tag such as "en-US".
-	LanguageCode *wrappers.StringValue `protobuf:"bytes,5,opt,name=language_code,json=languageCode,proto3,oneof"`
+	LanguageCode *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=language_code,json=languageCode,proto3,oneof"`
 }
 
 type PolicyTopicEvidence_DestinationTextList_ struct {
@@ -540,7 +540,7 @@ type PolicyTopicEvidence_TextList struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The fragments of text from the resource that caused the policy finding.
-	Texts []*wrappers.StringValue `protobuf:"bytes,1,rep,name=texts,proto3" json:"texts,omitempty"`
+	Texts []*wrapperspb.StringValue `protobuf:"bytes,1,rep,name=texts,proto3" json:"texts,omitempty"`
 }
 
 func (x *PolicyTopicEvidence_TextList) Reset() {
@@ -575,7 +575,7 @@ func (*PolicyTopicEvidence_TextList) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_policy_proto_rawDescGZIP(), []int{3, 0}
 }
 
-func (x *PolicyTopicEvidence_TextList) GetTexts() []*wrappers.StringValue {
+func (x *PolicyTopicEvidence_TextList) GetTexts() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Texts
 	}
@@ -592,7 +592,7 @@ type PolicyTopicEvidence_WebsiteList struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Websites that caused the policy finding.
-	Websites []*wrappers.StringValue `protobuf:"bytes,1,rep,name=websites,proto3" json:"websites,omitempty"`
+	Websites []*wrapperspb.StringValue `protobuf:"bytes,1,rep,name=websites,proto3" json:"websites,omitempty"`
 }
 
 func (x *PolicyTopicEvidence_WebsiteList) Reset() {
@@ -627,7 +627,7 @@ func (*PolicyTopicEvidence_WebsiteList) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_policy_proto_rawDescGZIP(), []int{3, 1}
 }
 
-func (x *PolicyTopicEvidence_WebsiteList) GetWebsites() []*wrappers.StringValue {
+func (x *PolicyTopicEvidence_WebsiteList) GetWebsites() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Websites
 	}
@@ -642,7 +642,7 @@ type PolicyTopicEvidence_DestinationTextList struct {
 	unknownFields protoimpl.UnknownFields
 
 	// List of text found in the resource's destination page.
-	DestinationTexts []*wrappers.StringValue `protobuf:"bytes,1,rep,name=destination_texts,json=destinationTexts,proto3" json:"destination_texts,omitempty"`
+	DestinationTexts []*wrapperspb.StringValue `protobuf:"bytes,1,rep,name=destination_texts,json=destinationTexts,proto3" json:"destination_texts,omitempty"`
 }
 
 func (x *PolicyTopicEvidence_DestinationTextList) Reset() {
@@ -677,7 +677,7 @@ func (*PolicyTopicEvidence_DestinationTextList) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_policy_proto_rawDescGZIP(), []int{3, 2}
 }
 
-func (x *PolicyTopicEvidence_DestinationTextList) GetDestinationTexts() []*wrappers.StringValue {
+func (x *PolicyTopicEvidence_DestinationTextList) GetDestinationTexts() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.DestinationTexts
 	}
@@ -741,13 +741,13 @@ type PolicyTopicEvidence_DestinationNotWorking struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The full URL that didn't work.
-	ExpandedUrl *wrappers.StringValue `protobuf:"bytes,3,opt,name=expanded_url,json=expandedUrl,proto3" json:"expanded_url,omitempty"`
+	ExpandedUrl *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=expanded_url,json=expandedUrl,proto3" json:"expanded_url,omitempty"`
 	// The type of device that failed to load the URL.
 	Device enums.PolicyTopicEvidenceDestinationNotWorkingDeviceEnum_PolicyTopicEvidenceDestinationNotWorkingDevice `protobuf:"varint,4,opt,name=device,proto3,enum=google.ads.googleads.v2.enums.PolicyTopicEvidenceDestinationNotWorkingDeviceEnum_PolicyTopicEvidenceDestinationNotWorkingDevice" json:"device,omitempty"`
 	// The time the URL was last checked.
 	// The format is "YYYY-MM-DD HH:MM:SS".
 	// Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"
-	LastCheckedDateTime *wrappers.StringValue `protobuf:"bytes,5,opt,name=last_checked_date_time,json=lastCheckedDateTime,proto3" json:"last_checked_date_time,omitempty"`
+	LastCheckedDateTime *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=last_checked_date_time,json=lastCheckedDateTime,proto3" json:"last_checked_date_time,omitempty"`
 	// Indicates the reason of the DESTINATION_NOT_WORKING policy finding.
 	//
 	// Types that are assignable to Reason:
@@ -788,7 +788,7 @@ func (*PolicyTopicEvidence_DestinationNotWorking) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_policy_proto_rawDescGZIP(), []int{3, 4}
 }
 
-func (x *PolicyTopicEvidence_DestinationNotWorking) GetExpandedUrl() *wrappers.StringValue {
+func (x *PolicyTopicEvidence_DestinationNotWorking) GetExpandedUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ExpandedUrl
 	}
@@ -802,7 +802,7 @@ func (x *PolicyTopicEvidence_DestinationNotWorking) GetDevice() enums.PolicyTopi
 	return enums.PolicyTopicEvidenceDestinationNotWorkingDeviceEnum_UNSPECIFIED
 }
 
-func (x *PolicyTopicEvidence_DestinationNotWorking) GetLastCheckedDateTime() *wrappers.StringValue {
+func (x *PolicyTopicEvidence_DestinationNotWorking) GetLastCheckedDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LastCheckedDateTime
 	}
@@ -823,7 +823,7 @@ func (x *PolicyTopicEvidence_DestinationNotWorking) GetDnsErrorType() enums.Poli
 	return enums.PolicyTopicEvidenceDestinationNotWorkingDnsErrorTypeEnum_UNSPECIFIED
 }
 
-func (x *PolicyTopicEvidence_DestinationNotWorking) GetHttpErrorCode() *wrappers.Int64Value {
+func (x *PolicyTopicEvidence_DestinationNotWorking) GetHttpErrorCode() *wrapperspb.Int64Value {
 	if x, ok := x.GetReason().(*PolicyTopicEvidence_DestinationNotWorking_HttpErrorCode); ok {
 		return x.HttpErrorCode
 	}
@@ -841,7 +841,7 @@ type PolicyTopicEvidence_DestinationNotWorking_DnsErrorType struct {
 
 type PolicyTopicEvidence_DestinationNotWorking_HttpErrorCode struct {
 	// The HTTP error code.
-	HttpErrorCode *wrappers.Int64Value `protobuf:"bytes,2,opt,name=http_error_code,json=httpErrorCode,proto3,oneof"`
+	HttpErrorCode *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=http_error_code,json=httpErrorCode,proto3,oneof"`
 }
 
 func (*PolicyTopicEvidence_DestinationNotWorking_DnsErrorType) isPolicyTopicEvidence_DestinationNotWorking_Reason() {
@@ -857,7 +857,7 @@ type PolicyTopicConstraint_CountryConstraintList struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Total number of countries targeted by the resource.
-	TotalTargetedCountries *wrappers.Int32Value `protobuf:"bytes,1,opt,name=total_targeted_countries,json=totalTargetedCountries,proto3" json:"total_targeted_countries,omitempty"`
+	TotalTargetedCountries *wrapperspb.Int32Value `protobuf:"bytes,1,opt,name=total_targeted_countries,json=totalTargetedCountries,proto3" json:"total_targeted_countries,omitempty"`
 	// Countries in which serving is restricted.
 	Countries []*PolicyTopicConstraint_CountryConstraint `protobuf:"bytes,2,rep,name=countries,proto3" json:"countries,omitempty"`
 }
@@ -894,7 +894,7 @@ func (*PolicyTopicConstraint_CountryConstraintList) Descriptor() ([]byte, []int)
 	return file_google_ads_googleads_v2_common_policy_proto_rawDescGZIP(), []int{4, 0}
 }
 
-func (x *PolicyTopicConstraint_CountryConstraintList) GetTotalTargetedCountries() *wrappers.Int32Value {
+func (x *PolicyTopicConstraint_CountryConstraintList) GetTotalTargetedCountries() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.TotalTargetedCountries
 	}
@@ -957,7 +957,7 @@ type PolicyTopicConstraint_CountryConstraint struct {
 
 	// Geo target constant resource name of the country in which serving is
 	// constrained.
-	CountryCriterion *wrappers.StringValue `protobuf:"bytes,1,opt,name=country_criterion,json=countryCriterion,proto3" json:"country_criterion,omitempty"`
+	CountryCriterion *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=country_criterion,json=countryCriterion,proto3" json:"country_criterion,omitempty"`
 }
 
 func (x *PolicyTopicConstraint_CountryConstraint) Reset() {
@@ -992,7 +992,7 @@ func (*PolicyTopicConstraint_CountryConstraint) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_policy_proto_rawDescGZIP(), []int{4, 2}
 }
 
-func (x *PolicyTopicConstraint_CountryConstraint) GetCountryCriterion() *wrappers.StringValue {
+func (x *PolicyTopicConstraint_CountryConstraint) GetCountryCriterion() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCriterion
 	}
@@ -1288,13 +1288,13 @@ var file_google_ads_googleads_v2_common_policy_proto_goTypes = []interface{}{
 	(*PolicyTopicConstraint_CountryConstraintList)(nil),      // 10: google.ads.googleads.v2.common.PolicyTopicConstraint.CountryConstraintList
 	(*PolicyTopicConstraint_ResellerConstraint)(nil),         // 11: google.ads.googleads.v2.common.PolicyTopicConstraint.ResellerConstraint
 	(*PolicyTopicConstraint_CountryConstraint)(nil),          // 12: google.ads.googleads.v2.common.PolicyTopicConstraint.CountryConstraint
-	(*wrappers.StringValue)(nil),                             // 13: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                           // 13: google.protobuf.StringValue
 	(enums.PolicyTopicEntryTypeEnum_PolicyTopicEntryType)(0), // 14: google.ads.googleads.v2.enums.PolicyTopicEntryTypeEnum.PolicyTopicEntryType
 	(enums.PolicyTopicEvidenceDestinationMismatchUrlTypeEnum_PolicyTopicEvidenceDestinationMismatchUrlType)(0),               // 15: google.ads.googleads.v2.enums.PolicyTopicEvidenceDestinationMismatchUrlTypeEnum.PolicyTopicEvidenceDestinationMismatchUrlType
 	(enums.PolicyTopicEvidenceDestinationNotWorkingDeviceEnum_PolicyTopicEvidenceDestinationNotWorkingDevice)(0),             // 16: google.ads.googleads.v2.enums.PolicyTopicEvidenceDestinationNotWorkingDeviceEnum.PolicyTopicEvidenceDestinationNotWorkingDevice
 	(enums.PolicyTopicEvidenceDestinationNotWorkingDnsErrorTypeEnum_PolicyTopicEvidenceDestinationNotWorkingDnsErrorType)(0), // 17: google.ads.googleads.v2.enums.PolicyTopicEvidenceDestinationNotWorkingDnsErrorTypeEnum.PolicyTopicEvidenceDestinationNotWorkingDnsErrorType
-	(*wrappers.Int64Value)(nil), // 18: google.protobuf.Int64Value
-	(*wrappers.Int32Value)(nil), // 19: google.protobuf.Int32Value
+	(*wrapperspb.Int64Value)(nil), // 18: google.protobuf.Int64Value
+	(*wrapperspb.Int32Value)(nil), // 19: google.protobuf.Int32Value
 }
 var file_google_ads_googleads_v2_common_policy_proto_depIdxs = []int32{
 	13, // 0: google.ads.googleads.v2.common.PolicyViolationKey.policy_name:type_name -> google.protobuf.StringValue

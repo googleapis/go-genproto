@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -50,11 +50,11 @@ type TextAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The headline of the ad.
-	Headline *wrappers.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
+	Headline *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
 	// The first line of the ad's description.
-	Description1 *wrappers.StringValue `protobuf:"bytes,2,opt,name=description1,proto3" json:"description1,omitempty"`
+	Description1 *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=description1,proto3" json:"description1,omitempty"`
 	// The second line of the ad's description.
-	Description2 *wrappers.StringValue `protobuf:"bytes,3,opt,name=description2,proto3" json:"description2,omitempty"`
+	Description2 *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=description2,proto3" json:"description2,omitempty"`
 }
 
 func (x *TextAdInfo) Reset() {
@@ -89,21 +89,21 @@ func (*TextAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TextAdInfo) GetHeadline() *wrappers.StringValue {
+func (x *TextAdInfo) GetHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Headline
 	}
 	return nil
 }
 
-func (x *TextAdInfo) GetDescription1() *wrappers.StringValue {
+func (x *TextAdInfo) GetDescription1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description1
 	}
 	return nil
 }
 
-func (x *TextAdInfo) GetDescription2() *wrappers.StringValue {
+func (x *TextAdInfo) GetDescription2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description2
 	}
@@ -117,19 +117,19 @@ type ExpandedTextAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The first part of the ad's headline.
-	HeadlinePart1 *wrappers.StringValue `protobuf:"bytes,1,opt,name=headline_part1,json=headlinePart1,proto3" json:"headline_part1,omitempty"`
+	HeadlinePart1 *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=headline_part1,json=headlinePart1,proto3" json:"headline_part1,omitempty"`
 	// The second part of the ad's headline.
-	HeadlinePart2 *wrappers.StringValue `protobuf:"bytes,2,opt,name=headline_part2,json=headlinePart2,proto3" json:"headline_part2,omitempty"`
+	HeadlinePart2 *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=headline_part2,json=headlinePart2,proto3" json:"headline_part2,omitempty"`
 	// The third part of the ad's headline.
-	HeadlinePart3 *wrappers.StringValue `protobuf:"bytes,6,opt,name=headline_part3,json=headlinePart3,proto3" json:"headline_part3,omitempty"`
+	HeadlinePart3 *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=headline_part3,json=headlinePart3,proto3" json:"headline_part3,omitempty"`
 	// The description of the ad.
-	Description *wrappers.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// The second description of the ad.
-	Description2 *wrappers.StringValue `protobuf:"bytes,7,opt,name=description2,proto3" json:"description2,omitempty"`
+	Description2 *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=description2,proto3" json:"description2,omitempty"`
 	// The text that can appear alongside the ad's displayed URL.
-	Path1 *wrappers.StringValue `protobuf:"bytes,4,opt,name=path1,proto3" json:"path1,omitempty"`
+	Path1 *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=path1,proto3" json:"path1,omitempty"`
 	// Additional text that can appear alongside the ad's displayed URL.
-	Path2 *wrappers.StringValue `protobuf:"bytes,5,opt,name=path2,proto3" json:"path2,omitempty"`
+	Path2 *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=path2,proto3" json:"path2,omitempty"`
 }
 
 func (x *ExpandedTextAdInfo) Reset() {
@@ -164,49 +164,49 @@ func (*ExpandedTextAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ExpandedTextAdInfo) GetHeadlinePart1() *wrappers.StringValue {
+func (x *ExpandedTextAdInfo) GetHeadlinePart1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HeadlinePart1
 	}
 	return nil
 }
 
-func (x *ExpandedTextAdInfo) GetHeadlinePart2() *wrappers.StringValue {
+func (x *ExpandedTextAdInfo) GetHeadlinePart2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HeadlinePart2
 	}
 	return nil
 }
 
-func (x *ExpandedTextAdInfo) GetHeadlinePart3() *wrappers.StringValue {
+func (x *ExpandedTextAdInfo) GetHeadlinePart3() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HeadlinePart3
 	}
 	return nil
 }
 
-func (x *ExpandedTextAdInfo) GetDescription() *wrappers.StringValue {
+func (x *ExpandedTextAdInfo) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
 	return nil
 }
 
-func (x *ExpandedTextAdInfo) GetDescription2() *wrappers.StringValue {
+func (x *ExpandedTextAdInfo) GetDescription2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description2
 	}
 	return nil
 }
 
-func (x *ExpandedTextAdInfo) GetPath1() *wrappers.StringValue {
+func (x *ExpandedTextAdInfo) GetPath1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Path1
 	}
 	return nil
 }
 
-func (x *ExpandedTextAdInfo) GetPath2() *wrappers.StringValue {
+func (x *ExpandedTextAdInfo) GetPath2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Path2
 	}
@@ -220,33 +220,33 @@ type CallOnlyAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The country code in the ad.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,1,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// The phone number in the ad.
-	PhoneNumber *wrappers.StringValue `protobuf:"bytes,2,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	PhoneNumber *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
 	// The business name in the ad.
-	BusinessName *wrappers.StringValue `protobuf:"bytes,3,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
+	BusinessName *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
 	// First headline in the ad.
-	Headline1 *wrappers.StringValue `protobuf:"bytes,11,opt,name=headline1,proto3" json:"headline1,omitempty"`
+	Headline1 *wrapperspb.StringValue `protobuf:"bytes,11,opt,name=headline1,proto3" json:"headline1,omitempty"`
 	// Second headline in the ad.
-	Headline2 *wrappers.StringValue `protobuf:"bytes,12,opt,name=headline2,proto3" json:"headline2,omitempty"`
+	Headline2 *wrapperspb.StringValue `protobuf:"bytes,12,opt,name=headline2,proto3" json:"headline2,omitempty"`
 	// The first line of the ad's description.
-	Description1 *wrappers.StringValue `protobuf:"bytes,4,opt,name=description1,proto3" json:"description1,omitempty"`
+	Description1 *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=description1,proto3" json:"description1,omitempty"`
 	// The second line of the ad's description.
-	Description2 *wrappers.StringValue `protobuf:"bytes,5,opt,name=description2,proto3" json:"description2,omitempty"`
+	Description2 *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=description2,proto3" json:"description2,omitempty"`
 	// Whether to enable call tracking for the creative. Enabling call
 	// tracking also enables call conversions.
-	CallTracked *wrappers.BoolValue `protobuf:"bytes,6,opt,name=call_tracked,json=callTracked,proto3" json:"call_tracked,omitempty"`
+	CallTracked *wrapperspb.BoolValue `protobuf:"bytes,6,opt,name=call_tracked,json=callTracked,proto3" json:"call_tracked,omitempty"`
 	// Whether to disable call conversion for the creative.
 	// If set to `true`, disables call conversions even when `call_tracked` is
 	// `true`.
 	// If `call_tracked` is `false`, this field is ignored.
-	DisableCallConversion *wrappers.BoolValue `protobuf:"bytes,7,opt,name=disable_call_conversion,json=disableCallConversion,proto3" json:"disable_call_conversion,omitempty"`
+	DisableCallConversion *wrapperspb.BoolValue `protobuf:"bytes,7,opt,name=disable_call_conversion,json=disableCallConversion,proto3" json:"disable_call_conversion,omitempty"`
 	// The URL to be used for phone number verification.
-	PhoneNumberVerificationUrl *wrappers.StringValue `protobuf:"bytes,8,opt,name=phone_number_verification_url,json=phoneNumberVerificationUrl,proto3" json:"phone_number_verification_url,omitempty"`
+	PhoneNumberVerificationUrl *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=phone_number_verification_url,json=phoneNumberVerificationUrl,proto3" json:"phone_number_verification_url,omitempty"`
 	// The conversion action to attribute a call conversion to. If not set a
 	// default conversion action is used. This field only has effect if
 	// call_tracked is set to true. Otherwise this field is ignored.
-	ConversionAction *wrappers.StringValue `protobuf:"bytes,9,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
+	ConversionAction *wrapperspb.StringValue `protobuf:"bytes,9,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
 	// The call conversion behavior of this call only ad. It can use its own call
 	// conversion setting, inherit the account level setting, or be disabled.
 	ConversionReportingState enums.CallConversionReportingStateEnum_CallConversionReportingState `protobuf:"varint,10,opt,name=conversion_reporting_state,json=conversionReportingState,proto3,enum=google.ads.googleads.v4.enums.CallConversionReportingStateEnum_CallConversionReportingState" json:"conversion_reporting_state,omitempty"`
@@ -284,77 +284,77 @@ func (*CallOnlyAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CallOnlyAdInfo) GetCountryCode() *wrappers.StringValue {
+func (x *CallOnlyAdInfo) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetPhoneNumber() *wrappers.StringValue {
+func (x *CallOnlyAdInfo) GetPhoneNumber() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PhoneNumber
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetBusinessName() *wrappers.StringValue {
+func (x *CallOnlyAdInfo) GetBusinessName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BusinessName
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetHeadline1() *wrappers.StringValue {
+func (x *CallOnlyAdInfo) GetHeadline1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Headline1
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetHeadline2() *wrappers.StringValue {
+func (x *CallOnlyAdInfo) GetHeadline2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Headline2
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetDescription1() *wrappers.StringValue {
+func (x *CallOnlyAdInfo) GetDescription1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description1
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetDescription2() *wrappers.StringValue {
+func (x *CallOnlyAdInfo) GetDescription2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description2
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetCallTracked() *wrappers.BoolValue {
+func (x *CallOnlyAdInfo) GetCallTracked() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.CallTracked
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetDisableCallConversion() *wrappers.BoolValue {
+func (x *CallOnlyAdInfo) GetDisableCallConversion() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.DisableCallConversion
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetPhoneNumberVerificationUrl() *wrappers.StringValue {
+func (x *CallOnlyAdInfo) GetPhoneNumberVerificationUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PhoneNumberVerificationUrl
 	}
 	return nil
 }
 
-func (x *CallOnlyAdInfo) GetConversionAction() *wrappers.StringValue {
+func (x *CallOnlyAdInfo) GetConversionAction() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ConversionAction
 	}
@@ -375,9 +375,9 @@ type ExpandedDynamicSearchAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The description of the ad.
-	Description *wrappers.StringValue `protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
 	// The second description of the ad.
-	Description2 *wrappers.StringValue `protobuf:"bytes,2,opt,name=description2,proto3" json:"description2,omitempty"`
+	Description2 *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=description2,proto3" json:"description2,omitempty"`
 }
 
 func (x *ExpandedDynamicSearchAdInfo) Reset() {
@@ -412,14 +412,14 @@ func (*ExpandedDynamicSearchAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ExpandedDynamicSearchAdInfo) GetDescription() *wrappers.StringValue {
+func (x *ExpandedDynamicSearchAdInfo) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
 	return nil
 }
 
-func (x *ExpandedDynamicSearchAdInfo) GetDescription2() *wrappers.StringValue {
+func (x *ExpandedDynamicSearchAdInfo) GetDescription2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description2
 	}
@@ -551,7 +551,7 @@ type ShoppingComparisonListingAdInfo struct {
 
 	// Headline of the ad. This field is required. Allowed length is between 25
 	// and 45 characters.
-	Headline *wrappers.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
+	Headline *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
 }
 
 func (x *ShoppingComparisonListingAdInfo) Reset() {
@@ -586,7 +586,7 @@ func (*ShoppingComparisonListingAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ShoppingComparisonListingAdInfo) GetHeadline() *wrappers.StringValue {
+func (x *ShoppingComparisonListingAdInfo) GetHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Headline
 	}
@@ -604,16 +604,16 @@ type GmailAdInfo struct {
 	// The MediaFile resource name of the header image. Valid image types are GIF,
 	// JPEG and PNG. The minimum size is 300x100 pixels and the aspect ratio must
 	// be between 3:1 and 5:1 (+-1%).
-	HeaderImage *wrappers.StringValue `protobuf:"bytes,2,opt,name=header_image,json=headerImage,proto3" json:"header_image,omitempty"`
+	HeaderImage *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=header_image,json=headerImage,proto3" json:"header_image,omitempty"`
 	// The MediaFile resource name of the marketing image. Valid image types are
 	// GIF, JPEG and PNG. The image must either be landscape with a minimum size
 	// of 600x314 pixels and aspect ratio of 600:314 (+-1%) or square with a
 	// minimum size of 300x300 pixels and aspect ratio of 1:1 (+-1%)
-	MarketingImage *wrappers.StringValue `protobuf:"bytes,3,opt,name=marketing_image,json=marketingImage,proto3" json:"marketing_image,omitempty"`
+	MarketingImage *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=marketing_image,json=marketingImage,proto3" json:"marketing_image,omitempty"`
 	// Headline of the marketing image.
-	MarketingImageHeadline *wrappers.StringValue `protobuf:"bytes,4,opt,name=marketing_image_headline,json=marketingImageHeadline,proto3" json:"marketing_image_headline,omitempty"`
+	MarketingImageHeadline *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=marketing_image_headline,json=marketingImageHeadline,proto3" json:"marketing_image_headline,omitempty"`
 	// Description of the marketing image.
-	MarketingImageDescription *wrappers.StringValue `protobuf:"bytes,5,opt,name=marketing_image_description,json=marketingImageDescription,proto3" json:"marketing_image_description,omitempty"`
+	MarketingImageDescription *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=marketing_image_description,json=marketingImageDescription,proto3" json:"marketing_image_description,omitempty"`
 	// Display-call-to-action of the marketing image.
 	MarketingImageDisplayCallToAction *DisplayCallToAction `protobuf:"bytes,6,opt,name=marketing_image_display_call_to_action,json=marketingImageDisplayCallToAction,proto3" json:"marketing_image_display_call_to_action,omitempty"`
 	// Product images. Up to 15 images are supported.
@@ -662,28 +662,28 @@ func (x *GmailAdInfo) GetTeaser() *GmailTeaser {
 	return nil
 }
 
-func (x *GmailAdInfo) GetHeaderImage() *wrappers.StringValue {
+func (x *GmailAdInfo) GetHeaderImage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HeaderImage
 	}
 	return nil
 }
 
-func (x *GmailAdInfo) GetMarketingImage() *wrappers.StringValue {
+func (x *GmailAdInfo) GetMarketingImage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MarketingImage
 	}
 	return nil
 }
 
-func (x *GmailAdInfo) GetMarketingImageHeadline() *wrappers.StringValue {
+func (x *GmailAdInfo) GetMarketingImageHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MarketingImageHeadline
 	}
 	return nil
 }
 
-func (x *GmailAdInfo) GetMarketingImageDescription() *wrappers.StringValue {
+func (x *GmailAdInfo) GetMarketingImageDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MarketingImageDescription
 	}
@@ -719,15 +719,15 @@ type GmailTeaser struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Headline of the teaser.
-	Headline *wrappers.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
+	Headline *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
 	// Description of the teaser.
-	Description *wrappers.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Business name of the advertiser.
-	BusinessName *wrappers.StringValue `protobuf:"bytes,3,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
+	BusinessName *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
 	// The MediaFile resource name of the logo image. Valid image types are GIF,
 	// JPEG and PNG. The minimum size is 144x144 pixels and the aspect ratio must
 	// be 1:1 (+-1%).
-	LogoImage *wrappers.StringValue `protobuf:"bytes,4,opt,name=logo_image,json=logoImage,proto3" json:"logo_image,omitempty"`
+	LogoImage *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=logo_image,json=logoImage,proto3" json:"logo_image,omitempty"`
 }
 
 func (x *GmailTeaser) Reset() {
@@ -762,28 +762,28 @@ func (*GmailTeaser) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *GmailTeaser) GetHeadline() *wrappers.StringValue {
+func (x *GmailTeaser) GetHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Headline
 	}
 	return nil
 }
 
-func (x *GmailTeaser) GetDescription() *wrappers.StringValue {
+func (x *GmailTeaser) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
 	return nil
 }
 
-func (x *GmailTeaser) GetBusinessName() *wrappers.StringValue {
+func (x *GmailTeaser) GetBusinessName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BusinessName
 	}
 	return nil
 }
 
-func (x *GmailTeaser) GetLogoImage() *wrappers.StringValue {
+func (x *GmailTeaser) GetLogoImage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LogoImage
 	}
@@ -799,13 +799,13 @@ type DisplayCallToAction struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Text for the display-call-to-action.
-	Text *wrappers.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	Text *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
 	// Text color for the display-call-to-action in hexadecimal, e.g. #ffffff for
 	// white.
-	TextColor *wrappers.StringValue `protobuf:"bytes,2,opt,name=text_color,json=textColor,proto3" json:"text_color,omitempty"`
+	TextColor *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=text_color,json=textColor,proto3" json:"text_color,omitempty"`
 	// Identifies the url collection in the ad.url_collections field. If not set
 	// the url defaults to final_url.
-	UrlCollectionId *wrappers.StringValue `protobuf:"bytes,3,opt,name=url_collection_id,json=urlCollectionId,proto3" json:"url_collection_id,omitempty"`
+	UrlCollectionId *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=url_collection_id,json=urlCollectionId,proto3" json:"url_collection_id,omitempty"`
 }
 
 func (x *DisplayCallToAction) Reset() {
@@ -840,21 +840,21 @@ func (*DisplayCallToAction) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *DisplayCallToAction) GetText() *wrappers.StringValue {
+func (x *DisplayCallToAction) GetText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Text
 	}
 	return nil
 }
 
-func (x *DisplayCallToAction) GetTextColor() *wrappers.StringValue {
+func (x *DisplayCallToAction) GetTextColor() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TextColor
 	}
 	return nil
 }
 
-func (x *DisplayCallToAction) GetUrlCollectionId() *wrappers.StringValue {
+func (x *DisplayCallToAction) GetUrlCollectionId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.UrlCollectionId
 	}
@@ -870,9 +870,9 @@ type ProductImage struct {
 	// The MediaFile resource name of the product image. Valid image types are
 	// GIF, JPEG and PNG. The minimum size is 300x300 pixels and the aspect ratio
 	// must be 1:1 (+-1%).
-	ProductImage *wrappers.StringValue `protobuf:"bytes,1,opt,name=product_image,json=productImage,proto3" json:"product_image,omitempty"`
+	ProductImage *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=product_image,json=productImage,proto3" json:"product_image,omitempty"`
 	// Description of the product.
-	Description *wrappers.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Display-call-to-action of the product image.
 	DisplayCallToAction *DisplayCallToAction `protobuf:"bytes,3,opt,name=display_call_to_action,json=displayCallToAction,proto3" json:"display_call_to_action,omitempty"`
 }
@@ -909,14 +909,14 @@ func (*ProductImage) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *ProductImage) GetProductImage() *wrappers.StringValue {
+func (x *ProductImage) GetProductImage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductImage
 	}
 	return nil
 }
 
-func (x *ProductImage) GetDescription() *wrappers.StringValue {
+func (x *ProductImage) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
@@ -937,7 +937,7 @@ type ProductVideo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The MediaFile resource name of a video which must be hosted on YouTube.
-	ProductVideo *wrappers.StringValue `protobuf:"bytes,1,opt,name=product_video,json=productVideo,proto3" json:"product_video,omitempty"`
+	ProductVideo *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=product_video,json=productVideo,proto3" json:"product_video,omitempty"`
 }
 
 func (x *ProductVideo) Reset() {
@@ -972,7 +972,7 @@ func (*ProductVideo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *ProductVideo) GetProductVideo() *wrappers.StringValue {
+func (x *ProductVideo) GetProductVideo() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductVideo
 	}
@@ -986,22 +986,22 @@ type ImageAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Width in pixels of the full size image.
-	PixelWidth *wrappers.Int64Value `protobuf:"bytes,4,opt,name=pixel_width,json=pixelWidth,proto3" json:"pixel_width,omitempty"`
+	PixelWidth *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=pixel_width,json=pixelWidth,proto3" json:"pixel_width,omitempty"`
 	// Height in pixels of the full size image.
-	PixelHeight *wrappers.Int64Value `protobuf:"bytes,5,opt,name=pixel_height,json=pixelHeight,proto3" json:"pixel_height,omitempty"`
+	PixelHeight *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=pixel_height,json=pixelHeight,proto3" json:"pixel_height,omitempty"`
 	// URL of the full size image.
-	ImageUrl *wrappers.StringValue `protobuf:"bytes,6,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
+	ImageUrl *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
 	// Width in pixels of the preview size image.
-	PreviewPixelWidth *wrappers.Int64Value `protobuf:"bytes,7,opt,name=preview_pixel_width,json=previewPixelWidth,proto3" json:"preview_pixel_width,omitempty"`
+	PreviewPixelWidth *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=preview_pixel_width,json=previewPixelWidth,proto3" json:"preview_pixel_width,omitempty"`
 	// Height in pixels of the preview size image.
-	PreviewPixelHeight *wrappers.Int64Value `protobuf:"bytes,8,opt,name=preview_pixel_height,json=previewPixelHeight,proto3" json:"preview_pixel_height,omitempty"`
+	PreviewPixelHeight *wrapperspb.Int64Value `protobuf:"bytes,8,opt,name=preview_pixel_height,json=previewPixelHeight,proto3" json:"preview_pixel_height,omitempty"`
 	// URL of the preview size image.
-	PreviewImageUrl *wrappers.StringValue `protobuf:"bytes,9,opt,name=preview_image_url,json=previewImageUrl,proto3" json:"preview_image_url,omitempty"`
+	PreviewImageUrl *wrapperspb.StringValue `protobuf:"bytes,9,opt,name=preview_image_url,json=previewImageUrl,proto3" json:"preview_image_url,omitempty"`
 	// The mime type of the image.
 	MimeType enums.MimeTypeEnum_MimeType `protobuf:"varint,10,opt,name=mime_type,json=mimeType,proto3,enum=google.ads.googleads.v4.enums.MimeTypeEnum_MimeType" json:"mime_type,omitempty"`
 	// The name of the image. If the image was created from a MediaFile, this is
 	// the MediaFile's name. If the image was created from bytes, this is empty.
-	Name *wrappers.StringValue `protobuf:"bytes,11,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,11,opt,name=name,proto3" json:"name,omitempty"`
 	// The image to create the ImageAd from. This can be specified in one of
 	// two ways.
 	// 1. An existing MediaFile resource.
@@ -1046,42 +1046,42 @@ func (*ImageAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *ImageAdInfo) GetPixelWidth() *wrappers.Int64Value {
+func (x *ImageAdInfo) GetPixelWidth() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PixelWidth
 	}
 	return nil
 }
 
-func (x *ImageAdInfo) GetPixelHeight() *wrappers.Int64Value {
+func (x *ImageAdInfo) GetPixelHeight() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PixelHeight
 	}
 	return nil
 }
 
-func (x *ImageAdInfo) GetImageUrl() *wrappers.StringValue {
+func (x *ImageAdInfo) GetImageUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ImageUrl
 	}
 	return nil
 }
 
-func (x *ImageAdInfo) GetPreviewPixelWidth() *wrappers.Int64Value {
+func (x *ImageAdInfo) GetPreviewPixelWidth() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PreviewPixelWidth
 	}
 	return nil
 }
 
-func (x *ImageAdInfo) GetPreviewPixelHeight() *wrappers.Int64Value {
+func (x *ImageAdInfo) GetPreviewPixelHeight() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PreviewPixelHeight
 	}
 	return nil
 }
 
-func (x *ImageAdInfo) GetPreviewImageUrl() *wrappers.StringValue {
+func (x *ImageAdInfo) GetPreviewImageUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PreviewImageUrl
 	}
@@ -1095,7 +1095,7 @@ func (x *ImageAdInfo) GetMimeType() enums.MimeTypeEnum_MimeType {
 	return enums.MimeTypeEnum_UNSPECIFIED
 }
 
-func (x *ImageAdInfo) GetName() *wrappers.StringValue {
+func (x *ImageAdInfo) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -1109,21 +1109,21 @@ func (m *ImageAdInfo) GetImage() isImageAdInfo_Image {
 	return nil
 }
 
-func (x *ImageAdInfo) GetMediaFile() *wrappers.StringValue {
+func (x *ImageAdInfo) GetMediaFile() *wrapperspb.StringValue {
 	if x, ok := x.GetImage().(*ImageAdInfo_MediaFile); ok {
 		return x.MediaFile
 	}
 	return nil
 }
 
-func (x *ImageAdInfo) GetData() *wrappers.BytesValue {
+func (x *ImageAdInfo) GetData() *wrapperspb.BytesValue {
 	if x, ok := x.GetImage().(*ImageAdInfo_Data); ok {
 		return x.Data
 	}
 	return nil
 }
 
-func (x *ImageAdInfo) GetAdIdToCopyImageFrom() *wrappers.Int64Value {
+func (x *ImageAdInfo) GetAdIdToCopyImageFrom() *wrapperspb.Int64Value {
 	if x, ok := x.GetImage().(*ImageAdInfo_AdIdToCopyImageFrom); ok {
 		return x.AdIdToCopyImageFrom
 	}
@@ -1136,17 +1136,17 @@ type isImageAdInfo_Image interface {
 
 type ImageAdInfo_MediaFile struct {
 	// The MediaFile resource to use for the image.
-	MediaFile *wrappers.StringValue `protobuf:"bytes,1,opt,name=media_file,json=mediaFile,proto3,oneof"`
+	MediaFile *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=media_file,json=mediaFile,proto3,oneof"`
 }
 
 type ImageAdInfo_Data struct {
 	// Raw image data as bytes.
-	Data *wrappers.BytesValue `protobuf:"bytes,2,opt,name=data,proto3,oneof"`
+	Data *wrapperspb.BytesValue `protobuf:"bytes,2,opt,name=data,proto3,oneof"`
 }
 
 type ImageAdInfo_AdIdToCopyImageFrom struct {
 	// An ad ID to copy the image from.
-	AdIdToCopyImageFrom *wrappers.Int64Value `protobuf:"bytes,3,opt,name=ad_id_to_copy_image_from,json=adIdToCopyImageFrom,proto3,oneof"`
+	AdIdToCopyImageFrom *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=ad_id_to_copy_image_from,json=adIdToCopyImageFrom,proto3,oneof"`
 }
 
 func (*ImageAdInfo_MediaFile) isImageAdInfo_Image() {}
@@ -1163,7 +1163,7 @@ type VideoBumperInStreamAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The MediaFile resource name of the companion banner used with the ad.
-	CompanionBanner *wrappers.StringValue `protobuf:"bytes,1,opt,name=companion_banner,json=companionBanner,proto3" json:"companion_banner,omitempty"`
+	CompanionBanner *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=companion_banner,json=companionBanner,proto3" json:"companion_banner,omitempty"`
 }
 
 func (x *VideoBumperInStreamAdInfo) Reset() {
@@ -1198,7 +1198,7 @@ func (*VideoBumperInStreamAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *VideoBumperInStreamAdInfo) GetCompanionBanner() *wrappers.StringValue {
+func (x *VideoBumperInStreamAdInfo) GetCompanionBanner() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CompanionBanner
 	}
@@ -1213,7 +1213,7 @@ type VideoNonSkippableInStreamAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The MediaFile resource name of the companion banner used with the ad.
-	CompanionBanner *wrappers.StringValue `protobuf:"bytes,1,opt,name=companion_banner,json=companionBanner,proto3" json:"companion_banner,omitempty"`
+	CompanionBanner *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=companion_banner,json=companionBanner,proto3" json:"companion_banner,omitempty"`
 }
 
 func (x *VideoNonSkippableInStreamAdInfo) Reset() {
@@ -1248,7 +1248,7 @@ func (*VideoNonSkippableInStreamAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *VideoNonSkippableInStreamAdInfo) GetCompanionBanner() *wrappers.StringValue {
+func (x *VideoNonSkippableInStreamAdInfo) GetCompanionBanner() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CompanionBanner
 	}
@@ -1266,12 +1266,12 @@ type VideoTrueViewInStreamAdInfo struct {
 	// Label on the CTA (call-to-action) button taking the user to the video ad's
 	// final URL.
 	// Required for TrueView for action campaigns, optional otherwise.
-	ActionButtonLabel *wrappers.StringValue `protobuf:"bytes,1,opt,name=action_button_label,json=actionButtonLabel,proto3" json:"action_button_label,omitempty"`
+	ActionButtonLabel *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=action_button_label,json=actionButtonLabel,proto3" json:"action_button_label,omitempty"`
 	// Additional text displayed with the CTA (call-to-action) button to give
 	// context and encourage clicking on the button.
-	ActionHeadline *wrappers.StringValue `protobuf:"bytes,2,opt,name=action_headline,json=actionHeadline,proto3" json:"action_headline,omitempty"`
+	ActionHeadline *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=action_headline,json=actionHeadline,proto3" json:"action_headline,omitempty"`
 	// The MediaFile resource name of the companion banner used with the ad.
-	CompanionBanner *wrappers.StringValue `protobuf:"bytes,3,opt,name=companion_banner,json=companionBanner,proto3" json:"companion_banner,omitempty"`
+	CompanionBanner *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=companion_banner,json=companionBanner,proto3" json:"companion_banner,omitempty"`
 }
 
 func (x *VideoTrueViewInStreamAdInfo) Reset() {
@@ -1306,21 +1306,21 @@ func (*VideoTrueViewInStreamAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *VideoTrueViewInStreamAdInfo) GetActionButtonLabel() *wrappers.StringValue {
+func (x *VideoTrueViewInStreamAdInfo) GetActionButtonLabel() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ActionButtonLabel
 	}
 	return nil
 }
 
-func (x *VideoTrueViewInStreamAdInfo) GetActionHeadline() *wrappers.StringValue {
+func (x *VideoTrueViewInStreamAdInfo) GetActionHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ActionHeadline
 	}
 	return nil
 }
 
-func (x *VideoTrueViewInStreamAdInfo) GetCompanionBanner() *wrappers.StringValue {
+func (x *VideoTrueViewInStreamAdInfo) GetCompanionBanner() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CompanionBanner
 	}
@@ -1335,9 +1335,9 @@ type VideoOutstreamAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The headline of the ad.
-	Headline *wrappers.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
+	Headline *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
 	// The description line.
-	Description *wrappers.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 }
 
 func (x *VideoOutstreamAdInfo) Reset() {
@@ -1372,14 +1372,14 @@ func (*VideoOutstreamAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *VideoOutstreamAdInfo) GetHeadline() *wrappers.StringValue {
+func (x *VideoOutstreamAdInfo) GetHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Headline
 	}
 	return nil
 }
 
-func (x *VideoOutstreamAdInfo) GetDescription() *wrappers.StringValue {
+func (x *VideoOutstreamAdInfo) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
@@ -1393,11 +1393,11 @@ type VideoTrueViewDiscoveryAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The headline of the ad.
-	Headline *wrappers.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
+	Headline *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=headline,proto3" json:"headline,omitempty"`
 	// First text line for a TrueView video discovery ad.
-	Description1 *wrappers.StringValue `protobuf:"bytes,2,opt,name=description1,proto3" json:"description1,omitempty"`
+	Description1 *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=description1,proto3" json:"description1,omitempty"`
 	// Second text line for a TrueView video discovery ad.
-	Description2 *wrappers.StringValue `protobuf:"bytes,3,opt,name=description2,proto3" json:"description2,omitempty"`
+	Description2 *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=description2,proto3" json:"description2,omitempty"`
 }
 
 func (x *VideoTrueViewDiscoveryAdInfo) Reset() {
@@ -1432,21 +1432,21 @@ func (*VideoTrueViewDiscoveryAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *VideoTrueViewDiscoveryAdInfo) GetHeadline() *wrappers.StringValue {
+func (x *VideoTrueViewDiscoveryAdInfo) GetHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Headline
 	}
 	return nil
 }
 
-func (x *VideoTrueViewDiscoveryAdInfo) GetDescription1() *wrappers.StringValue {
+func (x *VideoTrueViewDiscoveryAdInfo) GetDescription1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description1
 	}
 	return nil
 }
 
-func (x *VideoTrueViewDiscoveryAdInfo) GetDescription2() *wrappers.StringValue {
+func (x *VideoTrueViewDiscoveryAdInfo) GetDescription2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description2
 	}
@@ -1460,7 +1460,7 @@ type VideoAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The MediaFile resource to use for the video.
-	MediaFile *wrappers.StringValue `protobuf:"bytes,1,opt,name=media_file,json=mediaFile,proto3" json:"media_file,omitempty"`
+	MediaFile *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=media_file,json=mediaFile,proto3" json:"media_file,omitempty"`
 	// Format-specific schema for the different video formats.
 	//
 	// Types that are assignable to Format:
@@ -1504,7 +1504,7 @@ func (*VideoAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *VideoAdInfo) GetMediaFile() *wrappers.StringValue {
+func (x *VideoAdInfo) GetMediaFile() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MediaFile
 	}
@@ -1615,10 +1615,10 @@ type ResponsiveSearchAdInfo struct {
 	// will be selected from this list.
 	Descriptions []*AdTextAsset `protobuf:"bytes,2,rep,name=descriptions,proto3" json:"descriptions,omitempty"`
 	// First part of text that may appear appended to the url displayed in the ad.
-	Path1 *wrappers.StringValue `protobuf:"bytes,3,opt,name=path1,proto3" json:"path1,omitempty"`
+	Path1 *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=path1,proto3" json:"path1,omitempty"`
 	// Second part of text that may appear appended to the url displayed in the
 	// ad. This field can only be set when path1 is also set.
-	Path2 *wrappers.StringValue `protobuf:"bytes,4,opt,name=path2,proto3" json:"path2,omitempty"`
+	Path2 *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=path2,proto3" json:"path2,omitempty"`
 }
 
 func (x *ResponsiveSearchAdInfo) Reset() {
@@ -1667,14 +1667,14 @@ func (x *ResponsiveSearchAdInfo) GetDescriptions() []*AdTextAsset {
 	return nil
 }
 
-func (x *ResponsiveSearchAdInfo) GetPath1() *wrappers.StringValue {
+func (x *ResponsiveSearchAdInfo) GetPath1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Path1
 	}
 	return nil
 }
 
-func (x *ResponsiveSearchAdInfo) GetPath2() *wrappers.StringValue {
+func (x *ResponsiveSearchAdInfo) GetPath2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Path2
 	}
@@ -1689,44 +1689,44 @@ type LegacyResponsiveDisplayAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The short version of the ad's headline.
-	ShortHeadline *wrappers.StringValue `protobuf:"bytes,1,opt,name=short_headline,json=shortHeadline,proto3" json:"short_headline,omitempty"`
+	ShortHeadline *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=short_headline,json=shortHeadline,proto3" json:"short_headline,omitempty"`
 	// The long version of the ad's headline.
-	LongHeadline *wrappers.StringValue `protobuf:"bytes,2,opt,name=long_headline,json=longHeadline,proto3" json:"long_headline,omitempty"`
+	LongHeadline *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=long_headline,json=longHeadline,proto3" json:"long_headline,omitempty"`
 	// The description of the ad.
-	Description *wrappers.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// The business name in the ad.
-	BusinessName *wrappers.StringValue `protobuf:"bytes,4,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
+	BusinessName *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
 	// Advertiser's consent to allow flexible color. When true, the ad may be
 	// served with different color if necessary. When false, the ad will be served
 	// with the specified colors or a neutral color.
 	// The default value is true.
 	// Must be true if main_color and accent_color are not set.
-	AllowFlexibleColor *wrappers.BoolValue `protobuf:"bytes,5,opt,name=allow_flexible_color,json=allowFlexibleColor,proto3" json:"allow_flexible_color,omitempty"`
+	AllowFlexibleColor *wrapperspb.BoolValue `protobuf:"bytes,5,opt,name=allow_flexible_color,json=allowFlexibleColor,proto3" json:"allow_flexible_color,omitempty"`
 	// The accent color of the ad in hexadecimal, e.g. #ffffff for white.
 	// If one of main_color and accent_color is set, the other is required as
 	// well.
-	AccentColor *wrappers.StringValue `protobuf:"bytes,6,opt,name=accent_color,json=accentColor,proto3" json:"accent_color,omitempty"`
+	AccentColor *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=accent_color,json=accentColor,proto3" json:"accent_color,omitempty"`
 	// The main color of the ad in hexadecimal, e.g. #ffffff for white.
 	// If one of main_color and accent_color is set, the other is required as
 	// well.
-	MainColor *wrappers.StringValue `protobuf:"bytes,7,opt,name=main_color,json=mainColor,proto3" json:"main_color,omitempty"`
+	MainColor *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=main_color,json=mainColor,proto3" json:"main_color,omitempty"`
 	// The call-to-action text for the ad.
-	CallToActionText *wrappers.StringValue `protobuf:"bytes,8,opt,name=call_to_action_text,json=callToActionText,proto3" json:"call_to_action_text,omitempty"`
+	CallToActionText *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=call_to_action_text,json=callToActionText,proto3" json:"call_to_action_text,omitempty"`
 	// The MediaFile resource name of the logo image used in the ad.
-	LogoImage *wrappers.StringValue `protobuf:"bytes,9,opt,name=logo_image,json=logoImage,proto3" json:"logo_image,omitempty"`
+	LogoImage *wrapperspb.StringValue `protobuf:"bytes,9,opt,name=logo_image,json=logoImage,proto3" json:"logo_image,omitempty"`
 	// The MediaFile resource name of the square logo image used in the ad.
-	SquareLogoImage *wrappers.StringValue `protobuf:"bytes,10,opt,name=square_logo_image,json=squareLogoImage,proto3" json:"square_logo_image,omitempty"`
+	SquareLogoImage *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=square_logo_image,json=squareLogoImage,proto3" json:"square_logo_image,omitempty"`
 	// The MediaFile resource name of the marketing image used in the ad.
-	MarketingImage *wrappers.StringValue `protobuf:"bytes,11,opt,name=marketing_image,json=marketingImage,proto3" json:"marketing_image,omitempty"`
+	MarketingImage *wrapperspb.StringValue `protobuf:"bytes,11,opt,name=marketing_image,json=marketingImage,proto3" json:"marketing_image,omitempty"`
 	// The MediaFile resource name of the square marketing image used in the ad.
-	SquareMarketingImage *wrappers.StringValue `protobuf:"bytes,12,opt,name=square_marketing_image,json=squareMarketingImage,proto3" json:"square_marketing_image,omitempty"`
+	SquareMarketingImage *wrapperspb.StringValue `protobuf:"bytes,12,opt,name=square_marketing_image,json=squareMarketingImage,proto3" json:"square_marketing_image,omitempty"`
 	// Specifies which format the ad will be served in. Default is ALL_FORMATS.
 	FormatSetting enums.DisplayAdFormatSettingEnum_DisplayAdFormatSetting `protobuf:"varint,13,opt,name=format_setting,json=formatSetting,proto3,enum=google.ads.googleads.v4.enums.DisplayAdFormatSettingEnum_DisplayAdFormatSetting" json:"format_setting,omitempty"`
 	// Prefix before price. E.g. 'as low as'.
-	PricePrefix *wrappers.StringValue `protobuf:"bytes,14,opt,name=price_prefix,json=pricePrefix,proto3" json:"price_prefix,omitempty"`
+	PricePrefix *wrapperspb.StringValue `protobuf:"bytes,14,opt,name=price_prefix,json=pricePrefix,proto3" json:"price_prefix,omitempty"`
 	// Promotion text used for dyanmic formats of responsive ads. For example
 	// 'Free two-day shipping'.
-	PromoText *wrappers.StringValue `protobuf:"bytes,15,opt,name=promo_text,json=promoText,proto3" json:"promo_text,omitempty"`
+	PromoText *wrapperspb.StringValue `protobuf:"bytes,15,opt,name=promo_text,json=promoText,proto3" json:"promo_text,omitempty"`
 }
 
 func (x *LegacyResponsiveDisplayAdInfo) Reset() {
@@ -1761,84 +1761,84 @@ func (*LegacyResponsiveDisplayAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetShortHeadline() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetShortHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ShortHeadline
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetLongHeadline() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetLongHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LongHeadline
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetDescription() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetBusinessName() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetBusinessName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BusinessName
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetAllowFlexibleColor() *wrappers.BoolValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetAllowFlexibleColor() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.AllowFlexibleColor
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetAccentColor() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetAccentColor() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AccentColor
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetMainColor() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetMainColor() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MainColor
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetCallToActionText() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetCallToActionText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CallToActionText
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetLogoImage() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetLogoImage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LogoImage
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetSquareLogoImage() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetSquareLogoImage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SquareLogoImage
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetMarketingImage() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetMarketingImage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MarketingImage
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetSquareMarketingImage() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetSquareMarketingImage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SquareMarketingImage
 	}
@@ -1852,14 +1852,14 @@ func (x *LegacyResponsiveDisplayAdInfo) GetFormatSetting() enums.DisplayAdFormat
 	return enums.DisplayAdFormatSettingEnum_UNSPECIFIED
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetPricePrefix() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetPricePrefix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PricePrefix
 	}
 	return nil
 }
 
-func (x *LegacyResponsiveDisplayAdInfo) GetPromoText() *wrappers.StringValue {
+func (x *LegacyResponsiveDisplayAdInfo) GetPromoText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PromoText
 	}
@@ -2051,15 +2051,15 @@ type LegacyAppInstallAdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The id of the mobile app.
-	AppId *wrappers.StringValue `protobuf:"bytes,1,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppId *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 	// The app store the mobile app is available in.
 	AppStore enums.LegacyAppInstallAdAppStoreEnum_LegacyAppInstallAdAppStore `protobuf:"varint,2,opt,name=app_store,json=appStore,proto3,enum=google.ads.googleads.v4.enums.LegacyAppInstallAdAppStoreEnum_LegacyAppInstallAdAppStore" json:"app_store,omitempty"`
 	// The headline of the ad.
-	Headline *wrappers.StringValue `protobuf:"bytes,3,opt,name=headline,proto3" json:"headline,omitempty"`
+	Headline *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=headline,proto3" json:"headline,omitempty"`
 	// The first description line of the ad.
-	Description1 *wrappers.StringValue `protobuf:"bytes,4,opt,name=description1,proto3" json:"description1,omitempty"`
+	Description1 *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=description1,proto3" json:"description1,omitempty"`
 	// The second description line of the ad.
-	Description2 *wrappers.StringValue `protobuf:"bytes,5,opt,name=description2,proto3" json:"description2,omitempty"`
+	Description2 *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=description2,proto3" json:"description2,omitempty"`
 }
 
 func (x *LegacyAppInstallAdInfo) Reset() {
@@ -2094,7 +2094,7 @@ func (*LegacyAppInstallAdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_ad_type_infos_proto_rawDescGZIP(), []int{24}
 }
 
-func (x *LegacyAppInstallAdInfo) GetAppId() *wrappers.StringValue {
+func (x *LegacyAppInstallAdInfo) GetAppId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AppId
 	}
@@ -2108,21 +2108,21 @@ func (x *LegacyAppInstallAdInfo) GetAppStore() enums.LegacyAppInstallAdAppStoreE
 	return enums.LegacyAppInstallAdAppStoreEnum_UNSPECIFIED
 }
 
-func (x *LegacyAppInstallAdInfo) GetHeadline() *wrappers.StringValue {
+func (x *LegacyAppInstallAdInfo) GetHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Headline
 	}
 	return nil
 }
 
-func (x *LegacyAppInstallAdInfo) GetDescription1() *wrappers.StringValue {
+func (x *LegacyAppInstallAdInfo) GetDescription1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description1
 	}
 	return nil
 }
 
-func (x *LegacyAppInstallAdInfo) GetDescription2() *wrappers.StringValue {
+func (x *LegacyAppInstallAdInfo) GetDescription2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description2
 	}
@@ -2164,28 +2164,28 @@ type ResponsiveDisplayAdInfo struct {
 	// Optional YouTube videos for the ad. A maximum of 5 videos can be specified.
 	YoutubeVideos []*AdVideoAsset `protobuf:"bytes,8,rep,name=youtube_videos,json=youtubeVideos,proto3" json:"youtube_videos,omitempty"`
 	// The advertiser/brand name. Maximum display width is 25.
-	BusinessName *wrappers.StringValue `protobuf:"bytes,9,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
+	BusinessName *wrapperspb.StringValue `protobuf:"bytes,9,opt,name=business_name,json=businessName,proto3" json:"business_name,omitempty"`
 	// The main color of the ad in hexadecimal, e.g. #ffffff for white.
 	// If one of main_color and accent_color is set, the other is required as
 	// well.
-	MainColor *wrappers.StringValue `protobuf:"bytes,10,opt,name=main_color,json=mainColor,proto3" json:"main_color,omitempty"`
+	MainColor *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=main_color,json=mainColor,proto3" json:"main_color,omitempty"`
 	// The accent color of the ad in hexadecimal, e.g. #ffffff for white.
 	// If one of main_color and accent_color is set, the other is required as
 	// well.
-	AccentColor *wrappers.StringValue `protobuf:"bytes,11,opt,name=accent_color,json=accentColor,proto3" json:"accent_color,omitempty"`
+	AccentColor *wrapperspb.StringValue `protobuf:"bytes,11,opt,name=accent_color,json=accentColor,proto3" json:"accent_color,omitempty"`
 	// Advertiser's consent to allow flexible color. When true, the ad may be
 	// served with different color if necessary. When false, the ad will be served
 	// with the specified colors or a neutral color.
 	// The default value is true.
 	// Must be true if main_color and accent_color are not set.
-	AllowFlexibleColor *wrappers.BoolValue `protobuf:"bytes,12,opt,name=allow_flexible_color,json=allowFlexibleColor,proto3" json:"allow_flexible_color,omitempty"`
+	AllowFlexibleColor *wrapperspb.BoolValue `protobuf:"bytes,12,opt,name=allow_flexible_color,json=allowFlexibleColor,proto3" json:"allow_flexible_color,omitempty"`
 	// The call-to-action text for the ad. Maximum display width is 30.
-	CallToActionText *wrappers.StringValue `protobuf:"bytes,13,opt,name=call_to_action_text,json=callToActionText,proto3" json:"call_to_action_text,omitempty"`
+	CallToActionText *wrapperspb.StringValue `protobuf:"bytes,13,opt,name=call_to_action_text,json=callToActionText,proto3" json:"call_to_action_text,omitempty"`
 	// Prefix before price. E.g. 'as low as'.
-	PricePrefix *wrappers.StringValue `protobuf:"bytes,14,opt,name=price_prefix,json=pricePrefix,proto3" json:"price_prefix,omitempty"`
+	PricePrefix *wrapperspb.StringValue `protobuf:"bytes,14,opt,name=price_prefix,json=pricePrefix,proto3" json:"price_prefix,omitempty"`
 	// Promotion text used for dyanmic formats of responsive ads. For example
 	// 'Free two-day shipping'.
-	PromoText *wrappers.StringValue `protobuf:"bytes,15,opt,name=promo_text,json=promoText,proto3" json:"promo_text,omitempty"`
+	PromoText *wrapperspb.StringValue `protobuf:"bytes,15,opt,name=promo_text,json=promoText,proto3" json:"promo_text,omitempty"`
 	// Specifies which format the ad will be served in. Default is ALL_FORMATS.
 	FormatSetting enums.DisplayAdFormatSettingEnum_DisplayAdFormatSetting `protobuf:"varint,16,opt,name=format_setting,json=formatSetting,proto3,enum=google.ads.googleads.v4.enums.DisplayAdFormatSettingEnum_DisplayAdFormatSetting" json:"format_setting,omitempty"`
 }
@@ -2278,49 +2278,49 @@ func (x *ResponsiveDisplayAdInfo) GetYoutubeVideos() []*AdVideoAsset {
 	return nil
 }
 
-func (x *ResponsiveDisplayAdInfo) GetBusinessName() *wrappers.StringValue {
+func (x *ResponsiveDisplayAdInfo) GetBusinessName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BusinessName
 	}
 	return nil
 }
 
-func (x *ResponsiveDisplayAdInfo) GetMainColor() *wrappers.StringValue {
+func (x *ResponsiveDisplayAdInfo) GetMainColor() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MainColor
 	}
 	return nil
 }
 
-func (x *ResponsiveDisplayAdInfo) GetAccentColor() *wrappers.StringValue {
+func (x *ResponsiveDisplayAdInfo) GetAccentColor() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AccentColor
 	}
 	return nil
 }
 
-func (x *ResponsiveDisplayAdInfo) GetAllowFlexibleColor() *wrappers.BoolValue {
+func (x *ResponsiveDisplayAdInfo) GetAllowFlexibleColor() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.AllowFlexibleColor
 	}
 	return nil
 }
 
-func (x *ResponsiveDisplayAdInfo) GetCallToActionText() *wrappers.StringValue {
+func (x *ResponsiveDisplayAdInfo) GetCallToActionText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CallToActionText
 	}
 	return nil
 }
 
-func (x *ResponsiveDisplayAdInfo) GetPricePrefix() *wrappers.StringValue {
+func (x *ResponsiveDisplayAdInfo) GetPricePrefix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PricePrefix
 	}
 	return nil
 }
 
-func (x *ResponsiveDisplayAdInfo) GetPromoText() *wrappers.StringValue {
+func (x *ResponsiveDisplayAdInfo) GetPromoText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PromoText
 	}
@@ -2365,10 +2365,10 @@ type LocalAdInfo struct {
 	Videos []*AdVideoAsset `protobuf:"bytes,6,rep,name=videos,proto3" json:"videos,omitempty"`
 	// First part of optional text that may appear appended to the url displayed
 	// in the ad.
-	Path1 *wrappers.StringValue `protobuf:"bytes,7,opt,name=path1,proto3" json:"path1,omitempty"`
+	Path1 *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=path1,proto3" json:"path1,omitempty"`
 	// Second part of optional text that may appear appended to the url displayed
 	// in the ad. This field can only be set when path1 is also set.
-	Path2 *wrappers.StringValue `protobuf:"bytes,8,opt,name=path2,proto3" json:"path2,omitempty"`
+	Path2 *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=path2,proto3" json:"path2,omitempty"`
 }
 
 func (x *LocalAdInfo) Reset() {
@@ -2445,14 +2445,14 @@ func (x *LocalAdInfo) GetVideos() []*AdVideoAsset {
 	return nil
 }
 
-func (x *LocalAdInfo) GetPath1() *wrappers.StringValue {
+func (x *LocalAdInfo) GetPath1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Path1
 	}
 	return nil
 }
 
-func (x *LocalAdInfo) GetPath2() *wrappers.StringValue {
+func (x *LocalAdInfo) GetPath2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Path2
 	}
@@ -3292,19 +3292,19 @@ var file_google_ads_googleads_v4_common_ad_type_infos_proto_goTypes = []interfac
 	(*ResponsiveDisplayAdInfo)(nil),         // 25: google.ads.googleads.v4.common.ResponsiveDisplayAdInfo
 	(*LocalAdInfo)(nil),                     // 26: google.ads.googleads.v4.common.LocalAdInfo
 	(*DisplayUploadAdInfo)(nil),             // 27: google.ads.googleads.v4.common.DisplayUploadAdInfo
-	(*wrappers.StringValue)(nil),            // 28: google.protobuf.StringValue
-	(*wrappers.BoolValue)(nil),              // 29: google.protobuf.BoolValue
+	(*wrapperspb.StringValue)(nil),          // 28: google.protobuf.StringValue
+	(*wrapperspb.BoolValue)(nil),            // 29: google.protobuf.BoolValue
 	(enums.CallConversionReportingStateEnum_CallConversionReportingState)(0), // 30: google.ads.googleads.v4.enums.CallConversionReportingStateEnum.CallConversionReportingState
-	(*wrappers.Int64Value)(nil),                                  // 31: google.protobuf.Int64Value
-	(enums.MimeTypeEnum_MimeType)(0),                             // 32: google.ads.googleads.v4.enums.MimeTypeEnum.MimeType
-	(*wrappers.BytesValue)(nil),                                  // 33: google.protobuf.BytesValue
-	(*AdTextAsset)(nil),                                          // 34: google.ads.googleads.v4.common.AdTextAsset
-	(enums.DisplayAdFormatSettingEnum_DisplayAdFormatSetting)(0), // 35: google.ads.googleads.v4.enums.DisplayAdFormatSettingEnum.DisplayAdFormatSetting
-	(*AdImageAsset)(nil),                                         // 36: google.ads.googleads.v4.common.AdImageAsset
-	(*AdVideoAsset)(nil),                                         // 37: google.ads.googleads.v4.common.AdVideoAsset
-	(*AdMediaBundleAsset)(nil),                                   // 38: google.ads.googleads.v4.common.AdMediaBundleAsset
-	(enums.LegacyAppInstallAdAppStoreEnum_LegacyAppInstallAdAppStore)(0), // 39: google.ads.googleads.v4.enums.LegacyAppInstallAdAppStoreEnum.LegacyAppInstallAdAppStore
-	(enums.DisplayUploadProductTypeEnum_DisplayUploadProductType)(0),     // 40: google.ads.googleads.v4.enums.DisplayUploadProductTypeEnum.DisplayUploadProductType
+	(*wrapperspb.Int64Value)(nil),                                            // 31: google.protobuf.Int64Value
+	(enums.MimeTypeEnum_MimeType)(0),                                         // 32: google.ads.googleads.v4.enums.MimeTypeEnum.MimeType
+	(*wrapperspb.BytesValue)(nil),                                            // 33: google.protobuf.BytesValue
+	(*AdTextAsset)(nil),                                                      // 34: google.ads.googleads.v4.common.AdTextAsset
+	(enums.DisplayAdFormatSettingEnum_DisplayAdFormatSetting)(0),             // 35: google.ads.googleads.v4.enums.DisplayAdFormatSettingEnum.DisplayAdFormatSetting
+	(*AdImageAsset)(nil),                                                     // 36: google.ads.googleads.v4.common.AdImageAsset
+	(*AdVideoAsset)(nil),                                                     // 37: google.ads.googleads.v4.common.AdVideoAsset
+	(*AdMediaBundleAsset)(nil),                                               // 38: google.ads.googleads.v4.common.AdMediaBundleAsset
+	(enums.LegacyAppInstallAdAppStoreEnum_LegacyAppInstallAdAppStore)(0),     // 39: google.ads.googleads.v4.enums.LegacyAppInstallAdAppStoreEnum.LegacyAppInstallAdAppStore
+	(enums.DisplayUploadProductTypeEnum_DisplayUploadProductType)(0),         // 40: google.ads.googleads.v4.enums.DisplayUploadProductTypeEnum.DisplayUploadProductType
 }
 var file_google_ads_googleads_v4_common_ad_type_infos_proto_depIdxs = []int32{
 	28,  // 0: google.ads.googleads.v4.common.TextAdInfo.headline:type_name -> google.protobuf.StringValue

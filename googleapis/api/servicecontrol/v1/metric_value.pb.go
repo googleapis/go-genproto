@@ -25,9 +25,9 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -48,19 +48,18 @@ type MetricValue struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The labels describing the metric value.
-	// See comments on
-	// [google.api.servicecontrol.v1.Operation.labels][google.api.servicecontrol.v1.Operation.labels]
-	// for the overriding relationship. Note that this map must not contain
-	// monitored resource labels.
+	// See comments on [google.api.servicecontrol.v1.Operation.labels][google.api.servicecontrol.v1.Operation.labels] for
+	// the overriding relationship.
+	// Note that this map must not contain monitored resource labels.
 	Labels map[string]string `protobuf:"bytes,1,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// The start of the time period over which this metric value's measurement
 	// applies. The time period has different semantics for different metric
 	// types (cumulative, delta, and gauge). See the metric definition
 	// documentation in the service configuration for details.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The end of the time period over which this metric value's measurement
 	// applies.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The value. The type of value used in the request must
 	// agree with the metric definition in the service configuration, otherwise
 	// the MetricValue is rejected.
@@ -113,14 +112,14 @@ func (x *MetricValue) GetLabels() map[string]string {
 	return nil
 }
 
-func (x *MetricValue) GetStartTime() *timestamp.Timestamp {
+func (x *MetricValue) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *MetricValue) GetEndTime() *timestamp.Timestamp {
+func (x *MetricValue) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -347,11 +346,11 @@ func file_google_api_servicecontrol_v1_metric_value_proto_rawDescGZIP() []byte {
 
 var file_google_api_servicecontrol_v1_metric_value_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_google_api_servicecontrol_v1_metric_value_proto_goTypes = []interface{}{
-	(*MetricValue)(nil),         // 0: google.api.servicecontrol.v1.MetricValue
-	(*MetricValueSet)(nil),      // 1: google.api.servicecontrol.v1.MetricValueSet
-	nil,                         // 2: google.api.servicecontrol.v1.MetricValue.LabelsEntry
-	(*timestamp.Timestamp)(nil), // 3: google.protobuf.Timestamp
-	(*Distribution)(nil),        // 4: google.api.servicecontrol.v1.Distribution
+	(*MetricValue)(nil),           // 0: google.api.servicecontrol.v1.MetricValue
+	(*MetricValueSet)(nil),        // 1: google.api.servicecontrol.v1.MetricValueSet
+	nil,                           // 2: google.api.servicecontrol.v1.MetricValue.LabelsEntry
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
+	(*Distribution)(nil),          // 4: google.api.servicecontrol.v1.Distribution
 }
 var file_google_api_servicecontrol_v1_metric_value_proto_depIdxs = []int32{
 	2, // 0: google.api.servicecontrol.v1.MetricValue.labels:type_name -> google.api.servicecontrol.v1.MetricValue.LabelsEntry

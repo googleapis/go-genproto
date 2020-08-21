@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -185,7 +185,7 @@ type Location struct {
 	// drop-off. Heading values can be from 0 to 360, where 0 specifies a heading
 	// of due North, 90 specifies a heading of due East, etc. You can use this
 	// field only for `DRIVE` and `TWO_WHEELER` travel modes.
-	Heading *wrappers.Int32Value `protobuf:"bytes,2,opt,name=heading,proto3" json:"heading,omitempty"`
+	Heading *wrapperspb.Int32Value `protobuf:"bytes,2,opt,name=heading,proto3" json:"heading,omitempty"`
 }
 
 func (x *Location) Reset() {
@@ -227,7 +227,7 @@ func (x *Location) GetLatLng() *latlng.LatLng {
 	return nil
 }
 
-func (x *Location) GetHeading() *wrappers.Int32Value {
+func (x *Location) GetHeading() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.Heading
 	}
@@ -292,10 +292,10 @@ func file_google_maps_routes_v1_waypoint_proto_rawDescGZIP() []byte {
 
 var file_google_maps_routes_v1_waypoint_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_google_maps_routes_v1_waypoint_proto_goTypes = []interface{}{
-	(*Waypoint)(nil),            // 0: google.maps.routes.v1.Waypoint
-	(*Location)(nil),            // 1: google.maps.routes.v1.Location
-	(*latlng.LatLng)(nil),       // 2: google.type.LatLng
-	(*wrappers.Int32Value)(nil), // 3: google.protobuf.Int32Value
+	(*Waypoint)(nil),              // 0: google.maps.routes.v1.Waypoint
+	(*Location)(nil),              // 1: google.maps.routes.v1.Location
+	(*latlng.LatLng)(nil),         // 2: google.type.LatLng
+	(*wrapperspb.Int32Value)(nil), // 3: google.protobuf.Int32Value
 }
 var file_google_maps_routes_v1_waypoint_proto_depIdxs = []int32{
 	1, // 0: google.maps.routes.v1.Waypoint.location:type_name -> google.maps.routes.v1.Location

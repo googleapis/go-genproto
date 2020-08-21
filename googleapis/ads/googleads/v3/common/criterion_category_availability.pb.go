@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -123,7 +123,7 @@ type CriterionCategoryChannelAvailability struct {
 	// advertising_channel_type being DISPLAY and include_default_channel_sub_type
 	// being false means that the default display campaign where channel sub type
 	// is not set is not included in this availability configuration.
-	IncludeDefaultChannelSubType *wrappers.BoolValue `protobuf:"bytes,4,opt,name=include_default_channel_sub_type,json=includeDefaultChannelSubType,proto3" json:"include_default_channel_sub_type,omitempty"`
+	IncludeDefaultChannelSubType *wrapperspb.BoolValue `protobuf:"bytes,4,opt,name=include_default_channel_sub_type,json=includeDefaultChannelSubType,proto3" json:"include_default_channel_sub_type,omitempty"`
 }
 
 func (x *CriterionCategoryChannelAvailability) Reset() {
@@ -179,7 +179,7 @@ func (x *CriterionCategoryChannelAvailability) GetAdvertisingChannelSubType() []
 	return nil
 }
 
-func (x *CriterionCategoryChannelAvailability) GetIncludeDefaultChannelSubType() *wrappers.BoolValue {
+func (x *CriterionCategoryChannelAvailability) GetIncludeDefaultChannelSubType() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.IncludeDefaultChannelSubType
 	}
@@ -198,9 +198,9 @@ type CriterionCategoryLocaleAvailability struct {
 	// be set).
 	AvailabilityMode enums.CriterionCategoryLocaleAvailabilityModeEnum_CriterionCategoryLocaleAvailabilityMode `protobuf:"varint,1,opt,name=availability_mode,json=availabilityMode,proto3,enum=google.ads.googleads.v3.enums.CriterionCategoryLocaleAvailabilityModeEnum_CriterionCategoryLocaleAvailabilityMode" json:"availability_mode,omitempty"`
 	// Code of the country.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// Code of the language.
-	LanguageCode *wrappers.StringValue `protobuf:"bytes,3,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	LanguageCode *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 }
 
 func (x *CriterionCategoryLocaleAvailability) Reset() {
@@ -242,14 +242,14 @@ func (x *CriterionCategoryLocaleAvailability) GetAvailabilityMode() enums.Criter
 	return enums.CriterionCategoryLocaleAvailabilityModeEnum_UNSPECIFIED
 }
 
-func (x *CriterionCategoryLocaleAvailability) GetCountryCode() *wrappers.StringValue {
+func (x *CriterionCategoryLocaleAvailability) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
 	return nil
 }
 
-func (x *CriterionCategoryLocaleAvailability) GetLanguageCode() *wrappers.StringValue {
+func (x *CriterionCategoryLocaleAvailability) GetLanguageCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LanguageCode
 	}
@@ -399,9 +399,9 @@ var file_google_ads_googleads_v3_common_criterion_category_availability_proto_go
 	(enums.CriterionCategoryChannelAvailabilityModeEnum_CriterionCategoryChannelAvailabilityMode)(0), // 3: google.ads.googleads.v3.enums.CriterionCategoryChannelAvailabilityModeEnum.CriterionCategoryChannelAvailabilityMode
 	(enums.AdvertisingChannelTypeEnum_AdvertisingChannelType)(0),                                     // 4: google.ads.googleads.v3.enums.AdvertisingChannelTypeEnum.AdvertisingChannelType
 	(enums.AdvertisingChannelSubTypeEnum_AdvertisingChannelSubType)(0),                               // 5: google.ads.googleads.v3.enums.AdvertisingChannelSubTypeEnum.AdvertisingChannelSubType
-	(*wrappers.BoolValue)(nil),                                                                       // 6: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                                                                     // 6: google.protobuf.BoolValue
 	(enums.CriterionCategoryLocaleAvailabilityModeEnum_CriterionCategoryLocaleAvailabilityMode)(0),   // 7: google.ads.googleads.v3.enums.CriterionCategoryLocaleAvailabilityModeEnum.CriterionCategoryLocaleAvailabilityMode
-	(*wrappers.StringValue)(nil),                                                                     // 8: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                                                   // 8: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v3_common_criterion_category_availability_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v3.common.CriterionCategoryAvailability.channel:type_name -> google.ads.googleads.v3.common.CriterionCategoryChannelAvailability

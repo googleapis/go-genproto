@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -125,9 +125,9 @@ type Model struct {
 	// come from the same ancestor project and location.
 	DatasetId string `protobuf:"bytes,3,opt,name=dataset_id,json=datasetId,proto3" json:"dataset_id,omitempty"`
 	// Output only. Timestamp when the model training finished  and can be used for prediction.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Timestamp when this model was last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. Deployment state of the model. A model can only serve
 	// prediction requests after it gets deployed.
 	DeploymentState Model_DeploymentState `protobuf:"varint,8,opt,name=deployment_state,json=deploymentState,proto3,enum=google.cloud.automl.v1.Model_DeploymentState" json:"deployment_state,omitempty"`
@@ -247,14 +247,14 @@ func (x *Model) GetDatasetId() string {
 	return ""
 }
 
-func (x *Model) GetCreateTime() *timestamp.Timestamp {
+func (x *Model) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Model) GetUpdateTime() *timestamp.Timestamp {
+func (x *Model) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -474,7 +474,7 @@ var file_google_cloud_automl_v1_model_proto_goTypes = []interface{}{
 	(*ImageObjectDetectionModelMetadata)(nil), // 6: google.cloud.automl.v1.ImageObjectDetectionModelMetadata
 	(*TextExtractionModelMetadata)(nil),       // 7: google.cloud.automl.v1.TextExtractionModelMetadata
 	(*TextSentimentModelMetadata)(nil),        // 8: google.cloud.automl.v1.TextSentimentModelMetadata
-	(*timestamp.Timestamp)(nil),               // 9: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),             // 9: google.protobuf.Timestamp
 }
 var file_google_cloud_automl_v1_model_proto_depIdxs = []int32{
 	3,  // 0: google.cloud.automl.v1.Model.translation_model_metadata:type_name -> google.cloud.automl.v1.TranslationModelMetadata

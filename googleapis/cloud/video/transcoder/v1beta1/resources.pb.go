@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -721,10 +721,10 @@ type EditAtom struct {
 	// End time in seconds for the atom, relative to the input file timeline.
 	// When `end_time_offset` is not specified, the `inputs` are used until
 	// the end of the atom.
-	EndTimeOffset *duration.Duration `protobuf:"bytes,3,opt,name=end_time_offset,json=endTimeOffset,proto3" json:"end_time_offset,omitempty"`
+	EndTimeOffset *durationpb.Duration `protobuf:"bytes,3,opt,name=end_time_offset,json=endTimeOffset,proto3" json:"end_time_offset,omitempty"`
 	// Start time in seconds for the atom, relative to the input file timeline.
 	// The default is `0s`.
-	StartTimeOffset *duration.Duration `protobuf:"bytes,4,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
+	StartTimeOffset *durationpb.Duration `protobuf:"bytes,4,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
 }
 
 func (x *EditAtom) Reset() {
@@ -773,14 +773,14 @@ func (x *EditAtom) GetInputs() []string {
 	return nil
 }
 
-func (x *EditAtom) GetEndTimeOffset() *duration.Duration {
+func (x *EditAtom) GetEndTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.EndTimeOffset
 	}
 	return nil
 }
 
-func (x *EditAtom) GetStartTimeOffset() *duration.Duration {
+func (x *EditAtom) GetStartTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.StartTimeOffset
 	}
@@ -795,7 +795,7 @@ type AdBreak struct {
 
 	// Start time in seconds for the ad break, relative to the output file
 	// timeline. The default is `0s`.
-	StartTimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
+	StartTimeOffset *durationpb.Duration `protobuf:"bytes,1,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
 }
 
 func (x *AdBreak) Reset() {
@@ -830,7 +830,7 @@ func (*AdBreak) Descriptor() ([]byte, []int) {
 	return file_google_cloud_video_transcoder_v1beta1_resources_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *AdBreak) GetStartTimeOffset() *duration.Duration {
+func (x *AdBreak) GetStartTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.StartTimeOffset
 	}
@@ -1204,11 +1204,11 @@ type SpriteSheet struct {
 	RowCount int32 `protobuf:"varint,6,opt,name=row_count,json=rowCount,proto3" json:"row_count,omitempty"`
 	// Start time in seconds, relative to the output file timeline. Determines the
 	// first sprite to pick. The default is `0s`.
-	StartTimeOffset *duration.Duration `protobuf:"bytes,7,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
+	StartTimeOffset *durationpb.Duration `protobuf:"bytes,7,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
 	// End time in seconds, relative to the output file timeline. When
 	// `end_time_offset` is not specified, the sprites are generated until the end
 	// of the output file.
-	EndTimeOffset *duration.Duration `protobuf:"bytes,8,opt,name=end_time_offset,json=endTimeOffset,proto3" json:"end_time_offset,omitempty"`
+	EndTimeOffset *durationpb.Duration `protobuf:"bytes,8,opt,name=end_time_offset,json=endTimeOffset,proto3" json:"end_time_offset,omitempty"`
 	// Specify either total number of sprites or interval to create sprites.
 	//
 	// Types that are assignable to ExtractionStrategy:
@@ -1291,14 +1291,14 @@ func (x *SpriteSheet) GetRowCount() int32 {
 	return 0
 }
 
-func (x *SpriteSheet) GetStartTimeOffset() *duration.Duration {
+func (x *SpriteSheet) GetStartTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.StartTimeOffset
 	}
 	return nil
 }
 
-func (x *SpriteSheet) GetEndTimeOffset() *duration.Duration {
+func (x *SpriteSheet) GetEndTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.EndTimeOffset
 	}
@@ -1319,7 +1319,7 @@ func (x *SpriteSheet) GetTotalCount() int32 {
 	return 0
 }
 
-func (x *SpriteSheet) GetInterval() *duration.Duration {
+func (x *SpriteSheet) GetInterval() *durationpb.Duration {
 	if x, ok := x.GetExtractionStrategy().(*SpriteSheet_Interval); ok {
 		return x.Interval
 	}
@@ -1340,7 +1340,7 @@ type SpriteSheet_TotalCount struct {
 type SpriteSheet_Interval struct {
 	// Starting from `0s`, create sprites at regular intervals. Specify the
 	// interval value in seconds.
-	Interval *duration.Duration `protobuf:"bytes,10,opt,name=interval,proto3,oneof"`
+	Interval *durationpb.Duration `protobuf:"bytes,10,opt,name=interval,proto3,oneof"`
 }
 
 func (*SpriteSheet_TotalCount) isSpriteSheet_ExtractionStrategy() {}
@@ -1719,7 +1719,7 @@ func (x *VideoStream) GetGopFrameCount() int32 {
 	return 0
 }
 
-func (x *VideoStream) GetGopDuration() *duration.Duration {
+func (x *VideoStream) GetGopDuration() *durationpb.Duration {
 	if x, ok := x.GetGopMode().(*VideoStream_GopDuration); ok {
 		return x.GopDuration
 	}
@@ -1774,7 +1774,7 @@ type VideoStream_GopFrameCount struct {
 type VideoStream_GopDuration struct {
 	// Select the GOP size based on the specified duration. The default is
 	// `"3s"`.
-	GopDuration *duration.Duration `protobuf:"bytes,16,opt,name=gop_duration,json=gopDuration,proto3,oneof"`
+	GopDuration *durationpb.Duration `protobuf:"bytes,16,opt,name=gop_duration,json=gopDuration,proto3,oneof"`
 }
 
 func (*VideoStream_GopFrameCount) isVideoStream_GopMode() {}
@@ -1976,7 +1976,7 @@ type SegmentSettings struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Duration of the segments in seconds. The default is `"6.0s"`.
-	SegmentDuration *duration.Duration `protobuf:"bytes,1,opt,name=segment_duration,json=segmentDuration,proto3" json:"segment_duration,omitempty"`
+	SegmentDuration *durationpb.Duration `protobuf:"bytes,1,opt,name=segment_duration,json=segmentDuration,proto3" json:"segment_duration,omitempty"`
 	// Required. Create an individual segment file. The default is `false`.
 	IndividualSegments bool `protobuf:"varint,3,opt,name=individual_segments,json=individualSegments,proto3" json:"individual_segments,omitempty"`
 }
@@ -2013,7 +2013,7 @@ func (*SegmentSettings) Descriptor() ([]byte, []int) {
 	return file_google_cloud_video_transcoder_v1beta1_resources_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *SegmentSettings) GetSegmentDuration() *duration.Duration {
+func (x *SegmentSettings) GetSegmentDuration() *durationpb.Duration {
 	if x != nil {
 		return x.SegmentDuration
 	}
@@ -2472,7 +2472,7 @@ type Overlay_AnimationStatic struct {
 	// object.
 	Xy *Overlay_NormalizedCoordinate `protobuf:"bytes,1,opt,name=xy,proto3" json:"xy,omitempty"`
 	// The time to start displaying the overlay object, in seconds. Default: 0
-	StartTimeOffset *duration.Duration `protobuf:"bytes,2,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
+	StartTimeOffset *durationpb.Duration `protobuf:"bytes,2,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
 }
 
 func (x *Overlay_AnimationStatic) Reset() {
@@ -2514,7 +2514,7 @@ func (x *Overlay_AnimationStatic) GetXy() *Overlay_NormalizedCoordinate {
 	return nil
 }
 
-func (x *Overlay_AnimationStatic) GetStartTimeOffset() *duration.Duration {
+func (x *Overlay_AnimationStatic) GetStartTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.StartTimeOffset
 	}
@@ -2534,10 +2534,10 @@ type Overlay_AnimationFade struct {
 	// object.
 	Xy *Overlay_NormalizedCoordinate `protobuf:"bytes,2,opt,name=xy,proto3" json:"xy,omitempty"`
 	// The time to start the fade animation, in seconds. Default: 0
-	StartTimeOffset *duration.Duration `protobuf:"bytes,3,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
+	StartTimeOffset *durationpb.Duration `protobuf:"bytes,3,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
 	// The time to end the fade animation, in seconds. Default:
 	// `start_time_offset` + 1s
-	EndTimeOffset *duration.Duration `protobuf:"bytes,4,opt,name=end_time_offset,json=endTimeOffset,proto3" json:"end_time_offset,omitempty"`
+	EndTimeOffset *durationpb.Duration `protobuf:"bytes,4,opt,name=end_time_offset,json=endTimeOffset,proto3" json:"end_time_offset,omitempty"`
 }
 
 func (x *Overlay_AnimationFade) Reset() {
@@ -2586,14 +2586,14 @@ func (x *Overlay_AnimationFade) GetXy() *Overlay_NormalizedCoordinate {
 	return nil
 }
 
-func (x *Overlay_AnimationFade) GetStartTimeOffset() *duration.Duration {
+func (x *Overlay_AnimationFade) GetStartTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.StartTimeOffset
 	}
 	return nil
 }
 
-func (x *Overlay_AnimationFade) GetEndTimeOffset() *duration.Duration {
+func (x *Overlay_AnimationFade) GetEndTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.EndTimeOffset
 	}
@@ -2609,7 +2609,7 @@ type Overlay_AnimationEnd struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time to end overlay object, in seconds. Default: 0
-	StartTimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
+	StartTimeOffset *durationpb.Duration `protobuf:"bytes,1,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
 }
 
 func (x *Overlay_AnimationEnd) Reset() {
@@ -2644,7 +2644,7 @@ func (*Overlay_AnimationEnd) Descriptor() ([]byte, []int) {
 	return file_google_cloud_video_transcoder_v1beta1_resources_proto_rawDescGZIP(), []int{12, 4}
 }
 
-func (x *Overlay_AnimationEnd) GetStartTimeOffset() *duration.Duration {
+func (x *Overlay_AnimationEnd) GetStartTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.StartTimeOffset
 	}
@@ -4113,7 +4113,7 @@ var file_google_cloud_video_transcoder_v1beta1_resources_proto_goTypes = []inter
 	(*Encryption_Aes128Encryption)(nil),                          // 40: google.cloud.video.transcoder.v1beta1.Encryption.Aes128Encryption
 	(*Encryption_SampleAesEncryption)(nil),                       // 41: google.cloud.video.transcoder.v1beta1.Encryption.SampleAesEncryption
 	(*Encryption_MpegCommonEncryption)(nil),                      // 42: google.cloud.video.transcoder.v1beta1.Encryption.MpegCommonEncryption
-	(*duration.Duration)(nil),                                    // 43: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                                  // 43: google.protobuf.Duration
 }
 var file_google_cloud_video_transcoder_v1beta1_resources_proto_depIdxs = []int32{
 	5,  // 0: google.cloud.video.transcoder.v1beta1.Job.config:type_name -> google.cloud.video.transcoder.v1beta1.JobConfig

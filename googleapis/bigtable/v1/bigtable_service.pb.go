@@ -25,13 +25,13 @@ import (
 	reflect "reflect"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -150,7 +150,7 @@ var file_google_bigtable_v1_bigtable_service_proto_goTypes = []interface{}{
 	(*ReadModifyWriteRowRequest)(nil), // 5: google.bigtable.v1.ReadModifyWriteRowRequest
 	(*ReadRowsResponse)(nil),          // 6: google.bigtable.v1.ReadRowsResponse
 	(*SampleRowKeysResponse)(nil),     // 7: google.bigtable.v1.SampleRowKeysResponse
-	(*empty.Empty)(nil),               // 8: google.protobuf.Empty
+	(*emptypb.Empty)(nil),             // 8: google.protobuf.Empty
 	(*MutateRowsResponse)(nil),        // 9: google.bigtable.v1.MutateRowsResponse
 	(*CheckAndMutateRowResponse)(nil), // 10: google.bigtable.v1.CheckAndMutateRowResponse
 	(*Row)(nil),                       // 11: google.bigtable.v1.Row
@@ -225,7 +225,7 @@ type BigtableServiceClient interface {
 	SampleRowKeys(ctx context.Context, in *SampleRowKeysRequest, opts ...grpc.CallOption) (BigtableService_SampleRowKeysClient, error)
 	// Mutates a row atomically. Cells already present in the row are left
 	// unchanged unless explicitly changed by 'mutation'.
-	MutateRow(ctx context.Context, in *MutateRowRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	MutateRow(ctx context.Context, in *MutateRowRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Mutates multiple rows in a batch. Each individual row is mutated
 	// atomically as in MutateRow, but the entire batch is not executed
 	// atomically.
@@ -311,8 +311,8 @@ func (x *bigtableServiceSampleRowKeysClient) Recv() (*SampleRowKeysResponse, err
 	return m, nil
 }
 
-func (c *bigtableServiceClient) MutateRow(ctx context.Context, in *MutateRowRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *bigtableServiceClient) MutateRow(ctx context.Context, in *MutateRowRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.bigtable.v1.BigtableService/MutateRow", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -361,7 +361,7 @@ type BigtableServiceServer interface {
 	SampleRowKeys(*SampleRowKeysRequest, BigtableService_SampleRowKeysServer) error
 	// Mutates a row atomically. Cells already present in the row are left
 	// unchanged unless explicitly changed by 'mutation'.
-	MutateRow(context.Context, *MutateRowRequest) (*empty.Empty, error)
+	MutateRow(context.Context, *MutateRowRequest) (*emptypb.Empty, error)
 	// Mutates multiple rows in a batch. Each individual row is mutated
 	// atomically as in MutateRow, but the entire batch is not executed
 	// atomically.
@@ -385,7 +385,7 @@ func (*UnimplementedBigtableServiceServer) ReadRows(*ReadRowsRequest, BigtableSe
 func (*UnimplementedBigtableServiceServer) SampleRowKeys(*SampleRowKeysRequest, BigtableService_SampleRowKeysServer) error {
 	return status.Errorf(codes.Unimplemented, "method SampleRowKeys not implemented")
 }
-func (*UnimplementedBigtableServiceServer) MutateRow(context.Context, *MutateRowRequest) (*empty.Empty, error) {
+func (*UnimplementedBigtableServiceServer) MutateRow(context.Context, *MutateRowRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MutateRow not implemented")
 }
 func (*UnimplementedBigtableServiceServer) MutateRows(context.Context, *MutateRowsRequest) (*MutateRowsResponse, error) {

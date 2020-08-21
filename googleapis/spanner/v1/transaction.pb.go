@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -452,7 +452,7 @@ type Transaction struct {
 	//
 	// A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds.
 	// Example: `"2014-10-02T15:01:23.045123456Z"`.
-	ReadTimestamp *timestamp.Timestamp `protobuf:"bytes,2,opt,name=read_timestamp,json=readTimestamp,proto3" json:"read_timestamp,omitempty"`
+	ReadTimestamp *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=read_timestamp,json=readTimestamp,proto3" json:"read_timestamp,omitempty"`
 }
 
 func (x *Transaction) Reset() {
@@ -494,7 +494,7 @@ func (x *Transaction) GetId() []byte {
 	return nil
 }
 
-func (x *Transaction) GetReadTimestamp() *timestamp.Timestamp {
+func (x *Transaction) GetReadTimestamp() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTimestamp
 	}
@@ -755,28 +755,28 @@ func (x *TransactionOptions_ReadOnly) GetStrong() bool {
 	return false
 }
 
-func (x *TransactionOptions_ReadOnly) GetMinReadTimestamp() *timestamp.Timestamp {
+func (x *TransactionOptions_ReadOnly) GetMinReadTimestamp() *timestamppb.Timestamp {
 	if x, ok := x.GetTimestampBound().(*TransactionOptions_ReadOnly_MinReadTimestamp); ok {
 		return x.MinReadTimestamp
 	}
 	return nil
 }
 
-func (x *TransactionOptions_ReadOnly) GetMaxStaleness() *duration.Duration {
+func (x *TransactionOptions_ReadOnly) GetMaxStaleness() *durationpb.Duration {
 	if x, ok := x.GetTimestampBound().(*TransactionOptions_ReadOnly_MaxStaleness); ok {
 		return x.MaxStaleness
 	}
 	return nil
 }
 
-func (x *TransactionOptions_ReadOnly) GetReadTimestamp() *timestamp.Timestamp {
+func (x *TransactionOptions_ReadOnly) GetReadTimestamp() *timestamppb.Timestamp {
 	if x, ok := x.GetTimestampBound().(*TransactionOptions_ReadOnly_ReadTimestamp); ok {
 		return x.ReadTimestamp
 	}
 	return nil
 }
 
-func (x *TransactionOptions_ReadOnly) GetExactStaleness() *duration.Duration {
+func (x *TransactionOptions_ReadOnly) GetExactStaleness() *durationpb.Duration {
 	if x, ok := x.GetTimestampBound().(*TransactionOptions_ReadOnly_ExactStaleness); ok {
 		return x.ExactStaleness
 	}
@@ -811,7 +811,7 @@ type TransactionOptions_ReadOnly_MinReadTimestamp struct {
 	//
 	// A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds.
 	// Example: `"2014-10-02T15:01:23.045123456Z"`.
-	MinReadTimestamp *timestamp.Timestamp `protobuf:"bytes,2,opt,name=min_read_timestamp,json=minReadTimestamp,proto3,oneof"`
+	MinReadTimestamp *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=min_read_timestamp,json=minReadTimestamp,proto3,oneof"`
 }
 
 type TransactionOptions_ReadOnly_MaxStaleness struct {
@@ -828,7 +828,7 @@ type TransactionOptions_ReadOnly_MaxStaleness struct {
 	//
 	// Note that this option can only be used in single-use
 	// transactions.
-	MaxStaleness *duration.Duration `protobuf:"bytes,3,opt,name=max_staleness,json=maxStaleness,proto3,oneof"`
+	MaxStaleness *durationpb.Duration `protobuf:"bytes,3,opt,name=max_staleness,json=maxStaleness,proto3,oneof"`
 }
 
 type TransactionOptions_ReadOnly_ReadTimestamp struct {
@@ -844,7 +844,7 @@ type TransactionOptions_ReadOnly_ReadTimestamp struct {
 	//
 	// A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds.
 	// Example: `"2014-10-02T15:01:23.045123456Z"`.
-	ReadTimestamp *timestamp.Timestamp `protobuf:"bytes,4,opt,name=read_timestamp,json=readTimestamp,proto3,oneof"`
+	ReadTimestamp *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=read_timestamp,json=readTimestamp,proto3,oneof"`
 }
 
 type TransactionOptions_ReadOnly_ExactStaleness struct {
@@ -859,7 +859,7 @@ type TransactionOptions_ReadOnly_ExactStaleness struct {
 	//
 	// Useful for reading at nearby replicas without the distributed
 	// timestamp negotiation overhead of `max_staleness`.
-	ExactStaleness *duration.Duration `protobuf:"bytes,5,opt,name=exact_staleness,json=exactStaleness,proto3,oneof"`
+	ExactStaleness *durationpb.Duration `protobuf:"bytes,5,opt,name=exact_staleness,json=exactStaleness,proto3,oneof"`
 }
 
 func (*TransactionOptions_ReadOnly_Strong) isTransactionOptions_ReadOnly_TimestampBound() {}
@@ -981,8 +981,8 @@ var file_google_spanner_v1_transaction_proto_goTypes = []interface{}{
 	(*TransactionOptions_ReadWrite)(nil),      // 3: google.spanner.v1.TransactionOptions.ReadWrite
 	(*TransactionOptions_PartitionedDml)(nil), // 4: google.spanner.v1.TransactionOptions.PartitionedDml
 	(*TransactionOptions_ReadOnly)(nil),       // 5: google.spanner.v1.TransactionOptions.ReadOnly
-	(*timestamp.Timestamp)(nil),               // 6: google.protobuf.Timestamp
-	(*duration.Duration)(nil),                 // 7: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),             // 6: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),               // 7: google.protobuf.Duration
 }
 var file_google_spanner_v1_transaction_proto_depIdxs = []int32{
 	3,  // 0: google.spanner.v1.TransactionOptions.read_write:type_name -> google.spanner.v1.TransactionOptions.ReadWrite

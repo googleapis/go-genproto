@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,7 +54,7 @@ type FrequencyCapEntry struct {
 	// than one frequency cap with the same key.
 	Key *FrequencyCapKey `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	// Maximum number of events allowed during the time range by this cap.
-	Cap *wrappers.Int32Value `protobuf:"bytes,2,opt,name=cap,proto3" json:"cap,omitempty"`
+	Cap *wrapperspb.Int32Value `protobuf:"bytes,2,opt,name=cap,proto3" json:"cap,omitempty"`
 }
 
 func (x *FrequencyCapEntry) Reset() {
@@ -96,7 +96,7 @@ func (x *FrequencyCapEntry) GetKey() *FrequencyCapKey {
 	return nil
 }
 
-func (x *FrequencyCapEntry) GetCap() *wrappers.Int32Value {
+func (x *FrequencyCapEntry) GetCap() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.Cap
 	}
@@ -118,7 +118,7 @@ type FrequencyCapKey struct {
 	// Unit of time the cap is defined at (e.g. day, week).
 	TimeUnit enums.FrequencyCapTimeUnitEnum_FrequencyCapTimeUnit `protobuf:"varint,2,opt,name=time_unit,json=timeUnit,proto3,enum=google.ads.googleads.v4.enums.FrequencyCapTimeUnitEnum_FrequencyCapTimeUnit" json:"time_unit,omitempty"`
 	// Number of time units the cap lasts.
-	TimeLength *wrappers.Int32Value `protobuf:"bytes,4,opt,name=time_length,json=timeLength,proto3" json:"time_length,omitempty"`
+	TimeLength *wrapperspb.Int32Value `protobuf:"bytes,4,opt,name=time_length,json=timeLength,proto3" json:"time_length,omitempty"`
 }
 
 func (x *FrequencyCapKey) Reset() {
@@ -174,7 +174,7 @@ func (x *FrequencyCapKey) GetTimeUnit() enums.FrequencyCapTimeUnitEnum_Frequency
 	return enums.FrequencyCapTimeUnitEnum_UNSPECIFIED
 }
 
-func (x *FrequencyCapKey) GetTimeLength() *wrappers.Int32Value {
+func (x *FrequencyCapKey) GetTimeLength() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.TimeLength
 	}
@@ -271,7 +271,7 @@ var file_google_ads_googleads_v4_common_frequency_cap_proto_msgTypes = make([]pr
 var file_google_ads_googleads_v4_common_frequency_cap_proto_goTypes = []interface{}{
 	(*FrequencyCapEntry)(nil),                                  // 0: google.ads.googleads.v4.common.FrequencyCapEntry
 	(*FrequencyCapKey)(nil),                                    // 1: google.ads.googleads.v4.common.FrequencyCapKey
-	(*wrappers.Int32Value)(nil),                                // 2: google.protobuf.Int32Value
+	(*wrapperspb.Int32Value)(nil),                              // 2: google.protobuf.Int32Value
 	(enums.FrequencyCapLevelEnum_FrequencyCapLevel)(0),         // 3: google.ads.googleads.v4.enums.FrequencyCapLevelEnum.FrequencyCapLevel
 	(enums.FrequencyCapEventTypeEnum_FrequencyCapEventType)(0), // 4: google.ads.googleads.v4.enums.FrequencyCapEventTypeEnum.FrequencyCapEventType
 	(enums.FrequencyCapTimeUnitEnum_FrequencyCapTimeUnit)(0),   // 5: google.ads.googleads.v4.enums.FrequencyCapTimeUnitEnum.FrequencyCapTimeUnit

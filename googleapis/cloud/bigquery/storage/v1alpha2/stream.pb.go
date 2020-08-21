@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -110,12 +110,12 @@ type WriteStream struct {
 	Name string           `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Type WriteStream_Type `protobuf:"varint,2,opt,name=type,proto3,enum=google.cloud.bigquery.storage.v1alpha2.WriteStream_Type" json:"type,omitempty"`
 	// Output only. Create time of the stream.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Commit time of the stream.
 	// If a stream is of `COMMITTED` type, then it will have a commit_time same as
 	// `create_time`. If the stream is of `PENDING` type, commit_time being empty
 	// means it is not committed.
-	CommitTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
+	CommitTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
 	// Output only. The schema of the destination table. It is only returned in
 	// `CreateWriteStream` response. Caller should generate data that's
 	// compatible with this schema to send in initial `AppendRowsRequest`.
@@ -171,14 +171,14 @@ func (x *WriteStream) GetType() WriteStream_Type {
 	return WriteStream_TYPE_UNSPECIFIED
 }
 
-func (x *WriteStream) GetCreateTime() *timestamp.Timestamp {
+func (x *WriteStream) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *WriteStream) GetCommitTime() *timestamp.Timestamp {
+func (x *WriteStream) GetCommitTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CommitTime
 	}
@@ -285,10 +285,10 @@ func file_google_cloud_bigquery_storage_v1alpha2_stream_proto_rawDescGZIP() []by
 var file_google_cloud_bigquery_storage_v1alpha2_stream_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_google_cloud_bigquery_storage_v1alpha2_stream_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_cloud_bigquery_storage_v1alpha2_stream_proto_goTypes = []interface{}{
-	(WriteStream_Type)(0),       // 0: google.cloud.bigquery.storage.v1alpha2.WriteStream.Type
-	(*WriteStream)(nil),         // 1: google.cloud.bigquery.storage.v1alpha2.WriteStream
-	(*timestamp.Timestamp)(nil), // 2: google.protobuf.Timestamp
-	(*TableSchema)(nil),         // 3: google.cloud.bigquery.storage.v1alpha2.TableSchema
+	(WriteStream_Type)(0),         // 0: google.cloud.bigquery.storage.v1alpha2.WriteStream.Type
+	(*WriteStream)(nil),           // 1: google.cloud.bigquery.storage.v1alpha2.WriteStream
+	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*TableSchema)(nil),           // 3: google.cloud.bigquery.storage.v1alpha2.TableSchema
 }
 var file_google_cloud_bigquery_storage_v1alpha2_stream_proto_depIdxs = []int32{
 	0, // 0: google.cloud.bigquery.storage.v1alpha2.WriteStream.type:type_name -> google.cloud.bigquery.storage.v1alpha2.WriteStream.Type

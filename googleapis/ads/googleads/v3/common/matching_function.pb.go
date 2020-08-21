@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -68,7 +68,7 @@ type MatchingFunction struct {
 	// function (whitespace and single versus double quotation marks, for
 	// example), the value returned may not be identical to the string sent in a
 	// mutate request.
-	FunctionString *wrappers.StringValue `protobuf:"bytes,1,opt,name=function_string,json=functionString,proto3" json:"function_string,omitempty"`
+	FunctionString *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=function_string,json=functionString,proto3" json:"function_string,omitempty"`
 	// Operator for a function.
 	Operator enums.MatchingFunctionOperatorEnum_MatchingFunctionOperator `protobuf:"varint,4,opt,name=operator,proto3,enum=google.ads.googleads.v3.enums.MatchingFunctionOperatorEnum_MatchingFunctionOperator" json:"operator,omitempty"`
 	// The operands on the left hand side of the equation. This is also the
@@ -110,7 +110,7 @@ func (*MatchingFunction) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_matching_function_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *MatchingFunction) GetFunctionString() *wrappers.StringValue {
+func (x *MatchingFunction) GetFunctionString() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FunctionString
 	}
@@ -309,28 +309,28 @@ func (m *Operand_ConstantOperand) GetConstantOperandValue() isOperand_ConstantOp
 	return nil
 }
 
-func (x *Operand_ConstantOperand) GetStringValue() *wrappers.StringValue {
+func (x *Operand_ConstantOperand) GetStringValue() *wrapperspb.StringValue {
 	if x, ok := x.GetConstantOperandValue().(*Operand_ConstantOperand_StringValue); ok {
 		return x.StringValue
 	}
 	return nil
 }
 
-func (x *Operand_ConstantOperand) GetLongValue() *wrappers.Int64Value {
+func (x *Operand_ConstantOperand) GetLongValue() *wrapperspb.Int64Value {
 	if x, ok := x.GetConstantOperandValue().(*Operand_ConstantOperand_LongValue); ok {
 		return x.LongValue
 	}
 	return nil
 }
 
-func (x *Operand_ConstantOperand) GetBooleanValue() *wrappers.BoolValue {
+func (x *Operand_ConstantOperand) GetBooleanValue() *wrapperspb.BoolValue {
 	if x, ok := x.GetConstantOperandValue().(*Operand_ConstantOperand_BooleanValue); ok {
 		return x.BooleanValue
 	}
 	return nil
 }
 
-func (x *Operand_ConstantOperand) GetDoubleValue() *wrappers.DoubleValue {
+func (x *Operand_ConstantOperand) GetDoubleValue() *wrapperspb.DoubleValue {
 	if x, ok := x.GetConstantOperandValue().(*Operand_ConstantOperand_DoubleValue); ok {
 		return x.DoubleValue
 	}
@@ -343,22 +343,22 @@ type isOperand_ConstantOperand_ConstantOperandValue interface {
 
 type Operand_ConstantOperand_StringValue struct {
 	// String value of the operand if it is a string type.
-	StringValue *wrappers.StringValue `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3,oneof"`
+	StringValue *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3,oneof"`
 }
 
 type Operand_ConstantOperand_LongValue struct {
 	// Int64 value of the operand if it is a int64 type.
-	LongValue *wrappers.Int64Value `protobuf:"bytes,2,opt,name=long_value,json=longValue,proto3,oneof"`
+	LongValue *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=long_value,json=longValue,proto3,oneof"`
 }
 
 type Operand_ConstantOperand_BooleanValue struct {
 	// Boolean value of the operand if it is a boolean type.
-	BooleanValue *wrappers.BoolValue `protobuf:"bytes,3,opt,name=boolean_value,json=booleanValue,proto3,oneof"`
+	BooleanValue *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=boolean_value,json=booleanValue,proto3,oneof"`
 }
 
 type Operand_ConstantOperand_DoubleValue struct {
 	// Double value of the operand if it is a double type.
-	DoubleValue *wrappers.DoubleValue `protobuf:"bytes,4,opt,name=double_value,json=doubleValue,proto3,oneof"`
+	DoubleValue *wrapperspb.DoubleValue `protobuf:"bytes,4,opt,name=double_value,json=doubleValue,proto3,oneof"`
 }
 
 func (*Operand_ConstantOperand_StringValue) isOperand_ConstantOperand_ConstantOperandValue() {}
@@ -377,9 +377,9 @@ type Operand_FeedAttributeOperand struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The associated feed. Required.
-	FeedId *wrappers.Int64Value `protobuf:"bytes,1,opt,name=feed_id,json=feedId,proto3" json:"feed_id,omitempty"`
+	FeedId *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=feed_id,json=feedId,proto3" json:"feed_id,omitempty"`
 	// Id of the referenced feed attribute. Required.
-	FeedAttributeId *wrappers.Int64Value `protobuf:"bytes,2,opt,name=feed_attribute_id,json=feedAttributeId,proto3" json:"feed_attribute_id,omitempty"`
+	FeedAttributeId *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=feed_attribute_id,json=feedAttributeId,proto3" json:"feed_attribute_id,omitempty"`
 }
 
 func (x *Operand_FeedAttributeOperand) Reset() {
@@ -414,14 +414,14 @@ func (*Operand_FeedAttributeOperand) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_matching_function_proto_rawDescGZIP(), []int{1, 1}
 }
 
-func (x *Operand_FeedAttributeOperand) GetFeedId() *wrappers.Int64Value {
+func (x *Operand_FeedAttributeOperand) GetFeedId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FeedId
 	}
 	return nil
 }
 
-func (x *Operand_FeedAttributeOperand) GetFeedAttributeId() *wrappers.Int64Value {
+func (x *Operand_FeedAttributeOperand) GetFeedAttributeId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FeedAttributeId
 	}
@@ -684,11 +684,11 @@ var file_google_ads_googleads_v3_common_matching_function_proto_goTypes = []inte
 	(*Operand_FeedAttributeOperand)(nil),                                   // 3: google.ads.googleads.v3.common.Operand.FeedAttributeOperand
 	(*Operand_FunctionOperand)(nil),                                        // 4: google.ads.googleads.v3.common.Operand.FunctionOperand
 	(*Operand_RequestContextOperand)(nil),                                  // 5: google.ads.googleads.v3.common.Operand.RequestContextOperand
-	(*wrappers.StringValue)(nil),                                           // 6: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                         // 6: google.protobuf.StringValue
 	(enums.MatchingFunctionOperatorEnum_MatchingFunctionOperator)(0),       // 7: google.ads.googleads.v3.enums.MatchingFunctionOperatorEnum.MatchingFunctionOperator
-	(*wrappers.Int64Value)(nil),                                            // 8: google.protobuf.Int64Value
-	(*wrappers.BoolValue)(nil),                                             // 9: google.protobuf.BoolValue
-	(*wrappers.DoubleValue)(nil),                                           // 10: google.protobuf.DoubleValue
+	(*wrapperspb.Int64Value)(nil),                                          // 8: google.protobuf.Int64Value
+	(*wrapperspb.BoolValue)(nil),                                           // 9: google.protobuf.BoolValue
+	(*wrapperspb.DoubleValue)(nil),                                         // 10: google.protobuf.DoubleValue
 	(enums.MatchingFunctionContextTypeEnum_MatchingFunctionContextType)(0), // 11: google.ads.googleads.v3.enums.MatchingFunctionContextTypeEnum.MatchingFunctionContextType
 }
 var file_google_ads_googleads_v3_common_matching_function_proto_depIdxs = []int32{

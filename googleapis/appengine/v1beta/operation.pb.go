@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -56,11 +56,11 @@ type OperationMetadataV1Beta struct {
 	// Time that this operation was created.
 	//
 	// @OutputOnly
-	InsertTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=insert_time,json=insertTime,proto3" json:"insert_time,omitempty"`
+	InsertTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=insert_time,json=insertTime,proto3" json:"insert_time,omitempty"`
 	// Time that this operation completed.
 	//
 	// @OutputOnly
-	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// User who requested this operation.
 	//
 	// @OutputOnly
@@ -123,14 +123,14 @@ func (x *OperationMetadataV1Beta) GetMethod() string {
 	return ""
 }
 
-func (x *OperationMetadataV1Beta) GetInsertTime() *timestamp.Timestamp {
+func (x *OperationMetadataV1Beta) GetInsertTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.InsertTime
 	}
 	return nil
 }
 
-func (x *OperationMetadataV1Beta) GetEndTime() *timestamp.Timestamp {
+func (x *OperationMetadataV1Beta) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -307,7 +307,7 @@ var file_google_appengine_v1beta_operation_proto_msgTypes = make([]protoimpl.Mes
 var file_google_appengine_v1beta_operation_proto_goTypes = []interface{}{
 	(*OperationMetadataV1Beta)(nil),     // 0: google.appengine.v1beta.OperationMetadataV1Beta
 	(*CreateVersionMetadataV1Beta)(nil), // 1: google.appengine.v1beta.CreateVersionMetadataV1Beta
-	(*timestamp.Timestamp)(nil),         // 2: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),       // 2: google.protobuf.Timestamp
 }
 var file_google_appengine_v1beta_operation_proto_depIdxs = []int32{
 	2, // 0: google.appengine.v1beta.OperationMetadataV1Beta.insert_time:type_name -> google.protobuf.Timestamp

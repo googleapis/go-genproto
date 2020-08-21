@@ -26,18 +26,18 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	distribution "google.golang.org/genproto/googleapis/api/distribution"
 	metric "google.golang.org/genproto/googleapis/api/metric"
-	_ "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	_ "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -201,11 +201,11 @@ type LogMetric struct {
 	// Output only. The creation timestamp of the metric.
 	//
 	// This field may not be present for older metrics.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,9,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last update timestamp of the metric.
 	//
 	// This field may not be present for older metrics.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Deprecated. The API version that created or updated this metric.
 	// The v2 format is used by default and cannot be changed.
 	//
@@ -294,14 +294,14 @@ func (x *LogMetric) GetBucketOptions() *distribution.Distribution_BucketOptions 
 	return nil
 }
 
-func (x *LogMetric) GetCreateTime() *timestamp.Timestamp {
+func (x *LogMetric) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *LogMetric) GetUpdateTime() *timestamp.Timestamp {
+func (x *LogMetric) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -912,8 +912,8 @@ var file_google_logging_v2_logging_metrics_proto_goTypes = []interface{}{
 	nil,                                             // 8: google.logging.v2.LogMetric.LabelExtractorsEntry
 	(*metric.MetricDescriptor)(nil),                 // 9: google.api.MetricDescriptor
 	(*distribution.Distribution_BucketOptions)(nil), // 10: google.api.Distribution.BucketOptions
-	(*timestamp.Timestamp)(nil),                     // 11: google.protobuf.Timestamp
-	(*empty.Empty)(nil),                             // 12: google.protobuf.Empty
+	(*timestamppb.Timestamp)(nil),                   // 11: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),                           // 12: google.protobuf.Empty
 }
 var file_google_logging_v2_logging_metrics_proto_depIdxs = []int32{
 	9,  // 0: google.logging.v2.LogMetric.metric_descriptor:type_name -> google.api.MetricDescriptor
@@ -1075,7 +1075,7 @@ type MetricsServiceV2Client interface {
 	// Creates or updates a logs-based metric.
 	UpdateLogMetric(ctx context.Context, in *UpdateLogMetricRequest, opts ...grpc.CallOption) (*LogMetric, error)
 	// Deletes a logs-based metric.
-	DeleteLogMetric(ctx context.Context, in *DeleteLogMetricRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteLogMetric(ctx context.Context, in *DeleteLogMetricRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type metricsServiceV2Client struct {
@@ -1122,8 +1122,8 @@ func (c *metricsServiceV2Client) UpdateLogMetric(ctx context.Context, in *Update
 	return out, nil
 }
 
-func (c *metricsServiceV2Client) DeleteLogMetric(ctx context.Context, in *DeleteLogMetricRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *metricsServiceV2Client) DeleteLogMetric(ctx context.Context, in *DeleteLogMetricRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.logging.v2.MetricsServiceV2/DeleteLogMetric", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1142,7 +1142,7 @@ type MetricsServiceV2Server interface {
 	// Creates or updates a logs-based metric.
 	UpdateLogMetric(context.Context, *UpdateLogMetricRequest) (*LogMetric, error)
 	// Deletes a logs-based metric.
-	DeleteLogMetric(context.Context, *DeleteLogMetricRequest) (*empty.Empty, error)
+	DeleteLogMetric(context.Context, *DeleteLogMetricRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedMetricsServiceV2Server can be embedded to have forward compatible implementations.
@@ -1161,7 +1161,7 @@ func (*UnimplementedMetricsServiceV2Server) CreateLogMetric(context.Context, *Cr
 func (*UnimplementedMetricsServiceV2Server) UpdateLogMetric(context.Context, *UpdateLogMetricRequest) (*LogMetric, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateLogMetric not implemented")
 }
-func (*UnimplementedMetricsServiceV2Server) DeleteLogMetric(context.Context, *DeleteLogMetricRequest) (*empty.Empty, error) {
+func (*UnimplementedMetricsServiceV2Server) DeleteLogMetric(context.Context, *DeleteLogMetricRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteLogMetric not implemented")
 }
 

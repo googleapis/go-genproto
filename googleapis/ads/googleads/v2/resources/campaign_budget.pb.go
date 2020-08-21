@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -60,7 +60,7 @@ type CampaignBudget struct {
 	// operation and is assigned a budget ID. A budget ID can be shared across
 	// different campaigns; the system will then allocate the campaign budget
 	// among different campaigns to get optimum results.
-	Id *wrappers.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the campaign budget.
 	//
 	// When creating a campaign budget through CampaignBudgetService, every
@@ -70,15 +70,15 @@ type CampaignBudget struct {
 	//
 	// The length of this string must be between 1 and 255, inclusive,
 	// in UTF-8 bytes, (trimmed).
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// The amount of the budget, in the local currency for the account.
 	// Amount is specified in micros, where one million is equivalent to one
 	// currency unit. Monthly spend is capped at 30.4 times this amount.
-	AmountMicros *wrappers.Int64Value `protobuf:"bytes,5,opt,name=amount_micros,json=amountMicros,proto3" json:"amount_micros,omitempty"`
+	AmountMicros *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=amount_micros,json=amountMicros,proto3" json:"amount_micros,omitempty"`
 	// The lifetime amount of the budget, in the local currency for the account.
 	// Amount is specified in micros, where one million is equivalent to one
 	// currency unit.
-	TotalAmountMicros *wrappers.Int64Value `protobuf:"bytes,10,opt,name=total_amount_micros,json=totalAmountMicros,proto3" json:"total_amount_micros,omitempty"`
+	TotalAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,10,opt,name=total_amount_micros,json=totalAmountMicros,proto3" json:"total_amount_micros,omitempty"`
 	// Output only. The status of this campaign budget. This field is read-only.
 	Status enums.BudgetStatusEnum_BudgetStatus `protobuf:"varint,6,opt,name=status,proto3,enum=google.ads.googleads.v2.enums.BudgetStatusEnum_BudgetStatus" json:"status,omitempty"`
 	// The delivery method that determines the rate at which the campaign budget
@@ -101,42 +101,42 @@ type CampaignBudget struct {
 	// must also assign the budget a name.
 	//
 	// A shared campaign budget can never become non-shared.
-	ExplicitlyShared *wrappers.BoolValue `protobuf:"bytes,8,opt,name=explicitly_shared,json=explicitlyShared,proto3" json:"explicitly_shared,omitempty"`
+	ExplicitlyShared *wrapperspb.BoolValue `protobuf:"bytes,8,opt,name=explicitly_shared,json=explicitlyShared,proto3" json:"explicitly_shared,omitempty"`
 	// Output only. The number of campaigns actively using the budget.
 	//
 	// This field is read-only.
-	ReferenceCount *wrappers.Int64Value `protobuf:"bytes,9,opt,name=reference_count,json=referenceCount,proto3" json:"reference_count,omitempty"`
+	ReferenceCount *wrapperspb.Int64Value `protobuf:"bytes,9,opt,name=reference_count,json=referenceCount,proto3" json:"reference_count,omitempty"`
 	// Output only. Indicates whether there is a recommended budget for this campaign budget.
 	//
 	// This field is read-only.
-	HasRecommendedBudget *wrappers.BoolValue `protobuf:"bytes,11,opt,name=has_recommended_budget,json=hasRecommendedBudget,proto3" json:"has_recommended_budget,omitempty"`
+	HasRecommendedBudget *wrapperspb.BoolValue `protobuf:"bytes,11,opt,name=has_recommended_budget,json=hasRecommendedBudget,proto3" json:"has_recommended_budget,omitempty"`
 	// Output only. The recommended budget amount. If no recommendation is available, this will
 	// be set to the budget amount.
 	// Amount is specified in micros, where one million is equivalent to one
 	// currency unit.
 	//
 	// This field is read-only.
-	RecommendedBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,12,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
+	RecommendedBudgetAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,12,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
 	// Immutable. Period over which to spend the budget. Defaults to DAILY if not specified.
 	Period enums.BudgetPeriodEnum_BudgetPeriod `protobuf:"varint,13,opt,name=period,proto3,enum=google.ads.googleads.v2.enums.BudgetPeriodEnum_BudgetPeriod" json:"period,omitempty"`
 	// Output only. The estimated change in weekly clicks if the recommended budget is applied.
 	//
 	// This field is read-only.
-	RecommendedBudgetEstimatedChangeWeeklyClicks *wrappers.Int64Value `protobuf:"bytes,14,opt,name=recommended_budget_estimated_change_weekly_clicks,json=recommendedBudgetEstimatedChangeWeeklyClicks,proto3" json:"recommended_budget_estimated_change_weekly_clicks,omitempty"`
+	RecommendedBudgetEstimatedChangeWeeklyClicks *wrapperspb.Int64Value `protobuf:"bytes,14,opt,name=recommended_budget_estimated_change_weekly_clicks,json=recommendedBudgetEstimatedChangeWeeklyClicks,proto3" json:"recommended_budget_estimated_change_weekly_clicks,omitempty"`
 	// Output only. The estimated change in weekly cost in micros if the recommended budget is
 	// applied. One million is equivalent to one currency unit.
 	//
 	// This field is read-only.
-	RecommendedBudgetEstimatedChangeWeeklyCostMicros *wrappers.Int64Value `protobuf:"bytes,15,opt,name=recommended_budget_estimated_change_weekly_cost_micros,json=recommendedBudgetEstimatedChangeWeeklyCostMicros,proto3" json:"recommended_budget_estimated_change_weekly_cost_micros,omitempty"`
+	RecommendedBudgetEstimatedChangeWeeklyCostMicros *wrapperspb.Int64Value `protobuf:"bytes,15,opt,name=recommended_budget_estimated_change_weekly_cost_micros,json=recommendedBudgetEstimatedChangeWeeklyCostMicros,proto3" json:"recommended_budget_estimated_change_weekly_cost_micros,omitempty"`
 	// Output only. The estimated change in weekly interactions if the recommended budget is
 	// applied.
 	//
 	// This field is read-only.
-	RecommendedBudgetEstimatedChangeWeeklyInteractions *wrappers.Int64Value `protobuf:"bytes,16,opt,name=recommended_budget_estimated_change_weekly_interactions,json=recommendedBudgetEstimatedChangeWeeklyInteractions,proto3" json:"recommended_budget_estimated_change_weekly_interactions,omitempty"`
+	RecommendedBudgetEstimatedChangeWeeklyInteractions *wrapperspb.Int64Value `protobuf:"bytes,16,opt,name=recommended_budget_estimated_change_weekly_interactions,json=recommendedBudgetEstimatedChangeWeeklyInteractions,proto3" json:"recommended_budget_estimated_change_weekly_interactions,omitempty"`
 	// Output only. The estimated change in weekly views if the recommended budget is applied.
 	//
 	// This field is read-only.
-	RecommendedBudgetEstimatedChangeWeeklyViews *wrappers.Int64Value `protobuf:"bytes,17,opt,name=recommended_budget_estimated_change_weekly_views,json=recommendedBudgetEstimatedChangeWeeklyViews,proto3" json:"recommended_budget_estimated_change_weekly_views,omitempty"`
+	RecommendedBudgetEstimatedChangeWeeklyViews *wrapperspb.Int64Value `protobuf:"bytes,17,opt,name=recommended_budget_estimated_change_weekly_views,json=recommendedBudgetEstimatedChangeWeeklyViews,proto3" json:"recommended_budget_estimated_change_weekly_views,omitempty"`
 	// Immutable. The type of the campaign budget.
 	Type enums.BudgetTypeEnum_BudgetType `protobuf:"varint,18,opt,name=type,proto3,enum=google.ads.googleads.v2.enums.BudgetTypeEnum_BudgetType" json:"type,omitempty"`
 }
@@ -180,28 +180,28 @@ func (x *CampaignBudget) GetResourceName() string {
 	return ""
 }
 
-func (x *CampaignBudget) GetId() *wrappers.Int64Value {
+func (x *CampaignBudget) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *CampaignBudget) GetName() *wrappers.StringValue {
+func (x *CampaignBudget) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *CampaignBudget) GetAmountMicros() *wrappers.Int64Value {
+func (x *CampaignBudget) GetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AmountMicros
 	}
 	return nil
 }
 
-func (x *CampaignBudget) GetTotalAmountMicros() *wrappers.Int64Value {
+func (x *CampaignBudget) GetTotalAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TotalAmountMicros
 	}
@@ -222,28 +222,28 @@ func (x *CampaignBudget) GetDeliveryMethod() enums.BudgetDeliveryMethodEnum_Budg
 	return enums.BudgetDeliveryMethodEnum_UNSPECIFIED
 }
 
-func (x *CampaignBudget) GetExplicitlyShared() *wrappers.BoolValue {
+func (x *CampaignBudget) GetExplicitlyShared() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.ExplicitlyShared
 	}
 	return nil
 }
 
-func (x *CampaignBudget) GetReferenceCount() *wrappers.Int64Value {
+func (x *CampaignBudget) GetReferenceCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ReferenceCount
 	}
 	return nil
 }
 
-func (x *CampaignBudget) GetHasRecommendedBudget() *wrappers.BoolValue {
+func (x *CampaignBudget) GetHasRecommendedBudget() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.HasRecommendedBudget
 	}
 	return nil
 }
 
-func (x *CampaignBudget) GetRecommendedBudgetAmountMicros() *wrappers.Int64Value {
+func (x *CampaignBudget) GetRecommendedBudgetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedBudgetAmountMicros
 	}
@@ -257,28 +257,28 @@ func (x *CampaignBudget) GetPeriod() enums.BudgetPeriodEnum_BudgetPeriod {
 	return enums.BudgetPeriodEnum_UNSPECIFIED
 }
 
-func (x *CampaignBudget) GetRecommendedBudgetEstimatedChangeWeeklyClicks() *wrappers.Int64Value {
+func (x *CampaignBudget) GetRecommendedBudgetEstimatedChangeWeeklyClicks() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedBudgetEstimatedChangeWeeklyClicks
 	}
 	return nil
 }
 
-func (x *CampaignBudget) GetRecommendedBudgetEstimatedChangeWeeklyCostMicros() *wrappers.Int64Value {
+func (x *CampaignBudget) GetRecommendedBudgetEstimatedChangeWeeklyCostMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedBudgetEstimatedChangeWeeklyCostMicros
 	}
 	return nil
 }
 
-func (x *CampaignBudget) GetRecommendedBudgetEstimatedChangeWeeklyInteractions() *wrappers.Int64Value {
+func (x *CampaignBudget) GetRecommendedBudgetEstimatedChangeWeeklyInteractions() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedBudgetEstimatedChangeWeeklyInteractions
 	}
 	return nil
 }
 
-func (x *CampaignBudget) GetRecommendedBudgetEstimatedChangeWeeklyViews() *wrappers.Int64Value {
+func (x *CampaignBudget) GetRecommendedBudgetEstimatedChangeWeeklyViews() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedBudgetEstimatedChangeWeeklyViews
 	}
@@ -465,11 +465,11 @@ func file_google_ads_googleads_v2_resources_campaign_budget_proto_rawDescGZIP() 
 var file_google_ads_googleads_v2_resources_campaign_budget_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_campaign_budget_proto_goTypes = []interface{}{
 	(*CampaignBudget)(nil),                                   // 0: google.ads.googleads.v2.resources.CampaignBudget
-	(*wrappers.Int64Value)(nil),                              // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),                             // 2: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                            // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                           // 2: google.protobuf.StringValue
 	(enums.BudgetStatusEnum_BudgetStatus)(0),                 // 3: google.ads.googleads.v2.enums.BudgetStatusEnum.BudgetStatus
 	(enums.BudgetDeliveryMethodEnum_BudgetDeliveryMethod)(0), // 4: google.ads.googleads.v2.enums.BudgetDeliveryMethodEnum.BudgetDeliveryMethod
-	(*wrappers.BoolValue)(nil),                               // 5: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                             // 5: google.protobuf.BoolValue
 	(enums.BudgetPeriodEnum_BudgetPeriod)(0),                 // 6: google.ads.googleads.v2.enums.BudgetPeriodEnum.BudgetPeriod
 	(enums.BudgetTypeEnum_BudgetType)(0),                     // 7: google.ads.googleads.v2.enums.BudgetTypeEnum.BudgetType
 }

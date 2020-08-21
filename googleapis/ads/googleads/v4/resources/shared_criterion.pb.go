@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,11 +56,11 @@ type SharedCriterion struct {
 	// `customers/{customer_id}/sharedCriteria/{shared_set_id}~{criterion_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The shared set to which the shared criterion belongs.
-	SharedSet *wrappers.StringValue `protobuf:"bytes,2,opt,name=shared_set,json=sharedSet,proto3" json:"shared_set,omitempty"`
+	SharedSet *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=shared_set,json=sharedSet,proto3" json:"shared_set,omitempty"`
 	// Output only. The ID of the criterion.
 	//
 	// This field is ignored for mutates.
-	CriterionId *wrappers.Int64Value `protobuf:"bytes,26,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
+	CriterionId *wrapperspb.Int64Value `protobuf:"bytes,26,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
 	// Output only. The type of the criterion.
 	Type enums.CriterionTypeEnum_CriterionType `protobuf:"varint,4,opt,name=type,proto3,enum=google.ads.googleads.v4.enums.CriterionTypeEnum_CriterionType" json:"type,omitempty"`
 	// The criterion.
@@ -116,14 +116,14 @@ func (x *SharedCriterion) GetResourceName() string {
 	return ""
 }
 
-func (x *SharedCriterion) GetSharedSet() *wrappers.StringValue {
+func (x *SharedCriterion) GetSharedSet() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SharedSet
 	}
 	return nil
 }
 
-func (x *SharedCriterion) GetCriterionId() *wrappers.Int64Value {
+func (x *SharedCriterion) GetCriterionId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CriterionId
 	}
@@ -355,8 +355,8 @@ func file_google_ads_googleads_v4_resources_shared_criterion_proto_rawDescGZIP()
 var file_google_ads_googleads_v4_resources_shared_criterion_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_shared_criterion_proto_goTypes = []interface{}{
 	(*SharedCriterion)(nil),                    // 0: google.ads.googleads.v4.resources.SharedCriterion
-	(*wrappers.StringValue)(nil),               // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                // 2: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),             // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),              // 2: google.protobuf.Int64Value
 	(enums.CriterionTypeEnum_CriterionType)(0), // 3: google.ads.googleads.v4.enums.CriterionTypeEnum.CriterionType
 	(*common.KeywordInfo)(nil),                 // 4: google.ads.googleads.v4.common.KeywordInfo
 	(*common.YouTubeVideoInfo)(nil),            // 5: google.ads.googleads.v4.common.YouTubeVideoInfo

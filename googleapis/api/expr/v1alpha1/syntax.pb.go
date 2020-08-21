@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -358,11 +358,11 @@ func (m *Constant) GetConstantKind() isConstant_ConstantKind {
 	return nil
 }
 
-func (x *Constant) GetNullValue() _struct.NullValue {
+func (x *Constant) GetNullValue() structpb.NullValue {
 	if x, ok := x.GetConstantKind().(*Constant_NullValue); ok {
 		return x.NullValue
 	}
-	return _struct.NullValue_NULL_VALUE
+	return structpb.NullValue_NULL_VALUE
 }
 
 func (x *Constant) GetBoolValue() bool {
@@ -408,7 +408,7 @@ func (x *Constant) GetBytesValue() []byte {
 }
 
 // Deprecated: Do not use.
-func (x *Constant) GetDurationValue() *duration.Duration {
+func (x *Constant) GetDurationValue() *durationpb.Duration {
 	if x, ok := x.GetConstantKind().(*Constant_DurationValue); ok {
 		return x.DurationValue
 	}
@@ -416,7 +416,7 @@ func (x *Constant) GetDurationValue() *duration.Duration {
 }
 
 // Deprecated: Do not use.
-func (x *Constant) GetTimestampValue() *timestamp.Timestamp {
+func (x *Constant) GetTimestampValue() *timestamppb.Timestamp {
 	if x, ok := x.GetConstantKind().(*Constant_TimestampValue); ok {
 		return x.TimestampValue
 	}
@@ -429,7 +429,7 @@ type isConstant_ConstantKind interface {
 
 type Constant_NullValue struct {
 	// null value.
-	NullValue _struct.NullValue `protobuf:"varint,1,opt,name=null_value,json=nullValue,proto3,enum=google.protobuf.NullValue,oneof"`
+	NullValue structpb.NullValue `protobuf:"varint,1,opt,name=null_value,json=nullValue,proto3,enum=google.protobuf.NullValue,oneof"`
 }
 
 type Constant_BoolValue struct {
@@ -468,7 +468,7 @@ type Constant_DurationValue struct {
 	// Deprecated: duration is no longer considered a builtin cel type.
 	//
 	// Deprecated: Do not use.
-	DurationValue *duration.Duration `protobuf:"bytes,8,opt,name=duration_value,json=durationValue,proto3,oneof"`
+	DurationValue *durationpb.Duration `protobuf:"bytes,8,opt,name=duration_value,json=durationValue,proto3,oneof"`
 }
 
 type Constant_TimestampValue struct {
@@ -477,7 +477,7 @@ type Constant_TimestampValue struct {
 	// Deprecated: timestamp is no longer considered a builtin cel type.
 	//
 	// Deprecated: Do not use.
-	TimestampValue *timestamp.Timestamp `protobuf:"bytes,9,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
+	TimestampValue *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
 }
 
 func (*Constant_NullValue) isConstant_ConstantKind() {}
@@ -1454,9 +1454,9 @@ var file_google_api_expr_v1alpha1_syntax_proto_goTypes = []interface{}{
 	(*Expr_CreateStruct_Entry)(nil), // 11: google.api.expr.v1alpha1.Expr.CreateStruct.Entry
 	nil,                             // 12: google.api.expr.v1alpha1.SourceInfo.PositionsEntry
 	nil,                             // 13: google.api.expr.v1alpha1.SourceInfo.MacroCallsEntry
-	(_struct.NullValue)(0),          // 14: google.protobuf.NullValue
-	(*duration.Duration)(nil),       // 15: google.protobuf.Duration
-	(*timestamp.Timestamp)(nil),     // 16: google.protobuf.Timestamp
+	(structpb.NullValue)(0),         // 14: google.protobuf.NullValue
+	(*durationpb.Duration)(nil),     // 15: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),   // 16: google.protobuf.Timestamp
 }
 var file_google_api_expr_v1alpha1_syntax_proto_depIdxs = []int32{
 	1,  // 0: google.api.expr.v1alpha1.ParsedExpr.expr:type_name -> google.api.expr.v1alpha1.Expr

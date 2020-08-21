@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -128,7 +128,7 @@ func (x *Widget) GetText() *Text {
 	return nil
 }
 
-func (x *Widget) GetBlank() *empty.Empty {
+func (x *Widget) GetBlank() *emptypb.Empty {
 	if x, ok := x.GetContent().(*Widget_Blank); ok {
 		return x.Blank
 	}
@@ -156,7 +156,7 @@ type Widget_Text struct {
 
 type Widget_Blank struct {
 	// A blank space.
-	Blank *empty.Empty `protobuf:"bytes,5,opt,name=blank,proto3,oneof"`
+	Blank *emptypb.Empty `protobuf:"bytes,5,opt,name=blank,proto3,oneof"`
 }
 
 func (*Widget_XyChart) isWidget_Content() {}
@@ -234,11 +234,11 @@ func file_google_monitoring_dashboard_v1_widget_proto_rawDescGZIP() []byte {
 
 var file_google_monitoring_dashboard_v1_widget_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_monitoring_dashboard_v1_widget_proto_goTypes = []interface{}{
-	(*Widget)(nil),      // 0: google.monitoring.dashboard.v1.Widget
-	(*XyChart)(nil),     // 1: google.monitoring.dashboard.v1.XyChart
-	(*Scorecard)(nil),   // 2: google.monitoring.dashboard.v1.Scorecard
-	(*Text)(nil),        // 3: google.monitoring.dashboard.v1.Text
-	(*empty.Empty)(nil), // 4: google.protobuf.Empty
+	(*Widget)(nil),        // 0: google.monitoring.dashboard.v1.Widget
+	(*XyChart)(nil),       // 1: google.monitoring.dashboard.v1.XyChart
+	(*Scorecard)(nil),     // 2: google.monitoring.dashboard.v1.Scorecard
+	(*Text)(nil),          // 3: google.monitoring.dashboard.v1.Text
+	(*emptypb.Empty)(nil), // 4: google.protobuf.Empty
 }
 var file_google_monitoring_dashboard_v1_widget_proto_depIdxs = []int32{
 	1, // 0: google.monitoring.dashboard.v1.Widget.xy_chart:type_name -> google.monitoring.dashboard.v1.XyChart

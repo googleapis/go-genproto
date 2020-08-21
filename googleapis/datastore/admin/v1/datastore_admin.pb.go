@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
@@ -34,6 +33,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -190,9 +190,9 @@ type CommonMetadata struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time that work began on the operation.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The time the operation ended, either successfully or otherwise.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The type of the operation. Can be used as a filter in
 	// ListOperationsRequest.
 	OperationType OperationType `protobuf:"varint,3,opt,name=operation_type,json=operationType,proto3,enum=google.datastore.admin.v1.OperationType" json:"operation_type,omitempty"`
@@ -235,14 +235,14 @@ func (*CommonMetadata) Descriptor() ([]byte, []int) {
 	return file_google_datastore_admin_v1_datastore_admin_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CommonMetadata) GetStartTime() *timestamp.Timestamp {
+func (x *CommonMetadata) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *CommonMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *CommonMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -1390,7 +1390,7 @@ var file_google_datastore_admin_v1_datastore_admin_proto_goTypes = []interface{}
 	nil,                            // 14: google.datastore.admin.v1.CommonMetadata.LabelsEntry
 	nil,                            // 15: google.datastore.admin.v1.ExportEntitiesRequest.LabelsEntry
 	nil,                            // 16: google.datastore.admin.v1.ImportEntitiesRequest.LabelsEntry
-	(*timestamp.Timestamp)(nil),    // 17: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),  // 17: google.protobuf.Timestamp
 	(*Index)(nil),                  // 18: google.datastore.admin.v1.Index
 	(*longrunning.Operation)(nil),  // 19: google.longrunning.Operation
 }

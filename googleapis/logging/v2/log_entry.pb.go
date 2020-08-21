@@ -25,15 +25,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	any "github.com/golang/protobuf/ptypes/any"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	monitoredres "google.golang.org/genproto/googleapis/api/monitoredres"
 	_type "google.golang.org/genproto/googleapis/logging/type"
 	_ "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -102,9 +102,9 @@ type LogEntry struct {
 	// period](https://cloud.google.com/logging/quotas#logs_retention_periods) in
 	// the past, and that don't exceed 24 hours in the future. Log entries outside
 	// those time boundaries aren't ingested by Logging.
-	Timestamp *timestamp.Timestamp `protobuf:"bytes,9,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	Timestamp *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	// Output only. The time the log entry was received by Logging.
-	ReceiveTimestamp *timestamp.Timestamp `protobuf:"bytes,24,opt,name=receive_timestamp,json=receiveTimestamp,proto3" json:"receive_timestamp,omitempty"`
+	ReceiveTimestamp *timestamppb.Timestamp `protobuf:"bytes,24,opt,name=receive_timestamp,json=receiveTimestamp,proto3" json:"receive_timestamp,omitempty"`
 	// Optional. The severity of the log entry. The default value is `LogSeverity.DEFAULT`.
 	Severity _type.LogSeverity `protobuf:"varint,10,opt,name=severity,proto3,enum=google.logging.type.LogSeverity" json:"severity,omitempty"`
 	// Optional. A unique identifier for the log entry. If you provide a value, then
@@ -204,7 +204,7 @@ func (m *LogEntry) GetPayload() isLogEntry_Payload {
 	return nil
 }
 
-func (x *LogEntry) GetProtoPayload() *any.Any {
+func (x *LogEntry) GetProtoPayload() *anypb.Any {
 	if x, ok := x.GetPayload().(*LogEntry_ProtoPayload); ok {
 		return x.ProtoPayload
 	}
@@ -218,21 +218,21 @@ func (x *LogEntry) GetTextPayload() string {
 	return ""
 }
 
-func (x *LogEntry) GetJsonPayload() *_struct.Struct {
+func (x *LogEntry) GetJsonPayload() *structpb.Struct {
 	if x, ok := x.GetPayload().(*LogEntry_JsonPayload); ok {
 		return x.JsonPayload
 	}
 	return nil
 }
 
-func (x *LogEntry) GetTimestamp() *timestamp.Timestamp {
+func (x *LogEntry) GetTimestamp() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Timestamp
 	}
 	return nil
 }
 
-func (x *LogEntry) GetReceiveTimestamp() *timestamp.Timestamp {
+func (x *LogEntry) GetReceiveTimestamp() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReceiveTimestamp
 	}
@@ -315,7 +315,7 @@ type LogEntry_ProtoPayload struct {
 	//
 	//   "type.googleapis.com/google.cloud.audit.AuditLog"
 	//   "type.googleapis.com/google.appengine.logging.v1.RequestLog"
-	ProtoPayload *any.Any `protobuf:"bytes,2,opt,name=proto_payload,json=protoPayload,proto3,oneof"`
+	ProtoPayload *anypb.Any `protobuf:"bytes,2,opt,name=proto_payload,json=protoPayload,proto3,oneof"`
 }
 
 type LogEntry_TextPayload struct {
@@ -326,7 +326,7 @@ type LogEntry_TextPayload struct {
 type LogEntry_JsonPayload struct {
 	// The log entry payload, represented as a structure that is
 	// expressed as a JSON object.
-	JsonPayload *_struct.Struct `protobuf:"bytes,6,opt,name=json_payload,json=jsonPayload,proto3,oneof"`
+	JsonPayload *structpb.Struct `protobuf:"bytes,6,opt,name=json_payload,json=jsonPayload,proto3,oneof"`
 }
 
 func (*LogEntry_ProtoPayload) isLogEntry_Payload() {}
@@ -638,9 +638,9 @@ var file_google_logging_v2_log_entry_proto_goTypes = []interface{}{
 	(*LogEntrySourceLocation)(nil),         // 2: google.logging.v2.LogEntrySourceLocation
 	nil,                                    // 3: google.logging.v2.LogEntry.LabelsEntry
 	(*monitoredres.MonitoredResource)(nil), // 4: google.api.MonitoredResource
-	(*any.Any)(nil),                        // 5: google.protobuf.Any
-	(*_struct.Struct)(nil),                 // 6: google.protobuf.Struct
-	(*timestamp.Timestamp)(nil),            // 7: google.protobuf.Timestamp
+	(*anypb.Any)(nil),                      // 5: google.protobuf.Any
+	(*structpb.Struct)(nil),                // 6: google.protobuf.Struct
+	(*timestamppb.Timestamp)(nil),          // 7: google.protobuf.Timestamp
 	(_type.LogSeverity)(0),                 // 8: google.logging.type.LogSeverity
 	(*_type.HttpRequest)(nil),              // 9: google.logging.type.HttpRequest
 }

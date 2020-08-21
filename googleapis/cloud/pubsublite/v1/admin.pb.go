@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -408,7 +408,7 @@ type UpdateTopicRequest struct {
 	// Required. The topic to update. Its `name` field must be populated.
 	Topic *Topic `protobuf:"bytes,1,opt,name=topic,proto3" json:"topic,omitempty"`
 	// Required. A mask specifying the topic fields to change.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateTopicRequest) Reset() {
@@ -450,7 +450,7 @@ func (x *UpdateTopicRequest) GetTopic() *Topic {
 	return nil
 }
 
-func (x *UpdateTopicRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateTopicRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -903,7 +903,7 @@ type UpdateSubscriptionRequest struct {
 	// Topic field must not be populated.
 	Subscription *Subscription `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	// Required. A mask specifying the subscription fields to change.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateSubscriptionRequest) Reset() {
@@ -945,7 +945,7 @@ func (x *UpdateSubscriptionRequest) GetSubscription() *Subscription {
 	return nil
 }
 
-func (x *UpdateSubscriptionRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateSubscriptionRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1346,9 +1346,9 @@ var file_google_cloud_pubsublite_v1_admin_proto_goTypes = []interface{}{
 	(*UpdateSubscriptionRequest)(nil),      // 14: google.cloud.pubsublite.v1.UpdateSubscriptionRequest
 	(*DeleteSubscriptionRequest)(nil),      // 15: google.cloud.pubsublite.v1.DeleteSubscriptionRequest
 	(*Topic)(nil),                          // 16: google.cloud.pubsublite.v1.Topic
-	(*field_mask.FieldMask)(nil),           // 17: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),          // 17: google.protobuf.FieldMask
 	(*Subscription)(nil),                   // 18: google.cloud.pubsublite.v1.Subscription
-	(*empty.Empty)(nil),                    // 19: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                  // 19: google.protobuf.Empty
 }
 var file_google_cloud_pubsublite_v1_admin_proto_depIdxs = []int32{
 	16, // 0: google.cloud.pubsublite.v1.CreateTopicRequest.topic:type_name -> google.cloud.pubsublite.v1.Topic
@@ -1633,7 +1633,7 @@ type AdminServiceClient interface {
 	// Updates properties of the specified topic.
 	UpdateTopic(ctx context.Context, in *UpdateTopicRequest, opts ...grpc.CallOption) (*Topic, error)
 	// Deletes the specified topic.
-	DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists the subscriptions attached to the specified topic.
 	ListTopicSubscriptions(ctx context.Context, in *ListTopicSubscriptionsRequest, opts ...grpc.CallOption) (*ListTopicSubscriptionsResponse, error)
 	// Creates a new subscription.
@@ -1645,7 +1645,7 @@ type AdminServiceClient interface {
 	// Updates properties of the specified subscription.
 	UpdateSubscription(ctx context.Context, in *UpdateSubscriptionRequest, opts ...grpc.CallOption) (*Subscription, error)
 	// Deletes the specified subscription.
-	DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type adminServiceClient struct {
@@ -1701,8 +1701,8 @@ func (c *adminServiceClient) UpdateTopic(ctx context.Context, in *UpdateTopicReq
 	return out, nil
 }
 
-func (c *adminServiceClient) DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *adminServiceClient) DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.pubsublite.v1.AdminService/DeleteTopic", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1755,8 +1755,8 @@ func (c *adminServiceClient) UpdateSubscription(ctx context.Context, in *UpdateS
 	return out, nil
 }
 
-func (c *adminServiceClient) DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *adminServiceClient) DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.pubsublite.v1.AdminService/DeleteSubscription", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1777,7 +1777,7 @@ type AdminServiceServer interface {
 	// Updates properties of the specified topic.
 	UpdateTopic(context.Context, *UpdateTopicRequest) (*Topic, error)
 	// Deletes the specified topic.
-	DeleteTopic(context.Context, *DeleteTopicRequest) (*empty.Empty, error)
+	DeleteTopic(context.Context, *DeleteTopicRequest) (*emptypb.Empty, error)
 	// Lists the subscriptions attached to the specified topic.
 	ListTopicSubscriptions(context.Context, *ListTopicSubscriptionsRequest) (*ListTopicSubscriptionsResponse, error)
 	// Creates a new subscription.
@@ -1789,7 +1789,7 @@ type AdminServiceServer interface {
 	// Updates properties of the specified subscription.
 	UpdateSubscription(context.Context, *UpdateSubscriptionRequest) (*Subscription, error)
 	// Deletes the specified subscription.
-	DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*empty.Empty, error)
+	DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedAdminServiceServer can be embedded to have forward compatible implementations.
@@ -1811,7 +1811,7 @@ func (*UnimplementedAdminServiceServer) ListTopics(context.Context, *ListTopicsR
 func (*UnimplementedAdminServiceServer) UpdateTopic(context.Context, *UpdateTopicRequest) (*Topic, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTopic not implemented")
 }
-func (*UnimplementedAdminServiceServer) DeleteTopic(context.Context, *DeleteTopicRequest) (*empty.Empty, error) {
+func (*UnimplementedAdminServiceServer) DeleteTopic(context.Context, *DeleteTopicRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTopic not implemented")
 }
 func (*UnimplementedAdminServiceServer) ListTopicSubscriptions(context.Context, *ListTopicSubscriptionsRequest) (*ListTopicSubscriptionsResponse, error) {
@@ -1829,7 +1829,7 @@ func (*UnimplementedAdminServiceServer) ListSubscriptions(context.Context, *List
 func (*UnimplementedAdminServiceServer) UpdateSubscription(context.Context, *UpdateSubscriptionRequest) (*Subscription, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateSubscription not implemented")
 }
-func (*UnimplementedAdminServiceServer) DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*empty.Empty, error) {
+func (*UnimplementedAdminServiceServer) DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSubscription not implemented")
 }
 

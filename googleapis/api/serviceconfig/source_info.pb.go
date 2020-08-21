@@ -25,9 +25,9 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	any "github.com/golang/protobuf/ptypes/any"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
 )
 
 const (
@@ -48,7 +48,7 @@ type SourceInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// All files used during config generation.
-	SourceFiles []*any.Any `protobuf:"bytes,1,rep,name=source_files,json=sourceFiles,proto3" json:"source_files,omitempty"`
+	SourceFiles []*anypb.Any `protobuf:"bytes,1,rep,name=source_files,json=sourceFiles,proto3" json:"source_files,omitempty"`
 }
 
 func (x *SourceInfo) Reset() {
@@ -83,7 +83,7 @@ func (*SourceInfo) Descriptor() ([]byte, []int) {
 	return file_google_api_source_info_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *SourceInfo) GetSourceFiles() []*any.Any {
+func (x *SourceInfo) GetSourceFiles() []*anypb.Any {
 	if x != nil {
 		return x.SourceFiles
 	}
@@ -127,7 +127,7 @@ func file_google_api_source_info_proto_rawDescGZIP() []byte {
 var file_google_api_source_info_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_api_source_info_proto_goTypes = []interface{}{
 	(*SourceInfo)(nil), // 0: google.api.SourceInfo
-	(*any.Any)(nil),    // 1: google.protobuf.Any
+	(*anypb.Any)(nil),  // 1: google.protobuf.Any
 }
 var file_google_api_source_info_proto_depIdxs = []int32{
 	1, // 0: google.api.SourceInfo.source_files:type_name -> google.protobuf.Any

@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v4/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
@@ -37,6 +36,7 @@ import (
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -267,7 +267,7 @@ type AddOfflineUserDataJobOperationsRequest struct {
 	// Required. The resource name of the OfflineUserDataJob.
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// True to enable partial failure for the offline user data job.
-	EnablePartialFailure *wrappers.BoolValue `protobuf:"bytes,2,opt,name=enable_partial_failure,json=enablePartialFailure,proto3" json:"enable_partial_failure,omitempty"`
+	EnablePartialFailure *wrapperspb.BoolValue `protobuf:"bytes,2,opt,name=enable_partial_failure,json=enablePartialFailure,proto3" json:"enable_partial_failure,omitempty"`
 	// Required. The list of operations to be done.
 	Operations []*OfflineUserDataJobOperation `protobuf:"bytes,3,rep,name=operations,proto3" json:"operations,omitempty"`
 }
@@ -311,7 +311,7 @@ func (x *AddOfflineUserDataJobOperationsRequest) GetResourceName() string {
 	return ""
 }
 
-func (x *AddOfflineUserDataJobOperationsRequest) GetEnablePartialFailure() *wrappers.BoolValue {
+func (x *AddOfflineUserDataJobOperationsRequest) GetEnablePartialFailure() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.EnablePartialFailure
 	}
@@ -690,7 +690,7 @@ var file_google_ads_googleads_v4_services_offline_user_data_job_service_proto_go
 	(*OfflineUserDataJobOperation)(nil),             // 5: google.ads.googleads.v4.services.OfflineUserDataJobOperation
 	(*AddOfflineUserDataJobOperationsResponse)(nil), // 6: google.ads.googleads.v4.services.AddOfflineUserDataJobOperationsResponse
 	(*resources.OfflineUserDataJob)(nil),            // 7: google.ads.googleads.v4.resources.OfflineUserDataJob
-	(*wrappers.BoolValue)(nil),                      // 8: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                    // 8: google.protobuf.BoolValue
 	(*common.UserData)(nil),                         // 9: google.ads.googleads.v4.common.UserData
 	(*status.Status)(nil),                           // 10: google.rpc.Status
 	(*longrunning.Operation)(nil),                   // 11: google.longrunning.Operation

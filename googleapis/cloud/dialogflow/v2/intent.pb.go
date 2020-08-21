@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -1100,7 +1100,7 @@ type UpdateIntentRequest struct {
 	// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
 	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// Optional. The mask to control which fields get updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. The resource view to apply to the returned intent.
 	IntentView IntentView `protobuf:"varint,4,opt,name=intent_view,json=intentView,proto3,enum=google.cloud.dialogflow.v2.IntentView" json:"intent_view,omitempty"`
 }
@@ -1151,7 +1151,7 @@ func (x *UpdateIntentRequest) GetLanguageCode() string {
 	return ""
 }
 
-func (x *UpdateIntentRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateIntentRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1237,7 +1237,7 @@ type BatchUpdateIntentsRequest struct {
 	// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
 	LanguageCode string `protobuf:"bytes,4,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// Optional. The mask to control which fields get updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,5,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,5,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. The resource view to apply to the returned intent.
 	IntentView IntentView `protobuf:"varint,6,opt,name=intent_view,json=intentView,proto3,enum=google.cloud.dialogflow.v2.IntentView" json:"intent_view,omitempty"`
 }
@@ -1309,7 +1309,7 @@ func (x *BatchUpdateIntentsRequest) GetLanguageCode() string {
 	return ""
 }
 
-func (x *BatchUpdateIntentsRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *BatchUpdateIntentsRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1822,7 +1822,7 @@ func (x *Intent_Message) GetCard() *Intent_Message_Card {
 	return nil
 }
 
-func (x *Intent_Message) GetPayload() *_struct.Struct {
+func (x *Intent_Message) GetPayload() *structpb.Struct {
 	if x, ok := x.GetMessage().(*Intent_Message_Payload); ok {
 		return x.Payload
 	}
@@ -1925,7 +1925,7 @@ type Intent_Message_Card_ struct {
 
 type Intent_Message_Payload struct {
 	// A custom platform-specific response.
-	Payload *_struct.Struct `protobuf:"bytes,5,opt,name=payload,proto3,oneof"`
+	Payload *structpb.Struct `protobuf:"bytes,5,opt,name=payload,proto3,oneof"`
 }
 
 type Intent_Message_SimpleResponses_ struct {
@@ -4753,9 +4753,9 @@ var file_google_cloud_dialogflow_v2_intent_proto_goTypes = []interface{}{
 	(*Intent_Message_BrowseCarouselCard_BrowseCarouselCardItem)(nil),               // 49: google.cloud.dialogflow.v2.Intent.Message.BrowseCarouselCard.BrowseCarouselCardItem
 	(*Intent_Message_BrowseCarouselCard_BrowseCarouselCardItem_OpenUrlAction)(nil), // 50: google.cloud.dialogflow.v2.Intent.Message.BrowseCarouselCard.BrowseCarouselCardItem.OpenUrlAction
 	(*Context)(nil),                                                                // 51: google.cloud.dialogflow.v2.Context
-	(*field_mask.FieldMask)(nil),                                                   // 52: google.protobuf.FieldMask
-	(*_struct.Struct)(nil),                                                         // 53: google.protobuf.Struct
-	(*empty.Empty)(nil),                                                            // 54: google.protobuf.Empty
+	(*fieldmaskpb.FieldMask)(nil),                                                  // 52: google.protobuf.FieldMask
+	(*structpb.Struct)(nil),                                                        // 53: google.protobuf.Struct
+	(*emptypb.Empty)(nil),                                                          // 54: google.protobuf.Empty
 	(*longrunning.Operation)(nil),                                                  // 55: google.longrunning.Operation
 }
 var file_google_cloud_dialogflow_v2_intent_proto_depIdxs = []int32{
@@ -5436,7 +5436,7 @@ type IntentsClient interface {
 	// Updates the specified intent.
 	UpdateIntent(ctx context.Context, in *UpdateIntentRequest, opts ...grpc.CallOption) (*Intent, error)
 	// Deletes the specified intent and its direct or indirect followup intents.
-	DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates/Creates multiple intents in the specified agent.
 	//
 	// Operation <response: [BatchUpdateIntentsResponse][google.cloud.dialogflow.v2.BatchUpdateIntentsResponse]>
@@ -5491,8 +5491,8 @@ func (c *intentsClient) UpdateIntent(ctx context.Context, in *UpdateIntentReques
 	return out, nil
 }
 
-func (c *intentsClient) DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *intentsClient) DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.dialogflow.v2.Intents/DeleteIntent", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5529,7 +5529,7 @@ type IntentsServer interface {
 	// Updates the specified intent.
 	UpdateIntent(context.Context, *UpdateIntentRequest) (*Intent, error)
 	// Deletes the specified intent and its direct or indirect followup intents.
-	DeleteIntent(context.Context, *DeleteIntentRequest) (*empty.Empty, error)
+	DeleteIntent(context.Context, *DeleteIntentRequest) (*emptypb.Empty, error)
 	// Updates/Creates multiple intents in the specified agent.
 	//
 	// Operation <response: [BatchUpdateIntentsResponse][google.cloud.dialogflow.v2.BatchUpdateIntentsResponse]>
@@ -5556,7 +5556,7 @@ func (*UnimplementedIntentsServer) CreateIntent(context.Context, *CreateIntentRe
 func (*UnimplementedIntentsServer) UpdateIntent(context.Context, *UpdateIntentRequest) (*Intent, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateIntent not implemented")
 }
-func (*UnimplementedIntentsServer) DeleteIntent(context.Context, *DeleteIntentRequest) (*empty.Empty, error) {
+func (*UnimplementedIntentsServer) DeleteIntent(context.Context, *DeleteIntentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteIntent not implemented")
 }
 func (*UnimplementedIntentsServer) BatchUpdateIntents(context.Context, *BatchUpdateIntentsRequest) (*longrunning.Operation, error) {

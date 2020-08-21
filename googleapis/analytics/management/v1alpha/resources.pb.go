@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -268,9 +268,9 @@ type Account struct {
 	// Example: "accounts/100"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. Time when this account was originally created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time when account payload fields were last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Human-readable display name for this account.
 	DisplayName string `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Country of business. Must be a non-deprecated code for a UN M.49 region.
@@ -320,14 +320,14 @@ func (x *Account) GetName() string {
 	return ""
 }
 
-func (x *Account) GetCreateTime() *timestamp.Timestamp {
+func (x *Account) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Account) GetUpdateTime() *timestamp.Timestamp {
+func (x *Account) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -367,9 +367,9 @@ type Property struct {
 	// Example: "properties/1000"
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. Time when the entity was originally created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time when entity payload fields were last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Immutable. Resource name of this property's logical parent.
 	//
 	// Note: The Property-Moving UI can be used to change the parent.
@@ -441,14 +441,14 @@ func (x *Property) GetName() string {
 	return ""
 }
 
-func (x *Property) GetCreateTime() *timestamp.Timestamp {
+func (x *Property) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Property) GetUpdateTime() *timestamp.Timestamp {
+func (x *Property) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -514,9 +514,9 @@ type AndroidAppDataStream struct {
 	// This ID can change if the Android app is deleted and recreated.
 	FirebaseAppId string `protobuf:"bytes,3,opt,name=firebase_app_id,json=firebaseAppId,proto3" json:"firebase_app_id,omitempty"`
 	// Output only. Time when this stream was originally created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time when stream payload fields were last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Immutable. The package name for the app being measured.
 	// Example: "com.example.myandroidapp"
 	PackageName string `protobuf:"bytes,6,opt,name=package_name,json=packageName,proto3" json:"package_name,omitempty"`
@@ -577,14 +577,14 @@ func (x *AndroidAppDataStream) GetFirebaseAppId() string {
 	return ""
 }
 
-func (x *AndroidAppDataStream) GetCreateTime() *timestamp.Timestamp {
+func (x *AndroidAppDataStream) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *AndroidAppDataStream) GetUpdateTime() *timestamp.Timestamp {
+func (x *AndroidAppDataStream) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -622,9 +622,9 @@ type IosAppDataStream struct {
 	// This ID can change if the iOS app is deleted and recreated.
 	FirebaseAppId string `protobuf:"bytes,3,opt,name=firebase_app_id,json=firebaseAppId,proto3" json:"firebase_app_id,omitempty"`
 	// Output only. Time when this stream was originally created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time when stream payload fields were last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Immutable. The Apple App Store Bundle ID for the app
 	// Example: "com.example.myiosapp"
 	BundleId string `protobuf:"bytes,6,opt,name=bundle_id,json=bundleId,proto3" json:"bundle_id,omitempty"`
@@ -685,14 +685,14 @@ func (x *IosAppDataStream) GetFirebaseAppId() string {
 	return ""
 }
 
-func (x *IosAppDataStream) GetCreateTime() *timestamp.Timestamp {
+func (x *IosAppDataStream) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *IosAppDataStream) GetUpdateTime() *timestamp.Timestamp {
+func (x *IosAppDataStream) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -730,9 +730,9 @@ type WebDataStream struct {
 	// This ID can change if the web app is deleted and recreated.
 	FirebaseAppId string `protobuf:"bytes,3,opt,name=firebase_app_id,json=firebaseAppId,proto3" json:"firebase_app_id,omitempty"`
 	// Output only. Time when this stream was originally created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time when stream payload fields were last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Immutable. Domain name of the web app being measured, or empty.
 	// Example: "http://www.google.com", "https://www.google.com"
 	DefaultUri string `protobuf:"bytes,6,opt,name=default_uri,json=defaultUri,proto3" json:"default_uri,omitempty"`
@@ -793,14 +793,14 @@ func (x *WebDataStream) GetFirebaseAppId() string {
 	return ""
 }
 
-func (x *WebDataStream) GetCreateTime() *timestamp.Timestamp {
+func (x *WebDataStream) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *WebDataStream) GetUpdateTime() *timestamp.Timestamp {
+func (x *WebDataStream) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -1226,7 +1226,7 @@ type FirebaseLink struct {
 	// Example: 'projects/1234'
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	// Output only. Time when this FirebaseLink was originally created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Maximum user access to the App + Web property allowed to admins of
 	// the linked Firebase project.
 	MaximumUserAccess MaximumUserAccess `protobuf:"varint,4,opt,name=maximum_user_access,json=maximumUserAccess,proto3,enum=google.analytics.management.v1alpha.MaximumUserAccess" json:"maximum_user_access,omitempty"`
@@ -1278,7 +1278,7 @@ func (x *FirebaseLink) GetProject() string {
 	return ""
 }
 
-func (x *FirebaseLink) GetCreateTime() *timestamp.Timestamp {
+func (x *FirebaseLink) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1818,7 +1818,7 @@ var file_google_analytics_management_v1alpha_resources_proto_goTypes = []interfa
 	(*FirebaseLink)(nil),                // 10: google.analytics.management.v1alpha.FirebaseLink
 	(*GlobalSiteTag)(nil),               // 11: google.analytics.management.v1alpha.GlobalSiteTag
 	(*GoogleAdsLink)(nil),               // 12: google.analytics.management.v1alpha.GoogleAdsLink
-	(*timestamp.Timestamp)(nil),         // 13: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),       // 13: google.protobuf.Timestamp
 }
 var file_google_analytics_management_v1alpha_resources_proto_depIdxs = []int32{
 	13, // 0: google.analytics.management.v1alpha.Account.create_time:type_name -> google.protobuf.Timestamp

@@ -26,13 +26,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -7305,8 +7305,8 @@ var file_google_container_v1alpha1_cluster_service_proto_goTypes = []interface{}
 	nil,                                              // 65: google.container.v1alpha1.NodeConfig.MetadataEntry
 	nil,                                              // 66: google.container.v1alpha1.NodeConfig.LabelsEntry
 	(*MasterAuthorizedNetworksConfig_CidrBlock)(nil), // 67: google.container.v1alpha1.MasterAuthorizedNetworksConfig.CidrBlock
-	nil,                 // 68: google.container.v1alpha1.SetLabelsRequest.ResourceLabelsEntry
-	(*empty.Empty)(nil), // 69: google.protobuf.Empty
+	nil,                   // 68: google.container.v1alpha1.SetLabelsRequest.ResourceLabelsEntry
+	(*emptypb.Empty)(nil), // 69: google.protobuf.Empty
 }
 var file_google_container_v1alpha1_cluster_service_proto_depIdxs = []int32{
 	65, // 0: google.container.v1alpha1.NodeConfig.metadata:type_name -> google.container.v1alpha1.NodeConfig.MetadataEntry
@@ -8231,7 +8231,7 @@ type ClusterManagerClient interface {
 	// Gets the specified operation.
 	GetOperation(ctx context.Context, in *GetOperationRequest, opts ...grpc.CallOption) (*Operation, error)
 	// Cancels the specified operation.
-	CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns configuration info about the Container Engine service.
 	GetServerConfig(ctx context.Context, in *GetServerConfigRequest, opts ...grpc.CallOption) (*ServerConfig, error)
 	// Lists the node pools for a cluster.
@@ -8406,8 +8406,8 @@ func (c *clusterManagerClient) GetOperation(ctx context.Context, in *GetOperatio
 	return out, nil
 }
 
-func (c *clusterManagerClient) CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *clusterManagerClient) CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.container.v1alpha1.ClusterManager/CancelOperation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -8598,7 +8598,7 @@ type ClusterManagerServer interface {
 	// Gets the specified operation.
 	GetOperation(context.Context, *GetOperationRequest) (*Operation, error)
 	// Cancels the specified operation.
-	CancelOperation(context.Context, *CancelOperationRequest) (*empty.Empty, error)
+	CancelOperation(context.Context, *CancelOperationRequest) (*emptypb.Empty, error)
 	// Returns configuration info about the Container Engine service.
 	GetServerConfig(context.Context, *GetServerConfigRequest) (*ServerConfig, error)
 	// Lists the node pools for a cluster.
@@ -8679,7 +8679,7 @@ func (*UnimplementedClusterManagerServer) ListOperations(context.Context, *ListO
 func (*UnimplementedClusterManagerServer) GetOperation(context.Context, *GetOperationRequest) (*Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOperation not implemented")
 }
-func (*UnimplementedClusterManagerServer) CancelOperation(context.Context, *CancelOperationRequest) (*empty.Empty, error) {
+func (*UnimplementedClusterManagerServer) CancelOperation(context.Context, *CancelOperationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelOperation not implemented")
 }
 func (*UnimplementedClusterManagerServer) GetServerConfig(context.Context, *GetServerConfigRequest) (*ServerConfig, error) {

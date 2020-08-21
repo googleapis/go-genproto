@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	_ "google.golang.org/genproto/googleapis/iam/v1"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
@@ -35,6 +34,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -698,7 +698,7 @@ type AnalyzeIamPolicyRequest_Options struct {
 	// If it's not finished until then, you will get a  DEADLINE_EXCEEDED error.
 	//
 	// Default is empty.
-	ExecutionTimeout *duration.Duration `protobuf:"bytes,7,opt,name=execution_timeout,json=executionTimeout,proto3" json:"execution_timeout,omitempty"`
+	ExecutionTimeout *durationpb.Duration `protobuf:"bytes,7,opt,name=execution_timeout,json=executionTimeout,proto3" json:"execution_timeout,omitempty"`
 }
 
 func (x *AnalyzeIamPolicyRequest_Options) Reset() {
@@ -775,7 +775,7 @@ func (x *AnalyzeIamPolicyRequest_Options) GetAnalyzeServiceAccountImpersonation(
 	return false
 }
 
-func (x *AnalyzeIamPolicyRequest_Options) GetExecutionTimeout() *duration.Duration {
+func (x *AnalyzeIamPolicyRequest_Options) GetExecutionTimeout() *durationpb.Duration {
 	if x != nil {
 		return x.ExecutionTimeout
 	}
@@ -1335,7 +1335,7 @@ var file_google_cloud_asset_v1p4beta1_asset_service_proto_goTypes = []interface{
 	(*IamPolicyAnalysisOutputConfig_GcsDestination)(nil), // 11: google.cloud.asset.v1p4beta1.IamPolicyAnalysisOutputConfig.GcsDestination
 	(*ExportIamPolicyAnalysisRequest_Options)(nil),       // 12: google.cloud.asset.v1p4beta1.ExportIamPolicyAnalysisRequest.Options
 	(*IamPolicyAnalysisResult_AnalysisState)(nil),        // 13: google.cloud.asset.v1p4beta1.IamPolicyAnalysisResult.AnalysisState
-	(*duration.Duration)(nil),                            // 14: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                          // 14: google.protobuf.Duration
 	(*IamPolicyAnalysisResult)(nil),                      // 15: google.cloud.asset.v1p4beta1.IamPolicyAnalysisResult
 	(*longrunning.Operation)(nil),                        // 16: google.longrunning.Operation
 }

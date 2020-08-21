@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -254,7 +254,7 @@ type Bucket struct {
 	// The creation time of the bucket in
 	// [https://tools.ietf.org/html/rfc3339][RFC 3339] format.
 	// Attempting to set this field will result in an error.
-	TimeCreated *timestamp.Timestamp `protobuf:"bytes,4,opt,name=time_created,json=timeCreated,proto3" json:"time_created,omitempty"`
+	TimeCreated *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=time_created,json=timeCreated,proto3" json:"time_created,omitempty"`
 	// The ID of the bucket. For buckets, the `id` and `name` properties are the
 	// same.
 	// Attempting to update this field after the bucket is created will result in
@@ -292,7 +292,7 @@ type Bucket struct {
 	Etag string `protobuf:"bytes,12,opt,name=etag,proto3" json:"etag,omitempty"`
 	// The modification time of the bucket.
 	// Attempting to set this field will result in an error.
-	Updated *timestamp.Timestamp `protobuf:"bytes,13,opt,name=updated,proto3" json:"updated,omitempty"`
+	Updated *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=updated,proto3" json:"updated,omitempty"`
 	// The default value for event-based hold on newly created objects in this
 	// bucket.  Event-based hold is a way to retain objects indefinitely until an
 	// event occurs, signified by the
@@ -400,7 +400,7 @@ func (x *Bucket) GetLifecycle() *Bucket_Lifecycle {
 	return nil
 }
 
-func (x *Bucket) GetTimeCreated() *timestamp.Timestamp {
+func (x *Bucket) GetTimeCreated() *timestamppb.Timestamp {
 	if x != nil {
 		return x.TimeCreated
 	}
@@ -463,7 +463,7 @@ func (x *Bucket) GetEtag() string {
 	return ""
 }
 
-func (x *Bucket) GetUpdated() *timestamp.Timestamp {
+func (x *Bucket) GetUpdated() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Updated
 	}
@@ -815,7 +815,7 @@ type Channel struct {
 	// delivered over this channel. Optional.
 	Token string `protobuf:"bytes,4,opt,name=token,proto3" json:"token,omitempty"`
 	// Date and time of notification channel expiration. Optional.
-	Expiration *timestamp.Timestamp `protobuf:"bytes,5,opt,name=expiration,proto3" json:"expiration,omitempty"`
+	Expiration *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=expiration,proto3" json:"expiration,omitempty"`
 	// The type of delivery mechanism used for this channel.
 	Type string `protobuf:"bytes,6,opt,name=type,proto3" json:"type,omitempty"`
 	// The address where notifications are delivered for this channel.
@@ -886,7 +886,7 @@ func (x *Channel) GetToken() string {
 	return ""
 }
 
-func (x *Channel) GetExpiration() *timestamp.Timestamp {
+func (x *Channel) GetExpiration() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Expiration
 	}
@@ -980,7 +980,7 @@ type ChecksummedData struct {
 	// The data.
 	Content []byte `protobuf:"bytes,1,opt,name=content,proto3" json:"content,omitempty"`
 	// CRC32C digest of the contents.
-	Crc32C *wrappers.UInt32Value `protobuf:"bytes,2,opt,name=crc32c,proto3" json:"crc32c,omitempty"`
+	Crc32C *wrapperspb.UInt32Value `protobuf:"bytes,2,opt,name=crc32c,proto3" json:"crc32c,omitempty"`
 }
 
 func (x *ChecksummedData) Reset() {
@@ -1022,7 +1022,7 @@ func (x *ChecksummedData) GetContent() []byte {
 	return nil
 }
 
-func (x *ChecksummedData) GetCrc32C() *wrappers.UInt32Value {
+func (x *ChecksummedData) GetCrc32C() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.Crc32C
 	}
@@ -1038,7 +1038,7 @@ type ObjectChecksums struct {
 	// CRC32C digest of the object data. Computed by the GCS service for
 	// all written objects, and validated by the GCS service against
 	// client-supplied values if present in an InsertObjectRequest.
-	Crc32C *wrappers.UInt32Value `protobuf:"bytes,1,opt,name=crc32c,proto3" json:"crc32c,omitempty"`
+	Crc32C *wrapperspb.UInt32Value `protobuf:"bytes,1,opt,name=crc32c,proto3" json:"crc32c,omitempty"`
 	// Hex-encoded MD5 hash of the object data (hexdigest). Whether/how this
 	// checksum is provided and validated is service-dependent.
 	Md5Hash string `protobuf:"bytes,2,opt,name=md5_hash,json=md5Hash,proto3" json:"md5_hash,omitempty"`
@@ -1076,7 +1076,7 @@ func (*ObjectChecksums) Descriptor() ([]byte, []int) {
 	return file_google_storage_v1_storage_resources_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ObjectChecksums) GetCrc32C() *wrappers.UInt32Value {
+func (x *ObjectChecksums) GetCrc32C() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.Crc32C
 	}
@@ -1213,9 +1213,9 @@ type HmacKeyMetadata struct {
 	// State of the key. One of ACTIVE, INACTIVE, or DELETED.
 	State string `protobuf:"bytes,5,opt,name=state,proto3" json:"state,omitempty"`
 	// The creation time of the HMAC key in RFC 3339 format.
-	TimeCreated *timestamp.Timestamp `protobuf:"bytes,6,opt,name=time_created,json=timeCreated,proto3" json:"time_created,omitempty"`
+	TimeCreated *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=time_created,json=timeCreated,proto3" json:"time_created,omitempty"`
 	// The last modification time of the HMAC key metadata in RFC 3339 format.
-	Updated *timestamp.Timestamp `protobuf:"bytes,7,opt,name=updated,proto3" json:"updated,omitempty"`
+	Updated *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated,proto3" json:"updated,omitempty"`
 	// Tag updated with each key update.
 	Etag string `protobuf:"bytes,8,opt,name=etag,proto3" json:"etag,omitempty"`
 }
@@ -1287,14 +1287,14 @@ func (x *HmacKeyMetadata) GetState() string {
 	return ""
 }
 
-func (x *HmacKeyMetadata) GetTimeCreated() *timestamp.Timestamp {
+func (x *HmacKeyMetadata) GetTimeCreated() *timestamppb.Timestamp {
 	if x != nil {
 		return x.TimeCreated
 	}
 	return nil
 }
 
-func (x *HmacKeyMetadata) GetUpdated() *timestamp.Timestamp {
+func (x *HmacKeyMetadata) GetUpdated() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Updated
 	}
@@ -1496,7 +1496,7 @@ type Object struct {
 	// The deletion time of the object. Will be returned if and only if this
 	// version of the object has been deleted.
 	// Attempting to set this field will result in an error.
-	TimeDeleted *timestamp.Timestamp `protobuf:"bytes,7,opt,name=time_deleted,json=timeDeleted,proto3" json:"time_deleted,omitempty"`
+	TimeDeleted *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=time_deleted,json=timeDeleted,proto3" json:"time_deleted,omitempty"`
 	// Content-Type of the object data, matching
 	// [https://tools.ietf.org/html/rfc7231#section-3.1.1.5][RFC 7231 §3.1.1.5].
 	// If an object is stored without a Content-Type, it is served as
@@ -1508,7 +1508,7 @@ type Object struct {
 	Size int64 `protobuf:"varint,9,opt,name=size,proto3" json:"size,omitempty"`
 	// The creation time of the object.
 	// Attempting to set this field will result in an error.
-	TimeCreated *timestamp.Timestamp `protobuf:"bytes,10,opt,name=time_created,json=timeCreated,proto3" json:"time_created,omitempty"`
+	TimeCreated *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=time_created,json=timeCreated,proto3" json:"time_created,omitempty"`
 	// CRC32c checksum. For more information about using the CRC32c
 	// checksum, see
 	// [https://cloud.google.com/storage/docs/hashes-etags#_JSONAPI][Hashes and
@@ -1516,7 +1516,7 @@ type Object struct {
 	// supplied by the user when sending an Object. The server will ignore any
 	// value provided. Users should instead use the object_checksums field on the
 	// InsertObjectRequest when uploading an object.
-	Crc32C *wrappers.UInt32Value `protobuf:"bytes,11,opt,name=crc32c,proto3" json:"crc32c,omitempty"`
+	Crc32C *wrapperspb.UInt32Value `protobuf:"bytes,11,opt,name=crc32c,proto3" json:"crc32c,omitempty"`
 	// Number of underlying components that make up this object. Components are
 	// accumulated by compose operations.
 	// Attempting to set this field will result in an error.
@@ -1536,7 +1536,7 @@ type Object struct {
 	Etag string `protobuf:"bytes,14,opt,name=etag,proto3" json:"etag,omitempty"`
 	// The modification time of the object metadata.
 	// Attempting to set this field will result in an error.
-	Updated *timestamp.Timestamp `protobuf:"bytes,15,opt,name=updated,proto3" json:"updated,omitempty"`
+	Updated *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=updated,proto3" json:"updated,omitempty"`
 	// Storage class of the object.
 	StorageClass string `protobuf:"bytes,16,opt,name=storage_class,json=storageClass,proto3" json:"storage_class,omitempty"`
 	// Cloud KMS Key used to encrypt this object, if the object is encrypted by
@@ -1545,7 +1545,7 @@ type Object struct {
 	// The time at which the object's storage class was last changed. When the
 	// object is initially created, it will be set to time_created.
 	// Attempting to set this field will result in an error.
-	TimeStorageClassUpdated *timestamp.Timestamp `protobuf:"bytes,18,opt,name=time_storage_class_updated,json=timeStorageClassUpdated,proto3" json:"time_storage_class_updated,omitempty"`
+	TimeStorageClassUpdated *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=time_storage_class_updated,json=timeStorageClassUpdated,proto3" json:"time_storage_class_updated,omitempty"`
 	// Whether an object is under temporary hold. While this flag is set to true,
 	// the object is protected against deletion and overwrites.  A common use case
 	// of this flag is regulatory investigations where objects need to be retained
@@ -1560,7 +1560,7 @@ type Object struct {
 	// Note 2: This value can be provided even when temporary hold is set (so that
 	// the user can reason about policy without having to first unset the
 	// temporary hold).
-	RetentionExpirationTime *timestamp.Timestamp `protobuf:"bytes,20,opt,name=retention_expiration_time,json=retentionExpirationTime,proto3" json:"retention_expiration_time,omitempty"`
+	RetentionExpirationTime *timestamppb.Timestamp `protobuf:"bytes,20,opt,name=retention_expiration_time,json=retentionExpirationTime,proto3" json:"retention_expiration_time,omitempty"`
 	// User-provided metadata, in key/value pairs.
 	Metadata map[string]string `protobuf:"bytes,21,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Whether an object is under event-based hold. Event-based hold is a way to
@@ -1574,7 +1574,7 @@ type Object struct {
 	// occurred (event-based hold on the object is released) and then 3 more years
 	// after that. That means retention duration of the objects begins from the
 	// moment event-based hold transitioned from true to false.
-	EventBasedHold *wrappers.BoolValue `protobuf:"bytes,29,opt,name=event_based_hold,json=eventBasedHold,proto3" json:"event_based_hold,omitempty"`
+	EventBasedHold *wrapperspb.BoolValue `protobuf:"bytes,29,opt,name=event_based_hold,json=eventBasedHold,proto3" json:"event_based_hold,omitempty"`
 	// The name of the object.
 	// Attempting to update this field after the object is created will result in
 	// an error.
@@ -1673,7 +1673,7 @@ func (x *Object) GetMetageneration() int64 {
 	return 0
 }
 
-func (x *Object) GetTimeDeleted() *timestamp.Timestamp {
+func (x *Object) GetTimeDeleted() *timestamppb.Timestamp {
 	if x != nil {
 		return x.TimeDeleted
 	}
@@ -1694,14 +1694,14 @@ func (x *Object) GetSize() int64 {
 	return 0
 }
 
-func (x *Object) GetTimeCreated() *timestamp.Timestamp {
+func (x *Object) GetTimeCreated() *timestamppb.Timestamp {
 	if x != nil {
 		return x.TimeCreated
 	}
 	return nil
 }
 
-func (x *Object) GetCrc32C() *wrappers.UInt32Value {
+func (x *Object) GetCrc32C() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.Crc32C
 	}
@@ -1729,7 +1729,7 @@ func (x *Object) GetEtag() string {
 	return ""
 }
 
-func (x *Object) GetUpdated() *timestamp.Timestamp {
+func (x *Object) GetUpdated() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Updated
 	}
@@ -1750,7 +1750,7 @@ func (x *Object) GetKmsKeyName() string {
 	return ""
 }
 
-func (x *Object) GetTimeStorageClassUpdated() *timestamp.Timestamp {
+func (x *Object) GetTimeStorageClassUpdated() *timestamppb.Timestamp {
 	if x != nil {
 		return x.TimeStorageClassUpdated
 	}
@@ -1764,7 +1764,7 @@ func (x *Object) GetTemporaryHold() bool {
 	return false
 }
 
-func (x *Object) GetRetentionExpirationTime() *timestamp.Timestamp {
+func (x *Object) GetRetentionExpirationTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.RetentionExpirationTime
 	}
@@ -1778,7 +1778,7 @@ func (x *Object) GetMetadata() map[string]string {
 	return nil
 }
 
-func (x *Object) GetEventBasedHold() *wrappers.BoolValue {
+func (x *Object) GetEventBasedHold() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.EventBasedHold
 	}
@@ -2616,7 +2616,7 @@ type Bucket_RetentionPolicy struct {
 	// Server-determined value that indicates the time from which policy was
 	// enforced and effective. This value is in
 	// [https://tools.ietf.org/html/rfc3339][RFC 3339] format.
-	EffectiveTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=effective_time,json=effectiveTime,proto3" json:"effective_time,omitempty"`
+	EffectiveTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=effective_time,json=effectiveTime,proto3" json:"effective_time,omitempty"`
 	// Once locked, an object retention policy cannot be modified.
 	IsLocked bool `protobuf:"varint,2,opt,name=is_locked,json=isLocked,proto3" json:"is_locked,omitempty"`
 	// The duration in seconds that objects need to be retained. Retention
@@ -2658,7 +2658,7 @@ func (*Bucket_RetentionPolicy) Descriptor() ([]byte, []int) {
 	return file_google_storage_v1_storage_resources_proto_rawDescGZIP(), []int{0, 6}
 }
 
-func (x *Bucket_RetentionPolicy) GetEffectiveTime() *timestamp.Timestamp {
+func (x *Bucket_RetentionPolicy) GetEffectiveTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EffectiveTime
 	}
@@ -2808,7 +2808,7 @@ type Bucket_IamConfiguration_UniformBucketLevelAccess struct {
 	// <code>iamConfiguration.uniformBucketLevelAccess.enabled</code> from
 	// true to false in [https://tools.ietf.org/html/rfc3339][RFC 3339]. After
 	// the deadline is passed the field is immutable.
-	LockedTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=locked_time,json=lockedTime,proto3" json:"locked_time,omitempty"`
+	LockedTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=locked_time,json=lockedTime,proto3" json:"locked_time,omitempty"`
 }
 
 func (x *Bucket_IamConfiguration_UniformBucketLevelAccess) Reset() {
@@ -2850,7 +2850,7 @@ func (x *Bucket_IamConfiguration_UniformBucketLevelAccess) GetEnabled() bool {
 	return false
 }
 
-func (x *Bucket_IamConfiguration_UniformBucketLevelAccess) GetLockedTime() *timestamp.Timestamp {
+func (x *Bucket_IamConfiguration_UniformBucketLevelAccess) GetLockedTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LockedTime
 	}
@@ -2989,11 +2989,11 @@ type Bucket_Lifecycle_Rule_Condition struct {
 	// instance, "2013-01-15"). This condition is satisfied when an
 	// object is created before midnight of the specified date in UTC.
 	// [1]: https://tools.ietf.org/html/rfc3339
-	CreatedBefore *timestamp.Timestamp `protobuf:"bytes,2,opt,name=created_before,json=createdBefore,proto3" json:"created_before,omitempty"`
+	CreatedBefore *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_before,json=createdBefore,proto3" json:"created_before,omitempty"`
 	// Relevant only for versioned objects. If the value is
 	// `true`, this condition matches live objects; if the value
 	// is `false`, it matches archived objects.
-	IsLive *wrappers.BoolValue `protobuf:"bytes,3,opt,name=is_live,json=isLive,proto3" json:"is_live,omitempty"`
+	IsLive *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=is_live,json=isLive,proto3" json:"is_live,omitempty"`
 	// Relevant only for versioned objects. If the value is N, this
 	// condition is satisfied when there are at least N versions (including
 	// the live version) newer than this version of the object.
@@ -3051,14 +3051,14 @@ func (x *Bucket_Lifecycle_Rule_Condition) GetAge() int32 {
 	return 0
 }
 
-func (x *Bucket_Lifecycle_Rule_Condition) GetCreatedBefore() *timestamp.Timestamp {
+func (x *Bucket_Lifecycle_Rule_Condition) GetCreatedBefore() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedBefore
 	}
 	return nil
 }
 
-func (x *Bucket_Lifecycle_Rule_Condition) GetIsLive() *wrappers.BoolValue {
+func (x *Bucket_Lifecycle_Rule_Condition) GetIsLive() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.IsLive
 	}
@@ -3101,7 +3101,7 @@ type ListChannelsResponse_Items struct {
 	// Email address of the subscriber.
 	SubscriberEmail string `protobuf:"bytes,4,opt,name=subscriber_email,json=subscriberEmail,proto3" json:"subscriber_email,omitempty"`
 	// Time when the channel was created.
-	CreationTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=creation_time,json=creationTime,proto3" json:"creation_time,omitempty"`
+	CreationTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=creation_time,json=creationTime,proto3" json:"creation_time,omitempty"`
 }
 
 func (x *ListChannelsResponse_Items) Reset() {
@@ -3164,7 +3164,7 @@ func (x *ListChannelsResponse_Items) GetSubscriberEmail() string {
 	return ""
 }
 
-func (x *ListChannelsResponse_Items) GetCreationTime() *timestamp.Timestamp {
+func (x *ListChannelsResponse_Items) GetCreationTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreationTime
 	}
@@ -3800,9 +3800,9 @@ var file_google_storage_v1_storage_resources_proto_goTypes = []interface{}{
 	nil,                                                      // 39: google.storage.v1.Notification.CustomAttributesEntry
 	(*Object_CustomerEncryption)(nil),                        // 40: google.storage.v1.Object.CustomerEncryption
 	nil,                                                      // 41: google.storage.v1.Object.MetadataEntry
-	(*timestamp.Timestamp)(nil),                              // 42: google.protobuf.Timestamp
-	(*wrappers.UInt32Value)(nil),                             // 43: google.protobuf.UInt32Value
-	(*wrappers.BoolValue)(nil),                               // 44: google.protobuf.BoolValue
+	(*timestamppb.Timestamp)(nil),                            // 42: google.protobuf.Timestamp
+	(*wrapperspb.UInt32Value)(nil),                           // 43: google.protobuf.UInt32Value
+	(*wrapperspb.BoolValue)(nil),                             // 44: google.protobuf.BoolValue
 }
 var file_google_storage_v1_storage_resources_proto_depIdxs = []int32{
 	4,  // 0: google.storage.v1.Bucket.acl:type_name -> google.storage.v1.BucketAccessControl

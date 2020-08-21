@@ -26,13 +26,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/any"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/anypb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -121,10 +121,10 @@ type TimeWindow struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Start time of the time window (exclusive).
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End time of the time window (inclusive).
 	// Current timestamp if not specified.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *TimeWindow) Reset() {
@@ -159,14 +159,14 @@ func (*TimeWindow) Descriptor() ([]byte, []int) {
 	return file_google_cloud_asset_v1beta1_assets_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *TimeWindow) GetStartTime() *timestamp.Timestamp {
+func (x *TimeWindow) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *TimeWindow) GetEndTime() *timestamp.Timestamp {
+func (x *TimeWindow) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -293,7 +293,7 @@ type Resource struct {
 	Parent string `protobuf:"bytes,5,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The content of the resource, in which some sensitive fields are scrubbed
 	// away and may not be present.
-	Data *_struct.Struct `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty"`
+	Data *structpb.Struct `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty"`
 }
 
 func (x *Resource) Reset() {
@@ -363,7 +363,7 @@ func (x *Resource) GetParent() string {
 	return ""
 }
 
-func (x *Resource) GetData() *_struct.Struct {
+func (x *Resource) GetData() *structpb.Struct {
 	if x != nil {
 		return x.Data
 	}
@@ -463,13 +463,13 @@ func file_google_cloud_asset_v1beta1_assets_proto_rawDescGZIP() []byte {
 
 var file_google_cloud_asset_v1beta1_assets_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_google_cloud_asset_v1beta1_assets_proto_goTypes = []interface{}{
-	(*TemporalAsset)(nil),       // 0: google.cloud.asset.v1beta1.TemporalAsset
-	(*TimeWindow)(nil),          // 1: google.cloud.asset.v1beta1.TimeWindow
-	(*Asset)(nil),               // 2: google.cloud.asset.v1beta1.Asset
-	(*Resource)(nil),            // 3: google.cloud.asset.v1beta1.Resource
-	(*timestamp.Timestamp)(nil), // 4: google.protobuf.Timestamp
-	(*v1.Policy)(nil),           // 5: google.iam.v1.Policy
-	(*_struct.Struct)(nil),      // 6: google.protobuf.Struct
+	(*TemporalAsset)(nil),         // 0: google.cloud.asset.v1beta1.TemporalAsset
+	(*TimeWindow)(nil),            // 1: google.cloud.asset.v1beta1.TimeWindow
+	(*Asset)(nil),                 // 2: google.cloud.asset.v1beta1.Asset
+	(*Resource)(nil),              // 3: google.cloud.asset.v1beta1.Resource
+	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
+	(*v1.Policy)(nil),             // 5: google.iam.v1.Policy
+	(*structpb.Struct)(nil),       // 6: google.protobuf.Struct
 }
 var file_google_cloud_asset_v1beta1_assets_proto_depIdxs = []int32{
 	1, // 0: google.cloud.asset.v1beta1.TemporalAsset.window:type_name -> google.cloud.asset.v1beta1.TimeWindow

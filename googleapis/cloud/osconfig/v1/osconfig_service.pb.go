@@ -25,13 +25,13 @@ import (
 	reflect "reflect"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -209,7 +209,7 @@ var file_google_cloud_osconfig_v1_osconfig_service_proto_goTypes = []interface{}
 	(*ListPatchJobInstanceDetailsResponse)(nil), // 11: google.cloud.osconfig.v1.ListPatchJobInstanceDetailsResponse
 	(*PatchDeployment)(nil),                     // 12: google.cloud.osconfig.v1.PatchDeployment
 	(*ListPatchDeploymentsResponse)(nil),        // 13: google.cloud.osconfig.v1.ListPatchDeploymentsResponse
-	(*empty.Empty)(nil),                         // 14: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                       // 14: google.protobuf.Empty
 }
 var file_google_cloud_osconfig_v1_osconfig_service_proto_depIdxs = []int32{
 	0,  // 0: google.cloud.osconfig.v1.OsConfigService.ExecutePatchJob:input_type -> google.cloud.osconfig.v1.ExecutePatchJobRequest
@@ -294,7 +294,7 @@ type OsConfigServiceClient interface {
 	// Get a page of OS Config patch deployments.
 	ListPatchDeployments(ctx context.Context, in *ListPatchDeploymentsRequest, opts ...grpc.CallOption) (*ListPatchDeploymentsResponse, error)
 	// Delete an OS Config patch deployment.
-	DeletePatchDeployment(ctx context.Context, in *DeletePatchDeploymentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeletePatchDeployment(ctx context.Context, in *DeletePatchDeploymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type osConfigServiceClient struct {
@@ -377,8 +377,8 @@ func (c *osConfigServiceClient) ListPatchDeployments(ctx context.Context, in *Li
 	return out, nil
 }
 
-func (c *osConfigServiceClient) DeletePatchDeployment(ctx context.Context, in *DeletePatchDeploymentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *osConfigServiceClient) DeletePatchDeployment(ctx context.Context, in *DeletePatchDeploymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.osconfig.v1.OsConfigService/DeletePatchDeployment", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -407,7 +407,7 @@ type OsConfigServiceServer interface {
 	// Get a page of OS Config patch deployments.
 	ListPatchDeployments(context.Context, *ListPatchDeploymentsRequest) (*ListPatchDeploymentsResponse, error)
 	// Delete an OS Config patch deployment.
-	DeletePatchDeployment(context.Context, *DeletePatchDeploymentRequest) (*empty.Empty, error)
+	DeletePatchDeployment(context.Context, *DeletePatchDeploymentRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedOsConfigServiceServer can be embedded to have forward compatible implementations.
@@ -438,7 +438,7 @@ func (*UnimplementedOsConfigServiceServer) GetPatchDeployment(context.Context, *
 func (*UnimplementedOsConfigServiceServer) ListPatchDeployments(context.Context, *ListPatchDeploymentsRequest) (*ListPatchDeploymentsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListPatchDeployments not implemented")
 }
-func (*UnimplementedOsConfigServiceServer) DeletePatchDeployment(context.Context, *DeletePatchDeploymentRequest) (*empty.Empty, error) {
+func (*UnimplementedOsConfigServiceServer) DeletePatchDeployment(context.Context, *DeletePatchDeploymentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePatchDeployment not implemented")
 }
 

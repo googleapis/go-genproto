@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -186,7 +186,7 @@ type CampaignExperimentOperation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// FieldMask that determines which resource fields are modified in an update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// The mutate operation.
 	//
 	// Types that are assignable to Operation:
@@ -227,7 +227,7 @@ func (*CampaignExperimentOperation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_services_campaign_experiment_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CampaignExperimentOperation) GetUpdateMask() *field_mask.FieldMask {
+func (x *CampaignExperimentOperation) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1162,11 +1162,11 @@ var file_google_ads_googleads_v2_services_campaign_experiment_service_proto_goTy
 	(*EndCampaignExperimentRequest)(nil),              // 10: google.ads.googleads.v2.services.EndCampaignExperimentRequest
 	(*ListCampaignExperimentAsyncErrorsRequest)(nil),  // 11: google.ads.googleads.v2.services.ListCampaignExperimentAsyncErrorsRequest
 	(*ListCampaignExperimentAsyncErrorsResponse)(nil), // 12: google.ads.googleads.v2.services.ListCampaignExperimentAsyncErrorsResponse
-	(*field_mask.FieldMask)(nil),                      // 13: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                     // 13: google.protobuf.FieldMask
 	(*resources.CampaignExperiment)(nil),              // 14: google.ads.googleads.v2.resources.CampaignExperiment
 	(*status.Status)(nil),                             // 15: google.rpc.Status
 	(*longrunning.Operation)(nil),                     // 16: google.longrunning.Operation
-	(*empty.Empty)(nil),                               // 17: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                             // 17: google.protobuf.Empty
 }
 var file_google_ads_googleads_v2_services_campaign_experiment_service_proto_depIdxs = []int32{
 	2,  // 0: google.ads.googleads.v2.services.MutateCampaignExperimentsRequest.operations:type_name -> google.ads.googleads.v2.services.CampaignExperimentOperation
@@ -1424,7 +1424,7 @@ type CampaignExperimentServiceClient interface {
 	// Immediately ends a campaign experiment, changing the experiment's scheduled
 	// end date and without waiting for end of day. End date is updated to be the
 	// time of the request.
-	EndCampaignExperiment(ctx context.Context, in *EndCampaignExperimentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	EndCampaignExperiment(ctx context.Context, in *EndCampaignExperimentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns all errors that occurred during CampaignExperiment create or
 	// promote (whichever occurred last).
 	// Supports standard list paging.
@@ -1484,8 +1484,8 @@ func (c *campaignExperimentServiceClient) PromoteCampaignExperiment(ctx context.
 	return out, nil
 }
 
-func (c *campaignExperimentServiceClient) EndCampaignExperiment(ctx context.Context, in *EndCampaignExperimentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *campaignExperimentServiceClient) EndCampaignExperiment(ctx context.Context, in *EndCampaignExperimentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.ads.googleads.v2.services.CampaignExperimentService/EndCampaignExperiment", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1532,7 +1532,7 @@ type CampaignExperimentServiceServer interface {
 	// Immediately ends a campaign experiment, changing the experiment's scheduled
 	// end date and without waiting for end of day. End date is updated to be the
 	// time of the request.
-	EndCampaignExperiment(context.Context, *EndCampaignExperimentRequest) (*empty.Empty, error)
+	EndCampaignExperiment(context.Context, *EndCampaignExperimentRequest) (*emptypb.Empty, error)
 	// Returns all errors that occurred during CampaignExperiment create or
 	// promote (whichever occurred last).
 	// Supports standard list paging.
@@ -1558,7 +1558,7 @@ func (*UnimplementedCampaignExperimentServiceServer) GraduateCampaignExperiment(
 func (*UnimplementedCampaignExperimentServiceServer) PromoteCampaignExperiment(context.Context, *PromoteCampaignExperimentRequest) (*longrunning.Operation, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method PromoteCampaignExperiment not implemented")
 }
-func (*UnimplementedCampaignExperimentServiceServer) EndCampaignExperiment(context.Context, *EndCampaignExperimentRequest) (*empty.Empty, error) {
+func (*UnimplementedCampaignExperimentServiceServer) EndCampaignExperiment(context.Context, *EndCampaignExperimentRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method EndCampaignExperiment not implemented")
 }
 func (*UnimplementedCampaignExperimentServiceServer) ListCampaignExperimentAsyncErrors(context.Context, *ListCampaignExperimentAsyncErrorsRequest) (*ListCampaignExperimentAsyncErrorsResponse, error) {

@@ -25,9 +25,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/any"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v11 "google.golang.org/genproto/googleapis/cloud/orgpolicy/v1"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
@@ -35,6 +32,9 @@ import (
 	_ "google.golang.org/genproto/googleapis/rpc/code"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/anypb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -203,10 +203,10 @@ type TimeWindow struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Start time of the time window (exclusive).
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End time of the time window (inclusive). If not specified, the current
 	// timestamp is used instead.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *TimeWindow) Reset() {
@@ -241,14 +241,14 @@ func (*TimeWindow) Descriptor() ([]byte, []int) {
 	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *TimeWindow) GetStartTime() *timestamp.Timestamp {
+func (x *TimeWindow) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *TimeWindow) GetEndTime() *timestamp.Timestamp {
+func (x *TimeWindow) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -270,7 +270,7 @@ type Asset struct {
 
 	// The last update timestamp of an asset. update_time is updated when
 	// create/update/delete operation is performed.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The full name of the asset. Example:
 	// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
 	//
@@ -352,7 +352,7 @@ func (*Asset) Descriptor() ([]byte, []int) {
 	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Asset) GetUpdateTime() *timestamp.Timestamp {
+func (x *Asset) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -499,7 +499,7 @@ type Resource struct {
 	Parent string `protobuf:"bytes,5,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The content of the resource, in which some sensitive fields are removed
 	// and may not be present.
-	Data *_struct.Struct `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty"`
+	Data *structpb.Struct `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty"`
 	// The location of the resource in Google Cloud, such as its zone and region.
 	// For more information, see https://cloud.google.com/about/locations/.
 	Location string `protobuf:"bytes,8,opt,name=location,proto3" json:"location,omitempty"`
@@ -572,7 +572,7 @@ func (x *Resource) GetParent() string {
 	return ""
 }
 
-func (x *Resource) GetData() *_struct.Struct {
+func (x *Resource) GetData() *structpb.Struct {
 	if x != nil {
 		return x.Data
 	}
@@ -680,7 +680,7 @@ type ResourceSearchResult struct {
 	// * use a free text query to match the attributes values. Example: to search
 	//   `additional_attributes = { dnsName: "foobar" }`, you can issue a query
 	//   `foobar`.
-	AdditionalAttributes *_struct.Struct `protobuf:"bytes,9,opt,name=additional_attributes,json=additionalAttributes,proto3" json:"additional_attributes,omitempty"`
+	AdditionalAttributes *structpb.Struct `protobuf:"bytes,9,opt,name=additional_attributes,json=additionalAttributes,proto3" json:"additional_attributes,omitempty"`
 }
 
 func (x *ResourceSearchResult) Reset() {
@@ -771,7 +771,7 @@ func (x *ResourceSearchResult) GetNetworkTags() []string {
 	return nil
 }
 
-func (x *ResourceSearchResult) GetAdditionalAttributes() *_struct.Struct {
+func (x *ResourceSearchResult) GetAdditionalAttributes() *structpb.Struct {
 	if x != nil {
 		return x.AdditionalAttributes
 	}
@@ -1218,14 +1218,14 @@ var file_google_cloud_asset_v1_assets_proto_goTypes = []interface{}{
 	nil,                                       // 7: google.cloud.asset.v1.ResourceSearchResult.LabelsEntry
 	(*IamPolicySearchResult_Explanation)(nil), // 8: google.cloud.asset.v1.IamPolicySearchResult.Explanation
 	(*IamPolicySearchResult_Explanation_Permissions)(nil), // 9: google.cloud.asset.v1.IamPolicySearchResult.Explanation.Permissions
-	nil,                          // 10: google.cloud.asset.v1.IamPolicySearchResult.Explanation.MatchedPermissionsEntry
-	(*timestamp.Timestamp)(nil),  // 11: google.protobuf.Timestamp
-	(*v1.Policy)(nil),            // 12: google.iam.v1.Policy
-	(*v11.Policy)(nil),           // 13: google.cloud.orgpolicy.v1.Policy
-	(*v12.AccessPolicy)(nil),     // 14: google.identity.accesscontextmanager.v1.AccessPolicy
-	(*v12.AccessLevel)(nil),      // 15: google.identity.accesscontextmanager.v1.AccessLevel
-	(*v12.ServicePerimeter)(nil), // 16: google.identity.accesscontextmanager.v1.ServicePerimeter
-	(*_struct.Struct)(nil),       // 17: google.protobuf.Struct
+	nil,                           // 10: google.cloud.asset.v1.IamPolicySearchResult.Explanation.MatchedPermissionsEntry
+	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
+	(*v1.Policy)(nil),             // 12: google.iam.v1.Policy
+	(*v11.Policy)(nil),            // 13: google.cloud.orgpolicy.v1.Policy
+	(*v12.AccessPolicy)(nil),      // 14: google.identity.accesscontextmanager.v1.AccessPolicy
+	(*v12.AccessLevel)(nil),       // 15: google.identity.accesscontextmanager.v1.AccessLevel
+	(*v12.ServicePerimeter)(nil),  // 16: google.identity.accesscontextmanager.v1.ServicePerimeter
+	(*structpb.Struct)(nil),       // 17: google.protobuf.Struct
 }
 var file_google_cloud_asset_v1_assets_proto_depIdxs = []int32{
 	2,  // 0: google.cloud.asset.v1.TemporalAsset.window:type_name -> google.cloud.asset.v1.TimeWindow

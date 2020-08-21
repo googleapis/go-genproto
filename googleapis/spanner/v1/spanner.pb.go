@@ -26,9 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
@@ -36,6 +33,9 @@ import (
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -302,10 +302,10 @@ type Session struct {
 	// See https://goo.gl/xmQnxf for more information on and examples of labels.
 	Labels map[string]string `protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Output only. The timestamp when the session is created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The approximate timestamp when the session is last used. It is
 	// typically earlier than the actual last use time.
-	ApproximateLastUseTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=approximate_last_use_time,json=approximateLastUseTime,proto3" json:"approximate_last_use_time,omitempty"`
+	ApproximateLastUseTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=approximate_last_use_time,json=approximateLastUseTime,proto3" json:"approximate_last_use_time,omitempty"`
 }
 
 func (x *Session) Reset() {
@@ -354,14 +354,14 @@ func (x *Session) GetLabels() map[string]string {
 	return nil
 }
 
-func (x *Session) GetCreateTime() *timestamp.Timestamp {
+func (x *Session) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Session) GetApproximateLastUseTime() *timestamp.Timestamp {
+func (x *Session) GetApproximateLastUseTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ApproximateLastUseTime
 	}
@@ -648,7 +648,7 @@ type ExecuteSqlRequest struct {
 	// `"WHERE id > @msg_id AND id < @msg_id + 100"`
 	//
 	// It is an error to execute a SQL statement with unbound parameters.
-	Params *_struct.Struct `protobuf:"bytes,4,opt,name=params,proto3" json:"params,omitempty"`
+	Params *structpb.Struct `protobuf:"bytes,4,opt,name=params,proto3" json:"params,omitempty"`
 	// It is not always possible for Cloud Spanner to infer the right SQL type
 	// from a JSON value.  For example, values of type `BYTES` and values
 	// of type `STRING` both appear in [params][google.spanner.v1.ExecuteSqlRequest.params] as JSON strings.
@@ -742,7 +742,7 @@ func (x *ExecuteSqlRequest) GetSql() string {
 	return ""
 }
 
-func (x *ExecuteSqlRequest) GetParams() *_struct.Struct {
+func (x *ExecuteSqlRequest) GetParams() *structpb.Struct {
 	if x != nil {
 		return x.Params
 	}
@@ -1076,7 +1076,7 @@ type PartitionQueryRequest struct {
 	// `"WHERE id > @msg_id AND id < @msg_id + 100"`
 	//
 	// It is an error to execute a SQL statement with unbound parameters.
-	Params *_struct.Struct `protobuf:"bytes,4,opt,name=params,proto3" json:"params,omitempty"`
+	Params *structpb.Struct `protobuf:"bytes,4,opt,name=params,proto3" json:"params,omitempty"`
 	// It is not always possible for Cloud Spanner to infer the right SQL type
 	// from a JSON value.  For example, values of type `BYTES` and values
 	// of type `STRING` both appear in [params][google.spanner.v1.PartitionQueryRequest.params] as JSON strings.
@@ -1143,7 +1143,7 @@ func (x *PartitionQueryRequest) GetSql() string {
 	return ""
 }
 
-func (x *PartitionQueryRequest) GetParams() *_struct.Struct {
+func (x *PartitionQueryRequest) GetParams() *structpb.Struct {
 	if x != nil {
 		return x.Params
 	}
@@ -1713,7 +1713,7 @@ type CommitResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The Cloud Spanner timestamp at which the transaction committed.
-	CommitTimestamp *timestamp.Timestamp `protobuf:"bytes,1,opt,name=commit_timestamp,json=commitTimestamp,proto3" json:"commit_timestamp,omitempty"`
+	CommitTimestamp *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=commit_timestamp,json=commitTimestamp,proto3" json:"commit_timestamp,omitempty"`
 }
 
 func (x *CommitResponse) Reset() {
@@ -1748,7 +1748,7 @@ func (*CommitResponse) Descriptor() ([]byte, []int) {
 	return file_google_spanner_v1_spanner_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *CommitResponse) GetCommitTimestamp() *timestamp.Timestamp {
+func (x *CommitResponse) GetCommitTimestamp() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CommitTimestamp
 	}
@@ -1897,7 +1897,7 @@ type ExecuteBatchDmlRequest_Statement struct {
 	// `"WHERE id > @msg_id AND id < @msg_id + 100"`
 	//
 	// It is an error to execute a SQL statement with unbound parameters.
-	Params *_struct.Struct `protobuf:"bytes,2,opt,name=params,proto3" json:"params,omitempty"`
+	Params *structpb.Struct `protobuf:"bytes,2,opt,name=params,proto3" json:"params,omitempty"`
 	// It is not always possible for Cloud Spanner to infer the right SQL type
 	// from a JSON value.  For example, values of type `BYTES` and values
 	// of type `STRING` both appear in [params][google.spanner.v1.ExecuteBatchDmlRequest.Statement.params] as JSON strings.
@@ -1948,7 +1948,7 @@ func (x *ExecuteBatchDmlRequest_Statement) GetSql() string {
 	return ""
 }
 
-func (x *ExecuteBatchDmlRequest_Statement) GetParams() *_struct.Struct {
+func (x *ExecuteBatchDmlRequest_Statement) GetParams() *structpb.Struct {
 	if x != nil {
 		return x.Params
 	}
@@ -2553,9 +2553,9 @@ var file_google_spanner_v1_spanner_proto_goTypes = []interface{}{
 	(*ExecuteBatchDmlRequest_Statement)(nil), // 25: google.spanner.v1.ExecuteBatchDmlRequest.Statement
 	nil,                                      // 26: google.spanner.v1.ExecuteBatchDmlRequest.Statement.ParamTypesEntry
 	nil,                                      // 27: google.spanner.v1.PartitionQueryRequest.ParamTypesEntry
-	(*timestamp.Timestamp)(nil),              // 28: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),            // 28: google.protobuf.Timestamp
 	(*TransactionSelector)(nil),              // 29: google.spanner.v1.TransactionSelector
-	(*_struct.Struct)(nil),                   // 30: google.protobuf.Struct
+	(*structpb.Struct)(nil),                  // 30: google.protobuf.Struct
 	(*ResultSet)(nil),                        // 31: google.spanner.v1.ResultSet
 	(*status.Status)(nil),                    // 32: google.rpc.Status
 	(*KeySet)(nil),                           // 33: google.spanner.v1.KeySet
@@ -2563,7 +2563,7 @@ var file_google_spanner_v1_spanner_proto_goTypes = []interface{}{
 	(*TransactionOptions)(nil),               // 35: google.spanner.v1.TransactionOptions
 	(*Mutation)(nil),                         // 36: google.spanner.v1.Mutation
 	(*Type)(nil),                             // 37: google.spanner.v1.Type
-	(*empty.Empty)(nil),                      // 38: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                    // 38: google.protobuf.Empty
 	(*PartialResultSet)(nil),                 // 39: google.spanner.v1.PartialResultSet
 }
 var file_google_spanner_v1_spanner_proto_depIdxs = []int32{
@@ -2999,7 +2999,7 @@ type SpannerClient interface {
 	// Ends a session, releasing server resources associated with it. This will
 	// asynchronously trigger cancellation of any operations that are running with
 	// this session.
-	DeleteSession(ctx context.Context, in *DeleteSessionRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteSession(ctx context.Context, in *DeleteSessionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Executes an SQL statement, returning all results in a single reply. This
 	// method cannot be used to return a result set larger than 10 MiB;
 	// if the query yields more data than that, the query fails with
@@ -3072,7 +3072,7 @@ type SpannerClient interface {
 	// `Rollback` returns `OK` if it successfully aborts the transaction, the
 	// transaction was already aborted, or the transaction is not
 	// found. `Rollback` never returns `ABORTED`.
-	Rollback(ctx context.Context, in *RollbackRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Rollback(ctx context.Context, in *RollbackRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a set of partition tokens that can be used to execute a query
 	// operation in parallel.  Each of the returned partition tokens can be used
 	// by [ExecuteStreamingSql][google.spanner.v1.Spanner.ExecuteStreamingSql] to specify a subset
@@ -3145,8 +3145,8 @@ func (c *spannerClient) ListSessions(ctx context.Context, in *ListSessionsReques
 	return out, nil
 }
 
-func (c *spannerClient) DeleteSession(ctx context.Context, in *DeleteSessionRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *spannerClient) DeleteSession(ctx context.Context, in *DeleteSessionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.spanner.v1.Spanner/DeleteSession", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3263,8 +3263,8 @@ func (c *spannerClient) Commit(ctx context.Context, in *CommitRequest, opts ...g
 	return out, nil
 }
 
-func (c *spannerClient) Rollback(ctx context.Context, in *RollbackRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *spannerClient) Rollback(ctx context.Context, in *RollbackRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.spanner.v1.Spanner/Rollback", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3326,7 +3326,7 @@ type SpannerServer interface {
 	// Ends a session, releasing server resources associated with it. This will
 	// asynchronously trigger cancellation of any operations that are running with
 	// this session.
-	DeleteSession(context.Context, *DeleteSessionRequest) (*empty.Empty, error)
+	DeleteSession(context.Context, *DeleteSessionRequest) (*emptypb.Empty, error)
 	// Executes an SQL statement, returning all results in a single reply. This
 	// method cannot be used to return a result set larger than 10 MiB;
 	// if the query yields more data than that, the query fails with
@@ -3399,7 +3399,7 @@ type SpannerServer interface {
 	// `Rollback` returns `OK` if it successfully aborts the transaction, the
 	// transaction was already aborted, or the transaction is not
 	// found. `Rollback` never returns `ABORTED`.
-	Rollback(context.Context, *RollbackRequest) (*empty.Empty, error)
+	Rollback(context.Context, *RollbackRequest) (*emptypb.Empty, error)
 	// Creates a set of partition tokens that can be used to execute a query
 	// operation in parallel.  Each of the returned partition tokens can be used
 	// by [ExecuteStreamingSql][google.spanner.v1.Spanner.ExecuteStreamingSql] to specify a subset
@@ -3444,7 +3444,7 @@ func (*UnimplementedSpannerServer) GetSession(context.Context, *GetSessionReques
 func (*UnimplementedSpannerServer) ListSessions(context.Context, *ListSessionsRequest) (*ListSessionsResponse, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method ListSessions not implemented")
 }
-func (*UnimplementedSpannerServer) DeleteSession(context.Context, *DeleteSessionRequest) (*empty.Empty, error) {
+func (*UnimplementedSpannerServer) DeleteSession(context.Context, *DeleteSessionRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteSession not implemented")
 }
 func (*UnimplementedSpannerServer) ExecuteSql(context.Context, *ExecuteSqlRequest) (*ResultSet, error) {
@@ -3468,7 +3468,7 @@ func (*UnimplementedSpannerServer) BeginTransaction(context.Context, *BeginTrans
 func (*UnimplementedSpannerServer) Commit(context.Context, *CommitRequest) (*CommitResponse, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method Commit not implemented")
 }
-func (*UnimplementedSpannerServer) Rollback(context.Context, *RollbackRequest) (*empty.Empty, error) {
+func (*UnimplementedSpannerServer) Rollback(context.Context, *RollbackRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method Rollback not implemented")
 }
 func (*UnimplementedSpannerServer) PartitionQuery(context.Context, *PartitionQueryRequest) (*PartitionResponse, error) {

@@ -28,12 +28,12 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v4/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -260,7 +260,7 @@ type MerchantCenterLinkOperation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// FieldMask that determines which resource fields are modified in an update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// The operation to perform
 	//
 	// Types that are assignable to Operation:
@@ -301,7 +301,7 @@ func (*MerchantCenterLinkOperation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_merchant_center_link_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *MerchantCenterLinkOperation) GetUpdateMask() *field_mask.FieldMask {
+func (x *MerchantCenterLinkOperation) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -619,7 +619,7 @@ var file_google_ads_googleads_v4_services_merchant_center_link_service_proto_goT
 	(*MutateMerchantCenterLinkResponse)(nil), // 5: google.ads.googleads.v4.services.MutateMerchantCenterLinkResponse
 	(*MutateMerchantCenterLinkResult)(nil),   // 6: google.ads.googleads.v4.services.MutateMerchantCenterLinkResult
 	(*resources.MerchantCenterLink)(nil),     // 7: google.ads.googleads.v4.resources.MerchantCenterLink
-	(*field_mask.FieldMask)(nil),             // 8: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),            // 8: google.protobuf.FieldMask
 }
 var file_google_ads_googleads_v4_services_merchant_center_link_service_proto_depIdxs = []int32{
 	7, // 0: google.ads.googleads.v4.services.ListMerchantCenterLinksResponse.merchant_center_links:type_name -> google.ads.googleads.v4.resources.MerchantCenterLink

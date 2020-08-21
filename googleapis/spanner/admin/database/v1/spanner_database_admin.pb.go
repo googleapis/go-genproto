@@ -26,8 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
@@ -36,6 +34,8 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -258,7 +258,7 @@ type Database struct {
 	// Output only. The current database state.
 	State Database_State `protobuf:"varint,2,opt,name=state,proto3,enum=google.spanner.admin.database.v1.Database_State" json:"state,omitempty"`
 	// Output only. If exists, the time at which the database creation started.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Applicable only for restored databases. Contains information
 	// about the restore source.
 	RestoreInfo *RestoreInfo `protobuf:"bytes,4,opt,name=restore_info,json=restoreInfo,proto3" json:"restore_info,omitempty"`
@@ -310,7 +310,7 @@ func (x *Database) GetState() Database_State {
 	return Database_STATE_UNSPECIFIED
 }
 
-func (x *Database) GetCreateTime() *timestamp.Timestamp {
+func (x *Database) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -745,7 +745,7 @@ type UpdateDatabaseDdlMetadata struct {
 	// Reports the commit timestamps of all statements that have
 	// succeeded so far, where `commit_timestamps[i]` is the commit
 	// timestamp for the statement `statements[i]`.
-	CommitTimestamps []*timestamp.Timestamp `protobuf:"bytes,3,rep,name=commit_timestamps,json=commitTimestamps,proto3" json:"commit_timestamps,omitempty"`
+	CommitTimestamps []*timestamppb.Timestamp `protobuf:"bytes,3,rep,name=commit_timestamps,json=commitTimestamps,proto3" json:"commit_timestamps,omitempty"`
 }
 
 func (x *UpdateDatabaseDdlMetadata) Reset() {
@@ -794,7 +794,7 @@ func (x *UpdateDatabaseDdlMetadata) GetStatements() []string {
 	return nil
 }
 
-func (x *UpdateDatabaseDdlMetadata) GetCommitTimestamps() []*timestamp.Timestamp {
+func (x *UpdateDatabaseDdlMetadata) GetCommitTimestamps() []*timestamppb.Timestamp {
 	if x != nil {
 		return x.CommitTimestamps
 	}
@@ -1264,7 +1264,7 @@ type RestoreDatabaseMetadata struct {
 	// the operation is not deleted; instead, it becomes an operation with
 	// an [Operation.error][google.longrunning.Operation.error] value with a
 	// [google.rpc.Status.code][google.rpc.Status.code] of 1, corresponding to `Code.CANCELLED`.
-	CancelTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=cancel_time,json=cancelTime,proto3" json:"cancel_time,omitempty"`
+	CancelTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=cancel_time,json=cancelTime,proto3" json:"cancel_time,omitempty"`
 	// If exists, the name of the long-running operation that will be used to
 	// track the post-restore optimization process to optimize the performance of
 	// the restored database, and remove the dependency on the restore source.
@@ -1346,7 +1346,7 @@ func (x *RestoreDatabaseMetadata) GetProgress() *OperationProgress {
 	return nil
 }
 
-func (x *RestoreDatabaseMetadata) GetCancelTime() *timestamp.Timestamp {
+func (x *RestoreDatabaseMetadata) GetCancelTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CancelTime
 	}
@@ -1965,7 +1965,7 @@ var file_google_spanner_admin_database_v1_spanner_database_admin_proto_goTypes =
 	(*RestoreDatabaseMetadata)(nil),          // 17: google.spanner.admin.database.v1.RestoreDatabaseMetadata
 	(*OptimizeRestoredDatabaseMetadata)(nil), // 18: google.spanner.admin.database.v1.OptimizeRestoredDatabaseMetadata
 	(*BackupInfo)(nil),                       // 19: google.spanner.admin.database.v1.BackupInfo
-	(*timestamp.Timestamp)(nil),              // 20: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),            // 20: google.protobuf.Timestamp
 	(*longrunning.Operation)(nil),            // 21: google.longrunning.Operation
 	(*OperationProgress)(nil),                // 22: google.spanner.admin.database.v1.OperationProgress
 	(*v1.SetIamPolicyRequest)(nil),           // 23: google.iam.v1.SetIamPolicyRequest
@@ -1977,7 +1977,7 @@ var file_google_spanner_admin_database_v1_spanner_database_admin_proto_goTypes =
 	(*DeleteBackupRequest)(nil),              // 29: google.spanner.admin.database.v1.DeleteBackupRequest
 	(*ListBackupsRequest)(nil),               // 30: google.spanner.admin.database.v1.ListBackupsRequest
 	(*ListBackupOperationsRequest)(nil),      // 31: google.spanner.admin.database.v1.ListBackupOperationsRequest
-	(*empty.Empty)(nil),                      // 32: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                    // 32: google.protobuf.Empty
 	(*v1.Policy)(nil),                        // 33: google.iam.v1.Policy
 	(*v1.TestIamPermissionsResponse)(nil),    // 34: google.iam.v1.TestIamPermissionsResponse
 	(*Backup)(nil),                           // 35: google.spanner.admin.database.v1.Backup
@@ -2318,7 +2318,7 @@ type DatabaseAdminClient interface {
 	// Drops (aka deletes) a Cloud Spanner database.
 	// Completed backups for the database will be retained according to their
 	// `expire_time`.
-	DropDatabase(ctx context.Context, in *DropDatabaseRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DropDatabase(ctx context.Context, in *DropDatabaseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns the schema of a Cloud Spanner database as a list of formatted
 	// DDL statements. This method does not show pending schema updates, those may
 	// be queried using the [Operations][google.longrunning.Operations] API.
@@ -2369,7 +2369,7 @@ type DatabaseAdminClient interface {
 	// Updates a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
 	UpdateBackup(ctx context.Context, in *UpdateBackupRequest, opts ...grpc.CallOption) (*Backup, error)
 	// Deletes a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
-	DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists completed and pending backups.
 	// Backups returned are ordered by `create_time` in descending order,
 	// starting from the most recent `create_time`.
@@ -2458,8 +2458,8 @@ func (c *databaseAdminClient) UpdateDatabaseDdl(ctx context.Context, in *UpdateD
 	return out, nil
 }
 
-func (c *databaseAdminClient) DropDatabase(ctx context.Context, in *DropDatabaseRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *databaseAdminClient) DropDatabase(ctx context.Context, in *DropDatabaseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/DropDatabase", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2530,8 +2530,8 @@ func (c *databaseAdminClient) UpdateBackup(ctx context.Context, in *UpdateBackup
 	return out, nil
 }
 
-func (c *databaseAdminClient) DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *databaseAdminClient) DeleteBackup(ctx context.Context, in *DeleteBackupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.spanner.admin.database.v1.DatabaseAdmin/DeleteBackup", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2601,7 +2601,7 @@ type DatabaseAdminServer interface {
 	// Drops (aka deletes) a Cloud Spanner database.
 	// Completed backups for the database will be retained according to their
 	// `expire_time`.
-	DropDatabase(context.Context, *DropDatabaseRequest) (*empty.Empty, error)
+	DropDatabase(context.Context, *DropDatabaseRequest) (*emptypb.Empty, error)
 	// Returns the schema of a Cloud Spanner database as a list of formatted
 	// DDL statements. This method does not show pending schema updates, those may
 	// be queried using the [Operations][google.longrunning.Operations] API.
@@ -2652,7 +2652,7 @@ type DatabaseAdminServer interface {
 	// Updates a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
 	UpdateBackup(context.Context, *UpdateBackupRequest) (*Backup, error)
 	// Deletes a pending or completed [Backup][google.spanner.admin.database.v1.Backup].
-	DeleteBackup(context.Context, *DeleteBackupRequest) (*empty.Empty, error)
+	DeleteBackup(context.Context, *DeleteBackupRequest) (*emptypb.Empty, error)
 	// Lists completed and pending backups.
 	// Backups returned are ordered by `create_time` in descending order,
 	// starting from the most recent `create_time`.
@@ -2713,7 +2713,7 @@ func (*UnimplementedDatabaseAdminServer) GetDatabase(context.Context, *GetDataba
 func (*UnimplementedDatabaseAdminServer) UpdateDatabaseDdl(context.Context, *UpdateDatabaseDdlRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateDatabaseDdl not implemented")
 }
-func (*UnimplementedDatabaseAdminServer) DropDatabase(context.Context, *DropDatabaseRequest) (*empty.Empty, error) {
+func (*UnimplementedDatabaseAdminServer) DropDatabase(context.Context, *DropDatabaseRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DropDatabase not implemented")
 }
 func (*UnimplementedDatabaseAdminServer) GetDatabaseDdl(context.Context, *GetDatabaseDdlRequest) (*GetDatabaseDdlResponse, error) {
@@ -2737,7 +2737,7 @@ func (*UnimplementedDatabaseAdminServer) GetBackup(context.Context, *GetBackupRe
 func (*UnimplementedDatabaseAdminServer) UpdateBackup(context.Context, *UpdateBackupRequest) (*Backup, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateBackup not implemented")
 }
-func (*UnimplementedDatabaseAdminServer) DeleteBackup(context.Context, *DeleteBackupRequest) (*empty.Empty, error) {
+func (*UnimplementedDatabaseAdminServer) DeleteBackup(context.Context, *DeleteBackupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteBackup not implemented")
 }
 func (*UnimplementedDatabaseAdminServer) ListBackups(context.Context, *ListBackupsRequest) (*ListBackupsResponse, error) {

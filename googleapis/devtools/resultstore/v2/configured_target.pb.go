@@ -26,9 +26,9 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -171,7 +171,7 @@ type ConfiguredTestAttributes struct {
 	// Total number of test shards. Zero if shard count was not specified.
 	TotalShardCount int32 `protobuf:"varint,3,opt,name=total_shard_count,json=totalShardCount,proto3" json:"total_shard_count,omitempty"`
 	// How long test is allowed to run.
-	TimeoutDuration *duration.Duration `protobuf:"bytes,5,opt,name=timeout_duration,json=timeoutDuration,proto3" json:"timeout_duration,omitempty"`
+	TimeoutDuration *durationpb.Duration `protobuf:"bytes,5,opt,name=timeout_duration,json=timeoutDuration,proto3" json:"timeout_duration,omitempty"`
 }
 
 func (x *ConfiguredTestAttributes) Reset() {
@@ -220,7 +220,7 @@ func (x *ConfiguredTestAttributes) GetTotalShardCount() int32 {
 	return 0
 }
 
-func (x *ConfiguredTestAttributes) GetTimeoutDuration() *duration.Duration {
+func (x *ConfiguredTestAttributes) GetTimeoutDuration() *durationpb.Duration {
 	if x != nil {
 		return x.TimeoutDuration
 	}
@@ -391,7 +391,7 @@ var file_google_devtools_resultstore_v2_configured_target_proto_goTypes = []inte
 	(*Timing)(nil),                   // 4: google.devtools.resultstore.v2.Timing
 	(*Property)(nil),                 // 5: google.devtools.resultstore.v2.Property
 	(*File)(nil),                     // 6: google.devtools.resultstore.v2.File
-	(*duration.Duration)(nil),        // 7: google.protobuf.Duration
+	(*durationpb.Duration)(nil),      // 7: google.protobuf.Duration
 }
 var file_google_devtools_resultstore_v2_configured_target_proto_depIdxs = []int32{
 	2, // 0: google.devtools.resultstore.v2.ConfiguredTarget.id:type_name -> google.devtools.resultstore.v2.ConfiguredTarget.Id

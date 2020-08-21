@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -346,7 +346,7 @@ type Instance struct {
 	// change after a failover event.
 	CurrentLocationId string `protobuf:"bytes,12,opt,name=current_location_id,json=currentLocationId,proto3" json:"current_location_id,omitempty"`
 	// Output only. The time the instance was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,13,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The current state of this instance.
 	State Instance_State `protobuf:"varint,14,opt,name=state,proto3,enum=google.cloud.redis.v1beta1.Instance_State" json:"state,omitempty"`
 	// Output only. Additional information about the current status of this
@@ -496,7 +496,7 @@ func (x *Instance) GetCurrentLocationId() string {
 	return ""
 }
 
-func (x *Instance) GetCreateTime() *timestamp.Timestamp {
+func (x *Instance) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -853,7 +853,7 @@ type UpdateInstanceRequest struct {
 	//  *   `labels`
 	//  *   `memorySizeGb`
 	//  *   `redisConfig`
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,1,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,1,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Required. Update description.
 	// Only fields specified in update_mask are updated.
 	Instance *Instance `protobuf:"bytes,2,opt,name=instance,proto3" json:"instance,omitempty"`
@@ -891,7 +891,7 @@ func (*UpdateInstanceRequest) Descriptor() ([]byte, []int) {
 	return file_google_cloud_redis_v1beta1_cloud_redis_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UpdateInstanceRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateInstanceRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1971,8 +1971,8 @@ var file_google_cloud_redis_v1beta1_cloud_redis_proto_goTypes = []interface{}{
 	nil,                                             // 21: google.cloud.redis.v1beta1.Instance.LabelsEntry
 	nil,                                             // 22: google.cloud.redis.v1beta1.Instance.RedisConfigsEntry
 	nil,                                             // 23: google.cloud.redis.v1beta1.LocationMetadata.AvailableZonesEntry
-	(*timestamp.Timestamp)(nil),                     // 24: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),                    // 25: google.protobuf.FieldMask
+	(*timestamppb.Timestamp)(nil),                   // 24: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),                   // 25: google.protobuf.FieldMask
 	(*longrunning.Operation)(nil),                   // 26: google.longrunning.Operation
 }
 var file_google_cloud_redis_v1beta1_cloud_redis_proto_depIdxs = []int32{

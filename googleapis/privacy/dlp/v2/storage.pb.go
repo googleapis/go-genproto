@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -426,7 +426,7 @@ type StoredType struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Timestamp indicating when the version of the `StoredInfoType` used for
 	// inspection was created. Output-only field, populated by the system.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 }
 
 func (x *StoredType) Reset() {
@@ -468,7 +468,7 @@ func (x *StoredType) GetName() string {
 	return ""
 }
 
-func (x *StoredType) GetCreateTime() *timestamp.Timestamp {
+func (x *StoredType) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -2649,10 +2649,10 @@ type StorageConfig_TimespanConfig struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Exclude files or rows older than this value.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Exclude files or rows newer than this value.
 	// If set to zero, no upper time limit is applied.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Specification of the field containing the timestamp of scanned items.
 	// Used for data sources like Datastore and BigQuery.
 	//
@@ -2707,14 +2707,14 @@ func (*StorageConfig_TimespanConfig) Descriptor() ([]byte, []int) {
 	return file_google_privacy_dlp_v2_storage_proto_rawDescGZIP(), []int{12, 0}
 }
 
-func (x *StorageConfig_TimespanConfig) GetStartTime() *timestamp.Timestamp {
+func (x *StorageConfig_TimespanConfig) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *StorageConfig_TimespanConfig) GetEndTime() *timestamp.Timestamp {
+func (x *StorageConfig_TimespanConfig) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -3287,7 +3287,7 @@ var file_google_privacy_dlp_v2_storage_proto_goTypes = []interface{}{
 	(*StorageConfig_TimespanConfig)(nil),                      // 36: google.privacy.dlp.v2.StorageConfig.TimespanConfig
 	nil,                                                       // 37: google.privacy.dlp.v2.HybridOptions.LabelsEntry
 	(*Key_PathElement)(nil),                                   // 38: google.privacy.dlp.v2.Key.PathElement
-	(*timestamp.Timestamp)(nil),                               // 39: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                             // 39: google.protobuf.Timestamp
 }
 var file_google_privacy_dlp_v2_storage_proto_depIdxs = []int32{
 	39, // 0: google.privacy.dlp.v2.StoredType.create_time:type_name -> google.protobuf.Timestamp

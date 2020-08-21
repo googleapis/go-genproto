@@ -30,12 +30,12 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -166,7 +166,7 @@ type SearchGoogleAdsResponse struct {
 	// clause.
 	TotalResultsCount int64 `protobuf:"varint,3,opt,name=total_results_count,json=totalResultsCount,proto3" json:"total_results_count,omitempty"`
 	// FieldMask that represents what fields were requested by the user.
-	FieldMask *field_mask.FieldMask `protobuf:"bytes,5,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
+	FieldMask *fieldmaskpb.FieldMask `protobuf:"bytes,5,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
 	// Summary row that contains summary of metrics in results.
 	// Summary of metrics means aggregation of metrics across all results,
 	// here aggregation could be sum, average, rate, etc.
@@ -226,7 +226,7 @@ func (x *SearchGoogleAdsResponse) GetTotalResultsCount() int64 {
 	return 0
 }
 
-func (x *SearchGoogleAdsResponse) GetFieldMask() *field_mask.FieldMask {
+func (x *SearchGoogleAdsResponse) GetFieldMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.FieldMask
 	}
@@ -4434,7 +4434,7 @@ var file_google_ads_googleads_v2_services_google_ads_service_proto_goTypes = []i
 	(*MutateGoogleAdsResponse)(nil),                  // 4: google.ads.googleads.v2.services.MutateGoogleAdsResponse
 	(*MutateOperation)(nil),                          // 5: google.ads.googleads.v2.services.MutateOperation
 	(*MutateOperationResponse)(nil),                  // 6: google.ads.googleads.v2.services.MutateOperationResponse
-	(*field_mask.FieldMask)(nil),                     // 7: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                    // 7: google.protobuf.FieldMask
 	(*resources.AccountBudget)(nil),                  // 8: google.ads.googleads.v2.resources.AccountBudget
 	(*resources.AccountBudgetProposal)(nil),          // 9: google.ads.googleads.v2.resources.AccountBudgetProposal
 	(*resources.AdGroup)(nil),                        // 10: google.ads.googleads.v2.resources.AdGroup

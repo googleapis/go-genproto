@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -55,19 +55,19 @@ type MediaFile struct {
 	// `customers/{customer_id}/mediaFiles/{media_file_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the media file.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Immutable. Type of the media file.
 	Type enums.MediaTypeEnum_MediaType `protobuf:"varint,5,opt,name=type,proto3,enum=google.ads.googleads.v2.enums.MediaTypeEnum_MediaType" json:"type,omitempty"`
 	// Output only. The mime type of the media file.
 	MimeType enums.MimeTypeEnum_MimeType `protobuf:"varint,6,opt,name=mime_type,json=mimeType,proto3,enum=google.ads.googleads.v2.enums.MimeTypeEnum_MimeType" json:"mime_type,omitempty"`
 	// Immutable. The URL of where the original media file was downloaded from (or a file
 	// name). Only used for media of type AUDIO and IMAGE.
-	SourceUrl *wrappers.StringValue `protobuf:"bytes,7,opt,name=source_url,json=sourceUrl,proto3" json:"source_url,omitempty"`
+	SourceUrl *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=source_url,json=sourceUrl,proto3" json:"source_url,omitempty"`
 	// Immutable. The name of the media file. The name can be used by clients to help
 	// identify previously uploaded media.
-	Name *wrappers.StringValue `protobuf:"bytes,8,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The size of the media file in bytes.
-	FileSize *wrappers.Int64Value `protobuf:"bytes,9,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
+	FileSize *wrapperspb.Int64Value `protobuf:"bytes,9,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
 	// The specific type of the media file.
 	//
 	// Types that are assignable to Mediatype:
@@ -117,7 +117,7 @@ func (x *MediaFile) GetResourceName() string {
 	return ""
 }
 
-func (x *MediaFile) GetId() *wrappers.Int64Value {
+func (x *MediaFile) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
@@ -138,21 +138,21 @@ func (x *MediaFile) GetMimeType() enums.MimeTypeEnum_MimeType {
 	return enums.MimeTypeEnum_UNSPECIFIED
 }
 
-func (x *MediaFile) GetSourceUrl() *wrappers.StringValue {
+func (x *MediaFile) GetSourceUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SourceUrl
 	}
 	return nil
 }
 
-func (x *MediaFile) GetName() *wrappers.StringValue {
+func (x *MediaFile) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *MediaFile) GetFileSize() *wrappers.Int64Value {
+func (x *MediaFile) GetFileSize() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FileSize
 	}
@@ -233,7 +233,7 @@ type MediaImage struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Immutable. Raw image data.
-	Data *wrappers.BytesValue `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	Data *wrapperspb.BytesValue `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
 }
 
 func (x *MediaImage) Reset() {
@@ -268,7 +268,7 @@ func (*MediaImage) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_resources_media_file_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *MediaImage) GetData() *wrappers.BytesValue {
+func (x *MediaImage) GetData() *wrapperspb.BytesValue {
 	if x != nil {
 		return x.Data
 	}
@@ -282,7 +282,7 @@ type MediaBundle struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Immutable. Raw zipped data.
-	Data *wrappers.BytesValue `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	Data *wrapperspb.BytesValue `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
 }
 
 func (x *MediaBundle) Reset() {
@@ -317,7 +317,7 @@ func (*MediaBundle) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_resources_media_file_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MediaBundle) GetData() *wrappers.BytesValue {
+func (x *MediaBundle) GetData() *wrapperspb.BytesValue {
 	if x != nil {
 		return x.Data
 	}
@@ -331,7 +331,7 @@ type MediaAudio struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The duration of the Audio in milliseconds.
-	AdDurationMillis *wrappers.Int64Value `protobuf:"bytes,1,opt,name=ad_duration_millis,json=adDurationMillis,proto3" json:"ad_duration_millis,omitempty"`
+	AdDurationMillis *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=ad_duration_millis,json=adDurationMillis,proto3" json:"ad_duration_millis,omitempty"`
 }
 
 func (x *MediaAudio) Reset() {
@@ -366,7 +366,7 @@ func (*MediaAudio) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_resources_media_file_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *MediaAudio) GetAdDurationMillis() *wrappers.Int64Value {
+func (x *MediaAudio) GetAdDurationMillis() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AdDurationMillis
 	}
@@ -380,16 +380,16 @@ type MediaVideo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The duration of the Video in milliseconds.
-	AdDurationMillis *wrappers.Int64Value `protobuf:"bytes,1,opt,name=ad_duration_millis,json=adDurationMillis,proto3" json:"ad_duration_millis,omitempty"`
+	AdDurationMillis *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=ad_duration_millis,json=adDurationMillis,proto3" json:"ad_duration_millis,omitempty"`
 	// Immutable. The YouTube video ID (as seen in YouTube URLs).
-	YoutubeVideoId *wrappers.StringValue `protobuf:"bytes,2,opt,name=youtube_video_id,json=youtubeVideoId,proto3" json:"youtube_video_id,omitempty"`
+	YoutubeVideoId *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=youtube_video_id,json=youtubeVideoId,proto3" json:"youtube_video_id,omitempty"`
 	// Output only. The Advertising Digital Identification code for this video, as defined by
 	// the American Association of Advertising Agencies, used mainly for
 	// television commercials.
-	AdvertisingIdCode *wrappers.StringValue `protobuf:"bytes,3,opt,name=advertising_id_code,json=advertisingIdCode,proto3" json:"advertising_id_code,omitempty"`
+	AdvertisingIdCode *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=advertising_id_code,json=advertisingIdCode,proto3" json:"advertising_id_code,omitempty"`
 	// Output only. The Industry Standard Commercial Identifier code for this video, used
 	// mainly for television commercials.
-	IsciCode *wrappers.StringValue `protobuf:"bytes,4,opt,name=isci_code,json=isciCode,proto3" json:"isci_code,omitempty"`
+	IsciCode *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=isci_code,json=isciCode,proto3" json:"isci_code,omitempty"`
 }
 
 func (x *MediaVideo) Reset() {
@@ -424,28 +424,28 @@ func (*MediaVideo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_resources_media_file_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *MediaVideo) GetAdDurationMillis() *wrappers.Int64Value {
+func (x *MediaVideo) GetAdDurationMillis() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AdDurationMillis
 	}
 	return nil
 }
 
-func (x *MediaVideo) GetYoutubeVideoId() *wrappers.StringValue {
+func (x *MediaVideo) GetYoutubeVideoId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.YoutubeVideoId
 	}
 	return nil
 }
 
-func (x *MediaVideo) GetAdvertisingIdCode() *wrappers.StringValue {
+func (x *MediaVideo) GetAdvertisingIdCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdvertisingIdCode
 	}
 	return nil
 }
 
-func (x *MediaVideo) GetIsciCode() *wrappers.StringValue {
+func (x *MediaVideo) GetIsciCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.IsciCode
 	}
@@ -603,11 +603,11 @@ var file_google_ads_googleads_v2_resources_media_file_proto_goTypes = []interfac
 	(*MediaBundle)(nil),                // 2: google.ads.googleads.v2.resources.MediaBundle
 	(*MediaAudio)(nil),                 // 3: google.ads.googleads.v2.resources.MediaAudio
 	(*MediaVideo)(nil),                 // 4: google.ads.googleads.v2.resources.MediaVideo
-	(*wrappers.Int64Value)(nil),        // 5: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),      // 5: google.protobuf.Int64Value
 	(enums.MediaTypeEnum_MediaType)(0), // 6: google.ads.googleads.v2.enums.MediaTypeEnum.MediaType
 	(enums.MimeTypeEnum_MimeType)(0),   // 7: google.ads.googleads.v2.enums.MimeTypeEnum.MimeType
-	(*wrappers.StringValue)(nil),       // 8: google.protobuf.StringValue
-	(*wrappers.BytesValue)(nil),        // 9: google.protobuf.BytesValue
+	(*wrapperspb.StringValue)(nil),     // 8: google.protobuf.StringValue
+	(*wrapperspb.BytesValue)(nil),      // 9: google.protobuf.BytesValue
 }
 var file_google_ads_googleads_v2_resources_media_file_proto_depIdxs = []int32{
 	5,  // 0: google.ads.googleads.v2.resources.MediaFile.id:type_name -> google.protobuf.Int64Value

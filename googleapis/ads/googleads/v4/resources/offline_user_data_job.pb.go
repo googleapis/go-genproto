@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -59,9 +59,9 @@ type OfflineUserDataJob struct {
 	// `customers/{customer_id}/offlineUserDataJobs/{offline_user_data_job_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. ID of this offline user data job.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Immutable. User specified job ID.
-	ExternalId *wrappers.Int64Value `protobuf:"bytes,3,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	ExternalId *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
 	// Immutable. Type of the job.
 	Type enums.OfflineUserDataJobTypeEnum_OfflineUserDataJobType `protobuf:"varint,4,opt,name=type,proto3,enum=google.ads.googleads.v4.enums.OfflineUserDataJobTypeEnum_OfflineUserDataJobType" json:"type,omitempty"`
 	// Output only. Status of the job.
@@ -115,14 +115,14 @@ func (x *OfflineUserDataJob) GetResourceName() string {
 	return ""
 }
 
-func (x *OfflineUserDataJob) GetId() *wrappers.Int64Value {
+func (x *OfflineUserDataJob) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *OfflineUserDataJob) GetExternalId() *wrappers.Int64Value {
+func (x *OfflineUserDataJob) GetExternalId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ExternalId
 	}
@@ -318,7 +318,7 @@ func file_google_ads_googleads_v4_resources_offline_user_data_job_proto_rawDescG
 var file_google_ads_googleads_v4_resources_offline_user_data_job_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_offline_user_data_job_proto_goTypes = []interface{}{
 	(*OfflineUserDataJob)(nil),                                                     // 0: google.ads.googleads.v4.resources.OfflineUserDataJob
-	(*wrappers.Int64Value)(nil),                                                    // 1: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                                  // 1: google.protobuf.Int64Value
 	(enums.OfflineUserDataJobTypeEnum_OfflineUserDataJobType)(0),                   // 2: google.ads.googleads.v4.enums.OfflineUserDataJobTypeEnum.OfflineUserDataJobType
 	(enums.OfflineUserDataJobStatusEnum_OfflineUserDataJobStatus)(0),               // 3: google.ads.googleads.v4.enums.OfflineUserDataJobStatusEnum.OfflineUserDataJobStatus
 	(enums.OfflineUserDataJobFailureReasonEnum_OfflineUserDataJobFailureReason)(0), // 4: google.ads.googleads.v4.enums.OfflineUserDataJobFailureReasonEnum.OfflineUserDataJobFailureReason

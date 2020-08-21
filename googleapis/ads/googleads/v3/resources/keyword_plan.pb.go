@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v3/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -58,12 +58,12 @@ type KeywordPlan struct {
 	// `customers/{customer_id}/keywordPlans/{kp_plan_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the keyword plan.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the keyword plan.
 	//
 	// This field is required and should not be empty when creating new keyword
 	// plans.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// The date period used for forecasting the plan.
 	ForecastPeriod *KeywordPlanForecastPeriod `protobuf:"bytes,4,opt,name=forecast_period,json=forecastPeriod,proto3" json:"forecast_period,omitempty"`
 }
@@ -107,14 +107,14 @@ func (x *KeywordPlan) GetResourceName() string {
 	return ""
 }
 
-func (x *KeywordPlan) GetId() *wrappers.Int64Value {
+func (x *KeywordPlan) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *KeywordPlan) GetName() *wrappers.StringValue {
+func (x *KeywordPlan) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -314,8 +314,8 @@ var file_google_ads_googleads_v3_resources_keyword_plan_proto_msgTypes = make([]
 var file_google_ads_googleads_v3_resources_keyword_plan_proto_goTypes = []interface{}{
 	(*KeywordPlan)(nil),               // 0: google.ads.googleads.v3.resources.KeywordPlan
 	(*KeywordPlanForecastPeriod)(nil), // 1: google.ads.googleads.v3.resources.KeywordPlanForecastPeriod
-	(*wrappers.Int64Value)(nil),       // 2: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),      // 3: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),     // 2: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),    // 3: google.protobuf.StringValue
 	(enums.KeywordPlanForecastIntervalEnum_KeywordPlanForecastInterval)(0), // 4: google.ads.googleads.v3.enums.KeywordPlanForecastIntervalEnum.KeywordPlanForecastInterval
 	(*common.DateRange)(nil), // 5: google.ads.googleads.v3.common.DateRange
 }

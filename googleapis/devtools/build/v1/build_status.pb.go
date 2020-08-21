@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	any "github.com/golang/protobuf/ptypes/any"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -132,9 +132,9 @@ type BuildStatus struct {
 	FinalInvocationId string `protobuf:"bytes,3,opt,name=final_invocation_id,json=finalInvocationId,proto3" json:"final_invocation_id,omitempty"`
 	// Build tool exit code. Integer value returned by the executed build tool.
 	// Might not be available in some cases, e.g., a build timeout.
-	BuildToolExitCode *wrappers.Int32Value `protobuf:"bytes,4,opt,name=build_tool_exit_code,json=buildToolExitCode,proto3" json:"build_tool_exit_code,omitempty"`
+	BuildToolExitCode *wrapperspb.Int32Value `protobuf:"bytes,4,opt,name=build_tool_exit_code,json=buildToolExitCode,proto3" json:"build_tool_exit_code,omitempty"`
 	// Fine-grained diagnostic information to complement the status.
-	Details *any.Any `protobuf:"bytes,2,opt,name=details,proto3" json:"details,omitempty"`
+	Details *anypb.Any `protobuf:"bytes,2,opt,name=details,proto3" json:"details,omitempty"`
 }
 
 func (x *BuildStatus) Reset() {
@@ -183,14 +183,14 @@ func (x *BuildStatus) GetFinalInvocationId() string {
 	return ""
 }
 
-func (x *BuildStatus) GetBuildToolExitCode() *wrappers.Int32Value {
+func (x *BuildStatus) GetBuildToolExitCode() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.BuildToolExitCode
 	}
 	return nil
 }
 
-func (x *BuildStatus) GetDetails() *any.Any {
+func (x *BuildStatus) GetDetails() *anypb.Any {
 	if x != nil {
 		return x.Details
 	}
@@ -263,10 +263,10 @@ func file_google_devtools_build_v1_build_status_proto_rawDescGZIP() []byte {
 var file_google_devtools_build_v1_build_status_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_google_devtools_build_v1_build_status_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_devtools_build_v1_build_status_proto_goTypes = []interface{}{
-	(BuildStatus_Result)(0),     // 0: google.devtools.build.v1.BuildStatus.Result
-	(*BuildStatus)(nil),         // 1: google.devtools.build.v1.BuildStatus
-	(*wrappers.Int32Value)(nil), // 2: google.protobuf.Int32Value
-	(*any.Any)(nil),             // 3: google.protobuf.Any
+	(BuildStatus_Result)(0),       // 0: google.devtools.build.v1.BuildStatus.Result
+	(*BuildStatus)(nil),           // 1: google.devtools.build.v1.BuildStatus
+	(*wrapperspb.Int32Value)(nil), // 2: google.protobuf.Int32Value
+	(*anypb.Any)(nil),             // 3: google.protobuf.Any
 }
 var file_google_devtools_build_v1_build_status_proto_depIdxs = []int32{
 	0, // 0: google.devtools.build.v1.BuildStatus.result:type_name -> google.devtools.build.v1.BuildStatus.Result

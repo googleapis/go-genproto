@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,7 +56,7 @@ type SharedSet struct {
 	// `customers/{customer_id}/sharedSets/{shared_set_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of this shared set. Read only.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Immutable. The type of this shared set: each shared set holds only a single kind
 	// of resource. Required. Immutable.
 	Type enums.SharedSetTypeEnum_SharedSetType `protobuf:"varint,3,opt,name=type,proto3,enum=google.ads.googleads.v4.enums.SharedSetTypeEnum_SharedSetType" json:"type,omitempty"`
@@ -65,13 +65,13 @@ type SharedSet struct {
 	// the same type.
 	// The length of this string should be between 1 and 255 UTF-8 bytes,
 	// inclusive.
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The status of this shared set. Read only.
 	Status enums.SharedSetStatusEnum_SharedSetStatus `protobuf:"varint,5,opt,name=status,proto3,enum=google.ads.googleads.v4.enums.SharedSetStatusEnum_SharedSetStatus" json:"status,omitempty"`
 	// Output only. The number of shared criteria within this shared set. Read only.
-	MemberCount *wrappers.Int64Value `protobuf:"bytes,6,opt,name=member_count,json=memberCount,proto3" json:"member_count,omitempty"`
+	MemberCount *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=member_count,json=memberCount,proto3" json:"member_count,omitempty"`
 	// Output only. The number of campaigns associated with this shared set. Read only.
-	ReferenceCount *wrappers.Int64Value `protobuf:"bytes,7,opt,name=reference_count,json=referenceCount,proto3" json:"reference_count,omitempty"`
+	ReferenceCount *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=reference_count,json=referenceCount,proto3" json:"reference_count,omitempty"`
 }
 
 func (x *SharedSet) Reset() {
@@ -113,7 +113,7 @@ func (x *SharedSet) GetResourceName() string {
 	return ""
 }
 
-func (x *SharedSet) GetId() *wrappers.Int64Value {
+func (x *SharedSet) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
@@ -127,7 +127,7 @@ func (x *SharedSet) GetType() enums.SharedSetTypeEnum_SharedSetType {
 	return enums.SharedSetTypeEnum_UNSPECIFIED
 }
 
-func (x *SharedSet) GetName() *wrappers.StringValue {
+func (x *SharedSet) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -141,14 +141,14 @@ func (x *SharedSet) GetStatus() enums.SharedSetStatusEnum_SharedSetStatus {
 	return enums.SharedSetStatusEnum_UNSPECIFIED
 }
 
-func (x *SharedSet) GetMemberCount() *wrappers.Int64Value {
+func (x *SharedSet) GetMemberCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.MemberCount
 	}
 	return nil
 }
 
-func (x *SharedSet) GetReferenceCount() *wrappers.Int64Value {
+func (x *SharedSet) GetReferenceCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ReferenceCount
 	}
@@ -250,9 +250,9 @@ func file_google_ads_googleads_v4_resources_shared_set_proto_rawDescGZIP() []byt
 var file_google_ads_googleads_v4_resources_shared_set_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_shared_set_proto_goTypes = []interface{}{
 	(*SharedSet)(nil),                              // 0: google.ads.googleads.v4.resources.SharedSet
-	(*wrappers.Int64Value)(nil),                    // 1: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                  // 1: google.protobuf.Int64Value
 	(enums.SharedSetTypeEnum_SharedSetType)(0),     // 2: google.ads.googleads.v4.enums.SharedSetTypeEnum.SharedSetType
-	(*wrappers.StringValue)(nil),                   // 3: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                 // 3: google.protobuf.StringValue
 	(enums.SharedSetStatusEnum_SharedSetStatus)(0), // 4: google.ads.googleads.v4.enums.SharedSetStatusEnum.SharedSetStatus
 }
 var file_google_ads_googleads_v4_resources_shared_set_proto_depIdxs = []int32{

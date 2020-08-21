@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -59,9 +59,9 @@ type UserLocationView struct {
 	// `customers/{customer_id}/userLocationViews/{country_criterion_id}~{targeting_location}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. Criterion Id for the country.
-	CountryCriterionId *wrappers.Int64Value `protobuf:"bytes,2,opt,name=country_criterion_id,json=countryCriterionId,proto3" json:"country_criterion_id,omitempty"`
+	CountryCriterionId *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=country_criterion_id,json=countryCriterionId,proto3" json:"country_criterion_id,omitempty"`
 	// Output only. Indicates whether location was targeted or not.
-	TargetingLocation *wrappers.BoolValue `protobuf:"bytes,3,opt,name=targeting_location,json=targetingLocation,proto3" json:"targeting_location,omitempty"`
+	TargetingLocation *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=targeting_location,json=targetingLocation,proto3" json:"targeting_location,omitempty"`
 }
 
 func (x *UserLocationView) Reset() {
@@ -103,14 +103,14 @@ func (x *UserLocationView) GetResourceName() string {
 	return ""
 }
 
-func (x *UserLocationView) GetCountryCriterionId() *wrappers.Int64Value {
+func (x *UserLocationView) GetCountryCriterionId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CountryCriterionId
 	}
 	return nil
 }
 
-func (x *UserLocationView) GetTargetingLocation() *wrappers.BoolValue {
+func (x *UserLocationView) GetTargetingLocation() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.TargetingLocation
 	}
@@ -191,9 +191,9 @@ func file_google_ads_googleads_v4_resources_user_location_view_proto_rawDescGZIP
 
 var file_google_ads_googleads_v4_resources_user_location_view_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_user_location_view_proto_goTypes = []interface{}{
-	(*UserLocationView)(nil),    // 0: google.ads.googleads.v4.resources.UserLocationView
-	(*wrappers.Int64Value)(nil), // 1: google.protobuf.Int64Value
-	(*wrappers.BoolValue)(nil),  // 2: google.protobuf.BoolValue
+	(*UserLocationView)(nil),      // 0: google.ads.googleads.v4.resources.UserLocationView
+	(*wrapperspb.Int64Value)(nil), // 1: google.protobuf.Int64Value
+	(*wrapperspb.BoolValue)(nil),  // 2: google.protobuf.BoolValue
 }
 var file_google_ads_googleads_v4_resources_user_location_view_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.resources.UserLocationView.country_criterion_id:type_name -> google.protobuf.Int64Value

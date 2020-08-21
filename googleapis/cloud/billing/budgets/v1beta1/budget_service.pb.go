@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -121,7 +121,7 @@ type UpdateBudgetRequest struct {
 	// updated. See
 	// https://developers.google.com/protocol-buffers/docs/proto3#default for more
 	// details about default values.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateBudgetRequest) Reset() {
@@ -163,7 +163,7 @@ func (x *UpdateBudgetRequest) GetBudget() *Budget {
 	return nil
 }
 
-func (x *UpdateBudgetRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateBudgetRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -560,15 +560,15 @@ func file_google_cloud_billing_budgets_v1beta1_budget_service_proto_rawDescGZIP(
 
 var file_google_cloud_billing_budgets_v1beta1_budget_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_google_cloud_billing_budgets_v1beta1_budget_service_proto_goTypes = []interface{}{
-	(*CreateBudgetRequest)(nil),  // 0: google.cloud.billing.budgets.v1beta1.CreateBudgetRequest
-	(*UpdateBudgetRequest)(nil),  // 1: google.cloud.billing.budgets.v1beta1.UpdateBudgetRequest
-	(*GetBudgetRequest)(nil),     // 2: google.cloud.billing.budgets.v1beta1.GetBudgetRequest
-	(*ListBudgetsRequest)(nil),   // 3: google.cloud.billing.budgets.v1beta1.ListBudgetsRequest
-	(*ListBudgetsResponse)(nil),  // 4: google.cloud.billing.budgets.v1beta1.ListBudgetsResponse
-	(*DeleteBudgetRequest)(nil),  // 5: google.cloud.billing.budgets.v1beta1.DeleteBudgetRequest
-	(*Budget)(nil),               // 6: google.cloud.billing.budgets.v1beta1.Budget
-	(*field_mask.FieldMask)(nil), // 7: google.protobuf.FieldMask
-	(*empty.Empty)(nil),          // 8: google.protobuf.Empty
+	(*CreateBudgetRequest)(nil),   // 0: google.cloud.billing.budgets.v1beta1.CreateBudgetRequest
+	(*UpdateBudgetRequest)(nil),   // 1: google.cloud.billing.budgets.v1beta1.UpdateBudgetRequest
+	(*GetBudgetRequest)(nil),      // 2: google.cloud.billing.budgets.v1beta1.GetBudgetRequest
+	(*ListBudgetsRequest)(nil),    // 3: google.cloud.billing.budgets.v1beta1.ListBudgetsRequest
+	(*ListBudgetsResponse)(nil),   // 4: google.cloud.billing.budgets.v1beta1.ListBudgetsResponse
+	(*DeleteBudgetRequest)(nil),   // 5: google.cloud.billing.budgets.v1beta1.DeleteBudgetRequest
+	(*Budget)(nil),                // 6: google.cloud.billing.budgets.v1beta1.Budget
+	(*fieldmaskpb.FieldMask)(nil), // 7: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),         // 8: google.protobuf.Empty
 }
 var file_google_cloud_billing_budgets_v1beta1_budget_service_proto_depIdxs = []int32{
 	6, // 0: google.cloud.billing.budgets.v1beta1.CreateBudgetRequest.budget:type_name -> google.cloud.billing.budgets.v1beta1.Budget
@@ -729,7 +729,7 @@ type BudgetServiceClient interface {
 	// in the Cloud Console.
 	ListBudgets(ctx context.Context, in *ListBudgetsRequest, opts ...grpc.CallOption) (*ListBudgetsResponse, error)
 	// Deletes a budget. Returns successfully if already deleted.
-	DeleteBudget(ctx context.Context, in *DeleteBudgetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteBudget(ctx context.Context, in *DeleteBudgetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type budgetServiceClient struct {
@@ -776,8 +776,8 @@ func (c *budgetServiceClient) ListBudgets(ctx context.Context, in *ListBudgetsRe
 	return out, nil
 }
 
-func (c *budgetServiceClient) DeleteBudget(ctx context.Context, in *DeleteBudgetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *budgetServiceClient) DeleteBudget(ctx context.Context, in *DeleteBudgetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.billing.budgets.v1beta1.BudgetService/DeleteBudget", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -812,7 +812,7 @@ type BudgetServiceServer interface {
 	// in the Cloud Console.
 	ListBudgets(context.Context, *ListBudgetsRequest) (*ListBudgetsResponse, error)
 	// Deletes a budget. Returns successfully if already deleted.
-	DeleteBudget(context.Context, *DeleteBudgetRequest) (*empty.Empty, error)
+	DeleteBudget(context.Context, *DeleteBudgetRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedBudgetServiceServer can be embedded to have forward compatible implementations.
@@ -831,7 +831,7 @@ func (*UnimplementedBudgetServiceServer) GetBudget(context.Context, *GetBudgetRe
 func (*UnimplementedBudgetServiceServer) ListBudgets(context.Context, *ListBudgetsRequest) (*ListBudgetsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBudgets not implemented")
 }
-func (*UnimplementedBudgetServiceServer) DeleteBudget(context.Context, *DeleteBudgetRequest) (*empty.Empty, error) {
+func (*UnimplementedBudgetServiceServer) DeleteBudget(context.Context, *DeleteBudgetRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteBudget not implemented")
 }
 

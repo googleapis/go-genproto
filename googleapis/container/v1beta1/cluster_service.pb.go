@@ -27,14 +27,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -6441,10 +6441,10 @@ type TimeWindow struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time that the window first starts.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The time that the window ends. The end time should take place after the
 	// start time.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *TimeWindow) Reset() {
@@ -6479,14 +6479,14 @@ func (*TimeWindow) Descriptor() ([]byte, []int) {
 	return file_google_container_v1beta1_cluster_service_proto_rawDescGZIP(), []int{53}
 }
 
-func (x *TimeWindow) GetStartTime() *timestamp.Timestamp {
+func (x *TimeWindow) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *TimeWindow) GetEndTime() *timestamp.Timestamp {
+func (x *TimeWindow) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -11389,8 +11389,8 @@ var file_google_container_v1beta1_cluster_service_proto_goTypes = []interface{}{
 	nil,                              // 105: google.container.v1beta1.SetLabelsRequest.ResourceLabelsEntry
 	(*ResourceUsageExportConfig_BigQueryDestination)(nil),       // 106: google.container.v1beta1.ResourceUsageExportConfig.BigQueryDestination
 	(*ResourceUsageExportConfig_ConsumptionMeteringConfig)(nil), // 107: google.container.v1beta1.ResourceUsageExportConfig.ConsumptionMeteringConfig
-	(*timestamp.Timestamp)(nil),                                 // 108: google.protobuf.Timestamp
-	(*empty.Empty)(nil),                                         // 109: google.protobuf.Empty
+	(*timestamppb.Timestamp)(nil),                               // 108: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),                                       // 109: google.protobuf.Empty
 }
 var file_google_container_v1beta1_cluster_service_proto_depIdxs = []int32{
 	99,  // 0: google.container.v1beta1.NodeConfig.metadata:type_name -> google.container.v1beta1.NodeConfig.MetadataEntry
@@ -12745,7 +12745,7 @@ type ClusterManagerClient interface {
 	// Gets the specified operation.
 	GetOperation(ctx context.Context, in *GetOperationRequest, opts ...grpc.CallOption) (*Operation, error)
 	// Cancels the specified operation.
-	CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns configuration info about the Google Kubernetes Engine service.
 	GetServerConfig(ctx context.Context, in *GetServerConfigRequest, opts ...grpc.CallOption) (*ServerConfig, error)
 	// Lists the node pools for a cluster.
@@ -12924,8 +12924,8 @@ func (c *clusterManagerClient) GetOperation(ctx context.Context, in *GetOperatio
 	return out, nil
 }
 
-func (c *clusterManagerClient) CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *clusterManagerClient) CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.container.v1beta1.ClusterManager/CancelOperation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -13133,7 +13133,7 @@ type ClusterManagerServer interface {
 	// Gets the specified operation.
 	GetOperation(context.Context, *GetOperationRequest) (*Operation, error)
 	// Cancels the specified operation.
-	CancelOperation(context.Context, *CancelOperationRequest) (*empty.Empty, error)
+	CancelOperation(context.Context, *CancelOperationRequest) (*emptypb.Empty, error)
 	// Returns configuration info about the Google Kubernetes Engine service.
 	GetServerConfig(context.Context, *GetServerConfigRequest) (*ServerConfig, error)
 	// Lists the node pools for a cluster.
@@ -13218,7 +13218,7 @@ func (*UnimplementedClusterManagerServer) ListOperations(context.Context, *ListO
 func (*UnimplementedClusterManagerServer) GetOperation(context.Context, *GetOperationRequest) (*Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOperation not implemented")
 }
-func (*UnimplementedClusterManagerServer) CancelOperation(context.Context, *CancelOperationRequest) (*empty.Empty, error) {
+func (*UnimplementedClusterManagerServer) CancelOperation(context.Context, *CancelOperationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelOperation not implemented")
 }
 func (*UnimplementedClusterManagerServer) GetServerConfig(context.Context, *GetServerConfigRequest) (*ServerConfig, error) {

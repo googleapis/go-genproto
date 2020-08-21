@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -116,7 +116,7 @@ type TableModifiers struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The snapshot time of the table. If not set, interpreted as now.
-	SnapshotTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=snapshot_time,json=snapshotTime,proto3" json:"snapshot_time,omitempty"`
+	SnapshotTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=snapshot_time,json=snapshotTime,proto3" json:"snapshot_time,omitempty"`
 }
 
 func (x *TableModifiers) Reset() {
@@ -151,7 +151,7 @@ func (*TableModifiers) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_storage_v1beta1_table_reference_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *TableModifiers) GetSnapshotTime() *timestamp.Timestamp {
+func (x *TableModifiers) GetSnapshotTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.SnapshotTime
 	}
@@ -209,9 +209,9 @@ func file_google_cloud_bigquery_storage_v1beta1_table_reference_proto_rawDescGZI
 
 var file_google_cloud_bigquery_storage_v1beta1_table_reference_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_google_cloud_bigquery_storage_v1beta1_table_reference_proto_goTypes = []interface{}{
-	(*TableReference)(nil),      // 0: google.cloud.bigquery.storage.v1beta1.TableReference
-	(*TableModifiers)(nil),      // 1: google.cloud.bigquery.storage.v1beta1.TableModifiers
-	(*timestamp.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*TableReference)(nil),        // 0: google.cloud.bigquery.storage.v1beta1.TableReference
+	(*TableModifiers)(nil),        // 1: google.cloud.bigquery.storage.v1beta1.TableModifiers
+	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
 }
 var file_google_cloud_bigquery_storage_v1beta1_table_reference_proto_depIdxs = []int32{
 	2, // 0: google.cloud.bigquery.storage.v1beta1.TableModifiers.snapshot_time:type_name -> google.protobuf.Timestamp

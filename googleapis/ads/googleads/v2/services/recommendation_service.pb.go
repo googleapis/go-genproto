@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
@@ -37,6 +36,7 @@ import (
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -612,7 +612,7 @@ type ApplyRecommendationOperation_CampaignBudgetParameters struct {
 
 	// New budget amount to set for target budget resource. This is a required
 	// field.
-	NewBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=new_budget_amount_micros,json=newBudgetAmountMicros,proto3" json:"new_budget_amount_micros,omitempty"`
+	NewBudgetAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=new_budget_amount_micros,json=newBudgetAmountMicros,proto3" json:"new_budget_amount_micros,omitempty"`
 }
 
 func (x *ApplyRecommendationOperation_CampaignBudgetParameters) Reset() {
@@ -647,7 +647,7 @@ func (*ApplyRecommendationOperation_CampaignBudgetParameters) Descriptor() ([]by
 	return file_google_ads_googleads_v2_services_recommendation_service_proto_rawDescGZIP(), []int{2, 0}
 }
 
-func (x *ApplyRecommendationOperation_CampaignBudgetParameters) GetNewBudgetAmountMicros() *wrappers.Int64Value {
+func (x *ApplyRecommendationOperation_CampaignBudgetParameters) GetNewBudgetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.NewBudgetAmountMicros
 	}
@@ -711,12 +711,12 @@ type ApplyRecommendationOperation_KeywordParameters struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The ad group resource to add keyword to. This is a required field.
-	AdGroup *wrappers.StringValue `protobuf:"bytes,1,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
+	AdGroup *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
 	// The match type of the keyword. This is a required field.
 	MatchType enums.KeywordMatchTypeEnum_KeywordMatchType `protobuf:"varint,2,opt,name=match_type,json=matchType,proto3,enum=google.ads.googleads.v2.enums.KeywordMatchTypeEnum_KeywordMatchType" json:"match_type,omitempty"`
 	// Optional, CPC bid to set for the keyword. If not set, keyword will use
 	// bid based on bidding strategy used by target ad group.
-	CpcBidMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
+	CpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
 }
 
 func (x *ApplyRecommendationOperation_KeywordParameters) Reset() {
@@ -751,7 +751,7 @@ func (*ApplyRecommendationOperation_KeywordParameters) Descriptor() ([]byte, []i
 	return file_google_ads_googleads_v2_services_recommendation_service_proto_rawDescGZIP(), []int{2, 2}
 }
 
-func (x *ApplyRecommendationOperation_KeywordParameters) GetAdGroup() *wrappers.StringValue {
+func (x *ApplyRecommendationOperation_KeywordParameters) GetAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroup
 	}
@@ -765,7 +765,7 @@ func (x *ApplyRecommendationOperation_KeywordParameters) GetMatchType() enums.Ke
 	return enums.KeywordMatchTypeEnum_UNSPECIFIED
 }
 
-func (x *ApplyRecommendationOperation_KeywordParameters) GetCpcBidMicros() *wrappers.Int64Value {
+func (x *ApplyRecommendationOperation_KeywordParameters) GetCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidMicros
 	}
@@ -780,9 +780,9 @@ type ApplyRecommendationOperation_TargetCpaOptInParameters struct {
 
 	// Average CPA to use for Target CPA bidding strategy. This is a required
 	// field.
-	TargetCpaMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=target_cpa_micros,json=targetCpaMicros,proto3" json:"target_cpa_micros,omitempty"`
+	TargetCpaMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=target_cpa_micros,json=targetCpaMicros,proto3" json:"target_cpa_micros,omitempty"`
 	// Optional, budget amount to set for the campaign.
-	NewCampaignBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=new_campaign_budget_amount_micros,json=newCampaignBudgetAmountMicros,proto3" json:"new_campaign_budget_amount_micros,omitempty"`
+	NewCampaignBudgetAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=new_campaign_budget_amount_micros,json=newCampaignBudgetAmountMicros,proto3" json:"new_campaign_budget_amount_micros,omitempty"`
 }
 
 func (x *ApplyRecommendationOperation_TargetCpaOptInParameters) Reset() {
@@ -817,14 +817,14 @@ func (*ApplyRecommendationOperation_TargetCpaOptInParameters) Descriptor() ([]by
 	return file_google_ads_googleads_v2_services_recommendation_service_proto_rawDescGZIP(), []int{2, 3}
 }
 
-func (x *ApplyRecommendationOperation_TargetCpaOptInParameters) GetTargetCpaMicros() *wrappers.Int64Value {
+func (x *ApplyRecommendationOperation_TargetCpaOptInParameters) GetTargetCpaMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TargetCpaMicros
 	}
 	return nil
 }
 
-func (x *ApplyRecommendationOperation_TargetCpaOptInParameters) GetNewCampaignBudgetAmountMicros() *wrappers.Int64Value {
+func (x *ApplyRecommendationOperation_TargetCpaOptInParameters) GetNewCampaignBudgetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.NewCampaignBudgetAmountMicros
 	}
@@ -986,7 +986,7 @@ type ApplyRecommendationOperation_MoveUnusedBudgetParameters struct {
 
 	// Budget amount to move from excess budget to constrained budget. This is
 	// a required field.
-	BudgetMicrosToMove *wrappers.Int64Value `protobuf:"bytes,1,opt,name=budget_micros_to_move,json=budgetMicrosToMove,proto3" json:"budget_micros_to_move,omitempty"`
+	BudgetMicrosToMove *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=budget_micros_to_move,json=budgetMicrosToMove,proto3" json:"budget_micros_to_move,omitempty"`
 }
 
 func (x *ApplyRecommendationOperation_MoveUnusedBudgetParameters) Reset() {
@@ -1021,7 +1021,7 @@ func (*ApplyRecommendationOperation_MoveUnusedBudgetParameters) Descriptor() ([]
 	return file_google_ads_googleads_v2_services_recommendation_service_proto_rawDescGZIP(), []int{2, 7}
 }
 
-func (x *ApplyRecommendationOperation_MoveUnusedBudgetParameters) GetBudgetMicrosToMove() *wrappers.Int64Value {
+func (x *ApplyRecommendationOperation_MoveUnusedBudgetParameters) GetBudgetMicrosToMove() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.BudgetMicrosToMove
 	}
@@ -1471,9 +1471,9 @@ var file_google_ads_googleads_v2_services_recommendation_service_proto_goTypes =
 	(*DismissRecommendationRequest_DismissRecommendationOperation)(nil), // 15: google.ads.googleads.v2.services.DismissRecommendationRequest.DismissRecommendationOperation
 	(*DismissRecommendationResponse_DismissRecommendationResult)(nil),   // 16: google.ads.googleads.v2.services.DismissRecommendationResponse.DismissRecommendationResult
 	(*status.Status)(nil),                                               // 17: google.rpc.Status
-	(*wrappers.Int64Value)(nil),                                         // 18: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                       // 18: google.protobuf.Int64Value
 	(*resources.Ad)(nil),                                                // 19: google.ads.googleads.v2.resources.Ad
-	(*wrappers.StringValue)(nil),                                        // 20: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                      // 20: google.protobuf.StringValue
 	(enums.KeywordMatchTypeEnum_KeywordMatchType)(0),                    // 21: google.ads.googleads.v2.enums.KeywordMatchTypeEnum.KeywordMatchType
 	(*common.CalloutFeedItem)(nil),                                      // 22: google.ads.googleads.v2.common.CalloutFeedItem
 	(*common.CallFeedItem)(nil),                                         // 23: google.ads.googleads.v2.common.CallFeedItem

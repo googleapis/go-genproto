@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,7 +56,7 @@ type AccountLink struct {
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the link.
 	// This field is read only.
-	AccountLinkId *wrappers.Int64Value `protobuf:"bytes,2,opt,name=account_link_id,json=accountLinkId,proto3" json:"account_link_id,omitempty"`
+	AccountLinkId *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=account_link_id,json=accountLinkId,proto3" json:"account_link_id,omitempty"`
 	// The status of the link.
 	Status enums.AccountLinkStatusEnum_AccountLinkStatus `protobuf:"varint,3,opt,name=status,proto3,enum=google.ads.googleads.v4.enums.AccountLinkStatusEnum_AccountLinkStatus" json:"status,omitempty"`
 	// Output only. The type of the linked account.
@@ -107,7 +107,7 @@ func (x *AccountLink) GetResourceName() string {
 	return ""
 }
 
-func (x *AccountLink) GetAccountLinkId() *wrappers.Int64Value {
+func (x *AccountLink) GetAccountLinkId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AccountLinkId
 	}
@@ -163,7 +163,7 @@ type ThirdPartyAppAnalyticsLinkIdentifier struct {
 	// This field should not be empty when creating a new third
 	// party app analytics link. It is unable to be modified after the creation of
 	// the link.
-	AppAnalyticsProviderId *wrappers.Int64Value `protobuf:"bytes,1,opt,name=app_analytics_provider_id,json=appAnalyticsProviderId,proto3" json:"app_analytics_provider_id,omitempty"`
+	AppAnalyticsProviderId *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=app_analytics_provider_id,json=appAnalyticsProviderId,proto3" json:"app_analytics_provider_id,omitempty"`
 	// Immutable. A string that uniquely identifies a mobile application from which the data
 	// was collected to the Google Ads API. For iOS, the ID string is the 9 digit
 	// string that appears at the end of an App Store URL (e.g., "422689480" for
@@ -175,7 +175,7 @@ type ThirdPartyAppAnalyticsLinkIdentifier struct {
 	// This field should not be empty when creating a new third
 	// party app analytics link. It is unable to be modified after the creation of
 	// the link.
-	AppId *wrappers.StringValue `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppId *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 	// Immutable. The vendor of the app.
 	// This field should not be empty when creating a new third
 	// party app analytics link. It is unable to be modified after the creation of
@@ -215,14 +215,14 @@ func (*ThirdPartyAppAnalyticsLinkIdentifier) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_account_link_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ThirdPartyAppAnalyticsLinkIdentifier) GetAppAnalyticsProviderId() *wrappers.Int64Value {
+func (x *ThirdPartyAppAnalyticsLinkIdentifier) GetAppAnalyticsProviderId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AppAnalyticsProviderId
 	}
 	return nil
 }
 
-func (x *ThirdPartyAppAnalyticsLinkIdentifier) GetAppId() *wrappers.StringValue {
+func (x *ThirdPartyAppAnalyticsLinkIdentifier) GetAppId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AppId
 	}
@@ -355,10 +355,10 @@ var file_google_ads_googleads_v4_resources_account_link_proto_msgTypes = make([]
 var file_google_ads_googleads_v4_resources_account_link_proto_goTypes = []interface{}{
 	(*AccountLink)(nil),                                // 0: google.ads.googleads.v4.resources.AccountLink
 	(*ThirdPartyAppAnalyticsLinkIdentifier)(nil),       // 1: google.ads.googleads.v4.resources.ThirdPartyAppAnalyticsLinkIdentifier
-	(*wrappers.Int64Value)(nil),                        // 2: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                      // 2: google.protobuf.Int64Value
 	(enums.AccountLinkStatusEnum_AccountLinkStatus)(0), // 3: google.ads.googleads.v4.enums.AccountLinkStatusEnum.AccountLinkStatus
 	(enums.LinkedAccountTypeEnum_LinkedAccountType)(0), // 4: google.ads.googleads.v4.enums.LinkedAccountTypeEnum.LinkedAccountType
-	(*wrappers.StringValue)(nil),                       // 5: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                     // 5: google.protobuf.StringValue
 	(enums.MobileAppVendorEnum_MobileAppVendor)(0),     // 6: google.ads.googleads.v4.enums.MobileAppVendorEnum.MobileAppVendor
 }
 var file_google_ads_googleads_v4_resources_account_link_proto_depIdxs = []int32{

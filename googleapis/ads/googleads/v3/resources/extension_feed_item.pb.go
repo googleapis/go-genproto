@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v3/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,7 +56,7 @@ type ExtensionFeedItem struct {
 	// `customers/{customer_id}/extensionFeedItems/{feed_item_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of this feed item. Read-only.
-	Id *wrappers.Int64Value `protobuf:"bytes,24,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,24,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. The extension type of the extension feed item.
 	// This field is read-only.
 	ExtensionType enums.ExtensionTypeEnum_ExtensionType `protobuf:"varint,13,opt,name=extension_type,json=extensionType,proto3,enum=google.ads.googleads.v3.enums.ExtensionTypeEnum_ExtensionType" json:"extension_type,omitempty"`
@@ -64,12 +64,12 @@ type ExtensionFeedItem struct {
 	// time is in the customer's time zone.
 	// The format is "YYYY-MM-DD HH:MM:SS".
 	// Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"
-	StartDateTime *wrappers.StringValue `protobuf:"bytes,5,opt,name=start_date_time,json=startDateTime,proto3" json:"start_date_time,omitempty"`
+	StartDateTime *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=start_date_time,json=startDateTime,proto3" json:"start_date_time,omitempty"`
 	// End time in which this feed item is no longer effective and will stop
 	// serving. The time is in the customer's time zone.
 	// The format is "YYYY-MM-DD HH:MM:SS".
 	// Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"
-	EndDateTime *wrappers.StringValue `protobuf:"bytes,6,opt,name=end_date_time,json=endDateTime,proto3" json:"end_date_time,omitempty"`
+	EndDateTime *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=end_date_time,json=endDateTime,proto3" json:"end_date_time,omitempty"`
 	// List of non-overlapping schedules specifying all time intervals
 	// for which the feed item may serve. There can be a maximum of 6 schedules
 	// per day.
@@ -77,7 +77,7 @@ type ExtensionFeedItem struct {
 	// The targeted device.
 	Device enums.FeedItemTargetDeviceEnum_FeedItemTargetDevice `protobuf:"varint,17,opt,name=device,proto3,enum=google.ads.googleads.v3.enums.FeedItemTargetDeviceEnum_FeedItemTargetDevice" json:"device,omitempty"`
 	// The targeted geo target constant.
-	TargetedGeoTargetConstant *wrappers.StringValue `protobuf:"bytes,20,opt,name=targeted_geo_target_constant,json=targetedGeoTargetConstant,proto3" json:"targeted_geo_target_constant,omitempty"`
+	TargetedGeoTargetConstant *wrapperspb.StringValue `protobuf:"bytes,20,opt,name=targeted_geo_target_constant,json=targetedGeoTargetConstant,proto3" json:"targeted_geo_target_constant,omitempty"`
 	// The targeted keyword.
 	TargetedKeyword *common.KeywordInfo `protobuf:"bytes,22,opt,name=targeted_keyword,json=targetedKeyword,proto3" json:"targeted_keyword,omitempty"`
 	// Output only. Status of the feed item.
@@ -146,7 +146,7 @@ func (x *ExtensionFeedItem) GetResourceName() string {
 	return ""
 }
 
-func (x *ExtensionFeedItem) GetId() *wrappers.Int64Value {
+func (x *ExtensionFeedItem) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
@@ -160,14 +160,14 @@ func (x *ExtensionFeedItem) GetExtensionType() enums.ExtensionTypeEnum_Extension
 	return enums.ExtensionTypeEnum_UNSPECIFIED
 }
 
-func (x *ExtensionFeedItem) GetStartDateTime() *wrappers.StringValue {
+func (x *ExtensionFeedItem) GetStartDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StartDateTime
 	}
 	return nil
 }
 
-func (x *ExtensionFeedItem) GetEndDateTime() *wrappers.StringValue {
+func (x *ExtensionFeedItem) GetEndDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.EndDateTime
 	}
@@ -188,7 +188,7 @@ func (x *ExtensionFeedItem) GetDevice() enums.FeedItemTargetDeviceEnum_FeedItemT
 	return enums.FeedItemTargetDeviceEnum_UNSPECIFIED
 }
 
-func (x *ExtensionFeedItem) GetTargetedGeoTargetConstant() *wrappers.StringValue {
+func (x *ExtensionFeedItem) GetTargetedGeoTargetConstant() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TargetedGeoTargetConstant
 	}
@@ -300,14 +300,14 @@ func (m *ExtensionFeedItem) GetServingResourceTargeting() isExtensionFeedItem_Se
 	return nil
 }
 
-func (x *ExtensionFeedItem) GetTargetedCampaign() *wrappers.StringValue {
+func (x *ExtensionFeedItem) GetTargetedCampaign() *wrapperspb.StringValue {
 	if x, ok := x.GetServingResourceTargeting().(*ExtensionFeedItem_TargetedCampaign); ok {
 		return x.TargetedCampaign
 	}
 	return nil
 }
 
-func (x *ExtensionFeedItem) GetTargetedAdGroup() *wrappers.StringValue {
+func (x *ExtensionFeedItem) GetTargetedAdGroup() *wrapperspb.StringValue {
 	if x, ok := x.GetServingResourceTargeting().(*ExtensionFeedItem_TargetedAdGroup); ok {
 		return x.TargetedAdGroup
 	}
@@ -404,12 +404,12 @@ type isExtensionFeedItem_ServingResourceTargeting interface {
 
 type ExtensionFeedItem_TargetedCampaign struct {
 	// The targeted campaign.
-	TargetedCampaign *wrappers.StringValue `protobuf:"bytes,18,opt,name=targeted_campaign,json=targetedCampaign,proto3,oneof"`
+	TargetedCampaign *wrapperspb.StringValue `protobuf:"bytes,18,opt,name=targeted_campaign,json=targetedCampaign,proto3,oneof"`
 }
 
 type ExtensionFeedItem_TargetedAdGroup struct {
 	// The targeted ad group.
-	TargetedAdGroup *wrappers.StringValue `protobuf:"bytes,19,opt,name=targeted_ad_group,json=targetedAdGroup,proto3,oneof"`
+	TargetedAdGroup *wrapperspb.StringValue `protobuf:"bytes,19,opt,name=targeted_ad_group,json=targetedAdGroup,proto3,oneof"`
 }
 
 func (*ExtensionFeedItem_TargetedCampaign) isExtensionFeedItem_ServingResourceTargeting() {}
@@ -636,9 +636,9 @@ func file_google_ads_googleads_v3_resources_extension_feed_item_proto_rawDescGZI
 var file_google_ads_googleads_v3_resources_extension_feed_item_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_extension_feed_item_proto_goTypes = []interface{}{
 	(*ExtensionFeedItem)(nil),                                // 0: google.ads.googleads.v3.resources.ExtensionFeedItem
-	(*wrappers.Int64Value)(nil),                              // 1: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                            // 1: google.protobuf.Int64Value
 	(enums.ExtensionTypeEnum_ExtensionType)(0),               // 2: google.ads.googleads.v3.enums.ExtensionTypeEnum.ExtensionType
-	(*wrappers.StringValue)(nil),                             // 3: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                           // 3: google.protobuf.StringValue
 	(*common.AdScheduleInfo)(nil),                            // 4: google.ads.googleads.v3.common.AdScheduleInfo
 	(enums.FeedItemTargetDeviceEnum_FeedItemTargetDevice)(0), // 5: google.ads.googleads.v3.enums.FeedItemTargetDeviceEnum.FeedItemTargetDevice
 	(*common.KeywordInfo)(nil),                               // 6: google.ads.googleads.v3.common.KeywordInfo

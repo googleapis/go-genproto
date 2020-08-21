@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -55,7 +55,7 @@ type FeedMapping struct {
 	// `customers/{customer_id}/feedMappings/{feed_id}~{feed_mapping_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The feed of this feed mapping.
-	Feed *wrappers.StringValue `protobuf:"bytes,2,opt,name=feed,proto3" json:"feed,omitempty"`
+	Feed *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=feed,proto3" json:"feed,omitempty"`
 	// Immutable. Feed attributes to field mappings. These mappings are a one-to-many
 	// relationship meaning that 1 feed attribute can be used to populate
 	// multiple placeholder fields, but 1 placeholder field can only draw
@@ -113,7 +113,7 @@ func (x *FeedMapping) GetResourceName() string {
 	return ""
 }
 
-func (x *FeedMapping) GetFeed() *wrappers.StringValue {
+func (x *FeedMapping) GetFeed() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Feed
 	}
@@ -182,12 +182,12 @@ type AttributeFieldMapping struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Immutable. Feed attribute from which to map.
-	FeedAttributeId *wrappers.Int64Value `protobuf:"bytes,1,opt,name=feed_attribute_id,json=feedAttributeId,proto3" json:"feed_attribute_id,omitempty"`
+	FeedAttributeId *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=feed_attribute_id,json=feedAttributeId,proto3" json:"feed_attribute_id,omitempty"`
 	// Output only. The placeholder field ID. If a placeholder field enum is not published in
 	// the current API version, then this field will be populated and the field
 	// oneof will be empty.
 	// This field is read-only.
-	FieldId *wrappers.Int64Value `protobuf:"bytes,2,opt,name=field_id,json=fieldId,proto3" json:"field_id,omitempty"`
+	FieldId *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=field_id,json=fieldId,proto3" json:"field_id,omitempty"`
 	// Placeholder or criterion field to be populated using data from
 	// the above feed attribute. Required.
 	//
@@ -248,14 +248,14 @@ func (*AttributeFieldMapping) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_feed_mapping_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *AttributeFieldMapping) GetFeedAttributeId() *wrappers.Int64Value {
+func (x *AttributeFieldMapping) GetFeedAttributeId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FeedAttributeId
 	}
 	return nil
 }
 
-func (x *AttributeFieldMapping) GetFieldId() *wrappers.Int64Value {
+func (x *AttributeFieldMapping) GetFieldId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FieldId
 	}
@@ -951,11 +951,11 @@ var file_google_ads_googleads_v4_resources_feed_mapping_proto_msgTypes = make([]
 var file_google_ads_googleads_v4_resources_feed_mapping_proto_goTypes = []interface{}{
 	(*FeedMapping)(nil),                                                                              // 0: google.ads.googleads.v4.resources.FeedMapping
 	(*AttributeFieldMapping)(nil),                                                                    // 1: google.ads.googleads.v4.resources.AttributeFieldMapping
-	(*wrappers.StringValue)(nil),                                                                     // 2: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                                                   // 2: google.protobuf.StringValue
 	(enums.FeedMappingStatusEnum_FeedMappingStatus)(0),                                               // 3: google.ads.googleads.v4.enums.FeedMappingStatusEnum.FeedMappingStatus
 	(enums.PlaceholderTypeEnum_PlaceholderType)(0),                                                   // 4: google.ads.googleads.v4.enums.PlaceholderTypeEnum.PlaceholderType
 	(enums.FeedMappingCriterionTypeEnum_FeedMappingCriterionType)(0),                                 // 5: google.ads.googleads.v4.enums.FeedMappingCriterionTypeEnum.FeedMappingCriterionType
-	(*wrappers.Int64Value)(nil),                                                                      // 6: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                                                    // 6: google.protobuf.Int64Value
 	(enums.SitelinkPlaceholderFieldEnum_SitelinkPlaceholderField)(0),                                 // 7: google.ads.googleads.v4.enums.SitelinkPlaceholderFieldEnum.SitelinkPlaceholderField
 	(enums.CallPlaceholderFieldEnum_CallPlaceholderField)(0),                                         // 8: google.ads.googleads.v4.enums.CallPlaceholderFieldEnum.CallPlaceholderField
 	(enums.AppPlaceholderFieldEnum_AppPlaceholderField)(0),                                           // 9: google.ads.googleads.v4.enums.AppPlaceholderFieldEnum.AppPlaceholderField

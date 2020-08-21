@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,15 +54,15 @@ type CustomerClientLink struct {
 	// `customers/{customer_id}/customerClientLinks/{client_customer_id}~{manager_link_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The client customer linked to this customer.
-	ClientCustomer *wrappers.StringValue `protobuf:"bytes,3,opt,name=client_customer,json=clientCustomer,proto3" json:"client_customer,omitempty"`
+	ClientCustomer *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=client_customer,json=clientCustomer,proto3" json:"client_customer,omitempty"`
 	// Output only. This is uniquely identifies a customer client link. Read only.
-	ManagerLinkId *wrappers.Int64Value `protobuf:"bytes,4,opt,name=manager_link_id,json=managerLinkId,proto3" json:"manager_link_id,omitempty"`
+	ManagerLinkId *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=manager_link_id,json=managerLinkId,proto3" json:"manager_link_id,omitempty"`
 	// This is the status of the link between client and manager.
 	Status enums.ManagerLinkStatusEnum_ManagerLinkStatus `protobuf:"varint,5,opt,name=status,proto3,enum=google.ads.googleads.v3.enums.ManagerLinkStatusEnum_ManagerLinkStatus" json:"status,omitempty"`
 	// The visibility of the link. Users can choose whether or not to see hidden
 	// links in the AdWords UI.
 	// Default value is false
-	Hidden *wrappers.BoolValue `protobuf:"bytes,6,opt,name=hidden,proto3" json:"hidden,omitempty"`
+	Hidden *wrapperspb.BoolValue `protobuf:"bytes,6,opt,name=hidden,proto3" json:"hidden,omitempty"`
 }
 
 func (x *CustomerClientLink) Reset() {
@@ -104,14 +104,14 @@ func (x *CustomerClientLink) GetResourceName() string {
 	return ""
 }
 
-func (x *CustomerClientLink) GetClientCustomer() *wrappers.StringValue {
+func (x *CustomerClientLink) GetClientCustomer() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ClientCustomer
 	}
 	return nil
 }
 
-func (x *CustomerClientLink) GetManagerLinkId() *wrappers.Int64Value {
+func (x *CustomerClientLink) GetManagerLinkId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ManagerLinkId
 	}
@@ -125,7 +125,7 @@ func (x *CustomerClientLink) GetStatus() enums.ManagerLinkStatusEnum_ManagerLink
 	return enums.ManagerLinkStatusEnum_UNSPECIFIED
 }
 
-func (x *CustomerClientLink) GetHidden() *wrappers.BoolValue {
+func (x *CustomerClientLink) GetHidden() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.Hidden
 	}
@@ -220,10 +220,10 @@ func file_google_ads_googleads_v3_resources_customer_client_link_proto_rawDescGZ
 var file_google_ads_googleads_v3_resources_customer_client_link_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_customer_client_link_proto_goTypes = []interface{}{
 	(*CustomerClientLink)(nil),                         // 0: google.ads.googleads.v3.resources.CustomerClientLink
-	(*wrappers.StringValue)(nil),                       // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                        // 2: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                     // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                      // 2: google.protobuf.Int64Value
 	(enums.ManagerLinkStatusEnum_ManagerLinkStatus)(0), // 3: google.ads.googleads.v3.enums.ManagerLinkStatusEnum.ManagerLinkStatus
-	(*wrappers.BoolValue)(nil),                         // 4: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                       // 4: google.protobuf.BoolValue
 }
 var file_google_ads_googleads_v3_resources_customer_client_link_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v3.resources.CustomerClientLink.client_customer:type_name -> google.protobuf.StringValue

@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -217,7 +217,7 @@ type PubsubMessage struct {
 	// The time at which the message was published, populated by the server when
 	// it receives the `Publish` call. It must not be populated by the
 	// publisher in a `Publish` call.
-	PublishTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=publish_time,json=publishTime,proto3" json:"publish_time,omitempty"`
+	PublishTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=publish_time,json=publishTime,proto3" json:"publish_time,omitempty"`
 	// If non-empty, identifies related messages for which publish order should be
 	// respected. If a `Subscription` has `enable_message_ordering` set to `true`,
 	// messages published with the same non-empty `ordering_key` value will be
@@ -280,7 +280,7 @@ func (x *PubsubMessage) GetMessageId() string {
 	return ""
 }
 
-func (x *PubsubMessage) GetPublishTime() *timestamp.Timestamp {
+func (x *PubsubMessage) GetPublishTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.PublishTime
 	}
@@ -357,7 +357,7 @@ type UpdateTopicRequest struct {
 	// "message_storage_policy" but the `message_storage_policy` is not set in
 	// the `topic` provided above, then the updated value is determined by the
 	// policy configured at the project or organization level.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateTopicRequest) Reset() {
@@ -399,7 +399,7 @@ func (x *UpdateTopicRequest) GetTopic() *Topic {
 	return nil
 }
 
-func (x *UpdateTopicRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateTopicRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1099,7 +1099,7 @@ type Subscription struct {
 	// of acknowledged messages, and thus configures how far back in time a `Seek`
 	// can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
 	// minutes.
-	MessageRetentionDuration *duration.Duration `protobuf:"bytes,8,opt,name=message_retention_duration,json=messageRetentionDuration,proto3" json:"message_retention_duration,omitempty"`
+	MessageRetentionDuration *durationpb.Duration `protobuf:"bytes,8,opt,name=message_retention_duration,json=messageRetentionDuration,proto3" json:"message_retention_duration,omitempty"`
 	// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
 	// managing labels</a>.
 	Labels map[string]string `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
@@ -1213,7 +1213,7 @@ func (x *Subscription) GetRetainAckedMessages() bool {
 	return false
 }
 
-func (x *Subscription) GetMessageRetentionDuration() *duration.Duration {
+func (x *Subscription) GetMessageRetentionDuration() *durationpb.Duration {
 	if x != nil {
 		return x.MessageRetentionDuration
 	}
@@ -1287,10 +1287,10 @@ type RetryPolicy struct {
 
 	// The minimum delay between consecutive deliveries of a given message.
 	// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
-	MinimumBackoff *duration.Duration `protobuf:"bytes,1,opt,name=minimum_backoff,json=minimumBackoff,proto3" json:"minimum_backoff,omitempty"`
+	MinimumBackoff *durationpb.Duration `protobuf:"bytes,1,opt,name=minimum_backoff,json=minimumBackoff,proto3" json:"minimum_backoff,omitempty"`
 	// The maximum delay between consecutive deliveries of a given message.
 	// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
-	MaximumBackoff *duration.Duration `protobuf:"bytes,2,opt,name=maximum_backoff,json=maximumBackoff,proto3" json:"maximum_backoff,omitempty"`
+	MaximumBackoff *durationpb.Duration `protobuf:"bytes,2,opt,name=maximum_backoff,json=maximumBackoff,proto3" json:"maximum_backoff,omitempty"`
 }
 
 func (x *RetryPolicy) Reset() {
@@ -1325,14 +1325,14 @@ func (*RetryPolicy) Descriptor() ([]byte, []int) {
 	return file_google_pubsub_v1_pubsub_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *RetryPolicy) GetMinimumBackoff() *duration.Duration {
+func (x *RetryPolicy) GetMinimumBackoff() *durationpb.Duration {
 	if x != nil {
 		return x.MinimumBackoff
 	}
 	return nil
 }
 
-func (x *RetryPolicy) GetMaximumBackoff() *duration.Duration {
+func (x *RetryPolicy) GetMaximumBackoff() *durationpb.Duration {
 	if x != nil {
 		return x.MaximumBackoff
 	}
@@ -1434,7 +1434,7 @@ type ExpirationPolicy struct {
 	// and maximum allowed values for `ttl` depend on the type of the associated
 	// resource, as well. If `ttl` is not set, the associated resource never
 	// expires.
-	Ttl *duration.Duration `protobuf:"bytes,1,opt,name=ttl,proto3" json:"ttl,omitempty"`
+	Ttl *durationpb.Duration `protobuf:"bytes,1,opt,name=ttl,proto3" json:"ttl,omitempty"`
 }
 
 func (x *ExpirationPolicy) Reset() {
@@ -1469,7 +1469,7 @@ func (*ExpirationPolicy) Descriptor() ([]byte, []int) {
 	return file_google_pubsub_v1_pubsub_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *ExpirationPolicy) GetTtl() *duration.Duration {
+func (x *ExpirationPolicy) GetTtl() *durationpb.Duration {
 	if x != nil {
 		return x.Ttl
 	}
@@ -1732,7 +1732,7 @@ type UpdateSubscriptionRequest struct {
 	Subscription *Subscription `protobuf:"bytes,1,opt,name=subscription,proto3" json:"subscription,omitempty"`
 	// Required. Indicates which fields in the provided subscription to update.
 	// Must be specified and non-empty.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateSubscriptionRequest) Reset() {
@@ -1774,7 +1774,7 @@ func (x *UpdateSubscriptionRequest) GetSubscription() *Subscription {
 	return nil
 }
 
-func (x *UpdateSubscriptionRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateSubscriptionRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2592,7 +2592,7 @@ type UpdateSnapshotRequest struct {
 	Snapshot *Snapshot `protobuf:"bytes,1,opt,name=snapshot,proto3" json:"snapshot,omitempty"`
 	// Required. Indicates which fields in the provided snapshot to update.
 	// Must be specified and non-empty.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateSnapshotRequest) Reset() {
@@ -2634,7 +2634,7 @@ func (x *UpdateSnapshotRequest) GetSnapshot() *Snapshot {
 	return nil
 }
 
-func (x *UpdateSnapshotRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateSnapshotRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2665,7 +2665,7 @@ type Snapshot struct {
 	// will always capture this 3-day-old backlog as long as the snapshot
 	// exists -- will expire in 4 days. The service will refuse to create a
 	// snapshot that would expire in less than 1 hour after creation.
-	ExpireTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
+	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 	// See [Creating and managing labels]
 	// (https://cloud.google.com/pubsub/docs/labels).
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
@@ -2717,7 +2717,7 @@ func (x *Snapshot) GetTopic() string {
 	return ""
 }
 
-func (x *Snapshot) GetExpireTime() *timestamp.Timestamp {
+func (x *Snapshot) GetExpireTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpireTime
 	}
@@ -3020,7 +3020,7 @@ func (m *SeekRequest) GetTarget() isSeekRequest_Target {
 	return nil
 }
 
-func (x *SeekRequest) GetTime() *timestamp.Timestamp {
+func (x *SeekRequest) GetTime() *timestamppb.Timestamp {
 	if x, ok := x.GetTarget().(*SeekRequest_Time); ok {
 		return x.Time
 	}
@@ -3050,7 +3050,7 @@ type SeekRequest_Time struct {
 	// window (or to a point before the system's notion of the subscription
 	// creation time), only retained messages will be marked as unacknowledged,
 	// and already-expunged messages will not be restored.
-	Time *timestamp.Timestamp `protobuf:"bytes,2,opt,name=time,proto3,oneof"`
+	Time *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=time,proto3,oneof"`
 }
 
 type SeekRequest_Snapshot struct {
@@ -4002,10 +4002,10 @@ var file_google_pubsub_v1_pubsub_proto_goTypes = []interface{}{
 	nil,                                    // 47: google.pubsub.v1.PushConfig.AttributesEntry
 	nil,                                    // 48: google.pubsub.v1.CreateSnapshotRequest.LabelsEntry
 	nil,                                    // 49: google.pubsub.v1.Snapshot.LabelsEntry
-	(*timestamp.Timestamp)(nil),            // 50: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),           // 51: google.protobuf.FieldMask
-	(*duration.Duration)(nil),              // 52: google.protobuf.Duration
-	(*empty.Empty)(nil),                    // 53: google.protobuf.Empty
+	(*timestamppb.Timestamp)(nil),          // 50: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),          // 51: google.protobuf.FieldMask
+	(*durationpb.Duration)(nil),            // 52: google.protobuf.Duration
+	(*emptypb.Empty)(nil),                  // 53: google.protobuf.Empty
 }
 var file_google_pubsub_v1_pubsub_proto_depIdxs = []int32{
 	43, // 0: google.pubsub.v1.Topic.labels:type_name -> google.pubsub.v1.Topic.LabelsEntry
@@ -4698,7 +4698,7 @@ type PublisherClient interface {
 	// the same name; this is an entirely new topic with none of the old
 	// configuration or subscriptions. Existing subscriptions to this topic are
 	// not deleted, but their `topic` field is set to `_deleted-topic_`.
-	DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Detaches a subscription from this topic. All messages retained in the
 	// subscription are dropped. Subsequent `Pull` and `StreamingPull` requests
 	// will return FAILED_PRECONDITION. If the subscription is a push
@@ -4777,8 +4777,8 @@ func (c *publisherClient) ListTopicSnapshots(ctx context.Context, in *ListTopicS
 	return out, nil
 }
 
-func (c *publisherClient) DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *publisherClient) DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1.Publisher/DeleteTopic", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4823,7 +4823,7 @@ type PublisherServer interface {
 	// the same name; this is an entirely new topic with none of the old
 	// configuration or subscriptions. Existing subscriptions to this topic are
 	// not deleted, but their `topic` field is set to `_deleted-topic_`.
-	DeleteTopic(context.Context, *DeleteTopicRequest) (*empty.Empty, error)
+	DeleteTopic(context.Context, *DeleteTopicRequest) (*emptypb.Empty, error)
 	// Detaches a subscription from this topic. All messages retained in the
 	// subscription are dropped. Subsequent `Pull` and `StreamingPull` requests
 	// will return FAILED_PRECONDITION. If the subscription is a push
@@ -4856,7 +4856,7 @@ func (*UnimplementedPublisherServer) ListTopicSubscriptions(context.Context, *Li
 func (*UnimplementedPublisherServer) ListTopicSnapshots(context.Context, *ListTopicSnapshotsRequest) (*ListTopicSnapshotsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTopicSnapshots not implemented")
 }
-func (*UnimplementedPublisherServer) DeleteTopic(context.Context, *DeleteTopicRequest) (*empty.Empty, error) {
+func (*UnimplementedPublisherServer) DeleteTopic(context.Context, *DeleteTopicRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTopic not implemented")
 }
 func (*UnimplementedPublisherServer) DetachSubscription(context.Context, *DetachSubscriptionRequest) (*DetachSubscriptionResponse, error) {
@@ -5102,13 +5102,13 @@ type SubscriberClient interface {
 	// `NOT_FOUND`. After a subscription is deleted, a new one may be created with
 	// the same name, but the new one has no association with the old
 	// subscription or its topic unless the same topic is specified.
-	DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Modifies the ack deadline for a specific message. This method is useful
 	// to indicate that more time is needed to process a message by the
 	// subscriber, or to make the message available for redelivery if the
 	// processing was interrupted. Note that this does not modify the
 	// subscription-level `ackDeadlineSeconds` used for subsequent messages.
-	ModifyAckDeadline(ctx context.Context, in *ModifyAckDeadlineRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ModifyAckDeadline(ctx context.Context, in *ModifyAckDeadlineRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Acknowledges the messages associated with the `ack_ids` in the
 	// `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages
 	// from the subscription.
@@ -5116,7 +5116,7 @@ type SubscriberClient interface {
 	// Acknowledging a message whose ack deadline has expired may succeed,
 	// but such a message may be redelivered later. Acknowledging a message more
 	// than once will not result in an error.
-	Acknowledge(ctx context.Context, in *AcknowledgeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Acknowledge(ctx context.Context, in *AcknowledgeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Pulls messages from the server. The server may return `UNAVAILABLE` if
 	// there are too many concurrent pull requests pending for the given
 	// subscription.
@@ -5135,7 +5135,7 @@ type SubscriberClient interface {
 	// an empty `PushConfig`) or vice versa, or change the endpoint URL and other
 	// attributes of a push subscription. Messages will accumulate for delivery
 	// continuously through the call regardless of changes to the `PushConfig`.
-	ModifyPushConfig(ctx context.Context, in *ModifyPushConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ModifyPushConfig(ctx context.Context, in *ModifyPushConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets the configuration details of a snapshot. Snapshots are used in
 	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
 	// operations, which allow you to manage message acknowledgments in bulk. That
@@ -5181,7 +5181,7 @@ type SubscriberClient interface {
 	// are immediately dropped. After a snapshot is deleted, a new one may be
 	// created with the same name, but the new one has no association with the old
 	// snapshot or its subscription, unless the same subscription is specified.
-	DeleteSnapshot(ctx context.Context, in *DeleteSnapshotRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteSnapshot(ctx context.Context, in *DeleteSnapshotRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Seeks an existing subscription to a point in time or to a given snapshot,
 	// whichever is provided in the request. Snapshots are used in [Seek](
 	// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
@@ -5236,8 +5236,8 @@ func (c *subscriberClient) ListSubscriptions(ctx context.Context, in *ListSubscr
 	return out, nil
 }
 
-func (c *subscriberClient) DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *subscriberClient) DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1.Subscriber/DeleteSubscription", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5245,8 +5245,8 @@ func (c *subscriberClient) DeleteSubscription(ctx context.Context, in *DeleteSub
 	return out, nil
 }
 
-func (c *subscriberClient) ModifyAckDeadline(ctx context.Context, in *ModifyAckDeadlineRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *subscriberClient) ModifyAckDeadline(ctx context.Context, in *ModifyAckDeadlineRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1.Subscriber/ModifyAckDeadline", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5254,8 +5254,8 @@ func (c *subscriberClient) ModifyAckDeadline(ctx context.Context, in *ModifyAckD
 	return out, nil
 }
 
-func (c *subscriberClient) Acknowledge(ctx context.Context, in *AcknowledgeRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *subscriberClient) Acknowledge(ctx context.Context, in *AcknowledgeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1.Subscriber/Acknowledge", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5303,8 +5303,8 @@ func (x *subscriberStreamingPullClient) Recv() (*StreamingPullResponse, error) {
 	return m, nil
 }
 
-func (c *subscriberClient) ModifyPushConfig(ctx context.Context, in *ModifyPushConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *subscriberClient) ModifyPushConfig(ctx context.Context, in *ModifyPushConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1.Subscriber/ModifyPushConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5348,8 +5348,8 @@ func (c *subscriberClient) UpdateSnapshot(ctx context.Context, in *UpdateSnapsho
 	return out, nil
 }
 
-func (c *subscriberClient) DeleteSnapshot(ctx context.Context, in *DeleteSnapshotRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *subscriberClient) DeleteSnapshot(ctx context.Context, in *DeleteSnapshotRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1.Subscriber/DeleteSnapshot", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5392,13 +5392,13 @@ type SubscriberServer interface {
 	// `NOT_FOUND`. After a subscription is deleted, a new one may be created with
 	// the same name, but the new one has no association with the old
 	// subscription or its topic unless the same topic is specified.
-	DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*empty.Empty, error)
+	DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*emptypb.Empty, error)
 	// Modifies the ack deadline for a specific message. This method is useful
 	// to indicate that more time is needed to process a message by the
 	// subscriber, or to make the message available for redelivery if the
 	// processing was interrupted. Note that this does not modify the
 	// subscription-level `ackDeadlineSeconds` used for subsequent messages.
-	ModifyAckDeadline(context.Context, *ModifyAckDeadlineRequest) (*empty.Empty, error)
+	ModifyAckDeadline(context.Context, *ModifyAckDeadlineRequest) (*emptypb.Empty, error)
 	// Acknowledges the messages associated with the `ack_ids` in the
 	// `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages
 	// from the subscription.
@@ -5406,7 +5406,7 @@ type SubscriberServer interface {
 	// Acknowledging a message whose ack deadline has expired may succeed,
 	// but such a message may be redelivered later. Acknowledging a message more
 	// than once will not result in an error.
-	Acknowledge(context.Context, *AcknowledgeRequest) (*empty.Empty, error)
+	Acknowledge(context.Context, *AcknowledgeRequest) (*emptypb.Empty, error)
 	// Pulls messages from the server. The server may return `UNAVAILABLE` if
 	// there are too many concurrent pull requests pending for the given
 	// subscription.
@@ -5425,7 +5425,7 @@ type SubscriberServer interface {
 	// an empty `PushConfig`) or vice versa, or change the endpoint URL and other
 	// attributes of a push subscription. Messages will accumulate for delivery
 	// continuously through the call regardless of changes to the `PushConfig`.
-	ModifyPushConfig(context.Context, *ModifyPushConfigRequest) (*empty.Empty, error)
+	ModifyPushConfig(context.Context, *ModifyPushConfigRequest) (*emptypb.Empty, error)
 	// Gets the configuration details of a snapshot. Snapshots are used in
 	// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
 	// operations, which allow you to manage message acknowledgments in bulk. That
@@ -5471,7 +5471,7 @@ type SubscriberServer interface {
 	// are immediately dropped. After a snapshot is deleted, a new one may be
 	// created with the same name, but the new one has no association with the old
 	// snapshot or its subscription, unless the same subscription is specified.
-	DeleteSnapshot(context.Context, *DeleteSnapshotRequest) (*empty.Empty, error)
+	DeleteSnapshot(context.Context, *DeleteSnapshotRequest) (*emptypb.Empty, error)
 	// Seeks an existing subscription to a point in time or to a given snapshot,
 	// whichever is provided in the request. Snapshots are used in [Seek](
 	// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
@@ -5498,13 +5498,13 @@ func (*UnimplementedSubscriberServer) UpdateSubscription(context.Context, *Updat
 func (*UnimplementedSubscriberServer) ListSubscriptions(context.Context, *ListSubscriptionsRequest) (*ListSubscriptionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListSubscriptions not implemented")
 }
-func (*UnimplementedSubscriberServer) DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*empty.Empty, error) {
+func (*UnimplementedSubscriberServer) DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSubscription not implemented")
 }
-func (*UnimplementedSubscriberServer) ModifyAckDeadline(context.Context, *ModifyAckDeadlineRequest) (*empty.Empty, error) {
+func (*UnimplementedSubscriberServer) ModifyAckDeadline(context.Context, *ModifyAckDeadlineRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ModifyAckDeadline not implemented")
 }
-func (*UnimplementedSubscriberServer) Acknowledge(context.Context, *AcknowledgeRequest) (*empty.Empty, error) {
+func (*UnimplementedSubscriberServer) Acknowledge(context.Context, *AcknowledgeRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Acknowledge not implemented")
 }
 func (*UnimplementedSubscriberServer) Pull(context.Context, *PullRequest) (*PullResponse, error) {
@@ -5513,7 +5513,7 @@ func (*UnimplementedSubscriberServer) Pull(context.Context, *PullRequest) (*Pull
 func (*UnimplementedSubscriberServer) StreamingPull(Subscriber_StreamingPullServer) error {
 	return status.Errorf(codes.Unimplemented, "method StreamingPull not implemented")
 }
-func (*UnimplementedSubscriberServer) ModifyPushConfig(context.Context, *ModifyPushConfigRequest) (*empty.Empty, error) {
+func (*UnimplementedSubscriberServer) ModifyPushConfig(context.Context, *ModifyPushConfigRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ModifyPushConfig not implemented")
 }
 func (*UnimplementedSubscriberServer) GetSnapshot(context.Context, *GetSnapshotRequest) (*Snapshot, error) {
@@ -5528,7 +5528,7 @@ func (*UnimplementedSubscriberServer) CreateSnapshot(context.Context, *CreateSna
 func (*UnimplementedSubscriberServer) UpdateSnapshot(context.Context, *UpdateSnapshotRequest) (*Snapshot, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateSnapshot not implemented")
 }
-func (*UnimplementedSubscriberServer) DeleteSnapshot(context.Context, *DeleteSnapshotRequest) (*empty.Empty, error) {
+func (*UnimplementedSubscriberServer) DeleteSnapshot(context.Context, *DeleteSnapshotRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSnapshot not implemented")
 }
 func (*UnimplementedSubscriberServer) Seek(context.Context, *SeekRequest) (*SeekResponse, error) {

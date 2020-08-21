@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -762,7 +762,7 @@ type TokenProperties struct {
 	// Reason associated with the response when valid = false.
 	InvalidReason TokenProperties_InvalidReason `protobuf:"varint,2,opt,name=invalid_reason,json=invalidReason,proto3,enum=google.cloud.recaptchaenterprise.v1.TokenProperties_InvalidReason" json:"invalid_reason,omitempty"`
 	// The timestamp corresponding to the generation of the token.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The hostname of the page on which the token was generated.
 	Hostname string `protobuf:"bytes,4,opt,name=hostname,proto3" json:"hostname,omitempty"`
 	// Action name provided at token generation.
@@ -815,7 +815,7 @@ func (x *TokenProperties) GetInvalidReason() TokenProperties_InvalidReason {
 	return TokenProperties_INVALID_REASON_UNSPECIFIED
 }
 
-func (x *TokenProperties) GetCreateTime() *timestamp.Timestamp {
+func (x *TokenProperties) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1084,7 +1084,7 @@ type UpdateKeyRequest struct {
 	Key *Key `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	// Optional. The mask to control which field of the key get updated. If the mask is not
 	// present, all fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateKeyRequest) Reset() {
@@ -1126,7 +1126,7 @@ func (x *UpdateKeyRequest) GetKey() *Key {
 	return nil
 }
 
-func (x *UpdateKeyRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateKeyRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1207,7 +1207,7 @@ type Key struct {
 	// Creating and managing labels</a>.
 	Labels map[string]string `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// The timestamp corresponding to the creation of this Key.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 }
 
 func (x *Key) Reset() {
@@ -1291,7 +1291,7 @@ func (x *Key) GetLabels() map[string]string {
 	return nil
 }
 
-func (x *Key) GetCreateTime() *timestamp.Timestamp {
+func (x *Key) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1929,9 +1929,9 @@ var file_google_cloud_recaptchaenterprise_v1_recaptchaenterprise_proto_goTypes =
 	(*AndroidKeySettings)(nil),                      // 20: google.cloud.recaptchaenterprise.v1.AndroidKeySettings
 	(*IOSKeySettings)(nil),                          // 21: google.cloud.recaptchaenterprise.v1.IOSKeySettings
 	nil,                                             // 22: google.cloud.recaptchaenterprise.v1.Key.LabelsEntry
-	(*timestamp.Timestamp)(nil),                     // 23: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),                    // 24: google.protobuf.FieldMask
-	(*empty.Empty)(nil),                             // 25: google.protobuf.Empty
+	(*timestamppb.Timestamp)(nil),                   // 23: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),                   // 24: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),                           // 25: google.protobuf.Empty
 }
 var file_google_cloud_recaptchaenterprise_v1_recaptchaenterprise_proto_depIdxs = []int32{
 	8,  // 0: google.cloud.recaptchaenterprise.v1.CreateAssessmentRequest.assessment:type_name -> google.cloud.recaptchaenterprise.v1.Assessment
@@ -2237,7 +2237,7 @@ type RecaptchaEnterpriseServiceClient interface {
 	// Updates the specified key.
 	UpdateKey(ctx context.Context, in *UpdateKeyRequest, opts ...grpc.CallOption) (*Key, error)
 	// Deletes the specified key.
-	DeleteKey(ctx context.Context, in *DeleteKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteKey(ctx context.Context, in *DeleteKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type recaptchaEnterpriseServiceClient struct {
@@ -2302,8 +2302,8 @@ func (c *recaptchaEnterpriseServiceClient) UpdateKey(ctx context.Context, in *Up
 	return out, nil
 }
 
-func (c *recaptchaEnterpriseServiceClient) DeleteKey(ctx context.Context, in *DeleteKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *recaptchaEnterpriseServiceClient) DeleteKey(ctx context.Context, in *DeleteKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.recaptchaenterprise.v1.RecaptchaEnterpriseService/DeleteKey", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2327,7 +2327,7 @@ type RecaptchaEnterpriseServiceServer interface {
 	// Updates the specified key.
 	UpdateKey(context.Context, *UpdateKeyRequest) (*Key, error)
 	// Deletes the specified key.
-	DeleteKey(context.Context, *DeleteKeyRequest) (*empty.Empty, error)
+	DeleteKey(context.Context, *DeleteKeyRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedRecaptchaEnterpriseServiceServer can be embedded to have forward compatible implementations.
@@ -2352,7 +2352,7 @@ func (*UnimplementedRecaptchaEnterpriseServiceServer) GetKey(context.Context, *G
 func (*UnimplementedRecaptchaEnterpriseServiceServer) UpdateKey(context.Context, *UpdateKeyRequest) (*Key, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateKey not implemented")
 }
-func (*UnimplementedRecaptchaEnterpriseServiceServer) DeleteKey(context.Context, *DeleteKeyRequest) (*empty.Empty, error) {
+func (*UnimplementedRecaptchaEnterpriseServiceServer) DeleteKey(context.Context, *DeleteKeyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteKey not implemented")
 }
 

@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -177,9 +177,9 @@ type LogBucket struct {
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Output only. The creation timestamp of the bucket. This is not set for any of the
 	// default buckets.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last update timestamp of the bucket.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Logs will be retained by default for this amount of time, after which they
 	// will automatically be deleted. The minimum retention period is 1 day.
 	// If this value is set to zero at bucket creation time, the default time of
@@ -235,14 +235,14 @@ func (x *LogBucket) GetDescription() string {
 	return ""
 }
 
-func (x *LogBucket) GetCreateTime() *timestamp.Timestamp {
+func (x *LogBucket) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *LogBucket) GetUpdateTime() *timestamp.Timestamp {
+func (x *LogBucket) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -343,11 +343,11 @@ type LogSink struct {
 	// Output only. The creation timestamp of the sink.
 	//
 	// This field may not be present for older sinks.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,13,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last update timestamp of the sink.
 	//
 	// This field may not be present for older sinks.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,14,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *LogSink) Reset() {
@@ -453,14 +453,14 @@ func (x *LogSink) GetBigqueryOptions() *BigQueryOptions {
 	return nil
 }
 
-func (x *LogSink) GetCreateTime() *timestamp.Timestamp {
+func (x *LogSink) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *LogSink) GetUpdateTime() *timestamp.Timestamp {
+func (x *LogSink) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -717,7 +717,7 @@ type UpdateBucketRequest struct {
 	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask
 	//
 	// Example: `updateMask=retention_days`.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateBucketRequest) Reset() {
@@ -766,7 +766,7 @@ func (x *UpdateBucketRequest) GetBucket() *LogBucket {
 	return nil
 }
 
-func (x *UpdateBucketRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateBucketRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1153,7 +1153,7 @@ type UpdateSinkRequest struct {
 	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask
 	//
 	// Example: `updateMask=filter`.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateSinkRequest) Reset() {
@@ -1209,7 +1209,7 @@ func (x *UpdateSinkRequest) GetUniqueWriterIdentity() bool {
 	return false
 }
 
-func (x *UpdateSinkRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateSinkRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1309,11 +1309,11 @@ type LogExclusion struct {
 	// Output only. The creation timestamp of the exclusion.
 	//
 	// This field may not be present for older exclusions.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last update timestamp of the exclusion.
 	//
 	// This field may not be present for older exclusions.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *LogExclusion) Reset() {
@@ -1376,14 +1376,14 @@ func (x *LogExclusion) GetDisabled() bool {
 	return false
 }
 
-func (x *LogExclusion) GetCreateTime() *timestamp.Timestamp {
+func (x *LogExclusion) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *LogExclusion) GetUpdateTime() *timestamp.Timestamp {
+func (x *LogExclusion) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -1674,7 +1674,7 @@ type UpdateExclusionRequest struct {
 	//
 	// For example, to change the filter and description of an exclusion,
 	// specify an `update_mask` of `"filter,description"`.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateExclusionRequest) Reset() {
@@ -1723,7 +1723,7 @@ func (x *UpdateExclusionRequest) GetExclusion() *LogExclusion {
 	return nil
 }
 
-func (x *UpdateExclusionRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateExclusionRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1888,7 +1888,7 @@ type UpdateCmekSettingsRequest struct {
 	// See [FieldMask][google.protobuf.FieldMask] for more information.
 	//
 	// Example: `"updateMask=kmsKeyName"`
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateCmekSettingsRequest) Reset() {
@@ -1937,7 +1937,7 @@ func (x *UpdateCmekSettingsRequest) GetCmekSettings() *CmekSettings {
 	return nil
 }
 
-func (x *UpdateCmekSettingsRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateCmekSettingsRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2790,9 +2790,9 @@ var file_google_logging_v2_logging_config_proto_goTypes = []interface{}{
 	(*GetCmekSettingsRequest)(nil),    // 22: google.logging.v2.GetCmekSettingsRequest
 	(*UpdateCmekSettingsRequest)(nil), // 23: google.logging.v2.UpdateCmekSettingsRequest
 	(*CmekSettings)(nil),              // 24: google.logging.v2.CmekSettings
-	(*timestamp.Timestamp)(nil),       // 25: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),      // 26: google.protobuf.FieldMask
-	(*empty.Empty)(nil),               // 27: google.protobuf.Empty
+	(*timestamppb.Timestamp)(nil),     // 25: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),     // 26: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),             // 27: google.protobuf.Empty
 }
 var file_google_logging_v2_logging_config_proto_depIdxs = []int32{
 	25, // 0: google.logging.v2.LogBucket.create_time:type_name -> google.protobuf.Timestamp
@@ -3206,7 +3206,7 @@ type ConfigServiceV2Client interface {
 	UpdateSink(ctx context.Context, in *UpdateSinkRequest, opts ...grpc.CallOption) (*LogSink, error)
 	// Deletes a sink. If the sink has a unique `writer_identity`, then that
 	// service account is also deleted.
-	DeleteSink(ctx context.Context, in *DeleteSinkRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteSink(ctx context.Context, in *DeleteSinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists all the exclusions in a parent resource.
 	ListExclusions(ctx context.Context, in *ListExclusionsRequest, opts ...grpc.CallOption) (*ListExclusionsResponse, error)
 	// Gets the description of an exclusion.
@@ -3218,7 +3218,7 @@ type ConfigServiceV2Client interface {
 	// Changes one or more properties of an existing exclusion.
 	UpdateExclusion(ctx context.Context, in *UpdateExclusionRequest, opts ...grpc.CallOption) (*LogExclusion, error)
 	// Deletes an exclusion.
-	DeleteExclusion(ctx context.Context, in *DeleteExclusionRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteExclusion(ctx context.Context, in *DeleteExclusionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets the Logs Router CMEK settings for the given resource.
 	//
 	// Note: CMEK for the Logs Router can currently only be configured for GCP
@@ -3318,8 +3318,8 @@ func (c *configServiceV2Client) UpdateSink(ctx context.Context, in *UpdateSinkRe
 	return out, nil
 }
 
-func (c *configServiceV2Client) DeleteSink(ctx context.Context, in *DeleteSinkRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *configServiceV2Client) DeleteSink(ctx context.Context, in *DeleteSinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.logging.v2.ConfigServiceV2/DeleteSink", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3363,8 +3363,8 @@ func (c *configServiceV2Client) UpdateExclusion(ctx context.Context, in *UpdateE
 	return out, nil
 }
 
-func (c *configServiceV2Client) DeleteExclusion(ctx context.Context, in *DeleteExclusionRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *configServiceV2Client) DeleteExclusion(ctx context.Context, in *DeleteExclusionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.logging.v2.ConfigServiceV2/DeleteExclusion", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3425,7 +3425,7 @@ type ConfigServiceV2Server interface {
 	UpdateSink(context.Context, *UpdateSinkRequest) (*LogSink, error)
 	// Deletes a sink. If the sink has a unique `writer_identity`, then that
 	// service account is also deleted.
-	DeleteSink(context.Context, *DeleteSinkRequest) (*empty.Empty, error)
+	DeleteSink(context.Context, *DeleteSinkRequest) (*emptypb.Empty, error)
 	// Lists all the exclusions in a parent resource.
 	ListExclusions(context.Context, *ListExclusionsRequest) (*ListExclusionsResponse, error)
 	// Gets the description of an exclusion.
@@ -3437,7 +3437,7 @@ type ConfigServiceV2Server interface {
 	// Changes one or more properties of an existing exclusion.
 	UpdateExclusion(context.Context, *UpdateExclusionRequest) (*LogExclusion, error)
 	// Deletes an exclusion.
-	DeleteExclusion(context.Context, *DeleteExclusionRequest) (*empty.Empty, error)
+	DeleteExclusion(context.Context, *DeleteExclusionRequest) (*emptypb.Empty, error)
 	// Gets the Logs Router CMEK settings for the given resource.
 	//
 	// Note: CMEK for the Logs Router can currently only be configured for GCP
@@ -3491,7 +3491,7 @@ func (*UnimplementedConfigServiceV2Server) CreateSink(context.Context, *CreateSi
 func (*UnimplementedConfigServiceV2Server) UpdateSink(context.Context, *UpdateSinkRequest) (*LogSink, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateSink not implemented")
 }
-func (*UnimplementedConfigServiceV2Server) DeleteSink(context.Context, *DeleteSinkRequest) (*empty.Empty, error) {
+func (*UnimplementedConfigServiceV2Server) DeleteSink(context.Context, *DeleteSinkRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSink not implemented")
 }
 func (*UnimplementedConfigServiceV2Server) ListExclusions(context.Context, *ListExclusionsRequest) (*ListExclusionsResponse, error) {
@@ -3506,7 +3506,7 @@ func (*UnimplementedConfigServiceV2Server) CreateExclusion(context.Context, *Cre
 func (*UnimplementedConfigServiceV2Server) UpdateExclusion(context.Context, *UpdateExclusionRequest) (*LogExclusion, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateExclusion not implemented")
 }
-func (*UnimplementedConfigServiceV2Server) DeleteExclusion(context.Context, *DeleteExclusionRequest) (*empty.Empty, error) {
+func (*UnimplementedConfigServiceV2Server) DeleteExclusion(context.Context, *DeleteExclusionRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteExclusion not implemented")
 }
 func (*UnimplementedConfigServiceV2Server) GetCmekSettings(context.Context, *GetCmekSettingsRequest) (*CmekSettings, error) {

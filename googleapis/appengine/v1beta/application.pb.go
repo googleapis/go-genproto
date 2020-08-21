@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -196,7 +196,7 @@ type Application struct {
 	// @OutputOnly
 	CodeBucket string `protobuf:"bytes,8,opt,name=code_bucket,json=codeBucket,proto3" json:"code_bucket,omitempty"`
 	// Cookie expiration policy for this application.
-	DefaultCookieExpiration *duration.Duration `protobuf:"bytes,9,opt,name=default_cookie_expiration,json=defaultCookieExpiration,proto3" json:"default_cookie_expiration,omitempty"`
+	DefaultCookieExpiration *durationpb.Duration `protobuf:"bytes,9,opt,name=default_cookie_expiration,json=defaultCookieExpiration,proto3" json:"default_cookie_expiration,omitempty"`
 	// Serving status of this application.
 	ServingStatus Application_ServingStatus `protobuf:"varint,10,opt,name=serving_status,json=servingStatus,proto3,enum=google.appengine.v1beta.Application_ServingStatus" json:"serving_status,omitempty"`
 	// Hostname used to reach this application, as resolved by App Engine.
@@ -293,7 +293,7 @@ func (x *Application) GetCodeBucket() string {
 	return ""
 }
 
-func (x *Application) GetDefaultCookieExpiration() *duration.Duration {
+func (x *Application) GetDefaultCookieExpiration() *durationpb.Duration {
 	if x != nil {
 		return x.DefaultCookieExpiration
 	}
@@ -709,7 +709,7 @@ var file_google_appengine_v1beta_application_proto_goTypes = []interface{}{
 	(*UrlDispatchRule)(nil),                // 3: google.appengine.v1beta.UrlDispatchRule
 	(*Application_IdentityAwareProxy)(nil), // 4: google.appengine.v1beta.Application.IdentityAwareProxy
 	(*Application_FeatureSettings)(nil),    // 5: google.appengine.v1beta.Application.FeatureSettings
-	(*duration.Duration)(nil),              // 6: google.protobuf.Duration
+	(*durationpb.Duration)(nil),            // 6: google.protobuf.Duration
 }
 var file_google_appengine_v1beta_application_proto_depIdxs = []int32{
 	3, // 0: google.appengine.v1beta.Application.dispatch_rules:type_name -> google.appengine.v1beta.UrlDispatchRule

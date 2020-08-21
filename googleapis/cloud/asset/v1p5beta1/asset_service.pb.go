@@ -26,13 +26,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -123,7 +123,7 @@ type ListAssetsRequest struct {
 	// the current time will be used. Due to delays in resource data collection
 	// and indexing, there is a volatile window during which running the same
 	// query may get different results.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 	// A list of asset types of which to take a snapshot for. For  example:
 	// "compute.googleapis.com/Disk". If specified, only matching assets will be
 	// returned. See [Introduction to Cloud Asset
@@ -181,7 +181,7 @@ func (x *ListAssetsRequest) GetParent() string {
 	return ""
 }
 
-func (x *ListAssetsRequest) GetReadTime() *timestamp.Timestamp {
+func (x *ListAssetsRequest) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -223,7 +223,7 @@ type ListAssetsResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Time the snapshot was taken.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 	// Assets.
 	Assets []*Asset `protobuf:"bytes,2,rep,name=assets,proto3" json:"assets,omitempty"`
 	// Token to retrieve the next page of results. Set to empty if there are no
@@ -263,7 +263,7 @@ func (*ListAssetsResponse) Descriptor() ([]byte, []int) {
 	return file_google_cloud_asset_v1p5beta1_asset_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ListAssetsResponse) GetReadTime() *timestamp.Timestamp {
+func (x *ListAssetsResponse) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -383,11 +383,11 @@ func file_google_cloud_asset_v1p5beta1_asset_service_proto_rawDescGZIP() []byte 
 var file_google_cloud_asset_v1p5beta1_asset_service_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_google_cloud_asset_v1p5beta1_asset_service_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_google_cloud_asset_v1p5beta1_asset_service_proto_goTypes = []interface{}{
-	(ContentType)(0),            // 0: google.cloud.asset.v1p5beta1.ContentType
-	(*ListAssetsRequest)(nil),   // 1: google.cloud.asset.v1p5beta1.ListAssetsRequest
-	(*ListAssetsResponse)(nil),  // 2: google.cloud.asset.v1p5beta1.ListAssetsResponse
-	(*timestamp.Timestamp)(nil), // 3: google.protobuf.Timestamp
-	(*Asset)(nil),               // 4: google.cloud.asset.v1p5beta1.Asset
+	(ContentType)(0),              // 0: google.cloud.asset.v1p5beta1.ContentType
+	(*ListAssetsRequest)(nil),     // 1: google.cloud.asset.v1p5beta1.ListAssetsRequest
+	(*ListAssetsResponse)(nil),    // 2: google.cloud.asset.v1p5beta1.ListAssetsResponse
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
+	(*Asset)(nil),                 // 4: google.cloud.asset.v1p5beta1.Asset
 }
 var file_google_cloud_asset_v1p5beta1_asset_service_proto_depIdxs = []int32{
 	3, // 0: google.cloud.asset.v1p5beta1.ListAssetsRequest.read_time:type_name -> google.protobuf.Timestamp

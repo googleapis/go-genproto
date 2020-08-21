@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,7 +56,7 @@ type Campaign struct {
 	// `customers/{customer_id}/campaigns/{campaign_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the campaign.
-	Id *wrappers.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the campaign.
 	//
 	// This field is required and should not be empty when creating new
@@ -64,7 +64,7 @@ type Campaign struct {
 	//
 	// It must not contain any null (code point 0x0), NL line feed
 	// (code point 0xA) or carriage return (code point 0xD) characters.
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// The status of the campaign.
 	//
 	// When a new campaign is added, the status defaults to ENABLED.
@@ -89,7 +89,7 @@ type Campaign struct {
 	// After campaign is created, the field can not be changed.
 	AdvertisingChannelSubType enums.AdvertisingChannelSubTypeEnum_AdvertisingChannelSubType `protobuf:"varint,10,opt,name=advertising_channel_sub_type,json=advertisingChannelSubType,proto3,enum=google.ads.googleads.v4.enums.AdvertisingChannelSubTypeEnum_AdvertisingChannelSubType" json:"advertising_channel_sub_type,omitempty"`
 	// The URL template for constructing a tracking URL.
-	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,11,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
+	TrackingUrlTemplate *wrapperspb.StringValue `protobuf:"bytes,11,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 	// The list of mappings used to substitute custom parameter tags in a
 	// `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
 	UrlCustomParameters []*common.CustomParameter `protobuf:"bytes,12,rep,name=url_custom_parameters,json=urlCustomParameters,proto3" json:"url_custom_parameters,omitempty"`
@@ -113,16 +113,16 @@ type Campaign struct {
 	// The setting related to App Campaign.
 	AppCampaignSetting *Campaign_AppCampaignSetting `protobuf:"bytes,51,opt,name=app_campaign_setting,json=appCampaignSetting,proto3" json:"app_campaign_setting,omitempty"`
 	// Output only. The resource names of labels attached to this campaign.
-	Labels []*wrappers.StringValue `protobuf:"bytes,53,rep,name=labels,proto3" json:"labels,omitempty"`
+	Labels []*wrapperspb.StringValue `protobuf:"bytes,53,rep,name=labels,proto3" json:"labels,omitempty"`
 	// Output only. The type of campaign: normal, draft, or experiment.
 	ExperimentType enums.CampaignExperimentTypeEnum_CampaignExperimentType `protobuf:"varint,17,opt,name=experiment_type,json=experimentType,proto3,enum=google.ads.googleads.v4.enums.CampaignExperimentTypeEnum_CampaignExperimentType" json:"experiment_type,omitempty"`
 	// Output only. The resource name of the base campaign of a draft or experiment campaign.
 	// For base campaigns, this is equal to `resource_name`.
 	//
 	// This field is read-only.
-	BaseCampaign *wrappers.StringValue `protobuf:"bytes,28,opt,name=base_campaign,json=baseCampaign,proto3" json:"base_campaign,omitempty"`
+	BaseCampaign *wrapperspb.StringValue `protobuf:"bytes,28,opt,name=base_campaign,json=baseCampaign,proto3" json:"base_campaign,omitempty"`
 	// The budget of the campaign.
-	CampaignBudget *wrappers.StringValue `protobuf:"bytes,6,opt,name=campaign_budget,json=campaignBudget,proto3" json:"campaign_budget,omitempty"`
+	CampaignBudget *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=campaign_budget,json=campaignBudget,proto3" json:"campaign_budget,omitempty"`
 	// Output only. The type of bidding strategy.
 	//
 	// A bidding strategy can be created by setting either the bidding scheme to
@@ -133,13 +133,13 @@ type Campaign struct {
 	BiddingStrategyType enums.BiddingStrategyTypeEnum_BiddingStrategyType `protobuf:"varint,22,opt,name=bidding_strategy_type,json=biddingStrategyType,proto3,enum=google.ads.googleads.v4.enums.BiddingStrategyTypeEnum_BiddingStrategyType" json:"bidding_strategy_type,omitempty"`
 	// The date when campaign started.
 	// This field must not be used in WHERE clauses.
-	StartDate *wrappers.StringValue `protobuf:"bytes,19,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	StartDate *wrapperspb.StringValue `protobuf:"bytes,19,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
 	// The date when campaign ended.
 	// This field must not be used in WHERE clauses.
-	EndDate *wrappers.StringValue `protobuf:"bytes,20,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
+	EndDate *wrapperspb.StringValue `protobuf:"bytes,20,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
 	// Suffix used to append query parameters to landing pages that are served
 	// with parallel tracking.
-	FinalUrlSuffix *wrappers.StringValue `protobuf:"bytes,38,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
+	FinalUrlSuffix *wrapperspb.StringValue `protobuf:"bytes,38,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
 	// A list that limits how often each user will see this campaign's ads.
 	FrequencyCaps []*common.FrequencyCapEntry `protobuf:"bytes,40,rep,name=frequency_caps,json=frequencyCaps,proto3" json:"frequency_caps,omitempty"`
 	// Output only. 3-Tier Brand Safety setting for the campaign.
@@ -166,7 +166,7 @@ type Campaign struct {
 	// https://support.google.com/google-ads/answer/9061546.
 	//
 	// This field is read-only.
-	OptimizationScore *wrappers.DoubleValue `protobuf:"bytes,55,opt,name=optimization_score,json=optimizationScore,proto3" json:"optimization_score,omitempty"`
+	OptimizationScore *wrapperspb.DoubleValue `protobuf:"bytes,55,opt,name=optimization_score,json=optimizationScore,proto3" json:"optimization_score,omitempty"`
 	// The bidding strategy for the campaign.
 	//
 	// Must be either portfolio (created via BiddingStrategy service) or
@@ -228,14 +228,14 @@ func (x *Campaign) GetResourceName() string {
 	return ""
 }
 
-func (x *Campaign) GetId() *wrappers.Int64Value {
+func (x *Campaign) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *Campaign) GetName() *wrappers.StringValue {
+func (x *Campaign) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -277,7 +277,7 @@ func (x *Campaign) GetAdvertisingChannelSubType() enums.AdvertisingChannelSubTyp
 	return enums.AdvertisingChannelSubTypeEnum_UNSPECIFIED
 }
 
-func (x *Campaign) GetTrackingUrlTemplate() *wrappers.StringValue {
+func (x *Campaign) GetTrackingUrlTemplate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrlTemplate
 	}
@@ -354,7 +354,7 @@ func (x *Campaign) GetAppCampaignSetting() *Campaign_AppCampaignSetting {
 	return nil
 }
 
-func (x *Campaign) GetLabels() []*wrappers.StringValue {
+func (x *Campaign) GetLabels() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Labels
 	}
@@ -368,14 +368,14 @@ func (x *Campaign) GetExperimentType() enums.CampaignExperimentTypeEnum_Campaign
 	return enums.CampaignExperimentTypeEnum_UNSPECIFIED
 }
 
-func (x *Campaign) GetBaseCampaign() *wrappers.StringValue {
+func (x *Campaign) GetBaseCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BaseCampaign
 	}
 	return nil
 }
 
-func (x *Campaign) GetCampaignBudget() *wrappers.StringValue {
+func (x *Campaign) GetCampaignBudget() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CampaignBudget
 	}
@@ -389,21 +389,21 @@ func (x *Campaign) GetBiddingStrategyType() enums.BiddingStrategyTypeEnum_Biddin
 	return enums.BiddingStrategyTypeEnum_UNSPECIFIED
 }
 
-func (x *Campaign) GetStartDate() *wrappers.StringValue {
+func (x *Campaign) GetStartDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StartDate
 	}
 	return nil
 }
 
-func (x *Campaign) GetEndDate() *wrappers.StringValue {
+func (x *Campaign) GetEndDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.EndDate
 	}
 	return nil
 }
 
-func (x *Campaign) GetFinalUrlSuffix() *wrappers.StringValue {
+func (x *Campaign) GetFinalUrlSuffix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrlSuffix
 	}
@@ -459,7 +459,7 @@ func (x *Campaign) GetPaymentMode() enums.PaymentModeEnum_PaymentMode {
 	return enums.PaymentModeEnum_UNSPECIFIED
 }
 
-func (x *Campaign) GetOptimizationScore() *wrappers.DoubleValue {
+func (x *Campaign) GetOptimizationScore() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.OptimizationScore
 	}
@@ -473,7 +473,7 @@ func (m *Campaign) GetCampaignBiddingStrategy() isCampaign_CampaignBiddingStrate
 	return nil
 }
 
-func (x *Campaign) GetBiddingStrategy() *wrappers.StringValue {
+func (x *Campaign) GetBiddingStrategy() *wrapperspb.StringValue {
 	if x, ok := x.GetCampaignBiddingStrategy().(*Campaign_BiddingStrategy); ok {
 		return x.BiddingStrategy
 	}
@@ -570,7 +570,7 @@ type isCampaign_CampaignBiddingStrategy interface {
 
 type Campaign_BiddingStrategy struct {
 	// Portfolio bidding strategy used by campaign.
-	BiddingStrategy *wrappers.StringValue `protobuf:"bytes,23,opt,name=bidding_strategy,json=biddingStrategy,proto3,oneof"`
+	BiddingStrategy *wrapperspb.StringValue `protobuf:"bytes,23,opt,name=bidding_strategy,json=biddingStrategy,proto3,oneof"`
 }
 
 type Campaign_Commission struct {
@@ -679,16 +679,16 @@ type Campaign_NetworkSettings struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Whether ads will be served with google.com search results.
-	TargetGoogleSearch *wrappers.BoolValue `protobuf:"bytes,1,opt,name=target_google_search,json=targetGoogleSearch,proto3" json:"target_google_search,omitempty"`
+	TargetGoogleSearch *wrapperspb.BoolValue `protobuf:"bytes,1,opt,name=target_google_search,json=targetGoogleSearch,proto3" json:"target_google_search,omitempty"`
 	// Whether ads will be served on partner sites in the Google Search Network
 	// (requires `target_google_search` to also be `true`).
-	TargetSearchNetwork *wrappers.BoolValue `protobuf:"bytes,2,opt,name=target_search_network,json=targetSearchNetwork,proto3" json:"target_search_network,omitempty"`
+	TargetSearchNetwork *wrapperspb.BoolValue `protobuf:"bytes,2,opt,name=target_search_network,json=targetSearchNetwork,proto3" json:"target_search_network,omitempty"`
 	// Whether ads will be served on specified placements in the Google Display
 	// Network. Placements are specified using the Placement criterion.
-	TargetContentNetwork *wrappers.BoolValue `protobuf:"bytes,3,opt,name=target_content_network,json=targetContentNetwork,proto3" json:"target_content_network,omitempty"`
+	TargetContentNetwork *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=target_content_network,json=targetContentNetwork,proto3" json:"target_content_network,omitempty"`
 	// Whether ads will be served on the Google Partner Network.
 	// This is available only to some select Google partner accounts.
-	TargetPartnerSearchNetwork *wrappers.BoolValue `protobuf:"bytes,4,opt,name=target_partner_search_network,json=targetPartnerSearchNetwork,proto3" json:"target_partner_search_network,omitempty"`
+	TargetPartnerSearchNetwork *wrapperspb.BoolValue `protobuf:"bytes,4,opt,name=target_partner_search_network,json=targetPartnerSearchNetwork,proto3" json:"target_partner_search_network,omitempty"`
 }
 
 func (x *Campaign_NetworkSettings) Reset() {
@@ -723,28 +723,28 @@ func (*Campaign_NetworkSettings) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_campaign_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (x *Campaign_NetworkSettings) GetTargetGoogleSearch() *wrappers.BoolValue {
+func (x *Campaign_NetworkSettings) GetTargetGoogleSearch() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.TargetGoogleSearch
 	}
 	return nil
 }
 
-func (x *Campaign_NetworkSettings) GetTargetSearchNetwork() *wrappers.BoolValue {
+func (x *Campaign_NetworkSettings) GetTargetSearchNetwork() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.TargetSearchNetwork
 	}
 	return nil
 }
 
-func (x *Campaign_NetworkSettings) GetTargetContentNetwork() *wrappers.BoolValue {
+func (x *Campaign_NetworkSettings) GetTargetContentNetwork() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.TargetContentNetwork
 	}
 	return nil
 }
 
-func (x *Campaign_NetworkSettings) GetTargetPartnerSearchNetwork() *wrappers.BoolValue {
+func (x *Campaign_NetworkSettings) GetTargetPartnerSearchNetwork() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.TargetPartnerSearchNetwork
 	}
@@ -758,7 +758,7 @@ type Campaign_HotelSettingInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Immutable. The linked Hotel Center account.
-	HotelCenterId *wrappers.Int64Value `protobuf:"bytes,1,opt,name=hotel_center_id,json=hotelCenterId,proto3" json:"hotel_center_id,omitempty"`
+	HotelCenterId *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=hotel_center_id,json=hotelCenterId,proto3" json:"hotel_center_id,omitempty"`
 }
 
 func (x *Campaign_HotelSettingInfo) Reset() {
@@ -793,7 +793,7 @@ func (*Campaign_HotelSettingInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_campaign_proto_rawDescGZIP(), []int{0, 1}
 }
 
-func (x *Campaign_HotelSettingInfo) GetHotelCenterId() *wrappers.Int64Value {
+func (x *Campaign_HotelSettingInfo) GetHotelCenterId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.HotelCenterId
 	}
@@ -808,7 +808,7 @@ type Campaign_SelectiveOptimization struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The selected set of conversion actions for optimizing this campaign.
-	ConversionActions []*wrappers.StringValue `protobuf:"bytes,1,rep,name=conversion_actions,json=conversionActions,proto3" json:"conversion_actions,omitempty"`
+	ConversionActions []*wrapperspb.StringValue `protobuf:"bytes,1,rep,name=conversion_actions,json=conversionActions,proto3" json:"conversion_actions,omitempty"`
 }
 
 func (x *Campaign_SelectiveOptimization) Reset() {
@@ -843,7 +843,7 @@ func (*Campaign_SelectiveOptimization) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_campaign_proto_rawDescGZIP(), []int{0, 2}
 }
 
-func (x *Campaign_SelectiveOptimization) GetConversionActions() []*wrappers.StringValue {
+func (x *Campaign_SelectiveOptimization) GetConversionActions() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.ConversionActions
 	}
@@ -858,13 +858,13 @@ type Campaign_DynamicSearchAdsSetting struct {
 
 	// The Internet domain name that this setting represents, e.g., "google.com"
 	// or "www.google.com".
-	DomainName *wrappers.StringValue `protobuf:"bytes,1,opt,name=domain_name,json=domainName,proto3" json:"domain_name,omitempty"`
+	DomainName *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=domain_name,json=domainName,proto3" json:"domain_name,omitempty"`
 	// The language code specifying the language of the domain, e.g., "en".
-	LanguageCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	LanguageCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// Whether the campaign uses advertiser supplied URLs exclusively.
-	UseSuppliedUrlsOnly *wrappers.BoolValue `protobuf:"bytes,3,opt,name=use_supplied_urls_only,json=useSuppliedUrlsOnly,proto3" json:"use_supplied_urls_only,omitempty"`
+	UseSuppliedUrlsOnly *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=use_supplied_urls_only,json=useSuppliedUrlsOnly,proto3" json:"use_supplied_urls_only,omitempty"`
 	// Output only. The list of page feeds associated with the campaign.
-	Feeds []*wrappers.StringValue `protobuf:"bytes,5,rep,name=feeds,proto3" json:"feeds,omitempty"`
+	Feeds []*wrapperspb.StringValue `protobuf:"bytes,5,rep,name=feeds,proto3" json:"feeds,omitempty"`
 }
 
 func (x *Campaign_DynamicSearchAdsSetting) Reset() {
@@ -899,28 +899,28 @@ func (*Campaign_DynamicSearchAdsSetting) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_campaign_proto_rawDescGZIP(), []int{0, 3}
 }
 
-func (x *Campaign_DynamicSearchAdsSetting) GetDomainName() *wrappers.StringValue {
+func (x *Campaign_DynamicSearchAdsSetting) GetDomainName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.DomainName
 	}
 	return nil
 }
 
-func (x *Campaign_DynamicSearchAdsSetting) GetLanguageCode() *wrappers.StringValue {
+func (x *Campaign_DynamicSearchAdsSetting) GetLanguageCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LanguageCode
 	}
 	return nil
 }
 
-func (x *Campaign_DynamicSearchAdsSetting) GetUseSuppliedUrlsOnly() *wrappers.BoolValue {
+func (x *Campaign_DynamicSearchAdsSetting) GetUseSuppliedUrlsOnly() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.UseSuppliedUrlsOnly
 	}
 	return nil
 }
 
-func (x *Campaign_DynamicSearchAdsSetting) GetFeeds() []*wrappers.StringValue {
+func (x *Campaign_DynamicSearchAdsSetting) GetFeeds() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Feeds
 	}
@@ -1045,21 +1045,21 @@ type Campaign_ShoppingSetting struct {
 	// Immutable. ID of the Merchant Center account.
 	// This field is required for create operations. This field is immutable for
 	// Shopping campaigns.
-	MerchantId *wrappers.Int64Value `protobuf:"bytes,1,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id,omitempty"`
+	MerchantId *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=merchant_id,json=merchantId,proto3" json:"merchant_id,omitempty"`
 	// Immutable. Sales country of products to include in the campaign.
 	// This field is required for Shopping campaigns. This field is immutable.
 	// This field is optional for non-Shopping campaigns, but it must be equal
 	// to 'ZZ' if set.
-	SalesCountry *wrappers.StringValue `protobuf:"bytes,2,opt,name=sales_country,json=salesCountry,proto3" json:"sales_country,omitempty"`
+	SalesCountry *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=sales_country,json=salesCountry,proto3" json:"sales_country,omitempty"`
 	// Priority of the campaign. Campaigns with numerically higher priorities
 	// take precedence over those with lower priorities.
 	// This field is required for Shopping campaigns, with values between 0 and
 	// 2, inclusive.
 	// This field is optional for Smart Shopping campaigns, but must be equal to
 	// 3 if set.
-	CampaignPriority *wrappers.Int32Value `protobuf:"bytes,3,opt,name=campaign_priority,json=campaignPriority,proto3" json:"campaign_priority,omitempty"`
+	CampaignPriority *wrapperspb.Int32Value `protobuf:"bytes,3,opt,name=campaign_priority,json=campaignPriority,proto3" json:"campaign_priority,omitempty"`
 	// Whether to include local products.
-	EnableLocal *wrappers.BoolValue `protobuf:"bytes,4,opt,name=enable_local,json=enableLocal,proto3" json:"enable_local,omitempty"`
+	EnableLocal *wrapperspb.BoolValue `protobuf:"bytes,4,opt,name=enable_local,json=enableLocal,proto3" json:"enable_local,omitempty"`
 }
 
 func (x *Campaign_ShoppingSetting) Reset() {
@@ -1094,28 +1094,28 @@ func (*Campaign_ShoppingSetting) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_campaign_proto_rawDescGZIP(), []int{0, 6}
 }
 
-func (x *Campaign_ShoppingSetting) GetMerchantId() *wrappers.Int64Value {
+func (x *Campaign_ShoppingSetting) GetMerchantId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.MerchantId
 	}
 	return nil
 }
 
-func (x *Campaign_ShoppingSetting) GetSalesCountry() *wrappers.StringValue {
+func (x *Campaign_ShoppingSetting) GetSalesCountry() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SalesCountry
 	}
 	return nil
 }
 
-func (x *Campaign_ShoppingSetting) GetCampaignPriority() *wrappers.Int32Value {
+func (x *Campaign_ShoppingSetting) GetCampaignPriority() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.CampaignPriority
 	}
 	return nil
 }
 
-func (x *Campaign_ShoppingSetting) GetEnableLocal() *wrappers.BoolValue {
+func (x *Campaign_ShoppingSetting) GetEnableLocal() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.EnableLocal
 	}
@@ -1179,7 +1179,7 @@ type Campaign_TrackingSetting struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The url used for dynamic tracking.
-	TrackingUrl *wrappers.StringValue `protobuf:"bytes,1,opt,name=tracking_url,json=trackingUrl,proto3" json:"tracking_url,omitempty"`
+	TrackingUrl *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=tracking_url,json=trackingUrl,proto3" json:"tracking_url,omitempty"`
 }
 
 func (x *Campaign_TrackingSetting) Reset() {
@@ -1214,7 +1214,7 @@ func (*Campaign_TrackingSetting) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_campaign_proto_rawDescGZIP(), []int{0, 8}
 }
 
-func (x *Campaign_TrackingSetting) GetTrackingUrl() *wrappers.StringValue {
+func (x *Campaign_TrackingSetting) GetTrackingUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrl
 	}
@@ -1231,7 +1231,7 @@ type Campaign_AppCampaignSetting struct {
 	// should optimize towards.
 	BiddingStrategyGoalType enums.AppCampaignBiddingStrategyGoalTypeEnum_AppCampaignBiddingStrategyGoalType `protobuf:"varint,1,opt,name=bidding_strategy_goal_type,json=biddingStrategyGoalType,proto3,enum=google.ads.googleads.v4.enums.AppCampaignBiddingStrategyGoalTypeEnum_AppCampaignBiddingStrategyGoalType" json:"bidding_strategy_goal_type,omitempty"`
 	// Immutable. A string that uniquely identifies a mobile application.
-	AppId *wrappers.StringValue `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppId *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 	// Immutable. The application store that distributes this specific app.
 	AppStore enums.AppCampaignAppStoreEnum_AppCampaignAppStore `protobuf:"varint,3,opt,name=app_store,json=appStore,proto3,enum=google.ads.googleads.v4.enums.AppCampaignAppStoreEnum_AppCampaignAppStore" json:"app_store,omitempty"`
 }
@@ -1275,7 +1275,7 @@ func (x *Campaign_AppCampaignSetting) GetBiddingStrategyGoalType() enums.AppCamp
 	return enums.AppCampaignBiddingStrategyGoalTypeEnum_UNSPECIFIED
 }
 
-func (x *Campaign_AppCampaignSetting) GetAppId() *wrappers.StringValue {
+func (x *Campaign_AppCampaignSetting) GetAppId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AppId
 	}
@@ -1965,8 +1965,8 @@ var file_google_ads_googleads_v4_resources_campaign_proto_goTypes = []interface{
 	(*Campaign_TrackingSetting)(nil),                                                     // 9: google.ads.googleads.v4.resources.Campaign.TrackingSetting
 	(*Campaign_AppCampaignSetting)(nil),                                                  // 10: google.ads.googleads.v4.resources.Campaign.AppCampaignSetting
 	(*Campaign_VanityPharma)(nil),                                                        // 11: google.ads.googleads.v4.resources.Campaign.VanityPharma
-	(*wrappers.Int64Value)(nil),                                                          // 12: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),                                                         // 13: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                                                        // 12: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                                                       // 13: google.protobuf.StringValue
 	(enums.CampaignStatusEnum_CampaignStatus)(0),                                         // 14: google.ads.googleads.v4.enums.CampaignStatusEnum.CampaignStatus
 	(enums.CampaignServingStatusEnum_CampaignServingStatus)(0),                           // 15: google.ads.googleads.v4.enums.CampaignServingStatusEnum.CampaignServingStatus
 	(enums.AdServingOptimizationStatusEnum_AdServingOptimizationStatus)(0),               // 16: google.ads.googleads.v4.enums.AdServingOptimizationStatusEnum.AdServingOptimizationStatus
@@ -1980,7 +1980,7 @@ var file_google_ads_googleads_v4_resources_campaign_proto_goTypes = []interface{
 	(*common.FrequencyCapEntry)(nil),                                                     // 24: google.ads.googleads.v4.common.FrequencyCapEntry
 	(enums.BrandSafetySuitabilityEnum_BrandSafetySuitability)(0),                         // 25: google.ads.googleads.v4.enums.BrandSafetySuitabilityEnum.BrandSafetySuitability
 	(enums.PaymentModeEnum_PaymentMode)(0),                                               // 26: google.ads.googleads.v4.enums.PaymentModeEnum.PaymentMode
-	(*wrappers.DoubleValue)(nil),                                                         // 27: google.protobuf.DoubleValue
+	(*wrapperspb.DoubleValue)(nil),                                                       // 27: google.protobuf.DoubleValue
 	(*common.Commission)(nil),                                                            // 28: google.ads.googleads.v4.common.Commission
 	(*common.ManualCpc)(nil),                                                             // 29: google.ads.googleads.v4.common.ManualCpc
 	(*common.ManualCpm)(nil),                                                             // 30: google.ads.googleads.v4.common.ManualCpm
@@ -1993,11 +1993,11 @@ var file_google_ads_googleads_v4_resources_campaign_proto_goTypes = []interface{
 	(*common.TargetSpend)(nil),                                                           // 37: google.ads.googleads.v4.common.TargetSpend
 	(*common.PercentCpc)(nil),                                                            // 38: google.ads.googleads.v4.common.PercentCpc
 	(*common.TargetCpm)(nil),                                                             // 39: google.ads.googleads.v4.common.TargetCpm
-	(*wrappers.BoolValue)(nil),                                                           // 40: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                                                         // 40: google.protobuf.BoolValue
 	(enums.PositiveGeoTargetTypeEnum_PositiveGeoTargetType)(0),                           // 41: google.ads.googleads.v4.enums.PositiveGeoTargetTypeEnum.PositiveGeoTargetType
 	(enums.NegativeGeoTargetTypeEnum_NegativeGeoTargetType)(0),                           // 42: google.ads.googleads.v4.enums.NegativeGeoTargetTypeEnum.NegativeGeoTargetType
 	(enums.LocationSourceTypeEnum_LocationSourceType)(0),                                 // 43: google.ads.googleads.v4.enums.LocationSourceTypeEnum.LocationSourceType
-	(*wrappers.Int32Value)(nil),                                                          // 44: google.protobuf.Int32Value
+	(*wrapperspb.Int32Value)(nil),                                                        // 44: google.protobuf.Int32Value
 	(enums.OptimizationGoalTypeEnum_OptimizationGoalType)(0),                             // 45: google.ads.googleads.v4.enums.OptimizationGoalTypeEnum.OptimizationGoalType
 	(enums.AppCampaignBiddingStrategyGoalTypeEnum_AppCampaignBiddingStrategyGoalType)(0), // 46: google.ads.googleads.v4.enums.AppCampaignBiddingStrategyGoalTypeEnum.AppCampaignBiddingStrategyGoalType
 	(enums.AppCampaignAppStoreEnum_AppCampaignAppStore)(0),                               // 47: google.ads.googleads.v4.enums.AppCampaignAppStoreEnum.AppCampaignAppStore
