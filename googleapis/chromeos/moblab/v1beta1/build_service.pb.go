@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -75,11 +75,11 @@ type ListBuildsRequest struct {
 	// For example, if the read_mask is set as "read_mask='milestone'", the
 	// ListBuilds will return a list of Builds object with only the milestone
 	// field.
-	ReadMask *field_mask.FieldMask `protobuf:"bytes,5,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
+	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,5,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
 	// Optional. The operation that groups by all the Build fields specified in the read
 	// mask. The group_by field should be the same as the read_mask field in
 	// convention of SQL.
-	GroupBy *field_mask.FieldMask `protobuf:"bytes,6,opt,name=group_by,json=groupBy,proto3" json:"group_by,omitempty"`
+	GroupBy *fieldmaskpb.FieldMask `protobuf:"bytes,6,opt,name=group_by,json=groupBy,proto3" json:"group_by,omitempty"`
 }
 
 func (x *ListBuildsRequest) Reset() {
@@ -142,14 +142,14 @@ func (x *ListBuildsRequest) GetFilter() string {
 	return ""
 }
 
-func (x *ListBuildsRequest) GetReadMask() *field_mask.FieldMask {
+func (x *ListBuildsRequest) GetReadMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.ReadMask
 	}
 	return nil
 }
 
-func (x *ListBuildsRequest) GetGroupBy() *field_mask.FieldMask {
+func (x *ListBuildsRequest) GetGroupBy() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.GroupBy
 	}
@@ -454,9 +454,9 @@ type StageBuildMetadata struct {
 	// Approximate percentage of progress, e.g. "50" means 50%.
 	ProgressPercent float32 `protobuf:"fixed32,1,opt,name=progress_percent,json=progressPercent,proto3" json:"progress_percent,omitempty"`
 	// Build stage start time.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Build stage end time.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *StageBuildMetadata) Reset() {
@@ -498,14 +498,14 @@ func (x *StageBuildMetadata) GetProgressPercent() float32 {
 	return 0
 }
 
-func (x *StageBuildMetadata) GetStartTime() *timestamp.Timestamp {
+func (x *StageBuildMetadata) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *StageBuildMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *StageBuildMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -693,10 +693,10 @@ var file_google_chromeos_moblab_v1beta1_build_service_proto_goTypes = []interfac
 	(*StageBuildRequest)(nil),             // 4: google.chromeos.moblab.v1beta1.StageBuildRequest
 	(*StageBuildResponse)(nil),            // 5: google.chromeos.moblab.v1beta1.StageBuildResponse
 	(*StageBuildMetadata)(nil),            // 6: google.chromeos.moblab.v1beta1.StageBuildMetadata
-	(*field_mask.FieldMask)(nil),          // 7: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),         // 7: google.protobuf.FieldMask
 	(*Build)(nil),                         // 8: google.chromeos.moblab.v1beta1.Build
 	(*BuildArtifact)(nil),                 // 9: google.chromeos.moblab.v1beta1.BuildArtifact
-	(*timestamp.Timestamp)(nil),           // 10: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),         // 10: google.protobuf.Timestamp
 	(*longrunning.Operation)(nil),         // 11: google.longrunning.Operation
 }
 var file_google_chromeos_moblab_v1beta1_build_service_proto_depIdxs = []int32{

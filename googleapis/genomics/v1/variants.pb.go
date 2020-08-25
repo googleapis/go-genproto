@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -293,7 +293,7 @@ type VariantSetMetadata struct {
 	Description string `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
 	// Remaining structured metadata key-value pairs. This must be of the form
 	// map<string, string[]> (string key mapping to a list of string values).
-	Info map[string]*_struct.ListValue `protobuf:"bytes,3,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Info map[string]*structpb.ListValue `protobuf:"bytes,3,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *VariantSetMetadata) Reset() {
@@ -370,7 +370,7 @@ func (x *VariantSetMetadata) GetDescription() string {
 	return ""
 }
 
-func (x *VariantSetMetadata) GetInfo() map[string]*_struct.ListValue {
+func (x *VariantSetMetadata) GetInfo() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Info
 	}
@@ -543,7 +543,7 @@ type Variant struct {
 	Filter []string `protobuf:"bytes,9,rep,name=filter,proto3" json:"filter,omitempty"`
 	// A map of additional variant information. This must be of the form
 	// map<string, string[]> (string key mapping to a list of string values).
-	Info map[string]*_struct.ListValue `protobuf:"bytes,10,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Info map[string]*structpb.ListValue `protobuf:"bytes,10,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// The variant calls for this particular variant. Each one represents the
 	// determination of genotype with respect to this variant.
 	Calls []*VariantCall `protobuf:"bytes,11,rep,name=calls,proto3" json:"calls,omitempty"`
@@ -658,7 +658,7 @@ func (x *Variant) GetFilter() []string {
 	return nil
 }
 
-func (x *Variant) GetInfo() map[string]*_struct.ListValue {
+func (x *Variant) GetInfo() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Info
 	}
@@ -713,7 +713,7 @@ type VariantCall struct {
 	GenotypeLikelihood []float64 `protobuf:"fixed64,6,rep,packed,name=genotype_likelihood,json=genotypeLikelihood,proto3" json:"genotype_likelihood,omitempty"`
 	// A map of additional variant call information. This must be of the form
 	// map<string, string[]> (string key mapping to a list of string values).
-	Info map[string]*_struct.ListValue `protobuf:"bytes,2,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Info map[string]*structpb.ListValue `protobuf:"bytes,2,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *VariantCall) Reset() {
@@ -783,7 +783,7 @@ func (x *VariantCall) GetGenotypeLikelihood() []float64 {
 	return nil
 }
 
-func (x *VariantCall) GetInfo() map[string]*_struct.ListValue {
+func (x *VariantCall) GetInfo() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Info
 	}
@@ -816,7 +816,7 @@ type CallSet struct {
 	Created int64 `protobuf:"varint,5,opt,name=created,proto3" json:"created,omitempty"`
 	// A map of additional call set information. This must be of the form
 	// map<string, string[]> (string key mapping to a list of string values).
-	Info map[string]*_struct.ListValue `protobuf:"bytes,4,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Info map[string]*structpb.ListValue `protobuf:"bytes,4,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *CallSet) Reset() {
@@ -886,7 +886,7 @@ func (x *CallSet) GetCreated() int64 {
 	return 0
 }
 
-func (x *CallSet) GetInfo() map[string]*_struct.ListValue {
+func (x *CallSet) GetInfo() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Info
 	}
@@ -1497,7 +1497,7 @@ type UpdateVariantSetRequest struct {
 	//
 	// Leaving `updateMask` unset is equivalent to specifying all mutable
 	// fields.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,5,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,5,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateVariantSetRequest) Reset() {
@@ -1546,7 +1546,7 @@ func (x *UpdateVariantSetRequest) GetVariantSet() *VariantSet {
 	return nil
 }
 
-func (x *UpdateVariantSetRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateVariantSetRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1807,7 +1807,7 @@ type UpdateVariantRequest struct {
 	// fields are [names][google.genomics.v1.Variant.names] and
 	// [info][google.genomics.v1.Variant.info]. Acceptable values are "names" and
 	// "info". If unspecified, all mutable fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateVariantRequest) Reset() {
@@ -1856,7 +1856,7 @@ func (x *UpdateVariantRequest) GetVariant() *Variant {
 	return nil
 }
 
-func (x *UpdateVariantRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateVariantRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2228,7 +2228,7 @@ type UpdateCallSetRequest struct {
 	// mutable field is [name][google.genomics.v1.CallSet.name]. The only
 	// acceptable value is "name". If unspecified, all mutable fields will be
 	// updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateCallSetRequest) Reset() {
@@ -2277,7 +2277,7 @@ func (x *UpdateCallSetRequest) GetCallSet() *CallSet {
 	return nil
 }
 
-func (x *UpdateCallSetRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateCallSetRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -3124,10 +3124,10 @@ var file_google_genomics_v1_variants_proto_goTypes = []interface{}{
 	nil,                                 // 37: google.genomics.v1.CallSet.InfoEntry
 	nil,                                 // 38: google.genomics.v1.ImportVariantsRequest.InfoMergeConfigEntry
 	nil,                                 // 39: google.genomics.v1.MergeVariantsRequest.InfoMergeConfigEntry
-	(*field_mask.FieldMask)(nil),        // 40: google.protobuf.FieldMask
-	(*_struct.ListValue)(nil),           // 41: google.protobuf.ListValue
+	(*fieldmaskpb.FieldMask)(nil),       // 40: google.protobuf.FieldMask
+	(*structpb.ListValue)(nil),          // 41: google.protobuf.ListValue
 	(*longrunning.Operation)(nil),       // 42: google.longrunning.Operation
-	(*empty.Empty)(nil),                 // 43: google.protobuf.Empty
+	(*emptypb.Empty)(nil),               // 43: google.protobuf.Empty
 }
 var file_google_genomics_v1_variants_proto_depIdxs = []int32{
 	1,  // 0: google.genomics.v1.VariantSetMetadata.type:type_name -> google.genomics.v1.VariantSetMetadata.Type
@@ -3766,7 +3766,7 @@ type VariantServiceV1Client interface {
 	// For the definitions of variant sets and other genomics resources, see
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-	DeleteVariantSet(ctx context.Context, in *DeleteVariantSetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteVariantSet(ctx context.Context, in *DeleteVariantSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates a variant set using patch semantics.
 	//
 	// For the definitions of variant sets and other genomics resources, see
@@ -3802,7 +3802,7 @@ type VariantServiceV1Client interface {
 	// For the definitions of variants and other genomics resources, see
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-	DeleteVariant(ctx context.Context, in *DeleteVariantRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteVariant(ctx context.Context, in *DeleteVariantRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets a variant by ID.
 	//
 	// For the definitions of variants and other genomics resources, see
@@ -3900,7 +3900,7 @@ type VariantServiceV1Client interface {
 	//
 	// This may be the desired outcome, but it is up to the user to determine if
 	// if that is indeed the case.
-	MergeVariants(ctx context.Context, in *MergeVariantsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	MergeVariants(ctx context.Context, in *MergeVariantsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets a list of call sets matching the criteria.
 	//
 	// For the definitions of call sets and other genomics resources, see
@@ -3929,7 +3929,7 @@ type VariantServiceV1Client interface {
 	// For the definitions of call sets and other genomics resources, see
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-	DeleteCallSet(ctx context.Context, in *DeleteCallSetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteCallSet(ctx context.Context, in *DeleteCallSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets a call set by ID.
 	//
 	// For the definitions of call sets and other genomics resources, see
@@ -3991,8 +3991,8 @@ func (c *variantServiceV1Client) SearchVariantSets(ctx context.Context, in *Sear
 	return out, nil
 }
 
-func (c *variantServiceV1Client) DeleteVariantSet(ctx context.Context, in *DeleteVariantSetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *variantServiceV1Client) DeleteVariantSet(ctx context.Context, in *DeleteVariantSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.genomics.v1.VariantServiceV1/DeleteVariantSet", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4036,8 +4036,8 @@ func (c *variantServiceV1Client) UpdateVariant(ctx context.Context, in *UpdateVa
 	return out, nil
 }
 
-func (c *variantServiceV1Client) DeleteVariant(ctx context.Context, in *DeleteVariantRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *variantServiceV1Client) DeleteVariant(ctx context.Context, in *DeleteVariantRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.genomics.v1.VariantServiceV1/DeleteVariant", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4054,8 +4054,8 @@ func (c *variantServiceV1Client) GetVariant(ctx context.Context, in *GetVariantR
 	return out, nil
 }
 
-func (c *variantServiceV1Client) MergeVariants(ctx context.Context, in *MergeVariantsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *variantServiceV1Client) MergeVariants(ctx context.Context, in *MergeVariantsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.genomics.v1.VariantServiceV1/MergeVariants", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4090,8 +4090,8 @@ func (c *variantServiceV1Client) UpdateCallSet(ctx context.Context, in *UpdateCa
 	return out, nil
 }
 
-func (c *variantServiceV1Client) DeleteCallSet(ctx context.Context, in *DeleteCallSetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *variantServiceV1Client) DeleteCallSet(ctx context.Context, in *DeleteCallSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.genomics.v1.VariantServiceV1/DeleteCallSet", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4166,7 +4166,7 @@ type VariantServiceV1Server interface {
 	// For the definitions of variant sets and other genomics resources, see
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-	DeleteVariantSet(context.Context, *DeleteVariantSetRequest) (*empty.Empty, error)
+	DeleteVariantSet(context.Context, *DeleteVariantSetRequest) (*emptypb.Empty, error)
 	// Updates a variant set using patch semantics.
 	//
 	// For the definitions of variant sets and other genomics resources, see
@@ -4202,7 +4202,7 @@ type VariantServiceV1Server interface {
 	// For the definitions of variants and other genomics resources, see
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-	DeleteVariant(context.Context, *DeleteVariantRequest) (*empty.Empty, error)
+	DeleteVariant(context.Context, *DeleteVariantRequest) (*emptypb.Empty, error)
 	// Gets a variant by ID.
 	//
 	// For the definitions of variants and other genomics resources, see
@@ -4300,7 +4300,7 @@ type VariantServiceV1Server interface {
 	//
 	// This may be the desired outcome, but it is up to the user to determine if
 	// if that is indeed the case.
-	MergeVariants(context.Context, *MergeVariantsRequest) (*empty.Empty, error)
+	MergeVariants(context.Context, *MergeVariantsRequest) (*emptypb.Empty, error)
 	// Gets a list of call sets matching the criteria.
 	//
 	// For the definitions of call sets and other genomics resources, see
@@ -4329,7 +4329,7 @@ type VariantServiceV1Server interface {
 	// For the definitions of call sets and other genomics resources, see
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-	DeleteCallSet(context.Context, *DeleteCallSetRequest) (*empty.Empty, error)
+	DeleteCallSet(context.Context, *DeleteCallSetRequest) (*emptypb.Empty, error)
 	// Gets a call set by ID.
 	//
 	// For the definitions of call sets and other genomics resources, see
@@ -4357,7 +4357,7 @@ func (*UnimplementedVariantServiceV1Server) GetVariantSet(context.Context, *GetV
 func (*UnimplementedVariantServiceV1Server) SearchVariantSets(context.Context, *SearchVariantSetsRequest) (*SearchVariantSetsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchVariantSets not implemented")
 }
-func (*UnimplementedVariantServiceV1Server) DeleteVariantSet(context.Context, *DeleteVariantSetRequest) (*empty.Empty, error) {
+func (*UnimplementedVariantServiceV1Server) DeleteVariantSet(context.Context, *DeleteVariantSetRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteVariantSet not implemented")
 }
 func (*UnimplementedVariantServiceV1Server) UpdateVariantSet(context.Context, *UpdateVariantSetRequest) (*VariantSet, error) {
@@ -4372,13 +4372,13 @@ func (*UnimplementedVariantServiceV1Server) CreateVariant(context.Context, *Crea
 func (*UnimplementedVariantServiceV1Server) UpdateVariant(context.Context, *UpdateVariantRequest) (*Variant, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateVariant not implemented")
 }
-func (*UnimplementedVariantServiceV1Server) DeleteVariant(context.Context, *DeleteVariantRequest) (*empty.Empty, error) {
+func (*UnimplementedVariantServiceV1Server) DeleteVariant(context.Context, *DeleteVariantRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteVariant not implemented")
 }
 func (*UnimplementedVariantServiceV1Server) GetVariant(context.Context, *GetVariantRequest) (*Variant, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVariant not implemented")
 }
-func (*UnimplementedVariantServiceV1Server) MergeVariants(context.Context, *MergeVariantsRequest) (*empty.Empty, error) {
+func (*UnimplementedVariantServiceV1Server) MergeVariants(context.Context, *MergeVariantsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MergeVariants not implemented")
 }
 func (*UnimplementedVariantServiceV1Server) SearchCallSets(context.Context, *SearchCallSetsRequest) (*SearchCallSetsResponse, error) {
@@ -4390,7 +4390,7 @@ func (*UnimplementedVariantServiceV1Server) CreateCallSet(context.Context, *Crea
 func (*UnimplementedVariantServiceV1Server) UpdateCallSet(context.Context, *UpdateCallSetRequest) (*CallSet, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCallSet not implemented")
 }
-func (*UnimplementedVariantServiceV1Server) DeleteCallSet(context.Context, *DeleteCallSetRequest) (*empty.Empty, error) {
+func (*UnimplementedVariantServiceV1Server) DeleteCallSet(context.Context, *DeleteCallSetRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCallSet not implemented")
 }
 func (*UnimplementedVariantServiceV1Server) GetCallSet(context.Context, *GetCallSetRequest) (*CallSet, error) {

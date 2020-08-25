@@ -26,9 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
@@ -36,6 +33,9 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1201,7 +1201,7 @@ type BuildStep struct {
 	// Time limit for executing this build step. If not defined, the step has no
 	// time limit and will be allowed to continue to run until either it completes
 	// or the build itself times out.
-	Timeout *duration.Duration `protobuf:"bytes,11,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	Timeout *durationpb.Duration `protobuf:"bytes,11,opt,name=timeout,proto3" json:"timeout,omitempty"`
 	// Output only. Status of the build step. At this time, build step status is
 	// only updated on build completion; step status is not updated in real-time
 	// as the build progresses.
@@ -1317,7 +1317,7 @@ func (x *BuildStep) GetPullTiming() *TimeSpan {
 	return nil
 }
 
-func (x *BuildStep) GetTimeout() *duration.Duration {
+func (x *BuildStep) GetTimeout() *durationpb.Duration {
 	if x != nil {
 		return x.Timeout
 	}
@@ -1594,20 +1594,20 @@ type Build struct {
 	// Output only. Results of the build.
 	Results *Results `protobuf:"bytes,10,opt,name=results,proto3" json:"results,omitempty"`
 	// Output only. Time at which the request to create the build was received.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time at which execution of the build was started.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Output only. Time at which execution of the build was finished.
 	//
 	// The difference between finish_time and start_time is the duration of the
 	// build's execution.
-	FinishTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
+	FinishTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=finish_time,json=finishTime,proto3" json:"finish_time,omitempty"`
 	// Amount of time that this build should be allowed to run, to second
 	// granularity. If this amount of time elapses, work on the build will cease
 	// and the build status will be `TIMEOUT`.
 	//
 	// Default time is ten minutes.
-	Timeout *duration.Duration `protobuf:"bytes,12,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	Timeout *durationpb.Duration `protobuf:"bytes,12,opt,name=timeout,proto3" json:"timeout,omitempty"`
 	// A list of images to be pushed upon the successful completion of all build
 	// steps.
 	//
@@ -1624,7 +1624,7 @@ type Build struct {
 	// `EXPIRED`.
 	//
 	// The TTL starts ticking from create_time.
-	QueueTtl *duration.Duration `protobuf:"bytes,40,opt,name=queue_ttl,json=queueTtl,proto3" json:"queue_ttl,omitempty"`
+	QueueTtl *durationpb.Duration `protobuf:"bytes,40,opt,name=queue_ttl,json=queueTtl,proto3" json:"queue_ttl,omitempty"`
 	// Artifacts produced by the build that should be uploaded upon
 	// successful completion of all build steps.
 	Artifacts *Artifacts `protobuf:"bytes,37,opt,name=artifacts,proto3" json:"artifacts,omitempty"`
@@ -1741,28 +1741,28 @@ func (x *Build) GetResults() *Results {
 	return nil
 }
 
-func (x *Build) GetCreateTime() *timestamp.Timestamp {
+func (x *Build) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Build) GetStartTime() *timestamp.Timestamp {
+func (x *Build) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *Build) GetFinishTime() *timestamp.Timestamp {
+func (x *Build) GetFinishTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.FinishTime
 	}
 	return nil
 }
 
-func (x *Build) GetTimeout() *duration.Duration {
+func (x *Build) GetTimeout() *durationpb.Duration {
 	if x != nil {
 		return x.Timeout
 	}
@@ -1776,7 +1776,7 @@ func (x *Build) GetImages() []string {
 	return nil
 }
 
-func (x *Build) GetQueueTtl() *duration.Duration {
+func (x *Build) GetQueueTtl() *durationpb.Duration {
 	if x != nil {
 		return x.QueueTtl
 	}
@@ -1937,9 +1937,9 @@ type TimeSpan struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Start of time span.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End of time span.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *TimeSpan) Reset() {
@@ -1974,14 +1974,14 @@ func (*TimeSpan) Descriptor() ([]byte, []int) {
 	return file_google_devtools_cloudbuild_v1_cloudbuild_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *TimeSpan) GetStartTime() *timestamp.Timestamp {
+func (x *TimeSpan) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *TimeSpan) GetEndTime() *timestamp.Timestamp {
+func (x *TimeSpan) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -2636,7 +2636,7 @@ type BuildTrigger struct {
 	//	*BuildTrigger_Filename
 	BuildTemplate isBuildTrigger_BuildTemplate `protobuf_oneof:"build_template"`
 	// Output only. Time when the trigger was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// If true, the trigger will never result in a build.
 	Disabled bool `protobuf:"varint,9,opt,name=disabled,proto3" json:"disabled,omitempty"`
 	// Substitutions for Build resource. The keys must match the following
@@ -2759,7 +2759,7 @@ func (x *BuildTrigger) GetFilename() string {
 	return ""
 }
 
-func (x *BuildTrigger) GetCreateTime() *timestamp.Timestamp {
+func (x *BuildTrigger) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -3695,13 +3695,13 @@ type WorkerPool struct {
 	Regions []WorkerPool_Region `protobuf:"varint,9,rep,packed,name=regions,proto3,enum=google.devtools.cloudbuild.v1.WorkerPool_Region" json:"regions,omitempty"`
 	// Output only. Time at which the request to create the `WorkerPool` was
 	// received.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time at which the request to update the `WorkerPool` was
 	// received.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,17,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. Time at which the request to delete the `WorkerPool` was
 	// received.
-	DeleteTime *timestamp.Timestamp `protobuf:"bytes,12,opt,name=delete_time,json=deleteTime,proto3" json:"delete_time,omitempty"`
+	DeleteTime *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=delete_time,json=deleteTime,proto3" json:"delete_time,omitempty"`
 	// Output only. WorkerPool Status.
 	Status WorkerPool_Status `protobuf:"varint,13,opt,name=status,proto3,enum=google.devtools.cloudbuild.v1.WorkerPool_Status" json:"status,omitempty"`
 }
@@ -3780,21 +3780,21 @@ func (x *WorkerPool) GetRegions() []WorkerPool_Region {
 	return nil
 }
 
-func (x *WorkerPool) GetCreateTime() *timestamp.Timestamp {
+func (x *WorkerPool) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *WorkerPool) GetUpdateTime() *timestamp.Timestamp {
+func (x *WorkerPool) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
 	return nil
 }
 
-func (x *WorkerPool) GetDeleteTime() *timestamp.Timestamp {
+func (x *WorkerPool) GetDeleteTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.DeleteTime
 	}
@@ -5297,10 +5297,10 @@ var file_google_devtools_cloudbuild_v1_cloudbuild_proto_goTypes = []interface{}{
 	nil,                                   // 57: google.devtools.cloudbuild.v1.SourceProvenance.FileHashesEntry
 	nil,                                   // 58: google.devtools.cloudbuild.v1.Secret.SecretEnvEntry
 	nil,                                   // 59: google.devtools.cloudbuild.v1.BuildTrigger.SubstitutionsEntry
-	(*duration.Duration)(nil),             // 60: google.protobuf.Duration
-	(*timestamp.Timestamp)(nil),           // 61: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),           // 60: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),         // 61: google.protobuf.Timestamp
 	(*longrunning.Operation)(nil),         // 62: google.longrunning.Operation
-	(*empty.Empty)(nil),                   // 63: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                 // 63: google.protobuf.Empty
 }
 var file_google_devtools_cloudbuild_v1_cloudbuild_proto_depIdxs = []int32{
 	13, // 0: google.devtools.cloudbuild.v1.RunBuildTriggerRequest.source:type_name -> google.devtools.cloudbuild.v1.RepoSource
@@ -6066,7 +6066,7 @@ type CloudBuildClient interface {
 	// Deletes a `BuildTrigger` by its project ID and trigger ID.
 	//
 	// This API is experimental.
-	DeleteBuildTrigger(ctx context.Context, in *DeleteBuildTriggerRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteBuildTrigger(ctx context.Context, in *DeleteBuildTriggerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates a `BuildTrigger` by its project ID and trigger ID.
 	//
 	// This API is experimental.
@@ -6084,7 +6084,7 @@ type CloudBuildClient interface {
 	// Deletes a `WorkerPool` by its project ID and WorkerPool name.
 	//
 	// This API is experimental.
-	DeleteWorkerPool(ctx context.Context, in *DeleteWorkerPoolRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteWorkerPool(ctx context.Context, in *DeleteWorkerPoolRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Update a `WorkerPool`.
 	//
 	// This API is experimental.
@@ -6175,8 +6175,8 @@ func (c *cloudBuildClient) ListBuildTriggers(ctx context.Context, in *ListBuildT
 	return out, nil
 }
 
-func (c *cloudBuildClient) DeleteBuildTrigger(ctx context.Context, in *DeleteBuildTriggerRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *cloudBuildClient) DeleteBuildTrigger(ctx context.Context, in *DeleteBuildTriggerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.devtools.cloudbuild.v1.CloudBuild/DeleteBuildTrigger", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6220,8 +6220,8 @@ func (c *cloudBuildClient) GetWorkerPool(ctx context.Context, in *GetWorkerPoolR
 	return out, nil
 }
 
-func (c *cloudBuildClient) DeleteWorkerPool(ctx context.Context, in *DeleteWorkerPoolRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *cloudBuildClient) DeleteWorkerPool(ctx context.Context, in *DeleteWorkerPoolRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.devtools.cloudbuild.v1.CloudBuild/DeleteWorkerPool", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6310,7 +6310,7 @@ type CloudBuildServer interface {
 	// Deletes a `BuildTrigger` by its project ID and trigger ID.
 	//
 	// This API is experimental.
-	DeleteBuildTrigger(context.Context, *DeleteBuildTriggerRequest) (*empty.Empty, error)
+	DeleteBuildTrigger(context.Context, *DeleteBuildTriggerRequest) (*emptypb.Empty, error)
 	// Updates a `BuildTrigger` by its project ID and trigger ID.
 	//
 	// This API is experimental.
@@ -6328,7 +6328,7 @@ type CloudBuildServer interface {
 	// Deletes a `WorkerPool` by its project ID and WorkerPool name.
 	//
 	// This API is experimental.
-	DeleteWorkerPool(context.Context, *DeleteWorkerPoolRequest) (*empty.Empty, error)
+	DeleteWorkerPool(context.Context, *DeleteWorkerPoolRequest) (*emptypb.Empty, error)
 	// Update a `WorkerPool`.
 	//
 	// This API is experimental.
@@ -6367,7 +6367,7 @@ func (*UnimplementedCloudBuildServer) GetBuildTrigger(context.Context, *GetBuild
 func (*UnimplementedCloudBuildServer) ListBuildTriggers(context.Context, *ListBuildTriggersRequest) (*ListBuildTriggersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBuildTriggers not implemented")
 }
-func (*UnimplementedCloudBuildServer) DeleteBuildTrigger(context.Context, *DeleteBuildTriggerRequest) (*empty.Empty, error) {
+func (*UnimplementedCloudBuildServer) DeleteBuildTrigger(context.Context, *DeleteBuildTriggerRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteBuildTrigger not implemented")
 }
 func (*UnimplementedCloudBuildServer) UpdateBuildTrigger(context.Context, *UpdateBuildTriggerRequest) (*BuildTrigger, error) {
@@ -6382,7 +6382,7 @@ func (*UnimplementedCloudBuildServer) CreateWorkerPool(context.Context, *CreateW
 func (*UnimplementedCloudBuildServer) GetWorkerPool(context.Context, *GetWorkerPoolRequest) (*WorkerPool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetWorkerPool not implemented")
 }
-func (*UnimplementedCloudBuildServer) DeleteWorkerPool(context.Context, *DeleteWorkerPoolRequest) (*empty.Empty, error) {
+func (*UnimplementedCloudBuildServer) DeleteWorkerPool(context.Context, *DeleteWorkerPoolRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteWorkerPool not implemented")
 }
 func (*UnimplementedCloudBuildServer) UpdateWorkerPool(context.Context, *UpdateWorkerPoolRequest) (*WorkerPool, error) {

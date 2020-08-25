@@ -28,12 +28,12 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v3/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -179,7 +179,7 @@ type AccountBudgetProposalOperation struct {
 	//
 	// Proposals that modify budgets have the 'update' proposal type.  Specifying
 	// a mask for any other proposal type is considered an error.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// The mutate operation.
 	//
 	// Types that are assignable to Operation:
@@ -220,7 +220,7 @@ func (*AccountBudgetProposalOperation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_services_account_budget_proposal_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *AccountBudgetProposalOperation) GetUpdateMask() *field_mask.FieldMask {
+func (x *AccountBudgetProposalOperation) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -516,7 +516,7 @@ var file_google_ads_googleads_v3_services_account_budget_proposal_service_proto_
 	(*AccountBudgetProposalOperation)(nil),      // 2: google.ads.googleads.v3.services.AccountBudgetProposalOperation
 	(*MutateAccountBudgetProposalResponse)(nil), // 3: google.ads.googleads.v3.services.MutateAccountBudgetProposalResponse
 	(*MutateAccountBudgetProposalResult)(nil),   // 4: google.ads.googleads.v3.services.MutateAccountBudgetProposalResult
-	(*field_mask.FieldMask)(nil),                // 5: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),               // 5: google.protobuf.FieldMask
 	(*resources.AccountBudgetProposal)(nil),     // 6: google.ads.googleads.v3.resources.AccountBudgetProposal
 }
 var file_google_ads_googleads_v3_services_account_budget_proposal_service_proto_depIdxs = []int32{

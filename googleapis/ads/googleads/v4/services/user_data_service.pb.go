@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
@@ -34,6 +33,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -228,9 +228,9 @@ type UploadUserDataResponse struct {
 
 	// The date time at which the request was received by API, formatted as
 	// "yyyy-mm-dd hh:mm:ss+|-hh:mm", e.g. "2019-01-01 12:32:45-08:00".
-	UploadDateTime *wrappers.StringValue `protobuf:"bytes,1,opt,name=upload_date_time,json=uploadDateTime,proto3" json:"upload_date_time,omitempty"`
+	UploadDateTime *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=upload_date_time,json=uploadDateTime,proto3" json:"upload_date_time,omitempty"`
 	// Number of upload data operations received by API.
-	ReceivedOperationsCount *wrappers.Int32Value `protobuf:"bytes,2,opt,name=received_operations_count,json=receivedOperationsCount,proto3" json:"received_operations_count,omitempty"`
+	ReceivedOperationsCount *wrapperspb.Int32Value `protobuf:"bytes,2,opt,name=received_operations_count,json=receivedOperationsCount,proto3" json:"received_operations_count,omitempty"`
 }
 
 func (x *UploadUserDataResponse) Reset() {
@@ -265,14 +265,14 @@ func (*UploadUserDataResponse) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_user_data_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UploadUserDataResponse) GetUploadDateTime() *wrappers.StringValue {
+func (x *UploadUserDataResponse) GetUploadDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.UploadDateTime
 	}
 	return nil
 }
 
-func (x *UploadUserDataResponse) GetReceivedOperationsCount() *wrappers.Int32Value {
+func (x *UploadUserDataResponse) GetReceivedOperationsCount() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.ReceivedOperationsCount
 	}
@@ -393,8 +393,8 @@ var file_google_ads_googleads_v4_services_user_data_service_proto_goTypes = []in
 	(*UploadUserDataResponse)(nil),               // 2: google.ads.googleads.v4.services.UploadUserDataResponse
 	(*common.CustomerMatchUserListMetadata)(nil), // 3: google.ads.googleads.v4.common.CustomerMatchUserListMetadata
 	(*common.UserData)(nil),                      // 4: google.ads.googleads.v4.common.UserData
-	(*wrappers.StringValue)(nil),                 // 5: google.protobuf.StringValue
-	(*wrappers.Int32Value)(nil),                  // 6: google.protobuf.Int32Value
+	(*wrapperspb.StringValue)(nil),               // 5: google.protobuf.StringValue
+	(*wrapperspb.Int32Value)(nil),                // 6: google.protobuf.Int32Value
 }
 var file_google_ads_googleads_v4_services_user_data_service_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.services.UploadUserDataRequest.operations:type_name -> google.ads.googleads.v4.services.UserDataOperation

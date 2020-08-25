@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	money "google.golang.org/genproto/googleapis/type/money"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -568,7 +568,7 @@ type Filter struct {
 	// labeled resources should be included in the budget. Currently, multiple
 	// entries or multiple values per entry are not allowed. If omitted, the
 	// report will include all labeled and unlabeled usage.
-	Labels map[string]*_struct.ListValue `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Labels map[string]*structpb.ListValue `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *Filter) Reset() {
@@ -631,7 +631,7 @@ func (x *Filter) GetSubaccounts() []string {
 	return nil
 }
 
-func (x *Filter) GetLabels() map[string]*_struct.ListValue {
+func (x *Filter) GetLabels() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Labels
 	}
@@ -794,7 +794,7 @@ var file_google_cloud_billing_budgets_v1alpha1_budget_model_proto_goTypes = []in
 	(*Filter)(nil),                   // 7: google.cloud.billing.budgets.v1alpha1.Filter
 	nil,                              // 8: google.cloud.billing.budgets.v1alpha1.Filter.LabelsEntry
 	(*money.Money)(nil),              // 9: google.type.Money
-	(*_struct.ListValue)(nil),        // 10: google.protobuf.ListValue
+	(*structpb.ListValue)(nil),       // 10: google.protobuf.ListValue
 }
 var file_google_cloud_billing_budgets_v1alpha1_budget_model_proto_depIdxs = []int32{
 	7,  // 0: google.cloud.billing.budgets.v1alpha1.Budget.budget_filter:type_name -> google.cloud.billing.budgets.v1alpha1.Filter

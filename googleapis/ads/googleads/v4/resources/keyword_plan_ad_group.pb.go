@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -55,18 +55,18 @@ type KeywordPlanAdGroup struct {
 	// `customers/{customer_id}/keywordPlanAdGroups/{kp_ad_group_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// The keyword plan campaign to which this ad group belongs.
-	KeywordPlanCampaign *wrappers.StringValue `protobuf:"bytes,2,opt,name=keyword_plan_campaign,json=keywordPlanCampaign,proto3" json:"keyword_plan_campaign,omitempty"`
+	KeywordPlanCampaign *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=keyword_plan_campaign,json=keywordPlanCampaign,proto3" json:"keyword_plan_campaign,omitempty"`
 	// Output only. The ID of the keyword plan ad group.
-	Id *wrappers.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the keyword plan ad group.
 	//
 	// This field is required and should not be empty when creating keyword plan
 	// ad group.
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// A default ad group max cpc bid in micros in account currency for all
 	// biddable keywords under the keyword plan ad group.
 	// If not set, will inherit from parent campaign.
-	CpcBidMicros *wrappers.Int64Value `protobuf:"bytes,5,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
+	CpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
 }
 
 func (x *KeywordPlanAdGroup) Reset() {
@@ -108,28 +108,28 @@ func (x *KeywordPlanAdGroup) GetResourceName() string {
 	return ""
 }
 
-func (x *KeywordPlanAdGroup) GetKeywordPlanCampaign() *wrappers.StringValue {
+func (x *KeywordPlanAdGroup) GetKeywordPlanCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.KeywordPlanCampaign
 	}
 	return nil
 }
 
-func (x *KeywordPlanAdGroup) GetId() *wrappers.Int64Value {
+func (x *KeywordPlanAdGroup) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *KeywordPlanAdGroup) GetName() *wrappers.StringValue {
+func (x *KeywordPlanAdGroup) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *KeywordPlanAdGroup) GetCpcBidMicros() *wrappers.Int64Value {
+func (x *KeywordPlanAdGroup) GetCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidMicros
 	}
@@ -219,9 +219,9 @@ func file_google_ads_googleads_v4_resources_keyword_plan_ad_group_proto_rawDescG
 
 var file_google_ads_googleads_v4_resources_keyword_plan_ad_group_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_keyword_plan_ad_group_proto_goTypes = []interface{}{
-	(*KeywordPlanAdGroup)(nil),   // 0: google.ads.googleads.v4.resources.KeywordPlanAdGroup
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),  // 2: google.protobuf.Int64Value
+	(*KeywordPlanAdGroup)(nil),     // 0: google.ads.googleads.v4.resources.KeywordPlanAdGroup
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),  // 2: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v4_resources_keyword_plan_ad_group_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.resources.KeywordPlanAdGroup.keyword_plan_campaign:type_name -> google.protobuf.StringValue

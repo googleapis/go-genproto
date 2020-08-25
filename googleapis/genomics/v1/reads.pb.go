@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -488,7 +488,7 @@ type UpdateReadGroupSetRequest struct {
 	//
 	// Leaving `updateMask` unset is equivalent to specifying all mutable
 	// fields.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateReadGroupSetRequest) Reset() {
@@ -537,7 +537,7 @@ func (x *UpdateReadGroupSetRequest) GetReadGroupSet() *ReadGroupSet {
 	return nil
 }
 
-func (x *UpdateReadGroupSetRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateReadGroupSetRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1545,11 +1545,11 @@ var file_google_genomics_v1_reads_proto_goTypes = []interface{}{
 	(*StreamReadsRequest)(nil),                        // 14: google.genomics.v1.StreamReadsRequest
 	(*StreamReadsResponse)(nil),                       // 15: google.genomics.v1.StreamReadsResponse
 	(*ReadGroupSet)(nil),                              // 16: google.genomics.v1.ReadGroupSet
-	(*field_mask.FieldMask)(nil),                      // 17: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                     // 17: google.protobuf.FieldMask
 	(*Range)(nil),                                     // 18: google.genomics.v1.Range
 	(*Read)(nil),                                      // 19: google.genomics.v1.Read
 	(*longrunning.Operation)(nil),                     // 20: google.longrunning.Operation
-	(*empty.Empty)(nil),                               // 21: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                             // 21: google.protobuf.Empty
 }
 var file_google_genomics_v1_reads_proto_depIdxs = []int32{
 	16, // 0: google.genomics.v1.SearchReadGroupSetsResponse.read_group_sets:type_name -> google.genomics.v1.ReadGroupSet
@@ -1963,7 +1963,7 @@ type ReadServiceV1Client interface {
 	// For the definitions of read group sets and other genomics resources, see
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-	DeleteReadGroupSet(ctx context.Context, in *DeleteReadGroupSetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteReadGroupSet(ctx context.Context, in *DeleteReadGroupSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets a read group set by ID.
 	//
 	// For the definitions of read group sets and other genomics resources, see
@@ -2055,8 +2055,8 @@ func (c *readServiceV1Client) UpdateReadGroupSet(ctx context.Context, in *Update
 	return out, nil
 }
 
-func (c *readServiceV1Client) DeleteReadGroupSet(ctx context.Context, in *DeleteReadGroupSetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *readServiceV1Client) DeleteReadGroupSet(ctx context.Context, in *DeleteReadGroupSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.genomics.v1.ReadServiceV1/DeleteReadGroupSet", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2145,7 +2145,7 @@ type ReadServiceV1Server interface {
 	// For the definitions of read group sets and other genomics resources, see
 	// [Fundamentals of Google
 	// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-	DeleteReadGroupSet(context.Context, *DeleteReadGroupSetRequest) (*empty.Empty, error)
+	DeleteReadGroupSet(context.Context, *DeleteReadGroupSetRequest) (*emptypb.Empty, error)
 	// Gets a read group set by ID.
 	//
 	// For the definitions of read group sets and other genomics resources, see
@@ -2209,7 +2209,7 @@ func (*UnimplementedReadServiceV1Server) SearchReadGroupSets(context.Context, *S
 func (*UnimplementedReadServiceV1Server) UpdateReadGroupSet(context.Context, *UpdateReadGroupSetRequest) (*ReadGroupSet, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateReadGroupSet not implemented")
 }
-func (*UnimplementedReadServiceV1Server) DeleteReadGroupSet(context.Context, *DeleteReadGroupSetRequest) (*empty.Empty, error) {
+func (*UnimplementedReadServiceV1Server) DeleteReadGroupSet(context.Context, *DeleteReadGroupSetRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteReadGroupSet not implemented")
 }
 func (*UnimplementedReadServiceV1Server) GetReadGroupSet(context.Context, *GetReadGroupSetRequest) (*ReadGroupSet, error) {

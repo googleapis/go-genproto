@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -112,7 +112,7 @@ type ClusterOperationStatus struct {
 	// Output only. A message containing any operation metadata details.
 	Details string `protobuf:"bytes,3,opt,name=details,proto3" json:"details,omitempty"`
 	// Output only. The time this state was entered.
-	StateStartTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=state_start_time,json=stateStartTime,proto3" json:"state_start_time,omitempty"`
+	StateStartTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=state_start_time,json=stateStartTime,proto3" json:"state_start_time,omitempty"`
 }
 
 func (x *ClusterOperationStatus) Reset() {
@@ -168,7 +168,7 @@ func (x *ClusterOperationStatus) GetDetails() string {
 	return ""
 }
 
-func (x *ClusterOperationStatus) GetStateStartTime() *timestamp.Timestamp {
+func (x *ClusterOperationStatus) GetStateStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StateStartTime
 	}
@@ -383,7 +383,7 @@ var file_google_cloud_dataproc_v1_operations_proto_goTypes = []interface{}{
 	(*ClusterOperationStatus)(nil),    // 1: google.cloud.dataproc.v1.ClusterOperationStatus
 	(*ClusterOperationMetadata)(nil),  // 2: google.cloud.dataproc.v1.ClusterOperationMetadata
 	nil,                               // 3: google.cloud.dataproc.v1.ClusterOperationMetadata.LabelsEntry
-	(*timestamp.Timestamp)(nil),       // 4: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),     // 4: google.protobuf.Timestamp
 }
 var file_google_cloud_dataproc_v1_operations_proto_depIdxs = []int32{
 	0, // 0: google.cloud.dataproc.v1.ClusterOperationStatus.state:type_name -> google.cloud.dataproc.v1.ClusterOperationStatus.State

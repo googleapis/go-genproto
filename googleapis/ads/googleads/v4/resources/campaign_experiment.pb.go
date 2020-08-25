@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -58,9 +58,9 @@ type CampaignExperiment struct {
 	// Output only. The ID of the campaign experiment.
 	//
 	// This field is read-only.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Immutable. The campaign draft with staged changes to the base campaign.
-	CampaignDraft *wrappers.StringValue `protobuf:"bytes,3,opt,name=campaign_draft,json=campaignDraft,proto3" json:"campaign_draft,omitempty"`
+	CampaignDraft *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=campaign_draft,json=campaignDraft,proto3" json:"campaign_draft,omitempty"`
 	// The name of the campaign experiment.
 	//
 	// This field is required when creating new campaign experiments
@@ -69,23 +69,23 @@ type CampaignExperiment struct {
 	//
 	// It must not contain any null (code point 0x0), NL line feed
 	// (code point 0xA) or carriage return (code point 0xD) characters.
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// The description of the experiment.
-	Description *wrappers.StringValue `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
 	// Immutable. Share of traffic directed to experiment as a percent (must be between 1 and
 	// 99 inclusive. Base campaign receives the remainder of the traffic
 	// (100 - traffic_split_percent). Required for create.
-	TrafficSplitPercent *wrappers.Int64Value `protobuf:"bytes,6,opt,name=traffic_split_percent,json=trafficSplitPercent,proto3" json:"traffic_split_percent,omitempty"`
+	TrafficSplitPercent *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=traffic_split_percent,json=trafficSplitPercent,proto3" json:"traffic_split_percent,omitempty"`
 	// Immutable. Determines the behavior of the traffic split.
 	TrafficSplitType enums.CampaignExperimentTrafficSplitTypeEnum_CampaignExperimentTrafficSplitType `protobuf:"varint,7,opt,name=traffic_split_type,json=trafficSplitType,proto3,enum=google.ads.googleads.v4.enums.CampaignExperimentTrafficSplitTypeEnum_CampaignExperimentTrafficSplitType" json:"traffic_split_type,omitempty"`
 	// Output only. The experiment campaign, as opposed to the base campaign.
-	ExperimentCampaign *wrappers.StringValue `protobuf:"bytes,8,opt,name=experiment_campaign,json=experimentCampaign,proto3" json:"experiment_campaign,omitempty"`
+	ExperimentCampaign *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=experiment_campaign,json=experimentCampaign,proto3" json:"experiment_campaign,omitempty"`
 	// Output only. The status of the campaign experiment. This field is read-only.
 	Status enums.CampaignExperimentStatusEnum_CampaignExperimentStatus `protobuf:"varint,9,opt,name=status,proto3,enum=google.ads.googleads.v4.enums.CampaignExperimentStatusEnum_CampaignExperimentStatus" json:"status,omitempty"`
 	// Output only. The resource name of the long-running operation that can be used to poll
 	// for completion of experiment create or promote. The most recent long
 	// running operation is returned.
-	LongRunningOperation *wrappers.StringValue `protobuf:"bytes,10,opt,name=long_running_operation,json=longRunningOperation,proto3" json:"long_running_operation,omitempty"`
+	LongRunningOperation *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=long_running_operation,json=longRunningOperation,proto3" json:"long_running_operation,omitempty"`
 	// Date when the campaign experiment starts. By default, the experiment starts
 	// now or on the campaign's start date, whichever is later. If this field is
 	// set, then the experiment starts at the beginning of the specified date in
@@ -93,14 +93,14 @@ type CampaignExperiment struct {
 	//
 	// Format: YYYY-MM-DD
 	// Example: 2019-03-14
-	StartDate *wrappers.StringValue `protobuf:"bytes,11,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	StartDate *wrapperspb.StringValue `protobuf:"bytes,11,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
 	// Date when the campaign experiment ends. By default, the experiment ends on
 	// the campaign's end date. If this field is set, then the experiment ends at
 	// the end of the specified date in the customer's time zone.
 	//
 	// Format: YYYY-MM-DD
 	// Example: 2019-04-18
-	EndDate *wrappers.StringValue `protobuf:"bytes,12,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
+	EndDate *wrapperspb.StringValue `protobuf:"bytes,12,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
 }
 
 func (x *CampaignExperiment) Reset() {
@@ -142,35 +142,35 @@ func (x *CampaignExperiment) GetResourceName() string {
 	return ""
 }
 
-func (x *CampaignExperiment) GetId() *wrappers.Int64Value {
+func (x *CampaignExperiment) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *CampaignExperiment) GetCampaignDraft() *wrappers.StringValue {
+func (x *CampaignExperiment) GetCampaignDraft() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CampaignDraft
 	}
 	return nil
 }
 
-func (x *CampaignExperiment) GetName() *wrappers.StringValue {
+func (x *CampaignExperiment) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *CampaignExperiment) GetDescription() *wrappers.StringValue {
+func (x *CampaignExperiment) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
 	return nil
 }
 
-func (x *CampaignExperiment) GetTrafficSplitPercent() *wrappers.Int64Value {
+func (x *CampaignExperiment) GetTrafficSplitPercent() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TrafficSplitPercent
 	}
@@ -184,7 +184,7 @@ func (x *CampaignExperiment) GetTrafficSplitType() enums.CampaignExperimentTraff
 	return enums.CampaignExperimentTrafficSplitTypeEnum_UNSPECIFIED
 }
 
-func (x *CampaignExperiment) GetExperimentCampaign() *wrappers.StringValue {
+func (x *CampaignExperiment) GetExperimentCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ExperimentCampaign
 	}
@@ -198,21 +198,21 @@ func (x *CampaignExperiment) GetStatus() enums.CampaignExperimentStatusEnum_Camp
 	return enums.CampaignExperimentStatusEnum_UNSPECIFIED
 }
 
-func (x *CampaignExperiment) GetLongRunningOperation() *wrappers.StringValue {
+func (x *CampaignExperiment) GetLongRunningOperation() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LongRunningOperation
 	}
 	return nil
 }
 
-func (x *CampaignExperiment) GetStartDate() *wrappers.StringValue {
+func (x *CampaignExperiment) GetStartDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StartDate
 	}
 	return nil
 }
 
-func (x *CampaignExperiment) GetEndDate() *wrappers.StringValue {
+func (x *CampaignExperiment) GetEndDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.EndDate
 	}
@@ -353,9 +353,9 @@ func file_google_ads_googleads_v4_resources_campaign_experiment_proto_rawDescGZI
 
 var file_google_ads_googleads_v4_resources_campaign_experiment_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_campaign_experiment_proto_goTypes = []interface{}{
-	(*CampaignExperiment)(nil),   // 0: google.ads.googleads.v4.resources.CampaignExperiment
-	(*wrappers.Int64Value)(nil),  // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil), // 2: google.protobuf.StringValue
+	(*CampaignExperiment)(nil),     // 0: google.ads.googleads.v4.resources.CampaignExperiment
+	(*wrapperspb.Int64Value)(nil),  // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil), // 2: google.protobuf.StringValue
 	(enums.CampaignExperimentTrafficSplitTypeEnum_CampaignExperimentTrafficSplitType)(0), // 3: google.ads.googleads.v4.enums.CampaignExperimentTrafficSplitTypeEnum.CampaignExperimentTrafficSplitType
 	(enums.CampaignExperimentStatusEnum_CampaignExperimentStatus)(0),                     // 4: google.ads.googleads.v4.enums.CampaignExperimentStatusEnum.CampaignExperimentStatus
 }

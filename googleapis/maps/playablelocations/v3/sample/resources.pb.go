@@ -27,9 +27,9 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -439,7 +439,7 @@ type Criterion struct {
 	//
 	// Note: The more fields you include, the more expensive in terms of data and
 	// associated latency your query will be.
-	FieldsToReturn *field_mask.FieldMask `protobuf:"bytes,3,opt,name=fields_to_return,json=fieldsToReturn,proto3" json:"fields_to_return,omitempty"`
+	FieldsToReturn *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=fields_to_return,json=fieldsToReturn,proto3" json:"fields_to_return,omitempty"`
 }
 
 func (x *Criterion) Reset() {
@@ -488,7 +488,7 @@ func (x *Criterion) GetFilter() *Filter {
 	return nil
 }
 
-func (x *Criterion) GetFieldsToReturn() *field_mask.FieldMask {
+func (x *Criterion) GetFieldsToReturn() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.FieldsToReturn
 	}
@@ -722,7 +722,7 @@ var file_google_maps_playablelocations_v3_sample_resources_proto_goTypes = []int
 	(*AreaFilter)(nil),            // 5: google.maps.playablelocations.v3.sample.AreaFilter
 	(*PlayableLocationList)(nil),  // 6: google.maps.playablelocations.v3.sample.PlayableLocationList
 	(*latlng.LatLng)(nil),         // 7: google.type.LatLng
-	(*field_mask.FieldMask)(nil),  // 8: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil), // 8: google.protobuf.FieldMask
 }
 var file_google_maps_playablelocations_v3_sample_resources_proto_depIdxs = []int32{
 	7, // 0: google.maps.playablelocations.v3.sample.PlayableLocation.center_point:type_name -> google.type.LatLng

@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -117,7 +117,7 @@ type VideoObjectTrackingAnnotation struct {
 	InstanceId string `protobuf:"bytes,1,opt,name=instance_id,json=instanceId,proto3" json:"instance_id,omitempty"`
 	// Required. A time (frame) of a video to which this annotation pertains.
 	// Represented as the duration since the video's start.
-	TimeOffset *duration.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
+	TimeOffset *durationpb.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
 	// Required. The rectangle representing the object location on the frame (i.e.
 	// at the time_offset of the video).
 	BoundingBox *BoundingPoly `protobuf:"bytes,3,opt,name=bounding_box,json=boundingBox,proto3" json:"bounding_box,omitempty"`
@@ -168,7 +168,7 @@ func (x *VideoObjectTrackingAnnotation) GetInstanceId() string {
 	return ""
 }
 
-func (x *VideoObjectTrackingAnnotation) GetTimeOffset() *duration.Duration {
+func (x *VideoObjectTrackingAnnotation) GetTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.TimeOffset
 	}
@@ -631,7 +631,7 @@ var file_google_cloud_automl_v1beta1_detection_proto_goTypes = []interface{}{
 	(*VideoObjectTrackingEvaluationMetrics)(nil),           // 4: google.cloud.automl.v1beta1.VideoObjectTrackingEvaluationMetrics
 	(*BoundingBoxMetricsEntry_ConfidenceMetricsEntry)(nil), // 5: google.cloud.automl.v1beta1.BoundingBoxMetricsEntry.ConfidenceMetricsEntry
 	(*BoundingPoly)(nil),                                   // 6: google.cloud.automl.v1beta1.BoundingPoly
-	(*duration.Duration)(nil),                              // 7: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                            // 7: google.protobuf.Duration
 }
 var file_google_cloud_automl_v1beta1_detection_proto_depIdxs = []int32{
 	6, // 0: google.cloud.automl.v1beta1.ImageObjectDetectionAnnotation.bounding_box:type_name -> google.cloud.automl.v1beta1.BoundingPoly

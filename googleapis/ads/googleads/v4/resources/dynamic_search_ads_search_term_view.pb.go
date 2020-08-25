@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,31 +56,31 @@ type DynamicSearchAdsSearchTermView struct {
 	// Output only. Search term
 	//
 	// This field is read-only.
-	SearchTerm *wrappers.StringValue `protobuf:"bytes,2,opt,name=search_term,json=searchTerm,proto3" json:"search_term,omitempty"`
+	SearchTerm *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=search_term,json=searchTerm,proto3" json:"search_term,omitempty"`
 	// Output only. The dynamically generated headline of the Dynamic Search Ad.
 	//
 	// This field is read-only.
-	Headline *wrappers.StringValue `protobuf:"bytes,3,opt,name=headline,proto3" json:"headline,omitempty"`
+	Headline *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=headline,proto3" json:"headline,omitempty"`
 	// Output only. The dynamically selected landing page URL of the impression.
 	//
 	// This field is read-only.
-	LandingPage *wrappers.StringValue `protobuf:"bytes,4,opt,name=landing_page,json=landingPage,proto3" json:"landing_page,omitempty"`
+	LandingPage *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=landing_page,json=landingPage,proto3" json:"landing_page,omitempty"`
 	// Output only. The URL of page feed item served for the impression.
 	//
 	// This field is read-only.
-	PageUrl *wrappers.StringValue `protobuf:"bytes,5,opt,name=page_url,json=pageUrl,proto3" json:"page_url,omitempty"`
+	PageUrl *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=page_url,json=pageUrl,proto3" json:"page_url,omitempty"`
 	// Output only. True if query matches a negative keyword.
 	//
 	// This field is read-only.
-	HasNegativeKeyword *wrappers.BoolValue `protobuf:"bytes,6,opt,name=has_negative_keyword,json=hasNegativeKeyword,proto3" json:"has_negative_keyword,omitempty"`
+	HasNegativeKeyword *wrapperspb.BoolValue `protobuf:"bytes,6,opt,name=has_negative_keyword,json=hasNegativeKeyword,proto3" json:"has_negative_keyword,omitempty"`
 	// Output only. True if query is added to targeted keywords.
 	//
 	// This field is read-only.
-	HasMatchingKeyword *wrappers.BoolValue `protobuf:"bytes,7,opt,name=has_matching_keyword,json=hasMatchingKeyword,proto3" json:"has_matching_keyword,omitempty"`
+	HasMatchingKeyword *wrapperspb.BoolValue `protobuf:"bytes,7,opt,name=has_matching_keyword,json=hasMatchingKeyword,proto3" json:"has_matching_keyword,omitempty"`
 	// Output only. True if query matches a negative url.
 	//
 	// This field is read-only.
-	HasNegativeUrl *wrappers.BoolValue `protobuf:"bytes,8,opt,name=has_negative_url,json=hasNegativeUrl,proto3" json:"has_negative_url,omitempty"`
+	HasNegativeUrl *wrapperspb.BoolValue `protobuf:"bytes,8,opt,name=has_negative_url,json=hasNegativeUrl,proto3" json:"has_negative_url,omitempty"`
 }
 
 func (x *DynamicSearchAdsSearchTermView) Reset() {
@@ -122,49 +122,49 @@ func (x *DynamicSearchAdsSearchTermView) GetResourceName() string {
 	return ""
 }
 
-func (x *DynamicSearchAdsSearchTermView) GetSearchTerm() *wrappers.StringValue {
+func (x *DynamicSearchAdsSearchTermView) GetSearchTerm() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SearchTerm
 	}
 	return nil
 }
 
-func (x *DynamicSearchAdsSearchTermView) GetHeadline() *wrappers.StringValue {
+func (x *DynamicSearchAdsSearchTermView) GetHeadline() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Headline
 	}
 	return nil
 }
 
-func (x *DynamicSearchAdsSearchTermView) GetLandingPage() *wrappers.StringValue {
+func (x *DynamicSearchAdsSearchTermView) GetLandingPage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LandingPage
 	}
 	return nil
 }
 
-func (x *DynamicSearchAdsSearchTermView) GetPageUrl() *wrappers.StringValue {
+func (x *DynamicSearchAdsSearchTermView) GetPageUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PageUrl
 	}
 	return nil
 }
 
-func (x *DynamicSearchAdsSearchTermView) GetHasNegativeKeyword() *wrappers.BoolValue {
+func (x *DynamicSearchAdsSearchTermView) GetHasNegativeKeyword() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.HasNegativeKeyword
 	}
 	return nil
 }
 
-func (x *DynamicSearchAdsSearchTermView) GetHasMatchingKeyword() *wrappers.BoolValue {
+func (x *DynamicSearchAdsSearchTermView) GetHasMatchingKeyword() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.HasMatchingKeyword
 	}
 	return nil
 }
 
-func (x *DynamicSearchAdsSearchTermView) GetHasNegativeUrl() *wrappers.BoolValue {
+func (x *DynamicSearchAdsSearchTermView) GetHasNegativeUrl() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.HasNegativeUrl
 	}
@@ -274,8 +274,8 @@ func file_google_ads_googleads_v4_resources_dynamic_search_ads_search_term_view_
 var file_google_ads_googleads_v4_resources_dynamic_search_ads_search_term_view_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_dynamic_search_ads_search_term_view_proto_goTypes = []interface{}{
 	(*DynamicSearchAdsSearchTermView)(nil), // 0: google.ads.googleads.v4.resources.DynamicSearchAdsSearchTermView
-	(*wrappers.StringValue)(nil),           // 1: google.protobuf.StringValue
-	(*wrappers.BoolValue)(nil),             // 2: google.protobuf.BoolValue
+	(*wrapperspb.StringValue)(nil),         // 1: google.protobuf.StringValue
+	(*wrapperspb.BoolValue)(nil),           // 2: google.protobuf.BoolValue
 }
 var file_google_ads_googleads_v4_resources_dynamic_search_ads_search_term_view_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.resources.DynamicSearchAdsSearchTermView.search_term:type_name -> google.protobuf.StringValue

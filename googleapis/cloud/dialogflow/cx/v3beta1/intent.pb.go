@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -538,7 +538,7 @@ type UpdateIntentRequest struct {
 	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// The mask to control which fields get updated. If the mask is not present,
 	// all fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateIntentRequest) Reset() {
@@ -587,7 +587,7 @@ func (x *UpdateIntentRequest) GetLanguageCode() string {
 	return ""
 }
 
-func (x *UpdateIntentRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateIntentRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1111,8 +1111,8 @@ var file_google_cloud_dialogflow_cx_v3beta1_intent_proto_goTypes = []interface{}
 	(*Intent_TrainingPhrase)(nil),      // 8: google.cloud.dialogflow.cx.v3beta1.Intent.TrainingPhrase
 	(*Intent_Parameter)(nil),           // 9: google.cloud.dialogflow.cx.v3beta1.Intent.Parameter
 	(*Intent_TrainingPhrase_Part)(nil), // 10: google.cloud.dialogflow.cx.v3beta1.Intent.TrainingPhrase.Part
-	(*field_mask.FieldMask)(nil),       // 11: google.protobuf.FieldMask
-	(*empty.Empty)(nil),                // 12: google.protobuf.Empty
+	(*fieldmaskpb.FieldMask)(nil),      // 11: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),              // 12: google.protobuf.Empty
 }
 var file_google_cloud_dialogflow_cx_v3beta1_intent_proto_depIdxs = []int32{
 	8,  // 0: google.cloud.dialogflow.cx.v3beta1.Intent.training_phrases:type_name -> google.cloud.dialogflow.cx.v3beta1.Intent.TrainingPhrase
@@ -1309,7 +1309,7 @@ type IntentsClient interface {
 	// Updates the specified intent.
 	UpdateIntent(ctx context.Context, in *UpdateIntentRequest, opts ...grpc.CallOption) (*Intent, error)
 	// Deletes the specified intent.
-	DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type intentsClient struct {
@@ -1356,8 +1356,8 @@ func (c *intentsClient) UpdateIntent(ctx context.Context, in *UpdateIntentReques
 	return out, nil
 }
 
-func (c *intentsClient) DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *intentsClient) DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.dialogflow.cx.v3beta1.Intents/DeleteIntent", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1376,7 +1376,7 @@ type IntentsServer interface {
 	// Updates the specified intent.
 	UpdateIntent(context.Context, *UpdateIntentRequest) (*Intent, error)
 	// Deletes the specified intent.
-	DeleteIntent(context.Context, *DeleteIntentRequest) (*empty.Empty, error)
+	DeleteIntent(context.Context, *DeleteIntentRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedIntentsServer can be embedded to have forward compatible implementations.
@@ -1395,7 +1395,7 @@ func (*UnimplementedIntentsServer) CreateIntent(context.Context, *CreateIntentRe
 func (*UnimplementedIntentsServer) UpdateIntent(context.Context, *UpdateIntentRequest) (*Intent, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateIntent not implemented")
 }
-func (*UnimplementedIntentsServer) DeleteIntent(context.Context, *DeleteIntentRequest) (*empty.Empty, error) {
+func (*UnimplementedIntentsServer) DeleteIntent(context.Context, *DeleteIntentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteIntent not implemented")
 }
 

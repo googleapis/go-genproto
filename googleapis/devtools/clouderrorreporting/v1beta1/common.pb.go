@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -170,7 +170,7 @@ type ErrorEvent struct {
 	// Time when the event occurred as provided in the error report.
 	// If the report did not contain a timestamp, the time the error was received
 	// by the Error Reporting system is used.
-	EventTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=event_time,json=eventTime,proto3" json:"event_time,omitempty"`
+	EventTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=event_time,json=eventTime,proto3" json:"event_time,omitempty"`
 	// The `ServiceContext` for which this error was reported.
 	ServiceContext *ServiceContext `protobuf:"bytes,2,opt,name=service_context,json=serviceContext,proto3" json:"service_context,omitempty"`
 	// The stack trace that was reported or logged by the service.
@@ -211,7 +211,7 @@ func (*ErrorEvent) Descriptor() ([]byte, []int) {
 	return file_google_devtools_clouderrorreporting_v1beta1_common_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ErrorEvent) GetEventTime() *timestamp.Timestamp {
+func (x *ErrorEvent) GetEventTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EventTime
 	}
@@ -702,14 +702,14 @@ func file_google_devtools_clouderrorreporting_v1beta1_common_proto_rawDescGZIP()
 
 var file_google_devtools_clouderrorreporting_v1beta1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_google_devtools_clouderrorreporting_v1beta1_common_proto_goTypes = []interface{}{
-	(*ErrorGroup)(nil),          // 0: google.devtools.clouderrorreporting.v1beta1.ErrorGroup
-	(*TrackingIssue)(nil),       // 1: google.devtools.clouderrorreporting.v1beta1.TrackingIssue
-	(*ErrorEvent)(nil),          // 2: google.devtools.clouderrorreporting.v1beta1.ErrorEvent
-	(*ServiceContext)(nil),      // 3: google.devtools.clouderrorreporting.v1beta1.ServiceContext
-	(*ErrorContext)(nil),        // 4: google.devtools.clouderrorreporting.v1beta1.ErrorContext
-	(*HttpRequestContext)(nil),  // 5: google.devtools.clouderrorreporting.v1beta1.HttpRequestContext
-	(*SourceLocation)(nil),      // 6: google.devtools.clouderrorreporting.v1beta1.SourceLocation
-	(*timestamp.Timestamp)(nil), // 7: google.protobuf.Timestamp
+	(*ErrorGroup)(nil),            // 0: google.devtools.clouderrorreporting.v1beta1.ErrorGroup
+	(*TrackingIssue)(nil),         // 1: google.devtools.clouderrorreporting.v1beta1.TrackingIssue
+	(*ErrorEvent)(nil),            // 2: google.devtools.clouderrorreporting.v1beta1.ErrorEvent
+	(*ServiceContext)(nil),        // 3: google.devtools.clouderrorreporting.v1beta1.ServiceContext
+	(*ErrorContext)(nil),          // 4: google.devtools.clouderrorreporting.v1beta1.ErrorContext
+	(*HttpRequestContext)(nil),    // 5: google.devtools.clouderrorreporting.v1beta1.HttpRequestContext
+	(*SourceLocation)(nil),        // 6: google.devtools.clouderrorreporting.v1beta1.SourceLocation
+	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
 }
 var file_google_devtools_clouderrorreporting_v1beta1_common_proto_depIdxs = []int32{
 	1, // 0: google.devtools.clouderrorreporting.v1beta1.ErrorGroup.tracking_issues:type_name -> google.devtools.clouderrorreporting.v1beta1.TrackingIssue

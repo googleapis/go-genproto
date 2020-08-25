@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	_ "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	_ "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -270,7 +270,7 @@ type UpdateProfileRequest struct {
 	// profile_bytes and labels fields are supported by UpdateProfile, so only
 	// those fields can be specified in the mask. When no mask is provided, all
 	// fields are overwritten.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateProfileRequest) Reset() {
@@ -312,7 +312,7 @@ func (x *UpdateProfileRequest) GetProfile() *Profile {
 	return nil
 }
 
-func (x *UpdateProfileRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateProfileRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -339,7 +339,7 @@ type Profile struct {
 	// from the effective profiling duration, which is recorded in the profile
 	// data, in case the profiling can't be stopped immediately (e.g. in case
 	// stopping the profiling is handled asynchronously).
-	Duration *duration.Duration `protobuf:"bytes,4,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,4,opt,name=duration,proto3" json:"duration,omitempty"`
 	// Input only. Profile bytes, as a gzip compressed serialized proto, the
 	// format is https://github.com/google/pprof/blob/master/proto/profile.proto.
 	ProfileBytes []byte `protobuf:"bytes,5,opt,name=profile_bytes,json=profileBytes,proto3" json:"profile_bytes,omitempty"`
@@ -402,7 +402,7 @@ func (x *Profile) GetDeployment() *Deployment {
 	return nil
 }
 
-func (x *Profile) GetDuration() *duration.Duration {
+func (x *Profile) GetDuration() *durationpb.Duration {
 	if x != nil {
 		return x.Duration
 	}
@@ -668,8 +668,8 @@ var file_google_devtools_cloudprofiler_v2_profiler_proto_goTypes = []interface{}
 	(*Deployment)(nil),                  // 5: google.devtools.cloudprofiler.v2.Deployment
 	nil,                                 // 6: google.devtools.cloudprofiler.v2.Profile.LabelsEntry
 	nil,                                 // 7: google.devtools.cloudprofiler.v2.Deployment.LabelsEntry
-	(*field_mask.FieldMask)(nil),        // 8: google.protobuf.FieldMask
-	(*duration.Duration)(nil),           // 9: google.protobuf.Duration
+	(*fieldmaskpb.FieldMask)(nil),       // 8: google.protobuf.FieldMask
+	(*durationpb.Duration)(nil),         // 9: google.protobuf.Duration
 }
 var file_google_devtools_cloudprofiler_v2_profiler_proto_depIdxs = []int32{
 	5,  // 0: google.devtools.cloudprofiler.v2.CreateProfileRequest.deployment:type_name -> google.devtools.cloudprofiler.v2.Deployment

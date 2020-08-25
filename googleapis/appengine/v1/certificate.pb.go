@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -155,7 +155,7 @@ type AuthorizedCertificate struct {
 	// using [`AuthorizedCertificates.UpdateAuthorizedCertificate`]().
 	//
 	// @OutputOnly
-	ExpireTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
+	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 	// The SSL certificate serving the `AuthorizedCertificate` resource. This
 	// must be obtained independently from a certificate authority.
 	CertificateRawData *CertificateRawData `protobuf:"bytes,6,opt,name=certificate_raw_data,json=certificateRawData,proto3" json:"certificate_raw_data,omitempty"`
@@ -249,7 +249,7 @@ func (x *AuthorizedCertificate) GetDomainNames() []string {
 	return nil
 }
 
-func (x *AuthorizedCertificate) GetExpireTime() *timestamp.Timestamp {
+func (x *AuthorizedCertificate) GetExpireTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpireTime
 	}
@@ -367,7 +367,7 @@ type ManagedCertificate struct {
 	// certificate expires. Renewal errors can be tracked via `ManagementStatus`.
 	//
 	// @OutputOnly
-	LastRenewalTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=last_renewal_time,json=lastRenewalTime,proto3" json:"last_renewal_time,omitempty"`
+	LastRenewalTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=last_renewal_time,json=lastRenewalTime,proto3" json:"last_renewal_time,omitempty"`
 	// Status of certificate management. Refers to the most recent certificate
 	// acquisition or renewal attempt.
 	//
@@ -407,7 +407,7 @@ func (*ManagedCertificate) Descriptor() ([]byte, []int) {
 	return file_google_appengine_v1_certificate_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ManagedCertificate) GetLastRenewalTime() *timestamp.Timestamp {
+func (x *ManagedCertificate) GetLastRenewalTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastRenewalTime
 	}
@@ -519,7 +519,7 @@ var file_google_appengine_v1_certificate_proto_goTypes = []interface{}{
 	(*AuthorizedCertificate)(nil), // 1: google.appengine.v1.AuthorizedCertificate
 	(*CertificateRawData)(nil),    // 2: google.appengine.v1.CertificateRawData
 	(*ManagedCertificate)(nil),    // 3: google.appengine.v1.ManagedCertificate
-	(*timestamp.Timestamp)(nil),   // 4: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
 }
 var file_google_appengine_v1_certificate_proto_depIdxs = []int32{
 	4, // 0: google.appengine.v1.AuthorizedCertificate.expire_time:type_name -> google.protobuf.Timestamp

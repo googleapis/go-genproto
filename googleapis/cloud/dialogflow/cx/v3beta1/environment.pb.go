@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -78,7 +78,7 @@ type Environment struct {
 	// returned.
 	VersionConfigs []*Environment_VersionConfig `protobuf:"bytes,6,rep,name=version_configs,json=versionConfigs,proto3" json:"version_configs,omitempty"`
 	// Output only. Update time of this environment.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *Environment) Reset() {
@@ -141,7 +141,7 @@ func (x *Environment) GetVersionConfigs() []*Environment_VersionConfig {
 	return nil
 }
 
-func (x *Environment) GetUpdateTime() *timestamp.Timestamp {
+func (x *Environment) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -398,7 +398,7 @@ type UpdateEnvironmentRequest struct {
 	// Required. The environment to update.
 	Environment *Environment `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
 	// Required. The mask to control which fields get updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateEnvironmentRequest) Reset() {
@@ -440,7 +440,7 @@ func (x *UpdateEnvironmentRequest) GetEnvironment() *Environment {
 	return nil
 }
 
-func (x *UpdateEnvironmentRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateEnvironmentRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -944,10 +944,10 @@ var file_google_cloud_dialogflow_cx_v3beta1_environment_proto_goTypes = []interf
 	(*LookupEnvironmentHistoryRequest)(nil),  // 7: google.cloud.dialogflow.cx.v3beta1.LookupEnvironmentHistoryRequest
 	(*LookupEnvironmentHistoryResponse)(nil), // 8: google.cloud.dialogflow.cx.v3beta1.LookupEnvironmentHistoryResponse
 	(*Environment_VersionConfig)(nil),        // 9: google.cloud.dialogflow.cx.v3beta1.Environment.VersionConfig
-	(*timestamp.Timestamp)(nil),              // 10: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),             // 11: google.protobuf.FieldMask
+	(*timestamppb.Timestamp)(nil),            // 10: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),            // 11: google.protobuf.FieldMask
 	(*longrunning.Operation)(nil),            // 12: google.longrunning.Operation
-	(*empty.Empty)(nil),                      // 13: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                    // 13: google.protobuf.Empty
 }
 var file_google_cloud_dialogflow_cx_v3beta1_environment_proto_depIdxs = []int32{
 	9,  // 0: google.cloud.dialogflow.cx.v3beta1.Environment.version_configs:type_name -> google.cloud.dialogflow.cx.v3beta1.Environment.VersionConfig
@@ -1144,7 +1144,7 @@ type EnvironmentsClient interface {
 	// Updates the specified [Environment][google.cloud.dialogflow.cx.v3beta1.Environment].
 	UpdateEnvironment(ctx context.Context, in *UpdateEnvironmentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes the specified [Environment][google.cloud.dialogflow.cx.v3beta1.Environment].
-	DeleteEnvironment(ctx context.Context, in *DeleteEnvironmentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteEnvironment(ctx context.Context, in *DeleteEnvironmentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Looks up the history of the specified [Environment][google.cloud.dialogflow.cx.v3beta1.Environment].
 	LookupEnvironmentHistory(ctx context.Context, in *LookupEnvironmentHistoryRequest, opts ...grpc.CallOption) (*LookupEnvironmentHistoryResponse, error)
 }
@@ -1193,8 +1193,8 @@ func (c *environmentsClient) UpdateEnvironment(ctx context.Context, in *UpdateEn
 	return out, nil
 }
 
-func (c *environmentsClient) DeleteEnvironment(ctx context.Context, in *DeleteEnvironmentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *environmentsClient) DeleteEnvironment(ctx context.Context, in *DeleteEnvironmentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.dialogflow.cx.v3beta1.Environments/DeleteEnvironment", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1222,7 +1222,7 @@ type EnvironmentsServer interface {
 	// Updates the specified [Environment][google.cloud.dialogflow.cx.v3beta1.Environment].
 	UpdateEnvironment(context.Context, *UpdateEnvironmentRequest) (*longrunning.Operation, error)
 	// Deletes the specified [Environment][google.cloud.dialogflow.cx.v3beta1.Environment].
-	DeleteEnvironment(context.Context, *DeleteEnvironmentRequest) (*empty.Empty, error)
+	DeleteEnvironment(context.Context, *DeleteEnvironmentRequest) (*emptypb.Empty, error)
 	// Looks up the history of the specified [Environment][google.cloud.dialogflow.cx.v3beta1.Environment].
 	LookupEnvironmentHistory(context.Context, *LookupEnvironmentHistoryRequest) (*LookupEnvironmentHistoryResponse, error)
 }
@@ -1243,7 +1243,7 @@ func (*UnimplementedEnvironmentsServer) CreateEnvironment(context.Context, *Crea
 func (*UnimplementedEnvironmentsServer) UpdateEnvironment(context.Context, *UpdateEnvironmentRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateEnvironment not implemented")
 }
-func (*UnimplementedEnvironmentsServer) DeleteEnvironment(context.Context, *DeleteEnvironmentRequest) (*empty.Empty, error) {
+func (*UnimplementedEnvironmentsServer) DeleteEnvironment(context.Context, *DeleteEnvironmentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEnvironment not implemented")
 }
 func (*UnimplementedEnvironmentsServer) LookupEnvironmentHistory(context.Context, *LookupEnvironmentHistoryRequest) (*LookupEnvironmentHistoryResponse, error) {

@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -58,7 +58,7 @@ type AdGroupAd struct {
 	// The status of the ad.
 	Status enums.AdGroupAdStatusEnum_AdGroupAdStatus `protobuf:"varint,3,opt,name=status,proto3,enum=google.ads.googleads.v2.enums.AdGroupAdStatusEnum_AdGroupAdStatus" json:"status,omitempty"`
 	// Immutable. The ad group to which the ad belongs.
-	AdGroup *wrappers.StringValue `protobuf:"bytes,4,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
+	AdGroup *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
 	// Immutable. The ad.
 	Ad *Ad `protobuf:"bytes,5,opt,name=ad,proto3" json:"ad,omitempty"`
 	// Output only. Policy information for the ad.
@@ -113,7 +113,7 @@ func (x *AdGroupAd) GetStatus() enums.AdGroupAdStatusEnum_AdGroupAdStatus {
 	return enums.AdGroupAdStatusEnum_UNSPECIFIED
 }
 
-func (x *AdGroupAd) GetAdGroup() *wrappers.StringValue {
+func (x *AdGroupAd) GetAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroup
 	}
@@ -343,7 +343,7 @@ var file_google_ads_googleads_v2_resources_ad_group_ad_proto_goTypes = []interfa
 	(*AdGroupAd)(nil),                                        // 0: google.ads.googleads.v2.resources.AdGroupAd
 	(*AdGroupAdPolicySummary)(nil),                           // 1: google.ads.googleads.v2.resources.AdGroupAdPolicySummary
 	(enums.AdGroupAdStatusEnum_AdGroupAdStatus)(0),           // 2: google.ads.googleads.v2.enums.AdGroupAdStatusEnum.AdGroupAdStatus
-	(*wrappers.StringValue)(nil),                             // 3: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                           // 3: google.protobuf.StringValue
 	(*Ad)(nil),                                               // 4: google.ads.googleads.v2.resources.Ad
 	(enums.AdStrengthEnum_AdStrength)(0),                     // 5: google.ads.googleads.v2.enums.AdStrengthEnum.AdStrength
 	(*common.PolicyTopicEntry)(nil),                          // 6: google.ads.googleads.v2.common.PolicyTopicEntry

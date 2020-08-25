@@ -26,20 +26,20 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	date "google.golang.org/genproto/googleapis/type/date"
 	dayofweek "google.golang.org/genproto/googleapis/type/dayofweek"
 	timeofday "google.golang.org/genproto/googleapis/type/timeofday"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1806,7 +1806,7 @@ type Finding struct {
 	// Where the content was found.
 	Location *Location `protobuf:"bytes,4,opt,name=location,proto3" json:"location,omitempty"`
 	// Timestamp when finding was detected.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Contains data parsed from quotes. Only populated if include_quote was set
 	// to true and a supported infoType was requested. Currently supported
 	// infoTypes: DATE, DATE_OF_BIRTH and TIME.
@@ -1830,7 +1830,7 @@ type Finding struct {
 	// * `"pipeline" : "etl"`
 	Labels map[string]string `protobuf:"bytes,10,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Time the job started that produced this finding.
-	JobCreateTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=job_create_time,json=jobCreateTime,proto3" json:"job_create_time,omitempty"`
+	JobCreateTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=job_create_time,json=jobCreateTime,proto3" json:"job_create_time,omitempty"`
 	// The job that stored the finding.
 	JobName string `protobuf:"bytes,13,opt,name=job_name,json=jobName,proto3" json:"job_name,omitempty"`
 }
@@ -1902,7 +1902,7 @@ func (x *Finding) GetLocation() *Location {
 	return nil
 }
 
-func (x *Finding) GetCreateTime() *timestamp.Timestamp {
+func (x *Finding) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1937,7 +1937,7 @@ func (x *Finding) GetLabels() map[string]string {
 	return nil
 }
 
-func (x *Finding) GetJobCreateTime() *timestamp.Timestamp {
+func (x *Finding) GetJobCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.JobCreateTime
 	}
@@ -2064,7 +2064,7 @@ type ContentLocation struct {
 	// For Google Cloud Storage contains last file modification timestamp.
 	// For BigQuery table contains last_modified_time property.
 	// For Datastore - not populated.
-	ContainerTimestamp *timestamp.Timestamp `protobuf:"bytes,6,opt,name=container_timestamp,json=containerTimestamp,proto3" json:"container_timestamp,omitempty"`
+	ContainerTimestamp *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=container_timestamp,json=containerTimestamp,proto3" json:"container_timestamp,omitempty"`
 	// Findings container version, if available
 	// ("generation" for Google Cloud Storage).
 	ContainerVersion string `protobuf:"bytes,7,opt,name=container_version,json=containerVersion,proto3" json:"container_version,omitempty"`
@@ -2144,7 +2144,7 @@ func (x *ContentLocation) GetMetadataLocation() *MetadataLocation {
 	return nil
 }
 
-func (x *ContentLocation) GetContainerTimestamp() *timestamp.Timestamp {
+func (x *ContentLocation) GetContainerTimestamp() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ContainerTimestamp
 	}
@@ -2524,7 +2524,7 @@ type Container struct {
 	// For Google Cloud Storage contains last file modification timestamp.
 	// For BigQuery table contains last_modified_time property.
 	// For Datastore - not populated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Findings container version, if available
 	// ("generation" for Google Cloud Storage).
 	Version string `protobuf:"bytes,7,opt,name=version,proto3" json:"version,omitempty"`
@@ -2597,7 +2597,7 @@ func (x *Container) GetRelativePath() string {
 	return ""
 }
 
-func (x *Container) GetUpdateTime() *timestamp.Timestamp {
+func (x *Container) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -4168,7 +4168,7 @@ func (x *QuasiId) GetCustomTag() string {
 	return ""
 }
 
-func (x *QuasiId) GetInferred() *empty.Empty {
+func (x *QuasiId) GetInferred() *emptypb.Empty {
 	if x, ok := x.GetTag().(*QuasiId_Inferred); ok {
 		return x.Inferred
 	}
@@ -4198,7 +4198,7 @@ type QuasiId_CustomTag struct {
 type QuasiId_Inferred struct {
 	// If no semantic tag is indicated, we infer the statistical model from
 	// the distribution of values in the input data
-	Inferred *empty.Empty `protobuf:"bytes,4,opt,name=inferred,proto3,oneof"`
+	Inferred *emptypb.Empty `protobuf:"bytes,4,opt,name=inferred,proto3,oneof"`
 }
 
 func (*QuasiId_InfoType) isQuasiId_Tag() {}
@@ -4740,7 +4740,7 @@ func (x *Value) GetBooleanValue() bool {
 	return false
 }
 
-func (x *Value) GetTimestampValue() *timestamp.Timestamp {
+func (x *Value) GetTimestampValue() *timestamppb.Timestamp {
 	if x, ok := x.GetType().(*Value_TimestampValue); ok {
 		return x.TimestampValue
 	}
@@ -4794,7 +4794,7 @@ type Value_BooleanValue struct {
 
 type Value_TimestampValue struct {
 	// timestamp
-	TimestampValue *timestamp.Timestamp `protobuf:"bytes,5,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
+	TimestampValue *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=timestamp_value,json=timestampValue,proto3,oneof"`
 }
 
 type Value_TimeValue struct {
@@ -7164,7 +7164,7 @@ func (m *Schedule) GetOption() isSchedule_Option {
 	return nil
 }
 
-func (x *Schedule) GetRecurrencePeriodDuration() *duration.Duration {
+func (x *Schedule) GetRecurrencePeriodDuration() *durationpb.Duration {
 	if x, ok := x.GetOption().(*Schedule_RecurrencePeriodDuration); ok {
 		return x.RecurrencePeriodDuration
 	}
@@ -7184,7 +7184,7 @@ type Schedule_RecurrencePeriodDuration struct {
 	//
 	// This value must be set to a time duration greater than or equal
 	// to 1 day and can be no longer than 60 days.
-	RecurrencePeriodDuration *duration.Duration `protobuf:"bytes,1,opt,name=recurrence_period_duration,json=recurrencePeriodDuration,proto3,oneof"`
+	RecurrencePeriodDuration *durationpb.Duration `protobuf:"bytes,1,opt,name=recurrence_period_duration,json=recurrencePeriodDuration,proto3,oneof"`
 }
 
 func (*Schedule_RecurrencePeriodDuration) isSchedule_Option() {}
@@ -7249,9 +7249,9 @@ type InspectTemplate struct {
 	// Short description (max 256 chars).
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Output only. The creation timestamp of an inspectTemplate.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last update timestamp of an inspectTemplate.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The core content of the template. Configuration of the scanning process.
 	InspectConfig *InspectConfig `protobuf:"bytes,6,opt,name=inspect_config,json=inspectConfig,proto3" json:"inspect_config,omitempty"`
 }
@@ -7309,14 +7309,14 @@ func (x *InspectTemplate) GetDescription() string {
 	return ""
 }
 
-func (x *InspectTemplate) GetCreateTime() *timestamp.Timestamp {
+func (x *InspectTemplate) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *InspectTemplate) GetUpdateTime() *timestamp.Timestamp {
+func (x *InspectTemplate) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -7348,9 +7348,9 @@ type DeidentifyTemplate struct {
 	// Short description (max 256 chars).
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Output only. The creation timestamp of an inspectTemplate.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last update timestamp of an inspectTemplate.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// ///////////// // The core content of the template  // ///////////////
 	DeidentifyConfig *DeidentifyConfig `protobuf:"bytes,6,opt,name=deidentify_config,json=deidentifyConfig,proto3" json:"deidentify_config,omitempty"`
 }
@@ -7408,14 +7408,14 @@ func (x *DeidentifyTemplate) GetDescription() string {
 	return ""
 }
 
-func (x *DeidentifyTemplate) GetCreateTime() *timestamp.Timestamp {
+func (x *DeidentifyTemplate) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *DeidentifyTemplate) GetUpdateTime() *timestamp.Timestamp {
+func (x *DeidentifyTemplate) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -7439,7 +7439,7 @@ type Error struct {
 	// Detailed error codes and messages.
 	Details *status.Status `protobuf:"bytes,1,opt,name=details,proto3" json:"details,omitempty"`
 	// The times the error occurred.
-	Timestamps []*timestamp.Timestamp `protobuf:"bytes,2,rep,name=timestamps,proto3" json:"timestamps,omitempty"`
+	Timestamps []*timestamppb.Timestamp `protobuf:"bytes,2,rep,name=timestamps,proto3" json:"timestamps,omitempty"`
 }
 
 func (x *Error) Reset() {
@@ -7481,7 +7481,7 @@ func (x *Error) GetDetails() *status.Status {
 	return nil
 }
 
-func (x *Error) GetTimestamps() []*timestamp.Timestamp {
+func (x *Error) GetTimestamps() []*timestamppb.Timestamp {
 	if x != nil {
 		return x.Timestamps
 	}
@@ -7518,11 +7518,11 @@ type JobTrigger struct {
 	// this list will be cleared.
 	Errors []*Error `protobuf:"bytes,6,rep,name=errors,proto3" json:"errors,omitempty"`
 	// Output only. The creation timestamp of a triggeredJob.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last update timestamp of a triggeredJob.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. The timestamp of the last time this trigger executed.
-	LastRunTime *timestamp.Timestamp `protobuf:"bytes,9,opt,name=last_run_time,json=lastRunTime,proto3" json:"last_run_time,omitempty"`
+	LastRunTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=last_run_time,json=lastRunTime,proto3" json:"last_run_time,omitempty"`
 	// Required. A status for this trigger.
 	Status JobTrigger_Status `protobuf:"varint,10,opt,name=status,proto3,enum=google.privacy.dlp.v2.JobTrigger_Status" json:"status,omitempty"`
 }
@@ -7608,21 +7608,21 @@ func (x *JobTrigger) GetErrors() []*Error {
 	return nil
 }
 
-func (x *JobTrigger) GetCreateTime() *timestamp.Timestamp {
+func (x *JobTrigger) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *JobTrigger) GetUpdateTime() *timestamp.Timestamp {
+func (x *JobTrigger) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
 	return nil
 }
 
-func (x *JobTrigger) GetLastRunTime() *timestamp.Timestamp {
+func (x *JobTrigger) GetLastRunTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastRunTime
 	}
@@ -7888,7 +7888,7 @@ type UpdateInspectTemplateRequest struct {
 	// New InspectTemplate value.
 	InspectTemplate *InspectTemplate `protobuf:"bytes,2,opt,name=inspect_template,json=inspectTemplate,proto3" json:"inspect_template,omitempty"`
 	// Mask to control which fields get updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateInspectTemplateRequest) Reset() {
@@ -7937,7 +7937,7 @@ func (x *UpdateInspectTemplateRequest) GetInspectTemplate() *InspectTemplate {
 	return nil
 }
 
-func (x *UpdateInspectTemplateRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateInspectTemplateRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -8351,7 +8351,7 @@ type UpdateJobTriggerRequest struct {
 	// New JobTrigger value.
 	JobTrigger *JobTrigger `protobuf:"bytes,2,opt,name=job_trigger,json=jobTrigger,proto3" json:"job_trigger,omitempty"`
 	// Mask to control which fields get updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateJobTriggerRequest) Reset() {
@@ -8400,7 +8400,7 @@ func (x *UpdateJobTriggerRequest) GetJobTrigger() *JobTrigger {
 	return nil
 }
 
-func (x *UpdateJobTriggerRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateJobTriggerRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -8915,11 +8915,11 @@ type DlpJob struct {
 	//	*DlpJob_InspectDetails
 	Details isDlpJob_Details `protobuf_oneof:"details"`
 	// Time when the job was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Time when the job started.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time when the job finished.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// If created by a job trigger, the resource name of the trigger that
 	// instantiated the job.
 	JobTriggerName string `protobuf:"bytes,10,opt,name=job_trigger_name,json=jobTriggerName,proto3" json:"job_trigger_name,omitempty"`
@@ -9001,21 +9001,21 @@ func (x *DlpJob) GetInspectDetails() *InspectDataSourceDetails {
 	return nil
 }
 
-func (x *DlpJob) GetCreateTime() *timestamp.Timestamp {
+func (x *DlpJob) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *DlpJob) GetStartTime() *timestamp.Timestamp {
+func (x *DlpJob) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *DlpJob) GetEndTime() *timestamp.Timestamp {
+func (x *DlpJob) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -9548,7 +9548,7 @@ type UpdateDeidentifyTemplateRequest struct {
 	// New DeidentifyTemplate value.
 	DeidentifyTemplate *DeidentifyTemplate `protobuf:"bytes,2,opt,name=deidentify_template,json=deidentifyTemplate,proto3" json:"deidentify_template,omitempty"`
 	// Mask to control which fields get updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateDeidentifyTemplateRequest) Reset() {
@@ -9597,7 +9597,7 @@ func (x *UpdateDeidentifyTemplateRequest) GetDeidentifyTemplate() *DeidentifyTem
 	return nil
 }
 
-func (x *UpdateDeidentifyTemplateRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateDeidentifyTemplateRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -10219,7 +10219,7 @@ type StoredInfoTypeVersion struct {
 	Config *StoredInfoTypeConfig `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
 	// Create timestamp of the version. Read-only, determined by the system
 	// when the version is created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Stored info type version state. Read-only, updated by the system
 	// during dictionary creation.
 	State StoredInfoTypeState `protobuf:"varint,3,opt,name=state,proto3,enum=google.privacy.dlp.v2.StoredInfoTypeState" json:"state,omitempty"`
@@ -10280,7 +10280,7 @@ func (x *StoredInfoTypeVersion) GetConfig() *StoredInfoTypeConfig {
 	return nil
 }
 
-func (x *StoredInfoTypeVersion) GetCreateTime() *timestamp.Timestamp {
+func (x *StoredInfoTypeVersion) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -10475,7 +10475,7 @@ type UpdateStoredInfoTypeRequest struct {
 	// configuration.
 	Config *StoredInfoTypeConfig `protobuf:"bytes,2,opt,name=config,proto3" json:"config,omitempty"`
 	// Mask to control which fields get updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateStoredInfoTypeRequest) Reset() {
@@ -10524,7 +10524,7 @@ func (x *UpdateStoredInfoTypeRequest) GetConfig() *StoredInfoTypeConfig {
 	return nil
 }
 
-func (x *UpdateStoredInfoTypeRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateStoredInfoTypeRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -12071,7 +12071,7 @@ func (x *PrivacyMetric_KMapEstimationConfig_TaggedField) GetCustomTag() string {
 	return ""
 }
 
-func (x *PrivacyMetric_KMapEstimationConfig_TaggedField) GetInferred() *empty.Empty {
+func (x *PrivacyMetric_KMapEstimationConfig_TaggedField) GetInferred() *emptypb.Empty {
 	if x, ok := x.GetTag().(*PrivacyMetric_KMapEstimationConfig_TaggedField_Inferred); ok {
 		return x.Inferred
 	}
@@ -12101,7 +12101,7 @@ type PrivacyMetric_KMapEstimationConfig_TaggedField_CustomTag struct {
 type PrivacyMetric_KMapEstimationConfig_TaggedField_Inferred struct {
 	// If no semantic tag is indicated, we infer the statistical model from
 	// the distribution of values in the input data
-	Inferred *empty.Empty `protobuf:"bytes,4,opt,name=inferred,proto3,oneof"`
+	Inferred *emptypb.Empty `protobuf:"bytes,4,opt,name=inferred,proto3,oneof"`
 }
 
 func (*PrivacyMetric_KMapEstimationConfig_TaggedField_InfoType) isPrivacyMetric_KMapEstimationConfig_TaggedField_Tag() {
@@ -17503,16 +17503,16 @@ var file_google_privacy_dlp_v2_dlp_proto_goTypes = []interface{}{
 	(Likelihood)(0),                                        // 193: google.privacy.dlp.v2.Likelihood
 	(*CustomInfoType)(nil),                                 // 194: google.privacy.dlp.v2.CustomInfoType
 	(*FieldId)(nil),                                        // 195: google.privacy.dlp.v2.FieldId
-	(*timestamp.Timestamp)(nil),                            // 196: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                          // 196: google.protobuf.Timestamp
 	(*RecordKey)(nil),                                      // 197: google.privacy.dlp.v2.RecordKey
 	(*BigQueryTable)(nil),                                  // 198: google.privacy.dlp.v2.BigQueryTable
-	(*empty.Empty)(nil),                                    // 199: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                                  // 199: google.protobuf.Empty
 	(*timeofday.TimeOfDay)(nil),                            // 200: google.type.TimeOfDay
 	(*date.Date)(nil),                                      // 201: google.type.Date
 	(dayofweek.DayOfWeek)(0),                               // 202: google.type.DayOfWeek
-	(*duration.Duration)(nil),                              // 203: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                            // 203: google.protobuf.Duration
 	(*status.Status)(nil),                                  // 204: google.rpc.Status
-	(*field_mask.FieldMask)(nil),                           // 205: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                          // 205: google.protobuf.FieldMask
 	(*StorageConfig)(nil),                                  // 206: google.privacy.dlp.v2.StorageConfig
 	(*CloudStoragePath)(nil),                               // 207: google.privacy.dlp.v2.CloudStoragePath
 	(*CloudStorageFileSet)(nil),                            // 208: google.privacy.dlp.v2.CloudStorageFileSet
@@ -20180,7 +20180,7 @@ type DlpServiceClient interface {
 	ListInspectTemplates(ctx context.Context, in *ListInspectTemplatesRequest, opts ...grpc.CallOption) (*ListInspectTemplatesResponse, error)
 	// Deletes an InspectTemplate.
 	// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-	DeleteInspectTemplate(ctx context.Context, in *DeleteInspectTemplateRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteInspectTemplate(ctx context.Context, in *DeleteInspectTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a DeidentifyTemplate for re-using frequently used configuration
 	// for de-identifying content, images, and storage.
 	// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
@@ -20201,7 +20201,7 @@ type DlpServiceClient interface {
 	// Deletes a DeidentifyTemplate.
 	// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
 	// more.
-	DeleteDeidentifyTemplate(ctx context.Context, in *DeleteDeidentifyTemplateRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteDeidentifyTemplate(ctx context.Context, in *DeleteDeidentifyTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a job trigger to run DLP actions such as scanning storage for
 	// sensitive information on a set schedule.
 	// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
@@ -20224,7 +20224,7 @@ type DlpServiceClient interface {
 	ListJobTriggers(ctx context.Context, in *ListJobTriggersRequest, opts ...grpc.CallOption) (*ListJobTriggersResponse, error)
 	// Deletes a job trigger.
 	// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
-	DeleteJobTrigger(ctx context.Context, in *DeleteJobTriggerRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteJobTrigger(ctx context.Context, in *DeleteJobTriggerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Activate a job trigger. Causes the immediate execute of a trigger
 	// instead of waiting on the trigger event to occur.
 	ActivateJobTrigger(ctx context.Context, in *ActivateJobTriggerRequest, opts ...grpc.CallOption) (*DlpJob, error)
@@ -20249,13 +20249,13 @@ type DlpServiceClient interface {
 	// possible.
 	// See https://cloud.google.com/dlp/docs/inspecting-storage and
 	// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
-	DeleteDlpJob(ctx context.Context, in *DeleteDlpJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteDlpJob(ctx context.Context, in *DeleteDlpJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Starts asynchronous cancellation on a long-running DlpJob. The server
 	// makes a best effort to cancel the DlpJob, but success is not
 	// guaranteed.
 	// See https://cloud.google.com/dlp/docs/inspecting-storage and
 	// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
-	CancelDlpJob(ctx context.Context, in *CancelDlpJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CancelDlpJob(ctx context.Context, in *CancelDlpJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a pre-built stored infoType to be used for inspection.
 	// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
 	// learn more.
@@ -20276,7 +20276,7 @@ type DlpServiceClient interface {
 	// Deletes a stored infoType.
 	// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
 	// learn more.
-	DeleteStoredInfoType(ctx context.Context, in *DeleteStoredInfoTypeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteStoredInfoType(ctx context.Context, in *DeleteStoredInfoTypeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Inspect hybrid content and store findings to a job.
 	// To review the findings inspect the job. Inspection will occur
 	// asynchronously.
@@ -20289,7 +20289,7 @@ type DlpServiceClient interface {
 	// Early access feature is in a pre-release state and might change or have
 	// limited support. For more information, see
 	// https://cloud.google.com/products#product-launch-stages.
-	FinishDlpJob(ctx context.Context, in *FinishDlpJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	FinishDlpJob(ctx context.Context, in *FinishDlpJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type dlpServiceClient struct {
@@ -20381,8 +20381,8 @@ func (c *dlpServiceClient) ListInspectTemplates(ctx context.Context, in *ListIns
 	return out, nil
 }
 
-func (c *dlpServiceClient) DeleteInspectTemplate(ctx context.Context, in *DeleteInspectTemplateRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dlpServiceClient) DeleteInspectTemplate(ctx context.Context, in *DeleteInspectTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.privacy.dlp.v2.DlpService/DeleteInspectTemplate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -20426,8 +20426,8 @@ func (c *dlpServiceClient) ListDeidentifyTemplates(ctx context.Context, in *List
 	return out, nil
 }
 
-func (c *dlpServiceClient) DeleteDeidentifyTemplate(ctx context.Context, in *DeleteDeidentifyTemplateRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dlpServiceClient) DeleteDeidentifyTemplate(ctx context.Context, in *DeleteDeidentifyTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.privacy.dlp.v2.DlpService/DeleteDeidentifyTemplate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -20480,8 +20480,8 @@ func (c *dlpServiceClient) ListJobTriggers(ctx context.Context, in *ListJobTrigg
 	return out, nil
 }
 
-func (c *dlpServiceClient) DeleteJobTrigger(ctx context.Context, in *DeleteJobTriggerRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dlpServiceClient) DeleteJobTrigger(ctx context.Context, in *DeleteJobTriggerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.privacy.dlp.v2.DlpService/DeleteJobTrigger", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -20525,8 +20525,8 @@ func (c *dlpServiceClient) GetDlpJob(ctx context.Context, in *GetDlpJobRequest, 
 	return out, nil
 }
 
-func (c *dlpServiceClient) DeleteDlpJob(ctx context.Context, in *DeleteDlpJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dlpServiceClient) DeleteDlpJob(ctx context.Context, in *DeleteDlpJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.privacy.dlp.v2.DlpService/DeleteDlpJob", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -20534,8 +20534,8 @@ func (c *dlpServiceClient) DeleteDlpJob(ctx context.Context, in *DeleteDlpJobReq
 	return out, nil
 }
 
-func (c *dlpServiceClient) CancelDlpJob(ctx context.Context, in *CancelDlpJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dlpServiceClient) CancelDlpJob(ctx context.Context, in *CancelDlpJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.privacy.dlp.v2.DlpService/CancelDlpJob", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -20579,8 +20579,8 @@ func (c *dlpServiceClient) ListStoredInfoTypes(ctx context.Context, in *ListStor
 	return out, nil
 }
 
-func (c *dlpServiceClient) DeleteStoredInfoType(ctx context.Context, in *DeleteStoredInfoTypeRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dlpServiceClient) DeleteStoredInfoType(ctx context.Context, in *DeleteStoredInfoTypeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.privacy.dlp.v2.DlpService/DeleteStoredInfoType", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -20597,8 +20597,8 @@ func (c *dlpServiceClient) HybridInspectDlpJob(ctx context.Context, in *HybridIn
 	return out, nil
 }
 
-func (c *dlpServiceClient) FinishDlpJob(ctx context.Context, in *FinishDlpJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dlpServiceClient) FinishDlpJob(ctx context.Context, in *FinishDlpJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.privacy.dlp.v2.DlpService/FinishDlpJob", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -20660,7 +20660,7 @@ type DlpServiceServer interface {
 	ListInspectTemplates(context.Context, *ListInspectTemplatesRequest) (*ListInspectTemplatesResponse, error)
 	// Deletes an InspectTemplate.
 	// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-	DeleteInspectTemplate(context.Context, *DeleteInspectTemplateRequest) (*empty.Empty, error)
+	DeleteInspectTemplate(context.Context, *DeleteInspectTemplateRequest) (*emptypb.Empty, error)
 	// Creates a DeidentifyTemplate for re-using frequently used configuration
 	// for de-identifying content, images, and storage.
 	// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
@@ -20681,7 +20681,7 @@ type DlpServiceServer interface {
 	// Deletes a DeidentifyTemplate.
 	// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
 	// more.
-	DeleteDeidentifyTemplate(context.Context, *DeleteDeidentifyTemplateRequest) (*empty.Empty, error)
+	DeleteDeidentifyTemplate(context.Context, *DeleteDeidentifyTemplateRequest) (*emptypb.Empty, error)
 	// Creates a job trigger to run DLP actions such as scanning storage for
 	// sensitive information on a set schedule.
 	// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
@@ -20704,7 +20704,7 @@ type DlpServiceServer interface {
 	ListJobTriggers(context.Context, *ListJobTriggersRequest) (*ListJobTriggersResponse, error)
 	// Deletes a job trigger.
 	// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
-	DeleteJobTrigger(context.Context, *DeleteJobTriggerRequest) (*empty.Empty, error)
+	DeleteJobTrigger(context.Context, *DeleteJobTriggerRequest) (*emptypb.Empty, error)
 	// Activate a job trigger. Causes the immediate execute of a trigger
 	// instead of waiting on the trigger event to occur.
 	ActivateJobTrigger(context.Context, *ActivateJobTriggerRequest) (*DlpJob, error)
@@ -20729,13 +20729,13 @@ type DlpServiceServer interface {
 	// possible.
 	// See https://cloud.google.com/dlp/docs/inspecting-storage and
 	// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
-	DeleteDlpJob(context.Context, *DeleteDlpJobRequest) (*empty.Empty, error)
+	DeleteDlpJob(context.Context, *DeleteDlpJobRequest) (*emptypb.Empty, error)
 	// Starts asynchronous cancellation on a long-running DlpJob. The server
 	// makes a best effort to cancel the DlpJob, but success is not
 	// guaranteed.
 	// See https://cloud.google.com/dlp/docs/inspecting-storage and
 	// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
-	CancelDlpJob(context.Context, *CancelDlpJobRequest) (*empty.Empty, error)
+	CancelDlpJob(context.Context, *CancelDlpJobRequest) (*emptypb.Empty, error)
 	// Creates a pre-built stored infoType to be used for inspection.
 	// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
 	// learn more.
@@ -20756,7 +20756,7 @@ type DlpServiceServer interface {
 	// Deletes a stored infoType.
 	// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
 	// learn more.
-	DeleteStoredInfoType(context.Context, *DeleteStoredInfoTypeRequest) (*empty.Empty, error)
+	DeleteStoredInfoType(context.Context, *DeleteStoredInfoTypeRequest) (*emptypb.Empty, error)
 	// Inspect hybrid content and store findings to a job.
 	// To review the findings inspect the job. Inspection will occur
 	// asynchronously.
@@ -20769,7 +20769,7 @@ type DlpServiceServer interface {
 	// Early access feature is in a pre-release state and might change or have
 	// limited support. For more information, see
 	// https://cloud.google.com/products#product-launch-stages.
-	FinishDlpJob(context.Context, *FinishDlpJobRequest) (*empty.Empty, error)
+	FinishDlpJob(context.Context, *FinishDlpJobRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedDlpServiceServer can be embedded to have forward compatible implementations.
@@ -20803,7 +20803,7 @@ func (*UnimplementedDlpServiceServer) GetInspectTemplate(context.Context, *GetIn
 func (*UnimplementedDlpServiceServer) ListInspectTemplates(context.Context, *ListInspectTemplatesRequest) (*ListInspectTemplatesResponse, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method ListInspectTemplates not implemented")
 }
-func (*UnimplementedDlpServiceServer) DeleteInspectTemplate(context.Context, *DeleteInspectTemplateRequest) (*empty.Empty, error) {
+func (*UnimplementedDlpServiceServer) DeleteInspectTemplate(context.Context, *DeleteInspectTemplateRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteInspectTemplate not implemented")
 }
 func (*UnimplementedDlpServiceServer) CreateDeidentifyTemplate(context.Context, *CreateDeidentifyTemplateRequest) (*DeidentifyTemplate, error) {
@@ -20818,7 +20818,7 @@ func (*UnimplementedDlpServiceServer) GetDeidentifyTemplate(context.Context, *Ge
 func (*UnimplementedDlpServiceServer) ListDeidentifyTemplates(context.Context, *ListDeidentifyTemplatesRequest) (*ListDeidentifyTemplatesResponse, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method ListDeidentifyTemplates not implemented")
 }
-func (*UnimplementedDlpServiceServer) DeleteDeidentifyTemplate(context.Context, *DeleteDeidentifyTemplateRequest) (*empty.Empty, error) {
+func (*UnimplementedDlpServiceServer) DeleteDeidentifyTemplate(context.Context, *DeleteDeidentifyTemplateRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteDeidentifyTemplate not implemented")
 }
 func (*UnimplementedDlpServiceServer) CreateJobTrigger(context.Context, *CreateJobTriggerRequest) (*JobTrigger, error) {
@@ -20836,7 +20836,7 @@ func (*UnimplementedDlpServiceServer) GetJobTrigger(context.Context, *GetJobTrig
 func (*UnimplementedDlpServiceServer) ListJobTriggers(context.Context, *ListJobTriggersRequest) (*ListJobTriggersResponse, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method ListJobTriggers not implemented")
 }
-func (*UnimplementedDlpServiceServer) DeleteJobTrigger(context.Context, *DeleteJobTriggerRequest) (*empty.Empty, error) {
+func (*UnimplementedDlpServiceServer) DeleteJobTrigger(context.Context, *DeleteJobTriggerRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteJobTrigger not implemented")
 }
 func (*UnimplementedDlpServiceServer) ActivateJobTrigger(context.Context, *ActivateJobTriggerRequest) (*DlpJob, error) {
@@ -20851,10 +20851,10 @@ func (*UnimplementedDlpServiceServer) ListDlpJobs(context.Context, *ListDlpJobsR
 func (*UnimplementedDlpServiceServer) GetDlpJob(context.Context, *GetDlpJobRequest) (*DlpJob, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method GetDlpJob not implemented")
 }
-func (*UnimplementedDlpServiceServer) DeleteDlpJob(context.Context, *DeleteDlpJobRequest) (*empty.Empty, error) {
+func (*UnimplementedDlpServiceServer) DeleteDlpJob(context.Context, *DeleteDlpJobRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteDlpJob not implemented")
 }
-func (*UnimplementedDlpServiceServer) CancelDlpJob(context.Context, *CancelDlpJobRequest) (*empty.Empty, error) {
+func (*UnimplementedDlpServiceServer) CancelDlpJob(context.Context, *CancelDlpJobRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method CancelDlpJob not implemented")
 }
 func (*UnimplementedDlpServiceServer) CreateStoredInfoType(context.Context, *CreateStoredInfoTypeRequest) (*StoredInfoType, error) {
@@ -20869,13 +20869,13 @@ func (*UnimplementedDlpServiceServer) GetStoredInfoType(context.Context, *GetSto
 func (*UnimplementedDlpServiceServer) ListStoredInfoTypes(context.Context, *ListStoredInfoTypesRequest) (*ListStoredInfoTypesResponse, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method ListStoredInfoTypes not implemented")
 }
-func (*UnimplementedDlpServiceServer) DeleteStoredInfoType(context.Context, *DeleteStoredInfoTypeRequest) (*empty.Empty, error) {
+func (*UnimplementedDlpServiceServer) DeleteStoredInfoType(context.Context, *DeleteStoredInfoTypeRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteStoredInfoType not implemented")
 }
 func (*UnimplementedDlpServiceServer) HybridInspectDlpJob(context.Context, *HybridInspectDlpJobRequest) (*HybridInspectResponse, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method HybridInspectDlpJob not implemented")
 }
-func (*UnimplementedDlpServiceServer) FinishDlpJob(context.Context, *FinishDlpJobRequest) (*empty.Empty, error) {
+func (*UnimplementedDlpServiceServer) FinishDlpJob(context.Context, *FinishDlpJobRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method FinishDlpJob not implemented")
 }
 

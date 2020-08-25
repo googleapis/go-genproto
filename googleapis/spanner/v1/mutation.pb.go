@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -214,7 +214,7 @@ type Mutation_Write struct {
 	// `Mutation`s, each containing one `values` entry and repeating
 	// [table][google.spanner.v1.Mutation.Write.table] and [columns][google.spanner.v1.Mutation.Write.columns]. Individual values in each list are
 	// encoded as described [here][google.spanner.v1.TypeCode].
-	Values []*_struct.ListValue `protobuf:"bytes,3,rep,name=values,proto3" json:"values,omitempty"`
+	Values []*structpb.ListValue `protobuf:"bytes,3,rep,name=values,proto3" json:"values,omitempty"`
 }
 
 func (x *Mutation_Write) Reset() {
@@ -263,7 +263,7 @@ func (x *Mutation_Write) GetColumns() []string {
 	return nil
 }
 
-func (x *Mutation_Write) GetValues() []*_struct.ListValue {
+func (x *Mutation_Write) GetValues() []*structpb.ListValue {
 	if x != nil {
 		return x.Values
 	}
@@ -407,11 +407,11 @@ func file_google_spanner_v1_mutation_proto_rawDescGZIP() []byte {
 
 var file_google_spanner_v1_mutation_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_google_spanner_v1_mutation_proto_goTypes = []interface{}{
-	(*Mutation)(nil),          // 0: google.spanner.v1.Mutation
-	(*Mutation_Write)(nil),    // 1: google.spanner.v1.Mutation.Write
-	(*Mutation_Delete)(nil),   // 2: google.spanner.v1.Mutation.Delete
-	(*_struct.ListValue)(nil), // 3: google.protobuf.ListValue
-	(*KeySet)(nil),            // 4: google.spanner.v1.KeySet
+	(*Mutation)(nil),           // 0: google.spanner.v1.Mutation
+	(*Mutation_Write)(nil),     // 1: google.spanner.v1.Mutation.Write
+	(*Mutation_Delete)(nil),    // 2: google.spanner.v1.Mutation.Delete
+	(*structpb.ListValue)(nil), // 3: google.protobuf.ListValue
+	(*KeySet)(nil),             // 4: google.spanner.v1.KeySet
 }
 var file_google_spanner_v1_mutation_proto_depIdxs = []int32{
 	1, // 0: google.spanner.v1.Mutation.insert:type_name -> google.spanner.v1.Mutation.Write

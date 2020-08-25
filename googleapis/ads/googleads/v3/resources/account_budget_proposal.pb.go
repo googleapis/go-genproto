@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -63,12 +63,12 @@ type AccountBudgetProposal struct {
 	// `customers/{customer_id}/accountBudgetProposals/{account_budget_proposal_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the proposal.
-	Id *wrappers.Int64Value `protobuf:"bytes,14,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,14,opt,name=id,proto3" json:"id,omitempty"`
 	// Immutable. The resource name of the billing setup associated with this proposal.
-	BillingSetup *wrappers.StringValue `protobuf:"bytes,2,opt,name=billing_setup,json=billingSetup,proto3" json:"billing_setup,omitempty"`
+	BillingSetup *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=billing_setup,json=billingSetup,proto3" json:"billing_setup,omitempty"`
 	// Immutable. The resource name of the account-level budget associated with this
 	// proposal.
-	AccountBudget *wrappers.StringValue `protobuf:"bytes,3,opt,name=account_budget,json=accountBudget,proto3" json:"account_budget,omitempty"`
+	AccountBudget *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=account_budget,json=accountBudget,proto3" json:"account_budget,omitempty"`
 	// Immutable. The type of this proposal, e.g. END to end the budget associated with this
 	// proposal.
 	ProposalType enums.AccountBudgetProposalTypeEnum_AccountBudgetProposalType `protobuf:"varint,4,opt,name=proposal_type,json=proposalType,proto3,enum=google.ads.googleads.v3.enums.AccountBudgetProposalTypeEnum_AccountBudgetProposalType" json:"proposal_type,omitempty"`
@@ -76,19 +76,19 @@ type AccountBudgetProposal struct {
 	// When a new proposal is created, the status defaults to PENDING.
 	Status enums.AccountBudgetProposalStatusEnum_AccountBudgetProposalStatus `protobuf:"varint,15,opt,name=status,proto3,enum=google.ads.googleads.v3.enums.AccountBudgetProposalStatusEnum_AccountBudgetProposalStatus" json:"status,omitempty"`
 	// Immutable. The name to assign to the account-level budget.
-	ProposedName *wrappers.StringValue `protobuf:"bytes,5,opt,name=proposed_name,json=proposedName,proto3" json:"proposed_name,omitempty"`
+	ProposedName *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=proposed_name,json=proposedName,proto3" json:"proposed_name,omitempty"`
 	// Output only. The approved start date time in yyyy-mm-dd hh:mm:ss format.
-	ApprovedStartDateTime *wrappers.StringValue `protobuf:"bytes,20,opt,name=approved_start_date_time,json=approvedStartDateTime,proto3" json:"approved_start_date_time,omitempty"`
+	ApprovedStartDateTime *wrapperspb.StringValue `protobuf:"bytes,20,opt,name=approved_start_date_time,json=approvedStartDateTime,proto3" json:"approved_start_date_time,omitempty"`
 	// Immutable. A purchase order number is a value that enables the user to help them
 	// reference this budget in their monthly invoices.
-	ProposedPurchaseOrderNumber *wrappers.StringValue `protobuf:"bytes,12,opt,name=proposed_purchase_order_number,json=proposedPurchaseOrderNumber,proto3" json:"proposed_purchase_order_number,omitempty"`
+	ProposedPurchaseOrderNumber *wrapperspb.StringValue `protobuf:"bytes,12,opt,name=proposed_purchase_order_number,json=proposedPurchaseOrderNumber,proto3" json:"proposed_purchase_order_number,omitempty"`
 	// Immutable. Notes associated with this budget.
-	ProposedNotes *wrappers.StringValue `protobuf:"bytes,13,opt,name=proposed_notes,json=proposedNotes,proto3" json:"proposed_notes,omitempty"`
+	ProposedNotes *wrapperspb.StringValue `protobuf:"bytes,13,opt,name=proposed_notes,json=proposedNotes,proto3" json:"proposed_notes,omitempty"`
 	// Output only. The date time when this account-level budget proposal was created, which is
 	// not the same as its approval date time, if applicable.
-	CreationDateTime *wrappers.StringValue `protobuf:"bytes,16,opt,name=creation_date_time,json=creationDateTime,proto3" json:"creation_date_time,omitempty"`
+	CreationDateTime *wrapperspb.StringValue `protobuf:"bytes,16,opt,name=creation_date_time,json=creationDateTime,proto3" json:"creation_date_time,omitempty"`
 	// Output only. The date time when this account-level budget was approved, if applicable.
-	ApprovalDateTime *wrappers.StringValue `protobuf:"bytes,17,opt,name=approval_date_time,json=approvalDateTime,proto3" json:"approval_date_time,omitempty"`
+	ApprovalDateTime *wrapperspb.StringValue `protobuf:"bytes,17,opt,name=approval_date_time,json=approvalDateTime,proto3" json:"approval_date_time,omitempty"`
 	// The proposed start date time of the account-level budget, which cannot be
 	// in the past.
 	//
@@ -162,21 +162,21 @@ func (x *AccountBudgetProposal) GetResourceName() string {
 	return ""
 }
 
-func (x *AccountBudgetProposal) GetId() *wrappers.Int64Value {
+func (x *AccountBudgetProposal) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetBillingSetup() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetBillingSetup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BillingSetup
 	}
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetAccountBudget() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetAccountBudget() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AccountBudget
 	}
@@ -197,42 +197,42 @@ func (x *AccountBudgetProposal) GetStatus() enums.AccountBudgetProposalStatusEnu
 	return enums.AccountBudgetProposalStatusEnum_UNSPECIFIED
 }
 
-func (x *AccountBudgetProposal) GetProposedName() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetProposedName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProposedName
 	}
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetApprovedStartDateTime() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetApprovedStartDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ApprovedStartDateTime
 	}
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetProposedPurchaseOrderNumber() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetProposedPurchaseOrderNumber() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProposedPurchaseOrderNumber
 	}
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetProposedNotes() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetProposedNotes() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProposedNotes
 	}
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetCreationDateTime() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetCreationDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CreationDateTime
 	}
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetApprovalDateTime() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetApprovalDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ApprovalDateTime
 	}
@@ -246,7 +246,7 @@ func (m *AccountBudgetProposal) GetProposedStartTime() isAccountBudgetProposal_P
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetProposedStartDateTime() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetProposedStartDateTime() *wrapperspb.StringValue {
 	if x, ok := x.GetProposedStartTime().(*AccountBudgetProposal_ProposedStartDateTime); ok {
 		return x.ProposedStartDateTime
 	}
@@ -267,7 +267,7 @@ func (m *AccountBudgetProposal) GetProposedEndTime() isAccountBudgetProposal_Pro
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetProposedEndDateTime() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetProposedEndDateTime() *wrapperspb.StringValue {
 	if x, ok := x.GetProposedEndTime().(*AccountBudgetProposal_ProposedEndDateTime); ok {
 		return x.ProposedEndDateTime
 	}
@@ -288,7 +288,7 @@ func (m *AccountBudgetProposal) GetApprovedEndTime() isAccountBudgetProposal_App
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetApprovedEndDateTime() *wrappers.StringValue {
+func (x *AccountBudgetProposal) GetApprovedEndDateTime() *wrapperspb.StringValue {
 	if x, ok := x.GetApprovedEndTime().(*AccountBudgetProposal_ApprovedEndDateTime); ok {
 		return x.ApprovedEndDateTime
 	}
@@ -309,7 +309,7 @@ func (m *AccountBudgetProposal) GetProposedSpendingLimit() isAccountBudgetPropos
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetProposedSpendingLimitMicros() *wrappers.Int64Value {
+func (x *AccountBudgetProposal) GetProposedSpendingLimitMicros() *wrapperspb.Int64Value {
 	if x, ok := x.GetProposedSpendingLimit().(*AccountBudgetProposal_ProposedSpendingLimitMicros); ok {
 		return x.ProposedSpendingLimitMicros
 	}
@@ -330,7 +330,7 @@ func (m *AccountBudgetProposal) GetApprovedSpendingLimit() isAccountBudgetPropos
 	return nil
 }
 
-func (x *AccountBudgetProposal) GetApprovedSpendingLimitMicros() *wrappers.Int64Value {
+func (x *AccountBudgetProposal) GetApprovedSpendingLimitMicros() *wrapperspb.Int64Value {
 	if x, ok := x.GetApprovedSpendingLimit().(*AccountBudgetProposal_ApprovedSpendingLimitMicros); ok {
 		return x.ApprovedSpendingLimitMicros
 	}
@@ -350,7 +350,7 @@ type isAccountBudgetProposal_ProposedStartTime interface {
 
 type AccountBudgetProposal_ProposedStartDateTime struct {
 	// Immutable. The proposed start date time in yyyy-mm-dd hh:mm:ss format.
-	ProposedStartDateTime *wrappers.StringValue `protobuf:"bytes,18,opt,name=proposed_start_date_time,json=proposedStartDateTime,proto3,oneof"`
+	ProposedStartDateTime *wrapperspb.StringValue `protobuf:"bytes,18,opt,name=proposed_start_date_time,json=proposedStartDateTime,proto3,oneof"`
 }
 
 type AccountBudgetProposal_ProposedStartTimeType struct {
@@ -368,7 +368,7 @@ type isAccountBudgetProposal_ProposedEndTime interface {
 
 type AccountBudgetProposal_ProposedEndDateTime struct {
 	// Immutable. The proposed end date time in yyyy-mm-dd hh:mm:ss format.
-	ProposedEndDateTime *wrappers.StringValue `protobuf:"bytes,19,opt,name=proposed_end_date_time,json=proposedEndDateTime,proto3,oneof"`
+	ProposedEndDateTime *wrapperspb.StringValue `protobuf:"bytes,19,opt,name=proposed_end_date_time,json=proposedEndDateTime,proto3,oneof"`
 }
 
 type AccountBudgetProposal_ProposedEndTimeType struct {
@@ -386,7 +386,7 @@ type isAccountBudgetProposal_ApprovedEndTime interface {
 
 type AccountBudgetProposal_ApprovedEndDateTime struct {
 	// Output only. The approved end date time in yyyy-mm-dd hh:mm:ss format.
-	ApprovedEndDateTime *wrappers.StringValue `protobuf:"bytes,21,opt,name=approved_end_date_time,json=approvedEndDateTime,proto3,oneof"`
+	ApprovedEndDateTime *wrapperspb.StringValue `protobuf:"bytes,21,opt,name=approved_end_date_time,json=approvedEndDateTime,proto3,oneof"`
 }
 
 type AccountBudgetProposal_ApprovedEndTimeType struct {
@@ -405,7 +405,7 @@ type isAccountBudgetProposal_ProposedSpendingLimit interface {
 type AccountBudgetProposal_ProposedSpendingLimitMicros struct {
 	// Immutable. The proposed spending limit in micros.  One million is equivalent to
 	// one unit.
-	ProposedSpendingLimitMicros *wrappers.Int64Value `protobuf:"bytes,10,opt,name=proposed_spending_limit_micros,json=proposedSpendingLimitMicros,proto3,oneof"`
+	ProposedSpendingLimitMicros *wrapperspb.Int64Value `protobuf:"bytes,10,opt,name=proposed_spending_limit_micros,json=proposedSpendingLimitMicros,proto3,oneof"`
 }
 
 type AccountBudgetProposal_ProposedSpendingLimitType struct {
@@ -426,7 +426,7 @@ type isAccountBudgetProposal_ApprovedSpendingLimit interface {
 type AccountBudgetProposal_ApprovedSpendingLimitMicros struct {
 	// Output only. The approved spending limit in micros.  One million is equivalent to
 	// one unit.
-	ApprovedSpendingLimitMicros *wrappers.Int64Value `protobuf:"bytes,23,opt,name=approved_spending_limit_micros,json=approvedSpendingLimitMicros,proto3,oneof"`
+	ApprovedSpendingLimitMicros *wrapperspb.Int64Value `protobuf:"bytes,23,opt,name=approved_spending_limit_micros,json=approvedSpendingLimitMicros,proto3,oneof"`
 }
 
 type AccountBudgetProposal_ApprovedSpendingLimitType struct {
@@ -664,8 +664,8 @@ func file_google_ads_googleads_v3_resources_account_budget_proposal_proto_rawDes
 var file_google_ads_googleads_v3_resources_account_budget_proposal_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_account_budget_proposal_proto_goTypes = []interface{}{
 	(*AccountBudgetProposal)(nil),                                          // 0: google.ads.googleads.v3.resources.AccountBudgetProposal
-	(*wrappers.Int64Value)(nil),                                            // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),                                           // 2: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                                          // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                                         // 2: google.protobuf.StringValue
 	(enums.AccountBudgetProposalTypeEnum_AccountBudgetProposalType)(0),     // 3: google.ads.googleads.v3.enums.AccountBudgetProposalTypeEnum.AccountBudgetProposalType
 	(enums.AccountBudgetProposalStatusEnum_AccountBudgetProposalStatus)(0), // 4: google.ads.googleads.v3.enums.AccountBudgetProposalStatusEnum.AccountBudgetProposalStatus
 	(enums.TimeTypeEnum_TimeType)(0),                                       // 5: google.ads.googleads.v3.enums.TimeTypeEnum.TimeType

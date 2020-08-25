@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1470,14 +1470,14 @@ type Table struct {
 	// The expiration date for the table, after which the table
 	// is deleted and the storage reclaimed.
 	// If not present, the table persists indefinitely.
-	ExpireTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
+	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 	// The time the table was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The time the table was last truncated
 	// by an operation with a `writeDisposition` of `WRITE_TRUNCATE`.
-	TruncateTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=truncate_time,json=truncateTime,proto3" json:"truncate_time,omitempty"`
+	TruncateTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=truncate_time,json=truncateTime,proto3" json:"truncate_time,omitempty"`
 	// The time the table was last modified.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,9,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The table encryption information. Set when non-default encryption is used.
 	Encryption *EncryptionInfo `protobuf:"bytes,10,opt,name=encryption,proto3" json:"encryption,omitempty"`
 }
@@ -1542,28 +1542,28 @@ func (x *Table) GetView() *TableViewDefinition {
 	return nil
 }
 
-func (x *Table) GetExpireTime() *timestamp.Timestamp {
+func (x *Table) GetExpireTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpireTime
 	}
 	return nil
 }
 
-func (x *Table) GetCreateTime() *timestamp.Timestamp {
+func (x *Table) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Table) GetTruncateTime() *timestamp.Timestamp {
+func (x *Table) GetTruncateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.TruncateTime
 	}
 	return nil
 }
 
-func (x *Table) GetUpdateTime() *timestamp.Timestamp {
+func (x *Table) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -1707,16 +1707,16 @@ type Dataset struct {
 	// User-provided metadata for the dataset.
 	Info *DatasetInfo `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
 	// The time the dataset was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The time the dataset was last modified.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The access control list for the dataset.
 	Acl *BigQueryAcl `protobuf:"bytes,6,opt,name=acl,proto3" json:"acl,omitempty"`
 	// If this field is present, each table that does not specify an
 	// expiration time is assigned an expiration time by adding this
 	// duration to the table's `createTime`.  If this field is empty,
 	// there is no default table expiration time.
-	DefaultTableExpireDuration *duration.Duration `protobuf:"bytes,8,opt,name=default_table_expire_duration,json=defaultTableExpireDuration,proto3" json:"default_table_expire_duration,omitempty"`
+	DefaultTableExpireDuration *durationpb.Duration `protobuf:"bytes,8,opt,name=default_table_expire_duration,json=defaultTableExpireDuration,proto3" json:"default_table_expire_duration,omitempty"`
 }
 
 func (x *Dataset) Reset() {
@@ -1765,14 +1765,14 @@ func (x *Dataset) GetInfo() *DatasetInfo {
 	return nil
 }
 
-func (x *Dataset) GetCreateTime() *timestamp.Timestamp {
+func (x *Dataset) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Dataset) GetUpdateTime() *timestamp.Timestamp {
+func (x *Dataset) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -1786,7 +1786,7 @@ func (x *Dataset) GetAcl() *BigQueryAcl {
 	return nil
 }
 
-func (x *Dataset) GetDefaultTableExpireDuration() *duration.Duration {
+func (x *Dataset) GetDefaultTableExpireDuration() *durationpb.Duration {
 	if x != nil {
 		return x.DefaultTableExpireDuration
 	}
@@ -2254,11 +2254,11 @@ type JobStatistics struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Time when the job was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Time when the job started.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time when the job ended.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Total bytes processed for a job.
 	TotalProcessedBytes int64 `protobuf:"varint,4,opt,name=total_processed_bytes,json=totalProcessedBytes,proto3" json:"total_processed_bytes,omitempty"`
 	// Processed bytes, adjusted by the job's CPU usage.
@@ -2323,21 +2323,21 @@ func (*JobStatistics) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_logging_v1_audit_data_proto_rawDescGZIP(), []int{30}
 }
 
-func (x *JobStatistics) GetCreateTime() *timestamp.Timestamp {
+func (x *JobStatistics) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *JobStatistics) GetStartTime() *timestamp.Timestamp {
+func (x *JobStatistics) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *JobStatistics) GetEndTime() *timestamp.Timestamp {
+func (x *JobStatistics) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -3898,8 +3898,8 @@ var file_google_cloud_bigquery_logging_v1_audit_data_proto_goTypes = []interface
 	(*JobStatistics_ReservationResourceUsage)(nil), // 43: google.cloud.bigquery.logging.v1.JobStatistics.ReservationResourceUsage
 	(*v1.SetIamPolicyRequest)(nil),                 // 44: google.iam.v1.SetIamPolicyRequest
 	(*v1.Policy)(nil),                              // 45: google.iam.v1.Policy
-	(*timestamp.Timestamp)(nil),                    // 46: google.protobuf.Timestamp
-	(*duration.Duration)(nil),                      // 47: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),                  // 46: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                    // 47: google.protobuf.Duration
 	(*status.Status)(nil),                          // 48: google.rpc.Status
 }
 var file_google_cloud_bigquery_logging_v1_audit_data_proto_depIdxs = []int32{

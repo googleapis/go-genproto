@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -49,13 +49,13 @@ type UrlCollection struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Unique identifier for this UrlCollection instance.
-	UrlCollectionId *wrappers.StringValue `protobuf:"bytes,1,opt,name=url_collection_id,json=urlCollectionId,proto3" json:"url_collection_id,omitempty"`
+	UrlCollectionId *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=url_collection_id,json=urlCollectionId,proto3" json:"url_collection_id,omitempty"`
 	// A list of possible final URLs.
-	FinalUrls []*wrappers.StringValue `protobuf:"bytes,2,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
+	FinalUrls []*wrapperspb.StringValue `protobuf:"bytes,2,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
 	// A list of possible final mobile URLs.
-	FinalMobileUrls []*wrappers.StringValue `protobuf:"bytes,3,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
+	FinalMobileUrls []*wrapperspb.StringValue `protobuf:"bytes,3,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
 	// URL template for constructing a tracking URL.
-	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,4,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
+	TrackingUrlTemplate *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 }
 
 func (x *UrlCollection) Reset() {
@@ -90,28 +90,28 @@ func (*UrlCollection) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_url_collection_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UrlCollection) GetUrlCollectionId() *wrappers.StringValue {
+func (x *UrlCollection) GetUrlCollectionId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.UrlCollectionId
 	}
 	return nil
 }
 
-func (x *UrlCollection) GetFinalUrls() []*wrappers.StringValue {
+func (x *UrlCollection) GetFinalUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrls
 	}
 	return nil
 }
 
-func (x *UrlCollection) GetFinalMobileUrls() []*wrappers.StringValue {
+func (x *UrlCollection) GetFinalMobileUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalMobileUrls
 	}
 	return nil
 }
 
-func (x *UrlCollection) GetTrackingUrlTemplate() *wrappers.StringValue {
+func (x *UrlCollection) GetTrackingUrlTemplate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrlTemplate
 	}
@@ -181,8 +181,8 @@ func file_google_ads_googleads_v4_common_url_collection_proto_rawDescGZIP() []by
 
 var file_google_ads_googleads_v4_common_url_collection_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_common_url_collection_proto_goTypes = []interface{}{
-	(*UrlCollection)(nil),        // 0: google.ads.googleads.v4.common.UrlCollection
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*UrlCollection)(nil),          // 0: google.ads.googleads.v4.common.UrlCollection
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v4_common_url_collection_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.common.UrlCollection.url_collection_id:type_name -> google.protobuf.StringValue

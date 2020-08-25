@@ -26,13 +26,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -137,11 +137,11 @@ type ComputeMessageStatsResponse struct {
 	// The minimum publish timestamp across these messages. Note that publish
 	// timestamps within a partition are non-decreasing. The timestamp will be
 	// unset if there are no messages.
-	MinimumPublishTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=minimum_publish_time,json=minimumPublishTime,proto3" json:"minimum_publish_time,omitempty"`
+	MinimumPublishTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=minimum_publish_time,json=minimumPublishTime,proto3" json:"minimum_publish_time,omitempty"`
 	// The minimum event timestamp across these messages. For the purposes of this
 	// computation, if a message does not have an event time, we use the publish
 	// time. The timestamp will be unset if there are no messages.
-	MinimumEventTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=minimum_event_time,json=minimumEventTime,proto3" json:"minimum_event_time,omitempty"`
+	MinimumEventTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=minimum_event_time,json=minimumEventTime,proto3" json:"minimum_event_time,omitempty"`
 }
 
 func (x *ComputeMessageStatsResponse) Reset() {
@@ -190,14 +190,14 @@ func (x *ComputeMessageStatsResponse) GetMessageBytes() int64 {
 	return 0
 }
 
-func (x *ComputeMessageStatsResponse) GetMinimumPublishTime() *timestamp.Timestamp {
+func (x *ComputeMessageStatsResponse) GetMinimumPublishTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.MinimumPublishTime
 	}
 	return nil
 }
 
-func (x *ComputeMessageStatsResponse) GetMinimumEventTime() *timestamp.Timestamp {
+func (x *ComputeMessageStatsResponse) GetMinimumEventTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.MinimumEventTime
 	}
@@ -304,7 +304,7 @@ var file_google_cloud_pubsublite_v1_topic_stats_proto_goTypes = []interface{}{
 	(*ComputeMessageStatsRequest)(nil),  // 0: google.cloud.pubsublite.v1.ComputeMessageStatsRequest
 	(*ComputeMessageStatsResponse)(nil), // 1: google.cloud.pubsublite.v1.ComputeMessageStatsResponse
 	(*Cursor)(nil),                      // 2: google.cloud.pubsublite.v1.Cursor
-	(*timestamp.Timestamp)(nil),         // 3: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),       // 3: google.protobuf.Timestamp
 }
 var file_google_cloud_pubsublite_v1_topic_stats_proto_depIdxs = []int32{
 	2, // 0: google.cloud.pubsublite.v1.ComputeMessageStatsRequest.start_cursor:type_name -> google.cloud.pubsublite.v1.Cursor

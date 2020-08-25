@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -60,9 +60,9 @@ type Evaluation struct {
 	Config *EvaluationConfig `protobuf:"bytes,2,opt,name=config,proto3" json:"config,omitempty"`
 	// Output only. Timestamp for when the evaluation job that created this
 	// evaluation ran.
-	EvaluationJobRunTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=evaluation_job_run_time,json=evaluationJobRunTime,proto3" json:"evaluation_job_run_time,omitempty"`
+	EvaluationJobRunTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=evaluation_job_run_time,json=evaluationJobRunTime,proto3" json:"evaluation_job_run_time,omitempty"`
 	// Output only. Timestamp for when this evaluation was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Metrics comparing predictions to ground truth labels.
 	EvaluationMetrics *EvaluationMetrics `protobuf:"bytes,5,opt,name=evaluation_metrics,json=evaluationMetrics,proto3" json:"evaluation_metrics,omitempty"`
 	// Output only. Type of task that the model version being evaluated performs,
@@ -123,14 +123,14 @@ func (x *Evaluation) GetConfig() *EvaluationConfig {
 	return nil
 }
 
-func (x *Evaluation) GetEvaluationJobRunTime() *timestamp.Timestamp {
+func (x *Evaluation) GetEvaluationJobRunTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EvaluationJobRunTime
 	}
 	return nil
 }
 
-func (x *Evaluation) GetCreateTime() *timestamp.Timestamp {
+func (x *Evaluation) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1078,7 +1078,7 @@ var file_google_cloud_datalabeling_v1beta1_evaluation_proto_goTypes = []interfac
 	(*PrCurve_ConfidenceMetricsEntry)(nil),       // 8: google.cloud.datalabeling.v1beta1.PrCurve.ConfidenceMetricsEntry
 	(*ConfusionMatrix_ConfusionMatrixEntry)(nil), // 9: google.cloud.datalabeling.v1beta1.ConfusionMatrix.ConfusionMatrixEntry
 	(*ConfusionMatrix_Row)(nil),                  // 10: google.cloud.datalabeling.v1beta1.ConfusionMatrix.Row
-	(*timestamp.Timestamp)(nil),                  // 11: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                // 11: google.protobuf.Timestamp
 	(AnnotationType)(0),                          // 12: google.cloud.datalabeling.v1beta1.AnnotationType
 	(*AnnotationSpec)(nil),                       // 13: google.cloud.datalabeling.v1beta1.AnnotationSpec
 }

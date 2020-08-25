@@ -26,9 +26,9 @@ import (
 
 	proto "github.com/golang/protobuf/proto"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -632,7 +632,7 @@ type UpdatePhotoRequest struct {
 	// [updateMask][google.streetview.publish.v1.UpdatePhotoRequest.update_mask]
 	// contains `connections` and `UpdatePhotoRequest.photo.connections` is empty,
 	// all connections are removed.</aside>
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdatePhotoRequest) Reset() {
@@ -674,7 +674,7 @@ func (x *UpdatePhotoRequest) GetPhoto() *Photo {
 	return nil
 }
 
-func (x *UpdatePhotoRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdatePhotoRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1088,7 +1088,7 @@ var file_google_streetview_publish_v1_rpcmessages_proto_goTypes = []interface{}{
 	(*BatchDeletePhotosResponse)(nil), // 13: google.streetview.publish.v1.BatchDeletePhotosResponse
 	(*Photo)(nil),                     // 14: google.streetview.publish.v1.Photo
 	(*status.Status)(nil),             // 15: google.rpc.Status
-	(*field_mask.FieldMask)(nil),      // 16: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),     // 16: google.protobuf.FieldMask
 }
 var file_google_streetview_publish_v1_rpcmessages_proto_depIdxs = []int32{
 	14, // 0: google.streetview.publish.v1.CreatePhotoRequest.photo:type_name -> google.streetview.publish.v1.Photo

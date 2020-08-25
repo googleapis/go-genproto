@@ -27,15 +27,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -2784,7 +2784,7 @@ type UpdateEvaluationJobRequest struct {
 	//
 	// You can provide more than one of these fields by separating them with
 	// commas.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateEvaluationJobRequest) Reset() {
@@ -2826,7 +2826,7 @@ func (x *UpdateEvaluationJobRequest) GetEvaluationJob() *EvaluationJob {
 	return nil
 }
 
-func (x *UpdateEvaluationJobRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateEvaluationJobRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -4385,8 +4385,8 @@ var file_google_cloud_datalabeling_v1beta1_data_labeling_service_proto_goTypes =
 	(*Instruction)(nil),                                        // 65: google.cloud.datalabeling.v1beta1.Instruction
 	(*Evaluation)(nil),                                         // 66: google.cloud.datalabeling.v1beta1.Evaluation
 	(*EvaluationJob)(nil),                                      // 67: google.cloud.datalabeling.v1beta1.EvaluationJob
-	(*field_mask.FieldMask)(nil),                               // 68: google.protobuf.FieldMask
-	(*empty.Empty)(nil),                                        // 69: google.protobuf.Empty
+	(*fieldmaskpb.FieldMask)(nil),                              // 68: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),                                      // 69: google.protobuf.Empty
 	(*longrunning.Operation)(nil),                              // 70: google.longrunning.Operation
 }
 var file_google_cloud_datalabeling_v1beta1_data_labeling_service_proto_depIdxs = []int32{
@@ -5097,7 +5097,7 @@ type DataLabelingServiceClient interface {
 	// Lists datasets under a project. Pagination is supported.
 	ListDatasets(ctx context.Context, in *ListDatasetsRequest, opts ...grpc.CallOption) (*ListDatasetsResponse, error)
 	// Deletes a dataset by resource name.
-	DeleteDataset(ctx context.Context, in *DeleteDatasetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteDataset(ctx context.Context, in *DeleteDatasetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Imports data into dataset based on source locations defined in request.
 	// It can be called multiple times for the same dataset. Each dataset can
 	// only have one long running operation running on it. For example, no
@@ -5117,7 +5117,7 @@ type DataLabelingServiceClient interface {
 	// Lists annotated datasets for a dataset. Pagination is supported.
 	ListAnnotatedDatasets(ctx context.Context, in *ListAnnotatedDatasetsRequest, opts ...grpc.CallOption) (*ListAnnotatedDatasetsResponse, error)
 	// Deletes an annotated dataset by resource name.
-	DeleteAnnotatedDataset(ctx context.Context, in *DeleteAnnotatedDatasetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAnnotatedDataset(ctx context.Context, in *DeleteAnnotatedDatasetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Starts a labeling task for image. The type of image labeling task is
 	// configured by feature in the request.
 	LabelImage(ctx context.Context, in *LabelImageRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
@@ -5138,7 +5138,7 @@ type DataLabelingServiceClient interface {
 	// Lists annotation spec sets for a project. Pagination is supported.
 	ListAnnotationSpecSets(ctx context.Context, in *ListAnnotationSpecSetsRequest, opts ...grpc.CallOption) (*ListAnnotationSpecSetsResponse, error)
 	// Deletes an annotation spec set by resource name.
-	DeleteAnnotationSpecSet(ctx context.Context, in *DeleteAnnotationSpecSetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAnnotationSpecSet(ctx context.Context, in *DeleteAnnotationSpecSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates an instruction for how data should be labeled.
 	CreateInstruction(ctx context.Context, in *CreateInstructionRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Gets an instruction by resource name.
@@ -5146,7 +5146,7 @@ type DataLabelingServiceClient interface {
 	// Lists instructions for a project. Pagination is supported.
 	ListInstructions(ctx context.Context, in *ListInstructionsRequest, opts ...grpc.CallOption) (*ListInstructionsResponse, error)
 	// Deletes an instruction object by resource name.
-	DeleteInstruction(ctx context.Context, in *DeleteInstructionRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteInstruction(ctx context.Context, in *DeleteInstructionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets an evaluation by resource name (to search, use
 	// [projects.evaluations.search][google.cloud.datalabeling.v1beta1.DataLabelingService.SearchEvaluations]).
 	GetEvaluation(ctx context.Context, in *GetEvaluationRequest, opts ...grpc.CallOption) (*Evaluation, error)
@@ -5169,12 +5169,12 @@ type DataLabelingServiceClient interface {
 	GetEvaluationJob(ctx context.Context, in *GetEvaluationJobRequest, opts ...grpc.CallOption) (*EvaluationJob, error)
 	// Pauses an evaluation job. Pausing an evaluation job that is already in a
 	// `PAUSED` state is a no-op.
-	PauseEvaluationJob(ctx context.Context, in *PauseEvaluationJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	PauseEvaluationJob(ctx context.Context, in *PauseEvaluationJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Resumes a paused evaluation job. A deleted evaluation job can't be resumed.
 	// Resuming a running or scheduled evaluation job is a no-op.
-	ResumeEvaluationJob(ctx context.Context, in *ResumeEvaluationJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ResumeEvaluationJob(ctx context.Context, in *ResumeEvaluationJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Stops and deletes an evaluation job.
-	DeleteEvaluationJob(ctx context.Context, in *DeleteEvaluationJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteEvaluationJob(ctx context.Context, in *DeleteEvaluationJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists all evaluation jobs within a project with possible filters.
 	// Pagination is supported.
 	ListEvaluationJobs(ctx context.Context, in *ListEvaluationJobsRequest, opts ...grpc.CallOption) (*ListEvaluationJobsResponse, error)
@@ -5215,8 +5215,8 @@ func (c *dataLabelingServiceClient) ListDatasets(ctx context.Context, in *ListDa
 	return out, nil
 }
 
-func (c *dataLabelingServiceClient) DeleteDataset(ctx context.Context, in *DeleteDatasetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataLabelingServiceClient) DeleteDataset(ctx context.Context, in *DeleteDatasetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datalabeling.v1beta1.DataLabelingService/DeleteDataset", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5278,8 +5278,8 @@ func (c *dataLabelingServiceClient) ListAnnotatedDatasets(ctx context.Context, i
 	return out, nil
 }
 
-func (c *dataLabelingServiceClient) DeleteAnnotatedDataset(ctx context.Context, in *DeleteAnnotatedDatasetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataLabelingServiceClient) DeleteAnnotatedDataset(ctx context.Context, in *DeleteAnnotatedDatasetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datalabeling.v1beta1.DataLabelingService/DeleteAnnotatedDataset", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5359,8 +5359,8 @@ func (c *dataLabelingServiceClient) ListAnnotationSpecSets(ctx context.Context, 
 	return out, nil
 }
 
-func (c *dataLabelingServiceClient) DeleteAnnotationSpecSet(ctx context.Context, in *DeleteAnnotationSpecSetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataLabelingServiceClient) DeleteAnnotationSpecSet(ctx context.Context, in *DeleteAnnotationSpecSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datalabeling.v1beta1.DataLabelingService/DeleteAnnotationSpecSet", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5395,8 +5395,8 @@ func (c *dataLabelingServiceClient) ListInstructions(ctx context.Context, in *Li
 	return out, nil
 }
 
-func (c *dataLabelingServiceClient) DeleteInstruction(ctx context.Context, in *DeleteInstructionRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataLabelingServiceClient) DeleteInstruction(ctx context.Context, in *DeleteInstructionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datalabeling.v1beta1.DataLabelingService/DeleteInstruction", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5458,8 +5458,8 @@ func (c *dataLabelingServiceClient) GetEvaluationJob(ctx context.Context, in *Ge
 	return out, nil
 }
 
-func (c *dataLabelingServiceClient) PauseEvaluationJob(ctx context.Context, in *PauseEvaluationJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataLabelingServiceClient) PauseEvaluationJob(ctx context.Context, in *PauseEvaluationJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datalabeling.v1beta1.DataLabelingService/PauseEvaluationJob", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5467,8 +5467,8 @@ func (c *dataLabelingServiceClient) PauseEvaluationJob(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *dataLabelingServiceClient) ResumeEvaluationJob(ctx context.Context, in *ResumeEvaluationJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataLabelingServiceClient) ResumeEvaluationJob(ctx context.Context, in *ResumeEvaluationJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datalabeling.v1beta1.DataLabelingService/ResumeEvaluationJob", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5476,8 +5476,8 @@ func (c *dataLabelingServiceClient) ResumeEvaluationJob(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *dataLabelingServiceClient) DeleteEvaluationJob(ctx context.Context, in *DeleteEvaluationJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataLabelingServiceClient) DeleteEvaluationJob(ctx context.Context, in *DeleteEvaluationJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datalabeling.v1beta1.DataLabelingService/DeleteEvaluationJob", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -5503,7 +5503,7 @@ type DataLabelingServiceServer interface {
 	// Lists datasets under a project. Pagination is supported.
 	ListDatasets(context.Context, *ListDatasetsRequest) (*ListDatasetsResponse, error)
 	// Deletes a dataset by resource name.
-	DeleteDataset(context.Context, *DeleteDatasetRequest) (*empty.Empty, error)
+	DeleteDataset(context.Context, *DeleteDatasetRequest) (*emptypb.Empty, error)
 	// Imports data into dataset based on source locations defined in request.
 	// It can be called multiple times for the same dataset. Each dataset can
 	// only have one long running operation running on it. For example, no
@@ -5523,7 +5523,7 @@ type DataLabelingServiceServer interface {
 	// Lists annotated datasets for a dataset. Pagination is supported.
 	ListAnnotatedDatasets(context.Context, *ListAnnotatedDatasetsRequest) (*ListAnnotatedDatasetsResponse, error)
 	// Deletes an annotated dataset by resource name.
-	DeleteAnnotatedDataset(context.Context, *DeleteAnnotatedDatasetRequest) (*empty.Empty, error)
+	DeleteAnnotatedDataset(context.Context, *DeleteAnnotatedDatasetRequest) (*emptypb.Empty, error)
 	// Starts a labeling task for image. The type of image labeling task is
 	// configured by feature in the request.
 	LabelImage(context.Context, *LabelImageRequest) (*longrunning.Operation, error)
@@ -5544,7 +5544,7 @@ type DataLabelingServiceServer interface {
 	// Lists annotation spec sets for a project. Pagination is supported.
 	ListAnnotationSpecSets(context.Context, *ListAnnotationSpecSetsRequest) (*ListAnnotationSpecSetsResponse, error)
 	// Deletes an annotation spec set by resource name.
-	DeleteAnnotationSpecSet(context.Context, *DeleteAnnotationSpecSetRequest) (*empty.Empty, error)
+	DeleteAnnotationSpecSet(context.Context, *DeleteAnnotationSpecSetRequest) (*emptypb.Empty, error)
 	// Creates an instruction for how data should be labeled.
 	CreateInstruction(context.Context, *CreateInstructionRequest) (*longrunning.Operation, error)
 	// Gets an instruction by resource name.
@@ -5552,7 +5552,7 @@ type DataLabelingServiceServer interface {
 	// Lists instructions for a project. Pagination is supported.
 	ListInstructions(context.Context, *ListInstructionsRequest) (*ListInstructionsResponse, error)
 	// Deletes an instruction object by resource name.
-	DeleteInstruction(context.Context, *DeleteInstructionRequest) (*empty.Empty, error)
+	DeleteInstruction(context.Context, *DeleteInstructionRequest) (*emptypb.Empty, error)
 	// Gets an evaluation by resource name (to search, use
 	// [projects.evaluations.search][google.cloud.datalabeling.v1beta1.DataLabelingService.SearchEvaluations]).
 	GetEvaluation(context.Context, *GetEvaluationRequest) (*Evaluation, error)
@@ -5575,12 +5575,12 @@ type DataLabelingServiceServer interface {
 	GetEvaluationJob(context.Context, *GetEvaluationJobRequest) (*EvaluationJob, error)
 	// Pauses an evaluation job. Pausing an evaluation job that is already in a
 	// `PAUSED` state is a no-op.
-	PauseEvaluationJob(context.Context, *PauseEvaluationJobRequest) (*empty.Empty, error)
+	PauseEvaluationJob(context.Context, *PauseEvaluationJobRequest) (*emptypb.Empty, error)
 	// Resumes a paused evaluation job. A deleted evaluation job can't be resumed.
 	// Resuming a running or scheduled evaluation job is a no-op.
-	ResumeEvaluationJob(context.Context, *ResumeEvaluationJobRequest) (*empty.Empty, error)
+	ResumeEvaluationJob(context.Context, *ResumeEvaluationJobRequest) (*emptypb.Empty, error)
 	// Stops and deletes an evaluation job.
-	DeleteEvaluationJob(context.Context, *DeleteEvaluationJobRequest) (*empty.Empty, error)
+	DeleteEvaluationJob(context.Context, *DeleteEvaluationJobRequest) (*emptypb.Empty, error)
 	// Lists all evaluation jobs within a project with possible filters.
 	// Pagination is supported.
 	ListEvaluationJobs(context.Context, *ListEvaluationJobsRequest) (*ListEvaluationJobsResponse, error)
@@ -5599,7 +5599,7 @@ func (*UnimplementedDataLabelingServiceServer) GetDataset(context.Context, *GetD
 func (*UnimplementedDataLabelingServiceServer) ListDatasets(context.Context, *ListDatasetsRequest) (*ListDatasetsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListDatasets not implemented")
 }
-func (*UnimplementedDataLabelingServiceServer) DeleteDataset(context.Context, *DeleteDatasetRequest) (*empty.Empty, error) {
+func (*UnimplementedDataLabelingServiceServer) DeleteDataset(context.Context, *DeleteDatasetRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteDataset not implemented")
 }
 func (*UnimplementedDataLabelingServiceServer) ImportData(context.Context, *ImportDataRequest) (*longrunning.Operation, error) {
@@ -5620,7 +5620,7 @@ func (*UnimplementedDataLabelingServiceServer) GetAnnotatedDataset(context.Conte
 func (*UnimplementedDataLabelingServiceServer) ListAnnotatedDatasets(context.Context, *ListAnnotatedDatasetsRequest) (*ListAnnotatedDatasetsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAnnotatedDatasets not implemented")
 }
-func (*UnimplementedDataLabelingServiceServer) DeleteAnnotatedDataset(context.Context, *DeleteAnnotatedDatasetRequest) (*empty.Empty, error) {
+func (*UnimplementedDataLabelingServiceServer) DeleteAnnotatedDataset(context.Context, *DeleteAnnotatedDatasetRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAnnotatedDataset not implemented")
 }
 func (*UnimplementedDataLabelingServiceServer) LabelImage(context.Context, *LabelImageRequest) (*longrunning.Operation, error) {
@@ -5647,7 +5647,7 @@ func (*UnimplementedDataLabelingServiceServer) GetAnnotationSpecSet(context.Cont
 func (*UnimplementedDataLabelingServiceServer) ListAnnotationSpecSets(context.Context, *ListAnnotationSpecSetsRequest) (*ListAnnotationSpecSetsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAnnotationSpecSets not implemented")
 }
-func (*UnimplementedDataLabelingServiceServer) DeleteAnnotationSpecSet(context.Context, *DeleteAnnotationSpecSetRequest) (*empty.Empty, error) {
+func (*UnimplementedDataLabelingServiceServer) DeleteAnnotationSpecSet(context.Context, *DeleteAnnotationSpecSetRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAnnotationSpecSet not implemented")
 }
 func (*UnimplementedDataLabelingServiceServer) CreateInstruction(context.Context, *CreateInstructionRequest) (*longrunning.Operation, error) {
@@ -5659,7 +5659,7 @@ func (*UnimplementedDataLabelingServiceServer) GetInstruction(context.Context, *
 func (*UnimplementedDataLabelingServiceServer) ListInstructions(context.Context, *ListInstructionsRequest) (*ListInstructionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListInstructions not implemented")
 }
-func (*UnimplementedDataLabelingServiceServer) DeleteInstruction(context.Context, *DeleteInstructionRequest) (*empty.Empty, error) {
+func (*UnimplementedDataLabelingServiceServer) DeleteInstruction(context.Context, *DeleteInstructionRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteInstruction not implemented")
 }
 func (*UnimplementedDataLabelingServiceServer) GetEvaluation(context.Context, *GetEvaluationRequest) (*Evaluation, error) {
@@ -5680,13 +5680,13 @@ func (*UnimplementedDataLabelingServiceServer) UpdateEvaluationJob(context.Conte
 func (*UnimplementedDataLabelingServiceServer) GetEvaluationJob(context.Context, *GetEvaluationJobRequest) (*EvaluationJob, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEvaluationJob not implemented")
 }
-func (*UnimplementedDataLabelingServiceServer) PauseEvaluationJob(context.Context, *PauseEvaluationJobRequest) (*empty.Empty, error) {
+func (*UnimplementedDataLabelingServiceServer) PauseEvaluationJob(context.Context, *PauseEvaluationJobRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PauseEvaluationJob not implemented")
 }
-func (*UnimplementedDataLabelingServiceServer) ResumeEvaluationJob(context.Context, *ResumeEvaluationJobRequest) (*empty.Empty, error) {
+func (*UnimplementedDataLabelingServiceServer) ResumeEvaluationJob(context.Context, *ResumeEvaluationJobRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResumeEvaluationJob not implemented")
 }
-func (*UnimplementedDataLabelingServiceServer) DeleteEvaluationJob(context.Context, *DeleteEvaluationJobRequest) (*empty.Empty, error) {
+func (*UnimplementedDataLabelingServiceServer) DeleteEvaluationJob(context.Context, *DeleteEvaluationJobRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEvaluationJob not implemented")
 }
 func (*UnimplementedDataLabelingServiceServer) ListEvaluationJobs(context.Context, *ListEvaluationJobsRequest) (*ListEvaluationJobsResponse, error) {

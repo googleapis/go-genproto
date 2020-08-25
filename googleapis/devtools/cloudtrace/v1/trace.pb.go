@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -310,9 +310,9 @@ type TraceSpan struct {
 	// cross-trace spans.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Start time of the span in nanoseconds from the UNIX epoch.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End time of the span in nanoseconds from the UNIX epoch.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Optional. ID of the parent span, if any.
 	ParentSpanId uint64 `protobuf:"fixed64,6,opt,name=parent_span_id,json=parentSpanId,proto3" json:"parent_span_id,omitempty"`
 	// Collection of labels associated with the span. Label keys must be less than
@@ -406,14 +406,14 @@ func (x *TraceSpan) GetName() string {
 	return ""
 }
 
-func (x *TraceSpan) GetStartTime() *timestamp.Timestamp {
+func (x *TraceSpan) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *TraceSpan) GetEndTime() *timestamp.Timestamp {
+func (x *TraceSpan) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -455,10 +455,10 @@ type ListTracesRequest struct {
 	PageToken string `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Start of the time interval (inclusive) during which the trace data was
 	// collected from the application.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End of the time interval (inclusive) during which the trace data was
 	// collected from the application.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Optional. A filter against labels for the request.
 	//
 	// By default, searches use prefix matching. To specify exact match, prepend
@@ -566,14 +566,14 @@ func (x *ListTracesRequest) GetPageToken() string {
 	return ""
 }
 
-func (x *ListTracesRequest) GetStartTime() *timestamp.Timestamp {
+func (x *ListTracesRequest) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *ListTracesRequest) GetEndTime() *timestamp.Timestamp {
+func (x *ListTracesRequest) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -966,8 +966,8 @@ var file_google_devtools_cloudtrace_v1_trace_proto_goTypes = []interface{}{
 	(*GetTraceRequest)(nil),         // 7: google.devtools.cloudtrace.v1.GetTraceRequest
 	(*PatchTracesRequest)(nil),      // 8: google.devtools.cloudtrace.v1.PatchTracesRequest
 	nil,                             // 9: google.devtools.cloudtrace.v1.TraceSpan.LabelsEntry
-	(*timestamp.Timestamp)(nil),     // 10: google.protobuf.Timestamp
-	(*empty.Empty)(nil),             // 11: google.protobuf.Empty
+	(*timestamppb.Timestamp)(nil),   // 10: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),           // 11: google.protobuf.Empty
 }
 var file_google_devtools_cloudtrace_v1_trace_proto_depIdxs = []int32{
 	4,  // 0: google.devtools.cloudtrace.v1.Trace.spans:type_name -> google.devtools.cloudtrace.v1.TraceSpan
@@ -1127,7 +1127,7 @@ type TraceServiceClient interface {
 	// in the existing trace and its spans are overwritten by the provided values,
 	// and any new fields provided are merged with the existing trace data. If the
 	// ID does not match, a new trace is created.
-	PatchTraces(ctx context.Context, in *PatchTracesRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	PatchTraces(ctx context.Context, in *PatchTracesRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type traceServiceClient struct {
@@ -1156,8 +1156,8 @@ func (c *traceServiceClient) GetTrace(ctx context.Context, in *GetTraceRequest, 
 	return out, nil
 }
 
-func (c *traceServiceClient) PatchTraces(ctx context.Context, in *PatchTracesRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *traceServiceClient) PatchTraces(ctx context.Context, in *PatchTracesRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.devtools.cloudtrace.v1.TraceService/PatchTraces", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1176,7 +1176,7 @@ type TraceServiceServer interface {
 	// in the existing trace and its spans are overwritten by the provided values,
 	// and any new fields provided are merged with the existing trace data. If the
 	// ID does not match, a new trace is created.
-	PatchTraces(context.Context, *PatchTracesRequest) (*empty.Empty, error)
+	PatchTraces(context.Context, *PatchTracesRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedTraceServiceServer can be embedded to have forward compatible implementations.
@@ -1189,7 +1189,7 @@ func (*UnimplementedTraceServiceServer) ListTraces(context.Context, *ListTracesR
 func (*UnimplementedTraceServiceServer) GetTrace(context.Context, *GetTraceRequest) (*Trace, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTrace not implemented")
 }
-func (*UnimplementedTraceServiceServer) PatchTraces(context.Context, *PatchTracesRequest) (*empty.Empty, error) {
+func (*UnimplementedTraceServiceServer) PatchTraces(context.Context, *PatchTracesRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PatchTraces not implemented")
 }
 

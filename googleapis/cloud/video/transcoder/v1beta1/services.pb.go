@@ -26,13 +26,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -53,7 +53,7 @@ type CreateJobRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The parent location to create and process this job.
-	// Format: projects/{project}/locations/{location}
+	// Format: `projects/{project}/locations/{location}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. Parameters for creating transcoding job.
 	Job *Job `protobuf:"bytes,2,opt,name=job,proto3" json:"job,omitempty"`
@@ -112,7 +112,7 @@ type ListJobsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Format: projects/{project}/locations/{location}
+	// Required. Format: `projects/{project}/locations/{location}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of items to return.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -181,7 +181,7 @@ type GetJobRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the job to retrieve.
-	// Format: projects/{project}/locations/{location}/jobs/{job}
+	// Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -231,7 +231,7 @@ type DeleteJobRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the job to delete.
-	// Fromat: projects/{project}/locations/{location}/jobs/{job}
+	// Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -339,7 +339,7 @@ type CreateJobTemplateRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The parent location to create this job template.
-	// Format: projects/{project}/locations/{location}
+	// Format: `projects/{project}/locations/{location}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. Parameters for creating job template.
 	JobTemplate *JobTemplate `protobuf:"bytes,2,opt,name=job_template,json=jobTemplate,proto3" json:"job_template,omitempty"`
@@ -347,7 +347,7 @@ type CreateJobTemplateRequest struct {
 	// of the job template's resource name.
 	//
 	// This value should be 4-63 characters, and valid characters
-	// are /[a-zA-Z0-9_-_]/.
+	// are `/[a-zA-Z0-9_-_]/`.
 	JobTemplateId string `protobuf:"bytes,3,opt,name=job_template_id,json=jobTemplateId,proto3" json:"job_template_id,omitempty"`
 }
 
@@ -411,7 +411,7 @@ type ListJobTemplatesRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The parent location from which to retrieve the collection of job templates.
-	// Format: projects/{project}/locations/{location}
+	// Format: `projects/{project}/locations/{location}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of items to return.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -481,7 +481,7 @@ type GetJobTemplateRequest struct {
 
 	// Required. The name of the job template to retrieve.
 	// Format:
-	// projects/{project}/locations/{location}/jobTemplates/{job_template}
+	// `projects/{project}/locations/{location}/jobTemplates/{job_template}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -531,7 +531,7 @@ type DeleteJobTemplateRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the job template to delete.
-	// projects/{project}/locations/{location}/jobTemplates/{job_template}
+	// `projects/{project}/locations/{location}/jobTemplates/{job_template}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -878,7 +878,7 @@ var file_google_cloud_video_transcoder_v1beta1_services_proto_goTypes = []interf
 	(*ListJobTemplatesResponse)(nil), // 9: google.cloud.video.transcoder.v1beta1.ListJobTemplatesResponse
 	(*Job)(nil),                      // 10: google.cloud.video.transcoder.v1beta1.Job
 	(*JobTemplate)(nil),              // 11: google.cloud.video.transcoder.v1beta1.JobTemplate
-	(*empty.Empty)(nil),              // 12: google.protobuf.Empty
+	(*emptypb.Empty)(nil),            // 12: google.protobuf.Empty
 }
 var file_google_cloud_video_transcoder_v1beta1_services_proto_depIdxs = []int32{
 	10, // 0: google.cloud.video.transcoder.v1beta1.CreateJobRequest.job:type_name -> google.cloud.video.transcoder.v1beta1.Job
@@ -1075,7 +1075,7 @@ type TranscoderServiceClient interface {
 	// Returns the job data.
 	GetJob(ctx context.Context, in *GetJobRequest, opts ...grpc.CallOption) (*Job, error)
 	// Deletes a job.
-	DeleteJob(ctx context.Context, in *DeleteJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteJob(ctx context.Context, in *DeleteJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a job template in the specified region.
 	CreateJobTemplate(ctx context.Context, in *CreateJobTemplateRequest, opts ...grpc.CallOption) (*JobTemplate, error)
 	// Lists job templates in the specified region.
@@ -1083,7 +1083,7 @@ type TranscoderServiceClient interface {
 	// Returns the job template data.
 	GetJobTemplate(ctx context.Context, in *GetJobTemplateRequest, opts ...grpc.CallOption) (*JobTemplate, error)
 	// Deletes a job template.
-	DeleteJobTemplate(ctx context.Context, in *DeleteJobTemplateRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteJobTemplate(ctx context.Context, in *DeleteJobTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type transcoderServiceClient struct {
@@ -1121,8 +1121,8 @@ func (c *transcoderServiceClient) GetJob(ctx context.Context, in *GetJobRequest,
 	return out, nil
 }
 
-func (c *transcoderServiceClient) DeleteJob(ctx context.Context, in *DeleteJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *transcoderServiceClient) DeleteJob(ctx context.Context, in *DeleteJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.video.transcoder.v1beta1.TranscoderService/DeleteJob", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1157,8 +1157,8 @@ func (c *transcoderServiceClient) GetJobTemplate(ctx context.Context, in *GetJob
 	return out, nil
 }
 
-func (c *transcoderServiceClient) DeleteJobTemplate(ctx context.Context, in *DeleteJobTemplateRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *transcoderServiceClient) DeleteJobTemplate(ctx context.Context, in *DeleteJobTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.video.transcoder.v1beta1.TranscoderService/DeleteJobTemplate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1175,7 +1175,7 @@ type TranscoderServiceServer interface {
 	// Returns the job data.
 	GetJob(context.Context, *GetJobRequest) (*Job, error)
 	// Deletes a job.
-	DeleteJob(context.Context, *DeleteJobRequest) (*empty.Empty, error)
+	DeleteJob(context.Context, *DeleteJobRequest) (*emptypb.Empty, error)
 	// Creates a job template in the specified region.
 	CreateJobTemplate(context.Context, *CreateJobTemplateRequest) (*JobTemplate, error)
 	// Lists job templates in the specified region.
@@ -1183,7 +1183,7 @@ type TranscoderServiceServer interface {
 	// Returns the job template data.
 	GetJobTemplate(context.Context, *GetJobTemplateRequest) (*JobTemplate, error)
 	// Deletes a job template.
-	DeleteJobTemplate(context.Context, *DeleteJobTemplateRequest) (*empty.Empty, error)
+	DeleteJobTemplate(context.Context, *DeleteJobTemplateRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedTranscoderServiceServer can be embedded to have forward compatible implementations.
@@ -1199,7 +1199,7 @@ func (*UnimplementedTranscoderServiceServer) ListJobs(context.Context, *ListJobs
 func (*UnimplementedTranscoderServiceServer) GetJob(context.Context, *GetJobRequest) (*Job, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetJob not implemented")
 }
-func (*UnimplementedTranscoderServiceServer) DeleteJob(context.Context, *DeleteJobRequest) (*empty.Empty, error) {
+func (*UnimplementedTranscoderServiceServer) DeleteJob(context.Context, *DeleteJobRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteJob not implemented")
 }
 func (*UnimplementedTranscoderServiceServer) CreateJobTemplate(context.Context, *CreateJobTemplateRequest) (*JobTemplate, error) {
@@ -1211,7 +1211,7 @@ func (*UnimplementedTranscoderServiceServer) ListJobTemplates(context.Context, *
 func (*UnimplementedTranscoderServiceServer) GetJobTemplate(context.Context, *GetJobTemplateRequest) (*JobTemplate, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetJobTemplate not implemented")
 }
-func (*UnimplementedTranscoderServiceServer) DeleteJobTemplate(context.Context, *DeleteJobTemplateRequest) (*empty.Empty, error) {
+func (*UnimplementedTranscoderServiceServer) DeleteJobTemplate(context.Context, *DeleteJobTemplateRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteJobTemplate not implemented")
 }
 

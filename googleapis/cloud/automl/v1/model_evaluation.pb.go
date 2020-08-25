@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -85,7 +85,7 @@ type ModelEvaluation struct {
 	// The display_name is empty for the overall model evaluation.
 	DisplayName string `protobuf:"bytes,15,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Output only. Timestamp when this model evaluation was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The number of examples used for model evaluation, i.e. for
 	// which ground truth from time of model creation is compared against the
 	// predicted annotations created by the model.
@@ -193,7 +193,7 @@ func (x *ModelEvaluation) GetDisplayName() string {
 	return ""
 }
 
-func (x *ModelEvaluation) GetCreateTime() *timestamp.Timestamp {
+func (x *ModelEvaluation) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -377,7 +377,7 @@ var file_google_cloud_automl_v1_model_evaluation_proto_goTypes = []interface{}{
 	(*ImageObjectDetectionEvaluationMetrics)(nil), // 3: google.cloud.automl.v1.ImageObjectDetectionEvaluationMetrics
 	(*TextSentimentEvaluationMetrics)(nil),        // 4: google.cloud.automl.v1.TextSentimentEvaluationMetrics
 	(*TextExtractionEvaluationMetrics)(nil),       // 5: google.cloud.automl.v1.TextExtractionEvaluationMetrics
-	(*timestamp.Timestamp)(nil),                   // 6: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                 // 6: google.protobuf.Timestamp
 }
 var file_google_cloud_automl_v1_model_evaluation_proto_depIdxs = []int32{
 	1, // 0: google.cloud.automl.v1.ModelEvaluation.classification_evaluation_metrics:type_name -> google.cloud.automl.v1.ClassificationEvaluationMetrics

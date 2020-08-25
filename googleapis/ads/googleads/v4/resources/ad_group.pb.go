@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,7 +56,7 @@ type AdGroup struct {
 	// `customers/{customer_id}/adGroups/{ad_group_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the ad group.
-	Id *wrappers.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the ad group.
 	//
 	// This field is required and should not be empty when creating new ad
@@ -66,7 +66,7 @@ type AdGroup struct {
 	//
 	// It must not contain any null (code point 0x0), NL line feed
 	// (code point 0xA) or carriage return (code point 0xD) characters.
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// The status of the ad group.
 	Status enums.AdGroupStatusEnum_AdGroupStatus `protobuf:"varint,5,opt,name=status,proto3,enum=google.ads.googleads.v4.enums.AdGroupStatusEnum_AdGroupStatus" json:"status,omitempty"`
 	// Immutable. The type of the ad group.
@@ -80,34 +80,34 @@ type AdGroup struct {
 	// For base ad groups, this field equals the ad group resource name.
 	//
 	// This field is read-only.
-	BaseAdGroup *wrappers.StringValue `protobuf:"bytes,18,opt,name=base_ad_group,json=baseAdGroup,proto3" json:"base_ad_group,omitempty"`
+	BaseAdGroup *wrapperspb.StringValue `protobuf:"bytes,18,opt,name=base_ad_group,json=baseAdGroup,proto3" json:"base_ad_group,omitempty"`
 	// The URL template for constructing a tracking URL.
-	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,13,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
+	TrackingUrlTemplate *wrapperspb.StringValue `protobuf:"bytes,13,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 	// The list of mappings used to substitute custom parameter tags in a
 	// `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
 	UrlCustomParameters []*common.CustomParameter `protobuf:"bytes,6,rep,name=url_custom_parameters,json=urlCustomParameters,proto3" json:"url_custom_parameters,omitempty"`
 	// Immutable. The campaign to which the ad group belongs.
-	Campaign *wrappers.StringValue `protobuf:"bytes,10,opt,name=campaign,proto3" json:"campaign,omitempty"`
+	Campaign *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=campaign,proto3" json:"campaign,omitempty"`
 	// The maximum CPC (cost-per-click) bid.
-	CpcBidMicros *wrappers.Int64Value `protobuf:"bytes,14,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
+	CpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,14,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
 	// The maximum CPM (cost-per-thousand viewable impressions) bid.
-	CpmBidMicros *wrappers.Int64Value `protobuf:"bytes,15,opt,name=cpm_bid_micros,json=cpmBidMicros,proto3" json:"cpm_bid_micros,omitempty"`
+	CpmBidMicros *wrapperspb.Int64Value `protobuf:"bytes,15,opt,name=cpm_bid_micros,json=cpmBidMicros,proto3" json:"cpm_bid_micros,omitempty"`
 	// The target CPA (cost-per-acquisition).
-	TargetCpaMicros *wrappers.Int64Value `protobuf:"bytes,27,opt,name=target_cpa_micros,json=targetCpaMicros,proto3" json:"target_cpa_micros,omitempty"`
+	TargetCpaMicros *wrapperspb.Int64Value `protobuf:"bytes,27,opt,name=target_cpa_micros,json=targetCpaMicros,proto3" json:"target_cpa_micros,omitempty"`
 	// Output only. The CPV (cost-per-view) bid.
-	CpvBidMicros *wrappers.Int64Value `protobuf:"bytes,17,opt,name=cpv_bid_micros,json=cpvBidMicros,proto3" json:"cpv_bid_micros,omitempty"`
+	CpvBidMicros *wrapperspb.Int64Value `protobuf:"bytes,17,opt,name=cpv_bid_micros,json=cpvBidMicros,proto3" json:"cpv_bid_micros,omitempty"`
 	// Average amount in micros that the advertiser is willing to pay for every
 	// thousand times the ad is shown.
-	TargetCpmMicros *wrappers.Int64Value `protobuf:"bytes,26,opt,name=target_cpm_micros,json=targetCpmMicros,proto3" json:"target_cpm_micros,omitempty"`
+	TargetCpmMicros *wrapperspb.Int64Value `protobuf:"bytes,26,opt,name=target_cpm_micros,json=targetCpmMicros,proto3" json:"target_cpm_micros,omitempty"`
 	// The target ROAS (return-on-ad-spend) override. If the ad group's campaign
 	// bidding strategy is a standard Target ROAS strategy, then this field
 	// overrides the target ROAS specified in the campaign's bidding strategy.
 	// Otherwise, this value is ignored.
-	TargetRoas *wrappers.DoubleValue `protobuf:"bytes,30,opt,name=target_roas,json=targetRoas,proto3" json:"target_roas,omitempty"`
+	TargetRoas *wrapperspb.DoubleValue `protobuf:"bytes,30,opt,name=target_roas,json=targetRoas,proto3" json:"target_roas,omitempty"`
 	// The percent cpc bid amount, expressed as a fraction of the advertised price
 	// for some good or service. The valid range for the fraction is [0,1) and the
 	// value stored here is 1,000,000 * [fraction].
-	PercentCpcBidMicros *wrappers.Int64Value `protobuf:"bytes,20,opt,name=percent_cpc_bid_micros,json=percentCpcBidMicros,proto3" json:"percent_cpc_bid_micros,omitempty"`
+	PercentCpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,20,opt,name=percent_cpc_bid_micros,json=percentCpcBidMicros,proto3" json:"percent_cpc_bid_micros,omitempty"`
 	// Settings for the Display Campaign Optimizer, initially termed "Explorer".
 	ExplorerAutoOptimizerSetting *common.ExplorerAutoOptimizerSetting `protobuf:"bytes,21,opt,name=explorer_auto_optimizer_setting,json=explorerAutoOptimizerSetting,proto3" json:"explorer_auto_optimizer_setting,omitempty"`
 	// Allows advertisers to specify a targeting dimension on which to place
@@ -115,23 +115,23 @@ type AdGroup struct {
 	// display network and not search.
 	DisplayCustomBidDimension enums.TargetingDimensionEnum_TargetingDimension `protobuf:"varint,23,opt,name=display_custom_bid_dimension,json=displayCustomBidDimension,proto3,enum=google.ads.googleads.v4.enums.TargetingDimensionEnum_TargetingDimension" json:"display_custom_bid_dimension,omitempty"`
 	// URL template for appending params to Final URL.
-	FinalUrlSuffix *wrappers.StringValue `protobuf:"bytes,24,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
+	FinalUrlSuffix *wrapperspb.StringValue `protobuf:"bytes,24,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
 	// Setting for targeting related features.
 	TargetingSetting *common.TargetingSetting `protobuf:"bytes,25,opt,name=targeting_setting,json=targetingSetting,proto3" json:"targeting_setting,omitempty"`
 	// Output only. The effective target CPA (cost-per-acquisition).
 	// This field is read-only.
-	EffectiveTargetCpaMicros *wrappers.Int64Value `protobuf:"bytes,28,opt,name=effective_target_cpa_micros,json=effectiveTargetCpaMicros,proto3" json:"effective_target_cpa_micros,omitempty"`
+	EffectiveTargetCpaMicros *wrapperspb.Int64Value `protobuf:"bytes,28,opt,name=effective_target_cpa_micros,json=effectiveTargetCpaMicros,proto3" json:"effective_target_cpa_micros,omitempty"`
 	// Output only. Source of the effective target CPA.
 	// This field is read-only.
 	EffectiveTargetCpaSource enums.BiddingSourceEnum_BiddingSource `protobuf:"varint,29,opt,name=effective_target_cpa_source,json=effectiveTargetCpaSource,proto3,enum=google.ads.googleads.v4.enums.BiddingSourceEnum_BiddingSource" json:"effective_target_cpa_source,omitempty"`
 	// Output only. The effective target ROAS (return-on-ad-spend).
 	// This field is read-only.
-	EffectiveTargetRoas *wrappers.DoubleValue `protobuf:"bytes,31,opt,name=effective_target_roas,json=effectiveTargetRoas,proto3" json:"effective_target_roas,omitempty"`
+	EffectiveTargetRoas *wrapperspb.DoubleValue `protobuf:"bytes,31,opt,name=effective_target_roas,json=effectiveTargetRoas,proto3" json:"effective_target_roas,omitempty"`
 	// Output only. Source of the effective target ROAS.
 	// This field is read-only.
 	EffectiveTargetRoasSource enums.BiddingSourceEnum_BiddingSource `protobuf:"varint,32,opt,name=effective_target_roas_source,json=effectiveTargetRoasSource,proto3,enum=google.ads.googleads.v4.enums.BiddingSourceEnum_BiddingSource" json:"effective_target_roas_source,omitempty"`
 	// Output only. The resource names of labels attached to this ad group.
-	Labels []*wrappers.StringValue `protobuf:"bytes,33,rep,name=labels,proto3" json:"labels,omitempty"`
+	Labels []*wrapperspb.StringValue `protobuf:"bytes,33,rep,name=labels,proto3" json:"labels,omitempty"`
 }
 
 func (x *AdGroup) Reset() {
@@ -173,14 +173,14 @@ func (x *AdGroup) GetResourceName() string {
 	return ""
 }
 
-func (x *AdGroup) GetId() *wrappers.Int64Value {
+func (x *AdGroup) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *AdGroup) GetName() *wrappers.StringValue {
+func (x *AdGroup) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -208,14 +208,14 @@ func (x *AdGroup) GetAdRotationMode() enums.AdGroupAdRotationModeEnum_AdGroupAdR
 	return enums.AdGroupAdRotationModeEnum_UNSPECIFIED
 }
 
-func (x *AdGroup) GetBaseAdGroup() *wrappers.StringValue {
+func (x *AdGroup) GetBaseAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BaseAdGroup
 	}
 	return nil
 }
 
-func (x *AdGroup) GetTrackingUrlTemplate() *wrappers.StringValue {
+func (x *AdGroup) GetTrackingUrlTemplate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrlTemplate
 	}
@@ -229,56 +229,56 @@ func (x *AdGroup) GetUrlCustomParameters() []*common.CustomParameter {
 	return nil
 }
 
-func (x *AdGroup) GetCampaign() *wrappers.StringValue {
+func (x *AdGroup) GetCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Campaign
 	}
 	return nil
 }
 
-func (x *AdGroup) GetCpcBidMicros() *wrappers.Int64Value {
+func (x *AdGroup) GetCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroup) GetCpmBidMicros() *wrappers.Int64Value {
+func (x *AdGroup) GetCpmBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpmBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroup) GetTargetCpaMicros() *wrappers.Int64Value {
+func (x *AdGroup) GetTargetCpaMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TargetCpaMicros
 	}
 	return nil
 }
 
-func (x *AdGroup) GetCpvBidMicros() *wrappers.Int64Value {
+func (x *AdGroup) GetCpvBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpvBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroup) GetTargetCpmMicros() *wrappers.Int64Value {
+func (x *AdGroup) GetTargetCpmMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TargetCpmMicros
 	}
 	return nil
 }
 
-func (x *AdGroup) GetTargetRoas() *wrappers.DoubleValue {
+func (x *AdGroup) GetTargetRoas() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.TargetRoas
 	}
 	return nil
 }
 
-func (x *AdGroup) GetPercentCpcBidMicros() *wrappers.Int64Value {
+func (x *AdGroup) GetPercentCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PercentCpcBidMicros
 	}
@@ -299,7 +299,7 @@ func (x *AdGroup) GetDisplayCustomBidDimension() enums.TargetingDimensionEnum_Ta
 	return enums.TargetingDimensionEnum_UNSPECIFIED
 }
 
-func (x *AdGroup) GetFinalUrlSuffix() *wrappers.StringValue {
+func (x *AdGroup) GetFinalUrlSuffix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrlSuffix
 	}
@@ -313,7 +313,7 @@ func (x *AdGroup) GetTargetingSetting() *common.TargetingSetting {
 	return nil
 }
 
-func (x *AdGroup) GetEffectiveTargetCpaMicros() *wrappers.Int64Value {
+func (x *AdGroup) GetEffectiveTargetCpaMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.EffectiveTargetCpaMicros
 	}
@@ -327,7 +327,7 @@ func (x *AdGroup) GetEffectiveTargetCpaSource() enums.BiddingSourceEnum_BiddingS
 	return enums.BiddingSourceEnum_UNSPECIFIED
 }
 
-func (x *AdGroup) GetEffectiveTargetRoas() *wrappers.DoubleValue {
+func (x *AdGroup) GetEffectiveTargetRoas() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.EffectiveTargetRoas
 	}
@@ -341,7 +341,7 @@ func (x *AdGroup) GetEffectiveTargetRoasSource() enums.BiddingSourceEnum_Bidding
 	return enums.BiddingSourceEnum_UNSPECIFIED
 }
 
-func (x *AdGroup) GetLabels() []*wrappers.StringValue {
+func (x *AdGroup) GetLabels() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Labels
 	}
@@ -579,13 +579,13 @@ func file_google_ads_googleads_v4_resources_ad_group_proto_rawDescGZIP() []byte 
 var file_google_ads_googleads_v4_resources_ad_group_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_ad_group_proto_goTypes = []interface{}{
 	(*AdGroup)(nil),                                            // 0: google.ads.googleads.v4.resources.AdGroup
-	(*wrappers.Int64Value)(nil),                                // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),                               // 2: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                              // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                             // 2: google.protobuf.StringValue
 	(enums.AdGroupStatusEnum_AdGroupStatus)(0),                 // 3: google.ads.googleads.v4.enums.AdGroupStatusEnum.AdGroupStatus
 	(enums.AdGroupTypeEnum_AdGroupType)(0),                     // 4: google.ads.googleads.v4.enums.AdGroupTypeEnum.AdGroupType
 	(enums.AdGroupAdRotationModeEnum_AdGroupAdRotationMode)(0), // 5: google.ads.googleads.v4.enums.AdGroupAdRotationModeEnum.AdGroupAdRotationMode
 	(*common.CustomParameter)(nil),                             // 6: google.ads.googleads.v4.common.CustomParameter
-	(*wrappers.DoubleValue)(nil),                               // 7: google.protobuf.DoubleValue
+	(*wrapperspb.DoubleValue)(nil),                             // 7: google.protobuf.DoubleValue
 	(*common.ExplorerAutoOptimizerSetting)(nil),                // 8: google.ads.googleads.v4.common.ExplorerAutoOptimizerSetting
 	(enums.TargetingDimensionEnum_TargetingDimension)(0),       // 9: google.ads.googleads.v4.enums.TargetingDimensionEnum.TargetingDimension
 	(*common.TargetingSetting)(nil),                            // 10: google.ads.googleads.v4.common.TargetingSetting

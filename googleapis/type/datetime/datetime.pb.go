@@ -26,9 +26,9 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -183,7 +183,7 @@ func (m *DateTime) GetTimeOffset() isDateTime_TimeOffset {
 	return nil
 }
 
-func (x *DateTime) GetUtcOffset() *duration.Duration {
+func (x *DateTime) GetUtcOffset() *durationpb.Duration {
 	if x, ok := x.GetTimeOffset().(*DateTime_UtcOffset); ok {
 		return x.UtcOffset
 	}
@@ -205,7 +205,7 @@ type DateTime_UtcOffset struct {
 	// UTC offset. Must be whole seconds, between -18 hours and +18 hours.
 	// For example, a UTC offset of -4:00 would be represented as
 	// { seconds: -14400 }.
-	UtcOffset *duration.Duration `protobuf:"bytes,8,opt,name=utc_offset,json=utcOffset,proto3,oneof"`
+	UtcOffset *durationpb.Duration `protobuf:"bytes,8,opt,name=utc_offset,json=utcOffset,proto3,oneof"`
 }
 
 type DateTime_TimeZone struct {
@@ -329,9 +329,9 @@ func file_google_type_datetime_proto_rawDescGZIP() []byte {
 
 var file_google_type_datetime_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_google_type_datetime_proto_goTypes = []interface{}{
-	(*DateTime)(nil),          // 0: google.type.DateTime
-	(*TimeZone)(nil),          // 1: google.type.TimeZone
-	(*duration.Duration)(nil), // 2: google.protobuf.Duration
+	(*DateTime)(nil),            // 0: google.type.DateTime
+	(*TimeZone)(nil),            // 1: google.type.TimeZone
+	(*durationpb.Duration)(nil), // 2: google.protobuf.Duration
 }
 var file_google_type_datetime_proto_depIdxs = []int32{
 	2, // 0: google.type.DateTime.utc_offset:type_name -> google.protobuf.Duration

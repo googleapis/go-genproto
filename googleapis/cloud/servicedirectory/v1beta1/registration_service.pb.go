@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -355,7 +355,7 @@ type UpdateNamespaceRequest struct {
 	// Required. The updated namespace.
 	Namespace *Namespace `protobuf:"bytes,1,opt,name=namespace,proto3" json:"namespace,omitempty"`
 	// Required. List of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateNamespaceRequest) Reset() {
@@ -397,7 +397,7 @@ func (x *UpdateNamespaceRequest) GetNamespace() *Namespace {
 	return nil
 }
 
-func (x *UpdateNamespaceRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateNamespaceRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -754,7 +754,7 @@ type UpdateServiceRequest struct {
 	// Required. The updated service.
 	Service *Service `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
 	// Required. List of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateServiceRequest) Reset() {
@@ -796,7 +796,7 @@ func (x *UpdateServiceRequest) GetService() *Service {
 	return nil
 }
 
-func (x *UpdateServiceRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateServiceRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1155,7 +1155,7 @@ type UpdateEndpointRequest struct {
 	// Required. The updated endpoint.
 	Endpoint *Endpoint `protobuf:"bytes,1,opt,name=endpoint,proto3" json:"endpoint,omitempty"`
 	// Required. List of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateEndpointRequest) Reset() {
@@ -1197,7 +1197,7 @@ func (x *UpdateEndpointRequest) GetEndpoint() *Endpoint {
 	return nil
 }
 
-func (x *UpdateEndpointRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateEndpointRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1781,13 +1781,13 @@ var file_google_cloud_servicedirectory_v1beta1_registration_service_proto_goType
 	(*UpdateEndpointRequest)(nil),         // 16: google.cloud.servicedirectory.v1beta1.UpdateEndpointRequest
 	(*DeleteEndpointRequest)(nil),         // 17: google.cloud.servicedirectory.v1beta1.DeleteEndpointRequest
 	(*Namespace)(nil),                     // 18: google.cloud.servicedirectory.v1beta1.Namespace
-	(*field_mask.FieldMask)(nil),          // 19: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),         // 19: google.protobuf.FieldMask
 	(*Service)(nil),                       // 20: google.cloud.servicedirectory.v1beta1.Service
 	(*Endpoint)(nil),                      // 21: google.cloud.servicedirectory.v1beta1.Endpoint
 	(*v1.GetIamPolicyRequest)(nil),        // 22: google.iam.v1.GetIamPolicyRequest
 	(*v1.SetIamPolicyRequest)(nil),        // 23: google.iam.v1.SetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),  // 24: google.iam.v1.TestIamPermissionsRequest
-	(*empty.Empty)(nil),                   // 25: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                 // 25: google.protobuf.Empty
 	(*v1.Policy)(nil),                     // 26: google.iam.v1.Policy
 	(*v1.TestIamPermissionsResponse)(nil), // 27: google.iam.v1.TestIamPermissionsResponse
 }
@@ -2115,7 +2115,7 @@ type RegistrationServiceClient interface {
 	UpdateNamespace(ctx context.Context, in *UpdateNamespaceRequest, opts ...grpc.CallOption) (*Namespace, error)
 	// Deletes a namespace. This also deletes all services and endpoints in
 	// the namespace.
-	DeleteNamespace(ctx context.Context, in *DeleteNamespaceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteNamespace(ctx context.Context, in *DeleteNamespaceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a service, and returns the new Service.
 	CreateService(ctx context.Context, in *CreateServiceRequest, opts ...grpc.CallOption) (*Service, error)
 	// Lists all services belonging to a namespace.
@@ -2126,7 +2126,7 @@ type RegistrationServiceClient interface {
 	UpdateService(ctx context.Context, in *UpdateServiceRequest, opts ...grpc.CallOption) (*Service, error)
 	// Deletes a service. This also deletes all endpoints associated with
 	// the service.
-	DeleteService(ctx context.Context, in *DeleteServiceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteService(ctx context.Context, in *DeleteServiceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a endpoint, and returns the new Endpoint.
 	CreateEndpoint(ctx context.Context, in *CreateEndpointRequest, opts ...grpc.CallOption) (*Endpoint, error)
 	// Lists all endpoints.
@@ -2136,7 +2136,7 @@ type RegistrationServiceClient interface {
 	// Updates a endpoint.
 	UpdateEndpoint(ctx context.Context, in *UpdateEndpointRequest, opts ...grpc.CallOption) (*Endpoint, error)
 	// Deletes a endpoint.
-	DeleteEndpoint(ctx context.Context, in *DeleteEndpointRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteEndpoint(ctx context.Context, in *DeleteEndpointRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets the IAM Policy for a resource (namespace or service only).
 	GetIamPolicy(ctx context.Context, in *v1.GetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
 	// Sets the IAM Policy for a resource (namespace or service only).
@@ -2189,8 +2189,8 @@ func (c *registrationServiceClient) UpdateNamespace(ctx context.Context, in *Upd
 	return out, nil
 }
 
-func (c *registrationServiceClient) DeleteNamespace(ctx context.Context, in *DeleteNamespaceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *registrationServiceClient) DeleteNamespace(ctx context.Context, in *DeleteNamespaceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.servicedirectory.v1beta1.RegistrationService/DeleteNamespace", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2234,8 +2234,8 @@ func (c *registrationServiceClient) UpdateService(ctx context.Context, in *Updat
 	return out, nil
 }
 
-func (c *registrationServiceClient) DeleteService(ctx context.Context, in *DeleteServiceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *registrationServiceClient) DeleteService(ctx context.Context, in *DeleteServiceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.servicedirectory.v1beta1.RegistrationService/DeleteService", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2279,8 +2279,8 @@ func (c *registrationServiceClient) UpdateEndpoint(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *registrationServiceClient) DeleteEndpoint(ctx context.Context, in *DeleteEndpointRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *registrationServiceClient) DeleteEndpoint(ctx context.Context, in *DeleteEndpointRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.servicedirectory.v1beta1.RegistrationService/DeleteEndpoint", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2327,7 +2327,7 @@ type RegistrationServiceServer interface {
 	UpdateNamespace(context.Context, *UpdateNamespaceRequest) (*Namespace, error)
 	// Deletes a namespace. This also deletes all services and endpoints in
 	// the namespace.
-	DeleteNamespace(context.Context, *DeleteNamespaceRequest) (*empty.Empty, error)
+	DeleteNamespace(context.Context, *DeleteNamespaceRequest) (*emptypb.Empty, error)
 	// Creates a service, and returns the new Service.
 	CreateService(context.Context, *CreateServiceRequest) (*Service, error)
 	// Lists all services belonging to a namespace.
@@ -2338,7 +2338,7 @@ type RegistrationServiceServer interface {
 	UpdateService(context.Context, *UpdateServiceRequest) (*Service, error)
 	// Deletes a service. This also deletes all endpoints associated with
 	// the service.
-	DeleteService(context.Context, *DeleteServiceRequest) (*empty.Empty, error)
+	DeleteService(context.Context, *DeleteServiceRequest) (*emptypb.Empty, error)
 	// Creates a endpoint, and returns the new Endpoint.
 	CreateEndpoint(context.Context, *CreateEndpointRequest) (*Endpoint, error)
 	// Lists all endpoints.
@@ -2348,7 +2348,7 @@ type RegistrationServiceServer interface {
 	// Updates a endpoint.
 	UpdateEndpoint(context.Context, *UpdateEndpointRequest) (*Endpoint, error)
 	// Deletes a endpoint.
-	DeleteEndpoint(context.Context, *DeleteEndpointRequest) (*empty.Empty, error)
+	DeleteEndpoint(context.Context, *DeleteEndpointRequest) (*emptypb.Empty, error)
 	// Gets the IAM Policy for a resource (namespace or service only).
 	GetIamPolicy(context.Context, *v1.GetIamPolicyRequest) (*v1.Policy, error)
 	// Sets the IAM Policy for a resource (namespace or service only).
@@ -2373,7 +2373,7 @@ func (*UnimplementedRegistrationServiceServer) GetNamespace(context.Context, *Ge
 func (*UnimplementedRegistrationServiceServer) UpdateNamespace(context.Context, *UpdateNamespaceRequest) (*Namespace, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateNamespace not implemented")
 }
-func (*UnimplementedRegistrationServiceServer) DeleteNamespace(context.Context, *DeleteNamespaceRequest) (*empty.Empty, error) {
+func (*UnimplementedRegistrationServiceServer) DeleteNamespace(context.Context, *DeleteNamespaceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteNamespace not implemented")
 }
 func (*UnimplementedRegistrationServiceServer) CreateService(context.Context, *CreateServiceRequest) (*Service, error) {
@@ -2388,7 +2388,7 @@ func (*UnimplementedRegistrationServiceServer) GetService(context.Context, *GetS
 func (*UnimplementedRegistrationServiceServer) UpdateService(context.Context, *UpdateServiceRequest) (*Service, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateService not implemented")
 }
-func (*UnimplementedRegistrationServiceServer) DeleteService(context.Context, *DeleteServiceRequest) (*empty.Empty, error) {
+func (*UnimplementedRegistrationServiceServer) DeleteService(context.Context, *DeleteServiceRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteService not implemented")
 }
 func (*UnimplementedRegistrationServiceServer) CreateEndpoint(context.Context, *CreateEndpointRequest) (*Endpoint, error) {
@@ -2403,7 +2403,7 @@ func (*UnimplementedRegistrationServiceServer) GetEndpoint(context.Context, *Get
 func (*UnimplementedRegistrationServiceServer) UpdateEndpoint(context.Context, *UpdateEndpointRequest) (*Endpoint, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateEndpoint not implemented")
 }
-func (*UnimplementedRegistrationServiceServer) DeleteEndpoint(context.Context, *DeleteEndpointRequest) (*empty.Empty, error) {
+func (*UnimplementedRegistrationServiceServer) DeleteEndpoint(context.Context, *DeleteEndpointRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEndpoint not implemented")
 }
 func (*UnimplementedRegistrationServiceServer) GetIamPolicy(context.Context, *v1.GetIamPolicyRequest) (*v1.Policy, error) {

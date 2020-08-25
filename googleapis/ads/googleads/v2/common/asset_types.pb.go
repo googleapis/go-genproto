@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -51,7 +51,7 @@ type YoutubeVideoAsset struct {
 
 	// YouTube video id. This is the 11 character string value used in the
 	// YouTube video URL.
-	YoutubeVideoId *wrappers.StringValue `protobuf:"bytes,1,opt,name=youtube_video_id,json=youtubeVideoId,proto3" json:"youtube_video_id,omitempty"`
+	YoutubeVideoId *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=youtube_video_id,json=youtubeVideoId,proto3" json:"youtube_video_id,omitempty"`
 }
 
 func (x *YoutubeVideoAsset) Reset() {
@@ -86,7 +86,7 @@ func (*YoutubeVideoAsset) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_asset_types_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *YoutubeVideoAsset) GetYoutubeVideoId() *wrappers.StringValue {
+func (x *YoutubeVideoAsset) GetYoutubeVideoId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.YoutubeVideoId
 	}
@@ -103,7 +103,7 @@ type MediaBundleAsset struct {
 	// depends on the ad field where it will be used. For more information on the
 	// format, see the documentation of the ad field where you plan on using the
 	// MediaBundleAsset. This field is mutate only.
-	Data *wrappers.BytesValue `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	Data *wrapperspb.BytesValue `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
 }
 
 func (x *MediaBundleAsset) Reset() {
@@ -138,7 +138,7 @@ func (*MediaBundleAsset) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_asset_types_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *MediaBundleAsset) GetData() *wrappers.BytesValue {
+func (x *MediaBundleAsset) GetData() *wrapperspb.BytesValue {
 	if x != nil {
 		return x.Data
 	}
@@ -152,9 +152,9 @@ type ImageAsset struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The raw bytes data of an image. This field is mutate only.
-	Data *wrappers.BytesValue `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	Data *wrapperspb.BytesValue `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
 	// File size of the image asset in bytes.
-	FileSize *wrappers.Int64Value `protobuf:"bytes,2,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
+	FileSize *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty"`
 	// MIME type of the image asset.
 	MimeType enums.MimeTypeEnum_MimeType `protobuf:"varint,3,opt,name=mime_type,json=mimeType,proto3,enum=google.ads.googleads.v2.enums.MimeTypeEnum_MimeType" json:"mime_type,omitempty"`
 	// Metadata for this image at its original size.
@@ -193,14 +193,14 @@ func (*ImageAsset) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_asset_types_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ImageAsset) GetData() *wrappers.BytesValue {
+func (x *ImageAsset) GetData() *wrapperspb.BytesValue {
 	if x != nil {
 		return x.Data
 	}
 	return nil
 }
 
-func (x *ImageAsset) GetFileSize() *wrappers.Int64Value {
+func (x *ImageAsset) GetFileSize() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FileSize
 	}
@@ -228,11 +228,11 @@ type ImageDimension struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Height of the image.
-	HeightPixels *wrappers.Int64Value `protobuf:"bytes,1,opt,name=height_pixels,json=heightPixels,proto3" json:"height_pixels,omitempty"`
+	HeightPixels *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=height_pixels,json=heightPixels,proto3" json:"height_pixels,omitempty"`
 	// Width of the image.
-	WidthPixels *wrappers.Int64Value `protobuf:"bytes,2,opt,name=width_pixels,json=widthPixels,proto3" json:"width_pixels,omitempty"`
+	WidthPixels *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=width_pixels,json=widthPixels,proto3" json:"width_pixels,omitempty"`
 	// A URL that returns the image with this height and width.
-	Url *wrappers.StringValue `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
+	Url *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
 }
 
 func (x *ImageDimension) Reset() {
@@ -267,21 +267,21 @@ func (*ImageDimension) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_asset_types_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ImageDimension) GetHeightPixels() *wrappers.Int64Value {
+func (x *ImageDimension) GetHeightPixels() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.HeightPixels
 	}
 	return nil
 }
 
-func (x *ImageDimension) GetWidthPixels() *wrappers.Int64Value {
+func (x *ImageDimension) GetWidthPixels() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.WidthPixels
 	}
 	return nil
 }
 
-func (x *ImageDimension) GetUrl() *wrappers.StringValue {
+func (x *ImageDimension) GetUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Url
 	}
@@ -295,7 +295,7 @@ type TextAsset struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Text content of the text asset.
-	Text *wrappers.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	Text *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
 }
 
 func (x *TextAsset) Reset() {
@@ -330,7 +330,7 @@ func (*TextAsset) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_asset_types_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *TextAsset) GetText() *wrappers.StringValue {
+func (x *TextAsset) GetText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Text
 	}
@@ -433,9 +433,9 @@ var file_google_ads_googleads_v2_common_asset_types_proto_goTypes = []interface{
 	(*ImageAsset)(nil),               // 2: google.ads.googleads.v2.common.ImageAsset
 	(*ImageDimension)(nil),           // 3: google.ads.googleads.v2.common.ImageDimension
 	(*TextAsset)(nil),                // 4: google.ads.googleads.v2.common.TextAsset
-	(*wrappers.StringValue)(nil),     // 5: google.protobuf.StringValue
-	(*wrappers.BytesValue)(nil),      // 6: google.protobuf.BytesValue
-	(*wrappers.Int64Value)(nil),      // 7: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),   // 5: google.protobuf.StringValue
+	(*wrapperspb.BytesValue)(nil),    // 6: google.protobuf.BytesValue
+	(*wrapperspb.Int64Value)(nil),    // 7: google.protobuf.Int64Value
 	(enums.MimeTypeEnum_MimeType)(0), // 8: google.ads.googleads.v2.enums.MimeTypeEnum.MimeType
 }
 var file_google_ads_googleads_v2_common_asset_types_proto_depIdxs = []int32{

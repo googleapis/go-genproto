@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -74,7 +74,7 @@ type ReadGroup struct {
 	ReferenceSetId string `protobuf:"bytes,11,opt,name=reference_set_id,json=referenceSetId,proto3" json:"reference_set_id,omitempty"`
 	// A map of additional read group information. This must be of the form
 	// map<string, string[]> (string key mapping to a list of string values).
-	Info map[string]*_struct.ListValue `protobuf:"bytes,12,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Info map[string]*structpb.ListValue `protobuf:"bytes,12,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *ReadGroup) Reset() {
@@ -172,7 +172,7 @@ func (x *ReadGroup) GetReferenceSetId() string {
 	return ""
 }
 
-func (x *ReadGroup) GetInfo() map[string]*_struct.ListValue {
+func (x *ReadGroup) GetInfo() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Info
 	}
@@ -437,7 +437,7 @@ var file_google_genomics_v1_readgroup_proto_goTypes = []interface{}{
 	(*ReadGroup_Experiment)(nil), // 1: google.genomics.v1.ReadGroup.Experiment
 	(*ReadGroup_Program)(nil),    // 2: google.genomics.v1.ReadGroup.Program
 	nil,                          // 3: google.genomics.v1.ReadGroup.InfoEntry
-	(*_struct.ListValue)(nil),    // 4: google.protobuf.ListValue
+	(*structpb.ListValue)(nil),   // 4: google.protobuf.ListValue
 }
 var file_google_genomics_v1_readgroup_proto_depIdxs = []int32{
 	1, // 0: google.genomics.v1.ReadGroup.experiment:type_name -> google.genomics.v1.ReadGroup.Experiment

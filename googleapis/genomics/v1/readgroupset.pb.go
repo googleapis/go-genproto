@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -73,7 +73,7 @@ type ReadGroupSet struct {
 	// group set.
 	ReadGroups []*ReadGroup `protobuf:"bytes,6,rep,name=read_groups,json=readGroups,proto3" json:"read_groups,omitempty"`
 	// A map of additional read group set information.
-	Info map[string]*_struct.ListValue `protobuf:"bytes,7,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Info map[string]*structpb.ListValue `protobuf:"bytes,7,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *ReadGroupSet) Reset() {
@@ -150,7 +150,7 @@ func (x *ReadGroupSet) GetReadGroups() []*ReadGroup {
 	return nil
 }
 
-func (x *ReadGroupSet) GetInfo() map[string]*_struct.ListValue {
+func (x *ReadGroupSet) GetInfo() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Info
 	}
@@ -216,10 +216,10 @@ func file_google_genomics_v1_readgroupset_proto_rawDescGZIP() []byte {
 
 var file_google_genomics_v1_readgroupset_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_google_genomics_v1_readgroupset_proto_goTypes = []interface{}{
-	(*ReadGroupSet)(nil),      // 0: google.genomics.v1.ReadGroupSet
-	nil,                       // 1: google.genomics.v1.ReadGroupSet.InfoEntry
-	(*ReadGroup)(nil),         // 2: google.genomics.v1.ReadGroup
-	(*_struct.ListValue)(nil), // 3: google.protobuf.ListValue
+	(*ReadGroupSet)(nil),       // 0: google.genomics.v1.ReadGroupSet
+	nil,                        // 1: google.genomics.v1.ReadGroupSet.InfoEntry
+	(*ReadGroup)(nil),          // 2: google.genomics.v1.ReadGroup
+	(*structpb.ListValue)(nil), // 3: google.protobuf.ListValue
 }
 var file_google_genomics_v1_readgroupset_proto_depIdxs = []int32{
 	2, // 0: google.genomics.v1.ReadGroupSet.read_groups:type_name -> google.genomics.v1.ReadGroup

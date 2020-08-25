@@ -25,7 +25,6 @@ import (
 	reflect "reflect"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
@@ -33,6 +32,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -165,7 +165,7 @@ var file_google_bigtable_admin_cluster_v1_bigtable_cluster_service_proto_goTypes
 	(*UndeleteClusterRequest)(nil), // 6: google.bigtable.admin.cluster.v1.UndeleteClusterRequest
 	(*ListZonesResponse)(nil),      // 7: google.bigtable.admin.cluster.v1.ListZonesResponse
 	(*ListClustersResponse)(nil),   // 8: google.bigtable.admin.cluster.v1.ListClustersResponse
-	(*empty.Empty)(nil),            // 9: google.protobuf.Empty
+	(*emptypb.Empty)(nil),          // 9: google.protobuf.Empty
 	(*longrunning.Operation)(nil),  // 10: google.longrunning.Operation
 }
 var file_google_bigtable_admin_cluster_v1_bigtable_cluster_service_proto_depIdxs = []int32{
@@ -292,7 +292,7 @@ type BigtableClusterServiceClient interface {
 	// At the cluster's "delete_time":
 	//  * The cluster and *all of its tables* will immediately and irrevocably
 	//    disappear from the API, and their data will be permanently deleted.
-	DeleteCluster(ctx context.Context, in *DeleteClusterRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteCluster(ctx context.Context, in *DeleteClusterRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Cancels the scheduled deletion of an cluster and begins preparing it to
 	// resume serving. The returned operation will also be embedded as the
 	// cluster's "current_operation".
@@ -363,8 +363,8 @@ func (c *bigtableClusterServiceClient) UpdateCluster(ctx context.Context, in *Cl
 	return out, nil
 }
 
-func (c *bigtableClusterServiceClient) DeleteCluster(ctx context.Context, in *DeleteClusterRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *bigtableClusterServiceClient) DeleteCluster(ctx context.Context, in *DeleteClusterRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.bigtable.admin.cluster.v1.BigtableClusterService/DeleteCluster", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -447,7 +447,7 @@ type BigtableClusterServiceServer interface {
 	// At the cluster's "delete_time":
 	//  * The cluster and *all of its tables* will immediately and irrevocably
 	//    disappear from the API, and their data will be permanently deleted.
-	DeleteCluster(context.Context, *DeleteClusterRequest) (*empty.Empty, error)
+	DeleteCluster(context.Context, *DeleteClusterRequest) (*emptypb.Empty, error)
 	// Cancels the scheduled deletion of an cluster and begins preparing it to
 	// resume serving. The returned operation will also be embedded as the
 	// cluster's "current_operation".
@@ -484,7 +484,7 @@ func (*UnimplementedBigtableClusterServiceServer) CreateCluster(context.Context,
 func (*UnimplementedBigtableClusterServiceServer) UpdateCluster(context.Context, *Cluster) (*Cluster, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCluster not implemented")
 }
-func (*UnimplementedBigtableClusterServiceServer) DeleteCluster(context.Context, *DeleteClusterRequest) (*empty.Empty, error) {
+func (*UnimplementedBigtableClusterServiceServer) DeleteCluster(context.Context, *DeleteClusterRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCluster not implemented")
 }
 func (*UnimplementedBigtableClusterServiceServer) UndeleteCluster(context.Context, *UndeleteClusterRequest) (*longrunning.Operation, error) {

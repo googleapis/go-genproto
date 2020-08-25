@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -328,7 +328,7 @@ type CloudBuildOptions struct {
 	AppYamlPath string `protobuf:"bytes,1,opt,name=app_yaml_path,json=appYamlPath,proto3" json:"app_yaml_path,omitempty"`
 	// The Cloud Build timeout used as part of any dependent builds performed by
 	// version creation. Defaults to 10 minutes.
-	CloudBuildTimeout *duration.Duration `protobuf:"bytes,2,opt,name=cloud_build_timeout,json=cloudBuildTimeout,proto3" json:"cloud_build_timeout,omitempty"`
+	CloudBuildTimeout *durationpb.Duration `protobuf:"bytes,2,opt,name=cloud_build_timeout,json=cloudBuildTimeout,proto3" json:"cloud_build_timeout,omitempty"`
 }
 
 func (x *CloudBuildOptions) Reset() {
@@ -370,7 +370,7 @@ func (x *CloudBuildOptions) GetAppYamlPath() string {
 	return ""
 }
 
-func (x *CloudBuildOptions) GetCloudBuildTimeout() *duration.Duration {
+func (x *CloudBuildOptions) GetCloudBuildTimeout() *durationpb.Duration {
 	if x != nil {
 		return x.CloudBuildTimeout
 	}
@@ -527,14 +527,14 @@ func file_google_appengine_v1beta_deploy_proto_rawDescGZIP() []byte {
 
 var file_google_appengine_v1beta_deploy_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_google_appengine_v1beta_deploy_proto_goTypes = []interface{}{
-	(*Deployment)(nil),        // 0: google.appengine.v1beta.Deployment
-	(*FileInfo)(nil),          // 1: google.appengine.v1beta.FileInfo
-	(*ContainerInfo)(nil),     // 2: google.appengine.v1beta.ContainerInfo
-	(*BuildInfo)(nil),         // 3: google.appengine.v1beta.BuildInfo
-	(*CloudBuildOptions)(nil), // 4: google.appengine.v1beta.CloudBuildOptions
-	(*ZipInfo)(nil),           // 5: google.appengine.v1beta.ZipInfo
-	nil,                       // 6: google.appengine.v1beta.Deployment.FilesEntry
-	(*duration.Duration)(nil), // 7: google.protobuf.Duration
+	(*Deployment)(nil),          // 0: google.appengine.v1beta.Deployment
+	(*FileInfo)(nil),            // 1: google.appengine.v1beta.FileInfo
+	(*ContainerInfo)(nil),       // 2: google.appengine.v1beta.ContainerInfo
+	(*BuildInfo)(nil),           // 3: google.appengine.v1beta.BuildInfo
+	(*CloudBuildOptions)(nil),   // 4: google.appengine.v1beta.CloudBuildOptions
+	(*ZipInfo)(nil),             // 5: google.appengine.v1beta.ZipInfo
+	nil,                         // 6: google.appengine.v1beta.Deployment.FilesEntry
+	(*durationpb.Duration)(nil), // 7: google.protobuf.Duration
 }
 var file_google_appengine_v1beta_deploy_proto_depIdxs = []int32{
 	6, // 0: google.appengine.v1beta.Deployment.files:type_name -> google.appengine.v1beta.Deployment.FilesEntry

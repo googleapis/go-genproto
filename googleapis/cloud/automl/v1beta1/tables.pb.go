@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -107,7 +107,7 @@ type TablesDatasetMetadata struct {
 	// changes that happened to the dataset afterwards are not reflected in these
 	// fields values. The regeneration happens in the background on a best effort
 	// basis.
-	StatsUpdateTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=stats_update_time,json=statsUpdateTime,proto3" json:"stats_update_time,omitempty"`
+	StatsUpdateTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=stats_update_time,json=statsUpdateTime,proto3" json:"stats_update_time,omitempty"`
 }
 
 func (x *TablesDatasetMetadata) Reset() {
@@ -177,7 +177,7 @@ func (x *TablesDatasetMetadata) GetTargetColumnCorrelations() map[string]*Correl
 	return nil
 }
 
-func (x *TablesDatasetMetadata) GetStatsUpdateTime() *timestamp.Timestamp {
+func (x *TablesDatasetMetadata) GetStatsUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StatsUpdateTime
 	}
@@ -437,7 +437,7 @@ type TablesAnnotation struct {
 	//   value.
 	//
 	// * FLOAT64 - the predicted (with above `prediction_interval`) FLOAT64 value.
-	Value *_struct.Value `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	Value *structpb.Value `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	// Output only. Auxiliary information for each of the model's
 	//
 	// [input_feature_column_specs][google.cloud.automl.v1beta1.TablesModelMetadata.input_feature_column_specs]
@@ -506,7 +506,7 @@ func (x *TablesAnnotation) GetPredictionInterval() *DoubleRange {
 	return nil
 }
 
-func (x *TablesAnnotation) GetValue() *_struct.Value {
+func (x *TablesAnnotation) GetValue() *structpb.Value {
 	if x != nil {
 		return x.Value
 	}
@@ -793,10 +793,10 @@ var file_google_cloud_automl_v1beta1_tables_proto_goTypes = []interface{}{
 	(*TablesAnnotation)(nil),      // 2: google.cloud.automl.v1beta1.TablesAnnotation
 	(*TablesModelColumnInfo)(nil), // 3: google.cloud.automl.v1beta1.TablesModelColumnInfo
 	nil,                           // 4: google.cloud.automl.v1beta1.TablesDatasetMetadata.TargetColumnCorrelationsEntry
-	(*timestamp.Timestamp)(nil),   // 5: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
 	(*ColumnSpec)(nil),            // 6: google.cloud.automl.v1beta1.ColumnSpec
 	(*DoubleRange)(nil),           // 7: google.cloud.automl.v1beta1.DoubleRange
-	(*_struct.Value)(nil),         // 8: google.protobuf.Value
+	(*structpb.Value)(nil),        // 8: google.protobuf.Value
 	(*CorrelationStats)(nil),      // 9: google.cloud.automl.v1beta1.CorrelationStats
 }
 var file_google_cloud_automl_v1beta1_tables_proto_depIdxs = []int32{

@@ -26,9 +26,9 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -761,7 +761,7 @@ type LocalTestTiming struct {
 
 	// Time taken by the test process, typically surrounded by a small wrapper
 	// script.
-	TestProcessDuration *duration.Duration `protobuf:"bytes,1,opt,name=test_process_duration,json=testProcessDuration,proto3" json:"test_process_duration,omitempty"`
+	TestProcessDuration *durationpb.Duration `protobuf:"bytes,1,opt,name=test_process_duration,json=testProcessDuration,proto3" json:"test_process_duration,omitempty"`
 }
 
 func (x *LocalTestTiming) Reset() {
@@ -796,7 +796,7 @@ func (*LocalTestTiming) Descriptor() ([]byte, []int) {
 	return file_google_devtools_resultstore_v2_action_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *LocalTestTiming) GetTestProcessDuration() *duration.Duration {
+func (x *LocalTestTiming) GetTestProcessDuration() *durationpb.Duration {
 	if x != nil {
 		return x.TestProcessDuration
 	}
@@ -810,24 +810,24 @@ type RemoteTestAttemptTiming struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Idle period before the test process is invoked on the remote machine.
-	QueueDuration *duration.Duration `protobuf:"bytes,1,opt,name=queue_duration,json=queueDuration,proto3" json:"queue_duration,omitempty"`
+	QueueDuration *durationpb.Duration `protobuf:"bytes,1,opt,name=queue_duration,json=queueDuration,proto3" json:"queue_duration,omitempty"`
 	// Time to upload data dependencies from the local machine to the remote
 	// machine running the test, or to the distributed cache.
-	UploadDuration *duration.Duration `protobuf:"bytes,2,opt,name=upload_duration,json=uploadDuration,proto3" json:"upload_duration,omitempty"`
+	UploadDuration *durationpb.Duration `protobuf:"bytes,2,opt,name=upload_duration,json=uploadDuration,proto3" json:"upload_duration,omitempty"`
 	// Time to set up the remote machine.
 	// Not to be confused with setup time in
 	// xUnit test frameworks, which falls within the test_process_time.
-	MachineSetupDuration *duration.Duration `protobuf:"bytes,3,opt,name=machine_setup_duration,json=machineSetupDuration,proto3" json:"machine_setup_duration,omitempty"`
+	MachineSetupDuration *durationpb.Duration `protobuf:"bytes,3,opt,name=machine_setup_duration,json=machineSetupDuration,proto3" json:"machine_setup_duration,omitempty"`
 	// Time taken by the test process, typically surrounded by a small wrapper
 	// script.
 	// For Java tests, this includes JVM setup, flag parsing, class path setup,
 	// parsing files to setup the suite, and finally running your test methods.
 	// In many cases, only a small fraction of the test process time is spent
 	// running the test methods.
-	TestProcessDuration *duration.Duration `protobuf:"bytes,4,opt,name=test_process_duration,json=testProcessDuration,proto3" json:"test_process_duration,omitempty"`
+	TestProcessDuration *durationpb.Duration `protobuf:"bytes,4,opt,name=test_process_duration,json=testProcessDuration,proto3" json:"test_process_duration,omitempty"`
 	// Time spent retrieving test logs and any other test outputs, back to the
 	// local machine.
-	DownloadDuration *duration.Duration `protobuf:"bytes,5,opt,name=download_duration,json=downloadDuration,proto3" json:"download_duration,omitempty"`
+	DownloadDuration *durationpb.Duration `protobuf:"bytes,5,opt,name=download_duration,json=downloadDuration,proto3" json:"download_duration,omitempty"`
 }
 
 func (x *RemoteTestAttemptTiming) Reset() {
@@ -862,35 +862,35 @@ func (*RemoteTestAttemptTiming) Descriptor() ([]byte, []int) {
 	return file_google_devtools_resultstore_v2_action_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *RemoteTestAttemptTiming) GetQueueDuration() *duration.Duration {
+func (x *RemoteTestAttemptTiming) GetQueueDuration() *durationpb.Duration {
 	if x != nil {
 		return x.QueueDuration
 	}
 	return nil
 }
 
-func (x *RemoteTestAttemptTiming) GetUploadDuration() *duration.Duration {
+func (x *RemoteTestAttemptTiming) GetUploadDuration() *durationpb.Duration {
 	if x != nil {
 		return x.UploadDuration
 	}
 	return nil
 }
 
-func (x *RemoteTestAttemptTiming) GetMachineSetupDuration() *duration.Duration {
+func (x *RemoteTestAttemptTiming) GetMachineSetupDuration() *durationpb.Duration {
 	if x != nil {
 		return x.MachineSetupDuration
 	}
 	return nil
 }
 
-func (x *RemoteTestAttemptTiming) GetTestProcessDuration() *duration.Duration {
+func (x *RemoteTestAttemptTiming) GetTestProcessDuration() *durationpb.Duration {
 	if x != nil {
 		return x.TestProcessDuration
 	}
 	return nil
 }
 
-func (x *RemoteTestAttemptTiming) GetDownloadDuration() *duration.Duration {
+func (x *RemoteTestAttemptTiming) GetDownloadDuration() *durationpb.Duration {
 	if x != nil {
 		return x.DownloadDuration
 	}
@@ -904,7 +904,7 @@ type RemoteTestTiming struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Time taken locally to determine what to do.
-	LocalAnalysisDuration *duration.Duration `protobuf:"bytes,1,opt,name=local_analysis_duration,json=localAnalysisDuration,proto3" json:"local_analysis_duration,omitempty"`
+	LocalAnalysisDuration *durationpb.Duration `protobuf:"bytes,1,opt,name=local_analysis_duration,json=localAnalysisDuration,proto3" json:"local_analysis_duration,omitempty"`
 	// Normally there is only one attempt, but the system may retry on internal
 	// errors, leading to multiple attempts.
 	Attempts []*RemoteTestAttemptTiming `protobuf:"bytes,2,rep,name=attempts,proto3" json:"attempts,omitempty"`
@@ -942,7 +942,7 @@ func (*RemoteTestTiming) Descriptor() ([]byte, []int) {
 	return file_google_devtools_resultstore_v2_action_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *RemoteTestTiming) GetLocalAnalysisDuration() *duration.Duration {
+func (x *RemoteTestTiming) GetLocalAnalysisDuration() *durationpb.Duration {
 	if x != nil {
 		return x.LocalAnalysisDuration
 	}
@@ -972,12 +972,12 @@ type TestTiming struct {
 	// The amount of CPU time spent by the test process executing system calls
 	// within the kernel, as opposed to library code. Time the test process spent
 	// blocked does not count towards this figure.
-	SystemTimeDuration *duration.Duration `protobuf:"bytes,3,opt,name=system_time_duration,json=systemTimeDuration,proto3" json:"system_time_duration,omitempty"`
+	SystemTimeDuration *durationpb.Duration `protobuf:"bytes,3,opt,name=system_time_duration,json=systemTimeDuration,proto3" json:"system_time_duration,omitempty"`
 	// The amount of CPU time spent by the test process executing user-mode code
 	// outside the kernel, as opposed to library code. Time the test process
 	// spent blocked does not count towards this figure. You can add user_time to
 	// system_time to get total CPU time taken by the test process.
-	UserTimeDuration *duration.Duration `protobuf:"bytes,4,opt,name=user_time_duration,json=userTimeDuration,proto3" json:"user_time_duration,omitempty"`
+	UserTimeDuration *durationpb.Duration `protobuf:"bytes,4,opt,name=user_time_duration,json=userTimeDuration,proto3" json:"user_time_duration,omitempty"`
 	// Most build systems cache build results to speed up incremental builds.
 	// Some also cache test results too. This indicates whether the test results
 	// were found in a cache, and where that cache was located.
@@ -1037,14 +1037,14 @@ func (x *TestTiming) GetRemote() *RemoteTestTiming {
 	return nil
 }
 
-func (x *TestTiming) GetSystemTimeDuration() *duration.Duration {
+func (x *TestTiming) GetSystemTimeDuration() *durationpb.Duration {
 	if x != nil {
 		return x.SystemTimeDuration
 	}
 	return nil
 }
 
-func (x *TestTiming) GetUserTimeDuration() *duration.Duration {
+func (x *TestTiming) GetUserTimeDuration() *durationpb.Duration {
 	if x != nil {
 		return x.UserTimeDuration
 	}
@@ -1490,7 +1490,7 @@ var file_google_devtools_resultstore_v2_action_proto_goTypes = []interface{}{
 	(*ActionCoverage)(nil),          // 18: google.devtools.resultstore.v2.ActionCoverage
 	(*FileProcessingErrors)(nil),    // 19: google.devtools.resultstore.v2.FileProcessingErrors
 	(*TestSuite)(nil),               // 20: google.devtools.resultstore.v2.TestSuite
-	(*duration.Duration)(nil),       // 21: google.protobuf.Duration
+	(*durationpb.Duration)(nil),     // 21: google.protobuf.Duration
 }
 var file_google_devtools_resultstore_v2_action_proto_depIdxs = []int32{
 	12, // 0: google.devtools.resultstore.v2.Action.id:type_name -> google.devtools.resultstore.v2.Action.Id

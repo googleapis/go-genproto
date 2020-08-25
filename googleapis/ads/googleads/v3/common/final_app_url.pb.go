@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -58,7 +58,7 @@ type FinalAppUrl struct {
 	// scheme that starts with the app's name. The host and path specify the
 	// unique location in the app where your content exists.
 	// Example: "exampleapp://productid_1234". Required.
-	Url *wrappers.StringValue `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
+	Url *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
 }
 
 func (x *FinalAppUrl) Reset() {
@@ -100,7 +100,7 @@ func (x *FinalAppUrl) GetOsType() enums.AppUrlOperatingSystemTypeEnum_AppUrlOper
 	return enums.AppUrlOperatingSystemTypeEnum_UNSPECIFIED
 }
 
-func (x *FinalAppUrl) GetUrl() *wrappers.StringValue {
+func (x *FinalAppUrl) GetUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Url
 	}
@@ -168,7 +168,7 @@ var file_google_ads_googleads_v3_common_final_app_url_proto_msgTypes = make([]pr
 var file_google_ads_googleads_v3_common_final_app_url_proto_goTypes = []interface{}{
 	(*FinalAppUrl)(nil), // 0: google.ads.googleads.v3.common.FinalAppUrl
 	(enums.AppUrlOperatingSystemTypeEnum_AppUrlOperatingSystemType)(0), // 1: google.ads.googleads.v3.enums.AppUrlOperatingSystemTypeEnum.AppUrlOperatingSystemType
-	(*wrappers.StringValue)(nil),                                       // 2: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                     // 2: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v3_common_final_app_url_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v3.common.FinalAppUrl.os_type:type_name -> google.ads.googleads.v3.enums.AppUrlOperatingSystemTypeEnum.AppUrlOperatingSystemType

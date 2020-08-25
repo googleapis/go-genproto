@@ -25,13 +25,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	errors "google.golang.org/genproto/googleapis/ads/googleads/v4/errors"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -57,19 +57,19 @@ type FeedItem struct {
 	// `customers/{customer_id}/feedItems/{feed_id}~{feed_item_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The feed to which this feed item belongs.
-	Feed *wrappers.StringValue `protobuf:"bytes,2,opt,name=feed,proto3" json:"feed,omitempty"`
+	Feed *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=feed,proto3" json:"feed,omitempty"`
 	// Output only. The ID of this feed item.
-	Id *wrappers.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
 	// Start time in which this feed item is effective and can begin serving. The
 	// time is in the customer's time zone.
 	// The format is "YYYY-MM-DD HH:MM:SS".
 	// Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"
-	StartDateTime *wrappers.StringValue `protobuf:"bytes,4,opt,name=start_date_time,json=startDateTime,proto3" json:"start_date_time,omitempty"`
+	StartDateTime *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=start_date_time,json=startDateTime,proto3" json:"start_date_time,omitempty"`
 	// End time in which this feed item is no longer effective and will stop
 	// serving. The time is in the customer's time zone.
 	// The format is "YYYY-MM-DD HH:MM:SS".
 	// Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"
-	EndDateTime *wrappers.StringValue `protobuf:"bytes,5,opt,name=end_date_time,json=endDateTime,proto3" json:"end_date_time,omitempty"`
+	EndDateTime *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=end_date_time,json=endDateTime,proto3" json:"end_date_time,omitempty"`
 	// The feed item's attribute values.
 	AttributeValues []*FeedItemAttributeValue `protobuf:"bytes,6,rep,name=attribute_values,json=attributeValues,proto3" json:"attribute_values,omitempty"`
 	// Geo targeting restriction specifies the type of location that can be used
@@ -129,28 +129,28 @@ func (x *FeedItem) GetResourceName() string {
 	return ""
 }
 
-func (x *FeedItem) GetFeed() *wrappers.StringValue {
+func (x *FeedItem) GetFeed() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Feed
 	}
 	return nil
 }
 
-func (x *FeedItem) GetId() *wrappers.Int64Value {
+func (x *FeedItem) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *FeedItem) GetStartDateTime() *wrappers.StringValue {
+func (x *FeedItem) GetStartDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StartDateTime
 	}
 	return nil
 }
 
-func (x *FeedItem) GetEndDateTime() *wrappers.StringValue {
+func (x *FeedItem) GetEndDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.EndDateTime
 	}
@@ -199,31 +199,31 @@ type FeedItemAttributeValue struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Id of the feed attribute for which the value is associated with.
-	FeedAttributeId *wrappers.Int64Value `protobuf:"bytes,1,opt,name=feed_attribute_id,json=feedAttributeId,proto3" json:"feed_attribute_id,omitempty"`
+	FeedAttributeId *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=feed_attribute_id,json=feedAttributeId,proto3" json:"feed_attribute_id,omitempty"`
 	// Int64 value. Should be set if feed_attribute_id refers to a feed attribute
 	// of type INT64.
-	IntegerValue *wrappers.Int64Value `protobuf:"bytes,2,opt,name=integer_value,json=integerValue,proto3" json:"integer_value,omitempty"`
+	IntegerValue *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=integer_value,json=integerValue,proto3" json:"integer_value,omitempty"`
 	// Bool value. Should be set if feed_attribute_id refers to a feed attribute
 	// of type BOOLEAN.
-	BooleanValue *wrappers.BoolValue `protobuf:"bytes,3,opt,name=boolean_value,json=booleanValue,proto3" json:"boolean_value,omitempty"`
+	BooleanValue *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=boolean_value,json=booleanValue,proto3" json:"boolean_value,omitempty"`
 	// String value. Should be set if feed_attribute_id refers to a feed attribute
 	// of type STRING, URL or DATE_TIME.
 	// For STRING the maximum length is 1500 characters. For URL the maximum
 	// length is 2076 characters. For DATE_TIME the string must be in the format
 	// "YYYYMMDD HHMMSS".
-	StringValue *wrappers.StringValue `protobuf:"bytes,4,opt,name=string_value,json=stringValue,proto3" json:"string_value,omitempty"`
+	StringValue *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=string_value,json=stringValue,proto3" json:"string_value,omitempty"`
 	// Double value. Should be set if feed_attribute_id refers to a feed attribute
 	// of type DOUBLE.
-	DoubleValue *wrappers.DoubleValue `protobuf:"bytes,5,opt,name=double_value,json=doubleValue,proto3" json:"double_value,omitempty"`
+	DoubleValue *wrapperspb.DoubleValue `protobuf:"bytes,5,opt,name=double_value,json=doubleValue,proto3" json:"double_value,omitempty"`
 	// Price value. Should be set if feed_attribute_id refers to a feed attribute
 	// of type PRICE.
 	PriceValue *common.Money `protobuf:"bytes,6,opt,name=price_value,json=priceValue,proto3" json:"price_value,omitempty"`
 	// Repeated int64 value. Should be set if feed_attribute_id refers to a feed
 	// attribute of type INT64_LIST.
-	IntegerValues []*wrappers.Int64Value `protobuf:"bytes,7,rep,name=integer_values,json=integerValues,proto3" json:"integer_values,omitempty"`
+	IntegerValues []*wrapperspb.Int64Value `protobuf:"bytes,7,rep,name=integer_values,json=integerValues,proto3" json:"integer_values,omitempty"`
 	// Repeated bool value. Should be set if feed_attribute_id refers to a feed
 	// attribute of type BOOLEAN_LIST.
-	BooleanValues []*wrappers.BoolValue `protobuf:"bytes,8,rep,name=boolean_values,json=booleanValues,proto3" json:"boolean_values,omitempty"`
+	BooleanValues []*wrapperspb.BoolValue `protobuf:"bytes,8,rep,name=boolean_values,json=booleanValues,proto3" json:"boolean_values,omitempty"`
 	// Repeated string value. Should be set if feed_attribute_id refers to a feed
 	// attribute of type STRING_LIST, URL_LIST or DATE_TIME_LIST.
 	// For STRING_LIST and URL_LIST the total size of the list in bytes may not
@@ -233,10 +233,10 @@ type FeedItemAttributeValue struct {
 	// characters. For URL_LIST the maximum length is 2076 characters. For
 	// DATE_TIME the format of the string must be the same as start and end time
 	// for the feed item.
-	StringValues []*wrappers.StringValue `protobuf:"bytes,9,rep,name=string_values,json=stringValues,proto3" json:"string_values,omitempty"`
+	StringValues []*wrapperspb.StringValue `protobuf:"bytes,9,rep,name=string_values,json=stringValues,proto3" json:"string_values,omitempty"`
 	// Repeated double value. Should be set if feed_attribute_id refers to a feed
 	// attribute of type DOUBLE_LIST.
-	DoubleValues []*wrappers.DoubleValue `protobuf:"bytes,10,rep,name=double_values,json=doubleValues,proto3" json:"double_values,omitempty"`
+	DoubleValues []*wrapperspb.DoubleValue `protobuf:"bytes,10,rep,name=double_values,json=doubleValues,proto3" json:"double_values,omitempty"`
 }
 
 func (x *FeedItemAttributeValue) Reset() {
@@ -271,35 +271,35 @@ func (*FeedItemAttributeValue) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_feed_item_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *FeedItemAttributeValue) GetFeedAttributeId() *wrappers.Int64Value {
+func (x *FeedItemAttributeValue) GetFeedAttributeId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FeedAttributeId
 	}
 	return nil
 }
 
-func (x *FeedItemAttributeValue) GetIntegerValue() *wrappers.Int64Value {
+func (x *FeedItemAttributeValue) GetIntegerValue() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IntegerValue
 	}
 	return nil
 }
 
-func (x *FeedItemAttributeValue) GetBooleanValue() *wrappers.BoolValue {
+func (x *FeedItemAttributeValue) GetBooleanValue() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.BooleanValue
 	}
 	return nil
 }
 
-func (x *FeedItemAttributeValue) GetStringValue() *wrappers.StringValue {
+func (x *FeedItemAttributeValue) GetStringValue() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StringValue
 	}
 	return nil
 }
 
-func (x *FeedItemAttributeValue) GetDoubleValue() *wrappers.DoubleValue {
+func (x *FeedItemAttributeValue) GetDoubleValue() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.DoubleValue
 	}
@@ -313,28 +313,28 @@ func (x *FeedItemAttributeValue) GetPriceValue() *common.Money {
 	return nil
 }
 
-func (x *FeedItemAttributeValue) GetIntegerValues() []*wrappers.Int64Value {
+func (x *FeedItemAttributeValue) GetIntegerValues() []*wrapperspb.Int64Value {
 	if x != nil {
 		return x.IntegerValues
 	}
 	return nil
 }
 
-func (x *FeedItemAttributeValue) GetBooleanValues() []*wrappers.BoolValue {
+func (x *FeedItemAttributeValue) GetBooleanValues() []*wrapperspb.BoolValue {
 	if x != nil {
 		return x.BooleanValues
 	}
 	return nil
 }
 
-func (x *FeedItemAttributeValue) GetStringValues() []*wrappers.StringValue {
+func (x *FeedItemAttributeValue) GetStringValues() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.StringValues
 	}
 	return nil
 }
 
-func (x *FeedItemAttributeValue) GetDoubleValues() []*wrappers.DoubleValue {
+func (x *FeedItemAttributeValue) GetDoubleValues() []*wrapperspb.DoubleValue {
 	if x != nil {
 		return x.DoubleValues
 	}
@@ -351,7 +351,7 @@ type FeedItemPlaceholderPolicyInfo struct {
 	// Output only. The placeholder type.
 	PlaceholderTypeEnum enums.PlaceholderTypeEnum_PlaceholderType `protobuf:"varint,10,opt,name=placeholder_type_enum,json=placeholderTypeEnum,proto3,enum=google.ads.googleads.v4.enums.PlaceholderTypeEnum_PlaceholderType" json:"placeholder_type_enum,omitempty"`
 	// Output only. The FeedMapping that contains the placeholder type.
-	FeedMappingResourceName *wrappers.StringValue `protobuf:"bytes,2,opt,name=feed_mapping_resource_name,json=feedMappingResourceName,proto3" json:"feed_mapping_resource_name,omitempty"`
+	FeedMappingResourceName *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=feed_mapping_resource_name,json=feedMappingResourceName,proto3" json:"feed_mapping_resource_name,omitempty"`
 	// Output only. Where the placeholder type is in the review process.
 	ReviewStatus enums.PolicyReviewStatusEnum_PolicyReviewStatus `protobuf:"varint,3,opt,name=review_status,json=reviewStatus,proto3,enum=google.ads.googleads.v4.enums.PolicyReviewStatusEnum_PolicyReviewStatus" json:"review_status,omitempty"`
 	// Output only. The overall approval status of the placeholder type, calculated based on
@@ -408,7 +408,7 @@ func (x *FeedItemPlaceholderPolicyInfo) GetPlaceholderTypeEnum() enums.Placehold
 	return enums.PlaceholderTypeEnum_UNSPECIFIED
 }
 
-func (x *FeedItemPlaceholderPolicyInfo) GetFeedMappingResourceName() *wrappers.StringValue {
+func (x *FeedItemPlaceholderPolicyInfo) GetFeedMappingResourceName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FeedMappingResourceName
 	}
@@ -475,15 +475,15 @@ type FeedItemValidationError struct {
 	// of the error can be found in the 'description' field.
 	ValidationError errors.FeedItemValidationErrorEnum_FeedItemValidationError `protobuf:"varint,1,opt,name=validation_error,json=validationError,proto3,enum=google.ads.googleads.v4.errors.FeedItemValidationErrorEnum_FeedItemValidationError" json:"validation_error,omitempty"`
 	// Output only. The description of the validation error.
-	Description *wrappers.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Output only. Set of feed attributes in the feed item flagged during validation. If
 	// empty, no specific feed attributes can be associated with the error
 	// (e.g. error across the entire feed item).
-	FeedAttributeIds []*wrappers.Int64Value `protobuf:"bytes,3,rep,name=feed_attribute_ids,json=feedAttributeIds,proto3" json:"feed_attribute_ids,omitempty"`
+	FeedAttributeIds []*wrapperspb.Int64Value `protobuf:"bytes,3,rep,name=feed_attribute_ids,json=feedAttributeIds,proto3" json:"feed_attribute_ids,omitempty"`
 	// Output only. Any extra information related to this error which is not captured by
 	// validation_error and feed_attribute_id (e.g. placeholder field IDs when
 	// feed_attribute_id is not mapped). Note that extra_info is not localized.
-	ExtraInfo *wrappers.StringValue `protobuf:"bytes,5,opt,name=extra_info,json=extraInfo,proto3" json:"extra_info,omitempty"`
+	ExtraInfo *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=extra_info,json=extraInfo,proto3" json:"extra_info,omitempty"`
 }
 
 func (x *FeedItemValidationError) Reset() {
@@ -525,21 +525,21 @@ func (x *FeedItemValidationError) GetValidationError() errors.FeedItemValidation
 	return errors.FeedItemValidationErrorEnum_UNSPECIFIED
 }
 
-func (x *FeedItemValidationError) GetDescription() *wrappers.StringValue {
+func (x *FeedItemValidationError) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
 	return nil
 }
 
-func (x *FeedItemValidationError) GetFeedAttributeIds() []*wrappers.Int64Value {
+func (x *FeedItemValidationError) GetFeedAttributeIds() []*wrapperspb.Int64Value {
 	if x != nil {
 		return x.FeedAttributeIds
 	}
 	return nil
 }
 
-func (x *FeedItemValidationError) GetExtraInfo() *wrappers.StringValue {
+func (x *FeedItemValidationError) GetExtraInfo() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ExtraInfo
 	}
@@ -847,13 +847,13 @@ var file_google_ads_googleads_v4_resources_feed_item_proto_goTypes = []interface
 	(*FeedItemAttributeValue)(nil),                                                   // 1: google.ads.googleads.v4.resources.FeedItemAttributeValue
 	(*FeedItemPlaceholderPolicyInfo)(nil),                                            // 2: google.ads.googleads.v4.resources.FeedItemPlaceholderPolicyInfo
 	(*FeedItemValidationError)(nil),                                                  // 3: google.ads.googleads.v4.resources.FeedItemValidationError
-	(*wrappers.StringValue)(nil),                                                     // 4: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                                                      // 5: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                                                   // 4: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                                                    // 5: google.protobuf.Int64Value
 	(enums.GeoTargetingRestrictionEnum_GeoTargetingRestriction)(0),                   // 6: google.ads.googleads.v4.enums.GeoTargetingRestrictionEnum.GeoTargetingRestriction
 	(*common.CustomParameter)(nil),                                                   // 7: google.ads.googleads.v4.common.CustomParameter
 	(enums.FeedItemStatusEnum_FeedItemStatus)(0),                                     // 8: google.ads.googleads.v4.enums.FeedItemStatusEnum.FeedItemStatus
-	(*wrappers.BoolValue)(nil),                                                       // 9: google.protobuf.BoolValue
-	(*wrappers.DoubleValue)(nil),                                                     // 10: google.protobuf.DoubleValue
+	(*wrapperspb.BoolValue)(nil),                                                     // 9: google.protobuf.BoolValue
+	(*wrapperspb.DoubleValue)(nil),                                                   // 10: google.protobuf.DoubleValue
 	(*common.Money)(nil),                                                             // 11: google.ads.googleads.v4.common.Money
 	(enums.PlaceholderTypeEnum_PlaceholderType)(0),                                   // 12: google.ads.googleads.v4.enums.PlaceholderTypeEnum.PlaceholderType
 	(enums.PolicyReviewStatusEnum_PolicyReviewStatus)(0),                             // 13: google.ads.googleads.v4.enums.PolicyReviewStatusEnum.PolicyReviewStatus

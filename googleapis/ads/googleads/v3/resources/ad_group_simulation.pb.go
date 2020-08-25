@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v3/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -67,15 +67,15 @@ type AdGroupSimulation struct {
 	// `customers/{customer_id}/adGroupSimulations/{ad_group_id}~{type}~{modification_method}~{start_date}~{end_date}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. Ad group id of the simulation.
-	AdGroupId *wrappers.Int64Value `protobuf:"bytes,2,opt,name=ad_group_id,json=adGroupId,proto3" json:"ad_group_id,omitempty"`
+	AdGroupId *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=ad_group_id,json=adGroupId,proto3" json:"ad_group_id,omitempty"`
 	// Output only. The field that the simulation modifies.
 	Type enums.SimulationTypeEnum_SimulationType `protobuf:"varint,3,opt,name=type,proto3,enum=google.ads.googleads.v3.enums.SimulationTypeEnum_SimulationType" json:"type,omitempty"`
 	// Output only. How the simulation modifies the field.
 	ModificationMethod enums.SimulationModificationMethodEnum_SimulationModificationMethod `protobuf:"varint,4,opt,name=modification_method,json=modificationMethod,proto3,enum=google.ads.googleads.v3.enums.SimulationModificationMethodEnum_SimulationModificationMethod" json:"modification_method,omitempty"`
 	// Output only. First day on which the simulation is based, in YYYY-MM-DD format.
-	StartDate *wrappers.StringValue `protobuf:"bytes,5,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
+	StartDate *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
 	// Output only. Last day on which the simulation is based, in YYYY-MM-DD format
-	EndDate *wrappers.StringValue `protobuf:"bytes,6,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
+	EndDate *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
 	// List of simulation points.
 	//
 	// Types that are assignable to PointList:
@@ -124,7 +124,7 @@ func (x *AdGroupSimulation) GetResourceName() string {
 	return ""
 }
 
-func (x *AdGroupSimulation) GetAdGroupId() *wrappers.Int64Value {
+func (x *AdGroupSimulation) GetAdGroupId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AdGroupId
 	}
@@ -145,14 +145,14 @@ func (x *AdGroupSimulation) GetModificationMethod() enums.SimulationModification
 	return enums.SimulationModificationMethodEnum_UNSPECIFIED
 }
 
-func (x *AdGroupSimulation) GetStartDate() *wrappers.StringValue {
+func (x *AdGroupSimulation) GetStartDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StartDate
 	}
 	return nil
 }
 
-func (x *AdGroupSimulation) GetEndDate() *wrappers.StringValue {
+func (x *AdGroupSimulation) GetEndDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.EndDate
 	}
@@ -337,10 +337,10 @@ func file_google_ads_googleads_v3_resources_ad_group_simulation_proto_rawDescGZI
 var file_google_ads_googleads_v3_resources_ad_group_simulation_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_ad_group_simulation_proto_goTypes = []interface{}{
 	(*AdGroupSimulation)(nil),                                                // 0: google.ads.googleads.v3.resources.AdGroupSimulation
-	(*wrappers.Int64Value)(nil),                                              // 1: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                            // 1: google.protobuf.Int64Value
 	(enums.SimulationTypeEnum_SimulationType)(0),                             // 2: google.ads.googleads.v3.enums.SimulationTypeEnum.SimulationType
 	(enums.SimulationModificationMethodEnum_SimulationModificationMethod)(0), // 3: google.ads.googleads.v3.enums.SimulationModificationMethodEnum.SimulationModificationMethod
-	(*wrappers.StringValue)(nil),                                             // 4: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                           // 4: google.protobuf.StringValue
 	(*common.CpcBidSimulationPointList)(nil),                                 // 5: google.ads.googleads.v3.common.CpcBidSimulationPointList
 	(*common.CpvBidSimulationPointList)(nil),                                 // 6: google.ads.googleads.v3.common.CpvBidSimulationPointList
 	(*common.TargetCpaSimulationPointList)(nil),                              // 7: google.ads.googleads.v3.common.TargetCpaSimulationPointList

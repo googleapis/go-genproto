@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v3/common"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -60,7 +60,7 @@ type ClickView struct {
 	// `customers/{customer_id}/clickViews/{date (yyyy-MM-dd)}~{gclid}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The Google Click ID.
-	Gclid *wrappers.StringValue `protobuf:"bytes,2,opt,name=gclid,proto3" json:"gclid,omitempty"`
+	Gclid *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=gclid,proto3" json:"gclid,omitempty"`
 	// Output only. The location criteria matching the area of interest associated with the
 	// impression.
 	AreaOfInterest *common.ClickLocation `protobuf:"bytes,3,opt,name=area_of_interest,json=areaOfInterest,proto3" json:"area_of_interest,omitempty"`
@@ -68,9 +68,9 @@ type ClickView struct {
 	// impression.
 	LocationOfPresence *common.ClickLocation `protobuf:"bytes,4,opt,name=location_of_presence,json=locationOfPresence,proto3" json:"location_of_presence,omitempty"`
 	// Output only. Page number in search results where the ad was shown.
-	PageNumber *wrappers.Int64Value `protobuf:"bytes,5,opt,name=page_number,json=pageNumber,proto3" json:"page_number,omitempty"`
+	PageNumber *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=page_number,json=pageNumber,proto3" json:"page_number,omitempty"`
 	// Output only. The associated ad.
-	AdGroupAd *wrappers.StringValue `protobuf:"bytes,7,opt,name=ad_group_ad,json=adGroupAd,proto3" json:"ad_group_ad,omitempty"`
+	AdGroupAd *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=ad_group_ad,json=adGroupAd,proto3" json:"ad_group_ad,omitempty"`
 }
 
 func (x *ClickView) Reset() {
@@ -112,7 +112,7 @@ func (x *ClickView) GetResourceName() string {
 	return ""
 }
 
-func (x *ClickView) GetGclid() *wrappers.StringValue {
+func (x *ClickView) GetGclid() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Gclid
 	}
@@ -133,14 +133,14 @@ func (x *ClickView) GetLocationOfPresence() *common.ClickLocation {
 	return nil
 }
 
-func (x *ClickView) GetPageNumber() *wrappers.Int64Value {
+func (x *ClickView) GetPageNumber() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PageNumber
 	}
 	return nil
 }
 
-func (x *ClickView) GetAdGroupAd() *wrappers.StringValue {
+func (x *ClickView) GetAdGroupAd() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroupAd
 	}
@@ -237,10 +237,10 @@ func file_google_ads_googleads_v3_resources_click_view_proto_rawDescGZIP() []byt
 
 var file_google_ads_googleads_v3_resources_click_view_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_click_view_proto_goTypes = []interface{}{
-	(*ClickView)(nil),            // 0: google.ads.googleads.v3.resources.ClickView
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
-	(*common.ClickLocation)(nil), // 2: google.ads.googleads.v3.common.ClickLocation
-	(*wrappers.Int64Value)(nil),  // 3: google.protobuf.Int64Value
+	(*ClickView)(nil),              // 0: google.ads.googleads.v3.resources.ClickView
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*common.ClickLocation)(nil),   // 2: google.ads.googleads.v3.common.ClickLocation
+	(*wrapperspb.Int64Value)(nil),  // 3: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v3_resources_click_view_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v3.resources.ClickView.gclid:type_name -> google.protobuf.StringValue

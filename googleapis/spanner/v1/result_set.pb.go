@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -57,7 +57,7 @@ type ResultSet struct {
 	// [metadata.row_type][google.spanner.v1.ResultSetMetadata.row_type]. Elements are
 	// encoded based on type as described
 	// [here][google.spanner.v1.TypeCode].
-	Rows []*_struct.ListValue `protobuf:"bytes,2,rep,name=rows,proto3" json:"rows,omitempty"`
+	Rows []*structpb.ListValue `protobuf:"bytes,2,rep,name=rows,proto3" json:"rows,omitempty"`
 	// Query plan and execution statistics for the SQL statement that
 	// produced this result set. These can be requested by setting
 	// [ExecuteSqlRequest.query_mode][google.spanner.v1.ExecuteSqlRequest.query_mode].
@@ -108,7 +108,7 @@ func (x *ResultSet) GetMetadata() *ResultSetMetadata {
 	return nil
 }
 
-func (x *ResultSet) GetRows() []*_struct.ListValue {
+func (x *ResultSet) GetRows() []*structpb.ListValue {
 	if x != nil {
 		return x.Rows
 	}
@@ -206,7 +206,7 @@ type PartialResultSet struct {
 	// This sequence of `PartialResultSet`s encodes two rows, one
 	// containing the field value `"Hello"`, and a second containing the
 	// field value `"World" = "W" + "orl" + "d"`.
-	Values []*_struct.Value `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
+	Values []*structpb.Value `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
 	// If true, then the final value in [values][google.spanner.v1.PartialResultSet.values] is chunked, and must
 	// be combined with more values from subsequent `PartialResultSet`s
 	// to obtain a complete field value.
@@ -265,7 +265,7 @@ func (x *PartialResultSet) GetMetadata() *ResultSetMetadata {
 	return nil
 }
 
-func (x *PartialResultSet) GetValues() []*_struct.Value {
+func (x *PartialResultSet) GetValues() []*structpb.Value {
 	if x != nil {
 		return x.Values
 	}
@@ -376,7 +376,7 @@ type ResultSetStats struct {
 	//       "elapsed_time": "1.22 secs",
 	//       "cpu_time": "1.19 secs"
 	//     }
-	QueryStats *_struct.Struct `protobuf:"bytes,2,opt,name=query_stats,json=queryStats,proto3" json:"query_stats,omitempty"`
+	QueryStats *structpb.Struct `protobuf:"bytes,2,opt,name=query_stats,json=queryStats,proto3" json:"query_stats,omitempty"`
 	// The number of rows modified by the DML statement.
 	//
 	// Types that are assignable to RowCount:
@@ -424,7 +424,7 @@ func (x *ResultSetStats) GetQueryPlan() *QueryPlan {
 	return nil
 }
 
-func (x *ResultSetStats) GetQueryStats() *_struct.Struct {
+func (x *ResultSetStats) GetQueryStats() *structpb.Struct {
 	if x != nil {
 		return x.QueryStats
 	}
@@ -569,16 +569,16 @@ func file_google_spanner_v1_result_set_proto_rawDescGZIP() []byte {
 
 var file_google_spanner_v1_result_set_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_google_spanner_v1_result_set_proto_goTypes = []interface{}{
-	(*ResultSet)(nil),         // 0: google.spanner.v1.ResultSet
-	(*PartialResultSet)(nil),  // 1: google.spanner.v1.PartialResultSet
-	(*ResultSetMetadata)(nil), // 2: google.spanner.v1.ResultSetMetadata
-	(*ResultSetStats)(nil),    // 3: google.spanner.v1.ResultSetStats
-	(*_struct.ListValue)(nil), // 4: google.protobuf.ListValue
-	(*_struct.Value)(nil),     // 5: google.protobuf.Value
-	(*StructType)(nil),        // 6: google.spanner.v1.StructType
-	(*Transaction)(nil),       // 7: google.spanner.v1.Transaction
-	(*QueryPlan)(nil),         // 8: google.spanner.v1.QueryPlan
-	(*_struct.Struct)(nil),    // 9: google.protobuf.Struct
+	(*ResultSet)(nil),          // 0: google.spanner.v1.ResultSet
+	(*PartialResultSet)(nil),   // 1: google.spanner.v1.PartialResultSet
+	(*ResultSetMetadata)(nil),  // 2: google.spanner.v1.ResultSetMetadata
+	(*ResultSetStats)(nil),     // 3: google.spanner.v1.ResultSetStats
+	(*structpb.ListValue)(nil), // 4: google.protobuf.ListValue
+	(*structpb.Value)(nil),     // 5: google.protobuf.Value
+	(*StructType)(nil),         // 6: google.spanner.v1.StructType
+	(*Transaction)(nil),        // 7: google.spanner.v1.Transaction
+	(*QueryPlan)(nil),          // 8: google.spanner.v1.QueryPlan
+	(*structpb.Struct)(nil),    // 9: google.protobuf.Struct
 }
 var file_google_spanner_v1_result_set_proto_depIdxs = []int32{
 	2,  // 0: google.spanner.v1.ResultSet.metadata:type_name -> google.spanner.v1.ResultSetMetadata

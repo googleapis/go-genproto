@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,12 +54,12 @@ type CarrierConstant struct {
 	// `carrierConstants/{criterion_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the carrier criterion.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. The full name of the carrier in English.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The country code of the country where the carrier is located, e.g., "AR",
 	// "FR", etc.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,4,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 }
 
 func (x *CarrierConstant) Reset() {
@@ -101,21 +101,21 @@ func (x *CarrierConstant) GetResourceName() string {
 	return ""
 }
 
-func (x *CarrierConstant) GetId() *wrappers.Int64Value {
+func (x *CarrierConstant) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *CarrierConstant) GetName() *wrappers.StringValue {
+func (x *CarrierConstant) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *CarrierConstant) GetCountryCode() *wrappers.StringValue {
+func (x *CarrierConstant) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
@@ -195,9 +195,9 @@ func file_google_ads_googleads_v4_resources_carrier_constant_proto_rawDescGZIP()
 
 var file_google_ads_googleads_v4_resources_carrier_constant_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_carrier_constant_proto_goTypes = []interface{}{
-	(*CarrierConstant)(nil),      // 0: google.ads.googleads.v4.resources.CarrierConstant
-	(*wrappers.Int64Value)(nil),  // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil), // 2: google.protobuf.StringValue
+	(*CarrierConstant)(nil),        // 0: google.ads.googleads.v4.resources.CarrierConstant
+	(*wrapperspb.Int64Value)(nil),  // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil), // 2: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v4_resources_carrier_constant_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.resources.CarrierConstant.id:type_name -> google.protobuf.Int64Value

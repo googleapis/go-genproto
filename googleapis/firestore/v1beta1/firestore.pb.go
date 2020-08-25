@@ -27,8 +27,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
@@ -36,6 +34,8 @@ import (
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -204,7 +204,7 @@ func (x *GetDocumentRequest) GetTransaction() []byte {
 	return nil
 }
 
-func (x *GetDocumentRequest) GetReadTime() *timestamp.Timestamp {
+func (x *GetDocumentRequest) GetReadTime() *timestamppb.Timestamp {
 	if x, ok := x.GetConsistencySelector().(*GetDocumentRequest_ReadTime); ok {
 		return x.ReadTime
 	}
@@ -223,7 +223,7 @@ type GetDocumentRequest_Transaction struct {
 type GetDocumentRequest_ReadTime struct {
 	// Reads the version of the document at the given time.
 	// This may not be older than 60 seconds.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=read_time,json=readTime,proto3,oneof"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=read_time,json=readTime,proto3,oneof"`
 }
 
 func (*GetDocumentRequest_Transaction) isGetDocumentRequest_ConsistencySelector() {}
@@ -362,7 +362,7 @@ func (x *ListDocumentsRequest) GetTransaction() []byte {
 	return nil
 }
 
-func (x *ListDocumentsRequest) GetReadTime() *timestamp.Timestamp {
+func (x *ListDocumentsRequest) GetReadTime() *timestamppb.Timestamp {
 	if x, ok := x.GetConsistencySelector().(*ListDocumentsRequest_ReadTime); ok {
 		return x.ReadTime
 	}
@@ -388,7 +388,7 @@ type ListDocumentsRequest_Transaction struct {
 type ListDocumentsRequest_ReadTime struct {
 	// Reads documents as they were at the given time.
 	// This may not be older than 60 seconds.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=read_time,json=readTime,proto3,oneof"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=read_time,json=readTime,proto3,oneof"`
 }
 
 func (*ListDocumentsRequest_Transaction) isListDocumentsRequest_ConsistencySelector() {}
@@ -795,7 +795,7 @@ func (x *BatchGetDocumentsRequest) GetNewTransaction() *TransactionOptions {
 	return nil
 }
 
-func (x *BatchGetDocumentsRequest) GetReadTime() *timestamp.Timestamp {
+func (x *BatchGetDocumentsRequest) GetReadTime() *timestamppb.Timestamp {
 	if x, ok := x.GetConsistencySelector().(*BatchGetDocumentsRequest_ReadTime); ok {
 		return x.ReadTime
 	}
@@ -822,7 +822,7 @@ type BatchGetDocumentsRequest_NewTransaction struct {
 type BatchGetDocumentsRequest_ReadTime struct {
 	// Reads documents as they were at the given time.
 	// This may not be older than 60 seconds.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
 }
 
 func (*BatchGetDocumentsRequest_Transaction) isBatchGetDocumentsRequest_ConsistencySelector() {}
@@ -852,7 +852,7 @@ type BatchGetDocumentsResponse struct {
 	// This may be monotically increasing, in this case the previous documents in
 	// the result stream are guaranteed not to have changed between their
 	// read_time and this one.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 }
 
 func (x *BatchGetDocumentsResponse) Reset() {
@@ -915,7 +915,7 @@ func (x *BatchGetDocumentsResponse) GetTransaction() []byte {
 	return nil
 }
 
-func (x *BatchGetDocumentsResponse) GetReadTime() *timestamp.Timestamp {
+func (x *BatchGetDocumentsResponse) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -1132,7 +1132,7 @@ type CommitResponse struct {
 	// request.
 	WriteResults []*WriteResult `protobuf:"bytes,1,rep,name=write_results,json=writeResults,proto3" json:"write_results,omitempty"`
 	// The time at which the commit occurred.
-	CommitTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
+	CommitTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
 }
 
 func (x *CommitResponse) Reset() {
@@ -1174,7 +1174,7 @@ func (x *CommitResponse) GetWriteResults() []*WriteResult {
 	return nil
 }
 
-func (x *CommitResponse) GetCommitTime() *timestamp.Timestamp {
+func (x *CommitResponse) GetCommitTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CommitTime
 	}
@@ -1342,7 +1342,7 @@ func (x *RunQueryRequest) GetNewTransaction() *TransactionOptions {
 	return nil
 }
 
-func (x *RunQueryRequest) GetReadTime() *timestamp.Timestamp {
+func (x *RunQueryRequest) GetReadTime() *timestamppb.Timestamp {
 	if x, ok := x.GetConsistencySelector().(*RunQueryRequest_ReadTime); ok {
 		return x.ReadTime
 	}
@@ -1380,7 +1380,7 @@ type RunQueryRequest_NewTransaction struct {
 type RunQueryRequest_ReadTime struct {
 	// Reads documents as they were at the given time.
 	// This may not be older than 60 seconds.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=read_time,json=readTime,proto3,oneof"`
 }
 
 func (*RunQueryRequest_Transaction) isRunQueryRequest_ConsistencySelector() {}
@@ -1410,7 +1410,7 @@ type RunQueryResponse struct {
 	// If the query returns no results, a response with `read_time` and no
 	// `document` will be sent, and this represents the time at which the query
 	// was run.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 	// The number of results that have been skipped due to an offset between
 	// the last response and the current response.
 	SkippedResults int32 `protobuf:"varint,4,opt,name=skipped_results,json=skippedResults,proto3" json:"skipped_results,omitempty"`
@@ -1462,7 +1462,7 @@ func (x *RunQueryResponse) GetDocument() *Document {
 	return nil
 }
 
-func (x *RunQueryResponse) GetReadTime() *timestamp.Timestamp {
+func (x *RunQueryResponse) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -1612,7 +1612,7 @@ type WriteResponse struct {
 	// request.
 	WriteResults []*WriteResult `protobuf:"bytes,3,rep,name=write_results,json=writeResults,proto3" json:"write_results,omitempty"`
 	// The time at which the commit occurred.
-	CommitTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
+	CommitTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
 }
 
 func (x *WriteResponse) Reset() {
@@ -1668,7 +1668,7 @@ func (x *WriteResponse) GetWriteResults() []*WriteResult {
 	return nil
 }
 
-func (x *WriteResponse) GetCommitTime() *timestamp.Timestamp {
+func (x *WriteResponse) GetCommitTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CommitTime
 	}
@@ -2009,7 +2009,7 @@ func (x *Target) GetResumeToken() []byte {
 	return nil
 }
 
-func (x *Target) GetReadTime() *timestamp.Timestamp {
+func (x *Target) GetReadTime() *timestamppb.Timestamp {
 	if x, ok := x.GetResumeType().(*Target_ReadTime); ok {
 		return x.ReadTime
 	}
@@ -2063,7 +2063,7 @@ type Target_ReadTime struct {
 	// Start listening after a specific `read_time`.
 	//
 	// The client must know the state of matching documents at this time.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=read_time,json=readTime,proto3,oneof"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=read_time,json=readTime,proto3,oneof"`
 }
 
 func (*Target_ResumeToken) isTarget_ResumeType() {}
@@ -2101,7 +2101,7 @@ type TargetChange struct {
 	//
 	// For a given stream, `read_time` is guaranteed to be monotonically
 	// increasing.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 }
 
 func (x *TargetChange) Reset() {
@@ -2164,7 +2164,7 @@ func (x *TargetChange) GetResumeToken() []byte {
 	return nil
 }
 
-func (x *TargetChange) GetReadTime() *timestamp.Timestamp {
+func (x *TargetChange) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -3044,7 +3044,7 @@ var file_google_firestore_v1beta1_firestore_proto_goTypes = []interface{}{
 	(*Target_DocumentsTarget)(nil),     // 26: google.firestore.v1beta1.Target.DocumentsTarget
 	(*Target_QueryTarget)(nil),         // 27: google.firestore.v1beta1.Target.QueryTarget
 	(*DocumentMask)(nil),               // 28: google.firestore.v1beta1.DocumentMask
-	(*timestamp.Timestamp)(nil),        // 29: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),      // 29: google.protobuf.Timestamp
 	(*Document)(nil),                   // 30: google.firestore.v1beta1.Document
 	(*Precondition)(nil),               // 31: google.firestore.v1beta1.Precondition
 	(*TransactionOptions)(nil),         // 32: google.firestore.v1beta1.TransactionOptions
@@ -3056,7 +3056,7 @@ var file_google_firestore_v1beta1_firestore_proto_goTypes = []interface{}{
 	(*DocumentRemove)(nil),             // 38: google.firestore.v1beta1.DocumentRemove
 	(*ExistenceFilter)(nil),            // 39: google.firestore.v1beta1.ExistenceFilter
 	(*status.Status)(nil),              // 40: google.rpc.Status
-	(*empty.Empty)(nil),                // 41: google.protobuf.Empty
+	(*emptypb.Empty)(nil),              // 41: google.protobuf.Empty
 }
 var file_google_firestore_v1beta1_firestore_proto_depIdxs = []int32{
 	28, // 0: google.firestore.v1beta1.GetDocumentRequest.mask:type_name -> google.firestore.v1beta1.DocumentMask
@@ -3532,7 +3532,7 @@ type FirestoreClient interface {
 	// Updates or inserts a document.
 	UpdateDocument(ctx context.Context, in *UpdateDocumentRequest, opts ...grpc.CallOption) (*Document, error)
 	// Deletes a document.
-	DeleteDocument(ctx context.Context, in *DeleteDocumentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteDocument(ctx context.Context, in *DeleteDocumentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets multiple documents.
 	//
 	// Documents returned by this method are not guaranteed to be returned in the
@@ -3543,7 +3543,7 @@ type FirestoreClient interface {
 	// Commits a transaction, while optionally updating documents.
 	Commit(ctx context.Context, in *CommitRequest, opts ...grpc.CallOption) (*CommitResponse, error)
 	// Rolls back a transaction.
-	Rollback(ctx context.Context, in *RollbackRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Rollback(ctx context.Context, in *RollbackRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Runs a query.
 	RunQuery(ctx context.Context, in *RunQueryRequest, opts ...grpc.CallOption) (Firestore_RunQueryClient, error)
 	// Streams batches of document updates and deletes, in order.
@@ -3598,8 +3598,8 @@ func (c *firestoreClient) UpdateDocument(ctx context.Context, in *UpdateDocument
 	return out, nil
 }
 
-func (c *firestoreClient) DeleteDocument(ctx context.Context, in *DeleteDocumentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *firestoreClient) DeleteDocument(ctx context.Context, in *DeleteDocumentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.firestore.v1beta1.Firestore/DeleteDocument", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3657,8 +3657,8 @@ func (c *firestoreClient) Commit(ctx context.Context, in *CommitRequest, opts ..
 	return out, nil
 }
 
-func (c *firestoreClient) Rollback(ctx context.Context, in *RollbackRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *firestoreClient) Rollback(ctx context.Context, in *RollbackRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.firestore.v1beta1.Firestore/Rollback", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3780,7 +3780,7 @@ type FirestoreServer interface {
 	// Updates or inserts a document.
 	UpdateDocument(context.Context, *UpdateDocumentRequest) (*Document, error)
 	// Deletes a document.
-	DeleteDocument(context.Context, *DeleteDocumentRequest) (*empty.Empty, error)
+	DeleteDocument(context.Context, *DeleteDocumentRequest) (*emptypb.Empty, error)
 	// Gets multiple documents.
 	//
 	// Documents returned by this method are not guaranteed to be returned in the
@@ -3791,7 +3791,7 @@ type FirestoreServer interface {
 	// Commits a transaction, while optionally updating documents.
 	Commit(context.Context, *CommitRequest) (*CommitResponse, error)
 	// Rolls back a transaction.
-	Rollback(context.Context, *RollbackRequest) (*empty.Empty, error)
+	Rollback(context.Context, *RollbackRequest) (*emptypb.Empty, error)
 	// Runs a query.
 	RunQuery(*RunQueryRequest, Firestore_RunQueryServer) error
 	// Streams batches of document updates and deletes, in order.
@@ -3818,7 +3818,7 @@ func (*UnimplementedFirestoreServer) CreateDocument(context.Context, *CreateDocu
 func (*UnimplementedFirestoreServer) UpdateDocument(context.Context, *UpdateDocumentRequest) (*Document, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method UpdateDocument not implemented")
 }
-func (*UnimplementedFirestoreServer) DeleteDocument(context.Context, *DeleteDocumentRequest) (*empty.Empty, error) {
+func (*UnimplementedFirestoreServer) DeleteDocument(context.Context, *DeleteDocumentRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteDocument not implemented")
 }
 func (*UnimplementedFirestoreServer) BatchGetDocuments(*BatchGetDocumentsRequest, Firestore_BatchGetDocumentsServer) error {
@@ -3830,7 +3830,7 @@ func (*UnimplementedFirestoreServer) BeginTransaction(context.Context, *BeginTra
 func (*UnimplementedFirestoreServer) Commit(context.Context, *CommitRequest) (*CommitResponse, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method Commit not implemented")
 }
-func (*UnimplementedFirestoreServer) Rollback(context.Context, *RollbackRequest) (*empty.Empty, error) {
+func (*UnimplementedFirestoreServer) Rollback(context.Context, *RollbackRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method Rollback not implemented")
 }
 func (*UnimplementedFirestoreServer) RunQuery(*RunQueryRequest, Firestore_RunQueryServer) error {

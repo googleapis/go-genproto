@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1354,7 +1354,7 @@ type NodeInitializationAction struct {
 	// Cluster creation fails with an explanatory error message (the
 	// name of the executable that caused the error and the exceeded timeout
 	// period) if the executable is not completed at end of the timeout period.
-	ExecutionTimeout *duration.Duration `protobuf:"bytes,2,opt,name=execution_timeout,json=executionTimeout,proto3" json:"execution_timeout,omitempty"`
+	ExecutionTimeout *durationpb.Duration `protobuf:"bytes,2,opt,name=execution_timeout,json=executionTimeout,proto3" json:"execution_timeout,omitempty"`
 }
 
 func (x *NodeInitializationAction) Reset() {
@@ -1396,7 +1396,7 @@ func (x *NodeInitializationAction) GetExecutableFile() string {
 	return ""
 }
 
-func (x *NodeInitializationAction) GetExecutionTimeout() *duration.Duration {
+func (x *NodeInitializationAction) GetExecutionTimeout() *durationpb.Duration {
 	if x != nil {
 		return x.ExecutionTimeout
 	}
@@ -1415,7 +1415,7 @@ type ClusterStatus struct {
 	Detail string `protobuf:"bytes,2,opt,name=detail,proto3" json:"detail,omitempty"`
 	// Output only. Time when this state was entered (see JSON representation of
 	// [Timestamp](https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	StateStartTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=state_start_time,json=stateStartTime,proto3" json:"state_start_time,omitempty"`
+	StateStartTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=state_start_time,json=stateStartTime,proto3" json:"state_start_time,omitempty"`
 	// Output only. Additional state information that includes
 	// status reported by the agent.
 	Substate ClusterStatus_Substate `protobuf:"varint,4,opt,name=substate,proto3,enum=google.cloud.dataproc.v1.ClusterStatus_Substate" json:"substate,omitempty"`
@@ -1467,7 +1467,7 @@ func (x *ClusterStatus) GetDetail() string {
 	return ""
 }
 
-func (x *ClusterStatus) GetStateStartTime() *timestamp.Timestamp {
+func (x *ClusterStatus) GetStateStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StateStartTime
 	}
@@ -1828,7 +1828,7 @@ type LifecycleConfig struct {
 	// deleted. Minimum value is 10 minutes; maximum value is 14 days (see JSON
 	// representation of
 	// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json).
-	IdleDeleteTtl *duration.Duration `protobuf:"bytes,1,opt,name=idle_delete_ttl,json=idleDeleteTtl,proto3" json:"idle_delete_ttl,omitempty"`
+	IdleDeleteTtl *durationpb.Duration `protobuf:"bytes,1,opt,name=idle_delete_ttl,json=idleDeleteTtl,proto3" json:"idle_delete_ttl,omitempty"`
 	// Either the exact time the cluster should be deleted at or
 	// the cluster maximum age.
 	//
@@ -1840,7 +1840,7 @@ type LifecycleConfig struct {
 	// and became eligible for deletion due to idleness (see JSON representation
 	// of
 	// [Timestamp](https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	IdleStartTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=idle_start_time,json=idleStartTime,proto3" json:"idle_start_time,omitempty"`
+	IdleStartTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=idle_start_time,json=idleStartTime,proto3" json:"idle_start_time,omitempty"`
 }
 
 func (x *LifecycleConfig) Reset() {
@@ -1875,7 +1875,7 @@ func (*LifecycleConfig) Descriptor() ([]byte, []int) {
 	return file_google_cloud_dataproc_v1_clusters_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *LifecycleConfig) GetIdleDeleteTtl() *duration.Duration {
+func (x *LifecycleConfig) GetIdleDeleteTtl() *durationpb.Duration {
 	if x != nil {
 		return x.IdleDeleteTtl
 	}
@@ -1889,21 +1889,21 @@ func (m *LifecycleConfig) GetTtl() isLifecycleConfig_Ttl {
 	return nil
 }
 
-func (x *LifecycleConfig) GetAutoDeleteTime() *timestamp.Timestamp {
+func (x *LifecycleConfig) GetAutoDeleteTime() *timestamppb.Timestamp {
 	if x, ok := x.GetTtl().(*LifecycleConfig_AutoDeleteTime); ok {
 		return x.AutoDeleteTime
 	}
 	return nil
 }
 
-func (x *LifecycleConfig) GetAutoDeleteTtl() *duration.Duration {
+func (x *LifecycleConfig) GetAutoDeleteTtl() *durationpb.Duration {
 	if x, ok := x.GetTtl().(*LifecycleConfig_AutoDeleteTtl); ok {
 		return x.AutoDeleteTtl
 	}
 	return nil
 }
 
-func (x *LifecycleConfig) GetIdleStartTime() *timestamp.Timestamp {
+func (x *LifecycleConfig) GetIdleStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.IdleStartTime
 	}
@@ -1917,7 +1917,7 @@ type isLifecycleConfig_Ttl interface {
 type LifecycleConfig_AutoDeleteTime struct {
 	// Optional. The time when cluster will be auto-deleted (see JSON representation of
 	// [Timestamp](https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	AutoDeleteTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=auto_delete_time,json=autoDeleteTime,proto3,oneof"`
+	AutoDeleteTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=auto_delete_time,json=autoDeleteTime,proto3,oneof"`
 }
 
 type LifecycleConfig_AutoDeleteTtl struct {
@@ -1925,7 +1925,7 @@ type LifecycleConfig_AutoDeleteTtl struct {
 	// auto-deleted at the end of this period. Minimum value is 10 minutes;
 	// maximum value is 14 days (see JSON representation of
 	// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	AutoDeleteTtl *duration.Duration `protobuf:"bytes,3,opt,name=auto_delete_ttl,json=autoDeleteTtl,proto3,oneof"`
+	AutoDeleteTtl *durationpb.Duration `protobuf:"bytes,3,opt,name=auto_delete_ttl,json=autoDeleteTtl,proto3,oneof"`
 }
 
 func (*LifecycleConfig_AutoDeleteTime) isLifecycleConfig_Ttl() {}
@@ -2104,7 +2104,7 @@ type UpdateClusterRequest struct {
 	// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	//
 	// Only supported on Dataproc image versions 1.2 and higher.
-	GracefulDecommissionTimeout *duration.Duration `protobuf:"bytes,6,opt,name=graceful_decommission_timeout,json=gracefulDecommissionTimeout,proto3" json:"graceful_decommission_timeout,omitempty"`
+	GracefulDecommissionTimeout *durationpb.Duration `protobuf:"bytes,6,opt,name=graceful_decommission_timeout,json=gracefulDecommissionTimeout,proto3" json:"graceful_decommission_timeout,omitempty"`
 	// Required. Specifies the path, relative to `Cluster`, of
 	// the field to update. For example, to change the number of workers
 	// in a cluster to 5, the `update_mask` parameter would be
@@ -2156,7 +2156,7 @@ type UpdateClusterRequest struct {
 	//  </tr>
 	//  </tbody>
 	//  </table>
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. A unique id used to identify the request. If the server
 	// receives two [UpdateClusterRequest][google.cloud.dataproc.v1.UpdateClusterRequest] requests  with the same
 	// id, then the second request will be ignored and the
@@ -2231,14 +2231,14 @@ func (x *UpdateClusterRequest) GetCluster() *Cluster {
 	return nil
 }
 
-func (x *UpdateClusterRequest) GetGracefulDecommissionTimeout() *duration.Duration {
+func (x *UpdateClusterRequest) GetGracefulDecommissionTimeout() *durationpb.Duration {
 	if x != nil {
 		return x.GracefulDecommissionTimeout
 	}
 	return nil
 }
 
-func (x *UpdateClusterRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateClusterRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -3454,10 +3454,10 @@ var file_google_cloud_dataproc_v1_clusters_proto_goTypes = []interface{}{
 	nil,                                     // 33: google.cloud.dataproc.v1.SoftwareConfig.PropertiesEntry
 	nil,                                     // 34: google.cloud.dataproc.v1.ClusterMetrics.HdfsMetricsEntry
 	nil,                                     // 35: google.cloud.dataproc.v1.ClusterMetrics.YarnMetricsEntry
-	(*duration.Duration)(nil),               // 36: google.protobuf.Duration
-	(*timestamp.Timestamp)(nil),             // 37: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),             // 36: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),           // 37: google.protobuf.Timestamp
 	(Component)(0),                          // 38: google.cloud.dataproc.v1.Component
-	(*field_mask.FieldMask)(nil),            // 39: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),           // 39: google.protobuf.FieldMask
 	(*longrunning.Operation)(nil),           // 40: google.longrunning.Operation
 }
 var file_google_cloud_dataproc_v1_clusters_proto_depIdxs = []int32{

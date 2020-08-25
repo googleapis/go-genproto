@@ -27,15 +27,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -707,7 +707,7 @@ type TokenProperties struct {
 	// Reason associated with the response when valid = false.
 	InvalidReason TokenProperties_InvalidReason `protobuf:"varint,2,opt,name=invalid_reason,json=invalidReason,proto3,enum=google.cloud.recaptchaenterprise.v1beta1.TokenProperties_InvalidReason" json:"invalid_reason,omitempty"`
 	// The timestamp corresponding to the generation of the token.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The hostname of the page on which the token was generated.
 	Hostname string `protobuf:"bytes,4,opt,name=hostname,proto3" json:"hostname,omitempty"`
 	// Action name provided at token generation.
@@ -760,7 +760,7 @@ func (x *TokenProperties) GetInvalidReason() TokenProperties_InvalidReason {
 	return TokenProperties_INVALID_REASON_UNSPECIFIED
 }
 
-func (x *TokenProperties) GetCreateTime() *timestamp.Timestamp {
+func (x *TokenProperties) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1029,7 +1029,7 @@ type UpdateKeyRequest struct {
 	Key *Key `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	// Optional. The mask to control which field of the key get updated. If the mask is not
 	// present, all fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateKeyRequest) Reset() {
@@ -1071,7 +1071,7 @@ func (x *UpdateKeyRequest) GetKey() *Key {
 	return nil
 }
 
-func (x *UpdateKeyRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateKeyRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1847,9 +1847,9 @@ var file_google_cloud_recaptchaenterprise_v1beta1_recaptchaenterprise_proto_goTy
 	(*WebKeySettings)(nil),                          // 18: google.cloud.recaptchaenterprise.v1beta1.WebKeySettings
 	(*AndroidKeySettings)(nil),                      // 19: google.cloud.recaptchaenterprise.v1beta1.AndroidKeySettings
 	(*IOSKeySettings)(nil),                          // 20: google.cloud.recaptchaenterprise.v1beta1.IOSKeySettings
-	(*timestamp.Timestamp)(nil),                     // 21: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),                    // 22: google.protobuf.FieldMask
-	(*empty.Empty)(nil),                             // 23: google.protobuf.Empty
+	(*timestamppb.Timestamp)(nil),                   // 21: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),                   // 22: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),                           // 23: google.protobuf.Empty
 }
 var file_google_cloud_recaptchaenterprise_v1beta1_recaptchaenterprise_proto_depIdxs = []int32{
 	8,  // 0: google.cloud.recaptchaenterprise.v1beta1.CreateAssessmentRequest.assessment:type_name -> google.cloud.recaptchaenterprise.v1beta1.Assessment
@@ -2140,7 +2140,7 @@ type RecaptchaEnterpriseServiceV1Beta1Client interface {
 	// Updates the specified key.
 	UpdateKey(ctx context.Context, in *UpdateKeyRequest, opts ...grpc.CallOption) (*Key, error)
 	// Deletes the specified key.
-	DeleteKey(ctx context.Context, in *DeleteKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteKey(ctx context.Context, in *DeleteKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type recaptchaEnterpriseServiceV1Beta1Client struct {
@@ -2205,8 +2205,8 @@ func (c *recaptchaEnterpriseServiceV1Beta1Client) UpdateKey(ctx context.Context,
 	return out, nil
 }
 
-func (c *recaptchaEnterpriseServiceV1Beta1Client) DeleteKey(ctx context.Context, in *DeleteKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *recaptchaEnterpriseServiceV1Beta1Client) DeleteKey(ctx context.Context, in *DeleteKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.recaptchaenterprise.v1beta1.RecaptchaEnterpriseServiceV1Beta1/DeleteKey", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2230,7 +2230,7 @@ type RecaptchaEnterpriseServiceV1Beta1Server interface {
 	// Updates the specified key.
 	UpdateKey(context.Context, *UpdateKeyRequest) (*Key, error)
 	// Deletes the specified key.
-	DeleteKey(context.Context, *DeleteKeyRequest) (*empty.Empty, error)
+	DeleteKey(context.Context, *DeleteKeyRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedRecaptchaEnterpriseServiceV1Beta1Server can be embedded to have forward compatible implementations.
@@ -2255,7 +2255,7 @@ func (*UnimplementedRecaptchaEnterpriseServiceV1Beta1Server) GetKey(context.Cont
 func (*UnimplementedRecaptchaEnterpriseServiceV1Beta1Server) UpdateKey(context.Context, *UpdateKeyRequest) (*Key, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateKey not implemented")
 }
-func (*UnimplementedRecaptchaEnterpriseServiceV1Beta1Server) DeleteKey(context.Context, *DeleteKeyRequest) (*empty.Empty, error) {
+func (*UnimplementedRecaptchaEnterpriseServiceV1Beta1Server) DeleteKey(context.Context, *DeleteKeyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteKey not implemented")
 }
 

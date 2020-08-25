@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1280,7 +1280,7 @@ type UpdateCertificateAuthorityRequest struct {
 	// Required. [CertificateAuthority][google.cloud.security.privateca.v1beta1.CertificateAuthority] with updated values.
 	CertificateAuthority *CertificateAuthority `protobuf:"bytes,1,opt,name=certificate_authority,json=certificateAuthority,proto3" json:"certificate_authority,omitempty"`
 	// Required. A list of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. An ID to identify requests. Specify a unique request ID so that if you must
 	// retry your request, the server will know to ignore the request if it has
 	// already been completed. The server will guarantee that for at least 60
@@ -1336,7 +1336,7 @@ func (x *UpdateCertificateAuthorityRequest) GetCertificateAuthority() *Certifica
 	return nil
 }
 
-func (x *UpdateCertificateAuthorityRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateCertificateAuthorityRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1360,7 +1360,7 @@ type UpdateCertificateRevocationListRequest struct {
 	// Required. [CertificateRevocationList][google.cloud.security.privateca.v1beta1.CertificateRevocationList] with updated values.
 	CertificateRevocationList *CertificateRevocationList `protobuf:"bytes,1,opt,name=certificate_revocation_list,json=certificateRevocationList,proto3" json:"certificate_revocation_list,omitempty"`
 	// Required. A list of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. An ID to identify requests. Specify a unique request ID so that if you must
 	// retry your request, the server will know to ignore the request if it has
 	// already been completed. The server will guarantee that for at least 60
@@ -1416,7 +1416,7 @@ func (x *UpdateCertificateRevocationListRequest) GetCertificateRevocationList() 
 	return nil
 }
 
-func (x *UpdateCertificateRevocationListRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateCertificateRevocationListRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1439,7 +1439,7 @@ type UpdateCertificateRequest struct {
 	// Required. [Certificate][google.cloud.security.privateca.v1beta1.Certificate] with updated values.
 	Certificate *Certificate `protobuf:"bytes,1,opt,name=certificate,proto3" json:"certificate,omitempty"`
 	// Required. A list of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. An ID to identify requests. Specify a unique request ID so that if you must
 	// retry your request, the server will know to ignore the request if it has
 	// already been completed. The server will guarantee that for at least 60
@@ -1495,7 +1495,7 @@ func (x *UpdateCertificateRequest) GetCertificate() *Certificate {
 	return nil
 }
 
-func (x *UpdateCertificateRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateCertificateRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1519,7 +1519,7 @@ type UpdateReusableConfigRequest struct {
 	// Required. [ReusableConfig][google.cloud.security.privateca.v1beta1.ReusableConfig] with updated values.
 	ReusableConfig *ReusableConfig `protobuf:"bytes,1,opt,name=reusable_config,json=reusableConfig,proto3" json:"reusable_config,omitempty"`
 	// Required. A list of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. An ID to identify requests. Specify a unique request ID so that if you must
 	// retry your request, the server will know to ignore the request if it has
 	// already been completed. The server will guarantee that for at least 60
@@ -1575,7 +1575,7 @@ func (x *UpdateReusableConfigRequest) GetReusableConfig() *ReusableConfig {
 	return nil
 }
 
-func (x *UpdateReusableConfigRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateReusableConfigRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2159,9 +2159,9 @@ type OperationMetadata struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The time the operation was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The time the operation finished running.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Output only. Server-defined resource path for the target of the operation.
 	Target string `protobuf:"bytes,3,opt,name=target,proto3" json:"target,omitempty"`
 	// Output only. Name of the verb executed by the operation.
@@ -2209,14 +2209,14 @@ func (*OperationMetadata) Descriptor() ([]byte, []int) {
 	return file_google_cloud_security_privateca_v1beta1_service_proto_rawDescGZIP(), []int{28}
 }
 
-func (x *OperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -3148,9 +3148,9 @@ var file_google_cloud_security_privateca_v1beta1_service_proto_goTypes = []inter
 	(*CertificateRevocationList)(nil),                 // 30: google.cloud.security.privateca.v1beta1.CertificateRevocationList
 	(*Certificate)(nil),                               // 31: google.cloud.security.privateca.v1beta1.Certificate
 	(*ReusableConfig)(nil),                            // 32: google.cloud.security.privateca.v1beta1.ReusableConfig
-	(*field_mask.FieldMask)(nil),                      // 33: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                     // 33: google.protobuf.FieldMask
 	(RevocationReason)(0),                             // 34: google.cloud.security.privateca.v1beta1.RevocationReason
-	(*timestamp.Timestamp)(nil),                       // 35: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                     // 35: google.protobuf.Timestamp
 	(*longrunning.Operation)(nil),                     // 36: google.longrunning.Operation
 }
 var file_google_cloud_security_privateca_v1beta1_service_proto_depIdxs = []int32{

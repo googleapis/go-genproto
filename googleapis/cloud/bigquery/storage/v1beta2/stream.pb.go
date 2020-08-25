@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -109,7 +109,7 @@ type ReadSession struct {
 	// Output only. Time at which the session becomes invalid. After this time, subsequent
 	// requests to read this Session will return errors. The expire_time is
 	// automatically assigned and currently cannot be specified or updated.
-	ExpireTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
+	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 	// Immutable. Data format of the output data.
 	DataFormat DataFormat `protobuf:"varint,3,opt,name=data_format,json=dataFormat,proto3,enum=google.cloud.bigquery.storage.v1beta2.DataFormat" json:"data_format,omitempty"`
 	// The schema for the read. If read_options.selected_fields is set, the
@@ -175,7 +175,7 @@ func (x *ReadSession) GetName() string {
 	return ""
 }
 
-func (x *ReadSession) GetExpireTime() *timestamp.Timestamp {
+func (x *ReadSession) GetExpireTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpireTime
 	}
@@ -315,7 +315,7 @@ type ReadSession_TableModifiers struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The snapshot time of the table. If not set, interpreted as now.
-	SnapshotTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=snapshot_time,json=snapshotTime,proto3" json:"snapshot_time,omitempty"`
+	SnapshotTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=snapshot_time,json=snapshotTime,proto3" json:"snapshot_time,omitempty"`
 }
 
 func (x *ReadSession_TableModifiers) Reset() {
@@ -350,7 +350,7 @@ func (*ReadSession_TableModifiers) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_storage_v1beta2_stream_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (x *ReadSession_TableModifiers) GetSnapshotTime() *timestamp.Timestamp {
+func (x *ReadSession_TableModifiers) GetSnapshotTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.SnapshotTime
 	}
@@ -580,7 +580,7 @@ var file_google_cloud_bigquery_storage_v1beta2_stream_proto_goTypes = []interfac
 	(*ReadStream)(nil),                   // 2: google.cloud.bigquery.storage.v1beta2.ReadStream
 	(*ReadSession_TableModifiers)(nil),   // 3: google.cloud.bigquery.storage.v1beta2.ReadSession.TableModifiers
 	(*ReadSession_TableReadOptions)(nil), // 4: google.cloud.bigquery.storage.v1beta2.ReadSession.TableReadOptions
-	(*timestamp.Timestamp)(nil),          // 5: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),        // 5: google.protobuf.Timestamp
 	(*AvroSchema)(nil),                   // 6: google.cloud.bigquery.storage.v1beta2.AvroSchema
 	(*ArrowSchema)(nil),                  // 7: google.cloud.bigquery.storage.v1beta2.ArrowSchema
 	(*ArrowSerializationOptions)(nil),    // 8: google.cloud.bigquery.storage.v1beta2.ArrowSerializationOptions

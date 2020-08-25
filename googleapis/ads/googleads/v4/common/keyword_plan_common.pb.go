@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,7 +54,7 @@ type KeywordPlanHistoricalMetrics struct {
 
 	// Approximate number of monthly searches on this query averaged
 	// for the past 12 months.
-	AvgMonthlySearches *wrappers.Int64Value `protobuf:"bytes,1,opt,name=avg_monthly_searches,json=avgMonthlySearches,proto3" json:"avg_monthly_searches,omitempty"`
+	AvgMonthlySearches *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=avg_monthly_searches,json=avgMonthlySearches,proto3" json:"avg_monthly_searches,omitempty"`
 	// Approximate number of searches on this query for the past twelve months.
 	MonthlySearchVolumes []*MonthlySearchVolume `protobuf:"bytes,6,rep,name=monthly_search_volumes,json=monthlySearchVolumes,proto3" json:"monthly_search_volumes,omitempty"`
 	// The competition level for the query.
@@ -64,11 +64,11 @@ type KeywordPlanHistoricalMetrics struct {
 	// The level of competition from 0-100 is determined by the number of ad slots
 	// filled divided by the total number of ad slots available. If not enough
 	// data is available, null is returned.
-	CompetitionIndex *wrappers.Int64Value `protobuf:"bytes,3,opt,name=competition_index,json=competitionIndex,proto3" json:"competition_index,omitempty"`
+	CompetitionIndex *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=competition_index,json=competitionIndex,proto3" json:"competition_index,omitempty"`
 	// Top of page bid low range (20th percentile) in micros for the keyword.
-	LowTopOfPageBidMicros *wrappers.Int64Value `protobuf:"bytes,4,opt,name=low_top_of_page_bid_micros,json=lowTopOfPageBidMicros,proto3" json:"low_top_of_page_bid_micros,omitempty"`
+	LowTopOfPageBidMicros *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=low_top_of_page_bid_micros,json=lowTopOfPageBidMicros,proto3" json:"low_top_of_page_bid_micros,omitempty"`
 	// Top of page bid high range (80th percentile) in micros for the keyword.
-	HighTopOfPageBidMicros *wrappers.Int64Value `protobuf:"bytes,5,opt,name=high_top_of_page_bid_micros,json=highTopOfPageBidMicros,proto3" json:"high_top_of_page_bid_micros,omitempty"`
+	HighTopOfPageBidMicros *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=high_top_of_page_bid_micros,json=highTopOfPageBidMicros,proto3" json:"high_top_of_page_bid_micros,omitempty"`
 }
 
 func (x *KeywordPlanHistoricalMetrics) Reset() {
@@ -103,7 +103,7 @@ func (*KeywordPlanHistoricalMetrics) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_keyword_plan_common_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *KeywordPlanHistoricalMetrics) GetAvgMonthlySearches() *wrappers.Int64Value {
+func (x *KeywordPlanHistoricalMetrics) GetAvgMonthlySearches() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AvgMonthlySearches
 	}
@@ -124,21 +124,21 @@ func (x *KeywordPlanHistoricalMetrics) GetCompetition() enums.KeywordPlanCompeti
 	return enums.KeywordPlanCompetitionLevelEnum_UNSPECIFIED
 }
 
-func (x *KeywordPlanHistoricalMetrics) GetCompetitionIndex() *wrappers.Int64Value {
+func (x *KeywordPlanHistoricalMetrics) GetCompetitionIndex() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CompetitionIndex
 	}
 	return nil
 }
 
-func (x *KeywordPlanHistoricalMetrics) GetLowTopOfPageBidMicros() *wrappers.Int64Value {
+func (x *KeywordPlanHistoricalMetrics) GetLowTopOfPageBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.LowTopOfPageBidMicros
 	}
 	return nil
 }
 
-func (x *KeywordPlanHistoricalMetrics) GetHighTopOfPageBidMicros() *wrappers.Int64Value {
+func (x *KeywordPlanHistoricalMetrics) GetHighTopOfPageBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.HighTopOfPageBidMicros
 	}
@@ -152,13 +152,13 @@ type MonthlySearchVolume struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The year of the search volume (e.g. 2020).
-	Year *wrappers.Int64Value `protobuf:"bytes,1,opt,name=year,proto3" json:"year,omitempty"`
+	Year *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=year,proto3" json:"year,omitempty"`
 	// The month of the search volume.
 	Month enums.MonthOfYearEnum_MonthOfYear `protobuf:"varint,2,opt,name=month,proto3,enum=google.ads.googleads.v4.enums.MonthOfYearEnum_MonthOfYear" json:"month,omitempty"`
 	// Approximate number of searches for the month.
 	// A null value indicates the search volume is unavailable for
 	// that month.
-	MonthlySearches *wrappers.Int64Value `protobuf:"bytes,3,opt,name=monthly_searches,json=monthlySearches,proto3" json:"monthly_searches,omitempty"`
+	MonthlySearches *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=monthly_searches,json=monthlySearches,proto3" json:"monthly_searches,omitempty"`
 }
 
 func (x *MonthlySearchVolume) Reset() {
@@ -193,7 +193,7 @@ func (*MonthlySearchVolume) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_keyword_plan_common_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *MonthlySearchVolume) GetYear() *wrappers.Int64Value {
+func (x *MonthlySearchVolume) GetYear() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Year
 	}
@@ -207,7 +207,7 @@ func (x *MonthlySearchVolume) GetMonth() enums.MonthOfYearEnum_MonthOfYear {
 	return enums.MonthOfYearEnum_UNSPECIFIED
 }
 
-func (x *MonthlySearchVolume) GetMonthlySearches() *wrappers.Int64Value {
+func (x *MonthlySearchVolume) GetMonthlySearches() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.MonthlySearches
 	}
@@ -320,7 +320,7 @@ var file_google_ads_googleads_v4_common_keyword_plan_common_proto_msgTypes = mak
 var file_google_ads_googleads_v4_common_keyword_plan_common_proto_goTypes = []interface{}{
 	(*KeywordPlanHistoricalMetrics)(nil),                                   // 0: google.ads.googleads.v4.common.KeywordPlanHistoricalMetrics
 	(*MonthlySearchVolume)(nil),                                            // 1: google.ads.googleads.v4.common.MonthlySearchVolume
-	(*wrappers.Int64Value)(nil),                                            // 2: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                          // 2: google.protobuf.Int64Value
 	(enums.KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel)(0), // 3: google.ads.googleads.v4.enums.KeywordPlanCompetitionLevelEnum.KeywordPlanCompetitionLevel
 	(enums.MonthOfYearEnum_MonthOfYear)(0),                                 // 4: google.ads.googleads.v4.enums.MonthOfYearEnum.MonthOfYear
 }

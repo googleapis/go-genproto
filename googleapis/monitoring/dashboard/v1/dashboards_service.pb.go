@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	_ "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	_ "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -564,7 +564,7 @@ var file_google_monitoring_dashboard_v1_dashboards_service_proto_goTypes = []int
 	(*DeleteDashboardRequest)(nil), // 4: google.monitoring.dashboard.v1.DeleteDashboardRequest
 	(*UpdateDashboardRequest)(nil), // 5: google.monitoring.dashboard.v1.UpdateDashboardRequest
 	(*Dashboard)(nil),              // 6: google.monitoring.dashboard.v1.Dashboard
-	(*empty.Empty)(nil),            // 7: google.protobuf.Empty
+	(*emptypb.Empty)(nil),          // 7: google.protobuf.Empty
 }
 var file_google_monitoring_dashboard_v1_dashboards_service_proto_depIdxs = []int32{
 	6, // 0: google.monitoring.dashboard.v1.CreateDashboardRequest.dashboard:type_name -> google.monitoring.dashboard.v1.Dashboard
@@ -722,7 +722,7 @@ type DashboardsServiceClient interface {
 	// This method requires the `monitoring.dashboards.delete` permission
 	// on the specified dashboard. For more information, see
 	// [Google Cloud IAM](https://cloud.google.com/iam).
-	DeleteDashboard(ctx context.Context, in *DeleteDashboardRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteDashboard(ctx context.Context, in *DeleteDashboardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Replaces an existing custom dashboard with a new definition.
 	//
 	// This method requires the `monitoring.dashboards.update` permission
@@ -766,8 +766,8 @@ func (c *dashboardsServiceClient) GetDashboard(ctx context.Context, in *GetDashb
 	return out, nil
 }
 
-func (c *dashboardsServiceClient) DeleteDashboard(ctx context.Context, in *DeleteDashboardRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dashboardsServiceClient) DeleteDashboard(ctx context.Context, in *DeleteDashboardRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.monitoring.dashboard.v1.DashboardsService/DeleteDashboard", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -809,7 +809,7 @@ type DashboardsServiceServer interface {
 	// This method requires the `monitoring.dashboards.delete` permission
 	// on the specified dashboard. For more information, see
 	// [Google Cloud IAM](https://cloud.google.com/iam).
-	DeleteDashboard(context.Context, *DeleteDashboardRequest) (*empty.Empty, error)
+	DeleteDashboard(context.Context, *DeleteDashboardRequest) (*emptypb.Empty, error)
 	// Replaces an existing custom dashboard with a new definition.
 	//
 	// This method requires the `monitoring.dashboards.update` permission
@@ -831,7 +831,7 @@ func (*UnimplementedDashboardsServiceServer) ListDashboards(context.Context, *Li
 func (*UnimplementedDashboardsServiceServer) GetDashboard(context.Context, *GetDashboardRequest) (*Dashboard, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDashboard not implemented")
 }
-func (*UnimplementedDashboardsServiceServer) DeleteDashboard(context.Context, *DeleteDashboardRequest) (*empty.Empty, error) {
+func (*UnimplementedDashboardsServiceServer) DeleteDashboard(context.Context, *DeleteDashboardRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteDashboard not implemented")
 }
 func (*UnimplementedDashboardsServiceServer) UpdateDashboard(context.Context, *UpdateDashboardRequest) (*Dashboard, error) {

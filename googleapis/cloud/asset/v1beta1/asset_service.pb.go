@@ -27,7 +27,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
@@ -35,6 +34,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -117,7 +117,7 @@ type ExportAssetsRequest struct {
 	// the current time will be used. Due to delays in resource data collection
 	// and indexing, there is a volatile window during which running the same
 	// query may get different results.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 	// A list of asset types of which to take a snapshot for. For example:
 	// "google.compute.Disk". If specified, only matching assets will be returned.
 	// See [Introduction to Cloud Asset
@@ -171,7 +171,7 @@ func (x *ExportAssetsRequest) GetParent() string {
 	return ""
 }
 
-func (x *ExportAssetsRequest) GetReadTime() *timestamp.Timestamp {
+func (x *ExportAssetsRequest) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -210,7 +210,7 @@ type ExportAssetsResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Time the snapshot was taken.
-	ReadTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
+	ReadTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=read_time,json=readTime,proto3" json:"read_time,omitempty"`
 	// Output configuration indicating where the results were output to.
 	// All results are in JSON format.
 	OutputConfig *OutputConfig `protobuf:"bytes,2,opt,name=output_config,json=outputConfig,proto3" json:"output_config,omitempty"`
@@ -248,7 +248,7 @@ func (*ExportAssetsResponse) Descriptor() ([]byte, []int) {
 	return file_google_cloud_asset_v1beta1_asset_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ExportAssetsResponse) GetReadTime() *timestamp.Timestamp {
+func (x *ExportAssetsResponse) GetReadTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ReadTime
 	}
@@ -743,7 +743,7 @@ var file_google_cloud_asset_v1beta1_asset_service_proto_goTypes = []interface{}{
 	(*BatchGetAssetsHistoryResponse)(nil), // 4: google.cloud.asset.v1beta1.BatchGetAssetsHistoryResponse
 	(*OutputConfig)(nil),                  // 5: google.cloud.asset.v1beta1.OutputConfig
 	(*GcsDestination)(nil),                // 6: google.cloud.asset.v1beta1.GcsDestination
-	(*timestamp.Timestamp)(nil),           // 7: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),         // 7: google.protobuf.Timestamp
 	(*TimeWindow)(nil),                    // 8: google.cloud.asset.v1beta1.TimeWindow
 	(*TemporalAsset)(nil),                 // 9: google.cloud.asset.v1beta1.TemporalAsset
 	(*longrunning.Operation)(nil),         // 10: google.longrunning.Operation

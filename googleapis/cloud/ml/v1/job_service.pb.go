@@ -26,8 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	_ "google.golang.org/genproto/googleapis/api/serviceconfig"
 	grpc "google.golang.org/grpc"
@@ -35,6 +33,8 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1324,11 +1324,11 @@ type Job struct {
 	//	*Job_PredictionInput
 	Input isJob_Input `protobuf_oneof:"input"`
 	// Output only. When the job was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. When the job processing was started.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Output only. When the job processing was completed.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Output only. The detailed state of a job.
 	State Job_State `protobuf:"varint,7,opt,name=state,proto3,enum=google.cloud.ml.v1.Job_State" json:"state,omitempty"`
 	// Output only. The details of a failure or a cancellation.
@@ -1401,21 +1401,21 @@ func (x *Job) GetPredictionInput() *PredictionInput {
 	return nil
 }
 
-func (x *Job) GetCreateTime() *timestamp.Timestamp {
+func (x *Job) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Job) GetStartTime() *timestamp.Timestamp {
+func (x *Job) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *Job) GetEndTime() *timestamp.Timestamp {
+func (x *Job) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -2203,9 +2203,9 @@ var file_google_cloud_ml_v1_job_service_proto_goTypes = []interface{}{
 	(*GetJobRequest)(nil),                             // 17: google.cloud.ml.v1.GetJobRequest
 	(*CancelJobRequest)(nil),                          // 18: google.cloud.ml.v1.CancelJobRequest
 	(*HyperparameterOutput_HyperparameterMetric)(nil), // 19: google.cloud.ml.v1.HyperparameterOutput.HyperparameterMetric
-	nil,                         // 20: google.cloud.ml.v1.HyperparameterOutput.HyperparametersEntry
-	(*timestamp.Timestamp)(nil), // 21: google.protobuf.Timestamp
-	(*empty.Empty)(nil),         // 22: google.protobuf.Empty
+	nil,                           // 20: google.cloud.ml.v1.HyperparameterOutput.HyperparametersEntry
+	(*timestamppb.Timestamp)(nil), // 21: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),         // 22: google.protobuf.Empty
 }
 var file_google_cloud_ml_v1_job_service_proto_depIdxs = []int32{
 	0,  // 0: google.cloud.ml.v1.TrainingInput.scale_tier:type_name -> google.cloud.ml.v1.TrainingInput.ScaleTier
@@ -2470,7 +2470,7 @@ type JobServiceClient interface {
 	// Describes a job.
 	GetJob(ctx context.Context, in *GetJobRequest, opts ...grpc.CallOption) (*Job, error)
 	// Cancels a running job.
-	CancelJob(ctx context.Context, in *CancelJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CancelJob(ctx context.Context, in *CancelJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type jobServiceClient struct {
@@ -2508,8 +2508,8 @@ func (c *jobServiceClient) GetJob(ctx context.Context, in *GetJobRequest, opts .
 	return out, nil
 }
 
-func (c *jobServiceClient) CancelJob(ctx context.Context, in *CancelJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *jobServiceClient) CancelJob(ctx context.Context, in *CancelJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.ml.v1.JobService/CancelJob", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2526,7 +2526,7 @@ type JobServiceServer interface {
 	// Describes a job.
 	GetJob(context.Context, *GetJobRequest) (*Job, error)
 	// Cancels a running job.
-	CancelJob(context.Context, *CancelJobRequest) (*empty.Empty, error)
+	CancelJob(context.Context, *CancelJobRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedJobServiceServer can be embedded to have forward compatible implementations.
@@ -2542,7 +2542,7 @@ func (*UnimplementedJobServiceServer) ListJobs(context.Context, *ListJobsRequest
 func (*UnimplementedJobServiceServer) GetJob(context.Context, *GetJobRequest) (*Job, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetJob not implemented")
 }
-func (*UnimplementedJobServiceServer) CancelJob(context.Context, *CancelJobRequest) (*empty.Empty, error) {
+func (*UnimplementedJobServiceServer) CancelJob(context.Context, *CancelJobRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelJob not implemented")
 }
 

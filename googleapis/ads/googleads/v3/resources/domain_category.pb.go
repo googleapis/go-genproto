@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -57,28 +57,28 @@ type DomainCategory struct {
 	// `customers/{customer_id}/domainCategories/{campaign_id}~{category_base64}~{language_code}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The campaign this category is recommended for.
-	Campaign *wrappers.StringValue `protobuf:"bytes,2,opt,name=campaign,proto3" json:"campaign,omitempty"`
+	Campaign *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=campaign,proto3" json:"campaign,omitempty"`
 	// Output only. Recommended category for the website domain. e.g. if you have a website
 	// about electronics, the categories could be "cameras", "televisions", etc.
-	Category *wrappers.StringValue `protobuf:"bytes,3,opt,name=category,proto3" json:"category,omitempty"`
+	Category *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=category,proto3" json:"category,omitempty"`
 	// Output only. The language code specifying the language of the website. e.g. "en" for
 	// English. The language can be specified in the DynamicSearchAdsSetting
 	// required for dynamic search ads. This is the language of the pages from
 	// your website that you want Google Ads to find, create ads for,
 	// and match searches with.
-	LanguageCode *wrappers.StringValue `protobuf:"bytes,4,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	LanguageCode *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// Output only. The domain for the website. The domain can be specified in the
 	// DynamicSearchAdsSetting required for dynamic search ads.
-	Domain *wrappers.StringValue `protobuf:"bytes,5,opt,name=domain,proto3" json:"domain,omitempty"`
+	Domain *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=domain,proto3" json:"domain,omitempty"`
 	// Output only. Fraction of pages on your site that this category matches.
-	CoverageFraction *wrappers.DoubleValue `protobuf:"bytes,6,opt,name=coverage_fraction,json=coverageFraction,proto3" json:"coverage_fraction,omitempty"`
+	CoverageFraction *wrapperspb.DoubleValue `protobuf:"bytes,6,opt,name=coverage_fraction,json=coverageFraction,proto3" json:"coverage_fraction,omitempty"`
 	// Output only. The position of this category in the set of categories. Lower numbers
 	// indicate a better match for the domain. null indicates not recommended.
-	CategoryRank *wrappers.Int64Value `protobuf:"bytes,7,opt,name=category_rank,json=categoryRank,proto3" json:"category_rank,omitempty"`
+	CategoryRank *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=category_rank,json=categoryRank,proto3" json:"category_rank,omitempty"`
 	// Output only. Indicates whether this category has sub-categories.
-	HasChildren *wrappers.BoolValue `protobuf:"bytes,8,opt,name=has_children,json=hasChildren,proto3" json:"has_children,omitempty"`
+	HasChildren *wrapperspb.BoolValue `protobuf:"bytes,8,opt,name=has_children,json=hasChildren,proto3" json:"has_children,omitempty"`
 	// Output only. The recommended cost per click for the category.
-	RecommendedCpcBidMicros *wrappers.Int64Value `protobuf:"bytes,9,opt,name=recommended_cpc_bid_micros,json=recommendedCpcBidMicros,proto3" json:"recommended_cpc_bid_micros,omitempty"`
+	RecommendedCpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,9,opt,name=recommended_cpc_bid_micros,json=recommendedCpcBidMicros,proto3" json:"recommended_cpc_bid_micros,omitempty"`
 }
 
 func (x *DomainCategory) Reset() {
@@ -120,56 +120,56 @@ func (x *DomainCategory) GetResourceName() string {
 	return ""
 }
 
-func (x *DomainCategory) GetCampaign() *wrappers.StringValue {
+func (x *DomainCategory) GetCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Campaign
 	}
 	return nil
 }
 
-func (x *DomainCategory) GetCategory() *wrappers.StringValue {
+func (x *DomainCategory) GetCategory() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Category
 	}
 	return nil
 }
 
-func (x *DomainCategory) GetLanguageCode() *wrappers.StringValue {
+func (x *DomainCategory) GetLanguageCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LanguageCode
 	}
 	return nil
 }
 
-func (x *DomainCategory) GetDomain() *wrappers.StringValue {
+func (x *DomainCategory) GetDomain() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Domain
 	}
 	return nil
 }
 
-func (x *DomainCategory) GetCoverageFraction() *wrappers.DoubleValue {
+func (x *DomainCategory) GetCoverageFraction() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.CoverageFraction
 	}
 	return nil
 }
 
-func (x *DomainCategory) GetCategoryRank() *wrappers.Int64Value {
+func (x *DomainCategory) GetCategoryRank() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CategoryRank
 	}
 	return nil
 }
 
-func (x *DomainCategory) GetHasChildren() *wrappers.BoolValue {
+func (x *DomainCategory) GetHasChildren() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.HasChildren
 	}
 	return nil
 }
 
-func (x *DomainCategory) GetRecommendedCpcBidMicros() *wrappers.Int64Value {
+func (x *DomainCategory) GetRecommendedCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedCpcBidMicros
 	}
@@ -277,11 +277,11 @@ func file_google_ads_googleads_v3_resources_domain_category_proto_rawDescGZIP() 
 
 var file_google_ads_googleads_v3_resources_domain_category_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_domain_category_proto_goTypes = []interface{}{
-	(*DomainCategory)(nil),       // 0: google.ads.googleads.v3.resources.DomainCategory
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
-	(*wrappers.DoubleValue)(nil), // 2: google.protobuf.DoubleValue
-	(*wrappers.Int64Value)(nil),  // 3: google.protobuf.Int64Value
-	(*wrappers.BoolValue)(nil),   // 4: google.protobuf.BoolValue
+	(*DomainCategory)(nil),         // 0: google.ads.googleads.v3.resources.DomainCategory
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*wrapperspb.DoubleValue)(nil), // 2: google.protobuf.DoubleValue
+	(*wrapperspb.Int64Value)(nil),  // 3: google.protobuf.Int64Value
+	(*wrapperspb.BoolValue)(nil),   // 4: google.protobuf.BoolValue
 }
 var file_google_ads_googleads_v3_resources_domain_category_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v3.resources.DomainCategory.campaign:type_name -> google.protobuf.StringValue

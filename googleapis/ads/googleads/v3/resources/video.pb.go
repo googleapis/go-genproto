@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,13 +54,13 @@ type Video struct {
 	// `customers/{customer_id}/videos/{video_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the video.
-	Id *wrappers.StringValue `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. The owner channel id of the video.
-	ChannelId *wrappers.StringValue `protobuf:"bytes,3,opt,name=channel_id,json=channelId,proto3" json:"channel_id,omitempty"`
+	ChannelId *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=channel_id,json=channelId,proto3" json:"channel_id,omitempty"`
 	// Output only. The duration of the video in milliseconds.
-	DurationMillis *wrappers.Int64Value `protobuf:"bytes,4,opt,name=duration_millis,json=durationMillis,proto3" json:"duration_millis,omitempty"`
+	DurationMillis *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=duration_millis,json=durationMillis,proto3" json:"duration_millis,omitempty"`
 	// Output only. The title of the video.
-	Title *wrappers.StringValue `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
+	Title *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
 }
 
 func (x *Video) Reset() {
@@ -102,28 +102,28 @@ func (x *Video) GetResourceName() string {
 	return ""
 }
 
-func (x *Video) GetId() *wrappers.StringValue {
+func (x *Video) GetId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *Video) GetChannelId() *wrappers.StringValue {
+func (x *Video) GetChannelId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ChannelId
 	}
 	return nil
 }
 
-func (x *Video) GetDurationMillis() *wrappers.Int64Value {
+func (x *Video) GetDurationMillis() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.DurationMillis
 	}
 	return nil
 }
 
-func (x *Video) GetTitle() *wrappers.StringValue {
+func (x *Video) GetTitle() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Title
 	}
@@ -204,9 +204,9 @@ func file_google_ads_googleads_v3_resources_video_proto_rawDescGZIP() []byte {
 
 var file_google_ads_googleads_v3_resources_video_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_video_proto_goTypes = []interface{}{
-	(*Video)(nil),                // 0: google.ads.googleads.v3.resources.Video
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),  // 2: google.protobuf.Int64Value
+	(*Video)(nil),                  // 0: google.ads.googleads.v3.resources.Video
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),  // 2: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v3_resources_video_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v3.resources.Video.id:type_name -> google.protobuf.StringValue

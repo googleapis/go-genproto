@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -151,7 +151,7 @@ type Settings struct {
 	// on updates then the existing metadata will be blindly overwritten.
 	Etag string `protobuf:"bytes,9,opt,name=etag,proto3" json:"etag,omitempty"`
 	// Output only. The time these settings were last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *Settings) Reset() {
@@ -242,7 +242,7 @@ func (x *Settings) GetEtag() string {
 	return ""
 }
 
-func (x *Settings) GetUpdateTime() *timestamp.Timestamp {
+func (x *Settings) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -476,7 +476,7 @@ var file_google_cloud_securitycenter_settings_v1beta1_settings_proto_goTypes = [
 	nil,                                    // 4: google.cloud.securitycenter.settings.v1beta1.Settings.DetectorGroupSettingsEntry
 	(*BillingSettings)(nil),                // 5: google.cloud.securitycenter.settings.v1beta1.BillingSettings
 	(*SinkSettings)(nil),                   // 6: google.cloud.securitycenter.settings.v1beta1.SinkSettings
-	(*timestamp.Timestamp)(nil),            // 7: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),          // 7: google.protobuf.Timestamp
 	(ComponentEnablementState)(0),          // 8: google.cloud.securitycenter.settings.v1beta1.ComponentEnablementState
 	(*ComponentSettings)(nil),              // 9: google.cloud.securitycenter.settings.v1beta1.ComponentSettings
 }

@@ -27,14 +27,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -273,13 +273,13 @@ type ListGroupStatsRequest struct {
 	TimeRange *QueryTimeRange `protobuf:"bytes,5,opt,name=time_range,json=timeRange,proto3" json:"time_range,omitempty"`
 	// Optional. The preferred duration for a single returned `TimedCount`.
 	// If not set, no timed counts are returned.
-	TimedCountDuration *duration.Duration `protobuf:"bytes,6,opt,name=timed_count_duration,json=timedCountDuration,proto3" json:"timed_count_duration,omitempty"`
+	TimedCountDuration *durationpb.Duration `protobuf:"bytes,6,opt,name=timed_count_duration,json=timedCountDuration,proto3" json:"timed_count_duration,omitempty"`
 	// Optional. The alignment of the timed counts to be returned.
 	// Default is `ALIGNMENT_EQUAL_AT_END`.
 	Alignment TimedCountAlignment `protobuf:"varint,7,opt,name=alignment,proto3,enum=google.devtools.clouderrorreporting.v1beta1.TimedCountAlignment" json:"alignment,omitempty"`
 	// Optional. Time where the timed counts shall be aligned if rounded
 	// alignment is chosen. Default is 00:00 UTC.
-	AlignmentTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=alignment_time,json=alignmentTime,proto3" json:"alignment_time,omitempty"`
+	AlignmentTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=alignment_time,json=alignmentTime,proto3" json:"alignment_time,omitempty"`
 	// Optional. The sort order in which the results are returned.
 	// Default is `COUNT_DESC`.
 	Order ErrorGroupOrder `protobuf:"varint,9,opt,name=order,proto3,enum=google.devtools.clouderrorreporting.v1beta1.ErrorGroupOrder" json:"order,omitempty"`
@@ -352,7 +352,7 @@ func (x *ListGroupStatsRequest) GetTimeRange() *QueryTimeRange {
 	return nil
 }
 
-func (x *ListGroupStatsRequest) GetTimedCountDuration() *duration.Duration {
+func (x *ListGroupStatsRequest) GetTimedCountDuration() *durationpb.Duration {
 	if x != nil {
 		return x.TimedCountDuration
 	}
@@ -366,7 +366,7 @@ func (x *ListGroupStatsRequest) GetAlignment() TimedCountAlignment {
 	return TimedCountAlignment_ERROR_COUNT_ALIGNMENT_UNSPECIFIED
 }
 
-func (x *ListGroupStatsRequest) GetAlignmentTime() *timestamp.Timestamp {
+func (x *ListGroupStatsRequest) GetAlignmentTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.AlignmentTime
 	}
@@ -410,7 +410,7 @@ type ListGroupStatsResponse struct {
 	// The start time is set based on the requested time range. It may be adjusted
 	// to a later time if a project has exceeded the storage quota and older data
 	// has been deleted.
-	TimeRangeBegin *timestamp.Timestamp `protobuf:"bytes,4,opt,name=time_range_begin,json=timeRangeBegin,proto3" json:"time_range_begin,omitempty"`
+	TimeRangeBegin *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=time_range_begin,json=timeRangeBegin,proto3" json:"time_range_begin,omitempty"`
 }
 
 func (x *ListGroupStatsResponse) Reset() {
@@ -459,7 +459,7 @@ func (x *ListGroupStatsResponse) GetNextPageToken() string {
 	return ""
 }
 
-func (x *ListGroupStatsResponse) GetTimeRangeBegin() *timestamp.Timestamp {
+func (x *ListGroupStatsResponse) GetTimeRangeBegin() *timestamppb.Timestamp {
 	if x != nil {
 		return x.TimeRangeBegin
 	}
@@ -501,11 +501,11 @@ type ErrorGroupStats struct {
 	// Approximate first occurrence that was ever seen for this group
 	// and which matches the given filter criteria, ignoring the
 	// time_range that was specified in the request.
-	FirstSeenTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=first_seen_time,json=firstSeenTime,proto3" json:"first_seen_time,omitempty"`
+	FirstSeenTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=first_seen_time,json=firstSeenTime,proto3" json:"first_seen_time,omitempty"`
 	// Approximate last occurrence that was ever seen for this group and
 	// which matches the given filter criteria, ignoring the time_range
 	// that was specified in the request.
-	LastSeenTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=last_seen_time,json=lastSeenTime,proto3" json:"last_seen_time,omitempty"`
+	LastSeenTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=last_seen_time,json=lastSeenTime,proto3" json:"last_seen_time,omitempty"`
 	// Service contexts with a non-zero error count for the given filter
 	// criteria. This list can be truncated if multiple services are affected.
 	// Refer to `num_affected_services` for the total count.
@@ -581,14 +581,14 @@ func (x *ErrorGroupStats) GetTimedCounts() []*TimedCount {
 	return nil
 }
 
-func (x *ErrorGroupStats) GetFirstSeenTime() *timestamp.Timestamp {
+func (x *ErrorGroupStats) GetFirstSeenTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.FirstSeenTime
 	}
 	return nil
 }
 
-func (x *ErrorGroupStats) GetLastSeenTime() *timestamp.Timestamp {
+func (x *ErrorGroupStats) GetLastSeenTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastSeenTime
 	}
@@ -627,9 +627,9 @@ type TimedCount struct {
 	// Approximate number of occurrences in the given time period.
 	Count int64 `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"`
 	// Start of the time period to which `count` refers (included).
-	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End of the time period to which `count` refers (excluded).
-	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *TimedCount) Reset() {
@@ -671,14 +671,14 @@ func (x *TimedCount) GetCount() int64 {
 	return 0
 }
 
-func (x *TimedCount) GetStartTime() *timestamp.Timestamp {
+func (x *TimedCount) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *TimedCount) GetEndTime() *timestamp.Timestamp {
+func (x *TimedCount) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -800,7 +800,7 @@ type ListEventsResponse struct {
 	// request, to view the next page of results.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	// The timestamp specifies the start time to which the request was restricted.
-	TimeRangeBegin *timestamp.Timestamp `protobuf:"bytes,4,opt,name=time_range_begin,json=timeRangeBegin,proto3" json:"time_range_begin,omitempty"`
+	TimeRangeBegin *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=time_range_begin,json=timeRangeBegin,proto3" json:"time_range_begin,omitempty"`
 }
 
 func (x *ListEventsResponse) Reset() {
@@ -849,7 +849,7 @@ func (x *ListEventsResponse) GetNextPageToken() string {
 	return ""
 }
 
-func (x *ListEventsResponse) GetTimeRangeBegin() *timestamp.Timestamp {
+func (x *ListEventsResponse) GetTimeRangeBegin() *timestamppb.Timestamp {
 	if x != nil {
 		return x.TimeRangeBegin
 	}
@@ -1395,8 +1395,8 @@ var file_google_devtools_clouderrorreporting_v1beta1_error_stats_service_proto_g
 	(*ServiceContextFilter)(nil),   // 10: google.devtools.clouderrorreporting.v1beta1.ServiceContextFilter
 	(*DeleteEventsRequest)(nil),    // 11: google.devtools.clouderrorreporting.v1beta1.DeleteEventsRequest
 	(*DeleteEventsResponse)(nil),   // 12: google.devtools.clouderrorreporting.v1beta1.DeleteEventsResponse
-	(*duration.Duration)(nil),      // 13: google.protobuf.Duration
-	(*timestamp.Timestamp)(nil),    // 14: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),    // 13: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),  // 14: google.protobuf.Timestamp
 	(*ErrorGroup)(nil),             // 15: google.devtools.clouderrorreporting.v1beta1.ErrorGroup
 	(*ServiceContext)(nil),         // 16: google.devtools.clouderrorreporting.v1beta1.ServiceContext
 	(*ErrorEvent)(nil),             // 17: google.devtools.clouderrorreporting.v1beta1.ErrorEvent

@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -51,10 +51,10 @@ type TextLabel struct {
 	// Background color of the label in RGB format. This string must match the
 	// regular expression '^\#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$'.
 	// Note: The background color may not be visible for manager accounts.
-	BackgroundColor *wrappers.StringValue `protobuf:"bytes,1,opt,name=background_color,json=backgroundColor,proto3" json:"background_color,omitempty"`
+	BackgroundColor *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=background_color,json=backgroundColor,proto3" json:"background_color,omitempty"`
 	// A short description of the label. The length must be no more than 200
 	// characters.
-	Description *wrappers.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 }
 
 func (x *TextLabel) Reset() {
@@ -89,14 +89,14 @@ func (*TextLabel) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_text_label_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TextLabel) GetBackgroundColor() *wrappers.StringValue {
+func (x *TextLabel) GetBackgroundColor() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BackgroundColor
 	}
 	return nil
 }
 
-func (x *TextLabel) GetDescription() *wrappers.StringValue {
+func (x *TextLabel) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
@@ -156,8 +156,8 @@ func file_google_ads_googleads_v4_common_text_label_proto_rawDescGZIP() []byte {
 
 var file_google_ads_googleads_v4_common_text_label_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_common_text_label_proto_goTypes = []interface{}{
-	(*TextLabel)(nil),            // 0: google.ads.googleads.v4.common.TextLabel
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*TextLabel)(nil),              // 0: google.ads.googleads.v4.common.TextLabel
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v4_common_text_label_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.common.TextLabel.background_color:type_name -> google.protobuf.StringValue

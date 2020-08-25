@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -119,7 +119,7 @@ type PublishLifecycleEventRequest struct {
 	// type) hasn't been published after this duration from when {build_event}
 	// is written to BES, consider this stream expired. If this field is not set,
 	// BES backend will use its own default value.
-	StreamTimeout *duration.Duration `protobuf:"bytes,3,opt,name=stream_timeout,json=streamTimeout,proto3" json:"stream_timeout,omitempty"`
+	StreamTimeout *durationpb.Duration `protobuf:"bytes,3,opt,name=stream_timeout,json=streamTimeout,proto3" json:"stream_timeout,omitempty"`
 	// Additional information about a build request. These are define by the event
 	// publishers, and the Build Event Service does not validate or interpret
 	// them. They are used while notifying internal systems of new builds and
@@ -178,7 +178,7 @@ func (x *PublishLifecycleEventRequest) GetBuildEvent() *OrderedBuildEvent {
 	return nil
 }
 
-func (x *PublishLifecycleEventRequest) GetStreamTimeout() *duration.Duration {
+func (x *PublishLifecycleEventRequest) GetStreamTimeout() *durationpb.Duration {
 	if x != nil {
 		return x.StreamTimeout
 	}
@@ -551,10 +551,10 @@ var file_google_devtools_build_v1_publish_build_event_proto_goTypes = []interfac
 	(*PublishBuildToolEventStreamResponse)(nil),    // 2: google.devtools.build.v1.PublishBuildToolEventStreamResponse
 	(*OrderedBuildEvent)(nil),                      // 3: google.devtools.build.v1.OrderedBuildEvent
 	(*PublishBuildToolEventStreamRequest)(nil),     // 4: google.devtools.build.v1.PublishBuildToolEventStreamRequest
-	(*duration.Duration)(nil),                      // 5: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                    // 5: google.protobuf.Duration
 	(*StreamId)(nil),                               // 6: google.devtools.build.v1.StreamId
 	(*BuildEvent)(nil),                             // 7: google.devtools.build.v1.BuildEvent
-	(*empty.Empty)(nil),                            // 8: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                          // 8: google.protobuf.Empty
 }
 var file_google_devtools_build_v1_publish_build_event_proto_depIdxs = []int32{
 	0, // 0: google.devtools.build.v1.PublishLifecycleEventRequest.service_level:type_name -> google.devtools.build.v1.PublishLifecycleEventRequest.ServiceLevel
@@ -674,7 +674,7 @@ type PublishBuildEventClient interface {
 	// The commit status of the request is reported by the RPC's util_status()
 	// function. The error code is the canoncial error code defined in
 	// //util/task/codes.proto.
-	PublishLifecycleEvent(ctx context.Context, in *PublishLifecycleEventRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	PublishLifecycleEvent(ctx context.Context, in *PublishLifecycleEventRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Publish build tool events belonging to the same stream to a backend job
 	// using bidirectional streaming.
 	PublishBuildToolEventStream(ctx context.Context, opts ...grpc.CallOption) (PublishBuildEvent_PublishBuildToolEventStreamClient, error)
@@ -688,8 +688,8 @@ func NewPublishBuildEventClient(cc grpc.ClientConnInterface) PublishBuildEventCl
 	return &publishBuildEventClient{cc}
 }
 
-func (c *publishBuildEventClient) PublishLifecycleEvent(ctx context.Context, in *PublishLifecycleEventRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *publishBuildEventClient) PublishLifecycleEvent(ctx context.Context, in *PublishLifecycleEventRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.devtools.build.v1.PublishBuildEvent/PublishLifecycleEvent", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -740,7 +740,7 @@ type PublishBuildEventServer interface {
 	// The commit status of the request is reported by the RPC's util_status()
 	// function. The error code is the canoncial error code defined in
 	// //util/task/codes.proto.
-	PublishLifecycleEvent(context.Context, *PublishLifecycleEventRequest) (*empty.Empty, error)
+	PublishLifecycleEvent(context.Context, *PublishLifecycleEventRequest) (*emptypb.Empty, error)
 	// Publish build tool events belonging to the same stream to a backend job
 	// using bidirectional streaming.
 	PublishBuildToolEventStream(PublishBuildEvent_PublishBuildToolEventStreamServer) error
@@ -750,7 +750,7 @@ type PublishBuildEventServer interface {
 type UnimplementedPublishBuildEventServer struct {
 }
 
-func (*UnimplementedPublishBuildEventServer) PublishLifecycleEvent(context.Context, *PublishLifecycleEventRequest) (*empty.Empty, error) {
+func (*UnimplementedPublishBuildEventServer) PublishLifecycleEvent(context.Context, *PublishLifecycleEventRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PublishLifecycleEvent not implemented")
 }
 func (*UnimplementedPublishBuildEventServer) PublishBuildToolEventStream(PublishBuildEvent_PublishBuildToolEventStreamServer) error {

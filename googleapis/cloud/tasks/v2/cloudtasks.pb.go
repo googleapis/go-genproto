@@ -27,15 +27,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -347,7 +347,7 @@ type UpdateQueueRequest struct {
 	// A mask used to specify which fields of the queue are being updated.
 	//
 	// If empty, then all fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateQueueRequest) Reset() {
@@ -389,7 +389,7 @@ func (x *UpdateQueueRequest) GetQueue() *Queue {
 	return nil
 }
 
-func (x *UpdateQueueRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateQueueRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1419,13 +1419,13 @@ var file_google_cloud_tasks_v2_cloudtasks_proto_goTypes = []interface{}{
 	(*DeleteTaskRequest)(nil),             // 13: google.cloud.tasks.v2.DeleteTaskRequest
 	(*RunTaskRequest)(nil),                // 14: google.cloud.tasks.v2.RunTaskRequest
 	(*Queue)(nil),                         // 15: google.cloud.tasks.v2.Queue
-	(*field_mask.FieldMask)(nil),          // 16: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),         // 16: google.protobuf.FieldMask
 	(Task_View)(0),                        // 17: google.cloud.tasks.v2.Task.View
 	(*Task)(nil),                          // 18: google.cloud.tasks.v2.Task
 	(*v1.GetIamPolicyRequest)(nil),        // 19: google.iam.v1.GetIamPolicyRequest
 	(*v1.SetIamPolicyRequest)(nil),        // 20: google.iam.v1.SetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),  // 21: google.iam.v1.TestIamPermissionsRequest
-	(*empty.Empty)(nil),                   // 22: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                 // 22: google.protobuf.Empty
 	(*v1.Policy)(nil),                     // 23: google.iam.v1.Policy
 	(*v1.TestIamPermissionsResponse)(nil), // 24: google.iam.v1.TestIamPermissionsResponse
 }
@@ -1748,7 +1748,7 @@ type CloudTasksClient interface {
 	// [Overview of Queue Management and
 	// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
 	// this method.
-	DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Purges a queue by deleting all of its tasks.
 	//
 	// All tasks created before this method is called are permanently deleted.
@@ -1831,7 +1831,7 @@ type CloudTasksClient interface {
 	// A task can be deleted if it is scheduled or dispatched. A task
 	// cannot be deleted if it has executed successfully or permanently
 	// failed.
-	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Forces a task to run now.
 	//
 	// When this method is called, Cloud Tasks will dispatch the task, even if
@@ -1903,8 +1903,8 @@ func (c *cloudTasksClient) UpdateQueue(ctx context.Context, in *UpdateQueueReque
 	return out, nil
 }
 
-func (c *cloudTasksClient) DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *cloudTasksClient) DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.tasks.v2.CloudTasks/DeleteQueue", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1993,8 +1993,8 @@ func (c *cloudTasksClient) CreateTask(ctx context.Context, in *CreateTaskRequest
 	return out, nil
 }
 
-func (c *cloudTasksClient) DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *cloudTasksClient) DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.tasks.v2.CloudTasks/DeleteTask", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2061,7 +2061,7 @@ type CloudTasksServer interface {
 	// [Overview of Queue Management and
 	// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
 	// this method.
-	DeleteQueue(context.Context, *DeleteQueueRequest) (*empty.Empty, error)
+	DeleteQueue(context.Context, *DeleteQueueRequest) (*emptypb.Empty, error)
 	// Purges a queue by deleting all of its tasks.
 	//
 	// All tasks created before this method is called are permanently deleted.
@@ -2144,7 +2144,7 @@ type CloudTasksServer interface {
 	// A task can be deleted if it is scheduled or dispatched. A task
 	// cannot be deleted if it has executed successfully or permanently
 	// failed.
-	DeleteTask(context.Context, *DeleteTaskRequest) (*empty.Empty, error)
+	DeleteTask(context.Context, *DeleteTaskRequest) (*emptypb.Empty, error)
 	// Forces a task to run now.
 	//
 	// When this method is called, Cloud Tasks will dispatch the task, even if
@@ -2188,7 +2188,7 @@ func (*UnimplementedCloudTasksServer) CreateQueue(context.Context, *CreateQueueR
 func (*UnimplementedCloudTasksServer) UpdateQueue(context.Context, *UpdateQueueRequest) (*Queue, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateQueue not implemented")
 }
-func (*UnimplementedCloudTasksServer) DeleteQueue(context.Context, *DeleteQueueRequest) (*empty.Empty, error) {
+func (*UnimplementedCloudTasksServer) DeleteQueue(context.Context, *DeleteQueueRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteQueue not implemented")
 }
 func (*UnimplementedCloudTasksServer) PurgeQueue(context.Context, *PurgeQueueRequest) (*Queue, error) {
@@ -2218,7 +2218,7 @@ func (*UnimplementedCloudTasksServer) GetTask(context.Context, *GetTaskRequest) 
 func (*UnimplementedCloudTasksServer) CreateTask(context.Context, *CreateTaskRequest) (*Task, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTask not implemented")
 }
-func (*UnimplementedCloudTasksServer) DeleteTask(context.Context, *DeleteTaskRequest) (*empty.Empty, error) {
+func (*UnimplementedCloudTasksServer) DeleteTask(context.Context, *DeleteTaskRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTask not implemented")
 }
 func (*UnimplementedCloudTasksServer) RunTask(context.Context, *RunTaskRequest) (*Task, error) {

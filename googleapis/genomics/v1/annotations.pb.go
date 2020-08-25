@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -390,7 +390,7 @@ type AnnotationSet struct {
 	Type AnnotationType `protobuf:"varint,6,opt,name=type,proto3,enum=google.genomics.v1.AnnotationType" json:"type,omitempty"`
 	// A map of additional read alignment information. This must be of the form
 	// map<string, string[]> (string key mapping to a list of string values).
-	Info map[string]*_struct.ListValue `protobuf:"bytes,17,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Info map[string]*structpb.ListValue `protobuf:"bytes,17,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *AnnotationSet) Reset() {
@@ -467,7 +467,7 @@ func (x *AnnotationSet) GetType() AnnotationType {
 	return AnnotationType_ANNOTATION_TYPE_UNSPECIFIED
 }
 
-func (x *AnnotationSet) GetInfo() map[string]*_struct.ListValue {
+func (x *AnnotationSet) GetInfo() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Info
 	}
@@ -513,7 +513,7 @@ type Annotation struct {
 	Value isAnnotation_Value `protobuf_oneof:"value"`
 	// A map of additional read alignment information. This must be of the form
 	// map<string, string[]> (string key mapping to a list of string values).
-	Info map[string]*_struct.ListValue `protobuf:"bytes,12,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Info map[string]*structpb.ListValue `protobuf:"bytes,12,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *Annotation) Reset() {
@@ -632,7 +632,7 @@ func (x *Annotation) GetTranscript() *Transcript {
 	return nil
 }
 
-func (x *Annotation) GetInfo() map[string]*_struct.ListValue {
+func (x *Annotation) GetInfo() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Info
 	}
@@ -1033,7 +1033,7 @@ type UpdateAnnotationSetRequest struct {
 	// [source_uri][google.genomics.v1.AnnotationSet.source_uri], and
 	// [info][google.genomics.v1.AnnotationSet.info]. If unspecified, all
 	// mutable fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateAnnotationSetRequest) Reset() {
@@ -1082,7 +1082,7 @@ func (x *UpdateAnnotationSetRequest) GetAnnotationSet() *AnnotationSet {
 	return nil
 }
 
-func (x *UpdateAnnotationSetRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateAnnotationSetRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1520,7 +1520,7 @@ type UpdateAnnotationRequest struct {
 	// [transcript][google.genomics.v1.Annotation.transcript], and
 	// [info][google.genomics.v1.Annotation.info]. If unspecified, all mutable
 	// fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateAnnotationRequest) Reset() {
@@ -1569,7 +1569,7 @@ func (x *UpdateAnnotationRequest) GetAnnotation() *Annotation {
 	return nil
 }
 
-func (x *UpdateAnnotationRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateAnnotationRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1928,7 +1928,7 @@ type Transcript_Exon struct {
 	// Unset if this exon does not intersect the coding sequence. Upon creation
 	// of a transcript, the frame must be populated for all or none of the
 	// coding exons.
-	Frame *wrappers.Int32Value `protobuf:"bytes,3,opt,name=frame,proto3" json:"frame,omitempty"`
+	Frame *wrapperspb.Int32Value `protobuf:"bytes,3,opt,name=frame,proto3" json:"frame,omitempty"`
 }
 
 func (x *Transcript_Exon) Reset() {
@@ -1977,7 +1977,7 @@ func (x *Transcript_Exon) GetEnd() int64 {
 	return 0
 }
 
-func (x *Transcript_Exon) GetFrame() *wrappers.Int32Value {
+func (x *Transcript_Exon) GetFrame() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.Frame
 	}
@@ -2576,11 +2576,11 @@ var file_google_genomics_v1_annotations_proto_goTypes = []interface{}{
 	(*Transcript_Exon)(nil),                      // 26: google.genomics.v1.Transcript.Exon
 	(*Transcript_CodingSequence)(nil),            // 27: google.genomics.v1.Transcript.CodingSequence
 	(*BatchCreateAnnotationsResponse_Entry)(nil), // 28: google.genomics.v1.BatchCreateAnnotationsResponse.Entry
-	(*field_mask.FieldMask)(nil),                 // 29: google.protobuf.FieldMask
-	(*_struct.ListValue)(nil),                    // 30: google.protobuf.ListValue
-	(*wrappers.Int32Value)(nil),                  // 31: google.protobuf.Int32Value
+	(*fieldmaskpb.FieldMask)(nil),                // 29: google.protobuf.FieldMask
+	(*structpb.ListValue)(nil),                   // 30: google.protobuf.ListValue
+	(*wrapperspb.Int32Value)(nil),                // 31: google.protobuf.Int32Value
 	(*status.Status)(nil),                        // 32: google.rpc.Status
-	(*empty.Empty)(nil),                          // 33: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                        // 33: google.protobuf.Empty
 }
 var file_google_genomics_v1_annotations_proto_depIdxs = []int32{
 	0,  // 0: google.genomics.v1.AnnotationSet.type:type_name -> google.genomics.v1.AnnotationType
@@ -2985,7 +2985,7 @@ type AnnotationServiceV1Client interface {
 	UpdateAnnotationSet(ctx context.Context, in *UpdateAnnotationSetRequest, opts ...grpc.CallOption) (*AnnotationSet, error)
 	// Deletes an annotation set. Caller must have WRITE permission
 	// for the associated annotation set.
-	DeleteAnnotationSet(ctx context.Context, in *DeleteAnnotationSetRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAnnotationSet(ctx context.Context, in *DeleteAnnotationSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Searches for annotation sets that match the given criteria. Annotation sets
 	// are returned in an unspecified order. This order is consistent, such that
 	// two queries for the same content (regardless of page size) yield annotation
@@ -3038,7 +3038,7 @@ type AnnotationServiceV1Client interface {
 	UpdateAnnotation(ctx context.Context, in *UpdateAnnotationRequest, opts ...grpc.CallOption) (*Annotation, error)
 	// Deletes an annotation. Caller must have WRITE permission for
 	// the associated annotation set.
-	DeleteAnnotation(ctx context.Context, in *DeleteAnnotationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAnnotation(ctx context.Context, in *DeleteAnnotationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Searches for annotations that match the given criteria. Results are
 	// ordered by genomic coordinate (by reference sequence, then position).
 	// Annotations with equivalent genomic coordinates are returned in an
@@ -3084,8 +3084,8 @@ func (c *annotationServiceV1Client) UpdateAnnotationSet(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *annotationServiceV1Client) DeleteAnnotationSet(ctx context.Context, in *DeleteAnnotationSetRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *annotationServiceV1Client) DeleteAnnotationSet(ctx context.Context, in *DeleteAnnotationSetRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.genomics.v1.AnnotationServiceV1/DeleteAnnotationSet", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3138,8 +3138,8 @@ func (c *annotationServiceV1Client) UpdateAnnotation(ctx context.Context, in *Up
 	return out, nil
 }
 
-func (c *annotationServiceV1Client) DeleteAnnotation(ctx context.Context, in *DeleteAnnotationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *annotationServiceV1Client) DeleteAnnotation(ctx context.Context, in *DeleteAnnotationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.genomics.v1.AnnotationServiceV1/DeleteAnnotation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3178,7 +3178,7 @@ type AnnotationServiceV1Server interface {
 	UpdateAnnotationSet(context.Context, *UpdateAnnotationSetRequest) (*AnnotationSet, error)
 	// Deletes an annotation set. Caller must have WRITE permission
 	// for the associated annotation set.
-	DeleteAnnotationSet(context.Context, *DeleteAnnotationSetRequest) (*empty.Empty, error)
+	DeleteAnnotationSet(context.Context, *DeleteAnnotationSetRequest) (*emptypb.Empty, error)
 	// Searches for annotation sets that match the given criteria. Annotation sets
 	// are returned in an unspecified order. This order is consistent, such that
 	// two queries for the same content (regardless of page size) yield annotation
@@ -3231,7 +3231,7 @@ type AnnotationServiceV1Server interface {
 	UpdateAnnotation(context.Context, *UpdateAnnotationRequest) (*Annotation, error)
 	// Deletes an annotation. Caller must have WRITE permission for
 	// the associated annotation set.
-	DeleteAnnotation(context.Context, *DeleteAnnotationRequest) (*empty.Empty, error)
+	DeleteAnnotation(context.Context, *DeleteAnnotationRequest) (*emptypb.Empty, error)
 	// Searches for annotations that match the given criteria. Results are
 	// ordered by genomic coordinate (by reference sequence, then position).
 	// Annotations with equivalent genomic coordinates are returned in an
@@ -3255,7 +3255,7 @@ func (*UnimplementedAnnotationServiceV1Server) GetAnnotationSet(context.Context,
 func (*UnimplementedAnnotationServiceV1Server) UpdateAnnotationSet(context.Context, *UpdateAnnotationSetRequest) (*AnnotationSet, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method UpdateAnnotationSet not implemented")
 }
-func (*UnimplementedAnnotationServiceV1Server) DeleteAnnotationSet(context.Context, *DeleteAnnotationSetRequest) (*empty.Empty, error) {
+func (*UnimplementedAnnotationServiceV1Server) DeleteAnnotationSet(context.Context, *DeleteAnnotationSetRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteAnnotationSet not implemented")
 }
 func (*UnimplementedAnnotationServiceV1Server) SearchAnnotationSets(context.Context, *SearchAnnotationSetsRequest) (*SearchAnnotationSetsResponse, error) {
@@ -3273,7 +3273,7 @@ func (*UnimplementedAnnotationServiceV1Server) GetAnnotation(context.Context, *G
 func (*UnimplementedAnnotationServiceV1Server) UpdateAnnotation(context.Context, *UpdateAnnotationRequest) (*Annotation, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method UpdateAnnotation not implemented")
 }
-func (*UnimplementedAnnotationServiceV1Server) DeleteAnnotation(context.Context, *DeleteAnnotationRequest) (*empty.Empty, error) {
+func (*UnimplementedAnnotationServiceV1Server) DeleteAnnotation(context.Context, *DeleteAnnotationRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteAnnotation not implemented")
 }
 func (*UnimplementedAnnotationServiceV1Server) SearchAnnotations(context.Context, *SearchAnnotationsRequest) (*SearchAnnotationsResponse, error) {

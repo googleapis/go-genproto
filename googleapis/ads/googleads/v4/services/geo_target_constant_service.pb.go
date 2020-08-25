@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v4/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
@@ -34,6 +33,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -106,9 +106,9 @@ type SuggestGeoTargetConstantsRequest struct {
 	// If possible, returned geo targets are translated using this locale. If not,
 	// en is used by default. This is also used as a hint for returned geo
 	// targets.
-	Locale *wrappers.StringValue `protobuf:"bytes,3,opt,name=locale,proto3" json:"locale,omitempty"`
+	Locale *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=locale,proto3" json:"locale,omitempty"`
 	// Returned geo targets are restricted to this country code.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,5,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// Required. A selector of geo target constants.
 	//
 	// Types that are assignable to Query:
@@ -149,14 +149,14 @@ func (*SuggestGeoTargetConstantsRequest) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_geo_target_constant_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SuggestGeoTargetConstantsRequest) GetLocale() *wrappers.StringValue {
+func (x *SuggestGeoTargetConstantsRequest) GetLocale() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Locale
 	}
 	return nil
 }
 
-func (x *SuggestGeoTargetConstantsRequest) GetCountryCode() *wrappers.StringValue {
+func (x *SuggestGeoTargetConstantsRequest) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
@@ -261,13 +261,13 @@ type GeoTargetConstantSuggestion struct {
 	// It affects the name of geo target fields. For example, if locale=en, then
 	// name=Spain. If locale=es, then name=España. The default locale will be
 	// returned if no translation exists for the locale in the request.
-	Locale *wrappers.StringValue `protobuf:"bytes,1,opt,name=locale,proto3" json:"locale,omitempty"`
+	Locale *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=locale,proto3" json:"locale,omitempty"`
 	// Approximate user population that will be targeted, rounded to the
 	// nearest 100.
-	Reach *wrappers.Int64Value `protobuf:"bytes,2,opt,name=reach,proto3" json:"reach,omitempty"`
+	Reach *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=reach,proto3" json:"reach,omitempty"`
 	// If the request searched by location name, this is the location name that
 	// matched the geo target.
-	SearchTerm *wrappers.StringValue `protobuf:"bytes,3,opt,name=search_term,json=searchTerm,proto3" json:"search_term,omitempty"`
+	SearchTerm *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=search_term,json=searchTerm,proto3" json:"search_term,omitempty"`
 	// The GeoTargetConstant result.
 	GeoTargetConstant *resources.GeoTargetConstant `protobuf:"bytes,4,opt,name=geo_target_constant,json=geoTargetConstant,proto3" json:"geo_target_constant,omitempty"`
 	// The list of parents of the geo target constant.
@@ -306,21 +306,21 @@ func (*GeoTargetConstantSuggestion) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_geo_target_constant_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GeoTargetConstantSuggestion) GetLocale() *wrappers.StringValue {
+func (x *GeoTargetConstantSuggestion) GetLocale() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Locale
 	}
 	return nil
 }
 
-func (x *GeoTargetConstantSuggestion) GetReach() *wrappers.Int64Value {
+func (x *GeoTargetConstantSuggestion) GetReach() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Reach
 	}
 	return nil
 }
 
-func (x *GeoTargetConstantSuggestion) GetSearchTerm() *wrappers.StringValue {
+func (x *GeoTargetConstantSuggestion) GetSearchTerm() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SearchTerm
 	}
@@ -348,7 +348,7 @@ type SuggestGeoTargetConstantsRequest_LocationNames struct {
 	unknownFields protoimpl.UnknownFields
 
 	// A list of location names.
-	Names []*wrappers.StringValue `protobuf:"bytes,1,rep,name=names,proto3" json:"names,omitempty"`
+	Names []*wrapperspb.StringValue `protobuf:"bytes,1,rep,name=names,proto3" json:"names,omitempty"`
 }
 
 func (x *SuggestGeoTargetConstantsRequest_LocationNames) Reset() {
@@ -383,7 +383,7 @@ func (*SuggestGeoTargetConstantsRequest_LocationNames) Descriptor() ([]byte, []i
 	return file_google_ads_googleads_v4_services_geo_target_constant_service_proto_rawDescGZIP(), []int{1, 0}
 }
 
-func (x *SuggestGeoTargetConstantsRequest_LocationNames) GetNames() []*wrappers.StringValue {
+func (x *SuggestGeoTargetConstantsRequest_LocationNames) GetNames() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Names
 	}
@@ -397,7 +397,7 @@ type SuggestGeoTargetConstantsRequest_GeoTargets struct {
 	unknownFields protoimpl.UnknownFields
 
 	// A list of geo target constant resource names.
-	GeoTargetConstants []*wrappers.StringValue `protobuf:"bytes,1,rep,name=geo_target_constants,json=geoTargetConstants,proto3" json:"geo_target_constants,omitempty"`
+	GeoTargetConstants []*wrapperspb.StringValue `protobuf:"bytes,1,rep,name=geo_target_constants,json=geoTargetConstants,proto3" json:"geo_target_constants,omitempty"`
 }
 
 func (x *SuggestGeoTargetConstantsRequest_GeoTargets) Reset() {
@@ -432,7 +432,7 @@ func (*SuggestGeoTargetConstantsRequest_GeoTargets) Descriptor() ([]byte, []int)
 	return file_google_ads_googleads_v4_services_geo_target_constant_service_proto_rawDescGZIP(), []int{1, 1}
 }
 
-func (x *SuggestGeoTargetConstantsRequest_GeoTargets) GetGeoTargetConstants() []*wrappers.StringValue {
+func (x *SuggestGeoTargetConstantsRequest_GeoTargets) GetGeoTargetConstants() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetConstants
 	}
@@ -610,8 +610,8 @@ var file_google_ads_googleads_v4_services_geo_target_constant_service_proto_goTy
 	(*GeoTargetConstantSuggestion)(nil),                    // 3: google.ads.googleads.v4.services.GeoTargetConstantSuggestion
 	(*SuggestGeoTargetConstantsRequest_LocationNames)(nil), // 4: google.ads.googleads.v4.services.SuggestGeoTargetConstantsRequest.LocationNames
 	(*SuggestGeoTargetConstantsRequest_GeoTargets)(nil),    // 5: google.ads.googleads.v4.services.SuggestGeoTargetConstantsRequest.GeoTargets
-	(*wrappers.StringValue)(nil),                           // 6: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                            // 7: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                         // 6: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                          // 7: google.protobuf.Int64Value
 	(*resources.GeoTargetConstant)(nil),                    // 8: google.ads.googleads.v4.resources.GeoTargetConstant
 }
 var file_google_ads_googleads_v4_services_geo_target_constant_service_proto_depIdxs = []int32{

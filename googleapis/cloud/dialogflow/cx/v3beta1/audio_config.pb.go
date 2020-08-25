@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -137,7 +137,8 @@ func (AudioEncoding) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_dialogflow_cx_v3beta1_audio_config_proto_rawDescGZIP(), []int{0}
 }
 
-// Variant of the specified [Speech model][google.cloud.dialogflow.cx.v3beta1.InputAudioConfig.model] to use.
+// Variant of the specified [Speech
+// model][google.cloud.dialogflow.cx.v3beta1.InputAudioConfig.model] to use.
 //
 // See the [Cloud Speech
 // documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
@@ -165,8 +166,8 @@ const (
 	// Use an enhanced model variant:
 	//
 	// * If an enhanced variant does not exist for the given
-	//   [model][google.cloud.dialogflow.cx.v3beta1.InputAudioConfig.model] and request language, Dialogflow falls
-	//   back to the standard variant.
+	//   [model][google.cloud.dialogflow.cx.v3beta1.InputAudioConfig.model] and
+	//   request language, Dialogflow falls back to the standard variant.
 	//
 	//   The [Cloud Speech
 	//   documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
@@ -361,11 +362,11 @@ type SpeechWordInfo struct {
 	// Time offset relative to the beginning of the audio that corresponds to the
 	// start of the spoken word. This is an experimental feature and the accuracy
 	// of the time offset can vary.
-	StartOffset *duration.Duration `protobuf:"bytes,1,opt,name=start_offset,json=startOffset,proto3" json:"start_offset,omitempty"`
+	StartOffset *durationpb.Duration `protobuf:"bytes,1,opt,name=start_offset,json=startOffset,proto3" json:"start_offset,omitempty"`
 	// Time offset relative to the beginning of the audio that corresponds to the
 	// end of the spoken word. This is an experimental feature and the accuracy of
 	// the time offset can vary.
-	EndOffset *duration.Duration `protobuf:"bytes,2,opt,name=end_offset,json=endOffset,proto3" json:"end_offset,omitempty"`
+	EndOffset *durationpb.Duration `protobuf:"bytes,2,opt,name=end_offset,json=endOffset,proto3" json:"end_offset,omitempty"`
 	// The Speech confidence between 0.0 and 1.0 for this word. A higher number
 	// indicates an estimated greater likelihood that the recognized word is
 	// correct. The default of 0.0 is a sentinel value indicating that confidence
@@ -415,14 +416,14 @@ func (x *SpeechWordInfo) GetWord() string {
 	return ""
 }
 
-func (x *SpeechWordInfo) GetStartOffset() *duration.Duration {
+func (x *SpeechWordInfo) GetStartOffset() *durationpb.Duration {
 	if x != nil {
 		return x.StartOffset
 	}
 	return nil
 }
 
-func (x *SpeechWordInfo) GetEndOffset() *duration.Duration {
+func (x *SpeechWordInfo) GetEndOffset() *durationpb.Duration {
 	if x != nil {
 		return x.EndOffset
 	}
@@ -450,10 +451,12 @@ type InputAudioConfig struct {
 	// documentation](https://cloud.google.com/speech-to-text/docs/basics) for
 	// more details.
 	SampleRateHertz int32 `protobuf:"varint,2,opt,name=sample_rate_hertz,json=sampleRateHertz,proto3" json:"sample_rate_hertz,omitempty"`
-	// Optional. If `true`, Dialogflow returns [SpeechWordInfo][google.cloud.dialogflow.cx.v3beta1.SpeechWordInfo] in
-	// [StreamingRecognitionResult][google.cloud.dialogflow.cx.v3beta1.StreamingRecognitionResult] with information about the recognized speech
-	// words, e.g. start and end time offsets. If false or unspecified, Speech
-	// doesn't return any word-level information.
+	// Optional. If `true`, Dialogflow returns
+	// [SpeechWordInfo][google.cloud.dialogflow.cx.v3beta1.SpeechWordInfo] in
+	// [StreamingRecognitionResult][google.cloud.dialogflow.cx.v3beta1.StreamingRecognitionResult]
+	// with information about the recognized speech words, e.g. start and end time
+	// offsets. If false or unspecified, Speech doesn't return any word-level
+	// information.
 	EnableWordInfo bool `protobuf:"varint,13,opt,name=enable_word_info,json=enableWordInfo,proto3" json:"enable_word_info,omitempty"`
 	// Optional. A list of strings containing words and phrases that the speech
 	// recognizer should recognize with higher likelihood.
@@ -474,7 +477,8 @@ type InputAudioConfig struct {
 	// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
 	// for more details.
 	Model string `protobuf:"bytes,7,opt,name=model,proto3" json:"model,omitempty"`
-	// Optional. Which variant of the [Speech model][google.cloud.dialogflow.cx.v3beta1.InputAudioConfig.model] to use.
+	// Optional. Which variant of the [Speech
+	// model][google.cloud.dialogflow.cx.v3beta1.InputAudioConfig.model] to use.
 	ModelVariant SpeechModelVariant `protobuf:"varint,10,opt,name=model_variant,json=modelVariant,proto3,enum=google.cloud.dialogflow.cx.v3beta1.SpeechModelVariant" json:"model_variant,omitempty"`
 	// Optional. If `false` (default), recognition does not cease until the
 	// client closes the stream.
@@ -580,9 +584,10 @@ type VoiceSelectionParams struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. The preferred gender of the voice. If not set, the service will
 	// choose a voice based on the other parameters such as language_code and
-	// [name][google.cloud.dialogflow.cx.v3beta1.VoiceSelectionParams.name]. Note that this is only a preference, not requirement. If a
-	// voice of the appropriate gender is not available, the synthesizer should
-	// substitute a voice with a different gender rather than failing the request.
+	// [name][google.cloud.dialogflow.cx.v3beta1.VoiceSelectionParams.name]. Note
+	// that this is only a preference, not requirement. If a voice of the
+	// appropriate gender is not available, the synthesizer should substitute a
+	// voice with a different gender rather than failing the request.
 	SsmlGender SsmlVoiceGender `protobuf:"varint,2,opt,name=ssml_gender,json=ssmlGender,proto3,enum=google.cloud.dialogflow.cx.v3beta1.SsmlVoiceGender" json:"ssml_gender,omitempty"`
 }
 
@@ -810,14 +815,14 @@ var file_google_cloud_dialogflow_cx_v3beta1_audio_config_proto_rawDesc = []byte{
 	0x65, 0x74, 0x61, 0x31, 0x2f, 0x61, 0x75, 0x64, 0x69, 0x6f, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69,
 	0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x22, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
 	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x64, 0x69, 0x61, 0x6c, 0x6f, 0x67, 0x66, 0x6c, 0x6f, 0x77,
-	0x2e, 0x63, 0x78, 0x2e, 0x76, 0x33, 0x62, 0x65, 0x74, 0x61, 0x31, 0x1a, 0x1f, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f, 0x62, 0x65,
-	0x68, 0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x19, 0x67, 0x6f,
-	0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63,
-	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f,
-	0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e,
+	0x2e, 0x63, 0x78, 0x2e, 0x76, 0x33, 0x62, 0x65, 0x74, 0x61, 0x31, 0x1a, 0x1c, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f, 0x62, 0x65, 0x68, 0x61,
+	0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x19, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xbc, 0x01, 0x0a, 0x0e, 0x53, 0x70, 0x65, 0x65, 0x63, 0x68,
 	0x57, 0x6f, 0x72, 0x64, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x12, 0x0a, 0x04, 0x77, 0x6f, 0x72, 0x64,
 	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x3c, 0x0a, 0x0c,
@@ -982,7 +987,7 @@ var file_google_cloud_dialogflow_cx_v3beta1_audio_config_proto_goTypes = []inter
 	(*VoiceSelectionParams)(nil),   // 6: google.cloud.dialogflow.cx.v3beta1.VoiceSelectionParams
 	(*SynthesizeSpeechConfig)(nil), // 7: google.cloud.dialogflow.cx.v3beta1.SynthesizeSpeechConfig
 	(*OutputAudioConfig)(nil),      // 8: google.cloud.dialogflow.cx.v3beta1.OutputAudioConfig
-	(*duration.Duration)(nil),      // 9: google.protobuf.Duration
+	(*durationpb.Duration)(nil),    // 9: google.protobuf.Duration
 }
 var file_google_cloud_dialogflow_cx_v3beta1_audio_config_proto_depIdxs = []int32{
 	9, // 0: google.cloud.dialogflow.cx.v3beta1.SpeechWordInfo.start_offset:type_name -> google.protobuf.Duration

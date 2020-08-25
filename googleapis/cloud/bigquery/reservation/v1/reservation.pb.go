@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -396,7 +396,7 @@ type CapacityCommitment struct {
 	State CapacityCommitment_State `protobuf:"varint,4,opt,name=state,proto3,enum=google.cloud.bigquery.reservation.v1.CapacityCommitment_State" json:"state,omitempty"`
 	// Output only. The end of the current commitment period. It is applicable only for ACTIVE
 	// capacity commitments.
-	CommitmentEndTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=commitment_end_time,json=commitmentEndTime,proto3" json:"commitment_end_time,omitempty"`
+	CommitmentEndTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=commitment_end_time,json=commitmentEndTime,proto3" json:"commitment_end_time,omitempty"`
 	// Output only. For FAILED commitment plan, provides the reason of failure.
 	FailureStatus *status.Status `protobuf:"bytes,7,opt,name=failure_status,json=failureStatus,proto3" json:"failure_status,omitempty"`
 	// The plan this capacity commitment is converted to after commitment_end_time
@@ -465,7 +465,7 @@ func (x *CapacityCommitment) GetState() CapacityCommitment_State {
 	return CapacityCommitment_STATE_UNSPECIFIED
 }
 
-func (x *CapacityCommitment) GetCommitmentEndTime() *timestamp.Timestamp {
+func (x *CapacityCommitment) GetCommitmentEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CommitmentEndTime
 	}
@@ -791,7 +791,7 @@ type UpdateReservationRequest struct {
 	// Content of the reservation to update.
 	Reservation *Reservation `protobuf:"bytes,1,opt,name=reservation,proto3" json:"reservation,omitempty"`
 	// Standard field mask for the set of fields to be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateReservationRequest) Reset() {
@@ -833,7 +833,7 @@ func (x *UpdateReservationRequest) GetReservation() *Reservation {
 	return nil
 }
 
-func (x *UpdateReservationRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateReservationRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1145,7 +1145,7 @@ type UpdateCapacityCommitmentRequest struct {
 	// Content of the capacity commitment to update.
 	CapacityCommitment *CapacityCommitment `protobuf:"bytes,1,opt,name=capacity_commitment,json=capacityCommitment,proto3" json:"capacity_commitment,omitempty"`
 	// Standard field mask for the set of fields to be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateCapacityCommitmentRequest) Reset() {
@@ -1187,7 +1187,7 @@ func (x *UpdateCapacityCommitmentRequest) GetCapacityCommitment() *CapacityCommi
 	return nil
 }
 
-func (x *UpdateCapacityCommitmentRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateCapacityCommitmentRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1924,7 +1924,7 @@ type BiReservation struct {
 	// `projects/{project_id}/locations/{location_id}/bireservation`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The last update timestamp of a reservation.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Size of a reservation, in bytes.
 	Size int64 `protobuf:"varint,4,opt,name=size,proto3" json:"size,omitempty"`
 }
@@ -1968,7 +1968,7 @@ func (x *BiReservation) GetName() string {
 	return ""
 }
 
-func (x *BiReservation) GetUpdateTime() *timestamp.Timestamp {
+func (x *BiReservation) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -2041,7 +2041,7 @@ type UpdateBiReservationRequest struct {
 	// A reservation to update.
 	BiReservation *BiReservation `protobuf:"bytes,1,opt,name=bi_reservation,json=biReservation,proto3" json:"bi_reservation,omitempty"`
 	// A list of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateBiReservationRequest) Reset() {
@@ -2083,7 +2083,7 @@ func (x *UpdateBiReservationRequest) GetBiReservation() *BiReservation {
 	return nil
 }
 
-func (x *UpdateBiReservationRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateBiReservationRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2825,10 +2825,10 @@ var file_google_cloud_bigquery_reservation_v1_reservation_proto_goTypes = []inte
 	(*BiReservation)(nil),                   // 29: google.cloud.bigquery.reservation.v1.BiReservation
 	(*GetBiReservationRequest)(nil),         // 30: google.cloud.bigquery.reservation.v1.GetBiReservationRequest
 	(*UpdateBiReservationRequest)(nil),      // 31: google.cloud.bigquery.reservation.v1.UpdateBiReservationRequest
-	(*timestamp.Timestamp)(nil),             // 32: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),           // 32: google.protobuf.Timestamp
 	(*status.Status)(nil),                   // 33: google.rpc.Status
-	(*field_mask.FieldMask)(nil),            // 34: google.protobuf.FieldMask
-	(*empty.Empty)(nil),                     // 35: google.protobuf.Empty
+	(*fieldmaskpb.FieldMask)(nil),           // 34: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),                   // 35: google.protobuf.Empty
 }
 var file_google_cloud_bigquery_reservation_v1_reservation_proto_depIdxs = []int32{
 	0,  // 0: google.cloud.bigquery.reservation.v1.CapacityCommitment.plan:type_name -> google.cloud.bigquery.reservation.v1.CapacityCommitment.CommitmentPlan
@@ -3284,7 +3284,7 @@ type ReservationServiceClient interface {
 	// Deletes a reservation.
 	// Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
 	// assignments.
-	DeleteReservation(ctx context.Context, in *DeleteReservationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteReservation(ctx context.Context, in *DeleteReservationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates an existing reservation resource.
 	UpdateReservation(ctx context.Context, in *UpdateReservationRequest, opts ...grpc.CallOption) (*Reservation, error)
 	// Creates a new capacity commitment resource.
@@ -3296,7 +3296,7 @@ type ReservationServiceClient interface {
 	// Deletes a capacity commitment. Attempting to delete capacity commitment
 	// before its commitment_end_time will fail with the error code
 	// `google.rpc.Code.FAILED_PRECONDITION`.
-	DeleteCapacityCommitment(ctx context.Context, in *DeleteCapacityCommitmentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteCapacityCommitment(ctx context.Context, in *DeleteCapacityCommitmentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates an existing capacity commitment.
 	//
 	// Only `plan` and `renewal_plan` fields can be updated.
@@ -3390,7 +3390,7 @@ type ReservationServiceClient interface {
 	// affect the other assignment `<project1, res1>`. After said deletion,
 	// queries from `project1` will still use `res1` while queries from
 	// `project2` will switch to use on-demand mode.
-	DeleteAssignment(ctx context.Context, in *DeleteAssignmentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAssignment(ctx context.Context, in *DeleteAssignmentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Looks up assignments for a specified resource for a particular region.
 	// If the request is about a project:
 	//
@@ -3469,8 +3469,8 @@ func (c *reservationServiceClient) GetReservation(ctx context.Context, in *GetRe
 	return out, nil
 }
 
-func (c *reservationServiceClient) DeleteReservation(ctx context.Context, in *DeleteReservationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *reservationServiceClient) DeleteReservation(ctx context.Context, in *DeleteReservationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.reservation.v1.ReservationService/DeleteReservation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3514,8 +3514,8 @@ func (c *reservationServiceClient) GetCapacityCommitment(ctx context.Context, in
 	return out, nil
 }
 
-func (c *reservationServiceClient) DeleteCapacityCommitment(ctx context.Context, in *DeleteCapacityCommitmentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *reservationServiceClient) DeleteCapacityCommitment(ctx context.Context, in *DeleteCapacityCommitmentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.reservation.v1.ReservationService/DeleteCapacityCommitment", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3568,8 +3568,8 @@ func (c *reservationServiceClient) ListAssignments(ctx context.Context, in *List
 	return out, nil
 }
 
-func (c *reservationServiceClient) DeleteAssignment(ctx context.Context, in *DeleteAssignmentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *reservationServiceClient) DeleteAssignment(ctx context.Context, in *DeleteAssignmentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.reservation.v1.ReservationService/DeleteAssignment", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3624,7 +3624,7 @@ type ReservationServiceServer interface {
 	// Deletes a reservation.
 	// Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
 	// assignments.
-	DeleteReservation(context.Context, *DeleteReservationRequest) (*empty.Empty, error)
+	DeleteReservation(context.Context, *DeleteReservationRequest) (*emptypb.Empty, error)
 	// Updates an existing reservation resource.
 	UpdateReservation(context.Context, *UpdateReservationRequest) (*Reservation, error)
 	// Creates a new capacity commitment resource.
@@ -3636,7 +3636,7 @@ type ReservationServiceServer interface {
 	// Deletes a capacity commitment. Attempting to delete capacity commitment
 	// before its commitment_end_time will fail with the error code
 	// `google.rpc.Code.FAILED_PRECONDITION`.
-	DeleteCapacityCommitment(context.Context, *DeleteCapacityCommitmentRequest) (*empty.Empty, error)
+	DeleteCapacityCommitment(context.Context, *DeleteCapacityCommitmentRequest) (*emptypb.Empty, error)
 	// Updates an existing capacity commitment.
 	//
 	// Only `plan` and `renewal_plan` fields can be updated.
@@ -3730,7 +3730,7 @@ type ReservationServiceServer interface {
 	// affect the other assignment `<project1, res1>`. After said deletion,
 	// queries from `project1` will still use `res1` while queries from
 	// `project2` will switch to use on-demand mode.
-	DeleteAssignment(context.Context, *DeleteAssignmentRequest) (*empty.Empty, error)
+	DeleteAssignment(context.Context, *DeleteAssignmentRequest) (*emptypb.Empty, error)
 	// Looks up assignments for a specified resource for a particular region.
 	// If the request is about a project:
 	//
@@ -3787,7 +3787,7 @@ func (*UnimplementedReservationServiceServer) ListReservations(context.Context, 
 func (*UnimplementedReservationServiceServer) GetReservation(context.Context, *GetReservationRequest) (*Reservation, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method GetReservation not implemented")
 }
-func (*UnimplementedReservationServiceServer) DeleteReservation(context.Context, *DeleteReservationRequest) (*empty.Empty, error) {
+func (*UnimplementedReservationServiceServer) DeleteReservation(context.Context, *DeleteReservationRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteReservation not implemented")
 }
 func (*UnimplementedReservationServiceServer) UpdateReservation(context.Context, *UpdateReservationRequest) (*Reservation, error) {
@@ -3802,7 +3802,7 @@ func (*UnimplementedReservationServiceServer) ListCapacityCommitments(context.Co
 func (*UnimplementedReservationServiceServer) GetCapacityCommitment(context.Context, *GetCapacityCommitmentRequest) (*CapacityCommitment, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method GetCapacityCommitment not implemented")
 }
-func (*UnimplementedReservationServiceServer) DeleteCapacityCommitment(context.Context, *DeleteCapacityCommitmentRequest) (*empty.Empty, error) {
+func (*UnimplementedReservationServiceServer) DeleteCapacityCommitment(context.Context, *DeleteCapacityCommitmentRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteCapacityCommitment not implemented")
 }
 func (*UnimplementedReservationServiceServer) UpdateCapacityCommitment(context.Context, *UpdateCapacityCommitmentRequest) (*CapacityCommitment, error) {
@@ -3820,7 +3820,7 @@ func (*UnimplementedReservationServiceServer) CreateAssignment(context.Context, 
 func (*UnimplementedReservationServiceServer) ListAssignments(context.Context, *ListAssignmentsRequest) (*ListAssignmentsResponse, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method ListAssignments not implemented")
 }
-func (*UnimplementedReservationServiceServer) DeleteAssignment(context.Context, *DeleteAssignmentRequest) (*empty.Empty, error) {
+func (*UnimplementedReservationServiceServer) DeleteAssignment(context.Context, *DeleteAssignmentRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteAssignment not implemented")
 }
 func (*UnimplementedReservationServiceServer) SearchAssignments(context.Context, *SearchAssignmentsRequest) (*SearchAssignmentsResponse, error) {

@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -55,19 +55,19 @@ type CustomInterest struct {
 	// `customers/{customer_id}/customInterests/{custom_interest_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. Id of the custom interest.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Status of this custom interest. Indicates whether the custom interest is
 	// enabled or removed.
 	Status enums.CustomInterestStatusEnum_CustomInterestStatus `protobuf:"varint,3,opt,name=status,proto3,enum=google.ads.googleads.v4.enums.CustomInterestStatusEnum_CustomInterestStatus" json:"status,omitempty"`
 	// Name of the custom interest. It should be unique across the same custom
 	// affinity audience.
 	// This field is required for create operations.
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// Type of the custom interest, CUSTOM_AFFINITY or CUSTOM_INTENT.
 	// By default the type is set to CUSTOM_AFFINITY.
 	Type enums.CustomInterestTypeEnum_CustomInterestType `protobuf:"varint,5,opt,name=type,proto3,enum=google.ads.googleads.v4.enums.CustomInterestTypeEnum_CustomInterestType" json:"type,omitempty"`
 	// Description of this custom interest audience.
-	Description *wrappers.StringValue `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
 	// List of custom interest members that this custom interest is composed of.
 	// Members can be added during CustomInterest creation. If members are
 	// presented in UPDATE operation, existing members will be overridden.
@@ -113,7 +113,7 @@ func (x *CustomInterest) GetResourceName() string {
 	return ""
 }
 
-func (x *CustomInterest) GetId() *wrappers.Int64Value {
+func (x *CustomInterest) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
@@ -127,7 +127,7 @@ func (x *CustomInterest) GetStatus() enums.CustomInterestStatusEnum_CustomIntere
 	return enums.CustomInterestStatusEnum_UNSPECIFIED
 }
 
-func (x *CustomInterest) GetName() *wrappers.StringValue {
+func (x *CustomInterest) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -141,7 +141,7 @@ func (x *CustomInterest) GetType() enums.CustomInterestTypeEnum_CustomInterestTy
 	return enums.CustomInterestTypeEnum_UNSPECIFIED
 }
 
-func (x *CustomInterest) GetDescription() *wrappers.StringValue {
+func (x *CustomInterest) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
@@ -166,7 +166,7 @@ type CustomInterestMember struct {
 	MemberType enums.CustomInterestMemberTypeEnum_CustomInterestMemberType `protobuf:"varint,1,opt,name=member_type,json=memberType,proto3,enum=google.ads.googleads.v4.enums.CustomInterestMemberTypeEnum_CustomInterestMemberType" json:"member_type,omitempty"`
 	// Keyword text when member_type is KEYWORD or URL string when
 	// member_type is URL.
-	Parameter *wrappers.StringValue `protobuf:"bytes,2,opt,name=parameter,proto3" json:"parameter,omitempty"`
+	Parameter *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=parameter,proto3" json:"parameter,omitempty"`
 }
 
 func (x *CustomInterestMember) Reset() {
@@ -208,7 +208,7 @@ func (x *CustomInterestMember) GetMemberType() enums.CustomInterestMemberTypeEnu
 	return enums.CustomInterestMemberTypeEnum_UNSPECIFIED
 }
 
-func (x *CustomInterestMember) GetParameter() *wrappers.StringValue {
+func (x *CustomInterestMember) GetParameter() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Parameter
 	}
@@ -331,9 +331,9 @@ var file_google_ads_googleads_v4_resources_custom_interest_proto_msgTypes = make
 var file_google_ads_googleads_v4_resources_custom_interest_proto_goTypes = []interface{}{
 	(*CustomInterest)(nil),                                           // 0: google.ads.googleads.v4.resources.CustomInterest
 	(*CustomInterestMember)(nil),                                     // 1: google.ads.googleads.v4.resources.CustomInterestMember
-	(*wrappers.Int64Value)(nil),                                      // 2: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                    // 2: google.protobuf.Int64Value
 	(enums.CustomInterestStatusEnum_CustomInterestStatus)(0),         // 3: google.ads.googleads.v4.enums.CustomInterestStatusEnum.CustomInterestStatus
-	(*wrappers.StringValue)(nil),                                     // 4: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                   // 4: google.protobuf.StringValue
 	(enums.CustomInterestTypeEnum_CustomInterestType)(0),             // 5: google.ads.googleads.v4.enums.CustomInterestTypeEnum.CustomInterestType
 	(enums.CustomInterestMemberTypeEnum_CustomInterestMemberType)(0), // 6: google.ads.googleads.v4.enums.CustomInterestMemberTypeEnum.CustomInterestMemberType
 }

@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1158,12 +1158,12 @@ type ServiceAccountKey struct {
 	// The public key data. Only provided in `GetServiceAccountKey` responses.
 	PublicKeyData []byte `protobuf:"bytes,7,opt,name=public_key_data,json=publicKeyData,proto3" json:"public_key_data,omitempty"`
 	// The key can be used after this timestamp.
-	ValidAfterTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=valid_after_time,json=validAfterTime,proto3" json:"valid_after_time,omitempty"`
+	ValidAfterTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=valid_after_time,json=validAfterTime,proto3" json:"valid_after_time,omitempty"`
 	// The key can be used before this timestamp.
 	// For system-managed key pairs, this timestamp is the end time for the
 	// private key signing operation. The public key could still be used
 	// for verification for a few hours after this time.
-	ValidBeforeTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=valid_before_time,json=validBeforeTime,proto3" json:"valid_before_time,omitempty"`
+	ValidBeforeTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=valid_before_time,json=validBeforeTime,proto3" json:"valid_before_time,omitempty"`
 }
 
 func (x *ServiceAccountKey) Reset() {
@@ -1233,14 +1233,14 @@ func (x *ServiceAccountKey) GetPublicKeyData() []byte {
 	return nil
 }
 
-func (x *ServiceAccountKey) GetValidAfterTime() *timestamp.Timestamp {
+func (x *ServiceAccountKey) GetValidAfterTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ValidAfterTime
 	}
 	return nil
 }
 
-func (x *ServiceAccountKey) GetValidBeforeTime() *timestamp.Timestamp {
+func (x *ServiceAccountKey) GetValidBeforeTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ValidBeforeTime
 	}
@@ -2231,7 +2231,7 @@ type UpdateRoleRequest struct {
 	// The updated role.
 	Role *Role `protobuf:"bytes,2,opt,name=role,proto3" json:"role,omitempty"`
 	// A mask describing which fields in the Role have changed.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateRoleRequest) Reset() {
@@ -2280,7 +2280,7 @@ func (x *UpdateRoleRequest) GetRole() *Role {
 	return nil
 }
 
-func (x *UpdateRoleRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateRoleRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -3336,12 +3336,12 @@ var file_google_iam_admin_v1_iam_proto_goTypes = []interface{}{
 	(*Permission)(nil),                         // 34: google.iam.admin.v1.Permission
 	(*QueryTestablePermissionsRequest)(nil),    // 35: google.iam.admin.v1.QueryTestablePermissionsRequest
 	(*QueryTestablePermissionsResponse)(nil),   // 36: google.iam.admin.v1.QueryTestablePermissionsResponse
-	(*timestamp.Timestamp)(nil),                // 37: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),               // 38: google.protobuf.FieldMask
+	(*timestamppb.Timestamp)(nil),              // 37: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),              // 38: google.protobuf.FieldMask
 	(*v1.GetIamPolicyRequest)(nil),             // 39: google.iam.v1.GetIamPolicyRequest
 	(*v1.SetIamPolicyRequest)(nil),             // 40: google.iam.v1.SetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),       // 41: google.iam.v1.TestIamPermissionsRequest
-	(*empty.Empty)(nil),                        // 42: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                      // 42: google.protobuf.Empty
 	(*v1.Policy)(nil),                          // 43: google.iam.v1.Policy
 	(*v1.TestIamPermissionsResponse)(nil),      // 44: google.iam.v1.TestIamPermissionsResponse
 }
@@ -3820,7 +3820,7 @@ type IAMClient interface {
 	// `display_name` and `description`.
 	UpdateServiceAccount(ctx context.Context, in *ServiceAccount, opts ...grpc.CallOption) (*ServiceAccount, error)
 	// Deletes a [ServiceAccount][google.iam.admin.v1.ServiceAccount].
-	DeleteServiceAccount(ctx context.Context, in *DeleteServiceAccountRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteServiceAccount(ctx context.Context, in *DeleteServiceAccountRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists [ServiceAccountKeys][google.iam.admin.v1.ServiceAccountKey].
 	ListServiceAccountKeys(ctx context.Context, in *ListServiceAccountKeysRequest, opts ...grpc.CallOption) (*ListServiceAccountKeysResponse, error)
 	// Gets the [ServiceAccountKey][google.iam.admin.v1.ServiceAccountKey]
@@ -3830,7 +3830,7 @@ type IAMClient interface {
 	// and returns it.
 	CreateServiceAccountKey(ctx context.Context, in *CreateServiceAccountKeyRequest, opts ...grpc.CallOption) (*ServiceAccountKey, error)
 	// Deletes a [ServiceAccountKey][google.iam.admin.v1.ServiceAccountKey].
-	DeleteServiceAccountKey(ctx context.Context, in *DeleteServiceAccountKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteServiceAccountKey(ctx context.Context, in *DeleteServiceAccountKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Signs a blob using a service account's system-managed private key.
 	SignBlob(ctx context.Context, in *SignBlobRequest, opts ...grpc.CallOption) (*SignBlobResponse, error)
 	// Signs a JWT using a service account's system-managed private key.
@@ -3946,8 +3946,8 @@ func (c *iAMClient) UpdateServiceAccount(ctx context.Context, in *ServiceAccount
 	return out, nil
 }
 
-func (c *iAMClient) DeleteServiceAccount(ctx context.Context, in *DeleteServiceAccountRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *iAMClient) DeleteServiceAccount(ctx context.Context, in *DeleteServiceAccountRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.iam.admin.v1.IAM/DeleteServiceAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3982,8 +3982,8 @@ func (c *iAMClient) CreateServiceAccountKey(ctx context.Context, in *CreateServi
 	return out, nil
 }
 
-func (c *iAMClient) DeleteServiceAccountKey(ctx context.Context, in *DeleteServiceAccountKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *iAMClient) DeleteServiceAccountKey(ctx context.Context, in *DeleteServiceAccountKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.iam.admin.v1.IAM/DeleteServiceAccountKey", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4123,7 +4123,7 @@ type IAMServer interface {
 	// `display_name` and `description`.
 	UpdateServiceAccount(context.Context, *ServiceAccount) (*ServiceAccount, error)
 	// Deletes a [ServiceAccount][google.iam.admin.v1.ServiceAccount].
-	DeleteServiceAccount(context.Context, *DeleteServiceAccountRequest) (*empty.Empty, error)
+	DeleteServiceAccount(context.Context, *DeleteServiceAccountRequest) (*emptypb.Empty, error)
 	// Lists [ServiceAccountKeys][google.iam.admin.v1.ServiceAccountKey].
 	ListServiceAccountKeys(context.Context, *ListServiceAccountKeysRequest) (*ListServiceAccountKeysResponse, error)
 	// Gets the [ServiceAccountKey][google.iam.admin.v1.ServiceAccountKey]
@@ -4133,7 +4133,7 @@ type IAMServer interface {
 	// and returns it.
 	CreateServiceAccountKey(context.Context, *CreateServiceAccountKeyRequest) (*ServiceAccountKey, error)
 	// Deletes a [ServiceAccountKey][google.iam.admin.v1.ServiceAccountKey].
-	DeleteServiceAccountKey(context.Context, *DeleteServiceAccountKeyRequest) (*empty.Empty, error)
+	DeleteServiceAccountKey(context.Context, *DeleteServiceAccountKeyRequest) (*emptypb.Empty, error)
 	// Signs a blob using a service account's system-managed private key.
 	SignBlob(context.Context, *SignBlobRequest) (*SignBlobResponse, error)
 	// Signs a JWT using a service account's system-managed private key.
@@ -4221,7 +4221,7 @@ func (*UnimplementedIAMServer) CreateServiceAccount(context.Context, *CreateServ
 func (*UnimplementedIAMServer) UpdateServiceAccount(context.Context, *ServiceAccount) (*ServiceAccount, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateServiceAccount not implemented")
 }
-func (*UnimplementedIAMServer) DeleteServiceAccount(context.Context, *DeleteServiceAccountRequest) (*empty.Empty, error) {
+func (*UnimplementedIAMServer) DeleteServiceAccount(context.Context, *DeleteServiceAccountRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteServiceAccount not implemented")
 }
 func (*UnimplementedIAMServer) ListServiceAccountKeys(context.Context, *ListServiceAccountKeysRequest) (*ListServiceAccountKeysResponse, error) {
@@ -4233,7 +4233,7 @@ func (*UnimplementedIAMServer) GetServiceAccountKey(context.Context, *GetService
 func (*UnimplementedIAMServer) CreateServiceAccountKey(context.Context, *CreateServiceAccountKeyRequest) (*ServiceAccountKey, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateServiceAccountKey not implemented")
 }
-func (*UnimplementedIAMServer) DeleteServiceAccountKey(context.Context, *DeleteServiceAccountKeyRequest) (*empty.Empty, error) {
+func (*UnimplementedIAMServer) DeleteServiceAccountKey(context.Context, *DeleteServiceAccountKeyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteServiceAccountKey not implemented")
 }
 func (*UnimplementedIAMServer) SignBlob(context.Context, *SignBlobRequest) (*SignBlobResponse, error) {

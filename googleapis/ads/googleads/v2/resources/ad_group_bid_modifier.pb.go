@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,21 +56,21 @@ type AdGroupBidModifier struct {
 	// `customers/{customer_id}/adGroupBidModifiers/{ad_group_id}~{criterion_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The ad group to which this criterion belongs.
-	AdGroup *wrappers.StringValue `protobuf:"bytes,2,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
+	AdGroup *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
 	// Output only. The ID of the criterion to bid modify.
 	//
 	// This field is ignored for mutates.
-	CriterionId *wrappers.Int64Value `protobuf:"bytes,3,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
+	CriterionId *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
 	// The modifier for the bid when the criterion matches. The modifier must be
 	// in the range: 0.1 - 10.0. The range is 1.0 - 6.0 for PreferredContent.
 	// Use 0 to opt out of a Device type.
-	BidModifier *wrappers.DoubleValue `protobuf:"bytes,4,opt,name=bid_modifier,json=bidModifier,proto3" json:"bid_modifier,omitempty"`
+	BidModifier *wrapperspb.DoubleValue `protobuf:"bytes,4,opt,name=bid_modifier,json=bidModifier,proto3" json:"bid_modifier,omitempty"`
 	// Output only. The base ad group from which this draft/trial adgroup bid modifier was
 	// created. If ad_group is a base ad group then this field will be equal to
 	// ad_group. If the ad group was created in the draft or trial and has no
 	// corresponding base ad group, then this field will be null.
 	// This field is readonly.
-	BaseAdGroup *wrappers.StringValue `protobuf:"bytes,9,opt,name=base_ad_group,json=baseAdGroup,proto3" json:"base_ad_group,omitempty"`
+	BaseAdGroup *wrapperspb.StringValue `protobuf:"bytes,9,opt,name=base_ad_group,json=baseAdGroup,proto3" json:"base_ad_group,omitempty"`
 	// Output only. Bid modifier source.
 	BidModifierSource enums.BidModifierSourceEnum_BidModifierSource `protobuf:"varint,10,opt,name=bid_modifier_source,json=bidModifierSource,proto3,enum=google.ads.googleads.v2.enums.BidModifierSourceEnum_BidModifierSource" json:"bid_modifier_source,omitempty"`
 	// The criterion of this ad group bid modifier.
@@ -124,28 +124,28 @@ func (x *AdGroupBidModifier) GetResourceName() string {
 	return ""
 }
 
-func (x *AdGroupBidModifier) GetAdGroup() *wrappers.StringValue {
+func (x *AdGroupBidModifier) GetAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroup
 	}
 	return nil
 }
 
-func (x *AdGroupBidModifier) GetCriterionId() *wrappers.Int64Value {
+func (x *AdGroupBidModifier) GetCriterionId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CriterionId
 	}
 	return nil
 }
 
-func (x *AdGroupBidModifier) GetBidModifier() *wrappers.DoubleValue {
+func (x *AdGroupBidModifier) GetBidModifier() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.BidModifier
 	}
 	return nil
 }
 
-func (x *AdGroupBidModifier) GetBaseAdGroup() *wrappers.StringValue {
+func (x *AdGroupBidModifier) GetBaseAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BaseAdGroup
 	}
@@ -397,9 +397,9 @@ func file_google_ads_googleads_v2_resources_ad_group_bid_modifier_proto_rawDescG
 var file_google_ads_googleads_v2_resources_ad_group_bid_modifier_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_ad_group_bid_modifier_proto_goTypes = []interface{}{
 	(*AdGroupBidModifier)(nil),                         // 0: google.ads.googleads.v2.resources.AdGroupBidModifier
-	(*wrappers.StringValue)(nil),                       // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                        // 2: google.protobuf.Int64Value
-	(*wrappers.DoubleValue)(nil),                       // 3: google.protobuf.DoubleValue
+	(*wrapperspb.StringValue)(nil),                     // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                      // 2: google.protobuf.Int64Value
+	(*wrapperspb.DoubleValue)(nil),                     // 3: google.protobuf.DoubleValue
 	(enums.BidModifierSourceEnum_BidModifierSource)(0), // 4: google.ads.googleads.v2.enums.BidModifierSourceEnum.BidModifierSource
 	(*common.HotelDateSelectionTypeInfo)(nil),          // 5: google.ads.googleads.v2.common.HotelDateSelectionTypeInfo
 	(*common.HotelAdvanceBookingWindowInfo)(nil),       // 6: google.ads.googleads.v2.common.HotelAdvanceBookingWindowInfo

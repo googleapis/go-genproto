@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	_ "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/emptypb"
+	_ "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -147,7 +147,7 @@ type Environment struct {
 	State Environment_State `protobuf:"varint,4,opt,name=state,proto3,enum=google.cloud.dialogflow.v2.Environment_State" json:"state,omitempty"`
 	// Output only. The last update time of this environment. This field is read-only, i.e., it
 	// cannot be set by create and update methods.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *Environment) Reset() {
@@ -210,7 +210,7 @@ func (x *Environment) GetState() Environment_State {
 	return Environment_STATE_UNSPECIFIED
 }
 
-func (x *Environment) GetUpdateTime() *timestamp.Timestamp {
+func (x *Environment) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -465,7 +465,7 @@ var file_google_cloud_dialogflow_v2_environment_proto_goTypes = []interface{}{
 	(*Environment)(nil),              // 1: google.cloud.dialogflow.v2.Environment
 	(*ListEnvironmentsRequest)(nil),  // 2: google.cloud.dialogflow.v2.ListEnvironmentsRequest
 	(*ListEnvironmentsResponse)(nil), // 3: google.cloud.dialogflow.v2.ListEnvironmentsResponse
-	(*timestamp.Timestamp)(nil),      // 4: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),    // 4: google.protobuf.Timestamp
 }
 var file_google_cloud_dialogflow_v2_environment_proto_depIdxs = []int32{
 	0, // 0: google.cloud.dialogflow.v2.Environment.state:type_name -> google.cloud.dialogflow.v2.Environment.State

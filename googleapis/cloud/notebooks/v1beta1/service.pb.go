@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
@@ -34,6 +33,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -54,9 +54,9 @@ type OperationMetadata struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time the operation was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The time the operation finished running.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Server-defined resource path for the target of the operation.
 	Target string `protobuf:"bytes,3,opt,name=target,proto3" json:"target,omitempty"`
 	// Name of the verb executed by the operation.
@@ -104,14 +104,14 @@ func (*OperationMetadata) Descriptor() ([]byte, []int) {
 	return file_google_cloud_notebooks_v1beta1_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *OperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -1964,7 +1964,7 @@ var file_google_cloud_notebooks_v1beta1_service_proto_goTypes = []interface{}{
 	(*DeleteEnvironmentRequest)(nil),       // 22: google.cloud.notebooks.v1beta1.DeleteEnvironmentRequest
 	nil,                                    // 23: google.cloud.notebooks.v1beta1.SetInstanceLabelsRequest.LabelsEntry
 	nil,                                    // 24: google.cloud.notebooks.v1beta1.ReportInstanceInfoRequest.MetadataEntry
-	(*timestamp.Timestamp)(nil),            // 25: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),          // 25: google.protobuf.Timestamp
 	(*Instance)(nil),                       // 26: google.cloud.notebooks.v1beta1.Instance
 	(Instance_AcceleratorType)(0),          // 27: google.cloud.notebooks.v1beta1.Instance.AcceleratorType
 	(*Environment)(nil),                    // 28: google.cloud.notebooks.v1beta1.Environment

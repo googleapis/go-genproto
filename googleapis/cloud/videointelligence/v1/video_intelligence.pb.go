@@ -26,8 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
@@ -36,6 +34,8 @@ import (
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -860,10 +860,10 @@ type VideoSegment struct {
 
 	// Time-offset, relative to the beginning of the video,
 	// corresponding to the start of the segment (inclusive).
-	StartTimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
+	StartTimeOffset *durationpb.Duration `protobuf:"bytes,1,opt,name=start_time_offset,json=startTimeOffset,proto3" json:"start_time_offset,omitempty"`
 	// Time-offset, relative to the beginning of the video,
 	// corresponding to the end of the segment (inclusive).
-	EndTimeOffset *duration.Duration `protobuf:"bytes,2,opt,name=end_time_offset,json=endTimeOffset,proto3" json:"end_time_offset,omitempty"`
+	EndTimeOffset *durationpb.Duration `protobuf:"bytes,2,opt,name=end_time_offset,json=endTimeOffset,proto3" json:"end_time_offset,omitempty"`
 }
 
 func (x *VideoSegment) Reset() {
@@ -898,14 +898,14 @@ func (*VideoSegment) Descriptor() ([]byte, []int) {
 	return file_google_cloud_videointelligence_v1_video_intelligence_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *VideoSegment) GetStartTimeOffset() *duration.Duration {
+func (x *VideoSegment) GetStartTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.StartTimeOffset
 	}
 	return nil
 }
 
-func (x *VideoSegment) GetEndTimeOffset() *duration.Duration {
+func (x *VideoSegment) GetEndTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.EndTimeOffset
 	}
@@ -978,7 +978,7 @@ type LabelFrame struct {
 
 	// Time-offset, relative to the beginning of the video, corresponding to the
 	// video frame for this location.
-	TimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
+	TimeOffset *durationpb.Duration `protobuf:"bytes,1,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
 	// Confidence that the label is accurate. Range: [0, 1].
 	Confidence float32 `protobuf:"fixed32,2,opt,name=confidence,proto3" json:"confidence,omitempty"`
 }
@@ -1015,7 +1015,7 @@ func (*LabelFrame) Descriptor() ([]byte, []int) {
 	return file_google_cloud_videointelligence_v1_video_intelligence_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *LabelFrame) GetTimeOffset() *duration.Duration {
+func (x *LabelFrame) GetTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.TimeOffset
 	}
@@ -1185,7 +1185,7 @@ type ExplicitContentFrame struct {
 
 	// Time-offset, relative to the beginning of the video, corresponding to the
 	// video frame for this location.
-	TimeOffset *duration.Duration `protobuf:"bytes,1,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
+	TimeOffset *durationpb.Duration `protobuf:"bytes,1,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
 	// Likelihood of the pornography content..
 	PornographyLikelihood Likelihood `protobuf:"varint,2,opt,name=pornography_likelihood,json=pornographyLikelihood,proto3,enum=google.cloud.videointelligence.v1.Likelihood" json:"pornography_likelihood,omitempty"`
 }
@@ -1222,7 +1222,7 @@ func (*ExplicitContentFrame) Descriptor() ([]byte, []int) {
 	return file_google_cloud_videointelligence_v1_video_intelligence_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *ExplicitContentFrame) GetTimeOffset() *duration.Duration {
+func (x *ExplicitContentFrame) GetTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.TimeOffset
 	}
@@ -1426,7 +1426,7 @@ type FaceFrame struct {
 	NormalizedBoundingBoxes []*NormalizedBoundingBox `protobuf:"bytes,1,rep,name=normalized_bounding_boxes,json=normalizedBoundingBoxes,proto3" json:"normalized_bounding_boxes,omitempty"`
 	// Time-offset, relative to the beginning of the video,
 	// corresponding to the video frame for this location.
-	TimeOffset *duration.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
+	TimeOffset *durationpb.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
 }
 
 func (x *FaceFrame) Reset() {
@@ -1468,7 +1468,7 @@ func (x *FaceFrame) GetNormalizedBoundingBoxes() []*NormalizedBoundingBox {
 	return nil
 }
 
-func (x *FaceFrame) GetTimeOffset() *duration.Duration {
+func (x *FaceFrame) GetTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.TimeOffset
 	}
@@ -1554,7 +1554,7 @@ type TimestampedObject struct {
 	NormalizedBoundingBox *NormalizedBoundingBox `protobuf:"bytes,1,opt,name=normalized_bounding_box,json=normalizedBoundingBox,proto3" json:"normalized_bounding_box,omitempty"`
 	// Time-offset, relative to the beginning of the video,
 	// corresponding to the video frame for this object.
-	TimeOffset *duration.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
+	TimeOffset *durationpb.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
 	// Optional. The attributes of the object in the bounding box.
 	Attributes []*DetectedAttribute `protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes,omitempty"`
 	// Optional. The detected landmarks.
@@ -1600,7 +1600,7 @@ func (x *TimestampedObject) GetNormalizedBoundingBox() *NormalizedBoundingBox {
 	return nil
 }
 
-func (x *TimestampedObject) GetTimeOffset() *duration.Duration {
+func (x *TimestampedObject) GetTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.TimeOffset
 	}
@@ -2090,9 +2090,9 @@ type VideoAnnotationProgress struct {
 	// 100 when fully processed.
 	ProgressPercent int32 `protobuf:"varint,2,opt,name=progress_percent,json=progressPercent,proto3" json:"progress_percent,omitempty"`
 	// Time when the request was received.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time of the most recent update.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Specifies which feature is being tracked if the request contains more than
 	// one features.
 	Feature Feature `protobuf:"varint,5,opt,name=feature,proto3,enum=google.cloud.videointelligence.v1.Feature" json:"feature,omitempty"`
@@ -2147,14 +2147,14 @@ func (x *VideoAnnotationProgress) GetProgressPercent() int32 {
 	return 0
 }
 
-func (x *VideoAnnotationProgress) GetStartTime() *timestamp.Timestamp {
+func (x *VideoAnnotationProgress) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *VideoAnnotationProgress) GetUpdateTime() *timestamp.Timestamp {
+func (x *VideoAnnotationProgress) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -2578,12 +2578,12 @@ type WordInfo struct {
 	// corresponding to the start of the spoken word. This field is only set if
 	// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
 	// experimental feature and the accuracy of the time offset can vary.
-	StartTime *duration.Duration `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *durationpb.Duration `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time offset relative to the beginning of the audio, and
 	// corresponding to the end of the spoken word. This field is only set if
 	// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
 	// experimental feature and the accuracy of the time offset can vary.
-	EndTime *duration.Duration `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *durationpb.Duration `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The word corresponding to this set of information.
 	Word string `protobuf:"bytes,3,opt,name=word,proto3" json:"word,omitempty"`
 	// Output only. The confidence estimate between 0.0 and 1.0. A higher number
@@ -2632,14 +2632,14 @@ func (*WordInfo) Descriptor() ([]byte, []int) {
 	return file_google_cloud_videointelligence_v1_video_intelligence_proto_rawDescGZIP(), []int{31}
 }
 
-func (x *WordInfo) GetStartTime() *duration.Duration {
+func (x *WordInfo) GetStartTime() *durationpb.Duration {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *WordInfo) GetEndTime() *duration.Duration {
+func (x *WordInfo) GetEndTime() *durationpb.Duration {
 	if x != nil {
 		return x.EndTime
 	}
@@ -2871,7 +2871,7 @@ type TextFrame struct {
 	// Bounding polygon of the detected text for this frame.
 	RotatedBoundingBox *NormalizedBoundingPoly `protobuf:"bytes,1,opt,name=rotated_bounding_box,json=rotatedBoundingBox,proto3" json:"rotated_bounding_box,omitempty"`
 	// Timestamp of this frame.
-	TimeOffset *duration.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
+	TimeOffset *durationpb.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
 }
 
 func (x *TextFrame) Reset() {
@@ -2913,7 +2913,7 @@ func (x *TextFrame) GetRotatedBoundingBox() *NormalizedBoundingPoly {
 	return nil
 }
 
-func (x *TextFrame) GetTimeOffset() *duration.Duration {
+func (x *TextFrame) GetTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.TimeOffset
 	}
@@ -2990,7 +2990,7 @@ type ObjectTrackingFrame struct {
 	// The normalized bounding box location of this object track for the frame.
 	NormalizedBoundingBox *NormalizedBoundingBox `protobuf:"bytes,1,opt,name=normalized_bounding_box,json=normalizedBoundingBox,proto3" json:"normalized_bounding_box,omitempty"`
 	// The timestamp of the frame in microseconds.
-	TimeOffset *duration.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
+	TimeOffset *durationpb.Duration `protobuf:"bytes,2,opt,name=time_offset,json=timeOffset,proto3" json:"time_offset,omitempty"`
 }
 
 func (x *ObjectTrackingFrame) Reset() {
@@ -3032,7 +3032,7 @@ func (x *ObjectTrackingFrame) GetNormalizedBoundingBox() *NormalizedBoundingBox 
 	return nil
 }
 
-func (x *ObjectTrackingFrame) GetTimeOffset() *duration.Duration {
+func (x *ObjectTrackingFrame) GetTimeOffset() *durationpb.Duration {
 	if x != nil {
 		return x.TimeOffset
 	}
@@ -3958,9 +3958,9 @@ var file_google_cloud_videointelligence_v1_video_intelligence_proto_goTypes = []
 	(*ObjectTrackingFrame)(nil),            // 40: google.cloud.videointelligence.v1.ObjectTrackingFrame
 	(*ObjectTrackingAnnotation)(nil),       // 41: google.cloud.videointelligence.v1.ObjectTrackingAnnotation
 	(*LogoRecognitionAnnotation)(nil),      // 42: google.cloud.videointelligence.v1.LogoRecognitionAnnotation
-	(*duration.Duration)(nil),              // 43: google.protobuf.Duration
+	(*durationpb.Duration)(nil),            // 43: google.protobuf.Duration
 	(*status.Status)(nil),                  // 44: google.rpc.Status
-	(*timestamp.Timestamp)(nil),            // 45: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),          // 45: google.protobuf.Timestamp
 	(*longrunning.Operation)(nil),          // 46: google.longrunning.Operation
 }
 var file_google_cloud_videointelligence_v1_video_intelligence_proto_depIdxs = []int32{

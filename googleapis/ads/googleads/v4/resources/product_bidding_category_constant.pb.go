@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -58,20 +58,20 @@ type ProductBiddingCategoryConstant struct {
 	//
 	// This ID is equivalent to the google_product_category ID as described in
 	// this article: https://support.google.com/merchants/answer/6324436.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. Two-letter upper-case country code of the product bidding category.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,3,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// Output only. Resource name of the parent product bidding category.
-	ProductBiddingCategoryConstantParent *wrappers.StringValue `protobuf:"bytes,4,opt,name=product_bidding_category_constant_parent,json=productBiddingCategoryConstantParent,proto3" json:"product_bidding_category_constant_parent,omitempty"`
+	ProductBiddingCategoryConstantParent *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=product_bidding_category_constant_parent,json=productBiddingCategoryConstantParent,proto3" json:"product_bidding_category_constant_parent,omitempty"`
 	// Output only. Level of the product bidding category.
 	Level enums.ProductBiddingCategoryLevelEnum_ProductBiddingCategoryLevel `protobuf:"varint,5,opt,name=level,proto3,enum=google.ads.googleads.v4.enums.ProductBiddingCategoryLevelEnum_ProductBiddingCategoryLevel" json:"level,omitempty"`
 	// Output only. Status of the product bidding category.
 	Status enums.ProductBiddingCategoryStatusEnum_ProductBiddingCategoryStatus `protobuf:"varint,6,opt,name=status,proto3,enum=google.ads.googleads.v4.enums.ProductBiddingCategoryStatusEnum_ProductBiddingCategoryStatus" json:"status,omitempty"`
 	// Output only. Language code of the product bidding category.
-	LanguageCode *wrappers.StringValue `protobuf:"bytes,7,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	LanguageCode *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// Output only. Display value of the product bidding category localized according to
 	// language_code.
-	LocalizedName *wrappers.StringValue `protobuf:"bytes,8,opt,name=localized_name,json=localizedName,proto3" json:"localized_name,omitempty"`
+	LocalizedName *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=localized_name,json=localizedName,proto3" json:"localized_name,omitempty"`
 }
 
 func (x *ProductBiddingCategoryConstant) Reset() {
@@ -113,21 +113,21 @@ func (x *ProductBiddingCategoryConstant) GetResourceName() string {
 	return ""
 }
 
-func (x *ProductBiddingCategoryConstant) GetId() *wrappers.Int64Value {
+func (x *ProductBiddingCategoryConstant) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *ProductBiddingCategoryConstant) GetCountryCode() *wrappers.StringValue {
+func (x *ProductBiddingCategoryConstant) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
 	return nil
 }
 
-func (x *ProductBiddingCategoryConstant) GetProductBiddingCategoryConstantParent() *wrappers.StringValue {
+func (x *ProductBiddingCategoryConstant) GetProductBiddingCategoryConstantParent() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductBiddingCategoryConstantParent
 	}
@@ -148,14 +148,14 @@ func (x *ProductBiddingCategoryConstant) GetStatus() enums.ProductBiddingCategor
 	return enums.ProductBiddingCategoryStatusEnum_UNSPECIFIED
 }
 
-func (x *ProductBiddingCategoryConstant) GetLanguageCode() *wrappers.StringValue {
+func (x *ProductBiddingCategoryConstant) GetLanguageCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LanguageCode
 	}
 	return nil
 }
 
-func (x *ProductBiddingCategoryConstant) GetLocalizedName() *wrappers.StringValue {
+func (x *ProductBiddingCategoryConstant) GetLocalizedName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LocalizedName
 	}
@@ -283,8 +283,8 @@ func file_google_ads_googleads_v4_resources_product_bidding_category_constant_pr
 var file_google_ads_googleads_v4_resources_product_bidding_category_constant_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_product_bidding_category_constant_proto_goTypes = []interface{}{
 	(*ProductBiddingCategoryConstant)(nil),                                   // 0: google.ads.googleads.v4.resources.ProductBiddingCategoryConstant
-	(*wrappers.Int64Value)(nil),                                              // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),                                             // 2: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                                            // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                                           // 2: google.protobuf.StringValue
 	(enums.ProductBiddingCategoryLevelEnum_ProductBiddingCategoryLevel)(0),   // 3: google.ads.googleads.v4.enums.ProductBiddingCategoryLevelEnum.ProductBiddingCategoryLevel
 	(enums.ProductBiddingCategoryStatusEnum_ProductBiddingCategoryStatus)(0), // 4: google.ads.googleads.v4.enums.ProductBiddingCategoryStatusEnum.ProductBiddingCategoryStatus
 }

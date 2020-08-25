@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v4/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -187,7 +187,7 @@ type KeywordPlanOperation struct {
 
 	// The FieldMask that determines which resource fields are modified in an
 	// update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// The mutate operation.
 	//
 	// Types that are assignable to Operation:
@@ -229,7 +229,7 @@ func (*KeywordPlanOperation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_keyword_plan_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *KeywordPlanOperation) GetUpdateMask() *field_mask.FieldMask {
+func (x *KeywordPlanOperation) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -628,7 +628,7 @@ type KeywordPlanCampaignForecast struct {
 	// The resource name of the Keyword Plan campaign related to the forecast.
 	//
 	// `customers/{customer_id}/keywordPlanCampaigns/{keyword_plan_campaign_id}`
-	KeywordPlanCampaign *wrappers.StringValue `protobuf:"bytes,1,opt,name=keyword_plan_campaign,json=keywordPlanCampaign,proto3" json:"keyword_plan_campaign,omitempty"`
+	KeywordPlanCampaign *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=keyword_plan_campaign,json=keywordPlanCampaign,proto3" json:"keyword_plan_campaign,omitempty"`
 	// The forecast for the Keyword Plan campaign.
 	CampaignForecast *ForecastMetrics `protobuf:"bytes,2,opt,name=campaign_forecast,json=campaignForecast,proto3" json:"campaign_forecast,omitempty"`
 }
@@ -665,7 +665,7 @@ func (*KeywordPlanCampaignForecast) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_keyword_plan_service_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *KeywordPlanCampaignForecast) GetKeywordPlanCampaign() *wrappers.StringValue {
+func (x *KeywordPlanCampaignForecast) GetKeywordPlanCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.KeywordPlanCampaign
 	}
@@ -688,7 +688,7 @@ type KeywordPlanAdGroupForecast struct {
 	// The resource name of the Keyword Plan ad group related to the forecast.
 	//
 	// `customers/{customer_id}/keywordPlanAdGroups/{keyword_plan_ad_group_id}`
-	KeywordPlanAdGroup *wrappers.StringValue `protobuf:"bytes,1,opt,name=keyword_plan_ad_group,json=keywordPlanAdGroup,proto3" json:"keyword_plan_ad_group,omitempty"`
+	KeywordPlanAdGroup *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=keyword_plan_ad_group,json=keywordPlanAdGroup,proto3" json:"keyword_plan_ad_group,omitempty"`
 	// The forecast for the Keyword Plan ad group.
 	AdGroupForecast *ForecastMetrics `protobuf:"bytes,2,opt,name=ad_group_forecast,json=adGroupForecast,proto3" json:"ad_group_forecast,omitempty"`
 }
@@ -725,7 +725,7 @@ func (*KeywordPlanAdGroupForecast) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_keyword_plan_service_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *KeywordPlanAdGroupForecast) GetKeywordPlanAdGroup() *wrappers.StringValue {
+func (x *KeywordPlanAdGroupForecast) GetKeywordPlanAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.KeywordPlanAdGroup
 	}
@@ -748,7 +748,7 @@ type KeywordPlanKeywordForecast struct {
 	// The resource name of the Keyword Plan keyword related to the forecast.
 	//
 	// `customers/{customer_id}/keywordPlanAdGroupKeywords/{keyword_plan_ad_group_keyword_id}`
-	KeywordPlanAdGroupKeyword *wrappers.StringValue `protobuf:"bytes,1,opt,name=keyword_plan_ad_group_keyword,json=keywordPlanAdGroupKeyword,proto3" json:"keyword_plan_ad_group_keyword,omitempty"`
+	KeywordPlanAdGroupKeyword *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=keyword_plan_ad_group_keyword,json=keywordPlanAdGroupKeyword,proto3" json:"keyword_plan_ad_group_keyword,omitempty"`
 	// The forecast for the Keyword Plan keyword.
 	KeywordForecast *ForecastMetrics `protobuf:"bytes,2,opt,name=keyword_forecast,json=keywordForecast,proto3" json:"keyword_forecast,omitempty"`
 }
@@ -785,7 +785,7 @@ func (*KeywordPlanKeywordForecast) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_keyword_plan_service_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *KeywordPlanKeywordForecast) GetKeywordPlanAdGroupKeyword() *wrappers.StringValue {
+func (x *KeywordPlanKeywordForecast) GetKeywordPlanAdGroupKeyword() *wrapperspb.StringValue {
 	if x != nil {
 		return x.KeywordPlanAdGroupKeyword
 	}
@@ -808,7 +808,7 @@ type KeywordPlanCampaignForecastCurve struct {
 	// The resource name of the Keyword Plan campaign related to the forecast.
 	//
 	// `customers/{customer_id}/keywordPlanCampaigns/{keyword_plan_campaign_id}`
-	KeywordPlanCampaign *wrappers.StringValue `protobuf:"bytes,1,opt,name=keyword_plan_campaign,json=keywordPlanCampaign,proto3" json:"keyword_plan_campaign,omitempty"`
+	KeywordPlanCampaign *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=keyword_plan_campaign,json=keywordPlanCampaign,proto3" json:"keyword_plan_campaign,omitempty"`
 	// The max cpc bid forecast curve for the campaign.
 	MaxCpcBidForecastCurve *KeywordPlanMaxCpcBidForecastCurve `protobuf:"bytes,2,opt,name=max_cpc_bid_forecast_curve,json=maxCpcBidForecastCurve,proto3" json:"max_cpc_bid_forecast_curve,omitempty"`
 }
@@ -845,7 +845,7 @@ func (*KeywordPlanCampaignForecastCurve) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_keyword_plan_service_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *KeywordPlanCampaignForecastCurve) GetKeywordPlanCampaign() *wrappers.StringValue {
+func (x *KeywordPlanCampaignForecastCurve) GetKeywordPlanCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.KeywordPlanCampaign
 	}
@@ -915,7 +915,7 @@ type KeywordPlanMaxCpcBidForecast struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The max cpc bid in micros.
-	MaxCpcBidMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=max_cpc_bid_micros,json=maxCpcBidMicros,proto3" json:"max_cpc_bid_micros,omitempty"`
+	MaxCpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=max_cpc_bid_micros,json=maxCpcBidMicros,proto3" json:"max_cpc_bid_micros,omitempty"`
 	// The forecast for the Keyword Plan campaign at the specific bid.
 	MaxCpcBidForecast *ForecastMetrics `protobuf:"bytes,2,opt,name=max_cpc_bid_forecast,json=maxCpcBidForecast,proto3" json:"max_cpc_bid_forecast,omitempty"`
 }
@@ -952,7 +952,7 @@ func (*KeywordPlanMaxCpcBidForecast) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_keyword_plan_service_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *KeywordPlanMaxCpcBidForecast) GetMaxCpcBidMicros() *wrappers.Int64Value {
+func (x *KeywordPlanMaxCpcBidForecast) GetMaxCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.MaxCpcBidMicros
 	}
@@ -973,15 +973,15 @@ type ForecastMetrics struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Impressions
-	Impressions *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=impressions,proto3" json:"impressions,omitempty"`
+	Impressions *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=impressions,proto3" json:"impressions,omitempty"`
 	// Ctr
-	Ctr *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=ctr,proto3" json:"ctr,omitempty"`
+	Ctr *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=ctr,proto3" json:"ctr,omitempty"`
 	// AVG cpc
-	AverageCpc *wrappers.Int64Value `protobuf:"bytes,3,opt,name=average_cpc,json=averageCpc,proto3" json:"average_cpc,omitempty"`
+	AverageCpc *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=average_cpc,json=averageCpc,proto3" json:"average_cpc,omitempty"`
 	// Clicks
-	Clicks *wrappers.DoubleValue `protobuf:"bytes,5,opt,name=clicks,proto3" json:"clicks,omitempty"`
+	Clicks *wrapperspb.DoubleValue `protobuf:"bytes,5,opt,name=clicks,proto3" json:"clicks,omitempty"`
 	// Cost
-	CostMicros *wrappers.Int64Value `protobuf:"bytes,6,opt,name=cost_micros,json=costMicros,proto3" json:"cost_micros,omitempty"`
+	CostMicros *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=cost_micros,json=costMicros,proto3" json:"cost_micros,omitempty"`
 }
 
 func (x *ForecastMetrics) Reset() {
@@ -1016,35 +1016,35 @@ func (*ForecastMetrics) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_keyword_plan_service_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *ForecastMetrics) GetImpressions() *wrappers.DoubleValue {
+func (x *ForecastMetrics) GetImpressions() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Impressions
 	}
 	return nil
 }
 
-func (x *ForecastMetrics) GetCtr() *wrappers.DoubleValue {
+func (x *ForecastMetrics) GetCtr() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Ctr
 	}
 	return nil
 }
 
-func (x *ForecastMetrics) GetAverageCpc() *wrappers.Int64Value {
+func (x *ForecastMetrics) GetAverageCpc() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AverageCpc
 	}
 	return nil
 }
 
-func (x *ForecastMetrics) GetClicks() *wrappers.DoubleValue {
+func (x *ForecastMetrics) GetClicks() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Clicks
 	}
 	return nil
 }
 
-func (x *ForecastMetrics) GetCostMicros() *wrappers.Int64Value {
+func (x *ForecastMetrics) GetCostMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CostMicros
 	}
@@ -1163,7 +1163,7 @@ type KeywordPlanKeywordHistoricalMetrics struct {
 	// returning the plan's keywords as text. For example, if your plan originally
 	// contained the keywords 'car' and 'cars', the returned search query will
 	// only contain 'car'.
-	SearchQuery *wrappers.StringValue `protobuf:"bytes,1,opt,name=search_query,json=searchQuery,proto3" json:"search_query,omitempty"`
+	SearchQuery *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=search_query,json=searchQuery,proto3" json:"search_query,omitempty"`
 	// The historical metrics for the query associated with one or more
 	// ad_group_keywords in the plan.
 	KeywordMetrics *common.KeywordPlanHistoricalMetrics `protobuf:"bytes,2,opt,name=keyword_metrics,json=keywordMetrics,proto3" json:"keyword_metrics,omitempty"`
@@ -1201,7 +1201,7 @@ func (*KeywordPlanKeywordHistoricalMetrics) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_keyword_plan_service_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *KeywordPlanKeywordHistoricalMetrics) GetSearchQuery() *wrappers.StringValue {
+func (x *KeywordPlanKeywordHistoricalMetrics) GetSearchQuery() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SearchQuery
 	}
@@ -1594,12 +1594,12 @@ var file_google_ads_googleads_v4_services_keyword_plan_service_proto_goTypes = [
 	(*GenerateHistoricalMetricsRequest)(nil),    // 16: google.ads.googleads.v4.services.GenerateHistoricalMetricsRequest
 	(*GenerateHistoricalMetricsResponse)(nil),   // 17: google.ads.googleads.v4.services.GenerateHistoricalMetricsResponse
 	(*KeywordPlanKeywordHistoricalMetrics)(nil), // 18: google.ads.googleads.v4.services.KeywordPlanKeywordHistoricalMetrics
-	(*field_mask.FieldMask)(nil),                // 19: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),               // 19: google.protobuf.FieldMask
 	(*resources.KeywordPlan)(nil),               // 20: google.ads.googleads.v4.resources.KeywordPlan
 	(*status.Status)(nil),                       // 21: google.rpc.Status
-	(*wrappers.StringValue)(nil),                // 22: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                 // 23: google.protobuf.Int64Value
-	(*wrappers.DoubleValue)(nil),                // 24: google.protobuf.DoubleValue
+	(*wrapperspb.StringValue)(nil),              // 22: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),               // 23: google.protobuf.Int64Value
+	(*wrapperspb.DoubleValue)(nil),              // 24: google.protobuf.DoubleValue
 	(*common.KeywordPlanHistoricalMetrics)(nil), // 25: google.ads.googleads.v4.common.KeywordPlanHistoricalMetrics
 }
 var file_google_ads_googleads_v4_services_keyword_plan_service_proto_depIdxs = []int32{

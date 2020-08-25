@@ -26,18 +26,18 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/any"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/anypb"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -459,7 +459,7 @@ type UpdateJobRequest struct {
 	//
 	// A field mask to restrict the fields that are updated. Only
 	// top level fields of [Job][google.cloud.talent.v4beta1.Job] are supported.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateJobRequest) Reset() {
@@ -501,7 +501,7 @@ func (x *UpdateJobRequest) GetJob() *Job {
 	return nil
 }
 
-func (x *UpdateJobRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateJobRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1422,7 +1422,7 @@ type BatchUpdateJobsRequest struct {
 	// will only contains fields that is updated, plus the Id of the Job.
 	// Otherwise,  [Job][google.cloud.talent.v4beta1.Job] will include all fields, which can yield a very
 	// large response.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *BatchUpdateJobsRequest) Reset() {
@@ -1471,7 +1471,7 @@ func (x *BatchUpdateJobsRequest) GetJobs() []*Job {
 	return nil
 }
 
-func (x *BatchUpdateJobsRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *BatchUpdateJobsRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1716,7 +1716,7 @@ type SearchJobsResponse_CommuteInfo struct {
 	// query location. A duration of 0 seconds indicates that the job isn't
 	// reachable within the requested duration, but was returned as part of an
 	// expanded query.
-	TravelDuration *duration.Duration `protobuf:"bytes,2,opt,name=travel_duration,json=travelDuration,proto3" json:"travel_duration,omitempty"`
+	TravelDuration *durationpb.Duration `protobuf:"bytes,2,opt,name=travel_duration,json=travelDuration,proto3" json:"travel_duration,omitempty"`
 }
 
 func (x *SearchJobsResponse_CommuteInfo) Reset() {
@@ -1758,7 +1758,7 @@ func (x *SearchJobsResponse_CommuteInfo) GetJobLocation() *Location {
 	return nil
 }
 
-func (x *SearchJobsResponse_CommuteInfo) GetTravelDuration() *duration.Duration {
+func (x *SearchJobsResponse_CommuteInfo) GetTravelDuration() *durationpb.Duration {
 	if x != nil {
 		return x.TravelDuration
 	}
@@ -2325,7 +2325,7 @@ var file_google_cloud_talent_v4beta1_job_service_proto_goTypes = []interface{}{
 	(*SearchJobsResponse_CommuteInfo)(nil),                   // 18: google.cloud.talent.v4beta1.SearchJobsResponse.CommuteInfo
 	(*JobOperationResult_JobResult)(nil),                     // 19: google.cloud.talent.v4beta1.JobOperationResult.JobResult
 	(*Job)(nil),                                              // 20: google.cloud.talent.v4beta1.Job
-	(*field_mask.FieldMask)(nil),                             // 21: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                            // 21: google.protobuf.FieldMask
 	(*ResponseMetadata)(nil),                                 // 22: google.cloud.talent.v4beta1.ResponseMetadata
 	(*RequestMetadata)(nil),                                  // 23: google.cloud.talent.v4beta1.RequestMetadata
 	(*JobQuery)(nil),                                         // 24: google.cloud.talent.v4beta1.JobQuery
@@ -2333,10 +2333,10 @@ var file_google_cloud_talent_v4beta1_job_service_proto_goTypes = []interface{}{
 	(*HistogramQueryResult)(nil),                             // 26: google.cloud.talent.v4beta1.HistogramQueryResult
 	(*Location)(nil),                                         // 27: google.cloud.talent.v4beta1.Location
 	(*SpellingCorrection)(nil),                               // 28: google.cloud.talent.v4beta1.SpellingCorrection
-	(*duration.Duration)(nil),                                // 29: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                              // 29: google.protobuf.Duration
 	(*status.Status)(nil),                                    // 30: google.rpc.Status
 	(*longrunning.Operation)(nil),                            // 31: google.longrunning.Operation
-	(*empty.Empty)(nil),                                      // 32: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                                    // 32: google.protobuf.Empty
 }
 var file_google_cloud_talent_v4beta1_job_service_proto_depIdxs = []int32{
 	20, // 0: google.cloud.talent.v4beta1.CreateJobRequest.job:type_name -> google.cloud.talent.v4beta1.Job
@@ -2652,9 +2652,9 @@ type JobServiceClient interface {
 	//
 	// Typically, the job becomes unsearchable within 10 seconds, but it may take
 	// up to 5 minutes.
-	DeleteJob(ctx context.Context, in *DeleteJobRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteJob(ctx context.Context, in *DeleteJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Deletes a list of [Job][google.cloud.talent.v4beta1.Job]s by filter.
-	BatchDeleteJobs(ctx context.Context, in *BatchDeleteJobsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	BatchDeleteJobs(ctx context.Context, in *BatchDeleteJobsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists jobs by filter.
 	ListJobs(ctx context.Context, in *ListJobsRequest, opts ...grpc.CallOption) (*ListJobsResponse, error)
 	// Searches for jobs using the provided [SearchJobsRequest][google.cloud.talent.v4beta1.SearchJobsRequest].
@@ -2729,8 +2729,8 @@ func (c *jobServiceClient) BatchUpdateJobs(ctx context.Context, in *BatchUpdateJ
 	return out, nil
 }
 
-func (c *jobServiceClient) DeleteJob(ctx context.Context, in *DeleteJobRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *jobServiceClient) DeleteJob(ctx context.Context, in *DeleteJobRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.talent.v4beta1.JobService/DeleteJob", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2738,8 +2738,8 @@ func (c *jobServiceClient) DeleteJob(ctx context.Context, in *DeleteJobRequest, 
 	return out, nil
 }
 
-func (c *jobServiceClient) BatchDeleteJobs(ctx context.Context, in *BatchDeleteJobsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *jobServiceClient) BatchDeleteJobs(ctx context.Context, in *BatchDeleteJobsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.talent.v4beta1.JobService/BatchDeleteJobs", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2797,9 +2797,9 @@ type JobServiceServer interface {
 	//
 	// Typically, the job becomes unsearchable within 10 seconds, but it may take
 	// up to 5 minutes.
-	DeleteJob(context.Context, *DeleteJobRequest) (*empty.Empty, error)
+	DeleteJob(context.Context, *DeleteJobRequest) (*emptypb.Empty, error)
 	// Deletes a list of [Job][google.cloud.talent.v4beta1.Job]s by filter.
-	BatchDeleteJobs(context.Context, *BatchDeleteJobsRequest) (*empty.Empty, error)
+	BatchDeleteJobs(context.Context, *BatchDeleteJobsRequest) (*emptypb.Empty, error)
 	// Lists jobs by filter.
 	ListJobs(context.Context, *ListJobsRequest) (*ListJobsResponse, error)
 	// Searches for jobs using the provided [SearchJobsRequest][google.cloud.talent.v4beta1.SearchJobsRequest].
@@ -2840,10 +2840,10 @@ func (*UnimplementedJobServiceServer) UpdateJob(context.Context, *UpdateJobReque
 func (*UnimplementedJobServiceServer) BatchUpdateJobs(context.Context, *BatchUpdateJobsRequest) (*longrunning.Operation, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method BatchUpdateJobs not implemented")
 }
-func (*UnimplementedJobServiceServer) DeleteJob(context.Context, *DeleteJobRequest) (*empty.Empty, error) {
+func (*UnimplementedJobServiceServer) DeleteJob(context.Context, *DeleteJobRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteJob not implemented")
 }
-func (*UnimplementedJobServiceServer) BatchDeleteJobs(context.Context, *BatchDeleteJobsRequest) (*empty.Empty, error) {
+func (*UnimplementedJobServiceServer) BatchDeleteJobs(context.Context, *BatchDeleteJobsRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method BatchDeleteJobs not implemented")
 }
 func (*UnimplementedJobServiceServer) ListJobs(context.Context, *ListJobsRequest) (*ListJobsResponse, error) {

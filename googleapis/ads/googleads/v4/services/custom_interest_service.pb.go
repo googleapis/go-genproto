@@ -28,12 +28,12 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v4/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -171,7 +171,7 @@ type CustomInterestOperation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// FieldMask that determines which resource fields are modified in an update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// The mutate operation.
 	//
 	// Types that are assignable to Operation:
@@ -212,7 +212,7 @@ func (*CustomInterestOperation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_custom_interest_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CustomInterestOperation) GetUpdateMask() *field_mask.FieldMask {
+func (x *CustomInterestOperation) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -498,7 +498,7 @@ var file_google_ads_googleads_v4_services_custom_interest_service_proto_goTypes 
 	(*CustomInterestOperation)(nil),       // 2: google.ads.googleads.v4.services.CustomInterestOperation
 	(*MutateCustomInterestsResponse)(nil), // 3: google.ads.googleads.v4.services.MutateCustomInterestsResponse
 	(*MutateCustomInterestResult)(nil),    // 4: google.ads.googleads.v4.services.MutateCustomInterestResult
-	(*field_mask.FieldMask)(nil),          // 5: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),         // 5: google.protobuf.FieldMask
 	(*resources.CustomInterest)(nil),      // 6: google.ads.googleads.v4.resources.CustomInterest
 }
 var file_google_ads_googleads_v4_services_custom_interest_service_proto_depIdxs = []int32{

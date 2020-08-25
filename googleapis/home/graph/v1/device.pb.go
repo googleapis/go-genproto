@@ -25,9 +25,9 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -72,14 +72,14 @@ type Device struct {
 	// Device manufacturer, model, hardware version, and software version.
 	DeviceInfo *DeviceInfo `protobuf:"bytes,8,opt,name=device_info,json=deviceInfo,proto3" json:"device_info,omitempty"`
 	// Attributes for the traits supported by the device.
-	Attributes *_struct.Struct `protobuf:"bytes,9,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	Attributes *structpb.Struct `protobuf:"bytes,9,opt,name=attributes,proto3" json:"attributes,omitempty"`
 	// Custom device attributes stored in Home Graph and provided to your
 	// smart home Action in each
 	// [QUERY](https://developers.google.com/assistant/smarthome/reference/intent/query)
 	// and
 	// [EXECUTE](https://developers.google.com/assistant/smarthome/reference/intent/execute)
 	// intent.
-	CustomData *_struct.Struct `protobuf:"bytes,10,opt,name=custom_data,json=customData,proto3" json:"custom_data,omitempty"`
+	CustomData *structpb.Struct `protobuf:"bytes,10,opt,name=custom_data,json=customData,proto3" json:"custom_data,omitempty"`
 	// Alternate IDs associated with this device.
 	// This is used to identify cloud synced devices enabled for [local
 	// fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).
@@ -182,14 +182,14 @@ func (x *Device) GetDeviceInfo() *DeviceInfo {
 	return nil
 }
 
-func (x *Device) GetAttributes() *_struct.Struct {
+func (x *Device) GetAttributes() *structpb.Struct {
 	if x != nil {
 		return x.Attributes
 	}
 	return nil
 }
 
-func (x *Device) GetCustomData() *_struct.Struct {
+func (x *Device) GetCustomData() *structpb.Struct {
 	if x != nil {
 		return x.CustomData
 	}
@@ -503,7 +503,7 @@ var file_google_home_graph_v1_device_proto_goTypes = []interface{}{
 	(*DeviceNames)(nil),        // 1: google.home.graph.v1.DeviceNames
 	(*DeviceInfo)(nil),         // 2: google.home.graph.v1.DeviceInfo
 	(*AgentOtherDeviceId)(nil), // 3: google.home.graph.v1.AgentOtherDeviceId
-	(*_struct.Struct)(nil),     // 4: google.protobuf.Struct
+	(*structpb.Struct)(nil),    // 4: google.protobuf.Struct
 }
 var file_google_home_graph_v1_device_proto_depIdxs = []int32{
 	1, // 0: google.home.graph.v1.Device.name:type_name -> google.home.graph.v1.DeviceNames

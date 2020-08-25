@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -663,7 +663,7 @@ type UpdateDocumentRequest struct {
 	// Optional. Not specified means `update all`.
 	// Currently, only `display_name` can be updated, an InvalidArgument will be
 	// returned for attempting to update other fields.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateDocumentRequest) Reset() {
@@ -705,7 +705,7 @@ func (x *UpdateDocumentRequest) GetDocument() *Document {
 	return nil
 }
 
-func (x *UpdateDocumentRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateDocumentRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -921,7 +921,7 @@ type Document_ReloadStatus struct {
 	// Output only. The time of a reload attempt.
 	// This reload may have been triggered automatically or manually and may
 	// not have succeeded.
-	Time *timestamp.Timestamp `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
+	Time *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
 	// Output only. The status of a reload attempt or the initial load.
 	Status *status.Status `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
 }
@@ -958,7 +958,7 @@ func (*Document_ReloadStatus) Descriptor() ([]byte, []int) {
 	return file_google_cloud_dialogflow_v2beta1_document_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (x *Document_ReloadStatus) GetTime() *timestamp.Timestamp {
+func (x *Document_ReloadStatus) GetTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Time
 	}
@@ -1295,9 +1295,9 @@ var file_google_cloud_dialogflow_v2beta1_document_proto_goTypes = []interface{}{
 	(*ReloadDocumentRequest)(nil),                    // 10: google.cloud.dialogflow.v2beta1.ReloadDocumentRequest
 	(*AutoApproveSmartMessagingEntriesResponse)(nil), // 11: google.cloud.dialogflow.v2beta1.AutoApproveSmartMessagingEntriesResponse
 	(*Document_ReloadStatus)(nil),                    // 12: google.cloud.dialogflow.v2beta1.Document.ReloadStatus
-	(*field_mask.FieldMask)(nil),                     // 13: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                    // 13: google.protobuf.FieldMask
 	(*GcsSource)(nil),                                // 14: google.cloud.dialogflow.v2beta1.GcsSource
-	(*timestamp.Timestamp)(nil),                      // 15: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                    // 15: google.protobuf.Timestamp
 	(*status.Status)(nil),                            // 16: google.rpc.Status
 	(*longrunning.Operation)(nil),                    // 17: google.longrunning.Operation
 }

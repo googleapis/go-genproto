@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	sample "google.golang.org/genproto/googleapis/maps/playablelocations/v3/sample"
 	unity "google.golang.org/genproto/googleapis/maps/unity"
@@ -35,6 +34,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -149,7 +149,7 @@ type SamplePlayableLocationsResponse struct {
 	// request to get a fresh set of playable locations (because for example, they
 	// might have been removed, a park might have closed for the day, a
 	// business might have closed permanently).
-	Ttl *duration.Duration `protobuf:"bytes,9,opt,name=ttl,proto3" json:"ttl,omitempty"`
+	Ttl *durationpb.Duration `protobuf:"bytes,9,opt,name=ttl,proto3" json:"ttl,omitempty"`
 }
 
 func (x *SamplePlayableLocationsResponse) Reset() {
@@ -191,7 +191,7 @@ func (x *SamplePlayableLocationsResponse) GetLocationsPerGameObjectType() map[in
 	return nil
 }
 
-func (x *SamplePlayableLocationsResponse) GetTtl() *duration.Duration {
+func (x *SamplePlayableLocationsResponse) GetTtl() *durationpb.Duration {
 	if x != nil {
 		return x.Ttl
 	}
@@ -599,7 +599,7 @@ var file_google_maps_playablelocations_v3_playablelocations_proto_goTypes = []in
 	nil,                                     // 6: google.maps.playablelocations.v3.SamplePlayableLocationsResponse.LocationsPerGameObjectTypeEntry
 	(*sample.AreaFilter)(nil),               // 7: google.maps.playablelocations.v3.sample.AreaFilter
 	(*sample.Criterion)(nil),                // 8: google.maps.playablelocations.v3.sample.Criterion
-	(*duration.Duration)(nil),               // 9: google.protobuf.Duration
+	(*durationpb.Duration)(nil),             // 9: google.protobuf.Duration
 	(*PlayerReport)(nil),                    // 10: google.maps.playablelocations.v3.PlayerReport
 	(*unity.ClientInfo)(nil),                // 11: google.maps.unity.ClientInfo
 	(*Impression)(nil),                      // 12: google.maps.playablelocations.v3.Impression

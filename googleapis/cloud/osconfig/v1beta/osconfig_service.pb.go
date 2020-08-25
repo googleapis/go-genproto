@@ -25,13 +25,13 @@ import (
 	reflect "reflect"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -284,7 +284,7 @@ var file_google_cloud_osconfig_v1beta_osconfig_service_proto_goTypes = []interfa
 	(*ListPatchJobInstanceDetailsResponse)(nil), // 17: google.cloud.osconfig.v1beta.ListPatchJobInstanceDetailsResponse
 	(*PatchDeployment)(nil),                     // 18: google.cloud.osconfig.v1beta.PatchDeployment
 	(*ListPatchDeploymentsResponse)(nil),        // 19: google.cloud.osconfig.v1beta.ListPatchDeploymentsResponse
-	(*empty.Empty)(nil),                         // 20: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                       // 20: google.protobuf.Empty
 	(*GuestPolicy)(nil),                         // 21: google.cloud.osconfig.v1beta.GuestPolicy
 	(*ListGuestPoliciesResponse)(nil),           // 22: google.cloud.osconfig.v1beta.ListGuestPoliciesResponse
 	(*EffectiveGuestPolicy)(nil),                // 23: google.cloud.osconfig.v1beta.EffectiveGuestPolicy
@@ -385,7 +385,7 @@ type OsConfigServiceClient interface {
 	// Get a page of OS Config patch deployments.
 	ListPatchDeployments(ctx context.Context, in *ListPatchDeploymentsRequest, opts ...grpc.CallOption) (*ListPatchDeploymentsResponse, error)
 	// Delete an OS Config patch deployment.
-	DeletePatchDeployment(ctx context.Context, in *DeletePatchDeploymentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeletePatchDeployment(ctx context.Context, in *DeletePatchDeploymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Create an OS Config guest policy.
 	CreateGuestPolicy(ctx context.Context, in *CreateGuestPolicyRequest, opts ...grpc.CallOption) (*GuestPolicy, error)
 	// Get an OS Config guest policy.
@@ -395,7 +395,7 @@ type OsConfigServiceClient interface {
 	// Update an OS Config guest policy.
 	UpdateGuestPolicy(ctx context.Context, in *UpdateGuestPolicyRequest, opts ...grpc.CallOption) (*GuestPolicy, error)
 	// Delete an OS Config guest policy.
-	DeleteGuestPolicy(ctx context.Context, in *DeleteGuestPolicyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteGuestPolicy(ctx context.Context, in *DeleteGuestPolicyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lookup the effective guest policy that applies to a VM instance. This
 	// lookup merges all policies that are assigned to the instance ancestry.
 	LookupEffectiveGuestPolicy(ctx context.Context, in *LookupEffectiveGuestPolicyRequest, opts ...grpc.CallOption) (*EffectiveGuestPolicy, error)
@@ -481,8 +481,8 @@ func (c *osConfigServiceClient) ListPatchDeployments(ctx context.Context, in *Li
 	return out, nil
 }
 
-func (c *osConfigServiceClient) DeletePatchDeployment(ctx context.Context, in *DeletePatchDeploymentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *osConfigServiceClient) DeletePatchDeployment(ctx context.Context, in *DeletePatchDeploymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.osconfig.v1beta.OsConfigService/DeletePatchDeployment", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -526,8 +526,8 @@ func (c *osConfigServiceClient) UpdateGuestPolicy(ctx context.Context, in *Updat
 	return out, nil
 }
 
-func (c *osConfigServiceClient) DeleteGuestPolicy(ctx context.Context, in *DeleteGuestPolicyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *osConfigServiceClient) DeleteGuestPolicy(ctx context.Context, in *DeleteGuestPolicyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.osconfig.v1beta.OsConfigService/DeleteGuestPolicy", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -565,7 +565,7 @@ type OsConfigServiceServer interface {
 	// Get a page of OS Config patch deployments.
 	ListPatchDeployments(context.Context, *ListPatchDeploymentsRequest) (*ListPatchDeploymentsResponse, error)
 	// Delete an OS Config patch deployment.
-	DeletePatchDeployment(context.Context, *DeletePatchDeploymentRequest) (*empty.Empty, error)
+	DeletePatchDeployment(context.Context, *DeletePatchDeploymentRequest) (*emptypb.Empty, error)
 	// Create an OS Config guest policy.
 	CreateGuestPolicy(context.Context, *CreateGuestPolicyRequest) (*GuestPolicy, error)
 	// Get an OS Config guest policy.
@@ -575,7 +575,7 @@ type OsConfigServiceServer interface {
 	// Update an OS Config guest policy.
 	UpdateGuestPolicy(context.Context, *UpdateGuestPolicyRequest) (*GuestPolicy, error)
 	// Delete an OS Config guest policy.
-	DeleteGuestPolicy(context.Context, *DeleteGuestPolicyRequest) (*empty.Empty, error)
+	DeleteGuestPolicy(context.Context, *DeleteGuestPolicyRequest) (*emptypb.Empty, error)
 	// Lookup the effective guest policy that applies to a VM instance. This
 	// lookup merges all policies that are assigned to the instance ancestry.
 	LookupEffectiveGuestPolicy(context.Context, *LookupEffectiveGuestPolicyRequest) (*EffectiveGuestPolicy, error)
@@ -609,7 +609,7 @@ func (*UnimplementedOsConfigServiceServer) GetPatchDeployment(context.Context, *
 func (*UnimplementedOsConfigServiceServer) ListPatchDeployments(context.Context, *ListPatchDeploymentsRequest) (*ListPatchDeploymentsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListPatchDeployments not implemented")
 }
-func (*UnimplementedOsConfigServiceServer) DeletePatchDeployment(context.Context, *DeletePatchDeploymentRequest) (*empty.Empty, error) {
+func (*UnimplementedOsConfigServiceServer) DeletePatchDeployment(context.Context, *DeletePatchDeploymentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePatchDeployment not implemented")
 }
 func (*UnimplementedOsConfigServiceServer) CreateGuestPolicy(context.Context, *CreateGuestPolicyRequest) (*GuestPolicy, error) {
@@ -624,7 +624,7 @@ func (*UnimplementedOsConfigServiceServer) ListGuestPolicies(context.Context, *L
 func (*UnimplementedOsConfigServiceServer) UpdateGuestPolicy(context.Context, *UpdateGuestPolicyRequest) (*GuestPolicy, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateGuestPolicy not implemented")
 }
-func (*UnimplementedOsConfigServiceServer) DeleteGuestPolicy(context.Context, *DeleteGuestPolicyRequest) (*empty.Empty, error) {
+func (*UnimplementedOsConfigServiceServer) DeleteGuestPolicy(context.Context, *DeleteGuestPolicyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteGuestPolicy not implemented")
 }
 func (*UnimplementedOsConfigServiceServer) LookupEffectiveGuestPolicy(context.Context, *LookupEffectiveGuestPolicyRequest) (*EffectiveGuestPolicy, error) {

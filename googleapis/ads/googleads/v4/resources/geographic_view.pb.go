@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -62,7 +62,7 @@ type GeographicView struct {
 	// Output only. Type of the geo targeting of the campaign.
 	LocationType enums.GeoTargetingTypeEnum_GeoTargetingType `protobuf:"varint,3,opt,name=location_type,json=locationType,proto3,enum=google.ads.googleads.v4.enums.GeoTargetingTypeEnum_GeoTargetingType" json:"location_type,omitempty"`
 	// Output only. Criterion Id for the country.
-	CountryCriterionId *wrappers.Int64Value `protobuf:"bytes,4,opt,name=country_criterion_id,json=countryCriterionId,proto3" json:"country_criterion_id,omitempty"`
+	CountryCriterionId *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=country_criterion_id,json=countryCriterionId,proto3" json:"country_criterion_id,omitempty"`
 }
 
 func (x *GeographicView) Reset() {
@@ -111,7 +111,7 @@ func (x *GeographicView) GetLocationType() enums.GeoTargetingTypeEnum_GeoTargeti
 	return enums.GeoTargetingTypeEnum_UNSPECIFIED
 }
 
-func (x *GeographicView) GetCountryCriterionId() *wrappers.Int64Value {
+func (x *GeographicView) GetCountryCriterionId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CountryCriterionId
 	}
@@ -198,7 +198,7 @@ var file_google_ads_googleads_v4_resources_geographic_view_proto_msgTypes = make
 var file_google_ads_googleads_v4_resources_geographic_view_proto_goTypes = []interface{}{
 	(*GeographicView)(nil),                           // 0: google.ads.googleads.v4.resources.GeographicView
 	(enums.GeoTargetingTypeEnum_GeoTargetingType)(0), // 1: google.ads.googleads.v4.enums.GeoTargetingTypeEnum.GeoTargetingType
-	(*wrappers.Int64Value)(nil),                      // 2: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                    // 2: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v4_resources_geographic_view_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.resources.GeographicView.location_type:type_name -> google.ads.googleads.v4.enums.GeoTargetingTypeEnum.GeoTargetingType

@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v3/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -58,45 +58,45 @@ type AdGroupCriterion struct {
 	// Output only. The ID of the criterion.
 	//
 	// This field is ignored for mutates.
-	CriterionId *wrappers.Int64Value `protobuf:"bytes,26,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
+	CriterionId *wrapperspb.Int64Value `protobuf:"bytes,26,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
 	// The status of the criterion.
 	Status enums.AdGroupCriterionStatusEnum_AdGroupCriterionStatus `protobuf:"varint,3,opt,name=status,proto3,enum=google.ads.googleads.v3.enums.AdGroupCriterionStatusEnum_AdGroupCriterionStatus" json:"status,omitempty"`
 	// Output only. Information regarding the quality of the criterion.
 	QualityInfo *AdGroupCriterion_QualityInfo `protobuf:"bytes,4,opt,name=quality_info,json=qualityInfo,proto3" json:"quality_info,omitempty"`
 	// Immutable. The ad group to which the criterion belongs.
-	AdGroup *wrappers.StringValue `protobuf:"bytes,5,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
+	AdGroup *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
 	// Output only. The type of the criterion.
 	Type enums.CriterionTypeEnum_CriterionType `protobuf:"varint,25,opt,name=type,proto3,enum=google.ads.googleads.v3.enums.CriterionTypeEnum_CriterionType" json:"type,omitempty"`
 	// Immutable. Whether to target (`false`) or exclude (`true`) the criterion.
 	//
 	// This field is immutable. To switch a criterion from positive to negative,
 	// remove then re-add it.
-	Negative *wrappers.BoolValue `protobuf:"bytes,31,opt,name=negative,proto3" json:"negative,omitempty"`
+	Negative *wrapperspb.BoolValue `protobuf:"bytes,31,opt,name=negative,proto3" json:"negative,omitempty"`
 	// Output only. Serving status of the criterion.
 	SystemServingStatus enums.CriterionSystemServingStatusEnum_CriterionSystemServingStatus `protobuf:"varint,52,opt,name=system_serving_status,json=systemServingStatus,proto3,enum=google.ads.googleads.v3.enums.CriterionSystemServingStatusEnum_CriterionSystemServingStatus" json:"system_serving_status,omitempty"`
 	// Output only. Approval status of the criterion.
 	ApprovalStatus enums.AdGroupCriterionApprovalStatusEnum_AdGroupCriterionApprovalStatus `protobuf:"varint,53,opt,name=approval_status,json=approvalStatus,proto3,enum=google.ads.googleads.v3.enums.AdGroupCriterionApprovalStatusEnum_AdGroupCriterionApprovalStatus" json:"approval_status,omitempty"`
 	// The modifier for the bid when the criterion matches. The modifier must be
 	// in the range: 0.1 - 10.0. Most targetable criteria types support modifiers.
-	BidModifier *wrappers.DoubleValue `protobuf:"bytes,44,opt,name=bid_modifier,json=bidModifier,proto3" json:"bid_modifier,omitempty"`
+	BidModifier *wrapperspb.DoubleValue `protobuf:"bytes,44,opt,name=bid_modifier,json=bidModifier,proto3" json:"bid_modifier,omitempty"`
 	// The CPC (cost-per-click) bid.
-	CpcBidMicros *wrappers.Int64Value `protobuf:"bytes,16,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
+	CpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,16,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
 	// The CPM (cost-per-thousand viewable impressions) bid.
-	CpmBidMicros *wrappers.Int64Value `protobuf:"bytes,17,opt,name=cpm_bid_micros,json=cpmBidMicros,proto3" json:"cpm_bid_micros,omitempty"`
+	CpmBidMicros *wrapperspb.Int64Value `protobuf:"bytes,17,opt,name=cpm_bid_micros,json=cpmBidMicros,proto3" json:"cpm_bid_micros,omitempty"`
 	// The CPV (cost-per-view) bid.
-	CpvBidMicros *wrappers.Int64Value `protobuf:"bytes,24,opt,name=cpv_bid_micros,json=cpvBidMicros,proto3" json:"cpv_bid_micros,omitempty"`
+	CpvBidMicros *wrapperspb.Int64Value `protobuf:"bytes,24,opt,name=cpv_bid_micros,json=cpvBidMicros,proto3" json:"cpv_bid_micros,omitempty"`
 	// The CPC bid amount, expressed as a fraction of the advertised price
 	// for some good or service. The valid range for the fraction is [0,1) and the
 	// value stored here is 1,000,000 * [fraction].
-	PercentCpcBidMicros *wrappers.Int64Value `protobuf:"bytes,33,opt,name=percent_cpc_bid_micros,json=percentCpcBidMicros,proto3" json:"percent_cpc_bid_micros,omitempty"`
+	PercentCpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,33,opt,name=percent_cpc_bid_micros,json=percentCpcBidMicros,proto3" json:"percent_cpc_bid_micros,omitempty"`
 	// Output only. The effective CPC (cost-per-click) bid.
-	EffectiveCpcBidMicros *wrappers.Int64Value `protobuf:"bytes,18,opt,name=effective_cpc_bid_micros,json=effectiveCpcBidMicros,proto3" json:"effective_cpc_bid_micros,omitempty"`
+	EffectiveCpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,18,opt,name=effective_cpc_bid_micros,json=effectiveCpcBidMicros,proto3" json:"effective_cpc_bid_micros,omitempty"`
 	// Output only. The effective CPM (cost-per-thousand viewable impressions) bid.
-	EffectiveCpmBidMicros *wrappers.Int64Value `protobuf:"bytes,19,opt,name=effective_cpm_bid_micros,json=effectiveCpmBidMicros,proto3" json:"effective_cpm_bid_micros,omitempty"`
+	EffectiveCpmBidMicros *wrapperspb.Int64Value `protobuf:"bytes,19,opt,name=effective_cpm_bid_micros,json=effectiveCpmBidMicros,proto3" json:"effective_cpm_bid_micros,omitempty"`
 	// Output only. The effective CPV (cost-per-view) bid.
-	EffectiveCpvBidMicros *wrappers.Int64Value `protobuf:"bytes,20,opt,name=effective_cpv_bid_micros,json=effectiveCpvBidMicros,proto3" json:"effective_cpv_bid_micros,omitempty"`
+	EffectiveCpvBidMicros *wrapperspb.Int64Value `protobuf:"bytes,20,opt,name=effective_cpv_bid_micros,json=effectiveCpvBidMicros,proto3" json:"effective_cpv_bid_micros,omitempty"`
 	// Output only. The effective Percent CPC bid amount.
-	EffectivePercentCpcBidMicros *wrappers.Int64Value `protobuf:"bytes,34,opt,name=effective_percent_cpc_bid_micros,json=effectivePercentCpcBidMicros,proto3" json:"effective_percent_cpc_bid_micros,omitempty"`
+	EffectivePercentCpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,34,opt,name=effective_percent_cpc_bid_micros,json=effectivePercentCpcBidMicros,proto3" json:"effective_percent_cpc_bid_micros,omitempty"`
 	// Output only. Source of the effective CPC bid.
 	EffectiveCpcBidSource enums.BiddingSourceEnum_BiddingSource `protobuf:"varint,21,opt,name=effective_cpc_bid_source,json=effectiveCpcBidSource,proto3,enum=google.ads.googleads.v3.enums.BiddingSourceEnum_BiddingSource" json:"effective_cpc_bid_source,omitempty"`
 	// Output only. Source of the effective CPM bid.
@@ -109,13 +109,13 @@ type AdGroupCriterion struct {
 	PositionEstimates *AdGroupCriterion_PositionEstimates `protobuf:"bytes,10,opt,name=position_estimates,json=positionEstimates,proto3" json:"position_estimates,omitempty"`
 	// The list of possible final URLs after all cross-domain redirects for the
 	// ad.
-	FinalUrls []*wrappers.StringValue `protobuf:"bytes,11,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
+	FinalUrls []*wrapperspb.StringValue `protobuf:"bytes,11,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
 	// The list of possible final mobile URLs after all cross-domain redirects.
-	FinalMobileUrls []*wrappers.StringValue `protobuf:"bytes,51,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
+	FinalMobileUrls []*wrapperspb.StringValue `protobuf:"bytes,51,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
 	// URL template for appending params to final URL.
-	FinalUrlSuffix *wrappers.StringValue `protobuf:"bytes,50,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
+	FinalUrlSuffix *wrapperspb.StringValue `protobuf:"bytes,50,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
 	// The URL template for constructing a tracking URL.
-	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,13,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
+	TrackingUrlTemplate *wrapperspb.StringValue `protobuf:"bytes,13,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 	// The list of mappings used to substitute custom parameter tags in a
 	// `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
 	UrlCustomParameters []*common.CustomParameter `protobuf:"bytes,14,rep,name=url_custom_parameters,json=urlCustomParameters,proto3" json:"url_custom_parameters,omitempty"`
@@ -184,7 +184,7 @@ func (x *AdGroupCriterion) GetResourceName() string {
 	return ""
 }
 
-func (x *AdGroupCriterion) GetCriterionId() *wrappers.Int64Value {
+func (x *AdGroupCriterion) GetCriterionId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CriterionId
 	}
@@ -205,7 +205,7 @@ func (x *AdGroupCriterion) GetQualityInfo() *AdGroupCriterion_QualityInfo {
 	return nil
 }
 
-func (x *AdGroupCriterion) GetAdGroup() *wrappers.StringValue {
+func (x *AdGroupCriterion) GetAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroup
 	}
@@ -219,7 +219,7 @@ func (x *AdGroupCriterion) GetType() enums.CriterionTypeEnum_CriterionType {
 	return enums.CriterionTypeEnum_UNSPECIFIED
 }
 
-func (x *AdGroupCriterion) GetNegative() *wrappers.BoolValue {
+func (x *AdGroupCriterion) GetNegative() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.Negative
 	}
@@ -240,63 +240,63 @@ func (x *AdGroupCriterion) GetApprovalStatus() enums.AdGroupCriterionApprovalSta
 	return enums.AdGroupCriterionApprovalStatusEnum_UNSPECIFIED
 }
 
-func (x *AdGroupCriterion) GetBidModifier() *wrappers.DoubleValue {
+func (x *AdGroupCriterion) GetBidModifier() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.BidModifier
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetCpcBidMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion) GetCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetCpmBidMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion) GetCpmBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpmBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetCpvBidMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion) GetCpvBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpvBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetPercentCpcBidMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion) GetPercentCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PercentCpcBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetEffectiveCpcBidMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion) GetEffectiveCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.EffectiveCpcBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetEffectiveCpmBidMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion) GetEffectiveCpmBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.EffectiveCpmBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetEffectiveCpvBidMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion) GetEffectiveCpvBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.EffectiveCpvBidMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetEffectivePercentCpcBidMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion) GetEffectivePercentCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.EffectivePercentCpcBidMicros
 	}
@@ -338,28 +338,28 @@ func (x *AdGroupCriterion) GetPositionEstimates() *AdGroupCriterion_PositionEsti
 	return nil
 }
 
-func (x *AdGroupCriterion) GetFinalUrls() []*wrappers.StringValue {
+func (x *AdGroupCriterion) GetFinalUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrls
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetFinalMobileUrls() []*wrappers.StringValue {
+func (x *AdGroupCriterion) GetFinalMobileUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalMobileUrls
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetFinalUrlSuffix() *wrappers.StringValue {
+func (x *AdGroupCriterion) GetFinalUrlSuffix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrlSuffix
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion) GetTrackingUrlTemplate() *wrappers.StringValue {
+func (x *AdGroupCriterion) GetTrackingUrlTemplate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrlTemplate
 	}
@@ -646,7 +646,7 @@ type AdGroupCriterion_QualityInfo struct {
 	//
 	// This field may not be populated if Google does not have enough
 	// information to determine a value.
-	QualityScore *wrappers.Int32Value `protobuf:"bytes,1,opt,name=quality_score,json=qualityScore,proto3" json:"quality_score,omitempty"`
+	QualityScore *wrapperspb.Int32Value `protobuf:"bytes,1,opt,name=quality_score,json=qualityScore,proto3" json:"quality_score,omitempty"`
 	// Output only. The performance of the ad compared to other advertisers.
 	CreativeQualityScore enums.QualityScoreBucketEnum_QualityScoreBucket `protobuf:"varint,2,opt,name=creative_quality_score,json=creativeQualityScore,proto3,enum=google.ads.googleads.v3.enums.QualityScoreBucketEnum_QualityScoreBucket" json:"creative_quality_score,omitempty"`
 	// Output only. The quality score of the landing page.
@@ -687,7 +687,7 @@ func (*AdGroupCriterion_QualityInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_resources_ad_group_criterion_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (x *AdGroupCriterion_QualityInfo) GetQualityScore() *wrappers.Int32Value {
+func (x *AdGroupCriterion_QualityInfo) GetQualityScore() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.QualityScore
 	}
@@ -723,19 +723,19 @@ type AdGroupCriterion_PositionEstimates struct {
 
 	// Output only. The estimate of the CPC bid required for ad to be shown on first
 	// page of search results.
-	FirstPageCpcMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=first_page_cpc_micros,json=firstPageCpcMicros,proto3" json:"first_page_cpc_micros,omitempty"`
+	FirstPageCpcMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=first_page_cpc_micros,json=firstPageCpcMicros,proto3" json:"first_page_cpc_micros,omitempty"`
 	// Output only. The estimate of the CPC bid required for ad to be displayed in first
 	// position, at the top of the first page of search results.
-	FirstPositionCpcMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=first_position_cpc_micros,json=firstPositionCpcMicros,proto3" json:"first_position_cpc_micros,omitempty"`
+	FirstPositionCpcMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=first_position_cpc_micros,json=firstPositionCpcMicros,proto3" json:"first_position_cpc_micros,omitempty"`
 	// Output only. The estimate of the CPC bid required for ad to be displayed at the top
 	// of the first page of search results.
-	TopOfPageCpcMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=top_of_page_cpc_micros,json=topOfPageCpcMicros,proto3" json:"top_of_page_cpc_micros,omitempty"`
+	TopOfPageCpcMicros *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=top_of_page_cpc_micros,json=topOfPageCpcMicros,proto3" json:"top_of_page_cpc_micros,omitempty"`
 	// Output only. Estimate of how many clicks per week you might get by changing your
 	// keyword bid to the value in first_position_cpc_micros.
-	EstimatedAddClicksAtFirstPositionCpc *wrappers.Int64Value `protobuf:"bytes,4,opt,name=estimated_add_clicks_at_first_position_cpc,json=estimatedAddClicksAtFirstPositionCpc,proto3" json:"estimated_add_clicks_at_first_position_cpc,omitempty"`
+	EstimatedAddClicksAtFirstPositionCpc *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=estimated_add_clicks_at_first_position_cpc,json=estimatedAddClicksAtFirstPositionCpc,proto3" json:"estimated_add_clicks_at_first_position_cpc,omitempty"`
 	// Output only. Estimate of how your cost per week might change when changing your
 	// keyword bid to the value in first_position_cpc_micros.
-	EstimatedAddCostAtFirstPositionCpc *wrappers.Int64Value `protobuf:"bytes,5,opt,name=estimated_add_cost_at_first_position_cpc,json=estimatedAddCostAtFirstPositionCpc,proto3" json:"estimated_add_cost_at_first_position_cpc,omitempty"`
+	EstimatedAddCostAtFirstPositionCpc *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=estimated_add_cost_at_first_position_cpc,json=estimatedAddCostAtFirstPositionCpc,proto3" json:"estimated_add_cost_at_first_position_cpc,omitempty"`
 }
 
 func (x *AdGroupCriterion_PositionEstimates) Reset() {
@@ -770,35 +770,35 @@ func (*AdGroupCriterion_PositionEstimates) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_resources_ad_group_criterion_proto_rawDescGZIP(), []int{0, 1}
 }
 
-func (x *AdGroupCriterion_PositionEstimates) GetFirstPageCpcMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion_PositionEstimates) GetFirstPageCpcMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FirstPageCpcMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion_PositionEstimates) GetFirstPositionCpcMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion_PositionEstimates) GetFirstPositionCpcMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FirstPositionCpcMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion_PositionEstimates) GetTopOfPageCpcMicros() *wrappers.Int64Value {
+func (x *AdGroupCriterion_PositionEstimates) GetTopOfPageCpcMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TopOfPageCpcMicros
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion_PositionEstimates) GetEstimatedAddClicksAtFirstPositionCpc() *wrappers.Int64Value {
+func (x *AdGroupCriterion_PositionEstimates) GetEstimatedAddClicksAtFirstPositionCpc() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.EstimatedAddClicksAtFirstPositionCpc
 	}
 	return nil
 }
 
-func (x *AdGroupCriterion_PositionEstimates) GetEstimatedAddCostAtFirstPositionCpc() *wrappers.Int64Value {
+func (x *AdGroupCriterion_PositionEstimates) GetEstimatedAddCostAtFirstPositionCpc() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.EstimatedAddCostAtFirstPositionCpc
 	}
@@ -1229,14 +1229,14 @@ var file_google_ads_googleads_v3_resources_ad_group_criterion_proto_goTypes = []
 	(*AdGroupCriterion)(nil),                                                     // 0: google.ads.googleads.v3.resources.AdGroupCriterion
 	(*AdGroupCriterion_QualityInfo)(nil),                                         // 1: google.ads.googleads.v3.resources.AdGroupCriterion.QualityInfo
 	(*AdGroupCriterion_PositionEstimates)(nil),                                   // 2: google.ads.googleads.v3.resources.AdGroupCriterion.PositionEstimates
-	(*wrappers.Int64Value)(nil),                                                  // 3: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                                // 3: google.protobuf.Int64Value
 	(enums.AdGroupCriterionStatusEnum_AdGroupCriterionStatus)(0),                 // 4: google.ads.googleads.v3.enums.AdGroupCriterionStatusEnum.AdGroupCriterionStatus
-	(*wrappers.StringValue)(nil),                                                 // 5: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                               // 5: google.protobuf.StringValue
 	(enums.CriterionTypeEnum_CriterionType)(0),                                   // 6: google.ads.googleads.v3.enums.CriterionTypeEnum.CriterionType
-	(*wrappers.BoolValue)(nil),                                                   // 7: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                                                 // 7: google.protobuf.BoolValue
 	(enums.CriterionSystemServingStatusEnum_CriterionSystemServingStatus)(0),     // 8: google.ads.googleads.v3.enums.CriterionSystemServingStatusEnum.CriterionSystemServingStatus
 	(enums.AdGroupCriterionApprovalStatusEnum_AdGroupCriterionApprovalStatus)(0), // 9: google.ads.googleads.v3.enums.AdGroupCriterionApprovalStatusEnum.AdGroupCriterionApprovalStatus
-	(*wrappers.DoubleValue)(nil),                                                 // 10: google.protobuf.DoubleValue
+	(*wrapperspb.DoubleValue)(nil),                                               // 10: google.protobuf.DoubleValue
 	(enums.BiddingSourceEnum_BiddingSource)(0),                                   // 11: google.ads.googleads.v3.enums.BiddingSourceEnum.BiddingSource
 	(*common.CustomParameter)(nil),                                               // 12: google.ads.googleads.v3.common.CustomParameter
 	(*common.KeywordInfo)(nil),                                                   // 13: google.ads.googleads.v3.common.KeywordInfo
@@ -1257,7 +1257,7 @@ var file_google_ads_googleads_v3_resources_ad_group_criterion_proto_goTypes = []
 	(*common.AppPaymentModelInfo)(nil),                                           // 28: google.ads.googleads.v3.common.AppPaymentModelInfo
 	(*common.CustomAffinityInfo)(nil),                                            // 29: google.ads.googleads.v3.common.CustomAffinityInfo
 	(*common.CustomIntentInfo)(nil),                                              // 30: google.ads.googleads.v3.common.CustomIntentInfo
-	(*wrappers.Int32Value)(nil),                                                  // 31: google.protobuf.Int32Value
+	(*wrapperspb.Int32Value)(nil),                                                // 31: google.protobuf.Int32Value
 	(enums.QualityScoreBucketEnum_QualityScoreBucket)(0),                         // 32: google.ads.googleads.v3.enums.QualityScoreBucketEnum.QualityScoreBucket
 }
 var file_google_ads_googleads_v3_resources_ad_group_criterion_proto_depIdxs = []int32{

@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,14 +54,14 @@ type CurrencyConstant struct {
 	// `currencyConstants/{currency_code}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. ISO 4217 three-letter currency code, e.g. "USD"
-	Code *wrappers.StringValue `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	Code *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
 	// Output only. Full English name of the currency.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. Standard symbol for describing this currency, e.g. '$' for US Dollars.
-	Symbol *wrappers.StringValue `protobuf:"bytes,4,opt,name=symbol,proto3" json:"symbol,omitempty"`
+	Symbol *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=symbol,proto3" json:"symbol,omitempty"`
 	// Output only. The billable unit for this currency. Billed amounts should be multiples of
 	// this value.
-	BillableUnitMicros *wrappers.Int64Value `protobuf:"bytes,5,opt,name=billable_unit_micros,json=billableUnitMicros,proto3" json:"billable_unit_micros,omitempty"`
+	BillableUnitMicros *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=billable_unit_micros,json=billableUnitMicros,proto3" json:"billable_unit_micros,omitempty"`
 }
 
 func (x *CurrencyConstant) Reset() {
@@ -103,28 +103,28 @@ func (x *CurrencyConstant) GetResourceName() string {
 	return ""
 }
 
-func (x *CurrencyConstant) GetCode() *wrappers.StringValue {
+func (x *CurrencyConstant) GetCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Code
 	}
 	return nil
 }
 
-func (x *CurrencyConstant) GetName() *wrappers.StringValue {
+func (x *CurrencyConstant) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *CurrencyConstant) GetSymbol() *wrappers.StringValue {
+func (x *CurrencyConstant) GetSymbol() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Symbol
 	}
 	return nil
 }
 
-func (x *CurrencyConstant) GetBillableUnitMicros() *wrappers.Int64Value {
+func (x *CurrencyConstant) GetBillableUnitMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.BillableUnitMicros
 	}
@@ -209,9 +209,9 @@ func file_google_ads_googleads_v3_resources_currency_constant_proto_rawDescGZIP(
 
 var file_google_ads_googleads_v3_resources_currency_constant_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_currency_constant_proto_goTypes = []interface{}{
-	(*CurrencyConstant)(nil),     // 0: google.ads.googleads.v3.resources.CurrencyConstant
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),  // 2: google.protobuf.Int64Value
+	(*CurrencyConstant)(nil),       // 0: google.ads.googleads.v3.resources.CurrencyConstant
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),  // 2: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v3_resources_currency_constant_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v3.resources.CurrencyConstant.code:type_name -> google.protobuf.StringValue

@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,13 +56,13 @@ type BiddingStrategy struct {
 	// `customers/{customer_id}/biddingStrategies/{bidding_strategy_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the bidding strategy.
-	Id *wrappers.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the bidding strategy.
 	// All bidding strategies within an account must be named distinctly.
 	//
 	// The length of this string should be between 1 and 255, inclusive,
 	// in UTF-8 bytes, (trimmed).
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The status of the bidding strategy.
 	//
 	// This field is read-only.
@@ -75,11 +75,11 @@ type BiddingStrategy struct {
 	// Output only. The number of campaigns attached to this bidding strategy.
 	//
 	// This field is read-only.
-	CampaignCount *wrappers.Int64Value `protobuf:"bytes,13,opt,name=campaign_count,json=campaignCount,proto3" json:"campaign_count,omitempty"`
+	CampaignCount *wrapperspb.Int64Value `protobuf:"bytes,13,opt,name=campaign_count,json=campaignCount,proto3" json:"campaign_count,omitempty"`
 	// Output only. The number of non-removed campaigns attached to this bidding strategy.
 	//
 	// This field is read-only.
-	NonRemovedCampaignCount *wrappers.Int64Value `protobuf:"bytes,14,opt,name=non_removed_campaign_count,json=nonRemovedCampaignCount,proto3" json:"non_removed_campaign_count,omitempty"`
+	NonRemovedCampaignCount *wrapperspb.Int64Value `protobuf:"bytes,14,opt,name=non_removed_campaign_count,json=nonRemovedCampaignCount,proto3" json:"non_removed_campaign_count,omitempty"`
 	// The bidding scheme.
 	//
 	// Only one can be set.
@@ -132,14 +132,14 @@ func (x *BiddingStrategy) GetResourceName() string {
 	return ""
 }
 
-func (x *BiddingStrategy) GetId() *wrappers.Int64Value {
+func (x *BiddingStrategy) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *BiddingStrategy) GetName() *wrappers.StringValue {
+func (x *BiddingStrategy) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -160,14 +160,14 @@ func (x *BiddingStrategy) GetType() enums.BiddingStrategyTypeEnum_BiddingStrateg
 	return enums.BiddingStrategyTypeEnum_UNSPECIFIED
 }
 
-func (x *BiddingStrategy) GetCampaignCount() *wrappers.Int64Value {
+func (x *BiddingStrategy) GetCampaignCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CampaignCount
 	}
 	return nil
 }
 
-func (x *BiddingStrategy) GetNonRemovedCampaignCount() *wrappers.Int64Value {
+func (x *BiddingStrategy) GetNonRemovedCampaignCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.NonRemovedCampaignCount
 	}
@@ -393,8 +393,8 @@ func file_google_ads_googleads_v4_resources_bidding_strategy_proto_rawDescGZIP()
 var file_google_ads_googleads_v4_resources_bidding_strategy_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_bidding_strategy_proto_goTypes = []interface{}{
 	(*BiddingStrategy)(nil),                                    // 0: google.ads.googleads.v4.resources.BiddingStrategy
-	(*wrappers.Int64Value)(nil),                                // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),                               // 2: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                              // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                             // 2: google.protobuf.StringValue
 	(enums.BiddingStrategyStatusEnum_BiddingStrategyStatus)(0), // 3: google.ads.googleads.v4.enums.BiddingStrategyStatusEnum.BiddingStrategyStatus
 	(enums.BiddingStrategyTypeEnum_BiddingStrategyType)(0),     // 4: google.ads.googleads.v4.enums.BiddingStrategyTypeEnum.BiddingStrategyType
 	(*common.EnhancedCpc)(nil),                                 // 5: google.ads.googleads.v4.common.EnhancedCpc

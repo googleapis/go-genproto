@@ -25,16 +25,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	date "google.golang.org/genproto/googleapis/type/date"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
 	timeofday "google.golang.org/genproto/googleapis/type/timeofday"
-	_ "google.golang.org/genproto/protobuf/field_mask"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	_ "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -768,7 +768,7 @@ type ProfileQuery struct {
 	// For example, search for profiles created since "2018-1-1".
 	TimeFilters []*TimeFilter `protobuf:"bytes,8,rep,name=time_filters,json=timeFilters,proto3" json:"time_filters,omitempty"`
 	// The hirable filter specifies the profile's hirable status to match on.
-	HirableFilter *wrappers.BoolValue `protobuf:"bytes,9,opt,name=hirable_filter,json=hirableFilter,proto3" json:"hirable_filter,omitempty"`
+	HirableFilter *wrapperspb.BoolValue `protobuf:"bytes,9,opt,name=hirable_filter,json=hirableFilter,proto3" json:"hirable_filter,omitempty"`
 	// The application date filters specify application date ranges to match on.
 	ApplicationDateFilters []*ApplicationDateFilter `protobuf:"bytes,10,rep,name=application_date_filters,json=applicationDateFilters,proto3" json:"application_date_filters,omitempty"`
 	// The application outcome notes filters specify the notes for the outcome of
@@ -933,7 +933,7 @@ func (x *ProfileQuery) GetTimeFilters() []*TimeFilter {
 	return nil
 }
 
-func (x *ProfileQuery) GetHirableFilter() *wrappers.BoolValue {
+func (x *ProfileQuery) GetHirableFilter() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.HirableFilter
 	}
@@ -1209,7 +1209,7 @@ type CommuteFilter struct {
 	StartCoordinates *latlng.LatLng `protobuf:"bytes,2,opt,name=start_coordinates,json=startCoordinates,proto3" json:"start_coordinates,omitempty"`
 	// Required. The maximum travel time in seconds. The maximum allowed value is `3600s`
 	// (one hour). Format is `123s`.
-	TravelDuration *duration.Duration `protobuf:"bytes,3,opt,name=travel_duration,json=travelDuration,proto3" json:"travel_duration,omitempty"`
+	TravelDuration *durationpb.Duration `protobuf:"bytes,3,opt,name=travel_duration,json=travelDuration,proto3" json:"travel_duration,omitempty"`
 	// If `true`, jobs without street level addresses may also be returned.
 	// For city level addresses, the city center is used. For state and coarser
 	// level addresses, text matching is used.
@@ -1270,7 +1270,7 @@ func (x *CommuteFilter) GetStartCoordinates() *latlng.LatLng {
 	return nil
 }
 
-func (x *CommuteFilter) GetTravelDuration() *duration.Duration {
+func (x *CommuteFilter) GetTravelDuration() *durationpb.Duration {
 	if x != nil {
 		return x.TravelDuration
 	}
@@ -1605,9 +1605,9 @@ type WorkExperienceFilter struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The minimum duration of the work experience (inclusive).
-	MinExperience *duration.Duration `protobuf:"bytes,1,opt,name=min_experience,json=minExperience,proto3" json:"min_experience,omitempty"`
+	MinExperience *durationpb.Duration `protobuf:"bytes,1,opt,name=min_experience,json=minExperience,proto3" json:"min_experience,omitempty"`
 	// The maximum duration of the work experience (exclusive).
-	MaxExperience *duration.Duration `protobuf:"bytes,2,opt,name=max_experience,json=maxExperience,proto3" json:"max_experience,omitempty"`
+	MaxExperience *durationpb.Duration `protobuf:"bytes,2,opt,name=max_experience,json=maxExperience,proto3" json:"max_experience,omitempty"`
 }
 
 func (x *WorkExperienceFilter) Reset() {
@@ -1642,14 +1642,14 @@ func (*WorkExperienceFilter) Descriptor() ([]byte, []int) {
 	return file_google_cloud_talent_v4beta1_filters_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *WorkExperienceFilter) GetMinExperience() *duration.Duration {
+func (x *WorkExperienceFilter) GetMinExperience() *durationpb.Duration {
 	if x != nil {
 		return x.MinExperience
 	}
 	return nil
 }
 
-func (x *WorkExperienceFilter) GetMaxExperience() *duration.Duration {
+func (x *WorkExperienceFilter) GetMaxExperience() *durationpb.Duration {
 	if x != nil {
 		return x.MaxExperience
 	}
@@ -1860,11 +1860,11 @@ type TimeFilter struct {
 	// Start timestamp, matching profiles with the start time. If this field
 	// missing, The API matches profiles with create / update timestamp before the
 	// end timestamp.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End timestamp, matching profiles with the end time. If this field
 	// missing, The API matches profiles with create / update timestamp after the
 	// start timestamp.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Specifies which time field to filter profiles.
 	//
 	// Defaults to [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
@@ -1903,14 +1903,14 @@ func (*TimeFilter) Descriptor() ([]byte, []int) {
 	return file_google_cloud_talent_v4beta1_filters_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *TimeFilter) GetStartTime() *timestamp.Timestamp {
+func (x *TimeFilter) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *TimeFilter) GetEndTime() *timestamp.Timestamp {
+func (x *TimeFilter) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -2532,16 +2532,16 @@ var file_google_cloud_talent_v4beta1_filters_proto_goTypes = []interface{}{
 	(JobCategory)(0),                           // 22: google.cloud.talent.v4beta1.JobCategory
 	(EmploymentType)(0),                        // 23: google.cloud.talent.v4beta1.EmploymentType
 	(*TimestampRange)(nil),                     // 24: google.cloud.talent.v4beta1.TimestampRange
-	(*wrappers.BoolValue)(nil),                 // 25: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),               // 25: google.protobuf.BoolValue
 	(*latlng.LatLng)(nil),                      // 26: google.type.LatLng
 	(CompensationInfo_CompensationUnit)(0),     // 27: google.cloud.talent.v4beta1.CompensationInfo.CompensationUnit
 	(*CompensationInfo_CompensationRange)(nil), // 28: google.cloud.talent.v4beta1.CompensationInfo.CompensationRange
 	(CommuteMethod)(0),                         // 29: google.cloud.talent.v4beta1.CommuteMethod
-	(*duration.Duration)(nil),                  // 30: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                // 30: google.protobuf.Duration
 	(*timeofday.TimeOfDay)(nil),                // 31: google.type.TimeOfDay
 	(DegreeType)(0),                            // 32: google.cloud.talent.v4beta1.DegreeType
 	(*date.Date)(nil),                          // 33: google.type.Date
-	(*timestamp.Timestamp)(nil),                // 34: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),              // 34: google.protobuf.Timestamp
 	(AvailabilitySignalType)(0),                // 35: google.cloud.talent.v4beta1.AvailabilitySignalType
 }
 var file_google_cloud_talent_v4beta1_filters_proto_depIdxs = []int32{

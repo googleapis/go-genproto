@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -175,10 +175,10 @@ type ScanRun struct {
 	// execution state reaches "FINISHED".
 	ResultState ScanRun_ResultState `protobuf:"varint,3,opt,name=result_state,json=resultState,proto3,enum=google.cloud.websecurityscanner.v1alpha.ScanRun_ResultState" json:"result_state,omitempty"`
 	// The time at which the ScanRun started.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The time at which the ScanRun reached termination state - that the ScanRun
 	// is either finished or stopped by user.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The number of URLs crawled during this ScanRun. If the scan is in progress,
 	// the value represents the number of URLs crawled up to now.
 	UrlsCrawledCount int64 `protobuf:"varint,6,opt,name=urls_crawled_count,json=urlsCrawledCount,proto3" json:"urls_crawled_count,omitempty"`
@@ -249,14 +249,14 @@ func (x *ScanRun) GetResultState() ScanRun_ResultState {
 	return ScanRun_RESULT_STATE_UNSPECIFIED
 }
 
-func (x *ScanRun) GetStartTime() *timestamp.Timestamp {
+func (x *ScanRun) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *ScanRun) GetEndTime() *timestamp.Timestamp {
+func (x *ScanRun) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -383,10 +383,10 @@ func file_google_cloud_websecurityscanner_v1alpha_scan_run_proto_rawDescGZIP() [
 var file_google_cloud_websecurityscanner_v1alpha_scan_run_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_google_cloud_websecurityscanner_v1alpha_scan_run_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_cloud_websecurityscanner_v1alpha_scan_run_proto_goTypes = []interface{}{
-	(ScanRun_ExecutionState)(0), // 0: google.cloud.websecurityscanner.v1alpha.ScanRun.ExecutionState
-	(ScanRun_ResultState)(0),    // 1: google.cloud.websecurityscanner.v1alpha.ScanRun.ResultState
-	(*ScanRun)(nil),             // 2: google.cloud.websecurityscanner.v1alpha.ScanRun
-	(*timestamp.Timestamp)(nil), // 3: google.protobuf.Timestamp
+	(ScanRun_ExecutionState)(0),   // 0: google.cloud.websecurityscanner.v1alpha.ScanRun.ExecutionState
+	(ScanRun_ResultState)(0),      // 1: google.cloud.websecurityscanner.v1alpha.ScanRun.ResultState
+	(*ScanRun)(nil),               // 2: google.cloud.websecurityscanner.v1alpha.ScanRun
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
 var file_google_cloud_websecurityscanner_v1alpha_scan_run_proto_depIdxs = []int32{
 	0, // 0: google.cloud.websecurityscanner.v1alpha.ScanRun.execution_state:type_name -> google.cloud.websecurityscanner.v1alpha.ScanRun.ExecutionState

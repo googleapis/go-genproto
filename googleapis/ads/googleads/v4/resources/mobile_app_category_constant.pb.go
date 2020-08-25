@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,9 +54,9 @@ type MobileAppCategoryConstant struct {
 	// `mobileAppCategoryConstants/{mobile_app_category_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the mobile app category constant.
-	Id *wrappers.Int32Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int32Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. Mobile app category name.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 }
 
 func (x *MobileAppCategoryConstant) Reset() {
@@ -98,14 +98,14 @@ func (x *MobileAppCategoryConstant) GetResourceName() string {
 	return ""
 }
 
-func (x *MobileAppCategoryConstant) GetId() *wrappers.Int32Value {
+func (x *MobileAppCategoryConstant) GetId() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *MobileAppCategoryConstant) GetName() *wrappers.StringValue {
+func (x *MobileAppCategoryConstant) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -186,8 +186,8 @@ func file_google_ads_googleads_v4_resources_mobile_app_category_constant_proto_r
 var file_google_ads_googleads_v4_resources_mobile_app_category_constant_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_mobile_app_category_constant_proto_goTypes = []interface{}{
 	(*MobileAppCategoryConstant)(nil), // 0: google.ads.googleads.v4.resources.MobileAppCategoryConstant
-	(*wrappers.Int32Value)(nil),       // 1: google.protobuf.Int32Value
-	(*wrappers.StringValue)(nil),      // 2: google.protobuf.StringValue
+	(*wrapperspb.Int32Value)(nil),     // 1: google.protobuf.Int32Value
+	(*wrapperspb.StringValue)(nil),    // 2: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v4_resources_mobile_app_category_constant_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.resources.MobileAppCategoryConstant.id:type_name -> google.protobuf.Int32Value

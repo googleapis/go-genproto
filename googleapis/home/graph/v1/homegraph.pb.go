@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -379,11 +379,11 @@ type ReportStateAndNotificationDevice struct {
 	// States of devices to update. See the **Device STATES** section
 	// of the individual trait [reference
 	// guides](https://developers.google.com/assistant/smarthome/traits).
-	States *_struct.Struct `protobuf:"bytes,1,opt,name=states,proto3" json:"states,omitempty"`
+	States *structpb.Struct `protobuf:"bytes,1,opt,name=states,proto3" json:"states,omitempty"`
 	// Notifications metadata for devices. See the **Device NOTIFICATIONS**
 	// section of the individual trait [reference
 	// guides](https://developers.google.com/assistant/smarthome/traits).
-	Notifications *_struct.Struct `protobuf:"bytes,2,opt,name=notifications,proto3" json:"notifications,omitempty"`
+	Notifications *structpb.Struct `protobuf:"bytes,2,opt,name=notifications,proto3" json:"notifications,omitempty"`
 }
 
 func (x *ReportStateAndNotificationDevice) Reset() {
@@ -418,14 +418,14 @@ func (*ReportStateAndNotificationDevice) Descriptor() ([]byte, []int) {
 	return file_google_home_graph_v1_homegraph_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ReportStateAndNotificationDevice) GetStates() *_struct.Struct {
+func (x *ReportStateAndNotificationDevice) GetStates() *structpb.Struct {
 	if x != nil {
 		return x.States
 	}
 	return nil
 }
 
-func (x *ReportStateAndNotificationDevice) GetNotifications() *_struct.Struct {
+func (x *ReportStateAndNotificationDevice) GetNotifications() *structpb.Struct {
 	if x != nil {
 		return x.Notifications
 	}
@@ -802,7 +802,7 @@ type QueryResponsePayload struct {
 
 	// States of the devices. Map of third-party device ID to struct of device
 	// states.
-	Devices map[string]*_struct.Struct `protobuf:"bytes,1,rep,name=devices,proto3" json:"devices,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Devices map[string]*structpb.Struct `protobuf:"bytes,1,rep,name=devices,proto3" json:"devices,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *QueryResponsePayload) Reset() {
@@ -837,7 +837,7 @@ func (*QueryResponsePayload) Descriptor() ([]byte, []int) {
 	return file_google_home_graph_v1_homegraph_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *QueryResponsePayload) GetDevices() map[string]*_struct.Struct {
+func (x *QueryResponsePayload) GetDevices() map[string]*structpb.Struct {
 	if x != nil {
 		return x.Devices
 	}
@@ -1296,9 +1296,9 @@ var file_google_home_graph_v1_homegraph_proto_goTypes = []interface{}{
 	(*SyncResponse)(nil),                       // 14: google.home.graph.v1.SyncResponse
 	(*SyncResponsePayload)(nil),                // 15: google.home.graph.v1.SyncResponsePayload
 	nil,                                        // 16: google.home.graph.v1.QueryResponsePayload.DevicesEntry
-	(*_struct.Struct)(nil),                     // 17: google.protobuf.Struct
+	(*structpb.Struct)(nil),                    // 17: google.protobuf.Struct
 	(*Device)(nil),                             // 18: google.home.graph.v1.Device
-	(*empty.Empty)(nil),                        // 19: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                      // 19: google.protobuf.Empty
 }
 var file_google_home_graph_v1_homegraph_proto_depIdxs = []int32{
 	4,  // 0: google.home.graph.v1.ReportStateAndNotificationRequest.payload:type_name -> google.home.graph.v1.StateAndNotificationPayload
@@ -1603,7 +1603,7 @@ type HomeGraphApiServiceClient interface {
 	// [DeleteAgentUserRequest][google.home.graph.v1.DeleteAgentUserRequest]).
 	// This request must be authorized using service account credentials from your
 	// Actions console project.
-	DeleteAgentUser(ctx context.Context, in *DeleteAgentUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAgentUser(ctx context.Context, in *DeleteAgentUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets the current states in Home Graph for the given set of the third-party
 	// user's devices.
 	//
@@ -1647,8 +1647,8 @@ func (c *homeGraphApiServiceClient) ReportStateAndNotification(ctx context.Conte
 	return out, nil
 }
 
-func (c *homeGraphApiServiceClient) DeleteAgentUser(ctx context.Context, in *DeleteAgentUserRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *homeGraphApiServiceClient) DeleteAgentUser(ctx context.Context, in *DeleteAgentUserRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.home.graph.v1.HomeGraphApiService/DeleteAgentUser", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1717,7 +1717,7 @@ type HomeGraphApiServiceServer interface {
 	// [DeleteAgentUserRequest][google.home.graph.v1.DeleteAgentUserRequest]).
 	// This request must be authorized using service account credentials from your
 	// Actions console project.
-	DeleteAgentUser(context.Context, *DeleteAgentUserRequest) (*empty.Empty, error)
+	DeleteAgentUser(context.Context, *DeleteAgentUserRequest) (*emptypb.Empty, error)
 	// Gets the current states in Home Graph for the given set of the third-party
 	// user's devices.
 	//
@@ -1745,7 +1745,7 @@ func (*UnimplementedHomeGraphApiServiceServer) RequestSyncDevices(context.Contex
 func (*UnimplementedHomeGraphApiServiceServer) ReportStateAndNotification(context.Context, *ReportStateAndNotificationRequest) (*ReportStateAndNotificationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReportStateAndNotification not implemented")
 }
-func (*UnimplementedHomeGraphApiServiceServer) DeleteAgentUser(context.Context, *DeleteAgentUserRequest) (*empty.Empty, error) {
+func (*UnimplementedHomeGraphApiServiceServer) DeleteAgentUser(context.Context, *DeleteAgentUserRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAgentUser not implemented")
 }
 func (*UnimplementedHomeGraphApiServiceServer) Query(context.Context, *QueryRequest) (*QueryResponse, error) {

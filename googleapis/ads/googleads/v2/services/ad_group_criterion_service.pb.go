@@ -30,12 +30,12 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v2/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -185,7 +185,7 @@ type AdGroupCriterionOperation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// FieldMask that determines which resource fields are modified in an update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// The list of policy violation keys that should not cause a
 	// PolicyViolationError to be reported. Not all policy violations are
 	// exemptable, please refer to the is_exemptible field in the returned
@@ -237,7 +237,7 @@ func (*AdGroupCriterionOperation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_services_ad_group_criterion_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *AdGroupCriterionOperation) GetUpdateMask() *field_mask.FieldMask {
+func (x *AdGroupCriterionOperation) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -580,7 +580,7 @@ var file_google_ads_googleads_v2_services_ad_group_criterion_service_proto_goTyp
 	(*AdGroupCriterionOperation)(nil),     // 2: google.ads.googleads.v2.services.AdGroupCriterionOperation
 	(*MutateAdGroupCriteriaResponse)(nil), // 3: google.ads.googleads.v2.services.MutateAdGroupCriteriaResponse
 	(*MutateAdGroupCriterionResult)(nil),  // 4: google.ads.googleads.v2.services.MutateAdGroupCriterionResult
-	(*field_mask.FieldMask)(nil),          // 5: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),         // 5: google.protobuf.FieldMask
 	(*common.PolicyViolationKey)(nil),     // 6: google.ads.googleads.v2.common.PolicyViolationKey
 	(*resources.AdGroupCriterion)(nil),    // 7: google.ads.googleads.v2.resources.AdGroupCriterion
 	(*status.Status)(nil),                 // 8: google.rpc.Status

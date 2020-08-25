@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	any "github.com/golang/protobuf/ptypes/any"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -52,15 +52,15 @@ type OperationMetadata struct {
 	// The Google Cloud Project in which the job is scoped.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// The time at which the job was submitted to the Genomics service.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The time at which the job began to run.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The time at which the job stopped running.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The original request that started the operation. Note that this will be in
 	// current version of the API. If the operation was started with v1beta2 API
 	// and a GetOperation is performed on v1 API, a v1 request will be returned.
-	Request *any.Any `protobuf:"bytes,5,opt,name=request,proto3" json:"request,omitempty"`
+	Request *anypb.Any `protobuf:"bytes,5,opt,name=request,proto3" json:"request,omitempty"`
 	// Optional event messages that were generated during the job's execution.
 	// This also contains any warnings that were generated during import
 	// or export.
@@ -69,7 +69,7 @@ type OperationMetadata struct {
 	// caller when submitting the request that creates the operation.
 	ClientId string `protobuf:"bytes,7,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	// Runtime metadata on this Operation.
-	RuntimeMetadata *any.Any `protobuf:"bytes,8,opt,name=runtime_metadata,json=runtimeMetadata,proto3" json:"runtime_metadata,omitempty"`
+	RuntimeMetadata *anypb.Any `protobuf:"bytes,8,opt,name=runtime_metadata,json=runtimeMetadata,proto3" json:"runtime_metadata,omitempty"`
 	// Optionally provided by the caller when submitting the request that creates
 	// the operation.
 	Labels map[string]string `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
@@ -114,28 +114,28 @@ func (x *OperationMetadata) GetProjectId() string {
 	return ""
 }
 
-func (x *OperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetStartTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetRequest() *any.Any {
+func (x *OperationMetadata) GetRequest() *anypb.Any {
 	if x != nil {
 		return x.Request
 	}
@@ -156,7 +156,7 @@ func (x *OperationMetadata) GetClientId() string {
 	return ""
 }
 
-func (x *OperationMetadata) GetRuntimeMetadata() *any.Any {
+func (x *OperationMetadata) GetRuntimeMetadata() *anypb.Any {
 	if x != nil {
 		return x.RuntimeMetadata
 	}
@@ -177,10 +177,10 @@ type OperationEvent struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Optional time of when event started.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Optional time of when event finished. An event can have a start time and no
 	// finish time. If an event has a finish time, there must be a start time.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Required description of event.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 }
@@ -217,14 +217,14 @@ func (*OperationEvent) Descriptor() ([]byte, []int) {
 	return file_google_genomics_v1_operations_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *OperationEvent) GetStartTime() *timestamp.Timestamp {
+func (x *OperationEvent) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *OperationEvent) GetEndTime() *timestamp.Timestamp {
+func (x *OperationEvent) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -320,11 +320,11 @@ func file_google_genomics_v1_operations_proto_rawDescGZIP() []byte {
 
 var file_google_genomics_v1_operations_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_google_genomics_v1_operations_proto_goTypes = []interface{}{
-	(*OperationMetadata)(nil),   // 0: google.genomics.v1.OperationMetadata
-	(*OperationEvent)(nil),      // 1: google.genomics.v1.OperationEvent
-	nil,                         // 2: google.genomics.v1.OperationMetadata.LabelsEntry
-	(*timestamp.Timestamp)(nil), // 3: google.protobuf.Timestamp
-	(*any.Any)(nil),             // 4: google.protobuf.Any
+	(*OperationMetadata)(nil),     // 0: google.genomics.v1.OperationMetadata
+	(*OperationEvent)(nil),        // 1: google.genomics.v1.OperationEvent
+	nil,                           // 2: google.genomics.v1.OperationMetadata.LabelsEntry
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
+	(*anypb.Any)(nil),             // 4: google.protobuf.Any
 }
 var file_google_genomics_v1_operations_proto_depIdxs = []int32{
 	3, // 0: google.genomics.v1.OperationMetadata.create_time:type_name -> google.protobuf.Timestamp

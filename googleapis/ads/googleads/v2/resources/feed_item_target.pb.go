@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -55,11 +55,11 @@ type FeedItemTarget struct {
 	// `customers/{customer_id}/feedItemTargets/{feed_id}~{feed_item_id}~{feed_item_target_type}~{feed_item_target_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The feed item to which this feed item target belongs.
-	FeedItem *wrappers.StringValue `protobuf:"bytes,2,opt,name=feed_item,json=feedItem,proto3" json:"feed_item,omitempty"`
+	FeedItem *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=feed_item,json=feedItem,proto3" json:"feed_item,omitempty"`
 	// Output only. The target type of this feed item target. This field is read-only.
 	FeedItemTargetType enums.FeedItemTargetTypeEnum_FeedItemTargetType `protobuf:"varint,3,opt,name=feed_item_target_type,json=feedItemTargetType,proto3,enum=google.ads.googleads.v2.enums.FeedItemTargetTypeEnum_FeedItemTargetType" json:"feed_item_target_type,omitempty"`
 	// Output only. The ID of the targeted resource. This field is read-only.
-	FeedItemTargetId *wrappers.Int64Value `protobuf:"bytes,6,opt,name=feed_item_target_id,json=feedItemTargetId,proto3" json:"feed_item_target_id,omitempty"`
+	FeedItemTargetId *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=feed_item_target_id,json=feedItemTargetId,proto3" json:"feed_item_target_id,omitempty"`
 	// The targeted resource.
 	//
 	// Types that are assignable to Target:
@@ -111,7 +111,7 @@ func (x *FeedItemTarget) GetResourceName() string {
 	return ""
 }
 
-func (x *FeedItemTarget) GetFeedItem() *wrappers.StringValue {
+func (x *FeedItemTarget) GetFeedItem() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FeedItem
 	}
@@ -125,7 +125,7 @@ func (x *FeedItemTarget) GetFeedItemTargetType() enums.FeedItemTargetTypeEnum_Fe
 	return enums.FeedItemTargetTypeEnum_UNSPECIFIED
 }
 
-func (x *FeedItemTarget) GetFeedItemTargetId() *wrappers.Int64Value {
+func (x *FeedItemTarget) GetFeedItemTargetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FeedItemTargetId
 	}
@@ -139,14 +139,14 @@ func (m *FeedItemTarget) GetTarget() isFeedItemTarget_Target {
 	return nil
 }
 
-func (x *FeedItemTarget) GetCampaign() *wrappers.StringValue {
+func (x *FeedItemTarget) GetCampaign() *wrapperspb.StringValue {
 	if x, ok := x.GetTarget().(*FeedItemTarget_Campaign); ok {
 		return x.Campaign
 	}
 	return nil
 }
 
-func (x *FeedItemTarget) GetAdGroup() *wrappers.StringValue {
+func (x *FeedItemTarget) GetAdGroup() *wrapperspb.StringValue {
 	if x, ok := x.GetTarget().(*FeedItemTarget_AdGroup); ok {
 		return x.AdGroup
 	}
@@ -160,7 +160,7 @@ func (x *FeedItemTarget) GetKeyword() *common.KeywordInfo {
 	return nil
 }
 
-func (x *FeedItemTarget) GetGeoTargetConstant() *wrappers.StringValue {
+func (x *FeedItemTarget) GetGeoTargetConstant() *wrapperspb.StringValue {
 	if x, ok := x.GetTarget().(*FeedItemTarget_GeoTargetConstant); ok {
 		return x.GeoTargetConstant
 	}
@@ -187,12 +187,12 @@ type isFeedItemTarget_Target interface {
 
 type FeedItemTarget_Campaign struct {
 	// Immutable. The targeted campaign.
-	Campaign *wrappers.StringValue `protobuf:"bytes,4,opt,name=campaign,proto3,oneof"`
+	Campaign *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=campaign,proto3,oneof"`
 }
 
 type FeedItemTarget_AdGroup struct {
 	// Immutable. The targeted ad group.
-	AdGroup *wrappers.StringValue `protobuf:"bytes,5,opt,name=ad_group,json=adGroup,proto3,oneof"`
+	AdGroup *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=ad_group,json=adGroup,proto3,oneof"`
 }
 
 type FeedItemTarget_Keyword struct {
@@ -202,7 +202,7 @@ type FeedItemTarget_Keyword struct {
 
 type FeedItemTarget_GeoTargetConstant struct {
 	// Immutable. The targeted geo target constant resource name.
-	GeoTargetConstant *wrappers.StringValue `protobuf:"bytes,8,opt,name=geo_target_constant,json=geoTargetConstant,proto3,oneof"`
+	GeoTargetConstant *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=geo_target_constant,json=geoTargetConstant,proto3,oneof"`
 }
 
 type FeedItemTarget_Device struct {
@@ -360,9 +360,9 @@ func file_google_ads_googleads_v2_resources_feed_item_target_proto_rawDescGZIP()
 var file_google_ads_googleads_v2_resources_feed_item_target_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_feed_item_target_proto_goTypes = []interface{}{
 	(*FeedItemTarget)(nil),                                   // 0: google.ads.googleads.v2.resources.FeedItemTarget
-	(*wrappers.StringValue)(nil),                             // 1: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                           // 1: google.protobuf.StringValue
 	(enums.FeedItemTargetTypeEnum_FeedItemTargetType)(0),     // 2: google.ads.googleads.v2.enums.FeedItemTargetTypeEnum.FeedItemTargetType
-	(*wrappers.Int64Value)(nil),                              // 3: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                            // 3: google.protobuf.Int64Value
 	(*common.KeywordInfo)(nil),                               // 4: google.ads.googleads.v2.common.KeywordInfo
 	(enums.FeedItemTargetDeviceEnum_FeedItemTargetDevice)(0), // 5: google.ads.googleads.v2.enums.FeedItemTargetDeviceEnum.FeedItemTargetDevice
 	(*common.AdScheduleInfo)(nil),                            // 6: google.ads.googleads.v2.common.AdScheduleInfo

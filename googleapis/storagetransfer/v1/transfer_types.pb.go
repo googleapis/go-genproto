@@ -25,14 +25,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	code "google.golang.org/genproto/googleapis/rpc/code"
 	date "google.golang.org/genproto/googleapis/type/date"
 	timeofday "google.golang.org/genproto/googleapis/type/timeofday"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -294,10 +294,10 @@ type ObjectConditions struct {
 	// `NOW` - `maxTimeElapsedSinceLastModification` and less than
 	// `NOW` - `minTimeElapsedSinceLastModification`, or not have a
 	// `lastModificationTime`.
-	MinTimeElapsedSinceLastModification *duration.Duration `protobuf:"bytes,1,opt,name=min_time_elapsed_since_last_modification,json=minTimeElapsedSinceLastModification,proto3" json:"min_time_elapsed_since_last_modification,omitempty"`
+	MinTimeElapsedSinceLastModification *durationpb.Duration `protobuf:"bytes,1,opt,name=min_time_elapsed_since_last_modification,json=minTimeElapsedSinceLastModification,proto3" json:"min_time_elapsed_since_last_modification,omitempty"`
 	// `maxTimeElapsedSinceLastModification` is the complement to
 	// `minTimeElapsedSinceLastModification`.
-	MaxTimeElapsedSinceLastModification *duration.Duration `protobuf:"bytes,2,opt,name=max_time_elapsed_since_last_modification,json=maxTimeElapsedSinceLastModification,proto3" json:"max_time_elapsed_since_last_modification,omitempty"`
+	MaxTimeElapsedSinceLastModification *durationpb.Duration `protobuf:"bytes,2,opt,name=max_time_elapsed_since_last_modification,json=maxTimeElapsedSinceLastModification,proto3" json:"max_time_elapsed_since_last_modification,omitempty"`
 	// If `includePrefixes` is specified, objects that satisfy the object
 	// conditions must have names that start with one of the `includePrefixes`
 	// and that do not start with any of the `excludePrefixes`. If
@@ -372,14 +372,14 @@ func (*ObjectConditions) Descriptor() ([]byte, []int) {
 	return file_google_storagetransfer_v1_transfer_types_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ObjectConditions) GetMinTimeElapsedSinceLastModification() *duration.Duration {
+func (x *ObjectConditions) GetMinTimeElapsedSinceLastModification() *durationpb.Duration {
 	if x != nil {
 		return x.MinTimeElapsedSinceLastModification
 	}
 	return nil
 }
 
-func (x *ObjectConditions) GetMaxTimeElapsedSinceLastModification() *duration.Duration {
+func (x *ObjectConditions) GetMaxTimeElapsedSinceLastModification() *durationpb.Duration {
 	if x != nil {
 		return x.MaxTimeElapsedSinceLastModification
 	}
@@ -944,11 +944,11 @@ type TransferJob struct {
 	// change would not affect the current operation.
 	Status TransferJob_Status `protobuf:"varint,6,opt,name=status,proto3,enum=google.storagetransfer.v1.TransferJob_Status" json:"status,omitempty"`
 	// This field cannot be changed by user requests.
-	CreationTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=creation_time,json=creationTime,proto3" json:"creation_time,omitempty"`
+	CreationTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=creation_time,json=creationTime,proto3" json:"creation_time,omitempty"`
 	// This field cannot be changed by user requests.
-	LastModificationTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=last_modification_time,json=lastModificationTime,proto3" json:"last_modification_time,omitempty"`
+	LastModificationTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=last_modification_time,json=lastModificationTime,proto3" json:"last_modification_time,omitempty"`
 	// This field cannot be changed by user requests.
-	DeletionTime *timestamp.Timestamp `protobuf:"bytes,9,opt,name=deletion_time,json=deletionTime,proto3" json:"deletion_time,omitempty"`
+	DeletionTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=deletion_time,json=deletionTime,proto3" json:"deletion_time,omitempty"`
 }
 
 func (x *TransferJob) Reset() {
@@ -1025,21 +1025,21 @@ func (x *TransferJob) GetStatus() TransferJob_Status {
 	return TransferJob_STATUS_UNSPECIFIED
 }
 
-func (x *TransferJob) GetCreationTime() *timestamp.Timestamp {
+func (x *TransferJob) GetCreationTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreationTime
 	}
 	return nil
 }
 
-func (x *TransferJob) GetLastModificationTime() *timestamp.Timestamp {
+func (x *TransferJob) GetLastModificationTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastModificationTime
 	}
 	return nil
 }
 
-func (x *TransferJob) GetDeletionTime() *timestamp.Timestamp {
+func (x *TransferJob) GetDeletionTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.DeletionTime
 	}
@@ -1380,9 +1380,9 @@ type TransferOperation struct {
 	// Required.
 	TransferSpec *TransferSpec `protobuf:"bytes,3,opt,name=transfer_spec,json=transferSpec,proto3" json:"transfer_spec,omitempty"`
 	// Start time of this transfer execution.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End time of this transfer execution.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Status of the transfer operation.
 	Status TransferOperation_Status `protobuf:"varint,6,opt,name=status,proto3,enum=google.storagetransfer.v1.TransferOperation_Status" json:"status,omitempty"`
 	// Information about the progress of the transfer operation.
@@ -1446,14 +1446,14 @@ func (x *TransferOperation) GetTransferSpec() *TransferSpec {
 	return nil
 }
 
-func (x *TransferOperation) GetStartTime() *timestamp.Timestamp {
+func (x *TransferOperation) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *TransferOperation) GetEndTime() *timestamp.Timestamp {
+func (x *TransferOperation) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -1817,10 +1817,10 @@ var file_google_storagetransfer_v1_transfer_types_proto_goTypes = []interface{}{
 	(*ErrorSummary)(nil),          // 13: google.storagetransfer.v1.ErrorSummary
 	(*TransferCounters)(nil),      // 14: google.storagetransfer.v1.TransferCounters
 	(*TransferOperation)(nil),     // 15: google.storagetransfer.v1.TransferOperation
-	(*duration.Duration)(nil),     // 16: google.protobuf.Duration
+	(*durationpb.Duration)(nil),   // 16: google.protobuf.Duration
 	(*date.Date)(nil),             // 17: google.type.Date
 	(*timeofday.TimeOfDay)(nil),   // 18: google.type.TimeOfDay
-	(*timestamp.Timestamp)(nil),   // 19: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil), // 19: google.protobuf.Timestamp
 	(code.Code)(0),                // 20: google.rpc.Code
 }
 var file_google_storagetransfer_v1_transfer_types_proto_depIdxs = []int32{

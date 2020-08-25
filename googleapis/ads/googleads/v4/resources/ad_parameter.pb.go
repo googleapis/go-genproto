@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -59,9 +59,9 @@ type AdParameter struct {
 	// `customers/{customer_id}/adParameters/{ad_group_id}~{criterion_id}~{parameter_index}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The ad group criterion that this ad parameter belongs to.
-	AdGroupCriterion *wrappers.StringValue `protobuf:"bytes,2,opt,name=ad_group_criterion,json=adGroupCriterion,proto3" json:"ad_group_criterion,omitempty"`
+	AdGroupCriterion *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=ad_group_criterion,json=adGroupCriterion,proto3" json:"ad_group_criterion,omitempty"`
 	// Immutable. The unique index of this ad parameter. Must be either 1 or 2.
-	ParameterIndex *wrappers.Int64Value `protobuf:"bytes,3,opt,name=parameter_index,json=parameterIndex,proto3" json:"parameter_index,omitempty"`
+	ParameterIndex *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=parameter_index,json=parameterIndex,proto3" json:"parameter_index,omitempty"`
 	// Numeric value to insert into the ad text. The following restrictions
 	//  apply:
 	//  - Can use comma or period as a separator, with an optional period or
@@ -75,7 +75,7 @@ type AdParameter struct {
 	//  - Can use plus or minus. For example, -10.99 and 25+ are valid.
 	//  - Can use '/' between two numbers. For example 4/1 and 0.95/0.45 are
 	//    valid.
-	InsertionText *wrappers.StringValue `protobuf:"bytes,4,opt,name=insertion_text,json=insertionText,proto3" json:"insertion_text,omitempty"`
+	InsertionText *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=insertion_text,json=insertionText,proto3" json:"insertion_text,omitempty"`
 }
 
 func (x *AdParameter) Reset() {
@@ -117,21 +117,21 @@ func (x *AdParameter) GetResourceName() string {
 	return ""
 }
 
-func (x *AdParameter) GetAdGroupCriterion() *wrappers.StringValue {
+func (x *AdParameter) GetAdGroupCriterion() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroupCriterion
 	}
 	return nil
 }
 
-func (x *AdParameter) GetParameterIndex() *wrappers.Int64Value {
+func (x *AdParameter) GetParameterIndex() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ParameterIndex
 	}
 	return nil
 }
 
-func (x *AdParameter) GetInsertionText() *wrappers.StringValue {
+func (x *AdParameter) GetInsertionText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.InsertionText
 	}
@@ -216,9 +216,9 @@ func file_google_ads_googleads_v4_resources_ad_parameter_proto_rawDescGZIP() []b
 
 var file_google_ads_googleads_v4_resources_ad_parameter_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_ad_parameter_proto_goTypes = []interface{}{
-	(*AdParameter)(nil),          // 0: google.ads.googleads.v4.resources.AdParameter
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),  // 2: google.protobuf.Int64Value
+	(*AdParameter)(nil),            // 0: google.ads.googleads.v4.resources.AdParameter
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),  // 2: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v4_resources_ad_parameter_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.resources.AdParameter.ad_group_criterion:type_name -> google.protobuf.StringValue

@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,7 +56,7 @@ type BillingSetup struct {
 	// `customers/{customer_id}/billingSetups/{billing_setup_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the billing setup.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. The status of the billing setup.
 	Status enums.BillingSetupStatusEnum_BillingSetupStatus `protobuf:"varint,3,opt,name=status,proto3,enum=google.ads.googleads.v3.enums.BillingSetupStatusEnum_BillingSetupStatus" json:"status,omitempty"`
 	// Immutable. The resource name of the payments account associated with this billing
@@ -67,7 +67,7 @@ type BillingSetup struct {
 	// account (and then payments_account_info should not be set).
 	// When getting a billing setup, this and payments_account_info will be
 	// populated.
-	PaymentsAccount *wrappers.StringValue `protobuf:"bytes,11,opt,name=payments_account,json=paymentsAccount,proto3" json:"payments_account,omitempty"`
+	PaymentsAccount *wrapperspb.StringValue `protobuf:"bytes,11,opt,name=payments_account,json=paymentsAccount,proto3" json:"payments_account,omitempty"`
 	// Immutable. The payments account information associated with this billing setup.
 	// When setting up billing, this is used to signup with a new payments account
 	// (and then payments_account should not be set).
@@ -134,7 +134,7 @@ func (x *BillingSetup) GetResourceName() string {
 	return ""
 }
 
-func (x *BillingSetup) GetId() *wrappers.Int64Value {
+func (x *BillingSetup) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
@@ -148,7 +148,7 @@ func (x *BillingSetup) GetStatus() enums.BillingSetupStatusEnum_BillingSetupStat
 	return enums.BillingSetupStatusEnum_UNSPECIFIED
 }
 
-func (x *BillingSetup) GetPaymentsAccount() *wrappers.StringValue {
+func (x *BillingSetup) GetPaymentsAccount() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PaymentsAccount
 	}
@@ -169,7 +169,7 @@ func (m *BillingSetup) GetStartTime() isBillingSetup_StartTime {
 	return nil
 }
 
-func (x *BillingSetup) GetStartDateTime() *wrappers.StringValue {
+func (x *BillingSetup) GetStartDateTime() *wrapperspb.StringValue {
 	if x, ok := x.GetStartTime().(*BillingSetup_StartDateTime); ok {
 		return x.StartDateTime
 	}
@@ -190,7 +190,7 @@ func (m *BillingSetup) GetEndTime() isBillingSetup_EndTime {
 	return nil
 }
 
-func (x *BillingSetup) GetEndDateTime() *wrappers.StringValue {
+func (x *BillingSetup) GetEndDateTime() *wrapperspb.StringValue {
 	if x, ok := x.GetEndTime().(*BillingSetup_EndDateTime); ok {
 		return x.EndDateTime
 	}
@@ -211,7 +211,7 @@ type isBillingSetup_StartTime interface {
 type BillingSetup_StartDateTime struct {
 	// Immutable. The start date time in yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format. Only a
 	// future time is allowed.
-	StartDateTime *wrappers.StringValue `protobuf:"bytes,9,opt,name=start_date_time,json=startDateTime,proto3,oneof"`
+	StartDateTime *wrapperspb.StringValue `protobuf:"bytes,9,opt,name=start_date_time,json=startDateTime,proto3,oneof"`
 }
 
 type BillingSetup_StartTimeType struct {
@@ -229,7 +229,7 @@ type isBillingSetup_EndTime interface {
 
 type BillingSetup_EndDateTime struct {
 	// Output only. The end date time in yyyy-MM-dd or yyyy-MM-dd HH:mm:ss format.
-	EndDateTime *wrappers.StringValue `protobuf:"bytes,13,opt,name=end_date_time,json=endDateTime,proto3,oneof"`
+	EndDateTime *wrapperspb.StringValue `protobuf:"bytes,13,opt,name=end_date_time,json=endDateTime,proto3,oneof"`
 }
 
 type BillingSetup_EndTimeType struct {
@@ -251,24 +251,24 @@ type BillingSetup_PaymentsAccountInfo struct {
 	// billing setup.
 	//
 	// This must be passed as a string with dashes, e.g. "1234-5678-9012-3456".
-	PaymentsAccountId *wrappers.StringValue `protobuf:"bytes,1,opt,name=payments_account_id,json=paymentsAccountId,proto3" json:"payments_account_id,omitempty"`
+	PaymentsAccountId *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=payments_account_id,json=paymentsAccountId,proto3" json:"payments_account_id,omitempty"`
 	// Immutable. The name of the payments account associated with the billing setup.
 	//
 	// This enables the user to specify a meaningful name for a payments account
 	// to aid in reconciling monthly invoices.
 	//
 	// This name will be printed in the monthly invoices.
-	PaymentsAccountName *wrappers.StringValue `protobuf:"bytes,2,opt,name=payments_account_name,json=paymentsAccountName,proto3" json:"payments_account_name,omitempty"`
+	PaymentsAccountName *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=payments_account_name,json=paymentsAccountName,proto3" json:"payments_account_name,omitempty"`
 	// Immutable. A 12 digit id used to identify the payments profile associated with the
 	// billing setup.
 	//
 	// This must be passed in as a string with dashes, e.g. "1234-5678-9012".
-	PaymentsProfileId *wrappers.StringValue `protobuf:"bytes,3,opt,name=payments_profile_id,json=paymentsProfileId,proto3" json:"payments_profile_id,omitempty"`
+	PaymentsProfileId *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=payments_profile_id,json=paymentsProfileId,proto3" json:"payments_profile_id,omitempty"`
 	// Output only. The name of the payments profile associated with the billing setup.
-	PaymentsProfileName *wrappers.StringValue `protobuf:"bytes,4,opt,name=payments_profile_name,json=paymentsProfileName,proto3" json:"payments_profile_name,omitempty"`
+	PaymentsProfileName *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=payments_profile_name,json=paymentsProfileName,proto3" json:"payments_profile_name,omitempty"`
 	// Output only. A secondary payments profile id present in uncommon situations, e.g.
 	// when a sequential liability agreement has been arranged.
-	SecondaryPaymentsProfileId *wrappers.StringValue `protobuf:"bytes,5,opt,name=secondary_payments_profile_id,json=secondaryPaymentsProfileId,proto3" json:"secondary_payments_profile_id,omitempty"`
+	SecondaryPaymentsProfileId *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=secondary_payments_profile_id,json=secondaryPaymentsProfileId,proto3" json:"secondary_payments_profile_id,omitempty"`
 }
 
 func (x *BillingSetup_PaymentsAccountInfo) Reset() {
@@ -303,35 +303,35 @@ func (*BillingSetup_PaymentsAccountInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_resources_billing_setup_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (x *BillingSetup_PaymentsAccountInfo) GetPaymentsAccountId() *wrappers.StringValue {
+func (x *BillingSetup_PaymentsAccountInfo) GetPaymentsAccountId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PaymentsAccountId
 	}
 	return nil
 }
 
-func (x *BillingSetup_PaymentsAccountInfo) GetPaymentsAccountName() *wrappers.StringValue {
+func (x *BillingSetup_PaymentsAccountInfo) GetPaymentsAccountName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PaymentsAccountName
 	}
 	return nil
 }
 
-func (x *BillingSetup_PaymentsAccountInfo) GetPaymentsProfileId() *wrappers.StringValue {
+func (x *BillingSetup_PaymentsAccountInfo) GetPaymentsProfileId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PaymentsProfileId
 	}
 	return nil
 }
 
-func (x *BillingSetup_PaymentsAccountInfo) GetPaymentsProfileName() *wrappers.StringValue {
+func (x *BillingSetup_PaymentsAccountInfo) GetPaymentsProfileName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PaymentsProfileName
 	}
 	return nil
 }
 
-func (x *BillingSetup_PaymentsAccountInfo) GetSecondaryPaymentsProfileId() *wrappers.StringValue {
+func (x *BillingSetup_PaymentsAccountInfo) GetSecondaryPaymentsProfileId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SecondaryPaymentsProfileId
 	}
@@ -486,9 +486,9 @@ var file_google_ads_googleads_v3_resources_billing_setup_proto_msgTypes = make([
 var file_google_ads_googleads_v3_resources_billing_setup_proto_goTypes = []interface{}{
 	(*BillingSetup)(nil),                                 // 0: google.ads.googleads.v3.resources.BillingSetup
 	(*BillingSetup_PaymentsAccountInfo)(nil),             // 1: google.ads.googleads.v3.resources.BillingSetup.PaymentsAccountInfo
-	(*wrappers.Int64Value)(nil),                          // 2: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                        // 2: google.protobuf.Int64Value
 	(enums.BillingSetupStatusEnum_BillingSetupStatus)(0), // 3: google.ads.googleads.v3.enums.BillingSetupStatusEnum.BillingSetupStatus
-	(*wrappers.StringValue)(nil),                         // 4: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                       // 4: google.protobuf.StringValue
 	(enums.TimeTypeEnum_TimeType)(0),                     // 5: google.ads.googleads.v3.enums.TimeTypeEnum.TimeType
 }
 var file_google_ads_googleads_v3_resources_billing_setup_proto_depIdxs = []int32{
