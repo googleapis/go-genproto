@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -338,18 +338,18 @@ func (m *Type) GetTypeKind() isType_TypeKind {
 	return nil
 }
 
-func (x *Type) GetDyn() *empty.Empty {
+func (x *Type) GetDyn() *emptypb.Empty {
 	if x, ok := x.GetTypeKind().(*Type_Dyn); ok {
 		return x.Dyn
 	}
 	return nil
 }
 
-func (x *Type) GetNull() _struct.NullValue {
+func (x *Type) GetNull() structpb.NullValue {
 	if x, ok := x.GetTypeKind().(*Type_Null); ok {
 		return x.Null
 	}
-	return _struct.NullValue_NULL_VALUE
+	return structpb.NullValue_NULL_VALUE
 }
 
 func (x *Type) GetPrimitive() Type_PrimitiveType {
@@ -415,7 +415,7 @@ func (x *Type) GetType() *Type {
 	return nil
 }
 
-func (x *Type) GetError() *empty.Empty {
+func (x *Type) GetError() *emptypb.Empty {
 	if x, ok := x.GetTypeKind().(*Type_Error); ok {
 		return x.Error
 	}
@@ -435,12 +435,12 @@ type isType_TypeKind interface {
 
 type Type_Dyn struct {
 	// Dynamic type.
-	Dyn *empty.Empty `protobuf:"bytes,1,opt,name=dyn,proto3,oneof"`
+	Dyn *emptypb.Empty `protobuf:"bytes,1,opt,name=dyn,proto3,oneof"`
 }
 
 type Type_Null struct {
 	// Null value.
-	Null _struct.NullValue `protobuf:"varint,2,opt,name=null,proto3,enum=google.protobuf.NullValue,oneof"`
+	Null structpb.NullValue `protobuf:"varint,2,opt,name=null,proto3,enum=google.protobuf.NullValue,oneof"`
 }
 
 type Type_Primitive struct {
@@ -504,7 +504,7 @@ type Type_Error struct {
 	// During type-checking if an expression is an error, its type is propagated
 	// as the `ERROR` type. This permits the type-checker to discover other
 	// errors present in the expression.
-	Error *empty.Empty `protobuf:"bytes,12,opt,name=error,proto3,oneof"`
+	Error *emptypb.Empty `protobuf:"bytes,12,opt,name=error,proto3,oneof"`
 }
 
 type Type_AbstractType_ struct {
@@ -1422,8 +1422,8 @@ var file_google_api_expr_v1alpha1_checked_proto_goTypes = []interface{}{
 	(*Decl_FunctionDecl_Overload)(nil), // 14: google.api.expr.v1alpha1.Decl.FunctionDecl.Overload
 	(*SourceInfo)(nil),                 // 15: google.api.expr.v1alpha1.SourceInfo
 	(*Expr)(nil),                       // 16: google.api.expr.v1alpha1.Expr
-	(*empty.Empty)(nil),                // 17: google.protobuf.Empty
-	(_struct.NullValue)(0),             // 18: google.protobuf.NullValue
+	(*emptypb.Empty)(nil),              // 17: google.protobuf.Empty
+	(structpb.NullValue)(0),            // 18: google.protobuf.NullValue
 	(*Constant)(nil),                   // 19: google.api.expr.v1alpha1.Constant
 }
 var file_google_api_expr_v1alpha1_checked_proto_depIdxs = []int32{

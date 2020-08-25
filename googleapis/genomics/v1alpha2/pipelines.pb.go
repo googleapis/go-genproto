@@ -26,9 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	code "google.golang.org/genproto/googleapis/rpc/code"
@@ -37,6 +34,9 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -474,7 +474,7 @@ type RunPipelineArgs struct {
 	// How long to keep the VM up after a failure (for example docker command
 	// failed, copying input or output files failed, etc). While the VM is up, one
 	// can ssh into the VM to debug. Default is 0; maximum allowed value is 1 day.
-	KeepVmAliveOnFailureDuration *duration.Duration `protobuf:"bytes,8,opt,name=keep_vm_alive_on_failure_duration,json=keepVmAliveOnFailureDuration,proto3" json:"keep_vm_alive_on_failure_duration,omitempty"`
+	KeepVmAliveOnFailureDuration *durationpb.Duration `protobuf:"bytes,8,opt,name=keep_vm_alive_on_failure_duration,json=keepVmAliveOnFailureDuration,proto3" json:"keep_vm_alive_on_failure_duration,omitempty"`
 	// Labels to apply to this pipeline run. Labels will also be applied to
 	// compute resources (VM, disks) created by this pipeline run. When listing
 	// operations, operations can [filtered by labels]
@@ -571,7 +571,7 @@ func (x *RunPipelineArgs) GetLogging() *LoggingOptions {
 	return nil
 }
 
-func (x *RunPipelineArgs) GetKeepVmAliveOnFailureDuration() *duration.Duration {
+func (x *RunPipelineArgs) GetKeepVmAliveOnFailureDuration() *durationpb.Duration {
 	if x != nil {
 		return x.KeepVmAliveOnFailureDuration
 	}
@@ -1105,7 +1105,7 @@ type TimestampEvent struct {
 	// String indicating the type of event
 	Description string `protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
 	// The time this event occured.
-	Timestamp *timestamp.Timestamp `protobuf:"bytes,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	Timestamp *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 }
 
 func (x *TimestampEvent) Reset() {
@@ -1147,7 +1147,7 @@ func (x *TimestampEvent) GetDescription() string {
 	return ""
 }
 
-func (x *TimestampEvent) GetTimestamp() *timestamp.Timestamp {
+func (x *TimestampEvent) GetTimestamp() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Timestamp
 	}
@@ -2357,11 +2357,11 @@ var file_google_genomics_v1alpha2_pipelines_proto_goTypes = []interface{}{
 	nil,                                     // 27: google.genomics.v1alpha2.ControllerConfig.GcsSinksEntry
 	(*PipelineResources_Disk)(nil),          // 28: google.genomics.v1alpha2.PipelineResources.Disk
 	(*PipelineParameter_LocalCopy)(nil),     // 29: google.genomics.v1alpha2.PipelineParameter.LocalCopy
-	(*duration.Duration)(nil),               // 30: google.protobuf.Duration
-	(*timestamp.Timestamp)(nil),             // 31: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),             // 30: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),           // 31: google.protobuf.Timestamp
 	(code.Code)(0),                          // 32: google.rpc.Code
 	(*longrunning.Operation)(nil),           // 33: google.longrunning.Operation
-	(*empty.Empty)(nil),                     // 34: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                   // 34: google.protobuf.Empty
 }
 var file_google_genomics_v1alpha2_pipelines_proto_depIdxs = []int32{
 	1,  // 0: google.genomics.v1alpha2.RuntimeMetadata.compute_engine:type_name -> google.genomics.v1alpha2.ComputeEngine
@@ -2750,14 +2750,14 @@ type PipelinesV1Alpha2Client interface {
 	// Deletes a pipeline based on ID.
 	//
 	// Caller must have WRITE permission to the project.
-	DeletePipeline(ctx context.Context, in *DeletePipelineRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeletePipeline(ctx context.Context, in *DeletePipelineRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets controller configuration information. Should only be called
 	// by VMs created by the Pipelines Service and not by end users.
 	GetControllerConfig(ctx context.Context, in *GetControllerConfigRequest, opts ...grpc.CallOption) (*ControllerConfig, error)
 	// Sets status of a given operation. Any new timestamps (as determined by
 	// description) are appended to TimestampEvents. Should only be called by VMs
 	// created by the Pipelines Service and not by end users.
-	SetOperationStatus(ctx context.Context, in *SetOperationStatusRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	SetOperationStatus(ctx context.Context, in *SetOperationStatusRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type pipelinesV1Alpha2Client struct {
@@ -2804,8 +2804,8 @@ func (c *pipelinesV1Alpha2Client) ListPipelines(ctx context.Context, in *ListPip
 	return out, nil
 }
 
-func (c *pipelinesV1Alpha2Client) DeletePipeline(ctx context.Context, in *DeletePipelineRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *pipelinesV1Alpha2Client) DeletePipeline(ctx context.Context, in *DeletePipelineRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.genomics.v1alpha2.PipelinesV1Alpha2/DeletePipeline", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2822,8 +2822,8 @@ func (c *pipelinesV1Alpha2Client) GetControllerConfig(ctx context.Context, in *G
 	return out, nil
 }
 
-func (c *pipelinesV1Alpha2Client) SetOperationStatus(ctx context.Context, in *SetOperationStatusRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *pipelinesV1Alpha2Client) SetOperationStatus(ctx context.Context, in *SetOperationStatusRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.genomics.v1alpha2.PipelinesV1Alpha2/SetOperationStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2859,14 +2859,14 @@ type PipelinesV1Alpha2Server interface {
 	// Deletes a pipeline based on ID.
 	//
 	// Caller must have WRITE permission to the project.
-	DeletePipeline(context.Context, *DeletePipelineRequest) (*empty.Empty, error)
+	DeletePipeline(context.Context, *DeletePipelineRequest) (*emptypb.Empty, error)
 	// Gets controller configuration information. Should only be called
 	// by VMs created by the Pipelines Service and not by end users.
 	GetControllerConfig(context.Context, *GetControllerConfigRequest) (*ControllerConfig, error)
 	// Sets status of a given operation. Any new timestamps (as determined by
 	// description) are appended to TimestampEvents. Should only be called by VMs
 	// created by the Pipelines Service and not by end users.
-	SetOperationStatus(context.Context, *SetOperationStatusRequest) (*empty.Empty, error)
+	SetOperationStatus(context.Context, *SetOperationStatusRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedPipelinesV1Alpha2Server can be embedded to have forward compatible implementations.
@@ -2885,13 +2885,13 @@ func (*UnimplementedPipelinesV1Alpha2Server) GetPipeline(context.Context, *GetPi
 func (*UnimplementedPipelinesV1Alpha2Server) ListPipelines(context.Context, *ListPipelinesRequest) (*ListPipelinesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListPipelines not implemented")
 }
-func (*UnimplementedPipelinesV1Alpha2Server) DeletePipeline(context.Context, *DeletePipelineRequest) (*empty.Empty, error) {
+func (*UnimplementedPipelinesV1Alpha2Server) DeletePipeline(context.Context, *DeletePipelineRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePipeline not implemented")
 }
 func (*UnimplementedPipelinesV1Alpha2Server) GetControllerConfig(context.Context, *GetControllerConfigRequest) (*ControllerConfig, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetControllerConfig not implemented")
 }
-func (*UnimplementedPipelinesV1Alpha2Server) SetOperationStatus(context.Context, *SetOperationStatusRequest) (*empty.Empty, error) {
+func (*UnimplementedPipelinesV1Alpha2Server) SetOperationStatus(context.Context, *SetOperationStatusRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetOperationStatus not implemented")
 }
 

@@ -27,7 +27,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	money "google.golang.org/genproto/googleapis/type/money"
 	grpc "google.golang.org/grpc"
@@ -35,6 +34,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -431,7 +431,7 @@ type PricingInfo struct {
 	// request. If a time range was not specified in the request this field will
 	// be equivalent to a time within the last 12 hours, indicating the latest
 	// pricing info.
-	EffectiveTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=effective_time,json=effectiveTime,proto3" json:"effective_time,omitempty"`
+	EffectiveTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=effective_time,json=effectiveTime,proto3" json:"effective_time,omitempty"`
 	// An optional human readable summary of the pricing information, has a
 	// maximum length of 256 characters.
 	Summary string `protobuf:"bytes,2,opt,name=summary,proto3" json:"summary,omitempty"`
@@ -480,7 +480,7 @@ func (*PricingInfo) Descriptor() ([]byte, []int) {
 	return file_google_cloud_billing_v1_cloud_catalog_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *PricingInfo) GetEffectiveTime() *timestamp.Timestamp {
+func (x *PricingInfo) GetEffectiveTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EffectiveTime
 	}
@@ -846,14 +846,14 @@ type ListSkusRequest struct {
 	// America/Los_Angeles timezone. Time range as a whole is optional. If not
 	// specified, the latest pricing will be returned (up to 12 hours old at
 	// most).
-	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Optional exclusive end time of the time range for which the pricing
 	// versions will be returned. Timestamps in the future are not allowed.
 	// The time range has to be within a single calendar month in
 	// America/Los_Angeles timezone. Time range as a whole is optional. If not
 	// specified, the latest pricing will be returned (up to 12 hours old at
 	// most).
-	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The ISO 4217 currency code for the pricing info in the response proto.
 	// Will use the conversion rate as of start_time.
 	// Optional. If not specified USD will be used.
@@ -905,14 +905,14 @@ func (x *ListSkusRequest) GetParent() string {
 	return ""
 }
 
-func (x *ListSkusRequest) GetStartTime() *timestamp.Timestamp {
+func (x *ListSkusRequest) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *ListSkusRequest) GetEndTime() *timestamp.Timestamp {
+func (x *ListSkusRequest) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -1310,7 +1310,7 @@ var file_google_cloud_billing_v1_cloud_catalog_proto_goTypes = []interface{}{
 	(*ListSkusRequest)(nil),                  // 10: google.cloud.billing.v1.ListSkusRequest
 	(*ListSkusResponse)(nil),                 // 11: google.cloud.billing.v1.ListSkusResponse
 	(*PricingExpression_TierRate)(nil),       // 12: google.cloud.billing.v1.PricingExpression.TierRate
-	(*timestamp.Timestamp)(nil),              // 13: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),            // 13: google.protobuf.Timestamp
 	(*money.Money)(nil),                      // 14: google.type.Money
 }
 var file_google_cloud_billing_v1_cloud_catalog_proto_depIdxs = []int32{

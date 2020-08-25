@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -53,9 +53,9 @@ type CampaignLabel struct {
 	// `customers/{customer_id}/campaignLabels/{campaign_id}~{label_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The campaign to which the label is attached.
-	Campaign *wrappers.StringValue `protobuf:"bytes,2,opt,name=campaign,proto3" json:"campaign,omitempty"`
+	Campaign *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=campaign,proto3" json:"campaign,omitempty"`
 	// Immutable. The label assigned to the campaign.
-	Label *wrappers.StringValue `protobuf:"bytes,3,opt,name=label,proto3" json:"label,omitempty"`
+	Label *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=label,proto3" json:"label,omitempty"`
 }
 
 func (x *CampaignLabel) Reset() {
@@ -97,14 +97,14 @@ func (x *CampaignLabel) GetResourceName() string {
 	return ""
 }
 
-func (x *CampaignLabel) GetCampaign() *wrappers.StringValue {
+func (x *CampaignLabel) GetCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Campaign
 	}
 	return nil
 }
 
-func (x *CampaignLabel) GetLabel() *wrappers.StringValue {
+func (x *CampaignLabel) GetLabel() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Label
 	}
@@ -185,8 +185,8 @@ func file_google_ads_googleads_v2_resources_campaign_label_proto_rawDescGZIP() [
 
 var file_google_ads_googleads_v2_resources_campaign_label_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_campaign_label_proto_goTypes = []interface{}{
-	(*CampaignLabel)(nil),        // 0: google.ads.googleads.v2.resources.CampaignLabel
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*CampaignLabel)(nil),          // 0: google.ads.googleads.v2.resources.CampaignLabel
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v2_resources_campaign_label_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v2.resources.CampaignLabel.campaign:type_name -> google.protobuf.StringValue

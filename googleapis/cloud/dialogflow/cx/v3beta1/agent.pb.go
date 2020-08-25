@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -500,7 +500,7 @@ type UpdateAgentRequest struct {
 	Agent *Agent `protobuf:"bytes,1,opt,name=agent,proto3" json:"agent,omitempty"`
 	// The mask to control which fields get updated. If the mask is not present,
 	// all fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateAgentRequest) Reset() {
@@ -542,7 +542,7 @@ func (x *UpdateAgentRequest) GetAgent() *Agent {
 	return nil
 }
 
-func (x *UpdateAgentRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateAgentRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1116,8 +1116,8 @@ var file_google_cloud_dialogflow_cx_v3beta1_agent_proto_goTypes = []interface{}{
 	(*ExportAgentRequest)(nil),    // 8: google.cloud.dialogflow.cx.v3beta1.ExportAgentRequest
 	(*ExportAgentResponse)(nil),   // 9: google.cloud.dialogflow.cx.v3beta1.ExportAgentResponse
 	(*RestoreAgentRequest)(nil),   // 10: google.cloud.dialogflow.cx.v3beta1.RestoreAgentRequest
-	(*field_mask.FieldMask)(nil),  // 11: google.protobuf.FieldMask
-	(*empty.Empty)(nil),           // 12: google.protobuf.Empty
+	(*fieldmaskpb.FieldMask)(nil), // 11: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),         // 12: google.protobuf.Empty
 	(*longrunning.Operation)(nil), // 13: google.longrunning.Operation
 }
 var file_google_cloud_dialogflow_cx_v3beta1_agent_proto_depIdxs = []int32{
@@ -1336,7 +1336,7 @@ type AgentsClient interface {
 	// Updates the specified agent.
 	UpdateAgent(ctx context.Context, in *UpdateAgentRequest, opts ...grpc.CallOption) (*Agent, error)
 	// Deletes the specified agent.
-	DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Exports the specified agent to a ZIP file.
 	ExportAgent(ctx context.Context, in *ExportAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Restores the specified agent from a ZIP file.
@@ -1390,8 +1390,8 @@ func (c *agentsClient) UpdateAgent(ctx context.Context, in *UpdateAgentRequest, 
 	return out, nil
 }
 
-func (c *agentsClient) DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *agentsClient) DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.dialogflow.cx.v3beta1.Agents/DeleteAgent", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1428,7 +1428,7 @@ type AgentsServer interface {
 	// Updates the specified agent.
 	UpdateAgent(context.Context, *UpdateAgentRequest) (*Agent, error)
 	// Deletes the specified agent.
-	DeleteAgent(context.Context, *DeleteAgentRequest) (*empty.Empty, error)
+	DeleteAgent(context.Context, *DeleteAgentRequest) (*emptypb.Empty, error)
 	// Exports the specified agent to a ZIP file.
 	ExportAgent(context.Context, *ExportAgentRequest) (*longrunning.Operation, error)
 	// Restores the specified agent from a ZIP file.
@@ -1454,7 +1454,7 @@ func (*UnimplementedAgentsServer) CreateAgent(context.Context, *CreateAgentReque
 func (*UnimplementedAgentsServer) UpdateAgent(context.Context, *UpdateAgentRequest) (*Agent, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAgent not implemented")
 }
-func (*UnimplementedAgentsServer) DeleteAgent(context.Context, *DeleteAgentRequest) (*empty.Empty, error) {
+func (*UnimplementedAgentsServer) DeleteAgent(context.Context, *DeleteAgentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAgent not implemented")
 }
 func (*UnimplementedAgentsServer) ExportAgent(context.Context, *ExportAgentRequest) (*longrunning.Operation, error) {

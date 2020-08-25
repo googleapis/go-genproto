@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -64,7 +64,7 @@ type Recommendation struct {
 	//
 	// This field will be set for the following recommendation types:
 	// CAMPAIGN_BUDGET, FORECASTING_CAMPAIGN_BUDGET, MOVE_UNUSED_BUDGET
-	CampaignBudget *wrappers.StringValue `protobuf:"bytes,5,opt,name=campaign_budget,json=campaignBudget,proto3" json:"campaign_budget,omitempty"`
+	CampaignBudget *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=campaign_budget,json=campaignBudget,proto3" json:"campaign_budget,omitempty"`
 	// Output only. The campaign targeted by this recommendation. This will be set only when
 	// the recommendation affects a single campaign.
 	//
@@ -73,15 +73,15 @@ type Recommendation struct {
 	// KEYWORD_MATCH_TYPE, MAXIMIZE_CLICKS_OPT_IN, MAXIMIZE_CONVERSIONS_OPT_IN,
 	// OPTIMIZE_AD_ROTATION, SEARCH_PARTNERS_OPT_IN, SITELINK_EXTENSION,
 	// TARGET_CPA_OPT_IN, TEXT_AD
-	Campaign *wrappers.StringValue `protobuf:"bytes,6,opt,name=campaign,proto3" json:"campaign,omitempty"`
+	Campaign *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=campaign,proto3" json:"campaign,omitempty"`
 	// Output only. The ad group targeted by this recommendation. This will be set only when
 	// the recommendation affects a single ad group.
 	//
 	// This field will be set for the following recommendation types:
 	// KEYWORD, OPTIMIZE_AD_ROTATION, TEXT_AD
-	AdGroup *wrappers.StringValue `protobuf:"bytes,7,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
+	AdGroup *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=ad_group,json=adGroup,proto3" json:"ad_group,omitempty"`
 	// Output only. Whether the recommendation is dismissed or not.
-	Dismissed *wrappers.BoolValue `protobuf:"bytes,13,opt,name=dismissed,proto3" json:"dismissed,omitempty"`
+	Dismissed *wrapperspb.BoolValue `protobuf:"bytes,13,opt,name=dismissed,proto3" json:"dismissed,omitempty"`
 	// The details of recommendation.
 	//
 	// Types that are assignable to Recommendation:
@@ -155,28 +155,28 @@ func (x *Recommendation) GetImpact() *Recommendation_RecommendationImpact {
 	return nil
 }
 
-func (x *Recommendation) GetCampaignBudget() *wrappers.StringValue {
+func (x *Recommendation) GetCampaignBudget() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CampaignBudget
 	}
 	return nil
 }
 
-func (x *Recommendation) GetCampaign() *wrappers.StringValue {
+func (x *Recommendation) GetCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Campaign
 	}
 	return nil
 }
 
-func (x *Recommendation) GetAdGroup() *wrappers.StringValue {
+func (x *Recommendation) GetAdGroup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroup
 	}
 	return nil
 }
 
-func (x *Recommendation) GetDismissed() *wrappers.BoolValue {
+func (x *Recommendation) GetDismissed() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.Dismissed
 	}
@@ -457,15 +457,15 @@ type Recommendation_RecommendationMetrics struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. Number of ad impressions.
-	Impressions *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=impressions,proto3" json:"impressions,omitempty"`
+	Impressions *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=impressions,proto3" json:"impressions,omitempty"`
 	// Output only. Number of ad clicks.
-	Clicks *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=clicks,proto3" json:"clicks,omitempty"`
+	Clicks *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=clicks,proto3" json:"clicks,omitempty"`
 	// Output only. Cost (in micros) for advertising, in the local currency for the account.
-	CostMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=cost_micros,json=costMicros,proto3" json:"cost_micros,omitempty"`
+	CostMicros *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=cost_micros,json=costMicros,proto3" json:"cost_micros,omitempty"`
 	// Output only. Number of conversions.
-	Conversions *wrappers.DoubleValue `protobuf:"bytes,4,opt,name=conversions,proto3" json:"conversions,omitempty"`
+	Conversions *wrapperspb.DoubleValue `protobuf:"bytes,4,opt,name=conversions,proto3" json:"conversions,omitempty"`
 	// Output only. Number of video views for a video ad campaign.
-	VideoViews *wrappers.DoubleValue `protobuf:"bytes,5,opt,name=video_views,json=videoViews,proto3" json:"video_views,omitempty"`
+	VideoViews *wrapperspb.DoubleValue `protobuf:"bytes,5,opt,name=video_views,json=videoViews,proto3" json:"video_views,omitempty"`
 }
 
 func (x *Recommendation_RecommendationMetrics) Reset() {
@@ -500,35 +500,35 @@ func (*Recommendation_RecommendationMetrics) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_recommendation_proto_rawDescGZIP(), []int{0, 1}
 }
 
-func (x *Recommendation_RecommendationMetrics) GetImpressions() *wrappers.DoubleValue {
+func (x *Recommendation_RecommendationMetrics) GetImpressions() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Impressions
 	}
 	return nil
 }
 
-func (x *Recommendation_RecommendationMetrics) GetClicks() *wrappers.DoubleValue {
+func (x *Recommendation_RecommendationMetrics) GetClicks() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Clicks
 	}
 	return nil
 }
 
-func (x *Recommendation_RecommendationMetrics) GetCostMicros() *wrappers.Int64Value {
+func (x *Recommendation_RecommendationMetrics) GetCostMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CostMicros
 	}
 	return nil
 }
 
-func (x *Recommendation_RecommendationMetrics) GetConversions() *wrappers.DoubleValue {
+func (x *Recommendation_RecommendationMetrics) GetConversions() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Conversions
 	}
 	return nil
 }
 
-func (x *Recommendation_RecommendationMetrics) GetVideoViews() *wrappers.DoubleValue {
+func (x *Recommendation_RecommendationMetrics) GetVideoViews() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.VideoViews
 	}
@@ -542,9 +542,9 @@ type Recommendation_CampaignBudgetRecommendation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The current budget amount in micros.
-	CurrentBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=current_budget_amount_micros,json=currentBudgetAmountMicros,proto3" json:"current_budget_amount_micros,omitempty"`
+	CurrentBudgetAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=current_budget_amount_micros,json=currentBudgetAmountMicros,proto3" json:"current_budget_amount_micros,omitempty"`
 	// Output only. The recommended budget amount in micros.
-	RecommendedBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
+	RecommendedBudgetAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
 	// Output only. The budget amounts and associated impact estimates for some values of
 	// possible budget amounts.
 	BudgetOptions []*Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendationOption `protobuf:"bytes,3,rep,name=budget_options,json=budgetOptions,proto3" json:"budget_options,omitempty"`
@@ -582,14 +582,14 @@ func (*Recommendation_CampaignBudgetRecommendation) Descriptor() ([]byte, []int)
 	return file_google_ads_googleads_v4_resources_recommendation_proto_rawDescGZIP(), []int{0, 2}
 }
 
-func (x *Recommendation_CampaignBudgetRecommendation) GetCurrentBudgetAmountMicros() *wrappers.Int64Value {
+func (x *Recommendation_CampaignBudgetRecommendation) GetCurrentBudgetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CurrentBudgetAmountMicros
 	}
 	return nil
 }
 
-func (x *Recommendation_CampaignBudgetRecommendation) GetRecommendedBudgetAmountMicros() *wrappers.Int64Value {
+func (x *Recommendation_CampaignBudgetRecommendation) GetRecommendedBudgetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedBudgetAmountMicros
 	}
@@ -612,7 +612,7 @@ type Recommendation_KeywordRecommendation struct {
 	// Output only. The recommended keyword.
 	Keyword *common.KeywordInfo `protobuf:"bytes,1,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	// Output only. The recommended CPC (cost-per-click) bid.
-	RecommendedCpcBidMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=recommended_cpc_bid_micros,json=recommendedCpcBidMicros,proto3" json:"recommended_cpc_bid_micros,omitempty"`
+	RecommendedCpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=recommended_cpc_bid_micros,json=recommendedCpcBidMicros,proto3" json:"recommended_cpc_bid_micros,omitempty"`
 }
 
 func (x *Recommendation_KeywordRecommendation) Reset() {
@@ -654,7 +654,7 @@ func (x *Recommendation_KeywordRecommendation) GetKeyword() *common.KeywordInfo 
 	return nil
 }
 
-func (x *Recommendation_KeywordRecommendation) GetRecommendedCpcBidMicros() *wrappers.Int64Value {
+func (x *Recommendation_KeywordRecommendation) GetRecommendedCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedCpcBidMicros
 	}
@@ -729,11 +729,11 @@ type Recommendation_TextAdRecommendation struct {
 	Ad *Ad `protobuf:"bytes,1,opt,name=ad,proto3" json:"ad,omitempty"`
 	// Output only. Creation date of the recommended ad.
 	// YYYY-MM-DD format, e.g., 2018-04-17.
-	CreationDate *wrappers.StringValue `protobuf:"bytes,2,opt,name=creation_date,json=creationDate,proto3" json:"creation_date,omitempty"`
+	CreationDate *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=creation_date,json=creationDate,proto3" json:"creation_date,omitempty"`
 	// Output only. Date, if present, is the earliest when the recommendation will be auto
 	// applied.
 	// YYYY-MM-DD format, e.g., 2018-04-17.
-	AutoApplyDate *wrappers.StringValue `protobuf:"bytes,3,opt,name=auto_apply_date,json=autoApplyDate,proto3" json:"auto_apply_date,omitempty"`
+	AutoApplyDate *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=auto_apply_date,json=autoApplyDate,proto3" json:"auto_apply_date,omitempty"`
 }
 
 func (x *Recommendation_TextAdRecommendation) Reset() {
@@ -775,14 +775,14 @@ func (x *Recommendation_TextAdRecommendation) GetAd() *Ad {
 	return nil
 }
 
-func (x *Recommendation_TextAdRecommendation) GetCreationDate() *wrappers.StringValue {
+func (x *Recommendation_TextAdRecommendation) GetCreationDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CreationDate
 	}
 	return nil
 }
 
-func (x *Recommendation_TextAdRecommendation) GetAutoApplyDate() *wrappers.StringValue {
+func (x *Recommendation_TextAdRecommendation) GetAutoApplyDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AutoApplyDate
 	}
@@ -848,7 +848,7 @@ type Recommendation_TargetCpaOptInRecommendation struct {
 	Options []*Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption `protobuf:"bytes,1,rep,name=options,proto3" json:"options,omitempty"`
 	// Output only. The recommended average CPA target. See required budget amount and impact
 	// of using this recommendation in options list.
-	RecommendedTargetCpaMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=recommended_target_cpa_micros,json=recommendedTargetCpaMicros,proto3" json:"recommended_target_cpa_micros,omitempty"`
+	RecommendedTargetCpaMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=recommended_target_cpa_micros,json=recommendedTargetCpaMicros,proto3" json:"recommended_target_cpa_micros,omitempty"`
 }
 
 func (x *Recommendation_TargetCpaOptInRecommendation) Reset() {
@@ -890,7 +890,7 @@ func (x *Recommendation_TargetCpaOptInRecommendation) GetOptions() []*Recommenda
 	return nil
 }
 
-func (x *Recommendation_TargetCpaOptInRecommendation) GetRecommendedTargetCpaMicros() *wrappers.Int64Value {
+func (x *Recommendation_TargetCpaOptInRecommendation) GetRecommendedTargetCpaMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedTargetCpaMicros
 	}
@@ -943,7 +943,7 @@ type Recommendation_MoveUnusedBudgetRecommendation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The excess budget's resource_name.
-	ExcessCampaignBudget *wrappers.StringValue `protobuf:"bytes,1,opt,name=excess_campaign_budget,json=excessCampaignBudget,proto3" json:"excess_campaign_budget,omitempty"`
+	ExcessCampaignBudget *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=excess_campaign_budget,json=excessCampaignBudget,proto3" json:"excess_campaign_budget,omitempty"`
 	// Output only. The recommendation for the constrained budget to increase.
 	BudgetRecommendation *Recommendation_CampaignBudgetRecommendation `protobuf:"bytes,2,opt,name=budget_recommendation,json=budgetRecommendation,proto3" json:"budget_recommendation,omitempty"`
 }
@@ -980,7 +980,7 @@ func (*Recommendation_MoveUnusedBudgetRecommendation) Descriptor() ([]byte, []in
 	return file_google_ads_googleads_v4_resources_recommendation_proto_rawDescGZIP(), []int{0, 9}
 }
 
-func (x *Recommendation_MoveUnusedBudgetRecommendation) GetExcessCampaignBudget() *wrappers.StringValue {
+func (x *Recommendation_MoveUnusedBudgetRecommendation) GetExcessCampaignBudget() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ExcessCampaignBudget
 	}
@@ -1040,7 +1040,7 @@ type Recommendation_MaximizeConversionsOptInRecommendation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The recommended new budget amount.
-	RecommendedBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
+	RecommendedBudgetAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
 }
 
 func (x *Recommendation_MaximizeConversionsOptInRecommendation) Reset() {
@@ -1075,7 +1075,7 @@ func (*Recommendation_MaximizeConversionsOptInRecommendation) Descriptor() ([]by
 	return file_google_ads_googleads_v4_resources_recommendation_proto_rawDescGZIP(), []int{0, 11}
 }
 
-func (x *Recommendation_MaximizeConversionsOptInRecommendation) GetRecommendedBudgetAmountMicros() *wrappers.Int64Value {
+func (x *Recommendation_MaximizeConversionsOptInRecommendation) GetRecommendedBudgetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedBudgetAmountMicros
 	}
@@ -1090,7 +1090,7 @@ type Recommendation_MaximizeClicksOptInRecommendation struct {
 
 	// Output only. The recommended new budget amount.
 	// Only set if the current budget is too high.
-	RecommendedBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
+	RecommendedBudgetAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=recommended_budget_amount_micros,json=recommendedBudgetAmountMicros,proto3" json:"recommended_budget_amount_micros,omitempty"`
 }
 
 func (x *Recommendation_MaximizeClicksOptInRecommendation) Reset() {
@@ -1125,7 +1125,7 @@ func (*Recommendation_MaximizeClicksOptInRecommendation) Descriptor() ([]byte, [
 	return file_google_ads_googleads_v4_resources_recommendation_proto_rawDescGZIP(), []int{0, 12}
 }
 
-func (x *Recommendation_MaximizeClicksOptInRecommendation) GetRecommendedBudgetAmountMicros() *wrappers.Int64Value {
+func (x *Recommendation_MaximizeClicksOptInRecommendation) GetRecommendedBudgetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RecommendedBudgetAmountMicros
 	}
@@ -1276,7 +1276,7 @@ type Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendationOpt
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The budget amount for this option.
-	BudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=budget_amount_micros,json=budgetAmountMicros,proto3" json:"budget_amount_micros,omitempty"`
+	BudgetAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=budget_amount_micros,json=budgetAmountMicros,proto3" json:"budget_amount_micros,omitempty"`
 	// Output only. The impact estimate if budget is changed to amount specified in this
 	// option.
 	Impact *Recommendation_RecommendationImpact `protobuf:"bytes,2,opt,name=impact,proto3" json:"impact,omitempty"`
@@ -1315,7 +1315,7 @@ func (*Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendationO
 	return file_google_ads_googleads_v4_resources_recommendation_proto_rawDescGZIP(), []int{0, 2, 0}
 }
 
-func (x *Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendationOption) GetBudgetAmountMicros() *wrappers.Int64Value {
+func (x *Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendationOption) GetBudgetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.BudgetAmountMicros
 	}
@@ -1338,12 +1338,12 @@ type Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOpt
 	// Output only. The goal achieved by this option.
 	Goal enums.TargetCpaOptInRecommendationGoalEnum_TargetCpaOptInRecommendationGoal `protobuf:"varint,1,opt,name=goal,proto3,enum=google.ads.googleads.v4.enums.TargetCpaOptInRecommendationGoalEnum_TargetCpaOptInRecommendationGoal" json:"goal,omitempty"`
 	// Output only. Average CPA target.
-	TargetCpaMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=target_cpa_micros,json=targetCpaMicros,proto3" json:"target_cpa_micros,omitempty"`
+	TargetCpaMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=target_cpa_micros,json=targetCpaMicros,proto3" json:"target_cpa_micros,omitempty"`
 	// Output only. The minimum campaign budget, in local currency for the account,
 	// required to achieve the target CPA.
 	// Amount is specified in micros, where one million is equivalent to one
 	// currency unit.
-	RequiredCampaignBudgetAmountMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=required_campaign_budget_amount_micros,json=requiredCampaignBudgetAmountMicros,proto3" json:"required_campaign_budget_amount_micros,omitempty"`
+	RequiredCampaignBudgetAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=required_campaign_budget_amount_micros,json=requiredCampaignBudgetAmountMicros,proto3" json:"required_campaign_budget_amount_micros,omitempty"`
 	// Output only. The impact estimate if this option is selected.
 	Impact *Recommendation_RecommendationImpact `protobuf:"bytes,4,opt,name=impact,proto3" json:"impact,omitempty"`
 }
@@ -1388,14 +1388,14 @@ func (x *Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendatio
 	return enums.TargetCpaOptInRecommendationGoalEnum_UNSPECIFIED
 }
 
-func (x *Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption) GetTargetCpaMicros() *wrappers.Int64Value {
+func (x *Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption) GetTargetCpaMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TargetCpaMicros
 	}
 	return nil
 }
 
-func (x *Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption) GetRequiredCampaignBudgetAmountMicros() *wrappers.Int64Value {
+func (x *Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption) GetRequiredCampaignBudgetAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.RequiredCampaignBudgetAmountMicros
 	}
@@ -1926,10 +1926,10 @@ var file_google_ads_googleads_v4_resources_recommendation_proto_goTypes = []inte
 	(*Recommendation_CampaignBudgetRecommendation_CampaignBudgetRecommendationOption)(nil), // 17: google.ads.googleads.v4.resources.Recommendation.CampaignBudgetRecommendation.CampaignBudgetRecommendationOption
 	(*Recommendation_TargetCpaOptInRecommendation_TargetCpaOptInRecommendationOption)(nil), // 18: google.ads.googleads.v4.resources.Recommendation.TargetCpaOptInRecommendation.TargetCpaOptInRecommendationOption
 	(enums.RecommendationTypeEnum_RecommendationType)(0),                                   // 19: google.ads.googleads.v4.enums.RecommendationTypeEnum.RecommendationType
-	(*wrappers.StringValue)(nil),                                                           // 20: google.protobuf.StringValue
-	(*wrappers.BoolValue)(nil),                                                             // 21: google.protobuf.BoolValue
-	(*wrappers.DoubleValue)(nil),                                                           // 22: google.protobuf.DoubleValue
-	(*wrappers.Int64Value)(nil),                                                            // 23: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                                                         // 20: google.protobuf.StringValue
+	(*wrapperspb.BoolValue)(nil),                                                           // 21: google.protobuf.BoolValue
+	(*wrapperspb.DoubleValue)(nil),                                                         // 22: google.protobuf.DoubleValue
+	(*wrapperspb.Int64Value)(nil),                                                          // 23: google.protobuf.Int64Value
 	(*common.KeywordInfo)(nil),                                                             // 24: google.ads.googleads.v4.common.KeywordInfo
 	(enums.KeywordMatchTypeEnum_KeywordMatchType)(0),                                       // 25: google.ads.googleads.v4.enums.KeywordMatchTypeEnum.KeywordMatchType
 	(*Ad)(nil),                      // 26: google.ads.googleads.v4.resources.Ad

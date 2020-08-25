@@ -31,12 +31,12 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v4/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -179,7 +179,7 @@ type SearchGoogleAdsResponse struct {
 	// clause.
 	TotalResultsCount int64 `protobuf:"varint,3,opt,name=total_results_count,json=totalResultsCount,proto3" json:"total_results_count,omitempty"`
 	// FieldMask that represents what fields were requested by the user.
-	FieldMask *field_mask.FieldMask `protobuf:"bytes,5,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
+	FieldMask *fieldmaskpb.FieldMask `protobuf:"bytes,5,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
 	// Summary row that contains summary of metrics in results.
 	// Summary of metrics means aggregation of metrics across all results,
 	// here aggregation could be sum, average, rate, etc.
@@ -239,7 +239,7 @@ func (x *SearchGoogleAdsResponse) GetTotalResultsCount() int64 {
 	return 0
 }
 
-func (x *SearchGoogleAdsResponse) GetFieldMask() *field_mask.FieldMask {
+func (x *SearchGoogleAdsResponse) GetFieldMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.FieldMask
 	}
@@ -331,7 +331,7 @@ type SearchGoogleAdsStreamResponse struct {
 	// The list of rows that matched the query.
 	Results []*GoogleAdsRow `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
 	// FieldMask that represents what fields were requested by the user.
-	FieldMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
+	FieldMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
 	// Summary row that contains summary of metrics in results.
 	// Summary of metrics means aggregation of metrics across all results,
 	// here aggregation could be sum, average, rate, etc.
@@ -377,7 +377,7 @@ func (x *SearchGoogleAdsStreamResponse) GetResults() []*GoogleAdsRow {
 	return nil
 }
 
-func (x *SearchGoogleAdsStreamResponse) GetFieldMask() *field_mask.FieldMask {
+func (x *SearchGoogleAdsStreamResponse) GetFieldMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.FieldMask
 	}
@@ -5046,7 +5046,7 @@ var file_google_ads_googleads_v4_services_google_ads_service_proto_goTypes = []i
 	(*MutateOperation)(nil),                            // 7: google.ads.googleads.v4.services.MutateOperation
 	(*MutateOperationResponse)(nil),                    // 8: google.ads.googleads.v4.services.MutateOperationResponse
 	(enums.SummaryRowSettingEnum_SummaryRowSetting)(0), // 9: google.ads.googleads.v4.enums.SummaryRowSettingEnum.SummaryRowSetting
-	(*field_mask.FieldMask)(nil),                       // 10: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                      // 10: google.protobuf.FieldMask
 	(*resources.AccountBudget)(nil),                    // 11: google.ads.googleads.v4.resources.AccountBudget
 	(*resources.AccountBudgetProposal)(nil),            // 12: google.ads.googleads.v4.resources.AccountBudgetProposal
 	(*resources.AccountLink)(nil),                      // 13: google.ads.googleads.v4.resources.AccountLink

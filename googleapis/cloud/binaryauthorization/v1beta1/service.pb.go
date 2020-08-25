@@ -27,13 +27,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -711,7 +711,7 @@ var file_google_cloud_binaryauthorization_v1beta1_service_proto_goTypes = []inte
 	(*DeleteAttestorRequest)(nil), // 7: google.cloud.binaryauthorization.v1beta1.DeleteAttestorRequest
 	(*Policy)(nil),                // 8: google.cloud.binaryauthorization.v1beta1.Policy
 	(*Attestor)(nil),              // 9: google.cloud.binaryauthorization.v1beta1.Attestor
-	(*empty.Empty)(nil),           // 10: google.protobuf.Empty
+	(*emptypb.Empty)(nil),         // 10: google.protobuf.Empty
 }
 var file_google_cloud_binaryauthorization_v1beta1_service_proto_depIdxs = []int32{
 	8,  // 0: google.cloud.binaryauthorization.v1beta1.UpdatePolicyRequest.policy:type_name -> google.cloud.binaryauthorization.v1beta1.Policy
@@ -905,7 +905,7 @@ type BinauthzManagementServiceV1Beta1Client interface {
 	ListAttestors(ctx context.Context, in *ListAttestorsRequest, opts ...grpc.CallOption) (*ListAttestorsResponse, error)
 	// Deletes an [attestor][google.cloud.binaryauthorization.v1beta1.Attestor]. Returns NOT_FOUND if the
 	// [attestor][google.cloud.binaryauthorization.v1beta1.Attestor] does not exist.
-	DeleteAttestor(ctx context.Context, in *DeleteAttestorRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAttestor(ctx context.Context, in *DeleteAttestorRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type binauthzManagementServiceV1Beta1Client struct {
@@ -970,8 +970,8 @@ func (c *binauthzManagementServiceV1Beta1Client) ListAttestors(ctx context.Conte
 	return out, nil
 }
 
-func (c *binauthzManagementServiceV1Beta1Client) DeleteAttestor(ctx context.Context, in *DeleteAttestorRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *binauthzManagementServiceV1Beta1Client) DeleteAttestor(ctx context.Context, in *DeleteAttestorRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.binaryauthorization.v1beta1.BinauthzManagementServiceV1Beta1/DeleteAttestor", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1011,7 +1011,7 @@ type BinauthzManagementServiceV1Beta1Server interface {
 	ListAttestors(context.Context, *ListAttestorsRequest) (*ListAttestorsResponse, error)
 	// Deletes an [attestor][google.cloud.binaryauthorization.v1beta1.Attestor]. Returns NOT_FOUND if the
 	// [attestor][google.cloud.binaryauthorization.v1beta1.Attestor] does not exist.
-	DeleteAttestor(context.Context, *DeleteAttestorRequest) (*empty.Empty, error)
+	DeleteAttestor(context.Context, *DeleteAttestorRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedBinauthzManagementServiceV1Beta1Server can be embedded to have forward compatible implementations.
@@ -1036,7 +1036,7 @@ func (*UnimplementedBinauthzManagementServiceV1Beta1Server) UpdateAttestor(conte
 func (*UnimplementedBinauthzManagementServiceV1Beta1Server) ListAttestors(context.Context, *ListAttestorsRequest) (*ListAttestorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAttestors not implemented")
 }
-func (*UnimplementedBinauthzManagementServiceV1Beta1Server) DeleteAttestor(context.Context, *DeleteAttestorRequest) (*empty.Empty, error) {
+func (*UnimplementedBinauthzManagementServiceV1Beta1Server) DeleteAttestor(context.Context, *DeleteAttestorRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAttestor not implemented")
 }
 

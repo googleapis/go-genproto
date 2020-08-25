@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -109,9 +109,9 @@ type Feed struct {
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the feed.
 	// This field is read-only.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Immutable. Name of the feed. Required.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// The Feed's attributes. Required on CREATE, unless
 	// system_feed_generation_data is provided, in which case Google Ads will
 	// update the feed with the correct attributes.
@@ -173,14 +173,14 @@ func (x *Feed) GetResourceName() string {
 	return ""
 }
 
-func (x *Feed) GetId() *wrappers.Int64Value {
+func (x *Feed) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *Feed) GetName() *wrappers.StringValue {
+func (x *Feed) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -266,16 +266,16 @@ type FeedAttribute struct {
 	unknownFields protoimpl.UnknownFields
 
 	// ID of the attribute.
-	Id *wrappers.Int64Value `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the attribute. Required.
-	Name *wrappers.StringValue `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// Data type for feed attribute. Required.
 	Type enums.FeedAttributeTypeEnum_FeedAttributeType `protobuf:"varint,3,opt,name=type,proto3,enum=google.ads.googleads.v3.enums.FeedAttributeTypeEnum_FeedAttributeType" json:"type,omitempty"`
 	// Indicates that data corresponding to this attribute is part of a
 	// FeedItem's unique key. It defaults to false if it is unspecified. Note
 	// that a unique key is not required in a Feed's schema, in which case the
 	// FeedItems must be referenced by their feed_item_id.
-	IsPartOfKey *wrappers.BoolValue `protobuf:"bytes,4,opt,name=is_part_of_key,json=isPartOfKey,proto3" json:"is_part_of_key,omitempty"`
+	IsPartOfKey *wrapperspb.BoolValue `protobuf:"bytes,4,opt,name=is_part_of_key,json=isPartOfKey,proto3" json:"is_part_of_key,omitempty"`
 }
 
 func (x *FeedAttribute) Reset() {
@@ -310,14 +310,14 @@ func (*FeedAttribute) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_resources_feed_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *FeedAttribute) GetId() *wrappers.Int64Value {
+func (x *FeedAttribute) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *FeedAttribute) GetName() *wrappers.StringValue {
+func (x *FeedAttribute) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -331,7 +331,7 @@ func (x *FeedAttribute) GetType() enums.FeedAttributeTypeEnum_FeedAttributeType 
 	return enums.FeedAttributeTypeEnum_UNSPECIFIED
 }
 
-func (x *FeedAttribute) GetIsPartOfKey() *wrappers.BoolValue {
+func (x *FeedAttribute) GetIsPartOfKey() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.IsPartOfKey
 	}
@@ -409,26 +409,26 @@ type Feed_PlacesLocationFeedData struct {
 	OauthInfo *Feed_PlacesLocationFeedData_OAuthInfo `protobuf:"bytes,1,opt,name=oauth_info,json=oauthInfo,proto3" json:"oauth_info,omitempty"`
 	// Email address of a Google My Business account or email address of a
 	// manager of the Google My Business account. Required.
-	EmailAddress *wrappers.StringValue `protobuf:"bytes,2,opt,name=email_address,json=emailAddress,proto3" json:"email_address,omitempty"`
+	EmailAddress *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=email_address,json=emailAddress,proto3" json:"email_address,omitempty"`
 	// Plus page ID of the managed business whose locations should be used. If
 	// this field is not set, then all businesses accessible by the user
 	// (specified by email_address) are used.
 	// This field is mutate-only and is not selectable.
-	BusinessAccountId *wrappers.StringValue `protobuf:"bytes,10,opt,name=business_account_id,json=businessAccountId,proto3" json:"business_account_id,omitempty"`
+	BusinessAccountId *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=business_account_id,json=businessAccountId,proto3" json:"business_account_id,omitempty"`
 	// Used to filter Google My Business listings by business name. If
 	// business_name_filter is set, only listings with a matching business name
 	// are candidates to be sync'd into FeedItems.
-	BusinessNameFilter *wrappers.StringValue `protobuf:"bytes,4,opt,name=business_name_filter,json=businessNameFilter,proto3" json:"business_name_filter,omitempty"`
+	BusinessNameFilter *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=business_name_filter,json=businessNameFilter,proto3" json:"business_name_filter,omitempty"`
 	// Used to filter Google My Business listings by categories. If entries
 	// exist in category_filters, only listings that belong to any of the
 	// categories are candidates to be sync'd into FeedItems. If no entries
 	// exist in category_filters, then all listings are candidates for syncing.
-	CategoryFilters []*wrappers.StringValue `protobuf:"bytes,5,rep,name=category_filters,json=categoryFilters,proto3" json:"category_filters,omitempty"`
+	CategoryFilters []*wrapperspb.StringValue `protobuf:"bytes,5,rep,name=category_filters,json=categoryFilters,proto3" json:"category_filters,omitempty"`
 	// Used to filter Google My Business listings by labels. If entries exist in
 	// label_filters, only listings that has any of the labels set are
 	// candidates to be synchronized into FeedItems. If no entries exist in
 	// label_filters, then all listings are candidates for syncing.
-	LabelFilters []*wrappers.StringValue `protobuf:"bytes,6,rep,name=label_filters,json=labelFilters,proto3" json:"label_filters,omitempty"`
+	LabelFilters []*wrapperspb.StringValue `protobuf:"bytes,6,rep,name=label_filters,json=labelFilters,proto3" json:"label_filters,omitempty"`
 }
 
 func (x *Feed_PlacesLocationFeedData) Reset() {
@@ -470,35 +470,35 @@ func (x *Feed_PlacesLocationFeedData) GetOauthInfo() *Feed_PlacesLocationFeedDat
 	return nil
 }
 
-func (x *Feed_PlacesLocationFeedData) GetEmailAddress() *wrappers.StringValue {
+func (x *Feed_PlacesLocationFeedData) GetEmailAddress() *wrapperspb.StringValue {
 	if x != nil {
 		return x.EmailAddress
 	}
 	return nil
 }
 
-func (x *Feed_PlacesLocationFeedData) GetBusinessAccountId() *wrappers.StringValue {
+func (x *Feed_PlacesLocationFeedData) GetBusinessAccountId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BusinessAccountId
 	}
 	return nil
 }
 
-func (x *Feed_PlacesLocationFeedData) GetBusinessNameFilter() *wrappers.StringValue {
+func (x *Feed_PlacesLocationFeedData) GetBusinessNameFilter() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BusinessNameFilter
 	}
 	return nil
 }
 
-func (x *Feed_PlacesLocationFeedData) GetCategoryFilters() []*wrappers.StringValue {
+func (x *Feed_PlacesLocationFeedData) GetCategoryFilters() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.CategoryFilters
 	}
 	return nil
 }
 
-func (x *Feed_PlacesLocationFeedData) GetLabelFilters() []*wrappers.StringValue {
+func (x *Feed_PlacesLocationFeedData) GetLabelFilters() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.LabelFilters
 	}
@@ -514,7 +514,7 @@ type Feed_AffiliateLocationFeedData struct {
 
 	// The list of chains that the affiliate location feed will sync the
 	// locations from.
-	ChainIds []*wrappers.Int64Value `protobuf:"bytes,1,rep,name=chain_ids,json=chainIds,proto3" json:"chain_ids,omitempty"`
+	ChainIds []*wrapperspb.Int64Value `protobuf:"bytes,1,rep,name=chain_ids,json=chainIds,proto3" json:"chain_ids,omitempty"`
 	// The relationship the chains have with the advertiser.
 	RelationshipType enums.AffiliateLocationFeedRelationshipTypeEnum_AffiliateLocationFeedRelationshipType `protobuf:"varint,2,opt,name=relationship_type,json=relationshipType,proto3,enum=google.ads.googleads.v3.enums.AffiliateLocationFeedRelationshipTypeEnum_AffiliateLocationFeedRelationshipType" json:"relationship_type,omitempty"`
 }
@@ -551,7 +551,7 @@ func (*Feed_AffiliateLocationFeedData) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_resources_feed_proto_rawDescGZIP(), []int{0, 1}
 }
 
-func (x *Feed_AffiliateLocationFeedData) GetChainIds() []*wrappers.Int64Value {
+func (x *Feed_AffiliateLocationFeedData) GetChainIds() []*wrapperspb.Int64Value {
 	if x != nil {
 		return x.ChainIds
 	}
@@ -572,11 +572,11 @@ type Feed_PlacesLocationFeedData_OAuthInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The HTTP method used to obtain authorization.
-	HttpMethod *wrappers.StringValue `protobuf:"bytes,1,opt,name=http_method,json=httpMethod,proto3" json:"http_method,omitempty"`
+	HttpMethod *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=http_method,json=httpMethod,proto3" json:"http_method,omitempty"`
 	// The HTTP request URL used to obtain authorization.
-	HttpRequestUrl *wrappers.StringValue `protobuf:"bytes,2,opt,name=http_request_url,json=httpRequestUrl,proto3" json:"http_request_url,omitempty"`
+	HttpRequestUrl *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=http_request_url,json=httpRequestUrl,proto3" json:"http_request_url,omitempty"`
 	// The HTTP authorization header used to obtain authorization.
-	HttpAuthorizationHeader *wrappers.StringValue `protobuf:"bytes,3,opt,name=http_authorization_header,json=httpAuthorizationHeader,proto3" json:"http_authorization_header,omitempty"`
+	HttpAuthorizationHeader *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=http_authorization_header,json=httpAuthorizationHeader,proto3" json:"http_authorization_header,omitempty"`
 }
 
 func (x *Feed_PlacesLocationFeedData_OAuthInfo) Reset() {
@@ -611,21 +611,21 @@ func (*Feed_PlacesLocationFeedData_OAuthInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_resources_feed_proto_rawDescGZIP(), []int{0, 0, 0}
 }
 
-func (x *Feed_PlacesLocationFeedData_OAuthInfo) GetHttpMethod() *wrappers.StringValue {
+func (x *Feed_PlacesLocationFeedData_OAuthInfo) GetHttpMethod() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HttpMethod
 	}
 	return nil
 }
 
-func (x *Feed_PlacesLocationFeedData_OAuthInfo) GetHttpRequestUrl() *wrappers.StringValue {
+func (x *Feed_PlacesLocationFeedData_OAuthInfo) GetHttpRequestUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HttpRequestUrl
 	}
 	return nil
 }
 
-func (x *Feed_PlacesLocationFeedData_OAuthInfo) GetHttpAuthorizationHeader() *wrappers.StringValue {
+func (x *Feed_PlacesLocationFeedData_OAuthInfo) GetHttpAuthorizationHeader() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HttpAuthorizationHeader
 	}
@@ -855,12 +855,12 @@ var file_google_ads_googleads_v3_resources_feed_proto_goTypes = []interface{}{
 	(*Feed_PlacesLocationFeedData)(nil),                // 4: google.ads.googleads.v3.resources.Feed.PlacesLocationFeedData
 	(*Feed_AffiliateLocationFeedData)(nil),             // 5: google.ads.googleads.v3.resources.Feed.AffiliateLocationFeedData
 	(*Feed_PlacesLocationFeedData_OAuthInfo)(nil),      // 6: google.ads.googleads.v3.resources.Feed.PlacesLocationFeedData.OAuthInfo
-	(*wrappers.Int64Value)(nil),                        // 7: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),                       // 8: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                      // 7: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                     // 8: google.protobuf.StringValue
 	(enums.FeedOriginEnum_FeedOrigin)(0),               // 9: google.ads.googleads.v3.enums.FeedOriginEnum.FeedOrigin
 	(enums.FeedStatusEnum_FeedStatus)(0),               // 10: google.ads.googleads.v3.enums.FeedStatusEnum.FeedStatus
 	(enums.FeedAttributeTypeEnum_FeedAttributeType)(0), // 11: google.ads.googleads.v3.enums.FeedAttributeTypeEnum.FeedAttributeType
-	(*wrappers.BoolValue)(nil),                         // 12: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                       // 12: google.protobuf.BoolValue
 	(enums.AffiliateLocationFeedRelationshipTypeEnum_AffiliateLocationFeedRelationshipType)(0), // 13: google.ads.googleads.v3.enums.AffiliateLocationFeedRelationshipTypeEnum.AffiliateLocationFeedRelationshipType
 }
 var file_google_ads_googleads_v3_resources_feed_proto_depIdxs = []int32{

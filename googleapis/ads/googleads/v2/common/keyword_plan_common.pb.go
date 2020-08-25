@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,7 +54,7 @@ type KeywordPlanHistoricalMetrics struct {
 
 	// Approximate number of monthly searches on this query averaged
 	// for the past 12 months.
-	AvgMonthlySearches *wrappers.Int64Value `protobuf:"bytes,1,opt,name=avg_monthly_searches,json=avgMonthlySearches,proto3" json:"avg_monthly_searches,omitempty"`
+	AvgMonthlySearches *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=avg_monthly_searches,json=avgMonthlySearches,proto3" json:"avg_monthly_searches,omitempty"`
 	// The competition level for the query.
 	Competition enums.KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel `protobuf:"varint,2,opt,name=competition,proto3,enum=google.ads.googleads.v2.enums.KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel" json:"competition,omitempty"`
 }
@@ -91,7 +91,7 @@ func (*KeywordPlanHistoricalMetrics) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_keyword_plan_common_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *KeywordPlanHistoricalMetrics) GetAvgMonthlySearches() *wrappers.Int64Value {
+func (x *KeywordPlanHistoricalMetrics) GetAvgMonthlySearches() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AvgMonthlySearches
 	}
@@ -170,7 +170,7 @@ func file_google_ads_googleads_v2_common_keyword_plan_common_proto_rawDescGZIP()
 var file_google_ads_googleads_v2_common_keyword_plan_common_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_common_keyword_plan_common_proto_goTypes = []interface{}{
 	(*KeywordPlanHistoricalMetrics)(nil),                                   // 0: google.ads.googleads.v2.common.KeywordPlanHistoricalMetrics
-	(*wrappers.Int64Value)(nil),                                            // 1: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                                          // 1: google.protobuf.Int64Value
 	(enums.KeywordPlanCompetitionLevelEnum_KeywordPlanCompetitionLevel)(0), // 2: google.ads.googleads.v2.enums.KeywordPlanCompetitionLevelEnum.KeywordPlanCompetitionLevel
 }
 var file_google_ads_googleads_v2_common_keyword_plan_common_proto_depIdxs = []int32{

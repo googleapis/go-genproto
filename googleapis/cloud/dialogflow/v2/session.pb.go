@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -149,7 +149,7 @@ type DetectIntentRequest struct {
 	//
 	// If unspecified or empty, [output_audio_config][google.cloud.dialogflow.v2.DetectIntentRequest.output_audio_config] replaces the agent-level
 	// config in its entirety.
-	OutputAudioConfigMask *field_mask.FieldMask `protobuf:"bytes,7,opt,name=output_audio_config_mask,json=outputAudioConfigMask,proto3" json:"output_audio_config_mask,omitempty"`
+	OutputAudioConfigMask *fieldmaskpb.FieldMask `protobuf:"bytes,7,opt,name=output_audio_config_mask,json=outputAudioConfigMask,proto3" json:"output_audio_config_mask,omitempty"`
 	// The natural language speech audio to be processed. This field
 	// should be populated iff `query_input` is set to an input audio config.
 	// A single request can contain up to 1 minute of speech audio data.
@@ -216,7 +216,7 @@ func (x *DetectIntentRequest) GetOutputAudioConfig() *OutputAudioConfig {
 	return nil
 }
 
-func (x *DetectIntentRequest) GetOutputAudioConfigMask() *field_mask.FieldMask {
+func (x *DetectIntentRequest) GetOutputAudioConfigMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.OutputAudioConfigMask
 	}
@@ -354,7 +354,7 @@ type QueryParameters struct {
 	// If supplied, the value is used to populate the
 	// `WebhookRequest.original_detect_intent_request.payload`
 	// field sent to your webhook.
-	Payload *_struct.Struct `protobuf:"bytes,6,opt,name=payload,proto3" json:"payload,omitempty"`
+	Payload *structpb.Struct `protobuf:"bytes,6,opt,name=payload,proto3" json:"payload,omitempty"`
 	// Configures the type of sentiment analysis to perform. If not
 	// provided, sentiment analysis is not performed.
 	SentimentAnalysisRequestConfig *SentimentAnalysisRequestConfig `protobuf:"bytes,10,opt,name=sentiment_analysis_request_config,json=sentimentAnalysisRequestConfig,proto3" json:"sentiment_analysis_request_config,omitempty"`
@@ -427,7 +427,7 @@ func (x *QueryParameters) GetSessionEntityTypes() []*SessionEntityType {
 	return nil
 }
 
-func (x *QueryParameters) GetPayload() *_struct.Struct {
+func (x *QueryParameters) GetPayload() *structpb.Struct {
 	if x != nil {
 		return x.Payload
 	}
@@ -596,7 +596,7 @@ type QueryResult struct {
 	//     -   If parameter's entity type is a composite entity:
 	//         map from composite entity property names to property values
 	//     -   Else: parameter value
-	Parameters *_struct.Struct `protobuf:"bytes,4,opt,name=parameters,proto3" json:"parameters,omitempty"`
+	Parameters *structpb.Struct `protobuf:"bytes,4,opt,name=parameters,proto3" json:"parameters,omitempty"`
 	// This field is set to:
 	//
 	// - `false` if the matched intent has required parameters and not all of
@@ -614,7 +614,7 @@ type QueryResult struct {
 	WebhookSource string `protobuf:"bytes,8,opt,name=webhook_source,json=webhookSource,proto3" json:"webhook_source,omitempty"`
 	// If the query was fulfilled by a webhook call, this field is set to the
 	// value of the `payload` field returned in the webhook response.
-	WebhookPayload *_struct.Struct `protobuf:"bytes,9,opt,name=webhook_payload,json=webhookPayload,proto3" json:"webhook_payload,omitempty"`
+	WebhookPayload *structpb.Struct `protobuf:"bytes,9,opt,name=webhook_payload,json=webhookPayload,proto3" json:"webhook_payload,omitempty"`
 	// The collection of output contexts. If applicable,
 	// `output_contexts.parameters` contains entries with name
 	// `<parameter name>.original` containing the original parameter values
@@ -640,7 +640,7 @@ type QueryResult struct {
 	//
 	// - webhook call latency
 	// - webhook errors
-	DiagnosticInfo *_struct.Struct `protobuf:"bytes,14,opt,name=diagnostic_info,json=diagnosticInfo,proto3" json:"diagnostic_info,omitempty"`
+	DiagnosticInfo *structpb.Struct `protobuf:"bytes,14,opt,name=diagnostic_info,json=diagnosticInfo,proto3" json:"diagnostic_info,omitempty"`
 	// The sentiment analysis result, which depends on the
 	// `sentiment_analysis_request_config` specified in the request.
 	SentimentAnalysisResult *SentimentAnalysisResult `protobuf:"bytes,17,opt,name=sentiment_analysis_result,json=sentimentAnalysisResult,proto3" json:"sentiment_analysis_result,omitempty"`
@@ -706,7 +706,7 @@ func (x *QueryResult) GetAction() string {
 	return ""
 }
 
-func (x *QueryResult) GetParameters() *_struct.Struct {
+func (x *QueryResult) GetParameters() *structpb.Struct {
 	if x != nil {
 		return x.Parameters
 	}
@@ -741,7 +741,7 @@ func (x *QueryResult) GetWebhookSource() string {
 	return ""
 }
 
-func (x *QueryResult) GetWebhookPayload() *_struct.Struct {
+func (x *QueryResult) GetWebhookPayload() *structpb.Struct {
 	if x != nil {
 		return x.WebhookPayload
 	}
@@ -769,7 +769,7 @@ func (x *QueryResult) GetIntentDetectionConfidence() float32 {
 	return 0
 }
 
-func (x *QueryResult) GetDiagnosticInfo() *_struct.Struct {
+func (x *QueryResult) GetDiagnosticInfo() *structpb.Struct {
 	if x != nil {
 		return x.DiagnosticInfo
 	}
@@ -864,7 +864,7 @@ type StreamingDetectIntentRequest struct {
 	//
 	// If unspecified or empty, [output_audio_config][google.cloud.dialogflow.v2.StreamingDetectIntentRequest.output_audio_config] replaces the agent-level
 	// config in its entirety.
-	OutputAudioConfigMask *field_mask.FieldMask `protobuf:"bytes,7,opt,name=output_audio_config_mask,json=outputAudioConfigMask,proto3" json:"output_audio_config_mask,omitempty"`
+	OutputAudioConfigMask *fieldmaskpb.FieldMask `protobuf:"bytes,7,opt,name=output_audio_config_mask,json=outputAudioConfigMask,proto3" json:"output_audio_config_mask,omitempty"`
 	// The input audio content to be recognized. Must be sent if
 	// `query_input` was set to a streaming input audio config. The complete audio
 	// over all streaming messages must not exceed 1 minute.
@@ -939,7 +939,7 @@ func (x *StreamingDetectIntentRequest) GetOutputAudioConfig() *OutputAudioConfig
 	return nil
 }
 
-func (x *StreamingDetectIntentRequest) GetOutputAudioConfigMask() *field_mask.FieldMask {
+func (x *StreamingDetectIntentRequest) GetOutputAudioConfigMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.OutputAudioConfigMask
 	}
@@ -1130,7 +1130,7 @@ type StreamingRecognitionResult struct {
 	SpeechWordInfo []*SpeechWordInfo `protobuf:"bytes,7,rep,name=speech_word_info,json=speechWordInfo,proto3" json:"speech_word_info,omitempty"`
 	// Time offset of the end of this Speech recognition result relative to the
 	// beginning of the audio. Only populated for `message_type` = `TRANSCRIPT`.
-	SpeechEndOffset *duration.Duration `protobuf:"bytes,8,opt,name=speech_end_offset,json=speechEndOffset,proto3" json:"speech_end_offset,omitempty"`
+	SpeechEndOffset *durationpb.Duration `protobuf:"bytes,8,opt,name=speech_end_offset,json=speechEndOffset,proto3" json:"speech_end_offset,omitempty"`
 }
 
 func (x *StreamingRecognitionResult) Reset() {
@@ -1200,7 +1200,7 @@ func (x *StreamingRecognitionResult) GetSpeechWordInfo() []*SpeechWordInfo {
 	return nil
 }
 
-func (x *StreamingRecognitionResult) GetSpeechEndOffset() *duration.Duration {
+func (x *StreamingRecognitionResult) GetSpeechEndOffset() *durationpb.Duration {
 	if x != nil {
 		return x.SpeechEndOffset
 	}
@@ -1296,7 +1296,7 @@ type EventInput struct {
 	//     -   If parameter's entity type is a composite entity:
 	//         map from composite entity property names to property values
 	//     -   Else: parameter value
-	Parameters *_struct.Struct `protobuf:"bytes,2,opt,name=parameters,proto3" json:"parameters,omitempty"`
+	Parameters *structpb.Struct `protobuf:"bytes,2,opt,name=parameters,proto3" json:"parameters,omitempty"`
 	// Required. The language of this query. See [Language
 	// Support](https://cloud.google.com/dialogflow/docs/reference/language)
 	// for a list of the currently supported language codes. Note that queries in
@@ -1343,7 +1343,7 @@ func (x *EventInput) GetName() string {
 	return ""
 }
 
-func (x *EventInput) GetParameters() *_struct.Struct {
+func (x *EventInput) GetParameters() *structpb.Struct {
 	if x != nil {
 		return x.Parameters
 	}
@@ -1924,17 +1924,17 @@ var file_google_cloud_dialogflow_v2_session_proto_goTypes = []interface{}{
 	(*SentimentAnalysisResult)(nil),             // 12: google.cloud.dialogflow.v2.SentimentAnalysisResult
 	(*Sentiment)(nil),                           // 13: google.cloud.dialogflow.v2.Sentiment
 	(*OutputAudioConfig)(nil),                   // 14: google.cloud.dialogflow.v2.OutputAudioConfig
-	(*field_mask.FieldMask)(nil),                // 15: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),               // 15: google.protobuf.FieldMask
 	(*status.Status)(nil),                       // 16: google.rpc.Status
 	(*latlng.LatLng)(nil),                       // 17: google.type.LatLng
 	(*Context)(nil),                             // 18: google.cloud.dialogflow.v2.Context
 	(*SessionEntityType)(nil),                   // 19: google.cloud.dialogflow.v2.SessionEntityType
-	(*_struct.Struct)(nil),                      // 20: google.protobuf.Struct
+	(*structpb.Struct)(nil),                     // 20: google.protobuf.Struct
 	(*InputAudioConfig)(nil),                    // 21: google.cloud.dialogflow.v2.InputAudioConfig
 	(*Intent_Message)(nil),                      // 22: google.cloud.dialogflow.v2.Intent.Message
 	(*Intent)(nil),                              // 23: google.cloud.dialogflow.v2.Intent
 	(*SpeechWordInfo)(nil),                      // 24: google.cloud.dialogflow.v2.SpeechWordInfo
-	(*duration.Duration)(nil),                   // 25: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                 // 25: google.protobuf.Duration
 }
 var file_google_cloud_dialogflow_v2_session_proto_depIdxs = []int32{
 	3,  // 0: google.cloud.dialogflow.v2.DetectIntentRequest.query_params:type_name -> google.cloud.dialogflow.v2.QueryParameters

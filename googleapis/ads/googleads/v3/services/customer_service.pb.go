@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v3/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -179,7 +179,7 @@ type CreateCustomerClientRequest struct {
 	CustomerClient *resources.Customer `protobuf:"bytes,2,opt,name=customer_client,json=customerClient,proto3" json:"customer_client,omitempty"`
 	// Email address of the user who should be invited on the created client
 	// customer. Accessible to whitelisted customers only.
-	EmailAddress *wrappers.StringValue `protobuf:"bytes,3,opt,name=email_address,json=emailAddress,proto3" json:"email_address,omitempty"`
+	EmailAddress *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=email_address,json=emailAddress,proto3" json:"email_address,omitempty"`
 	// The proposed role of user on the created client customer.
 	// Accessible to whitelisted customers only.
 	AccessRole enums.AccessRoleEnum_AccessRole `protobuf:"varint,4,opt,name=access_role,json=accessRole,proto3,enum=google.ads.googleads.v3.enums.AccessRoleEnum_AccessRole" json:"access_role,omitempty"`
@@ -231,7 +231,7 @@ func (x *CreateCustomerClientRequest) GetCustomerClient() *resources.Customer {
 	return nil
 }
 
-func (x *CreateCustomerClientRequest) GetEmailAddress() *wrappers.StringValue {
+func (x *CreateCustomerClientRequest) GetEmailAddress() *wrapperspb.StringValue {
 	if x != nil {
 		return x.EmailAddress
 	}
@@ -254,7 +254,7 @@ type CustomerOperation struct {
 	// Mutate operation. Only updates are supported for customer.
 	Update *resources.Customer `protobuf:"bytes,1,opt,name=update,proto3" json:"update,omitempty"`
 	// FieldMask that determines which resource fields are modified in an update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *CustomerOperation) Reset() {
@@ -296,7 +296,7 @@ func (x *CustomerOperation) GetUpdate() *resources.Customer {
 	return nil
 }
 
-func (x *CustomerOperation) GetUpdateMask() *field_mask.FieldMask {
+func (x *CustomerOperation) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -732,9 +732,9 @@ var file_google_ads_googleads_v3_services_customer_service_proto_goTypes = []int
 	(*ListAccessibleCustomersRequest)(nil),  // 7: google.ads.googleads.v3.services.ListAccessibleCustomersRequest
 	(*ListAccessibleCustomersResponse)(nil), // 8: google.ads.googleads.v3.services.ListAccessibleCustomersResponse
 	(*resources.Customer)(nil),              // 9: google.ads.googleads.v3.resources.Customer
-	(*wrappers.StringValue)(nil),            // 10: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),          // 10: google.protobuf.StringValue
 	(enums.AccessRoleEnum_AccessRole)(0),    // 11: google.ads.googleads.v3.enums.AccessRoleEnum.AccessRole
-	(*field_mask.FieldMask)(nil),            // 12: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),           // 12: google.protobuf.FieldMask
 }
 var file_google_ads_googleads_v3_services_customer_service_proto_depIdxs = []int32{
 	3,  // 0: google.ads.googleads.v3.services.MutateCustomerRequest.operation:type_name -> google.ads.googleads.v3.services.CustomerOperation

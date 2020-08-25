@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	viewport "google.golang.org/genproto/googleapis/geo/type/viewport"
 	money "google.golang.org/genproto/googleapis/type/money"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -240,10 +240,10 @@ type Route struct {
 	// `static_duration`. If you set the `route_preference` to either
 	// `TRAFFIC_AWARE` or `TRAFFIC_AWARE_OPTIMAL`, then this value is calculated
 	// taking traffic conditions into account.
-	Duration *duration.Duration `protobuf:"bytes,3,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,3,opt,name=duration,proto3" json:"duration,omitempty"`
 	// The duration of traveling through the route without taking traffic
 	// conditions into consideration.
-	StaticDuration *duration.Duration `protobuf:"bytes,4,opt,name=static_duration,json=staticDuration,proto3" json:"static_duration,omitempty"`
+	StaticDuration *durationpb.Duration `protobuf:"bytes,4,opt,name=static_duration,json=staticDuration,proto3" json:"static_duration,omitempty"`
 	// The overall route polyline. This polyline will be the combined polyline of
 	// all `legs`.
 	Polyline *Polyline `protobuf:"bytes,5,opt,name=polyline,proto3" json:"polyline,omitempty"`
@@ -303,14 +303,14 @@ func (x *Route) GetDistanceMeters() int32 {
 	return 0
 }
 
-func (x *Route) GetDuration() *duration.Duration {
+func (x *Route) GetDuration() *durationpb.Duration {
 	if x != nil {
 		return x.Duration
 	}
 	return nil
 }
 
-func (x *Route) GetStaticDuration() *duration.Duration {
+func (x *Route) GetStaticDuration() *durationpb.Duration {
 	if x != nil {
 		return x.StaticDuration
 	}
@@ -602,10 +602,10 @@ type RouteLeg struct {
 	// `static_duration`. If the `route_preference` is either `TRAFFIC_AWARE` or
 	// `TRAFFIC_AWARE_OPTIMAL`, then this value is calculated taking traffic
 	// conditions into account.
-	Duration *duration.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
 	// The duration of traveling through the leg, calculated without taking
 	// traffic conditions into consideration.
-	StaticDuration *duration.Duration `protobuf:"bytes,3,opt,name=static_duration,json=staticDuration,proto3" json:"static_duration,omitempty"`
+	StaticDuration *durationpb.Duration `protobuf:"bytes,3,opt,name=static_duration,json=staticDuration,proto3" json:"static_duration,omitempty"`
 	// The overall polyline for this leg. This includes that each `step`'s
 	// polyline.
 	Polyline *Polyline `protobuf:"bytes,4,opt,name=polyline,proto3" json:"polyline,omitempty"`
@@ -664,14 +664,14 @@ func (x *RouteLeg) GetDistanceMeters() int32 {
 	return 0
 }
 
-func (x *RouteLeg) GetDuration() *duration.Duration {
+func (x *RouteLeg) GetDuration() *durationpb.Duration {
 	if x != nil {
 		return x.Duration
 	}
 	return nil
 }
 
-func (x *RouteLeg) GetStaticDuration() *duration.Duration {
+func (x *RouteLeg) GetStaticDuration() *durationpb.Duration {
 	if x != nil {
 		return x.StaticDuration
 	}
@@ -780,7 +780,7 @@ type RouteLegStep struct {
 	// The duration of travel through this step without taking traffic conditions
 	// into consideration. In some circumstances, this field might not have a
 	// value.
-	StaticDuration *duration.Duration `protobuf:"bytes,2,opt,name=static_duration,json=staticDuration,proto3" json:"static_duration,omitempty"`
+	StaticDuration *durationpb.Duration `protobuf:"bytes,2,opt,name=static_duration,json=staticDuration,proto3" json:"static_duration,omitempty"`
 	// The polyline associated with this step.
 	Polyline *Polyline `protobuf:"bytes,3,opt,name=polyline,proto3" json:"polyline,omitempty"`
 	// The start location of this step.
@@ -830,7 +830,7 @@ func (x *RouteLegStep) GetDistanceMeters() int32 {
 	return 0
 }
 
-func (x *RouteLegStep) GetStaticDuration() *duration.Duration {
+func (x *RouteLegStep) GetStaticDuration() *durationpb.Duration {
 	if x != nil {
 		return x.StaticDuration
 	}
@@ -1237,7 +1237,7 @@ var file_google_maps_routes_v1_route_proto_goTypes = []interface{}{
 	(*RouteLegStep)(nil),                         // 9: google.maps.routes.v1.RouteLegStep
 	(*NavigationInstruction)(nil),                // 10: google.maps.routes.v1.NavigationInstruction
 	(*SpeedReadingInterval)(nil),                 // 11: google.maps.routes.v1.SpeedReadingInterval
-	(*duration.Duration)(nil),                    // 12: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                  // 12: google.protobuf.Duration
 	(*Polyline)(nil),                             // 13: google.maps.routes.v1.Polyline
 	(*viewport.Viewport)(nil),                    // 14: google.geo.type.Viewport
 	(*Location)(nil),                             // 15: google.maps.routes.v1.Location

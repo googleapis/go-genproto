@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_type "google.golang.org/genproto/googleapis/logging/type"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -50,7 +50,7 @@ type LogLine struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Approximate time when this log entry was made.
-	Time *timestamp.Timestamp `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
+	Time *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
 	// Severity of this log entry.
 	Severity _type.LogSeverity `protobuf:"varint,2,opt,name=severity,proto3,enum=google.logging.type.LogSeverity" json:"severity,omitempty"`
 	// App-provided log message.
@@ -91,7 +91,7 @@ func (*LogLine) Descriptor() ([]byte, []int) {
 	return file_google_appengine_logging_v1_request_log_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *LogLine) GetTime() *timestamp.Timestamp {
+func (x *LogLine) GetTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.Time
 	}
@@ -273,11 +273,11 @@ type RequestLog struct {
 	// Origin IP address.
 	Ip string `protobuf:"bytes,4,opt,name=ip,proto3" json:"ip,omitempty"`
 	// Time when the request started.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time when the request finished.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Latency of the request.
-	Latency *duration.Duration `protobuf:"bytes,8,opt,name=latency,proto3" json:"latency,omitempty"`
+	Latency *durationpb.Duration `protobuf:"bytes,8,opt,name=latency,proto3" json:"latency,omitempty"`
 	// Number of CPU megacycles used to process request.
 	MegaCycles int64 `protobuf:"varint,9,opt,name=mega_cycles,json=megaCycles,proto3" json:"mega_cycles,omitempty"`
 	// Request method. Example: `"GET"`, `"HEAD"`, `"PUT"`, `"POST"`, `"DELETE"`.
@@ -319,7 +319,7 @@ type RequestLog struct {
 	// Whether this was a loading request for the instance.
 	WasLoadingRequest bool `protobuf:"varint,24,opt,name=was_loading_request,json=wasLoadingRequest,proto3" json:"was_loading_request,omitempty"`
 	// Time this request spent in the pending request queue.
-	PendingTime *duration.Duration `protobuf:"bytes,25,opt,name=pending_time,json=pendingTime,proto3" json:"pending_time,omitempty"`
+	PendingTime *durationpb.Duration `protobuf:"bytes,25,opt,name=pending_time,json=pendingTime,proto3" json:"pending_time,omitempty"`
 	// If the instance processing this request belongs to a manually scaled
 	// module, then this is the 0-based index of the instance. Otherwise, this
 	// value is -1.
@@ -414,21 +414,21 @@ func (x *RequestLog) GetIp() string {
 	return ""
 }
 
-func (x *RequestLog) GetStartTime() *timestamp.Timestamp {
+func (x *RequestLog) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *RequestLog) GetEndTime() *timestamp.Timestamp {
+func (x *RequestLog) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
 	return nil
 }
 
-func (x *RequestLog) GetLatency() *duration.Duration {
+func (x *RequestLog) GetLatency() *durationpb.Duration {
 	if x != nil {
 		return x.Latency
 	}
@@ -540,7 +540,7 @@ func (x *RequestLog) GetWasLoadingRequest() bool {
 	return false
 }
 
-func (x *RequestLog) GetPendingTime() *duration.Duration {
+func (x *RequestLog) GetPendingTime() *durationpb.Duration {
 	if x != nil {
 		return x.PendingTime
 	}
@@ -751,13 +751,13 @@ func file_google_appengine_logging_v1_request_log_proto_rawDescGZIP() []byte {
 
 var file_google_appengine_logging_v1_request_log_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_google_appengine_logging_v1_request_log_proto_goTypes = []interface{}{
-	(*LogLine)(nil),             // 0: google.appengine.logging.v1.LogLine
-	(*SourceLocation)(nil),      // 1: google.appengine.logging.v1.SourceLocation
-	(*SourceReference)(nil),     // 2: google.appengine.logging.v1.SourceReference
-	(*RequestLog)(nil),          // 3: google.appengine.logging.v1.RequestLog
-	(*timestamp.Timestamp)(nil), // 4: google.protobuf.Timestamp
-	(_type.LogSeverity)(0),      // 5: google.logging.type.LogSeverity
-	(*duration.Duration)(nil),   // 6: google.protobuf.Duration
+	(*LogLine)(nil),               // 0: google.appengine.logging.v1.LogLine
+	(*SourceLocation)(nil),        // 1: google.appengine.logging.v1.SourceLocation
+	(*SourceReference)(nil),       // 2: google.appengine.logging.v1.SourceReference
+	(*RequestLog)(nil),            // 3: google.appengine.logging.v1.RequestLog
+	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
+	(_type.LogSeverity)(0),        // 5: google.logging.type.LogSeverity
+	(*durationpb.Duration)(nil),   // 6: google.protobuf.Duration
 }
 var file_google_appengine_logging_v1_request_log_proto_depIdxs = []int32{
 	4, // 0: google.appengine.logging.v1.LogLine.time:type_name -> google.protobuf.Timestamp

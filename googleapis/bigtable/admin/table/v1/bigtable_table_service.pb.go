@@ -25,13 +25,13 @@ import (
 	reflect "reflect"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -189,7 +189,7 @@ var file_google_bigtable_admin_table_v1_bigtable_table_service_proto_goTypes = [
 	(*BulkDeleteRowsRequest)(nil),     // 8: google.bigtable.admin.table.v1.BulkDeleteRowsRequest
 	(*Table)(nil),                     // 9: google.bigtable.admin.table.v1.Table
 	(*ListTablesResponse)(nil),        // 10: google.bigtable.admin.table.v1.ListTablesResponse
-	(*empty.Empty)(nil),               // 11: google.protobuf.Empty
+	(*emptypb.Empty)(nil),             // 11: google.protobuf.Empty
 }
 var file_google_bigtable_admin_table_v1_bigtable_table_service_proto_depIdxs = []int32{
 	0,  // 0: google.bigtable.admin.table.v1.BigtableTableService.CreateTable:input_type -> google.bigtable.admin.table.v1.CreateTableRequest
@@ -264,18 +264,18 @@ type BigtableTableServiceClient interface {
 	// Gets the schema of the specified table, including its column families.
 	GetTable(ctx context.Context, in *GetTableRequest, opts ...grpc.CallOption) (*Table, error)
 	// Permanently deletes a specified table and all of its data.
-	DeleteTable(ctx context.Context, in *DeleteTableRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTable(ctx context.Context, in *DeleteTableRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Changes the name of a specified table.
 	// Cannot be used to move tables between clusters, zones, or projects.
-	RenameTable(ctx context.Context, in *RenameTableRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	RenameTable(ctx context.Context, in *RenameTableRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a new column family within a specified table.
 	CreateColumnFamily(ctx context.Context, in *CreateColumnFamilyRequest, opts ...grpc.CallOption) (*ColumnFamily, error)
 	// Changes the configuration of a specified column family.
 	UpdateColumnFamily(ctx context.Context, in *ColumnFamily, opts ...grpc.CallOption) (*ColumnFamily, error)
 	// Permanently deletes a specified column family and all of its data.
-	DeleteColumnFamily(ctx context.Context, in *DeleteColumnFamilyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteColumnFamily(ctx context.Context, in *DeleteColumnFamilyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Delete all rows in a table corresponding to a particular prefix
-	BulkDeleteRows(ctx context.Context, in *BulkDeleteRowsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	BulkDeleteRows(ctx context.Context, in *BulkDeleteRowsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type bigtableTableServiceClient struct {
@@ -313,8 +313,8 @@ func (c *bigtableTableServiceClient) GetTable(ctx context.Context, in *GetTableR
 	return out, nil
 }
 
-func (c *bigtableTableServiceClient) DeleteTable(ctx context.Context, in *DeleteTableRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *bigtableTableServiceClient) DeleteTable(ctx context.Context, in *DeleteTableRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.bigtable.admin.table.v1.BigtableTableService/DeleteTable", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -322,8 +322,8 @@ func (c *bigtableTableServiceClient) DeleteTable(ctx context.Context, in *Delete
 	return out, nil
 }
 
-func (c *bigtableTableServiceClient) RenameTable(ctx context.Context, in *RenameTableRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *bigtableTableServiceClient) RenameTable(ctx context.Context, in *RenameTableRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.bigtable.admin.table.v1.BigtableTableService/RenameTable", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -349,8 +349,8 @@ func (c *bigtableTableServiceClient) UpdateColumnFamily(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *bigtableTableServiceClient) DeleteColumnFamily(ctx context.Context, in *DeleteColumnFamilyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *bigtableTableServiceClient) DeleteColumnFamily(ctx context.Context, in *DeleteColumnFamilyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.bigtable.admin.table.v1.BigtableTableService/DeleteColumnFamily", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -358,8 +358,8 @@ func (c *bigtableTableServiceClient) DeleteColumnFamily(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *bigtableTableServiceClient) BulkDeleteRows(ctx context.Context, in *BulkDeleteRowsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *bigtableTableServiceClient) BulkDeleteRows(ctx context.Context, in *BulkDeleteRowsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.bigtable.admin.table.v1.BigtableTableService/BulkDeleteRows", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -378,18 +378,18 @@ type BigtableTableServiceServer interface {
 	// Gets the schema of the specified table, including its column families.
 	GetTable(context.Context, *GetTableRequest) (*Table, error)
 	// Permanently deletes a specified table and all of its data.
-	DeleteTable(context.Context, *DeleteTableRequest) (*empty.Empty, error)
+	DeleteTable(context.Context, *DeleteTableRequest) (*emptypb.Empty, error)
 	// Changes the name of a specified table.
 	// Cannot be used to move tables between clusters, zones, or projects.
-	RenameTable(context.Context, *RenameTableRequest) (*empty.Empty, error)
+	RenameTable(context.Context, *RenameTableRequest) (*emptypb.Empty, error)
 	// Creates a new column family within a specified table.
 	CreateColumnFamily(context.Context, *CreateColumnFamilyRequest) (*ColumnFamily, error)
 	// Changes the configuration of a specified column family.
 	UpdateColumnFamily(context.Context, *ColumnFamily) (*ColumnFamily, error)
 	// Permanently deletes a specified column family and all of its data.
-	DeleteColumnFamily(context.Context, *DeleteColumnFamilyRequest) (*empty.Empty, error)
+	DeleteColumnFamily(context.Context, *DeleteColumnFamilyRequest) (*emptypb.Empty, error)
 	// Delete all rows in a table corresponding to a particular prefix
-	BulkDeleteRows(context.Context, *BulkDeleteRowsRequest) (*empty.Empty, error)
+	BulkDeleteRows(context.Context, *BulkDeleteRowsRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedBigtableTableServiceServer can be embedded to have forward compatible implementations.
@@ -405,10 +405,10 @@ func (*UnimplementedBigtableTableServiceServer) ListTables(context.Context, *Lis
 func (*UnimplementedBigtableTableServiceServer) GetTable(context.Context, *GetTableRequest) (*Table, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTable not implemented")
 }
-func (*UnimplementedBigtableTableServiceServer) DeleteTable(context.Context, *DeleteTableRequest) (*empty.Empty, error) {
+func (*UnimplementedBigtableTableServiceServer) DeleteTable(context.Context, *DeleteTableRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTable not implemented")
 }
-func (*UnimplementedBigtableTableServiceServer) RenameTable(context.Context, *RenameTableRequest) (*empty.Empty, error) {
+func (*UnimplementedBigtableTableServiceServer) RenameTable(context.Context, *RenameTableRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RenameTable not implemented")
 }
 func (*UnimplementedBigtableTableServiceServer) CreateColumnFamily(context.Context, *CreateColumnFamilyRequest) (*ColumnFamily, error) {
@@ -417,10 +417,10 @@ func (*UnimplementedBigtableTableServiceServer) CreateColumnFamily(context.Conte
 func (*UnimplementedBigtableTableServiceServer) UpdateColumnFamily(context.Context, *ColumnFamily) (*ColumnFamily, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateColumnFamily not implemented")
 }
-func (*UnimplementedBigtableTableServiceServer) DeleteColumnFamily(context.Context, *DeleteColumnFamilyRequest) (*empty.Empty, error) {
+func (*UnimplementedBigtableTableServiceServer) DeleteColumnFamily(context.Context, *DeleteColumnFamilyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteColumnFamily not implemented")
 }
-func (*UnimplementedBigtableTableServiceServer) BulkDeleteRows(context.Context, *BulkDeleteRowsRequest) (*empty.Empty, error) {
+func (*UnimplementedBigtableTableServiceServer) BulkDeleteRows(context.Context, *BulkDeleteRowsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkDeleteRows not implemented")
 }
 

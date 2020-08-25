@@ -27,18 +27,18 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	color "google.golang.org/genproto/googleapis/type/color"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
-	_ "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -3250,9 +3250,9 @@ type OperationMetadata struct {
 	// Current state of the batch operation.
 	State OperationMetadata_State `protobuf:"varint,1,opt,name=state,proto3,enum=google.cloud.vision.v1.OperationMetadata_State" json:"state,omitempty"`
 	// The time when the batch request was received.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The time when the operation result was last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *OperationMetadata) Reset() {
@@ -3294,14 +3294,14 @@ func (x *OperationMetadata) GetState() OperationMetadata_State {
 	return OperationMetadata_STATE_UNSPECIFIED
 }
 
-func (x *OperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetUpdateTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -4154,7 +4154,7 @@ var file_google_cloud_vision_v1_image_annotator_proto_goTypes = []interface{}{
 	(*WebDetection)(nil),                     // 48: google.cloud.vision.v1.WebDetection
 	(*ProductSearchResults)(nil),             // 49: google.cloud.vision.v1.ProductSearchResults
 	(*status.Status)(nil),                    // 50: google.rpc.Status
-	(*timestamp.Timestamp)(nil),              // 51: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),            // 51: google.protobuf.Timestamp
 	(*Position)(nil),                         // 52: google.cloud.vision.v1.Position
 	(*longrunning.Operation)(nil),            // 53: google.longrunning.Operation
 }

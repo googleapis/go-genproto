@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -55,13 +55,13 @@ type Label struct {
 	// `customers/{customer_id}/labels/{label_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. Id of the label. Read only.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the label.
 	//
 	// This field is required and should not be empty when creating a new label.
 	//
 	// The length of this string should be between 1 and 80, inclusive.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. Status of the label. Read only.
 	Status enums.LabelStatusEnum_LabelStatus `protobuf:"varint,4,opt,name=status,proto3,enum=google.ads.googleads.v2.enums.LabelStatusEnum_LabelStatus" json:"status,omitempty"`
 	// A type of label displaying text on a colored background.
@@ -107,14 +107,14 @@ func (x *Label) GetResourceName() string {
 	return ""
 }
 
-func (x *Label) GetId() *wrappers.Int64Value {
+func (x *Label) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *Label) GetName() *wrappers.StringValue {
+func (x *Label) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -217,8 +217,8 @@ func file_google_ads_googleads_v2_resources_label_proto_rawDescGZIP() []byte {
 var file_google_ads_googleads_v2_resources_label_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_label_proto_goTypes = []interface{}{
 	(*Label)(nil),                          // 0: google.ads.googleads.v2.resources.Label
-	(*wrappers.Int64Value)(nil),            // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),           // 2: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),          // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),         // 2: google.protobuf.StringValue
 	(enums.LabelStatusEnum_LabelStatus)(0), // 3: google.ads.googleads.v2.enums.LabelStatusEnum.LabelStatus
 	(*common.TextLabel)(nil),               // 4: google.ads.googleads.v2.common.TextLabel
 }

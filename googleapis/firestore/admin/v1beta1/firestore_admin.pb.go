@@ -27,8 +27,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
@@ -36,6 +34,8 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -181,10 +181,10 @@ type IndexOperationMetadata struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time that work began on the operation.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The time the operation ended, either successfully or otherwise. Unset if
 	// the operation is still active.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The index resource that this operation is acting on. For example:
 	// `projects/{project_id}/databases/{database_id}/indexes/{index_id}`
 	Index string `protobuf:"bytes,3,opt,name=index,proto3" json:"index,omitempty"`
@@ -230,14 +230,14 @@ func (*IndexOperationMetadata) Descriptor() ([]byte, []int) {
 	return file_google_firestore_admin_v1beta1_firestore_admin_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *IndexOperationMetadata) GetStartTime() *timestamp.Timestamp {
+func (x *IndexOperationMetadata) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *IndexOperationMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *IndexOperationMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -832,10 +832,10 @@ type ExportDocumentsMetadata struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time that work began on the operation.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The time the operation ended, either successfully or otherwise. Unset if
 	// the operation is still active.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The state of the export operation.
 	OperationState OperationState `protobuf:"varint,3,opt,name=operation_state,json=operationState,proto3,enum=google.firestore.admin.v1beta1.OperationState" json:"operation_state,omitempty"`
 	// An estimate of the number of documents processed.
@@ -880,14 +880,14 @@ func (*ExportDocumentsMetadata) Descriptor() ([]byte, []int) {
 	return file_google_firestore_admin_v1beta1_firestore_admin_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *ExportDocumentsMetadata) GetStartTime() *timestamp.Timestamp {
+func (x *ExportDocumentsMetadata) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *ExportDocumentsMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *ExportDocumentsMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -936,10 +936,10 @@ type ImportDocumentsMetadata struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time that work began on the operation.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The time the operation ended, either successfully or otherwise. Unset if
 	// the operation is still active.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The state of the import operation.
 	OperationState OperationState `protobuf:"varint,3,opt,name=operation_state,json=operationState,proto3,enum=google.firestore.admin.v1beta1.OperationState" json:"operation_state,omitempty"`
 	// An estimate of the number of documents processed.
@@ -984,14 +984,14 @@ func (*ImportDocumentsMetadata) Descriptor() ([]byte, []int) {
 	return file_google_firestore_admin_v1beta1_firestore_admin_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *ImportDocumentsMetadata) GetStartTime() *timestamp.Timestamp {
+func (x *ImportDocumentsMetadata) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *ImportDocumentsMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *ImportDocumentsMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -1320,10 +1320,10 @@ var file_google_firestore_admin_v1beta1_firestore_admin_proto_goTypes = []interf
 	(*ExportDocumentsResponse)(nil),           // 11: google.firestore.admin.v1beta1.ExportDocumentsResponse
 	(*ExportDocumentsMetadata)(nil),           // 12: google.firestore.admin.v1beta1.ExportDocumentsMetadata
 	(*ImportDocumentsMetadata)(nil),           // 13: google.firestore.admin.v1beta1.ImportDocumentsMetadata
-	(*timestamp.Timestamp)(nil),               // 14: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),             // 14: google.protobuf.Timestamp
 	(*Index)(nil),                             // 15: google.firestore.admin.v1beta1.Index
 	(*longrunning.Operation)(nil),             // 16: google.longrunning.Operation
-	(*empty.Empty)(nil),                       // 17: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                     // 17: google.protobuf.Empty
 }
 var file_google_firestore_admin_v1beta1_firestore_admin_proto_depIdxs = []int32{
 	14, // 0: google.firestore.admin.v1beta1.IndexOperationMetadata.start_time:type_name -> google.protobuf.Timestamp
@@ -1565,7 +1565,7 @@ type FirestoreAdminClient interface {
 	// Gets an index.
 	GetIndex(ctx context.Context, in *GetIndexRequest, opts ...grpc.CallOption) (*Index, error)
 	// Deletes an index.
-	DeleteIndex(ctx context.Context, in *DeleteIndexRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteIndex(ctx context.Context, in *DeleteIndexRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Exports a copy of all or a subset of documents from Google Cloud Firestore
 	// to another storage system, such as Google Cloud Storage. Recent updates to
 	// documents may not be reflected in the export. The export occurs in the
@@ -1618,8 +1618,8 @@ func (c *firestoreAdminClient) GetIndex(ctx context.Context, in *GetIndexRequest
 	return out, nil
 }
 
-func (c *firestoreAdminClient) DeleteIndex(ctx context.Context, in *DeleteIndexRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *firestoreAdminClient) DeleteIndex(ctx context.Context, in *DeleteIndexRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.firestore.admin.v1beta1.FirestoreAdmin/DeleteIndex", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1666,7 +1666,7 @@ type FirestoreAdminServer interface {
 	// Gets an index.
 	GetIndex(context.Context, *GetIndexRequest) (*Index, error)
 	// Deletes an index.
-	DeleteIndex(context.Context, *DeleteIndexRequest) (*empty.Empty, error)
+	DeleteIndex(context.Context, *DeleteIndexRequest) (*emptypb.Empty, error)
 	// Exports a copy of all or a subset of documents from Google Cloud Firestore
 	// to another storage system, such as Google Cloud Storage. Recent updates to
 	// documents may not be reflected in the export. The export occurs in the
@@ -1697,7 +1697,7 @@ func (*UnimplementedFirestoreAdminServer) ListIndexes(context.Context, *ListInde
 func (*UnimplementedFirestoreAdminServer) GetIndex(context.Context, *GetIndexRequest) (*Index, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetIndex not implemented")
 }
-func (*UnimplementedFirestoreAdminServer) DeleteIndex(context.Context, *DeleteIndexRequest) (*empty.Empty, error) {
+func (*UnimplementedFirestoreAdminServer) DeleteIndex(context.Context, *DeleteIndexRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteIndex not implemented")
 }
 func (*UnimplementedFirestoreAdminServer) ExportDocuments(context.Context, *ExportDocumentsRequest) (*longrunning.Operation, error) {

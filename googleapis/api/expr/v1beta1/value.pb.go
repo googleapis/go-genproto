@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	any "github.com/golang/protobuf/ptypes/any"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -109,11 +109,11 @@ func (m *Value) GetKind() isValue_Kind {
 	return nil
 }
 
-func (x *Value) GetNullValue() _struct.NullValue {
+func (x *Value) GetNullValue() structpb.NullValue {
 	if x, ok := x.GetKind().(*Value_NullValue); ok {
 		return x.NullValue
 	}
-	return _struct.NullValue_NULL_VALUE
+	return structpb.NullValue_NULL_VALUE
 }
 
 func (x *Value) GetBoolValue() bool {
@@ -165,7 +165,7 @@ func (x *Value) GetEnumValue() *EnumValue {
 	return nil
 }
 
-func (x *Value) GetObjectValue() *any.Any {
+func (x *Value) GetObjectValue() *anypb.Any {
 	if x, ok := x.GetKind().(*Value_ObjectValue); ok {
 		return x.ObjectValue
 	}
@@ -199,7 +199,7 @@ type isValue_Kind interface {
 
 type Value_NullValue struct {
 	// Null value.
-	NullValue _struct.NullValue `protobuf:"varint,1,opt,name=null_value,json=nullValue,proto3,enum=google.protobuf.NullValue,oneof"`
+	NullValue structpb.NullValue `protobuf:"varint,1,opt,name=null_value,json=nullValue,proto3,enum=google.protobuf.NullValue,oneof"`
 }
 
 type Value_BoolValue struct {
@@ -239,7 +239,7 @@ type Value_EnumValue struct {
 
 type Value_ObjectValue struct {
 	// The proto message backing an object value.
-	ObjectValue *any.Any `protobuf:"bytes,10,opt,name=object_value,json=objectValue,proto3,oneof"`
+	ObjectValue *anypb.Any `protobuf:"bytes,10,opt,name=object_value,json=objectValue,proto3,oneof"`
 }
 
 type Value_MapValue struct {
@@ -598,13 +598,13 @@ func file_google_api_expr_v1beta1_value_proto_rawDescGZIP() []byte {
 
 var file_google_api_expr_v1beta1_value_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_google_api_expr_v1beta1_value_proto_goTypes = []interface{}{
-	(*Value)(nil),          // 0: google.api.expr.v1beta1.Value
-	(*EnumValue)(nil),      // 1: google.api.expr.v1beta1.EnumValue
-	(*ListValue)(nil),      // 2: google.api.expr.v1beta1.ListValue
-	(*MapValue)(nil),       // 3: google.api.expr.v1beta1.MapValue
-	(*MapValue_Entry)(nil), // 4: google.api.expr.v1beta1.MapValue.Entry
-	(_struct.NullValue)(0), // 5: google.protobuf.NullValue
-	(*any.Any)(nil),        // 6: google.protobuf.Any
+	(*Value)(nil),           // 0: google.api.expr.v1beta1.Value
+	(*EnumValue)(nil),       // 1: google.api.expr.v1beta1.EnumValue
+	(*ListValue)(nil),       // 2: google.api.expr.v1beta1.ListValue
+	(*MapValue)(nil),        // 3: google.api.expr.v1beta1.MapValue
+	(*MapValue_Entry)(nil),  // 4: google.api.expr.v1beta1.MapValue.Entry
+	(structpb.NullValue)(0), // 5: google.protobuf.NullValue
+	(*anypb.Any)(nil),       // 6: google.protobuf.Any
 }
 var file_google_api_expr_v1beta1_value_proto_depIdxs = []int32{
 	5, // 0: google.api.expr.v1beta1.Value.null_value:type_name -> google.protobuf.NullValue

@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,17 +54,17 @@ type Segments struct {
 	// Click type.
 	ClickType enums.ClickTypeEnum_ClickType `protobuf:"varint,26,opt,name=click_type,json=clickType,proto3,enum=google.ads.googleads.v3.enums.ClickTypeEnum_ClickType" json:"click_type,omitempty"`
 	// Resource name of the conversion action.
-	ConversionAction *wrappers.StringValue `protobuf:"bytes,52,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
+	ConversionAction *wrapperspb.StringValue `protobuf:"bytes,52,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
 	// Conversion action category.
 	ConversionActionCategory enums.ConversionActionCategoryEnum_ConversionActionCategory `protobuf:"varint,53,opt,name=conversion_action_category,json=conversionActionCategory,proto3,enum=google.ads.googleads.v3.enums.ConversionActionCategoryEnum_ConversionActionCategory" json:"conversion_action_category,omitempty"`
 	// Conversion action name.
-	ConversionActionName *wrappers.StringValue `protobuf:"bytes,54,opt,name=conversion_action_name,json=conversionActionName,proto3" json:"conversion_action_name,omitempty"`
+	ConversionActionName *wrapperspb.StringValue `protobuf:"bytes,54,opt,name=conversion_action_name,json=conversionActionName,proto3" json:"conversion_action_name,omitempty"`
 	// This segments your conversion columns by the original conversion and
 	// conversion value vs. the delta if conversions were adjusted. False row has
 	// the data as originally stated; While true row has the delta between data
 	// now and the data as originally stated. Summing the two together results
 	// post-adjustment data.
-	ConversionAdjustment *wrappers.BoolValue `protobuf:"bytes,27,opt,name=conversion_adjustment,json=conversionAdjustment,proto3" json:"conversion_adjustment,omitempty"`
+	ConversionAdjustment *wrapperspb.BoolValue `protobuf:"bytes,27,opt,name=conversion_adjustment,json=conversionAdjustment,proto3" json:"conversion_adjustment,omitempty"`
 	// Conversion attribution event type.
 	ConversionAttributionEventType enums.ConversionAttributionEventTypeEnum_ConversionAttributionEventType `protobuf:"varint,2,opt,name=conversion_attribution_event_type,json=conversionAttributionEventType,proto3,enum=google.ads.googleads.v3.enums.ConversionAttributionEventTypeEnum_ConversionAttributionEventType" json:"conversion_attribution_event_type,omitempty"`
 	// An enum value representing the number of days between the impression and
@@ -75,7 +75,7 @@ type Segments struct {
 	ConversionOrAdjustmentLagBucket enums.ConversionOrAdjustmentLagBucketEnum_ConversionOrAdjustmentLagBucket `protobuf:"varint,51,opt,name=conversion_or_adjustment_lag_bucket,json=conversionOrAdjustmentLagBucket,proto3,enum=google.ads.googleads.v3.enums.ConversionOrAdjustmentLagBucketEnum_ConversionOrAdjustmentLagBucket" json:"conversion_or_adjustment_lag_bucket,omitempty"`
 	// Date to which metrics apply.
 	// yyyy-MM-dd format, e.g., 2018-04-17.
-	Date *wrappers.StringValue `protobuf:"bytes,4,opt,name=date,proto3" json:"date,omitempty"`
+	Date *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=date,proto3" json:"date,omitempty"`
 	// Day of the week, e.g., MONDAY.
 	DayOfWeek enums.DayOfWeekEnum_DayOfWeek `protobuf:"varint,5,opt,name=day_of_week,json=dayOfWeek,proto3,enum=google.ads.googleads.v3.enums.DayOfWeekEnum_DayOfWeek" json:"day_of_week,omitempty"`
 	// Device to which metrics apply.
@@ -83,87 +83,87 @@ type Segments struct {
 	// External conversion source.
 	ExternalConversionSource enums.ExternalConversionSourceEnum_ExternalConversionSource `protobuf:"varint,55,opt,name=external_conversion_source,json=externalConversionSource,proto3,enum=google.ads.googleads.v3.enums.ExternalConversionSourceEnum_ExternalConversionSource" json:"external_conversion_source,omitempty"`
 	// Resource name of the geo target constant that represents an airport.
-	GeoTargetAirport *wrappers.StringValue `protobuf:"bytes,65,opt,name=geo_target_airport,json=geoTargetAirport,proto3" json:"geo_target_airport,omitempty"`
+	GeoTargetAirport *wrapperspb.StringValue `protobuf:"bytes,65,opt,name=geo_target_airport,json=geoTargetAirport,proto3" json:"geo_target_airport,omitempty"`
 	// Resource name of the geo target constant that represents a canton.
-	GeoTargetCanton *wrappers.StringValue `protobuf:"bytes,76,opt,name=geo_target_canton,json=geoTargetCanton,proto3" json:"geo_target_canton,omitempty"`
+	GeoTargetCanton *wrapperspb.StringValue `protobuf:"bytes,76,opt,name=geo_target_canton,json=geoTargetCanton,proto3" json:"geo_target_canton,omitempty"`
 	// Resource name of the geo target constant that represents a city.
-	GeoTargetCity *wrappers.StringValue `protobuf:"bytes,62,opt,name=geo_target_city,json=geoTargetCity,proto3" json:"geo_target_city,omitempty"`
+	GeoTargetCity *wrapperspb.StringValue `protobuf:"bytes,62,opt,name=geo_target_city,json=geoTargetCity,proto3" json:"geo_target_city,omitempty"`
 	// Resource name of the geo target constant that represents a country.
-	GeoTargetCountry *wrappers.StringValue `protobuf:"bytes,77,opt,name=geo_target_country,json=geoTargetCountry,proto3" json:"geo_target_country,omitempty"`
+	GeoTargetCountry *wrapperspb.StringValue `protobuf:"bytes,77,opt,name=geo_target_country,json=geoTargetCountry,proto3" json:"geo_target_country,omitempty"`
 	// Resource name of the geo target constant that represents a county.
-	GeoTargetCounty *wrappers.StringValue `protobuf:"bytes,68,opt,name=geo_target_county,json=geoTargetCounty,proto3" json:"geo_target_county,omitempty"`
+	GeoTargetCounty *wrapperspb.StringValue `protobuf:"bytes,68,opt,name=geo_target_county,json=geoTargetCounty,proto3" json:"geo_target_county,omitempty"`
 	// Resource name of the geo target constant that represents a district.
-	GeoTargetDistrict *wrappers.StringValue `protobuf:"bytes,69,opt,name=geo_target_district,json=geoTargetDistrict,proto3" json:"geo_target_district,omitempty"`
+	GeoTargetDistrict *wrapperspb.StringValue `protobuf:"bytes,69,opt,name=geo_target_district,json=geoTargetDistrict,proto3" json:"geo_target_district,omitempty"`
 	// Resource name of the geo target constant that represents a metro.
-	GeoTargetMetro *wrappers.StringValue `protobuf:"bytes,63,opt,name=geo_target_metro,json=geoTargetMetro,proto3" json:"geo_target_metro,omitempty"`
+	GeoTargetMetro *wrapperspb.StringValue `protobuf:"bytes,63,opt,name=geo_target_metro,json=geoTargetMetro,proto3" json:"geo_target_metro,omitempty"`
 	// Resource name of the geo target constant that represents the most
 	// specific location.
-	GeoTargetMostSpecificLocation *wrappers.StringValue `protobuf:"bytes,72,opt,name=geo_target_most_specific_location,json=geoTargetMostSpecificLocation,proto3" json:"geo_target_most_specific_location,omitempty"`
+	GeoTargetMostSpecificLocation *wrapperspb.StringValue `protobuf:"bytes,72,opt,name=geo_target_most_specific_location,json=geoTargetMostSpecificLocation,proto3" json:"geo_target_most_specific_location,omitempty"`
 	// Resource name of the geo target constant that represents a postal code.
-	GeoTargetPostalCode *wrappers.StringValue `protobuf:"bytes,71,opt,name=geo_target_postal_code,json=geoTargetPostalCode,proto3" json:"geo_target_postal_code,omitempty"`
+	GeoTargetPostalCode *wrapperspb.StringValue `protobuf:"bytes,71,opt,name=geo_target_postal_code,json=geoTargetPostalCode,proto3" json:"geo_target_postal_code,omitempty"`
 	// Resource name of the geo target constant that represents a province.
-	GeoTargetProvince *wrappers.StringValue `protobuf:"bytes,75,opt,name=geo_target_province,json=geoTargetProvince,proto3" json:"geo_target_province,omitempty"`
+	GeoTargetProvince *wrapperspb.StringValue `protobuf:"bytes,75,opt,name=geo_target_province,json=geoTargetProvince,proto3" json:"geo_target_province,omitempty"`
 	// Resource name of the geo target constant that represents a region.
-	GeoTargetRegion *wrappers.StringValue `protobuf:"bytes,64,opt,name=geo_target_region,json=geoTargetRegion,proto3" json:"geo_target_region,omitempty"`
+	GeoTargetRegion *wrapperspb.StringValue `protobuf:"bytes,64,opt,name=geo_target_region,json=geoTargetRegion,proto3" json:"geo_target_region,omitempty"`
 	// Resource name of the geo target constant that represents a state.
-	GeoTargetState *wrappers.StringValue `protobuf:"bytes,67,opt,name=geo_target_state,json=geoTargetState,proto3" json:"geo_target_state,omitempty"`
+	GeoTargetState *wrapperspb.StringValue `protobuf:"bytes,67,opt,name=geo_target_state,json=geoTargetState,proto3" json:"geo_target_state,omitempty"`
 	// Hotel booking window in days.
-	HotelBookingWindowDays *wrappers.Int64Value `protobuf:"bytes,6,opt,name=hotel_booking_window_days,json=hotelBookingWindowDays,proto3" json:"hotel_booking_window_days,omitempty"`
+	HotelBookingWindowDays *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=hotel_booking_window_days,json=hotelBookingWindowDays,proto3" json:"hotel_booking_window_days,omitempty"`
 	// Hotel center ID.
-	HotelCenterId *wrappers.Int64Value `protobuf:"bytes,7,opt,name=hotel_center_id,json=hotelCenterId,proto3" json:"hotel_center_id,omitempty"`
+	HotelCenterId *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=hotel_center_id,json=hotelCenterId,proto3" json:"hotel_center_id,omitempty"`
 	// Hotel check-in date. Formatted as yyyy-MM-dd.
-	HotelCheckInDate *wrappers.StringValue `protobuf:"bytes,8,opt,name=hotel_check_in_date,json=hotelCheckInDate,proto3" json:"hotel_check_in_date,omitempty"`
+	HotelCheckInDate *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=hotel_check_in_date,json=hotelCheckInDate,proto3" json:"hotel_check_in_date,omitempty"`
 	// Hotel check-in day of week.
 	HotelCheckInDayOfWeek enums.DayOfWeekEnum_DayOfWeek `protobuf:"varint,9,opt,name=hotel_check_in_day_of_week,json=hotelCheckInDayOfWeek,proto3,enum=google.ads.googleads.v3.enums.DayOfWeekEnum_DayOfWeek" json:"hotel_check_in_day_of_week,omitempty"`
 	// Hotel city.
-	HotelCity *wrappers.StringValue `protobuf:"bytes,10,opt,name=hotel_city,json=hotelCity,proto3" json:"hotel_city,omitempty"`
+	HotelCity *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=hotel_city,json=hotelCity,proto3" json:"hotel_city,omitempty"`
 	// Hotel class.
-	HotelClass *wrappers.Int32Value `protobuf:"bytes,11,opt,name=hotel_class,json=hotelClass,proto3" json:"hotel_class,omitempty"`
+	HotelClass *wrapperspb.Int32Value `protobuf:"bytes,11,opt,name=hotel_class,json=hotelClass,proto3" json:"hotel_class,omitempty"`
 	// Hotel country.
-	HotelCountry *wrappers.StringValue `protobuf:"bytes,12,opt,name=hotel_country,json=hotelCountry,proto3" json:"hotel_country,omitempty"`
+	HotelCountry *wrapperspb.StringValue `protobuf:"bytes,12,opt,name=hotel_country,json=hotelCountry,proto3" json:"hotel_country,omitempty"`
 	// Hotel date selection type.
 	HotelDateSelectionType enums.HotelDateSelectionTypeEnum_HotelDateSelectionType `protobuf:"varint,13,opt,name=hotel_date_selection_type,json=hotelDateSelectionType,proto3,enum=google.ads.googleads.v3.enums.HotelDateSelectionTypeEnum_HotelDateSelectionType" json:"hotel_date_selection_type,omitempty"`
 	// Hotel length of stay.
-	HotelLengthOfStay *wrappers.Int32Value `protobuf:"bytes,14,opt,name=hotel_length_of_stay,json=hotelLengthOfStay,proto3" json:"hotel_length_of_stay,omitempty"`
+	HotelLengthOfStay *wrapperspb.Int32Value `protobuf:"bytes,14,opt,name=hotel_length_of_stay,json=hotelLengthOfStay,proto3" json:"hotel_length_of_stay,omitempty"`
 	// Hotel rate rule ID.
-	HotelRateRuleId *wrappers.StringValue `protobuf:"bytes,73,opt,name=hotel_rate_rule_id,json=hotelRateRuleId,proto3" json:"hotel_rate_rule_id,omitempty"`
+	HotelRateRuleId *wrapperspb.StringValue `protobuf:"bytes,73,opt,name=hotel_rate_rule_id,json=hotelRateRuleId,proto3" json:"hotel_rate_rule_id,omitempty"`
 	// Hotel rate type.
 	HotelRateType enums.HotelRateTypeEnum_HotelRateType `protobuf:"varint,74,opt,name=hotel_rate_type,json=hotelRateType,proto3,enum=google.ads.googleads.v3.enums.HotelRateTypeEnum_HotelRateType" json:"hotel_rate_type,omitempty"`
 	// Hotel price bucket.
 	HotelPriceBucket enums.HotelPriceBucketEnum_HotelPriceBucket `protobuf:"varint,78,opt,name=hotel_price_bucket,json=hotelPriceBucket,proto3,enum=google.ads.googleads.v3.enums.HotelPriceBucketEnum_HotelPriceBucket" json:"hotel_price_bucket,omitempty"`
 	// Hotel state.
-	HotelState *wrappers.StringValue `protobuf:"bytes,15,opt,name=hotel_state,json=hotelState,proto3" json:"hotel_state,omitempty"`
+	HotelState *wrapperspb.StringValue `protobuf:"bytes,15,opt,name=hotel_state,json=hotelState,proto3" json:"hotel_state,omitempty"`
 	// Hour of day as a number between 0 and 23, inclusive.
-	Hour *wrappers.Int32Value `protobuf:"bytes,16,opt,name=hour,proto3" json:"hour,omitempty"`
+	Hour *wrapperspb.Int32Value `protobuf:"bytes,16,opt,name=hour,proto3" json:"hour,omitempty"`
 	// Only used with feed item metrics.
 	// Indicates whether the interaction metrics occurred on the feed item itself
 	// or a different extension or ad unit.
-	InteractionOnThisExtension *wrappers.BoolValue `protobuf:"bytes,49,opt,name=interaction_on_this_extension,json=interactionOnThisExtension,proto3" json:"interaction_on_this_extension,omitempty"`
+	InteractionOnThisExtension *wrapperspb.BoolValue `protobuf:"bytes,49,opt,name=interaction_on_this_extension,json=interactionOnThisExtension,proto3" json:"interaction_on_this_extension,omitempty"`
 	// Keyword criterion.
 	Keyword *Keyword `protobuf:"bytes,61,opt,name=keyword,proto3" json:"keyword,omitempty"`
 	// Month as represented by the date of the first day of a month. Formatted as
 	// yyyy-MM-dd.
-	Month *wrappers.StringValue `protobuf:"bytes,17,opt,name=month,proto3" json:"month,omitempty"`
+	Month *wrapperspb.StringValue `protobuf:"bytes,17,opt,name=month,proto3" json:"month,omitempty"`
 	// Month of the year, e.g., January.
 	MonthOfYear enums.MonthOfYearEnum_MonthOfYear `protobuf:"varint,18,opt,name=month_of_year,json=monthOfYear,proto3,enum=google.ads.googleads.v3.enums.MonthOfYearEnum_MonthOfYear" json:"month_of_year,omitempty"`
 	// Partner hotel ID.
-	PartnerHotelId *wrappers.StringValue `protobuf:"bytes,19,opt,name=partner_hotel_id,json=partnerHotelId,proto3" json:"partner_hotel_id,omitempty"`
+	PartnerHotelId *wrapperspb.StringValue `protobuf:"bytes,19,opt,name=partner_hotel_id,json=partnerHotelId,proto3" json:"partner_hotel_id,omitempty"`
 	// Placeholder type. This is only used with feed item metrics.
 	PlaceholderType enums.PlaceholderTypeEnum_PlaceholderType `protobuf:"varint,20,opt,name=placeholder_type,json=placeholderType,proto3,enum=google.ads.googleads.v3.enums.PlaceholderTypeEnum_PlaceholderType" json:"placeholder_type,omitempty"`
 	// Aggregator ID of the product.
-	ProductAggregatorId *wrappers.UInt64Value `protobuf:"bytes,28,opt,name=product_aggregator_id,json=productAggregatorId,proto3" json:"product_aggregator_id,omitempty"`
+	ProductAggregatorId *wrapperspb.UInt64Value `protobuf:"bytes,28,opt,name=product_aggregator_id,json=productAggregatorId,proto3" json:"product_aggregator_id,omitempty"`
 	// Bidding category (level 1) of the product.
-	ProductBiddingCategoryLevel1 *wrappers.StringValue `protobuf:"bytes,56,opt,name=product_bidding_category_level1,json=productBiddingCategoryLevel1,proto3" json:"product_bidding_category_level1,omitempty"`
+	ProductBiddingCategoryLevel1 *wrapperspb.StringValue `protobuf:"bytes,56,opt,name=product_bidding_category_level1,json=productBiddingCategoryLevel1,proto3" json:"product_bidding_category_level1,omitempty"`
 	// Bidding category (level 2) of the product.
-	ProductBiddingCategoryLevel2 *wrappers.StringValue `protobuf:"bytes,57,opt,name=product_bidding_category_level2,json=productBiddingCategoryLevel2,proto3" json:"product_bidding_category_level2,omitempty"`
+	ProductBiddingCategoryLevel2 *wrapperspb.StringValue `protobuf:"bytes,57,opt,name=product_bidding_category_level2,json=productBiddingCategoryLevel2,proto3" json:"product_bidding_category_level2,omitempty"`
 	// Bidding category (level 3) of the product.
-	ProductBiddingCategoryLevel3 *wrappers.StringValue `protobuf:"bytes,58,opt,name=product_bidding_category_level3,json=productBiddingCategoryLevel3,proto3" json:"product_bidding_category_level3,omitempty"`
+	ProductBiddingCategoryLevel3 *wrapperspb.StringValue `protobuf:"bytes,58,opt,name=product_bidding_category_level3,json=productBiddingCategoryLevel3,proto3" json:"product_bidding_category_level3,omitempty"`
 	// Bidding category (level 4) of the product.
-	ProductBiddingCategoryLevel4 *wrappers.StringValue `protobuf:"bytes,59,opt,name=product_bidding_category_level4,json=productBiddingCategoryLevel4,proto3" json:"product_bidding_category_level4,omitempty"`
+	ProductBiddingCategoryLevel4 *wrapperspb.StringValue `protobuf:"bytes,59,opt,name=product_bidding_category_level4,json=productBiddingCategoryLevel4,proto3" json:"product_bidding_category_level4,omitempty"`
 	// Bidding category (level 5) of the product.
-	ProductBiddingCategoryLevel5 *wrappers.StringValue `protobuf:"bytes,60,opt,name=product_bidding_category_level5,json=productBiddingCategoryLevel5,proto3" json:"product_bidding_category_level5,omitempty"`
+	ProductBiddingCategoryLevel5 *wrapperspb.StringValue `protobuf:"bytes,60,opt,name=product_bidding_category_level5,json=productBiddingCategoryLevel5,proto3" json:"product_bidding_category_level5,omitempty"`
 	// Brand of the product.
-	ProductBrand *wrappers.StringValue `protobuf:"bytes,29,opt,name=product_brand,json=productBrand,proto3" json:"product_brand,omitempty"`
+	ProductBrand *wrapperspb.StringValue `protobuf:"bytes,29,opt,name=product_brand,json=productBrand,proto3" json:"product_brand,omitempty"`
 	// Channel of the product.
 	ProductChannel enums.ProductChannelEnum_ProductChannel `protobuf:"varint,30,opt,name=product_channel,json=productChannel,proto3,enum=google.ads.googleads.v3.enums.ProductChannelEnum_ProductChannel" json:"product_channel,omitempty"`
 	// Channel exclusivity of the product.
@@ -172,41 +172,41 @@ type Segments struct {
 	ProductCondition enums.ProductConditionEnum_ProductCondition `protobuf:"varint,32,opt,name=product_condition,json=productCondition,proto3,enum=google.ads.googleads.v3.enums.ProductConditionEnum_ProductCondition" json:"product_condition,omitempty"`
 	// Resource name of the geo target constant for the country of sale of the
 	// product.
-	ProductCountry *wrappers.StringValue `protobuf:"bytes,33,opt,name=product_country,json=productCountry,proto3" json:"product_country,omitempty"`
+	ProductCountry *wrapperspb.StringValue `protobuf:"bytes,33,opt,name=product_country,json=productCountry,proto3" json:"product_country,omitempty"`
 	// Custom attribute 0 of the product.
-	ProductCustomAttribute0 *wrappers.StringValue `protobuf:"bytes,34,opt,name=product_custom_attribute0,json=productCustomAttribute0,proto3" json:"product_custom_attribute0,omitempty"`
+	ProductCustomAttribute0 *wrapperspb.StringValue `protobuf:"bytes,34,opt,name=product_custom_attribute0,json=productCustomAttribute0,proto3" json:"product_custom_attribute0,omitempty"`
 	// Custom attribute 1 of the product.
-	ProductCustomAttribute1 *wrappers.StringValue `protobuf:"bytes,35,opt,name=product_custom_attribute1,json=productCustomAttribute1,proto3" json:"product_custom_attribute1,omitempty"`
+	ProductCustomAttribute1 *wrapperspb.StringValue `protobuf:"bytes,35,opt,name=product_custom_attribute1,json=productCustomAttribute1,proto3" json:"product_custom_attribute1,omitempty"`
 	// Custom attribute 2 of the product.
-	ProductCustomAttribute2 *wrappers.StringValue `protobuf:"bytes,36,opt,name=product_custom_attribute2,json=productCustomAttribute2,proto3" json:"product_custom_attribute2,omitempty"`
+	ProductCustomAttribute2 *wrapperspb.StringValue `protobuf:"bytes,36,opt,name=product_custom_attribute2,json=productCustomAttribute2,proto3" json:"product_custom_attribute2,omitempty"`
 	// Custom attribute 3 of the product.
-	ProductCustomAttribute3 *wrappers.StringValue `protobuf:"bytes,37,opt,name=product_custom_attribute3,json=productCustomAttribute3,proto3" json:"product_custom_attribute3,omitempty"`
+	ProductCustomAttribute3 *wrapperspb.StringValue `protobuf:"bytes,37,opt,name=product_custom_attribute3,json=productCustomAttribute3,proto3" json:"product_custom_attribute3,omitempty"`
 	// Custom attribute 4 of the product.
-	ProductCustomAttribute4 *wrappers.StringValue `protobuf:"bytes,38,opt,name=product_custom_attribute4,json=productCustomAttribute4,proto3" json:"product_custom_attribute4,omitempty"`
+	ProductCustomAttribute4 *wrapperspb.StringValue `protobuf:"bytes,38,opt,name=product_custom_attribute4,json=productCustomAttribute4,proto3" json:"product_custom_attribute4,omitempty"`
 	// Item ID of the product.
-	ProductItemId *wrappers.StringValue `protobuf:"bytes,39,opt,name=product_item_id,json=productItemId,proto3" json:"product_item_id,omitempty"`
+	ProductItemId *wrapperspb.StringValue `protobuf:"bytes,39,opt,name=product_item_id,json=productItemId,proto3" json:"product_item_id,omitempty"`
 	// Resource name of the language constant for the language of the product.
-	ProductLanguage *wrappers.StringValue `protobuf:"bytes,40,opt,name=product_language,json=productLanguage,proto3" json:"product_language,omitempty"`
+	ProductLanguage *wrapperspb.StringValue `protobuf:"bytes,40,opt,name=product_language,json=productLanguage,proto3" json:"product_language,omitempty"`
 	// Merchant ID of the product.
-	ProductMerchantId *wrappers.UInt64Value `protobuf:"bytes,41,opt,name=product_merchant_id,json=productMerchantId,proto3" json:"product_merchant_id,omitempty"`
+	ProductMerchantId *wrapperspb.UInt64Value `protobuf:"bytes,41,opt,name=product_merchant_id,json=productMerchantId,proto3" json:"product_merchant_id,omitempty"`
 	// Store ID of the product.
-	ProductStoreId *wrappers.StringValue `protobuf:"bytes,42,opt,name=product_store_id,json=productStoreId,proto3" json:"product_store_id,omitempty"`
+	ProductStoreId *wrapperspb.StringValue `protobuf:"bytes,42,opt,name=product_store_id,json=productStoreId,proto3" json:"product_store_id,omitempty"`
 	// Title of the product.
-	ProductTitle *wrappers.StringValue `protobuf:"bytes,43,opt,name=product_title,json=productTitle,proto3" json:"product_title,omitempty"`
+	ProductTitle *wrapperspb.StringValue `protobuf:"bytes,43,opt,name=product_title,json=productTitle,proto3" json:"product_title,omitempty"`
 	// Type (level 1) of the product.
-	ProductTypeL1 *wrappers.StringValue `protobuf:"bytes,44,opt,name=product_type_l1,json=productTypeL1,proto3" json:"product_type_l1,omitempty"`
+	ProductTypeL1 *wrapperspb.StringValue `protobuf:"bytes,44,opt,name=product_type_l1,json=productTypeL1,proto3" json:"product_type_l1,omitempty"`
 	// Type (level 2) of the product.
-	ProductTypeL2 *wrappers.StringValue `protobuf:"bytes,45,opt,name=product_type_l2,json=productTypeL2,proto3" json:"product_type_l2,omitempty"`
+	ProductTypeL2 *wrapperspb.StringValue `protobuf:"bytes,45,opt,name=product_type_l2,json=productTypeL2,proto3" json:"product_type_l2,omitempty"`
 	// Type (level 3) of the product.
-	ProductTypeL3 *wrappers.StringValue `protobuf:"bytes,46,opt,name=product_type_l3,json=productTypeL3,proto3" json:"product_type_l3,omitempty"`
+	ProductTypeL3 *wrapperspb.StringValue `protobuf:"bytes,46,opt,name=product_type_l3,json=productTypeL3,proto3" json:"product_type_l3,omitempty"`
 	// Type (level 4) of the product.
-	ProductTypeL4 *wrappers.StringValue `protobuf:"bytes,47,opt,name=product_type_l4,json=productTypeL4,proto3" json:"product_type_l4,omitempty"`
+	ProductTypeL4 *wrapperspb.StringValue `protobuf:"bytes,47,opt,name=product_type_l4,json=productTypeL4,proto3" json:"product_type_l4,omitempty"`
 	// Type (level 5) of the product.
-	ProductTypeL5 *wrappers.StringValue `protobuf:"bytes,48,opt,name=product_type_l5,json=productTypeL5,proto3" json:"product_type_l5,omitempty"`
+	ProductTypeL5 *wrapperspb.StringValue `protobuf:"bytes,48,opt,name=product_type_l5,json=productTypeL5,proto3" json:"product_type_l5,omitempty"`
 	// Quarter as represented by the date of the first day of a quarter.
 	// Uses the calendar year for quarters, e.g., the second quarter of 2018
 	// starts on 2018-04-01. Formatted as yyyy-MM-dd.
-	Quarter *wrappers.StringValue `protobuf:"bytes,21,opt,name=quarter,proto3" json:"quarter,omitempty"`
+	Quarter *wrapperspb.StringValue `protobuf:"bytes,21,opt,name=quarter,proto3" json:"quarter,omitempty"`
 	// Type of the search engine results page.
 	SearchEngineResultsPageType enums.SearchEngineResultsPageTypeEnum_SearchEngineResultsPageType `protobuf:"varint,70,opt,name=search_engine_results_page_type,json=searchEngineResultsPageType,proto3,enum=google.ads.googleads.v3.enums.SearchEngineResultsPageTypeEnum_SearchEngineResultsPageType" json:"search_engine_results_page_type,omitempty"`
 	// Match type of the keyword that triggered the ad, including variants.
@@ -214,12 +214,12 @@ type Segments struct {
 	// Position of the ad.
 	Slot enums.SlotEnum_Slot `protobuf:"varint,23,opt,name=slot,proto3,enum=google.ads.googleads.v3.enums.SlotEnum_Slot" json:"slot,omitempty"`
 	// Resource name of the ad group criterion that represents webpage criterion.
-	Webpage *wrappers.StringValue `protobuf:"bytes,66,opt,name=webpage,proto3" json:"webpage,omitempty"`
+	Webpage *wrapperspb.StringValue `protobuf:"bytes,66,opt,name=webpage,proto3" json:"webpage,omitempty"`
 	// Week as defined as Monday through Sunday, and represented by the date of
 	// Monday. Formatted as yyyy-MM-dd.
-	Week *wrappers.StringValue `protobuf:"bytes,24,opt,name=week,proto3" json:"week,omitempty"`
+	Week *wrapperspb.StringValue `protobuf:"bytes,24,opt,name=week,proto3" json:"week,omitempty"`
 	// Year, formatted as yyyy.
-	Year *wrappers.Int32Value `protobuf:"bytes,25,opt,name=year,proto3" json:"year,omitempty"`
+	Year *wrapperspb.Int32Value `protobuf:"bytes,25,opt,name=year,proto3" json:"year,omitempty"`
 }
 
 func (x *Segments) Reset() {
@@ -268,7 +268,7 @@ func (x *Segments) GetClickType() enums.ClickTypeEnum_ClickType {
 	return enums.ClickTypeEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetConversionAction() *wrappers.StringValue {
+func (x *Segments) GetConversionAction() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ConversionAction
 	}
@@ -282,14 +282,14 @@ func (x *Segments) GetConversionActionCategory() enums.ConversionActionCategoryE
 	return enums.ConversionActionCategoryEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetConversionActionName() *wrappers.StringValue {
+func (x *Segments) GetConversionActionName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ConversionActionName
 	}
 	return nil
 }
 
-func (x *Segments) GetConversionAdjustment() *wrappers.BoolValue {
+func (x *Segments) GetConversionAdjustment() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.ConversionAdjustment
 	}
@@ -317,7 +317,7 @@ func (x *Segments) GetConversionOrAdjustmentLagBucket() enums.ConversionOrAdjust
 	return enums.ConversionOrAdjustmentLagBucketEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetDate() *wrappers.StringValue {
+func (x *Segments) GetDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Date
 	}
@@ -345,105 +345,105 @@ func (x *Segments) GetExternalConversionSource() enums.ExternalConversionSourceE
 	return enums.ExternalConversionSourceEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetGeoTargetAirport() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetAirport() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetAirport
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetCanton() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetCanton() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetCanton
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetCity() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetCity() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetCity
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetCountry() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetCountry() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetCountry
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetCounty() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetCounty() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetCounty
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetDistrict() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetDistrict() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetDistrict
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetMetro() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetMetro() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetMetro
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetMostSpecificLocation() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetMostSpecificLocation() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetMostSpecificLocation
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetPostalCode() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetPostalCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetPostalCode
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetProvince() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetProvince() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetProvince
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetRegion() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetRegion() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetRegion
 	}
 	return nil
 }
 
-func (x *Segments) GetGeoTargetState() *wrappers.StringValue {
+func (x *Segments) GetGeoTargetState() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetState
 	}
 	return nil
 }
 
-func (x *Segments) GetHotelBookingWindowDays() *wrappers.Int64Value {
+func (x *Segments) GetHotelBookingWindowDays() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.HotelBookingWindowDays
 	}
 	return nil
 }
 
-func (x *Segments) GetHotelCenterId() *wrappers.Int64Value {
+func (x *Segments) GetHotelCenterId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.HotelCenterId
 	}
 	return nil
 }
 
-func (x *Segments) GetHotelCheckInDate() *wrappers.StringValue {
+func (x *Segments) GetHotelCheckInDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HotelCheckInDate
 	}
@@ -457,21 +457,21 @@ func (x *Segments) GetHotelCheckInDayOfWeek() enums.DayOfWeekEnum_DayOfWeek {
 	return enums.DayOfWeekEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetHotelCity() *wrappers.StringValue {
+func (x *Segments) GetHotelCity() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HotelCity
 	}
 	return nil
 }
 
-func (x *Segments) GetHotelClass() *wrappers.Int32Value {
+func (x *Segments) GetHotelClass() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.HotelClass
 	}
 	return nil
 }
 
-func (x *Segments) GetHotelCountry() *wrappers.StringValue {
+func (x *Segments) GetHotelCountry() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HotelCountry
 	}
@@ -485,14 +485,14 @@ func (x *Segments) GetHotelDateSelectionType() enums.HotelDateSelectionTypeEnum_
 	return enums.HotelDateSelectionTypeEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetHotelLengthOfStay() *wrappers.Int32Value {
+func (x *Segments) GetHotelLengthOfStay() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.HotelLengthOfStay
 	}
 	return nil
 }
 
-func (x *Segments) GetHotelRateRuleId() *wrappers.StringValue {
+func (x *Segments) GetHotelRateRuleId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HotelRateRuleId
 	}
@@ -513,21 +513,21 @@ func (x *Segments) GetHotelPriceBucket() enums.HotelPriceBucketEnum_HotelPriceBu
 	return enums.HotelPriceBucketEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetHotelState() *wrappers.StringValue {
+func (x *Segments) GetHotelState() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HotelState
 	}
 	return nil
 }
 
-func (x *Segments) GetHour() *wrappers.Int32Value {
+func (x *Segments) GetHour() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.Hour
 	}
 	return nil
 }
 
-func (x *Segments) GetInteractionOnThisExtension() *wrappers.BoolValue {
+func (x *Segments) GetInteractionOnThisExtension() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.InteractionOnThisExtension
 	}
@@ -541,7 +541,7 @@ func (x *Segments) GetKeyword() *Keyword {
 	return nil
 }
 
-func (x *Segments) GetMonth() *wrappers.StringValue {
+func (x *Segments) GetMonth() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Month
 	}
@@ -555,7 +555,7 @@ func (x *Segments) GetMonthOfYear() enums.MonthOfYearEnum_MonthOfYear {
 	return enums.MonthOfYearEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetPartnerHotelId() *wrappers.StringValue {
+func (x *Segments) GetPartnerHotelId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PartnerHotelId
 	}
@@ -569,49 +569,49 @@ func (x *Segments) GetPlaceholderType() enums.PlaceholderTypeEnum_PlaceholderTyp
 	return enums.PlaceholderTypeEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetProductAggregatorId() *wrappers.UInt64Value {
+func (x *Segments) GetProductAggregatorId() *wrapperspb.UInt64Value {
 	if x != nil {
 		return x.ProductAggregatorId
 	}
 	return nil
 }
 
-func (x *Segments) GetProductBiddingCategoryLevel1() *wrappers.StringValue {
+func (x *Segments) GetProductBiddingCategoryLevel1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductBiddingCategoryLevel1
 	}
 	return nil
 }
 
-func (x *Segments) GetProductBiddingCategoryLevel2() *wrappers.StringValue {
+func (x *Segments) GetProductBiddingCategoryLevel2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductBiddingCategoryLevel2
 	}
 	return nil
 }
 
-func (x *Segments) GetProductBiddingCategoryLevel3() *wrappers.StringValue {
+func (x *Segments) GetProductBiddingCategoryLevel3() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductBiddingCategoryLevel3
 	}
 	return nil
 }
 
-func (x *Segments) GetProductBiddingCategoryLevel4() *wrappers.StringValue {
+func (x *Segments) GetProductBiddingCategoryLevel4() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductBiddingCategoryLevel4
 	}
 	return nil
 }
 
-func (x *Segments) GetProductBiddingCategoryLevel5() *wrappers.StringValue {
+func (x *Segments) GetProductBiddingCategoryLevel5() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductBiddingCategoryLevel5
 	}
 	return nil
 }
 
-func (x *Segments) GetProductBrand() *wrappers.StringValue {
+func (x *Segments) GetProductBrand() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductBrand
 	}
@@ -639,119 +639,119 @@ func (x *Segments) GetProductCondition() enums.ProductConditionEnum_ProductCondi
 	return enums.ProductConditionEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetProductCountry() *wrappers.StringValue {
+func (x *Segments) GetProductCountry() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductCountry
 	}
 	return nil
 }
 
-func (x *Segments) GetProductCustomAttribute0() *wrappers.StringValue {
+func (x *Segments) GetProductCustomAttribute0() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductCustomAttribute0
 	}
 	return nil
 }
 
-func (x *Segments) GetProductCustomAttribute1() *wrappers.StringValue {
+func (x *Segments) GetProductCustomAttribute1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductCustomAttribute1
 	}
 	return nil
 }
 
-func (x *Segments) GetProductCustomAttribute2() *wrappers.StringValue {
+func (x *Segments) GetProductCustomAttribute2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductCustomAttribute2
 	}
 	return nil
 }
 
-func (x *Segments) GetProductCustomAttribute3() *wrappers.StringValue {
+func (x *Segments) GetProductCustomAttribute3() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductCustomAttribute3
 	}
 	return nil
 }
 
-func (x *Segments) GetProductCustomAttribute4() *wrappers.StringValue {
+func (x *Segments) GetProductCustomAttribute4() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductCustomAttribute4
 	}
 	return nil
 }
 
-func (x *Segments) GetProductItemId() *wrappers.StringValue {
+func (x *Segments) GetProductItemId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductItemId
 	}
 	return nil
 }
 
-func (x *Segments) GetProductLanguage() *wrappers.StringValue {
+func (x *Segments) GetProductLanguage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductLanguage
 	}
 	return nil
 }
 
-func (x *Segments) GetProductMerchantId() *wrappers.UInt64Value {
+func (x *Segments) GetProductMerchantId() *wrapperspb.UInt64Value {
 	if x != nil {
 		return x.ProductMerchantId
 	}
 	return nil
 }
 
-func (x *Segments) GetProductStoreId() *wrappers.StringValue {
+func (x *Segments) GetProductStoreId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductStoreId
 	}
 	return nil
 }
 
-func (x *Segments) GetProductTitle() *wrappers.StringValue {
+func (x *Segments) GetProductTitle() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductTitle
 	}
 	return nil
 }
 
-func (x *Segments) GetProductTypeL1() *wrappers.StringValue {
+func (x *Segments) GetProductTypeL1() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductTypeL1
 	}
 	return nil
 }
 
-func (x *Segments) GetProductTypeL2() *wrappers.StringValue {
+func (x *Segments) GetProductTypeL2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductTypeL2
 	}
 	return nil
 }
 
-func (x *Segments) GetProductTypeL3() *wrappers.StringValue {
+func (x *Segments) GetProductTypeL3() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductTypeL3
 	}
 	return nil
 }
 
-func (x *Segments) GetProductTypeL4() *wrappers.StringValue {
+func (x *Segments) GetProductTypeL4() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductTypeL4
 	}
 	return nil
 }
 
-func (x *Segments) GetProductTypeL5() *wrappers.StringValue {
+func (x *Segments) GetProductTypeL5() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProductTypeL5
 	}
 	return nil
 }
 
-func (x *Segments) GetQuarter() *wrappers.StringValue {
+func (x *Segments) GetQuarter() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Quarter
 	}
@@ -779,21 +779,21 @@ func (x *Segments) GetSlot() enums.SlotEnum_Slot {
 	return enums.SlotEnum_UNSPECIFIED
 }
 
-func (x *Segments) GetWebpage() *wrappers.StringValue {
+func (x *Segments) GetWebpage() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Webpage
 	}
 	return nil
 }
 
-func (x *Segments) GetWeek() *wrappers.StringValue {
+func (x *Segments) GetWeek() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Week
 	}
 	return nil
 }
 
-func (x *Segments) GetYear() *wrappers.Int32Value {
+func (x *Segments) GetYear() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.Year
 	}
@@ -807,7 +807,7 @@ type Keyword struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The AdGroupCriterion resource name.
-	AdGroupCriterion *wrappers.StringValue `protobuf:"bytes,1,opt,name=ad_group_criterion,json=adGroupCriterion,proto3" json:"ad_group_criterion,omitempty"`
+	AdGroupCriterion *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=ad_group_criterion,json=adGroupCriterion,proto3" json:"ad_group_criterion,omitempty"`
 	// Keyword info.
 	Info *KeywordInfo `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
 }
@@ -844,7 +844,7 @@ func (*Keyword) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_common_segments_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Keyword) GetAdGroupCriterion() *wrappers.StringValue {
+func (x *Keyword) GetAdGroupCriterion() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdGroupCriterion
 	}
@@ -1418,23 +1418,23 @@ var file_google_ads_googleads_v3_common_segments_proto_goTypes = []interface{}{
 	(*Keyword)(nil),  // 1: google.ads.googleads.v3.common.Keyword
 	(enums.AdNetworkTypeEnum_AdNetworkType)(0),                                     // 2: google.ads.googleads.v3.enums.AdNetworkTypeEnum.AdNetworkType
 	(enums.ClickTypeEnum_ClickType)(0),                                             // 3: google.ads.googleads.v3.enums.ClickTypeEnum.ClickType
-	(*wrappers.StringValue)(nil),                                                   // 4: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                                 // 4: google.protobuf.StringValue
 	(enums.ConversionActionCategoryEnum_ConversionActionCategory)(0),               // 5: google.ads.googleads.v3.enums.ConversionActionCategoryEnum.ConversionActionCategory
-	(*wrappers.BoolValue)(nil),                                                     // 6: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                                                   // 6: google.protobuf.BoolValue
 	(enums.ConversionAttributionEventTypeEnum_ConversionAttributionEventType)(0),   // 7: google.ads.googleads.v3.enums.ConversionAttributionEventTypeEnum.ConversionAttributionEventType
 	(enums.ConversionLagBucketEnum_ConversionLagBucket)(0),                         // 8: google.ads.googleads.v3.enums.ConversionLagBucketEnum.ConversionLagBucket
 	(enums.ConversionOrAdjustmentLagBucketEnum_ConversionOrAdjustmentLagBucket)(0), // 9: google.ads.googleads.v3.enums.ConversionOrAdjustmentLagBucketEnum.ConversionOrAdjustmentLagBucket
 	(enums.DayOfWeekEnum_DayOfWeek)(0),                                             // 10: google.ads.googleads.v3.enums.DayOfWeekEnum.DayOfWeek
 	(enums.DeviceEnum_Device)(0),                                                   // 11: google.ads.googleads.v3.enums.DeviceEnum.Device
 	(enums.ExternalConversionSourceEnum_ExternalConversionSource)(0),               // 12: google.ads.googleads.v3.enums.ExternalConversionSourceEnum.ExternalConversionSource
-	(*wrappers.Int64Value)(nil),                                                    // 13: google.protobuf.Int64Value
-	(*wrappers.Int32Value)(nil),                                                    // 14: google.protobuf.Int32Value
+	(*wrapperspb.Int64Value)(nil),                                                  // 13: google.protobuf.Int64Value
+	(*wrapperspb.Int32Value)(nil),                                                  // 14: google.protobuf.Int32Value
 	(enums.HotelDateSelectionTypeEnum_HotelDateSelectionType)(0),                   // 15: google.ads.googleads.v3.enums.HotelDateSelectionTypeEnum.HotelDateSelectionType
 	(enums.HotelRateTypeEnum_HotelRateType)(0),                                     // 16: google.ads.googleads.v3.enums.HotelRateTypeEnum.HotelRateType
 	(enums.HotelPriceBucketEnum_HotelPriceBucket)(0),                               // 17: google.ads.googleads.v3.enums.HotelPriceBucketEnum.HotelPriceBucket
 	(enums.MonthOfYearEnum_MonthOfYear)(0),                                         // 18: google.ads.googleads.v3.enums.MonthOfYearEnum.MonthOfYear
 	(enums.PlaceholderTypeEnum_PlaceholderType)(0),                                 // 19: google.ads.googleads.v3.enums.PlaceholderTypeEnum.PlaceholderType
-	(*wrappers.UInt64Value)(nil),                                                   // 20: google.protobuf.UInt64Value
+	(*wrapperspb.UInt64Value)(nil),                                                 // 20: google.protobuf.UInt64Value
 	(enums.ProductChannelEnum_ProductChannel)(0),                                   // 21: google.ads.googleads.v3.enums.ProductChannelEnum.ProductChannel
 	(enums.ProductChannelExclusivityEnum_ProductChannelExclusivity)(0),             // 22: google.ads.googleads.v3.enums.ProductChannelExclusivityEnum.ProductChannelExclusivity
 	(enums.ProductConditionEnum_ProductCondition)(0),                               // 23: google.ads.googleads.v3.enums.ProductConditionEnum.ProductCondition

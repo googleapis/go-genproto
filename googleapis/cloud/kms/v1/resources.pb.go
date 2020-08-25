@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -641,7 +641,7 @@ type KeyRing struct {
 	// `projects/*/locations/*/keyRings/*`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The time at which this [KeyRing][google.cloud.kms.v1.KeyRing] was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 }
 
 func (x *KeyRing) Reset() {
@@ -683,7 +683,7 @@ func (x *KeyRing) GetName() string {
 	return ""
 }
 
-func (x *KeyRing) GetCreateTime() *timestamp.Timestamp {
+func (x *KeyRing) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -717,7 +717,7 @@ type CryptoKey struct {
 	// Immutable. The immutable purpose of this [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	Purpose CryptoKey_CryptoKeyPurpose `protobuf:"varint,3,opt,name=purpose,proto3,enum=google.cloud.kms.v1.CryptoKey_CryptoKeyPurpose" json:"purpose,omitempty"`
 	// Output only. The time at which this [CryptoKey][google.cloud.kms.v1.CryptoKey] was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// At [next_rotation_time][google.cloud.kms.v1.CryptoKey.next_rotation_time], the Key Management Service will automatically:
 	//
 	// 1. Create a new version of this [CryptoKey][google.cloud.kms.v1.CryptoKey].
@@ -731,7 +731,7 @@ type CryptoKey struct {
 	// Keys with [purpose][google.cloud.kms.v1.CryptoKey.purpose]
 	// [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT] support
 	// automatic rotation. For other keys, this field must be omitted.
-	NextRotationTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=next_rotation_time,json=nextRotationTime,proto3" json:"next_rotation_time,omitempty"`
+	NextRotationTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=next_rotation_time,json=nextRotationTime,proto3" json:"next_rotation_time,omitempty"`
 	// Controls the rate of automatic rotation.
 	//
 	// Types that are assignable to RotationSchedule:
@@ -800,14 +800,14 @@ func (x *CryptoKey) GetPurpose() CryptoKey_CryptoKeyPurpose {
 	return CryptoKey_CRYPTO_KEY_PURPOSE_UNSPECIFIED
 }
 
-func (x *CryptoKey) GetCreateTime() *timestamp.Timestamp {
+func (x *CryptoKey) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *CryptoKey) GetNextRotationTime() *timestamp.Timestamp {
+func (x *CryptoKey) GetNextRotationTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.NextRotationTime
 	}
@@ -821,7 +821,7 @@ func (m *CryptoKey) GetRotationSchedule() isCryptoKey_RotationSchedule {
 	return nil
 }
 
-func (x *CryptoKey) GetRotationPeriod() *duration.Duration {
+func (x *CryptoKey) GetRotationPeriod() *durationpb.Duration {
 	if x, ok := x.GetRotationSchedule().(*CryptoKey_RotationPeriod); ok {
 		return x.RotationPeriod
 	}
@@ -856,7 +856,7 @@ type CryptoKey_RotationPeriod struct {
 	// Keys with [purpose][google.cloud.kms.v1.CryptoKey.purpose]
 	// [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT] support
 	// automatic rotation. For other keys, this field must be omitted.
-	RotationPeriod *duration.Duration `protobuf:"bytes,8,opt,name=rotation_period,json=rotationPeriod,proto3,oneof"`
+	RotationPeriod *durationpb.Duration `protobuf:"bytes,8,opt,name=rotation_period,json=rotationPeriod,proto3,oneof"`
 }
 
 func (*CryptoKey_RotationPeriod) isCryptoKey_RotationSchedule() {}
@@ -1021,25 +1021,25 @@ type CryptoKeyVersion struct {
 	// [protection_level][google.cloud.kms.v1.CryptoKeyVersion.protection_level] [HSM][google.cloud.kms.v1.ProtectionLevel.HSM].
 	Attestation *KeyOperationAttestation `protobuf:"bytes,8,opt,name=attestation,proto3" json:"attestation,omitempty"`
 	// Output only. The time at which this [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The time this [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]'s key material was
 	// generated.
-	GenerateTime *timestamp.Timestamp `protobuf:"bytes,11,opt,name=generate_time,json=generateTime,proto3" json:"generate_time,omitempty"`
+	GenerateTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=generate_time,json=generateTime,proto3" json:"generate_time,omitempty"`
 	// Output only. The time this [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]'s key material is scheduled
 	// for destruction. Only present if [state][google.cloud.kms.v1.CryptoKeyVersion.state] is
 	// [DESTROY_SCHEDULED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROY_SCHEDULED].
-	DestroyTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=destroy_time,json=destroyTime,proto3" json:"destroy_time,omitempty"`
+	DestroyTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=destroy_time,json=destroyTime,proto3" json:"destroy_time,omitempty"`
 	// Output only. The time this CryptoKeyVersion's key material was
 	// destroyed. Only present if [state][google.cloud.kms.v1.CryptoKeyVersion.state] is
 	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED].
-	DestroyEventTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=destroy_event_time,json=destroyEventTime,proto3" json:"destroy_event_time,omitempty"`
+	DestroyEventTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=destroy_event_time,json=destroyEventTime,proto3" json:"destroy_event_time,omitempty"`
 	// Output only. The name of the [ImportJob][google.cloud.kms.v1.ImportJob] used to import this
 	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]. Only present if the underlying key material was
 	// imported.
 	ImportJob string `protobuf:"bytes,14,opt,name=import_job,json=importJob,proto3" json:"import_job,omitempty"`
 	// Output only. The time at which this [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]'s key material
 	// was imported.
-	ImportTime *timestamp.Timestamp `protobuf:"bytes,15,opt,name=import_time,json=importTime,proto3" json:"import_time,omitempty"`
+	ImportTime *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=import_time,json=importTime,proto3" json:"import_time,omitempty"`
 	// Output only. The root cause of an import failure. Only present if
 	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] is
 	// [IMPORT_FAILED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.IMPORT_FAILED].
@@ -1117,28 +1117,28 @@ func (x *CryptoKeyVersion) GetAttestation() *KeyOperationAttestation {
 	return nil
 }
 
-func (x *CryptoKeyVersion) GetCreateTime() *timestamp.Timestamp {
+func (x *CryptoKeyVersion) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *CryptoKeyVersion) GetGenerateTime() *timestamp.Timestamp {
+func (x *CryptoKeyVersion) GetGenerateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.GenerateTime
 	}
 	return nil
 }
 
-func (x *CryptoKeyVersion) GetDestroyTime() *timestamp.Timestamp {
+func (x *CryptoKeyVersion) GetDestroyTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.DestroyTime
 	}
 	return nil
 }
 
-func (x *CryptoKeyVersion) GetDestroyEventTime() *timestamp.Timestamp {
+func (x *CryptoKeyVersion) GetDestroyEventTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.DestroyEventTime
 	}
@@ -1152,7 +1152,7 @@ func (x *CryptoKeyVersion) GetImportJob() string {
 	return ""
 }
 
-func (x *CryptoKeyVersion) GetImportTime() *timestamp.Timestamp {
+func (x *CryptoKeyVersion) GetImportTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ImportTime
 	}
@@ -1202,7 +1202,7 @@ type PublicKey struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	PemCrc32C *wrappers.Int64Value `protobuf:"bytes,3,opt,name=pem_crc32c,json=pemCrc32c,proto3" json:"pem_crc32c,omitempty"`
+	PemCrc32C *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=pem_crc32c,json=pemCrc32c,proto3" json:"pem_crc32c,omitempty"`
 	// The [name][google.cloud.kms.v1.CryptoKeyVersion.name] of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] public key.
 	// Provided here for verification.
 	//
@@ -1256,7 +1256,7 @@ func (x *PublicKey) GetAlgorithm() CryptoKeyVersion_CryptoKeyVersionAlgorithm {
 	return CryptoKeyVersion_CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED
 }
 
-func (x *PublicKey) GetPemCrc32C() *wrappers.Int64Value {
+func (x *PublicKey) GetPemCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PemCrc32C
 	}
@@ -1313,15 +1313,15 @@ type ImportJob struct {
 	// attempt to import into.
 	ProtectionLevel ProtectionLevel `protobuf:"varint,9,opt,name=protection_level,json=protectionLevel,proto3,enum=google.cloud.kms.v1.ProtectionLevel" json:"protection_level,omitempty"`
 	// Output only. The time at which this [ImportJob][google.cloud.kms.v1.ImportJob] was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The time this [ImportJob][google.cloud.kms.v1.ImportJob]'s key material was generated.
-	GenerateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=generate_time,json=generateTime,proto3" json:"generate_time,omitempty"`
+	GenerateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=generate_time,json=generateTime,proto3" json:"generate_time,omitempty"`
 	// Output only. The time at which this [ImportJob][google.cloud.kms.v1.ImportJob] is scheduled for
 	// expiration and can no longer be used to import key material.
-	ExpireTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
+	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 	// Output only. The time this [ImportJob][google.cloud.kms.v1.ImportJob] expired. Only present if
 	// [state][google.cloud.kms.v1.ImportJob.state] is [EXPIRED][google.cloud.kms.v1.ImportJob.ImportJobState.EXPIRED].
-	ExpireEventTime *timestamp.Timestamp `protobuf:"bytes,10,opt,name=expire_event_time,json=expireEventTime,proto3" json:"expire_event_time,omitempty"`
+	ExpireEventTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=expire_event_time,json=expireEventTime,proto3" json:"expire_event_time,omitempty"`
 	// Output only. The current state of the [ImportJob][google.cloud.kms.v1.ImportJob], indicating if it can
 	// be used.
 	State ImportJob_ImportJobState `protobuf:"varint,6,opt,name=state,proto3,enum=google.cloud.kms.v1.ImportJob_ImportJobState" json:"state,omitempty"`
@@ -1390,28 +1390,28 @@ func (x *ImportJob) GetProtectionLevel() ProtectionLevel {
 	return ProtectionLevel_PROTECTION_LEVEL_UNSPECIFIED
 }
 
-func (x *ImportJob) GetCreateTime() *timestamp.Timestamp {
+func (x *ImportJob) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *ImportJob) GetGenerateTime() *timestamp.Timestamp {
+func (x *ImportJob) GetGenerateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.GenerateTime
 	}
 	return nil
 }
 
-func (x *ImportJob) GetExpireTime() *timestamp.Timestamp {
+func (x *ImportJob) GetExpireTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpireTime
 	}
 	return nil
 }
 
-func (x *ImportJob) GetExpireEventTime() *timestamp.Timestamp {
+func (x *ImportJob) GetExpireEventTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpireEventTime
 	}
@@ -1934,9 +1934,9 @@ var file_google_cloud_kms_v1_resources_proto_goTypes = []interface{}{
 	(*ExternalProtectionLevelOptions)(nil),          // 15: google.cloud.kms.v1.ExternalProtectionLevelOptions
 	nil,                                             // 16: google.cloud.kms.v1.CryptoKey.LabelsEntry
 	(*ImportJob_WrappingPublicKey)(nil),             // 17: google.cloud.kms.v1.ImportJob.WrappingPublicKey
-	(*timestamp.Timestamp)(nil),                     // 18: google.protobuf.Timestamp
-	(*duration.Duration)(nil),                       // 19: google.protobuf.Duration
-	(*wrappers.Int64Value)(nil),                     // 20: google.protobuf.Int64Value
+	(*timestamppb.Timestamp)(nil),                   // 18: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),                     // 19: google.protobuf.Duration
+	(*wrapperspb.Int64Value)(nil),                   // 20: google.protobuf.Int64Value
 }
 var file_google_cloud_kms_v1_resources_proto_depIdxs = []int32{
 	18, // 0: google.cloud.kms.v1.KeyRing.create_time:type_name -> google.protobuf.Timestamp

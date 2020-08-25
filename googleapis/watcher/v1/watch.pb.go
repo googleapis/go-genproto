@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	any "github.com/golang/protobuf/ptypes/any"
-	_ "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
+	_ "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -281,7 +281,7 @@ type Change struct {
 	// The actual change data. This field is present only when `state() == EXISTS`
 	// or `state() == ERROR`. Please see
 	// [google.protobuf.Any][google.protobuf.Any] about how to use the Any type.
-	Data *any.Any `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty"`
+	Data *anypb.Any `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty"`
 	// If present, provides a compact representation of all the messages that have
 	// been received by the caller for the given entity, e.g., it could be a
 	// sequence number or a multi-part timestamp/version vector. This marker can
@@ -339,7 +339,7 @@ func (x *Change) GetState() Change_State {
 	return Change_EXISTS
 }
 
-func (x *Change) GetData() *any.Any {
+func (x *Change) GetData() *anypb.Any {
 	if x != nil {
 		return x.Data
 	}
@@ -432,7 +432,7 @@ var file_google_watcher_v1_watch_proto_goTypes = []interface{}{
 	(*Request)(nil),     // 1: google.watcher.v1.Request
 	(*ChangeBatch)(nil), // 2: google.watcher.v1.ChangeBatch
 	(*Change)(nil),      // 3: google.watcher.v1.Change
-	(*any.Any)(nil),     // 4: google.protobuf.Any
+	(*anypb.Any)(nil),   // 4: google.protobuf.Any
 }
 var file_google_watcher_v1_watch_proto_depIdxs = []int32{
 	3, // 0: google.watcher.v1.ChangeBatch.changes:type_name -> google.watcher.v1.Change

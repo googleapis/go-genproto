@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -130,9 +130,9 @@ type ServicePerimeter struct {
 	// behavior.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Output only. Time the `ServicePerimeter` was created in UTC.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Time the `ServicePerimeter` was updated in UTC.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Perimeter type indicator. A single project is
 	// allowed to be a member of single regular perimeter, but multiple service
 	// perimeter bridges. A project cannot be a included in a perimeter bridge
@@ -215,14 +215,14 @@ func (x *ServicePerimeter) GetDescription() string {
 	return ""
 }
 
-func (x *ServicePerimeter) GetCreateTime() *timestamp.Timestamp {
+func (x *ServicePerimeter) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *ServicePerimeter) GetUpdateTime() *timestamp.Timestamp {
+func (x *ServicePerimeter) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -525,7 +525,7 @@ var file_google_identity_accesscontextmanager_v1_service_perimeter_proto_goTypes
 	(*ServicePerimeter)(nil),                             // 1: google.identity.accesscontextmanager.v1.ServicePerimeter
 	(*ServicePerimeterConfig)(nil),                       // 2: google.identity.accesscontextmanager.v1.ServicePerimeterConfig
 	(*ServicePerimeterConfig_VpcAccessibleServices)(nil), // 3: google.identity.accesscontextmanager.v1.ServicePerimeterConfig.VpcAccessibleServices
-	(*timestamp.Timestamp)(nil),                          // 4: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                        // 4: google.protobuf.Timestamp
 }
 var file_google_identity_accesscontextmanager_v1_service_perimeter_proto_depIdxs = []int32{
 	4, // 0: google.identity.accesscontextmanager.v1.ServicePerimeter.create_time:type_name -> google.protobuf.Timestamp

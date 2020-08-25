@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,17 +56,17 @@ type CampaignCriterion struct {
 	// `customers/{customer_id}/campaignCriteria/{campaign_id}~{criterion_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Immutable. The campaign to which the criterion belongs.
-	Campaign *wrappers.StringValue `protobuf:"bytes,4,opt,name=campaign,proto3" json:"campaign,omitempty"`
+	Campaign *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=campaign,proto3" json:"campaign,omitempty"`
 	// Output only. The ID of the criterion.
 	//
 	// This field is ignored during mutate.
-	CriterionId *wrappers.Int64Value `protobuf:"bytes,5,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
+	CriterionId *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
 	// The modifier for the bids when the criterion matches. The modifier must be
 	// in the range: 0.1 - 10.0. Most targetable criteria types support modifiers.
 	// Use 0 to opt out of a Device type.
-	BidModifier *wrappers.FloatValue `protobuf:"bytes,14,opt,name=bid_modifier,json=bidModifier,proto3" json:"bid_modifier,omitempty"`
+	BidModifier *wrapperspb.FloatValue `protobuf:"bytes,14,opt,name=bid_modifier,json=bidModifier,proto3" json:"bid_modifier,omitempty"`
 	// Immutable. Whether to target (`false`) or exclude (`true`) the criterion.
-	Negative *wrappers.BoolValue `protobuf:"bytes,7,opt,name=negative,proto3" json:"negative,omitempty"`
+	Negative *wrapperspb.BoolValue `protobuf:"bytes,7,opt,name=negative,proto3" json:"negative,omitempty"`
 	// Output only. The type of the criterion.
 	Type enums.CriterionTypeEnum_CriterionType `protobuf:"varint,6,opt,name=type,proto3,enum=google.ads.googleads.v4.enums.CriterionTypeEnum_CriterionType" json:"type,omitempty"`
 	// The status of the criterion.
@@ -145,28 +145,28 @@ func (x *CampaignCriterion) GetResourceName() string {
 	return ""
 }
 
-func (x *CampaignCriterion) GetCampaign() *wrappers.StringValue {
+func (x *CampaignCriterion) GetCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Campaign
 	}
 	return nil
 }
 
-func (x *CampaignCriterion) GetCriterionId() *wrappers.Int64Value {
+func (x *CampaignCriterion) GetCriterionId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CriterionId
 	}
 	return nil
 }
 
-func (x *CampaignCriterion) GetBidModifier() *wrappers.FloatValue {
+func (x *CampaignCriterion) GetBidModifier() *wrapperspb.FloatValue {
 	if x != nil {
 		return x.BidModifier
 	}
 	return nil
 }
 
-func (x *CampaignCriterion) GetNegative() *wrappers.BoolValue {
+func (x *CampaignCriterion) GetNegative() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.Negative
 	}
@@ -834,10 +834,10 @@ func file_google_ads_googleads_v4_resources_campaign_criterion_proto_rawDescGZIP
 var file_google_ads_googleads_v4_resources_campaign_criterion_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_campaign_criterion_proto_goTypes = []interface{}{
 	(*CampaignCriterion)(nil),                                      // 0: google.ads.googleads.v4.resources.CampaignCriterion
-	(*wrappers.StringValue)(nil),                                   // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                                    // 2: google.protobuf.Int64Value
-	(*wrappers.FloatValue)(nil),                                    // 3: google.protobuf.FloatValue
-	(*wrappers.BoolValue)(nil),                                     // 4: google.protobuf.BoolValue
+	(*wrapperspb.StringValue)(nil),                                 // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                                  // 2: google.protobuf.Int64Value
+	(*wrapperspb.FloatValue)(nil),                                  // 3: google.protobuf.FloatValue
+	(*wrapperspb.BoolValue)(nil),                                   // 4: google.protobuf.BoolValue
 	(enums.CriterionTypeEnum_CriterionType)(0),                     // 5: google.ads.googleads.v4.enums.CriterionTypeEnum.CriterionType
 	(enums.CampaignCriterionStatusEnum_CampaignCriterionStatus)(0), // 6: google.ads.googleads.v4.enums.CampaignCriterionStatusEnum.CampaignCriterionStatus
 	(*common.KeywordInfo)(nil),                                     // 7: google.ads.googleads.v4.common.KeywordInfo

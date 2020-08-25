@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -51,18 +51,18 @@ type OfflineUserAddressInfo struct {
 	// First name of the user, which is hashed as SHA-256 after normalized
 	// (Lowercase all characters; Remove any extra spaces before, after, and in
 	// between).
-	HashedFirstName *wrappers.StringValue `protobuf:"bytes,1,opt,name=hashed_first_name,json=hashedFirstName,proto3" json:"hashed_first_name,omitempty"`
+	HashedFirstName *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=hashed_first_name,json=hashedFirstName,proto3" json:"hashed_first_name,omitempty"`
 	// Last name of the user, which is hashed as SHA-256 after normalized (lower
 	// case only and no punctuation).
-	HashedLastName *wrappers.StringValue `protobuf:"bytes,2,opt,name=hashed_last_name,json=hashedLastName,proto3" json:"hashed_last_name,omitempty"`
+	HashedLastName *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=hashed_last_name,json=hashedLastName,proto3" json:"hashed_last_name,omitempty"`
 	// City of the address. Only accepted for Store Sales Direct data.
-	City *wrappers.StringValue `protobuf:"bytes,3,opt,name=city,proto3" json:"city,omitempty"`
+	City *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=city,proto3" json:"city,omitempty"`
 	// State code of the address. Only accepted for Store Sales Direct data.
-	State *wrappers.StringValue `protobuf:"bytes,4,opt,name=state,proto3" json:"state,omitempty"`
+	State *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=state,proto3" json:"state,omitempty"`
 	// 2-letter country code in ISO-3166-1 alpha-2 of the user's address.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,5,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// Postal code of the user's address.
-	PostalCode *wrappers.StringValue `protobuf:"bytes,6,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	PostalCode *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
 }
 
 func (x *OfflineUserAddressInfo) Reset() {
@@ -97,42 +97,42 @@ func (*OfflineUserAddressInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_offline_user_data_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *OfflineUserAddressInfo) GetHashedFirstName() *wrappers.StringValue {
+func (x *OfflineUserAddressInfo) GetHashedFirstName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HashedFirstName
 	}
 	return nil
 }
 
-func (x *OfflineUserAddressInfo) GetHashedLastName() *wrappers.StringValue {
+func (x *OfflineUserAddressInfo) GetHashedLastName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.HashedLastName
 	}
 	return nil
 }
 
-func (x *OfflineUserAddressInfo) GetCity() *wrappers.StringValue {
+func (x *OfflineUserAddressInfo) GetCity() *wrapperspb.StringValue {
 	if x != nil {
 		return x.City
 	}
 	return nil
 }
 
-func (x *OfflineUserAddressInfo) GetState() *wrappers.StringValue {
+func (x *OfflineUserAddressInfo) GetState() *wrapperspb.StringValue {
 	if x != nil {
 		return x.State
 	}
 	return nil
 }
 
-func (x *OfflineUserAddressInfo) GetCountryCode() *wrappers.StringValue {
+func (x *OfflineUserAddressInfo) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
 	return nil
 }
 
-func (x *OfflineUserAddressInfo) GetPostalCode() *wrappers.StringValue {
+func (x *OfflineUserAddressInfo) GetPostalCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PostalCode
 	}
@@ -195,28 +195,28 @@ func (m *UserIdentifier) GetIdentifier() isUserIdentifier_Identifier {
 	return nil
 }
 
-func (x *UserIdentifier) GetHashedEmail() *wrappers.StringValue {
+func (x *UserIdentifier) GetHashedEmail() *wrapperspb.StringValue {
 	if x, ok := x.GetIdentifier().(*UserIdentifier_HashedEmail); ok {
 		return x.HashedEmail
 	}
 	return nil
 }
 
-func (x *UserIdentifier) GetHashedPhoneNumber() *wrappers.StringValue {
+func (x *UserIdentifier) GetHashedPhoneNumber() *wrapperspb.StringValue {
 	if x, ok := x.GetIdentifier().(*UserIdentifier_HashedPhoneNumber); ok {
 		return x.HashedPhoneNumber
 	}
 	return nil
 }
 
-func (x *UserIdentifier) GetMobileId() *wrappers.StringValue {
+func (x *UserIdentifier) GetMobileId() *wrapperspb.StringValue {
 	if x, ok := x.GetIdentifier().(*UserIdentifier_MobileId); ok {
 		return x.MobileId
 	}
 	return nil
 }
 
-func (x *UserIdentifier) GetThirdPartyUserId() *wrappers.StringValue {
+func (x *UserIdentifier) GetThirdPartyUserId() *wrapperspb.StringValue {
 	if x, ok := x.GetIdentifier().(*UserIdentifier_ThirdPartyUserId); ok {
 		return x.ThirdPartyUserId
 	}
@@ -236,24 +236,24 @@ type isUserIdentifier_Identifier interface {
 
 type UserIdentifier_HashedEmail struct {
 	// Hashed email address using SHA-256 hash function after normalization.
-	HashedEmail *wrappers.StringValue `protobuf:"bytes,1,opt,name=hashed_email,json=hashedEmail,proto3,oneof"`
+	HashedEmail *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=hashed_email,json=hashedEmail,proto3,oneof"`
 }
 
 type UserIdentifier_HashedPhoneNumber struct {
 	// Hashed phone number using SHA-256 hash function after normalization
 	// (E164 standard).
-	HashedPhoneNumber *wrappers.StringValue `protobuf:"bytes,2,opt,name=hashed_phone_number,json=hashedPhoneNumber,proto3,oneof"`
+	HashedPhoneNumber *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=hashed_phone_number,json=hashedPhoneNumber,proto3,oneof"`
 }
 
 type UserIdentifier_MobileId struct {
 	// Mobile device ID (advertising ID/IDFA).
-	MobileId *wrappers.StringValue `protobuf:"bytes,3,opt,name=mobile_id,json=mobileId,proto3,oneof"`
+	MobileId *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=mobile_id,json=mobileId,proto3,oneof"`
 }
 
 type UserIdentifier_ThirdPartyUserId struct {
 	// Advertiser-assigned user ID for Customer Match upload, or
 	// third-party-assigned user ID for SSD.
-	ThirdPartyUserId *wrappers.StringValue `protobuf:"bytes,4,opt,name=third_party_user_id,json=thirdPartyUserId,proto3,oneof"`
+	ThirdPartyUserId *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=third_party_user_id,json=thirdPartyUserId,proto3,oneof"`
 }
 
 type UserIdentifier_AddressInfo struct {
@@ -280,23 +280,23 @@ type TransactionAttribute struct {
 	// Timestamp when transaction occurred. Required.
 	// The format is "YYYY-MM-DD HH:MM:SS".
 	// Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"
-	TransactionDateTime *wrappers.StringValue `protobuf:"bytes,1,opt,name=transaction_date_time,json=transactionDateTime,proto3" json:"transaction_date_time,omitempty"`
+	TransactionDateTime *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=transaction_date_time,json=transactionDateTime,proto3" json:"transaction_date_time,omitempty"`
 	// Transaction amount in micros. Required.
-	TransactionAmountMicros *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=transaction_amount_micros,json=transactionAmountMicros,proto3" json:"transaction_amount_micros,omitempty"`
+	TransactionAmountMicros *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=transaction_amount_micros,json=transactionAmountMicros,proto3" json:"transaction_amount_micros,omitempty"`
 	// Transaction currency code. ISO 4217 three-letter code is used. Required.
-	CurrencyCode *wrappers.StringValue `protobuf:"bytes,3,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
+	CurrencyCode *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
 	// The resource name of conversion action to report conversions to.
 	// Required.
-	ConversionAction *wrappers.StringValue `protobuf:"bytes,4,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
+	ConversionAction *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
 	// Transaction order id.
 	// Accessible to whitelisted customers only.
-	OrderId *wrappers.StringValue `protobuf:"bytes,5,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
+	OrderId *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	// Store attributes of the transaction.
 	// Accessible to whitelisted customers only.
 	StoreAttribute *StoreAttribute `protobuf:"bytes,6,opt,name=store_attribute,json=storeAttribute,proto3" json:"store_attribute,omitempty"`
 	// Value of the custom variable for each transaction.
 	// Accessible to whitelisted customers only.
-	CustomValue *wrappers.StringValue `protobuf:"bytes,7,opt,name=custom_value,json=customValue,proto3" json:"custom_value,omitempty"`
+	CustomValue *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=custom_value,json=customValue,proto3" json:"custom_value,omitempty"`
 }
 
 func (x *TransactionAttribute) Reset() {
@@ -331,35 +331,35 @@ func (*TransactionAttribute) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_offline_user_data_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *TransactionAttribute) GetTransactionDateTime() *wrappers.StringValue {
+func (x *TransactionAttribute) GetTransactionDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TransactionDateTime
 	}
 	return nil
 }
 
-func (x *TransactionAttribute) GetTransactionAmountMicros() *wrappers.DoubleValue {
+func (x *TransactionAttribute) GetTransactionAmountMicros() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.TransactionAmountMicros
 	}
 	return nil
 }
 
-func (x *TransactionAttribute) GetCurrencyCode() *wrappers.StringValue {
+func (x *TransactionAttribute) GetCurrencyCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CurrencyCode
 	}
 	return nil
 }
 
-func (x *TransactionAttribute) GetConversionAction() *wrappers.StringValue {
+func (x *TransactionAttribute) GetConversionAction() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ConversionAction
 	}
 	return nil
 }
 
-func (x *TransactionAttribute) GetOrderId() *wrappers.StringValue {
+func (x *TransactionAttribute) GetOrderId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.OrderId
 	}
@@ -373,7 +373,7 @@ func (x *TransactionAttribute) GetStoreAttribute() *StoreAttribute {
 	return nil
 }
 
-func (x *TransactionAttribute) GetCustomValue() *wrappers.StringValue {
+func (x *TransactionAttribute) GetCustomValue() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CustomValue
 	}
@@ -388,7 +388,7 @@ type StoreAttribute struct {
 
 	// Store code from
 	// https://support.google.com/business/answer/3370250#storecode
-	StoreCode *wrappers.StringValue `protobuf:"bytes,1,opt,name=store_code,json=storeCode,proto3" json:"store_code,omitempty"`
+	StoreCode *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=store_code,json=storeCode,proto3" json:"store_code,omitempty"`
 }
 
 func (x *StoreAttribute) Reset() {
@@ -423,7 +423,7 @@ func (*StoreAttribute) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_offline_user_data_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *StoreAttribute) GetStoreCode() *wrappers.StringValue {
+func (x *StoreAttribute) GetStoreCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StoreCode
 	}
@@ -497,7 +497,7 @@ type CustomerMatchUserListMetadata struct {
 
 	// The resource name of remarketing list to update data.
 	// Required for job of CUSTOMER_MATCH_USER_LIST type.
-	UserList *wrappers.StringValue `protobuf:"bytes,1,opt,name=user_list,json=userList,proto3" json:"user_list,omitempty"`
+	UserList *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=user_list,json=userList,proto3" json:"user_list,omitempty"`
 }
 
 func (x *CustomerMatchUserListMetadata) Reset() {
@@ -532,7 +532,7 @@ func (*CustomerMatchUserListMetadata) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_offline_user_data_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *CustomerMatchUserListMetadata) GetUserList() *wrappers.StringValue {
+func (x *CustomerMatchUserListMetadata) GetUserList() *wrapperspb.StringValue {
 	if x != nil {
 		return x.UserList
 	}
@@ -549,18 +549,18 @@ type StoreSalesMetadata struct {
 	// associated with any form of customer information).
 	// Required.
 	// The fraction needs to be between 0 and 1 (excluding 0).
-	LoyaltyFraction *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=loyalty_fraction,json=loyaltyFraction,proto3" json:"loyalty_fraction,omitempty"`
+	LoyaltyFraction *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=loyalty_fraction,json=loyaltyFraction,proto3" json:"loyalty_fraction,omitempty"`
 	// This is the ratio of sales being uploaded compared to the overall sales
 	// that can be associated with a customer. Required.
 	// The fraction needs to be between 0 and 1 (excluding 0). For example, if you
 	// upload half the sales that you are able to associate with a customer, this
 	// would be 0.5.
-	TransactionUploadFraction *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=transaction_upload_fraction,json=transactionUploadFraction,proto3" json:"transaction_upload_fraction,omitempty"`
+	TransactionUploadFraction *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=transaction_upload_fraction,json=transactionUploadFraction,proto3" json:"transaction_upload_fraction,omitempty"`
 	// Name of the store sales custom variable key. A predefined key that
 	// can be applied to the transaction and then later used for custom
 	// segmentation in reporting.
 	// Accessible to whitelisted customers only.
-	CustomKey *wrappers.StringValue `protobuf:"bytes,4,opt,name=custom_key,json=customKey,proto3" json:"custom_key,omitempty"`
+	CustomKey *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=custom_key,json=customKey,proto3" json:"custom_key,omitempty"`
 	// Metadata for a third party Store Sales upload.
 	ThirdPartyMetadata *StoreSalesThirdPartyMetadata `protobuf:"bytes,3,opt,name=third_party_metadata,json=thirdPartyMetadata,proto3" json:"third_party_metadata,omitempty"`
 }
@@ -597,21 +597,21 @@ func (*StoreSalesMetadata) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_offline_user_data_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *StoreSalesMetadata) GetLoyaltyFraction() *wrappers.DoubleValue {
+func (x *StoreSalesMetadata) GetLoyaltyFraction() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.LoyaltyFraction
 	}
 	return nil
 }
 
-func (x *StoreSalesMetadata) GetTransactionUploadFraction() *wrappers.DoubleValue {
+func (x *StoreSalesMetadata) GetTransactionUploadFraction() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.TransactionUploadFraction
 	}
 	return nil
 }
 
-func (x *StoreSalesMetadata) GetCustomKey() *wrappers.StringValue {
+func (x *StoreSalesMetadata) GetCustomKey() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CustomKey
 	}
@@ -636,26 +636,26 @@ type StoreSalesThirdPartyMetadata struct {
 	// Time the advertiser uploaded the data to the partner. Required.
 	// The format is "YYYY-MM-DD HH:MM:SS".
 	// Examples: "2018-03-05 09:15:00" or "2018-02-01 14:34:30"
-	AdvertiserUploadDateTime *wrappers.StringValue `protobuf:"bytes,1,opt,name=advertiser_upload_date_time,json=advertiserUploadDateTime,proto3" json:"advertiser_upload_date_time,omitempty"`
+	AdvertiserUploadDateTime *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=advertiser_upload_date_time,json=advertiserUploadDateTime,proto3" json:"advertiser_upload_date_time,omitempty"`
 	// The fraction of transactions that are valid. Invalid transactions may
 	// include invalid formats or values.
 	// Required.
 	// The fraction needs to be between 0 and 1 (excluding 0).
-	ValidTransactionFraction *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=valid_transaction_fraction,json=validTransactionFraction,proto3" json:"valid_transaction_fraction,omitempty"`
+	ValidTransactionFraction *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=valid_transaction_fraction,json=validTransactionFraction,proto3" json:"valid_transaction_fraction,omitempty"`
 	// The fraction of valid transactions that are matched to a third party
 	// assigned user ID on the partner side.
 	// Required.
 	// The fraction needs to be between 0 and 1 (excluding 0).
-	PartnerMatchFraction *wrappers.DoubleValue `protobuf:"bytes,3,opt,name=partner_match_fraction,json=partnerMatchFraction,proto3" json:"partner_match_fraction,omitempty"`
+	PartnerMatchFraction *wrapperspb.DoubleValue `protobuf:"bytes,3,opt,name=partner_match_fraction,json=partnerMatchFraction,proto3" json:"partner_match_fraction,omitempty"`
 	// The fraction of valid transactions that are uploaded by the partner to
 	// Google.
 	// Required.
 	// The fraction needs to be between 0 and 1 (excluding 0).
-	PartnerUploadFraction *wrappers.DoubleValue `protobuf:"bytes,4,opt,name=partner_upload_fraction,json=partnerUploadFraction,proto3" json:"partner_upload_fraction,omitempty"`
+	PartnerUploadFraction *wrapperspb.DoubleValue `protobuf:"bytes,4,opt,name=partner_upload_fraction,json=partnerUploadFraction,proto3" json:"partner_upload_fraction,omitempty"`
 	// Version of partner IDs to be used for uploads. Required.
-	BridgeMapVersionId *wrappers.StringValue `protobuf:"bytes,5,opt,name=bridge_map_version_id,json=bridgeMapVersionId,proto3" json:"bridge_map_version_id,omitempty"`
+	BridgeMapVersionId *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=bridge_map_version_id,json=bridgeMapVersionId,proto3" json:"bridge_map_version_id,omitempty"`
 	// ID of the third party partner updating the transaction feed.
-	PartnerId *wrappers.Int64Value `protobuf:"bytes,6,opt,name=partner_id,json=partnerId,proto3" json:"partner_id,omitempty"`
+	PartnerId *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=partner_id,json=partnerId,proto3" json:"partner_id,omitempty"`
 }
 
 func (x *StoreSalesThirdPartyMetadata) Reset() {
@@ -690,42 +690,42 @@ func (*StoreSalesThirdPartyMetadata) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_offline_user_data_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *StoreSalesThirdPartyMetadata) GetAdvertiserUploadDateTime() *wrappers.StringValue {
+func (x *StoreSalesThirdPartyMetadata) GetAdvertiserUploadDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdvertiserUploadDateTime
 	}
 	return nil
 }
 
-func (x *StoreSalesThirdPartyMetadata) GetValidTransactionFraction() *wrappers.DoubleValue {
+func (x *StoreSalesThirdPartyMetadata) GetValidTransactionFraction() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.ValidTransactionFraction
 	}
 	return nil
 }
 
-func (x *StoreSalesThirdPartyMetadata) GetPartnerMatchFraction() *wrappers.DoubleValue {
+func (x *StoreSalesThirdPartyMetadata) GetPartnerMatchFraction() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.PartnerMatchFraction
 	}
 	return nil
 }
 
-func (x *StoreSalesThirdPartyMetadata) GetPartnerUploadFraction() *wrappers.DoubleValue {
+func (x *StoreSalesThirdPartyMetadata) GetPartnerUploadFraction() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.PartnerUploadFraction
 	}
 	return nil
 }
 
-func (x *StoreSalesThirdPartyMetadata) GetBridgeMapVersionId() *wrappers.StringValue {
+func (x *StoreSalesThirdPartyMetadata) GetBridgeMapVersionId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BridgeMapVersionId
 	}
 	return nil
 }
 
-func (x *StoreSalesThirdPartyMetadata) GetPartnerId() *wrappers.Int64Value {
+func (x *StoreSalesThirdPartyMetadata) GetPartnerId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PartnerId
 	}
@@ -949,9 +949,9 @@ var file_google_ads_googleads_v4_common_offline_user_data_proto_goTypes = []inte
 	(*CustomerMatchUserListMetadata)(nil), // 5: google.ads.googleads.v4.common.CustomerMatchUserListMetadata
 	(*StoreSalesMetadata)(nil),            // 6: google.ads.googleads.v4.common.StoreSalesMetadata
 	(*StoreSalesThirdPartyMetadata)(nil),  // 7: google.ads.googleads.v4.common.StoreSalesThirdPartyMetadata
-	(*wrappers.StringValue)(nil),          // 8: google.protobuf.StringValue
-	(*wrappers.DoubleValue)(nil),          // 9: google.protobuf.DoubleValue
-	(*wrappers.Int64Value)(nil),           // 10: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),        // 8: google.protobuf.StringValue
+	(*wrapperspb.DoubleValue)(nil),        // 9: google.protobuf.DoubleValue
+	(*wrapperspb.Int64Value)(nil),         // 10: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v4_common_offline_user_data_proto_depIdxs = []int32{
 	8,  // 0: google.ads.googleads.v4.common.OfflineUserAddressInfo.hashed_first_name:type_name -> google.protobuf.StringValue

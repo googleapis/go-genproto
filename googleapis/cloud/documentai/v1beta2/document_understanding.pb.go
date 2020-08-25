@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
@@ -34,6 +33,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1176,9 +1176,9 @@ type OperationMetadata struct {
 	// A message providing more details about the current state of processing.
 	StateMessage string `protobuf:"bytes,2,opt,name=state_message,json=stateMessage,proto3" json:"state_message,omitempty"`
 	// The creation time of the operation.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The last update time of the operation.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *OperationMetadata) Reset() {
@@ -1227,14 +1227,14 @@ func (x *OperationMetadata) GetStateMessage() string {
 	return ""
 }
 
-func (x *OperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetUpdateTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -1534,7 +1534,7 @@ var file_google_cloud_documentai_v1beta2_document_understanding_proto_goTypes = 
 	(*GcsDestination)(nil),                // 15: google.cloud.documentai.v1beta2.GcsDestination
 	(*OperationMetadata)(nil),             // 16: google.cloud.documentai.v1beta2.OperationMetadata
 	(*BoundingPoly)(nil),                  // 17: google.cloud.documentai.v1beta2.BoundingPoly
-	(*timestamp.Timestamp)(nil),           // 18: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),         // 18: google.protobuf.Timestamp
 	(*longrunning.Operation)(nil),         // 19: google.longrunning.Operation
 	(*Document)(nil),                      // 20: google.cloud.documentai.v1beta2.Document
 }

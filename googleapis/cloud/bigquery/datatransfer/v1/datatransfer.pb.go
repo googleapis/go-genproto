@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -315,9 +315,9 @@ type DataSourceParameter struct {
 	// All possible values for the parameter.
 	AllowedValues []string `protobuf:"bytes,8,rep,name=allowed_values,json=allowedValues,proto3" json:"allowed_values,omitempty"`
 	// For integer and double values specifies minimum allowed value.
-	MinValue *wrappers.DoubleValue `protobuf:"bytes,9,opt,name=min_value,json=minValue,proto3" json:"min_value,omitempty"`
+	MinValue *wrapperspb.DoubleValue `protobuf:"bytes,9,opt,name=min_value,json=minValue,proto3" json:"min_value,omitempty"`
 	// For integer and double values specifies maxminum allowed value.
-	MaxValue *wrappers.DoubleValue `protobuf:"bytes,10,opt,name=max_value,json=maxValue,proto3" json:"max_value,omitempty"`
+	MaxValue *wrapperspb.DoubleValue `protobuf:"bytes,10,opt,name=max_value,json=maxValue,proto3" json:"max_value,omitempty"`
 	// Deprecated. This field has no effect.
 	Fields []*DataSourceParameter `protobuf:"bytes,11,rep,name=fields,proto3" json:"fields,omitempty"`
 	// Description of the requirements for this field, in case the user input does
@@ -422,14 +422,14 @@ func (x *DataSourceParameter) GetAllowedValues() []string {
 	return nil
 }
 
-func (x *DataSourceParameter) GetMinValue() *wrappers.DoubleValue {
+func (x *DataSourceParameter) GetMinValue() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.MinValue
 	}
 	return nil
 }
 
-func (x *DataSourceParameter) GetMaxValue() *wrappers.DoubleValue {
+func (x *DataSourceParameter) GetMaxValue() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.MaxValue
 	}
@@ -538,7 +538,7 @@ type DataSource struct {
 	// for the data source.
 	ManualRunsDisabled bool `protobuf:"varint,17,opt,name=manual_runs_disabled,json=manualRunsDisabled,proto3" json:"manual_runs_disabled,omitempty"`
 	// The minimum interval for scheduler to schedule runs.
-	MinimumScheduleInterval *duration.Duration `protobuf:"bytes,18,opt,name=minimum_schedule_interval,json=minimumScheduleInterval,proto3" json:"minimum_schedule_interval,omitempty"`
+	MinimumScheduleInterval *durationpb.Duration `protobuf:"bytes,18,opt,name=minimum_schedule_interval,json=minimumScheduleInterval,proto3" json:"minimum_schedule_interval,omitempty"`
 }
 
 func (x *DataSource) Reset() {
@@ -694,7 +694,7 @@ func (x *DataSource) GetManualRunsDisabled() bool {
 	return false
 }
 
-func (x *DataSource) GetMinimumScheduleInterval() *duration.Duration {
+func (x *DataSource) GetMinimumScheduleInterval() *durationpb.Duration {
 	if x != nil {
 		return x.MinimumScheduleInterval
 	}
@@ -1029,7 +1029,7 @@ type UpdateTransferConfigRequest struct {
 	//   the user to copy the code and paste it in the application.
 	AuthorizationCode string `protobuf:"bytes,3,opt,name=authorization_code,json=authorizationCode,proto3" json:"authorization_code,omitempty"`
 	// Required. Required list of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional version info. If users want to find a very recent access token,
 	// that is, immediately after approving access, users have to set the
 	// version_info claim in the token request. To obtain the version_info, users
@@ -1091,7 +1091,7 @@ func (x *UpdateTransferConfigRequest) GetAuthorizationCode() string {
 	return ""
 }
 
-func (x *UpdateTransferConfigRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateTransferConfigRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1876,10 +1876,10 @@ type ScheduleTransferRunsRequest struct {
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. Start time of the range of transfer runs. For example,
 	// `"2017-05-25T00:00:00+00:00"`.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Required. End time of the range of transfer runs. For example,
 	// `"2017-05-30T00:00:00+00:00"`.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *ScheduleTransferRunsRequest) Reset() {
@@ -1921,14 +1921,14 @@ func (x *ScheduleTransferRunsRequest) GetParent() string {
 	return ""
 }
 
-func (x *ScheduleTransferRunsRequest) GetStartTime() *timestamp.Timestamp {
+func (x *ScheduleTransferRunsRequest) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *ScheduleTransferRunsRequest) GetEndTime() *timestamp.Timestamp {
+func (x *ScheduleTransferRunsRequest) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -2056,7 +2056,7 @@ func (x *StartManualTransferRunsRequest) GetRequestedTimeRange() *StartManualTra
 	return nil
 }
 
-func (x *StartManualTransferRunsRequest) GetRequestedRunTime() *timestamp.Timestamp {
+func (x *StartManualTransferRunsRequest) GetRequestedRunTime() *timestamppb.Timestamp {
 	if x, ok := x.GetTime().(*StartManualTransferRunsRequest_RequestedRunTime); ok {
 		return x.RequestedRunTime
 	}
@@ -2075,7 +2075,7 @@ type StartManualTransferRunsRequest_RequestedTimeRange struct {
 type StartManualTransferRunsRequest_RequestedRunTime struct {
 	// Specific run_time for a transfer run to be started. The
 	// requested_run_time must not be in the future.
-	RequestedRunTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=requested_run_time,json=requestedRunTime,proto3,oneof"`
+	RequestedRunTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=requested_run_time,json=requestedRunTime,proto3,oneof"`
 }
 
 func (*StartManualTransferRunsRequest_RequestedTimeRange) isStartManualTransferRunsRequest_Time() {}
@@ -2142,12 +2142,12 @@ type StartManualTransferRunsRequest_TimeRange struct {
 	// `"2017-05-25T00:00:00+00:00"`. The start_time must be strictly less than
 	// the end_time. Creates transfer runs where run_time is in the range betwen
 	// start_time (inclusive) and end_time (exlusive).
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End time of the range of transfer runs. For example,
 	// `"2017-05-30T00:00:00+00:00"`. The end_time must not be in the future.
 	// Creates transfer runs where run_time is in the range betwen start_time
 	// (inclusive) and end_time (exlusive).
-	EndTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *StartManualTransferRunsRequest_TimeRange) Reset() {
@@ -2182,14 +2182,14 @@ func (*StartManualTransferRunsRequest_TimeRange) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_datatransfer_v1_datatransfer_proto_rawDescGZIP(), []int{21, 0}
 }
 
-func (x *StartManualTransferRunsRequest_TimeRange) GetStartTime() *timestamp.Timestamp {
+func (x *StartManualTransferRunsRequest_TimeRange) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *StartManualTransferRunsRequest_TimeRange) GetEndTime() *timestamp.Timestamp {
+func (x *StartManualTransferRunsRequest_TimeRange) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -2937,17 +2937,17 @@ var file_google_cloud_bigquery_datatransfer_v1_datatransfer_proto_goTypes = []in
 	(*StartManualTransferRunsRequest)(nil),           // 25: google.cloud.bigquery.datatransfer.v1.StartManualTransferRunsRequest
 	(*StartManualTransferRunsResponse)(nil),          // 26: google.cloud.bigquery.datatransfer.v1.StartManualTransferRunsResponse
 	(*StartManualTransferRunsRequest_TimeRange)(nil), // 27: google.cloud.bigquery.datatransfer.v1.StartManualTransferRunsRequest.TimeRange
-	(*wrappers.DoubleValue)(nil),                     // 28: google.protobuf.DoubleValue
+	(*wrapperspb.DoubleValue)(nil),                   // 28: google.protobuf.DoubleValue
 	(TransferType)(0),                                // 29: google.cloud.bigquery.datatransfer.v1.TransferType
-	(*duration.Duration)(nil),                        // 30: google.protobuf.Duration
+	(*durationpb.Duration)(nil),                      // 30: google.protobuf.Duration
 	(*TransferConfig)(nil),                           // 31: google.cloud.bigquery.datatransfer.v1.TransferConfig
-	(*field_mask.FieldMask)(nil),                     // 32: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                    // 32: google.protobuf.FieldMask
 	(TransferState)(0),                               // 33: google.cloud.bigquery.datatransfer.v1.TransferState
 	(*TransferRun)(nil),                              // 34: google.cloud.bigquery.datatransfer.v1.TransferRun
 	(TransferMessage_MessageSeverity)(0),             // 35: google.cloud.bigquery.datatransfer.v1.TransferMessage.MessageSeverity
 	(*TransferMessage)(nil),                          // 36: google.cloud.bigquery.datatransfer.v1.TransferMessage
-	(*timestamp.Timestamp)(nil),                      // 37: google.protobuf.Timestamp
-	(*empty.Empty)(nil),                              // 38: google.protobuf.Empty
+	(*timestamppb.Timestamp)(nil),                    // 37: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),                            // 38: google.protobuf.Empty
 }
 var file_google_cloud_bigquery_datatransfer_v1_datatransfer_proto_depIdxs = []int32{
 	0,  // 0: google.cloud.bigquery.datatransfer.v1.DataSourceParameter.type:type_name -> google.cloud.bigquery.datatransfer.v1.DataSourceParameter.Type
@@ -3358,7 +3358,7 @@ type DataTransferServiceClient interface {
 	UpdateTransferConfig(ctx context.Context, in *UpdateTransferConfigRequest, opts ...grpc.CallOption) (*TransferConfig, error)
 	// Deletes a data transfer configuration,
 	// including any associated transfer runs and logs.
-	DeleteTransferConfig(ctx context.Context, in *DeleteTransferConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTransferConfig(ctx context.Context, in *DeleteTransferConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns information about a data transfer config.
 	GetTransferConfig(ctx context.Context, in *GetTransferConfigRequest, opts ...grpc.CallOption) (*TransferConfig, error)
 	// Returns information about all data transfers in the project.
@@ -3378,7 +3378,7 @@ type DataTransferServiceClient interface {
 	// Returns information about the particular transfer run.
 	GetTransferRun(ctx context.Context, in *GetTransferRunRequest, opts ...grpc.CallOption) (*TransferRun, error)
 	// Deletes the specified transfer run.
-	DeleteTransferRun(ctx context.Context, in *DeleteTransferRunRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTransferRun(ctx context.Context, in *DeleteTransferRunRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns information about running and completed jobs.
 	ListTransferRuns(ctx context.Context, in *ListTransferRunsRequest, opts ...grpc.CallOption) (*ListTransferRunsResponse, error)
 	// Returns user facing log messages for the data transfer run.
@@ -3436,8 +3436,8 @@ func (c *dataTransferServiceClient) UpdateTransferConfig(ctx context.Context, in
 	return out, nil
 }
 
-func (c *dataTransferServiceClient) DeleteTransferConfig(ctx context.Context, in *DeleteTransferConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataTransferServiceClient) DeleteTransferConfig(ctx context.Context, in *DeleteTransferConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.datatransfer.v1.DataTransferService/DeleteTransferConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3491,8 +3491,8 @@ func (c *dataTransferServiceClient) GetTransferRun(ctx context.Context, in *GetT
 	return out, nil
 }
 
-func (c *dataTransferServiceClient) DeleteTransferRun(ctx context.Context, in *DeleteTransferRunRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataTransferServiceClient) DeleteTransferRun(ctx context.Context, in *DeleteTransferRunRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.datatransfer.v1.DataTransferService/DeleteTransferRun", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3542,7 +3542,7 @@ type DataTransferServiceServer interface {
 	UpdateTransferConfig(context.Context, *UpdateTransferConfigRequest) (*TransferConfig, error)
 	// Deletes a data transfer configuration,
 	// including any associated transfer runs and logs.
-	DeleteTransferConfig(context.Context, *DeleteTransferConfigRequest) (*empty.Empty, error)
+	DeleteTransferConfig(context.Context, *DeleteTransferConfigRequest) (*emptypb.Empty, error)
 	// Returns information about a data transfer config.
 	GetTransferConfig(context.Context, *GetTransferConfigRequest) (*TransferConfig, error)
 	// Returns information about all data transfers in the project.
@@ -3562,7 +3562,7 @@ type DataTransferServiceServer interface {
 	// Returns information about the particular transfer run.
 	GetTransferRun(context.Context, *GetTransferRunRequest) (*TransferRun, error)
 	// Deletes the specified transfer run.
-	DeleteTransferRun(context.Context, *DeleteTransferRunRequest) (*empty.Empty, error)
+	DeleteTransferRun(context.Context, *DeleteTransferRunRequest) (*emptypb.Empty, error)
 	// Returns information about running and completed jobs.
 	ListTransferRuns(context.Context, *ListTransferRunsRequest) (*ListTransferRunsResponse, error)
 	// Returns user facing log messages for the data transfer run.
@@ -3592,7 +3592,7 @@ func (*UnimplementedDataTransferServiceServer) CreateTransferConfig(context.Cont
 func (*UnimplementedDataTransferServiceServer) UpdateTransferConfig(context.Context, *UpdateTransferConfigRequest) (*TransferConfig, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTransferConfig not implemented")
 }
-func (*UnimplementedDataTransferServiceServer) DeleteTransferConfig(context.Context, *DeleteTransferConfigRequest) (*empty.Empty, error) {
+func (*UnimplementedDataTransferServiceServer) DeleteTransferConfig(context.Context, *DeleteTransferConfigRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTransferConfig not implemented")
 }
 func (*UnimplementedDataTransferServiceServer) GetTransferConfig(context.Context, *GetTransferConfigRequest) (*TransferConfig, error) {
@@ -3610,7 +3610,7 @@ func (*UnimplementedDataTransferServiceServer) StartManualTransferRuns(context.C
 func (*UnimplementedDataTransferServiceServer) GetTransferRun(context.Context, *GetTransferRunRequest) (*TransferRun, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransferRun not implemented")
 }
-func (*UnimplementedDataTransferServiceServer) DeleteTransferRun(context.Context, *DeleteTransferRunRequest) (*empty.Empty, error) {
+func (*UnimplementedDataTransferServiceServer) DeleteTransferRun(context.Context, *DeleteTransferRunRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTransferRun not implemented")
 }
 func (*UnimplementedDataTransferServiceServer) ListTransferRuns(context.Context, *ListTransferRunsRequest) (*ListTransferRunsResponse, error) {

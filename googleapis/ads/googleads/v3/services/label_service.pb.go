@@ -29,12 +29,12 @@ import (
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v3/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -184,7 +184,7 @@ type LabelOperation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// FieldMask that determines which resource fields are modified in an update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// The mutate operation.
 	//
 	// Types that are assignable to Operation:
@@ -226,7 +226,7 @@ func (*LabelOperation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_services_label_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *LabelOperation) GetUpdateMask() *field_mask.FieldMask {
+func (x *LabelOperation) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -531,14 +531,14 @@ func file_google_ads_googleads_v3_services_label_service_proto_rawDescGZIP() []b
 
 var file_google_ads_googleads_v3_services_label_service_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_google_ads_googleads_v3_services_label_service_proto_goTypes = []interface{}{
-	(*GetLabelRequest)(nil),      // 0: google.ads.googleads.v3.services.GetLabelRequest
-	(*MutateLabelsRequest)(nil),  // 1: google.ads.googleads.v3.services.MutateLabelsRequest
-	(*LabelOperation)(nil),       // 2: google.ads.googleads.v3.services.LabelOperation
-	(*MutateLabelsResponse)(nil), // 3: google.ads.googleads.v3.services.MutateLabelsResponse
-	(*MutateLabelResult)(nil),    // 4: google.ads.googleads.v3.services.MutateLabelResult
-	(*field_mask.FieldMask)(nil), // 5: google.protobuf.FieldMask
-	(*resources.Label)(nil),      // 6: google.ads.googleads.v3.resources.Label
-	(*status.Status)(nil),        // 7: google.rpc.Status
+	(*GetLabelRequest)(nil),       // 0: google.ads.googleads.v3.services.GetLabelRequest
+	(*MutateLabelsRequest)(nil),   // 1: google.ads.googleads.v3.services.MutateLabelsRequest
+	(*LabelOperation)(nil),        // 2: google.ads.googleads.v3.services.LabelOperation
+	(*MutateLabelsResponse)(nil),  // 3: google.ads.googleads.v3.services.MutateLabelsResponse
+	(*MutateLabelResult)(nil),     // 4: google.ads.googleads.v3.services.MutateLabelResult
+	(*fieldmaskpb.FieldMask)(nil), // 5: google.protobuf.FieldMask
+	(*resources.Label)(nil),       // 6: google.ads.googleads.v3.resources.Label
+	(*status.Status)(nil),         // 7: google.rpc.Status
 }
 var file_google_ads_googleads_v3_services_label_service_proto_depIdxs = []int32{
 	2, // 0: google.ads.googleads.v3.services.MutateLabelsRequest.operations:type_name -> google.ads.googleads.v3.services.LabelOperation

@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -70,7 +70,10 @@ type Page struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The unique identifier of the page.
-	// Required for the [Pages.UpdatePage][google.cloud.dialogflow.cx.v3beta1.Pages.UpdatePage] method. [Pages.CreatePage][google.cloud.dialogflow.cx.v3beta1.Pages.CreatePage]
+	// Required for the
+	// [Pages.UpdatePage][google.cloud.dialogflow.cx.v3beta1.Pages.UpdatePage]
+	// method.
+	// [Pages.CreatePage][google.cloud.dialogflow.cx.v3beta1.Pages.CreatePage]
 	// populates the name automatically.
 	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
 	// ID>/flows/<Flow ID>/pages/<Page ID>`.
@@ -82,8 +85,10 @@ type Page struct {
 	// The form associated with the page, used for collecting parameters
 	// relevant to the page.
 	Form *Form `protobuf:"bytes,4,opt,name=form,proto3" json:"form,omitempty"`
-	// Ordered list of [`TransitionRouteGroups`][google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroup] associated
-	// with the page. Transition route groups must be unique within a page.
+	// Ordered list of
+	// [`TransitionRouteGroups`][google.cloud.dialogflow.cx.v3beta1.TransitionRouteGroup]
+	// associated with the page. Transition route groups must be unique within a
+	// page.
 	//
 	// *   If multiple transition routes within a page scope refer to the same
 	//     intent, then the precedence order is: page's transition route -> page's
@@ -104,7 +109,8 @@ type Page struct {
 	//
 	// *   TransitionRoutes defined in the page with intent specified.
 	// *   TransitionRoutes defined in the
-	// [transition route groups][google.cloud.dialogflow.cx.v3beta1.Page.transition_route_groups].
+	// [transition route
+	// groups][google.cloud.dialogflow.cx.v3beta1.Page.transition_route_groups].
 	// *   TransitionRoutes defined in flow with intent specified.
 	// *   TransitionRoutes defined in the page with only condition specified.
 	TransitionRoutes []*TransitionRoute `protobuf:"bytes,9,rep,name=transition_routes,json=transitionRoutes,proto3" json:"transition_routes,omitempty"`
@@ -197,8 +203,9 @@ func (x *Page) GetEventHandlers() []*EventHandler {
 // A form is a data model that groups related parameters that can be collected
 // from the user. The process in which the agent prompts the user and collects
 // parameter values from the user is called form filling. A form can be added to
-// a [page][google.cloud.dialogflow.cx.v3beta1.Page]. When form filling is done, the filled parameters will be
-// written to the [session][google.cloud.dialogflow.cx.v3beta1.SessionInfo.parameters].
+// a [page][google.cloud.dialogflow.cx.v3beta1.Page]. When form filling is done,
+// the filled parameters will be written to the
+// [session][google.cloud.dialogflow.cx.v3beta1.SessionInfo.parameters].
 type Form struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -247,17 +254,22 @@ func (x *Form) GetParameters() []*Form_Parameter {
 	return nil
 }
 
-// An event handler specifies an [event][google.cloud.dialogflow.cx.v3beta1.EventHandler.event] that can be handled
-// during a session. When the specified event happens, the following actions are
-// taken in order:
+// An event handler specifies an
+// [event][google.cloud.dialogflow.cx.v3beta1.EventHandler.event] that can be
+// handled during a session. When the specified event happens, the following
+// actions are taken in order:
 //
 // *   If there is a
-// [`trigger_fulfillment`][google.cloud.dialogflow.cx.v3beta1.EventHandler.trigger_fulfillment] associated with
-// the event, it will be called.
-// *   If there is a [`target_page`][google.cloud.dialogflow.cx.v3beta1.EventHandler.target_page] associated
-// with the event, the session will transition into the specified page.
-// *   If there is a [`target_flow`][google.cloud.dialogflow.cx.v3beta1.EventHandler.target_flow] associated
-// with the event, the session will transition into the specified flow.
+// [`trigger_fulfillment`][google.cloud.dialogflow.cx.v3beta1.EventHandler.trigger_fulfillment]
+// associated with the event, it will be called.
+// *   If there is a
+// [`target_page`][google.cloud.dialogflow.cx.v3beta1.EventHandler.target_page]
+// associated with the event, the session will transition into the specified
+// page.
+// *   If there is a
+// [`target_flow`][google.cloud.dialogflow.cx.v3beta1.EventHandler.target_flow]
+// associated with the event, the session will transition into the specified
+// flow.
 type EventHandler struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -273,7 +285,9 @@ type EventHandler struct {
 	// handler handling webhooks.
 	TriggerFulfillment *Fulfillment `protobuf:"bytes,5,opt,name=trigger_fulfillment,json=triggerFulfillment,proto3" json:"trigger_fulfillment,omitempty"`
 	// The target to transition to, either a page in the same host flow (the flow
-	// that owns this [TransitionRoute][google.cloud.dialogflow.cx.v3beta1.TransitionRoute]), or another flow in the same agent.
+	// that owns this
+	// [TransitionRoute][google.cloud.dialogflow.cx.v3beta1.TransitionRoute]), or
+	// another flow in the same agent.
 	//
 	// Types that are assignable to Target:
 	//	*EventHandler_TargetPage
@@ -377,17 +391,22 @@ func (*EventHandler_TargetPage) isEventHandler_Target() {}
 
 func (*EventHandler_TargetFlow) isEventHandler_Target() {}
 
-// A transition route specifies a [intent][google.cloud.dialogflow.cx.v3beta1.Intent] that can be matched and/or a
-// data condition that can be evaluated during a session. When a specified
-// transition is matched, the following actions are taken in order:
+// A transition route specifies a
+// [intent][google.cloud.dialogflow.cx.v3beta1.Intent] that can be matched
+// and/or a data condition that can be evaluated during a session. When a
+// specified transition is matched, the following actions are taken in order:
 //
 // *   If there is a
-// [`trigger_fulfillment`][google.cloud.dialogflow.cx.v3beta1.TransitionRoute.trigger_fulfillment] associated with
-// the transition, it will be called.
-// *   If there is a [`target_page`][google.cloud.dialogflow.cx.v3beta1.TransitionRoute.target_page] associated
-// with the transition, the session will transition into the specified page.
-// *   If there is a [`target_flow`][google.cloud.dialogflow.cx.v3beta1.TransitionRoute.target_flow] associated
-// with the transition, the session will transition into the specified flow.
+// [`trigger_fulfillment`][google.cloud.dialogflow.cx.v3beta1.TransitionRoute.trigger_fulfillment]
+// associated with the transition, it will be called.
+// *   If there is a
+// [`target_page`][google.cloud.dialogflow.cx.v3beta1.TransitionRoute.target_page]
+// associated with the transition, the session will transition into the
+// specified page.
+// *   If there is a
+// [`target_flow`][google.cloud.dialogflow.cx.v3beta1.TransitionRoute.target_flow]
+// associated with the transition, the session will transition into the
+// specified flow.
 type TransitionRoute struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -395,8 +414,9 @@ type TransitionRoute struct {
 
 	// Output only. The unique identifier of this transition route.
 	Name string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
-	// The unique identifier of an [Intent][google.cloud.dialogflow.cx.v3beta1.Intent].
-	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
+	// The unique identifier of an
+	// [Intent][google.cloud.dialogflow.cx.v3beta1.Intent]. Format:
+	// `projects/<Project ID>/locations/<Location ID>/agents/<Agent
 	// ID>/intents/<Intent ID>`.
 	// Indicates that the transition can only happen when the given intent is
 	// matched.
@@ -404,8 +424,9 @@ type TransitionRoute struct {
 	// `intent` and `condition` are specified, the transition can only happen
 	// when both are fulfilled.
 	Intent string `protobuf:"bytes,1,opt,name=intent,proto3" json:"intent,omitempty"`
-	// The condition to evaluate against [form parameters][google.cloud.dialogflow.cx.v3beta1.Form.parameters] or
-	// [session parameters][google.cloud.dialogflow.cx.v3beta1.SessionInfo.parameters].
+	// The condition to evaluate against [form
+	// parameters][google.cloud.dialogflow.cx.v3beta1.Form.parameters] or [session
+	// parameters][google.cloud.dialogflow.cx.v3beta1.SessionInfo.parameters].
 	//
 	// See the [conditions
 	// reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
@@ -418,7 +439,9 @@ type TransitionRoute struct {
 	// defined, `trigger_fulfillment` is executed first.
 	TriggerFulfillment *Fulfillment `protobuf:"bytes,3,opt,name=trigger_fulfillment,json=triggerFulfillment,proto3" json:"trigger_fulfillment,omitempty"`
 	// The target to transition to, either a page in the same host flow (the flow
-	// that owns this [TransitionRoute][google.cloud.dialogflow.cx.v3beta1.TransitionRoute]), or another flow in the same agent.
+	// that owns this
+	// [TransitionRoute][google.cloud.dialogflow.cx.v3beta1.TransitionRoute]), or
+	// another flow in the same agent.
 	//
 	// Types that are assignable to Target:
 	//	*TransitionRoute_TargetPage
@@ -529,7 +552,8 @@ func (*TransitionRoute_TargetPage) isTransitionRoute_Target() {}
 
 func (*TransitionRoute_TargetFlow) isTransitionRoute_Target() {}
 
-// The request message for [Pages.ListPages][google.cloud.dialogflow.cx.v3beta1.Pages.ListPages].
+// The request message for
+// [Pages.ListPages][google.cloud.dialogflow.cx.v3beta1.Pages.ListPages].
 type ListPagesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -545,7 +569,7 @@ type ListPagesRequest struct {
 	// *  `Page.entry_fulfillment.messages`
 	// *  `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages`
 	// *  `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages`
-	// *  `Page.transition_route.trigger_fulfillment.messages`
+	// *  `Page.transition_routes.trigger_fulfillment.messages`
 	// *
 	// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
 	//
@@ -622,7 +646,8 @@ func (x *ListPagesRequest) GetPageToken() string {
 	return ""
 }
 
-// The response message for [Pages.ListPages][google.cloud.dialogflow.cx.v3beta1.Pages.ListPages].
+// The response message for
+// [Pages.ListPages][google.cloud.dialogflow.cx.v3beta1.Pages.ListPages].
 type ListPagesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -682,7 +707,8 @@ func (x *ListPagesResponse) GetNextPageToken() string {
 	return ""
 }
 
-// The request message for [Pages.GetPage][google.cloud.dialogflow.cx.v3beta1.Pages.GetPage].
+// The request message for
+// [Pages.GetPage][google.cloud.dialogflow.cx.v3beta1.Pages.GetPage].
 type GetPageRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -698,7 +724,7 @@ type GetPageRequest struct {
 	// *  `Page.entry_fulfillment.messages`
 	// *  `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages`
 	// *  `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages`
-	// *  `Page.transition_route.trigger_fulfillment.messages`
+	// *  `Page.transition_routes.trigger_fulfillment.messages`
 	// *
 	// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
 	//
@@ -756,7 +782,8 @@ func (x *GetPageRequest) GetLanguageCode() string {
 	return ""
 }
 
-// The request message for [Pages.CreatePage][google.cloud.dialogflow.cx.v3beta1.Pages.CreatePage].
+// The request message for
+// [Pages.CreatePage][google.cloud.dialogflow.cx.v3beta1.Pages.CreatePage].
 type CreatePageRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -773,7 +800,7 @@ type CreatePageRequest struct {
 	// *  `Page.entry_fulfillment.messages`
 	// *  `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages`
 	// *  `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages`
-	// *  `Page.transition_route.trigger_fulfillment.messages`
+	// *  `Page.transition_routes.trigger_fulfillment.messages`
 	// *
 	// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
 	//
@@ -838,7 +865,8 @@ func (x *CreatePageRequest) GetLanguageCode() string {
 	return ""
 }
 
-// The request message for [Pages.UpdatePage][google.cloud.dialogflow.cx.v3beta1.Pages.UpdatePage].
+// The request message for
+// [Pages.UpdatePage][google.cloud.dialogflow.cx.v3beta1.Pages.UpdatePage].
 type UpdatePageRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -851,7 +879,7 @@ type UpdatePageRequest struct {
 	// *  `Page.entry_fulfillment.messages`
 	// *  `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages`
 	// *  `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages`
-	// *  `Page.transition_route.trigger_fulfillment.messages`
+	// *  `Page.transition_routes.trigger_fulfillment.messages`
 	// *
 	// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages`
 	//
@@ -863,7 +891,7 @@ type UpdatePageRequest struct {
 	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// The mask to control which fields get updated. If the mask is not present,
 	// all fields will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdatePageRequest) Reset() {
@@ -912,14 +940,15 @@ func (x *UpdatePageRequest) GetLanguageCode() string {
 	return ""
 }
 
-func (x *UpdatePageRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdatePageRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
 	return nil
 }
 
-// The request message for [Pages.DeletePage][google.cloud.dialogflow.cx.v3beta1.Pages.DeletePage].
+// The request message for
+// [Pages.DeletePage][google.cloud.dialogflow.cx.v3beta1.Pages.DeletePage].
 type DeletePageRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -935,7 +964,10 @@ type DeletePageRequest struct {
 	// *  If `force` is set to false, an error will be returned with message
 	//    indicating the incoming transitions.
 	// *  If `force` is set to true, Dialogflow will remove the page, as well as
-	//    any transitions to the page.
+	//    any transitions to the page (i.e. [Target
+	//    page][EventHandler.target_page] in event handlers or [Target
+	//    page][TransitionRoute.target_page] in transition routes that point to
+	//    this page will be cleared).
 	Force bool `protobuf:"varint,2,opt,name=force,proto3" json:"force,omitempty"`
 }
 
@@ -1011,7 +1043,7 @@ type Form_Parameter struct {
 	FillBehavior *Form_Parameter_FillBehavior `protobuf:"bytes,7,opt,name=fill_behavior,json=fillBehavior,proto3" json:"fill_behavior,omitempty"`
 	// The default value of an optional parameter. If the parameter is required,
 	// the default value will be ignored.
-	DefaultValue *_struct.Value `protobuf:"bytes,9,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
+	DefaultValue *structpb.Value `protobuf:"bytes,9,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
 }
 
 func (x *Form_Parameter) Reset() {
@@ -1081,7 +1113,7 @@ func (x *Form_Parameter) GetFillBehavior() *Form_Parameter_FillBehavior {
 	return nil
 }
 
-func (x *Form_Parameter) GetDefaultValue() *_struct.Value {
+func (x *Form_Parameter) GetDefaultValue() *structpb.Value {
 	if x != nil {
 		return x.DefaultValue
 	}
@@ -1497,9 +1529,9 @@ var file_google_cloud_dialogflow_cx_v3beta1_page_proto_goTypes = []interface{}{
 	(*Form_Parameter)(nil),              // 10: google.cloud.dialogflow.cx.v3beta1.Form.Parameter
 	(*Form_Parameter_FillBehavior)(nil), // 11: google.cloud.dialogflow.cx.v3beta1.Form.Parameter.FillBehavior
 	(*Fulfillment)(nil),                 // 12: google.cloud.dialogflow.cx.v3beta1.Fulfillment
-	(*field_mask.FieldMask)(nil),        // 13: google.protobuf.FieldMask
-	(*_struct.Value)(nil),               // 14: google.protobuf.Value
-	(*empty.Empty)(nil),                 // 15: google.protobuf.Empty
+	(*fieldmaskpb.FieldMask)(nil),       // 13: google.protobuf.FieldMask
+	(*structpb.Value)(nil),              // 14: google.protobuf.Value
+	(*emptypb.Empty)(nil),               // 15: google.protobuf.Empty
 }
 var file_google_cloud_dialogflow_cx_v3beta1_page_proto_depIdxs = []int32{
 	12, // 0: google.cloud.dialogflow.cx.v3beta1.Page.entry_fulfillment:type_name -> google.cloud.dialogflow.cx.v3beta1.Fulfillment
@@ -1735,7 +1767,7 @@ type PagesClient interface {
 	// Updates the specified page.
 	UpdatePage(ctx context.Context, in *UpdatePageRequest, opts ...grpc.CallOption) (*Page, error)
 	// Deletes the specified page.
-	DeletePage(ctx context.Context, in *DeletePageRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeletePage(ctx context.Context, in *DeletePageRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type pagesClient struct {
@@ -1782,8 +1814,8 @@ func (c *pagesClient) UpdatePage(ctx context.Context, in *UpdatePageRequest, opt
 	return out, nil
 }
 
-func (c *pagesClient) DeletePage(ctx context.Context, in *DeletePageRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *pagesClient) DeletePage(ctx context.Context, in *DeletePageRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.dialogflow.cx.v3beta1.Pages/DeletePage", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1802,7 +1834,7 @@ type PagesServer interface {
 	// Updates the specified page.
 	UpdatePage(context.Context, *UpdatePageRequest) (*Page, error)
 	// Deletes the specified page.
-	DeletePage(context.Context, *DeletePageRequest) (*empty.Empty, error)
+	DeletePage(context.Context, *DeletePageRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedPagesServer can be embedded to have forward compatible implementations.
@@ -1821,7 +1853,7 @@ func (*UnimplementedPagesServer) CreatePage(context.Context, *CreatePageRequest)
 func (*UnimplementedPagesServer) UpdatePage(context.Context, *UpdatePageRequest) (*Page, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePage not implemented")
 }
-func (*UnimplementedPagesServer) DeletePage(context.Context, *DeletePageRequest) (*empty.Empty, error) {
+func (*UnimplementedPagesServer) DeletePage(context.Context, *DeletePageRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeletePage not implemented")
 }
 

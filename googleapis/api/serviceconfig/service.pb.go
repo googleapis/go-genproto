@@ -25,16 +25,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/any"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	annotations "google.golang.org/genproto/googleapis/api/annotations"
 	_ "google.golang.org/genproto/googleapis/api/label"
 	metric "google.golang.org/genproto/googleapis/api/metric"
 	monitoredres "google.golang.org/genproto/googleapis/api/monitoredres"
-	api "google.golang.org/genproto/protobuf/api"
-	ptype "google.golang.org/genproto/protobuf/ptype"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/anypb"
+	apipb "google.golang.org/protobuf/types/known/apipb"
+	typepb "google.golang.org/protobuf/types/known/typepb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -81,7 +81,7 @@ type Service struct {
 	// certain features are enabled by default for certain config versions.
 	//
 	// The latest config version is `3`.
-	ConfigVersion *wrappers.UInt32Value `protobuf:"bytes,20,opt,name=config_version,json=configVersion,proto3" json:"config_version,omitempty"`
+	ConfigVersion *wrapperspb.UInt32Value `protobuf:"bytes,20,opt,name=config_version,json=configVersion,proto3" json:"config_version,omitempty"`
 	// The service name, which is a DNS-like logical identifier for the
 	// service, such as `calendar.googleapis.com`. The service name
 	// typically goes through DNS verification to make sure the owner
@@ -101,7 +101,7 @@ type Service struct {
 	// author, as the remaining fields will be derived from the IDL during the
 	// normalization process. It is an error to specify an API interface here
 	// which cannot be resolved against the associated IDL files.
-	Apis []*api.Api `protobuf:"bytes,3,rep,name=apis,proto3" json:"apis,omitempty"`
+	Apis []*apipb.Api `protobuf:"bytes,3,rep,name=apis,proto3" json:"apis,omitempty"`
 	// A list of all proto message types included in this API service.
 	// Types referenced directly or indirectly by the `apis` are
 	// automatically included.  Messages which are not referenced but
@@ -110,7 +110,7 @@ type Service struct {
 	//
 	//     types:
 	//     - name: google.protobuf.Int32
-	Types []*ptype.Type `protobuf:"bytes,4,rep,name=types,proto3" json:"types,omitempty"`
+	Types []*typepb.Type `protobuf:"bytes,4,rep,name=types,proto3" json:"types,omitempty"`
 	// A list of all enum types included in this API service.  Enums
 	// referenced directly or indirectly by the `apis` are automatically
 	// included.  Enums which are not referenced but shall be included
@@ -118,7 +118,7 @@ type Service struct {
 	//
 	//     enums:
 	//     - name: google.someapi.v1.SomeEnum
-	Enums []*ptype.Enum `protobuf:"bytes,5,rep,name=enums,proto3" json:"enums,omitempty"`
+	Enums []*typepb.Enum `protobuf:"bytes,5,rep,name=enums,proto3" json:"enums,omitempty"`
 	// Additional API documentation.
 	Documentation *Documentation `protobuf:"bytes,6,opt,name=documentation,proto3" json:"documentation,omitempty"`
 	// API backend configuration.
@@ -190,7 +190,7 @@ func (*Service) Descriptor() ([]byte, []int) {
 	return file_google_api_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Service) GetConfigVersion() *wrappers.UInt32Value {
+func (x *Service) GetConfigVersion() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.ConfigVersion
 	}
@@ -225,21 +225,21 @@ func (x *Service) GetProducerProjectId() string {
 	return ""
 }
 
-func (x *Service) GetApis() []*api.Api {
+func (x *Service) GetApis() []*apipb.Api {
 	if x != nil {
 		return x.Apis
 	}
 	return nil
 }
 
-func (x *Service) GetTypes() []*ptype.Type {
+func (x *Service) GetTypes() []*typepb.Type {
 	if x != nil {
 		return x.Types
 	}
 	return nil
 }
 
-func (x *Service) GetEnums() []*ptype.Enum {
+func (x *Service) GetEnums() []*typepb.Enum {
 	if x != nil {
 		return x.Enums
 	}
@@ -512,10 +512,10 @@ func file_google_api_service_proto_rawDescGZIP() []byte {
 var file_google_api_service_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_api_service_proto_goTypes = []interface{}{
 	(*Service)(nil),                 // 0: google.api.Service
-	(*wrappers.UInt32Value)(nil),    // 1: google.protobuf.UInt32Value
-	(*api.Api)(nil),                 // 2: google.protobuf.Api
-	(*ptype.Type)(nil),              // 3: google.protobuf.Type
-	(*ptype.Enum)(nil),              // 4: google.protobuf.Enum
+	(*wrapperspb.UInt32Value)(nil),  // 1: google.protobuf.UInt32Value
+	(*apipb.Api)(nil),               // 2: google.protobuf.Api
+	(*typepb.Type)(nil),             // 3: google.protobuf.Type
+	(*typepb.Enum)(nil),             // 4: google.protobuf.Enum
 	(*Documentation)(nil),           // 5: google.api.Documentation
 	(*Backend)(nil),                 // 6: google.api.Backend
 	(*annotations.Http)(nil),        // 7: google.api.Http

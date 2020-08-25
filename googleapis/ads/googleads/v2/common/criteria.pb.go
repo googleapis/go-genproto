@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -50,7 +50,7 @@ type KeywordInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The text of the keyword (at most 80 characters and 10 words).
-	Text *wrappers.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	Text *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
 	// The match type of the keyword.
 	MatchType enums.KeywordMatchTypeEnum_KeywordMatchType `protobuf:"varint,2,opt,name=match_type,json=matchType,proto3,enum=google.ads.googleads.v2.enums.KeywordMatchTypeEnum_KeywordMatchType" json:"match_type,omitempty"`
 }
@@ -87,7 +87,7 @@ func (*KeywordInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *KeywordInfo) GetText() *wrappers.StringValue {
+func (x *KeywordInfo) GetText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Text
 	}
@@ -111,7 +111,7 @@ type PlacementInfo struct {
 	// URL of the placement.
 	//
 	// For example, "http://www.domain.com".
-	Url *wrappers.StringValue `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	Url *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
 }
 
 func (x *PlacementInfo) Reset() {
@@ -146,7 +146,7 @@ func (*PlacementInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *PlacementInfo) GetUrl() *wrappers.StringValue {
+func (x *PlacementInfo) GetUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Url
 	}
@@ -160,7 +160,7 @@ type MobileAppCategoryInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The mobile app category constant resource name.
-	MobileAppCategoryConstant *wrappers.StringValue `protobuf:"bytes,1,opt,name=mobile_app_category_constant,json=mobileAppCategoryConstant,proto3" json:"mobile_app_category_constant,omitempty"`
+	MobileAppCategoryConstant *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=mobile_app_category_constant,json=mobileAppCategoryConstant,proto3" json:"mobile_app_category_constant,omitempty"`
 }
 
 func (x *MobileAppCategoryInfo) Reset() {
@@ -195,7 +195,7 @@ func (*MobileAppCategoryInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MobileAppCategoryInfo) GetMobileAppCategoryConstant() *wrappers.StringValue {
+func (x *MobileAppCategoryInfo) GetMobileAppCategoryConstant() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MobileAppCategoryConstant
 	}
@@ -222,9 +222,9 @@ type MobileApplicationInfo struct {
 	// A well formed app id for Google Ads API would thus be "1-476943146" for iOS
 	// and "2-com.labpixies.colordrips" for Android.
 	// This field is required and must be set in CREATE operations.
-	AppId *wrappers.StringValue `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppId *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 	// Name of this mobile application.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 }
 
 func (x *MobileApplicationInfo) Reset() {
@@ -259,14 +259,14 @@ func (*MobileApplicationInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *MobileApplicationInfo) GetAppId() *wrappers.StringValue {
+func (x *MobileApplicationInfo) GetAppId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AppId
 	}
 	return nil
 }
 
-func (x *MobileApplicationInfo) GetName() *wrappers.StringValue {
+func (x *MobileApplicationInfo) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -280,7 +280,7 @@ type LocationInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The geo target constant resource name.
-	GeoTargetConstant *wrappers.StringValue `protobuf:"bytes,1,opt,name=geo_target_constant,json=geoTargetConstant,proto3" json:"geo_target_constant,omitempty"`
+	GeoTargetConstant *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=geo_target_constant,json=geoTargetConstant,proto3" json:"geo_target_constant,omitempty"`
 }
 
 func (x *LocationInfo) Reset() {
@@ -315,7 +315,7 @@ func (*LocationInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *LocationInfo) GetGeoTargetConstant() *wrappers.StringValue {
+func (x *LocationInfo) GetGeoTargetConstant() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetConstant
 	}
@@ -433,7 +433,7 @@ type ListingGroupInfo struct {
 	CaseValue *ListingDimensionInfo `protobuf:"bytes,2,opt,name=case_value,json=caseValue,proto3" json:"case_value,omitempty"`
 	// Resource name of ad group criterion which is the parent listing group
 	// subdivision. Null for the root group.
-	ParentAdGroupCriterion *wrappers.StringValue `protobuf:"bytes,3,opt,name=parent_ad_group_criterion,json=parentAdGroupCriterion,proto3" json:"parent_ad_group_criterion,omitempty"`
+	ParentAdGroupCriterion *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=parent_ad_group_criterion,json=parentAdGroupCriterion,proto3" json:"parent_ad_group_criterion,omitempty"`
 }
 
 func (x *ListingGroupInfo) Reset() {
@@ -482,7 +482,7 @@ func (x *ListingGroupInfo) GetCaseValue() *ListingDimensionInfo {
 	return nil
 }
 
-func (x *ListingGroupInfo) GetParentAdGroupCriterion() *wrappers.StringValue {
+func (x *ListingGroupInfo) GetParentAdGroupCriterion() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ParentAdGroupCriterion
 	}
@@ -810,7 +810,7 @@ type ListingBrandInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// String value of the listing brand.
-	Value *wrappers.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Value *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
 func (x *ListingBrandInfo) Reset() {
@@ -845,7 +845,7 @@ func (*ListingBrandInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *ListingBrandInfo) GetValue() *wrappers.StringValue {
+func (x *ListingBrandInfo) GetValue() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Value
 	}
@@ -859,7 +859,7 @@ type HotelIdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// String value of the hotel ID.
-	Value *wrappers.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Value *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
 func (x *HotelIdInfo) Reset() {
@@ -894,7 +894,7 @@ func (*HotelIdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *HotelIdInfo) GetValue() *wrappers.StringValue {
+func (x *HotelIdInfo) GetValue() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Value
 	}
@@ -908,7 +908,7 @@ type HotelClassInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Long value of the hotel class.
-	Value *wrappers.Int64Value `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Value *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
 func (x *HotelClassInfo) Reset() {
@@ -943,7 +943,7 @@ func (*HotelClassInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *HotelClassInfo) GetValue() *wrappers.Int64Value {
+func (x *HotelClassInfo) GetValue() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Value
 	}
@@ -957,7 +957,7 @@ type HotelCountryRegionInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The Geo Target Constant resource name.
-	CountryRegionCriterion *wrappers.StringValue `protobuf:"bytes,1,opt,name=country_region_criterion,json=countryRegionCriterion,proto3" json:"country_region_criterion,omitempty"`
+	CountryRegionCriterion *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=country_region_criterion,json=countryRegionCriterion,proto3" json:"country_region_criterion,omitempty"`
 }
 
 func (x *HotelCountryRegionInfo) Reset() {
@@ -992,7 +992,7 @@ func (*HotelCountryRegionInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *HotelCountryRegionInfo) GetCountryRegionCriterion() *wrappers.StringValue {
+func (x *HotelCountryRegionInfo) GetCountryRegionCriterion() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryRegionCriterion
 	}
@@ -1006,7 +1006,7 @@ type HotelStateInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The Geo Target Constant resource name.
-	StateCriterion *wrappers.StringValue `protobuf:"bytes,1,opt,name=state_criterion,json=stateCriterion,proto3" json:"state_criterion,omitempty"`
+	StateCriterion *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=state_criterion,json=stateCriterion,proto3" json:"state_criterion,omitempty"`
 }
 
 func (x *HotelStateInfo) Reset() {
@@ -1041,7 +1041,7 @@ func (*HotelStateInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *HotelStateInfo) GetStateCriterion() *wrappers.StringValue {
+func (x *HotelStateInfo) GetStateCriterion() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StateCriterion
 	}
@@ -1055,7 +1055,7 @@ type HotelCityInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The Geo Target Constant resource name.
-	CityCriterion *wrappers.StringValue `protobuf:"bytes,1,opt,name=city_criterion,json=cityCriterion,proto3" json:"city_criterion,omitempty"`
+	CityCriterion *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=city_criterion,json=cityCriterion,proto3" json:"city_criterion,omitempty"`
 }
 
 func (x *HotelCityInfo) Reset() {
@@ -1090,7 +1090,7 @@ func (*HotelCityInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *HotelCityInfo) GetCityCriterion() *wrappers.StringValue {
+func (x *HotelCityInfo) GetCityCriterion() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CityCriterion
 	}
@@ -1104,7 +1104,7 @@ type ListingCustomAttributeInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// String value of the listing custom attribute.
-	Value *wrappers.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Value *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	// Indicates the index of the custom attribute.
 	Index enums.ListingCustomAttributeIndexEnum_ListingCustomAttributeIndex `protobuf:"varint,2,opt,name=index,proto3,enum=google.ads.googleads.v2.enums.ListingCustomAttributeIndexEnum_ListingCustomAttributeIndex" json:"index,omitempty"`
 }
@@ -1141,7 +1141,7 @@ func (*ListingCustomAttributeInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *ListingCustomAttributeInfo) GetValue() *wrappers.StringValue {
+func (x *ListingCustomAttributeInfo) GetValue() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Value
 	}
@@ -1165,10 +1165,10 @@ type ProductBiddingCategoryInfo struct {
 	//
 	// This ID is equivalent to the google_product_category ID as described in
 	// this article: https://support.google.com/merchants/answer/6324436
-	Id *wrappers.Int64Value `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Two-letter upper-case country code of the product bidding category. It must
 	// match the campaign.shopping_setting.sales_country field.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// Level of the product bidding category.
 	Level enums.ProductBiddingCategoryLevelEnum_ProductBiddingCategoryLevel `protobuf:"varint,3,opt,name=level,proto3,enum=google.ads.googleads.v2.enums.ProductBiddingCategoryLevelEnum_ProductBiddingCategoryLevel" json:"level,omitempty"`
 }
@@ -1205,14 +1205,14 @@ func (*ProductBiddingCategoryInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *ProductBiddingCategoryInfo) GetId() *wrappers.Int64Value {
+func (x *ProductBiddingCategoryInfo) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *ProductBiddingCategoryInfo) GetCountryCode() *wrappers.StringValue {
+func (x *ProductBiddingCategoryInfo) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
@@ -1380,7 +1380,7 @@ type ProductItemIdInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Value of the id.
-	Value *wrappers.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Value *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
 func (x *ProductItemIdInfo) Reset() {
@@ -1415,7 +1415,7 @@ func (*ProductItemIdInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *ProductItemIdInfo) GetValue() *wrappers.StringValue {
+func (x *ProductItemIdInfo) GetValue() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Value
 	}
@@ -1429,7 +1429,7 @@ type ProductTypeInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Value of the type.
-	Value *wrappers.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Value *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	// Level of the type.
 	Level enums.ProductTypeLevelEnum_ProductTypeLevel `protobuf:"varint,2,opt,name=level,proto3,enum=google.ads.googleads.v2.enums.ProductTypeLevelEnum_ProductTypeLevel" json:"level,omitempty"`
 }
@@ -1466,7 +1466,7 @@ func (*ProductTypeInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *ProductTypeInfo) GetValue() *wrappers.StringValue {
+func (x *ProductTypeInfo) GetValue() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Value
 	}
@@ -1575,9 +1575,9 @@ type HotelAdvanceBookingWindowInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Low end of the number of days prior to the stay.
-	MinDays *wrappers.Int64Value `protobuf:"bytes,1,opt,name=min_days,json=minDays,proto3" json:"min_days,omitempty"`
+	MinDays *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=min_days,json=minDays,proto3" json:"min_days,omitempty"`
 	// High end of the number of days prior to the stay.
-	MaxDays *wrappers.Int64Value `protobuf:"bytes,2,opt,name=max_days,json=maxDays,proto3" json:"max_days,omitempty"`
+	MaxDays *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=max_days,json=maxDays,proto3" json:"max_days,omitempty"`
 }
 
 func (x *HotelAdvanceBookingWindowInfo) Reset() {
@@ -1612,14 +1612,14 @@ func (*HotelAdvanceBookingWindowInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *HotelAdvanceBookingWindowInfo) GetMinDays() *wrappers.Int64Value {
+func (x *HotelAdvanceBookingWindowInfo) GetMinDays() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.MinDays
 	}
 	return nil
 }
 
-func (x *HotelAdvanceBookingWindowInfo) GetMaxDays() *wrappers.Int64Value {
+func (x *HotelAdvanceBookingWindowInfo) GetMaxDays() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.MaxDays
 	}
@@ -1633,9 +1633,9 @@ type HotelLengthOfStayInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Low end of the number of nights in the stay.
-	MinNights *wrappers.Int64Value `protobuf:"bytes,1,opt,name=min_nights,json=minNights,proto3" json:"min_nights,omitempty"`
+	MinNights *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=min_nights,json=minNights,proto3" json:"min_nights,omitempty"`
 	// High end of the number of nights in the stay.
-	MaxNights *wrappers.Int64Value `protobuf:"bytes,2,opt,name=max_nights,json=maxNights,proto3" json:"max_nights,omitempty"`
+	MaxNights *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=max_nights,json=maxNights,proto3" json:"max_nights,omitempty"`
 }
 
 func (x *HotelLengthOfStayInfo) Reset() {
@@ -1670,14 +1670,14 @@ func (*HotelLengthOfStayInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{26}
 }
 
-func (x *HotelLengthOfStayInfo) GetMinNights() *wrappers.Int64Value {
+func (x *HotelLengthOfStayInfo) GetMinNights() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.MinNights
 	}
 	return nil
 }
 
-func (x *HotelLengthOfStayInfo) GetMaxNights() *wrappers.Int64Value {
+func (x *HotelLengthOfStayInfo) GetMaxNights() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.MaxNights
 	}
@@ -1809,13 +1809,13 @@ type AdScheduleInfo struct {
 	//
 	// This field is required for CREATE operations and is prohibited on UPDATE
 	// operations.
-	StartHour *wrappers.Int32Value `protobuf:"bytes,3,opt,name=start_hour,json=startHour,proto3" json:"start_hour,omitempty"`
+	StartHour *wrapperspb.Int32Value `protobuf:"bytes,3,opt,name=start_hour,json=startHour,proto3" json:"start_hour,omitempty"`
 	// Ending hour in 24 hour time; 24 signifies end of the day.
 	// This field must be between 0 and 24, inclusive.
 	//
 	// This field is required for CREATE operations and is prohibited on UPDATE
 	// operations.
-	EndHour *wrappers.Int32Value `protobuf:"bytes,4,opt,name=end_hour,json=endHour,proto3" json:"end_hour,omitempty"`
+	EndHour *wrapperspb.Int32Value `protobuf:"bytes,4,opt,name=end_hour,json=endHour,proto3" json:"end_hour,omitempty"`
 	// Day of the week the schedule applies to.
 	//
 	// This field is required for CREATE operations and is prohibited on UPDATE
@@ -1869,14 +1869,14 @@ func (x *AdScheduleInfo) GetEndMinute() enums.MinuteOfHourEnum_MinuteOfHour {
 	return enums.MinuteOfHourEnum_UNSPECIFIED
 }
 
-func (x *AdScheduleInfo) GetStartHour() *wrappers.Int32Value {
+func (x *AdScheduleInfo) GetStartHour() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.StartHour
 	}
 	return nil
 }
 
-func (x *AdScheduleInfo) GetEndHour() *wrappers.Int32Value {
+func (x *AdScheduleInfo) GetEndHour() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.EndHour
 	}
@@ -2093,7 +2093,7 @@ type YouTubeVideoInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// YouTube video id as it appears on the YouTube watch page.
-	VideoId *wrappers.StringValue `protobuf:"bytes,1,opt,name=video_id,json=videoId,proto3" json:"video_id,omitempty"`
+	VideoId *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=video_id,json=videoId,proto3" json:"video_id,omitempty"`
 }
 
 func (x *YouTubeVideoInfo) Reset() {
@@ -2128,7 +2128,7 @@ func (*YouTubeVideoInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{34}
 }
 
-func (x *YouTubeVideoInfo) GetVideoId() *wrappers.StringValue {
+func (x *YouTubeVideoInfo) GetVideoId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.VideoId
 	}
@@ -2142,7 +2142,7 @@ type YouTubeChannelInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The YouTube uploader channel id or the channel code of a YouTube channel.
-	ChannelId *wrappers.StringValue `protobuf:"bytes,1,opt,name=channel_id,json=channelId,proto3" json:"channel_id,omitempty"`
+	ChannelId *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=channel_id,json=channelId,proto3" json:"channel_id,omitempty"`
 }
 
 func (x *YouTubeChannelInfo) Reset() {
@@ -2177,7 +2177,7 @@ func (*YouTubeChannelInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{35}
 }
 
-func (x *YouTubeChannelInfo) GetChannelId() *wrappers.StringValue {
+func (x *YouTubeChannelInfo) GetChannelId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ChannelId
 	}
@@ -2192,7 +2192,7 @@ type UserListInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The User List resource name.
-	UserList *wrappers.StringValue `protobuf:"bytes,1,opt,name=user_list,json=userList,proto3" json:"user_list,omitempty"`
+	UserList *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=user_list,json=userList,proto3" json:"user_list,omitempty"`
 }
 
 func (x *UserListInfo) Reset() {
@@ -2227,7 +2227,7 @@ func (*UserListInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{36}
 }
 
-func (x *UserListInfo) GetUserList() *wrappers.StringValue {
+func (x *UserListInfo) GetUserList() *wrapperspb.StringValue {
 	if x != nil {
 		return x.UserList
 	}
@@ -2250,7 +2250,7 @@ type ProximityInfo struct {
 	// Latitude and longitude.
 	GeoPoint *GeoPointInfo `protobuf:"bytes,1,opt,name=geo_point,json=geoPoint,proto3" json:"geo_point,omitempty"`
 	// The radius of the proximity.
-	Radius *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=radius,proto3" json:"radius,omitempty"`
+	Radius *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=radius,proto3" json:"radius,omitempty"`
 	// The unit of measurement of the radius. Default is KILOMETERS.
 	RadiusUnits enums.ProximityRadiusUnitsEnum_ProximityRadiusUnits `protobuf:"varint,3,opt,name=radius_units,json=radiusUnits,proto3,enum=google.ads.googleads.v2.enums.ProximityRadiusUnitsEnum_ProximityRadiusUnits" json:"radius_units,omitempty"`
 	// Full address.
@@ -2296,7 +2296,7 @@ func (x *ProximityInfo) GetGeoPoint() *GeoPointInfo {
 	return nil
 }
 
-func (x *ProximityInfo) GetRadius() *wrappers.DoubleValue {
+func (x *ProximityInfo) GetRadius() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Radius
 	}
@@ -2324,9 +2324,9 @@ type GeoPointInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Micro degrees for the longitude.
-	LongitudeInMicroDegrees *wrappers.Int32Value `protobuf:"bytes,1,opt,name=longitude_in_micro_degrees,json=longitudeInMicroDegrees,proto3" json:"longitude_in_micro_degrees,omitempty"`
+	LongitudeInMicroDegrees *wrapperspb.Int32Value `protobuf:"bytes,1,opt,name=longitude_in_micro_degrees,json=longitudeInMicroDegrees,proto3" json:"longitude_in_micro_degrees,omitempty"`
 	// Micro degrees for the latitude.
-	LatitudeInMicroDegrees *wrappers.Int32Value `protobuf:"bytes,2,opt,name=latitude_in_micro_degrees,json=latitudeInMicroDegrees,proto3" json:"latitude_in_micro_degrees,omitempty"`
+	LatitudeInMicroDegrees *wrapperspb.Int32Value `protobuf:"bytes,2,opt,name=latitude_in_micro_degrees,json=latitudeInMicroDegrees,proto3" json:"latitude_in_micro_degrees,omitempty"`
 }
 
 func (x *GeoPointInfo) Reset() {
@@ -2361,14 +2361,14 @@ func (*GeoPointInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{38}
 }
 
-func (x *GeoPointInfo) GetLongitudeInMicroDegrees() *wrappers.Int32Value {
+func (x *GeoPointInfo) GetLongitudeInMicroDegrees() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.LongitudeInMicroDegrees
 	}
 	return nil
 }
 
-func (x *GeoPointInfo) GetLatitudeInMicroDegrees() *wrappers.Int32Value {
+func (x *GeoPointInfo) GetLatitudeInMicroDegrees() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.LatitudeInMicroDegrees
 	}
@@ -2382,21 +2382,21 @@ type AddressInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Postal code.
-	PostalCode *wrappers.StringValue `protobuf:"bytes,1,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	PostalCode *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
 	// Province or state code.
-	ProvinceCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=province_code,json=provinceCode,proto3" json:"province_code,omitempty"`
+	ProvinceCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=province_code,json=provinceCode,proto3" json:"province_code,omitempty"`
 	// Country code.
-	CountryCode *wrappers.StringValue `protobuf:"bytes,3,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	CountryCode *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
 	// Province or state name.
-	ProvinceName *wrappers.StringValue `protobuf:"bytes,4,opt,name=province_name,json=provinceName,proto3" json:"province_name,omitempty"`
+	ProvinceName *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=province_name,json=provinceName,proto3" json:"province_name,omitempty"`
 	// Street address line 1.
-	StreetAddress *wrappers.StringValue `protobuf:"bytes,5,opt,name=street_address,json=streetAddress,proto3" json:"street_address,omitempty"`
+	StreetAddress *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=street_address,json=streetAddress,proto3" json:"street_address,omitempty"`
 	// Street address line 2. This field is write-only. It is only used for
 	// calculating the longitude and latitude of an address when geo_point is
 	// empty.
-	StreetAddress2 *wrappers.StringValue `protobuf:"bytes,6,opt,name=street_address2,json=streetAddress2,proto3" json:"street_address2,omitempty"`
+	StreetAddress2 *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=street_address2,json=streetAddress2,proto3" json:"street_address2,omitempty"`
 	// Name of the city.
-	CityName *wrappers.StringValue `protobuf:"bytes,7,opt,name=city_name,json=cityName,proto3" json:"city_name,omitempty"`
+	CityName *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=city_name,json=cityName,proto3" json:"city_name,omitempty"`
 }
 
 func (x *AddressInfo) Reset() {
@@ -2431,49 +2431,49 @@ func (*AddressInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{39}
 }
 
-func (x *AddressInfo) GetPostalCode() *wrappers.StringValue {
+func (x *AddressInfo) GetPostalCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PostalCode
 	}
 	return nil
 }
 
-func (x *AddressInfo) GetProvinceCode() *wrappers.StringValue {
+func (x *AddressInfo) GetProvinceCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProvinceCode
 	}
 	return nil
 }
 
-func (x *AddressInfo) GetCountryCode() *wrappers.StringValue {
+func (x *AddressInfo) GetCountryCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CountryCode
 	}
 	return nil
 }
 
-func (x *AddressInfo) GetProvinceName() *wrappers.StringValue {
+func (x *AddressInfo) GetProvinceName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ProvinceName
 	}
 	return nil
 }
 
-func (x *AddressInfo) GetStreetAddress() *wrappers.StringValue {
+func (x *AddressInfo) GetStreetAddress() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StreetAddress
 	}
 	return nil
 }
 
-func (x *AddressInfo) GetStreetAddress2() *wrappers.StringValue {
+func (x *AddressInfo) GetStreetAddress2() *wrapperspb.StringValue {
 	if x != nil {
 		return x.StreetAddress2
 	}
 	return nil
 }
 
-func (x *AddressInfo) GetCityName() *wrappers.StringValue {
+func (x *AddressInfo) GetCityName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CityName
 	}
@@ -2489,12 +2489,12 @@ type TopicInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The Topic Constant resource name.
-	TopicConstant *wrappers.StringValue `protobuf:"bytes,1,opt,name=topic_constant,json=topicConstant,proto3" json:"topic_constant,omitempty"`
+	TopicConstant *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=topic_constant,json=topicConstant,proto3" json:"topic_constant,omitempty"`
 	// The category to target or exclude. Each subsequent element in the array
 	// describes a more specific sub-category. For example,
 	// "Pets & Animals", "Pets", "Dogs" represents the "Pets & Animals/Pets/Dogs"
 	// category.
-	Path []*wrappers.StringValue `protobuf:"bytes,2,rep,name=path,proto3" json:"path,omitempty"`
+	Path []*wrapperspb.StringValue `protobuf:"bytes,2,rep,name=path,proto3" json:"path,omitempty"`
 }
 
 func (x *TopicInfo) Reset() {
@@ -2529,14 +2529,14 @@ func (*TopicInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{40}
 }
 
-func (x *TopicInfo) GetTopicConstant() *wrappers.StringValue {
+func (x *TopicInfo) GetTopicConstant() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TopicConstant
 	}
 	return nil
 }
 
-func (x *TopicInfo) GetPath() []*wrappers.StringValue {
+func (x *TopicInfo) GetPath() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.Path
 	}
@@ -2550,7 +2550,7 @@ type LanguageInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The language constant resource name.
-	LanguageConstant *wrappers.StringValue `protobuf:"bytes,1,opt,name=language_constant,json=languageConstant,proto3" json:"language_constant,omitempty"`
+	LanguageConstant *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=language_constant,json=languageConstant,proto3" json:"language_constant,omitempty"`
 }
 
 func (x *LanguageInfo) Reset() {
@@ -2585,7 +2585,7 @@ func (*LanguageInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{41}
 }
 
-func (x *LanguageInfo) GetLanguageConstant() *wrappers.StringValue {
+func (x *LanguageInfo) GetLanguageConstant() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LanguageConstant
 	}
@@ -2603,7 +2603,7 @@ type IpBlockInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The IP address of this IP block.
-	IpAddress *wrappers.StringValue `protobuf:"bytes,1,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
+	IpAddress *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
 }
 
 func (x *IpBlockInfo) Reset() {
@@ -2638,7 +2638,7 @@ func (*IpBlockInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{42}
 }
 
-func (x *IpBlockInfo) GetIpAddress() *wrappers.StringValue {
+func (x *IpBlockInfo) GetIpAddress() *wrapperspb.StringValue {
 	if x != nil {
 		return x.IpAddress
 	}
@@ -2701,7 +2701,7 @@ type CarrierInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The Carrier constant resource name.
-	CarrierConstant *wrappers.StringValue `protobuf:"bytes,1,opt,name=carrier_constant,json=carrierConstant,proto3" json:"carrier_constant,omitempty"`
+	CarrierConstant *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=carrier_constant,json=carrierConstant,proto3" json:"carrier_constant,omitempty"`
 }
 
 func (x *CarrierInfo) Reset() {
@@ -2736,7 +2736,7 @@ func (*CarrierInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{44}
 }
 
-func (x *CarrierInfo) GetCarrierConstant() *wrappers.StringValue {
+func (x *CarrierInfo) GetCarrierConstant() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CarrierConstant
 	}
@@ -2750,7 +2750,7 @@ type UserInterestInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The UserInterest resource name.
-	UserInterestCategory *wrappers.StringValue `protobuf:"bytes,1,opt,name=user_interest_category,json=userInterestCategory,proto3" json:"user_interest_category,omitempty"`
+	UserInterestCategory *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=user_interest_category,json=userInterestCategory,proto3" json:"user_interest_category,omitempty"`
 }
 
 func (x *UserInterestInfo) Reset() {
@@ -2785,7 +2785,7 @@ func (*UserInterestInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{45}
 }
 
-func (x *UserInterestInfo) GetUserInterestCategory() *wrappers.StringValue {
+func (x *UserInterestInfo) GetUserInterestCategory() *wrapperspb.StringValue {
 	if x != nil {
 		return x.UserInterestCategory
 	}
@@ -2804,7 +2804,7 @@ type WebpageInfo struct {
 	//
 	// This field is required for CREATE operations and is prohibited on UPDATE
 	// operations.
-	CriterionName *wrappers.StringValue `protobuf:"bytes,1,opt,name=criterion_name,json=criterionName,proto3" json:"criterion_name,omitempty"`
+	CriterionName *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=criterion_name,json=criterionName,proto3" json:"criterion_name,omitempty"`
 	// Conditions, or logical expressions, for webpage targeting. The list of
 	// webpage targeting conditions are and-ed together when evaluated
 	// for targeting.
@@ -2846,7 +2846,7 @@ func (*WebpageInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{46}
 }
 
-func (x *WebpageInfo) GetCriterionName() *wrappers.StringValue {
+func (x *WebpageInfo) GetCriterionName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CriterionName
 	}
@@ -2871,7 +2871,7 @@ type WebpageConditionInfo struct {
 	// Operator of webpage targeting condition.
 	Operator enums.WebpageConditionOperatorEnum_WebpageConditionOperator `protobuf:"varint,2,opt,name=operator,proto3,enum=google.ads.googleads.v2.enums.WebpageConditionOperatorEnum_WebpageConditionOperator" json:"operator,omitempty"`
 	// Argument of webpage targeting condition.
-	Argument *wrappers.StringValue `protobuf:"bytes,3,opt,name=argument,proto3" json:"argument,omitempty"`
+	Argument *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=argument,proto3" json:"argument,omitempty"`
 }
 
 func (x *WebpageConditionInfo) Reset() {
@@ -2920,7 +2920,7 @@ func (x *WebpageConditionInfo) GetOperator() enums.WebpageConditionOperatorEnum_
 	return enums.WebpageConditionOperatorEnum_UNSPECIFIED
 }
 
-func (x *WebpageConditionInfo) GetArgument() *wrappers.StringValue {
+func (x *WebpageConditionInfo) GetArgument() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Argument
 	}
@@ -2934,7 +2934,7 @@ type OperatingSystemVersionInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The operating system version constant resource name.
-	OperatingSystemVersionConstant *wrappers.StringValue `protobuf:"bytes,1,opt,name=operating_system_version_constant,json=operatingSystemVersionConstant,proto3" json:"operating_system_version_constant,omitempty"`
+	OperatingSystemVersionConstant *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=operating_system_version_constant,json=operatingSystemVersionConstant,proto3" json:"operating_system_version_constant,omitempty"`
 }
 
 func (x *OperatingSystemVersionInfo) Reset() {
@@ -2969,7 +2969,7 @@ func (*OperatingSystemVersionInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{48}
 }
 
-func (x *OperatingSystemVersionInfo) GetOperatingSystemVersionConstant() *wrappers.StringValue {
+func (x *OperatingSystemVersionInfo) GetOperatingSystemVersionConstant() *wrapperspb.StringValue {
 	if x != nil {
 		return x.OperatingSystemVersionConstant
 	}
@@ -3032,7 +3032,7 @@ type MobileDeviceInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The mobile device constant resource name.
-	MobileDeviceConstant *wrappers.StringValue `protobuf:"bytes,1,opt,name=mobile_device_constant,json=mobileDeviceConstant,proto3" json:"mobile_device_constant,omitempty"`
+	MobileDeviceConstant *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=mobile_device_constant,json=mobileDeviceConstant,proto3" json:"mobile_device_constant,omitempty"`
 }
 
 func (x *MobileDeviceInfo) Reset() {
@@ -3067,7 +3067,7 @@ func (*MobileDeviceInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{50}
 }
 
-func (x *MobileDeviceInfo) GetMobileDeviceConstant() *wrappers.StringValue {
+func (x *MobileDeviceInfo) GetMobileDeviceConstant() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MobileDeviceConstant
 	}
@@ -3082,7 +3082,7 @@ type CustomAffinityInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The CustomInterest resource name.
-	CustomAffinity *wrappers.StringValue `protobuf:"bytes,1,opt,name=custom_affinity,json=customAffinity,proto3" json:"custom_affinity,omitempty"`
+	CustomAffinity *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=custom_affinity,json=customAffinity,proto3" json:"custom_affinity,omitempty"`
 }
 
 func (x *CustomAffinityInfo) Reset() {
@@ -3117,7 +3117,7 @@ func (*CustomAffinityInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{51}
 }
 
-func (x *CustomAffinityInfo) GetCustomAffinity() *wrappers.StringValue {
+func (x *CustomAffinityInfo) GetCustomAffinity() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CustomAffinity
 	}
@@ -3132,7 +3132,7 @@ type CustomIntentInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The CustomInterest resource name.
-	CustomIntent *wrappers.StringValue `protobuf:"bytes,1,opt,name=custom_intent,json=customIntent,proto3" json:"custom_intent,omitempty"`
+	CustomIntent *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=custom_intent,json=customIntent,proto3" json:"custom_intent,omitempty"`
 }
 
 func (x *CustomIntentInfo) Reset() {
@@ -3167,7 +3167,7 @@ func (*CustomIntentInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{52}
 }
 
-func (x *CustomIntentInfo) GetCustomIntent() *wrappers.StringValue {
+func (x *CustomIntentInfo) GetCustomIntent() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CustomIntent
 	}
@@ -3182,13 +3182,13 @@ type LocationGroupInfo struct {
 
 	// Feed specifying locations for targeting.
 	// This is required and must be set in CREATE operations.
-	Feed *wrappers.StringValue `protobuf:"bytes,1,opt,name=feed,proto3" json:"feed,omitempty"`
+	Feed *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=feed,proto3" json:"feed,omitempty"`
 	// Geo target constant(s) restricting the scope of the geographic area within
 	// the feed. Currently only one geo target constant is allowed.
-	GeoTargetConstants []*wrappers.StringValue `protobuf:"bytes,2,rep,name=geo_target_constants,json=geoTargetConstants,proto3" json:"geo_target_constants,omitempty"`
+	GeoTargetConstants []*wrapperspb.StringValue `protobuf:"bytes,2,rep,name=geo_target_constants,json=geoTargetConstants,proto3" json:"geo_target_constants,omitempty"`
 	// Distance in units specifying the radius around targeted locations.
 	// This is required and must be set in CREATE operations.
-	Radius *wrappers.Int64Value `protobuf:"bytes,3,opt,name=radius,proto3" json:"radius,omitempty"`
+	Radius *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=radius,proto3" json:"radius,omitempty"`
 	// Unit of the radius, miles and meters supported currently.
 	// This is required and must be set in CREATE operations.
 	RadiusUnits enums.LocationGroupRadiusUnitsEnum_LocationGroupRadiusUnits `protobuf:"varint,4,opt,name=radius_units,json=radiusUnits,proto3,enum=google.ads.googleads.v2.enums.LocationGroupRadiusUnitsEnum_LocationGroupRadiusUnits" json:"radius_units,omitempty"`
@@ -3226,21 +3226,21 @@ func (*LocationGroupInfo) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_criteria_proto_rawDescGZIP(), []int{53}
 }
 
-func (x *LocationGroupInfo) GetFeed() *wrappers.StringValue {
+func (x *LocationGroupInfo) GetFeed() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Feed
 	}
 	return nil
 }
 
-func (x *LocationGroupInfo) GetGeoTargetConstants() []*wrappers.StringValue {
+func (x *LocationGroupInfo) GetGeoTargetConstants() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetConstants
 	}
 	return nil
 }
 
-func (x *LocationGroupInfo) GetRadius() *wrappers.Int64Value {
+func (x *LocationGroupInfo) GetRadius() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Radius
 	}
@@ -3993,12 +3993,12 @@ var file_google_ads_googleads_v2_common_criteria_proto_goTypes = []interface{}{
 	(*CustomAffinityInfo)(nil),                               // 51: google.ads.googleads.v2.common.CustomAffinityInfo
 	(*CustomIntentInfo)(nil),                                 // 52: google.ads.googleads.v2.common.CustomIntentInfo
 	(*LocationGroupInfo)(nil),                                // 53: google.ads.googleads.v2.common.LocationGroupInfo
-	(*wrappers.StringValue)(nil),                             // 54: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                           // 54: google.protobuf.StringValue
 	(enums.KeywordMatchTypeEnum_KeywordMatchType)(0),         // 55: google.ads.googleads.v2.enums.KeywordMatchTypeEnum.KeywordMatchType
 	(enums.DeviceEnum_Device)(0),                             // 56: google.ads.googleads.v2.enums.DeviceEnum.Device
 	(enums.PreferredContentTypeEnum_PreferredContentType)(0), // 57: google.ads.googleads.v2.enums.PreferredContentTypeEnum.PreferredContentType
 	(enums.ListingGroupTypeEnum_ListingGroupType)(0),         // 58: google.ads.googleads.v2.enums.ListingGroupTypeEnum.ListingGroupType
-	(*wrappers.Int64Value)(nil),                              // 59: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),                            // 59: google.protobuf.Int64Value
 	(enums.ListingCustomAttributeIndexEnum_ListingCustomAttributeIndex)(0), // 60: google.ads.googleads.v2.enums.ListingCustomAttributeIndexEnum.ListingCustomAttributeIndex
 	(enums.ProductBiddingCategoryLevelEnum_ProductBiddingCategoryLevel)(0), // 61: google.ads.googleads.v2.enums.ProductBiddingCategoryLevelEnum.ProductBiddingCategoryLevel
 	(enums.ProductChannelEnum_ProductChannel)(0),                           // 62: google.ads.googleads.v2.enums.ProductChannelEnum.ProductChannel
@@ -4009,12 +4009,12 @@ var file_google_ads_googleads_v2_common_criteria_proto_goTypes = []interface{}{
 	(enums.DayOfWeekEnum_DayOfWeek)(0),                                     // 67: google.ads.googleads.v2.enums.DayOfWeekEnum.DayOfWeek
 	(enums.InteractionTypeEnum_InteractionType)(0),                         // 68: google.ads.googleads.v2.enums.InteractionTypeEnum.InteractionType
 	(enums.MinuteOfHourEnum_MinuteOfHour)(0),                               // 69: google.ads.googleads.v2.enums.MinuteOfHourEnum.MinuteOfHour
-	(*wrappers.Int32Value)(nil),                                            // 70: google.protobuf.Int32Value
+	(*wrapperspb.Int32Value)(nil),                                          // 70: google.protobuf.Int32Value
 	(enums.AgeRangeTypeEnum_AgeRangeType)(0),                               // 71: google.ads.googleads.v2.enums.AgeRangeTypeEnum.AgeRangeType
 	(enums.GenderTypeEnum_GenderType)(0),                                   // 72: google.ads.googleads.v2.enums.GenderTypeEnum.GenderType
 	(enums.IncomeRangeTypeEnum_IncomeRangeType)(0),                         // 73: google.ads.googleads.v2.enums.IncomeRangeTypeEnum.IncomeRangeType
 	(enums.ParentalStatusTypeEnum_ParentalStatusType)(0),                   // 74: google.ads.googleads.v2.enums.ParentalStatusTypeEnum.ParentalStatusType
-	(*wrappers.DoubleValue)(nil),                                           // 75: google.protobuf.DoubleValue
+	(*wrapperspb.DoubleValue)(nil),                                         // 75: google.protobuf.DoubleValue
 	(enums.ProximityRadiusUnitsEnum_ProximityRadiusUnits)(0),               // 76: google.ads.googleads.v2.enums.ProximityRadiusUnitsEnum.ProximityRadiusUnits
 	(enums.ContentLabelTypeEnum_ContentLabelType)(0),                       // 77: google.ads.googleads.v2.enums.ContentLabelTypeEnum.ContentLabelType
 	(enums.WebpageConditionOperandEnum_WebpageConditionOperand)(0),         // 78: google.ads.googleads.v2.enums.WebpageConditionOperandEnum.WebpageConditionOperand

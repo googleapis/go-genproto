@@ -26,18 +26,18 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/duration"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	_ "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	monitoredres "google.golang.org/genproto/googleapis/api/monitoredres"
 	status "google.golang.org/genproto/googleapis/rpc/status"
-	_ "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/durationpb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	_ "google.golang.org/protobuf/types/known/fieldmaskpb"
+	_ "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -1059,7 +1059,7 @@ var file_google_logging_v2_logging_proto_goTypes = []interface{}{
 	(*LogEntry)(nil),                                 // 13: google.logging.v2.LogEntry
 	(*monitoredres.MonitoredResourceDescriptor)(nil), // 14: google.api.MonitoredResourceDescriptor
 	(*status.Status)(nil),                            // 15: google.rpc.Status
-	(*empty.Empty)(nil),                              // 16: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                            // 16: google.protobuf.Empty
 }
 var file_google_logging_v2_logging_proto_depIdxs = []int32{
 	12, // 0: google.logging.v2.WriteLogEntriesRequest.resource:type_name -> google.api.MonitoredResource
@@ -1251,7 +1251,7 @@ type LoggingServiceV2Client interface {
 	// entries. Log entries written shortly before the delete operation might not
 	// be deleted. Entries received after the delete operation with a timestamp
 	// before the operation will be deleted.
-	DeleteLog(ctx context.Context, in *DeleteLogRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteLog(ctx context.Context, in *DeleteLogRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Writes log entries to Logging. This API method is the
 	// only way to send log entries to Logging. This method
 	// is used, directly or indirectly, by the Logging agent
@@ -1280,8 +1280,8 @@ func NewLoggingServiceV2Client(cc grpc.ClientConnInterface) LoggingServiceV2Clie
 	return &loggingServiceV2Client{cc}
 }
 
-func (c *loggingServiceV2Client) DeleteLog(ctx context.Context, in *DeleteLogRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *loggingServiceV2Client) DeleteLog(ctx context.Context, in *DeleteLogRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.logging.v2.LoggingServiceV2/DeleteLog", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1331,7 +1331,7 @@ type LoggingServiceV2Server interface {
 	// entries. Log entries written shortly before the delete operation might not
 	// be deleted. Entries received after the delete operation with a timestamp
 	// before the operation will be deleted.
-	DeleteLog(context.Context, *DeleteLogRequest) (*empty.Empty, error)
+	DeleteLog(context.Context, *DeleteLogRequest) (*emptypb.Empty, error)
 	// Writes log entries to Logging. This API method is the
 	// only way to send log entries to Logging. This method
 	// is used, directly or indirectly, by the Logging agent
@@ -1356,7 +1356,7 @@ type LoggingServiceV2Server interface {
 type UnimplementedLoggingServiceV2Server struct {
 }
 
-func (*UnimplementedLoggingServiceV2Server) DeleteLog(context.Context, *DeleteLogRequest) (*empty.Empty, error) {
+func (*UnimplementedLoggingServiceV2Server) DeleteLog(context.Context, *DeleteLogRequest) (*emptypb.Empty, error) {
 	return nil, status1.Errorf(codes.Unimplemented, "method DeleteLog not implemented")
 }
 func (*UnimplementedLoggingServiceV2Server) WriteLogEntries(context.Context, *WriteLogEntriesRequest) (*WriteLogEntriesResponse, error) {

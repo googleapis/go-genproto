@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -236,7 +236,7 @@ type UpdateSettingsRequest struct {
 	//  * `projects/{project}/zones/{zone}/clusters/{cluster}/settings`
 	Settings *Settings `protobuf:"bytes,1,opt,name=settings,proto3" json:"settings,omitempty"`
 	// The list of fields to be updated on the settings.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateSettingsRequest) Reset() {
@@ -278,7 +278,7 @@ func (x *UpdateSettingsRequest) GetSettings() *Settings {
 	return nil
 }
 
-func (x *UpdateSettingsRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateSettingsRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -711,7 +711,7 @@ type UpdateComponentSettingsRequest struct {
 	//  * `projects/{project}/zones/{zone}/clusters/{cluster}/components/{component}/settings`
 	ComponentSettings *ComponentSettings `protobuf:"bytes,1,opt,name=component_settings,json=componentSettings,proto3" json:"component_settings,omitempty"`
 	// The list of fields to be updated on the component settings resource.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateComponentSettingsRequest) Reset() {
@@ -753,7 +753,7 @@ func (x *UpdateComponentSettingsRequest) GetComponentSettings() *ComponentSettin
 	return nil
 }
 
-func (x *UpdateComponentSettingsRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateComponentSettingsRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1829,10 +1829,10 @@ var file_google_cloud_securitycenter_settings_v1beta1_securitycenter_settings_se
 	(*ListComponentsRequest)(nil),                      // 16: google.cloud.securitycenter.settings.v1beta1.ListComponentsRequest
 	(*ListComponentsResponse)(nil),                     // 17: google.cloud.securitycenter.settings.v1beta1.ListComponentsResponse
 	(*Settings)(nil),                                   // 18: google.cloud.securitycenter.settings.v1beta1.Settings
-	(*field_mask.FieldMask)(nil),                       // 19: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                      // 19: google.protobuf.FieldMask
 	(*ComponentSettings)(nil),                          // 20: google.cloud.securitycenter.settings.v1beta1.ComponentSettings
 	(*Detector)(nil),                                   // 21: google.cloud.securitycenter.settings.v1beta1.Detector
-	(*empty.Empty)(nil),                                // 22: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                              // 22: google.protobuf.Empty
 }
 var file_google_cloud_securitycenter_settings_v1beta1_securitycenter_settings_service_proto_depIdxs = []int32{
 	18, // 0: google.cloud.securitycenter.settings.v1beta1.UpdateSettingsRequest.settings:type_name -> google.cloud.securitycenter.settings.v1beta1.Settings
@@ -2161,7 +2161,7 @@ type SecurityCenterSettingsServiceClient interface {
 	//
 	// Using Reset on organization will remove the override that was set and
 	// result in default settings being used.
-	ResetSettings(ctx context.Context, in *ResetSettingsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ResetSettings(ctx context.Context, in *ResetSettingsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets a list of settings.
 	BatchGetSettings(ctx context.Context, in *BatchGetSettingsRequest, opts ...grpc.CallOption) (*BatchGetSettingsResponse, error)
 	// CalculateEffectiveSettings looks up all of the Security Center
@@ -2187,7 +2187,7 @@ type SecurityCenterSettingsServiceClient interface {
 	// organization, folder and project levels. Using Reset for a folder or
 	// project will remove the override that was set and result in the
 	// organization-level settings being used.
-	ResetComponentSettings(ctx context.Context, in *ResetComponentSettingsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ResetComponentSettings(ctx context.Context, in *ResetComponentSettingsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets the Effective Component Settings.
 	CalculateEffectiveComponentSettings(ctx context.Context, in *CalculateEffectiveComponentSettingsRequest, opts ...grpc.CallOption) (*ComponentSettings, error)
 	// Retrieves an unordered list of available detectors.
@@ -2231,8 +2231,8 @@ func (c *securityCenterSettingsServiceClient) UpdateSettings(ctx context.Context
 	return out, nil
 }
 
-func (c *securityCenterSettingsServiceClient) ResetSettings(ctx context.Context, in *ResetSettingsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *securityCenterSettingsServiceClient) ResetSettings(ctx context.Context, in *ResetSettingsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.securitycenter.settings.v1beta1.SecurityCenterSettingsService/ResetSettings", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2285,8 +2285,8 @@ func (c *securityCenterSettingsServiceClient) UpdateComponentSettings(ctx contex
 	return out, nil
 }
 
-func (c *securityCenterSettingsServiceClient) ResetComponentSettings(ctx context.Context, in *ResetComponentSettingsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *securityCenterSettingsServiceClient) ResetComponentSettings(ctx context.Context, in *ResetComponentSettingsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.securitycenter.settings.v1beta1.SecurityCenterSettingsService/ResetComponentSettings", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2348,7 +2348,7 @@ type SecurityCenterSettingsServiceServer interface {
 	//
 	// Using Reset on organization will remove the override that was set and
 	// result in default settings being used.
-	ResetSettings(context.Context, *ResetSettingsRequest) (*empty.Empty, error)
+	ResetSettings(context.Context, *ResetSettingsRequest) (*emptypb.Empty, error)
 	// Gets a list of settings.
 	BatchGetSettings(context.Context, *BatchGetSettingsRequest) (*BatchGetSettingsResponse, error)
 	// CalculateEffectiveSettings looks up all of the Security Center
@@ -2374,7 +2374,7 @@ type SecurityCenterSettingsServiceServer interface {
 	// organization, folder and project levels. Using Reset for a folder or
 	// project will remove the override that was set and result in the
 	// organization-level settings being used.
-	ResetComponentSettings(context.Context, *ResetComponentSettingsRequest) (*empty.Empty, error)
+	ResetComponentSettings(context.Context, *ResetComponentSettingsRequest) (*emptypb.Empty, error)
 	// Gets the Effective Component Settings.
 	CalculateEffectiveComponentSettings(context.Context, *CalculateEffectiveComponentSettingsRequest) (*ComponentSettings, error)
 	// Retrieves an unordered list of available detectors.
@@ -2396,7 +2396,7 @@ func (*UnimplementedSecurityCenterSettingsServiceServer) GetSettings(context.Con
 func (*UnimplementedSecurityCenterSettingsServiceServer) UpdateSettings(context.Context, *UpdateSettingsRequest) (*Settings, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateSettings not implemented")
 }
-func (*UnimplementedSecurityCenterSettingsServiceServer) ResetSettings(context.Context, *ResetSettingsRequest) (*empty.Empty, error) {
+func (*UnimplementedSecurityCenterSettingsServiceServer) ResetSettings(context.Context, *ResetSettingsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetSettings not implemented")
 }
 func (*UnimplementedSecurityCenterSettingsServiceServer) BatchGetSettings(context.Context, *BatchGetSettingsRequest) (*BatchGetSettingsResponse, error) {
@@ -2414,7 +2414,7 @@ func (*UnimplementedSecurityCenterSettingsServiceServer) GetComponentSettings(co
 func (*UnimplementedSecurityCenterSettingsServiceServer) UpdateComponentSettings(context.Context, *UpdateComponentSettingsRequest) (*ComponentSettings, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateComponentSettings not implemented")
 }
-func (*UnimplementedSecurityCenterSettingsServiceServer) ResetComponentSettings(context.Context, *ResetComponentSettingsRequest) (*empty.Empty, error) {
+func (*UnimplementedSecurityCenterSettingsServiceServer) ResetComponentSettings(context.Context, *ResetComponentSettingsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetComponentSettings not implemented")
 }
 func (*UnimplementedSecurityCenterSettingsServiceServer) CalculateEffectiveComponentSettings(context.Context, *CalculateEffectiveComponentSettingsRequest) (*ComponentSettings, error) {

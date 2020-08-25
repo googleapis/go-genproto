@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -386,7 +386,7 @@ type UpdateRealmRequest struct {
 	// https:
 	// //developers.google.com/protocol-buffers
 	// // /docs/reference/google.protobuf#fieldmask
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateRealmRequest) Reset() {
@@ -428,7 +428,7 @@ func (x *UpdateRealmRequest) GetRealm() *Realm {
 	return nil
 }
 
-func (x *UpdateRealmRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateRealmRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -450,9 +450,9 @@ type PreviewRealmUpdateRequest struct {
 	// https:
 	// //developers.google.com/protocol-buffers
 	// // /docs/reference/google.protobuf#fieldmask
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. The target timestamp to compute the preview.
-	PreviewTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=preview_time,json=previewTime,proto3" json:"preview_time,omitempty"`
+	PreviewTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=preview_time,json=previewTime,proto3" json:"preview_time,omitempty"`
 }
 
 func (x *PreviewRealmUpdateRequest) Reset() {
@@ -494,14 +494,14 @@ func (x *PreviewRealmUpdateRequest) GetRealm() *Realm {
 	return nil
 }
 
-func (x *PreviewRealmUpdateRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *PreviewRealmUpdateRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
 	return nil
 }
 
-func (x *PreviewRealmUpdateRequest) GetPreviewTime() *timestamp.Timestamp {
+func (x *PreviewRealmUpdateRequest) GetPreviewTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.PreviewTime
 	}
@@ -577,9 +577,9 @@ type Realm struct {
 	// example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The creation time.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The last-modified time.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The labels associated with this realm. Each label is a key-value pair.
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Required. Time zone where all policies targeting this realm are evaluated. The value
@@ -631,14 +631,14 @@ func (x *Realm) GetName() string {
 	return ""
 }
 
-func (x *Realm) GetCreateTime() *timestamp.Timestamp {
+func (x *Realm) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Realm) GetUpdateTime() *timestamp.Timestamp {
+func (x *Realm) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -830,8 +830,8 @@ var file_google_cloud_gaming_v1_realms_proto_goTypes = []interface{}{
 	(*PreviewRealmUpdateResponse)(nil), // 7: google.cloud.gaming.v1.PreviewRealmUpdateResponse
 	(*Realm)(nil),                      // 8: google.cloud.gaming.v1.Realm
 	nil,                                // 9: google.cloud.gaming.v1.Realm.LabelsEntry
-	(*field_mask.FieldMask)(nil),       // 10: google.protobuf.FieldMask
-	(*timestamp.Timestamp)(nil),        // 11: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),      // 10: google.protobuf.FieldMask
+	(*timestamppb.Timestamp)(nil),      // 11: google.protobuf.Timestamp
 	(*TargetState)(nil),                // 12: google.cloud.gaming.v1.TargetState
 }
 var file_google_cloud_gaming_v1_realms_proto_depIdxs = []int32{

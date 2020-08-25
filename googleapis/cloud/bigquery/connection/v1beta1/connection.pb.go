@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -230,7 +230,7 @@ type ListConnectionsRequest struct {
 	// Must be in the form: `projects/{project_id}/locations/{location_id}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. Maximum number of results per page.
-	MaxResults *wrappers.UInt32Value `protobuf:"bytes,2,opt,name=max_results,json=maxResults,proto3" json:"max_results,omitempty"`
+	MaxResults *wrapperspb.UInt32Value `protobuf:"bytes,2,opt,name=max_results,json=maxResults,proto3" json:"max_results,omitempty"`
 	// Page token.
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 }
@@ -274,7 +274,7 @@ func (x *ListConnectionsRequest) GetParent() string {
 	return ""
 }
 
-func (x *ListConnectionsRequest) GetMaxResults() *wrappers.UInt32Value {
+func (x *ListConnectionsRequest) GetMaxResults() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.MaxResults
 	}
@@ -358,7 +358,7 @@ type UpdateConnectionRequest struct {
 	// Required. Connection containing the updated fields.
 	Connection *Connection `protobuf:"bytes,2,opt,name=connection,proto3" json:"connection,omitempty"`
 	// Required. Update mask for the connection fields to be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateConnectionRequest) Reset() {
@@ -407,7 +407,7 @@ func (x *UpdateConnectionRequest) GetConnection() *Connection {
 	return nil
 }
 
-func (x *UpdateConnectionRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateConnectionRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1193,12 +1193,12 @@ var file_google_cloud_bigquery_connection_v1beta1_connection_proto_goTypes = []i
 	(*ConnectionCredential)(nil),              // 9: google.cloud.bigquery.connection.v1beta1.ConnectionCredential
 	(*CloudSqlProperties)(nil),                // 10: google.cloud.bigquery.connection.v1beta1.CloudSqlProperties
 	(*CloudSqlCredential)(nil),                // 11: google.cloud.bigquery.connection.v1beta1.CloudSqlCredential
-	(*wrappers.UInt32Value)(nil),              // 12: google.protobuf.UInt32Value
-	(*field_mask.FieldMask)(nil),              // 13: google.protobuf.FieldMask
+	(*wrapperspb.UInt32Value)(nil),            // 12: google.protobuf.UInt32Value
+	(*fieldmaskpb.FieldMask)(nil),             // 13: google.protobuf.FieldMask
 	(*v1.GetIamPolicyRequest)(nil),            // 14: google.iam.v1.GetIamPolicyRequest
 	(*v1.SetIamPolicyRequest)(nil),            // 15: google.iam.v1.SetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),      // 16: google.iam.v1.TestIamPermissionsRequest
-	(*empty.Empty)(nil),                       // 17: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                     // 17: google.protobuf.Empty
 	(*v1.Policy)(nil),                         // 18: google.iam.v1.Policy
 	(*v1.TestIamPermissionsResponse)(nil),     // 19: google.iam.v1.TestIamPermissionsResponse
 }
@@ -1426,9 +1426,9 @@ type ConnectionServiceClient interface {
 	// credential if connection properties are in the update field mask.
 	UpdateConnection(ctx context.Context, in *UpdateConnectionRequest, opts ...grpc.CallOption) (*Connection, error)
 	// Sets the credential for the specified connection.
-	UpdateConnectionCredential(ctx context.Context, in *UpdateConnectionCredentialRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateConnectionCredential(ctx context.Context, in *UpdateConnectionCredentialRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Deletes connection and associated credential.
-	DeleteConnection(ctx context.Context, in *DeleteConnectionRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteConnection(ctx context.Context, in *DeleteConnectionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets the access control policy for a resource.
 	// Returns an empty policy if the resource exists and does not have a policy
 	// set.
@@ -1492,8 +1492,8 @@ func (c *connectionServiceClient) UpdateConnection(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *connectionServiceClient) UpdateConnectionCredential(ctx context.Context, in *UpdateConnectionCredentialRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *connectionServiceClient) UpdateConnectionCredential(ctx context.Context, in *UpdateConnectionCredentialRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.connection.v1beta1.ConnectionService/UpdateConnectionCredential", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1501,8 +1501,8 @@ func (c *connectionServiceClient) UpdateConnectionCredential(ctx context.Context
 	return out, nil
 }
 
-func (c *connectionServiceClient) DeleteConnection(ctx context.Context, in *DeleteConnectionRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *connectionServiceClient) DeleteConnection(ctx context.Context, in *DeleteConnectionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.connection.v1beta1.ConnectionService/DeleteConnection", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1549,9 +1549,9 @@ type ConnectionServiceServer interface {
 	// credential if connection properties are in the update field mask.
 	UpdateConnection(context.Context, *UpdateConnectionRequest) (*Connection, error)
 	// Sets the credential for the specified connection.
-	UpdateConnectionCredential(context.Context, *UpdateConnectionCredentialRequest) (*empty.Empty, error)
+	UpdateConnectionCredential(context.Context, *UpdateConnectionCredentialRequest) (*emptypb.Empty, error)
 	// Deletes connection and associated credential.
-	DeleteConnection(context.Context, *DeleteConnectionRequest) (*empty.Empty, error)
+	DeleteConnection(context.Context, *DeleteConnectionRequest) (*emptypb.Empty, error)
 	// Gets the access control policy for a resource.
 	// Returns an empty policy if the resource exists and does not have a policy
 	// set.
@@ -1587,10 +1587,10 @@ func (*UnimplementedConnectionServiceServer) ListConnections(context.Context, *L
 func (*UnimplementedConnectionServiceServer) UpdateConnection(context.Context, *UpdateConnectionRequest) (*Connection, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateConnection not implemented")
 }
-func (*UnimplementedConnectionServiceServer) UpdateConnectionCredential(context.Context, *UpdateConnectionCredentialRequest) (*empty.Empty, error) {
+func (*UnimplementedConnectionServiceServer) UpdateConnectionCredential(context.Context, *UpdateConnectionCredentialRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateConnectionCredential not implemented")
 }
-func (*UnimplementedConnectionServiceServer) DeleteConnection(context.Context, *DeleteConnectionRequest) (*empty.Empty, error) {
+func (*UnimplementedConnectionServiceServer) DeleteConnection(context.Context, *DeleteConnectionRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteConnection not implemented")
 }
 func (*UnimplementedConnectionServiceServer) GetIamPolicy(context.Context, *v1.GetIamPolicyRequest) (*v1.Policy, error) {

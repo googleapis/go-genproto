@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -180,7 +180,7 @@ type UpdateCompanyRequest struct {
 	//
 	// A field mask to specify the company fields to be updated. Only
 	// top level fields of [Company][google.cloud.talent.v4beta1.Company] are supported.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateCompanyRequest) Reset() {
@@ -222,7 +222,7 @@ func (x *UpdateCompanyRequest) GetCompany() *Company {
 	return nil
 }
 
-func (x *UpdateCompanyRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateCompanyRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -629,9 +629,9 @@ var file_google_cloud_talent_v4beta1_company_service_proto_goTypes = []interface
 	(*ListCompaniesRequest)(nil),  // 4: google.cloud.talent.v4beta1.ListCompaniesRequest
 	(*ListCompaniesResponse)(nil), // 5: google.cloud.talent.v4beta1.ListCompaniesResponse
 	(*Company)(nil),               // 6: google.cloud.talent.v4beta1.Company
-	(*field_mask.FieldMask)(nil),  // 7: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil), // 7: google.protobuf.FieldMask
 	(*ResponseMetadata)(nil),      // 8: google.cloud.talent.v4beta1.ResponseMetadata
-	(*empty.Empty)(nil),           // 9: google.protobuf.Empty
+	(*emptypb.Empty)(nil),         // 9: google.protobuf.Empty
 }
 var file_google_cloud_talent_v4beta1_company_service_proto_depIdxs = []int32{
 	6,  // 0: google.cloud.talent.v4beta1.CreateCompanyRequest.company:type_name -> google.cloud.talent.v4beta1.Company
@@ -777,7 +777,7 @@ type CompanyServiceClient interface {
 	UpdateCompany(ctx context.Context, in *UpdateCompanyRequest, opts ...grpc.CallOption) (*Company, error)
 	// Deletes specified company.
 	// Prerequisite: The company has no jobs associated with it.
-	DeleteCompany(ctx context.Context, in *DeleteCompanyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteCompany(ctx context.Context, in *DeleteCompanyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists all companies associated with the project.
 	ListCompanies(ctx context.Context, in *ListCompaniesRequest, opts ...grpc.CallOption) (*ListCompaniesResponse, error)
 }
@@ -817,8 +817,8 @@ func (c *companyServiceClient) UpdateCompany(ctx context.Context, in *UpdateComp
 	return out, nil
 }
 
-func (c *companyServiceClient) DeleteCompany(ctx context.Context, in *DeleteCompanyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *companyServiceClient) DeleteCompany(ctx context.Context, in *DeleteCompanyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.talent.v4beta1.CompanyService/DeleteCompany", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -845,7 +845,7 @@ type CompanyServiceServer interface {
 	UpdateCompany(context.Context, *UpdateCompanyRequest) (*Company, error)
 	// Deletes specified company.
 	// Prerequisite: The company has no jobs associated with it.
-	DeleteCompany(context.Context, *DeleteCompanyRequest) (*empty.Empty, error)
+	DeleteCompany(context.Context, *DeleteCompanyRequest) (*emptypb.Empty, error)
 	// Lists all companies associated with the project.
 	ListCompanies(context.Context, *ListCompaniesRequest) (*ListCompaniesResponse, error)
 }
@@ -863,7 +863,7 @@ func (*UnimplementedCompanyServiceServer) GetCompany(context.Context, *GetCompan
 func (*UnimplementedCompanyServiceServer) UpdateCompany(context.Context, *UpdateCompanyRequest) (*Company, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCompany not implemented")
 }
-func (*UnimplementedCompanyServiceServer) DeleteCompany(context.Context, *DeleteCompanyRequest) (*empty.Empty, error) {
+func (*UnimplementedCompanyServiceServer) DeleteCompany(context.Context, *DeleteCompanyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCompany not implemented")
 }
 func (*UnimplementedCompanyServiceServer) ListCompanies(context.Context, *ListCompaniesRequest) (*ListCompaniesResponse, error) {

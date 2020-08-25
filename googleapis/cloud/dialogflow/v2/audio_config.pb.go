@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -432,11 +432,11 @@ type SpeechWordInfo struct {
 	// Time offset relative to the beginning of the audio that corresponds to the
 	// start of the spoken word. This is an experimental feature and the accuracy
 	// of the time offset can vary.
-	StartOffset *duration.Duration `protobuf:"bytes,1,opt,name=start_offset,json=startOffset,proto3" json:"start_offset,omitempty"`
+	StartOffset *durationpb.Duration `protobuf:"bytes,1,opt,name=start_offset,json=startOffset,proto3" json:"start_offset,omitempty"`
 	// Time offset relative to the beginning of the audio that corresponds to the
 	// end of the spoken word. This is an experimental feature and the accuracy of
 	// the time offset can vary.
-	EndOffset *duration.Duration `protobuf:"bytes,2,opt,name=end_offset,json=endOffset,proto3" json:"end_offset,omitempty"`
+	EndOffset *durationpb.Duration `protobuf:"bytes,2,opt,name=end_offset,json=endOffset,proto3" json:"end_offset,omitempty"`
 	// The Speech confidence between 0.0 and 1.0 for this word. A higher number
 	// indicates an estimated greater likelihood that the recognized word is
 	// correct. The default of 0.0 is a sentinel value indicating that confidence
@@ -486,14 +486,14 @@ func (x *SpeechWordInfo) GetWord() string {
 	return ""
 }
 
-func (x *SpeechWordInfo) GetStartOffset() *duration.Duration {
+func (x *SpeechWordInfo) GetStartOffset() *durationpb.Duration {
 	if x != nil {
 		return x.StartOffset
 	}
 	return nil
 }
 
-func (x *SpeechWordInfo) GetEndOffset() *duration.Duration {
+func (x *SpeechWordInfo) GetEndOffset() *durationpb.Duration {
 	if x != nil {
 		return x.EndOffset
 	}
@@ -1093,7 +1093,7 @@ var file_google_cloud_dialogflow_v2_audio_config_proto_goTypes = []interface{}{
 	(*VoiceSelectionParams)(nil),   // 7: google.cloud.dialogflow.v2.VoiceSelectionParams
 	(*SynthesizeSpeechConfig)(nil), // 8: google.cloud.dialogflow.v2.SynthesizeSpeechConfig
 	(*OutputAudioConfig)(nil),      // 9: google.cloud.dialogflow.v2.OutputAudioConfig
-	(*duration.Duration)(nil),      // 10: google.protobuf.Duration
+	(*durationpb.Duration)(nil),    // 10: google.protobuf.Duration
 }
 var file_google_cloud_dialogflow_v2_audio_config_proto_depIdxs = []int32{
 	10, // 0: google.cloud.dialogflow.v2.SpeechWordInfo.start_offset:type_name -> google.protobuf.Duration

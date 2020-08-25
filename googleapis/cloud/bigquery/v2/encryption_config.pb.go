@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -51,7 +51,7 @@ type EncryptionConfiguration struct {
 	// Optional. Describes the Cloud KMS encryption key that will be used to
 	// protect destination BigQuery table. The BigQuery Service Account associated
 	// with your project requires access to this encryption key.
-	KmsKeyName *wrappers.StringValue `protobuf:"bytes,1,opt,name=kms_key_name,json=kmsKeyName,proto3" json:"kms_key_name,omitempty"`
+	KmsKeyName *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=kms_key_name,json=kmsKeyName,proto3" json:"kms_key_name,omitempty"`
 }
 
 func (x *EncryptionConfiguration) Reset() {
@@ -86,7 +86,7 @@ func (*EncryptionConfiguration) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_v2_encryption_config_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *EncryptionConfiguration) GetKmsKeyName() *wrappers.StringValue {
+func (x *EncryptionConfiguration) GetKmsKeyName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.KmsKeyName
 	}
@@ -138,7 +138,7 @@ func file_google_cloud_bigquery_v2_encryption_config_proto_rawDescGZIP() []byte 
 var file_google_cloud_bigquery_v2_encryption_config_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_cloud_bigquery_v2_encryption_config_proto_goTypes = []interface{}{
 	(*EncryptionConfiguration)(nil), // 0: google.cloud.bigquery.v2.EncryptionConfiguration
-	(*wrappers.StringValue)(nil),    // 1: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),  // 1: google.protobuf.StringValue
 }
 var file_google_cloud_bigquery_v2_encryption_config_proto_depIdxs = []int32{
 	1, // 0: google.cloud.bigquery.v2.EncryptionConfiguration.kms_key_name:type_name -> google.protobuf.StringValue

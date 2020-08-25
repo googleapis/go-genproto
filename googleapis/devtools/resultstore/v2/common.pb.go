@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -464,9 +464,9 @@ type Timing struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time the resource started running. This is in UTC Epoch time.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The duration for which the resource ran.
-	Duration *duration.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
 }
 
 func (x *Timing) Reset() {
@@ -501,14 +501,14 @@ func (*Timing) Descriptor() ([]byte, []int) {
 	return file_google_devtools_resultstore_v2_common_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Timing) GetStartTime() *timestamp.Timestamp {
+func (x *Timing) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *Timing) GetDuration() *duration.Duration {
+func (x *Timing) GetDuration() *durationpb.Duration {
 	if x != nil {
 		return x.Duration
 	}
@@ -733,15 +733,15 @@ func file_google_devtools_resultstore_v2_common_proto_rawDescGZIP() []byte {
 var file_google_devtools_resultstore_v2_common_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_google_devtools_resultstore_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_google_devtools_resultstore_v2_common_proto_goTypes = []interface{}{
-	(Language)(0),               // 0: google.devtools.resultstore.v2.Language
-	(Status)(0),                 // 1: google.devtools.resultstore.v2.Status
-	(UploadStatus)(0),           // 2: google.devtools.resultstore.v2.UploadStatus
-	(*StatusAttributes)(nil),    // 3: google.devtools.resultstore.v2.StatusAttributes
-	(*Property)(nil),            // 4: google.devtools.resultstore.v2.Property
-	(*Timing)(nil),              // 5: google.devtools.resultstore.v2.Timing
-	(*Dependency)(nil),          // 6: google.devtools.resultstore.v2.Dependency
-	(*timestamp.Timestamp)(nil), // 7: google.protobuf.Timestamp
-	(*duration.Duration)(nil),   // 8: google.protobuf.Duration
+	(Language)(0),                 // 0: google.devtools.resultstore.v2.Language
+	(Status)(0),                   // 1: google.devtools.resultstore.v2.Status
+	(UploadStatus)(0),             // 2: google.devtools.resultstore.v2.UploadStatus
+	(*StatusAttributes)(nil),      // 3: google.devtools.resultstore.v2.StatusAttributes
+	(*Property)(nil),              // 4: google.devtools.resultstore.v2.Property
+	(*Timing)(nil),                // 5: google.devtools.resultstore.v2.Timing
+	(*Dependency)(nil),            // 6: google.devtools.resultstore.v2.Dependency
+	(*timestamppb.Timestamp)(nil), // 7: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),   // 8: google.protobuf.Duration
 }
 var file_google_devtools_resultstore_v2_common_proto_depIdxs = []int32{
 	1, // 0: google.devtools.resultstore.v2.StatusAttributes.status:type_name -> google.devtools.resultstore.v2.Status

@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -293,7 +293,7 @@ type UpdateAccountRequest struct {
 	// The account's `name` field is used to identify the account.
 	Account *Account `protobuf:"bytes,1,opt,name=account,proto3" json:"account,omitempty"`
 	// The list of fields to be updated. Omitted fields will not be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateAccountRequest) Reset() {
@@ -335,7 +335,7 @@ func (x *UpdateAccountRequest) GetAccount() *Account {
 	return nil
 }
 
-func (x *UpdateAccountRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateAccountRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -665,7 +665,7 @@ type UpdatePropertyRequest struct {
 	// updated.
 	Property *Property `protobuf:"bytes,1,opt,name=property,proto3" json:"property,omitempty"`
 	// The list of fields to be updated. Omitted fields will not be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdatePropertyRequest) Reset() {
@@ -707,7 +707,7 @@ func (x *UpdatePropertyRequest) GetProperty() *Property {
 	return nil
 }
 
-func (x *UpdatePropertyRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdatePropertyRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1820,7 +1820,7 @@ type UpdateWebDataStreamRequest struct {
 	// The `name` field is used to identify the web stream to be updated.
 	WebDataStream *WebDataStream `protobuf:"bytes,1,opt,name=web_data_stream,json=webDataStream,proto3" json:"web_data_stream,omitempty"`
 	// The list of fields to be updated. Omitted fields will not be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateWebDataStreamRequest) Reset() {
@@ -1862,7 +1862,7 @@ func (x *UpdateWebDataStreamRequest) GetWebDataStream() *WebDataStream {
 	return nil
 }
 
-func (x *UpdateWebDataStreamRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateWebDataStreamRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2173,7 +2173,7 @@ type UpdateIosAppDataStreamRequest struct {
 	// The `name` field is used to identify the iOS app stream to be updated.
 	IosAppDataStream *IosAppDataStream `protobuf:"bytes,1,opt,name=ios_app_data_stream,json=iosAppDataStream,proto3" json:"ios_app_data_stream,omitempty"`
 	// The list of fields to be updated. Omitted fields will not be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateIosAppDataStreamRequest) Reset() {
@@ -2215,7 +2215,7 @@ func (x *UpdateIosAppDataStreamRequest) GetIosAppDataStream() *IosAppDataStream 
 	return nil
 }
 
-func (x *UpdateIosAppDataStreamRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateIosAppDataStreamRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2526,7 +2526,7 @@ type UpdateAndroidAppDataStreamRequest struct {
 	// The `name` field is used to identify the android app stream to be updated.
 	AndroidAppDataStream *AndroidAppDataStream `protobuf:"bytes,1,opt,name=android_app_data_stream,json=androidAppDataStream,proto3" json:"android_app_data_stream,omitempty"`
 	// The list of fields to be updated. Omitted fields will not be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateAndroidAppDataStreamRequest) Reset() {
@@ -2568,7 +2568,7 @@ func (x *UpdateAndroidAppDataStreamRequest) GetAndroidAppDataStream() *AndroidAp
 	return nil
 }
 
-func (x *UpdateAndroidAppDataStreamRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateAndroidAppDataStreamRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2831,7 +2831,7 @@ type UpdateEnhancedMeasurementSettingsRequest struct {
 	// The `name` field is used to identify the settings to be updated.
 	EnhancedMeasurementSettings *EnhancedMeasurementSettings `protobuf:"bytes,1,opt,name=enhanced_measurement_settings,json=enhancedMeasurementSettings,proto3" json:"enhanced_measurement_settings,omitempty"`
 	// The list of fields to be updated. Omitted fields will not be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateEnhancedMeasurementSettingsRequest) Reset() {
@@ -2873,7 +2873,7 @@ func (x *UpdateEnhancedMeasurementSettingsRequest) GetEnhancedMeasurementSetting
 	return nil
 }
 
-func (x *UpdateEnhancedMeasurementSettingsRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateEnhancedMeasurementSettingsRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2948,7 +2948,7 @@ type UpdateFirebaseLinkRequest struct {
 	// Required. The Firebase link to update.
 	FirebaseLink *FirebaseLink `protobuf:"bytes,1,opt,name=firebase_link,json=firebaseLink,proto3" json:"firebase_link,omitempty"`
 	// The list of fields to be updated. Omitted fields will not be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateFirebaseLinkRequest) Reset() {
@@ -2990,7 +2990,7 @@ func (x *UpdateFirebaseLinkRequest) GetFirebaseLink() *FirebaseLink {
 	return nil
 }
 
-func (x *UpdateFirebaseLinkRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateFirebaseLinkRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -3265,7 +3265,7 @@ type UpdateGoogleAdsLinkRequest struct {
 	// The GoogleAdsLink to update
 	GoogleAdsLink *GoogleAdsLink `protobuf:"bytes,1,opt,name=google_ads_link,json=googleAdsLink,proto3" json:"google_ads_link,omitempty"`
 	// The list of fields to be updated. Omitted fields will not be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateGoogleAdsLinkRequest) Reset() {
@@ -3307,7 +3307,7 @@ func (x *UpdateGoogleAdsLinkRequest) GetGoogleAdsLink() *GoogleAdsLink {
 	return nil
 }
 
-func (x *UpdateGoogleAdsLinkRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateGoogleAdsLinkRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -4845,7 +4845,7 @@ var file_google_analytics_admin_v1alpha_analytics_admin_proto_goTypes = []interf
 	(*ListGoogleAdsLinksResponse)(nil),               // 58: google.analytics.admin.v1alpha.ListGoogleAdsLinksResponse
 	(*GetDataSharingSettingsRequest)(nil),            // 59: google.analytics.admin.v1alpha.GetDataSharingSettingsRequest
 	(*Account)(nil),                                  // 60: google.analytics.admin.v1alpha.Account
-	(*field_mask.FieldMask)(nil),                     // 61: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                    // 61: google.protobuf.FieldMask
 	(*Property)(nil),                                 // 62: google.analytics.admin.v1alpha.Property
 	(*UserLink)(nil),                                 // 63: google.analytics.admin.v1alpha.UserLink
 	(*AuditUserLink)(nil),                            // 64: google.analytics.admin.v1alpha.AuditUserLink
@@ -4855,7 +4855,7 @@ var file_google_analytics_admin_v1alpha_analytics_admin_proto_goTypes = []interf
 	(*EnhancedMeasurementSettings)(nil),              // 68: google.analytics.admin.v1alpha.EnhancedMeasurementSettings
 	(*FirebaseLink)(nil),                             // 69: google.analytics.admin.v1alpha.FirebaseLink
 	(*GoogleAdsLink)(nil),                            // 70: google.analytics.admin.v1alpha.GoogleAdsLink
-	(*empty.Empty)(nil),                              // 71: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                            // 71: google.protobuf.Empty
 	(*GlobalSiteTag)(nil),                            // 72: google.analytics.admin.v1alpha.GlobalSiteTag
 	(*DataSharingSettings)(nil),                      // 73: google.analytics.admin.v1alpha.DataSharingSettings
 }
@@ -5782,7 +5782,7 @@ type AnalyticsAdminServiceClient interface {
 	// https://support.google.com/analytics/answer/6154772
 	//
 	// Returns an error if the target is not found.
-	DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates an account.
 	UpdateAccount(ctx context.Context, in *UpdateAccountRequest, opts ...grpc.CallOption) (*Account, error)
 	// Requests a ticket for creating an account.
@@ -5812,7 +5812,7 @@ type AnalyticsAdminServiceClient interface {
 	// https://support.google.com/analytics/answer/6154772
 	//
 	// Returns an error if the target is not found, or is not an App+Web Property.
-	DeleteProperty(ctx context.Context, in *DeletePropertyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteProperty(ctx context.Context, in *DeletePropertyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates a property.
 	UpdateProperty(ctx context.Context, in *UpdatePropertyRequest, opts ...grpc.CallOption) (*Property, error)
 	// Gets information about a user's link to an account or property.
@@ -5847,16 +5847,16 @@ type AnalyticsAdminServiceClient interface {
 	// Updates information about multiple users' links to an account or property.
 	BatchUpdateUserLinks(ctx context.Context, in *BatchUpdateUserLinksRequest, opts ...grpc.CallOption) (*BatchUpdateUserLinksResponse, error)
 	// Deletes a user link on an account or property.
-	DeleteUserLink(ctx context.Context, in *DeleteUserLinkRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteUserLink(ctx context.Context, in *DeleteUserLinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Deletes information about multiple users' links to an account or property.
-	BatchDeleteUserLinks(ctx context.Context, in *BatchDeleteUserLinksRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	BatchDeleteUserLinks(ctx context.Context, in *BatchDeleteUserLinksRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lookup for a single WebDataStream
 	//
 	// Throws "Target not found" if no such web data stream found, or if the
 	// caller does not have permissions to access it.
 	GetWebDataStream(ctx context.Context, in *GetWebDataStreamRequest, opts ...grpc.CallOption) (*WebDataStream, error)
 	// Deletes a web stream on a property.
-	DeleteWebDataStream(ctx context.Context, in *DeleteWebDataStreamRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteWebDataStream(ctx context.Context, in *DeleteWebDataStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates a web stream on a property.
 	UpdateWebDataStream(ctx context.Context, in *UpdateWebDataStreamRequest, opts ...grpc.CallOption) (*WebDataStream, error)
 	// Creates a web stream with the specified location and attributes.
@@ -5872,7 +5872,7 @@ type AnalyticsAdminServiceClient interface {
 	// caller does not have permissions to access it.
 	GetIosAppDataStream(ctx context.Context, in *GetIosAppDataStreamRequest, opts ...grpc.CallOption) (*IosAppDataStream, error)
 	// Deletes an iOS app stream on a property.
-	DeleteIosAppDataStream(ctx context.Context, in *DeleteIosAppDataStreamRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteIosAppDataStream(ctx context.Context, in *DeleteIosAppDataStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates an iOS app stream on a property.
 	UpdateIosAppDataStream(ctx context.Context, in *UpdateIosAppDataStreamRequest, opts ...grpc.CallOption) (*IosAppDataStream, error)
 	// Creates an iOS app data stream with the specified location and attributes.
@@ -5888,7 +5888,7 @@ type AnalyticsAdminServiceClient interface {
 	// the caller does not have permissions to access it.
 	GetAndroidAppDataStream(ctx context.Context, in *GetAndroidAppDataStreamRequest, opts ...grpc.CallOption) (*AndroidAppDataStream, error)
 	// Deletes an android app stream on a property.
-	DeleteAndroidAppDataStream(ctx context.Context, in *DeleteAndroidAppDataStreamRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAndroidAppDataStream(ctx context.Context, in *DeleteAndroidAppDataStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates an android app stream on a property.
 	UpdateAndroidAppDataStream(ctx context.Context, in *UpdateAndroidAppDataStreamRequest, opts ...grpc.CallOption) (*AndroidAppDataStream, error)
 	// Creates an android app stream with the specified location and attributes.
@@ -5913,7 +5913,7 @@ type AnalyticsAdminServiceClient interface {
 	// Updates a FirebaseLink on a property
 	UpdateFirebaseLink(ctx context.Context, in *UpdateFirebaseLinkRequest, opts ...grpc.CallOption) (*FirebaseLink, error)
 	// Deletes a FirebaseLink on a property
-	DeleteFirebaseLink(ctx context.Context, in *DeleteFirebaseLinkRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteFirebaseLink(ctx context.Context, in *DeleteFirebaseLinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists FirebaseLinks on a property.
 	// Properties can have at most one FirebaseLink.
 	ListFirebaseLinks(ctx context.Context, in *ListFirebaseLinksRequest, opts ...grpc.CallOption) (*ListFirebaseLinksResponse, error)
@@ -5925,7 +5925,7 @@ type AnalyticsAdminServiceClient interface {
 	// Updates a GoogleAdsLink on a property
 	UpdateGoogleAdsLink(ctx context.Context, in *UpdateGoogleAdsLinkRequest, opts ...grpc.CallOption) (*GoogleAdsLink, error)
 	// Deletes a GoogleAdsLink on a property
-	DeleteGoogleAdsLink(ctx context.Context, in *DeleteGoogleAdsLinkRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteGoogleAdsLink(ctx context.Context, in *DeleteGoogleAdsLinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists GoogleAdsLinks on a property.
 	ListGoogleAdsLinks(ctx context.Context, in *ListGoogleAdsLinksRequest, opts ...grpc.CallOption) (*ListGoogleAdsLinksResponse, error)
 	// Get data sharing settings on an account.
@@ -5959,8 +5959,8 @@ func (c *analyticsAdminServiceClient) ListAccounts(ctx context.Context, in *List
 	return out, nil
 }
 
-func (c *analyticsAdminServiceClient) DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *analyticsAdminServiceClient) DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.analytics.admin.v1alpha.AnalyticsAdminService/DeleteAccount", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6013,8 +6013,8 @@ func (c *analyticsAdminServiceClient) CreateProperty(ctx context.Context, in *Cr
 	return out, nil
 }
 
-func (c *analyticsAdminServiceClient) DeleteProperty(ctx context.Context, in *DeletePropertyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *analyticsAdminServiceClient) DeleteProperty(ctx context.Context, in *DeletePropertyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.analytics.admin.v1alpha.AnalyticsAdminService/DeleteProperty", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6103,8 +6103,8 @@ func (c *analyticsAdminServiceClient) BatchUpdateUserLinks(ctx context.Context, 
 	return out, nil
 }
 
-func (c *analyticsAdminServiceClient) DeleteUserLink(ctx context.Context, in *DeleteUserLinkRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *analyticsAdminServiceClient) DeleteUserLink(ctx context.Context, in *DeleteUserLinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.analytics.admin.v1alpha.AnalyticsAdminService/DeleteUserLink", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6112,8 +6112,8 @@ func (c *analyticsAdminServiceClient) DeleteUserLink(ctx context.Context, in *De
 	return out, nil
 }
 
-func (c *analyticsAdminServiceClient) BatchDeleteUserLinks(ctx context.Context, in *BatchDeleteUserLinksRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *analyticsAdminServiceClient) BatchDeleteUserLinks(ctx context.Context, in *BatchDeleteUserLinksRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.analytics.admin.v1alpha.AnalyticsAdminService/BatchDeleteUserLinks", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6130,8 +6130,8 @@ func (c *analyticsAdminServiceClient) GetWebDataStream(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *analyticsAdminServiceClient) DeleteWebDataStream(ctx context.Context, in *DeleteWebDataStreamRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *analyticsAdminServiceClient) DeleteWebDataStream(ctx context.Context, in *DeleteWebDataStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.analytics.admin.v1alpha.AnalyticsAdminService/DeleteWebDataStream", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6175,8 +6175,8 @@ func (c *analyticsAdminServiceClient) GetIosAppDataStream(ctx context.Context, i
 	return out, nil
 }
 
-func (c *analyticsAdminServiceClient) DeleteIosAppDataStream(ctx context.Context, in *DeleteIosAppDataStreamRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *analyticsAdminServiceClient) DeleteIosAppDataStream(ctx context.Context, in *DeleteIosAppDataStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.analytics.admin.v1alpha.AnalyticsAdminService/DeleteIosAppDataStream", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6220,8 +6220,8 @@ func (c *analyticsAdminServiceClient) GetAndroidAppDataStream(ctx context.Contex
 	return out, nil
 }
 
-func (c *analyticsAdminServiceClient) DeleteAndroidAppDataStream(ctx context.Context, in *DeleteAndroidAppDataStreamRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *analyticsAdminServiceClient) DeleteAndroidAppDataStream(ctx context.Context, in *DeleteAndroidAppDataStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.analytics.admin.v1alpha.AnalyticsAdminService/DeleteAndroidAppDataStream", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6292,8 +6292,8 @@ func (c *analyticsAdminServiceClient) UpdateFirebaseLink(ctx context.Context, in
 	return out, nil
 }
 
-func (c *analyticsAdminServiceClient) DeleteFirebaseLink(ctx context.Context, in *DeleteFirebaseLinkRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *analyticsAdminServiceClient) DeleteFirebaseLink(ctx context.Context, in *DeleteFirebaseLinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.analytics.admin.v1alpha.AnalyticsAdminService/DeleteFirebaseLink", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6337,8 +6337,8 @@ func (c *analyticsAdminServiceClient) UpdateGoogleAdsLink(ctx context.Context, i
 	return out, nil
 }
 
-func (c *analyticsAdminServiceClient) DeleteGoogleAdsLink(ctx context.Context, in *DeleteGoogleAdsLinkRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *analyticsAdminServiceClient) DeleteGoogleAdsLink(ctx context.Context, in *DeleteGoogleAdsLinkRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.analytics.admin.v1alpha.AnalyticsAdminService/DeleteGoogleAdsLink", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -6387,7 +6387,7 @@ type AnalyticsAdminServiceServer interface {
 	// https://support.google.com/analytics/answer/6154772
 	//
 	// Returns an error if the target is not found.
-	DeleteAccount(context.Context, *DeleteAccountRequest) (*empty.Empty, error)
+	DeleteAccount(context.Context, *DeleteAccountRequest) (*emptypb.Empty, error)
 	// Updates an account.
 	UpdateAccount(context.Context, *UpdateAccountRequest) (*Account, error)
 	// Requests a ticket for creating an account.
@@ -6417,7 +6417,7 @@ type AnalyticsAdminServiceServer interface {
 	// https://support.google.com/analytics/answer/6154772
 	//
 	// Returns an error if the target is not found, or is not an App+Web Property.
-	DeleteProperty(context.Context, *DeletePropertyRequest) (*empty.Empty, error)
+	DeleteProperty(context.Context, *DeletePropertyRequest) (*emptypb.Empty, error)
 	// Updates a property.
 	UpdateProperty(context.Context, *UpdatePropertyRequest) (*Property, error)
 	// Gets information about a user's link to an account or property.
@@ -6452,16 +6452,16 @@ type AnalyticsAdminServiceServer interface {
 	// Updates information about multiple users' links to an account or property.
 	BatchUpdateUserLinks(context.Context, *BatchUpdateUserLinksRequest) (*BatchUpdateUserLinksResponse, error)
 	// Deletes a user link on an account or property.
-	DeleteUserLink(context.Context, *DeleteUserLinkRequest) (*empty.Empty, error)
+	DeleteUserLink(context.Context, *DeleteUserLinkRequest) (*emptypb.Empty, error)
 	// Deletes information about multiple users' links to an account or property.
-	BatchDeleteUserLinks(context.Context, *BatchDeleteUserLinksRequest) (*empty.Empty, error)
+	BatchDeleteUserLinks(context.Context, *BatchDeleteUserLinksRequest) (*emptypb.Empty, error)
 	// Lookup for a single WebDataStream
 	//
 	// Throws "Target not found" if no such web data stream found, or if the
 	// caller does not have permissions to access it.
 	GetWebDataStream(context.Context, *GetWebDataStreamRequest) (*WebDataStream, error)
 	// Deletes a web stream on a property.
-	DeleteWebDataStream(context.Context, *DeleteWebDataStreamRequest) (*empty.Empty, error)
+	DeleteWebDataStream(context.Context, *DeleteWebDataStreamRequest) (*emptypb.Empty, error)
 	// Updates a web stream on a property.
 	UpdateWebDataStream(context.Context, *UpdateWebDataStreamRequest) (*WebDataStream, error)
 	// Creates a web stream with the specified location and attributes.
@@ -6477,7 +6477,7 @@ type AnalyticsAdminServiceServer interface {
 	// caller does not have permissions to access it.
 	GetIosAppDataStream(context.Context, *GetIosAppDataStreamRequest) (*IosAppDataStream, error)
 	// Deletes an iOS app stream on a property.
-	DeleteIosAppDataStream(context.Context, *DeleteIosAppDataStreamRequest) (*empty.Empty, error)
+	DeleteIosAppDataStream(context.Context, *DeleteIosAppDataStreamRequest) (*emptypb.Empty, error)
 	// Updates an iOS app stream on a property.
 	UpdateIosAppDataStream(context.Context, *UpdateIosAppDataStreamRequest) (*IosAppDataStream, error)
 	// Creates an iOS app data stream with the specified location and attributes.
@@ -6493,7 +6493,7 @@ type AnalyticsAdminServiceServer interface {
 	// the caller does not have permissions to access it.
 	GetAndroidAppDataStream(context.Context, *GetAndroidAppDataStreamRequest) (*AndroidAppDataStream, error)
 	// Deletes an android app stream on a property.
-	DeleteAndroidAppDataStream(context.Context, *DeleteAndroidAppDataStreamRequest) (*empty.Empty, error)
+	DeleteAndroidAppDataStream(context.Context, *DeleteAndroidAppDataStreamRequest) (*emptypb.Empty, error)
 	// Updates an android app stream on a property.
 	UpdateAndroidAppDataStream(context.Context, *UpdateAndroidAppDataStreamRequest) (*AndroidAppDataStream, error)
 	// Creates an android app stream with the specified location and attributes.
@@ -6518,7 +6518,7 @@ type AnalyticsAdminServiceServer interface {
 	// Updates a FirebaseLink on a property
 	UpdateFirebaseLink(context.Context, *UpdateFirebaseLinkRequest) (*FirebaseLink, error)
 	// Deletes a FirebaseLink on a property
-	DeleteFirebaseLink(context.Context, *DeleteFirebaseLinkRequest) (*empty.Empty, error)
+	DeleteFirebaseLink(context.Context, *DeleteFirebaseLinkRequest) (*emptypb.Empty, error)
 	// Lists FirebaseLinks on a property.
 	// Properties can have at most one FirebaseLink.
 	ListFirebaseLinks(context.Context, *ListFirebaseLinksRequest) (*ListFirebaseLinksResponse, error)
@@ -6530,7 +6530,7 @@ type AnalyticsAdminServiceServer interface {
 	// Updates a GoogleAdsLink on a property
 	UpdateGoogleAdsLink(context.Context, *UpdateGoogleAdsLinkRequest) (*GoogleAdsLink, error)
 	// Deletes a GoogleAdsLink on a property
-	DeleteGoogleAdsLink(context.Context, *DeleteGoogleAdsLinkRequest) (*empty.Empty, error)
+	DeleteGoogleAdsLink(context.Context, *DeleteGoogleAdsLinkRequest) (*emptypb.Empty, error)
 	// Lists GoogleAdsLinks on a property.
 	ListGoogleAdsLinks(context.Context, *ListGoogleAdsLinksRequest) (*ListGoogleAdsLinksResponse, error)
 	// Get data sharing settings on an account.
@@ -6548,7 +6548,7 @@ func (*UnimplementedAnalyticsAdminServiceServer) GetAccount(context.Context, *Ge
 func (*UnimplementedAnalyticsAdminServiceServer) ListAccounts(context.Context, *ListAccountsRequest) (*ListAccountsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAccounts not implemented")
 }
-func (*UnimplementedAnalyticsAdminServiceServer) DeleteAccount(context.Context, *DeleteAccountRequest) (*empty.Empty, error) {
+func (*UnimplementedAnalyticsAdminServiceServer) DeleteAccount(context.Context, *DeleteAccountRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAccount not implemented")
 }
 func (*UnimplementedAnalyticsAdminServiceServer) UpdateAccount(context.Context, *UpdateAccountRequest) (*Account, error) {
@@ -6566,7 +6566,7 @@ func (*UnimplementedAnalyticsAdminServiceServer) ListProperties(context.Context,
 func (*UnimplementedAnalyticsAdminServiceServer) CreateProperty(context.Context, *CreatePropertyRequest) (*Property, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateProperty not implemented")
 }
-func (*UnimplementedAnalyticsAdminServiceServer) DeleteProperty(context.Context, *DeletePropertyRequest) (*empty.Empty, error) {
+func (*UnimplementedAnalyticsAdminServiceServer) DeleteProperty(context.Context, *DeletePropertyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteProperty not implemented")
 }
 func (*UnimplementedAnalyticsAdminServiceServer) UpdateProperty(context.Context, *UpdatePropertyRequest) (*Property, error) {
@@ -6596,16 +6596,16 @@ func (*UnimplementedAnalyticsAdminServiceServer) UpdateUserLink(context.Context,
 func (*UnimplementedAnalyticsAdminServiceServer) BatchUpdateUserLinks(context.Context, *BatchUpdateUserLinksRequest) (*BatchUpdateUserLinksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BatchUpdateUserLinks not implemented")
 }
-func (*UnimplementedAnalyticsAdminServiceServer) DeleteUserLink(context.Context, *DeleteUserLinkRequest) (*empty.Empty, error) {
+func (*UnimplementedAnalyticsAdminServiceServer) DeleteUserLink(context.Context, *DeleteUserLinkRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserLink not implemented")
 }
-func (*UnimplementedAnalyticsAdminServiceServer) BatchDeleteUserLinks(context.Context, *BatchDeleteUserLinksRequest) (*empty.Empty, error) {
+func (*UnimplementedAnalyticsAdminServiceServer) BatchDeleteUserLinks(context.Context, *BatchDeleteUserLinksRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BatchDeleteUserLinks not implemented")
 }
 func (*UnimplementedAnalyticsAdminServiceServer) GetWebDataStream(context.Context, *GetWebDataStreamRequest) (*WebDataStream, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetWebDataStream not implemented")
 }
-func (*UnimplementedAnalyticsAdminServiceServer) DeleteWebDataStream(context.Context, *DeleteWebDataStreamRequest) (*empty.Empty, error) {
+func (*UnimplementedAnalyticsAdminServiceServer) DeleteWebDataStream(context.Context, *DeleteWebDataStreamRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteWebDataStream not implemented")
 }
 func (*UnimplementedAnalyticsAdminServiceServer) UpdateWebDataStream(context.Context, *UpdateWebDataStreamRequest) (*WebDataStream, error) {
@@ -6620,7 +6620,7 @@ func (*UnimplementedAnalyticsAdminServiceServer) ListWebDataStreams(context.Cont
 func (*UnimplementedAnalyticsAdminServiceServer) GetIosAppDataStream(context.Context, *GetIosAppDataStreamRequest) (*IosAppDataStream, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetIosAppDataStream not implemented")
 }
-func (*UnimplementedAnalyticsAdminServiceServer) DeleteIosAppDataStream(context.Context, *DeleteIosAppDataStreamRequest) (*empty.Empty, error) {
+func (*UnimplementedAnalyticsAdminServiceServer) DeleteIosAppDataStream(context.Context, *DeleteIosAppDataStreamRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteIosAppDataStream not implemented")
 }
 func (*UnimplementedAnalyticsAdminServiceServer) UpdateIosAppDataStream(context.Context, *UpdateIosAppDataStreamRequest) (*IosAppDataStream, error) {
@@ -6635,7 +6635,7 @@ func (*UnimplementedAnalyticsAdminServiceServer) ListIosAppDataStreams(context.C
 func (*UnimplementedAnalyticsAdminServiceServer) GetAndroidAppDataStream(context.Context, *GetAndroidAppDataStreamRequest) (*AndroidAppDataStream, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAndroidAppDataStream not implemented")
 }
-func (*UnimplementedAnalyticsAdminServiceServer) DeleteAndroidAppDataStream(context.Context, *DeleteAndroidAppDataStreamRequest) (*empty.Empty, error) {
+func (*UnimplementedAnalyticsAdminServiceServer) DeleteAndroidAppDataStream(context.Context, *DeleteAndroidAppDataStreamRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAndroidAppDataStream not implemented")
 }
 func (*UnimplementedAnalyticsAdminServiceServer) UpdateAndroidAppDataStream(context.Context, *UpdateAndroidAppDataStreamRequest) (*AndroidAppDataStream, error) {
@@ -6659,7 +6659,7 @@ func (*UnimplementedAnalyticsAdminServiceServer) CreateFirebaseLink(context.Cont
 func (*UnimplementedAnalyticsAdminServiceServer) UpdateFirebaseLink(context.Context, *UpdateFirebaseLinkRequest) (*FirebaseLink, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateFirebaseLink not implemented")
 }
-func (*UnimplementedAnalyticsAdminServiceServer) DeleteFirebaseLink(context.Context, *DeleteFirebaseLinkRequest) (*empty.Empty, error) {
+func (*UnimplementedAnalyticsAdminServiceServer) DeleteFirebaseLink(context.Context, *DeleteFirebaseLinkRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteFirebaseLink not implemented")
 }
 func (*UnimplementedAnalyticsAdminServiceServer) ListFirebaseLinks(context.Context, *ListFirebaseLinksRequest) (*ListFirebaseLinksResponse, error) {
@@ -6674,7 +6674,7 @@ func (*UnimplementedAnalyticsAdminServiceServer) CreateGoogleAdsLink(context.Con
 func (*UnimplementedAnalyticsAdminServiceServer) UpdateGoogleAdsLink(context.Context, *UpdateGoogleAdsLinkRequest) (*GoogleAdsLink, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateGoogleAdsLink not implemented")
 }
-func (*UnimplementedAnalyticsAdminServiceServer) DeleteGoogleAdsLink(context.Context, *DeleteGoogleAdsLinkRequest) (*empty.Empty, error) {
+func (*UnimplementedAnalyticsAdminServiceServer) DeleteGoogleAdsLink(context.Context, *DeleteGoogleAdsLinkRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteGoogleAdsLink not implemented")
 }
 func (*UnimplementedAnalyticsAdminServiceServer) ListGoogleAdsLinks(context.Context, *ListGoogleAdsLinksRequest) (*ListGoogleAdsLinksResponse, error) {

@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -1383,7 +1383,7 @@ type UpdateCryptoKeyRequest struct {
 	// Required. [CryptoKey][google.cloud.kms.v1.CryptoKey] with updated values.
 	CryptoKey *CryptoKey `protobuf:"bytes,1,opt,name=crypto_key,json=cryptoKey,proto3" json:"crypto_key,omitempty"`
 	// Required. List of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateCryptoKeyRequest) Reset() {
@@ -1425,7 +1425,7 @@ func (x *UpdateCryptoKeyRequest) GetCryptoKey() *CryptoKey {
 	return nil
 }
 
-func (x *UpdateCryptoKeyRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateCryptoKeyRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1441,7 +1441,7 @@ type UpdateCryptoKeyVersionRequest struct {
 	// Required. [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with updated values.
 	CryptoKeyVersion *CryptoKeyVersion `protobuf:"bytes,1,opt,name=crypto_key_version,json=cryptoKeyVersion,proto3" json:"crypto_key_version,omitempty"`
 	// Required. List of fields to be updated in this request.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateCryptoKeyVersionRequest) Reset() {
@@ -1483,7 +1483,7 @@ func (x *UpdateCryptoKeyVersionRequest) GetCryptoKeyVersion() *CryptoKeyVersion 
 	return nil
 }
 
-func (x *UpdateCryptoKeyVersionRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateCryptoKeyVersionRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1536,7 +1536,7 @@ type EncryptRequest struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	PlaintextCrc32C *wrappers.Int64Value `protobuf:"bytes,7,opt,name=plaintext_crc32c,json=plaintextCrc32c,proto3" json:"plaintext_crc32c,omitempty"`
+	PlaintextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=plaintext_crc32c,json=plaintextCrc32c,proto3" json:"plaintext_crc32c,omitempty"`
 	// Optional. An optional CRC32C checksum of the
 	// [EncryptRequest.additional_authenticated_data][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data]. If specified,
 	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the received
@@ -1553,7 +1553,7 @@ type EncryptRequest struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	AdditionalAuthenticatedDataCrc32C *wrappers.Int64Value `protobuf:"bytes,8,opt,name=additional_authenticated_data_crc32c,json=additionalAuthenticatedDataCrc32c,proto3" json:"additional_authenticated_data_crc32c,omitempty"`
+	AdditionalAuthenticatedDataCrc32C *wrapperspb.Int64Value `protobuf:"bytes,8,opt,name=additional_authenticated_data_crc32c,json=additionalAuthenticatedDataCrc32c,proto3" json:"additional_authenticated_data_crc32c,omitempty"`
 }
 
 func (x *EncryptRequest) Reset() {
@@ -1609,14 +1609,14 @@ func (x *EncryptRequest) GetAdditionalAuthenticatedData() []byte {
 	return nil
 }
 
-func (x *EncryptRequest) GetPlaintextCrc32C() *wrappers.Int64Value {
+func (x *EncryptRequest) GetPlaintextCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PlaintextCrc32C
 	}
 	return nil
 }
 
-func (x *EncryptRequest) GetAdditionalAuthenticatedDataCrc32C() *wrappers.Int64Value {
+func (x *EncryptRequest) GetAdditionalAuthenticatedDataCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AdditionalAuthenticatedDataCrc32C
 	}
@@ -1653,7 +1653,7 @@ type DecryptRequest struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	CiphertextCrc32C *wrappers.Int64Value `protobuf:"bytes,5,opt,name=ciphertext_crc32c,json=ciphertextCrc32c,proto3" json:"ciphertext_crc32c,omitempty"`
+	CiphertextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=ciphertext_crc32c,json=ciphertextCrc32c,proto3" json:"ciphertext_crc32c,omitempty"`
 	// Optional. An optional CRC32C checksum of the
 	// [DecryptRequest.additional_authenticated_data][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data]. If specified,
 	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the received
@@ -1670,7 +1670,7 @@ type DecryptRequest struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	AdditionalAuthenticatedDataCrc32C *wrappers.Int64Value `protobuf:"bytes,6,opt,name=additional_authenticated_data_crc32c,json=additionalAuthenticatedDataCrc32c,proto3" json:"additional_authenticated_data_crc32c,omitempty"`
+	AdditionalAuthenticatedDataCrc32C *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=additional_authenticated_data_crc32c,json=additionalAuthenticatedDataCrc32c,proto3" json:"additional_authenticated_data_crc32c,omitempty"`
 }
 
 func (x *DecryptRequest) Reset() {
@@ -1726,14 +1726,14 @@ func (x *DecryptRequest) GetAdditionalAuthenticatedData() []byte {
 	return nil
 }
 
-func (x *DecryptRequest) GetCiphertextCrc32C() *wrappers.Int64Value {
+func (x *DecryptRequest) GetCiphertextCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CiphertextCrc32C
 	}
 	return nil
 }
 
-func (x *DecryptRequest) GetAdditionalAuthenticatedDataCrc32C() *wrappers.Int64Value {
+func (x *DecryptRequest) GetAdditionalAuthenticatedDataCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.AdditionalAuthenticatedDataCrc32C
 	}
@@ -1767,7 +1767,7 @@ type AsymmetricSignRequest struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	DigestCrc32C *wrappers.Int64Value `protobuf:"bytes,4,opt,name=digest_crc32c,json=digestCrc32c,proto3" json:"digest_crc32c,omitempty"`
+	DigestCrc32C *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=digest_crc32c,json=digestCrc32c,proto3" json:"digest_crc32c,omitempty"`
 }
 
 func (x *AsymmetricSignRequest) Reset() {
@@ -1816,7 +1816,7 @@ func (x *AsymmetricSignRequest) GetDigest() *Digest {
 	return nil
 }
 
-func (x *AsymmetricSignRequest) GetDigestCrc32C() *wrappers.Int64Value {
+func (x *AsymmetricSignRequest) GetDigestCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.DigestCrc32C
 	}
@@ -1850,7 +1850,7 @@ type AsymmetricDecryptRequest struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	CiphertextCrc32C *wrappers.Int64Value `protobuf:"bytes,4,opt,name=ciphertext_crc32c,json=ciphertextCrc32c,proto3" json:"ciphertext_crc32c,omitempty"`
+	CiphertextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=ciphertext_crc32c,json=ciphertextCrc32c,proto3" json:"ciphertext_crc32c,omitempty"`
 }
 
 func (x *AsymmetricDecryptRequest) Reset() {
@@ -1899,7 +1899,7 @@ func (x *AsymmetricDecryptRequest) GetCiphertext() []byte {
 	return nil
 }
 
-func (x *AsymmetricDecryptRequest) GetCiphertextCrc32C() *wrappers.Int64Value {
+func (x *AsymmetricDecryptRequest) GetCiphertextCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CiphertextCrc32C
 	}
@@ -1929,7 +1929,7 @@ type DecryptResponse struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	PlaintextCrc32C *wrappers.Int64Value `protobuf:"bytes,2,opt,name=plaintext_crc32c,json=plaintextCrc32c,proto3" json:"plaintext_crc32c,omitempty"`
+	PlaintextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=plaintext_crc32c,json=plaintextCrc32c,proto3" json:"plaintext_crc32c,omitempty"`
 }
 
 func (x *DecryptResponse) Reset() {
@@ -1971,7 +1971,7 @@ func (x *DecryptResponse) GetPlaintext() []byte {
 	return nil
 }
 
-func (x *DecryptResponse) GetPlaintextCrc32C() *wrappers.Int64Value {
+func (x *DecryptResponse) GetPlaintextCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PlaintextCrc32C
 	}
@@ -2002,7 +2002,7 @@ type EncryptResponse struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	CiphertextCrc32C *wrappers.Int64Value `protobuf:"bytes,4,opt,name=ciphertext_crc32c,json=ciphertextCrc32c,proto3" json:"ciphertext_crc32c,omitempty"`
+	CiphertextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=ciphertext_crc32c,json=ciphertextCrc32c,proto3" json:"ciphertext_crc32c,omitempty"`
 	// Integrity verification field. A flag indicating whether
 	// [EncryptRequest.plaintext_crc32c][google.cloud.kms.v1.EncryptRequest.plaintext_crc32c] was received by
 	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
@@ -2074,7 +2074,7 @@ func (x *EncryptResponse) GetCiphertext() []byte {
 	return nil
 }
 
-func (x *EncryptResponse) GetCiphertextCrc32C() *wrappers.Int64Value {
+func (x *EncryptResponse) GetCiphertextCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CiphertextCrc32C
 	}
@@ -2116,7 +2116,7 @@ type AsymmetricSignResponse struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	SignatureCrc32C *wrappers.Int64Value `protobuf:"bytes,2,opt,name=signature_crc32c,json=signatureCrc32c,proto3" json:"signature_crc32c,omitempty"`
+	SignatureCrc32C *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=signature_crc32c,json=signatureCrc32c,proto3" json:"signature_crc32c,omitempty"`
 	// Integrity verification field. A flag indicating whether
 	// [AsymmetricSignRequest.digest_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.digest_crc32c] was received by
 	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
@@ -2174,7 +2174,7 @@ func (x *AsymmetricSignResponse) GetSignature() []byte {
 	return nil
 }
 
-func (x *AsymmetricSignResponse) GetSignatureCrc32C() *wrappers.Int64Value {
+func (x *AsymmetricSignResponse) GetSignatureCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.SignatureCrc32C
 	}
@@ -2216,7 +2216,7 @@ type AsymmetricDecryptResponse struct {
 	// that support this type.
 	//
 	// NOTE: This field is in Beta.
-	PlaintextCrc32C *wrappers.Int64Value `protobuf:"bytes,2,opt,name=plaintext_crc32c,json=plaintextCrc32c,proto3" json:"plaintext_crc32c,omitempty"`
+	PlaintextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=plaintext_crc32c,json=plaintextCrc32c,proto3" json:"plaintext_crc32c,omitempty"`
 	// Integrity verification field. A flag indicating whether
 	// [AsymmetricDecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext_crc32c] was received by
 	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
@@ -2269,7 +2269,7 @@ func (x *AsymmetricDecryptResponse) GetPlaintext() []byte {
 	return nil
 }
 
-func (x *AsymmetricDecryptResponse) GetPlaintextCrc32C() *wrappers.Int64Value {
+func (x *AsymmetricDecryptResponse) GetPlaintextCrc32C() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PlaintextCrc32C
 	}
@@ -3382,8 +3382,8 @@ var file_google_cloud_kms_v1_service_proto_goTypes = []interface{}{
 	(*CryptoKeyVersion)(nil),                        // 36: google.cloud.kms.v1.CryptoKeyVersion
 	(*ImportJob)(nil),                               // 37: google.cloud.kms.v1.ImportJob
 	(CryptoKeyVersion_CryptoKeyVersionAlgorithm)(0), // 38: google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionAlgorithm
-	(*field_mask.FieldMask)(nil),                    // 39: google.protobuf.FieldMask
-	(*wrappers.Int64Value)(nil),                     // 40: google.protobuf.Int64Value
+	(*fieldmaskpb.FieldMask)(nil),                   // 39: google.protobuf.FieldMask
+	(*wrapperspb.Int64Value)(nil),                   // 40: google.protobuf.Int64Value
 	(*PublicKey)(nil),                               // 41: google.cloud.kms.v1.PublicKey
 }
 var file_google_cloud_kms_v1_service_proto_depIdxs = []int32{

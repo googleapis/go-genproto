@@ -27,13 +27,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -1173,7 +1173,7 @@ var file_google_example_library_v1_library_proto_goTypes = []interface{}{
 	(*UpdateBookRequest)(nil),   // 12: google.example.library.v1.UpdateBookRequest
 	(*DeleteBookRequest)(nil),   // 13: google.example.library.v1.DeleteBookRequest
 	(*MoveBookRequest)(nil),     // 14: google.example.library.v1.MoveBookRequest
-	(*empty.Empty)(nil),         // 15: google.protobuf.Empty
+	(*emptypb.Empty)(nil),       // 15: google.protobuf.Empty
 }
 var file_google_example_library_v1_library_proto_depIdxs = []int32{
 	1,  // 0: google.example.library.v1.CreateShelfRequest.shelf:type_name -> google.example.library.v1.Shelf
@@ -1437,7 +1437,7 @@ type LibraryServiceClient interface {
 	// shelves will not necessarily be added to the end of this list.
 	ListShelves(ctx context.Context, in *ListShelvesRequest, opts ...grpc.CallOption) (*ListShelvesResponse, error)
 	// Deletes a shelf. Returns NOT_FOUND if the shelf does not exist.
-	DeleteShelf(ctx context.Context, in *DeleteShelfRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteShelf(ctx context.Context, in *DeleteShelfRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Merges two shelves by adding all books from the shelf named
 	// `other_shelf_name` to shelf `name`, and deletes
 	// `other_shelf_name`. Returns the updated shelf.
@@ -1455,7 +1455,7 @@ type LibraryServiceClient interface {
 	// Returns NOT_FOUND if the shelf does not exist.
 	ListBooks(ctx context.Context, in *ListBooksRequest, opts ...grpc.CallOption) (*ListBooksResponse, error)
 	// Deletes a book. Returns NOT_FOUND if the book does not exist.
-	DeleteBook(ctx context.Context, in *DeleteBookRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteBook(ctx context.Context, in *DeleteBookRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates a book. Returns INVALID_ARGUMENT if the name of the book
 	// is non-empty and does not equal the existing name.
 	UpdateBook(ctx context.Context, in *UpdateBookRequest, opts ...grpc.CallOption) (*Book, error)
@@ -1499,8 +1499,8 @@ func (c *libraryServiceClient) ListShelves(ctx context.Context, in *ListShelvesR
 	return out, nil
 }
 
-func (c *libraryServiceClient) DeleteShelf(ctx context.Context, in *DeleteShelfRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *libraryServiceClient) DeleteShelf(ctx context.Context, in *DeleteShelfRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.example.library.v1.LibraryService/DeleteShelf", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1544,8 +1544,8 @@ func (c *libraryServiceClient) ListBooks(ctx context.Context, in *ListBooksReque
 	return out, nil
 }
 
-func (c *libraryServiceClient) DeleteBook(ctx context.Context, in *DeleteBookRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *libraryServiceClient) DeleteBook(ctx context.Context, in *DeleteBookRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.example.library.v1.LibraryService/DeleteBook", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1581,7 +1581,7 @@ type LibraryServiceServer interface {
 	// shelves will not necessarily be added to the end of this list.
 	ListShelves(context.Context, *ListShelvesRequest) (*ListShelvesResponse, error)
 	// Deletes a shelf. Returns NOT_FOUND if the shelf does not exist.
-	DeleteShelf(context.Context, *DeleteShelfRequest) (*empty.Empty, error)
+	DeleteShelf(context.Context, *DeleteShelfRequest) (*emptypb.Empty, error)
 	// Merges two shelves by adding all books from the shelf named
 	// `other_shelf_name` to shelf `name`, and deletes
 	// `other_shelf_name`. Returns the updated shelf.
@@ -1599,7 +1599,7 @@ type LibraryServiceServer interface {
 	// Returns NOT_FOUND if the shelf does not exist.
 	ListBooks(context.Context, *ListBooksRequest) (*ListBooksResponse, error)
 	// Deletes a book. Returns NOT_FOUND if the book does not exist.
-	DeleteBook(context.Context, *DeleteBookRequest) (*empty.Empty, error)
+	DeleteBook(context.Context, *DeleteBookRequest) (*emptypb.Empty, error)
 	// Updates a book. Returns INVALID_ARGUMENT if the name of the book
 	// is non-empty and does not equal the existing name.
 	UpdateBook(context.Context, *UpdateBookRequest) (*Book, error)
@@ -1621,7 +1621,7 @@ func (*UnimplementedLibraryServiceServer) GetShelf(context.Context, *GetShelfReq
 func (*UnimplementedLibraryServiceServer) ListShelves(context.Context, *ListShelvesRequest) (*ListShelvesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListShelves not implemented")
 }
-func (*UnimplementedLibraryServiceServer) DeleteShelf(context.Context, *DeleteShelfRequest) (*empty.Empty, error) {
+func (*UnimplementedLibraryServiceServer) DeleteShelf(context.Context, *DeleteShelfRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteShelf not implemented")
 }
 func (*UnimplementedLibraryServiceServer) MergeShelves(context.Context, *MergeShelvesRequest) (*Shelf, error) {
@@ -1636,7 +1636,7 @@ func (*UnimplementedLibraryServiceServer) GetBook(context.Context, *GetBookReque
 func (*UnimplementedLibraryServiceServer) ListBooks(context.Context, *ListBooksRequest) (*ListBooksResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBooks not implemented")
 }
-func (*UnimplementedLibraryServiceServer) DeleteBook(context.Context, *DeleteBookRequest) (*empty.Empty, error) {
+func (*UnimplementedLibraryServiceServer) DeleteBook(context.Context, *DeleteBookRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteBook not implemented")
 }
 func (*UnimplementedLibraryServiceServer) UpdateBook(context.Context, *UpdateBookRequest) (*Book, error) {

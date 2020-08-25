@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -57,9 +57,9 @@ type Asset struct {
 	// `customers/{customer_id}/assets/{asset_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the asset.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Optional name of the asset.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. Type of the asset.
 	Type enums.AssetTypeEnum_AssetType `protobuf:"varint,4,opt,name=type,proto3,enum=google.ads.googleads.v2.enums.AssetTypeEnum_AssetType" json:"type,omitempty"`
 	// The specific type of the asset.
@@ -111,14 +111,14 @@ func (x *Asset) GetResourceName() string {
 	return ""
 }
 
-func (x *Asset) GetId() *wrappers.Int64Value {
+func (x *Asset) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *Asset) GetName() *wrappers.StringValue {
+func (x *Asset) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -300,8 +300,8 @@ func file_google_ads_googleads_v2_resources_asset_proto_rawDescGZIP() []byte {
 var file_google_ads_googleads_v2_resources_asset_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_asset_proto_goTypes = []interface{}{
 	(*Asset)(nil),                      // 0: google.ads.googleads.v2.resources.Asset
-	(*wrappers.Int64Value)(nil),        // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),       // 2: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),      // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),     // 2: google.protobuf.StringValue
 	(enums.AssetTypeEnum_AssetType)(0), // 3: google.ads.googleads.v2.enums.AssetTypeEnum.AssetType
 	(*common.YoutubeVideoAsset)(nil),   // 4: google.ads.googleads.v2.common.YoutubeVideoAsset
 	(*common.MediaBundleAsset)(nil),    // 5: google.ads.googleads.v2.common.MediaBundleAsset

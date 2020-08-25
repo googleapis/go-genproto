@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v3/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,12 +56,12 @@ type GroupPlacementView struct {
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The automatic placement string at group level, e. g. web domain, mobile
 	// app ID, or a YouTube channel ID.
-	Placement *wrappers.StringValue `protobuf:"bytes,2,opt,name=placement,proto3" json:"placement,omitempty"`
+	Placement *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=placement,proto3" json:"placement,omitempty"`
 	// Output only. Domain name for websites and YouTube channel name for YouTube channels.
-	DisplayName *wrappers.StringValue `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	DisplayName *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Output only. URL of the group placement, e.g. domain, link to the mobile application in
 	// app store, or a YouTube channel URL.
-	TargetUrl *wrappers.StringValue `protobuf:"bytes,4,opt,name=target_url,json=targetUrl,proto3" json:"target_url,omitempty"`
+	TargetUrl *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=target_url,json=targetUrl,proto3" json:"target_url,omitempty"`
 	// Output only. Type of the placement, e.g. Website, YouTube Channel, Mobile Application.
 	PlacementType enums.PlacementTypeEnum_PlacementType `protobuf:"varint,5,opt,name=placement_type,json=placementType,proto3,enum=google.ads.googleads.v3.enums.PlacementTypeEnum_PlacementType" json:"placement_type,omitempty"`
 }
@@ -105,21 +105,21 @@ func (x *GroupPlacementView) GetResourceName() string {
 	return ""
 }
 
-func (x *GroupPlacementView) GetPlacement() *wrappers.StringValue {
+func (x *GroupPlacementView) GetPlacement() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Placement
 	}
 	return nil
 }
 
-func (x *GroupPlacementView) GetDisplayName() *wrappers.StringValue {
+func (x *GroupPlacementView) GetDisplayName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.DisplayName
 	}
 	return nil
 }
 
-func (x *GroupPlacementView) GetTargetUrl() *wrappers.StringValue {
+func (x *GroupPlacementView) GetTargetUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TargetUrl
 	}
@@ -221,7 +221,7 @@ func file_google_ads_googleads_v3_resources_group_placement_view_proto_rawDescGZ
 var file_google_ads_googleads_v3_resources_group_placement_view_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v3_resources_group_placement_view_proto_goTypes = []interface{}{
 	(*GroupPlacementView)(nil),                 // 0: google.ads.googleads.v3.resources.GroupPlacementView
-	(*wrappers.StringValue)(nil),               // 1: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),             // 1: google.protobuf.StringValue
 	(enums.PlacementTypeEnum_PlacementType)(0), // 2: google.ads.googleads.v3.enums.PlacementTypeEnum.PlacementType
 }
 var file_google_ads_googleads_v3_resources_group_placement_view_proto_depIdxs = []int32{

@@ -26,17 +26,17 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	any "github.com/golang/protobuf/ptypes/any"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	serviceconfig "google.golang.org/genproto/googleapis/api/serviceconfig"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	_ "google.golang.org/genproto/googleapis/rpc/status"
-	_ "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
+	_ "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -1353,13 +1353,13 @@ type GenerateConfigReportRequest struct {
 	// [google.api.servicemanagement.v1.ConfigRef][google.api.servicemanagement.v1.ConfigRef],
 	// [google.api.servicemanagement.v1.ConfigSource][google.api.servicemanagement.v1.ConfigSource],
 	// and [google.api.Service][google.api.Service]
-	NewConfig *any.Any `protobuf:"bytes,1,opt,name=new_config,json=newConfig,proto3" json:"new_config,omitempty"`
+	NewConfig *anypb.Any `protobuf:"bytes,1,opt,name=new_config,json=newConfig,proto3" json:"new_config,omitempty"`
 	// Optional. Service configuration against which the comparison will be done.
 	// For this version of API, the supported types are
 	// [google.api.servicemanagement.v1.ConfigRef][google.api.servicemanagement.v1.ConfigRef],
 	// [google.api.servicemanagement.v1.ConfigSource][google.api.servicemanagement.v1.ConfigSource],
 	// and [google.api.Service][google.api.Service]
-	OldConfig *any.Any `protobuf:"bytes,2,opt,name=old_config,json=oldConfig,proto3" json:"old_config,omitempty"`
+	OldConfig *anypb.Any `protobuf:"bytes,2,opt,name=old_config,json=oldConfig,proto3" json:"old_config,omitempty"`
 }
 
 func (x *GenerateConfigReportRequest) Reset() {
@@ -1394,14 +1394,14 @@ func (*GenerateConfigReportRequest) Descriptor() ([]byte, []int) {
 	return file_google_api_servicemanagement_v1_servicemanager_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *GenerateConfigReportRequest) GetNewConfig() *any.Any {
+func (x *GenerateConfigReportRequest) GetNewConfig() *anypb.Any {
 	if x != nil {
 		return x.NewConfig
 	}
 	return nil
 }
 
-func (x *GenerateConfigReportRequest) GetOldConfig() *any.Any {
+func (x *GenerateConfigReportRequest) GetOldConfig() *anypb.Any {
 	if x != nil {
 		return x.OldConfig
 	}
@@ -1991,7 +1991,7 @@ var file_google_api_servicemanagement_v1_servicemanager_proto_goTypes = []interf
 	(*serviceconfig.Service)(nil),           // 25: google.api.Service
 	(*ConfigSource)(nil),                    // 26: google.api.servicemanagement.v1.ConfigSource
 	(*Rollout)(nil),                         // 27: google.api.servicemanagement.v1.Rollout
-	(*any.Any)(nil),                         // 28: google.protobuf.Any
+	(*anypb.Any)(nil),                       // 28: google.protobuf.Any
 	(*ChangeReport)(nil),                    // 29: google.api.servicemanagement.v1.ChangeReport
 	(*Diagnostic)(nil),                      // 30: google.api.servicemanagement.v1.Diagnostic
 	(*longrunning.Operation)(nil),           // 31: google.longrunning.Operation

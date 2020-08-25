@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -117,7 +117,7 @@ type Dataset struct {
 	// The description can be up to 10000 characters long.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Output only. Time the dataset is created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. This is populated with the original input configs
 	// where ImportData is called. It is available only after the clients
 	// import data to this dataset.
@@ -182,7 +182,7 @@ func (x *Dataset) GetDescription() string {
 	return ""
 }
 
-func (x *Dataset) GetCreateTime() *timestamp.Timestamp {
+func (x *Dataset) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -920,7 +920,7 @@ type AnnotatedDataset struct {
 	// Output only. Per label statistics.
 	LabelStats *LabelStats `protobuf:"bytes,6,opt,name=label_stats,json=labelStats,proto3" json:"label_stats,omitempty"`
 	// Output only. Time the AnnotatedDataset was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Additional information about AnnotatedDataset.
 	Metadata *AnnotatedDatasetMetadata `protobuf:"bytes,10,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	// Output only. The names of any related resources that are blocking changes
@@ -1016,7 +1016,7 @@ func (x *AnnotatedDataset) GetLabelStats() *LabelStats {
 	return nil
 }
 
-func (x *AnnotatedDataset) GetCreateTime() *timestamp.Timestamp {
+func (x *AnnotatedDataset) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -1814,7 +1814,7 @@ var file_google_cloud_datalabeling_v1beta1_dataset_proto_goTypes = []interface{}
 	(*AnnotatedDatasetMetadata)(nil),   // 13: google.cloud.datalabeling.v1beta1.AnnotatedDatasetMetadata
 	(*Example)(nil),                    // 14: google.cloud.datalabeling.v1beta1.Example
 	nil,                                // 15: google.cloud.datalabeling.v1beta1.LabelStats.ExampleCountEntry
-	(*timestamp.Timestamp)(nil),        // 16: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),      // 16: google.protobuf.Timestamp
 	(AnnotationType)(0),                // 17: google.cloud.datalabeling.v1beta1.AnnotationType
 	(*ImagePayload)(nil),               // 18: google.cloud.datalabeling.v1beta1.ImagePayload
 	(*TextPayload)(nil),                // 19: google.cloud.datalabeling.v1beta1.TextPayload

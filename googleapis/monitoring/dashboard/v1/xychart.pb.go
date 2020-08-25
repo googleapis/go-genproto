@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -238,7 +238,7 @@ type XyChart struct {
 	// (e.g., week-over-week metrics).
 	// The duration must be positive, and it can only be applied to charts with
 	// data sets of LINE plot type.
-	TimeshiftDuration *duration.Duration `protobuf:"bytes,4,opt,name=timeshift_duration,json=timeshiftDuration,proto3" json:"timeshift_duration,omitempty"`
+	TimeshiftDuration *durationpb.Duration `protobuf:"bytes,4,opt,name=timeshift_duration,json=timeshiftDuration,proto3" json:"timeshift_duration,omitempty"`
 	// Threshold lines drawn horizontally across the chart.
 	Thresholds []*Threshold `protobuf:"bytes,5,rep,name=thresholds,proto3" json:"thresholds,omitempty"`
 	// The properties applied to the X axis.
@@ -288,7 +288,7 @@ func (x *XyChart) GetDataSets() []*XyChart_DataSet {
 	return nil
 }
 
-func (x *XyChart) GetTimeshiftDuration() *duration.Duration {
+func (x *XyChart) GetTimeshiftDuration() *durationpb.Duration {
 	if x != nil {
 		return x.TimeshiftDuration
 	}
@@ -392,7 +392,7 @@ type XyChart_DataSet struct {
 	// For example, if the data is published once every 10 minutes, the
 	// `min_alignment_period` should be at least 10 minutes. It would not
 	// make sense to fetch and align data at one minute intervals.
-	MinAlignmentPeriod *duration.Duration `protobuf:"bytes,4,opt,name=min_alignment_period,json=minAlignmentPeriod,proto3" json:"min_alignment_period,omitempty"`
+	MinAlignmentPeriod *durationpb.Duration `protobuf:"bytes,4,opt,name=min_alignment_period,json=minAlignmentPeriod,proto3" json:"min_alignment_period,omitempty"`
 }
 
 func (x *XyChart_DataSet) Reset() {
@@ -448,7 +448,7 @@ func (x *XyChart_DataSet) GetLegendTemplate() string {
 	return ""
 }
 
-func (x *XyChart_DataSet) GetMinAlignmentPeriod() *duration.Duration {
+func (x *XyChart_DataSet) GetMinAlignmentPeriod() *durationpb.Duration {
 	if x != nil {
 		return x.MinAlignmentPeriod
 	}
@@ -638,7 +638,7 @@ var file_google_monitoring_dashboard_v1_xychart_proto_goTypes = []interface{}{
 	(*ChartOptions)(nil),          // 4: google.monitoring.dashboard.v1.ChartOptions
 	(*XyChart_DataSet)(nil),       // 5: google.monitoring.dashboard.v1.XyChart.DataSet
 	(*XyChart_Axis)(nil),          // 6: google.monitoring.dashboard.v1.XyChart.Axis
-	(*duration.Duration)(nil),     // 7: google.protobuf.Duration
+	(*durationpb.Duration)(nil),   // 7: google.protobuf.Duration
 	(*Threshold)(nil),             // 8: google.monitoring.dashboard.v1.Threshold
 	(*TimeSeriesQuery)(nil),       // 9: google.monitoring.dashboard.v1.TimeSeriesQuery
 }

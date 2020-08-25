@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -149,7 +149,7 @@ type Fulfillment_SetParameterAction struct {
 	// Display name of the parameter.
 	Parameter string `protobuf:"bytes,1,opt,name=parameter,proto3" json:"parameter,omitempty"`
 	// The new value of the parameter. A null value clears the parameter.
-	Value *_struct.Value `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	Value *structpb.Value `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 }
 
 func (x *Fulfillment_SetParameterAction) Reset() {
@@ -191,7 +191,7 @@ func (x *Fulfillment_SetParameterAction) GetParameter() string {
 	return ""
 }
 
-func (x *Fulfillment_SetParameterAction) GetValue() *_struct.Value {
+func (x *Fulfillment_SetParameterAction) GetValue() *structpb.Value {
 	if x != nil {
 		return x.Value
 	}
@@ -515,7 +515,7 @@ var file_google_cloud_dialogflow_cx_v3beta1_fulfillment_proto_goTypes = []interf
 	(*Fulfillment_ConditionalCases_Case)(nil),             // 3: google.cloud.dialogflow.cx.v3beta1.Fulfillment.ConditionalCases.Case
 	(*Fulfillment_ConditionalCases_Case_CaseContent)(nil), // 4: google.cloud.dialogflow.cx.v3beta1.Fulfillment.ConditionalCases.Case.CaseContent
 	(*ResponseMessage)(nil),                               // 5: google.cloud.dialogflow.cx.v3beta1.ResponseMessage
-	(*_struct.Value)(nil),                                 // 6: google.protobuf.Value
+	(*structpb.Value)(nil),                                // 6: google.protobuf.Value
 }
 var file_google_cloud_dialogflow_cx_v3beta1_fulfillment_proto_depIdxs = []int32{
 	5, // 0: google.cloud.dialogflow.cx.v3beta1.Fulfillment.messages:type_name -> google.cloud.dialogflow.cx.v3beta1.ResponseMessage

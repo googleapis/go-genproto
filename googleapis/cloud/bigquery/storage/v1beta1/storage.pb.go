@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -280,7 +280,7 @@ type ReadSession struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Time at which the session becomes invalid. After this time, subsequent
 	// requests to read this Session will return errors.
-	ExpireTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
+	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 	// The schema for the read. If read_options.selected_fields is set, the
 	// schema may be different from the table schema as it will only contain
 	// the selected fields.
@@ -338,7 +338,7 @@ func (x *ReadSession) GetName() string {
 	return ""
 }
 
-func (x *ReadSession) GetExpireTime() *timestamp.Timestamp {
+func (x *ReadSession) GetExpireTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpireTime
 	}
@@ -1561,7 +1561,7 @@ var file_google_cloud_bigquery_storage_v1beta1_storage_proto_goTypes = []interfa
 	(*FinalizeStreamRequest)(nil),                 // 13: google.cloud.bigquery.storage.v1beta1.FinalizeStreamRequest
 	(*SplitReadStreamRequest)(nil),                // 14: google.cloud.bigquery.storage.v1beta1.SplitReadStreamRequest
 	(*SplitReadStreamResponse)(nil),               // 15: google.cloud.bigquery.storage.v1beta1.SplitReadStreamResponse
-	(*timestamp.Timestamp)(nil),                   // 16: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                 // 16: google.protobuf.Timestamp
 	(*AvroSchema)(nil),                            // 17: google.cloud.bigquery.storage.v1beta1.AvroSchema
 	(*ArrowSchema)(nil),                           // 18: google.cloud.bigquery.storage.v1beta1.ArrowSchema
 	(*TableReference)(nil),                        // 19: google.cloud.bigquery.storage.v1beta1.TableReference
@@ -1569,7 +1569,7 @@ var file_google_cloud_bigquery_storage_v1beta1_storage_proto_goTypes = []interfa
 	(*TableReadOptions)(nil),                      // 21: google.cloud.bigquery.storage.v1beta1.TableReadOptions
 	(*AvroRows)(nil),                              // 22: google.cloud.bigquery.storage.v1beta1.AvroRows
 	(*ArrowRecordBatch)(nil),                      // 23: google.cloud.bigquery.storage.v1beta1.ArrowRecordBatch
-	(*empty.Empty)(nil),                           // 24: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                         // 24: google.protobuf.Empty
 }
 var file_google_cloud_bigquery_storage_v1beta1_storage_proto_depIdxs = []int32{
 	2,  // 0: google.cloud.bigquery.storage.v1beta1.StreamPosition.stream:type_name -> google.cloud.bigquery.storage.v1beta1.Stream
@@ -1875,7 +1875,7 @@ type BigQueryStorageClient interface {
 	// This method will return an error if there are no other live streams
 	// in the Session, or if SplitReadStream() has been called on the given
 	// Stream.
-	FinalizeStream(ctx context.Context, in *FinalizeStreamRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	FinalizeStream(ctx context.Context, in *FinalizeStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Splits a given read stream into two Streams. These streams are referred to
 	// as the primary and the residual of the split. The original stream can still
 	// be read from in the same manner as before. Both of the returned streams can
@@ -1950,8 +1950,8 @@ func (c *bigQueryStorageClient) BatchCreateReadSessionStreams(ctx context.Contex
 	return out, nil
 }
 
-func (c *bigQueryStorageClient) FinalizeStream(ctx context.Context, in *FinalizeStreamRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *bigQueryStorageClient) FinalizeStream(ctx context.Context, in *FinalizeStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.storage.v1beta1.BigQueryStorage/FinalizeStream", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2011,7 +2011,7 @@ type BigQueryStorageServer interface {
 	// This method will return an error if there are no other live streams
 	// in the Session, or if SplitReadStream() has been called on the given
 	// Stream.
-	FinalizeStream(context.Context, *FinalizeStreamRequest) (*empty.Empty, error)
+	FinalizeStream(context.Context, *FinalizeStreamRequest) (*emptypb.Empty, error)
 	// Splits a given read stream into two Streams. These streams are referred to
 	// as the primary and the residual of the split. The original stream can still
 	// be read from in the same manner as before. Both of the returned streams can
@@ -2041,7 +2041,7 @@ func (*UnimplementedBigQueryStorageServer) ReadRows(*ReadRowsRequest, BigQuerySt
 func (*UnimplementedBigQueryStorageServer) BatchCreateReadSessionStreams(context.Context, *BatchCreateReadSessionStreamsRequest) (*BatchCreateReadSessionStreamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BatchCreateReadSessionStreams not implemented")
 }
-func (*UnimplementedBigQueryStorageServer) FinalizeStream(context.Context, *FinalizeStreamRequest) (*empty.Empty, error) {
+func (*UnimplementedBigQueryStorageServer) FinalizeStream(context.Context, *FinalizeStreamRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FinalizeStream not implemented")
 }
 func (*UnimplementedBigQueryStorageServer) SplitReadStream(context.Context, *SplitReadStreamRequest) (*SplitReadStreamResponse, error) {

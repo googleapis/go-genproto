@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/any"
-	_ "github.com/golang/protobuf/ptypes/duration"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/anypb"
+	_ "google.golang.org/protobuf/types/known/durationpb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -536,7 +536,7 @@ type Row struct {
 	//
 	// [column_specs][google.cloud.automl.v1beta1.TablesModelMetadata.input_feature_column_specs]
 	// of the Model this row is being passed to.
-	Values []*_struct.Value `protobuf:"bytes,3,rep,name=values,proto3" json:"values,omitempty"`
+	Values []*structpb.Value `protobuf:"bytes,3,rep,name=values,proto3" json:"values,omitempty"`
 }
 
 func (x *Row) Reset() {
@@ -578,7 +578,7 @@ func (x *Row) GetColumnSpecIds() []string {
 	return nil
 }
 
-func (x *Row) GetValues() []*_struct.Value {
+func (x *Row) GetValues() []*structpb.Value {
 	if x != nil {
 		return x.Values
 	}
@@ -964,7 +964,7 @@ var file_google_cloud_automl_v1beta1_data_items_proto_goTypes = []interface{}{
 	(*Document_Layout)(nil),                       // 8: google.cloud.automl.v1beta1.Document.Layout
 	(*InputConfig)(nil),                           // 9: google.cloud.automl.v1beta1.InputConfig
 	(*DocumentInputConfig)(nil),                   // 10: google.cloud.automl.v1beta1.DocumentInputConfig
-	(*_struct.Value)(nil),                         // 11: google.protobuf.Value
+	(*structpb.Value)(nil),                        // 11: google.protobuf.Value
 	(*TextSegment)(nil),                           // 12: google.cloud.automl.v1beta1.TextSegment
 	(*BoundingPoly)(nil),                          // 13: google.cloud.automl.v1beta1.BoundingPoly
 }

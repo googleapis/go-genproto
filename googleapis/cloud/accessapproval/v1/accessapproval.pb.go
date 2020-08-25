@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -317,9 +317,9 @@ type ApproveDecision struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time at which approval was granted.
-	ApproveTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=approve_time,json=approveTime,proto3" json:"approve_time,omitempty"`
+	ApproveTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=approve_time,json=approveTime,proto3" json:"approve_time,omitempty"`
 	// The time at which the approval expires.
-	ExpireTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
+	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 }
 
 func (x *ApproveDecision) Reset() {
@@ -354,14 +354,14 @@ func (*ApproveDecision) Descriptor() ([]byte, []int) {
 	return file_google_cloud_accessapproval_v1_accessapproval_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ApproveDecision) GetApproveTime() *timestamp.Timestamp {
+func (x *ApproveDecision) GetApproveTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ApproveTime
 	}
 	return nil
 }
 
-func (x *ApproveDecision) GetExpireTime() *timestamp.Timestamp {
+func (x *ApproveDecision) GetExpireTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpireTime
 	}
@@ -375,7 +375,7 @@ type DismissDecision struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time at which the approval request was dismissed.
-	DismissTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=dismiss_time,json=dismissTime,proto3" json:"dismiss_time,omitempty"`
+	DismissTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=dismiss_time,json=dismissTime,proto3" json:"dismiss_time,omitempty"`
 }
 
 func (x *DismissDecision) Reset() {
@@ -410,7 +410,7 @@ func (*DismissDecision) Descriptor() ([]byte, []int) {
 	return file_google_cloud_accessapproval_v1_accessapproval_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *DismissDecision) GetDismissTime() *timestamp.Timestamp {
+func (x *DismissDecision) GetDismissTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.DismissTime
 	}
@@ -491,10 +491,10 @@ type ApprovalRequest struct {
 	// The locations for which approval is being requested.
 	RequestedLocations *AccessLocations `protobuf:"bytes,4,opt,name=requested_locations,json=requestedLocations,proto3" json:"requested_locations,omitempty"`
 	// The time at which approval was requested.
-	RequestTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=request_time,json=requestTime,proto3" json:"request_time,omitempty"`
+	RequestTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=request_time,json=requestTime,proto3" json:"request_time,omitempty"`
 	// The requested expiration for the approval. If the request is approved,
 	// access will be granted from the time of approval until the expiration time.
-	RequestedExpiration *timestamp.Timestamp `protobuf:"bytes,6,opt,name=requested_expiration,json=requestedExpiration,proto3" json:"requested_expiration,omitempty"`
+	RequestedExpiration *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=requested_expiration,json=requestedExpiration,proto3" json:"requested_expiration,omitempty"`
 	// The current decision on the approval request.
 	//
 	// Types that are assignable to Decision:
@@ -570,14 +570,14 @@ func (x *ApprovalRequest) GetRequestedLocations() *AccessLocations {
 	return nil
 }
 
-func (x *ApprovalRequest) GetRequestTime() *timestamp.Timestamp {
+func (x *ApprovalRequest) GetRequestTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.RequestTime
 	}
 	return nil
 }
 
-func (x *ApprovalRequest) GetRequestedExpiration() *timestamp.Timestamp {
+func (x *ApprovalRequest) GetRequestedExpiration() *timestamppb.Timestamp {
 	if x != nil {
 		return x.RequestedExpiration
 	}
@@ -993,7 +993,7 @@ type ApproveApprovalRequestMessage struct {
 	// Name of the approval request to approve.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The expiration time of this approval.
-	ExpireTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
+	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 }
 
 func (x *ApproveApprovalRequestMessage) Reset() {
@@ -1035,7 +1035,7 @@ func (x *ApproveApprovalRequestMessage) GetName() string {
 	return ""
 }
 
-func (x *ApproveApprovalRequestMessage) GetExpireTime() *timestamp.Timestamp {
+func (x *ApproveApprovalRequestMessage) GetExpireTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpireTime
 	}
@@ -1158,7 +1158,7 @@ type UpdateAccessApprovalSettingsMessage struct {
 	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
 	// If this field is left unset, only the notification_emails field will be
 	// updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateAccessApprovalSettingsMessage) Reset() {
@@ -1200,7 +1200,7 @@ func (x *UpdateAccessApprovalSettingsMessage) GetSettings() *AccessApprovalSetti
 	return nil
 }
 
-func (x *UpdateAccessApprovalSettingsMessage) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateAccessApprovalSettingsMessage) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1635,9 +1635,9 @@ var file_google_cloud_accessapproval_v1_accessapproval_proto_goTypes = []interfa
 	(*GetAccessApprovalSettingsMessage)(nil),    // 15: google.cloud.accessapproval.v1.GetAccessApprovalSettingsMessage
 	(*UpdateAccessApprovalSettingsMessage)(nil), // 16: google.cloud.accessapproval.v1.UpdateAccessApprovalSettingsMessage
 	(*DeleteAccessApprovalSettingsMessage)(nil), // 17: google.cloud.accessapproval.v1.DeleteAccessApprovalSettingsMessage
-	(*timestamp.Timestamp)(nil),                 // 18: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),                // 19: google.protobuf.FieldMask
-	(*empty.Empty)(nil),                         // 20: google.protobuf.Empty
+	(*timestamppb.Timestamp)(nil),               // 18: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),               // 19: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),                       // 20: google.protobuf.Empty
 }
 var file_google_cloud_accessapproval_v1_accessapproval_proto_depIdxs = []int32{
 	1,  // 0: google.cloud.accessapproval.v1.AccessReason.type:type_name -> google.cloud.accessapproval.v1.AccessReason.Type
@@ -1947,7 +1947,7 @@ type AccessApprovalClient interface {
 	// Approval disabled. If Access Approval is enabled at a higher level of the
 	// hierarchy, then Access Approval will still be enabled at this level as
 	// the settings are inherited.
-	DeleteAccessApprovalSettings(ctx context.Context, in *DeleteAccessApprovalSettingsMessage, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAccessApprovalSettings(ctx context.Context, in *DeleteAccessApprovalSettingsMessage, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type accessApprovalClient struct {
@@ -2012,8 +2012,8 @@ func (c *accessApprovalClient) UpdateAccessApprovalSettings(ctx context.Context,
 	return out, nil
 }
 
-func (c *accessApprovalClient) DeleteAccessApprovalSettings(ctx context.Context, in *DeleteAccessApprovalSettingsMessage, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *accessApprovalClient) DeleteAccessApprovalSettings(ctx context.Context, in *DeleteAccessApprovalSettingsMessage, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.accessapproval.v1.AccessApproval/DeleteAccessApprovalSettings", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2056,7 +2056,7 @@ type AccessApprovalServer interface {
 	// Approval disabled. If Access Approval is enabled at a higher level of the
 	// hierarchy, then Access Approval will still be enabled at this level as
 	// the settings are inherited.
-	DeleteAccessApprovalSettings(context.Context, *DeleteAccessApprovalSettingsMessage) (*empty.Empty, error)
+	DeleteAccessApprovalSettings(context.Context, *DeleteAccessApprovalSettingsMessage) (*emptypb.Empty, error)
 }
 
 // UnimplementedAccessApprovalServer can be embedded to have forward compatible implementations.
@@ -2081,7 +2081,7 @@ func (*UnimplementedAccessApprovalServer) GetAccessApprovalSettings(context.Cont
 func (*UnimplementedAccessApprovalServer) UpdateAccessApprovalSettings(context.Context, *UpdateAccessApprovalSettingsMessage) (*AccessApprovalSettings, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAccessApprovalSettings not implemented")
 }
-func (*UnimplementedAccessApprovalServer) DeleteAccessApprovalSettings(context.Context, *DeleteAccessApprovalSettingsMessage) (*empty.Empty, error) {
+func (*UnimplementedAccessApprovalServer) DeleteAccessApprovalSettings(context.Context, *DeleteAccessApprovalSettingsMessage) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAccessApprovalSettings not implemented")
 }
 

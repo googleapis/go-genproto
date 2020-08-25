@@ -28,12 +28,12 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -308,7 +308,7 @@ type UpdateDatasetRequest struct {
 	// Required. The dataset which replaces the resource on the server.
 	Dataset *Dataset `protobuf:"bytes,1,opt,name=dataset,proto3" json:"dataset,omitempty"`
 	// The update mask applies to the resource.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateDatasetRequest) Reset() {
@@ -350,7 +350,7 @@ func (x *UpdateDatasetRequest) GetDataset() *Dataset {
 	return nil
 }
 
-func (x *UpdateDatasetRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateDatasetRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -582,7 +582,7 @@ type GetTableSpecRequest struct {
 	// Required. The resource name of the table spec to retrieve.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Mask specifying which fields to read.
-	FieldMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
+	FieldMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
 }
 
 func (x *GetTableSpecRequest) Reset() {
@@ -624,7 +624,7 @@ func (x *GetTableSpecRequest) GetName() string {
 	return ""
 }
 
-func (x *GetTableSpecRequest) GetFieldMask() *field_mask.FieldMask {
+func (x *GetTableSpecRequest) GetFieldMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.FieldMask
 	}
@@ -640,7 +640,7 @@ type ListTableSpecsRequest struct {
 	// Required. The resource name of the dataset to list table specs from.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Mask specifying which fields to read.
-	FieldMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
+	FieldMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
 	// Filter expression, see go/filtering.
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Requested page size. The server can return fewer results than requested.
@@ -692,7 +692,7 @@ func (x *ListTableSpecsRequest) GetParent() string {
 	return ""
 }
 
-func (x *ListTableSpecsRequest) GetFieldMask() *field_mask.FieldMask {
+func (x *ListTableSpecsRequest) GetFieldMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.FieldMask
 	}
@@ -788,7 +788,7 @@ type UpdateTableSpecRequest struct {
 	// Required. The table spec which replaces the resource on the server.
 	TableSpec *TableSpec `protobuf:"bytes,1,opt,name=table_spec,json=tableSpec,proto3" json:"table_spec,omitempty"`
 	// The update mask applies to the resource.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateTableSpecRequest) Reset() {
@@ -830,7 +830,7 @@ func (x *UpdateTableSpecRequest) GetTableSpec() *TableSpec {
 	return nil
 }
 
-func (x *UpdateTableSpecRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateTableSpecRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -846,7 +846,7 @@ type GetColumnSpecRequest struct {
 	// Required. The resource name of the column spec to retrieve.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Mask specifying which fields to read.
-	FieldMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
+	FieldMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
 }
 
 func (x *GetColumnSpecRequest) Reset() {
@@ -888,7 +888,7 @@ func (x *GetColumnSpecRequest) GetName() string {
 	return ""
 }
 
-func (x *GetColumnSpecRequest) GetFieldMask() *field_mask.FieldMask {
+func (x *GetColumnSpecRequest) GetFieldMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.FieldMask
 	}
@@ -904,7 +904,7 @@ type ListColumnSpecsRequest struct {
 	// Required. The resource name of the table spec to list column specs from.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Mask specifying which fields to read.
-	FieldMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
+	FieldMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=field_mask,json=fieldMask,proto3" json:"field_mask,omitempty"`
 	// Filter expression, see go/filtering.
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Requested page size. The server can return fewer results than requested.
@@ -956,7 +956,7 @@ func (x *ListColumnSpecsRequest) GetParent() string {
 	return ""
 }
 
-func (x *ListColumnSpecsRequest) GetFieldMask() *field_mask.FieldMask {
+func (x *ListColumnSpecsRequest) GetFieldMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.FieldMask
 	}
@@ -1052,7 +1052,7 @@ type UpdateColumnSpecRequest struct {
 	// Required. The column spec which replaces the resource on the server.
 	ColumnSpec *ColumnSpec `protobuf:"bytes,1,opt,name=column_spec,json=columnSpec,proto3" json:"column_spec,omitempty"`
 	// The update mask applies to the resource.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateColumnSpecRequest) Reset() {
@@ -1094,7 +1094,7 @@ func (x *UpdateColumnSpecRequest) GetColumnSpec() *ColumnSpec {
 	return nil
 }
 
-func (x *UpdateColumnSpecRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateColumnSpecRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2576,7 +2576,7 @@ var file_google_cloud_automl_v1beta1_service_proto_goTypes = []interface{}{
 	(*ListModelEvaluationsRequest)(nil),                 // 27: google.cloud.automl.v1beta1.ListModelEvaluationsRequest
 	(*ListModelEvaluationsResponse)(nil),                // 28: google.cloud.automl.v1beta1.ListModelEvaluationsResponse
 	(*Dataset)(nil),                                     // 29: google.cloud.automl.v1beta1.Dataset
-	(*field_mask.FieldMask)(nil),                        // 30: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),                       // 30: google.protobuf.FieldMask
 	(*InputConfig)(nil),                                 // 31: google.cloud.automl.v1beta1.InputConfig
 	(*OutputConfig)(nil),                                // 32: google.cloud.automl.v1beta1.OutputConfig
 	(*TableSpec)(nil),                                   // 33: google.cloud.automl.v1beta1.TableSpec

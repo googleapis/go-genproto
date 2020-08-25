@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -57,13 +57,13 @@ type OperatingSystemVersionConstant struct {
 	// `operatingSystemVersionConstants/{criterion_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the operating system version.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. Name of the operating system.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The OS Major Version number.
-	OsMajorVersion *wrappers.Int32Value `protobuf:"bytes,4,opt,name=os_major_version,json=osMajorVersion,proto3" json:"os_major_version,omitempty"`
+	OsMajorVersion *wrapperspb.Int32Value `protobuf:"bytes,4,opt,name=os_major_version,json=osMajorVersion,proto3" json:"os_major_version,omitempty"`
 	// Output only. The OS Minor Version number.
-	OsMinorVersion *wrappers.Int32Value `protobuf:"bytes,5,opt,name=os_minor_version,json=osMinorVersion,proto3" json:"os_minor_version,omitempty"`
+	OsMinorVersion *wrapperspb.Int32Value `protobuf:"bytes,5,opt,name=os_minor_version,json=osMinorVersion,proto3" json:"os_minor_version,omitempty"`
 	// Output only. Determines whether this constant represents a single version or a range of
 	// versions.
 	OperatorType enums.OperatingSystemVersionOperatorTypeEnum_OperatingSystemVersionOperatorType `protobuf:"varint,6,opt,name=operator_type,json=operatorType,proto3,enum=google.ads.googleads.v2.enums.OperatingSystemVersionOperatorTypeEnum_OperatingSystemVersionOperatorType" json:"operator_type,omitempty"`
@@ -108,28 +108,28 @@ func (x *OperatingSystemVersionConstant) GetResourceName() string {
 	return ""
 }
 
-func (x *OperatingSystemVersionConstant) GetId() *wrappers.Int64Value {
+func (x *OperatingSystemVersionConstant) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *OperatingSystemVersionConstant) GetName() *wrappers.StringValue {
+func (x *OperatingSystemVersionConstant) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *OperatingSystemVersionConstant) GetOsMajorVersion() *wrappers.Int32Value {
+func (x *OperatingSystemVersionConstant) GetOsMajorVersion() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.OsMajorVersion
 	}
 	return nil
 }
 
-func (x *OperatingSystemVersionConstant) GetOsMinorVersion() *wrappers.Int32Value {
+func (x *OperatingSystemVersionConstant) GetOsMinorVersion() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.OsMinorVersion
 	}
@@ -243,9 +243,9 @@ func file_google_ads_googleads_v2_resources_operating_system_version_constant_pr
 var file_google_ads_googleads_v2_resources_operating_system_version_constant_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_operating_system_version_constant_proto_goTypes = []interface{}{
 	(*OperatingSystemVersionConstant)(nil), // 0: google.ads.googleads.v2.resources.OperatingSystemVersionConstant
-	(*wrappers.Int64Value)(nil),            // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),           // 2: google.protobuf.StringValue
-	(*wrappers.Int32Value)(nil),            // 3: google.protobuf.Int32Value
+	(*wrapperspb.Int64Value)(nil),          // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),         // 2: google.protobuf.StringValue
+	(*wrapperspb.Int32Value)(nil),          // 3: google.protobuf.Int32Value
 	(enums.OperatingSystemVersionOperatorTypeEnum_OperatingSystemVersionOperatorType)(0), // 4: google.ads.googleads.v2.enums.OperatingSystemVersionOperatorTypeEnum.OperatingSystemVersionOperatorType
 }
 var file_google_ads_googleads_v2_resources_operating_system_version_constant_proto_depIdxs = []int32{

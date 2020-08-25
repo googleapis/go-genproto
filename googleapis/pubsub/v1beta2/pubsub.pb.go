@@ -26,12 +26,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -1697,7 +1697,7 @@ var file_google_pubsub_v1beta2_pubsub_proto_goTypes = []interface{}{
 	(*AcknowledgeRequest)(nil),             // 21: google.pubsub.v1beta2.AcknowledgeRequest
 	nil,                                    // 22: google.pubsub.v1beta2.PubsubMessage.AttributesEntry
 	nil,                                    // 23: google.pubsub.v1beta2.PushConfig.AttributesEntry
-	(*empty.Empty)(nil),                    // 24: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                  // 24: google.protobuf.Empty
 }
 var file_google_pubsub_v1beta2_pubsub_proto_depIdxs = []int32{
 	22, // 0: google.pubsub.v1beta2.PubsubMessage.attributes:type_name -> google.pubsub.v1beta2.PubsubMessage.AttributesEntry
@@ -2063,12 +2063,12 @@ type SubscriberClient interface {
 	// NOT_FOUND. After a subscription is deleted, a new one may be created with
 	// the same name, but the new one has no association with the old
 	// subscription, or its topic unless the same topic is specified.
-	DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Modifies the ack deadline for a specific message. This method is useful to
 	// indicate that more time is needed to process a message by the subscriber,
 	// or to make the message available for redelivery if the processing was
 	// interrupted.
-	ModifyAckDeadline(ctx context.Context, in *ModifyAckDeadlineRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ModifyAckDeadline(ctx context.Context, in *ModifyAckDeadlineRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Acknowledges the messages associated with the ack tokens in the
 	// AcknowledgeRequest. The Pub/Sub system can remove the relevant messages
 	// from the subscription.
@@ -2076,7 +2076,7 @@ type SubscriberClient interface {
 	// Acknowledging a message whose ack deadline has expired may succeed,
 	// but such a message may be redelivered later. Acknowledging a message more
 	// than once will not result in an error.
-	Acknowledge(ctx context.Context, in *AcknowledgeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Acknowledge(ctx context.Context, in *AcknowledgeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Pulls messages from the server. Returns an empty list if there are no
 	// messages available in the backlog. The server may return UNAVAILABLE if
 	// there are too many concurrent pull requests pending for the given
@@ -2089,7 +2089,7 @@ type SubscriberClient interface {
 	// attributes of a push subscription. Messages will accumulate for
 	// delivery continuously through the call regardless of changes to the
 	// PushConfig.
-	ModifyPushConfig(ctx context.Context, in *ModifyPushConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ModifyPushConfig(ctx context.Context, in *ModifyPushConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type subscriberClient struct {
@@ -2127,8 +2127,8 @@ func (c *subscriberClient) ListSubscriptions(ctx context.Context, in *ListSubscr
 	return out, nil
 }
 
-func (c *subscriberClient) DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *subscriberClient) DeleteSubscription(ctx context.Context, in *DeleteSubscriptionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1beta2.Subscriber/DeleteSubscription", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2136,8 +2136,8 @@ func (c *subscriberClient) DeleteSubscription(ctx context.Context, in *DeleteSub
 	return out, nil
 }
 
-func (c *subscriberClient) ModifyAckDeadline(ctx context.Context, in *ModifyAckDeadlineRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *subscriberClient) ModifyAckDeadline(ctx context.Context, in *ModifyAckDeadlineRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1beta2.Subscriber/ModifyAckDeadline", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2145,8 +2145,8 @@ func (c *subscriberClient) ModifyAckDeadline(ctx context.Context, in *ModifyAckD
 	return out, nil
 }
 
-func (c *subscriberClient) Acknowledge(ctx context.Context, in *AcknowledgeRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *subscriberClient) Acknowledge(ctx context.Context, in *AcknowledgeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1beta2.Subscriber/Acknowledge", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2163,8 +2163,8 @@ func (c *subscriberClient) Pull(ctx context.Context, in *PullRequest, opts ...gr
 	return out, nil
 }
 
-func (c *subscriberClient) ModifyPushConfig(ctx context.Context, in *ModifyPushConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *subscriberClient) ModifyPushConfig(ctx context.Context, in *ModifyPushConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1beta2.Subscriber/ModifyPushConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2190,12 +2190,12 @@ type SubscriberServer interface {
 	// NOT_FOUND. After a subscription is deleted, a new one may be created with
 	// the same name, but the new one has no association with the old
 	// subscription, or its topic unless the same topic is specified.
-	DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*empty.Empty, error)
+	DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*emptypb.Empty, error)
 	// Modifies the ack deadline for a specific message. This method is useful to
 	// indicate that more time is needed to process a message by the subscriber,
 	// or to make the message available for redelivery if the processing was
 	// interrupted.
-	ModifyAckDeadline(context.Context, *ModifyAckDeadlineRequest) (*empty.Empty, error)
+	ModifyAckDeadline(context.Context, *ModifyAckDeadlineRequest) (*emptypb.Empty, error)
 	// Acknowledges the messages associated with the ack tokens in the
 	// AcknowledgeRequest. The Pub/Sub system can remove the relevant messages
 	// from the subscription.
@@ -2203,7 +2203,7 @@ type SubscriberServer interface {
 	// Acknowledging a message whose ack deadline has expired may succeed,
 	// but such a message may be redelivered later. Acknowledging a message more
 	// than once will not result in an error.
-	Acknowledge(context.Context, *AcknowledgeRequest) (*empty.Empty, error)
+	Acknowledge(context.Context, *AcknowledgeRequest) (*emptypb.Empty, error)
 	// Pulls messages from the server. Returns an empty list if there are no
 	// messages available in the backlog. The server may return UNAVAILABLE if
 	// there are too many concurrent pull requests pending for the given
@@ -2216,7 +2216,7 @@ type SubscriberServer interface {
 	// attributes of a push subscription. Messages will accumulate for
 	// delivery continuously through the call regardless of changes to the
 	// PushConfig.
-	ModifyPushConfig(context.Context, *ModifyPushConfigRequest) (*empty.Empty, error)
+	ModifyPushConfig(context.Context, *ModifyPushConfigRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedSubscriberServer can be embedded to have forward compatible implementations.
@@ -2232,19 +2232,19 @@ func (*UnimplementedSubscriberServer) GetSubscription(context.Context, *GetSubsc
 func (*UnimplementedSubscriberServer) ListSubscriptions(context.Context, *ListSubscriptionsRequest) (*ListSubscriptionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListSubscriptions not implemented")
 }
-func (*UnimplementedSubscriberServer) DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*empty.Empty, error) {
+func (*UnimplementedSubscriberServer) DeleteSubscription(context.Context, *DeleteSubscriptionRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteSubscription not implemented")
 }
-func (*UnimplementedSubscriberServer) ModifyAckDeadline(context.Context, *ModifyAckDeadlineRequest) (*empty.Empty, error) {
+func (*UnimplementedSubscriberServer) ModifyAckDeadline(context.Context, *ModifyAckDeadlineRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ModifyAckDeadline not implemented")
 }
-func (*UnimplementedSubscriberServer) Acknowledge(context.Context, *AcknowledgeRequest) (*empty.Empty, error) {
+func (*UnimplementedSubscriberServer) Acknowledge(context.Context, *AcknowledgeRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Acknowledge not implemented")
 }
 func (*UnimplementedSubscriberServer) Pull(context.Context, *PullRequest) (*PullResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Pull not implemented")
 }
-func (*UnimplementedSubscriberServer) ModifyPushConfig(context.Context, *ModifyPushConfigRequest) (*empty.Empty, error) {
+func (*UnimplementedSubscriberServer) ModifyPushConfig(context.Context, *ModifyPushConfigRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ModifyPushConfig not implemented")
 }
 
@@ -2457,7 +2457,7 @@ type PublisherClient interface {
 	// same name; this is an entirely new topic with none of the old
 	// configuration or subscriptions. Existing subscriptions to this topic are
 	// not deleted.
-	DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type publisherClient struct {
@@ -2513,8 +2513,8 @@ func (c *publisherClient) ListTopicSubscriptions(ctx context.Context, in *ListTo
 	return out, nil
 }
 
-func (c *publisherClient) DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *publisherClient) DeleteTopic(ctx context.Context, in *DeleteTopicRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.pubsub.v1beta2.Publisher/DeleteTopic", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2540,7 +2540,7 @@ type PublisherServer interface {
 	// same name; this is an entirely new topic with none of the old
 	// configuration or subscriptions. Existing subscriptions to this topic are
 	// not deleted.
-	DeleteTopic(context.Context, *DeleteTopicRequest) (*empty.Empty, error)
+	DeleteTopic(context.Context, *DeleteTopicRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedPublisherServer can be embedded to have forward compatible implementations.
@@ -2562,7 +2562,7 @@ func (*UnimplementedPublisherServer) ListTopics(context.Context, *ListTopicsRequ
 func (*UnimplementedPublisherServer) ListTopicSubscriptions(context.Context, *ListTopicSubscriptionsRequest) (*ListTopicSubscriptionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTopicSubscriptions not implemented")
 }
-func (*UnimplementedPublisherServer) DeleteTopic(context.Context, *DeleteTopicRequest) (*empty.Empty, error) {
+func (*UnimplementedPublisherServer) DeleteTopic(context.Context, *DeleteTopicRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTopic not implemented")
 }
 

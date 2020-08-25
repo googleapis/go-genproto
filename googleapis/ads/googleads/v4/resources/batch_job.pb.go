@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -57,17 +57,17 @@ type BatchJob struct {
 	// `customers/{customer_id}/batchJobs/{batch_job_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. ID of this batch job.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. The next sequence token to use when adding operations. Only set when the
 	// batch job status is PENDING.
-	NextAddSequenceToken *wrappers.StringValue `protobuf:"bytes,3,opt,name=next_add_sequence_token,json=nextAddSequenceToken,proto3" json:"next_add_sequence_token,omitempty"`
+	NextAddSequenceToken *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=next_add_sequence_token,json=nextAddSequenceToken,proto3" json:"next_add_sequence_token,omitempty"`
 	// Output only. Contains additional information about this batch job.
 	Metadata *BatchJob_BatchJobMetadata `protobuf:"bytes,4,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	// Output only. Status of this batch job.
 	Status enums.BatchJobStatusEnum_BatchJobStatus `protobuf:"varint,5,opt,name=status,proto3,enum=google.ads.googleads.v4.enums.BatchJobStatusEnum_BatchJobStatus" json:"status,omitempty"`
 	// Output only. The resource name of the long-running operation that can be used to poll
 	// for completion. Only set when the batch job status is RUNNING or DONE.
-	LongRunningOperation *wrappers.StringValue `protobuf:"bytes,6,opt,name=long_running_operation,json=longRunningOperation,proto3" json:"long_running_operation,omitempty"`
+	LongRunningOperation *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=long_running_operation,json=longRunningOperation,proto3" json:"long_running_operation,omitempty"`
 }
 
 func (x *BatchJob) Reset() {
@@ -109,14 +109,14 @@ func (x *BatchJob) GetResourceName() string {
 	return ""
 }
 
-func (x *BatchJob) GetId() *wrappers.Int64Value {
+func (x *BatchJob) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *BatchJob) GetNextAddSequenceToken() *wrappers.StringValue {
+func (x *BatchJob) GetNextAddSequenceToken() *wrapperspb.StringValue {
 	if x != nil {
 		return x.NextAddSequenceToken
 	}
@@ -137,7 +137,7 @@ func (x *BatchJob) GetStatus() enums.BatchJobStatusEnum_BatchJobStatus {
 	return enums.BatchJobStatusEnum_UNSPECIFIED
 }
 
-func (x *BatchJob) GetLongRunningOperation() *wrappers.StringValue {
+func (x *BatchJob) GetLongRunningOperation() *wrapperspb.StringValue {
 	if x != nil {
 		return x.LongRunningOperation
 	}
@@ -153,18 +153,18 @@ type BatchJob_BatchJobMetadata struct {
 
 	// Output only. The time when this batch job was created.
 	// Formatted as yyyy-mm-dd hh:mm:ss. Example: "2018-03-05 09:15:00"
-	CreationDateTime *wrappers.StringValue `protobuf:"bytes,1,opt,name=creation_date_time,json=creationDateTime,proto3" json:"creation_date_time,omitempty"`
+	CreationDateTime *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=creation_date_time,json=creationDateTime,proto3" json:"creation_date_time,omitempty"`
 	// Output only. The time when this batch job was completed.
 	// Formatted as yyyy-MM-dd HH:mm:ss. Example: "2018-03-05 09:16:00"
-	CompletionDateTime *wrappers.StringValue `protobuf:"bytes,2,opt,name=completion_date_time,json=completionDateTime,proto3" json:"completion_date_time,omitempty"`
+	CompletionDateTime *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=completion_date_time,json=completionDateTime,proto3" json:"completion_date_time,omitempty"`
 	// Output only. The fraction (between 0.0 and 1.0) of mutates that have been processed.
 	// This is empty if the job hasn't started running yet.
-	EstimatedCompletionRatio *wrappers.DoubleValue `protobuf:"bytes,3,opt,name=estimated_completion_ratio,json=estimatedCompletionRatio,proto3" json:"estimated_completion_ratio,omitempty"`
+	EstimatedCompletionRatio *wrapperspb.DoubleValue `protobuf:"bytes,3,opt,name=estimated_completion_ratio,json=estimatedCompletionRatio,proto3" json:"estimated_completion_ratio,omitempty"`
 	// Output only. The number of mutate operations in the batch job.
-	OperationCount *wrappers.Int64Value `protobuf:"bytes,4,opt,name=operation_count,json=operationCount,proto3" json:"operation_count,omitempty"`
+	OperationCount *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=operation_count,json=operationCount,proto3" json:"operation_count,omitempty"`
 	// Output only. The number of mutate operations executed by the batch job.
 	// Present only if the job has started running.
-	ExecutedOperationCount *wrappers.Int64Value `protobuf:"bytes,5,opt,name=executed_operation_count,json=executedOperationCount,proto3" json:"executed_operation_count,omitempty"`
+	ExecutedOperationCount *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=executed_operation_count,json=executedOperationCount,proto3" json:"executed_operation_count,omitempty"`
 }
 
 func (x *BatchJob_BatchJobMetadata) Reset() {
@@ -199,35 +199,35 @@ func (*BatchJob_BatchJobMetadata) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_batch_job_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (x *BatchJob_BatchJobMetadata) GetCreationDateTime() *wrappers.StringValue {
+func (x *BatchJob_BatchJobMetadata) GetCreationDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CreationDateTime
 	}
 	return nil
 }
 
-func (x *BatchJob_BatchJobMetadata) GetCompletionDateTime() *wrappers.StringValue {
+func (x *BatchJob_BatchJobMetadata) GetCompletionDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CompletionDateTime
 	}
 	return nil
 }
 
-func (x *BatchJob_BatchJobMetadata) GetEstimatedCompletionRatio() *wrappers.DoubleValue {
+func (x *BatchJob_BatchJobMetadata) GetEstimatedCompletionRatio() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.EstimatedCompletionRatio
 	}
 	return nil
 }
 
-func (x *BatchJob_BatchJobMetadata) GetOperationCount() *wrappers.Int64Value {
+func (x *BatchJob_BatchJobMetadata) GetOperationCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.OperationCount
 	}
 	return nil
 }
 
-func (x *BatchJob_BatchJobMetadata) GetExecutedOperationCount() *wrappers.Int64Value {
+func (x *BatchJob_BatchJobMetadata) GetExecutedOperationCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ExecutedOperationCount
 	}
@@ -354,10 +354,10 @@ var file_google_ads_googleads_v4_resources_batch_job_proto_msgTypes = make([]pro
 var file_google_ads_googleads_v4_resources_batch_job_proto_goTypes = []interface{}{
 	(*BatchJob)(nil),                             // 0: google.ads.googleads.v4.resources.BatchJob
 	(*BatchJob_BatchJobMetadata)(nil),            // 1: google.ads.googleads.v4.resources.BatchJob.BatchJobMetadata
-	(*wrappers.Int64Value)(nil),                  // 2: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),                 // 3: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                // 2: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),               // 3: google.protobuf.StringValue
 	(enums.BatchJobStatusEnum_BatchJobStatus)(0), // 4: google.ads.googleads.v4.enums.BatchJobStatusEnum.BatchJobStatus
-	(*wrappers.DoubleValue)(nil),                 // 5: google.protobuf.DoubleValue
+	(*wrapperspb.DoubleValue)(nil),               // 5: google.protobuf.DoubleValue
 }
 var file_google_ads_googleads_v4_resources_batch_job_proto_depIdxs = []int32{
 	2,  // 0: google.ads.googleads.v4.resources.BatchJob.id:type_name -> google.protobuf.Int64Value

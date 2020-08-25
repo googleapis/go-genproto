@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -260,7 +260,7 @@ type Scorecard_SparkChartView struct {
 	// For example, if the data is published once every 10 minutes it would not
 	// make sense to fetch and align data at one minute intervals. This field is
 	// optional and exists only as a hint.
-	MinAlignmentPeriod *duration.Duration `protobuf:"bytes,2,opt,name=min_alignment_period,json=minAlignmentPeriod,proto3" json:"min_alignment_period,omitempty"`
+	MinAlignmentPeriod *durationpb.Duration `protobuf:"bytes,2,opt,name=min_alignment_period,json=minAlignmentPeriod,proto3" json:"min_alignment_period,omitempty"`
 }
 
 func (x *Scorecard_SparkChartView) Reset() {
@@ -302,7 +302,7 @@ func (x *Scorecard_SparkChartView) GetSparkChartType() SparkChartType {
 	return SparkChartType_SPARK_CHART_TYPE_UNSPECIFIED
 }
 
-func (x *Scorecard_SparkChartView) GetMinAlignmentPeriod() *duration.Duration {
+func (x *Scorecard_SparkChartView) GetMinAlignmentPeriod() *durationpb.Duration {
 	if x != nil {
 		return x.MinAlignmentPeriod
 	}
@@ -399,7 +399,7 @@ var file_google_monitoring_dashboard_v1_scorecard_proto_goTypes = []interface{}{
 	(*TimeSeriesQuery)(nil),          // 3: google.monitoring.dashboard.v1.TimeSeriesQuery
 	(*Threshold)(nil),                // 4: google.monitoring.dashboard.v1.Threshold
 	(SparkChartType)(0),              // 5: google.monitoring.dashboard.v1.SparkChartType
-	(*duration.Duration)(nil),        // 6: google.protobuf.Duration
+	(*durationpb.Duration)(nil),      // 6: google.protobuf.Duration
 }
 var file_google_monitoring_dashboard_v1_scorecard_proto_depIdxs = []int32{
 	3, // 0: google.monitoring.dashboard.v1.Scorecard.time_series_query:type_name -> google.monitoring.dashboard.v1.TimeSeriesQuery

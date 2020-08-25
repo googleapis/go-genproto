@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,27 +56,27 @@ type CustomerClient struct {
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The resource name of the client-customer which is linked to
 	// the given customer. Read only.
-	ClientCustomer *wrappers.StringValue `protobuf:"bytes,3,opt,name=client_customer,json=clientCustomer,proto3" json:"client_customer,omitempty"`
+	ClientCustomer *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=client_customer,json=clientCustomer,proto3" json:"client_customer,omitempty"`
 	// Output only. Specifies whether this is a
 	// [hidden account](https://support.google.com/google-ads/answer/7519830).
 	// Read only.
-	Hidden *wrappers.BoolValue `protobuf:"bytes,4,opt,name=hidden,proto3" json:"hidden,omitempty"`
+	Hidden *wrapperspb.BoolValue `protobuf:"bytes,4,opt,name=hidden,proto3" json:"hidden,omitempty"`
 	// Output only. Distance between given customer and client. For self link, the level value
 	// will be 0. Read only.
-	Level *wrappers.Int64Value `protobuf:"bytes,5,opt,name=level,proto3" json:"level,omitempty"`
+	Level *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=level,proto3" json:"level,omitempty"`
 	// Output only. Common Locale Data Repository (CLDR) string representation of the
 	// time zone of the client, e.g. America/Los_Angeles. Read only.
-	TimeZone *wrappers.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
+	TimeZone *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=time_zone,json=timeZone,proto3" json:"time_zone,omitempty"`
 	// Output only. Identifies if the client is a test account. Read only.
-	TestAccount *wrappers.BoolValue `protobuf:"bytes,7,opt,name=test_account,json=testAccount,proto3" json:"test_account,omitempty"`
+	TestAccount *wrapperspb.BoolValue `protobuf:"bytes,7,opt,name=test_account,json=testAccount,proto3" json:"test_account,omitempty"`
 	// Output only. Identifies if the client is a manager. Read only.
-	Manager *wrappers.BoolValue `protobuf:"bytes,8,opt,name=manager,proto3" json:"manager,omitempty"`
+	Manager *wrapperspb.BoolValue `protobuf:"bytes,8,opt,name=manager,proto3" json:"manager,omitempty"`
 	// Output only. Descriptive name for the client. Read only.
-	DescriptiveName *wrappers.StringValue `protobuf:"bytes,9,opt,name=descriptive_name,json=descriptiveName,proto3" json:"descriptive_name,omitempty"`
+	DescriptiveName *wrapperspb.StringValue `protobuf:"bytes,9,opt,name=descriptive_name,json=descriptiveName,proto3" json:"descriptive_name,omitempty"`
 	// Output only. Currency code (e.g. 'USD', 'EUR') for the client. Read only.
-	CurrencyCode *wrappers.StringValue `protobuf:"bytes,10,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
+	CurrencyCode *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
 	// Output only. The ID of the client customer. Read only.
-	Id *wrappers.Int64Value `protobuf:"bytes,11,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,11,opt,name=id,proto3" json:"id,omitempty"`
 }
 
 func (x *CustomerClient) Reset() {
@@ -118,63 +118,63 @@ func (x *CustomerClient) GetResourceName() string {
 	return ""
 }
 
-func (x *CustomerClient) GetClientCustomer() *wrappers.StringValue {
+func (x *CustomerClient) GetClientCustomer() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ClientCustomer
 	}
 	return nil
 }
 
-func (x *CustomerClient) GetHidden() *wrappers.BoolValue {
+func (x *CustomerClient) GetHidden() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.Hidden
 	}
 	return nil
 }
 
-func (x *CustomerClient) GetLevel() *wrappers.Int64Value {
+func (x *CustomerClient) GetLevel() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Level
 	}
 	return nil
 }
 
-func (x *CustomerClient) GetTimeZone() *wrappers.StringValue {
+func (x *CustomerClient) GetTimeZone() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TimeZone
 	}
 	return nil
 }
 
-func (x *CustomerClient) GetTestAccount() *wrappers.BoolValue {
+func (x *CustomerClient) GetTestAccount() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.TestAccount
 	}
 	return nil
 }
 
-func (x *CustomerClient) GetManager() *wrappers.BoolValue {
+func (x *CustomerClient) GetManager() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.Manager
 	}
 	return nil
 }
 
-func (x *CustomerClient) GetDescriptiveName() *wrappers.StringValue {
+func (x *CustomerClient) GetDescriptiveName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.DescriptiveName
 	}
 	return nil
 }
 
-func (x *CustomerClient) GetCurrencyCode() *wrappers.StringValue {
+func (x *CustomerClient) GetCurrencyCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CurrencyCode
 	}
 	return nil
 }
 
-func (x *CustomerClient) GetId() *wrappers.Int64Value {
+func (x *CustomerClient) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
@@ -280,10 +280,10 @@ func file_google_ads_googleads_v4_resources_customer_client_proto_rawDescGZIP() 
 
 var file_google_ads_googleads_v4_resources_customer_client_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_customer_client_proto_goTypes = []interface{}{
-	(*CustomerClient)(nil),       // 0: google.ads.googleads.v4.resources.CustomerClient
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
-	(*wrappers.BoolValue)(nil),   // 2: google.protobuf.BoolValue
-	(*wrappers.Int64Value)(nil),  // 3: google.protobuf.Int64Value
+	(*CustomerClient)(nil),         // 0: google.ads.googleads.v4.resources.CustomerClient
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*wrapperspb.BoolValue)(nil),   // 2: google.protobuf.BoolValue
+	(*wrapperspb.Int64Value)(nil),  // 3: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v4_resources_customer_client_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.resources.CustomerClient.client_customer:type_name -> google.protobuf.StringValue

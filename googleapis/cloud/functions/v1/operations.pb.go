@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	any "github.com/golang/protobuf/ptypes/any"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	anypb "google.golang.org/protobuf/types/known/anypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -112,12 +112,12 @@ type OperationMetadataV1 struct {
 	// Type of operation.
 	Type OperationType `protobuf:"varint,2,opt,name=type,proto3,enum=google.cloud.functions.v1.OperationType" json:"type,omitempty"`
 	// The original request that started the operation.
-	Request *any.Any `protobuf:"bytes,3,opt,name=request,proto3" json:"request,omitempty"`
+	Request *anypb.Any `protobuf:"bytes,3,opt,name=request,proto3" json:"request,omitempty"`
 	// Version id of the function created or updated by an API call.
 	// This field is only populated for Create and Update operations.
 	VersionId int64 `protobuf:"varint,4,opt,name=version_id,json=versionId,proto3" json:"version_id,omitempty"`
 	// The last update timestamp of the operation.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The Cloud Build ID of the function created or updated by an API call.
 	// This field is only populated for Create and Update operations.
 	BuildId string `protobuf:"bytes,6,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
@@ -169,7 +169,7 @@ func (x *OperationMetadataV1) GetType() OperationType {
 	return OperationType_OPERATION_UNSPECIFIED
 }
 
-func (x *OperationMetadataV1) GetRequest() *any.Any {
+func (x *OperationMetadataV1) GetRequest() *anypb.Any {
 	if x != nil {
 		return x.Request
 	}
@@ -183,7 +183,7 @@ func (x *OperationMetadataV1) GetVersionId() int64 {
 	return 0
 }
 
-func (x *OperationMetadataV1) GetUpdateTime() *timestamp.Timestamp {
+func (x *OperationMetadataV1) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -260,10 +260,10 @@ func file_google_cloud_functions_v1_operations_proto_rawDescGZIP() []byte {
 var file_google_cloud_functions_v1_operations_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_google_cloud_functions_v1_operations_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_cloud_functions_v1_operations_proto_goTypes = []interface{}{
-	(OperationType)(0),          // 0: google.cloud.functions.v1.OperationType
-	(*OperationMetadataV1)(nil), // 1: google.cloud.functions.v1.OperationMetadataV1
-	(*any.Any)(nil),             // 2: google.protobuf.Any
-	(*timestamp.Timestamp)(nil), // 3: google.protobuf.Timestamp
+	(OperationType)(0),            // 0: google.cloud.functions.v1.OperationType
+	(*OperationMetadataV1)(nil),   // 1: google.cloud.functions.v1.OperationMetadataV1
+	(*anypb.Any)(nil),             // 2: google.protobuf.Any
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
 var file_google_cloud_functions_v1_operations_proto_depIdxs = []int32{
 	0, // 0: google.cloud.functions.v1.OperationMetadataV1.type:type_name -> google.cloud.functions.v1.OperationType

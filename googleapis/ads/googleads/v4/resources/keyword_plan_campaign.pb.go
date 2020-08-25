@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,17 +56,17 @@ type KeywordPlanCampaign struct {
 	// `customers/{customer_id}/keywordPlanCampaigns/{kp_campaign_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// The keyword plan this campaign belongs to.
-	KeywordPlan *wrappers.StringValue `protobuf:"bytes,2,opt,name=keyword_plan,json=keywordPlan,proto3" json:"keyword_plan,omitempty"`
+	KeywordPlan *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=keyword_plan,json=keywordPlan,proto3" json:"keyword_plan,omitempty"`
 	// Output only. The ID of the Keyword Plan campaign.
-	Id *wrappers.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the Keyword Plan campaign.
 	//
 	// This field is required and should not be empty when creating Keyword Plan
 	// campaigns.
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// The languages targeted for the Keyword Plan campaign.
 	// Max allowed: 1.
-	LanguageConstants []*wrappers.StringValue `protobuf:"bytes,5,rep,name=language_constants,json=languageConstants,proto3" json:"language_constants,omitempty"`
+	LanguageConstants []*wrapperspb.StringValue `protobuf:"bytes,5,rep,name=language_constants,json=languageConstants,proto3" json:"language_constants,omitempty"`
 	// Targeting network.
 	//
 	// This field is required and should not be empty when creating Keyword Plan
@@ -77,7 +77,7 @@ type KeywordPlanCampaign struct {
 	//
 	// This field is required and should not be empty when creating Keyword Plan
 	// campaigns.
-	CpcBidMicros *wrappers.Int64Value `protobuf:"bytes,7,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
+	CpcBidMicros *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=cpc_bid_micros,json=cpcBidMicros,proto3" json:"cpc_bid_micros,omitempty"`
 	// The geo targets.
 	// Max number allowed: 20.
 	GeoTargets []*KeywordPlanGeoTarget `protobuf:"bytes,8,rep,name=geo_targets,json=geoTargets,proto3" json:"geo_targets,omitempty"`
@@ -122,28 +122,28 @@ func (x *KeywordPlanCampaign) GetResourceName() string {
 	return ""
 }
 
-func (x *KeywordPlanCampaign) GetKeywordPlan() *wrappers.StringValue {
+func (x *KeywordPlanCampaign) GetKeywordPlan() *wrapperspb.StringValue {
 	if x != nil {
 		return x.KeywordPlan
 	}
 	return nil
 }
 
-func (x *KeywordPlanCampaign) GetId() *wrappers.Int64Value {
+func (x *KeywordPlanCampaign) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *KeywordPlanCampaign) GetName() *wrappers.StringValue {
+func (x *KeywordPlanCampaign) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *KeywordPlanCampaign) GetLanguageConstants() []*wrappers.StringValue {
+func (x *KeywordPlanCampaign) GetLanguageConstants() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.LanguageConstants
 	}
@@ -157,7 +157,7 @@ func (x *KeywordPlanCampaign) GetKeywordPlanNetwork() enums.KeywordPlanNetworkEn
 	return enums.KeywordPlanNetworkEnum_UNSPECIFIED
 }
 
-func (x *KeywordPlanCampaign) GetCpcBidMicros() *wrappers.Int64Value {
+func (x *KeywordPlanCampaign) GetCpcBidMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidMicros
 	}
@@ -178,7 +178,7 @@ type KeywordPlanGeoTarget struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name of the geo target.
-	GeoTargetConstant *wrappers.StringValue `protobuf:"bytes,1,opt,name=geo_target_constant,json=geoTargetConstant,proto3" json:"geo_target_constant,omitempty"`
+	GeoTargetConstant *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=geo_target_constant,json=geoTargetConstant,proto3" json:"geo_target_constant,omitempty"`
 }
 
 func (x *KeywordPlanGeoTarget) Reset() {
@@ -213,7 +213,7 @@ func (*KeywordPlanGeoTarget) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_resources_keyword_plan_campaign_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *KeywordPlanGeoTarget) GetGeoTargetConstant() *wrappers.StringValue {
+func (x *KeywordPlanGeoTarget) GetGeoTargetConstant() *wrapperspb.StringValue {
 	if x != nil {
 		return x.GeoTargetConstant
 	}
@@ -338,8 +338,8 @@ var file_google_ads_googleads_v4_resources_keyword_plan_campaign_proto_msgTypes 
 var file_google_ads_googleads_v4_resources_keyword_plan_campaign_proto_goTypes = []interface{}{
 	(*KeywordPlanCampaign)(nil),                          // 0: google.ads.googleads.v4.resources.KeywordPlanCampaign
 	(*KeywordPlanGeoTarget)(nil),                         // 1: google.ads.googleads.v4.resources.KeywordPlanGeoTarget
-	(*wrappers.StringValue)(nil),                         // 2: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                          // 3: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                       // 2: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                        // 3: google.protobuf.Int64Value
 	(enums.KeywordPlanNetworkEnum_KeywordPlanNetwork)(0), // 4: google.ads.googleads.v4.enums.KeywordPlanNetworkEnum.KeywordPlanNetwork
 }
 var file_google_ads_googleads_v4_resources_keyword_plan_campaign_proto_depIdxs = []int32{

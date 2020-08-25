@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 )
 
 const (
@@ -109,7 +109,7 @@ type RunAssetDiscoveryResponse struct {
 	// The state of an asset discovery run.
 	State RunAssetDiscoveryResponse_State `protobuf:"varint,1,opt,name=state,proto3,enum=google.cloud.securitycenter.v1.RunAssetDiscoveryResponse_State" json:"state,omitempty"`
 	// The duration between asset discovery run start and end
-	Duration *duration.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
 }
 
 func (x *RunAssetDiscoveryResponse) Reset() {
@@ -151,7 +151,7 @@ func (x *RunAssetDiscoveryResponse) GetState() RunAssetDiscoveryResponse_State {
 	return RunAssetDiscoveryResponse_STATE_UNSPECIFIED
 }
 
-func (x *RunAssetDiscoveryResponse) GetDuration() *duration.Duration {
+func (x *RunAssetDiscoveryResponse) GetDuration() *durationpb.Duration {
 	if x != nil {
 		return x.Duration
 	}
@@ -221,7 +221,7 @@ var file_google_cloud_securitycenter_v1_run_asset_discovery_response_proto_msgTy
 var file_google_cloud_securitycenter_v1_run_asset_discovery_response_proto_goTypes = []interface{}{
 	(RunAssetDiscoveryResponse_State)(0), // 0: google.cloud.securitycenter.v1.RunAssetDiscoveryResponse.State
 	(*RunAssetDiscoveryResponse)(nil),    // 1: google.cloud.securitycenter.v1.RunAssetDiscoveryResponse
-	(*duration.Duration)(nil),            // 2: google.protobuf.Duration
+	(*durationpb.Duration)(nil),          // 2: google.protobuf.Duration
 }
 var file_google_cloud_securitycenter_v1_run_asset_discovery_response_proto_depIdxs = []int32{
 	0, // 0: google.cloud.securitycenter.v1.RunAssetDiscoveryResponse.state:type_name -> google.cloud.securitycenter.v1.RunAssetDiscoveryResponse.State

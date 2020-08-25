@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -436,7 +436,7 @@ type UpdateKnowledgeBaseRequest struct {
 	// Optional. Not specified means `update all`.
 	// Currently, only `display_name` can be updated, an InvalidArgument will be
 	// returned for attempting to update other fields.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateKnowledgeBaseRequest) Reset() {
@@ -478,7 +478,7 @@ func (x *UpdateKnowledgeBaseRequest) GetKnowledgeBase() *KnowledgeBase {
 	return nil
 }
 
-func (x *UpdateKnowledgeBaseRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateKnowledgeBaseRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -706,8 +706,8 @@ var file_google_cloud_dialogflow_v2beta1_knowledge_base_proto_goTypes = []interf
 	(*CreateKnowledgeBaseRequest)(nil), // 4: google.cloud.dialogflow.v2beta1.CreateKnowledgeBaseRequest
 	(*DeleteKnowledgeBaseRequest)(nil), // 5: google.cloud.dialogflow.v2beta1.DeleteKnowledgeBaseRequest
 	(*UpdateKnowledgeBaseRequest)(nil), // 6: google.cloud.dialogflow.v2beta1.UpdateKnowledgeBaseRequest
-	(*field_mask.FieldMask)(nil),       // 7: google.protobuf.FieldMask
-	(*empty.Empty)(nil),                // 8: google.protobuf.Empty
+	(*fieldmaskpb.FieldMask)(nil),      // 7: google.protobuf.FieldMask
+	(*emptypb.Empty)(nil),              // 8: google.protobuf.Empty
 }
 var file_google_cloud_dialogflow_v2beta1_knowledge_base_proto_depIdxs = []int32{
 	0, // 0: google.cloud.dialogflow.v2beta1.ListKnowledgeBasesResponse.knowledge_bases:type_name -> google.cloud.dialogflow.v2beta1.KnowledgeBase
@@ -873,7 +873,7 @@ type KnowledgeBasesClient interface {
 	//
 	// Note: The `projects.agent.knowledgeBases` resource is deprecated;
 	// only use `projects.knowledgeBases`.
-	DeleteKnowledgeBase(ctx context.Context, in *DeleteKnowledgeBaseRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteKnowledgeBase(ctx context.Context, in *DeleteKnowledgeBaseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates the specified knowledge base.
 	//
 	// Note: The `projects.agent.knowledgeBases` resource is deprecated;
@@ -916,8 +916,8 @@ func (c *knowledgeBasesClient) CreateKnowledgeBase(ctx context.Context, in *Crea
 	return out, nil
 }
 
-func (c *knowledgeBasesClient) DeleteKnowledgeBase(ctx context.Context, in *DeleteKnowledgeBaseRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *knowledgeBasesClient) DeleteKnowledgeBase(ctx context.Context, in *DeleteKnowledgeBaseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.dialogflow.v2beta1.KnowledgeBases/DeleteKnowledgeBase", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -955,7 +955,7 @@ type KnowledgeBasesServer interface {
 	//
 	// Note: The `projects.agent.knowledgeBases` resource is deprecated;
 	// only use `projects.knowledgeBases`.
-	DeleteKnowledgeBase(context.Context, *DeleteKnowledgeBaseRequest) (*empty.Empty, error)
+	DeleteKnowledgeBase(context.Context, *DeleteKnowledgeBaseRequest) (*emptypb.Empty, error)
 	// Updates the specified knowledge base.
 	//
 	// Note: The `projects.agent.knowledgeBases` resource is deprecated;
@@ -976,7 +976,7 @@ func (*UnimplementedKnowledgeBasesServer) GetKnowledgeBase(context.Context, *Get
 func (*UnimplementedKnowledgeBasesServer) CreateKnowledgeBase(context.Context, *CreateKnowledgeBaseRequest) (*KnowledgeBase, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateKnowledgeBase not implemented")
 }
-func (*UnimplementedKnowledgeBasesServer) DeleteKnowledgeBase(context.Context, *DeleteKnowledgeBaseRequest) (*empty.Empty, error) {
+func (*UnimplementedKnowledgeBasesServer) DeleteKnowledgeBase(context.Context, *DeleteKnowledgeBaseRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteKnowledgeBase not implemented")
 }
 func (*UnimplementedKnowledgeBasesServer) UpdateKnowledgeBase(context.Context, *UpdateKnowledgeBaseRequest) (*KnowledgeBase, error) {

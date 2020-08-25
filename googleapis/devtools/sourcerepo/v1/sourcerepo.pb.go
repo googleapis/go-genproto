@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	grpc "google.golang.org/grpc"
@@ -34,6 +33,7 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 const (
@@ -647,7 +647,7 @@ var file_google_devtools_sourcerepo_v1_sourcerepo_proto_goTypes = []interface{}{
 	(*v1.SetIamPolicyRequest)(nil),        // 7: google.iam.v1.SetIamPolicyRequest
 	(*v1.GetIamPolicyRequest)(nil),        // 8: google.iam.v1.GetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),  // 9: google.iam.v1.TestIamPermissionsRequest
-	(*empty.Empty)(nil),                   // 10: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                 // 10: google.protobuf.Empty
 	(*v1.Policy)(nil),                     // 11: google.iam.v1.Policy
 	(*v1.TestIamPermissionsResponse)(nil), // 12: google.iam.v1.TestIamPermissionsResponse
 }
@@ -810,7 +810,7 @@ type SourceRepoClient interface {
 	// `ALREADY_EXISTS`.
 	CreateRepo(ctx context.Context, in *CreateRepoRequest, opts ...grpc.CallOption) (*Repo, error)
 	// Deletes a repo.
-	DeleteRepo(ctx context.Context, in *DeleteRepoRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteRepo(ctx context.Context, in *DeleteRepoRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Sets the access control policy on the specified resource. Replaces any
 	// existing policy.
 	SetIamPolicy(ctx context.Context, in *v1.SetIamPolicyRequest, opts ...grpc.CallOption) (*v1.Policy, error)
@@ -859,8 +859,8 @@ func (c *sourceRepoClient) CreateRepo(ctx context.Context, in *CreateRepoRequest
 	return out, nil
 }
 
-func (c *sourceRepoClient) DeleteRepo(ctx context.Context, in *DeleteRepoRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *sourceRepoClient) DeleteRepo(ctx context.Context, in *DeleteRepoRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.devtools.sourcerepo.v1.SourceRepo/DeleteRepo", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -908,7 +908,7 @@ type SourceRepoServer interface {
 	// `ALREADY_EXISTS`.
 	CreateRepo(context.Context, *CreateRepoRequest) (*Repo, error)
 	// Deletes a repo.
-	DeleteRepo(context.Context, *DeleteRepoRequest) (*empty.Empty, error)
+	DeleteRepo(context.Context, *DeleteRepoRequest) (*emptypb.Empty, error)
 	// Sets the access control policy on the specified resource. Replaces any
 	// existing policy.
 	SetIamPolicy(context.Context, *v1.SetIamPolicyRequest) (*v1.Policy, error)
@@ -935,7 +935,7 @@ func (*UnimplementedSourceRepoServer) GetRepo(context.Context, *GetRepoRequest) 
 func (*UnimplementedSourceRepoServer) CreateRepo(context.Context, *CreateRepoRequest) (*Repo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateRepo not implemented")
 }
-func (*UnimplementedSourceRepoServer) DeleteRepo(context.Context, *DeleteRepoRequest) (*empty.Empty, error) {
+func (*UnimplementedSourceRepoServer) DeleteRepo(context.Context, *DeleteRepoRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRepo not implemented")
 }
 func (*UnimplementedSourceRepoServer) SetIamPolicy(context.Context, *v1.SetIamPolicyRequest) (*v1.Policy, error) {

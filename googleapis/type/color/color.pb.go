@@ -26,9 +26,9 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -183,7 +183,7 @@ type Color struct {
 	// possible to distinguish between a default value and the value being unset.
 	// If omitted, this color object is to be rendered as a solid color
 	// (as if the alpha value had been explicitly given with a value of 1.0).
-	Alpha *wrappers.FloatValue `protobuf:"bytes,4,opt,name=alpha,proto3" json:"alpha,omitempty"`
+	Alpha *wrapperspb.FloatValue `protobuf:"bytes,4,opt,name=alpha,proto3" json:"alpha,omitempty"`
 }
 
 func (x *Color) Reset() {
@@ -239,7 +239,7 @@ func (x *Color) GetBlue() float32 {
 	return 0
 }
 
-func (x *Color) GetAlpha() *wrappers.FloatValue {
+func (x *Color) GetAlpha() *wrapperspb.FloatValue {
 	if x != nil {
 		return x.Alpha
 	}
@@ -284,8 +284,8 @@ func file_google_type_color_proto_rawDescGZIP() []byte {
 
 var file_google_type_color_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_type_color_proto_goTypes = []interface{}{
-	(*Color)(nil),               // 0: google.type.Color
-	(*wrappers.FloatValue)(nil), // 1: google.protobuf.FloatValue
+	(*Color)(nil),                 // 0: google.type.Color
+	(*wrapperspb.FloatValue)(nil), // 1: google.protobuf.FloatValue
 }
 var file_google_type_color_proto_depIdxs = []int32{
 	1, // 0: google.type.Color.alpha:type_name -> google.protobuf.FloatValue

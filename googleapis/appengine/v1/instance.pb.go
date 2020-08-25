@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -135,7 +135,7 @@ type Instance struct {
 	// Time that this instance was started.
 	//
 	// @OutputOnly
-	StartTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Number of requests since this instance was started.
 	//
 	// @OutputOnly
@@ -254,7 +254,7 @@ func (x *Instance) GetVmId() string {
 	return ""
 }
 
-func (x *Instance) GetStartTime() *timestamp.Timestamp {
+func (x *Instance) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
@@ -390,9 +390,9 @@ func file_google_appengine_v1_instance_proto_rawDescGZIP() []byte {
 var file_google_appengine_v1_instance_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_google_appengine_v1_instance_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_appengine_v1_instance_proto_goTypes = []interface{}{
-	(Instance_Availability)(0),  // 0: google.appengine.v1.Instance.Availability
-	(*Instance)(nil),            // 1: google.appengine.v1.Instance
-	(*timestamp.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(Instance_Availability)(0),    // 0: google.appengine.v1.Instance.Availability
+	(*Instance)(nil),              // 1: google.appengine.v1.Instance
+	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
 }
 var file_google_appengine_v1_instance_proto_depIdxs = []int32{
 	0, // 0: google.appengine.v1.Instance.availability:type_name -> google.appengine.v1.Instance.Availability

@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,37 +56,37 @@ type UserList struct {
 	// `customers/{customer_id}/userLists/{user_list_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. Id of the user list.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. A flag that indicates if a user may edit a list. Depends on the list
 	// ownership and list type. For example, external remarketing user lists are
 	// not editable.
 	//
 	// This field is read-only.
-	ReadOnly *wrappers.BoolValue `protobuf:"bytes,3,opt,name=read_only,json=readOnly,proto3" json:"read_only,omitempty"`
+	ReadOnly *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=read_only,json=readOnly,proto3" json:"read_only,omitempty"`
 	// Name of this user list. Depending on its access_reason, the user list name
 	// may not be unique (e.g. if access_reason=SHARED)
-	Name *wrappers.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// Description of this user list.
-	Description *wrappers.StringValue `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
+	Description *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
 	// Membership status of this user list. Indicates whether a user list is open
 	// or active. Only open user lists can accumulate more users and can be
 	// targeted to.
 	MembershipStatus enums.UserListMembershipStatusEnum_UserListMembershipStatus `protobuf:"varint,6,opt,name=membership_status,json=membershipStatus,proto3,enum=google.ads.googleads.v4.enums.UserListMembershipStatusEnum_UserListMembershipStatus" json:"membership_status,omitempty"`
 	// An ID from external system. It is used by user list sellers to correlate
 	// IDs on their systems.
-	IntegrationCode *wrappers.StringValue `protobuf:"bytes,7,opt,name=integration_code,json=integrationCode,proto3" json:"integration_code,omitempty"`
+	IntegrationCode *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=integration_code,json=integrationCode,proto3" json:"integration_code,omitempty"`
 	// Number of days a user's cookie stays on your list since its most recent
 	// addition to the list. This field must be between 0 and 540 inclusive.
 	// However, for CRM based userlists, this field can be set to 10000 which
 	// means no expiration.
 	//
 	// It'll be ignored for logical_user_list.
-	MembershipLifeSpan *wrappers.Int64Value `protobuf:"bytes,8,opt,name=membership_life_span,json=membershipLifeSpan,proto3" json:"membership_life_span,omitempty"`
+	MembershipLifeSpan *wrapperspb.Int64Value `protobuf:"bytes,8,opt,name=membership_life_span,json=membershipLifeSpan,proto3" json:"membership_life_span,omitempty"`
 	// Output only. Estimated number of users in this user list, on the Google Display Network.
 	// This value is null if the number of users has not yet been determined.
 	//
 	// This field is read-only.
-	SizeForDisplay *wrappers.Int64Value `protobuf:"bytes,9,opt,name=size_for_display,json=sizeForDisplay,proto3" json:"size_for_display,omitempty"`
+	SizeForDisplay *wrapperspb.Int64Value `protobuf:"bytes,9,opt,name=size_for_display,json=sizeForDisplay,proto3" json:"size_for_display,omitempty"`
 	// Output only. Size range in terms of number of users of the UserList, on the Google
 	// Display Network.
 	//
@@ -97,7 +97,7 @@ type UserList struct {
 	// This value is null if the number of users has not yet been determined.
 	//
 	// This field is read-only.
-	SizeForSearch *wrappers.Int64Value `protobuf:"bytes,11,opt,name=size_for_search,json=sizeForSearch,proto3" json:"size_for_search,omitempty"`
+	SizeForSearch *wrapperspb.Int64Value `protobuf:"bytes,11,opt,name=size_for_search,json=sizeForSearch,proto3" json:"size_for_search,omitempty"`
 	// Output only. Size range in terms of number of users of the UserList, for Search ads.
 	//
 	// This field is read-only.
@@ -121,11 +121,11 @@ type UserList struct {
 	// The default value of this field is set to ENABLED.
 	AccountUserListStatus enums.UserListAccessStatusEnum_UserListAccessStatus `protobuf:"varint,16,opt,name=account_user_list_status,json=accountUserListStatus,proto3,enum=google.ads.googleads.v4.enums.UserListAccessStatusEnum_UserListAccessStatus" json:"account_user_list_status,omitempty"`
 	// Indicates if this user list is eligible for Google Search Network.
-	EligibleForSearch *wrappers.BoolValue `protobuf:"bytes,17,opt,name=eligible_for_search,json=eligibleForSearch,proto3" json:"eligible_for_search,omitempty"`
+	EligibleForSearch *wrapperspb.BoolValue `protobuf:"bytes,17,opt,name=eligible_for_search,json=eligibleForSearch,proto3" json:"eligible_for_search,omitempty"`
 	// Output only. Indicates this user list is eligible for Google Display Network.
 	//
 	// This field is read-only.
-	EligibleForDisplay *wrappers.BoolValue `protobuf:"bytes,18,opt,name=eligible_for_display,json=eligibleForDisplay,proto3" json:"eligible_for_display,omitempty"`
+	EligibleForDisplay *wrapperspb.BoolValue `protobuf:"bytes,18,opt,name=eligible_for_display,json=eligibleForDisplay,proto3" json:"eligible_for_display,omitempty"`
 	// The user list.
 	//
 	// Exactly one must be set.
@@ -178,28 +178,28 @@ func (x *UserList) GetResourceName() string {
 	return ""
 }
 
-func (x *UserList) GetId() *wrappers.Int64Value {
+func (x *UserList) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *UserList) GetReadOnly() *wrappers.BoolValue {
+func (x *UserList) GetReadOnly() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.ReadOnly
 	}
 	return nil
 }
 
-func (x *UserList) GetName() *wrappers.StringValue {
+func (x *UserList) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
 	return nil
 }
 
-func (x *UserList) GetDescription() *wrappers.StringValue {
+func (x *UserList) GetDescription() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Description
 	}
@@ -213,21 +213,21 @@ func (x *UserList) GetMembershipStatus() enums.UserListMembershipStatusEnum_User
 	return enums.UserListMembershipStatusEnum_UNSPECIFIED
 }
 
-func (x *UserList) GetIntegrationCode() *wrappers.StringValue {
+func (x *UserList) GetIntegrationCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.IntegrationCode
 	}
 	return nil
 }
 
-func (x *UserList) GetMembershipLifeSpan() *wrappers.Int64Value {
+func (x *UserList) GetMembershipLifeSpan() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.MembershipLifeSpan
 	}
 	return nil
 }
 
-func (x *UserList) GetSizeForDisplay() *wrappers.Int64Value {
+func (x *UserList) GetSizeForDisplay() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.SizeForDisplay
 	}
@@ -241,7 +241,7 @@ func (x *UserList) GetSizeRangeForDisplay() enums.UserListSizeRangeEnum_UserList
 	return enums.UserListSizeRangeEnum_UNSPECIFIED
 }
 
-func (x *UserList) GetSizeForSearch() *wrappers.Int64Value {
+func (x *UserList) GetSizeForSearch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.SizeForSearch
 	}
@@ -283,14 +283,14 @@ func (x *UserList) GetAccountUserListStatus() enums.UserListAccessStatusEnum_Use
 	return enums.UserListAccessStatusEnum_UNSPECIFIED
 }
 
-func (x *UserList) GetEligibleForSearch() *wrappers.BoolValue {
+func (x *UserList) GetEligibleForSearch() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.EligibleForSearch
 	}
 	return nil
 }
 
-func (x *UserList) GetEligibleForDisplay() *wrappers.BoolValue {
+func (x *UserList) GetEligibleForDisplay() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.EligibleForDisplay
 	}
@@ -591,10 +591,10 @@ func file_google_ads_googleads_v4_resources_user_list_proto_rawDescGZIP() []byte
 
 var file_google_ads_googleads_v4_resources_user_list_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_user_list_proto_goTypes = []interface{}{
-	(*UserList)(nil),             // 0: google.ads.googleads.v4.resources.UserList
-	(*wrappers.Int64Value)(nil),  // 1: google.protobuf.Int64Value
-	(*wrappers.BoolValue)(nil),   // 2: google.protobuf.BoolValue
-	(*wrappers.StringValue)(nil), // 3: google.protobuf.StringValue
+	(*UserList)(nil),               // 0: google.ads.googleads.v4.resources.UserList
+	(*wrapperspb.Int64Value)(nil),  // 1: google.protobuf.Int64Value
+	(*wrapperspb.BoolValue)(nil),   // 2: google.protobuf.BoolValue
+	(*wrapperspb.StringValue)(nil), // 3: google.protobuf.StringValue
 	(enums.UserListMembershipStatusEnum_UserListMembershipStatus)(0), // 4: google.ads.googleads.v4.enums.UserListMembershipStatusEnum.UserListMembershipStatus
 	(enums.UserListSizeRangeEnum_UserListSizeRange)(0),               // 5: google.ads.googleads.v4.enums.UserListSizeRangeEnum.UserListSizeRange
 	(enums.UserListTypeEnum_UserListType)(0),                         // 6: google.ads.googleads.v4.enums.UserListTypeEnum.UserListType

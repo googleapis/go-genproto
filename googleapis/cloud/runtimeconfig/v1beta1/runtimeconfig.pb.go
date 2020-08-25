@@ -26,8 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
 	grpc "google.golang.org/grpc"
@@ -35,6 +33,8 @@ import (
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -597,7 +597,7 @@ type WatchVariableRequest struct {
 	//
 	// If not specified or the variable has an older timestamp, the watcher waits
 	// for a the value to change before returning.
-	NewerThan *timestamp.Timestamp `protobuf:"bytes,4,opt,name=newer_than,json=newerThan,proto3" json:"newer_than,omitempty"`
+	NewerThan *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=newer_than,json=newerThan,proto3" json:"newer_than,omitempty"`
 }
 
 func (x *WatchVariableRequest) Reset() {
@@ -639,7 +639,7 @@ func (x *WatchVariableRequest) GetName() string {
 	return ""
 }
 
-func (x *WatchVariableRequest) GetNewerThan() *timestamp.Timestamp {
+func (x *WatchVariableRequest) GetNewerThan() *timestamppb.Timestamp {
 	if x != nil {
 		return x.NewerThan
 	}
@@ -1566,9 +1566,9 @@ var file_google_cloud_runtimeconfig_v1beta1_runtimeconfig_proto_goTypes = []inte
 	(*DeleteWaiterRequest)(nil),   // 17: google.cloud.runtimeconfig.v1beta1.DeleteWaiterRequest
 	(*RuntimeConfig)(nil),         // 18: google.cloud.runtimeconfig.v1beta1.RuntimeConfig
 	(*Variable)(nil),              // 19: google.cloud.runtimeconfig.v1beta1.Variable
-	(*timestamp.Timestamp)(nil),   // 20: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil), // 20: google.protobuf.Timestamp
 	(*Waiter)(nil),                // 21: google.cloud.runtimeconfig.v1beta1.Waiter
-	(*empty.Empty)(nil),           // 22: google.protobuf.Empty
+	(*emptypb.Empty)(nil),         // 22: google.protobuf.Empty
 	(*longrunning.Operation)(nil), // 23: google.longrunning.Operation
 }
 var file_google_cloud_runtimeconfig_v1beta1_runtimeconfig_proto_depIdxs = []int32{
@@ -1884,7 +1884,7 @@ type RuntimeConfigManagerClient interface {
 	// Updates a RuntimeConfig resource. The configuration must exist beforehand.
 	UpdateConfig(ctx context.Context, in *UpdateConfigRequest, opts ...grpc.CallOption) (*RuntimeConfig, error)
 	// Deletes a RuntimeConfig resource.
-	DeleteConfig(ctx context.Context, in *DeleteConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteConfig(ctx context.Context, in *DeleteConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists variables within given a configuration, matching any provided
 	// filters. This only lists variable names, not the values, unless
 	// `return_values` is true, in which case only variables that user has IAM
@@ -1924,7 +1924,7 @@ type RuntimeConfigManagerClient interface {
 	// specify a prefix and `recursive` is true, then all variables with that
 	// prefix are deleted. You must set a `recursive` to true if you delete
 	// variables by prefix.
-	DeleteVariable(ctx context.Context, in *DeleteVariableRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteVariable(ctx context.Context, in *DeleteVariableRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List waiters within the given configuration.
 	ListWaiters(ctx context.Context, in *ListWaitersRequest, opts ...grpc.CallOption) (*ListWaitersResponse, error)
 	// Gets information about a single waiter.
@@ -1936,7 +1936,7 @@ type RuntimeConfigManagerClient interface {
 	// still exist and must be deleted prior to subsequent creation attempts.
 	CreateWaiter(ctx context.Context, in *CreateWaiterRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes the waiter with the specified name.
-	DeleteWaiter(ctx context.Context, in *DeleteWaiterRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteWaiter(ctx context.Context, in *DeleteWaiterRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type runtimeConfigManagerClient struct {
@@ -1983,8 +1983,8 @@ func (c *runtimeConfigManagerClient) UpdateConfig(ctx context.Context, in *Updat
 	return out, nil
 }
 
-func (c *runtimeConfigManagerClient) DeleteConfig(ctx context.Context, in *DeleteConfigRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *runtimeConfigManagerClient) DeleteConfig(ctx context.Context, in *DeleteConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.runtimeconfig.v1beta1.RuntimeConfigManager/DeleteConfig", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2037,8 +2037,8 @@ func (c *runtimeConfigManagerClient) UpdateVariable(ctx context.Context, in *Upd
 	return out, nil
 }
 
-func (c *runtimeConfigManagerClient) DeleteVariable(ctx context.Context, in *DeleteVariableRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *runtimeConfigManagerClient) DeleteVariable(ctx context.Context, in *DeleteVariableRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.runtimeconfig.v1beta1.RuntimeConfigManager/DeleteVariable", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2073,8 +2073,8 @@ func (c *runtimeConfigManagerClient) CreateWaiter(ctx context.Context, in *Creat
 	return out, nil
 }
 
-func (c *runtimeConfigManagerClient) DeleteWaiter(ctx context.Context, in *DeleteWaiterRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *runtimeConfigManagerClient) DeleteWaiter(ctx context.Context, in *DeleteWaiterRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.runtimeconfig.v1beta1.RuntimeConfigManager/DeleteWaiter", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2094,7 +2094,7 @@ type RuntimeConfigManagerServer interface {
 	// Updates a RuntimeConfig resource. The configuration must exist beforehand.
 	UpdateConfig(context.Context, *UpdateConfigRequest) (*RuntimeConfig, error)
 	// Deletes a RuntimeConfig resource.
-	DeleteConfig(context.Context, *DeleteConfigRequest) (*empty.Empty, error)
+	DeleteConfig(context.Context, *DeleteConfigRequest) (*emptypb.Empty, error)
 	// Lists variables within given a configuration, matching any provided
 	// filters. This only lists variable names, not the values, unless
 	// `return_values` is true, in which case only variables that user has IAM
@@ -2134,7 +2134,7 @@ type RuntimeConfigManagerServer interface {
 	// specify a prefix and `recursive` is true, then all variables with that
 	// prefix are deleted. You must set a `recursive` to true if you delete
 	// variables by prefix.
-	DeleteVariable(context.Context, *DeleteVariableRequest) (*empty.Empty, error)
+	DeleteVariable(context.Context, *DeleteVariableRequest) (*emptypb.Empty, error)
 	// List waiters within the given configuration.
 	ListWaiters(context.Context, *ListWaitersRequest) (*ListWaitersResponse, error)
 	// Gets information about a single waiter.
@@ -2146,7 +2146,7 @@ type RuntimeConfigManagerServer interface {
 	// still exist and must be deleted prior to subsequent creation attempts.
 	CreateWaiter(context.Context, *CreateWaiterRequest) (*longrunning.Operation, error)
 	// Deletes the waiter with the specified name.
-	DeleteWaiter(context.Context, *DeleteWaiterRequest) (*empty.Empty, error)
+	DeleteWaiter(context.Context, *DeleteWaiterRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedRuntimeConfigManagerServer can be embedded to have forward compatible implementations.
@@ -2165,7 +2165,7 @@ func (*UnimplementedRuntimeConfigManagerServer) CreateConfig(context.Context, *C
 func (*UnimplementedRuntimeConfigManagerServer) UpdateConfig(context.Context, *UpdateConfigRequest) (*RuntimeConfig, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateConfig not implemented")
 }
-func (*UnimplementedRuntimeConfigManagerServer) DeleteConfig(context.Context, *DeleteConfigRequest) (*empty.Empty, error) {
+func (*UnimplementedRuntimeConfigManagerServer) DeleteConfig(context.Context, *DeleteConfigRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteConfig not implemented")
 }
 func (*UnimplementedRuntimeConfigManagerServer) ListVariables(context.Context, *ListVariablesRequest) (*ListVariablesResponse, error) {
@@ -2183,7 +2183,7 @@ func (*UnimplementedRuntimeConfigManagerServer) CreateVariable(context.Context, 
 func (*UnimplementedRuntimeConfigManagerServer) UpdateVariable(context.Context, *UpdateVariableRequest) (*Variable, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateVariable not implemented")
 }
-func (*UnimplementedRuntimeConfigManagerServer) DeleteVariable(context.Context, *DeleteVariableRequest) (*empty.Empty, error) {
+func (*UnimplementedRuntimeConfigManagerServer) DeleteVariable(context.Context, *DeleteVariableRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteVariable not implemented")
 }
 func (*UnimplementedRuntimeConfigManagerServer) ListWaiters(context.Context, *ListWaitersRequest) (*ListWaitersResponse, error) {
@@ -2195,7 +2195,7 @@ func (*UnimplementedRuntimeConfigManagerServer) GetWaiter(context.Context, *GetW
 func (*UnimplementedRuntimeConfigManagerServer) CreateWaiter(context.Context, *CreateWaiterRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateWaiter not implemented")
 }
-func (*UnimplementedRuntimeConfigManagerServer) DeleteWaiter(context.Context, *DeleteWaiterRequest) (*empty.Empty, error) {
+func (*UnimplementedRuntimeConfigManagerServer) DeleteWaiter(context.Context, *DeleteWaiterRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteWaiter not implemented")
 }
 

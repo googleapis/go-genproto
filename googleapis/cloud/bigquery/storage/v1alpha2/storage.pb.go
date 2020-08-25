@@ -26,9 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	grpc "google.golang.org/grpc"
@@ -36,6 +33,9 @@ import (
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -121,7 +121,7 @@ type AppendRowsRequest struct {
 	// Optional. If present, the write is only performed if the next append offset is same
 	// as the provided value. If not present, the write is performed at the
 	// current end of stream.
-	Offset *wrappers.Int64Value `protobuf:"bytes,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	Offset *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=offset,proto3" json:"offset,omitempty"`
 	// Input rows. The `writer_schema` field must be specified at the initial
 	// request and currently, it will be ignored if specified in following
 	// requests. Following requests must have data in the same format as the
@@ -175,7 +175,7 @@ func (x *AppendRowsRequest) GetWriteStream() string {
 	return ""
 }
 
-func (x *AppendRowsRequest) GetOffset() *wrappers.Int64Value {
+func (x *AppendRowsRequest) GetOffset() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Offset
 	}
@@ -424,7 +424,7 @@ type BatchCommitWriteStreamsResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time at which streams were committed in microseconds granularity.
-	CommitTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
+	CommitTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=commit_time,json=commitTime,proto3" json:"commit_time,omitempty"`
 }
 
 func (x *BatchCommitWriteStreamsResponse) Reset() {
@@ -459,7 +459,7 @@ func (*BatchCommitWriteStreamsResponse) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_storage_v1alpha2_storage_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *BatchCommitWriteStreamsResponse) GetCommitTime() *timestamp.Timestamp {
+func (x *BatchCommitWriteStreamsResponse) GetCommitTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CommitTime
 	}
@@ -997,10 +997,10 @@ var file_google_cloud_bigquery_storage_v1alpha2_storage_proto_goTypes = []interf
 	(*FlushRowsResponse)(nil),               // 9: google.cloud.bigquery.storage.v1alpha2.FlushRowsResponse
 	(*AppendRowsRequest_ProtoData)(nil),     // 10: google.cloud.bigquery.storage.v1alpha2.AppendRowsRequest.ProtoData
 	(*WriteStream)(nil),                     // 11: google.cloud.bigquery.storage.v1alpha2.WriteStream
-	(*wrappers.Int64Value)(nil),             // 12: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),           // 12: google.protobuf.Int64Value
 	(*status.Status)(nil),                   // 13: google.rpc.Status
 	(*TableSchema)(nil),                     // 14: google.cloud.bigquery.storage.v1alpha2.TableSchema
-	(*timestamp.Timestamp)(nil),             // 15: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),           // 15: google.protobuf.Timestamp
 	(*ProtoSchema)(nil),                     // 16: google.cloud.bigquery.storage.v1alpha2.ProtoSchema
 	(*ProtoRows)(nil),                       // 17: google.cloud.bigquery.storage.v1alpha2.ProtoRows
 }

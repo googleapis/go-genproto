@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,11 +56,11 @@ type KeywordPlanNegativeKeyword struct {
 	// `customers/{customer_id}/keywordPlanNegativeKeywords/{kp_negative_keyword_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// The Keyword Plan campaign to which this negative keyword belongs.
-	KeywordPlanCampaign *wrappers.StringValue `protobuf:"bytes,2,opt,name=keyword_plan_campaign,json=keywordPlanCampaign,proto3" json:"keyword_plan_campaign,omitempty"`
+	KeywordPlanCampaign *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=keyword_plan_campaign,json=keywordPlanCampaign,proto3" json:"keyword_plan_campaign,omitempty"`
 	// Output only. The ID of the Keyword Plan negative keyword.
-	Id *wrappers.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=id,proto3" json:"id,omitempty"`
 	// The keyword text.
-	Text *wrappers.StringValue `protobuf:"bytes,4,opt,name=text,proto3" json:"text,omitempty"`
+	Text *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=text,proto3" json:"text,omitempty"`
 	// The keyword match type.
 	MatchType enums.KeywordMatchTypeEnum_KeywordMatchType `protobuf:"varint,5,opt,name=match_type,json=matchType,proto3,enum=google.ads.googleads.v2.enums.KeywordMatchTypeEnum_KeywordMatchType" json:"match_type,omitempty"`
 }
@@ -104,21 +104,21 @@ func (x *KeywordPlanNegativeKeyword) GetResourceName() string {
 	return ""
 }
 
-func (x *KeywordPlanNegativeKeyword) GetKeywordPlanCampaign() *wrappers.StringValue {
+func (x *KeywordPlanNegativeKeyword) GetKeywordPlanCampaign() *wrapperspb.StringValue {
 	if x != nil {
 		return x.KeywordPlanCampaign
 	}
 	return nil
 }
 
-func (x *KeywordPlanNegativeKeyword) GetId() *wrappers.Int64Value {
+func (x *KeywordPlanNegativeKeyword) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *KeywordPlanNegativeKeyword) GetText() *wrappers.StringValue {
+func (x *KeywordPlanNegativeKeyword) GetText() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Text
 	}
@@ -226,8 +226,8 @@ func file_google_ads_googleads_v2_resources_keyword_plan_negative_keyword_proto_
 var file_google_ads_googleads_v2_resources_keyword_plan_negative_keyword_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_keyword_plan_negative_keyword_proto_goTypes = []interface{}{
 	(*KeywordPlanNegativeKeyword)(nil),               // 0: google.ads.googleads.v2.resources.KeywordPlanNegativeKeyword
-	(*wrappers.StringValue)(nil),                     // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                      // 2: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                   // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                    // 2: google.protobuf.Int64Value
 	(enums.KeywordMatchTypeEnum_KeywordMatchType)(0), // 3: google.ads.googleads.v2.enums.KeywordMatchTypeEnum.KeywordMatchType
 }
 var file_google_ads_googleads_v2_resources_keyword_plan_negative_keyword_proto_depIdxs = []int32{

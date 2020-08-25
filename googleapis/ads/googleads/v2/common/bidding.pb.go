@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,7 +54,7 @@ type Commission struct {
 	// advertiser will be billed. A commission rate of x should be passed into
 	// this field as (x * 1,000,000). For example, 106,000 represents a commission
 	// rate of 0.106 (10.6%).
-	CommissionRateMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=commission_rate_micros,json=commissionRateMicros,proto3" json:"commission_rate_micros,omitempty"`
+	CommissionRateMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=commission_rate_micros,json=commissionRateMicros,proto3" json:"commission_rate_micros,omitempty"`
 }
 
 func (x *Commission) Reset() {
@@ -89,7 +89,7 @@ func (*Commission) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_bidding_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Commission) GetCommissionRateMicros() *wrappers.Int64Value {
+func (x *Commission) GetCommissionRateMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CommissionRateMicros
 	}
@@ -144,7 +144,7 @@ type ManualCpc struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Whether bids are to be enhanced based on conversion optimizer data.
-	EnhancedCpcEnabled *wrappers.BoolValue `protobuf:"bytes,1,opt,name=enhanced_cpc_enabled,json=enhancedCpcEnabled,proto3" json:"enhanced_cpc_enabled,omitempty"`
+	EnhancedCpcEnabled *wrapperspb.BoolValue `protobuf:"bytes,1,opt,name=enhanced_cpc_enabled,json=enhancedCpcEnabled,proto3" json:"enhanced_cpc_enabled,omitempty"`
 }
 
 func (x *ManualCpc) Reset() {
@@ -179,7 +179,7 @@ func (*ManualCpc) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_bidding_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ManualCpc) GetEnhancedCpcEnabled() *wrappers.BoolValue {
+func (x *ManualCpc) GetEnhancedCpcEnabled() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.EnhancedCpcEnabled
 	}
@@ -316,7 +316,7 @@ type MaximizeConversionValue struct {
 	// target ROAS is high, the bid strategy may not be able to spend the full
 	// budget. If the target ROAS is not set, the bid strategy will aim to
 	// achieve the highest possible ROAS for the budget.
-	TargetRoas *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=target_roas,json=targetRoas,proto3" json:"target_roas,omitempty"`
+	TargetRoas *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=target_roas,json=targetRoas,proto3" json:"target_roas,omitempty"`
 }
 
 func (x *MaximizeConversionValue) Reset() {
@@ -351,7 +351,7 @@ func (*MaximizeConversionValue) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_bidding_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *MaximizeConversionValue) GetTargetRoas() *wrappers.DoubleValue {
+func (x *MaximizeConversionValue) GetTargetRoas() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.TargetRoas
 	}
@@ -371,22 +371,22 @@ type PageOnePromoted struct {
 	StrategyGoal enums.PageOnePromotedStrategyGoalEnum_PageOnePromotedStrategyGoal `protobuf:"varint,1,opt,name=strategy_goal,json=strategyGoal,proto3,enum=google.ads.googleads.v2.enums.PageOnePromotedStrategyGoalEnum_PageOnePromotedStrategyGoal" json:"strategy_goal,omitempty"`
 	// Maximum bid limit that can be set by the bid strategy.
 	// The limit applies to all keywords managed by the strategy.
-	CpcBidCeilingMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
+	CpcBidCeilingMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
 	// Bid multiplier to be applied to the relevant bid estimate (depending on
 	// the `strategy_goal`) in determining a keyword's new CPC bid.
-	BidModifier *wrappers.DoubleValue `protobuf:"bytes,3,opt,name=bid_modifier,json=bidModifier,proto3" json:"bid_modifier,omitempty"`
+	BidModifier *wrapperspb.DoubleValue `protobuf:"bytes,3,opt,name=bid_modifier,json=bidModifier,proto3" json:"bid_modifier,omitempty"`
 	// Whether the strategy should always follow bid estimate changes, or only
 	// increase.
 	// If false, always sets a keyword's new bid to the current bid estimate.
 	// If true, only updates a keyword's bid if the current bid estimate is
 	// greater than the current bid.
-	OnlyRaiseCpcBids *wrappers.BoolValue `protobuf:"bytes,4,opt,name=only_raise_cpc_bids,json=onlyRaiseCpcBids,proto3" json:"only_raise_cpc_bids,omitempty"`
+	OnlyRaiseCpcBids *wrapperspb.BoolValue `protobuf:"bytes,4,opt,name=only_raise_cpc_bids,json=onlyRaiseCpcBids,proto3" json:"only_raise_cpc_bids,omitempty"`
 	// Whether the strategy is allowed to raise bids when the throttling
 	// rate of the budget it is serving out of rises above a threshold.
-	RaiseCpcBidWhenBudgetConstrained *wrappers.BoolValue `protobuf:"bytes,5,opt,name=raise_cpc_bid_when_budget_constrained,json=raiseCpcBidWhenBudgetConstrained,proto3" json:"raise_cpc_bid_when_budget_constrained,omitempty"`
+	RaiseCpcBidWhenBudgetConstrained *wrapperspb.BoolValue `protobuf:"bytes,5,opt,name=raise_cpc_bid_when_budget_constrained,json=raiseCpcBidWhenBudgetConstrained,proto3" json:"raise_cpc_bid_when_budget_constrained,omitempty"`
 	// Whether the strategy is allowed to raise bids on keywords with
 	// lower-range quality scores.
-	RaiseCpcBidWhenQualityScoreIsLow *wrappers.BoolValue `protobuf:"bytes,6,opt,name=raise_cpc_bid_when_quality_score_is_low,json=raiseCpcBidWhenQualityScoreIsLow,proto3" json:"raise_cpc_bid_when_quality_score_is_low,omitempty"`
+	RaiseCpcBidWhenQualityScoreIsLow *wrapperspb.BoolValue `protobuf:"bytes,6,opt,name=raise_cpc_bid_when_quality_score_is_low,json=raiseCpcBidWhenQualityScoreIsLow,proto3" json:"raise_cpc_bid_when_quality_score_is_low,omitempty"`
 }
 
 func (x *PageOnePromoted) Reset() {
@@ -428,35 +428,35 @@ func (x *PageOnePromoted) GetStrategyGoal() enums.PageOnePromotedStrategyGoalEnu
 	return enums.PageOnePromotedStrategyGoalEnum_UNSPECIFIED
 }
 
-func (x *PageOnePromoted) GetCpcBidCeilingMicros() *wrappers.Int64Value {
+func (x *PageOnePromoted) GetCpcBidCeilingMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidCeilingMicros
 	}
 	return nil
 }
 
-func (x *PageOnePromoted) GetBidModifier() *wrappers.DoubleValue {
+func (x *PageOnePromoted) GetBidModifier() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.BidModifier
 	}
 	return nil
 }
 
-func (x *PageOnePromoted) GetOnlyRaiseCpcBids() *wrappers.BoolValue {
+func (x *PageOnePromoted) GetOnlyRaiseCpcBids() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.OnlyRaiseCpcBids
 	}
 	return nil
 }
 
-func (x *PageOnePromoted) GetRaiseCpcBidWhenBudgetConstrained() *wrappers.BoolValue {
+func (x *PageOnePromoted) GetRaiseCpcBidWhenBudgetConstrained() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.RaiseCpcBidWhenBudgetConstrained
 	}
 	return nil
 }
 
-func (x *PageOnePromoted) GetRaiseCpcBidWhenQualityScoreIsLow() *wrappers.BoolValue {
+func (x *PageOnePromoted) GetRaiseCpcBidWhenQualityScoreIsLow() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.RaiseCpcBidWhenQualityScoreIsLow
 	}
@@ -473,13 +473,13 @@ type TargetCpa struct {
 	// Average CPA target.
 	// This target should be greater than or equal to minimum billable unit based
 	// on the currency for the account.
-	TargetCpaMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=target_cpa_micros,json=targetCpaMicros,proto3" json:"target_cpa_micros,omitempty"`
+	TargetCpaMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=target_cpa_micros,json=targetCpaMicros,proto3" json:"target_cpa_micros,omitempty"`
 	// Maximum bid limit that can be set by the bid strategy.
 	// The limit applies to all keywords managed by the strategy.
-	CpcBidCeilingMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
+	CpcBidCeilingMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
 	// Minimum bid limit that can be set by the bid strategy.
 	// The limit applies to all keywords managed by the strategy.
-	CpcBidFloorMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_floor_micros,json=cpcBidFloorMicros,proto3" json:"cpc_bid_floor_micros,omitempty"`
+	CpcBidFloorMicros *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_floor_micros,json=cpcBidFloorMicros,proto3" json:"cpc_bid_floor_micros,omitempty"`
 }
 
 func (x *TargetCpa) Reset() {
@@ -514,21 +514,21 @@ func (*TargetCpa) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_bidding_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *TargetCpa) GetTargetCpaMicros() *wrappers.Int64Value {
+func (x *TargetCpa) GetTargetCpaMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TargetCpaMicros
 	}
 	return nil
 }
 
-func (x *TargetCpa) GetCpcBidCeilingMicros() *wrappers.Int64Value {
+func (x *TargetCpa) GetCpcBidCeilingMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidCeilingMicros
 	}
 	return nil
 }
 
-func (x *TargetCpa) GetCpcBidFloorMicros() *wrappers.Int64Value {
+func (x *TargetCpa) GetCpcBidFloorMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidFloorMicros
 	}
@@ -588,11 +588,11 @@ type TargetImpressionShare struct {
 	Location enums.TargetImpressionShareLocationEnum_TargetImpressionShareLocation `protobuf:"varint,1,opt,name=location,proto3,enum=google.ads.googleads.v2.enums.TargetImpressionShareLocationEnum_TargetImpressionShareLocation" json:"location,omitempty"`
 	// The desired fraction of ads to be shown in the targeted location in micros.
 	// E.g. 1% equals 10,000.
-	LocationFractionMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=location_fraction_micros,json=locationFractionMicros,proto3" json:"location_fraction_micros,omitempty"`
+	LocationFractionMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=location_fraction_micros,json=locationFractionMicros,proto3" json:"location_fraction_micros,omitempty"`
 	// The highest CPC bid the automated bidding system is permitted to specify.
 	// This is a required field entered by the advertiser that sets the ceiling
 	// and specified in local micros.
-	CpcBidCeilingMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
+	CpcBidCeilingMicros *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
 }
 
 func (x *TargetImpressionShare) Reset() {
@@ -634,14 +634,14 @@ func (x *TargetImpressionShare) GetLocation() enums.TargetImpressionShareLocatio
 	return enums.TargetImpressionShareLocationEnum_UNSPECIFIED
 }
 
-func (x *TargetImpressionShare) GetLocationFractionMicros() *wrappers.Int64Value {
+func (x *TargetImpressionShare) GetLocationFractionMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.LocationFractionMicros
 	}
 	return nil
 }
 
-func (x *TargetImpressionShare) GetCpcBidCeilingMicros() *wrappers.Int64Value {
+func (x *TargetImpressionShare) GetCpcBidCeilingMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidCeilingMicros
 	}
@@ -662,21 +662,21 @@ type TargetOutrankShare struct {
 	// advertiser appears above the competitor in the search results, or appears
 	// in the search results when the competitor does not.
 	// Value must be between 1 and 1000000, inclusive.
-	TargetOutrankShareMicros *wrappers.Int32Value `protobuf:"bytes,1,opt,name=target_outrank_share_micros,json=targetOutrankShareMicros,proto3" json:"target_outrank_share_micros,omitempty"`
+	TargetOutrankShareMicros *wrapperspb.Int32Value `protobuf:"bytes,1,opt,name=target_outrank_share_micros,json=targetOutrankShareMicros,proto3" json:"target_outrank_share_micros,omitempty"`
 	// Competitor's visible domain URL.
-	CompetitorDomain *wrappers.StringValue `protobuf:"bytes,2,opt,name=competitor_domain,json=competitorDomain,proto3" json:"competitor_domain,omitempty"`
+	CompetitorDomain *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=competitor_domain,json=competitorDomain,proto3" json:"competitor_domain,omitempty"`
 	// Maximum bid limit that can be set by the bid strategy.
 	// The limit applies to all keywords managed by the strategy.
-	CpcBidCeilingMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
+	CpcBidCeilingMicros *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
 	// Whether the strategy should always follow bid estimate changes,
 	// or only increase.
 	// If false, always set a keyword's new bid to the current bid estimate.
 	// If true, only updates a keyword's bid if the current bid estimate is
 	// greater than the current bid.
-	OnlyRaiseCpcBids *wrappers.BoolValue `protobuf:"bytes,4,opt,name=only_raise_cpc_bids,json=onlyRaiseCpcBids,proto3" json:"only_raise_cpc_bids,omitempty"`
+	OnlyRaiseCpcBids *wrapperspb.BoolValue `protobuf:"bytes,4,opt,name=only_raise_cpc_bids,json=onlyRaiseCpcBids,proto3" json:"only_raise_cpc_bids,omitempty"`
 	// Whether the strategy is allowed to raise bids on keywords with
 	// lower-range quality scores.
-	RaiseCpcBidWhenQualityScoreIsLow *wrappers.BoolValue `protobuf:"bytes,5,opt,name=raise_cpc_bid_when_quality_score_is_low,json=raiseCpcBidWhenQualityScoreIsLow,proto3" json:"raise_cpc_bid_when_quality_score_is_low,omitempty"`
+	RaiseCpcBidWhenQualityScoreIsLow *wrapperspb.BoolValue `protobuf:"bytes,5,opt,name=raise_cpc_bid_when_quality_score_is_low,json=raiseCpcBidWhenQualityScoreIsLow,proto3" json:"raise_cpc_bid_when_quality_score_is_low,omitempty"`
 }
 
 func (x *TargetOutrankShare) Reset() {
@@ -711,35 +711,35 @@ func (*TargetOutrankShare) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_bidding_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *TargetOutrankShare) GetTargetOutrankShareMicros() *wrappers.Int32Value {
+func (x *TargetOutrankShare) GetTargetOutrankShareMicros() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.TargetOutrankShareMicros
 	}
 	return nil
 }
 
-func (x *TargetOutrankShare) GetCompetitorDomain() *wrappers.StringValue {
+func (x *TargetOutrankShare) GetCompetitorDomain() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CompetitorDomain
 	}
 	return nil
 }
 
-func (x *TargetOutrankShare) GetCpcBidCeilingMicros() *wrappers.Int64Value {
+func (x *TargetOutrankShare) GetCpcBidCeilingMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidCeilingMicros
 	}
 	return nil
 }
 
-func (x *TargetOutrankShare) GetOnlyRaiseCpcBids() *wrappers.BoolValue {
+func (x *TargetOutrankShare) GetOnlyRaiseCpcBids() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.OnlyRaiseCpcBids
 	}
 	return nil
 }
 
-func (x *TargetOutrankShare) GetRaiseCpcBidWhenQualityScoreIsLow() *wrappers.BoolValue {
+func (x *TargetOutrankShare) GetRaiseCpcBidWhenQualityScoreIsLow() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.RaiseCpcBidWhenQualityScoreIsLow
 	}
@@ -755,13 +755,13 @@ type TargetRoas struct {
 
 	// Required. The desired revenue (based on conversion data) per unit of spend.
 	// Value must be between 0.01 and 1000.0, inclusive.
-	TargetRoas *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=target_roas,json=targetRoas,proto3" json:"target_roas,omitempty"`
+	TargetRoas *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=target_roas,json=targetRoas,proto3" json:"target_roas,omitempty"`
 	// Maximum bid limit that can be set by the bid strategy.
 	// The limit applies to all keywords managed by the strategy.
-	CpcBidCeilingMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
+	CpcBidCeilingMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
 	// Minimum bid limit that can be set by the bid strategy.
 	// The limit applies to all keywords managed by the strategy.
-	CpcBidFloorMicros *wrappers.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_floor_micros,json=cpcBidFloorMicros,proto3" json:"cpc_bid_floor_micros,omitempty"`
+	CpcBidFloorMicros *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=cpc_bid_floor_micros,json=cpcBidFloorMicros,proto3" json:"cpc_bid_floor_micros,omitempty"`
 }
 
 func (x *TargetRoas) Reset() {
@@ -796,21 +796,21 @@ func (*TargetRoas) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_bidding_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *TargetRoas) GetTargetRoas() *wrappers.DoubleValue {
+func (x *TargetRoas) GetTargetRoas() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.TargetRoas
 	}
 	return nil
 }
 
-func (x *TargetRoas) GetCpcBidCeilingMicros() *wrappers.Int64Value {
+func (x *TargetRoas) GetCpcBidCeilingMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidCeilingMicros
 	}
 	return nil
 }
 
-func (x *TargetRoas) GetCpcBidFloorMicros() *wrappers.Int64Value {
+func (x *TargetRoas) GetCpcBidFloorMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidFloorMicros
 	}
@@ -828,10 +828,10 @@ type TargetSpend struct {
 	// A TargetSpend bidder will attempt to spend the smaller of this value
 	// or the natural throttling spend amount.
 	// If not specified, the budget is used as the spend target.
-	TargetSpendMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=target_spend_micros,json=targetSpendMicros,proto3" json:"target_spend_micros,omitempty"`
+	TargetSpendMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=target_spend_micros,json=targetSpendMicros,proto3" json:"target_spend_micros,omitempty"`
 	// Maximum bid limit that can be set by the bid strategy.
 	// The limit applies to all keywords managed by the strategy.
-	CpcBidCeilingMicros *wrappers.Int64Value `protobuf:"bytes,2,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
+	CpcBidCeilingMicros *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
 }
 
 func (x *TargetSpend) Reset() {
@@ -866,14 +866,14 @@ func (*TargetSpend) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_bidding_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *TargetSpend) GetTargetSpendMicros() *wrappers.Int64Value {
+func (x *TargetSpend) GetTargetSpendMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TargetSpendMicros
 	}
 	return nil
 }
 
-func (x *TargetSpend) GetCpcBidCeilingMicros() *wrappers.Int64Value {
+func (x *TargetSpend) GetCpcBidCeilingMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidCeilingMicros
 	}
@@ -891,12 +891,12 @@ type PercentCpc struct {
 	// an optional field entered by the advertiser and specified in local micros.
 	// Note: A zero value is interpreted in the same way as having bid_ceiling
 	// undefined.
-	CpcBidCeilingMicros *wrappers.Int64Value `protobuf:"bytes,1,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
+	CpcBidCeilingMicros *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=cpc_bid_ceiling_micros,json=cpcBidCeilingMicros,proto3" json:"cpc_bid_ceiling_micros,omitempty"`
 	// Adjusts the bid for each auction upward or downward, depending on the
 	// likelihood of a conversion. Individual bids may exceed
 	// cpc_bid_ceiling_micros, but the average bid amount for a campaign should
 	// not.
-	EnhancedCpcEnabled *wrappers.BoolValue `protobuf:"bytes,2,opt,name=enhanced_cpc_enabled,json=enhancedCpcEnabled,proto3" json:"enhanced_cpc_enabled,omitempty"`
+	EnhancedCpcEnabled *wrapperspb.BoolValue `protobuf:"bytes,2,opt,name=enhanced_cpc_enabled,json=enhancedCpcEnabled,proto3" json:"enhanced_cpc_enabled,omitempty"`
 }
 
 func (x *PercentCpc) Reset() {
@@ -931,14 +931,14 @@ func (*PercentCpc) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_common_bidding_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *PercentCpc) GetCpcBidCeilingMicros() *wrappers.Int64Value {
+func (x *PercentCpc) GetCpcBidCeilingMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.CpcBidCeilingMicros
 	}
 	return nil
 }
 
-func (x *PercentCpc) GetEnhancedCpcEnabled() *wrappers.BoolValue {
+func (x *PercentCpc) GetEnhancedCpcEnabled() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.EnhancedCpcEnabled
 	}
@@ -1172,13 +1172,13 @@ var file_google_ads_googleads_v2_common_bidding_proto_goTypes = []interface{}{
 	(*TargetRoas)(nil),              // 12: google.ads.googleads.v2.common.TargetRoas
 	(*TargetSpend)(nil),             // 13: google.ads.googleads.v2.common.TargetSpend
 	(*PercentCpc)(nil),              // 14: google.ads.googleads.v2.common.PercentCpc
-	(*wrappers.Int64Value)(nil),     // 15: google.protobuf.Int64Value
-	(*wrappers.BoolValue)(nil),      // 16: google.protobuf.BoolValue
-	(*wrappers.DoubleValue)(nil),    // 17: google.protobuf.DoubleValue
+	(*wrapperspb.Int64Value)(nil),   // 15: google.protobuf.Int64Value
+	(*wrapperspb.BoolValue)(nil),    // 16: google.protobuf.BoolValue
+	(*wrapperspb.DoubleValue)(nil),  // 17: google.protobuf.DoubleValue
 	(enums.PageOnePromotedStrategyGoalEnum_PageOnePromotedStrategyGoal)(0),     // 18: google.ads.googleads.v2.enums.PageOnePromotedStrategyGoalEnum.PageOnePromotedStrategyGoal
 	(enums.TargetImpressionShareLocationEnum_TargetImpressionShareLocation)(0), // 19: google.ads.googleads.v2.enums.TargetImpressionShareLocationEnum.TargetImpressionShareLocation
-	(*wrappers.Int32Value)(nil),  // 20: google.protobuf.Int32Value
-	(*wrappers.StringValue)(nil), // 21: google.protobuf.StringValue
+	(*wrapperspb.Int32Value)(nil),                                              // 20: google.protobuf.Int32Value
+	(*wrapperspb.StringValue)(nil),                                             // 21: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v2_common_bidding_proto_depIdxs = []int32{
 	15, // 0: google.ads.googleads.v2.common.Commission.commission_rate_micros:type_name -> google.protobuf.Int64Value

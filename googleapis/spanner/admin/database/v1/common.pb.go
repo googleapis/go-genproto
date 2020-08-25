@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -53,10 +53,10 @@ type OperationProgress struct {
 	// Values are between 0 and 100 inclusive.
 	ProgressPercent int32 `protobuf:"varint,1,opt,name=progress_percent,json=progressPercent,proto3" json:"progress_percent,omitempty"`
 	// Time the request was received.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// If set, the time at which this operation failed or was completed
 	// successfully.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
 func (x *OperationProgress) Reset() {
@@ -98,14 +98,14 @@ func (x *OperationProgress) GetProgressPercent() int32 {
 	return 0
 }
 
-func (x *OperationProgress) GetStartTime() *timestamp.Timestamp {
+func (x *OperationProgress) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *OperationProgress) GetEndTime() *timestamp.Timestamp {
+func (x *OperationProgress) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -170,8 +170,8 @@ func file_google_spanner_admin_database_v1_common_proto_rawDescGZIP() []byte {
 
 var file_google_spanner_admin_database_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_spanner_admin_database_v1_common_proto_goTypes = []interface{}{
-	(*OperationProgress)(nil),   // 0: google.spanner.admin.database.v1.OperationProgress
-	(*timestamp.Timestamp)(nil), // 1: google.protobuf.Timestamp
+	(*OperationProgress)(nil),     // 0: google.spanner.admin.database.v1.OperationProgress
+	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
 }
 var file_google_spanner_admin_database_v1_common_proto_depIdxs = []int32{
 	1, // 0: google.spanner.admin.database.v1.OperationProgress.start_time:type_name -> google.protobuf.Timestamp

@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v4/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,7 +56,7 @@ type CustomerNegativeCriterion struct {
 	// `customers/{customer_id}/customerNegativeCriteria/{criterion_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the criterion.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. The type of the criterion.
 	Type enums.CriterionTypeEnum_CriterionType `protobuf:"varint,3,opt,name=type,proto3,enum=google.ads.googleads.v4.enums.CriterionTypeEnum_CriterionType" json:"type,omitempty"`
 	// The customer negative criterion.
@@ -112,7 +112,7 @@ func (x *CustomerNegativeCriterion) GetResourceName() string {
 	return ""
 }
 
-func (x *CustomerNegativeCriterion) GetId() *wrappers.Int64Value {
+func (x *CustomerNegativeCriterion) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
@@ -342,7 +342,7 @@ func file_google_ads_googleads_v4_resources_customer_negative_criterion_proto_ra
 var file_google_ads_googleads_v4_resources_customer_negative_criterion_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_resources_customer_negative_criterion_proto_goTypes = []interface{}{
 	(*CustomerNegativeCriterion)(nil),          // 0: google.ads.googleads.v4.resources.CustomerNegativeCriterion
-	(*wrappers.Int64Value)(nil),                // 1: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),              // 1: google.protobuf.Int64Value
 	(enums.CriterionTypeEnum_CriterionType)(0), // 2: google.ads.googleads.v4.enums.CriterionTypeEnum.CriterionType
 	(*common.ContentLabelInfo)(nil),            // 3: google.ads.googleads.v4.common.ContentLabelInfo
 	(*common.MobileApplicationInfo)(nil),       // 4: google.ads.googleads.v4.common.MobileApplicationInfo

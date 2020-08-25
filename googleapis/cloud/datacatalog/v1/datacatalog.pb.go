@@ -26,15 +26,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -386,7 +386,7 @@ type UpdateEntryGroupRequest struct {
 	EntryGroup *EntryGroup `protobuf:"bytes,1,opt,name=entry_group,json=entryGroup,proto3" json:"entry_group,omitempty"`
 	// The fields to update on the entry group. If absent or empty, all modifiable
 	// fields are updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateEntryGroupRequest) Reset() {
@@ -428,7 +428,7 @@ func (x *UpdateEntryGroupRequest) GetEntryGroup() *EntryGroup {
 	return nil
 }
 
-func (x *UpdateEntryGroupRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateEntryGroupRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -446,7 +446,7 @@ type GetEntryGroupRequest struct {
 	// `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The fields to return. If not set or empty, all fields are returned.
-	ReadMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
+	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
 }
 
 func (x *GetEntryGroupRequest) Reset() {
@@ -488,7 +488,7 @@ func (x *GetEntryGroupRequest) GetName() string {
 	return ""
 }
 
-func (x *GetEntryGroupRequest) GetReadMask() *field_mask.FieldMask {
+func (x *GetEntryGroupRequest) GetReadMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.ReadMask
 	}
@@ -790,7 +790,7 @@ type UpdateEntryRequest struct {
 	//    * user_specified_system
 	//    * linked_resource
 	//    * source_system_timestamps
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateEntryRequest) Reset() {
@@ -832,7 +832,7 @@ func (x *UpdateEntryRequest) GetEntry() *Entry {
 	return nil
 }
 
-func (x *UpdateEntryRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateEntryRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1571,7 +1571,7 @@ type UpdateTagTemplateRequest struct {
 	//   * `display_name`
 	//
 	// If absent or empty, all of the allowed fields above will be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateTagTemplateRequest) Reset() {
@@ -1613,7 +1613,7 @@ func (x *UpdateTagTemplateRequest) GetTagTemplate() *TagTemplate {
 	return nil
 }
 
-func (x *UpdateTagTemplateRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateTagTemplateRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1759,7 +1759,7 @@ type UpdateTagRequest struct {
 	Tag *Tag `protobuf:"bytes,1,opt,name=tag,proto3" json:"tag,omitempty"`
 	// The fields to update on the Tag. If absent or empty, all modifiable fields
 	// are updated. Currently the only modifiable field is the field `fields`.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateTagRequest) Reset() {
@@ -1801,7 +1801,7 @@ func (x *UpdateTagRequest) GetTag() *Tag {
 	return nil
 }
 
-func (x *UpdateTagRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateTagRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1964,7 +1964,7 @@ type UpdateTagTemplateFieldRequest struct {
 	// existing values. Therefore, enum values can only be added, existing enum
 	// values cannot be deleted nor renamed. Updating a template field from
 	// optional to required is NOT allowed.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateTagTemplateFieldRequest) Reset() {
@@ -2013,7 +2013,7 @@ func (x *UpdateTagTemplateFieldRequest) GetTagTemplateField() *TagTemplateField 
 	return nil
 }
 
-func (x *UpdateTagTemplateFieldRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateTagTemplateFieldRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2303,7 +2303,7 @@ type ListEntriesRequest struct {
 	// fields are returned.
 	// For example, setting read_mask to contain only one path "name" will cause
 	// ListEntries to return a list of Entries with only "name" field.
-	ReadMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
+	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
 }
 
 func (x *ListEntriesRequest) Reset() {
@@ -2359,7 +2359,7 @@ func (x *ListEntriesRequest) GetPageToken() string {
 	return ""
 }
 
-func (x *ListEntriesRequest) GetReadMask() *field_mask.FieldMask {
+func (x *ListEntriesRequest) GetReadMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.ReadMask
 	}
@@ -3409,7 +3409,7 @@ var file_google_cloud_datacatalog_v1_datacatalog_proto_goTypes = []interface{}{
 	(*ListEntriesResponse)(nil),           // 30: google.cloud.datacatalog.v1.ListEntriesResponse
 	(*SearchCatalogRequest_Scope)(nil),    // 31: google.cloud.datacatalog.v1.SearchCatalogRequest.Scope
 	(*SearchCatalogResult)(nil),           // 32: google.cloud.datacatalog.v1.SearchCatalogResult
-	(*field_mask.FieldMask)(nil),          // 33: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),         // 33: google.protobuf.FieldMask
 	(IntegratedSystem)(0),                 // 34: google.cloud.datacatalog.v1.IntegratedSystem
 	(*GcsFilesetSpec)(nil),                // 35: google.cloud.datacatalog.v1.GcsFilesetSpec
 	(*BigQueryTableSpec)(nil),             // 36: google.cloud.datacatalog.v1.BigQueryTableSpec
@@ -3422,7 +3422,7 @@ var file_google_cloud_datacatalog_v1_datacatalog_proto_goTypes = []interface{}{
 	(*v1.SetIamPolicyRequest)(nil),        // 43: google.iam.v1.SetIamPolicyRequest
 	(*v1.GetIamPolicyRequest)(nil),        // 44: google.iam.v1.GetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),  // 45: google.iam.v1.TestIamPermissionsRequest
-	(*empty.Empty)(nil),                   // 46: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                 // 46: google.protobuf.Empty
 	(*v1.Policy)(nil),                     // 47: google.iam.v1.Policy
 	(*v1.TestIamPermissionsResponse)(nil), // 48: google.iam.v1.TestIamPermissionsResponse
 }
@@ -4000,7 +4000,7 @@ type DataCatalogClient interface {
 	// identified by the `name` parameter (see [Data Catalog Resource Project]
 	// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
 	// more information).
-	DeleteEntryGroup(ctx context.Context, in *DeleteEntryGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteEntryGroup(ctx context.Context, in *DeleteEntryGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists entry groups.
 	ListEntryGroups(ctx context.Context, in *ListEntryGroupsRequest, opts ...grpc.CallOption) (*ListEntryGroupsResponse, error)
 	// Creates an entry. Only entries of 'FILESET' type or user-specified type can
@@ -4026,7 +4026,7 @@ type DataCatalogClient interface {
 	// the `name` parameter (see [Data Catalog Resource Project]
 	// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
 	// more information).
-	DeleteEntry(ctx context.Context, in *DeleteEntryRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteEntry(ctx context.Context, in *DeleteEntryRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets an entry.
 	GetEntry(ctx context.Context, in *GetEntryRequest, opts ...grpc.CallOption) (*Entry, error)
 	// Get an entry by target resource name. This method allows clients to use
@@ -4056,7 +4056,7 @@ type DataCatalogClient interface {
 	// the `name` parameter (see [Data Catalog Resource Project]
 	// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
 	// more information).
-	DeleteTagTemplate(ctx context.Context, in *DeleteTagTemplateRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTagTemplate(ctx context.Context, in *DeleteTagTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a field in a tag template. The user should enable the Data Catalog
 	// API in the project identified by the `parent` parameter (see
 	// [Data Catalog Resource
@@ -4080,7 +4080,7 @@ type DataCatalogClient interface {
 	// the `name` parameter (see [Data Catalog Resource Project]
 	// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
 	// more information).
-	DeleteTagTemplateField(ctx context.Context, in *DeleteTagTemplateFieldRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTagTemplateField(ctx context.Context, in *DeleteTagTemplateFieldRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Creates a tag on an [Entry][google.cloud.datacatalog.v1.Entry].
 	// Note: The project identified by the `parent` parameter for the
 	// [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
@@ -4092,7 +4092,7 @@ type DataCatalogClient interface {
 	// Updates an existing tag.
 	UpdateTag(ctx context.Context, in *UpdateTagRequest, opts ...grpc.CallOption) (*Tag, error)
 	// Deletes a tag.
-	DeleteTag(ctx context.Context, in *DeleteTagRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteTag(ctx context.Context, in *DeleteTagRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Lists the tags on an [Entry][google.cloud.datacatalog.v1.Entry].
 	ListTags(ctx context.Context, in *ListTagsRequest, opts ...grpc.CallOption) (*ListTagsResponse, error)
 	// Sets the access control policy for a resource. Replaces any existing
@@ -4187,8 +4187,8 @@ func (c *dataCatalogClient) UpdateEntryGroup(ctx context.Context, in *UpdateEntr
 	return out, nil
 }
 
-func (c *dataCatalogClient) DeleteEntryGroup(ctx context.Context, in *DeleteEntryGroupRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataCatalogClient) DeleteEntryGroup(ctx context.Context, in *DeleteEntryGroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datacatalog.v1.DataCatalog/DeleteEntryGroup", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4223,8 +4223,8 @@ func (c *dataCatalogClient) UpdateEntry(ctx context.Context, in *UpdateEntryRequ
 	return out, nil
 }
 
-func (c *dataCatalogClient) DeleteEntry(ctx context.Context, in *DeleteEntryRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataCatalogClient) DeleteEntry(ctx context.Context, in *DeleteEntryRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datacatalog.v1.DataCatalog/DeleteEntry", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4286,8 +4286,8 @@ func (c *dataCatalogClient) UpdateTagTemplate(ctx context.Context, in *UpdateTag
 	return out, nil
 }
 
-func (c *dataCatalogClient) DeleteTagTemplate(ctx context.Context, in *DeleteTagTemplateRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataCatalogClient) DeleteTagTemplate(ctx context.Context, in *DeleteTagTemplateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datacatalog.v1.DataCatalog/DeleteTagTemplate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4322,8 +4322,8 @@ func (c *dataCatalogClient) RenameTagTemplateField(ctx context.Context, in *Rena
 	return out, nil
 }
 
-func (c *dataCatalogClient) DeleteTagTemplateField(ctx context.Context, in *DeleteTagTemplateFieldRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataCatalogClient) DeleteTagTemplateField(ctx context.Context, in *DeleteTagTemplateFieldRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datacatalog.v1.DataCatalog/DeleteTagTemplateField", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4349,8 +4349,8 @@ func (c *dataCatalogClient) UpdateTag(ctx context.Context, in *UpdateTagRequest,
 	return out, nil
 }
 
-func (c *dataCatalogClient) DeleteTag(ctx context.Context, in *DeleteTagRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *dataCatalogClient) DeleteTag(ctx context.Context, in *DeleteTagRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.datacatalog.v1.DataCatalog/DeleteTag", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4446,7 +4446,7 @@ type DataCatalogServer interface {
 	// identified by the `name` parameter (see [Data Catalog Resource Project]
 	// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
 	// more information).
-	DeleteEntryGroup(context.Context, *DeleteEntryGroupRequest) (*empty.Empty, error)
+	DeleteEntryGroup(context.Context, *DeleteEntryGroupRequest) (*emptypb.Empty, error)
 	// Lists entry groups.
 	ListEntryGroups(context.Context, *ListEntryGroupsRequest) (*ListEntryGroupsResponse, error)
 	// Creates an entry. Only entries of 'FILESET' type or user-specified type can
@@ -4472,7 +4472,7 @@ type DataCatalogServer interface {
 	// the `name` parameter (see [Data Catalog Resource Project]
 	// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
 	// more information).
-	DeleteEntry(context.Context, *DeleteEntryRequest) (*empty.Empty, error)
+	DeleteEntry(context.Context, *DeleteEntryRequest) (*emptypb.Empty, error)
 	// Gets an entry.
 	GetEntry(context.Context, *GetEntryRequest) (*Entry, error)
 	// Get an entry by target resource name. This method allows clients to use
@@ -4502,7 +4502,7 @@ type DataCatalogServer interface {
 	// the `name` parameter (see [Data Catalog Resource Project]
 	// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
 	// more information).
-	DeleteTagTemplate(context.Context, *DeleteTagTemplateRequest) (*empty.Empty, error)
+	DeleteTagTemplate(context.Context, *DeleteTagTemplateRequest) (*emptypb.Empty, error)
 	// Creates a field in a tag template. The user should enable the Data Catalog
 	// API in the project identified by the `parent` parameter (see
 	// [Data Catalog Resource
@@ -4526,7 +4526,7 @@ type DataCatalogServer interface {
 	// the `name` parameter (see [Data Catalog Resource Project]
 	// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
 	// more information).
-	DeleteTagTemplateField(context.Context, *DeleteTagTemplateFieldRequest) (*empty.Empty, error)
+	DeleteTagTemplateField(context.Context, *DeleteTagTemplateFieldRequest) (*emptypb.Empty, error)
 	// Creates a tag on an [Entry][google.cloud.datacatalog.v1.Entry].
 	// Note: The project identified by the `parent` parameter for the
 	// [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters)
@@ -4538,7 +4538,7 @@ type DataCatalogServer interface {
 	// Updates an existing tag.
 	UpdateTag(context.Context, *UpdateTagRequest) (*Tag, error)
 	// Deletes a tag.
-	DeleteTag(context.Context, *DeleteTagRequest) (*empty.Empty, error)
+	DeleteTag(context.Context, *DeleteTagRequest) (*emptypb.Empty, error)
 	// Lists the tags on an [Entry][google.cloud.datacatalog.v1.Entry].
 	ListTags(context.Context, *ListTagsRequest) (*ListTagsResponse, error)
 	// Sets the access control policy for a resource. Replaces any existing
@@ -4605,7 +4605,7 @@ func (*UnimplementedDataCatalogServer) GetEntryGroup(context.Context, *GetEntryG
 func (*UnimplementedDataCatalogServer) UpdateEntryGroup(context.Context, *UpdateEntryGroupRequest) (*EntryGroup, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateEntryGroup not implemented")
 }
-func (*UnimplementedDataCatalogServer) DeleteEntryGroup(context.Context, *DeleteEntryGroupRequest) (*empty.Empty, error) {
+func (*UnimplementedDataCatalogServer) DeleteEntryGroup(context.Context, *DeleteEntryGroupRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEntryGroup not implemented")
 }
 func (*UnimplementedDataCatalogServer) ListEntryGroups(context.Context, *ListEntryGroupsRequest) (*ListEntryGroupsResponse, error) {
@@ -4617,7 +4617,7 @@ func (*UnimplementedDataCatalogServer) CreateEntry(context.Context, *CreateEntry
 func (*UnimplementedDataCatalogServer) UpdateEntry(context.Context, *UpdateEntryRequest) (*Entry, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateEntry not implemented")
 }
-func (*UnimplementedDataCatalogServer) DeleteEntry(context.Context, *DeleteEntryRequest) (*empty.Empty, error) {
+func (*UnimplementedDataCatalogServer) DeleteEntry(context.Context, *DeleteEntryRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEntry not implemented")
 }
 func (*UnimplementedDataCatalogServer) GetEntry(context.Context, *GetEntryRequest) (*Entry, error) {
@@ -4638,7 +4638,7 @@ func (*UnimplementedDataCatalogServer) GetTagTemplate(context.Context, *GetTagTe
 func (*UnimplementedDataCatalogServer) UpdateTagTemplate(context.Context, *UpdateTagTemplateRequest) (*TagTemplate, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTagTemplate not implemented")
 }
-func (*UnimplementedDataCatalogServer) DeleteTagTemplate(context.Context, *DeleteTagTemplateRequest) (*empty.Empty, error) {
+func (*UnimplementedDataCatalogServer) DeleteTagTemplate(context.Context, *DeleteTagTemplateRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTagTemplate not implemented")
 }
 func (*UnimplementedDataCatalogServer) CreateTagTemplateField(context.Context, *CreateTagTemplateFieldRequest) (*TagTemplateField, error) {
@@ -4650,7 +4650,7 @@ func (*UnimplementedDataCatalogServer) UpdateTagTemplateField(context.Context, *
 func (*UnimplementedDataCatalogServer) RenameTagTemplateField(context.Context, *RenameTagTemplateFieldRequest) (*TagTemplateField, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RenameTagTemplateField not implemented")
 }
-func (*UnimplementedDataCatalogServer) DeleteTagTemplateField(context.Context, *DeleteTagTemplateFieldRequest) (*empty.Empty, error) {
+func (*UnimplementedDataCatalogServer) DeleteTagTemplateField(context.Context, *DeleteTagTemplateFieldRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTagTemplateField not implemented")
 }
 func (*UnimplementedDataCatalogServer) CreateTag(context.Context, *CreateTagRequest) (*Tag, error) {
@@ -4659,7 +4659,7 @@ func (*UnimplementedDataCatalogServer) CreateTag(context.Context, *CreateTagRequ
 func (*UnimplementedDataCatalogServer) UpdateTag(context.Context, *UpdateTagRequest) (*Tag, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTag not implemented")
 }
-func (*UnimplementedDataCatalogServer) DeleteTag(context.Context, *DeleteTagRequest) (*empty.Empty, error) {
+func (*UnimplementedDataCatalogServer) DeleteTag(context.Context, *DeleteTagRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTag not implemented")
 }
 func (*UnimplementedDataCatalogServer) ListTags(context.Context, *ListTagsRequest) (*ListTagsResponse, error) {

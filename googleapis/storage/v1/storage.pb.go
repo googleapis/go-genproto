@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -481,7 +481,7 @@ type PatchBucketAccessControlRequest struct {
 	// Not specifying any fields is an error.
 	// Not specifying a field while setting that field to a non-default value is
 	// an error.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,5,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,5,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// A set of parameters common to all Storage API requests.
 	CommonRequestParams *CommonRequestParams `protobuf:"bytes,6,opt,name=common_request_params,json=commonRequestParams,proto3" json:"common_request_params,omitempty"`
 }
@@ -539,7 +539,7 @@ func (x *PatchBucketAccessControlRequest) GetBucketAccessControl() *BucketAccess
 	return nil
 }
 
-func (x *PatchBucketAccessControlRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *PatchBucketAccessControlRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -644,10 +644,10 @@ type DeleteBucketRequest struct {
 	// Required. Name of a bucket.
 	Bucket string `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
 	// If set, only deletes the bucket if its metageneration matches this value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// If set, only deletes the bucket if its metageneration does not match this
 	// value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// A set of parameters common to all Storage API requests.
 	CommonRequestParams *CommonRequestParams `protobuf:"bytes,5,opt,name=common_request_params,json=commonRequestParams,proto3" json:"common_request_params,omitempty"`
 }
@@ -691,14 +691,14 @@ func (x *DeleteBucketRequest) GetBucket() string {
 	return ""
 }
 
-func (x *DeleteBucketRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *DeleteBucketRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *DeleteBucketRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *DeleteBucketRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -722,10 +722,10 @@ type GetBucketRequest struct {
 	Bucket string `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
 	// Makes the return of the bucket metadata conditional on whether the bucket's
 	// current metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the return of the bucket metadata conditional on whether the bucket's
 	// current metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// Set of properties to return. Defaults to `NO_ACL`.
 	Projection CommonEnums_Projection `protobuf:"varint,4,opt,name=projection,proto3,enum=google.storage.v1.CommonEnums_Projection" json:"projection,omitempty"`
 	// A set of parameters common to all Storage API requests.
@@ -771,14 +771,14 @@ func (x *GetBucketRequest) GetBucket() string {
 	return ""
 }
 
-func (x *GetBucketRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *GetBucketRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *GetBucketRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *GetBucketRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -1127,10 +1127,10 @@ type PatchBucketRequest struct {
 	Bucket string `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
 	// Makes the return of the bucket metadata conditional on whether the bucket's
 	// current metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the return of the bucket metadata conditional on whether the bucket's
 	// current metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// Apply a predefined set of access controls to this bucket.
 	PredefinedAcl CommonEnums_PredefinedBucketAcl `protobuf:"varint,4,opt,name=predefined_acl,json=predefinedAcl,proto3,enum=google.storage.v1.CommonEnums_PredefinedBucketAcl" json:"predefined_acl,omitempty"`
 	// Apply a predefined set of default object access controls to this bucket.
@@ -1149,7 +1149,7 @@ type PatchBucketRequest struct {
 	// Not specifying any fields is an error.
 	// Not specifying a field while setting that field to a non-default value is
 	// an error.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,9,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,9,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// A set of parameters common to all Storage API requests.
 	CommonRequestParams *CommonRequestParams `protobuf:"bytes,10,opt,name=common_request_params,json=commonRequestParams,proto3" json:"common_request_params,omitempty"`
 }
@@ -1193,14 +1193,14 @@ func (x *PatchBucketRequest) GetBucket() string {
 	return ""
 }
 
-func (x *PatchBucketRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *PatchBucketRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *PatchBucketRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *PatchBucketRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -1235,7 +1235,7 @@ func (x *PatchBucketRequest) GetMetadata() *Bucket {
 	return nil
 }
 
-func (x *PatchBucketRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *PatchBucketRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -1259,10 +1259,10 @@ type UpdateBucketRequest struct {
 	Bucket string `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
 	// Makes the return of the bucket metadata conditional on whether the bucket's
 	// current metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the return of the bucket metadata conditional on whether the bucket's
 	// current metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// Apply a predefined set of access controls to this bucket.
 	PredefinedAcl CommonEnums_PredefinedBucketAcl `protobuf:"varint,4,opt,name=predefined_acl,json=predefinedAcl,proto3,enum=google.storage.v1.CommonEnums_PredefinedBucketAcl" json:"predefined_acl,omitempty"`
 	// Apply a predefined set of default object access controls to this bucket.
@@ -1314,14 +1314,14 @@ func (x *UpdateBucketRequest) GetBucket() string {
 	return ""
 }
 
-func (x *UpdateBucketRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *UpdateBucketRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *UpdateBucketRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *UpdateBucketRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -1644,10 +1644,10 @@ type ListDefaultObjectAccessControlsRequest struct {
 	Bucket string `protobuf:"bytes,1,opt,name=bucket,proto3" json:"bucket,omitempty"`
 	// If present, only return default ACL listing if the bucket's current
 	// metageneration matches this value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// If present, only return default ACL listing if the bucket's current
 	// metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// A set of parameters common to all Storage API requests.
 	CommonRequestParams *CommonRequestParams `protobuf:"bytes,5,opt,name=common_request_params,json=commonRequestParams,proto3" json:"common_request_params,omitempty"`
 }
@@ -1691,14 +1691,14 @@ func (x *ListDefaultObjectAccessControlsRequest) GetBucket() string {
 	return ""
 }
 
-func (x *ListDefaultObjectAccessControlsRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *ListDefaultObjectAccessControlsRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *ListDefaultObjectAccessControlsRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *ListDefaultObjectAccessControlsRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -1740,7 +1740,7 @@ type PatchDefaultObjectAccessControlRequest struct {
 	// Not specifying any fields is an error.
 	// Not specifying a field while setting that field to a non-default value is
 	// an error.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,5,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,5,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// A set of parameters common to all Storage API requests.
 	CommonRequestParams *CommonRequestParams `protobuf:"bytes,6,opt,name=common_request_params,json=commonRequestParams,proto3" json:"common_request_params,omitempty"`
 }
@@ -1798,7 +1798,7 @@ func (x *PatchDefaultObjectAccessControlRequest) GetObjectAccessControl() *Objec
 	return nil
 }
 
-func (x *PatchDefaultObjectAccessControlRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *PatchDefaultObjectAccessControlRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2537,7 +2537,7 @@ type PatchObjectAccessControlRequest struct {
 	// Not specifying any fields is an error.
 	// Not specifying a field while setting that field to a non-default value is
 	// an error.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,7,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,7,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *PatchObjectAccessControlRequest) Reset() {
@@ -2614,7 +2614,7 @@ func (x *PatchObjectAccessControlRequest) GetCommonRequestParams() *CommonReques
 	return nil
 }
 
-func (x *PatchObjectAccessControlRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *PatchObjectAccessControlRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2657,7 +2657,7 @@ type UpdateObjectAccessControlRequest struct {
 	// Not specifying any fields is an error.
 	// Not specifying a field while setting that field to a non-default value is
 	// an error.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,8,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,8,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateObjectAccessControlRequest) Reset() {
@@ -2734,7 +2734,7 @@ func (x *UpdateObjectAccessControlRequest) GetCommonRequestParams() *CommonReque
 	return nil
 }
 
-func (x *UpdateObjectAccessControlRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateObjectAccessControlRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -2761,10 +2761,10 @@ type ComposeObjectRequest struct {
 	// Makes the operation conditional on whether the object's current generation
 	// matches the given value. Setting to 0 makes the operation succeed only if
 	// there are no live versions of the object.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,5,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Resource name of the Cloud KMS key, of the form
 	// `projects/my-project/locations/my-location/keyRings/my-kr/cryptoKeys/my-key`,
 	// that will be used to encrypt the object. Overrides the object
@@ -2843,14 +2843,14 @@ func (x *ComposeObjectRequest) GetSourceObjects() []*ComposeObjectRequest_Source
 	return nil
 }
 
-func (x *ComposeObjectRequest) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *ComposeObjectRequest) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
 	return nil
 }
 
-func (x *ComposeObjectRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *ComposeObjectRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
@@ -2897,30 +2897,30 @@ type CopyObjectRequest struct {
 	// Makes the operation conditional on whether the destination object's current
 	// generation matches the given value. Setting to 0 makes the operation
 	// succeed only if there are no live versions of the object.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 	// Makes the operation conditional on whether the destination object's current
 	// generation does not match the given value. If no live object exists, the
 	// precondition fails. Setting to 0 makes the operation succeed only if there
 	// is a live version of the object.
-	IfGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,5,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
+	IfGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the destination object's current
 	// metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the destination object's current
 	// metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// Makes the operation conditional on whether the source object's current
 	// generation matches the given value.
-	IfSourceGenerationMatch *wrappers.Int64Value `protobuf:"bytes,8,opt,name=if_source_generation_match,json=ifSourceGenerationMatch,proto3" json:"if_source_generation_match,omitempty"`
+	IfSourceGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,8,opt,name=if_source_generation_match,json=ifSourceGenerationMatch,proto3" json:"if_source_generation_match,omitempty"`
 	// Makes the operation conditional on whether the source object's current
 	// generation does not match the given value.
-	IfSourceGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,9,opt,name=if_source_generation_not_match,json=ifSourceGenerationNotMatch,proto3" json:"if_source_generation_not_match,omitempty"`
+	IfSourceGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,9,opt,name=if_source_generation_not_match,json=ifSourceGenerationNotMatch,proto3" json:"if_source_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the source object's current
 	// metageneration matches the given value.
-	IfSourceMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,10,opt,name=if_source_metageneration_match,json=ifSourceMetagenerationMatch,proto3" json:"if_source_metageneration_match,omitempty"`
+	IfSourceMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,10,opt,name=if_source_metageneration_match,json=ifSourceMetagenerationMatch,proto3" json:"if_source_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the source object's current
 	// metageneration does not match the given value.
-	IfSourceMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,11,opt,name=if_source_metageneration_not_match,json=ifSourceMetagenerationNotMatch,proto3" json:"if_source_metageneration_not_match,omitempty"`
+	IfSourceMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,11,opt,name=if_source_metageneration_not_match,json=ifSourceMetagenerationNotMatch,proto3" json:"if_source_metageneration_not_match,omitempty"`
 	// Set of properties to return. Defaults to `NO_ACL`, unless the
 	// object resource specifies the `acl` property, when it defaults
 	// to `full`.
@@ -2999,56 +2999,56 @@ func (x *CopyObjectRequest) GetDestinationPredefinedAcl() CommonEnums_Predefined
 	return CommonEnums_PREDEFINED_OBJECT_ACL_UNSPECIFIED
 }
 
-func (x *CopyObjectRequest) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *CopyObjectRequest) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
 	return nil
 }
 
-func (x *CopyObjectRequest) GetIfGenerationNotMatch() *wrappers.Int64Value {
+func (x *CopyObjectRequest) GetIfGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *CopyObjectRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *CopyObjectRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *CopyObjectRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *CopyObjectRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
 	return nil
 }
 
-func (x *CopyObjectRequest) GetIfSourceGenerationMatch() *wrappers.Int64Value {
+func (x *CopyObjectRequest) GetIfSourceGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfSourceGenerationMatch
 	}
 	return nil
 }
 
-func (x *CopyObjectRequest) GetIfSourceGenerationNotMatch() *wrappers.Int64Value {
+func (x *CopyObjectRequest) GetIfSourceGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfSourceGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *CopyObjectRequest) GetIfSourceMetagenerationMatch() *wrappers.Int64Value {
+func (x *CopyObjectRequest) GetIfSourceMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfSourceMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *CopyObjectRequest) GetIfSourceMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *CopyObjectRequest) GetIfSourceMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfSourceMetagenerationNotMatch
 	}
@@ -3132,18 +3132,18 @@ type DeleteObjectRequest struct {
 	// Makes the operation conditional on whether the object's current generation
 	// matches the given value. Setting to 0 makes the operation succeed only if
 	// there are no live versions of the object.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,5,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 	// Makes the operation conditional on whether the object's current generation
 	// does not match the given value. If no live object exists, the precondition
 	// fails. Setting to 0 makes the operation succeed only if there is a live
 	// version of the object.
-	IfGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,6,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
+	IfGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,8,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,8,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// A set of parameters common to Storage API requests concerning an object.
 	CommonObjectRequestParams *CommonObjectRequestParams `protobuf:"bytes,10,opt,name=common_object_request_params,json=commonObjectRequestParams,proto3" json:"common_object_request_params,omitempty"`
 	// A set of parameters common to all Storage API requests.
@@ -3210,28 +3210,28 @@ func (x *DeleteObjectRequest) GetGeneration() int64 {
 	return 0
 }
 
-func (x *DeleteObjectRequest) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *DeleteObjectRequest) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
 	return nil
 }
 
-func (x *DeleteObjectRequest) GetIfGenerationNotMatch() *wrappers.Int64Value {
+func (x *DeleteObjectRequest) GetIfGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *DeleteObjectRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *DeleteObjectRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *DeleteObjectRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *DeleteObjectRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -3284,18 +3284,18 @@ type GetObjectMediaRequest struct {
 	// Makes the operation conditional on whether the object's current generation
 	// matches the given value. Setting to 0 makes the operation succeed only if
 	// there are no live versions of the object.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,6,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 	// Makes the operation conditional on whether the object's current generation
 	// does not match the given value. If no live object exists, the precondition
 	// fails. Setting to 0 makes the operation succeed only if there is a live
 	// version of the object.
-	IfGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,7,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
+	IfGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,8,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,8,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,9,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,9,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// A set of parameters common to Storage API requests concerning an object.
 	CommonObjectRequestParams *CommonObjectRequestParams `protobuf:"bytes,11,opt,name=common_object_request_params,json=commonObjectRequestParams,proto3" json:"common_object_request_params,omitempty"`
 	// A set of parameters common to all Storage API requests.
@@ -3369,28 +3369,28 @@ func (x *GetObjectMediaRequest) GetReadLimit() int64 {
 	return 0
 }
 
-func (x *GetObjectMediaRequest) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *GetObjectMediaRequest) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
 	return nil
 }
 
-func (x *GetObjectMediaRequest) GetIfGenerationNotMatch() *wrappers.Int64Value {
+func (x *GetObjectMediaRequest) GetIfGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *GetObjectMediaRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *GetObjectMediaRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *GetObjectMediaRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *GetObjectMediaRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -3427,18 +3427,18 @@ type GetObjectRequest struct {
 	// Makes the operation conditional on whether the object's current generation
 	// matches the given value. Setting to 0 makes the operation succeed only if
 	// there are no live versions of the object.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 	// Makes the operation conditional on whether the object's current generation
 	// does not match the given value. If no live object exists, the precondition
 	// fails. Setting to 0 makes the operation succeed only if there is a live
 	// version of the object.
-	IfGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,5,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
+	IfGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// Set of properties to return. Defaults to `NO_ACL`.
 	Projection CommonEnums_Projection `protobuf:"varint,8,opt,name=projection,proto3,enum=google.storage.v1.CommonEnums_Projection" json:"projection,omitempty"`
 	// A set of parameters common to Storage API requests concerning an object.
@@ -3500,28 +3500,28 @@ func (x *GetObjectRequest) GetGeneration() int64 {
 	return 0
 }
 
-func (x *GetObjectRequest) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *GetObjectRequest) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
 	return nil
 }
 
-func (x *GetObjectRequest) GetIfGenerationNotMatch() *wrappers.Int64Value {
+func (x *GetObjectRequest) GetIfGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *GetObjectRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *GetObjectRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *GetObjectRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *GetObjectRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -3646,18 +3646,18 @@ type InsertObjectSpec struct {
 	// Makes the operation conditional on whether the object's current
 	// generation matches the given value. Setting to 0 makes the operation
 	// succeed only if there are no live versions of the object.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,3,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// generation does not match the given value. If no live object exists, the
 	// precondition fails. Setting to 0 makes the operation succeed only if
 	// there is a live version of the object.
-	IfGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,4,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
+	IfGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,5,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// Set of properties to return. Defaults to `NO_ACL`, unless the
 	// object resource specifies the `acl` property, when it defaults
 	// to `full`.
@@ -3710,28 +3710,28 @@ func (x *InsertObjectSpec) GetPredefinedAcl() CommonEnums_PredefinedObjectAcl {
 	return CommonEnums_PREDEFINED_OBJECT_ACL_UNSPECIFIED
 }
 
-func (x *InsertObjectSpec) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *InsertObjectSpec) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
 	return nil
 }
 
-func (x *InsertObjectSpec) GetIfGenerationNotMatch() *wrappers.Int64Value {
+func (x *InsertObjectSpec) GetIfGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *InsertObjectSpec) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *InsertObjectSpec) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *InsertObjectSpec) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *InsertObjectSpec) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -4239,30 +4239,30 @@ type RewriteObjectRequest struct {
 	// Makes the operation conditional on whether the object's current generation
 	// matches the given value. Setting to 0 makes the operation succeed only if
 	// there are no live versions of the object.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,5,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 	// Makes the operation conditional on whether the object's current generation
 	// does not match the given value. If no live object exists, the precondition
 	// fails. Setting to 0 makes the operation succeed only if there is a live
 	// version of the object.
-	IfGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,6,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
+	IfGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the destination object's current
 	// metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the destination object's current
 	// metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,8,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,8,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// Makes the operation conditional on whether the source object's current
 	// generation matches the given value.
-	IfSourceGenerationMatch *wrappers.Int64Value `protobuf:"bytes,9,opt,name=if_source_generation_match,json=ifSourceGenerationMatch,proto3" json:"if_source_generation_match,omitempty"`
+	IfSourceGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,9,opt,name=if_source_generation_match,json=ifSourceGenerationMatch,proto3" json:"if_source_generation_match,omitempty"`
 	// Makes the operation conditional on whether the source object's current
 	// generation does not match the given value.
-	IfSourceGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,10,opt,name=if_source_generation_not_match,json=ifSourceGenerationNotMatch,proto3" json:"if_source_generation_not_match,omitempty"`
+	IfSourceGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,10,opt,name=if_source_generation_not_match,json=ifSourceGenerationNotMatch,proto3" json:"if_source_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the source object's current
 	// metageneration matches the given value.
-	IfSourceMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,11,opt,name=if_source_metageneration_match,json=ifSourceMetagenerationMatch,proto3" json:"if_source_metageneration_match,omitempty"`
+	IfSourceMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,11,opt,name=if_source_metageneration_match,json=ifSourceMetagenerationMatch,proto3" json:"if_source_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the source object's current
 	// metageneration does not match the given value.
-	IfSourceMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,12,opt,name=if_source_metageneration_not_match,json=ifSourceMetagenerationNotMatch,proto3" json:"if_source_metageneration_not_match,omitempty"`
+	IfSourceMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,12,opt,name=if_source_metageneration_not_match,json=ifSourceMetagenerationNotMatch,proto3" json:"if_source_metageneration_not_match,omitempty"`
 	// The maximum number of bytes that will be rewritten per rewrite request.
 	// Most callers
 	// shouldn't need to specify this parameter - it is primarily in place to
@@ -4363,56 +4363,56 @@ func (x *RewriteObjectRequest) GetDestinationPredefinedAcl() CommonEnums_Predefi
 	return CommonEnums_PREDEFINED_OBJECT_ACL_UNSPECIFIED
 }
 
-func (x *RewriteObjectRequest) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *RewriteObjectRequest) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
 	return nil
 }
 
-func (x *RewriteObjectRequest) GetIfGenerationNotMatch() *wrappers.Int64Value {
+func (x *RewriteObjectRequest) GetIfGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *RewriteObjectRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *RewriteObjectRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *RewriteObjectRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *RewriteObjectRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
 	return nil
 }
 
-func (x *RewriteObjectRequest) GetIfSourceGenerationMatch() *wrappers.Int64Value {
+func (x *RewriteObjectRequest) GetIfSourceGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfSourceGenerationMatch
 	}
 	return nil
 }
 
-func (x *RewriteObjectRequest) GetIfSourceGenerationNotMatch() *wrappers.Int64Value {
+func (x *RewriteObjectRequest) GetIfSourceGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfSourceGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *RewriteObjectRequest) GetIfSourceMetagenerationMatch() *wrappers.Int64Value {
+func (x *RewriteObjectRequest) GetIfSourceMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfSourceMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *RewriteObjectRequest) GetIfSourceMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *RewriteObjectRequest) GetIfSourceMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfSourceMetagenerationNotMatch
 	}
@@ -4726,18 +4726,18 @@ type PatchObjectRequest struct {
 	// Makes the operation conditional on whether the object's current generation
 	// matches the given value. Setting to 0 makes the operation succeed only if
 	// there are no live versions of the object.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 	// Makes the operation conditional on whether the object's current generation
 	// does not match the given value. If no live object exists, the precondition
 	// fails. Setting to 0 makes the operation succeed only if there is a live
 	// version of the object.
-	IfGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,5,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
+	IfGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// Apply a predefined set of access controls to this object.
 	PredefinedAcl CommonEnums_PredefinedObjectAcl `protobuf:"varint,8,opt,name=predefined_acl,json=predefinedAcl,proto3,enum=google.storage.v1.CommonEnums_PredefinedObjectAcl" json:"predefined_acl,omitempty"`
 	// Set of properties to return. Defaults to `FULL`.
@@ -4754,7 +4754,7 @@ type PatchObjectRequest struct {
 	// Not specifying any fields is an error.
 	// Not specifying a field while setting that field to a non-default value is
 	// an error.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,12,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,12,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// A set of parameters common to Storage API requests concerning an object.
 	CommonObjectRequestParams *CommonObjectRequestParams `protobuf:"bytes,13,opt,name=common_object_request_params,json=commonObjectRequestParams,proto3" json:"common_object_request_params,omitempty"`
 	// A set of parameters common to all Storage API requests.
@@ -4814,28 +4814,28 @@ func (x *PatchObjectRequest) GetGeneration() int64 {
 	return 0
 }
 
-func (x *PatchObjectRequest) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *PatchObjectRequest) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
 	return nil
 }
 
-func (x *PatchObjectRequest) GetIfGenerationNotMatch() *wrappers.Int64Value {
+func (x *PatchObjectRequest) GetIfGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *PatchObjectRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *PatchObjectRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *PatchObjectRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *PatchObjectRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -4863,7 +4863,7 @@ func (x *PatchObjectRequest) GetMetadata() *Object {
 	return nil
 }
 
-func (x *PatchObjectRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *PatchObjectRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -4900,18 +4900,18 @@ type UpdateObjectRequest struct {
 	// Makes the operation conditional on whether the object's current generation
 	// matches the given value. Setting to 0 makes the operation succeed only if
 	// there are no live versions of the object.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 	// Makes the operation conditional on whether the object's current generation
 	// does not match the given value. If no live object exists, the precondition
 	// fails. Setting to 0 makes the operation succeed only if there is a live
 	// version of the object.
-	IfGenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,5,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
+	IfGenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=if_generation_not_match,json=ifGenerationNotMatch,proto3" json:"if_generation_not_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration matches the given value.
-	IfMetagenerationMatch *wrappers.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
+	IfMetagenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=if_metageneration_match,json=ifMetagenerationMatch,proto3" json:"if_metageneration_match,omitempty"`
 	// Makes the operation conditional on whether the object's current
 	// metageneration does not match the given value.
-	IfMetagenerationNotMatch *wrappers.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
+	IfMetagenerationNotMatch *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=if_metageneration_not_match,json=ifMetagenerationNotMatch,proto3" json:"if_metageneration_not_match,omitempty"`
 	// Apply a predefined set of access controls to this object.
 	PredefinedAcl CommonEnums_PredefinedObjectAcl `protobuf:"varint,8,opt,name=predefined_acl,json=predefinedAcl,proto3,enum=google.storage.v1.CommonEnums_PredefinedObjectAcl" json:"predefined_acl,omitempty"`
 	// Set of properties to return. Defaults to `FULL`.
@@ -4977,28 +4977,28 @@ func (x *UpdateObjectRequest) GetGeneration() int64 {
 	return 0
 }
 
-func (x *UpdateObjectRequest) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *UpdateObjectRequest) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
 	return nil
 }
 
-func (x *UpdateObjectRequest) GetIfGenerationNotMatch() *wrappers.Int64Value {
+func (x *UpdateObjectRequest) GetIfGenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationNotMatch
 	}
 	return nil
 }
 
-func (x *UpdateObjectRequest) GetIfMetagenerationMatch() *wrappers.Int64Value {
+func (x *UpdateObjectRequest) GetIfMetagenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationMatch
 	}
 	return nil
 }
 
-func (x *UpdateObjectRequest) GetIfMetagenerationNotMatch() *wrappers.Int64Value {
+func (x *UpdateObjectRequest) GetIfMetagenerationNotMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfMetagenerationNotMatch
 	}
@@ -5990,7 +5990,7 @@ type CommonRequestParams struct {
 	// Overrides user_ip if both are provided.
 	QuotaUser string `protobuf:"bytes,2,opt,name=quota_user,json=quotaUser,proto3" json:"quota_user,omitempty"`
 	// Subset of fields to include in the response.
-	Fields *field_mask.FieldMask `protobuf:"bytes,4,opt,name=fields,proto3" json:"fields,omitempty"`
+	Fields *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=fields,proto3" json:"fields,omitempty"`
 }
 
 func (x *CommonRequestParams) Reset() {
@@ -6039,7 +6039,7 @@ func (x *CommonRequestParams) GetQuotaUser() string {
 	return ""
 }
 
-func (x *CommonRequestParams) GetFields() *field_mask.FieldMask {
+func (x *CommonRequestParams) GetFields() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.Fields
 	}
@@ -6162,7 +6162,7 @@ type ComposeObjectRequest_SourceObjects_ObjectPreconditions struct {
 	// Only perform the composition if the generation of the source object
 	// that would be used matches this value.  If this value and a generation
 	// are both specified, they must be the same value or the call will fail.
-	IfGenerationMatch *wrappers.Int64Value `protobuf:"bytes,1,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
+	IfGenerationMatch *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=if_generation_match,json=ifGenerationMatch,proto3" json:"if_generation_match,omitempty"`
 }
 
 func (x *ComposeObjectRequest_SourceObjects_ObjectPreconditions) Reset() {
@@ -6197,7 +6197,7 @@ func (*ComposeObjectRequest_SourceObjects_ObjectPreconditions) Descriptor() ([]b
 	return file_google_storage_v1_storage_proto_rawDescGZIP(), []int{31, 0, 0}
 }
 
-func (x *ComposeObjectRequest_SourceObjects_ObjectPreconditions) GetIfGenerationMatch() *wrappers.Int64Value {
+func (x *ComposeObjectRequest_SourceObjects_ObjectPreconditions) GetIfGenerationMatch() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.IfGenerationMatch
 	}
@@ -8195,8 +8195,8 @@ var file_google_storage_v1_storage_proto_goTypes = []interface{}{
 	(*ComposeObjectRequest_SourceObjects)(nil),                     // 64: google.storage.v1.ComposeObjectRequest.SourceObjects
 	(*ComposeObjectRequest_SourceObjects_ObjectPreconditions)(nil), // 65: google.storage.v1.ComposeObjectRequest.SourceObjects.ObjectPreconditions
 	(*BucketAccessControl)(nil),                                    // 66: google.storage.v1.BucketAccessControl
-	(*field_mask.FieldMask)(nil),                                   // 67: google.protobuf.FieldMask
-	(*wrappers.Int64Value)(nil),                                    // 68: google.protobuf.Int64Value
+	(*fieldmaskpb.FieldMask)(nil),                                  // 67: google.protobuf.FieldMask
+	(*wrapperspb.Int64Value)(nil),                                  // 68: google.protobuf.Int64Value
 	(CommonEnums_Projection)(0),                                    // 69: google.storage.v1.CommonEnums.Projection
 	(CommonEnums_PredefinedBucketAcl)(0),                           // 70: google.storage.v1.CommonEnums.PredefinedBucketAcl
 	(CommonEnums_PredefinedObjectAcl)(0),                           // 71: google.storage.v1.CommonEnums.PredefinedObjectAcl
@@ -8212,7 +8212,7 @@ var file_google_storage_v1_storage_proto_goTypes = []interface{}{
 	(*v1.GetIamPolicyRequest)(nil),                                 // 81: google.iam.v1.GetIamPolicyRequest
 	(*v1.SetIamPolicyRequest)(nil),                                 // 82: google.iam.v1.SetIamPolicyRequest
 	(*v1.TestIamPermissionsRequest)(nil),                           // 83: google.iam.v1.TestIamPermissionsRequest
-	(*empty.Empty)(nil),                                            // 84: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                                          // 84: google.protobuf.Empty
 	(*ListBucketAccessControlsResponse)(nil),                       // 85: google.storage.v1.ListBucketAccessControlsResponse
 	(*ListChannelsResponse)(nil),                                   // 86: google.storage.v1.ListChannelsResponse
 	(*ListBucketsResponse)(nil),                                    // 87: google.storage.v1.ListBucketsResponse
@@ -9360,7 +9360,7 @@ const _ = grpc.SupportPackageIsVersion6
 type StorageClient interface {
 	// Permanently deletes the ACL entry for the specified entity on the specified
 	// bucket.
-	DeleteBucketAccessControl(ctx context.Context, in *DeleteBucketAccessControlRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteBucketAccessControl(ctx context.Context, in *DeleteBucketAccessControlRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns the ACL entry for the specified entity on the specified bucket.
 	GetBucketAccessControl(ctx context.Context, in *GetBucketAccessControlRequest, opts ...grpc.CallOption) (*BucketAccessControl, error)
 	// Creates a new ACL entry on the specified bucket.
@@ -9374,7 +9374,7 @@ type StorageClient interface {
 	// Updates an ACL entry on the specified bucket.
 	PatchBucketAccessControl(ctx context.Context, in *PatchBucketAccessControlRequest, opts ...grpc.CallOption) (*BucketAccessControl, error)
 	// Permanently deletes an empty bucket.
-	DeleteBucket(ctx context.Context, in *DeleteBucketRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteBucket(ctx context.Context, in *DeleteBucketRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns metadata for the specified bucket.
 	GetBucket(ctx context.Context, in *GetBucketRequest, opts ...grpc.CallOption) (*Bucket, error)
 	// Creates a new bucket.
@@ -9405,10 +9405,10 @@ type StorageClient interface {
 	// See https://cloud.google.com/storage/docs/object-change-notification
 	// Note: this is not related to the newer "Notifications" resource, which
 	// are stopped using DeleteNotification.
-	StopChannel(ctx context.Context, in *StopChannelRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	StopChannel(ctx context.Context, in *StopChannelRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Permanently deletes the default object ACL entry for the specified entity
 	// on the specified bucket.
-	DeleteDefaultObjectAccessControl(ctx context.Context, in *DeleteDefaultObjectAccessControlRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteDefaultObjectAccessControl(ctx context.Context, in *DeleteDefaultObjectAccessControlRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns the default object ACL entry for the specified entity on the
 	// specified bucket.
 	GetDefaultObjectAccessControl(ctx context.Context, in *GetDefaultObjectAccessControlRequest, opts ...grpc.CallOption) (*ObjectAccessControl, error)
@@ -9425,7 +9425,7 @@ type StorageClient interface {
 	// Permanently deletes a notification subscription.
 	// Note: Older, "Object Change Notification" push subscriptions should be
 	// deleted using StopChannel instead.
-	DeleteNotification(ctx context.Context, in *DeleteNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteNotification(ctx context.Context, in *DeleteNotificationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// View a notification configuration.
 	GetNotification(ctx context.Context, in *GetNotificationRequest, opts ...grpc.CallOption) (*Notification, error)
 	// Creates a notification subscription for a given bucket.
@@ -9437,7 +9437,7 @@ type StorageClient interface {
 	ListNotifications(ctx context.Context, in *ListNotificationsRequest, opts ...grpc.CallOption) (*ListNotificationsResponse, error)
 	// Permanently deletes the ACL entry for the specified entity on the specified
 	// object.
-	DeleteObjectAccessControl(ctx context.Context, in *DeleteObjectAccessControlRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteObjectAccessControl(ctx context.Context, in *DeleteObjectAccessControlRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns the ACL entry for the specified entity on the specified object.
 	GetObjectAccessControl(ctx context.Context, in *GetObjectAccessControlRequest, opts ...grpc.CallOption) (*ObjectAccessControl, error)
 	// Creates a new ACL entry on the specified object.
@@ -9459,7 +9459,7 @@ type StorageClient interface {
 	// Deletes an object and its metadata. Deletions are permanent if versioning
 	// is not enabled for the bucket, or if the `generation` parameter
 	// is used.
-	DeleteObject(ctx context.Context, in *DeleteObjectRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteObject(ctx context.Context, in *DeleteObjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Retrieves an object's metadata.
 	GetObject(ctx context.Context, in *GetObjectRequest, opts ...grpc.CallOption) (*Object, error)
 	// Reads an object's data.
@@ -9532,7 +9532,7 @@ type StorageClient interface {
 	// Creates a new HMAC key for the given service account.
 	CreateHmacKey(ctx context.Context, in *CreateHmacKeyRequest, opts ...grpc.CallOption) (*CreateHmacKeyResponse, error)
 	// Deletes a given HMAC key.  Key must be in an INACTIVE state.
-	DeleteHmacKey(ctx context.Context, in *DeleteHmacKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteHmacKey(ctx context.Context, in *DeleteHmacKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets an existing HMAC key metadata for the given id.
 	GetHmacKey(ctx context.Context, in *GetHmacKeyRequest, opts ...grpc.CallOption) (*HmacKeyMetadata, error)
 	// Lists HMAC keys under a given project with the additional filters provided.
@@ -9549,8 +9549,8 @@ func NewStorageClient(cc grpc.ClientConnInterface) StorageClient {
 	return &storageClient{cc}
 }
 
-func (c *storageClient) DeleteBucketAccessControl(ctx context.Context, in *DeleteBucketAccessControlRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageClient) DeleteBucketAccessControl(ctx context.Context, in *DeleteBucketAccessControlRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storage.v1.Storage/DeleteBucketAccessControl", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -9603,8 +9603,8 @@ func (c *storageClient) PatchBucketAccessControl(ctx context.Context, in *PatchB
 	return out, nil
 }
 
-func (c *storageClient) DeleteBucket(ctx context.Context, in *DeleteBucketRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageClient) DeleteBucket(ctx context.Context, in *DeleteBucketRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storage.v1.Storage/DeleteBucket", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -9702,8 +9702,8 @@ func (c *storageClient) UpdateBucket(ctx context.Context, in *UpdateBucketReques
 	return out, nil
 }
 
-func (c *storageClient) StopChannel(ctx context.Context, in *StopChannelRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageClient) StopChannel(ctx context.Context, in *StopChannelRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storage.v1.Storage/StopChannel", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -9711,8 +9711,8 @@ func (c *storageClient) StopChannel(ctx context.Context, in *StopChannelRequest,
 	return out, nil
 }
 
-func (c *storageClient) DeleteDefaultObjectAccessControl(ctx context.Context, in *DeleteDefaultObjectAccessControlRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageClient) DeleteDefaultObjectAccessControl(ctx context.Context, in *DeleteDefaultObjectAccessControlRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storage.v1.Storage/DeleteDefaultObjectAccessControl", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -9765,8 +9765,8 @@ func (c *storageClient) UpdateDefaultObjectAccessControl(ctx context.Context, in
 	return out, nil
 }
 
-func (c *storageClient) DeleteNotification(ctx context.Context, in *DeleteNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageClient) DeleteNotification(ctx context.Context, in *DeleteNotificationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storage.v1.Storage/DeleteNotification", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -9801,8 +9801,8 @@ func (c *storageClient) ListNotifications(ctx context.Context, in *ListNotificat
 	return out, nil
 }
 
-func (c *storageClient) DeleteObjectAccessControl(ctx context.Context, in *DeleteObjectAccessControlRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageClient) DeleteObjectAccessControl(ctx context.Context, in *DeleteObjectAccessControlRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storage.v1.Storage/DeleteObjectAccessControl", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -9873,8 +9873,8 @@ func (c *storageClient) CopyObject(ctx context.Context, in *CopyObjectRequest, o
 	return out, nil
 }
 
-func (c *storageClient) DeleteObject(ctx context.Context, in *DeleteObjectRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageClient) DeleteObject(ctx context.Context, in *DeleteObjectRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storage.v1.Storage/DeleteObject", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -10065,8 +10065,8 @@ func (c *storageClient) CreateHmacKey(ctx context.Context, in *CreateHmacKeyRequ
 	return out, nil
 }
 
-func (c *storageClient) DeleteHmacKey(ctx context.Context, in *DeleteHmacKeyRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageClient) DeleteHmacKey(ctx context.Context, in *DeleteHmacKeyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storage.v1.Storage/DeleteHmacKey", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -10105,7 +10105,7 @@ func (c *storageClient) UpdateHmacKey(ctx context.Context, in *UpdateHmacKeyRequ
 type StorageServer interface {
 	// Permanently deletes the ACL entry for the specified entity on the specified
 	// bucket.
-	DeleteBucketAccessControl(context.Context, *DeleteBucketAccessControlRequest) (*empty.Empty, error)
+	DeleteBucketAccessControl(context.Context, *DeleteBucketAccessControlRequest) (*emptypb.Empty, error)
 	// Returns the ACL entry for the specified entity on the specified bucket.
 	GetBucketAccessControl(context.Context, *GetBucketAccessControlRequest) (*BucketAccessControl, error)
 	// Creates a new ACL entry on the specified bucket.
@@ -10119,7 +10119,7 @@ type StorageServer interface {
 	// Updates an ACL entry on the specified bucket.
 	PatchBucketAccessControl(context.Context, *PatchBucketAccessControlRequest) (*BucketAccessControl, error)
 	// Permanently deletes an empty bucket.
-	DeleteBucket(context.Context, *DeleteBucketRequest) (*empty.Empty, error)
+	DeleteBucket(context.Context, *DeleteBucketRequest) (*emptypb.Empty, error)
 	// Returns metadata for the specified bucket.
 	GetBucket(context.Context, *GetBucketRequest) (*Bucket, error)
 	// Creates a new bucket.
@@ -10150,10 +10150,10 @@ type StorageServer interface {
 	// See https://cloud.google.com/storage/docs/object-change-notification
 	// Note: this is not related to the newer "Notifications" resource, which
 	// are stopped using DeleteNotification.
-	StopChannel(context.Context, *StopChannelRequest) (*empty.Empty, error)
+	StopChannel(context.Context, *StopChannelRequest) (*emptypb.Empty, error)
 	// Permanently deletes the default object ACL entry for the specified entity
 	// on the specified bucket.
-	DeleteDefaultObjectAccessControl(context.Context, *DeleteDefaultObjectAccessControlRequest) (*empty.Empty, error)
+	DeleteDefaultObjectAccessControl(context.Context, *DeleteDefaultObjectAccessControlRequest) (*emptypb.Empty, error)
 	// Returns the default object ACL entry for the specified entity on the
 	// specified bucket.
 	GetDefaultObjectAccessControl(context.Context, *GetDefaultObjectAccessControlRequest) (*ObjectAccessControl, error)
@@ -10170,7 +10170,7 @@ type StorageServer interface {
 	// Permanently deletes a notification subscription.
 	// Note: Older, "Object Change Notification" push subscriptions should be
 	// deleted using StopChannel instead.
-	DeleteNotification(context.Context, *DeleteNotificationRequest) (*empty.Empty, error)
+	DeleteNotification(context.Context, *DeleteNotificationRequest) (*emptypb.Empty, error)
 	// View a notification configuration.
 	GetNotification(context.Context, *GetNotificationRequest) (*Notification, error)
 	// Creates a notification subscription for a given bucket.
@@ -10182,7 +10182,7 @@ type StorageServer interface {
 	ListNotifications(context.Context, *ListNotificationsRequest) (*ListNotificationsResponse, error)
 	// Permanently deletes the ACL entry for the specified entity on the specified
 	// object.
-	DeleteObjectAccessControl(context.Context, *DeleteObjectAccessControlRequest) (*empty.Empty, error)
+	DeleteObjectAccessControl(context.Context, *DeleteObjectAccessControlRequest) (*emptypb.Empty, error)
 	// Returns the ACL entry for the specified entity on the specified object.
 	GetObjectAccessControl(context.Context, *GetObjectAccessControlRequest) (*ObjectAccessControl, error)
 	// Creates a new ACL entry on the specified object.
@@ -10204,7 +10204,7 @@ type StorageServer interface {
 	// Deletes an object and its metadata. Deletions are permanent if versioning
 	// is not enabled for the bucket, or if the `generation` parameter
 	// is used.
-	DeleteObject(context.Context, *DeleteObjectRequest) (*empty.Empty, error)
+	DeleteObject(context.Context, *DeleteObjectRequest) (*emptypb.Empty, error)
 	// Retrieves an object's metadata.
 	GetObject(context.Context, *GetObjectRequest) (*Object, error)
 	// Reads an object's data.
@@ -10277,7 +10277,7 @@ type StorageServer interface {
 	// Creates a new HMAC key for the given service account.
 	CreateHmacKey(context.Context, *CreateHmacKeyRequest) (*CreateHmacKeyResponse, error)
 	// Deletes a given HMAC key.  Key must be in an INACTIVE state.
-	DeleteHmacKey(context.Context, *DeleteHmacKeyRequest) (*empty.Empty, error)
+	DeleteHmacKey(context.Context, *DeleteHmacKeyRequest) (*emptypb.Empty, error)
 	// Gets an existing HMAC key metadata for the given id.
 	GetHmacKey(context.Context, *GetHmacKeyRequest) (*HmacKeyMetadata, error)
 	// Lists HMAC keys under a given project with the additional filters provided.
@@ -10290,7 +10290,7 @@ type StorageServer interface {
 type UnimplementedStorageServer struct {
 }
 
-func (*UnimplementedStorageServer) DeleteBucketAccessControl(context.Context, *DeleteBucketAccessControlRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageServer) DeleteBucketAccessControl(context.Context, *DeleteBucketAccessControlRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteBucketAccessControl not implemented")
 }
 func (*UnimplementedStorageServer) GetBucketAccessControl(context.Context, *GetBucketAccessControlRequest) (*BucketAccessControl, error) {
@@ -10308,7 +10308,7 @@ func (*UnimplementedStorageServer) UpdateBucketAccessControl(context.Context, *U
 func (*UnimplementedStorageServer) PatchBucketAccessControl(context.Context, *PatchBucketAccessControlRequest) (*BucketAccessControl, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PatchBucketAccessControl not implemented")
 }
-func (*UnimplementedStorageServer) DeleteBucket(context.Context, *DeleteBucketRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageServer) DeleteBucket(context.Context, *DeleteBucketRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteBucket not implemented")
 }
 func (*UnimplementedStorageServer) GetBucket(context.Context, *GetBucketRequest) (*Bucket, error) {
@@ -10341,10 +10341,10 @@ func (*UnimplementedStorageServer) PatchBucket(context.Context, *PatchBucketRequ
 func (*UnimplementedStorageServer) UpdateBucket(context.Context, *UpdateBucketRequest) (*Bucket, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateBucket not implemented")
 }
-func (*UnimplementedStorageServer) StopChannel(context.Context, *StopChannelRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageServer) StopChannel(context.Context, *StopChannelRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopChannel not implemented")
 }
-func (*UnimplementedStorageServer) DeleteDefaultObjectAccessControl(context.Context, *DeleteDefaultObjectAccessControlRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageServer) DeleteDefaultObjectAccessControl(context.Context, *DeleteDefaultObjectAccessControlRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteDefaultObjectAccessControl not implemented")
 }
 func (*UnimplementedStorageServer) GetDefaultObjectAccessControl(context.Context, *GetDefaultObjectAccessControlRequest) (*ObjectAccessControl, error) {
@@ -10362,7 +10362,7 @@ func (*UnimplementedStorageServer) PatchDefaultObjectAccessControl(context.Conte
 func (*UnimplementedStorageServer) UpdateDefaultObjectAccessControl(context.Context, *UpdateDefaultObjectAccessControlRequest) (*ObjectAccessControl, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateDefaultObjectAccessControl not implemented")
 }
-func (*UnimplementedStorageServer) DeleteNotification(context.Context, *DeleteNotificationRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageServer) DeleteNotification(context.Context, *DeleteNotificationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteNotification not implemented")
 }
 func (*UnimplementedStorageServer) GetNotification(context.Context, *GetNotificationRequest) (*Notification, error) {
@@ -10374,7 +10374,7 @@ func (*UnimplementedStorageServer) InsertNotification(context.Context, *InsertNo
 func (*UnimplementedStorageServer) ListNotifications(context.Context, *ListNotificationsRequest) (*ListNotificationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListNotifications not implemented")
 }
-func (*UnimplementedStorageServer) DeleteObjectAccessControl(context.Context, *DeleteObjectAccessControlRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageServer) DeleteObjectAccessControl(context.Context, *DeleteObjectAccessControlRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteObjectAccessControl not implemented")
 }
 func (*UnimplementedStorageServer) GetObjectAccessControl(context.Context, *GetObjectAccessControlRequest) (*ObjectAccessControl, error) {
@@ -10398,7 +10398,7 @@ func (*UnimplementedStorageServer) ComposeObject(context.Context, *ComposeObject
 func (*UnimplementedStorageServer) CopyObject(context.Context, *CopyObjectRequest) (*Object, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CopyObject not implemented")
 }
-func (*UnimplementedStorageServer) DeleteObject(context.Context, *DeleteObjectRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageServer) DeleteObject(context.Context, *DeleteObjectRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteObject not implemented")
 }
 func (*UnimplementedStorageServer) GetObject(context.Context, *GetObjectRequest) (*Object, error) {
@@ -10446,7 +10446,7 @@ func (*UnimplementedStorageServer) GetServiceAccount(context.Context, *GetProjec
 func (*UnimplementedStorageServer) CreateHmacKey(context.Context, *CreateHmacKeyRequest) (*CreateHmacKeyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateHmacKey not implemented")
 }
-func (*UnimplementedStorageServer) DeleteHmacKey(context.Context, *DeleteHmacKeyRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageServer) DeleteHmacKey(context.Context, *DeleteHmacKeyRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteHmacKey not implemented")
 }
 func (*UnimplementedStorageServer) GetHmacKey(context.Context, *GetHmacKeyRequest) (*HmacKeyMetadata, error) {

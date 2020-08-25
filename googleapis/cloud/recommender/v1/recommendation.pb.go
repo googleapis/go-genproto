@@ -25,13 +25,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	duration "github.com/golang/protobuf/ptypes/duration"
-	_struct "github.com/golang/protobuf/ptypes/struct"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	money "google.golang.org/genproto/googleapis/type/money"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	structpb "google.golang.org/protobuf/types/known/structpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -210,7 +210,7 @@ type Recommendation struct {
 	RecommenderSubtype string `protobuf:"bytes,12,opt,name=recommender_subtype,json=recommenderSubtype,proto3" json:"recommender_subtype,omitempty"`
 	// Last time this recommendation was refreshed by the system that created it
 	// in the first place.
-	LastRefreshTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=last_refresh_time,json=lastRefreshTime,proto3" json:"last_refresh_time,omitempty"`
+	LastRefreshTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=last_refresh_time,json=lastRefreshTime,proto3" json:"last_refresh_time,omitempty"`
 	// The primary impact that this recommendation can have while trying to
 	// optimize for one category.
 	PrimaryImpact *Impact `protobuf:"bytes,5,opt,name=primary_impact,json=primaryImpact,proto3" json:"primary_impact,omitempty"`
@@ -282,7 +282,7 @@ func (x *Recommendation) GetRecommenderSubtype() string {
 	return ""
 }
 
-func (x *Recommendation) GetLastRefreshTime() *timestamp.Timestamp {
+func (x *Recommendation) GetLastRefreshTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LastRefreshTime
 	}
@@ -496,7 +496,7 @@ type Operation struct {
 	//  }
 	// When both path_filters and path_value_matchers are set, an implicit AND
 	// must be performed.
-	PathFilters map[string]*_struct.Value `protobuf:"bytes,8,rep,name=path_filters,json=pathFilters,proto3" json:"path_filters,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	PathFilters map[string]*structpb.Value `protobuf:"bytes,8,rep,name=path_filters,json=pathFilters,proto3" json:"path_filters,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Similar to path_filters, this contains set of filters to apply if `path`
 	// field referes to array elements. This is meant to support value matching
 	// beyond exact match. To perform exact match, use path_filters.
@@ -586,7 +586,7 @@ func (m *Operation) GetPathValue() isOperation_PathValue {
 	return nil
 }
 
-func (x *Operation) GetValue() *_struct.Value {
+func (x *Operation) GetValue() *structpb.Value {
 	if x, ok := x.GetPathValue().(*Operation_Value); ok {
 		return x.Value
 	}
@@ -600,7 +600,7 @@ func (x *Operation) GetValueMatcher() *ValueMatcher {
 	return nil
 }
 
-func (x *Operation) GetPathFilters() map[string]*_struct.Value {
+func (x *Operation) GetPathFilters() map[string]*structpb.Value {
 	if x != nil {
 		return x.PathFilters
 	}
@@ -622,7 +622,7 @@ type Operation_Value struct {
 	// Value for the `path` field. Will be set for actions:'add'/'replace'.
 	// Maybe set for action: 'test'. Either this or `value_matcher` will be set
 	// for 'test' operation. An exact match must be performed.
-	Value *_struct.Value `protobuf:"bytes,7,opt,name=value,proto3,oneof"`
+	Value *structpb.Value `protobuf:"bytes,7,opt,name=value,proto3,oneof"`
 }
 
 type Operation_ValueMatcher struct {
@@ -716,7 +716,7 @@ type CostProjection struct {
 	// See google.type.Money documentation for positive/negative units.
 	Cost *money.Money `protobuf:"bytes,1,opt,name=cost,proto3" json:"cost,omitempty"`
 	// Duration for which this cost applies.
-	Duration *duration.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
 }
 
 func (x *CostProjection) Reset() {
@@ -758,7 +758,7 @@ func (x *CostProjection) GetCost() *money.Money {
 	return nil
 }
 
-func (x *CostProjection) GetDuration() *duration.Duration {
+func (x *CostProjection) GetDuration() *durationpb.Duration {
 	if x != nil {
 		return x.Duration
 	}
@@ -1183,10 +1183,10 @@ var file_google_cloud_recommender_v1_recommendation_proto_goTypes = []interface{
 	nil,                                     // 11: google.cloud.recommender.v1.Operation.PathFiltersEntry
 	nil,                                     // 12: google.cloud.recommender.v1.Operation.PathValueMatchersEntry
 	nil,                                     // 13: google.cloud.recommender.v1.RecommendationStateInfo.StateMetadataEntry
-	(*timestamp.Timestamp)(nil),             // 14: google.protobuf.Timestamp
-	(*_struct.Value)(nil),                   // 15: google.protobuf.Value
+	(*timestamppb.Timestamp)(nil),           // 14: google.protobuf.Timestamp
+	(*structpb.Value)(nil),                  // 15: google.protobuf.Value
 	(*money.Money)(nil),                     // 16: google.type.Money
-	(*duration.Duration)(nil),               // 17: google.protobuf.Duration
+	(*durationpb.Duration)(nil),             // 17: google.protobuf.Duration
 }
 var file_google_cloud_recommender_v1_recommendation_proto_depIdxs = []int32{
 	14, // 0: google.cloud.recommender.v1.Recommendation.last_refresh_time:type_name -> google.protobuf.Timestamp

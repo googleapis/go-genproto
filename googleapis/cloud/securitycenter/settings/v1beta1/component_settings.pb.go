@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -129,7 +129,7 @@ type ComponentSettings struct {
 	// on updates then the existing metadata will be blindly overwritten.
 	Etag string `protobuf:"bytes,5,opt,name=etag,proto3" json:"etag,omitempty"`
 	// Output only. The time these settings were last updated.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Component specific settings.  This must match the component value.
 	//
 	// Types that are assignable to SpecificSettings:
@@ -207,7 +207,7 @@ func (x *ComponentSettings) GetEtag() string {
 	return ""
 }
 
-func (x *ComponentSettings) GetUpdateTime() *timestamp.Timestamp {
+func (x *ComponentSettings) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -851,7 +851,7 @@ var file_google_cloud_securitycenter_settings_v1beta1_component_settings_proto_g
 	nil, // 7: google.cloud.securitycenter.settings.v1beta1.ComponentSettings.DetectorSettingsEntry
 	(*SecurityHealthAnalyticsSettings_NonOrgIamMemberSettings)(nil),     // 8: google.cloud.securitycenter.settings.v1beta1.SecurityHealthAnalyticsSettings.NonOrgIamMemberSettings
 	(*SecurityHealthAnalyticsSettings_AdminServiceAccountSettings)(nil), // 9: google.cloud.securitycenter.settings.v1beta1.SecurityHealthAnalyticsSettings.AdminServiceAccountSettings
-	(*timestamp.Timestamp)(nil),                                         // 10: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                                       // 10: google.protobuf.Timestamp
 }
 var file_google_cloud_securitycenter_settings_v1beta1_component_settings_proto_depIdxs = []int32{
 	0,  // 0: google.cloud.securitycenter.settings.v1beta1.ComponentSettings.state:type_name -> google.cloud.securitycenter.settings.v1beta1.ComponentEnablementState

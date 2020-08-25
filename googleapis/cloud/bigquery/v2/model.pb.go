@@ -27,15 +27,15 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -834,7 +834,7 @@ type ListModelsRequest struct {
 	DatasetId string `protobuf:"bytes,2,opt,name=dataset_id,json=datasetId,proto3" json:"dataset_id,omitempty"`
 	// The maximum number of results to return in a single response page.
 	// Leverage the page tokens to iterate through the entire collection.
-	MaxResults *wrappers.UInt32Value `protobuf:"bytes,3,opt,name=max_results,json=maxResults,proto3" json:"max_results,omitempty"`
+	MaxResults *wrapperspb.UInt32Value `protobuf:"bytes,3,opt,name=max_results,json=maxResults,proto3" json:"max_results,omitempty"`
 	// Page token, returned by a previous call to request the next page of
 	// results
 	PageToken string `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
@@ -886,7 +886,7 @@ func (x *ListModelsRequest) GetDatasetId() string {
 	return ""
 }
 
-func (x *ListModelsRequest) GetMaxResults() *wrappers.UInt32Value {
+func (x *ListModelsRequest) GetMaxResults() *wrapperspb.UInt32Value {
 	if x != nil {
 		return x.MaxResults
 	}
@@ -1005,15 +1005,15 @@ type Model_RegressionMetrics struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Mean absolute error.
-	MeanAbsoluteError *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=mean_absolute_error,json=meanAbsoluteError,proto3" json:"mean_absolute_error,omitempty"`
+	MeanAbsoluteError *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=mean_absolute_error,json=meanAbsoluteError,proto3" json:"mean_absolute_error,omitempty"`
 	// Mean squared error.
-	MeanSquaredError *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=mean_squared_error,json=meanSquaredError,proto3" json:"mean_squared_error,omitempty"`
+	MeanSquaredError *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=mean_squared_error,json=meanSquaredError,proto3" json:"mean_squared_error,omitempty"`
 	// Mean squared log error.
-	MeanSquaredLogError *wrappers.DoubleValue `protobuf:"bytes,3,opt,name=mean_squared_log_error,json=meanSquaredLogError,proto3" json:"mean_squared_log_error,omitempty"`
+	MeanSquaredLogError *wrapperspb.DoubleValue `protobuf:"bytes,3,opt,name=mean_squared_log_error,json=meanSquaredLogError,proto3" json:"mean_squared_log_error,omitempty"`
 	// Median absolute error.
-	MedianAbsoluteError *wrappers.DoubleValue `protobuf:"bytes,4,opt,name=median_absolute_error,json=medianAbsoluteError,proto3" json:"median_absolute_error,omitempty"`
+	MedianAbsoluteError *wrapperspb.DoubleValue `protobuf:"bytes,4,opt,name=median_absolute_error,json=medianAbsoluteError,proto3" json:"median_absolute_error,omitempty"`
 	// R^2 score.
-	RSquared *wrappers.DoubleValue `protobuf:"bytes,5,opt,name=r_squared,json=rSquared,proto3" json:"r_squared,omitempty"`
+	RSquared *wrapperspb.DoubleValue `protobuf:"bytes,5,opt,name=r_squared,json=rSquared,proto3" json:"r_squared,omitempty"`
 }
 
 func (x *Model_RegressionMetrics) Reset() {
@@ -1048,35 +1048,35 @@ func (*Model_RegressionMetrics) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_v2_model_proto_rawDescGZIP(), []int{0, 1}
 }
 
-func (x *Model_RegressionMetrics) GetMeanAbsoluteError() *wrappers.DoubleValue {
+func (x *Model_RegressionMetrics) GetMeanAbsoluteError() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.MeanAbsoluteError
 	}
 	return nil
 }
 
-func (x *Model_RegressionMetrics) GetMeanSquaredError() *wrappers.DoubleValue {
+func (x *Model_RegressionMetrics) GetMeanSquaredError() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.MeanSquaredError
 	}
 	return nil
 }
 
-func (x *Model_RegressionMetrics) GetMeanSquaredLogError() *wrappers.DoubleValue {
+func (x *Model_RegressionMetrics) GetMeanSquaredLogError() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.MeanSquaredLogError
 	}
 	return nil
 }
 
-func (x *Model_RegressionMetrics) GetMedianAbsoluteError() *wrappers.DoubleValue {
+func (x *Model_RegressionMetrics) GetMedianAbsoluteError() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.MedianAbsoluteError
 	}
 	return nil
 }
 
-func (x *Model_RegressionMetrics) GetRSquared() *wrappers.DoubleValue {
+func (x *Model_RegressionMetrics) GetRSquared() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.RSquared
 	}
@@ -1097,26 +1097,26 @@ type Model_AggregateClassificationMetrics struct {
 	// Precision is the fraction of actual positive predictions that had
 	// positive actual labels. For multiclass this is a macro-averaged
 	// metric treating each class as a binary classifier.
-	Precision *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=precision,proto3" json:"precision,omitempty"`
+	Precision *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=precision,proto3" json:"precision,omitempty"`
 	// Recall is the fraction of actual positive labels that were given a
 	// positive prediction. For multiclass this is a macro-averaged metric.
-	Recall *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=recall,proto3" json:"recall,omitempty"`
+	Recall *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=recall,proto3" json:"recall,omitempty"`
 	// Accuracy is the fraction of predictions given the correct label. For
 	// multiclass this is a micro-averaged metric.
-	Accuracy *wrappers.DoubleValue `protobuf:"bytes,3,opt,name=accuracy,proto3" json:"accuracy,omitempty"`
+	Accuracy *wrapperspb.DoubleValue `protobuf:"bytes,3,opt,name=accuracy,proto3" json:"accuracy,omitempty"`
 	// Threshold at which the metrics are computed. For binary
 	// classification models this is the positive class threshold.
 	// For multi-class classfication models this is the confidence
 	// threshold.
-	Threshold *wrappers.DoubleValue `protobuf:"bytes,4,opt,name=threshold,proto3" json:"threshold,omitempty"`
+	Threshold *wrapperspb.DoubleValue `protobuf:"bytes,4,opt,name=threshold,proto3" json:"threshold,omitempty"`
 	// The F1 score is an average of recall and precision. For multiclass
 	// this is a macro-averaged metric.
-	F1Score *wrappers.DoubleValue `protobuf:"bytes,5,opt,name=f1_score,json=f1Score,proto3" json:"f1_score,omitempty"`
+	F1Score *wrapperspb.DoubleValue `protobuf:"bytes,5,opt,name=f1_score,json=f1Score,proto3" json:"f1_score,omitempty"`
 	// Logarithmic Loss. For multiclass this is a macro-averaged metric.
-	LogLoss *wrappers.DoubleValue `protobuf:"bytes,6,opt,name=log_loss,json=logLoss,proto3" json:"log_loss,omitempty"`
+	LogLoss *wrapperspb.DoubleValue `protobuf:"bytes,6,opt,name=log_loss,json=logLoss,proto3" json:"log_loss,omitempty"`
 	// Area Under a ROC Curve. For multiclass this is a macro-averaged
 	// metric.
-	RocAuc *wrappers.DoubleValue `protobuf:"bytes,7,opt,name=roc_auc,json=rocAuc,proto3" json:"roc_auc,omitempty"`
+	RocAuc *wrapperspb.DoubleValue `protobuf:"bytes,7,opt,name=roc_auc,json=rocAuc,proto3" json:"roc_auc,omitempty"`
 }
 
 func (x *Model_AggregateClassificationMetrics) Reset() {
@@ -1151,49 +1151,49 @@ func (*Model_AggregateClassificationMetrics) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_v2_model_proto_rawDescGZIP(), []int{0, 2}
 }
 
-func (x *Model_AggregateClassificationMetrics) GetPrecision() *wrappers.DoubleValue {
+func (x *Model_AggregateClassificationMetrics) GetPrecision() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Precision
 	}
 	return nil
 }
 
-func (x *Model_AggregateClassificationMetrics) GetRecall() *wrappers.DoubleValue {
+func (x *Model_AggregateClassificationMetrics) GetRecall() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Recall
 	}
 	return nil
 }
 
-func (x *Model_AggregateClassificationMetrics) GetAccuracy() *wrappers.DoubleValue {
+func (x *Model_AggregateClassificationMetrics) GetAccuracy() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Accuracy
 	}
 	return nil
 }
 
-func (x *Model_AggregateClassificationMetrics) GetThreshold() *wrappers.DoubleValue {
+func (x *Model_AggregateClassificationMetrics) GetThreshold() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Threshold
 	}
 	return nil
 }
 
-func (x *Model_AggregateClassificationMetrics) GetF1Score() *wrappers.DoubleValue {
+func (x *Model_AggregateClassificationMetrics) GetF1Score() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.F1Score
 	}
 	return nil
 }
 
-func (x *Model_AggregateClassificationMetrics) GetLogLoss() *wrappers.DoubleValue {
+func (x *Model_AggregateClassificationMetrics) GetLogLoss() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.LogLoss
 	}
 	return nil
 }
 
-func (x *Model_AggregateClassificationMetrics) GetRocAuc() *wrappers.DoubleValue {
+func (x *Model_AggregateClassificationMetrics) GetRocAuc() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.RocAuc
 	}
@@ -1341,9 +1341,9 @@ type Model_ClusteringMetrics struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Davies-Bouldin index.
-	DaviesBouldinIndex *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=davies_bouldin_index,json=daviesBouldinIndex,proto3" json:"davies_bouldin_index,omitempty"`
+	DaviesBouldinIndex *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=davies_bouldin_index,json=daviesBouldinIndex,proto3" json:"davies_bouldin_index,omitempty"`
 	// Mean of squared distances between each sample to its cluster centroid.
-	MeanSquaredDistance *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=mean_squared_distance,json=meanSquaredDistance,proto3" json:"mean_squared_distance,omitempty"`
+	MeanSquaredDistance *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=mean_squared_distance,json=meanSquaredDistance,proto3" json:"mean_squared_distance,omitempty"`
 	// [Beta] Information for all clusters.
 	Clusters []*Model_ClusteringMetrics_Cluster `protobuf:"bytes,3,rep,name=clusters,proto3" json:"clusters,omitempty"`
 }
@@ -1380,14 +1380,14 @@ func (*Model_ClusteringMetrics) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_v2_model_proto_rawDescGZIP(), []int{0, 5}
 }
 
-func (x *Model_ClusteringMetrics) GetDaviesBouldinIndex() *wrappers.DoubleValue {
+func (x *Model_ClusteringMetrics) GetDaviesBouldinIndex() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.DaviesBouldinIndex
 	}
 	return nil
 }
 
-func (x *Model_ClusteringMetrics) GetMeanSquaredDistance() *wrappers.DoubleValue {
+func (x *Model_ClusteringMetrics) GetMeanSquaredDistance() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.MeanSquaredDistance
 	}
@@ -1527,7 +1527,7 @@ type Model_TrainingRun struct {
 	// user specified and default options that were used.
 	TrainingOptions *Model_TrainingRun_TrainingOptions `protobuf:"bytes,1,opt,name=training_options,json=trainingOptions,proto3" json:"training_options,omitempty"`
 	// The start time of this training run.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,8,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Output of each iteration run, results.size() <= max_iterations.
 	Results []*Model_TrainingRun_IterationResult `protobuf:"bytes,6,rep,name=results,proto3" json:"results,omitempty"`
 	// The evaluation metrics over training/eval data that were computed at the
@@ -1574,7 +1574,7 @@ func (x *Model_TrainingRun) GetTrainingOptions() *Model_TrainingRun_TrainingOpti
 	return nil
 }
 
-func (x *Model_TrainingRun) GetStartTime() *timestamp.Timestamp {
+func (x *Model_TrainingRun) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
@@ -1602,25 +1602,25 @@ type Model_BinaryClassificationMetrics_BinaryConfusionMatrix struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Threshold value used when computing each of the following metric.
-	PositiveClassThreshold *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=positive_class_threshold,json=positiveClassThreshold,proto3" json:"positive_class_threshold,omitempty"`
+	PositiveClassThreshold *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=positive_class_threshold,json=positiveClassThreshold,proto3" json:"positive_class_threshold,omitempty"`
 	// Number of true samples predicted as true.
-	TruePositives *wrappers.Int64Value `protobuf:"bytes,2,opt,name=true_positives,json=truePositives,proto3" json:"true_positives,omitempty"`
+	TruePositives *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=true_positives,json=truePositives,proto3" json:"true_positives,omitempty"`
 	// Number of false samples predicted as true.
-	FalsePositives *wrappers.Int64Value `protobuf:"bytes,3,opt,name=false_positives,json=falsePositives,proto3" json:"false_positives,omitempty"`
+	FalsePositives *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=false_positives,json=falsePositives,proto3" json:"false_positives,omitempty"`
 	// Number of true samples predicted as false.
-	TrueNegatives *wrappers.Int64Value `protobuf:"bytes,4,opt,name=true_negatives,json=trueNegatives,proto3" json:"true_negatives,omitempty"`
+	TrueNegatives *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=true_negatives,json=trueNegatives,proto3" json:"true_negatives,omitempty"`
 	// Number of false samples predicted as false.
-	FalseNegatives *wrappers.Int64Value `protobuf:"bytes,5,opt,name=false_negatives,json=falseNegatives,proto3" json:"false_negatives,omitempty"`
+	FalseNegatives *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=false_negatives,json=falseNegatives,proto3" json:"false_negatives,omitempty"`
 	// The fraction of actual positive predictions that had positive actual
 	// labels.
-	Precision *wrappers.DoubleValue `protobuf:"bytes,6,opt,name=precision,proto3" json:"precision,omitempty"`
+	Precision *wrapperspb.DoubleValue `protobuf:"bytes,6,opt,name=precision,proto3" json:"precision,omitempty"`
 	// The fraction of actual positive labels that were given a positive
 	// prediction.
-	Recall *wrappers.DoubleValue `protobuf:"bytes,7,opt,name=recall,proto3" json:"recall,omitempty"`
+	Recall *wrapperspb.DoubleValue `protobuf:"bytes,7,opt,name=recall,proto3" json:"recall,omitempty"`
 	// The equally weighted average of recall and precision.
-	F1Score *wrappers.DoubleValue `protobuf:"bytes,8,opt,name=f1_score,json=f1Score,proto3" json:"f1_score,omitempty"`
+	F1Score *wrapperspb.DoubleValue `protobuf:"bytes,8,opt,name=f1_score,json=f1Score,proto3" json:"f1_score,omitempty"`
 	// The fraction of predictions given the correct label.
-	Accuracy *wrappers.DoubleValue `protobuf:"bytes,9,opt,name=accuracy,proto3" json:"accuracy,omitempty"`
+	Accuracy *wrapperspb.DoubleValue `protobuf:"bytes,9,opt,name=accuracy,proto3" json:"accuracy,omitempty"`
 }
 
 func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) Reset() {
@@ -1655,63 +1655,63 @@ func (*Model_BinaryClassificationMetrics_BinaryConfusionMatrix) Descriptor() ([]
 	return file_google_cloud_bigquery_v2_model_proto_rawDescGZIP(), []int{0, 3, 0}
 }
 
-func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetPositiveClassThreshold() *wrappers.DoubleValue {
+func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetPositiveClassThreshold() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.PositiveClassThreshold
 	}
 	return nil
 }
 
-func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetTruePositives() *wrappers.Int64Value {
+func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetTruePositives() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TruePositives
 	}
 	return nil
 }
 
-func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetFalsePositives() *wrappers.Int64Value {
+func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetFalsePositives() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FalsePositives
 	}
 	return nil
 }
 
-func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetTrueNegatives() *wrappers.Int64Value {
+func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetTrueNegatives() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TrueNegatives
 	}
 	return nil
 }
 
-func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetFalseNegatives() *wrappers.Int64Value {
+func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetFalseNegatives() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.FalseNegatives
 	}
 	return nil
 }
 
-func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetPrecision() *wrappers.DoubleValue {
+func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetPrecision() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Precision
 	}
 	return nil
 }
 
-func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetRecall() *wrappers.DoubleValue {
+func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetRecall() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Recall
 	}
 	return nil
 }
 
-func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetF1Score() *wrappers.DoubleValue {
+func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetF1Score() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.F1Score
 	}
 	return nil
 }
 
-func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetAccuracy() *wrappers.DoubleValue {
+func (x *Model_BinaryClassificationMetrics_BinaryConfusionMatrix) GetAccuracy() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.Accuracy
 	}
@@ -1726,7 +1726,7 @@ type Model_MultiClassClassificationMetrics_ConfusionMatrix struct {
 
 	// Confidence threshold used when computing the entries of the
 	// confusion matrix.
-	ConfidenceThreshold *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=confidence_threshold,json=confidenceThreshold,proto3" json:"confidence_threshold,omitempty"`
+	ConfidenceThreshold *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=confidence_threshold,json=confidenceThreshold,proto3" json:"confidence_threshold,omitempty"`
 	// One row per actual label.
 	Rows []*Model_MultiClassClassificationMetrics_ConfusionMatrix_Row `protobuf:"bytes,2,rep,name=rows,proto3" json:"rows,omitempty"`
 }
@@ -1763,7 +1763,7 @@ func (*Model_MultiClassClassificationMetrics_ConfusionMatrix) Descriptor() ([]by
 	return file_google_cloud_bigquery_v2_model_proto_rawDescGZIP(), []int{0, 4, 0}
 }
 
-func (x *Model_MultiClassClassificationMetrics_ConfusionMatrix) GetConfidenceThreshold() *wrappers.DoubleValue {
+func (x *Model_MultiClassClassificationMetrics_ConfusionMatrix) GetConfidenceThreshold() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.ConfidenceThreshold
 	}
@@ -1788,7 +1788,7 @@ type Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry struct {
 	// confidence threshold.
 	PredictedLabel string `protobuf:"bytes,1,opt,name=predicted_label,json=predictedLabel,proto3" json:"predicted_label,omitempty"`
 	// Number of items being predicted as this label.
-	ItemCount *wrappers.Int64Value `protobuf:"bytes,2,opt,name=item_count,json=itemCount,proto3" json:"item_count,omitempty"`
+	ItemCount *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=item_count,json=itemCount,proto3" json:"item_count,omitempty"`
 }
 
 func (x *Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry) Reset() {
@@ -1830,7 +1830,7 @@ func (x *Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry) GetPredict
 	return ""
 }
 
-func (x *Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry) GetItemCount() *wrappers.Int64Value {
+func (x *Model_MultiClassClassificationMetrics_ConfusionMatrix_Entry) GetItemCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ItemCount
 	}
@@ -1906,7 +1906,7 @@ type Model_ClusteringMetrics_Cluster struct {
 	// Values of highly variant features for this cluster.
 	FeatureValues []*Model_ClusteringMetrics_Cluster_FeatureValue `protobuf:"bytes,2,rep,name=feature_values,json=featureValues,proto3" json:"feature_values,omitempty"`
 	// Count of training data rows that were assigned to this cluster.
-	Count *wrappers.Int64Value `protobuf:"bytes,3,opt,name=count,proto3" json:"count,omitempty"`
+	Count *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=count,proto3" json:"count,omitempty"`
 }
 
 func (x *Model_ClusteringMetrics_Cluster) Reset() {
@@ -1955,7 +1955,7 @@ func (x *Model_ClusteringMetrics_Cluster) GetFeatureValues() []*Model_Clustering
 	return nil
 }
 
-func (x *Model_ClusteringMetrics_Cluster) GetCount() *wrappers.Int64Value {
+func (x *Model_ClusteringMetrics_Cluster) GetCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Count
 	}
@@ -2022,7 +2022,7 @@ func (m *Model_ClusteringMetrics_Cluster_FeatureValue) GetValue() isModel_Cluste
 	return nil
 }
 
-func (x *Model_ClusteringMetrics_Cluster_FeatureValue) GetNumericalValue() *wrappers.DoubleValue {
+func (x *Model_ClusteringMetrics_Cluster_FeatureValue) GetNumericalValue() *wrapperspb.DoubleValue {
 	if x, ok := x.GetValue().(*Model_ClusteringMetrics_Cluster_FeatureValue_NumericalValue); ok {
 		return x.NumericalValue
 	}
@@ -2043,7 +2043,7 @@ type isModel_ClusteringMetrics_Cluster_FeatureValue_Value interface {
 type Model_ClusteringMetrics_Cluster_FeatureValue_NumericalValue struct {
 	// The numerical feature value. This is the centroid value for this
 	// feature.
-	NumericalValue *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=numerical_value,json=numericalValue,proto3,oneof"`
+	NumericalValue *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=numerical_value,json=numericalValue,proto3,oneof"`
 }
 
 type Model_ClusteringMetrics_Cluster_FeatureValue_CategoricalValue_ struct {
@@ -2119,7 +2119,7 @@ type Model_ClusteringMetrics_Cluster_FeatureValue_CategoricalValue_CategoryCount
 	Category string `protobuf:"bytes,1,opt,name=category,proto3" json:"category,omitempty"`
 	// The count of training samples matching the category within the
 	// cluster.
-	Count *wrappers.Int64Value `protobuf:"bytes,2,opt,name=count,proto3" json:"count,omitempty"`
+	Count *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=count,proto3" json:"count,omitempty"`
 }
 
 func (x *Model_ClusteringMetrics_Cluster_FeatureValue_CategoricalValue_CategoryCount) Reset() {
@@ -2161,7 +2161,7 @@ func (x *Model_ClusteringMetrics_Cluster_FeatureValue_CategoricalValue_CategoryC
 	return ""
 }
 
-func (x *Model_ClusteringMetrics_Cluster_FeatureValue_CategoricalValue_CategoryCount) GetCount() *wrappers.Int64Value {
+func (x *Model_ClusteringMetrics_Cluster_FeatureValue_CategoricalValue_CategoryCount) GetCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Count
 	}
@@ -2181,19 +2181,19 @@ type Model_TrainingRun_TrainingOptions struct {
 	// Learning rate in training. Used only for iterative training algorithms.
 	LearnRate float64 `protobuf:"fixed64,3,opt,name=learn_rate,json=learnRate,proto3" json:"learn_rate,omitempty"`
 	// L1 regularization coefficient.
-	L1Regularization *wrappers.DoubleValue `protobuf:"bytes,4,opt,name=l1_regularization,json=l1Regularization,proto3" json:"l1_regularization,omitempty"`
+	L1Regularization *wrapperspb.DoubleValue `protobuf:"bytes,4,opt,name=l1_regularization,json=l1Regularization,proto3" json:"l1_regularization,omitempty"`
 	// L2 regularization coefficient.
-	L2Regularization *wrappers.DoubleValue `protobuf:"bytes,5,opt,name=l2_regularization,json=l2Regularization,proto3" json:"l2_regularization,omitempty"`
+	L2Regularization *wrapperspb.DoubleValue `protobuf:"bytes,5,opt,name=l2_regularization,json=l2Regularization,proto3" json:"l2_regularization,omitempty"`
 	// When early_stop is true, stops training when accuracy improvement is
 	// less than 'min_relative_progress'. Used only for iterative training
 	// algorithms.
-	MinRelativeProgress *wrappers.DoubleValue `protobuf:"bytes,6,opt,name=min_relative_progress,json=minRelativeProgress,proto3" json:"min_relative_progress,omitempty"`
+	MinRelativeProgress *wrapperspb.DoubleValue `protobuf:"bytes,6,opt,name=min_relative_progress,json=minRelativeProgress,proto3" json:"min_relative_progress,omitempty"`
 	// Whether to train a model from the last checkpoint.
-	WarmStart *wrappers.BoolValue `protobuf:"bytes,7,opt,name=warm_start,json=warmStart,proto3" json:"warm_start,omitempty"`
+	WarmStart *wrapperspb.BoolValue `protobuf:"bytes,7,opt,name=warm_start,json=warmStart,proto3" json:"warm_start,omitempty"`
 	// Whether to stop early when the loss doesn't improve significantly
 	// any more (compared to min_relative_progress). Used only for iterative
 	// training algorithms.
-	EarlyStop *wrappers.BoolValue `protobuf:"bytes,8,opt,name=early_stop,json=earlyStop,proto3" json:"early_stop,omitempty"`
+	EarlyStop *wrapperspb.BoolValue `protobuf:"bytes,8,opt,name=early_stop,json=earlyStop,proto3" json:"early_stop,omitempty"`
 	// Name of input label columns in training data.
 	InputLabelColumns []string `protobuf:"bytes,9,rep,name=input_label_columns,json=inputLabelColumns,proto3" json:"input_label_columns,omitempty"`
 	// The data split type for training and evaluation, e.g. RANDOM.
@@ -2291,35 +2291,35 @@ func (x *Model_TrainingRun_TrainingOptions) GetLearnRate() float64 {
 	return 0
 }
 
-func (x *Model_TrainingRun_TrainingOptions) GetL1Regularization() *wrappers.DoubleValue {
+func (x *Model_TrainingRun_TrainingOptions) GetL1Regularization() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.L1Regularization
 	}
 	return nil
 }
 
-func (x *Model_TrainingRun_TrainingOptions) GetL2Regularization() *wrappers.DoubleValue {
+func (x *Model_TrainingRun_TrainingOptions) GetL2Regularization() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.L2Regularization
 	}
 	return nil
 }
 
-func (x *Model_TrainingRun_TrainingOptions) GetMinRelativeProgress() *wrappers.DoubleValue {
+func (x *Model_TrainingRun_TrainingOptions) GetMinRelativeProgress() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.MinRelativeProgress
 	}
 	return nil
 }
 
-func (x *Model_TrainingRun_TrainingOptions) GetWarmStart() *wrappers.BoolValue {
+func (x *Model_TrainingRun_TrainingOptions) GetWarmStart() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.WarmStart
 	}
 	return nil
 }
 
-func (x *Model_TrainingRun_TrainingOptions) GetEarlyStop() *wrappers.BoolValue {
+func (x *Model_TrainingRun_TrainingOptions) GetEarlyStop() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.EarlyStop
 	}
@@ -2424,13 +2424,13 @@ type Model_TrainingRun_IterationResult struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Index of the iteration, 0 based.
-	Index *wrappers.Int32Value `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
+	Index *wrapperspb.Int32Value `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
 	// Time taken to run the iteration in milliseconds.
-	DurationMs *wrappers.Int64Value `protobuf:"bytes,4,opt,name=duration_ms,json=durationMs,proto3" json:"duration_ms,omitempty"`
+	DurationMs *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=duration_ms,json=durationMs,proto3" json:"duration_ms,omitempty"`
 	// Loss computed on the training data at the end of iteration.
-	TrainingLoss *wrappers.DoubleValue `protobuf:"bytes,5,opt,name=training_loss,json=trainingLoss,proto3" json:"training_loss,omitempty"`
+	TrainingLoss *wrapperspb.DoubleValue `protobuf:"bytes,5,opt,name=training_loss,json=trainingLoss,proto3" json:"training_loss,omitempty"`
 	// Loss computed on the eval data at the end of iteration.
-	EvalLoss *wrappers.DoubleValue `protobuf:"bytes,6,opt,name=eval_loss,json=evalLoss,proto3" json:"eval_loss,omitempty"`
+	EvalLoss *wrapperspb.DoubleValue `protobuf:"bytes,6,opt,name=eval_loss,json=evalLoss,proto3" json:"eval_loss,omitempty"`
 	// Learn rate used for this iteration.
 	LearnRate float64 `protobuf:"fixed64,7,opt,name=learn_rate,json=learnRate,proto3" json:"learn_rate,omitempty"`
 	// Information about top clusters for clustering models.
@@ -2469,28 +2469,28 @@ func (*Model_TrainingRun_IterationResult) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_v2_model_proto_rawDescGZIP(), []int{0, 7, 1}
 }
 
-func (x *Model_TrainingRun_IterationResult) GetIndex() *wrappers.Int32Value {
+func (x *Model_TrainingRun_IterationResult) GetIndex() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.Index
 	}
 	return nil
 }
 
-func (x *Model_TrainingRun_IterationResult) GetDurationMs() *wrappers.Int64Value {
+func (x *Model_TrainingRun_IterationResult) GetDurationMs() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.DurationMs
 	}
 	return nil
 }
 
-func (x *Model_TrainingRun_IterationResult) GetTrainingLoss() *wrappers.DoubleValue {
+func (x *Model_TrainingRun_IterationResult) GetTrainingLoss() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.TrainingLoss
 	}
 	return nil
 }
 
-func (x *Model_TrainingRun_IterationResult) GetEvalLoss() *wrappers.DoubleValue {
+func (x *Model_TrainingRun_IterationResult) GetEvalLoss() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.EvalLoss
 	}
@@ -2521,9 +2521,9 @@ type Model_TrainingRun_IterationResult_ClusterInfo struct {
 	CentroidId int64 `protobuf:"varint,1,opt,name=centroid_id,json=centroidId,proto3" json:"centroid_id,omitempty"`
 	// Cluster radius, the average distance from centroid
 	// to each point assigned to the cluster.
-	ClusterRadius *wrappers.DoubleValue `protobuf:"bytes,2,opt,name=cluster_radius,json=clusterRadius,proto3" json:"cluster_radius,omitempty"`
+	ClusterRadius *wrapperspb.DoubleValue `protobuf:"bytes,2,opt,name=cluster_radius,json=clusterRadius,proto3" json:"cluster_radius,omitempty"`
 	// Cluster size, the total number of points assigned to the cluster.
-	ClusterSize *wrappers.Int64Value `protobuf:"bytes,3,opt,name=cluster_size,json=clusterSize,proto3" json:"cluster_size,omitempty"`
+	ClusterSize *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=cluster_size,json=clusterSize,proto3" json:"cluster_size,omitempty"`
 }
 
 func (x *Model_TrainingRun_IterationResult_ClusterInfo) Reset() {
@@ -2565,14 +2565,14 @@ func (x *Model_TrainingRun_IterationResult_ClusterInfo) GetCentroidId() int64 {
 	return 0
 }
 
-func (x *Model_TrainingRun_IterationResult_ClusterInfo) GetClusterRadius() *wrappers.DoubleValue {
+func (x *Model_TrainingRun_IterationResult_ClusterInfo) GetClusterRadius() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.ClusterRadius
 	}
 	return nil
 }
 
-func (x *Model_TrainingRun_IterationResult_ClusterInfo) GetClusterSize() *wrappers.Int64Value {
+func (x *Model_TrainingRun_IterationResult_ClusterInfo) GetClusterSize() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ClusterSize
 	}
@@ -3283,13 +3283,13 @@ var file_google_cloud_bigquery_v2_model_proto_goTypes = []interface{}{
 	(*ModelReference)(nil),                                // 34: google.cloud.bigquery.v2.ModelReference
 	(*EncryptionConfiguration)(nil),                       // 35: google.cloud.bigquery.v2.EncryptionConfiguration
 	(*StandardSqlField)(nil),                              // 36: google.cloud.bigquery.v2.StandardSqlField
-	(*wrappers.UInt32Value)(nil),                          // 37: google.protobuf.UInt32Value
-	(*wrappers.DoubleValue)(nil),                          // 38: google.protobuf.DoubleValue
-	(*timestamp.Timestamp)(nil),                           // 39: google.protobuf.Timestamp
-	(*wrappers.Int64Value)(nil),                           // 40: google.protobuf.Int64Value
-	(*wrappers.BoolValue)(nil),                            // 41: google.protobuf.BoolValue
-	(*wrappers.Int32Value)(nil),                           // 42: google.protobuf.Int32Value
-	(*empty.Empty)(nil),                                   // 43: google.protobuf.Empty
+	(*wrapperspb.UInt32Value)(nil),                        // 37: google.protobuf.UInt32Value
+	(*wrapperspb.DoubleValue)(nil),                        // 38: google.protobuf.DoubleValue
+	(*timestamppb.Timestamp)(nil),                         // 39: google.protobuf.Timestamp
+	(*wrapperspb.Int64Value)(nil),                         // 40: google.protobuf.Int64Value
+	(*wrapperspb.BoolValue)(nil),                          // 41: google.protobuf.BoolValue
+	(*wrapperspb.Int32Value)(nil),                         // 42: google.protobuf.Int32Value
+	(*emptypb.Empty)(nil),                                 // 43: google.protobuf.Empty
 }
 var file_google_cloud_bigquery_v2_model_proto_depIdxs = []int32{
 	34, // 0: google.cloud.bigquery.v2.Model.model_reference:type_name -> google.cloud.bigquery.v2.ModelReference
@@ -3743,7 +3743,7 @@ type ModelServiceClient interface {
 	// Patch specific fields in the specified model.
 	PatchModel(ctx context.Context, in *PatchModelRequest, opts ...grpc.CallOption) (*Model, error)
 	// Deletes the model specified by modelId from the dataset.
-	DeleteModel(ctx context.Context, in *DeleteModelRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteModel(ctx context.Context, in *DeleteModelRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type modelServiceClient struct {
@@ -3781,8 +3781,8 @@ func (c *modelServiceClient) PatchModel(ctx context.Context, in *PatchModelReque
 	return out, nil
 }
 
-func (c *modelServiceClient) DeleteModel(ctx context.Context, in *DeleteModelRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *modelServiceClient) DeleteModel(ctx context.Context, in *DeleteModelRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.bigquery.v2.ModelService/DeleteModel", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3800,7 +3800,7 @@ type ModelServiceServer interface {
 	// Patch specific fields in the specified model.
 	PatchModel(context.Context, *PatchModelRequest) (*Model, error)
 	// Deletes the model specified by modelId from the dataset.
-	DeleteModel(context.Context, *DeleteModelRequest) (*empty.Empty, error)
+	DeleteModel(context.Context, *DeleteModelRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedModelServiceServer can be embedded to have forward compatible implementations.
@@ -3816,7 +3816,7 @@ func (*UnimplementedModelServiceServer) ListModels(context.Context, *ListModelsR
 func (*UnimplementedModelServiceServer) PatchModel(context.Context, *PatchModelRequest) (*Model, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PatchModel not implemented")
 }
-func (*UnimplementedModelServiceServer) DeleteModel(context.Context, *DeleteModelRequest) (*empty.Empty, error) {
+func (*UnimplementedModelServiceServer) DeleteModel(context.Context, *DeleteModelRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteModel not implemented")
 }
 

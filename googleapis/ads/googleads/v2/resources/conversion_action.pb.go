@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,12 +56,12 @@ type ConversionAction struct {
 	// `customers/{customer_id}/conversionActions/{conversion_action_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the conversion action.
-	Id *wrappers.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// The name of the conversion action.
 	//
 	// This field is required and should not be empty when creating new
 	// conversion actions.
-	Name *wrappers.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// The status of this conversion action for conversion event accrual.
 	Status enums.ConversionActionStatusEnum_ConversionActionStatus `protobuf:"varint,4,opt,name=status,proto3,enum=google.ads.googleads.v2.enums.ConversionActionStatusEnum_ConversionActionStatus" json:"status,omitempty"`
 	// Immutable. The type of this conversion action.
@@ -70,16 +70,16 @@ type ConversionAction struct {
 	Category enums.ConversionActionCategoryEnum_ConversionActionCategory `protobuf:"varint,6,opt,name=category,proto3,enum=google.ads.googleads.v2.enums.ConversionActionCategoryEnum_ConversionActionCategory" json:"category,omitempty"`
 	// Output only. The resource name of the conversion action owner customer, or null if this
 	// is a system-defined conversion action.
-	OwnerCustomer *wrappers.StringValue `protobuf:"bytes,7,opt,name=owner_customer,json=ownerCustomer,proto3" json:"owner_customer,omitempty"`
+	OwnerCustomer *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=owner_customer,json=ownerCustomer,proto3" json:"owner_customer,omitempty"`
 	// Whether this conversion action should be included in the "conversions"
 	// metric.
-	IncludeInConversionsMetric *wrappers.BoolValue `protobuf:"bytes,8,opt,name=include_in_conversions_metric,json=includeInConversionsMetric,proto3" json:"include_in_conversions_metric,omitempty"`
+	IncludeInConversionsMetric *wrapperspb.BoolValue `protobuf:"bytes,8,opt,name=include_in_conversions_metric,json=includeInConversionsMetric,proto3" json:"include_in_conversions_metric,omitempty"`
 	// The maximum number of days that may elapse between an interaction
 	// (e.g., a click) and a conversion event.
-	ClickThroughLookbackWindowDays *wrappers.Int64Value `protobuf:"bytes,9,opt,name=click_through_lookback_window_days,json=clickThroughLookbackWindowDays,proto3" json:"click_through_lookback_window_days,omitempty"`
+	ClickThroughLookbackWindowDays *wrapperspb.Int64Value `protobuf:"bytes,9,opt,name=click_through_lookback_window_days,json=clickThroughLookbackWindowDays,proto3" json:"click_through_lookback_window_days,omitempty"`
 	// The maximum number of days which may elapse between an impression and a
 	// conversion without an interaction.
-	ViewThroughLookbackWindowDays *wrappers.Int64Value `protobuf:"bytes,10,opt,name=view_through_lookback_window_days,json=viewThroughLookbackWindowDays,proto3" json:"view_through_lookback_window_days,omitempty"`
+	ViewThroughLookbackWindowDays *wrapperspb.Int64Value `protobuf:"bytes,10,opt,name=view_through_lookback_window_days,json=viewThroughLookbackWindowDays,proto3" json:"view_through_lookback_window_days,omitempty"`
 	// Settings related to the value for conversion events associated with this
 	// conversion action.
 	ValueSettings *ConversionAction_ValueSettings `protobuf:"bytes,11,opt,name=value_settings,json=valueSettings,proto3" json:"value_settings,omitempty"`
@@ -93,9 +93,9 @@ type ConversionAction struct {
 	// reported for this conversion action.
 	//
 	// The value must be between 0 and 10000, inclusive.
-	PhoneCallDurationSeconds *wrappers.Int64Value `protobuf:"bytes,15,opt,name=phone_call_duration_seconds,json=phoneCallDurationSeconds,proto3" json:"phone_call_duration_seconds,omitempty"`
+	PhoneCallDurationSeconds *wrapperspb.Int64Value `protobuf:"bytes,15,opt,name=phone_call_duration_seconds,json=phoneCallDurationSeconds,proto3" json:"phone_call_duration_seconds,omitempty"`
 	// App ID for an app conversion action.
-	AppId *wrappers.StringValue `protobuf:"bytes,16,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	AppId *wrapperspb.StringValue `protobuf:"bytes,16,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 }
 
 func (x *ConversionAction) Reset() {
@@ -137,14 +137,14 @@ func (x *ConversionAction) GetResourceName() string {
 	return ""
 }
 
-func (x *ConversionAction) GetId() *wrappers.Int64Value {
+func (x *ConversionAction) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *ConversionAction) GetName() *wrappers.StringValue {
+func (x *ConversionAction) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -172,28 +172,28 @@ func (x *ConversionAction) GetCategory() enums.ConversionActionCategoryEnum_Conv
 	return enums.ConversionActionCategoryEnum_UNSPECIFIED
 }
 
-func (x *ConversionAction) GetOwnerCustomer() *wrappers.StringValue {
+func (x *ConversionAction) GetOwnerCustomer() *wrapperspb.StringValue {
 	if x != nil {
 		return x.OwnerCustomer
 	}
 	return nil
 }
 
-func (x *ConversionAction) GetIncludeInConversionsMetric() *wrappers.BoolValue {
+func (x *ConversionAction) GetIncludeInConversionsMetric() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.IncludeInConversionsMetric
 	}
 	return nil
 }
 
-func (x *ConversionAction) GetClickThroughLookbackWindowDays() *wrappers.Int64Value {
+func (x *ConversionAction) GetClickThroughLookbackWindowDays() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ClickThroughLookbackWindowDays
 	}
 	return nil
 }
 
-func (x *ConversionAction) GetViewThroughLookbackWindowDays() *wrappers.Int64Value {
+func (x *ConversionAction) GetViewThroughLookbackWindowDays() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ViewThroughLookbackWindowDays
 	}
@@ -228,14 +228,14 @@ func (x *ConversionAction) GetTagSnippets() []*common.TagSnippet {
 	return nil
 }
 
-func (x *ConversionAction) GetPhoneCallDurationSeconds() *wrappers.Int64Value {
+func (x *ConversionAction) GetPhoneCallDurationSeconds() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.PhoneCallDurationSeconds
 	}
 	return nil
 }
 
-func (x *ConversionAction) GetAppId() *wrappers.StringValue {
+func (x *ConversionAction) GetAppId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AppId
 	}
@@ -311,15 +311,15 @@ type ConversionAction_ValueSettings struct {
 	// The value to use when conversion events for this conversion action are
 	// sent with an invalid, disallowed or missing value, or when
 	// this conversion action is configured to always use the default value.
-	DefaultValue *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
+	DefaultValue *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
 	// The currency code to use when conversion events for this conversion
 	// action are sent with an invalid or missing currency code, or when this
 	// conversion action is configured to always use the default value.
-	DefaultCurrencyCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=default_currency_code,json=defaultCurrencyCode,proto3" json:"default_currency_code,omitempty"`
+	DefaultCurrencyCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=default_currency_code,json=defaultCurrencyCode,proto3" json:"default_currency_code,omitempty"`
 	// Controls whether the default value and default currency code are used in
 	// place of the value and currency code specified in conversion events for
 	// this conversion action.
-	AlwaysUseDefaultValue *wrappers.BoolValue `protobuf:"bytes,3,opt,name=always_use_default_value,json=alwaysUseDefaultValue,proto3" json:"always_use_default_value,omitempty"`
+	AlwaysUseDefaultValue *wrapperspb.BoolValue `protobuf:"bytes,3,opt,name=always_use_default_value,json=alwaysUseDefaultValue,proto3" json:"always_use_default_value,omitempty"`
 }
 
 func (x *ConversionAction_ValueSettings) Reset() {
@@ -354,21 +354,21 @@ func (*ConversionAction_ValueSettings) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_resources_conversion_action_proto_rawDescGZIP(), []int{0, 1}
 }
 
-func (x *ConversionAction_ValueSettings) GetDefaultValue() *wrappers.DoubleValue {
+func (x *ConversionAction_ValueSettings) GetDefaultValue() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.DefaultValue
 	}
 	return nil
 }
 
-func (x *ConversionAction_ValueSettings) GetDefaultCurrencyCode() *wrappers.StringValue {
+func (x *ConversionAction_ValueSettings) GetDefaultCurrencyCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.DefaultCurrencyCode
 	}
 	return nil
 }
 
-func (x *ConversionAction_ValueSettings) GetAlwaysUseDefaultValue() *wrappers.BoolValue {
+func (x *ConversionAction_ValueSettings) GetAlwaysUseDefaultValue() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.AlwaysUseDefaultValue
 	}
@@ -589,17 +589,17 @@ var file_google_ads_googleads_v2_resources_conversion_action_proto_goTypes = []i
 	(*ConversionAction)(nil),                                                 // 0: google.ads.googleads.v2.resources.ConversionAction
 	(*ConversionAction_AttributionModelSettings)(nil),                        // 1: google.ads.googleads.v2.resources.ConversionAction.AttributionModelSettings
 	(*ConversionAction_ValueSettings)(nil),                                   // 2: google.ads.googleads.v2.resources.ConversionAction.ValueSettings
-	(*wrappers.Int64Value)(nil),                                              // 3: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),                                             // 4: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                                            // 3: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                                           // 4: google.protobuf.StringValue
 	(enums.ConversionActionStatusEnum_ConversionActionStatus)(0),             // 5: google.ads.googleads.v2.enums.ConversionActionStatusEnum.ConversionActionStatus
 	(enums.ConversionActionTypeEnum_ConversionActionType)(0),                 // 6: google.ads.googleads.v2.enums.ConversionActionTypeEnum.ConversionActionType
 	(enums.ConversionActionCategoryEnum_ConversionActionCategory)(0),         // 7: google.ads.googleads.v2.enums.ConversionActionCategoryEnum.ConversionActionCategory
-	(*wrappers.BoolValue)(nil),                                               // 8: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),                                             // 8: google.protobuf.BoolValue
 	(enums.ConversionActionCountingTypeEnum_ConversionActionCountingType)(0), // 9: google.ads.googleads.v2.enums.ConversionActionCountingTypeEnum.ConversionActionCountingType
 	(*common.TagSnippet)(nil),                                                // 10: google.ads.googleads.v2.common.TagSnippet
 	(enums.AttributionModelEnum_AttributionModel)(0),                         // 11: google.ads.googleads.v2.enums.AttributionModelEnum.AttributionModel
 	(enums.DataDrivenModelStatusEnum_DataDrivenModelStatus)(0),               // 12: google.ads.googleads.v2.enums.DataDrivenModelStatusEnum.DataDrivenModelStatus
-	(*wrappers.DoubleValue)(nil),                                             // 13: google.protobuf.DoubleValue
+	(*wrapperspb.DoubleValue)(nil),                                           // 13: google.protobuf.DoubleValue
 }
 var file_google_ads_googleads_v2_resources_conversion_action_proto_depIdxs = []int32{
 	3,  // 0: google.ads.googleads.v2.resources.ConversionAction.id:type_name -> google.protobuf.Int64Value

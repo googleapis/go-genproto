@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -106,11 +106,11 @@ type OperationMetadata struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The time the operation was submitted.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The time operation processing started.
-	StartTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The time operation processing completed.
-	EndTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Indicates whether a request to cancel this operation has been made.
 	IsCancellationRequested bool `protobuf:"varint,4,opt,name=is_cancellation_requested,json=isCancellationRequested,proto3" json:"is_cancellation_requested,omitempty"`
 	// The operation type.
@@ -153,21 +153,21 @@ func (*OperationMetadata) Descriptor() ([]byte, []int) {
 	return file_google_cloud_ml_v1_operation_metadata_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *OperationMetadata) GetCreateTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetStartTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetStartTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartTime
 	}
 	return nil
 }
 
-func (x *OperationMetadata) GetEndTime() *timestamp.Timestamp {
+func (x *OperationMetadata) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
 	}
@@ -276,7 +276,7 @@ var file_google_cloud_ml_v1_operation_metadata_proto_msgTypes = make([]protoimpl
 var file_google_cloud_ml_v1_operation_metadata_proto_goTypes = []interface{}{
 	(OperationMetadata_OperationType)(0), // 0: google.cloud.ml.v1.OperationMetadata.OperationType
 	(*OperationMetadata)(nil),            // 1: google.cloud.ml.v1.OperationMetadata
-	(*timestamp.Timestamp)(nil),          // 2: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),        // 2: google.protobuf.Timestamp
 	(*Version)(nil),                      // 3: google.cloud.ml.v1.Version
 }
 var file_google_cloud_ml_v1_operation_metadata_proto_depIdxs = []int32{

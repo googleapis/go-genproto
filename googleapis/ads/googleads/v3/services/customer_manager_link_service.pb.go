@@ -28,12 +28,12 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	resources "google.golang.org/genproto/googleapis/ads/googleads/v3/resources"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -235,7 +235,7 @@ type CustomerManagerLinkOperation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// FieldMask that determines which resource fields are modified in an update.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// The mutate operation.
 	//
 	// Types that are assignable to Operation:
@@ -275,7 +275,7 @@ func (*CustomerManagerLinkOperation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v3_services_customer_manager_link_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *CustomerManagerLinkOperation) GetUpdateMask() *field_mask.FieldMask {
+func (x *CustomerManagerLinkOperation) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -629,7 +629,7 @@ var file_google_ads_googleads_v3_services_customer_manager_link_service_proto_go
 	(*MutateCustomerManagerLinkResponse)(nil), // 4: google.ads.googleads.v3.services.MutateCustomerManagerLinkResponse
 	(*MoveManagerLinkResponse)(nil),           // 5: google.ads.googleads.v3.services.MoveManagerLinkResponse
 	(*MutateCustomerManagerLinkResult)(nil),   // 6: google.ads.googleads.v3.services.MutateCustomerManagerLinkResult
-	(*field_mask.FieldMask)(nil),              // 7: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),             // 7: google.protobuf.FieldMask
 	(*resources.CustomerManagerLink)(nil),     // 8: google.ads.googleads.v3.resources.CustomerManagerLink
 }
 var file_google_ads_googleads_v3_services_customer_manager_link_service_proto_depIdxs = []int32{

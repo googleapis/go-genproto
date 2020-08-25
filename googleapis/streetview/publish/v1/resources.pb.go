@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -604,7 +604,7 @@ type Photo struct {
 	// Absolute time when the photo was captured.
 	// When the photo has no exif timestamp, this is used to set a timestamp in
 	// the photo metadata.
-	CaptureTime *timestamp.Timestamp `protobuf:"bytes,6,opt,name=capture_time,json=captureTime,proto3" json:"capture_time,omitempty"`
+	CaptureTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=capture_time,json=captureTime,proto3" json:"capture_time,omitempty"`
 	// Places where this photo belongs.
 	Places []*Place `protobuf:"bytes,7,rep,name=places,proto3" json:"places,omitempty"`
 	// Output only. View count of the photo.
@@ -697,7 +697,7 @@ func (x *Photo) GetConnections() []*Connection {
 	return nil
 }
 
-func (x *Photo) GetCaptureTime() *timestamp.Timestamp {
+func (x *Photo) GetCaptureTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CaptureTime
 	}
@@ -870,17 +870,17 @@ func file_google_streetview_publish_v1_resources_proto_rawDescGZIP() []byte {
 var file_google_streetview_publish_v1_resources_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_google_streetview_publish_v1_resources_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_google_streetview_publish_v1_resources_proto_goTypes = []interface{}{
-	(Photo_TransferStatus)(0),    // 0: google.streetview.publish.v1.Photo.TransferStatus
-	(Photo_MapsPublishStatus)(0), // 1: google.streetview.publish.v1.Photo.MapsPublishStatus
-	(*UploadRef)(nil),            // 2: google.streetview.publish.v1.UploadRef
-	(*PhotoId)(nil),              // 3: google.streetview.publish.v1.PhotoId
-	(*Level)(nil),                // 4: google.streetview.publish.v1.Level
-	(*Pose)(nil),                 // 5: google.streetview.publish.v1.Pose
-	(*Place)(nil),                // 6: google.streetview.publish.v1.Place
-	(*Connection)(nil),           // 7: google.streetview.publish.v1.Connection
-	(*Photo)(nil),                // 8: google.streetview.publish.v1.Photo
-	(*latlng.LatLng)(nil),        // 9: google.type.LatLng
-	(*timestamp.Timestamp)(nil),  // 10: google.protobuf.Timestamp
+	(Photo_TransferStatus)(0),     // 0: google.streetview.publish.v1.Photo.TransferStatus
+	(Photo_MapsPublishStatus)(0),  // 1: google.streetview.publish.v1.Photo.MapsPublishStatus
+	(*UploadRef)(nil),             // 2: google.streetview.publish.v1.UploadRef
+	(*PhotoId)(nil),               // 3: google.streetview.publish.v1.PhotoId
+	(*Level)(nil),                 // 4: google.streetview.publish.v1.Level
+	(*Pose)(nil),                  // 5: google.streetview.publish.v1.Pose
+	(*Place)(nil),                 // 6: google.streetview.publish.v1.Place
+	(*Connection)(nil),            // 7: google.streetview.publish.v1.Connection
+	(*Photo)(nil),                 // 8: google.streetview.publish.v1.Photo
+	(*latlng.LatLng)(nil),         // 9: google.type.LatLng
+	(*timestamppb.Timestamp)(nil), // 10: google.protobuf.Timestamp
 }
 var file_google_streetview_publish_v1_resources_proto_depIdxs = []int32{
 	9,  // 0: google.streetview.publish.v1.Pose.lat_lng_pair:type_name -> google.type.LatLng

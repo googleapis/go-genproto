@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,7 +56,7 @@ type PaidOrganicSearchTermView struct {
 	// {ad_group_id}~{URL-base64 search term}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The search term.
-	SearchTerm *wrappers.StringValue `protobuf:"bytes,2,opt,name=search_term,json=searchTerm,proto3" json:"search_term,omitempty"`
+	SearchTerm *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=search_term,json=searchTerm,proto3" json:"search_term,omitempty"`
 }
 
 func (x *PaidOrganicSearchTermView) Reset() {
@@ -98,7 +98,7 @@ func (x *PaidOrganicSearchTermView) GetResourceName() string {
 	return ""
 }
 
-func (x *PaidOrganicSearchTermView) GetSearchTerm() *wrappers.StringValue {
+func (x *PaidOrganicSearchTermView) GetSearchTerm() *wrapperspb.StringValue {
 	if x != nil {
 		return x.SearchTerm
 	}
@@ -178,7 +178,7 @@ func file_google_ads_googleads_v2_resources_paid_organic_search_term_view_proto_
 var file_google_ads_googleads_v2_resources_paid_organic_search_term_view_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_paid_organic_search_term_view_proto_goTypes = []interface{}{
 	(*PaidOrganicSearchTermView)(nil), // 0: google.ads.googleads.v2.resources.PaidOrganicSearchTermView
-	(*wrappers.StringValue)(nil),      // 1: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),    // 1: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v2_resources_paid_organic_search_term_view_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v2.resources.PaidOrganicSearchTermView.search_term:type_name -> google.protobuf.StringValue

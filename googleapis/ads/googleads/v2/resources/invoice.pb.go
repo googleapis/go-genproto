@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -59,51 +59,51 @@ type Invoice struct {
 	// `customers/{customer_id}/invoices/{invoice_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the invoice. It appears on the invoice PDF as "Invoice number".
-	Id *wrappers.StringValue `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Output only. The type of invoice.
 	Type enums.InvoiceTypeEnum_InvoiceType `protobuf:"varint,3,opt,name=type,proto3,enum=google.ads.googleads.v2.enums.InvoiceTypeEnum_InvoiceType" json:"type,omitempty"`
 	// Output only. The resource name of this invoice’s billing setup.
 	//
 	// `customers/{customer_id}/billingSetups/{billing_setup_id}`
-	BillingSetup *wrappers.StringValue `protobuf:"bytes,4,opt,name=billing_setup,json=billingSetup,proto3" json:"billing_setup,omitempty"`
+	BillingSetup *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=billing_setup,json=billingSetup,proto3" json:"billing_setup,omitempty"`
 	// Output only. A 16 digit ID used to identify the payments account associated with the
 	// billing setup, e.g. "1234-5678-9012-3456". It appears on the invoice PDF as
 	// "Billing Account Number".
-	PaymentsAccountId *wrappers.StringValue `protobuf:"bytes,5,opt,name=payments_account_id,json=paymentsAccountId,proto3" json:"payments_account_id,omitempty"`
+	PaymentsAccountId *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=payments_account_id,json=paymentsAccountId,proto3" json:"payments_account_id,omitempty"`
 	// Output only. A 12 digit ID used to identify the payments profile associated with the
 	// billing setup, e.g. "1234-5678-9012". It appears on the invoice PDF as
 	// "Billing ID".
-	PaymentsProfileId *wrappers.StringValue `protobuf:"bytes,6,opt,name=payments_profile_id,json=paymentsProfileId,proto3" json:"payments_profile_id,omitempty"`
+	PaymentsProfileId *wrapperspb.StringValue `protobuf:"bytes,6,opt,name=payments_profile_id,json=paymentsProfileId,proto3" json:"payments_profile_id,omitempty"`
 	// Output only. The issue date in yyyy-mm-dd format. It appears on the invoice PDF as
 	// either "Issue date" or "Invoice date".
-	IssueDate *wrappers.StringValue `protobuf:"bytes,7,opt,name=issue_date,json=issueDate,proto3" json:"issue_date,omitempty"`
+	IssueDate *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=issue_date,json=issueDate,proto3" json:"issue_date,omitempty"`
 	// Output only. The due date in yyyy-mm-dd format.
-	DueDate *wrappers.StringValue `protobuf:"bytes,8,opt,name=due_date,json=dueDate,proto3" json:"due_date,omitempty"`
+	DueDate *wrapperspb.StringValue `protobuf:"bytes,8,opt,name=due_date,json=dueDate,proto3" json:"due_date,omitempty"`
 	// Output only. The service period date range of this invoice. The end date is inclusive.
 	ServiceDateRange *common.DateRange `protobuf:"bytes,9,opt,name=service_date_range,json=serviceDateRange,proto3" json:"service_date_range,omitempty"`
 	// Output only. The currency code. All costs are returned in this currency. A subset of the
 	// currency codes derived from the ISO 4217 standard is supported.
-	CurrencyCode *wrappers.StringValue `protobuf:"bytes,10,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
+	CurrencyCode *wrapperspb.StringValue `protobuf:"bytes,10,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
 	// Output only. The total amount of invoice level adjustments. These adjustments are made
 	// on the invoice, not on a specific account budget.
-	InvoiceLevelAdjustmentsMicros *wrappers.Int64Value `protobuf:"bytes,11,opt,name=invoice_level_adjustments_micros,json=invoiceLevelAdjustmentsMicros,proto3" json:"invoice_level_adjustments_micros,omitempty"`
+	InvoiceLevelAdjustmentsMicros *wrapperspb.Int64Value `protobuf:"bytes,11,opt,name=invoice_level_adjustments_micros,json=invoiceLevelAdjustmentsMicros,proto3" json:"invoice_level_adjustments_micros,omitempty"`
 	// Output only. The pretax subtotal amount, in micros. This equals the sum of the
 	// AccountBudgetSummary subtotal amounts, plus the invoice level adjustments.
-	SubtotalAmountMicros *wrappers.Int64Value `protobuf:"bytes,12,opt,name=subtotal_amount_micros,json=subtotalAmountMicros,proto3" json:"subtotal_amount_micros,omitempty"`
+	SubtotalAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,12,opt,name=subtotal_amount_micros,json=subtotalAmountMicros,proto3" json:"subtotal_amount_micros,omitempty"`
 	// Output only. The sum of all taxes on the invoice, in micros. This equals the sum of the
 	// AccountBudgetSummary tax amounts, plus taxes not associated with a specific
 	// account budget.
-	TaxAmountMicros *wrappers.Int64Value `protobuf:"bytes,13,opt,name=tax_amount_micros,json=taxAmountMicros,proto3" json:"tax_amount_micros,omitempty"`
+	TaxAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,13,opt,name=tax_amount_micros,json=taxAmountMicros,proto3" json:"tax_amount_micros,omitempty"`
 	// Output only. The total amount, in micros. This equals the sum of the invoice subtotal
 	// amount and the invoice tax amount.
-	TotalAmountMicros *wrappers.Int64Value `protobuf:"bytes,14,opt,name=total_amount_micros,json=totalAmountMicros,proto3" json:"total_amount_micros,omitempty"`
+	TotalAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,14,opt,name=total_amount_micros,json=totalAmountMicros,proto3" json:"total_amount_micros,omitempty"`
 	// Output only. The resource name of the original invoice corrected, wrote off, or canceled
 	// by this invoice, if applicable. If `corrected_invoice` is set,
 	// `replaced_invoices` will not be set.
 	// Invoice resource names have the form:
 	//
 	// `customers/{customer_id}/invoices/{invoice_id}`
-	CorrectedInvoice *wrappers.StringValue `protobuf:"bytes,15,opt,name=corrected_invoice,json=correctedInvoice,proto3" json:"corrected_invoice,omitempty"`
+	CorrectedInvoice *wrapperspb.StringValue `protobuf:"bytes,15,opt,name=corrected_invoice,json=correctedInvoice,proto3" json:"corrected_invoice,omitempty"`
 	// Output only. The resource name of the original invoice(s) being rebilled or replaced by
 	// this invoice, if applicable. There might be multiple replaced invoices due
 	// to invoice consolidation. The replaced invoices may not belong to the same
@@ -112,10 +112,10 @@ type Invoice struct {
 	// Invoice resource names have the form:
 	//
 	// `customers/{customer_id}/invoices/{invoice_id}`
-	ReplacedInvoices []*wrappers.StringValue `protobuf:"bytes,16,rep,name=replaced_invoices,json=replacedInvoices,proto3" json:"replaced_invoices,omitempty"`
+	ReplacedInvoices []*wrapperspb.StringValue `protobuf:"bytes,16,rep,name=replaced_invoices,json=replacedInvoices,proto3" json:"replaced_invoices,omitempty"`
 	// Output only. The URL to a PDF copy of the invoice. Users need to pass in their OAuth
 	// token to request the PDF with this URL.
-	PdfUrl *wrappers.StringValue `protobuf:"bytes,17,opt,name=pdf_url,json=pdfUrl,proto3" json:"pdf_url,omitempty"`
+	PdfUrl *wrapperspb.StringValue `protobuf:"bytes,17,opt,name=pdf_url,json=pdfUrl,proto3" json:"pdf_url,omitempty"`
 	// Output only. The list of summarized account budget information associated with this
 	// invoice.
 	AccountBudgetSummaries []*Invoice_AccountBudgetSummary `protobuf:"bytes,18,rep,name=account_budget_summaries,json=accountBudgetSummaries,proto3" json:"account_budget_summaries,omitempty"`
@@ -160,7 +160,7 @@ func (x *Invoice) GetResourceName() string {
 	return ""
 }
 
-func (x *Invoice) GetId() *wrappers.StringValue {
+func (x *Invoice) GetId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Id
 	}
@@ -174,35 +174,35 @@ func (x *Invoice) GetType() enums.InvoiceTypeEnum_InvoiceType {
 	return enums.InvoiceTypeEnum_UNSPECIFIED
 }
 
-func (x *Invoice) GetBillingSetup() *wrappers.StringValue {
+func (x *Invoice) GetBillingSetup() *wrapperspb.StringValue {
 	if x != nil {
 		return x.BillingSetup
 	}
 	return nil
 }
 
-func (x *Invoice) GetPaymentsAccountId() *wrappers.StringValue {
+func (x *Invoice) GetPaymentsAccountId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PaymentsAccountId
 	}
 	return nil
 }
 
-func (x *Invoice) GetPaymentsProfileId() *wrappers.StringValue {
+func (x *Invoice) GetPaymentsProfileId() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PaymentsProfileId
 	}
 	return nil
 }
 
-func (x *Invoice) GetIssueDate() *wrappers.StringValue {
+func (x *Invoice) GetIssueDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.IssueDate
 	}
 	return nil
 }
 
-func (x *Invoice) GetDueDate() *wrappers.StringValue {
+func (x *Invoice) GetDueDate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.DueDate
 	}
@@ -216,56 +216,56 @@ func (x *Invoice) GetServiceDateRange() *common.DateRange {
 	return nil
 }
 
-func (x *Invoice) GetCurrencyCode() *wrappers.StringValue {
+func (x *Invoice) GetCurrencyCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CurrencyCode
 	}
 	return nil
 }
 
-func (x *Invoice) GetInvoiceLevelAdjustmentsMicros() *wrappers.Int64Value {
+func (x *Invoice) GetInvoiceLevelAdjustmentsMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.InvoiceLevelAdjustmentsMicros
 	}
 	return nil
 }
 
-func (x *Invoice) GetSubtotalAmountMicros() *wrappers.Int64Value {
+func (x *Invoice) GetSubtotalAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.SubtotalAmountMicros
 	}
 	return nil
 }
 
-func (x *Invoice) GetTaxAmountMicros() *wrappers.Int64Value {
+func (x *Invoice) GetTaxAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TaxAmountMicros
 	}
 	return nil
 }
 
-func (x *Invoice) GetTotalAmountMicros() *wrappers.Int64Value {
+func (x *Invoice) GetTotalAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TotalAmountMicros
 	}
 	return nil
 }
 
-func (x *Invoice) GetCorrectedInvoice() *wrappers.StringValue {
+func (x *Invoice) GetCorrectedInvoice() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CorrectedInvoice
 	}
 	return nil
 }
 
-func (x *Invoice) GetReplacedInvoices() []*wrappers.StringValue {
+func (x *Invoice) GetReplacedInvoices() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.ReplacedInvoices
 	}
 	return nil
 }
 
-func (x *Invoice) GetPdfUrl() *wrappers.StringValue {
+func (x *Invoice) GetPdfUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PdfUrl
 	}
@@ -291,32 +291,32 @@ type Invoice_AccountBudgetSummary struct {
 	// Customer resource names have the form:
 	//
 	// `customers/{customer_id}`
-	Customer *wrappers.StringValue `protobuf:"bytes,1,opt,name=customer,proto3" json:"customer,omitempty"`
+	Customer *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=customer,proto3" json:"customer,omitempty"`
 	// Output only. The descriptive name of the account budget’s customer. It appears on the
 	// invoice PDF as "Account".
-	CustomerDescriptiveName *wrappers.StringValue `protobuf:"bytes,2,opt,name=customer_descriptive_name,json=customerDescriptiveName,proto3" json:"customer_descriptive_name,omitempty"`
+	CustomerDescriptiveName *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=customer_descriptive_name,json=customerDescriptiveName,proto3" json:"customer_descriptive_name,omitempty"`
 	// Output only. The resource name of the account budget associated with this summarized
 	// billable cost.
 	// AccountBudget resource names have the form:
 	//
 	// `customers/{customer_id}/accountBudgets/{account_budget_id}`
-	AccountBudget *wrappers.StringValue `protobuf:"bytes,3,opt,name=account_budget,json=accountBudget,proto3" json:"account_budget,omitempty"`
+	AccountBudget *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=account_budget,json=accountBudget,proto3" json:"account_budget,omitempty"`
 	// Output only. The name of the account budget. It appears on the invoice PDF as "Account
 	// budget".
-	AccountBudgetName *wrappers.StringValue `protobuf:"bytes,4,opt,name=account_budget_name,json=accountBudgetName,proto3" json:"account_budget_name,omitempty"`
+	AccountBudgetName *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=account_budget_name,json=accountBudgetName,proto3" json:"account_budget_name,omitempty"`
 	// Output only. The purchase order number of the account budget. It appears on the
 	// invoice PDF as "Purchase order".
-	PurchaseOrderNumber *wrappers.StringValue `protobuf:"bytes,5,opt,name=purchase_order_number,json=purchaseOrderNumber,proto3" json:"purchase_order_number,omitempty"`
+	PurchaseOrderNumber *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=purchase_order_number,json=purchaseOrderNumber,proto3" json:"purchase_order_number,omitempty"`
 	// Output only. The pretax subtotal amount attributable to this budget during the service
 	// period, in micros.
-	SubtotalAmountMicros *wrappers.Int64Value `protobuf:"bytes,6,opt,name=subtotal_amount_micros,json=subtotalAmountMicros,proto3" json:"subtotal_amount_micros,omitempty"`
+	SubtotalAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=subtotal_amount_micros,json=subtotalAmountMicros,proto3" json:"subtotal_amount_micros,omitempty"`
 	// Output only. The tax amount attributable to this budget during the service period, in
 	// micros.
-	TaxAmountMicros *wrappers.Int64Value `protobuf:"bytes,7,opt,name=tax_amount_micros,json=taxAmountMicros,proto3" json:"tax_amount_micros,omitempty"`
+	TaxAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=tax_amount_micros,json=taxAmountMicros,proto3" json:"tax_amount_micros,omitempty"`
 	// Output only. The total amount attributable to this budget during the service period,
 	// in micros. This equals the sum of the account budget subtotal amount and
 	// the account budget tax amount.
-	TotalAmountMicros *wrappers.Int64Value `protobuf:"bytes,8,opt,name=total_amount_micros,json=totalAmountMicros,proto3" json:"total_amount_micros,omitempty"`
+	TotalAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,8,opt,name=total_amount_micros,json=totalAmountMicros,proto3" json:"total_amount_micros,omitempty"`
 	// Output only. The billable activity date range of the account budget, within the
 	// service date range of this invoice. The end date is inclusive. This can
 	// be different from the account budget's start and end time.
@@ -355,56 +355,56 @@ func (*Invoice_AccountBudgetSummary) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v2_resources_invoice_proto_rawDescGZIP(), []int{0, 0}
 }
 
-func (x *Invoice_AccountBudgetSummary) GetCustomer() *wrappers.StringValue {
+func (x *Invoice_AccountBudgetSummary) GetCustomer() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Customer
 	}
 	return nil
 }
 
-func (x *Invoice_AccountBudgetSummary) GetCustomerDescriptiveName() *wrappers.StringValue {
+func (x *Invoice_AccountBudgetSummary) GetCustomerDescriptiveName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CustomerDescriptiveName
 	}
 	return nil
 }
 
-func (x *Invoice_AccountBudgetSummary) GetAccountBudget() *wrappers.StringValue {
+func (x *Invoice_AccountBudgetSummary) GetAccountBudget() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AccountBudget
 	}
 	return nil
 }
 
-func (x *Invoice_AccountBudgetSummary) GetAccountBudgetName() *wrappers.StringValue {
+func (x *Invoice_AccountBudgetSummary) GetAccountBudgetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AccountBudgetName
 	}
 	return nil
 }
 
-func (x *Invoice_AccountBudgetSummary) GetPurchaseOrderNumber() *wrappers.StringValue {
+func (x *Invoice_AccountBudgetSummary) GetPurchaseOrderNumber() *wrapperspb.StringValue {
 	if x != nil {
 		return x.PurchaseOrderNumber
 	}
 	return nil
 }
 
-func (x *Invoice_AccountBudgetSummary) GetSubtotalAmountMicros() *wrappers.Int64Value {
+func (x *Invoice_AccountBudgetSummary) GetSubtotalAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.SubtotalAmountMicros
 	}
 	return nil
 }
 
-func (x *Invoice_AccountBudgetSummary) GetTaxAmountMicros() *wrappers.Int64Value {
+func (x *Invoice_AccountBudgetSummary) GetTaxAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TaxAmountMicros
 	}
 	return nil
 }
 
-func (x *Invoice_AccountBudgetSummary) GetTotalAmountMicros() *wrappers.Int64Value {
+func (x *Invoice_AccountBudgetSummary) GetTotalAmountMicros() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.TotalAmountMicros
 	}
@@ -620,10 +620,10 @@ var file_google_ads_googleads_v2_resources_invoice_proto_msgTypes = make([]proto
 var file_google_ads_googleads_v2_resources_invoice_proto_goTypes = []interface{}{
 	(*Invoice)(nil),                        // 0: google.ads.googleads.v2.resources.Invoice
 	(*Invoice_AccountBudgetSummary)(nil),   // 1: google.ads.googleads.v2.resources.Invoice.AccountBudgetSummary
-	(*wrappers.StringValue)(nil),           // 2: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),         // 2: google.protobuf.StringValue
 	(enums.InvoiceTypeEnum_InvoiceType)(0), // 3: google.ads.googleads.v2.enums.InvoiceTypeEnum.InvoiceType
 	(*common.DateRange)(nil),               // 4: google.ads.googleads.v2.common.DateRange
-	(*wrappers.Int64Value)(nil),            // 5: google.protobuf.Int64Value
+	(*wrapperspb.Int64Value)(nil),          // 5: google.protobuf.Int64Value
 }
 var file_google_ads_googleads_v2_resources_invoice_proto_depIdxs = []int32{
 	2,  // 0: google.ads.googleads.v2.resources.Invoice.id:type_name -> google.protobuf.StringValue

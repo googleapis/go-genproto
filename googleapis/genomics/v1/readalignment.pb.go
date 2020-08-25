@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -274,7 +274,7 @@ type Read struct {
 	NextMatePosition *Position `protobuf:"bytes,16,opt,name=next_mate_position,json=nextMatePosition,proto3" json:"next_mate_position,omitempty"`
 	// A map of additional read alignment information. This must be of the form
 	// map<string, string[]> (string key mapping to a list of string values).
-	Info map[string]*_struct.ListValue `protobuf:"bytes,17,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Info map[string]*structpb.ListValue `protobuf:"bytes,17,rep,name=info,proto3" json:"info,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *Read) Reset() {
@@ -421,7 +421,7 @@ func (x *Read) GetNextMatePosition() *Position {
 	return nil
 }
 
-func (x *Read) GetInfo() map[string]*_struct.ListValue {
+func (x *Read) GetInfo() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.Info
 	}
@@ -532,12 +532,12 @@ func file_google_genomics_v1_readalignment_proto_rawDescGZIP() []byte {
 
 var file_google_genomics_v1_readalignment_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_google_genomics_v1_readalignment_proto_goTypes = []interface{}{
-	(*LinearAlignment)(nil),   // 0: google.genomics.v1.LinearAlignment
-	(*Read)(nil),              // 1: google.genomics.v1.Read
-	nil,                       // 2: google.genomics.v1.Read.InfoEntry
-	(*Position)(nil),          // 3: google.genomics.v1.Position
-	(*CigarUnit)(nil),         // 4: google.genomics.v1.CigarUnit
-	(*_struct.ListValue)(nil), // 5: google.protobuf.ListValue
+	(*LinearAlignment)(nil),    // 0: google.genomics.v1.LinearAlignment
+	(*Read)(nil),               // 1: google.genomics.v1.Read
+	nil,                        // 2: google.genomics.v1.Read.InfoEntry
+	(*Position)(nil),           // 3: google.genomics.v1.Position
+	(*CigarUnit)(nil),          // 4: google.genomics.v1.CigarUnit
+	(*structpb.ListValue)(nil), // 5: google.protobuf.ListValue
 }
 var file_google_genomics_v1_readalignment_proto_depIdxs = []int32{
 	3, // 0: google.genomics.v1.LinearAlignment.position:type_name -> google.genomics.v1.Position

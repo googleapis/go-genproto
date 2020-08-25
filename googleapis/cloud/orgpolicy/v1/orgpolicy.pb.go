@@ -26,11 +26,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/emptypb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -139,7 +139,7 @@ type Policy struct {
 	// server, not specified by the caller, and represents the last time a call to
 	// `SetOrgPolicy` was made for that `Policy`. Any value set by the client will
 	// be ignored.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The field to populate is based on the `constraint_type` value in the
 	// `Constraint`.
 	//   `list_constraint` => `list_policy`
@@ -213,7 +213,7 @@ func (x *Policy) GetEtag() []byte {
 	return nil
 }
 
-func (x *Policy) GetUpdateTime() *timestamp.Timestamp {
+func (x *Policy) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -723,7 +723,7 @@ var file_google_cloud_orgpolicy_v1_orgpolicy_proto_goTypes = []interface{}{
 	(*Policy_ListPolicy)(nil),        // 2: google.cloud.orgpolicy.v1.Policy.ListPolicy
 	(*Policy_BooleanPolicy)(nil),     // 3: google.cloud.orgpolicy.v1.Policy.BooleanPolicy
 	(*Policy_RestoreDefault)(nil),    // 4: google.cloud.orgpolicy.v1.Policy.RestoreDefault
-	(*timestamp.Timestamp)(nil),      // 5: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),    // 5: google.protobuf.Timestamp
 }
 var file_google_cloud_orgpolicy_v1_orgpolicy_proto_depIdxs = []int32{
 	5, // 0: google.cloud.orgpolicy.v1.Policy.update_time:type_name -> google.protobuf.Timestamp

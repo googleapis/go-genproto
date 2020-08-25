@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -402,9 +402,9 @@ type Instance struct {
 	// Custom metadata to apply to this instance.
 	Metadata map[string]string `protobuf:"bytes,22,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Output only. Instance creation time.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,23,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,23,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. Instance update time.
-	UpdateTime *timestamp.Timestamp `protobuf:"bytes,24,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
+	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,24,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 }
 
 func (x *Instance) Reset() {
@@ -621,14 +621,14 @@ func (x *Instance) GetMetadata() map[string]string {
 	return nil
 }
 
-func (x *Instance) GetCreateTime() *timestamp.Timestamp {
+func (x *Instance) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *Instance) GetUpdateTime() *timestamp.Timestamp {
+func (x *Instance) GetUpdateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdateTime
 	}
@@ -928,7 +928,7 @@ var file_google_cloud_notebooks_v1beta1_instance_proto_goTypes = []interface{}{
 	nil,                                // 7: google.cloud.notebooks.v1beta1.Instance.MetadataEntry
 	(*VmImage)(nil),                    // 8: google.cloud.notebooks.v1beta1.VmImage
 	(*ContainerImage)(nil),             // 9: google.cloud.notebooks.v1beta1.ContainerImage
-	(*timestamp.Timestamp)(nil),        // 10: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),      // 10: google.protobuf.Timestamp
 }
 var file_google_cloud_notebooks_v1beta1_instance_proto_depIdxs = []int32{
 	8,  // 0: google.cloud.notebooks.v1beta1.Instance.vm_image:type_name -> google.cloud.notebooks.v1beta1.VmImage

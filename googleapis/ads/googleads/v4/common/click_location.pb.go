@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -49,15 +49,15 @@ type ClickLocation struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The city location criterion associated with the impression.
-	City *wrappers.StringValue `protobuf:"bytes,1,opt,name=city,proto3" json:"city,omitempty"`
+	City *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=city,proto3" json:"city,omitempty"`
 	// The country location criterion associated with the impression.
-	Country *wrappers.StringValue `protobuf:"bytes,2,opt,name=country,proto3" json:"country,omitempty"`
+	Country *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=country,proto3" json:"country,omitempty"`
 	// The metro location criterion associated with the impression.
-	Metro *wrappers.StringValue `protobuf:"bytes,3,opt,name=metro,proto3" json:"metro,omitempty"`
+	Metro *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=metro,proto3" json:"metro,omitempty"`
 	// The most specific location criterion associated with the impression.
-	MostSpecific *wrappers.StringValue `protobuf:"bytes,4,opt,name=most_specific,json=mostSpecific,proto3" json:"most_specific,omitempty"`
+	MostSpecific *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=most_specific,json=mostSpecific,proto3" json:"most_specific,omitempty"`
 	// The region location criterion associated with the impression.
-	Region *wrappers.StringValue `protobuf:"bytes,5,opt,name=region,proto3" json:"region,omitempty"`
+	Region *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=region,proto3" json:"region,omitempty"`
 }
 
 func (x *ClickLocation) Reset() {
@@ -92,35 +92,35 @@ func (*ClickLocation) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_common_click_location_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ClickLocation) GetCity() *wrappers.StringValue {
+func (x *ClickLocation) GetCity() *wrapperspb.StringValue {
 	if x != nil {
 		return x.City
 	}
 	return nil
 }
 
-func (x *ClickLocation) GetCountry() *wrappers.StringValue {
+func (x *ClickLocation) GetCountry() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Country
 	}
 	return nil
 }
 
-func (x *ClickLocation) GetMetro() *wrappers.StringValue {
+func (x *ClickLocation) GetMetro() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Metro
 	}
 	return nil
 }
 
-func (x *ClickLocation) GetMostSpecific() *wrappers.StringValue {
+func (x *ClickLocation) GetMostSpecific() *wrapperspb.StringValue {
 	if x != nil {
 		return x.MostSpecific
 	}
 	return nil
 }
 
-func (x *ClickLocation) GetRegion() *wrappers.StringValue {
+func (x *ClickLocation) GetRegion() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Region
 	}
@@ -190,8 +190,8 @@ func file_google_ads_googleads_v4_common_click_location_proto_rawDescGZIP() []by
 
 var file_google_ads_googleads_v4_common_click_location_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v4_common_click_location_proto_goTypes = []interface{}{
-	(*ClickLocation)(nil),        // 0: google.ads.googleads.v4.common.ClickLocation
-	(*wrappers.StringValue)(nil), // 1: google.protobuf.StringValue
+	(*ClickLocation)(nil),          // 0: google.ads.googleads.v4.common.ClickLocation
+	(*wrapperspb.StringValue)(nil), // 1: google.protobuf.StringValue
 }
 var file_google_ads_googleads_v4_common_click_location_proto_depIdxs = []int32{
 	1, // 0: google.ads.googleads.v4.common.ClickLocation.city:type_name -> google.protobuf.StringValue

@@ -27,13 +27,13 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -158,7 +158,7 @@ type ReportedErrorEvent struct {
 	// Optional. Time when the event occurred.
 	// If not provided, the time when the event was received by the
 	// Error Reporting system will be used.
-	EventTime *timestamp.Timestamp `protobuf:"bytes,1,opt,name=event_time,json=eventTime,proto3" json:"event_time,omitempty"`
+	EventTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=event_time,json=eventTime,proto3" json:"event_time,omitempty"`
 	// Required. The service context in which this error has occurred.
 	ServiceContext *ServiceContext `protobuf:"bytes,2,opt,name=service_context,json=serviceContext,proto3" json:"service_context,omitempty"`
 	// Required. The error message.
@@ -222,7 +222,7 @@ func (*ReportedErrorEvent) Descriptor() ([]byte, []int) {
 	return file_google_devtools_clouderrorreporting_v1beta1_report_errors_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ReportedErrorEvent) GetEventTime() *timestamp.Timestamp {
+func (x *ReportedErrorEvent) GetEventTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EventTime
 	}
@@ -369,7 +369,7 @@ var file_google_devtools_clouderrorreporting_v1beta1_report_errors_service_proto
 	(*ReportErrorEventRequest)(nil),  // 0: google.devtools.clouderrorreporting.v1beta1.ReportErrorEventRequest
 	(*ReportErrorEventResponse)(nil), // 1: google.devtools.clouderrorreporting.v1beta1.ReportErrorEventResponse
 	(*ReportedErrorEvent)(nil),       // 2: google.devtools.clouderrorreporting.v1beta1.ReportedErrorEvent
-	(*timestamp.Timestamp)(nil),      // 3: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),    // 3: google.protobuf.Timestamp
 	(*ServiceContext)(nil),           // 4: google.devtools.clouderrorreporting.v1beta1.ServiceContext
 	(*ErrorContext)(nil),             // 5: google.devtools.clouderrorreporting.v1beta1.ErrorContext
 }

@@ -26,14 +26,14 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 )
 
 const (
@@ -172,7 +172,7 @@ type UpdateTransferJobRequest struct {
 	// of the job, a complete transfer specification has to be provided. An
 	// incomplete specification which misses any required fields will be rejected
 	// with the error `INVALID_ARGUMENT`.
-	UpdateTransferJobFieldMask *field_mask.FieldMask `protobuf:"bytes,4,opt,name=update_transfer_job_field_mask,json=updateTransferJobFieldMask,proto3" json:"update_transfer_job_field_mask,omitempty"`
+	UpdateTransferJobFieldMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_transfer_job_field_mask,json=updateTransferJobFieldMask,proto3" json:"update_transfer_job_field_mask,omitempty"`
 }
 
 func (x *UpdateTransferJobRequest) Reset() {
@@ -228,7 +228,7 @@ func (x *UpdateTransferJobRequest) GetTransferJob() *TransferJob {
 	return nil
 }
 
-func (x *UpdateTransferJobRequest) GetUpdateTransferJobFieldMask() *field_mask.FieldMask {
+func (x *UpdateTransferJobRequest) GetUpdateTransferJobFieldMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateTransferJobFieldMask
 	}
@@ -709,9 +709,9 @@ var file_google_storagetransfer_v1_transfer_proto_goTypes = []interface{}{
 	(*PauseTransferOperationRequest)(nil),  // 6: google.storagetransfer.v1.PauseTransferOperationRequest
 	(*ResumeTransferOperationRequest)(nil), // 7: google.storagetransfer.v1.ResumeTransferOperationRequest
 	(*TransferJob)(nil),                    // 8: google.storagetransfer.v1.TransferJob
-	(*field_mask.FieldMask)(nil),           // 9: google.protobuf.FieldMask
+	(*fieldmaskpb.FieldMask)(nil),          // 9: google.protobuf.FieldMask
 	(*GoogleServiceAccount)(nil),           // 10: google.storagetransfer.v1.GoogleServiceAccount
-	(*empty.Empty)(nil),                    // 11: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                  // 11: google.protobuf.Empty
 }
 var file_google_storagetransfer_v1_transfer_proto_depIdxs = []int32{
 	8,  // 0: google.storagetransfer.v1.CreateTransferJobRequest.transfer_job:type_name -> google.storagetransfer.v1.TransferJob
@@ -895,9 +895,9 @@ type StorageTransferServiceClient interface {
 	// Lists transfer jobs.
 	ListTransferJobs(ctx context.Context, in *ListTransferJobsRequest, opts ...grpc.CallOption) (*ListTransferJobsResponse, error)
 	// Pauses a transfer operation.
-	PauseTransferOperation(ctx context.Context, in *PauseTransferOperationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	PauseTransferOperation(ctx context.Context, in *PauseTransferOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Resumes a transfer operation that is paused.
-	ResumeTransferOperation(ctx context.Context, in *ResumeTransferOperationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ResumeTransferOperation(ctx context.Context, in *ResumeTransferOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type storageTransferServiceClient struct {
@@ -953,8 +953,8 @@ func (c *storageTransferServiceClient) ListTransferJobs(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *storageTransferServiceClient) PauseTransferOperation(ctx context.Context, in *PauseTransferOperationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageTransferServiceClient) PauseTransferOperation(ctx context.Context, in *PauseTransferOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storagetransfer.v1.StorageTransferService/PauseTransferOperation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -962,8 +962,8 @@ func (c *storageTransferServiceClient) PauseTransferOperation(ctx context.Contex
 	return out, nil
 }
 
-func (c *storageTransferServiceClient) ResumeTransferOperation(ctx context.Context, in *ResumeTransferOperationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *storageTransferServiceClient) ResumeTransferOperation(ctx context.Context, in *ResumeTransferOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.storagetransfer.v1.StorageTransferService/ResumeTransferOperation", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -993,9 +993,9 @@ type StorageTransferServiceServer interface {
 	// Lists transfer jobs.
 	ListTransferJobs(context.Context, *ListTransferJobsRequest) (*ListTransferJobsResponse, error)
 	// Pauses a transfer operation.
-	PauseTransferOperation(context.Context, *PauseTransferOperationRequest) (*empty.Empty, error)
+	PauseTransferOperation(context.Context, *PauseTransferOperationRequest) (*emptypb.Empty, error)
 	// Resumes a transfer operation that is paused.
-	ResumeTransferOperation(context.Context, *ResumeTransferOperationRequest) (*empty.Empty, error)
+	ResumeTransferOperation(context.Context, *ResumeTransferOperationRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedStorageTransferServiceServer can be embedded to have forward compatible implementations.
@@ -1017,10 +1017,10 @@ func (*UnimplementedStorageTransferServiceServer) GetTransferJob(context.Context
 func (*UnimplementedStorageTransferServiceServer) ListTransferJobs(context.Context, *ListTransferJobsRequest) (*ListTransferJobsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTransferJobs not implemented")
 }
-func (*UnimplementedStorageTransferServiceServer) PauseTransferOperation(context.Context, *PauseTransferOperationRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageTransferServiceServer) PauseTransferOperation(context.Context, *PauseTransferOperationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PauseTransferOperation not implemented")
 }
-func (*UnimplementedStorageTransferServiceServer) ResumeTransferOperation(context.Context, *ResumeTransferOperationRequest) (*empty.Empty, error) {
+func (*UnimplementedStorageTransferServiceServer) ResumeTransferOperation(context.Context, *ResumeTransferOperationRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResumeTransferOperation not implemented")
 }
 

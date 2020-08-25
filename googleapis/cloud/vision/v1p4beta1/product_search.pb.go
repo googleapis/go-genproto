@@ -26,10 +26,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -147,7 +147,7 @@ type ProductSearchResults struct {
 	// Timestamp of the index which provided these results. Products added to the
 	// product set and products removed from the product set after this time are
 	// not reflected in the current results.
-	IndexTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=index_time,json=indexTime,proto3" json:"index_time,omitempty"`
+	IndexTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=index_time,json=indexTime,proto3" json:"index_time,omitempty"`
 	// List of results, one for each product match.
 	Results []*ProductSearchResults_Result `protobuf:"bytes,5,rep,name=results,proto3" json:"results,omitempty"`
 	// List of results grouped by products detected in the query image. Each entry
@@ -189,7 +189,7 @@ func (*ProductSearchResults) Descriptor() ([]byte, []int) {
 	return file_google_cloud_vision_v1p4beta1_product_search_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ProductSearchResults) GetIndexTime() *timestamp.Timestamp {
+func (x *ProductSearchResults) GetIndexTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.IndexTime
 	}
@@ -545,7 +545,7 @@ var file_google_cloud_vision_v1p4beta1_product_search_proto_goTypes = []interfac
 	(*ProductSearchResults_ObjectAnnotation)(nil), // 3: google.cloud.vision.v1p4beta1.ProductSearchResults.ObjectAnnotation
 	(*ProductSearchResults_GroupedResult)(nil),    // 4: google.cloud.vision.v1p4beta1.ProductSearchResults.GroupedResult
 	(*BoundingPoly)(nil),                          // 5: google.cloud.vision.v1p4beta1.BoundingPoly
-	(*timestamp.Timestamp)(nil),                   // 6: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),                 // 6: google.protobuf.Timestamp
 	(*Product)(nil),                               // 7: google.cloud.vision.v1p4beta1.Product
 }
 var file_google_cloud_vision_v1p4beta1_product_search_proto_depIdxs = []int32{

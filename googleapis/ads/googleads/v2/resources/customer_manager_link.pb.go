@@ -25,11 +25,11 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -54,9 +54,9 @@ type CustomerManagerLink struct {
 	// `customers/{customer_id}/customerManagerLinks/{manager_customer_id}~{manager_link_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The manager customer linked to the customer.
-	ManagerCustomer *wrappers.StringValue `protobuf:"bytes,3,opt,name=manager_customer,json=managerCustomer,proto3" json:"manager_customer,omitempty"`
+	ManagerCustomer *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=manager_customer,json=managerCustomer,proto3" json:"manager_customer,omitempty"`
 	// Output only. ID of the customer-manager link. This field is read only.
-	ManagerLinkId *wrappers.Int64Value `protobuf:"bytes,4,opt,name=manager_link_id,json=managerLinkId,proto3" json:"manager_link_id,omitempty"`
+	ManagerLinkId *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=manager_link_id,json=managerLinkId,proto3" json:"manager_link_id,omitempty"`
 	// Status of the link between the customer and the manager.
 	Status enums.ManagerLinkStatusEnum_ManagerLinkStatus `protobuf:"varint,5,opt,name=status,proto3,enum=google.ads.googleads.v2.enums.ManagerLinkStatusEnum_ManagerLinkStatus" json:"status,omitempty"`
 }
@@ -100,14 +100,14 @@ func (x *CustomerManagerLink) GetResourceName() string {
 	return ""
 }
 
-func (x *CustomerManagerLink) GetManagerCustomer() *wrappers.StringValue {
+func (x *CustomerManagerLink) GetManagerCustomer() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ManagerCustomer
 	}
 	return nil
 }
 
-func (x *CustomerManagerLink) GetManagerLinkId() *wrappers.Int64Value {
+func (x *CustomerManagerLink) GetManagerLinkId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ManagerLinkId
 	}
@@ -206,8 +206,8 @@ func file_google_ads_googleads_v2_resources_customer_manager_link_proto_rawDescG
 var file_google_ads_googleads_v2_resources_customer_manager_link_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_customer_manager_link_proto_goTypes = []interface{}{
 	(*CustomerManagerLink)(nil),                        // 0: google.ads.googleads.v2.resources.CustomerManagerLink
-	(*wrappers.StringValue)(nil),                       // 1: google.protobuf.StringValue
-	(*wrappers.Int64Value)(nil),                        // 2: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),                     // 1: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),                      // 2: google.protobuf.Int64Value
 	(enums.ManagerLinkStatusEnum_ManagerLinkStatus)(0), // 3: google.ads.googleads.v2.enums.ManagerLinkStatusEnum.ManagerLinkStatus
 }
 var file_google_ads_googleads_v2_resources_customer_manager_link_proto_depIdxs = []int32{

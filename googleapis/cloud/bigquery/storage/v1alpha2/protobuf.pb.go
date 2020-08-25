@@ -25,9 +25,9 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	descriptorpb "google.golang.org/protobuf/types/descriptorpb"
 )
 
 const (
@@ -52,7 +52,7 @@ type ProtoSchema struct {
 	// (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf)
 	// and zetasql public protos
 	// (https://github.com/google/zetasql/tree/master/zetasql/public/proto).
-	ProtoDescriptor *descriptor.DescriptorProto `protobuf:"bytes,1,opt,name=proto_descriptor,json=protoDescriptor,proto3" json:"proto_descriptor,omitempty"`
+	ProtoDescriptor *descriptorpb.DescriptorProto `protobuf:"bytes,1,opt,name=proto_descriptor,json=protoDescriptor,proto3" json:"proto_descriptor,omitempty"`
 }
 
 func (x *ProtoSchema) Reset() {
@@ -87,7 +87,7 @@ func (*ProtoSchema) Descriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_storage_v1alpha2_protobuf_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ProtoSchema) GetProtoDescriptor() *descriptor.DescriptorProto {
+func (x *ProtoSchema) GetProtoDescriptor() *descriptorpb.DescriptorProto {
 	if x != nil {
 		return x.ProtoDescriptor
 	}
@@ -192,9 +192,9 @@ func file_google_cloud_bigquery_storage_v1alpha2_protobuf_proto_rawDescGZIP() []
 
 var file_google_cloud_bigquery_storage_v1alpha2_protobuf_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_google_cloud_bigquery_storage_v1alpha2_protobuf_proto_goTypes = []interface{}{
-	(*ProtoSchema)(nil),                // 0: google.cloud.bigquery.storage.v1alpha2.ProtoSchema
-	(*ProtoRows)(nil),                  // 1: google.cloud.bigquery.storage.v1alpha2.ProtoRows
-	(*descriptor.DescriptorProto)(nil), // 2: google.protobuf.DescriptorProto
+	(*ProtoSchema)(nil),                  // 0: google.cloud.bigquery.storage.v1alpha2.ProtoSchema
+	(*ProtoRows)(nil),                    // 1: google.cloud.bigquery.storage.v1alpha2.ProtoRows
+	(*descriptorpb.DescriptorProto)(nil), // 2: google.protobuf.DescriptorProto
 }
 var file_google_cloud_bigquery_storage_v1alpha2_protobuf_proto_depIdxs = []int32{
 	2, // 0: google.cloud.bigquery.storage.v1alpha2.ProtoSchema.proto_descriptor:type_name -> google.protobuf.DescriptorProto

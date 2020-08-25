@@ -26,7 +26,6 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v4/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	status "google.golang.org/genproto/googleapis/rpc/status"
@@ -35,6 +34,7 @@ import (
 	status1 "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -209,11 +209,11 @@ type ConversionAdjustment struct {
 	// adjustment. Note: Although this resource name consists of a customer id and
 	// a conversion action id, validation will ignore the customer id and use the
 	// conversion action id as the sole identifier of the conversion action.
-	ConversionAction *wrappers.StringValue `protobuf:"bytes,3,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
+	ConversionAction *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
 	// The date time at which the adjustment occurred. Must be after the
 	// conversion_date_time. The timezone must be specified. The format is
 	// "yyyy-mm-dd hh:mm:ss+|-hh:mm", e.g. "2019-01-01 12:32:45-08:00".
-	AdjustmentDateTime *wrappers.StringValue `protobuf:"bytes,4,opt,name=adjustment_date_time,json=adjustmentDateTime,proto3" json:"adjustment_date_time,omitempty"`
+	AdjustmentDateTime *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=adjustment_date_time,json=adjustmentDateTime,proto3" json:"adjustment_date_time,omitempty"`
 	// The adjustment type.
 	AdjustmentType enums.ConversionAdjustmentTypeEnum_ConversionAdjustmentType `protobuf:"varint,5,opt,name=adjustment_type,json=adjustmentType,proto3,enum=google.ads.googleads.v4.enums.ConversionAdjustmentTypeEnum_ConversionAdjustmentType" json:"adjustment_type,omitempty"`
 	// Information needed to restate the conversion's value.
@@ -260,14 +260,14 @@ func (*ConversionAdjustment) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_conversion_adjustment_upload_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ConversionAdjustment) GetConversionAction() *wrappers.StringValue {
+func (x *ConversionAdjustment) GetConversionAction() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ConversionAction
 	}
 	return nil
 }
 
-func (x *ConversionAdjustment) GetAdjustmentDateTime() *wrappers.StringValue {
+func (x *ConversionAdjustment) GetAdjustmentDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdjustmentDateTime
 	}
@@ -302,7 +302,7 @@ func (x *ConversionAdjustment) GetGclidDateTimePair() *GclidDateTimePair {
 	return nil
 }
 
-func (x *ConversionAdjustment) GetOrderId() *wrappers.StringValue {
+func (x *ConversionAdjustment) GetOrderId() *wrapperspb.StringValue {
 	if x, ok := x.GetConversionIdentifier().(*ConversionAdjustment_OrderId); ok {
 		return x.OrderId
 	}
@@ -323,7 +323,7 @@ type ConversionAdjustment_OrderId struct {
 	// The order ID of the conversion to be adjusted. If the conversion was
 	// reported with an order ID specified, that order ID must be used as the
 	// identifier here.
-	OrderId *wrappers.StringValue `protobuf:"bytes,2,opt,name=order_id,json=orderId,proto3,oneof"`
+	OrderId *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=order_id,json=orderId,proto3,oneof"`
 }
 
 func (*ConversionAdjustment_GclidDateTimePair) isConversionAdjustment_ConversionIdentifier() {}
@@ -339,12 +339,12 @@ type RestatementValue struct {
 	// The restated conversion value. This is the value of the conversion after
 	// restatement. For example, to change the value of a conversion from 100 to
 	// 70, an adjusted value of 70 should be reported.
-	AdjustedValue *wrappers.DoubleValue `protobuf:"bytes,1,opt,name=adjusted_value,json=adjustedValue,proto3" json:"adjusted_value,omitempty"`
+	AdjustedValue *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=adjusted_value,json=adjustedValue,proto3" json:"adjusted_value,omitempty"`
 	// The currency of the restated value. If not provided, then the default
 	// currency from the conversion action is used, and if that is not set then
 	// the account currency is used. This is the ISO 4217 3-character currency
 	// code e.g. USD or EUR.
-	CurrencyCode *wrappers.StringValue `protobuf:"bytes,2,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
+	CurrencyCode *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
 }
 
 func (x *RestatementValue) Reset() {
@@ -379,14 +379,14 @@ func (*RestatementValue) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_conversion_adjustment_upload_service_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *RestatementValue) GetAdjustedValue() *wrappers.DoubleValue {
+func (x *RestatementValue) GetAdjustedValue() *wrapperspb.DoubleValue {
 	if x != nil {
 		return x.AdjustedValue
 	}
 	return nil
 }
 
-func (x *RestatementValue) GetCurrencyCode() *wrappers.StringValue {
+func (x *RestatementValue) GetCurrencyCode() *wrapperspb.StringValue {
 	if x != nil {
 		return x.CurrencyCode
 	}
@@ -402,11 +402,11 @@ type GclidDateTimePair struct {
 
 	// Google click ID (gclid) associated with the original conversion for this
 	// adjustment.
-	Gclid *wrappers.StringValue `protobuf:"bytes,1,opt,name=gclid,proto3" json:"gclid,omitempty"`
+	Gclid *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=gclid,proto3" json:"gclid,omitempty"`
 	// The date time at which the original conversion for this adjustment
 	// occurred. The timezone must be specified. The format is "yyyy-mm-dd
 	// hh:mm:ss+|-hh:mm", e.g. "2019-01-01 12:32:45-08:00".
-	ConversionDateTime *wrappers.StringValue `protobuf:"bytes,2,opt,name=conversion_date_time,json=conversionDateTime,proto3" json:"conversion_date_time,omitempty"`
+	ConversionDateTime *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=conversion_date_time,json=conversionDateTime,proto3" json:"conversion_date_time,omitempty"`
 }
 
 func (x *GclidDateTimePair) Reset() {
@@ -441,14 +441,14 @@ func (*GclidDateTimePair) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_conversion_adjustment_upload_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GclidDateTimePair) GetGclid() *wrappers.StringValue {
+func (x *GclidDateTimePair) GetGclid() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Gclid
 	}
 	return nil
 }
 
-func (x *GclidDateTimePair) GetConversionDateTime() *wrappers.StringValue {
+func (x *GclidDateTimePair) GetConversionDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ConversionDateTime
 	}
@@ -463,10 +463,10 @@ type ConversionAdjustmentResult struct {
 
 	// Resource name of the conversion action associated with this conversion
 	// adjustment.
-	ConversionAction *wrappers.StringValue `protobuf:"bytes,3,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
+	ConversionAction *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
 	// The date time at which the adjustment occurred. The format is
 	// "yyyy-mm-dd hh:mm:ss+|-hh:mm", e.g. "2019-01-01 12:32:45-08:00".
-	AdjustmentDateTime *wrappers.StringValue `protobuf:"bytes,4,opt,name=adjustment_date_time,json=adjustmentDateTime,proto3" json:"adjustment_date_time,omitempty"`
+	AdjustmentDateTime *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=adjustment_date_time,json=adjustmentDateTime,proto3" json:"adjustment_date_time,omitempty"`
 	// The adjustment type.
 	AdjustmentType enums.ConversionAdjustmentTypeEnum_ConversionAdjustmentType `protobuf:"varint,5,opt,name=adjustment_type,json=adjustmentType,proto3,enum=google.ads.googleads.v4.enums.ConversionAdjustmentTypeEnum_ConversionAdjustmentType" json:"adjustment_type,omitempty"`
 	// Identifies the conversion that was adjusted.
@@ -509,14 +509,14 @@ func (*ConversionAdjustmentResult) Descriptor() ([]byte, []int) {
 	return file_google_ads_googleads_v4_services_conversion_adjustment_upload_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ConversionAdjustmentResult) GetConversionAction() *wrappers.StringValue {
+func (x *ConversionAdjustmentResult) GetConversionAction() *wrapperspb.StringValue {
 	if x != nil {
 		return x.ConversionAction
 	}
 	return nil
 }
 
-func (x *ConversionAdjustmentResult) GetAdjustmentDateTime() *wrappers.StringValue {
+func (x *ConversionAdjustmentResult) GetAdjustmentDateTime() *wrapperspb.StringValue {
 	if x != nil {
 		return x.AdjustmentDateTime
 	}
@@ -544,7 +544,7 @@ func (x *ConversionAdjustmentResult) GetGclidDateTimePair() *GclidDateTimePair {
 	return nil
 }
 
-func (x *ConversionAdjustmentResult) GetOrderId() *wrappers.StringValue {
+func (x *ConversionAdjustmentResult) GetOrderId() *wrapperspb.StringValue {
 	if x, ok := x.GetConversionIdentifier().(*ConversionAdjustmentResult_OrderId); ok {
 		return x.OrderId
 	}
@@ -563,7 +563,7 @@ type ConversionAdjustmentResult_GclidDateTimePair struct {
 
 type ConversionAdjustmentResult_OrderId struct {
 	// The order ID of the conversion that was adjusted.
-	OrderId *wrappers.StringValue `protobuf:"bytes,2,opt,name=order_id,json=orderId,proto3,oneof"`
+	OrderId *wrapperspb.StringValue `protobuf:"bytes,2,opt,name=order_id,json=orderId,proto3,oneof"`
 }
 
 func (*ConversionAdjustmentResult_GclidDateTimePair) isConversionAdjustmentResult_ConversionIdentifier() {
@@ -775,9 +775,9 @@ var file_google_ads_googleads_v4_services_conversion_adjustment_upload_service_p
 	(*GclidDateTimePair)(nil),                                        // 4: google.ads.googleads.v4.services.GclidDateTimePair
 	(*ConversionAdjustmentResult)(nil),                               // 5: google.ads.googleads.v4.services.ConversionAdjustmentResult
 	(*status.Status)(nil),                                            // 6: google.rpc.Status
-	(*wrappers.StringValue)(nil),                                     // 7: google.protobuf.StringValue
+	(*wrapperspb.StringValue)(nil),                                   // 7: google.protobuf.StringValue
 	(enums.ConversionAdjustmentTypeEnum_ConversionAdjustmentType)(0), // 8: google.ads.googleads.v4.enums.ConversionAdjustmentTypeEnum.ConversionAdjustmentType
-	(*wrappers.DoubleValue)(nil),                                     // 9: google.protobuf.DoubleValue
+	(*wrapperspb.DoubleValue)(nil),                                   // 9: google.protobuf.DoubleValue
 }
 var file_google_ads_googleads_v4_services_conversion_adjustment_upload_service_proto_depIdxs = []int32{
 	2,  // 0: google.ads.googleads.v4.services.UploadConversionAdjustmentsRequest.conversion_adjustments:type_name -> google.ads.googleads.v4.services.ConversionAdjustment

@@ -26,16 +26,16 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	longrunning "google.golang.org/genproto/googleapis/longrunning"
-	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -176,7 +176,7 @@ type Version struct {
 	// Output only. The NLU settings of the flow at version creation.
 	NluSettings *NluSettings `protobuf:"bytes,4,opt,name=nlu_settings,json=nluSettings,proto3" json:"nlu_settings,omitempty"`
 	// Output only. Create time of the version.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The state of this version. This field is read-only and cannot be set by
 	// create and update methods.
 	State Version_State `protobuf:"varint,6,opt,name=state,proto3,enum=google.cloud.dialogflow.cx.v3beta1.Version_State" json:"state,omitempty"`
@@ -242,7 +242,7 @@ func (x *Version) GetNluSettings() *NluSettings {
 	return nil
 }
 
-func (x *Version) GetCreateTime() *timestamp.Timestamp {
+func (x *Version) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -508,7 +508,7 @@ type UpdateVersionRequest struct {
 	Version *Version `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 	// Required. The mask to control which fields get updated. Currently only `description`
 	// and `display_name` can be updated.
-	UpdateMask *field_mask.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
 func (x *UpdateVersionRequest) Reset() {
@@ -550,7 +550,7 @@ func (x *UpdateVersionRequest) GetVersion() *Version {
 	return nil
 }
 
-func (x *UpdateVersionRequest) GetUpdateMask() *field_mask.FieldMask {
+func (x *UpdateVersionRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	if x != nil {
 		return x.UpdateMask
 	}
@@ -929,10 +929,10 @@ var file_google_cloud_dialogflow_cx_v3beta1_version_proto_goTypes = []interface{
 	(*DeleteVersionRequest)(nil),           // 8: google.cloud.dialogflow.cx.v3beta1.DeleteVersionRequest
 	(*LoadVersionRequest)(nil),             // 9: google.cloud.dialogflow.cx.v3beta1.LoadVersionRequest
 	(*NluSettings)(nil),                    // 10: google.cloud.dialogflow.cx.v3beta1.NluSettings
-	(*timestamp.Timestamp)(nil),            // 11: google.protobuf.Timestamp
-	(*field_mask.FieldMask)(nil),           // 12: google.protobuf.FieldMask
+	(*timestamppb.Timestamp)(nil),          // 11: google.protobuf.Timestamp
+	(*fieldmaskpb.FieldMask)(nil),          // 12: google.protobuf.FieldMask
 	(*longrunning.Operation)(nil),          // 13: google.longrunning.Operation
-	(*empty.Empty)(nil),                    // 14: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                  // 14: google.protobuf.Empty
 }
 var file_google_cloud_dialogflow_cx_v3beta1_version_proto_depIdxs = []int32{
 	10, // 0: google.cloud.dialogflow.cx.v3beta1.Version.nlu_settings:type_name -> google.cloud.dialogflow.cx.v3beta1.NluSettings
@@ -1119,7 +1119,7 @@ type VersionsClient interface {
 	// Updates the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
 	UpdateVersion(ctx context.Context, in *UpdateVersionRequest, opts ...grpc.CallOption) (*Version, error)
 	// Deletes the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
-	DeleteVersion(ctx context.Context, in *DeleteVersionRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteVersion(ctx context.Context, in *DeleteVersionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Loads a specified version to draft version.
 	LoadVersion(ctx context.Context, in *LoadVersionRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
@@ -1168,8 +1168,8 @@ func (c *versionsClient) UpdateVersion(ctx context.Context, in *UpdateVersionReq
 	return out, nil
 }
 
-func (c *versionsClient) DeleteVersion(ctx context.Context, in *DeleteVersionRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *versionsClient) DeleteVersion(ctx context.Context, in *DeleteVersionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/google.cloud.dialogflow.cx.v3beta1.Versions/DeleteVersion", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1197,7 +1197,7 @@ type VersionsServer interface {
 	// Updates the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
 	UpdateVersion(context.Context, *UpdateVersionRequest) (*Version, error)
 	// Deletes the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
-	DeleteVersion(context.Context, *DeleteVersionRequest) (*empty.Empty, error)
+	DeleteVersion(context.Context, *DeleteVersionRequest) (*emptypb.Empty, error)
 	// Loads a specified version to draft version.
 	LoadVersion(context.Context, *LoadVersionRequest) (*longrunning.Operation, error)
 }
@@ -1218,7 +1218,7 @@ func (*UnimplementedVersionsServer) CreateVersion(context.Context, *CreateVersio
 func (*UnimplementedVersionsServer) UpdateVersion(context.Context, *UpdateVersionRequest) (*Version, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateVersion not implemented")
 }
-func (*UnimplementedVersionsServer) DeleteVersion(context.Context, *DeleteVersionRequest) (*empty.Empty, error) {
+func (*UnimplementedVersionsServer) DeleteVersion(context.Context, *DeleteVersionRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteVersion not implemented")
 }
 func (*UnimplementedVersionsServer) LoadVersion(context.Context, *LoadVersionRequest) (*longrunning.Operation, error) {

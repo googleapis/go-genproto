@@ -25,12 +25,12 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
 	common "google.golang.org/genproto/googleapis/ads/googleads/v2/common"
 	enums "google.golang.org/genproto/googleapis/ads/googleads/v2/enums"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -56,33 +56,33 @@ type Ad struct {
 	// `customers/{customer_id}/ads/{ad_id}`
 	ResourceName string `protobuf:"bytes,37,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the ad.
-	Id *wrappers.Int64Value `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// The list of possible final URLs after all cross-domain redirects for the
 	// ad.
-	FinalUrls []*wrappers.StringValue `protobuf:"bytes,2,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
+	FinalUrls []*wrapperspb.StringValue `protobuf:"bytes,2,rep,name=final_urls,json=finalUrls,proto3" json:"final_urls,omitempty"`
 	// A list of final app URLs that will be used on mobile if the user has the
 	// specific app installed.
 	FinalAppUrls []*common.FinalAppUrl `protobuf:"bytes,35,rep,name=final_app_urls,json=finalAppUrls,proto3" json:"final_app_urls,omitempty"`
 	// The list of possible final mobile URLs after all cross-domain redirects
 	// for the ad.
-	FinalMobileUrls []*wrappers.StringValue `protobuf:"bytes,16,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
+	FinalMobileUrls []*wrapperspb.StringValue `protobuf:"bytes,16,rep,name=final_mobile_urls,json=finalMobileUrls,proto3" json:"final_mobile_urls,omitempty"`
 	// The URL template for constructing a tracking URL.
-	TrackingUrlTemplate *wrappers.StringValue `protobuf:"bytes,12,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
+	TrackingUrlTemplate *wrapperspb.StringValue `protobuf:"bytes,12,opt,name=tracking_url_template,json=trackingUrlTemplate,proto3" json:"tracking_url_template,omitempty"`
 	// The suffix to use when constructing a final URL.
-	FinalUrlSuffix *wrappers.StringValue `protobuf:"bytes,38,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
+	FinalUrlSuffix *wrapperspb.StringValue `protobuf:"bytes,38,opt,name=final_url_suffix,json=finalUrlSuffix,proto3" json:"final_url_suffix,omitempty"`
 	// The list of mappings that can be used to substitute custom parameter tags
 	// in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`.
 	// For mutates, please use url custom parameter operations.
 	UrlCustomParameters []*common.CustomParameter `protobuf:"bytes,10,rep,name=url_custom_parameters,json=urlCustomParameters,proto3" json:"url_custom_parameters,omitempty"`
 	// The URL that appears in the ad description for some ad formats.
-	DisplayUrl *wrappers.StringValue `protobuf:"bytes,4,opt,name=display_url,json=displayUrl,proto3" json:"display_url,omitempty"`
+	DisplayUrl *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=display_url,json=displayUrl,proto3" json:"display_url,omitempty"`
 	// Output only. The type of ad.
 	Type enums.AdTypeEnum_AdType `protobuf:"varint,5,opt,name=type,proto3,enum=google.ads.googleads.v2.enums.AdTypeEnum_AdType" json:"type,omitempty"`
 	// Output only. Indicates if this ad was automatically added by Google Ads and not by a
 	// user. For example, this could happen when ads are automatically created as
 	// suggestions for new ads based on knowledge of how existing ads are
 	// performing.
-	AddedByGoogleAds *wrappers.BoolValue `protobuf:"bytes,19,opt,name=added_by_google_ads,json=addedByGoogleAds,proto3" json:"added_by_google_ads,omitempty"`
+	AddedByGoogleAds *wrapperspb.BoolValue `protobuf:"bytes,19,opt,name=added_by_google_ads,json=addedByGoogleAds,proto3" json:"added_by_google_ads,omitempty"`
 	// The device preference for the ad. You can only specify a preference for
 	// mobile devices. When this preference is set the ad will be preferred over
 	// other ads when being displayed on a mobile device. The ad can still be
@@ -95,7 +95,7 @@ type Ad struct {
 	UrlCollections []*common.UrlCollection `protobuf:"bytes,26,rep,name=url_collections,json=urlCollections,proto3" json:"url_collections,omitempty"`
 	// Immutable. The name of the ad. This is only used to be able to identify the ad. It
 	// does not need to be unique and does not affect the served ad.
-	Name *wrappers.StringValue `protobuf:"bytes,23,opt,name=name,proto3" json:"name,omitempty"`
+	Name *wrapperspb.StringValue `protobuf:"bytes,23,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. If this ad is system managed, then this field will indicate the source.
 	// This field is read-only.
 	SystemManagedResourceSource enums.SystemManagedResourceSourceEnum_SystemManagedResourceSource `protobuf:"varint,27,opt,name=system_managed_resource_source,json=systemManagedResourceSource,proto3,enum=google.ads.googleads.v2.enums.SystemManagedResourceSourceEnum_SystemManagedResourceSource" json:"system_managed_resource_source,omitempty"`
@@ -162,14 +162,14 @@ func (x *Ad) GetResourceName() string {
 	return ""
 }
 
-func (x *Ad) GetId() *wrappers.Int64Value {
+func (x *Ad) GetId() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *Ad) GetFinalUrls() []*wrappers.StringValue {
+func (x *Ad) GetFinalUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrls
 	}
@@ -183,21 +183,21 @@ func (x *Ad) GetFinalAppUrls() []*common.FinalAppUrl {
 	return nil
 }
 
-func (x *Ad) GetFinalMobileUrls() []*wrappers.StringValue {
+func (x *Ad) GetFinalMobileUrls() []*wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalMobileUrls
 	}
 	return nil
 }
 
-func (x *Ad) GetTrackingUrlTemplate() *wrappers.StringValue {
+func (x *Ad) GetTrackingUrlTemplate() *wrapperspb.StringValue {
 	if x != nil {
 		return x.TrackingUrlTemplate
 	}
 	return nil
 }
 
-func (x *Ad) GetFinalUrlSuffix() *wrappers.StringValue {
+func (x *Ad) GetFinalUrlSuffix() *wrapperspb.StringValue {
 	if x != nil {
 		return x.FinalUrlSuffix
 	}
@@ -211,7 +211,7 @@ func (x *Ad) GetUrlCustomParameters() []*common.CustomParameter {
 	return nil
 }
 
-func (x *Ad) GetDisplayUrl() *wrappers.StringValue {
+func (x *Ad) GetDisplayUrl() *wrapperspb.StringValue {
 	if x != nil {
 		return x.DisplayUrl
 	}
@@ -225,7 +225,7 @@ func (x *Ad) GetType() enums.AdTypeEnum_AdType {
 	return enums.AdTypeEnum_UNSPECIFIED
 }
 
-func (x *Ad) GetAddedByGoogleAds() *wrappers.BoolValue {
+func (x *Ad) GetAddedByGoogleAds() *wrapperspb.BoolValue {
 	if x != nil {
 		return x.AddedByGoogleAds
 	}
@@ -246,7 +246,7 @@ func (x *Ad) GetUrlCollections() []*common.UrlCollection {
 	return nil
 }
 
-func (x *Ad) GetName() *wrappers.StringValue {
+func (x *Ad) GetName() *wrapperspb.StringValue {
 	if x != nil {
 		return x.Name
 	}
@@ -789,12 +789,12 @@ func file_google_ads_googleads_v2_resources_ad_proto_rawDescGZIP() []byte {
 var file_google_ads_googleads_v2_resources_ad_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_ads_googleads_v2_resources_ad_proto_goTypes = []interface{}{
 	(*Ad)(nil),                     // 0: google.ads.googleads.v2.resources.Ad
-	(*wrappers.Int64Value)(nil),    // 1: google.protobuf.Int64Value
-	(*wrappers.StringValue)(nil),   // 2: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),  // 1: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil), // 2: google.protobuf.StringValue
 	(*common.FinalAppUrl)(nil),     // 3: google.ads.googleads.v2.common.FinalAppUrl
 	(*common.CustomParameter)(nil), // 4: google.ads.googleads.v2.common.CustomParameter
 	(enums.AdTypeEnum_AdType)(0),   // 5: google.ads.googleads.v2.enums.AdTypeEnum.AdType
-	(*wrappers.BoolValue)(nil),     // 6: google.protobuf.BoolValue
+	(*wrapperspb.BoolValue)(nil),   // 6: google.protobuf.BoolValue
 	(enums.DeviceEnum_Device)(0),   // 7: google.ads.googleads.v2.enums.DeviceEnum.Device
 	(*common.UrlCollection)(nil),   // 8: google.ads.googleads.v2.common.UrlCollection
 	(enums.SystemManagedResourceSourceEnum_SystemManagedResourceSource)(0), // 9: google.ads.googleads.v2.enums.SystemManagedResourceSourceEnum.SystemManagedResourceSource

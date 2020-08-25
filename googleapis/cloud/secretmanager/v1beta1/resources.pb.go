@@ -25,10 +25,10 @@ import (
 	sync "sync"
 
 	proto "github.com/golang/protobuf/proto"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -119,7 +119,7 @@ type Secret struct {
 	// The replication policy cannot be changed after the Secret has been created.
 	Replication *Replication `protobuf:"bytes,2,opt,name=replication,proto3" json:"replication,omitempty"`
 	// Output only. The time at which the [Secret][google.cloud.secrets.v1beta1.Secret] was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The labels assigned to this Secret.
 	//
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
@@ -180,7 +180,7 @@ func (x *Secret) GetReplication() *Replication {
 	return nil
 }
 
-func (x *Secret) GetCreateTime() *timestamp.Timestamp {
+func (x *Secret) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
@@ -207,11 +207,11 @@ type SecretVersion struct {
 	// are incremented for each subsequent version of the secret.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The time at which the [SecretVersion][google.cloud.secrets.v1beta1.SecretVersion] was created.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Output only. The time this [SecretVersion][google.cloud.secrets.v1beta1.SecretVersion] was destroyed.
 	// Only present if [state][google.cloud.secrets.v1beta1.SecretVersion.state] is
 	// [DESTROYED][google.cloud.secrets.v1beta1.SecretVersion.State.DESTROYED].
-	DestroyTime *timestamp.Timestamp `protobuf:"bytes,3,opt,name=destroy_time,json=destroyTime,proto3" json:"destroy_time,omitempty"`
+	DestroyTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=destroy_time,json=destroyTime,proto3" json:"destroy_time,omitempty"`
 	// Output only. The current state of the [SecretVersion][google.cloud.secrets.v1beta1.SecretVersion].
 	State SecretVersion_State `protobuf:"varint,4,opt,name=state,proto3,enum=google.cloud.secrets.v1beta1.SecretVersion_State" json:"state,omitempty"`
 }
@@ -255,14 +255,14 @@ func (x *SecretVersion) GetName() string {
 	return ""
 }
 
-func (x *SecretVersion) GetCreateTime() *timestamp.Timestamp {
+func (x *SecretVersion) GetCreateTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreateTime
 	}
 	return nil
 }
 
-func (x *SecretVersion) GetDestroyTime() *timestamp.Timestamp {
+func (x *SecretVersion) GetDestroyTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.DestroyTime
 	}
@@ -690,7 +690,7 @@ var file_google_cloud_secrets_v1beta1_resources_proto_goTypes = []interface{}{
 	(*Replication_Automatic)(nil),           // 6: google.cloud.secrets.v1beta1.Replication.Automatic
 	(*Replication_UserManaged)(nil),         // 7: google.cloud.secrets.v1beta1.Replication.UserManaged
 	(*Replication_UserManaged_Replica)(nil), // 8: google.cloud.secrets.v1beta1.Replication.UserManaged.Replica
-	(*timestamp.Timestamp)(nil),             // 9: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil),           // 9: google.protobuf.Timestamp
 }
 var file_google_cloud_secrets_v1beta1_resources_proto_depIdxs = []int32{
 	3, // 0: google.cloud.secrets.v1beta1.Secret.replication:type_name -> google.cloud.secrets.v1beta1.Replication
