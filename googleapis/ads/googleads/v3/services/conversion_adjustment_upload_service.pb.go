@@ -63,6 +63,9 @@ type UploadConversionAdjustmentsRequest struct {
 	// operations will return errors. If false, all operations will be carried out
 	// in one transaction if and only if they are all valid. This should always be
 	// set to true.
+	// See
+	// https://developers.google.com/google-ads/api/docs/best-practices/partial-failures
+	// for more information about partial failure.
 	PartialFailure bool `protobuf:"varint,3,opt,name=partial_failure,json=partialFailure,proto3" json:"partial_failure,omitempty"`
 	// If true, the request is validated but not executed. Only errors are
 	// returned, not results.
@@ -140,6 +143,9 @@ type UploadConversionAdjustmentsResponse struct {
 	// failure mode. Returned when all errors occur inside the adjustments. If any
 	// errors occur outside the adjustments (e.g. auth errors), we return an RPC
 	// level error.
+	// See
+	// https://developers.google.com/google-ads/api/docs/best-practices/partial-failures
+	// for more information about partial failure.
 	PartialFailureError *status.Status `protobuf:"bytes,1,opt,name=partial_failure_error,json=partialFailureError,proto3" json:"partial_failure_error,omitempty"`
 	// Returned for successfully processed conversion adjustments. Proto will be
 	// empty for rows that received an error. Results are not returned when
@@ -213,6 +219,10 @@ type ConversionAdjustment struct {
 	// Information needed to restate the conversion's value.
 	// Required for restatements. Should not be supplied for retractions. An error
 	// will be returned if provided for a retraction.
+	// NOTE: If you want to upload a second restatement with a different adjusted
+	// value, it must have a new, more recent, adjustment occurrence time.
+	// Otherwise, it will be treated as a duplicate of the previous restatement
+	// and ignored.
 	RestatementValue *RestatementValue `protobuf:"bytes,6,opt,name=restatement_value,json=restatementValue,proto3" json:"restatement_value,omitempty"`
 	// Identifies the conversion to be adjusted.
 	//
@@ -333,6 +343,10 @@ type RestatementValue struct {
 	// The restated conversion value. This is the value of the conversion after
 	// restatement. For example, to change the value of a conversion from 100 to
 	// 70, an adjusted value of 70 should be reported.
+	// NOTE: If you want to upload a second restatement with a different adjusted
+	// value, it must have a new, more recent, adjustment occurrence time.
+	// Otherwise, it will be treated as a duplicate of the previous restatement
+	// and ignored.
 	AdjustedValue *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=adjusted_value,json=adjustedValue,proto3" json:"adjusted_value,omitempty"`
 	// The currency of the restated value. If not provided, then the default
 	// currency from the conversion action is used, and if that is not set then

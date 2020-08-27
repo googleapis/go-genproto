@@ -289,13 +289,13 @@ type TransactionAttribute struct {
 	// Required.
 	ConversionAction *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=conversion_action,json=conversionAction,proto3" json:"conversion_action,omitempty"`
 	// Transaction order id.
-	// Accessible to whitelisted customers only.
+	// Accessible only to customers on the allow-list.
 	OrderId *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	// Store attributes of the transaction.
-	// Accessible to whitelisted customers only.
+	// Accessible only to customers on the allow-list.
 	StoreAttribute *StoreAttribute `protobuf:"bytes,6,opt,name=store_attribute,json=storeAttribute,proto3" json:"store_attribute,omitempty"`
 	// Value of the custom variable for each transaction.
-	// Accessible to whitelisted customers only.
+	// Accessible only to customers on the allow-list.
 	CustomValue *wrapperspb.StringValue `protobuf:"bytes,7,opt,name=custom_value,json=customValue,proto3" json:"custom_value,omitempty"`
 }
 
@@ -559,7 +559,7 @@ type StoreSalesMetadata struct {
 	// Name of the store sales custom variable key. A predefined key that
 	// can be applied to the transaction and then later used for custom
 	// segmentation in reporting.
-	// Accessible to whitelisted customers only.
+	// Accessible only to customers on the allow-list.
 	CustomKey *wrapperspb.StringValue `protobuf:"bytes,4,opt,name=custom_key,json=customKey,proto3" json:"custom_key,omitempty"`
 	// Metadata for a third party Store Sales upload.
 	ThirdPartyMetadata *StoreSalesThirdPartyMetadata `protobuf:"bytes,3,opt,name=third_party_metadata,json=thirdPartyMetadata,proto3" json:"third_party_metadata,omitempty"`
@@ -626,8 +626,9 @@ func (x *StoreSalesMetadata) GetThirdPartyMetadata() *StoreSalesThirdPartyMetada
 }
 
 // Metadata for a third party Store Sales.
-// This is a whitelisted only product. Please contact your Google business
-// development representative for details on the upload configuration.
+// This product is only for customers on the allow-list. Please contact your
+// Google business development representative for details on the upload
+// configuration.
 type StoreSalesThirdPartyMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

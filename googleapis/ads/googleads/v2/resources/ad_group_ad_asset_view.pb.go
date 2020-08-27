@@ -51,9 +51,13 @@ type AdGroupAdAssetView struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The resource name of the ad group ad asset view.
-	// Ad group ad asset view resource names have the form:
+	// Ad group ad asset view resource names have the form (Before V4):
 	//
-	// `customers/{customer_id}/adGroupAdAssets/{AdGroupAdAsset.ad_group_id}~{AdGroupAdAsset.ad.ad_id}~{AdGroupAdAsset.asset_id}~{AdGroupAdAsset.asset_field_type}`
+	// `customers/{customer_id}/adGroupAdAssets/{AdGroupAdAsset.ad_group_id}~{AdGroupAdAsset.ad.ad_id}~{AdGroupAdAsset.asset_id}~{AdGroupAdAsset.field_type}`
+	//
+	// Ad group ad asset view resource names have the form (Beginning from V4):
+	//
+	// `customers/{customer_id}/adGroupAdAssetViews/{AdGroupAdAsset.ad_group_id}~{AdGroupAdAsset.ad_id}~{AdGroupAdAsset.asset_id}~{AdGroupAdAsset.field_type}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ad group ad to which the asset is linked.
 	AdGroupAd *wrapperspb.StringValue `protobuf:"bytes,5,opt,name=ad_group_ad,json=adGroupAd,proto3" json:"ad_group_ad,omitempty"`

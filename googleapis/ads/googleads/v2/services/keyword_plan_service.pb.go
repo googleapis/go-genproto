@@ -896,7 +896,9 @@ type KeywordPlanKeywordHistoricalMetrics struct {
 	// Note that we de-dupe your keywords list, eliminating close variants before
 	// returning the plan's keywords as text. For example, if your plan originally
 	// contained the keywords 'car' and 'cars', the returned search query will
-	// only contain 'car'.
+	// only contain 'cars'.
+	// Starting V5, the list of de-duped queries will be included in
+	// close_variants field.
 	SearchQuery *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=search_query,json=searchQuery,proto3" json:"search_query,omitempty"`
 	// The historical metrics for the query associated with one or more
 	// ad_group_keywords in the plan.

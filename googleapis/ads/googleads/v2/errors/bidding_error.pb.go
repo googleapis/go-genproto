@@ -61,9 +61,10 @@ const (
 	BiddingErrorEnum_INVALID_BID BiddingErrorEnum_BiddingError = 17
 	// Bidding strategy is not available for the account type.
 	BiddingErrorEnum_BIDDING_STRATEGY_NOT_AVAILABLE_FOR_ACCOUNT_TYPE BiddingErrorEnum_BiddingError = 18
-	// Conversion tracking is not enabled for the campaign for VBB transition.
+	// Conversion tracking is not enabled in the campaign that has YouTube
+	// Video Builder transitions.
 	BiddingErrorEnum_CONVERSION_TRACKING_NOT_ENABLED BiddingErrorEnum_BiddingError = 19
-	// Not enough conversions tracked for VBB transitions.
+	// Not enough conversions tracked for YouTube Video Builder transitions.
 	BiddingErrorEnum_NOT_ENOUGH_CONVERSIONS BiddingErrorEnum_BiddingError = 20
 	// Campaign can not be created with given bidding strategy. It can be
 	// transitioned to the strategy, once eligible.
@@ -75,7 +76,7 @@ const (
 	// for campaigns with AdSchedule targeting.
 	BiddingErrorEnum_BIDDING_STRATEGY_NOT_SUPPORTED_WITH_AD_SCHEDULE BiddingErrorEnum_BiddingError = 24
 	// Pay per conversion is not available to all the customer, only few
-	// whitelisted customers can use this.
+	// customers on the allow-list can use this.
 	BiddingErrorEnum_PAY_PER_CONVERSION_NOT_AVAILABLE_FOR_CUSTOMER BiddingErrorEnum_BiddingError = 25
 	// Pay per conversion is not allowed with Target CPA.
 	BiddingErrorEnum_PAY_PER_CONVERSION_NOT_ALLOWED_WITH_TARGET_CPA BiddingErrorEnum_BiddingError = 26

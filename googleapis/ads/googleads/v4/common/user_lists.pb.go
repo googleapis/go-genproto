@@ -115,7 +115,7 @@ type CrmBasedUserListInfo struct {
 	// This field is required for an ADD operation.
 	UploadKeyType enums.CustomerMatchUploadKeyTypeEnum_CustomerMatchUploadKeyType `protobuf:"varint,2,opt,name=upload_key_type,json=uploadKeyType,proto3,enum=google.ads.googleads.v4.enums.CustomerMatchUploadKeyTypeEnum_CustomerMatchUploadKeyType" json:"upload_key_type,omitempty"`
 	// Data source of the list. Default value is FIRST_PARTY.
-	// Only whitelisted customers can create third-party sourced CRM lists.
+	// Only customers on the allow-list can create third-party sourced CRM lists.
 	DataSourceType enums.UserListCrmDataSourceTypeEnum_UserListCrmDataSourceType `protobuf:"varint,3,opt,name=data_source_type,json=dataSourceType,proto3,enum=google.ads.googleads.v4.enums.UserListCrmDataSourceTypeEnum_UserListCrmDataSourceType" json:"data_source_type,omitempty"`
 }
 

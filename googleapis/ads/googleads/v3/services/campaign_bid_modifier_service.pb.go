@@ -97,7 +97,8 @@ func (x *GetCampaignBidModifierRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [CampaignBidModifierService.MutateCampaignBidModifier][].
+// Request message for
+// [CampaignBidModifierService.MutateCampaignBidModifiers][google.ads.googleads.v3.services.CampaignBidModifierService.MutateCampaignBidModifiers].
 type MutateCampaignBidModifiersRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -178,10 +178,10 @@ type CreateCustomerClientRequest struct {
 	// will be ignored.
 	CustomerClient *resources.Customer `protobuf:"bytes,2,opt,name=customer_client,json=customerClient,proto3" json:"customer_client,omitempty"`
 	// Email address of the user who should be invited on the created client
-	// customer. Accessible to whitelisted customers only.
+	// customer. Accessible only to customers on the allow-list.
 	EmailAddress *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=email_address,json=emailAddress,proto3" json:"email_address,omitempty"`
 	// The proposed role of user on the created client customer.
-	// Accessible to whitelisted customers only.
+	// Accessible only to customers on the allow-list.
 	AccessRole enums.AccessRoleEnum_AccessRole `protobuf:"varint,4,opt,name=access_role,json=accessRole,proto3,enum=google.ads.googleads.v2.enums.AccessRoleEnum_AccessRole" json:"access_role,omitempty"`
 }
 

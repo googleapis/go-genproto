@@ -303,7 +303,8 @@ type MutateKeywordPlanAdGroupsResponse struct {
 	// operations. If any errors occur outside the operations (e.g. auth errors),
 	// we return an RPC level error.
 	PartialFailureError *status.Status `protobuf:"bytes,3,opt,name=partial_failure_error,json=partialFailureError,proto3" json:"partial_failure_error,omitempty"`
-	// All results for the mutate.
+	// All results for the mutate. The order of the results is determined by the
+	// order of the keywords in the original request.
 	Results []*MutateKeywordPlanAdGroupResult `protobuf:"bytes,2,rep,name=results,proto3" json:"results,omitempty"`
 }
 

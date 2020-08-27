@@ -574,7 +574,8 @@ const _ = grpc.SupportPackageIsVersion6
 type AdServiceClient interface {
 	// Returns the requested ad in full detail.
 	GetAd(ctx context.Context, in *GetAdRequest, opts ...grpc.CallOption) (*resources.Ad, error)
-	// Updates ads. Operation statuses are returned.
+	// Updates ads. Operation statuses are returned. Updating ads is not supported
+	// for TextAd, ExpandedDynamicSearchAd, GmailAd and ImageAd.
 	MutateAds(ctx context.Context, in *MutateAdsRequest, opts ...grpc.CallOption) (*MutateAdsResponse, error)
 }
 
@@ -608,7 +609,8 @@ func (c *adServiceClient) MutateAds(ctx context.Context, in *MutateAdsRequest, o
 type AdServiceServer interface {
 	// Returns the requested ad in full detail.
 	GetAd(context.Context, *GetAdRequest) (*resources.Ad, error)
-	// Updates ads. Operation statuses are returned.
+	// Updates ads. Operation statuses are returned. Updating ads is not supported
+	// for TextAd, ExpandedDynamicSearchAd, GmailAd and ImageAd.
 	MutateAds(context.Context, *MutateAdsRequest) (*MutateAdsResponse, error)
 }
 

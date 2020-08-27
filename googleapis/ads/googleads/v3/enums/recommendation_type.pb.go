@@ -49,7 +49,10 @@ const (
 	RecommendationTypeEnum_UNSPECIFIED RecommendationTypeEnum_RecommendationType = 0
 	// Used for return value only. Represents value unknown in this version.
 	RecommendationTypeEnum_UNKNOWN RecommendationTypeEnum_RecommendationType = 1
-	// Budget recommendation for budget constrained campaigns.
+	// Budget recommendation for campaigns that are currently budget-constrained
+	// (as opposed to the FORECASTING_CAMPAIGN_BUDGET recommendation, which
+	// applies to campaigns that are expected to become budget-constrained in
+	// the future).
 	RecommendationTypeEnum_CAMPAIGN_BUDGET RecommendationTypeEnum_RecommendationType = 2
 	// Keyword recommendation.
 	RecommendationTypeEnum_KEYWORD RecommendationTypeEnum_RecommendationType = 3

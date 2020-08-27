@@ -75,6 +75,8 @@ type AdGroupBidModifier struct {
 	BidModifierSource enums.BidModifierSourceEnum_BidModifierSource `protobuf:"varint,10,opt,name=bid_modifier_source,json=bidModifierSource,proto3,enum=google.ads.googleads.v4.enums.BidModifierSourceEnum_BidModifierSource" json:"bid_modifier_source,omitempty"`
 	// The criterion of this ad group bid modifier.
 	//
+	// Required in create operations starting in V5.
+	//
 	// Types that are assignable to Criterion:
 	//	*AdGroupBidModifier_HotelDateSelectionType
 	//	*AdGroupBidModifier_HotelAdvanceBookingWindow

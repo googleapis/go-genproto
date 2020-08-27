@@ -49,11 +49,11 @@ const (
 	SimulationTypeEnum_UNSPECIFIED SimulationTypeEnum_SimulationType = 0
 	// Used for return value only. Represents value unknown in this version.
 	SimulationTypeEnum_UNKNOWN SimulationTypeEnum_SimulationType = 1
-	// The simulation is for a cpc bid.
+	// The simulation is for a CPC bid.
 	SimulationTypeEnum_CPC_BID SimulationTypeEnum_SimulationType = 2
-	// The simulation is for a cpv bid.
+	// The simulation is for a CPV bid.
 	SimulationTypeEnum_CPV_BID SimulationTypeEnum_SimulationType = 3
-	// The simulation is for a cpa target.
+	// The simulation is for a CPA target.
 	SimulationTypeEnum_TARGET_CPA SimulationTypeEnum_SimulationType = 4
 	// The simulation is for a bid modifier.
 	SimulationTypeEnum_BID_MODIFIER SimulationTypeEnum_SimulationType = 5

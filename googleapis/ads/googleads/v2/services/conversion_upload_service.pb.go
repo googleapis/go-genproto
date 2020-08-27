@@ -61,6 +61,9 @@ type UploadClickConversionsRequest struct {
 	// operations will return errors. If false, all operations will be carried
 	// out in one transaction if and only if they are all valid.
 	// This should always be set to true.
+	// See
+	// https://developers.google.com/google-ads/api/docs/best-practices/partial-failures
+	// for more information about partial failure.
 	PartialFailure bool `protobuf:"varint,3,opt,name=partial_failure,json=partialFailure,proto3" json:"partial_failure,omitempty"`
 	// If true, the request is validated but not executed. Only errors are
 	// returned, not results.
@@ -136,6 +139,9 @@ type UploadClickConversionsResponse struct {
 	// Errors that pertain to conversion failures in the partial failure mode.
 	// Returned when all errors occur inside the conversions. If any errors occur
 	// outside the conversions (e.g. auth errors), we return an RPC level error.
+	// See
+	// https://developers.google.com/google-ads/api/docs/best-practices/partial-failures
+	// for more information about partial failure.
 	PartialFailureError *status.Status `protobuf:"bytes,1,opt,name=partial_failure_error,json=partialFailureError,proto3" json:"partial_failure_error,omitempty"`
 	// Returned for successfully processed conversions. Proto will be empty for
 	// rows that received an error. Results are not returned when validate_only is
@@ -203,6 +209,9 @@ type UploadCallConversionsRequest struct {
 	// operations will return errors. If false, all operations will be carried
 	// out in one transaction if and only if they are all valid.
 	// This should always be set to true.
+	// See
+	// https://developers.google.com/google-ads/api/docs/best-practices/partial-failures
+	// for more information about partial failure.
 	PartialFailure bool `protobuf:"varint,3,opt,name=partial_failure,json=partialFailure,proto3" json:"partial_failure,omitempty"`
 	// If true, the request is validated but not executed. Only errors are
 	// returned, not results.
@@ -278,6 +287,9 @@ type UploadCallConversionsResponse struct {
 	// Errors that pertain to conversion failures in the partial failure mode.
 	// Returned when all errors occur inside the conversions. If any errors occur
 	// outside the conversions (e.g. auth errors), we return an RPC level error.
+	// See
+	// https://developers.google.com/google-ads/api/docs/best-practices/partial-failures
+	// for more information about partial failure.
 	PartialFailureError *status.Status `protobuf:"bytes,1,opt,name=partial_failure_error,json=partialFailureError,proto3" json:"partial_failure_error,omitempty"`
 	// Returned for successfully processed conversions. Proto will be empty for
 	// rows that received an error. Results are not returned when validate_only is

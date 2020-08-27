@@ -64,6 +64,8 @@ type CampaignBidModifier struct {
 	BidModifier *wrapperspb.DoubleValue `protobuf:"bytes,4,opt,name=bid_modifier,json=bidModifier,proto3" json:"bid_modifier,omitempty"`
 	// The criterion of this campaign bid modifier.
 	//
+	// Required in create operations starting in V5.
+	//
 	// Types that are assignable to Criterion:
 	//	*CampaignBidModifier_InteractionType
 	Criterion isCampaignBidModifier_Criterion `protobuf_oneof:"criterion"`

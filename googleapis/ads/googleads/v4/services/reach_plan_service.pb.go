@@ -48,7 +48,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Request message for [ReachForecastService.ListPlannableLocations][]
+// Request message for [ReachPlanService.ListPlannableLocations][google.ads.googleads.v4.services.ReachPlanService.ListPlannableLocations].
 type ListPlannableLocationsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -447,7 +447,7 @@ func (x *PlannableTargeting) GetNetworks() []enums.ReachPlanNetworkEnum_ReachPla
 	return nil
 }
 
-// Request message for [ReachForecastService.GenerateProductMixIdeas][].
+// Request message for [ReachPlanService.GenerateProductMixIdeas][google.ads.googleads.v4.services.ReachPlanService.GenerateProductMixIdeas].
 type GenerateProductMixIdeasRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -1162,7 +1162,9 @@ type KeywordPlanKeywordHistoricalMetrics struct {
 	// Note that we de-dupe your keywords list, eliminating close variants before
 	// returning the plan's keywords as text. For example, if your plan originally
 	// contained the keywords 'car' and 'cars', the returned search query will
-	// only contain 'car'.
+	// only contain 'cars'.
+	// Starting V5, the list of de-duped queries will be included in
+	// close_variants field.
 	SearchQuery *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=search_query,json=searchQuery,proto3" json:"search_query,omitempty"`
 	// The historical metrics for the query associated with one or more
 	// ad_group_keywords in the plan.
@@ -1928,8 +1930,7 @@ type KeywordPlanServiceClient interface {
 	MutateKeywordPlans(ctx context.Context, in *MutateKeywordPlansRequest, opts ...grpc.CallOption) (*MutateKeywordPlansResponse, error)
 	// Returns the requested Keyword Plan forecast curve.
 	// Only the bidding strategy is considered for generating forecast curve.
-	// The bidding strategy value (eg: max_cpc_bid_micros in maximize cpc bidding
-	// strategy) specified in the plan is ignored.
+	// The bidding strategy value specified in the plan is ignored.
 	//
 	// To generate a forecast at a value specified in the plan, use
 	// KeywordPlanService.GenerateForecastMetrics.
@@ -2002,8 +2003,7 @@ type KeywordPlanServiceServer interface {
 	MutateKeywordPlans(context.Context, *MutateKeywordPlansRequest) (*MutateKeywordPlansResponse, error)
 	// Returns the requested Keyword Plan forecast curve.
 	// Only the bidding strategy is considered for generating forecast curve.
-	// The bidding strategy value (eg: max_cpc_bid_micros in maximize cpc bidding
-	// strategy) specified in the plan is ignored.
+	// The bidding strategy value specified in the plan is ignored.
 	//
 	// To generate a forecast at a value specified in the plan, use
 	// KeywordPlanService.GenerateForecastMetrics.

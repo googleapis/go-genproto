@@ -97,7 +97,7 @@ func (x *GetGeoTargetConstantRequest) GetResourceName() string {
 }
 
 // Request message for
-// [GeoTargetConstantService.SuggestGeoTargetConstantsRequest][].
+// [GeoTargetConstantService.SuggestGeoTargetConstants][google.ads.googleads.v3.services.GeoTargetConstantService.SuggestGeoTargetConstants].
 type SuggestGeoTargetConstantsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -202,7 +202,7 @@ func (*SuggestGeoTargetConstantsRequest_LocationNames_) isSuggestGeoTargetConsta
 
 func (*SuggestGeoTargetConstantsRequest_GeoTargets_) isSuggestGeoTargetConstantsRequest_Query() {}
 
-// Response message for [GeoTargetConstantService.SuggestGeoTargetConstants][google.ads.googleads.v3.services.GeoTargetConstantService.SuggestGeoTargetConstants]
+// Response message for [GeoTargetConstantService.SuggestGeoTargetConstants][google.ads.googleads.v3.services.GeoTargetConstantService.SuggestGeoTargetConstants].
 type SuggestGeoTargetConstantsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

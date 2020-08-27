@@ -61,7 +61,7 @@ const (
 	FieldErrorEnum_REQUIRED_NONEMPTY_LIST FieldErrorEnum_FieldError = 6
 	// The field cannot be cleared.
 	FieldErrorEnum_FIELD_CANNOT_BE_CLEARED FieldErrorEnum_FieldError = 7
-	// The field's value is on a blacklist for this field.
+	// The field's value is on a deny-list for this field.
 	FieldErrorEnum_BLACKLISTED_VALUE FieldErrorEnum_FieldError = 8
 )
 

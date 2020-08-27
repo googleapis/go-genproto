@@ -72,12 +72,12 @@ const (
 	ConversionActionTypeEnum_WEBSITE_CALL ConversionActionTypeEnum_ConversionActionType = 9
 	// Store Sales conversion based on first-party or third-party merchant
 	// data uploads.
-	// Only whitelisted customers can use store sales direct upload types.
+	// Only customers on the allowlist can use store sales direct upload types.
 	ConversionActionTypeEnum_STORE_SALES_DIRECT_UPLOAD ConversionActionTypeEnum_ConversionActionType = 10
 	// Store Sales conversion based on first-party or third-party merchant
 	// data uploads and/or from in-store purchases using cards from payment
 	// networks.
-	// Only whitelisted customers can use store sales types.
+	// Only customers on the allowlist can use store sales types.
 	ConversionActionTypeEnum_STORE_SALES ConversionActionTypeEnum_ConversionActionType = 11
 	// Android app first open conversions tracked via Firebase.
 	ConversionActionTypeEnum_FIREBASE_ANDROID_FIRST_OPEN ConversionActionTypeEnum_ConversionActionType = 12

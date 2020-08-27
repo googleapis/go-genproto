@@ -219,6 +219,10 @@ type ConversionAdjustment struct {
 	// Information needed to restate the conversion's value.
 	// Required for restatements. Should not be supplied for retractions. An error
 	// will be returned if provided for a retraction.
+	// NOTE: If you want to upload a second restatement with a different adjusted
+	// value, it must have a new, more recent, adjustment occurrence time.
+	// Otherwise, it will be treated as a duplicate of the previous restatement
+	// and ignored.
 	RestatementValue *RestatementValue `protobuf:"bytes,6,opt,name=restatement_value,json=restatementValue,proto3" json:"restatement_value,omitempty"`
 	// Identifies the conversion to be adjusted.
 	//
@@ -339,6 +343,10 @@ type RestatementValue struct {
 	// The restated conversion value. This is the value of the conversion after
 	// restatement. For example, to change the value of a conversion from 100 to
 	// 70, an adjusted value of 70 should be reported.
+	// NOTE: If you want to upload a second restatement with a different adjusted
+	// value, it must have a new, more recent, adjustment occurrence time.
+	// Otherwise, it will be treated as a duplicate of the previous restatement
+	// and ignored.
 	AdjustedValue *wrapperspb.DoubleValue `protobuf:"bytes,1,opt,name=adjusted_value,json=adjustedValue,proto3" json:"adjusted_value,omitempty"`
 	// The currency of the restated value. If not provided, then the default
 	// currency from the conversion action is used, and if that is not set then

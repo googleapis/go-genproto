@@ -578,7 +578,6 @@ func (*TargetCpm) Descriptor() ([]byte, []int) {
 // An automated bidding strategy that sets bids so that a certain percentage of
 // search ads are shown at the top of the first page (or other targeted
 // location).
-// next tag = 4
 type TargetImpressionShare struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

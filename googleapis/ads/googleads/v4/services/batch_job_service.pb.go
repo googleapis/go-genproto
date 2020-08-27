@@ -48,7 +48,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Request message for [BatchJobService.MutateBatchJobRequest][]
+// Request message for [BatchJobService.MutateBatchJob][google.ads.googleads.v4.services.BatchJobService.MutateBatchJob].
 type MutateBatchJobRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -106,7 +106,7 @@ func (x *MutateBatchJobRequest) GetOperation() *BatchJobOperation {
 	return nil
 }
 
-// A single operation (create or remove) on a batch job.
+// A single operation on a batch job.
 type BatchJobOperation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -194,7 +194,7 @@ func (*BatchJobOperation_Create) isBatchJobOperation_Operation() {}
 
 func (*BatchJobOperation_Remove) isBatchJobOperation_Operation() {}
 
-// Response message for [BatchJobService.MutateBatchJobResponse][]
+// Response message for [BatchJobService.MutateBatchJob][google.ads.googleads.v4.services.BatchJobService.MutateBatchJob].
 type MutateBatchJobResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -292,7 +292,7 @@ func (x *MutateBatchJobResult) GetResourceName() string {
 	return ""
 }
 
-// Request message for [BatchJobService.GetBatchJob][google.ads.googleads.v4.services.BatchJobService.GetBatchJob]
+// Request message for [BatchJobService.GetBatchJob][google.ads.googleads.v4.services.BatchJobService.GetBatchJob].
 type GetBatchJobRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -341,7 +341,7 @@ func (x *GetBatchJobRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [BatchJobService.RunBatchJob][google.ads.googleads.v4.services.BatchJobService.RunBatchJob]
+// Request message for [BatchJobService.RunBatchJob][google.ads.googleads.v4.services.BatchJobService.RunBatchJob].
 type RunBatchJobRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -390,7 +390,7 @@ func (x *RunBatchJobRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [BatchJobService.AddBatchJobOperations][google.ads.googleads.v4.services.BatchJobService.AddBatchJobOperations]
+// Request message for [BatchJobService.AddBatchJobOperations][google.ads.googleads.v4.services.BatchJobService.AddBatchJobOperations].
 type AddBatchJobOperationsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -470,7 +470,7 @@ func (x *AddBatchJobOperationsRequest) GetMutateOperations() []*MutateOperation 
 	return nil
 }
 
-// Response message for [BatchJobService.AddBatchJobOperations][google.ads.googleads.v4.services.BatchJobService.AddBatchJobOperations]
+// Response message for [BatchJobService.AddBatchJobOperations][google.ads.googleads.v4.services.BatchJobService.AddBatchJobOperations].
 type AddBatchJobOperationsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

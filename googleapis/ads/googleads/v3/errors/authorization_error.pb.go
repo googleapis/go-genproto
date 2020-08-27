@@ -54,7 +54,7 @@ const (
 	// `login-customer-id` header. Learn more at
 	// https://developers.google.com/google-ads/api/docs/concepts/call-structure#cid
 	AuthorizationErrorEnum_USER_PERMISSION_DENIED AuthorizationErrorEnum_AuthorizationError = 2
-	// The developer token is not whitelisted.
+	// The developer token is not on the allow-list.
 	AuthorizationErrorEnum_DEVELOPER_TOKEN_NOT_WHITELISTED AuthorizationErrorEnum_AuthorizationError = 3
 	// The developer token is not allowed with the project sent in the request.
 	AuthorizationErrorEnum_DEVELOPER_TOKEN_PROHIBITED AuthorizationErrorEnum_AuthorizationError = 4

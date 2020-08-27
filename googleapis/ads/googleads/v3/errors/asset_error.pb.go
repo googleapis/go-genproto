@@ -49,7 +49,7 @@ const (
 	AssetErrorEnum_UNSPECIFIED AssetErrorEnum_AssetError = 0
 	// The received error code is not known in this version.
 	AssetErrorEnum_UNKNOWN AssetErrorEnum_AssetError = 1
-	// The customer is not whitelisted for this asset type.
+	// The customer is not on the allow-list for this asset type.
 	AssetErrorEnum_CUSTOMER_NOT_WHITELISTED_FOR_ASSET_TYPE AssetErrorEnum_AssetError = 2
 	// Assets are duplicated across operations.
 	AssetErrorEnum_DUPLICATE_ASSET AssetErrorEnum_AssetError = 3

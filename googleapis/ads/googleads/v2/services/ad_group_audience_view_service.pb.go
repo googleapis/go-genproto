@@ -46,7 +46,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Request message for [AdGroupAudienceViewService.GetAdGoupAudienceView][].
+// Request message for [AdGroupAudienceViewService.GetAdGroupAudienceView][google.ads.googleads.v2.services.AdGroupAudienceViewService.GetAdGroupAudienceView].
 type GetAdGroupAudienceViewRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

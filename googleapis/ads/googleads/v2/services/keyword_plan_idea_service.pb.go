@@ -48,7 +48,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Request message for [KeywordIdeaService.GenerateKeywordIdeas][].
+// Request message for [KeywordPlanIdeaService.GenerateKeywordIdeas][google.ads.googleads.v2.services.KeywordPlanIdeaService.GenerateKeywordIdeas].
 type GenerateKeywordIdeasRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -343,7 +343,7 @@ func (x *UrlSeed) GetUrl() *wrapperspb.StringValue {
 	return nil
 }
 
-// Response message for [KeywordIdeaService.GenerateKeywordIdeas][].
+// Response message for [KeywordPlanIdeaService.GenerateKeywordIdeas][google.ads.googleads.v2.services.KeywordPlanIdeaService.GenerateKeywordIdeas].
 type GenerateKeywordIdeaResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
