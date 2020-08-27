@@ -47,7 +47,7 @@ const (
 const _ = proto.ProtoPackageIsVersion4
 
 // Request message for
-// [ProductBiddingCategoryService.GetProductBiddingCategory][].
+// [ProductBiddingCategoryConstantService.GetProductBiddingCategoryConstant][google.ads.googleads.v2.services.ProductBiddingCategoryConstantService.GetProductBiddingCategoryConstant].
 type GetProductBiddingCategoryConstantRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

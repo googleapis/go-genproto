@@ -41,7 +41,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Possbile device types for an extension setting.
+// Possible device types for an extension setting.
 type ExtensionSettingDeviceEnum_ExtensionSettingDevice int32
 
 const (

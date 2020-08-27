@@ -81,7 +81,8 @@ const (
 	ExtensionFeedItemErrorEnum_VANITY_PHONE_NUMBER_NOT_ALLOWED ExtensionFeedItemErrorEnum_ExtensionFeedItemError = 13
 	// Call conversion action provided for a call extension is invalid.
 	ExtensionFeedItemErrorEnum_INVALID_CALL_CONVERSION_ACTION ExtensionFeedItemErrorEnum_ExtensionFeedItemError = 14
-	// For a call extension, the customer is not whitelisted for call tracking.
+	// For a call extension, the customer is not on the allow-list for call
+	// tracking.
 	ExtensionFeedItemErrorEnum_CUSTOMER_NOT_WHITELISTED_FOR_CALLTRACKING ExtensionFeedItemErrorEnum_ExtensionFeedItemError = 15
 	// Call tracking is not supported for the given country for a call
 	// extension.
@@ -96,7 +97,7 @@ const (
 	ExtensionFeedItemErrorEnum_QUOTES_IN_REVIEW_EXTENSION_SNIPPET ExtensionFeedItemErrorEnum_ExtensionFeedItemError = 19
 	// Hyphen character present in the review text for a review extension.
 	ExtensionFeedItemErrorEnum_HYPHENS_IN_REVIEW_EXTENSION_SNIPPET ExtensionFeedItemErrorEnum_ExtensionFeedItemError = 20
-	// A blacklisted review source name or url was provided for a review
+	// A denylisted review source name or url was provided for a review
 	// extension.
 	ExtensionFeedItemErrorEnum_REVIEW_EXTENSION_SOURCE_INELIGIBLE ExtensionFeedItemErrorEnum_ExtensionFeedItemError = 21
 	// Review source name should not be found in the review text.

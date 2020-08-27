@@ -75,7 +75,7 @@ const (
 	CriterionErrorEnum_PLACEMENT_URL_HAS_ILLEGAL_CHAR CriterionErrorEnum_CriterionError = 13
 	// Indicates the URL contains multiple comma separated URLs.
 	CriterionErrorEnum_PLACEMENT_URL_HAS_MULTIPLE_SITES_IN_LINE CriterionErrorEnum_CriterionError = 14
-	// Indicates the domain is blacklisted.
+	// Indicates the domain is blocked.
 	CriterionErrorEnum_PLACEMENT_IS_NOT_AVAILABLE_FOR_TARGETING_OR_EXCLUSION CriterionErrorEnum_CriterionError = 15
 	// Invalid topic path.
 	CriterionErrorEnum_INVALID_TOPIC_PATH CriterionErrorEnum_CriterionError = 16

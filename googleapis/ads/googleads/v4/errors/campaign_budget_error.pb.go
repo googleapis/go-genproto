@@ -56,7 +56,7 @@ const (
 	// The campaign budget is associated with at least one campaign, and so the
 	// campaign budget cannot be removed.
 	CampaignBudgetErrorEnum_CAMPAIGN_BUDGET_IN_USE CampaignBudgetErrorEnum_CampaignBudgetError = 3
-	// Customer is not whitelisted for this campaign budget period.
+	// Customer is not on the allow-list for this campaign budget period.
 	CampaignBudgetErrorEnum_CAMPAIGN_BUDGET_PERIOD_NOT_AVAILABLE CampaignBudgetErrorEnum_CampaignBudgetError = 4
 	// This field is not mutable on implicitly shared campaign budgets
 	CampaignBudgetErrorEnum_CANNOT_MODIFY_FIELD_OF_IMPLICITLY_SHARED_CAMPAIGN_BUDGET CampaignBudgetErrorEnum_CampaignBudgetError = 6

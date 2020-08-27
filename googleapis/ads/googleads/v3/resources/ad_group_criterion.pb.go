@@ -60,6 +60,15 @@ type AdGroupCriterion struct {
 	// This field is ignored for mutates.
 	CriterionId *wrapperspb.Int64Value `protobuf:"bytes,26,opt,name=criterion_id,json=criterionId,proto3" json:"criterion_id,omitempty"`
 	// The status of the criterion.
+	//
+	// This is the status of the ad group criterion entity, set by the client.
+	// Note: UI reports may incorporate additional information that affects
+	// whether a criterion is eligible to run. In some cases a criterion that's
+	// REMOVED in the API can still show as enabled in the UI.
+	// For example, campaigns by default show to users of all age ranges unless
+	// excluded. The UI will show each age range as "enabled", since they're
+	// eligible to see the ads; but AdGroupCriterion.status will show "removed",
+	// since no positive criterion was added.
 	Status enums.AdGroupCriterionStatusEnum_AdGroupCriterionStatus `protobuf:"varint,3,opt,name=status,proto3,enum=google.ads.googleads.v3.enums.AdGroupCriterionStatusEnum_AdGroupCriterionStatus" json:"status,omitempty"`
 	// Output only. Information regarding the quality of the criterion.
 	QualityInfo *AdGroupCriterion_QualityInfo `protobuf:"bytes,4,opt,name=quality_info,json=qualityInfo,proto3" json:"quality_info,omitempty"`

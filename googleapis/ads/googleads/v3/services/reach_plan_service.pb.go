@@ -48,7 +48,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Request message for [ReachForecastService.ListPlannableLocations][]
+// Request message for [ReachPlanService.ListPlannableLocations][google.ads.googleads.v3.services.ReachPlanService.ListPlannableLocations].
 type ListPlannableLocationsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -447,7 +447,7 @@ func (x *PlannableTargeting) GetNetworks() []enums.ReachPlanNetworkEnum_ReachPla
 	return nil
 }
 
-// Request message for [ReachForecastService.GenerateProductMixIdeas][].
+// Request message for [ReachPlanService.GenerateProductMixIdeas][google.ads.googleads.v3.services.ReachPlanService.GenerateProductMixIdeas].
 type GenerateProductMixIdeasRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -755,7 +755,10 @@ type GenerateReachForecastRequest struct {
 	// This is equivalent to the frequency cap exposed in Google Ads when creating
 	// a campaign, it represents the maximum number of times an ad can be shown to
 	// the same user.
-	// If not specified, no cap is applied.
+	// If not specified no cap is applied.
+	//
+	// This field is deprecated in v4 and will eventually be removed.
+	// Please use cookie_frequency_cap_setting instead.
 	CookieFrequencyCap *wrapperspb.Int32Value `protobuf:"bytes,4,opt,name=cookie_frequency_cap,json=cookieFrequencyCap,proto3" json:"cookie_frequency_cap,omitempty"`
 	// Desired minimum effective frequency (the number of times a person was
 	// exposed to the ad) for the reported reach metrics [1-10].

@@ -51,7 +51,7 @@ const (
 const _ = proto.ProtoPackageIsVersion4
 
 // Request message for
-// [OfflineUserDataJobService.CreateOfflineUserDataJobRequest][]
+// [OfflineUserDataJobService.CreateOfflineUserDataJob][google.ads.googleads.v3.services.OfflineUserDataJobService.CreateOfflineUserDataJob].
 type CreateOfflineUserDataJobRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -110,7 +110,7 @@ func (x *CreateOfflineUserDataJobRequest) GetJob() *resources.OfflineUserDataJob
 }
 
 // Response message for
-// [OfflineUserDataJobService.CreateOfflineUserDataJobResponse][]
+// [OfflineUserDataJobService.CreateOfflineUserDataJob][google.ads.googleads.v3.services.OfflineUserDataJobService.CreateOfflineUserDataJob].
 type CreateOfflineUserDataJobResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -159,7 +159,7 @@ func (x *CreateOfflineUserDataJobResponse) GetResourceName() string {
 	return ""
 }
 
-// Request message for [OfflineUserDataJobService.GetOfflineUserDataJob][google.ads.googleads.v3.services.OfflineUserDataJobService.GetOfflineUserDataJob]
+// Request message for [OfflineUserDataJobService.GetOfflineUserDataJob][google.ads.googleads.v3.services.OfflineUserDataJobService.GetOfflineUserDataJob].
 type GetOfflineUserDataJobRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -208,7 +208,7 @@ func (x *GetOfflineUserDataJobRequest) GetResourceName() string {
 	return ""
 }
 
-// Request message for [OfflineUserDataJobService.RunOfflineUserDataJob][google.ads.googleads.v3.services.OfflineUserDataJobService.RunOfflineUserDataJob]
+// Request message for [OfflineUserDataJobService.RunOfflineUserDataJob][google.ads.googleads.v3.services.OfflineUserDataJobService.RunOfflineUserDataJob].
 type RunOfflineUserDataJobRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -258,7 +258,7 @@ func (x *RunOfflineUserDataJobRequest) GetResourceName() string {
 }
 
 // Request message for
-// [OfflineUserDataJobService.AddOfflineUserDataJobOperations][google.ads.googleads.v3.services.OfflineUserDataJobService.AddOfflineUserDataJobOperations]
+// [OfflineUserDataJobService.AddOfflineUserDataJobOperations][google.ads.googleads.v3.services.OfflineUserDataJobService.AddOfflineUserDataJobOperations].
 type AddOfflineUserDataJobOperationsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -429,7 +429,7 @@ func (*OfflineUserDataJobOperation_Remove) isOfflineUserDataJobOperation_Operati
 func (*OfflineUserDataJobOperation_RemoveAll) isOfflineUserDataJobOperation_Operation() {}
 
 // Response message for
-// [OfflineUserDataJobService.AddOfflineUserDataJobOperations][google.ads.googleads.v3.services.OfflineUserDataJobService.AddOfflineUserDataJobOperations]
+// [OfflineUserDataJobService.AddOfflineUserDataJobOperations][google.ads.googleads.v3.services.OfflineUserDataJobService.AddOfflineUserDataJobOperations].
 type AddOfflineUserDataJobOperationsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

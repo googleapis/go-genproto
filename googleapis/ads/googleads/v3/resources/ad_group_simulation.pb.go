@@ -51,11 +51,12 @@ const _ = proto.ProtoPackageIsVersion4
 // 1. SEARCH - CPC_BID - DEFAULT
 // 2. SEARCH - CPC_BID - UNIFORM
 // 3. SEARCH - TARGET_CPA - UNIFORM
-// 4. DISPLAY - CPC_BID - DEFAULT
-// 5. DISPLAY - CPC_BID - UNIFORM
-// 6. DISPLAY - TARGET_CPA - UNIFORM
-// 7. VIDEO - CPV_BID - DEFAULT
-// 8. VIDEO - CPV_BID - UNIFORM
+// 4. SEARCH - TARGET_ROAS - UNIFORM
+// 5. DISPLAY - CPC_BID - DEFAULT
+// 6. DISPLAY - CPC_BID - UNIFORM
+// 7. DISPLAY - TARGET_CPA - UNIFORM
+// 8. VIDEO - CPV_BID - DEFAULT
+// 9. VIDEO - CPV_BID - UNIFORM
 type AdGroupSimulation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

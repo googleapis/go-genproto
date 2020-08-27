@@ -53,7 +53,7 @@ const (
 	OfflineUserDataJobErrorEnum_INVALID_USER_LIST_ID OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 3
 	// Type of the user list is not applicable for the job.
 	OfflineUserDataJobErrorEnum_INVALID_USER_LIST_TYPE OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 4
-	// Customer is not whitelisted for using user ID in upload data.
+	// Customer is not on the allow-list for using user ID in upload data.
 	OfflineUserDataJobErrorEnum_NOT_WHITELISTED_FOR_USER_ID OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 5
 	// Upload data is not compatible with the upload key type of the associated
 	// user list.
@@ -64,9 +64,9 @@ const (
 	OfflineUserDataJobErrorEnum_INVALID_MOBILE_ID_FORMAT OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 8
 	// Request is exceeding the maximum number of user identifiers allowed.
 	OfflineUserDataJobErrorEnum_TOO_MANY_USER_IDENTIFIERS OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 9
-	// Customer is not whitelisted for store sales direct data.
+	// Customer is not on the allow-list for store sales direct data.
 	OfflineUserDataJobErrorEnum_NOT_WHITELISTED_FOR_STORE_SALES_DIRECT OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 10
-	// Customer is not whitelisted for unified store sales data.
+	// Customer is not on the allow-list for unified store sales data.
 	OfflineUserDataJobErrorEnum_NOT_WHITELISTED_FOR_UNIFIED_STORE_SALES OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 28
 	// The partner ID in store sales direct metadata is invalid.
 	OfflineUserDataJobErrorEnum_INVALID_PARTNER_ID OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 11

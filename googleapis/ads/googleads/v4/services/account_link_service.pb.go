@@ -612,6 +612,9 @@ type AccountLinkServiceClient interface {
 	// Returns the account link in full detail.
 	GetAccountLink(ctx context.Context, in *GetAccountLinkRequest, opts ...grpc.CallOption) (*resources.AccountLink, error)
 	// Creates or removes an account link.
+	// From V5, create is not supported through
+	// AccountLinkService.MutateAccountLink. Please use
+	// AccountLinkService.CreateAccountLink instead.
 	MutateAccountLink(ctx context.Context, in *MutateAccountLinkRequest, opts ...grpc.CallOption) (*MutateAccountLinkResponse, error)
 }
 
@@ -646,6 +649,9 @@ type AccountLinkServiceServer interface {
 	// Returns the account link in full detail.
 	GetAccountLink(context.Context, *GetAccountLinkRequest) (*resources.AccountLink, error)
 	// Creates or removes an account link.
+	// From V5, create is not supported through
+	// AccountLinkService.MutateAccountLink. Please use
+	// AccountLinkService.CreateAccountLink instead.
 	MutateAccountLink(context.Context, *MutateAccountLinkRequest) (*MutateAccountLinkResponse, error)
 }
 

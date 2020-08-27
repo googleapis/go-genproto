@@ -60,7 +60,7 @@ type CustomerClientLink struct {
 	// This is the status of the link between client and manager.
 	Status enums.ManagerLinkStatusEnum_ManagerLinkStatus `protobuf:"varint,5,opt,name=status,proto3,enum=google.ads.googleads.v2.enums.ManagerLinkStatusEnum_ManagerLinkStatus" json:"status,omitempty"`
 	// The visibility of the link. Users can choose whether or not to see hidden
-	// links in the AdWords UI.
+	// links in the Google Ads UI.
 	// Default value is false
 	Hidden *wrapperspb.BoolValue `protobuf:"bytes,6,opt,name=hidden,proto3" json:"hidden,omitempty"`
 }

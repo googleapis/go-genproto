@@ -1955,7 +1955,7 @@ type ErrorDetails struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The error code that should have been returned, but wasn't. This is used
-	// when the error code is InternalError.ERROR_CODE_NOT_PUBLISHED.
+	// when the error code is not published in the client specified version.
 	UnpublishedErrorCode string `protobuf:"bytes,1,opt,name=unpublished_error_code,json=unpublishedErrorCode,proto3" json:"unpublished_error_code,omitempty"`
 	// Describes an ad policy violation.
 	PolicyViolationDetails *PolicyViolationDetails `protobuf:"bytes,2,opt,name=policy_violation_details,json=policyViolationDetails,proto3" json:"policy_violation_details,omitempty"`

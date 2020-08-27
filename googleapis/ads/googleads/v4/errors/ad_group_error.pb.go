@@ -76,7 +76,8 @@ const (
 	// Ad groups of AdGroupType.SEARCH_DYNAMIC_ADS can only be added to
 	// campaigns that have DynamicSearchAdsSetting attached.
 	AdGroupErrorEnum_CANNOT_ADD_ADGROUP_OF_TYPE_DSA_TO_CAMPAIGN_WITHOUT_DSA_SETTING AdGroupErrorEnum_AdGroupError = 14
-	// Promoted hotels ad groups are only available to whitelisted customers.
+	// Promoted hotels ad groups are only available to customers on the
+	// allow-list.
 	AdGroupErrorEnum_PROMOTED_HOTEL_AD_GROUPS_NOT_AVAILABLE_FOR_CUSTOMER AdGroupErrorEnum_AdGroupError = 15
 )
 

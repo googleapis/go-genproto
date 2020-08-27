@@ -98,8 +98,8 @@ const (
 	// Name of the user list is reserved for system generated lists and cannot
 	// be used.
 	UserListErrorEnum_USERLIST_NAME_IS_RESERVED_FOR_SYSTEM_LIST UserListErrorEnum_UserListError = 32
-	// Advertiser needs to be whitelisted to use remarketing lists created from
-	// advertiser uploaded data (e.g., Customer Match lists).
+	// Advertiser needs to be on the allow-list to use remarketing lists created
+	// from advertiser uploaded data (e.g., Customer Match lists).
 	UserListErrorEnum_ADVERTISER_NOT_WHITELISTED_FOR_USING_UPLOADED_DATA UserListErrorEnum_UserListError = 33
 	// The provided rule_type is not supported for the user list.
 	UserListErrorEnum_RULE_TYPE_IS_NOT_SUPPORTED UserListErrorEnum_UserListError = 34

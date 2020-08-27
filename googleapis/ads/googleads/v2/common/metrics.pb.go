@@ -75,10 +75,10 @@ type Metrics struct {
 	// All conversions from interactions (as oppose to view through conversions)
 	// divided by the number of ad interactions.
 	AllConversionsFromInteractionsRate *wrapperspb.DoubleValue `protobuf:"bytes,65,opt,name=all_conversions_from_interactions_rate,json=allConversionsFromInteractionsRate,proto3" json:"all_conversions_from_interactions_rate,omitempty"`
-	// The total value of all conversions.
+	// The value of all conversions.
 	AllConversionsValue *wrapperspb.DoubleValue `protobuf:"bytes,66,opt,name=all_conversions_value,json=allConversionsValue,proto3" json:"all_conversions_value,omitempty"`
-	// The total number of conversions. This only includes conversion actions
-	// which include_in_conversions_metric attribute is set to true.
+	// The total number of conversions. This includes all conversions regardless
+	// of the value of include_in_conversions_metric.
 	AllConversions *wrapperspb.DoubleValue `protobuf:"bytes,7,opt,name=all_conversions,json=allConversions,proto3" json:"all_conversions,omitempty"`
 	// The value of all conversions divided by the total cost of ad interactions
 	// (such as clicks for text ads or views for video ads).
@@ -184,21 +184,29 @@ type Metrics struct {
 	// Conversions from interactions divided by the number of ad interactions
 	// (such as clicks for text ads or views for video ads). This only includes
 	// conversion actions which include_in_conversions_metric attribute is set to
-	// true.
+	// true. If you use conversion-based bidding, your bid strategies will
+	// optimize for these conversions.
 	ConversionsFromInteractionsRate *wrapperspb.DoubleValue `protobuf:"bytes,69,opt,name=conversions_from_interactions_rate,json=conversionsFromInteractionsRate,proto3" json:"conversions_from_interactions_rate,omitempty"`
-	// The total value of conversions. This only includes conversion actions which
-	// include_in_conversions_metric attribute is set to true.
+	// The value of conversions. This only includes conversion actions which
+	// include_in_conversions_metric attribute is set to true. If you use
+	// conversion-based bidding, your bid strategies will optimize for these
+	// conversions.
 	ConversionsValue *wrapperspb.DoubleValue `protobuf:"bytes,70,opt,name=conversions_value,json=conversionsValue,proto3" json:"conversions_value,omitempty"`
 	// The value of conversions divided by the cost of ad interactions. This only
 	// includes conversion actions which include_in_conversions_metric attribute
-	// is set to true.
+	// is set to true. If you use conversion-based bidding, your bid strategies
+	// will optimize for these conversions.
 	ConversionsValuePerCost *wrapperspb.DoubleValue `protobuf:"bytes,71,opt,name=conversions_value_per_cost,json=conversionsValuePerCost,proto3" json:"conversions_value_per_cost,omitempty"`
 	// The value of conversions from interactions divided by the number of ad
 	// interactions. This only includes conversion actions which
-	// include_in_conversions_metric attribute is set to true.
+	// include_in_conversions_metric attribute is set to true. If you use
+	// conversion-based bidding, your bid strategies will optimize for these
+	// conversions.
 	ConversionsFromInteractionsValuePerInteraction *wrapperspb.DoubleValue `protobuf:"bytes,72,opt,name=conversions_from_interactions_value_per_interaction,json=conversionsFromInteractionsValuePerInteraction,proto3" json:"conversions_from_interactions_value_per_interaction,omitempty"`
 	// The number of conversions. This only includes conversion actions which
-	// include_in_conversions_metric attribute is set to true.
+	// include_in_conversions_metric attribute is set to true. If you use
+	// conversion-based bidding, your bid strategies will optimize for these
+	// conversions.
 	Conversions *wrapperspb.DoubleValue `protobuf:"bytes,25,opt,name=conversions,proto3" json:"conversions,omitempty"`
 	// The sum of your cost-per-click (CPC) and cost-per-thousand impressions
 	// (CPM) costs during this period.
@@ -207,11 +215,14 @@ type Metrics struct {
 	CostPerAllConversions *wrapperspb.DoubleValue `protobuf:"bytes,68,opt,name=cost_per_all_conversions,json=costPerAllConversions,proto3" json:"cost_per_all_conversions,omitempty"`
 	// The cost of ad interactions divided by conversions. This only includes
 	// conversion actions which include_in_conversions_metric attribute is set to
-	// true.
+	// true. If you use conversion-based bidding, your bid strategies will
+	// optimize for these conversions.
 	CostPerConversion *wrapperspb.DoubleValue `protobuf:"bytes,28,opt,name=cost_per_conversion,json=costPerConversion,proto3" json:"cost_per_conversion,omitempty"`
 	// The cost of ad interactions divided by current model attributed
 	// conversions. This only includes conversion actions which
-	// include_in_conversions_metric attribute is set to true.
+	// include_in_conversions_metric attribute is set to true. If you use
+	// conversion-based bidding, your bid strategies will optimize for these
+	// conversions.
 	CostPerCurrentModelAttributedConversion *wrapperspb.DoubleValue `protobuf:"bytes,106,opt,name=cost_per_current_model_attributed_conversion,json=costPerCurrentModelAttributedConversion,proto3" json:"cost_per_current_model_attributed_conversion,omitempty"`
 	// Conversions from when a customer clicks on a Google Ads ad on one device,
 	// then converts on a different device or browser.
@@ -222,24 +233,33 @@ type Metrics struct {
 	Ctr *wrapperspb.DoubleValue `protobuf:"bytes,30,opt,name=ctr,proto3" json:"ctr,omitempty"`
 	// Shows how your historic conversions data would look under the attribution
 	// model you've currently selected. This only includes conversion actions
-	// which include_in_conversions_metric attribute is set to true.
+	// which include_in_conversions_metric attribute is set to true. If you use
+	// conversion-based bidding, your bid strategies will optimize for these
+	// conversions.
 	CurrentModelAttributedConversions *wrapperspb.DoubleValue `protobuf:"bytes,101,opt,name=current_model_attributed_conversions,json=currentModelAttributedConversions,proto3" json:"current_model_attributed_conversions,omitempty"`
 	// Current model attributed conversions from interactions divided by the
 	// number of ad interactions (such as clicks for text ads or views for video
 	// ads). This only includes conversion actions which
-	// include_in_conversions_metric attribute is set to true.
+	// include_in_conversions_metric attribute is set to true. If you use
+	// conversion-based bidding, your bid strategies will optimize for these
+	// conversions.
 	CurrentModelAttributedConversionsFromInteractionsRate *wrapperspb.DoubleValue `protobuf:"bytes,102,opt,name=current_model_attributed_conversions_from_interactions_rate,json=currentModelAttributedConversionsFromInteractionsRate,proto3" json:"current_model_attributed_conversions_from_interactions_rate,omitempty"`
 	// The value of current model attributed conversions from interactions divided
 	// by the number of ad interactions. This only includes conversion actions
-	// which include_in_conversions_metric attribute is set to true.
+	// which include_in_conversions_metric attribute is set to true. If you use
+	// conversion-based bidding, your bid strategies will optimize for these
+	// conversions.
 	CurrentModelAttributedConversionsFromInteractionsValuePerInteraction *wrapperspb.DoubleValue `protobuf:"bytes,103,opt,name=current_model_attributed_conversions_from_interactions_value_per_interaction,json=currentModelAttributedConversionsFromInteractionsValuePerInteraction,proto3" json:"current_model_attributed_conversions_from_interactions_value_per_interaction,omitempty"`
-	// The total value of current model attributed conversions. This only includes
+	// The value of current model attributed conversions. This only includes
 	// conversion actions which include_in_conversions_metric attribute is set to
-	// true.
+	// true. If you use conversion-based bidding, your bid strategies will
+	// optimize for these conversions.
 	CurrentModelAttributedConversionsValue *wrapperspb.DoubleValue `protobuf:"bytes,104,opt,name=current_model_attributed_conversions_value,json=currentModelAttributedConversionsValue,proto3" json:"current_model_attributed_conversions_value,omitempty"`
 	// The value of current model attributed conversions divided by the cost of ad
 	// interactions. This only includes conversion actions which
-	// include_in_conversions_metric attribute is set to true.
+	// include_in_conversions_metric attribute is set to true. If you use
+	// conversion-based bidding, your bid strategies will optimize for these
+	// conversions.
 	CurrentModelAttributedConversionsValuePerCost *wrapperspb.DoubleValue `protobuf:"bytes,105,opt,name=current_model_attributed_conversions_value_per_cost,json=currentModelAttributedConversionsValuePerCost,proto3" json:"current_model_attributed_conversions_value_per_cost,omitempty"`
 	// How often people engage with your ad after it's shown to them. This is the
 	// number of ad expansions divided by the number of times your ad is shown.
@@ -410,11 +430,14 @@ type Metrics struct {
 	ValuePerAllConversions *wrapperspb.DoubleValue `protobuf:"bytes,52,opt,name=value_per_all_conversions,json=valuePerAllConversions,proto3" json:"value_per_all_conversions,omitempty"`
 	// The value of conversions divided by the number of conversions. This only
 	// includes conversion actions which include_in_conversions_metric attribute
-	// is set to true.
+	// is set to true. If you use conversion-based bidding, your bid strategies
+	// will optimize for these conversions.
 	ValuePerConversion *wrapperspb.DoubleValue `protobuf:"bytes,53,opt,name=value_per_conversion,json=valuePerConversion,proto3" json:"value_per_conversion,omitempty"`
 	// The value of current model attributed conversions divided by the number of
 	// the conversions. This only includes conversion actions which
-	// include_in_conversions_metric attribute is set to true.
+	// include_in_conversions_metric attribute is set to true. If you use
+	// conversion-based bidding, your bid strategies will optimize for these
+	// conversions.
 	ValuePerCurrentModelAttributedConversion *wrapperspb.DoubleValue `protobuf:"bytes,94,opt,name=value_per_current_model_attributed_conversion,json=valuePerCurrentModelAttributedConversion,proto3" json:"value_per_current_model_attributed_conversion,omitempty"`
 	// Percentage of impressions where the viewer watched all of your video.
 	VideoQuartile_100Rate *wrapperspb.DoubleValue `protobuf:"bytes,54,opt,name=video_quartile_100_rate,json=videoQuartile100Rate,proto3" json:"video_quartile_100_rate,omitempty"`

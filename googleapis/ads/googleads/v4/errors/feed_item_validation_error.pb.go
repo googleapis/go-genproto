@@ -69,7 +69,7 @@ const (
 	FeedItemValidationErrorEnum_VALUE_OUT_OF_RANGE FeedItemValidationErrorEnum_FeedItemValidationError = 10
 	// Call tracking is not supported in the selected country.
 	FeedItemValidationErrorEnum_CALLTRACKING_NOT_SUPPORTED_FOR_COUNTRY FeedItemValidationErrorEnum_FeedItemValidationError = 11
-	// Customer is not whitelisted for call tracking.
+	// Customer is not on the allow-list for call tracking.
 	FeedItemValidationErrorEnum_CUSTOMER_NOT_WHITELISTED_FOR_CALLTRACKING FeedItemValidationErrorEnum_FeedItemValidationError = 12
 	// Country code is invalid.
 	FeedItemValidationErrorEnum_INVALID_COUNTRY_CODE FeedItemValidationErrorEnum_FeedItemValidationError = 13

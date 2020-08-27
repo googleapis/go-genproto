@@ -111,7 +111,8 @@ const (
 	ExtensionSettingErrorEnum_INVALID_COUNTRY_CODE ExtensionSettingErrorEnum_ExtensionSettingError = 27
 	// Call conversion type id provided for a call extension is invalid.
 	ExtensionSettingErrorEnum_INVALID_CALL_CONVERSION_TYPE_ID ExtensionSettingErrorEnum_ExtensionSettingError = 28
-	// For a call extension, the customer is not whitelisted for call tracking.
+	// For a call extension, the customer is not on the allow-list for call
+	// tracking.
 	ExtensionSettingErrorEnum_CUSTOMER_NOT_WHITELISTED_FOR_CALLTRACKING ExtensionSettingErrorEnum_ExtensionSettingError = 29
 	// Call tracking is not supported for the given country for a call
 	// extension.
@@ -122,7 +123,7 @@ const (
 	ExtensionSettingErrorEnum_QUOTES_IN_REVIEW_EXTENSION_SNIPPET ExtensionSettingErrorEnum_ExtensionSettingError = 32
 	// Hyphen character present in the review text for a review extension.
 	ExtensionSettingErrorEnum_HYPHENS_IN_REVIEW_EXTENSION_SNIPPET ExtensionSettingErrorEnum_ExtensionSettingError = 33
-	// A blacklisted review source name or url was provided for a review
+	// A blocked review source name or url was provided for a review
 	// extension.
 	ExtensionSettingErrorEnum_REVIEW_EXTENSION_SOURCE_NOT_ELIGIBLE ExtensionSettingErrorEnum_ExtensionSettingError = 34
 	// Review source name should not be found in the review text.
