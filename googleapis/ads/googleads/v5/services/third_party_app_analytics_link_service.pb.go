@@ -312,7 +312,9 @@ var file_google_ads_googleads_v5_services_third_party_app_analytics_link_service
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_google_ads_googleads_v5_services_third_party_app_analytics_link_service_proto_init() }
+func init() {
+	file_google_ads_googleads_v5_services_third_party_app_analytics_link_service_proto_init()
+}
 func file_google_ads_googleads_v5_services_third_party_app_analytics_link_service_proto_init() {
 	if File_google_ads_googleads_v5_services_third_party_app_analytics_link_service_proto != nil {
 		return

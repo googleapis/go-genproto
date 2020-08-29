@@ -2923,7 +2923,8 @@ func (*MutateOperationResponse_CustomerFeedResult) isMutateOperationResponse_Res
 
 func (*MutateOperationResponse_CustomerLabelResult) isMutateOperationResponse_Response() {}
 
-func (*MutateOperationResponse_CustomerNegativeCriterionResult) isMutateOperationResponse_Response() {}
+func (*MutateOperationResponse_CustomerNegativeCriterionResult) isMutateOperationResponse_Response() {
+}
 
 func (*MutateOperationResponse_CustomerResult) isMutateOperationResponse_Response() {}
 
@@ -2941,7 +2942,8 @@ func (*MutateOperationResponse_KeywordPlanAdGroupResult) isMutateOperationRespon
 
 func (*MutateOperationResponse_KeywordPlanCampaignResult) isMutateOperationResponse_Response() {}
 
-func (*MutateOperationResponse_KeywordPlanAdGroupKeywordResult) isMutateOperationResponse_Response() {}
+func (*MutateOperationResponse_KeywordPlanAdGroupKeywordResult) isMutateOperationResponse_Response() {
+}
 
 func (*MutateOperationResponse_KeywordPlanCampaignKeywordResult) isMutateOperationResponse_Response() {
 }

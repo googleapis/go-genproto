@@ -711,9 +711,11 @@ type ServiceAccountDelegationInfo_ThirdPartyPrincipal_ struct {
 	ThirdPartyPrincipal *ServiceAccountDelegationInfo_ThirdPartyPrincipal `protobuf:"bytes,2,opt,name=third_party_principal,json=thirdPartyPrincipal,proto3,oneof"`
 }
 
-func (*ServiceAccountDelegationInfo_FirstPartyPrincipal_) isServiceAccountDelegationInfo_Authority() {}
+func (*ServiceAccountDelegationInfo_FirstPartyPrincipal_) isServiceAccountDelegationInfo_Authority() {
+}
 
-func (*ServiceAccountDelegationInfo_ThirdPartyPrincipal_) isServiceAccountDelegationInfo_Authority() {}
+func (*ServiceAccountDelegationInfo_ThirdPartyPrincipal_) isServiceAccountDelegationInfo_Authority() {
+}
 
 // First party identity principal.
 type ServiceAccountDelegationInfo_FirstPartyPrincipal struct {
