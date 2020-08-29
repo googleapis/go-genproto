@@ -3627,7 +3627,8 @@ type StreamingAnnotateVideoRequest_InputContent struct {
 	InputContent []byte `protobuf:"bytes,2,opt,name=input_content,json=inputContent,proto3,oneof"`
 }
 
-func (*StreamingAnnotateVideoRequest_VideoConfig) isStreamingAnnotateVideoRequest_StreamingRequest() {}
+func (*StreamingAnnotateVideoRequest_VideoConfig) isStreamingAnnotateVideoRequest_StreamingRequest() {
+}
 
 func (*StreamingAnnotateVideoRequest_InputContent) isStreamingAnnotateVideoRequest_StreamingRequest() {
 }
@@ -3801,7 +3802,8 @@ func (*StreamingVideoConfig_ShotChangeDetectionConfig) isStreamingVideoConfig_St
 
 func (*StreamingVideoConfig_LabelDetectionConfig) isStreamingVideoConfig_StreamingConfig() {}
 
-func (*StreamingVideoConfig_ExplicitContentDetectionConfig) isStreamingVideoConfig_StreamingConfig() {}
+func (*StreamingVideoConfig_ExplicitContentDetectionConfig) isStreamingVideoConfig_StreamingConfig() {
+}
 
 func (*StreamingVideoConfig_ObjectTrackingConfig) isStreamingVideoConfig_StreamingConfig() {}
 

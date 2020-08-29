@@ -1291,7 +1291,8 @@ func (*AnnotatedDatasetMetadata_ImageClassificationConfig) isAnnotatedDatasetMet
 func (*AnnotatedDatasetMetadata_BoundingPolyConfig) isAnnotatedDatasetMetadata_AnnotationRequestConfig() {
 }
 
-func (*AnnotatedDatasetMetadata_PolylineConfig) isAnnotatedDatasetMetadata_AnnotationRequestConfig() {}
+func (*AnnotatedDatasetMetadata_PolylineConfig) isAnnotatedDatasetMetadata_AnnotationRequestConfig() {
+}
 
 func (*AnnotatedDatasetMetadata_SegmentationConfig) isAnnotatedDatasetMetadata_AnnotationRequestConfig() {
 }

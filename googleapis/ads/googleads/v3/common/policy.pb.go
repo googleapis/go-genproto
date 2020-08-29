@@ -531,7 +531,8 @@ func (*PolicyTopicConstraint_ResellerConstraint_) isPolicyTopicConstraint_Value(
 
 func (*PolicyTopicConstraint_CertificateMissingInCountryList) isPolicyTopicConstraint_Value() {}
 
-func (*PolicyTopicConstraint_CertificateDomainMismatchInCountryList) isPolicyTopicConstraint_Value() {}
+func (*PolicyTopicConstraint_CertificateDomainMismatchInCountryList) isPolicyTopicConstraint_Value() {
+}
 
 // A list of fragments of text that violated a policy.
 type PolicyTopicEvidence_TextList struct {

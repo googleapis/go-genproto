@@ -4579,7 +4579,8 @@ type AnalyzeDataSourceRiskDetails_DeltaPresenceEstimationResult_ struct {
 
 func (*AnalyzeDataSourceRiskDetails_NumericalStatsResult_) isAnalyzeDataSourceRiskDetails_Result() {}
 
-func (*AnalyzeDataSourceRiskDetails_CategoricalStatsResult_) isAnalyzeDataSourceRiskDetails_Result() {}
+func (*AnalyzeDataSourceRiskDetails_CategoricalStatsResult_) isAnalyzeDataSourceRiskDetails_Result() {
+}
 
 func (*AnalyzeDataSourceRiskDetails_KAnonymityResult_) isAnalyzeDataSourceRiskDetails_Result() {}
 
@@ -5366,13 +5367,15 @@ func (*PrimitiveTransformation_RedactConfig) isPrimitiveTransformation_Transform
 
 func (*PrimitiveTransformation_CharacterMaskConfig) isPrimitiveTransformation_Transformation() {}
 
-func (*PrimitiveTransformation_CryptoReplaceFfxFpeConfig) isPrimitiveTransformation_Transformation() {}
+func (*PrimitiveTransformation_CryptoReplaceFfxFpeConfig) isPrimitiveTransformation_Transformation() {
+}
 
 func (*PrimitiveTransformation_FixedSizeBucketingConfig) isPrimitiveTransformation_Transformation() {}
 
 func (*PrimitiveTransformation_BucketingConfig) isPrimitiveTransformation_Transformation() {}
 
-func (*PrimitiveTransformation_ReplaceWithInfoTypeConfig) isPrimitiveTransformation_Transformation() {}
+func (*PrimitiveTransformation_ReplaceWithInfoTypeConfig) isPrimitiveTransformation_Transformation() {
+}
 
 func (*PrimitiveTransformation_TimePartConfig) isPrimitiveTransformation_Transformation() {}
 
@@ -5380,7 +5383,8 @@ func (*PrimitiveTransformation_CryptoHashConfig) isPrimitiveTransformation_Trans
 
 func (*PrimitiveTransformation_DateShiftConfig) isPrimitiveTransformation_Transformation() {}
 
-func (*PrimitiveTransformation_CryptoDeterministicConfig) isPrimitiveTransformation_Transformation() {}
+func (*PrimitiveTransformation_CryptoDeterministicConfig) isPrimitiveTransformation_Transformation() {
+}
 
 // For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
 // portion of the value.
@@ -12999,7 +13003,8 @@ func (x *AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationQuasiId
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationQuasiIdValues) ProtoMessage() {}
+func (*AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationQuasiIdValues) ProtoMessage() {
+}
 
 func (x *AnalyzeDataSourceRiskDetails_KMapEstimationResult_KMapEstimationQuasiIdValues) ProtoReflect() protoreflect.Message {
 	mi := &file_google_privacy_dlp_v2_dlp_proto_msgTypes[152]

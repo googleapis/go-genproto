@@ -200,7 +200,9 @@ var file_google_ads_googleads_v1_enums_affiliate_location_feed_relationship_type
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_google_ads_googleads_v1_enums_affiliate_location_feed_relationship_type_proto_init() }
+func init() {
+	file_google_ads_googleads_v1_enums_affiliate_location_feed_relationship_type_proto_init()
+}
 func file_google_ads_googleads_v1_enums_affiliate_location_feed_relationship_type_proto_init() {
 	if File_google_ads_googleads_v1_enums_affiliate_location_feed_relationship_type_proto != nil {
 		return

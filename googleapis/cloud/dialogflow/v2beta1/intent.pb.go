@@ -4029,7 +4029,8 @@ func (*Intent_Message_RbmSuggestedAction_Dial) isIntent_Message_RbmSuggestedActi
 
 func (*Intent_Message_RbmSuggestedAction_OpenUrl) isIntent_Message_RbmSuggestedAction_Action() {}
 
-func (*Intent_Message_RbmSuggestedAction_ShareLocation) isIntent_Message_RbmSuggestedAction_Action() {}
+func (*Intent_Message_RbmSuggestedAction_ShareLocation) isIntent_Message_RbmSuggestedAction_Action() {
+}
 
 // The media content card for Actions on Google.
 type Intent_Message_MediaContent struct {

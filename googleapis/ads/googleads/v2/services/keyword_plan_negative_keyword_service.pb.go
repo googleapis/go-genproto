@@ -290,11 +290,14 @@ type KeywordPlanNegativeKeywordOperation_Remove struct {
 	Remove string `protobuf:"bytes,3,opt,name=remove,proto3,oneof"`
 }
 
-func (*KeywordPlanNegativeKeywordOperation_Create) isKeywordPlanNegativeKeywordOperation_Operation() {}
+func (*KeywordPlanNegativeKeywordOperation_Create) isKeywordPlanNegativeKeywordOperation_Operation() {
+}
 
-func (*KeywordPlanNegativeKeywordOperation_Update) isKeywordPlanNegativeKeywordOperation_Operation() {}
+func (*KeywordPlanNegativeKeywordOperation_Update) isKeywordPlanNegativeKeywordOperation_Operation() {
+}
 
-func (*KeywordPlanNegativeKeywordOperation_Remove) isKeywordPlanNegativeKeywordOperation_Operation() {}
+func (*KeywordPlanNegativeKeywordOperation_Remove) isKeywordPlanNegativeKeywordOperation_Operation() {
+}
 
 // Response message for a Keyword Plan negative keyword mutate.
 type MutateKeywordPlanNegativeKeywordsResponse struct {

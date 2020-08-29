@@ -290,11 +290,14 @@ type KeywordPlanCampaignKeywordOperation_Remove struct {
 	Remove string `protobuf:"bytes,3,opt,name=remove,proto3,oneof"`
 }
 
-func (*KeywordPlanCampaignKeywordOperation_Create) isKeywordPlanCampaignKeywordOperation_Operation() {}
+func (*KeywordPlanCampaignKeywordOperation_Create) isKeywordPlanCampaignKeywordOperation_Operation() {
+}
 
-func (*KeywordPlanCampaignKeywordOperation_Update) isKeywordPlanCampaignKeywordOperation_Operation() {}
+func (*KeywordPlanCampaignKeywordOperation_Update) isKeywordPlanCampaignKeywordOperation_Operation() {
+}
 
-func (*KeywordPlanCampaignKeywordOperation_Remove) isKeywordPlanCampaignKeywordOperation_Operation() {}
+func (*KeywordPlanCampaignKeywordOperation_Remove) isKeywordPlanCampaignKeywordOperation_Operation() {
+}
 
 // Response message for a Keyword Plan campaign keyword mutate.
 type MutateKeywordPlanCampaignKeywordsResponse struct {
