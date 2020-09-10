@@ -413,6 +413,8 @@ type SubscribeRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// The type of request this is.
+	//
 	// Types that are assignable to Request:
 	//	*SubscribeRequest_Initial
 	//	*SubscribeRequest_Seek
@@ -565,6 +567,8 @@ type SubscribeResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// The type of response this is.
+	//
 	// Types that are assignable to Response:
 	//	*SubscribeResponse_Initial
 	//	*SubscribeResponse_Seek
@@ -825,6 +829,8 @@ type PartitionAssignmentRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// The type of request this is.
+	//
 	// Types that are assignable to Request:
 	//	*PartitionAssignmentRequest_Initial
 	//	*PartitionAssignmentRequest_Ack
