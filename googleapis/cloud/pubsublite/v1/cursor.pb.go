@@ -252,6 +252,8 @@ type StreamingCommitCursorRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// The type of request this is.
+	//
 	// Types that are assignable to Request:
 	//	*StreamingCommitCursorRequest_Initial
 	//	*StreamingCommitCursorRequest_Commit
@@ -335,6 +337,8 @@ type StreamingCommitCursorResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// The type of request this is.
+	//
 	// Types that are assignable to Request:
 	//	*StreamingCommitCursorResponse_Initial
 	//	*StreamingCommitCursorResponse_Commit

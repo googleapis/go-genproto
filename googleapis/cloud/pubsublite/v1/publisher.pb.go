@@ -150,6 +150,7 @@ type MessagePublishRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// The messages to publish.
 	Messages []*PubSubMessage `protobuf:"bytes,1,rep,name=messages,proto3" json:"messages,omitempty"`
 }
 
@@ -248,6 +249,8 @@ type PublishRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// The type of request this is.
+	//
 	// Types that are assignable to RequestType:
 	//	*PublishRequest_InitialRequest
 	//	*PublishRequest_MessagePublishRequest
@@ -331,6 +334,8 @@ type PublishResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// The type of response this is.
+	//
 	// Types that are assignable to ResponseType:
 	//	*PublishResponse_InitialResponse
 	//	*PublishResponse_MessageResponse
