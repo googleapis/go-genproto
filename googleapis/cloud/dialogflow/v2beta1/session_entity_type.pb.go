@@ -122,14 +122,21 @@ type SessionEntityType struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The unique identifier of this session entity type. Format:
-	// `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
-	// Display Name>`, or
-	// `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
-	// ID>/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`.
-	// If `Environment ID` is not specified, we assume default 'draft'
-	// environment. If `User ID` is not specified, we assume default '-' user.
+	// Required. The unique identifier of this session entity type. Supported
+	// formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity
+	//   Type Display Name>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>/entityTypes/<Entity Type Display Name>`
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/environments/
+	//   <Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>/entityTypes/<Entity Type Display Name>`
 	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified, we assume default 'draft' environment.
+	// If `User ID` is not specified, we assume default '-' user.
 	// `<Entity Type Display Name>` must be the display name of an existing entity
 	// type in the same agent that will be overridden or supplemented.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -201,11 +208,19 @@ type ListSessionEntityTypesRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The session to list all session entity types from.
-	// Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
-	// `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/
-	// sessions/<Session ID>`.
-	// If `Environment ID` is not specified, we assume default 'draft'
-	// environment. If `User ID` is not specified, we assume default '-' user.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>,
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>`,
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>`,
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>`,
+	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified, we assume default 'draft' environment.
+	// If `User ID` is not specified, we assume default '-' user.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The maximum number of items to return in a single page. By
 	// default 100 and at most 1000.
@@ -333,12 +348,20 @@ type GetSessionEntityTypeRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the session entity type. Format:
-	// `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
-	// Display Name>` or `projects/<Project ID>/agent/environments/<Environment
-	// ID>/users/<User ID>/sessions/<Session ID>/entityTypes/<Entity Type Display
-	// Name>`. If `Environment ID` is not specified, we assume default 'draft'
-	// environment. If `User ID` is not specified, we assume default '-' user.
+	// Required. The name of the session entity type. Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity
+	//   Type Display Name>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>/entityTypes/<Entity Type Display Name>`
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/environments/
+	//   <Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>/entityTypes/<Entity Type Display Name>`
+	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified, we assume default 'draft' environment.
+	// If `User ID` is not specified, we assume default '-' user.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -388,11 +411,19 @@ type CreateSessionEntityTypeRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The session to create a session entity type for.
-	// Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
-	// `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/
-	// sessions/<Session ID>`. If `Environment ID` is not specified, we assume
-	// default 'draft' environment. If `User ID` is not specified, we assume
-	// default '-' user.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>,
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>`,
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>`,
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>`,
+	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified, we assume default 'draft' environment.
+	// If `User ID` is not specified, we assume default '-' user.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The session entity type to create.
 	SessionEntityType *SessionEntityType `protobuf:"bytes,2,opt,name=session_entity_type,json=sessionEntityType,proto3" json:"session_entity_type,omitempty"`
@@ -508,12 +539,21 @@ type DeleteSessionEntityTypeRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the entity type to delete. Format:
-	// `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
-	// Display Name>` or `projects/<Project ID>/agent/environments/<Environment
-	// ID>/users/<User ID>/sessions/<Session ID>/entityTypes/<Entity Type Display
-	// Name>`. If `Environment ID` is not specified, we assume default 'draft'
-	// environment. If `User ID` is not specified, we assume default '-' user.
+	// Required. The name of the entity type to delete.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity
+	//   Type Display Name>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>/entityTypes/<Entity Type Display Name>`
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/environments/
+	//   <Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>/entityTypes/<Entity Type Display Name>`
+	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified, we assume default 'draft' environment.
+	// If `User ID` is not specified, we assume default '-' user.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 

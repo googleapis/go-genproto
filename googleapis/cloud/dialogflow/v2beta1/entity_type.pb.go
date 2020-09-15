@@ -181,7 +181,10 @@ type EntityType struct {
 	// The unique identifier of the entity type.
 	// Required for [EntityTypes.UpdateEntityType][google.cloud.dialogflow.v2beta1.EntityTypes.UpdateEntityType] and
 	// [EntityTypes.BatchUpdateEntityTypes][google.cloud.dialogflow.v2beta1.EntityTypes.BatchUpdateEntityTypes] methods.
-	// Format: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/entityTypes/<Entity
+	//   Type ID>`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The name of the entity type.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
@@ -277,7 +280,9 @@ type ListEntityTypesRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The agent to list all entity types from.
-	// Format: `projects/<Project ID>/agent`.
+	// Supported formats:
+	// - `projects/<Project ID>/agent`
+	// - `projects/<Project ID>/locations/<Location ID>/agent`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The language used to access language-specific data.
 	// If not specified, the agent's default language is used.
@@ -419,7 +424,10 @@ type GetEntityTypeRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the entity type.
-	// Format: `projects/<Project ID>/agent/entityTypes/<EntityType ID>`.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/entityTypes/<Entity
+	//   Type ID>`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. The language used to access language-specific data.
 	// If not specified, the agent's default language is used.
@@ -482,7 +490,9 @@ type CreateEntityTypeRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The agent to create a entity type for.
-	// Format: `projects/<Project ID>/agent`.
+	// Supported formats:
+	// - `projects/<Project ID>/agent`
+	// - `projects/<Project ID>/locations/<Location ID>/agent`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The entity type to create.
 	EntityType *EntityType `protobuf:"bytes,2,opt,name=entity_type,json=entityType,proto3" json:"entity_type,omitempty"`
@@ -625,7 +635,10 @@ type DeleteEntityTypeRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the entity type to delete.
-	// Format: `projects/<Project ID>/agent/entityTypes/<EntityType ID>`.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/entityTypes/<Entity
+	//   Type ID>`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -675,7 +688,9 @@ type BatchUpdateEntityTypesRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the agent to update or create entity types in.
-	// Format: `projects/<Project ID>/agent`.
+	// Supported formats:
+	// - `projects/<Project ID>/agent`
+	// - `projects/<Project ID>/locations/<Location ID>/agent`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The source of the entity type batch.
 	//
@@ -850,8 +865,10 @@ type BatchDeleteEntityTypesRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the agent to delete all entities types for. Format:
-	// `projects/<Project ID>/agent`.
+	// Required. The name of the agent to delete all entities types for.
+	// Supported formats:
+	// - `projects/<Project ID>/agent`,
+	// - `projects/<Project ID>/locations/<Location ID>/agent`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The names entity types to delete. All names must point to the
 	// same agent as `parent`.
@@ -910,8 +927,11 @@ type BatchCreateEntitiesRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the entity type to create entities in. Format:
-	// `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
+	// Required. The name of the entity type to create entities in.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/entityTypes/<Entity
+	//   Type ID>`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The entities to create.
 	Entities []*EntityType_Entity `protobuf:"bytes,2,rep,name=entities,proto3" json:"entities,omitempty"`
@@ -983,7 +1003,10 @@ type BatchUpdateEntitiesRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the entity type to update or create entities in.
-	// Format: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/entityTypes/<Entity
+	//   Type ID>`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The entities to update or create.
 	Entities []*EntityType_Entity `protobuf:"bytes,2,rep,name=entities,proto3" json:"entities,omitempty"`
@@ -1063,8 +1086,11 @@ type BatchDeleteEntitiesRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the entity type to delete entries for. Format:
-	// `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
+	// Required. The name of the entity type to delete entries for.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/entityTypes/<Entity
+	//   Type ID>`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The reference `values` of the entities to delete. Note that
 	// these are not fully-qualified names, i.e. they don't start with

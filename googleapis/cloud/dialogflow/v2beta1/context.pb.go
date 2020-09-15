@@ -68,10 +68,16 @@ type Context struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The unique identifier of the context. Format:
-	// `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,
-	// or `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
-	// ID>/sessions/<Session ID>/contexts/<Context ID>`.
+	// Required. The unique identifier of the context. Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context
+	//   ID>`,
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>/contexts/<Context ID>`,
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>/contexts/<Context ID>`,
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>/contexts/<Context ID>`,
 	//
 	// The `Context ID` is always converted to lowercase, may only contain
 	// characters in a-zA-Z0-9_-% and may be at most 250 bytes long.
@@ -168,12 +174,19 @@ type ListContextsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The session to list all contexts from.
-	// Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
-	// `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
-	// ID>/sessions/<Session ID>`. If `Environment ID` is not specified, we assume
-	// default 'draft' environment. If `User ID` is not specified, we assume
-	// default '-' user.
+	// Required. The session to list all contexts from. Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>,
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>`,
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>`,
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>`,
+	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified, we assume default 'draft' environment.
+	// If `User ID` is not specified, we assume default '-' user.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The maximum number of items to return in a single page. By
 	// default 100 and at most 1000.
@@ -301,12 +314,20 @@ type GetContextRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the context. Format:
-	// `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
-	// or `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
-	// ID>/sessions/<Session ID>/contexts/<Context ID>`. If `Environment ID` is
-	// not specified, we assume default 'draft' environment. If `User ID` is not
-	// specified, we assume default '-' user.
+	// Required. The name of the context. Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context
+	//   ID>`,
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>/contexts/<Context ID>`,
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>/contexts/<Context ID>`,
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>/contexts/<Context ID>`,
+	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified, we assume default 'draft' environment.
+	// If `User ID` is not specified, we assume default '-' user.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -355,12 +376,19 @@ type CreateContextRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The session to create a context for.
-	// Format: `projects/<Project ID>/agent/sessions/<Session ID>` or
-	// `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
-	// ID>/sessions/<Session ID>`. If `Environment ID` is not specified, we assume
-	// default 'draft' environment. If `User ID` is not specified, we assume
-	// default '-' user.
+	// Required. The session to create a context for. Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>,
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>`,
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>`,
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>`,
+	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified, we assume default 'draft' environment.
+	// If `User ID` is not specified, we assume default '-' user.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The context to create.
 	Context *Context `protobuf:"bytes,2,opt,name=context,proto3" json:"context,omitempty"`
@@ -476,12 +504,20 @@ type DeleteContextRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the context to delete. Format:
-	// `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`
-	// or `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
-	// ID>/sessions/<Session ID>/contexts/<Context ID>`. If `Environment ID` is
-	// not specified, we assume default 'draft' environment. If `User ID` is not
-	// specified, we assume default '-' user.
+	// Required. The name of the context to delete. Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context
+	//   ID>`,
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>/contexts/<Context ID>`,
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>/contexts/<Context ID>`,
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>/contexts/<Context ID>`,
+	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified, we assume default 'draft' environment.
+	// If `User ID` is not specified, we assume default '-' user.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -530,11 +566,19 @@ type DeleteAllContextsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the session to delete all contexts from. Format:
-	// `projects/<Project ID>/agent/sessions/<Session ID>` or `projects/<Project
-	// ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
-	// ID>`. If `Environment ID` is not specified we assume default 'draft'
-	// environment. If `User ID` is not specified, we assume default '-' user.
+	// Required. The name of the session to delete all contexts from. Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>,
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>`,
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>`,
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>`,
+	//
+	// If `Location ID` is not specified we assume default 'us' location. If
+	// `Environment ID` is not specified we assume default 'draft' environment. If
+	// `User ID` is not specified, we assume default '-' user.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 }
 

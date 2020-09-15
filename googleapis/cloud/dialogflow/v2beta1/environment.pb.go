@@ -133,16 +133,19 @@ type Environment struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The unique identifier of this agent environment.
-	// Format:
+	// Supported formats:
 	// - `projects/<Project Number / ID>/agent/environments/<Environment ID>`
 	// - `projects/<Project Number / ID>/locations/<Location
-	// ID>/agent/environments/<Environment ID>`
+	//   ID>/agent/environments/<Environment ID>`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. The developer-provided description for this environment.
 	// The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Optional. The agent version loaded into this environment.
-	// Format: `projects/<Project ID>/agent/versions/<Version ID>`.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/versions/<Version ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/versions/<Version
+	//   ID>`
 	AgentVersion string `protobuf:"bytes,3,opt,name=agent_version,json=agentVersion,proto3" json:"agent_version,omitempty"`
 	// Output only. The state of this environment. This field is read-only, i.e., it cannot be
 	// set by create and update methods.
@@ -228,8 +231,7 @@ type ListEnvironmentsRequest struct {
 	// Required. The agent to list all environments from.
 	// Format:
 	// - `projects/<Project Number / ID>/agent`
-	// - `projects/<Project Number / ID>/locations/<Location
-	// ID>/agent
+	// - `projects/<Project Number / ID>/locations/<Location ID>/agent`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The maximum number of items to return in a single page. By default 100 and
 	// at most 1000.
