@@ -50,9 +50,15 @@ type WebhookRequest struct {
 
 	// The unique identifier of detectIntent request session.
 	// Can be used to identify end-user inside webhook implementation.
-	// Format: `projects/<Project ID>/agent/sessions/<Session ID>`, or
-	// `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
-	// ID>/sessions/<Session ID>`.
+	// Supported formats:
+	// - `projects/<Project ID>/agent/sessions/<Session ID>,
+	// - `projects/<Project ID>/locations/<Location ID>/agent/sessions/<Session
+	//   ID>`,
+	// - `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+	//   ID>/sessions/<Session ID>`,
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session
+	//   ID>`,
 	Session string `protobuf:"bytes,4,opt,name=session,proto3" json:"session,omitempty"`
 	// The unique identifier of the response. Contains the same value as
 	// `[Streaming]DetectIntentResponse.response_id`.
@@ -311,9 +317,9 @@ type OriginalDetectIntentRequest struct {
 	//    "caller_id": "+18558363987"
 	//  }
 	// }</pre>
-	// Note: The caller ID field (`caller_id`) will be redacted for Standard
+	// Note: The caller ID field (`caller_id`) will be redacted for Trial
 	// Edition agents and populated with the caller ID in [E.164
-	// format](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents.
+	// format](https://en.wikipedia.org/wiki/E.164) for Essentials Edition agents.
 	Payload *structpb.Struct `protobuf:"bytes,3,opt,name=payload,proto3" json:"payload,omitempty"`
 }
 

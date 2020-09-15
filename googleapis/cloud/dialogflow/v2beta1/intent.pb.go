@@ -770,7 +770,10 @@ type Intent struct {
 	// Optional. The unique identifier of this intent.
 	// Required for [Intents.UpdateIntent][google.cloud.dialogflow.v2beta1.Intents.UpdateIntent] and [Intents.BatchUpdateIntents][google.cloud.dialogflow.v2beta1.Intents.BatchUpdateIntents]
 	// methods.
-	// Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
+	// Supported formats:
+	//
+	// - `projects/<Project ID>/agent/intents/<Intent ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/intents/<Intent ID>`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The name of this intent.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
@@ -794,6 +797,7 @@ type Intent struct {
 	// DEPRECATED! Please use `ml_disabled` field instead.
 	// NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false,
 	// then the default value is determined as follows:
+	//
 	// - Before April 15th, 2018 the default is:
 	//   ml_enabled = false / ml_disabled = true.
 	// - After April 15th, 2018 the default is:
@@ -812,7 +816,11 @@ type Intent struct {
 	EndInteraction bool `protobuf:"varint,21,opt,name=end_interaction,json=endInteraction,proto3" json:"end_interaction,omitempty"`
 	// Optional. The list of context names required for this intent to be
 	// triggered.
-	// Format: `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`.
+	// Formats:
+	//
+	// - `projects/<Project ID>/agent/sessions/-/contexts/<Context ID>`
+	// - `projects/<Project ID>/locations/<Location
+	//   ID>/agent/sessions/-/contexts/<Context ID>`
 	InputContextNames []string `protobuf:"bytes,7,rep,name=input_context_names,json=inputContextNames,proto3" json:"input_context_names,omitempty"`
 	// Optional. The collection of event names that trigger the intent.
 	// If the collection of input contexts is not empty, all of the contexts must
@@ -1193,7 +1201,10 @@ type GetIntentRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the intent.
-	// Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
+	// Supported formats:
+	//
+	// - `projects/<Project ID>/agent/intents/<Intent ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/intents/<Intent ID>`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. The language used to access language-specific data.
 	// If not specified, the agent's default language is used.
@@ -1265,7 +1276,10 @@ type CreateIntentRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The agent to create a intent for.
-	// Format: `projects/<Project ID>/agent`.
+	// Supported formats:
+	//
+	// - `projects/<Project ID>/agent`
+	// - `projects/<Project ID>/locations/<Location ID>/agent`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The intent to create.
 	Intent *Intent `protobuf:"bytes,2,opt,name=intent,proto3" json:"intent,omitempty"`
@@ -1428,7 +1442,10 @@ type DeleteIntentRequest struct {
 	// Required. The name of the intent to delete. If this intent has direct or
 	// indirect followup intents, we also delete them.
 	//
-	// Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
+	// Supported formats:
+	//
+	// - `projects/<Project ID>/agent/intents/<Intent ID>`
+	// - `projects/<Project ID>/locations/<Location ID>/agent/intents/<Intent ID>`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1478,7 +1495,10 @@ type BatchUpdateIntentsRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the agent to update or create intents in.
-	// Format: `projects/<Project ID>/agent`.
+	// Supported formats:
+	//
+	// - `projects/<Project ID>/agent`
+	// - `projects/<Project ID>/locations/<Location ID>/agent`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The source of the intent batch.
 	//
@@ -1659,8 +1679,11 @@ type BatchDeleteIntentsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the agent to delete all entities types for. Format:
-	// `projects/<Project ID>/agent`.
+	// Required. The name of the agent to delete all entities types for.
+	// Supported formats:
+	//
+	// - `projects/<Project ID>/agent`
+	// - `projects/<Project ID>/locations/<Location ID>/agent`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The collection of intents to delete. Only intent `name` must be
 	// filled in.
