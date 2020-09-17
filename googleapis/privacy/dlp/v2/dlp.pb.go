@@ -2804,7 +2804,8 @@ type RedactImageRequest struct {
 	// Parent resource name.
 	//
 	// The format of this value varies depending on whether you have [specified a
-	// processing location](/dlp/docs/specifying-location):
+	// processing
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -3049,7 +3050,8 @@ type DeidentifyContentRequest struct {
 	// Parent resource name.
 	//
 	// The format of this value varies depending on whether you have [specified a
-	// processing location](/dlp/docs/specifying-location):
+	// processing
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -3236,7 +3238,8 @@ type ReidentifyContentRequest struct {
 	// Required. Parent resource name.
 	//
 	// The format of this value varies depending on whether you have [specified a
-	// processing location](/dlp/docs/specifying-location):
+	// processing
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -3430,7 +3433,8 @@ type InspectContentRequest struct {
 	// Parent resource name.
 	//
 	// The format of this value varies depending on whether you have [specified a
-	// processing location](/dlp/docs/specifying-location):
+	// processing
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -7861,7 +7865,7 @@ type CreateInspectTemplateRequest struct {
 	//
 	// The format of this value varies depending on the scope of the request
 	// (project or organization) and whether you have [specified a processing
-	// location](/dlp/docs/specifying-location):
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -7882,7 +7886,7 @@ type CreateInspectTemplateRequest struct {
 	InspectTemplate *InspectTemplate `protobuf:"bytes,2,opt,name=inspect_template,json=inspectTemplate,proto3" json:"inspect_template,omitempty"`
 	// The template id can contain uppercase and lowercase letters,
 	// numbers, and hyphens; that is, it must match the regular
-	// expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
+	// expression: `[a-zA-Z\d-_]+`. The maximum length is 100
 	// characters. Can be empty to allow the system to generate one.
 	TemplateId string `protobuf:"bytes,3,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
 	// Deprecated. This field has no effect.
@@ -8079,7 +8083,7 @@ type ListInspectTemplatesRequest struct {
 	//
 	// The format of this value varies depending on the scope of the request
 	// (project or organization) and whether you have [specified a processing
-	// location](/dlp/docs/specifying-location):
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -8306,7 +8310,8 @@ type CreateJobTriggerRequest struct {
 	// Required. Parent resource name.
 	//
 	// The format of this value varies depending on whether you have [specified a
-	// processing location](/dlp/docs/specifying-location):
+	// processing
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -8323,7 +8328,7 @@ type CreateJobTriggerRequest struct {
 	JobTrigger *JobTrigger `protobuf:"bytes,2,opt,name=job_trigger,json=jobTrigger,proto3" json:"job_trigger,omitempty"`
 	// The trigger id can contain uppercase and lowercase letters,
 	// numbers, and hyphens; that is, it must match the regular
-	// expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
+	// expression: `[a-zA-Z\d-_]+`. The maximum length is 100
 	// characters. Can be empty to allow the system to generate one.
 	TriggerId string `protobuf:"bytes,3,opt,name=trigger_id,json=triggerId,proto3" json:"trigger_id,omitempty"`
 	// Deprecated. This field has no effect.
@@ -8569,7 +8574,8 @@ type CreateDlpJobRequest struct {
 	// Required. Parent resource name.
 	//
 	// The format of this value varies depending on whether you have [specified a
-	// processing location](/dlp/docs/specifying-location):
+	// processing
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -8590,7 +8596,7 @@ type CreateDlpJobRequest struct {
 	Job isCreateDlpJobRequest_Job `protobuf_oneof:"job"`
 	// The job id can contain uppercase and lowercase letters,
 	// numbers, and hyphens; that is, it must match the regular
-	// expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
+	// expression: `[a-zA-Z\d-_]+`. The maximum length is 100
 	// characters. Can be empty to allow the system to generate one.
 	JobId string `protobuf:"bytes,4,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
 	// Deprecated. This field has no effect.
@@ -8698,7 +8704,8 @@ type ListJobTriggersRequest struct {
 	// Required. Parent resource name.
 	//
 	// The format of this value varies depending on whether you have [specified a
-	// processing location](/dlp/docs/specifying-location):
+	// processing
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -9237,7 +9244,8 @@ type ListDlpJobsRequest struct {
 	// Required. Parent resource name.
 	//
 	// The format of this value varies depending on whether you have [specified a
-	// processing location](/dlp/docs/specifying-location):
+	// processing
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -9599,7 +9607,7 @@ type CreateDeidentifyTemplateRequest struct {
 	//
 	// The format of this value varies depending on the scope of the request
 	// (project or organization) and whether you have [specified a processing
-	// location](/dlp/docs/specifying-location):
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -9620,7 +9628,7 @@ type CreateDeidentifyTemplateRequest struct {
 	DeidentifyTemplate *DeidentifyTemplate `protobuf:"bytes,2,opt,name=deidentify_template,json=deidentifyTemplate,proto3" json:"deidentify_template,omitempty"`
 	// The template id can contain uppercase and lowercase letters,
 	// numbers, and hyphens; that is, it must match the regular
-	// expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
+	// expression: `[a-zA-Z\d-_]+`. The maximum length is 100
 	// characters. Can be empty to allow the system to generate one.
 	TemplateId string `protobuf:"bytes,3,opt,name=template_id,json=templateId,proto3" json:"template_id,omitempty"`
 	// Deprecated. This field has no effect.
@@ -9817,7 +9825,7 @@ type ListDeidentifyTemplatesRequest struct {
 	//
 	// The format of this value varies depending on the scope of the request
 	// (project or organization) and whether you have [specified a processing
-	// location](/dlp/docs/specifying-location):
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -10554,7 +10562,7 @@ type CreateStoredInfoTypeRequest struct {
 	//
 	// The format of this value varies depending on the scope of the request
 	// (project or organization) and whether you have [specified a processing
-	// location](/dlp/docs/specifying-location):
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
@@ -10575,7 +10583,7 @@ type CreateStoredInfoTypeRequest struct {
 	Config *StoredInfoTypeConfig `protobuf:"bytes,2,opt,name=config,proto3" json:"config,omitempty"`
 	// The storedInfoType ID can contain uppercase and lowercase letters,
 	// numbers, and hyphens; that is, it must match the regular
-	// expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
+	// expression: `[a-zA-Z\d-_]+`. The maximum length is 100
 	// characters. Can be empty to allow the system to generate one.
 	StoredInfoTypeId string `protobuf:"bytes,3,opt,name=stored_info_type_id,json=storedInfoTypeId,proto3" json:"stored_info_type_id,omitempty"`
 	// Deprecated. This field has no effect.
@@ -10774,7 +10782,7 @@ type ListStoredInfoTypesRequest struct {
 	//
 	// The format of this value varies depending on the scope of the request
 	// (project or organization) and whether you have [specified a processing
-	// location](/dlp/docs/specifying-location):
+	// location](https://cloud.google.com/dlp/docs/specifying-location):
 	//
 	// + Projects scope, location specified:<br/>
 	//   `projects/`<var>PROJECT_ID</var>`/locations/`<var>LOCATION_ID</var>
