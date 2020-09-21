@@ -75,8 +75,7 @@ type PredictRequest struct {
 	//   pages. For example - More products like this.
 	//
 	// * `recently_viewed_default`: Returns up to 75 products recently viewed by
-	// the
-	//   specified `userId` or `visitorId`, most recent ones first. Returns
+	//   the specified `userId` or `visitorId`, most recent ones first. Returns
 	//   nothing if neither of them has viewed any products yet. For example -
 	//   Recently viewed.
 	//
@@ -93,7 +92,8 @@ type PredictRequest struct {
 	UserEvent *UserEvent `protobuf:"bytes,2,opt,name=user_event,json=userEvent,proto3" json:"user_event,omitempty"`
 	// Maximum number of results to return per page. Set this property
 	// to the number of prediction results needed. If zero, the service will
-	// choose a reasonable default.
+	// choose a reasonable default. The maximum allowed value is 100. Values
+	// above 100 will be coerced to 100.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The previous PredictResponse.next_page_token.
 	PageToken string `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
@@ -131,14 +131,13 @@ type PredictRequest struct {
 	// Allowed values:
 	//
 	// * `returnProduct`: Boolean. If set to true, the associated product
-	//    object will be returned in the
-	//   `PredictResponse.PredictionResult.productMetadata` object in the method
-	//    response.
+	//    object will be returned in the `results.metadata` field in the
+	//    prediction response.
 	// * `returnScore`: Boolean. If set to true, the prediction 'score'
-	//    corresponding to each returned product will be set in the `metadata`
-	//    field in the prediction response. The given 'score' indicates the
-	//    probability of an product being clicked/purchased given the user's
-	//    context and history.
+	//    corresponding to each returned product will be set in the
+	//    `results.metadata` field in the prediction response. The given
+	//    'score' indicates the probability of an product being clicked/purchased
+	//    given the user's context and history.
 	// * `strictFiltering`: Boolean. True by default. If set to false, the service
 	//    will return generic (unfiltered) popular products instead of empty if
 	//    your filter blocks all prediction results.

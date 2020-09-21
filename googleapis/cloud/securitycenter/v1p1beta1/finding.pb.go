@@ -97,7 +97,8 @@ func (Finding_State) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_securitycenter_v1p1beta1_finding_proto_rawDescGZIP(), []int{0, 0}
 }
 
-// The severity of the finding.
+// The severity of the finding. This field is managed by the source that
+// writes the finding.
 type Finding_Severity int32
 
 const (
@@ -214,7 +215,8 @@ type Finding struct {
 	EventTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=event_time,json=eventTime,proto3" json:"event_time,omitempty"`
 	// The time at which the finding was created in Security Command Center.
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// The severity of the finding.
+	// The severity of the finding. This field is managed by the source that
+	// writes the finding.
 	Severity Finding_Severity `protobuf:"varint,13,opt,name=severity,proto3,enum=google.cloud.securitycenter.v1p1beta1.Finding_Severity" json:"severity,omitempty"`
 }
 
