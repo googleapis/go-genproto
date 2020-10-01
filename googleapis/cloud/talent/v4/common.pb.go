@@ -334,8 +334,7 @@ const (
 	// The job is offered as a contracted position with the understanding
 	// that it's converted into a full-time position at the end of the
 	// contract. Jobs of this type are also returned by a search for
-	// [EmploymentType.CONTRACTOR][google.cloud.talent.v4.EmploymentType.CONTRACTOR]
-	// jobs.
+	// [EmploymentType.CONTRACTOR][google.cloud.talent.v4.EmploymentType.CONTRACTOR] jobs.
 	EmploymentType_CONTRACT_TO_HIRE EmploymentType = 4
 	// The job is offered as a temporary employment opportunity, usually
 	// a short-term engagement.
@@ -660,10 +659,9 @@ const (
 	// matches the [LocationFilter][google.cloud.talent.v4.LocationFilter].
 	PostingRegion_POSTING_REGION_UNSPECIFIED PostingRegion = 0
 	// In addition to exact location matching, job posting is returned when the
-	// [LocationFilter][google.cloud.talent.v4.LocationFilter] in the search query
-	// is in the same administrative area as the returned job posting. For
-	// example, if a `ADMINISTRATIVE_AREA` job is posted in "CA, USA", it's
-	// returned if [LocationFilter][google.cloud.talent.v4.LocationFilter] has
+	// [LocationFilter][google.cloud.talent.v4.LocationFilter] in the search query is in the same administrative area
+	// as the returned job posting. For example, if a `ADMINISTRATIVE_AREA` job
+	// is posted in "CA, USA", it's returned if [LocationFilter][google.cloud.talent.v4.LocationFilter] has
 	// "Mountain View".
 	//
 	// Administrative area refers to top-level administrative subdivision of this
@@ -671,11 +669,9 @@ const (
 	// JP prefecture.
 	PostingRegion_ADMINISTRATIVE_AREA PostingRegion = 1
 	// In addition to exact location matching, job is returned when
-	// [LocationFilter][google.cloud.talent.v4.LocationFilter] in search query is
-	// in the same country as this job. For example, if a `NATION_WIDE` job is
-	// posted in "USA", it's returned if
-	// [LocationFilter][google.cloud.talent.v4.LocationFilter] has 'Mountain
-	// View'.
+	// [LocationFilter][google.cloud.talent.v4.LocationFilter] in search query is in the same country as this job.
+	// For example, if a `NATION_WIDE` job is posted in "USA", it's
+	// returned if [LocationFilter][google.cloud.talent.v4.LocationFilter] has 'Mountain View'.
 	PostingRegion_NATION PostingRegion = 2
 	// Job allows employees to work remotely (telecommute).
 	// If locations are provided with this value, the job is
@@ -856,10 +852,6 @@ const (
 	// Commute time is calculated based on public transit including bus, metro,
 	// subway, and so on.
 	CommuteMethod_TRANSIT CommuteMethod = 2
-	// Commute time is calculated based on walking time.
-	CommuteMethod_WALKING CommuteMethod = 3
-	// Commute time is calculated based on biking time.
-	CommuteMethod_CYCLING CommuteMethod = 4
 )
 
 // Enum value maps for CommuteMethod.
@@ -868,15 +860,11 @@ var (
 		0: "COMMUTE_METHOD_UNSPECIFIED",
 		1: "DRIVING",
 		2: "TRANSIT",
-		3: "WALKING",
-		4: "CYCLING",
 	}
 	CommuteMethod_value = map[string]int32{
 		"COMMUTE_METHOD_UNSPECIFIED": 0,
 		"DRIVING":                    1,
 		"TRANSIT":                    2,
-		"WALKING":                    3,
-		"CYCLING":                    4,
 	}
 )
 
@@ -1071,30 +1059,19 @@ func (DeviceInfo_DeviceType) EnumDescriptor() ([]byte, []int) {
 // The type of compensation.
 //
 // For compensation amounts specified in non-monetary amounts,
-// describe the compensation scheme in the
-// [CompensationEntry.description][google.cloud.talent.v4.CompensationInfo.CompensationEntry.description].
+// describe the compensation scheme in the [CompensationEntry.description][google.cloud.talent.v4.CompensationInfo.CompensationEntry.description].
 //
 // For example, tipping format is described in
-// [CompensationEntry.description][google.cloud.talent.v4.CompensationInfo.CompensationEntry.description]
-// (for example, "expect 15-20% tips based on customer bill.") and an estimate
-// of the tips provided in
-// [CompensationEntry.amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount]
-// or
-// [CompensationEntry.range][google.cloud.talent.v4.CompensationInfo.CompensationEntry.range]
-// ($10 per hour).
+// [CompensationEntry.description][google.cloud.talent.v4.CompensationInfo.CompensationEntry.description] (for example, "expect 15-20% tips based
+// on customer bill.") and an estimate of the tips provided in
+// [CompensationEntry.amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount] or [CompensationEntry.range][google.cloud.talent.v4.CompensationInfo.CompensationEntry.range] ($10 per hour).
 //
-// For example, equity is described in
-// [CompensationEntry.description][google.cloud.talent.v4.CompensationInfo.CompensationEntry.description]
+// For example, equity is described in [CompensationEntry.description][google.cloud.talent.v4.CompensationInfo.CompensationEntry.description]
 // (for example, "1% - 2% equity vesting over 4 years, 1 year cliff") and
-// value estimated in
-// [CompensationEntry.amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount]
-// or
-// [CompensationEntry.range][google.cloud.talent.v4.CompensationInfo.CompensationEntry.range].
-// If no value estimate is possible, units are
-// [CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED][google.cloud.talent.v4.CompensationInfo.CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED]
-// and then further clarified in
-// [CompensationEntry.description][google.cloud.talent.v4.CompensationInfo.CompensationEntry.description]
-// field.
+// value estimated in [CompensationEntry.amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount] or
+// [CompensationEntry.range][google.cloud.talent.v4.CompensationInfo.CompensationEntry.range]. If no value estimate is possible, units are
+// [CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED][google.cloud.talent.v4.CompensationInfo.CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED] and then further
+// clarified in [CompensationEntry.description][google.cloud.talent.v4.CompensationInfo.CompensationEntry.description] field.
 type CompensationInfo_CompensationType int32
 
 const (
@@ -1262,13 +1239,11 @@ const (
 	// The batch operation is done and no item has been successfully processed.
 	BatchOperationMetadata_FAILED BatchOperationMetadata_State = 4
 	// The batch operation is in the process of cancelling after
-	// [google.longrunning.Operations.CancelOperation][google.longrunning.Operations.CancelOperation]
-	// is called.
+	// [google.longrunning.Operations.CancelOperation][google.longrunning.Operations.CancelOperation] is called.
 	BatchOperationMetadata_CANCELLING BatchOperationMetadata_State = 5
 	// The batch operation is done after
-	// [google.longrunning.Operations.CancelOperation][google.longrunning.Operations.CancelOperation]
-	// is called. Any items processed before cancelling are returned in the
-	// response.
+	// [google.longrunning.Operations.CancelOperation][google.longrunning.Operations.CancelOperation] is called. Any items
+	// processed before cancelling are returned in the response.
 	BatchOperationMetadata_CANCELLED BatchOperationMetadata_State = 6
 )
 
@@ -1386,11 +1361,9 @@ type Location struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The type of a location, which corresponds to the address lines field of
-	// [google.type.PostalAddress][google.type.PostalAddress]. For example,
-	// "Downtown, Atlanta, GA, USA" has a type of
-	// [LocationType.NEIGHBORHOOD][google.cloud.talent.v4.Location.LocationType.NEIGHBORHOOD],
-	// and "Kansas City, KS, USA" has a type of
-	// [LocationType.LOCALITY][google.cloud.talent.v4.Location.LocationType.LOCALITY].
+	// [google.type.PostalAddress][google.type.PostalAddress]. For example, "Downtown, Atlanta, GA, USA"
+	// has a type of [LocationType.NEIGHBORHOOD][google.cloud.talent.v4.Location.LocationType.NEIGHBORHOOD], and "Kansas City, KS, USA"
+	// has a type of [LocationType.LOCALITY][google.cloud.talent.v4.Location.LocationType.LOCALITY].
 	LocationType Location_LocationType `protobuf:"varint,1,opt,name=location_type,json=locationType,proto3,enum=google.cloud.talent.v4.Location_LocationType" json:"location_type,omitempty"`
 	// Postal address of the location that includes human readable information,
 	// such as postal delivery and payments addresses. Given a postal address,
@@ -1401,9 +1374,10 @@ type Location struct {
 	LatLng *latlng.LatLng `protobuf:"bytes,3,opt,name=lat_lng,json=latLng,proto3" json:"lat_lng,omitempty"`
 	// Radius in miles of the job location. This value is derived from the
 	// location bounding box in which a circle with the specified radius
-	// centered from [google.type.LatLng][google.type.LatLng] covers the area
-	// associated with the job location. For example, currently, "Mountain View,
-	// CA, USA" has a radius of 6.17 miles.
+	// centered from [google.type.LatLng][google.type.LatLng] covers the area associated with the
+	// job location.
+	// For example, currently, "Mountain View, CA, USA" has a radius of
+	// 6.17 miles.
 	RadiusMiles float64 `protobuf:"fixed64,4,opt,name=radius_miles,json=radiusMiles,proto3" json:"radius_miles,omitempty"`
 }
 
@@ -1475,9 +1449,7 @@ type RequestMetadata struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required if
-	// [allow_missing_ids][google.cloud.talent.v4.RequestMetadata.allow_missing_ids]
-	// is unset or `false`.
+	// Required if [allow_missing_ids][google.cloud.talent.v4.RequestMetadata.allow_missing_ids] is unset or `false`.
 	//
 	// The client-defined scope or source of the service call, which typically
 	// is the domain on
@@ -1493,9 +1465,7 @@ type RequestMetadata struct {
 	//
 	// The maximum number of allowed characters is 255.
 	Domain string `protobuf:"bytes,1,opt,name=domain,proto3" json:"domain,omitempty"`
-	// Required if
-	// [allow_missing_ids][google.cloud.talent.v4.RequestMetadata.allow_missing_ids]
-	// is unset or `false`.
+	// Required if [allow_missing_ids][google.cloud.talent.v4.RequestMetadata.allow_missing_ids] is unset or `false`.
 	//
 	// A unique session identification string. A session is defined as the
 	// duration of an end user's interaction with the service over a certain
@@ -1508,9 +1478,7 @@ type RequestMetadata struct {
 	//
 	// The maximum number of allowed characters is 255.
 	SessionId string `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
-	// Required if
-	// [allow_missing_ids][google.cloud.talent.v4.RequestMetadata.allow_missing_ids]
-	// is unset or `false`.
+	// Required if [allow_missing_ids][google.cloud.talent.v4.RequestMetadata.allow_missing_ids] is unset or `false`.
 	//
 	// A unique user identification string, as determined by the client.
 	// To have the strongest positive impact on search quality
@@ -1523,15 +1491,10 @@ type RequestMetadata struct {
 	//
 	// The maximum number of allowed characters is 255.
 	UserId string `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	// Only set when any of
-	// [domain][google.cloud.talent.v4.RequestMetadata.domain],
-	// [session_id][google.cloud.talent.v4.RequestMetadata.session_id] and
-	// [user_id][google.cloud.talent.v4.RequestMetadata.user_id] isn't available
-	// for some reason. It is highly recommended not to set this field and provide
-	// accurate [domain][google.cloud.talent.v4.RequestMetadata.domain],
-	// [session_id][google.cloud.talent.v4.RequestMetadata.session_id] and
-	// [user_id][google.cloud.talent.v4.RequestMetadata.user_id] for the best
-	// service experience.
+	// Only set when any of [domain][google.cloud.talent.v4.RequestMetadata.domain], [session_id][google.cloud.talent.v4.RequestMetadata.session_id] and [user_id][google.cloud.talent.v4.RequestMetadata.user_id] isn't
+	// available for some reason. It is highly recommended not to set this field
+	// and provide accurate [domain][google.cloud.talent.v4.RequestMetadata.domain], [session_id][google.cloud.talent.v4.RequestMetadata.session_id] and [user_id][google.cloud.talent.v4.RequestMetadata.user_id] for the
+	// best service experience.
 	AllowMissingIds bool `protobuf:"varint,4,opt,name=allow_missing_ids,json=allowMissingIds,proto3" json:"allow_missing_ids,omitempty"`
 	// The type of device used by the job seeker at the time of the call to the
 	// service.
@@ -1722,10 +1685,7 @@ type CustomAttribute struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Exactly one of
-	// [string_values][google.cloud.talent.v4.CustomAttribute.string_values] or
-	// [long_values][google.cloud.talent.v4.CustomAttribute.long_values] must be
-	// specified.
+	// Exactly one of [string_values][google.cloud.talent.v4.CustomAttribute.string_values] or [long_values][google.cloud.talent.v4.CustomAttribute.long_values] must be specified.
 	//
 	// This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or
 	// `CASE_INSENSITIVE_MATCH`) search.
@@ -1736,21 +1696,15 @@ type CustomAttribute struct {
 	//
 	// Empty string isn't allowed.
 	StringValues []string `protobuf:"bytes,1,rep,name=string_values,json=stringValues,proto3" json:"string_values,omitempty"`
-	// Exactly one of
-	// [string_values][google.cloud.talent.v4.CustomAttribute.string_values] or
-	// [long_values][google.cloud.talent.v4.CustomAttribute.long_values] must be
-	// specified.
+	// Exactly one of [string_values][google.cloud.talent.v4.CustomAttribute.string_values] or [long_values][google.cloud.talent.v4.CustomAttribute.long_values] must be specified.
 	//
 	// This field is used to perform number range search.
 	// (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`.
 	//
-	// Currently at most 1
-	// [long_values][google.cloud.talent.v4.CustomAttribute.long_values] is
-	// supported.
+	// Currently at most 1 [long_values][google.cloud.talent.v4.CustomAttribute.long_values] is supported.
 	LongValues []int64 `protobuf:"varint,2,rep,packed,name=long_values,json=longValues,proto3" json:"long_values,omitempty"`
 	// If the `filterable` flag is true, the custom field values may be used for
-	// custom attribute filters
-	// [JobQuery.custom_attribute_filter][google.cloud.talent.v4.JobQuery.custom_attribute_filter].
+	// custom attribute filters [JobQuery.custom_attribute_filter][google.cloud.talent.v4.JobQuery.custom_attribute_filter].
 	// If false, these values may not be used for custom attribute filters.
 	//
 	// Default is false.
@@ -1905,28 +1859,20 @@ type CompensationInfo struct {
 	// Job compensation information.
 	//
 	// At most one entry can be of type
-	// [CompensationInfo.CompensationType.BASE][google.cloud.talent.v4.CompensationInfo.CompensationType.BASE],
-	// which is referred as **base compensation entry** for the job.
+	// [CompensationInfo.CompensationType.BASE][google.cloud.talent.v4.CompensationInfo.CompensationType.BASE], which is
+	// referred as **base compensation entry** for the job.
 	Entries []*CompensationInfo_CompensationEntry `protobuf:"bytes,1,rep,name=entries,proto3" json:"entries,omitempty"`
-	// Output only. Annualized base compensation range. Computed as base
-	// compensation entry's
-	// [CompensationEntry.amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount]
-	// times
+	// Output only. Annualized base compensation range. Computed as base compensation entry's
+	// [CompensationEntry.amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount] times
 	// [CompensationEntry.expected_units_per_year][google.cloud.talent.v4.CompensationInfo.CompensationEntry.expected_units_per_year].
 	//
-	// See
-	// [CompensationEntry][google.cloud.talent.v4.CompensationInfo.CompensationEntry]
-	// for explanation on compensation annualization.
+	// See [CompensationEntry][google.cloud.talent.v4.CompensationInfo.CompensationEntry] for explanation on compensation annualization.
 	AnnualizedBaseCompensationRange *CompensationInfo_CompensationRange `protobuf:"bytes,2,opt,name=annualized_base_compensation_range,json=annualizedBaseCompensationRange,proto3" json:"annualized_base_compensation_range,omitempty"`
-	// Output only. Annualized total compensation range. Computed as all
-	// compensation entries'
-	// [CompensationEntry.amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount]
-	// times
+	// Output only. Annualized total compensation range. Computed as all compensation entries'
+	// [CompensationEntry.amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount] times
 	// [CompensationEntry.expected_units_per_year][google.cloud.talent.v4.CompensationInfo.CompensationEntry.expected_units_per_year].
 	//
-	// See
-	// [CompensationEntry][google.cloud.talent.v4.CompensationInfo.CompensationEntry]
-	// for explanation on compensation annualization.
+	// See [CompensationEntry][google.cloud.talent.v4.CompensationInfo.CompensationEntry] for explanation on compensation annualization.
 	AnnualizedTotalCompensationRange *CompensationInfo_CompensationRange `protobuf:"bytes,3,opt,name=annualized_total_compensation_range,json=annualizedTotalCompensationRange,proto3" json:"annualized_total_compensation_range,omitempty"`
 }
 
@@ -1984,8 +1930,7 @@ func (x *CompensationInfo) GetAnnualizedTotalCompensationRange() *CompensationIn
 }
 
 // Metadata used for long running operations returned by CTS batch APIs.
-// It's used to replace
-// [google.longrunning.Operation.metadata][google.longrunning.Operation.metadata].
+// It's used to replace [google.longrunning.Operation.metadata][google.longrunning.Operation.metadata].
 type BatchOperationMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2004,12 +1949,11 @@ type BatchOperationMetadata struct {
 	// The time when the batch operation is created.
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The time when the batch operation status is updated. The metadata and the
-	// [update_time][google.cloud.talent.v4.BatchOperationMetadata.update_time] is
-	// refreshed every minute otherwise cached data is returned.
+	// [update_time][google.cloud.talent.v4.BatchOperationMetadata.update_time] is refreshed every minute otherwise cached data is
+	// returned.
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The time when the batch operation is finished and
-	// [google.longrunning.Operation.done][google.longrunning.Operation.done] is
-	// set to `true`.
+	// [google.longrunning.Operation.done][google.longrunning.Operation.done] is set to `true`.
 	EndTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
@@ -2105,17 +2049,9 @@ func (x *BatchOperationMetadata) GetEndTime() *timestamppb.Timestamp {
 // as base pay, bonus, or other compensation type.
 //
 // Annualization: One compensation entry can be annualized if
-// - it contains valid
-// [amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount]
-// or
-// [range][google.cloud.talent.v4.CompensationInfo.CompensationEntry.range].
-// - and its
-// [expected_units_per_year][google.cloud.talent.v4.CompensationInfo.CompensationEntry.expected_units_per_year]
-// is set or can be derived. Its annualized range is determined as
-// ([amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount]
-// or
-// [range][google.cloud.talent.v4.CompensationInfo.CompensationEntry.range])
-// times
+// - it contains valid [amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount] or [range][google.cloud.talent.v4.CompensationInfo.CompensationEntry.range].
+// - and its [expected_units_per_year][google.cloud.talent.v4.CompensationInfo.CompensationEntry.expected_units_per_year] is set or can be derived.
+// Its annualized range is determined as ([amount][google.cloud.talent.v4.CompensationInfo.CompensationEntry.amount] or [range][google.cloud.talent.v4.CompensationInfo.CompensationEntry.range]) times
 // [expected_units_per_year][google.cloud.talent.v4.CompensationInfo.CompensationEntry.expected_units_per_year].
 type CompensationInfo_CompensationEntry struct {
 	state         protoimpl.MessageState
@@ -2124,13 +2060,11 @@ type CompensationInfo_CompensationEntry struct {
 
 	// Compensation type.
 	//
-	// Default is
-	// [CompensationType.COMPENSATION_TYPE_UNSPECIFIED][google.cloud.talent.v4.CompensationInfo.CompensationType.COMPENSATION_TYPE_UNSPECIFIED].
+	// Default is [CompensationType.COMPENSATION_TYPE_UNSPECIFIED][google.cloud.talent.v4.CompensationInfo.CompensationType.COMPENSATION_TYPE_UNSPECIFIED].
 	Type CompensationInfo_CompensationType `protobuf:"varint,1,opt,name=type,proto3,enum=google.cloud.talent.v4.CompensationInfo_CompensationType" json:"type,omitempty"`
 	// Frequency of the specified amount.
 	//
-	// Default is
-	// [CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED][google.cloud.talent.v4.CompensationInfo.CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED].
+	// Default is [CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED][google.cloud.talent.v4.CompensationInfo.CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED].
 	Unit CompensationInfo_CompensationUnit `protobuf:"varint,2,opt,name=unit,proto3,enum=google.cloud.talent.v4.CompensationInfo_CompensationUnit" json:"unit,omitempty"`
 	// Compensation amount. It could be a fixed amount or a floating range.
 	//
@@ -2143,10 +2077,8 @@ type CompensationInfo_CompensationEntry struct {
 	// bonus.
 	Description string `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
 	// Expected number of units paid each year. If not specified, when
-	// [Job.employment_types][google.cloud.talent.v4.Job.employment_types] is
-	// FULLTIME, a default value is inferred based on
-	// [unit][google.cloud.talent.v4.CompensationInfo.CompensationEntry.unit].
-	// Default values:
+	// [Job.employment_types][google.cloud.talent.v4.Job.employment_types] is FULLTIME, a default value is inferred
+	// based on [unit][google.cloud.talent.v4.CompensationInfo.CompensationEntry.unit]. Default values:
 	// - HOURLY: 2080
 	// - DAILY: 260
 	// - WEEKLY: 52
@@ -2325,20 +2257,20 @@ var file_google_cloud_talent_v4_common_proto_rawDesc = []byte{
 	0x0a, 0x23, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x74,
 	0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2f, 0x76, 0x34, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x16, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
-	0x6f, 0x75, 0x64, 0x2e, 0x74, 0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x34, 0x1a, 0x1c, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f, 0x62, 0x65,
-	0x68, 0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f,
-	0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74, 0x69,
-	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x77,
-	0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x18, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f, 0x6c, 0x61, 0x74, 0x6c, 0x6e,
-	0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x17, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f,
-	0x74, 0x79, 0x70, 0x65, 0x2f, 0x6d, 0x6f, 0x6e, 0x65, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x1a, 0x20, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f, 0x70, 0x6f,
-	0x73, 0x74, 0x61, 0x6c, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x2e, 0x70, 0x72, 0x6f,
+	0x6f, 0x75, 0x64, 0x2e, 0x74, 0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x34, 0x1a, 0x1f, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f,
+	0x62, 0x65, 0x68, 0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f,
+	0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
+	0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2f, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
+	0x18, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f, 0x6c, 0x61, 0x74,
+	0x6c, 0x6e, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x17, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f, 0x6d, 0x6f, 0x6e, 0x65, 0x79, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x1a, 0x20, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f,
+	0x70, 0x6f, 0x73, 0x74, 0x61, 0x6c, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69,
+	0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x22, 0x82, 0x01, 0x0a, 0x0e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70,
 	0x52, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x39, 0x0a, 0x0a, 0x73, 0x74, 0x61, 0x72, 0x74, 0x5f, 0x74,
 	0x69, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
@@ -2678,20 +2610,19 @@ var file_google_cloud_talent_v4_common_proto_rawDesc = []byte{
 	0x54, 0x49, 0x5a, 0x41, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x44, 0x49, 0x53, 0x41, 0x42, 0x4c, 0x45,
 	0x44, 0x10, 0x01, 0x12, 0x1a, 0x0a, 0x16, 0x53, 0x49, 0x4d, 0x50, 0x4c, 0x45, 0x5f, 0x46, 0x4f,
 	0x52, 0x4d, 0x41, 0x54, 0x54, 0x49, 0x4e, 0x47, 0x5f, 0x4f, 0x4e, 0x4c, 0x59, 0x10, 0x02, 0x2a,
-	0x63, 0x0a, 0x0d, 0x43, 0x6f, 0x6d, 0x6d, 0x75, 0x74, 0x65, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64,
+	0x49, 0x0a, 0x0d, 0x43, 0x6f, 0x6d, 0x6d, 0x75, 0x74, 0x65, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64,
 	0x12, 0x1e, 0x0a, 0x1a, 0x43, 0x4f, 0x4d, 0x4d, 0x55, 0x54, 0x45, 0x5f, 0x4d, 0x45, 0x54, 0x48,
 	0x4f, 0x44, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00,
 	0x12, 0x0b, 0x0a, 0x07, 0x44, 0x52, 0x49, 0x56, 0x49, 0x4e, 0x47, 0x10, 0x01, 0x12, 0x0b, 0x0a,
-	0x07, 0x54, 0x52, 0x41, 0x4e, 0x53, 0x49, 0x54, 0x10, 0x02, 0x12, 0x0b, 0x0a, 0x07, 0x57, 0x41,
-	0x4c, 0x4b, 0x49, 0x4e, 0x47, 0x10, 0x03, 0x12, 0x0b, 0x0a, 0x07, 0x43, 0x59, 0x43, 0x4c, 0x49,
-	0x4e, 0x47, 0x10, 0x04, 0x42, 0x6f, 0x0a, 0x1a, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2e,
-	0x76, 0x34, 0x42, 0x0b, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50,
-	0x01, 0x5a, 0x3c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67,
-	0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f,
-	0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x74,
-	0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2f, 0x76, 0x34, 0x3b, 0x74, 0x61, 0x6c, 0x65, 0x6e, 0x74, 0xa2,
-	0x02, 0x03, 0x43, 0x54, 0x53, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x07, 0x54, 0x52, 0x41, 0x4e, 0x53, 0x49, 0x54, 0x10, 0x02, 0x42, 0x6f, 0x0a, 0x1a, 0x63, 0x6f,
+	0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74,
+	0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x34, 0x42, 0x0b, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63,
+	0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x74, 0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2f, 0x76, 0x34, 0x3b, 0x74,
+	0x61, 0x6c, 0x65, 0x6e, 0x74, 0xa2, 0x02, 0x03, 0x43, 0x54, 0x53, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (

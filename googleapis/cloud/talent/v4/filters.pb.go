@@ -105,37 +105,29 @@ const (
 	CompensationFilter_FILTER_TYPE_UNSPECIFIED CompensationFilter_FilterType = 0
 	// Filter by `base compensation entry's` unit. A job is a match if and
 	// only if the job contains a base CompensationEntry and the base
-	// CompensationEntry's unit matches provided
-	// [units][google.cloud.talent.v4.CompensationFilter.units]. Populate one or
-	// more [units][google.cloud.talent.v4.CompensationFilter.units].
+	// CompensationEntry's unit matches provided [units][google.cloud.talent.v4.CompensationFilter.units].
+	// Populate one or more [units][google.cloud.talent.v4.CompensationFilter.units].
 	//
-	// See
-	// [CompensationInfo.CompensationEntry][google.cloud.talent.v4.CompensationInfo.CompensationEntry]
-	// for definition of base compensation entry.
+	// See [CompensationInfo.CompensationEntry][google.cloud.talent.v4.CompensationInfo.CompensationEntry] for definition of
+	// base compensation entry.
 	CompensationFilter_UNIT_ONLY CompensationFilter_FilterType = 1
 	// Filter by `base compensation entry's` unit and amount / range. A job
 	// is a match if and only if the job contains a base CompensationEntry, and
 	// the base entry's unit matches provided
-	// [CompensationUnit][google.cloud.talent.v4.CompensationInfo.CompensationUnit]
-	// and amount or range overlaps with provided
+	// [CompensationUnit][google.cloud.talent.v4.CompensationInfo.CompensationUnit] and
+	// amount or range overlaps with provided
 	// [CompensationRange][google.cloud.talent.v4.CompensationInfo.CompensationRange].
 	//
-	// See
-	// [CompensationInfo.CompensationEntry][google.cloud.talent.v4.CompensationInfo.CompensationEntry]
-	// for definition of base compensation entry.
+	// See [CompensationInfo.CompensationEntry][google.cloud.talent.v4.CompensationInfo.CompensationEntry] for definition of
+	// base compensation entry.
 	//
-	// Set exactly one [units][google.cloud.talent.v4.CompensationFilter.units]
-	// and populate [range][google.cloud.talent.v4.CompensationFilter.range].
+	// Set exactly one [units][google.cloud.talent.v4.CompensationFilter.units] and populate [range][google.cloud.talent.v4.CompensationFilter.range].
 	CompensationFilter_UNIT_AND_AMOUNT CompensationFilter_FilterType = 2
 	// Filter by annualized base compensation amount and `base compensation
-	// entry's` unit. Populate
-	// [range][google.cloud.talent.v4.CompensationFilter.range] and zero or more
-	// [units][google.cloud.talent.v4.CompensationFilter.units].
+	// entry's` unit. Populate [range][google.cloud.talent.v4.CompensationFilter.range] and zero or more [units][google.cloud.talent.v4.CompensationFilter.units].
 	CompensationFilter_ANNUALIZED_BASE_AMOUNT CompensationFilter_FilterType = 3
 	// Filter by annualized total compensation amount and `base compensation
-	// entry's` unit . Populate
-	// [range][google.cloud.talent.v4.CompensationFilter.range] and zero or more
-	// [units][google.cloud.talent.v4.CompensationFilter.units].
+	// entry's` unit . Populate [range][google.cloud.talent.v4.CompensationFilter.range] and zero or more [units][google.cloud.talent.v4.CompensationFilter.units].
 	CompensationFilter_ANNUALIZED_TOTAL_AMOUNT CompensationFilter_FilterType = 4
 )
 
@@ -248,8 +240,8 @@ type JobQuery struct {
 	//
 	// The maximum number of allowed characters is 255.
 	Query string `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	// The language code of [query][google.cloud.talent.v4.JobQuery.query]. For
-	// example, "en-US". This field helps to better interpret the query.
+	// The language code of [query][google.cloud.talent.v4.JobQuery.query]. For example, "en-US". This field helps to
+	// better interpret the query.
 	//
 	// If a value isn't specified, the query language code is automatically
 	// detected, which may not be accurate.
@@ -273,16 +265,15 @@ type JobQuery struct {
 	// At most 20 company filters are allowed.
 	Companies []string `protobuf:"bytes,2,rep,name=companies,proto3" json:"companies,omitempty"`
 	// The location filter specifies geo-regions containing the jobs to
-	// search against. See [LocationFilter][google.cloud.talent.v4.LocationFilter]
-	// for more information.
+	// search against. See [LocationFilter][google.cloud.talent.v4.LocationFilter] for more information.
 	//
 	// If a location value isn't specified, jobs fitting the other search
 	// criteria are retrieved regardless of where they're located.
 	//
 	// If multiple values are specified, jobs are retrieved from any of the
 	// specified locations. If different values are specified for the
-	// [LocationFilter.distance_in_miles][google.cloud.talent.v4.LocationFilter.distance_in_miles]
-	// parameter, the maximum provided distance is used for all locations.
+	// [LocationFilter.distance_in_miles][google.cloud.talent.v4.LocationFilter.distance_in_miles] parameter, the maximum provided
+	// distance is used for all locations.
 	//
 	// At most 5 location filters are allowed.
 	LocationFilters []*LocationFilter `protobuf:"bytes,3,rep,name=location_filters,json=locationFilters,proto3" json:"location_filters,omitempty"`
@@ -297,16 +288,13 @@ type JobQuery struct {
 	// Allows filtering jobs by commute time with different travel methods (for
 	//  example, driving or public transit).
 	//
-	// Note: This only works when you specify a
-	// [CommuteMethod][google.cloud.talent.v4.CommuteMethod]. In this case,
-	// [location_filters][google.cloud.talent.v4.JobQuery.location_filters] is
-	// ignored.
+	// Note: This only works when you specify a [CommuteMethod][google.cloud.talent.v4.CommuteMethod]. In this case,
+	// [location_filters][google.cloud.talent.v4.JobQuery.location_filters] is ignored.
 	//
 	//  Currently we don't support sorting by commute time.
 	CommuteFilter *CommuteFilter `protobuf:"bytes,5,opt,name=commute_filter,json=commuteFilter,proto3" json:"commute_filter,omitempty"`
-	// This filter specifies the exact company
-	// [Company.display_name][google.cloud.talent.v4.Company.display_name] of the
-	// jobs to search against.
+	// This filter specifies the exact company [Company.display_name][google.cloud.talent.v4.Company.display_name]
+	// of the jobs to search against.
 	//
 	// If a value isn't specified, jobs within the search results are
 	// associated with any company.
@@ -317,14 +305,13 @@ type JobQuery struct {
 	// At most 20 company display name filters are allowed.
 	CompanyDisplayNames []string `protobuf:"bytes,6,rep,name=company_display_names,json=companyDisplayNames,proto3" json:"company_display_names,omitempty"`
 	// This search filter is applied only to
-	// [Job.compensation_info][google.cloud.talent.v4.Job.compensation_info]. For
-	// example, if the filter is specified as "Hourly job with per-hour
-	// compensation > $15", only jobs meeting these criteria are searched. If a
-	// filter isn't defined, all open jobs are searched.
+	// [Job.compensation_info][google.cloud.talent.v4.Job.compensation_info]. For example, if the filter is specified
+	// as "Hourly job with per-hour compensation > $15", only jobs meeting
+	// these criteria are searched. If a filter isn't defined, all open jobs
+	// are searched.
 	CompensationFilter *CompensationFilter `protobuf:"bytes,7,opt,name=compensation_filter,json=compensationFilter,proto3" json:"compensation_filter,omitempty"`
 	// This filter specifies a structured syntax to match against the
-	// [Job.custom_attributes][google.cloud.talent.v4.Job.custom_attributes]
-	// marked as `filterable`.
+	// [Job.custom_attributes][google.cloud.talent.v4.Job.custom_attributes] marked as `filterable`.
 	//
 	// The syntax for this expression is a subset of SQL syntax.
 	//
@@ -353,8 +340,7 @@ type JobQuery struct {
 	// Defaults to false: a spell check is performed.
 	DisableSpellCheck bool `protobuf:"varint,9,opt,name=disable_spell_check,json=disableSpellCheck,proto3" json:"disable_spell_check,omitempty"`
 	// The employment type filter specifies the employment type of jobs to
-	// search against, such as
-	// [EmploymentType.FULL_TIME][google.cloud.talent.v4.EmploymentType.FULL_TIME].
+	// search against, such as [EmploymentType.FULL_TIME][google.cloud.talent.v4.EmploymentType.FULL_TIME].
 	//
 	// If a value isn't specified, jobs in the search results includes any
 	// employment type.
@@ -544,15 +530,12 @@ type LocationFilter struct {
 	// Allows the client to return jobs without a
 	// set location, specifically, telecommuting jobs (telecommuting is considered
 	// by the service as a special location.
-	// [Job.posting_region][google.cloud.talent.v4.Job.posting_region] indicates
-	// if a job permits telecommuting. If this field is set to
-	// [TelecommutePreference.TELECOMMUTE_ALLOWED][google.cloud.talent.v4.LocationFilter.TelecommutePreference.TELECOMMUTE_ALLOWED],
-	// telecommuting jobs are searched, and
-	// [address][google.cloud.talent.v4.LocationFilter.address] and
-	// [lat_lng][google.cloud.talent.v4.LocationFilter.lat_lng] are ignored. If
-	// not set or set to
-	// [TelecommutePreference.TELECOMMUTE_EXCLUDED][google.cloud.talent.v4.LocationFilter.TelecommutePreference.TELECOMMUTE_EXCLUDED],
-	// telecommute job are not searched.
+	// [Job.posting_region][google.cloud.talent.v4.Job.posting_region] indicates if a job permits telecommuting.
+	// If this field is set to [TelecommutePreference.TELECOMMUTE_ALLOWED][google.cloud.talent.v4.LocationFilter.TelecommutePreference.TELECOMMUTE_ALLOWED],
+	// telecommuting jobs are searched, and [address][google.cloud.talent.v4.LocationFilter.address] and [lat_lng][google.cloud.talent.v4.LocationFilter.lat_lng] are
+	// ignored. If not set or set to
+	// [TelecommutePreference.TELECOMMUTE_EXCLUDED][google.cloud.talent.v4.LocationFilter.TelecommutePreference.TELECOMMUTE_EXCLUDED], telecommute job are not
+	// searched.
 	//
 	// This filter can be used by itself to search exclusively for telecommuting
 	// jobs, or it can be combined with another location
@@ -721,8 +704,8 @@ type CommuteFilter struct {
 	// Required. The latitude and longitude of the location to calculate the
 	// commute time from.
 	StartCoordinates *latlng.LatLng `protobuf:"bytes,2,opt,name=start_coordinates,json=startCoordinates,proto3" json:"start_coordinates,omitempty"`
-	// Required. The maximum travel time in seconds. The maximum allowed value is
-	// `3600s` (one hour). Format is `123s`.
+	// Required. The maximum travel time in seconds. The maximum allowed value is `3600s`
+	// (one hour). Format is `123s`.
 	TravelDuration *durationpb.Duration `protobuf:"bytes,3,opt,name=travel_duration,json=travelDuration,proto3" json:"travel_duration,omitempty"`
 	// If `true`, jobs without street level addresses may also be returned.
 	// For city level addresses, the city center is used. For state and coarser
@@ -846,19 +829,19 @@ var file_google_cloud_talent_v4_filters_proto_rawDesc = []byte{
 	0x0a, 0x24, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x74,
 	0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2f, 0x76, 0x34, 0x2f, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x73,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x16, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
-	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x34, 0x1a, 0x1c,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f,
-	0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f, 0x62,
-	0x65, 0x68, 0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x23, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x74, 0x61, 0x6c, 0x65,
-	0x6e, 0x74, 0x2f, 0x76, 0x34, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x62, 0x75, 0x66, 0x2f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x1a, 0x18, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f,
-	0x6c, 0x61, 0x74, 0x6c, 0x6e, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1b, 0x67, 0x6f,
-	0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x6f, 0x66,
-	0x64, 0x61, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xc9, 0x06, 0x0a, 0x08, 0x4a, 0x6f,
+	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x74, 0x61, 0x6c, 0x65, 0x6e, 0x74, 0x2e, 0x76, 0x34, 0x1a, 0x1f,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64,
+	0x5f, 0x62, 0x65, 0x68, 0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
+	0x23, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x74, 0x61,
+	0x6c, 0x65, 0x6e, 0x74, 0x2f, 0x76, 0x34, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x18, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x74, 0x79, 0x70,
+	0x65, 0x2f, 0x6c, 0x61, 0x74, 0x6c, 0x6e, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1b,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f, 0x74, 0x69, 0x6d, 0x65,
+	0x6f, 0x66, 0x64, 0x61, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xc9, 0x06, 0x0a, 0x08, 0x4a, 0x6f,
 	0x62, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x12, 0x2e, 0x0a, 0x13,
 	0x71, 0x75, 0x65, 0x72, 0x79, 0x5f, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x5f, 0x63,
