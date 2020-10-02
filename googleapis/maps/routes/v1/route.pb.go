@@ -923,25 +923,22 @@ func (x *NavigationInstruction) GetInstructions() string {
 	return ""
 }
 
-// Traffic density indicator on a contiguous segment of a polyline.
-// Given a polyline with polyline points P_0, P_1, ... , P_N
-// (the indexing is zero-based), the SpeedReadingInterval defines an
-// interval (including the start, exclusing the end point) and describes the
-// traffic density on the respective interval using the below style categories.
+// Traffic density indicator on a contiguous segment of a polyline or path.
+// Given a path with points P_0, P_1, ... , P_N (zero-based index), the
+// SpeedReadingInterval defines an interval and describes its traffic using the
+// following categories.
 type SpeedReadingInterval struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The index of the starting polyline point of the interval
-	// in the ordered list of polyline points.
+	// The starting index of this interval in the polyline.
 	// In JSON, when the index is 0, the field will appear to be unpopulated.
 	StartPolylinePointIndex int32 `protobuf:"varint,1,opt,name=start_polyline_point_index,json=startPolylinePointIndex,proto3" json:"start_polyline_point_index,omitempty"`
-	// The index of the ending polyline point of the interval
-	// (with off-by-one ending) in the ordered list of polyline points.
+	// The ending index of this interval in the polyline.
 	// In JSON, when the index is 0, the field will appear to be unpopulated.
 	EndPolylinePointIndex int32 `protobuf:"varint,2,opt,name=end_polyline_point_index,json=endPolylinePointIndex,proto3" json:"end_polyline_point_index,omitempty"`
-	// Traffic information speed at the interval.
+	// Traffic speed in this interval.
 	Speed SpeedReadingInterval_Speed `protobuf:"varint,3,opt,name=speed,proto3,enum=google.maps.routes.v1.SpeedReadingInterval_Speed" json:"speed,omitempty"`
 }
 
