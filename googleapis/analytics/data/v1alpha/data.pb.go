@@ -1731,7 +1731,9 @@ type PivotHeader struct {
 	// The size is the same as the cardinality of the corresponding dimension
 	// combinations.
 	PivotDimensionHeaders []*PivotDimensionHeader `protobuf:"bytes,1,rep,name=pivot_dimension_headers,json=pivotDimensionHeaders,proto3" json:"pivot_dimension_headers,omitempty"`
-	// The cardinality of the pivot as if offset = 0 and limit = -1.
+	// The cardinality of the pivot as if offset = 0 and limit = -1. The total
+	// number of rows for this pivot's fields regardless of how the parameters
+	// offset and limit are specified in the request.
 	RowCount int32 `protobuf:"varint,2,opt,name=row_count,json=rowCount,proto3" json:"row_count,omitempty"`
 }
 
