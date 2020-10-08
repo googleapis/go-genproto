@@ -112,7 +112,7 @@ type WriteUserEventRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent eventStore resource name, such as
+	// Required. The parent catalog resource name, such as
 	// "projects/1234/locations/global/catalogs/default_catalog".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. User event to write.
@@ -171,15 +171,16 @@ type CollectUserEventRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent eventStore name, such as
+	// Required. The parent catalog name, such as
 	// "projects/1234/locations/global/catalogs/default_catalog".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. URL encoded UserEvent proto.
+	// Required. URL encoded UserEvent proto with a length limit of 2,000,000
+	// characters.
 	UserEvent string `protobuf:"bytes,2,opt,name=user_event,json=userEvent,proto3" json:"user_event,omitempty"`
-	// The url including cgi-parameters but excluding the hash fragment. The URL
-	// must be truncated to 1.5K bytes to conservatively be under the 2K bytes.
-	// This is often more useful than the referer url, because many browsers only
-	// send the domain for 3rd party requests.
+	// The url including cgi-parameters but excluding the hash fragment with a
+	// length limit of 5,000 characters. This is often more useful than the
+	// referer url, because many browsers only send the domain for 3rd party
+	// requests.
 	Uri string `protobuf:"bytes,3,opt,name=uri,proto3" json:"uri,omitempty"`
 	// The event timestamp in milliseconds. This prevents browser caching of
 	// otherwise identical get requests. The name is abbreviated to reduce the

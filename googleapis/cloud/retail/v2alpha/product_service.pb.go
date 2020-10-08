@@ -73,8 +73,8 @@ type CreateProductRequest struct {
 	// [parent][google.cloud.retail.v2alpha.CreateProductRequest.parent].
 	// Otherwise, an ALREADY_EXISTS error is returned.
 	//
-	// This field must be a UTF-8 encoded string with a length limit of 128 bytes.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// This field must be a UTF-8 encoded string with a length limit of 128
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	ProductId string `protobuf:"bytes,3,opt,name=product_id,json=productId,proto3" json:"product_id,omitempty"`
 }
 
@@ -680,8 +680,7 @@ type ProductServiceClient interface {
 	// Depending on the number of [Product][google.cloud.retail.v2alpha.Product]s,
 	// this operation could take hours to complete. To get a sample of
 	// [Product][google.cloud.retail.v2alpha.Product]s that would be deleted, set
-	// [PurgeProductsRequest.force][google.cloud.retail.v2alpha.PurgeProductsRequest.force]
-	// to false.
+	// [PurgeProductsRequest.force][] to false.
 	PurgeProducts(ctx context.Context, in *PurgeProductsRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Bulk import of multiple [Product][google.cloud.retail.v2alpha.Product]s.
 	//
@@ -783,8 +782,7 @@ type ProductServiceServer interface {
 	// Depending on the number of [Product][google.cloud.retail.v2alpha.Product]s,
 	// this operation could take hours to complete. To get a sample of
 	// [Product][google.cloud.retail.v2alpha.Product]s that would be deleted, set
-	// [PurgeProductsRequest.force][google.cloud.retail.v2alpha.PurgeProductsRequest.force]
-	// to false.
+	// [PurgeProductsRequest.force][] to false.
 	PurgeProducts(context.Context, *PurgeProductsRequest) (*longrunning.Operation, error)
 	// Bulk import of multiple [Product][google.cloud.retail.v2alpha.Product]s.
 	//

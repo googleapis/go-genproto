@@ -97,15 +97,15 @@ type PredictRequest struct {
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The previous PredictResponse.next_page_token.
 	PageToken string `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// Filter for restricting prediction results. Accepts values for
-	// tags and the `filterOutOfStockItems` flag.
+	// Filter for restricting prediction results with a length limit of 5,000
+	// characters. Accepts values for tags and the `filterOutOfStockItems` flag.
 	//
 	//  * Tag expressions. Restricts predictions to products that match all of the
 	//    specified tags. Boolean operators `OR` and `NOT` are supported if the
 	//    expression is enclosed in parentheses, and must be separated from the
 	//    tag values by a space. `-"tagA"` is also supported and is equivalent to
 	//    `NOT "tagA"`. Tag values must be double quoted UTF-8 encoded strings
-	//    with a size limit of 1 KiB.
+	//    with a size limit of 1,000 characters.
 	//
 	//  * filterOutOfStockItems. Restricts predictions to products that do not
 	//  have a

@@ -141,8 +141,8 @@ type Catalog struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. Immutable. The catalog display name.
 	//
-	// This field must be a UTF-8 encoded string with a length limit of 128 bytes.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// This field must be a UTF-8 encoded string with a length limit of 128
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Required. The product level configuration.
 	ProductLevelConfig *ProductLevelConfig `protobuf:"bytes,4,opt,name=product_level_config,json=productLevelConfig,proto3" json:"product_level_config,omitempty"`
