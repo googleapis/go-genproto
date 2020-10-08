@@ -66,8 +66,8 @@ type UserEvent struct {
 	// identify a visitor on a single device. This unique identifier should not
 	// change if the visitor log in/out of the website.
 	//
-	// The field must be a UTF-8 encoded string with a length limit of 128 bytes.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// The field must be a UTF-8 encoded string with a length limit of 128
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	VisitorId string `protobuf:"bytes,2,opt,name=visitor_id,json=visitorId,proto3" json:"visitor_id,omitempty"`
 	// Only required for
 	// [UserEventService.ImportUserEvents][google.cloud.retail.v2alpha.UserEventService.ImportUserEvents]
@@ -131,8 +131,8 @@ type UserEvent struct {
 	PurchaseTransaction *PurchaseTransaction `protobuf:"bytes,9,opt,name=purchase_transaction,json=purchaseTransaction,proto3" json:"purchase_transaction,omitempty"`
 	// The user's search query.
 	//
-	// The value must be a UTF-8 encoded string with a length limit of 5 KiB.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// The value must be a UTF-8 encoded string with a length limit of 5,000
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Required for `search` events. Other event types should not set this field.
 	// Otherwise, an INVALID_ARGUMENT error is returned.
@@ -154,7 +154,8 @@ type UserEvent struct {
 	UserInfo *UserInfo `protobuf:"bytes,12,opt,name=user_info,json=userInfo,proto3" json:"user_info,omitempty"`
 	// Complete url (window.location.href) of the user's current page.
 	// When using the client side event reporting with JavaScript pixel and Google
-	// Tag Manager, this value is filled in automatically. Maximum length 5KB.
+	// Tag Manager, this value is filled in automatically. Maximum length 5,000
+	// characters.
 	Uri string `protobuf:"bytes,13,opt,name=uri,proto3" json:"uri,omitempty"`
 	// The referrer url of the current page. When using
 	// the client side event reporting with JavaScript pixel and Google Tag
@@ -335,7 +336,8 @@ type ProductDetail struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. [Product][google.cloud.retail.v2alpha.Product] information.
-	// Only [Product][id] field must to be set.
+	// Only [Product][id] field is used when ingesting an event, all other product
+	// fields are ignored as we will look them up from the catalog.
 	Product *Product `protobuf:"bytes,1,opt,name=product,proto3" json:"product,omitempty"`
 	// Quantity of the product associated with the user event. For
 	// example, this field will be 2 if two products are added to the shopping
@@ -396,7 +398,7 @@ type PurchaseTransaction struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The transaction ID with a length limit of 128 bytes.
+	// The transaction ID with a length limit of 128 characters.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Required. Total revenue or grand total associated with the transaction.
 	// This value include shipping, tax, or other adjustments to total revenue

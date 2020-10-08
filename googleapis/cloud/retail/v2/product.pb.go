@@ -28,7 +28,6 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	_ "google.golang.org/protobuf/types/known/durationpb"
 	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
@@ -129,8 +128,8 @@ type Product struct {
 	//
 	// "projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1".
 	//
-	// This field must be a UTF-8 encoded string with a length limit of 128 bytes.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// This field must be a UTF-8 encoded string with a length limit of 128
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Google Merchant Center property
 	// [id](https://support.google.com/merchants/answer/6324405).
@@ -145,7 +144,7 @@ type Product struct {
 	// error is returned.
 	//
 	// Should only be set for [Type.VARIANT][]
-	// [Product][google.cloud.retail.v2.Product]s. A maximum of 1000 products are
+	// [Product][google.cloud.retail.v2.Product]s. A maximum of 2000 products are
 	// allowed to share the same [Type.PRIMARY][]
 	// [Product][google.cloud.retail.v2.Product]. Otherwise, an INVALID_ARGUMENT
 	// error is returned.
@@ -183,8 +182,8 @@ type Product struct {
 	//
 	// At most 250 values are allowed per
 	// [Product][google.cloud.retail.v2.Product]. Empty values are not allowed.
-	// Each value must be a UTF-8 encoded string with a length limit of 5 KiB.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// Each value must be a UTF-8 encoded string with a length limit of 5,000
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Google Merchant Center property
 	//
@@ -194,8 +193,8 @@ type Product struct {
 	Categories []string `protobuf:"bytes,7,rep,name=categories,proto3" json:"categories,omitempty"`
 	// Required. Product title.
 	//
-	// This field must be a UTF-8 encoded string with a length limit of 128 bytes.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// This field must be a UTF-8 encoded string with a length limit of 128
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Google Merchant Center property
 	// [title](https://support.google.com/merchants/answer/6324415). Schema.org
@@ -203,8 +202,8 @@ type Product struct {
 	Title string `protobuf:"bytes,8,opt,name=title,proto3" json:"title,omitempty"`
 	// Product description.
 	//
-	// This field must be a UTF-8 encoded string with a length limit of 5 KiB.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// This field must be a UTF-8 encoded string with a length limit of 5,000
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Google Merchant Center property
 	// [description](https://support.google.com/merchants/answer/6324468).
@@ -245,8 +244,8 @@ type Product struct {
 	//
 	// At most 250 values are allowed per
 	// [Product][google.cloud.retail.v2.Product]. This value must be a UTF-8
-	// encoded string with a length limit of 1 KiB. Otherwise, an INVALID_ARGUMENT
-	// error is returned.
+	// encoded string with a length limit of 1,000 characters. Otherwise, an
+	// INVALID_ARGUMENT error is returned.
 	//
 	// This tag can be used for filtering recommendation results by passing the
 	// tag as part of the
@@ -275,8 +274,8 @@ type Product struct {
 	AvailableQuantity *wrapperspb.Int32Value `protobuf:"bytes,20,opt,name=available_quantity,json=availableQuantity,proto3" json:"available_quantity,omitempty"`
 	// Canonical URL directly linking to the product detail page.
 	//
-	// This field must be a UTF-8 encoded string with a length limit of 5 KiB.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// This field must be a UTF-8 encoded string with a length limit of 5,000
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Google Merchant Center property
 	// [link](https://support.google.com/merchants/answer/6324416).
@@ -476,9 +475,7 @@ var file_google_cloud_retail_v2_product_proto_rawDesc = []byte{
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72,
 	0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x23, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
 	0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2f, 0x76, 0x32,
-	0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x64,
-	0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x20, 0x67,
+	0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x20, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x66,
 	0x69, 0x65, 0x6c, 0x64, 0x5f, 0x6d, 0x61, 0x73, 0x6b, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
 	0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
