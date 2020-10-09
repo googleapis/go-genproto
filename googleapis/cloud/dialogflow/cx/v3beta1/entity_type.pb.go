@@ -183,9 +183,7 @@ func (EntityType_AutoExpansionMode) EnumDescriptor() ([]byte, []int) {
 //
 // *   **User** - entities that are built for an individual user such as
 //     favorites, preferences, playlists, and so on. A user entity is
-//     represented by the
-//     [SessionEntityType][google.cloud.dialogflow.cx.v3beta1.SessionEntityType]
-//     type.
+//     represented by the [SessionEntityType][google.cloud.dialogflow.cx.v3beta1.SessionEntityType] type.
 //
 // For more information about entity types, see the [Dialogflow
 // documentation](https://cloud.google.com/dialogflow/docs/entities-overview).
@@ -195,13 +193,11 @@ type EntityType struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The unique identifier of the entity type.
-	// Required for
-	// [EntityTypes.UpdateEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.UpdateEntityType].
+	// Required for [EntityTypes.UpdateEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.UpdateEntityType].
 	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
 	// ID>/entityTypes/<Entity Type ID>`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The human-readable name of the entity type, unique within the
-	// agent.
+	// Required. The human-readable name of the entity type, unique within the agent.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Required. Indicates the kind of entity type.
 	Kind EntityType_Kind `protobuf:"varint,3,opt,name=kind,proto3,enum=google.cloud.dialogflow.cx.v3beta1.EntityType_Kind" json:"kind,omitempty"`
@@ -300,8 +296,7 @@ func (x *EntityType) GetEnableFuzzyExtraction() bool {
 	return false
 }
 
-// The request message for
-// [EntityTypes.ListEntityTypes][google.cloud.dialogflow.cx.v3beta1.EntityTypes.ListEntityTypes].
+// The request message for [EntityTypes.ListEntityTypes][google.cloud.dialogflow.cx.v3beta1.EntityTypes.ListEntityTypes].
 type ListEntityTypesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -390,8 +385,7 @@ func (x *ListEntityTypesRequest) GetPageToken() string {
 	return ""
 }
 
-// The response message for
-// [EntityTypes.ListEntityTypes][google.cloud.dialogflow.cx.v3beta1.EntityTypes.ListEntityTypes].
+// The response message for [EntityTypes.ListEntityTypes][google.cloud.dialogflow.cx.v3beta1.EntityTypes.ListEntityTypes].
 type ListEntityTypesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -451,8 +445,7 @@ func (x *ListEntityTypesResponse) GetNextPageToken() string {
 	return ""
 }
 
-// The request message for
-// [EntityTypes.GetEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.GetEntityType].
+// The request message for [EntityTypes.GetEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.GetEntityType].
 type GetEntityTypeRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -523,8 +516,7 @@ func (x *GetEntityTypeRequest) GetLanguageCode() string {
 	return ""
 }
 
-// The request message for
-// [EntityTypes.CreateEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.CreateEntityType].
+// The request message for [EntityTypes.CreateEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.CreateEntityType].
 type CreateEntityTypeRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -602,8 +594,7 @@ func (x *CreateEntityTypeRequest) GetLanguageCode() string {
 	return ""
 }
 
-// The request message for
-// [EntityTypes.UpdateEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.UpdateEntityType].
+// The request message for [EntityTypes.UpdateEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.UpdateEntityType].
 type UpdateEntityTypeRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -680,8 +671,7 @@ func (x *UpdateEntityTypeRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	return nil
 }
 
-// The request message for
-// [EntityTypes.DeleteEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.DeleteEntityType].
+// The request message for [EntityTypes.DeleteEntityType][google.cloud.dialogflow.cx.v3beta1.EntityTypes.DeleteEntityType].
 type DeleteEntityTypeRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -698,11 +688,9 @@ type DeleteEntityTypeRequest struct {
 	//    indicating the referencing resources.
 	// *  If `force` is set to true, Dialogflow will remove the entity type, as
 	//    well as any references to the entity type (i.e. Page
-	//    [parameter][google.cloud.dialogflow.cx.v3beta1.Form.Parameter] of the
-	//    entity type will be changed to
-	//    '@sys.any' and intent
-	//    [parameter][google.cloud.dialogflow.cx.v3beta1.Intent.Parameter] of the
-	//    entity type will be removed).
+	//    [parameter][google.cloud.dialogflow.cx.v3beta1.Form.Parameter] of the entity type will be changed to
+	//    '@sys.any' and intent [parameter][google.cloud.dialogflow.cx.v3beta1.Intent.Parameter] of the entity type
+	//    will be removed).
 	Force bool `protobuf:"varint,2,opt,name=force,proto3" json:"force,omitempty"`
 }
 
