@@ -831,11 +831,16 @@ func (x *QueryParameters) GetAnalyzeQueryTextSentiment() bool {
 	return false
 }
 
-// Represents the query input. It can contain either:
+// Represents the query input. It can contain one of:
 //
 // 1.  A conversational query in the form of text.
 //
 // 2.  An intent query that specifies which intent to trigger.
+//
+// 3.  Natural language speech audio to be processed.
+//
+// 4.  An event to be triggered.
+//
 type QueryInput struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
