@@ -1405,12 +1405,12 @@ type AgentsClient interface {
 	UpdateAgent(ctx context.Context, in *UpdateAgentRequest, opts ...grpc.CallOption) (*Agent, error)
 	// Deletes the specified agent.
 	DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	// Exports the specified agent to a ZIP file.
+	// Exports the specified agent to a binary file.
 	ExportAgent(ctx context.Context, in *ExportAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
-	// Restores the specified agent from a ZIP file.
+	// Restores the specified agent from a binary file.
 	//
-	// Note that all existing intents, intent routes, entity types, pages and
-	// webhooks in the agent will be deleted.
+	// Replaces the current agent with a new one. Note that all existing resources
+	// in agent (e.g. intents, entity types, flows) will be removed.
 	RestoreAgent(ctx context.Context, in *RestoreAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -1497,12 +1497,12 @@ type AgentsServer interface {
 	UpdateAgent(context.Context, *UpdateAgentRequest) (*Agent, error)
 	// Deletes the specified agent.
 	DeleteAgent(context.Context, *DeleteAgentRequest) (*emptypb.Empty, error)
-	// Exports the specified agent to a ZIP file.
+	// Exports the specified agent to a binary file.
 	ExportAgent(context.Context, *ExportAgentRequest) (*longrunning.Operation, error)
-	// Restores the specified agent from a ZIP file.
+	// Restores the specified agent from a binary file.
 	//
-	// Note that all existing intents, intent routes, entity types, pages and
-	// webhooks in the agent will be deleted.
+	// Replaces the current agent with a new one. Note that all existing resources
+	// in agent (e.g. intents, entity types, flows) will be removed.
 	RestoreAgent(context.Context, *RestoreAgentRequest) (*longrunning.Operation, error)
 }
 

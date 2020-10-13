@@ -2650,25 +2650,29 @@ type StorageConfig_TimespanConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Exclude files or rows older than this value.
+	// Exclude files, tables, or rows older than this value.
+	// If not set, no lower time limit is applied.
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
-	// Exclude files or rows newer than this value.
-	// If set to zero, no upper time limit is applied.
+	// Exclude files, tables, or rows newer than this value.
+	// If not set, no upper time limit is applied.
 	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Specification of the field containing the timestamp of scanned items.
 	// Used for data sources like Datastore and BigQuery.
 	//
 	// For BigQuery:
-	// Required to filter out rows based on the given start and
-	// end times. If not specified and the table was modified between the given
-	// start and end times, the entire table will be scanned.
-	// The valid data types of the timestamp field are: `INTEGER`, `DATE`,
-	// `TIMESTAMP`, or `DATETIME` BigQuery column.
+	// If this value is not specified and the table was modified between the
+	// given start and end times, the entire table will be scanned. If this
+	// value is specified, then rows are filtered based on the given start and
+	// end times. Rows with a `NULL` value in the provided BigQuery column are
+	// skipped.
+	// Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`,
+	// `TIMESTAMP`, and `DATETIME`.
 	//
-	// For Datastore.
-	// Valid data types of the timestamp field are: `TIMESTAMP`.
-	// Datastore entity will be scanned if the timestamp property does not
-	// exist or its value is empty or invalid.
+	// For Datastore:
+	// If this value is specified, then entities are filtered based on the given
+	// start and end times. If an entity does not contain the provided timestamp
+	// property or contains empty or invalid values, then it is included.
+	// Valid data types of the provided timestamp property are: `TIMESTAMP`.
 	TimestampField *FieldId `protobuf:"bytes,3,opt,name=timestamp_field,json=timestampField,proto3" json:"timestamp_field,omitempty"`
 	// When the job is started by a JobTrigger we will automatically figure out
 	// a valid start_time to avoid scanning files that have not been modified
