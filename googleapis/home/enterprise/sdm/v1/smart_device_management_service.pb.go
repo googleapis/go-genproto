@@ -111,10 +111,8 @@ type ListDevicesRequest struct {
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional filter to list devices.
 	//
-	// Filters can match the exact assignee (could be a structure or a room).
-	// E.g. 'assignee=enterprises/XYZ/structures/abc'
-	// Also could filter by parent (group):
-	// 'parent=enterprises/XYZ/groups/jkl'
+	// Filters can match the exact parent (could be a structure or a room):
+	// 'parent=enterprises/XYZ/structures/jkl'
 	// or filter by device custom name (substring match):
 	// 'customName=wing'
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -420,11 +418,6 @@ type ListStructuresRequest struct {
 	// The token of the page to retrieve.
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional filter to list structures.
-	//
-	// Filters can match the exact album assigned to the structure.
-	// E.g. 'album=enterprises/XYZ/albums/abc'
-	// It also support filtering by parent (only groups for now):
-	// E.g. 'parent=enterprises/XYZ/groups/124'
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
