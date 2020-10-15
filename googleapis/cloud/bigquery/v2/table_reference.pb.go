@@ -16,7 +16,7 @@
 // versions:
 // 	protoc-gen-go v1.25.0
 // 	protoc        v3.13.0
-// source: google/cloud/bigquery/v2/model_reference.proto
+// source: google/cloud/bigquery/v2/table_reference.proto
 
 package bigquery
 
@@ -41,39 +41,40 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Id path of a model.
-type ModelReference struct {
+type TableReference struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The ID of the project containing this model.
+	// Required. The ID of the project containing this table.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
-	// Required. The ID of the dataset containing this model.
+	// Required. The ID of the dataset containing this table.
 	DatasetId string `protobuf:"bytes,2,opt,name=dataset_id,json=datasetId,proto3" json:"dataset_id,omitempty"`
-	// Required. The ID of the model. The ID must contain only
+	// Required. The ID of the table. The ID must contain only
 	// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
-	// length is 1,024 characters.
-	ModelId string `protobuf:"bytes,3,opt,name=model_id,json=modelId,proto3" json:"model_id,omitempty"`
+	// length is 1,024 characters.  Certain operations allow
+	// suffixing of the table ID with a partition decorator, such as
+	// `sample_table$20190123`.
+	TableId string `protobuf:"bytes,3,opt,name=table_id,json=tableId,proto3" json:"table_id,omitempty"`
 }
 
-func (x *ModelReference) Reset() {
-	*x = ModelReference{}
+func (x *TableReference) Reset() {
+	*x = TableReference{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_bigquery_v2_model_reference_proto_msgTypes[0]
+		mi := &file_google_cloud_bigquery_v2_table_reference_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *ModelReference) String() string {
+func (x *TableReference) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ModelReference) ProtoMessage() {}
+func (*TableReference) ProtoMessage() {}
 
-func (x *ModelReference) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_bigquery_v2_model_reference_proto_msgTypes[0]
+func (x *TableReference) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_bigquery_v2_table_reference_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -84,54 +85,54 @@ func (x *ModelReference) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ModelReference.ProtoReflect.Descriptor instead.
-func (*ModelReference) Descriptor() ([]byte, []int) {
-	return file_google_cloud_bigquery_v2_model_reference_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use TableReference.ProtoReflect.Descriptor instead.
+func (*TableReference) Descriptor() ([]byte, []int) {
+	return file_google_cloud_bigquery_v2_table_reference_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ModelReference) GetProjectId() string {
+func (x *TableReference) GetProjectId() string {
 	if x != nil {
 		return x.ProjectId
 	}
 	return ""
 }
 
-func (x *ModelReference) GetDatasetId() string {
+func (x *TableReference) GetDatasetId() string {
 	if x != nil {
 		return x.DatasetId
 	}
 	return ""
 }
 
-func (x *ModelReference) GetModelId() string {
+func (x *TableReference) GetTableId() string {
 	if x != nil {
-		return x.ModelId
+		return x.TableId
 	}
 	return ""
 }
 
-var File_google_cloud_bigquery_v2_model_reference_proto protoreflect.FileDescriptor
+var File_google_cloud_bigquery_v2_table_reference_proto protoreflect.FileDescriptor
 
-var file_google_cloud_bigquery_v2_model_reference_proto_rawDesc = []byte{
+var file_google_cloud_bigquery_v2_table_reference_proto_rawDesc = []byte{
 	0x0a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x62,
-	0x69, 0x67, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2f, 0x76, 0x32, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
+	0x69, 0x67, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2f, 0x76, 0x32, 0x2f, 0x74, 0x61, 0x62, 0x6c, 0x65,
 	0x5f, 0x72, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x12, 0x18, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x62,
 	0x69, 0x67, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x76, 0x32, 0x1a, 0x1f, 0x67, 0x6f, 0x6f, 0x67,
 	0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f, 0x62, 0x65, 0x68,
 	0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x67, 0x6f, 0x6f,
 	0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x78, 0x0a, 0x0e, 0x4d, 0x6f, 0x64,
-	0x65, 0x6c, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x12, 0x22, 0x0a, 0x0a, 0x70,
+	0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x78, 0x0a, 0x0e, 0x54, 0x61, 0x62,
+	0x6c, 0x65, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x12, 0x22, 0x0a, 0x0a, 0x70,
 	0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42,
 	0x03, 0xe0, 0x41, 0x02, 0x52, 0x09, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x49, 0x64, 0x12,
 	0x22, 0x0a, 0x0a, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20,
 	0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x09, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65,
-	0x74, 0x49, 0x64, 0x12, 0x1e, 0x0a, 0x08, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x5f, 0x69, 0x64, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x07, 0x6d, 0x6f, 0x64, 0x65,
-	0x6c, 0x49, 0x64, 0x42, 0x75, 0x0a, 0x1c, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x74, 0x49, 0x64, 0x12, 0x1e, 0x0a, 0x08, 0x74, 0x61, 0x62, 0x6c, 0x65, 0x5f, 0x69, 0x64, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x07, 0x74, 0x61, 0x62, 0x6c,
+	0x65, 0x49, 0x64, 0x42, 0x75, 0x0a, 0x1c, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
 	0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x62, 0x69, 0x67, 0x71, 0x75, 0x65, 0x72, 0x79,
-	0x2e, 0x76, 0x32, 0x42, 0x13, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65,
+	0x2e, 0x76, 0x32, 0x42, 0x13, 0x54, 0x61, 0x62, 0x6c, 0x65, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65,
 	0x6e, 0x63, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x5a, 0x40, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
 	0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f,
@@ -141,22 +142,22 @@ var file_google_cloud_bigquery_v2_model_reference_proto_rawDesc = []byte{
 }
 
 var (
-	file_google_cloud_bigquery_v2_model_reference_proto_rawDescOnce sync.Once
-	file_google_cloud_bigquery_v2_model_reference_proto_rawDescData = file_google_cloud_bigquery_v2_model_reference_proto_rawDesc
+	file_google_cloud_bigquery_v2_table_reference_proto_rawDescOnce sync.Once
+	file_google_cloud_bigquery_v2_table_reference_proto_rawDescData = file_google_cloud_bigquery_v2_table_reference_proto_rawDesc
 )
 
-func file_google_cloud_bigquery_v2_model_reference_proto_rawDescGZIP() []byte {
-	file_google_cloud_bigquery_v2_model_reference_proto_rawDescOnce.Do(func() {
-		file_google_cloud_bigquery_v2_model_reference_proto_rawDescData = protoimpl.X.CompressGZIP(file_google_cloud_bigquery_v2_model_reference_proto_rawDescData)
+func file_google_cloud_bigquery_v2_table_reference_proto_rawDescGZIP() []byte {
+	file_google_cloud_bigquery_v2_table_reference_proto_rawDescOnce.Do(func() {
+		file_google_cloud_bigquery_v2_table_reference_proto_rawDescData = protoimpl.X.CompressGZIP(file_google_cloud_bigquery_v2_table_reference_proto_rawDescData)
 	})
-	return file_google_cloud_bigquery_v2_model_reference_proto_rawDescData
+	return file_google_cloud_bigquery_v2_table_reference_proto_rawDescData
 }
 
-var file_google_cloud_bigquery_v2_model_reference_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_google_cloud_bigquery_v2_model_reference_proto_goTypes = []interface{}{
-	(*ModelReference)(nil), // 0: google.cloud.bigquery.v2.ModelReference
+var file_google_cloud_bigquery_v2_table_reference_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_google_cloud_bigquery_v2_table_reference_proto_goTypes = []interface{}{
+	(*TableReference)(nil), // 0: google.cloud.bigquery.v2.TableReference
 }
-var file_google_cloud_bigquery_v2_model_reference_proto_depIdxs = []int32{
+var file_google_cloud_bigquery_v2_table_reference_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -164,14 +165,14 @@ var file_google_cloud_bigquery_v2_model_reference_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_google_cloud_bigquery_v2_model_reference_proto_init() }
-func file_google_cloud_bigquery_v2_model_reference_proto_init() {
-	if File_google_cloud_bigquery_v2_model_reference_proto != nil {
+func init() { file_google_cloud_bigquery_v2_table_reference_proto_init() }
+func file_google_cloud_bigquery_v2_table_reference_proto_init() {
+	if File_google_cloud_bigquery_v2_table_reference_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_google_cloud_bigquery_v2_model_reference_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ModelReference); i {
+		file_google_cloud_bigquery_v2_table_reference_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TableReference); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -187,18 +188,18 @@ func file_google_cloud_bigquery_v2_model_reference_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_google_cloud_bigquery_v2_model_reference_proto_rawDesc,
+			RawDescriptor: file_google_cloud_bigquery_v2_table_reference_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_google_cloud_bigquery_v2_model_reference_proto_goTypes,
-		DependencyIndexes: file_google_cloud_bigquery_v2_model_reference_proto_depIdxs,
-		MessageInfos:      file_google_cloud_bigquery_v2_model_reference_proto_msgTypes,
+		GoTypes:           file_google_cloud_bigquery_v2_table_reference_proto_goTypes,
+		DependencyIndexes: file_google_cloud_bigquery_v2_table_reference_proto_depIdxs,
+		MessageInfos:      file_google_cloud_bigquery_v2_table_reference_proto_msgTypes,
 	}.Build()
-	File_google_cloud_bigquery_v2_model_reference_proto = out.File
-	file_google_cloud_bigquery_v2_model_reference_proto_rawDesc = nil
-	file_google_cloud_bigquery_v2_model_reference_proto_goTypes = nil
-	file_google_cloud_bigquery_v2_model_reference_proto_depIdxs = nil
+	File_google_cloud_bigquery_v2_table_reference_proto = out.File
+	file_google_cloud_bigquery_v2_table_reference_proto_rawDesc = nil
+	file_google_cloud_bigquery_v2_table_reference_proto_goTypes = nil
+	file_google_cloud_bigquery_v2_table_reference_proto_depIdxs = nil
 }
