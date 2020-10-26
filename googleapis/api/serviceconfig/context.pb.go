@@ -58,7 +58,7 @@ const _ = proto.ProtoPackageIsVersion4
 // Available context types are defined in package
 // `google.rpc.context`.
 //
-// This also provides mechanism to whitelist any protobuf message extension that
+// This also provides mechanism to allowlist any protobuf message extension that
 // can be sent in grpc metadata using “x-goog-ext-<extension_id>-bin” and
 // “x-goog-ext-<extension_id>-jspb” format. For example, list any service
 // specific protobuf types that can appear in grpc metadata as follows in your
