@@ -76,11 +76,7 @@ type Service struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The semantic version of the service configuration. The config version
-	// affects the interpretation of the service configuration. For example,
-	// certain features are enabled by default for certain config versions.
-	//
-	// The latest config version is `3`.
+	// This field is obsolete. Its value must be set to `3`.
 	ConfigVersion *wrapperspb.UInt32Value `protobuf:"bytes,20,opt,name=config_version,json=configVersion,proto3" json:"config_version,omitempty"`
 	// The service name, which is a DNS-like logical identifier for the
 	// service, such as `calendar.googleapis.com`. The service name

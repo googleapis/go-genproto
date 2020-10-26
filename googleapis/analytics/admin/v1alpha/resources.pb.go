@@ -354,7 +354,7 @@ func (x *Account) GetDeleted() bool {
 	return false
 }
 
-// A resource message representing a Google Analytics App+Web property.
+// A resource message representing a Google Analytics GA4 property.
 type Property struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1195,7 +1195,7 @@ func (x *EnhancedMeasurementSettings) GetExcludedDomains() string {
 	return ""
 }
 
-// A link between an App+Web property and a Firebase project.
+// A link between an GA4 property and a Firebase project.
 type FirebaseLink struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1213,7 +1213,7 @@ type FirebaseLink struct {
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	// Output only. Time when this FirebaseLink was originally created.
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// Maximum user access to the App + Web property allowed to admins of
+	// Maximum user access to the GA4 property allowed to admins of
 	// the linked Firebase project.
 	MaximumUserAccess MaximumUserAccess `protobuf:"varint,4,opt,name=maximum_user_access,json=maximumUserAccess,proto3,enum=google.analytics.admin.v1alpha.MaximumUserAccess" json:"maximum_user_access,omitempty"`
 }
@@ -1329,7 +1329,7 @@ func (x *GlobalSiteTag) GetSnippet() string {
 	return ""
 }
 
-// A link between an App+Web property and a Google Ads account.
+// A link between an GA4 property and a Google Ads account.
 type GoogleAdsLink struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1549,7 +1549,7 @@ func (x *DataSharingSettings) GetSharingWithOthersEnabled() bool {
 }
 
 // A virtual resource representing an overview of an account and
-// all its child App+Web properties.
+// all its child GA4 properties.
 type AccountSummary struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1629,7 +1629,7 @@ func (x *AccountSummary) GetPropertySummaries() []*PropertySummary {
 	return nil
 }
 
-// A virtual resource representing metadata for an App+Web property.
+// A virtual resource representing metadata for an GA4 property.
 type PropertySummary struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

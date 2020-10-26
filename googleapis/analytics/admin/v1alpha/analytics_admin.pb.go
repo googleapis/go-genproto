@@ -5948,7 +5948,7 @@ type AnalyticsAdminServiceClient interface {
 	GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*Account, error)
 	// Returns all accounts accessible by the caller.
 	//
-	// Note that these accounts might not currently have App+Web properties.
+	// Note that these accounts might not currently have GA4 properties.
 	// Soft-deleted (ie: "trashed") accounts are excluded by default.
 	// Returns an empty list if no relevant accounts are found.
 	ListAccounts(ctx context.Context, in *ListAccountsRequest, opts ...grpc.CallOption) (*ListAccountsResponse, error)
@@ -5970,19 +5970,19 @@ type AnalyticsAdminServiceClient interface {
 	ProvisionAccountTicket(ctx context.Context, in *ProvisionAccountTicketRequest, opts ...grpc.CallOption) (*ProvisionAccountTicketResponse, error)
 	// Returns summaries of all accounts accessible by the caller.
 	ListAccountSummaries(ctx context.Context, in *ListAccountSummariesRequest, opts ...grpc.CallOption) (*ListAccountSummariesResponse, error)
-	// Lookup for a single "App+Web" Property.
+	// Lookup for a single "GA4" Property.
 	//
 	// Throws "Target not found" if no such property found, if property is not
-	// of the type "App+Web", or if caller does not have permissions to access it.
+	// of the type "GA4", or if caller does not have permissions to access it.
 	GetProperty(ctx context.Context, in *GetPropertyRequest, opts ...grpc.CallOption) (*Property, error)
 	// Returns child Properties under the specified parent Account.
 	//
-	// Only "App+Web" properties will be returned.
+	// Only "GA4" properties will be returned.
 	// Properties will be excluded if the caller does not have access.
 	// Soft-deleted (ie: "trashed") properties are excluded by default.
 	// Returns an empty list if no relevant properties are found.
 	ListProperties(ctx context.Context, in *ListPropertiesRequest, opts ...grpc.CallOption) (*ListPropertiesResponse, error)
-	// Creates an "App+Web" property with the specified location and attributes.
+	// Creates an "GA4" property with the specified location and attributes.
 	CreateProperty(ctx context.Context, in *CreatePropertyRequest, opts ...grpc.CallOption) (*Property, error)
 	// Marks target Property as soft-deleted (ie: "trashed") and returns it.
 	//
@@ -5994,7 +5994,7 @@ type AnalyticsAdminServiceClient interface {
 	// will be permanently purged.
 	// https://support.google.com/analytics/answer/6154772
 	//
-	// Returns an error if the target is not found, or is not an App+Web Property.
+	// Returns an error if the target is not found, or is not an GA4 Property.
 	DeleteProperty(ctx context.Context, in *DeletePropertyRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates a property.
 	UpdateProperty(ctx context.Context, in *UpdatePropertyRequest, opts ...grpc.CallOption) (*Property, error)
@@ -6564,7 +6564,7 @@ type AnalyticsAdminServiceServer interface {
 	GetAccount(context.Context, *GetAccountRequest) (*Account, error)
 	// Returns all accounts accessible by the caller.
 	//
-	// Note that these accounts might not currently have App+Web properties.
+	// Note that these accounts might not currently have GA4 properties.
 	// Soft-deleted (ie: "trashed") accounts are excluded by default.
 	// Returns an empty list if no relevant accounts are found.
 	ListAccounts(context.Context, *ListAccountsRequest) (*ListAccountsResponse, error)
@@ -6586,19 +6586,19 @@ type AnalyticsAdminServiceServer interface {
 	ProvisionAccountTicket(context.Context, *ProvisionAccountTicketRequest) (*ProvisionAccountTicketResponse, error)
 	// Returns summaries of all accounts accessible by the caller.
 	ListAccountSummaries(context.Context, *ListAccountSummariesRequest) (*ListAccountSummariesResponse, error)
-	// Lookup for a single "App+Web" Property.
+	// Lookup for a single "GA4" Property.
 	//
 	// Throws "Target not found" if no such property found, if property is not
-	// of the type "App+Web", or if caller does not have permissions to access it.
+	// of the type "GA4", or if caller does not have permissions to access it.
 	GetProperty(context.Context, *GetPropertyRequest) (*Property, error)
 	// Returns child Properties under the specified parent Account.
 	//
-	// Only "App+Web" properties will be returned.
+	// Only "GA4" properties will be returned.
 	// Properties will be excluded if the caller does not have access.
 	// Soft-deleted (ie: "trashed") properties are excluded by default.
 	// Returns an empty list if no relevant properties are found.
 	ListProperties(context.Context, *ListPropertiesRequest) (*ListPropertiesResponse, error)
-	// Creates an "App+Web" property with the specified location and attributes.
+	// Creates an "GA4" property with the specified location and attributes.
 	CreateProperty(context.Context, *CreatePropertyRequest) (*Property, error)
 	// Marks target Property as soft-deleted (ie: "trashed") and returns it.
 	//
@@ -6610,7 +6610,7 @@ type AnalyticsAdminServiceServer interface {
 	// will be permanently purged.
 	// https://support.google.com/analytics/answer/6154772
 	//
-	// Returns an error if the target is not found, or is not an App+Web Property.
+	// Returns an error if the target is not found, or is not an GA4 Property.
 	DeleteProperty(context.Context, *DeletePropertyRequest) (*emptypb.Empty, error)
 	// Updates a property.
 	UpdateProperty(context.Context, *UpdatePropertyRequest) (*Property, error)
