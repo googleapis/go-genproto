@@ -29,7 +29,7 @@ import (
 	v11 "google.golang.org/genproto/googleapis/cloud/orgpolicy/v1"
 	v1 "google.golang.org/genproto/googleapis/iam/v1"
 	v12 "google.golang.org/genproto/googleapis/identity/accesscontextmanager/v1"
-	_ "google.golang.org/genproto/googleapis/rpc/code"
+	code "google.golang.org/genproto/googleapis/rpc/code"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/anypb"
@@ -885,6 +885,161 @@ func (x *IamPolicySearchResult) GetExplanation() *IamPolicySearchResult_Explanat
 	return nil
 }
 
+// Represents the detailed state of an entity under analysis, such as a
+// resource, an identity or an access.
+type IamPolicyAnalysisState struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The Google standard error code that best describes the state.
+	// For example:
+	// - OK means the analysis on this entity has been successfully finished;
+	// - PERMISSION_DENIED means an access denied error is encountered;
+	// - DEADLINE_EXCEEDED means the analysis on this entity hasn't been started
+	// in time;
+	Code code.Code `protobuf:"varint,1,opt,name=code,proto3,enum=google.rpc.Code" json:"code,omitempty"`
+	// The human-readable description of the cause of failure.
+	Cause string `protobuf:"bytes,2,opt,name=cause,proto3" json:"cause,omitempty"`
+}
+
+func (x *IamPolicyAnalysisState) Reset() {
+	*x = IamPolicyAnalysisState{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IamPolicyAnalysisState) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IamPolicyAnalysisState) ProtoMessage() {}
+
+func (x *IamPolicyAnalysisState) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IamPolicyAnalysisState.ProtoReflect.Descriptor instead.
+func (*IamPolicyAnalysisState) Descriptor() ([]byte, []int) {
+	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *IamPolicyAnalysisState) GetCode() code.Code {
+	if x != nil {
+		return x.Code
+	}
+	return code.Code_OK
+}
+
+func (x *IamPolicyAnalysisState) GetCause() string {
+	if x != nil {
+		return x.Cause
+	}
+	return ""
+}
+
+// IAM Policy analysis result, consisting of one IAM policy binding and derived
+// access control lists.
+type IamPolicyAnalysisResult struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The [full resource
+	// name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+	// of the resource to which the [iam_binding][google.cloud.asset.v1.IamPolicyAnalysisResult.iam_binding] policy attaches.
+	AttachedResourceFullName string `protobuf:"bytes,1,opt,name=attached_resource_full_name,json=attachedResourceFullName,proto3" json:"attached_resource_full_name,omitempty"`
+	// The Cloud IAM policy binding under analysis.
+	IamBinding *v1.Binding `protobuf:"bytes,2,opt,name=iam_binding,json=iamBinding,proto3" json:"iam_binding,omitempty"`
+	// The access control lists derived from the [iam_binding][google.cloud.asset.v1.IamPolicyAnalysisResult.iam_binding] that match or
+	// potentially match resource and access selectors specified in the request.
+	AccessControlLists []*IamPolicyAnalysisResult_AccessControlList `protobuf:"bytes,3,rep,name=access_control_lists,json=accessControlLists,proto3" json:"access_control_lists,omitempty"`
+	// The identity list derived from members of the [iam_binding][google.cloud.asset.v1.IamPolicyAnalysisResult.iam_binding] that match or
+	// potentially match identity selector specified in the request.
+	IdentityList *IamPolicyAnalysisResult_IdentityList `protobuf:"bytes,4,opt,name=identity_list,json=identityList,proto3" json:"identity_list,omitempty"`
+	// Represents whether all analyses on the [iam_binding][google.cloud.asset.v1.IamPolicyAnalysisResult.iam_binding] have successfully
+	// finished.
+	FullyExplored bool `protobuf:"varint,5,opt,name=fully_explored,json=fullyExplored,proto3" json:"fully_explored,omitempty"`
+}
+
+func (x *IamPolicyAnalysisResult) Reset() {
+	*x = IamPolicyAnalysisResult{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IamPolicyAnalysisResult) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IamPolicyAnalysisResult) ProtoMessage() {}
+
+func (x *IamPolicyAnalysisResult) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IamPolicyAnalysisResult.ProtoReflect.Descriptor instead.
+func (*IamPolicyAnalysisResult) Descriptor() ([]byte, []int) {
+	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *IamPolicyAnalysisResult) GetAttachedResourceFullName() string {
+	if x != nil {
+		return x.AttachedResourceFullName
+	}
+	return ""
+}
+
+func (x *IamPolicyAnalysisResult) GetIamBinding() *v1.Binding {
+	if x != nil {
+		return x.IamBinding
+	}
+	return nil
+}
+
+func (x *IamPolicyAnalysisResult) GetAccessControlLists() []*IamPolicyAnalysisResult_AccessControlList {
+	if x != nil {
+		return x.AccessControlLists
+	}
+	return nil
+}
+
+func (x *IamPolicyAnalysisResult) GetIdentityList() *IamPolicyAnalysisResult_IdentityList {
+	if x != nil {
+		return x.IdentityList
+	}
+	return nil
+}
+
+func (x *IamPolicyAnalysisResult) GetFullyExplored() bool {
+	if x != nil {
+		return x.FullyExplored
+	}
+	return false
+}
+
 // Explanation about the IAM policy search result.
 type IamPolicySearchResult_Explanation struct {
 	state         protoimpl.MessageState
@@ -904,7 +1059,7 @@ type IamPolicySearchResult_Explanation struct {
 func (x *IamPolicySearchResult_Explanation) Reset() {
 	*x = IamPolicySearchResult_Explanation{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[7]
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -917,7 +1072,7 @@ func (x *IamPolicySearchResult_Explanation) String() string {
 func (*IamPolicySearchResult_Explanation) ProtoMessage() {}
 
 func (x *IamPolicySearchResult_Explanation) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[7]
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -953,7 +1108,7 @@ type IamPolicySearchResult_Explanation_Permissions struct {
 func (x *IamPolicySearchResult_Explanation_Permissions) Reset() {
 	*x = IamPolicySearchResult_Explanation_Permissions{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[8]
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -966,7 +1121,7 @@ func (x *IamPolicySearchResult_Explanation_Permissions) String() string {
 func (*IamPolicySearchResult_Explanation_Permissions) ProtoMessage() {}
 
 func (x *IamPolicySearchResult_Explanation_Permissions) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[8]
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -985,6 +1140,441 @@ func (*IamPolicySearchResult_Explanation_Permissions) Descriptor() ([]byte, []in
 func (x *IamPolicySearchResult_Explanation_Permissions) GetPermissions() []string {
 	if x != nil {
 		return x.Permissions
+	}
+	return nil
+}
+
+// A Google Cloud resource under analysis.
+type IamPolicyAnalysisResult_Resource struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The [full resource
+	// name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+	FullResourceName string `protobuf:"bytes,1,opt,name=full_resource_name,json=fullResourceName,proto3" json:"full_resource_name,omitempty"`
+	// The analysis state of this resource.
+	AnalysisState *IamPolicyAnalysisState `protobuf:"bytes,2,opt,name=analysis_state,json=analysisState,proto3" json:"analysis_state,omitempty"`
+}
+
+func (x *IamPolicyAnalysisResult_Resource) Reset() {
+	*x = IamPolicyAnalysisResult_Resource{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IamPolicyAnalysisResult_Resource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IamPolicyAnalysisResult_Resource) ProtoMessage() {}
+
+func (x *IamPolicyAnalysisResult_Resource) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IamPolicyAnalysisResult_Resource.ProtoReflect.Descriptor instead.
+func (*IamPolicyAnalysisResult_Resource) Descriptor() ([]byte, []int) {
+	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{7, 0}
+}
+
+func (x *IamPolicyAnalysisResult_Resource) GetFullResourceName() string {
+	if x != nil {
+		return x.FullResourceName
+	}
+	return ""
+}
+
+func (x *IamPolicyAnalysisResult_Resource) GetAnalysisState() *IamPolicyAnalysisState {
+	if x != nil {
+		return x.AnalysisState
+	}
+	return nil
+}
+
+// An IAM role or permission under analysis.
+type IamPolicyAnalysisResult_Access struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Types that are assignable to OneofAccess:
+	//	*IamPolicyAnalysisResult_Access_Role
+	//	*IamPolicyAnalysisResult_Access_Permission
+	OneofAccess isIamPolicyAnalysisResult_Access_OneofAccess `protobuf_oneof:"oneof_access"`
+	// The analysis state of this access.
+	AnalysisState *IamPolicyAnalysisState `protobuf:"bytes,3,opt,name=analysis_state,json=analysisState,proto3" json:"analysis_state,omitempty"`
+}
+
+func (x *IamPolicyAnalysisResult_Access) Reset() {
+	*x = IamPolicyAnalysisResult_Access{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IamPolicyAnalysisResult_Access) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IamPolicyAnalysisResult_Access) ProtoMessage() {}
+
+func (x *IamPolicyAnalysisResult_Access) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IamPolicyAnalysisResult_Access.ProtoReflect.Descriptor instead.
+func (*IamPolicyAnalysisResult_Access) Descriptor() ([]byte, []int) {
+	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{7, 1}
+}
+
+func (m *IamPolicyAnalysisResult_Access) GetOneofAccess() isIamPolicyAnalysisResult_Access_OneofAccess {
+	if m != nil {
+		return m.OneofAccess
+	}
+	return nil
+}
+
+func (x *IamPolicyAnalysisResult_Access) GetRole() string {
+	if x, ok := x.GetOneofAccess().(*IamPolicyAnalysisResult_Access_Role); ok {
+		return x.Role
+	}
+	return ""
+}
+
+func (x *IamPolicyAnalysisResult_Access) GetPermission() string {
+	if x, ok := x.GetOneofAccess().(*IamPolicyAnalysisResult_Access_Permission); ok {
+		return x.Permission
+	}
+	return ""
+}
+
+func (x *IamPolicyAnalysisResult_Access) GetAnalysisState() *IamPolicyAnalysisState {
+	if x != nil {
+		return x.AnalysisState
+	}
+	return nil
+}
+
+type isIamPolicyAnalysisResult_Access_OneofAccess interface {
+	isIamPolicyAnalysisResult_Access_OneofAccess()
+}
+
+type IamPolicyAnalysisResult_Access_Role struct {
+	// The role.
+	Role string `protobuf:"bytes,1,opt,name=role,proto3,oneof"`
+}
+
+type IamPolicyAnalysisResult_Access_Permission struct {
+	// The permission.
+	Permission string `protobuf:"bytes,2,opt,name=permission,proto3,oneof"`
+}
+
+func (*IamPolicyAnalysisResult_Access_Role) isIamPolicyAnalysisResult_Access_OneofAccess() {}
+
+func (*IamPolicyAnalysisResult_Access_Permission) isIamPolicyAnalysisResult_Access_OneofAccess() {}
+
+// An identity under analysis.
+type IamPolicyAnalysisResult_Identity struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The identity name in any form of members appear in
+	// [IAM policy
+	// binding](https://cloud.google.com/iam/reference/rest/v1/Binding), such
+	// as:
+	// - user:foo@google.com
+	// - group:group1@google.com
+	// - serviceAccount:s1@prj1.iam.gserviceaccount.com
+	// - projectOwner:some_project_id
+	// - domain:google.com
+	// - allUsers
+	// - etc.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The analysis state of this identity.
+	AnalysisState *IamPolicyAnalysisState `protobuf:"bytes,2,opt,name=analysis_state,json=analysisState,proto3" json:"analysis_state,omitempty"`
+}
+
+func (x *IamPolicyAnalysisResult_Identity) Reset() {
+	*x = IamPolicyAnalysisResult_Identity{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IamPolicyAnalysisResult_Identity) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IamPolicyAnalysisResult_Identity) ProtoMessage() {}
+
+func (x *IamPolicyAnalysisResult_Identity) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IamPolicyAnalysisResult_Identity.ProtoReflect.Descriptor instead.
+func (*IamPolicyAnalysisResult_Identity) Descriptor() ([]byte, []int) {
+	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{7, 2}
+}
+
+func (x *IamPolicyAnalysisResult_Identity) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *IamPolicyAnalysisResult_Identity) GetAnalysisState() *IamPolicyAnalysisState {
+	if x != nil {
+		return x.AnalysisState
+	}
+	return nil
+}
+
+// A directional edge.
+type IamPolicyAnalysisResult_Edge struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The source node of the edge. For example, it could be a full resource
+	// name for a resource node or an email of an identity.
+	SourceNode string `protobuf:"bytes,1,opt,name=source_node,json=sourceNode,proto3" json:"source_node,omitempty"`
+	// The target node of the edge. For example, it could be a full resource
+	// name for a resource node or an email of an identity.
+	TargetNode string `protobuf:"bytes,2,opt,name=target_node,json=targetNode,proto3" json:"target_node,omitempty"`
+}
+
+func (x *IamPolicyAnalysisResult_Edge) Reset() {
+	*x = IamPolicyAnalysisResult_Edge{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IamPolicyAnalysisResult_Edge) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IamPolicyAnalysisResult_Edge) ProtoMessage() {}
+
+func (x *IamPolicyAnalysisResult_Edge) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IamPolicyAnalysisResult_Edge.ProtoReflect.Descriptor instead.
+func (*IamPolicyAnalysisResult_Edge) Descriptor() ([]byte, []int) {
+	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{7, 3}
+}
+
+func (x *IamPolicyAnalysisResult_Edge) GetSourceNode() string {
+	if x != nil {
+		return x.SourceNode
+	}
+	return ""
+}
+
+func (x *IamPolicyAnalysisResult_Edge) GetTargetNode() string {
+	if x != nil {
+		return x.TargetNode
+	}
+	return ""
+}
+
+// An access control list, derived from the above IAM policy binding, which
+// contains a set of resources and accesses. May include one
+// item from each set to compose an access control entry.
+//
+// NOTICE that there could be multiple access control lists for one IAM policy
+// binding. The access control lists are created based on resource and access
+// combinations.
+//
+// For example, assume we have the following cases in one IAM policy binding:
+// - Permission P1 and P2 apply to resource R1 and R2;
+// - Permission P3 applies to resource R2 and R3;
+//
+// This will result in the following access control lists:
+// - AccessControlList 1: [R1, R2], [P1, P2]
+// - AccessControlList 2: [R2, R3], [P3]
+type IamPolicyAnalysisResult_AccessControlList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The resources that match one of the following conditions:
+	// - The resource_selector, if it is specified in request;
+	// - Otherwise, resources reachable from the policy attached resource.
+	Resources []*IamPolicyAnalysisResult_Resource `protobuf:"bytes,1,rep,name=resources,proto3" json:"resources,omitempty"`
+	// The accesses that match one of the following conditions:
+	// - The access_selector, if it is specified in request;
+	// - Otherwise, access specifiers reachable from the policy binding's role.
+	Accesses []*IamPolicyAnalysisResult_Access `protobuf:"bytes,2,rep,name=accesses,proto3" json:"accesses,omitempty"`
+	// Resource edges of the graph starting from the policy attached
+	// resource to any descendant resources. The [Edge.source_node][google.cloud.asset.v1.IamPolicyAnalysisResult.Edge.source_node] contains
+	// the full resource name of a parent resource and [Edge.target_node][google.cloud.asset.v1.IamPolicyAnalysisResult.Edge.target_node]
+	// contains the full resource name of a child resource. This field is
+	// present only if the output_resource_edges option is enabled in request.
+	ResourceEdges []*IamPolicyAnalysisResult_Edge `protobuf:"bytes,3,rep,name=resource_edges,json=resourceEdges,proto3" json:"resource_edges,omitempty"`
+}
+
+func (x *IamPolicyAnalysisResult_AccessControlList) Reset() {
+	*x = IamPolicyAnalysisResult_AccessControlList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IamPolicyAnalysisResult_AccessControlList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IamPolicyAnalysisResult_AccessControlList) ProtoMessage() {}
+
+func (x *IamPolicyAnalysisResult_AccessControlList) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IamPolicyAnalysisResult_AccessControlList.ProtoReflect.Descriptor instead.
+func (*IamPolicyAnalysisResult_AccessControlList) Descriptor() ([]byte, []int) {
+	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{7, 4}
+}
+
+func (x *IamPolicyAnalysisResult_AccessControlList) GetResources() []*IamPolicyAnalysisResult_Resource {
+	if x != nil {
+		return x.Resources
+	}
+	return nil
+}
+
+func (x *IamPolicyAnalysisResult_AccessControlList) GetAccesses() []*IamPolicyAnalysisResult_Access {
+	if x != nil {
+		return x.Accesses
+	}
+	return nil
+}
+
+func (x *IamPolicyAnalysisResult_AccessControlList) GetResourceEdges() []*IamPolicyAnalysisResult_Edge {
+	if x != nil {
+		return x.ResourceEdges
+	}
+	return nil
+}
+
+// The identities and group edges.
+type IamPolicyAnalysisResult_IdentityList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Only the identities that match one of the following conditions will be
+	// presented:
+	// - The identity_selector, if it is specified in request;
+	// - Otherwise, identities reachable from the policy binding's members.
+	Identities []*IamPolicyAnalysisResult_Identity `protobuf:"bytes,1,rep,name=identities,proto3" json:"identities,omitempty"`
+	// Group identity edges of the graph starting from the binding's
+	// group members to any node of the [identities][google.cloud.asset.v1.IamPolicyAnalysisResult.IdentityList.identities]. The [Edge.source_node][google.cloud.asset.v1.IamPolicyAnalysisResult.Edge.source_node]
+	// contains a group, such as `group:parent@google.com`. The
+	// [Edge.target_node][google.cloud.asset.v1.IamPolicyAnalysisResult.Edge.target_node] contains a member of the group,
+	// such as `group:child@google.com` or `user:foo@google.com`.
+	// This field is present only if the output_group_edges option is enabled in
+	// request.
+	GroupEdges []*IamPolicyAnalysisResult_Edge `protobuf:"bytes,2,rep,name=group_edges,json=groupEdges,proto3" json:"group_edges,omitempty"`
+}
+
+func (x *IamPolicyAnalysisResult_IdentityList) Reset() {
+	*x = IamPolicyAnalysisResult_IdentityList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IamPolicyAnalysisResult_IdentityList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IamPolicyAnalysisResult_IdentityList) ProtoMessage() {}
+
+func (x *IamPolicyAnalysisResult_IdentityList) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_asset_v1_assets_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IamPolicyAnalysisResult_IdentityList.ProtoReflect.Descriptor instead.
+func (*IamPolicyAnalysisResult_IdentityList) Descriptor() ([]byte, []int) {
+	return file_google_cloud_asset_v1_assets_proto_rawDescGZIP(), []int{7, 5}
+}
+
+func (x *IamPolicyAnalysisResult_IdentityList) GetIdentities() []*IamPolicyAnalysisResult_Identity {
+	if x != nil {
+		return x.Identities
+	}
+	return nil
+}
+
+func (x *IamPolicyAnalysisResult_IdentityList) GetGroupEdges() []*IamPolicyAnalysisResult_Edge {
+	if x != nil {
+		return x.GroupEdges
 	}
 	return nil
 }
@@ -1179,18 +1769,109 @@ var file_google_cloud_asset_v1_assets_proto_rawDesc = []byte{
 	0x73, 0x65, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79,
 	0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x2e, 0x45, 0x78, 0x70,
 	0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73,
-	0x69, 0x6f, 0x6e, 0x73, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x42,
-	0x98, 0x01, 0x0a, 0x19, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
-	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76, 0x31, 0x42, 0x0a, 0x41,
-	0x73, 0x73, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3a, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67,
-	0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70,
-	0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2f, 0x76,
-	0x31, 0x3b, 0x61, 0x73, 0x73, 0x65, 0x74, 0xf8, 0x01, 0x01, 0xaa, 0x02, 0x15, 0x47, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x41, 0x73, 0x73, 0x65, 0x74, 0x2e,
-	0x56, 0x31, 0xca, 0x02, 0x15, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75,
-	0x64, 0x5c, 0x41, 0x73, 0x73, 0x65, 0x74, 0x5c, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x69, 0x6f, 0x6e, 0x73, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22,
+	0x54, 0x0a, 0x16, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c,
+	0x79, 0x73, 0x69, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x24, 0x0a, 0x04, 0x63, 0x6f, 0x64,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x10, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x72, 0x70, 0x63, 0x2e, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12,
+	0x14, 0x0a, 0x05, 0x63, 0x61, 0x75, 0x73, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
+	0x63, 0x61, 0x75, 0x73, 0x65, 0x22, 0xe4, 0x0a, 0x0a, 0x17, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c,
+	0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x52, 0x65, 0x73, 0x75, 0x6c,
+	0x74, 0x12, 0x3d, 0x0a, 0x1b, 0x61, 0x74, 0x74, 0x61, 0x63, 0x68, 0x65, 0x64, 0x5f, 0x72, 0x65,
+	0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x66, 0x75, 0x6c, 0x6c, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x18, 0x61, 0x74, 0x74, 0x61, 0x63, 0x68, 0x65, 0x64,
+	0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x46, 0x75, 0x6c, 0x6c, 0x4e, 0x61, 0x6d, 0x65,
+	0x12, 0x37, 0x0a, 0x0b, 0x69, 0x61, 0x6d, 0x5f, 0x62, 0x69, 0x6e, 0x64, 0x69, 0x6e, 0x67, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x69,
+	0x61, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x42, 0x69, 0x6e, 0x64, 0x69, 0x6e, 0x67, 0x52, 0x0a, 0x69,
+	0x61, 0x6d, 0x42, 0x69, 0x6e, 0x64, 0x69, 0x6e, 0x67, 0x12, 0x72, 0x0a, 0x14, 0x61, 0x63, 0x63,
+	0x65, 0x73, 0x73, 0x5f, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x5f, 0x6c, 0x69, 0x73, 0x74,
+	0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x40, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76, 0x31, 0x2e,
+	0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69,
+	0x73, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x2e, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x43, 0x6f,
+	0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x12, 0x61, 0x63, 0x63, 0x65, 0x73,
+	0x73, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x4c, 0x69, 0x73, 0x74, 0x73, 0x12, 0x60, 0x0a,
+	0x0d, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x5f, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x04,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x3b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
+	0x6f, 0x75, 0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x61, 0x6d,
+	0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x52, 0x65,
+	0x73, 0x75, 0x6c, 0x74, 0x2e, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x0c, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x4c, 0x69, 0x73, 0x74, 0x12,
+	0x25, 0x0a, 0x0e, 0x66, 0x75, 0x6c, 0x6c, 0x79, 0x5f, 0x65, 0x78, 0x70, 0x6c, 0x6f, 0x72, 0x65,
+	0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0d, 0x66, 0x75, 0x6c, 0x6c, 0x79, 0x45, 0x78,
+	0x70, 0x6c, 0x6f, 0x72, 0x65, 0x64, 0x1a, 0x8e, 0x01, 0x0a, 0x08, 0x52, 0x65, 0x73, 0x6f, 0x75,
+	0x72, 0x63, 0x65, 0x12, 0x2c, 0x0a, 0x12, 0x66, 0x75, 0x6c, 0x6c, 0x5f, 0x72, 0x65, 0x73, 0x6f,
+	0x75, 0x72, 0x63, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x10, 0x66, 0x75, 0x6c, 0x6c, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x4e, 0x61, 0x6d,
+	0x65, 0x12, 0x54, 0x0a, 0x0e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x5f, 0x73, 0x74,
+	0x61, 0x74, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76,
+	0x31, 0x2e, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79,
+	0x73, 0x69, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x0d, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73,
+	0x69, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x1a, 0xa6, 0x01, 0x0a, 0x06, 0x41, 0x63, 0x63, 0x65,
+	0x73, 0x73, 0x12, 0x14, 0x0a, 0x04, 0x72, 0x6f, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x48, 0x00, 0x52, 0x04, 0x72, 0x6f, 0x6c, 0x65, 0x12, 0x20, 0x0a, 0x0a, 0x70, 0x65, 0x72, 0x6d,
+	0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x0a,
+	0x70, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x54, 0x0a, 0x0e, 0x61, 0x6e,
+	0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x5f, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75,
+	0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x61, 0x6d, 0x50, 0x6f,
+	0x6c, 0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x53, 0x74, 0x61, 0x74,
+	0x65, 0x52, 0x0d, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65,
+	0x42, 0x0e, 0x0a, 0x0c, 0x6f, 0x6e, 0x65, 0x6f, 0x66, 0x5f, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73,
+	0x1a, 0x74, 0x0a, 0x08, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12, 0x12, 0x0a, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x12, 0x54, 0x0a, 0x0e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x5f, 0x73, 0x74, 0x61,
+	0x74, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76, 0x31,
+	0x2e, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73,
+	0x69, 0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x0d, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69,
+	0x73, 0x53, 0x74, 0x61, 0x74, 0x65, 0x1a, 0x48, 0x0a, 0x04, 0x45, 0x64, 0x67, 0x65, 0x12, 0x1f,
+	0x0a, 0x0b, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x6e, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0a, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x4e, 0x6f, 0x64, 0x65, 0x12,
+	0x1f, 0x0a, 0x0b, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x5f, 0x6e, 0x6f, 0x64, 0x65, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x74, 0x61, 0x72, 0x67, 0x65, 0x74, 0x4e, 0x6f, 0x64, 0x65,
+	0x1a, 0x99, 0x02, 0x0a, 0x11, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x43, 0x6f, 0x6e, 0x74, 0x72,
+	0x6f, 0x6c, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x55, 0x0a, 0x09, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72,
+	0x63, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76,
+	0x31, 0x2e, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79,
+	0x73, 0x69, 0x73, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x2e, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72,
+	0x63, 0x65, 0x52, 0x09, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x12, 0x51, 0x0a,
+	0x08, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x35, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61,
+	0x73, 0x73, 0x65, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c, 0x69, 0x63,
+	0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x2e,
+	0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x52, 0x08, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x65, 0x73,
+	0x12, 0x5a, 0x0a, 0x0e, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x65, 0x64, 0x67,
+	0x65, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x33, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76, 0x31,
+	0x2e, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73,
+	0x69, 0x73, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x2e, 0x45, 0x64, 0x67, 0x65, 0x52, 0x0d, 0x72,
+	0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x45, 0x64, 0x67, 0x65, 0x73, 0x1a, 0xbd, 0x01, 0x0a,
+	0x0c, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x57, 0x0a,
+	0x0a, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
+	0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c,
+	0x69, 0x63, 0x79, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x52, 0x65, 0x73, 0x75, 0x6c,
+	0x74, 0x2e, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x52, 0x0a, 0x69, 0x64, 0x65, 0x6e,
+	0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x54, 0x0a, 0x0b, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f,
+	0x65, 0x64, 0x67, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x33, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74,
+	0x2e, 0x76, 0x31, 0x2e, 0x49, 0x61, 0x6d, 0x50, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x41, 0x6e, 0x61,
+	0x6c, 0x79, 0x73, 0x69, 0x73, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x2e, 0x45, 0x64, 0x67, 0x65,
+	0x52, 0x0a, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x45, 0x64, 0x67, 0x65, 0x73, 0x42, 0x98, 0x01, 0x0a,
+	0x19, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75,
+	0x64, 0x2e, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x76, 0x31, 0x42, 0x0a, 0x41, 0x73, 0x73, 0x65,
+	0x74, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3a, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f,
+	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x61, 0x73, 0x73, 0x65, 0x74, 0x2f, 0x76, 0x31, 0x3b, 0x61,
+	0x73, 0x73, 0x65, 0x74, 0xf8, 0x01, 0x01, 0xaa, 0x02, 0x15, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x41, 0x73, 0x73, 0x65, 0x74, 0x2e, 0x56, 0x31, 0xca,
+	0x02, 0x15, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x41,
+	0x73, 0x73, 0x65, 0x74, 0x5c, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1206,7 +1887,7 @@ func file_google_cloud_asset_v1_assets_proto_rawDescGZIP() []byte {
 }
 
 var file_google_cloud_asset_v1_assets_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_google_cloud_asset_v1_assets_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_google_cloud_asset_v1_assets_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_google_cloud_asset_v1_assets_proto_goTypes = []interface{}{
 	(TemporalAsset_PriorAssetState)(0),        // 0: google.cloud.asset.v1.TemporalAsset.PriorAssetState
 	(*TemporalAsset)(nil),                     // 1: google.cloud.asset.v1.TemporalAsset
@@ -1215,44 +1896,66 @@ var file_google_cloud_asset_v1_assets_proto_goTypes = []interface{}{
 	(*Resource)(nil),                          // 4: google.cloud.asset.v1.Resource
 	(*ResourceSearchResult)(nil),              // 5: google.cloud.asset.v1.ResourceSearchResult
 	(*IamPolicySearchResult)(nil),             // 6: google.cloud.asset.v1.IamPolicySearchResult
-	nil,                                       // 7: google.cloud.asset.v1.ResourceSearchResult.LabelsEntry
-	(*IamPolicySearchResult_Explanation)(nil), // 8: google.cloud.asset.v1.IamPolicySearchResult.Explanation
-	(*IamPolicySearchResult_Explanation_Permissions)(nil), // 9: google.cloud.asset.v1.IamPolicySearchResult.Explanation.Permissions
-	nil,                           // 10: google.cloud.asset.v1.IamPolicySearchResult.Explanation.MatchedPermissionsEntry
-	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
-	(*v1.Policy)(nil),             // 12: google.iam.v1.Policy
-	(*v11.Policy)(nil),            // 13: google.cloud.orgpolicy.v1.Policy
-	(*v12.AccessPolicy)(nil),      // 14: google.identity.accesscontextmanager.v1.AccessPolicy
-	(*v12.AccessLevel)(nil),       // 15: google.identity.accesscontextmanager.v1.AccessLevel
-	(*v12.ServicePerimeter)(nil),  // 16: google.identity.accesscontextmanager.v1.ServicePerimeter
-	(*structpb.Struct)(nil),       // 17: google.protobuf.Struct
+	(*IamPolicyAnalysisState)(nil),            // 7: google.cloud.asset.v1.IamPolicyAnalysisState
+	(*IamPolicyAnalysisResult)(nil),           // 8: google.cloud.asset.v1.IamPolicyAnalysisResult
+	nil,                                       // 9: google.cloud.asset.v1.ResourceSearchResult.LabelsEntry
+	(*IamPolicySearchResult_Explanation)(nil), // 10: google.cloud.asset.v1.IamPolicySearchResult.Explanation
+	(*IamPolicySearchResult_Explanation_Permissions)(nil), // 11: google.cloud.asset.v1.IamPolicySearchResult.Explanation.Permissions
+	nil,                                               // 12: google.cloud.asset.v1.IamPolicySearchResult.Explanation.MatchedPermissionsEntry
+	(*IamPolicyAnalysisResult_Resource)(nil),          // 13: google.cloud.asset.v1.IamPolicyAnalysisResult.Resource
+	(*IamPolicyAnalysisResult_Access)(nil),            // 14: google.cloud.asset.v1.IamPolicyAnalysisResult.Access
+	(*IamPolicyAnalysisResult_Identity)(nil),          // 15: google.cloud.asset.v1.IamPolicyAnalysisResult.Identity
+	(*IamPolicyAnalysisResult_Edge)(nil),              // 16: google.cloud.asset.v1.IamPolicyAnalysisResult.Edge
+	(*IamPolicyAnalysisResult_AccessControlList)(nil), // 17: google.cloud.asset.v1.IamPolicyAnalysisResult.AccessControlList
+	(*IamPolicyAnalysisResult_IdentityList)(nil),      // 18: google.cloud.asset.v1.IamPolicyAnalysisResult.IdentityList
+	(*timestamppb.Timestamp)(nil),                     // 19: google.protobuf.Timestamp
+	(*v1.Policy)(nil),                                 // 20: google.iam.v1.Policy
+	(*v11.Policy)(nil),                                // 21: google.cloud.orgpolicy.v1.Policy
+	(*v12.AccessPolicy)(nil),                          // 22: google.identity.accesscontextmanager.v1.AccessPolicy
+	(*v12.AccessLevel)(nil),                           // 23: google.identity.accesscontextmanager.v1.AccessLevel
+	(*v12.ServicePerimeter)(nil),                      // 24: google.identity.accesscontextmanager.v1.ServicePerimeter
+	(*structpb.Struct)(nil),                           // 25: google.protobuf.Struct
+	(code.Code)(0),                                    // 26: google.rpc.Code
+	(*v1.Binding)(nil),                                // 27: google.iam.v1.Binding
 }
 var file_google_cloud_asset_v1_assets_proto_depIdxs = []int32{
 	2,  // 0: google.cloud.asset.v1.TemporalAsset.window:type_name -> google.cloud.asset.v1.TimeWindow
 	3,  // 1: google.cloud.asset.v1.TemporalAsset.asset:type_name -> google.cloud.asset.v1.Asset
 	0,  // 2: google.cloud.asset.v1.TemporalAsset.prior_asset_state:type_name -> google.cloud.asset.v1.TemporalAsset.PriorAssetState
 	3,  // 3: google.cloud.asset.v1.TemporalAsset.prior_asset:type_name -> google.cloud.asset.v1.Asset
-	11, // 4: google.cloud.asset.v1.TimeWindow.start_time:type_name -> google.protobuf.Timestamp
-	11, // 5: google.cloud.asset.v1.TimeWindow.end_time:type_name -> google.protobuf.Timestamp
-	11, // 6: google.cloud.asset.v1.Asset.update_time:type_name -> google.protobuf.Timestamp
+	19, // 4: google.cloud.asset.v1.TimeWindow.start_time:type_name -> google.protobuf.Timestamp
+	19, // 5: google.cloud.asset.v1.TimeWindow.end_time:type_name -> google.protobuf.Timestamp
+	19, // 6: google.cloud.asset.v1.Asset.update_time:type_name -> google.protobuf.Timestamp
 	4,  // 7: google.cloud.asset.v1.Asset.resource:type_name -> google.cloud.asset.v1.Resource
-	12, // 8: google.cloud.asset.v1.Asset.iam_policy:type_name -> google.iam.v1.Policy
-	13, // 9: google.cloud.asset.v1.Asset.org_policy:type_name -> google.cloud.orgpolicy.v1.Policy
-	14, // 10: google.cloud.asset.v1.Asset.access_policy:type_name -> google.identity.accesscontextmanager.v1.AccessPolicy
-	15, // 11: google.cloud.asset.v1.Asset.access_level:type_name -> google.identity.accesscontextmanager.v1.AccessLevel
-	16, // 12: google.cloud.asset.v1.Asset.service_perimeter:type_name -> google.identity.accesscontextmanager.v1.ServicePerimeter
-	17, // 13: google.cloud.asset.v1.Resource.data:type_name -> google.protobuf.Struct
-	7,  // 14: google.cloud.asset.v1.ResourceSearchResult.labels:type_name -> google.cloud.asset.v1.ResourceSearchResult.LabelsEntry
-	17, // 15: google.cloud.asset.v1.ResourceSearchResult.additional_attributes:type_name -> google.protobuf.Struct
-	12, // 16: google.cloud.asset.v1.IamPolicySearchResult.policy:type_name -> google.iam.v1.Policy
-	8,  // 17: google.cloud.asset.v1.IamPolicySearchResult.explanation:type_name -> google.cloud.asset.v1.IamPolicySearchResult.Explanation
-	10, // 18: google.cloud.asset.v1.IamPolicySearchResult.Explanation.matched_permissions:type_name -> google.cloud.asset.v1.IamPolicySearchResult.Explanation.MatchedPermissionsEntry
-	9,  // 19: google.cloud.asset.v1.IamPolicySearchResult.Explanation.MatchedPermissionsEntry.value:type_name -> google.cloud.asset.v1.IamPolicySearchResult.Explanation.Permissions
-	20, // [20:20] is the sub-list for method output_type
-	20, // [20:20] is the sub-list for method input_type
-	20, // [20:20] is the sub-list for extension type_name
-	20, // [20:20] is the sub-list for extension extendee
-	0,  // [0:20] is the sub-list for field type_name
+	20, // 8: google.cloud.asset.v1.Asset.iam_policy:type_name -> google.iam.v1.Policy
+	21, // 9: google.cloud.asset.v1.Asset.org_policy:type_name -> google.cloud.orgpolicy.v1.Policy
+	22, // 10: google.cloud.asset.v1.Asset.access_policy:type_name -> google.identity.accesscontextmanager.v1.AccessPolicy
+	23, // 11: google.cloud.asset.v1.Asset.access_level:type_name -> google.identity.accesscontextmanager.v1.AccessLevel
+	24, // 12: google.cloud.asset.v1.Asset.service_perimeter:type_name -> google.identity.accesscontextmanager.v1.ServicePerimeter
+	25, // 13: google.cloud.asset.v1.Resource.data:type_name -> google.protobuf.Struct
+	9,  // 14: google.cloud.asset.v1.ResourceSearchResult.labels:type_name -> google.cloud.asset.v1.ResourceSearchResult.LabelsEntry
+	25, // 15: google.cloud.asset.v1.ResourceSearchResult.additional_attributes:type_name -> google.protobuf.Struct
+	20, // 16: google.cloud.asset.v1.IamPolicySearchResult.policy:type_name -> google.iam.v1.Policy
+	10, // 17: google.cloud.asset.v1.IamPolicySearchResult.explanation:type_name -> google.cloud.asset.v1.IamPolicySearchResult.Explanation
+	26, // 18: google.cloud.asset.v1.IamPolicyAnalysisState.code:type_name -> google.rpc.Code
+	27, // 19: google.cloud.asset.v1.IamPolicyAnalysisResult.iam_binding:type_name -> google.iam.v1.Binding
+	17, // 20: google.cloud.asset.v1.IamPolicyAnalysisResult.access_control_lists:type_name -> google.cloud.asset.v1.IamPolicyAnalysisResult.AccessControlList
+	18, // 21: google.cloud.asset.v1.IamPolicyAnalysisResult.identity_list:type_name -> google.cloud.asset.v1.IamPolicyAnalysisResult.IdentityList
+	12, // 22: google.cloud.asset.v1.IamPolicySearchResult.Explanation.matched_permissions:type_name -> google.cloud.asset.v1.IamPolicySearchResult.Explanation.MatchedPermissionsEntry
+	11, // 23: google.cloud.asset.v1.IamPolicySearchResult.Explanation.MatchedPermissionsEntry.value:type_name -> google.cloud.asset.v1.IamPolicySearchResult.Explanation.Permissions
+	7,  // 24: google.cloud.asset.v1.IamPolicyAnalysisResult.Resource.analysis_state:type_name -> google.cloud.asset.v1.IamPolicyAnalysisState
+	7,  // 25: google.cloud.asset.v1.IamPolicyAnalysisResult.Access.analysis_state:type_name -> google.cloud.asset.v1.IamPolicyAnalysisState
+	7,  // 26: google.cloud.asset.v1.IamPolicyAnalysisResult.Identity.analysis_state:type_name -> google.cloud.asset.v1.IamPolicyAnalysisState
+	13, // 27: google.cloud.asset.v1.IamPolicyAnalysisResult.AccessControlList.resources:type_name -> google.cloud.asset.v1.IamPolicyAnalysisResult.Resource
+	14, // 28: google.cloud.asset.v1.IamPolicyAnalysisResult.AccessControlList.accesses:type_name -> google.cloud.asset.v1.IamPolicyAnalysisResult.Access
+	16, // 29: google.cloud.asset.v1.IamPolicyAnalysisResult.AccessControlList.resource_edges:type_name -> google.cloud.asset.v1.IamPolicyAnalysisResult.Edge
+	15, // 30: google.cloud.asset.v1.IamPolicyAnalysisResult.IdentityList.identities:type_name -> google.cloud.asset.v1.IamPolicyAnalysisResult.Identity
+	16, // 31: google.cloud.asset.v1.IamPolicyAnalysisResult.IdentityList.group_edges:type_name -> google.cloud.asset.v1.IamPolicyAnalysisResult.Edge
+	32, // [32:32] is the sub-list for method output_type
+	32, // [32:32] is the sub-list for method input_type
+	32, // [32:32] is the sub-list for extension type_name
+	32, // [32:32] is the sub-list for extension extendee
+	0,  // [0:32] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_asset_v1_assets_proto_init() }
@@ -1333,7 +2036,31 @@ func file_google_cloud_asset_v1_assets_proto_init() {
 				return nil
 			}
 		}
+		file_google_cloud_asset_v1_assets_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IamPolicyAnalysisState); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 		file_google_cloud_asset_v1_assets_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IamPolicyAnalysisResult); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_asset_v1_assets_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*IamPolicySearchResult_Explanation); i {
 			case 0:
 				return &v.state
@@ -1345,8 +2072,80 @@ func file_google_cloud_asset_v1_assets_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_asset_v1_assets_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_asset_v1_assets_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*IamPolicySearchResult_Explanation_Permissions); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_asset_v1_assets_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IamPolicyAnalysisResult_Resource); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_asset_v1_assets_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IamPolicyAnalysisResult_Access); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_asset_v1_assets_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IamPolicyAnalysisResult_Identity); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_asset_v1_assets_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IamPolicyAnalysisResult_Edge); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_asset_v1_assets_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IamPolicyAnalysisResult_AccessControlList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_asset_v1_assets_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IamPolicyAnalysisResult_IdentityList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1363,13 +2162,17 @@ func file_google_cloud_asset_v1_assets_proto_init() {
 		(*Asset_AccessLevel)(nil),
 		(*Asset_ServicePerimeter)(nil),
 	}
+	file_google_cloud_asset_v1_assets_proto_msgTypes[13].OneofWrappers = []interface{}{
+		(*IamPolicyAnalysisResult_Access_Role)(nil),
+		(*IamPolicyAnalysisResult_Access_Permission)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_asset_v1_assets_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   10,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
