@@ -531,7 +531,7 @@ type Entity struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A Google Analytics App + Web property id.
+	// A Google Analytics 4 (GA4) property id.
 	PropertyId string `protobuf:"bytes,1,opt,name=property_id,json=propertyId,proto3" json:"property_id,omitempty"`
 }
 
