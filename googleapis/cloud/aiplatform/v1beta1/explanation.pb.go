@@ -42,10 +42,8 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Explanation of a [prediction][ExplainResponse.predictions] produced by the
-// Model on a given [instance][google.cloud.aiplatform.v1beta1.ExplainRequest.instances].
-//
-// Currently, only AutoML tabular Models support explanation.
+// Explanation of a prediction (provided in [PredictResponse.predictions][google.cloud.aiplatform.v1beta1.PredictResponse.predictions])
+// produced by the Model on a given [instance][google.cloud.aiplatform.v1beta1.ExplainRequest.instances].
 type Explanation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -60,6 +58,11 @@ type Explanation struct {
 	// specific item. [Attribution.output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index] can be used to identify which
 	// output this attribution is explaining.
 	//
+	// If users set [ExplanationParameters.top_k][google.cloud.aiplatform.v1beta1.ExplanationParameters.top_k], the attributions are sorted
+	// by [instance_output_value][Attributions.instance_output_value] in
+	// descending order. If [ExplanationParameters.output_indices][google.cloud.aiplatform.v1beta1.ExplanationParameters.output_indices] is specified,
+	// the attributions are stored by [Attribution.output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index] in the same
+	// order as they appear in the output_indices.
 	Attributions []*Attribution `protobuf:"bytes,1,rep,name=attributions,proto3" json:"attributions,omitempty"`
 }
 
@@ -103,8 +106,6 @@ func (x *Explanation) GetAttributions() []*Attribution {
 }
 
 // Aggregated explanation metrics for a Model over a set of instances.
-//
-// Currently, only AutoML tabular Models support aggregated explanation.
 type ModelExplanation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -181,8 +182,8 @@ type Attribution struct {
 	// The field name of the output is determined by the key in
 	// [ExplanationMetadata.outputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.outputs].
 	//
-	// If the Model predicted output is a tensor value (for example, an ndarray),
-	// this is the value in the output located by [output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index].
+	// If the Model's predicted output has multiple dimensions (rank > 1), this is
+	// the value in the output located by [output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index].
 	//
 	// If there are multiple baselines, their output values are averaged.
 	BaselineOutputValue float64 `protobuf:"fixed64,1,opt,name=baseline_output_value,json=baselineOutputValue,proto3" json:"baseline_output_value,omitempty"`
@@ -190,12 +191,12 @@ type Attribution struct {
 	// instance][ExplainRequest.instances]. The field name of the output is
 	// determined by the key in [ExplanationMetadata.outputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.outputs].
 	//
-	// If the Model predicted output is a tensor value (for example, an ndarray),
-	// this is the value in the output located by [output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index].
+	// If the Model predicted output has multiple dimensions, this is the value in
+	// the output located by [output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index].
 	InstanceOutputValue float64 `protobuf:"fixed64,2,opt,name=instance_output_value,json=instanceOutputValue,proto3" json:"instance_output_value,omitempty"`
 	// Output only. Attributions of each explained feature. Features are extracted from
 	// the [prediction instances][google.cloud.aiplatform.v1beta1.ExplainRequest.instances] according to
-	// [explanation input metadata][google.cloud.aiplatform.v1beta1.ExplanationMetadata.inputs].
+	// [explanation metadata for inputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.inputs].
 	//
 	// The value is a struct, whose keys are the name of the feature. The values
 	// are how much the feature in the [instance][google.cloud.aiplatform.v1beta1.ExplainRequest.instances]
@@ -223,10 +224,10 @@ type Attribution struct {
 	// Output only. The index that locates the explained prediction output.
 	//
 	// If the prediction output is a scalar value, output_index is not populated.
-	// If the prediction output is a tensor value (for example, an ndarray),
-	// the length of output_index is the same as the number of dimensions of the
-	// output. The i-th element in output_index is the element index of the i-th
-	// dimension of the output vector. Indexes start from 0.
+	// If the prediction output has multiple dimensions, the length of the
+	// output_index list is the same as the number of dimensions of the output.
+	// The i-th element in output_index is the element index of the i-th dimension
+	// of the output vector. Indices start from 0.
 	OutputIndex []int32 `protobuf:"varint,4,rep,packed,name=output_index,json=outputIndex,proto3" json:"output_index,omitempty"`
 	// Output only. The display name of the output identified by [output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index], e.g. the
 	// predicted class name by a multi-classification Model.
@@ -239,12 +240,26 @@ type Attribution struct {
 	// Output only. Error of [feature_attributions][google.cloud.aiplatform.v1beta1.Attribution.feature_attributions] caused by approximation used in the
 	// explanation method. Lower value means more precise attributions.
 	//
-	// For Sampled Shapley
-	// [attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.sampled_shapley_attribution],
-	// increasing [path_count][google.cloud.aiplatform.v1beta1.SampledShapleyAttribution.path_count] might reduce
-	// the error.
+	// * For [Sampled Shapley
+	// attribution][ExplanationParameters.sampled_shapley_attribution], increasing
+	// [path_count][google.cloud.aiplatform.v1beta1.SampledShapleyAttribution.path_count] may reduce the error.
+	// * For [Integrated Gradients
+	// attribution][ExplanationParameters.integrated_gradients_attribution],
+	// increasing [step_count][google.cloud.aiplatform.v1beta1.IntegratedGradientsAttribution.step_count] may
+	// reduce the error.
+	// * For [XRAI
+	// attribution][ExplanationParameters.xrai_attribution], increasing
+	// [step_count][google.cloud.aiplatform.v1beta1.XraiAttribution.step_count] may reduce the error.
 	//
+	// Refer to  AI Explanations Whitepaper for more details:
+	//
+	// https:
+	// //storage.googleapis.com/cloud-ai-whitep
+	// // apers/AI%20Explainability%20Whitepaper.pdf
 	ApproximationError float64 `protobuf:"fixed64,6,opt,name=approximation_error,json=approximationError,proto3" json:"approximation_error,omitempty"`
+	// Output only. Name of the explain output. Specified as the key in
+	// [ExplanationMetadata.outputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.outputs].
+	OutputName string `protobuf:"bytes,7,opt,name=output_name,json=outputName,proto3" json:"output_name,omitempty"`
 }
 
 func (x *Attribution) Reset() {
@@ -321,9 +336,14 @@ func (x *Attribution) GetApproximationError() float64 {
 	return 0
 }
 
+func (x *Attribution) GetOutputName() string {
+	if x != nil {
+		return x.OutputName
+	}
+	return ""
+}
+
 // Specification of Model explanation.
-//
-// Currently, only AutoML tabular Models support explanation.
 type ExplanationSpec struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -387,10 +407,28 @@ type ExplanationParameters struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// An attribution method that approximates Shapley values for features that
-	// contribute to the label being predicted. A sampling strategy is used to
-	// approximate the value rather than considering all subsets of features.
-	SampledShapleyAttribution *SampledShapleyAttribution `protobuf:"bytes,1,opt,name=sampled_shapley_attribution,json=sampledShapleyAttribution,proto3" json:"sampled_shapley_attribution,omitempty"`
+	// Types that are assignable to Method:
+	//	*ExplanationParameters_SampledShapleyAttribution
+	//	*ExplanationParameters_IntegratedGradientsAttribution
+	//	*ExplanationParameters_XraiAttribution
+	Method isExplanationParameters_Method `protobuf_oneof:"method"`
+	// If populated, returns attributions for top K indices of outputs
+	// (defaults to 1). Only applies to Models that predicts more than one outputs
+	// (e,g, multi-class Models). When set to -1, returns explanations for all
+	// outputs.
+	TopK int32 `protobuf:"varint,4,opt,name=top_k,json=topK,proto3" json:"top_k,omitempty"`
+	// If populated, only returns attributions that have
+	// [output_index][Attributions.output_index] contained in output_indices. It
+	// must be an ndarray of integers, with the same shape of the output it's
+	// explaining.
+	//
+	// If not populated, returns attributions for [top_k][google.cloud.aiplatform.v1beta1.ExplanationParameters.top_k] indices of outputs.
+	// If neither top_k nor output_indeices is populated, returns the argmax
+	// index of the outputs.
+	//
+	// Only applicable to Models that predict multiple outputs (e,g, multi-class
+	// Models that predict multiple classes).
+	OutputIndices *structpb.ListValue `protobuf:"bytes,5,opt,name=output_indices,json=outputIndices,proto3" json:"output_indices,omitempty"`
 }
 
 func (x *ExplanationParameters) Reset() {
@@ -425,12 +463,85 @@ func (*ExplanationParameters) Descriptor() ([]byte, []int) {
 	return file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDescGZIP(), []int{4}
 }
 
+func (m *ExplanationParameters) GetMethod() isExplanationParameters_Method {
+	if m != nil {
+		return m.Method
+	}
+	return nil
+}
+
 func (x *ExplanationParameters) GetSampledShapleyAttribution() *SampledShapleyAttribution {
-	if x != nil {
+	if x, ok := x.GetMethod().(*ExplanationParameters_SampledShapleyAttribution); ok {
 		return x.SampledShapleyAttribution
 	}
 	return nil
 }
+
+func (x *ExplanationParameters) GetIntegratedGradientsAttribution() *IntegratedGradientsAttribution {
+	if x, ok := x.GetMethod().(*ExplanationParameters_IntegratedGradientsAttribution); ok {
+		return x.IntegratedGradientsAttribution
+	}
+	return nil
+}
+
+func (x *ExplanationParameters) GetXraiAttribution() *XraiAttribution {
+	if x, ok := x.GetMethod().(*ExplanationParameters_XraiAttribution); ok {
+		return x.XraiAttribution
+	}
+	return nil
+}
+
+func (x *ExplanationParameters) GetTopK() int32 {
+	if x != nil {
+		return x.TopK
+	}
+	return 0
+}
+
+func (x *ExplanationParameters) GetOutputIndices() *structpb.ListValue {
+	if x != nil {
+		return x.OutputIndices
+	}
+	return nil
+}
+
+type isExplanationParameters_Method interface {
+	isExplanationParameters_Method()
+}
+
+type ExplanationParameters_SampledShapleyAttribution struct {
+	// An attribution method that approximates Shapley values for features that
+	// contribute to the label being predicted. A sampling strategy is used to
+	// approximate the value rather than considering all subsets of features.
+	// Refer to this paper for model details: https://arxiv.org/abs/1306.4265.
+	SampledShapleyAttribution *SampledShapleyAttribution `protobuf:"bytes,1,opt,name=sampled_shapley_attribution,json=sampledShapleyAttribution,proto3,oneof"`
+}
+
+type ExplanationParameters_IntegratedGradientsAttribution struct {
+	// An attribution method that computes Aumann-Shapley values taking
+	// advantage of the model's fully differentiable structure. Refer to this
+	// paper for more details: https://arxiv.org/abs/1703.01365
+	IntegratedGradientsAttribution *IntegratedGradientsAttribution `protobuf:"bytes,2,opt,name=integrated_gradients_attribution,json=integratedGradientsAttribution,proto3,oneof"`
+}
+
+type ExplanationParameters_XraiAttribution struct {
+	// An attribution method that redistributes Integrated Gradients
+	// attribution to segmented regions, taking advantage of the model's fully
+	// differentiable structure. Refer to this paper for
+	// more details: https://arxiv.org/abs/1906.02825
+	//
+	// XRAI currently performs better on natural images, like a picture of a
+	// house or an animal. If the images are taken in artificial environments,
+	// like a lab or manufacturing line, or from diagnostic equipment, like
+	// x-rays or quality-control cameras, use Integrated Gradients instead.
+	XraiAttribution *XraiAttribution `protobuf:"bytes,3,opt,name=xrai_attribution,json=xraiAttribution,proto3,oneof"`
+}
+
+func (*ExplanationParameters_SampledShapleyAttribution) isExplanationParameters_Method() {}
+
+func (*ExplanationParameters_IntegratedGradientsAttribution) isExplanationParameters_Method() {}
+
+func (*ExplanationParameters_XraiAttribution) isExplanationParameters_Method() {}
 
 // An attribution method that approximates Shapley values for features that
 // contribute to the label being predicted. A sampling strategy is used to
@@ -486,6 +597,386 @@ func (x *SampledShapleyAttribution) GetPathCount() int32 {
 	return 0
 }
 
+// An attribution method that computes the Aumann-Shapley value taking advantage
+// of the model's fully differentiable structure. Refer to this paper for
+// more details: https://arxiv.org/abs/1703.01365
+type IntegratedGradientsAttribution struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. The number of steps for approximating the path integral.
+	// A good value to start is 50 and gradually increase until the
+	// sum to diff property is within the desired error range.
+	//
+	// Valid range of its value is [1, 100], inclusively.
+	StepCount int32 `protobuf:"varint,1,opt,name=step_count,json=stepCount,proto3" json:"step_count,omitempty"`
+	// Config for SmoothGrad approximation of gradients.
+	//
+	// When enabled, the gradients are approximated by averaging the gradients
+	// from noisy samples in the vicinity of the inputs. Adding
+	// noise can help improve the computed gradients. Refer to this paper for more
+	// details: https://arxiv.org/pdf/1706.03825.pdf
+	SmoothGradConfig *SmoothGradConfig `protobuf:"bytes,2,opt,name=smooth_grad_config,json=smoothGradConfig,proto3" json:"smooth_grad_config,omitempty"`
+}
+
+func (x *IntegratedGradientsAttribution) Reset() {
+	*x = IntegratedGradientsAttribution{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *IntegratedGradientsAttribution) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IntegratedGradientsAttribution) ProtoMessage() {}
+
+func (x *IntegratedGradientsAttribution) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IntegratedGradientsAttribution.ProtoReflect.Descriptor instead.
+func (*IntegratedGradientsAttribution) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *IntegratedGradientsAttribution) GetStepCount() int32 {
+	if x != nil {
+		return x.StepCount
+	}
+	return 0
+}
+
+func (x *IntegratedGradientsAttribution) GetSmoothGradConfig() *SmoothGradConfig {
+	if x != nil {
+		return x.SmoothGradConfig
+	}
+	return nil
+}
+
+// An explanation method that redistributes Integrated Gradients
+// attributions to segmented regions, taking advantage of the model's fully
+// differentiable structure. Refer to this paper for more details:
+// https://arxiv.org/abs/1906.02825
+//
+// Only supports image Models ([modality][InputMetadata.modality] is IMAGE).
+type XraiAttribution struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. The number of steps for approximating the path integral.
+	// A good value to start is 50 and gradually increase until the
+	// sum to diff property is met within the desired error range.
+	//
+	// Valid range of its value is [1, 100], inclusively.
+	StepCount int32 `protobuf:"varint,1,opt,name=step_count,json=stepCount,proto3" json:"step_count,omitempty"`
+	// Config for SmoothGrad approximation of gradients.
+	//
+	// When enabled, the gradients are approximated by averaging the gradients
+	// from noisy samples in the vicinity of the inputs. Adding
+	// noise can help improve the computed gradients. Refer to this paper for more
+	// details: https://arxiv.org/pdf/1706.03825.pdf
+	SmoothGradConfig *SmoothGradConfig `protobuf:"bytes,2,opt,name=smooth_grad_config,json=smoothGradConfig,proto3" json:"smooth_grad_config,omitempty"`
+}
+
+func (x *XraiAttribution) Reset() {
+	*x = XraiAttribution{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *XraiAttribution) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*XraiAttribution) ProtoMessage() {}
+
+func (x *XraiAttribution) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use XraiAttribution.ProtoReflect.Descriptor instead.
+func (*XraiAttribution) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *XraiAttribution) GetStepCount() int32 {
+	if x != nil {
+		return x.StepCount
+	}
+	return 0
+}
+
+func (x *XraiAttribution) GetSmoothGradConfig() *SmoothGradConfig {
+	if x != nil {
+		return x.SmoothGradConfig
+	}
+	return nil
+}
+
+// Config for SmoothGrad approximation of gradients.
+//
+// When enabled, the gradients are approximated by averaging the gradients from
+// noisy samples in the vicinity of the inputs. Adding noise can help improve
+// the computed gradients. Refer to this paper for more details:
+// https://arxiv.org/pdf/1706.03825.pdf
+type SmoothGradConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Represents the standard deviation of the gaussian kernel
+	// that will be used to add noise to the interpolated inputs
+	// prior to computing gradients.
+	//
+	// Types that are assignable to GradientNoiseSigma:
+	//	*SmoothGradConfig_NoiseSigma
+	//	*SmoothGradConfig_FeatureNoiseSigma
+	GradientNoiseSigma isSmoothGradConfig_GradientNoiseSigma `protobuf_oneof:"GradientNoiseSigma"`
+	// The number of gradient samples to use for
+	// approximation. The higher this number, the more accurate the gradient
+	// is, but the runtime complexity increases by this factor as well.
+	// Valid range of its value is [1, 50]. Defaults to 3.
+	NoisySampleCount int32 `protobuf:"varint,3,opt,name=noisy_sample_count,json=noisySampleCount,proto3" json:"noisy_sample_count,omitempty"`
+}
+
+func (x *SmoothGradConfig) Reset() {
+	*x = SmoothGradConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SmoothGradConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SmoothGradConfig) ProtoMessage() {}
+
+func (x *SmoothGradConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SmoothGradConfig.ProtoReflect.Descriptor instead.
+func (*SmoothGradConfig) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDescGZIP(), []int{8}
+}
+
+func (m *SmoothGradConfig) GetGradientNoiseSigma() isSmoothGradConfig_GradientNoiseSigma {
+	if m != nil {
+		return m.GradientNoiseSigma
+	}
+	return nil
+}
+
+func (x *SmoothGradConfig) GetNoiseSigma() float32 {
+	if x, ok := x.GetGradientNoiseSigma().(*SmoothGradConfig_NoiseSigma); ok {
+		return x.NoiseSigma
+	}
+	return 0
+}
+
+func (x *SmoothGradConfig) GetFeatureNoiseSigma() *FeatureNoiseSigma {
+	if x, ok := x.GetGradientNoiseSigma().(*SmoothGradConfig_FeatureNoiseSigma); ok {
+		return x.FeatureNoiseSigma
+	}
+	return nil
+}
+
+func (x *SmoothGradConfig) GetNoisySampleCount() int32 {
+	if x != nil {
+		return x.NoisySampleCount
+	}
+	return 0
+}
+
+type isSmoothGradConfig_GradientNoiseSigma interface {
+	isSmoothGradConfig_GradientNoiseSigma()
+}
+
+type SmoothGradConfig_NoiseSigma struct {
+	// This is a single float value and will be used to add noise to all the
+	// features. Use this field when all features are normalized to have the
+	// same distribution: scale to range [0, 1], [-1, 1] or z-scoring, where
+	// features are normalized to have 0-mean and 1-variance. Refer to
+	// this doc for more details about normalization:
+	//
+	// https:
+	// //developers.google.com/machine-learning
+	// // /data-prep/transform/normalization.
+	//
+	// For best results the recommended value is about 10% - 20% of the standard
+	// deviation of the input feature. Refer to section 3.2 of the SmoothGrad
+	// paper: https://arxiv.org/pdf/1706.03825.pdf. Defaults to 0.1.
+	//
+	// If the distribution is different per feature, set
+	// [feature_noise_sigma][google.cloud.aiplatform.v1beta1.SmoothGradConfig.feature_noise_sigma] instead
+	// for each feature.
+	NoiseSigma float32 `protobuf:"fixed32,1,opt,name=noise_sigma,json=noiseSigma,proto3,oneof"`
+}
+
+type SmoothGradConfig_FeatureNoiseSigma struct {
+	// This is similar to [noise_sigma][google.cloud.aiplatform.v1beta1.SmoothGradConfig.noise_sigma], but
+	// provides additional flexibility. A separate noise sigma can be provided
+	// for each feature, which is useful if their distributions are different.
+	// No noise is added to features that are not set. If this field is unset,
+	// [noise_sigma][google.cloud.aiplatform.v1beta1.SmoothGradConfig.noise_sigma] will be used for all
+	// features.
+	FeatureNoiseSigma *FeatureNoiseSigma `protobuf:"bytes,2,opt,name=feature_noise_sigma,json=featureNoiseSigma,proto3,oneof"`
+}
+
+func (*SmoothGradConfig_NoiseSigma) isSmoothGradConfig_GradientNoiseSigma() {}
+
+func (*SmoothGradConfig_FeatureNoiseSigma) isSmoothGradConfig_GradientNoiseSigma() {}
+
+// Noise sigma by features. Noise sigma represents the standard deviation of the
+// gaussian kernel that will be used to add noise to interpolated inputs prior
+// to computing gradients.
+type FeatureNoiseSigma struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Noise sigma per feature. No noise is added to features that are not set.
+	NoiseSigma []*FeatureNoiseSigma_NoiseSigmaForFeature `protobuf:"bytes,1,rep,name=noise_sigma,json=noiseSigma,proto3" json:"noise_sigma,omitempty"`
+}
+
+func (x *FeatureNoiseSigma) Reset() {
+	*x = FeatureNoiseSigma{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FeatureNoiseSigma) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FeatureNoiseSigma) ProtoMessage() {}
+
+func (x *FeatureNoiseSigma) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FeatureNoiseSigma.ProtoReflect.Descriptor instead.
+func (*FeatureNoiseSigma) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *FeatureNoiseSigma) GetNoiseSigma() []*FeatureNoiseSigma_NoiseSigmaForFeature {
+	if x != nil {
+		return x.NoiseSigma
+	}
+	return nil
+}
+
+// Noise sigma for a single feature.
+type FeatureNoiseSigma_NoiseSigmaForFeature struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The name of the input feature for which noise sigma is provided. The
+	// features are defined in
+	// [explanation metadata inputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.inputs].
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// This represents the standard deviation of the Gaussian kernel that will
+	// be used to add noise to the feature prior to computing gradients. Similar
+	// to [noise_sigma][google.cloud.aiplatform.v1beta1.SmoothGradConfig.noise_sigma] but represents the
+	// noise added to the current feature. Defaults to 0.1.
+	Sigma float32 `protobuf:"fixed32,2,opt,name=sigma,proto3" json:"sigma,omitempty"`
+}
+
+func (x *FeatureNoiseSigma_NoiseSigmaForFeature) Reset() {
+	*x = FeatureNoiseSigma_NoiseSigmaForFeature{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FeatureNoiseSigma_NoiseSigmaForFeature) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FeatureNoiseSigma_NoiseSigmaForFeature) ProtoMessage() {}
+
+func (x *FeatureNoiseSigma_NoiseSigmaForFeature) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FeatureNoiseSigma_NoiseSigmaForFeature.ProtoReflect.Descriptor instead.
+func (*FeatureNoiseSigma_NoiseSigmaForFeature) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDescGZIP(), []int{9, 0}
+}
+
+func (x *FeatureNoiseSigma_NoiseSigmaForFeature) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *FeatureNoiseSigma_NoiseSigmaForFeature) GetSigma() float32 {
+	if x != nil {
+		return x.Sigma
+	}
+	return 0
+}
+
 var File_google_cloud_aiplatform_v1beta1_explanation_proto protoreflect.FileDescriptor
 
 var file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDesc = []byte{
@@ -517,7 +1008,7 @@ var file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDesc = []byte{
 	0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62,
 	0x65, 0x74, 0x61, 0x31, 0x2e, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e,
 	0x42, 0x03, 0xe0, 0x41, 0x03, 0x52, 0x10, 0x6d, 0x65, 0x61, 0x6e, 0x41, 0x74, 0x74, 0x72, 0x69,
-	0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22, 0xe2, 0x02, 0x0a, 0x0b, 0x41, 0x74, 0x74, 0x72,
+	0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22, 0x88, 0x03, 0x0a, 0x0b, 0x41, 0x74, 0x74, 0x72,
 	0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x37, 0x0a, 0x15, 0x62, 0x61, 0x73, 0x65, 0x6c,
 	0x69, 0x6e, 0x65, 0x5f, 0x6f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x01, 0x42, 0x03, 0xe0, 0x41, 0x03, 0x52, 0x13, 0x62, 0x61, 0x73,
@@ -539,42 +1030,112 @@ var file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDesc = []byte{
 	0x61, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x34, 0x0a, 0x13, 0x61, 0x70, 0x70, 0x72, 0x6f, 0x78,
 	0x69, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x18, 0x06, 0x20,
 	0x01, 0x28, 0x01, 0x42, 0x03, 0xe0, 0x41, 0x03, 0x52, 0x12, 0x61, 0x70, 0x70, 0x72, 0x6f, 0x78,
-	0x69, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x22, 0xc5, 0x01, 0x0a,
-	0x0f, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x70, 0x65, 0x63,
-	0x12, 0x5b, 0x0a, 0x0a, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x73, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x36, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
-	0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76,
-	0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x73, 0x42, 0x03, 0xe0, 0x41,
-	0x02, 0x52, 0x0a, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x73, 0x12, 0x55, 0x0a,
-	0x08, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32,
-	0x34, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61,
-	0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
-	0x31, 0x2e, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74,
-	0x61, 0x64, 0x61, 0x74, 0x61, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x08, 0x6d, 0x65, 0x74, 0x61,
-	0x64, 0x61, 0x74, 0x61, 0x22, 0x93, 0x01, 0x0a, 0x15, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x73, 0x12, 0x7a,
-	0x0a, 0x1b, 0x73, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x64, 0x5f, 0x73, 0x68, 0x61, 0x70, 0x6c, 0x65,
-	0x79, 0x5f, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x3a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f,
-	0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31,
-	0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x64, 0x53, 0x68, 0x61,
-	0x70, 0x6c, 0x65, 0x79, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x52,
-	0x19, 0x73, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x64, 0x53, 0x68, 0x61, 0x70, 0x6c, 0x65, 0x79, 0x41,
-	0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x3f, 0x0a, 0x19, 0x53, 0x61,
-	0x6d, 0x70, 0x6c, 0x65, 0x64, 0x53, 0x68, 0x61, 0x70, 0x6c, 0x65, 0x79, 0x41, 0x74, 0x74, 0x72,
-	0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x22, 0x0a, 0x0a, 0x70, 0x61, 0x74, 0x68, 0x5f,
-	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x42, 0x03, 0xe0, 0x41, 0x02,
-	0x52, 0x09, 0x70, 0x61, 0x74, 0x68, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x42, 0x84, 0x01, 0x0a, 0x23,
-	0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
-	0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65,
-	0x74, 0x61, 0x31, 0x42, 0x10, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x49, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
-	0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63,
-	0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2f,
-	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x3b, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f,
-	0x72, 0x6d, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x69, 0x6d, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x12, 0x24, 0x0a, 0x0b,
+	0x6f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28,
+	0x09, 0x42, 0x03, 0xe0, 0x41, 0x03, 0x52, 0x0a, 0x6f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x4e, 0x61,
+	0x6d, 0x65, 0x22, 0xc5, 0x01, 0x0a, 0x0f, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x53, 0x70, 0x65, 0x63, 0x12, 0x5b, 0x0a, 0x0a, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x65,
+	0x74, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x36, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74,
+	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x45, 0x78, 0x70,
+	0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65,
+	0x72, 0x73, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0a, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74,
+	0x65, 0x72, 0x73, 0x12, 0x55, 0x0a, 0x08, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x34, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
+	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e,
+	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x42, 0x03, 0xe0, 0x41, 0x02,
+	0x52, 0x08, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x22, 0xe4, 0x03, 0x0a, 0x15, 0x45,
+	0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65,
+	0x74, 0x65, 0x72, 0x73, 0x12, 0x7c, 0x0a, 0x1b, 0x73, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x64, 0x5f,
+	0x73, 0x68, 0x61, 0x70, 0x6c, 0x65, 0x79, 0x5f, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74,
+	0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x3a, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66,
+	0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x53, 0x61, 0x6d, 0x70,
+	0x6c, 0x65, 0x64, 0x53, 0x68, 0x61, 0x70, 0x6c, 0x65, 0x79, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62,
+	0x75, 0x74, 0x69, 0x6f, 0x6e, 0x48, 0x00, 0x52, 0x19, 0x73, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x64,
+	0x53, 0x68, 0x61, 0x70, 0x6c, 0x65, 0x79, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69,
+	0x6f, 0x6e, 0x12, 0x8b, 0x01, 0x0a, 0x20, 0x69, 0x6e, 0x74, 0x65, 0x67, 0x72, 0x61, 0x74, 0x65,
+	0x64, 0x5f, 0x67, 0x72, 0x61, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x5f, 0x61, 0x74, 0x74, 0x72,
+	0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x3f, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70,
+	0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e,
+	0x49, 0x6e, 0x74, 0x65, 0x67, 0x72, 0x61, 0x74, 0x65, 0x64, 0x47, 0x72, 0x61, 0x64, 0x69, 0x65,
+	0x6e, 0x74, 0x73, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x48, 0x00,
+	0x52, 0x1e, 0x69, 0x6e, 0x74, 0x65, 0x67, 0x72, 0x61, 0x74, 0x65, 0x64, 0x47, 0x72, 0x61, 0x64,
+	0x69, 0x65, 0x6e, 0x74, 0x73, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e,
+	0x12, 0x5d, 0x0a, 0x10, 0x78, 0x72, 0x61, 0x69, 0x5f, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x30, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74,
+	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x58, 0x72, 0x61,
+	0x69, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x48, 0x00, 0x52, 0x0f,
+	0x78, 0x72, 0x61, 0x69, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x12,
+	0x13, 0x0a, 0x05, 0x74, 0x6f, 0x70, 0x5f, 0x6b, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04,
+	0x74, 0x6f, 0x70, 0x4b, 0x12, 0x41, 0x0a, 0x0e, 0x6f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x5f, 0x69,
+	0x6e, 0x64, 0x69, 0x63, 0x65, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x4c,
+	0x69, 0x73, 0x74, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0d, 0x6f, 0x75, 0x74, 0x70, 0x75, 0x74,
+	0x49, 0x6e, 0x64, 0x69, 0x63, 0x65, 0x73, 0x42, 0x08, 0x0a, 0x06, 0x6d, 0x65, 0x74, 0x68, 0x6f,
+	0x64, 0x22, 0x3f, 0x0a, 0x19, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x64, 0x53, 0x68, 0x61, 0x70,
+	0x6c, 0x65, 0x79, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x22,
+	0x0a, 0x0a, 0x70, 0x61, 0x74, 0x68, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x05, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x09, 0x70, 0x61, 0x74, 0x68, 0x43, 0x6f, 0x75,
+	0x6e, 0x74, 0x22, 0xa5, 0x01, 0x0a, 0x1e, 0x49, 0x6e, 0x74, 0x65, 0x67, 0x72, 0x61, 0x74, 0x65,
+	0x64, 0x47, 0x72, 0x61, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x73, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62,
+	0x75, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x22, 0x0a, 0x0a, 0x73, 0x74, 0x65, 0x70, 0x5f, 0x63, 0x6f,
+	0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x09,
+	0x73, 0x74, 0x65, 0x70, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x5f, 0x0a, 0x12, 0x73, 0x6d, 0x6f,
+	0x6f, 0x74, 0x68, 0x5f, 0x67, 0x72, 0x61, 0x64, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x31, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
+	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e,
+	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x53, 0x6d, 0x6f, 0x6f, 0x74, 0x68, 0x47, 0x72,
+	0x61, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x10, 0x73, 0x6d, 0x6f, 0x6f, 0x74, 0x68,
+	0x47, 0x72, 0x61, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x22, 0x96, 0x01, 0x0a, 0x0f, 0x58,
+	0x72, 0x61, 0x69, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x22,
+	0x0a, 0x0a, 0x73, 0x74, 0x65, 0x70, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x05, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x09, 0x73, 0x74, 0x65, 0x70, 0x43, 0x6f, 0x75,
+	0x6e, 0x74, 0x12, 0x5f, 0x0a, 0x12, 0x73, 0x6d, 0x6f, 0x6f, 0x74, 0x68, 0x5f, 0x67, 0x72, 0x61,
+	0x64, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x31,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69,
+	0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31,
+	0x2e, 0x53, 0x6d, 0x6f, 0x6f, 0x74, 0x68, 0x47, 0x72, 0x61, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x52, 0x10, 0x73, 0x6d, 0x6f, 0x6f, 0x74, 0x68, 0x47, 0x72, 0x61, 0x64, 0x43, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x22, 0xdf, 0x01, 0x0a, 0x10, 0x53, 0x6d, 0x6f, 0x6f, 0x74, 0x68, 0x47, 0x72,
+	0x61, 0x64, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x21, 0x0a, 0x0b, 0x6e, 0x6f, 0x69, 0x73,
+	0x65, 0x5f, 0x73, 0x69, 0x67, 0x6d, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x02, 0x48, 0x00, 0x52,
+	0x0a, 0x6e, 0x6f, 0x69, 0x73, 0x65, 0x53, 0x69, 0x67, 0x6d, 0x61, 0x12, 0x64, 0x0a, 0x13, 0x66,
+	0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x5f, 0x6e, 0x6f, 0x69, 0x73, 0x65, 0x5f, 0x73, 0x69, 0x67,
+	0x6d, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x32, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f,
+	0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x46, 0x65, 0x61, 0x74, 0x75,
+	0x72, 0x65, 0x4e, 0x6f, 0x69, 0x73, 0x65, 0x53, 0x69, 0x67, 0x6d, 0x61, 0x48, 0x00, 0x52, 0x11,
+	0x66, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x4e, 0x6f, 0x69, 0x73, 0x65, 0x53, 0x69, 0x67, 0x6d,
+	0x61, 0x12, 0x2c, 0x0a, 0x12, 0x6e, 0x6f, 0x69, 0x73, 0x79, 0x5f, 0x73, 0x61, 0x6d, 0x70, 0x6c,
+	0x65, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x10, 0x6e,
+	0x6f, 0x69, 0x73, 0x79, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x42,
+	0x14, 0x0a, 0x12, 0x47, 0x72, 0x61, 0x64, 0x69, 0x65, 0x6e, 0x74, 0x4e, 0x6f, 0x69, 0x73, 0x65,
+	0x53, 0x69, 0x67, 0x6d, 0x61, 0x22, 0xbf, 0x01, 0x0a, 0x11, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72,
+	0x65, 0x4e, 0x6f, 0x69, 0x73, 0x65, 0x53, 0x69, 0x67, 0x6d, 0x61, 0x12, 0x68, 0x0a, 0x0b, 0x6e,
+	0x6f, 0x69, 0x73, 0x65, 0x5f, 0x73, 0x69, 0x67, 0x6d, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x47, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e,
+	0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74,
+	0x61, 0x31, 0x2e, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x4e, 0x6f, 0x69, 0x73, 0x65, 0x53,
+	0x69, 0x67, 0x6d, 0x61, 0x2e, 0x4e, 0x6f, 0x69, 0x73, 0x65, 0x53, 0x69, 0x67, 0x6d, 0x61, 0x46,
+	0x6f, 0x72, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x52, 0x0a, 0x6e, 0x6f, 0x69, 0x73, 0x65,
+	0x53, 0x69, 0x67, 0x6d, 0x61, 0x1a, 0x40, 0x0a, 0x14, 0x4e, 0x6f, 0x69, 0x73, 0x65, 0x53, 0x69,
+	0x67, 0x6d, 0x61, 0x46, 0x6f, 0x72, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x12, 0x12, 0x0a,
+	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d,
+	0x65, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x69, 0x67, 0x6d, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02,
+	0x52, 0x05, 0x73, 0x69, 0x67, 0x6d, 0x61, 0x42, 0x84, 0x01, 0x0a, 0x23, 0x63, 0x6f, 0x6d, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70,
+	0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x42,
+	0x10, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x72, 0x6f, 0x74,
+	0x6f, 0x50, 0x01, 0x5a, 0x49, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61,
+	0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64,
+	0x2f, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x62, 0x65,
+	0x74, 0x61, 0x31, 0x3b, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -589,29 +1150,42 @@ func file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDescGZIP() []byte
 	return file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDescData
 }
 
-var file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_google_cloud_aiplatform_v1beta1_explanation_proto_goTypes = []interface{}{
-	(*Explanation)(nil),               // 0: google.cloud.aiplatform.v1beta1.Explanation
-	(*ModelExplanation)(nil),          // 1: google.cloud.aiplatform.v1beta1.ModelExplanation
-	(*Attribution)(nil),               // 2: google.cloud.aiplatform.v1beta1.Attribution
-	(*ExplanationSpec)(nil),           // 3: google.cloud.aiplatform.v1beta1.ExplanationSpec
-	(*ExplanationParameters)(nil),     // 4: google.cloud.aiplatform.v1beta1.ExplanationParameters
-	(*SampledShapleyAttribution)(nil), // 5: google.cloud.aiplatform.v1beta1.SampledShapleyAttribution
-	(*structpb.Value)(nil),            // 6: google.protobuf.Value
-	(*ExplanationMetadata)(nil),       // 7: google.cloud.aiplatform.v1beta1.ExplanationMetadata
+	(*Explanation)(nil),                            // 0: google.cloud.aiplatform.v1beta1.Explanation
+	(*ModelExplanation)(nil),                       // 1: google.cloud.aiplatform.v1beta1.ModelExplanation
+	(*Attribution)(nil),                            // 2: google.cloud.aiplatform.v1beta1.Attribution
+	(*ExplanationSpec)(nil),                        // 3: google.cloud.aiplatform.v1beta1.ExplanationSpec
+	(*ExplanationParameters)(nil),                  // 4: google.cloud.aiplatform.v1beta1.ExplanationParameters
+	(*SampledShapleyAttribution)(nil),              // 5: google.cloud.aiplatform.v1beta1.SampledShapleyAttribution
+	(*IntegratedGradientsAttribution)(nil),         // 6: google.cloud.aiplatform.v1beta1.IntegratedGradientsAttribution
+	(*XraiAttribution)(nil),                        // 7: google.cloud.aiplatform.v1beta1.XraiAttribution
+	(*SmoothGradConfig)(nil),                       // 8: google.cloud.aiplatform.v1beta1.SmoothGradConfig
+	(*FeatureNoiseSigma)(nil),                      // 9: google.cloud.aiplatform.v1beta1.FeatureNoiseSigma
+	(*FeatureNoiseSigma_NoiseSigmaForFeature)(nil), // 10: google.cloud.aiplatform.v1beta1.FeatureNoiseSigma.NoiseSigmaForFeature
+	(*structpb.Value)(nil),                         // 11: google.protobuf.Value
+	(*ExplanationMetadata)(nil),                    // 12: google.cloud.aiplatform.v1beta1.ExplanationMetadata
+	(*structpb.ListValue)(nil),                     // 13: google.protobuf.ListValue
 }
 var file_google_cloud_aiplatform_v1beta1_explanation_proto_depIdxs = []int32{
-	2, // 0: google.cloud.aiplatform.v1beta1.Explanation.attributions:type_name -> google.cloud.aiplatform.v1beta1.Attribution
-	2, // 1: google.cloud.aiplatform.v1beta1.ModelExplanation.mean_attributions:type_name -> google.cloud.aiplatform.v1beta1.Attribution
-	6, // 2: google.cloud.aiplatform.v1beta1.Attribution.feature_attributions:type_name -> google.protobuf.Value
-	4, // 3: google.cloud.aiplatform.v1beta1.ExplanationSpec.parameters:type_name -> google.cloud.aiplatform.v1beta1.ExplanationParameters
-	7, // 4: google.cloud.aiplatform.v1beta1.ExplanationSpec.metadata:type_name -> google.cloud.aiplatform.v1beta1.ExplanationMetadata
-	5, // 5: google.cloud.aiplatform.v1beta1.ExplanationParameters.sampled_shapley_attribution:type_name -> google.cloud.aiplatform.v1beta1.SampledShapleyAttribution
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	2,  // 0: google.cloud.aiplatform.v1beta1.Explanation.attributions:type_name -> google.cloud.aiplatform.v1beta1.Attribution
+	2,  // 1: google.cloud.aiplatform.v1beta1.ModelExplanation.mean_attributions:type_name -> google.cloud.aiplatform.v1beta1.Attribution
+	11, // 2: google.cloud.aiplatform.v1beta1.Attribution.feature_attributions:type_name -> google.protobuf.Value
+	4,  // 3: google.cloud.aiplatform.v1beta1.ExplanationSpec.parameters:type_name -> google.cloud.aiplatform.v1beta1.ExplanationParameters
+	12, // 4: google.cloud.aiplatform.v1beta1.ExplanationSpec.metadata:type_name -> google.cloud.aiplatform.v1beta1.ExplanationMetadata
+	5,  // 5: google.cloud.aiplatform.v1beta1.ExplanationParameters.sampled_shapley_attribution:type_name -> google.cloud.aiplatform.v1beta1.SampledShapleyAttribution
+	6,  // 6: google.cloud.aiplatform.v1beta1.ExplanationParameters.integrated_gradients_attribution:type_name -> google.cloud.aiplatform.v1beta1.IntegratedGradientsAttribution
+	7,  // 7: google.cloud.aiplatform.v1beta1.ExplanationParameters.xrai_attribution:type_name -> google.cloud.aiplatform.v1beta1.XraiAttribution
+	13, // 8: google.cloud.aiplatform.v1beta1.ExplanationParameters.output_indices:type_name -> google.protobuf.ListValue
+	8,  // 9: google.cloud.aiplatform.v1beta1.IntegratedGradientsAttribution.smooth_grad_config:type_name -> google.cloud.aiplatform.v1beta1.SmoothGradConfig
+	8,  // 10: google.cloud.aiplatform.v1beta1.XraiAttribution.smooth_grad_config:type_name -> google.cloud.aiplatform.v1beta1.SmoothGradConfig
+	9,  // 11: google.cloud.aiplatform.v1beta1.SmoothGradConfig.feature_noise_sigma:type_name -> google.cloud.aiplatform.v1beta1.FeatureNoiseSigma
+	10, // 12: google.cloud.aiplatform.v1beta1.FeatureNoiseSigma.noise_sigma:type_name -> google.cloud.aiplatform.v1beta1.FeatureNoiseSigma.NoiseSigmaForFeature
+	13, // [13:13] is the sub-list for method output_type
+	13, // [13:13] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_aiplatform_v1beta1_explanation_proto_init() }
@@ -693,6 +1267,75 @@ func file_google_cloud_aiplatform_v1beta1_explanation_proto_init() {
 				return nil
 			}
 		}
+		file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*IntegratedGradientsAttribution); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*XraiAttribution); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SmoothGradConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FeatureNoiseSigma); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FeatureNoiseSigma_NoiseSigmaForFeature); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+	}
+	file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[4].OneofWrappers = []interface{}{
+		(*ExplanationParameters_SampledShapleyAttribution)(nil),
+		(*ExplanationParameters_IntegratedGradientsAttribution)(nil),
+		(*ExplanationParameters_XraiAttribution)(nil),
+	}
+	file_google_cloud_aiplatform_v1beta1_explanation_proto_msgTypes[8].OneofWrappers = []interface{}{
+		(*SmoothGradConfig_NoiseSigma)(nil),
+		(*SmoothGradConfig_FeatureNoiseSigma)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -700,7 +1343,7 @@ func file_google_cloud_aiplatform_v1beta1_explanation_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -531,7 +531,9 @@ type Entity struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A Google Analytics 4 (GA4) property id.
+	// A Google Analytics GA4 property id. To learn more, see [where to find your
+	// Property
+	// ID](https://developers.google.com/analytics/trusted-testing/analytics-data/property-id).
 	PropertyId string `protobuf:"bytes,1,opt,name=property_id,json=propertyId,proto3" json:"property_id,omitempty"`
 }
 
@@ -574,15 +576,25 @@ func (x *Entity) GetPropertyId() string {
 	return ""
 }
 
-// Dimensions are attributes of your data. For example, the dimension City
-// indicates the city, for example, "Paris" or "New York", from which an event
-// originates. Requests are allowed up to 8 dimensions.
+// Dimensions are attributes of your data. For example, the dimension city
+// indicates the city from which an event originates. Dimension values in report
+// responses are strings; for example, city could be "Paris" or "New York".
+// Requests are allowed up to 8 dimensions.
 type Dimension struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The name of the dimension.
+	// The name of the dimension. See the [API
+	// Dimensions](https://developers.google.com/analytics/trusted-testing/analytics-data/api-schema#dimensions)
+	// for the list of dimension names.
+	//
+	// If `dimensionExpression` is specified, `name` can be any string that you
+	// would like. For example if a `dimensionExpression` concatenates `country`
+	// and `city`, you could call that dimension `countryAndCity`.
+	//
+	// Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`,
+	// `dimensionExpression`, and `pivots`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// One dimension can be the result of an expression of multiple dimensions.
 	// For example, dimension "country, city": concatenate(country, ", ", city).
@@ -739,21 +751,31 @@ func (*DimensionExpression_UpperCase) isDimensionExpression_OneExpression() {}
 
 func (*DimensionExpression_Concatenate) isDimensionExpression_OneExpression() {}
 
-// The quantitative measurements of a report. For example, the metric eventCount
-// is the total number of events. Requests are allowed up to 10 metrics.
+// The quantitative measurements of a report. For example, the metric
+// `eventCount` is the total number of events. Requests are allowed up to 10
+// metrics.
 type Metric struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The name of the metric.
+	// The name of the metric. See the [API
+	// Metrics](https://developers.google.com/analytics/trusted-testing/analytics-data/api-schema#metrics)
+	// for the list of metric names.
+	//
+	// If `expression` is specified, `name` can be any string that you would like.
+	// For example if `expression` is `screenPageViews/sessions`, you could call
+	// that metric's name = `viewsPerSession`.
+	//
+	// Metrics are referenced by `name` in `metricFilter`, `orderBys`, and metric
+	// `expression`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// A mathematical expression for derived metrics. For example, the metric
-	// Event count per user is eventCount/totalUsers.
+	// Event count per user is `eventCount/totalUsers`.
 	Expression string `protobuf:"bytes,2,opt,name=expression,proto3" json:"expression,omitempty"`
-	// Indicates if a metric is invisible.
-	// If a metric is invisible, the metric is not in the response, but can be
-	// used in filters, order_bys or being referred to in a metric expression.
+	// Indicates if a metric is invisible in the report response. If a metric is
+	// invisible, the metric will not produce a column in the response, but can be
+	// used in `metricFilter`, `orderBys`, or a metric `expression`.
 	Invisible bool `protobuf:"varint,3,opt,name=invisible,proto3" json:"invisible,omitempty"`
 }
 
@@ -1084,7 +1106,10 @@ type isFilter_OneFilter interface {
 }
 
 type Filter_NullFilter struct {
-	// A filter for null values.
+	// A filter for null values. If True, a null dimension value is matched by
+	// this filter. Null filter is commonly used inside a NOT filter
+	// expression. For example, a NOT expression of a null filter removes rows
+	// when a dimension is null.
 	NullFilter bool `protobuf:"varint,2,opt,name=null_filter,json=nullFilter,proto3,oneof"`
 }
 
@@ -1868,28 +1893,38 @@ func (x *PivotDimensionHeader) GetDimensionValues() []*DimensionValue {
 // For example if RunReportRequest contains:
 //
 // ```none
-// dimensions {
-//   name: "eventName"
-// }
-// dimensions {
-//   name: "countryId"
-// }
-// metrics {
-//   name: "eventCount"
-// }
+// "dimensions": [
+//   {
+//     "name": "eventName"
+//   },
+//   {
+//     "name": "countryId"
+//   }
+// ],
+// "metrics": [
+//   {
+//     "name": "eventCount"
+//   }
+// ]
 // ```
 //
-// One row with 'in_app_purchase' as the eventName, 'us' as the countryId, and
+// One row with 'in_app_purchase' as the eventName, 'JP' as the countryId, and
 // 15 as the eventCount, would be:
 //
 // ```none
-// dimension_values {
-//   name: 'in_app_purchase'
-//   name: 'us'
-// }
-// metric_values {
-//   int64_value: 15
-// }
+// "dimensionValues": [
+//   {
+//     "value": "in_app_purchase"
+//   },
+//   {
+//     "value": "JP"
+//   }
+// ],
+// "metricValues": [
+//   {
+//     "value": "15"
+//   }
+// ]
 // ```
 type Row struct {
 	state         protoimpl.MessageState
@@ -2182,17 +2217,21 @@ type PropertyQuota struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Analytics Properties can use up to 25,000 tokens per day. Most requests
+	// Standard Analytics Properties can use up to 25,000 tokens per day;
+	// Analytics 360 Properties can use 250,000 tokens per day. Most requests
 	// consume fewer than 10 tokens.
 	TokensPerDay *QuotaStatus `protobuf:"bytes,1,opt,name=tokens_per_day,json=tokensPerDay,proto3" json:"tokens_per_day,omitempty"`
-	// Analytics Properties can use up to 5,000 tokens per day. An API request
-	// consumes a single number of tokens, and that number is deducted from both
-	// the hourly and daily quotas.
+	// Standard Analytics Properties can use up to 5,000 tokens per day; Analytics
+	// 360 Properties can use 50,000 tokens per day. An API request consumes a
+	// single number of tokens, and that number is deducted from both the hourly
+	// and daily quotas.
 	TokensPerHour *QuotaStatus `protobuf:"bytes,2,opt,name=tokens_per_hour,json=tokensPerHour,proto3" json:"tokens_per_hour,omitempty"`
-	// Analytics Properties can send up to 10 concurrent requests.
+	// Standard Analytics Properties can send up to 10 concurrent requests;
+	// Analytics 360 Properties can use up to 50 concurrent requests.
 	ConcurrentRequests *QuotaStatus `protobuf:"bytes,3,opt,name=concurrent_requests,json=concurrentRequests,proto3" json:"concurrent_requests,omitempty"`
-	// Analytics Properties and cloud project pairs can have up to 10
-	// server errors per hour.
+	// Standard Analytics Properties and cloud project pairs can have up to 10
+	// server errors per hour; Analytics 360 Properties and cloud project pairs
+	// can have up to 50 server errors per hour.
 	ServerErrorsPerProjectPerHour *QuotaStatus `protobuf:"bytes,4,opt,name=server_errors_per_project_per_hour,json=serverErrorsPerProjectPerHour,proto3" json:"server_errors_per_project_per_hour,omitempty"`
 }
 
