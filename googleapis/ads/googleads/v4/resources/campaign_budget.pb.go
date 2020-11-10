@@ -52,7 +52,7 @@ type CampaignBudget struct {
 	// Immutable. The resource name of the campaign budget.
 	// Campaign budget resource names have the form:
 	//
-	// `customers/{customer_id}/campaignBudgets/{budget_id}`
+	// `customers/{customer_id}/campaignBudgets/{campaign_budget_id}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. The ID of the campaign budget.
 	//

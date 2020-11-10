@@ -50,7 +50,7 @@ type CurrencyConstant struct {
 	// Output only. The resource name of the currency constant.
 	// Currency constant resource names have the form:
 	//
-	// `currencyConstants/{currency_code}`
+	// `currencyConstants/{code}`
 	ResourceName string `protobuf:"bytes,1,opt,name=resource_name,json=resourceName,proto3" json:"resource_name,omitempty"`
 	// Output only. ISO 4217 three-letter currency code, e.g. "USD"
 	Code *string `protobuf:"bytes,6,opt,name=code,proto3,oneof" json:"code,omitempty"`

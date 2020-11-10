@@ -61,10 +61,10 @@ const (
 	BiddingErrorEnum_INVALID_BID BiddingErrorEnum_BiddingError = 17
 	// Bidding strategy is not available for the account type.
 	BiddingErrorEnum_BIDDING_STRATEGY_NOT_AVAILABLE_FOR_ACCOUNT_TYPE BiddingErrorEnum_BiddingError = 18
-	// Conversion tracking is not enabled in the campaign that has YouTube
-	// Video Builder transitions.
+	// Conversion tracking is not enabled in the campaign that has value-based
+	// bidding transitions.
 	BiddingErrorEnum_CONVERSION_TRACKING_NOT_ENABLED BiddingErrorEnum_BiddingError = 19
-	// Not enough conversions tracked for YouTube Video Builder transitions.
+	// Not enough conversions tracked for value-based bidding transitions.
 	BiddingErrorEnum_NOT_ENOUGH_CONVERSIONS BiddingErrorEnum_BiddingError = 20
 	// Campaign can not be created with given bidding strategy. It can be
 	// transitioned to the strategy, once eligible.

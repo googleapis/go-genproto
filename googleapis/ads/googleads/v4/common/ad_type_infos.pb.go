@@ -1872,8 +1872,7 @@ type AppAdInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// An optional text asset that, if specified, must always be displayed when
-	// the ad is served.
+	// Mandatory ad text.
 	MandatoryAdText *AdTextAsset `protobuf:"bytes,1,opt,name=mandatory_ad_text,json=mandatoryAdText,proto3" json:"mandatory_ad_text,omitempty"`
 	// List of text assets for headlines. When the ad serves the headlines will
 	// be selected from this list.

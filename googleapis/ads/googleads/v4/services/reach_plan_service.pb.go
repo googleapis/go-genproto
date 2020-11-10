@@ -316,7 +316,7 @@ type ProductMetadata struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The code associated with the ad product. E.g. Trueview, Bumper
+	// The code associated with the ad product. E.g. BUMPER, TRUEVIEW_IN_STREAM
 	// To list the available plannable product codes use ListPlannableProducts.
 	PlannableProductCode *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=plannable_product_code,json=plannableProductCode,proto3" json:"plannable_product_code,omitempty"`
 	// The allowed plannable targeting for this product.
@@ -1083,7 +1083,8 @@ type PlannedProduct struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Selected product for planning.
-	// Plannable products codes can be obtained from ListPlannableProducts.
+	// The code associated with the ad product. E.g. Trueview, Bumper
+	// To list the available plannable product codes use ListPlannableProducts.
 	PlannableProductCode *wrapperspb.StringValue `protobuf:"bytes,1,opt,name=plannable_product_code,json=plannableProductCode,proto3" json:"plannable_product_code,omitempty"`
 	// Required. Maximum budget allocation in micros for the selected product.
 	// The value is specified in the selected planning currency_code.
