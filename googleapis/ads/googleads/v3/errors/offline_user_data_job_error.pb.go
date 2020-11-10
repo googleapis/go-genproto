@@ -96,7 +96,7 @@ const (
 	OfflineUserDataJobErrorEnum_JOB_ALREADY_STARTED OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 22
 	// Remove operation is not allowed for store sales direct updates.
 	OfflineUserDataJobErrorEnum_REMOVE_NOT_SUPPORTED OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 23
-	// Remove-all is not supported for store sales direct updates.
+	// Remove-all is not supported for certain offline user data job types.
 	OfflineUserDataJobErrorEnum_REMOVE_ALL_NOT_SUPPORTED OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 24
 	// The SHA256 encoded value is malformed.
 	OfflineUserDataJobErrorEnum_INVALID_SHA256_FORMAT OfflineUserDataJobErrorEnum_OfflineUserDataJobError = 25

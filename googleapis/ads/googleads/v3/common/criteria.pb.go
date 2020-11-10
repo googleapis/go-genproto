@@ -3189,7 +3189,8 @@ type LocationGroupInfo struct {
 	// Distance in units specifying the radius around targeted locations.
 	// This is required and must be set in CREATE operations.
 	Radius *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=radius,proto3" json:"radius,omitempty"`
-	// Unit of the radius, miles and meters supported currently.
+	// Unit of the radius. Miles and meters are supported for geo target
+	// constants. Milli miles and meters are supported for feed item sets.
 	// This is required and must be set in CREATE operations.
 	RadiusUnits enums.LocationGroupRadiusUnitsEnum_LocationGroupRadiusUnits `protobuf:"varint,4,opt,name=radius_units,json=radiusUnits,proto3,enum=google.ads.googleads.v3.enums.LocationGroupRadiusUnitsEnum_LocationGroupRadiusUnits" json:"radius_units,omitempty"`
 }

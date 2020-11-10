@@ -45,11 +45,14 @@ const _ = proto.ProtoPackageIsVersion4
 
 // An ad group criterion simulation. Supported combinations of advertising
 // channel type, criterion type, simulation type, and simulation modification
-// method are detailed below respectively.
+// method are detailed below respectively. Hotel AdGroupCriterion simulation
+// operations starting in V5.
 //
 // 1. DISPLAY - KEYWORD - CPC_BID - UNIFORM
 // 2. SEARCH - KEYWORD - CPC_BID - UNIFORM
 // 3. SHOPPING - LISTING_GROUP - CPC_BID - UNIFORM
+// 4. HOTEL - LISTING_GROUP - CPC_BID - UNIFORM
+// 5. HOTEL - LISTING_GROUP - PERCENT_CPC_BID - UNIFORM
 type AdGroupCriterionSimulation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

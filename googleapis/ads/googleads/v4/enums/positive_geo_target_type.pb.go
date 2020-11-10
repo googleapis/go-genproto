@@ -54,6 +54,8 @@ const (
 	PositiveGeoTargetTypeEnum_PRESENCE_OR_INTEREST PositiveGeoTargetTypeEnum_PositiveGeoTargetType = 5
 	// Specifies that an ad is triggered if the user
 	// searches for advertiser's targeted locations.
+	// This can only be used with Search and standard
+	// Shopping campaigns.
 	PositiveGeoTargetTypeEnum_SEARCH_INTEREST PositiveGeoTargetTypeEnum_PositiveGeoTargetType = 6
 	// Specifies that an ad is triggered if the user is in
 	// or regularly in advertiser's targeted locations.

@@ -87,15 +87,22 @@ type Invoice struct {
 	// Output only. The total amount of invoice level adjustments. These adjustments are made
 	// on the invoice, not on a specific account budget.
 	InvoiceLevelAdjustmentsMicros *wrapperspb.Int64Value `protobuf:"bytes,11,opt,name=invoice_level_adjustments_micros,json=invoiceLevelAdjustmentsMicros,proto3" json:"invoice_level_adjustments_micros,omitempty"`
-	// Output only. The pretax subtotal amount, in micros. This equals the sum of the
-	// AccountBudgetSummary subtotal amounts, plus the invoice level adjustments.
+	// Output only. The pretax subtotal amount, in micros. This equals the
+	// sum of the AccountBudgetSummary subtotal amounts,
+	// Invoice.adjustments_subtotal_amount_micros, and
+	// Invoice.regulatory_costs_subtotal_amount_micros.
+	// Starting with v6, the Invoice.regulatory_costs_subtotal_amount_micros is no
+	// longer included.
 	SubtotalAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,12,opt,name=subtotal_amount_micros,json=subtotalAmountMicros,proto3" json:"subtotal_amount_micros,omitempty"`
 	// Output only. The sum of all taxes on the invoice, in micros. This equals the sum of the
 	// AccountBudgetSummary tax amounts, plus taxes not associated with a specific
 	// account budget.
 	TaxAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,13,opt,name=tax_amount_micros,json=taxAmountMicros,proto3" json:"tax_amount_micros,omitempty"`
-	// Output only. The total amount, in micros. This equals the sum of the invoice subtotal
-	// amount and the invoice tax amount.
+	// Output only. The total amount, in micros. This equals the sum of
+	// Invoice.subtotal_amount_micros and Invoice.tax_amount_micros.
+	// Starting with v6, Invoice.regulatory_costs_subtotal_amount_micros is
+	// also added as it is no longer already included in
+	// Invoice.tax_amount_micros.
 	TotalAmountMicros *wrapperspb.Int64Value `protobuf:"bytes,14,opt,name=total_amount_micros,json=totalAmountMicros,proto3" json:"total_amount_micros,omitempty"`
 	// Output only. The resource name of the original invoice corrected, wrote off, or canceled
 	// by this invoice, if applicable. If `corrected_invoice` is set,

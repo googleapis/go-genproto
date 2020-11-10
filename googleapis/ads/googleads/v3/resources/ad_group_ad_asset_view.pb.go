@@ -45,6 +45,7 @@ const (
 const _ = proto.ProtoPackageIsVersion4
 
 // A link between an AdGroupAd and an Asset.
+// Currently we only support AdGroupAdAssetView for AppAds.
 type AdGroupAdAssetView struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
