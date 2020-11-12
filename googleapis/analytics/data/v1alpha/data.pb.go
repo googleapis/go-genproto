@@ -448,8 +448,7 @@ func (CohortsRange_Granularity) EnumDescriptor() ([]byte, []int) {
 }
 
 // A contiguous set of days: startDate, startDate + 1, ..., endDate. Requests
-// are allowed up to 4 date ranges, and the union of the ranges can cover up to
-// 1 year.
+// are allowed up to 4 date ranges.
 type DateRange struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

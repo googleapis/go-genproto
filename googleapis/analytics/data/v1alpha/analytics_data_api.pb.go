@@ -132,9 +132,15 @@ type RunReportRequest struct {
 	// must be unspecified.
 	DateRanges []*DateRange `protobuf:"bytes,4,rep,name=date_ranges,json=dateRanges,proto3" json:"date_ranges,omitempty"`
 	// The row count of the start row. The first row is counted as row 0.
+	//
+	// To learn more about this pagination parameter, see
+	// [Pagination](basics#pagination).
 	Offset int64 `protobuf:"varint,5,opt,name=offset,proto3" json:"offset,omitempty"`
 	// The number of rows to return. If unspecified, 10 rows are returned. If
 	// -1, all rows are returned.
+	//
+	// To learn more about this pagination parameter, see
+	// [Pagination](basics#pagination).
 	Limit int64 `protobuf:"varint,6,opt,name=limit,proto3" json:"limit,omitempty"`
 	// Aggregation of metrics. Aggregated metric values will be shown in rows
 	// where the dimension_values are set to "RESERVED_(MetricAggregation)".
@@ -317,6 +323,9 @@ type RunReportResponse struct {
 	// rows returned in the response. For example if a query returns 175 rows and
 	// includes limit = 50 in the API request, the response will contain row_count
 	// = 175 but only 50 rows.
+	//
+	// To learn more about this pagination parameter, see
+	// [Pagination](basics#pagination).
 	RowCount int32 `protobuf:"varint,12,opt,name=row_count,json=rowCount,proto3" json:"row_count,omitempty"`
 	// Metadata for the report.
 	Metadata *ResponseMetaData `protobuf:"bytes,6,opt,name=metadata,proto3" json:"metadata,omitempty"`
@@ -940,103 +949,6 @@ func (x *BatchRunPivotReportsResponse) GetPivotReports() []*RunPivotReportRespon
 	return nil
 }
 
-// Request for the universal dimension and metric metadata.
-type GetUniversalMetadataRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *GetUniversalMetadataRequest) Reset() {
-	*x = GetUniversalMetadataRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetUniversalMetadataRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetUniversalMetadataRequest) ProtoMessage() {}
-
-func (x *GetUniversalMetadataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetUniversalMetadataRequest.ProtoReflect.Descriptor instead.
-func (*GetUniversalMetadataRequest) Descriptor() ([]byte, []int) {
-	return file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescGZIP(), []int{9}
-}
-
-// The dimensions and metrics currently accepted in reporting methods.
-type UniversalMetadata struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// The dimensions descriptions.
-	Dimensions []*DimensionMetadata `protobuf:"bytes,1,rep,name=dimensions,proto3" json:"dimensions,omitempty"`
-	// The metric descriptions.
-	Metrics []*MetricMetadata `protobuf:"bytes,2,rep,name=metrics,proto3" json:"metrics,omitempty"`
-}
-
-func (x *UniversalMetadata) Reset() {
-	*x = UniversalMetadata{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[10]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *UniversalMetadata) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UniversalMetadata) ProtoMessage() {}
-
-func (x *UniversalMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[10]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UniversalMetadata.ProtoReflect.Descriptor instead.
-func (*UniversalMetadata) Descriptor() ([]byte, []int) {
-	return file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *UniversalMetadata) GetDimensions() []*DimensionMetadata {
-	if x != nil {
-		return x.Dimensions
-	}
-	return nil
-}
-
-func (x *UniversalMetadata) GetMetrics() []*MetricMetadata {
-	if x != nil {
-		return x.Metrics
-	}
-	return nil
-}
-
 // Request for a property's dimension and metric metadata.
 type GetMetadataRequest struct {
 	state         protoimpl.MessageState
@@ -1045,16 +957,22 @@ type GetMetadataRequest struct {
 
 	// Required. The resource name of the metadata to retrieve. This name field is
 	// specified in the URL path and not URL parameters. Property is a numeric
-	// Google Analytics 4 (GA4) Property identifier.
+	// Google Analytics GA4 Property identifier. To learn more, see [where to find
+	// your Property
+	// ID](https://developers.google.com/analytics/trusted-testing/analytics-data/property-id).
 	//
 	// Example: properties/1234/metadata
+	//
+	// Set the Property ID to 0 for dimensions and metrics common to all
+	// properties. In this special mode, this method will not return custom
+	// dimensions and metrics.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
 func (x *GetMetadataRequest) Reset() {
 	*x = GetMetadataRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[11]
+		mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1067,7 +985,7 @@ func (x *GetMetadataRequest) String() string {
 func (*GetMetadataRequest) ProtoMessage() {}
 
 func (x *GetMetadataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[11]
+	mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1080,7 +998,7 @@ func (x *GetMetadataRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMetadataRequest.ProtoReflect.Descriptor instead.
 func (*GetMetadataRequest) Descriptor() ([]byte, []int) {
-	return file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescGZIP(), []int{11}
+	return file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *GetMetadataRequest) GetName() string {
@@ -1130,7 +1048,7 @@ type RunRealtimeReportRequest struct {
 func (x *RunRealtimeReportRequest) Reset() {
 	*x = RunRealtimeReportRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[12]
+		mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1143,7 +1061,7 @@ func (x *RunRealtimeReportRequest) String() string {
 func (*RunRealtimeReportRequest) ProtoMessage() {}
 
 func (x *RunRealtimeReportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[12]
+	mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1156,7 +1074,7 @@ func (x *RunRealtimeReportRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RunRealtimeReportRequest.ProtoReflect.Descriptor instead.
 func (*RunRealtimeReportRequest) Descriptor() ([]byte, []int) {
-	return file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescGZIP(), []int{12}
+	return file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *RunRealtimeReportRequest) GetProperty() string {
@@ -1254,7 +1172,7 @@ type RunRealtimeReportResponse struct {
 func (x *RunRealtimeReportResponse) Reset() {
 	*x = RunRealtimeReportResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[13]
+		mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1267,7 +1185,7 @@ func (x *RunRealtimeReportResponse) String() string {
 func (*RunRealtimeReportResponse) ProtoMessage() {}
 
 func (x *RunRealtimeReportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[13]
+	mi := &file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1280,7 +1198,7 @@ func (x *RunRealtimeReportResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RunRealtimeReportResponse.ProtoReflect.Descriptor instead.
 func (*RunRealtimeReportResponse) Descriptor() ([]byte, []int) {
-	return file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescGZIP(), []int{13}
+	return file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *RunRealtimeReportResponse) GetDimensionHeaders() []*DimensionHeader {
@@ -1587,20 +1505,7 @@ var file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDesc = []byte
 	0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70,
 	0x68, 0x61, 0x2e, 0x52, 0x75, 0x6e, 0x50, 0x69, 0x76, 0x6f, 0x74, 0x52, 0x65, 0x70, 0x6f, 0x72,
 	0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0c, 0x70, 0x69, 0x76, 0x6f, 0x74,
-	0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x22, 0x1d, 0x0a, 0x1b, 0x47, 0x65, 0x74, 0x55, 0x6e,
-	0x69, 0x76, 0x65, 0x72, 0x73, 0x61, 0x6c, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0xae, 0x01, 0x0a, 0x11, 0x55, 0x6e, 0x69, 0x76, 0x65,
-	0x72, 0x73, 0x61, 0x6c, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x50, 0x0a, 0x0a,
-	0x64, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
-	0x32, 0x30, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74,
-	0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61,
-	0x2e, 0x44, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61,
-	0x74, 0x61, 0x52, 0x0a, 0x64, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x47,
-	0x0a, 0x07, 0x6d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32,
-	0x2d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69,
-	0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x2e,
-	0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x07,
-	0x6d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x73, 0x22, 0x57, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x4d, 0x65,
+	0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x22, 0x57, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x4d, 0x65,
 	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x41, 0x0a,
 	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x2d, 0xe0, 0x41, 0x02,
 	0xfa, 0x41, 0x27, 0x0a, 0x25, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x64, 0x61,
@@ -1679,7 +1584,7 @@ var file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDesc = []byte
 	0x32, 0x2c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74,
 	0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61,
 	0x2e, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x51, 0x75, 0x6f, 0x74, 0x61, 0x52, 0x0d,
-	0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x51, 0x75, 0x6f, 0x74, 0x61, 0x32, 0xc1, 0x0a,
+	0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x51, 0x75, 0x6f, 0x74, 0x61, 0x32, 0x96, 0x09,
 	0x0a, 0x12, 0x41, 0x6c, 0x70, 0x68, 0x61, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73,
 	0x44, 0x61, 0x74, 0x61, 0x12, 0x8d, 0x01, 0x0a, 0x09, 0x52, 0x75, 0x6e, 0x52, 0x65, 0x70, 0x6f,
 	0x72, 0x74, 0x12, 0x2f, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c,
@@ -1722,57 +1627,46 @@ var file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDesc = []byte
 	0x76, 0x6f, 0x74, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
 	0x73, 0x65, 0x22, 0x28, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x22, 0x22, 0x1d, 0x2f, 0x76, 0x31, 0x61,
 	0x6c, 0x70, 0x68, 0x61, 0x3a, 0x62, 0x61, 0x74, 0x63, 0x68, 0x52, 0x75, 0x6e, 0x50, 0x69, 0x76,
-	0x6f, 0x74, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x3a, 0x01, 0x2a, 0x12, 0xa8, 0x01, 0x0a,
-	0x14, 0x47, 0x65, 0x74, 0x55, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x61, 0x6c, 0x4d, 0x65, 0x74,
-	0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x3a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61,
-	0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31,
-	0x61, 0x6c, 0x70, 0x68, 0x61, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73,
-	0x61, 0x6c, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x1a, 0x30, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79,
-	0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68,
-	0x61, 0x2e, 0x55, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x61, 0x6c, 0x4d, 0x65, 0x74, 0x61, 0x64,
-	0x61, 0x74, 0x61, 0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f, 0x76, 0x31,
-	0x61, 0x6c, 0x70, 0x68, 0x61, 0x2f, 0x75, 0x6e, 0x69, 0x76, 0x65, 0x72, 0x73, 0x61, 0x6c, 0x4d,
-	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x9f, 0x01, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x4d,
-	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x31, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e,
-	0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x2e, 0x47, 0x65, 0x74, 0x4d, 0x65, 0x74, 0x61, 0x64,
-	0x61, 0x74, 0x61, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x27, 0x2e, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61,
-	0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x2e, 0x4d, 0x65, 0x74, 0x61, 0x64,
-	0x61, 0x74, 0x61, 0x22, 0x34, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x27, 0x12, 0x25, 0x2f, 0x76, 0x31,
-	0x61, 0x6c, 0x70, 0x68, 0x61, 0x2f, 0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x3d, 0x70, 0x72, 0x6f, 0x70,
-	0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x2f, 0x2a, 0x2f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
-	0x61, 0x7d, 0xda, 0x41, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0xc5, 0x01, 0x0a, 0x11, 0x52, 0x75,
-	0x6e, 0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x12,
-	0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69,
+	0x6f, 0x74, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x3a, 0x01, 0x2a, 0x12, 0x9f, 0x01, 0x0a,
+	0x0b, 0x47, 0x65, 0x74, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x31, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e,
+	0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x2e, 0x47, 0x65, 0x74,
+	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x27, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69,
 	0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x2e,
-	0x52, 0x75, 0x6e, 0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x70, 0x6f, 0x72,
-	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
-	0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61,
-	0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x2e, 0x52, 0x75, 0x6e, 0x52, 0x65, 0x61, 0x6c,
-	0x74, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x22, 0x3d, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x37, 0x22, 0x32, 0x2f, 0x76, 0x31, 0x61,
-	0x6c, 0x70, 0x68, 0x61, 0x2f, 0x7b, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x3d, 0x70,
-	0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x72, 0x75, 0x6e,
-	0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x3a, 0x01,
-	0x2a, 0x1a, 0x7e, 0xca, 0x41, 0x1c, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x64,
-	0x61, 0x74, 0x61, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63,
-	0x6f, 0x6d, 0xd2, 0x41, 0x5c, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77,
-	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
-	0x61, 0x75, 0x74, 0x68, 0x2f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2c, 0x68,
-	0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
-	0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x61,
-	0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x72, 0x65, 0x61, 0x64, 0x6f, 0x6e, 0x6c,
-	0x79, 0x42, 0x7f, 0x0a, 0x21, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
-	0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76,
-	0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x42, 0x15, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63,
-	0x73, 0x44, 0x61, 0x74, 0x61, 0x41, 0x70, 0x69, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a,
-	0x41, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f,
-	0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73,
-	0x2f, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x3b, 0x64, 0x61,
-	0x74, 0x61, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x22, 0x34, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x27,
+	0x12, 0x25, 0x2f, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x2f, 0x7b, 0x6e, 0x61, 0x6d, 0x65,
+	0x3d, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x2f, 0x2a, 0x2f, 0x6d, 0x65,
+	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x7d, 0xda, 0x41, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0xc5,
+	0x01, 0x0a, 0x11, 0x52, 0x75, 0x6e, 0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65,
+	0x70, 0x6f, 0x72, 0x74, 0x12, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e,
+	0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61,
+	0x6c, 0x70, 0x68, 0x61, 0x2e, 0x52, 0x75, 0x6e, 0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65,
+	0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x38, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73,
+	0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x2e, 0x52, 0x75,
+	0x6e, 0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x3d, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x37, 0x22,
+	0x32, 0x2f, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x2f, 0x7b, 0x70, 0x72, 0x6f, 0x70, 0x65,
+	0x72, 0x74, 0x79, 0x3d, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x2f, 0x2a,
+	0x7d, 0x3a, 0x72, 0x75, 0x6e, 0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65, 0x70,
+	0x6f, 0x72, 0x74, 0x3a, 0x01, 0x2a, 0x1a, 0x7e, 0xca, 0x41, 0x1c, 0x61, 0x6e, 0x61, 0x6c, 0x79,
+	0x74, 0x69, 0x63, 0x73, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61,
+	0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0xd2, 0x41, 0x5c, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a,
+	0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74,
+	0x69, 0x63, 0x73, 0x2c, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61,
+	0x75, 0x74, 0x68, 0x2f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x72, 0x65,
+	0x61, 0x64, 0x6f, 0x6e, 0x6c, 0x79, 0x42, 0x7f, 0x0a, 0x21, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64,
+	0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x42, 0x15, 0x41, 0x6e, 0x61,
+	0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x44, 0x61, 0x74, 0x61, 0x41, 0x70, 0x69, 0x50, 0x72, 0x6f,
+	0x74, 0x6f, 0x50, 0x01, 0x5a, 0x41, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c,
+	0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x61, 0x6e, 0x61, 0x6c,
+	0x79, 0x74, 0x69, 0x63, 0x73, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x76, 0x31, 0x61, 0x6c, 0x70,
+	0x68, 0x61, 0x3b, 0x64, 0x61, 0x74, 0x61, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1787,7 +1681,7 @@ func file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescGZIP() [
 	return file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDescData
 }
 
-var file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_google_analytics_data_v1alpha_analytics_data_api_proto_goTypes = []interface{}{
 	(*Metadata)(nil),                     // 0: google.analytics.data.v1alpha.Metadata
 	(*RunReportRequest)(nil),             // 1: google.analytics.data.v1alpha.RunReportRequest
@@ -1798,104 +1692,98 @@ var file_google_analytics_data_v1alpha_analytics_data_api_proto_goTypes = []inte
 	(*BatchRunReportsResponse)(nil),      // 6: google.analytics.data.v1alpha.BatchRunReportsResponse
 	(*BatchRunPivotReportsRequest)(nil),  // 7: google.analytics.data.v1alpha.BatchRunPivotReportsRequest
 	(*BatchRunPivotReportsResponse)(nil), // 8: google.analytics.data.v1alpha.BatchRunPivotReportsResponse
-	(*GetUniversalMetadataRequest)(nil),  // 9: google.analytics.data.v1alpha.GetUniversalMetadataRequest
-	(*UniversalMetadata)(nil),            // 10: google.analytics.data.v1alpha.UniversalMetadata
-	(*GetMetadataRequest)(nil),           // 11: google.analytics.data.v1alpha.GetMetadataRequest
-	(*RunRealtimeReportRequest)(nil),     // 12: google.analytics.data.v1alpha.RunRealtimeReportRequest
-	(*RunRealtimeReportResponse)(nil),    // 13: google.analytics.data.v1alpha.RunRealtimeReportResponse
-	(*DimensionMetadata)(nil),            // 14: google.analytics.data.v1alpha.DimensionMetadata
-	(*MetricMetadata)(nil),               // 15: google.analytics.data.v1alpha.MetricMetadata
-	(*Entity)(nil),                       // 16: google.analytics.data.v1alpha.Entity
-	(*Dimension)(nil),                    // 17: google.analytics.data.v1alpha.Dimension
-	(*Metric)(nil),                       // 18: google.analytics.data.v1alpha.Metric
-	(*DateRange)(nil),                    // 19: google.analytics.data.v1alpha.DateRange
-	(MetricAggregation)(0),               // 20: google.analytics.data.v1alpha.MetricAggregation
-	(*FilterExpression)(nil),             // 21: google.analytics.data.v1alpha.FilterExpression
-	(*OrderBy)(nil),                      // 22: google.analytics.data.v1alpha.OrderBy
-	(*CohortSpec)(nil),                   // 23: google.analytics.data.v1alpha.CohortSpec
-	(*DimensionHeader)(nil),              // 24: google.analytics.data.v1alpha.DimensionHeader
-	(*MetricHeader)(nil),                 // 25: google.analytics.data.v1alpha.MetricHeader
-	(*Row)(nil),                          // 26: google.analytics.data.v1alpha.Row
-	(*ResponseMetaData)(nil),             // 27: google.analytics.data.v1alpha.ResponseMetaData
-	(*PropertyQuota)(nil),                // 28: google.analytics.data.v1alpha.PropertyQuota
-	(*Pivot)(nil),                        // 29: google.analytics.data.v1alpha.Pivot
-	(*PivotHeader)(nil),                  // 30: google.analytics.data.v1alpha.PivotHeader
+	(*GetMetadataRequest)(nil),           // 9: google.analytics.data.v1alpha.GetMetadataRequest
+	(*RunRealtimeReportRequest)(nil),     // 10: google.analytics.data.v1alpha.RunRealtimeReportRequest
+	(*RunRealtimeReportResponse)(nil),    // 11: google.analytics.data.v1alpha.RunRealtimeReportResponse
+	(*DimensionMetadata)(nil),            // 12: google.analytics.data.v1alpha.DimensionMetadata
+	(*MetricMetadata)(nil),               // 13: google.analytics.data.v1alpha.MetricMetadata
+	(*Entity)(nil),                       // 14: google.analytics.data.v1alpha.Entity
+	(*Dimension)(nil),                    // 15: google.analytics.data.v1alpha.Dimension
+	(*Metric)(nil),                       // 16: google.analytics.data.v1alpha.Metric
+	(*DateRange)(nil),                    // 17: google.analytics.data.v1alpha.DateRange
+	(MetricAggregation)(0),               // 18: google.analytics.data.v1alpha.MetricAggregation
+	(*FilterExpression)(nil),             // 19: google.analytics.data.v1alpha.FilterExpression
+	(*OrderBy)(nil),                      // 20: google.analytics.data.v1alpha.OrderBy
+	(*CohortSpec)(nil),                   // 21: google.analytics.data.v1alpha.CohortSpec
+	(*DimensionHeader)(nil),              // 22: google.analytics.data.v1alpha.DimensionHeader
+	(*MetricHeader)(nil),                 // 23: google.analytics.data.v1alpha.MetricHeader
+	(*Row)(nil),                          // 24: google.analytics.data.v1alpha.Row
+	(*ResponseMetaData)(nil),             // 25: google.analytics.data.v1alpha.ResponseMetaData
+	(*PropertyQuota)(nil),                // 26: google.analytics.data.v1alpha.PropertyQuota
+	(*Pivot)(nil),                        // 27: google.analytics.data.v1alpha.Pivot
+	(*PivotHeader)(nil),                  // 28: google.analytics.data.v1alpha.PivotHeader
 }
 var file_google_analytics_data_v1alpha_analytics_data_api_proto_depIdxs = []int32{
-	14, // 0: google.analytics.data.v1alpha.Metadata.dimensions:type_name -> google.analytics.data.v1alpha.DimensionMetadata
-	15, // 1: google.analytics.data.v1alpha.Metadata.metrics:type_name -> google.analytics.data.v1alpha.MetricMetadata
-	16, // 2: google.analytics.data.v1alpha.RunReportRequest.entity:type_name -> google.analytics.data.v1alpha.Entity
-	17, // 3: google.analytics.data.v1alpha.RunReportRequest.dimensions:type_name -> google.analytics.data.v1alpha.Dimension
-	18, // 4: google.analytics.data.v1alpha.RunReportRequest.metrics:type_name -> google.analytics.data.v1alpha.Metric
-	19, // 5: google.analytics.data.v1alpha.RunReportRequest.date_ranges:type_name -> google.analytics.data.v1alpha.DateRange
-	20, // 6: google.analytics.data.v1alpha.RunReportRequest.metric_aggregations:type_name -> google.analytics.data.v1alpha.MetricAggregation
-	21, // 7: google.analytics.data.v1alpha.RunReportRequest.dimension_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
-	21, // 8: google.analytics.data.v1alpha.RunReportRequest.metric_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
-	22, // 9: google.analytics.data.v1alpha.RunReportRequest.order_bys:type_name -> google.analytics.data.v1alpha.OrderBy
-	23, // 10: google.analytics.data.v1alpha.RunReportRequest.cohort_spec:type_name -> google.analytics.data.v1alpha.CohortSpec
-	24, // 11: google.analytics.data.v1alpha.RunReportResponse.dimension_headers:type_name -> google.analytics.data.v1alpha.DimensionHeader
-	25, // 12: google.analytics.data.v1alpha.RunReportResponse.metric_headers:type_name -> google.analytics.data.v1alpha.MetricHeader
-	26, // 13: google.analytics.data.v1alpha.RunReportResponse.rows:type_name -> google.analytics.data.v1alpha.Row
-	26, // 14: google.analytics.data.v1alpha.RunReportResponse.totals:type_name -> google.analytics.data.v1alpha.Row
-	26, // 15: google.analytics.data.v1alpha.RunReportResponse.maximums:type_name -> google.analytics.data.v1alpha.Row
-	26, // 16: google.analytics.data.v1alpha.RunReportResponse.minimums:type_name -> google.analytics.data.v1alpha.Row
-	27, // 17: google.analytics.data.v1alpha.RunReportResponse.metadata:type_name -> google.analytics.data.v1alpha.ResponseMetaData
-	28, // 18: google.analytics.data.v1alpha.RunReportResponse.property_quota:type_name -> google.analytics.data.v1alpha.PropertyQuota
-	16, // 19: google.analytics.data.v1alpha.RunPivotReportRequest.entity:type_name -> google.analytics.data.v1alpha.Entity
-	17, // 20: google.analytics.data.v1alpha.RunPivotReportRequest.dimensions:type_name -> google.analytics.data.v1alpha.Dimension
-	18, // 21: google.analytics.data.v1alpha.RunPivotReportRequest.metrics:type_name -> google.analytics.data.v1alpha.Metric
-	21, // 22: google.analytics.data.v1alpha.RunPivotReportRequest.dimension_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
-	21, // 23: google.analytics.data.v1alpha.RunPivotReportRequest.metric_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
-	29, // 24: google.analytics.data.v1alpha.RunPivotReportRequest.pivots:type_name -> google.analytics.data.v1alpha.Pivot
-	19, // 25: google.analytics.data.v1alpha.RunPivotReportRequest.date_ranges:type_name -> google.analytics.data.v1alpha.DateRange
-	23, // 26: google.analytics.data.v1alpha.RunPivotReportRequest.cohort_spec:type_name -> google.analytics.data.v1alpha.CohortSpec
-	30, // 27: google.analytics.data.v1alpha.RunPivotReportResponse.pivot_headers:type_name -> google.analytics.data.v1alpha.PivotHeader
-	24, // 28: google.analytics.data.v1alpha.RunPivotReportResponse.dimension_headers:type_name -> google.analytics.data.v1alpha.DimensionHeader
-	25, // 29: google.analytics.data.v1alpha.RunPivotReportResponse.metric_headers:type_name -> google.analytics.data.v1alpha.MetricHeader
-	26, // 30: google.analytics.data.v1alpha.RunPivotReportResponse.rows:type_name -> google.analytics.data.v1alpha.Row
-	26, // 31: google.analytics.data.v1alpha.RunPivotReportResponse.aggregates:type_name -> google.analytics.data.v1alpha.Row
-	27, // 32: google.analytics.data.v1alpha.RunPivotReportResponse.metadata:type_name -> google.analytics.data.v1alpha.ResponseMetaData
-	28, // 33: google.analytics.data.v1alpha.RunPivotReportResponse.property_quota:type_name -> google.analytics.data.v1alpha.PropertyQuota
-	16, // 34: google.analytics.data.v1alpha.BatchRunReportsRequest.entity:type_name -> google.analytics.data.v1alpha.Entity
+	12, // 0: google.analytics.data.v1alpha.Metadata.dimensions:type_name -> google.analytics.data.v1alpha.DimensionMetadata
+	13, // 1: google.analytics.data.v1alpha.Metadata.metrics:type_name -> google.analytics.data.v1alpha.MetricMetadata
+	14, // 2: google.analytics.data.v1alpha.RunReportRequest.entity:type_name -> google.analytics.data.v1alpha.Entity
+	15, // 3: google.analytics.data.v1alpha.RunReportRequest.dimensions:type_name -> google.analytics.data.v1alpha.Dimension
+	16, // 4: google.analytics.data.v1alpha.RunReportRequest.metrics:type_name -> google.analytics.data.v1alpha.Metric
+	17, // 5: google.analytics.data.v1alpha.RunReportRequest.date_ranges:type_name -> google.analytics.data.v1alpha.DateRange
+	18, // 6: google.analytics.data.v1alpha.RunReportRequest.metric_aggregations:type_name -> google.analytics.data.v1alpha.MetricAggregation
+	19, // 7: google.analytics.data.v1alpha.RunReportRequest.dimension_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
+	19, // 8: google.analytics.data.v1alpha.RunReportRequest.metric_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
+	20, // 9: google.analytics.data.v1alpha.RunReportRequest.order_bys:type_name -> google.analytics.data.v1alpha.OrderBy
+	21, // 10: google.analytics.data.v1alpha.RunReportRequest.cohort_spec:type_name -> google.analytics.data.v1alpha.CohortSpec
+	22, // 11: google.analytics.data.v1alpha.RunReportResponse.dimension_headers:type_name -> google.analytics.data.v1alpha.DimensionHeader
+	23, // 12: google.analytics.data.v1alpha.RunReportResponse.metric_headers:type_name -> google.analytics.data.v1alpha.MetricHeader
+	24, // 13: google.analytics.data.v1alpha.RunReportResponse.rows:type_name -> google.analytics.data.v1alpha.Row
+	24, // 14: google.analytics.data.v1alpha.RunReportResponse.totals:type_name -> google.analytics.data.v1alpha.Row
+	24, // 15: google.analytics.data.v1alpha.RunReportResponse.maximums:type_name -> google.analytics.data.v1alpha.Row
+	24, // 16: google.analytics.data.v1alpha.RunReportResponse.minimums:type_name -> google.analytics.data.v1alpha.Row
+	25, // 17: google.analytics.data.v1alpha.RunReportResponse.metadata:type_name -> google.analytics.data.v1alpha.ResponseMetaData
+	26, // 18: google.analytics.data.v1alpha.RunReportResponse.property_quota:type_name -> google.analytics.data.v1alpha.PropertyQuota
+	14, // 19: google.analytics.data.v1alpha.RunPivotReportRequest.entity:type_name -> google.analytics.data.v1alpha.Entity
+	15, // 20: google.analytics.data.v1alpha.RunPivotReportRequest.dimensions:type_name -> google.analytics.data.v1alpha.Dimension
+	16, // 21: google.analytics.data.v1alpha.RunPivotReportRequest.metrics:type_name -> google.analytics.data.v1alpha.Metric
+	19, // 22: google.analytics.data.v1alpha.RunPivotReportRequest.dimension_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
+	19, // 23: google.analytics.data.v1alpha.RunPivotReportRequest.metric_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
+	27, // 24: google.analytics.data.v1alpha.RunPivotReportRequest.pivots:type_name -> google.analytics.data.v1alpha.Pivot
+	17, // 25: google.analytics.data.v1alpha.RunPivotReportRequest.date_ranges:type_name -> google.analytics.data.v1alpha.DateRange
+	21, // 26: google.analytics.data.v1alpha.RunPivotReportRequest.cohort_spec:type_name -> google.analytics.data.v1alpha.CohortSpec
+	28, // 27: google.analytics.data.v1alpha.RunPivotReportResponse.pivot_headers:type_name -> google.analytics.data.v1alpha.PivotHeader
+	22, // 28: google.analytics.data.v1alpha.RunPivotReportResponse.dimension_headers:type_name -> google.analytics.data.v1alpha.DimensionHeader
+	23, // 29: google.analytics.data.v1alpha.RunPivotReportResponse.metric_headers:type_name -> google.analytics.data.v1alpha.MetricHeader
+	24, // 30: google.analytics.data.v1alpha.RunPivotReportResponse.rows:type_name -> google.analytics.data.v1alpha.Row
+	24, // 31: google.analytics.data.v1alpha.RunPivotReportResponse.aggregates:type_name -> google.analytics.data.v1alpha.Row
+	25, // 32: google.analytics.data.v1alpha.RunPivotReportResponse.metadata:type_name -> google.analytics.data.v1alpha.ResponseMetaData
+	26, // 33: google.analytics.data.v1alpha.RunPivotReportResponse.property_quota:type_name -> google.analytics.data.v1alpha.PropertyQuota
+	14, // 34: google.analytics.data.v1alpha.BatchRunReportsRequest.entity:type_name -> google.analytics.data.v1alpha.Entity
 	1,  // 35: google.analytics.data.v1alpha.BatchRunReportsRequest.requests:type_name -> google.analytics.data.v1alpha.RunReportRequest
 	2,  // 36: google.analytics.data.v1alpha.BatchRunReportsResponse.reports:type_name -> google.analytics.data.v1alpha.RunReportResponse
-	16, // 37: google.analytics.data.v1alpha.BatchRunPivotReportsRequest.entity:type_name -> google.analytics.data.v1alpha.Entity
+	14, // 37: google.analytics.data.v1alpha.BatchRunPivotReportsRequest.entity:type_name -> google.analytics.data.v1alpha.Entity
 	3,  // 38: google.analytics.data.v1alpha.BatchRunPivotReportsRequest.requests:type_name -> google.analytics.data.v1alpha.RunPivotReportRequest
 	4,  // 39: google.analytics.data.v1alpha.BatchRunPivotReportsResponse.pivot_reports:type_name -> google.analytics.data.v1alpha.RunPivotReportResponse
-	14, // 40: google.analytics.data.v1alpha.UniversalMetadata.dimensions:type_name -> google.analytics.data.v1alpha.DimensionMetadata
-	15, // 41: google.analytics.data.v1alpha.UniversalMetadata.metrics:type_name -> google.analytics.data.v1alpha.MetricMetadata
-	17, // 42: google.analytics.data.v1alpha.RunRealtimeReportRequest.dimensions:type_name -> google.analytics.data.v1alpha.Dimension
-	18, // 43: google.analytics.data.v1alpha.RunRealtimeReportRequest.metrics:type_name -> google.analytics.data.v1alpha.Metric
-	21, // 44: google.analytics.data.v1alpha.RunRealtimeReportRequest.dimension_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
-	21, // 45: google.analytics.data.v1alpha.RunRealtimeReportRequest.metric_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
-	20, // 46: google.analytics.data.v1alpha.RunRealtimeReportRequest.metric_aggregations:type_name -> google.analytics.data.v1alpha.MetricAggregation
-	22, // 47: google.analytics.data.v1alpha.RunRealtimeReportRequest.order_bys:type_name -> google.analytics.data.v1alpha.OrderBy
-	24, // 48: google.analytics.data.v1alpha.RunRealtimeReportResponse.dimension_headers:type_name -> google.analytics.data.v1alpha.DimensionHeader
-	25, // 49: google.analytics.data.v1alpha.RunRealtimeReportResponse.metric_headers:type_name -> google.analytics.data.v1alpha.MetricHeader
-	26, // 50: google.analytics.data.v1alpha.RunRealtimeReportResponse.rows:type_name -> google.analytics.data.v1alpha.Row
-	26, // 51: google.analytics.data.v1alpha.RunRealtimeReportResponse.totals:type_name -> google.analytics.data.v1alpha.Row
-	26, // 52: google.analytics.data.v1alpha.RunRealtimeReportResponse.maximums:type_name -> google.analytics.data.v1alpha.Row
-	26, // 53: google.analytics.data.v1alpha.RunRealtimeReportResponse.minimums:type_name -> google.analytics.data.v1alpha.Row
-	28, // 54: google.analytics.data.v1alpha.RunRealtimeReportResponse.property_quota:type_name -> google.analytics.data.v1alpha.PropertyQuota
-	1,  // 55: google.analytics.data.v1alpha.AlphaAnalyticsData.RunReport:input_type -> google.analytics.data.v1alpha.RunReportRequest
-	3,  // 56: google.analytics.data.v1alpha.AlphaAnalyticsData.RunPivotReport:input_type -> google.analytics.data.v1alpha.RunPivotReportRequest
-	5,  // 57: google.analytics.data.v1alpha.AlphaAnalyticsData.BatchRunReports:input_type -> google.analytics.data.v1alpha.BatchRunReportsRequest
-	7,  // 58: google.analytics.data.v1alpha.AlphaAnalyticsData.BatchRunPivotReports:input_type -> google.analytics.data.v1alpha.BatchRunPivotReportsRequest
-	9,  // 59: google.analytics.data.v1alpha.AlphaAnalyticsData.GetUniversalMetadata:input_type -> google.analytics.data.v1alpha.GetUniversalMetadataRequest
-	11, // 60: google.analytics.data.v1alpha.AlphaAnalyticsData.GetMetadata:input_type -> google.analytics.data.v1alpha.GetMetadataRequest
-	12, // 61: google.analytics.data.v1alpha.AlphaAnalyticsData.RunRealtimeReport:input_type -> google.analytics.data.v1alpha.RunRealtimeReportRequest
-	2,  // 62: google.analytics.data.v1alpha.AlphaAnalyticsData.RunReport:output_type -> google.analytics.data.v1alpha.RunReportResponse
-	4,  // 63: google.analytics.data.v1alpha.AlphaAnalyticsData.RunPivotReport:output_type -> google.analytics.data.v1alpha.RunPivotReportResponse
-	6,  // 64: google.analytics.data.v1alpha.AlphaAnalyticsData.BatchRunReports:output_type -> google.analytics.data.v1alpha.BatchRunReportsResponse
-	8,  // 65: google.analytics.data.v1alpha.AlphaAnalyticsData.BatchRunPivotReports:output_type -> google.analytics.data.v1alpha.BatchRunPivotReportsResponse
-	10, // 66: google.analytics.data.v1alpha.AlphaAnalyticsData.GetUniversalMetadata:output_type -> google.analytics.data.v1alpha.UniversalMetadata
-	0,  // 67: google.analytics.data.v1alpha.AlphaAnalyticsData.GetMetadata:output_type -> google.analytics.data.v1alpha.Metadata
-	13, // 68: google.analytics.data.v1alpha.AlphaAnalyticsData.RunRealtimeReport:output_type -> google.analytics.data.v1alpha.RunRealtimeReportResponse
-	62, // [62:69] is the sub-list for method output_type
-	55, // [55:62] is the sub-list for method input_type
-	55, // [55:55] is the sub-list for extension type_name
-	55, // [55:55] is the sub-list for extension extendee
-	0,  // [0:55] is the sub-list for field type_name
+	15, // 40: google.analytics.data.v1alpha.RunRealtimeReportRequest.dimensions:type_name -> google.analytics.data.v1alpha.Dimension
+	16, // 41: google.analytics.data.v1alpha.RunRealtimeReportRequest.metrics:type_name -> google.analytics.data.v1alpha.Metric
+	19, // 42: google.analytics.data.v1alpha.RunRealtimeReportRequest.dimension_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
+	19, // 43: google.analytics.data.v1alpha.RunRealtimeReportRequest.metric_filter:type_name -> google.analytics.data.v1alpha.FilterExpression
+	18, // 44: google.analytics.data.v1alpha.RunRealtimeReportRequest.metric_aggregations:type_name -> google.analytics.data.v1alpha.MetricAggregation
+	20, // 45: google.analytics.data.v1alpha.RunRealtimeReportRequest.order_bys:type_name -> google.analytics.data.v1alpha.OrderBy
+	22, // 46: google.analytics.data.v1alpha.RunRealtimeReportResponse.dimension_headers:type_name -> google.analytics.data.v1alpha.DimensionHeader
+	23, // 47: google.analytics.data.v1alpha.RunRealtimeReportResponse.metric_headers:type_name -> google.analytics.data.v1alpha.MetricHeader
+	24, // 48: google.analytics.data.v1alpha.RunRealtimeReportResponse.rows:type_name -> google.analytics.data.v1alpha.Row
+	24, // 49: google.analytics.data.v1alpha.RunRealtimeReportResponse.totals:type_name -> google.analytics.data.v1alpha.Row
+	24, // 50: google.analytics.data.v1alpha.RunRealtimeReportResponse.maximums:type_name -> google.analytics.data.v1alpha.Row
+	24, // 51: google.analytics.data.v1alpha.RunRealtimeReportResponse.minimums:type_name -> google.analytics.data.v1alpha.Row
+	26, // 52: google.analytics.data.v1alpha.RunRealtimeReportResponse.property_quota:type_name -> google.analytics.data.v1alpha.PropertyQuota
+	1,  // 53: google.analytics.data.v1alpha.AlphaAnalyticsData.RunReport:input_type -> google.analytics.data.v1alpha.RunReportRequest
+	3,  // 54: google.analytics.data.v1alpha.AlphaAnalyticsData.RunPivotReport:input_type -> google.analytics.data.v1alpha.RunPivotReportRequest
+	5,  // 55: google.analytics.data.v1alpha.AlphaAnalyticsData.BatchRunReports:input_type -> google.analytics.data.v1alpha.BatchRunReportsRequest
+	7,  // 56: google.analytics.data.v1alpha.AlphaAnalyticsData.BatchRunPivotReports:input_type -> google.analytics.data.v1alpha.BatchRunPivotReportsRequest
+	9,  // 57: google.analytics.data.v1alpha.AlphaAnalyticsData.GetMetadata:input_type -> google.analytics.data.v1alpha.GetMetadataRequest
+	10, // 58: google.analytics.data.v1alpha.AlphaAnalyticsData.RunRealtimeReport:input_type -> google.analytics.data.v1alpha.RunRealtimeReportRequest
+	2,  // 59: google.analytics.data.v1alpha.AlphaAnalyticsData.RunReport:output_type -> google.analytics.data.v1alpha.RunReportResponse
+	4,  // 60: google.analytics.data.v1alpha.AlphaAnalyticsData.RunPivotReport:output_type -> google.analytics.data.v1alpha.RunPivotReportResponse
+	6,  // 61: google.analytics.data.v1alpha.AlphaAnalyticsData.BatchRunReports:output_type -> google.analytics.data.v1alpha.BatchRunReportsResponse
+	8,  // 62: google.analytics.data.v1alpha.AlphaAnalyticsData.BatchRunPivotReports:output_type -> google.analytics.data.v1alpha.BatchRunPivotReportsResponse
+	0,  // 63: google.analytics.data.v1alpha.AlphaAnalyticsData.GetMetadata:output_type -> google.analytics.data.v1alpha.Metadata
+	11, // 64: google.analytics.data.v1alpha.AlphaAnalyticsData.RunRealtimeReport:output_type -> google.analytics.data.v1alpha.RunRealtimeReportResponse
+	59, // [59:65] is the sub-list for method output_type
+	53, // [53:59] is the sub-list for method input_type
+	53, // [53:53] is the sub-list for extension type_name
+	53, // [53:53] is the sub-list for extension extendee
+	0,  // [0:53] is the sub-list for field type_name
 }
 
 func init() { file_google_analytics_data_v1alpha_analytics_data_api_proto_init() }
@@ -2014,30 +1902,6 @@ func file_google_analytics_data_v1alpha_analytics_data_api_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUniversalMetadataRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UniversalMetadata); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetMetadataRequest); i {
 			case 0:
 				return &v.state
@@ -2049,7 +1913,7 @@ func file_google_analytics_data_v1alpha_analytics_data_api_proto_init() {
 				return nil
 			}
 		}
-		file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+		file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RunRealtimeReportRequest); i {
 			case 0:
 				return &v.state
@@ -2061,7 +1925,7 @@ func file_google_analytics_data_v1alpha_analytics_data_api_proto_init() {
 				return nil
 			}
 		}
-		file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+		file_google_analytics_data_v1alpha_analytics_data_api_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RunRealtimeReportResponse); i {
 			case 0:
 				return &v.state
@@ -2080,7 +1944,7 @@ func file_google_analytics_data_v1alpha_analytics_data_api_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_analytics_data_v1alpha_analytics_data_api_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -2127,15 +1991,8 @@ type AlphaAnalyticsDataClient interface {
 	// Entity.
 	BatchRunPivotReports(ctx context.Context, in *BatchRunPivotReportsRequest, opts ...grpc.CallOption) (*BatchRunPivotReportsResponse, error)
 	// Returns metadata for dimensions and metrics available in reporting methods.
-	// Used to explore the dimensions and metrics. Dimensions and metrics will be
-	// mostly added over time, but renames and deletions may occur.
-	//
-	// This method returns Universal Metadata. Universal Metadata are dimensions
-	// and metrics applicable to any property such as `country` and `totalUsers`.
-	GetUniversalMetadata(ctx context.Context, in *GetUniversalMetadataRequest, opts ...grpc.CallOption) (*UniversalMetadata, error)
-	// Returns metadata for dimensions and metrics available in reporting methods.
 	// Used to explore the dimensions and metrics. In this method, a Google
-	// Analytics 4 (GA4) Property Identifier is specified in the request, and
+	// Analytics GA4 Property Identifier is specified in the request, and
 	// the metadata response includes Custom dimensions and metrics as well as
 	// Universal metadata.
 	//
@@ -2194,15 +2051,6 @@ func (c *alphaAnalyticsDataClient) BatchRunPivotReports(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *alphaAnalyticsDataClient) GetUniversalMetadata(ctx context.Context, in *GetUniversalMetadataRequest, opts ...grpc.CallOption) (*UniversalMetadata, error) {
-	out := new(UniversalMetadata)
-	err := c.cc.Invoke(ctx, "/google.analytics.data.v1alpha.AlphaAnalyticsData/GetUniversalMetadata", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *alphaAnalyticsDataClient) GetMetadata(ctx context.Context, in *GetMetadataRequest, opts ...grpc.CallOption) (*Metadata, error) {
 	out := new(Metadata)
 	err := c.cc.Invoke(ctx, "/google.analytics.data.v1alpha.AlphaAnalyticsData/GetMetadata", in, out, opts...)
@@ -2244,15 +2092,8 @@ type AlphaAnalyticsDataServer interface {
 	// Entity.
 	BatchRunPivotReports(context.Context, *BatchRunPivotReportsRequest) (*BatchRunPivotReportsResponse, error)
 	// Returns metadata for dimensions and metrics available in reporting methods.
-	// Used to explore the dimensions and metrics. Dimensions and metrics will be
-	// mostly added over time, but renames and deletions may occur.
-	//
-	// This method returns Universal Metadata. Universal Metadata are dimensions
-	// and metrics applicable to any property such as `country` and `totalUsers`.
-	GetUniversalMetadata(context.Context, *GetUniversalMetadataRequest) (*UniversalMetadata, error)
-	// Returns metadata for dimensions and metrics available in reporting methods.
 	// Used to explore the dimensions and metrics. In this method, a Google
-	// Analytics 4 (GA4) Property Identifier is specified in the request, and
+	// Analytics GA4 Property Identifier is specified in the request, and
 	// the metadata response includes Custom dimensions and metrics as well as
 	// Universal metadata.
 	//
@@ -2282,9 +2123,6 @@ func (*UnimplementedAlphaAnalyticsDataServer) BatchRunReports(context.Context, *
 }
 func (*UnimplementedAlphaAnalyticsDataServer) BatchRunPivotReports(context.Context, *BatchRunPivotReportsRequest) (*BatchRunPivotReportsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BatchRunPivotReports not implemented")
-}
-func (*UnimplementedAlphaAnalyticsDataServer) GetUniversalMetadata(context.Context, *GetUniversalMetadataRequest) (*UniversalMetadata, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUniversalMetadata not implemented")
 }
 func (*UnimplementedAlphaAnalyticsDataServer) GetMetadata(context.Context, *GetMetadataRequest) (*Metadata, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMetadata not implemented")
@@ -2369,24 +2207,6 @@ func _AlphaAnalyticsData_BatchRunPivotReports_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AlphaAnalyticsData_GetUniversalMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUniversalMetadataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AlphaAnalyticsDataServer).GetUniversalMetadata(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/google.analytics.data.v1alpha.AlphaAnalyticsData/GetUniversalMetadata",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AlphaAnalyticsDataServer).GetUniversalMetadata(ctx, req.(*GetUniversalMetadataRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AlphaAnalyticsData_GetMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMetadataRequest)
 	if err := dec(in); err != nil {
@@ -2442,10 +2262,6 @@ var _AlphaAnalyticsData_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BatchRunPivotReports",
 			Handler:    _AlphaAnalyticsData_BatchRunPivotReports_Handler,
-		},
-		{
-			MethodName: "GetUniversalMetadata",
-			Handler:    _AlphaAnalyticsData_GetUniversalMetadata_Handler,
 		},
 		{
 			MethodName: "GetMetadata",
