@@ -70,10 +70,12 @@ type HttpRequest struct {
 	// CLR 1.0.3705)"`.
 	UserAgent string `protobuf:"bytes,6,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
 	// The IP address (IPv4 or IPv6) of the client that issued the HTTP
-	// request. Examples: `"192.168.1.1"`, `"FE80::0202:B3FF:FE1E:8329"`.
+	// request. This field can include port information. Examples:
+	// `"192.168.1.1"`, `"10.0.0.1:80"`, `"FE80::0202:B3FF:FE1E:8329"`.
 	RemoteIp string `protobuf:"bytes,7,opt,name=remote_ip,json=remoteIp,proto3" json:"remote_ip,omitempty"`
 	// The IP address (IPv4 or IPv6) of the origin server that the request was
-	// sent to.
+	// sent to. This field can include port information. Examples:
+	// `"192.168.1.1"`, `"10.0.0.1:80"`, `"FE80::0202:B3FF:FE1E:8329"`.
 	ServerIp string `protobuf:"bytes,13,opt,name=server_ip,json=serverIp,proto3" json:"server_ip,omitempty"`
 	// The referer URL of the request, as defined in
 	// [HTTP/1.1 Header Field
