@@ -49,6 +49,15 @@ type ComputeRouteMatrixRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Array of origins, which determines the rows of the response matrix.
+	// Several size restrictions apply to the cardinality of origins and
+	// destinations:
+	//
+	// * The number of elements (origins × destinations) must be no greater than
+	// 625 in any case.
+	// * The number of elements (origins × destinations) must be no greater than
+	// 100 if routing_preference is set to `TRAFFIC_AWARE_OPTIMAL`.
+	// * The number of waypoints (origins + destinations) specified as `place_id`
+	// must be no greater than 50.
 	Origins []*RouteMatrixOrigin `protobuf:"bytes,1,rep,name=origins,proto3" json:"origins,omitempty"`
 	// Required. Array of destinations, which determines the columns of the response matrix.
 	Destinations []*RouteMatrixDestination `protobuf:"bytes,2,rep,name=destinations,proto3" json:"destinations,omitempty"`

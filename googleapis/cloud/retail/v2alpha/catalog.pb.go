@@ -68,15 +68,13 @@ type ProductLevelConfig struct {
 	// [merchant_center_product_id_field][google.cloud.retail.v2alpha.ProductLevelConfig.merchant_center_product_id_field]
 	// is `itemGroupId`, an INVALID_ARGUMENT error is returned.
 	//
-	// See
-	// https://cloud.google.com/recommendations-ai/docs/catalog#catalog-levels
-	// for more details.
+	// See [Using catalog
+	// levels](/retail/recommendations-ai/docs/catalog#catalog-levels) for more
+	// details.
 	IngestionProductType string `protobuf:"bytes,1,opt,name=ingestion_product_type,json=ingestionProductType,proto3" json:"ingestion_product_type,omitempty"`
 	// Which field of [Merchant Center
-	//
-	// Product](https:
-	// //cloud.google.com/bigquery-transfer/docs/merchant-center-products-schema)
-	// should be imported as [Product.id][google.cloud.retail.v2alpha.Product.id].
+	// Product](/bigquery-transfer/docs/merchant-center-products-schema) should be
+	// imported as [Product.id][google.cloud.retail.v2alpha.Product.id].
 	// Acceptable values are:
 	//
 	// * `offerId` (default): Import `offerId` as the product ID.
@@ -91,9 +89,9 @@ type ProductLevelConfig struct {
 	// [ingestion_product_type][google.cloud.retail.v2alpha.ProductLevelConfig.ingestion_product_type]
 	// is `variant`, an INVALID_ARGUMENT error is returned.
 	//
-	// See
-	// https://cloud.google.com/recommendations-ai/docs/catalog#catalog-levels
-	// for more details.
+	// See [Using catalog
+	// levels](/retail/recommendations-ai/docs/catalog#catalog-levels) for more
+	// details.
 	MerchantCenterProductIdField string `protobuf:"bytes,2,opt,name=merchant_center_product_id_field,json=merchantCenterProductIdField,proto3" json:"merchant_center_product_id_field,omitempty"`
 }
 
@@ -144,7 +142,6 @@ func (x *ProductLevelConfig) GetMerchantCenterProductIdField() string {
 }
 
 // The catalog configuration.
-// Next ID: 5.
 type Catalog struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

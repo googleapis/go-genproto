@@ -212,13 +212,14 @@ type RoutesAlphaClient interface {
 	//
 	// * Field mask of all available fields (for manual inspection):
 	//   `X-Goog-FieldMask: *`
-	// * Field mask of route durations, distances, element status, and element
-	//   indices (an example production setup):
+	// * Field mask of route durations, distances, element status, condition, and
+	//   element indices (an example production setup):
 	//   `X-Goog-FieldMask:
-	//   originIndex,destinationIndex,status,distanceMeters,duration`
+	//   originIndex,destinationIndex,status,condition,distanceMeters,duration`
 	//
-	// Google discourages the use of the wildcard (`*`) response field mask,
-	// because:
+	// It is critical that you include `status` in your field mask as otherwise
+	// all messages will appear to be OK. Google discourages the use of the
+	// wildcard (`*`) response field mask, because:
 	//
 	// * Selecting only the fields that you need helps our server save computation
 	// cycles, allowing us to return the result to you with a lower latency.
@@ -335,13 +336,14 @@ type RoutesAlphaServer interface {
 	//
 	// * Field mask of all available fields (for manual inspection):
 	//   `X-Goog-FieldMask: *`
-	// * Field mask of route durations, distances, element status, and element
-	//   indices (an example production setup):
+	// * Field mask of route durations, distances, element status, condition, and
+	//   element indices (an example production setup):
 	//   `X-Goog-FieldMask:
-	//   originIndex,destinationIndex,status,distanceMeters,duration`
+	//   originIndex,destinationIndex,status,condition,distanceMeters,duration`
 	//
-	// Google discourages the use of the wildcard (`*`) response field mask,
-	// because:
+	// It is critical that you include `status` in your field mask as otherwise
+	// all messages will appear to be OK. Google discourages the use of the
+	// wildcard (`*`) response field mask, because:
 	//
 	// * Selecting only the fields that you need helps our server save computation
 	// cycles, allowing us to return the result to you with a lower latency.

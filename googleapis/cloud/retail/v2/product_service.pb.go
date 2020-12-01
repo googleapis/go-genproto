@@ -278,13 +278,6 @@ type DeleteProductRequest struct {
 	//
 	// If the [Product][google.cloud.retail.v2.Product] to delete does not exist,
 	// a NOT_FOUND error is returned.
-	//
-	// The [Product][google.cloud.retail.v2.Product] to delete can neither be a
-	// non-empty [Product.Type.COLLECTION][]
-	// [Product][google.cloud.retail.v2.Product] nor a [Product.Type.PRIMARY][]
-	// [Product][google.cloud.retail.v2.Product] with more than one
-	// [variants][Product.Type.VARIANT]. Otherwise, a FAILED_PRECONDITION error is
-	// returned.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 

@@ -83,7 +83,7 @@ type PredictRequest struct {
 	//
 	// https:
 	// //console.cloud.google.com/recommendatio
-	// // n/datafeeds/default_catalog/dashboard
+	// // n/catalogs/default_catalog/placements
 	Placement string `protobuf:"bytes,1,opt,name=placement,proto3" json:"placement,omitempty"`
 	// Required. Context about the user, what they are looking at and what action
 	// they took to trigger the predict request. Note that this user event detail
