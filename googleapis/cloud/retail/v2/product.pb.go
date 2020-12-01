@@ -132,25 +132,25 @@ type Product struct {
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Google Merchant Center property
-	// [id](https://support.google.com/merchants/answer/6324405).
-	// schema.org Property [Product.sku](https://schema.org/sku).
+	// [id](https://support.google.com/merchants/answer/6324405). Schema.org
+	// Property [Product.sku](https://schema.org/sku).
 	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Variant group identifier. Must be an
 	// [id][google.cloud.retail.v2.Product.id], with the same parent branch with
 	// this product. Otherwise, an error is thrown.
 	//
-	// For [Type.PRIMARY][] [Product][google.cloud.retail.v2.Product]s, this field
-	// can only be empty or set to the same value as
+	// For PRIMARY [Product][google.cloud.retail.v2.Product]s, this field can only
+	// be empty or set to the same value as
 	// [id][google.cloud.retail.v2.Product.id].
 	//
-	// For [Type.VARIANT][] [Product][google.cloud.retail.v2.Product]s, this field
-	// cannot be empty. A maximum of 2000 products are allowed to share the same
-	// [Type.PRIMARY][] [Product][google.cloud.retail.v2.Product]. Otherwise, an
-	// INVALID_ARGUMENT error is returned.
+	// For VARIANT [Product][google.cloud.retail.v2.Product]s, this field cannot
+	// be empty. A maximum of 2,000 products are allowed to share the same PRIMARY
+	// [Product][google.cloud.retail.v2.Product]. Otherwise, an INVALID_ARGUMENT
+	// error is returned.
 	//
 	// Google Merchant Center Property
 	// [item_group_id](https://support.google.com/merchants/answer/6324507).
-	// schema.org Property
+	// Schema.org Property
 	// [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
 	//
 	// This field must be enabled before it can be used. [Learn
@@ -158,12 +158,11 @@ type Product struct {
 	PrimaryProductId string `protobuf:"bytes,4,opt,name=primary_product_id,json=primaryProductId,proto3" json:"primary_product_id,omitempty"`
 	// Product categories. This field is repeated for supporting one product
 	// belonging to several parallel categories. Each value is either the full
-	// path of the category, or the [category
+	// path of the category, or the [category ID][taxonomy_with_ids]. Strongly
+	// recommended using the full path for better search / recommendation quality.
 	//
-	// ID](https:
-	// //www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt).
-	// Strongly recommended using the full path for better search / recommendation
-	// quality.
+	// [taxonomy_with_ids]:
+	// https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt
 	//
 	// To represent full path of category, use '>' sign to separate different
 	// hierarchies. If '>' is part of the category name, please replace it with
@@ -179,8 +178,8 @@ type Product struct {
 	//        "Sports & Fitness > Athletic Clothing > Shoes"
 	//      ]
 	//
-	// Must be set for [Type.PRIMARY][] [Product][google.cloud.retail.v2.Product]
-	// otherwise an INVALID_ARGUMENT error is returned.
+	// Must be set for PRIMARY [Product][google.cloud.retail.v2.Product] otherwise
+	// an INVALID_ARGUMENT error is returned.
 	//
 	// At most 250 values are allowed per
 	// [Product][google.cloud.retail.v2.Product]. Empty values are not allowed.
@@ -188,10 +187,11 @@ type Product struct {
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Google Merchant Center property
+	// [google_product_category][mc_google_product_category. Schema.org property
+	// [Product.category] (https://schema.org/category).
 	//
-	// [google_product_category](https:
-	// //support.google.com/merchants/answer/6324436).
-	// Schema.org property [Product.category] (https://schema.org/category).
+	// [mc_google_product_category]:
+	// https://support.google.com/merchants/answer/6324436
 	Categories []string `protobuf:"bytes,7,rep,name=categories,proto3" json:"categories,omitempty"`
 	// Required. Product title.
 	//
@@ -223,12 +223,15 @@ type Product struct {
 	// country of a customer. Numerical features. Some examples would be the
 	// height/weight of a product, or age of a customer.
 	//
-	// For example: { "vendor": {"text": ["vendor123", "vendor456"]},
+	// For example: `{ "vendor": {"text": ["vendor123", "vendor456"]},
 	// "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]}
-	// }.
+	// }`.
 	//
 	// A maximum of 150 attributes are allowed. Otherwise, an INVALID_ARGUMENT
 	// error is returned.
+	//
+	// The key must be a UTF-8 encoded string with a length limit of 5,000
+	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	Attributes map[string]*CustomAttribute `protobuf:"bytes,12,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Custom tags associated with the product.
 	//
@@ -252,13 +255,13 @@ type Product struct {
 	// The timestamp when this [Product][google.cloud.retail.v2.Product] becomes
 	// available recommendation and search.
 	AvailableTime *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=available_time,json=availableTime,proto3" json:"available_time,omitempty"`
-	// The online availability of the [Product][google.cloud.retail.v2.Product],
-	// which is parallel to and independent of [fulfillment_info][]. Default is
+	// The online availability of the [Product][google.cloud.retail.v2.Product].
+	// Default to
 	// [Availability.IN_STOCK][google.cloud.retail.v2.Product.Availability.IN_STOCK].
 	//
 	// Google Merchant Center Property
 	// [availability](https://support.google.com/merchants/answer/6324448).
-	// schema.org Property [Offer.availability](https://schema.org/availability).
+	// Schema.org Property [Offer.availability](https://schema.org/availability).
 	Availability Product_Availability `protobuf:"varint,19,opt,name=availability,proto3,enum=google.cloud.retail.v2.Product_Availability" json:"availability,omitempty"`
 	// The available quantity of the item.
 	AvailableQuantity *wrapperspb.Int32Value `protobuf:"bytes,20,opt,name=available_quantity,json=availableQuantity,proto3" json:"available_quantity,omitempty"`
@@ -268,8 +271,8 @@ type Product struct {
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Google Merchant Center property
-	// [link](https://support.google.com/merchants/answer/6324416).
-	// Schema.org property [Offer.url](https://schema.org/url).
+	// [link](https://support.google.com/merchants/answer/6324416). Schema.org
+	// property [Offer.url](https://schema.org/url).
 	Uri string `protobuf:"bytes,22,opt,name=uri,proto3" json:"uri,omitempty"`
 	// Product images for the product.
 	//
