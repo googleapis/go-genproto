@@ -650,11 +650,11 @@ type SparkJob struct {
 	// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the
 	// Spark driver and tasks.
 	JarFileUris []string `protobuf:"bytes,4,rep,name=jar_file_uris,json=jarFileUris,proto3" json:"jar_file_uris,omitempty"`
-	// Optional. HCFS URIs of files to be copied to the working directory of
-	// Spark drivers and distributed tasks. Useful for naively parallel tasks.
+	// Optional. HCFS URIs of files to be placed in the working directory of
+	// each executor. Useful for naively parallel tasks.
 	FileUris []string `protobuf:"bytes,5,rep,name=file_uris,json=fileUris,proto3" json:"file_uris,omitempty"`
-	// Optional. HCFS URIs of archives to be extracted in the working directory
-	// of Spark drivers and tasks. Supported file types:
+	// Optional. HCFS URIs of archives to be extracted into the working directory
+	// of each executor. Supported file types:
 	// .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `protobuf:"bytes,6,rep,name=archive_uris,json=archiveUris,proto3" json:"archive_uris,omitempty"`
 	// Optional. A mapping of property names to values, used to configure Spark.
@@ -802,10 +802,11 @@ type PySparkJob struct {
 	// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the
 	// Python driver and tasks.
 	JarFileUris []string `protobuf:"bytes,4,rep,name=jar_file_uris,json=jarFileUris,proto3" json:"jar_file_uris,omitempty"`
-	// Optional. HCFS URIs of files to be copied to the working directory of
-	// Python drivers and distributed tasks. Useful for naively parallel tasks.
+	// Optional. HCFS URIs of files to be placed in the working directory of
+	// each executor. Useful for naively parallel tasks.
 	FileUris []string `protobuf:"bytes,5,rep,name=file_uris,json=fileUris,proto3" json:"file_uris,omitempty"`
-	// Optional. HCFS URIs of archives to be extracted in the working directory of
+	// Optional. HCFS URIs of archives to be extracted into the working directory
+	// of each executor. Supported file types:
 	// .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `protobuf:"bytes,6,rep,name=archive_uris,json=archiveUris,proto3" json:"archive_uris,omitempty"`
 	// Optional. A mapping of property names to values, used to configure PySpark.
@@ -1378,11 +1379,11 @@ type SparkRJob struct {
 	// such as `--conf`, that can be set as job properties, since a collision may
 	// occur that causes an incorrect job submission.
 	Args []string `protobuf:"bytes,2,rep,name=args,proto3" json:"args,omitempty"`
-	// Optional. HCFS URIs of files to be copied to the working directory of
-	// R drivers and distributed tasks. Useful for naively parallel tasks.
+	// Optional. HCFS URIs of files to be placed in the working directory of
+	// each executor. Useful for naively parallel tasks.
 	FileUris []string `protobuf:"bytes,3,rep,name=file_uris,json=fileUris,proto3" json:"file_uris,omitempty"`
-	// Optional. HCFS URIs of archives to be extracted in the working directory of
-	// Spark drivers and tasks. Supported file types:
+	// Optional. HCFS URIs of archives to be extracted into the working directory
+	// of each executor. Supported file types:
 	// .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `protobuf:"bytes,4,rep,name=archive_uris,json=archiveUris,proto3" json:"archive_uris,omitempty"`
 	// Optional. A mapping of property names to values, used to configure SparkR.
@@ -1751,8 +1752,8 @@ type JobReference struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The ID of the Google Cloud Platform project that the job
-	// belongs to.
+	// Optional. The ID of the Google Cloud Platform project that the job belongs to. If
+	// specified, must match the request project ID.
 	ProjectId string `protobuf:"bytes,1,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// Optional. The job ID, which must be unique within the project.
 	// The ID must contain only letters (a-z, A-Z), numbers (0-9),
@@ -3247,7 +3248,7 @@ var file_google_cloud_dataproc_v1beta2_jobs_proto_rawDesc = []byte{
 	0x45, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x55, 0x53, 0x10, 0x03, 0x22, 0x4e, 0x0a, 0x0c, 0x4a, 0x6f,
 	0x62, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x12, 0x22, 0x0a, 0x0a, 0x70, 0x72,
 	0x6f, 0x6a, 0x65, 0x63, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03,
-	0xe0, 0x41, 0x02, 0x52, 0x09, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x49, 0x64, 0x12, 0x1a,
+	0xe0, 0x41, 0x01, 0x52, 0x09, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x49, 0x64, 0x12, 0x1a,
 	0x0a, 0x06, 0x6a, 0x6f, 0x62, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03,
 	0xe0, 0x41, 0x01, 0x52, 0x05, 0x6a, 0x6f, 0x62, 0x49, 0x64, 0x22, 0xce, 0x02, 0x0a, 0x0f, 0x59,
 	0x61, 0x72, 0x6e, 0x41, 0x70, 0x70, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x17,

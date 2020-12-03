@@ -148,7 +148,7 @@ func (StaticMediaPrompt_OptionalMediaControls) EnumDescriptor() ([]byte, []int) 
 }
 
 // Contains information about the media, such as name, description, url, etc.
-// Next id: 10
+// Next id: 11
 type StaticMediaPrompt struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
