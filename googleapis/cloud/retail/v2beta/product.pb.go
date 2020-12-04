@@ -157,12 +157,9 @@ type Product struct {
 	// more](/recommendations-ai/docs/catalog#item-group-id).
 	PrimaryProductId string `protobuf:"bytes,4,opt,name=primary_product_id,json=primaryProductId,proto3" json:"primary_product_id,omitempty"`
 	// Product categories. This field is repeated for supporting one product
-	// belonging to several parallel categories. Each value is either the full
-	// path of the category, or the [category ID][taxonomy_with_ids]. Strongly
-	// recommended using the full path for better search / recommendation quality.
+	// belonging to several parallel categories. Strongly recommended using the
+	// full path for better search / recommendation quality.
 	//
-	// [taxonomy_with_ids]:
-	// https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt
 	//
 	// To represent full path of category, use '>' sign to separate different
 	// hierarchies. If '>' is part of the category name, please replace it with
@@ -187,7 +184,7 @@ type Product struct {
 	// 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Google Merchant Center property
-	// [google_product_category][mc_google_product_category. Schema.org property
+	// [google_product_category][mc_google_product_category]. Schema.org property
 	// [Product.category] (https://schema.org/category).
 	//
 	// [mc_google_product_category]:
