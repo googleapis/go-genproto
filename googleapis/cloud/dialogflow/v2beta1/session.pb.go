@@ -191,6 +191,10 @@ type DetectIntentRequest struct {
 	// The length of the `Session ID` and `User ID` must not exceed 36 characters.
 	// For more information, see the [API interactions
 	// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
 	Session string `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
 	// The parameters of this query.
 	QueryParams *QueryParameters `protobuf:"bytes,2,opt,name=query_params,json=queryParams,proto3" json:"query_params,omitempty"`
@@ -450,7 +454,7 @@ type QueryParameters struct {
 	// If specified for a non-mega-agent query, will be silently ignored.
 	SubAgents []*SubAgent `protobuf:"bytes,13,rep,name=sub_agents,json=subAgents,proto3" json:"sub_agents,omitempty"`
 	// This field can be used to pass HTTP headers for a webhook
-	// call. These headers will be sent to webhook alone with the headers that
+	// call. These headers will be sent to webhook along with the headers that
 	// have been configured through Dialogflow web console. The headers defined
 	// within this field will overwrite the headers configured through Dialogflow
 	// console if there is a conflict. Header names are case-insensitive.
@@ -1018,6 +1022,10 @@ type StreamingDetectIntentRequest struct {
 	//
 	// For more information, see the [API interactions
 	// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
 	Session string `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
 	// The parameters of this query.
 	QueryParams *QueryParameters `protobuf:"bytes,2,opt,name=query_params,json=queryParams,proto3" json:"query_params,omitempty"`
@@ -2677,10 +2685,18 @@ type SessionsClient interface {
 	// as a result. This method is not idempotent, because it may cause contexts
 	// and session entity types to be updated, which in turn might affect
 	// results of future queries.
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
 	DetectIntent(ctx context.Context, in *DetectIntentRequest, opts ...grpc.CallOption) (*DetectIntentResponse, error)
 	// Processes a natural language query in audio format in a streaming fashion
 	// and returns structured, actionable data as a result. This method is only
 	// available via the gRPC API (not REST).
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
 	StreamingDetectIntent(ctx context.Context, opts ...grpc.CallOption) (Sessions_StreamingDetectIntentClient, error)
 }
 
@@ -2738,10 +2754,18 @@ type SessionsServer interface {
 	// as a result. This method is not idempotent, because it may cause contexts
 	// and session entity types to be updated, which in turn might affect
 	// results of future queries.
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
 	DetectIntent(context.Context, *DetectIntentRequest) (*DetectIntentResponse, error)
 	// Processes a natural language query in audio format in a streaming fashion
 	// and returns structured, actionable data as a result. This method is only
 	// available via the gRPC API (not REST).
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
 	StreamingDetectIntent(Sessions_StreamingDetectIntentServer) error
 }
 
