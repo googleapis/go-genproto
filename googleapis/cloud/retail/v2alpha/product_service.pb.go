@@ -55,7 +55,6 @@ type CreateProductRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The parent catalog resource name, such as
-	//
 	// "projects/*/locations/global/catalogs/default_catalog/branches/default_branch".
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The [Product][google.cloud.retail.v2alpha.Product] to create.
@@ -139,7 +138,6 @@ type GetProductRequest struct {
 
 	// Required. Full resource name of
 	// [Product][google.cloud.retail.v2alpha.Product], such as
-	//
 	// "projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id".
 	//
 	// If the caller does not have permission to access the
@@ -269,7 +267,6 @@ type DeleteProductRequest struct {
 
 	// Required. Full resource name of
 	// [Product][google.cloud.retail.v2alpha.Product], such as
-	//
 	// "projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id".
 	//
 	// If the caller does not have permission to delete the
@@ -614,8 +611,7 @@ type ProductServiceClient interface {
 	CreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*Product, error)
 	// Gets a [Product][google.cloud.retail.v2alpha.Product].
 	GetProduct(ctx context.Context, in *GetProductRequest, opts ...grpc.CallOption) (*Product, error)
-	// Updates a [Product][google.cloud.retail.v2alpha.Product]. Non-existing
-	// items will be created.
+	// Updates a [Product][google.cloud.retail.v2alpha.Product].
 	UpdateProduct(ctx context.Context, in *UpdateProductRequest, opts ...grpc.CallOption) (*Product, error)
 	// Deletes a [Product][google.cloud.retail.v2alpha.Product].
 	DeleteProduct(ctx context.Context, in *DeleteProductRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -688,8 +684,7 @@ type ProductServiceServer interface {
 	CreateProduct(context.Context, *CreateProductRequest) (*Product, error)
 	// Gets a [Product][google.cloud.retail.v2alpha.Product].
 	GetProduct(context.Context, *GetProductRequest) (*Product, error)
-	// Updates a [Product][google.cloud.retail.v2alpha.Product]. Non-existing
-	// items will be created.
+	// Updates a [Product][google.cloud.retail.v2alpha.Product].
 	UpdateProduct(context.Context, *UpdateProductRequest) (*Product, error)
 	// Deletes a [Product][google.cloud.retail.v2alpha.Product].
 	DeleteProduct(context.Context, *DeleteProductRequest) (*emptypb.Empty, error)
