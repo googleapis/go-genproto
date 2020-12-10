@@ -227,7 +227,6 @@ type Entitlement struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. Resource name of an entitlement in the form:
-	//
 	// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The time at which the entitlement is created.

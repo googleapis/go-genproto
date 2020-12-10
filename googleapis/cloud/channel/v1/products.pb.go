@@ -222,7 +222,7 @@ func (x *Sku) GetProduct() *Product {
 	return nil
 }
 
-// Represents a Product/SKU/Offer’s marketing information.
+// Represents a Product/SKU/Offer's marketing information.
 type MarketingInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
