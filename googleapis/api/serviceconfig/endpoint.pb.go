@@ -40,10 +40,10 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// `Endpoint` describes a network endpoint that serves a set of APIs.
-// A service may expose any number of endpoints, and all endpoints share the
-// same service configuration, such as quota configuration and monitoring
-// configuration.
+// `Endpoint` describes a network endpoint of a service that serves a set of
+// APIs. It is commonly known as a service endpoint. A service may expose
+// any number of service endpoints, and all service endpoints share the same
+// service definition, such as quota limits and monitoring metrics.
 //
 // Example service configuration:
 //
