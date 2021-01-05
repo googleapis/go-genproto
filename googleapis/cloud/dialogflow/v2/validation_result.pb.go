@@ -47,7 +47,7 @@ type ValidationError_Severity int32
 const (
 	// Not specified. This value should never be used.
 	ValidationError_SEVERITY_UNSPECIFIED ValidationError_Severity = 0
-	// The agent doesn't follow Dialogflow best practicies.
+	// The agent doesn't follow Dialogflow best practices.
 	ValidationError_INFO ValidationError_Severity = 1
 	// The agent may not behave as expected.
 	ValidationError_WARNING ValidationError_Severity = 2
