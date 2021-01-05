@@ -56,11 +56,10 @@ type CreateTopicRequest struct {
 	// Required. The parent location in which to create the topic.
 	// Structured like `projects/{project_number}/locations/{location}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. Configuration of the topic to create. Its `name` field is
-	// ignored.
+	// Required. Configuration of the topic to create. Its `name` field is ignored.
 	Topic *Topic `protobuf:"bytes,2,opt,name=topic,proto3" json:"topic,omitempty"`
-	// Required. The ID to use for the topic, which will become the final
-	// component of the topic's name.
+	// Required. The ID to use for the topic, which will become the final component of
+	// the topic's name.
 	//
 	// This value is structured like: `my-topic-name`.
 	TopicId string `protobuf:"bytes,3,opt,name=topic_id,json=topicId,proto3" json:"topic_id,omitempty"`
@@ -649,11 +648,10 @@ type CreateSubscriptionRequest struct {
 	// Required. The parent location in which to create the subscription.
 	// Structured like `projects/{project_number}/locations/{location}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. Configuration of the subscription to create. Its `name` field is
-	// ignored.
+	// Required. Configuration of the subscription to create. Its `name` field is ignored.
 	Subscription *Subscription `protobuf:"bytes,2,opt,name=subscription,proto3" json:"subscription,omitempty"`
-	// Required. The ID to use for the subscription, which will become the final
-	// component of the subscription's name.
+	// Required. The ID to use for the subscription, which will become the final component
+	// of the subscription's name.
 	//
 	// This value is structured like: `my-sub-name`.
 	SubscriptionId string `protobuf:"bytes,3,opt,name=subscription_id,json=subscriptionId,proto3" json:"subscription_id,omitempty"`

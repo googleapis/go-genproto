@@ -57,11 +57,11 @@ type NotificationConfig struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The description of the notification config (max of 1024 characters).
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	// The PubSub topic to send notifications to. Its format is
+	// The Pub/Sub topic to send notifications to. Its format is
 	// "projects/[project_id]/topics/[topic]".
 	PubsubTopic string `protobuf:"bytes,3,opt,name=pubsub_topic,json=pubsubTopic,proto3" json:"pubsub_topic,omitempty"`
 	// Output only. The service account that needs "pubsub.topics.publish"
-	// permission to publish to the PubSub topic.
+	// permission to publish to the Pub/Sub topic.
 	ServiceAccount string `protobuf:"bytes,4,opt,name=service_account,json=serviceAccount,proto3" json:"service_account,omitempty"`
 	// The config for triggering notifications.
 	//

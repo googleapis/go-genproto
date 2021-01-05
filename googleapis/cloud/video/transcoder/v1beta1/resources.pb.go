@@ -1604,7 +1604,7 @@ type VideoStream struct {
 	//
 	// The following table shows the computed video FPS given the target FPS (in
 	// parenthesis) and input FPS (in the first column):
-	//
+	// ```
 	// |        | (30)   | (60)   | (25) | (50) |
 	// |--------|--------|--------|------|------|
 	// | 240    | Fail   | Fail   | Fail | Fail |
@@ -1621,6 +1621,7 @@ type VideoStream struct {
 	// | 15     | 15     | 15     | 20   | 30   |
 	// | 12     | 12     | 12     | 20   | 30   |
 	// | 10     | 10     | 10     | 20   | 30   |
+	// ```
 	FrameRate float64 `protobuf:"fixed64,20,opt,name=frame_rate,json=frameRate,proto3" json:"frame_rate,omitempty"`
 	// Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and
 	// 1, where 0 disables the quantizer and 1 maximizes the quantizer. A
