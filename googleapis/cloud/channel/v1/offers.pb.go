@@ -49,12 +49,11 @@ type PromotionalOrderType int32
 const (
 	// Not used.
 	PromotionalOrderType_PROMOTIONAL_TYPE_UNSPECIFIED PromotionalOrderType = 0
-	// Order used for net new customers, trial conversions and upgrades.
+	// Order used for new customers, trial conversions and upgrades.
 	PromotionalOrderType_NEW_UPGRADE PromotionalOrderType = 1
-	// All orders for an existing customer transferring to the reseller.
+	// All orders for transferring an existing customer.
 	PromotionalOrderType_TRANSFER PromotionalOrderType = 2
-	// Orders for an existing customer switching from one promotion to another
-	// (can be addition/removal of a promotion as well) on the same sku.
+	// Orders for modifying an existing customer's promotion on the same SKU.
 	PromotionalOrderType_PROMOTION_SWITCH PromotionalOrderType = 3
 )
 
@@ -219,10 +218,9 @@ func (PaymentType) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_channel_v1_offers_proto_rawDescGZIP(), []int{2}
 }
 
-// Represents monetizable resource's type.
-// A monetizable resource is an entity on which billing happens. For example,
-// this could be MINUTES for Google Voice and GB for Google Drive. One SKU can
-// map to multiple monetizable resources.
+// Represents the type for a monetizable resource(any entity on which billing
+// happens). For example, this could be MINUTES for Google Voice and GB for
+// Google Drive. One SKU can map to multiple monetizable resources.
 type ResourceType int32
 
 const (
@@ -645,8 +643,7 @@ type Constraints struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Represents constraints on a customer required for purchasing this Offer
-	// for that customer.
+	// Represents constraints required to purchase the Offer for a customer.
 	CustomerConstraints *CustomerConstraints `protobuf:"bytes,1,opt,name=customer_constraints,json=customerConstraints,proto3" json:"customer_constraints,omitempty"`
 }
 
@@ -689,8 +686,7 @@ func (x *Constraints) GetCustomerConstraints() *CustomerConstraints {
 	return nil
 }
 
-// Represents constraints on a customer required for purchasing this Offer for
-// that customer.
+// Represents constraints required to purchase the Offer for a customer.
 type CustomerConstraints struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -757,7 +753,7 @@ func (x *CustomerConstraints) GetPromotionalOrderTypes() []PromotionalOrderType 
 	return nil
 }
 
-// The payment plan for the Offer, describing how a payment is made.
+// The payment plan for the Offer. Describes how to make a payment.
 type Plan struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -771,11 +767,11 @@ type Plan struct {
 	// once per month.
 	PaymentCycle *Period `protobuf:"bytes,3,opt,name=payment_cycle,json=paymentCycle,proto3" json:"payment_cycle,omitempty"`
 	// Present for Offers with a trial period.
-	// For trial-only Offers, a paid service needs to be started before the trial
+	// For trial-only Offers, a paid service needs to start before the trial
 	// period ends for continued service.
-	// For Regular Offers with an initial trial period, the regular pricing will
-	// take effect after the trial period ends, or if paid service is started
-	// before the end of the trial period.
+	// For Regular Offers with a trial period, the regular pricing goes into
+	// effect when trial period ends, or if paid service is started before the end
+	// of the trial period.
 	TrialPeriod *Period `protobuf:"bytes,4,opt,name=trial_period,json=trialPeriod,proto3" json:"trial_period,omitempty"`
 }
 
@@ -984,8 +980,8 @@ func (x *Price) GetExternalPriceUri() string {
 }
 
 // Specifies the price by the duration of months.
-// For example, for the first 6 months, 20% discount. From the seventh month,
-// 10% discount.
+// For example, a 20% discount for the first six months, then a 10% discount
+// starting on the seventh month.
 type PricePhase struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1072,9 +1068,11 @@ func (x *PricePhase) GetPriceTiers() []*PriceTier {
 
 // Defines price at resource tier level.
 // For example, an offer with following definition :
-// Tier 1: Provide 25% discount for all seats between 1 and 25.
-// Tier 2: Provide 10% discount for all seats between 26 and 100.
-// Tier 3: Provide flat 15% discount for all seats above 100.
+//
+// * Tier 1: Provide 25% discount for all seats between 1 and 25.
+// * Tier 2: Provide 10% discount for all seats between 26 and 100.
+// * Tier 3: Provide flat 15% discount for all seats above 100.
+//
 // Each of these tiers is represented as a PriceTier.
 type PriceTier struct {
 	state         protoimpl.MessageState
