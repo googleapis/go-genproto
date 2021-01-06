@@ -47,7 +47,7 @@ const _ = proto.ProtoPackageIsVersion4
 type Entitlement_ProvisioningState int32
 
 const (
-	// Default value. This state is never returned unless an error occurs.
+	// Default value. This state doesn't show unless an error occurs.
 	Entitlement_PROVISIONING_STATE_UNSPECIFIED Entitlement_ProvisioningState = 0
 	// The entitlement is currently active.
 	Entitlement_ACTIVE Entitlement_ProvisioningState = 1
@@ -100,7 +100,7 @@ func (Entitlement_ProvisioningState) EnumDescriptor() ([]byte, []int) {
 type Entitlement_SuspensionReason int32
 
 const (
-	// Default value. This state is never returned unless an error occurs.
+	// Default value. This state doesn't show unless an error occurs.
 	Entitlement_SUSPENSION_REASON_UNSPECIFIED Entitlement_SuspensionReason = 0
 	// Entitlement was manually suspended by the Reseller.
 	Entitlement_RESELLER_INITIATED Entitlement_SuspensionReason = 1
@@ -219,8 +219,7 @@ func (TransferEligibility_Reason) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_channel_v1_entitlements_proto_rawDescGZIP(), []int{8, 0}
 }
 
-// An entitlement represents an entity which provides a customer means to start
-// using a service.
+// An entitlement is a representation of a customer's ability to use a service.
 type Entitlement struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -42,6 +42,61 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+// The level of granularity the [ChannelPartnerLink][google.cloud.channel.v1.ChannelPartnerLink] will display.
+type ChannelPartnerLinkView int32
+
+const (
+	// The default / unset value.
+	// The API will default to the BASIC view.
+	ChannelPartnerLinkView_UNSPECIFIED ChannelPartnerLinkView = 0
+	// Includes all fields except the
+	// [ChannelPartnerLink.channel_partner_cloud_identity_info][google.cloud.channel.v1.ChannelPartnerLink.channel_partner_cloud_identity_info].
+	ChannelPartnerLinkView_BASIC ChannelPartnerLinkView = 1
+	// Includes all fields.
+	ChannelPartnerLinkView_FULL ChannelPartnerLinkView = 2
+)
+
+// Enum value maps for ChannelPartnerLinkView.
+var (
+	ChannelPartnerLinkView_name = map[int32]string{
+		0: "UNSPECIFIED",
+		1: "BASIC",
+		2: "FULL",
+	}
+	ChannelPartnerLinkView_value = map[string]int32{
+		"UNSPECIFIED": 0,
+		"BASIC":       1,
+		"FULL":        2,
+	}
+)
+
+func (x ChannelPartnerLinkView) Enum() *ChannelPartnerLinkView {
+	p := new(ChannelPartnerLinkView)
+	*p = x
+	return p
+}
+
+func (x ChannelPartnerLinkView) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ChannelPartnerLinkView) Descriptor() protoreflect.EnumDescriptor {
+	return file_google_cloud_channel_v1_channel_partner_links_proto_enumTypes[0].Descriptor()
+}
+
+func (ChannelPartnerLinkView) Type() protoreflect.EnumType {
+	return &file_google_cloud_channel_v1_channel_partner_links_proto_enumTypes[0]
+}
+
+func (x ChannelPartnerLinkView) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ChannelPartnerLinkView.Descriptor instead.
+func (ChannelPartnerLinkView) EnumDescriptor() ([]byte, []int) {
+	return file_google_cloud_channel_v1_channel_partner_links_proto_rawDescGZIP(), []int{0}
+}
+
 // ChannelPartnerLinkState represents state of a channel partner link.
 type ChannelPartnerLinkState int32
 
@@ -88,11 +143,11 @@ func (x ChannelPartnerLinkState) String() string {
 }
 
 func (ChannelPartnerLinkState) Descriptor() protoreflect.EnumDescriptor {
-	return file_google_cloud_channel_v1_channel_partner_links_proto_enumTypes[0].Descriptor()
+	return file_google_cloud_channel_v1_channel_partner_links_proto_enumTypes[1].Descriptor()
 }
 
 func (ChannelPartnerLinkState) Type() protoreflect.EnumType {
-	return &file_google_cloud_channel_v1_channel_partner_links_proto_enumTypes[0]
+	return &file_google_cloud_channel_v1_channel_partner_links_proto_enumTypes[1]
 }
 
 func (x ChannelPartnerLinkState) Number() protoreflect.EnumNumber {
@@ -101,7 +156,7 @@ func (x ChannelPartnerLinkState) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use ChannelPartnerLinkState.Descriptor instead.
 func (ChannelPartnerLinkState) EnumDescriptor() ([]byte, []int) {
-	return file_google_cloud_channel_v1_channel_partner_links_proto_rawDescGZIP(), []int{0}
+	return file_google_cloud_channel_v1_channel_partner_links_proto_rawDescGZIP(), []int{1}
 }
 
 // Entity representing a link between distributors and their indirect
@@ -268,7 +323,11 @@ var file_google_cloud_channel_v1_channel_partner_links_proto_rawDesc = []byte{
 	0x6e, 0x65, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x49, 0x64, 0x65, 0x6e,
 	0x74, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x42, 0x03, 0xe0, 0x41, 0x03, 0x52, 0x1f, 0x63,
 	0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72, 0x43, 0x6c, 0x6f,
-	0x75, 0x64, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x2a, 0x7a,
+	0x75, 0x64, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x66, 0x6f, 0x2a, 0x3e,
+	0x0a, 0x16, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72,
+	0x4c, 0x69, 0x6e, 0x6b, 0x56, 0x69, 0x65, 0x77, 0x12, 0x0f, 0x0a, 0x0b, 0x55, 0x4e, 0x53, 0x50,
+	0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x09, 0x0a, 0x05, 0x42, 0x41, 0x53,
+	0x49, 0x43, 0x10, 0x01, 0x12, 0x08, 0x0a, 0x04, 0x46, 0x55, 0x4c, 0x4c, 0x10, 0x02, 0x2a, 0x7a,
 	0x0a, 0x17, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x65, 0x72,
 	0x4c, 0x69, 0x6e, 0x6b, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x2a, 0x0a, 0x26, 0x43, 0x48, 0x41,
 	0x4e, 0x4e, 0x45, 0x4c, 0x5f, 0x50, 0x41, 0x52, 0x54, 0x4e, 0x45, 0x52, 0x5f, 0x4c, 0x49, 0x4e,
@@ -299,19 +358,20 @@ func file_google_cloud_channel_v1_channel_partner_links_proto_rawDescGZIP() []by
 	return file_google_cloud_channel_v1_channel_partner_links_proto_rawDescData
 }
 
-var file_google_cloud_channel_v1_channel_partner_links_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_google_cloud_channel_v1_channel_partner_links_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_google_cloud_channel_v1_channel_partner_links_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_google_cloud_channel_v1_channel_partner_links_proto_goTypes = []interface{}{
-	(ChannelPartnerLinkState)(0),  // 0: google.cloud.channel.v1.ChannelPartnerLinkState
-	(*ChannelPartnerLink)(nil),    // 1: google.cloud.channel.v1.ChannelPartnerLink
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
-	(*CloudIdentityInfo)(nil),     // 3: google.cloud.channel.v1.CloudIdentityInfo
+	(ChannelPartnerLinkView)(0),   // 0: google.cloud.channel.v1.ChannelPartnerLinkView
+	(ChannelPartnerLinkState)(0),  // 1: google.cloud.channel.v1.ChannelPartnerLinkState
+	(*ChannelPartnerLink)(nil),    // 2: google.cloud.channel.v1.ChannelPartnerLink
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
+	(*CloudIdentityInfo)(nil),     // 4: google.cloud.channel.v1.CloudIdentityInfo
 }
 var file_google_cloud_channel_v1_channel_partner_links_proto_depIdxs = []int32{
-	0, // 0: google.cloud.channel.v1.ChannelPartnerLink.link_state:type_name -> google.cloud.channel.v1.ChannelPartnerLinkState
-	2, // 1: google.cloud.channel.v1.ChannelPartnerLink.create_time:type_name -> google.protobuf.Timestamp
-	2, // 2: google.cloud.channel.v1.ChannelPartnerLink.update_time:type_name -> google.protobuf.Timestamp
-	3, // 3: google.cloud.channel.v1.ChannelPartnerLink.channel_partner_cloud_identity_info:type_name -> google.cloud.channel.v1.CloudIdentityInfo
+	1, // 0: google.cloud.channel.v1.ChannelPartnerLink.link_state:type_name -> google.cloud.channel.v1.ChannelPartnerLinkState
+	3, // 1: google.cloud.channel.v1.ChannelPartnerLink.create_time:type_name -> google.protobuf.Timestamp
+	3, // 2: google.cloud.channel.v1.ChannelPartnerLink.update_time:type_name -> google.protobuf.Timestamp
+	4, // 3: google.cloud.channel.v1.ChannelPartnerLink.channel_partner_cloud_identity_info:type_name -> google.cloud.channel.v1.CloudIdentityInfo
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -344,7 +404,7 @@ func file_google_cloud_channel_v1_channel_partner_links_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_channel_v1_channel_partner_links_proto_rawDesc,
-			NumEnums:      1,
+			NumEnums:      2,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,

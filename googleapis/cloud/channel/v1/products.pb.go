@@ -90,9 +90,8 @@ func (MediaType) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_channel_v1_products_proto_rawDescGZIP(), []int{0}
 }
 
-// Product is the entity that the customer is entitled to use when an order is
-// placed.
-// Example of products are Google Workspace, Google Voice, etc.
+// A Product is the entity a customer uses when placing an order. For example,
+// Google Workspace, Google Voice, etc.
 type Product struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -151,10 +150,10 @@ func (x *Product) GetMarketingInfo() *MarketingInfo {
 	return nil
 }
 
-// Represents a purchasable Stock Keeping Unit (SKU) under a product.
+// Represents a product's purchasable Stock Keeping Unit (SKU).
 // SKUs represent the different variations of the product. For example, Google
-// Workspace Business Standard, Google Workspace Business Plus are SKUs of
-// Google Workspace product.
+// Workspace Business Standard and Google Workspace Business Plus are Google
+// Workspace product SKUs.
 type Sku struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -222,7 +221,7 @@ func (x *Sku) GetProduct() *Product {
 	return nil
 }
 
-// Represents a Product/SKU/Offer's marketing information.
+// Represents the marketing information for a Product, SKU or Offer.
 type MarketingInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
