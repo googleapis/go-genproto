@@ -196,6 +196,10 @@ type DetectIntentRequest struct {
 	//
 	// For more information, see the [sessions
 	// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
 	Session string `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
 	// The parameters of this query.
 	QueryParams *QueryParameters `protobuf:"bytes,2,opt,name=query_params,json=queryParams,proto3" json:"query_params,omitempty"`
@@ -398,6 +402,10 @@ type StreamingDetectIntentRequest struct {
 	//
 	// For more information, see the [sessions
 	// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
 	Session string `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
 	// The parameters of this query.
 	QueryParams *QueryParameters `protobuf:"bytes,2,opt,name=query_params,json=queryParams,proto3" json:"query_params,omitempty"`
@@ -750,7 +758,8 @@ type QueryParameters struct {
 	// -   MapKey value: parameter name
 	// -   MapValue type:
 	//     -   If parameter's entity type is a composite entity: map
-	//     -   Else: string or number, depending on parameter value type
+	//     -   Else: depending on parameter value type, could be one of string,
+	//         number, boolean, null, list or map
 	// -   MapValue value:
 	//     -   If parameter's entity type is a composite entity:
 	//         map from composite entity property names to property values
@@ -759,6 +768,15 @@ type QueryParameters struct {
 	// Configures whether sentiment analysis should be performed. If not
 	// provided, sentiment analysis is not performed.
 	AnalyzeQueryTextSentiment bool `protobuf:"varint,8,opt,name=analyze_query_text_sentiment,json=analyzeQueryTextSentiment,proto3" json:"analyze_query_text_sentiment,omitempty"`
+	// This field can be used to pass HTTP headers for a webhook
+	// call. These headers will be sent to webhook along with the headers that
+	// have been configured through Dialogflow web console. The headers defined
+	// within this field will overwrite the headers configured through Dialogflow
+	// console if there is a conflict. Header names are case-insensitive.
+	// Google's specified headers are not allowed. Including: "Host",
+	// "Content-Length", "Connection", "From", "User-Agent", "Accept-Encoding",
+	// "If-Modified-Since", "If-None-Match", "X-Forwarded-For", etc.
+	WebhookHeaders map[string]string `protobuf:"bytes,10,rep,name=webhook_headers,json=webhookHeaders,proto3" json:"webhook_headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *QueryParameters) Reset() {
@@ -833,6 +851,13 @@ func (x *QueryParameters) GetAnalyzeQueryTextSentiment() bool {
 		return x.AnalyzeQueryTextSentiment
 	}
 	return false
+}
+
+func (x *QueryParameters) GetWebhookHeaders() map[string]string {
+	if x != nil {
+		return x.WebhookHeaders
+	}
+	return nil
 }
 
 // Represents the query input. It can contain one of:
@@ -1015,7 +1040,8 @@ type QueryResult struct {
 	// -   MapKey value: parameter name
 	// -   MapValue type:
 	//     -   If parameter's entity type is a composite entity: map
-	//     -   Else: string or number, depending on parameter value type
+	//     -   Else: depending on parameter value type, could be one of string,
+	//         number, boolean, null, list or map
 	// -   MapValue value:
 	//     -   If parameter's entity type is a composite entity:
 	//         map from composite entity property names to property values
@@ -1543,7 +1569,8 @@ type Match struct {
 	// -   MapKey value: parameter name
 	// -   MapValue type:
 	//     -   If parameter's entity type is a composite entity: map
-	//     -   Else: string or number, depending on parameter value type
+	//     -   Else: depending on parameter value type, could be one of string,
+	//         number, boolean, null, list or map
 	// -   MapValue value:
 	//     -   If parameter's entity type is a composite entity:
 	//         map from composite entity property names to property values
@@ -2221,8 +2248,8 @@ var file_google_cloud_dialogflow_cx_v3_session_proto_rawDesc = []byte{
 	0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10,
 	0x00, 0x12, 0x0e, 0x0a, 0x0a, 0x54, 0x52, 0x41, 0x4e, 0x53, 0x43, 0x52, 0x49, 0x50, 0x54, 0x10,
 	0x01, 0x12, 0x1b, 0x0a, 0x17, 0x45, 0x4e, 0x44, 0x5f, 0x4f, 0x46, 0x5f, 0x53, 0x49, 0x4e, 0x47,
-	0x4c, 0x45, 0x5f, 0x55, 0x54, 0x54, 0x45, 0x52, 0x41, 0x4e, 0x43, 0x45, 0x10, 0x02, 0x22, 0xf7,
-	0x02, 0x0a, 0x0f, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65,
+	0x4c, 0x45, 0x5f, 0x55, 0x54, 0x54, 0x45, 0x52, 0x41, 0x4e, 0x43, 0x45, 0x10, 0x02, 0x22, 0xa7,
+	0x04, 0x0a, 0x0f, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65,
 	0x72, 0x73, 0x12, 0x1b, 0x0a, 0x09, 0x74, 0x69, 0x6d, 0x65, 0x5f, 0x7a, 0x6f, 0x6e, 0x65, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x74, 0x69, 0x6d, 0x65, 0x5a, 0x6f, 0x6e, 0x65, 0x12,
 	0x36, 0x0a, 0x0c, 0x67, 0x65, 0x6f, 0x5f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18,
@@ -2245,7 +2272,18 @@ var file_google_cloud_dialogflow_cx_v3_session_proto_rawDesc = []byte{
 	0x7a, 0x65, 0x5f, 0x71, 0x75, 0x65, 0x72, 0x79, 0x5f, 0x74, 0x65, 0x78, 0x74, 0x5f, 0x73, 0x65,
 	0x6e, 0x74, 0x69, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x08, 0x52, 0x19, 0x61,
 	0x6e, 0x61, 0x6c, 0x79, 0x7a, 0x65, 0x51, 0x75, 0x65, 0x72, 0x79, 0x54, 0x65, 0x78, 0x74, 0x53,
-	0x65, 0x6e, 0x74, 0x69, 0x6d, 0x65, 0x6e, 0x74, 0x22, 0x8b, 0x03, 0x0a, 0x0a, 0x51, 0x75, 0x65,
+	0x65, 0x6e, 0x74, 0x69, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x6b, 0x0a, 0x0f, 0x77, 0x65, 0x62, 0x68,
+	0x6f, 0x6f, 0x6b, 0x5f, 0x68, 0x65, 0x61, 0x64, 0x65, 0x72, 0x73, 0x18, 0x0a, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x42, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
+	0x2e, 0x64, 0x69, 0x61, 0x6c, 0x6f, 0x67, 0x66, 0x6c, 0x6f, 0x77, 0x2e, 0x63, 0x78, 0x2e, 0x76,
+	0x33, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65, 0x72,
+	0x73, 0x2e, 0x57, 0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b, 0x48, 0x65, 0x61, 0x64, 0x65, 0x72, 0x73,
+	0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0e, 0x77, 0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b, 0x48, 0x65,
+	0x61, 0x64, 0x65, 0x72, 0x73, 0x1a, 0x41, 0x0a, 0x13, 0x57, 0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b,
+	0x48, 0x65, 0x61, 0x64, 0x65, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03,
+	0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14,
+	0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x8b, 0x03, 0x0a, 0x0a, 0x51, 0x75, 0x65,
 	0x72, 0x79, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x3e, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18,
 	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x28, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
 	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x64, 0x69, 0x61, 0x6c, 0x6f, 0x67, 0x66, 0x6c, 0x6f, 0x77, 0x2e,
@@ -2568,7 +2606,7 @@ func file_google_cloud_dialogflow_cx_v3_session_proto_rawDescGZIP() []byte {
 }
 
 var file_google_cloud_dialogflow_cx_v3_session_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_google_cloud_dialogflow_cx_v3_session_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_google_cloud_dialogflow_cx_v3_session_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_google_cloud_dialogflow_cx_v3_session_proto_goTypes = []interface{}{
 	(StreamingRecognitionResult_MessageType)(0), // 0: google.cloud.dialogflow.cx.v3.StreamingRecognitionResult.MessageType
 	(Match_MatchType)(0),                        // 1: google.cloud.dialogflow.cx.v3.Match.MatchType
@@ -2591,76 +2629,78 @@ var file_google_cloud_dialogflow_cx_v3_session_proto_goTypes = []interface{}{
 	(*FulfillIntentRequest)(nil),                // 18: google.cloud.dialogflow.cx.v3.FulfillIntentRequest
 	(*FulfillIntentResponse)(nil),               // 19: google.cloud.dialogflow.cx.v3.FulfillIntentResponse
 	(*SentimentAnalysisResult)(nil),             // 20: google.cloud.dialogflow.cx.v3.SentimentAnalysisResult
-	(*OutputAudioConfig)(nil),                   // 21: google.cloud.dialogflow.cx.v3.OutputAudioConfig
-	(*SpeechWordInfo)(nil),                      // 22: google.cloud.dialogflow.cx.v3.SpeechWordInfo
-	(*durationpb.Duration)(nil),                 // 23: google.protobuf.Duration
-	(*latlng.LatLng)(nil),                       // 24: google.type.LatLng
-	(*SessionEntityType)(nil),                   // 25: google.cloud.dialogflow.cx.v3.SessionEntityType
-	(*structpb.Struct)(nil),                     // 26: google.protobuf.Struct
-	(*ResponseMessage)(nil),                     // 27: google.cloud.dialogflow.cx.v3.ResponseMessage
-	(*status.Status)(nil),                       // 28: google.rpc.Status
-	(*Page)(nil),                                // 29: google.cloud.dialogflow.cx.v3.Page
-	(*Intent)(nil),                              // 30: google.cloud.dialogflow.cx.v3.Intent
-	(*InputAudioConfig)(nil),                    // 31: google.cloud.dialogflow.cx.v3.InputAudioConfig
+	nil,                                         // 21: google.cloud.dialogflow.cx.v3.QueryParameters.WebhookHeadersEntry
+	(*OutputAudioConfig)(nil),                   // 22: google.cloud.dialogflow.cx.v3.OutputAudioConfig
+	(*SpeechWordInfo)(nil),                      // 23: google.cloud.dialogflow.cx.v3.SpeechWordInfo
+	(*durationpb.Duration)(nil),                 // 24: google.protobuf.Duration
+	(*latlng.LatLng)(nil),                       // 25: google.type.LatLng
+	(*SessionEntityType)(nil),                   // 26: google.cloud.dialogflow.cx.v3.SessionEntityType
+	(*structpb.Struct)(nil),                     // 27: google.protobuf.Struct
+	(*ResponseMessage)(nil),                     // 28: google.cloud.dialogflow.cx.v3.ResponseMessage
+	(*status.Status)(nil),                       // 29: google.rpc.Status
+	(*Page)(nil),                                // 30: google.cloud.dialogflow.cx.v3.Page
+	(*Intent)(nil),                              // 31: google.cloud.dialogflow.cx.v3.Intent
+	(*InputAudioConfig)(nil),                    // 32: google.cloud.dialogflow.cx.v3.InputAudioConfig
 }
 var file_google_cloud_dialogflow_cx_v3_session_proto_depIdxs = []int32{
 	7,  // 0: google.cloud.dialogflow.cx.v3.DetectIntentRequest.query_params:type_name -> google.cloud.dialogflow.cx.v3.QueryParameters
 	8,  // 1: google.cloud.dialogflow.cx.v3.DetectIntentRequest.query_input:type_name -> google.cloud.dialogflow.cx.v3.QueryInput
-	21, // 2: google.cloud.dialogflow.cx.v3.DetectIntentRequest.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
+	22, // 2: google.cloud.dialogflow.cx.v3.DetectIntentRequest.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
 	9,  // 3: google.cloud.dialogflow.cx.v3.DetectIntentResponse.query_result:type_name -> google.cloud.dialogflow.cx.v3.QueryResult
-	21, // 4: google.cloud.dialogflow.cx.v3.DetectIntentResponse.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
+	22, // 4: google.cloud.dialogflow.cx.v3.DetectIntentResponse.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
 	7,  // 5: google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest.query_params:type_name -> google.cloud.dialogflow.cx.v3.QueryParameters
 	8,  // 6: google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest.query_input:type_name -> google.cloud.dialogflow.cx.v3.QueryInput
-	21, // 7: google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
+	22, // 7: google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
 	6,  // 8: google.cloud.dialogflow.cx.v3.StreamingDetectIntentResponse.recognition_result:type_name -> google.cloud.dialogflow.cx.v3.StreamingRecognitionResult
 	3,  // 9: google.cloud.dialogflow.cx.v3.StreamingDetectIntentResponse.detect_intent_response:type_name -> google.cloud.dialogflow.cx.v3.DetectIntentResponse
 	0,  // 10: google.cloud.dialogflow.cx.v3.StreamingRecognitionResult.message_type:type_name -> google.cloud.dialogflow.cx.v3.StreamingRecognitionResult.MessageType
-	22, // 11: google.cloud.dialogflow.cx.v3.StreamingRecognitionResult.speech_word_info:type_name -> google.cloud.dialogflow.cx.v3.SpeechWordInfo
-	23, // 12: google.cloud.dialogflow.cx.v3.StreamingRecognitionResult.speech_end_offset:type_name -> google.protobuf.Duration
-	24, // 13: google.cloud.dialogflow.cx.v3.QueryParameters.geo_location:type_name -> google.type.LatLng
-	25, // 14: google.cloud.dialogflow.cx.v3.QueryParameters.session_entity_types:type_name -> google.cloud.dialogflow.cx.v3.SessionEntityType
-	26, // 15: google.cloud.dialogflow.cx.v3.QueryParameters.payload:type_name -> google.protobuf.Struct
-	26, // 16: google.cloud.dialogflow.cx.v3.QueryParameters.parameters:type_name -> google.protobuf.Struct
-	10, // 17: google.cloud.dialogflow.cx.v3.QueryInput.text:type_name -> google.cloud.dialogflow.cx.v3.TextInput
-	11, // 18: google.cloud.dialogflow.cx.v3.QueryInput.intent:type_name -> google.cloud.dialogflow.cx.v3.IntentInput
-	12, // 19: google.cloud.dialogflow.cx.v3.QueryInput.audio:type_name -> google.cloud.dialogflow.cx.v3.AudioInput
-	13, // 20: google.cloud.dialogflow.cx.v3.QueryInput.event:type_name -> google.cloud.dialogflow.cx.v3.EventInput
-	14, // 21: google.cloud.dialogflow.cx.v3.QueryInput.dtmf:type_name -> google.cloud.dialogflow.cx.v3.DtmfInput
-	26, // 22: google.cloud.dialogflow.cx.v3.QueryResult.parameters:type_name -> google.protobuf.Struct
-	27, // 23: google.cloud.dialogflow.cx.v3.QueryResult.response_messages:type_name -> google.cloud.dialogflow.cx.v3.ResponseMessage
-	28, // 24: google.cloud.dialogflow.cx.v3.QueryResult.webhook_statuses:type_name -> google.rpc.Status
-	26, // 25: google.cloud.dialogflow.cx.v3.QueryResult.webhook_payloads:type_name -> google.protobuf.Struct
-	29, // 26: google.cloud.dialogflow.cx.v3.QueryResult.current_page:type_name -> google.cloud.dialogflow.cx.v3.Page
-	30, // 27: google.cloud.dialogflow.cx.v3.QueryResult.intent:type_name -> google.cloud.dialogflow.cx.v3.Intent
-	15, // 28: google.cloud.dialogflow.cx.v3.QueryResult.match:type_name -> google.cloud.dialogflow.cx.v3.Match
-	26, // 29: google.cloud.dialogflow.cx.v3.QueryResult.diagnostic_info:type_name -> google.protobuf.Struct
-	20, // 30: google.cloud.dialogflow.cx.v3.QueryResult.sentiment_analysis_result:type_name -> google.cloud.dialogflow.cx.v3.SentimentAnalysisResult
-	31, // 31: google.cloud.dialogflow.cx.v3.AudioInput.config:type_name -> google.cloud.dialogflow.cx.v3.InputAudioConfig
-	30, // 32: google.cloud.dialogflow.cx.v3.Match.intent:type_name -> google.cloud.dialogflow.cx.v3.Intent
-	26, // 33: google.cloud.dialogflow.cx.v3.Match.parameters:type_name -> google.protobuf.Struct
-	1,  // 34: google.cloud.dialogflow.cx.v3.Match.match_type:type_name -> google.cloud.dialogflow.cx.v3.Match.MatchType
-	7,  // 35: google.cloud.dialogflow.cx.v3.MatchIntentRequest.query_params:type_name -> google.cloud.dialogflow.cx.v3.QueryParameters
-	8,  // 36: google.cloud.dialogflow.cx.v3.MatchIntentRequest.query_input:type_name -> google.cloud.dialogflow.cx.v3.QueryInput
-	15, // 37: google.cloud.dialogflow.cx.v3.MatchIntentResponse.matches:type_name -> google.cloud.dialogflow.cx.v3.Match
-	29, // 38: google.cloud.dialogflow.cx.v3.MatchIntentResponse.current_page:type_name -> google.cloud.dialogflow.cx.v3.Page
-	16, // 39: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.match_intent_request:type_name -> google.cloud.dialogflow.cx.v3.MatchIntentRequest
-	15, // 40: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.match:type_name -> google.cloud.dialogflow.cx.v3.Match
-	21, // 41: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
-	9,  // 42: google.cloud.dialogflow.cx.v3.FulfillIntentResponse.query_result:type_name -> google.cloud.dialogflow.cx.v3.QueryResult
-	21, // 43: google.cloud.dialogflow.cx.v3.FulfillIntentResponse.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
-	2,  // 44: google.cloud.dialogflow.cx.v3.Sessions.DetectIntent:input_type -> google.cloud.dialogflow.cx.v3.DetectIntentRequest
-	4,  // 45: google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent:input_type -> google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest
-	16, // 46: google.cloud.dialogflow.cx.v3.Sessions.MatchIntent:input_type -> google.cloud.dialogflow.cx.v3.MatchIntentRequest
-	18, // 47: google.cloud.dialogflow.cx.v3.Sessions.FulfillIntent:input_type -> google.cloud.dialogflow.cx.v3.FulfillIntentRequest
-	3,  // 48: google.cloud.dialogflow.cx.v3.Sessions.DetectIntent:output_type -> google.cloud.dialogflow.cx.v3.DetectIntentResponse
-	5,  // 49: google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent:output_type -> google.cloud.dialogflow.cx.v3.StreamingDetectIntentResponse
-	17, // 50: google.cloud.dialogflow.cx.v3.Sessions.MatchIntent:output_type -> google.cloud.dialogflow.cx.v3.MatchIntentResponse
-	19, // 51: google.cloud.dialogflow.cx.v3.Sessions.FulfillIntent:output_type -> google.cloud.dialogflow.cx.v3.FulfillIntentResponse
-	48, // [48:52] is the sub-list for method output_type
-	44, // [44:48] is the sub-list for method input_type
-	44, // [44:44] is the sub-list for extension type_name
-	44, // [44:44] is the sub-list for extension extendee
-	0,  // [0:44] is the sub-list for field type_name
+	23, // 11: google.cloud.dialogflow.cx.v3.StreamingRecognitionResult.speech_word_info:type_name -> google.cloud.dialogflow.cx.v3.SpeechWordInfo
+	24, // 12: google.cloud.dialogflow.cx.v3.StreamingRecognitionResult.speech_end_offset:type_name -> google.protobuf.Duration
+	25, // 13: google.cloud.dialogflow.cx.v3.QueryParameters.geo_location:type_name -> google.type.LatLng
+	26, // 14: google.cloud.dialogflow.cx.v3.QueryParameters.session_entity_types:type_name -> google.cloud.dialogflow.cx.v3.SessionEntityType
+	27, // 15: google.cloud.dialogflow.cx.v3.QueryParameters.payload:type_name -> google.protobuf.Struct
+	27, // 16: google.cloud.dialogflow.cx.v3.QueryParameters.parameters:type_name -> google.protobuf.Struct
+	21, // 17: google.cloud.dialogflow.cx.v3.QueryParameters.webhook_headers:type_name -> google.cloud.dialogflow.cx.v3.QueryParameters.WebhookHeadersEntry
+	10, // 18: google.cloud.dialogflow.cx.v3.QueryInput.text:type_name -> google.cloud.dialogflow.cx.v3.TextInput
+	11, // 19: google.cloud.dialogflow.cx.v3.QueryInput.intent:type_name -> google.cloud.dialogflow.cx.v3.IntentInput
+	12, // 20: google.cloud.dialogflow.cx.v3.QueryInput.audio:type_name -> google.cloud.dialogflow.cx.v3.AudioInput
+	13, // 21: google.cloud.dialogflow.cx.v3.QueryInput.event:type_name -> google.cloud.dialogflow.cx.v3.EventInput
+	14, // 22: google.cloud.dialogflow.cx.v3.QueryInput.dtmf:type_name -> google.cloud.dialogflow.cx.v3.DtmfInput
+	27, // 23: google.cloud.dialogflow.cx.v3.QueryResult.parameters:type_name -> google.protobuf.Struct
+	28, // 24: google.cloud.dialogflow.cx.v3.QueryResult.response_messages:type_name -> google.cloud.dialogflow.cx.v3.ResponseMessage
+	29, // 25: google.cloud.dialogflow.cx.v3.QueryResult.webhook_statuses:type_name -> google.rpc.Status
+	27, // 26: google.cloud.dialogflow.cx.v3.QueryResult.webhook_payloads:type_name -> google.protobuf.Struct
+	30, // 27: google.cloud.dialogflow.cx.v3.QueryResult.current_page:type_name -> google.cloud.dialogflow.cx.v3.Page
+	31, // 28: google.cloud.dialogflow.cx.v3.QueryResult.intent:type_name -> google.cloud.dialogflow.cx.v3.Intent
+	15, // 29: google.cloud.dialogflow.cx.v3.QueryResult.match:type_name -> google.cloud.dialogflow.cx.v3.Match
+	27, // 30: google.cloud.dialogflow.cx.v3.QueryResult.diagnostic_info:type_name -> google.protobuf.Struct
+	20, // 31: google.cloud.dialogflow.cx.v3.QueryResult.sentiment_analysis_result:type_name -> google.cloud.dialogflow.cx.v3.SentimentAnalysisResult
+	32, // 32: google.cloud.dialogflow.cx.v3.AudioInput.config:type_name -> google.cloud.dialogflow.cx.v3.InputAudioConfig
+	31, // 33: google.cloud.dialogflow.cx.v3.Match.intent:type_name -> google.cloud.dialogflow.cx.v3.Intent
+	27, // 34: google.cloud.dialogflow.cx.v3.Match.parameters:type_name -> google.protobuf.Struct
+	1,  // 35: google.cloud.dialogflow.cx.v3.Match.match_type:type_name -> google.cloud.dialogflow.cx.v3.Match.MatchType
+	7,  // 36: google.cloud.dialogflow.cx.v3.MatchIntentRequest.query_params:type_name -> google.cloud.dialogflow.cx.v3.QueryParameters
+	8,  // 37: google.cloud.dialogflow.cx.v3.MatchIntentRequest.query_input:type_name -> google.cloud.dialogflow.cx.v3.QueryInput
+	15, // 38: google.cloud.dialogflow.cx.v3.MatchIntentResponse.matches:type_name -> google.cloud.dialogflow.cx.v3.Match
+	30, // 39: google.cloud.dialogflow.cx.v3.MatchIntentResponse.current_page:type_name -> google.cloud.dialogflow.cx.v3.Page
+	16, // 40: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.match_intent_request:type_name -> google.cloud.dialogflow.cx.v3.MatchIntentRequest
+	15, // 41: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.match:type_name -> google.cloud.dialogflow.cx.v3.Match
+	22, // 42: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
+	9,  // 43: google.cloud.dialogflow.cx.v3.FulfillIntentResponse.query_result:type_name -> google.cloud.dialogflow.cx.v3.QueryResult
+	22, // 44: google.cloud.dialogflow.cx.v3.FulfillIntentResponse.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
+	2,  // 45: google.cloud.dialogflow.cx.v3.Sessions.DetectIntent:input_type -> google.cloud.dialogflow.cx.v3.DetectIntentRequest
+	4,  // 46: google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent:input_type -> google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest
+	16, // 47: google.cloud.dialogflow.cx.v3.Sessions.MatchIntent:input_type -> google.cloud.dialogflow.cx.v3.MatchIntentRequest
+	18, // 48: google.cloud.dialogflow.cx.v3.Sessions.FulfillIntent:input_type -> google.cloud.dialogflow.cx.v3.FulfillIntentRequest
+	3,  // 49: google.cloud.dialogflow.cx.v3.Sessions.DetectIntent:output_type -> google.cloud.dialogflow.cx.v3.DetectIntentResponse
+	5,  // 50: google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent:output_type -> google.cloud.dialogflow.cx.v3.StreamingDetectIntentResponse
+	17, // 51: google.cloud.dialogflow.cx.v3.Sessions.MatchIntent:output_type -> google.cloud.dialogflow.cx.v3.MatchIntentResponse
+	19, // 52: google.cloud.dialogflow.cx.v3.Sessions.FulfillIntent:output_type -> google.cloud.dialogflow.cx.v3.FulfillIntentResponse
+	49, // [49:53] is the sub-list for method output_type
+	45, // [45:49] is the sub-list for method input_type
+	45, // [45:45] is the sub-list for extension type_name
+	45, // [45:45] is the sub-list for extension extendee
+	0,  // [0:45] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_dialogflow_cx_v3_session_proto_init() }
@@ -2933,7 +2973,7 @@ func file_google_cloud_dialogflow_cx_v3_session_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_dialogflow_cx_v3_session_proto_rawDesc,
 			NumEnums:      2,
-			NumMessages:   19,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -2964,10 +3004,18 @@ type SessionsClient interface {
 	// as a result. This method is not idempotent, because it may cause session
 	// entity types to be updated, which in turn might affect results of future
 	// queries.
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
 	DetectIntent(ctx context.Context, in *DetectIntentRequest, opts ...grpc.CallOption) (*DetectIntentResponse, error)
 	// Processes a natural language query in audio format in a streaming fashion
 	// and returns structured, actionable data as a result. This method is only
 	// available via the gRPC API (not REST).
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
 	StreamingDetectIntent(ctx context.Context, opts ...grpc.CallOption) (Sessions_StreamingDetectIntentClient, error)
 	// Returns preliminary intent match results, doesn't change the session
 	// status.
@@ -3050,10 +3098,18 @@ type SessionsServer interface {
 	// as a result. This method is not idempotent, because it may cause session
 	// entity types to be updated, which in turn might affect results of future
 	// queries.
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
 	DetectIntent(context.Context, *DetectIntentRequest) (*DetectIntentResponse, error)
 	// Processes a natural language query in audio format in a streaming fashion
 	// and returns structured, actionable data as a result. This method is only
 	// available via the gRPC API (not REST).
+	//
+	// Note: Always use agent versions for production traffic.
+	// See [Versions and
+	// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
 	StreamingDetectIntent(Sessions_StreamingDetectIntentServer) error
 	// Returns preliminary intent match results, doesn't change the session
 	// status.

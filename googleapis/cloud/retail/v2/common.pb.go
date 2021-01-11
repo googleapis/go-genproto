@@ -58,7 +58,7 @@ type CustomAttribute struct {
 	//
 	// Exactly one of [text][google.cloud.retail.v2.CustomAttribute.text] or
 	// [numbers][google.cloud.retail.v2.CustomAttribute.numbers] should be set.
-	// Otherwise, a INVALID_ARGUMENT error is returned.
+	// Otherwise, an INVALID_ARGUMENT error is returned.
 	Text []string `protobuf:"bytes,1,rep,name=text,proto3" json:"text,omitempty"`
 	// The numerical values of this custom attribute. For example, `[2.3, 15.4]`
 	// when the key is "lengths_cm".
@@ -68,7 +68,7 @@ type CustomAttribute struct {
 	//
 	// Exactly one of [text][google.cloud.retail.v2.CustomAttribute.text] or
 	// [numbers][google.cloud.retail.v2.CustomAttribute.numbers] should be set.
-	// Otherwise, a INVALID_ARGUMENT error is returned.
+	// Otherwise, an INVALID_ARGUMENT error is returned.
 	Numbers []float64 `protobuf:"fixed64,2,rep,packed,name=numbers,proto3" json:"numbers,omitempty"`
 }
 
@@ -131,7 +131,7 @@ type Image struct {
 	//
 	// Google Merchant Center property
 	// [image_link](https://support.google.com/merchants/answer/6324350).
-	// Schema.org property [Product.image](http://schema.org/image).
+	// Schema.org property [Product.image](https://schema.org/image).
 	Uri string `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
 	// Height of the image in number of pixels.
 	//
@@ -205,7 +205,7 @@ type PriceInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The 3-letter currency code defined in [ISO
-	// 4217][https://www.iso.org/iso-4217-currency-codes.html].
+	// 4217](https://www.iso.org/iso-4217-currency-codes.html).
 	//
 	// If this field is an unrecognizable currency code, an INVALID_ARGUMENT
 	// error is returned.
@@ -213,9 +213,8 @@ type PriceInfo struct {
 	// Price of the product.
 	//
 	// Google Merchant Center property
-	// [price](https://support.google.com/merchants/answer/6324371).
-	// Schema.org property
-	// [Offer.priceSpecification](https://schema.org/priceSpecification).
+	// [price](https://support.google.com/merchants/answer/6324371). Schema.org
+	// property [Offer.priceSpecification](https://schema.org/priceSpecification).
 	Price float32 `protobuf:"fixed32,2,opt,name=price,proto3" json:"price,omitempty"`
 	// Price of the product without any discount. If zero, by default set to be
 	// the [price][google.cloud.retail.v2.PriceInfo.price].
@@ -227,7 +226,7 @@ type PriceInfo struct {
 	// [cost][google.cloud.retail.v2.PriceInfo.cost]
 	//
 	// Google Merchant Center property
-	// [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895)
+	// [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
 	Cost float32 `protobuf:"fixed32,4,opt,name=cost,proto3" json:"cost,omitempty"`
 }
 
@@ -314,7 +313,7 @@ type UserInfo struct {
 	// [UserEventService.CollectUserEvent][google.cloud.retail.v2.UserEventService.CollectUserEvent]
 	// or if
 	// [direct_user_request][google.cloud.retail.v2.UserInfo.direct_user_request]
-	// is set. Otherwise, a FAILED_PRECONDITION error is returned.
+	// is set.
 	IpAddress string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
 	// User agent as included in the HTTP header.
 	//
@@ -326,7 +325,7 @@ type UserInfo struct {
 	// [UserEventService.CollectUserEvent][google.cloud.retail.v2.UserEventService.CollectUserEvent]
 	// or if
 	// [direct_user_request][google.cloud.retail.v2.UserInfo.direct_user_request]
-	// is set. Otherwise, a FAILED_PRECONDITION error is returned.
+	// is set.
 	UserAgent string `protobuf:"bytes,3,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
 	// True if the request is made directly from the end user, in which case the
 	// [ip_address][google.cloud.retail.v2.UserInfo.ip_address] and
@@ -337,7 +336,6 @@ type UserInfo struct {
 	//
 	// This should not be set when using the JavaScript tag in
 	// [UserEventService.CollectUserEvent][google.cloud.retail.v2.UserEventService.CollectUserEvent].
-	// Otherwise, a FAILED_PRECONDITION error is returned.
 	DirectUserRequest bool `protobuf:"varint,4,opt,name=direct_user_request,json=directUserRequest,proto3" json:"direct_user_request,omitempty"`
 }
 

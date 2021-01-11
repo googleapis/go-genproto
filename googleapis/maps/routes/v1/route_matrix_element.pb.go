@@ -46,13 +46,13 @@ const _ = proto.ProtoPackageIsVersion4
 type RouteMatrixElementCondition int32
 
 const (
-	// Not used.
+	// Only used when the `status` of the element is not OK.
 	RouteMatrixElementCondition_ROUTE_MATRIX_ELEMENT_CONDITION_UNSPECIFIED RouteMatrixElementCondition = 0
 	// A route was found, and the corresponding information was filled out for the
 	// element.
 	RouteMatrixElementCondition_ROUTE_EXISTS RouteMatrixElementCondition = 1
 	// No route could be found. Fields containing route information, such as
-	// distance_meters or duration, will not be filled out in the element.
+	// `distance_meters` or `duration`, will not be filled out in the element.
 	RouteMatrixElementCondition_ROUTE_NOT_FOUND RouteMatrixElementCondition = 2
 )
 
