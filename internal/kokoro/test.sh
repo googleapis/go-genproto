@@ -18,7 +18,6 @@ export PATH="$GOPATH/bin:$PATH"
 export GO111MODULE=on
 mkdir -p $GENPROTO_HOME
 
-
 # Move code into $GOPATH and get dependencies
 git clone . $GENPROTO_HOME
 cd $GENPROTO_HOME
@@ -36,13 +35,13 @@ set +e
 # Run tests and tee output to log file, to be pushed to GCS as artifact.
 go test -race -v ./... 2>&1 | tee $KOKORO_ARTIFACTS_DIR/sponge_log.log
 
-cat $KOKORO_ARTIFACTS_DIR/sponge_log.log | go-junit-report -set-exit-code > $KOKORO_ARTIFACTS_DIR/sponge_log.xml
+cat $KOKORO_ARTIFACTS_DIR/sponge_log.log | go-junit-report -set-exit-code >$KOKORO_ARTIFACTS_DIR/sponge_log.xml
 exit_code=$?
 
-# Send logs to the Build Cop Bot for continuous builds.
+# Send logs to Flaky Bot for continuous builds.
 if [[ $KOKORO_BUILD_ARTIFACTS_SUBDIR = *"continuous"* ]]; then
-  chmod +x $KOKORO_GFILE_DIR/linux_amd64/buildcop
-  $KOKORO_GFILE_DIR/linux_amd64/buildcop \
+  chmod +x $KOKORO_GFILE_DIR/linux_amd64/flakybot
+  $KOKORO_GFILE_DIR/linux_amd64/flakybot \
     -logs_dir=$KOKORO_ARTIFACTS_DIR \
     -repo=googleapis/go-genproto
 fi
