@@ -1250,9 +1250,9 @@ type UpdateTestCaseRequest struct {
 
 	// Required. The test case to update.
 	TestCase *TestCase `protobuf:"bytes,1,opt,name=test_case,json=testCase,proto3" json:"test_case,omitempty"`
-	// Required. The mask to specify which fields should be updated. Only a test case's
-	// metadata and replayed_conversation_turns may be updated. The original
-	// test_case_conversation_turns may not be updated.
+	// Required. The mask to specify which fields should be updated. The
+	// [`creationTime`][google.cloud.dialogflow.cx.v3.TestCase.creation_time] and
+	// [`lastTestResult`][google.cloud.dialogflow.cx.v3.TestCase.last_test_result] cannot be updated.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
