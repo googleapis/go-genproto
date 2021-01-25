@@ -38,7 +38,7 @@ go test -race -v ./... 2>&1 | tee $KOKORO_ARTIFACTS_DIR/sponge_log.log
 cat $KOKORO_ARTIFACTS_DIR/sponge_log.log | go-junit-report -set-exit-code >$KOKORO_ARTIFACTS_DIR/sponge_log.xml
 exit_code=$?
 
-# Send logs to Flaky Cop Bot for continuous builds.
+# Send logs to Flaky Bot for continuous builds.
 if [[ $KOKORO_BUILD_ARTIFACTS_SUBDIR = *"continuous"* ]]; then
   chmod +x $KOKORO_GFILE_DIR/linux_amd64/flakybot
   $KOKORO_GFILE_DIR/linux_amd64/flakybot \
