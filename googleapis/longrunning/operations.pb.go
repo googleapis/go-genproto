@@ -980,9 +980,9 @@ type OperationsClient interface {
 	// an [Operation.error][google.longrunning.Operation.error] value with a [google.rpc.Status.code][google.rpc.Status.code] of 1,
 	// corresponding to `Code.CANCELLED`.
 	CancelOperation(ctx context.Context, in *CancelOperationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	// Waits for the specified long-running operation until it is done or reaches
-	// at most a specified timeout, returning the latest state.  If the operation
-	// is already done, the latest state is immediately returned.  If the timeout
+	// Waits until the specified long-running operation is done or reaches at most
+	// a specified timeout, returning the latest state.  If the operation is
+	// already done, the latest state is immediately returned.  If the timeout
 	// specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
 	// timeout is used.  If the server does not support this method, it returns
 	// `google.rpc.Code.UNIMPLEMENTED`.
@@ -1078,9 +1078,9 @@ type OperationsServer interface {
 	// an [Operation.error][google.longrunning.Operation.error] value with a [google.rpc.Status.code][google.rpc.Status.code] of 1,
 	// corresponding to `Code.CANCELLED`.
 	CancelOperation(context.Context, *CancelOperationRequest) (*emptypb.Empty, error)
-	// Waits for the specified long-running operation until it is done or reaches
-	// at most a specified timeout, returning the latest state.  If the operation
-	// is already done, the latest state is immediately returned.  If the timeout
+	// Waits until the specified long-running operation is done or reaches at most
+	// a specified timeout, returning the latest state.  If the operation is
+	// already done, the latest state is immediately returned.  If the timeout
 	// specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
 	// timeout is used.  If the server does not support this method, it returns
 	// `google.rpc.Code.UNIMPLEMENTED`.
