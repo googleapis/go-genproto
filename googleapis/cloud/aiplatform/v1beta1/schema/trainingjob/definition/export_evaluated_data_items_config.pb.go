@@ -47,15 +47,17 @@ type ExportEvaluatedDataItemsConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// URI of desired destination BigQuery table. If not specified, then results
-	// are exported to the following auto-created BigQuery table:
+	// URI of desired destination BigQuery table. Expected format:
+	// bq://<project_id>:<dataset_id>:<table>
+	//
+	// If not specified, then results are exported to the following auto-created
+	// BigQuery table:
 	//
 	// <project_id>:export_evaluated_examples_<model_name>_<yyyy_MM_dd'T'HH_mm_ss_SSS'Z'>.evaluated_examples
 	DestinationBigqueryUri string `protobuf:"bytes,1,opt,name=destination_bigquery_uri,json=destinationBigqueryUri,proto3" json:"destination_bigquery_uri,omitempty"`
 	// If true and an export destination is specified, then the contents of the
-	// destination will be overwritten. Otherwise, if the export destination
-	// already exists, then the export operation will not trigger and a failure
-	// response is returned.
+	// destination are overwritten. Otherwise, if the export destination already
+	// exists, then the export operation fails.
 	OverrideExistingTable bool `protobuf:"varint,2,opt,name=override_existing_table,json=overrideExistingTable,proto3" json:"override_existing_table,omitempty"`
 }
 

@@ -425,7 +425,11 @@ type TablesDatasetMetadata_GcsSource struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Google Cloud Storage URI to a input file, only .csv file is supported.
+	// Cloud Storage URI of one or more files. Only CSV files are supported.
+	// The first line of the CSV file is used as the header.
+	// If there are multiple files, the header is the first line of
+	// the lexicographically first file, the other files must either
+	// contain the exact same header or omit the header.
 	Uri []string `protobuf:"bytes,1,rep,name=uri,proto3" json:"uri,omitempty"`
 }
 
@@ -474,6 +478,7 @@ type TablesDatasetMetadata_BigQuerySource struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The URI of a BigQuery table.
+	// e.g. bq://projectId.bqDatasetId.bqTableId
 	Uri string `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
 }
 
@@ -605,7 +610,11 @@ type TimeSeriesDatasetMetadata_GcsSource struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Google Cloud Storage URI to a input file, only .csv file is supported.
+	// Cloud Storage URI of one or more files. Only CSV files are supported.
+	// The first line of the CSV file is used as the header.
+	// If there are multiple files, the header is the first line of
+	// the lexicographically first file, the other files must either
+	// contain the exact same header or omit the header.
 	Uri []string `protobuf:"bytes,1,rep,name=uri,proto3" json:"uri,omitempty"`
 }
 
