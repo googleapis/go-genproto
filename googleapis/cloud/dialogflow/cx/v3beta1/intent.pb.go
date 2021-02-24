@@ -263,7 +263,7 @@ type ListIntentsRequest struct {
 	//
 	// If not specified, the agent's default language is used.
 	// [Many
-	// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+	// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// are supported.
 	// Note: languages must be enabled in the agent before they can be used.
 	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
@@ -420,7 +420,7 @@ type GetIntentRequest struct {
 	//
 	// If not specified, the agent's default language is used.
 	// [Many
-	// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+	// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// are supported.
 	// Note: languages must be enabled in the agent before they can be used.
 	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
@@ -489,7 +489,7 @@ type CreateIntentRequest struct {
 	//
 	// If not specified, the agent's default language is used.
 	// [Many
-	// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+	// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// are supported.
 	// Note: languages must be enabled in the agent before they can be used.
 	LanguageCode string `protobuf:"bytes,3,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
@@ -562,7 +562,7 @@ type UpdateIntentRequest struct {
 	//
 	// If not specified, the agent's default language is used.
 	// [Many
-	// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+	// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// are supported.
 	// Note: languages must be enabled in the agent before they can be used.
 	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
