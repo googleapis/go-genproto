@@ -885,9 +885,9 @@ type QueryInput struct {
 	//	*QueryInput_Dtmf
 	Input isQueryInput_Input `protobuf_oneof:"input"`
 	// Required. The language of the input. See [Language
-	// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a
-	// list of the currently supported language codes. Note that queries in the
-	// same session do not necessarily need to specify the same language.
+	// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+	// for a list of the currently supported language codes. Note that queries in
+	// the same session do not necessarily need to specify the same language.
 	LanguageCode string `protobuf:"bytes,4,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 }
 
@@ -1027,7 +1027,7 @@ type QueryResult struct {
 	Query isQueryResult_Query `protobuf_oneof:"query"`
 	// The language that was triggered during intent detection.
 	// See [Language
-	// Support](https://cloud.google.com/dialogflow/docs/reference/language)
+	// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
 	// for a list of the currently supported language codes.
 	LanguageCode string `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// The collected [session parameters][google.cloud.dialogflow.cx.v3.SessionInfo.parameters].
