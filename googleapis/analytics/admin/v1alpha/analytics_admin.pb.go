@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -293,9 +293,9 @@ type UpdateAccountRequest struct {
 	// Required. The account to update.
 	// The account's `name` field is used to identify the account.
 	Account *Account `protobuf:"bytes,1,opt,name=account,proto3" json:"account,omitempty"`
-	// Required. The list of fields to be updated. Omitted fields will not be updated.
-	// To replace the entire entity, use one path with the string "*" to match
-	// all fields.
+	// Required. The list of fields to be updated. Field names must be in snake case
+	// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+	// the entire entity, use one path with the string "*" to match all fields.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -669,9 +669,9 @@ type UpdatePropertyRequest struct {
 	// The property's `name` field is used to identify the property to be
 	// updated.
 	Property *Property `protobuf:"bytes,1,opt,name=property,proto3" json:"property,omitempty"`
-	// Required. The list of fields to be updated. Omitted fields will not be updated.
-	// To replace the entire entity, use one path with the string "*" to match
-	// all fields.
+	// Required. The list of fields to be updated. Field names must be in snake case
+	// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+	// the entire entity, use one path with the string "*" to match all fields.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -1827,9 +1827,9 @@ type UpdateWebDataStreamRequest struct {
 	// Required. The web stream to update.
 	// The `name` field is used to identify the web stream to be updated.
 	WebDataStream *WebDataStream `protobuf:"bytes,1,opt,name=web_data_stream,json=webDataStream,proto3" json:"web_data_stream,omitempty"`
-	// Required. The list of fields to be updated. Omitted fields will not be updated.
-	// To replace the entire entity, use one path with the string "*" to match
-	// all fields.
+	// Required. The list of fields to be updated. Field names must be in snake case
+	// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+	// the entire entity, use one path with the string "*" to match all fields.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -2182,9 +2182,9 @@ type UpdateIosAppDataStreamRequest struct {
 	// Required. The iOS app stream to update.
 	// The `name` field is used to identify the iOS app stream to be updated.
 	IosAppDataStream *IosAppDataStream `protobuf:"bytes,1,opt,name=ios_app_data_stream,json=iosAppDataStream,proto3" json:"ios_app_data_stream,omitempty"`
-	// Required. The list of fields to be updated. Omitted fields will not be updated.
-	// To replace the entire entity, use one path with the string "*" to match
-	// all fields.
+	// Required. The list of fields to be updated. Field names must be in snake case
+	// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+	// the entire entity, use one path with the string "*" to match all fields.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -2537,9 +2537,9 @@ type UpdateAndroidAppDataStreamRequest struct {
 	// Required. The android app stream to update.
 	// The `name` field is used to identify the android app stream to be updated.
 	AndroidAppDataStream *AndroidAppDataStream `protobuf:"bytes,1,opt,name=android_app_data_stream,json=androidAppDataStream,proto3" json:"android_app_data_stream,omitempty"`
-	// Required. The list of fields to be updated. Omitted fields will not be updated.
-	// To replace the entire entity, use one path with the string "*" to match
-	// all fields.
+	// Required. The list of fields to be updated. Field names must be in snake case
+	// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+	// the entire entity, use one path with the string "*" to match all fields.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -2844,9 +2844,9 @@ type UpdateEnhancedMeasurementSettingsRequest struct {
 	// Required. The settings to update.
 	// The `name` field is used to identify the settings to be updated.
 	EnhancedMeasurementSettings *EnhancedMeasurementSettings `protobuf:"bytes,1,opt,name=enhanced_measurement_settings,json=enhancedMeasurementSettings,proto3" json:"enhanced_measurement_settings,omitempty"`
-	// Required. The list of fields to be updated. Omitted fields will not be updated.
-	// To replace the entire entity, use one path with the string "*" to match
-	// all fields.
+	// Required. The list of fields to be updated. Field names must be in snake case
+	// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+	// the entire entity, use one path with the string "*" to match all fields.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -2963,9 +2963,9 @@ type UpdateFirebaseLinkRequest struct {
 
 	// Required. The Firebase link to update.
 	FirebaseLink *FirebaseLink `protobuf:"bytes,1,opt,name=firebase_link,json=firebaseLink,proto3" json:"firebase_link,omitempty"`
-	// Required. The list of fields to be updated. Omitted fields will not be updated.
-	// To replace the entire entity, use one path with the string "*" to match
-	// all fields.
+	// Required. The list of fields to be updated. Field names must be in snake case
+	// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+	// the entire entity, use one path with the string "*" to match all fields.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -3318,9 +3318,9 @@ type UpdateGoogleAdsLinkRequest struct {
 
 	// The GoogleAdsLink to update
 	GoogleAdsLink *GoogleAdsLink `protobuf:"bytes,1,opt,name=google_ads_link,json=googleAdsLink,proto3" json:"google_ads_link,omitempty"`
-	// Required. The list of fields to be updated. Omitted fields will not be updated.
-	// To replace the entire entity, use one path with the string "*" to match
-	// all fields.
+	// Required. The list of fields to be updated. Field names must be in snake case
+	// (e.g., "field_to_update"). Omitted fields will not be updated. To replace
+	// the entire entity, use one path with the string "*" to match all fields.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -6122,7 +6122,15 @@ type AnalyticsAdminServiceClient interface {
 	DeleteIosAppDataStream(ctx context.Context, in *DeleteIosAppDataStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates an iOS app stream on a property.
 	UpdateIosAppDataStream(ctx context.Context, in *UpdateIosAppDataStreamRequest, opts ...grpc.CallOption) (*IosAppDataStream, error)
-	// Creates an iOS app data stream with the specified location and attributes.
+	// Creates an iOS app stream with the specified location and attributes.
+	//
+	// Note that an iOS app stream must be linked to a Firebase app to receive
+	// traffic.
+	//
+	// To create a working app stream, make sure your property is linked to a
+	// Firebase project. Then, use the Firebase API to create a Firebase app,
+	// which will also create an appropriate data stream in Analytics (may take up
+	// to 24 hours).
 	CreateIosAppDataStream(ctx context.Context, in *CreateIosAppDataStreamRequest, opts ...grpc.CallOption) (*IosAppDataStream, error)
 	// Returns child iOS app data streams under the specified parent property.
 	//
@@ -6135,7 +6143,15 @@ type AnalyticsAdminServiceClient interface {
 	DeleteAndroidAppDataStream(ctx context.Context, in *DeleteAndroidAppDataStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates an android app stream on a property.
 	UpdateAndroidAppDataStream(ctx context.Context, in *UpdateAndroidAppDataStreamRequest, opts ...grpc.CallOption) (*AndroidAppDataStream, error)
-	// Creates an android app stream with the specified location and attributes.
+	// Creates an Android app stream with the specified location and attributes.
+	//
+	// Note that an Android app stream must be linked to a Firebase app to receive
+	// traffic.
+	//
+	// To create a working app stream, make sure your property is linked to a
+	// Firebase project. Then, use the Firebase API to create a Firebase app,
+	// which will also create an appropriate data stream in Analytics (may take up
+	// to 24 hours).
 	CreateAndroidAppDataStream(ctx context.Context, in *CreateAndroidAppDataStreamRequest, opts ...grpc.CallOption) (*AndroidAppDataStream, error)
 	// Returns child android app streams under the specified parent property.
 	//
@@ -6724,7 +6740,15 @@ type AnalyticsAdminServiceServer interface {
 	DeleteIosAppDataStream(context.Context, *DeleteIosAppDataStreamRequest) (*emptypb.Empty, error)
 	// Updates an iOS app stream on a property.
 	UpdateIosAppDataStream(context.Context, *UpdateIosAppDataStreamRequest) (*IosAppDataStream, error)
-	// Creates an iOS app data stream with the specified location and attributes.
+	// Creates an iOS app stream with the specified location and attributes.
+	//
+	// Note that an iOS app stream must be linked to a Firebase app to receive
+	// traffic.
+	//
+	// To create a working app stream, make sure your property is linked to a
+	// Firebase project. Then, use the Firebase API to create a Firebase app,
+	// which will also create an appropriate data stream in Analytics (may take up
+	// to 24 hours).
 	CreateIosAppDataStream(context.Context, *CreateIosAppDataStreamRequest) (*IosAppDataStream, error)
 	// Returns child iOS app data streams under the specified parent property.
 	//
@@ -6737,7 +6761,15 @@ type AnalyticsAdminServiceServer interface {
 	DeleteAndroidAppDataStream(context.Context, *DeleteAndroidAppDataStreamRequest) (*emptypb.Empty, error)
 	// Updates an android app stream on a property.
 	UpdateAndroidAppDataStream(context.Context, *UpdateAndroidAppDataStreamRequest) (*AndroidAppDataStream, error)
-	// Creates an android app stream with the specified location and attributes.
+	// Creates an Android app stream with the specified location and attributes.
+	//
+	// Note that an Android app stream must be linked to a Firebase app to receive
+	// traffic.
+	//
+	// To create a working app stream, make sure your property is linked to a
+	// Firebase project. Then, use the Firebase API to create a Firebase app,
+	// which will also create an appropriate data stream in Analytics (may take up
+	// to 24 hours).
 	CreateAndroidAppDataStream(context.Context, *CreateAndroidAppDataStreamRequest) (*AndroidAppDataStream, error)
 	// Returns child android app streams under the specified parent property.
 	//
