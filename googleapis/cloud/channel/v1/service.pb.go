@@ -6038,8 +6038,9 @@ type CloudChannelServiceClient interface {
 	// Return Value:
 	// List of [CloudIdentityCustomerAccount][google.cloud.channel.v1.CloudIdentityCustomerAccount] resources for the domain.
 	// List may be empty.
+	//
 	// Note: in the v1alpha1 version of the API, a NOT_FOUND error is returned if
-	// no [CloudIdentityCustomerAccount][google.cloud.channel.v1.CloudIdentityCustomerAccount] resource match the domain.
+	// no [CloudIdentityCustomerAccount][google.cloud.channel.v1.CloudIdentityCustomerAccount] resources match the domain.
 	CheckCloudIdentityAccountsExist(ctx context.Context, in *CheckCloudIdentityAccountsExistRequest, opts ...grpc.CallOption) (*CheckCloudIdentityAccountsExistResponse, error)
 	// Creates a new [Customer][google.cloud.channel.v1.Customer] resource under the reseller or distributor
 	// account.
@@ -6987,8 +6988,9 @@ type CloudChannelServiceServer interface {
 	// Return Value:
 	// List of [CloudIdentityCustomerAccount][google.cloud.channel.v1.CloudIdentityCustomerAccount] resources for the domain.
 	// List may be empty.
+	//
 	// Note: in the v1alpha1 version of the API, a NOT_FOUND error is returned if
-	// no [CloudIdentityCustomerAccount][google.cloud.channel.v1.CloudIdentityCustomerAccount] resource match the domain.
+	// no [CloudIdentityCustomerAccount][google.cloud.channel.v1.CloudIdentityCustomerAccount] resources match the domain.
 	CheckCloudIdentityAccountsExist(context.Context, *CheckCloudIdentityAccountsExistRequest) (*CheckCloudIdentityAccountsExistResponse, error)
 	// Creates a new [Customer][google.cloud.channel.v1.Customer] resource under the reseller or distributor
 	// account.
