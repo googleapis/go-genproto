@@ -56,6 +56,7 @@ type Customer struct {
 	OrgDisplayName string `protobuf:"bytes,2,opt,name=org_display_name,json=orgDisplayName,proto3" json:"org_display_name,omitempty"`
 	// Required. Address of the organization of the customer entity.
 	// Region and zip codes are required to enforce US laws and embargoes.
+	// Valid address lines are required for all customers.
 	// Language code is discarded. Use the Customer-level language code to set the
 	// customer's language.
 	OrgPostalAddress *postaladdress.PostalAddress `protobuf:"bytes,3,opt,name=org_postal_address,json=orgPostalAddress,proto3" json:"org_postal_address,omitempty"`
