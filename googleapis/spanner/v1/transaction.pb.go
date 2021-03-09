@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -108,7 +108,7 @@ const _ = proto.ProtoPackageIsVersion4
 // [Rollback][google.spanner.v1.Spanner.Rollback] request to abort the
 // transaction.
 //
-// ### Semantics
+// ## Semantics
 //
 // Cloud Spanner can commit the transaction if all read locks it acquired
 // are still valid at commit time, and it is able to acquire write
@@ -121,7 +121,7 @@ const _ = proto.ProtoPackageIsVersion4
 // use Cloud Spanner locks for any sort of mutual exclusion other than
 // between Cloud Spanner transactions themselves.
 //
-// ### Retrying Aborted Transactions
+// ## Retrying Aborted Transactions
 //
 // When a transaction aborts, the application can choose to retry the
 // whole transaction again. To maximize the chances of successfully
@@ -137,7 +137,7 @@ const _ = proto.ProtoPackageIsVersion4
 // instead, it is better to limit the total amount of wall time spent
 // retrying.
 //
-// ### Idle Transactions
+// ## Idle Transactions
 //
 // A transaction is considered idle if it has no outstanding reads or
 // SQL queries and has not started a read or SQL query within the last 10
@@ -187,7 +187,7 @@ const _ = proto.ProtoPackageIsVersion4
 //
 // Each type of timestamp bound is discussed in detail below.
 //
-// ### Strong
+// ## Strong
 //
 // Strong reads are guaranteed to see the effects of all transactions
 // that have committed before the start of the read. Furthermore, all
@@ -203,7 +203,7 @@ const _ = proto.ProtoPackageIsVersion4
 //
 // See [TransactionOptions.ReadOnly.strong][google.spanner.v1.TransactionOptions.ReadOnly.strong].
 //
-// ### Exact Staleness
+// ## Exact Staleness
 //
 // These timestamp bounds execute reads at a user-specified
 // timestamp. Reads at a timestamp are guaranteed to see a consistent
@@ -225,7 +225,7 @@ const _ = proto.ProtoPackageIsVersion4
 // See [TransactionOptions.ReadOnly.read_timestamp][google.spanner.v1.TransactionOptions.ReadOnly.read_timestamp] and
 // [TransactionOptions.ReadOnly.exact_staleness][google.spanner.v1.TransactionOptions.ReadOnly.exact_staleness].
 //
-// ### Bounded Staleness
+// ## Bounded Staleness
 //
 // Bounded staleness modes allow Cloud Spanner to pick the read timestamp,
 // subject to a user-provided staleness bound. Cloud Spanner chooses the
@@ -255,7 +255,7 @@ const _ = proto.ProtoPackageIsVersion4
 // See [TransactionOptions.ReadOnly.max_staleness][google.spanner.v1.TransactionOptions.ReadOnly.max_staleness] and
 // [TransactionOptions.ReadOnly.min_read_timestamp][google.spanner.v1.TransactionOptions.ReadOnly.min_read_timestamp].
 //
-// ### Old Read Timestamps and Garbage Collection
+// ## Old Read Timestamps and Garbage Collection
 //
 // Cloud Spanner continuously garbage collects deleted and overwritten data
 // in the background to reclaim storage space. This process is known
