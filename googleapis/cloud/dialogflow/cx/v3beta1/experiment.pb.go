@@ -261,7 +261,9 @@ type Experiment struct {
 	EndTime *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Last update time of this experiment.
 	LastUpdateTime *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=last_update_time,json=lastUpdateTime,proto3" json:"last_update_time,omitempty"`
-	// Maximum number of days to run the experiment.
+	// Maximum number of days to run the experiment. If auto-rollout is
+	// not enabled, default value and maximum will be 30 days. If auto-rollout is
+	// enabled, default value and maximum will be 6 days.
 	ExperimentLength *durationpb.Duration `protobuf:"bytes,11,opt,name=experiment_length,json=experimentLength,proto3" json:"experiment_length,omitempty"`
 	// The history of updates to the experiment variants.
 	VariantsHistory []*VariantsHistory `protobuf:"bytes,12,rep,name=variants_history,json=variantsHistory,proto3" json:"variants_history,omitempty"`
