@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -55,8 +55,9 @@ type MigratableResource struct {
 	//	*MigratableResource_AutomlDataset_
 	//	*MigratableResource_DataLabelingDataset_
 	Resource isMigratableResource_Resource `protobuf_oneof:"resource"`
-	// Output only. Timestamp when last migrate attempt on this MigratableResource started.
-	// Will not be set if there's no migrate attempt on this MigratableResource.
+	// Output only. Timestamp when the last migration attempt on this MigratableResource
+	// started. Will not be set if there's no migration attempt on this
+	// MigratableResource.
 	LastMigrateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=last_migrate_time,json=lastMigrateTime,proto3" json:"last_migrate_time,omitempty"`
 	// Output only. Timestamp when this MigratableResource was last updated.
 	LastUpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=last_update_time,json=lastUpdateTime,proto3" json:"last_update_time,omitempty"`
@@ -439,7 +440,6 @@ type MigratableResource_DataLabelingDataset_DataLabelingAnnotatedDataset struct 
 
 	// Full resource name of data labeling AnnotatedDataset.
 	// Format:
-	//
 	// `projects/{project}/datasets/{dataset}/annotatedDatasets/{annotated_dataset}`.
 	AnnotatedDataset string `protobuf:"bytes,1,opt,name=annotated_dataset,json=annotatedDataset,proto3" json:"annotated_dataset,omitempty"`
 	// The AnnotatedDataset's display name in datalabeling.googleapis.com.

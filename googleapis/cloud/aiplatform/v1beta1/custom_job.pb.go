@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -206,6 +206,8 @@ type CustomJobSpec struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The spec of the worker pools including machine type and Docker image.
+	// All worker pools except the first one are optional and can be skipped by
+	// providing an empty value.
 	WorkerPoolSpecs []*WorkerPoolSpec `protobuf:"bytes,1,rep,name=worker_pool_specs,json=workerPoolSpecs,proto3" json:"worker_pool_specs,omitempty"`
 	// Scheduling options for a CustomJob.
 	Scheduling *Scheduling `protobuf:"bytes,3,opt,name=scheduling,proto3" json:"scheduling,omitempty"`
@@ -503,10 +505,12 @@ type PythonPackageSpec struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The URI of a container image in the Container Registry that will run the
-	// provided python package. AI Platform provides wide range of executor images
-	// with pre-installed packages to meet users' various use cases. Only one of
-	// the provided images can be set here.
+	// Required. The URI of a container image in Artifact Registry that will run the
+	// provided Python package. AI Platform provides a wide range of executor
+	// images with pre-installed packages to meet users' various use cases. See
+	// the list of [pre-built containers for
+	// training](https://cloud.google.com/ai-platform-unified/docs/training/pre-built-containers).
+	// You must use an image from this list.
 	ExecutorImageUri string `protobuf:"bytes,1,opt,name=executor_image_uri,json=executorImageUri,proto3" json:"executor_image_uri,omitempty"`
 	// Required. The Google Cloud Storage location of the Python package files which are
 	// the training program and its dependent packages.

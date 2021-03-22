@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -691,7 +691,6 @@ type GetModelEvaluationRequest struct {
 
 	// Required. The name of the ModelEvaluation resource.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/models/{model}/evaluations/{evaluation}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -891,7 +890,6 @@ type GetModelEvaluationSliceRequest struct {
 
 	// Required. The name of the ModelEvaluationSlice resource.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/models/{model}/evaluations/{evaluation}/slices/{slice}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -943,7 +941,6 @@ type ListModelEvaluationSlicesRequest struct {
 
 	// Required. The resource name of the ModelEvaluation to list the ModelEvaluationSlices
 	// from. Format:
-	//
 	// `projects/{project}/locations/{location}/models/{model}/evaluations/{evaluation}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The standard list filter.

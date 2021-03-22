@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -179,7 +179,7 @@ type Model struct {
 	// The schema is defined as an OpenAPI 3.0.2
 	// [Schema Object](https://tinyurl.com/y538mdwt#schema-object).
 	// AutoML Models always have this field populated by AI Platform, if no
-	// additional metadata is needed this field is set to an empty string.
+	// additional metadata is needed, this field is set to an empty string.
 	// Note: The URI given on output will be immutable and probably different,
 	// including the URI scheme, than the one given on input. The output URI will
 	// point to a location where the user only has a read access.
@@ -298,13 +298,22 @@ type Model struct {
 	//
 	// The Model can be used for [requesting
 	// explanation][PredictionService.Explain] after being
-	// [deployed][google.cloud.aiplatform.v1beta1.EndpointService.DeployModel] iff it is populated.
+	// [deployed][google.cloud.aiplatform.v1beta1.EndpointService.DeployModel] if it is populated.
 	// The Model can be used for [batch
-	// explanation][BatchPredictionJob.generate_explanation] iff it is populated.
+	// explanation][BatchPredictionJob.generate_explanation] if it is populated.
 	//
 	// All fields of the explanation_spec can be overridden by
 	// [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec] of
 	// [DeployModelRequest.deployed_model][google.cloud.aiplatform.v1beta1.DeployModelRequest.deployed_model], or
+	// [explanation_spec][google.cloud.aiplatform.v1beta1.BatchPredictionJob.explanation_spec] of
+	// [BatchPredictionJob][google.cloud.aiplatform.v1beta1.BatchPredictionJob].
+	//
+	// If the default explanation specification is not set for this Model, this
+	// Model can still be used for [requesting
+	// explanation][PredictionService.Explain] by setting
+	// [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec] of
+	// [DeployModelRequest.deployed_model][google.cloud.aiplatform.v1beta1.DeployModelRequest.deployed_model] and for [batch
+	// explanation][BatchPredictionJob.generate_explanation] by setting
 	// [explanation_spec][google.cloud.aiplatform.v1beta1.BatchPredictionJob.explanation_spec] of
 	// [BatchPredictionJob][google.cloud.aiplatform.v1beta1.BatchPredictionJob].
 	ExplanationSpec *ExplanationSpec `protobuf:"bytes,23,opt,name=explanation_spec,json=explanationSpec,proto3" json:"explanation_spec,omitempty"`
@@ -522,7 +531,7 @@ type PredictSchemata struct {
 	// The schema is defined as an OpenAPI 3.0.2
 	// [Schema Object](https://tinyurl.com/y538mdwt#schema-object).
 	// AutoML Models always have this field populated by AI Platform, if no
-	// parameters are supported it is set to an empty string.
+	// parameters are supported, then it is set to an empty string.
 	// Note: The URI given on output will be immutable and probably different,
 	// including the URI scheme, than the one given on input. The output URI will
 	// point to a location where the user only has a read access.
@@ -613,6 +622,10 @@ type ModelContainerSpec struct {
 	//
 	// To learn about the requirements for the Docker image itself, see
 	// [Custom container requirements](https://tinyurl.com/cust-cont-reqs).
+	//
+	// You can use the URI to one of AI Platform's [pre-built container images for
+	// prediction](https://cloud.google.com/ai-platform-unified/docs/predictions/pre-built-containers)
+	// in this field.
 	ImageUri string `protobuf:"bytes,1,opt,name=image_uri,json=imageUri,proto3" json:"image_uri,omitempty"`
 	// Immutable. Specifies the command that runs when the container starts. This overrides
 	// the container's
@@ -762,7 +775,7 @@ type ModelContainerSpec struct {
 	//   as the [`AIP_DEPLOYED_MODEL_ID` environment
 	//   variable](https://tinyurl.com/cust-cont-reqs#aip-variables).)
 	PredictRoute string `protobuf:"bytes,6,opt,name=predict_route,json=predictRoute,proto3" json:"predict_route,omitempty"`
-	// Immutable. HTTP path on the container to send health checkss to. AI Platform
+	// Immutable. HTTP path on the container to send health checks to. AI Platform
 	// intermittently sends GET requests to this path on the container's IP
 	// address and port to check that the container is healthy. Read more about
 	// [health
@@ -923,7 +936,7 @@ func (x *Port) GetContainerPort() int32 {
 	return 0
 }
 
-// Represents a supported by the Model export format.
+// Represents export format supported by the Model.
 // All formats export to Google Cloud Storage.
 type Model_ExportFormat struct {
 	state         protoimpl.MessageState

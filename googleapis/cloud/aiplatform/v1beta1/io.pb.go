@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -203,9 +203,9 @@ type BigQueryDestination struct {
 
 	// Required. BigQuery URI to a project or table, up to 2000 characters long.
 	//
-	// When only project is specified, Dataset and Table is created.
-	// When full table reference is specified, Dataset must exist and table must
-	// not exist.
+	// When only the project is specified, the Dataset and Table is created.
+	// When the full table reference is specified, the Dataset must exist and
+	// table must not exist.
 	//
 	// Accepted forms:
 	//
@@ -253,7 +253,7 @@ func (x *BigQueryDestination) GetOutputUri() string {
 	return ""
 }
 
-// The Container Regsitry location for the container image.
+// The Container Registry location for the container image.
 type ContainerRegistryDestination struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

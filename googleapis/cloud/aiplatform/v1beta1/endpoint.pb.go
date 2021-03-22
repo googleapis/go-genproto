@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -211,7 +211,7 @@ type DeployedModel struct {
 	PredictionResources isDeployedModel_PredictionResources `protobuf_oneof:"prediction_resources"`
 	// Output only. The ID of the DeployedModel.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Required. The name of the Model this is the deployment of. Note that the Model
+	// Required. The name of the Model that this is the deployment of. Note that the Model
 	// may be in a different location than the DeployedModel's Endpoint.
 	Model string `protobuf:"bytes,2,opt,name=model,proto3" json:"model,omitempty"`
 	// The display name of the DeployedModel. If not provided upon creation,
@@ -225,9 +225,9 @@ type DeployedModel struct {
 	// overrides the value of [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec]. All fields of
 	// [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec] are optional in the request. If a field of
 	// [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec] is not populated, the value of the same field of
-	// [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec] is inherited. The corresponding
-	// [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec] must be populated, otherwise explanation for
-	// this Model is not allowed.
+	// [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec] is inherited. If the corresponding
+	// [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec] is not populated, all fields of the
+	// [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec] will be used for the explanation configuration.
 	ExplanationSpec *ExplanationSpec `protobuf:"bytes,9,opt,name=explanation_spec,json=explanationSpec,proto3" json:"explanation_spec,omitempty"`
 	// The service account that the DeployedModel's container runs as. Specify the
 	// email address of the service account. If this service account is not
