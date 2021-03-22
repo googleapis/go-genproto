@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -72,7 +72,7 @@ type SearchMigratableResourcesRequest struct {
 	//   * `data_labeling_dataset:*`.
 	// * Migrated or not: Filter migrated resource or not by last_migrate_time.
 	//   * `last_migrate_time:*` will filter migrated resources.
-	//   * `NOT last_migrate_time:*` will filter not yet migrated resource.
+	//   * `NOT last_migrate_time:*` will filter not yet migrated resources.
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
@@ -528,7 +528,7 @@ type BatchMigrateResourcesOperationMetadata struct {
 
 	// The common part of the operation metadata.
 	GenericMetadata *GenericOperationMetadata `protobuf:"bytes,1,opt,name=generic_metadata,json=genericMetadata,proto3" json:"generic_metadata,omitempty"`
-	// Partial results that reflects the latest migration operation progress.
+	// Partial results that reflect the latest migration operation progress.
 	PartialResults []*BatchMigrateResourcesOperationMetadata_PartialResult `protobuf:"bytes,2,rep,name=partial_results,json=partialResults,proto3" json:"partial_results,omitempty"`
 }
 
@@ -862,7 +862,6 @@ type MigrateResourceRequest_MigrateDataLabelingDatasetConfig_MigrateDataLabeling
 
 	// Required. Full resource name of data labeling AnnotatedDataset.
 	// Format:
-	//
 	// `projects/{project}/datasets/{dataset}/annotatedDatasets/{annotated_dataset}`.
 	AnnotatedDataset string `protobuf:"bytes,1,opt,name=annotated_dataset,json=annotatedDataset,proto3" json:"annotated_dataset,omitempty"`
 }
@@ -907,7 +906,7 @@ func (x *MigrateResourceRequest_MigrateDataLabelingDatasetConfig_MigrateDataLabe
 	return ""
 }
 
-// Represents a partial result in batch migration opreation for one
+// Represents a partial result in batch migration operation for one
 // [MigrateResourceRequest][google.cloud.aiplatform.v1beta1.MigrateResourceRequest].
 type BatchMigrateResourcesOperationMetadata_PartialResult struct {
 	state         protoimpl.MessageState

@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -422,8 +422,8 @@ type ExplanationMetadata struct {
 	Inputs map[string]*ExplanationMetadata_InputMetadata `protobuf:"bytes,1,rep,name=inputs,proto3" json:"inputs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Required. Map from output names to output metadata.
 	//
-	// For AI Platform provided Tensorflow images, keys can be any string user
-	// defines.
+	// For AI Platform provided Tensorflow images, keys can be any user defined
+	// string that consists of any UTF-8 characters.
 	//
 	// For custom images, keys are the name of the output field in the prediction
 	// to be explained.
@@ -784,7 +784,7 @@ type ExplanationMetadata_OutputMetadata_IndexDisplayNameMapping struct {
 	// outputs by their values.
 	//
 	// The shape of the value must be an n-dimensional array of strings. The
-	// number of dimentions must match that of the outputs to be explained.
+	// number of dimensions must match that of the outputs to be explained.
 	// The [Attribution.output_display_name][google.cloud.aiplatform.v1beta1.Attribution.output_display_name] is populated by locating in the
 	// mapping with [Attribution.output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index].
 	IndexDisplayNameMapping *structpb.Value `protobuf:"bytes,1,opt,name=index_display_name_mapping,json=indexDisplayNameMapping,proto3,oneof"`

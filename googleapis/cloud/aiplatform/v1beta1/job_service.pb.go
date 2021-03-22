@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -272,7 +272,7 @@ type ListCustomJobsResponse struct {
 
 	// List of CustomJobs in the requested page.
 	CustomJobs []*CustomJob `protobuf:"bytes,1,rep,name=custom_jobs,json=customJobs,proto3" json:"custom_jobs,omitempty"`
-	// A token to retrieve next page of results.
+	// A token to retrieve the next page of results.
 	// Pass to [ListCustomJobsRequest.page_token][google.cloud.aiplatform.v1beta1.ListCustomJobsRequest.page_token] to obtain that page.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 }
@@ -492,7 +492,6 @@ type GetDataLabelingJobRequest struct {
 
 	// Required. The name of the DataLabelingJob.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/dataLabelingJobs/{data_labeling_job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -719,7 +718,6 @@ type DeleteDataLabelingJobRequest struct {
 
 	// Required. The name of the DataLabelingJob to be deleted.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/dataLabelingJobs/{data_labeling_job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -771,7 +769,6 @@ type CancelDataLabelingJobRequest struct {
 
 	// Required. The name of the DataLabelingJob.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/dataLabelingJobs/{data_labeling_job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -882,7 +879,6 @@ type GetHyperparameterTuningJobRequest struct {
 
 	// Required. The name of the HyperparameterTuningJob resource.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/hyperparameterTuningJobs/{hyperparameter_tuning_job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -1040,7 +1036,7 @@ type ListHyperparameterTuningJobsResponse struct {
 	// List of HyperparameterTuningJobs in the requested page.
 	// [HyperparameterTuningJob.trials][google.cloud.aiplatform.v1beta1.HyperparameterTuningJob.trials] of the jobs will be not be returned.
 	HyperparameterTuningJobs []*HyperparameterTuningJob `protobuf:"bytes,1,rep,name=hyperparameter_tuning_jobs,json=hyperparameterTuningJobs,proto3" json:"hyperparameter_tuning_jobs,omitempty"`
-	// A token to retrieve next page of results.
+	// A token to retrieve the next page of results.
 	// Pass to [ListHyperparameterTuningJobsRequest.page_token][google.cloud.aiplatform.v1beta1.ListHyperparameterTuningJobsRequest.page_token] to obtain that
 	// page.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
@@ -1100,7 +1096,6 @@ type DeleteHyperparameterTuningJobRequest struct {
 
 	// Required. The name of the HyperparameterTuningJob resource to be deleted.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/hyperparameterTuningJobs/{hyperparameter_tuning_job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -1152,7 +1147,6 @@ type CancelHyperparameterTuningJobRequest struct {
 
 	// Required. The name of the HyperparameterTuningJob to cancel.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/hyperparameterTuningJobs/{hyperparameter_tuning_job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -1263,7 +1257,6 @@ type GetBatchPredictionJobRequest struct {
 
 	// Required. The name of the BatchPredictionJob resource.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/batchPredictionJobs/{batch_prediction_job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -1323,6 +1316,8 @@ type ListBatchPredictionJobsRequest struct {
 	//   * `display_name` supports = and !=.
 	//
 	//   * `state` supports = and !=.
+	//
+	//   * `model_display_name` supports = and !=
 	//
 	// Some examples of using the filter are:
 	//
@@ -1420,7 +1415,7 @@ type ListBatchPredictionJobsResponse struct {
 
 	// List of BatchPredictionJobs in the requested page.
 	BatchPredictionJobs []*BatchPredictionJob `protobuf:"bytes,1,rep,name=batch_prediction_jobs,json=batchPredictionJobs,proto3" json:"batch_prediction_jobs,omitempty"`
-	// A token to retrieve next page of results.
+	// A token to retrieve the next page of results.
 	// Pass to [ListBatchPredictionJobsRequest.page_token][google.cloud.aiplatform.v1beta1.ListBatchPredictionJobsRequest.page_token] to obtain that
 	// page.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
@@ -1480,7 +1475,6 @@ type DeleteBatchPredictionJobRequest struct {
 
 	// Required. The name of the BatchPredictionJob resource to be deleted.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/batchPredictionJobs/{batch_prediction_job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -1532,7 +1526,6 @@ type CancelBatchPredictionJobRequest struct {
 
 	// Required. The name of the BatchPredictionJob to cancel.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/batchPredictionJobs/{batch_prediction_job}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }

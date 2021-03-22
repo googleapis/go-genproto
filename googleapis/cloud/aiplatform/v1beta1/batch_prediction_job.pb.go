@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -105,8 +105,8 @@ type BatchPredictionJob struct {
 	//    conforms to the [Explanation][google.cloud.aiplatform.v1beta1.Explanation] object.
 	//  * `csv`: Generating explanations for CSV format is not supported.
 	//
-	// If this field is set to true, the [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec] must be
-	// populated.
+	// If this field is set to true, either the [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec] or
+	// [explanation_spec][google.cloud.aiplatform.v1beta1.BatchPredictionJob.explanation_spec] must be populated.
 	GenerateExplanation bool `protobuf:"varint,23,opt,name=generate_explanation,json=generateExplanation,proto3" json:"generate_explanation,omitempty"`
 	// Explanation configuration for this BatchPredictionJob. Can be
 	// specified only if [generate_explanation][google.cloud.aiplatform.v1beta1.BatchPredictionJob.generate_explanation] is set to `true`.
@@ -465,7 +465,6 @@ type BatchPredictionJob_OutputConfig struct {
 	Destination isBatchPredictionJob_OutputConfig_Destination `protobuf_oneof:"destination"`
 	// Required. The format in which AI Platform gives the predictions, must be one of the
 	// [Model's][google.cloud.aiplatform.v1beta1.BatchPredictionJob.model]
-	//
 	// [supported_output_storage_formats][google.cloud.aiplatform.v1beta1.Model.supported_output_storage_formats].
 	PredictionsFormat string `protobuf:"bytes,1,opt,name=predictions_format,json=predictionsFormat,proto3" json:"predictions_format,omitempty"`
 }

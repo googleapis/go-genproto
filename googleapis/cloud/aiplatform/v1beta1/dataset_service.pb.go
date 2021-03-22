@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -979,7 +979,6 @@ type GetAnnotationSpecRequest struct {
 
 	// Required. The name of the AnnotationSpec resource.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/datasets/{dataset}/annotationSpecs/{annotation_spec}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Mask specifying which fields to read.
@@ -1040,7 +1039,6 @@ type ListAnnotationsRequest struct {
 
 	// Required. The resource name of the DataItem to list Annotations from.
 	// Format:
-	//
 	// `projects/{project}/locations/{location}/datasets/{dataset}/dataItems/{data_item}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The standard list filter.

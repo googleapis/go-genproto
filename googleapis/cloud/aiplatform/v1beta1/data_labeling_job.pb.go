@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -173,9 +173,9 @@ type DataLabelingJob struct {
 	// Note: Annotations created in the DataLabelingJob are associated with
 	// the EncryptionSpec of the Dataset they are exported to.
 	EncryptionSpec *EncryptionSpec `protobuf:"bytes,20,opt,name=encryption_spec,json=encryptionSpec,proto3" json:"encryption_spec,omitempty"`
-	// Parameters that configure active learning pipeline. Active learning will
-	// label the data incrementally via several iterations. For every iteration,
-	// it will select a batch of data based on the sampling strategy.
+	// Parameters that configure the active learning pipeline. Active learning
+	// will label the data incrementally via several iterations. For every
+	// iteration, it will select a batch of data based on the sampling strategy.
 	ActiveLearningConfig *ActiveLearningConfig `protobuf:"bytes,21,opt,name=active_learning_config,json=activeLearningConfig,proto3" json:"active_learning_config,omitempty"`
 }
 
@@ -337,7 +337,7 @@ func (x *DataLabelingJob) GetActiveLearningConfig() *ActiveLearningConfig {
 	return nil
 }
 
-// Parameters that configure active learning pipeline. Active learning will
+// Parameters that configure the active learning pipeline. Active learning will
 //  label the data incrementally by several iterations. For every iteration, it
 //  will select a batch of data based on the sampling strategy.
 type ActiveLearningConfig struct {
@@ -465,7 +465,7 @@ type SampleConfig struct {
 	// Types that are assignable to FollowingBatchSampleSize:
 	//	*SampleConfig_FollowingBatchSamplePercentage
 	FollowingBatchSampleSize isSampleConfig_FollowingBatchSampleSize `protobuf_oneof:"following_batch_sample_size"`
-	// Field to chose sampling strategy. Sampling strategy will decide which data
+	// Field to choose sampling strategy. Sampling strategy will decide which data
 	// should be selected for human labeling in every batch.
 	SampleStrategy SampleConfig_SampleStrategy `protobuf:"varint,5,opt,name=sample_strategy,json=sampleStrategy,proto3,enum=google.cloud.aiplatform.v1beta1.SampleConfig_SampleStrategy" json:"sample_strategy,omitempty"`
 }
