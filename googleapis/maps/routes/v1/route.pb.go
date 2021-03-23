@@ -371,8 +371,8 @@ type RouteTravelAdvisory struct {
 	TollInfo *TollInfo `protobuf:"bytes,2,opt,name=toll_info,json=tollInfo,proto3" json:"toll_info,omitempty"`
 	// Speed reading intervals detailing traffic density. Applicable in case of
 	// `TRAFFIC_AWARE` and `TRAFFIC_AWARE_OPTIMAL` routing preferences.
-	// The intervals cover the entire polyline of the route without overlaps, i.e.
-	// the start point of a given interval coincides with the end point of the
+	// The intervals cover the entire polyline of the route without overlap.
+	// The start point of a specified interval is the same as the end point of the
 	// preceding interval.
 	//
 	// Example:
@@ -450,9 +450,9 @@ type RouteLegTravelAdvisory struct {
 	TollInfo *TollInfo `protobuf:"bytes,1,opt,name=toll_info,json=tollInfo,proto3" json:"toll_info,omitempty"`
 	// Speed reading intervals detailing traffic density. Applicable in case of
 	// `TRAFFIC_AWARE` and `TRAFFIC_AWARE_OPTIMAL` routing preferences.
-	// The intervals cover the entire polyline of the RouteLg without overlaps,
-	// i.e. the start point of a given interval coincides with the end point of
-	// the preceding interval.
+	// The intervals cover the entire polyline of the RouteLg without overlap.
+	// The start point of a specified interval is the same as the end point of the
+	// preceding interval.
 	//
 	// Example:
 	//
@@ -508,7 +508,7 @@ func (x *RouteLegTravelAdvisory) GetSpeedReadingIntervals() []*SpeedReadingInter
 }
 
 // Encapsulates the additional information that the user should be informed
-// about, such as possible traffic zone restriction etc. on a leg step.
+// about, such as possible traffic zone restriction on a leg step.
 type RouteLegStepTravelAdvisory struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -517,7 +517,7 @@ type RouteLegStepTravelAdvisory struct {
 	// Speed reading intervals detailing traffic density. Applicable in case of
 	// `TRAFFIC_AWARE` and `TRAFFIC_AWARE_OPTIMAL` routing preferences.
 	// The intervals cover the entire polyline of the RouteLegStep without
-	// overlaps, i.e. the start point of a given interval coincides with the end
+	// overlap. The start point of a specified interval is the same as the end
 	// point of the preceding interval.
 	//
 	// Example:
@@ -869,7 +869,7 @@ type RouteLegStep struct {
 	// Navigation instructions.
 	NavigationInstruction *NavigationInstruction `protobuf:"bytes,6,opt,name=navigation_instruction,json=navigationInstruction,proto3" json:"navigation_instruction,omitempty"`
 	// Encapsulates the additional information that the user should be informed
-	// about, such as possible traffic zone restriction etc. on a leg step.
+	// about, such as possible traffic zone restriction on a leg step.
 	TravelAdvisory *RouteLegStepTravelAdvisory `protobuf:"bytes,7,opt,name=travel_advisory,json=travelAdvisory,proto3" json:"travel_advisory,omitempty"`
 }
 
@@ -1022,10 +1022,10 @@ type SpeedReadingInterval struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The starting index of this interval in the polyline.
-	// In JSON, when the index is 0, the field will appear to be unpopulated.
+	// In JSON, when the index is 0, the field appears to be unpopulated.
 	StartPolylinePointIndex int32 `protobuf:"varint,1,opt,name=start_polyline_point_index,json=startPolylinePointIndex,proto3" json:"start_polyline_point_index,omitempty"`
 	// The ending index of this interval in the polyline.
-	// In JSON, when the index is 0, the field will appear to be unpopulated.
+	// In JSON, when the index is 0, the field appears to be unpopulated.
 	EndPolylinePointIndex int32 `protobuf:"varint,2,opt,name=end_polyline_point_index,json=endPolylinePointIndex,proto3" json:"end_polyline_point_index,omitempty"`
 	// Traffic speed in this interval.
 	Speed SpeedReadingInterval_Speed `protobuf:"varint,3,opt,name=speed,proto3,enum=google.maps.routes.v1.SpeedReadingInterval_Speed" json:"speed,omitempty"`
