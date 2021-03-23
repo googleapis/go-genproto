@@ -2668,7 +2668,7 @@ type ParticipantsClient interface {
 	//
 	// Note: Always use agent versions for production traffic
 	// sent to virtual agents. See [Versions and
-	// environments(https://cloud.google.com/dialogflow/es/docs/agents-versions).
+	// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
 	AnalyzeContent(ctx context.Context, in *AnalyzeContentRequest, opts ...grpc.CallOption) (*AnalyzeContentResponse, error)
 	// Gets suggested articles for a participant based on specific historical
 	// messages.
@@ -2764,7 +2764,7 @@ type ParticipantsServer interface {
 	//
 	// Note: Always use agent versions for production traffic
 	// sent to virtual agents. See [Versions and
-	// environments(https://cloud.google.com/dialogflow/es/docs/agents-versions).
+	// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
 	AnalyzeContent(context.Context, *AnalyzeContentRequest) (*AnalyzeContentResponse, error)
 	// Gets suggested articles for a participant based on specific historical
 	// messages.
