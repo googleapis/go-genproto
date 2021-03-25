@@ -1002,9 +1002,6 @@ type SessionEntityTypesClient interface {
 	// Retrieves the specified session entity type.
 	GetSessionEntityType(ctx context.Context, in *GetSessionEntityTypeRequest, opts ...grpc.CallOption) (*SessionEntityType, error)
 	// Creates a session entity type.
-	//
-	// If the specified session entity type already exists, overrides the
-	// session entity type.
 	CreateSessionEntityType(ctx context.Context, in *CreateSessionEntityTypeRequest, opts ...grpc.CallOption) (*SessionEntityType, error)
 	// Updates the specified session entity type.
 	UpdateSessionEntityType(ctx context.Context, in *UpdateSessionEntityTypeRequest, opts ...grpc.CallOption) (*SessionEntityType, error)
@@ -1072,9 +1069,6 @@ type SessionEntityTypesServer interface {
 	// Retrieves the specified session entity type.
 	GetSessionEntityType(context.Context, *GetSessionEntityTypeRequest) (*SessionEntityType, error)
 	// Creates a session entity type.
-	//
-	// If the specified session entity type already exists, overrides the
-	// session entity type.
 	CreateSessionEntityType(context.Context, *CreateSessionEntityTypeRequest) (*SessionEntityType, error)
 	// Updates the specified session entity type.
 	UpdateSessionEntityType(context.Context, *UpdateSessionEntityTypeRequest) (*SessionEntityType, error)
