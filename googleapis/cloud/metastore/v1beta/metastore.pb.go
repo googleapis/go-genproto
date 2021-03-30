@@ -647,7 +647,8 @@ type Service struct {
 	// Types that are assignable to MetastoreConfig:
 	//	*Service_HiveMetastoreConfig
 	MetastoreConfig isService_MetastoreConfig `protobuf_oneof:"metastore_config"`
-	// Immutable. The relative resource name of the metastore service, of the form:
+	// Immutable. The relative resource name of the metastore service, of the
+	// form:
 	//
 	// `projects/{project_number}/locations/{location_id}/services/{service_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -657,8 +658,8 @@ type Service struct {
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// User-defined labels for the metastore service.
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Immutable. The relative resource name of the VPC network on which the instance can be
-	// accessed. It is specified in the following form:
+	// Immutable. The relative resource name of the VPC network on which the
+	// instance can be accessed. It is specified in the following form:
 	//
 	// `projects/{project_number}/global/networks/{network_id}`.
 	Network string `protobuf:"bytes,7,opt,name=network,proto3" json:"network,omitempty"`
@@ -668,11 +669,11 @@ type Service struct {
 	Port int32 `protobuf:"varint,9,opt,name=port,proto3" json:"port,omitempty"`
 	// Output only. The current state of the metastore service.
 	State Service_State `protobuf:"varint,10,opt,name=state,proto3,enum=google.cloud.metastore.v1beta.Service_State" json:"state,omitempty"`
-	// Output only. Additional information about the current state of the metastore service, if
-	// available.
+	// Output only. Additional information about the current state of the
+	// metastore service, if available.
 	StateMessage string `protobuf:"bytes,11,opt,name=state_message,json=stateMessage,proto3" json:"state_message,omitempty"`
-	// Output only. A Cloud Storage URI (starting with `gs://`) that specifies where artifacts
-	// related to the metastore service are stored.
+	// Output only. A Cloud Storage URI (starting with `gs://`) that specifies
+	// where artifacts related to the metastore service are stored.
 	ArtifactGcsUri string `protobuf:"bytes,12,opt,name=artifact_gcs_uri,json=artifactGcsUri,proto3" json:"artifact_gcs_uri,omitempty"`
 	// The tier of the service.
 	Tier Service_Tier `protobuf:"varint,13,opt,name=tier,proto3,enum=google.cloud.metastore.v1beta.Service_Tier" json:"tier,omitempty"`
@@ -682,7 +683,8 @@ type Service struct {
 	// The one hour maintenance window of the metastore service. This specifies
 	// when the service can be restarted for maintenance purposes in UTC time.
 	MaintenanceWindow *MaintenanceWindow `protobuf:"bytes,15,opt,name=maintenance_window,json=maintenanceWindow,proto3" json:"maintenance_window,omitempty"`
-	// Output only. The globally unique resource identifier of the metastore service.
+	// Output only. The globally unique resource identifier of the metastore
+	// service.
 	Uid string `protobuf:"bytes,16,opt,name=uid,proto3" json:"uid,omitempty"`
 	// Output only. The metadata management activities of the metastore service.
 	MetadataManagementActivity *MetadataManagementActivity `protobuf:"bytes,17,opt,name=metadata_management_activity,json=metadataManagementActivity,proto3" json:"metadata_management_activity,omitempty"`
@@ -1510,8 +1512,9 @@ type isMetadataExport_Destination interface {
 }
 
 type MetadataExport_DestinationGcsUri struct {
-	// Output only. A Cloud Storage URI of a folder that metadata are exported to, in the
-	// form of `gs://<bucket_name>/<path_inside_bucket>/<export_folder>`, where
+	// Output only. A Cloud Storage URI of a folder that metadata are exported
+	// to, in the form of
+	// `gs://<bucket_name>/<path_inside_bucket>/<export_folder>`, where
 	// `<export_folder>` is automatically generated.
 	DestinationGcsUri string `protobuf:"bytes,4,opt,name=destination_gcs_uri,json=destinationGcsUri,proto3,oneof"`
 }
@@ -1626,15 +1629,15 @@ type Restore struct {
 	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Output only. The current state of the restore.
 	State Restore_State `protobuf:"varint,3,opt,name=state,proto3,enum=google.cloud.metastore.v1beta.Restore_State" json:"state,omitempty"`
-	// Output only. The relative resource name of the metastore service backup to restore
-	// from, in the following form:
+	// Output only. The relative resource name of the metastore service backup to
+	// restore from, in the following form:
 	//
 	// `projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}`
 	Backup string `protobuf:"bytes,4,opt,name=backup,proto3" json:"backup,omitempty"`
 	// Output only. The type of restore.
 	Type Restore_RestoreType `protobuf:"varint,5,opt,name=type,proto3,enum=google.cloud.metastore.v1beta.Restore_RestoreType" json:"type,omitempty"`
-	// Output only. The restore details containing the revision of the service to be restored
-	// to, in format of JSON.
+	// Output only. The restore details containing the revision of the service to
+	// be restored to, in format of JSON.
 	Details string `protobuf:"bytes,6,opt,name=details,proto3" json:"details,omitempty"`
 }
 
@@ -1712,29 +1715,32 @@ func (x *Restore) GetDetails() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices].
+// Request message for
+// [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices].
 type ListServicesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative resource name of the location of metastore services to
-	// list, in the following form:
+	// Required. The relative resource name of the location of metastore services
+	// to list, in the following form:
 	//
 	// `projects/{project_number}/locations/{location_id}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. The maximum number of services to return. The response may contain less
-	// than the maximum number. If unspecified, no more than 500 services are
-	// returned. The maximum value is 1000; values above 1000 are changed to 1000.
+	// Optional. The maximum number of services to return. The response may
+	// contain less than the maximum number. If unspecified, no more than 500
+	// services are returned. The maximum value is 1000; values above 1000 are
+	// changed to 1000.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// Optional. A page token, received from a previous [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices]
+	// Optional. A page token, received from a previous
+	// [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices]
 	// call. Provide this token to retrieve the subsequent page.
 	//
 	// To retrieve the first page, supply an empty page token.
 	//
 	// When paginating, other parameters provided to
-	// [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices] must match the call that provided the
-	// page token.
+	// [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices]
+	// must match the call that provided the page token.
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional. The filter to apply to list results.
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -1811,7 +1817,8 @@ func (x *ListServicesRequest) GetOrderBy() string {
 	return ""
 }
 
-// Response message for [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices].
+// Response message for
+// [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices].
 type ListServicesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1879,14 +1886,15 @@ func (x *ListServicesResponse) GetUnreachable() []string {
 	return nil
 }
 
-// Request message for [DataprocMetastore.GetService][google.cloud.metastore.v1beta.DataprocMetastore.GetService].
+// Request message for
+// [DataprocMetastore.GetService][google.cloud.metastore.v1beta.DataprocMetastore.GetService].
 type GetServiceRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative resource name of the metastore service to retrieve, in the
-	// following form:
+	// Required. The relative resource name of the metastore service to retrieve,
+	// in the following form:
 	//
 	// `projects/{project_number}/locations/{location_id}/services/{service_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -1931,14 +1939,15 @@ func (x *GetServiceRequest) GetName() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.CreateService][google.cloud.metastore.v1beta.DataprocMetastore.CreateService].
+// Request message for
+// [DataprocMetastore.CreateService][google.cloud.metastore.v1beta.DataprocMetastore.CreateService].
 type CreateServiceRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative resource name of the location in which to create a metastore
-	// service, in the following form:
+	// Required. The relative resource name of the location in which to create a
+	// metastore service, in the following form:
 	//
 	// `projects/{project_number}/locations/{location_id}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
@@ -1953,10 +1962,10 @@ type CreateServiceRequest struct {
 	// ignored. The ID of the created metastore service must be provided in
 	// the request's `service_id` field.
 	Service *Service `protobuf:"bytes,3,opt,name=service,proto3" json:"service,omitempty"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the
-	// request if it has completed. The server will ignore subsequent requests
-	// that provide a duplicate request ID for at least 60 minutes after the first
-	// request.
+	// Optional. A request ID. Specify a unique request ID to allow the server to
+	// ignore the request if it has completed. The server will ignore subsequent
+	// requests that provide a duplicate request ID for at least 60 minutes after
+	// the first request.
 	//
 	// For example, if an initial request times out, followed by another request
 	// with the same request ID, the server ignores the second request to prevent
@@ -2028,7 +2037,8 @@ func (x *CreateServiceRequest) GetRequestId() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.UpdateService][google.cloud.metastore.v1beta.DataprocMetastore.UpdateService].
+// Request message for
+// [DataprocMetastore.UpdateService][google.cloud.metastore.v1beta.DataprocMetastore.UpdateService].
 type UpdateServiceRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2045,10 +2055,10 @@ type UpdateServiceRequest struct {
 	// The metastore service's `name` field is used to identify the metastore
 	// service to be updated.
 	Service *Service `protobuf:"bytes,2,opt,name=service,proto3" json:"service,omitempty"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the
-	// request if it has completed. The server will ignore subsequent requests
-	// that provide a duplicate request ID for at least 60 minutes after the first
-	// request.
+	// Optional. A request ID. Specify a unique request ID to allow the server to
+	// ignore the request if it has completed. The server will ignore subsequent
+	// requests that provide a duplicate request ID for at least 60 minutes after
+	// the first request.
 	//
 	// For example, if an initial request times out, followed by another request
 	// with the same request ID, the server ignores the second request to prevent
@@ -2113,21 +2123,22 @@ func (x *UpdateServiceRequest) GetRequestId() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.DeleteService][google.cloud.metastore.v1beta.DataprocMetastore.DeleteService].
+// Request message for
+// [DataprocMetastore.DeleteService][google.cloud.metastore.v1beta.DataprocMetastore.DeleteService].
 type DeleteServiceRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative resource name of the metastore service to delete, in the
-	// following form:
+	// Required. The relative resource name of the metastore service to delete, in
+	// the following form:
 	//
 	// `projects/{project_number}/locations/{location_id}/services/{service_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the
-	// request if it has completed. The server will ignore subsequent requests
-	// that provide a duplicate request ID for at least 60 minutes after the first
-	// request.
+	// Optional. A request ID. Specify a unique request ID to allow the server to
+	// ignore the request if it has completed. The server will ignore subsequent
+	// requests that provide a duplicate request ID for at least 60 minutes after
+	// the first request.
 	//
 	// For example, if an initial request times out, followed by another request
 	// with the same request ID, the server ignores the second request to prevent
@@ -2185,29 +2196,31 @@ func (x *DeleteServiceRequest) GetRequestId() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.ListMetadataImports][google.cloud.metastore.v1beta.DataprocMetastore.ListMetadataImports].
+// Request message for
+// [DataprocMetastore.ListMetadataImports][google.cloud.metastore.v1beta.DataprocMetastore.ListMetadataImports].
 type ListMetadataImportsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative resource name of the service whose metadata imports to
-	// list, in the following form:
+	// Required. The relative resource name of the service whose metadata imports
+	// to list, in the following form:
 	//
 	// `projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. The maximum number of imports to return. The response may contain less
-	// than the maximum number. If unspecified, no more than 500 imports are
+	// Optional. The maximum number of imports to return. The response may contain
+	// less than the maximum number. If unspecified, no more than 500 imports are
 	// returned. The maximum value is 1000; values above 1000 are changed to 1000.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// Optional. A page token, received from a previous [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices]
+	// Optional. A page token, received from a previous
+	// [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices]
 	// call. Provide this token to retrieve the subsequent page.
 	//
 	// To retrieve the first page, supply an empty page token.
 	//
 	// When paginating, other parameters provided to
-	// [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices] must match the call that provided the
-	// page token.
+	// [DataprocMetastore.ListServices][google.cloud.metastore.v1beta.DataprocMetastore.ListServices]
+	// must match the call that provided the page token.
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional. The filter to apply to list results.
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -2284,7 +2297,8 @@ func (x *ListMetadataImportsRequest) GetOrderBy() string {
 	return ""
 }
 
-// Response message for [DataprocMetastore.ListMetadataImports][google.cloud.metastore.v1beta.DataprocMetastore.ListMetadataImports].
+// Response message for
+// [DataprocMetastore.ListMetadataImports][google.cloud.metastore.v1beta.DataprocMetastore.ListMetadataImports].
 type ListMetadataImportsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2352,14 +2366,15 @@ func (x *ListMetadataImportsResponse) GetUnreachable() []string {
 	return nil
 }
 
-// Request message for [DataprocMetastore.GetMetadataImport][google.cloud.metastore.v1beta.DataprocMetastore.GetMetadataImport].
+// Request message for
+// [DataprocMetastore.GetMetadataImport][google.cloud.metastore.v1beta.DataprocMetastore.GetMetadataImport].
 type GetMetadataImportRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative resource name of the metadata import to retrieve, in the
-	// following form:
+	// Required. The relative resource name of the metadata import to retrieve, in
+	// the following form:
 	//
 	// `projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{import_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -2404,32 +2419,33 @@ func (x *GetMetadataImportRequest) GetName() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.CreateMetadataImport][google.cloud.metastore.v1beta.DataprocMetastore.CreateMetadataImport].
+// Request message for
+// [DataprocMetastore.CreateMetadataImport][google.cloud.metastore.v1beta.DataprocMetastore.CreateMetadataImport].
 type CreateMetadataImportRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative resource name of the service in which to create a metastore
-	// import, in the following form:
+	// Required. The relative resource name of the service in which to create a
+	// metastore import, in the following form:
 	//
 	// `projects/{project_number}/locations/{location_id}/services/{service_id}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The ID of the metadata import, which is used as the final component of the
-	// metadata import's name.
+	// Required. The ID of the metadata import, which is used as the final
+	// component of the metadata import's name.
 	//
 	// This value must be between 1 and 64 characters long, begin with a letter,
 	// end with a letter or number, and consist of alpha-numeric ASCII characters
 	// or hyphens.
 	MetadataImportId string `protobuf:"bytes,2,opt,name=metadata_import_id,json=metadataImportId,proto3" json:"metadata_import_id,omitempty"`
-	// Required. The metadata import to create. The `name` field is ignored. The ID of the
-	// created metadata import must be provided in the request's
+	// Required. The metadata import to create. The `name` field is ignored. The
+	// ID of the created metadata import must be provided in the request's
 	// `metadata_import_id` field.
 	MetadataImport *MetadataImport `protobuf:"bytes,3,opt,name=metadata_import,json=metadataImport,proto3" json:"metadata_import,omitempty"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the
-	// request if it has completed. The server will ignore subsequent requests
-	// that provide a duplicate request ID for at least 60 minutes after the first
-	// request.
+	// Optional. A request ID. Specify a unique request ID to allow the server to
+	// ignore the request if it has completed. The server will ignore subsequent
+	// requests that provide a duplicate request ID for at least 60 minutes after
+	// the first request.
 	//
 	// For example, if an initial request times out, followed by another request
 	// with the same request ID, the server ignores the second request to prevent
@@ -2501,7 +2517,8 @@ func (x *CreateMetadataImportRequest) GetRequestId() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.UpdateMetadataImport][google.cloud.metastore.v1beta.DataprocMetastore.UpdateMetadataImport].
+// Request message for
+// [DataprocMetastore.UpdateMetadataImport][google.cloud.metastore.v1beta.DataprocMetastore.UpdateMetadataImport].
 type UpdateMetadataImportRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2518,10 +2535,10 @@ type UpdateMetadataImportRequest struct {
 	// The metadata import's `name` field is used to identify the metastore
 	// import to be updated.
 	MetadataImport *MetadataImport `protobuf:"bytes,2,opt,name=metadata_import,json=metadataImport,proto3" json:"metadata_import,omitempty"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the
-	// request if it has completed. The server will ignore subsequent requests
-	// that provide a duplicate request ID for at least 60 minutes after the first
-	// request.
+	// Optional. A request ID. Specify a unique request ID to allow the server to
+	// ignore the request if it has completed. The server will ignore subsequent
+	// requests that provide a duplicate request ID for at least 60 minutes after
+	// the first request.
 	//
 	// For example, if an initial request times out, followed by another request
 	// with the same request ID, the server ignores the second request to prevent
@@ -2586,7 +2603,8 @@ func (x *UpdateMetadataImportRequest) GetRequestId() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.ListBackups][google.cloud.metastore.v1beta.DataprocMetastore.ListBackups].
+// Request message for
+// [DataprocMetastore.ListBackups][google.cloud.metastore.v1beta.DataprocMetastore.ListBackups].
 type ListBackupsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2597,18 +2615,19 @@ type ListBackupsRequest struct {
 	//
 	// `projects/{project_number}/locations/{location_id}/services/{service_id}/backups`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. The maximum number of backups to return. The response may contain less
-	// than the maximum number. If unspecified, no more than 500 backups are
+	// Optional. The maximum number of backups to return. The response may contain
+	// less than the maximum number. If unspecified, no more than 500 backups are
 	// returned. The maximum value is 1000; values above 1000 are changed to 1000.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// Optional. A page token, received from a previous [DataprocMetastore.ListBackups][google.cloud.metastore.v1beta.DataprocMetastore.ListBackups]
+	// Optional. A page token, received from a previous
+	// [DataprocMetastore.ListBackups][google.cloud.metastore.v1beta.DataprocMetastore.ListBackups]
 	// call. Provide this token to retrieve the subsequent page.
 	//
 	// To retrieve the first page, supply an empty page token.
 	//
 	// When paginating, other parameters provided to
-	// [DataprocMetastore.ListBackups][google.cloud.metastore.v1beta.DataprocMetastore.ListBackups] must match the call that provided the
-	// page token.
+	// [DataprocMetastore.ListBackups][google.cloud.metastore.v1beta.DataprocMetastore.ListBackups]
+	// must match the call that provided the page token.
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional. The filter to apply to list results.
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -2685,7 +2704,8 @@ func (x *ListBackupsRequest) GetOrderBy() string {
 	return ""
 }
 
-// Response message for [DataprocMetastore.ListBackups][google.cloud.metastore.v1beta.DataprocMetastore.ListBackups].
+// Response message for
+// [DataprocMetastore.ListBackups][google.cloud.metastore.v1beta.DataprocMetastore.ListBackups].
 type ListBackupsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2753,7 +2773,8 @@ func (x *ListBackupsResponse) GetUnreachable() []string {
 	return nil
 }
 
-// Request message for [DataprocMetastore.GetBackup][google.cloud.metastore.v1beta.DataprocMetastore.GetBackup].
+// Request message for
+// [DataprocMetastore.GetBackup][google.cloud.metastore.v1beta.DataprocMetastore.GetBackup].
 type GetBackupRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2805,14 +2826,15 @@ func (x *GetBackupRequest) GetName() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.CreateBackup][google.cloud.metastore.v1beta.DataprocMetastore.CreateBackup].
+// Request message for
+// [DataprocMetastore.CreateBackup][google.cloud.metastore.v1beta.DataprocMetastore.CreateBackup].
 type CreateBackupRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative resource name of the service in which to create a backup
-	// of the following form:
+	// Required. The relative resource name of the service in which to create a
+	// backup of the following form:
 	//
 	// `projects/{project_number}/locations/{location_id}/services/{service_id}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
@@ -2823,13 +2845,13 @@ type CreateBackupRequest struct {
 	// end with a letter or number, and consist of alpha-numeric ASCII characters
 	// or hyphens.
 	BackupId string `protobuf:"bytes,2,opt,name=backup_id,json=backupId,proto3" json:"backup_id,omitempty"`
-	// Required. The backup to create. The `name` field is ignored. The ID of the created
-	// backup must be provided in the request's `backup_id` field.
+	// Required. The backup to create. The `name` field is ignored. The ID of the
+	// created backup must be provided in the request's `backup_id` field.
 	Backup *Backup `protobuf:"bytes,3,opt,name=backup,proto3" json:"backup,omitempty"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the
-	// request if it has completed. The server will ignore subsequent requests
-	// that provide a duplicate request ID for at least 60 minutes after the first
-	// request.
+	// Optional. A request ID. Specify a unique request ID to allow the server to
+	// ignore the request if it has completed. The server will ignore subsequent
+	// requests that provide a duplicate request ID for at least 60 minutes after
+	// the first request.
 	//
 	// For example, if an initial request times out, followed by another request
 	// with the same request ID, the server ignores the second request to prevent
@@ -2901,7 +2923,8 @@ func (x *CreateBackupRequest) GetRequestId() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.DeleteBackup][google.cloud.metastore.v1beta.DataprocMetastore.DeleteBackup].
+// Request message for
+// [DataprocMetastore.DeleteBackup][google.cloud.metastore.v1beta.DataprocMetastore.DeleteBackup].
 type DeleteBackupRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2912,10 +2935,10 @@ type DeleteBackupRequest struct {
 	//
 	// `projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the
-	// request if it has completed. The server will ignore subsequent requests
-	// that provide a duplicate request ID for at least 60 minutes after the first
-	// request.
+	// Optional. A request ID. Specify a unique request ID to allow the server to
+	// ignore the request if it has completed. The server will ignore subsequent
+	// requests that provide a duplicate request ID for at least 60 minutes after
+	// the first request.
 	//
 	// For example, if an initial request times out, followed by another request
 	// with the same request ID, the server ignores the second request to prevent
@@ -2973,7 +2996,8 @@ func (x *DeleteBackupRequest) GetRequestId() string {
 	return ""
 }
 
-// Request message for [DataprocMetastore.ExportMetadata][google.cloud.metastore.v1beta.DataprocMetastore.ExportMetadata].
+// Request message for
+// [DataprocMetastore.ExportMetadata][google.cloud.metastore.v1beta.DataprocMetastore.ExportMetadata].
 type ExportMetadataRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2984,15 +3008,15 @@ type ExportMetadataRequest struct {
 	// Types that are assignable to Destination:
 	//	*ExportMetadataRequest_DestinationGcsFolder
 	Destination isExportMetadataRequest_Destination `protobuf_oneof:"destination"`
-	// Required. The relative resource name of the metastore service to run export, in the
-	// following form:
+	// Required. The relative resource name of the metastore service to run
+	// export, in the following form:
 	//
 	// `projects/{project_id}/locations/{location_id}/services/{service_id}`
 	Service string `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the
-	// request if it has completed. The server will ignore subsequent requests
-	// that provide a duplicate request ID for at least 60 minutes after the first
-	// request.
+	// Optional. A request ID. Specify a unique request ID to allow the server to
+	// ignore the request if it has completed. The server will ignore subsequent
+	// requests that provide a duplicate request ID for at least 60 minutes after
+	// the first request.
 	//
 	// For example, if an initial request times out, followed by another request
 	// with the same request ID, the server ignores the second request to prevent
@@ -3002,7 +3026,8 @@ type ExportMetadataRequest struct {
 	// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Format).
 	// A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
 	RequestId string `protobuf:"bytes,3,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
-	// Optional. The type of the database dump. If unspecified, defaults to `MYSQL`.
+	// Optional. The type of the database dump. If unspecified, defaults to
+	// `MYSQL`.
 	DatabaseDumpType DatabaseDumpSpec_Type `protobuf:"varint,4,opt,name=database_dump_type,json=databaseDumpType,proto3,enum=google.cloud.metastore.v1beta.DatabaseDumpSpec_Type" json:"database_dump_type,omitempty"`
 }
 
@@ -3092,22 +3117,22 @@ type RestoreServiceRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative resource name of the metastore service to run restore, in the
-	// following form:
+	// Required. The relative resource name of the metastore service to run
+	// restore, in the following form:
 	//
 	// `projects/{project_id}/locations/{location_id}/services/{service_id}`
 	Service string `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
-	// Required. The relative resource name of the metastore service backup to restore
-	// from, in the following form:
+	// Required. The relative resource name of the metastore service backup to
+	// restore from, in the following form:
 	//
 	// `projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}`
 	Backup string `protobuf:"bytes,2,opt,name=backup,proto3" json:"backup,omitempty"`
 	// Optional. The type of restore. If unspecified, defaults to `METADATA_ONLY`.
 	RestoreType Restore_RestoreType `protobuf:"varint,3,opt,name=restore_type,json=restoreType,proto3,enum=google.cloud.metastore.v1beta.Restore_RestoreType" json:"restore_type,omitempty"`
-	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the
-	// request if it has completed. The server will ignore subsequent requests
-	// that provide a duplicate request ID for at least 60 minutes after the first
-	// request.
+	// Optional. A request ID. Specify a unique request ID to allow the server to
+	// ignore the request if it has completed. The server will ignore subsequent
+	// requests that provide a duplicate request ID for at least 60 minutes after
+	// the first request.
 	//
 	// For example, if an initial request times out, followed by another request
 	// with the same request ID, the server ignores the second request to prevent
@@ -3197,8 +3222,9 @@ type OperationMetadata struct {
 	StatusMessage string `protobuf:"bytes,5,opt,name=status_message,json=statusMessage,proto3" json:"status_message,omitempty"`
 	// Output only. Identifies whether the caller has requested cancellation
 	// of the operation. Operations that have successfully been cancelled
-	// have [Operation.error][] value with a [google.rpc.Status.code][google.rpc.Status.code] of 1,
-	// corresponding to `Code.CANCELLED`.
+	// have [Operation.error][] value with a
+	// [google.rpc.Status.code][google.rpc.Status.code] of 1, corresponding to
+	// `Code.CANCELLED`.
 	RequestedCancellation bool `protobuf:"varint,6,opt,name=requested_cancellation,json=requestedCancellation,proto3" json:"requested_cancellation,omitempty"`
 	// Output only. API version used to start the operation.
 	ApiVersion string `protobuf:"bytes,7,opt,name=api_version,json=apiVersion,proto3" json:"api_version,omitempty"`
@@ -3393,7 +3419,8 @@ type MetadataImport_DatabaseDump struct {
 	//
 	// Deprecated: Do not use.
 	SourceDatabase string `protobuf:"bytes,3,opt,name=source_database,json=sourceDatabase,proto3" json:"source_database,omitempty"`
-	// Optional. The type of the database dump. If unspecified, defaults to `MYSQL`.
+	// Optional. The type of the database dump. If unspecified, defaults to
+	// `MYSQL`.
 	Type DatabaseDumpSpec_Type `protobuf:"varint,4,opt,name=type,proto3,enum=google.cloud.metastore.v1beta.DatabaseDumpSpec_Type" json:"type,omitempty"`
 }
 
@@ -4339,7 +4366,7 @@ var file_google_cloud_metastore_v1beta_metastore_proto_rawDesc = []byte{
 	0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0xd2, 0x41, 0x2e, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a,
 	0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73,
 	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d,
-	0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x42, 0xce, 0x01, 0x0a, 0x21, 0x63, 0x6f, 0x6d,
+	0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x42, 0xee, 0x01, 0x0a, 0x21, 0x63, 0x6f, 0x6d,
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x6d, 0x65,
 	0x74, 0x61, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x42, 0x0e,
 	0x4d, 0x65, 0x74, 0x61, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01,
@@ -4347,7 +4374,9 @@ var file_google_cloud_metastore_v1beta_metastore_proto_rawDesc = []byte{
 	0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f,
 	0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x6d, 0x65,
 	0x74, 0x61, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x3b, 0x6d,
-	0x65, 0x74, 0x61, 0x73, 0x74, 0x6f, 0x72, 0x65, 0xea, 0x41, 0x4e, 0x0a, 0x1e, 0x63, 0x6f, 0x6d,
+	0x65, 0x74, 0x61, 0x73, 0x74, 0x6f, 0x72, 0x65, 0xca, 0x02, 0x1d, 0x47, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x4d, 0x65, 0x74, 0x61, 0x73, 0x74, 0x6f, 0x72,
+	0x65, 0x5c, 0x56, 0x31, 0x62, 0x65, 0x74, 0x61, 0xea, 0x41, 0x4e, 0x0a, 0x1e, 0x63, 0x6f, 0x6d,
 	0x70, 0x75, 0x74, 0x65, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e,
 	0x63, 0x6f, 0x6d, 0x2f, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x12, 0x2c, 0x70, 0x72, 0x6f,
 	0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x7b, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x7d, 0x2f,
