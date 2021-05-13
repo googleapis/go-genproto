@@ -669,7 +669,7 @@ type NearestNeighborSearchOperationMetadata_RecordError struct {
 	// error. Note that this message may change from time to time, your code
 	// should check against error_type as the source of truth.
 	ErrorMessage string `protobuf:"bytes,2,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
-	// GCS uri pointing to the original file in user's bucket.
+	// Cloud Storage URI pointing to the original file in user's bucket.
 	SourceGcsUri string `protobuf:"bytes,3,opt,name=source_gcs_uri,json=sourceGcsUri,proto3" json:"source_gcs_uri,omitempty"`
 	// Empty if the embedding id is failed to parse.
 	EmbeddingId string `protobuf:"bytes,4,opt,name=embedding_id,json=embeddingId,proto3" json:"embedding_id,omitempty"`
@@ -749,7 +749,7 @@ type NearestNeighborSearchOperationMetadata_ContentValidationStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// GCS uri pointing to the original file in user's bucket.
+	// Cloud Storage URI pointing to the original file in user's bucket.
 	SourceGcsUri string `protobuf:"bytes,1,opt,name=source_gcs_uri,json=sourceGcsUri,proto3" json:"source_gcs_uri,omitempty"`
 	// Number of records in this file that were successfully processed.
 	ValidRecordCount int64 `protobuf:"varint,2,opt,name=valid_record_count,json=validRecordCount,proto3" json:"valid_record_count,omitempty"`

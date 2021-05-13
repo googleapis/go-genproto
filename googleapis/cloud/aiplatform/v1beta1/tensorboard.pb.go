@@ -42,7 +42,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Tensorboard is a physical database that stores users’ training metrics.
+// Tensorboard is a physical database that stores users' training metrics.
 // A default Tensorboard is provided in each region of a GCP project.
 // If needed users can also create extra Tensorboards in their projects.
 type Tensorboard struct {
