@@ -421,8 +421,7 @@ type UpdateModelRequest struct {
 	// Required. The Model which replaces the resource on the server.
 	Model *Model `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
 	// Required. The update mask applies to the resource.
-	// For the `FieldMask` definition, see
-	// [FieldMask](https://tinyurl.com/protobufs/google.protobuf#fieldmask).
+	// For the `FieldMask` definition, see [google.protobuf.FieldMask][google.protobuf.FieldMask].
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 

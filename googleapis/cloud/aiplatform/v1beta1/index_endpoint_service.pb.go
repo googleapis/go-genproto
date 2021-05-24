@@ -375,9 +375,7 @@ type UpdateIndexEndpointRequest struct {
 
 	// Required. The IndexEndpoint which replaces the resource on the server.
 	IndexEndpoint *IndexEndpoint `protobuf:"bytes,1,opt,name=index_endpoint,json=indexEndpoint,proto3" json:"index_endpoint,omitempty"`
-	// Required. The update mask applies to the resource.
-	// See
-	// [FieldMask](https://tinyurl.com/protobufs/google.protobuf#fieldmask).
+	// Required. The update mask applies to the resource. See [google.protobuf.FieldMask][google.protobuf.FieldMask].
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 

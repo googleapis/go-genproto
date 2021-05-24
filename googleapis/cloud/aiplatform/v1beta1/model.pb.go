@@ -171,8 +171,8 @@ type Model struct {
 	// Immutable. Points to a YAML file stored on Google Cloud Storage describing additional
 	// information about the Model, that is specific to it. Unset if the Model
 	// does not have any additional information.
-	// The schema is defined as an OpenAPI 3.0.2
-	// [Schema Object](https://tinyurl.com/y538mdwt#schema-object).
+	// The schema is defined as an OpenAPI 3.0.2 [Schema
+	// Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject).
 	// AutoML Models always have this field populated by Vertex AI, if no
 	// additional metadata is needed, this field is set to an empty string.
 	// Note: The URI given on output will be immutable and probably different,
@@ -512,8 +512,8 @@ type PredictSchemata struct {
 	// of a single instance, which are used in [PredictRequest.instances][google.cloud.aiplatform.v1beta1.PredictRequest.instances],
 	// [ExplainRequest.instances][google.cloud.aiplatform.v1beta1.ExplainRequest.instances] and
 	// [BatchPredictionJob.input_config][google.cloud.aiplatform.v1beta1.BatchPredictionJob.input_config].
-	// The schema is defined as an OpenAPI 3.0.2
-	// [Schema Object](https://tinyurl.com/y538mdwt#schema-object).
+	// The schema is defined as an OpenAPI 3.0.2 [Schema
+	// Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject).
 	// AutoML Models always have this field populated by Vertex AI.
 	// Note: The URI given on output will be immutable and probably different,
 	// including the URI scheme, than the one given on input. The output URI will
@@ -523,8 +523,8 @@ type PredictSchemata struct {
 	// parameters of prediction and explanation via
 	// [PredictRequest.parameters][google.cloud.aiplatform.v1beta1.PredictRequest.parameters], [ExplainRequest.parameters][google.cloud.aiplatform.v1beta1.ExplainRequest.parameters] and
 	// [BatchPredictionJob.model_parameters][google.cloud.aiplatform.v1beta1.BatchPredictionJob.model_parameters].
-	// The schema is defined as an OpenAPI 3.0.2
-	// [Schema Object](https://tinyurl.com/y538mdwt#schema-object).
+	// The schema is defined as an OpenAPI 3.0.2 [Schema
+	// Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject).
 	// AutoML Models always have this field populated by Vertex AI, if no
 	// parameters are supported, then it is set to an empty string.
 	// Note: The URI given on output will be immutable and probably different,
@@ -535,8 +535,8 @@ type PredictSchemata struct {
 	// of a single prediction produced by this Model, which are returned via
 	// [PredictResponse.predictions][google.cloud.aiplatform.v1beta1.PredictResponse.predictions], [ExplainResponse.explanations][google.cloud.aiplatform.v1beta1.ExplainResponse.explanations], and
 	// [BatchPredictionJob.output_config][google.cloud.aiplatform.v1beta1.BatchPredictionJob.output_config].
-	// The schema is defined as an OpenAPI 3.0.2
-	// [Schema Object](https://tinyurl.com/y538mdwt#schema-object).
+	// The schema is defined as an OpenAPI 3.0.2 [Schema
+	// Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject).
 	// AutoML Models always have this field populated by Vertex AI.
 	// Note: The URI given on output will be immutable and probably different,
 	// including the URI scheme, than the one given on input. The output URI will
@@ -598,8 +598,8 @@ func (x *PredictSchemata) GetPredictionSchemaUri() string {
 }
 
 // Specification of a container for serving predictions. Some fields in this
-// message correspond to fields in the Kubernetes Container v1 core
-// [specification](https://tinyurl.com/k8s-io-api/v1.18/#container-v1-core).
+// message correspond to fields in the [Kubernetes Container v1 core
+// specification](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
 type ModelContainerSpec struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -607,16 +607,16 @@ type ModelContainerSpec struct {
 
 	// Required. Immutable. URI of the Docker image to be used as the custom container for serving
 	// predictions. This URI must identify an image in Artifact Registry or
-	// Container Registry. Learn more about the container publishing
-	// requirements, including permissions requirements for the AI Platform
-	// Service Agent,
-	// [here](https://tinyurl.com/cust-cont-reqs#publishing).
+	// Container Registry. Learn more about the [container publishing
+	// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
+	// including permissions requirements for the AI Platform Service Agent.
 	//
 	// The container image is ingested upon [ModelService.UploadModel][google.cloud.aiplatform.v1beta1.ModelService.UploadModel], stored
 	// internally, and this original path is afterwards not used.
 	//
 	// To learn about the requirements for the Docker image itself, see
-	// [Custom container requirements](https://tinyurl.com/cust-cont-reqs).
+	// [Custom container
+	// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#).
 	//
 	// You can use the URI to one of Vertex AI's [pre-built container images for
 	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
@@ -632,19 +632,19 @@ type ModelContainerSpec struct {
 	// in conjunction with the [args][google.cloud.aiplatform.v1beta1.ModelContainerSpec.args] field or the
 	// container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd),
 	// if either exists. If this field is not specified and the container does not
-	// have an `ENTRYPOINT`, then refer to the Docker documentation about how
+	// have an `ENTRYPOINT`, then refer to the Docker documentation about [how
 	// `CMD` and `ENTRYPOINT`
-	// [interact](https://tinyurl.com/h3kdcgs).
+	// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
 	//
 	// If you specify this field, then you can also specify the `args` field to
 	// provide additional arguments for this command. However, if you specify this
 	// field, then the container's `CMD` is ignored. See the
-	// [Kubernetes documentation](https://tinyurl.com/y8bvllf4) about how the
+	// [Kubernetes documentation about how the
 	// `command` and `args` fields interact with a container's `ENTRYPOINT` and
-	// `CMD`.
+	// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
 	//
-	// In this field, you can reference environment variables
-	// [set by Vertex AI](https://tinyurl.com/cust-cont-reqs#aip-variables)
+	// In this field, you can reference [environment variables set by Vertex
+	// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
 	// and environment variables set in the [env][google.cloud.aiplatform.v1beta1.ModelContainerSpec.env] field.
 	// You cannot reference environment variables set in the Docker image. In
 	// order for environment variables to be expanded, reference them by using the
@@ -656,7 +656,8 @@ type ModelContainerSpec struct {
 	// syntax with `$$`; for example:
 	// <code>$$(<var>VARIABLE_NAME</var>)</code>
 	// This field corresponds to the `command` field of the Kubernetes Containers
-	// [v1 core API](https://tinyurl.com/k8s-io-api/v1.18/#container-v1-core).
+	// [v1 core
+	// API](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
 	Command []string `protobuf:"bytes,2,rep,name=command,proto3" json:"command,omitempty"`
 	// Immutable. Specifies arguments for the command that runs when the container starts.
 	// This overrides the container's
@@ -667,19 +668,20 @@ type ModelContainerSpec struct {
 	// If you don't specify this field but do specify the
 	// [command][google.cloud.aiplatform.v1beta1.ModelContainerSpec.command] field, then the command from the
 	// `command` field runs without any additional arguments. See the
-	// [Kubernetes documentation](https://tinyurl.com/y8bvllf4) about how the
+	// [Kubernetes documentation about how the
 	// `command` and `args` fields interact with a container's `ENTRYPOINT` and
-	// `CMD`.
+	// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
 	//
 	// If you don't specify this field and don't specify the `command` field,
 	// then the container's
 	// [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
 	// `CMD` determine what runs based on their default behavior. See the Docker
-	// documentation about how `CMD` and `ENTRYPOINT`
-	// [interact](https://tinyurl.com/h3kdcgs).
+	// documentation about [how `CMD` and `ENTRYPOINT`
+	// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
 	//
-	// In this field, you can reference environment variables
-	// [set by Vertex AI](https://tinyurl.com/cust-cont-reqs#aip-variables)
+	// In this field, you can reference [environment variables
+	// set by Vertex
+	// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
 	// and environment variables set in the [env][google.cloud.aiplatform.v1beta1.ModelContainerSpec.env] field.
 	// You cannot reference environment variables set in the Docker image. In
 	// order for environment variables to be expanded, reference them by using the
@@ -691,7 +693,8 @@ type ModelContainerSpec struct {
 	// syntax with `$$`; for example:
 	// <code>$$(<var>VARIABLE_NAME</var>)</code>
 	// This field corresponds to the `args` field of the Kubernetes Containers
-	// [v1 core API](https://tinyurl.com/k8s-io-api/v1.18/#container-v1-core).
+	// [v1 core
+	// API](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
 	Args []string `protobuf:"bytes,3,rep,name=args,proto3" json:"args,omitempty"`
 	// Immutable. List of environment variables to set in the container. After the container
 	// starts running, code running in the container can read these environment
@@ -719,12 +722,14 @@ type ModelContainerSpec struct {
 	// does not occur.
 	//
 	// This field corresponds to the `env` field of the Kubernetes Containers
-	// [v1 core API](https://tinyurl.com/k8s-io-api/v1.18/#container-v1-core).
+	// [v1 core
+	// API](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
 	Env []*EnvVar `protobuf:"bytes,4,rep,name=env,proto3" json:"env,omitempty"`
 	// Immutable. List of ports to expose from the container. Vertex AI sends any
 	// prediction requests that it receives to the first port on this list. AI
 	// Platform also sends
-	// [liveness and health checks](https://tinyurl.com/cust-cont-reqs#health)
+	// [liveness and health
+	// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness)
 	// to this port.
 	//
 	// If you do not specify this field, it defaults to following value:
@@ -739,7 +744,8 @@ type ModelContainerSpec struct {
 	//
 	// Vertex AI does not use ports other than the first one listed. This field
 	// corresponds to the `ports` field of the Kubernetes Containers
-	// [v1 core API](https://tinyurl.com/k8s-io-api/v1.18/#container-v1-core).
+	// [v1 core
+	// API](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
 	Ports []*Port `protobuf:"bytes,5,rep,name=ports,proto3" json:"ports,omitempty"`
 	// Immutable. HTTP path on the container to send prediction requests to. Vertex AI
 	// forwards requests sent using
@@ -761,20 +767,19 @@ type ModelContainerSpec struct {
 	// * <var>ENDPOINT</var>: The last segment (following `endpoints/`)of the
 	//   Endpoint.name][] field of the Endpoint where this Model has been
 	//   deployed. (Vertex AI makes this value available to your container code
-	//   as the
-	//  [`AIP_ENDPOINT_ID`](https://tinyurl.com/cust-cont-reqs#aip-variables)
-	//  environment variable.)
+	//   as the [`AIP_ENDPOINT_ID` environment
+	//  variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	//
 	// * <var>DEPLOYED_MODEL</var>: [DeployedModel.id][google.cloud.aiplatform.v1beta1.DeployedModel.id] of the `DeployedModel`.
 	//   (Vertex AI makes this value available to your container code
 	//   as the [`AIP_DEPLOYED_MODEL_ID` environment
-	//   variable](https://tinyurl.com/cust-cont-reqs#aip-variables).)
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	PredictRoute string `protobuf:"bytes,6,opt,name=predict_route,json=predictRoute,proto3" json:"predict_route,omitempty"`
 	// Immutable. HTTP path on the container to send health checks to. Vertex AI
 	// intermittently sends GET requests to this path on the container's IP
 	// address and port to check that the container is healthy. Read more about
 	// [health
-	// checks](https://tinyurl.com/cust-cont-reqs#checks).
+	// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health).
 	//
 	// For example, if you set this field to `/bar`, then Vertex AI
 	// intermittently sends a GET request to the `/bar` path on the port of your
@@ -789,14 +794,13 @@ type ModelContainerSpec struct {
 	// * <var>ENDPOINT</var>: The last segment (following `endpoints/`)of the
 	//   Endpoint.name][] field of the Endpoint where this Model has been
 	//   deployed. (Vertex AI makes this value available to your container code
-	//   as the
-	//   [`AIP_ENDPOINT_ID`](https://tinyurl.com/cust-cont-reqs#aip-variables)
-	//   environment variable.)
+	//   as the [`AIP_ENDPOINT_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	//
 	// * <var>DEPLOYED_MODEL</var>: [DeployedModel.id][google.cloud.aiplatform.v1beta1.DeployedModel.id] of the `DeployedModel`.
 	//   (Vertex AI makes this value available to your container code as the
-	// [`AIP_DEPLOYED_MODEL_ID`](https://tinyurl.com/cust-cont-reqs#aip-variables)
-	//   environment variable.)
+	//   [`AIP_DEPLOYED_MODEL_ID` environment
+	//   variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
 	HealthRoute string `protobuf:"bytes,7,opt,name=health_route,json=healthRoute,proto3" json:"health_route,omitempty"`
 }
 
