@@ -107,9 +107,9 @@ type InitialSubscribeRequest struct {
 	// The partition from which to receive messages. Partitions are zero indexed,
 	// so `partition` must be in the range [0, topic.num_partitions).
 	Partition int64 `protobuf:"varint,2,opt,name=partition,proto3" json:"partition,omitempty"`
-	// Optional. Initial target location within the message backlog. If not set,
-	// messages will be delivered from the commit cursor for the given
-	// subscription and partition.
+	// Optional. Initial target location within the message backlog. If not set, messages
+	// will be delivered from the commit cursor for the given subscription and
+	// partition.
 	InitialLocation *SeekRequest `protobuf:"bytes,4,opt,name=initial_location,json=initialLocation,proto3" json:"initial_location,omitempty"`
 }
 
