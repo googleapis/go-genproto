@@ -569,8 +569,10 @@ type SecuritySettings struct {
 	// If empty, we use the default DLP inspect config.
 	//
 	// The template name will have one of the following formats:
-	// `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
-	// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+	// `projects/<Project ID>/inspectTemplates/<Template ID>` OR
+	// `projects/<Project ID>/locations/<Location ID>/inspectTemplates/<Template
+	// ID>` OR
+	// `organizations/<Organization ID>/inspectTemplates/<Template ID>`
 	InspectTemplate string `protobuf:"bytes,9,opt,name=inspect_template,json=inspectTemplate,proto3" json:"inspect_template,omitempty"`
 	// Specifies how data is retained. Note that even if the data is
 	// purged due to retention policy, we may still hold it in backup storage for
