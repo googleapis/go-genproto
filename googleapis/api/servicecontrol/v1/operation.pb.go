@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,12 +41,12 @@ const (
 type Operation_Importance int32
 
 const (
-	// The API implementation may cache and aggregate the data.
-	// The data may be lost when rare and unexpected system failures occur.
+	// Allows data caching, batching, and aggregation. It provides
+	// higher performance with higher data loss risk.
 	Operation_LOW Operation_Importance = 0
-	// The API implementation doesn't cache and aggregate the data.
-	// If the method returns successfully, it's guaranteed that the data has
-	// been persisted in durable storage.
+	// Disables data aggregation to minimize data loss. It is for operations
+	// that contains significant monetary value or audit trail. This feature
+	// only applies to the client libraries.
 	Operation_HIGH Operation_Importance = 1
 )
 
@@ -123,8 +123,10 @@ type Operation struct {
 	// Required. Start time of the operation.
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End time of the operation.
-	// Required when the operation is used in [ServiceController.Report][google.api.servicecontrol.v1.ServiceController.Report],
-	// but optional when the operation is used in [ServiceController.Check][google.api.servicecontrol.v1.ServiceController.Check].
+	// Required when the operation is used in
+	// [ServiceController.Report][google.api.servicecontrol.v1.ServiceController.Report],
+	// but optional when the operation is used in
+	// [ServiceController.Check][google.api.servicecontrol.v1.ServiceController.Check].
 	EndTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Labels describing the operation. Only the following labels are allowed:
 	//

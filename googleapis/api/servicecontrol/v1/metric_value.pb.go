@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -50,10 +50,12 @@ type MetricValue struct {
 	// The start of the time period over which this metric value's measurement
 	// applies. The time period has different semantics for different metric
 	// types (cumulative, delta, and gauge). See the metric definition
-	// documentation in the service configuration for details.
+	// documentation in the service configuration for details. If not specified,
+	// [google.api.servicecontrol.v1.Operation.start_time][google.api.servicecontrol.v1.Operation.start_time] will be used.
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The end of the time period over which this metric value's measurement
-	// applies.
+	// applies.  If not specified,
+	// [google.api.servicecontrol.v1.Operation.end_time][google.api.servicecontrol.v1.Operation.end_time] will be used.
 	EndTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// The value. The type of value used in the request must
 	// agree with the metric definition in the service configuration, otherwise
