@@ -1126,6 +1126,12 @@ type RunRealtimeReportRequest struct {
 	// Toggles whether to return the current state of this Analytics Property's
 	// Realtime quota. Quota is returned in [PropertyQuota](#PropertyQuota).
 	ReturnPropertyQuota bool `protobuf:"varint,9,opt,name=return_property_quota,json=returnPropertyQuota,proto3" json:"return_property_quota,omitempty"`
+	// The minute ranges of event data to read. If unspecified, one minute range
+	// for the last 30 minutes will be used. If multiple minute ranges are
+	// requested, each response row will contain a zero based minute range index.
+	// If two minute ranges overlap, the event data for the overlapping minutes is
+	// included in the response rows for both minute ranges.
+	MinuteRanges []*MinuteRange `protobuf:"bytes,10,rep,name=minute_ranges,json=minuteRanges,proto3" json:"minute_ranges,omitempty"`
 }
 
 func (x *RunRealtimeReportRequest) Reset() {
@@ -1221,6 +1227,13 @@ func (x *RunRealtimeReportRequest) GetReturnPropertyQuota() bool {
 		return x.ReturnPropertyQuota
 	}
 	return false
+}
+
+func (x *RunRealtimeReportRequest) GetMinuteRanges() []*MinuteRange {
+	if x != nil {
+		return x.MinuteRanges
+	}
+	return nil
 }
 
 // The response realtime report table corresponding to a request.
@@ -1599,8 +1612,8 @@ var file_google_analytics_data_v1beta_analytics_data_api_proto_rawDesc = []byte{
 	0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x2d, 0xe0, 0x41, 0x02, 0xfa, 0x41,
 	0x27, 0x0a, 0x25, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x64, 0x61, 0x74, 0x61,
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
-	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0xdf,
-	0x04, 0x0a, 0x18, 0x52, 0x75, 0x6e, 0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65,
+	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0xaf,
+	0x05, 0x0a, 0x18, 0x52, 0x75, 0x6e, 0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65, 0x52, 0x65,
 	0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x70,
 	0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70,
 	0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x12, 0x47, 0x0a, 0x0a, 0x64, 0x69, 0x6d, 0x65, 0x6e,
@@ -1638,6 +1651,11 @@ var file_google_analytics_data_v1beta_analytics_data_api_proto_rawDesc = []byte{
 	0x72, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x5f, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x5f,
 	0x71, 0x75, 0x6f, 0x74, 0x61, 0x18, 0x09, 0x20, 0x01, 0x28, 0x08, 0x52, 0x13, 0x72, 0x65, 0x74,
 	0x75, 0x72, 0x6e, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x79, 0x51, 0x75, 0x6f, 0x74, 0x61,
+	0x12, 0x4e, 0x0a, 0x0d, 0x6d, 0x69, 0x6e, 0x75, 0x74, 0x65, 0x5f, 0x72, 0x61, 0x6e, 0x67, 0x65,
+	0x73, 0x18, 0x0a, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e,
+	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x2e, 0x4d, 0x69, 0x6e, 0x75, 0x74, 0x65, 0x52, 0x61, 0x6e,
+	0x67, 0x65, 0x52, 0x0c, 0x6d, 0x69, 0x6e, 0x75, 0x74, 0x65, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x73,
 	0x22, 0xbf, 0x04, 0x0a, 0x19, 0x52, 0x75, 0x6e, 0x52, 0x65, 0x61, 0x6c, 0x74, 0x69, 0x6d, 0x65,
 	0x52, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5a,
 	0x0a, 0x11, 0x64, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x68, 0x65, 0x61, 0x64,
@@ -1805,6 +1823,7 @@ var file_google_analytics_data_v1beta_analytics_data_api_proto_goTypes = []inter
 	(*PropertyQuota)(nil),                // 25: google.analytics.data.v1beta.PropertyQuota
 	(*Pivot)(nil),                        // 26: google.analytics.data.v1beta.Pivot
 	(*PivotHeader)(nil),                  // 27: google.analytics.data.v1beta.PivotHeader
+	(*MinuteRange)(nil),                  // 28: google.analytics.data.v1beta.MinuteRange
 }
 var file_google_analytics_data_v1beta_analytics_data_api_proto_depIdxs = []int32{
 	12, // 0: google.analytics.data.v1beta.Metadata.dimensions:type_name -> google.analytics.data.v1beta.DimensionMetadata
@@ -1849,30 +1868,31 @@ var file_google_analytics_data_v1beta_analytics_data_api_proto_depIdxs = []int32
 	17, // 39: google.analytics.data.v1beta.RunRealtimeReportRequest.metric_filter:type_name -> google.analytics.data.v1beta.FilterExpression
 	18, // 40: google.analytics.data.v1beta.RunRealtimeReportRequest.metric_aggregations:type_name -> google.analytics.data.v1beta.MetricAggregation
 	19, // 41: google.analytics.data.v1beta.RunRealtimeReportRequest.order_bys:type_name -> google.analytics.data.v1beta.OrderBy
-	21, // 42: google.analytics.data.v1beta.RunRealtimeReportResponse.dimension_headers:type_name -> google.analytics.data.v1beta.DimensionHeader
-	22, // 43: google.analytics.data.v1beta.RunRealtimeReportResponse.metric_headers:type_name -> google.analytics.data.v1beta.MetricHeader
-	23, // 44: google.analytics.data.v1beta.RunRealtimeReportResponse.rows:type_name -> google.analytics.data.v1beta.Row
-	23, // 45: google.analytics.data.v1beta.RunRealtimeReportResponse.totals:type_name -> google.analytics.data.v1beta.Row
-	23, // 46: google.analytics.data.v1beta.RunRealtimeReportResponse.maximums:type_name -> google.analytics.data.v1beta.Row
-	23, // 47: google.analytics.data.v1beta.RunRealtimeReportResponse.minimums:type_name -> google.analytics.data.v1beta.Row
-	25, // 48: google.analytics.data.v1beta.RunRealtimeReportResponse.property_quota:type_name -> google.analytics.data.v1beta.PropertyQuota
-	1,  // 49: google.analytics.data.v1beta.BetaAnalyticsData.RunReport:input_type -> google.analytics.data.v1beta.RunReportRequest
-	3,  // 50: google.analytics.data.v1beta.BetaAnalyticsData.RunPivotReport:input_type -> google.analytics.data.v1beta.RunPivotReportRequest
-	5,  // 51: google.analytics.data.v1beta.BetaAnalyticsData.BatchRunReports:input_type -> google.analytics.data.v1beta.BatchRunReportsRequest
-	7,  // 52: google.analytics.data.v1beta.BetaAnalyticsData.BatchRunPivotReports:input_type -> google.analytics.data.v1beta.BatchRunPivotReportsRequest
-	9,  // 53: google.analytics.data.v1beta.BetaAnalyticsData.GetMetadata:input_type -> google.analytics.data.v1beta.GetMetadataRequest
-	10, // 54: google.analytics.data.v1beta.BetaAnalyticsData.RunRealtimeReport:input_type -> google.analytics.data.v1beta.RunRealtimeReportRequest
-	2,  // 55: google.analytics.data.v1beta.BetaAnalyticsData.RunReport:output_type -> google.analytics.data.v1beta.RunReportResponse
-	4,  // 56: google.analytics.data.v1beta.BetaAnalyticsData.RunPivotReport:output_type -> google.analytics.data.v1beta.RunPivotReportResponse
-	6,  // 57: google.analytics.data.v1beta.BetaAnalyticsData.BatchRunReports:output_type -> google.analytics.data.v1beta.BatchRunReportsResponse
-	8,  // 58: google.analytics.data.v1beta.BetaAnalyticsData.BatchRunPivotReports:output_type -> google.analytics.data.v1beta.BatchRunPivotReportsResponse
-	0,  // 59: google.analytics.data.v1beta.BetaAnalyticsData.GetMetadata:output_type -> google.analytics.data.v1beta.Metadata
-	11, // 60: google.analytics.data.v1beta.BetaAnalyticsData.RunRealtimeReport:output_type -> google.analytics.data.v1beta.RunRealtimeReportResponse
-	55, // [55:61] is the sub-list for method output_type
-	49, // [49:55] is the sub-list for method input_type
-	49, // [49:49] is the sub-list for extension type_name
-	49, // [49:49] is the sub-list for extension extendee
-	0,  // [0:49] is the sub-list for field type_name
+	28, // 42: google.analytics.data.v1beta.RunRealtimeReportRequest.minute_ranges:type_name -> google.analytics.data.v1beta.MinuteRange
+	21, // 43: google.analytics.data.v1beta.RunRealtimeReportResponse.dimension_headers:type_name -> google.analytics.data.v1beta.DimensionHeader
+	22, // 44: google.analytics.data.v1beta.RunRealtimeReportResponse.metric_headers:type_name -> google.analytics.data.v1beta.MetricHeader
+	23, // 45: google.analytics.data.v1beta.RunRealtimeReportResponse.rows:type_name -> google.analytics.data.v1beta.Row
+	23, // 46: google.analytics.data.v1beta.RunRealtimeReportResponse.totals:type_name -> google.analytics.data.v1beta.Row
+	23, // 47: google.analytics.data.v1beta.RunRealtimeReportResponse.maximums:type_name -> google.analytics.data.v1beta.Row
+	23, // 48: google.analytics.data.v1beta.RunRealtimeReportResponse.minimums:type_name -> google.analytics.data.v1beta.Row
+	25, // 49: google.analytics.data.v1beta.RunRealtimeReportResponse.property_quota:type_name -> google.analytics.data.v1beta.PropertyQuota
+	1,  // 50: google.analytics.data.v1beta.BetaAnalyticsData.RunReport:input_type -> google.analytics.data.v1beta.RunReportRequest
+	3,  // 51: google.analytics.data.v1beta.BetaAnalyticsData.RunPivotReport:input_type -> google.analytics.data.v1beta.RunPivotReportRequest
+	5,  // 52: google.analytics.data.v1beta.BetaAnalyticsData.BatchRunReports:input_type -> google.analytics.data.v1beta.BatchRunReportsRequest
+	7,  // 53: google.analytics.data.v1beta.BetaAnalyticsData.BatchRunPivotReports:input_type -> google.analytics.data.v1beta.BatchRunPivotReportsRequest
+	9,  // 54: google.analytics.data.v1beta.BetaAnalyticsData.GetMetadata:input_type -> google.analytics.data.v1beta.GetMetadataRequest
+	10, // 55: google.analytics.data.v1beta.BetaAnalyticsData.RunRealtimeReport:input_type -> google.analytics.data.v1beta.RunRealtimeReportRequest
+	2,  // 56: google.analytics.data.v1beta.BetaAnalyticsData.RunReport:output_type -> google.analytics.data.v1beta.RunReportResponse
+	4,  // 57: google.analytics.data.v1beta.BetaAnalyticsData.RunPivotReport:output_type -> google.analytics.data.v1beta.RunPivotReportResponse
+	6,  // 58: google.analytics.data.v1beta.BetaAnalyticsData.BatchRunReports:output_type -> google.analytics.data.v1beta.BatchRunReportsResponse
+	8,  // 59: google.analytics.data.v1beta.BetaAnalyticsData.BatchRunPivotReports:output_type -> google.analytics.data.v1beta.BatchRunPivotReportsResponse
+	0,  // 60: google.analytics.data.v1beta.BetaAnalyticsData.GetMetadata:output_type -> google.analytics.data.v1beta.Metadata
+	11, // 61: google.analytics.data.v1beta.BetaAnalyticsData.RunRealtimeReport:output_type -> google.analytics.data.v1beta.RunRealtimeReportResponse
+	56, // [56:62] is the sub-list for method output_type
+	50, // [50:56] is the sub-list for method input_type
+	50, // [50:50] is the sub-list for extension type_name
+	50, // [50:50] is the sub-list for extension extendee
+	0,  // [0:50] is the sub-list for field type_name
 }
 
 func init() { file_google_analytics_data_v1beta_analytics_data_api_proto_init() }
