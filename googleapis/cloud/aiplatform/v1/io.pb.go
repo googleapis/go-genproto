@@ -205,7 +205,8 @@ type BigQueryDestination struct {
 	// Accepted forms:
 	//
 	// *  BigQuery path. For example:
-	// `bq://projectId` or `bq://projectId.bqDatasetId.bqTableId`.
+	// `bq://projectId` or `bq://projectId.bqDatasetId` or
+	// `bq://projectId.bqDatasetId.bqTableId`.
 	OutputUri string `protobuf:"bytes,1,opt,name=output_uri,json=outputUri,proto3" json:"output_uri,omitempty"`
 }
 
