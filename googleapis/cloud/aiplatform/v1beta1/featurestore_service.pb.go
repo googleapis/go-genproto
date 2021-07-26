@@ -793,7 +793,7 @@ type BatchReadFeatureValuesRequest struct {
 	// Required. Specifies EntityType grouping Features to read values of and settings.
 	// Each EntityType referenced in
 	// [BatchReadFeatureValuesRequest.entity_type_specs] must have a column
-	// specifying entity IDs in tha EntityType in
+	// specifying entity IDs in the EntityType in
 	// [BatchReadFeatureValuesRequest.request][] .
 	EntityTypeSpecs []*BatchReadFeatureValuesRequest_EntityTypeSpec `protobuf:"bytes,7,rep,name=entity_type_specs,json=entityTypeSpecs,proto3" json:"entity_type_specs,omitempty"`
 }
