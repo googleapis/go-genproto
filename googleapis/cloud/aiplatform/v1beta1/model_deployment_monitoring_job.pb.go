@@ -294,7 +294,7 @@ type ModelDeploymentMonitoringJob struct {
 	// Output only. Schedule state when the monitoring job is in Running state.
 	ScheduleState ModelDeploymentMonitoringJob_MonitoringScheduleState `protobuf:"varint,5,opt,name=schedule_state,json=scheduleState,proto3,enum=google.cloud.aiplatform.v1beta1.ModelDeploymentMonitoringJob_MonitoringScheduleState" json:"schedule_state,omitempty"`
 	// Required. The config for monitoring objectives. This is a per DeployedModel config.
-	// Each DeployedModel needs to be configed separately.
+	// Each DeployedModel needs to be configured separately.
 	ModelDeploymentMonitoringObjectiveConfigs []*ModelDeploymentMonitoringObjectiveConfig `protobuf:"bytes,6,rep,name=model_deployment_monitoring_objective_configs,json=modelDeploymentMonitoringObjectiveConfigs,proto3" json:"model_deployment_monitoring_objective_configs,omitempty"`
 	// Required. Schedule config for running the monitoring job.
 	ModelDeploymentMonitoringScheduleConfig *ModelDeploymentMonitoringScheduleConfig `protobuf:"bytes,7,opt,name=model_deployment_monitoring_schedule_config,json=modelDeploymentMonitoringScheduleConfig,proto3" json:"model_deployment_monitoring_schedule_config,omitempty"`
