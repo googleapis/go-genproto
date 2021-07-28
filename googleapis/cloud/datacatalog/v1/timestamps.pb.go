@@ -37,18 +37,25 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Timestamps about this resource according to a particular system.
+// Timestamps associated with this resource in a particular system.
 type SystemTimestamps struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The creation time of the resource within the given system.
+	// Creation timestamp of the resource within the given system.
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// The last-modified time of the resource within the given system.
+	// Timestamp of the last modification of the resource or its metadata within
+	// a given system.
+	//
+	// Note: Depending on the source system, not every modification updates this
+	// timestamp.
+	// For example, BigQuery timestamps every metadata modification but not data
+	// or permission changes.
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	// Output only. The expiration time of the resource within the given system.
-	// Currently only apllicable to BigQuery resources.
+	// Output only. Expiration timestamp of the resource within the given system.
+	//
+	// Currently only applicable to BigQuery resources.
 	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 }
 

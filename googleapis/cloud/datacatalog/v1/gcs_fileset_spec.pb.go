@@ -43,17 +43,18 @@ type GcsFilesetSpec struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Patterns to identify a set of files in Google Cloud Storage.
-	// See [Cloud Storage
-	// documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
-	// for more information. Note that bucket wildcards are currently not
-	// supported.
 	//
-	// Examples of valid file_patterns:
+	// For more information, see [Wildcard Names]
+	// (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames).
 	//
-	//  * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir`
-	//                              directory.
+	// Note: Currently, bucket wildcards are not supported.
+	//
+	// Examples of valid `file_patterns`:
+	//
+	//  * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir`
+	//                              directory
 	//  * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir`
-	//                               spanning all subdirectories.
+	//                               and all subdirectories
 	//  * `gs://bucket_name/file*`: matches files prefixed by `file` in
 	//                              `bucket_name`
 	//  * `gs://bucket_name/??.txt`: matches files with two characters followed by
@@ -64,12 +65,12 @@ type GcsFilesetSpec struct {
 	//  * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ...
 	//                                  or `m` followed by `.txt` in `bucket_name`
 	//  * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match
-	//                              `a/*/b` pattern, such as `a/c/b`, `a/d/b`
+	//                              the `a/*/b` pattern, such as `a/c/b`, `a/d/b`
 	//  * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
 	//
-	// You can combine wildcards to provide more powerful matches, for example:
+	// You can combine wildcards to match complex sets of files, for example:
 	//
-	//  * `gs://bucket_name/[a-m]??.j*g`
+	// `gs://bucket_name/[a-m]??.j*g`
 	FilePatterns []string `protobuf:"bytes,1,rep,name=file_patterns,json=filePatterns,proto3" json:"file_patterns,omitempty"`
 	// Output only. Sample files contained in this fileset, not all files
 	// contained in this fileset are represented here.
@@ -122,17 +123,17 @@ func (x *GcsFilesetSpec) GetSampleGcsFileSpecs() []*GcsFileSpec {
 	return nil
 }
 
-// Specifications of a single file in Cloud Storage.
+// Specification of a single file in Cloud Storage.
 type GcsFileSpec struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
+	// Required. Full file path. Example: `gs://bucket_name/a/b.txt`.
 	FilePath string `protobuf:"bytes,1,opt,name=file_path,json=filePath,proto3" json:"file_path,omitempty"`
-	// Output only. Timestamps about the Cloud Storage file.
+	// Output only. Creation, modification, and expiration timestamps of a Cloud Storage file.
 	GcsTimestamps *SystemTimestamps `protobuf:"bytes,2,opt,name=gcs_timestamps,json=gcsTimestamps,proto3" json:"gcs_timestamps,omitempty"`
-	// Output only. The size of the file, in bytes.
+	// Output only. File size in bytes.
 	SizeBytes int64 `protobuf:"varint,4,opt,name=size_bytes,json=sizeBytes,proto3" json:"size_bytes,omitempty"`
 }
 
