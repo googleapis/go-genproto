@@ -411,7 +411,7 @@ type NetworkConfig struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The name of the Google Compute Engine
-	// [VPC network](/compute/docs/networks-and-firewalls#networks) to which the
+	// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
 	// instance is connected.
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	// Internet protocol versions for which the instance has IP addresses
@@ -419,16 +419,15 @@ type NetworkConfig struct {
 	Modes []NetworkConfig_AddressMode `protobuf:"varint,3,rep,packed,name=modes,proto3,enum=google.cloud.filestore.v1beta1.NetworkConfig_AddressMode" json:"modes,omitempty"`
 	// A /29 CIDR block for Basic or a /23 CIDR block for High Scale in one of the
 	// [internal IP address
-	// ranges](https://www.arin.net/knowledge/address_filters.html) that
-	// identifies the range of IP addresses reserved for this instance. For
+	// ranges](https://www.arin.net/reference/research/statistics/address_filters/)
+	// that identifies the range of IP addresses reserved for this instance. For
 	// example, 10.0.0.0/29 or 192.168.0.0/23. The range you specify can't overlap
 	// with either existing subnets or assigned IP address ranges for other Cloud
 	// Filestore instances in the selected VPC network.
 	ReservedIpRange string `protobuf:"bytes,4,opt,name=reserved_ip_range,json=reservedIpRange,proto3" json:"reserved_ip_range,omitempty"`
 	// Output only. IPv4 addresses in the format
-	// {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format
-	// {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block
-	// 7}:{block 8}.
+	// `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6 addresses in the format
+	// `{block1}:{block2}:{block3}:{block4}:{block5}:{block6}:{block7}:{block8}`.
 	IpAddresses []string `protobuf:"bytes,5,rep,name=ip_addresses,json=ipAddresses,proto3" json:"ip_addresses,omitempty"`
 }
 
@@ -587,7 +586,7 @@ type isFileShareConfig_Source interface {
 
 type FileShareConfig_SourceBackup struct {
 	// The resource name of the backup, in the format
-	// projects/{project_id}/locations/{location_id}/backups/{backup_id}, that
+	// `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that
 	// this file share has been restored from.
 	SourceBackup string `protobuf:"bytes,9,opt,name=source_backup,json=sourceBackup,proto3,oneof"`
 }
@@ -601,8 +600,8 @@ type NfsExportOptions struct {
 	unknownFields protoimpl.UnknownFields
 
 	// List of either an IPv4 addresses in the format
-	// {octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format
-	// {octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the
+	// `{octet1}.{octet2}.{octet3}.{octet4}` or CIDR ranges in the format
+	// `{octet1}.{octet2}.{octet3}.{octet4}/{mask size}` which may mount the
 	// file share.
 	// Overlapping IP ranges are not allowed, both within and across
 	// NfsExportOptions. An error will be returned.
@@ -703,7 +702,7 @@ type Instance struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The resource name of the instance, in the format
-	// projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+	// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The description of the instance (2048 characters or less).
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
@@ -846,7 +845,7 @@ type CreateInstanceRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The instance's project and location, in the format
-	// projects/{project_id}/locations/{location}. In Cloud Filestore,
+	// `projects/{project_id}/locations/{location}`. In Cloud Filestore,
 	// locations map to GCP zones, for example **us-west1-b**.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The ID of the instance to create.
@@ -855,8 +854,7 @@ type CreateInstanceRequest struct {
 	// This value must start with a lowercase letter followed by up to 62
 	// lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
 	InstanceId string `protobuf:"bytes,2,opt,name=instance_id,json=instanceId,proto3" json:"instance_id,omitempty"`
-	// Required. A [instance resource]
-	// (/cloud-filestore/reference/rest/v1beta1/projects.locations.instances)
+	// Required. An [instance resource][google.cloud.filestore.v1beta1.Instance]
 	Instance *Instance `protobuf:"bytes,3,opt,name=instance,proto3" json:"instance,omitempty"`
 }
 
@@ -920,7 +918,7 @@ type GetInstanceRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The instance resource name, in the format
-	// projects/{project_id}/locations/{location}/instances/{instance_id}.
+	// `projects/{project_id}/locations/{location}/instances/{instance_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1035,7 +1033,7 @@ type RestoreInstanceRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name of the instance, in the format
-	// projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+	// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. Name of the file share in the Cloud Filestore instance that the snapshot
 	// is being restored to.
@@ -1119,13 +1117,13 @@ type isRestoreInstanceRequest_Source interface {
 
 type RestoreInstanceRequest_SourceSnapshot struct {
 	// The resource name of the snapshot, in the format
-	// projects/{project_id}/locations/{location_id}/snapshots/{snapshot_id}.
+	// `projects/{project_id}/locations/{location_id}/snapshots/{snapshot_id}`.
 	SourceSnapshot string `protobuf:"bytes,3,opt,name=source_snapshot,json=sourceSnapshot,proto3,oneof"`
 }
 
 type RestoreInstanceRequest_SourceBackup struct {
 	// The resource name of the backup, in the format
-	// projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+	// `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
 	SourceBackup string `protobuf:"bytes,4,opt,name=source_backup,json=sourceBackup,proto3,oneof"`
 }
 
@@ -1140,7 +1138,7 @@ type DeleteInstanceRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The instance resource name, in the format
-	// projects/{project_id}/locations/{location}/instances/{instance_id}
+	// `projects/{project_id}/locations/{location}/instances/{instance_id}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1190,10 +1188,10 @@ type ListInstancesRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The project and location for which to retrieve instance information,
-	// in the format projects/{project_id}/locations/{location}. In Cloud
+	// in the format `projects/{project_id}/locations/{location}`. In Cloud
 	// Filestore, locations map to GCP zones, for example **us-west1-b**. To
-	// retrieve instance information for all locations, use "-" for the {location}
-	// value.
+	// retrieve instance information for all locations, use "-" for the
+	// `{location}` value.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of items to return.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -1281,8 +1279,8 @@ type ListInstancesResponse struct {
 
 	// A list of instances in the project for the specified location.
 	//
-	// If the {location} value in the request is "-", the response contains a list
-	// of instances from all locations. If any location is unreachable, the
+	// If the `{location}` value in the request is "-", the response contains a
+	// list of instances from all locations. If any location is unreachable, the
 	// response will only return instances in reachable locations and the
 	// "unreachable" field will be populated with a list of unreachable locations.
 	Instances []*Instance `protobuf:"bytes,1,rep,name=instances,proto3" json:"instances,omitempty"`
@@ -1353,7 +1351,7 @@ type Backup struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The resource name of the backup, in the format
-	// projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+	// `projects/{project_id}/locations/{location_id}/backups/{backup_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// A description of the backup with 2048 characters or less.
 	// Requests with longer descriptions will be rejected.
@@ -1370,7 +1368,7 @@ type Backup struct {
 	// this number is expected to change with backup creation/deletion.
 	StorageBytes int64 `protobuf:"varint,7,opt,name=storage_bytes,json=storageBytes,proto3" json:"storage_bytes,omitempty"`
 	// The resource name of the source Cloud Filestore instance, in the format
-	// projects/{project_id}/locations/{location_id}/instances/{instance_id},
+	// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`,
 	// used to create this backup.
 	SourceInstance string `protobuf:"bytes,8,opt,name=source_instance,json=sourceInstance,proto3" json:"source_instance,omitempty"`
 	// Name of the file share in the source Cloud Filestore instance that the
@@ -1508,11 +1506,10 @@ type CreateBackupRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The backup's project and location, in the format
-	// projects/{project_id}/locations/{location}. In Cloud Filestore,
+	// `projects/{project_id}/locations/{location}`. In Cloud Filestore,
 	// backup locations map to GCP regions, for example **us-west1**.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. A [backup resource]
-	// (/cloud-filestore/reference/rest/v1beta1/projects.locations.backups)
+	// Required. A [backup resource][google.cloud.filestore.v1beta1.Backup]
 	Backup *Backup `protobuf:"bytes,2,opt,name=backup,proto3" json:"backup,omitempty"`
 	// Required. The ID to use for the backup.
 	// The ID must be unique within the specified project and location.
@@ -1582,7 +1579,7 @@ type DeleteBackupRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The backup resource name, in the format
-	// projects/{project_id}/locations/{location}/backups/{backup_id}
+	// `projects/{project_id}/locations/{location}/backups/{backup_id}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1631,8 +1628,7 @@ type UpdateBackupRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. A [backup resource]
-	// (/cloud-filestore/reference/rest/v1beta1/projects.locations.backups)
+	// Required. A [backup resource][google.cloud.filestore.v1beta1.Backup]
 	Backup *Backup `protobuf:"bytes,1,opt,name=backup,proto3" json:"backup,omitempty"`
 	// Required. Mask of fields to update.  At least one path must be supplied in this
 	// field.
@@ -1692,7 +1688,7 @@ type GetBackupRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The backup resource name, in the format
-	// projects/{project_id}/locations/{location}/backups/{backup_id}.
+	// `projects/{project_id}/locations/{location}/backups/{backup_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1742,11 +1738,11 @@ type ListBackupsRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The project and location for which to retrieve backup information,
-	// in the format projects/{project_id}/locations/{location}.
+	// in the format `projects/{project_id}/locations/{location}`.
 	// In Cloud Filestore, backup locations map to GCP regions,
 	// for example **us-west1**.
 	// To retrieve backup information for all locations, use "-" for the
-	// {location} value.
+	// `{location}` value.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of items to return.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -1834,8 +1830,8 @@ type ListBackupsResponse struct {
 
 	// A list of backups in the project for the specified location.
 	//
-	// If the {location} value in the request is "-", the response contains a list
-	// of backups from all locations. If any location is unreachable, the
+	// If the `{location}` value in the request is "-", the response contains a
+	// list of backups from all locations. If any location is unreachable, the
 	// response will only return backups in reachable locations and the
 	// "unreachable" field will be populated with a list of unreachable
 	// locations.

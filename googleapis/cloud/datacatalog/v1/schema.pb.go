@@ -36,7 +36,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
+// Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
 type Schema struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -88,7 +88,7 @@ func (x *Schema) GetColumns() []*ColumnSchema {
 	return nil
 }
 
-// Representation of a column within a schema. Columns could be nested inside
+// A column within a schema. Columns can be nested inside
 // other columns.
 type ColumnSchema struct {
 	state         protoimpl.MessageState
@@ -109,7 +109,7 @@ type ColumnSchema struct {
 	// The description must be a UTF-8 string with the maximum size of 2000
 	// bytes.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	// Optional. A column's mode indicates if values in this column are required,
+	// Optional. A column's mode indicates whether values in this column are required,
 	// nullable, or repeated.
 	//
 	// Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported.

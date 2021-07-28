@@ -27,7 +27,7 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	_ "google.golang.org/protobuf/types/known/timestamppb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 const (
@@ -37,8 +37,171 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// An intended audience of the [Product][google.cloud.retail.v2.Product] for
+// whom it's sold.
+type Audience struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The genders of the audience. Strongly encouraged to use the standard
+	// values: "male", "female", "unisex".
+	//
+	// At most 5 values are allowed. Each value must be a UTF-8 encoded string
+	// with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error
+	// is returned.
+	//
+	// Google Merchant Center property
+	// [gender](https://support.google.com/merchants/answer/6324479). Schema.org
+	// property
+	// [Product.audience.suggestedGender](https://schema.org/suggestedGender).
+	Genders []string `protobuf:"bytes,1,rep,name=genders,proto3" json:"genders,omitempty"`
+	// The age groups of the audience. Strongly encouraged to use the standard
+	// values: "newborn" (up to 3 months old), "infant" (3–12 months old),
+	// "toddler" (1–5 years old), "kids" (5–13 years old), "adult" (typically
+	// teens or older).
+	//
+	// At most 5 values are allowed. Each value must be a UTF-8 encoded string
+	// with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error
+	// is returned.
+	//
+	// Google Merchant Center property
+	// [age_group](https://support.google.com/merchants/answer/6324463).
+	// Schema.org property
+	// [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and
+	// [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
+	AgeGroups []string `protobuf:"bytes,2,rep,name=age_groups,json=ageGroups,proto3" json:"age_groups,omitempty"`
+}
+
+func (x *Audience) Reset() {
+	*x = Audience{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Audience) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Audience) ProtoMessage() {}
+
+func (x *Audience) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Audience.ProtoReflect.Descriptor instead.
+func (*Audience) Descriptor() ([]byte, []int) {
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *Audience) GetGenders() []string {
+	if x != nil {
+		return x.Genders
+	}
+	return nil
+}
+
+func (x *Audience) GetAgeGroups() []string {
+	if x != nil {
+		return x.AgeGroups
+	}
+	return nil
+}
+
+// The color information of a [Product][google.cloud.retail.v2.Product].
+type ColorInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The standard color families. Strongly recommended to use the following
+	// standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple",
+	// "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and
+	// "Mixed". Normally it is expected to have only 1 color family. May consider
+	// using single "Mixed" instead of multiple values.
+	//
+	// A maximum of 5 values are allowed. Each value must be a UTF-8 encoded
+	// string with a length limit of 128 characters. Otherwise, an
+	// INVALID_ARGUMENT error is returned.
+	//
+	// Google Merchant Center property
+	// [color](https://support.google.com/merchants/answer/6324487). Schema.org
+	// property [Product.color](https://schema.org/color).
+	ColorFamilies []string `protobuf:"bytes,1,rep,name=color_families,json=colorFamilies,proto3" json:"color_families,omitempty"`
+	// The color display names, which may be different from standard color family
+	// names, such as the color aliases used in the website frontend. Normally
+	// it is expected to have only 1 color. May consider using single "Mixed"
+	// instead of multiple values.
+	//
+	// A maximum of 5 colors are allowed. Each value must be a UTF-8 encoded
+	// string with a length limit of 128 characters. Otherwise, an
+	// INVALID_ARGUMENT error is returned.
+	//
+	// Google Merchant Center property
+	// [color](https://support.google.com/merchants/answer/6324487). Schema.org
+	// property [Product.color](https://schema.org/color).
+	Colors []string `protobuf:"bytes,2,rep,name=colors,proto3" json:"colors,omitempty"`
+}
+
+func (x *ColorInfo) Reset() {
+	*x = ColorInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ColorInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ColorInfo) ProtoMessage() {}
+
+func (x *ColorInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ColorInfo.ProtoReflect.Descriptor instead.
+func (*ColorInfo) Descriptor() ([]byte, []int) {
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ColorInfo) GetColorFamilies() []string {
+	if x != nil {
+		return x.ColorFamilies
+	}
+	return nil
+}
+
+func (x *ColorInfo) GetColors() []string {
+	if x != nil {
+		return x.Colors
+	}
+	return nil
+}
+
 // A custom attribute that is not explicitly modeled in
-// [Product][google.cloud.retail.v2.Product]].
+// [Product][google.cloud.retail.v2.Product].
 type CustomAttribute struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -65,12 +228,32 @@ type CustomAttribute struct {
 	// [numbers][google.cloud.retail.v2.CustomAttribute.numbers] should be set.
 	// Otherwise, an INVALID_ARGUMENT error is returned.
 	Numbers []float64 `protobuf:"fixed64,2,rep,packed,name=numbers,proto3" json:"numbers,omitempty"`
+	// If true, custom attribute values are searchable by text queries in
+	// [SearchService.Search][google.cloud.retail.v2.SearchService.Search].
+	//
+	// This field is ignored in a [UserEvent][google.cloud.retail.v2.UserEvent].
+	//
+	// Only set if type [text][google.cloud.retail.v2.CustomAttribute.text] is
+	// set. Otherwise, a INVALID_ARGUMENT error is returned.
+	Searchable *bool `protobuf:"varint,3,opt,name=searchable,proto3,oneof" json:"searchable,omitempty"`
+	// If true, custom attribute values are indexed, so that it can be filtered,
+	// faceted or boosted in
+	// [SearchService.Search][google.cloud.retail.v2.SearchService.Search].
+	//
+	// This field is ignored in a [UserEvent][google.cloud.retail.v2.UserEvent].
+	//
+	// See [SearchRequest.filter][google.cloud.retail.v2.SearchRequest.filter],
+	// [SearchRequest.facet_specs][google.cloud.retail.v2.SearchRequest.facet_specs]
+	// and
+	// [SearchRequest.boost_spec][google.cloud.retail.v2.SearchRequest.boost_spec]
+	// for more details.
+	Indexable *bool `protobuf:"varint,4,opt,name=indexable,proto3,oneof" json:"indexable,omitempty"`
 }
 
 func (x *CustomAttribute) Reset() {
 	*x = CustomAttribute{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[0]
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -83,7 +266,7 @@ func (x *CustomAttribute) String() string {
 func (*CustomAttribute) ProtoMessage() {}
 
 func (x *CustomAttribute) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[0]
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -96,7 +279,7 @@ func (x *CustomAttribute) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomAttribute.ProtoReflect.Descriptor instead.
 func (*CustomAttribute) Descriptor() ([]byte, []int) {
-	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{0}
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CustomAttribute) GetText() []string {
@@ -109,6 +292,104 @@ func (x *CustomAttribute) GetText() []string {
 func (x *CustomAttribute) GetNumbers() []float64 {
 	if x != nil {
 		return x.Numbers
+	}
+	return nil
+}
+
+func (x *CustomAttribute) GetSearchable() bool {
+	if x != nil && x.Searchable != nil {
+		return *x.Searchable
+	}
+	return false
+}
+
+func (x *CustomAttribute) GetIndexable() bool {
+	if x != nil && x.Indexable != nil {
+		return *x.Indexable
+	}
+	return false
+}
+
+// Fulfillment information, such as the store IDs for in-store pickup or region
+// IDs for different shipping methods.
+type FulfillmentInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The fulfillment type, including commonly used types (such as pickup in
+	// store and same day delivery), and custom types. Customers have to map
+	// custom types to their display names before rendering UI.
+	//
+	// Supported values:
+	//
+	// * "pickup-in-store"
+	// * "ship-to-store"
+	// * "same-day-delivery"
+	// * "next-day-delivery"
+	// * "custom-type-1"
+	// * "custom-type-2"
+	// * "custom-type-3"
+	// * "custom-type-4"
+	// * "custom-type-5"
+	//
+	// If this field is set to an invalid value other than these, an
+	// INVALID_ARGUMENT error is returned.
+	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	// The IDs for this [type][google.cloud.retail.v2.FulfillmentInfo.type], such
+	// as the store IDs for
+	// [FulfillmentInfo.type.pickup-in-store][google.cloud.retail.v2.FulfillmentInfo.type]
+	// or the region IDs for
+	// [FulfillmentInfo.type.same-day-delivery][google.cloud.retail.v2.FulfillmentInfo.type].
+	//
+	// A maximum of 2000 values are allowed. Each value must be a string with a
+	// length limit of 10 characters, matching the pattern [a-zA-Z0-9_-]+, such as
+	// "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is returned.
+	PlaceIds []string `protobuf:"bytes,2,rep,name=place_ids,json=placeIds,proto3" json:"place_ids,omitempty"`
+}
+
+func (x *FulfillmentInfo) Reset() {
+	*x = FulfillmentInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *FulfillmentInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FulfillmentInfo) ProtoMessage() {}
+
+func (x *FulfillmentInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FulfillmentInfo.ProtoReflect.Descriptor instead.
+func (*FulfillmentInfo) Descriptor() ([]byte, []int) {
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *FulfillmentInfo) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *FulfillmentInfo) GetPlaceIds() []string {
+	if x != nil {
+		return x.PlaceIds
 	}
 	return nil
 }
@@ -143,7 +424,7 @@ type Image struct {
 func (x *Image) Reset() {
 	*x = Image{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[1]
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -156,7 +437,7 @@ func (x *Image) String() string {
 func (*Image) ProtoMessage() {}
 
 func (x *Image) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[1]
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -169,7 +450,7 @@ func (x *Image) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Image.ProtoReflect.Descriptor instead.
 func (*Image) Descriptor() ([]byte, []int) {
-	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{1}
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Image) GetUri() string {
@@ -193,6 +474,146 @@ func (x *Image) GetWidth() int32 {
 	return 0
 }
 
+// A floating point interval.
+type Interval struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The lower bound of the interval. If neither of the min fields are set, then
+	// the lower bound is negative infinity.
+	//
+	// This field must be not larger than
+	// [max][google.cloud.retail.v2.Interval.max]. Otherwise, an INVALID_ARGUMENT
+	// error is returned.
+	//
+	// Types that are assignable to Min:
+	//	*Interval_Minimum
+	//	*Interval_ExclusiveMinimum
+	Min isInterval_Min `protobuf_oneof:"min"`
+	// The upper bound of the interval. If neither of the max fields are set, then
+	// the upper bound is positive infinity.
+	//
+	// This field must be not smaller than
+	// [min][google.cloud.retail.v2.Interval.min]. Otherwise, an INVALID_ARGUMENT
+	// error is returned.
+	//
+	// Types that are assignable to Max:
+	//	*Interval_Maximum
+	//	*Interval_ExclusiveMaximum
+	Max isInterval_Max `protobuf_oneof:"max"`
+}
+
+func (x *Interval) Reset() {
+	*x = Interval{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Interval) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Interval) ProtoMessage() {}
+
+func (x *Interval) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Interval.ProtoReflect.Descriptor instead.
+func (*Interval) Descriptor() ([]byte, []int) {
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{5}
+}
+
+func (m *Interval) GetMin() isInterval_Min {
+	if m != nil {
+		return m.Min
+	}
+	return nil
+}
+
+func (x *Interval) GetMinimum() float64 {
+	if x, ok := x.GetMin().(*Interval_Minimum); ok {
+		return x.Minimum
+	}
+	return 0
+}
+
+func (x *Interval) GetExclusiveMinimum() float64 {
+	if x, ok := x.GetMin().(*Interval_ExclusiveMinimum); ok {
+		return x.ExclusiveMinimum
+	}
+	return 0
+}
+
+func (m *Interval) GetMax() isInterval_Max {
+	if m != nil {
+		return m.Max
+	}
+	return nil
+}
+
+func (x *Interval) GetMaximum() float64 {
+	if x, ok := x.GetMax().(*Interval_Maximum); ok {
+		return x.Maximum
+	}
+	return 0
+}
+
+func (x *Interval) GetExclusiveMaximum() float64 {
+	if x, ok := x.GetMax().(*Interval_ExclusiveMaximum); ok {
+		return x.ExclusiveMaximum
+	}
+	return 0
+}
+
+type isInterval_Min interface {
+	isInterval_Min()
+}
+
+type Interval_Minimum struct {
+	// Inclusive lower bound.
+	Minimum float64 `protobuf:"fixed64,1,opt,name=minimum,proto3,oneof"`
+}
+
+type Interval_ExclusiveMinimum struct {
+	// Exclusive lower bound.
+	ExclusiveMinimum float64 `protobuf:"fixed64,2,opt,name=exclusive_minimum,json=exclusiveMinimum,proto3,oneof"`
+}
+
+func (*Interval_Minimum) isInterval_Min() {}
+
+func (*Interval_ExclusiveMinimum) isInterval_Min() {}
+
+type isInterval_Max interface {
+	isInterval_Max()
+}
+
+type Interval_Maximum struct {
+	// Inclusive upper bound.
+	Maximum float64 `protobuf:"fixed64,3,opt,name=maximum,proto3,oneof"`
+}
+
+type Interval_ExclusiveMaximum struct {
+	// Exclusive upper bound.
+	ExclusiveMaximum float64 `protobuf:"fixed64,4,opt,name=exclusive_maximum,json=exclusiveMaximum,proto3,oneof"`
+}
+
+func (*Interval_Maximum) isInterval_Max() {}
+
+func (*Interval_ExclusiveMaximum) isInterval_Max() {}
+
 // The price information of a [Product][google.cloud.retail.v2.Product].
 type PriceInfo struct {
 	state         protoimpl.MessageState
@@ -204,6 +625,13 @@ type PriceInfo struct {
 	//
 	// If this field is an unrecognizable currency code, an INVALID_ARGUMENT
 	// error is returned.
+	//
+	// The [Product.Type.VARIANT][google.cloud.retail.v2.Product.Type.VARIANT]
+	// [Product][google.cloud.retail.v2.Product]s with the same
+	// [Product.primary_product_id][google.cloud.retail.v2.Product.primary_product_id]
+	// must share the same
+	// [currency_code][google.cloud.retail.v2.PriceInfo.currency_code]. Otherwise,
+	// a FAILED_PRECONDITION error is returned.
 	CurrencyCode string `protobuf:"bytes,1,opt,name=currency_code,json=currencyCode,proto3" json:"currency_code,omitempty"`
 	// Price of the product.
 	//
@@ -223,12 +651,51 @@ type PriceInfo struct {
 	// Google Merchant Center property
 	// [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
 	Cost float32 `protobuf:"fixed32,4,opt,name=cost,proto3" json:"cost,omitempty"`
+	// The timestamp when the [price][google.cloud.retail.v2.PriceInfo.price]
+	// starts to be effective. This can be set as a future timestamp, and the
+	// [price][google.cloud.retail.v2.PriceInfo.price] is only used for search
+	// after
+	// [price_effective_time][google.cloud.retail.v2.PriceInfo.price_effective_time].
+	// If so, the
+	// [original_price][google.cloud.retail.v2.PriceInfo.original_price] must be
+	// set and [original_price][google.cloud.retail.v2.PriceInfo.original_price]
+	// is used before
+	// [price_effective_time][google.cloud.retail.v2.PriceInfo.price_effective_time].
+	//
+	// Do not set if [price][google.cloud.retail.v2.PriceInfo.price] is always
+	// effective because it will cause additional latency during search.
+	PriceEffectiveTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=price_effective_time,json=priceEffectiveTime,proto3" json:"price_effective_time,omitempty"`
+	// The timestamp when the [price][google.cloud.retail.v2.PriceInfo.price]
+	// stops to be effective. The [price][google.cloud.retail.v2.PriceInfo.price]
+	// is used for search before
+	// [price_expire_time][google.cloud.retail.v2.PriceInfo.price_expire_time]. If
+	// this field is set, the
+	// [original_price][google.cloud.retail.v2.PriceInfo.original_price] must be
+	// set and [original_price][google.cloud.retail.v2.PriceInfo.original_price]
+	// is used after
+	// [price_expire_time][google.cloud.retail.v2.PriceInfo.price_expire_time].
+	//
+	// Do not set if [price][google.cloud.retail.v2.PriceInfo.price] is always
+	// effective because it will cause additional latency during search.
+	PriceExpireTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=price_expire_time,json=priceExpireTime,proto3" json:"price_expire_time,omitempty"`
+	// Output only. The price range of all the child
+	// [Product.Type.VARIANT][google.cloud.retail.v2.Product.Type.VARIANT]
+	// [Product][google.cloud.retail.v2.Product]s grouped together on the
+	// [Product.Type.PRIMARY][google.cloud.retail.v2.Product.Type.PRIMARY]
+	// [Product][google.cloud.retail.v2.Product]. Only populated for
+	// [Product.Type.PRIMARY][google.cloud.retail.v2.Product.Type.PRIMARY]
+	// [Product][google.cloud.retail.v2.Product]s.
+	//
+	// Note: This field is OUTPUT_ONLY for
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct].
+	// Do not set this field in API requests.
+	PriceRange *PriceInfo_PriceRange `protobuf:"bytes,7,opt,name=price_range,json=priceRange,proto3" json:"price_range,omitempty"`
 }
 
 func (x *PriceInfo) Reset() {
 	*x = PriceInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[2]
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -241,7 +708,7 @@ func (x *PriceInfo) String() string {
 func (*PriceInfo) ProtoMessage() {}
 
 func (x *PriceInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[2]
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -254,7 +721,7 @@ func (x *PriceInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PriceInfo.ProtoReflect.Descriptor instead.
 func (*PriceInfo) Descriptor() ([]byte, []int) {
-	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{2}
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PriceInfo) GetCurrencyCode() string {
@@ -285,6 +752,107 @@ func (x *PriceInfo) GetCost() float32 {
 	return 0
 }
 
+func (x *PriceInfo) GetPriceEffectiveTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.PriceEffectiveTime
+	}
+	return nil
+}
+
+func (x *PriceInfo) GetPriceExpireTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.PriceExpireTime
+	}
+	return nil
+}
+
+func (x *PriceInfo) GetPriceRange() *PriceInfo_PriceRange {
+	if x != nil {
+		return x.PriceRange
+	}
+	return nil
+}
+
+// The rating of a [Product][google.cloud.retail.v2.Product].
+type Rating struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The total number of ratings. This value is independent of the value of
+	// [rating_histogram][google.cloud.retail.v2.Rating.rating_histogram].
+	//
+	// This value must be nonnegative. Otherwise, an INVALID_ARGUMENT error is
+	// returned.
+	RatingCount int32 `protobuf:"varint,1,opt,name=rating_count,json=ratingCount,proto3" json:"rating_count,omitempty"`
+	// The average rating of the [Product][google.cloud.retail.v2.Product].
+	//
+	// The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is
+	// returned.
+	AverageRating float32 `protobuf:"fixed32,2,opt,name=average_rating,json=averageRating,proto3" json:"average_rating,omitempty"`
+	// List of rating counts per rating value (index = rating - 1). The list is
+	// empty if there is no rating. If the list is non-empty, its size is
+	// always 5. Otherwise, an INVALID_ARGUMENT error is returned.
+	//
+	// For example, [41, 14, 13, 47, 303]. It means that the
+	// [Product][google.cloud.retail.v2.Product] got 41 ratings with 1 star, 14
+	// ratings with 2 star, and so on.
+	RatingHistogram []int32 `protobuf:"varint,3,rep,packed,name=rating_histogram,json=ratingHistogram,proto3" json:"rating_histogram,omitempty"`
+}
+
+func (x *Rating) Reset() {
+	*x = Rating{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Rating) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Rating) ProtoMessage() {}
+
+func (x *Rating) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Rating.ProtoReflect.Descriptor instead.
+func (*Rating) Descriptor() ([]byte, []int) {
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *Rating) GetRatingCount() int32 {
+	if x != nil {
+		return x.RatingCount
+	}
+	return 0
+}
+
+func (x *Rating) GetAverageRating() float32 {
+	if x != nil {
+		return x.AverageRating
+	}
+	return 0
+}
+
+func (x *Rating) GetRatingHistogram() []int32 {
+	if x != nil {
+		return x.RatingHistogram
+	}
+	return nil
+}
+
 // Information of an end user.
 type UserInfo struct {
 	state         protoimpl.MessageState
@@ -297,8 +865,9 @@ type UserInfo struct {
 	// The field must be a UTF-8 encoded string with a length limit of 128
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	UserId string `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	// The end user's IP address. This field is used to extract location
-	// information for personalization.
+	// The end user's IP address. Required for getting
+	// [SearchResponse.sponsored_results][google.cloud.retail.v2.SearchResponse.sponsored_results].
+	// This field is used to extract location information for personalization.
 	//
 	// This field must be either an IPv4 address (e.g. "104.133.9.80") or an IPv6
 	// address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334"). Otherwise, an
@@ -310,7 +879,8 @@ type UserInfo struct {
 	// [direct_user_request][google.cloud.retail.v2.UserInfo.direct_user_request]
 	// is set.
 	IpAddress string `protobuf:"bytes,2,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
-	// User agent as included in the HTTP header.
+	// User agent as included in the HTTP header. Required for getting
+	// [SearchResponse.sponsored_results][google.cloud.retail.v2.SearchResponse.sponsored_results].
 	//
 	// The field must be a UTF-8 encoded string with a length limit of 1,000
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -337,7 +907,7 @@ type UserInfo struct {
 func (x *UserInfo) Reset() {
 	*x = UserInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[3]
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -350,7 +920,7 @@ func (x *UserInfo) String() string {
 func (*UserInfo) ProtoMessage() {}
 
 func (x *UserInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[3]
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +933,7 @@ func (x *UserInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserInfo.ProtoReflect.Descriptor instead.
 func (*UserInfo) Descriptor() ([]byte, []int) {
-	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{3}
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UserInfo) GetUserId() string {
@@ -394,6 +964,132 @@ func (x *UserInfo) GetDirectUserRequest() bool {
 	return false
 }
 
+// Promotion information.
+type Promotion struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// ID of the promotion. For example, "free gift".
+	//
+	// The value value must be a UTF-8 encoded string with a length limit of 128
+	// characters, and match the pattern: [a-zA-Z][a-zA-Z0-9_]*. For example,
+	// id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is
+	// returned.
+	//
+	// Google Merchant Center property
+	// [promotion](https://support.google.com/merchants/answer/7050148).
+	PromotionId string `protobuf:"bytes,1,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id,omitempty"`
+}
+
+func (x *Promotion) Reset() {
+	*x = Promotion{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Promotion) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Promotion) ProtoMessage() {}
+
+func (x *Promotion) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Promotion.ProtoReflect.Descriptor instead.
+func (*Promotion) Descriptor() ([]byte, []int) {
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *Promotion) GetPromotionId() string {
+	if x != nil {
+		return x.PromotionId
+	}
+	return ""
+}
+
+// The price range of all
+// [variant][google.cloud.retail.v2.Product.Type.VARIANT]
+// [Product][google.cloud.retail.v2.Product] having the same
+// [Product.primary_product_id][google.cloud.retail.v2.Product.primary_product_id].
+type PriceInfo_PriceRange struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The inclusive
+	// [Product.pricing_info.price][google.cloud.retail.v2.PriceInfo.price]
+	// interval of all [variant][google.cloud.retail.v2.Product.Type.VARIANT]
+	// [Product][google.cloud.retail.v2.Product] having the same
+	// [Product.primary_product_id][google.cloud.retail.v2.Product.primary_product_id].
+	Price *Interval `protobuf:"bytes,1,opt,name=price,proto3" json:"price,omitempty"`
+	// The inclusive
+	// [Product.pricing_info.original_price][google.cloud.retail.v2.PriceInfo.original_price]
+	// internal of all [variant][google.cloud.retail.v2.Product.Type.VARIANT]
+	// [Product][google.cloud.retail.v2.Product] having the same
+	// [Product.primary_product_id][google.cloud.retail.v2.Product.primary_product_id].
+	OriginalPrice *Interval `protobuf:"bytes,2,opt,name=original_price,json=originalPrice,proto3" json:"original_price,omitempty"`
+}
+
+func (x *PriceInfo_PriceRange) Reset() {
+	*x = PriceInfo_PriceRange{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *PriceInfo_PriceRange) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PriceInfo_PriceRange) ProtoMessage() {}
+
+func (x *PriceInfo_PriceRange) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PriceInfo_PriceRange.ProtoReflect.Descriptor instead.
+func (*PriceInfo_PriceRange) Descriptor() ([]byte, []int) {
+	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{6, 0}
+}
+
+func (x *PriceInfo_PriceRange) GetPrice() *Interval {
+	if x != nil {
+		return x.Price
+	}
+	return nil
+}
+
+func (x *PriceInfo_PriceRange) GetOriginalPrice() *Interval {
+	if x != nil {
+		return x.OriginalPrice
+	}
+	return nil
+}
+
 var File_google_cloud_retail_v2_common_proto protoreflect.FileDescriptor
 
 var file_google_cloud_retail_v2_common_proto_rawDesc = []byte{
@@ -406,46 +1102,112 @@ var file_google_cloud_retail_v2_common_proto_rawDesc = []byte{
 	0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f, 0x62, 0x65,
 	0x68, 0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f,
 	0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74, 0x69,
-	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x3f, 0x0a,
-	0x0f, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65,
-	0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x04,
-	0x74, 0x65, 0x78, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x18,
-	0x02, 0x20, 0x03, 0x28, 0x01, 0x52, 0x07, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x22, 0x4c,
-	0x0a, 0x05, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x12, 0x15, 0x0a, 0x03, 0x75, 0x72, 0x69, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x03, 0x75, 0x72, 0x69, 0x12, 0x16,
-	0x0a, 0x06, 0x68, 0x65, 0x69, 0x67, 0x68, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06,
-	0x68, 0x65, 0x69, 0x67, 0x68, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x77, 0x69, 0x64, 0x74, 0x68, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x77, 0x69, 0x64, 0x74, 0x68, 0x22, 0x81, 0x01, 0x0a,
-	0x09, 0x50, 0x72, 0x69, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x23, 0x0a, 0x0d, 0x63, 0x75,
-	0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0c, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12,
-	0x14, 0x0a, 0x05, 0x70, 0x72, 0x69, 0x63, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x05,
-	0x70, 0x72, 0x69, 0x63, 0x65, 0x12, 0x25, 0x0a, 0x0e, 0x6f, 0x72, 0x69, 0x67, 0x69, 0x6e, 0x61,
-	0x6c, 0x5f, 0x70, 0x72, 0x69, 0x63, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x02, 0x52, 0x0d, 0x6f,
-	0x72, 0x69, 0x67, 0x69, 0x6e, 0x61, 0x6c, 0x50, 0x72, 0x69, 0x63, 0x65, 0x12, 0x12, 0x0a, 0x04,
-	0x63, 0x6f, 0x73, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x02, 0x52, 0x04, 0x63, 0x6f, 0x73, 0x74,
-	0x22, 0x91, 0x01, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x17, 0x0a,
-	0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x69, 0x70, 0x5f, 0x61, 0x64, 0x64,
-	0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x69, 0x70, 0x41, 0x64,
-	0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x61, 0x67,
-	0x65, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x75, 0x73, 0x65, 0x72, 0x41,
-	0x67, 0x65, 0x6e, 0x74, 0x12, 0x2e, 0x0a, 0x13, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x5f, 0x75,
-	0x73, 0x65, 0x72, 0x5f, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28,
-	0x08, 0x52, 0x11, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x42, 0xc0, 0x01, 0x0a, 0x1a, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c,
-	0x2e, 0x76, 0x32, 0x42, 0x0b, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x50, 0x72, 0x6f, 0x74, 0x6f,
-	0x50, 0x01, 0x5a, 0x3c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e,
-	0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f,
-	0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2f, 0x76, 0x32, 0x3b, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c,
-	0xa2, 0x02, 0x06, 0x52, 0x45, 0x54, 0x41, 0x49, 0x4c, 0xaa, 0x02, 0x16, 0x47, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x52, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e,
-	0x56, 0x32, 0xca, 0x02, 0x16, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75,
-	0x64, 0x5c, 0x52, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x5c, 0x56, 0x32, 0xea, 0x02, 0x19, 0x47, 0x6f,
-	0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x3a, 0x3a, 0x52, 0x65, 0x74,
-	0x61, 0x69, 0x6c, 0x3a, 0x3a, 0x56, 0x32, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x43, 0x0a,
+	0x08, 0x41, 0x75, 0x64, 0x69, 0x65, 0x6e, 0x63, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x67, 0x65, 0x6e,
+	0x64, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x67, 0x65, 0x6e, 0x64,
+	0x65, 0x72, 0x73, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x67, 0x65, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70,
+	0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x09, 0x61, 0x67, 0x65, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x73, 0x22, 0x4a, 0x0a, 0x09, 0x43, 0x6f, 0x6c, 0x6f, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12,
+	0x25, 0x0a, 0x0e, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x5f, 0x66, 0x61, 0x6d, 0x69, 0x6c, 0x69, 0x65,
+	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0d, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x46, 0x61,
+	0x6d, 0x69, 0x6c, 0x69, 0x65, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x73,
+	0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x73, 0x22, 0xa4,
+	0x01, 0x0a, 0x0f, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75,
+	0x74, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09,
+	0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72,
+	0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x01, 0x52, 0x07, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x73,
+	0x12, 0x23, 0x0a, 0x0a, 0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x61, 0x62, 0x6c, 0x65, 0x18, 0x03,
+	0x20, 0x01, 0x28, 0x08, 0x48, 0x00, 0x52, 0x0a, 0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x61, 0x62,
+	0x6c, 0x65, 0x88, 0x01, 0x01, 0x12, 0x21, 0x0a, 0x09, 0x69, 0x6e, 0x64, 0x65, 0x78, 0x61, 0x62,
+	0x6c, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x48, 0x01, 0x52, 0x09, 0x69, 0x6e, 0x64, 0x65,
+	0x78, 0x61, 0x62, 0x6c, 0x65, 0x88, 0x01, 0x01, 0x42, 0x0d, 0x0a, 0x0b, 0x5f, 0x73, 0x65, 0x61,
+	0x72, 0x63, 0x68, 0x61, 0x62, 0x6c, 0x65, 0x42, 0x0c, 0x0a, 0x0a, 0x5f, 0x69, 0x6e, 0x64, 0x65,
+	0x78, 0x61, 0x62, 0x6c, 0x65, 0x22, 0x42, 0x0a, 0x0f, 0x46, 0x75, 0x6c, 0x66, 0x69, 0x6c, 0x6c,
+	0x6d, 0x65, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09,
+	0x70, 0x6c, 0x61, 0x63, 0x65, 0x5f, 0x69, 0x64, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52,
+	0x08, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x49, 0x64, 0x73, 0x22, 0x4c, 0x0a, 0x05, 0x49, 0x6d, 0x61,
+	0x67, 0x65, 0x12, 0x15, 0x0a, 0x03, 0x75, 0x72, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42,
+	0x03, 0xe0, 0x41, 0x02, 0x52, 0x03, 0x75, 0x72, 0x69, 0x12, 0x16, 0x0a, 0x06, 0x68, 0x65, 0x69,
+	0x67, 0x68, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x68, 0x65, 0x69, 0x67, 0x68,
+	0x74, 0x12, 0x14, 0x0a, 0x05, 0x77, 0x69, 0x64, 0x74, 0x68, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05,
+	0x52, 0x05, 0x77, 0x69, 0x64, 0x74, 0x68, 0x22, 0xae, 0x01, 0x0a, 0x08, 0x49, 0x6e, 0x74, 0x65,
+	0x72, 0x76, 0x61, 0x6c, 0x12, 0x1a, 0x0a, 0x07, 0x6d, 0x69, 0x6e, 0x69, 0x6d, 0x75, 0x6d, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x01, 0x48, 0x00, 0x52, 0x07, 0x6d, 0x69, 0x6e, 0x69, 0x6d, 0x75, 0x6d,
+	0x12, 0x2d, 0x0a, 0x11, 0x65, 0x78, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x76, 0x65, 0x5f, 0x6d, 0x69,
+	0x6e, 0x69, 0x6d, 0x75, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x01, 0x48, 0x00, 0x52, 0x10, 0x65,
+	0x78, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x76, 0x65, 0x4d, 0x69, 0x6e, 0x69, 0x6d, 0x75, 0x6d, 0x12,
+	0x1a, 0x0a, 0x07, 0x6d, 0x61, 0x78, 0x69, 0x6d, 0x75, 0x6d, 0x18, 0x03, 0x20, 0x01, 0x28, 0x01,
+	0x48, 0x01, 0x52, 0x07, 0x6d, 0x61, 0x78, 0x69, 0x6d, 0x75, 0x6d, 0x12, 0x2d, 0x0a, 0x11, 0x65,
+	0x78, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x76, 0x65, 0x5f, 0x6d, 0x61, 0x78, 0x69, 0x6d, 0x75, 0x6d,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x01, 0x48, 0x01, 0x52, 0x10, 0x65, 0x78, 0x63, 0x6c, 0x75, 0x73,
+	0x69, 0x76, 0x65, 0x4d, 0x61, 0x78, 0x69, 0x6d, 0x75, 0x6d, 0x42, 0x05, 0x0a, 0x03, 0x6d, 0x69,
+	0x6e, 0x42, 0x05, 0x0a, 0x03, 0x6d, 0x61, 0x78, 0x22, 0xfb, 0x03, 0x0a, 0x09, 0x50, 0x72, 0x69,
+	0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x23, 0x0a, 0x0d, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e,
+	0x63, 0x79, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x63,
+	0x75, 0x72, 0x72, 0x65, 0x6e, 0x63, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x70,
+	0x72, 0x69, 0x63, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x05, 0x70, 0x72, 0x69, 0x63,
+	0x65, 0x12, 0x25, 0x0a, 0x0e, 0x6f, 0x72, 0x69, 0x67, 0x69, 0x6e, 0x61, 0x6c, 0x5f, 0x70, 0x72,
+	0x69, 0x63, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x02, 0x52, 0x0d, 0x6f, 0x72, 0x69, 0x67, 0x69,
+	0x6e, 0x61, 0x6c, 0x50, 0x72, 0x69, 0x63, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x73, 0x74,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x02, 0x52, 0x04, 0x63, 0x6f, 0x73, 0x74, 0x12, 0x4c, 0x0a, 0x14,
+	0x70, 0x72, 0x69, 0x63, 0x65, 0x5f, 0x65, 0x66, 0x66, 0x65, 0x63, 0x74, 0x69, 0x76, 0x65, 0x5f,
+	0x74, 0x69, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d,
+	0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x12, 0x70, 0x72, 0x69, 0x63, 0x65, 0x45, 0x66, 0x66,
+	0x65, 0x63, 0x74, 0x69, 0x76, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x12, 0x46, 0x0a, 0x11, 0x70, 0x72,
+	0x69, 0x63, 0x65, 0x5f, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18,
+	0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d,
+	0x70, 0x52, 0x0f, 0x70, 0x72, 0x69, 0x63, 0x65, 0x45, 0x78, 0x70, 0x69, 0x72, 0x65, 0x54, 0x69,
+	0x6d, 0x65, 0x12, 0x52, 0x0a, 0x0b, 0x70, 0x72, 0x69, 0x63, 0x65, 0x5f, 0x72, 0x61, 0x6e, 0x67,
+	0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e, 0x76, 0x32,
+	0x2e, 0x50, 0x72, 0x69, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x2e, 0x50, 0x72, 0x69, 0x63, 0x65,
+	0x52, 0x61, 0x6e, 0x67, 0x65, 0x42, 0x03, 0xe0, 0x41, 0x03, 0x52, 0x0a, 0x70, 0x72, 0x69, 0x63,
+	0x65, 0x52, 0x61, 0x6e, 0x67, 0x65, 0x1a, 0x8d, 0x01, 0x0a, 0x0a, 0x50, 0x72, 0x69, 0x63, 0x65,
+	0x52, 0x61, 0x6e, 0x67, 0x65, 0x12, 0x36, 0x0a, 0x05, 0x70, 0x72, 0x69, 0x63, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
+	0x6f, 0x75, 0x64, 0x2e, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e, 0x76, 0x32, 0x2e, 0x49, 0x6e,
+	0x74, 0x65, 0x72, 0x76, 0x61, 0x6c, 0x52, 0x05, 0x70, 0x72, 0x69, 0x63, 0x65, 0x12, 0x47, 0x0a,
+	0x0e, 0x6f, 0x72, 0x69, 0x67, 0x69, 0x6e, 0x61, 0x6c, 0x5f, 0x70, 0x72, 0x69, 0x63, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
+	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e, 0x76, 0x32, 0x2e, 0x49,
+	0x6e, 0x74, 0x65, 0x72, 0x76, 0x61, 0x6c, 0x52, 0x0d, 0x6f, 0x72, 0x69, 0x67, 0x69, 0x6e, 0x61,
+	0x6c, 0x50, 0x72, 0x69, 0x63, 0x65, 0x22, 0x7d, 0x0a, 0x06, 0x52, 0x61, 0x74, 0x69, 0x6e, 0x67,
+	0x12, 0x21, 0x0a, 0x0c, 0x72, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0b, 0x72, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x43, 0x6f,
+	0x75, 0x6e, 0x74, 0x12, 0x25, 0x0a, 0x0e, 0x61, 0x76, 0x65, 0x72, 0x61, 0x67, 0x65, 0x5f, 0x72,
+	0x61, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x02, 0x52, 0x0d, 0x61, 0x76, 0x65,
+	0x72, 0x61, 0x67, 0x65, 0x52, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x12, 0x29, 0x0a, 0x10, 0x72, 0x61,
+	0x74, 0x69, 0x6e, 0x67, 0x5f, 0x68, 0x69, 0x73, 0x74, 0x6f, 0x67, 0x72, 0x61, 0x6d, 0x18, 0x03,
+	0x20, 0x03, 0x28, 0x05, 0x52, 0x0f, 0x72, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x48, 0x69, 0x73, 0x74,
+	0x6f, 0x67, 0x72, 0x61, 0x6d, 0x22, 0x91, 0x01, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e,
+	0x66, 0x6f, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x69,
+	0x70, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x09, 0x69, 0x70, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x73,
+	0x65, 0x72, 0x5f, 0x61, 0x67, 0x65, 0x6e, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09,
+	0x75, 0x73, 0x65, 0x72, 0x41, 0x67, 0x65, 0x6e, 0x74, 0x12, 0x2e, 0x0a, 0x13, 0x64, 0x69, 0x72,
+	0x65, 0x63, 0x74, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x11, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x55, 0x73,
+	0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x2e, 0x0a, 0x09, 0x50, 0x72, 0x6f,
+	0x6d, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x21, 0x0a, 0x0c, 0x70, 0x72, 0x6f, 0x6d, 0x6f, 0x74,
+	0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x72,
+	0x6f, 0x6d, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x42, 0xc0, 0x01, 0x0a, 0x1a, 0x63, 0x6f,
+	0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x72,
+	0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e, 0x76, 0x32, 0x42, 0x0b, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63,
+	0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2f, 0x76, 0x32, 0x3b, 0x72,
+	0x65, 0x74, 0x61, 0x69, 0x6c, 0xa2, 0x02, 0x06, 0x52, 0x45, 0x54, 0x41, 0x49, 0x4c, 0xaa, 0x02,
+	0x16, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x52, 0x65,
+	0x74, 0x61, 0x69, 0x6c, 0x2e, 0x56, 0x32, 0xca, 0x02, 0x16, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x52, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x5c, 0x56, 0x32,
+	0xea, 0x02, 0x19, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f, 0x75, 0x64,
+	0x3a, 0x3a, 0x52, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x3a, 0x3a, 0x56, 0x32, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -460,19 +1222,32 @@ func file_google_cloud_retail_v2_common_proto_rawDescGZIP() []byte {
 	return file_google_cloud_retail_v2_common_proto_rawDescData
 }
 
-var file_google_cloud_retail_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_google_cloud_retail_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_google_cloud_retail_v2_common_proto_goTypes = []interface{}{
-	(*CustomAttribute)(nil), // 0: google.cloud.retail.v2.CustomAttribute
-	(*Image)(nil),           // 1: google.cloud.retail.v2.Image
-	(*PriceInfo)(nil),       // 2: google.cloud.retail.v2.PriceInfo
-	(*UserInfo)(nil),        // 3: google.cloud.retail.v2.UserInfo
+	(*Audience)(nil),              // 0: google.cloud.retail.v2.Audience
+	(*ColorInfo)(nil),             // 1: google.cloud.retail.v2.ColorInfo
+	(*CustomAttribute)(nil),       // 2: google.cloud.retail.v2.CustomAttribute
+	(*FulfillmentInfo)(nil),       // 3: google.cloud.retail.v2.FulfillmentInfo
+	(*Image)(nil),                 // 4: google.cloud.retail.v2.Image
+	(*Interval)(nil),              // 5: google.cloud.retail.v2.Interval
+	(*PriceInfo)(nil),             // 6: google.cloud.retail.v2.PriceInfo
+	(*Rating)(nil),                // 7: google.cloud.retail.v2.Rating
+	(*UserInfo)(nil),              // 8: google.cloud.retail.v2.UserInfo
+	(*Promotion)(nil),             // 9: google.cloud.retail.v2.Promotion
+	(*PriceInfo_PriceRange)(nil),  // 10: google.cloud.retail.v2.PriceInfo.PriceRange
+	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
 }
 var file_google_cloud_retail_v2_common_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	11, // 0: google.cloud.retail.v2.PriceInfo.price_effective_time:type_name -> google.protobuf.Timestamp
+	11, // 1: google.cloud.retail.v2.PriceInfo.price_expire_time:type_name -> google.protobuf.Timestamp
+	10, // 2: google.cloud.retail.v2.PriceInfo.price_range:type_name -> google.cloud.retail.v2.PriceInfo.PriceRange
+	5,  // 3: google.cloud.retail.v2.PriceInfo.PriceRange.price:type_name -> google.cloud.retail.v2.Interval
+	5,  // 4: google.cloud.retail.v2.PriceInfo.PriceRange.original_price:type_name -> google.cloud.retail.v2.Interval
+	5,  // [5:5] is the sub-list for method output_type
+	5,  // [5:5] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_retail_v2_common_proto_init() }
@@ -482,7 +1257,7 @@ func file_google_cloud_retail_v2_common_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_google_cloud_retail_v2_common_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CustomAttribute); i {
+			switch v := v.(*Audience); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -494,7 +1269,7 @@ func file_google_cloud_retail_v2_common_proto_init() {
 			}
 		}
 		file_google_cloud_retail_v2_common_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Image); i {
+			switch v := v.(*ColorInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -506,7 +1281,7 @@ func file_google_cloud_retail_v2_common_proto_init() {
 			}
 		}
 		file_google_cloud_retail_v2_common_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PriceInfo); i {
+			switch v := v.(*CustomAttribute); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -518,6 +1293,66 @@ func file_google_cloud_retail_v2_common_proto_init() {
 			}
 		}
 		file_google_cloud_retail_v2_common_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*FulfillmentInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_retail_v2_common_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Image); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_retail_v2_common_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Interval); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_retail_v2_common_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PriceInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_retail_v2_common_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Rating); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_retail_v2_common_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UserInfo); i {
 			case 0:
 				return &v.state
@@ -529,6 +1364,37 @@ func file_google_cloud_retail_v2_common_proto_init() {
 				return nil
 			}
 		}
+		file_google_cloud_retail_v2_common_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Promotion); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_retail_v2_common_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*PriceInfo_PriceRange); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+	}
+	file_google_cloud_retail_v2_common_proto_msgTypes[2].OneofWrappers = []interface{}{}
+	file_google_cloud_retail_v2_common_proto_msgTypes[5].OneofWrappers = []interface{}{
+		(*Interval_Minimum)(nil),
+		(*Interval_ExclusiveMinimum)(nil),
+		(*Interval_Maximum)(nil),
+		(*Interval_ExclusiveMaximum)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -536,7 +1402,7 @@ func file_google_cloud_retail_v2_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_retail_v2_common_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

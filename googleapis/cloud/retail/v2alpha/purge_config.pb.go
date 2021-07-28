@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -84,7 +84,7 @@ type PurgeUserEventsRequest struct {
 
 	// Required. The resource name of the catalog under which the events are
 	// created. The format is
-	// "projects/${projectId}/locations/global/catalogs/${catalogId}"
+	// `projects/${projectId}/locations/global/catalogs/${catalogId}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The filter string to specify the events to be deleted with a
 	// length limit of 5,000 characters. Empty string filter is not allowed. The

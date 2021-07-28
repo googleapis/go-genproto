@@ -174,14 +174,14 @@ type isBigQueryTableSpec_TypeSpec interface {
 }
 
 type BigQueryTableSpec_ViewSpec struct {
-	// Table view specification. This field should only be populated if
-	// `table_source_type` is `BIGQUERY_VIEW`.
+	// Table view specification. Populated only if
+	// the `table_source_type` is `BIGQUERY_VIEW`.
 	ViewSpec *ViewSpec `protobuf:"bytes,2,opt,name=view_spec,json=viewSpec,proto3,oneof"`
 }
 
 type BigQueryTableSpec_TableSpec struct {
-	// Spec of a BigQuery table. This field should only be populated if
-	// `table_source_type` is `BIGQUERY_TABLE`.
+	// Specification of a BigQuery table. Populated only if
+	// the `table_source_type` is `BIGQUERY_TABLE`.
 	TableSpec *TableSpec `protobuf:"bytes,3,opt,name=table_spec,json=tableSpec,proto3,oneof"`
 }
 
@@ -238,16 +238,18 @@ func (x *ViewSpec) GetViewQuery() string {
 	return ""
 }
 
-// Normal BigQuery table spec.
+// Normal BigQuery table specification.
 type TableSpec struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Output only. If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`,
-	// `grouped_entry` is the Data Catalog resource name of the date sharded
-	// grouped entry, for example,
-	// `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.
+	// Output only. If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD`
+	// name pattern, this field is the Data Catalog resource name of the
+	// date-sharded grouped entry. For example:
+	//
+	// `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
+	//
 	// Otherwise, `grouped_entry` is empty.
 	GroupedEntry string `protobuf:"bytes,1,opt,name=grouped_entry,json=groupedEntry,proto3" json:"grouped_entry,omitempty"`
 }
@@ -291,20 +293,25 @@ func (x *TableSpec) GetGroupedEntry() string {
 	return ""
 }
 
-// Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`.
-// Context:
-// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding
+// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name
+// pattern.
+//
+// For more information, see [Introduction to partitioned tables]
+// (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
 type BigQueryDateShardedSpec struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The Data Catalog resource name of the dataset entry the current table
-	// belongs to, for example,
-	// `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.
+	// belongs to. For example:
+	//
+	// `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
 	Dataset string `protobuf:"bytes,1,opt,name=dataset,proto3" json:"dataset,omitempty"`
-	// Output only. The table name prefix of the shards. The name of any given shard is
-	// `[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the
+	// Output only. The table name prefix of the shards.
+	//
+	// The name of any given shard is `[table_prefix]YYYYMMDD`.
+	// For example, for the `MyTable20180101` shard, the
 	// `table_prefix` is `MyTable`.
 	TablePrefix string `protobuf:"bytes,2,opt,name=table_prefix,json=tablePrefix,proto3" json:"table_prefix,omitempty"`
 	// Output only. Total number of shards.
