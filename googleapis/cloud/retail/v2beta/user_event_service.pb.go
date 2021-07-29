@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -109,7 +109,7 @@ type WriteUserEventRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The parent catalog resource name, such as
-	// "projects/1234/locations/global/catalogs/default_catalog".
+	// `projects/1234/locations/global/catalogs/default_catalog`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. User event to write.
 	UserEvent *UserEvent `protobuf:"bytes,2,opt,name=user_event,json=userEvent,proto3" json:"user_event,omitempty"`
@@ -168,7 +168,7 @@ type CollectUserEventRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The parent catalog name, such as
-	// "projects/1234/locations/global/catalogs/default_catalog".
+	// `projects/1234/locations/global/catalogs/default_catalog`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. URL encoded UserEvent proto with a length limit of 2,000,000
 	// characters.
@@ -251,7 +251,7 @@ type RejoinUserEventsRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The parent catalog resource name, such as
-	// "projects/1234/locations/global/catalogs/default_catalog".
+	// `projects/1234/locations/global/catalogs/default_catalog`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The type of the user event rejoin to define the scope and range of the user
 	// events to be rejoined with the latest product catalog. Defaults to
@@ -409,6 +409,9 @@ var file_google_cloud_retail_v2beta_user_event_service_proto_rawDesc = []byte{
 	0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f, 0x62, 0x65, 0x68, 0x61, 0x76,
 	0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x19, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
 	0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x68, 0x74, 0x74, 0x70, 0x62, 0x6f, 0x64, 0x79, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x63, 0x6c, 0x6f,
+	0x75, 0x64, 0x2f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2f, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61,
+	0x2f, 0x65, 0x78, 0x70, 0x6f, 0x72, 0x74, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x63, 0x6c, 0x6f,
 	0x75, 0x64, 0x2f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2f, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61,
 	0x2f, 0x69, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x70,
@@ -611,6 +614,7 @@ func file_google_cloud_retail_v2beta_user_event_service_proto_init() {
 	if File_google_cloud_retail_v2beta_user_event_service_proto != nil {
 		return
 	}
+	file_google_cloud_retail_v2beta_export_config_proto_init()
 	file_google_cloud_retail_v2beta_import_config_proto_init()
 	file_google_cloud_retail_v2beta_purge_config_proto_init()
 	file_google_cloud_retail_v2beta_user_event_proto_init()
