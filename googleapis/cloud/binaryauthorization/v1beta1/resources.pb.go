@@ -43,9 +43,9 @@ type Policy_GlobalPolicyEvaluationMode int32
 const (
 	// Not specified: DISABLE is assumed.
 	Policy_GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED Policy_GlobalPolicyEvaluationMode = 0
-	// Enables global policy evaluation.
+	// Enables system policy evaluation.
 	Policy_ENABLE Policy_GlobalPolicyEvaluationMode = 1
-	// Disables global policy evaluation.
+	// Disables system policy evaluation.
 	Policy_DISABLE Policy_GlobalPolicyEvaluationMode = 2
 )
 

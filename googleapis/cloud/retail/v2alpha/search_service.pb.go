@@ -965,173 +965,35 @@ type SearchRequest_FacetSpec_FacetKey struct {
 	// [FacetKey.query][google.cloud.retail.v2alpha.SearchRequest.FacetSpec.FacetKey.query]
 	// is not specified:
 	//
-	// * textual_field =<br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Product.brands][google.cloud.retail.v2alpha.Product.brands].<br>*
-	//     </font>
-	//     "brands";
-	//     <br>
-	//     <font color='categories'>
-	//     *# The
-	//     [Product.categories][google.cloud.retail.v2alpha.Product.categories].<br>*
-	//     </font>
-	//     "categories";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Audience.genders][google.cloud.retail.v2alpha.Audience.genders].<br>*
-	//     </font>
-	//     | "genders";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Audience.age_groups][google.cloud.retail.v2alpha.Audience.age_groups].<br>*
-	//     </font>
-	//     | "ageGroups";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Product.availability][google.cloud.retail.v2alpha.Product.availability].
-	//     Value is one of<br>*
-	//     *# "IN_STOCK", "OUT_OF_STOCK", PREORDER", "BACKORDER".<br>*
-	//     </font>
-	//     | "availability";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [ColorInfo.color_families][google.cloud.retail.v2alpha.ColorInfo.color_families].<br>*
-	//     </font>
-	//     | "colorFamilies";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [ColorInfo.colors][google.cloud.retail.v2alpha.ColorInfo.colors].<br>*
-	//     </font>
-	//     | "colors";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Product.sizes][google.cloud.retail.v2alpha.Product.sizes].<br>*
-	//     </font>
-	//     | "sizes";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Product.materials][google.cloud.retail.v2alpha.Product.materials].<br>*
-	//     </font>
-	//     | "materials";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Product.patterns][google.cloud.retail.v2alpha.Product.patterns].<br>*
-	//     </font>
-	//     | "patterns";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Product.conditions][google.cloud.retail.v2alpha.Product.conditions].<br>*
-	//     </font>
-	//     | "conditions";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The textual custom attribute in
-	//     [Product][google.cloud.retail.v2alpha.Product] object. Key can<br>*
-	//     *# be any key in the
-	//     [Product.attributes][google.cloud.retail.v2alpha.Product.attributes]
-	//     map<br>*
-	//     *# if the attribute values are textual.<br>*
-	//     *# map.<br>*
-	//     </font>
-	//     | "attributes.key";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The [FulfillmentInfo.ids][] for type
-	//     *# [FulfillmentInfo.Type.PICKUP_IN_STORE][].<br>*
-	//     </font>
-	//     | "pickupInStore";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The [FulfillmentInfo.ids][] for type
-	//     *# [FulfillmentInfo.Type.SHIP_TO_STORE][].<br>*
-	//     </font>
-	//     | "shipToStore";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The [FulfillmentInfo.ids][] for type
-	//     *# [FulfillmentInfo.Type.SAME_DAY_DELIVERY][].<br>*
-	//     </font>
-	//     | "sameDayDelivery";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The [FulfillmentInfo.ids][] for type
-	//     *# [FulfillmentInfo.Type.NEXT_DAY_DELIVERY][].<br>*
-	//     </font>
-	//     | "nextDayDelivery";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The [FulfillmentInfo.ids][] for type
-	//     *# [FulfillmentInfo.Type.CUSTOM_TYPE_1][].<br>*
-	//     </font>
-	//     | "customFulfillment1";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The [FulfillmentInfo.ids][] for type
-	//     *# [FulfillmentInfo.Type.CUSTOM_TYPE_2][].<br>*
-	//     </font>
-	//     | "customFulfillment2";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The [FulfillmentInfo.ids][] for type
-	//     *# [FulfillmentInfo.Type.CUSTOM_TYPE_3][].<br>*
-	//     </font>
-	//     | "customFulfillment3";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The [FulfillmentInfo.ids][] for type
-	//     *# [FulfillmentInfo.Type.CUSTOM_TYPE_4][].<br>*
-	//     </font>
-	//     | "customFulfillment4";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The [FulfillmentInfo.ids][] for type
-	//     *# [FulfillmentInfo.Type.CUSTOM_TYPE_5][].<br>*
-	//     </font>
-	//     | "customFulfillment5";
+	// Textual facet keys:
+	// * brands
+	// * categories
+	// * genders
+	// * ageGroups
+	// * availability
+	// * colorFamilies
+	// * colors
+	// * sizes
+	// * materials
+	// * patterns
+	// * conditions
+	// * attributes.key
+	// * pickupInStore
+	// * shipToStore
+	// * sameDayDelivery
+	// * nextDayDelivery
+	// * customFulfillment1
+	// * customFulfillment2
+	// * customFulfillment3
+	// * customFulfillment4
+	// * customFulfillment5
 	//
-	// * numerical_field =<br>
-	//     <font color='grey'>
-	//     *# The
-	//     [PriceInfo.price][google.cloud.retail.v2alpha.PriceInfo.price].<br>*
-	//     </font>
-	//     "price";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The discount. Computed by (original_price-price)/price <br>*
-	//     </font>
-	//     "discount";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Rating.average_rating][google.cloud.retail.v2alpha.Rating.average_rating].<br>*
-	//     </font>
-	//     "rating";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The
-	//     [Rating.rating_count][google.cloud.retail.v2alpha.Rating.rating_count].<br>*
-	//     </font>
-	//     "ratingCount";
-	//     <br>
-	//     <font color='grey'>
-	//     *# The numerical custom attribute in
-	//     [Product][google.cloud.retail.v2alpha.Product] object. Key can<br>*
-	//     *# be any key in the
-	//     [Product.attributes][google.cloud.retail.v2alpha.Product.attributes]
-	//     map<br>*
-	//     *# if the attribute values are numerical.<br>*
-	//     </font>
-	//     | "attributes.key";
+	// Numeric facet keys:
+	// * price
+	// * discount
+	// * rating
+	// * ratingCount
+	// * attributes.key
 	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	// Set only if values should be bucketized into intervals. Must be set
 	// for facets with numerical values. Must not be set for facet with text
@@ -1312,11 +1174,12 @@ type SearchRequest_BoostSpec_ConditionBoostSpec struct {
 	// Examples:
 	//
 	// * To boost products with product ID "product_1" or "product_2", and
-	// color
-	//   "Red" or "Blue":<br>
-	//   *(id: ANY("product_1", "product_2"))<br>*
-	//   *AND<br>*
-	//   *(colorFamilies: ANY("Red", "Blue"))<br>*
+	// color "Red" or "Blue":
+	//   ```
+	//   (id: ANY("product_1", "product_2"))
+	//   AND
+	//   (colorFamilies: ANY("Red", "Blue"))
+	//   ```
 	Condition string `protobuf:"bytes,1,opt,name=condition,proto3" json:"condition,omitempty"`
 	// Strength of the condition boost, which should be in [-1, 1]. Negative
 	// boost means demotion. Default is 0.0.
@@ -1440,21 +1303,23 @@ type SearchResponse_SearchResult struct {
 	// string or double values with type
 	// [google.protobuf.ListValue][google.protobuf.ListValue]. For example, if
 	// there are two variants with colors "red" and "blue", the rollup values
-	// are { key: "colorFamilies"
-	//   value {
-	//     list_value {
-	//       values { string_value: "red" }
-	//       values { string_value: "blue" }
-	//      }
-	//   }
-	// }
+	// are
+	//
+	//     { key: "colorFamilies"
+	//       value {
+	//         list_value {
+	//           values { string_value: "red" }
+	//           values { string_value: "blue" }
+	//          }
+	//       }
+	//     }
 	//
 	// For
 	// [Product.fulfillment_info][google.cloud.retail.v2alpha.Product.fulfillment_info],
 	// the rollup values is a double value with type
-	// [google.protobuf.Value][google.protobuf.Value]. For example, {key:
-	// "pickupInStore.store1" value { number_value: 10 }} means a there are 10
-	// variants in this product are available in the store "store1".
+	// [google.protobuf.Value][google.protobuf.Value]. For example,
+	// `{key: "pickupInStore.store1" value { number_value: 10 }}` means a there
+	// are 10 variants in this product are available in the store "store1".
 	VariantRollupValues map[string]*structpb.Value `protobuf:"bytes,5,rep,name=variant_rollup_values,json=variantRollupValues,proto3" json:"variant_rollup_values,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
