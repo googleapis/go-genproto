@@ -35,8 +35,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// This enum describes all the possible systems that Data Catalog integrates
-// with.
+// This enum lists all the systems that Data Catalog integrates with.
 type IntegratedSystem int32
 
 const (

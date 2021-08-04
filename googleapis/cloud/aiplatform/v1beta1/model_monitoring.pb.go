@@ -511,7 +511,7 @@ type ModelMonitoringObjectiveConfig_TrainingPredictionSkewDetectionConfig struct
 	unknownFields protoimpl.UnknownFields
 
 	// Key is the feature name and value is the threshold. If a feature needs to
-	// be monitored for skew, a value threshold must be configed for that
+	// be monitored for skew, a value threshold must be configured for that
 	// feature. The threshold here is against feature distribution distance
 	// between the training and prediction feature.
 	SkewThresholds map[string]*ThresholdConfig `protobuf:"bytes,1,rep,name=skew_thresholds,json=skewThresholds,proto3" json:"skew_thresholds,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
@@ -574,7 +574,7 @@ type ModelMonitoringObjectiveConfig_PredictionDriftDetectionConfig struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Key is the feature name and value is the threshold. If a feature needs to
-	// be monitored for drift, a value threshold must be configed for that
+	// be monitored for drift, a value threshold must be configured for that
 	// feature. The threshold here is against feature distribution distance
 	// between different time windws.
 	DriftThresholds map[string]*ThresholdConfig `protobuf:"bytes,1,rep,name=drift_thresholds,json=driftThresholds,proto3" json:"drift_thresholds,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
