@@ -129,15 +129,19 @@ type Environment struct {
 
 	// Output only. The unique identifier of this agent environment.
 	// Supported formats:
+	//
 	// - `projects/<Project ID>/agent/environments/<Environment ID>`
 	// - `projects/<Project ID>/locations/<Location
 	//   ID>/agent/environments/<Environment ID>`
+	//
+	// The environment ID for the default environment is `-`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. The developer-provided description for this environment.
 	// The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	// Required. The agent version loaded into this environment.
+	// Optional. The agent version loaded into this environment.
 	// Supported formats:
+	//
 	// - `projects/<Project ID>/agent/versions/<Version ID>`
 	// - `projects/<Project ID>/locations/<Location ID>/agent/versions/<Version
 	//   ID>`
@@ -326,6 +330,7 @@ type ListEnvironmentsRequest struct {
 
 	// Required. The agent to list all environments from.
 	// Format:
+	//
 	// - `projects/<Project ID>/agent`
 	// - `projects/<Project ID>/locations/<Location ID>/agent`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
@@ -457,9 +462,12 @@ type GetEnvironmentRequest struct {
 
 	// Required. The name of the environment.
 	// Supported formats:
+	//
 	// - `projects/<Project ID>/agent/environments/<Environment ID>`
 	// - `projects/<Project ID>/locations/<Location
 	//   ID>/agent/environments/<Environment ID>`
+	//
+	// The environment ID for the default environment is `-`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -510,6 +518,7 @@ type CreateEnvironmentRequest struct {
 
 	// Required. The agent to create an environment for.
 	// Supported formats:
+	//
 	// - `projects/<Project ID>/agent`
 	// - `projects/<Project ID>/locations/<Location ID>/agent`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
@@ -582,10 +591,10 @@ type UpdateEnvironmentRequest struct {
 	Environment *Environment `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
 	// Required. The mask to control which fields get updated.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
-	// Optional. This field is used to prevent accidental overwrite of the draft
+	// Optional. This field is used to prevent accidental overwrite of the default
 	// environment, which is an operation that cannot be undone. To confirm that
 	// the caller desires this overwrite, this field must be explicitly set to
-	// true when updating the draft environment (environment ID = `-`).
+	// true when updating the default environment (environment ID = `-`).
 	AllowLoadToDraftAndDiscardChanges bool `protobuf:"varint,3,opt,name=allow_load_to_draft_and_discard_changes,json=allowLoadToDraftAndDiscardChanges,proto3" json:"allow_load_to_draft_and_discard_changes,omitempty"`
 }
 
@@ -650,9 +659,12 @@ type DeleteEnvironmentRequest struct {
 
 	// Required. The name of the environment to delete.
 	// / Format:
+	//
 	// - `projects/<Project ID>/agent/environments/<Environment ID>`
 	// - `projects/<Project ID>/locations/<Location
-	// ID>/agent/environments/<Environment ID>`
+	//   ID>/agent/environments/<Environment ID>`
+	//
+	// The environment ID for the default environment is `-`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -703,9 +715,12 @@ type GetEnvironmentHistoryRequest struct {
 
 	// Required. The name of the environment to retrieve history for.
 	// Supported formats:
+	//
 	// - `projects/<Project ID>/agent/environments/<Environment ID>`
 	// - `projects/<Project ID>/locations/<Location
 	//   ID>/agent/environments/<Environment ID>`
+	//
+	// The environment ID for the default environment is `-`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The maximum number of items to return in a single page. By default 100 and
 	// at most 1000.
@@ -775,9 +790,12 @@ type EnvironmentHistory struct {
 
 	// Output only. The name of the environment this history is for.
 	// Supported formats:
+	//
 	// - `projects/<Project ID>/agent/environments/<Environment ID>`
 	// - `projects/<Project ID>/locations/<Location
 	//    ID>/agent/environments/<Environment ID>`
+	//
+	// The environment ID for the default environment is `-`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Output only. The list of agent environments. There will be a maximum number of items
 	// returned based on the page_size field in the request.
@@ -1460,7 +1478,7 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type EnvironmentsClient interface {
-	// Returns the list of all non-draft environments of the specified agent.
+	// Returns the list of all non-default environments of the specified agent.
 	ListEnvironments(ctx context.Context, in *ListEnvironmentsRequest, opts ...grpc.CallOption) (*ListEnvironmentsResponse, error)
 	// Retrieves the specified agent environment.
 	GetEnvironment(ctx context.Context, in *GetEnvironmentRequest, opts ...grpc.CallOption) (*Environment, error)
@@ -1471,13 +1489,13 @@ type EnvironmentsClient interface {
 	// This method allows you to deploy new agent versions into the environment.
 	// When an environment is pointed to a new agent version by setting
 	// `environment.agent_version`, the environment is temporarily set to the
-	// `LOADING` state. During that time, the environment keeps on serving the
+	// `LOADING` state. During that time, the environment continues serving the
 	// previous version of the agent. After the new agent version is done loading,
 	// the environment is set back to the `RUNNING` state.
-	// You can use "-" as Environment ID in environment name to update version
-	// in "draft" environment. WARNING: this will negate all recent changes to
-	// draft and can't be undone. You may want to save the draft to a version
-	// before calling this function.
+	// You can use "-" as Environment ID in environment name to update an agent
+	// version in the default environment. WARNING: this will negate all recent
+	// changes to the draft agent and can't be undone. You may want to save the
+	// draft agent to a version before calling this method.
 	UpdateEnvironment(ctx context.Context, in *UpdateEnvironmentRequest, opts ...grpc.CallOption) (*Environment, error)
 	// Deletes the specified agent environment.
 	DeleteEnvironment(ctx context.Context, in *DeleteEnvironmentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -1549,7 +1567,7 @@ func (c *environmentsClient) GetEnvironmentHistory(ctx context.Context, in *GetE
 
 // EnvironmentsServer is the server API for Environments service.
 type EnvironmentsServer interface {
-	// Returns the list of all non-draft environments of the specified agent.
+	// Returns the list of all non-default environments of the specified agent.
 	ListEnvironments(context.Context, *ListEnvironmentsRequest) (*ListEnvironmentsResponse, error)
 	// Retrieves the specified agent environment.
 	GetEnvironment(context.Context, *GetEnvironmentRequest) (*Environment, error)
@@ -1560,13 +1578,13 @@ type EnvironmentsServer interface {
 	// This method allows you to deploy new agent versions into the environment.
 	// When an environment is pointed to a new agent version by setting
 	// `environment.agent_version`, the environment is temporarily set to the
-	// `LOADING` state. During that time, the environment keeps on serving the
+	// `LOADING` state. During that time, the environment continues serving the
 	// previous version of the agent. After the new agent version is done loading,
 	// the environment is set back to the `RUNNING` state.
-	// You can use "-" as Environment ID in environment name to update version
-	// in "draft" environment. WARNING: this will negate all recent changes to
-	// draft and can't be undone. You may want to save the draft to a version
-	// before calling this function.
+	// You can use "-" as Environment ID in environment name to update an agent
+	// version in the default environment. WARNING: this will negate all recent
+	// changes to the draft agent and can't be undone. You may want to save the
+	// draft agent to a version before calling this method.
 	UpdateEnvironment(context.Context, *UpdateEnvironmentRequest) (*Environment, error)
 	// Deletes the specified agent environment.
 	DeleteEnvironment(context.Context, *DeleteEnvironmentRequest) (*emptypb.Empty, error)

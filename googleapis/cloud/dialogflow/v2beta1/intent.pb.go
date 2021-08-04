@@ -7306,18 +7306,34 @@ type IntentsClient interface {
 	// Retrieves the specified intent.
 	GetIntent(ctx context.Context, in *GetIntentRequest, opts ...grpc.CallOption) (*Intent, error)
 	// Creates an intent in the specified agent.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	CreateIntent(ctx context.Context, in *CreateIntentRequest, opts ...grpc.CallOption) (*Intent, error)
 	// Updates the specified intent.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	UpdateIntent(ctx context.Context, in *UpdateIntentRequest, opts ...grpc.CallOption) (*Intent, error)
 	// Deletes the specified intent and its direct or indirect followup intents.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates/Creates multiple intents in the specified agent.
 	//
-	// Operation <response: [BatchUpdateIntentsResponse][google.cloud.dialogflow.v2beta1.BatchUpdateIntentsResponse]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchUpdateIntents(ctx context.Context, in *BatchUpdateIntentsRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes intents in the specified agent.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchDeleteIntents(ctx context.Context, in *BatchDeleteIntentsRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -7399,18 +7415,34 @@ type IntentsServer interface {
 	// Retrieves the specified intent.
 	GetIntent(context.Context, *GetIntentRequest) (*Intent, error)
 	// Creates an intent in the specified agent.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	CreateIntent(context.Context, *CreateIntentRequest) (*Intent, error)
 	// Updates the specified intent.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	UpdateIntent(context.Context, *UpdateIntentRequest) (*Intent, error)
 	// Deletes the specified intent and its direct or indirect followup intents.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	DeleteIntent(context.Context, *DeleteIntentRequest) (*emptypb.Empty, error)
 	// Updates/Creates multiple intents in the specified agent.
 	//
-	// Operation <response: [BatchUpdateIntentsResponse][google.cloud.dialogflow.v2beta1.BatchUpdateIntentsResponse]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchUpdateIntents(context.Context, *BatchUpdateIntentsRequest) (*longrunning.Operation, error)
 	// Deletes intents in the specified agent.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchDeleteIntents(context.Context, *BatchDeleteIntentsRequest) (*longrunning.Operation, error)
 }
 
