@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -554,7 +554,11 @@ type CloudFunction_SourceRepository struct {
 
 type CloudFunction_SourceUploadUrl struct {
 	// The Google Cloud Storage signed URL used for source uploading, generated
-	// by [google.cloud.functions.v1.GenerateUploadUrl][]
+	// by calling [google.cloud.functions.v1.GenerateUploadUrl].
+	//
+	// The signature is validated on write methods {Create, Update}
+	// The signature is stripped from the Function object on read methods {Get,
+	// List}
 	SourceUploadUrl string `protobuf:"bytes,16,opt,name=source_upload_url,json=sourceUploadUrl,proto3,oneof"`
 }
 
