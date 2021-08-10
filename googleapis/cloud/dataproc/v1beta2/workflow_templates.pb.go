@@ -3135,7 +3135,7 @@ type WorkflowTemplateServiceClient interface {
 	// clusters to be deleted.
 	//
 	// The [Operation.metadata][google.longrunning.Operation.metadata] will be
-	// WorkflowMetadata.
+	// [WorkflowMetadata](https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#workflowmetadata).
 	// Also see [Using
 	// WorkflowMetadata](https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).
 	//
@@ -3271,7 +3271,7 @@ type WorkflowTemplateServiceServer interface {
 	// clusters to be deleted.
 	//
 	// The [Operation.metadata][google.longrunning.Operation.metadata] will be
-	// WorkflowMetadata.
+	// [WorkflowMetadata](https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#workflowmetadata).
 	// Also see [Using
 	// WorkflowMetadata](https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).
 	//
