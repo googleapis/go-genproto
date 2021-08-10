@@ -4073,9 +4073,9 @@ type JobControllerClient interface {
 	UpdateJob(ctx context.Context, in *UpdateJobRequest, opts ...grpc.CallOption) (*Job, error)
 	// Starts a job cancellation request. To access the job resource
 	// after cancellation, call
-	// regions/{region}/jobs.list
+	// [regions/{region}/jobs.list](https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/list)
 	// or
-	// regions/{region}/jobs.get.
+	// [regions/{region}/jobs.get](https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/get).
 	CancelJob(ctx context.Context, in *CancelJobRequest, opts ...grpc.CallOption) (*Job, error)
 	// Deletes the job from the project. If the job is active, the delete fails,
 	// and the response returns `FAILED_PRECONDITION`.
@@ -4167,9 +4167,9 @@ type JobControllerServer interface {
 	UpdateJob(context.Context, *UpdateJobRequest) (*Job, error)
 	// Starts a job cancellation request. To access the job resource
 	// after cancellation, call
-	// regions/{region}/jobs.list
+	// [regions/{region}/jobs.list](https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/list)
 	// or
-	// regions/{region}/jobs.get.
+	// [regions/{region}/jobs.get](https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/get).
 	CancelJob(context.Context, *CancelJobRequest) (*Job, error)
 	// Deletes the job from the project. If the job is active, the delete fails,
 	// and the response returns `FAILED_PRECONDITION`.
