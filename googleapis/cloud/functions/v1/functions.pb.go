@@ -267,7 +267,7 @@ type CloudFunction struct {
 	// function, optional when updating an existing function. For a complete
 	// list of possible choices, see the
 	// [`gcloud` command
-	// reference](/sdk/gcloud/reference/functions/deploy#--runtime).
+	// reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime string `protobuf:"bytes,19,opt,name=runtime,proto3" json:"runtime,omitempty"`
 	// The function execution timeout. Execution is considered failed and
 	// can be terminated if the function is not completed at the end of the
@@ -294,8 +294,8 @@ type CloudFunction struct {
 	// project. Otherwise, it must belong to a project within the same
 	// organization. The format of this field is either
 	// `projects/{project}/global/networks/{network}` or `{network}`, where
-	// {project} is a project id where the network is defined, and {network} is
-	// the short name of the network.
+	// `{project}` is a project id where the network is defined, and `{network}`
+	// is the short name of the network.
 	//
 	// This field is mutually exclusive with `vpc_connector` and will be replaced
 	// by it.
@@ -540,7 +540,7 @@ type isCloudFunction_SourceCode interface {
 }
 
 type CloudFunction_SourceArchiveUrl struct {
-	// The Google Cloud Storage URL, starting with gs://, pointing to the zip
+	// The Google Cloud Storage URL, starting with `gs://`, pointing to the zip
 	// archive which contains the function.
 	SourceArchiveUrl string `protobuf:"bytes,3,opt,name=source_archive_url,json=sourceArchiveUrl,proto3,oneof"`
 }
@@ -556,9 +556,9 @@ type CloudFunction_SourceUploadUrl struct {
 	// The Google Cloud Storage signed URL used for source uploading, generated
 	// by calling [google.cloud.functions.v1.GenerateUploadUrl].
 	//
-	// The signature is validated on write methods {Create, Update}
-	// The signature is stripped from the Function object on read methods {Get,
-	// List}
+	// The signature is validated on write methods (Create, Update)
+	// The signature is stripped from the Function object on read methods (Get,
+	// List)
 	SourceUploadUrl string `protobuf:"bytes,16,opt,name=source_upload_url,json=sourceUploadUrl,proto3,oneof"`
 }
 

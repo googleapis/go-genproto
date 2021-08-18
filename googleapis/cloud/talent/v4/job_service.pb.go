@@ -569,10 +569,13 @@ type ListJobsRequest struct {
 	//
 	// The fields eligible for filtering are:
 	//
-	// * `companyName` (Required)
+	// * `companyName`
 	// * `requisitionId`
 	// * `status` Available values: OPEN, EXPIRED, ALL. Defaults to
 	// OPEN if no value is specified.
+	//
+	// At least one of `companyName` and `requisitionId` must present or an
+	// INVALID_ARGUMENT error is thrown.
 	//
 	// Sample Query:
 	//
@@ -581,6 +584,8 @@ type ListJobsRequest struct {
 	// requisitionId = "req-1"
 	// * companyName = "projects/foo/tenants/bar/companies/baz" AND
 	// status = "EXPIRED"
+	// * requisitionId = "req-1"
+	// * requisitionId = "req-1" AND status = "EXPIRED"
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The starting point of a query result.
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
@@ -799,6 +804,9 @@ type SearchJobsRequest struct {
 	//   "FULL_TIME", "PART_TIME".
 	// * company_size: histogram by [CompanySize][google.cloud.talent.v4.CompanySize], for example, "SMALL",
 	// "MEDIUM", "BIG".
+	// * publish_time_in_day: histogram by the [Job.posting_publish_time][google.cloud.talent.v4.Job.posting_publish_time]
+	//   in days.
+	//   Must specify list of numeric buckets in spec.
 	// * publish_time_in_month: histogram by the [Job.posting_publish_time][google.cloud.talent.v4.Job.posting_publish_time]
 	//   in months.
 	//   Must specify list of numeric buckets in spec.
@@ -852,7 +860,7 @@ type SearchJobsRequest struct {
 	// bucket(100000, MAX)])`
 	// * `count(string_custom_attribute["some-string-custom-attribute"])`
 	// * `count(numeric_custom_attribute["some-numeric-custom-attribute"],
-	//   [bucket(MIN, 0, "negative"), bucket(0, MAX, "non-negative"])`
+	//   [bucket(MIN, 0, "negative"), bucket(0, MAX, "non-negative")])`
 	HistogramQueries []*HistogramQuery `protobuf:"bytes,7,rep,name=histogram_queries,json=histogramQueries,proto3" json:"histogram_queries,omitempty"`
 	// The desired job attributes returned for jobs in the search response.
 	// Defaults to [JobView.JOB_VIEW_SMALL][google.cloud.talent.v4.JobView.JOB_VIEW_SMALL] if no value is specified.
