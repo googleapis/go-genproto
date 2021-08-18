@@ -102,7 +102,7 @@ type OperationMetadataV1 struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Target of the operation - for example
-	// projects/project-1/locations/region-1/functions/function-1
+	// `projects/project-1/locations/region-1/functions/function-1`
 	Target string `protobuf:"bytes,1,opt,name=target,proto3" json:"target,omitempty"`
 	// Type of operation.
 	Type OperationType `protobuf:"varint,2,opt,name=type,proto3,enum=google.cloud.functions.v1.OperationType" json:"type,omitempty"`
