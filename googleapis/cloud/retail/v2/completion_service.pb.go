@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -98,12 +98,14 @@ type CompleteQueryRequest struct {
 	// * user-data
 	//
 	// * cloud-retail
-	//   This option is not automatically enabled. Before using cloud-retail,
-	//   contact retail-search-support@google.com first.
+	//   This option requires additional allowlisting. Before using cloud-retail,
+	//   contact Cloud Retail support team first.
 	Dataset string `protobuf:"bytes,6,opt,name=dataset,proto3" json:"dataset,omitempty"`
-	// Completion max suggestions.
+	// Completion max suggestions. If left unset or set to 0, then will fallback
+	// to the configured value [CompletionConfig.max_suggestions][].
 	//
-	// The maximum allowed max suggestions is 20. The default value is 20.
+	// The maximum allowed max suggestions is 20. If it is set higher, it will be
+	// capped by 20.
 	MaxSuggestions int32 `protobuf:"varint,5,opt,name=max_suggestions,json=maxSuggestions,proto3" json:"max_suggestions,omitempty"`
 }
 
@@ -202,9 +204,9 @@ type CompleteQueryResponse struct {
 	// completion, which enables accurate attribution of complete model
 	// performance.
 	AttributionToken string `protobuf:"bytes,2,opt,name=attribution_token,json=attributionToken,proto3" json:"attribution_token,omitempty"`
-	// Matched recent searches of this user. This field is a restricted feature.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in enabling it.
+	// Matched recent searches of this user. The maximum number of recent searches
+	// is 10. This field is a restricted feature. Contact Retail Search support
+	// team if you are interested in enabling it.
 	//
 	// This feature is only available when
 	// [CompleteQueryRequest.visitor_id][google.cloud.retail.v2.CompleteQueryRequest.visitor_id]
@@ -643,16 +645,16 @@ type CompletionServiceClient interface {
 	// Completes the specified prefix with keyword suggestions.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	CompleteQuery(ctx context.Context, in *CompleteQueryRequest, opts ...grpc.CallOption) (*CompleteQueryResponse, error)
 	// Bulk import of processed completion dataset.
 	//
 	// Request processing may be synchronous. Partial updating is not supported.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	ImportCompletionData(ctx context.Context, in *ImportCompletionDataRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -687,16 +689,16 @@ type CompletionServiceServer interface {
 	// Completes the specified prefix with keyword suggestions.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	CompleteQuery(context.Context, *CompleteQueryRequest) (*CompleteQueryResponse, error)
 	// Bulk import of processed completion dataset.
 	//
 	// Request processing may be synchronous. Partial updating is not supported.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	ImportCompletionData(context.Context, *ImportCompletionDataRequest) (*longrunning.Operation, error)
 }
 
