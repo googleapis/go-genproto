@@ -416,10 +416,10 @@ type ListConversationsRequest struct {
 
 	// Required. The parent resource of the conversation.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The maximum number of conversations to return in the response. If this
-	// value is zero, the service will select a default size. A call might return
-	// fewer objects than requested. A non-empty `next_page_token` in the response
-	// indicates that more data is available.
+	// The maximum number of conversations to return in the response. A valid page
+	// size ranges from 0 to 1,000 inclusive. If the page size is zero or
+	// unspecified, a default page size of 100 will be chosen. Note that a call
+	// might return fewer results than the requested page size.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The value returned by the last `ListConversationsResponse`. This value
 	// indicates that this is a continuation of a prior `ListConversations` call
@@ -507,8 +507,9 @@ type ListConversationsResponse struct {
 
 	// The conversations that match the request.
 	Conversations []*Conversation `protobuf:"bytes,1,rep,name=conversations,proto3" json:"conversations,omitempty"`
-	// A token, which can be sent as `page_token` to retrieve the next page.
-	// If this field is omitted, there are no subsequent pages.
+	// A token which can be sent as `page_token` to retrieve the next page. If
+	// this field is set, it means there is another page available. If it is not
+	// set, it means no other pages are available.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 }
 
@@ -2662,7 +2663,7 @@ type UpdateSettingsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The new values for the conversation.
+	// Required. The new settings values.
 	Settings *Settings `protobuf:"bytes,1,opt,name=settings,proto3" json:"settings,omitempty"`
 	// Required. The list of fields to be updated.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`

@@ -1778,6 +1778,13 @@ type AgentsClient interface {
 	// Deletes the specified agent.
 	DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Exports the specified agent to a binary file.
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: An empty [Struct
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+	// - `response`: [ExportAgentResponse][google.cloud.dialogflow.cx.v3.ExportAgentResponse]
 	ExportAgent(ctx context.Context, in *ExportAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Restores the specified agent from a binary file.
 	//
@@ -1908,6 +1915,13 @@ type AgentsServer interface {
 	// Deletes the specified agent.
 	DeleteAgent(context.Context, *DeleteAgentRequest) (*emptypb.Empty, error)
 	// Exports the specified agent to a binary file.
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: An empty [Struct
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+	// - `response`: [ExportAgentResponse][google.cloud.dialogflow.cx.v3.ExportAgentResponse]
 	ExportAgent(context.Context, *ExportAgentRequest) (*longrunning.Operation, error)
 	// Restores the specified agent from a binary file.
 	//
