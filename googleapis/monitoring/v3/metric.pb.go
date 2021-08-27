@@ -119,7 +119,9 @@ type TimeSeries struct {
 	// series.
 	Metric *metric.Metric `protobuf:"bytes,1,opt,name=metric,proto3" json:"metric,omitempty"`
 	// The associated monitored resource.  Custom metrics can use only certain
-	// monitored resource types in their time series data.
+	// monitored resource types in their time series data. For more information,
+	// see [Monitored resources for custom
+	// metrics](https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources).
 	Resource *monitoredres.MonitoredResource `protobuf:"bytes,2,opt,name=resource,proto3" json:"resource,omitempty"`
 	// Output only. The associated monitored resource metadata. When reading a
 	// time series, this field will include metadata labels that are explicitly

@@ -344,10 +344,12 @@ const (
 	UptimeCheckConfig_ContentMatcher_NOT_CONTAINS_STRING UptimeCheckConfig_ContentMatcher_ContentMatcherOption = 2
 	// Selects regular-expression matching. The match succeeds of the output
 	// matches the regular expression specified in the `content` string.
+	// Regex matching is only supported for HTTP/HTTPS checks.
 	UptimeCheckConfig_ContentMatcher_MATCHES_REGEX UptimeCheckConfig_ContentMatcher_ContentMatcherOption = 3
 	// Selects negation of regular-expression matching. The match succeeds if
 	// the output does _NOT_ match the regular expression specified in the
-	// `content` string.
+	// `content` string. Regex matching is only supported for HTTP/HTTPS
+	// checks.
 	UptimeCheckConfig_ContentMatcher_NOT_MATCHES_REGEX UptimeCheckConfig_ContentMatcher_ContentMatcherOption = 4
 )
 
@@ -713,12 +715,13 @@ type UptimeCheckConfig_MonitoredResource struct {
 	// The [monitored
 	// resource](https://cloud.google.com/monitoring/api/resources) associated
 	// with the configuration.
-	// The following monitored resource types are supported for Uptime checks:
+	// The following monitored resource types are valid for this field:
 	//   `uptime_url`,
 	//   `gce_instance`,
 	//   `gae_app`,
 	//   `aws_ec2_instance`,
 	//   `aws_elb_load_balancer`
+	//   `k8s_service`
 	MonitoredResource *monitoredres.MonitoredResource `protobuf:"bytes,3,opt,name=monitored_resource,json=monitoredResource,proto3,oneof"`
 }
 

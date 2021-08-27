@@ -280,8 +280,7 @@ type SearchRequest struct {
 	Offset int32 `protobuf:"varint,9,opt,name=offset,proto3" json:"offset,omitempty"`
 	// The filter syntax consists of an expression language for constructing a
 	// predicate from one or more fields of the products being filtered. Filter
-	// expression is case-sensitive. See more details at this [user
-	// guide](/retail/private/docs/filter-and-order#filter).
+	// expression is case-sensitive.
 	//
 	// If this field is unrecognizable, an INVALID_ARGUMENT is returned.
 	Filter string `protobuf:"bytes,10,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -298,9 +297,7 @@ type SearchRequest struct {
 	CanonicalFilter string `protobuf:"bytes,28,opt,name=canonical_filter,json=canonicalFilter,proto3" json:"canonical_filter,omitempty"`
 	// The order in which products are returned. Products can be ordered by
 	// a field in an [Product][google.cloud.retail.v2alpha.Product] object. Leave
-	// it unset if ordered by relevance. OrderBy expression is case-sensitive. See
-	// more details at this [user
-	// guide](/retail/private/docs/filter-and-order#order).
+	// it unset if ordered by relevance. OrderBy expression is case-sensitive.
 	//
 	// If this field is unrecognizable, an INVALID_ARGUMENT is returned.
 	OrderBy string `protobuf:"bytes,11,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
@@ -315,20 +312,17 @@ type SearchRequest struct {
 	// This feature requires additional allowlisting. Contact Retail Search
 	// support team if you are interested in using dynamic facet feature.
 	DynamicFacetSpec *SearchRequest_DynamicFacetSpec `protobuf:"bytes,21,opt,name=dynamic_facet_spec,json=dynamicFacetSpec,proto3" json:"dynamic_facet_spec,omitempty"`
-	// Boost specification to boost certain products. See more details at this
-	// [user guide](/retail/private/docs/boosting).
+	// Boost specification to boost certain products.
 	BoostSpec *SearchRequest_BoostSpec `protobuf:"bytes,13,opt,name=boost_spec,json=boostSpec,proto3" json:"boost_spec,omitempty"`
 	// The query expansion specification that specifies the conditions under which
-	// query expansion will occur. See more details at this [user
-	// guide](/retail/private/docs/result-size#query_expansion).
+	// query expansion will occur..
 	QueryExpansionSpec *SearchRequest_QueryExpansionSpec `protobuf:"bytes,14,opt,name=query_expansion_spec,json=queryExpansionSpec,proto3" json:"query_expansion_spec,omitempty"`
 	// The relevance threshold of the search results.
 	//
 	// Defaults to
 	// [RelevanceThreshold.HIGH][google.cloud.retail.v2alpha.SearchRequest.RelevanceThreshold.HIGH],
 	// which means only the most relevant results are shown, and the least number
-	// of results are returned. See more details at this [user
-	// guide](/retail/private/docs/result-size#relevance_thresholding).
+	// of results are returned.
 	RelevanceThreshold SearchRequest_RelevanceThreshold `protobuf:"varint,15,opt,name=relevance_threshold,json=relevanceThreshold,proto3,enum=google.cloud.retail.v2alpha.SearchRequest_RelevanceThreshold" json:"relevance_threshold,omitempty"`
 	// The keys to fetch and rollup the matching
 	// [variant][google.cloud.retail.v2alpha.Product.Type.VARIANT]
@@ -1000,11 +994,11 @@ type SearchRequest_FacetSpec_FacetKey struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Supported textual and numerical facet keys in
-	// [Product][google.cloud.retail.v2.Product] object, over which the facet
-	// values are computed. Facet key is case-sensitive.
+	// [Product][google.cloud.retail.v2alpha.Product] object, over which the
+	// facet values are computed. Facet key is case-sensitive.
 	//
 	// Allowed facet keys when
-	// [FacetKey.query][google.cloud.retail.v2.SearchRequest.FacetSpec.FacetKey.query]
+	// [FacetKey.query][google.cloud.retail.v2alpha.SearchRequest.FacetSpec.FacetKey.query]
 	// is not specified:
 	//
 	// * textual_field =
@@ -1218,10 +1212,9 @@ type SearchRequest_BoostSpec_ConditionBoostSpec struct {
 	//
 	// * To boost products with product ID "product_1" or "product_2", and
 	// color
-	//   "Red" or "Blue":<br>
-	//   *(id: ANY("product_1", "product_2"))<br>*
-	//   *AND<br>*
-	//   *(colorFamilies: ANY("Red", "Blue"))<br>*
+	//   "Red" or "Blue":
+	//     * (id: ANY("product_1", "product_2")) AND (colorFamilies:
+	//     ANY("Red","Blue"))
 	Condition string `protobuf:"bytes,1,opt,name=condition,proto3" json:"condition,omitempty"`
 	// Strength of the condition boost, which should be in [-1, 1]. Negative
 	// boost means demotion. Default is 0.0.
