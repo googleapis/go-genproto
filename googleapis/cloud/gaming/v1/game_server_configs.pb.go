@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -43,8 +43,7 @@ type ListGameServerConfigsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource name. Uses the form:
-	//
+	// Required. The parent resource name, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The maximum number of items to return.  If unspecified, server
@@ -203,8 +202,7 @@ type GetGameServerConfigRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the game server config to retrieve. Uses the form:
-	//
+	// Required. The name of the game server config to retrieve, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -254,8 +252,7 @@ type CreateGameServerConfigRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource name. Uses the form:
-	//
+	// Required. The parent resource name, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The ID of the game server config resource to be created.
@@ -323,8 +320,7 @@ type DeleteGameServerConfigRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the game server config to delete. Uses the form:
-	//
+	// Required. The name of the game server config to delete, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -512,11 +508,9 @@ type GameServerConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the game server config. Uses the form:
-	//
+	// The resource name of the game server config, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`.
 	// For example,
-	//
 	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The creation time.

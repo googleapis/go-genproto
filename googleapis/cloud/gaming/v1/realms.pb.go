@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ type ListRealmsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource name. Uses the form:
+	// Required. The parent resource name, in the following form:
 	// `projects/{project}/locations/{location}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The maximum number of items to return.  If unspecified, server
@@ -204,7 +204,7 @@ type GetRealmRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the realm to retrieve. Uses the form:
+	// Required. The name of the realm to retrieve, in the following form:
 	// `projects/{project}/locations/{location}/realms/{realm}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -254,7 +254,7 @@ type CreateRealmRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource name. Uses the form:
+	// Required. The parent resource name, in the following form:
 	// `projects/{project}/locations/{location}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The ID of the realm resource to be created.
@@ -322,7 +322,7 @@ type DeleteRealmRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the realm to delete. Uses the form:
+	// Required. The name of the realm to delete, in the following form:
 	// `projects/{project}/locations/{location}/realms/{realm}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -377,10 +377,7 @@ type UpdateRealmRequest struct {
 	Realm *Realm `protobuf:"bytes,1,opt,name=realm,proto3" json:"realm,omitempty"`
 	// Required. The update mask applies to the resource. For the `FieldMask`
 	// definition, see
-	//
-	// https:
-	// //developers.google.com/protocol-buffers
-	// // /docs/reference/google.protobuf#fieldmask
+	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -441,10 +438,7 @@ type PreviewRealmUpdateRequest struct {
 	Realm *Realm `protobuf:"bytes,1,opt,name=realm,proto3" json:"realm,omitempty"`
 	// Required. The update mask applies to the resource. For the `FieldMask`
 	// definition, see
-	//
-	// https:
-	// //developers.google.com/protocol-buffers
-	// // /docs/reference/google.protobuf#fieldmask
+	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. The target timestamp to compute the preview.
 	PreviewTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=preview_time,json=previewTime,proto3" json:"preview_time,omitempty"`
@@ -567,7 +561,7 @@ type Realm struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the realm. Uses the form:
+	// The resource name of the realm, in the following form:
 	// `projects/{project}/locations/{location}/realms/{realm}`. For
 	// example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
