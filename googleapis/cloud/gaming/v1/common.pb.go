@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -474,7 +474,6 @@ type SpecSource struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The game server config resource. Uses the form:
-	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}/configs/{config_id}`.
 	GameServerConfigName string `protobuf:"bytes,1,opt,name=game_server_config_name,json=gameServerConfigName,proto3" json:"game_server_config_name,omitempty"`
 	// The name of the Agones leet config or Agones scaling config used to derive
@@ -535,11 +534,9 @@ type TargetDetails struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The game server cluster name. Uses the form:
-	//
 	// `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`.
 	GameServerClusterName string `protobuf:"bytes,1,opt,name=game_server_cluster_name,json=gameServerClusterName,proto3" json:"game_server_cluster_name,omitempty"`
 	// The game server deployment name. Uses the form:
-	//
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment_id}`.
 	GameServerDeploymentName string `protobuf:"bytes,2,opt,name=game_server_deployment_name,json=gameServerDeploymentName,proto3" json:"game_server_deployment_name,omitempty"`
 	// Agones fleet details for game server clusters and game server deployments.

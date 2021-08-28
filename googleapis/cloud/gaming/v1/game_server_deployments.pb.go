@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ type ListGameServerDeploymentsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource name. Uses the form:
+	// Required. The parent resource name, in the following form:
 	// `projects/{project}/locations/{location}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The maximum number of items to return.  If unspecified, the server
@@ -204,8 +204,7 @@ type GetGameServerDeploymentRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the game server delpoyment to retrieve. Uses the form:
-	//
+	// Required. The name of the game server delpoyment to retrieve, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -256,8 +255,7 @@ type GetGameServerDeploymentRolloutRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the game server delpoyment to retrieve. Uses the form:
-	//
+	// Required. The name of the game server delpoyment to retrieve, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -307,7 +305,7 @@ type CreateGameServerDeploymentRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource name. Uses the form:
+	// Required. The parent resource name, in the following form:
 	// `projects/{project}/locations/{location}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The ID of the game server delpoyment resource to be created.
@@ -375,8 +373,7 @@ type DeleteGameServerDeploymentRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the game server delpoyment to delete. Uses the form:
-	//
+	// Required. The name of the game server delpoyment to delete, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -432,10 +429,7 @@ type UpdateGameServerDeploymentRequest struct {
 	GameServerDeployment *GameServerDeployment `protobuf:"bytes,1,opt,name=game_server_deployment,json=gameServerDeployment,proto3" json:"game_server_deployment,omitempty"`
 	// Required. Mask of fields to update. At least one path must be supplied in
 	// this field. For the `FieldMask` definition, see
-	//
-	// https:
-	// //developers.google.com/protocol-buffers
-	// // /docs/reference/google.protobuf#fieldmask
+	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -497,10 +491,7 @@ type UpdateGameServerDeploymentRolloutRequest struct {
 	Rollout *GameServerDeploymentRollout `protobuf:"bytes,1,opt,name=rollout,proto3" json:"rollout,omitempty"`
 	// Required. Mask of fields to update. At least one path must be supplied in
 	// this field. For the `FieldMask` definition, see
-	//
-	// https:
-	// //developers.google.com/protocol-buffers
-	// // /docs/reference/google.protobuf#fieldmask
+	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -556,8 +547,7 @@ type FetchDeploymentStateRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the game server delpoyment. Uses the form:
-	//
+	// Required. The name of the game server delpoyment, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -665,8 +655,7 @@ type GameServerDeployment struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the game server deployment. Uses the form:
-	//
+	// The resource name of the game server deployment, in the following form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`.
 	// For example,
 	// `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
@@ -865,11 +854,10 @@ type GameServerDeploymentRollout struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the game server deployment rollout. Uses the form:
-	//
+	// The resource name of the game server deployment rollout, in the following
+	// form:
 	// `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/rollout`.
 	// For example,
-	//
 	// `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. The creation time.
@@ -878,7 +866,6 @@ type GameServerDeploymentRollout struct {
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The default game server config is applied to all realms unless overridden
 	// in the rollout. For example,
-	//
 	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	DefaultGameServerConfig string `protobuf:"bytes,4,opt,name=default_game_server_config,json=defaultGameServerConfig,proto3" json:"default_game_server_config,omitempty"`
 	// Contains the game server config rollout overrides. Overrides are processed
@@ -974,10 +961,7 @@ type PreviewGameServerDeploymentRolloutRequest struct {
 	Rollout *GameServerDeploymentRollout `protobuf:"bytes,1,opt,name=rollout,proto3" json:"rollout,omitempty"`
 	// Optional. Mask of fields to update. At least one path must be supplied in
 	// this field. For the `FieldMask` definition, see
-	//
-	// https:
-	// //developers.google.com/protocol-buffers
-	// // /docs/reference/google.protobuf#fieldmask
+	// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// Optional. The target timestamp to compute the preview. Defaults to the immediately
 	// after the proposed rollout completes.
