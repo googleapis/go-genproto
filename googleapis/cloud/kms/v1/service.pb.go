@@ -1181,9 +1181,27 @@ type ImportCryptoKeyVersionRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.CryptoKey.name] of the [CryptoKey][google.cloud.kms.v1.CryptoKey] to
-	// be imported into.
+	// Required. The [name][google.cloud.kms.v1.CryptoKey.name] of the [CryptoKey][google.cloud.kms.v1.CryptoKey] to be imported into.
+	//
+	// The create permission is only required on this key when creating a new
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
+	// Optional. The optional [name][google.cloud.kms.v1.CryptoKeyVersion.name] of an existing
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to target for an import operation.
+	// If this field is not present, a new [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] containing the
+	// supplied key material is created.
+	//
+	// If this field is present, the supplied key material is imported into
+	// the existing [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]. To import into an existing
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion], the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] must be a child of
+	// [ImportCryptoKeyVersionRequest.parent][google.cloud.kms.v1.ImportCryptoKeyVersionRequest.parent], have been previously created via
+	// [ImportCryptoKeyVersion][], and be in
+	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED] or
+	// [IMPORT_FAILED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.IMPORT_FAILED]
+	// state. The key material and algorithm must match the previous
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] exactly if the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] has ever contained
+	// key material.
+	CryptoKeyVersion string `protobuf:"bytes,6,opt,name=crypto_key_version,json=cryptoKeyVersion,proto3" json:"crypto_key_version,omitempty"`
 	// Required. The [algorithm][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionAlgorithm] of
 	// the key being imported. This does not need to match the
 	// [version_template][google.cloud.kms.v1.CryptoKey.version_template] of the [CryptoKey][google.cloud.kms.v1.CryptoKey] this
@@ -1234,6 +1252,13 @@ func (*ImportCryptoKeyVersionRequest) Descriptor() ([]byte, []int) {
 func (x *ImportCryptoKeyVersionRequest) GetParent() string {
 	if x != nil {
 		return x.Parent
+	}
+	return ""
+}
+
+func (x *ImportCryptoKeyVersionRequest) GetCryptoKeyVersion() string {
+	if x != nil {
+		return x.CryptoKeyVersion
 	}
 	return ""
 }
@@ -3353,14 +3378,20 @@ var file_google_cloud_kms_v1_service_proto_rawDesc = []byte{
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x6b, 0x6d,
 	0x73, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x4b, 0x65, 0x79, 0x56, 0x65,
 	0x72, 0x73, 0x69, 0x6f, 0x6e, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x10, 0x63, 0x72, 0x79, 0x70,
-	0x74, 0x6f, 0x4b, 0x65, 0x79, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0xb3, 0x02, 0x0a,
+	0x74, 0x6f, 0x4b, 0x65, 0x79, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0x93, 0x03, 0x0a,
 	0x1d, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x43, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x4b, 0x65, 0x79,
 	0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x41,
 	0x0a, 0x06, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x29,
 	0xe0, 0x41, 0x02, 0xfa, 0x41, 0x23, 0x0a, 0x21, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x6b, 0x6d, 0x73,
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
 	0x43, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x4b, 0x65, 0x79, 0x52, 0x06, 0x70, 0x61, 0x72, 0x65, 0x6e,
-	0x74, 0x12, 0x62, 0x0a, 0x09, 0x61, 0x6c, 0x67, 0x6f, 0x72, 0x69, 0x74, 0x68, 0x6d, 0x18, 0x02,
+	0x74, 0x12, 0x5e, 0x0a, 0x12, 0x63, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x5f, 0x6b, 0x65, 0x79, 0x5f,
+	0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x42, 0x30, 0xe0,
+	0x41, 0x01, 0xfa, 0x41, 0x2a, 0x0a, 0x28, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x6b, 0x6d, 0x73, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43,
+	0x72, 0x79, 0x70, 0x74, 0x6f, 0x4b, 0x65, 0x79, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x52,
+	0x10, 0x63, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x4b, 0x65, 0x79, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f,
+	0x6e, 0x12, 0x62, 0x0a, 0x09, 0x61, 0x6c, 0x67, 0x6f, 0x72, 0x69, 0x74, 0x68, 0x6d, 0x18, 0x02,
 	0x20, 0x01, 0x28, 0x0e, 0x32, 0x3f, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
 	0x6f, 0x75, 0x64, 0x2e, 0x6b, 0x6d, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x72, 0x79, 0x70, 0x74,
 	0x6f, 0x4b, 0x65, 0x79, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x2e, 0x43, 0x72, 0x79, 0x70,
@@ -4742,11 +4773,12 @@ type KeyManagementServiceClient interface {
 	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
 	// [ENABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.ENABLED].
 	CreateCryptoKeyVersion(ctx context.Context, in *CreateCryptoKeyVersionRequest, opts ...grpc.CallOption) (*CryptoKeyVersion, error)
-	// Imports a new [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] into an existing [CryptoKey][google.cloud.kms.v1.CryptoKey] using the
-	// wrapped key material provided in the request.
+	// Import wrapped key material into a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	//
-	// The version ID will be assigned the next sequential id within the
-	// [CryptoKey][google.cloud.kms.v1.CryptoKey].
+	// All requests must specify a [CryptoKey][google.cloud.kms.v1.CryptoKey]. If a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] is
+	// additionally specified in the request, key material will be reimported into
+	// that version. Otherwise, a new version will be created, and will be
+	// assigned the next sequential id within the [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	ImportCryptoKeyVersion(ctx context.Context, in *ImportCryptoKeyVersionRequest, opts ...grpc.CallOption) (*CryptoKeyVersion, error)
 	// Create a new [ImportJob][google.cloud.kms.v1.ImportJob] within a [KeyRing][google.cloud.kms.v1.KeyRing].
 	//
@@ -4770,10 +4802,11 @@ type KeyManagementServiceClient interface {
 	// Schedule a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] for destruction.
 	//
 	// Upon calling this method, [CryptoKeyVersion.state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
-	// [DESTROY_SCHEDULED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROY_SCHEDULED]
-	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will be set to a time 24
-	// hours in the future, at which point the [state][google.cloud.kms.v1.CryptoKeyVersion.state]
-	// will be changed to
+	// [DESTROY_SCHEDULED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROY_SCHEDULED],
+	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will be set to the time
+	// [destroy_scheduled_duration][google.cloud.kms.v1.CryptoKey.destroy_scheduled_duration] in the
+	// future. At that time, the [state][google.cloud.kms.v1.CryptoKeyVersion.state] will
+	// automatically change to
 	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED], and the key
 	// material will be irrevocably destroyed.
 	//
@@ -5096,11 +5129,12 @@ type KeyManagementServiceServer interface {
 	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
 	// [ENABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.ENABLED].
 	CreateCryptoKeyVersion(context.Context, *CreateCryptoKeyVersionRequest) (*CryptoKeyVersion, error)
-	// Imports a new [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] into an existing [CryptoKey][google.cloud.kms.v1.CryptoKey] using the
-	// wrapped key material provided in the request.
+	// Import wrapped key material into a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	//
-	// The version ID will be assigned the next sequential id within the
-	// [CryptoKey][google.cloud.kms.v1.CryptoKey].
+	// All requests must specify a [CryptoKey][google.cloud.kms.v1.CryptoKey]. If a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] is
+	// additionally specified in the request, key material will be reimported into
+	// that version. Otherwise, a new version will be created, and will be
+	// assigned the next sequential id within the [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	ImportCryptoKeyVersion(context.Context, *ImportCryptoKeyVersionRequest) (*CryptoKeyVersion, error)
 	// Create a new [ImportJob][google.cloud.kms.v1.ImportJob] within a [KeyRing][google.cloud.kms.v1.KeyRing].
 	//
@@ -5124,10 +5158,11 @@ type KeyManagementServiceServer interface {
 	// Schedule a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] for destruction.
 	//
 	// Upon calling this method, [CryptoKeyVersion.state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
-	// [DESTROY_SCHEDULED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROY_SCHEDULED]
-	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will be set to a time 24
-	// hours in the future, at which point the [state][google.cloud.kms.v1.CryptoKeyVersion.state]
-	// will be changed to
+	// [DESTROY_SCHEDULED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROY_SCHEDULED],
+	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will be set to the time
+	// [destroy_scheduled_duration][google.cloud.kms.v1.CryptoKey.destroy_scheduled_duration] in the
+	// future. At that time, the [state][google.cloud.kms.v1.CryptoKeyVersion.state] will
+	// automatically change to
 	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED], and the key
 	// material will be irrevocably destroyed.
 	//
