@@ -162,32 +162,22 @@ type ListTrainingPipelinesRequest struct {
 	// Required. The resource name of the Location to list the TrainingPipelines from.
 	// Format: `projects/{project}/locations/{location}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Lists the PipelineJobs that match the filter expression. The following
-	// fields are supported:
+	// The standard list filter.
+	// Supported fields:
 	//
-	// * `pipeline_name`: Supports `=` and `!=` comparisons.
-	// * `create_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
-	//   Values must be in RFC 3339 format.
-	// * `update_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
-	//   Values must be in RFC 3339 format.
-	// * `end_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
-	//   Values must be in RFC 3339 format.
-	// * `labels`: Supports key-value equality and key presence.
+	//   * `display_name` supports = and !=.
 	//
-	// Filter expressions can be combined together using logical operators
-	// (`AND` & `OR`).
-	// For example: `pipeline_name="test" AND create_time>"2020-05-18T13:30:00Z"`.
+	//   * `state` supports = and !=.
 	//
-	// The syntax to define filter expression is based on
-	// https://google.aip.dev/160.
+	// Some examples of using the filter are:
 	//
-	// Examples:
+	//  * `state="PIPELINE_STATE_SUCCEEDED" AND display_name="my_pipeline"`
 	//
-	// * `create_time>"2021-05-18T00:00:00Z" OR
-	//   update_time>"2020-05-18T00:00:00Z"` PipelineJobs created or updated
-	//   after 2020-05-18 00:00:00 UTC.
-	// * `labels.env = "prod"`
-	//   PipelineJobs with label "env" set to "prod".
+	//  * `state="PIPELINE_STATE_RUNNING" OR display_name="my_pipeline"`
+	//
+	//  * `NOT display_name="my_pipeline"`
+	//
+	//  * `state="PIPELINE_STATE_FAILED"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -561,18 +551,32 @@ type ListPipelineJobsRequest struct {
 	// Required. The resource name of the Location to list the PipelineJobs from.
 	// Format: `projects/{project}/locations/{location}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// The standard list filter.
-	// Supported fields:
+	// Lists the PipelineJobs that match the filter expression. The following
+	// fields are supported:
 	//
-	// * `display_name` supports `=` and `!=`.
-	// * `state` supports `=` and `!=`.
+	// * `pipeline_name`: Supports `=` and `!=` comparisons.
+	// * `create_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
+	//   Values must be in RFC 3339 format.
+	// * `update_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
+	//   Values must be in RFC 3339 format.
+	// * `end_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
+	//   Values must be in RFC 3339 format.
+	// * `labels`: Supports key-value equality and key presence.
 	//
-	// The following examples demonstrate how to filter the list of PipelineJobs:
+	// Filter expressions can be combined together using logical operators
+	// (`AND` & `OR`).
+	// For example: `pipeline_name="test" AND create_time>"2020-05-18T13:30:00Z"`.
 	//
-	// * `state="PIPELINE_STATE_SUCCEEDED" AND display_name="my_pipeline"`
-	// * `state="PIPELINE_STATE_RUNNING" OR display_name="my_pipeline"`
-	// * `NOT display_name="my_pipeline"`
-	// * `state="PIPELINE_STATE_FAILED"`
+	// The syntax to define filter expression is based on
+	// https://google.aip.dev/160.
+	//
+	// Examples:
+	//
+	// * `create_time>"2021-05-18T00:00:00Z" OR
+	//   update_time>"2020-05-18T00:00:00Z"` PipelineJobs created or updated
+	//   after 2020-05-18 00:00:00 UTC.
+	// * `labels.env = "prod"`
+	//   PipelineJobs with label "env" set to "prod".
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
