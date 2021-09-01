@@ -83,9 +83,17 @@ type CustomJob struct {
 	// then all resources created by the CustomJob will be encrypted with the
 	// provided encryption key.
 	EncryptionSpec *EncryptionSpec `protobuf:"bytes,12,opt,name=encryption_spec,json=encryptionSpec,proto3" json:"encryption_spec,omitempty"`
-	// Output only. The web access URIs for the training job.
-	// The keys are the node names in the training jobs, e.g. workerpool0-0.
-	// The values are the URIs for each node's web portal in the job.
+	// Output only. URIs for accessing [interactive
+	// shells](https://cloud.google.com/vertex-ai/docs/training/monitor-debug-interactive-shell)
+	// (one URI for each training node). Only available if
+	// [job_spec.enable_web_access][google.cloud.aiplatform.v1beta1.CustomJobSpec.enable_web_access] is `true`.
+	//
+	// The keys are names of each node in the training job; for example,
+	// `workerpool0-0` for the primary node, `workerpool1-0` for the first node in
+	// the second worker pool, and `workerpool1-1` for the second node in the
+	// second worker pool.
+	//
+	// The values are the URIs for each node's interactive shell.
 	WebAccessUris map[string]string `protobuf:"bytes,16,rep,name=web_access_uris,json=webAccessUris,proto3" json:"web_access_uris,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
@@ -219,7 +227,7 @@ type CustomJobSpec struct {
 	Scheduling *Scheduling `protobuf:"bytes,3,opt,name=scheduling,proto3" json:"scheduling,omitempty"`
 	// Specifies the service account for workload run-as account.
 	// Users submitting jobs must have act-as permission on this run-as account.
-	// If unspecified, the [AI Platform Custom Code Service
+	// If unspecified, the [Vertex AI Custom Code Service
 	// Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents)
 	// for the CustomJob's project is used.
 	ServiceAccount string `protobuf:"bytes,4,opt,name=service_account,json=serviceAccount,proto3" json:"service_account,omitempty"`
@@ -261,8 +269,13 @@ type CustomJobSpec struct {
 	// Format:
 	// `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
 	Tensorboard string `protobuf:"bytes,7,opt,name=tensorboard,proto3" json:"tensorboard,omitempty"`
-	// Optional. Vertex AI will enable web portal access to the containers. The portals
-	// can be accessed on web via the URLs given by [web_access_uris][].
+	// Optional. Whether you want Vertex AI to enable [interactive shell
+	// access](https://cloud.google.com/vertex-ai/docs/training/monitor-debug-interactive-shell)
+	// to training containers.
+	//
+	// If set to `true`, you can access interactive shells at the URIs given
+	// by [CustomJob.web_access_uris][google.cloud.aiplatform.v1beta1.CustomJob.web_access_uris] or [Trial.web_access_uris][google.cloud.aiplatform.v1beta1.Trial.web_access_uris] (within
+	// [HyperparameterTuningJob.trials][google.cloud.aiplatform.v1beta1.HyperparameterTuningJob.trials]).
 	EnableWebAccess bool `protobuf:"varint,10,opt,name=enable_web_access,json=enableWebAccess,proto3" json:"enable_web_access,omitempty"`
 }
 
