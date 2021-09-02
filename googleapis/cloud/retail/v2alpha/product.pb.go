@@ -249,6 +249,9 @@ type Product struct {
 	// This field must be a UTF-8 encoded string with a length limit of 128
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
+	// This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is
+	// returned.
+	//
 	// Google Merchant Center property
 	// [gtin](https://support.google.com/merchants/answer/6324461).
 	// Schema.org property
@@ -355,13 +358,9 @@ type Product struct {
 	// This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT
 	// error is returned:
 	//
-	// * Max entries count: 200 by default; 100 for
-	// [Type.VARIANT][google.cloud.retail.v2alpha.Product.Type.VARIANT].
+	// * Max entries count: 200.
 	// * The key must be a UTF-8 encoded string with a length limit of 128
 	//   characters.
-	// * Max indexable entries count: 200 by default; 40 for
-	// [Type.VARIANT][google.cloud.retail.v2alpha.Product.Type.VARIANT].
-	// * Max searchable entries count: 30.
 	// * For indexable attribute, the key must match the pattern:
 	//   [a-zA-Z0-9][a-zA-Z0-9_]*. For example, key0LikeThis or KEY_1_LIKE_THIS.
 	Attributes map[string]*CustomAttribute `protobuf:"bytes,12,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
@@ -458,7 +457,7 @@ type Product struct {
 	Sizes []string `protobuf:"bytes,26,rep,name=sizes,proto3" json:"sizes,omitempty"`
 	// The material of the product. For example, "leather", "wooden".
 	//
-	// A maximum of 5 values are allowed. Each value must be a UTF-8 encoded
+	// A maximum of 20 values are allowed. Each value must be a UTF-8 encoded
 	// string with a length limit of 128 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	//
@@ -469,7 +468,7 @@ type Product struct {
 	// The pattern or graphic print of the product. For example, "striped", "polka
 	// dot", "paisley".
 	//
-	// A maximum of 5 values are allowed per
+	// A maximum of 20 values are allowed per
 	// [Product][google.cloud.retail.v2alpha.Product]. Each value must be a UTF-8
 	// encoded string with a length limit of 128 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
@@ -554,8 +553,12 @@ type Product struct {
 	// * [name][google.cloud.retail.v2alpha.Product.name]
 	// * [color_info][google.cloud.retail.v2alpha.Product.color_info]
 	//
-	// Maximum number of paths is 20. Otherwise, an INVALID_ARGUMENT error is
+	// Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is
 	// returned.
+	//
+	// Note: Returning more fields in
+	// [SearchResponse][google.cloud.retail.v2alpha.SearchResponse] may increase
+	// response payload size and serving latency.
 	RetrievableFields *fieldmaskpb.FieldMask `protobuf:"bytes,30,opt,name=retrievable_fields,json=retrievableFields,proto3" json:"retrievable_fields,omitempty"`
 	// Output only. Product variants grouped together on primary product which
 	// share similar product attributes. It's automatically grouped by

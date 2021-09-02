@@ -6,7 +6,7 @@ set -eo
 # Display commands being run
 set -x
 
-if [[ $(go version) != *"go1.16"* ]]; then
+if [[ $(go version) != *"go1.17"* ]]; then
   exit 0
 fi
 

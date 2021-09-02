@@ -1847,8 +1847,8 @@ type ProductServiceClient interface {
 	// [RemoveFulfillmentPlaces][google.cloud.retail.v2beta.ProductService.RemoveFulfillmentPlaces].
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	SetInventory(ctx context.Context, in *SetInventoryRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Incrementally adds place IDs to
 	// [Product.fulfillment_info.place_ids][google.cloud.retail.v2beta.FulfillmentInfo.place_ids].
@@ -1863,8 +1863,8 @@ type ProductServiceClient interface {
 	// [ListProducts][google.cloud.retail.v2beta.ProductService.ListProducts].
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	AddFulfillmentPlaces(ctx context.Context, in *AddFulfillmentPlacesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Incrementally removes place IDs from a
 	// [Product.fulfillment_info.place_ids][google.cloud.retail.v2beta.FulfillmentInfo.place_ids].
@@ -1879,8 +1879,8 @@ type ProductServiceClient interface {
 	// [ListProducts][google.cloud.retail.v2beta.ProductService.ListProducts].
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	RemoveFulfillmentPlaces(ctx context.Context, in *RemoveFulfillmentPlacesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -2032,8 +2032,8 @@ type ProductServiceServer interface {
 	// [RemoveFulfillmentPlaces][google.cloud.retail.v2beta.ProductService.RemoveFulfillmentPlaces].
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	SetInventory(context.Context, *SetInventoryRequest) (*longrunning.Operation, error)
 	// Incrementally adds place IDs to
 	// [Product.fulfillment_info.place_ids][google.cloud.retail.v2beta.FulfillmentInfo.place_ids].
@@ -2048,8 +2048,8 @@ type ProductServiceServer interface {
 	// [ListProducts][google.cloud.retail.v2beta.ProductService.ListProducts].
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	AddFulfillmentPlaces(context.Context, *AddFulfillmentPlacesRequest) (*longrunning.Operation, error)
 	// Incrementally removes place IDs from a
 	// [Product.fulfillment_info.place_ids][google.cloud.retail.v2beta.FulfillmentInfo.place_ids].
@@ -2064,8 +2064,8 @@ type ProductServiceServer interface {
 	// [ListProducts][google.cloud.retail.v2beta.ProductService.ListProducts].
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	RemoveFulfillmentPlaces(context.Context, *RemoveFulfillmentPlacesRequest) (*longrunning.Operation, error)
 }
 

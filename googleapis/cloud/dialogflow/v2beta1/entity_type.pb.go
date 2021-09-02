@@ -2044,30 +2044,54 @@ type EntityTypesClient interface {
 	// Retrieves the specified entity type.
 	GetEntityType(ctx context.Context, in *GetEntityTypeRequest, opts ...grpc.CallOption) (*EntityType, error)
 	// Creates an entity type in the specified agent.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	CreateEntityType(ctx context.Context, in *CreateEntityTypeRequest, opts ...grpc.CallOption) (*EntityType, error)
 	// Updates the specified entity type.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	UpdateEntityType(ctx context.Context, in *UpdateEntityTypeRequest, opts ...grpc.CallOption) (*EntityType, error)
 	// Deletes the specified entity type.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	DeleteEntityType(ctx context.Context, in *DeleteEntityTypeRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates/Creates multiple entity types in the specified agent.
-	// Operation <response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2beta1.BatchUpdateEntityTypesResponse]>
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchUpdateEntityTypes(ctx context.Context, in *BatchUpdateEntityTypesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes entity types in the specified agent.
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchDeleteEntityTypes(ctx context.Context, in *BatchDeleteEntityTypesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Creates multiple new entities in the specified entity type.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchCreateEntities(ctx context.Context, in *BatchCreateEntitiesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Updates or creates multiple entities in the specified entity type. This
 	// method does not affect entities in the entity type that aren't explicitly
 	// specified in the request.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchUpdateEntities(ctx context.Context, in *BatchUpdateEntitiesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes entities in the specified entity type.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchDeleteEntities(ctx context.Context, in *BatchDeleteEntitiesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -2176,30 +2200,54 @@ type EntityTypesServer interface {
 	// Retrieves the specified entity type.
 	GetEntityType(context.Context, *GetEntityTypeRequest) (*EntityType, error)
 	// Creates an entity type in the specified agent.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	CreateEntityType(context.Context, *CreateEntityTypeRequest) (*EntityType, error)
 	// Updates the specified entity type.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	UpdateEntityType(context.Context, *UpdateEntityTypeRequest) (*EntityType, error)
 	// Deletes the specified entity type.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	DeleteEntityType(context.Context, *DeleteEntityTypeRequest) (*emptypb.Empty, error)
 	// Updates/Creates multiple entity types in the specified agent.
-	// Operation <response: [BatchUpdateEntityTypesResponse][google.cloud.dialogflow.v2beta1.BatchUpdateEntityTypesResponse]>
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchUpdateEntityTypes(context.Context, *BatchUpdateEntityTypesRequest) (*longrunning.Operation, error)
 	// Deletes entity types in the specified agent.
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchDeleteEntityTypes(context.Context, *BatchDeleteEntityTypesRequest) (*longrunning.Operation, error)
 	// Creates multiple new entities in the specified entity type.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchCreateEntities(context.Context, *BatchCreateEntitiesRequest) (*longrunning.Operation, error)
 	// Updates or creates multiple entities in the specified entity type. This
 	// method does not affect entities in the entity type that aren't explicitly
 	// specified in the request.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchUpdateEntities(context.Context, *BatchUpdateEntitiesRequest) (*longrunning.Operation, error)
 	// Deletes entities in the specified entity type.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	BatchDeleteEntities(context.Context, *BatchDeleteEntitiesRequest) (*longrunning.Operation, error)
 }
 

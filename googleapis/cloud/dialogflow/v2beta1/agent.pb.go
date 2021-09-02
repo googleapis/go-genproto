@@ -1834,6 +1834,10 @@ type AgentsClient interface {
 	// Retrieves the specified agent.
 	GetAgent(ctx context.Context, in *GetAgentRequest, opts ...grpc.CallOption) (*Agent, error)
 	// Creates/updates the specified agent.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	SetAgent(ctx context.Context, in *SetAgentRequest, opts ...grpc.CallOption) (*Agent, error)
 	// Deletes the specified agent.
 	DeleteAgent(ctx context.Context, in *DeleteAgentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -1846,13 +1850,11 @@ type AgentsClient interface {
 	SearchAgents(ctx context.Context, in *SearchAgentsRequest, opts ...grpc.CallOption) (*SearchAgentsResponse, error)
 	// Trains the specified agent.
 	//
-	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	TrainAgent(ctx context.Context, in *TrainAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Exports the specified agent to a ZIP file.
-	//
-	//
-	// Operation <response: [ExportAgentResponse][google.cloud.dialogflow.v2beta1.ExportAgentResponse]>
 	ExportAgent(ctx context.Context, in *ExportAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Imports the specified agent from a ZIP file.
 	//
@@ -1864,10 +1866,9 @@ type AgentsClient interface {
 	// call [TrainAgent][google.cloud.dialogflow.v2beta1.Agents.TrainAgent] and wait for the operation it returns in order to train
 	// explicitly.
 	//
-	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
-	// An operation which tracks when importing is complete. It only tracks
-	// when the draft agent is updated not when it is done training.
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	ImportAgent(ctx context.Context, in *ImportAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Restores the specified agent from a ZIP file.
 	//
@@ -1878,10 +1879,9 @@ type AgentsClient interface {
 	// completed yet. Please call [TrainAgent][google.cloud.dialogflow.v2beta1.Agents.TrainAgent] and wait for the operation it
 	// returns in order to train explicitly.
 	//
-	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
-	// An operation which tracks when restoring is complete. It only tracks
-	// when the draft agent is updated not when it is done training.
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	RestoreAgent(ctx context.Context, in *RestoreAgentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Gets agent validation result. Agent validation is performed during
 	// training time and is updated automatically when training is completed.
@@ -1982,6 +1982,10 @@ type AgentsServer interface {
 	// Retrieves the specified agent.
 	GetAgent(context.Context, *GetAgentRequest) (*Agent, error)
 	// Creates/updates the specified agent.
+	//
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	SetAgent(context.Context, *SetAgentRequest) (*Agent, error)
 	// Deletes the specified agent.
 	DeleteAgent(context.Context, *DeleteAgentRequest) (*emptypb.Empty, error)
@@ -1994,13 +1998,11 @@ type AgentsServer interface {
 	SearchAgents(context.Context, *SearchAgentsRequest) (*SearchAgentsResponse, error)
 	// Trains the specified agent.
 	//
-	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	TrainAgent(context.Context, *TrainAgentRequest) (*longrunning.Operation, error)
 	// Exports the specified agent to a ZIP file.
-	//
-	//
-	// Operation <response: [ExportAgentResponse][google.cloud.dialogflow.v2beta1.ExportAgentResponse]>
 	ExportAgent(context.Context, *ExportAgentRequest) (*longrunning.Operation, error)
 	// Imports the specified agent from a ZIP file.
 	//
@@ -2012,10 +2014,9 @@ type AgentsServer interface {
 	// call [TrainAgent][google.cloud.dialogflow.v2beta1.Agents.TrainAgent] and wait for the operation it returns in order to train
 	// explicitly.
 	//
-	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
-	// An operation which tracks when importing is complete. It only tracks
-	// when the draft agent is updated not when it is done training.
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	ImportAgent(context.Context, *ImportAgentRequest) (*longrunning.Operation, error)
 	// Restores the specified agent from a ZIP file.
 	//
@@ -2026,10 +2027,9 @@ type AgentsServer interface {
 	// completed yet. Please call [TrainAgent][google.cloud.dialogflow.v2beta1.Agents.TrainAgent] and wait for the operation it
 	// returns in order to train explicitly.
 	//
-	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty]>
-	// An operation which tracks when restoring is complete. It only tracks
-	// when the draft agent is updated not when it is done training.
+	// Note: You should always train an agent prior to sending it queries. See the
+	// [training
+	// documentation](https://cloud.google.com/dialogflow/es/docs/training).
 	RestoreAgent(context.Context, *RestoreAgentRequest) (*longrunning.Operation, error)
 	// Gets agent validation result. Agent validation is performed during
 	// training time and is updated automatically when training is completed.

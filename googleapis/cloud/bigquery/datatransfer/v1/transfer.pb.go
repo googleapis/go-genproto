@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import (
 	status "google.golang.org/genproto/googleapis/rpc/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	_ "google.golang.org/protobuf/types/known/durationpb"
 	structpb "google.golang.org/protobuf/types/known/structpb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
@@ -99,18 +100,18 @@ func (TransferType) EnumDescriptor() ([]byte, []int) {
 type TransferState int32
 
 const (
-	// State placeholder.
+	// State placeholder (0).
 	TransferState_TRANSFER_STATE_UNSPECIFIED TransferState = 0
 	// Data transfer is scheduled and is waiting to be picked up by
-	// data transfer backend.
+	// data transfer backend (2).
 	TransferState_PENDING TransferState = 2
-	// Data transfer is in progress.
+	// Data transfer is in progress (3).
 	TransferState_RUNNING TransferState = 3
-	// Data transfer completed successfully.
+	// Data transfer completed successfully (4).
 	TransferState_SUCCEEDED TransferState = 4
-	// Data transfer failed.
+	// Data transfer failed (5).
 	TransferState_FAILED TransferState = 5
-	// Data transfer is cancelled.
+	// Data transfer is cancelled (6).
 	TransferState_CANCELLED TransferState = 6
 )
 
@@ -357,12 +358,11 @@ type TransferConfig struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The resource name of the transfer config.
-	// Transfer config names have the form of
+	// Transfer config names have the form
 	// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
-	// The name is automatically generated based on the config_id specified in
-	// CreateTransferConfigRequest along with project_id and region. If config_id
-	// is not provided, usually a uuid, even though it is not guaranteed or
-	// required, will be generated for config_id.
+	// Where `config_id` is usually a uuid, even though it is not
+	// guaranteed or required. The name is ignored when creating a transfer
+	// config.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The desination of the transfer config.
 	//
@@ -373,7 +373,10 @@ type TransferConfig struct {
 	DisplayName string `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Data source id. Cannot be changed once data transfer is created.
 	DataSourceId string `protobuf:"bytes,5,opt,name=data_source_id,json=dataSourceId,proto3" json:"data_source_id,omitempty"`
-	// Data transfer specific parameters.
+	// Parameters specific to each data source. For more information see the
+	// bq tab in the 'Setting up a data transfer' section for each data source.
+	// For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params *structpb.Struct `protobuf:"bytes,9,opt,name=params,proto3" json:"params,omitempty"`
 	// Data transfer schedule.
 	// If the data source does not support a custom schedule, this should be
@@ -412,6 +415,9 @@ type TransferConfig struct {
 	DatasetRegion string `protobuf:"bytes,14,opt,name=dataset_region,json=datasetRegion,proto3" json:"dataset_region,omitempty"`
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
+	//
+	// The format for specifying a pubsub topic is:
+	// `projects/{project}/topics/{topic}`
 	NotificationPubsubTopic string `protobuf:"bytes,15,opt,name=notification_pubsub_topic,json=notificationPubsubTopic,proto3" json:"notification_pubsub_topic,omitempty"`
 	// Email notifications will be sent according to these preferences
 	// to the email address of the user who owns this transfer config.
@@ -606,7 +612,10 @@ type TransferRun struct {
 	EndTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Output only. Last time the data transfer run state was updated.
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	// Output only. Data transfer specific parameters.
+	// Output only. Parameters specific to each data source. For more information see the
+	// bq tab in the 'Setting up a data transfer' section for each data source.
+	// For example the parameters for Cloud Storage transfers are listed here:
+	// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
 	Params *structpb.Struct `protobuf:"bytes,9,opt,name=params,proto3" json:"params,omitempty"`
 	// Data transfer destination.
 	//
@@ -626,7 +635,10 @@ type TransferRun struct {
 	// current load, so `schedule_time` doesn't always match this.
 	Schedule string `protobuf:"bytes,12,opt,name=schedule,proto3" json:"schedule,omitempty"`
 	// Output only. Pub/Sub topic where a notification will be sent after this
-	// transfer run finishes
+	// transfer run finishes.
+	//
+	// The format for specifying a pubsub topic is:
+	// `projects/{project}/topics/{topic}`
 	NotificationPubsubTopic string `protobuf:"bytes,23,opt,name=notification_pubsub_topic,json=notificationPubsubTopic,proto3" json:"notification_pubsub_topic,omitempty"`
 	// Output only. Email notifications will be sent according to these
 	// preferences to the email address of the user who owns the transfer config
@@ -868,7 +880,9 @@ var file_google_cloud_bigquery_datatransfer_v1_transfer_proto_rawDesc = []byte{
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c, 0x64, 0x5f,
 	0x62, 0x65, 0x68, 0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x19,
 	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x72, 0x65, 0x73, 0x6f, 0x75,
-	0x72, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x72, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x64, 0x75, 0x72, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
 	0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x73, 0x74, 0x72, 0x75, 0x63,
 	0x74, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61,

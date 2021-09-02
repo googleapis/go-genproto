@@ -120,7 +120,7 @@ type ValidationError struct {
 	// - "projects/<Project ID>/agent/entities/<Entity ID>", if the error is
 	// associated with certain entities.
 	Entries []string `protobuf:"bytes,3,rep,name=entries,proto3" json:"entries,omitempty"`
-	// The detailed error messsage.
+	// The detailed error message.
 	ErrorMessage string `protobuf:"bytes,4,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
 }
 

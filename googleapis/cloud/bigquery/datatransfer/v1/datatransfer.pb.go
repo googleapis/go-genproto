@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -127,9 +127,7 @@ const (
 	// Return an authorization code for a given Google+ page that can then be
 	// exchanged for a refresh token on the backend.
 	DataSource_GOOGLE_PLUS_AUTHORIZATION_CODE DataSource_AuthorizationType = 2
-	// Use First Party Client OAuth. First Party Client OAuth doesn't require a
-	// refresh token to get an offline access token. Instead, it uses a
-	// client-signed JWT assertion to retrieve an access token.
+	// Use First Party OAuth.
 	DataSource_FIRST_PARTY_OAUTH DataSource_AuthorizationType = 3
 )
 
@@ -2135,13 +2133,13 @@ type StartManualTransferRunsRequest_TimeRange struct {
 
 	// Start time of the range of transfer runs. For example,
 	// `"2017-05-25T00:00:00+00:00"`. The start_time must be strictly less than
-	// the end_time. Creates transfer runs where run_time is in the range betwen
-	// start_time (inclusive) and end_time (exlusive).
+	// the end_time. Creates transfer runs where run_time is in the range
+	// between start_time (inclusive) and end_time (exclusive).
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// End time of the range of transfer runs. For example,
 	// `"2017-05-30T00:00:00+00:00"`. The end_time must not be in the future.
-	// Creates transfer runs where run_time is in the range betwen start_time
-	// (inclusive) and end_time (exlusive).
+	// Creates transfer runs where run_time is in the range between start_time
+	// (inclusive) and end_time (exclusive).
 	EndTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 }
 
@@ -3356,7 +3354,8 @@ type DataTransferServiceClient interface {
 	DeleteTransferConfig(ctx context.Context, in *DeleteTransferConfigRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Returns information about a data transfer config.
 	GetTransferConfig(ctx context.Context, in *GetTransferConfigRequest, opts ...grpc.CallOption) (*TransferConfig, error)
-	// Returns information about all data transfers in the project.
+	// Returns information about all transfer configs owned by a project in the
+	// specified location.
 	ListTransferConfigs(ctx context.Context, in *ListTransferConfigsRequest, opts ...grpc.CallOption) (*ListTransferConfigsResponse, error)
 	// Deprecated: Do not use.
 	// Creates transfer runs for a time range [start_time, end_time].
@@ -3540,7 +3539,8 @@ type DataTransferServiceServer interface {
 	DeleteTransferConfig(context.Context, *DeleteTransferConfigRequest) (*emptypb.Empty, error)
 	// Returns information about a data transfer config.
 	GetTransferConfig(context.Context, *GetTransferConfigRequest) (*TransferConfig, error)
-	// Returns information about all data transfers in the project.
+	// Returns information about all transfer configs owned by a project in the
+	// specified location.
 	ListTransferConfigs(context.Context, *ListTransferConfigsRequest) (*ListTransferConfigsResponse, error)
 	// Deprecated: Do not use.
 	// Creates transfer runs for a time range [start_time, end_time].

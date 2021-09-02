@@ -808,16 +808,16 @@ type CatalogServiceClient interface {
 	//   {newBranch}.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	SetDefaultBranch(ctx context.Context, in *SetDefaultBranchRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Get which branch is currently default branch set by
 	// [CatalogService.SetDefaultBranch][google.cloud.retail.v2alpha.CatalogService.SetDefaultBranch]
 	// method under a specified parent catalog.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	GetDefaultBranch(ctx context.Context, in *GetDefaultBranchRequest, opts ...grpc.CallOption) (*GetDefaultBranchResponse, error)
 }
 
@@ -907,16 +907,16 @@ type CatalogServiceServer interface {
 	//   {newBranch}.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	SetDefaultBranch(context.Context, *SetDefaultBranchRequest) (*emptypb.Empty, error)
 	// Get which branch is currently default branch set by
 	// [CatalogService.SetDefaultBranch][google.cloud.retail.v2alpha.CatalogService.SetDefaultBranch]
 	// method under a specified parent catalog.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Contact Retail Support (retail-search-support@google.com) if you are
-	// interested in using Retail Search.
+	// Please submit a form [here](https://cloud.google.com/contact) to contact
+	// cloud sales if you are interested in using Retail Search.
 	GetDefaultBranch(context.Context, *GetDefaultBranchRequest) (*GetDefaultBranchResponse, error)
 }
 
