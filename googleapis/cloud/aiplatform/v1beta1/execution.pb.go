@@ -151,6 +151,7 @@ type Execution struct {
 	// schemas within the local metadata store.
 	SchemaVersion string `protobuf:"bytes,14,opt,name=schema_version,json=schemaVersion,proto3" json:"schema_version,omitempty"`
 	// Properties of the Execution.
+	// The size of this field should not exceed 200KB.
 	Metadata *structpb.Struct `protobuf:"bytes,15,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	// Description of the Execution
 	Description string `protobuf:"bytes,16,opt,name=description,proto3" json:"description,omitempty"`

@@ -37,11 +37,11 @@ const (
 )
 
 // SpecialistPool represents customers' own workforce to work on their data
-// labeling jobs. It includes a group of specialist managers who are responsible
-// for managing the labelers in this pool as well as customers' data labeling
-// jobs associated with this pool.
-// Customers create specialist pool as well as start data labeling jobs on
-// Cloud, managers and labelers work with the jobs using CrowdCompute console.
+// labeling jobs. It includes a group of specialist managers and workers.
+// Managers are responsible for managing the workers in this pool as well as
+// customers' data labeling jobs associated with this pool. Customers create
+// specialist pool as well as start data labeling jobs on Cloud, managers and
+// workers handle the jobs using CrowdCompute console.
 type SpecialistPool struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -54,9 +54,9 @@ type SpecialistPool struct {
 	// characters.
 	// This field should be unique on project-level.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// Output only. The number of Specialists in this SpecialistPool.
+	// Output only. The number of managers in this SpecialistPool.
 	SpecialistManagersCount int32 `protobuf:"varint,3,opt,name=specialist_managers_count,json=specialistManagersCount,proto3" json:"specialist_managers_count,omitempty"`
-	// The email addresses of the specialists in the SpecialistPool.
+	// The email addresses of the managers in the SpecialistPool.
 	SpecialistManagerEmails []string `protobuf:"bytes,4,rep,name=specialist_manager_emails,json=specialistManagerEmails,proto3" json:"specialist_manager_emails,omitempty"`
 	// Output only. The resource name of the pending data labeling jobs.
 	PendingDataLabelingJobs []string `protobuf:"bytes,5,rep,name=pending_data_labeling_jobs,json=pendingDataLabelingJobs,proto3" json:"pending_data_labeling_jobs,omitempty"`
