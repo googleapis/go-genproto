@@ -189,6 +189,61 @@ func (MetricType) EnumDescriptor() ([]byte, []int) {
 	return file_google_analytics_data_v1beta_data_proto_rawDescGZIP(), []int{1}
 }
 
+// The compatibility types for a single dimension or metric.
+type Compatibility int32
+
+const (
+	// Unspecified compatibility.
+	Compatibility_COMPATIBILITY_UNSPECIFIED Compatibility = 0
+	// The dimension or metric is compatible. This dimension or metric can be
+	// successfully added to a report.
+	Compatibility_COMPATIBLE Compatibility = 1
+	// The dimension or metric is incompatible. This dimension or metric cannot be
+	// successfully added to a report.
+	Compatibility_INCOMPATIBLE Compatibility = 2
+)
+
+// Enum value maps for Compatibility.
+var (
+	Compatibility_name = map[int32]string{
+		0: "COMPATIBILITY_UNSPECIFIED",
+		1: "COMPATIBLE",
+		2: "INCOMPATIBLE",
+	}
+	Compatibility_value = map[string]int32{
+		"COMPATIBILITY_UNSPECIFIED": 0,
+		"COMPATIBLE":                1,
+		"INCOMPATIBLE":              2,
+	}
+)
+
+func (x Compatibility) Enum() *Compatibility {
+	p := new(Compatibility)
+	*p = x
+	return p
+}
+
+func (x Compatibility) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Compatibility) Descriptor() protoreflect.EnumDescriptor {
+	return file_google_analytics_data_v1beta_data_proto_enumTypes[2].Descriptor()
+}
+
+func (Compatibility) Type() protoreflect.EnumType {
+	return &file_google_analytics_data_v1beta_data_proto_enumTypes[2]
+}
+
+func (x Compatibility) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Compatibility.Descriptor instead.
+func (Compatibility) EnumDescriptor() ([]byte, []int) {
+	return file_google_analytics_data_v1beta_data_proto_rawDescGZIP(), []int{2}
+}
+
 // The match type of a string filter
 type Filter_StringFilter_MatchType int32
 
@@ -242,11 +297,11 @@ func (x Filter_StringFilter_MatchType) String() string {
 }
 
 func (Filter_StringFilter_MatchType) Descriptor() protoreflect.EnumDescriptor {
-	return file_google_analytics_data_v1beta_data_proto_enumTypes[2].Descriptor()
+	return file_google_analytics_data_v1beta_data_proto_enumTypes[3].Descriptor()
 }
 
 func (Filter_StringFilter_MatchType) Type() protoreflect.EnumType {
-	return &file_google_analytics_data_v1beta_data_proto_enumTypes[2]
+	return &file_google_analytics_data_v1beta_data_proto_enumTypes[3]
 }
 
 func (x Filter_StringFilter_MatchType) Number() protoreflect.EnumNumber {
@@ -307,11 +362,11 @@ func (x Filter_NumericFilter_Operation) String() string {
 }
 
 func (Filter_NumericFilter_Operation) Descriptor() protoreflect.EnumDescriptor {
-	return file_google_analytics_data_v1beta_data_proto_enumTypes[3].Descriptor()
+	return file_google_analytics_data_v1beta_data_proto_enumTypes[4].Descriptor()
 }
 
 func (Filter_NumericFilter_Operation) Type() protoreflect.EnumType {
-	return &file_google_analytics_data_v1beta_data_proto_enumTypes[3]
+	return &file_google_analytics_data_v1beta_data_proto_enumTypes[4]
 }
 
 func (x Filter_NumericFilter_Operation) Number() protoreflect.EnumNumber {
@@ -369,11 +424,11 @@ func (x OrderBy_DimensionOrderBy_OrderType) String() string {
 }
 
 func (OrderBy_DimensionOrderBy_OrderType) Descriptor() protoreflect.EnumDescriptor {
-	return file_google_analytics_data_v1beta_data_proto_enumTypes[4].Descriptor()
+	return file_google_analytics_data_v1beta_data_proto_enumTypes[5].Descriptor()
 }
 
 func (OrderBy_DimensionOrderBy_OrderType) Type() protoreflect.EnumType {
-	return &file_google_analytics_data_v1beta_data_proto_enumTypes[4]
+	return &file_google_analytics_data_v1beta_data_proto_enumTypes[5]
 }
 
 func (x OrderBy_DimensionOrderBy_OrderType) Number() protoreflect.EnumNumber {
@@ -431,11 +486,11 @@ func (x CohortsRange_Granularity) String() string {
 }
 
 func (CohortsRange_Granularity) Descriptor() protoreflect.EnumDescriptor {
-	return file_google_analytics_data_v1beta_data_proto_enumTypes[5].Descriptor()
+	return file_google_analytics_data_v1beta_data_proto_enumTypes[6].Descriptor()
 }
 
 func (CohortsRange_Granularity) Type() protoreflect.EnumType {
-	return &file_google_analytics_data_v1beta_data_proto_enumTypes[5]
+	return &file_google_analytics_data_v1beta_data_proto_enumTypes[6]
 }
 
 func (x CohortsRange_Granularity) Number() protoreflect.EnumNumber {
@@ -2457,6 +2512,9 @@ type DimensionMetadata struct {
 	DeprecatedApiNames []string `protobuf:"bytes,4,rep,name=deprecated_api_names,json=deprecatedApiNames,proto3" json:"deprecated_api_names,omitempty"`
 	// True if the dimension is a custom dimension for this property.
 	CustomDefinition bool `protobuf:"varint,5,opt,name=custom_definition,json=customDefinition,proto3" json:"custom_definition,omitempty"`
+	// The display name of the category that this dimension belongs to. Similar
+	// dimensions and metrics are categorized together.
+	Category string `protobuf:"bytes,7,opt,name=category,proto3" json:"category,omitempty"`
 }
 
 func (x *DimensionMetadata) Reset() {
@@ -2526,6 +2584,13 @@ func (x *DimensionMetadata) GetCustomDefinition() bool {
 	return false
 }
 
+func (x *DimensionMetadata) GetCategory() string {
+	if x != nil {
+		return x.Category
+	}
+	return ""
+}
+
 // Explains a metric.
 type MetricMetadata struct {
 	state         protoimpl.MessageState
@@ -2553,6 +2618,9 @@ type MetricMetadata struct {
 	Expression string `protobuf:"bytes,6,opt,name=expression,proto3" json:"expression,omitempty"`
 	// True if the metric is a custom metric for this property.
 	CustomDefinition bool `protobuf:"varint,7,opt,name=custom_definition,json=customDefinition,proto3" json:"custom_definition,omitempty"`
+	// The display name of the category that this metrics belongs to. Similar
+	// dimensions and metrics are categorized together.
+	Category string `protobuf:"bytes,10,opt,name=category,proto3" json:"category,omitempty"`
 }
 
 func (x *MetricMetadata) Reset() {
@@ -2636,6 +2704,135 @@ func (x *MetricMetadata) GetCustomDefinition() bool {
 	return false
 }
 
+func (x *MetricMetadata) GetCategory() string {
+	if x != nil {
+		return x.Category
+	}
+	return ""
+}
+
+// The compatibility for a single dimension.
+type DimensionCompatibility struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The dimension metadata contains the API name for this compatibility
+	// information. The dimension metadata also contains other helpful information
+	// like the UI name and description.
+	DimensionMetadata *DimensionMetadata `protobuf:"bytes,1,opt,name=dimension_metadata,json=dimensionMetadata,proto3,oneof" json:"dimension_metadata,omitempty"`
+	// The compatibility of this dimension. If the compatibility is COMPATIBLE,
+	// this dimension can be successfully added to the report.
+	Compatibility *Compatibility `protobuf:"varint,2,opt,name=compatibility,proto3,enum=google.analytics.data.v1beta.Compatibility,oneof" json:"compatibility,omitempty"`
+}
+
+func (x *DimensionCompatibility) Reset() {
+	*x = DimensionCompatibility{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[27]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DimensionCompatibility) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DimensionCompatibility) ProtoMessage() {}
+
+func (x *DimensionCompatibility) ProtoReflect() protoreflect.Message {
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[27]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DimensionCompatibility.ProtoReflect.Descriptor instead.
+func (*DimensionCompatibility) Descriptor() ([]byte, []int) {
+	return file_google_analytics_data_v1beta_data_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *DimensionCompatibility) GetDimensionMetadata() *DimensionMetadata {
+	if x != nil {
+		return x.DimensionMetadata
+	}
+	return nil
+}
+
+func (x *DimensionCompatibility) GetCompatibility() Compatibility {
+	if x != nil && x.Compatibility != nil {
+		return *x.Compatibility
+	}
+	return Compatibility_COMPATIBILITY_UNSPECIFIED
+}
+
+// The compatibility for a single metric.
+type MetricCompatibility struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The metric metadata contains the API name for this compatibility
+	// information. The metric metadata also contains other helpful information
+	// like the UI name and description.
+	MetricMetadata *MetricMetadata `protobuf:"bytes,1,opt,name=metric_metadata,json=metricMetadata,proto3,oneof" json:"metric_metadata,omitempty"`
+	// The compatibility of this metric. If the compatibility is COMPATIBLE,
+	// this metric can be successfully added to the report.
+	Compatibility *Compatibility `protobuf:"varint,2,opt,name=compatibility,proto3,enum=google.analytics.data.v1beta.Compatibility,oneof" json:"compatibility,omitempty"`
+}
+
+func (x *MetricCompatibility) Reset() {
+	*x = MetricCompatibility{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[28]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MetricCompatibility) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MetricCompatibility) ProtoMessage() {}
+
+func (x *MetricCompatibility) ProtoReflect() protoreflect.Message {
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[28]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MetricCompatibility.ProtoReflect.Descriptor instead.
+func (*MetricCompatibility) Descriptor() ([]byte, []int) {
+	return file_google_analytics_data_v1beta_data_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *MetricCompatibility) GetMetricMetadata() *MetricMetadata {
+	if x != nil {
+		return x.MetricMetadata
+	}
+	return nil
+}
+
+func (x *MetricCompatibility) GetCompatibility() Compatibility {
+	if x != nil && x.Compatibility != nil {
+		return *x.Compatibility
+	}
+	return Compatibility_COMPATIBILITY_UNSPECIFIED
+}
+
 // Used to convert a dimension value to a single case.
 type DimensionExpression_CaseExpression struct {
 	state         protoimpl.MessageState
@@ -2650,7 +2847,7 @@ type DimensionExpression_CaseExpression struct {
 func (x *DimensionExpression_CaseExpression) Reset() {
 	*x = DimensionExpression_CaseExpression{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[27]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2663,7 +2860,7 @@ func (x *DimensionExpression_CaseExpression) String() string {
 func (*DimensionExpression_CaseExpression) ProtoMessage() {}
 
 func (x *DimensionExpression_CaseExpression) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[27]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2708,7 +2905,7 @@ type DimensionExpression_ConcatenateExpression struct {
 func (x *DimensionExpression_ConcatenateExpression) Reset() {
 	*x = DimensionExpression_ConcatenateExpression{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[28]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2721,7 +2918,7 @@ func (x *DimensionExpression_ConcatenateExpression) String() string {
 func (*DimensionExpression_ConcatenateExpression) ProtoMessage() {}
 
 func (x *DimensionExpression_ConcatenateExpression) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[28]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2768,7 +2965,7 @@ type Filter_StringFilter struct {
 func (x *Filter_StringFilter) Reset() {
 	*x = Filter_StringFilter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[29]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2781,7 +2978,7 @@ func (x *Filter_StringFilter) String() string {
 func (*Filter_StringFilter) ProtoMessage() {}
 
 func (x *Filter_StringFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[29]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2834,7 +3031,7 @@ type Filter_InListFilter struct {
 func (x *Filter_InListFilter) Reset() {
 	*x = Filter_InListFilter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[30]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[32]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2847,7 +3044,7 @@ func (x *Filter_InListFilter) String() string {
 func (*Filter_InListFilter) ProtoMessage() {}
 
 func (x *Filter_InListFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[30]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[32]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2892,7 +3089,7 @@ type Filter_NumericFilter struct {
 func (x *Filter_NumericFilter) Reset() {
 	*x = Filter_NumericFilter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[31]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[33]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2905,7 +3102,7 @@ func (x *Filter_NumericFilter) String() string {
 func (*Filter_NumericFilter) ProtoMessage() {}
 
 func (x *Filter_NumericFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[31]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[33]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2950,7 +3147,7 @@ type Filter_BetweenFilter struct {
 func (x *Filter_BetweenFilter) Reset() {
 	*x = Filter_BetweenFilter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[32]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[34]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2963,7 +3160,7 @@ func (x *Filter_BetweenFilter) String() string {
 func (*Filter_BetweenFilter) ProtoMessage() {}
 
 func (x *Filter_BetweenFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[32]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[34]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3006,7 +3203,7 @@ type OrderBy_MetricOrderBy struct {
 func (x *OrderBy_MetricOrderBy) Reset() {
 	*x = OrderBy_MetricOrderBy{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[33]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[35]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3019,7 +3216,7 @@ func (x *OrderBy_MetricOrderBy) String() string {
 func (*OrderBy_MetricOrderBy) ProtoMessage() {}
 
 func (x *OrderBy_MetricOrderBy) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[33]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[35]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3057,7 +3254,7 @@ type OrderBy_DimensionOrderBy struct {
 func (x *OrderBy_DimensionOrderBy) Reset() {
 	*x = OrderBy_DimensionOrderBy{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[34]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[36]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3070,7 +3267,7 @@ func (x *OrderBy_DimensionOrderBy) String() string {
 func (*OrderBy_DimensionOrderBy) ProtoMessage() {}
 
 func (x *OrderBy_DimensionOrderBy) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[34]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[36]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3119,7 +3316,7 @@ type OrderBy_PivotOrderBy struct {
 func (x *OrderBy_PivotOrderBy) Reset() {
 	*x = OrderBy_PivotOrderBy{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[35]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[37]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3132,7 +3329,7 @@ func (x *OrderBy_PivotOrderBy) String() string {
 func (*OrderBy_PivotOrderBy) ProtoMessage() {}
 
 func (x *OrderBy_PivotOrderBy) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[35]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[37]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3192,7 +3389,7 @@ type OrderBy_PivotOrderBy_PivotSelection struct {
 func (x *OrderBy_PivotOrderBy_PivotSelection) Reset() {
 	*x = OrderBy_PivotOrderBy_PivotSelection{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[36]
+		mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[38]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3205,7 +3402,7 @@ func (x *OrderBy_PivotOrderBy_PivotSelection) String() string {
 func (*OrderBy_PivotOrderBy_PivotSelection) ProtoMessage() {}
 
 func (x *OrderBy_PivotOrderBy_PivotSelection) ProtoReflect() protoreflect.Message {
-	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[36]
+	mi := &file_google_analytics_data_v1beta_data_proto_msgTypes[38]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3618,7 +3815,7 @@ var file_google_analytics_data_v1beta_data_proto_rawDesc = []byte{
 	0x1a, 0x0a, 0x08, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x05, 0x52, 0x08, 0x63, 0x6f, 0x6e, 0x73, 0x75, 0x6d, 0x65, 0x64, 0x12, 0x1c, 0x0a, 0x09, 0x72,
 	0x65, 0x6d, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x09,
-	0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x22, 0xc8, 0x01, 0x0a, 0x11, 0x44, 0x69,
+	0x72, 0x65, 0x6d, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x22, 0xe4, 0x01, 0x0a, 0x11, 0x44, 0x69,
 	0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12,
 	0x19, 0x0a, 0x08, 0x61, 0x70, 0x69, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x07, 0x61, 0x70, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x69,
@@ -3631,56 +3828,96 @@ var file_google_analytics_data_v1beta_data_proto_rawDesc = []byte{
 	0x70, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x2b, 0x0a, 0x11, 0x63, 0x75, 0x73, 0x74, 0x6f,
 	0x6d, 0x5f, 0x64, 0x65, 0x66, 0x69, 0x6e, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01,
 	0x28, 0x08, 0x52, 0x10, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x44, 0x65, 0x66, 0x69, 0x6e, 0x69,
-	0x74, 0x69, 0x6f, 0x6e, 0x22, 0xa3, 0x02, 0x0a, 0x0e, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x4d,
-	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x19, 0x0a, 0x08, 0x61, 0x70, 0x69, 0x5f, 0x6e,
-	0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x70, 0x69, 0x4e, 0x61,
-	0x6d, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x69, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x06, 0x75, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x64,
-	0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x30, 0x0a,
-	0x14, 0x64, 0x65, 0x70, 0x72, 0x65, 0x63, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x70, 0x69, 0x5f,
-	0x6e, 0x61, 0x6d, 0x65, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x09, 0x52, 0x12, 0x64, 0x65, 0x70,
-	0x72, 0x65, 0x63, 0x61, 0x74, 0x65, 0x64, 0x41, 0x70, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x12,
-	0x3c, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x28, 0x2e,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73,
-	0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x2e, 0x4d, 0x65, 0x74,
-	0x72, 0x69, 0x63, 0x54, 0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x1e, 0x0a,
-	0x0a, 0x65, 0x78, 0x70, 0x72, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x06, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0a, 0x65, 0x78, 0x70, 0x72, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2b, 0x0a,
-	0x11, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x5f, 0x64, 0x65, 0x66, 0x69, 0x6e, 0x69, 0x74, 0x69,
-	0x6f, 0x6e, 0x18, 0x07, 0x20, 0x01, 0x28, 0x08, 0x52, 0x10, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d,
-	0x44, 0x65, 0x66, 0x69, 0x6e, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x2a, 0x67, 0x0a, 0x11, 0x4d, 0x65,
-	0x74, 0x72, 0x69, 0x63, 0x41, 0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12,
-	0x22, 0x0a, 0x1e, 0x4d, 0x45, 0x54, 0x52, 0x49, 0x43, 0x5f, 0x41, 0x47, 0x47, 0x52, 0x45, 0x47,
-	0x41, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45,
-	0x44, 0x10, 0x00, 0x12, 0x09, 0x0a, 0x05, 0x54, 0x4f, 0x54, 0x41, 0x4c, 0x10, 0x01, 0x12, 0x0b,
-	0x0a, 0x07, 0x4d, 0x49, 0x4e, 0x49, 0x4d, 0x55, 0x4d, 0x10, 0x05, 0x12, 0x0b, 0x0a, 0x07, 0x4d,
-	0x41, 0x58, 0x49, 0x4d, 0x55, 0x4d, 0x10, 0x06, 0x12, 0x09, 0x0a, 0x05, 0x43, 0x4f, 0x55, 0x4e,
-	0x54, 0x10, 0x04, 0x2a, 0x81, 0x02, 0x0a, 0x0a, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x54, 0x79,
-	0x70, 0x65, 0x12, 0x1b, 0x0a, 0x17, 0x4d, 0x45, 0x54, 0x52, 0x49, 0x43, 0x5f, 0x54, 0x59, 0x50,
-	0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12,
-	0x10, 0x0a, 0x0c, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x49, 0x4e, 0x54, 0x45, 0x47, 0x45, 0x52, 0x10,
-	0x01, 0x12, 0x0e, 0x0a, 0x0a, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x46, 0x4c, 0x4f, 0x41, 0x54, 0x10,
-	0x02, 0x12, 0x10, 0x0a, 0x0c, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x53, 0x45, 0x43, 0x4f, 0x4e, 0x44,
-	0x53, 0x10, 0x04, 0x12, 0x15, 0x0a, 0x11, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x4d, 0x49, 0x4c, 0x4c,
-	0x49, 0x53, 0x45, 0x43, 0x4f, 0x4e, 0x44, 0x53, 0x10, 0x05, 0x12, 0x10, 0x0a, 0x0c, 0x54, 0x59,
-	0x50, 0x45, 0x5f, 0x4d, 0x49, 0x4e, 0x55, 0x54, 0x45, 0x53, 0x10, 0x06, 0x12, 0x0e, 0x0a, 0x0a,
-	0x54, 0x59, 0x50, 0x45, 0x5f, 0x48, 0x4f, 0x55, 0x52, 0x53, 0x10, 0x07, 0x12, 0x11, 0x0a, 0x0d,
-	0x54, 0x59, 0x50, 0x45, 0x5f, 0x53, 0x54, 0x41, 0x4e, 0x44, 0x41, 0x52, 0x44, 0x10, 0x08, 0x12,
-	0x11, 0x0a, 0x0d, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x43, 0x55, 0x52, 0x52, 0x45, 0x4e, 0x43, 0x59,
-	0x10, 0x09, 0x12, 0x0d, 0x0a, 0x09, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x46, 0x45, 0x45, 0x54, 0x10,
-	0x0a, 0x12, 0x0e, 0x0a, 0x0a, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x4d, 0x49, 0x4c, 0x45, 0x53, 0x10,
-	0x0b, 0x12, 0x0f, 0x0a, 0x0b, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x4d, 0x45, 0x54, 0x45, 0x52, 0x53,
-	0x10, 0x0c, 0x12, 0x13, 0x0a, 0x0f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x4b, 0x49, 0x4c, 0x4f, 0x4d,
-	0x45, 0x54, 0x45, 0x52, 0x53, 0x10, 0x0d, 0x42, 0x79, 0x0a, 0x20, 0x63, 0x6f, 0x6d, 0x2e, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e,
-	0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x42, 0x11, 0x52, 0x65, 0x70,
-	0x6f, 0x72, 0x74, 0x69, 0x6e, 0x67, 0x41, 0x70, 0x69, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01,
-	0x5a, 0x40, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e,
-	0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63,
-	0x73, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x3b, 0x64, 0x61,
-	0x74, 0x61, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1a, 0x0a, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79,
+	0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79,
+	0x22, 0xbf, 0x02, 0x0a, 0x0e, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0x12, 0x19, 0x0a, 0x08, 0x61, 0x70, 0x69, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x70, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x17,
+	0x0a, 0x07, 0x75, 0x69, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x06, 0x75, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72,
+	0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65,
+	0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x30, 0x0a, 0x14, 0x64, 0x65, 0x70,
+	0x72, 0x65, 0x63, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x70, 0x69, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
+	0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x09, 0x52, 0x12, 0x64, 0x65, 0x70, 0x72, 0x65, 0x63, 0x61,
+	0x74, 0x65, 0x64, 0x41, 0x70, 0x69, 0x4e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x3c, 0x0a, 0x04, 0x74,
+	0x79, 0x70, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x28, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74,
+	0x61, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x2e, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x54,
+	0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x65, 0x78, 0x70,
+	0x72, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x65,
+	0x78, 0x70, 0x72, 0x65, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x2b, 0x0a, 0x11, 0x63, 0x75, 0x73,
+	0x74, 0x6f, 0x6d, 0x5f, 0x64, 0x65, 0x66, 0x69, 0x6e, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x07,
+	0x20, 0x01, 0x28, 0x08, 0x52, 0x10, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x44, 0x65, 0x66, 0x69,
+	0x6e, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1a, 0x0a, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f,
+	0x72, 0x79, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f,
+	0x72, 0x79, 0x22, 0xfe, 0x01, 0x0a, 0x16, 0x44, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e,
+	0x43, 0x6f, 0x6d, 0x70, 0x61, 0x74, 0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x12, 0x63, 0x0a,
+	0x12, 0x64, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2f, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74,
+	0x61, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x2e, 0x44, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69,
+	0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x48, 0x00, 0x52, 0x11, 0x64, 0x69,
+	0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x88,
+	0x01, 0x01, 0x12, 0x56, 0x0a, 0x0d, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x74, 0x69, 0x62, 0x69, 0x6c,
+	0x69, 0x74, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2b, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74,
+	0x61, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x74, 0x69,
+	0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x48, 0x01, 0x52, 0x0d, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x74,
+	0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x88, 0x01, 0x01, 0x42, 0x15, 0x0a, 0x13, 0x5f, 0x64,
+	0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
+	0x61, 0x42, 0x10, 0x0a, 0x0e, 0x5f, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x74, 0x69, 0x62, 0x69, 0x6c,
+	0x69, 0x74, 0x79, 0x22, 0xef, 0x01, 0x0a, 0x13, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x43, 0x6f,
+	0x6d, 0x70, 0x61, 0x74, 0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x12, 0x5a, 0x0a, 0x0f, 0x6d,
+	0x65, 0x74, 0x72, 0x69, 0x63, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e,
+	0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x62,
+	0x65, 0x74, 0x61, 0x2e, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61,
+	0x74, 0x61, 0x48, 0x00, 0x52, 0x0e, 0x6d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61,
+	0x64, 0x61, 0x74, 0x61, 0x88, 0x01, 0x01, 0x12, 0x56, 0x0a, 0x0d, 0x63, 0x6f, 0x6d, 0x70, 0x61,
+	0x74, 0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2b,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63,
+	0x73, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x2e, 0x43, 0x6f,
+	0x6d, 0x70, 0x61, 0x74, 0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x48, 0x01, 0x52, 0x0d, 0x63,
+	0x6f, 0x6d, 0x70, 0x61, 0x74, 0x69, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x88, 0x01, 0x01, 0x42,
+	0x12, 0x0a, 0x10, 0x5f, 0x6d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0x42, 0x10, 0x0a, 0x0e, 0x5f, 0x63, 0x6f, 0x6d, 0x70, 0x61, 0x74, 0x69, 0x62,
+	0x69, 0x6c, 0x69, 0x74, 0x79, 0x2a, 0x67, 0x0a, 0x11, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x41,
+	0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x22, 0x0a, 0x1e, 0x4d, 0x45,
+	0x54, 0x52, 0x49, 0x43, 0x5f, 0x41, 0x47, 0x47, 0x52, 0x45, 0x47, 0x41, 0x54, 0x49, 0x4f, 0x4e,
+	0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x09,
+	0x0a, 0x05, 0x54, 0x4f, 0x54, 0x41, 0x4c, 0x10, 0x01, 0x12, 0x0b, 0x0a, 0x07, 0x4d, 0x49, 0x4e,
+	0x49, 0x4d, 0x55, 0x4d, 0x10, 0x05, 0x12, 0x0b, 0x0a, 0x07, 0x4d, 0x41, 0x58, 0x49, 0x4d, 0x55,
+	0x4d, 0x10, 0x06, 0x12, 0x09, 0x0a, 0x05, 0x43, 0x4f, 0x55, 0x4e, 0x54, 0x10, 0x04, 0x2a, 0x81,
+	0x02, 0x0a, 0x0a, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a,
+	0x17, 0x4d, 0x45, 0x54, 0x52, 0x49, 0x43, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53,
+	0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x10, 0x0a, 0x0c, 0x54, 0x59,
+	0x50, 0x45, 0x5f, 0x49, 0x4e, 0x54, 0x45, 0x47, 0x45, 0x52, 0x10, 0x01, 0x12, 0x0e, 0x0a, 0x0a,
+	0x54, 0x59, 0x50, 0x45, 0x5f, 0x46, 0x4c, 0x4f, 0x41, 0x54, 0x10, 0x02, 0x12, 0x10, 0x0a, 0x0c,
+	0x54, 0x59, 0x50, 0x45, 0x5f, 0x53, 0x45, 0x43, 0x4f, 0x4e, 0x44, 0x53, 0x10, 0x04, 0x12, 0x15,
+	0x0a, 0x11, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x4d, 0x49, 0x4c, 0x4c, 0x49, 0x53, 0x45, 0x43, 0x4f,
+	0x4e, 0x44, 0x53, 0x10, 0x05, 0x12, 0x10, 0x0a, 0x0c, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x4d, 0x49,
+	0x4e, 0x55, 0x54, 0x45, 0x53, 0x10, 0x06, 0x12, 0x0e, 0x0a, 0x0a, 0x54, 0x59, 0x50, 0x45, 0x5f,
+	0x48, 0x4f, 0x55, 0x52, 0x53, 0x10, 0x07, 0x12, 0x11, 0x0a, 0x0d, 0x54, 0x59, 0x50, 0x45, 0x5f,
+	0x53, 0x54, 0x41, 0x4e, 0x44, 0x41, 0x52, 0x44, 0x10, 0x08, 0x12, 0x11, 0x0a, 0x0d, 0x54, 0x59,
+	0x50, 0x45, 0x5f, 0x43, 0x55, 0x52, 0x52, 0x45, 0x4e, 0x43, 0x59, 0x10, 0x09, 0x12, 0x0d, 0x0a,
+	0x09, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x46, 0x45, 0x45, 0x54, 0x10, 0x0a, 0x12, 0x0e, 0x0a, 0x0a,
+	0x54, 0x59, 0x50, 0x45, 0x5f, 0x4d, 0x49, 0x4c, 0x45, 0x53, 0x10, 0x0b, 0x12, 0x0f, 0x0a, 0x0b,
+	0x54, 0x59, 0x50, 0x45, 0x5f, 0x4d, 0x45, 0x54, 0x45, 0x52, 0x53, 0x10, 0x0c, 0x12, 0x13, 0x0a,
+	0x0f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x4b, 0x49, 0x4c, 0x4f, 0x4d, 0x45, 0x54, 0x45, 0x52, 0x53,
+	0x10, 0x0d, 0x2a, 0x50, 0x0a, 0x0d, 0x43, 0x6f, 0x6d, 0x70, 0x61, 0x74, 0x69, 0x62, 0x69, 0x6c,
+	0x69, 0x74, 0x79, 0x12, 0x1d, 0x0a, 0x19, 0x43, 0x4f, 0x4d, 0x50, 0x41, 0x54, 0x49, 0x42, 0x49,
+	0x4c, 0x49, 0x54, 0x59, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44,
+	0x10, 0x00, 0x12, 0x0e, 0x0a, 0x0a, 0x43, 0x4f, 0x4d, 0x50, 0x41, 0x54, 0x49, 0x42, 0x4c, 0x45,
+	0x10, 0x01, 0x12, 0x10, 0x0a, 0x0c, 0x49, 0x4e, 0x43, 0x4f, 0x4d, 0x50, 0x41, 0x54, 0x49, 0x42,
+	0x4c, 0x45, 0x10, 0x02, 0x42, 0x79, 0x0a, 0x20, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2e, 0x64, 0x61, 0x74,
+	0x61, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x42, 0x11, 0x52, 0x65, 0x70, 0x6f, 0x72, 0x74,
+	0x69, 0x6e, 0x67, 0x41, 0x70, 0x69, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x40, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67,
+	0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x61, 0x70, 0x69, 0x73, 0x2f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x74, 0x69, 0x63, 0x73, 0x2f, 0x64,
+	0x61, 0x74, 0x61, 0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x3b, 0x64, 0x61, 0x74, 0x61, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -3695,100 +3932,107 @@ func file_google_analytics_data_v1beta_data_proto_rawDescGZIP() []byte {
 	return file_google_analytics_data_v1beta_data_proto_rawDescData
 }
 
-var file_google_analytics_data_v1beta_data_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_google_analytics_data_v1beta_data_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
+var file_google_analytics_data_v1beta_data_proto_enumTypes = make([]protoimpl.EnumInfo, 7)
+var file_google_analytics_data_v1beta_data_proto_msgTypes = make([]protoimpl.MessageInfo, 39)
 var file_google_analytics_data_v1beta_data_proto_goTypes = []interface{}{
 	(MetricAggregation)(0),                            // 0: google.analytics.data.v1beta.MetricAggregation
 	(MetricType)(0),                                   // 1: google.analytics.data.v1beta.MetricType
-	(Filter_StringFilter_MatchType)(0),                // 2: google.analytics.data.v1beta.Filter.StringFilter.MatchType
-	(Filter_NumericFilter_Operation)(0),               // 3: google.analytics.data.v1beta.Filter.NumericFilter.Operation
-	(OrderBy_DimensionOrderBy_OrderType)(0),           // 4: google.analytics.data.v1beta.OrderBy.DimensionOrderBy.OrderType
-	(CohortsRange_Granularity)(0),                     // 5: google.analytics.data.v1beta.CohortsRange.Granularity
-	(*DateRange)(nil),                                 // 6: google.analytics.data.v1beta.DateRange
-	(*MinuteRange)(nil),                               // 7: google.analytics.data.v1beta.MinuteRange
-	(*Dimension)(nil),                                 // 8: google.analytics.data.v1beta.Dimension
-	(*DimensionExpression)(nil),                       // 9: google.analytics.data.v1beta.DimensionExpression
-	(*Metric)(nil),                                    // 10: google.analytics.data.v1beta.Metric
-	(*FilterExpression)(nil),                          // 11: google.analytics.data.v1beta.FilterExpression
-	(*FilterExpressionList)(nil),                      // 12: google.analytics.data.v1beta.FilterExpressionList
-	(*Filter)(nil),                                    // 13: google.analytics.data.v1beta.Filter
-	(*OrderBy)(nil),                                   // 14: google.analytics.data.v1beta.OrderBy
-	(*Pivot)(nil),                                     // 15: google.analytics.data.v1beta.Pivot
-	(*CohortSpec)(nil),                                // 16: google.analytics.data.v1beta.CohortSpec
-	(*Cohort)(nil),                                    // 17: google.analytics.data.v1beta.Cohort
-	(*CohortsRange)(nil),                              // 18: google.analytics.data.v1beta.CohortsRange
-	(*CohortReportSettings)(nil),                      // 19: google.analytics.data.v1beta.CohortReportSettings
-	(*ResponseMetaData)(nil),                          // 20: google.analytics.data.v1beta.ResponseMetaData
-	(*DimensionHeader)(nil),                           // 21: google.analytics.data.v1beta.DimensionHeader
-	(*MetricHeader)(nil),                              // 22: google.analytics.data.v1beta.MetricHeader
-	(*PivotHeader)(nil),                               // 23: google.analytics.data.v1beta.PivotHeader
-	(*PivotDimensionHeader)(nil),                      // 24: google.analytics.data.v1beta.PivotDimensionHeader
-	(*Row)(nil),                                       // 25: google.analytics.data.v1beta.Row
-	(*DimensionValue)(nil),                            // 26: google.analytics.data.v1beta.DimensionValue
-	(*MetricValue)(nil),                               // 27: google.analytics.data.v1beta.MetricValue
-	(*NumericValue)(nil),                              // 28: google.analytics.data.v1beta.NumericValue
-	(*PropertyQuota)(nil),                             // 29: google.analytics.data.v1beta.PropertyQuota
-	(*QuotaStatus)(nil),                               // 30: google.analytics.data.v1beta.QuotaStatus
-	(*DimensionMetadata)(nil),                         // 31: google.analytics.data.v1beta.DimensionMetadata
-	(*MetricMetadata)(nil),                            // 32: google.analytics.data.v1beta.MetricMetadata
-	(*DimensionExpression_CaseExpression)(nil),        // 33: google.analytics.data.v1beta.DimensionExpression.CaseExpression
-	(*DimensionExpression_ConcatenateExpression)(nil), // 34: google.analytics.data.v1beta.DimensionExpression.ConcatenateExpression
-	(*Filter_StringFilter)(nil),                       // 35: google.analytics.data.v1beta.Filter.StringFilter
-	(*Filter_InListFilter)(nil),                       // 36: google.analytics.data.v1beta.Filter.InListFilter
-	(*Filter_NumericFilter)(nil),                      // 37: google.analytics.data.v1beta.Filter.NumericFilter
-	(*Filter_BetweenFilter)(nil),                      // 38: google.analytics.data.v1beta.Filter.BetweenFilter
-	(*OrderBy_MetricOrderBy)(nil),                     // 39: google.analytics.data.v1beta.OrderBy.MetricOrderBy
-	(*OrderBy_DimensionOrderBy)(nil),                  // 40: google.analytics.data.v1beta.OrderBy.DimensionOrderBy
-	(*OrderBy_PivotOrderBy)(nil),                      // 41: google.analytics.data.v1beta.OrderBy.PivotOrderBy
-	(*OrderBy_PivotOrderBy_PivotSelection)(nil),       // 42: google.analytics.data.v1beta.OrderBy.PivotOrderBy.PivotSelection
+	(Compatibility)(0),                                // 2: google.analytics.data.v1beta.Compatibility
+	(Filter_StringFilter_MatchType)(0),                // 3: google.analytics.data.v1beta.Filter.StringFilter.MatchType
+	(Filter_NumericFilter_Operation)(0),               // 4: google.analytics.data.v1beta.Filter.NumericFilter.Operation
+	(OrderBy_DimensionOrderBy_OrderType)(0),           // 5: google.analytics.data.v1beta.OrderBy.DimensionOrderBy.OrderType
+	(CohortsRange_Granularity)(0),                     // 6: google.analytics.data.v1beta.CohortsRange.Granularity
+	(*DateRange)(nil),                                 // 7: google.analytics.data.v1beta.DateRange
+	(*MinuteRange)(nil),                               // 8: google.analytics.data.v1beta.MinuteRange
+	(*Dimension)(nil),                                 // 9: google.analytics.data.v1beta.Dimension
+	(*DimensionExpression)(nil),                       // 10: google.analytics.data.v1beta.DimensionExpression
+	(*Metric)(nil),                                    // 11: google.analytics.data.v1beta.Metric
+	(*FilterExpression)(nil),                          // 12: google.analytics.data.v1beta.FilterExpression
+	(*FilterExpressionList)(nil),                      // 13: google.analytics.data.v1beta.FilterExpressionList
+	(*Filter)(nil),                                    // 14: google.analytics.data.v1beta.Filter
+	(*OrderBy)(nil),                                   // 15: google.analytics.data.v1beta.OrderBy
+	(*Pivot)(nil),                                     // 16: google.analytics.data.v1beta.Pivot
+	(*CohortSpec)(nil),                                // 17: google.analytics.data.v1beta.CohortSpec
+	(*Cohort)(nil),                                    // 18: google.analytics.data.v1beta.Cohort
+	(*CohortsRange)(nil),                              // 19: google.analytics.data.v1beta.CohortsRange
+	(*CohortReportSettings)(nil),                      // 20: google.analytics.data.v1beta.CohortReportSettings
+	(*ResponseMetaData)(nil),                          // 21: google.analytics.data.v1beta.ResponseMetaData
+	(*DimensionHeader)(nil),                           // 22: google.analytics.data.v1beta.DimensionHeader
+	(*MetricHeader)(nil),                              // 23: google.analytics.data.v1beta.MetricHeader
+	(*PivotHeader)(nil),                               // 24: google.analytics.data.v1beta.PivotHeader
+	(*PivotDimensionHeader)(nil),                      // 25: google.analytics.data.v1beta.PivotDimensionHeader
+	(*Row)(nil),                                       // 26: google.analytics.data.v1beta.Row
+	(*DimensionValue)(nil),                            // 27: google.analytics.data.v1beta.DimensionValue
+	(*MetricValue)(nil),                               // 28: google.analytics.data.v1beta.MetricValue
+	(*NumericValue)(nil),                              // 29: google.analytics.data.v1beta.NumericValue
+	(*PropertyQuota)(nil),                             // 30: google.analytics.data.v1beta.PropertyQuota
+	(*QuotaStatus)(nil),                               // 31: google.analytics.data.v1beta.QuotaStatus
+	(*DimensionMetadata)(nil),                         // 32: google.analytics.data.v1beta.DimensionMetadata
+	(*MetricMetadata)(nil),                            // 33: google.analytics.data.v1beta.MetricMetadata
+	(*DimensionCompatibility)(nil),                    // 34: google.analytics.data.v1beta.DimensionCompatibility
+	(*MetricCompatibility)(nil),                       // 35: google.analytics.data.v1beta.MetricCompatibility
+	(*DimensionExpression_CaseExpression)(nil),        // 36: google.analytics.data.v1beta.DimensionExpression.CaseExpression
+	(*DimensionExpression_ConcatenateExpression)(nil), // 37: google.analytics.data.v1beta.DimensionExpression.ConcatenateExpression
+	(*Filter_StringFilter)(nil),                       // 38: google.analytics.data.v1beta.Filter.StringFilter
+	(*Filter_InListFilter)(nil),                       // 39: google.analytics.data.v1beta.Filter.InListFilter
+	(*Filter_NumericFilter)(nil),                      // 40: google.analytics.data.v1beta.Filter.NumericFilter
+	(*Filter_BetweenFilter)(nil),                      // 41: google.analytics.data.v1beta.Filter.BetweenFilter
+	(*OrderBy_MetricOrderBy)(nil),                     // 42: google.analytics.data.v1beta.OrderBy.MetricOrderBy
+	(*OrderBy_DimensionOrderBy)(nil),                  // 43: google.analytics.data.v1beta.OrderBy.DimensionOrderBy
+	(*OrderBy_PivotOrderBy)(nil),                      // 44: google.analytics.data.v1beta.OrderBy.PivotOrderBy
+	(*OrderBy_PivotOrderBy_PivotSelection)(nil),       // 45: google.analytics.data.v1beta.OrderBy.PivotOrderBy.PivotSelection
 }
 var file_google_analytics_data_v1beta_data_proto_depIdxs = []int32{
-	9,  // 0: google.analytics.data.v1beta.Dimension.dimension_expression:type_name -> google.analytics.data.v1beta.DimensionExpression
-	33, // 1: google.analytics.data.v1beta.DimensionExpression.lower_case:type_name -> google.analytics.data.v1beta.DimensionExpression.CaseExpression
-	33, // 2: google.analytics.data.v1beta.DimensionExpression.upper_case:type_name -> google.analytics.data.v1beta.DimensionExpression.CaseExpression
-	34, // 3: google.analytics.data.v1beta.DimensionExpression.concatenate:type_name -> google.analytics.data.v1beta.DimensionExpression.ConcatenateExpression
-	12, // 4: google.analytics.data.v1beta.FilterExpression.and_group:type_name -> google.analytics.data.v1beta.FilterExpressionList
-	12, // 5: google.analytics.data.v1beta.FilterExpression.or_group:type_name -> google.analytics.data.v1beta.FilterExpressionList
-	11, // 6: google.analytics.data.v1beta.FilterExpression.not_expression:type_name -> google.analytics.data.v1beta.FilterExpression
-	13, // 7: google.analytics.data.v1beta.FilterExpression.filter:type_name -> google.analytics.data.v1beta.Filter
-	11, // 8: google.analytics.data.v1beta.FilterExpressionList.expressions:type_name -> google.analytics.data.v1beta.FilterExpression
-	35, // 9: google.analytics.data.v1beta.Filter.string_filter:type_name -> google.analytics.data.v1beta.Filter.StringFilter
-	36, // 10: google.analytics.data.v1beta.Filter.in_list_filter:type_name -> google.analytics.data.v1beta.Filter.InListFilter
-	37, // 11: google.analytics.data.v1beta.Filter.numeric_filter:type_name -> google.analytics.data.v1beta.Filter.NumericFilter
-	38, // 12: google.analytics.data.v1beta.Filter.between_filter:type_name -> google.analytics.data.v1beta.Filter.BetweenFilter
-	39, // 13: google.analytics.data.v1beta.OrderBy.metric:type_name -> google.analytics.data.v1beta.OrderBy.MetricOrderBy
-	40, // 14: google.analytics.data.v1beta.OrderBy.dimension:type_name -> google.analytics.data.v1beta.OrderBy.DimensionOrderBy
-	41, // 15: google.analytics.data.v1beta.OrderBy.pivot:type_name -> google.analytics.data.v1beta.OrderBy.PivotOrderBy
-	14, // 16: google.analytics.data.v1beta.Pivot.order_bys:type_name -> google.analytics.data.v1beta.OrderBy
+	10, // 0: google.analytics.data.v1beta.Dimension.dimension_expression:type_name -> google.analytics.data.v1beta.DimensionExpression
+	36, // 1: google.analytics.data.v1beta.DimensionExpression.lower_case:type_name -> google.analytics.data.v1beta.DimensionExpression.CaseExpression
+	36, // 2: google.analytics.data.v1beta.DimensionExpression.upper_case:type_name -> google.analytics.data.v1beta.DimensionExpression.CaseExpression
+	37, // 3: google.analytics.data.v1beta.DimensionExpression.concatenate:type_name -> google.analytics.data.v1beta.DimensionExpression.ConcatenateExpression
+	13, // 4: google.analytics.data.v1beta.FilterExpression.and_group:type_name -> google.analytics.data.v1beta.FilterExpressionList
+	13, // 5: google.analytics.data.v1beta.FilterExpression.or_group:type_name -> google.analytics.data.v1beta.FilterExpressionList
+	12, // 6: google.analytics.data.v1beta.FilterExpression.not_expression:type_name -> google.analytics.data.v1beta.FilterExpression
+	14, // 7: google.analytics.data.v1beta.FilterExpression.filter:type_name -> google.analytics.data.v1beta.Filter
+	12, // 8: google.analytics.data.v1beta.FilterExpressionList.expressions:type_name -> google.analytics.data.v1beta.FilterExpression
+	38, // 9: google.analytics.data.v1beta.Filter.string_filter:type_name -> google.analytics.data.v1beta.Filter.StringFilter
+	39, // 10: google.analytics.data.v1beta.Filter.in_list_filter:type_name -> google.analytics.data.v1beta.Filter.InListFilter
+	40, // 11: google.analytics.data.v1beta.Filter.numeric_filter:type_name -> google.analytics.data.v1beta.Filter.NumericFilter
+	41, // 12: google.analytics.data.v1beta.Filter.between_filter:type_name -> google.analytics.data.v1beta.Filter.BetweenFilter
+	42, // 13: google.analytics.data.v1beta.OrderBy.metric:type_name -> google.analytics.data.v1beta.OrderBy.MetricOrderBy
+	43, // 14: google.analytics.data.v1beta.OrderBy.dimension:type_name -> google.analytics.data.v1beta.OrderBy.DimensionOrderBy
+	44, // 15: google.analytics.data.v1beta.OrderBy.pivot:type_name -> google.analytics.data.v1beta.OrderBy.PivotOrderBy
+	15, // 16: google.analytics.data.v1beta.Pivot.order_bys:type_name -> google.analytics.data.v1beta.OrderBy
 	0,  // 17: google.analytics.data.v1beta.Pivot.metric_aggregations:type_name -> google.analytics.data.v1beta.MetricAggregation
-	17, // 18: google.analytics.data.v1beta.CohortSpec.cohorts:type_name -> google.analytics.data.v1beta.Cohort
-	18, // 19: google.analytics.data.v1beta.CohortSpec.cohorts_range:type_name -> google.analytics.data.v1beta.CohortsRange
-	19, // 20: google.analytics.data.v1beta.CohortSpec.cohort_report_settings:type_name -> google.analytics.data.v1beta.CohortReportSettings
-	6,  // 21: google.analytics.data.v1beta.Cohort.date_range:type_name -> google.analytics.data.v1beta.DateRange
-	5,  // 22: google.analytics.data.v1beta.CohortsRange.granularity:type_name -> google.analytics.data.v1beta.CohortsRange.Granularity
+	18, // 18: google.analytics.data.v1beta.CohortSpec.cohorts:type_name -> google.analytics.data.v1beta.Cohort
+	19, // 19: google.analytics.data.v1beta.CohortSpec.cohorts_range:type_name -> google.analytics.data.v1beta.CohortsRange
+	20, // 20: google.analytics.data.v1beta.CohortSpec.cohort_report_settings:type_name -> google.analytics.data.v1beta.CohortReportSettings
+	7,  // 21: google.analytics.data.v1beta.Cohort.date_range:type_name -> google.analytics.data.v1beta.DateRange
+	6,  // 22: google.analytics.data.v1beta.CohortsRange.granularity:type_name -> google.analytics.data.v1beta.CohortsRange.Granularity
 	1,  // 23: google.analytics.data.v1beta.MetricHeader.type:type_name -> google.analytics.data.v1beta.MetricType
-	24, // 24: google.analytics.data.v1beta.PivotHeader.pivot_dimension_headers:type_name -> google.analytics.data.v1beta.PivotDimensionHeader
-	26, // 25: google.analytics.data.v1beta.PivotDimensionHeader.dimension_values:type_name -> google.analytics.data.v1beta.DimensionValue
-	26, // 26: google.analytics.data.v1beta.Row.dimension_values:type_name -> google.analytics.data.v1beta.DimensionValue
-	27, // 27: google.analytics.data.v1beta.Row.metric_values:type_name -> google.analytics.data.v1beta.MetricValue
-	30, // 28: google.analytics.data.v1beta.PropertyQuota.tokens_per_day:type_name -> google.analytics.data.v1beta.QuotaStatus
-	30, // 29: google.analytics.data.v1beta.PropertyQuota.tokens_per_hour:type_name -> google.analytics.data.v1beta.QuotaStatus
-	30, // 30: google.analytics.data.v1beta.PropertyQuota.concurrent_requests:type_name -> google.analytics.data.v1beta.QuotaStatus
-	30, // 31: google.analytics.data.v1beta.PropertyQuota.server_errors_per_project_per_hour:type_name -> google.analytics.data.v1beta.QuotaStatus
-	30, // 32: google.analytics.data.v1beta.PropertyQuota.potentially_thresholded_requests_per_hour:type_name -> google.analytics.data.v1beta.QuotaStatus
+	25, // 24: google.analytics.data.v1beta.PivotHeader.pivot_dimension_headers:type_name -> google.analytics.data.v1beta.PivotDimensionHeader
+	27, // 25: google.analytics.data.v1beta.PivotDimensionHeader.dimension_values:type_name -> google.analytics.data.v1beta.DimensionValue
+	27, // 26: google.analytics.data.v1beta.Row.dimension_values:type_name -> google.analytics.data.v1beta.DimensionValue
+	28, // 27: google.analytics.data.v1beta.Row.metric_values:type_name -> google.analytics.data.v1beta.MetricValue
+	31, // 28: google.analytics.data.v1beta.PropertyQuota.tokens_per_day:type_name -> google.analytics.data.v1beta.QuotaStatus
+	31, // 29: google.analytics.data.v1beta.PropertyQuota.tokens_per_hour:type_name -> google.analytics.data.v1beta.QuotaStatus
+	31, // 30: google.analytics.data.v1beta.PropertyQuota.concurrent_requests:type_name -> google.analytics.data.v1beta.QuotaStatus
+	31, // 31: google.analytics.data.v1beta.PropertyQuota.server_errors_per_project_per_hour:type_name -> google.analytics.data.v1beta.QuotaStatus
+	31, // 32: google.analytics.data.v1beta.PropertyQuota.potentially_thresholded_requests_per_hour:type_name -> google.analytics.data.v1beta.QuotaStatus
 	1,  // 33: google.analytics.data.v1beta.MetricMetadata.type:type_name -> google.analytics.data.v1beta.MetricType
-	2,  // 34: google.analytics.data.v1beta.Filter.StringFilter.match_type:type_name -> google.analytics.data.v1beta.Filter.StringFilter.MatchType
-	3,  // 35: google.analytics.data.v1beta.Filter.NumericFilter.operation:type_name -> google.analytics.data.v1beta.Filter.NumericFilter.Operation
-	28, // 36: google.analytics.data.v1beta.Filter.NumericFilter.value:type_name -> google.analytics.data.v1beta.NumericValue
-	28, // 37: google.analytics.data.v1beta.Filter.BetweenFilter.from_value:type_name -> google.analytics.data.v1beta.NumericValue
-	28, // 38: google.analytics.data.v1beta.Filter.BetweenFilter.to_value:type_name -> google.analytics.data.v1beta.NumericValue
-	4,  // 39: google.analytics.data.v1beta.OrderBy.DimensionOrderBy.order_type:type_name -> google.analytics.data.v1beta.OrderBy.DimensionOrderBy.OrderType
-	42, // 40: google.analytics.data.v1beta.OrderBy.PivotOrderBy.pivot_selections:type_name -> google.analytics.data.v1beta.OrderBy.PivotOrderBy.PivotSelection
-	41, // [41:41] is the sub-list for method output_type
-	41, // [41:41] is the sub-list for method input_type
-	41, // [41:41] is the sub-list for extension type_name
-	41, // [41:41] is the sub-list for extension extendee
-	0,  // [0:41] is the sub-list for field type_name
+	32, // 34: google.analytics.data.v1beta.DimensionCompatibility.dimension_metadata:type_name -> google.analytics.data.v1beta.DimensionMetadata
+	2,  // 35: google.analytics.data.v1beta.DimensionCompatibility.compatibility:type_name -> google.analytics.data.v1beta.Compatibility
+	33, // 36: google.analytics.data.v1beta.MetricCompatibility.metric_metadata:type_name -> google.analytics.data.v1beta.MetricMetadata
+	2,  // 37: google.analytics.data.v1beta.MetricCompatibility.compatibility:type_name -> google.analytics.data.v1beta.Compatibility
+	3,  // 38: google.analytics.data.v1beta.Filter.StringFilter.match_type:type_name -> google.analytics.data.v1beta.Filter.StringFilter.MatchType
+	4,  // 39: google.analytics.data.v1beta.Filter.NumericFilter.operation:type_name -> google.analytics.data.v1beta.Filter.NumericFilter.Operation
+	29, // 40: google.analytics.data.v1beta.Filter.NumericFilter.value:type_name -> google.analytics.data.v1beta.NumericValue
+	29, // 41: google.analytics.data.v1beta.Filter.BetweenFilter.from_value:type_name -> google.analytics.data.v1beta.NumericValue
+	29, // 42: google.analytics.data.v1beta.Filter.BetweenFilter.to_value:type_name -> google.analytics.data.v1beta.NumericValue
+	5,  // 43: google.analytics.data.v1beta.OrderBy.DimensionOrderBy.order_type:type_name -> google.analytics.data.v1beta.OrderBy.DimensionOrderBy.OrderType
+	45, // 44: google.analytics.data.v1beta.OrderBy.PivotOrderBy.pivot_selections:type_name -> google.analytics.data.v1beta.OrderBy.PivotOrderBy.PivotSelection
+	45, // [45:45] is the sub-list for method output_type
+	45, // [45:45] is the sub-list for method input_type
+	45, // [45:45] is the sub-list for extension type_name
+	45, // [45:45] is the sub-list for extension extendee
+	0,  // [0:45] is the sub-list for field type_name
 }
 
 func init() { file_google_analytics_data_v1beta_data_proto_init() }
@@ -4122,7 +4366,7 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DimensionExpression_CaseExpression); i {
+			switch v := v.(*DimensionCompatibility); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4134,7 +4378,7 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DimensionExpression_ConcatenateExpression); i {
+			switch v := v.(*MetricCompatibility); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4146,7 +4390,7 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Filter_StringFilter); i {
+			switch v := v.(*DimensionExpression_CaseExpression); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4158,7 +4402,7 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Filter_InListFilter); i {
+			switch v := v.(*DimensionExpression_ConcatenateExpression); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4170,7 +4414,7 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Filter_NumericFilter); i {
+			switch v := v.(*Filter_StringFilter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4182,7 +4426,7 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Filter_BetweenFilter); i {
+			switch v := v.(*Filter_InListFilter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4194,7 +4438,7 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OrderBy_MetricOrderBy); i {
+			switch v := v.(*Filter_NumericFilter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4206,7 +4450,7 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OrderBy_DimensionOrderBy); i {
+			switch v := v.(*Filter_BetweenFilter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4218,7 +4462,7 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*OrderBy_PivotOrderBy); i {
+			switch v := v.(*OrderBy_MetricOrderBy); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4230,6 +4474,30 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 			}
 		}
 		file_google_analytics_data_v1beta_data_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*OrderBy_DimensionOrderBy); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_analytics_data_v1beta_data_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*OrderBy_PivotOrderBy); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_analytics_data_v1beta_data_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*OrderBy_PivotOrderBy_PivotSelection); i {
 			case 0:
 				return &v.state
@@ -4275,13 +4543,15 @@ func file_google_analytics_data_v1beta_data_proto_init() {
 		(*NumericValue_Int64Value)(nil),
 		(*NumericValue_DoubleValue)(nil),
 	}
+	file_google_analytics_data_v1beta_data_proto_msgTypes[27].OneofWrappers = []interface{}{}
+	file_google_analytics_data_v1beta_data_proto_msgTypes[28].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_analytics_data_v1beta_data_proto_rawDesc,
-			NumEnums:      6,
-			NumMessages:   37,
+			NumEnums:      7,
+			NumMessages:   39,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
