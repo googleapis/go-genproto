@@ -59,7 +59,8 @@ type Customer struct {
 	// Secondary contact email. You need to provide an alternate email to create
 	// different domains if a primary contact email already exists. Users will
 	// receive a notification with credentials when you create an admin.google.com
-	// account. Secondary emails are also recovery email addresses.
+	// account. Secondary emails are also recovery email addresses. Alternate
+	// emails are optional when you create Team customers.
 	AlternateEmail string `protobuf:"bytes,5,opt,name=alternate_email,json=alternateEmail,proto3" json:"alternate_email,omitempty"`
 	// Required. The customer's primary domain. Must match the primary contact
 	// email's domain.
@@ -205,16 +206,16 @@ type ContactInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The customer account contact's first name.
+	// The customer account contact's first name. Optional for Team customers.
 	FirstName string `protobuf:"bytes,1,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	// The customer account contact's last name.
+	// The customer account contact's last name. Optional for Team customers.
 	LastName string `protobuf:"bytes,2,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
 	// Output only. The customer account contact's display name, formatted as a
 	// combination of the customer's first and last name.
 	DisplayName string `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// The customer account's contact email. Required for entitlements that create
 	// admin.google.com accounts, and serves as the customer's username for those
-	// accounts.
+	// accounts. Use this email to invite Team customers.
 	Email string `protobuf:"bytes,5,opt,name=email,proto3" json:"email,omitempty"`
 	// Optional. The customer account contact's job title.
 	Title string `protobuf:"bytes,6,opt,name=title,proto3" json:"title,omitempty"`
