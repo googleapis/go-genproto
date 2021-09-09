@@ -1446,29 +1446,46 @@ type DocumentsClient interface {
 	GetDocument(ctx context.Context, in *GetDocumentRequest, opts ...grpc.CallOption) (*Document, error)
 	// Creates a new document.
 	//
-	// Operation <response: [Document][google.cloud.dialogflow.v2.Document],
-	//            metadata: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]>
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]
+	// - `response`: [Document][google.cloud.dialogflow.v2.Document]
 	CreateDocument(ctx context.Context, in *CreateDocumentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes the specified document.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty],
-	//            metadata: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]>
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]
+	// - `response`: An [Empty
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
 	DeleteDocument(ctx context.Context, in *DeleteDocumentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Updates the specified document.
 	//
-	// Operation <response: [Document][google.cloud.dialogflow.v2.Document],
-	//            metadata: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]>
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]
+	// - `response`: [Document][google.cloud.dialogflow.v2.Document]
 	UpdateDocument(ctx context.Context, in *UpdateDocumentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Reloads the specified document from its specified source, content_uri or
 	// content. The previously loaded content of the document will be deleted.
 	// Note: Even when the content of the document has not changed, there still
 	// may be side effects because of internal implementation changes.
 	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]
+	// - `response`: [Document][google.cloud.dialogflow.v2.Document]
+	//
 	// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
 	// only use `projects.knowledgeBases.documents`.
-	//
-	// Operation <response: [Document][google.cloud.dialogflow.v2.Document],
-	//            metadata: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]>
 	ReloadDocument(ctx context.Context, in *ReloadDocumentRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -1542,29 +1559,46 @@ type DocumentsServer interface {
 	GetDocument(context.Context, *GetDocumentRequest) (*Document, error)
 	// Creates a new document.
 	//
-	// Operation <response: [Document][google.cloud.dialogflow.v2.Document],
-	//            metadata: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]>
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]
+	// - `response`: [Document][google.cloud.dialogflow.v2.Document]
 	CreateDocument(context.Context, *CreateDocumentRequest) (*longrunning.Operation, error)
 	// Deletes the specified document.
 	//
-	// Operation <response: [google.protobuf.Empty][google.protobuf.Empty],
-	//            metadata: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]>
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]
+	// - `response`: An [Empty
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
 	DeleteDocument(context.Context, *DeleteDocumentRequest) (*longrunning.Operation, error)
 	// Updates the specified document.
 	//
-	// Operation <response: [Document][google.cloud.dialogflow.v2.Document],
-	//            metadata: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]>
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]
+	// - `response`: [Document][google.cloud.dialogflow.v2.Document]
 	UpdateDocument(context.Context, *UpdateDocumentRequest) (*longrunning.Operation, error)
 	// Reloads the specified document from its specified source, content_uri or
 	// content. The previously loaded content of the document will be deleted.
 	// Note: Even when the content of the document has not changed, there still
 	// may be side effects because of internal implementation changes.
 	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]
+	// - `response`: [Document][google.cloud.dialogflow.v2.Document]
+	//
 	// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
 	// only use `projects.knowledgeBases.documents`.
-	//
-	// Operation <response: [Document][google.cloud.dialogflow.v2.Document],
-	//            metadata: [KnowledgeOperationMetadata][google.cloud.dialogflow.v2.KnowledgeOperationMetadata]>
 	ReloadDocument(context.Context, *ReloadDocumentRequest) (*longrunning.Operation, error)
 }
 

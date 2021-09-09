@@ -5523,6 +5523,13 @@ type IntentsClient interface {
 	DeleteIntent(ctx context.Context, in *DeleteIntentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Updates/Creates multiple intents in the specified agent.
 	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: An empty [Struct
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+	// - `response`: [BatchUpdateIntentsResponse][google.cloud.dialogflow.v2.BatchUpdateIntentsResponse]
 	//
 	// Note: You should always train an agent prior to sending it queries. See the
 	// [training
@@ -5530,6 +5537,14 @@ type IntentsClient interface {
 	BatchUpdateIntents(ctx context.Context, in *BatchUpdateIntentsRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes intents in the specified agent.
 	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: An empty [Struct
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+	// - `response`: An [Empty
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
 	//
 	// Note: You should always train an agent prior to sending it queries. See the
 	// [training
@@ -5634,6 +5649,13 @@ type IntentsServer interface {
 	DeleteIntent(context.Context, *DeleteIntentRequest) (*emptypb.Empty, error)
 	// Updates/Creates multiple intents in the specified agent.
 	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: An empty [Struct
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+	// - `response`: [BatchUpdateIntentsResponse][google.cloud.dialogflow.v2.BatchUpdateIntentsResponse]
 	//
 	// Note: You should always train an agent prior to sending it queries. See the
 	// [training
@@ -5641,6 +5663,14 @@ type IntentsServer interface {
 	BatchUpdateIntents(context.Context, *BatchUpdateIntentsRequest) (*longrunning.Operation, error)
 	// Deletes intents in the specified agent.
 	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: An empty [Struct
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+	// - `response`: An [Empty
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
 	//
 	// Note: You should always train an agent prior to sending it queries. See the
 	// [training
