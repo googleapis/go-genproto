@@ -609,7 +609,7 @@ type ModelContainerSpec struct {
 	// predictions. This URI must identify an image in Artifact Registry or
 	// Container Registry. Learn more about the [container publishing
 	// requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing),
-	// including permissions requirements for the AI Platform Service Agent.
+	// including permissions requirements for the Vertex AI Service Agent.
 	//
 	// The container image is ingested upon [ModelService.UploadModel][google.cloud.aiplatform.v1beta1.ModelService.UploadModel], stored
 	// internally, and this original path is afterwards not used.
@@ -726,8 +726,8 @@ type ModelContainerSpec struct {
 	// API](https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
 	Env []*EnvVar `protobuf:"bytes,4,rep,name=env,proto3" json:"env,omitempty"`
 	// Immutable. List of ports to expose from the container. Vertex AI sends any
-	// prediction requests that it receives to the first port on this list. AI
-	// Platform also sends
+	// prediction requests that it receives to the first port on this list. Vertex
+	// AI also sends
 	// [liveness and health
 	// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness)
 	// to this port.

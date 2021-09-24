@@ -140,6 +140,7 @@ type Artifact struct {
 	// schemas within the local metadata store.
 	SchemaVersion string `protobuf:"bytes,15,opt,name=schema_version,json=schemaVersion,proto3" json:"schema_version,omitempty"`
 	// Properties of the Artifact.
+	// The size of this field should not exceed 200KB.
 	Metadata *structpb.Struct `protobuf:"bytes,16,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	// Description of the Artifact
 	Description string `protobuf:"bytes,17,opt,name=description,proto3" json:"description,omitempty"`

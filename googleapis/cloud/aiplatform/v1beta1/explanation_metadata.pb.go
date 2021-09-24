@@ -37,8 +37,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Defines how the feature is encoded to [encoded_tensor][]. Defaults to
-// IDENTITY.
+// Defines how a feature is encoded. Defaults to IDENTITY.
 type ExplanationMetadata_InputMetadata_Encoding int32
 
 const (
@@ -144,9 +143,8 @@ func (ExplanationMetadata_InputMetadata_Encoding) EnumDescriptor() ([]byte, []in
 	return file_google_cloud_aiplatform_v1beta1_explanation_metadata_proto_rawDescGZIP(), []int{0, 0, 0}
 }
 
-// Type of the image visualization. Only applicable to [Integrated
-// Gradients attribution]
-// [ExplanationParameters.integrated_gradients_attribution].
+// Type of the image visualization. Only applicable to
+// [Integrated Gradients attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.integrated_gradients_attribution].
 type ExplanationMetadata_InputMetadata_Visualization_Type int32
 
 const (
@@ -502,8 +500,7 @@ type ExplanationMetadata_InputMetadata struct {
 	//
 	// If no baseline is specified, Vertex AI chooses the baseline for this
 	// feature. If multiple baselines are specified, Vertex AI returns the
-	// average attributions across them in
-	// [Attributions.baseline_attribution][].
+	// average attributions across them in [Attribution.feature_attributions][google.cloud.aiplatform.v1beta1.Attribution.feature_attributions].
 	//
 	// For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape
 	// of each baseline must match the shape of the input tensor. If a scalar is
@@ -543,10 +540,10 @@ type ExplanationMetadata_InputMetadata struct {
 	// BAG_OF_FEATURES_SPARSE, INDICATOR.
 	IndexFeatureMapping []string `protobuf:"bytes,8,rep,name=index_feature_mapping,json=indexFeatureMapping,proto3" json:"index_feature_mapping,omitempty"`
 	// Encoded tensor is a transformation of the input tensor. Must be provided
-	// if choosing [Integrated Gradients
-	// attribution][ExplanationParameters.integrated_gradients_attribution] or
-	// [XRAI attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.xrai_attribution]
-	// and the input tensor is not differentiable.
+	// if choosing
+	// [Integrated Gradients attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.integrated_gradients_attribution]
+	// or [XRAI attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.xrai_attribution] and the
+	// input tensor is not differentiable.
 	//
 	// An encoded tensor is generated if the input tensor is encoded by a lookup
 	// table.
@@ -562,9 +559,8 @@ type ExplanationMetadata_InputMetadata struct {
 	// Name of the group that the input belongs to. Features with the same group
 	// name will be treated as one feature when computing attributions. Features
 	// grouped together can have different shapes in value. If provided, there
-	// will be one single attribution generated in [
-	// featureAttributions][Attribution.feature_attributions], keyed by the
-	// group name.
+	// will be one single attribution generated in
+	// [Attribution.feature_attributions][google.cloud.aiplatform.v1beta1.Attribution.feature_attributions], keyed by the group name.
 	GroupName string `protobuf:"bytes,12,opt,name=group_name,json=groupName,proto3" json:"group_name,omitempty"`
 }
 
@@ -700,8 +696,8 @@ type ExplanationMetadata_OutputMetadata struct {
 	//	*ExplanationMetadata_OutputMetadata_IndexDisplayNameMapping
 	//	*ExplanationMetadata_OutputMetadata_DisplayNameMappingKey
 	DisplayNameMapping isExplanationMetadata_OutputMetadata_DisplayNameMapping `protobuf_oneof:"display_name_mapping"`
-	// Name of the output tensor. Required and is only applicable to AI
-	// Platform provided images for Tensorflow.
+	// Name of the output tensor. Required and is only applicable to Vertex
+	// AI provided images for Tensorflow.
 	OutputTensorName string `protobuf:"bytes,3,opt,name=output_tensor_name,json=outputTensorName,proto3" json:"output_tensor_name,omitempty"`
 }
 
@@ -895,19 +891,18 @@ type ExplanationMetadata_InputMetadata_Visualization struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Type of the image visualization. Only applicable to [Integrated
-	// Gradients attribution]
-	// [ExplanationParameters.integrated_gradients_attribution]. OUTLINES
-	// shows regions of attribution, while PIXELS shows per-pixel attribution.
-	// Defaults to OUTLINES.
+	// Type of the image visualization. Only applicable to
+	// [Integrated Gradients attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.integrated_gradients_attribution].
+	// OUTLINES shows regions of attribution, while PIXELS shows per-pixel
+	// attribution. Defaults to OUTLINES.
 	Type ExplanationMetadata_InputMetadata_Visualization_Type `protobuf:"varint,1,opt,name=type,proto3,enum=google.cloud.aiplatform.v1beta1.ExplanationMetadata_InputMetadata_Visualization_Type" json:"type,omitempty"`
 	// Whether to only highlight pixels with positive contributions, negative
 	// or both. Defaults to POSITIVE.
 	Polarity ExplanationMetadata_InputMetadata_Visualization_Polarity `protobuf:"varint,2,opt,name=polarity,proto3,enum=google.cloud.aiplatform.v1beta1.ExplanationMetadata_InputMetadata_Visualization_Polarity" json:"polarity,omitempty"`
 	// The color scheme used for the highlighted areas.
 	//
-	// Defaults to PINK_GREEN for [Integrated Gradients
-	// attribution][ExplanationParameters.integrated_gradients_attribution],
+	// Defaults to PINK_GREEN for
+	// [Integrated Gradients attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.integrated_gradients_attribution],
 	// which shows positive attributions in green and negative in pink.
 	//
 	// Defaults to VIRIDIS for

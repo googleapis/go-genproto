@@ -1540,6 +1540,7 @@ func (x *RunTestCaseResponse) GetResult() *TestCaseResult {
 }
 
 // Metadata returned for the [TestCases.RunTestCase][google.cloud.dialogflow.cx.v3beta1.TestCases.RunTestCase] long running operation.
+// This message currently has no fields.
 type RunTestCaseMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2618,7 +2619,7 @@ type ConversationTurn_VirtualAgentOutput struct {
 	Differences []*TestRunDifference `protobuf:"bytes,5,rep,name=differences,proto3" json:"differences,omitempty"`
 	// Required. Input only. The diagnostic
 	// [info][Session.DetectIntentResponse.QueryResult.diagnostic_info]
-	// output for the turn.
+	// output for the turn. Required to calculate the testing coverage.
 	DiagnosticInfo *structpb.Struct `protobuf:"bytes,6,opt,name=diagnostic_info,json=diagnosticInfo,proto3" json:"diagnostic_info,omitempty"`
 	// The [Intent][google.cloud.dialogflow.cx.v3beta1.Intent] that triggered the response. Only name and displayName
 	// will be set.
@@ -4588,6 +4589,12 @@ type TestCasesClient interface {
 	// Updates the specified test case.
 	UpdateTestCase(ctx context.Context, in *UpdateTestCaseRequest, opts ...grpc.CallOption) (*TestCase, error)
 	// Kicks off a test case run.
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [RunTestCaseMetadata][google.cloud.dialogflow.cx.v3beta1.RunTestCaseMetadata]
+	// - `response`: [RunTestCaseResponse][google.cloud.dialogflow.cx.v3beta1.RunTestCaseResponse]
 	RunTestCase(ctx context.Context, in *RunTestCaseRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Kicks off a batch run of test cases.
 	BatchRunTestCases(ctx context.Context, in *BatchRunTestCasesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
@@ -4735,6 +4742,12 @@ type TestCasesServer interface {
 	// Updates the specified test case.
 	UpdateTestCase(context.Context, *UpdateTestCaseRequest) (*TestCase, error)
 	// Kicks off a test case run.
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [RunTestCaseMetadata][google.cloud.dialogflow.cx.v3beta1.RunTestCaseMetadata]
+	// - `response`: [RunTestCaseResponse][google.cloud.dialogflow.cx.v3beta1.RunTestCaseResponse]
 	RunTestCase(context.Context, *RunTestCaseRequest) (*longrunning.Operation, error)
 	// Kicks off a batch run of test cases.
 	BatchRunTestCases(context.Context, *BatchRunTestCasesRequest) (*longrunning.Operation, error)

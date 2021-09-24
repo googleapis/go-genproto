@@ -42,8 +42,7 @@ type ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_Predic
 const (
 	// Should not be set.
 	ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PREDICTION_FORMAT_UNSPECIFIED ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PredictionFormat = 0
-	// Predictions are in JSONL files, consistent from the definition here
-	// (http://shortn/_4bS0hL7ofb).
+	// Predictions are in JSONL files.
 	ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_JSONL ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PredictionFormat = 2
 	// Predictions are in BigQuery.
 	ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_BIGQUERY ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PredictionFormat = 3

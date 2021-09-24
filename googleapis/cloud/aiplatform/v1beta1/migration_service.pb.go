@@ -778,8 +778,8 @@ func (x *MigrateResourceRequest_MigrateAutomlDatasetConfig) GetDatasetDisplayNam
 	return ""
 }
 
-// Config for migrating Dataset in datalabeling.googleapis.com to AI
-// Platform's Dataset.
+// Config for migrating Dataset in datalabeling.googleapis.com to Vertex
+// AI's Dataset.
 type MigrateResourceRequest_MigrateDataLabelingDatasetConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

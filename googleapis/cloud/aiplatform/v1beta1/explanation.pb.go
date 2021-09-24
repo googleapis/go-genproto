@@ -903,8 +903,8 @@ func (x *FeatureNoiseSigma) GetNoiseSigma() []*FeatureNoiseSigma_NoiseSigmaForFe
 	return nil
 }
 
-// The [ExplanationSpec][google.cloud.aiplatform.v1beta1.ExplanationSpec] entries that can be overridden at [online
-// explanation][PredictionService.Explain][google.cloud.aiplatform.v1beta1.PredictionService.Explain] time.
+// The [ExplanationSpec][google.cloud.aiplatform.v1beta1.ExplanationSpec] entries that can be overridden at
+// [online explanation][google.cloud.aiplatform.v1beta1.PredictionService.Explain] time.
 type ExplanationSpecOverride struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
