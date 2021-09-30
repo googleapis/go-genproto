@@ -2274,6 +2274,7 @@ func (*ExportTestCasesResponse_Content) isExportTestCasesResponse_Destination() 
 
 // Metadata returned for the [TestCases.ExportTestCases][google.cloud.dialogflow.cx.v3beta1.TestCases.ExportTestCases] long running
 // operation.
+// This message currently has no fields.
 type ExportTestCasesMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4589,6 +4590,7 @@ type TestCasesClient interface {
 	// Updates the specified test case.
 	UpdateTestCase(ctx context.Context, in *UpdateTestCaseRequest, opts ...grpc.CallOption) (*TestCase, error)
 	// Kicks off a test case run.
+	//
 	// This method is a [long-running
 	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
 	// The returned `Operation` type has the following method-specific fields:
@@ -4597,15 +4599,36 @@ type TestCasesClient interface {
 	// - `response`: [RunTestCaseResponse][google.cloud.dialogflow.cx.v3beta1.RunTestCaseResponse]
 	RunTestCase(ctx context.Context, in *RunTestCaseRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Kicks off a batch run of test cases.
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [BatchRunTestCasesMetadata][google.cloud.dialogflow.cx.v3beta1.BatchRunTestCasesMetadata]
+	// - `response`: [BatchRunTestCasesResponse][google.cloud.dialogflow.cx.v3beta1.BatchRunTestCasesResponse]
 	BatchRunTestCases(ctx context.Context, in *BatchRunTestCasesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Calculates the test coverage for an agent.
 	CalculateCoverage(ctx context.Context, in *CalculateCoverageRequest, opts ...grpc.CallOption) (*CalculateCoverageResponse, error)
 	// Imports the test cases from a Cloud Storage bucket or a local file. It
 	// always creates new test cases and won't overwite any existing ones. The
 	// provided ID in the imported test case is neglected.
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [ImportTestCasesMetadata][google.cloud.dialogflow.cx.v3beta1.ImportTestCasesMetadata]
+	// - `response`: [ImportTestCasesResponse][google.cloud.dialogflow.cx.v3beta1.ImportTestCasesResponse]
 	ImportTestCases(ctx context.Context, in *ImportTestCasesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Exports the test cases under the agent to a Cloud Storage bucket or a local
 	// file. Filter can be applied to export a subset of test cases.
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [ExportTestCasesMetadata][google.cloud.dialogflow.cx.v3beta1.ExportTestCasesMetadata]
+	// - `response`: [ExportTestCasesResponse][google.cloud.dialogflow.cx.v3beta1.ExportTestCasesResponse]
 	ExportTestCases(ctx context.Context, in *ExportTestCasesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Fetches a list of results for a given test case.
 	ListTestCaseResults(ctx context.Context, in *ListTestCaseResultsRequest, opts ...grpc.CallOption) (*ListTestCaseResultsResponse, error)
@@ -4742,6 +4765,7 @@ type TestCasesServer interface {
 	// Updates the specified test case.
 	UpdateTestCase(context.Context, *UpdateTestCaseRequest) (*TestCase, error)
 	// Kicks off a test case run.
+	//
 	// This method is a [long-running
 	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
 	// The returned `Operation` type has the following method-specific fields:
@@ -4750,15 +4774,36 @@ type TestCasesServer interface {
 	// - `response`: [RunTestCaseResponse][google.cloud.dialogflow.cx.v3beta1.RunTestCaseResponse]
 	RunTestCase(context.Context, *RunTestCaseRequest) (*longrunning.Operation, error)
 	// Kicks off a batch run of test cases.
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [BatchRunTestCasesMetadata][google.cloud.dialogflow.cx.v3beta1.BatchRunTestCasesMetadata]
+	// - `response`: [BatchRunTestCasesResponse][google.cloud.dialogflow.cx.v3beta1.BatchRunTestCasesResponse]
 	BatchRunTestCases(context.Context, *BatchRunTestCasesRequest) (*longrunning.Operation, error)
 	// Calculates the test coverage for an agent.
 	CalculateCoverage(context.Context, *CalculateCoverageRequest) (*CalculateCoverageResponse, error)
 	// Imports the test cases from a Cloud Storage bucket or a local file. It
 	// always creates new test cases and won't overwite any existing ones. The
 	// provided ID in the imported test case is neglected.
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [ImportTestCasesMetadata][google.cloud.dialogflow.cx.v3beta1.ImportTestCasesMetadata]
+	// - `response`: [ImportTestCasesResponse][google.cloud.dialogflow.cx.v3beta1.ImportTestCasesResponse]
 	ImportTestCases(context.Context, *ImportTestCasesRequest) (*longrunning.Operation, error)
 	// Exports the test cases under the agent to a Cloud Storage bucket or a local
 	// file. Filter can be applied to export a subset of test cases.
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [ExportTestCasesMetadata][google.cloud.dialogflow.cx.v3beta1.ExportTestCasesMetadata]
+	// - `response`: [ExportTestCasesResponse][google.cloud.dialogflow.cx.v3beta1.ExportTestCasesResponse]
 	ExportTestCases(context.Context, *ExportTestCasesRequest) (*longrunning.Operation, error)
 	// Fetches a list of results for a given test case.
 	ListTestCaseResults(context.Context, *ListTestCaseResultsRequest) (*ListTestCaseResultsResponse, error)
