@@ -1134,12 +1134,28 @@ type VersionsClient interface {
 	// Retrieves the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
 	GetVersion(ctx context.Context, in *GetVersionRequest, opts ...grpc.CallOption) (*Version, error)
 	// Creates a [Version][google.cloud.dialogflow.cx.v3beta1.Version] in the specified [Flow][google.cloud.dialogflow.cx.v3beta1.Flow].
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [CreateVersionOperationMetadata][google.cloud.dialogflow.cx.v3beta1.CreateVersionOperationMetadata]
+	// - `response`: [Version][google.cloud.dialogflow.cx.v3beta1.Version]
 	CreateVersion(ctx context.Context, in *CreateVersionRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Updates the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
 	UpdateVersion(ctx context.Context, in *UpdateVersionRequest, opts ...grpc.CallOption) (*Version, error)
 	// Deletes the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
 	DeleteVersion(ctx context.Context, in *DeleteVersionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Loads resources in the specified version to the draft flow.
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: An empty [Struct
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+	// - `response`: An [Empty
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
 	LoadVersion(ctx context.Context, in *LoadVersionRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -1212,12 +1228,28 @@ type VersionsServer interface {
 	// Retrieves the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
 	GetVersion(context.Context, *GetVersionRequest) (*Version, error)
 	// Creates a [Version][google.cloud.dialogflow.cx.v3beta1.Version] in the specified [Flow][google.cloud.dialogflow.cx.v3beta1.Flow].
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: [CreateVersionOperationMetadata][google.cloud.dialogflow.cx.v3beta1.CreateVersionOperationMetadata]
+	// - `response`: [Version][google.cloud.dialogflow.cx.v3beta1.Version]
 	CreateVersion(context.Context, *CreateVersionRequest) (*longrunning.Operation, error)
 	// Updates the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
 	UpdateVersion(context.Context, *UpdateVersionRequest) (*Version, error)
 	// Deletes the specified [Version][google.cloud.dialogflow.cx.v3beta1.Version].
 	DeleteVersion(context.Context, *DeleteVersionRequest) (*emptypb.Empty, error)
 	// Loads resources in the specified version to the draft flow.
+	//
+	// This method is a [long-running
+	// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+	// The returned `Operation` type has the following method-specific fields:
+	//
+	// - `metadata`: An empty [Struct
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
+	// - `response`: An [Empty
+	//   message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
 	LoadVersion(context.Context, *LoadVersionRequest) (*longrunning.Operation, error)
 }
 
