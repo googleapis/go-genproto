@@ -42,7 +42,7 @@ const (
 type Conversation_Medium int32
 
 const (
-	// Default value.
+	// Default value, if unspecified will default to PHONE_CALL.
 	Conversation_MEDIUM_UNSPECIFIED Conversation_Medium = 0
 	// The format for conversations that took place over the phone.
 	Conversation_PHONE_CALL Conversation_Medium = 1
@@ -608,7 +608,7 @@ type Conversation struct {
 	Labels map[string]string `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Output only. The conversation transcript.
 	Transcript *Conversation_Transcript `protobuf:"bytes,8,opt,name=transcript,proto3" json:"transcript,omitempty"`
-	// Immutable. The conversation medium.
+	// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
 	Medium Conversation_Medium `protobuf:"varint,9,opt,name=medium,proto3,enum=google.cloud.contactcenterinsights.v1.Conversation_Medium" json:"medium,omitempty"`
 	// Output only. The duration of the conversation.
 	Duration *durationpb.Duration `protobuf:"bytes,10,opt,name=duration,proto3" json:"duration,omitempty"`
