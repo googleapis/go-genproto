@@ -1064,7 +1064,7 @@ type RuntimeSoftwareConfig struct {
 	CustomGpuDriverPath string `protobuf:"bytes,6,opt,name=custom_gpu_driver_path,json=customGpuDriverPath,proto3" json:"custom_gpu_driver_path,omitempty"`
 	// Path to a Bash script that automatically runs after a notebook instance
 	// fully boots up. The path must be a URL or
-	// Cloud Storage path (gs://path-to-file/file-name).
+	// Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript string `protobuf:"bytes,7,opt,name=post_startup_script,json=postStartupScript,proto3" json:"post_startup_script,omitempty"`
 }
 
