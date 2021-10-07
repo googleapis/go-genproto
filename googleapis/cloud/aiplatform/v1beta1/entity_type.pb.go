@@ -75,7 +75,8 @@ type EntityType struct {
 	// Optional. Used to perform a consistent read-modify-write updates. If not set, a blind
 	// "overwrite" update happens.
 	Etag string `protobuf:"bytes,7,opt,name=etag,proto3" json:"etag,omitempty"`
-	// Optional. The default monitoring configuration for all Features under this
+	// Optional. The default monitoring configuration for all Features with value type
+	// ([Feature.ValueType][google.cloud.aiplatform.v1beta1.Feature.ValueType]) BOOL, STRING, DOUBLE or INT64 under this
 	// EntityType.
 	//
 	// If this is populated with

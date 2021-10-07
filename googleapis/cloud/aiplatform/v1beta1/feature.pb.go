@@ -160,6 +160,8 @@ type Feature struct {
 	Etag string `protobuf:"bytes,7,opt,name=etag,proto3" json:"etag,omitempty"`
 	// Optional. The custom monitoring configuration for this Feature, if not set, use the
 	// monitoring_config defined for the EntityType this Feature belongs to.
+	// Only Features with type ([Feature.ValueType][google.cloud.aiplatform.v1beta1.Feature.ValueType]) BOOL, STRING, DOUBLE or
+	// INT64 can enable monitoring.
 	//
 	// If this is populated with
 	// [FeaturestoreMonitoringConfig.disabled][] = true, snapshot analysis

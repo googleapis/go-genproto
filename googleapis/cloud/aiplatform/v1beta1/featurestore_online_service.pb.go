@@ -48,14 +48,14 @@ type ReadFeatureValuesRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name of the EntityType for the entity being read.
-	// Value format: `projects/{project}/locations/{location}/featurestores/
-	// {featurestore}/entityTypes/{entityType}`. For example,
-	// for a machine learning model predicting user clicks on a website, an
-	// EntityType ID could be "user".
+	// Value format:
+	// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entityType}`.
+	// For example, for a machine learning model predicting user clicks on a
+	// website, an EntityType ID could be `user`.
 	EntityType string `protobuf:"bytes,1,opt,name=entity_type,json=entityType,proto3" json:"entity_type,omitempty"`
 	// Required. ID for a specific entity. For example,
 	// for a machine learning model predicting user clicks on a website, an entity
-	// ID could be "user_123".
+	// ID could be `user_123`.
 	EntityId string `protobuf:"bytes,2,opt,name=entity_id,json=entityId,proto3" json:"entity_id,omitempty"`
 	// Required. Selector choosing Features of the target EntityType.
 	FeatureSelector *FeatureSelector `protobuf:"bytes,3,opt,name=feature_selector,json=featureSelector,proto3" json:"feature_selector,omitempty"`
@@ -183,14 +183,15 @@ type StreamingReadFeatureValuesRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name of the entities' type.
-	// Value format: `projects/{project}/locations/{location}/featurestores/
-	// {featurestore}/entityTypes/{entityType}`. For example,
+	// Value format:
+	// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entityType}`.
+	// For example,
 	// for a machine learning model predicting user clicks on a website, an
-	// EntityType ID could be "user".
+	// EntityType ID could be `user`.
 	EntityType string `protobuf:"bytes,1,opt,name=entity_type,json=entityType,proto3" json:"entity_type,omitempty"`
 	// Required. IDs of entities to read Feature values of. The maximum number of IDs is
 	// 100. For example, for a machine learning model predicting user clicks on a
-	// website, an entity ID could be "user_123".
+	// website, an entity ID could be `user_123`.
 	EntityIds []string `protobuf:"bytes,2,rep,name=entity_ids,json=entityIds,proto3" json:"entity_ids,omitempty"`
 	// Required. Selector choosing Features of the target EntityType. Feature IDs will be
 	// deduplicated.
@@ -557,8 +558,7 @@ type ReadFeatureValuesResponse_Header struct {
 
 	// The resource name of the EntityType from the
 	// [ReadFeatureValuesRequest][google.cloud.aiplatform.v1beta1.ReadFeatureValuesRequest]. Value format:
-	// `projects/{project}/locations/{location}/featurestores/
-	// {featurestore}/entityTypes/{entityType}`.
+	// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entityType}`.
 	EntityType string `protobuf:"bytes,1,opt,name=entity_type,json=entityType,proto3" json:"entity_type,omitempty"`
 	// List of Feature metadata corresponding to each piece of
 	// [ReadFeatureValuesResponse.data][].

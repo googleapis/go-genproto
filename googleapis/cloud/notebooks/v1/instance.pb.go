@@ -625,7 +625,7 @@ type Instance struct {
 	Environment isInstance_Environment `protobuf_oneof:"environment"`
 	// Path to a Bash script that automatically runs after a notebook instance
 	// fully boots up. The path must be a URL or
-	// Cloud Storage path (gs://path-to-file/file-name).
+	// Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript string `protobuf:"bytes,4,opt,name=post_startup_script,json=postStartupScript,proto3" json:"post_startup_script,omitempty"`
 	// Output only. The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri string `protobuf:"bytes,5,opt,name=proxy_uri,json=proxyUri,proto3" json:"proxy_uri,omitempty"`
@@ -702,8 +702,8 @@ type Instance struct {
 	// Output only. Attached disks to notebook instance.
 	Disks []*Instance_Disk `protobuf:"bytes,28,rep,name=disks,proto3" json:"disks,omitempty"`
 	// Optional. Shielded VM configuration.
-	// [Images using supported Shielded VM features]
-	// (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	// [Images using supported Shielded VM
+	// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 	ShieldedInstanceConfig *Instance_ShieldedInstanceConfig `protobuf:"bytes,30,opt,name=shielded_instance_config,json=shieldedInstanceConfig,proto3" json:"shielded_instance_config,omitempty"`
 	// If true, no public IP will be assigned to this instance.
 	NoPublicIp bool `protobuf:"varint,17,opt,name=no_public_ip,json=noPublicIp,proto3" json:"no_public_ip,omitempty"`
