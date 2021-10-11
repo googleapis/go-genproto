@@ -395,7 +395,7 @@ const (
 	MigrationJob_DRAFT MigrationJob_State = 2
 	// The migration job is being created.
 	MigrationJob_CREATING MigrationJob_State = 3
-	// The migration job is created, not started and is fully editable.
+	// The migration job is created and not started.
 	MigrationJob_NOT_STARTED MigrationJob_State = 4
 	// The migration job is running.
 	MigrationJob_RUNNING MigrationJob_State = 5
