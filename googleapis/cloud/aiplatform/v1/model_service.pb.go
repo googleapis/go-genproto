@@ -544,7 +544,6 @@ type ExportModelRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name of the Model to export.
-	// Format: `projects/{project}/locations/{location}/models/{model}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The desired output location and configuration.
 	OutputConfig *ExportModelRequest_OutputConfig `protobuf:"bytes,2,opt,name=output_config,json=outputConfig,proto3" json:"output_config,omitempty"`
@@ -1969,7 +1968,8 @@ type ModelServiceClient interface {
 	// Updates a Model.
 	UpdateModel(ctx context.Context, in *UpdateModelRequest, opts ...grpc.CallOption) (*Model, error)
 	// Deletes a Model.
-	// Note: Model can only be deleted if there are no DeployedModels created
+	//
+	// Model can only be deleted if there are no [DeployedModels][] created
 	// from it.
 	DeleteModel(ctx context.Context, in *DeleteModelRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Exports a trained, exportable, Model to a location specified by the
@@ -2095,7 +2095,8 @@ type ModelServiceServer interface {
 	// Updates a Model.
 	UpdateModel(context.Context, *UpdateModelRequest) (*Model, error)
 	// Deletes a Model.
-	// Note: Model can only be deleted if there are no DeployedModels created
+	//
+	// Model can only be deleted if there are no [DeployedModels][] created
 	// from it.
 	DeleteModel(context.Context, *DeleteModelRequest) (*longrunning.Operation, error)
 	// Exports a trained, exportable, Model to a location specified by the
