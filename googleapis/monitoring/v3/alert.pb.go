@@ -953,8 +953,8 @@ type AlertPolicy_Condition_LogMatch struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. A logs-based filter. See [Advanced Logs
-	// Queries](/logging/docs/view/advanced-queries) for how this filter
-	// should be constructed.
+	// Queries](https://cloud.google.com/logging/docs/view/advanced-queries)
+	// for how this filter should be constructed.
 	Filter string `protobuf:"bytes,1,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Optional. A map from a label key to an extractor expression, which is
 	// used to extract the value for this label key. Each entry in this map is
@@ -965,7 +965,7 @@ type AlertPolicy_Condition_LogMatch struct {
 	// condition.
 	//
 	// Please see [the documentation on logs-based metric
-	// `valueExtractor`s](/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor)
+	// `valueExtractor`s](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor)
 	// for syntax and examples.
 	LabelExtractors map[string]string `protobuf:"bytes,2,rep,name=label_extractors,json=labelExtractors,proto3" json:"label_extractors,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
