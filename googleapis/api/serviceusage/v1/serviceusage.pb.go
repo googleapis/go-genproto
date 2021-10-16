@@ -401,7 +401,7 @@ type ListServicesRequest struct {
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Requested size of the next page of data.
 	// Requested page size cannot exceed 200.
-	//  If not set, the default page size is 50.
+	// If not set, the default page size is 50.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Token identifying which result to start with, which is returned by a
 	// previous list call.
