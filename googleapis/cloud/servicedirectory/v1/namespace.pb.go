@@ -45,7 +45,7 @@ type Namespace struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Immutable. The resource name for the namespace in the format
-	// 'projects/*/locations/*/namespaces/*'.
+	// `projects/*/locations/*/namespaces/*`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. Resource labels associated with this Namespace.
 	// No more than 64 user labels can be associated with a given resource.  Label

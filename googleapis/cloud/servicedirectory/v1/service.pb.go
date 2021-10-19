@@ -46,7 +46,7 @@ type Service struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Immutable. The resource name for the service in the format
-	// 'projects/*/locations/*/namespaces/*/services/*'.
+	// `projects/*/locations/*/namespaces/*/services/*`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. Annotations for the service. This data can be consumed by service
 	// clients.

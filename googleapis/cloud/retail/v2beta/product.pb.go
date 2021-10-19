@@ -194,8 +194,6 @@ type Product struct {
 	Expiration isProduct_Expiration `protobuf_oneof:"expiration"`
 	// Immutable. Full resource name of the product, such as
 	// `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-	//
-	// The branch ID must be "default_branch".
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Immutable. [Product][google.cloud.retail.v2beta.Product] identifier, which
 	// is the final component of [name][google.cloud.retail.v2beta.Product.name].
@@ -860,6 +858,12 @@ type Product_ExpireTime struct {
 	// and
 	// [ProductService.ListProducts][google.cloud.retail.v2beta.ProductService.ListProducts].
 	//
+	// [expire_time][google.cloud.retail.v2beta.Product.expire_time] must be
+	// later than
+	// [available_time][google.cloud.retail.v2beta.Product.available_time] and
+	// [publish_time][google.cloud.retail.v2beta.Product.publish_time],
+	// otherwise an INVALID_ARGUMENT error is thrown.
+	//
 	// Google Merchant Center property
 	// [expiration_date](https://support.google.com/merchants/answer/6324499).
 	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=expire_time,json=expireTime,proto3,oneof"`
@@ -868,7 +872,7 @@ type Product_ExpireTime struct {
 type Product_Ttl struct {
 	// Input only. The TTL (time to live) of the product.
 	//
-	// If it is set,
+	// If it is set, it must be a non-negative value, and
 	// [expire_time][google.cloud.retail.v2beta.Product.expire_time] is set as
 	// current timestamp plus [ttl][google.cloud.retail.v2beta.Product.ttl]. The
 	// derived [expire_time][google.cloud.retail.v2beta.Product.expire_time] is

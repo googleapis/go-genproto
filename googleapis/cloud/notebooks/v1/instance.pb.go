@@ -1135,8 +1135,9 @@ type Instance_Disk struct {
 	// SCSI. For performance characteristics of SCSI over NVMe, see Local SSD
 	// performance.
 	// Valid values:
-	//     NVME
-	//     SCSI
+	//
+	// * NVME
+	// * SCSI
 	Interface string `protobuf:"bytes,7,opt,name=interface,proto3" json:"interface,omitempty"`
 	// Type of the resource. Always compute#attachedDisk for attached
 	// disks.
@@ -1148,16 +1149,18 @@ type Instance_Disk struct {
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If
 	// not specified, the default is to attach the disk in READ_WRITE mode.
 	// Valid values:
-	//     READ_ONLY
-	//     READ_WRITE
+	//
+	// * READ_ONLY
+	// * READ_WRITE
 	Mode string `protobuf:"bytes,10,opt,name=mode,proto3" json:"mode,omitempty"`
 	// Indicates a valid partial or full URL to an existing Persistent Disk
 	// resource.
 	Source string `protobuf:"bytes,11,opt,name=source,proto3" json:"source,omitempty"`
 	// Indicates the type of the disk, either SCRATCH or PERSISTENT.
 	// Valid values:
-	//     PERSISTENT
-	//     SCRATCH
+	//
+	// * PERSISTENT
+	// * SCRATCH
 	Type string `protobuf:"bytes,12,opt,name=type,proto3" json:"type,omitempty"`
 }
 
@@ -1497,12 +1500,13 @@ type Instance_Disk_GuestOsFeature struct {
 	// The ID of a supported feature. Read  Enabling guest operating system
 	// features to see a list of available options.
 	// Valid values:
-	//     FEATURE_TYPE_UNSPECIFIED
-	//     MULTI_IP_SUBNET
-	//     SECURE_BOOT
-	//     UEFI_COMPATIBLE
-	//     VIRTIO_SCSI_MULTIQUEUE
-	//     WINDOWS
+	//
+	// * FEATURE_TYPE_UNSPECIFIED
+	// * MULTI_IP_SUBNET
+	// * SECURE_BOOT
+	// * UEFI_COMPATIBLE
+	// * VIRTIO_SCSI_MULTIQUEUE
+	// * WINDOWS
 	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 }
 

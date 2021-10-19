@@ -1827,7 +1827,6 @@ func (x *EncryptionConfig) GetKmsKeyName() string {
 }
 
 // The configuration settings for Cloud Composer maintenance window.
-//
 // The following example:
 //
 //    {
