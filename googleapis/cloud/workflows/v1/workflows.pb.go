@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2021 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -109,9 +109,11 @@ type Workflow struct {
 	State Workflow_State `protobuf:"varint,3,opt,name=state,proto3,enum=google.cloud.workflows.v1.Workflow_State" json:"state,omitempty"`
 	// Output only. The revision of the workflow.
 	// A new revision of a workflow is created as a result of updating the
-	// following fields of a workflow:
-	// - `source_code`
-	// - `service_account`
+	// following properties of a workflow:
+	//
+	// - [Service account][google.cloud.workflows.v1.Workflow.service_account]
+	// - [Workflow code to be executed][google.cloud.workflows.v1.Workflow.source_contents]
+	//
 	// The format is "000001-a4d", where the first 6 characters define
 	// the zero-padded revision ordinal number. They are followed by a hyphen and
 	// 3 hexadecimal random characters.
@@ -129,14 +131,14 @@ type Workflow struct {
 	// characters, underscores and dashes. Label keys must start with a letter.
 	// International characters are allowed.
 	Labels map[string]string `protobuf:"bytes,8,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Name of the service account associated with the latest workflow version.
+	// The service account associated with the latest workflow version.
 	// This service account represents the identity of the workflow and determines
 	// what permissions the workflow has.
-	// Format: projects/{project}/serviceAccounts/{account}
+	// Format: projects/{project}/serviceAccounts/{account} or {account}
 	//
-	// Using `-` as a wildcard for the `{project}` will infer the project from
-	// the account. The `{account}` value can be the `email` address or the
-	// `unique_id` of the service account.
+	// Using `-` as a wildcard for the `{project}` or not providing one at all
+	// will infer the project from the account. The `{account}` value can be the
+	// `email` address or the `unique_id` of the service account.
 	//
 	// If not provided, workflow will use the project's default service account.
 	// Modifying this field for an existing workflow results in a new workflow
@@ -265,7 +267,7 @@ type isWorkflow_SourceCode interface {
 }
 
 type Workflow_SourceContents struct {
-	// Workflow code to be executed. The size limit is 32KB.
+	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents string `protobuf:"bytes,10,opt,name=source_contents,json=sourceContents,proto3,oneof"`
 }
 
