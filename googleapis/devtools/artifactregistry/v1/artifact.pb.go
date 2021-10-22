@@ -40,9 +40,9 @@ const (
 // DockerImage represents a docker artifact.
 // The following fields are returned as untyped metadata in the Version
 // resource, using camelcase keys (i.e. metadata.imageSizeBytes):
-//   - imageSizeBytes
-//   - mediaType
-//   - buildTime
+// * imageSizeBytes
+// * mediaType
+// * buildTime
 type DockerImage struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
