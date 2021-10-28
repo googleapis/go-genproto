@@ -360,7 +360,7 @@ type Product struct {
 	// * The key must be a UTF-8 encoded string with a length limit of 128
 	//   characters.
 	// * For indexable attribute, the key must match the pattern:
-	//   [a-zA-Z0-9][a-zA-Z0-9_]*. For example, key0LikeThis or KEY_1_LIKE_THIS.
+	//   `[a-zA-Z0-9][a-zA-Z0-9_]*`. For example, key0LikeThis or KEY_1_LIKE_THIS.
 	Attributes map[string]*CustomAttribute `protobuf:"bytes,12,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Custom tags associated with the product.
 	//
