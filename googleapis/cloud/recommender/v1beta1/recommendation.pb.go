@@ -477,18 +477,27 @@ type Operation struct {
 	// This is intended to be an exact match per filter. To perform advanced
 	// matching, use path_value_matchers.
 	//
-	// * Example: {
+	// * Example:
+	// ```
+	// {
 	//   "/versions/*/name" : "it-123"
 	//   "/versions/*/targetSize/percent": 20
-	//   }
-	// * Example: {
+	// }
+	// ```
+	// * Example:
+	// ```
+	// {
 	//   "/bindings/*/role": "roles/owner"
 	//   "/bindings/*/condition" : null
-	//   }
-	// * Example: {
+	// }
+	// ```
+	// * Example:
+	// ```
+	// {
 	//   "/bindings/*/role": "roles/owner"
 	//   "/bindings/*/members/*" : ["x@example.com", "y@example.com"]
-	//   }
+	// }
+	// ```
 	// When both path_filters and path_value_matchers are set, an implicit AND
 	// must be performed.
 	PathFilters map[string]*structpb.Value `protobuf:"bytes,8,rep,name=path_filters,json=pathFilters,proto3" json:"path_filters,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
