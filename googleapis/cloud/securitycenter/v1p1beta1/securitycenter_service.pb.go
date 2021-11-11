@@ -2340,7 +2340,7 @@ type UpdateOrganizationSettingsRequest struct {
 	OrganizationSettings *OrganizationSettings `protobuf:"bytes,1,opt,name=organization_settings,json=organizationSettings,proto3" json:"organization_settings,omitempty"`
 	// The FieldMask to use when updating the settings resource.
 	//
-	//  If empty all mutable fields will be updated.
+	// If empty all mutable fields will be updated.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
