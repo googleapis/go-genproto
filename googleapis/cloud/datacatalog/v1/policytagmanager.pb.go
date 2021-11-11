@@ -240,8 +240,7 @@ type PolicyTag struct {
 
 	// Output only. Resource name of this policy tag in the URL format.
 	//
-	// The policy tag manager generates unique taxonomy IDs and policy tag IDs.<br
-	// /><br />
+	// The policy tag manager generates unique taxonomy IDs and policy tag IDs.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. User-defined name of this policy tag.
 	//
@@ -697,8 +696,7 @@ type CreatePolicyTagRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Resource name of the taxonomy that the policy tag will belong to.<br /><br
-	// />
+	// Required. Resource name of the taxonomy that the policy tag will belong to.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The policy tag to create.
 	PolicyTag *PolicyTag `protobuf:"bytes,2,opt,name=policy_tag,json=policyTag,proto3" json:"policy_tag,omitempty"`
