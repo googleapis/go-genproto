@@ -1744,10 +1744,10 @@ type NodeKubeletConfig struct {
 	// https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/
 	//
 	// The following values are allowed.
-	//   - "none": the default, which represents the existing scheduling behavior.
-	//   - "static": allows pods with certain resource characteristics to be
-	//               granted increased CPU affinity and exclusivity on the node.
-	//  The default value is 'none' if unspecified.
+	// * "none": the default, which represents the existing scheduling behavior.
+	// * "static": allows pods with certain resource characteristics to be granted
+	// increased CPU affinity and exclusivity on the node.
+	// The default value is 'none' if unspecified.
 	CpuManagerPolicy string `protobuf:"bytes,1,opt,name=cpu_manager_policy,json=cpuManagerPolicy,proto3" json:"cpu_manager_policy,omitempty"`
 	// Enable CPU CFS quota enforcement for containers that specify CPU limits.
 	//
