@@ -46,12 +46,12 @@ type ProductLevelConfig struct {
 	// The type of [Product][google.cloud.retail.v2alpha.Product]s allowed to be
 	// ingested into the catalog. Acceptable values are:
 	//
-	// * `primary` (default): You can only ingest
-	// [Product.Type.PRIMARY][google.cloud.retail.v2alpha.Product.Type.PRIMARY]
-	//   [Product][google.cloud.retail.v2alpha.Product]s. This means
-	//   [Product.primary_product_id][google.cloud.retail.v2alpha.Product.primary_product_id]
-	//   can only be empty or set to the same value as
-	//   [Product.id][google.cloud.retail.v2alpha.Product.id].
+	// * `primary` (default): You can ingest
+	// [Product][google.cloud.retail.v2alpha.Product]s of all types. When
+	//   ingesting a [Product][google.cloud.retail.v2alpha.Product], its type will
+	//   default to
+	//   [Product.Type.PRIMARY][google.cloud.retail.v2alpha.Product.Type.PRIMARY]
+	//   if unset.
 	// * `variant`: You can only ingest
 	// [Product.Type.VARIANT][google.cloud.retail.v2alpha.Product.Type.VARIANT]
 	// [Product][google.cloud.retail.v2alpha.Product]s.
@@ -162,8 +162,8 @@ type MerchantCenterLink struct {
 	// List of possible values can be found here.
 	// [https://support.google.com/merchants/answer/7501026]
 	// List of allowed string values:
-	// "shopping-ads", "buy-on-google-listings", "display-ads", "local-inventory
-	// -ads", "free-listings", "free-local-listings"
+	// "Shopping_ads", "Buy_on_google_listings", "Display_ads", "Local_inventory
+	// _ads", "Free_listings", "Free_local_listings"
 	// NOTE: The string values are case sensitive.
 	Destinations []string `protobuf:"bytes,3,rep,name=destinations,proto3" json:"destinations,omitempty"`
 }
