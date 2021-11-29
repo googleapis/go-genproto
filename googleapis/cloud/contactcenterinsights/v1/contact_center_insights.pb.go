@@ -180,15 +180,14 @@ type CalculateStatsResponse struct {
 	CustomHighlighterMatches map[string]int32 `protobuf:"bytes,5,rep,name=custom_highlighter_matches,json=customHighlighterMatches,proto3" json:"custom_highlighter_matches,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
 	// A map associating each issue resource name with its respective number of
 	// matches in the set of conversations. Key has the format:
-	// `projects/<Project ID>/locations/<Location ID>/issueModels/<Issue Model
-	// ID>/issues/<Issue ID>`
+	// `projects/<Project-ID>/locations/<Location-ID>/issueModels/<Issue-Model-ID>/issues/<Issue-ID>`
 	// Deprecated, use `issue_matches_stats` field instead.
 	//
 	// Deprecated: Do not use.
 	IssueMatches map[string]int32 `protobuf:"bytes,6,rep,name=issue_matches,json=issueMatches,proto3" json:"issue_matches,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
 	// A map associating each issue resource name with its respective number of
 	// matches in the set of conversations. Key has the format:
-	// `projects/<ProjectID>/locations/<LocationID>/issueModels/<IssueModelID>/issues/<IssueID>`
+	// `projects/<Project-ID>/locations/<Location-ID>/issueModels/<Issue-Model-ID>/issues/<Issue-ID>`
 	IssueMatchesStats map[string]*IssueModelLabelStats_IssueStats `protobuf:"bytes,8,rep,name=issue_matches_stats,json=issueMatchesStats,proto3" json:"issue_matches_stats,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// A time series representing the count of conversations created over time
 	// that match that requested filter criteria.
@@ -365,8 +364,8 @@ type CreateConversationRequest struct {
 	// component of the conversation's resource name. If no ID is specified, a
 	// server-generated ID will be used.
 	//
-	// This value should be 4-32 characters and must match the regular
-	// expression /^[a-z0-9-]{4,32}$/. Valid characters are /[a-z][0-9]-/
+	// This value should be 4-64 characters and must match the regular
+	// expression `^[a-z0-9-]{4,64}$`. Valid characters are `[a-z][0-9]-`
 	ConversationId string `protobuf:"bytes,3,opt,name=conversation_id,json=conversationId,proto3" json:"conversation_id,omitempty"`
 }
 
@@ -2329,10 +2328,10 @@ type CreatePhraseMatcherRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource of the phrase matcher. Required. The location
-	// to create a phrase matcher for. Format: `projects/<Project
-	// ID>/locations/<Location ID>` or `projects/<Project
-	// Number>/locations/<Location ID>`
+	// Required. The parent resource of the phrase matcher. Required. The location to create
+	// a phrase matcher for.
+	// Format: `projects/<Project ID>/locations/<Location ID>` or
+	// `projects/<Project Number>/locations/<Location ID>`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The phrase matcher resource to create.
 	PhraseMatcher *PhraseMatcher `protobuf:"bytes,2,opt,name=phrase_matcher,json=phraseMatcher,proto3" json:"phrase_matcher,omitempty"`
@@ -2916,9 +2915,9 @@ type ExportInsightsDataRequest_BigQueryDestination struct {
 	// write data to this project instead of the resource project. Otherwise,
 	// the resource project will be used.
 	ProjectId string `protobuf:"bytes,3,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
-	// Required. The name of the BigQuery dataset that the snapshot result
-	// should be exported to. If this dataset does not exist, the export call
-	// returns an INVALID_ARGUMENT error.
+	// Required. The name of the BigQuery dataset that the snapshot result should be
+	// exported to. If this dataset does not exist, the export call returns an
+	// INVALID_ARGUMENT error.
 	Dataset string `protobuf:"bytes,1,opt,name=dataset,proto3" json:"dataset,omitempty"`
 	// The BigQuery table name to which the insights data should be written.
 	// If this table does not exist, the export call returns an INVALID_ARGUMENT
