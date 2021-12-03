@@ -357,9 +357,10 @@ type ModelDeploymentMonitoringJob struct {
 	// set, this ModelDeploymentMonitoringJob and all sub-resources of this
 	// ModelDeploymentMonitoringJob will be secured by this key.
 	EncryptionSpec *EncryptionSpec `protobuf:"bytes,21,opt,name=encryption_spec,json=encryptionSpec,proto3" json:"encryption_spec,omitempty"`
-	// If true, the scheduled monitoring pipeline status logs are sent to
-	// Google Cloud Logging. Please note the logs incur cost, which are subject to
-	// [Cloud Logging pricing](https://cloud.google.com/logging#pricing).
+	// If true, the scheduled monitoring pipeline logs are sent to
+	// Google Cloud Logging, including pipeline status and anomalies detected.
+	// Please note the logs incur cost, which are subject to [Cloud Logging
+	// pricing](https://cloud.google.com/logging#pricing).
 	EnableMonitoringPipelineLogs bool `protobuf:"varint,22,opt,name=enable_monitoring_pipeline_logs,json=enableMonitoringPipelineLogs,proto3" json:"enable_monitoring_pipeline_logs,omitempty"`
 	// Output only. Only populated when the job's state is `JOB_STATE_FAILED` or
 	// `JOB_STATE_CANCELLED`.

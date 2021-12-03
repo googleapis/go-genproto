@@ -1636,7 +1636,7 @@ type SearchModelDeploymentMonitoringStatsAnomaliesRequest struct {
 	// `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}
 	ModelDeploymentMonitoringJob string `protobuf:"bytes,1,opt,name=model_deployment_monitoring_job,json=modelDeploymentMonitoringJob,proto3" json:"model_deployment_monitoring_job,omitempty"`
 	// Required. The DeployedModel ID of the
-	// [google.cloud.aiplatform.master.ModelDeploymentMonitoringObjectiveConfig.deployed_model_id].
+	// [ModelDeploymentMonitoringObjectiveConfig.deployed_model_id].
 	DeployedModelId string `protobuf:"bytes,2,opt,name=deployed_model_id,json=deployedModelId,proto3" json:"deployed_model_id,omitempty"`
 	// The feature display name. If specified, only return the stats belonging to
 	// this feature. Format:

@@ -171,7 +171,7 @@ type Feature struct {
 	// config is same as the EntityType's this Feature belongs to.
 	MonitoringConfig *FeaturestoreMonitoringConfig `protobuf:"bytes,9,opt,name=monitoring_config,json=monitoringConfig,proto3" json:"monitoring_config,omitempty"`
 	// Output only. A list of historical [Snapshot
-	// Analysis][google.cloud.aiplatform.master.FeaturestoreMonitoringConfig.SnapshotAnalysis]
+	// Analysis][FeaturestoreMonitoringConfig.SnapshotAnalysis]
 	// stats requested by user, sorted by [FeatureStatsAnomaly.start_time][google.cloud.aiplatform.v1beta1.FeatureStatsAnomaly.start_time]
 	// descending.
 	MonitoringStats []*FeatureStatsAnomaly `protobuf:"bytes,10,rep,name=monitoring_stats,json=monitoringStats,proto3" json:"monitoring_stats,omitempty"`

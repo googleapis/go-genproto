@@ -647,9 +647,12 @@ type PipelineJob_RuntimeConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Deprecated. Use [RuntimeConfig.parameter_values] instead. The runtime
+	// Deprecated. Use [RuntimeConfig.parameter_values][google.cloud.aiplatform.v1.PipelineJob.RuntimeConfig.parameter_values] instead. The runtime
 	// parameters of the PipelineJob. The parameters will be passed into
 	// [PipelineJob.pipeline_spec][google.cloud.aiplatform.v1.PipelineJob.pipeline_spec] to replace the placeholders at runtime.
+	// This field is used by pipelines built using
+	// `PipelineJob.pipeline_spec.schema_version` 2.0.0 or lower, such as
+	// pipelines built using Kubeflow Pipelines SDK 1.8 or lower.
 	//
 	// Deprecated: Do not use.
 	Parameters map[string]*Value `protobuf:"bytes,1,rep,name=parameters,proto3" json:"parameters,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
@@ -663,7 +666,9 @@ type PipelineJob_RuntimeConfig struct {
 	GcsOutputDirectory string `protobuf:"bytes,2,opt,name=gcs_output_directory,json=gcsOutputDirectory,proto3" json:"gcs_output_directory,omitempty"`
 	// The runtime parameters of the PipelineJob. The parameters will be
 	// passed into [PipelineJob.pipeline_spec][google.cloud.aiplatform.v1.PipelineJob.pipeline_spec] to replace the placeholders
-	// at runtime.
+	// at runtime. This field is used by pipelines built using
+	// `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built
+	// using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
 	ParameterValues map[string]*structpb.Value `protobuf:"bytes,3,rep,name=parameter_values,json=parameterValues,proto3" json:"parameter_values,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 

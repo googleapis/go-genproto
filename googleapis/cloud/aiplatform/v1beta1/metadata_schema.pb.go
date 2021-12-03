@@ -104,7 +104,7 @@ type MetadataSchema struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The version of the MetadataSchema. The version's format must match
 	// the following regular expression: `^[0-9]+[.][0-9]+[.][0-9]+$`, which would
-	// allow to order/compare different versions.Example: 1.0.0, 1.0.1, etc.
+	// allow to order/compare different versions. Example: 1.0.0, 1.0.1, etc.
 	SchemaVersion string `protobuf:"bytes,2,opt,name=schema_version,json=schemaVersion,proto3" json:"schema_version,omitempty"`
 	// Required. The raw YAML string representation of the MetadataSchema. The combination
 	// of [MetadataSchema.version] and the schema name given by `title` in

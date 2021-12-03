@@ -120,7 +120,7 @@ type Execution struct {
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// The state of this Execution. This is a property of the Execution, and does
 	// not imply or capture any ongoing process. This property is managed by
-	// clients (such as Vertex Pipelines) and the system does not prescribe
+	// clients (such as Vertex AI Pipelines) and the system does not prescribe
 	// or check the validity of state transitions.
 	State Execution_State `protobuf:"varint,6,opt,name=state,proto3,enum=google.cloud.aiplatform.v1beta1.Execution_State" json:"state,omitempty"`
 	// An eTag used to perform consistent read-modify-write updates. If not set, a
