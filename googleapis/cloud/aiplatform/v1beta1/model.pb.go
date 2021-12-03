@@ -186,7 +186,8 @@ type Model struct {
 	// Output only. The formats in which this Model may be exported. If empty, this Model is
 	// not available for export.
 	SupportedExportFormats []*Model_ExportFormat `protobuf:"bytes,20,rep,name=supported_export_formats,json=supportedExportFormats,proto3" json:"supported_export_formats,omitempty"`
-	// Output only. The resource name of the TrainingPipeline that uploaded this Model, if any.
+	// Output only. The resource name of the TrainingPipeline that uploaded this Model, if
+	// any.
 	TrainingPipeline string `protobuf:"bytes,7,opt,name=training_pipeline,json=trainingPipeline,proto3" json:"training_pipeline,omitempty"`
 	// Input only. The specification of the container that is to be used when deploying
 	// this Model. The specification is ingested upon

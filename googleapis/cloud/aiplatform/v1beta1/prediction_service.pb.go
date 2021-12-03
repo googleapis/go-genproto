@@ -136,11 +136,11 @@ type PredictResponse struct {
 	Predictions []*structpb.Value `protobuf:"bytes,1,rep,name=predictions,proto3" json:"predictions,omitempty"`
 	// ID of the Endpoint's DeployedModel that served this prediction.
 	DeployedModelId string `protobuf:"bytes,2,opt,name=deployed_model_id,json=deployedModelId,proto3" json:"deployed_model_id,omitempty"`
-	// Output only. The name of the Model this DeployedModel, that served this prediction, was
-	// created from.
+	// Output only. The resource name of the Model which is deployed as the DeployedModel that
+	// this prediction hits.
 	Model string `protobuf:"bytes,3,opt,name=model,proto3" json:"model,omitempty"`
-	// Output only. The [display name][google.cloud.aiplatform.v1beta1.Model.display_name] of the Model this DeployedModel,
-	// that served this prediction, was created from.
+	// Output only. The [display name][google.cloud.aiplatform.v1beta1.Model.display_name] of the Model which is deployed as
+	// the DeployedModel that this prediction hits.
 	ModelDisplayName string `protobuf:"bytes,4,opt,name=model_display_name,json=modelDisplayName,proto3" json:"model_display_name,omitempty"`
 }
 
@@ -762,7 +762,15 @@ const _ = grpc.SupportPackageIsVersion6
 type PredictionServiceClient interface {
 	// Perform an online prediction.
 	Predict(ctx context.Context, in *PredictRequest, opts ...grpc.CallOption) (*PredictResponse, error)
-	// Perform an online prediction with arbitrary http payload.
+	// Perform an online prediction with an arbitrary HTTP payload.
+	//
+	// The response includes the following HTTP headers:
+	//
+	// * `X-Vertex-AI-Endpoint-Id`: ID of the [Endpoint][google.cloud.aiplatform.v1beta1.Endpoint] that served this
+	// prediction.
+	//
+	// * `X-Vertex-AI-Deployed-Model-Id`: ID of the Endpoint's [DeployedModel][google.cloud.aiplatform.v1beta1.DeployedModel]
+	// that served this prediction.
 	RawPredict(ctx context.Context, in *RawPredictRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error)
 	// Perform an online explanation.
 	//
@@ -816,7 +824,15 @@ func (c *predictionServiceClient) Explain(ctx context.Context, in *ExplainReques
 type PredictionServiceServer interface {
 	// Perform an online prediction.
 	Predict(context.Context, *PredictRequest) (*PredictResponse, error)
-	// Perform an online prediction with arbitrary http payload.
+	// Perform an online prediction with an arbitrary HTTP payload.
+	//
+	// The response includes the following HTTP headers:
+	//
+	// * `X-Vertex-AI-Endpoint-Id`: ID of the [Endpoint][google.cloud.aiplatform.v1beta1.Endpoint] that served this
+	// prediction.
+	//
+	// * `X-Vertex-AI-Deployed-Model-Id`: ID of the Endpoint's [DeployedModel][google.cloud.aiplatform.v1beta1.DeployedModel]
+	// that served this prediction.
 	RawPredict(context.Context, *RawPredictRequest) (*httpbody.HttpBody, error)
 	// Perform an online explanation.
 	//

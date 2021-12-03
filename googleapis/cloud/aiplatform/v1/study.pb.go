@@ -171,7 +171,7 @@ type StudySpec_Algorithm int32
 const (
 	// The default algorithm used by Vertex AI for [hyperparameter
 	// tuning](https://cloud.google.com/vertex-ai/docs/training/hyperparameter-tuning-overview)
-	// and [Vertex Vizier](https://cloud.google.com/vertex-ai/docs/vizier).
+	// and [Vertex AI Vizier](https://cloud.google.com/vertex-ai/docs/vizier).
 	StudySpec_ALGORITHM_UNSPECIFIED StudySpec_Algorithm = 0
 	// Simple grid search within the feasible space. To use grid search,
 	// all parameters must be `INTEGER`, `CATEGORICAL`, or `DISCRETE`.
@@ -459,6 +459,7 @@ func (StudySpec_ParameterSpec_ScaleType) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_aiplatform_v1_study_proto_rawDescGZIP(), []int{2, 1, 0}
 }
 
+// LINT.IfChange
 // A message representing a Study.
 type Study struct {
 	state         protoimpl.MessageState
@@ -583,9 +584,9 @@ type Trial struct {
 	EndTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	// Output only. The identifier of the client that originally requested this Trial.
 	// Each client is identified by a unique client_id. When a client
-	// asks for a suggestion, Vizier will assign it a Trial. The client should
-	// evaluate the Trial, complete it, and report back to Vizier.
-	// If suggestion is asked again by same client_id before the Trial is
+	// asks for a suggestion, Vertex AI Vizier will assign it a Trial. The client
+	// should evaluate the Trial, complete it, and report back to Vertex AI
+	// Vizier. If suggestion is asked again by same client_id before the Trial is
 	// completed, the same Trial will be returned. Multiple clients with
 	// different client_ids can ask for suggestions simultaneously, each of them
 	// will get their own Trial.
@@ -745,7 +746,7 @@ type StudySpec struct {
 	// The search algorithm specified for the Study.
 	Algorithm StudySpec_Algorithm `protobuf:"varint,3,opt,name=algorithm,proto3,enum=google.cloud.aiplatform.v1.StudySpec_Algorithm" json:"algorithm,omitempty"`
 	// The observation noise level of the study.
-	// Currently only supported by the Vizier service. Not supported by
+	// Currently only supported by the Vertex AI Vizier service. Not supported by
 	// HyperparamterTuningJob or TrainingPipeline.
 	ObservationNoise StudySpec_ObservationNoise `protobuf:"varint,6,opt,name=observation_noise,json=observationNoise,proto3,enum=google.cloud.aiplatform.v1.StudySpec_ObservationNoise" json:"observation_noise,omitempty"`
 	// Describe which measurement selection type will be used
@@ -1323,8 +1324,8 @@ type StudySpec_ParameterSpec_DoubleValueSpec struct {
 	// relatively good starting point.  Unset value signals that there is no
 	// offered starting point.
 	//
-	// Currently only supported by the Vizier service. Not supported by
-	// HyperparamterTuningJob or TrainingPipeline.
+	// Currently only supported by the Vertex AI Vizier service. Not supported
+	// by HyperparamterTuningJob or TrainingPipeline.
 	DefaultValue *float64 `protobuf:"fixed64,4,opt,name=default_value,json=defaultValue,proto3,oneof" json:"default_value,omitempty"`
 }
 
@@ -1395,8 +1396,8 @@ type StudySpec_ParameterSpec_IntegerValueSpec struct {
 	// relatively good starting point.  Unset value signals that there is no
 	// offered starting point.
 	//
-	// Currently only supported by the Vizier service. Not supported by
-	// HyperparamterTuningJob or TrainingPipeline.
+	// Currently only supported by the Vertex AI Vizier service. Not supported
+	// by HyperparamterTuningJob or TrainingPipeline.
 	DefaultValue *int64 `protobuf:"varint,4,opt,name=default_value,json=defaultValue,proto3,oneof" json:"default_value,omitempty"`
 }
 

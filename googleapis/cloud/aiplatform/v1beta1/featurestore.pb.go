@@ -99,7 +99,9 @@ func (Featurestore_State) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_aiplatform_v1beta1_featurestore_proto_rawDescGZIP(), []int{0, 0}
 }
 
-// Featurestore configuration information on how the Featurestore is configured.
+// Vertex AI Feature Store provides a centralized repository for organizing,
+// storing, and serving ML features. The Featurestore is a top-level container
+// for your features and their values.
 type Featurestore struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
