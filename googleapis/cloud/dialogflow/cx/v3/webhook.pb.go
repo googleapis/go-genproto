@@ -168,12 +168,10 @@ type Webhook struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The unique identifier of the webhook.
-	// Required for the
-	// [Webhooks.UpdateWebhook][google.cloud.dialogflow.cx.v3.Webhooks.UpdateWebhook]
-	// method.
-	// [Webhooks.CreateWebhook][google.cloud.dialogflow.cx.v3.Webhooks.CreateWebhook]
-	// populates the name automatically. Format: `projects/<Project
-	// ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>`.
+	// Required for the [Webhooks.UpdateWebhook][google.cloud.dialogflow.cx.v3.Webhooks.UpdateWebhook] method.
+	// [Webhooks.CreateWebhook][google.cloud.dialogflow.cx.v3.Webhooks.CreateWebhook] populates the name automatically.
+	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
+	// ID>/webhooks/<Webhook ID>`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The human-readable name of the webhook, unique within the agent.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
@@ -291,8 +289,7 @@ func (*Webhook_GenericWebService_) isWebhook_Webhook() {}
 
 func (*Webhook_ServiceDirectory) isWebhook_Webhook() {}
 
-// The request message for
-// [Webhooks.ListWebhooks][google.cloud.dialogflow.cx.v3.Webhooks.ListWebhooks].
+// The request message for [Webhooks.ListWebhooks][google.cloud.dialogflow.cx.v3.Webhooks.ListWebhooks].
 type ListWebhooksRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -361,8 +358,7 @@ func (x *ListWebhooksRequest) GetPageToken() string {
 	return ""
 }
 
-// The response message for
-// [Webhooks.ListWebhooks][google.cloud.dialogflow.cx.v3.Webhooks.ListWebhooks].
+// The response message for [Webhooks.ListWebhooks][google.cloud.dialogflow.cx.v3.Webhooks.ListWebhooks].
 type ListWebhooksResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -422,8 +418,7 @@ func (x *ListWebhooksResponse) GetNextPageToken() string {
 	return ""
 }
 
-// The request message for
-// [Webhooks.GetWebhook][google.cloud.dialogflow.cx.v3.Webhooks.GetWebhook].
+// The request message for [Webhooks.GetWebhook][google.cloud.dialogflow.cx.v3.Webhooks.GetWebhook].
 type GetWebhookRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -474,8 +469,7 @@ func (x *GetWebhookRequest) GetName() string {
 	return ""
 }
 
-// The request message for
-// [Webhooks.CreateWebhook][google.cloud.dialogflow.cx.v3.Webhooks.CreateWebhook].
+// The request message for [Webhooks.CreateWebhook][google.cloud.dialogflow.cx.v3.Webhooks.CreateWebhook].
 type CreateWebhookRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -534,8 +528,7 @@ func (x *CreateWebhookRequest) GetWebhook() *Webhook {
 	return nil
 }
 
-// The request message for
-// [Webhooks.UpdateWebhook][google.cloud.dialogflow.cx.v3.Webhooks.UpdateWebhook].
+// The request message for [Webhooks.UpdateWebhook][google.cloud.dialogflow.cx.v3.Webhooks.UpdateWebhook].
 type UpdateWebhookRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -594,8 +587,7 @@ func (x *UpdateWebhookRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	return nil
 }
 
-// The request message for
-// [Webhooks.DeleteWebhook][google.cloud.dialogflow.cx.v3.Webhooks.DeleteWebhook].
+// The request message for [Webhooks.DeleteWebhook][google.cloud.dialogflow.cx.v3.Webhooks.DeleteWebhook].
 type DeleteWebhookRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -611,10 +603,9 @@ type DeleteWebhookRequest struct {
 	// *  If `force` is set to false, an error will be returned with message
 	//    indicating the referenced resources.
 	// *  If `force` is set to true, Dialogflow will remove the webhook, as well
-	//    as any references to the webhook (i.e.
-	//    [Webhook][google.cloud.dialogflow.cx.v3.Fulfillment.webhook] and
-	//    [tag][google.cloud.dialogflow.cx.v3.Fulfillment.tag]in fulfillments that
-	//    point to this webhook will be removed).
+	//    as any references to the webhook (i.e. [Webhook][google.cloud.dialogflow.cx.v3.Fulfillment.webhook]
+	//    and [tag][google.cloud.dialogflow.cx.v3.Fulfillment.tag]in fulfillments that point to this webhook
+	//    will be removed).
 	Force bool `protobuf:"varint,2,opt,name=force,proto3" json:"force,omitempty"`
 }
 
@@ -671,9 +662,8 @@ type WebhookRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Always present. The unique identifier of the
-	// [DetectIntentResponse][google.cloud.dialogflow.cx.v3.DetectIntentResponse]
-	// that will be returned to the API caller.
+	// Always present. The unique identifier of the [DetectIntentResponse][google.cloud.dialogflow.cx.v3.DetectIntentResponse] that
+	// will be returned to the API caller.
 	DetectIntentResponseId string `protobuf:"bytes,1,opt,name=detect_intent_response_id,json=detectIntentResponseId,proto3" json:"detect_intent_response_id,omitempty"`
 	// The original conversational query.
 	//
@@ -699,8 +689,7 @@ type WebhookRequest struct {
 	// choose to append or replace this list in
 	// [WebhookResponse.fulfillment_response][google.cloud.dialogflow.cx.v3.WebhookResponse.fulfillment_response];
 	Messages []*ResponseMessage `protobuf:"bytes,7,rep,name=messages,proto3" json:"messages,omitempty"`
-	// Custom data set in
-	// [QueryParameters.payload][google.cloud.dialogflow.cx.v3.QueryParameters.payload].
+	// Custom data set in [QueryParameters.payload][google.cloud.dialogflow.cx.v3.QueryParameters.payload].
 	Payload *structpb.Struct `protobuf:"bytes,8,opt,name=payload,proto3" json:"payload,omitempty"`
 	// The sentiment analysis result of the current user request. The field is
 	// filled when sentiment analysis is configured to be enabled for the request.
@@ -842,29 +831,28 @@ type isWebhookRequest_Query interface {
 }
 
 type WebhookRequest_Text struct {
-	// If [natural language text][google.cloud.dialogflow.cx.v3.TextInput] was
-	// provided as input, this field will contain a copy of the text.
+	// If [natural language text][google.cloud.dialogflow.cx.v3.TextInput] was provided as input, this field
+	// will contain a copy of the text.
 	Text string `protobuf:"bytes,10,opt,name=text,proto3,oneof"`
 }
 
 type WebhookRequest_TriggerIntent struct {
-	// If an [intent][google.cloud.dialogflow.cx.v3.IntentInput] was provided as
-	// input, this field will contain a copy of the intent identifier. Format:
-	// `projects/<Project ID>/locations/<Location ID>/agents/<Agent
+	// If an [intent][google.cloud.dialogflow.cx.v3.IntentInput] was provided as input, this field will
+	// contain a copy of the intent identifier.
+	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
 	// ID>/intents/<Intent ID>`.
 	TriggerIntent string `protobuf:"bytes,11,opt,name=trigger_intent,json=triggerIntent,proto3,oneof"`
 }
 
 type WebhookRequest_Transcript struct {
-	// If [natural language speech
-	// audio][google.cloud.dialogflow.cx.v3.AudioInput] was provided as input,
+	// If [natural language speech audio][google.cloud.dialogflow.cx.v3.AudioInput] was provided as input,
 	// this field will contain the transcript for the audio.
 	Transcript string `protobuf:"bytes,12,opt,name=transcript,proto3,oneof"`
 }
 
 type WebhookRequest_TriggerEvent struct {
-	// If an [event][google.cloud.dialogflow.cx.v3.EventInput] was provided as
-	// input, this field will contain the name of the event.
+	// If an [event][google.cloud.dialogflow.cx.v3.EventInput] was provided as input, this field will contain
+	// the name of the event.
 	TriggerEvent string `protobuf:"bytes,14,opt,name=trigger_event,json=triggerEvent,proto3,oneof"`
 }
 
@@ -891,8 +879,7 @@ type WebhookResponse struct {
 	// Information about session status. This field can be omitted by the webhook
 	// if it does not intend to modify session status.
 	SessionInfo *SessionInfo `protobuf:"bytes,3,opt,name=session_info,json=sessionInfo,proto3" json:"session_info,omitempty"`
-	// Value to append directly to
-	// [QueryResult.webhook_payloads][google.cloud.dialogflow.cx.v3.QueryResult.webhook_payloads].
+	// Value to append directly to [QueryResult.webhook_payloads][google.cloud.dialogflow.cx.v3.QueryResult.webhook_payloads].
 	Payload *structpb.Struct `protobuf:"bytes,4,opt,name=payload,proto3" json:"payload,omitempty"`
 	// The target to transition to. This can be set optionally to indicate an
 	// immediate transition to a different page in the same host flow, or a
@@ -1013,16 +1000,12 @@ type PageInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Always present for
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Ignored for
-	// [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse]. The
-	// unique identifier of the current page. Format: `projects/<Project
-	// ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page
-	// ID>`.
+	// Always present for [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Ignored for [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
+	// The unique identifier of the current page.
+	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
+	// ID>/flows/<Flow ID>/pages/<Page ID>`.
 	CurrentPage string `protobuf:"bytes,1,opt,name=current_page,json=currentPage,proto3" json:"current_page,omitempty"`
-	// Optional for both
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest] and
-	// [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
+	// Optional for both [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest] and [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
 	// Information about the form.
 	FormInfo *PageInfo_FormInfo `protobuf:"bytes,3,opt,name=form_info,json=formInfo,proto3" json:"form_info,omitempty"`
 }
@@ -1079,25 +1062,20 @@ type SessionInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Always present for
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Ignored for
-	// [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse]. The
-	// unique identifier of the
-	// [session][google.cloud.dialogflow.cx.v3.DetectIntentRequest.session]. This
+	// Always present for [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Ignored for [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
+	// The unique identifier of the [session][google.cloud.dialogflow.cx.v3.DetectIntentRequest.session]. This
 	// field can be used by the webhook to identify a session.
 	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
 	// ID>/sessions/<Session ID>` or `projects/<Project ID>/locations/<Location
 	// ID>/agents/<Agent ID>/environments/<Environment ID>/sessions/<Session ID>`
 	// if environment is specified.
 	Session string `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
-	// Optional for
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Optional
-	// for [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse]. All
-	// parameters collected from forms and intents during the session. Parameters
-	// can be created, updated, or removed by the webhook. To remove a parameter
-	// from the session, the webhook should explicitly set the parameter value to
-	// null in [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
-	// The map is keyed by parameters' display names.
+	// Optional for [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Optional for [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
+	// All parameters collected from forms and intents during the session.
+	// Parameters can be created, updated, or removed by the webhook. To remove a
+	// parameter from the session, the webhook should explicitly set the parameter
+	// value to null in [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse]. The map is keyed by parameters'
+	// display names.
 	Parameters map[string]*structpb.Value `protobuf:"bytes,2,rep,name=parameters,proto3" json:"parameters,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
@@ -1153,8 +1131,7 @@ type Webhook_GenericWebService struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The webhook URI for receiving POST requests. It must use https
-	// protocol.
+	// Required. The webhook URI for receiving POST requests. It must use https protocol.
 	Uri string `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
 	// The user name for HTTP Basic authentication.
 	//
@@ -1167,17 +1144,17 @@ type Webhook_GenericWebService struct {
 	// The HTTP request headers to send together with webhook
 	// requests.
 	RequestHeaders map[string]string `protobuf:"bytes,4,rep,name=request_headers,json=requestHeaders,proto3" json:"request_headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Optional. Specifies a list of allowed custom CA certificates (in DER
-	// format) for HTTPS verification. This overrides the default SSL trust
-	// store. If this is empty or unspecified, Dialogflow will use Google's
-	// default trust store to verify certificates. N.B. Make sure the HTTPS
-	// server certificates are signed with "subject alt name". For instance a
-	// certificate can be self-signed using the following command,
-	//
-	//     openssl x509 -req -days 200 -in example.com.csr \
-	//       -signkey example.com.key \
-	//       -out example.com.crt \
-	//       -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for
+	// HTTPS verification. This overrides the default SSL trust store. If this
+	// is empty or unspecified, Dialogflow will use Google's default trust store
+	// to verify certificates.
+	// N.B. Make sure the HTTPS server certificates are signed with "subject alt
+	// name". For instance a certificate can be self-signed using the following
+	// command,
+	//    openssl x509 -req -days 200 -in example.com.csr \
+	//      -signkey example.com.key \
+	//      -out example.com.crt \
+	//      -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
 	AllowedCaCerts [][]byte `protobuf:"bytes,5,rep,name=allowed_ca_certs,json=allowedCaCerts,proto3" json:"allowed_ca_certs,omitempty"`
 }
 
@@ -1375,8 +1352,7 @@ type WebhookRequest_IntentInfo struct {
 	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
 	// ID>/intents/<Intent ID>`.
 	LastMatchedIntent string `protobuf:"bytes,1,opt,name=last_matched_intent,json=lastMatchedIntent,proto3" json:"last_matched_intent,omitempty"`
-	// Always present. The display name of the last matched
-	// [intent][google.cloud.dialogflow.cx.v3.Intent].
+	// Always present. The display name of the last matched [intent][google.cloud.dialogflow.cx.v3.Intent].
 	DisplayName string `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Parameters identified as a result of intent matching. This is a map of
 	// the name of the identified parameter to the value of the parameter
@@ -1632,11 +1608,9 @@ type PageInfo_FormInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Optional for both
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest] and
-	// [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse]. The
-	// parameters contained in the form. Note that the webhook cannot add or
-	// remove any form parameter.
+	// Optional for both [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest] and [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
+	// The parameters contained in the form. Note that the webhook cannot add
+	// or remove any form parameter.
 	ParameterInfo []*PageInfo_FormInfo_ParameterInfo `protobuf:"bytes,2,rep,name=parameter_info,json=parameterInfo,proto3" json:"parameter_info,omitempty"`
 }
 
@@ -1685,38 +1659,27 @@ type PageInfo_FormInfo_ParameterInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Always present for
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest].
-	// Required for
+	// Always present for [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Required for
 	// [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
 	// The human-readable name of the parameter, unique within the form. This
 	// field cannot be modified by the webhook.
 	DisplayName string `protobuf:"bytes,1,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// Optional for both
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest] and
-	// [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
+	// Optional for both [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest] and [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
 	// Indicates whether the parameter is required. Optional parameters will
 	// not trigger prompts; however, they are filled if the user specifies
 	// them. Required parameters must be filled before form filling concludes.
 	Required bool `protobuf:"varint,2,opt,name=required,proto3" json:"required,omitempty"`
-	// Always present for
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest].
-	// Required for
-	// [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse]. The
-	// state of the parameter. This field can be set to
-	// [INVALID][google.cloud.dialogflow.cx.v3.PageInfo.FormInfo.ParameterInfo.ParameterState.INVALID]
-	// by the webhook to invalidate the parameter; other values set by the
+	// Always present for [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Required for
+	// [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse]. The state of the parameter. This field can be set
+	// to [INVALID][google.cloud.dialogflow.cx.v3.PageInfo.FormInfo.ParameterInfo.ParameterState.INVALID] by
+	// the webhook to invalidate the parameter; other values set by the
 	// webhook will be ignored.
 	State PageInfo_FormInfo_ParameterInfo_ParameterState `protobuf:"varint,3,opt,name=state,proto3,enum=google.cloud.dialogflow.cx.v3.PageInfo_FormInfo_ParameterInfo_ParameterState" json:"state,omitempty"`
-	// Optional for both
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest] and
-	// [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse]. The
-	// value of the parameter. This field can be set by the webhook to change
-	// the parameter value.
+	// Optional for both [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest] and [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
+	// The value of the parameter. This field can be set by the webhook to
+	// change the parameter value.
 	Value *structpb.Value `protobuf:"bytes,4,opt,name=value,proto3" json:"value,omitempty"`
-	// Optional for
-	// [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Ignored
-	// for [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
+	// Optional for [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]. Ignored for [WebhookResponse][google.cloud.dialogflow.cx.v3.WebhookResponse].
 	// Indicates if the parameter value was just collected on the last
 	// conversation turn.
 	JustCollected bool `protobuf:"varint,5,opt,name=just_collected,json=justCollected,proto3" json:"just_collected,omitempty"`
