@@ -153,7 +153,7 @@ type Tier struct {
 	unknownFields protoimpl.UnknownFields
 
 	// An identifier for the machine type, for example, db-custom-1-3840. For
-	// related information, see <a href="/sql/pricing">Pricing</a>.
+	// related information, see [Pricing](/sql/pricing).
 	Tier string `protobuf:"bytes,1,opt,name=tier,proto3" json:"tier,omitempty"`
 	// The maximum RAM usage of this tier in bytes.
 	RAM int64 `protobuf:"varint,2,opt,name=RAM,proto3" json:"RAM,omitempty"`
@@ -393,8 +393,7 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SqlTiersServiceClient interface {
 	// Lists all available machine types (tiers) for Cloud SQL, for example,
-	// db-custom-1-3840. For related information, see <a
-	// href="/sql/pricing">Pricing</a>.
+	// db-custom-1-3840. For related information, see [Pricing](/sql/pricing).
 	List(ctx context.Context, in *SqlTiersListRequest, opts ...grpc.CallOption) (*TiersListResponse, error)
 }
 
@@ -418,8 +417,7 @@ func (c *sqlTiersServiceClient) List(ctx context.Context, in *SqlTiersListReques
 // SqlTiersServiceServer is the server API for SqlTiersService service.
 type SqlTiersServiceServer interface {
 	// Lists all available machine types (tiers) for Cloud SQL, for example,
-	// db-custom-1-3840. For related information, see <a
-	// href="/sql/pricing">Pricing</a>.
+	// db-custom-1-3840. For related information, see [Pricing](/sql/pricing).
 	List(context.Context, *SqlTiersListRequest) (*TiersListResponse, error)
 }
 
