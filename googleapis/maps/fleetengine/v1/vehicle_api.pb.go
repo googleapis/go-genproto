@@ -45,7 +45,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Specifies the sort order of the vehicle matches in the response.
+// Specifies the order of the vehicle matches in the response.
 type SearchVehiclesRequest_VehicleMatchOrder int32
 
 const (
@@ -53,16 +53,15 @@ const (
 	SearchVehiclesRequest_UNKNOWN_VEHICLE_MATCH_ORDER SearchVehiclesRequest_VehicleMatchOrder = 0
 	// Ascending order by vehicle driving time to the pickup point.
 	SearchVehiclesRequest_PICKUP_POINT_ETA SearchVehiclesRequest_VehicleMatchOrder = 1
-	// Ascending order by the vehicle driving distance to the pickup point.
+	// Ascending order by vehicle driving distance to the pickup point.
 	SearchVehiclesRequest_PICKUP_POINT_DISTANCE SearchVehiclesRequest_VehicleMatchOrder = 2
 	// Ascending order by vehicle driving time to the dropoff point. This order
-	// can only be used if the dropoff_point is specified in the request.
+	// can only be used if the dropoff point is specified in the request.
 	SearchVehiclesRequest_DROPOFF_POINT_ETA SearchVehiclesRequest_VehicleMatchOrder = 3
-	// Ascending order by straightline distance from vehicle location to pickup
-	// location. This is used primarily as a backup if the maps backend is not
-	// reachable.
+	// Ascending order by straight-line distance from the vehicle's last
+	// reported location to the pickup point.
 	SearchVehiclesRequest_PICKUP_POINT_STRAIGHT_DISTANCE SearchVehiclesRequest_VehicleMatchOrder = 4
-	// Ascending order by the match cost.
+	// Ascending order by the configured match cost.
 	SearchVehiclesRequest_COST SearchVehiclesRequest_VehicleMatchOrder = 5
 )
 
@@ -119,13 +118,18 @@ type VehicleMatch_VehicleMatchType int32
 const (
 	// Unknown vehicle match type
 	VehicleMatch_UNKNOWN VehicleMatch_VehicleMatchType = 0
-	// Exclusive vehicle trip match
+	// The vehicle currently has no trip assigned to it and can proceed to the
+	// pickup point.
 	VehicleMatch_EXCLUSIVE VehicleMatch_VehicleMatchType = 1
-	// Back to back ride match.
+	// The vehicle is currently assigned to a trip, but can proceed to the
+	// pickup point after completing the in-progress trip.  ETA and distance
+	// calculations take the existing trip into account.
 	VehicleMatch_BACK_TO_BACK VehicleMatch_VehicleMatchType = 2
-	// Carpool ride match.
+	// The vehicle has sufficient capacity for a shared ride.
 	VehicleMatch_CARPOOL VehicleMatch_VehicleMatchType = 3
-	// Carpool ride match. The car has an active exclusive trip.
+	// The vehicle will finish its current, active trip before proceeding to the
+	// pickup point.  ETA and distance calculations take the existing trip into
+	// account.
 	VehicleMatch_CARPOOL_BACK_TO_BACK VehicleMatch_VehicleMatchType = 4
 )
 
@@ -174,7 +178,7 @@ func (VehicleMatch_VehicleMatchType) EnumDescriptor() ([]byte, []int) {
 	return file_google_maps_fleetengine_v1_vehicle_api_proto_rawDescGZIP(), []int{11, 0}
 }
 
-// CreateVehicle request message.
+// `CreateVehicle` request message.
 type CreateVehicleRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -182,37 +186,47 @@ type CreateVehicleRequest struct {
 
 	// The standard Fleet Engine request header.
 	Header *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
-	// Required. Must be in the format "providers/{provider}".
-	// The provider must be the Project ID (for example, sample-cloud-project)
+	// Required. Must be in the format `providers/{provider}`.
+	// The provider must be the Project ID (for example, `sample-cloud-project`)
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Parent string `protobuf:"bytes,3,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. Unique Vehicle ID; must be unique per provider.  The actual
-	// format and value is opaque to the Fleet Engine and is determined
-	// by the provider.
+	// Required. Unique Vehicle ID; must be unique per provider.
+	// Subject to the following normalization and restrictions:
+	//
+	// 1. IDs must be valid Unicode strings.
+	// 2. IDs are limited to a maximum length of 64 characters.
+	// 3. IDs will be normalized according to Unicode Normalization Form C
+	// (http://www.unicode.org/reports/tr15/).
+	// 4. IDs may not contain any of the following ASCII characters: '/', ':',
+	// '\\', '?', or '#'.
 	VehicleId string `protobuf:"bytes,4,opt,name=vehicle_id,json=vehicleId,proto3" json:"vehicle_id,omitempty"`
 	// Required. The Vehicle entity to create. When creating a Vehicle, the following
 	// fields are required:
 	//
-	// * vehicle_state
-	// * supported_trip_types
-	// * maximum_capacity
-	// * vehicle_type
+	// * `vehicleState`
+	// * `supportedTripTypes`
+	// * `maximumCapacity`
+	// * `vehicleType`
 	//
 	// When creating a Vehicle, the following fields are ignored:
 	//
-	// * name
-	// * current_trips
-	// * available_capacity
-	// * current_route_segment
-	// * current_route_segment_version
-	// * waypoints
-	// * waypoints_version
-	// * remaining_distance_meters
-	// * eta_to_next_waypoint
-	// * navigation_status
+	// * `name`
+	// * `currentTrips`
+	// * `availableCapacity`
+	// * `current_route_segment`
+	// * `current_route_segment_end_point`
+	// * `current_route_segment_version`
+	// * `current_route_segment_traffic`
+	// * `route`
+	// * `waypoints`
+	// * `waypoints_version`
+	// * `remaining_distance_meters`
+	// * `remaining_time_seconds`
+	// * `eta_to_next_waypoint`
+	// * `navigation_status`
 	//
-	// All other fields will be used if provided.
+	// All other fields are optional and used if provided.
 	Vehicle *Vehicle `protobuf:"bytes,5,opt,name=vehicle,proto3" json:"vehicle,omitempty"`
 }
 
@@ -276,7 +290,7 @@ func (x *CreateVehicleRequest) GetVehicle() *Vehicle {
 	return nil
 }
 
-// GetVehicle request message.
+// `GetVehicle` request message.
 type GetVehicleRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -285,21 +299,21 @@ type GetVehicleRequest struct {
 	// The standard Fleet Engine request header.
 	Header *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
 	// Required. Must be in the format
-	// "providers/{provider}/vehicles/{vehicle}".
-	// The provider must be the Project ID (for example, sample-cloud-project)
+	// `providers/{provider}/vehicles/{vehicle}`.
+	// The provider must be the Project ID (for example, `sample-cloud-project`)
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Indicates the minimum timestamp (exclusive) for which
-	// vehicle.current_route_segment is retrieved.
-	// If route is unchanged since this timestamp, the current_route_segment
+	// `Vehicle.current_route_segment` is retrieved.
+	// If the route is unchanged since this timestamp, the `current_route_segment`
 	// field is not set in the response. If a minimum is unspecified, the
-	// current_route_segment is always retrieved.
+	// `current_route_segment` is always retrieved.
 	CurrentRouteSegmentVersion *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=current_route_segment_version,json=currentRouteSegmentVersion,proto3" json:"current_route_segment_version,omitempty"`
-	// Indicates the minimum timestamp (exclusive) for which vehicle.waypoints
-	// data is retrieved. If data is unchanged since this timestamp, the
-	// vehicle.waypoints data is not set in the response. If this field is
-	// unspecified, vehicle.waypoints is always retrieved.
+	// Indicates the minimum timestamp (exclusive) for which `Vehicle.waypoints`
+	// data is retrieved. If the waypoints are unchanged since this timestamp, the
+	// `vehicle.waypoints` data is not set in the response. If this field is
+	// unspecified, `vehicle.waypoints` is always retrieved.
 	WaypointsVersion *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=waypoints_version,json=waypointsVersion,proto3" json:"waypoints_version,omitempty"`
 }
 
@@ -363,7 +377,7 @@ func (x *GetVehicleRequest) GetWaypointsVersion() *timestamppb.Timestamp {
 	return nil
 }
 
-// UpdateVehicle request message.
+// `UpdateVehicle request message.
 type UpdateVehicleRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -372,26 +386,30 @@ type UpdateVehicleRequest struct {
 	// The standard Fleet Engine request header.
 	Header *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
 	// Required. Must be in the format
-	// "providers/{provider}/vehicles/{vehicle}".
-	// The {provider} must be the Project ID (for example, sample-cloud-project)
+	// `providers/{provider}/vehicles/{vehicle}`.
+	// The {provider} must be the Project ID (for example, `sample-cloud-project`)
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
-	//
-	// Note that if the name is also specified in the name field of the
-	// vehicle and name is set in the update_mask, both names must be the
-	// same.  Otherwise it is an Error.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The Vehicle entity update to apply.  When updating a Vehicle,
+	// Required. The `Vehicle` entity values to apply.  When updating a `Vehicle`,
 	// the following fields may not be updated as they are managed by the
-	// Fleet Engine.
-	//   current_trips
-	//   available_capacity
-	//   current_route_segment_version
-	//   waypoints_version
-	// Furthermore, the name of the vehicle cannot be updated.
+	// server.
+	//
+	// * `current_trips`
+	// * `available_capacity`
+	// * `current_route_segment_version`
+	// * `waypoints_version`
+	//
+	// Furthermore, the vehicle `name` cannot be updated.
+	//
+	// If the `attributes` field is updated, **all** the vehicle's attributes are
+	// replaced with the attributes provided in the request. If you want to update
+	// only some attributes, see the `UpdateVehicleAttributes` method. Likewise,
+	// the `waypoints` field can be updated, but must contain all the waypoints.
+	// currently on the vehicle, and no other waypoints.
 	Vehicle *Vehicle `protobuf:"bytes,4,opt,name=vehicle,proto3" json:"vehicle,omitempty"`
-	// Required. A field mask indicating which fields of the Vehicle to update.
-	// The update_mask must contain at least one field.
+	// Required. A field mask indicating which fields of the `Vehicle` to update.
+	// At least one field name must be provided.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,5,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -455,7 +473,7 @@ func (x *UpdateVehicleRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	return nil
 }
 
-// UpdateVehicleLocation request message.
+// `UpdateVehicleLocation` request message.
 //
 // Deprecated: Do not use.
 type UpdateVehicleLocationRequest struct {
@@ -466,16 +484,16 @@ type UpdateVehicleLocationRequest struct {
 	// The standard Fleet Engine request header.
 	Header *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
 	// Required. Must be in the format
-	// "providers/{provider}/vehicles/{vehicle}.
-	// The {provider} must be the Project ID (for example, sample-cloud-project)
+	// `providers/{provider}/vehicles/{vehicle}`.
+	// The {provider} must be the Project ID (for example, `sample-cloud-project`)
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The location to update to.  The last_location and update_time
+	// Required. The vehicle's most recent location.  The `location` and `update_time`
 	// subfields are required.
 	CurrentLocation *VehicleLocation `protobuf:"bytes,4,opt,name=current_location,json=currentLocation,proto3" json:"current_location,omitempty"`
-	// Set current vehicle state to either ONLINE or OFFLINE;
-	// if set to UNKNOWN_VEHICLE_STATE, vehicle state will not be altered.
+	// Set the vehicle's state to either `ONLINE` or `OFFLINE`.
+	// If set to `UNKNOWN_VEHICLE_STATE`, the vehicle's state will not be altered.
 	CurrentState VehicleState `protobuf:"varint,5,opt,name=current_state,json=currentState,proto3,enum=maps.fleetengine.v1.VehicleState" json:"current_state,omitempty"`
 }
 
@@ -539,7 +557,7 @@ func (x *UpdateVehicleLocationRequest) GetCurrentState() VehicleState {
 	return VehicleState_UNKNOWN_VEHICLE_STATE
 }
 
-// UpdateVehicleAttributes request message.
+// `UpdateVehicleAttributes` request message.
 type UpdateVehicleAttributesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -547,16 +565,13 @@ type UpdateVehicleAttributesRequest struct {
 
 	// The standard Fleet Engine request header.
 	Header *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
-	// Required. Must be in the format
-	// "providers/{provider}/vehicles/{vehicle}.
-	// The provider must be the Project ID (for example, sample-cloud-project)
+	// Required. Must be in the format `providers/{provider}/vehicles/{vehicle}`.
+	// The provider must be the Project ID (for example, `sample-cloud-project`)
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The attributes to update;
-	// unmentioned attributes will not be altered or removed.
-	// At most 20 attributes; the combined "key:value" string length cannot
-	// exceed 256.
+	// Required. The vehicle attributes to update. Unmentioned attributes will not be
+	// altered or removed.
 	Attributes []*VehicleAttribute `protobuf:"bytes,4,rep,name=attributes,proto3" json:"attributes,omitempty"`
 }
 
@@ -613,7 +628,7 @@ func (x *UpdateVehicleAttributesRequest) GetAttributes() []*VehicleAttribute {
 	return nil
 }
 
-// UpdateVehicleAttributes response message.
+// `UpdateVehicleAttributes` response message.
 type UpdateVehicleAttributesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -663,7 +678,7 @@ func (x *UpdateVehicleAttributesResponse) GetAttributes() []*VehicleAttribute {
 	return nil
 }
 
-// SearchVehicles request message.
+// `SearchVehicles` request message.
 type SearchVehiclesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -671,51 +686,55 @@ type SearchVehiclesRequest struct {
 
 	// The standard Fleet Engine request header.
 	Header *RequestHeader `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
-	// Required. Must be in the format "providers/{provider}".
-	// The provider must be the Project ID (for example, sample-cloud-project)
+	// Required. Must be in the format `providers/{provider}`.
+	// The provider must be the Project ID (for example, `sample-cloud-project`)
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Parent string `protobuf:"bytes,3,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The pickup point to search near.
 	PickupPoint *TerminalLocation `protobuf:"bytes,4,opt,name=pickup_point,json=pickupPoint,proto3" json:"pickup_point,omitempty"`
 	// The customer's intended dropoff location. The field is required if
-	// trip_types contains TripType.SHARED.
+	// `trip_types` contains `TripType.SHARED`.
 	DropoffPoint *TerminalLocation `protobuf:"bytes,5,opt,name=dropoff_point,json=dropoffPoint,proto3" json:"dropoff_point,omitempty"`
 	// Required. Defines the vehicle search radius around the pickup point. Only
 	// vehicles within the search radius will be returned. Value must be between
-	// 400 and 10000 meters.
+	// 400 and 10000 meters (inclusive).
 	PickupRadiusMeters int32 `protobuf:"varint,6,opt,name=pickup_radius_meters,json=pickupRadiusMeters,proto3" json:"pickup_radius_meters,omitempty"`
-	// Required. Specifies the maximum number of available vehicles to return. By
-	// default, the Fleet Engine limits the number to  50.
+	// Required. Specifies the maximum number of vehicles to return. The value
+	// must be between 1 and 50 (inclusive).
 	Count int32 `protobuf:"varint,7,opt,name=count,proto3" json:"count,omitempty"`
-	// Required. Specifies the minimum number of passengers allowed in the
-	// vehicle. Must number must be greater than or equal to one. The driver is
-	// not considered in the capacity search. This number indicates the number of
-	// passengers being considered for a trip.
+	// Required. Specifies the number of passengers being considered for a trip. The
+	// value must be greater than or equal to one. The driver is not considered in
+	// the capacity value.
 	MinimumCapacity int32 `protobuf:"varint,8,opt,name=minimum_capacity,json=minimumCapacity,proto3" json:"minimum_capacity,omitempty"`
 	// Required. Restricts the search to only those vehicles that support at least
 	// one of the specified trip types.
+	//
+	// At the present time, only `EXCLUSIVE` is supported.
 	TripTypes []TripType `protobuf:"varint,9,rep,packed,name=trip_types,json=tripTypes,proto3,enum=maps.fleetengine.v1.TripType" json:"trip_types,omitempty"`
 	// Restricts the search to only those vehicles that have updated their
-	// locations within the specified duration back from now. If this field is not
+	// locations within the specified duration. If this field is not
 	// set, the server uses five minutes as the default value.
 	MaximumStaleness *durationpb.Duration `protobuf:"bytes,10,opt,name=maximum_staleness,json=maximumStaleness,proto3" json:"maximum_staleness,omitempty"`
-	// Required. Restricts the search to those vehicles with the specified types.
+	// Required. Restricts the search to vehicles with one of the specified types.
 	// At least one vehicle type must be specified.
 	VehicleTypes []*Vehicle_VehicleType `protobuf:"bytes,14,rep,name=vehicle_types,json=vehicleTypes,proto3" json:"vehicle_types,omitempty"`
-	// Callers can form complex logical operations using the
-	// requiredAttributes and requiredOneOfAttributes fields.
+	// Callers can form complex logical operations using any combination of the
+	// `required_attributes`, `required_one_of_attributes`, and
+	// `required_one_of_attribute_sets` fields.
 	//
-	// requiredAttributes is a list; requiredOneOfAttributes uses a message which
-	// allows a list of lists. In combination, the two fields allow the
-	// composition of this expression:
+	// `required_attributes` is a list; `required_one_of_attributes` uses a
+	// message which allows a list of lists. In combination, the two fields allow
+	// the composition of this expression:
 	//
 	// ```
-	// (required_attribute[0] AND required_attribute[1] AND ...)
+	// (required_attributes[0] AND required_attributes[1] AND ...)
 	// AND
-	// (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+	// (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+	// ...)
 	// AND
-	// (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+	// (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+	// ...)
 	// ```
 	//
 	// Restricts the search to only those vehicles with the specified attributes.
@@ -724,28 +743,55 @@ type SearchVehiclesRequest struct {
 	// 1024 characters.
 	RequiredAttributes []*VehicleAttribute `protobuf:"bytes,12,rep,name=required_attributes,json=requiredAttributes,proto3" json:"required_attributes,omitempty"`
 	// Restricts the search to only those vehicles with at least one of
-	// the specified attributes applied to each VehicleAttributeList. Within each
+	// the specified attributes in each `VehicleAttributeList`. Within each
 	// list, a vehicle must match at least one of the attributes. This field is an
-	// inclusive disjunction/OR operation in each VehicleAttributeList and a
-	// conjunction/AND operation across the collection of VehicleAttributeList.
+	// inclusive disjunction/OR operation in each `VehicleAttributeList` and a
+	// conjunction/AND operation across the collection of `VehicleAttributeList`.
 	RequiredOneOfAttributes []*VehicleAttributeList `protobuf:"bytes,15,rep,name=required_one_of_attributes,json=requiredOneOfAttributes,proto3" json:"required_one_of_attributes,omitempty"`
-	// Restricts the search to only those vehicles with at least one set of the
-	// specified attributes in the VehicleAttributeList. Within each list, a
+	// `required_one_of_attribute_sets` provides additional functionality.
+	//
+	// Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+	// uses a message which allows a list of lists, allowing expressions such as
+	// this one:
+	//
+	// ```
+	// (required_attributes[0] AND required_attributes[1] AND ...)
+	// AND
+	// (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+	// ...)
+	// OR
+	// (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+	// ...)
+	// ```
+	//
+	// Restricts the search to only those vehicles with all the attributes in a
+	// `VehicleAttributeList`. Within each list, a
 	// vehicle must match all of the attributes. This field is a conjunction/AND
-	// operation in each VehicleAttributeList and inclusive disjunction/OR
-	// operation across the collection of VehicleAttributeList.
+	// operation in each `VehicleAttributeList` and inclusive disjunction/OR
+	// operation across the collection of `VehicleAttributeList`.
 	RequiredOneOfAttributeSets []*VehicleAttributeList `protobuf:"bytes,20,rep,name=required_one_of_attribute_sets,json=requiredOneOfAttributeSets,proto3" json:"required_one_of_attribute_sets,omitempty"`
-	// Required. Specifies ordering criterion for results.
+	// Required. Specifies the desired ordering criterion for results.
 	OrderBy SearchVehiclesRequest_VehicleMatchOrder `protobuf:"varint,13,opt,name=order_by,json=orderBy,proto3,enum=maps.fleetengine.v1.SearchVehiclesRequest_VehicleMatchOrder" json:"order_by,omitempty"`
-	// Indicates if a vehicle with an active trip is eligible for
-	// another match. If `false`, a vehicle is excluded from search results.
-	// If `true`, search results include vehicles with `TripStatus` of
-	// `ENROUTE_TO_DROPOFF`. The services only use this field if
-	// the `SearchVehicles` request has `TripType` set to EXCLUSIVE.
-	// Default value is `false`.
+	// Indicates if a vehicle with a single active trip is eligible for another
+	// match. If `false`, vehicles with assigned trips are excluded from the
+	// search results. If `true`, search results include vehicles with
+	// `TripStatus` of `ENROUTE_TO_DROPOFF`.
+	//
+	// This field is only considered if a single `trip_type` of `EXCLUSIVE` is
+	// specified.
+	//
+	// The default value is `false`.
 	IncludeBackToBack bool `protobuf:"varint,18,opt,name=include_back_to_back,json=includeBackToBack,proto3" json:"include_back_to_back,omitempty"`
-	// Indicates the ID of the trip the searchVehicleRequest is
-	// associated with.
+	// Indicates the trip associated with this `SearchVehicleRequest`.
+	// Unique Trip ID; must be unique per provider.
+	// Subject to the following normalization and restrictions:
+	//
+	// 1. IDs must be valid Unicode strings.
+	// 2. IDs are limited to a maximum length of 64 characters.
+	// 3. IDs will be normalized according to Unicode Normalization Form C
+	// (http://www.unicode.org/reports/tr15/).
+	// 4. IDs may not contain any of the following ASCII characters: '/', ':',
+	// '\\', '?', or '#'.
 	TripId string `protobuf:"bytes,19,opt,name=trip_id,json=tripId,proto3" json:"trip_id,omitempty"`
 }
 
@@ -893,25 +939,14 @@ func (x *SearchVehiclesRequest) GetTripId() string {
 	return ""
 }
 
-// SearchVehicles response message.
+// `SearchVehicles` response message.
 type SearchVehiclesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// List of vehicles that match the request options.
-	//
-	// Ordered by ascending vehicle_pickup_eta, with ties broken by ascending
-	// trip_type enum value, followed by matches that don't have
-	// vehicle_pickup_eta set.
-	//
-	// Example response: (Logically represented, not actual response fields):
-	//
-	// * (VehicleId: Vehicle1, ETA: 10 AM, TripType: SHARED),
-	// * (VehicleId: Vehicle2, ETA: 10 AM, TripType: EXCLUSIVE),
-	// * (VehicleId: Vehicle3, ETA: 11 AM, TripType: EXCLUSIVE),
-	// * (VehicleId: Vehicle4, ETA: Not set, TripType: SHARED),
-	// * (VehicleId: Vehicle5, ETA: Not set, TripType: EXCLUSIVE)
+	// List of vehicles that match the `SearchVehiclesRequest` criteria, ordered
+	// according to `SearchVehiclesRequest.order_by` field.
 	Matches []*VehicleMatch `protobuf:"bytes,1,rep,name=matches,proto3" json:"matches,omitempty"`
 }
 
@@ -954,7 +989,7 @@ func (x *SearchVehiclesResponse) GetMatches() []*VehicleMatch {
 	return nil
 }
 
-// ListVehicles request message.
+// `ListVehicles` request message.
 type ListVehiclesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -962,66 +997,88 @@ type ListVehiclesRequest struct {
 
 	// The standard Fleet Engine request header.
 	Header *RequestHeader `protobuf:"bytes,12,opt,name=header,proto3" json:"header,omitempty"`
-	// Required. Must be in the format "providers/{provider}".
-	// The provider must be the Project ID (for example, sample-cloud-project)
+	// Required. Must be in the format `providers/{provider}`.
+	// The provider must be the Project ID (for example, `sample-cloud-project`)
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of vehicles to return.
 	// Default value: 100.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// The next_page_token value returned from a previous response, if any.
+	// The `next_page_token` value returned from a previous call to
+	// `ListVehicles`. Functionality is undefined if the filter criteria of this
+	// request don't match the criteria in the request that produced this
+	// `page_token`.
 	PageToken string `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// Specifies the required minimum capacity of the vehicle.
-	// The driver is not considered in the capacity search.
-	// This is just the number of passengers being considered for a trip.
-	// If set, must be greater or equal to 0.
+	// Specifies the required minimum capacity of the vehicle. All vehicles
+	// returned will have a `maximum_capacity` greater than or equal to this
+	// value. If set, must be greater or equal to 0.
 	MinimumCapacity *wrapperspb.Int32Value `protobuf:"bytes,6,opt,name=minimum_capacity,json=minimumCapacity,proto3" json:"minimum_capacity,omitempty"`
-	// Restrict the search to only those vehicles that support at least
+	// Restrict the response to vehicles that support at least
 	// one of the specified trip types.
 	TripTypes []TripType `protobuf:"varint,7,rep,packed,name=trip_types,json=tripTypes,proto3,enum=maps.fleetengine.v1.TripType" json:"trip_types,omitempty"`
-	// Restrict the search to only those vehicles that have updated
+	// Restrict the response to vehicles that have updated
 	// their locations within the specified duration back from now.
 	// If present, must be a valid positive duration.
 	MaximumStaleness *durationpb.Duration `protobuf:"bytes,8,opt,name=maximum_staleness,json=maximumStaleness,proto3" json:"maximum_staleness,omitempty"`
-	// Required. Restrict the search to those vehicles with the specified type categories.
+	// Required. Restrict the response to vehicles with one of the specified type
+	// categories.
 	VehicleTypeCategories []Vehicle_VehicleType_Category `protobuf:"varint,9,rep,packed,name=vehicle_type_categories,json=vehicleTypeCategories,proto3,enum=maps.fleetengine.v1.Vehicle_VehicleType_Category" json:"vehicle_type_categories,omitempty"`
-	// Callers can form complex logical operations using the
-	// requiredAttributes and requiredOneOfAttributes fields.
+	// Callers can form complex logical operations using any combination of the
+	// `required_attributes`, `required_one_of_attributes`, and
+	// `required_one_of_attribute_sets` fields.
 	//
-	// requiredAttributes is a list; requiredOneOfAttributes uses a message which
-	// allows a list of lists. In combination, the two fields allow the
-	// composition of this expression:
+	// `required_attributes` is a list; `required_one_of_attributes` uses a
+	// message which allows a list of lists. In combination, the two fields allow
+	// the composition of this expression:
 	//
 	// ```
-	// (required_attribute[0] AND required_attribute[1] AND ...)
+	// (required_attributes[0] AND required_attributes[1] AND ...)
 	// AND
-	// (required_one_of_attribute[0][0] OR required_one_of_attribute[0][1] OR ...)
+	// (required_one_of_attributes[0][0] OR required_one_of_attributes[0][1] OR
+	// ...)
 	// AND
-	// (required_one_of_attribute[1][0] OR required_one_of_attribute[1][1] OR ...)
+	// (required_one_of_attributes[1][0] OR required_one_of_attributes[1][1] OR
+	// ...)
 	// ```
 	//
-	// Restrict the search to only those vehicles
-	// with the specified attributes. This field is a conjunction/AND operation.
-	// Your app can specify up to 100 attributes; however, the combined
-	// key:value string length cannot exceed 1024 characters.
+	// Restrict the response to vehicles with the specified attributes. This field
+	// is a conjunction/AND operation. Your app can specify up to 100 attributes;
+	// however, the combined key:value string length cannot exceed 1024
+	// characters.
 	RequiredAttributes []string `protobuf:"bytes,10,rep,name=required_attributes,json=requiredAttributes,proto3" json:"required_attributes,omitempty"`
-	// Restrict the search to only those vehicles with at least one
-	// of the specified attributes applied to each VehicleAttributeList.
+	// Restrict the response to vehicles with at least one
+	// of the specified attributes in each `VehicleAttributeList`.
 	// Within each list, a vehicle must match at least one of the attributes.
 	// This field is an inclusive disjunction/OR operation in each
-	// VehicleAttributeList and a conjunction/AND operation across the collection
-	// of VehicleAttributeList.
-	// Format: key1:value1|key2:value2|key3:value3...
+	// `VehicleAttributeList` and a conjunction/AND operation across the
+	// collection of `VehicleAttributeList`. Format:
+	// key1:value1|key2:value2|key3:value3...
 	RequiredOneOfAttributes []string `protobuf:"bytes,13,rep,name=required_one_of_attributes,json=requiredOneOfAttributes,proto3" json:"required_one_of_attributes,omitempty"`
-	// Restrict the search to only those vehicles with at least one set of the
-	// specified attributes in the VehicleAttributeList. Within each list, a
-	// vehicle must match all of the attributes. This field is a conjunction/AND
-	// operation in each VehicleAttributeList and inclusive disjunction/OR
-	// operation across the collection of VehicleAttributeList.
-	// Format: key1:value1|key2:value2|key3:value3...
+	// `required_one_of_attribute_sets` provides additional functionality.
+	//
+	// Similar to `required_one_of_attributes`, `required_one_of_attribute_sets`
+	// uses a message which allows a list of lists, allowing expressions such as
+	// this one:
+	//
+	// ```
+	// (required_attributes[0] AND required_attributes[1] AND ...)
+	// AND
+	// (required_one_of_attributes[0][0] AND required_one_of_attributes[0][1] AND
+	// ...)
+	// OR
+	// (required_one_of_attributes[1][0] AND required_one_of_attributes[1][1] AND
+	// ...)
+	// ```
+	//
+	// Restrict the response to vehicles that match all the attributes in a
+	// `VehicleAttributeList`. Within each list, a vehicle must match all of the
+	// attributes. This field is a conjunction/AND operation in each
+	// `VehicleAttributeList` and inclusive disjunction/OR operation across the
+	// collection of `VehicleAttributeList`. Format:
+	// key1:value1|key2:value2|key3:value3...
 	RequiredOneOfAttributeSets []string `protobuf:"bytes,15,rep,name=required_one_of_attribute_sets,json=requiredOneOfAttributeSets,proto3" json:"required_one_of_attribute_sets,omitempty"`
-	// Restrict the search to only those vehicles that have this vehicle state.
+	// Restrict the response to vehicles that have this vehicle state.
 	VehicleState VehicleState `protobuf:"varint,11,opt,name=vehicle_state,json=vehicleState,proto3,enum=maps.fleetengine.v1.VehicleState" json:"vehicle_state,omitempty"`
 	// Only return the vehicles with current trip(s).
 	OnTripOnly bool `protobuf:"varint,14,opt,name=on_trip_only,json=onTripOnly,proto3" json:"on_trip_only,omitempty"`
@@ -1150,20 +1207,20 @@ func (x *ListVehiclesRequest) GetOnTripOnly() bool {
 	return false
 }
 
-// ListVehicles response message.
+// `ListVehicles` response message.
 type ListVehiclesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Depends on vehicles matching request criteria.
-	// There will be a maximum number of vehicles returned based on the page_size
+	// Vehicles matching the criteria in the request.
+	// The maximum number of vehicles returned is determined by the `page_size`
 	// field in the request.
 	Vehicles []*Vehicle `protobuf:"bytes,1,rep,name=vehicles,proto3" json:"vehicles,omitempty"`
 	// Token to retrieve the next page of vehicles, or empty if there are no
-	// more vehicles in the list.
+	// more vehicles that meet the request criteria.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// Required. Total number of vehicles matching request criteria across all pages.
+	// Required. Total number of vehicles matching the request criteria across all pages.
 	TotalSize int64 `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`
 }
 
@@ -1220,7 +1277,7 @@ func (x *ListVehiclesResponse) GetTotalSize() int64 {
 	return 0
 }
 
-// Waypoint describes intermediate points along a route.
+// Describes intermediate points along a route.
 type Waypoint struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1278,8 +1335,8 @@ func (x *Waypoint) GetEta() *timestamppb.Timestamp {
 	return nil
 }
 
-// VehicleMatch contains the vehicle, ETA, and distance calculations for a
-// vehicle that matches the SearchVehiclesRequest.
+// Contains the vehicle and related estimates for a vehicle that match the
+// points of active trips for the vehicle `SearchVehiclesRequest`.
 type VehicleMatch struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1289,51 +1346,53 @@ type VehicleMatch struct {
 	Vehicle *Vehicle `protobuf:"bytes,1,opt,name=vehicle,proto3" json:"vehicle,omitempty"`
 	// The vehicle's driving ETA to the pickup point specified in the
 	// request. An empty value indicates a failure in calculating ETA for the
-	// vehicle.
+	// vehicle.  If `SearchVehiclesRequest.include_back_to_back` was `true` and
+	// this vehicle has an active trip, `vehicle_pickup_eta` includes the time
+	// required to complete the current active trip.
 	VehiclePickupEta *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=vehicle_pickup_eta,json=vehiclePickupEta,proto3" json:"vehicle_pickup_eta,omitempty"`
-	// The vehicle's driving distance to the pickup point specified in
-	// the request, including any intermediate pickup or dropoff points for
-	// an existing ride.  An empty value indicates a failure in calculating
-	// distance for the vehicle.
+	// The distance from the Vehicle's current location to the pickup point
+	// specified in the request, including any intermediate pickup or dropoff
+	// points for existing trips. This distance comprises the calculated driving
+	// (route) distance, plus the straight line distance between the navigation
+	// end point and the requested pickup point. (The distance between the
+	// navigation end point and the requested pickup point is typically small.) An
+	// empty value indicates an error in calculating the distance.
 	VehiclePickupDistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,3,opt,name=vehicle_pickup_distance_meters,json=vehiclePickupDistanceMeters,proto3" json:"vehicle_pickup_distance_meters,omitempty"`
-	// Required. The straight-line distance between the vehicle and the pickup
-	// point specified in the request, including intermediate waypoints for
-	// existing trips.
+	// Required. The straight-line distance between the vehicle and the pickup point
+	// specified in the request.
 	VehiclePickupStraightLineDistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,11,opt,name=vehicle_pickup_straight_line_distance_meters,json=vehiclePickupStraightLineDistanceMeters,proto3" json:"vehicle_pickup_straight_line_distance_meters,omitempty"`
-	// The complete vehicle's driving ETA to the drop off point
-	// specified in the request. The ETA includes any required visits for active
-	// trips that must be completed before the vehicle visits the dropoff_point
-	// specified in the request. The value will only be populated when a
-	// dropoff_point is specified in the request. An empty value indicates
-	// a failure in calculating the ETA for the vehicle to reach
-	// the dropoff_point.
+	// The complete vehicle's driving ETA to the drop off point specified in the
+	// request. The ETA includes stopping at any waypoints before the
+	// `dropoff_point` specified in the request. The value will only be populated
+	// when a drop off point is specified in the request. An empty value indicates
+	// an error calculating the ETA.
 	VehicleDropoffEta *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=vehicle_dropoff_eta,json=vehicleDropoffEta,proto3" json:"vehicle_dropoff_eta,omitempty"`
 	// The vehicle's driving distance (in meters) from the pickup point
 	// to the drop off point specified in the request. The distance is only
 	// between the two points and does not include the vehicle location or any
 	// other points that must be visited before the vehicle visits either the
 	// pickup point or dropoff point. The value will only be populated when a
-	// dropoff_point is specified in the request. An empty value indicates
+	// `dropoff_point` is specified in the request. An empty value indicates
 	// a failure in calculating the distance from the pickup to
-	// dropoff points specified in the request.
+	// drop off point specified in the request.
 	VehiclePickupToDropoffDistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,5,opt,name=vehicle_pickup_to_dropoff_distance_meters,json=vehiclePickupToDropoffDistanceMeters,proto3" json:"vehicle_pickup_to_dropoff_distance_meters,omitempty"`
 	// Required. The trip type of the request that was used to calculate the ETA
 	// to the pickup point.
 	TripType TripType `protobuf:"varint,6,opt,name=trip_type,json=tripType,proto3,enum=maps.fleetengine.v1.TripType" json:"trip_type,omitempty"`
 	// The ordered list of waypoints used to calculate the ETA. The list
-	// will include the vehicle location, the pickup/drop off points of active
-	// trips for the vehicle and the pickup/dropoff points provided in the
+	// includes vehicle location, the pickup/drop off points of active
+	// trips for the vehicle, and the pickup/drop off points provided in the
 	// request. An empty list indicates a failure in calculating ETA for the
 	// vehicle.
 	VehicleTripsWaypoints []*Waypoint `protobuf:"bytes,7,rep,name=vehicle_trips_waypoints,json=vehicleTripsWaypoints,proto3" json:"vehicle_trips_waypoints,omitempty"`
 	// Type of the vehicle match.
 	VehicleMatchType VehicleMatch_VehicleMatchType `protobuf:"varint,8,opt,name=vehicle_match_type,json=vehicleMatchType,proto3,enum=maps.fleetengine.v1.VehicleMatch_VehicleMatchType" json:"vehicle_match_type,omitempty"`
-	// The method the caller requested for sorting vehicle matches.
+	// The order requested for sorting vehicle matches.
 	RequestedOrderedBy SearchVehiclesRequest_VehicleMatchOrder `protobuf:"varint,9,opt,name=requested_ordered_by,json=requestedOrderedBy,proto3,enum=maps.fleetengine.v1.SearchVehiclesRequest_VehicleMatchOrder" json:"requested_ordered_by,omitempty"`
-	// The actual method that is used to order this vehicle. In normal cases this
-	// will match the 'order_by' field from the request, however in certain
-	// circumstances such as a failure of google maps backends, a different method
-	// may be used (such as PICKUP_POINT_STRAIGHT_DISTANCE).
+	// The actual order that was used for this vehicle. Normally this
+	// will match the 'order_by' field from the request; however, in certain
+	// circumstances such as an internal server error, a different method
+	// may be used (such as `PICKUP_POINT_STRAIGHT_DISTANCE`).
 	OrderedBy SearchVehiclesRequest_VehicleMatchOrder `protobuf:"varint,10,opt,name=ordered_by,json=orderedBy,proto3,enum=maps.fleetengine.v1.SearchVehiclesRequest_VehicleMatchOrder" json:"ordered_by,omitempty"`
 }
 
@@ -1446,7 +1505,7 @@ func (x *VehicleMatch) GetOrderedBy() SearchVehiclesRequest_VehicleMatchOrder {
 	return SearchVehiclesRequest_UNKNOWN_VEHICLE_MATCH_ORDER
 }
 
-// This messages allows a list-of-list datatype for VehicleAttribute.
+// A list-of-lists datatype for vehicle attributes.
 type VehicleAttributeList struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2245,69 +2304,75 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type VehicleServiceClient interface {
-	// CreateVehicle instantiates a new vehicle associated with a rideshare
-	// provider in the Fleet Engine. Vehicles must have a unique vehicle ID.
+	// Instantiates a new vehicle associated with an on-demand rideshare or
+	// deliveries provider. Each `Vehicle` must have a unique vehicle ID.
 	//
-	// The following Vehicle fields are required when creating a Vehicle:
+	// The following `Vehicle` fields are required when creating a `Vehicle`:
 	//
-	// * vehicleState
-	// * supportedTripTypes
-	// * maximumCapacity
-	// * vehicleType
+	// * `vehicleState`
+	// * `supportedTripTypes`
+	// * `maximumCapacity`
+	// * `vehicleType`
 	//
-	// The following Vehicle fields are ignored when creating a Vehicle:
+	// The following `Vehicle` fields are ignored when creating a `Vehicle`:
 	//
-	// * name
-	// * currentTrips
-	// * availableCapacity
-	// * current_route_segment
-	// * current_route_segment_version
-	// * waypoint
-	// * waypoints_version
-	// * remaining_distance_meters
-	// * eta_to_next_waypoint
-	// * navigation_status
+	// * `name`
+	// * `currentTrips`
+	// * `availableCapacity`
+	// * `current_route_segment`
+	// * `current_route_segment_end_point`
+	// * `current_route_segment_version`
+	// * `current_route_segment_traffic`
+	// * `route`
+	// * `waypoints`
+	// * `waypoints_version`
+	// * `remaining_distance_meters`
+	// * `remaining_time_seconds`
+	// * `eta_to_next_waypoint`
+	// * `navigation_status`
 	//
 	// All other fields are optional and used if provided.
 	CreateVehicle(ctx context.Context, in *CreateVehicleRequest, opts ...grpc.CallOption) (*Vehicle, error)
-	// GetVehicle returns a vehicle from the Fleet Engine.
+	// Returns a vehicle from the Fleet Engine.
 	GetVehicle(ctx context.Context, in *GetVehicleRequest, opts ...grpc.CallOption) (*Vehicle, error)
-	// UpdateVehicle writes updated vehicle data to the Fleet Engine.
+	// Writes updated vehicle data to the Fleet Engine.
 	//
-	// When updating a Vehicle, the following fields cannot be updated since they
-	// are managed by the Fleet Engine:
+	// When updating a `Vehicle`, the following fields cannot be updated since
+	// they are managed by the server:
 	//
-	// * currentTrips
-	// * availableCapacity
-	// * current_route_segment_version
-	// * waypoints_version
+	// * `currentTrips`
+	// * `availableCapacity`
+	// * `current_route_segment_version`
+	// * `waypoints_version`
 	//
-	// The vehicle name also cannot be updated.
+	// The vehicle `name` also cannot be updated.
 	//
-	// The waypoints field can be updated, but must contain all the waypoints
+	// If the `attributes` field is updated, **all** the vehicle's attributes are
+	// replaced with the attributes provided in the request. If you want to update
+	// only some attributes, see the `UpdateVehicleAttributes` method. Likewise,
+	// the `waypoints` field can be updated, but must contain all the waypoints
 	// currently on the vehicle, and no other waypoints.
 	UpdateVehicle(ctx context.Context, in *UpdateVehicleRequest, opts ...grpc.CallOption) (*Vehicle, error)
 	// Deprecated: Do not use.
+	// Deprecated: Use the `UpdateVehicle` method instead.
 	// UpdateVehicleLocation updates the location of the vehicle.
-	// This method is deprecated. Use UpdateVehicle method instead.
 	UpdateVehicleLocation(ctx context.Context, in *UpdateVehicleLocationRequest, opts ...grpc.CallOption) (*VehicleLocation, error)
-	// UpdateVehicleAttributes partially updates a vehicle's attributes.
+	// Partially updates a vehicle's attributes.
 	// Only the attributes mentioned in the request will be updated, other
-	// attributes will NOT be altered. Note: this is different in UpdateVehicle,
+	// attributes will NOT be altered. Note: this is different in `UpdateVehicle`,
 	// where the whole `attributes` field will be replaced by the one in
-	// UpdateVehicleRequest, attributes not in the request would be removed.
+	// `UpdateVehicleRequest`, attributes not in the request would be removed.
 	UpdateVehicleAttributes(ctx context.Context, in *UpdateVehicleAttributesRequest, opts ...grpc.CallOption) (*UpdateVehicleAttributesResponse, error)
-	// ListVehicles returns a paginated list of vehicles associated with
+	// Returns a paginated list of vehicles associated with
 	// a provider that match the request options.
 	ListVehicles(ctx context.Context, in *ListVehiclesRequest, opts ...grpc.CallOption) (*ListVehiclesResponse, error)
-	// SearchVehicles returns a list of vehicles that match the request options.
+	// Returns a list of vehicles that match the request options.
 	SearchVehicles(ctx context.Context, in *SearchVehiclesRequest, opts ...grpc.CallOption) (*SearchVehiclesResponse, error)
-	// SearchFuzzedVehicles returns a list of vehicles that match the request
-	// options with their locations fuzzed.
-	// Request does not support 'order_by' field.
-	// Vehicle matches in response will be in order of distance from pickup point.
-	// Vehicle matches in response will only have 'vehicle' and 'trip_type' field
-	// set.
+	// Returns a list of vehicles that match the request
+	// options, but the vehicle locations will be somewhat altered for privacy.
+	// This method does not support the `SearchVehicleRequest.order_by` field.
+	// Vehicle matches in the response will be in order of distance from the
+	// pickup point.  Only the `vehicle` and `trip_type` fields will be populated.
 	SearchFuzzedVehicles(ctx context.Context, in *SearchVehiclesRequest, opts ...grpc.CallOption) (*SearchVehiclesResponse, error)
 }
 
@@ -2394,69 +2459,75 @@ func (c *vehicleServiceClient) SearchFuzzedVehicles(ctx context.Context, in *Sea
 
 // VehicleServiceServer is the server API for VehicleService service.
 type VehicleServiceServer interface {
-	// CreateVehicle instantiates a new vehicle associated with a rideshare
-	// provider in the Fleet Engine. Vehicles must have a unique vehicle ID.
+	// Instantiates a new vehicle associated with an on-demand rideshare or
+	// deliveries provider. Each `Vehicle` must have a unique vehicle ID.
 	//
-	// The following Vehicle fields are required when creating a Vehicle:
+	// The following `Vehicle` fields are required when creating a `Vehicle`:
 	//
-	// * vehicleState
-	// * supportedTripTypes
-	// * maximumCapacity
-	// * vehicleType
+	// * `vehicleState`
+	// * `supportedTripTypes`
+	// * `maximumCapacity`
+	// * `vehicleType`
 	//
-	// The following Vehicle fields are ignored when creating a Vehicle:
+	// The following `Vehicle` fields are ignored when creating a `Vehicle`:
 	//
-	// * name
-	// * currentTrips
-	// * availableCapacity
-	// * current_route_segment
-	// * current_route_segment_version
-	// * waypoint
-	// * waypoints_version
-	// * remaining_distance_meters
-	// * eta_to_next_waypoint
-	// * navigation_status
+	// * `name`
+	// * `currentTrips`
+	// * `availableCapacity`
+	// * `current_route_segment`
+	// * `current_route_segment_end_point`
+	// * `current_route_segment_version`
+	// * `current_route_segment_traffic`
+	// * `route`
+	// * `waypoints`
+	// * `waypoints_version`
+	// * `remaining_distance_meters`
+	// * `remaining_time_seconds`
+	// * `eta_to_next_waypoint`
+	// * `navigation_status`
 	//
 	// All other fields are optional and used if provided.
 	CreateVehicle(context.Context, *CreateVehicleRequest) (*Vehicle, error)
-	// GetVehicle returns a vehicle from the Fleet Engine.
+	// Returns a vehicle from the Fleet Engine.
 	GetVehicle(context.Context, *GetVehicleRequest) (*Vehicle, error)
-	// UpdateVehicle writes updated vehicle data to the Fleet Engine.
+	// Writes updated vehicle data to the Fleet Engine.
 	//
-	// When updating a Vehicle, the following fields cannot be updated since they
-	// are managed by the Fleet Engine:
+	// When updating a `Vehicle`, the following fields cannot be updated since
+	// they are managed by the server:
 	//
-	// * currentTrips
-	// * availableCapacity
-	// * current_route_segment_version
-	// * waypoints_version
+	// * `currentTrips`
+	// * `availableCapacity`
+	// * `current_route_segment_version`
+	// * `waypoints_version`
 	//
-	// The vehicle name also cannot be updated.
+	// The vehicle `name` also cannot be updated.
 	//
-	// The waypoints field can be updated, but must contain all the waypoints
+	// If the `attributes` field is updated, **all** the vehicle's attributes are
+	// replaced with the attributes provided in the request. If you want to update
+	// only some attributes, see the `UpdateVehicleAttributes` method. Likewise,
+	// the `waypoints` field can be updated, but must contain all the waypoints
 	// currently on the vehicle, and no other waypoints.
 	UpdateVehicle(context.Context, *UpdateVehicleRequest) (*Vehicle, error)
 	// Deprecated: Do not use.
+	// Deprecated: Use the `UpdateVehicle` method instead.
 	// UpdateVehicleLocation updates the location of the vehicle.
-	// This method is deprecated. Use UpdateVehicle method instead.
 	UpdateVehicleLocation(context.Context, *UpdateVehicleLocationRequest) (*VehicleLocation, error)
-	// UpdateVehicleAttributes partially updates a vehicle's attributes.
+	// Partially updates a vehicle's attributes.
 	// Only the attributes mentioned in the request will be updated, other
-	// attributes will NOT be altered. Note: this is different in UpdateVehicle,
+	// attributes will NOT be altered. Note: this is different in `UpdateVehicle`,
 	// where the whole `attributes` field will be replaced by the one in
-	// UpdateVehicleRequest, attributes not in the request would be removed.
+	// `UpdateVehicleRequest`, attributes not in the request would be removed.
 	UpdateVehicleAttributes(context.Context, *UpdateVehicleAttributesRequest) (*UpdateVehicleAttributesResponse, error)
-	// ListVehicles returns a paginated list of vehicles associated with
+	// Returns a paginated list of vehicles associated with
 	// a provider that match the request options.
 	ListVehicles(context.Context, *ListVehiclesRequest) (*ListVehiclesResponse, error)
-	// SearchVehicles returns a list of vehicles that match the request options.
+	// Returns a list of vehicles that match the request options.
 	SearchVehicles(context.Context, *SearchVehiclesRequest) (*SearchVehiclesResponse, error)
-	// SearchFuzzedVehicles returns a list of vehicles that match the request
-	// options with their locations fuzzed.
-	// Request does not support 'order_by' field.
-	// Vehicle matches in response will be in order of distance from pickup point.
-	// Vehicle matches in response will only have 'vehicle' and 'trip_type' field
-	// set.
+	// Returns a list of vehicles that match the request
+	// options, but the vehicle locations will be somewhat altered for privacy.
+	// This method does not support the `SearchVehicleRequest.order_by` field.
+	// Vehicle matches in the response will be in order of distance from the
+	// pickup point.  Only the `vehicle` and `trip_type` fields will be populated.
 	SearchFuzzedVehicles(context.Context, *SearchVehiclesRequest) (*SearchVehiclesResponse, error)
 }
 
