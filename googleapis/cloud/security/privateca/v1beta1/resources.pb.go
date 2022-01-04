@@ -2435,11 +2435,11 @@ type CertificateAuthority_CertificateAuthorityPolicy_AllowedSubjectAltNames stru
 
 	// Optional. Contains valid, fully-qualified host names. Glob patterns are also
 	// supported. To allow an explicit wildcard certificate, escape with
-	// backlash (i.e. "\*").
-	// E.g. for globbed entries: '*bar.com' will allow foo.bar.com, but not
-	// *.bar.com, unless the [allow_globbing_dns_wildcards][google.cloud.security.privateca.v1beta1.CertificateAuthority.CertificateAuthorityPolicy.AllowedSubjectAltNames.allow_globbing_dns_wildcards] field is set.
-	// E.g. for wildcard entries: '\*.bar.com' will allow '*.bar.com', but not
-	// 'foo.bar.com'.
+	// backlash (i.e. `\*`).
+	// E.g. for globbed entries: `*bar.com` will allow `foo.bar.com`, but not
+	// `*.bar.com`, unless the [allow_globbing_dns_wildcards][google.cloud.security.privateca.v1beta1.CertificateAuthority.CertificateAuthorityPolicy.AllowedSubjectAltNames.allow_globbing_dns_wildcards] field is set.
+	// E.g. for wildcard entries: `\*.bar.com` will allow `*.bar.com`, but not
+	// `foo.bar.com`.
 	AllowedDnsNames []string `protobuf:"bytes,1,rep,name=allowed_dns_names,json=allowedDnsNames,proto3" json:"allowed_dns_names,omitempty"`
 	// Optional. Contains valid RFC 3986 URIs. Glob patterns are also supported. To
 	// match across path seperators (i.e. '/') use the double star glob

@@ -161,7 +161,7 @@ const (
 	LoggedMigrationJob_DRAFT LoggedMigrationJob_State = 2
 	// The migration job is being created.
 	LoggedMigrationJob_CREATING LoggedMigrationJob_State = 3
-	// The migration job is created, not started and is fully editable.
+	// The migration job is created and not started.
 	LoggedMigrationJob_NOT_STARTED LoggedMigrationJob_State = 4
 	// The migration job is running
 	LoggedMigrationJob_RUNNING LoggedMigrationJob_State = 5

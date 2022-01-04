@@ -370,9 +370,9 @@ type DeliveryPipeline struct {
 	// Labels are attributes that can be set and used by both the
 	// user and by Google Cloud Deploy. Labels must meet the following
 	// constraints: Each resource is limited to 64 labels. Keys must conform to
-	// the regexp: [a-zA-Z][a-zA-Z0-9_-]{0,62} Values must conform to the regexp:
-	// [a-zA-Z0-9_-]{0,63} Both keys and values are additionally constrained to be
-	// <= 128 bytes in size.
+	// the regexp: `[a-zA-Z][a-zA-Z0-9_-]{0,62}`. Values must conform to the
+	// regexp: `[a-zA-Z0-9_-]{0,63}`. Both keys and values are additionally
+	// constrained to be <= 128 bytes in size.
 	Labels map[string]string `protobuf:"bytes,5,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Output only. Time at which the pipeline was created.
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
@@ -1368,9 +1368,9 @@ type Target struct {
 	// Optional. Labels are attributes that can be set and used by both the
 	// user and by Google Cloud Deploy. Labels must meet the following
 	// constraints: Each resource is limited to 64 labels. Keys must conform to
-	// the regexp: [a-zA-Z][a-zA-Z0-9_-]{0,62} Values must conform to the regexp:
-	// [a-zA-Z0-9_-]{0,63} Both keys and values are additionally constrained to be
-	// <= 128 bytes in size.
+	// the regexp: `[a-zA-Z][a-zA-Z0-9_-]{0,62}`. Values must conform to the
+	// regexp: `[a-zA-Z0-9_-]{0,63}`. Both keys and values are additionally
+	// constrained to be <= 128 bytes in size.
 	Labels map[string]string `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval bool `protobuf:"varint,13,opt,name=require_approval,json=requireApproval,proto3" json:"require_approval,omitempty"`
@@ -2353,9 +2353,9 @@ type Release struct {
 	// Labels are attributes that can be set and used by both the
 	// user and by Google Cloud Deploy. Labels must meet the following
 	// constraints: Each resource is limited to 64 labels. Keys must conform to
-	// the regexp: [a-zA-Z][a-zA-Z0-9_-]{0,62} Values must conform to the regexp:
-	// [a-zA-Z0-9_-]{0,63} Both keys and values are additionally constrained to be
-	// <= 128 bytes in size.
+	// the regexp: `[a-zA-Z][a-zA-Z0-9_-]{0,62}`. Values must conform to the
+	// regexp: `[a-zA-Z0-9_-]{0,63}`. Both keys and values are additionally
+	// constrained to be <= 128 bytes in size.
 	Labels map[string]string `protobuf:"bytes,5,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Output only. Time at which the `Release` was created.
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
@@ -3033,9 +3033,9 @@ type Rollout struct {
 	// Labels are attributes that can be set and used by both the
 	// user and by Google Cloud Deploy. Labels must meet the following
 	// constraints: Each resource is limited to 64 labels. Keys must conform to
-	// the regexp: [a-zA-Z][a-zA-Z0-9_-]{0,62} Values must conform to the regexp:
-	// [a-zA-Z0-9_-]{0,63} Both keys and values are additionally constrained to be
-	// <= 128 bytes in size.
+	// the regexp: `[a-zA-Z][a-zA-Z0-9_-]{0,62}`. Values must conform to the
+	// regexp: `[a-zA-Z0-9_-]{0,63}`. Both keys and values are additionally
+	// constrained to be <= 128 bytes in size.
 	Labels map[string]string `protobuf:"bytes,5,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Output only. Time at which the `Rollout` was created.
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`

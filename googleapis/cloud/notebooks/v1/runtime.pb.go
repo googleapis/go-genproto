@@ -688,7 +688,7 @@ func (x *EncryptionConfig) GetKmsKey() string {
 	return ""
 }
 
-// An Local attached disk resource.
+// A Local attached disk resource.
 type LocalDisk struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -731,8 +731,9 @@ type LocalDisk struct {
 	// in any other format than SCSI. Local SSDs can use either NVME or SCSI. For
 	// performance characteristics of SCSI over NVMe, see Local SSD performance.
 	// Valid values:
-	//     NVME
-	//     SCSI
+	//
+	// * NVME
+	// * SCSI
 	Interface string `protobuf:"bytes,7,opt,name=interface,proto3" json:"interface,omitempty"`
 	// Output only. Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind string `protobuf:"bytes,8,opt,name=kind,proto3" json:"kind,omitempty"`
@@ -741,8 +742,9 @@ type LocalDisk struct {
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If
 	// not specified, the default is to attach the disk in READ_WRITE mode.
 	// Valid values:
-	//     READ_ONLY
-	//     READ_WRITE
+	//
+	// * READ_ONLY
+	// * READ_WRITE
 	Mode string `protobuf:"bytes,10,opt,name=mode,proto3" json:"mode,omitempty"`
 	// Specifies a valid partial or full URL to an existing Persistent Disk
 	// resource.
@@ -750,8 +752,9 @@ type LocalDisk struct {
 	// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not
 	// specified, the default is PERSISTENT.
 	// Valid values:
-	//     PERSISTENT
-	//     SCRATCH
+	//
+	// * PERSISTENT
+	// * SCRATCH
 	Type string `protobuf:"bytes,12,opt,name=type,proto3" json:"type,omitempty"`
 }
 
@@ -1055,7 +1058,7 @@ type RuntimeSoftwareConfig struct {
 	// Runtime will automatically shutdown after idle_shutdown_time.
 	// Default: True
 	IdleShutdown *bool `protobuf:"varint,3,opt,name=idle_shutdown,json=idleShutdown,proto3,oneof" json:"idle_shutdown,omitempty"`
-	// Time in minutes to wait before shuting down runtime. Default: 180 minutes
+	// Time in minutes to wait before shutting down runtime. Default: 180 minutes
 	IdleShutdownTimeout int32 `protobuf:"varint,4,opt,name=idle_shutdown_timeout,json=idleShutdownTimeout,proto3" json:"idle_shutdown_timeout,omitempty"`
 	// Install Nvidia Driver automatically.
 	InstallGpuDriver bool `protobuf:"varint,5,opt,name=install_gpu_driver,json=installGpuDriver,proto3" json:"install_gpu_driver,omitempty"`
@@ -1064,7 +1067,7 @@ type RuntimeSoftwareConfig struct {
 	CustomGpuDriverPath string `protobuf:"bytes,6,opt,name=custom_gpu_driver_path,json=customGpuDriverPath,proto3" json:"custom_gpu_driver_path,omitempty"`
 	// Path to a Bash script that automatically runs after a notebook instance
 	// fully boots up. The path must be a URL or
-	// Cloud Storage path (gs://path-to-file/file-name).
+	// Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript string `protobuf:"bytes,7,opt,name=post_startup_script,json=postStartupScript,proto3" json:"post_startup_script,omitempty"`
 }
 

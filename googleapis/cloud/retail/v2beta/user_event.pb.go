@@ -124,12 +124,12 @@ type UserEvent struct {
 	// * `purchase-complete`
 	//
 	// In a `search` event, this field represents the products returned to the end
-	// user on the current page (the end user may have not finished broswing the
+	// user on the current page (the end user may have not finished browsing the
 	// whole page yet). When a new page is returned to the end user, after
 	// pagination/filtering/ordering even for the same query, a new `search` event
 	// with different
 	// [product_details][google.cloud.retail.v2beta.UserEvent.product_details] is
-	// desired. The end user may have not finished broswing the whole page yet.
+	// desired. The end user may have not finished browsing the whole page yet.
 	ProductDetails []*ProductDetail `protobuf:"bytes,6,rep,name=product_details,json=productDetails,proto3" json:"product_details,omitempty"`
 	// The main completion details related to the event.
 	//
@@ -147,7 +147,7 @@ type UserEvent struct {
 	// at the site by coming to the site directly, or coming through Google
 	// search, and etc.
 	Attributes map[string]*CustomAttribute `protobuf:"bytes,7,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// The id or name of the associated shopping cart. This id is used
+	// The ID or name of the associated shopping cart. This ID is used
 	// to associate multiple items added or present in the cart before purchase.
 	//
 	// This can only be set for `add-to-cart`, `purchase-complete`, or
@@ -233,7 +233,7 @@ type UserEvent struct {
 	// When using the client side event reporting with JavaScript pixel and Google
 	// Tag Manager, this value is filled in automatically.
 	ReferrerUri string `protobuf:"bytes,14,opt,name=referrer_uri,json=referrerUri,proto3" json:"referrer_uri,omitempty"`
-	// A unique id of a web page view.
+	// A unique ID of a web page view.
 	//
 	// This should be kept the same for all user events triggered from the same
 	// pageview. For example, an item detail page view could trigger multiple

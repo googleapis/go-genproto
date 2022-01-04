@@ -432,7 +432,7 @@ func (x *DetectIntentResponse) GetAllowCancellation() bool {
 // Multiple request messages should be sent in order:
 //
 // 1.  The first message must contain
-// [session][google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest.session],
+//     [session][google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest.session],
 //     [query_input][google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest.query_input] plus optionally
 //     [query_params][google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest.query_params]. If the client
 //     wants to receive an audio response, it should also contain
@@ -557,21 +557,29 @@ func (x *StreamingDetectIntentRequest) GetEnablePartialResponse() bool {
 	return false
 }
 
-// The top-level message returned from the `StreamingDetectIntent` method.
+// The top-level message returned from the
+// [StreamingDetectIntent][google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent] method.
 //
-// Multiple response messages can be returned in order:
+// Multiple response messages (N) can be returned in order.
 //
-// 1.  If the input was set to streaming audio, the first one or more messages
-//     contain `recognition_result`. Each `recognition_result` represents a more
-//     complete transcript of what the user said. The last `recognition_result`
-//     has `is_final` set to `true`.
+// The first (N-1) responses set either the `recognition_result` or
+// `detect_intent_response` field, depending on the request:
 //
-// 2.  If `enable_partial_response` is true, the following N messages
-//     (currently 1 <= N <= 4) contain `detect_intent_response`. The first (N-1)
-//     `detect_intent_response`s will have `response_type` set to `PARTIAL`.
-//     The last `detect_intent_response` has `response_type` set to `FINAL`.
-//     If `response_type` is false, response stream only contains
-//     the final `detect_intent_response`.
+// *   If the `StreamingDetectIntentRequest.query_input.audio` field was
+//     set, and the `StreamingDetectIntentRequest.enable_partial_response`
+//     field was false, the `recognition_result` field is populated for each
+//     of the (N-1) responses.
+//     See the [StreamingRecognitionResult][google.cloud.dialogflow.cx.v3.StreamingRecognitionResult] message for details
+//     about the result message sequence.
+//
+// *   If the `StreamingDetectIntentRequest.enable_partial_response` field was
+//     true, the `detect_intent_response` field is populated for each
+//     of the (N-1) responses, where 1 <= N <= 4.
+//     These responses set the [DetectIntentResponse.response_type][google.cloud.dialogflow.cx.v3.DetectIntentResponse.response_type] field
+//     to `PARTIAL`.
+//
+// For the final Nth response message, the `detect_intent_response` is fully
+// populated, and [DetectIntentResponse.response_type][google.cloud.dialogflow.cx.v3.DetectIntentResponse.response_type] is set to `FINAL`.
 type StreamingDetectIntentResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -661,35 +669,39 @@ func (*StreamingDetectIntentResponse_DetectIntentResponse) isStreamingDetectInte
 // that is currently being processed or an indication that this is the end
 // of the single requested utterance.
 //
-// Example:
+// While end-user audio is being processed, Dialogflow sends a series of
+// results. Each result may contain a `transcript` value. A transcript
+// represents a portion of the utterance. While the recognizer is processing
+// audio, transcript values may be interim values or finalized values.
+// Once a transcript is finalized, the `is_final` value is set to true and
+// processing continues for the next transcript.
 //
-// 1.  transcript: "tube"
+// If `StreamingDetectIntentRequest.query_input.audio.config.single_utterance`
+// was true, and the recognizer has completed processing audio,
+// the `message_type` value is set to `END_OF_SINGLE_UTTERANCE and the
+// following (last) result contains the last finalized transcript.
 //
-// 2.  transcript: "to be a"
+// The complete end-user utterance is determined by concatenating the
+// finalized transcript values received for the series of results.
 //
-// 3.  transcript: "to be"
+// In the following example, single utterance is enabled. In the case where
+// single utterance is not enabled, result 7 would not occur.
 //
-// 4.  transcript: "to be or not to be"
-//     is_final: true
+// ```
+// Num | transcript              | message_type            | is_final
+// --- | ----------------------- | ----------------------- | --------
+// 1   | "tube"                  | TRANSCRIPT              | false
+// 2   | "to be a"               | TRANSCRIPT              | false
+// 3   | "to be"                 | TRANSCRIPT              | false
+// 4   | "to be or not to be"    | TRANSCRIPT              | true
+// 5   | "that's"                | TRANSCRIPT              | false
+// 6   | "that is                | TRANSCRIPT              | false
+// 7   | unset                   | END_OF_SINGLE_UTTERANCE | unset
+// 8   | " that is the question" | TRANSCRIPT              | true
+// ```
 //
-// 5.  transcript: " that's"
-//
-// 6.  transcript: " that is"
-//
-// 7.  message_type: `END_OF_SINGLE_UTTERANCE`
-//
-// 8.  transcript: " that is the question"
-//     is_final: true
-//
-// Only two of the responses contain final results (#4 and #8 indicated by
-// `is_final: true`). Concatenating these generates the full transcript: "to be
-// or not to be that is the question".
-//
-// In each response we populate:
-//
-// *  for `TRANSCRIPT`: `transcript` and possibly `is_final`.
-//
-// *  for `END_OF_SINGLE_UTTERANCE`: only `message_type`.
+// Concatenating the finalized transcripts with `is_final` set to true,
+// the complete utterance becomes "to be or not to be that is the question".
 type StreamingRecognitionResult struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1179,6 +1191,7 @@ type QueryResult struct {
 	//	*QueryResult_TriggerIntent
 	//	*QueryResult_Transcript
 	//	*QueryResult_TriggerEvent
+	//	*QueryResult_Dtmf
 	Query isQueryResult_Query `protobuf_oneof:"query"`
 	// The language that was triggered during intent detection.
 	// See [Language
@@ -1311,6 +1324,13 @@ func (x *QueryResult) GetTriggerEvent() string {
 	return ""
 }
 
+func (x *QueryResult) GetDtmf() *DtmfInput {
+	if x, ok := x.GetQuery().(*QueryResult_Dtmf); ok {
+		return x.Dtmf
+	}
+	return nil
+}
+
 func (x *QueryResult) GetLanguageCode() string {
 	if x != nil {
 		return x.LanguageCode
@@ -1420,6 +1440,12 @@ type QueryResult_TriggerEvent struct {
 	TriggerEvent string `protobuf:"bytes,14,opt,name=trigger_event,json=triggerEvent,proto3,oneof"`
 }
 
+type QueryResult_Dtmf struct {
+	// If a [DTMF][DTMFInput] was provided as input, this field will contain
+	// a copy of the [DTMFInput][].
+	Dtmf *DtmfInput `protobuf:"bytes,23,opt,name=dtmf,proto3,oneof"`
+}
+
 func (*QueryResult_Text) isQueryResult_Query() {}
 
 func (*QueryResult_TriggerIntent) isQueryResult_Query() {}
@@ -1427,6 +1453,8 @@ func (*QueryResult_TriggerIntent) isQueryResult_Query() {}
 func (*QueryResult_Transcript) isQueryResult_Query() {}
 
 func (*QueryResult_TriggerEvent) isQueryResult_Query() {}
+
+func (*QueryResult_Dtmf) isQueryResult_Query() {}
 
 // Represents the natural language text to be processed.
 type TextInput struct {
@@ -2502,7 +2530,7 @@ var file_google_cloud_dialogflow_cx_v3_session_proto_rawDesc = []byte{
 	0x6d, 0x66, 0x12, 0x28, 0x0a, 0x0d, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x5f, 0x63,
 	0x6f, 0x64, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0c,
 	0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x42, 0x07, 0x0a, 0x05,
-	0x69, 0x6e, 0x70, 0x75, 0x74, 0x22, 0xc4, 0x07, 0x0a, 0x0b, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52,
+	0x69, 0x6e, 0x70, 0x75, 0x74, 0x22, 0x84, 0x08, 0x0a, 0x0b, 0x51, 0x75, 0x65, 0x72, 0x79, 0x52,
 	0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x14, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x12, 0x4e, 0x0a, 0x0e, 0x74,
 	0x72, 0x69, 0x67, 0x67, 0x65, 0x72, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x0b, 0x20,
@@ -2514,7 +2542,11 @@ var file_google_cloud_dialogflow_cx_v3_session_proto_rawDesc = []byte{
 	0x00, 0x52, 0x0a, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x12, 0x25, 0x0a,
 	0x0d, 0x74, 0x72, 0x69, 0x67, 0x67, 0x65, 0x72, 0x5f, 0x65, 0x76, 0x65, 0x6e, 0x74, 0x18, 0x0e,
 	0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x0c, 0x74, 0x72, 0x69, 0x67, 0x67, 0x65, 0x72, 0x45,
-	0x76, 0x65, 0x6e, 0x74, 0x12, 0x23, 0x0a, 0x0d, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65,
+	0x76, 0x65, 0x6e, 0x74, 0x12, 0x3e, 0x0a, 0x04, 0x64, 0x74, 0x6d, 0x66, 0x18, 0x17, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x28, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75,
+	0x64, 0x2e, 0x64, 0x69, 0x61, 0x6c, 0x6f, 0x67, 0x66, 0x6c, 0x6f, 0x77, 0x2e, 0x63, 0x78, 0x2e,
+	0x76, 0x33, 0x2e, 0x44, 0x74, 0x6d, 0x66, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x48, 0x00, 0x52, 0x04,
+	0x64, 0x74, 0x6d, 0x66, 0x12, 0x23, 0x0a, 0x0d, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65,
 	0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6c, 0x61, 0x6e,
 	0x67, 0x75, 0x61, 0x67, 0x65, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x37, 0x0a, 0x0a, 0x70, 0x61, 0x72,
 	0x61, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e,
@@ -2869,41 +2901,42 @@ var file_google_cloud_dialogflow_cx_v3_session_proto_depIdxs = []int32{
 	13, // 21: google.cloud.dialogflow.cx.v3.QueryInput.audio:type_name -> google.cloud.dialogflow.cx.v3.AudioInput
 	14, // 22: google.cloud.dialogflow.cx.v3.QueryInput.event:type_name -> google.cloud.dialogflow.cx.v3.EventInput
 	15, // 23: google.cloud.dialogflow.cx.v3.QueryInput.dtmf:type_name -> google.cloud.dialogflow.cx.v3.DtmfInput
-	28, // 24: google.cloud.dialogflow.cx.v3.QueryResult.parameters:type_name -> google.protobuf.Struct
-	29, // 25: google.cloud.dialogflow.cx.v3.QueryResult.response_messages:type_name -> google.cloud.dialogflow.cx.v3.ResponseMessage
-	30, // 26: google.cloud.dialogflow.cx.v3.QueryResult.webhook_statuses:type_name -> google.rpc.Status
-	28, // 27: google.cloud.dialogflow.cx.v3.QueryResult.webhook_payloads:type_name -> google.protobuf.Struct
-	31, // 28: google.cloud.dialogflow.cx.v3.QueryResult.current_page:type_name -> google.cloud.dialogflow.cx.v3.Page
-	32, // 29: google.cloud.dialogflow.cx.v3.QueryResult.intent:type_name -> google.cloud.dialogflow.cx.v3.Intent
-	16, // 30: google.cloud.dialogflow.cx.v3.QueryResult.match:type_name -> google.cloud.dialogflow.cx.v3.Match
-	28, // 31: google.cloud.dialogflow.cx.v3.QueryResult.diagnostic_info:type_name -> google.protobuf.Struct
-	21, // 32: google.cloud.dialogflow.cx.v3.QueryResult.sentiment_analysis_result:type_name -> google.cloud.dialogflow.cx.v3.SentimentAnalysisResult
-	33, // 33: google.cloud.dialogflow.cx.v3.AudioInput.config:type_name -> google.cloud.dialogflow.cx.v3.InputAudioConfig
-	32, // 34: google.cloud.dialogflow.cx.v3.Match.intent:type_name -> google.cloud.dialogflow.cx.v3.Intent
-	28, // 35: google.cloud.dialogflow.cx.v3.Match.parameters:type_name -> google.protobuf.Struct
-	2,  // 36: google.cloud.dialogflow.cx.v3.Match.match_type:type_name -> google.cloud.dialogflow.cx.v3.Match.MatchType
-	8,  // 37: google.cloud.dialogflow.cx.v3.MatchIntentRequest.query_params:type_name -> google.cloud.dialogflow.cx.v3.QueryParameters
-	9,  // 38: google.cloud.dialogflow.cx.v3.MatchIntentRequest.query_input:type_name -> google.cloud.dialogflow.cx.v3.QueryInput
-	16, // 39: google.cloud.dialogflow.cx.v3.MatchIntentResponse.matches:type_name -> google.cloud.dialogflow.cx.v3.Match
-	31, // 40: google.cloud.dialogflow.cx.v3.MatchIntentResponse.current_page:type_name -> google.cloud.dialogflow.cx.v3.Page
-	17, // 41: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.match_intent_request:type_name -> google.cloud.dialogflow.cx.v3.MatchIntentRequest
-	16, // 42: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.match:type_name -> google.cloud.dialogflow.cx.v3.Match
-	23, // 43: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
-	10, // 44: google.cloud.dialogflow.cx.v3.FulfillIntentResponse.query_result:type_name -> google.cloud.dialogflow.cx.v3.QueryResult
-	23, // 45: google.cloud.dialogflow.cx.v3.FulfillIntentResponse.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
-	3,  // 46: google.cloud.dialogflow.cx.v3.Sessions.DetectIntent:input_type -> google.cloud.dialogflow.cx.v3.DetectIntentRequest
-	5,  // 47: google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent:input_type -> google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest
-	17, // 48: google.cloud.dialogflow.cx.v3.Sessions.MatchIntent:input_type -> google.cloud.dialogflow.cx.v3.MatchIntentRequest
-	19, // 49: google.cloud.dialogflow.cx.v3.Sessions.FulfillIntent:input_type -> google.cloud.dialogflow.cx.v3.FulfillIntentRequest
-	4,  // 50: google.cloud.dialogflow.cx.v3.Sessions.DetectIntent:output_type -> google.cloud.dialogflow.cx.v3.DetectIntentResponse
-	6,  // 51: google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent:output_type -> google.cloud.dialogflow.cx.v3.StreamingDetectIntentResponse
-	18, // 52: google.cloud.dialogflow.cx.v3.Sessions.MatchIntent:output_type -> google.cloud.dialogflow.cx.v3.MatchIntentResponse
-	20, // 53: google.cloud.dialogflow.cx.v3.Sessions.FulfillIntent:output_type -> google.cloud.dialogflow.cx.v3.FulfillIntentResponse
-	50, // [50:54] is the sub-list for method output_type
-	46, // [46:50] is the sub-list for method input_type
-	46, // [46:46] is the sub-list for extension type_name
-	46, // [46:46] is the sub-list for extension extendee
-	0,  // [0:46] is the sub-list for field type_name
+	15, // 24: google.cloud.dialogflow.cx.v3.QueryResult.dtmf:type_name -> google.cloud.dialogflow.cx.v3.DtmfInput
+	28, // 25: google.cloud.dialogflow.cx.v3.QueryResult.parameters:type_name -> google.protobuf.Struct
+	29, // 26: google.cloud.dialogflow.cx.v3.QueryResult.response_messages:type_name -> google.cloud.dialogflow.cx.v3.ResponseMessage
+	30, // 27: google.cloud.dialogflow.cx.v3.QueryResult.webhook_statuses:type_name -> google.rpc.Status
+	28, // 28: google.cloud.dialogflow.cx.v3.QueryResult.webhook_payloads:type_name -> google.protobuf.Struct
+	31, // 29: google.cloud.dialogflow.cx.v3.QueryResult.current_page:type_name -> google.cloud.dialogflow.cx.v3.Page
+	32, // 30: google.cloud.dialogflow.cx.v3.QueryResult.intent:type_name -> google.cloud.dialogflow.cx.v3.Intent
+	16, // 31: google.cloud.dialogflow.cx.v3.QueryResult.match:type_name -> google.cloud.dialogflow.cx.v3.Match
+	28, // 32: google.cloud.dialogflow.cx.v3.QueryResult.diagnostic_info:type_name -> google.protobuf.Struct
+	21, // 33: google.cloud.dialogflow.cx.v3.QueryResult.sentiment_analysis_result:type_name -> google.cloud.dialogflow.cx.v3.SentimentAnalysisResult
+	33, // 34: google.cloud.dialogflow.cx.v3.AudioInput.config:type_name -> google.cloud.dialogflow.cx.v3.InputAudioConfig
+	32, // 35: google.cloud.dialogflow.cx.v3.Match.intent:type_name -> google.cloud.dialogflow.cx.v3.Intent
+	28, // 36: google.cloud.dialogflow.cx.v3.Match.parameters:type_name -> google.protobuf.Struct
+	2,  // 37: google.cloud.dialogflow.cx.v3.Match.match_type:type_name -> google.cloud.dialogflow.cx.v3.Match.MatchType
+	8,  // 38: google.cloud.dialogflow.cx.v3.MatchIntentRequest.query_params:type_name -> google.cloud.dialogflow.cx.v3.QueryParameters
+	9,  // 39: google.cloud.dialogflow.cx.v3.MatchIntentRequest.query_input:type_name -> google.cloud.dialogflow.cx.v3.QueryInput
+	16, // 40: google.cloud.dialogflow.cx.v3.MatchIntentResponse.matches:type_name -> google.cloud.dialogflow.cx.v3.Match
+	31, // 41: google.cloud.dialogflow.cx.v3.MatchIntentResponse.current_page:type_name -> google.cloud.dialogflow.cx.v3.Page
+	17, // 42: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.match_intent_request:type_name -> google.cloud.dialogflow.cx.v3.MatchIntentRequest
+	16, // 43: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.match:type_name -> google.cloud.dialogflow.cx.v3.Match
+	23, // 44: google.cloud.dialogflow.cx.v3.FulfillIntentRequest.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
+	10, // 45: google.cloud.dialogflow.cx.v3.FulfillIntentResponse.query_result:type_name -> google.cloud.dialogflow.cx.v3.QueryResult
+	23, // 46: google.cloud.dialogflow.cx.v3.FulfillIntentResponse.output_audio_config:type_name -> google.cloud.dialogflow.cx.v3.OutputAudioConfig
+	3,  // 47: google.cloud.dialogflow.cx.v3.Sessions.DetectIntent:input_type -> google.cloud.dialogflow.cx.v3.DetectIntentRequest
+	5,  // 48: google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent:input_type -> google.cloud.dialogflow.cx.v3.StreamingDetectIntentRequest
+	17, // 49: google.cloud.dialogflow.cx.v3.Sessions.MatchIntent:input_type -> google.cloud.dialogflow.cx.v3.MatchIntentRequest
+	19, // 50: google.cloud.dialogflow.cx.v3.Sessions.FulfillIntent:input_type -> google.cloud.dialogflow.cx.v3.FulfillIntentRequest
+	4,  // 51: google.cloud.dialogflow.cx.v3.Sessions.DetectIntent:output_type -> google.cloud.dialogflow.cx.v3.DetectIntentResponse
+	6,  // 52: google.cloud.dialogflow.cx.v3.Sessions.StreamingDetectIntent:output_type -> google.cloud.dialogflow.cx.v3.StreamingDetectIntentResponse
+	18, // 53: google.cloud.dialogflow.cx.v3.Sessions.MatchIntent:output_type -> google.cloud.dialogflow.cx.v3.MatchIntentResponse
+	20, // 54: google.cloud.dialogflow.cx.v3.Sessions.FulfillIntent:output_type -> google.cloud.dialogflow.cx.v3.FulfillIntentResponse
+	51, // [51:55] is the sub-list for method output_type
+	47, // [47:51] is the sub-list for method input_type
+	47, // [47:47] is the sub-list for extension type_name
+	47, // [47:47] is the sub-list for extension extendee
+	0,  // [0:47] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_dialogflow_cx_v3_session_proto_init() }
@@ -3164,6 +3197,7 @@ func file_google_cloud_dialogflow_cx_v3_session_proto_init() {
 		(*QueryResult_TriggerIntent)(nil),
 		(*QueryResult_Transcript)(nil),
 		(*QueryResult_TriggerEvent)(nil),
+		(*QueryResult_Dtmf)(nil),
 	}
 	file_google_cloud_dialogflow_cx_v3_session_proto_msgTypes[15].OneofWrappers = []interface{}{
 		(*MatchIntentResponse_Text)(nil),

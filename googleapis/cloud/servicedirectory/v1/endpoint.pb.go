@@ -45,7 +45,7 @@ type Endpoint struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Immutable. The resource name for the endpoint in the format
-	// 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+	// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. An IPv4 or IPv6 address. Service Directory will reject bad
 	// addresses like:

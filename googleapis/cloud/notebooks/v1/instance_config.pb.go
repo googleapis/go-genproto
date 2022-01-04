@@ -44,7 +44,7 @@ type InstanceConfig struct {
 	// Cron expression in UTC timezone, used to schedule instance auto upgrade.
 	// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
 	NotebookUpgradeSchedule string `protobuf:"bytes,1,opt,name=notebook_upgrade_schedule,json=notebookUpgradeSchedule,proto3" json:"notebook_upgrade_schedule,omitempty"`
-	// Verifies core internal services are running. More info: go/notebooks-health
+	// Verifies core internal services are running.
 	EnableHealthMonitoring bool `protobuf:"varint,2,opt,name=enable_health_monitoring,json=enableHealthMonitoring,proto3" json:"enable_health_monitoring,omitempty"`
 }
 

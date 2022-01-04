@@ -412,10 +412,12 @@ type RouteModifiers struct {
 	// will be given to routes not containing indoor navigation.
 	// Applies only to the `WALK` travel mode.
 	AvoidIndoor bool `protobuf:"varint,4,opt,name=avoid_indoor,json=avoidIndoor,proto3" json:"avoid_indoor,omitempty"`
-	// Optional. Specifies the vehicle information.
+	// Specifies the vehicle information.
 	VehicleInfo *VehicleInfo `protobuf:"bytes,5,opt,name=vehicle_info,json=vehicleInfo,proto3" json:"vehicle_info,omitempty"`
 	// Encapsulates information about toll passes.
-	// TollPass is unset means no available pass.
+	// If toll passes are provided, the API tries to return the pass price. If
+	// toll passes are not provided, the API treats the toll pass as unknown and
+	// tries to return the cash price.
 	// Applies only to the DRIVE and TWO_WHEELER travel modes.
 	TollPasses []TollPass `protobuf:"varint,6,rep,packed,name=toll_passes,json=tollPasses,proto3,enum=google.maps.routes.v1.TollPass" json:"toll_passes,omitempty"`
 }

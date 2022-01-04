@@ -625,7 +625,7 @@ type Instance struct {
 	Environment isInstance_Environment `protobuf_oneof:"environment"`
 	// Path to a Bash script that automatically runs after a notebook instance
 	// fully boots up. The path must be a URL or
-	// Cloud Storage path (gs://path-to-file/file-name).
+	// Cloud Storage path (`gs://path-to-file/file-name`).
 	PostStartupScript string `protobuf:"bytes,4,opt,name=post_startup_script,json=postStartupScript,proto3" json:"post_startup_script,omitempty"`
 	// Output only. The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri string `protobuf:"bytes,5,opt,name=proxy_uri,json=proxyUri,proto3" json:"proxy_uri,omitempty"`
@@ -702,8 +702,8 @@ type Instance struct {
 	// Output only. Attached disks to notebook instance.
 	Disks []*Instance_Disk `protobuf:"bytes,28,rep,name=disks,proto3" json:"disks,omitempty"`
 	// Optional. Shielded VM configuration.
-	// [Images using supported Shielded VM features]
-	// (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	// [Images using supported Shielded VM
+	// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 	ShieldedInstanceConfig *Instance_ShieldedInstanceConfig `protobuf:"bytes,30,opt,name=shielded_instance_config,json=shieldedInstanceConfig,proto3" json:"shielded_instance_config,omitempty"`
 	// If true, no public IP will be assigned to this instance.
 	NoPublicIp bool `protobuf:"varint,17,opt,name=no_public_ip,json=noPublicIp,proto3" json:"no_public_ip,omitempty"`
@@ -1135,8 +1135,9 @@ type Instance_Disk struct {
 	// SCSI. For performance characteristics of SCSI over NVMe, see Local SSD
 	// performance.
 	// Valid values:
-	//     NVME
-	//     SCSI
+	//
+	// * NVME
+	// * SCSI
 	Interface string `protobuf:"bytes,7,opt,name=interface,proto3" json:"interface,omitempty"`
 	// Type of the resource. Always compute#attachedDisk for attached
 	// disks.
@@ -1148,16 +1149,18 @@ type Instance_Disk struct {
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If
 	// not specified, the default is to attach the disk in READ_WRITE mode.
 	// Valid values:
-	//     READ_ONLY
-	//     READ_WRITE
+	//
+	// * READ_ONLY
+	// * READ_WRITE
 	Mode string `protobuf:"bytes,10,opt,name=mode,proto3" json:"mode,omitempty"`
 	// Indicates a valid partial or full URL to an existing Persistent Disk
 	// resource.
 	Source string `protobuf:"bytes,11,opt,name=source,proto3" json:"source,omitempty"`
 	// Indicates the type of the disk, either SCRATCH or PERSISTENT.
 	// Valid values:
-	//     PERSISTENT
-	//     SCRATCH
+	//
+	// * PERSISTENT
+	// * SCRATCH
 	Type string `protobuf:"bytes,12,opt,name=type,proto3" json:"type,omitempty"`
 }
 
@@ -1497,12 +1500,13 @@ type Instance_Disk_GuestOsFeature struct {
 	// The ID of a supported feature. Read  Enabling guest operating system
 	// features to see a list of available options.
 	// Valid values:
-	//     FEATURE_TYPE_UNSPECIFIED
-	//     MULTI_IP_SUBNET
-	//     SECURE_BOOT
-	//     UEFI_COMPATIBLE
-	//     VIRTIO_SCSI_MULTIQUEUE
-	//     WINDOWS
+	//
+	// * FEATURE_TYPE_UNSPECIFIED
+	// * MULTI_IP_SUBNET
+	// * SECURE_BOOT
+	// * UEFI_COMPATIBLE
+	// * VIRTIO_SCSI_MULTIQUEUE
+	// * WINDOWS
 	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 }
 

@@ -413,8 +413,8 @@ type ExecutionTemplate struct {
 	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Path to the notebook file to execute.
 	// Must be in a Google Cloud Storage bucket.
-	// Format: gs://{project_id}/{folder}/{notebook_file_name}
-	// Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+	// Format: `gs://{project_id}/{folder}/{notebook_file_name}`
+	// Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb`
 	InputNotebookFile string `protobuf:"bytes,5,opt,name=input_notebook_file,json=inputNotebookFile,proto3" json:"input_notebook_file,omitempty"`
 	// Container Image URI to a DLVM
 	// Example: 'gcr.io/deeplearning-platform-release/base-cu100'
@@ -423,14 +423,14 @@ type ExecutionTemplate struct {
 	ContainerImageUri string `protobuf:"bytes,6,opt,name=container_image_uri,json=containerImageUri,proto3" json:"container_image_uri,omitempty"`
 	// Path to the notebook folder to write to.
 	// Must be in a Google Cloud Storage bucket path.
-	// Format: gs://{project_id}/{folder}
-	// Ex: gs://notebook_user/scheduled_notebooks
+	// Format: `gs://{project_id}/{folder}`
+	// Ex: `gs://notebook_user/scheduled_notebooks`
 	OutputNotebookFolder string `protobuf:"bytes,7,opt,name=output_notebook_folder,json=outputNotebookFolder,proto3" json:"output_notebook_folder,omitempty"`
 	// Parameters to be overridden in the notebook during execution.
 	// Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on
 	// how to specifying parameters in the input notebook and pass them here
 	// in an YAML file.
-	// Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+	// Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
 	ParamsYamlFile string `protobuf:"bytes,8,opt,name=params_yaml_file,json=paramsYamlFile,proto3" json:"params_yaml_file,omitempty"`
 	// Parameters used within the 'input_notebook_file' notebook.
 	Parameters string `protobuf:"bytes,9,opt,name=parameters,proto3" json:"parameters,omitempty"`
@@ -592,7 +592,7 @@ type Execution struct {
 	// execute metadata including name, hardware spec, region, labels, etc.
 	ExecutionTemplate *ExecutionTemplate `protobuf:"bytes,1,opt,name=execution_template,json=executionTemplate,proto3" json:"execution_template,omitempty"`
 	// Output only. The resource name of the execute. Format:
-	// `projects/{project_id}/locations/{location}/execution/{execution_id}
+	// `projects/{project_id}/locations/{location}/execution/{execution_id}`
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. Name used for UI purposes.
 	// Name can only contain alphanumeric characters and underscores '_'.
@@ -774,7 +774,7 @@ type ExecutionTemplate_DataprocParameters struct {
 	unknownFields protoimpl.UnknownFields
 
 	// URI for cluster used to run Dataproc execution.
-	// Format: 'projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}
+	// Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
 	Cluster string `protobuf:"bytes,1,opt,name=cluster,proto3" json:"cluster,omitempty"`
 }
 

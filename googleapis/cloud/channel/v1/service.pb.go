@@ -2150,6 +2150,9 @@ type ChangeParametersRequest struct {
 	// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. Entitlement parameters to update. You can only change editable parameters.
+	//
+	// To view the available Parameters for a request, refer to the
+	// [Offer.parameter_definitions][google.cloud.channel.v1.Offer.parameter_definitions] from the desired offer.
 	Parameters []*Parameter `protobuf:"bytes,2,rep,name=parameters,proto3" json:"parameters,omitempty"`
 	// Optional. You can specify an optional unique request ID, and if you need to retry
 	// your request, the server will know to ignore the request if it's complete.
@@ -2319,7 +2322,8 @@ type ChangeOfferRequest struct {
 	// Required. New Offer.
 	// Format: accounts/{account_id}/offers/{offer_id}.
 	Offer string `protobuf:"bytes,2,opt,name=offer,proto3" json:"offer,omitempty"`
-	// Optional. Parameters needed to purchase the Offer.
+	// Optional. Parameters needed to purchase the Offer. To view the available Parameters
+	// refer to the [Offer.parameter_definitions][google.cloud.channel.v1.Offer.parameter_definitions] from the desired offer.
 	Parameters []*Parameter `protobuf:"bytes,3,rep,name=parameters,proto3" json:"parameters,omitempty"`
 	// Optional. Purchase order id provided by the reseller.
 	PurchaseOrderId string `protobuf:"bytes,5,opt,name=purchase_order_id,json=purchaseOrderId,proto3" json:"purchase_order_id,omitempty"`

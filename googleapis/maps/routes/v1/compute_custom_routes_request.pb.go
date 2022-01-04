@@ -49,10 +49,8 @@ type ComputeCustomRoutesRequest struct {
 	Destination *Waypoint `protobuf:"bytes,2,opt,name=destination,proto3" json:"destination,omitempty"`
 	// Optional. A set of waypoints along the route (excluding terminal points), for either
 	// stopping at or passing by. Up to 25 intermediate waypoints are supported.
-	// Intermediates are not supported in ComputeCustomRoutes Alpha.
 	Intermediates []*Waypoint `protobuf:"bytes,3,rep,name=intermediates,proto3" json:"intermediates,omitempty"`
-	// Optional. Specifies the mode of transportation. Only DRIVE is supported in
-	// ComputeCustomRoutes Alpha.
+	// Optional. Specifies the mode of transportation. Only DRIVE is supported now.
 	TravelMode RouteTravelMode `protobuf:"varint,4,opt,name=travel_mode,json=travelMode,proto3,enum=google.maps.routes.v1.RouteTravelMode" json:"travel_mode,omitempty"`
 	// Optional. Specifies how to compute the route. The server attempts to use the selected
 	// routing preference to compute the route. If the routing preference results

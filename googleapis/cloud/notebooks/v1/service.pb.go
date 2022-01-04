@@ -1942,9 +1942,10 @@ type ListSchedulesResponse struct {
 	// Page token that can be used to continue listing from the last result in the
 	// next list call.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// Schedules that could not be reached. For example,
-	// ['projects/{project_id}/location/{location}/schedules/monthly_digest',
-	//  'projects/{project_id}/location/{location}/schedules/weekly_sentiment'].
+	// Schedules that could not be reached. For example:
+	//
+	//     ['projects/{project_id}/location/{location}/schedules/monthly_digest',
+	//      'projects/{project_id}/location/{location}/schedules/weekly_sentiment']
 	Unreachable []string `protobuf:"bytes,3,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
 }
 
@@ -2235,7 +2236,7 @@ type ListExecutionsRequest struct {
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Filter applied to resulting executions. Currently only supports filtering
 	// executions by a specified schedule_id.
-	// Format: "schedule_id=<Schedule_ID>"
+	// Format: `schedule_id=<Schedule_ID>`
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Sort by field.
 	OrderBy string `protobuf:"bytes,5,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
@@ -2319,9 +2320,10 @@ type ListExecutionsResponse struct {
 	// Page token that can be used to continue listing from the last result in the
 	// next list call.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// Executions IDs that could not be reached. For example,
-	// ['projects/{project_id}/location/{location}/executions/imagenet_test1',
-	//  'projects/{project_id}/location/{location}/executions/classifier_train1'].
+	// Executions IDs that could not be reached. For example:
+	//
+	//     ['projects/{project_id}/location/{location}/executions/imagenet_test1',
+	//      'projects/{project_id}/location/{location}/executions/classifier_train1']
 	Unreachable []string `protobuf:"bytes,3,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
 }
 
