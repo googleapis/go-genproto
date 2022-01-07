@@ -2209,10 +2209,22 @@ type JobScheduling struct {
 	// 4 times within 10 minute window.
 	//
 	// Maximum value is 10.
+	//
+	// **Note:** Currently, this restartable job option is
+	// not supported in Dataproc
+	// [workflow
+	// template](https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template)
+	// jobs.
 	MaxFailuresPerHour int32 `protobuf:"varint,1,opt,name=max_failures_per_hour,json=maxFailuresPerHour,proto3" json:"max_failures_per_hour,omitempty"`
 	// Optional. Maximum number of times in total a driver may be restarted as a result of
 	// driver exiting with non-zero code before job is reported failed.
 	// Maximum value is 240.
+	//
+	// **Note:** Currently, this restartable job option is
+	// not supported in Dataproc
+	// [workflow
+	// template](https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template)
+	// jobs.
 	MaxFailuresTotal int32 `protobuf:"varint,2,opt,name=max_failures_total,json=maxFailuresTotal,proto3" json:"max_failures_total,omitempty"`
 }
 
