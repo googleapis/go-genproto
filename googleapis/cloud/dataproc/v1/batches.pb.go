@@ -125,8 +125,7 @@ type CreateBatchRequest struct {
 	// Optional. The ID to use for the batch, which will become the final component of
 	// the batch's resource name.
 	//
-	// This value must be 4-63 characters. Valid characters
-	// are /[a-z][0-9]-/.
+	// This value must be 4-63 characters. Valid characters are `/[a-z][0-9]-/`.
 	BatchId string `protobuf:"bytes,3,opt,name=batch_id,json=batchId,proto3" json:"batch_id,omitempty"`
 	// Optional. A unique ID used to identify the request. If the service
 	// receives two
