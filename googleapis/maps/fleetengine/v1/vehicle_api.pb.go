@@ -192,14 +192,14 @@ type CreateVehicleRequest struct {
 	// this call is a member.
 	Parent string `protobuf:"bytes,3,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. Unique Vehicle ID; must be unique per provider.
-	// Subject to the following normalization and restrictions:
+	// Subject to the following restrictions:
 	//
-	// 1. IDs must be valid Unicode strings.
+	// 1. IDs must not contain any of the following ASCII characters: '/', ':',
+	// '?', or '#'.
 	// 2. IDs are limited to a maximum length of 64 characters.
-	// 3. IDs will be normalized according to Unicode Normalization Form C
+	// 3. IDs must be valid Unicode strings.
+	// 4. IDs must be normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
-	// 4. IDs may not contain any of the following ASCII characters: '/', ':',
-	// '\\', '?', or '#'.
 	VehicleId string `protobuf:"bytes,4,opt,name=vehicle_id,json=vehicleId,proto3" json:"vehicle_id,omitempty"`
 	// Required. The Vehicle entity to create. When creating a Vehicle, the following
 	// fields are required:
@@ -783,15 +783,6 @@ type SearchVehiclesRequest struct {
 	// The default value is `false`.
 	IncludeBackToBack bool `protobuf:"varint,18,opt,name=include_back_to_back,json=includeBackToBack,proto3" json:"include_back_to_back,omitempty"`
 	// Indicates the trip associated with this `SearchVehicleRequest`.
-	// Unique Trip ID; must be unique per provider.
-	// Subject to the following normalization and restrictions:
-	//
-	// 1. IDs must be valid Unicode strings.
-	// 2. IDs are limited to a maximum length of 64 characters.
-	// 3. IDs will be normalized according to Unicode Normalization Form C
-	// (http://www.unicode.org/reports/tr15/).
-	// 4. IDs may not contain any of the following ASCII characters: '/', ':',
-	// '\\', '?', or '#'.
 	TripId string `protobuf:"bytes,19,opt,name=trip_id,json=tripId,proto3" json:"trip_id,omitempty"`
 }
 
