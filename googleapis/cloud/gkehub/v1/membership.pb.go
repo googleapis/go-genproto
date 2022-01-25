@@ -99,7 +99,7 @@ func (x MembershipState_Code) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use MembershipState_Code.Descriptor instead.
 func (MembershipState_Code) EnumDescriptor() ([]byte, []int) {
-	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{4, 0}
+	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{7, 0}
 }
 
 // Membership contains information about a member cluster.
@@ -308,6 +308,15 @@ type MembershipEndpoint struct {
 	GkeCluster *GkeCluster `protobuf:"bytes,1,opt,name=gke_cluster,json=gkeCluster,proto3" json:"gke_cluster,omitempty"`
 	// Output only. Useful Kubernetes-specific metadata.
 	KubernetesMetadata *KubernetesMetadata `protobuf:"bytes,2,opt,name=kubernetes_metadata,json=kubernetesMetadata,proto3" json:"kubernetes_metadata,omitempty"`
+	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly
+	// registered cluster, in the steady state. These resources:
+	//
+	//   * Ensure that the cluster is exclusively registered to one and only one
+	//     Hub Membership.
+	//   * Propagate Workload Pool Information available in the Membership
+	//     Authority field.
+	//   * Ensure proper initial configuration of default Hub Features.
+	KubernetesResource *KubernetesResource `protobuf:"bytes,3,opt,name=kubernetes_resource,json=kubernetesResource,proto3" json:"kubernetes_resource,omitempty"`
 }
 
 func (x *MembershipEndpoint) Reset() {
@@ -356,6 +365,247 @@ func (x *MembershipEndpoint) GetKubernetesMetadata() *KubernetesMetadata {
 	return nil
 }
 
+func (x *MembershipEndpoint) GetKubernetesResource() *KubernetesResource {
+	if x != nil {
+		return x.KubernetesResource
+	}
+	return nil
+}
+
+// KubernetesResource contains the YAML manifests and configuration for
+// Membership Kubernetes resources in the cluster. After CreateMembership or
+// UpdateMembership, these resources should be re-applied in the cluster.
+type KubernetesResource struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Input only. The YAML representation of the Membership CR. This field is ignored for GKE
+	// clusters where Hub can read the CR directly.
+	//
+	// Callers should provide the CR that is currently present in the cluster
+	// during CreateMembership or UpdateMembership, or leave this field empty if
+	// none exists. The CR manifest is used to validate the cluster has not been
+	// registered with another Membership.
+	MembershipCrManifest string `protobuf:"bytes,1,opt,name=membership_cr_manifest,json=membershipCrManifest,proto3" json:"membership_cr_manifest,omitempty"`
+	// Output only. Additional Kubernetes resources that need to be applied to the cluster
+	// after Membership creation, and after every update.
+	//
+	// This field is only populated in the Membership returned from a successful
+	// long-running operation from CreateMembership or UpdateMembership. It is not
+	// populated during normal GetMembership or ListMemberships requests. To get
+	// the resource manifest after the initial registration, the caller should
+	// make a UpdateMembership call with an empty field mask.
+	MembershipResources []*ResourceManifest `protobuf:"bytes,2,rep,name=membership_resources,json=membershipResources,proto3" json:"membership_resources,omitempty"`
+	// Output only. The Kubernetes resources for installing the GKE Connect agent
+	//
+	// This field is only populated in the Membership returned from a successful
+	// long-running operation from CreateMembership or UpdateMembership. It is not
+	// populated during normal GetMembership or ListMemberships requests. To get
+	// the resource manifest after the initial registration, the caller should
+	// make a UpdateMembership call with an empty field mask.
+	ConnectResources []*ResourceManifest `protobuf:"bytes,3,rep,name=connect_resources,json=connectResources,proto3" json:"connect_resources,omitempty"`
+	// Optional. Options for Kubernetes resource generation.
+	ResourceOptions *ResourceOptions `protobuf:"bytes,4,opt,name=resource_options,json=resourceOptions,proto3" json:"resource_options,omitempty"`
+}
+
+func (x *KubernetesResource) Reset() {
+	*x = KubernetesResource{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *KubernetesResource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*KubernetesResource) ProtoMessage() {}
+
+func (x *KubernetesResource) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use KubernetesResource.ProtoReflect.Descriptor instead.
+func (*KubernetesResource) Descriptor() ([]byte, []int) {
+	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *KubernetesResource) GetMembershipCrManifest() string {
+	if x != nil {
+		return x.MembershipCrManifest
+	}
+	return ""
+}
+
+func (x *KubernetesResource) GetMembershipResources() []*ResourceManifest {
+	if x != nil {
+		return x.MembershipResources
+	}
+	return nil
+}
+
+func (x *KubernetesResource) GetConnectResources() []*ResourceManifest {
+	if x != nil {
+		return x.ConnectResources
+	}
+	return nil
+}
+
+func (x *KubernetesResource) GetResourceOptions() *ResourceOptions {
+	if x != nil {
+		return x.ResourceOptions
+	}
+	return nil
+}
+
+// ResourceOptions represent options for Kubernetes resource generation.
+type ResourceOptions struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Optional. The Connect agent version to use for connect_resources. Defaults to the
+	// latest GKE Connect version. The version must be a currently supported
+	// version, obsolete versions will be rejected.
+	ConnectVersion string `protobuf:"bytes,1,opt,name=connect_version,json=connectVersion,proto3" json:"connect_version,omitempty"`
+	// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for
+	// CustomResourceDefinition resources.
+	// This option should be set for clusters with Kubernetes apiserver versions
+	// <1.16.
+	V1Beta1Crd bool `protobuf:"varint,2,opt,name=v1beta1_crd,json=v1beta1Crd,proto3" json:"v1beta1_crd,omitempty"`
+	// Optional. Major version of the Kubernetes cluster. This is only used to determine
+	// which version to use for the CustomResourceDefinition resources,
+	// `apiextensions/v1beta1` or`apiextensions/v1`.
+	K8SVersion string `protobuf:"bytes,3,opt,name=k8s_version,json=k8sVersion,proto3" json:"k8s_version,omitempty"`
+}
+
+func (x *ResourceOptions) Reset() {
+	*x = ResourceOptions{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ResourceOptions) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResourceOptions) ProtoMessage() {}
+
+func (x *ResourceOptions) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResourceOptions.ProtoReflect.Descriptor instead.
+func (*ResourceOptions) Descriptor() ([]byte, []int) {
+	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ResourceOptions) GetConnectVersion() string {
+	if x != nil {
+		return x.ConnectVersion
+	}
+	return ""
+}
+
+func (x *ResourceOptions) GetV1Beta1Crd() bool {
+	if x != nil {
+		return x.V1Beta1Crd
+	}
+	return false
+}
+
+func (x *ResourceOptions) GetK8SVersion() string {
+	if x != nil {
+		return x.K8SVersion
+	}
+	return ""
+}
+
+// ResourceManifest represents a single Kubernetes resource to be applied to
+// the cluster.
+type ResourceManifest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// YAML manifest of the resource.
+	Manifest string `protobuf:"bytes,1,opt,name=manifest,proto3" json:"manifest,omitempty"`
+	// Whether the resource provided in the manifest is `cluster_scoped`.
+	// If unset, the manifest is assumed to be namespace scoped.
+	//
+	// This field is used for REST mapping when applying the resource in a
+	// cluster.
+	ClusterScoped bool `protobuf:"varint,2,opt,name=cluster_scoped,json=clusterScoped,proto3" json:"cluster_scoped,omitempty"`
+}
+
+func (x *ResourceManifest) Reset() {
+	*x = ResourceManifest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ResourceManifest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResourceManifest) ProtoMessage() {}
+
+func (x *ResourceManifest) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResourceManifest.ProtoReflect.Descriptor instead.
+func (*ResourceManifest) Descriptor() ([]byte, []int) {
+	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ResourceManifest) GetManifest() string {
+	if x != nil {
+		return x.Manifest
+	}
+	return ""
+}
+
+func (x *ResourceManifest) GetClusterScoped() bool {
+	if x != nil {
+		return x.ClusterScoped
+	}
+	return false
+}
+
 // GkeCluster contains information specific to GKE clusters.
 type GkeCluster struct {
 	state         protoimpl.MessageState
@@ -364,7 +614,7 @@ type GkeCluster struct {
 
 	// Immutable. Self-link of the GCP resource for the GKE cluster. For example:
 	//
-	//     //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+	// //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
 	//
 	// Zonal clusters are also supported.
 	ResourceLink string `protobuf:"bytes,1,opt,name=resource_link,json=resourceLink,proto3" json:"resource_link,omitempty"`
@@ -373,7 +623,7 @@ type GkeCluster struct {
 func (x *GkeCluster) Reset() {
 	*x = GkeCluster{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[2]
+		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -386,7 +636,7 @@ func (x *GkeCluster) String() string {
 func (*GkeCluster) ProtoMessage() {}
 
 func (x *GkeCluster) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[2]
+	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -399,7 +649,7 @@ func (x *GkeCluster) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GkeCluster.ProtoReflect.Descriptor instead.
 func (*GkeCluster) Descriptor() ([]byte, []int) {
-	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{2}
+	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GkeCluster) GetResourceLink() string {
@@ -439,7 +689,7 @@ type KubernetesMetadata struct {
 func (x *KubernetesMetadata) Reset() {
 	*x = KubernetesMetadata{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[3]
+		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -452,7 +702,7 @@ func (x *KubernetesMetadata) String() string {
 func (*KubernetesMetadata) ProtoMessage() {}
 
 func (x *KubernetesMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[3]
+	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -465,7 +715,7 @@ func (x *KubernetesMetadata) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KubernetesMetadata.ProtoReflect.Descriptor instead.
 func (*KubernetesMetadata) Descriptor() ([]byte, []int) {
-	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{3}
+	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *KubernetesMetadata) GetKubernetesApiServerVersion() string {
@@ -523,7 +773,7 @@ type MembershipState struct {
 func (x *MembershipState) Reset() {
 	*x = MembershipState{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[4]
+		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -536,7 +786,7 @@ func (x *MembershipState) String() string {
 func (*MembershipState) ProtoMessage() {}
 
 func (x *MembershipState) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[4]
+	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -549,7 +799,7 @@ func (x *MembershipState) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MembershipState.ProtoReflect.Descriptor instead.
 func (*MembershipState) Descriptor() ([]byte, []int) {
-	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{4}
+	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *MembershipState) GetCode() MembershipState_Code {
@@ -599,7 +849,7 @@ type Authority struct {
 func (x *Authority) Reset() {
 	*x = Authority{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[5]
+		mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -612,7 +862,7 @@ func (x *Authority) String() string {
 func (*Authority) ProtoMessage() {}
 
 func (x *Authority) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[5]
+	mi := &file_google_cloud_gkehub_v1_membership_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -625,7 +875,7 @@ func (x *Authority) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Authority.ProtoReflect.Descriptor instead.
 func (*Authority) Descriptor() ([]byte, []int) {
-	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{5}
+	return file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Authority) GetIssuer() string {
@@ -663,14 +913,14 @@ var file_google_cloud_gkehub_v1_membership_proto_rawDesc = []byte{
 	0x6b, 0x65, 0x68, 0x75, 0x62, 0x2f, 0x76, 0x31, 0x2f, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73,
 	0x68, 0x69, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x16, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
 	0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x67, 0x6b, 0x65, 0x68, 0x75, 0x62, 0x2e, 0x76,
-	0x31, 0x1a, 0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69,
-	0x65, 0x6c, 0x64, 0x5f, 0x62, 0x65, 0x68, 0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x1a, 0x19, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x72,
-	0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74,
-	0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xff, 0x06, 0x0a,
+	0x31, 0x1a, 0x1c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e,
+	0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
+	0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x66, 0x69, 0x65, 0x6c,
+	0x64, 0x5f, 0x62, 0x65, 0x68, 0x61, 0x76, 0x69, 0x6f, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x1a, 0x19, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x72, 0x65, 0x73,
+	0x6f, 0x75, 0x72, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74, 0x69, 0x6d,
+	0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xff, 0x06, 0x0a,
 	0x0a, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x68, 0x69, 0x70, 0x12, 0x4d, 0x0a, 0x08, 0x65,
 	0x6e, 0x64, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2a, 0x2e,
 	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x67, 0x6b, 0x65,
@@ -726,8 +976,8 @@ var file_google_cloud_gkehub_v1_membership_proto_rawDesc = []byte{
 	0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x7d, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f,
 	0x6e, 0x73, 0x2f, 0x7b, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x7d, 0x2f, 0x6d, 0x65,
 	0x6d, 0x62, 0x65, 0x72, 0x73, 0x68, 0x69, 0x70, 0x73, 0x2f, 0x7b, 0x6d, 0x65, 0x6d, 0x62, 0x65,
-	0x72, 0x73, 0x68, 0x69, 0x70, 0x7d, 0x42, 0x06, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0xc0,
-	0x01, 0x0a, 0x12, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x68, 0x69, 0x70, 0x45, 0x6e, 0x64,
+	0x72, 0x73, 0x68, 0x69, 0x70, 0x7d, 0x42, 0x06, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0xa2,
+	0x02, 0x0a, 0x12, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x68, 0x69, 0x70, 0x45, 0x6e, 0x64,
 	0x70, 0x6f, 0x69, 0x6e, 0x74, 0x12, 0x48, 0x0a, 0x0b, 0x67, 0x6b, 0x65, 0x5f, 0x63, 0x6c, 0x75,
 	0x73, 0x74, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x67, 0x6f, 0x6f,
 	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x67, 0x6b, 0x65, 0x68, 0x75, 0x62,
@@ -739,7 +989,50 @@ var file_google_cloud_gkehub_v1_membership_proto_rawDesc = []byte{
 	0x75, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x4b, 0x75, 0x62, 0x65, 0x72, 0x6e, 0x65, 0x74, 0x65, 0x73,
 	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x42, 0x03, 0xe0, 0x41, 0x03, 0x52, 0x12, 0x6b,
 	0x75, 0x62, 0x65, 0x72, 0x6e, 0x65, 0x74, 0x65, 0x73, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
-	0x61, 0x22, 0x36, 0x0a, 0x0a, 0x47, 0x6b, 0x65, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x12,
+	0x61, 0x12, 0x60, 0x0a, 0x13, 0x6b, 0x75, 0x62, 0x65, 0x72, 0x6e, 0x65, 0x74, 0x65, 0x73, 0x5f,
+	0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2a,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x67, 0x6b,
+	0x65, 0x68, 0x75, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x4b, 0x75, 0x62, 0x65, 0x72, 0x6e, 0x65, 0x74,
+	0x65, 0x73, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52,
+	0x12, 0x6b, 0x75, 0x62, 0x65, 0x72, 0x6e, 0x65, 0x74, 0x65, 0x73, 0x52, 0x65, 0x73, 0x6f, 0x75,
+	0x72, 0x63, 0x65, 0x22, 0xe6, 0x02, 0x0a, 0x12, 0x4b, 0x75, 0x62, 0x65, 0x72, 0x6e, 0x65, 0x74,
+	0x65, 0x73, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x12, 0x39, 0x0a, 0x16, 0x6d, 0x65,
+	0x6d, 0x62, 0x65, 0x72, 0x73, 0x68, 0x69, 0x70, 0x5f, 0x63, 0x72, 0x5f, 0x6d, 0x61, 0x6e, 0x69,
+	0x66, 0x65, 0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x04, 0x52,
+	0x14, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x68, 0x69, 0x70, 0x43, 0x72, 0x4d, 0x61, 0x6e,
+	0x69, 0x66, 0x65, 0x73, 0x74, 0x12, 0x60, 0x0a, 0x14, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73,
+	0x68, 0x69, 0x70, 0x5f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x28, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f,
+	0x75, 0x64, 0x2e, 0x67, 0x6b, 0x65, 0x68, 0x75, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x73,
+	0x6f, 0x75, 0x72, 0x63, 0x65, 0x4d, 0x61, 0x6e, 0x69, 0x66, 0x65, 0x73, 0x74, 0x42, 0x03, 0xe0,
+	0x41, 0x03, 0x52, 0x13, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x73, 0x68, 0x69, 0x70, 0x52, 0x65,
+	0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x12, 0x5a, 0x0a, 0x11, 0x63, 0x6f, 0x6e, 0x6e, 0x65,
+	0x63, 0x74, 0x5f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x18, 0x03, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x28, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75,
+	0x64, 0x2e, 0x67, 0x6b, 0x65, 0x68, 0x75, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x73, 0x6f,
+	0x75, 0x72, 0x63, 0x65, 0x4d, 0x61, 0x6e, 0x69, 0x66, 0x65, 0x73, 0x74, 0x42, 0x03, 0xe0, 0x41,
+	0x03, 0x52, 0x10, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72,
+	0x63, 0x65, 0x73, 0x12, 0x57, 0x0a, 0x10, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f,
+	0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x67, 0x6b, 0x65,
+	0x68, 0x75, 0x62, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x4f,
+	0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x0f, 0x72, 0x65, 0x73,
+	0x6f, 0x75, 0x72, 0x63, 0x65, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22, 0x8b, 0x01, 0x0a,
+	0x0f, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73,
+	0x12, 0x2c, 0x0a, 0x0f, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x5f, 0x76, 0x65, 0x72, 0x73,
+	0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x0e,
+	0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x24,
+	0x0a, 0x0b, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x5f, 0x63, 0x72, 0x64, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x08, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x0a, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x43, 0x72, 0x64, 0x12, 0x24, 0x0a, 0x0b, 0x6b, 0x38, 0x73, 0x5f, 0x76, 0x65, 0x72, 0x73,
+	0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x0a,
+	0x6b, 0x38, 0x73, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22, 0x55, 0x0a, 0x10, 0x52, 0x65,
+	0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x4d, 0x61, 0x6e, 0x69, 0x66, 0x65, 0x73, 0x74, 0x12, 0x1a,
+	0x0a, 0x08, 0x6d, 0x61, 0x6e, 0x69, 0x66, 0x65, 0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x08, 0x6d, 0x61, 0x6e, 0x69, 0x66, 0x65, 0x73, 0x74, 0x12, 0x25, 0x0a, 0x0e, 0x63, 0x6c,
+	0x75, 0x73, 0x74, 0x65, 0x72, 0x5f, 0x73, 0x63, 0x6f, 0x70, 0x65, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x08, 0x52, 0x0d, 0x63, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x53, 0x63, 0x6f, 0x70, 0x65,
+	0x64, 0x22, 0x36, 0x0a, 0x0a, 0x47, 0x6b, 0x65, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x12,
 	0x28, 0x0a, 0x0d, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x6c, 0x69, 0x6e, 0x6b,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x05, 0x52, 0x0c, 0x72, 0x65, 0x73,
 	0x6f, 0x75, 0x72, 0x63, 0x65, 0x4c, 0x69, 0x6e, 0x6b, 0x22, 0xb7, 0x02, 0x0a, 0x12, 0x4b, 0x75,
@@ -814,36 +1107,43 @@ func file_google_cloud_gkehub_v1_membership_proto_rawDescGZIP() []byte {
 }
 
 var file_google_cloud_gkehub_v1_membership_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_google_cloud_gkehub_v1_membership_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_google_cloud_gkehub_v1_membership_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_google_cloud_gkehub_v1_membership_proto_goTypes = []interface{}{
 	(MembershipState_Code)(0),     // 0: google.cloud.gkehub.v1.MembershipState.Code
 	(*Membership)(nil),            // 1: google.cloud.gkehub.v1.Membership
 	(*MembershipEndpoint)(nil),    // 2: google.cloud.gkehub.v1.MembershipEndpoint
-	(*GkeCluster)(nil),            // 3: google.cloud.gkehub.v1.GkeCluster
-	(*KubernetesMetadata)(nil),    // 4: google.cloud.gkehub.v1.KubernetesMetadata
-	(*MembershipState)(nil),       // 5: google.cloud.gkehub.v1.MembershipState
-	(*Authority)(nil),             // 6: google.cloud.gkehub.v1.Authority
-	nil,                           // 7: google.cloud.gkehub.v1.Membership.LabelsEntry
-	(*timestamppb.Timestamp)(nil), // 8: google.protobuf.Timestamp
+	(*KubernetesResource)(nil),    // 3: google.cloud.gkehub.v1.KubernetesResource
+	(*ResourceOptions)(nil),       // 4: google.cloud.gkehub.v1.ResourceOptions
+	(*ResourceManifest)(nil),      // 5: google.cloud.gkehub.v1.ResourceManifest
+	(*GkeCluster)(nil),            // 6: google.cloud.gkehub.v1.GkeCluster
+	(*KubernetesMetadata)(nil),    // 7: google.cloud.gkehub.v1.KubernetesMetadata
+	(*MembershipState)(nil),       // 8: google.cloud.gkehub.v1.MembershipState
+	(*Authority)(nil),             // 9: google.cloud.gkehub.v1.Authority
+	nil,                           // 10: google.cloud.gkehub.v1.Membership.LabelsEntry
+	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
 }
 var file_google_cloud_gkehub_v1_membership_proto_depIdxs = []int32{
 	2,  // 0: google.cloud.gkehub.v1.Membership.endpoint:type_name -> google.cloud.gkehub.v1.MembershipEndpoint
-	7,  // 1: google.cloud.gkehub.v1.Membership.labels:type_name -> google.cloud.gkehub.v1.Membership.LabelsEntry
-	5,  // 2: google.cloud.gkehub.v1.Membership.state:type_name -> google.cloud.gkehub.v1.MembershipState
-	8,  // 3: google.cloud.gkehub.v1.Membership.create_time:type_name -> google.protobuf.Timestamp
-	8,  // 4: google.cloud.gkehub.v1.Membership.update_time:type_name -> google.protobuf.Timestamp
-	8,  // 5: google.cloud.gkehub.v1.Membership.delete_time:type_name -> google.protobuf.Timestamp
-	8,  // 6: google.cloud.gkehub.v1.Membership.last_connection_time:type_name -> google.protobuf.Timestamp
-	6,  // 7: google.cloud.gkehub.v1.Membership.authority:type_name -> google.cloud.gkehub.v1.Authority
-	3,  // 8: google.cloud.gkehub.v1.MembershipEndpoint.gke_cluster:type_name -> google.cloud.gkehub.v1.GkeCluster
-	4,  // 9: google.cloud.gkehub.v1.MembershipEndpoint.kubernetes_metadata:type_name -> google.cloud.gkehub.v1.KubernetesMetadata
-	8,  // 10: google.cloud.gkehub.v1.KubernetesMetadata.update_time:type_name -> google.protobuf.Timestamp
-	0,  // 11: google.cloud.gkehub.v1.MembershipState.code:type_name -> google.cloud.gkehub.v1.MembershipState.Code
-	12, // [12:12] is the sub-list for method output_type
-	12, // [12:12] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	10, // 1: google.cloud.gkehub.v1.Membership.labels:type_name -> google.cloud.gkehub.v1.Membership.LabelsEntry
+	8,  // 2: google.cloud.gkehub.v1.Membership.state:type_name -> google.cloud.gkehub.v1.MembershipState
+	11, // 3: google.cloud.gkehub.v1.Membership.create_time:type_name -> google.protobuf.Timestamp
+	11, // 4: google.cloud.gkehub.v1.Membership.update_time:type_name -> google.protobuf.Timestamp
+	11, // 5: google.cloud.gkehub.v1.Membership.delete_time:type_name -> google.protobuf.Timestamp
+	11, // 6: google.cloud.gkehub.v1.Membership.last_connection_time:type_name -> google.protobuf.Timestamp
+	9,  // 7: google.cloud.gkehub.v1.Membership.authority:type_name -> google.cloud.gkehub.v1.Authority
+	6,  // 8: google.cloud.gkehub.v1.MembershipEndpoint.gke_cluster:type_name -> google.cloud.gkehub.v1.GkeCluster
+	7,  // 9: google.cloud.gkehub.v1.MembershipEndpoint.kubernetes_metadata:type_name -> google.cloud.gkehub.v1.KubernetesMetadata
+	3,  // 10: google.cloud.gkehub.v1.MembershipEndpoint.kubernetes_resource:type_name -> google.cloud.gkehub.v1.KubernetesResource
+	5,  // 11: google.cloud.gkehub.v1.KubernetesResource.membership_resources:type_name -> google.cloud.gkehub.v1.ResourceManifest
+	5,  // 12: google.cloud.gkehub.v1.KubernetesResource.connect_resources:type_name -> google.cloud.gkehub.v1.ResourceManifest
+	4,  // 13: google.cloud.gkehub.v1.KubernetesResource.resource_options:type_name -> google.cloud.gkehub.v1.ResourceOptions
+	11, // 14: google.cloud.gkehub.v1.KubernetesMetadata.update_time:type_name -> google.protobuf.Timestamp
+	0,  // 15: google.cloud.gkehub.v1.MembershipState.code:type_name -> google.cloud.gkehub.v1.MembershipState.Code
+	16, // [16:16] is the sub-list for method output_type
+	16, // [16:16] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_gkehub_v1_membership_proto_init() }
@@ -877,7 +1177,7 @@ func file_google_cloud_gkehub_v1_membership_proto_init() {
 			}
 		}
 		file_google_cloud_gkehub_v1_membership_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GkeCluster); i {
+			switch v := v.(*KubernetesResource); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -889,7 +1189,7 @@ func file_google_cloud_gkehub_v1_membership_proto_init() {
 			}
 		}
 		file_google_cloud_gkehub_v1_membership_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*KubernetesMetadata); i {
+			switch v := v.(*ResourceOptions); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -901,7 +1201,7 @@ func file_google_cloud_gkehub_v1_membership_proto_init() {
 			}
 		}
 		file_google_cloud_gkehub_v1_membership_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MembershipState); i {
+			switch v := v.(*ResourceManifest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -913,6 +1213,42 @@ func file_google_cloud_gkehub_v1_membership_proto_init() {
 			}
 		}
 		file_google_cloud_gkehub_v1_membership_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GkeCluster); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_gkehub_v1_membership_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*KubernetesMetadata); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_gkehub_v1_membership_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*MembershipState); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_gkehub_v1_membership_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Authority); i {
 			case 0:
 				return &v.state
@@ -934,7 +1270,7 @@ func file_google_cloud_gkehub_v1_membership_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_gkehub_v1_membership_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   7,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
