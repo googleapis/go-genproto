@@ -1276,7 +1276,7 @@ type Environment_TestCasesConfig struct {
 	// <Location ID>/agents/<AgentID>/testCases/<TestCase ID>`
 	TestCases []string `protobuf:"bytes,1,rep,name=test_cases,json=testCases,proto3" json:"test_cases,omitempty"`
 	// Whether to run test cases in [TestCasesConfig.test_cases][google.cloud.dialogflow.cx.v3.Environment.TestCasesConfig.test_cases] periodically.
-	// Default false. If set to ture, run once a day.
+	// Default false. If set to true, run once a day.
 	EnableContinuousRun bool `protobuf:"varint,2,opt,name=enable_continuous_run,json=enableContinuousRun,proto3" json:"enable_continuous_run,omitempty"`
 	// Whether to run test cases in [TestCasesConfig.test_cases][google.cloud.dialogflow.cx.v3.Environment.TestCasesConfig.test_cases] before
 	// deploying a flow version to the environment. Default false.
