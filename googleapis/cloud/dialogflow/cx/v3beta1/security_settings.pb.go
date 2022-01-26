@@ -741,7 +741,7 @@ type SecuritySettings_RetentionWindowDays struct {
 func (*SecuritySettings_RetentionWindowDays) isSecuritySettings_DataRetention() {}
 
 // Settings for exporting conversations to
-// [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+// [Insights](https://cloud.google.com/contact-center/insights/docs).
 type SecuritySettings_InsightsExportSettings struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

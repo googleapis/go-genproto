@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -49,13 +49,20 @@ type ListInsightsRequest struct {
 	// Required. The container resource on which to execute the request.
 	// Acceptable formats:
 	//
-	// 1.
-	// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]",
+	// * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+	//
+	// * `projects/[PROJECT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+	//
+	// * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+	//
+	// * `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+	//
+	// * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
 	//
 	// LOCATION here refers to GCP Locations:
 	// https://cloud.google.com/about/locations/
 	// INSIGHT_TYPE_ID refers to supported insight types:
-	// https://cloud.google.com/recommender/docs/insights/insight-types.)
+	// https://cloud.google.com/recommender/docs/insights/insight-types.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The maximum number of results to return from this request.  Non-positive
 	// values are ignored. If not specified, the server will determine the number
@@ -67,8 +74,26 @@ type ListInsightsRequest struct {
 	// to those in the previous call.
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Optional. Filter expression to restrict the insights returned. Supported
-	// filter fields: state
-	// Eg: `state:"DISMISSED" or state:"ACTIVE"
+	// filter fields:
+	//
+	// * `stateInfo.state`
+	//
+	// * `insightSubtype`
+	//
+	// * `severity`
+	//
+	// Examples:
+	//
+	// * `stateInfo.state = ACTIVE OR stateInfo.state = DISMISSED`
+	//
+	// * `insightSubtype = PERMISSIONS_USAGE`
+	//
+	// * `severity = CRITICAL OR severity = HIGH`
+	//
+	// * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity = HIGH)`
+	//
+	// (These expressions are based on the filter language described at
+	// https://google.aip.dev/160)
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
@@ -317,8 +342,15 @@ type ListRecommendationsRequest struct {
 	// Required. The container resource on which to execute the request.
 	// Acceptable formats:
 	//
-	// 1.
-	// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]",
+	// * `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+	//
+	// * `projects/[PROJECT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+	//
+	// * `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+	//
+	// * `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+	//
+	// * `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
 	//
 	// LOCATION here refers to GCP Locations:
 	// https://cloud.google.com/about/locations/
@@ -335,8 +367,26 @@ type ListRecommendationsRequest struct {
 	// to those in the previous call.
 	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Filter expression to restrict the recommendations returned. Supported
-	// filter fields: state_info.state
-	// Eg: `state_info.state:"DISMISSED" or state_info.state:"FAILED"
+	// filter fields:
+	//
+	// * `state_info.state`
+	//
+	// * `recommenderSubtype`
+	//
+	// * `priority`
+	//
+	// Examples:
+	//
+	// * `stateInfo.state = ACTIVE OR stateInfo.state = DISMISSED`
+	//
+	// * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype = REPLACE_ROLE`
+	//
+	// * `priority = P1 OR priority = P2`
+	//
+	// * `stateInfo.state = ACTIVE AND (priority = P1 OR priority = P2)`
+	//
+	// (These expressions are based on the filter language described at
+	// https://google.aip.dev/160)
 	Filter string `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
@@ -1347,8 +1397,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type RecommenderClient interface {
-	// Lists insights for a Cloud project. Requires the recommender.*.list IAM
-	// permission for the specified insight type.
+	// Lists insights for the specified Cloud Resource. Requires the
+	// recommender.*.list IAM permission for the specified insight type.
 	ListInsights(ctx context.Context, in *ListInsightsRequest, opts ...grpc.CallOption) (*ListInsightsResponse, error)
 	// Gets the requested insight. Requires the recommender.*.get IAM permission
 	// for the specified insight type.
@@ -1360,8 +1410,8 @@ type RecommenderClient interface {
 	// MarkInsightAccepted can be applied to insights in ACTIVE state. Requires
 	// the recommender.*.update IAM permission for the specified insight.
 	MarkInsightAccepted(ctx context.Context, in *MarkInsightAcceptedRequest, opts ...grpc.CallOption) (*Insight, error)
-	// Lists recommendations for a Cloud project. Requires the recommender.*.list
-	// IAM permission for the specified recommender.
+	// Lists recommendations for the specified Cloud Resource. Requires the
+	// recommender.*.list IAM permission for the specified recommender.
 	ListRecommendations(ctx context.Context, in *ListRecommendationsRequest, opts ...grpc.CallOption) (*ListRecommendationsResponse, error)
 	// Gets the requested recommendation. Requires the recommender.*.get
 	// IAM permission for the specified recommender.
@@ -1485,8 +1535,8 @@ func (c *recommenderClient) MarkRecommendationFailed(ctx context.Context, in *Ma
 
 // RecommenderServer is the server API for Recommender service.
 type RecommenderServer interface {
-	// Lists insights for a Cloud project. Requires the recommender.*.list IAM
-	// permission for the specified insight type.
+	// Lists insights for the specified Cloud Resource. Requires the
+	// recommender.*.list IAM permission for the specified insight type.
 	ListInsights(context.Context, *ListInsightsRequest) (*ListInsightsResponse, error)
 	// Gets the requested insight. Requires the recommender.*.get IAM permission
 	// for the specified insight type.
@@ -1498,8 +1548,8 @@ type RecommenderServer interface {
 	// MarkInsightAccepted can be applied to insights in ACTIVE state. Requires
 	// the recommender.*.update IAM permission for the specified insight.
 	MarkInsightAccepted(context.Context, *MarkInsightAcceptedRequest) (*Insight, error)
-	// Lists recommendations for a Cloud project. Requires the recommender.*.list
-	// IAM permission for the specified recommender.
+	// Lists recommendations for the specified Cloud Resource. Requires the
+	// recommender.*.list IAM permission for the specified recommender.
 	ListRecommendations(context.Context, *ListRecommendationsRequest) (*ListRecommendationsResponse, error)
 	// Gets the requested recommendation. Requires the recommender.*.get
 	// IAM permission for the specified recommender.

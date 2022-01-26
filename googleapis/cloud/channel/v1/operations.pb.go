@@ -40,7 +40,7 @@ const (
 type OperationMetadata_OperationType int32
 
 const (
-	// Default value. This state doesn't show unless an error occurs.
+	// Not used.
 	OperationMetadata_OPERATION_TYPE_UNSPECIFIED OperationMetadata_OperationType = 0
 	// Long Running Operation was triggered by CreateEntitlement.
 	OperationMetadata_CREATE_ENTITLEMENT OperationMetadata_OperationType = 1
