@@ -138,6 +138,15 @@ type GcsSource struct {
 	// [UserEvent][google.cloud.retail.v2beta.UserEvent] per line.
 	// * `user_event_ga360`: Using
 	//   https://support.google.com/analytics/answer/3437719.
+	//
+	// Supported values for control imports:
+	//
+	// * 'control' (default): One JSON
+	// [Control][google.cloud.retail.v2beta.Control] per line.
+	//
+	// Supported values for catalog attribute imports:
+	//
+	// * 'catalog_attribute' (default): One CSV [CatalogAttribute][] per line.
 	DataSchema string `protobuf:"bytes,2,opt,name=data_schema,json=dataSchema,proto3" json:"data_schema,omitempty"`
 }
 
