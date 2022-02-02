@@ -631,8 +631,9 @@ type SetInventoryRequest struct {
 	// needed, [UpdateProduct][] should be invoked instead.
 	Inventory *Product `protobuf:"bytes,1,opt,name=inventory,proto3" json:"inventory,omitempty"`
 	// Indicates which inventory fields in the provided
-	// [Product][google.cloud.retail.v2alpha.Product] to update. If not set or set
-	// with empty paths, all inventory fields will be updated.
+	// [Product][google.cloud.retail.v2alpha.Product] to update.
+	//
+	// At least one field must be provided.
 	//
 	// If an unsupported or unknown field is provided, an INVALID_ARGUMENT error
 	// is returned and the entire update will be ignored.
@@ -1019,7 +1020,7 @@ type AddLocalInventoriesRequest struct {
 	// not it exists, a PERMISSION_DENIED error is returned.
 	Product string `protobuf:"bytes,1,opt,name=product,proto3" json:"product,omitempty"`
 	// Required. A list of inventory information at difference places. Each place
-	// is identified by its place ID. At most 1000 inventories are allowed per
+	// is identified by its place ID. At most 3000 inventories are allowed per
 	// request.
 	LocalInventories []*LocalInventory `protobuf:"bytes,2,rep,name=local_inventories,json=localInventories,proto3" json:"local_inventories,omitempty"`
 	// Indicates which inventory fields in the provided list of
@@ -1215,7 +1216,7 @@ type RemoveLocalInventoriesRequest struct {
 	// not it exists, a PERMISSION_DENIED error is returned.
 	Product string `protobuf:"bytes,1,opt,name=product,proto3" json:"product,omitempty"`
 	// Required. A list of place IDs to have their inventory deleted.
-	// At most 1000 place IDs are allowed per request.
+	// At most 3000 place IDs are allowed per request.
 	PlaceIds []string `protobuf:"bytes,2,rep,name=place_ids,json=placeIds,proto3" json:"place_ids,omitempty"`
 	// The time when the inventory deletions are issued. Used to prevent
 	// out-of-order updates and deletions on local inventory fields. If not
@@ -2485,7 +2486,7 @@ type ProductServiceClient interface {
 	// [GetProduct][google.cloud.retail.v2alpha.ProductService.GetProduct] or
 	// [ListProducts][google.cloud.retail.v2alpha.ProductService.ListProducts].
 	//
-	// Store inventory information can only be modified using this method.
+	// Local inventory information can only be modified using this method.
 	// [CreateProduct][google.cloud.retail.v2alpha.ProductService.CreateProduct]
 	// and
 	// [UpdateProduct][google.cloud.retail.v2alpha.ProductService.UpdateProduct]
@@ -2506,7 +2507,7 @@ type ProductServiceClient interface {
 	// [GetProduct][google.cloud.retail.v2alpha.ProductService.GetProduct] or
 	// [ListProducts][google.cloud.retail.v2alpha.ProductService.ListProducts].
 	//
-	// Store inventory information can only be removed using this method.
+	// Local inventory information can only be removed using this method.
 	// [CreateProduct][google.cloud.retail.v2alpha.ProductService.CreateProduct]
 	// and
 	// [UpdateProduct][google.cloud.retail.v2alpha.ProductService.UpdateProduct]
@@ -2733,7 +2734,7 @@ type ProductServiceServer interface {
 	// [GetProduct][google.cloud.retail.v2alpha.ProductService.GetProduct] or
 	// [ListProducts][google.cloud.retail.v2alpha.ProductService.ListProducts].
 	//
-	// Store inventory information can only be modified using this method.
+	// Local inventory information can only be modified using this method.
 	// [CreateProduct][google.cloud.retail.v2alpha.ProductService.CreateProduct]
 	// and
 	// [UpdateProduct][google.cloud.retail.v2alpha.ProductService.UpdateProduct]
@@ -2754,7 +2755,7 @@ type ProductServiceServer interface {
 	// [GetProduct][google.cloud.retail.v2alpha.ProductService.GetProduct] or
 	// [ListProducts][google.cloud.retail.v2alpha.ProductService.ListProducts].
 	//
-	// Store inventory information can only be removed using this method.
+	// Local inventory information can only be removed using this method.
 	// [CreateProduct][google.cloud.retail.v2alpha.ProductService.CreateProduct]
 	// and
 	// [UpdateProduct][google.cloud.retail.v2alpha.ProductService.UpdateProduct]

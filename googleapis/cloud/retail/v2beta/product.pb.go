@@ -204,9 +204,9 @@ type Product struct {
 	// This field must be a UTF-8 encoded string with a length limit of 128
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [id](https://support.google.com/merchants/answer/6324405). Schema.org
-	// Property [Product.sku](https://schema.org/sku).
+	// property [Product.sku](https://schema.org/sku).
 	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	// Immutable. The type of the product. Default to
 	// [Catalog.product_level_config.ingestion_product_type][google.cloud.retail.v2beta.ProductLevelConfig.ingestion_product_type]
@@ -227,20 +227,22 @@ type Product struct {
 	// [Product][google.cloud.retail.v2beta.Product]. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center Property
+	// Corresponding properties: Google Merchant Center property
 	// [item_group_id](https://support.google.com/merchants/answer/6324507).
-	// Schema.org Property
+	// Schema.org property
 	// [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID).
-	//
-	// This field must be enabled before it can be used. [Learn
-	// more](/recommendations-ai/docs/catalog#item-group-id).
 	PrimaryProductId string `protobuf:"bytes,4,opt,name=primary_product_id,json=primaryProductId,proto3" json:"primary_product_id,omitempty"`
 	// The [id][google.cloud.retail.v2beta.Product.id] of the collection members
 	// when [type][google.cloud.retail.v2beta.Product.type] is
 	// [Type.COLLECTION][google.cloud.retail.v2beta.Product.Type.COLLECTION].
 	//
-	// Should not set it for other types. A maximum of 1000 values are allowed.
-	// Otherwise, an INVALID_ARGUMENT error is return.
+	// Non-existent product ids are allowed.
+	// The [type][google.cloud.retail.v2beta.Product.type] of the members must be
+	// either [Type.PRIMARY][google.cloud.retail.v2beta.Product.Type.PRIMARY] or
+	// [Type.VARIANT][google.cloud.retail.v2beta.Product.Type.VARIANT] otherwise
+	// and INVALID_ARGUMENT error is thrown. Should not set it for other types. A
+	// maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is
+	// return.
 	CollectionMemberIds []string `protobuf:"bytes,5,rep,name=collection_member_ids,json=collectionMemberIds,proto3" json:"collection_member_ids,omitempty"`
 	// The Global Trade Item Number (GTIN) of the product.
 	//
@@ -250,13 +252,13 @@ type Product struct {
 	// This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is
 	// returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [gtin](https://support.google.com/merchants/answer/6324461).
 	// Schema.org property
-	// [Product.isbn](https://schema.org/isbn) or
-	// [Product.gtin8](https://schema.org/gtin8) or
-	// [Product.gtin12](https://schema.org/gtin12) or
-	// [Product.gtin13](https://schema.org/gtin13) or
+	// [Product.isbn](https://schema.org/isbn),
+	// [Product.gtin8](https://schema.org/gtin8),
+	// [Product.gtin12](https://schema.org/gtin12),
+	// [Product.gtin13](https://schema.org/gtin13), or
 	// [Product.gtin14](https://schema.org/gtin14).
 	//
 	// If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
@@ -290,7 +292,7 @@ type Product struct {
 	// allowed. Each value must be a UTF-8 encoded string with a length limit of
 	// 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [google_product_category][mc_google_product_category]. Schema.org property
 	// [Product.category] (https://schema.org/category).
 	//
@@ -302,7 +304,7 @@ type Product struct {
 	// This field must be a UTF-8 encoded string with a length limit of 1,000
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [title](https://support.google.com/merchants/answer/6324415). Schema.org
 	// property [Product.name](https://schema.org/name).
 	Title string `protobuf:"bytes,8,opt,name=title,proto3" json:"title,omitempty"`
@@ -312,7 +314,7 @@ type Product struct {
 	// string with a length limit of 1,000 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [brand](https://support.google.com/merchants/answer/6324351). Schema.org
 	// property [Product.brand](https://schema.org/brand).
 	Brands []string `protobuf:"bytes,9,rep,name=brands,proto3" json:"brands,omitempty"`
@@ -321,12 +323,12 @@ type Product struct {
 	// This field must be a UTF-8 encoded string with a length limit of 5,000
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [description](https://support.google.com/merchants/answer/6324468).
-	// schema.org property [Product.description](https://schema.org/description).
+	// Schema.org property [Product.description](https://schema.org/description).
 	Description string `protobuf:"bytes,10,opt,name=description,proto3" json:"description,omitempty"`
 	// Language of the title/description and other string attributes. Use language
-	// tags defined by [BCP 47][https://www.rfc-editor.org/rfc/bcp/bcp47.txt].
+	// tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt).
 	//
 	// For product prediction, this field is ignored and the model automatically
 	// detects the text language. The
@@ -360,7 +362,12 @@ type Product struct {
 	// * The key must be a UTF-8 encoded string with a length limit of 128
 	//   characters.
 	// * For indexable attribute, the key must match the pattern:
-	//   `[a-zA-Z0-9][a-zA-Z0-9_]*`. For example, key0LikeThis or KEY_1_LIKE_THIS.
+	//   `[a-zA-Z0-9][a-zA-Z0-9_]*`. For example, `key0LikeThis` or
+	//   `KEY_1_LIKE_THIS`.
+	// * For text attributes, at most 400 values are allowed. Empty values are not
+	//   allowed. Each value must be a UTF-8 encoded string with a length limit of
+	//   256 characters.
+	// * For number attributes, at most 400 values are allowed.
 	Attributes map[string]*CustomAttribute `protobuf:"bytes,12,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Custom tags associated with the product.
 	//
@@ -373,12 +380,12 @@ type Product struct {
 	// tag as part of the
 	// [PredictRequest.filter][google.cloud.retail.v2beta.PredictRequest.filter].
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
 	Tags []string `protobuf:"bytes,13,rep,name=tags,proto3" json:"tags,omitempty"`
 	// Product price and cost information.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [price](https://support.google.com/merchants/answer/6324371).
 	PriceInfo *PriceInfo `protobuf:"bytes,14,opt,name=price_info,json=priceInfo,proto3" json:"price_info,omitempty"`
 	// The rating of this product.
@@ -391,9 +398,9 @@ type Product struct {
 	// [Product][google.cloud.retail.v2beta.Product]. Default to
 	// [Availability.IN_STOCK][google.cloud.retail.v2beta.Product.Availability.IN_STOCK].
 	//
-	// Google Merchant Center Property
+	// Corresponding properties: Google Merchant Center property
 	// [availability](https://support.google.com/merchants/answer/6324448).
-	// Schema.org Property [Offer.availability](https://schema.org/availability).
+	// Schema.org property [Offer.availability](https://schema.org/availability).
 	Availability Product_Availability `protobuf:"varint,19,opt,name=availability,proto3,enum=google.cloud.retail.v2beta.Product_Availability" json:"availability,omitempty"`
 	// The available quantity of the item.
 	AvailableQuantity *wrapperspb.Int32Value `protobuf:"bytes,20,opt,name=available_quantity,json=availableQuantity,proto3" json:"available_quantity,omitempty"`
@@ -412,7 +419,7 @@ type Product struct {
 	// This field must be a UTF-8 encoded string with a length limit of 5,000
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [link](https://support.google.com/merchants/answer/6324416). Schema.org
 	// property [Offer.url](https://schema.org/url).
 	Uri string `protobuf:"bytes,22,opt,name=uri,proto3" json:"uri,omitempty"`
@@ -421,7 +428,7 @@ type Product struct {
 	//
 	// A maximum of 300 images are allowed.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [image_link](https://support.google.com/merchants/answer/6324350).
 	// Schema.org property [Product.image](https://schema.org/image).
 	Images []*Image `protobuf:"bytes,23,rep,name=images,proto3" json:"images,omitempty"`
@@ -430,7 +437,7 @@ type Product struct {
 	Audience *Audience `protobuf:"bytes,24,opt,name=audience,proto3" json:"audience,omitempty"`
 	// The color of the product.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [color](https://support.google.com/merchants/answer/6324487). Schema.org
 	// property [Product.color](https://schema.org/color).
 	ColorInfo *ColorInfo `protobuf:"bytes,25,opt,name=color_info,json=colorInfo,proto3" json:"color_info,omitempty"`
@@ -447,9 +454,9 @@ type Product struct {
 	// encoded string with a length limit of 128 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [size](https://support.google.com/merchants/answer/6324492),
-	// [size_type](https://support.google.com/merchants/answer/6324497) and
+	// [size_type](https://support.google.com/merchants/answer/6324497), and
 	// [size_system](https://support.google.com/merchants/answer/6324502).
 	// Schema.org property [Product.size](https://schema.org/size).
 	Sizes []string `protobuf:"bytes,26,rep,name=sizes,proto3" json:"sizes,omitempty"`
@@ -459,7 +466,7 @@ type Product struct {
 	// string with a length limit of 128 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [material](https://support.google.com/merchants/answer/6324410). Schema.org
 	// property [Product.material](https://schema.org/material).
 	Materials []string `protobuf:"bytes,27,rep,name=materials,proto3" json:"materials,omitempty"`
@@ -471,19 +478,19 @@ type Product struct {
 	// encoded string with a length limit of 128 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [pattern](https://support.google.com/merchants/answer/6324483). Schema.org
 	// property [Product.pattern](https://schema.org/pattern).
 	Patterns []string `protobuf:"bytes,28,rep,name=patterns,proto3" json:"patterns,omitempty"`
 	// The condition of the product. Strongly encouraged to use the standard
 	// values: "new", "refurbished", "used".
 	//
-	// A maximum of 5 values are allowed per
+	// A maximum of 1 value is allowed per
 	// [Product][google.cloud.retail.v2beta.Product]. Each value must be a UTF-8
 	// encoded string with a length limit of 128 characters. Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [condition](https://support.google.com/merchants/answer/6324469).
 	// Schema.org property
 	// [Offer.itemCondition](https://schema.org/itemCondition).
@@ -864,7 +871,7 @@ type Product_ExpireTime struct {
 	// [publish_time][google.cloud.retail.v2beta.Product.publish_time],
 	// otherwise an INVALID_ARGUMENT error is thrown.
 	//
-	// Google Merchant Center property
+	// Corresponding properties: Google Merchant Center property
 	// [expiration_date](https://support.google.com/merchants/answer/6324499).
 	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=expire_time,json=expireTime,proto3,oneof"`
 }

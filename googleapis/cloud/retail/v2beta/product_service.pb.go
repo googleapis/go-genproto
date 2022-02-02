@@ -596,8 +596,9 @@ type SetInventoryRequest struct {
 	// needed, [UpdateProduct][] should be invoked instead.
 	Inventory *Product `protobuf:"bytes,1,opt,name=inventory,proto3" json:"inventory,omitempty"`
 	// Indicates which inventory fields in the provided
-	// [Product][google.cloud.retail.v2beta.Product] to update. If not set or set
-	// with empty paths, all inventory fields will be updated.
+	// [Product][google.cloud.retail.v2beta.Product] to update.
+	//
+	// At least one field must be provided.
 	//
 	// If an unsupported or unknown field is provided, an INVALID_ARGUMENT error
 	// is returned and the entire update will be ignored.

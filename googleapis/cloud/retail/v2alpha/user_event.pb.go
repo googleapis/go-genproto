@@ -50,7 +50,6 @@ type UserEvent struct {
 	// * `add-to-cart`: Products being added to cart.
 	// * `category-page-view`: Special pages such as sale or promotion pages
 	//   viewed.
-	// * `completion`: Completion query result showed/clicked.
 	// * `detail-page-view`: Products detail page viewed.
 	// * `home-page-view`: Homepage viewed.
 	// * `promotion-offered`: Promotion is offered to a user.
@@ -122,6 +121,7 @@ type UserEvent struct {
 	// * `add-to-cart`
 	// * `detail-page-view`
 	// * `purchase-complete`
+	// * `search`
 	//
 	// In a `search` event, this field represents the products returned to the end
 	// user on the current page (the end user may have not finished browsing the
@@ -131,16 +131,22 @@ type UserEvent struct {
 	// [product_details][google.cloud.retail.v2alpha.UserEvent.product_details] is
 	// desired. The end user may have not finished browsing the whole page yet.
 	ProductDetails []*ProductDetail `protobuf:"bytes,6,rep,name=product_details,json=productDetails,proto3" json:"product_details,omitempty"`
-	// The main completion details related to the event.
+	// The main auto-completion details related to the event.
 	//
-	// In a `completion` event, this field represents the completions returned to
-	// the end user and the clicked completion by the end user. In a `search`
-	// event, it represents the search event happens after clicking completion.
+	// This field should be set for `search` event when autocomplete function is
+	// enabled and the user clicks a suggestion for search.
 	CompletionDetail *CompletionDetail `protobuf:"bytes,22,opt,name=completion_detail,json=completionDetail,proto3" json:"completion_detail,omitempty"`
 	// Extra user event features to include in the recommendation model.
 	//
-	// The key must be a UTF-8 encoded string with a length limit of 5,000
-	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+	// This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT
+	// error is returned:
+	//
+	// * The key must be a UTF-8 encoded string with a length limit of 5,000
+	//   characters.
+	// * For text attributes, at most 400 values are allowed. Empty values are not
+	//   allowed. Each value must be a UTF-8 encoded string with a length limit of
+	//   256 characters.
+	// * For number attributes, at most 400 values are allowed.
 	//
 	// For product recommendation, an example of extra user information is
 	// traffic_channel, i.e. how user arrives at the site. Users can arrive
