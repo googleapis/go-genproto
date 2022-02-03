@@ -42,19 +42,24 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Request message for [KeyManagementService.ListKeyRings][google.cloud.kms.v1.KeyManagementService.ListKeyRings].
+// Request message for
+// [KeyManagementService.ListKeyRings][google.cloud.kms.v1.KeyManagementService.ListKeyRings].
 type ListKeyRingsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name of the location associated with the
-	// [KeyRings][google.cloud.kms.v1.KeyRing], in the format `projects/*/locations/*`.
+	// [KeyRings][google.cloud.kms.v1.KeyRing], in the format
+	// `projects/*/locations/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. Optional limit on the number of [KeyRings][google.cloud.kms.v1.KeyRing] to include in the
-	// response.  Further [KeyRings][google.cloud.kms.v1.KeyRing] can subsequently be obtained by
-	// including the [ListKeyRingsResponse.next_page_token][google.cloud.kms.v1.ListKeyRingsResponse.next_page_token] in a subsequent
-	// request.  If unspecified, the server will pick an appropriate default.
+	// Optional. Optional limit on the number of
+	// [KeyRings][google.cloud.kms.v1.KeyRing] to include in the response. Further
+	// [KeyRings][google.cloud.kms.v1.KeyRing] can subsequently be obtained by
+	// including the
+	// [ListKeyRingsResponse.next_page_token][google.cloud.kms.v1.ListKeyRingsResponse.next_page_token]
+	// in a subsequent request.  If unspecified, the server will pick an
+	// appropriate default.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. Optional pagination token, returned earlier via
 	// [ListKeyRingsResponse.next_page_token][google.cloud.kms.v1.ListKeyRingsResponse.next_page_token].
@@ -138,19 +143,23 @@ func (x *ListKeyRingsRequest) GetOrderBy() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.ListCryptoKeys][google.cloud.kms.v1.KeyManagementService.ListCryptoKeys].
+// Request message for
+// [KeyManagementService.ListCryptoKeys][google.cloud.kms.v1.KeyManagementService.ListCryptoKeys].
 type ListCryptoKeysRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [KeyRing][google.cloud.kms.v1.KeyRing] to list, in the format
-	// `projects/*/locations/*/keyRings/*`.
+	// Required. The resource name of the [KeyRing][google.cloud.kms.v1.KeyRing]
+	// to list, in the format `projects/*/locations/*/keyRings/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. Optional limit on the number of [CryptoKeys][google.cloud.kms.v1.CryptoKey] to include in the
-	// response.  Further [CryptoKeys][google.cloud.kms.v1.CryptoKey] can subsequently be obtained by
-	// including the [ListCryptoKeysResponse.next_page_token][google.cloud.kms.v1.ListCryptoKeysResponse.next_page_token] in a subsequent
-	// request.  If unspecified, the server will pick an appropriate default.
+	// Optional. Optional limit on the number of
+	// [CryptoKeys][google.cloud.kms.v1.CryptoKey] to include in the response.
+	// Further [CryptoKeys][google.cloud.kms.v1.CryptoKey] can subsequently be
+	// obtained by including the
+	// [ListCryptoKeysResponse.next_page_token][google.cloud.kms.v1.ListCryptoKeysResponse.next_page_token]
+	// in a subsequent request.  If unspecified, the server will pick an
+	// appropriate default.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. Optional pagination token, returned earlier via
 	// [ListCryptoKeysResponse.next_page_token][google.cloud.kms.v1.ListCryptoKeysResponse.next_page_token].
@@ -243,20 +252,24 @@ func (x *ListCryptoKeysRequest) GetOrderBy() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.ListCryptoKeyVersions][google.cloud.kms.v1.KeyManagementService.ListCryptoKeyVersions].
+// Request message for
+// [KeyManagementService.ListCryptoKeyVersions][google.cloud.kms.v1.KeyManagementService.ListCryptoKeyVersions].
 type ListCryptoKeyVersionsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKey][google.cloud.kms.v1.CryptoKey] to list, in the format
+	// Required. The resource name of the
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey] to list, in the format
 	// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. Optional limit on the number of [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion] to
-	// include in the response. Further [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion] can
-	// subsequently be obtained by including the
-	// [ListCryptoKeyVersionsResponse.next_page_token][google.cloud.kms.v1.ListCryptoKeyVersionsResponse.next_page_token] in a subsequent request.
-	// If unspecified, the server will pick an appropriate default.
+	// Optional. Optional limit on the number of
+	// [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion] to include in the
+	// response. Further [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion]
+	// can subsequently be obtained by including the
+	// [ListCryptoKeyVersionsResponse.next_page_token][google.cloud.kms.v1.ListCryptoKeyVersionsResponse.next_page_token]
+	// in a subsequent request. If unspecified, the server will pick an
+	// appropriate default.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. Optional pagination token, returned earlier via
 	// [ListCryptoKeyVersionsResponse.next_page_token][google.cloud.kms.v1.ListCryptoKeyVersionsResponse.next_page_token].
@@ -349,19 +362,23 @@ func (x *ListCryptoKeyVersionsRequest) GetOrderBy() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.ListImportJobs][google.cloud.kms.v1.KeyManagementService.ListImportJobs].
+// Request message for
+// [KeyManagementService.ListImportJobs][google.cloud.kms.v1.KeyManagementService.ListImportJobs].
 type ListImportJobsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [KeyRing][google.cloud.kms.v1.KeyRing] to list, in the format
-	// `projects/*/locations/*/keyRings/*`.
+	// Required. The resource name of the [KeyRing][google.cloud.kms.v1.KeyRing]
+	// to list, in the format `projects/*/locations/*/keyRings/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. Optional limit on the number of [ImportJobs][google.cloud.kms.v1.ImportJob] to include in the
-	// response. Further [ImportJobs][google.cloud.kms.v1.ImportJob] can subsequently be obtained by
-	// including the [ListImportJobsResponse.next_page_token][google.cloud.kms.v1.ListImportJobsResponse.next_page_token] in a subsequent
-	// request. If unspecified, the server will pick an appropriate default.
+	// Optional. Optional limit on the number of
+	// [ImportJobs][google.cloud.kms.v1.ImportJob] to include in the response.
+	// Further [ImportJobs][google.cloud.kms.v1.ImportJob] can subsequently be
+	// obtained by including the
+	// [ListImportJobsResponse.next_page_token][google.cloud.kms.v1.ListImportJobsResponse.next_page_token]
+	// in a subsequent request. If unspecified, the server will pick an
+	// appropriate default.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// Optional. Optional pagination token, returned earlier via
 	// [ListImportJobsResponse.next_page_token][google.cloud.kms.v1.ListImportJobsResponse.next_page_token].
@@ -445,7 +462,8 @@ func (x *ListImportJobsRequest) GetOrderBy() string {
 	return ""
 }
 
-// Response message for [KeyManagementService.ListKeyRings][google.cloud.kms.v1.KeyManagementService.ListKeyRings].
+// Response message for
+// [KeyManagementService.ListKeyRings][google.cloud.kms.v1.KeyManagementService.ListKeyRings].
 type ListKeyRingsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -454,9 +472,11 @@ type ListKeyRingsResponse struct {
 	// The list of [KeyRings][google.cloud.kms.v1.KeyRing].
 	KeyRings []*KeyRing `protobuf:"bytes,1,rep,name=key_rings,json=keyRings,proto3" json:"key_rings,omitempty"`
 	// A token to retrieve next page of results. Pass this value in
-	// [ListKeyRingsRequest.page_token][google.cloud.kms.v1.ListKeyRingsRequest.page_token] to retrieve the next page of results.
+	// [ListKeyRingsRequest.page_token][google.cloud.kms.v1.ListKeyRingsRequest.page_token]
+	// to retrieve the next page of results.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// The total number of [KeyRings][google.cloud.kms.v1.KeyRing] that matched the query.
+	// The total number of [KeyRings][google.cloud.kms.v1.KeyRing] that matched
+	// the query.
 	TotalSize int32 `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`
 }
 
@@ -513,7 +533,8 @@ func (x *ListKeyRingsResponse) GetTotalSize() int32 {
 	return 0
 }
 
-// Response message for [KeyManagementService.ListCryptoKeys][google.cloud.kms.v1.KeyManagementService.ListCryptoKeys].
+// Response message for
+// [KeyManagementService.ListCryptoKeys][google.cloud.kms.v1.KeyManagementService.ListCryptoKeys].
 type ListCryptoKeysResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -522,9 +543,11 @@ type ListCryptoKeysResponse struct {
 	// The list of [CryptoKeys][google.cloud.kms.v1.CryptoKey].
 	CryptoKeys []*CryptoKey `protobuf:"bytes,1,rep,name=crypto_keys,json=cryptoKeys,proto3" json:"crypto_keys,omitempty"`
 	// A token to retrieve next page of results. Pass this value in
-	// [ListCryptoKeysRequest.page_token][google.cloud.kms.v1.ListCryptoKeysRequest.page_token] to retrieve the next page of results.
+	// [ListCryptoKeysRequest.page_token][google.cloud.kms.v1.ListCryptoKeysRequest.page_token]
+	// to retrieve the next page of results.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// The total number of [CryptoKeys][google.cloud.kms.v1.CryptoKey] that matched the query.
+	// The total number of [CryptoKeys][google.cloud.kms.v1.CryptoKey] that
+	// matched the query.
 	TotalSize int32 `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`
 }
 
@@ -581,7 +604,8 @@ func (x *ListCryptoKeysResponse) GetTotalSize() int32 {
 	return 0
 }
 
-// Response message for [KeyManagementService.ListCryptoKeyVersions][google.cloud.kms.v1.KeyManagementService.ListCryptoKeyVersions].
+// Response message for
+// [KeyManagementService.ListCryptoKeyVersions][google.cloud.kms.v1.KeyManagementService.ListCryptoKeyVersions].
 type ListCryptoKeyVersionsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -590,10 +614,11 @@ type ListCryptoKeyVersionsResponse struct {
 	// The list of [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion].
 	CryptoKeyVersions []*CryptoKeyVersion `protobuf:"bytes,1,rep,name=crypto_key_versions,json=cryptoKeyVersions,proto3" json:"crypto_key_versions,omitempty"`
 	// A token to retrieve next page of results. Pass this value in
-	// [ListCryptoKeyVersionsRequest.page_token][google.cloud.kms.v1.ListCryptoKeyVersionsRequest.page_token] to retrieve the next page of
-	// results.
+	// [ListCryptoKeyVersionsRequest.page_token][google.cloud.kms.v1.ListCryptoKeyVersionsRequest.page_token]
+	// to retrieve the next page of results.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// The total number of [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion] that matched the
+	// The total number of
+	// [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion] that matched the
 	// query.
 	TotalSize int32 `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`
 }
@@ -651,7 +676,8 @@ func (x *ListCryptoKeyVersionsResponse) GetTotalSize() int32 {
 	return 0
 }
 
-// Response message for [KeyManagementService.ListImportJobs][google.cloud.kms.v1.KeyManagementService.ListImportJobs].
+// Response message for
+// [KeyManagementService.ListImportJobs][google.cloud.kms.v1.KeyManagementService.ListImportJobs].
 type ListImportJobsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -660,9 +686,11 @@ type ListImportJobsResponse struct {
 	// The list of [ImportJobs][google.cloud.kms.v1.ImportJob].
 	ImportJobs []*ImportJob `protobuf:"bytes,1,rep,name=import_jobs,json=importJobs,proto3" json:"import_jobs,omitempty"`
 	// A token to retrieve next page of results. Pass this value in
-	// [ListImportJobsRequest.page_token][google.cloud.kms.v1.ListImportJobsRequest.page_token] to retrieve the next page of results.
+	// [ListImportJobsRequest.page_token][google.cloud.kms.v1.ListImportJobsRequest.page_token]
+	// to retrieve the next page of results.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	// The total number of [ImportJobs][google.cloud.kms.v1.ImportJob] that matched the query.
+	// The total number of [ImportJobs][google.cloud.kms.v1.ImportJob] that
+	// matched the query.
 	TotalSize int32 `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`
 }
 
@@ -719,13 +747,15 @@ func (x *ListImportJobsResponse) GetTotalSize() int32 {
 	return 0
 }
 
-// Request message for [KeyManagementService.GetKeyRing][google.cloud.kms.v1.KeyManagementService.GetKeyRing].
+// Request message for
+// [KeyManagementService.GetKeyRing][google.cloud.kms.v1.KeyManagementService.GetKeyRing].
 type GetKeyRingRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.KeyRing.name] of the [KeyRing][google.cloud.kms.v1.KeyRing] to get.
+	// Required. The [name][google.cloud.kms.v1.KeyRing.name] of the
+	// [KeyRing][google.cloud.kms.v1.KeyRing] to get.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -768,13 +798,15 @@ func (x *GetKeyRingRequest) GetName() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.GetCryptoKey][google.cloud.kms.v1.KeyManagementService.GetCryptoKey].
+// Request message for
+// [KeyManagementService.GetCryptoKey][google.cloud.kms.v1.KeyManagementService.GetCryptoKey].
 type GetCryptoKeyRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.CryptoKey.name] of the [CryptoKey][google.cloud.kms.v1.CryptoKey] to get.
+	// Required. The [name][google.cloud.kms.v1.CryptoKey.name] of the
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey] to get.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -817,13 +849,15 @@ func (x *GetCryptoKeyRequest) GetName() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.GetCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.GetCryptoKeyVersion].
+// Request message for
+// [KeyManagementService.GetCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.GetCryptoKeyVersion].
 type GetCryptoKeyVersionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.CryptoKeyVersion.name] of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to get.
+	// Required. The [name][google.cloud.kms.v1.CryptoKeyVersion.name] of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to get.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -866,14 +900,15 @@ func (x *GetCryptoKeyVersionRequest) GetName() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey].
+// Request message for
+// [KeyManagementService.GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey].
 type GetPublicKeyRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.CryptoKeyVersion.name] of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] public key to
-	// get.
+	// Required. The [name][google.cloud.kms.v1.CryptoKeyVersion.name] of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] public key to get.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -916,13 +951,15 @@ func (x *GetPublicKeyRequest) GetName() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.GetImportJob][google.cloud.kms.v1.KeyManagementService.GetImportJob].
+// Request message for
+// [KeyManagementService.GetImportJob][google.cloud.kms.v1.KeyManagementService.GetImportJob].
 type GetImportJobRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.ImportJob.name] of the [ImportJob][google.cloud.kms.v1.ImportJob] to get.
+	// Required. The [name][google.cloud.kms.v1.ImportJob.name] of the
+	// [ImportJob][google.cloud.kms.v1.ImportJob] to get.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -965,19 +1002,22 @@ func (x *GetImportJobRequest) GetName() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.CreateKeyRing][google.cloud.kms.v1.KeyManagementService.CreateKeyRing].
+// Request message for
+// [KeyManagementService.CreateKeyRing][google.cloud.kms.v1.KeyManagementService.CreateKeyRing].
 type CreateKeyRingRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name of the location associated with the
-	// [KeyRings][google.cloud.kms.v1.KeyRing], in the format `projects/*/locations/*`.
+	// [KeyRings][google.cloud.kms.v1.KeyRing], in the format
+	// `projects/*/locations/*`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. It must be unique within a location and match the regular
 	// expression `[a-zA-Z0-9_-]{1,63}`
 	KeyRingId string `protobuf:"bytes,2,opt,name=key_ring_id,json=keyRingId,proto3" json:"key_ring_id,omitempty"`
-	// Required. A [KeyRing][google.cloud.kms.v1.KeyRing] with initial field values.
+	// Required. A [KeyRing][google.cloud.kms.v1.KeyRing] with initial field
+	// values.
 	KeyRing *KeyRing `protobuf:"bytes,3,opt,name=key_ring,json=keyRing,proto3" json:"key_ring,omitempty"`
 }
 
@@ -1034,23 +1074,28 @@ func (x *CreateKeyRingRequest) GetKeyRing() *KeyRing {
 	return nil
 }
 
-// Request message for [KeyManagementService.CreateCryptoKey][google.cloud.kms.v1.KeyManagementService.CreateCryptoKey].
+// Request message for
+// [KeyManagementService.CreateCryptoKey][google.cloud.kms.v1.KeyManagementService.CreateCryptoKey].
 type CreateCryptoKeyRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.KeyRing.name] of the KeyRing associated with the
-	// [CryptoKeys][google.cloud.kms.v1.CryptoKey].
+	// Required. The [name][google.cloud.kms.v1.KeyRing.name] of the KeyRing
+	// associated with the [CryptoKeys][google.cloud.kms.v1.CryptoKey].
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. It must be unique within a KeyRing and match the regular
 	// expression `[a-zA-Z0-9_-]{1,63}`
 	CryptoKeyId string `protobuf:"bytes,2,opt,name=crypto_key_id,json=cryptoKeyId,proto3" json:"crypto_key_id,omitempty"`
-	// Required. A [CryptoKey][google.cloud.kms.v1.CryptoKey] with initial field values.
+	// Required. A [CryptoKey][google.cloud.kms.v1.CryptoKey] with initial field
+	// values.
 	CryptoKey *CryptoKey `protobuf:"bytes,3,opt,name=crypto_key,json=cryptoKey,proto3" json:"crypto_key,omitempty"`
-	// If set to true, the request will create a [CryptoKey][google.cloud.kms.v1.CryptoKey] without any
-	// [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion]. You must manually call
-	// [CreateCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.CreateCryptoKeyVersion] or
+	// If set to true, the request will create a
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey] without any
+	// [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion]. You must
+	// manually call
+	// [CreateCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.CreateCryptoKeyVersion]
+	// or
 	// [ImportCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.ImportCryptoKeyVersion]
 	// before you can use this [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	SkipInitialVersionCreation bool `protobuf:"varint,5,opt,name=skip_initial_version_creation,json=skipInitialVersionCreation,proto3" json:"skip_initial_version_creation,omitempty"`
@@ -1116,16 +1161,19 @@ func (x *CreateCryptoKeyRequest) GetSkipInitialVersionCreation() bool {
 	return false
 }
 
-// Request message for [KeyManagementService.CreateCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.CreateCryptoKeyVersion].
+// Request message for
+// [KeyManagementService.CreateCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.CreateCryptoKeyVersion].
 type CreateCryptoKeyVersionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.CryptoKey.name] of the [CryptoKey][google.cloud.kms.v1.CryptoKey] associated with
-	// the [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion].
+	// Required. The [name][google.cloud.kms.v1.CryptoKey.name] of the
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey] associated with the
+	// [CryptoKeyVersions][google.cloud.kms.v1.CryptoKeyVersion].
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. A [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with initial field values.
+	// Required. A [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with
+	// initial field values.
 	CryptoKeyVersion *CryptoKeyVersion `protobuf:"bytes,2,opt,name=crypto_key_version,json=cryptoKeyVersion,proto3" json:"crypto_key_version,omitempty"`
 }
 
@@ -1175,40 +1223,49 @@ func (x *CreateCryptoKeyVersionRequest) GetCryptoKeyVersion() *CryptoKeyVersion 
 	return nil
 }
 
-// Request message for [KeyManagementService.ImportCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.ImportCryptoKeyVersion].
+// Request message for
+// [KeyManagementService.ImportCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.ImportCryptoKeyVersion].
 type ImportCryptoKeyVersionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.CryptoKey.name] of the [CryptoKey][google.cloud.kms.v1.CryptoKey] to be imported into.
+	// Required. The [name][google.cloud.kms.v1.CryptoKey.name] of the
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey] to be imported into.
 	//
 	// The create permission is only required on this key when creating a new
 	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Optional. The optional [name][google.cloud.kms.v1.CryptoKeyVersion.name] of an existing
-	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to target for an import operation.
-	// If this field is not present, a new [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] containing the
+	// Optional. The optional [name][google.cloud.kms.v1.CryptoKeyVersion.name] of
+	// an existing [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to
+	// target for an import operation. If this field is not present, a new
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] containing the
 	// supplied key material is created.
 	//
 	// If this field is present, the supplied key material is imported into
-	// the existing [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]. To import into an existing
-	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion], the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] must be a child of
-	// [ImportCryptoKeyVersionRequest.parent][google.cloud.kms.v1.ImportCryptoKeyVersionRequest.parent], have been previously created via
-	// [ImportCryptoKeyVersion][], and be in
-	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED] or
+	// the existing [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]. To
+	// import into an existing
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion], the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] must be a child of
+	// [ImportCryptoKeyVersionRequest.parent][google.cloud.kms.v1.ImportCryptoKeyVersionRequest.parent],
+	// have been previously created via [ImportCryptoKeyVersion][], and be in
+	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED]
+	// or
 	// [IMPORT_FAILED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.IMPORT_FAILED]
 	// state. The key material and algorithm must match the previous
-	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] exactly if the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] has ever contained
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] exactly if the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] has ever contained
 	// key material.
 	CryptoKeyVersion string `protobuf:"bytes,6,opt,name=crypto_key_version,json=cryptoKeyVersion,proto3" json:"crypto_key_version,omitempty"`
-	// Required. The [algorithm][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionAlgorithm] of
-	// the key being imported. This does not need to match the
-	// [version_template][google.cloud.kms.v1.CryptoKey.version_template] of the [CryptoKey][google.cloud.kms.v1.CryptoKey] this
-	// version imports into.
+	// Required. The
+	// [algorithm][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionAlgorithm]
+	// of the key being imported. This does not need to match the
+	// [version_template][google.cloud.kms.v1.CryptoKey.version_template] of the
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey] this version imports into.
 	Algorithm CryptoKeyVersion_CryptoKeyVersionAlgorithm `protobuf:"varint,2,opt,name=algorithm,proto3,enum=google.cloud.kms.v1.CryptoKeyVersion_CryptoKeyVersionAlgorithm" json:"algorithm,omitempty"`
-	// Required. The [name][google.cloud.kms.v1.ImportJob.name] of the [ImportJob][google.cloud.kms.v1.ImportJob] that was used to
-	// wrap this key material.
+	// Required. The [name][google.cloud.kms.v1.ImportJob.name] of the
+	// [ImportJob][google.cloud.kms.v1.ImportJob] that was used to wrap this key
+	// material.
 	ImportJob string `protobuf:"bytes,4,opt,name=import_job,json=importJob,proto3" json:"import_job,omitempty"`
 	// Required. The incoming wrapped key material that is to be imported.
 	//
@@ -1304,8 +1361,9 @@ type ImportCryptoKeyVersionRequest_RsaAesWrappedKey struct {
 	// This field contains the concatenation of two wrapped keys:
 	// <ol>
 	//   <li>An ephemeral AES-256 wrapping key wrapped with the
-	//       [public_key][google.cloud.kms.v1.ImportJob.public_key] using RSAES-OAEP with SHA-1,
-	//       MGF1 with SHA-1, and an empty label.
+	//       [public_key][google.cloud.kms.v1.ImportJob.public_key] using
+	//       RSAES-OAEP with SHA-1/SHA-256, MGF1 with SHA-1/SHA-256, and an
+	//       empty label.
 	//   </li>
 	//   <li>The key to be imported, wrapped with the ephemeral AES-256 key
 	//       using AES-KWP (RFC 5649).
@@ -1325,19 +1383,22 @@ type ImportCryptoKeyVersionRequest_RsaAesWrappedKey struct {
 func (*ImportCryptoKeyVersionRequest_RsaAesWrappedKey) isImportCryptoKeyVersionRequest_WrappedKeyMaterial() {
 }
 
-// Request message for [KeyManagementService.CreateImportJob][google.cloud.kms.v1.KeyManagementService.CreateImportJob].
+// Request message for
+// [KeyManagementService.CreateImportJob][google.cloud.kms.v1.KeyManagementService.CreateImportJob].
 type CreateImportJobRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The [name][google.cloud.kms.v1.KeyRing.name] of the [KeyRing][google.cloud.kms.v1.KeyRing] associated with the
+	// Required. The [name][google.cloud.kms.v1.KeyRing.name] of the
+	// [KeyRing][google.cloud.kms.v1.KeyRing] associated with the
 	// [ImportJobs][google.cloud.kms.v1.ImportJob].
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. It must be unique within a KeyRing and match the regular
 	// expression `[a-zA-Z0-9_-]{1,63}`
 	ImportJobId string `protobuf:"bytes,2,opt,name=import_job_id,json=importJobId,proto3" json:"import_job_id,omitempty"`
-	// Required. An [ImportJob][google.cloud.kms.v1.ImportJob] with initial field values.
+	// Required. An [ImportJob][google.cloud.kms.v1.ImportJob] with initial field
+	// values.
 	ImportJob *ImportJob `protobuf:"bytes,3,opt,name=import_job,json=importJob,proto3" json:"import_job,omitempty"`
 }
 
@@ -1394,7 +1455,8 @@ func (x *CreateImportJobRequest) GetImportJob() *ImportJob {
 	return nil
 }
 
-// Request message for [KeyManagementService.UpdateCryptoKey][google.cloud.kms.v1.KeyManagementService.UpdateCryptoKey].
+// Request message for
+// [KeyManagementService.UpdateCryptoKey][google.cloud.kms.v1.KeyManagementService.UpdateCryptoKey].
 type UpdateCryptoKeyRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1452,13 +1514,15 @@ func (x *UpdateCryptoKeyRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	return nil
 }
 
-// Request message for [KeyManagementService.UpdateCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.UpdateCryptoKeyVersion].
+// Request message for
+// [KeyManagementService.UpdateCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.UpdateCryptoKeyVersion].
 type UpdateCryptoKeyVersionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with updated values.
+	// Required. [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with
+	// updated values.
 	CryptoKeyVersion *CryptoKeyVersion `protobuf:"bytes,1,opt,name=crypto_key_version,json=cryptoKeyVersion,proto3" json:"crypto_key_version,omitempty"`
 	// Required. List of fields to be updated in this request.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
@@ -1510,15 +1574,18 @@ func (x *UpdateCryptoKeyVersionRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 	return nil
 }
 
-// Request message for [KeyManagementService.UpdateCryptoKeyPrimaryVersion][google.cloud.kms.v1.KeyManagementService.UpdateCryptoKeyPrimaryVersion].
+// Request message for
+// [KeyManagementService.UpdateCryptoKeyPrimaryVersion][google.cloud.kms.v1.KeyManagementService.UpdateCryptoKeyPrimaryVersion].
 type UpdateCryptoKeyPrimaryVersionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKey][google.cloud.kms.v1.CryptoKey] to update.
+	// Required. The resource name of the
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey] to update.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The id of the child [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use as primary.
+	// Required. The id of the child
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use as primary.
 	CryptoKeyVersionId string `protobuf:"bytes,2,opt,name=crypto_key_version_id,json=cryptoKeyVersionId,proto3" json:"crypto_key_version_id,omitempty"`
 }
 
@@ -1568,13 +1635,15 @@ func (x *UpdateCryptoKeyPrimaryVersionRequest) GetCryptoKeyVersionId() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.DestroyCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.DestroyCryptoKeyVersion].
+// Request message for
+// [KeyManagementService.DestroyCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.DestroyCryptoKeyVersion].
 type DestroyCryptoKeyVersionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to destroy.
+	// Required. The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to destroy.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1617,13 +1686,15 @@ func (x *DestroyCryptoKeyVersionRequest) GetName() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion].
+// Request message for
+// [KeyManagementService.RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion].
 type RestoreCryptoKeyVersionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to restore.
+	// Required. The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to restore.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -1666,65 +1737,82 @@ func (x *RestoreCryptoKeyVersionRequest) GetName() string {
 	return ""
 }
 
-// Request message for [KeyManagementService.Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt].
+// Request message for
+// [KeyManagementService.Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt].
 type EncryptRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKey][google.cloud.kms.v1.CryptoKey] or [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]
-	// to use for encryption.
+	// Required. The resource name of the
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey] or
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use for
+	// encryption.
 	//
-	// If a [CryptoKey][google.cloud.kms.v1.CryptoKey] is specified, the server will use its
-	// [primary version][google.cloud.kms.v1.CryptoKey.primary].
+	// If a [CryptoKey][google.cloud.kms.v1.CryptoKey] is specified, the server
+	// will use its [primary version][google.cloud.kms.v1.CryptoKey.primary].
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The data to encrypt. Must be no larger than 64KiB.
 	//
 	// The maximum size depends on the key version's
-	// [protection_level][google.cloud.kms.v1.CryptoKeyVersionTemplate.protection_level]. For
-	// [SOFTWARE][google.cloud.kms.v1.ProtectionLevel.SOFTWARE] keys, the plaintext must be no larger
-	// than 64KiB. For [HSM][google.cloud.kms.v1.ProtectionLevel.HSM] keys, the combined length of the
-	// plaintext and additional_authenticated_data fields must be no larger than
-	// 8KiB.
+	// [protection_level][google.cloud.kms.v1.CryptoKeyVersionTemplate.protection_level].
+	// For [SOFTWARE][google.cloud.kms.v1.ProtectionLevel.SOFTWARE] keys, the
+	// plaintext must be no larger than 64KiB. For
+	// [HSM][google.cloud.kms.v1.ProtectionLevel.HSM] keys, the combined length of
+	// the plaintext and additional_authenticated_data fields must be no larger
+	// than 8KiB.
 	Plaintext []byte `protobuf:"bytes,2,opt,name=plaintext,proto3" json:"plaintext,omitempty"`
-	// Optional. Optional data that, if specified, must also be provided during decryption
-	// through [DecryptRequest.additional_authenticated_data][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data].
+	// Optional. Optional data that, if specified, must also be provided during
+	// decryption through
+	// [DecryptRequest.additional_authenticated_data][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data].
 	//
 	// The maximum size depends on the key version's
-	// [protection_level][google.cloud.kms.v1.CryptoKeyVersionTemplate.protection_level]. For
-	// [SOFTWARE][google.cloud.kms.v1.ProtectionLevel.SOFTWARE] keys, the AAD must be no larger than
-	// 64KiB. For [HSM][google.cloud.kms.v1.ProtectionLevel.HSM] keys, the combined length of the
-	// plaintext and additional_authenticated_data fields must be no larger than
-	// 8KiB.
+	// [protection_level][google.cloud.kms.v1.CryptoKeyVersionTemplate.protection_level].
+	// For [SOFTWARE][google.cloud.kms.v1.ProtectionLevel.SOFTWARE] keys, the AAD
+	// must be no larger than 64KiB. For
+	// [HSM][google.cloud.kms.v1.ProtectionLevel.HSM] keys, the combined length of
+	// the plaintext and additional_authenticated_data fields must be no larger
+	// than 8KiB.
 	AdditionalAuthenticatedData []byte `protobuf:"bytes,3,opt,name=additional_authenticated_data,json=additionalAuthenticatedData,proto3" json:"additional_authenticated_data,omitempty"`
-	// Optional. An optional CRC32C checksum of the [EncryptRequest.plaintext][google.cloud.kms.v1.EncryptRequest.plaintext]. If
-	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the
-	// received [EncryptRequest.plaintext][google.cloud.kms.v1.EncryptRequest.plaintext] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
-	// CRC32C([EncryptRequest.plaintext][google.cloud.kms.v1.EncryptRequest.plaintext]) is equal to
-	// [EncryptRequest.plaintext_crc32c][google.cloud.kms.v1.EncryptRequest.plaintext_crc32c], and if so, perform a limited number of
-	// retries. A persistent mismatch may indicate an issue in your computation of
-	// the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// Optional. An optional CRC32C checksum of the
+	// [EncryptRequest.plaintext][google.cloud.kms.v1.EncryptRequest.plaintext].
+	// If specified,
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// verify the integrity of the received
+	// [EncryptRequest.plaintext][google.cloud.kms.v1.EncryptRequest.plaintext]
+	// using this checksum.
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
+	// CRC32C([EncryptRequest.plaintext][google.cloud.kms.v1.EncryptRequest.plaintext])
+	// is equal to
+	// [EncryptRequest.plaintext_crc32c][google.cloud.kms.v1.EncryptRequest.plaintext_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	PlaintextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=plaintext_crc32c,json=plaintextCrc32c,proto3" json:"plaintext_crc32c,omitempty"`
 	// Optional. An optional CRC32C checksum of the
-	// [EncryptRequest.additional_authenticated_data][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data]. If specified,
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the received
-	// [EncryptRequest.additional_authenticated_data][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
-	// CRC32C([EncryptRequest.additional_authenticated_data][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data]) is equal to
-	// [EncryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data_crc32c], and if so, perform
-	// a limited number of retries. A persistent mismatch may indicate an issue in
-	// your computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// [EncryptRequest.additional_authenticated_data][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data].
+	// If specified,
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// verify the integrity of the received
+	// [EncryptRequest.additional_authenticated_data][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data]
+	// using this checksum.
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
+	// CRC32C([EncryptRequest.additional_authenticated_data][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data])
+	// is equal to
+	// [EncryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	AdditionalAuthenticatedDataCrc32C *wrapperspb.Int64Value `protobuf:"bytes,8,opt,name=additional_authenticated_data_crc32c,json=additionalAuthenticatedDataCrc32c,proto3" json:"additional_authenticated_data_crc32c,omitempty"`
 }
 
@@ -1795,14 +1883,16 @@ func (x *EncryptRequest) GetAdditionalAuthenticatedDataCrc32C() *wrapperspb.Int6
 	return nil
 }
 
-// Request message for [KeyManagementService.Decrypt][google.cloud.kms.v1.KeyManagementService.Decrypt].
+// Request message for
+// [KeyManagementService.Decrypt][google.cloud.kms.v1.KeyManagementService.Decrypt].
 type DecryptRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKey][google.cloud.kms.v1.CryptoKey] to use for decryption.
-	// The server will choose the appropriate version.
+	// Required. The resource name of the
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey] to use for decryption. The
+	// server will choose the appropriate version.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The encrypted data originally returned in
 	// [EncryptResponse.ciphertext][google.cloud.kms.v1.EncryptResponse.ciphertext].
@@ -1810,34 +1900,45 @@ type DecryptRequest struct {
 	// Optional. Optional data that must match the data originally supplied in
 	// [EncryptRequest.additional_authenticated_data][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data].
 	AdditionalAuthenticatedData []byte `protobuf:"bytes,3,opt,name=additional_authenticated_data,json=additionalAuthenticatedData,proto3" json:"additional_authenticated_data,omitempty"`
-	// Optional. An optional CRC32C checksum of the [DecryptRequest.ciphertext][google.cloud.kms.v1.DecryptRequest.ciphertext]. If
-	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the
-	// received [DecryptRequest.ciphertext][google.cloud.kms.v1.DecryptRequest.ciphertext] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
-	// CRC32C([DecryptRequest.ciphertext][google.cloud.kms.v1.DecryptRequest.ciphertext]) is equal to
-	// [DecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.DecryptRequest.ciphertext_crc32c], and if so, perform a limited number
-	// of retries. A persistent mismatch may indicate an issue in your computation
-	// of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// Optional. An optional CRC32C checksum of the
+	// [DecryptRequest.ciphertext][google.cloud.kms.v1.DecryptRequest.ciphertext].
+	// If specified,
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// verify the integrity of the received
+	// [DecryptRequest.ciphertext][google.cloud.kms.v1.DecryptRequest.ciphertext]
+	// using this checksum.
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
+	// CRC32C([DecryptRequest.ciphertext][google.cloud.kms.v1.DecryptRequest.ciphertext])
+	// is equal to
+	// [DecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.DecryptRequest.ciphertext_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	CiphertextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=ciphertext_crc32c,json=ciphertextCrc32c,proto3" json:"ciphertext_crc32c,omitempty"`
 	// Optional. An optional CRC32C checksum of the
-	// [DecryptRequest.additional_authenticated_data][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data]. If specified,
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the received
-	// [DecryptRequest.additional_authenticated_data][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
-	// CRC32C([DecryptRequest.additional_authenticated_data][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data]) is equal to
-	// [DecryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data_crc32c], and if so, perform
-	// a limited number of retries. A persistent mismatch may indicate an issue in
-	// your computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// [DecryptRequest.additional_authenticated_data][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data].
+	// If specified,
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// verify the integrity of the received
+	// [DecryptRequest.additional_authenticated_data][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data]
+	// using this checksum.
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
+	// CRC32C([DecryptRequest.additional_authenticated_data][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data])
+	// is equal to
+	// [DecryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.DecryptRequest.additional_authenticated_data_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	AdditionalAuthenticatedDataCrc32C *wrapperspb.Int64Value `protobuf:"bytes,6,opt,name=additional_authenticated_data_crc32c,json=additionalAuthenticatedDataCrc32c,proto3" json:"additional_authenticated_data_crc32c,omitempty"`
 }
 
@@ -1908,49 +2009,69 @@ func (x *DecryptRequest) GetAdditionalAuthenticatedDataCrc32C() *wrapperspb.Int6
 	return nil
 }
 
-// Request message for [KeyManagementService.AsymmetricSign][google.cloud.kms.v1.KeyManagementService.AsymmetricSign].
+// Request message for
+// [KeyManagementService.AsymmetricSign][google.cloud.kms.v1.KeyManagementService.AsymmetricSign].
 type AsymmetricSignRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use for signing.
+	// Required. The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use for
+	// signing.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. The digest of the data to sign. The digest must be produced with
 	// the same digest algorithm as specified by the key version's
 	// [algorithm][google.cloud.kms.v1.CryptoKeyVersion.algorithm].
+	//
+	// This field may not be supplied if
+	// [AsymmetricSignRequest.data][google.cloud.kms.v1.AsymmetricSignRequest.data]
+	// is supplied.
 	Digest *Digest `protobuf:"bytes,3,opt,name=digest,proto3" json:"digest,omitempty"`
-	// Optional. An optional CRC32C checksum of the [AsymmetricSignRequest.digest][google.cloud.kms.v1.AsymmetricSignRequest.digest]. If
-	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the
-	// received [AsymmetricSignRequest.digest][google.cloud.kms.v1.AsymmetricSignRequest.digest] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
-	// CRC32C([AsymmetricSignRequest.digest][google.cloud.kms.v1.AsymmetricSignRequest.digest]) is equal to
-	// [AsymmetricSignRequest.digest_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.digest_crc32c], and if so, perform a limited
-	// number of retries. A persistent mismatch may indicate an issue in your
-	// computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// Optional. An optional CRC32C checksum of the
+	// [AsymmetricSignRequest.digest][google.cloud.kms.v1.AsymmetricSignRequest.digest].
+	// If specified,
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// verify the integrity of the received
+	// [AsymmetricSignRequest.digest][google.cloud.kms.v1.AsymmetricSignRequest.digest]
+	// using this checksum.
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
+	// CRC32C([AsymmetricSignRequest.digest][google.cloud.kms.v1.AsymmetricSignRequest.digest])
+	// is equal to
+	// [AsymmetricSignRequest.digest_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.digest_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	DigestCrc32C *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=digest_crc32c,json=digestCrc32c,proto3" json:"digest_crc32c,omitempty"`
-	// Optional. This field will only be honored for RAW_PKCS1 keys.
-	// The data to sign. A digest is computed over the data that will be signed,
-	// PKCS #1 padding is applied to the digest directly and then encrypted.
+	// Optional. The data to sign.
+	// It can't be supplied if
+	// [AsymmetricSignRequest.digest][google.cloud.kms.v1.AsymmetricSignRequest.digest]
+	// is supplied.
 	Data []byte `protobuf:"bytes,6,opt,name=data,proto3" json:"data,omitempty"`
-	// Optional. An optional CRC32C checksum of the [AsymmetricSignRequest.data][google.cloud.kms.v1.AsymmetricSignRequest.data]. If
-	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the
-	// received [AsymmetricSignRequest.data][google.cloud.kms.v1.AsymmetricSignRequest.data] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
-	// CRC32C([AsymmetricSignRequest.data][google.cloud.kms.v1.AsymmetricSignRequest.data]) is equal to
-	// [AsymmetricSignRequest.data_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.data_crc32c], and if so, perform a limited
-	// number of retries. A persistent mismatch may indicate an issue in your
-	// computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// Optional. An optional CRC32C checksum of the
+	// [AsymmetricSignRequest.data][google.cloud.kms.v1.AsymmetricSignRequest.data].
+	// If specified,
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// verify the integrity of the received
+	// [AsymmetricSignRequest.data][google.cloud.kms.v1.AsymmetricSignRequest.data]
+	// using this checksum.
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
+	// CRC32C([AsymmetricSignRequest.data][google.cloud.kms.v1.AsymmetricSignRequest.data])
+	// is equal to
+	// [AsymmetricSignRequest.data_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.data_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	DataCrc32C *wrapperspb.Int64Value `protobuf:"bytes,7,opt,name=data_crc32c,json=dataCrc32c,proto3" json:"data_crc32c,omitempty"`
 }
 
@@ -2021,31 +2142,40 @@ func (x *AsymmetricSignRequest) GetDataCrc32C() *wrapperspb.Int64Value {
 	return nil
 }
 
-// Request message for [KeyManagementService.AsymmetricDecrypt][google.cloud.kms.v1.KeyManagementService.AsymmetricDecrypt].
+// Request message for
+// [KeyManagementService.AsymmetricDecrypt][google.cloud.kms.v1.KeyManagementService.AsymmetricDecrypt].
 type AsymmetricDecryptRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use for
+	// Required. The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use for
 	// decryption.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The data encrypted with the named [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]'s public
-	// key using OAEP.
+	// Required. The data encrypted with the named
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]'s public key using
+	// OAEP.
 	Ciphertext []byte `protobuf:"bytes,3,opt,name=ciphertext,proto3" json:"ciphertext,omitempty"`
-	// Optional. An optional CRC32C checksum of the [AsymmetricDecryptRequest.ciphertext][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext].
-	// If specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the
-	// received [AsymmetricDecryptRequest.ciphertext][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
-	// CRC32C([AsymmetricDecryptRequest.ciphertext][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext]) is equal to
-	// [AsymmetricDecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext_crc32c], and if so, perform a
-	// limited number of retries. A persistent mismatch may indicate an issue in
-	// your computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// Optional. An optional CRC32C checksum of the
+	// [AsymmetricDecryptRequest.ciphertext][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext].
+	// If specified,
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// verify the integrity of the received
+	// [AsymmetricDecryptRequest.ciphertext][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext]
+	// using this checksum.
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
+	// CRC32C([AsymmetricDecryptRequest.ciphertext][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext])
+	// is equal to
+	// [AsymmetricDecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	CiphertextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=ciphertext_crc32c,json=ciphertextCrc32c,proto3" json:"ciphertext_crc32c,omitempty"`
 }
 
@@ -2102,30 +2232,37 @@ func (x *AsymmetricDecryptRequest) GetCiphertextCrc32C() *wrapperspb.Int64Value 
 	return nil
 }
 
-// Request message for [KeyManagementService.MacSign][google.cloud.kms.v1.KeyManagementService.MacSign].
+// Request message for
+// [KeyManagementService.MacSign][google.cloud.kms.v1.KeyManagementService.MacSign].
 type MacSignRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use for signing.
+	// Required. The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use for
+	// signing.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The data to sign. The MAC tag is computed over this data field based on
-	// the specific algorithm.
+	// Required. The data to sign. The MAC tag is computed over this data field
+	// based on the specific algorithm.
 	Data []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
-	// Optional. An optional CRC32C checksum of the [MacSignRequest.data][google.cloud.kms.v1.MacSignRequest.data]. If
-	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the
-	// received [MacSignRequest.data][google.cloud.kms.v1.MacSignRequest.data] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
-	// CRC32C([MacSignRequest.data][google.cloud.kms.v1.MacSignRequest.data]) is equal to
-	// [MacSignRequest.data_crc32c][google.cloud.kms.v1.MacSignRequest.data_crc32c], and if so, perform a limited
-	// number of retries. A persistent mismatch may indicate an issue in your
-	// computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// Optional. An optional CRC32C checksum of the
+	// [MacSignRequest.data][google.cloud.kms.v1.MacSignRequest.data]. If
+	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService]
+	// will verify the integrity of the received
+	// [MacSignRequest.data][google.cloud.kms.v1.MacSignRequest.data] using this
+	// checksum. [KeyManagementService][google.cloud.kms.v1.KeyManagementService]
+	// will report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
+	// CRC32C([MacSignRequest.data][google.cloud.kms.v1.MacSignRequest.data]) is
+	// equal to
+	// [MacSignRequest.data_crc32c][google.cloud.kms.v1.MacSignRequest.data_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	DataCrc32C *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=data_crc32c,json=dataCrc32c,proto3" json:"data_crc32c,omitempty"`
 }
 
@@ -2182,46 +2319,58 @@ func (x *MacSignRequest) GetDataCrc32C() *wrapperspb.Int64Value {
 	return nil
 }
 
-// Request message for [KeyManagementService.MacVerify][google.cloud.kms.v1.KeyManagementService.MacVerify].
+// Request message for
+// [KeyManagementService.MacVerify][google.cloud.kms.v1.KeyManagementService.MacVerify].
 type MacVerifyRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use for verification.
+	// Required. The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] to use for
+	// verification.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The data used previously as a [MacSignRequest.data][google.cloud.kms.v1.MacSignRequest.data] to generate the MAC
-	// tag.
+	// Required. The data used previously as a
+	// [MacSignRequest.data][google.cloud.kms.v1.MacSignRequest.data] to generate
+	// the MAC tag.
 	Data []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
-	// Optional. An optional CRC32C checksum of the [MacVerifyRequest.data][google.cloud.kms.v1.MacVerifyRequest.data]. If
-	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the
-	// received [MacVerifyRequest.data][google.cloud.kms.v1.MacVerifyRequest.data] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
-	// CRC32C([MacVerifyRequest.data][google.cloud.kms.v1.MacVerifyRequest.data]) is equal to
-	// [MacVerifyRequest.data_crc32c][google.cloud.kms.v1.MacVerifyRequest.data_crc32c], and if so, perform a limited
-	// number of retries. A persistent mismatch may indicate an issue in your
-	// computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// Optional. An optional CRC32C checksum of the
+	// [MacVerifyRequest.data][google.cloud.kms.v1.MacVerifyRequest.data]. If
+	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService]
+	// will verify the integrity of the received
+	// [MacVerifyRequest.data][google.cloud.kms.v1.MacVerifyRequest.data] using
+	// this checksum.
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will
+	// report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
+	// CRC32C([MacVerifyRequest.data][google.cloud.kms.v1.MacVerifyRequest.data])
+	// is equal to
+	// [MacVerifyRequest.data_crc32c][google.cloud.kms.v1.MacVerifyRequest.data_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	DataCrc32C *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=data_crc32c,json=dataCrc32c,proto3" json:"data_crc32c,omitempty"`
 	// Required. The signature to verify.
 	Mac []byte `protobuf:"bytes,4,opt,name=mac,proto3" json:"mac,omitempty"`
-	// Optional. An optional CRC32C checksum of the [MacVerifyRequest.mac][google.cloud.kms.v1.MacVerifyRequest.mac]. If
-	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will verify the integrity of the
-	// received [MacVerifyRequest.mac][google.cloud.kms.v1.MacVerifyRequest.mac] using this checksum.
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] will report an error if the checksum verification
-	// fails. If you receive a checksum error, your client should verify that
+	// Optional. An optional CRC32C checksum of the
+	// [MacVerifyRequest.mac][google.cloud.kms.v1.MacVerifyRequest.mac]. If
+	// specified, [KeyManagementService][google.cloud.kms.v1.KeyManagementService]
+	// will verify the integrity of the received
+	// [MacVerifyRequest.mac][google.cloud.kms.v1.MacVerifyRequest.mac] using this
+	// checksum. [KeyManagementService][google.cloud.kms.v1.KeyManagementService]
+	// will report an error if the checksum verification fails. If you receive a
+	// checksum error, your client should verify that
 	// CRC32C([MacVerifyRequest.tag][]) is equal to
-	// [MacVerifyRequest.mac_crc32c][google.cloud.kms.v1.MacVerifyRequest.mac_crc32c], and if so, perform a limited
-	// number of retries. A persistent mismatch may indicate an issue in your
-	// computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// [MacVerifyRequest.mac_crc32c][google.cloud.kms.v1.MacVerifyRequest.mac_crc32c],
+	// and if so, perform a limited number of retries. A persistent mismatch may
+	// indicate an issue in your computation of the CRC32C checksum. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	MacCrc32C *wrapperspb.Int64Value `protobuf:"bytes,5,opt,name=mac_crc32c,json=macCrc32c,proto3" json:"mac_crc32c,omitempty"`
 }
 
@@ -2292,7 +2441,8 @@ func (x *MacVerifyRequest) GetMacCrc32C() *wrapperspb.Int64Value {
 	return nil
 }
 
-// Request message for [KeyManagementService.GenerateRandomBytes][google.cloud.kms.v1.KeyManagementService.GenerateRandomBytes].
+// Request message for
+// [KeyManagementService.GenerateRandomBytes][google.cloud.kms.v1.KeyManagementService.GenerateRandomBytes].
 type GenerateRandomBytesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2304,8 +2454,10 @@ type GenerateRandomBytesRequest struct {
 	// The length in bytes of the amount of randomness to retrieve.  Minimum 8
 	// bytes, maximum 1024 bytes.
 	LengthBytes int32 `protobuf:"varint,2,opt,name=length_bytes,json=lengthBytes,proto3" json:"length_bytes,omitempty"`
-	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] to use when generating the random data. Defaults to
-	// [SOFTWARE][google.cloud.kms.v1.ProtectionLevel.SOFTWARE].
+	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] to use when
+	// generating the random data. Currently, only
+	// [HSM][google.cloud.kms.v1.ProtectionLevel.HSM] protection level is
+	// supported.
 	ProtectionLevel ProtectionLevel `protobuf:"varint,3,opt,name=protection_level,json=protectionLevel,proto3,enum=google.cloud.kms.v1.ProtectionLevel" json:"protection_level,omitempty"`
 }
 
@@ -2362,49 +2514,67 @@ func (x *GenerateRandomBytesRequest) GetProtectionLevel() ProtectionLevel {
 	return ProtectionLevel_PROTECTION_LEVEL_UNSPECIFIED
 }
 
-// Response message for [KeyManagementService.Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt].
+// Response message for
+// [KeyManagementService.Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt].
 type EncryptResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used in encryption. Check
-	// this field to verify that the intended resource was used for encryption.
+	// The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used in
+	// encryption. Check this field to verify that the intended resource was used
+	// for encryption.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The encrypted data.
 	Ciphertext []byte `protobuf:"bytes,2,opt,name=ciphertext,proto3" json:"ciphertext,omitempty"`
 	// Integrity verification field. A CRC32C checksum of the returned
-	// [EncryptResponse.ciphertext][google.cloud.kms.v1.EncryptResponse.ciphertext]. An integrity check of
-	// [EncryptResponse.ciphertext][google.cloud.kms.v1.EncryptResponse.ciphertext] can be performed by computing the CRC32C
-	// checksum of [EncryptResponse.ciphertext][google.cloud.kms.v1.EncryptResponse.ciphertext] and comparing your results to
-	// this field. Discard the response in case of non-matching checksum values,
-	// and perform a limited number of retries. A persistent mismatch may indicate
-	// an issue in your computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// [EncryptResponse.ciphertext][google.cloud.kms.v1.EncryptResponse.ciphertext].
+	// An integrity check of
+	// [EncryptResponse.ciphertext][google.cloud.kms.v1.EncryptResponse.ciphertext]
+	// can be performed by computing the CRC32C checksum of
+	// [EncryptResponse.ciphertext][google.cloud.kms.v1.EncryptResponse.ciphertext]
+	// and comparing your results to this field. Discard the response in case of
+	// non-matching checksum values, and perform a limited number of retries. A
+	// persistent mismatch may indicate an issue in your computation of the CRC32C
+	// checksum. Note: This field is defined as int64 for reasons of compatibility
+	// across different languages. However, it is a non-negative integer, which
+	// will never exceed 2^32-1, and can be safely downconverted to uint32 in
+	// languages that support this type.
 	CiphertextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,4,opt,name=ciphertext_crc32c,json=ciphertextCrc32c,proto3" json:"ciphertext_crc32c,omitempty"`
 	// Integrity verification field. A flag indicating whether
-	// [EncryptRequest.plaintext_crc32c][google.cloud.kms.v1.EncryptRequest.plaintext_crc32c] was received by
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
-	// [plaintext][google.cloud.kms.v1.EncryptRequest.plaintext]. A false value of this field
-	// indicates either that [EncryptRequest.plaintext_crc32c][google.cloud.kms.v1.EncryptRequest.plaintext_crc32c] was left unset or
-	// that it was not delivered to [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've set
-	// [EncryptRequest.plaintext_crc32c][google.cloud.kms.v1.EncryptRequest.plaintext_crc32c] but this field is still false, discard
-	// the response and perform a limited number of retries.
+	// [EncryptRequest.plaintext_crc32c][google.cloud.kms.v1.EncryptRequest.plaintext_crc32c]
+	// was received by
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used
+	// for the integrity verification of the
+	// [plaintext][google.cloud.kms.v1.EncryptRequest.plaintext]. A false value of
+	// this field indicates either that
+	// [EncryptRequest.plaintext_crc32c][google.cloud.kms.v1.EncryptRequest.plaintext_crc32c]
+	// was left unset or that it was not delivered to
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
+	// set
+	// [EncryptRequest.plaintext_crc32c][google.cloud.kms.v1.EncryptRequest.plaintext_crc32c]
+	// but this field is still false, discard the response and perform a limited
+	// number of retries.
 	VerifiedPlaintextCrc32C bool `protobuf:"varint,5,opt,name=verified_plaintext_crc32c,json=verifiedPlaintextCrc32c,proto3" json:"verified_plaintext_crc32c,omitempty"`
 	// Integrity verification field. A flag indicating whether
-	// [EncryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data_crc32c] was received by
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
-	// [AAD][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data]. A false value of this
-	// field indicates either that
-	// [EncryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data_crc32c] was left unset or
-	// that it was not delivered to [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've set
-	// [EncryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data_crc32c] but this field is
-	// still false, discard the response and perform a limited number of retries.
+	// [EncryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data_crc32c]
+	// was received by
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used
+	// for the integrity verification of the
+	// [AAD][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data]. A
+	// false value of this field indicates either that
+	// [EncryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data_crc32c]
+	// was left unset or that it was not delivered to
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
+	// set
+	// [EncryptRequest.additional_authenticated_data_crc32c][google.cloud.kms.v1.EncryptRequest.additional_authenticated_data_crc32c]
+	// but this field is still false, discard the response and perform a limited
+	// number of retries.
 	VerifiedAdditionalAuthenticatedDataCrc32C bool `protobuf:"varint,6,opt,name=verified_additional_authenticated_data_crc32c,json=verifiedAdditionalAuthenticatedDataCrc32c,proto3" json:"verified_additional_authenticated_data_crc32c,omitempty"`
-	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used in encryption.
+	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used in
+	// encryption.
 	ProtectionLevel ProtectionLevel `protobuf:"varint,7,opt,name=protection_level,json=protectionLevel,proto3,enum=google.cloud.kms.v1.ProtectionLevel" json:"protection_level,omitempty"`
 }
 
@@ -2482,31 +2652,39 @@ func (x *EncryptResponse) GetProtectionLevel() ProtectionLevel {
 	return ProtectionLevel_PROTECTION_LEVEL_UNSPECIFIED
 }
 
-// Response message for [KeyManagementService.Decrypt][google.cloud.kms.v1.KeyManagementService.Decrypt].
+// Response message for
+// [KeyManagementService.Decrypt][google.cloud.kms.v1.KeyManagementService.Decrypt].
 type DecryptResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The decrypted data originally supplied in [EncryptRequest.plaintext][google.cloud.kms.v1.EncryptRequest.plaintext].
+	// The decrypted data originally supplied in
+	// [EncryptRequest.plaintext][google.cloud.kms.v1.EncryptRequest.plaintext].
 	Plaintext []byte `protobuf:"bytes,1,opt,name=plaintext,proto3" json:"plaintext,omitempty"`
 	// Integrity verification field. A CRC32C checksum of the returned
-	// [DecryptResponse.plaintext][google.cloud.kms.v1.DecryptResponse.plaintext]. An integrity check of
-	// [DecryptResponse.plaintext][google.cloud.kms.v1.DecryptResponse.plaintext] can be performed by computing the CRC32C
-	// checksum of [DecryptResponse.plaintext][google.cloud.kms.v1.DecryptResponse.plaintext] and comparing your results to
-	// this field. Discard the response in case of non-matching checksum values,
-	// and perform a limited number of retries. A persistent mismatch may indicate
-	// an issue in your computation of the CRC32C checksum. Note: receiving this
-	// response message indicates that [KeyManagementService][google.cloud.kms.v1.KeyManagementService] is able to
-	// successfully decrypt the [ciphertext][google.cloud.kms.v1.DecryptRequest.ciphertext].
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// [DecryptResponse.plaintext][google.cloud.kms.v1.DecryptResponse.plaintext].
+	// An integrity check of
+	// [DecryptResponse.plaintext][google.cloud.kms.v1.DecryptResponse.plaintext]
+	// can be performed by computing the CRC32C checksum of
+	// [DecryptResponse.plaintext][google.cloud.kms.v1.DecryptResponse.plaintext]
+	// and comparing your results to this field. Discard the response in case of
+	// non-matching checksum values, and perform a limited number of retries. A
+	// persistent mismatch may indicate an issue in your computation of the CRC32C
+	// checksum. Note: receiving this response message indicates that
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] is able to
+	// successfully decrypt the
+	// [ciphertext][google.cloud.kms.v1.DecryptRequest.ciphertext]. Note: This
+	// field is defined as int64 for reasons of compatibility across different
+	// languages. However, it is a non-negative integer, which will never exceed
+	// 2^32-1, and can be safely downconverted to uint32 in languages that support
+	// this type.
 	PlaintextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=plaintext_crc32c,json=plaintextCrc32c,proto3" json:"plaintext_crc32c,omitempty"`
 	// Whether the Decryption was performed using the primary key version.
 	UsedPrimary bool `protobuf:"varint,3,opt,name=used_primary,json=usedPrimary,proto3" json:"used_primary,omitempty"`
-	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used in decryption.
+	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used in
+	// decryption.
 	ProtectionLevel ProtectionLevel `protobuf:"varint,4,opt,name=protection_level,json=protectionLevel,proto3,enum=google.cloud.kms.v1.ProtectionLevel" json:"protection_level,omitempty"`
 }
 
@@ -2570,7 +2748,8 @@ func (x *DecryptResponse) GetProtectionLevel() ProtectionLevel {
 	return ProtectionLevel_PROTECTION_LEVEL_UNSPECIFIED
 }
 
-// Response message for [KeyManagementService.AsymmetricSign][google.cloud.kms.v1.KeyManagementService.AsymmetricSign].
+// Response message for
+// [KeyManagementService.AsymmetricSign][google.cloud.kms.v1.KeyManagementService.AsymmetricSign].
 type AsymmetricSignResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2579,39 +2758,55 @@ type AsymmetricSignResponse struct {
 	// The created signature.
 	Signature []byte `protobuf:"bytes,1,opt,name=signature,proto3" json:"signature,omitempty"`
 	// Integrity verification field. A CRC32C checksum of the returned
-	// [AsymmetricSignResponse.signature][google.cloud.kms.v1.AsymmetricSignResponse.signature]. An integrity check of
-	// [AsymmetricSignResponse.signature][google.cloud.kms.v1.AsymmetricSignResponse.signature] can be performed by computing the
-	// CRC32C checksum of [AsymmetricSignResponse.signature][google.cloud.kms.v1.AsymmetricSignResponse.signature] and comparing your
-	// results to this field. Discard the response in case of non-matching
-	// checksum values, and perform a limited number of retries. A persistent
-	// mismatch may indicate an issue in your computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// [AsymmetricSignResponse.signature][google.cloud.kms.v1.AsymmetricSignResponse.signature].
+	// An integrity check of
+	// [AsymmetricSignResponse.signature][google.cloud.kms.v1.AsymmetricSignResponse.signature]
+	// can be performed by computing the CRC32C checksum of
+	// [AsymmetricSignResponse.signature][google.cloud.kms.v1.AsymmetricSignResponse.signature]
+	// and comparing your results to this field. Discard the response in case of
+	// non-matching checksum values, and perform a limited number of retries. A
+	// persistent mismatch may indicate an issue in your computation of the CRC32C
+	// checksum. Note: This field is defined as int64 for reasons of compatibility
+	// across different languages. However, it is a non-negative integer, which
+	// will never exceed 2^32-1, and can be safely downconverted to uint32 in
+	// languages that support this type.
 	SignatureCrc32C *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=signature_crc32c,json=signatureCrc32c,proto3" json:"signature_crc32c,omitempty"`
 	// Integrity verification field. A flag indicating whether
-	// [AsymmetricSignRequest.digest_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.digest_crc32c] was received by
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
-	// [digest][google.cloud.kms.v1.AsymmetricSignRequest.digest]. A false value of this field
-	// indicates either that [AsymmetricSignRequest.digest_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.digest_crc32c] was left
-	// unset or that it was not delivered to [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
-	// set [AsymmetricSignRequest.digest_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.digest_crc32c] but this field is still false,
-	// discard the response and perform a limited number of retries.
+	// [AsymmetricSignRequest.digest_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.digest_crc32c]
+	// was received by
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used
+	// for the integrity verification of the
+	// [digest][google.cloud.kms.v1.AsymmetricSignRequest.digest]. A false value
+	// of this field indicates either that
+	// [AsymmetricSignRequest.digest_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.digest_crc32c]
+	// was left unset or that it was not delivered to
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
+	// set
+	// [AsymmetricSignRequest.digest_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.digest_crc32c]
+	// but this field is still false, discard the response and perform a limited
+	// number of retries.
 	VerifiedDigestCrc32C bool `protobuf:"varint,3,opt,name=verified_digest_crc32c,json=verifiedDigestCrc32c,proto3" json:"verified_digest_crc32c,omitempty"`
-	// The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for signing. Check
-	// this field to verify that the intended resource was used for signing.
+	// The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for signing.
+	// Check this field to verify that the intended resource was used for signing.
 	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	// Integrity verification field. A flag indicating whether
-	// [AsymmetricSignRequest.data_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.data_crc32c] was received by
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
-	// [data][google.cloud.kms.v1.AsymmetricSignRequest.data]. A false value of this field
-	// indicates either that [AsymmetricSignRequest.data_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.data_crc32c] was left
-	// unset or that it was not delivered to [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
-	// set [AsymmetricSignRequest.data_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.data_crc32c] but this field is still false,
-	// discard the response and perform a limited number of retries.
+	// [AsymmetricSignRequest.data_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.data_crc32c]
+	// was received by
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used
+	// for the integrity verification of the
+	// [data][google.cloud.kms.v1.AsymmetricSignRequest.data]. A false value of
+	// this field indicates either that
+	// [AsymmetricSignRequest.data_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.data_crc32c]
+	// was left unset or that it was not delivered to
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
+	// set
+	// [AsymmetricSignRequest.data_crc32c][google.cloud.kms.v1.AsymmetricSignRequest.data_crc32c]
+	// but this field is still false, discard the response and perform a limited
+	// number of retries.
 	VerifiedDataCrc32C bool `protobuf:"varint,5,opt,name=verified_data_crc32c,json=verifiedDataCrc32c,proto3" json:"verified_data_crc32c,omitempty"`
-	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for signing.
+	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for signing.
 	ProtectionLevel ProtectionLevel `protobuf:"varint,6,opt,name=protection_level,json=protectionLevel,proto3,enum=google.cloud.kms.v1.ProtectionLevel" json:"protection_level,omitempty"`
 }
 
@@ -2689,7 +2884,8 @@ func (x *AsymmetricSignResponse) GetProtectionLevel() ProtectionLevel {
 	return ProtectionLevel_PROTECTION_LEVEL_UNSPECIFIED
 }
 
-// Response message for [KeyManagementService.AsymmetricDecrypt][google.cloud.kms.v1.KeyManagementService.AsymmetricDecrypt].
+// Response message for
+// [KeyManagementService.AsymmetricDecrypt][google.cloud.kms.v1.KeyManagementService.AsymmetricDecrypt].
 type AsymmetricDecryptResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2698,27 +2894,37 @@ type AsymmetricDecryptResponse struct {
 	// The decrypted data originally encrypted with the matching public key.
 	Plaintext []byte `protobuf:"bytes,1,opt,name=plaintext,proto3" json:"plaintext,omitempty"`
 	// Integrity verification field. A CRC32C checksum of the returned
-	// [AsymmetricDecryptResponse.plaintext][google.cloud.kms.v1.AsymmetricDecryptResponse.plaintext]. An integrity check of
-	// [AsymmetricDecryptResponse.plaintext][google.cloud.kms.v1.AsymmetricDecryptResponse.plaintext] can be performed by computing the
-	// CRC32C checksum of [AsymmetricDecryptResponse.plaintext][google.cloud.kms.v1.AsymmetricDecryptResponse.plaintext] and comparing
-	// your results to this field. Discard the response in case of non-matching
-	// checksum values, and perform a limited number of retries. A persistent
-	// mismatch may indicate an issue in your computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// [AsymmetricDecryptResponse.plaintext][google.cloud.kms.v1.AsymmetricDecryptResponse.plaintext].
+	// An integrity check of
+	// [AsymmetricDecryptResponse.plaintext][google.cloud.kms.v1.AsymmetricDecryptResponse.plaintext]
+	// can be performed by computing the CRC32C checksum of
+	// [AsymmetricDecryptResponse.plaintext][google.cloud.kms.v1.AsymmetricDecryptResponse.plaintext]
+	// and comparing your results to this field. Discard the response in case of
+	// non-matching checksum values, and perform a limited number of retries. A
+	// persistent mismatch may indicate an issue in your computation of the CRC32C
+	// checksum. Note: This field is defined as int64 for reasons of compatibility
+	// across different languages. However, it is a non-negative integer, which
+	// will never exceed 2^32-1, and can be safely downconverted to uint32 in
+	// languages that support this type.
 	PlaintextCrc32C *wrapperspb.Int64Value `protobuf:"bytes,2,opt,name=plaintext_crc32c,json=plaintextCrc32c,proto3" json:"plaintext_crc32c,omitempty"`
 	// Integrity verification field. A flag indicating whether
-	// [AsymmetricDecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext_crc32c] was received by
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
-	// [ciphertext][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext]. A false value of this
-	// field indicates either that [AsymmetricDecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext_crc32c]
-	// was left unset or that it was not delivered to [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If
-	// you've set [AsymmetricDecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext_crc32c] but this field is
-	// still false, discard the response and perform a limited number of retries.
+	// [AsymmetricDecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext_crc32c]
+	// was received by
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used
+	// for the integrity verification of the
+	// [ciphertext][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext]. A
+	// false value of this field indicates either that
+	// [AsymmetricDecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext_crc32c]
+	// was left unset or that it was not delivered to
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
+	// set
+	// [AsymmetricDecryptRequest.ciphertext_crc32c][google.cloud.kms.v1.AsymmetricDecryptRequest.ciphertext_crc32c]
+	// but this field is still false, discard the response and perform a limited
+	// number of retries.
 	VerifiedCiphertextCrc32C bool `protobuf:"varint,3,opt,name=verified_ciphertext_crc32c,json=verifiedCiphertextCrc32c,proto3" json:"verified_ciphertext_crc32c,omitempty"`
-	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used in decryption.
+	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used in
+	// decryption.
 	ProtectionLevel ProtectionLevel `protobuf:"varint,4,opt,name=protection_level,json=protectionLevel,proto3,enum=google.cloud.kms.v1.ProtectionLevel" json:"protection_level,omitempty"`
 }
 
@@ -2782,39 +2988,50 @@ func (x *AsymmetricDecryptResponse) GetProtectionLevel() ProtectionLevel {
 	return ProtectionLevel_PROTECTION_LEVEL_UNSPECIFIED
 }
 
-// Response message for [KeyManagementService.MacSign][google.cloud.kms.v1.KeyManagementService.MacSign].
+// Response message for
+// [KeyManagementService.MacSign][google.cloud.kms.v1.KeyManagementService.MacSign].
 type MacSignResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for signing. Check
-	// this field to verify that the intended resource was used for signing.
+	// The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for signing.
+	// Check this field to verify that the intended resource was used for signing.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The created signature.
 	Mac []byte `protobuf:"bytes,2,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Integrity verification field. A CRC32C checksum of the returned
-	// [MacSignResponse.mac][google.cloud.kms.v1.MacSignResponse.mac]. An integrity check of
-	// [MacSignResponse.mac][google.cloud.kms.v1.MacSignResponse.mac] can be performed by computing the
-	// CRC32C checksum of [MacSignResponse.mac][google.cloud.kms.v1.MacSignResponse.mac] and comparing your
-	// results to this field. Discard the response in case of non-matching
-	// checksum values, and perform a limited number of retries. A persistent
-	// mismatch may indicate an issue in your computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// [MacSignResponse.mac][google.cloud.kms.v1.MacSignResponse.mac]. An
+	// integrity check of
+	// [MacSignResponse.mac][google.cloud.kms.v1.MacSignResponse.mac] can be
+	// performed by computing the CRC32C checksum of
+	// [MacSignResponse.mac][google.cloud.kms.v1.MacSignResponse.mac] and
+	// comparing your results to this field. Discard the response in case of
+	// non-matching checksum values, and perform a limited number of retries. A
+	// persistent mismatch may indicate an issue in your computation of the CRC32C
+	// checksum. Note: This field is defined as int64 for reasons of compatibility
+	// across different languages. However, it is a non-negative integer, which
+	// will never exceed 2^32-1, and can be safely downconverted to uint32 in
+	// languages that support this type.
 	MacCrc32C *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=mac_crc32c,json=macCrc32c,proto3" json:"mac_crc32c,omitempty"`
 	// Integrity verification field. A flag indicating whether
-	// [MacSignRequest.data_crc32c][google.cloud.kms.v1.MacSignRequest.data_crc32c] was received by
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
-	// [data][google.cloud.kms.v1.MacSignRequest.data]. A false value of this field
-	// indicates either that [MacSignRequest.data_crc32c][google.cloud.kms.v1.MacSignRequest.data_crc32c] was left
-	// unset or that it was not delivered to [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
-	// set [MacSignRequest.data_crc32c][google.cloud.kms.v1.MacSignRequest.data_crc32c] but this field is still false,
-	// discard the response and perform a limited number of retries.
+	// [MacSignRequest.data_crc32c][google.cloud.kms.v1.MacSignRequest.data_crc32c]
+	// was received by
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used
+	// for the integrity verification of the
+	// [data][google.cloud.kms.v1.MacSignRequest.data]. A false value of this
+	// field indicates either that
+	// [MacSignRequest.data_crc32c][google.cloud.kms.v1.MacSignRequest.data_crc32c]
+	// was left unset or that it was not delivered to
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
+	// set
+	// [MacSignRequest.data_crc32c][google.cloud.kms.v1.MacSignRequest.data_crc32c]
+	// but this field is still false, discard the response and perform a limited
+	// number of retries.
 	VerifiedDataCrc32C bool `protobuf:"varint,4,opt,name=verified_data_crc32c,json=verifiedDataCrc32c,proto3" json:"verified_data_crc32c,omitempty"`
-	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for signing.
+	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for signing.
 	ProtectionLevel ProtectionLevel `protobuf:"varint,5,opt,name=protection_level,json=protectionLevel,proto3,enum=google.cloud.kms.v1.ProtectionLevel" json:"protection_level,omitempty"`
 }
 
@@ -2885,43 +3102,61 @@ func (x *MacSignResponse) GetProtectionLevel() ProtectionLevel {
 	return ProtectionLevel_PROTECTION_LEVEL_UNSPECIFIED
 }
 
-// Response message for [KeyManagementService.MacVerify][google.cloud.kms.v1.KeyManagementService.MacVerify].
+// Response message for
+// [KeyManagementService.MacVerify][google.cloud.kms.v1.KeyManagementService.MacVerify].
 type MacVerifyResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The resource name of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for verification.
-	// Check this field to verify that the intended resource was used for
-	// verification.
+	// The resource name of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for
+	// verification. Check this field to verify that the intended resource was
+	// used for verification.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// This field indicates whether or not the verification operation for
-	// [MacVerifyRequest.mac][google.cloud.kms.v1.MacVerifyRequest.mac] over [MacVerifyRequest.data][google.cloud.kms.v1.MacVerifyRequest.data] was successful.
+	// [MacVerifyRequest.mac][google.cloud.kms.v1.MacVerifyRequest.mac] over
+	// [MacVerifyRequest.data][google.cloud.kms.v1.MacVerifyRequest.data] was
+	// successful.
 	Success bool `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
 	// Integrity verification field. A flag indicating whether
-	// [MacVerifyRequest.data_crc32c][google.cloud.kms.v1.MacVerifyRequest.data_crc32c] was received by
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
-	// [data][google.cloud.kms.v1.MacVerifyRequest.data]. A false value of this field
-	// indicates either that [MacVerifyRequest.data_crc32c][google.cloud.kms.v1.MacVerifyRequest.data_crc32c] was left
-	// unset or that it was not delivered to [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
-	// set [MacVerifyRequest.data_crc32c][google.cloud.kms.v1.MacVerifyRequest.data_crc32c] but this field is still false,
-	// discard the response and perform a limited number of retries.
+	// [MacVerifyRequest.data_crc32c][google.cloud.kms.v1.MacVerifyRequest.data_crc32c]
+	// was received by
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used
+	// for the integrity verification of the
+	// [data][google.cloud.kms.v1.MacVerifyRequest.data]. A false value of this
+	// field indicates either that
+	// [MacVerifyRequest.data_crc32c][google.cloud.kms.v1.MacVerifyRequest.data_crc32c]
+	// was left unset or that it was not delivered to
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
+	// set
+	// [MacVerifyRequest.data_crc32c][google.cloud.kms.v1.MacVerifyRequest.data_crc32c]
+	// but this field is still false, discard the response and perform a limited
+	// number of retries.
 	VerifiedDataCrc32C bool `protobuf:"varint,3,opt,name=verified_data_crc32c,json=verifiedDataCrc32c,proto3" json:"verified_data_crc32c,omitempty"`
 	// Integrity verification field. A flag indicating whether
-	// [MacVerifyRequest.mac_crc32c][google.cloud.kms.v1.MacVerifyRequest.mac_crc32c] was received by
-	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used for the integrity verification of the
-	// [data][google.cloud.kms.v1.MacVerifyRequest.mac]. A false value of this field
-	// indicates either that [MacVerifyRequest.mac_crc32c][google.cloud.kms.v1.MacVerifyRequest.mac_crc32c] was left
-	// unset or that it was not delivered to [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
-	// set [MacVerifyRequest.mac_crc32c][google.cloud.kms.v1.MacVerifyRequest.mac_crc32c] but this field is still false,
-	// discard the response and perform a limited number of retries.
+	// [MacVerifyRequest.mac_crc32c][google.cloud.kms.v1.MacVerifyRequest.mac_crc32c]
+	// was received by
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService] and used
+	// for the integrity verification of the
+	// [data][google.cloud.kms.v1.MacVerifyRequest.mac]. A false value of this
+	// field indicates either that
+	// [MacVerifyRequest.mac_crc32c][google.cloud.kms.v1.MacVerifyRequest.mac_crc32c]
+	// was left unset or that it was not delivered to
+	// [KeyManagementService][google.cloud.kms.v1.KeyManagementService]. If you've
+	// set
+	// [MacVerifyRequest.mac_crc32c][google.cloud.kms.v1.MacVerifyRequest.mac_crc32c]
+	// but this field is still false, discard the response and perform a limited
+	// number of retries.
 	VerifiedMacCrc32C bool `protobuf:"varint,4,opt,name=verified_mac_crc32c,json=verifiedMacCrc32c,proto3" json:"verified_mac_crc32c,omitempty"`
 	// Integrity verification field. This value is used for the integrity
 	// verification of [MacVerifyResponse.success]. If the value of this field
 	// contradicts the value of [MacVerifyResponse.success], discard the response
 	// and perform a limited number of retries.
 	VerifiedSuccessIntegrity bool `protobuf:"varint,5,opt,name=verified_success_integrity,json=verifiedSuccessIntegrity,proto3" json:"verified_success_integrity,omitempty"`
-	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for verification.
+	// The [ProtectionLevel][google.cloud.kms.v1.ProtectionLevel] of the
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] used for
+	// verification.
 	ProtectionLevel ProtectionLevel `protobuf:"varint,6,opt,name=protection_level,json=protectionLevel,proto3,enum=google.cloud.kms.v1.ProtectionLevel" json:"protection_level,omitempty"`
 }
 
@@ -2999,7 +3234,8 @@ func (x *MacVerifyResponse) GetProtectionLevel() ProtectionLevel {
 	return ProtectionLevel_PROTECTION_LEVEL_UNSPECIFIED
 }
 
-// Response message for [KeyManagementService.GenerateRandomBytes][google.cloud.kms.v1.KeyManagementService.GenerateRandomBytes].
+// Response message for
+// [KeyManagementService.GenerateRandomBytes][google.cloud.kms.v1.KeyManagementService.GenerateRandomBytes].
 type GenerateRandomBytesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3008,16 +3244,18 @@ type GenerateRandomBytesResponse struct {
 	// The generated data.
 	Data []byte `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
 	// Integrity verification field. A CRC32C checksum of the returned
-	// [GenerateRandomBytesResponse.data][google.cloud.kms.v1.GenerateRandomBytesResponse.data]. An integrity check of
-	// [GenerateRandomBytesResponse.data][google.cloud.kms.v1.GenerateRandomBytesResponse.data] can be performed by computing the
-	// CRC32C checksum of [GenerateRandomBytesResponse.data][google.cloud.kms.v1.GenerateRandomBytesResponse.data] and comparing your
-	// results to this field. Discard the response in case of non-matching
-	// checksum values, and perform a limited number of retries. A persistent
-	// mismatch may indicate an issue in your computation of the CRC32C checksum.
-	// Note: This field is defined as int64 for reasons of compatibility across
-	// different languages. However, it is a non-negative integer, which will
-	// never exceed 2^32-1, and can be safely downconverted to uint32 in languages
-	// that support this type.
+	// [GenerateRandomBytesResponse.data][google.cloud.kms.v1.GenerateRandomBytesResponse.data].
+	// An integrity check of
+	// [GenerateRandomBytesResponse.data][google.cloud.kms.v1.GenerateRandomBytesResponse.data]
+	// can be performed by computing the CRC32C checksum of
+	// [GenerateRandomBytesResponse.data][google.cloud.kms.v1.GenerateRandomBytesResponse.data]
+	// and comparing your results to this field. Discard the response in case of
+	// non-matching checksum values, and perform a limited number of retries. A
+	// persistent mismatch may indicate an issue in your computation of the CRC32C
+	// checksum. Note: This field is defined as int64 for reasons of compatibility
+	// across different languages. However, it is a non-negative integer, which
+	// will never exceed 2^32-1, and can be safely downconverted to uint32 in
+	// languages that support this type.
 	DataCrc32C *wrapperspb.Int64Value `protobuf:"bytes,3,opt,name=data_crc32c,json=dataCrc32c,proto3" json:"data_crc32c,omitempty"`
 }
 
@@ -3167,7 +3405,8 @@ func (*Digest_Sha384) isDigest_Digest() {}
 
 func (*Digest_Sha512) isDigest_Digest() {}
 
-// Cloud KMS metadata for the given [google.cloud.location.Location][google.cloud.location.Location].
+// Cloud KMS metadata for the given
+// [google.cloud.location.Location][google.cloud.location.Location].
 type LocationMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3175,11 +3414,13 @@ type LocationMetadata struct {
 
 	// Indicates whether [CryptoKeys][google.cloud.kms.v1.CryptoKey] with
 	// [protection_level][google.cloud.kms.v1.CryptoKeyVersionTemplate.protection_level]
-	// [HSM][google.cloud.kms.v1.ProtectionLevel.HSM] can be created in this location.
+	// [HSM][google.cloud.kms.v1.ProtectionLevel.HSM] can be created in this
+	// location.
 	HsmAvailable bool `protobuf:"varint,1,opt,name=hsm_available,json=hsmAvailable,proto3" json:"hsm_available,omitempty"`
 	// Indicates whether [CryptoKeys][google.cloud.kms.v1.CryptoKey] with
 	// [protection_level][google.cloud.kms.v1.CryptoKeyVersionTemplate.protection_level]
-	// [EXTERNAL][google.cloud.kms.v1.ProtectionLevel.EXTERNAL] can be created in this location.
+	// [EXTERNAL][google.cloud.kms.v1.ProtectionLevel.EXTERNAL] can be created in
+	// this location.
 	EkmAvailable bool `protobuf:"varint,2,opt,name=ekm_available,json=ekmAvailable,proto3" json:"ekm_available,omitempty"`
 }
 
@@ -4804,102 +5045,138 @@ type KeyManagementServiceClient interface {
 	ListImportJobs(ctx context.Context, in *ListImportJobsRequest, opts ...grpc.CallOption) (*ListImportJobsResponse, error)
 	// Returns metadata for a given [KeyRing][google.cloud.kms.v1.KeyRing].
 	GetKeyRing(ctx context.Context, in *GetKeyRingRequest, opts ...grpc.CallOption) (*KeyRing, error)
-	// Returns metadata for a given [CryptoKey][google.cloud.kms.v1.CryptoKey], as well as its
-	// [primary][google.cloud.kms.v1.CryptoKey.primary] [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
+	// Returns metadata for a given [CryptoKey][google.cloud.kms.v1.CryptoKey], as
+	// well as its [primary][google.cloud.kms.v1.CryptoKey.primary]
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	GetCryptoKey(ctx context.Context, in *GetCryptoKeyRequest, opts ...grpc.CallOption) (*CryptoKey, error)
-	// Returns metadata for a given [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
+	// Returns metadata for a given
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	GetCryptoKeyVersion(ctx context.Context, in *GetCryptoKeyVersionRequest, opts ...grpc.CallOption) (*CryptoKeyVersion, error)
-	// Returns the public key for the given [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]. The
+	// Returns the public key for the given
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]. The
 	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] must be
-	// [ASYMMETRIC_SIGN][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ASYMMETRIC_SIGN] or
+	// [ASYMMETRIC_SIGN][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ASYMMETRIC_SIGN]
+	// or
 	// [ASYMMETRIC_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ASYMMETRIC_DECRYPT].
 	GetPublicKey(ctx context.Context, in *GetPublicKeyRequest, opts ...grpc.CallOption) (*PublicKey, error)
 	// Returns metadata for a given [ImportJob][google.cloud.kms.v1.ImportJob].
 	GetImportJob(ctx context.Context, in *GetImportJobRequest, opts ...grpc.CallOption) (*ImportJob, error)
-	// Create a new [KeyRing][google.cloud.kms.v1.KeyRing] in a given Project and Location.
+	// Create a new [KeyRing][google.cloud.kms.v1.KeyRing] in a given Project and
+	// Location.
 	CreateKeyRing(ctx context.Context, in *CreateKeyRingRequest, opts ...grpc.CallOption) (*KeyRing, error)
-	// Create a new [CryptoKey][google.cloud.kms.v1.CryptoKey] within a [KeyRing][google.cloud.kms.v1.KeyRing].
+	// Create a new [CryptoKey][google.cloud.kms.v1.CryptoKey] within a
+	// [KeyRing][google.cloud.kms.v1.KeyRing].
 	//
 	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] and
 	// [CryptoKey.version_template.algorithm][google.cloud.kms.v1.CryptoKeyVersionTemplate.algorithm]
 	// are required.
 	CreateCryptoKey(ctx context.Context, in *CreateCryptoKeyRequest, opts ...grpc.CallOption) (*CryptoKey, error)
-	// Create a new [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] in a [CryptoKey][google.cloud.kms.v1.CryptoKey].
+	// Create a new [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] in a
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	//
 	// The server will assign the next sequential id. If unset,
 	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
 	// [ENABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.ENABLED].
 	CreateCryptoKeyVersion(ctx context.Context, in *CreateCryptoKeyVersionRequest, opts ...grpc.CallOption) (*CryptoKeyVersion, error)
-	// Import wrapped key material into a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
+	// Import wrapped key material into a
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	//
-	// All requests must specify a [CryptoKey][google.cloud.kms.v1.CryptoKey]. If a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] is
-	// additionally specified in the request, key material will be reimported into
-	// that version. Otherwise, a new version will be created, and will be
-	// assigned the next sequential id within the [CryptoKey][google.cloud.kms.v1.CryptoKey].
+	// All requests must specify a [CryptoKey][google.cloud.kms.v1.CryptoKey]. If
+	// a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] is additionally
+	// specified in the request, key material will be reimported into that
+	// version. Otherwise, a new version will be created, and will be assigned the
+	// next sequential id within the [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	ImportCryptoKeyVersion(ctx context.Context, in *ImportCryptoKeyVersionRequest, opts ...grpc.CallOption) (*CryptoKeyVersion, error)
-	// Create a new [ImportJob][google.cloud.kms.v1.ImportJob] within a [KeyRing][google.cloud.kms.v1.KeyRing].
+	// Create a new [ImportJob][google.cloud.kms.v1.ImportJob] within a
+	// [KeyRing][google.cloud.kms.v1.KeyRing].
 	//
-	// [ImportJob.import_method][google.cloud.kms.v1.ImportJob.import_method] is required.
+	// [ImportJob.import_method][google.cloud.kms.v1.ImportJob.import_method] is
+	// required.
 	CreateImportJob(ctx context.Context, in *CreateImportJobRequest, opts ...grpc.CallOption) (*ImportJob, error)
 	// Update a [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	UpdateCryptoKey(ctx context.Context, in *UpdateCryptoKeyRequest, opts ...grpc.CallOption) (*CryptoKey, error)
-	// Update a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]'s metadata.
+	// Update a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]'s
+	// metadata.
 	//
 	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] may be changed between
-	// [ENABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.ENABLED] and
-	// [DISABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DISABLED] using this
-	// method. See [DestroyCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.DestroyCryptoKeyVersion] and [RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion] to
-	// move between other states.
+	// [ENABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.ENABLED]
+	// and
+	// [DISABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DISABLED]
+	// using this method. See
+	// [DestroyCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.DestroyCryptoKeyVersion]
+	// and
+	// [RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion]
+	// to move between other states.
 	UpdateCryptoKeyVersion(ctx context.Context, in *UpdateCryptoKeyVersionRequest, opts ...grpc.CallOption) (*CryptoKeyVersion, error)
-	// Update the version of a [CryptoKey][google.cloud.kms.v1.CryptoKey] that will be used in [Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt].
+	// Update the version of a [CryptoKey][google.cloud.kms.v1.CryptoKey] that
+	// will be used in
+	// [Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt].
 	//
 	// Returns an error if called on a key whose purpose is not
 	// [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT].
 	UpdateCryptoKeyPrimaryVersion(ctx context.Context, in *UpdateCryptoKeyPrimaryVersionRequest, opts ...grpc.CallOption) (*CryptoKey, error)
-	// Schedule a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] for destruction.
+	// Schedule a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] for
+	// destruction.
 	//
-	// Upon calling this method, [CryptoKeyVersion.state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
+	// Upon calling this method,
+	// [CryptoKeyVersion.state][google.cloud.kms.v1.CryptoKeyVersion.state] will
+	// be set to
 	// [DESTROY_SCHEDULED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROY_SCHEDULED],
-	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will be set to the time
-	// [destroy_scheduled_duration][google.cloud.kms.v1.CryptoKey.destroy_scheduled_duration] in the
-	// future. At that time, the [state][google.cloud.kms.v1.CryptoKeyVersion.state] will
-	// automatically change to
-	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED], and the key
-	// material will be irrevocably destroyed.
+	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will
+	// be set to the time
+	// [destroy_scheduled_duration][google.cloud.kms.v1.CryptoKey.destroy_scheduled_duration]
+	// in the future. At that time, the
+	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] will automatically
+	// change to
+	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED],
+	// and the key material will be irrevocably destroyed.
 	//
-	// Before the [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] is reached,
-	// [RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion] may be called to reverse the process.
+	// Before the
+	// [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] is
+	// reached,
+	// [RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion]
+	// may be called to reverse the process.
 	DestroyCryptoKeyVersion(ctx context.Context, in *DestroyCryptoKeyVersionRequest, opts ...grpc.CallOption) (*CryptoKeyVersion, error)
 	// Restore a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] in the
 	// [DESTROY_SCHEDULED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROY_SCHEDULED]
 	// state.
 	//
-	// Upon restoration of the CryptoKeyVersion, [state][google.cloud.kms.v1.CryptoKeyVersion.state]
-	// will be set to [DISABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DISABLED],
-	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will be cleared.
+	// Upon restoration of the CryptoKeyVersion,
+	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
+	// [DISABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DISABLED],
+	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will
+	// be cleared.
 	RestoreCryptoKeyVersion(ctx context.Context, in *RestoreCryptoKeyVersionRequest, opts ...grpc.CallOption) (*CryptoKeyVersion, error)
-	// Encrypts data, so that it can only be recovered by a call to [Decrypt][google.cloud.kms.v1.KeyManagementService.Decrypt].
-	// The [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] must be
+	// Encrypts data, so that it can only be recovered by a call to
+	// [Decrypt][google.cloud.kms.v1.KeyManagementService.Decrypt]. The
+	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] must be
 	// [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT].
 	Encrypt(ctx context.Context, in *EncryptRequest, opts ...grpc.CallOption) (*EncryptResponse, error)
-	// Decrypts data that was protected by [Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt]. The [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
-	// must be [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT].
+	// Decrypts data that was protected by
+	// [Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt]. The
+	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] must be
+	// [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT].
 	Decrypt(ctx context.Context, in *DecryptRequest, opts ...grpc.CallOption) (*DecryptResponse, error)
-	// Signs data using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
+	// Signs data using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]
+	// with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
 	// ASYMMETRIC_SIGN, producing a signature that can be verified with the public
-	// key retrieved from [GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey].
+	// key retrieved from
+	// [GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey].
 	AsymmetricSign(ctx context.Context, in *AsymmetricSignRequest, opts ...grpc.CallOption) (*AsymmetricSignResponse, error)
 	// Decrypts data that was encrypted with a public key retrieved from
-	// [GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey] corresponding to a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with
-	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] ASYMMETRIC_DECRYPT.
+	// [GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey]
+	// corresponding to a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]
+	// with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
+	// ASYMMETRIC_DECRYPT.
 	AsymmetricDecrypt(ctx context.Context, in *AsymmetricDecryptRequest, opts ...grpc.CallOption) (*AsymmetricDecryptResponse, error)
-	// Signs data using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
-	// MAC, producing a tag that can be verified by another source with the
-	// same key.
+	// Signs data using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]
+	// with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] MAC,
+	// producing a tag that can be verified by another source with the same key.
 	MacSign(ctx context.Context, in *MacSignRequest, opts ...grpc.CallOption) (*MacSignResponse, error)
-	// Verifies MAC tag using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
-	// MAC, and returns a response that indicates whether or not the verification
-	// was successful.
+	// Verifies MAC tag using a
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with
+	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] MAC, and returns
+	// a response that indicates whether or not the verification was successful.
 	MacVerify(ctx context.Context, in *MacVerifyRequest, opts ...grpc.CallOption) (*MacVerifyResponse, error)
 	// Generate random bytes using the Cloud KMS randomness source in the provided
 	// location.
@@ -5160,102 +5437,138 @@ type KeyManagementServiceServer interface {
 	ListImportJobs(context.Context, *ListImportJobsRequest) (*ListImportJobsResponse, error)
 	// Returns metadata for a given [KeyRing][google.cloud.kms.v1.KeyRing].
 	GetKeyRing(context.Context, *GetKeyRingRequest) (*KeyRing, error)
-	// Returns metadata for a given [CryptoKey][google.cloud.kms.v1.CryptoKey], as well as its
-	// [primary][google.cloud.kms.v1.CryptoKey.primary] [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
+	// Returns metadata for a given [CryptoKey][google.cloud.kms.v1.CryptoKey], as
+	// well as its [primary][google.cloud.kms.v1.CryptoKey.primary]
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	GetCryptoKey(context.Context, *GetCryptoKeyRequest) (*CryptoKey, error)
-	// Returns metadata for a given [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
+	// Returns metadata for a given
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	GetCryptoKeyVersion(context.Context, *GetCryptoKeyVersionRequest) (*CryptoKeyVersion, error)
-	// Returns the public key for the given [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]. The
+	// Returns the public key for the given
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]. The
 	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] must be
-	// [ASYMMETRIC_SIGN][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ASYMMETRIC_SIGN] or
+	// [ASYMMETRIC_SIGN][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ASYMMETRIC_SIGN]
+	// or
 	// [ASYMMETRIC_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ASYMMETRIC_DECRYPT].
 	GetPublicKey(context.Context, *GetPublicKeyRequest) (*PublicKey, error)
 	// Returns metadata for a given [ImportJob][google.cloud.kms.v1.ImportJob].
 	GetImportJob(context.Context, *GetImportJobRequest) (*ImportJob, error)
-	// Create a new [KeyRing][google.cloud.kms.v1.KeyRing] in a given Project and Location.
+	// Create a new [KeyRing][google.cloud.kms.v1.KeyRing] in a given Project and
+	// Location.
 	CreateKeyRing(context.Context, *CreateKeyRingRequest) (*KeyRing, error)
-	// Create a new [CryptoKey][google.cloud.kms.v1.CryptoKey] within a [KeyRing][google.cloud.kms.v1.KeyRing].
+	// Create a new [CryptoKey][google.cloud.kms.v1.CryptoKey] within a
+	// [KeyRing][google.cloud.kms.v1.KeyRing].
 	//
 	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] and
 	// [CryptoKey.version_template.algorithm][google.cloud.kms.v1.CryptoKeyVersionTemplate.algorithm]
 	// are required.
 	CreateCryptoKey(context.Context, *CreateCryptoKeyRequest) (*CryptoKey, error)
-	// Create a new [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] in a [CryptoKey][google.cloud.kms.v1.CryptoKey].
+	// Create a new [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] in a
+	// [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	//
 	// The server will assign the next sequential id. If unset,
 	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
 	// [ENABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.ENABLED].
 	CreateCryptoKeyVersion(context.Context, *CreateCryptoKeyVersionRequest) (*CryptoKeyVersion, error)
-	// Import wrapped key material into a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
+	// Import wrapped key material into a
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion].
 	//
-	// All requests must specify a [CryptoKey][google.cloud.kms.v1.CryptoKey]. If a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] is
-	// additionally specified in the request, key material will be reimported into
-	// that version. Otherwise, a new version will be created, and will be
-	// assigned the next sequential id within the [CryptoKey][google.cloud.kms.v1.CryptoKey].
+	// All requests must specify a [CryptoKey][google.cloud.kms.v1.CryptoKey]. If
+	// a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] is additionally
+	// specified in the request, key material will be reimported into that
+	// version. Otherwise, a new version will be created, and will be assigned the
+	// next sequential id within the [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	ImportCryptoKeyVersion(context.Context, *ImportCryptoKeyVersionRequest) (*CryptoKeyVersion, error)
-	// Create a new [ImportJob][google.cloud.kms.v1.ImportJob] within a [KeyRing][google.cloud.kms.v1.KeyRing].
+	// Create a new [ImportJob][google.cloud.kms.v1.ImportJob] within a
+	// [KeyRing][google.cloud.kms.v1.KeyRing].
 	//
-	// [ImportJob.import_method][google.cloud.kms.v1.ImportJob.import_method] is required.
+	// [ImportJob.import_method][google.cloud.kms.v1.ImportJob.import_method] is
+	// required.
 	CreateImportJob(context.Context, *CreateImportJobRequest) (*ImportJob, error)
 	// Update a [CryptoKey][google.cloud.kms.v1.CryptoKey].
 	UpdateCryptoKey(context.Context, *UpdateCryptoKeyRequest) (*CryptoKey, error)
-	// Update a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]'s metadata.
+	// Update a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]'s
+	// metadata.
 	//
 	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] may be changed between
-	// [ENABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.ENABLED] and
-	// [DISABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DISABLED] using this
-	// method. See [DestroyCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.DestroyCryptoKeyVersion] and [RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion] to
-	// move between other states.
+	// [ENABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.ENABLED]
+	// and
+	// [DISABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DISABLED]
+	// using this method. See
+	// [DestroyCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.DestroyCryptoKeyVersion]
+	// and
+	// [RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion]
+	// to move between other states.
 	UpdateCryptoKeyVersion(context.Context, *UpdateCryptoKeyVersionRequest) (*CryptoKeyVersion, error)
-	// Update the version of a [CryptoKey][google.cloud.kms.v1.CryptoKey] that will be used in [Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt].
+	// Update the version of a [CryptoKey][google.cloud.kms.v1.CryptoKey] that
+	// will be used in
+	// [Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt].
 	//
 	// Returns an error if called on a key whose purpose is not
 	// [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT].
 	UpdateCryptoKeyPrimaryVersion(context.Context, *UpdateCryptoKeyPrimaryVersionRequest) (*CryptoKey, error)
-	// Schedule a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] for destruction.
+	// Schedule a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] for
+	// destruction.
 	//
-	// Upon calling this method, [CryptoKeyVersion.state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
+	// Upon calling this method,
+	// [CryptoKeyVersion.state][google.cloud.kms.v1.CryptoKeyVersion.state] will
+	// be set to
 	// [DESTROY_SCHEDULED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROY_SCHEDULED],
-	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will be set to the time
-	// [destroy_scheduled_duration][google.cloud.kms.v1.CryptoKey.destroy_scheduled_duration] in the
-	// future. At that time, the [state][google.cloud.kms.v1.CryptoKeyVersion.state] will
-	// automatically change to
-	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED], and the key
-	// material will be irrevocably destroyed.
+	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will
+	// be set to the time
+	// [destroy_scheduled_duration][google.cloud.kms.v1.CryptoKey.destroy_scheduled_duration]
+	// in the future. At that time, the
+	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] will automatically
+	// change to
+	// [DESTROYED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROYED],
+	// and the key material will be irrevocably destroyed.
 	//
-	// Before the [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] is reached,
-	// [RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion] may be called to reverse the process.
+	// Before the
+	// [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] is
+	// reached,
+	// [RestoreCryptoKeyVersion][google.cloud.kms.v1.KeyManagementService.RestoreCryptoKeyVersion]
+	// may be called to reverse the process.
 	DestroyCryptoKeyVersion(context.Context, *DestroyCryptoKeyVersionRequest) (*CryptoKeyVersion, error)
 	// Restore a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] in the
 	// [DESTROY_SCHEDULED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DESTROY_SCHEDULED]
 	// state.
 	//
-	// Upon restoration of the CryptoKeyVersion, [state][google.cloud.kms.v1.CryptoKeyVersion.state]
-	// will be set to [DISABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DISABLED],
-	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will be cleared.
+	// Upon restoration of the CryptoKeyVersion,
+	// [state][google.cloud.kms.v1.CryptoKeyVersion.state] will be set to
+	// [DISABLED][google.cloud.kms.v1.CryptoKeyVersion.CryptoKeyVersionState.DISABLED],
+	// and [destroy_time][google.cloud.kms.v1.CryptoKeyVersion.destroy_time] will
+	// be cleared.
 	RestoreCryptoKeyVersion(context.Context, *RestoreCryptoKeyVersionRequest) (*CryptoKeyVersion, error)
-	// Encrypts data, so that it can only be recovered by a call to [Decrypt][google.cloud.kms.v1.KeyManagementService.Decrypt].
-	// The [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] must be
+	// Encrypts data, so that it can only be recovered by a call to
+	// [Decrypt][google.cloud.kms.v1.KeyManagementService.Decrypt]. The
+	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] must be
 	// [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT].
 	Encrypt(context.Context, *EncryptRequest) (*EncryptResponse, error)
-	// Decrypts data that was protected by [Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt]. The [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
-	// must be [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT].
+	// Decrypts data that was protected by
+	// [Encrypt][google.cloud.kms.v1.KeyManagementService.Encrypt]. The
+	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] must be
+	// [ENCRYPT_DECRYPT][google.cloud.kms.v1.CryptoKey.CryptoKeyPurpose.ENCRYPT_DECRYPT].
 	Decrypt(context.Context, *DecryptRequest) (*DecryptResponse, error)
-	// Signs data using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
+	// Signs data using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]
+	// with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
 	// ASYMMETRIC_SIGN, producing a signature that can be verified with the public
-	// key retrieved from [GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey].
+	// key retrieved from
+	// [GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey].
 	AsymmetricSign(context.Context, *AsymmetricSignRequest) (*AsymmetricSignResponse, error)
 	// Decrypts data that was encrypted with a public key retrieved from
-	// [GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey] corresponding to a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with
-	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] ASYMMETRIC_DECRYPT.
+	// [GetPublicKey][google.cloud.kms.v1.KeyManagementService.GetPublicKey]
+	// corresponding to a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]
+	// with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
+	// ASYMMETRIC_DECRYPT.
 	AsymmetricDecrypt(context.Context, *AsymmetricDecryptRequest) (*AsymmetricDecryptResponse, error)
-	// Signs data using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
-	// MAC, producing a tag that can be verified by another source with the
-	// same key.
+	// Signs data using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion]
+	// with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] MAC,
+	// producing a tag that can be verified by another source with the same key.
 	MacSign(context.Context, *MacSignRequest) (*MacSignResponse, error)
-	// Verifies MAC tag using a [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose]
-	// MAC, and returns a response that indicates whether or not the verification
-	// was successful.
+	// Verifies MAC tag using a
+	// [CryptoKeyVersion][google.cloud.kms.v1.CryptoKeyVersion] with
+	// [CryptoKey.purpose][google.cloud.kms.v1.CryptoKey.purpose] MAC, and returns
+	// a response that indicates whether or not the verification was successful.
 	MacVerify(context.Context, *MacVerifyRequest) (*MacVerifyResponse, error)
 	// Generate random bytes using the Cloud KMS randomness source in the provided
 	// location.
