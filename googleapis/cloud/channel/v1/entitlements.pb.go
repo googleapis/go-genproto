@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -503,7 +503,8 @@ type ProvisionedService struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. Provisioning ID of the entitlement. For Google Workspace, this would be the
-	// underlying Subscription ID.
+	// underlying Subscription ID. For Google Cloud Platform, this would be the
+	// Billing Account ID of the billing subaccount."
 	ProvisioningId string `protobuf:"bytes,1,opt,name=provisioning_id,json=provisioningId,proto3" json:"provisioning_id,omitempty"`
 	// Output only. The product pertaining to the provisioning resource as specified in the
 	// Offer.
