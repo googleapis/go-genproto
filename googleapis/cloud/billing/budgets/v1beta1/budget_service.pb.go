@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -703,7 +703,7 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type BudgetServiceClient interface {
 	// Creates a new budget. See
-	// <a href="https://cloud.google.com/billing/quotas">Quotas and limits</a>
+	// [Quotas and limits](https://cloud.google.com/billing/quotas)
 	// for more information on the limits of the number of budgets you can create.
 	CreateBudget(ctx context.Context, in *CreateBudgetRequest, opts ...grpc.CallOption) (*Budget, error)
 	// Updates a budget and returns the updated budget.
@@ -786,7 +786,7 @@ func (c *budgetServiceClient) DeleteBudget(ctx context.Context, in *DeleteBudget
 // BudgetServiceServer is the server API for BudgetService service.
 type BudgetServiceServer interface {
 	// Creates a new budget. See
-	// <a href="https://cloud.google.com/billing/quotas">Quotas and limits</a>
+	// [Quotas and limits](https://cloud.google.com/billing/quotas)
 	// for more information on the limits of the number of budgets you can create.
 	CreateBudget(context.Context, *CreateBudgetRequest) (*Budget, error)
 	// Updates a budget and returns the updated budget.

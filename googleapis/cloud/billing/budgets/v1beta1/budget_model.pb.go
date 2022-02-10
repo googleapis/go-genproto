@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -46,6 +46,8 @@ const (
 type CalendarPeriod int32
 
 const (
+	// Calendar period is unset. This is the default if the budget is for a
+	// custom time period (CustomPeriod).
 	CalendarPeriod_CALENDAR_PERIOD_UNSPECIFIED CalendarPeriod = 0
 	// A month. Month starts on the first day of each month, such as January 1,
 	// February 1, March 1, and so on.
@@ -111,8 +113,7 @@ const (
 	// Use forecasted spend for the period as the basis for comparison against
 	// the threshold.
 	// FORECASTED_SPEND can only be set when the budget's time period is a
-	// [Filter.calendar_period][google.cloud.billing.budgets.v1beta1.Filter.calendar_period].
-	// It cannot be set in combination with
+	// [Filter.calendar_period][google.cloud.billing.budgets.v1beta1.Filter.calendar_period].  It cannot be set in combination with
 	// [Filter.custom_period][google.cloud.billing.budgets.v1beta1.Filter.custom_period].
 	ThresholdRule_FORECASTED_SPEND ThresholdRule_Basis = 2
 )
@@ -240,17 +241,20 @@ type Budget struct {
 	// User data for display name in UI.
 	// Validation: <= 60 chars.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// Optional. Filters that define which resources are used to compute the
-	// actual spend against the budget amount, such as projects, services, and the
-	// budget's time period, as well as other filters.
+	// Optional. Filters that define which resources are used to compute the actual spend
+	// against the budget amount, such as projects, services, and the budget's
+	// time period, as well as other filters.
 	BudgetFilter *Filter `protobuf:"bytes,3,opt,name=budget_filter,json=budgetFilter,proto3" json:"budget_filter,omitempty"`
 	// Required. Budgeted amount.
 	Amount *BudgetAmount `protobuf:"bytes,4,opt,name=amount,proto3" json:"amount,omitempty"`
 	// Optional. Rules that trigger alerts (notifications of thresholds
 	// being crossed) when spend exceeds the specified percentages of the budget.
+	//
+	// Optional for `pubsubTopic` notifications.
+	//
+	// Required if using email notifications.
 	ThresholdRules []*ThresholdRule `protobuf:"bytes,5,rep,name=threshold_rules,json=thresholdRules,proto3" json:"threshold_rules,omitempty"`
-	// Optional. Rules to apply to notifications sent based on budget spend and
-	// thresholds.
+	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	AllUpdatesRule *AllUpdatesRule `protobuf:"bytes,6,opt,name=all_updates_rule,json=allUpdatesRule,proto3" json:"all_updates_rule,omitempty"`
 	// Optional. Etag to validate that the object is unchanged for a
 	// read-modify-write operation.
@@ -422,8 +426,7 @@ type BudgetAmount_SpecifiedAmount struct {
 type BudgetAmount_LastPeriodAmount struct {
 	// Use the last period's actual spend as the budget for the present period.
 	// LastPeriodAmount can only be set when the budget's time period is a
-	// [Filter.calendar_period][google.cloud.billing.budgets.v1beta1.Filter.calendar_period].
-	// It cannot be set in combination with
+	// [Filter.calendar_period][google.cloud.billing.budgets.v1beta1.Filter.calendar_period]. It cannot be set in combination with
 	// [Filter.custom_period][google.cloud.billing.budgets.v1beta1.Filter.custom_period].
 	LastPeriodAmount *LastPeriodAmount `protobuf:"bytes,2,opt,name=last_period_amount,json=lastPeriodAmount,proto3,oneof"`
 }
@@ -432,15 +435,13 @@ func (*BudgetAmount_SpecifiedAmount) isBudgetAmount_BudgetAmount() {}
 
 func (*BudgetAmount_LastPeriodAmount) isBudgetAmount_BudgetAmount() {}
 
-// Describes a budget amount targeted to the last
-// [Filter.calendar_period][google.cloud.billing.budgets.v1beta1.Filter.calendar_period]
+// Describes a budget amount targeted to the last [Filter.calendar_period][google.cloud.billing.budgets.v1beta1.Filter.calendar_period]
 // spend. At this time, the amount is automatically 100% of the last calendar
 // period's spend; that is, there are no other options yet.
 // Future configuration options will be described here (for example, configuring
 // a percentage of last period's spend).
 // LastPeriodAmount cannot be set for a budget configured with
-// a
-// [Filter.custom_period][google.cloud.billing.budgets.v1beta1.Filter.custom_period].
+// a [Filter.custom_period][google.cloud.billing.budgets.v1beta1.Filter.custom_period].
 type LastPeriodAmount struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -479,13 +480,28 @@ func (*LastPeriodAmount) Descriptor() ([]byte, []int) {
 	return file_google_cloud_billing_budgets_v1beta1_budget_model_proto_rawDescGZIP(), []int{2}
 }
 
-// ThresholdRule contains a definition of a threshold which triggers
-// an alert (a notification of a threshold being crossed) to be sent when
-// spend goes above the specified amount.
-// Alerts are automatically e-mailed to users with the Billing Account
-// Administrator role or the Billing Account User role.
-// The thresholds here have no effect on notifications sent to anything
-// configured under `Budget.all_updates_rule`.
+// ThresholdRule contains the definition of a threshold. Threshold rules define
+// the triggering events used to generate a budget notification email. When a
+// threshold is crossed (spend exceeds the specified percentages of the
+// budget), budget alert emails are sent to the email recipients you specify
+// in the
+// [NotificationsRule](#notificationsrule).
+//
+// Threshold rules also affect the fields included in the
+// [JSON data
+// object](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format)
+// sent to a Pub/Sub topic.
+//
+// Threshold rules are _required_ if using email notifications.
+//
+// Threshold rules are _optional_ if only setting a
+// [`pubsubTopic` NotificationsRule](#NotificationsRule),
+// unless you want your JSON data object to include data about the thresholds
+// you set.
+//
+// For more information, see
+// [set budget threshold rules and
+// actions](https://cloud.google.com/billing/docs/how-to/budgets#budget-actions).
 type ThresholdRule struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -553,10 +569,10 @@ type AllUpdatesRule struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Optional. The name of the Pub/Sub topic where budget related messages will
-	// be published, in the form `projects/{project_id}/topics/{topic_id}`.
-	// Updates are sent at regular intervals to the topic. The topic needs to be
-	// created before the budget is created; see
+	// Optional. The name of the Pub/Sub topic where budget related messages will be
+	// published, in the form `projects/{project_id}/topics/{topic_id}`. Updates
+	// are sent at regular intervals to the topic.
+	// The topic needs to be created before the budget is created; see
 	// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications
 	// for more details.
 	// Caller is expected to have
@@ -565,26 +581,23 @@ type AllUpdatesRule struct {
 	// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task
 	// for more details on Pub/Sub roles and permissions.
 	PubsubTopic string `protobuf:"bytes,1,opt,name=pubsub_topic,json=pubsubTopic,proto3" json:"pubsub_topic,omitempty"`
-	// Optional. Required when
-	// [AllUpdatesRule.pubsub_topic][google.cloud.billing.budgets.v1beta1.AllUpdatesRule.pubsub_topic]
-	// is set. The schema version of the notification sent to
-	// [AllUpdatesRule.pubsub_topic][google.cloud.billing.budgets.v1beta1.AllUpdatesRule.pubsub_topic].
-	// Only "1.0" is accepted. It represents the JSON schema as defined in
+	// Optional. Required when [AllUpdatesRule.pubsub_topic][google.cloud.billing.budgets.v1beta1.AllUpdatesRule.pubsub_topic] is set. The schema version of
+	// the notification sent to [AllUpdatesRule.pubsub_topic][google.cloud.billing.budgets.v1beta1.AllUpdatesRule.pubsub_topic]. Only "1.0" is
+	// accepted. It represents the JSON schema as defined in
 	// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
 	SchemaVersion string `protobuf:"bytes,2,opt,name=schema_version,json=schemaVersion,proto3" json:"schema_version,omitempty"`
-	// Optional. Targets to send notifications to when a threshold is exceeded.
-	// This is in addition to default recipients who have billing account IAM
-	// roles. The value is the full REST resource name of a monitoring
-	// notification channel with the form
+	// Optional. Targets to send notifications to when a threshold is exceeded. This is in
+	// addition to default recipients who have billing account IAM roles.
+	// The value is the full REST resource name of a monitoring notification
+	// channel with the form
 	// `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5
 	// channels are allowed. See
 	// https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients
 	// for more details.
 	MonitoringNotificationChannels []string `protobuf:"bytes,3,rep,name=monitoring_notification_channels,json=monitoringNotificationChannels,proto3" json:"monitoring_notification_channels,omitempty"`
-	// Optional. When set to true, disables default notifications sent when a
-	// threshold is exceeded. Default notifications are sent to those with Billing
-	// Account Administrator and Billing Account User IAM roles for the target
-	// account.
+	// Optional. When set to true, disables default notifications sent when a threshold is
+	// exceeded. Default notifications are sent to those with Billing Account
+	// Administrator and Billing Account User IAM roles for the target account.
 	DisableDefaultIamRecipients bool `protobuf:"varint,4,opt,name=disable_default_iam_recipients,json=disableDefaultIamRecipients,proto3" json:"disable_default_iam_recipients,omitempty"`
 }
 
@@ -660,16 +673,14 @@ type Filter struct {
 	// the billing account, regardless of which project the usage occurred on.
 	// Only zero or one project can be specified currently.
 	Projects []string `protobuf:"bytes,1,rep,name=projects,proto3" json:"projects,omitempty"`
-	// Optional. If
-	// [Filter.credit_types_treatment][google.cloud.billing.budgets.v1beta1.Filter.credit_types_treatment]
-	// is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be
-	// subtracted from gross cost to determine the spend for threshold
-	// calculations. See [a list of acceptable credit type
+	// Optional. If [Filter.credit_types_treatment][google.cloud.billing.budgets.v1beta1.Filter.credit_types_treatment] is INCLUDE_SPECIFIED_CREDITS, this is
+	// a list of credit types to be subtracted from gross cost to determine the
+	// spend for threshold calculations. See
+	// [a list of acceptable credit type
 	// values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
 	//
-	// If
-	// [Filter.credit_types_treatment][google.cloud.billing.budgets.v1beta1.Filter.credit_types_treatment]
-	// is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty.
+	// If [Filter.credit_types_treatment][google.cloud.billing.budgets.v1beta1.Filter.credit_types_treatment] is **not** INCLUDE_SPECIFIED_CREDITS,
+	// this field must be empty.
 	CreditTypes []string `protobuf:"bytes,7,rep,name=credit_types,json=creditTypes,proto3" json:"credit_types,omitempty"`
 	// Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
 	CreditTypesTreatment Filter_CreditTypesTreatment `protobuf:"varint,4,opt,name=credit_types_treatment,json=creditTypesTreatment,proto3,enum=google.cloud.billing.budgets.v1beta1.Filter_CreditTypesTreatment" json:"credit_types_treatment,omitempty"`
@@ -680,21 +691,26 @@ type Filter struct {
 	// The service names are available through the Catalog API:
 	// https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services []string `protobuf:"bytes,3,rep,name=services,proto3" json:"services,omitempty"`
-	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`,
-	// specifying that usage from only this set of subaccounts should be included
-	// in the budget. If a subaccount is set to the name of the parent account,
+	// Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying
+	// that usage from only this set of subaccounts should be included in the
+	// budget. If a subaccount is set to the name of the parent account,
 	// usage from the parent account will be included. If omitted, the
 	// report will include usage from the parent account and all
 	// subaccounts, if they exist.
 	Subaccounts []string `protobuf:"bytes,5,rep,name=subaccounts,proto3" json:"subaccounts,omitempty"`
-	// Optional. A single label and value pair specifying that usage from only
-	// this set of labeled resources should be included in the budget. Currently,
-	// multiple entries or multiple values per entry are not allowed. If omitted,
-	// the report will include all labeled and unlabeled usage.
+	// Optional. A single label and value pair specifying that usage from only this set of
+	// labeled resources should be included in the budget. If omitted, the
+	// report will include all labeled and unlabeled usage.
+	//
+	// An object containing a single `"key": value` pair. Example: `{ "name":
+	// "wrench" }`.
+	//
+	//  _Currently, multiple entries or multiple values per entry are not
+	//  allowed._
 	Labels map[string]*structpb.ListValue `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Multiple options to choose the budget's time period, specifying that only
 	// usage that occurs during this time period should be included in the budget.
-	// If not set, the `usage_period` defaults to CalendarPeriod.MONTH.
+	// If not set, the <code>usage_period</code> defaults to CalendarPeriod.MONTH.
 	//
 	// Types that are assignable to UsagePeriod:
 	//	*Filter_CalendarPeriod
@@ -812,8 +828,8 @@ type Filter_CalendarPeriod struct {
 }
 
 type Filter_CustomPeriod struct {
-	// Optional. Specifies to track usage from any start date (required) to any
-	// end date (optional). This time period is static, it does not recur.
+	// Optional. Specifies to track usage from any start date (required) to any end date
+	// (optional). This time period is static, it does not recur.
 	CustomPeriod *CustomPeriod `protobuf:"bytes,9,opt,name=custom_period,json=customPeriod,proto3,oneof"`
 }
 
@@ -829,9 +845,9 @@ type CustomPeriod struct {
 
 	// Required. The start date must be after January 1, 2017.
 	StartDate *date.Date `protobuf:"bytes,1,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
-	// Optional. The end date of the time period. Budgets with elapsed end date
-	// won't be processed. If unset, specifies to track all usage incurred since
-	// the start_date.
+	// Optional. The end date of the time period. Budgets with elapsed end date won't be
+	// processed. If unset, specifies to track all usage
+	// incurred since the start_date.
 	EndDate *date.Date `protobuf:"bytes,2,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
 }
 
