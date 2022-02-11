@@ -443,7 +443,7 @@ type Insight_RecommendationReference struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Recommendation resource name, e.g.
-	// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID]`
+	// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID]
 	Recommendation string `protobuf:"bytes,1,opt,name=recommendation,proto3" json:"recommendation,omitempty"`
 }
 
