@@ -67,7 +67,7 @@ type RecommenderConfig struct {
 	// separated by a slash (/).
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
-	// with dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics between.
+	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	Annotations map[string]string `protobuf:"bytes,6,rep,name=annotations,proto3" json:"annotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// A user-settable field to provide a human-readable name to be used in user
 	// interfaces.
