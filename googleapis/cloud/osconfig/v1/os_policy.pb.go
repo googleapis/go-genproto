@@ -203,7 +203,7 @@ func (OSPolicy_Resource_RepositoryResource_AptRepository_ArchiveType) EnumDescri
 type OSPolicy_Resource_ExecResource_Exec_Interpreter int32
 
 const (
-	// Defaults to NONE.
+	// Invalid value, the request will return validation error.
 	OSPolicy_Resource_ExecResource_Exec_INTERPRETER_UNSPECIFIED OSPolicy_Resource_ExecResource_Exec_Interpreter = 0
 	// If an interpreter is not specified, the
 	// source is executed directly. This execution, without an
