@@ -502,8 +502,8 @@ type ProvisionedService struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Output only. Provisioning ID of the entitlement. For Google Workspace, this would be the
-	// underlying Subscription ID. For Google Cloud Platform, this would be the
+	// Output only. Provisioning ID of the entitlement. For Google Workspace, this is the
+	// underlying Subscription ID. For Google Cloud Platform, this is the
 	// Billing Account ID of the billing subaccount."
 	ProvisioningId string `protobuf:"bytes,1,opt,name=provisioning_id,json=provisioningId,proto3" json:"provisioning_id,omitempty"`
 	// Output only. The product pertaining to the provisioning resource as specified in the
