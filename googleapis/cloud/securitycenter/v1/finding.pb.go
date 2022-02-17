@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -384,7 +384,8 @@ type Finding struct {
 	// finding.
 	CanonicalName string `protobuf:"bytes,14,opt,name=canonical_name,json=canonicalName,proto3" json:"canonical_name,omitempty"`
 	// Indicates the mute state of a finding (either unspecified, muted, unmuted
-	// or undefined).
+	// or undefined). Unlike other attributes of a finding, a finding provider
+	// shouldn't set the value of mute.
 	Mute Finding_Mute `protobuf:"varint,15,opt,name=mute,proto3,enum=google.cloud.securitycenter.v1.Finding_Mute" json:"mute,omitempty"`
 	// The class of the finding.
 	FindingClass Finding_FindingClass `protobuf:"varint,17,opt,name=finding_class,json=findingClass,proto3,enum=google.cloud.securitycenter.v1.Finding_FindingClass" json:"finding_class,omitempty"`
@@ -408,7 +409,8 @@ type Finding struct {
 	Access *Access `protobuf:"bytes,26,opt,name=access,proto3" json:"access,omitempty"`
 	// First known as mute_annotation. Records additional information about the
 	// mute operation e.g. mute config that muted the finding, user who muted the
-	// finding, etc.
+	// finding, etc. Unlike other attributes of a finding, a finding provider
+	// shouldn't set the value of mute.
 	MuteInitiator string `protobuf:"bytes,28,opt,name=mute_initiator,json=muteInitiator,proto3" json:"mute_initiator,omitempty"`
 }
 

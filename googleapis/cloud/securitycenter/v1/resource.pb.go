@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ type Resource struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The full resource name of project that the resource belongs to.
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
-	// The human readable name of project that the resource belongs to.
+	// The project id that the resource belongs to.
 	ProjectDisplayName string `protobuf:"bytes,3,opt,name=project_display_name,json=projectDisplayName,proto3" json:"project_display_name,omitempty"`
 	// The full resource name of resource's parent.
 	Parent string `protobuf:"bytes,4,opt,name=parent,proto3" json:"parent,omitempty"`

@@ -2535,13 +2535,6 @@ type Asset_ResourceSpec struct {
 	// being managed within a lake. For example:
 	//   `projects/{project_number}/buckets/{bucket_id}`
 	//   `projects/{project_number}/datasets/{dataset_id}`
-	// If the creation policy indicates ATTACH behavior, then an existing
-	// resource must be provided.
-	// If the policy indicates CREATE behavior, new resource will be created
-	// with the given name.However if it is empty, then the resource will be
-	// created using {asset_id}-{UUID} template for name.
-	// The location of the referenced resource must always match that of the
-	// asset.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. Immutable. Type of resource.
 	Type Asset_ResourceSpec_Type `protobuf:"varint,2,opt,name=type,proto3,enum=google.cloud.dataplex.v1.Asset_ResourceSpec_Type" json:"type,omitempty"`
