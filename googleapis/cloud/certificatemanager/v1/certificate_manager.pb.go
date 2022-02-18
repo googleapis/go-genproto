@@ -2488,10 +2488,9 @@ type isCertificateMapEntry_Match interface {
 }
 
 type CertificateMapEntry_Hostname struct {
-	// A Hostname (FQDN, e.g. example.com)
-	// or a wildcard hostname expression (*.example.com) for a set of hostnames
-	// with common suffix. Used as Server Name Indication (SNI) for selecting
-	// a proper certificate.
+	// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression
+	// (`*.example.com`) for a set of hostnames with common suffix. Used as
+	// Server Name Indication (SNI) for selecting a proper certificate.
 	Hostname string `protobuf:"bytes,5,opt,name=hostname,proto3,oneof"`
 }
 
@@ -2524,8 +2523,8 @@ type DnsAuthorization struct {
 	// One or more paragraphs of text description of a DnsAuthorization.
 	Description string `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
 	// Required. Immutable. A domain which is being authorized. A DnsAuthorization resource covers a
-	// single domain and its wildcard, e.g. authorization for "example.com" can
-	// be used to issue certificates for "example.com" and "*.example.com".
+	// single domain and its wildcard, e.g. authorization for `example.com` can
+	// be used to issue certificates for `example.com` and `*.example.com`.
 	Domain string `protobuf:"bytes,6,opt,name=domain,proto3" json:"domain,omitempty"`
 	// Output only. DNS Resource Record that needs to be added to DNS configuration.
 	DnsResourceRecord *DnsAuthorization_DnsResourceRecord `protobuf:"bytes,10,opt,name=dns_resource_record,json=dnsResourceRecord,proto3" json:"dns_resource_record,omitempty"`
@@ -3065,7 +3064,7 @@ type DnsAuthorization_DnsResourceRecord struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. Fully qualified name of the DNS Resource Record.
-	// e.g. "_acme-challenge.example.com."
+	// e.g. `_acme-challenge.example.com`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. Type of the DNS Resource Record.
 	// Currently always set to "CNAME".
