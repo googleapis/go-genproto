@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -425,7 +425,7 @@ type Vehicle struct {
 	// considered in this value. This value must be greater than or equal to one.
 	MaximumCapacity int32 `protobuf:"varint,6,opt,name=maximum_capacity,json=maximumCapacity,proto3" json:"maximum_capacity,omitempty"`
 	// List of vehicle attributes. A vehicle can have at most 50
-	// attributes, and each attribute has a unique key.
+	// attributes, and each attribute must have a unique key.
 	Attributes []*VehicleAttribute `protobuf:"bytes,8,rep,name=attributes,proto3" json:"attributes,omitempty"`
 	// The type of this vehicle.  Can be used to filter vehicles in
 	// `SearchVehicles` results.  Also influences ETA and route calculations.
