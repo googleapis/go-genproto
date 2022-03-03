@@ -194,12 +194,12 @@ type CreateVehicleRequest struct {
 	// Required. Unique Vehicle ID; must be unique per provider.
 	// Subject to the following restrictions:
 	//
-	// 1. IDs must not contain any of the following ASCII characters: '/', ':',
-	// '?', or '#'.
+	// 1. IDs must be valid Unicode strings.
 	// 2. IDs are limited to a maximum length of 64 characters.
-	// 3. IDs must be valid Unicode strings.
-	// 4. IDs must be normalized according to Unicode Normalization Form C
+	// 3. IDs must be normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
+	// 4. IDs must not contain any of the following ASCII characters: '/', ':',
+	// '?', ',', or '#'.
 	VehicleId string `protobuf:"bytes,4,opt,name=vehicle_id,json=vehicleId,proto3" json:"vehicle_id,omitempty"`
 	// Required. The Vehicle entity to create. When creating a Vehicle, the following
 	// fields are required:

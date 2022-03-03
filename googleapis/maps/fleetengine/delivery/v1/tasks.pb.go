@@ -308,10 +308,10 @@ type Task struct {
 	//
 	// * Tracking IDs must be valid Unicode strings.
 	// * Tracking IDs are limited to a maximum length of 64 characters.
-	// * Tracking IDs will be normalized according to Unicode Normalization Form C
+	// * Tracking IDs must be normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
 	// * Tracking IDs may not contain any of the following ASCII characters: '/',
-	// ':', '\\', '?', or '#'.
+	// ':', '?', ',', or '#'.
 	TrackingId string `protobuf:"bytes,4,opt,name=tracking_id,json=trackingId,proto3" json:"tracking_id,omitempty"`
 	// Output only. The ID of the vehicle that is executing this Task.
 	DeliveryVehicleId string `protobuf:"bytes,5,opt,name=delivery_vehicle_id,json=deliveryVehicleId,proto3" json:"delivery_vehicle_id,omitempty"`
