@@ -58,10 +58,10 @@ type CreateDeliveryVehicleRequest struct {
 	//
 	// * IDs must be valid Unicode strings.
 	// * IDs are limited to a maximum length of 64 characters.
-	// * IDs will be normalized according to Unicode Normalization Form C
+	// * IDs must be normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
 	// * IDs may not contain any of the following ASCII characters: '/', ':',
-	// '\\', '?', or '#'.
+	// '?', ',', or '#'.
 	DeliveryVehicleId string `protobuf:"bytes,4,opt,name=delivery_vehicle_id,json=deliveryVehicleId,proto3" json:"delivery_vehicle_id,omitempty"`
 	// Required. The `DeliveryVehicle` entity to create. When creating a new delivery
 	// vehicle, you may set the following optional fields:
@@ -468,10 +468,10 @@ type CreateTaskRequest struct {
 	//
 	// * Task IDs must be valid Unicode strings.
 	// * Task IDs are limited to a maximum length of 64 characters.
-	// * Task IDs will be normalized according to Unicode Normalization Form C
+	// * Task IDs must be normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
 	// * Task IDs may not contain any of the following ASCII characters: '/',
-	// ':', '\\', '?', or '#'.
+	// ':', '?', ',', or '#'.
 	TaskId string `protobuf:"bytes,5,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	// Required. The Task entity to create.
 	// When creating a Task, the following fields are required:

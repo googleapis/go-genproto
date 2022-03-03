@@ -250,7 +250,8 @@ type ListFilesRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The name of the parent resource whose files will be listed.
+	// The name of the repository whose files will be listed. For example:
+	// "projects/p1/locations/us-central1/repositories/repo1
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// An expression for filtering the results of the request. Filter rules are
 	// case insensitive. The fields eligible for filtering are:
