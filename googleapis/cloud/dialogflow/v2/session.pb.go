@@ -1348,6 +1348,11 @@ type EventInput struct {
 	// Support](https://cloud.google.com/dialogflow/docs/reference/language)
 	// for a list of the currently supported language codes. Note that queries in
 	// the same session do not necessarily need to specify the same language.
+	//
+	// This field is ignored when used in the context of a
+	// [WebhookResponse.followup_event_input][google.cloud.dialogflow.v2.WebhookResponse.followup_event_input] field,
+	// because the language was already defined in the originating detect
+	// intent request.
 	LanguageCode string `protobuf:"bytes,3,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 }
 
