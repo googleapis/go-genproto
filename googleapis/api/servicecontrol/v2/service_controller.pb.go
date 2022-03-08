@@ -236,8 +236,8 @@ type CheckResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Operation is allowed when this field is not set. Any non-'OK' status
-	// indicates a denial; [google.rpc.Status.details]() would contain additional
-	// details about the denial.
+	// indicates a denial; [google.rpc.Status.details][google.rpc.Status.details]
+	// would contain additional details about the denial.
 	Status *status.Status `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 	// Returns a set of request contexts generated from the `CheckRequest`.
 	Headers map[string]string `protobuf:"bytes,2,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
