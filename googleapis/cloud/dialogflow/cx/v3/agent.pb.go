@@ -699,6 +699,12 @@ type ExportAgentRequest struct {
 	// export the agent to. The format of this URI must be
 	// `gs://<bucket-name>/<object-name>`.
 	// If left unspecified, the serialized agent is returned inline.
+	//
+	// Dialogflow performs a write operation for the Cloud Storage object
+	// on the caller's behalf, so your request authentication must
+	// have write permissions for the object. For more information, see
+	// [Dialogflow access
+	// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
 	AgentUri string `protobuf:"bytes,2,opt,name=agent_uri,json=agentUri,proto3" json:"agent_uri,omitempty"`
 	// Optional. Environment name. If not set, draft environment is assumed.
 	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
@@ -939,6 +945,12 @@ type RestoreAgentRequest_AgentUri struct {
 	// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI
 	// to restore agent from. The format of this URI must be
 	// `gs://<bucket-name>/<object-name>`.
+	//
+	// Dialogflow performs a read operation for the Cloud Storage object
+	// on the caller's behalf, so your request authentication must
+	// have read permissions for the object. For more information, see
+	// [Dialogflow access
+	// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
 	AgentUri string `protobuf:"bytes,2,opt,name=agent_uri,json=agentUri,proto3,oneof"`
 }
 
