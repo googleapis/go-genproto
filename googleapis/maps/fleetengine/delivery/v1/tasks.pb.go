@@ -271,13 +271,18 @@ func (Task_TaskOutcomeLocationSource) EnumDescriptor() ([]byte, []int) {
 }
 
 // A Task in the Delivery API represents a single action to track. In general,
-// there's a distinction between shipment-related Tasks, and break Tasks. A
+// there is a distinction between shipment-related Tasks and break Tasks. A
 // shipment can have multiple Tasks associated with it. For example, there could
-// be one Task for the pickup, and one for the dropoff or transfer. And
+// be one Task for the pickup, and one for the drop-off or transfer. Also,
 // different Tasks for a given shipment can be handled by different vehicles.
 // For example, one vehicle could handle the pickup, driving the shipment to the
 // hub, while another vehicle drives the same shipment from the hub to the
-// dropoff location.
+// drop-off location.
+//
+// Note: gRPC and REST APIs use different field naming conventions. For example,
+// the `Task.journey_sharing_info` field in the gRPC API and the
+// `DeliveryVehicle.journeySharingInfo` field in the REST API refer to the same
+// field.
 type Task struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -451,12 +456,14 @@ type Task_JourneySharingInfo struct {
 	// from other tasks.
 	//
 	// The first segment,
-	// `Task.journey_sharing_info.remaining_vehicle_journey_segments[0]`,
-	// contains route information from the driver's last known location, to the
-	// upcoming `VehicleStop`. Current route information usually comes from
-	// the driver app, except for some cases noted in the documentation for
-	// [`DeliveyVehicle.current_route_segment'][]. The other segments in
-	// `Task.journey_sharing_info.remaining_vehicle_journey_segments` are
+	// `Task.journey_sharing_info.remaining_vehicle_journey_segments[0]` (gRPC)
+	// or `Task.journeySharingInfo.remainingVehicleJourneySegments[0]` (REST),
+	// contains route information from the driver's last known location to the
+	// upcoming `VehicleStop`. Current route information usually comes from the
+	// driver app, except for some cases noted in the documentation for
+	// [DeliveryVehicle.current_route_segment][maps.fleetengine.delivery.v1.DeliveryVehicle.current_route_segment]. The other segments in
+	// `Task.journey_sharing_info.remaining_vehicle_journey_segments` (gRPC) or
+	// `Task.journeySharingInfo.remainingVehicleJourneySegments` (REST) are
 	// populated by Fleet Engine. They provide route information between the
 	// remaining `VehicleStops`.
 	RemainingVehicleJourneySegments []*VehicleJourneySegment `protobuf:"bytes,1,rep,name=remaining_vehicle_journey_segments,json=remainingVehicleJourneySegments,proto3" json:"remaining_vehicle_journey_segments,omitempty"`
