@@ -1,4 +1,4 @@
-// Copyright 2019 Google LLC.
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1206,8 +1206,9 @@ type isMutation_ConflictDetectionStrategy interface {
 }
 
 type Mutation_BaseVersion struct {
-	// The version of the entity that this mutation is being applied to. If this
-	// does not match the current version on the server, the mutation conflicts.
+	// The version of the entity that this mutation is being applied
+	// to. If this does not match the current version on the server, the
+	// mutation conflicts.
 	BaseVersion int64 `protobuf:"varint,8,opt,name=base_version,json=baseVersion,proto3,oneof"`
 }
 
@@ -1292,9 +1293,16 @@ type ReadOptions struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// If not specified, lookups and ancestor queries default to
-	// `read_consistency`=`STRONG`, global queries default to
-	// `read_consistency`=`EVENTUAL`.
+	// For Cloud Datastore, if read_consistency is not specified, then lookups and
+	// ancestor queries default to `read_consistency`=`STRONG`, global queries
+	// default to `read_consistency`=`EVENTUAL`.
+	//
+	// For Cloud Firestore in Datastore mode, if read_consistency is not specified
+	// then lookups and all queries default to `read_consistency`=`STRONG`.
+	//
+	// Explicitly setting `read_consistency`=`EVENTUAL` will result in eventually
+	// consistent lookups & queries in both Cloud Datastore & Cloud Firestore in
+	// Datastore mode.
 	//
 	// Types that are assignable to ConsistencyType:
 	//	*ReadOptions_ReadConsistency_
