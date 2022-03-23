@@ -1218,6 +1218,12 @@ type ImportFlowRequest_FlowUri struct {
 	// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI
 	// to import flow from. The format of this URI must be
 	// `gs://<bucket-name>/<object-name>`.
+	//
+	// Dialogflow performs a read operation for the Cloud Storage object
+	// on the caller's behalf, so your request authentication must
+	// have read permissions for the object. For more information, see
+	// [Dialogflow access
+	// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
 	FlowUri string `protobuf:"bytes,2,opt,name=flow_uri,json=flowUri,proto3,oneof"`
 }
 
@@ -1295,6 +1301,12 @@ type ExportFlowRequest struct {
 	// export the flow to. The format of this URI must be
 	// `gs://<bucket-name>/<object-name>`.
 	// If left unspecified, the serialized flow is returned inline.
+	//
+	// Dialogflow performs a write operation for the Cloud Storage object
+	// on the caller's behalf, so your request authentication must
+	// have write permissions for the object. For more information, see
+	// [Dialogflow access
+	// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
 	FlowUri string `protobuf:"bytes,2,opt,name=flow_uri,json=flowUri,proto3" json:"flow_uri,omitempty"`
 	// Optional. Whether to export flows referenced by the specified flow.
 	IncludeReferencedFlows bool `protobuf:"varint,4,opt,name=include_referenced_flows,json=includeReferencedFlows,proto3" json:"include_referenced_flows,omitempty"`

@@ -431,27 +431,26 @@ func (x *DetectIntentResponse) GetAllowCancellation() bool {
 //
 // Multiple request messages should be sent in order:
 //
-// 1.  The first message must contain
-//     [session][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.session],
-//     [query_input][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.query_input] plus optionally
-//     [query_params][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.query_params]. If the client
-//     wants to receive an audio response, it should also contain
-//     [output_audio_config][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.output_audio_config].
+// 1. The first message must contain
+// [session][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.session],
+// [query_input][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.query_input] plus optionally
+// [query_params][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.query_params]. If the client
+// wants to receive an audio response, it should also contain
+// [output_audio_config][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.output_audio_config].
 //
 // 2.  If [query_input][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.query_input] was set to
-//     [query_input.audio.config][google.cloud.dialogflow.cx.v3beta1.AudioInput.config], all subsequent messages
-//     must contain [query_input.audio.audio][google.cloud.dialogflow.cx.v3beta1.AudioInput.audio] to continue with
-//     Speech recognition.
-//     If you decide to rather detect an intent from text
-//     input after you already started Speech recognition, please send a message
-//     with [query_input.text][google.cloud.dialogflow.cx.v3beta1.QueryInput.text].
+// [query_input.audio.config][google.cloud.dialogflow.cx.v3beta1.AudioInput.config], all subsequent messages
+// must contain [query_input.audio.audio][google.cloud.dialogflow.cx.v3beta1.AudioInput.audio] to continue with
+// Speech recognition.
+// If you decide to rather detect an intent from text
+// input after you already started Speech recognition, please send a message
+// with [query_input.text][google.cloud.dialogflow.cx.v3beta1.QueryInput.text].
 //
-//     However, note that:
-//
-//     * Dialogflow will bill you for the audio duration so far.
-//     * Dialogflow discards all Speech recognition results in favor of the
-//       input text.
-//     * Dialogflow will use the language code from the first message.
+// However, note that:
+// * Dialogflow will bill you for the audio duration so far.
+// * Dialogflow discards all Speech recognition results in favor of the input
+// text.
+// * Dialogflow will use the language code from the first message.
 //
 // After you sent all input, you must half-close or abort the request stream.
 type StreamingDetectIntentRequest struct {
@@ -876,16 +875,14 @@ type QueryParameters struct {
 	// map, associative array, symbol table, dictionary, or JSON object
 	// composed of a collection of (MapKey, MapValue) pairs:
 	//
-	// -   MapKey type: string
-	// -   MapKey value: parameter name
-	// -   MapValue type:
-	//     -   If parameter's entity type is a composite entity: map
-	//     -   Else: depending on parameter value type, could be one of string,
-	//         number, boolean, null, list or map
-	// -   MapValue value:
-	//     -   If parameter's entity type is a composite entity:
-	//         map from composite entity property names to property values
-	//     -   Else: parameter value
+	// * MapKey type: string
+	// * MapKey value: parameter name
+	// * MapValue type: If parameter's entity type is a composite entity then use
+	// map, otherwise, depending on the parameter value type, it could be one of
+	// string, number, boolean, null, list or map.
+	// * MapValue value: If parameter's entity type is a composite entity then use
+	// map from composite entity property names to property values, otherwise,
+	// use parameter value.
 	Parameters *structpb.Struct `protobuf:"bytes,5,opt,name=parameters,proto3" json:"parameters,omitempty"`
 	// The unique identifier of the [page][google.cloud.dialogflow.cx.v3beta1.Page] to override the [current
 	// page][QueryResult.current_page] in the session.
@@ -1204,16 +1201,14 @@ type QueryResult struct {
 	// map, associative array, symbol table, dictionary, or JSON object
 	// composed of a collection of (MapKey, MapValue) pairs:
 	//
-	// -   MapKey type: string
-	// -   MapKey value: parameter name
-	// -   MapValue type:
-	//     -   If parameter's entity type is a composite entity: map
-	//     -   Else: depending on parameter value type, could be one of string,
-	//     number, boolean, null, list or map
-	// -   MapValue value:
-	//     -   If parameter's entity type is a composite entity:
-	//         map from composite entity property names to property values
-	//     -   Else: parameter value
+	// * MapKey type: string
+	// * MapKey value: parameter name
+	// * MapValue type: If parameter's entity type is a composite entity then use
+	// map, otherwise, depending on the parameter value type, it could be one of
+	// string, number, boolean, null, list or map.
+	// * MapValue value: If parameter's entity type is a composite entity then use
+	// map from composite entity property names to property values, otherwise,
+	// use parameter value.
 	Parameters *structpb.Struct `protobuf:"bytes,3,opt,name=parameters,proto3" json:"parameters,omitempty"`
 	// The list of rich messages returned to the client. Responses vary from
 	// simple text messages to more sophisticated, structured payloads used
@@ -1751,16 +1746,14 @@ type Match struct {
 	// map, associative array, symbol table, dictionary, or JSON object
 	// composed of a collection of (MapKey, MapValue) pairs:
 	//
-	// -   MapKey type: string
-	// -   MapKey value: parameter name
-	// -   MapValue type:
-	//     -   If parameter's entity type is a composite entity: map
-	//     -   Else: depending on parameter value type, could be one of string,
-	//     number, boolean, null, list or map
-	// -   MapValue value:
-	//     -   If parameter's entity type is a composite entity:
-	//         map from composite entity property names to property values
-	//     -   Else: parameter value
+	// * MapKey type: string
+	// * MapKey value: parameter name
+	// * MapValue type: If parameter's entity type is a composite entity then use
+	// map, otherwise, depending on the parameter value type, it could be one of
+	// string, number, boolean, null, list or map.
+	// * MapValue value: If parameter's entity type is a composite entity then use
+	// map from composite entity property names to property values, otherwise,
+	// use parameter value.
 	Parameters *structpb.Struct `protobuf:"bytes,2,opt,name=parameters,proto3" json:"parameters,omitempty"`
 	// Final text input which was matched during MatchIntent. This value can be
 	// different from original input sent in request because of spelling
