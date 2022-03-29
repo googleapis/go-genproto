@@ -210,9 +210,8 @@ type CustomAttribute struct {
 	// The textual values of this custom attribute. For example, `["yellow",
 	// "green"]` when the key is "color".
 	//
-	// At most 400 values are allowed. Empty values are not allowed. Each value
-	// must be a UTF-8 encoded string with a length limit of 256 characters.
-	// Otherwise, an INVALID_ARGUMENT error is returned.
+	// Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is
+	// returned.
 	//
 	// Exactly one of [text][google.cloud.retail.v2.CustomAttribute.text] or
 	// [numbers][google.cloud.retail.v2.CustomAttribute.numbers] should be set.
@@ -221,14 +220,15 @@ type CustomAttribute struct {
 	// The numerical values of this custom attribute. For example, `[2.3, 15.4]`
 	// when the key is "lengths_cm".
 	//
-	// At most 400 values are allowed.Otherwise, an INVALID_ARGUMENT error is
-	// returned.
-	//
 	// Exactly one of [text][google.cloud.retail.v2.CustomAttribute.text] or
 	// [numbers][google.cloud.retail.v2.CustomAttribute.numbers] should be set.
 	// Otherwise, an INVALID_ARGUMENT error is returned.
 	Numbers []float64 `protobuf:"fixed64,2,rep,packed,name=numbers,proto3" json:"numbers,omitempty"`
-	// If true, custom attribute values are searchable by text queries in
+	// This field will only be used when
+	// [AttributesConfig.attribute_config_level][] of the
+	// [Catalog][google.cloud.retail.v2.Catalog] is
+	// 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG', if true, custom attribute values are
+	// searchable by text queries in
 	// [SearchService.Search][google.cloud.retail.v2.SearchService.Search].
 	//
 	// This field is ignored in a [UserEvent][google.cloud.retail.v2.UserEvent].
@@ -236,8 +236,11 @@ type CustomAttribute struct {
 	// Only set if type [text][google.cloud.retail.v2.CustomAttribute.text] is
 	// set. Otherwise, a INVALID_ARGUMENT error is returned.
 	Searchable *bool `protobuf:"varint,3,opt,name=searchable,proto3,oneof" json:"searchable,omitempty"`
-	// If true, custom attribute values are indexed, so that it can be filtered,
-	// faceted or boosted in
+	// This field will only be used when
+	// [AttributesConfig.attribute_config_level][] of the
+	// [Catalog][google.cloud.retail.v2.Catalog] is
+	// 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG', if true, custom attribute values are
+	// indexed, so that it can be filtered, faceted or boosted in
 	// [SearchService.Search][google.cloud.retail.v2.SearchService.Search].
 	//
 	// This field is ignored in a [UserEvent][google.cloud.retail.v2.UserEvent].
@@ -395,7 +398,10 @@ func (x *FulfillmentInfo) GetPlaceIds() []string {
 	return nil
 }
 
-// [Product][google.cloud.retail.v2.Product] thumbnail/detail image.
+// [Product][google.cloud.retail.v2.Product] image. Recommendations AI and
+// Retail Search do not use product images to improve prediction and search
+// results. However, product images can be returned in results, and are shown in
+// prediction or search previews in the console.
 type Image struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -638,7 +644,7 @@ type PriceInfo struct {
 	//
 	// Google Merchant Center property
 	// [price](https://support.google.com/merchants/answer/6324371). Schema.org
-	// property [Offer.priceSpecification](https://schema.org/priceSpecification).
+	// property [Offer.price](https://schema.org/price).
 	Price float32 `protobuf:"fixed32,2,opt,name=price,proto3" json:"price,omitempty"`
 	// Price of the product without any discount. If zero, by default set to be
 	// the [price][google.cloud.retail.v2.PriceInfo.price].
@@ -863,18 +869,23 @@ type UserInfo struct {
 	// Highly recommended for logged-in users. Unique identifier for logged-in
 	// user, such as a user name.
 	//
+	// Always use a hashed value for this ID.
+	//
 	// The field must be a UTF-8 encoded string with a length limit of 128
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	UserId string `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	// The end user's IP address. Required for getting
-	// [SearchResponse.sponsored_results][google.cloud.retail.v2.SearchResponse.sponsored_results].
-	// This field is used to extract location information for personalization.
+	// The end user's IP address. This field is used to extract location
+	// information for personalization.
 	//
 	// This field must be either an IPv4 address (e.g. "104.133.9.80") or an IPv6
 	// address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334"). Otherwise, an
 	// INVALID_ARGUMENT error is returned.
 	//
-	// This should not be set when using the JavaScript tag in
+	// This should not be set when:
+	//
+	// * setting
+	// [SearchRequest.user_info][google.cloud.retail.v2.SearchRequest.user_info].
+	// * using the JavaScript tag in
 	// [UserEventService.CollectUserEvent][google.cloud.retail.v2.UserEventService.CollectUserEvent]
 	// or if
 	// [direct_user_request][google.cloud.retail.v2.UserInfo.direct_user_request]
@@ -965,26 +976,66 @@ func (x *UserInfo) GetDirectUserRequest() bool {
 	return false
 }
 
-// Promotion information.
-type Promotion struct {
+// The inventory information at a place (e.g. a store) identified
+// by a place ID.
+type LocalInventory struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// ID of the promotion. For example, "free gift".
-	//
-	// The value value must be a UTF-8 encoded string with a length limit of 128
-	// characters, and match the pattern: `[a-zA-Z][a-zA-Z0-9_]*`. For example,
-	// id0LikeThis or ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is
-	// returned.
+	// The place ID for the current set of inventory information.
+	PlaceId string `protobuf:"bytes,1,opt,name=place_id,json=placeId,proto3" json:"place_id,omitempty"`
+	// Product price and cost information.
 	//
 	// Google Merchant Center property
-	// [promotion](https://support.google.com/merchants/answer/7050148).
-	PromotionId string `protobuf:"bytes,1,opt,name=promotion_id,json=promotionId,proto3" json:"promotion_id,omitempty"`
+	// [price](https://support.google.com/merchants/answer/6324371).
+	PriceInfo *PriceInfo `protobuf:"bytes,2,opt,name=price_info,json=priceInfo,proto3" json:"price_info,omitempty"`
+	// Additional local inventory attributes, for example, store name, promotion
+	// tags, etc.
+	//
+	// This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT
+	// error is returned:
+	//
+	// * At most 30 attributes are allowed.
+	// * The key must be a UTF-8 encoded string with a length limit of 32
+	//   characters.
+	// * The key must match the pattern: `[a-zA-Z0-9][a-zA-Z0-9_]*`. For example,
+	//   key0LikeThis or KEY_1_LIKE_THIS.
+	// * The attribute values must be of the same type (text or number).
+	// * Only 1 value is allowed for each attribute.
+	// * For text values, the length limit is 256 UTF-8 characters.
+	// * The attribute does not support search. The `searchable` field should be
+	//   unset or set to false.
+	// * The max summed total bytes of custom attribute keys and values per
+	//   product is 5MiB.
+	Attributes map[string]*CustomAttribute `protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	// Input only. Supported fulfillment types. Valid fulfillment type values
+	// include commonly used types (such as pickup in store and same day
+	// delivery), and custom types. Customers have to map custom types to their
+	// display names before rendering UI.
+	//
+	// Supported values:
+	//
+	// * "pickup-in-store"
+	// * "ship-to-store"
+	// * "same-day-delivery"
+	// * "next-day-delivery"
+	// * "custom-type-1"
+	// * "custom-type-2"
+	// * "custom-type-3"
+	// * "custom-type-4"
+	// * "custom-type-5"
+	//
+	// If this field is set to an invalid value other than these, an
+	// INVALID_ARGUMENT error is returned.
+	//
+	// All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is
+	// returned.
+	FulfillmentTypes []string `protobuf:"bytes,4,rep,name=fulfillment_types,json=fulfillmentTypes,proto3" json:"fulfillment_types,omitempty"`
 }
 
-func (x *Promotion) Reset() {
-	*x = Promotion{}
+func (x *LocalInventory) Reset() {
+	*x = LocalInventory{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_google_cloud_retail_v2_common_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -992,13 +1043,13 @@ func (x *Promotion) Reset() {
 	}
 }
 
-func (x *Promotion) String() string {
+func (x *LocalInventory) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Promotion) ProtoMessage() {}
+func (*LocalInventory) ProtoMessage() {}
 
-func (x *Promotion) ProtoReflect() protoreflect.Message {
+func (x *LocalInventory) ProtoReflect() protoreflect.Message {
 	mi := &file_google_cloud_retail_v2_common_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1010,16 +1061,37 @@ func (x *Promotion) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Promotion.ProtoReflect.Descriptor instead.
-func (*Promotion) Descriptor() ([]byte, []int) {
+// Deprecated: Use LocalInventory.ProtoReflect.Descriptor instead.
+func (*LocalInventory) Descriptor() ([]byte, []int) {
 	return file_google_cloud_retail_v2_common_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *Promotion) GetPromotionId() string {
+func (x *LocalInventory) GetPlaceId() string {
 	if x != nil {
-		return x.PromotionId
+		return x.PlaceId
 	}
 	return ""
+}
+
+func (x *LocalInventory) GetPriceInfo() *PriceInfo {
+	if x != nil {
+		return x.PriceInfo
+	}
+	return nil
+}
+
+func (x *LocalInventory) GetAttributes() map[string]*CustomAttribute {
+	if x != nil {
+		return x.Attributes
+	}
+	return nil
+}
+
+func (x *LocalInventory) GetFulfillmentTypes() []string {
+	if x != nil {
+		return x.FulfillmentTypes
+	}
+	return nil
 }
 
 // The price range of all
@@ -1190,23 +1262,42 @@ var file_google_cloud_retail_v2_common_proto_rawDesc = []byte{
 	0x52, 0x09, 0x75, 0x73, 0x65, 0x72, 0x41, 0x67, 0x65, 0x6e, 0x74, 0x12, 0x2e, 0x0a, 0x13, 0x64,
 	0x69, 0x72, 0x65, 0x63, 0x74, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x72, 0x65, 0x71, 0x75, 0x65,
 	0x73, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x11, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74,
-	0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x2e, 0x0a, 0x09, 0x50,
-	0x72, 0x6f, 0x6d, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x21, 0x0a, 0x0c, 0x70, 0x72, 0x6f, 0x6d,
-	0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
-	0x70, 0x72, 0x6f, 0x6d, 0x6f, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x42, 0xc0, 0x01, 0x0a, 0x1a,
-	0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
-	0x2e, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e, 0x76, 0x32, 0x42, 0x0b, 0x43, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3c, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
-	0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73,
-	0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2f, 0x76, 0x32,
-	0x3b, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0xa2, 0x02, 0x06, 0x52, 0x45, 0x54, 0x41, 0x49, 0x4c,
-	0xaa, 0x02, 0x16, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e,
-	0x52, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e, 0x56, 0x32, 0xca, 0x02, 0x16, 0x47, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x52, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x5c,
-	0x56, 0x32, 0xea, 0x02, 0x19, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f,
-	0x75, 0x64, 0x3a, 0x3a, 0x52, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x3a, 0x3a, 0x56, 0x32, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0xdf, 0x02, 0x0a, 0x0e,
+	0x4c, 0x6f, 0x63, 0x61, 0x6c, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x12, 0x19,
+	0x0a, 0x08, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x07, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x49, 0x64, 0x12, 0x40, 0x0a, 0x0a, 0x70, 0x72, 0x69,
+	0x63, 0x65, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x72, 0x65, 0x74,
+	0x61, 0x69, 0x6c, 0x2e, 0x76, 0x32, 0x2e, 0x50, 0x72, 0x69, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f,
+	0x52, 0x09, 0x70, 0x72, 0x69, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x56, 0x0a, 0x0a, 0x61,
+	0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x36, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x72,
+	0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e, 0x76, 0x32, 0x2e, 0x4c, 0x6f, 0x63, 0x61, 0x6c, 0x49, 0x6e,
+	0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74,
+	0x65, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0a, 0x61, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75,
+	0x74, 0x65, 0x73, 0x12, 0x30, 0x0a, 0x11, 0x66, 0x75, 0x6c, 0x66, 0x69, 0x6c, 0x6c, 0x6d, 0x65,
+	0x6e, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x09, 0x42, 0x03,
+	0xe0, 0x41, 0x04, 0x52, 0x10, 0x66, 0x75, 0x6c, 0x66, 0x69, 0x6c, 0x6c, 0x6d, 0x65, 0x6e, 0x74,
+	0x54, 0x79, 0x70, 0x65, 0x73, 0x1a, 0x66, 0x0a, 0x0f, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75,
+	0x74, 0x65, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x3d, 0x0a, 0x05, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e,
+	0x76, 0x32, 0x2e, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x41, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75,
+	0x74, 0x65, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x42, 0xc0, 0x01,
+	0x0a, 0x1a, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f,
+	0x75, 0x64, 0x2e, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e, 0x76, 0x32, 0x42, 0x0b, 0x43, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3c, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67,
+	0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70,
+	0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2f,
+	0x76, 0x32, 0x3b, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6c, 0xa2, 0x02, 0x06, 0x52, 0x45, 0x54, 0x41,
+	0x49, 0x4c, 0xaa, 0x02, 0x16, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75,
+	0x64, 0x2e, 0x52, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x2e, 0x56, 0x32, 0xca, 0x02, 0x16, 0x47, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x52, 0x65, 0x74, 0x61, 0x69,
+	0x6c, 0x5c, 0x56, 0x32, 0xea, 0x02, 0x19, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43,
+	0x6c, 0x6f, 0x75, 0x64, 0x3a, 0x3a, 0x52, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x3a, 0x3a, 0x56, 0x32,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1221,7 +1312,7 @@ func file_google_cloud_retail_v2_common_proto_rawDescGZIP() []byte {
 	return file_google_cloud_retail_v2_common_proto_rawDescData
 }
 
-var file_google_cloud_retail_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_google_cloud_retail_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_google_cloud_retail_v2_common_proto_goTypes = []interface{}{
 	(*Audience)(nil),              // 0: google.cloud.retail.v2.Audience
 	(*ColorInfo)(nil),             // 1: google.cloud.retail.v2.ColorInfo
@@ -1232,21 +1323,25 @@ var file_google_cloud_retail_v2_common_proto_goTypes = []interface{}{
 	(*PriceInfo)(nil),             // 6: google.cloud.retail.v2.PriceInfo
 	(*Rating)(nil),                // 7: google.cloud.retail.v2.Rating
 	(*UserInfo)(nil),              // 8: google.cloud.retail.v2.UserInfo
-	(*Promotion)(nil),             // 9: google.cloud.retail.v2.Promotion
+	(*LocalInventory)(nil),        // 9: google.cloud.retail.v2.LocalInventory
 	(*PriceInfo_PriceRange)(nil),  // 10: google.cloud.retail.v2.PriceInfo.PriceRange
-	(*timestamppb.Timestamp)(nil), // 11: google.protobuf.Timestamp
+	nil,                           // 11: google.cloud.retail.v2.LocalInventory.AttributesEntry
+	(*timestamppb.Timestamp)(nil), // 12: google.protobuf.Timestamp
 }
 var file_google_cloud_retail_v2_common_proto_depIdxs = []int32{
-	11, // 0: google.cloud.retail.v2.PriceInfo.price_effective_time:type_name -> google.protobuf.Timestamp
-	11, // 1: google.cloud.retail.v2.PriceInfo.price_expire_time:type_name -> google.protobuf.Timestamp
+	12, // 0: google.cloud.retail.v2.PriceInfo.price_effective_time:type_name -> google.protobuf.Timestamp
+	12, // 1: google.cloud.retail.v2.PriceInfo.price_expire_time:type_name -> google.protobuf.Timestamp
 	10, // 2: google.cloud.retail.v2.PriceInfo.price_range:type_name -> google.cloud.retail.v2.PriceInfo.PriceRange
-	5,  // 3: google.cloud.retail.v2.PriceInfo.PriceRange.price:type_name -> google.cloud.retail.v2.Interval
-	5,  // 4: google.cloud.retail.v2.PriceInfo.PriceRange.original_price:type_name -> google.cloud.retail.v2.Interval
-	5,  // [5:5] is the sub-list for method output_type
-	5,  // [5:5] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	6,  // 3: google.cloud.retail.v2.LocalInventory.price_info:type_name -> google.cloud.retail.v2.PriceInfo
+	11, // 4: google.cloud.retail.v2.LocalInventory.attributes:type_name -> google.cloud.retail.v2.LocalInventory.AttributesEntry
+	5,  // 5: google.cloud.retail.v2.PriceInfo.PriceRange.price:type_name -> google.cloud.retail.v2.Interval
+	5,  // 6: google.cloud.retail.v2.PriceInfo.PriceRange.original_price:type_name -> google.cloud.retail.v2.Interval
+	2,  // 7: google.cloud.retail.v2.LocalInventory.AttributesEntry.value:type_name -> google.cloud.retail.v2.CustomAttribute
+	8,  // [8:8] is the sub-list for method output_type
+	8,  // [8:8] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_retail_v2_common_proto_init() }
@@ -1364,7 +1459,7 @@ func file_google_cloud_retail_v2_common_proto_init() {
 			}
 		}
 		file_google_cloud_retail_v2_common_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Promotion); i {
+			switch v := v.(*LocalInventory); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1401,7 +1496,7 @@ func file_google_cloud_retail_v2_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_retail_v2_common_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
