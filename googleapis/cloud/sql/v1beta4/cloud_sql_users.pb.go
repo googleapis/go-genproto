@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -170,89 +170,6 @@ func (x *SqlUsersDeleteRequest) GetProject() string {
 	return ""
 }
 
-type SqlUsersUpdateRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Optional. Host of the user in the instance.
-	Host string `protobuf:"bytes,1,opt,name=host,proto3" json:"host,omitempty"`
-	// Database instance ID. This does not include the project ID.
-	Instance string `protobuf:"bytes,2,opt,name=instance,proto3" json:"instance,omitempty"`
-	// Name of the user in the instance.
-	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Project ID of the project that contains the instance.
-	Project string `protobuf:"bytes,4,opt,name=project,proto3" json:"project,omitempty"`
-	Body    *User  `protobuf:"bytes,100,opt,name=body,proto3" json:"body,omitempty"`
-}
-
-func (x *SqlUsersUpdateRequest) Reset() {
-	*x = SqlUsersUpdateRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SqlUsersUpdateRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SqlUsersUpdateRequest) ProtoMessage() {}
-
-func (x *SqlUsersUpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SqlUsersUpdateRequest.ProtoReflect.Descriptor instead.
-func (*SqlUsersUpdateRequest) Descriptor() ([]byte, []int) {
-	return file_google_cloud_sql_v1beta4_cloud_sql_users_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *SqlUsersUpdateRequest) GetHost() string {
-	if x != nil {
-		return x.Host
-	}
-	return ""
-}
-
-func (x *SqlUsersUpdateRequest) GetInstance() string {
-	if x != nil {
-		return x.Instance
-	}
-	return ""
-}
-
-func (x *SqlUsersUpdateRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SqlUsersUpdateRequest) GetProject() string {
-	if x != nil {
-		return x.Project
-	}
-	return ""
-}
-
-func (x *SqlUsersUpdateRequest) GetBody() *User {
-	if x != nil {
-		return x.Body
-	}
-	return nil
-}
-
 type SqlUsersInsertRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -268,7 +185,7 @@ type SqlUsersInsertRequest struct {
 func (x *SqlUsersInsertRequest) Reset() {
 	*x = SqlUsersInsertRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[2]
+		mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -281,7 +198,7 @@ func (x *SqlUsersInsertRequest) String() string {
 func (*SqlUsersInsertRequest) ProtoMessage() {}
 
 func (x *SqlUsersInsertRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[2]
+	mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -294,7 +211,7 @@ func (x *SqlUsersInsertRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SqlUsersInsertRequest.ProtoReflect.Descriptor instead.
 func (*SqlUsersInsertRequest) Descriptor() ([]byte, []int) {
-	return file_google_cloud_sql_v1beta4_cloud_sql_users_proto_rawDescGZIP(), []int{2}
+	return file_google_cloud_sql_v1beta4_cloud_sql_users_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *SqlUsersInsertRequest) GetInstance() string {
@@ -332,7 +249,7 @@ type SqlUsersListRequest struct {
 func (x *SqlUsersListRequest) Reset() {
 	*x = SqlUsersListRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[3]
+		mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -345,7 +262,7 @@ func (x *SqlUsersListRequest) String() string {
 func (*SqlUsersListRequest) ProtoMessage() {}
 
 func (x *SqlUsersListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[3]
+	mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -358,7 +275,7 @@ func (x *SqlUsersListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SqlUsersListRequest.ProtoReflect.Descriptor instead.
 func (*SqlUsersListRequest) Descriptor() ([]byte, []int) {
-	return file_google_cloud_sql_v1beta4_cloud_sql_users_proto_rawDescGZIP(), []int{3}
+	return file_google_cloud_sql_v1beta4_cloud_sql_users_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SqlUsersListRequest) GetInstance() string {
@@ -373,6 +290,89 @@ func (x *SqlUsersListRequest) GetProject() string {
 		return x.Project
 	}
 	return ""
+}
+
+type SqlUsersUpdateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Optional. Host of the user in the instance.
+	Host string `protobuf:"bytes,1,opt,name=host,proto3" json:"host,omitempty"`
+	// Database instance ID. This does not include the project ID.
+	Instance string `protobuf:"bytes,2,opt,name=instance,proto3" json:"instance,omitempty"`
+	// Name of the user in the instance.
+	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	// Project ID of the project that contains the instance.
+	Project string `protobuf:"bytes,4,opt,name=project,proto3" json:"project,omitempty"`
+	Body    *User  `protobuf:"bytes,100,opt,name=body,proto3" json:"body,omitempty"`
+}
+
+func (x *SqlUsersUpdateRequest) Reset() {
+	*x = SqlUsersUpdateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SqlUsersUpdateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SqlUsersUpdateRequest) ProtoMessage() {}
+
+func (x *SqlUsersUpdateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SqlUsersUpdateRequest.ProtoReflect.Descriptor instead.
+func (*SqlUsersUpdateRequest) Descriptor() ([]byte, []int) {
+	return file_google_cloud_sql_v1beta4_cloud_sql_users_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SqlUsersUpdateRequest) GetHost() string {
+	if x != nil {
+		return x.Host
+	}
+	return ""
+}
+
+func (x *SqlUsersUpdateRequest) GetInstance() string {
+	if x != nil {
+		return x.Instance
+	}
+	return ""
+}
+
+func (x *SqlUsersUpdateRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *SqlUsersUpdateRequest) GetProject() string {
+	if x != nil {
+		return x.Project
+	}
+	return ""
+}
+
+func (x *SqlUsersUpdateRequest) GetBody() *User {
+	if x != nil {
+		return x.Body
+	}
+	return nil
 }
 
 // User level password validation policy.
@@ -824,31 +824,31 @@ var file_google_cloud_sql_v1beta4_cloud_sql_users_proto_rawDesc = []byte{
 	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65,
 	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
 	0x6e, 0x61, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x18,
-	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x22, 0xae,
-	0x01, 0x0a, 0x15, 0x53, 0x71, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x73, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x04, 0x68, 0x6f, 0x73, 0x74,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x04, 0x68, 0x6f, 0x73,
-	0x74, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x08, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x12, 0x0a,
-	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d,
-	0x65, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x18, 0x04, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x32, 0x0a, 0x04, 0x62,
-	0x6f, 0x64, 0x79, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x73, 0x71, 0x6c, 0x2e, 0x76, 0x31, 0x62,
-	0x65, 0x74, 0x61, 0x34, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x62, 0x6f, 0x64, 0x79, 0x22,
-	0x81, 0x01, 0x0a, 0x15, 0x53, 0x71, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x73, 0x65,
-	0x72, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x6e, 0x73,
+	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x22, 0x81,
+	0x01, 0x0a, 0x15, 0x53, 0x71, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x73, 0x49, 0x6e, 0x73, 0x65, 0x72,
+	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x6e, 0x73, 0x74,
+	0x61, 0x6e, 0x63, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x69, 0x6e, 0x73, 0x74,
+	0x61, 0x6e, 0x63, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x32,
+	0x0a, 0x04, 0x62, 0x6f, 0x64, 0x79, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x73, 0x71, 0x6c, 0x2e,
+	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x34, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x62, 0x6f,
+	0x64, 0x79, 0x22, 0x4b, 0x0a, 0x13, 0x53, 0x71, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x73, 0x4c, 0x69,
+	0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x6e, 0x73,
 	0x74, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x69, 0x6e, 0x73,
 	0x74, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x12,
-	0x32, 0x0a, 0x04, 0x62, 0x6f, 0x64, 0x79, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x73, 0x71, 0x6c,
-	0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x34, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x62,
-	0x6f, 0x64, 0x79, 0x22, 0x4b, 0x0a, 0x13, 0x53, 0x71, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x73, 0x4c,
-	0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x6e,
-	0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x69, 0x6e,
-	0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63,
-	0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x22,
+	0xae, 0x01, 0x0a, 0x15, 0x53, 0x71, 0x6c, 0x55, 0x73, 0x65, 0x72, 0x73, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x04, 0x68, 0x6f, 0x73,
+	0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x04, 0x68, 0x6f,
+	0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x12,
+	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61,
+	0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x07, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x32, 0x0a, 0x04,
+	0x62, 0x6f, 0x64, 0x79, 0x18, 0x64, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x73, 0x71, 0x6c, 0x2e, 0x76, 0x31,
+	0x62, 0x65, 0x74, 0x61, 0x34, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x62, 0x6f, 0x64, 0x79,
 	0x22, 0xbb, 0x02, 0x0a, 0x1c, 0x55, 0x73, 0x65, 0x72, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72,
 	0x64, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x6f, 0x6c, 0x69, 0x63,
 	0x79, 0x12, 0x36, 0x0a, 0x17, 0x61, 0x6c, 0x6c, 0x6f, 0x77, 0x65, 0x64, 0x5f, 0x66, 0x61, 0x69,
@@ -1003,9 +1003,9 @@ var file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes = make([]protoi
 var file_google_cloud_sql_v1beta4_cloud_sql_users_proto_goTypes = []interface{}{
 	(User_SqlUserType)(0),                // 0: google.cloud.sql.v1beta4.User.SqlUserType
 	(*SqlUsersDeleteRequest)(nil),        // 1: google.cloud.sql.v1beta4.SqlUsersDeleteRequest
-	(*SqlUsersUpdateRequest)(nil),        // 2: google.cloud.sql.v1beta4.SqlUsersUpdateRequest
-	(*SqlUsersInsertRequest)(nil),        // 3: google.cloud.sql.v1beta4.SqlUsersInsertRequest
-	(*SqlUsersListRequest)(nil),          // 4: google.cloud.sql.v1beta4.SqlUsersListRequest
+	(*SqlUsersInsertRequest)(nil),        // 2: google.cloud.sql.v1beta4.SqlUsersInsertRequest
+	(*SqlUsersListRequest)(nil),          // 3: google.cloud.sql.v1beta4.SqlUsersListRequest
+	(*SqlUsersUpdateRequest)(nil),        // 4: google.cloud.sql.v1beta4.SqlUsersUpdateRequest
 	(*UserPasswordValidationPolicy)(nil), // 5: google.cloud.sql.v1beta4.UserPasswordValidationPolicy
 	(*PasswordStatus)(nil),               // 6: google.cloud.sql.v1beta4.PasswordStatus
 	(*User)(nil),                         // 7: google.cloud.sql.v1beta4.User
@@ -1016,8 +1016,8 @@ var file_google_cloud_sql_v1beta4_cloud_sql_users_proto_goTypes = []interface{}{
 	(*Operation)(nil),                    // 12: google.cloud.sql.v1beta4.Operation
 }
 var file_google_cloud_sql_v1beta4_cloud_sql_users_proto_depIdxs = []int32{
-	7,  // 0: google.cloud.sql.v1beta4.SqlUsersUpdateRequest.body:type_name -> google.cloud.sql.v1beta4.User
-	7,  // 1: google.cloud.sql.v1beta4.SqlUsersInsertRequest.body:type_name -> google.cloud.sql.v1beta4.User
+	7,  // 0: google.cloud.sql.v1beta4.SqlUsersInsertRequest.body:type_name -> google.cloud.sql.v1beta4.User
+	7,  // 1: google.cloud.sql.v1beta4.SqlUsersUpdateRequest.body:type_name -> google.cloud.sql.v1beta4.User
 	10, // 2: google.cloud.sql.v1beta4.UserPasswordValidationPolicy.password_expiration_duration:type_name -> google.protobuf.Duration
 	6,  // 3: google.cloud.sql.v1beta4.UserPasswordValidationPolicy.status:type_name -> google.cloud.sql.v1beta4.PasswordStatus
 	11, // 4: google.cloud.sql.v1beta4.PasswordStatus.password_expiration_time:type_name -> google.protobuf.Timestamp
@@ -1026,9 +1026,9 @@ var file_google_cloud_sql_v1beta4_cloud_sql_users_proto_depIdxs = []int32{
 	5,  // 7: google.cloud.sql.v1beta4.User.password_policy:type_name -> google.cloud.sql.v1beta4.UserPasswordValidationPolicy
 	7,  // 8: google.cloud.sql.v1beta4.UsersListResponse.items:type_name -> google.cloud.sql.v1beta4.User
 	1,  // 9: google.cloud.sql.v1beta4.SqlUsersService.Delete:input_type -> google.cloud.sql.v1beta4.SqlUsersDeleteRequest
-	3,  // 10: google.cloud.sql.v1beta4.SqlUsersService.Insert:input_type -> google.cloud.sql.v1beta4.SqlUsersInsertRequest
-	4,  // 11: google.cloud.sql.v1beta4.SqlUsersService.List:input_type -> google.cloud.sql.v1beta4.SqlUsersListRequest
-	2,  // 12: google.cloud.sql.v1beta4.SqlUsersService.Update:input_type -> google.cloud.sql.v1beta4.SqlUsersUpdateRequest
+	2,  // 10: google.cloud.sql.v1beta4.SqlUsersService.Insert:input_type -> google.cloud.sql.v1beta4.SqlUsersInsertRequest
+	3,  // 11: google.cloud.sql.v1beta4.SqlUsersService.List:input_type -> google.cloud.sql.v1beta4.SqlUsersListRequest
+	4,  // 12: google.cloud.sql.v1beta4.SqlUsersService.Update:input_type -> google.cloud.sql.v1beta4.SqlUsersUpdateRequest
 	12, // 13: google.cloud.sql.v1beta4.SqlUsersService.Delete:output_type -> google.cloud.sql.v1beta4.Operation
 	12, // 14: google.cloud.sql.v1beta4.SqlUsersService.Insert:output_type -> google.cloud.sql.v1beta4.Operation
 	9,  // 15: google.cloud.sql.v1beta4.SqlUsersService.List:output_type -> google.cloud.sql.v1beta4.UsersListResponse
@@ -1060,18 +1060,6 @@ func file_google_cloud_sql_v1beta4_cloud_sql_users_proto_init() {
 			}
 		}
 		file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SqlUsersUpdateRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SqlUsersInsertRequest); i {
 			case 0:
 				return &v.state
@@ -1083,8 +1071,20 @@ func file_google_cloud_sql_v1beta4_cloud_sql_users_proto_init() {
 				return nil
 			}
 		}
-		file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SqlUsersListRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_sql_v1beta4_cloud_sql_users_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SqlUsersUpdateRequest); i {
 			case 0:
 				return &v.state
 			case 1:
