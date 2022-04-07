@@ -318,6 +318,9 @@ type ListDeliveryVehiclesResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The set of delivery vehicles that meet the requested filtering criteria.
+	// When no filter is specified, the request returns all delivery vehicles. A
+	// successful response can also be empty. An empty response indicates that no
+	// delivery vehicles were found meeting the requested filter criteria.
 	DeliveryVehicles []*DeliveryVehicle `protobuf:"bytes,1,rep,name=delivery_vehicles,json=deliveryVehicles,proto3" json:"delivery_vehicles,omitempty"`
 	// You can pass this token in the `ListDeliveryVehiclesRequest` to continue to
 	// list results. When all of the results are returned, this field won't be in
@@ -707,7 +710,9 @@ type SearchTasksResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The set of Tasks for the requested `tracking_id`.
+	// The set of Tasks for the requested `tracking_id`. A successful response can
+	// also be empty. An empty response indicates that no Tasks are associated
+	// with the supplied `tracking_id`.
 	Tasks []*Task `protobuf:"bytes,1,rep,name=tasks,proto3" json:"tasks,omitempty"`
 	// Pass this token in the `SearchTasksRequest` to continue to
 	// list results. If all results have been returned, then this field is either
@@ -949,7 +954,10 @@ type ListTasksResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The set of Tasks that meet the requested filtering criteria.
+	// The set of Tasks that meet the requested filtering criteria. When no filter
+	// is specified, the request returns all tasks. A successful response can also
+	// be empty. An empty response indicates that no Tasks were found meeting the
+	// requested filter criteria.
 	Tasks []*Task `protobuf:"bytes,1,rep,name=tasks,proto3" json:"tasks,omitempty"`
 	// Pass this token in the `ListTasksRequest` to continue to list results.
 	// If all results have been returned, then this field is either an empty

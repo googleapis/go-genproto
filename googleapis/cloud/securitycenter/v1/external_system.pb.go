@@ -44,7 +44,8 @@ type ExternalSystem struct {
 	unknownFields protoimpl.UnknownFields
 
 	// External System Name e.g. jira, demisto, etc.
-	//  e.g.: `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
+	//  e.g.:
+	//  `organizations/1234/sources/5678/findings/123456/externalSystems/jira`
 	// `folders/1234/sources/5678/findings/123456/externalSystems/jira`
 	// `projects/1234/sources/5678/findings/123456/externalSystems/jira`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
