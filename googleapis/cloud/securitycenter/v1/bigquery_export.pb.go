@@ -88,12 +88,12 @@ type BigQueryExport struct {
 	// This field is set by the server and will be ignored if provided on export
 	// creation or update.
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	// Output only. Email address of the user who last edited the big query
-	// export. This field is set by the server and will be ignored if provided on
-	// export creation or update.
+	// Output only. Email address of the user who last edited the big query export.
+	// This field is set by the server and will be ignored if provided on export
+	// creation or update.
 	MostRecentEditor string `protobuf:"bytes,7,opt,name=most_recent_editor,json=mostRecentEditor,proto3" json:"most_recent_editor,omitempty"`
-	// Output only. The service account that needs permission to create table,
-	// upload data to the big query dataset.
+	// Output only. The service account that needs permission to create table, upload data to
+	// the big query dataset.
 	Principal string `protobuf:"bytes,8,opt,name=principal,proto3" json:"principal,omitempty"`
 }
 
