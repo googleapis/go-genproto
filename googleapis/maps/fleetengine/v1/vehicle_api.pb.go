@@ -707,8 +707,8 @@ type SearchVehiclesRequest struct {
 	// value must be greater than or equal to one. The driver is not considered in
 	// the capacity value.
 	MinimumCapacity int32 `protobuf:"varint,8,opt,name=minimum_capacity,json=minimumCapacity,proto3" json:"minimum_capacity,omitempty"`
-	// Required. Restricts the search to only those vehicles that support at least
-	// one of the specified trip types.
+	// Required. Represents the type of proposed trip. Eligible vehicles are those
+	// that can support at least one of the given trip type.
 	//
 	// At the present time, only `EXCLUSIVE` is supported.
 	TripTypes []TripType `protobuf:"varint,9,rep,packed,name=trip_types,json=tripTypes,proto3,enum=maps.fleetengine.v1.TripType" json:"trip_types,omitempty"`
