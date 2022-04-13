@@ -96,7 +96,7 @@ type StructuredQuery_CompositeFilter_Operator int32
 const (
 	// Unspecified. This value must not be used.
 	StructuredQuery_CompositeFilter_OPERATOR_UNSPECIFIED StructuredQuery_CompositeFilter_Operator = 0
-	// The results are required to satisfy each of the combined filters.
+	// Documents are required to satisfy all of the combined filters.
 	StructuredQuery_CompositeFilter_AND StructuredQuery_CompositeFilter_Operator = 1
 )
 
@@ -701,7 +701,10 @@ type StructuredQuery_CompositeFilter struct {
 	// The operator for combining multiple filters.
 	Op StructuredQuery_CompositeFilter_Operator `protobuf:"varint,1,opt,name=op,proto3,enum=google.firestore.v1.StructuredQuery_CompositeFilter_Operator" json:"op,omitempty"`
 	// The list of filters to combine.
-	// Must contain at least one filter.
+	//
+	// Requires:
+	//
+	// * At least one filter is present.
 	Filters []*StructuredQuery_Filter `protobuf:"bytes,2,rep,name=filters,proto3" json:"filters,omitempty"`
 }
 

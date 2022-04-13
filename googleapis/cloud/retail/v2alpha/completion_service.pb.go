@@ -56,21 +56,20 @@ type CompleteQueryRequest struct {
 	//
 	// The maximum number of allowed characters is 255.
 	Query string `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
-	// A unique identifier for tracking visitors. For example, this could be
-	// implemented with an HTTP cookie, which should be able to uniquely identify
-	// a visitor on a single device. This unique identifier should not change if
-	// the visitor logs in or out of the website.
+	// Required field. A unique identifier for tracking visitors. For example,
+	// this could be implemented with an HTTP cookie, which should be able to
+	// uniquely identify a visitor on a single device. This unique identifier
+	// should not change if the visitor logs in or out of the website.
 	//
 	// The field must be a UTF-8 encoded string with a length limit of 128
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	VisitorId string `protobuf:"bytes,7,opt,name=visitor_id,json=visitorId,proto3" json:"visitor_id,omitempty"`
-	// The list of languages of the query. This is
-	// the BCP-47 language code, such as "en-US" or "sr-Latn".
-	// For more information, see
-	// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-	//
-	// The maximum number of allowed characters is 255.
-	// Only "en-US" is currently supported.
+	// The language filters applied to the output suggestions. If set, it should
+	// contain the language of the query. If not set, suggestions are returned
+	// without considering language restrictions. This is the BCP-47 language
+	// code, such as "en-US" or "sr-Latn". For more information, see [Tags for
+	// Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum
+	// number of language codes is 3.
 	LanguageCodes []string `protobuf:"bytes,3,rep,name=language_codes,json=languageCodes,proto3" json:"language_codes,omitempty"`
 	// The device type context for completion suggestions.
 	// It is useful to apply different suggestions on different device types, e.g.
@@ -201,9 +200,9 @@ type CompleteQueryResponse struct {
 	// first result is top suggestion.
 	CompletionResults []*CompleteQueryResponse_CompletionResult `protobuf:"bytes,1,rep,name=completion_results,json=completionResults,proto3" json:"completion_results,omitempty"`
 	// A unique complete token. This should be included in the
-	// [SearchRequest][google.cloud.retail.v2alpha.SearchRequest] resulting from
-	// this completion, which enables accurate attribution of complete model
-	// performance.
+	// [UserEvent.completion_detail][google.cloud.retail.v2alpha.UserEvent.completion_detail]
+	// for search events resulting from this completion, which enables accurate
+	// attribution of complete model performance.
 	AttributionToken string `protobuf:"bytes,2,opt,name=attribution_token,json=attributionToken,proto3" json:"attribution_token,omitempty"`
 	// Matched recent searches of this user. The maximum number of recent searches
 	// is 10. This field is a restricted feature. Contact Retail Search support
@@ -286,7 +285,11 @@ type CompleteQueryResponse_CompletionResult struct {
 
 	// The suggestion for the query.
 	Suggestion string `protobuf:"bytes,1,opt,name=suggestion,proto3" json:"suggestion,omitempty"`
-	// Additional custom attributes ingested through BigQuery.
+	// Custom attributes for the suggestion term.
+	// * For "user-data", the attributes are additional custom attributes
+	// ingested through BigQuery.
+	// * For "cloud-retail", the attributes are product attributes generated
+	// by Cloud Retail.
 	Attributes map[string]*CustomAttribute `protobuf:"bytes,2,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
@@ -653,16 +656,17 @@ type CompletionServiceClient interface {
 	// Completes the specified prefix with keyword suggestions.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Please submit a form [here](https://cloud.google.com/contact) to contact
-	// cloud sales if you are interested in using Retail Search.
+	// Please enable Retail Search on Cloud Console before using this feature.
 	CompleteQuery(ctx context.Context, in *CompleteQueryRequest, opts ...grpc.CallOption) (*CompleteQueryResponse, error)
 	// Bulk import of processed completion dataset.
 	//
-	// Request processing may be synchronous. Partial updating is not supported.
+	// Request processing is asynchronous. Partial updating is not supported.
+	//
+	// The operation is successfully finished only after the imported suggestions
+	// are indexed successfully and ready for serving. The process takes hours.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Please submit a form [here](https://cloud.google.com/contact) to contact
-	// cloud sales if you are interested in using Retail Search.
+	// Please enable Retail Search on Cloud Console before using this feature.
 	ImportCompletionData(ctx context.Context, in *ImportCompletionDataRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -697,16 +701,17 @@ type CompletionServiceServer interface {
 	// Completes the specified prefix with keyword suggestions.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Please submit a form [here](https://cloud.google.com/contact) to contact
-	// cloud sales if you are interested in using Retail Search.
+	// Please enable Retail Search on Cloud Console before using this feature.
 	CompleteQuery(context.Context, *CompleteQueryRequest) (*CompleteQueryResponse, error)
 	// Bulk import of processed completion dataset.
 	//
-	// Request processing may be synchronous. Partial updating is not supported.
+	// Request processing is asynchronous. Partial updating is not supported.
+	//
+	// The operation is successfully finished only after the imported suggestions
+	// are indexed successfully and ready for serving. The process takes hours.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Please submit a form [here](https://cloud.google.com/contact) to contact
-	// cloud sales if you are interested in using Retail Search.
+	// Please enable Retail Search on Cloud Console before using this feature.
 	ImportCompletionData(context.Context, *ImportCompletionDataRequest) (*longrunning.Operation, error)
 }
 

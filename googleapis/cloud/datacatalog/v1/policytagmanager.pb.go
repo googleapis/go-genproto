@@ -131,6 +131,8 @@ type Taxonomy struct {
 	// The name can't start or end with spaces, must contain only Unicode letters,
 	// numbers, underscores, dashes, and spaces, and be at most 200 bytes long
 	// when encoded in UTF-8.
+	//
+	// The taxonomy display name must be unique within an organization.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Optional. Description of this taxonomy. If not set, defaults to empty.
 	//
