@@ -48,15 +48,16 @@ type CreatePhraseSetRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource where this phrase set will be created. Format:
+	// Required. The parent resource where this phrase set will be created.
+	// Format:
 	//
 	// `projects/{project}/locations/{location}/phraseSets`
 	//
 	// Speech-to-Text supports three locations: `global`, `us` (US North America),
 	// and `eu` (Europe). If you are calling the `speech.googleapis.com`
 	// endpoint, use the `global` location. To specify a region, use a
-	// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or
-	// `eu` location value.
+	// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+	// with matching `us` or `eu` location value.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The ID to use for the phrase set, which will become the final
 	// component of the phrase set's resource name.
@@ -137,8 +138,8 @@ type UpdatePhraseSetRequest struct {
 	// Speech-to-Text supports three locations: `global`, `us` (US North America),
 	// and `eu` (Europe). If you are calling the `speech.googleapis.com`
 	// endpoint, use the `global` location. To specify a region, use a
-	// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or
-	// `eu` location value.
+	// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+	// with matching `us` or `eu` location value.
 	PhraseSet *PhraseSet `protobuf:"bytes,1,opt,name=phrase_set,json=phraseSet,proto3" json:"phrase_set,omitempty"`
 	// The list of fields to be updated.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
@@ -203,8 +204,8 @@ type GetPhraseSetRequest struct {
 	// Speech-to-Text supports three locations: `global`, `us` (US North America),
 	// and `eu` (Europe). If you are calling the `speech.googleapis.com`
 	// endpoint, use the `global` location. To specify a region, use a
-	// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or
-	// `eu` location value.
+	// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+	// with matching `us` or `eu` location value.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -260,8 +261,8 @@ type ListPhraseSetRequest struct {
 	// Speech-to-Text supports three locations: `global`, `us` (US North America),
 	// and `eu` (Europe). If you are calling the `speech.googleapis.com`
 	// endpoint, use the `global` location. To specify a region, use a
-	// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or
-	// `eu` location value.
+	// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+	// with matching `us` or `eu` location value.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of phrase sets to return. The service may return
 	// fewer than this value. If unspecified, at most 50 phrase sets will be
@@ -445,15 +446,16 @@ type CreateCustomClassRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource where this custom class will be created. Format:
+	// Required. The parent resource where this custom class will be created.
+	// Format:
 	//
 	// `projects/{project}/locations/{location}/customClasses`
 	//
 	// Speech-to-Text supports three locations: `global`, `us` (US North America),
 	// and `eu` (Europe). If you are calling the `speech.googleapis.com`
 	// endpoint, use the `global` location. To specify a region, use a
-	// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or
-	// `eu` location value.
+	// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+	// with matching `us` or `eu` location value.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The ID to use for the custom class, which will become the final
 	// component of the custom class' resource name.
@@ -534,8 +536,8 @@ type UpdateCustomClassRequest struct {
 	// Speech-to-Text supports three locations: `global`, `us` (US North America),
 	// and `eu` (Europe). If you are calling the `speech.googleapis.com`
 	// endpoint, use the `global` location. To specify a region, use a
-	// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or
-	// `eu` location value.
+	// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+	// with matching `us` or `eu` location value.
 	CustomClass *CustomClass `protobuf:"bytes,1,opt,name=custom_class,json=customClass,proto3" json:"custom_class,omitempty"`
 	// The list of fields to be updated.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
@@ -651,8 +653,8 @@ type ListCustomClassesRequest struct {
 	// Speech-to-Text supports three locations: `global`, `us` (US North America),
 	// and `eu` (Europe). If you are calling the `speech.googleapis.com`
 	// endpoint, use the `global` location. To specify a region, use a
-	// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or
-	// `eu` location value.
+	// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+	// with matching `us` or `eu` location value.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The maximum number of custom classes to return. The service may return
 	// fewer than this value. If unspecified, at most 50 custom classes will be
@@ -792,8 +794,8 @@ type DeleteCustomClassRequest struct {
 	// Speech-to-Text supports three locations: `global`, `us` (US North America),
 	// and `eu` (Europe). If you are calling the `speech.googleapis.com`
 	// endpoint, use the `global` location. To specify a region, use a
-	// [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or
-	// `eu` location value.
+	// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+	// with matching `us` or `eu` location value.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 

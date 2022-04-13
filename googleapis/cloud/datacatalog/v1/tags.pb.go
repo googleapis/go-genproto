@@ -441,7 +441,7 @@ type TagTemplate struct {
 	// [ListTags][google.cloud.datacatalog.v1.ListTags] API response.
 	//
 	// Additionally, you can search for a public tag by value with a
-	// simple search query instead of using a ``tag:`` predicate.
+	// simple search query in addition to using a ``tag:`` predicate.
 	IsPubliclyReadable bool `protobuf:"varint,5,opt,name=is_publicly_readable,json=isPubliclyReadable,proto3" json:"is_publicly_readable,omitempty"`
 	// Required. Map of tag template field IDs to the settings for the field.
 	// This map is an exhaustive list of the allowed fields. The map must contain
