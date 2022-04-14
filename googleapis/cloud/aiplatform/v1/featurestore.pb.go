@@ -37,24 +37,26 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Possible states a Featurestore can have.
+// Possible states a featurestore can have.
 type Featurestore_State int32
 
 const (
 	// Default value. This value is unused.
 	Featurestore_STATE_UNSPECIFIED Featurestore_State = 0
-	// State when the Featurestore configuration is not being updated and the
-	// fields reflect the current configuration of the Featurestore. The
-	// Featurestore is usable in this state.
+	// State when the featurestore configuration is not being updated and the
+	// fields reflect the current configuration of the featurestore. The
+	// featurestore is usable in this state.
 	Featurestore_STABLE Featurestore_State = 1
-	// State when the Featurestore configuration is being updated and the fields
-	// reflect the updated configuration of the Featurestore, not the current
-	// one. For example, `online_serving_config.fixed_node_count` can take
-	// minutes to update. While the update is in progress, the Featurestore
-	// will be in the UPDATING state and the value of `fixed_node_count` will be
-	// the updated value. Until the update completes, the actual number of nodes
-	// can still be the original value of `fixed_node_count`. The Featurestore
-	// is still usable in this state.
+	// The state of the featurestore configuration when it is being updated.
+	// During an update, the fields reflect either the original configuration
+	// or the updated configuration of the featurestore. For example,
+	// `online_serving_config.fixed_node_count` can take minutes to update.
+	// While the update is in progress, the featurestore is in the UPDATING
+	// state, and the value of `fixed_node_count` can be the original value or
+	// the updated value, depending on the progress of the operation. Until the
+	// update completes, the actual number of nodes can still be the original
+	// value of `fixed_node_count`. The featurestore is still usable in this
+	// state.
 	Featurestore_UPDATING Featurestore_State = 2
 )
 
@@ -129,7 +131,8 @@ type Featurestore struct {
 	// System reserved label keys are prefixed with "aiplatform.googleapis.com/"
 	// and are immutable.
 	Labels map[string]string `protobuf:"bytes,6,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Required. Config for online serving resources.
+	// Optional. Config for online storage resources. If unset, the featurestore will
+	// not have an online store and cannot be used for online serving.
 	OnlineServingConfig *Featurestore_OnlineServingConfig `protobuf:"bytes,7,opt,name=online_serving_config,json=onlineServingConfig,proto3" json:"online_serving_config,omitempty"`
 	// Output only. State of the featurestore.
 	State Featurestore_State `protobuf:"varint,8,opt,name=state,proto3,enum=google.cloud.aiplatform.v1.Featurestore_State" json:"state,omitempty"`
@@ -233,11 +236,10 @@ type Featurestore_OnlineServingConfig struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The number of nodes for each cluster. The number of nodes will not
-	// scale automatically but can be scaled manually by providing different
-	// values when updating.
-	// Only one of `fixed_node_count` and `scaling` can be set. Setting one will
-	// reset the other.
+	// The number of nodes for the online store. The number of nodes doesn't
+	// scale automatically, but you can manually update the number of
+	// nodes. If set to 0, the featurestore will not have an
+	// online store and cannot be used for online serving.
 	FixedNodeCount int32 `protobuf:"varint,2,opt,name=fixed_node_count,json=fixedNodeCount,proto3" json:"fixed_node_count,omitempty"`
 }
 
@@ -320,7 +322,7 @@ var file_google_cloud_aiplatform_v1_featurestore_proto_rawDesc = []byte{
 	0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31,
 	0x2e, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x4f, 0x6e,
 	0x6c, 0x69, 0x6e, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x6e, 0x67, 0x43, 0x6f, 0x6e, 0x66, 0x69,
-	0x67, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x13, 0x6f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x53, 0x65,
+	0x67, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52, 0x13, 0x6f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x53, 0x65,
 	0x72, 0x76, 0x69, 0x6e, 0x67, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x49, 0x0a, 0x05, 0x73,
 	0x74, 0x61, 0x74, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2e, 0x2e, 0x67, 0x6f, 0x6f,
 	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74,

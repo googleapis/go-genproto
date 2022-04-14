@@ -89,7 +89,7 @@ func (ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_Predi
 	return file_google_cloud_aiplatform_v1_model_monitoring_proto_rawDescGZIP(), []int{0, 3, 0, 0}
 }
 
-// Next ID: 7
+// Next ID: 8
 type ModelMonitoringObjectiveConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
