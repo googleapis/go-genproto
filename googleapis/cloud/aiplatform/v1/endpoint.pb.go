@@ -100,7 +100,7 @@ type Endpoint struct {
 	// Where `{project}` is a project number, as in `12345`, and `{network}` is
 	// network name.
 	Network string `protobuf:"bytes,13,opt,name=network,proto3" json:"network,omitempty"`
-	// If true, expose the Endpoint via private service connect.
+	// Deprecated: If true, expose the Endpoint via private service connect.
 	//
 	// Only one of the fields, [network][google.cloud.aiplatform.v1.Endpoint.network] or
 	// [enable_private_service_connect][google.cloud.aiplatform.v1.Endpoint.enable_private_service_connect],
@@ -545,7 +545,7 @@ type PredictRequestResponseLoggingConfig struct {
 	// range(0,1].
 	SamplingRate float64 `protobuf:"fixed64,2,opt,name=sampling_rate,json=samplingRate,proto3" json:"sampling_rate,omitempty"`
 	// BigQuery table for logging.
-	// If only given project, a new dataset will be created with name
+	// If only given a project, a new dataset will be created with name
 	// `logging_<endpoint-display-name>_<endpoint-id>` where
 	// <endpoint-display-name> will be made BigQuery-dataset-name compatible (e.g.
 	// most special characters will become underscores). If no table name is
