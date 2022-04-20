@@ -56,7 +56,7 @@ type TransitionRouteGroup struct {
 	// ID>/flows/<Flow ID>/transitionRouteGroups/<Transition Route Group ID>`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The human-readable name of the transition route group, unique within
-	// the [Agent][google.cloud.dialogflow.cx.v3.Agent]. The display name can be no longer than 30 characters.
+	// the flow. The display name can be no longer than 30 characters.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// Transition routes associated with the [TransitionRouteGroup][google.cloud.dialogflow.cx.v3.TransitionRouteGroup].
 	TransitionRoutes []*TransitionRoute `protobuf:"bytes,5,rep,name=transition_routes,json=transitionRoutes,proto3" json:"transition_routes,omitempty"`
