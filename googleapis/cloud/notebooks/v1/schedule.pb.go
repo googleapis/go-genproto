@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -127,8 +127,8 @@ type Schedule struct {
 	// A brief description of this environment.
 	Description string         `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	State       Schedule_State `protobuf:"varint,4,opt,name=state,proto3,enum=google.cloud.notebooks.v1.Schedule_State" json:"state,omitempty"`
-	// Cron-tab formatted schedule by which the job will execute
-	// Format: minute, hour, day of month, month, day of week
+	// Cron-tab formatted schedule by which the job will execute.
+	// Format: minute, hour, day of month, month, day of week,
 	// e.g. 0 0 * * WED = every Wednesday
 	// More examples: https://crontab.guru/examples.html
 	CronSchedule string `protobuf:"bytes,5,opt,name=cron_schedule,json=cronSchedule,proto3" json:"cron_schedule,omitempty"`

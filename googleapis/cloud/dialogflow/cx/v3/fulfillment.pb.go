@@ -69,7 +69,11 @@ type Fulfillment struct {
 	// responses will be returned. You may only want to apply it to fulfillments
 	// that have slow webhooks.
 	ReturnPartialResponses bool `protobuf:"varint,8,opt,name=return_partial_responses,json=returnPartialResponses,proto3" json:"return_partial_responses,omitempty"`
-	// The tag used by the webhook to identify which fulfillment is being called.
+	// The value of this field will be populated in the [WebhookRequest][google.cloud.dialogflow.cx.v3.WebhookRequest]
+	// `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is
+	// called.
+	// The tag is typically used by the webhook service to identify which
+	// fulfillment is being called, but it could be used for other purposes.
 	// This field is required if `webhook` is specified.
 	Tag string `protobuf:"bytes,3,opt,name=tag,proto3" json:"tag,omitempty"`
 	// Set parameter values before executing the webhook.

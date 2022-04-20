@@ -1309,8 +1309,11 @@ type WebhookRequest_FulfillmentInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Always present. The tag used to identify which fulfillment is being
-	// called.
+	// Always present.
+	// The value of the [Fulfillment.tag][google.cloud.dialogflow.cx.v3beta1.Fulfillment.tag] field will be populated in this
+	// field by Dialogflow when the associated webhook is called.
+	// The tag is typically used by the webhook service to identify which
+	// fulfillment is being called, but it could be used for other purposes.
 	Tag string `protobuf:"bytes,1,opt,name=tag,proto3" json:"tag,omitempty"`
 }
 

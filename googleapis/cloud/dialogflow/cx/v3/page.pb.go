@@ -70,7 +70,7 @@ type Page struct {
 	// Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
 	// ID>/flows/<Flow ID>/pages/<Page ID>`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Required. The human-readable name of the page, unique within the agent.
+	// Required. The human-readable name of the page, unique within the flow.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment *Fulfillment `protobuf:"bytes,7,opt,name=entry_fulfillment,json=entryFulfillment,proto3" json:"entry_fulfillment,omitempty"`

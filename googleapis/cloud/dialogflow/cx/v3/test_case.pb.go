@@ -4621,7 +4621,7 @@ type TestCasesClient interface {
 	// Calculates the test coverage for an agent.
 	CalculateCoverage(ctx context.Context, in *CalculateCoverageRequest, opts ...grpc.CallOption) (*CalculateCoverageResponse, error)
 	// Imports the test cases from a Cloud Storage bucket or a local file. It
-	// always creates new test cases and won't overwite any existing ones. The
+	// always creates new test cases and won't overwrite any existing ones. The
 	// provided ID in the imported test case is neglected.
 	//
 	// This method is a [long-running
@@ -4796,7 +4796,7 @@ type TestCasesServer interface {
 	// Calculates the test coverage for an agent.
 	CalculateCoverage(context.Context, *CalculateCoverageRequest) (*CalculateCoverageResponse, error)
 	// Imports the test cases from a Cloud Storage bucket or a local file. It
-	// always creates new test cases and won't overwite any existing ones. The
+	// always creates new test cases and won't overwrite any existing ones. The
 	// provided ID in the imported test case is neglected.
 	//
 	// This method is a [long-running
