@@ -305,7 +305,8 @@ type ManagedService struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The name of the service. See the [overview](/service-management/overview)
+	// The name of the service. See the
+	// [overview](https://cloud.google.com/service-infrastructure/docs/overview)
 	// for naming requirements.
 	ServiceName string `protobuf:"bytes,2,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 	// ID of the project that produces and owns this service.
@@ -745,8 +746,9 @@ type Rollout struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters
-	// and only lower case letters, digits, '.', '_' and '-' are allowed.
+	// Optional. Unique identifier of this Rollout. Must be no longer than 63
+	// characters and only lower case letters, digits, '.', '_' and '-' are
+	// allowed.
 	//
 	// If not specified by client, the server will generate one. The generated id
 	// will have the form of <date><revision number>, where "date" is the create

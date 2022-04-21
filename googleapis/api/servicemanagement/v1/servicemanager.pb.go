@@ -243,8 +243,8 @@ type GetServiceRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service.  See the `ServiceManager` overview for naming
-	// requirements.  For example: `example.googleapis.com`.
+	// Required. The name of the service.  See the `ServiceManager` overview for
+	// naming requirements.  For example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 }
 
@@ -342,8 +342,9 @@ type DeleteServiceRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service.  See the [overview](/service-management/overview)
-	// for naming requirements.  For example: `example.googleapis.com`.
+	// Required. The name of the service.  See the
+	// [overview](/service-management/overview) for naming requirements.  For
+	// example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 }
 
@@ -392,8 +393,9 @@ type UndeleteServiceRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service. See the [overview](/service-management/overview)
-	// for naming requirements. For example: `example.googleapis.com`.
+	// Required. The name of the service. See the
+	// [overview](/service-management/overview) for naming requirements. For
+	// example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 }
 
@@ -491,8 +493,9 @@ type GetServiceConfigRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service.  See the [overview](/service-management/overview)
-	// for naming requirements.  For example: `example.googleapis.com`.
+	// Required. The name of the service.  See the
+	// [overview](/service-management/overview) for naming requirements.  For
+	// example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 	// Required. The id of the service configuration resource.
 	//
@@ -563,8 +566,9 @@ type ListServiceConfigsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service.  See the [overview](/service-management/overview)
-	// for naming requirements.  For example: `example.googleapis.com`.
+	// Required. The name of the service.  See the
+	// [overview](/service-management/overview) for naming requirements.  For
+	// example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 	// The token of the page to retrieve.
 	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
@@ -690,8 +694,9 @@ type CreateServiceConfigRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service.  See the [overview](/service-management/overview)
-	// for naming requirements.  For example: `example.googleapis.com`.
+	// Required. The name of the service.  See the
+	// [overview](/service-management/overview) for naming requirements.  For
+	// example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 	// Required. The service configuration resource.
 	ServiceConfig *serviceconfig.Service `protobuf:"bytes,2,opt,name=service_config,json=serviceConfig,proto3" json:"service_config,omitempty"`
@@ -749,8 +754,9 @@ type SubmitConfigSourceRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service.  See the [overview](/service-management/overview)
-	// for naming requirements.  For example: `example.googleapis.com`.
+	// Required. The name of the service.  See the
+	// [overview](/service-management/overview) for naming requirements.  For
+	// example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 	// Required. The source configuration for the service.
 	ConfigSource *ConfigSource `protobuf:"bytes,2,opt,name=config_source,json=configSource,proto3" json:"config_source,omitempty"`
@@ -868,8 +874,9 @@ type CreateServiceRolloutRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service.  See the [overview](/service-management/overview)
-	// for naming requirements.  For example: `example.googleapis.com`.
+	// Required. The name of the service.  See the
+	// [overview](/service-management/overview) for naming requirements.  For
+	// example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 	// Required. The rollout resource. The `service_name` field is output only.
 	Rollout *Rollout `protobuf:"bytes,2,opt,name=rollout,proto3" json:"rollout,omitempty"`
@@ -927,8 +934,9 @@ type ListServiceRolloutsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service.  See the [overview](/service-management/overview)
-	// for naming requirements.  For example: `example.googleapis.com`.
+	// Required. The name of the service.  See the
+	// [overview](/service-management/overview) for naming requirements.  For
+	// example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 	// The token of the page to retrieve.
 	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
@@ -938,10 +946,10 @@ type ListServiceRolloutsRequest struct {
 	// Required. Use `filter` to return subset of rollouts.
 	// The following filters are supported:
 	//   -- To limit the results to only those in
-	//      [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS',
+	//      status (google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS',
 	//      use filter='status=SUCCESS'
 	//   -- To limit the results to those in
-	//      [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED'
+	//      status (google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED'
 	//      or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 }
@@ -1070,8 +1078,9 @@ type GetServiceRolloutRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the service.  See the [overview](/service-management/overview)
-	// for naming requirements.  For example: `example.googleapis.com`.
+	// Required. The name of the service.  See the
+	// [overview](/service-management/overview) for naming requirements.  For
+	// example: `example.googleapis.com`.
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName,proto3" json:"service_name,omitempty"`
 	// Required. The id of the rollout resource.
 	RolloutId string `protobuf:"bytes,2,opt,name=rollout_id,json=rolloutId,proto3" json:"rollout_id,omitempty"`
@@ -2059,8 +2068,10 @@ type ServiceManagerClient interface {
 	CreateService(ctx context.Context, in *CreateServiceRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes a managed service. This method will change the service to the
 	// `Soft-Delete` state for 30 days. Within this period, service producers may
-	// call [UndeleteService][google.api.servicemanagement.v1.ServiceManager.UndeleteService] to restore the service.
-	// After 30 days, the service will be permanently deleted.
+	// call
+	// [UndeleteService][google.api.servicemanagement.v1.ServiceManager.UndeleteService]
+	// to restore the service. After 30 days, the service will be permanently
+	// deleted.
 	//
 	// Operation<response: google.protobuf.Empty>
 	DeleteService(ctx context.Context, in *DeleteServiceRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
@@ -2091,7 +2102,8 @@ type ServiceManagerClient interface {
 	// Specification). This method stores the source configurations as well as the
 	// generated service configuration. To rollout the service configuration to
 	// other services,
-	// please call [CreateServiceRollout][google.api.servicemanagement.v1.ServiceManager.CreateServiceRollout].
+	// please call
+	// [CreateServiceRollout][google.api.servicemanagement.v1.ServiceManager.CreateServiceRollout].
 	//
 	// Only the 100 most recent configuration sources and ones referenced by
 	// existing service configurtions are kept for each service. The rest will be
@@ -2102,7 +2114,8 @@ type ServiceManagerClient interface {
 	// Lists the history of the service configuration rollouts for a managed
 	// service, from the newest to the oldest.
 	ListServiceRollouts(ctx context.Context, in *ListServiceRolloutsRequest, opts ...grpc.CallOption) (*ListServiceRolloutsResponse, error)
-	// Gets a service configuration [rollout][google.api.servicemanagement.v1.Rollout].
+	// Gets a service configuration
+	// [rollout][google.api.servicemanagement.v1.Rollout].
 	GetServiceRollout(ctx context.Context, in *GetServiceRolloutRequest, opts ...grpc.CallOption) (*Rollout, error)
 	// Creates a new service configuration rollout. Based on rollout, the
 	// Google Service Management will roll out the service configurations to
@@ -2283,8 +2296,10 @@ type ServiceManagerServer interface {
 	CreateService(context.Context, *CreateServiceRequest) (*longrunning.Operation, error)
 	// Deletes a managed service. This method will change the service to the
 	// `Soft-Delete` state for 30 days. Within this period, service producers may
-	// call [UndeleteService][google.api.servicemanagement.v1.ServiceManager.UndeleteService] to restore the service.
-	// After 30 days, the service will be permanently deleted.
+	// call
+	// [UndeleteService][google.api.servicemanagement.v1.ServiceManager.UndeleteService]
+	// to restore the service. After 30 days, the service will be permanently
+	// deleted.
 	//
 	// Operation<response: google.protobuf.Empty>
 	DeleteService(context.Context, *DeleteServiceRequest) (*longrunning.Operation, error)
@@ -2315,7 +2330,8 @@ type ServiceManagerServer interface {
 	// Specification). This method stores the source configurations as well as the
 	// generated service configuration. To rollout the service configuration to
 	// other services,
-	// please call [CreateServiceRollout][google.api.servicemanagement.v1.ServiceManager.CreateServiceRollout].
+	// please call
+	// [CreateServiceRollout][google.api.servicemanagement.v1.ServiceManager.CreateServiceRollout].
 	//
 	// Only the 100 most recent configuration sources and ones referenced by
 	// existing service configurtions are kept for each service. The rest will be
@@ -2326,7 +2342,8 @@ type ServiceManagerServer interface {
 	// Lists the history of the service configuration rollouts for a managed
 	// service, from the newest to the oldest.
 	ListServiceRollouts(context.Context, *ListServiceRolloutsRequest) (*ListServiceRolloutsResponse, error)
-	// Gets a service configuration [rollout][google.api.servicemanagement.v1.Rollout].
+	// Gets a service configuration
+	// [rollout][google.api.servicemanagement.v1.Rollout].
 	GetServiceRollout(context.Context, *GetServiceRolloutRequest) (*Rollout, error)
 	// Creates a new service configuration rollout. Based on rollout, the
 	// Google Service Management will roll out the service configurations to
