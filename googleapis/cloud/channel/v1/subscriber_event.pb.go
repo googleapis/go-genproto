@@ -304,7 +304,7 @@ func (x *EntitlementEvent) GetEventType() EntitlementEvent_Type {
 }
 
 // Represents information which resellers will get as part of notification from
-// Cloud Pub/Sub.
+// Pub/Sub.
 type SubscriberEvent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -377,12 +377,12 @@ type isSubscriberEvent_Event interface {
 }
 
 type SubscriberEvent_CustomerEvent struct {
-	// Customer event send as part of Pub/Sub event to partners.
+	// Customer event sent as part of Pub/Sub event to partners.
 	CustomerEvent *CustomerEvent `protobuf:"bytes,1,opt,name=customer_event,json=customerEvent,proto3,oneof"`
 }
 
 type SubscriberEvent_EntitlementEvent struct {
-	// Entitlement event send as part of Pub/Sub event to partners.
+	// Entitlement event sent as part of Pub/Sub event to partners.
 	EntitlementEvent *EntitlementEvent `protobuf:"bytes,2,opt,name=entitlement_event,json=entitlementEvent,proto3,oneof"`
 }
 
