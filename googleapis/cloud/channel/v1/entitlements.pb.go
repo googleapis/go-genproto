@@ -241,7 +241,8 @@ type Entitlement struct {
 	// Optional. This purchase order (PO) information is for resellers to use for their
 	// company tracking usage. If a purchaseOrderId value is given, it appears in
 	// the API responses and shows up in the invoice. The property accepts up to
-	// 80 plain text characters.
+	// 80 plain text characters. This is only supported for Google Workspace
+	// entitlements.
 	PurchaseOrderId string `protobuf:"bytes,19,opt,name=purchase_order_id,json=purchaseOrderId,proto3" json:"purchase_order_id,omitempty"`
 	// Output only. Settings for trial offers.
 	TrialSettings *TrialSettings `protobuf:"bytes,21,opt,name=trial_settings,json=trialSettings,proto3" json:"trial_settings,omitempty"`
