@@ -519,7 +519,15 @@ type VehicleStop_TaskInfo struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The Task ID. This field won't be populated in the response of either a
-	// `GetTask`, or a `SearchTasks` call.
+	// `GetTask`, or a `SearchTasks` call. Task IDs are subject to the following
+	// restrictions:
+	//
+	// * Must be a valid Unicode string.
+	// * Limited to a maximum length of 64 characters.
+	// * Normalized according to Unicode Normalization Form C
+	// (http://www.unicode.org/reports/tr15/).
+	// * May not contain any of the following ASCII characters: '/', ':', '?',
+	// ',', or '#'.
 	TaskId string `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	// The time required to perform the Task.
 	TaskDuration *durationpb.Duration `protobuf:"bytes,2,opt,name=task_duration,json=taskDuration,proto3" json:"task_duration,omitempty"`

@@ -292,7 +292,7 @@ type Trip struct {
 	IntermediateDestinationIndex int32 `protobuf:"varint,15,opt,name=intermediate_destination_index,json=intermediateDestinationIndex,proto3" json:"intermediate_destination_index,omitempty"`
 	// Input only. The actual time and location of the driver's arrival at
 	// an intermediate destination.
-	// This field is for provider to provide feedback on actual arriaval
+	// This field is for provider to provide feedback on actual arrival
 	// information at intermediate destinations.
 	ActualIntermediateDestinationArrivalPoints []*StopLocation `protobuf:"bytes,33,rep,name=actual_intermediate_destination_arrival_points,json=actualIntermediateDestinationArrivalPoints,proto3" json:"actual_intermediate_destination_arrival_points,omitempty"`
 	// Input only. The actual time and location when and where the customer was picked up from
