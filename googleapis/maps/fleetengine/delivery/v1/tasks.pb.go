@@ -311,14 +311,22 @@ type Task struct {
 	// `UNAVAILABLE` and `SCHEDULED_STOP`. These IDs are subject to the
 	// following restrictions:
 	//
-	// * Tracking IDs must be valid Unicode strings.
-	// * Tracking IDs are limited to a maximum length of 64 characters.
-	// * Tracking IDs must be normalized according to Unicode Normalization Form C
+	// * Must be a valid Unicode string.
+	// * Limited to a maximum length of 64 characters.
+	// * Normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
-	// * Tracking IDs may not contain any of the following ASCII characters: '/',
-	// ':', '?', ',', or '#'.
+	// * May not contain any of the following ASCII characters: '/', ':', '?',
+	// ',', or '#'.
 	TrackingId string `protobuf:"bytes,4,opt,name=tracking_id,json=trackingId,proto3" json:"tracking_id,omitempty"`
-	// Output only. The ID of the vehicle that is executing this Task.
+	// Output only. The ID of the vehicle that is executing this Task. Delivery Vehicle IDs are
+	// subject to the following restrictions:
+	//
+	// * Must be a valid Unicode string.
+	// * Limited to a maximum length of 64 characters.
+	// * Normalized according to Unicode Normalization Form C
+	// (http://www.unicode.org/reports/tr15/).
+	// * May not contain any of the following ASCII characters: '/', ':', '?',
+	// ',', or '#'.
 	DeliveryVehicleId string `protobuf:"bytes,5,opt,name=delivery_vehicle_id,json=deliveryVehicleId,proto3" json:"delivery_vehicle_id,omitempty"`
 	// Immutable. The location where the Task will be completed.
 	// Optional for `UNAVAILABLE` Tasks, but required for all other Tasks.

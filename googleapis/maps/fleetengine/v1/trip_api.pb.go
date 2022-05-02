@@ -108,15 +108,15 @@ type CreateTripRequest struct {
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Parent string `protobuf:"bytes,3,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. Unique Trip ID; must be unique per provider.
+	// Required. Unique Trip ID.
 	// Subject to the following restrictions:
 	//
-	// 1. IDs must be valid Unicode strings.
-	// 2. IDs are limited to a maximum length of 64 characters.
-	// 3. IDs must be normalized according to Unicode Normalization Form C
+	// * Must be a valid Unicode string.
+	// * Limited to a maximum length of 64 characters.
+	// * Normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
-	// 4. IDs must not contain any of the following ASCII characters: '/', ':',
-	// '?', ',', or '#'.
+	// * May not contain any of the following ASCII characters: '/', ':', '?',
+	// ',', or '#'.
 	TripId string `protobuf:"bytes,5,opt,name=trip_id,json=tripId,proto3" json:"trip_id,omitempty"`
 	// Required. Trip entity to create.
 	//

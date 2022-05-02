@@ -53,15 +53,15 @@ type CreateDeliveryVehicleRequest struct {
 	// Required. Must be in the format `providers/{provider}`. The provider must be the
 	// Google Cloud Project ID. For example, `sample-cloud-project`.
 	Parent string `protobuf:"bytes,3,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The Delivery Vehicle ID must be unique for each provider. Delivery Vehicle
-	// IDs are subject to the following restrictions:
+	// Required. The Delivery Vehicle ID must be unique and subject to the following
+	// restrictions:
 	//
-	// * IDs must be valid Unicode strings.
-	// * IDs are limited to a maximum length of 64 characters.
-	// * IDs must be normalized according to Unicode Normalization Form C
+	// * Must be a valid Unicode string.
+	// * Limited to a maximum length of 64 characters.
+	// * Normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
-	// * IDs may not contain any of the following ASCII characters: '/', ':',
-	// '?', ',', or '#'.
+	// * May not contain any of the following ASCII characters: '/', ':', '?',
+	// ',', or '#'.
 	DeliveryVehicleId string `protobuf:"bytes,4,opt,name=delivery_vehicle_id,json=deliveryVehicleId,proto3" json:"delivery_vehicle_id,omitempty"`
 	// Required. The `DeliveryVehicle` entity to create. When creating a new delivery
 	// vehicle, you may set the following optional fields:
@@ -464,17 +464,17 @@ type CreateTaskRequest struct {
 	// Required. Must be in the format `providers/{provider}`. The `provider` must be the
 	// Google Cloud Project ID. For example, `sample-cloud-project`.
 	Parent string `protobuf:"bytes,3,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The Task ID must be unique for each provider, but it should be not a
-	// shipment tracking ID. To store a shipment tracking ID, use the
-	// `tracking_id` field. Note that multiple tasks can have the same
-	// `tracking_id`. Task IDs are subject to the following restrictions:
+	// Required. The Task ID must be unique, but it should be not a shipment tracking ID. To
+	// store a shipment tracking ID, use the `tracking_id` field. Note that
+	// multiple tasks can have the same `tracking_id`. Task IDs are subject to the
+	// following restrictions:
 	//
-	// * Task IDs must be valid Unicode strings.
-	// * Task IDs are limited to a maximum length of 64 characters.
-	// * Task IDs must be normalized according to Unicode Normalization Form C
+	// * Must be a valid Unicode string.
+	// * Limited to a maximum length of 64 characters.
+	// * Normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
-	// * Task IDs may not contain any of the following ASCII characters: '/',
-	// ':', '?', ',', or '#'.
+	// * May not contain any of the following ASCII characters: '/', ':', '?',
+	// ',', or '#'.
 	TaskId string `protobuf:"bytes,5,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	// Required. The Task entity to create.
 	// When creating a Task, the following fields are required:
@@ -622,7 +622,15 @@ type SearchTasksRequest struct {
 	// The provider must be the Google Cloud Project ID. For example,
 	// `sample-cloud-project`.
 	Parent string `protobuf:"bytes,3,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The identifier of the set of related Tasks being requested.
+	// Required. The identifier of the set of related Tasks being requested. Tracking IDs
+	// are subject to the following restrictions:
+	//
+	// * Must be a valid Unicode string.
+	// * Limited to a maximum length of 64 characters.
+	// * Normalized according to Unicode Normalization Form C
+	// (http://www.unicode.org/reports/tr15/).
+	// * May not contain any of the following ASCII characters: '/', ':', '?',
+	// ',', or '#'.
 	TrackingId string `protobuf:"bytes,4,opt,name=tracking_id,json=trackingId,proto3" json:"tracking_id,omitempty"`
 	// Optional. The maximum number of Tasks to return. The service may return fewer than
 	// this value. If you don't specify this value, then the server determines the

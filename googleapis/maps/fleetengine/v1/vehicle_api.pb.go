@@ -191,15 +191,15 @@ type CreateVehicleRequest struct {
 	// of the Google Cloud Project of which the service account making
 	// this call is a member.
 	Parent string `protobuf:"bytes,3,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. Unique Vehicle ID; must be unique per provider.
+	// Required. Unique Vehicle ID.
 	// Subject to the following restrictions:
 	//
-	// 1. IDs must be valid Unicode strings.
-	// 2. IDs are limited to a maximum length of 64 characters.
-	// 3. IDs must be normalized according to Unicode Normalization Form C
+	// * Must be a valid Unicode string.
+	// * Limited to a maximum length of 64 characters.
+	// * Normalized according to Unicode Normalization Form C
 	// (http://www.unicode.org/reports/tr15/).
-	// 4. IDs must not contain any of the following ASCII characters: '/', ':',
-	// '?', ',', or '#'.
+	// * May not contain any of the following ASCII characters: '/', ':', '?',
+	// ',', or '#'.
 	VehicleId string `protobuf:"bytes,4,opt,name=vehicle_id,json=vehicleId,proto3" json:"vehicle_id,omitempty"`
 	// Required. The Vehicle entity to create. When creating a Vehicle, the following
 	// fields are required:
