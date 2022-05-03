@@ -67,7 +67,8 @@ const (
 // an `AudioEncoding` when you send  send `FLAC` or `WAV` audio, the
 // encoding configuration must match the encoding described in the audio
 // header; otherwise the request returns an
-// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT] error code.
+// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT] error
+// code.
 type RecognitionConfig_AudioEncoding int32
 
 const (
@@ -883,7 +884,8 @@ type RecognitionConfig struct {
 
 	// Encoding of audio data sent in all `RecognitionAudio` messages.
 	// This field is optional for `FLAC` and `WAV` audio files and required
-	// for all other audio formats. For details, see [AudioEncoding][google.cloud.speech.v1.RecognitionConfig.AudioEncoding].
+	// for all other audio formats. For details, see
+	// [AudioEncoding][google.cloud.speech.v1.RecognitionConfig.AudioEncoding].
 	Encoding RecognitionConfig_AudioEncoding `protobuf:"varint,1,opt,name=encoding,proto3,enum=google.cloud.speech.v1.RecognitionConfig_AudioEncoding" json:"encoding,omitempty"`
 	// Sample rate in Hertz of the audio data sent in all
 	// `RecognitionAudio` messages. Valid values are: 8000-48000.
@@ -891,7 +893,8 @@ type RecognitionConfig struct {
 	// source to 16000 Hz. If that's not possible, use the native sample rate of
 	// the audio source (instead of re-sampling).
 	// This field is optional for FLAC and WAV audio files, but is
-	// required for all other audio formats. For details, see [AudioEncoding][google.cloud.speech.v1.RecognitionConfig.AudioEncoding].
+	// required for all other audio formats. For details, see
+	// [AudioEncoding][google.cloud.speech.v1.RecognitionConfig.AudioEncoding].
 	SampleRateHertz int32 `protobuf:"varint,2,opt,name=sample_rate_hertz,json=sampleRateHertz,proto3" json:"sample_rate_hertz,omitempty"`
 	// The number of channels in the input audio data.
 	// ONLY set this for MULTI-CHANNEL recognition.
@@ -1001,6 +1004,19 @@ type RecognitionConfig struct {
 	//   <tr>
 	//     <td><b>Model</b></td>
 	//     <td><b>Description</b></td>
+	//   </tr>
+	//   <tr>
+	//     <td><code>latest_long</code></td>
+	//     <td>Best for long form content like media or conversation.</td>
+	//   </tr>
+	//   <tr>
+	//     <td><code>latest_short</code></td>
+	//     <td>Best for short form content like commands or single shot directed
+	//     speech.</td>
+	//   </tr>
+	//   <tr>
+	//     <td><code>command_and_search</code></td>
+	//     <td>Best for short queries such as voice commands or voice search.</td>
 	//   </tr>
 	//   <tr>
 	//     <td><code>command_and_search</code></td>
@@ -1487,8 +1503,8 @@ func (x *SpeechContext) GetBoost() float32 {
 
 // Contains audio data in the encoding specified in the `RecognitionConfig`.
 // Either `content` or `uri` must be supplied. Supplying both or neither
-// returns [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]. See
-// [content limits](https://cloud.google.com/speech-to-text/quotas#content).
+// returns [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT].
+// See [content limits](https://cloud.google.com/speech-to-text/quotas#content).
 type RecognitionAudio struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1573,8 +1589,9 @@ type RecognitionAudio_Uri struct {
 	// Currently, only Google Cloud Storage URIs are
 	// supported, which must be specified in the following format:
 	// `gs://bucket_name/object_name` (other URI formats return
-	// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]). For more information, see
-	// [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
+	// [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT]).
+	// For more information, see [Request
+	// URIs](https://cloud.google.com/storage/docs/reference-uris).
 	Uri string `protobuf:"bytes,2,opt,name=uri,proto3,oneof"`
 }
 
@@ -1739,8 +1756,8 @@ type LongRunningRecognizeMetadata struct {
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// Time of the most recent processing update.
 	LastUpdateTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=last_update_time,json=lastUpdateTime,proto3" json:"last_update_time,omitempty"`
-	// Output only. The URI of the audio file being transcribed. Empty if the audio was sent
-	// as byte content.
+	// Output only. The URI of the audio file being transcribed. Empty if the
+	// audio was sent as byte content.
 	Uri string `protobuf:"bytes,4,opt,name=uri,proto3" json:"uri,omitempty"`
 }
 
@@ -1964,9 +1981,9 @@ type StreamingRecognitionResult struct {
 	// recognized result for the audio from that channel.
 	// For audio_channel_count = N, its output values can range from '1' to 'N'.
 	ChannelTag int32 `protobuf:"varint,5,opt,name=channel_tag,json=channelTag,proto3" json:"channel_tag,omitempty"`
-	// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
-	// of the language in this result. This language code was detected to have
-	// the most likelihood of being spoken in the audio.
+	// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+	// language tag of the language in this result. This language code was
+	// detected to have the most likelihood of being spoken in the audio.
 	LanguageCode string `protobuf:"bytes,6,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 }
 
@@ -2062,9 +2079,9 @@ type SpeechRecognitionResult struct {
 	// Time offset of the end of this result relative to the
 	// beginning of the audio.
 	ResultEndTime *durationpb.Duration `protobuf:"bytes,4,opt,name=result_end_time,json=resultEndTime,proto3" json:"result_end_time,omitempty"`
-	// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
-	// of the language in this result. This language code was detected to have
-	// the most likelihood of being spoken in the audio.
+	// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+	// language tag of the language in this result. This language code was
+	// detected to have the most likelihood of being spoken in the audio.
 	LanguageCode string `protobuf:"bytes,5,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 }
 

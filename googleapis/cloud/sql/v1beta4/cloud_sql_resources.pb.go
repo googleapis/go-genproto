@@ -7589,7 +7589,7 @@ func (x *DatabaseInstance_SqlFailoverReplica) GetAvailable() *wrapperspb.BoolVal
 	return nil
 }
 
-// Any scheduled maintenancce for this instance.
+// Any scheduled maintenance for this instance.
 type DatabaseInstance_SqlScheduledMaintenance struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

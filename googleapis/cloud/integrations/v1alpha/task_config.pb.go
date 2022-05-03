@@ -307,7 +307,7 @@ func (FailurePolicy_RetryStrategy) EnumDescriptor() ([]byte, []int) {
 
 // The task configuration details. This is not the implementation of Task.
 // There might be multiple TaskConfigs for the same Task.
-// Next available id: 12
+// (-- Next available id: 12 --)
 type TaskConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
