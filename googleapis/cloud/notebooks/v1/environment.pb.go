@@ -180,7 +180,7 @@ type VmImage struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The name of the Google Cloud project that this VM image belongs to.
-	// Format: `projects/{project_id}`
+	// Format: `{project_id}`
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// The reference to an external Compute Engine VM image.
 	//
