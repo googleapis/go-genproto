@@ -495,7 +495,7 @@ type AttributesConfig struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Immutable. The fully qualified resource name of the attribute
-	// config. Format: "projects/*/locations/*/catalogs/*/attributesConfig"
+	// config. Format: `projects/*/locations/*/catalogs/*/attributesConfig`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Enable attribute(s) config at catalog level.
 	// For example, indexable, dynamic_facetable, or searchable for each
@@ -574,7 +574,7 @@ type CompletionConfig struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Immutable. Fully qualified name
-	// projects/*/locations/*/catalogs/*/completionConfig
+	// `projects/*/locations/*/catalogs/*/completionConfig`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Specifies the matching order for autocomplete suggestions, e.g., a query
 	// consisting of 'sh' with 'out-of-order' specified would suggest "women's
