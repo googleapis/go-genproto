@@ -61,9 +61,8 @@ type OperationMetadata struct {
 	StatusMessage string `protobuf:"bytes,5,opt,name=status_message,json=statusMessage,proto3" json:"status_message,omitempty"`
 	// Output only. Identifies whether the user has requested cancellation
 	// of the operation. Operations that have successfully been cancelled
-	// have [Operation.error][] value with a
-	// [google.rpc.Status.code][google.rpc.Status.code] of 1, corresponding to
-	// `Code.CANCELLED`.
+	// have [Operation.error][] value with a [google.rpc.Status.code][google.rpc.Status.code] of 1,
+	// corresponding to `Code.CANCELLED`.
 	RequestedCancellation bool `protobuf:"varint,6,opt,name=requested_cancellation,json=requestedCancellation,proto3" json:"requested_cancellation,omitempty"`
 	// Output only. API version used to start the operation.
 	ApiVersion string `protobuf:"bytes,7,opt,name=api_version,json=apiVersion,proto3" json:"api_version,omitempty"`
@@ -330,10 +329,10 @@ type ListBackupPlansResponse struct {
 	// The list of BackupPlans matching the given criteria.
 	BackupPlans []*BackupPlan `protobuf:"bytes,1,rep,name=backup_plans,json=backupPlans,proto3" json:"backup_plans,omitempty"`
 	// A token which may be sent as
-	// [page_token][google.cloud.gkebackup.v1.ListBackupPlansRequest.page_token]
-	// in a subsequent `ListBackupPlans` call to retrieve the next page of
-	// results. If this field is omitted or empty, then there are no more results
-	// to return.
+	// [page_token][google.cloud.gkebackup.v1.ListBackupPlansRequest.page_token] in a subsequent
+	// `ListBackupPlans` call to retrieve the next page of results.
+	// If this field is omitted or empty, then there are no more results to
+	// return.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	// Locations that could not be reached.
 	Unreachable []string `protobuf:"bytes,3,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
@@ -448,8 +447,8 @@ type UpdateBackupPlanRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. A new version of the BackupPlan resource that contains updated
-	// fields. This may be sparsely populated if an `update_mask` is provided.
+	// Required. A new version of the BackupPlan resource that contains updated fields.
+	// This may be sparsely populated if an `update_mask` is provided.
 	BackupPlan *BackupPlan `protobuf:"bytes,1,opt,name=backup_plan,json=backupPlan,proto3" json:"backup_plan,omitempty"`
 	// This is used to specify the fields to be overwritten in the
 	// BackupPlan targeted for update. The values for each of these
@@ -519,8 +518,8 @@ type DeleteBackupPlanRequest struct {
 	// Format: projects/*/locations/*/backupPlans/*
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// If provided, this value must match the current value of the
-	// target BackupPlan's [etag][google.cloud.gkebackup.v1.BackupPlan.etag] field
-	// or the request is rejected.
+	// target BackupPlan's [etag][google.cloud.gkebackup.v1.BackupPlan.etag] field or the request is
+	// rejected.
 	Etag string `protobuf:"bytes,2,opt,name=etag,proto3" json:"etag,omitempty"`
 }
 
@@ -749,10 +748,9 @@ type ListBackupsResponse struct {
 
 	// The list of Backups matching the given criteria.
 	Backups []*Backup `protobuf:"bytes,1,rep,name=backups,proto3" json:"backups,omitempty"`
-	// A token which may be sent as
-	// [page_token][google.cloud.gkebackup.v1.ListBackupsRequest.page_token] in a
-	// subsequent `ListBackups` call to retrieve the next page of results. If this
-	// field is omitted or empty, then there are no more results to return.
+	// A token which may be sent as [page_token][google.cloud.gkebackup.v1.ListBackupsRequest.page_token] in
+	// a subsequent `ListBackups` call to retrieve the next page of results. If
+	// this field is omitted or empty, then there are no more results to return.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 }
 
@@ -858,8 +856,8 @@ type UpdateBackupRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. A new version of the Backup resource that contains updated
-	// fields. This may be sparsely populated if an `update_mask` is provided.
+	// Required. A new version of the Backup resource that contains updated fields.
+	// This may be sparsely populated if an `update_mask` is provided.
 	Backup *Backup `protobuf:"bytes,1,opt,name=backup,proto3" json:"backup,omitempty"`
 	// This is used to specify the fields to be overwritten in the
 	// Backup targeted for update. The values for each of these
@@ -928,8 +926,8 @@ type DeleteBackupRequest struct {
 	// Format: projects/*/locations/*/backupPlans/*/backups/*
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// If provided, this value must match the current value of the
-	// target Backup's [etag][google.cloud.gkebackup.v1.Backup.etag] field or the
-	// request is rejected.
+	// target Backup's [etag][google.cloud.gkebackup.v1.Backup.etag] field or the request is
+	// rejected.
 	Etag string `protobuf:"bytes,2,opt,name=etag,proto3" json:"etag,omitempty"`
 	// If set to true, any VolumeBackups below this Backup will also be deleted.
 	// Otherwise, the request will only succeed if the Backup has no
@@ -1095,10 +1093,10 @@ type ListVolumeBackupsResponse struct {
 	// The list of VolumeBackups matching the given criteria.
 	VolumeBackups []*VolumeBackup `protobuf:"bytes,1,rep,name=volume_backups,json=volumeBackups,proto3" json:"volume_backups,omitempty"`
 	// A token which may be sent as
-	// [page_token][google.cloud.gkebackup.v1.ListVolumeBackupsRequest.page_token]
-	// in a subsequent `ListVolumeBackups` call to retrieve the next page of
-	// results. If this field is omitted or empty, then there are no more results
-	// to return.
+	// [page_token][google.cloud.gkebackup.v1.ListVolumeBackupsRequest.page_token] in a subsequent
+	// `ListVolumeBackups` call to retrieve the next page of results.
+	// If this field is omitted or empty, then there are no more results to
+	// return.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 }
 
@@ -1378,10 +1376,10 @@ type ListRestorePlansResponse struct {
 	// The list of RestorePlans matching the given criteria.
 	RestorePlans []*RestorePlan `protobuf:"bytes,1,rep,name=restore_plans,json=restorePlans,proto3" json:"restore_plans,omitempty"`
 	// A token which may be sent as
-	// [page_token][google.cloud.gkebackup.v1.ListRestorePlansRequest.page_token]
-	// in a subsequent `ListRestorePlans` call to retrieve the next page of
-	// results. If this field is omitted or empty, then there are no more results
-	// to return.
+	// [page_token][google.cloud.gkebackup.v1.ListRestorePlansRequest.page_token] in a subsequent
+	// `ListRestorePlans` call to retrieve the next page of results.
+	// If this field is omitted or empty, then there are no more results to
+	// return.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	// Locations that could not be reached.
 	Unreachable []string `protobuf:"bytes,3,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
@@ -1496,8 +1494,8 @@ type UpdateRestorePlanRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. A new version of the RestorePlan resource that contains updated
-	// fields. This may be sparsely populated if an `update_mask` is provided.
+	// Required. A new version of the RestorePlan resource that contains updated fields.
+	// This may be sparsely populated if an `update_mask` is provided.
 	RestorePlan *RestorePlan `protobuf:"bytes,1,opt,name=restore_plan,json=restorePlan,proto3" json:"restore_plan,omitempty"`
 	// This is used to specify the fields to be overwritten in the
 	// RestorePlan targeted for update. The values for each of these
@@ -1566,8 +1564,8 @@ type DeleteRestorePlanRequest struct {
 	// Format: projects/*/locations/*/restorePlans/*
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// If provided, this value must match the current value of the
-	// target RestorePlan's [etag][google.cloud.gkebackup.v1.RestorePlan.etag]
-	// field or the request is rejected.
+	// target RestorePlan's [etag][google.cloud.gkebackup.v1.RestorePlan.etag] field or the request is
+	// rejected.
 	Etag string `protobuf:"bytes,2,opt,name=etag,proto3" json:"etag,omitempty"`
 	// If set to true, any Restores below this RestorePlan will also be deleted.
 	// Otherwise, the request will only succeed if the RestorePlan has no
@@ -1807,10 +1805,10 @@ type ListRestoresResponse struct {
 
 	// The list of Restores matching the given criteria.
 	Restores []*Restore `protobuf:"bytes,1,rep,name=restores,proto3" json:"restores,omitempty"`
-	// A token which may be sent as
-	// [page_token][google.cloud.gkebackup.v1.ListRestoresRequest.page_token] in a
-	// subsequent `ListRestores` call to retrieve the next page of results. If
-	// this field is omitted or empty, then there are no more results to return.
+	// A token which may be sent as [page_token][google.cloud.gkebackup.v1.ListRestoresRequest.page_token]
+	// in a subsequent `ListRestores` call to retrieve the next page of results.
+	// If this field is omitted or empty, then there are no more results to
+	// return.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	// Locations that could not be reached.
 	Unreachable []string `protobuf:"bytes,3,rep,name=unreachable,proto3" json:"unreachable,omitempty"`
@@ -1925,8 +1923,8 @@ type UpdateRestoreRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. A new version of the Restore resource that contains updated
-	// fields. This may be sparsely populated if an `update_mask` is provided.
+	// Required. A new version of the Restore resource that contains updated fields.
+	// This may be sparsely populated if an `update_mask` is provided.
 	Restore *Restore `protobuf:"bytes,1,opt,name=restore,proto3" json:"restore,omitempty"`
 	// This is used to specify the fields to be overwritten in the
 	// Restore targeted for update. The values for each of these
@@ -1995,8 +1993,8 @@ type DeleteRestoreRequest struct {
 	// Format: projects/*/locations/*/restorePlans/*/restores/*
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// If provided, this value must match the current value of the
-	// target Restore's [etag][google.cloud.gkebackup.v1.Restore.etag] field or
-	// the request is rejected.
+	// target Restore's [etag][google.cloud.gkebackup.v1.Restore.etag] field or the request is
+	// rejected.
 	Etag string `protobuf:"bytes,2,opt,name=etag,proto3" json:"etag,omitempty"`
 	// If set to true, any VolumeRestores below this restore will also be deleted.
 	// Otherwise, the request will only succeed if the restore has no
@@ -2162,10 +2160,10 @@ type ListVolumeRestoresResponse struct {
 	// The list of VolumeRestores matching the given criteria.
 	VolumeRestores []*VolumeRestore `protobuf:"bytes,1,rep,name=volume_restores,json=volumeRestores,proto3" json:"volume_restores,omitempty"`
 	// A token which may be sent as
-	// [page_token][google.cloud.gkebackup.v1.ListVolumeRestoresRequest.page_token]
-	// in a subsequent `ListVolumeRestores` call to retrieve the next page of
-	// results. If this field is omitted or empty, then there are no more results
-	// to return.
+	// [page_token][google.cloud.gkebackup.v1.ListVolumeRestoresRequest.page_token] in a subsequent
+	// `ListVolumeRestores` call to retrieve the next page of results.
+	// If this field is omitted or empty, then there are no more results to
+	// return.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 }
 
@@ -2937,28 +2935,34 @@ var file_google_cloud_gkebackup_v1_gkebackup_proto_rawDesc = []byte{
 	0x2e, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f,
 	0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68,
 	0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x42,
-	0xd1, 0x02, 0x0a, 0x1d, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
+	0xa8, 0x03, 0x0a, 0x1d, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
 	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x67, 0x6b, 0x65, 0x62, 0x61, 0x63, 0x6b, 0x75, 0x70, 0x2e, 0x76,
 	0x31, 0x42, 0x0e, 0x47, 0x4b, 0x45, 0x42, 0x61, 0x63, 0x6b, 0x75, 0x70, 0x50, 0x72, 0x6f, 0x74,
 	0x6f, 0x50, 0x01, 0x5a, 0x42, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61,
 	0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
 	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64,
 	0x2f, 0x67, 0x6b, 0x65, 0x62, 0x61, 0x63, 0x6b, 0x75, 0x70, 0x2f, 0x76, 0x31, 0x3b, 0x67, 0x6b,
-	0x65, 0x62, 0x61, 0x63, 0x6b, 0x75, 0x70, 0xea, 0x41, 0x5e, 0x0a, 0x20, 0x63, 0x6f, 0x6e, 0x74,
-	0x61, 0x69, 0x6e, 0x65, 0x72, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73,
-	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x12, 0x3a, 0x70, 0x72,
-	0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x7b, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x7d,
-	0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x7b, 0x6c, 0x6f, 0x63, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x7d, 0x2f, 0x63, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x73, 0x2f, 0x7b,
-	0x63, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x7d, 0xea, 0x41, 0x78, 0x0a, 0x21, 0x63, 0x6c, 0x6f,
-	0x75, 0x64, 0x6b, 0x6d, 0x73, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73,
-	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x4b, 0x65, 0x79, 0x12, 0x53,
-	0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x7b, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63,
-	0x74, 0x7d, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x7b, 0x6c, 0x6f,
-	0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x7d, 0x2f, 0x6b, 0x65, 0x79, 0x52, 0x69, 0x6e, 0x67, 0x73,
-	0x2f, 0x7b, 0x6b, 0x65, 0x79, 0x5f, 0x72, 0x69, 0x6e, 0x67, 0x7d, 0x2f, 0x63, 0x72, 0x79, 0x70,
-	0x74, 0x6f, 0x4b, 0x65, 0x79, 0x73, 0x2f, 0x7b, 0x63, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x5f, 0x6b,
-	0x65, 0x79, 0x7d, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x62, 0x61, 0x63, 0x6b, 0x75, 0x70, 0xaa, 0x02, 0x19, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x47, 0x6b, 0x65, 0x42, 0x61, 0x63, 0x6b, 0x75, 0x70,
+	0x2e, 0x56, 0x31, 0xca, 0x02, 0x19, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f,
+	0x75, 0x64, 0x5c, 0x47, 0x6b, 0x65, 0x42, 0x61, 0x63, 0x6b, 0x75, 0x70, 0x5c, 0x56, 0x31, 0xea,
+	0x02, 0x1c, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x3a,
+	0x3a, 0x47, 0x6b, 0x65, 0x42, 0x61, 0x63, 0x6b, 0x75, 0x70, 0x3a, 0x3a, 0x56, 0x31, 0xea, 0x41,
+	0x5e, 0x0a, 0x20, 0x63, 0x6f, 0x6e, 0x74, 0x61, 0x69, 0x6e, 0x65, 0x72, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x6c, 0x75, 0x73,
+	0x74, 0x65, 0x72, 0x12, 0x3a, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x7b, 0x70,
+	0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x7d, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x2f, 0x7b, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x7d, 0x2f, 0x63, 0x6c, 0x75,
+	0x73, 0x74, 0x65, 0x72, 0x73, 0x2f, 0x7b, 0x63, 0x6c, 0x75, 0x73, 0x74, 0x65, 0x72, 0x7d, 0xea,
+	0x41, 0x78, 0x0a, 0x21, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x6b, 0x6d, 0x73, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x43, 0x72, 0x79, 0x70,
+	0x74, 0x6f, 0x4b, 0x65, 0x79, 0x12, 0x53, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f,
+	0x7b, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x7d, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x2f, 0x7b, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x7d, 0x2f, 0x6b,
+	0x65, 0x79, 0x52, 0x69, 0x6e, 0x67, 0x73, 0x2f, 0x7b, 0x6b, 0x65, 0x79, 0x5f, 0x72, 0x69, 0x6e,
+	0x67, 0x7d, 0x2f, 0x63, 0x72, 0x79, 0x70, 0x74, 0x6f, 0x4b, 0x65, 0x79, 0x73, 0x2f, 0x7b, 0x63,
+	0x72, 0x79, 0x70, 0x74, 0x6f, 0x5f, 0x6b, 0x65, 0x79, 0x7d, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (

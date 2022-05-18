@@ -311,12 +311,10 @@ type Restore struct {
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// User specified descriptive string for this Restore.
 	Description string `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
-	// Required. Immutable. A reference to the
-	// [Backup][google.cloud.gkebackup.v1.Backup] used as the source from which
-	// this Restore will restore. Note that this Backup must be a sub-resource of
-	// the RestorePlan's
-	// [backup_plan][google.cloud.gkebackup.v1.RestorePlan.backup_plan]. Format:
-	// projects/*/locations/*/backupPlans/*/backups/*.
+	// Required. Immutable. A reference to the [Backup][google.cloud.gkebackup.v1.Backup] used as the source from which this Restore
+	// will restore. Note that this Backup must be a sub-resource of the
+	// RestorePlan's [backup_plan][google.cloud.gkebackup.v1.RestorePlan.backup_plan].
+	// Format: projects/*/locations/*/backupPlans/*/backups/*.
 	Backup string `protobuf:"bytes,6,opt,name=backup,proto3" json:"backup,omitempty"`
 	// Output only. The target cluster into which this Restore will restore data.
 	// Valid formats:
@@ -324,19 +322,16 @@ type Restore struct {
 	//   - projects/*/locations/*/clusters/*
 	//   - projects/*/zones/*/clusters/*
 	//
-	// Inherited from parent RestorePlan's
-	// [cluster][google.cloud.gkebackup.v1.RestorePlan.cluster] value.
+	// Inherited from parent RestorePlan's [cluster][google.cloud.gkebackup.v1.RestorePlan.cluster] value.
 	Cluster string `protobuf:"bytes,7,opt,name=cluster,proto3" json:"cluster,omitempty"`
-	// Output only. Configuration of the Restore.  Inherited from parent
-	// RestorePlan's
+	// Output only. Configuration of the Restore.  Inherited from parent RestorePlan's
 	// [restore_config][google.cloud.gkebackup.v1.RestorePlan.restore_config].
 	RestoreConfig *RestoreConfig `protobuf:"bytes,8,opt,name=restore_config,json=restoreConfig,proto3" json:"restore_config,omitempty"`
 	// A set of custom labels supplied by user.
 	Labels map[string]string `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Output only. The current state of the Restore.
 	State Restore_State `protobuf:"varint,10,opt,name=state,proto3,enum=google.cloud.gkebackup.v1.Restore_State" json:"state,omitempty"`
-	// Output only. Human-readable description of why the Restore is in its
-	// current state.
+	// Output only. Human-readable description of why the Restore is in its current state.
 	StateReason string `protobuf:"bytes,11,opt,name=state_reason,json=stateReason,proto3" json:"state_reason,omitempty"`
 	// Output only. Timestamp of when the restore operation completed.
 	CompleteTime *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=complete_time,json=completeTime,proto3" json:"complete_time,omitempty"`
@@ -344,13 +339,13 @@ type Restore struct {
 	ResourcesRestoredCount int32 `protobuf:"varint,13,opt,name=resources_restored_count,json=resourcesRestoredCount,proto3" json:"resources_restored_count,omitempty"`
 	// Output only. Number of resources excluded during the restore execution.
 	ResourcesExcludedCount int32 `protobuf:"varint,14,opt,name=resources_excluded_count,json=resourcesExcludedCount,proto3" json:"resources_excluded_count,omitempty"`
-	// Output only. Number of resources that failed to be restored during the
-	// restore execution.
+	// Output only. Number of resources that failed to be restored during the restore
+	// execution.
 	ResourcesFailedCount int32 `protobuf:"varint,15,opt,name=resources_failed_count,json=resourcesFailedCount,proto3" json:"resources_failed_count,omitempty"`
 	// Output only. Number of volumes restored during the restore execution.
 	VolumesRestoredCount int32 `protobuf:"varint,16,opt,name=volumes_restored_count,json=volumesRestoredCount,proto3" json:"volumes_restored_count,omitempty"`
-	// Output only. `etag` is used for optimistic concurrency control as a way to
-	// help prevent simultaneous updates of a restore from overwriting each other.
+	// Output only. `etag` is used for optimistic concurrency control as a way to help
+	// prevent simultaneous updates of a restore from overwriting each other.
 	// It is strongly suggested that systems make use of the `etag` in the
 	// read-modify-write cycle to perform restore updates in order to avoid
 	// race conditions: An `etag` is returned in the response to `GetRestore`,
@@ -525,8 +520,7 @@ type RestoreConfig struct {
 	// Defines the behavior for handling the situation where cluster-scoped
 	// resources being restored already exist in the target cluster. This MUST be
 	// set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if
-	// [cluster_resource_restore_scope][google.cloud.gkebackup.v1.RestoreConfig.cluster_resource_restore_scope]
-	// is not empty.
+	// [cluster_resource_restore_scope][google.cloud.gkebackup.v1.RestoreConfig.cluster_resource_restore_scope] is not empty.
 	ClusterResourceConflictPolicy RestoreConfig_ClusterResourceConflictPolicy `protobuf:"varint,2,opt,name=cluster_resource_conflict_policy,json=clusterResourceConflictPolicy,proto3,enum=google.cloud.gkebackup.v1.RestoreConfig_ClusterResourceConflictPolicy" json:"cluster_resource_conflict_policy,omitempty"`
 	// Defines the behavior for handling the situation where sets of namespaced
 	// resources being restored already exist in the target cluster. This MUST be
@@ -1117,15 +1111,20 @@ var file_google_cloud_gkebackup_v1_restore_proto_rawDesc = []byte{
 	0x46, 0x41, 0x49, 0x4c, 0x5f, 0x4f, 0x4e, 0x5f, 0x43, 0x4f, 0x4e, 0x46, 0x4c, 0x49, 0x43, 0x54,
 	0x10, 0x02, 0x42, 0x23, 0x0a, 0x21, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x70, 0x61, 0x63, 0x65, 0x64,
 	0x5f, 0x72, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72,
-	0x65, 0x5f, 0x73, 0x63, 0x6f, 0x70, 0x65, 0x42, 0x73, 0x0a, 0x1d, 0x63, 0x6f, 0x6d, 0x2e, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x67, 0x6b, 0x65, 0x62,
-	0x61, 0x63, 0x6b, 0x75, 0x70, 0x2e, 0x76, 0x31, 0x42, 0x0c, 0x52, 0x65, 0x73, 0x74, 0x6f, 0x72,
-	0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x42, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f,
-	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x67, 0x6b, 0x65, 0x62, 0x61, 0x63, 0x6b, 0x75, 0x70, 0x2f,
-	0x76, 0x31, 0x3b, 0x67, 0x6b, 0x65, 0x62, 0x61, 0x63, 0x6b, 0x75, 0x70, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x5f, 0x73, 0x63, 0x6f, 0x70, 0x65, 0x42, 0xca, 0x01, 0x0a, 0x1d, 0x63, 0x6f, 0x6d, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x67, 0x6b, 0x65,
+	0x62, 0x61, 0x63, 0x6b, 0x75, 0x70, 0x2e, 0x76, 0x31, 0x42, 0x0c, 0x52, 0x65, 0x73, 0x74, 0x6f,
+	0x72, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x42, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73,
+	0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x67, 0x6b, 0x65, 0x62, 0x61, 0x63, 0x6b, 0x75, 0x70,
+	0x2f, 0x76, 0x31, 0x3b, 0x67, 0x6b, 0x65, 0x62, 0x61, 0x63, 0x6b, 0x75, 0x70, 0xaa, 0x02, 0x19,
+	0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x47, 0x6b, 0x65,
+	0x42, 0x61, 0x63, 0x6b, 0x75, 0x70, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x19, 0x47, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x47, 0x6b, 0x65, 0x42, 0x61, 0x63, 0x6b,
+	0x75, 0x70, 0x5c, 0x56, 0x31, 0xea, 0x02, 0x1c, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a,
+	0x43, 0x6c, 0x6f, 0x75, 0x64, 0x3a, 0x3a, 0x47, 0x6b, 0x65, 0x42, 0x61, 0x63, 0x6b, 0x75, 0x70,
+	0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
