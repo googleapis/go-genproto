@@ -579,9 +579,14 @@ type Key_PathElement struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The kind of the entity.
+	//
 	// A kind matching regex `__.*__` is reserved/read-only.
 	// A kind must not contain more than 1500 bytes when UTF-8 encoded.
 	// Cannot be `""`.
+	//
+	// Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are
+	// encoded as `__bytes<X>__` where `<X>` is the base-64 encoding of the
+	// bytes.
 	Kind string `protobuf:"bytes,1,opt,name=kind,proto3" json:"kind,omitempty"`
 	// The type of ID.
 	//
@@ -657,6 +662,7 @@ type isKey_PathElement_IdType interface {
 
 type Key_PathElement_Id struct {
 	// The auto-allocated ID of the entity.
+	//
 	// Never equal to zero. Values less than zero are discouraged and may not
 	// be supported in the future.
 	Id int64 `protobuf:"varint,2,opt,name=id,proto3,oneof"`
@@ -664,9 +670,14 @@ type Key_PathElement_Id struct {
 
 type Key_PathElement_Name struct {
 	// The name of the entity.
+	//
 	// A name matching regex `__.*__` is reserved/read-only.
 	// A name must not be more than 1500 bytes when UTF-8 encoded.
 	// Cannot be `""`.
+	//
+	// Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are
+	// encoded as `__bytes<X>__` where `<X>` is the base-64 encoding of the
+	// bytes.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3,oneof"`
 }
 
