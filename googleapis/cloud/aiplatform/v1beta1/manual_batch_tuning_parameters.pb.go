@@ -48,7 +48,7 @@ type ManualBatchTuningParameters struct {
 	// speeds up the batch operation's execution, but too high value will result
 	// in a whole batch not fitting in a machine's memory, and the whole
 	// operation will fail.
-	// The default value is 4.
+	// The default value is 64.
 	BatchSize int32 `protobuf:"varint,1,opt,name=batch_size,json=batchSize,proto3" json:"batch_size,omitempty"`
 }
 

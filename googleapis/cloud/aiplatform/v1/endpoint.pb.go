@@ -269,8 +269,8 @@ type DeployedModel struct {
 	//
 	// This value should be 1-10 characters, and valid characters are /[0-9]/.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Required. The name of the Model that this is the deployment of. Note that the Model
-	// may be in a different location than the DeployedModel's Endpoint.
+	// Required. The resource name of the Model that this is the deployment of. Note that
+	// the Model may be in a different location than the DeployedModel's Endpoint.
 	Model string `protobuf:"bytes,2,opt,name=model,proto3" json:"model,omitempty"`
 	// The display name of the DeployedModel. If not provided upon creation,
 	// the Model's display_name is used.
