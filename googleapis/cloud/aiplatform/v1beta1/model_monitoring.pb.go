@@ -394,6 +394,8 @@ type ModelMonitoringObjectiveConfig_TrainingDataset struct {
 	//
 	// "csv"
 	// The source file is a CSV file.
+	// "jsonl"
+	// The source file is a JSONL file.
 	DataFormat string `protobuf:"bytes,2,opt,name=data_format,json=dataFormat,proto3" json:"data_format,omitempty"`
 	// The target field name the model is to predict.
 	// This field will be excluded when doing Predict and (or) Explain for the

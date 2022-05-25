@@ -243,9 +243,9 @@ type GetModelRequest struct {
 	//
 	// In order to retrieve a specific version of the model, also provide
 	// the version ID or version alias.
-	//   Example: projects/{project}/locations/{location}/models/{model}@2
+	//   Example: `projects/{project}/locations/{location}/models/{model}@2`
 	//              or
-	//            projects/{project}/locations/{location}/models/{model}@golden
+	//            `projects/{project}/locations/{location}/models/{model}@golden`
 	// If no version ID or alias is specified, the "default" version will be
 	// returned. The "default" version alias is created for the first version of
 	// the model, and can be moved to other versions later on. There will be
@@ -2799,7 +2799,7 @@ type ModelServiceClient interface {
 	ListModelVersions(ctx context.Context, in *ListModelVersionsRequest, opts ...grpc.CallOption) (*ListModelVersionsResponse, error)
 	// Updates a Model.
 	UpdateModel(ctx context.Context, in *UpdateModelRequest, opts ...grpc.CallOption) (*Model, error)
-	// Incremental update the dataset used for a examples model.
+	// Incrementally update the dataset used for an examples model.
 	UpdateExplanationDataset(ctx context.Context, in *UpdateExplanationDatasetRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Deletes a Model.
 	//
@@ -2986,7 +2986,7 @@ type ModelServiceServer interface {
 	ListModelVersions(context.Context, *ListModelVersionsRequest) (*ListModelVersionsResponse, error)
 	// Updates a Model.
 	UpdateModel(context.Context, *UpdateModelRequest) (*Model, error)
-	// Incremental update the dataset used for a examples model.
+	// Incrementally update the dataset used for an examples model.
 	UpdateExplanationDataset(context.Context, *UpdateExplanationDatasetRequest) (*longrunning.Operation, error)
 	// Deletes a Model.
 	//
