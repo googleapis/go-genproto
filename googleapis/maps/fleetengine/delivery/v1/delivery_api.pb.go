@@ -397,6 +397,9 @@ type UpdateDeliveryVehicleRequest struct {
 	DeliveryVehicle *DeliveryVehicle `protobuf:"bytes,3,opt,name=delivery_vehicle,json=deliveryVehicle,proto3" json:"delivery_vehicle,omitempty"`
 	// Required. A field mask that indicates which `DeliveryVehicle` fields to
 	// update. Note that the update_mask must contain at least one field.
+	//
+	// This is a comma-separated list of fully qualified names of fields. Example:
+	// `"remaining_vehicle_journey_segments"`.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -801,6 +804,9 @@ type UpdateTaskRequest struct {
 	Task *Task `protobuf:"bytes,3,opt,name=task,proto3" json:"task,omitempty"`
 	// Required. The field mask that indicates which Task fields to update.
 	// Note: The `update_mask` must contain at least one field.
+	//
+	// This is a comma-separated list of fully qualified names of fields. Example:
+	// `"task_outcome,task_outcome_time,task_outcome_location"`.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -1624,7 +1630,7 @@ type DeliveryServiceClient interface {
 	// `DeliveryVehicle`. You *can* update `remaining_vehicle_journey_segments`
 	// though, but it must contain all of the `VehicleJourneySegment`s currently
 	// on the `DeliveryVehicle`. The `task_id`s are retrieved from
-	// `remaining_vehicle_journey_segments, and their corresponding `Tasks` are
+	// `remaining_vehicle_journey_segments`, and their corresponding `Tasks` are
 	// assigned to the `DeliveryVehicle` if they have not yet been assigned.
 	UpdateDeliveryVehicle(ctx context.Context, in *UpdateDeliveryVehicleRequest, opts ...grpc.CallOption) (*DeliveryVehicle, error)
 	// Creates and returns a new `Task` object.
@@ -1741,7 +1747,7 @@ type DeliveryServiceServer interface {
 	// `DeliveryVehicle`. You *can* update `remaining_vehicle_journey_segments`
 	// though, but it must contain all of the `VehicleJourneySegment`s currently
 	// on the `DeliveryVehicle`. The `task_id`s are retrieved from
-	// `remaining_vehicle_journey_segments, and their corresponding `Tasks` are
+	// `remaining_vehicle_journey_segments`, and their corresponding `Tasks` are
 	// assigned to the `DeliveryVehicle` if they have not yet been assigned.
 	UpdateDeliveryVehicle(context.Context, *UpdateDeliveryVehicleRequest) (*DeliveryVehicle, error)
 	// Creates and returns a new `Task` object.

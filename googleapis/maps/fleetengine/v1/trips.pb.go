@@ -277,18 +277,18 @@ type Trip struct {
 	// to pickup and dropoff). Initially this will not be supported for shared
 	// trips.
 	IntermediateDestinations []*TerminalLocation `protobuf:"bytes,14,rep,name=intermediate_destinations,json=intermediateDestinations,proto3" json:"intermediate_destinations,omitempty"`
-	// Indicates the last time the Trip.intermediate_destinations was modified.
-	// Your server should cache this value and pass it in UpdateTripRequest
-	// when update Trip.intermediate_destination_index to ensure the
+	// Indicates the last time the `intermediate_destinations` was modified.
+	// Your server should cache this value and pass it in `UpdateTripRequest`
+	// when update `intermediate_destination_index` to ensure the
 	// Trip.intermediate_destinations is not changed.
 	IntermediateDestinationsVersion *timestamppb.Timestamp `protobuf:"bytes,25,opt,name=intermediate_destinations_version,json=intermediateDestinationsVersion,proto3" json:"intermediate_destinations_version,omitempty"`
-	// When TripStatus is ENROUTE_TO_INTERMEDIATE_DESTINATION, a number between
+	// When `TripStatus` is `ENROUTE_TO_INTERMEDIATE_DESTINATION`, a number between
 	// [0..N-1] indicating which intermediate destination the vehicle will cross
 	// next.
-	// When TripStatus is ARRIVED_AT_INTERMEDIATE_DESTINATION, a number between
-	// [0..N-1] indicating which intermediate destination the vehicle is at.
-	// The provider sets this value. If there are no intermediate_destinations,
-	// this field is ignored.
+	// When `TripStatus` is `ARRIVED_AT_INTERMEDIATE_DESTINATION`, a number
+	// between [0..N-1] indicating which intermediate destination the vehicle is
+	// at. The provider sets this value. If there are no
+	// `intermediate_destinations`, this field is ignored.
 	IntermediateDestinationIndex int32 `protobuf:"varint,15,opt,name=intermediate_destination_index,json=intermediateDestinationIndex,proto3" json:"intermediate_destination_index,omitempty"`
 	// Input only. The actual time and location of the driver's arrival at
 	// an intermediate destination.
@@ -325,50 +325,35 @@ type Trip struct {
 	// different trip.
 	Route []*latlng.LatLng `protobuf:"bytes,9,rep,name=route,proto3" json:"route,omitempty"`
 	// Output only. An encoded path to the next waypoint. This field facilitates journey
-	// sharing between a Driver app and a Rider app. Your driver app is
-	// responsible for setting this field on all of its current trips by passing
-	// Vehicle.current_route_segment to UpdateVehicle. Note: This field is
-	// intended only for use by the Driver SDK and Consumer SDK.
+	// sharing between a driver app and a rider app. Note: This field is intended
+	// only for use by the Driver SDK and Consumer SDK.
 	CurrentRouteSegment string `protobuf:"bytes,21,opt,name=current_route_segment,json=currentRouteSegment,proto3" json:"current_route_segment,omitempty"`
 	// Output only. Indicates the last time the route was modified.  Note: This field is
 	// intended only for use by the Driver SDK and Consumer SDK.
 	CurrentRouteSegmentVersion *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=current_route_segment_version,json=currentRouteSegmentVersion,proto3" json:"current_route_segment_version,omitempty"`
-	// Output only. When available, the traffic conditions along the
-	// current_route_segment. Note: This field is intended only
-	// for use by the Driver SDK and Consumer SDK.
+	// Output only. Indicates the traffic conditions along the `current_route_segment` when
+	// they're available. Note: This field is intended only for use by the Driver
+	// SDK and Consumer SDK.
 	CurrentRouteSegmentTraffic *ConsumableTrafficPolyline `protobuf:"bytes,28,opt,name=current_route_segment_traffic,json=currentRouteSegmentTraffic,proto3" json:"current_route_segment_traffic,omitempty"`
-	// Output only. Indicates the last time the current_route_segment_traffic was modified.
+	// Output only. Indicates the last time the `current_route_segment_traffic` was modified.
 	// Note: This field is intended only for use by the Driver SDK and Consumer
 	// SDK.
 	CurrentRouteSegmentTrafficVersion *timestamppb.Timestamp `protobuf:"bytes,30,opt,name=current_route_segment_traffic_version,json=currentRouteSegmentTrafficVersion,proto3" json:"current_route_segment_traffic_version,omitempty"`
-	// Output only. The waypoint where current_route_segment ends. This can be supplied by
-	// drivers on UpdateVehicle calls either as a full trip waypoint, a waypoint
-	// latlng, or as a the last latlng of the current_route_segment. Fleet Engine
-	// will then do its best to interpolate to an actual waypoint if it is not
-	// fully specified. It will be returned in GetTrip calls. It is not respected
-	// in Create/Update Trip calls.
+	// Output only. The waypoint where `current_route_segment` ends.
 	CurrentRouteSegmentEndPoint *TripWaypoint `protobuf:"bytes,24,opt,name=current_route_segment_end_point,json=currentRouteSegmentEndPoint,proto3" json:"current_route_segment_end_point,omitempty"`
-	// Output only. The remaining driving distance in Trip.current_route_segment field.
-	// This field facilitates journey sharing between a driver and rider and
-	// Fleet Engine does not update it. Your driver app is responsible for setting
-	// field on all of its current trips by passing
-	// Vehicle.remaining_distance_meters to an Vehicle.update call.
-	// The value is unspecified if the trip is not assigned to a vehicle, or the
-	// trip is inactive (completed or cancelled), or driver hasn't updated this
-	// value.
+	// Output only. The remaining driving distance in `current_route_segment` field. This
+	// field facilitates journey sharing between a driver and rider. The value
+	// is unspecified if the trip is not assigned to a vehicle or the trip is
+	// completed or cancelled.
 	RemainingDistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,12,opt,name=remaining_distance_meters,json=remainingDistanceMeters,proto3" json:"remaining_distance_meters,omitempty"`
 	// Output only. The ETA to the next waypoint (the first entry in the
-	// Trip.remaining_waypoints field). This field facilitates journey sharing
-	// between a driver and a consumer. Fleet Engine does not update this value.
-	// Your driver app is responsible for setting this field by passing
-	// Vehicle.remaining_time_seconds in a call to Vehicle.update. FleetEngine
-	// converts the Vehicle.remaining_time_seconds to Trip.eta_to_first_waypoint,
-	// and returns it to the rider. The value is unspecified if the trip is not
-	// assigned to a vehicle, or the trip is inactive (completed or cancelled), or
-	// driver hasn't updated this value.
+	// `remaining_waypoints` field). This field facilitates journey sharing
+	// between a driver and a consumer. The value is unspecified if the trip is
+	// not assigned to a vehicle, or the trip is inactive (completed or
+	// cancelled).
 	EtaToFirstWaypoint *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=eta_to_first_waypoint,json=etaToFirstWaypoint,proto3" json:"eta_to_first_waypoint,omitempty"`
 	// Output only. The duration from when the Trip data is returned to the time in
-	// Trip.eta_to_first_waypoint.
+	// `Trip.eta_to_first_waypoint`.
 	RemainingTimeToFirstWaypoint *durationpb.Duration `protobuf:"bytes,27,opt,name=remaining_time_to_first_waypoint,json=remainingTimeToFirstWaypoint,proto3" json:"remaining_time_to_first_waypoint,omitempty"`
 	// Output only. Indicates the last time that `remaining_waypoints` was changed (a
 	// waypoint was added, removed, or changed).
@@ -384,9 +369,9 @@ type Trip struct {
 	NumberOfPassengers int32 `protobuf:"varint,10,opt,name=number_of_passengers,json=numberOfPassengers,proto3" json:"number_of_passengers,omitempty"`
 	// Output only. Indicates the last reported location of the vehicle along the route.
 	LastLocation *VehicleLocation `protobuf:"bytes,11,opt,name=last_location,json=lastLocation,proto3" json:"last_location,omitempty"`
-	// Output only. Indicates whether the vehicle's last_location can be snapped to
-	// the current_route_segment. False if last_location or current_route_segment
-	// doesn't exist.
+	// Output only. Indicates whether the vehicle's `last_location` can be snapped to
+	// the current_route_segment. False if `last_location` or
+	// `current_route_segment` doesn't exist.
 	// It is computed by Fleet Engine. Any update from clients will be ignored.
 	LastLocationSnappable bool `protobuf:"varint,26,opt,name=last_location_snappable,json=lastLocationSnappable,proto3" json:"last_location_snappable,omitempty"`
 	// The subset of Trip fields that are populated and how they should be

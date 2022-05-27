@@ -415,7 +415,7 @@ type Vehicle struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The vehicle state.
 	VehicleState VehicleState `protobuf:"varint,2,opt,name=vehicle_state,json=vehicleState,proto3,enum=maps.fleetengine.v1.VehicleState" json:"vehicle_state,omitempty"`
-	// Supported trip types.
+	// Trip types supported by this vehicle.
 	SupportedTripTypes []TripType `protobuf:"varint,3,rep,packed,name=supported_trip_types,json=supportedTripTypes,proto3,enum=maps.fleetengine.v1.TripType" json:"supported_trip_types,omitempty"`
 	// Output only. List of `trip_id`'s for trips currently assigned to this vehicle.
 	CurrentTrips []string `protobuf:"bytes,4,rep,name=current_trips,json=currentTrips,proto3" json:"current_trips,omitempty"`
@@ -437,18 +437,15 @@ type Vehicle struct {
 	// Deprecated: Do not use.
 	Route []*TerminalLocation `protobuf:"bytes,12,rep,name=route,proto3" json:"route,omitempty"`
 	// The polyline specifying the route the driver app intends to take to
-	// the next waypoint. Your driver app updates this every time a waypoint is
-	// passed or the driver reroutes. This list is also returned in
+	// the next waypoint. This list is also returned in
 	// `Trip.current_route_segment` for all active trips assigned to the vehicle.
 	// Note: This field is intended only for use by the Driver SDK.
 	CurrentRouteSegment string `protobuf:"bytes,20,opt,name=current_route_segment,json=currentRouteSegment,proto3" json:"current_route_segment,omitempty"`
-	// Input only. Fleet Engine uses this information to improve its
-	// understanding of a Trip, but does not populate the field in its responses.
-	// Note: This field is intended only for use by the Driver SDK.
+	// Input only. Fleet Engine uses this information to improve Journey Sharing.
 	CurrentRouteSegmentTraffic *TrafficPolylineData `protobuf:"bytes,28,opt,name=current_route_segment_traffic,json=currentRouteSegmentTraffic,proto3" json:"current_route_segment_traffic,omitempty"`
-	// Output only. Time when `current_route_segment` was set. It should be
-	// stored by the client and passed in future `GetVehicle` requests to
-	// prevent returning routes that haven't changed.
+	// Output only. Time when `current_route_segment` was set. It can be stored by the client
+	// and passed in future `GetVehicle` requests to prevent returning routes that
+	// haven't changed.
 	CurrentRouteSegmentVersion *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=current_route_segment_version,json=currentRouteSegmentVersion,proto3" json:"current_route_segment_version,omitempty"`
 	// The waypoint where `current_route_segment` ends. This can be supplied by
 	// drivers on `UpdateVehicle` calls either as a full trip waypoint, a waypoint
@@ -462,31 +459,30 @@ type Vehicle struct {
 	// This value is provided by the Driver SDK. This field is also returned in
 	// `Trip.remaining_distance_meters` for all active trips assigned to the
 	// vehicle. The value is unspecified if the `current_route_segment` field is
-	// empty, or if the Driver app has not updated its value.
+	// empty, or if the Driver SDK has not updated its value.
 	RemainingDistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,18,opt,name=remaining_distance_meters,json=remainingDistanceMeters,proto3" json:"remaining_distance_meters,omitempty"`
-	// The ETA to the first entry in the `waypoints`
-	// field. This field facilitates journey sharing between a Driver app and a
-	// Consumer app. Is is provided by the Driver SDK. This field is also returned
-	// in `Trip.eta_to_first_waypoint` for all active trips assigned to the
-	// vehicle. The value is unspecified if the `waypoints` field is empty, or the
-	// Driver app has not updated its value.
+	// The ETA to the first entry in the `waypoints` field. This field facilitates
+	// journey sharing between a driver app and a consumer app.  The Driver SDK
+	// provides the value under typical conditions. This field is also returned in
+	// `Trip.eta_to_first_waypoint` for all applicable trips assigned to the
+	// vehicle. The value is unspecified if the `waypoints` field is empty.
 	EtaToFirstWaypoint *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=eta_to_first_waypoint,json=etaToFirstWaypoint,proto3" json:"eta_to_first_waypoint,omitempty"`
 	// Input only. The remaining driving time for the `current_route_segment`. This field
 	// facilitates journey sharing between the Driver app and the Consumer app.
-	// This value is updated by the Driver SDK. Fleet Engine does not update it.
-	// The value is unspecified if the `Vehicle.current_route_segment` field is
-	// empty, or if the Driver app has not updated its value. This value should
-	// match `eta_to_first_waypoint` - `current_time` if all parties are using the
-	// same clock. When updating a
-	// vehicle, if you update both `eta_to_first_waypoint` and
+	// This value is updated by the Driver SDK. The value is unspecified if the
+	// `Vehicle.current_route_segment` field is empty. This value should match
+	// `eta_to_first_waypoint` - `current_time` if all parties are using the same
+	// clock.
+	//
+	// <p>When updating a vehicle, if you update both `eta_to_first_waypoint` and
 	// `remaining_time_seconds` in the same request, `remaining_time_seconds`
 	// takes precedence.
 	RemainingTimeSeconds *wrapperspb.Int32Value `protobuf:"bytes,25,opt,name=remaining_time_seconds,json=remainingTimeSeconds,proto3" json:"remaining_time_seconds,omitempty"`
 	// The remaining waypoints assigned to this Vehicle.
 	Waypoints []*TripWaypoint `protobuf:"bytes,22,rep,name=waypoints,proto3" json:"waypoints,omitempty"`
-	// Output only. Last time the `waypoints` field was updated. Clients should cache
-	// this value and pass it in `GetVehicleRequest` to ensure the
-	// `waypoints` field is only returned if it is updated.
+	// Output only. Last time the `waypoints` field was updated. Clients should cache this
+	// value and pass it in `GetVehicleRequest` to ensure the `waypoints` field is
+	// only returned if it is updated.
 	WaypointsVersion *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=waypoints_version,json=waypointsVersion,proto3" json:"waypoints_version,omitempty"`
 	// Indicates if the driver accepts back-to-back trips. If `true`,
 	// `SearchVehicles` may include the vehicle even if it is currently assigned
@@ -902,10 +898,16 @@ type VisualTrafficReportPolylineRendering struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Optional. Road stretches that should be rendered along the polyline. Note that
-	// the stretches are guaranteed to not overlap, and that they do not
-	// necessarily span the full route. In the absence of a road stretch to style,
-	// the client should apply the default for the route.
+	// Optional. Road stretches that should be rendered along the polyline. Stretches
+	// <ul>
+	// <li>are
+	// guaranteed to not overlap, and</li>
+	// <li>do not necessarily
+	// span the full route.</li>
+	// </ul>
+	//
+	// <p>In the absence of a road stretch to style, the client should apply the
+	// default for the route.
 	RoadStretch []*VisualTrafficReportPolylineRendering_RoadStretch `protobuf:"bytes,1,rep,name=road_stretch,json=roadStretch,proto3" json:"road_stretch,omitempty"`
 }
 
