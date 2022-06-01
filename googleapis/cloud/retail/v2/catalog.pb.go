@@ -52,10 +52,10 @@ type ProductLevelConfig struct {
 	//   default to
 	//   [Product.Type.PRIMARY][google.cloud.retail.v2.Product.Type.PRIMARY] if
 	//   unset.
-	// * `variant`: You can only ingest
-	// [Product.Type.VARIANT][google.cloud.retail.v2.Product.Type.VARIANT]
-	// [Product][google.cloud.retail.v2.Product]s.
-	//   This means
+	// * `variant` (incompatible with Retail Search): You can only
+	//   ingest
+	//   [Product.Type.VARIANT][google.cloud.retail.v2.Product.Type.VARIANT]
+	//   [Product][google.cloud.retail.v2.Product]s. This means
 	//   [Product.primary_product_id][google.cloud.retail.v2.Product.primary_product_id]
 	//   cannot be empty.
 	//
@@ -66,8 +66,8 @@ type ProductLevelConfig struct {
 	// [merchant_center_product_id_field][google.cloud.retail.v2.ProductLevelConfig.merchant_center_product_id_field]
 	// is `itemGroupId`, an INVALID_ARGUMENT error is returned.
 	//
-	// See [Using product
-	// levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels)
+	// See [Product
+	// levels](https://cloud.google.com/retail/docs/catalog#product-levels)
 	// for more details.
 	IngestionProductType string `protobuf:"bytes,1,opt,name=ingestion_product_type,json=ingestionProductType,proto3" json:"ingestion_product_type,omitempty"`
 	// Which field of [Merchant Center
@@ -87,8 +87,8 @@ type ProductLevelConfig struct {
 	// [ingestion_product_type][google.cloud.retail.v2.ProductLevelConfig.ingestion_product_type]
 	// is `variant`, an INVALID_ARGUMENT error is returned.
 	//
-	// See [Using product
-	// levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels)
+	// See [Product
+	// levels](https://cloud.google.com/retail/docs/catalog#product-levels)
 	// for more details.
 	MerchantCenterProductIdField string `protobuf:"bytes,2,opt,name=merchant_center_product_id_field,json=merchantCenterProductIdField,proto3" json:"merchant_center_product_id_field,omitempty"`
 }

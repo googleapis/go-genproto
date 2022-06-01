@@ -96,9 +96,9 @@ type CompleteQueryRequest struct {
 	//
 	// * user-data
 	//
-	// * cloud-retail
-	//   This option requires additional allowlisting. Before using cloud-retail,
-	//   contact Cloud Retail support team first.
+	// * cloud-retail:
+	//   This option requires enabling auto-learning function first. See
+	//   [guidelines](https://cloud.google.com/retail/docs/completion-overview#generated-completion-dataset).
 	Dataset string `protobuf:"bytes,6,opt,name=dataset,proto3" json:"dataset,omitempty"`
 	// Completion max suggestions. If left unset or set to 0, then will fallback
 	// to the configured value [CompletionConfig.max_suggestions][].
@@ -211,11 +211,15 @@ type CompleteQueryResponse struct {
 	// [CompleteQueryRequest.visitor_id][google.cloud.retail.v2.CompleteQueryRequest.visitor_id]
 	// field is set and [UserEvent][google.cloud.retail.v2.UserEvent] is imported.
 	// The recent searches satisfy the follow rules:
+	//
 	//  * They are ordered from latest to oldest.
+	//
 	//  * They are matched with
 	//  [CompleteQueryRequest.query][google.cloud.retail.v2.CompleteQueryRequest.query]
 	//  case insensitively.
+	//
 	//  * They are transformed to lower cases.
+	//
 	//  * They are UTF-8 safe.
 	//
 	// Recent searches are deduplicated. More recent searches will be reserved
@@ -285,10 +289,13 @@ type CompleteQueryResponse_CompletionResult struct {
 	// The suggestion for the query.
 	Suggestion string `protobuf:"bytes,1,opt,name=suggestion,proto3" json:"suggestion,omitempty"`
 	// Custom attributes for the suggestion term.
+	//
 	// * For "user-data", the attributes are additional custom attributes
 	// ingested through BigQuery.
+	//
 	// * For "cloud-retail", the attributes are product attributes generated
-	// by Cloud Retail.
+	// by Cloud Retail. This is an experimental feature. Contact Retail Search
+	// support team if you are interested in enabling it.
 	Attributes map[string]*CustomAttribute `protobuf:"bytes,2,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
