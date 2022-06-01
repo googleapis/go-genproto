@@ -555,11 +555,11 @@ type Product struct {
 	// * [name][google.cloud.retail.v2.Product.name]
 	// * [color_info][google.cloud.retail.v2.Product.color_info]
 	//
-	// Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is
+	// The maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is
 	// returned.
 	//
 	// Note: Returning more fields in
-	// [SearchResponse][google.cloud.retail.v2.SearchResponse] may increase
+	// [SearchResponse][google.cloud.retail.v2.SearchResponse] can increase
 	// response payload size and serving latency.
 	RetrievableFields *fieldmaskpb.FieldMask `protobuf:"bytes,30,opt,name=retrievable_fields,json=retrievableFields,proto3" json:"retrievable_fields,omitempty"`
 	// Output only. Product variants grouped together on primary product which

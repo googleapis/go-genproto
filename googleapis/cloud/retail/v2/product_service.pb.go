@@ -208,6 +208,11 @@ type UpdateProductRequest struct {
 	//
 	// If an unsupported or unknown field is provided, an INVALID_ARGUMENT error
 	// is returned.
+	//
+	// The attribute key can be updated by setting the mask path as
+	// "attributes.${key_name}". If a key name is present in the mask but not in
+	// the patching product from the request, this key will be deleted after the
+	// update.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// If set to true, and the [Product][google.cloud.retail.v2.Product] is not
 	// found, a new [Product][google.cloud.retail.v2.Product] will be created. In
@@ -773,7 +778,9 @@ func (*SetInventoryResponse) Descriptor() ([]byte, []int) {
 	return file_google_cloud_retail_v2_product_service_proto_rawDescGZIP(), []int{8}
 }
 
-// Request message for [AddFulfillmentPlaces][] method.
+// Request message for
+// [ProductService.AddFulfillmentPlaces][google.cloud.retail.v2.ProductService.AddFulfillmentPlaces]
+// method.
 type AddFulfillmentPlacesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -905,7 +912,8 @@ func (x *AddFulfillmentPlacesRequest) GetAllowMissing() bool {
 
 // Metadata related to the progress of the AddFulfillmentPlaces operation.
 // Currently empty because there is no meaningful metadata populated from the
-// [AddFulfillmentPlaces][] method.
+// [ProductService.AddFulfillmentPlaces][google.cloud.retail.v2.ProductService.AddFulfillmentPlaces]
+// method.
 type AddFulfillmentPlacesMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -945,7 +953,8 @@ func (*AddFulfillmentPlacesMetadata) Descriptor() ([]byte, []int) {
 }
 
 // Response of the AddFulfillmentPlacesRequest.  Currently empty because
-// there is no meaningful response populated from the [AddFulfillmentPlaces][]
+// there is no meaningful response populated from the
+// [ProductService.AddFulfillmentPlaces][google.cloud.retail.v2.ProductService.AddFulfillmentPlaces]
 // method.
 type AddFulfillmentPlacesResponse struct {
 	state         protoimpl.MessageState
@@ -985,7 +994,9 @@ func (*AddFulfillmentPlacesResponse) Descriptor() ([]byte, []int) {
 	return file_google_cloud_retail_v2_product_service_proto_rawDescGZIP(), []int{11}
 }
 
-// Request message for [AddLocalInventories][] method.
+// Request message for
+// [ProductService.AddLocalInventories][google.cloud.retail.v2.ProductService.AddLocalInventories]
+// method.
 type AddLocalInventoriesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1100,7 +1111,8 @@ func (x *AddLocalInventoriesRequest) GetAllowMissing() bool {
 
 // Metadata related to the progress of the AddLocalInventories operation.
 // Currently empty because there is no meaningful metadata populated from the
-// [AddLocalInventories][] method.
+// [ProductService.AddLocalInventories][google.cloud.retail.v2.ProductService.AddLocalInventories]
+// method.
 type AddLocalInventoriesMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1139,8 +1151,11 @@ func (*AddLocalInventoriesMetadata) Descriptor() ([]byte, []int) {
 	return file_google_cloud_retail_v2_product_service_proto_rawDescGZIP(), []int{13}
 }
 
-// Response of the [AddLocalInventories][] API.  Currently empty because
-// there is no meaningful response populated from the [AddLocalInventories][]
+// Response of the
+// [ProductService.AddLocalInventories][google.cloud.retail.v2.ProductService.AddLocalInventories]
+// API.  Currently empty because there is no meaningful response populated from
+// the
+// [ProductService.AddLocalInventories][google.cloud.retail.v2.ProductService.AddLocalInventories]
 // method.
 type AddLocalInventoriesResponse struct {
 	state         protoimpl.MessageState
@@ -1384,7 +1399,8 @@ type RemoveFulfillmentPlacesRequest struct {
 	// If this field is set to an invalid value other than these, an
 	// INVALID_ARGUMENT error is returned.
 	//
-	// This field directly corresponds to [Product.fulfillment_info.type][].
+	// This field directly corresponds to
+	// [Product.fulfillment_info.type][google.cloud.retail.v2.FulfillmentInfo.type].
 	Type string `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
 	// Required. The IDs for this
 	// [type][google.cloud.retail.v2.RemoveFulfillmentPlacesRequest.type], such as
@@ -2342,7 +2358,7 @@ type ProductServiceClient interface {
 	DeleteProduct(ctx context.Context, in *DeleteProductRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Bulk import of multiple [Product][google.cloud.retail.v2.Product]s.
 	//
-	// Request processing may be synchronous. No partial updating is supported.
+	// Request processing may be synchronous.
 	// Non-existing items are created.
 	//
 	// Note that it is possible for a subset of the
@@ -2382,7 +2398,7 @@ type ProductServiceClient interface {
 	//
 	// Pre-existing inventory information can only be updated with
 	// [SetInventory][google.cloud.retail.v2.ProductService.SetInventory],
-	// [AddFulfillmentPlaces][google.cloud.retail.v2.ProductService.AddFulfillmentPlaces],
+	// [ProductService.AddFulfillmentPlaces][google.cloud.retail.v2.ProductService.AddFulfillmentPlaces],
 	// and
 	// [RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces].
 	//
@@ -2582,7 +2598,7 @@ type ProductServiceServer interface {
 	DeleteProduct(context.Context, *DeleteProductRequest) (*emptypb.Empty, error)
 	// Bulk import of multiple [Product][google.cloud.retail.v2.Product]s.
 	//
-	// Request processing may be synchronous. No partial updating is supported.
+	// Request processing may be synchronous.
 	// Non-existing items are created.
 	//
 	// Note that it is possible for a subset of the
@@ -2622,7 +2638,7 @@ type ProductServiceServer interface {
 	//
 	// Pre-existing inventory information can only be updated with
 	// [SetInventory][google.cloud.retail.v2.ProductService.SetInventory],
-	// [AddFulfillmentPlaces][google.cloud.retail.v2.ProductService.AddFulfillmentPlaces],
+	// [ProductService.AddFulfillmentPlaces][google.cloud.retail.v2.ProductService.AddFulfillmentPlaces],
 	// and
 	// [RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces].
 	//

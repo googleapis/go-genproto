@@ -61,6 +61,16 @@ type PredictRequest struct {
 	// they took to trigger the predict request. Note that this user event detail
 	// won't be ingested to userEvent logs. Thus, a separate userEvent write
 	// request is required for event logging.
+	//
+	// Don't set
+	// [UserEvent.visitor_id][google.cloud.retail.v2.UserEvent.visitor_id] or
+	// [UserInfo.user_id][google.cloud.retail.v2.UserInfo.user_id] to the same
+	// fixed ID for different users. If you are trying to receive non-personalized
+	// recommendations (not recommended; this can negatively impact model
+	// performance), instead set
+	// [UserEvent.visitor_id][google.cloud.retail.v2.UserEvent.visitor_id] to a
+	// random unique ID and leave
+	// [UserInfo.user_id][google.cloud.retail.v2.UserInfo.user_id] unset.
 	UserEvent *UserEvent `protobuf:"bytes,2,opt,name=user_event,json=userEvent,proto3" json:"user_event,omitempty"`
 	// Maximum number of results to return per page. Set this property
 	// to the number of prediction results needed. If zero, the service will
@@ -135,7 +145,7 @@ type PredictRequest struct {
 	// * Each resource can have multiple labels, up to a maximum of 64.
 	// * Each label must be a key-value pair.
 	// * Keys have a minimum length of 1 character and a maximum length of 63
-	//   characters, and cannot be empty. Values can be empty, and have a maximum
+	//   characters and cannot be empty. Values can be empty and have a maximum
 	//   length of 63 characters.
 	// * Keys and values can contain only lowercase letters, numeric characters,
 	//   underscores, and dashes. All characters must use UTF-8 encoding, and
@@ -330,9 +340,9 @@ type PredictResponse_PredictionResult struct {
 	//
 	// Possible values:
 	//
-	// * `product`: JSON representation of the product. Will be set if
+	// * `product`: JSON representation of the product. Is set if
 	//   `returnProduct` is set to true in `PredictRequest.params`.
-	// * `score`: Prediction score in double value. Will be set if
+	// * `score`: Prediction score in double value. Is set if
 	//   `returnScore` is set to true in `PredictRequest.params`.
 	Metadata map[string]*structpb.Value `protobuf:"bytes,2,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
