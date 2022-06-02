@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -1208,7 +1208,7 @@ func (x *IndexOperationMetadata) GetIndexId() string {
 // design pattern.
 //
 // This singleton resource can be accessed at:
-// `projects/{project_id}/datastore-firestore-migration`
+// "projects/{project_id}/operations/datastore-firestore-migration"
 type DatastoreFirestoreMigrationMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
