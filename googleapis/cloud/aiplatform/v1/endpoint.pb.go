@@ -271,6 +271,9 @@ type DeployedModel struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Required. The resource name of the Model that this is the deployment of. Note that
 	// the Model may be in a different location than the DeployedModel's Endpoint.
+	//
+	// The resource name may contain version id or version alias to specify the
+	// version, if no version is specified, the default version will be deployed.
 	Model string `protobuf:"bytes,2,opt,name=model,proto3" json:"model,omitempty"`
 	// The display name of the DeployedModel. If not provided upon creation,
 	// the Model's display_name is used.

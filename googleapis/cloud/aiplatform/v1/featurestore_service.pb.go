@@ -379,6 +379,7 @@ type UpdateFeaturestoreRequest struct {
 	//
 	//   * `labels`
 	//   * `online_serving_config.fixed_node_count`
+	//   * `online_serving_config.scaling`
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
