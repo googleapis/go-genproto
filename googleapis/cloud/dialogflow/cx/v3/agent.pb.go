@@ -259,7 +259,7 @@ type Agent struct {
 	// Indicates if automatic spell correction is enabled in detect intent
 	// requests.
 	EnableSpellCorrection bool `protobuf:"varint,20,opt,name=enable_spell_correction,json=enableSpellCorrection,proto3" json:"enable_spell_correction,omitempty"`
-	// Indiciates whether the agent is locked for changes. If the agent is locked,
+	// Indicates whether the agent is locked for changes. If the agent is locked,
 	// modifications to the agent will be rejected except for [RestoreAgent][].
 	Locked bool `protobuf:"varint,27,opt,name=locked,proto3" json:"locked,omitempty"`
 	// Hierarchical advanced settings for this agent. The settings exposed at the

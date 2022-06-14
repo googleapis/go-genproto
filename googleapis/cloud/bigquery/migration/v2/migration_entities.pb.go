@@ -358,7 +358,9 @@ type MigrationTask struct {
 	// The type of the task. This must be one of the supported task types:
 	// Translation_Teradata2BQ, Translation_Redshift2BQ, Translation_Bteq2BQ,
 	// Translation_Oracle2BQ, Translation_HiveQL2BQ, Translation_SparkSQL2BQ,
-	// Translation_Snowflake2BQ, Translation_Netezza2BQ.
+	// Translation_Snowflake2BQ, Translation_Netezza2BQ,
+	// Translation_AzureSynapse2BQ, Translation_Vertica2BQ,
+	// Translation_SQLServer2BQ.
 	Type string `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
 	// Output only. The current state of the task.
 	State MigrationTask_State `protobuf:"varint,4,opt,name=state,proto3,enum=google.cloud.bigquery.migration.v2.MigrationTask_State" json:"state,omitempty"`

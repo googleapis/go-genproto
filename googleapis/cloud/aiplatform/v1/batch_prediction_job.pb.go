@@ -57,6 +57,9 @@ type BatchPredictionJob struct {
 	// Starting this job has no impact on any existing deployments of the Model
 	// and their resources.
 	// Exactly one of model and unmanaged_container_model must be set.
+	//
+	// The model resource name may contain version id or version alias to specify
+	// the version, if no version is specified, the default version will be used.
 	Model string `protobuf:"bytes,3,opt,name=model,proto3" json:"model,omitempty"`
 	// Contains model information necessary to perform batch prediction without
 	// requiring uploading to model registry.

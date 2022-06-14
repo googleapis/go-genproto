@@ -252,7 +252,6 @@ func (x *StreamingReadFeatureValuesRequest) GetFeatureSelector() *FeatureSelecto
 }
 
 // Value for a feature.
-// (-- NEXT ID: 15 --)
 type FeatureValue struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
