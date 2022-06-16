@@ -127,9 +127,12 @@ type RunFunnelReportRequest struct {
 	FunnelBreakdown *FunnelBreakdown `protobuf:"bytes,4,opt,name=funnel_breakdown,json=funnelBreakdown,proto3" json:"funnel_breakdown,omitempty"`
 	// If specified, next action adds a dimension to the funnel visualization sub
 	// report response. This next action dimension expands each funnel step to the
-	// unique values of the next action. For example a breakdown by the
+	// unique values of the next action. For example a next action of the
 	// `eventName` dimension will create rows for several events (i.e.
 	// `session_start` & `click`) and the total.
+	//
+	// Next action only supports `eventName` and most Page / Screen dimensions
+	// like `pageTitle` and `pagePath`.
 	FunnelNextAction *FunnelNextAction `protobuf:"bytes,5,opt,name=funnel_next_action,json=funnelNextAction,proto3" json:"funnel_next_action,omitempty"`
 	// The funnel visualization type controls the dimensions present in the funnel
 	// visualization sub report response. If not specified, `STANDARD_FUNNEL` is
