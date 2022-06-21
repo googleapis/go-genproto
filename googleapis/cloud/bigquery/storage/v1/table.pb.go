@@ -193,7 +193,9 @@ func (TableFieldSchema_Mode) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_bigquery_storage_v1_table_proto_rawDescGZIP(), []int{1, 1}
 }
 
-// Schema of a table.
+// Schema of a table. This schema is a subset of
+// google.cloud.bigquery.v2.TableSchema containing information necessary to
+// generate valid message to write to BigQuery.
 type TableSchema struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
