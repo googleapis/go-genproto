@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import (
 	latlng "google.golang.org/genproto/googleapis/type/latlng"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	_ "google.golang.org/protobuf/types/known/durationpb"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
@@ -51,14 +50,16 @@ type Waypoint struct {
 	//	*Waypoint_Location
 	//	*Waypoint_PlaceId
 	LocationType isWaypoint_LocationType `protobuf_oneof:"location_type"`
-	// Marks this waypoint as a milestone, as opposed to a stopping point. For
+	// Marks this waypoint as a milestone rather a stopping point. For
 	// each non-via waypoint in the request, the response appends an entry to the
 	// `legs` array to provide the details for stopovers on that leg of the
 	// trip. Set this value to true when you want the route to pass through this
 	// waypoint without stopping over. Via waypoints don't cause an entry to be
 	// added to the `legs` array, but they do route the journey through the
 	// waypoint. You can only set this value on waypoints that are intermediates.
-	// If you set this field on terminal waypoints, then the request fails.
+	// The request fails if you set this field on terminal waypoints.
+	// If ComputeRoutesRequest.optimize_waypoint_order is set to true then
+	// this field cannot be set to true; otherwise, the request fails.
 	Via bool `protobuf:"varint,3,opt,name=via,proto3" json:"via,omitempty"`
 	// Indicates that the waypoint is meant for vehicles to stop at, where the
 	// intention is to either pickup or drop-off. When you set this value, the
@@ -237,8 +238,6 @@ var file_google_maps_routes_v1_waypoint_proto_rawDesc = []byte{
 	0x75, 0x74, 0x65, 0x73, 0x2f, 0x76, 0x31, 0x2f, 0x77, 0x61, 0x79, 0x70, 0x6f, 0x69, 0x6e, 0x74,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x15, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x6d,
 	0x61, 0x70, 0x73, 0x2e, 0x72, 0x6f, 0x75, 0x74, 0x65, 0x73, 0x2e, 0x76, 0x31, 0x1a, 0x1e, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x64,
-	0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x77,
 	0x72, 0x61, 0x70, 0x70, 0x65, 0x72, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x18, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f, 0x6c, 0x61, 0x74, 0x6c, 0x6e,
