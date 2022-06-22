@@ -41,6 +41,7 @@ const (
 type DataFormat int32
 
 const (
+	// Data format is unspecified.
 	DataFormat_DATA_FORMAT_UNSPECIFIED DataFormat = 0
 	// Avro is a standard open source row based file format.
 	// See https://avro.apache.org/ for more details.
@@ -212,7 +213,7 @@ type ReadSession struct {
 	// requests to read this Session will return errors. The expire_time is
 	// automatically assigned and currently cannot be specified or updated.
 	ExpireTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
-	// Immutable. Data format of the output data.
+	// Immutable. Data format of the output data. DATA_FORMAT_UNSPECIFIED not supported.
 	DataFormat DataFormat `protobuf:"varint,3,opt,name=data_format,json=dataFormat,proto3,enum=google.cloud.bigquery.storage.v1.DataFormat" json:"data_format,omitempty"`
 	// The schema for the read. If read_options.selected_fields is set, the
 	// schema may be different from the table schema as it will only contain
