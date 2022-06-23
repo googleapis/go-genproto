@@ -1094,6 +1094,115 @@ func (x *ImportModelEvaluationRequest) GetModelEvaluation() *ModelEvaluation {
 	return nil
 }
 
+// Request message for [ModelService.BatchImportModelEvaluationSlices][google.cloud.aiplatform.v1.ModelService.BatchImportModelEvaluationSlices]
+type BatchImportModelEvaluationSlicesRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. The name of the parent ModelEvaluation resource.
+	// Format:
+	// `projects/{project}/locations/{location}/models/{model}/evaluations/{evaluation}`
+	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
+	// Required. Model evaluation slice resource to be imported.
+	ModelEvaluationSlices []*ModelEvaluationSlice `protobuf:"bytes,2,rep,name=model_evaluation_slices,json=modelEvaluationSlices,proto3" json:"model_evaluation_slices,omitempty"`
+}
+
+func (x *BatchImportModelEvaluationSlicesRequest) Reset() {
+	*x = BatchImportModelEvaluationSlicesRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BatchImportModelEvaluationSlicesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BatchImportModelEvaluationSlicesRequest) ProtoMessage() {}
+
+func (x *BatchImportModelEvaluationSlicesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BatchImportModelEvaluationSlicesRequest.ProtoReflect.Descriptor instead.
+func (*BatchImportModelEvaluationSlicesRequest) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *BatchImportModelEvaluationSlicesRequest) GetParent() string {
+	if x != nil {
+		return x.Parent
+	}
+	return ""
+}
+
+func (x *BatchImportModelEvaluationSlicesRequest) GetModelEvaluationSlices() []*ModelEvaluationSlice {
+	if x != nil {
+		return x.ModelEvaluationSlices
+	}
+	return nil
+}
+
+// Response message for [ModelService.BatchImportModelEvaluationSlices][google.cloud.aiplatform.v1.ModelService.BatchImportModelEvaluationSlices]
+type BatchImportModelEvaluationSlicesResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Output only. List of imported [ModelEvaluationSlice.name][google.cloud.aiplatform.v1.ModelEvaluationSlice.name].
+	ImportedModelEvaluationSlices []string `protobuf:"bytes,1,rep,name=imported_model_evaluation_slices,json=importedModelEvaluationSlices,proto3" json:"imported_model_evaluation_slices,omitempty"`
+}
+
+func (x *BatchImportModelEvaluationSlicesResponse) Reset() {
+	*x = BatchImportModelEvaluationSlicesResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *BatchImportModelEvaluationSlicesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BatchImportModelEvaluationSlicesResponse) ProtoMessage() {}
+
+func (x *BatchImportModelEvaluationSlicesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BatchImportModelEvaluationSlicesResponse.ProtoReflect.Descriptor instead.
+func (*BatchImportModelEvaluationSlicesResponse) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *BatchImportModelEvaluationSlicesResponse) GetImportedModelEvaluationSlices() []string {
+	if x != nil {
+		return x.ImportedModelEvaluationSlices
+	}
+	return nil
+}
+
 // Request message for [ModelService.GetModelEvaluation][google.cloud.aiplatform.v1.ModelService.GetModelEvaluation].
 type GetModelEvaluationRequest struct {
 	state         protoimpl.MessageState
@@ -1109,7 +1218,7 @@ type GetModelEvaluationRequest struct {
 func (x *GetModelEvaluationRequest) Reset() {
 	*x = GetModelEvaluationRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[16]
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1122,7 +1231,7 @@ func (x *GetModelEvaluationRequest) String() string {
 func (*GetModelEvaluationRequest) ProtoMessage() {}
 
 func (x *GetModelEvaluationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[16]
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1135,7 +1244,7 @@ func (x *GetModelEvaluationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetModelEvaluationRequest.ProtoReflect.Descriptor instead.
 func (*GetModelEvaluationRequest) Descriptor() ([]byte, []int) {
-	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{16}
+	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetModelEvaluationRequest) GetName() string {
@@ -1170,7 +1279,7 @@ type ListModelEvaluationsRequest struct {
 func (x *ListModelEvaluationsRequest) Reset() {
 	*x = ListModelEvaluationsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[17]
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1183,7 +1292,7 @@ func (x *ListModelEvaluationsRequest) String() string {
 func (*ListModelEvaluationsRequest) ProtoMessage() {}
 
 func (x *ListModelEvaluationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[17]
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1196,7 +1305,7 @@ func (x *ListModelEvaluationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListModelEvaluationsRequest.ProtoReflect.Descriptor instead.
 func (*ListModelEvaluationsRequest) Descriptor() ([]byte, []int) {
-	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{17}
+	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ListModelEvaluationsRequest) GetParent() string {
@@ -1250,7 +1359,7 @@ type ListModelEvaluationsResponse struct {
 func (x *ListModelEvaluationsResponse) Reset() {
 	*x = ListModelEvaluationsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[18]
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1263,7 +1372,7 @@ func (x *ListModelEvaluationsResponse) String() string {
 func (*ListModelEvaluationsResponse) ProtoMessage() {}
 
 func (x *ListModelEvaluationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[18]
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1276,7 +1385,7 @@ func (x *ListModelEvaluationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListModelEvaluationsResponse.ProtoReflect.Descriptor instead.
 func (*ListModelEvaluationsResponse) Descriptor() ([]byte, []int) {
-	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{18}
+	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *ListModelEvaluationsResponse) GetModelEvaluations() []*ModelEvaluation {
@@ -1308,7 +1417,7 @@ type GetModelEvaluationSliceRequest struct {
 func (x *GetModelEvaluationSliceRequest) Reset() {
 	*x = GetModelEvaluationSliceRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[19]
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1321,7 +1430,7 @@ func (x *GetModelEvaluationSliceRequest) String() string {
 func (*GetModelEvaluationSliceRequest) ProtoMessage() {}
 
 func (x *GetModelEvaluationSliceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[19]
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1334,7 +1443,7 @@ func (x *GetModelEvaluationSliceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetModelEvaluationSliceRequest.ProtoReflect.Descriptor instead.
 func (*GetModelEvaluationSliceRequest) Descriptor() ([]byte, []int) {
-	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{19}
+	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *GetModelEvaluationSliceRequest) GetName() string {
@@ -1372,7 +1481,7 @@ type ListModelEvaluationSlicesRequest struct {
 func (x *ListModelEvaluationSlicesRequest) Reset() {
 	*x = ListModelEvaluationSlicesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[20]
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1385,7 +1494,7 @@ func (x *ListModelEvaluationSlicesRequest) String() string {
 func (*ListModelEvaluationSlicesRequest) ProtoMessage() {}
 
 func (x *ListModelEvaluationSlicesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[20]
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1398,7 +1507,7 @@ func (x *ListModelEvaluationSlicesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListModelEvaluationSlicesRequest.ProtoReflect.Descriptor instead.
 func (*ListModelEvaluationSlicesRequest) Descriptor() ([]byte, []int) {
-	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{20}
+	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *ListModelEvaluationSlicesRequest) GetParent() string {
@@ -1453,7 +1562,7 @@ type ListModelEvaluationSlicesResponse struct {
 func (x *ListModelEvaluationSlicesResponse) Reset() {
 	*x = ListModelEvaluationSlicesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[21]
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1466,7 +1575,7 @@ func (x *ListModelEvaluationSlicesResponse) String() string {
 func (*ListModelEvaluationSlicesResponse) ProtoMessage() {}
 
 func (x *ListModelEvaluationSlicesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[21]
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1479,7 +1588,7 @@ func (x *ListModelEvaluationSlicesResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ListModelEvaluationSlicesResponse.ProtoReflect.Descriptor instead.
 func (*ListModelEvaluationSlicesResponse) Descriptor() ([]byte, []int) {
-	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{21}
+	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ListModelEvaluationSlicesResponse) GetModelEvaluationSlices() []*ModelEvaluationSlice {
@@ -1526,7 +1635,7 @@ type ExportModelRequest_OutputConfig struct {
 func (x *ExportModelRequest_OutputConfig) Reset() {
 	*x = ExportModelRequest_OutputConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[22]
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1539,7 +1648,7 @@ func (x *ExportModelRequest_OutputConfig) String() string {
 func (*ExportModelRequest_OutputConfig) ProtoMessage() {}
 
 func (x *ExportModelRequest_OutputConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[22]
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1595,7 +1704,7 @@ type ExportModelOperationMetadata_OutputInfo struct {
 func (x *ExportModelOperationMetadata_OutputInfo) Reset() {
 	*x = ExportModelOperationMetadata_OutputInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[23]
+		mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1608,7 +1717,7 @@ func (x *ExportModelOperationMetadata_OutputInfo) String() string {
 func (*ExportModelOperationMetadata_OutputInfo) ProtoMessage() {}
 
 func (x *ExportModelOperationMetadata_OutputInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[23]
+	mi := &file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1845,6 +1954,28 @@ var file_google_cloud_aiplatform_v1_model_service_proto_rawDesc = []byte{
 	0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45,
 	0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x0f,
 	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22,
+	0xe3, 0x01, 0x0a, 0x27, 0x42, 0x61, 0x74, 0x63, 0x68, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x4d,
+	0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c,
+	0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x49, 0x0a, 0x06, 0x70,
+	0x61, 0x72, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x31, 0xe0, 0x41, 0x02,
+	0xfa, 0x41, 0x2b, 0x0a, 0x29, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4d,
+	0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x06,
+	0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x6d, 0x0a, 0x17, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x5f,
+	0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x73, 0x6c, 0x69, 0x63, 0x65,
+	0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x30, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
+	0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x15,
+	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53,
+	0x6c, 0x69, 0x63, 0x65, 0x73, 0x22, 0x78, 0x0a, 0x28, 0x42, 0x61, 0x74, 0x63, 0x68, 0x49, 0x6d,
+	0x70, 0x6f, 0x72, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x12, 0x4c, 0x0a, 0x20, 0x69, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x5f, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x5f, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x73,
+	0x6c, 0x69, 0x63, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x03,
+	0x52, 0x1d, 0x69, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45,
+	0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x22,
 	0x62, 0x0a, 0x19, 0x47, 0x65, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x45, 0x0a, 0x04,
 	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x31, 0xe0, 0x41, 0x02, 0xfa,
@@ -1910,7 +2041,7 @@ var file_google_cloud_aiplatform_v1_model_service_proto_rawDesc = []byte{
 	0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x12,
 	0x26, 0x0a, 0x0f, 0x6e, 0x65, 0x78, 0x74, 0x5f, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x74, 0x6f, 0x6b,
 	0x65, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x6e, 0x65, 0x78, 0x74, 0x50, 0x61,
-	0x67, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x32, 0xc7, 0x17, 0x0a, 0x0c, 0x4d, 0x6f, 0x64, 0x65,
+	0x67, 0x65, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x32, 0xf2, 0x19, 0x0a, 0x0c, 0x4d, 0x6f, 0x64, 0x65,
 	0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0xe0, 0x01, 0x0a, 0x0b, 0x55, 0x70, 0x6c,
 	0x6f, 0x61, 0x64, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x12, 0x2e, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
 	0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f,
@@ -2039,81 +2170,99 @@ var file_google_cloud_aiplatform_v1_model_service_proto_rawDesc = []byte{
 	0x2f, 0x2a, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x65, 0x76, 0x61,
 	0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x3a, 0x69, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x3a,
 	0x01, 0x2a, 0xda, 0x41, 0x17, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x2c, 0x6d, 0x6f, 0x64, 0x65,
-	0x6c, 0x5f, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0xc1, 0x01, 0x0a,
-	0x12, 0x47, 0x65, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x12, 0x35, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f,
-	0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31,
-	0x2e, 0x47, 0x65, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2b, 0x2e, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74,
-	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61,
-	0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x47, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x3a, 0x12,
-	0x38, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65,
-	0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f,
-	0x2a, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f, 0x2a, 0x2f, 0x65, 0x76, 0x61, 0x6c, 0x75,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x7d, 0xda, 0x41, 0x04, 0x6e, 0x61, 0x6d, 0x65,
-	0x12, 0xd4, 0x01, 0x0a, 0x14, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76,
-	0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66,
-	0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c,
-	0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x38, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75,
-	0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e,
-	0x4c, 0x69, 0x73, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x49, 0x82, 0xd3,
-	0xe4, 0x93, 0x02, 0x3a, 0x12, 0x38, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e,
+	0x6c, 0x5f, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0xa8, 0x02, 0x0a,
+	0x20, 0x42, 0x61, 0x74, 0x63, 0x68, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x4d, 0x6f, 0x64, 0x65,
+	0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65,
+	0x73, 0x12, 0x43, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
+	0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x42,
+	0x61, 0x74, 0x63, 0x68, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45,
+	0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x44, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d,
+	0x2e, 0x76, 0x31, 0x2e, 0x42, 0x61, 0x74, 0x63, 0x68, 0x49, 0x6d, 0x70, 0x6f, 0x72, 0x74, 0x4d,
+	0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c,
+	0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x79, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x52, 0x22, 0x4d, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e,
 	0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f,
-	0x2a, 0x7d, 0x2f, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0xda, 0x41,
-	0x06, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x12, 0xd9, 0x01, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x4d,
+	0x2a, 0x2f, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x7d,
+	0x2f, 0x73, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x3a, 0x62, 0x61, 0x74, 0x63, 0x68, 0x49, 0x6d, 0x70,
+	0x6f, 0x72, 0x74, 0x3a, 0x01, 0x2a, 0xda, 0x41, 0x1e, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x2c,
+	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x5f, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x5f, 0x73, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x12, 0xc1, 0x01, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x4d,
+	0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x35,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69,
+	0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x4d,
+	0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
+	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e,
+	0x76, 0x31, 0x2e, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x22, 0x47, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x3a, 0x12, 0x38, 0x2f, 0x76, 0x31, 0x2f,
+	0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a,
+	0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x6d, 0x6f, 0x64,
+	0x65, 0x6c, 0x73, 0x2f, 0x2a, 0x2f, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x2f, 0x2a, 0x7d, 0xda, 0x41, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0xd4, 0x01, 0x0a, 0x14,
+	0x4c, 0x69, 0x73, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x73, 0x12, 0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
+	0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76,
+	0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x38, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70,
+	0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d,
+	0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x49, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x3a, 0x12,
+	0x38, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f,
+	0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x2f, 0x2a, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x65, 0x76,
+	0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0xda, 0x41, 0x06, 0x70, 0x61, 0x72, 0x65,
+	0x6e, 0x74, 0x12, 0xd9, 0x01, 0x0a, 0x17, 0x47, 0x65, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45,
+	0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x12, 0x3a,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69,
+	0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x4d,
 	0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c,
-	0x69, 0x63, 0x65, 0x12, 0x3a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f,
-	0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31,
-	0x2e, 0x47, 0x65, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x30, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61,
-	0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x6f, 0x64,
-	0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63,
-	0x65, 0x22, 0x50, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x43, 0x12, 0x41, 0x2f, 0x76, 0x31, 0x2f, 0x7b,
-	0x6e, 0x61, 0x6d, 0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f,
-	0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x6d, 0x6f, 0x64, 0x65,
-	0x6c, 0x73, 0x2f, 0x2a, 0x2f, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73,
-	0x2f, 0x2a, 0x2f, 0x73, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x2a, 0x7d, 0xda, 0x41, 0x04, 0x6e,
-	0x61, 0x6d, 0x65, 0x12, 0xec, 0x01, 0x0a, 0x19, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x6f, 0x64, 0x65,
+	0x69, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x30, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74,
+	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61,
+	0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x22, 0x50, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x43, 0x12, 0x41, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x6e, 0x61, 0x6d, 0x65, 0x3d,
+	0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f, 0x2a, 0x2f,
+	0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x73, 0x6c,
+	0x69, 0x63, 0x65, 0x73, 0x2f, 0x2a, 0x7d, 0xda, 0x41, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0xec,
+	0x01, 0x0a, 0x19, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c,
+	0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x12, 0x3c, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c,
+	0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x6f,
+	0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69,
+	0x63, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x3d, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74,
+	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x4d, 0x6f, 0x64, 0x65,
 	0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65,
-	0x73, 0x12, 0x3c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
-	0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4c,
-	0x69, 0x73, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x53, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x3d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61,
-	0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73,
-	0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x45, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x53, 0x6c, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x52,
-	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x43, 0x12, 0x41, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72,
-	0x65, 0x6e, 0x74, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c,
-	0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
-	0x73, 0x2f, 0x2a, 0x2f, 0x65, 0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f,
-	0x2a, 0x7d, 0x2f, 0x73, 0x6c, 0x69, 0x63, 0x65, 0x73, 0xda, 0x41, 0x06, 0x70, 0x61, 0x72, 0x65,
-	0x6e, 0x74, 0x1a, 0x4d, 0xca, 0x41, 0x19, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
-	0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d,
-	0xd2, 0x41, 0x2e, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75,
-	0x74, 0x68, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
-	0x6d, 0x42, 0xd5, 0x01, 0x0a, 0x1e, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
-	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
-	0x6d, 0x2e, 0x76, 0x31, 0x42, 0x11, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x44, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
-	0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73,
-	0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
-	0x6d, 0x2f, 0x76, 0x31, 0x3b, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0xaa,
-	0x02, 0x1a, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x41,
-	0x49, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x1a, 0x47,
-	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x41, 0x49, 0x50, 0x6c,
-	0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x5c, 0x56, 0x31, 0xea, 0x02, 0x1d, 0x47, 0x6f, 0x6f, 0x67,
-	0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x3a, 0x3a, 0x41, 0x49, 0x50, 0x6c, 0x61,
-	0x74, 0x66, 0x6f, 0x72, 0x6d, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x52, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x43, 0x12, 0x41, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x3d, 0x70,
+	0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f, 0x2a, 0x2f, 0x65,
+	0x76, 0x61, 0x6c, 0x75, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x73, 0x6c,
+	0x69, 0x63, 0x65, 0x73, 0xda, 0x41, 0x06, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x1a, 0x4d, 0xca,
+	0x41, 0x19, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x67, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0xd2, 0x41, 0x2e, 0x68, 0x74,
+	0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x63, 0x6c,
+	0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x42, 0xd5, 0x01, 0x0a,
+	0x1e, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75,
+	0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x42,
+	0x11, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x50, 0x72, 0x6f,
+	0x74, 0x6f, 0x50, 0x01, 0x5a, 0x44, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c,
+	0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75,
+	0x64, 0x2f, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x3b,
+	0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0xaa, 0x02, 0x1a, 0x47, 0x6f, 0x6f,
+	0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x41, 0x49, 0x50, 0x6c, 0x61, 0x74,
+	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x1a, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x41, 0x49, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
+	0x6d, 0x5c, 0x56, 0x31, 0xea, 0x02, 0x1d, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43,
+	0x6c, 0x6f, 0x75, 0x64, 0x3a, 0x3a, 0x41, 0x49, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d,
+	0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2128,93 +2277,98 @@ func file_google_cloud_aiplatform_v1_model_service_proto_rawDescGZIP() []byte {
 	return file_google_cloud_aiplatform_v1_model_service_proto_rawDescData
 }
 
-var file_google_cloud_aiplatform_v1_model_service_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
+var file_google_cloud_aiplatform_v1_model_service_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
 var file_google_cloud_aiplatform_v1_model_service_proto_goTypes = []interface{}{
-	(*UploadModelRequest)(nil),                      // 0: google.cloud.aiplatform.v1.UploadModelRequest
-	(*UploadModelOperationMetadata)(nil),            // 1: google.cloud.aiplatform.v1.UploadModelOperationMetadata
-	(*UploadModelResponse)(nil),                     // 2: google.cloud.aiplatform.v1.UploadModelResponse
-	(*GetModelRequest)(nil),                         // 3: google.cloud.aiplatform.v1.GetModelRequest
-	(*ListModelsRequest)(nil),                       // 4: google.cloud.aiplatform.v1.ListModelsRequest
-	(*ListModelsResponse)(nil),                      // 5: google.cloud.aiplatform.v1.ListModelsResponse
-	(*ListModelVersionsRequest)(nil),                // 6: google.cloud.aiplatform.v1.ListModelVersionsRequest
-	(*ListModelVersionsResponse)(nil),               // 7: google.cloud.aiplatform.v1.ListModelVersionsResponse
-	(*UpdateModelRequest)(nil),                      // 8: google.cloud.aiplatform.v1.UpdateModelRequest
-	(*DeleteModelRequest)(nil),                      // 9: google.cloud.aiplatform.v1.DeleteModelRequest
-	(*DeleteModelVersionRequest)(nil),               // 10: google.cloud.aiplatform.v1.DeleteModelVersionRequest
-	(*MergeVersionAliasesRequest)(nil),              // 11: google.cloud.aiplatform.v1.MergeVersionAliasesRequest
-	(*ExportModelRequest)(nil),                      // 12: google.cloud.aiplatform.v1.ExportModelRequest
-	(*ExportModelOperationMetadata)(nil),            // 13: google.cloud.aiplatform.v1.ExportModelOperationMetadata
-	(*ExportModelResponse)(nil),                     // 14: google.cloud.aiplatform.v1.ExportModelResponse
-	(*ImportModelEvaluationRequest)(nil),            // 15: google.cloud.aiplatform.v1.ImportModelEvaluationRequest
-	(*GetModelEvaluationRequest)(nil),               // 16: google.cloud.aiplatform.v1.GetModelEvaluationRequest
-	(*ListModelEvaluationsRequest)(nil),             // 17: google.cloud.aiplatform.v1.ListModelEvaluationsRequest
-	(*ListModelEvaluationsResponse)(nil),            // 18: google.cloud.aiplatform.v1.ListModelEvaluationsResponse
-	(*GetModelEvaluationSliceRequest)(nil),          // 19: google.cloud.aiplatform.v1.GetModelEvaluationSliceRequest
-	(*ListModelEvaluationSlicesRequest)(nil),        // 20: google.cloud.aiplatform.v1.ListModelEvaluationSlicesRequest
-	(*ListModelEvaluationSlicesResponse)(nil),       // 21: google.cloud.aiplatform.v1.ListModelEvaluationSlicesResponse
-	(*ExportModelRequest_OutputConfig)(nil),         // 22: google.cloud.aiplatform.v1.ExportModelRequest.OutputConfig
-	(*ExportModelOperationMetadata_OutputInfo)(nil), // 23: google.cloud.aiplatform.v1.ExportModelOperationMetadata.OutputInfo
-	(*Model)(nil),                                   // 24: google.cloud.aiplatform.v1.Model
-	(*GenericOperationMetadata)(nil),                // 25: google.cloud.aiplatform.v1.GenericOperationMetadata
-	(*fieldmaskpb.FieldMask)(nil),                   // 26: google.protobuf.FieldMask
-	(*ModelEvaluation)(nil),                         // 27: google.cloud.aiplatform.v1.ModelEvaluation
-	(*ModelEvaluationSlice)(nil),                    // 28: google.cloud.aiplatform.v1.ModelEvaluationSlice
-	(*GcsDestination)(nil),                          // 29: google.cloud.aiplatform.v1.GcsDestination
-	(*ContainerRegistryDestination)(nil),            // 30: google.cloud.aiplatform.v1.ContainerRegistryDestination
-	(*longrunning.Operation)(nil),                   // 31: google.longrunning.Operation
+	(*UploadModelRequest)(nil),                       // 0: google.cloud.aiplatform.v1.UploadModelRequest
+	(*UploadModelOperationMetadata)(nil),             // 1: google.cloud.aiplatform.v1.UploadModelOperationMetadata
+	(*UploadModelResponse)(nil),                      // 2: google.cloud.aiplatform.v1.UploadModelResponse
+	(*GetModelRequest)(nil),                          // 3: google.cloud.aiplatform.v1.GetModelRequest
+	(*ListModelsRequest)(nil),                        // 4: google.cloud.aiplatform.v1.ListModelsRequest
+	(*ListModelsResponse)(nil),                       // 5: google.cloud.aiplatform.v1.ListModelsResponse
+	(*ListModelVersionsRequest)(nil),                 // 6: google.cloud.aiplatform.v1.ListModelVersionsRequest
+	(*ListModelVersionsResponse)(nil),                // 7: google.cloud.aiplatform.v1.ListModelVersionsResponse
+	(*UpdateModelRequest)(nil),                       // 8: google.cloud.aiplatform.v1.UpdateModelRequest
+	(*DeleteModelRequest)(nil),                       // 9: google.cloud.aiplatform.v1.DeleteModelRequest
+	(*DeleteModelVersionRequest)(nil),                // 10: google.cloud.aiplatform.v1.DeleteModelVersionRequest
+	(*MergeVersionAliasesRequest)(nil),               // 11: google.cloud.aiplatform.v1.MergeVersionAliasesRequest
+	(*ExportModelRequest)(nil),                       // 12: google.cloud.aiplatform.v1.ExportModelRequest
+	(*ExportModelOperationMetadata)(nil),             // 13: google.cloud.aiplatform.v1.ExportModelOperationMetadata
+	(*ExportModelResponse)(nil),                      // 14: google.cloud.aiplatform.v1.ExportModelResponse
+	(*ImportModelEvaluationRequest)(nil),             // 15: google.cloud.aiplatform.v1.ImportModelEvaluationRequest
+	(*BatchImportModelEvaluationSlicesRequest)(nil),  // 16: google.cloud.aiplatform.v1.BatchImportModelEvaluationSlicesRequest
+	(*BatchImportModelEvaluationSlicesResponse)(nil), // 17: google.cloud.aiplatform.v1.BatchImportModelEvaluationSlicesResponse
+	(*GetModelEvaluationRequest)(nil),                // 18: google.cloud.aiplatform.v1.GetModelEvaluationRequest
+	(*ListModelEvaluationsRequest)(nil),              // 19: google.cloud.aiplatform.v1.ListModelEvaluationsRequest
+	(*ListModelEvaluationsResponse)(nil),             // 20: google.cloud.aiplatform.v1.ListModelEvaluationsResponse
+	(*GetModelEvaluationSliceRequest)(nil),           // 21: google.cloud.aiplatform.v1.GetModelEvaluationSliceRequest
+	(*ListModelEvaluationSlicesRequest)(nil),         // 22: google.cloud.aiplatform.v1.ListModelEvaluationSlicesRequest
+	(*ListModelEvaluationSlicesResponse)(nil),        // 23: google.cloud.aiplatform.v1.ListModelEvaluationSlicesResponse
+	(*ExportModelRequest_OutputConfig)(nil),          // 24: google.cloud.aiplatform.v1.ExportModelRequest.OutputConfig
+	(*ExportModelOperationMetadata_OutputInfo)(nil),  // 25: google.cloud.aiplatform.v1.ExportModelOperationMetadata.OutputInfo
+	(*Model)(nil),                        // 26: google.cloud.aiplatform.v1.Model
+	(*GenericOperationMetadata)(nil),     // 27: google.cloud.aiplatform.v1.GenericOperationMetadata
+	(*fieldmaskpb.FieldMask)(nil),        // 28: google.protobuf.FieldMask
+	(*ModelEvaluation)(nil),              // 29: google.cloud.aiplatform.v1.ModelEvaluation
+	(*ModelEvaluationSlice)(nil),         // 30: google.cloud.aiplatform.v1.ModelEvaluationSlice
+	(*GcsDestination)(nil),               // 31: google.cloud.aiplatform.v1.GcsDestination
+	(*ContainerRegistryDestination)(nil), // 32: google.cloud.aiplatform.v1.ContainerRegistryDestination
+	(*longrunning.Operation)(nil),        // 33: google.longrunning.Operation
 }
 var file_google_cloud_aiplatform_v1_model_service_proto_depIdxs = []int32{
-	24, // 0: google.cloud.aiplatform.v1.UploadModelRequest.model:type_name -> google.cloud.aiplatform.v1.Model
-	25, // 1: google.cloud.aiplatform.v1.UploadModelOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	26, // 2: google.cloud.aiplatform.v1.ListModelsRequest.read_mask:type_name -> google.protobuf.FieldMask
-	24, // 3: google.cloud.aiplatform.v1.ListModelsResponse.models:type_name -> google.cloud.aiplatform.v1.Model
-	26, // 4: google.cloud.aiplatform.v1.ListModelVersionsRequest.read_mask:type_name -> google.protobuf.FieldMask
-	24, // 5: google.cloud.aiplatform.v1.ListModelVersionsResponse.models:type_name -> google.cloud.aiplatform.v1.Model
-	24, // 6: google.cloud.aiplatform.v1.UpdateModelRequest.model:type_name -> google.cloud.aiplatform.v1.Model
-	26, // 7: google.cloud.aiplatform.v1.UpdateModelRequest.update_mask:type_name -> google.protobuf.FieldMask
-	22, // 8: google.cloud.aiplatform.v1.ExportModelRequest.output_config:type_name -> google.cloud.aiplatform.v1.ExportModelRequest.OutputConfig
-	25, // 9: google.cloud.aiplatform.v1.ExportModelOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
-	23, // 10: google.cloud.aiplatform.v1.ExportModelOperationMetadata.output_info:type_name -> google.cloud.aiplatform.v1.ExportModelOperationMetadata.OutputInfo
-	27, // 11: google.cloud.aiplatform.v1.ImportModelEvaluationRequest.model_evaluation:type_name -> google.cloud.aiplatform.v1.ModelEvaluation
-	26, // 12: google.cloud.aiplatform.v1.ListModelEvaluationsRequest.read_mask:type_name -> google.protobuf.FieldMask
-	27, // 13: google.cloud.aiplatform.v1.ListModelEvaluationsResponse.model_evaluations:type_name -> google.cloud.aiplatform.v1.ModelEvaluation
-	26, // 14: google.cloud.aiplatform.v1.ListModelEvaluationSlicesRequest.read_mask:type_name -> google.protobuf.FieldMask
-	28, // 15: google.cloud.aiplatform.v1.ListModelEvaluationSlicesResponse.model_evaluation_slices:type_name -> google.cloud.aiplatform.v1.ModelEvaluationSlice
-	29, // 16: google.cloud.aiplatform.v1.ExportModelRequest.OutputConfig.artifact_destination:type_name -> google.cloud.aiplatform.v1.GcsDestination
-	30, // 17: google.cloud.aiplatform.v1.ExportModelRequest.OutputConfig.image_destination:type_name -> google.cloud.aiplatform.v1.ContainerRegistryDestination
-	0,  // 18: google.cloud.aiplatform.v1.ModelService.UploadModel:input_type -> google.cloud.aiplatform.v1.UploadModelRequest
-	3,  // 19: google.cloud.aiplatform.v1.ModelService.GetModel:input_type -> google.cloud.aiplatform.v1.GetModelRequest
-	4,  // 20: google.cloud.aiplatform.v1.ModelService.ListModels:input_type -> google.cloud.aiplatform.v1.ListModelsRequest
-	6,  // 21: google.cloud.aiplatform.v1.ModelService.ListModelVersions:input_type -> google.cloud.aiplatform.v1.ListModelVersionsRequest
-	8,  // 22: google.cloud.aiplatform.v1.ModelService.UpdateModel:input_type -> google.cloud.aiplatform.v1.UpdateModelRequest
-	9,  // 23: google.cloud.aiplatform.v1.ModelService.DeleteModel:input_type -> google.cloud.aiplatform.v1.DeleteModelRequest
-	10, // 24: google.cloud.aiplatform.v1.ModelService.DeleteModelVersion:input_type -> google.cloud.aiplatform.v1.DeleteModelVersionRequest
-	11, // 25: google.cloud.aiplatform.v1.ModelService.MergeVersionAliases:input_type -> google.cloud.aiplatform.v1.MergeVersionAliasesRequest
-	12, // 26: google.cloud.aiplatform.v1.ModelService.ExportModel:input_type -> google.cloud.aiplatform.v1.ExportModelRequest
-	15, // 27: google.cloud.aiplatform.v1.ModelService.ImportModelEvaluation:input_type -> google.cloud.aiplatform.v1.ImportModelEvaluationRequest
-	16, // 28: google.cloud.aiplatform.v1.ModelService.GetModelEvaluation:input_type -> google.cloud.aiplatform.v1.GetModelEvaluationRequest
-	17, // 29: google.cloud.aiplatform.v1.ModelService.ListModelEvaluations:input_type -> google.cloud.aiplatform.v1.ListModelEvaluationsRequest
-	19, // 30: google.cloud.aiplatform.v1.ModelService.GetModelEvaluationSlice:input_type -> google.cloud.aiplatform.v1.GetModelEvaluationSliceRequest
-	20, // 31: google.cloud.aiplatform.v1.ModelService.ListModelEvaluationSlices:input_type -> google.cloud.aiplatform.v1.ListModelEvaluationSlicesRequest
-	31, // 32: google.cloud.aiplatform.v1.ModelService.UploadModel:output_type -> google.longrunning.Operation
-	24, // 33: google.cloud.aiplatform.v1.ModelService.GetModel:output_type -> google.cloud.aiplatform.v1.Model
-	5,  // 34: google.cloud.aiplatform.v1.ModelService.ListModels:output_type -> google.cloud.aiplatform.v1.ListModelsResponse
-	7,  // 35: google.cloud.aiplatform.v1.ModelService.ListModelVersions:output_type -> google.cloud.aiplatform.v1.ListModelVersionsResponse
-	24, // 36: google.cloud.aiplatform.v1.ModelService.UpdateModel:output_type -> google.cloud.aiplatform.v1.Model
-	31, // 37: google.cloud.aiplatform.v1.ModelService.DeleteModel:output_type -> google.longrunning.Operation
-	31, // 38: google.cloud.aiplatform.v1.ModelService.DeleteModelVersion:output_type -> google.longrunning.Operation
-	24, // 39: google.cloud.aiplatform.v1.ModelService.MergeVersionAliases:output_type -> google.cloud.aiplatform.v1.Model
-	31, // 40: google.cloud.aiplatform.v1.ModelService.ExportModel:output_type -> google.longrunning.Operation
-	27, // 41: google.cloud.aiplatform.v1.ModelService.ImportModelEvaluation:output_type -> google.cloud.aiplatform.v1.ModelEvaluation
-	27, // 42: google.cloud.aiplatform.v1.ModelService.GetModelEvaluation:output_type -> google.cloud.aiplatform.v1.ModelEvaluation
-	18, // 43: google.cloud.aiplatform.v1.ModelService.ListModelEvaluations:output_type -> google.cloud.aiplatform.v1.ListModelEvaluationsResponse
-	28, // 44: google.cloud.aiplatform.v1.ModelService.GetModelEvaluationSlice:output_type -> google.cloud.aiplatform.v1.ModelEvaluationSlice
-	21, // 45: google.cloud.aiplatform.v1.ModelService.ListModelEvaluationSlices:output_type -> google.cloud.aiplatform.v1.ListModelEvaluationSlicesResponse
-	32, // [32:46] is the sub-list for method output_type
-	18, // [18:32] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	26, // 0: google.cloud.aiplatform.v1.UploadModelRequest.model:type_name -> google.cloud.aiplatform.v1.Model
+	27, // 1: google.cloud.aiplatform.v1.UploadModelOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	28, // 2: google.cloud.aiplatform.v1.ListModelsRequest.read_mask:type_name -> google.protobuf.FieldMask
+	26, // 3: google.cloud.aiplatform.v1.ListModelsResponse.models:type_name -> google.cloud.aiplatform.v1.Model
+	28, // 4: google.cloud.aiplatform.v1.ListModelVersionsRequest.read_mask:type_name -> google.protobuf.FieldMask
+	26, // 5: google.cloud.aiplatform.v1.ListModelVersionsResponse.models:type_name -> google.cloud.aiplatform.v1.Model
+	26, // 6: google.cloud.aiplatform.v1.UpdateModelRequest.model:type_name -> google.cloud.aiplatform.v1.Model
+	28, // 7: google.cloud.aiplatform.v1.UpdateModelRequest.update_mask:type_name -> google.protobuf.FieldMask
+	24, // 8: google.cloud.aiplatform.v1.ExportModelRequest.output_config:type_name -> google.cloud.aiplatform.v1.ExportModelRequest.OutputConfig
+	27, // 9: google.cloud.aiplatform.v1.ExportModelOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1.GenericOperationMetadata
+	25, // 10: google.cloud.aiplatform.v1.ExportModelOperationMetadata.output_info:type_name -> google.cloud.aiplatform.v1.ExportModelOperationMetadata.OutputInfo
+	29, // 11: google.cloud.aiplatform.v1.ImportModelEvaluationRequest.model_evaluation:type_name -> google.cloud.aiplatform.v1.ModelEvaluation
+	30, // 12: google.cloud.aiplatform.v1.BatchImportModelEvaluationSlicesRequest.model_evaluation_slices:type_name -> google.cloud.aiplatform.v1.ModelEvaluationSlice
+	28, // 13: google.cloud.aiplatform.v1.ListModelEvaluationsRequest.read_mask:type_name -> google.protobuf.FieldMask
+	29, // 14: google.cloud.aiplatform.v1.ListModelEvaluationsResponse.model_evaluations:type_name -> google.cloud.aiplatform.v1.ModelEvaluation
+	28, // 15: google.cloud.aiplatform.v1.ListModelEvaluationSlicesRequest.read_mask:type_name -> google.protobuf.FieldMask
+	30, // 16: google.cloud.aiplatform.v1.ListModelEvaluationSlicesResponse.model_evaluation_slices:type_name -> google.cloud.aiplatform.v1.ModelEvaluationSlice
+	31, // 17: google.cloud.aiplatform.v1.ExportModelRequest.OutputConfig.artifact_destination:type_name -> google.cloud.aiplatform.v1.GcsDestination
+	32, // 18: google.cloud.aiplatform.v1.ExportModelRequest.OutputConfig.image_destination:type_name -> google.cloud.aiplatform.v1.ContainerRegistryDestination
+	0,  // 19: google.cloud.aiplatform.v1.ModelService.UploadModel:input_type -> google.cloud.aiplatform.v1.UploadModelRequest
+	3,  // 20: google.cloud.aiplatform.v1.ModelService.GetModel:input_type -> google.cloud.aiplatform.v1.GetModelRequest
+	4,  // 21: google.cloud.aiplatform.v1.ModelService.ListModels:input_type -> google.cloud.aiplatform.v1.ListModelsRequest
+	6,  // 22: google.cloud.aiplatform.v1.ModelService.ListModelVersions:input_type -> google.cloud.aiplatform.v1.ListModelVersionsRequest
+	8,  // 23: google.cloud.aiplatform.v1.ModelService.UpdateModel:input_type -> google.cloud.aiplatform.v1.UpdateModelRequest
+	9,  // 24: google.cloud.aiplatform.v1.ModelService.DeleteModel:input_type -> google.cloud.aiplatform.v1.DeleteModelRequest
+	10, // 25: google.cloud.aiplatform.v1.ModelService.DeleteModelVersion:input_type -> google.cloud.aiplatform.v1.DeleteModelVersionRequest
+	11, // 26: google.cloud.aiplatform.v1.ModelService.MergeVersionAliases:input_type -> google.cloud.aiplatform.v1.MergeVersionAliasesRequest
+	12, // 27: google.cloud.aiplatform.v1.ModelService.ExportModel:input_type -> google.cloud.aiplatform.v1.ExportModelRequest
+	15, // 28: google.cloud.aiplatform.v1.ModelService.ImportModelEvaluation:input_type -> google.cloud.aiplatform.v1.ImportModelEvaluationRequest
+	16, // 29: google.cloud.aiplatform.v1.ModelService.BatchImportModelEvaluationSlices:input_type -> google.cloud.aiplatform.v1.BatchImportModelEvaluationSlicesRequest
+	18, // 30: google.cloud.aiplatform.v1.ModelService.GetModelEvaluation:input_type -> google.cloud.aiplatform.v1.GetModelEvaluationRequest
+	19, // 31: google.cloud.aiplatform.v1.ModelService.ListModelEvaluations:input_type -> google.cloud.aiplatform.v1.ListModelEvaluationsRequest
+	21, // 32: google.cloud.aiplatform.v1.ModelService.GetModelEvaluationSlice:input_type -> google.cloud.aiplatform.v1.GetModelEvaluationSliceRequest
+	22, // 33: google.cloud.aiplatform.v1.ModelService.ListModelEvaluationSlices:input_type -> google.cloud.aiplatform.v1.ListModelEvaluationSlicesRequest
+	33, // 34: google.cloud.aiplatform.v1.ModelService.UploadModel:output_type -> google.longrunning.Operation
+	26, // 35: google.cloud.aiplatform.v1.ModelService.GetModel:output_type -> google.cloud.aiplatform.v1.Model
+	5,  // 36: google.cloud.aiplatform.v1.ModelService.ListModels:output_type -> google.cloud.aiplatform.v1.ListModelsResponse
+	7,  // 37: google.cloud.aiplatform.v1.ModelService.ListModelVersions:output_type -> google.cloud.aiplatform.v1.ListModelVersionsResponse
+	26, // 38: google.cloud.aiplatform.v1.ModelService.UpdateModel:output_type -> google.cloud.aiplatform.v1.Model
+	33, // 39: google.cloud.aiplatform.v1.ModelService.DeleteModel:output_type -> google.longrunning.Operation
+	33, // 40: google.cloud.aiplatform.v1.ModelService.DeleteModelVersion:output_type -> google.longrunning.Operation
+	26, // 41: google.cloud.aiplatform.v1.ModelService.MergeVersionAliases:output_type -> google.cloud.aiplatform.v1.Model
+	33, // 42: google.cloud.aiplatform.v1.ModelService.ExportModel:output_type -> google.longrunning.Operation
+	29, // 43: google.cloud.aiplatform.v1.ModelService.ImportModelEvaluation:output_type -> google.cloud.aiplatform.v1.ModelEvaluation
+	17, // 44: google.cloud.aiplatform.v1.ModelService.BatchImportModelEvaluationSlices:output_type -> google.cloud.aiplatform.v1.BatchImportModelEvaluationSlicesResponse
+	29, // 45: google.cloud.aiplatform.v1.ModelService.GetModelEvaluation:output_type -> google.cloud.aiplatform.v1.ModelEvaluation
+	20, // 46: google.cloud.aiplatform.v1.ModelService.ListModelEvaluations:output_type -> google.cloud.aiplatform.v1.ListModelEvaluationsResponse
+	30, // 47: google.cloud.aiplatform.v1.ModelService.GetModelEvaluationSlice:output_type -> google.cloud.aiplatform.v1.ModelEvaluationSlice
+	23, // 48: google.cloud.aiplatform.v1.ModelService.ListModelEvaluationSlices:output_type -> google.cloud.aiplatform.v1.ListModelEvaluationSlicesResponse
+	34, // [34:49] is the sub-list for method output_type
+	19, // [19:34] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_aiplatform_v1_model_service_proto_init() }
@@ -2421,7 +2575,7 @@ func file_google_cloud_aiplatform_v1_model_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetModelEvaluationRequest); i {
+			switch v := v.(*BatchImportModelEvaluationSlicesRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2433,7 +2587,7 @@ func file_google_cloud_aiplatform_v1_model_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListModelEvaluationsRequest); i {
+			switch v := v.(*BatchImportModelEvaluationSlicesResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2445,7 +2599,7 @@ func file_google_cloud_aiplatform_v1_model_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListModelEvaluationsResponse); i {
+			switch v := v.(*GetModelEvaluationRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2457,7 +2611,7 @@ func file_google_cloud_aiplatform_v1_model_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetModelEvaluationSliceRequest); i {
+			switch v := v.(*ListModelEvaluationsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2469,7 +2623,7 @@ func file_google_cloud_aiplatform_v1_model_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListModelEvaluationSlicesRequest); i {
+			switch v := v.(*ListModelEvaluationsResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2481,7 +2635,7 @@ func file_google_cloud_aiplatform_v1_model_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListModelEvaluationSlicesResponse); i {
+			switch v := v.(*GetModelEvaluationSliceRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2493,7 +2647,7 @@ func file_google_cloud_aiplatform_v1_model_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExportModelRequest_OutputConfig); i {
+			switch v := v.(*ListModelEvaluationSlicesRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2505,6 +2659,30 @@ func file_google_cloud_aiplatform_v1_model_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ListModelEvaluationSlicesResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ExportModelRequest_OutputConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1_model_service_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ExportModelOperationMetadata_OutputInfo); i {
 			case 0:
 				return &v.state
@@ -2523,7 +2701,7 @@ func file_google_cloud_aiplatform_v1_model_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_aiplatform_v1_model_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   24,
+			NumMessages:   26,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -2579,6 +2757,8 @@ type ModelServiceClient interface {
 	ExportModel(ctx context.Context, in *ExportModelRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Imports an externally generated ModelEvaluation.
 	ImportModelEvaluation(ctx context.Context, in *ImportModelEvaluationRequest, opts ...grpc.CallOption) (*ModelEvaluation, error)
+	// Imports a list of externally generated ModelEvaluationSlice.
+	BatchImportModelEvaluationSlices(ctx context.Context, in *BatchImportModelEvaluationSlicesRequest, opts ...grpc.CallOption) (*BatchImportModelEvaluationSlicesResponse, error)
 	// Gets a ModelEvaluation.
 	GetModelEvaluation(ctx context.Context, in *GetModelEvaluationRequest, opts ...grpc.CallOption) (*ModelEvaluation, error)
 	// Lists ModelEvaluations in a Model.
@@ -2687,6 +2867,15 @@ func (c *modelServiceClient) ImportModelEvaluation(ctx context.Context, in *Impo
 	return out, nil
 }
 
+func (c *modelServiceClient) BatchImportModelEvaluationSlices(ctx context.Context, in *BatchImportModelEvaluationSlicesRequest, opts ...grpc.CallOption) (*BatchImportModelEvaluationSlicesResponse, error) {
+	out := new(BatchImportModelEvaluationSlicesResponse)
+	err := c.cc.Invoke(ctx, "/google.cloud.aiplatform.v1.ModelService/BatchImportModelEvaluationSlices", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *modelServiceClient) GetModelEvaluation(ctx context.Context, in *GetModelEvaluationRequest, opts ...grpc.CallOption) (*ModelEvaluation, error) {
 	out := new(ModelEvaluation)
 	err := c.cc.Invoke(ctx, "/google.cloud.aiplatform.v1.ModelService/GetModelEvaluation", in, out, opts...)
@@ -2755,6 +2944,8 @@ type ModelServiceServer interface {
 	ExportModel(context.Context, *ExportModelRequest) (*longrunning.Operation, error)
 	// Imports an externally generated ModelEvaluation.
 	ImportModelEvaluation(context.Context, *ImportModelEvaluationRequest) (*ModelEvaluation, error)
+	// Imports a list of externally generated ModelEvaluationSlice.
+	BatchImportModelEvaluationSlices(context.Context, *BatchImportModelEvaluationSlicesRequest) (*BatchImportModelEvaluationSlicesResponse, error)
 	// Gets a ModelEvaluation.
 	GetModelEvaluation(context.Context, *GetModelEvaluationRequest) (*ModelEvaluation, error)
 	// Lists ModelEvaluations in a Model.
@@ -2798,6 +2989,9 @@ func (*UnimplementedModelServiceServer) ExportModel(context.Context, *ExportMode
 }
 func (*UnimplementedModelServiceServer) ImportModelEvaluation(context.Context, *ImportModelEvaluationRequest) (*ModelEvaluation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ImportModelEvaluation not implemented")
+}
+func (*UnimplementedModelServiceServer) BatchImportModelEvaluationSlices(context.Context, *BatchImportModelEvaluationSlicesRequest) (*BatchImportModelEvaluationSlicesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchImportModelEvaluationSlices not implemented")
 }
 func (*UnimplementedModelServiceServer) GetModelEvaluation(context.Context, *GetModelEvaluationRequest) (*ModelEvaluation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetModelEvaluation not implemented")
@@ -2996,6 +3190,24 @@ func _ModelService_ImportModelEvaluation_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ModelService_BatchImportModelEvaluationSlices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BatchImportModelEvaluationSlicesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ModelServiceServer).BatchImportModelEvaluationSlices(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.aiplatform.v1.ModelService/BatchImportModelEvaluationSlices",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ModelServiceServer).BatchImportModelEvaluationSlices(ctx, req.(*BatchImportModelEvaluationSlicesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ModelService_GetModelEvaluation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetModelEvaluationRequest)
 	if err := dec(in); err != nil {
@@ -3111,6 +3323,10 @@ var _ModelService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ImportModelEvaluation",
 			Handler:    _ModelService_ImportModelEvaluation_Handler,
+		},
+		{
+			MethodName: "BatchImportModelEvaluationSlices",
+			Handler:    _ModelService_BatchImportModelEvaluationSlices_Handler,
 		},
 		{
 			MethodName: "GetModelEvaluation",
