@@ -30,3 +30,8 @@ jobs:
         name: pkg.main
     - name: Compare regenerated code to baseline
       run: apidiff -incompatible pkg.main ./... > diff.txt && cat diff.txt && ! [ -s diff.txt ]
+    - name: Upload package diff
+      uses: actions/upload-artifact@v3
+      with:
+        name: diff.txt
+        path: diff.txt
