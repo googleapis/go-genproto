@@ -18,6 +18,15 @@ jobs:
       run: go install golang.org/x/exp/cmd/apidiff@latest
     - name: Create Go package baseline
       run: apidiff -w pkg.main ./...
+    - name: Upload baseline package data
+      uses: actions/upload-artifact@v3
+      with:
+        name: pkg.main
+        path: pkg.main
     - uses: actions/checkout@v3
+    - name: Download baseline package data
+      uses: actions/download-artifact@v3
+      with:
+        name: pkg.main
     - name: Compare regenerated code to baseline
       run: apidiff -incompatible pkg.main ./... > diff.txt && cat diff.txt && ! [ -s diff.txt ]
