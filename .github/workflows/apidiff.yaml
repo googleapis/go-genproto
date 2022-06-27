@@ -17,7 +17,7 @@ jobs:
     - name: Install latest apidiff
       run: go install golang.org/x/exp/cmd/apidiff@latest
     - name: Create Go package baseline
-      run: apidiff -w pkg.main google.golang.org/genproto
+      run: apidiff -w pkg.main ./...
     - uses: actions/checkout@v3
     - name: Compare regenerated code to baseline
-      run: apidiff -incompatible pkg.main google.golang.org/genproto > diff.txt && cat diff.txt && ! [ -s diff.txt ]
+      run: apidiff -incompatible pkg.main ./... > diff.txt && cat diff.txt && ! [ -s diff.txt ]
