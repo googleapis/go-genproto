@@ -1,0 +1,18 @@
+---
+name: apidiff
+on:
+  pull_request:
+
+jobs:
+  apidiff:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.pull_request.labels.*.name, 'breaking change allowed')"
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: main
+    - name: Create Go package baseline
+      run: apidiff -w pkg.main google.golang.org/genproto
+    - uses: actions/checkout@v3
+    - name: Compare regenerated code to baseline
+      run: apidiff -incompatible pkg.main google.golang.org/genproto > diff.txt && cat diff.txt && ! [ -s diff.txt ]
