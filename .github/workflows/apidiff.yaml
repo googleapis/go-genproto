@@ -11,9 +11,6 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: main
-    - uses: actions/setup-go@v3
-    - name: Install latest apidiff
-      run: go install golang.org/x/exp/cmd/apidiff@latest
     - name: Create Go package baseline
       run: apidiff -w pkg.main google.golang.org/genproto
     - uses: actions/checkout@v3
