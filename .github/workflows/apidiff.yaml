@@ -31,3 +31,14 @@ jobs:
         name: pkg.main
     - name: Compare regenerated code to baseline
       run: apidiff -incompatible pkg.main ./... > diff.txt && cat diff.txt && ! [ -s diff.txt ]
+    - name: Add breaking change label
+      if: ${{ failure() }}
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.addLabels({
+            issue_number: ${{ github.event.number }},
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels: ['contains breaking change']
+          })
