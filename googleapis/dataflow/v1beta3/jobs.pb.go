@@ -453,7 +453,7 @@ type Job struct {
 	// existing Job.
 	//
 	// The name must match the regular expression
-	// `[a-z]([-a-z0-9]{0,38}[a-z0-9])?`
+	// `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// The type of Cloud Dataflow job.
 	Type JobType `protobuf:"varint,4,opt,name=type,proto3,enum=google.dataflow.v1beta3.JobType" json:"type,omitempty"`

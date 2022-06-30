@@ -657,6 +657,9 @@ func (x *DeleteWebhookRequest) GetForce() bool {
 
 // The request message for a webhook call. The request is sent as a JSON object
 // and the field names will be presented in camel cases.
+//
+// You may see undocumented fields in an actual request. These fields are used
+// internally by Dialogflow and should be ignored.
 type WebhookRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
