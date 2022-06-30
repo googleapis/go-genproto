@@ -1171,8 +1171,9 @@ type ListFinancialTransactionsRequest struct {
 	//
 	//   * `transactionType` - The transaction type of the financial
 	//   transaction. Must be one of [TransactionType][google.cloud.paymentgateway.issuerswitch.v1.TransactionType] values. For financial
-	//   transactions, only valid transaction types are `DEBIT`, `CREDIT` and
-	//   `REVERSAL`. Allowed comparison operators: `=`.
+	//   transactions, only valid transaction types are `TRANSACTION_TYPE_CREDIT`,
+	//   `TRANSACTION_TYPE_DEBIT` and `TRANSACTION_TYPE_REVERSAL`. Allowed
+	//   comparison operators: `=`.
 	//   * `transactionID` - The UPI transaction ID of the financial
 	//   transaction. Allowed comparison operators: `=`.
 	//   * `RRN` - The retrieval reference number of the transaction. Allowed
@@ -1812,9 +1813,15 @@ type ExportFinancialTransactionsRequest struct {
 	// Required. The parent resource for the transactions. The format is
 	// `projects/{project}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Transaction type for the financial transaction API.
-	// If no transactionType is specified, records of all transaction types will
-	// be returned.
+	// Transaction type for the financial transaction API. The possible values for
+	// transaction type are
+	//
+	// * TRANSACTION_TYPE_CREDIT
+	// * TRANSACTION_TYPE_DEBIT
+	// * TRANSACTION_TYPE_REVERSAL
+	//
+	// If no transaction type is specified, records of all the above transaction
+	// types will be exported.
 	TransactionType TransactionType `protobuf:"varint,2,opt,name=transaction_type,json=transactionType,proto3,enum=google.cloud.paymentgateway.issuerswitch.v1.TransactionType" json:"transaction_type,omitempty"`
 	// The start time for the query.
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
@@ -1891,7 +1898,19 @@ type ExportMetadataTransactionsRequest struct {
 	// Required. The parent resource for the transactions. The format is
 	// `projects/{project}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// API type - any valid API type for UPI related API's except SETTLE_PAYMENT.
+	// API type of the metadata transaction API. The possible values for API type
+	// are
+	//
+	// * BALANCE
+	// * CHECK_STATUS
+	// * HEART_BEAT
+	// * INITIATE_REGISTRATION
+	// * LIST_ACCOUNTS
+	// * UPDATE_CREDENTIALS
+	// * VALIDATE_REGISTRATION
+	//
+	// If no API type is specified, records of all the above API types will be
+	// exported.
 	ApiType ApiType `protobuf:"varint,2,opt,name=api_type,json=apiType,proto3,enum=google.cloud.paymentgateway.issuerswitch.v1.ApiType" json:"api_type,omitempty"`
 	// The start time for the query.
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
@@ -1968,10 +1987,15 @@ type ExportMandateTransactionsRequest struct {
 	// Required. The parent resource for the transactions. The format is
 	// `projects/{project}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Transaction type for the mandate transaction API.
-	// If no transactionType is specified, records of all 3 transaction types i.e.
-	// `TRANSACTION_TYPE_CREATE`, `TRANSACTION_TYPE_REVOKE` and
-	// `TRANSACTION_TYPE_UPDATE` for mandate API will be exported.
+	// Transaction type for the mandate transaction API.  The possible values for
+	// transaction type are
+	//
+	// * TRANSACTION_TYPE_CREATE
+	// * TRANSACTION_TYPE_REVOKE
+	// * TRANSACTION_TYPE_UPDATE
+	//
+	// If no transaction type is specified, records of all the above transaction
+	// types will be exported.
 	TransactionType TransactionType `protobuf:"varint,2,opt,name=transaction_type,json=transactionType,proto3,enum=google.cloud.paymentgateway.issuerswitch.v1.TransactionType" json:"transaction_type,omitempty"`
 	// The start time for the query.
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
@@ -2048,9 +2072,18 @@ type ExportComplaintTransactionsRequest struct {
 	// Required. The parent resource for the transactions. The format is
 	// `projects/{project}`.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Transaction type for the complaint transaction API.
-	// If no transactionType is specified, records of all complaint / dispute
-	// related transaction types will be exported.
+	// Transaction type for the complaint transaction API. The possible values for
+	// transaction type are
+	//
+	// * TRANSACTION_TYPE_CHECK_STATUS
+	// * TRANSACTION_TYPE_COMPLAINT
+	// * TRANSACTION_TYPE_DISPUTE
+	// * TRANSACTION_TYPE_REFUND
+	// * TRANSACTION_TYPE_REVERSAL
+	// * TRANSACTION_TYPE_STATUS_UPDATE
+	//
+	// If no transaction type is specified, records of all the above transaction
+	// types will be exported.
 	TransactionType TransactionType `protobuf:"varint,2,opt,name=transaction_type,json=transactionType,proto3,enum=google.cloud.paymentgateway.issuerswitch.v1.TransactionType" json:"transaction_type,omitempty"`
 	// The start time for the query.
 	StartTime *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
@@ -3079,7 +3112,7 @@ var file_google_cloud_paymentgateway_issuerswitch_v1_transactions_proto_rawDesc 
 	0x63, 0x6f, 0x6d, 0xd2, 0x41, 0x2e, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77,
 	0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d,
 	0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74,
-	0x66, 0x6f, 0x72, 0x6d, 0x42, 0x9f, 0x01, 0x0a, 0x2f, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f,
+	0x66, 0x6f, 0x72, 0x6d, 0x42, 0xad, 0x02, 0x0a, 0x2f, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f,
 	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x70, 0x61, 0x79, 0x6d, 0x65, 0x6e,
 	0x74, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x2e, 0x69, 0x73, 0x73, 0x75, 0x65, 0x72, 0x73,
 	0x77, 0x69, 0x74, 0x63, 0x68, 0x2e, 0x76, 0x31, 0x42, 0x11, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61,
@@ -3089,7 +3122,16 @@ var file_google_cloud_paymentgateway_issuerswitch_v1_transactions_proto_rawDesc 
 	0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x70, 0x61, 0x79, 0x6d, 0x65,
 	0x6e, 0x74, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x2f, 0x69, 0x73, 0x73, 0x75, 0x65, 0x72,
 	0x73, 0x77, 0x69, 0x74, 0x63, 0x68, 0x2f, 0x76, 0x31, 0x3b, 0x69, 0x73, 0x73, 0x75, 0x65, 0x72,
-	0x73, 0x77, 0x69, 0x74, 0x63, 0x68, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x77, 0x69, 0x74, 0x63, 0x68, 0xaa, 0x02, 0x2b, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x47, 0x61, 0x74,
+	0x65, 0x77, 0x61, 0x79, 0x2e, 0x49, 0x73, 0x73, 0x75, 0x65, 0x72, 0x53, 0x77, 0x69, 0x74, 0x63,
+	0x68, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x2b, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c,
+	0x6f, 0x75, 0x64, 0x5c, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77,
+	0x61, 0x79, 0x5c, 0x49, 0x73, 0x73, 0x75, 0x65, 0x72, 0x53, 0x77, 0x69, 0x74, 0x63, 0x68, 0x5c,
+	0x56, 0x31, 0xea, 0x02, 0x2f, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f,
+	0x75, 0x64, 0x3a, 0x3a, 0x50, 0x61, 0x79, 0x6d, 0x65, 0x6e, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77,
+	0x61, 0x79, 0x3a, 0x3a, 0x49, 0x73, 0x73, 0x75, 0x65, 0x72, 0x53, 0x77, 0x69, 0x74, 0x63, 0x68,
+	0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
