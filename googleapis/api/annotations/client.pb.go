@@ -117,7 +117,7 @@ var (
 	//   }
 	//
 	// optional string default_host = 1049;
-	E_DefaultHost = &file_google_api_client_proto_extTypes[1]
+	E_DefaultHostTest = &file_google_api_client_proto_extTypes[1]
 	// OAuth scopes needed for the client.
 	//
 	// Example:
