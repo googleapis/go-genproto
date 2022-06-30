@@ -32,7 +32,7 @@ jobs:
     - name: Compare regenerated code to baseline
       run: apidiff -incompatible pkg.main ./... > diff.txt && cat diff.txt && ! [ -s diff.txt ]
     - name: Add breaking change label
-      if: ${{ failure() }}
+      if: ${{ failure() && !github.event.pull_request.head.repo.fork }}
       uses: actions/github-script@v6
       with:
         script: |
