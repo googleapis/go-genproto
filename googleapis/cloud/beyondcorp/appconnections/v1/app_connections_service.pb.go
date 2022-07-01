@@ -1126,7 +1126,7 @@ type ResolveAppConnectionsResponse_AppConnectionDetails struct {
 	// A BeyondCorp AppConnection in the project.
 	AppConnection *AppConnection `protobuf:"bytes,1,opt,name=app_connection,json=appConnection,proto3" json:"app_connection,omitempty"`
 	// If type=GCP_REGIONAL_MIG, contains most recent VM instances, like
-	// "https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone_id}/instances/{instance_id}".
+	// `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone_id}/instances/{instance_id}`.
 	RecentMigVms []string `protobuf:"bytes,2,rep,name=recent_mig_vms,json=recentMigVms,proto3" json:"recent_mig_vms,omitempty"`
 }
 
@@ -1249,7 +1249,7 @@ type AppConnection_Gateway struct {
 	// AppConnection, if not specified or zero, the default port is 19443.
 	IngressPort int32 `protobuf:"varint,4,opt,name=ingress_port,json=ingressPort,proto3" json:"ingress_port,omitempty"`
 	// Required. AppGateway name in following format:
-	// projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}
+	// `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
 	AppGateway string `protobuf:"bytes,5,opt,name=app_gateway,json=appGateway,proto3" json:"app_gateway,omitempty"`
 }
 
