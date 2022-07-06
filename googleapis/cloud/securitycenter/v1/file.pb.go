@@ -47,7 +47,7 @@ type File struct {
 	// Size of the file in bytes.
 	Size int64 `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`
 	// SHA256 hash of the first hashed_size bytes of the file encoded as a
-	// hex string.  If hashed_size == size, hash_sha256 represents the SHA256 hash
+	// hex string.  If hashed_size == size, sha256 represents the SHA256 hash
 	// of the entire file.
 	Sha256 string `protobuf:"bytes,3,opt,name=sha256,proto3" json:"sha256,omitempty"`
 	// The length in bytes of the file prefix that was hashed.  If
