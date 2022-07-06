@@ -269,7 +269,8 @@ type DeliveryVehicleLocation struct {
 	Speed *wrapperspb.DoubleValue `protobuf:"bytes,6,opt,name=speed,proto3" json:"speed,omitempty"`
 	// Accuracy of `speed` in meters/second.
 	SpeedAccuracy *wrapperspb.DoubleValue `protobuf:"bytes,7,opt,name=speed_accuracy,json=speedAccuracy,proto3" json:"speed_accuracy,omitempty"`
-	// The time when `location` was reported by the sensor.
+	// The time when `location` was reported by the sensor according to the
+	// sensor's clock.
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// Output only. The time when the server received the location information.
 	ServerTime *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=server_time,json=serverTime,proto3" json:"server_time,omitempty"`
@@ -294,8 +295,7 @@ type DeliveryVehicleLocation struct {
 	RawLocationSensor DeliveryVehicleLocationSensor `protobuf:"varint,28,opt,name=raw_location_sensor,json=rawLocationSensor,proto3,enum=maps.fleetengine.delivery.v1.DeliveryVehicleLocationSensor" json:"raw_location_sensor,omitempty"`
 	// Input only. Accuracy of `raw_location` as a radius, in meters.
 	RawLocationAccuracy *wrapperspb.DoubleValue `protobuf:"bytes,25,opt,name=raw_location_accuracy,json=rawLocationAccuracy,proto3" json:"raw_location_accuracy,omitempty"`
-	// Input only. Supplemental location provided by the integrating app, such as the location
-	// provided by Fused Location Provider.
+	// Input only. Supplemental location provided by the integrating app.
 	SupplementalLocation *latlng.LatLng `protobuf:"bytes,18,opt,name=supplemental_location,json=supplementalLocation,proto3" json:"supplemental_location,omitempty"`
 	// Input only. Timestamp associated with the supplemental location.
 	SupplementalLocationTime *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=supplemental_location_time,json=supplementalLocationTime,proto3" json:"supplemental_location_time,omitempty"`

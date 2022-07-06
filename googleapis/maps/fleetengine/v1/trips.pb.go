@@ -282,12 +282,11 @@ type Trip struct {
 	// when update `intermediate_destination_index` to ensure the
 	// Trip.intermediate_destinations is not changed.
 	IntermediateDestinationsVersion *timestamppb.Timestamp `protobuf:"bytes,25,opt,name=intermediate_destinations_version,json=intermediateDestinationsVersion,proto3" json:"intermediate_destinations_version,omitempty"`
-	// When `TripStatus` is `ENROUTE_TO_INTERMEDIATE_DESTINATION`, a number between
-	// [0..N-1] indicating which intermediate destination the vehicle will cross
-	// next.
-	// When `TripStatus` is `ARRIVED_AT_INTERMEDIATE_DESTINATION`, a number
-	// between [0..N-1] indicating which intermediate destination the vehicle is
-	// at. The provider sets this value. If there are no
+	// When `TripStatus` is `ENROUTE_TO_INTERMEDIATE_DESTINATION`, a number
+	// between [0..N-1] indicating which intermediate destination the vehicle will
+	// cross next. When `TripStatus` is `ARRIVED_AT_INTERMEDIATE_DESTINATION`, a
+	// number between [0..N-1] indicating which intermediate destination the
+	// vehicle is at. The provider sets this value. If there are no
 	// `intermediate_destinations`, this field is ignored.
 	IntermediateDestinationIndex int32 `protobuf:"varint,15,opt,name=intermediate_destination_index,json=intermediateDestinationIndex,proto3" json:"intermediate_destination_index,omitempty"`
 	// Input only. The actual time and location of the driver's arrival at
