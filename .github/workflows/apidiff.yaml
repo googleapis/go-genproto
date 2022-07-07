@@ -21,11 +21,10 @@ jobs:
         if [ -z $dirs ]
         then
           echo "::set-output name=list::{\"changed\":[]}  
-          exit 0
+        else
+          for d in $dirs; do list=${list},\"${d}\"; done
+          echo "::set-output name=list::{\"changed\":[${list#,}]}
         fi
-
-        for d in $dirs; do list=${list},\"${d}\"; done
-        echo "::set-output name=list::{\"changed\":[${list#,}]}
     outputs:
       changed_dirs: ${{ steps.changed_dirs.outputs.list }}
   apidiff:
