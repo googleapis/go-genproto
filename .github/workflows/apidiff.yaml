@@ -17,7 +17,7 @@ jobs:
     - name: Get changed directories
       id: changed_dirs
       run: |
-        dirs=$(git diff-tree --no-commit-id --name-only --diff-filter=ACMR -r ${{ steps.main.outputs.hash }}..HEAD | grep googleapis/ | xargs -L1 dirname | uniq)
+        dirs=$(git diff-tree --no-commit-id --name-only --diff-filter=ACMR -r ${{ steps.main.outputs.hash }}..HEAD | grep googleapis/ | xargs -r -L1 dirname | uniq)
         for d in $dirs; do list=${list},\"${d}\"; done
         echo "::set-output name=list::{\"changed\":[${list#,}]}
     outputs:
