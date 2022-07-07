@@ -31,6 +31,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     if: "!contains(github.event.pull_request.labels.*.name, 'breaking change allowed')"
+    continue-on-error: true
     strategy:
       matrix: ${{ fromJson(needs.setup.outputs.changed_dirs) }}
     steps:
