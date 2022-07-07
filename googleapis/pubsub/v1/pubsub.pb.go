@@ -44,18 +44,18 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Possible states for a subscription. Foo.
-type Subscription_State int32
+// Possible states for a subscription.
+type Subscription_State_Foo int32
 
 const (
 	// Default value. This value is unused.
-	Subscription_STATE_UNSPECIFIED Subscription_State = 0
+	Subscription_STATE_UNSPECIFIED Subscription_State_Foo = 0
 	// The subscription can actively receive messages
-	Subscription_ACTIVE Subscription_State = 1
+	Subscription_ACTIVE Subscription_State_Foo = 1
 	// The subscription cannot receive messages because of an error with the
 	// resource to which it pushes messages. See the more detailed error state
 	// in the corresponding configuration.
-	Subscription_RESOURCE_ERROR Subscription_State = 2
+	Subscription_RESOURCE_ERROR Subscription_State_Foo = 2
 )
 
 // Enum value maps for Subscription_State.
@@ -72,30 +72,30 @@ var (
 	}
 )
 
-func (x Subscription_State) Enum() *Subscription_State {
-	p := new(Subscription_State)
+func (x Subscription_State_Foo) Enum() *Subscription_State_Foo {
+	p := new(Subscription_State_Foo)
 	*p = x
 	return p
 }
 
-func (x Subscription_State) String() string {
+func (x Subscription_State_Foo) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (Subscription_State) Descriptor() protoreflect.EnumDescriptor {
+func (Subscription_State_Foo) Descriptor() protoreflect.EnumDescriptor {
 	return file_google_pubsub_v1_pubsub_proto_enumTypes[0].Descriptor()
 }
 
-func (Subscription_State) Type() protoreflect.EnumType {
+func (Subscription_State_Foo) Type() protoreflect.EnumType {
 	return &file_google_pubsub_v1_pubsub_proto_enumTypes[0]
 }
 
-func (x Subscription_State) Number() protoreflect.EnumNumber {
+func (x Subscription_State_Foo) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
 // Deprecated: Use Subscription_State.Descriptor instead.
-func (Subscription_State) EnumDescriptor() ([]byte, []int) {
+func (Subscription_State_Foo) EnumDescriptor() ([]byte, []int) {
 	return file_google_pubsub_v1_pubsub_proto_rawDescGZIP(), []int{17, 0}
 }
 
@@ -1379,7 +1379,7 @@ type Subscription struct {
 	TopicMessageRetentionDuration *durationpb.Duration `protobuf:"bytes,17,opt,name=topic_message_retention_duration,json=topicMessageRetentionDuration,proto3" json:"topic_message_retention_duration,omitempty"`
 	// Output only. An output-only field indicating whether or not the subscription can receive
 	// messages.
-	State Subscription_State `protobuf:"varint,19,opt,name=state,proto3,enum=google.pubsub.v1.Subscription_State" json:"state,omitempty"`
+	State Subscription_State_Foo `protobuf:"varint,19,opt,name=state,proto3,enum=google.pubsub.v1.Subscription_State" json:"state,omitempty"`
 }
 
 func (x *Subscription) Reset() {
@@ -1526,7 +1526,7 @@ func (x *Subscription) GetTopicMessageRetentionDuration() *durationpb.Duration {
 	return nil
 }
 
-func (x *Subscription) GetState() Subscription_State {
+func (x *Subscription) GetState() Subscription_State_Foo {
 	if x != nil {
 		return x.State
 	}
@@ -4649,7 +4649,7 @@ func file_google_pubsub_v1_pubsub_proto_rawDescGZIP() []byte {
 var file_google_pubsub_v1_pubsub_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_google_pubsub_v1_pubsub_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
 var file_google_pubsub_v1_pubsub_proto_goTypes = []interface{}{
-	(Subscription_State)(0),                               // 0: google.pubsub.v1.Subscription.State
+	(Subscription_State_Foo)(0),                               // 0: google.pubsub.v1.Subscription.State
 	(BigQueryConfig_State)(0),                             // 1: google.pubsub.v1.BigQueryConfig.State
 	(*MessageStoragePolicy)(nil),                          // 2: google.pubsub.v1.MessageStoragePolicy
 	(*SchemaSettings)(nil),                                // 3: google.pubsub.v1.SchemaSettings
