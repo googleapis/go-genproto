@@ -4,33 +4,54 @@ on:
   pull_request:
 
 jobs:
-  apidiff:
+  setup:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.pull_request.labels.*.name, 'breaking change allowed')"
     steps:
     - uses: actions/checkout@v3
       with:
         ref: main
+    - name: Get main commit
+      id: main
+      run: echo "::set-output name=hash::$(git rev-parse HEAD)"
+    - uses: actions/checkout@v3
+    - name: Get changed directories
+      id: changed_dirs
+      run: |
+        dirs=git diff-tree --no-commit-id --name-only --diff-filter=ACMR -r ${{ steps.main.outputs.hash }}..HEAD | grep googleapis/ | xargs -L1 dirname | uniq
+        for d in $dirs; do list=${list},\"${d}\"; done
+        echo "::set-output name=list::{\"changed\":[${list#,}]}
+    outputs:
+      - changed_dirs: ${{ steps.changed_dirs.outputs.list }}
+  apidiff:
+    needs: setup
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.pull_request.labels.*.name, 'breaking change allowed')"
+    strategy:
+      matrix: ${{ fromJson(needs.setup.outputs.changed_dirs) }}
+    steps:
     - uses: actions/setup-go@v3
       with:
         go-version: '1.18.3'
     - name: Install latest apidiff
       run: go install golang.org/x/exp/cmd/apidiff@latest
+    - uses: actions/checkout@v3
+      with:
+        ref: main
     - name: Create Go package baseline
-      run: apidiff -w pkg.main ./...
+      run: apidiff -w pkg.main google.golang.org/genproto/${matrix.changed}
     - name: Upload baseline package data
       uses: actions/upload-artifact@v3
       with:
-        name: pkg.main
+        name: ${matrix.changed}/pkg.main
         path: pkg.main
         retention-days: 1
     - uses: actions/checkout@v3
     - name: Download baseline package data
       uses: actions/download-artifact@v3
       with:
-        name: pkg.main
+        name: ${matrix.changed}/pkg.main
     - name: Compare regenerated code to baseline
-      run: apidiff -incompatible pkg.main ./... > diff.txt && cat diff.txt && ! [ -s diff.txt ]
+      run: apidiff -incompatible pkg.main google.golang.org/genproto/${matrix.changed} > diff.txt && cat diff.txt && ! [ -s diff.txt ]
     - name: Add breaking change label
       if: ${{ failure() && !github.event.pull_request.head.repo.fork }}
       uses: actions/github-script@v6
