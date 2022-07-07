@@ -43,20 +43,20 @@ jobs:
       with:
         ref: main
     - name: Create Go package baseline
-      run: apidiff -w pkg.main google.golang.org/genproto/${matrix.changed}
+      run: apidiff -w pkg.main google.golang.org/genproto/${{ matrix.changed }}
     - name: Upload baseline package data
       uses: actions/upload-artifact@v3
       with:
-        name: ${matrix.changed}/pkg.main
+        name: ${{ matrix.changed }}/pkg.main
         path: pkg.main
         retention-days: 1
     - uses: actions/checkout@v3
     - name: Download baseline package data
       uses: actions/download-artifact@v3
       with:
-        name: ${matrix.changed}/pkg.main
+        name: ${{ matrix.changed }}/pkg.main
     - name: Compare regenerated code to baseline
-      run: apidiff -incompatible pkg.main google.golang.org/genproto/${matrix.changed} > diff.txt && cat diff.txt && ! [ -s diff.txt ]
+      run: apidiff -incompatible pkg.main google.golang.org/genproto/${{ matrix.changed }} > diff.txt && cat diff.txt && ! [ -s diff.txt ]
     - name: Add breaking change label
       if: ${{ failure() && !github.event.pull_request.head.repo.fork }}
       uses: actions/github-script@v6
