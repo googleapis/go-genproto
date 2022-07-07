@@ -24,6 +24,7 @@ jobs:
         else
           for d in $dirs; do list=${list},\"${d}\"; done
           echo "::set-output name=list::{\"changed\":[${list#,}]}
+          echo "$list"
         fi
     outputs:
       changed_dirs: ${{ steps.changed_dirs.outputs.list }}
