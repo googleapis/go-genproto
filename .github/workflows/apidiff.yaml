@@ -18,16 +18,15 @@ jobs:
       id: changed_dirs
       run: |
         dirs=$(git diff-tree --no-commit-id --name-only --diff-filter=ACMR -r ${{ steps.main.outputs.hash }}..HEAD | grep googleapis/ | xargs -r -L1 dirname | uniq)
-        if [ -z $dirs ]
+        if [ -z "$dirs" ]
         then
           echo "::set-output name=list::{\"changed\":[]}  
         else
           for d in $dirs; do list=${list},\"${d}\"; done
-          echo "::set-output name=list::{\"changed\":[${list#,}]}
-          echo "$list"
+          echo "::set-output name=changed::{\"changed\":[${list#,}]}
         fi
     outputs:
-      changed_dirs: ${{ steps.changed_dirs.outputs.list }}
+      changed_dirs: ${{ steps.changed_dirs.outputs.changed }}
   apidiff:
     needs: setup
     runs-on: ubuntu-latest
