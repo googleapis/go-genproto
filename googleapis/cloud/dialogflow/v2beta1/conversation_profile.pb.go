@@ -1667,7 +1667,8 @@ func (*HumanAgentAssistantConfig_SuggestionQueryConfig_DialogflowQuerySource_) i
 
 // Custom conversation models used in agent assist feature.
 //
-// Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
+// Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY,
+// CONVERSATION_SUMMARIZATION.
 type HumanAgentAssistantConfig_ConversationModelConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

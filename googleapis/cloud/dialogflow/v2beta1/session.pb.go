@@ -755,7 +755,8 @@ type QueryResult struct {
 	//    matched intent doesn't contain any required parameters.
 	AllRequiredParamsPresent bool `protobuf:"varint,5,opt,name=all_required_params_present,json=allRequiredParamsPresent,proto3" json:"all_required_params_present,omitempty"`
 	// Indicates whether the conversational query triggers a cancellation for slot
-	// filling.
+	// filling. For more information, see the [cancel slot filling
+	// documentation](https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).
 	CancelsSlotFilling bool `protobuf:"varint,21,opt,name=cancels_slot_filling,json=cancelsSlotFilling,proto3" json:"cancels_slot_filling,omitempty"`
 	// The text to be pronounced to the user or shown on the screen.
 	// Note: This is a legacy field, `fulfillment_messages` should be preferred.
