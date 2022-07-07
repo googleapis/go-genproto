@@ -20,10 +20,10 @@ jobs:
         dirs=$(git diff-tree --no-commit-id --name-only --diff-filter=ACMR -r ${{ steps.main.outputs.hash }}..HEAD | grep googleapis/ | xargs -r -L1 dirname | uniq)
         if [ -z "$dirs" ]
         then
-          echo "::set-output name=list::{\"changed\":[]}  
+          echo "::set-output name=changed::{\"changed\":[]}"
         else
           for d in $dirs; do list=${list},\"${d}\"; done
-          echo "::set-output name=changed::{\"changed\":[${list#,}]}
+          echo "::set-output name=changed::{\"changed\":[${list#,}]}"
         fi
     outputs:
       changed_dirs: ${{ steps.changed_dirs.outputs.changed }}
