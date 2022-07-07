@@ -47,7 +47,7 @@ jobs:
     - name: Upload baseline package data
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ matrix.changed }}/pkg.main
+        name: pkg.main
         path: pkg.main
         retention-days: 1
     - uses: actions/checkout@v3
