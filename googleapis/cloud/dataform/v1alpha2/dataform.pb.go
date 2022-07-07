@@ -4122,7 +4122,7 @@ type QueryWorkflowInvocationActionsRequest struct {
 	// When paginating, all other parameters provided to
 	// `QueryWorkflowInvocationActions` must match the call that provided the page
 	// token.
-	PageToken string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	PageTokenFoo string `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 }
 
 func (x *QueryWorkflowInvocationActionsRequest) Reset() {
@@ -4173,7 +4173,7 @@ func (x *QueryWorkflowInvocationActionsRequest) GetPageSize() int32 {
 
 func (x *QueryWorkflowInvocationActionsRequest) GetPageToken() string {
 	if x != nil {
-		return x.PageToken
+		return x.PageTokenFoo
 	}
 	return ""
 }
