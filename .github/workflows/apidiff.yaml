@@ -57,7 +57,11 @@ jobs:
       with:
         name: pkg.main
     - name: Compare regenerated code to baseline
-      run: apidiff -incompatible pkg.main google.golang.org/genproto/${{ matrix.changed }} > diff.txt && cat diff.txt && ! [ -s diff.txt ]
+      # Ignore findings precipitated by adding a method to an interface - it is a non-issue for this repo.
+      run: |
+        apidiff -incompatible pkg.main google.golang.org/genproto/${{ matrix.changed }} > diff.txt
+        sed -i '/: added/d' ./diff.txt
+        cat diff.txt && ! [ -s diff.txt ]
     - name: Add breaking change label
       if: ${{ failure() && !github.event.pull_request.head.repo.fork }}
       uses: actions/github-script@v6
