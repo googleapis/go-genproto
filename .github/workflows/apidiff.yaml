@@ -47,7 +47,7 @@ jobs:
       id: baseline
       run: |
         export CHANGED=${{ matrix.changed }}
-        echo ::set-output name=pkg::${CHANGED//\//_}
+        echo ::set-output name=pkg::"${CHANGED//\//_}_pkg.main"
     - name: Create Go package baseline
       run: apidiff -w ${{ steps.baseline.outputs.pkg }} google.golang.org/genproto/${{ matrix.changed }}
     - name: Upload baseline package data
