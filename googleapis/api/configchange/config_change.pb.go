@@ -37,20 +37,20 @@ const (
 
 // Classifies set of possible modifications to an object in the service
 // configuration.
-type ChangeTypeTest int32
+type ChangeType int32
 
 const (
 	// No value was provided.
-	ChangeType_CHANGE_TYPE_UNSPECIFIED ChangeTypeTest = 0
+	ChangeType_CHANGE_TYPE_UNSPECIFIED ChangeType = 0
 	// The changed object exists in the 'new' service configuration, but not
 	// in the 'old' service configuration.
-	ChangeType_ADDED ChangeTypeTest = 1
+	ChangeType_ADDED ChangeType = 1
 	// The changed object exists in the 'old' service configuration, but not
 	// in the 'new' service configuration.
-	ChangeType_REMOVED ChangeTypeTest = 2
+	ChangeType_REMOVED ChangeType = 2
 	// The changed object exists in both service configurations, but its value
 	// is different.
-	ChangeType_MODIFIED ChangeTypeTest = 3
+	ChangeType_MODIFIED ChangeType = 3
 )
 
 // Enum value maps for ChangeType.
@@ -69,30 +69,30 @@ var (
 	}
 )
 
-func (x ChangeTypeTest) Enum() *ChangeTypeTest {
-	p := new(ChangeTypeTest)
+func (x ChangeType) Enum() *ChangeType {
+	p := new(ChangeType)
 	*p = x
 	return p
 }
 
-func (x ChangeTypeTest) String() string {
+func (x ChangeType) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (ChangeTypeTest) Descriptor() protoreflect.EnumDescriptor {
+func (ChangeType) Descriptor() protoreflect.EnumDescriptor {
 	return file_google_api_config_change_proto_enumTypes[0].Descriptor()
 }
 
-func (ChangeTypeTest) Type() protoreflect.EnumType {
+func (ChangeType) Type() protoreflect.EnumType {
 	return &file_google_api_config_change_proto_enumTypes[0]
 }
 
-func (x ChangeTypeTest) Number() protoreflect.EnumNumber {
+func (x ChangeType) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
 // Deprecated: Use ChangeType.Descriptor instead.
-func (ChangeTypeTest) EnumDescriptor() ([]byte, []int) {
+func (ChangeType) EnumDescriptor() ([]byte, []int) {
 	return file_google_api_config_change_proto_rawDescGZIP(), []int{0}
 }
 
@@ -124,7 +124,7 @@ type ConfigChange struct {
 	// in JSON format. This field will not be populated if ChangeType == REMOVED.
 	NewValue string `protobuf:"bytes,3,opt,name=new_value,json=newValue,proto3" json:"new_value,omitempty"`
 	// The type for this change, either ADDED, REMOVED, or MODIFIED.
-	ChangeType ChangeTypeTest `protobuf:"varint,4,opt,name=change_type,json=changeType,proto3,enum=google.api.ChangeType" json:"change_type,omitempty"`
+	ChangeType ChangeType `protobuf:"varint,4,opt,name=change_type,json=changeType,proto3,enum=google.api.ChangeType" json:"change_type,omitempty"`
 	// Collection of advice provided for this change, useful for determining the
 	// possible impact of this change.
 	Advices []*Advice `protobuf:"bytes,5,rep,name=advices,proto3" json:"advices,omitempty"`
@@ -183,7 +183,7 @@ func (x *ConfigChange) GetNewValue() string {
 	return ""
 }
 
-func (x *ConfigChange) GetChangeType() ChangeTypeTest {
+func (x *ConfigChange) GetChangeType() ChangeType {
 	if x != nil {
 		return x.ChangeType
 	}
@@ -299,7 +299,7 @@ func file_google_api_config_change_proto_rawDescGZIP() []byte {
 var file_google_api_config_change_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_google_api_config_change_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_google_api_config_change_proto_goTypes = []interface{}{
-	(ChangeTypeTest)(0),      // 0: google.api.ChangeType
+	(ChangeType)(0),      // 0: google.api.ChangeType
 	(*ConfigChange)(nil), // 1: google.api.ConfigChange
 	(*Advice)(nil),       // 2: google.api.Advice
 }
