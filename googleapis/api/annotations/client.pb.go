@@ -16,7 +16,7 @@
 // versions:
 // 	protoc-gen-go v1.26.0
 // 	protoc        v3.12.2
-// source: google/api/client.proto
+// source: google/api/client.
 
 package annotations
 
