@@ -898,7 +898,7 @@ type Zone struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Output only. The relative resource name of the zone, of the form:
-	// `projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}`
+	// `projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional. User friendly display name.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
