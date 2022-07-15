@@ -43,23 +43,28 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: main
+    - name: Baseline name
+      id: baseline
+      run: |
+        export CHANGED=${{ matrix.changed }}
+        echo ::set-output name=pkg::"${CHANGED//\//_}_pkg.main"
     - name: Create Go package baseline
-      run: apidiff -w pkg.main google.golang.org/genproto/${{ matrix.changed }}
+      run: apidiff -w ${{ steps.baseline.outputs.pkg }} google.golang.org/genproto/${{ matrix.changed }}
     - name: Upload baseline package data
       uses: actions/upload-artifact@v3
       with:
-        name: pkg.main
-        path: pkg.main
+        name: ${{ steps.baseline.outputs.pkg }}
+        path: ${{ steps.baseline.outputs.pkg }}
         retention-days: 1
     - uses: actions/checkout@v3
     - name: Download baseline package data
       uses: actions/download-artifact@v3
       with:
-        name: pkg.main
+        name: ${{ steps.baseline.outputs.pkg }}
     - name: Compare regenerated code to baseline
       # Ignore findings precipitated by adding a method to an interface - it is a non-issue for this repo.
       run: |
-        apidiff -incompatible pkg.main google.golang.org/genproto/${{ matrix.changed }} > diff.txt
+        apidiff -incompatible ${{ steps.baseline.outputs.pkg }} google.golang.org/genproto/${{ matrix.changed }} > diff.txt
         sed -i '/: added/d' ./diff.txt
         cat diff.txt && ! [ -s diff.txt ]
     - name: Add breaking change label
