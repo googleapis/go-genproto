@@ -40,7 +40,7 @@ const (
 type RoutingPreference int32
 
 const (
-	// No routing preference specified. Default to `TRAFFIC_AWARE`.
+	// No routing preference specified. Default to `TRAFFIC_UNAWARE`.
 	RoutingPreference_ROUTING_PREFERENCE_UNSPECIFIED RoutingPreference = 0
 	// Computes routes without taking traffic conditions into consideration.
 	// Suitable when traffic conditions don't matter. Using this value produces
