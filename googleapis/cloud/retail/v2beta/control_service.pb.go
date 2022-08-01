@@ -49,7 +49,7 @@ type CreateControlRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Full resource name of parent catalog. Format:
-	// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The Control to create.
 	Control *Control `protobuf:"bytes,2,opt,name=control,proto3" json:"control,omitempty"`
@@ -185,7 +185,7 @@ type DeleteControlRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name of the Control to delete. Format:
-	// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -235,7 +235,7 @@ type GetControlRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The resource name of the Control to delete. Format:
-	// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}
+	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -285,7 +285,7 @@ type ListControlsRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The catalog resource name. Format:
-	// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. Maximum number of results to return. If unspecified, defaults
 	// to 50. Max allowed value is 1000.

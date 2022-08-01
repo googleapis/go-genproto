@@ -747,7 +747,7 @@ type StudySpec struct {
 	Algorithm StudySpec_Algorithm `protobuf:"varint,3,opt,name=algorithm,proto3,enum=google.cloud.aiplatform.v1.StudySpec_Algorithm" json:"algorithm,omitempty"`
 	// The observation noise level of the study.
 	// Currently only supported by the Vertex AI Vizier service. Not supported by
-	// HyperparamterTuningJob or TrainingPipeline.
+	// HyperparameterTuningJob or TrainingPipeline.
 	ObservationNoise StudySpec_ObservationNoise `protobuf:"varint,6,opt,name=observation_noise,json=observationNoise,proto3,enum=google.cloud.aiplatform.v1.StudySpec_ObservationNoise" json:"observation_noise,omitempty"`
 	// Describe which measurement selection type will be used
 	MeasurementSelectionType StudySpec_MeasurementSelectionType `protobuf:"varint,7,opt,name=measurement_selection_type,json=measurementSelectionType,proto3,enum=google.cloud.aiplatform.v1.StudySpec_MeasurementSelectionType" json:"measurement_selection_type,omitempty"`
@@ -1454,7 +1454,7 @@ type StudySpec_ParameterSpec_DoubleValueSpec struct {
 	// offered starting point.
 	//
 	// Currently only supported by the Vertex AI Vizier service. Not supported
-	// by HyperparamterTuningJob or TrainingPipeline.
+	// by HyperparameterTuningJob or TrainingPipeline.
 	DefaultValue *float64 `protobuf:"fixed64,4,opt,name=default_value,json=defaultValue,proto3,oneof" json:"default_value,omitempty"`
 }
 
@@ -1526,7 +1526,7 @@ type StudySpec_ParameterSpec_IntegerValueSpec struct {
 	// offered starting point.
 	//
 	// Currently only supported by the Vertex AI Vizier service. Not supported
-	// by HyperparamterTuningJob or TrainingPipeline.
+	// by HyperparameterTuningJob or TrainingPipeline.
 	DefaultValue *int64 `protobuf:"varint,4,opt,name=default_value,json=defaultValue,proto3,oneof" json:"default_value,omitempty"`
 }
 
@@ -1595,8 +1595,8 @@ type StudySpec_ParameterSpec_CategoricalValueSpec struct {
 	// relatively good starting point.  Unset value signals that there is no
 	// offered starting point.
 	//
-	// Currently only supported by the Vizier service. Not supported by
-	// HyperparamterTuningJob or TrainingPipeline.
+	// Currently only supported by the Vertex AI Vizier service. Not supported
+	// by HyperparameterTuningJob or TrainingPipeline.
 	DefaultValue *string `protobuf:"bytes,3,opt,name=default_value,json=defaultValue,proto3,oneof" json:"default_value,omitempty"`
 }
 
@@ -1662,8 +1662,8 @@ type StudySpec_ParameterSpec_DiscreteValueSpec struct {
 	// offered starting point.  It automatically rounds to the
 	// nearest feasible discrete point.
 	//
-	// Currently only supported by the Vizier service. Not supported by
-	// HyperparamterTuningJob or TrainingPipeline.
+	// Currently only supported by the Vertex AI Vizier service. Not supported
+	// by HyperparameterTuningJob or TrainingPipeline.
 	DefaultValue *float64 `protobuf:"fixed64,3,opt,name=default_value,json=defaultValue,proto3,oneof" json:"default_value,omitempty"`
 }
 

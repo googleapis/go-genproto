@@ -64,6 +64,9 @@ type CompleteQueryRequest struct {
 	// The field must be a UTF-8 encoded string with a length limit of 128
 	// characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	VisitorId string `protobuf:"bytes,7,opt,name=visitor_id,json=visitorId,proto3" json:"visitor_id,omitempty"`
+	// Note that this field applies for `user-data` dataset only. For requests
+	// with `cloud-retail` dataset, setting this field has no effect.
+	//
 	// The language filters applied to the output suggestions. If set, it should
 	// contain the language of the query. If not set, suggestions are returned
 	// without considering language restrictions. This is the BCP-47 language
@@ -96,9 +99,9 @@ type CompleteQueryRequest struct {
 	//
 	// * user-data
 	//
-	// * cloud-retail
-	//   This option requires additional allowlisting. Before using cloud-retail,
-	//   contact Cloud Retail support team first.
+	// * cloud-retail:
+	//   This option requires enabling auto-learning function first. See
+	//   [guidelines](https://cloud.google.com/retail/docs/completion-overview#generated-completion-dataset).
 	Dataset string `protobuf:"bytes,6,opt,name=dataset,proto3" json:"dataset,omitempty"`
 	// Completion max suggestions. If left unset or set to 0, then will fallback
 	// to the configured value
@@ -212,11 +215,15 @@ type CompleteQueryResponse struct {
 	// [CompleteQueryRequest.visitor_id][google.cloud.retail.v2beta.CompleteQueryRequest.visitor_id]
 	// field is set and [UserEvent][google.cloud.retail.v2beta.UserEvent] is
 	// imported. The recent searches satisfy the follow rules:
+	//
 	//  * They are ordered from latest to oldest.
+	//
 	//  * They are matched with
 	//  [CompleteQueryRequest.query][google.cloud.retail.v2beta.CompleteQueryRequest.query]
 	//  case insensitively.
-	//  * They are transformed to lower cases.
+	//
+	//  * They are transformed to lower case.
+	//
 	//  * They are UTF-8 safe.
 	//
 	// Recent searches are deduplicated. More recent searches will be reserved
@@ -286,10 +293,14 @@ type CompleteQueryResponse_CompletionResult struct {
 	// The suggestion for the query.
 	Suggestion string `protobuf:"bytes,1,opt,name=suggestion,proto3" json:"suggestion,omitempty"`
 	// Custom attributes for the suggestion term.
+	//
 	// * For "user-data", the attributes are additional custom attributes
 	// ingested through BigQuery.
+	//
 	// * For "cloud-retail", the attributes are product attributes generated
-	// by Cloud Retail.
+	// by Cloud Retail. It requires
+	// [UserEvent.product_details][google.cloud.retail.v2beta.UserEvent.product_details]
+	// is imported properly.
 	Attributes map[string]*CustomAttribute `protobuf:"bytes,2,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 

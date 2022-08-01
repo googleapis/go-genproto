@@ -736,8 +736,6 @@ type ListAnswerRecordsRequest struct {
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. Filters to restrict results to specific answer records.
 	//
-	// Marked deprecated as it hasn't been, and isn't currently, supported.
-	//
 	// For more information about filtering, see
 	// [API Filtering](https://aip.dev/160).
 	//
