@@ -1507,7 +1507,7 @@ type TextInput struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The UTF-8 encoded natural language text to be processed.
-	// Text length must not exceed 256 characters.
+	// Text length must not exceed 256 characters for virtual agent interactions.
 	Text string `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
 	// Required. The language of this conversational query. See [Language
 	// Support](https://cloud.google.com/dialogflow/docs/reference/language)

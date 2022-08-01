@@ -167,19 +167,17 @@ type ListCustomJobsRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `display_name` supports = and !=.
-	//
-	//   * `state` supports = and !=.
+	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   * `state` supports `=`, `!=` comparisons.
+	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//     `create_time` must be in RFC 3339 format.
 	//
 	// Some examples of using the filter are:
 	//
-	//  * `state="JOB_STATE_SUCCEEDED" AND display_name="my_job"`
-	//
-	//  * `state="JOB_STATE_RUNNING" OR display_name="my_job"`
-	//
-	//  * `NOT display_name="my_job"`
-	//
-	//  * `state="JOB_STATE_FAILED"`
+	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   * `NOT display_name="my_job"`
+	//   * `create_time>"2021-05-18T00:00:00Z"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -543,19 +541,17 @@ type ListDataLabelingJobsRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `display_name` supports = and !=.
-	//
-	//   * `state` supports = and !=.
+	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   * `state` supports `=`, `!=` comparisons.
+	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//     `create_time` must be in RFC 3339 format.
 	//
 	// Some examples of using the filter are:
 	//
-	//  * `state="JOB_STATE_SUCCEEDED" AND display_name="my_job"`
-	//
-	//  * `state="JOB_STATE_RUNNING" OR display_name="my_job"`
-	//
-	//  * `NOT display_name="my_job"`
-	//
-	//  * `state="JOB_STATE_FAILED"`
+	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   * `NOT display_name="my_job"`
+	//   * `create_time>"2021-05-18T00:00:00Z"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -930,19 +926,17 @@ type ListHyperparameterTuningJobsRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `display_name` supports = and !=.
-	//
-	//   * `state` supports = and !=.
+	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   * `state` supports `=`, `!=` comparisons.
+	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//     `create_time` must be in RFC 3339 format.
 	//
 	// Some examples of using the filter are:
 	//
-	//  * `state="JOB_STATE_SUCCEEDED" AND display_name="my_job"`
-	//
-	//  * `state="JOB_STATE_RUNNING" OR display_name="my_job"`
-	//
-	//  * `NOT display_name="my_job"`
-	//
-	//  * `state="JOB_STATE_FAILED"`
+	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   * `NOT display_name="my_job"`
+	//   * `create_time>"2021-05-18T00:00:00Z"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -1308,21 +1302,18 @@ type ListBatchPredictionJobsRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `display_name` supports = and !=.
-	//
-	//   * `state` supports = and !=.
-	//
-	//   * `model_display_name` supports = and !=
+	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   * `model_display_name` supports `=`, `!=` comparisons.
+	//   * `state` supports `=`, `!=` comparisons.
+	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//     `create_time` must be in RFC 3339 format.
 	//
 	// Some examples of using the filter are:
 	//
-	//  * `state="JOB_STATE_SUCCEEDED" AND display_name="my_job"`
-	//
-	//  * `state="JOB_STATE_RUNNING" OR display_name="my_job"`
-	//
-	//  * `NOT display_name="my_job"`
-	//
-	//  * `state="JOB_STATE_FAILED"`
+	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   * `NOT display_name="my_job"`
+	//   * `create_time>"2021-05-18T00:00:00Z"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -1874,6 +1865,20 @@ type ListModelDeploymentMonitoringJobsRequest struct {
 	// Format: `projects/{project}/locations/{location}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The standard list filter.
+	//
+	// Supported fields:
+	//
+	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   * `state` supports `=`, `!=` comparisons.
+	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//     `create_time` must be in RFC 3339 format.
+	//
+	// Some examples of using the filter are:
+	//
+	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   * `NOT display_name="my_job"`
+	//   * `create_time>"2021-05-18T00:00:00Z"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`

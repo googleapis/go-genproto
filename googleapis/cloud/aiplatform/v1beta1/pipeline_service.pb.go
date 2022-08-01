@@ -163,21 +163,22 @@ type ListTrainingPipelinesRequest struct {
 	// Format: `projects/{project}/locations/{location}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The standard list filter.
+	//
 	// Supported fields:
 	//
-	//   * `display_name` supports = and !=.
-	//
-	//   * `state` supports = and !=.
+	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   * `state` supports `=`, `!=` comparisons.
+	//   * `training_task_definition` `=`, `!=` comparisons, and `:` wildcard.
+	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//     `create_time` must be in RFC 3339 format.
 	//
 	// Some examples of using the filter are:
 	//
-	//  * `state="PIPELINE_STATE_SUCCEEDED" AND display_name="my_pipeline"`
-	//
-	//  * `state="PIPELINE_STATE_RUNNING" OR display_name="my_pipeline"`
-	//
-	//  * `NOT display_name="my_pipeline"`
-	//
-	//  * `state="PIPELINE_STATE_FAILED"`
+	//   * `state="PIPELINE_STATE_SUCCEEDED" AND display_name:"my_pipeline_*"`
+	//   * `state!="PIPELINE_STATE_FAILED" OR display_name="my_pipeline"`
+	//   * `NOT display_name="my_pipeline"`
+	//   * `create_time>"2021-05-18T00:00:00Z"`
+	//   * `training_task_definition:"*automl_text_classification*"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -557,8 +558,8 @@ type ListPipelineJobsRequest struct {
 	// * `pipeline_name`: Supports `=` and `!=` comparisons.
 	// * `display_name`: Supports `=`, `!=` comparisons, and `:` wildcard.
 	// * `pipeline_job_user_id`: Supports `=`, `!=` comparisons, and `:` wildcard.
-	//  for example, can check if pipeline's display_name contains *step* by doing
-	//   display_name:\"*step*\"
+	//   for example, can check if pipeline's display_name contains *step* by
+	//   doing display_name:\"*step*\"
 	// * `state`: Supports `=` and `!=` comparisons.
 	// * `create_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
 	//   Values must be in RFC 3339 format.
@@ -569,7 +570,7 @@ type ListPipelineJobsRequest struct {
 	// * `labels`: Supports key-value equality and key presence.
 	// * `template_uri`: Supports `=`, `!=` comparisons, and `:` wildcard.
 	// * `template_metadata.version`: Supports `=`, `!=` comparisons, and `:`
-	// wildcard.
+	//   wildcard.
 	//
 	// Filter expressions can be combined together using logical operators
 	// (`AND` & `OR`).
@@ -601,6 +602,7 @@ type ListPipelineJobsRequest struct {
 	// there are multiple jobs having the same create time, order them by the end
 	// time in ascending order. if order_by is not specified, it will order by
 	// default order is create time in descending order. Supported fields:
+	//
 	//   * `create_time`
 	//   * `update_time`
 	//   * `end_time`

@@ -613,7 +613,7 @@ type GetAttributesConfigRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Full AttributesConfig resource name. Format:
-	// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -732,7 +732,7 @@ type AddCatalogAttributeRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Full AttributesConfig resource name. Format:
-	// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
 	AttributesConfig string `protobuf:"bytes,1,opt,name=attributes_config,json=attributesConfig,proto3" json:"attributes_config,omitempty"`
 	// Required. The
 	// [CatalogAttribute][google.cloud.retail.v2beta.CatalogAttribute] to add.
@@ -794,7 +794,7 @@ type RemoveCatalogAttributeRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Full AttributesConfig resource name. Format:
-	// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
 	AttributesConfig string `protobuf:"bytes,1,opt,name=attributes_config,json=attributesConfig,proto3" json:"attributes_config,omitempty"`
 	// Required. The attribute name key of the
 	// [CatalogAttribute][google.cloud.retail.v2beta.CatalogAttribute] to remove.
@@ -856,7 +856,7 @@ type ReplaceCatalogAttributeRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Full AttributesConfig resource name. Format:
-	// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig
+	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
 	AttributesConfig string `protobuf:"bytes,1,opt,name=attributes_config,json=attributesConfig,proto3" json:"attributes_config,omitempty"`
 	// Required. The updated
 	// [CatalogAttribute][google.cloud.retail.v2beta.CatalogAttribute].
