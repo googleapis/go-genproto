@@ -74,7 +74,7 @@ type SavedQuery struct {
 	ProblemType string `protobuf:"bytes,6,opt,name=problem_type,json=problemType,proto3" json:"problem_type,omitempty"`
 	// Output only. Number of AnnotationSpecs in the context of the SavedQuery.
 	AnnotationSpecCount int32 `protobuf:"varint,10,opt,name=annotation_spec_count,json=annotationSpecCount,proto3" json:"annotation_spec_count,omitempty"`
-	// Used to perform a consistent read-modify-write update. If not set, a blind
+	// Used to perform consistent read-modify-write updates. If not set, a blind
 	// "overwrite" update happens.
 	Etag string `protobuf:"bytes,8,opt,name=etag,proto3" json:"etag,omitempty"`
 	// Output only. If the Annotations belonging to the SavedQuery can be used for AutoML

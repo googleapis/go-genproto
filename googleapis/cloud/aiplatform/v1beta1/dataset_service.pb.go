@@ -292,6 +292,7 @@ type ListDatasetsRequest struct {
 	//     * A key including a space must be quoted. `labels."a key"`.
 	//
 	// Some examples:
+	//
 	//   * `displayName="myDisplayName"`
 	//   * `labels.myKey="myValue"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
@@ -304,6 +305,7 @@ type ListDatasetsRequest struct {
 	// A comma-separated list of fields to order by, sorted in ascending order.
 	// Use "desc" after a field name for descending.
 	// Supported fields:
+	//
 	//   * `display_name`
 	//   * `create_time`
 	//   * `update_time`
@@ -1068,7 +1070,8 @@ type ListSavedQueriesResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A list of SavedQueries that match the specified filter in the request.
+	// A list of SavedQueries that matches the specified filter in the
+	// request.
 	SavedQueries []*SavedQuery `protobuf:"bytes,1,rep,name=saved_queries,json=savedQueries,proto3" json:"saved_queries,omitempty"`
 	// The standard List next-page token.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`

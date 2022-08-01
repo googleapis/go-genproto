@@ -90,7 +90,7 @@ type DoubleArray struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A list of bool values.
+	// A list of double values.
 	Values []float64 `protobuf:"fixed64,1,rep,packed,name=values,proto3" json:"values,omitempty"`
 }
 

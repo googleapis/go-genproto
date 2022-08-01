@@ -313,6 +313,7 @@ type ListModelsRequest struct {
 	//     * A key including a space must be quoted. `labels."a key"`.
 	//
 	// Some examples:
+	//
 	//   * `model=1234`
 	//   * `displayName="myDisplayName"`
 	//   * `labels.myKey="myValue"`
@@ -478,6 +479,7 @@ type ListModelVersionsRequest struct {
 	//     * A key including a space must be quoted. `labels."a key"`.
 	//
 	// Some examples:
+	//
 	//   * `labels.myKey="myValue"`
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Mask specifying which fields to read.
