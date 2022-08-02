@@ -44,7 +44,9 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Request message for [CreateProduct][] method.
+// Request message for
+// [ProductService.CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct]
+// method.
 type CreateProductRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -126,7 +128,9 @@ func (x *CreateProductRequest) GetProductId() string {
 	return ""
 }
 
-// Request message for [GetProduct][] method.
+// Request message for
+// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+// method.
 type GetProductRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -184,7 +188,9 @@ func (x *GetProductRequest) GetName() string {
 	return ""
 }
 
-// Request message for [UpdateProduct][] method.
+// Request message for
+// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
+// method.
 type UpdateProductRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -273,7 +279,9 @@ func (x *UpdateProductRequest) GetAllowMissing() bool {
 	return false
 }
 
-// Request message for [DeleteProduct][] method.
+// Request message for
+// [ProductService.DeleteProduct][google.cloud.retail.v2.ProductService.DeleteProduct]
+// method.
 type DeleteProductRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -555,7 +563,9 @@ func (x *ListProductsResponse) GetNextPageToken() string {
 	return ""
 }
 
-// Request message for [SetInventory][] method.
+// Request message for
+// [ProductService.SetInventory][google.cloud.retail.v2.ProductService.SetInventory]
+// method.
 type SetInventoryRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -563,6 +573,7 @@ type SetInventoryRequest struct {
 
 	// Required. The inventory information to update. The allowable fields to
 	// update are:
+	//
 	// * [Product.price_info][google.cloud.retail.v2.Product.price_info]
 	// * [Product.availability][google.cloud.retail.v2.Product.availability]
 	// * [Product.available_quantity][google.cloud.retail.v2.Product.available_quantity]
@@ -570,8 +581,9 @@ type SetInventoryRequest struct {
 	// The updated inventory fields must be specified in
 	// [SetInventoryRequest.set_mask][google.cloud.retail.v2.SetInventoryRequest.set_mask].
 	//
-	// If [SetInventoryRequest.inventory.name][] is empty or invalid, an
-	// INVALID_ARGUMENT error is returned.
+	// If
+	// [SetInventoryRequest.inventory.name][google.cloud.retail.v2.Product.name]
+	// is empty or invalid, an INVALID_ARGUMENT error is returned.
 	//
 	// If the caller does not have permission to update the
 	// [Product][google.cloud.retail.v2.Product] named in
@@ -594,7 +606,8 @@ type SetInventoryRequest struct {
 	// * Adds "fulfillment_info" in
 	// [SetInventoryRequest.set_mask][google.cloud.retail.v2.SetInventoryRequest.set_mask]
 	// * Specifies only the desired fulfillment types and corresponding place IDs
-	// to update in [SetInventoryRequest.inventory.fulfillment_info][]
+	// to update in
+	// [SetInventoryRequest.inventory.fulfillment_info][google.cloud.retail.v2.Product.fulfillment_info]
 	//
 	// The caller can clear all place IDs from a subset of fulfillment types in
 	// the following ways:
@@ -602,9 +615,9 @@ type SetInventoryRequest struct {
 	// * Adds "fulfillment_info" in
 	// [SetInventoryRequest.set_mask][google.cloud.retail.v2.SetInventoryRequest.set_mask]
 	// * Specifies only the desired fulfillment types to clear in
-	// [SetInventoryRequest.inventory.fulfillment_info][]
+	// [SetInventoryRequest.inventory.fulfillment_info][google.cloud.retail.v2.Product.fulfillment_info]
 	// * Checks that only the desired fulfillment info types have empty
-	// [SetInventoryRequest.inventory.fulfillment_info.place_ids][]
+	// [SetInventoryRequest.inventory.fulfillment_info.place_ids][google.cloud.retail.v2.FulfillmentInfo.place_ids]
 	//
 	// The last update time is recorded for the following inventory fields:
 	// * [Product.price_info][google.cloud.retail.v2.Product.price_info]
@@ -613,7 +626,9 @@ type SetInventoryRequest struct {
 	// * [Product.fulfillment_info][google.cloud.retail.v2.Product.fulfillment_info]
 	//
 	// If a full overwrite of inventory information while ignoring timestamps is
-	// needed, [UpdateProduct][] should be invoked instead.
+	// needed,
+	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
+	// should be invoked instead.
 	Inventory *Product `protobuf:"bytes,1,opt,name=inventory,proto3" json:"inventory,omitempty"`
 	// Indicates which inventory fields in the provided
 	// [Product][google.cloud.retail.v2.Product] to update.
@@ -698,7 +713,8 @@ func (x *SetInventoryRequest) GetAllowMissing() bool {
 
 // Metadata related to the progress of the SetInventory operation.
 // Currently empty because there is no meaningful metadata populated from the
-// [SetInventory][] method.
+// [ProductService.SetInventory][google.cloud.retail.v2.ProductService.SetInventory]
+// method.
 type SetInventoryMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -738,7 +754,8 @@ func (*SetInventoryMetadata) Descriptor() ([]byte, []int) {
 }
 
 // Response of the SetInventoryRequest.  Currently empty because
-// there is no meaningful response populated from the [SetInventory][]
+// there is no meaningful response populated from the
+// [ProductService.SetInventory][google.cloud.retail.v2.ProductService.SetInventory]
 // method.
 type SetInventoryResponse struct {
 	state         protoimpl.MessageState
@@ -812,7 +829,8 @@ type AddFulfillmentPlacesRequest struct {
 	// If this field is set to an invalid value other than these, an
 	// INVALID_ARGUMENT error is returned.
 	//
-	// This field directly corresponds to [Product.fulfillment_info.type][].
+	// This field directly corresponds to
+	// [Product.fulfillment_info.type][google.cloud.retail.v2.FulfillmentInfo.type].
 	Type string `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
 	// Required. The IDs for this
 	// [type][google.cloud.retail.v2.AddFulfillmentPlacesRequest.type], such as
@@ -1195,7 +1213,9 @@ func (*AddLocalInventoriesResponse) Descriptor() ([]byte, []int) {
 	return file_google_cloud_retail_v2_product_service_proto_rawDescGZIP(), []int{14}
 }
 
-// Request message for [RemoveLocalInventories][] method.
+// Request message for
+// [ProductService.RemoveLocalInventories][google.cloud.retail.v2.ProductService.RemoveLocalInventories]
+// method.
 type RemoveLocalInventoriesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1287,7 +1307,8 @@ func (x *RemoveLocalInventoriesRequest) GetAllowMissing() bool {
 
 // Metadata related to the progress of the RemoveLocalInventories operation.
 // Currently empty because there is no meaningful metadata populated from the
-// [RemoveLocalInventories][] method.
+// [ProductService.RemoveLocalInventories][google.cloud.retail.v2.ProductService.RemoveLocalInventories]
+// method.
 type RemoveLocalInventoriesMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1326,8 +1347,11 @@ func (*RemoveLocalInventoriesMetadata) Descriptor() ([]byte, []int) {
 	return file_google_cloud_retail_v2_product_service_proto_rawDescGZIP(), []int{16}
 }
 
-// Response of the [RemoveLocalInventories][] API.  Currently empty because
-// there is no meaningful response populated from the [RemoveLocalInventories][]
+// Response of the
+// [ProductService.RemoveLocalInventories][google.cloud.retail.v2.ProductService.RemoveLocalInventories]
+// API.  Currently empty because there is no meaningful response populated from
+// the
+// [ProductService.RemoveLocalInventories][google.cloud.retail.v2.ProductService.RemoveLocalInventories]
 // method.
 type RemoveLocalInventoriesResponse struct {
 	state         protoimpl.MessageState
@@ -1367,7 +1391,9 @@ func (*RemoveLocalInventoriesResponse) Descriptor() ([]byte, []int) {
 	return file_google_cloud_retail_v2_product_service_proto_rawDescGZIP(), []int{17}
 }
 
-// Request message for [RemoveFulfillmentPlaces][] method.
+// Request message for
+// [ProductService.RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces]
+// method.
 type RemoveFulfillmentPlacesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1495,7 +1521,8 @@ func (x *RemoveFulfillmentPlacesRequest) GetAllowMissing() bool {
 
 // Metadata related to the progress of the RemoveFulfillmentPlaces operation.
 // Currently empty because there is no meaningful metadata populated from the
-// [RemoveFulfillmentPlaces][] method.
+// [ProductService.RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces]
+// method.
 type RemoveFulfillmentPlacesMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1535,7 +1562,8 @@ func (*RemoveFulfillmentPlacesMetadata) Descriptor() ([]byte, []int) {
 }
 
 // Response of the RemoveFulfillmentPlacesRequest. Currently empty because there
-// is no meaningful response populated from the [RemoveFulfillmentPlaces][]
+// is no meaningful response populated from the
+// [ProductService.RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces]
 // method.
 type RemoveFulfillmentPlacesResponse struct {
 	state         protoimpl.MessageState
@@ -2374,18 +2402,21 @@ type ProductServiceClient interface {
 	// enqueued and processed downstream. As a consequence, when a response is
 	// returned, updates are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// When inventory is updated with
-	// [CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct] and
-	// [UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct], the
-	// specified inventory field value(s) will overwrite any existing value(s)
+	// [ProductService.CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct]
+	// and
+	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct],
+	// the specified inventory field value(s) will overwrite any existing value(s)
 	// while ignoring the last update time for this field. Furthermore, the last
 	// update time for the specified inventory fields will be overwritten to the
 	// time of the
-	// [CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct] or
-	// [UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
+	// [ProductService.CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct]
+	// or
+	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
 	// request.
 	//
 	// If no inventory fields are set in
@@ -2397,10 +2428,10 @@ type ProductServiceClient interface {
 	// then any existing inventory information will be preserved.
 	//
 	// Pre-existing inventory information can only be updated with
-	// [SetInventory][google.cloud.retail.v2.ProductService.SetInventory],
+	// [ProductService.SetInventory][google.cloud.retail.v2.ProductService.SetInventory],
 	// [ProductService.AddFulfillmentPlaces][google.cloud.retail.v2.ProductService.AddFulfillmentPlaces],
 	// and
-	// [RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces].
+	// [ProductService.RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces].
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2414,8 +2445,9 @@ type ProductServiceClient interface {
 	// enqueued and processed downstream. As a consequence, when a response is
 	// returned, the added place IDs are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2429,8 +2461,9 @@ type ProductServiceClient interface {
 	// enqueued and processed downstream. As a consequence, when a response is
 	// returned, the removed place IDs are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2445,13 +2478,15 @@ type ProductServiceClient interface {
 	// and processed downstream. As a consequence, when a response is returned,
 	// updates are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// Local inventory information can only be modified using this method.
-	// [CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct] and
-	// [UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct] has no
-	// effect on local inventories.
+	// [ProductService.CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct]
+	// and
+	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
+	// has no effect on local inventories.
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2464,13 +2499,15 @@ type ProductServiceClient interface {
 	// enqueued and processed downstream. As a consequence, when a response is
 	// returned, removals are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// Local inventory information can only be removed using this method.
-	// [CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct] and
-	// [UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct] has no
-	// effect on local inventories.
+	// [ProductService.CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct]
+	// and
+	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
+	// has no effect on local inventories.
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2614,18 +2651,21 @@ type ProductServiceServer interface {
 	// enqueued and processed downstream. As a consequence, when a response is
 	// returned, updates are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// When inventory is updated with
-	// [CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct] and
-	// [UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct], the
-	// specified inventory field value(s) will overwrite any existing value(s)
+	// [ProductService.CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct]
+	// and
+	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct],
+	// the specified inventory field value(s) will overwrite any existing value(s)
 	// while ignoring the last update time for this field. Furthermore, the last
 	// update time for the specified inventory fields will be overwritten to the
 	// time of the
-	// [CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct] or
-	// [UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
+	// [ProductService.CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct]
+	// or
+	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
 	// request.
 	//
 	// If no inventory fields are set in
@@ -2637,10 +2677,10 @@ type ProductServiceServer interface {
 	// then any existing inventory information will be preserved.
 	//
 	// Pre-existing inventory information can only be updated with
-	// [SetInventory][google.cloud.retail.v2.ProductService.SetInventory],
+	// [ProductService.SetInventory][google.cloud.retail.v2.ProductService.SetInventory],
 	// [ProductService.AddFulfillmentPlaces][google.cloud.retail.v2.ProductService.AddFulfillmentPlaces],
 	// and
-	// [RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces].
+	// [ProductService.RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces].
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2654,8 +2694,9 @@ type ProductServiceServer interface {
 	// enqueued and processed downstream. As a consequence, when a response is
 	// returned, the added place IDs are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2669,8 +2710,9 @@ type ProductServiceServer interface {
 	// enqueued and processed downstream. As a consequence, when a response is
 	// returned, the removed place IDs are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2685,13 +2727,15 @@ type ProductServiceServer interface {
 	// and processed downstream. As a consequence, when a response is returned,
 	// updates are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// Local inventory information can only be modified using this method.
-	// [CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct] and
-	// [UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct] has no
-	// effect on local inventories.
+	// [ProductService.CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct]
+	// and
+	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
+	// has no effect on local inventories.
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2704,13 +2748,15 @@ type ProductServiceServer interface {
 	// enqueued and processed downstream. As a consequence, when a response is
 	// returned, removals are not immediately manifested in the
 	// [Product][google.cloud.retail.v2.Product] queried by
-	// [GetProduct][google.cloud.retail.v2.ProductService.GetProduct] or
-	// [ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
+	// or
+	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
 	// Local inventory information can only be removed using this method.
-	// [CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct] and
-	// [UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct] has no
-	// effect on local inventories.
+	// [ProductService.CreateProduct][google.cloud.retail.v2.ProductService.CreateProduct]
+	// and
+	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
+	// has no effect on local inventories.
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.

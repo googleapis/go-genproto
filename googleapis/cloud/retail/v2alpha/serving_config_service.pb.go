@@ -49,7 +49,7 @@ type CreateServingConfigRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. Full resource name of parent. Format:
-	// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}
+	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The ServingConfig to create.
 	ServingConfig *ServingConfig `protobuf:"bytes,2,opt,name=serving_config,json=servingConfig,proto3" json:"serving_config,omitempty"`

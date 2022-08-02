@@ -54,7 +54,7 @@ type Control struct {
 	//	*Control_Rule
 	Control isControl_Control `protobuf_oneof:"control"`
 	// Immutable. Fully qualified name
-	// projects/*/locations/global/catalogs/*/controls/*
+	// `projects/*/locations/global/catalogs/*/controls/*`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The human readable control display name. Used in Retail UI.
 	//
