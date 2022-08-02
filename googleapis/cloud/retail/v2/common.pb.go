@@ -501,9 +501,8 @@ type Interval struct {
 	// The lower bound of the interval. If neither of the min fields are set, then
 	// the lower bound is negative infinity.
 	//
-	// This field must be not larger than
-	// [max][google.cloud.retail.v2.Interval.max]. Otherwise, an INVALID_ARGUMENT
-	// error is returned.
+	// This field must not be larger than max.
+	// Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Types that are assignable to Min:
 	//	*Interval_Minimum
@@ -512,9 +511,8 @@ type Interval struct {
 	// The upper bound of the interval. If neither of the max fields are set, then
 	// the upper bound is positive infinity.
 	//
-	// This field must be not smaller than
-	// [min][google.cloud.retail.v2.Interval.min]. Otherwise, an INVALID_ARGUMENT
-	// error is returned.
+	// This field must be not smaller than min.
+	// Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Types that are assignable to Max:
 	//	*Interval_Maximum
