@@ -95,11 +95,11 @@ func (PublishLifecycleEventRequest_ServiceLevel) EnumDescriptor() ([]byte, []int
 }
 
 // Publishes 'lifecycle events' that update the high-level state of a build:
-// - BuildEnqueued: When a build is scheduled.
-// - InvocationAttemptStarted: When work for a build starts; there can be
+//   - BuildEnqueued: When a build is scheduled.
+//   - InvocationAttemptStarted: When work for a build starts; there can be
 //     multiple invocations for a build (e.g. retries).
-// - InvocationAttemptCompleted: When work for a build finishes.
-// - BuildFinished: When a build is finished.
+//   - InvocationAttemptCompleted: When work for a build finishes.
+//   - BuildFinished: When a build is finished.
 type PublishLifecycleEventRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -1485,7 +1485,6 @@ func (BigQueryAuditMetadata_JobConfig_Query_Priority) EnumDescriptor() ([]byte, 
 }
 
 // Audit log format for BigQuery cloud audit logs metadata.
-//
 type BigQueryAuditMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

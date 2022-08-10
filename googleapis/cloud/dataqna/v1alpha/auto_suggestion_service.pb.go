@@ -366,19 +366,21 @@ func (x *SuggestQueriesResponse) GetSuggestions() []*Suggestion {
 // user query: `top products`
 //
 // ```
-// annotated_suggestion {
-//  text_formatted = "top product_group"
-//  html_formatted = "top <b>product_group</b>"
-//  markups {
-//   {type: TEXT, start_char_index: 0, length: 3}
-//   {type: DIMENSION, start_char_index: 4, length: 13}
-//  }
-// }
 //
-// query_matches {
-//  { start_char_index: 0, length: 3 }
-//  { start_char_index: 4, length: 7}
-// }
+//	annotated_suggestion {
+//	 text_formatted = "top product_group"
+//	 html_formatted = "top <b>product_group</b>"
+//	 markups {
+//	  {type: TEXT, start_char_index: 0, length: 3}
+//	  {type: DIMENSION, start_char_index: 4, length: 13}
+//	 }
+//	}
+//
+//	query_matches {
+//	 { start_char_index: 0, length: 3 }
+//	 { start_char_index: 4, length: 7}
+//	}
+//
 // ```
 type SuggestionInfo_MatchInfo struct {
 	state         protoimpl.MessageState

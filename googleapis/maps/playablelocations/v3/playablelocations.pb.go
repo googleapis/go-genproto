@@ -43,7 +43,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-//
 // Life of a query:
 //
 // - When a game starts in a new location, your game server issues a
@@ -125,7 +124,6 @@ func (x *SamplePlayableLocationsRequest) GetCriteria() []*sample.Criterion {
 	return nil
 }
 
-//
 // Response for the
 // [SamplePlayableLocations][google.maps.playablelocations.v3.PlayableLocations.SamplePlayableLocations]
 // method.

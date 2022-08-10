@@ -577,7 +577,7 @@ func (x *QueryParameters) GetWebhookHeaders() map[string]string {
 
 // Represents the query input. It can contain either:
 //
-// 1.  An audio config which
+//  1. An audio config which
 //     instructs the speech recognizer how to process the speech audio.
 //
 // 2.  A conversational query in the form of text.
@@ -1010,13 +1010,15 @@ func (x *KnowledgeAnswers) GetAnswers() []*KnowledgeAnswers_Answer {
 //
 // 1.  The first message must contain
 // [session][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.session],
-//     [query_input][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.query_input] plus optionally
-//     [query_params][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.query_params]. If the client
-//     wants to receive an audio response, it should also contain
-//     [output_audio_config][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.output_audio_config].
-//     The message must not contain
-//     [input_audio][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.input_audio].
-// 2.  If [query_input][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.query_input] was set to
+//
+//	[query_input][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.query_input] plus optionally
+//	[query_params][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.query_params]. If the client
+//	wants to receive an audio response, it should also contain
+//	[output_audio_config][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.output_audio_config].
+//	The message must not contain
+//	[input_audio][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.input_audio].
+//
+//  2. If [query_input][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.query_input] was set to
 //     [query_input.audio_config][google.cloud.dialogflow.v2beta1.InputAudioConfig], all subsequent
 //     messages must contain
 //     [input_audio][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.input_audio] to continue with
@@ -1029,7 +1031,7 @@ func (x *KnowledgeAnswers) GetAnswers() []*KnowledgeAnswers_Answer {
 //
 //     * Dialogflow will bill you for the audio duration so far.
 //     * Dialogflow discards all Speech recognition results in favor of the
-//       input text.
+//     input text.
 //     * Dialogflow will use the language code from the first message.
 //
 // After you sent all input, you must half-close or abort the request stream.
@@ -1190,17 +1192,17 @@ func (x *StreamingDetectIntentRequest) GetInputAudio() []byte {
 //
 // Multiple response messages can be returned in order:
 //
-// 1.  If the `StreamingDetectIntentRequest.input_audio` field was
+//  1. If the `StreamingDetectIntentRequest.input_audio` field was
 //     set, the `recognition_result` field is populated for one
 //     or more messages.
 //     See the [StreamingRecognitionResult][google.cloud.dialogflow.v2beta1.StreamingRecognitionResult] message for details
 //     about the result message sequence.
 //
-// 2.  The next message contains `response_id`, `query_result`,
+//  2. The next message contains `response_id`, `query_result`,
 //     `alternative_query_results` and optionally `webhook_status` if a WebHook
 //     was called.
 //
-// 3.  If `output_audio_config` was specified in the request or agent-level
+//  3. If `output_audio_config` was specified in the request or agent-level
 //     speech synthesizer is configured, all subsequent messages contain
 //     `output_audio` and `output_audio_config`.
 type StreamingDetectIntentResponse struct {

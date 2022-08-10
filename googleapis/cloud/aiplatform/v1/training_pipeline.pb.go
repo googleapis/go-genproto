@@ -679,7 +679,6 @@ func (x *FractionSplit) GetTestFraction() float64 {
 // set as '-' (the minus sign).
 //
 // Supported only for unstructured Datasets.
-//
 type FilterSplit struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

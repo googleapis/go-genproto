@@ -278,12 +278,12 @@ func (AgentAssistantFeedback_DocumentEfficiency) EnumDescriptor() ([]byte, []int
 //
 // A typical workflow for customers provide feedback to an answer is:
 //
-// 1. For human agent assistant, customers get suggestion via ListSuggestions
-//    API. Together with the answers, [AnswerRecord.name][google.cloud.dialogflow.v2.AnswerRecord.name] are returned to the
-//    customers.
-// 2. The customer uses the [AnswerRecord.name][google.cloud.dialogflow.v2.AnswerRecord.name] to call the
-//    [UpdateAnswerRecord][] method to send feedback about a specific answer
-//    that they believe is wrong.
+//  1. For human agent assistant, customers get suggestion via ListSuggestions
+//     API. Together with the answers, [AnswerRecord.name][google.cloud.dialogflow.v2.AnswerRecord.name] are returned to the
+//     customers.
+//  2. The customer uses the [AnswerRecord.name][google.cloud.dialogflow.v2.AnswerRecord.name] to call the
+//     [UpdateAnswerRecord][] method to send feedback about a specific answer
+//     that they believe is wrong.
 type AnswerRecord struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

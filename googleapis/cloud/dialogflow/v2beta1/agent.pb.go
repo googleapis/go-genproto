@@ -224,7 +224,6 @@ func (Agent_Tier) EnumDescriptor() ([]byte, []int) {
 //
 // For more information about agents, see the
 // [Agent guide](https://cloud.google.com/dialogflow/docs/agents-overview).
-//
 type Agent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

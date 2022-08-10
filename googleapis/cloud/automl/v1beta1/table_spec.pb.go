@@ -44,7 +44,7 @@ const (
 // inconsistent with the data in the table (e.g. string in a FLOAT64 column).
 // The consistency validation is done upon creation of a model.
 // Used by:
-//   *   Tables
+//   - Tables
 type TableSpec struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

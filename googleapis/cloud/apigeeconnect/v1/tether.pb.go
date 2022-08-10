@@ -636,7 +636,7 @@ func (x *HttpRequest) GetBody() []byte {
 // The proto definition of url.
 // A url represents a URL and the general form represented is:
 //
-//  `[scheme://][google.cloud.apigeeconnect.v1.Url.host][path]`
+//	`[scheme://][google.cloud.apigeeconnect.v1.Url.host][path]`
 type Url struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

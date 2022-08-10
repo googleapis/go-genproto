@@ -42,15 +42,15 @@ const (
 // Response messages are also used for output audio synthesis. The approach is
 // as follows:
 //
-// * If at least one OutputAudioText response is present, then all
-//   OutputAudioText responses are linearly concatenated, and the result is used
-//   for output audio synthesis.
-// * If the OutputAudioText responses are a mixture of text and SSML, then the
-//   concatenated result is treated as SSML; otherwise, the result is treated as
-//   either text or SSML as appropriate. The agent designer should ideally use
-//   either text or SSML consistently throughout the bot design.
-// * Otherwise, all Text responses are linearly concatenated, and the result is
-//   used for output audio synthesis.
+//   - If at least one OutputAudioText response is present, then all
+//     OutputAudioText responses are linearly concatenated, and the result is used
+//     for output audio synthesis.
+//   - If the OutputAudioText responses are a mixture of text and SSML, then the
+//     concatenated result is treated as SSML; otherwise, the result is treated as
+//     either text or SSML as appropriate. The agent designer should ideally use
+//     either text or SSML consistently throughout the bot design.
+//   - Otherwise, all Text responses are linearly concatenated, and the result is
+//     used for output audio synthesis.
 //
 // This approach allows for more sophisticated user experience scenarios, where
 // the text displayed to the user may differ from what is heard.
@@ -324,11 +324,11 @@ func (x *ResponseMessage_Text) GetAllowPlaybackInterruption() bool {
 // is up to you and your handoff procedures.
 //
 // You may set this, for example:
-// * In the [entry_fulfillment][google.cloud.dialogflow.cx.v3.Page.entry_fulfillment] of a [Page][google.cloud.dialogflow.cx.v3.Page] if
-//   entering the page indicates something went extremely wrong in the
-//   conversation.
-// * In a webhook response when you determine that the customer issue can only
-//   be handled by a human.
+//   - In the [entry_fulfillment][google.cloud.dialogflow.cx.v3.Page.entry_fulfillment] of a [Page][google.cloud.dialogflow.cx.v3.Page] if
+//     entering the page indicates something went extremely wrong in the
+//     conversation.
+//   - In a webhook response when you determine that the customer issue can only
+//     be handled by a human.
 type ResponseMessage_LiveAgentHandoff struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -388,10 +388,10 @@ func (x *ResponseMessage_LiveAgentHandoff) GetMetadata() *structpb.Struct {
 // [ConversationSuccess][google.cloud.dialogflow.cx.v3.ResponseMessage.ConversationSuccess].
 //
 // You may set this, for example:
-// * In the [entry_fulfillment][google.cloud.dialogflow.cx.v3.Page.entry_fulfillment] of a [Page][google.cloud.dialogflow.cx.v3.Page] if
-//   entering the page indicates that the conversation succeeded.
-// * In a webhook response when you determine that you handled the customer
-//   issue.
+//   - In the [entry_fulfillment][google.cloud.dialogflow.cx.v3.Page.entry_fulfillment] of a [Page][google.cloud.dialogflow.cx.v3.Page] if
+//     entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer
+//     issue.
 type ResponseMessage_ConversationSuccess struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

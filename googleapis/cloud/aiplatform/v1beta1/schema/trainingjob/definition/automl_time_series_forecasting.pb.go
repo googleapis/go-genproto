@@ -658,13 +658,13 @@ func (x *AutoMlForecastingInputs_Transformation_AutoTransformation) GetColumnNam
 //
 // *  The z_score of the value.
 //
-// *  log(value+1) when the value is greater than or equal to 0. Otherwise,
-//    this transformation is not applied and the value is considered a
-//    missing value.
+//   - log(value+1) when the value is greater than or equal to 0. Otherwise,
+//     this transformation is not applied and the value is considered a
+//     missing value.
 //
-// *  z_score of log(value+1) when the value is greater than or equal to 0.
-//    Otherwise, this transformation is not applied and the value is
-//    considered a missing value.
+//   - z_score of log(value+1) when the value is greater than or equal to 0.
+//     Otherwise, this transformation is not applied and the value is
+//     considered a missing value.
 //
 // *  A boolean value that indicates whether the value is valid.
 type AutoMlForecastingInputs_Transformation_NumericTransformation struct {
@@ -716,15 +716,15 @@ func (x *AutoMlForecastingInputs_Transformation_NumericTransformation) GetColumn
 
 // Training pipeline will perform following transformation functions.
 //
-// *  The categorical string as is--no change to case, punctuation,
-//    spelling, tense, and so on.
+//   - The categorical string as is--no change to case, punctuation,
+//     spelling, tense, and so on.
 //
-// *  Convert the category name to a dictionary lookup index and generate an
-//    embedding for each index.
+//   - Convert the category name to a dictionary lookup index and generate an
+//     embedding for each index.
 //
-// *  Categories that appear less than 5 times in the training dataset are
-//    treated as the "unknown" category. The "unknown" category gets its own
-//    special lookup index and resulting embedding.
+//   - Categories that appear less than 5 times in the training dataset are
+//     treated as the "unknown" category. The "unknown" category gets its own
+//     special lookup index and resulting embedding.
 type AutoMlForecastingInputs_Transformation_CategoricalTransformation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -776,12 +776,12 @@ func (x *AutoMlForecastingInputs_Transformation_CategoricalTransformation) GetCo
 //
 // *  Apply the transformation functions for Numerical columns.
 //
-// *  Determine the year, month, day,and weekday. Treat each value from the
-//    timestamp as a Categorical column.
+//   - Determine the year, month, day,and weekday. Treat each value from the
+//     timestamp as a Categorical column.
 //
-// *  Invalid numerical values (for example, values that fall outside of a
-//    typical timestamp range, or are extreme values) receive no special
-//    treatment and are not removed.
+//   - Invalid numerical values (for example, values that fall outside of a
+//     typical timestamp range, or are extreme values) receive no special
+//     treatment and are not removed.
 type AutoMlForecastingInputs_Transformation_TimestampTransformation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -858,11 +858,11 @@ func (x *AutoMlForecastingInputs_Transformation_TimestampTransformation) GetTime
 
 // Training pipeline will perform following transformation functions.
 //
-// *  The text as is--no change to case, punctuation, spelling, tense, and
-//    so on.
+//   - The text as is--no change to case, punctuation, spelling, tense, and
+//     so on.
 //
-// *  Convert the category name to a dictionary lookup index and generate an
-//    embedding for each index.
+//   - Convert the category name to a dictionary lookup index and generate an
+//     embedding for each index.
 type AutoMlForecastingInputs_Transformation_TextTransformation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

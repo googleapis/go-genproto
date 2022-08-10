@@ -47,9 +47,11 @@ const (
 // field:
 //
 // <dl>
-//   <dt>instances</dt>
-//   <dd>A JSON array containing values representing the instances to use for
-//       prediction.</dd>
+//
+//	<dt>instances</dt>
+//	<dd>A JSON array containing values representing the instances to use for
+//	    prediction.</dd>
+//
 // </dl>
 //
 // The structure of each element of the instances list is determined by your
@@ -71,13 +73,15 @@ const (
 // </pre>
 // Sentences encoded as lists of words (vectors of strings):
 // <pre>
-// {
-//   "instances": [
-//     ["the","quick","brown"],
-//     ["la","bruja","le"],
-//     ...
-//   ]
-// }
+//
+//	{
+//	  "instances": [
+//	    ["the","quick","brown"],
+//	    ["la","bruja","le"],
+//	    ...
+//	  ]
+//	}
+//
 // </pre>
 // Floating point scalar values:
 // <pre>
@@ -85,48 +89,54 @@ const (
 // </pre>
 // Vectors of integers:
 // <pre>
-// {
-//   "instances": [
-//     [0, 1, 2],
-//     [3, 4, 5],
-//     ...
-//   ]
-// }
+//
+//	{
+//	  "instances": [
+//	    [0, 1, 2],
+//	    [3, 4, 5],
+//	    ...
+//	  ]
+//	}
+//
 // </pre>
 // Tensors (in this case, two-dimensional tensors):
 // <pre>
-// {
-//   "instances": [
-//     [
-//       [0, 1, 2],
-//       [3, 4, 5]
-//     ],
-//     ...
-//   ]
-// }
+//
+//	{
+//	  "instances": [
+//	    [
+//	      [0, 1, 2],
+//	      [3, 4, 5]
+//	    ],
+//	    ...
+//	  ]
+//	}
+//
 // </pre>
 // Images can be represented different ways. In this encoding scheme the first
 // two dimensions represent the rows and columns of the image, and the third
 // contains lists (vectors) of the R, G, and B values for each pixel.
 // <pre>
-// {
-//   "instances": [
-//     [
-//       [
-//         [138, 30, 66],
-//         [130, 20, 56],
-//         ...
-//       ],
-//       [
-//         [126, 38, 61],
-//         [122, 24, 57],
-//         ...
-//       ],
-//       ...
-//     ],
-//     ...
-//   ]
-// }
+//
+//	{
+//	  "instances": [
+//	    [
+//	      [
+//	        [138, 30, 66],
+//	        [130, 20, 56],
+//	        ...
+//	      ],
+//	      [
+//	        [126, 38, 61],
+//	        [122, 24, 57],
+//	        ...
+//	      ],
+//	      ...
+//	    ],
+//	    ...
+//	  ]
+//	}
+//
 // </pre>
 // JSON strings must be encoded as UTF-8. To send binary data, you must
 // base64-encode the data and mark it as binary. To mark a JSON string
@@ -147,20 +157,22 @@ const (
 //
 // JSON input data to be preprocessed:
 // <pre>
-// {
-//   "instances": [
-//     {
-//       "a": 1.0,
-//       "b": true,
-//       "c": "x"
-//     },
-//     {
-//       "a": -2.0,
-//       "b": false,
-//       "c": "y"
-//     }
-//   ]
-// }
+//
+//	{
+//	  "instances": [
+//	    {
+//	      "a": 1.0,
+//	      "b": true,
+//	      "c": "x"
+//	    },
+//	    {
+//	      "a": -2.0,
+//	      "b": false,
+//	      "c": "y"
+//	    }
+//	  ]
+//	}
+//
 // </pre>
 // Some models have an underlying TensorFlow graph that accepts multiple input
 // tensors. In this case, you should use the names of JSON name/value pairs to
@@ -169,59 +181,63 @@ const (
 // For a graph with input tensor aliases "tag" (string) and "image"
 // (base64-encoded string):
 // <pre>
-// {
-//   "instances": [
-//     {
-//       "tag": "beach",
-//       "image": {"b64": "ASa8asdf"}
-//     },
-//     {
-//       "tag": "car",
-//       "image": {"b64": "JLK7ljk3"}
-//     }
-//   ]
-// }
+//
+//	{
+//	  "instances": [
+//	    {
+//	      "tag": "beach",
+//	      "image": {"b64": "ASa8asdf"}
+//	    },
+//	    {
+//	      "tag": "car",
+//	      "image": {"b64": "JLK7ljk3"}
+//	    }
+//	  ]
+//	}
+//
 // </pre>
 // For a graph with input tensor aliases "tag" (string) and "image"
 // (3-dimensional array of 8-bit ints):
 // <pre>
-// {
-//   "instances": [
-//     {
-//       "tag": "beach",
-//       "image": [
-//         [
-//           [138, 30, 66],
-//           [130, 20, 56],
-//           ...
-//         ],
-//         [
-//           [126, 38, 61],
-//           [122, 24, 57],
-//           ...
-//         ],
-//         ...
-//       ]
-//     },
-//     {
-//       "tag": "car",
-//       "image": [
-//         [
-//           [255, 0, 102],
-//           [255, 0, 97],
-//           ...
-//         ],
-//         [
-//           [254, 1, 101],
-//           [254, 2, 93],
-//           ...
-//         ],
-//         ...
-//       ]
-//     },
-//     ...
-//   ]
-// }
+//
+//	{
+//	  "instances": [
+//	    {
+//	      "tag": "beach",
+//	      "image": [
+//	        [
+//	          [138, 30, 66],
+//	          [130, 20, 56],
+//	          ...
+//	        ],
+//	        [
+//	          [126, 38, 61],
+//	          [122, 24, 57],
+//	          ...
+//	        ],
+//	        ...
+//	      ]
+//	    },
+//	    {
+//	      "tag": "car",
+//	      "image": [
+//	        [
+//	          [255, 0, 102],
+//	          [255, 0, 97],
+//	          ...
+//	        ],
+//	        [
+//	          [254, 1, 101],
+//	          [254, 2, 93],
+//	          ...
+//	        ],
+//	        ...
+//	      ]
+//	    },
+//	    ...
+//	  ]
+//	}
+//
 // </pre>
 // If the call is successful, the response body will contain one prediction
 // entry per instance in the request body. If prediction fails for any

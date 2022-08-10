@@ -39,7 +39,7 @@ const (
 // A representation of a column in a relational table. When listing them, column specs are returned in the same order in which they were
 // given on import .
 // Used by:
-//   *   Tables
+//   - Tables
 type ColumnSpec struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

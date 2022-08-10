@@ -517,10 +517,10 @@ func (*SubscribeRequest_FlowControl) isSubscribeRequest_Request() {}
 
 // Response containing a list of messages. Upon delivering a MessageResponse to
 // the client, the server:
-// *  Updates the stream's delivery cursor to one greater than the cursor of the
-//    last message in the list.
-// *  Subtracts the total number of bytes and messages from the tokens available
-//    to the server.
+//   - Updates the stream's delivery cursor to one greater than the cursor of the
+//     last message in the list.
+//   - Subtracts the total number of bytes and messages from the tokens available
+//     to the server.
 type MessageResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

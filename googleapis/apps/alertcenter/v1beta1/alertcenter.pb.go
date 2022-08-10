@@ -1619,7 +1619,8 @@ func (*Settings_Notification_CloudPubsubTopic_) isSettings_Notification_Destinat
 //
 // To register for notifications, the owner of the topic must grant
 // `alerts-api-push-notifications@system.gserviceaccount.com` the
-//  `projects.topics.publish` permission.
+//
+//	`projects.topics.publish` permission.
 type Settings_Notification_CloudPubsubTopic struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

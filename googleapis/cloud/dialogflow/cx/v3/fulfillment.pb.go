@@ -39,9 +39,9 @@ const (
 
 // A fulfillment can do one or more of the following actions at the same time:
 //
-//   * Generate rich message responses.
-//   * Set parameter values.
-//   * Call the webhook.
+//   - Generate rich message responses.
+//   - Set parameter values.
+//   - Call the webhook.
 //
 // Fulfillments can be called at various stages in the [Page][google.cloud.dialogflow.cx.v3.Page] or
 // [Form][google.cloud.dialogflow.cx.v3.Form] lifecycle. For example, when a [DetectIntentRequest][google.cloud.dialogflow.cx.v3.DetectIntentRequest] drives a

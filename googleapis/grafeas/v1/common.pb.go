@@ -190,8 +190,8 @@ func (x *RelatedUrl) GetLabel() string {
 // for quickly selecting a public key ALREADY CONFIGURED on the verifier through
 // a trusted channel. Verification implementations MUST reject signatures in any
 // of the following circumstances:
-//   * The `public_key_id` is not recognized by the verifier.
-//   * The public key that `public_key_id` refers to does not verify the
+//   - The `public_key_id` is not recognized by the verifier.
+//   - The public key that `public_key_id` refers to does not verify the
 //     signature with respect to the payload.
 //
 // The `signature` contents SHOULD NOT be "attached" (where the payload is

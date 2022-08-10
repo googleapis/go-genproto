@@ -1627,7 +1627,7 @@ func (x *InputTextConfig) GetLanguageCode() string {
 //
 // Multiple request messages should be sent in order:
 //
-// 1.  The first message must contain
+//  1. The first message must contain
 //     [participant][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.participant],
 //     [config][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.config] and optionally
 //     [query_params][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.query_params]. If you want
@@ -1636,7 +1636,7 @@ func (x *InputTextConfig) GetLanguageCode() string {
 //     The message must not contain
 //     [input][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.input].
 //
-// 2.  If [config][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.config] in the first message
+//  2. If [config][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.config] in the first message
 //     was set to [audio_config][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.audio_config],
 //     all subsequent messages must contain
 //     [input_audio][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.input_audio] to continue
@@ -1649,14 +1649,14 @@ func (x *InputTextConfig) GetLanguageCode() string {
 //
 //     * Dialogflow will bill you for the audio so far.
 //     * Dialogflow discards all Speech recognition results in favor of the
-//       text input.
+//     text input.
 //
 //  3. If [StreamingAnalyzeContentRequest.config][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.config] in the first message was set
-//    to [StreamingAnalyzeContentRequest.text_config][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.text_config], then the second message
-//    must contain only [input_text][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.input_text].
-//    Moreover, you must not send more than two messages.
+//     to [StreamingAnalyzeContentRequest.text_config][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.text_config], then the second message
+//     must contain only [input_text][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.input_text].
+//     Moreover, you must not send more than two messages.
 //
-//  After you sent all input, you must half-close or abort the request stream.
+//     After you sent all input, you must half-close or abort the request stream.
 type StreamingAnalyzeContentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1903,12 +1903,12 @@ func (*StreamingAnalyzeContentRequest_InputDtmf) isStreamingAnalyzeContentReques
 //
 // Multiple response messages can be returned in order:
 //
-// 1.  If the input was set to streaming audio, the first one or more messages
+//  1. If the input was set to streaming audio, the first one or more messages
 //     contain `recognition_result`. Each `recognition_result` represents a more
 //     complete transcript of what the user said. The last `recognition_result`
 //     has `is_final` set to `true`.
 //
-// 2.  In virtual agent stage: if `enable_partial_automated_agent_reply` is
+//  2. In virtual agent stage: if `enable_partial_automated_agent_reply` is
 //     true, the following N (currently 1 <= N <= 4) messages
 //     contain `automated_agent_reply` and optionally `reply_audio`
 //     returned by the virtual agent. The first (N-1)
@@ -3843,10 +3843,10 @@ func (x *ResponseMessage_Text) GetText() []string {
 // is up to you and your handoff procedures.
 //
 // You may set this, for example:
-// * In the entry fulfillment of a CX Page if entering the page indicates
-//   something went extremely wrong in the conversation.
-// * In a webhook response when you determine that the customer issue can only
-//   be handled by a human.
+//   - In the entry fulfillment of a CX Page if entering the page indicates
+//     something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only
+//     be handled by a human.
 type ResponseMessage_LiveAgentHandoff struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

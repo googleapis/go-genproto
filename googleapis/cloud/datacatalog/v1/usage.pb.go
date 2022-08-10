@@ -40,12 +40,12 @@ const (
 //
 // Usage statistics have the following limitations:
 //
-// - Only BigQuery tables have them.
-// - They only include BigQuery query jobs.
-// - They might be underestimated because wildcard table references
-//   are not yet counted. For more information, see
-//   [Querying multiple tables using a wildcard table]
-//   (https://cloud.google.com/bigquery/docs/querying-wildcard-tables)
+//   - Only BigQuery tables have them.
+//   - They only include BigQuery query jobs.
+//   - They might be underestimated because wildcard table references
+//     are not yet counted. For more information, see
+//     [Querying multiple tables using a wildcard table]
+//     (https://cloud.google.com/bigquery/docs/querying-wildcard-tables)
 type UsageStats struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

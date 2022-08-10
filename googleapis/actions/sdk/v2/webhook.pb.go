@@ -41,9 +41,9 @@ const (
 // name as the value for the `executeFunction` key.
 // For example, a value of `my_webhook` for the`executeFunction` key would have
 // a code structure like this:
-//  - `/webhooks/my_webhook.yaml`
-//  - `/webhooks/my_webhook/index.js`
-//  - `/webhooks/my_webhook/package.json`
+//   - `/webhooks/my_webhook.yaml`
+//   - `/webhooks/my_webhook/index.js`
+//   - `/webhooks/my_webhook/package.json`
 type Webhook struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

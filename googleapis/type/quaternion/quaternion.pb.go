@@ -47,7 +47,7 @@ const (
 //
 // Quaternions are generally represented in this form:
 //
-//     w + xi + yj + zk
+//	w + xi + yj + zk
 //
 // where x, y, z, and w are real numbers, and i, j, and k are three imaginary
 // numbers.
@@ -63,10 +63,10 @@ const (
 // buffer below *must* follow the Hamilton convention, which defines `ij = k`
 // (i.e. a right-handed algebra), and therefore:
 //
-//     i^2 = j^2 = k^2 = ijk = −1
-//     ij = −ji = k
-//     jk = −kj = i
-//     ki = −ik = j
+//	i^2 = j^2 = k^2 = ijk = −1
+//	ij = −ji = k
+//	jk = −kj = i
+//	ki = −ik = j
 //
 // Please DO NOT use this to represent quaternions that follow the JPL
 // convention, or any of the other quaternion flavors out there.
@@ -90,7 +90,6 @@ const (
 // it would produce a unique representation. It is thus recommended that `w` be
 // kept positive, which can be achieved by changing all the signs when `w` is
 // negative.
-//
 type Quaternion struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

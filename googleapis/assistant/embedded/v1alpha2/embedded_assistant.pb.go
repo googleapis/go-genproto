@@ -1507,12 +1507,12 @@ func (x *DebugConfig) GetReturnDebugInfo() bool {
 
 // There are three sources of locations. They are used with this precedence:
 //
-// 1. This `DeviceLocation`, which is primarily used for mobile devices with
-//    GPS .
-// 2. Location specified by the user during device setup; this is per-user, per
-//    device. This location is used if `DeviceLocation` is not specified.
-// 3. Inferred location based on IP address. This is used only if neither of the
-//    above are specified.
+//  1. This `DeviceLocation`, which is primarily used for mobile devices with
+//     GPS .
+//  2. Location specified by the user during device setup; this is per-user, per
+//     device. This location is used if `DeviceLocation` is not specified.
+//  3. Inferred location based on IP address. This is used only if neither of the
+//     above are specified.
 type DeviceLocation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

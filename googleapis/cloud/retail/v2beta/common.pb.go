@@ -1805,11 +1805,12 @@ func (x *Rule_BoostAction) GetProductsFilter() string {
 
 // * Rule Condition:
 //   - No
-//   [Condition.query_terms][google.cloud.retail.v2beta.Condition.query_terms]
-//   provided is a global match.
+//     [Condition.query_terms][google.cloud.retail.v2beta.Condition.query_terms]
+//     provided is a global match.
 //   - 1 or more
-//   [Condition.query_terms][google.cloud.retail.v2beta.Condition.query_terms]
-//   provided are combined with OR operator.
+//     [Condition.query_terms][google.cloud.retail.v2beta.Condition.query_terms]
+//     provided are combined with OR operator.
+//
 // * Action Input: The request query and filter that are applied to the
 // retrieved products, in addition to any filters already provided with the
 // SearchRequest. The AND operator is used to combine the query's existing
@@ -1883,7 +1884,8 @@ func (x *Rule_FilterAction) GetFilter() string {
 //
 // * Rule Condition:
 //   - Must specify
-//   [Condition.query_terms][google.cloud.retail.v2beta.Condition.query_terms].
+//     [Condition.query_terms][google.cloud.retail.v2beta.Condition.query_terms].
+//
 // * Action Input: Request Query
 // * Action Result: Redirects shopper to provided uri.
 type Rule_RedirectAction struct {
@@ -1936,8 +1938,8 @@ func (x *Rule_RedirectAction) GetRedirectUri() string {
 
 // Creates a set of terms that will be treated as synonyms of each other.
 // Example: synonyms of "sneakers" and "shoes".
-//  * "sneakers" will use a synonym of "shoes".
-//  * "shoes" will use a synonym of "sneakers".
+//   - "sneakers" will use a synonym of "shoes".
+//   - "shoes" will use a synonym of "sneakers".
 type Rule_TwowaySynonymsAction struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

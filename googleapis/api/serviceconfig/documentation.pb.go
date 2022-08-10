@@ -39,24 +39,26 @@ const (
 //
 // Example:
 // <pre><code>documentation:
-//   summary: >
-//     The Google Calendar API gives access
-//     to most calendar features.
-//   pages:
-//   - name: Overview
-//     content: &#40;== include google/foo/overview.md ==&#41;
-//   - name: Tutorial
-//     content: &#40;== include google/foo/tutorial.md ==&#41;
-//     subpages;
-//     - name: Java
-//       content: &#40;== include google/foo/tutorial_java.md ==&#41;
-//   rules:
-//   - selector: google.calendar.Calendar.Get
-//     description: >
-//       ...
-//   - selector: google.calendar.Calendar.Put
-//     description: >
-//       ...
+//
+//	summary: >
+//	  The Google Calendar API gives access
+//	  to most calendar features.
+//	pages:
+//	- name: Overview
+//	  content: &#40;== include google/foo/overview.md ==&#41;
+//	- name: Tutorial
+//	  content: &#40;== include google/foo/tutorial.md ==&#41;
+//	  subpages;
+//	  - name: Java
+//	    content: &#40;== include google/foo/tutorial_java.md ==&#41;
+//	rules:
+//	- selector: google.calendar.Calendar.Get
+//	  description: >
+//	    ...
+//	- selector: google.calendar.Calendar.Put
+//	  description: >
+//	    ...
+//
 // </code></pre>
 // Documentation is provided in markdown syntax. In addition to
 // standard markdown features, definition lists, tables and fenced

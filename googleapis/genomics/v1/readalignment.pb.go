@@ -144,31 +144,31 @@ func (x *LinearAlignment) GetCigar() []*CigarUnit {
 // representing the local alignment of the read to reference. The following
 // pseudocode demonstrates one way of doing this:
 //
-//     out = ""
-//     offset = 0
-//     for c in read.alignment.cigar {
-//       switch c.operation {
-//       case "ALIGNMENT_MATCH", "SEQUENCE_MATCH", "SEQUENCE_MISMATCH":
-//         out += read.alignedSequence[offset:offset+c.operationLength]
-//         offset += c.operationLength
-//         break
-//       case "CLIP_SOFT", "INSERT":
-//         offset += c.operationLength
-//         break
-//       case "PAD":
-//         out += repeat("*", c.operationLength)
-//         break
-//       case "DELETE":
-//         out += repeat("-", c.operationLength)
-//         break
-//       case "SKIP":
-//         out += repeat(" ", c.operationLength)
-//         break
-//       case "CLIP_HARD":
-//         break
-//       }
-//     }
-//     return out
+//	out = ""
+//	offset = 0
+//	for c in read.alignment.cigar {
+//	  switch c.operation {
+//	  case "ALIGNMENT_MATCH", "SEQUENCE_MATCH", "SEQUENCE_MISMATCH":
+//	    out += read.alignedSequence[offset:offset+c.operationLength]
+//	    offset += c.operationLength
+//	    break
+//	  case "CLIP_SOFT", "INSERT":
+//	    offset += c.operationLength
+//	    break
+//	  case "PAD":
+//	    out += repeat("*", c.operationLength)
+//	    break
+//	  case "DELETE":
+//	    out += repeat("-", c.operationLength)
+//	    break
+//	  case "SKIP":
+//	    out += repeat(" ", c.operationLength)
+//	    break
+//	  case "CLIP_HARD":
+//	    break
+//	  }
+//	}
+//	return out
 //
 // ### Converting to SAM's CIGAR string
 //
@@ -176,22 +176,22 @@ func (x *LinearAlignment) GetCigar() []*CigarUnit {
 // `cigar` field. Note that this is a lossy conversion
 // (`cigar.referenceSequence` is lost).
 //
-//     cigarMap = {
-//       "ALIGNMENT_MATCH": "M",
-//       "INSERT": "I",
-//       "DELETE": "D",
-//       "SKIP": "N",
-//       "CLIP_SOFT": "S",
-//       "CLIP_HARD": "H",
-//       "PAD": "P",
-//       "SEQUENCE_MATCH": "=",
-//       "SEQUENCE_MISMATCH": "X",
-//     }
-//     cigarStr = ""
-//     for c in read.alignment.cigar {
-//       cigarStr += c.operationLength + cigarMap[c.operation]
-//     }
-//     return cigarStr
+//	cigarMap = {
+//	  "ALIGNMENT_MATCH": "M",
+//	  "INSERT": "I",
+//	  "DELETE": "D",
+//	  "SKIP": "N",
+//	  "CLIP_SOFT": "S",
+//	  "CLIP_HARD": "H",
+//	  "PAD": "P",
+//	  "SEQUENCE_MATCH": "=",
+//	  "SEQUENCE_MISMATCH": "X",
+//	}
+//	cigarStr = ""
+//	for c in read.alignment.cigar {
+//	  cigarStr += c.operationLength + cigarMap[c.operation]
+//	}
+//	return cigarStr
 type Read struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

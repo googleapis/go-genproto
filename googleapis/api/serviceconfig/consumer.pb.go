@@ -105,13 +105,13 @@ func (Property_PropertyType) EnumDescriptor() ([]byte, []int) {
 //
 // Example:
 //
-//    project_properties:
-//      properties:
-//      - name: NO_WATERMARK
-//        type: BOOL
-//        description: Allows usage of the API without watermarks.
-//      - name: EXTENDED_TILE_CACHE_PERIOD
-//        type: INT64
+//	project_properties:
+//	  properties:
+//	  - name: NO_WATERMARK
+//	    type: BOOL
+//	    description: Allows usage of the API without watermarks.
+//	  - name: EXTENDED_TILE_CACHE_PERIOD
+//	    type: INT64
 type ProjectProperties struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

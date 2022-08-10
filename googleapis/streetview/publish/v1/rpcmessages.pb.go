@@ -141,7 +141,7 @@ func (x *CreatePhotoRequest) GetPhoto() *Photo {
 
 // Request to get a [Photo][google.streetview.publish.v1.Photo].
 //
-// By default
+// # By default
 //
 // * does not return the download URL for the photo bytes.
 //
@@ -419,7 +419,7 @@ func (x *PhotoResponse) GetPhoto() *Photo {
 
 // Request to list all photos that belong to the user sending the request.
 //
-// By default
+// # By default
 //
 // * does not return the download URL for the photo bytes.
 //
@@ -429,7 +429,9 @@ func (x *PhotoResponse) GetPhoto() *Photo {
 // * `pageSize` determines the maximum number of photos to return.
 // * `pageToken` is the next page token value returned from a previous
 // [ListPhotos][google.streetview.publish.v1.StreetViewPublishService.ListPhotos]
-//     request, if any.
+//
+//	request, if any.
+//
 // * `filter` allows filtering by a given parameter. 'placeId' is the only
 // parameter supported at the moment.
 type ListPhotosRequest struct {
