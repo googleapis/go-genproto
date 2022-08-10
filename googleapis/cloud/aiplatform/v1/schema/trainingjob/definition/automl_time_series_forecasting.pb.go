@@ -689,15 +689,15 @@ func (x *AutoMlForecastingInputs_Transformation_AutoTransformation) GetColumnNam
 }
 
 // Training pipeline will perform following transformation functions.
-// *  The value converted to float32.
-// *  The z_score of the value.
-// *  log(value+1) when the value is greater than or equal to 0. Otherwise,
-//    this transformation is not applied and the value is considered a
-//    missing value.
-// *  z_score of log(value+1) when the value is greater than or equal to 0.
-//    Otherwise, this transformation is not applied and the value is
-//    considered a missing value.
-// *  A boolean value that indicates whether the value is valid.
+//   - The value converted to float32.
+//   - The z_score of the value.
+//   - log(value+1) when the value is greater than or equal to 0. Otherwise,
+//     this transformation is not applied and the value is considered a
+//     missing value.
+//   - z_score of log(value+1) when the value is greater than or equal to 0.
+//     Otherwise, this transformation is not applied and the value is
+//     considered a missing value.
+//   - A boolean value that indicates whether the value is valid.
 type AutoMlForecastingInputs_Transformation_NumericTransformation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -760,12 +760,13 @@ func (x *AutoMlForecastingInputs_Transformation_NumericTransformation) GetInvali
 // Training pipeline will perform following transformation functions.
 // *  The categorical string as is--no change to case, punctuation,
 // spelling,
-//    tense, and so on.
-// *  Convert the category name to a dictionary lookup index and generate an
-//    embedding for each index.
-// *  Categories that appear less than 5 times in the training dataset are
-//    treated as the "unknown" category. The "unknown" category gets its own
-//    special lookup index and resulting embedding.
+//
+//		tense, and so on.
+//	  - Convert the category name to a dictionary lookup index and generate an
+//	    embedding for each index.
+//	  - Categories that appear less than 5 times in the training dataset are
+//	    treated as the "unknown" category. The "unknown" category gets its own
+//	    special lookup index and resulting embedding.
 type AutoMlForecastingInputs_Transformation_CategoricalTransformation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -814,12 +815,12 @@ func (x *AutoMlForecastingInputs_Transformation_CategoricalTransformation) GetCo
 }
 
 // Training pipeline will perform following transformation functions.
-// *  Apply the transformation functions for Numerical columns.
-// *  Determine the year, month, day,and weekday. Treat each value from the
-// *  timestamp as a Categorical column.
-// *  Invalid numerical values (for example, values that fall outside of a
-//    typical timestamp range, or are extreme values) receive no special
-//    treatment and are not removed.
+//   - Apply the transformation functions for Numerical columns.
+//   - Determine the year, month, day,and weekday. Treat each value from the
+//   - timestamp as a Categorical column.
+//   - Invalid numerical values (for example, values that fall outside of a
+//     typical timestamp range, or are extreme values) receive no special
+//     treatment and are not removed.
 type AutoMlForecastingInputs_Transformation_TimestampTransformation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -901,11 +902,15 @@ func (x *AutoMlForecastingInputs_Transformation_TimestampTransformation) GetInva
 // Training pipeline will perform following transformation functions.
 // *  The text as is--no change to case, punctuation, spelling, tense, and
 // so
-//    on.
+//
+//	on.
+//
 // *  Tokenize text to words. Convert each words to a dictionary lookup
 // index
-//    and generate an embedding for each index. Combine the embedding of all
-//    elements into a single embedding using the mean.
+//
+//	and generate an embedding for each index. Combine the embedding of all
+//	elements into a single embedding using the mean.
+//
 // *  Tokenization is based on unicode script boundaries.
 // *  Missing values get their own lookup index and resulting embedding.
 // *  Stop-words receive no special treatment and are not removed.
@@ -958,9 +963,9 @@ func (x *AutoMlForecastingInputs_Transformation_TextTransformation) GetColumnNam
 
 // Treats the column as numerical array and performs following
 // transformation functions.
-// *  All transformations for Numerical types applied to the average of the
-//    all elements.
-// *  The average of empty arrays is treated as zero.
+//   - All transformations for Numerical types applied to the average of the
+//     all elements.
+//   - The average of empty arrays is treated as zero.
 type AutoMlForecastingInputs_Transformation_NumericArrayTransformation struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1024,9 +1029,11 @@ func (x *AutoMlForecastingInputs_Transformation_NumericArrayTransformation) GetI
 // transformation functions.
 // *  For each element in the array, convert the category name to a
 // dictionary
-//    lookup index and generate an embedding for each index.
-//    Combine the embedding of all elements into a single embedding using
-//    the mean.
+//
+//	lookup index and generate an embedding for each index.
+//	Combine the embedding of all elements into a single embedding using
+//	the mean.
+//
 // *  Empty arrays treated as an embedding of zeroes.
 type AutoMlForecastingInputs_Transformation_CategoricalArrayTransformation struct {
 	state         protoimpl.MessageState
@@ -1079,8 +1086,10 @@ func (x *AutoMlForecastingInputs_Transformation_CategoricalArrayTransformation) 
 // functions.
 // *  Concatenate all text values in the array into a single text value
 // using
-//    a space (" ") as a delimiter, and then treat the result as a single
-//    text value. Apply the transformations for Text columns.
+//
+//	a space (" ") as a delimiter, and then treat the result as a single
+//	text value. Apply the transformations for Text columns.
+//
 // *  Empty arrays treated as an empty text.
 type AutoMlForecastingInputs_Transformation_TextArrayTransformation struct {
 	state         protoimpl.MessageState

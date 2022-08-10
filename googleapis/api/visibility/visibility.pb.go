@@ -49,12 +49,12 @@ const (
 //
 // Example:
 //
-//     visibility:
-//       rules:
-//       - selector: google.calendar.Calendar.EnhancedSearch
-//         restriction: PREVIEW
-//       - selector: google.calendar.Calendar.Delegate
-//         restriction: INTERNAL
+//	visibility:
+//	  rules:
+//	  - selector: google.calendar.Calendar.EnhancedSearch
+//	    restriction: PREVIEW
+//	  - selector: google.calendar.Calendar.Delegate
+//	    restriction: INTERNAL
 //
 // Here, all methods are publicly visible except for the restricted methods
 // EnhancedSearch and Delegate.

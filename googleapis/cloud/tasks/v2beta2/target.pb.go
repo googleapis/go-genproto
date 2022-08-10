@@ -317,17 +317,16 @@ func (x *AppEngineHttpTarget) GetAppEngineRoutingOverride() *AppEngineRouting {
 // The [AppEngineRouting][google.cloud.tasks.v2beta2.AppEngineRouting] used to construct the URL that the task is
 // delivered to can be set at the queue-level or task-level:
 //
-// * If set,
-//   [app_engine_routing_override][google.cloud.tasks.v2beta2.AppEngineHttpTarget.app_engine_routing_override]
-//   is used for all tasks in the queue, no matter what the setting
-//   is for the
-//   [task-level app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
-//
+//   - If set,
+//     [app_engine_routing_override][google.cloud.tasks.v2beta2.AppEngineHttpTarget.app_engine_routing_override]
+//     is used for all tasks in the queue, no matter what the setting
+//     is for the
+//     [task-level app_engine_routing][google.cloud.tasks.v2beta2.AppEngineHttpRequest.app_engine_routing].
 //
 // The `url` that the task will be sent to is:
 //
-// * `url =` [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] `+`
-//   [relative_url][google.cloud.tasks.v2beta2.AppEngineHttpRequest.relative_url]
+//   - `url =` [host][google.cloud.tasks.v2beta2.AppEngineRouting.host] `+`
+//     [relative_url][google.cloud.tasks.v2beta2.AppEngineHttpRequest.relative_url]
 //
 // Tasks can be dispatched to secure app handlers, unsecure app handlers, and
 // URIs restricted with

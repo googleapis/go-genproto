@@ -95,9 +95,9 @@ func (x *LineCoverageSummary) GetExecutedLineCount() int32 {
 
 // Summary of branch coverage
 // A branch may be:
-//  * not executed.  Counted only in total.
-//  * executed but not taken.  Appears in total and executed.
-//  * executed and taken.  Appears in all three fields.
+//   - not executed.  Counted only in total.
+//   - executed but not taken.  Appears in total and executed.
+//   - executed and taken.  Appears in all three fields.
 type BranchCoverageSummary struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

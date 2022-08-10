@@ -426,48 +426,48 @@ func (x *SourceLocation) GetColumn() int32 {
 //
 // 1) A simple variable:
 //
-//     int x = 5
+//	int x = 5
 //
-//     { name: "x", value: "5", type: "int" }  // Captured variable
+//	{ name: "x", value: "5", type: "int" }  // Captured variable
 //
 // 2) A compound object:
 //
-//     struct T {
-//         int m1;
-//         int m2;
-//     };
-//     T x = { 3, 7 };
+//	struct T {
+//	    int m1;
+//	    int m2;
+//	};
+//	T x = { 3, 7 };
 //
-//     {  // Captured variable
-//         name: "x",
-//         type: "T",
-//         members { name: "m1", value: "3", type: "int" },
-//         members { name: "m2", value: "7", type: "int" }
-//     }
+//	{  // Captured variable
+//	    name: "x",
+//	    type: "T",
+//	    members { name: "m1", value: "3", type: "int" },
+//	    members { name: "m2", value: "7", type: "int" }
+//	}
 //
 // 3) A pointer where the pointee was captured:
 //
-//     T x = { 3, 7 };
-//     T* p = &x;
+//	T x = { 3, 7 };
+//	T* p = &x;
 //
-//     {   // Captured variable
-//         name: "p",
-//         type: "T*",
-//         value: "0x00500500",
-//         members { name: "m1", value: "3", type: "int" },
-//         members { name: "m2", value: "7", type: "int" }
-//     }
+//	{   // Captured variable
+//	    name: "p",
+//	    type: "T*",
+//	    value: "0x00500500",
+//	    members { name: "m1", value: "3", type: "int" },
+//	    members { name: "m2", value: "7", type: "int" }
+//	}
 //
 // 4) A pointer where the pointee was not captured:
 //
-//     T* p = new T;
+//	T* p = new T;
 //
-//     {   // Captured variable
-//         name: "p",
-//         type: "T*",
-//         value: "0x00400400"
-//         status { is_error: true, description { format: "unavailable" } }
-//     }
+//	{   // Captured variable
+//	    name: "p",
+//	    type: "T*",
+//	    value: "0x00400400"
+//	    status { is_error: true, description { format: "unavailable" } }
+//	}
 //
 // The status should describe the reason for the missing value,
 // such as `<optimized out>`, `<inaccessible>`, `<pointers limit reached>`.
@@ -476,32 +476,32 @@ func (x *SourceLocation) GetColumn() int32 {
 //
 // 5) An unnamed value:
 //
-//     int* p = new int(7);
+//	int* p = new int(7);
 //
-//     {   // Captured variable
-//         name: "p",
-//         value: "0x00500500",
-//         type: "int*",
-//         members { value: "7", type: "int" } }
+//	{   // Captured variable
+//	    name: "p",
+//	    value: "0x00500500",
+//	    type: "int*",
+//	    members { value: "7", type: "int" } }
 //
 // 6) An unnamed pointer where the pointee was not captured:
 //
-//     int* p = new int(7);
-//     int** pp = &p;
+//	int* p = new int(7);
+//	int** pp = &p;
 //
-//     {  // Captured variable
-//         name: "pp",
-//         value: "0x00500500",
-//         type: "int**",
-//         members {
-//             value: "0x00400400",
-//             type: "int*"
-//             status {
-//                 is_error: true,
-//                 description: { format: "unavailable" } }
-//             }
-//         }
-//     }
+//	{  // Captured variable
+//	    name: "pp",
+//	    value: "0x00500500",
+//	    type: "int**",
+//	    members {
+//	        value: "0x00400400",
+//	        type: "int*"
+//	        status {
+//	            is_error: true,
+//	            description: { format: "unavailable" } }
+//	        }
+//	    }
+//	}
 //
 // To optimize computation, memory and network traffic, variables that
 // repeat in the output multiple times can be stored once in a shared
@@ -512,18 +512,18 @@ func (x *SourceLocation) GetColumn() int32 {
 //
 // When using the shared variable table, the following variables:
 //
-//     T x = { 3, 7 };
-//     T* p = &x;
-//     T& r = x;
+//	T x = { 3, 7 };
+//	T* p = &x;
+//	T& r = x;
 //
-//     { name: "x", var_table_index: 3, type: "T" }  // Captured variables
-//     { name: "p", value "0x00500500", type="T*", var_table_index: 3 }
-//     { name: "r", type="T&", var_table_index: 3 }
+//	{ name: "x", var_table_index: 3, type: "T" }  // Captured variables
+//	{ name: "p", value "0x00500500", type="T*", var_table_index: 3 }
+//	{ name: "r", type="T&", var_table_index: 3 }
 //
-//     {  // Shared variable table entry #3:
-//         members { name: "m1", value: "3", type: "int" },
-//         members { name: "m2", value: "7", type: "int" }
-//     }
+//	{  // Shared variable table entry #3:
+//	    members { name: "m1", value: "3", type: "int" },
+//	    members { name: "m2", value: "7", type: "int" }
+//	}
 //
 // Note that the pointer address is stored with the referencing variable
 // and not with the referenced variable. This allows the referenced variable

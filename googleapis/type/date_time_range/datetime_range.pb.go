@@ -39,16 +39,16 @@ const (
 
 // Represents a date and time range. This can represent:
 //
-// * A range between points in time with time zone or offset, e.g. the duration
-//   of a flight which starts in the "America/New_York" time zone and ends in
-//   the "Australia/Sydney" time zone
-// * A range between points in time without time zone/offset info, e.g. an
-//   appointment in local time
-// * A range starting at a specific date and time, e.g. the range of time which
-//   can be measured in milliseconds since the Unix epoch (period starting with
-//   1970-01-01T00:00:00Z)
-// * A range ending at a specific date and time, e.g. range of time before
-//   a deadline
+//   - A range between points in time with time zone or offset, e.g. the duration
+//     of a flight which starts in the "America/New_York" time zone and ends in
+//     the "Australia/Sydney" time zone
+//   - A range between points in time without time zone/offset info, e.g. an
+//     appointment in local time
+//   - A range starting at a specific date and time, e.g. the range of time which
+//     can be measured in milliseconds since the Unix epoch (period starting with
+//     1970-01-01T00:00:00Z)
+//   - A range ending at a specific date and time, e.g. range of time before
+//     a deadline
 //
 // When considering whether a DateTime falls within a DateTimeRange, the start
 // of the range is inclusive and the end is exclusive.

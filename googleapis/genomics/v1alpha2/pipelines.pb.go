@@ -1511,50 +1511,60 @@ func (x *PipelineResources) GetNoAddress() bool {
 // map, such as:
 //
 // ```
-//   inputs["input_file"] = "gs://my-bucket/bar.txt"
+//
+//	inputs["input_file"] = "gs://my-bucket/bar.txt"
+//
 // ```
 //
 // This would generate the following gsutil call:
 //
 // ```
-//   gsutil cp gs://my-bucket/bar.txt /mnt/pd1/file.txt
+//
+//	gsutil cp gs://my-bucket/bar.txt /mnt/pd1/file.txt
+//
 // ```
 //
 // The file `/mnt/pd1/file.txt` maps to `/mnt/disk/file.txt` in the
 // Docker container. Acceptable paths are:
 //
 // <table>
-//   <thead>
-//     <tr><th>Google Cloud storage path</th><th>Local path</th></tr>
-//   </thead>
-//   <tbody>
-//     <tr><td>file</td><td>file</td></tr>
-//     <tr><td>glob</td><td>directory</td></tr>
-//   </tbody>
+//
+//	<thead>
+//	  <tr><th>Google Cloud storage path</th><th>Local path</th></tr>
+//	</thead>
+//	<tbody>
+//	  <tr><td>file</td><td>file</td></tr>
+//	  <tr><td>glob</td><td>directory</td></tr>
+//	</tbody>
+//
 // </table>
 //
 // For outputs, the direction of the copy is reversed:
 //
 // ```
-//   gsutil cp /mnt/disk/file.txt gs://my-bucket/bar.txt
+//
+//	gsutil cp /mnt/disk/file.txt gs://my-bucket/bar.txt
+//
 // ```
 //
 // Acceptable paths are:
 //
 // <table>
-//   <thead>
-//     <tr><th>Local path</th><th>Google Cloud Storage path</th></tr>
-//   </thead>
-//   <tbody>
-//     <tr><td>file</td><td>file</td></tr>
-//     <tr>
-//       <td>file</td>
-//       <td>directory - directory must already exist</td>
-//     </tr>
-//     <tr>
-//       <td>glob</td>
-//       <td>directory - directory will be created if it doesn't exist</td></tr>
-//   </tbody>
+//
+//	<thead>
+//	  <tr><th>Local path</th><th>Google Cloud Storage path</th></tr>
+//	</thead>
+//	<tbody>
+//	  <tr><td>file</td><td>file</td></tr>
+//	  <tr>
+//	    <td>file</td>
+//	    <td>directory - directory must already exist</td>
+//	  </tr>
+//	  <tr>
+//	    <td>glob</td>
+//	    <td>directory - directory will be created if it doesn't exist</td></tr>
+//	</tbody>
+//
 // </table>
 //
 // One restriction due to docker limitations, is that for outputs that are found

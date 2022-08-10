@@ -247,8 +247,9 @@ func (x *ErrorContext) GetReportLocation() *SourceLocation {
 }
 
 // The error payload that is populated on LRO import APIs. Including:
-//   "google.cloud.retail.v2.ProductService.ImportProducts"
-//   "google.cloud.retail.v2.EventService.ImportUserEvents"
+//
+//	"google.cloud.retail.v2.ProductService.ImportProducts"
+//	"google.cloud.retail.v2.EventService.ImportUserEvents"
 type ImportErrorContext struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

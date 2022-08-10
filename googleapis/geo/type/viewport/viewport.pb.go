@@ -43,18 +43,18 @@ const (
 // inclusive, and the longitude bounds must range between -180 to 180 degrees
 // inclusive. Various cases include:
 //
-//  - If `low` = `high`, the viewport consists of that single point.
+//   - If `low` = `high`, the viewport consists of that single point.
 //
-//  - If `low.longitude` > `high.longitude`, the longitude range is inverted
-//    (the viewport crosses the 180 degree longitude line).
+//   - If `low.longitude` > `high.longitude`, the longitude range is inverted
+//     (the viewport crosses the 180 degree longitude line).
 //
-//  - If `low.longitude` = -180 degrees and `high.longitude` = 180 degrees,
-//    the viewport includes all longitudes.
+//   - If `low.longitude` = -180 degrees and `high.longitude` = 180 degrees,
+//     the viewport includes all longitudes.
 //
-//  - If `low.longitude` = 180 degrees and `high.longitude` = -180 degrees,
-//    the longitude range is empty.
+//   - If `low.longitude` = 180 degrees and `high.longitude` = -180 degrees,
+//     the longitude range is empty.
 //
-//  - If `low.latitude` > `high.latitude`, the latitude range is empty.
+//   - If `low.latitude` > `high.latitude`, the latitude range is empty.
 //
 // Both `low` and `high` must be populated, and the represented box cannot be
 // empty (as specified by the definitions above). An empty viewport will result
@@ -62,16 +62,16 @@ const (
 //
 // For example, this viewport fully encloses New York City:
 //
-// {
-//     "low": {
-//         "latitude": 40.477398,
-//         "longitude": -74.259087
-//     },
-//     "high": {
-//         "latitude": 40.91618,
-//         "longitude": -73.70018
-//     }
-// }
+//	{
+//	    "low": {
+//	        "latitude": 40.477398,
+//	        "longitude": -74.259087
+//	    },
+//	    "high": {
+//	        "latitude": 40.91618,
+//	        "longitude": -73.70018
+//	    }
+//	}
 type Viewport struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

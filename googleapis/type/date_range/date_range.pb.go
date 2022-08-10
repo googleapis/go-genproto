@@ -67,18 +67,18 @@ const (
 // the rules for evaluating whether that date is inside the date range are as
 // follows:
 //
-//  * When comparing the date to the start of the date range, unspecified months
-//    should be replaced with 1, and unspecified days should be replaced with 1.
-//    For example, the year 2000 is within the date range with start equal to
-//    January 1, 2000 and no end. And the date January 1, 2000 is within the
-//    date range with start equal to the year 2000 and no end.
+//   - When comparing the date to the start of the date range, unspecified months
+//     should be replaced with 1, and unspecified days should be replaced with 1.
+//     For example, the year 2000 is within the date range with start equal to
+//     January 1, 2000 and no end. And the date January 1, 2000 is within the
+//     date range with start equal to the year 2000 and no end.
 //
-//  * When comparing the date to the end of the date range, unspecified months
-//    should be replaced with 12, and unspecified days should be replaced with
-//    the last valid day for the month/year. For example, the year 2000 is
-//    within the date range with start equal to January 1, 1999 and end equal to
-//    December 31, 2000. And the date December 31, 2001 is within the date range
-//    with start equal to the year 2000 and end equal to the year 2001.
+//   - When comparing the date to the end of the date range, unspecified months
+//     should be replaced with 12, and unspecified days should be replaced with
+//     the last valid day for the month/year. For example, the year 2000 is
+//     within the date range with start equal to January 1, 1999 and end equal to
+//     December 31, 2000. And the date December 31, 2001 is within the date range
+//     with start equal to the year 2000 and end equal to the year 2001.
 //
 // The semantics of start and end are the same as those of [google.type.Date][google.type.Date],
 // except that year must always be non-zero in DateRange.

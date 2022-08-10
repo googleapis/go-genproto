@@ -42,15 +42,15 @@ const (
 //
 // Example service configuration:
 //
-//     name: library-example.googleapis.com
-//     endpoints:
-//       # Below entry makes 'google.example.library.v1.Library'
-//       # API be served from endpoint address library-example.googleapis.com.
-//       # It also allows HTTP OPTIONS calls to be passed to the backend, for
-//       # it to decide whether the subsequent cross-origin request is
-//       # allowed to proceed.
-//     - name: library-example.googleapis.com
-//       allow_cors: true
+//	name: library-example.googleapis.com
+//	endpoints:
+//	  # Below entry makes 'google.example.library.v1.Library'
+//	  # API be served from endpoint address library-example.googleapis.com.
+//	  # It also allows HTTP OPTIONS calls to be passed to the backend, for
+//	  # it to decide whether the subsequent cross-origin request is
+//	  # allowed to proceed.
+//	- name: library-example.googleapis.com
+//	  allow_cors: true
 type Endpoint struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

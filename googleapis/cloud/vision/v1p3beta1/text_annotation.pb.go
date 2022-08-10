@@ -169,7 +169,9 @@ func (Block_BlockType) EnumDescriptor() ([]byte, []int) {
 
 // TextAnnotation contains a structured representation of OCR extracted text.
 // The hierarchy of an OCR extracted text structure is like this:
-//     TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
+//
+//	TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol
+//
 // Each structural component, starting from Page, may further have their own
 // properties. Properties describe detected languages, breaks etc.. Please refer
 // to the

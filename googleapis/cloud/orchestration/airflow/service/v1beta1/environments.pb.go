@@ -1830,11 +1830,13 @@ func (x *EncryptionConfig) GetKmsKeyName() string {
 // The following example:
 //
 // ```
-//    {
-//      "startTime":"2019-08-01T01:00:00Z"
-//      "endTime":"2019-08-01T07:00:00Z"
-//      "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE"
-//    }
+//
+//	{
+//	  "startTime":"2019-08-01T01:00:00Z"
+//	  "endTime":"2019-08-01T07:00:00Z"
+//	  "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE"
+//	}
+//
 // ```
 //
 // would define a maintenance window between 01 and 07 hours UTC during

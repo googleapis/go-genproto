@@ -265,7 +265,9 @@ func (m *DockerImage_Fingerprint) GetV2Name() string {
 // Basis describes the base image portion (Note) of the DockerImage
 // relationship.  Linked occurrences are derived from this or an
 // equivalent image via:
-//   FROM <Basis.resource_url>
+//
+//	FROM <Basis.resource_url>
+//
 // Or an equivalent reference, e.g. a tag of the resource_url.
 type DockerImage_Basis struct {
 	// The resource_url for the resource representing the basis of

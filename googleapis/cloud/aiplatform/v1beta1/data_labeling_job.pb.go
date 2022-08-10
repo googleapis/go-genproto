@@ -333,8 +333,9 @@ func (x *DataLabelingJob) GetActiveLearningConfig() *ActiveLearningConfig {
 }
 
 // Parameters that configure the active learning pipeline. Active learning will
-//  label the data incrementally by several iterations. For every iteration, it
-//  will select a batch of data based on the sampling strategy.
+//
+//	label the data incrementally by several iterations. For every iteration, it
+//	will select a batch of data based on the sampling strategy.
 type ActiveLearningConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

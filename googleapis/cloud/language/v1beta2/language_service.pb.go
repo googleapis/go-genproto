@@ -1546,7 +1546,6 @@ func (EntityMention_Type) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_language_v1beta2_language_service_proto_rawDescGZIP(), []int{7, 0}
 }
 
-//
 // Represents the input to API methods.
 type Document struct {
 	state         protoimpl.MessageState
