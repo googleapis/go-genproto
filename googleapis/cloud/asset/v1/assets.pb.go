@@ -348,8 +348,8 @@ type Asset struct {
 	// effectively policy is the union of both the policy set on this resource
 	// and each policy set on all of the resource's ancestry resource levels in
 	// the hierarchy. See
-	// [this topic](https://cloud.google.com/iam/docs/policies#inheritance) for
-	// more information.
+	// [this topic](https://cloud.google.com/iam/help/allow-policies/inheritance)
+	// for more information.
 	IamPolicy *v1.Policy `protobuf:"bytes,4,opt,name=iam_policy,json=iamPolicy,proto3" json:"iam_policy,omitempty"`
 	// A representation of an [organization
 	// policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy).
@@ -360,6 +360,7 @@ type Asset struct {
 	// policy](https://cloud.google.com/access-context-manager/docs/overview#access-policies).
 	//
 	// Types that are assignable to AccessContextPolicy:
+	//
 	//	*Asset_AccessPolicy
 	//	*Asset_AccessLevel
 	//	*Asset_ServicePerimeter
@@ -922,6 +923,7 @@ func (x *RelatedAsset) GetRelationshipType() string {
 }
 
 // A result of Resource Search, containing information of a cloud resource.
+// Next ID: 29
 type ResourceSearchResult struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1008,9 +1010,10 @@ type ResourceSearchResult struct {
 	// To search against the `labels`:
 	//
 	// * use a field query:
-	//     - query on any label's key or value. Example: `labels:prod`
-	//     - query by a given label. Example: `labels.env:prod`
-	//     - query by a given label's existence. Example: `labels.env:*`
+	//   - query on any label's key or value. Example: `labels:prod`
+	//   - query by a given label. Example: `labels.env:prod`
+	//   - query by a given label's existence. Example: `labels.env:*`
+	//
 	// * use a free text query. Example: `prod`
 	Labels map[string]string `protobuf:"bytes,7,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Network tags associated with this resource. Like labels, network tags are a
@@ -1043,9 +1046,9 @@ type ResourceSearchResult struct {
 	// To search against `create_time`:
 	//
 	// * use a field query.
-	//     - value in seconds since unix epoch. Example: `createTime > 1609459200`
-	//     - value in date string. Example: `createTime > 2021-01-01`
-	//     - value in date-time string (must be quoted). Example: `createTime >
+	//   - value in seconds since unix epoch. Example: `createTime > 1609459200`
+	//   - value in date string. Example: `createTime > 2021-01-01`
+	//   - value in date-time string (must be quoted). Example: `createTime >
 	//     "2021-01-01T00:00:00"`
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// The last update timestamp of this resource, at which the resource was last
@@ -1056,9 +1059,9 @@ type ResourceSearchResult struct {
 	// To search against `update_time`:
 	//
 	// * use a field query.
-	//     - value in seconds since unix epoch. Example: `updateTime < 1609459200`
-	//     - value in date string. Example: `updateTime < 2021-01-01`
-	//     - value in date-time string (must be quoted). Example: `updateTime <
+	//   - value in seconds since unix epoch. Example: `updateTime < 1609459200`
+	//   - value in date string. Example: `updateTime < 2021-01-01`
+	//   - value in date-time string (must be quoted). Example: `updateTime <
 	//     "2021-01-01T00:00:00"`
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// The state of this resource. Different resources types have different state
@@ -1098,9 +1101,9 @@ type ResourceSearchResult struct {
 	//
 	// To search against the `additional_attributes`:
 	//
-	// * use a free text query to match the attributes values. Example: to search
-	//   `additional_attributes = { dnsName: "foobar" }`, you can issue a query
-	//   `foobar`.
+	//   - use a free text query to match the attributes values. Example: to search
+	//     `additional_attributes = { dnsName: "foobar" }`, you can issue a query
+	//     `foobar`.
 	AdditionalAttributes *structpb.Struct `protobuf:"bytes,9,opt,name=additional_attributes,json=additionalAttributes,proto3" json:"additional_attributes,omitempty"`
 	// The full resource name of this resource's parent, if it has one.
 	// To search against the `parent_full_resource_name`:
@@ -1137,35 +1140,35 @@ type ResourceSearchResult struct {
 	// To search against the `tagKeys`:
 	//
 	// * use a field query. Example:
-	//     - `tagKeys:"123456789/env*"`
-	//     - `tagKeys="123456789/env"`
-	//     - `tagKeys:"env"`
+	//   - `tagKeys:"123456789/env*"`
+	//   - `tagKeys="123456789/env"`
+	//   - `tagKeys:"env"`
 	//
 	// * use a free text query. Example:
-	//     - `env`
+	//   - `env`
 	TagKeys []string `protobuf:"bytes,23,rep,name=tag_keys,json=tagKeys,proto3" json:"tag_keys,omitempty"`
 	// TagValue namespaced names, in the format of
 	// {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}.
 	// To search against the `tagValues`:
 	//
 	// * use a field query. Example:
-	//     - `tagValues:"env"`
-	//     - `tagValues:"env/prod"`
-	//     - `tagValues:"123456789/env/prod*"`
-	//     - `tagValues="123456789/env/prod"`
+	//   - `tagValues:"env"`
+	//   - `tagValues:"env/prod"`
+	//   - `tagValues:"123456789/env/prod*"`
+	//   - `tagValues="123456789/env/prod"`
 	//
 	// * use a free text query. Example:
-	//     - `prod`
+	//   - `prod`
 	TagValues []string `protobuf:"bytes,25,rep,name=tag_values,json=tagValues,proto3" json:"tag_values,omitempty"`
 	// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}.
 	// To search against the `tagValueIds`:
 	//
 	// * use a field query. Example:
-	//     - `tagValueIds:"456"`
-	//     - `tagValueIds="tagValues/456"`
+	//   - `tagValueIds:"456"`
+	//   - `tagValueIds="tagValues/456"`
 	//
 	// * use a free text query. Example:
-	//     - `456`
+	//   - `456`
 	TagValueIds []string `protobuf:"bytes,26,rep,name=tag_value_ids,json=tagValueIds,proto3" json:"tag_value_ids,omitempty"`
 	// The type of this resource's immediate parent, if there is one.
 	//
@@ -1683,12 +1686,12 @@ type IamPolicySearchResult struct {
 	// To search against the `policy` bindings:
 	//
 	// * use a field query:
-	//     - query by the policy contained members. Example:
-	//       `policy:amy@gmail.com`
-	//     - query by the policy contained roles. Example:
-	//       `policy:roles/compute.admin`
-	//     - query by the policy contained roles' included permissions. Example:
-	//       `policy.role.permissions:compute.instances.create`
+	//   - query by the policy contained members. Example:
+	//     `policy:amy@gmail.com`
+	//   - query by the policy contained roles. Example:
+	//     `policy:roles/compute.admin`
+	//   - query by the policy contained roles' included permissions. Example:
+	//     `policy.role.permissions:compute.instances.create`
 	Policy *v1.Policy `protobuf:"bytes,3,opt,name=policy,proto3" json:"policy,omitempty"`
 	// Explanation about the IAM policy search result. It contains additional
 	// information to explain why the search result matches the query.
@@ -2156,6 +2159,7 @@ type IamPolicyAnalysisResult_Access struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to OneofAccess:
+	//
 	//	*IamPolicyAnalysisResult_Access_Role
 	//	*IamPolicyAnalysisResult_Access_Permission
 	OneofAccess isIamPolicyAnalysisResult_Access_OneofAccess `protobuf_oneof:"oneof_access"`
