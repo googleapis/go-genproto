@@ -231,8 +231,8 @@ type Route struct {
 	// The travel distance of the route, in meters.
 	DistanceMeters int32 `protobuf:"varint,2,opt,name=distance_meters,json=distanceMeters,proto3" json:"distance_meters,omitempty"`
 	// The length of time needed to navigate the route. If you set the
-	// `route_preference` to `TRAFFIC_UNAWARE`, then this value is the same as
-	// `static_duration`. If you set the `route_preference` to either
+	// `routing_preference` to `TRAFFIC_UNAWARE`, then this value is the same as
+	// `static_duration`. If you set the `routing_preference` to either
 	// `TRAFFIC_AWARE` or `TRAFFIC_AWARE_OPTIMAL`, then this value is calculated
 	// taking traffic conditions into account.
 	Duration *durationpb.Duration `protobuf:"bytes,3,opt,name=duration,proto3" json:"duration,omitempty"`
@@ -388,8 +388,8 @@ type RouteTravelAdvisory struct {
 	//
 	// Example:
 	//
-	//     polyline: A ---- B ---- C ---- D ---- E ---- F ---- G
-	//     speed_reading_intervals: [A,C), [C,D), [D,G).
+	//	polyline: A ---- B ---- C ---- D ---- E ---- F ---- G
+	//	speed_reading_intervals: [A,C), [C,D), [D,G).
 	SpeedReadingIntervals []*SpeedReadingInterval `protobuf:"bytes,3,rep,name=speed_reading_intervals,json=speedReadingIntervals,proto3" json:"speed_reading_intervals,omitempty"`
 	// Information related to the custom layer data that the customer specified
 	// (e.g. time spent in a customer specified area).
@@ -477,8 +477,8 @@ type RouteLegTravelAdvisory struct {
 	//
 	// Example:
 	//
-	//     polyline: A ---- B ---- C ---- D ---- E ---- F ---- G
-	//     speed_reading_intervals: [A,C), [C,D), [D,G).
+	//	polyline: A ---- B ---- C ---- D ---- E ---- F ---- G
+	//	speed_reading_intervals: [A,C), [C,D), [D,G).
 	SpeedReadingIntervals []*SpeedReadingInterval `protobuf:"bytes,2,rep,name=speed_reading_intervals,json=speedReadingIntervals,proto3" json:"speed_reading_intervals,omitempty"`
 	// Information related to the custom layer data that the customer specified
 	// (e.g. time spent in a customer specified area).
@@ -553,8 +553,8 @@ type RouteLegStepTravelAdvisory struct {
 	//
 	// Example:
 	//
-	//     polyline: A ---- B ---- C ---- D ---- E ---- F ---- G
-	//     speed_reading_intervals: [A,C), [C,D), [D,G).
+	//	polyline: A ---- B ---- C ---- D ---- E ---- F ---- G
+	//	speed_reading_intervals: [A,C), [C,D), [D,G).
 	SpeedReadingIntervals []*SpeedReadingInterval `protobuf:"bytes,1,rep,name=speed_reading_intervals,json=speedReadingIntervals,proto3" json:"speed_reading_intervals,omitempty"`
 }
 

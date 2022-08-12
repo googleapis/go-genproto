@@ -116,7 +116,9 @@ type ComputeRoutesRequest struct {
 	TravelMode RouteTravelMode `protobuf:"varint,4,opt,name=travel_mode,json=travelMode,proto3,enum=google.maps.routing.v2.RouteTravelMode" json:"travel_mode,omitempty"`
 	// Optional. Specifies how to compute the route. The server
 	// attempts to use the selected routing preference to compute the route. If
-	//  the routing preference results in an error or an extra long latency, then
+	//
+	//	the routing preference results in an error or an extra long latency, then
+	//
 	// an error is returned. In the future, we might implement a fallback
 	// mechanism to use a different option when the preferred option does not give
 	// a valid result. You can specify this option only when the `travel_mode` is
@@ -130,7 +132,8 @@ type ComputeRoutesRequest struct {
 	// defaults to the time that you made the request. If you set this value to a
 	// time that has already occurred, then the request fails.
 	DepartureTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=departure_time,json=departureTime,proto3" json:"departure_time,omitempty"`
-	// Optional. Specifies whether to calculate alternate routes in addition to the route.
+	// Optional. Specifies whether to calculate alternate routes in addition to
+	// the route.
 	ComputeAlternativeRoutes bool `protobuf:"varint,8,opt,name=compute_alternative_routes,json=computeAlternativeRoutes,proto3" json:"compute_alternative_routes,omitempty"`
 	// Optional. A set of conditions to satisfy that affect the way routes are
 	// calculated.
@@ -337,8 +340,8 @@ type ComputeRouteMatrixRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Array of origins, which determines the rows of the response matrix.
-	// Several size restrictions apply to the cardinality of origins and
+	// Required. Array of origins, which determines the rows of the response
+	// matrix. Several size restrictions apply to the cardinality of origins and
 	// destinations:
 	//
 	// * The number of elements (origins × destinations) must be no greater than
@@ -348,21 +351,22 @@ type ComputeRouteMatrixRequest struct {
 	// * The number of waypoints (origins + destinations) specified as `place_id`
 	// must be no greater than 50.
 	Origins []*RouteMatrixOrigin `protobuf:"bytes,1,rep,name=origins,proto3" json:"origins,omitempty"`
-	// Required. Array of destinations, which determines the columns of the response matrix.
+	// Required. Array of destinations, which determines the columns of the
+	// response matrix.
 	Destinations []*RouteMatrixDestination `protobuf:"bytes,2,rep,name=destinations,proto3" json:"destinations,omitempty"`
 	// Optional. Specifies the mode of transportation.
 	TravelMode RouteTravelMode `protobuf:"varint,3,opt,name=travel_mode,json=travelMode,proto3,enum=google.maps.routing.v2.RouteTravelMode" json:"travel_mode,omitempty"`
-	// Optional. Specifies how to compute the route. The server attempts to use the selected
-	// routing preference to compute the route. If the routing preference results
-	// in an error or an extra long latency, an error is returned. In the future,
-	// we might implement a fallback mechanism to use a different option when the
-	// preferred option does not give a valid result. You can specify this option
-	// only when the `travel_mode` is `DRIVE` or `TWO_WHEELER`, otherwise the
-	// request fails.
+	// Optional. Specifies how to compute the route. The server attempts to use
+	// the selected routing preference to compute the route. If the routing
+	// preference results in an error or an extra long latency, an error is
+	// returned. In the future, we might implement a fallback mechanism to use a
+	// different option when the preferred option does not give a valid result.
+	// You can specify this option only when the `travel_mode` is `DRIVE` or
+	// `TWO_WHEELER`, otherwise the request fails.
 	RoutingPreference RoutingPreference `protobuf:"varint,4,opt,name=routing_preference,json=routingPreference,proto3,enum=google.maps.routing.v2.RoutingPreference" json:"routing_preference,omitempty"`
-	// Optional. The departure time. If you don't set this value, this defaults to the time
-	// that you made the request. If you set this value to a time that has already
-	// occurred, the request fails.
+	// Optional. The departure time. If you don't set this value, this defaults to
+	// the time that you made the request. If you set this value to a time that
+	// has already occurred, the request fails.
 	DepartureTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=departure_time,json=departureTime,proto3" json:"departure_time,omitempty"`
 }
 
@@ -558,8 +562,8 @@ type RouteMatrixElement struct {
 	// The travel distance of the route, in meters.
 	DistanceMeters int32 `protobuf:"varint,4,opt,name=distance_meters,json=distanceMeters,proto3" json:"distance_meters,omitempty"`
 	// The length of time needed to navigate the route. If you set the
-	// `route_preference` to `TRAFFIC_UNAWARE`, then this value is the same as
-	// `static_duration`. If you set the `route_preference` to either
+	// `routing_preference` to `TRAFFIC_UNAWARE`, then this value is the same as
+	// `static_duration`. If you set the `routing_preference` to either
 	// `TRAFFIC_AWARE` or `TRAFFIC_AWARE_OPTIMAL`, then this value is calculated
 	// taking traffic conditions into account.
 	Duration *durationpb.Duration `protobuf:"bytes,5,opt,name=duration,proto3" json:"duration,omitempty"`
@@ -1111,12 +1115,14 @@ type RoutesClient interface {
 	//
 	// For example, in this method:
 	//
-	// * Field mask of all available fields (for manual inspection):
-	//   `X-Goog-FieldMask: *`
-	// * Field mask of Route-level duration, distance, and polyline (an example
+	//   - Field mask of all available fields (for manual inspection):
+	//     `X-Goog-FieldMask: *`
+	//   - Field mask of Route-level duration, distance, and polyline (an example
+	//
 	// production setup):
-	//   `X-Goog-FieldMask:
-	//   routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline`
+	//
+	//	`X-Goog-FieldMask:
+	//	routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline`
 	//
 	// Google discourage the use of the wildcard (`*`) response field mask, or
 	// specifying the field mask at the top level (`routes`), because:
@@ -1147,12 +1153,12 @@ type RoutesClient interface {
 	//
 	// For example, in this method:
 	//
-	// * Field mask of all available fields (for manual inspection):
-	//   `X-Goog-FieldMask: *`
-	// * Field mask of route durations, distances, element status, condition, and
-	//   element indices (an example production setup):
-	//   `X-Goog-FieldMask:
-	//   originIndex,destinationIndex,status,condition,distanceMeters,duration`
+	//   - Field mask of all available fields (for manual inspection):
+	//     `X-Goog-FieldMask: *`
+	//   - Field mask of route durations, distances, element status, condition, and
+	//     element indices (an example production setup):
+	//     `X-Goog-FieldMask:
+	//     originIndex,destinationIndex,status,condition,distanceMeters,duration`
 	//
 	// It is critical that you include `status` in your field mask as otherwise
 	// all messages will appear to be OK. Google discourages the use of the
@@ -1236,12 +1242,14 @@ type RoutesServer interface {
 	//
 	// For example, in this method:
 	//
-	// * Field mask of all available fields (for manual inspection):
-	//   `X-Goog-FieldMask: *`
-	// * Field mask of Route-level duration, distance, and polyline (an example
+	//   - Field mask of all available fields (for manual inspection):
+	//     `X-Goog-FieldMask: *`
+	//   - Field mask of Route-level duration, distance, and polyline (an example
+	//
 	// production setup):
-	//   `X-Goog-FieldMask:
-	//   routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline`
+	//
+	//	`X-Goog-FieldMask:
+	//	routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline`
 	//
 	// Google discourage the use of the wildcard (`*`) response field mask, or
 	// specifying the field mask at the top level (`routes`), because:
@@ -1272,12 +1280,12 @@ type RoutesServer interface {
 	//
 	// For example, in this method:
 	//
-	// * Field mask of all available fields (for manual inspection):
-	//   `X-Goog-FieldMask: *`
-	// * Field mask of route durations, distances, element status, condition, and
-	//   element indices (an example production setup):
-	//   `X-Goog-FieldMask:
-	//   originIndex,destinationIndex,status,condition,distanceMeters,duration`
+	//   - Field mask of all available fields (for manual inspection):
+	//     `X-Goog-FieldMask: *`
+	//   - Field mask of route durations, distances, element status, condition, and
+	//     element indices (an example production setup):
+	//     `X-Goog-FieldMask:
+	//     originIndex,destinationIndex,status,condition,distanceMeters,duration`
 	//
 	// It is critical that you include `status` in your field mask as otherwise
 	// all messages will appear to be OK. Google discourages the use of the
