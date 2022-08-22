@@ -575,6 +575,7 @@ type Conversation struct {
 	// Metadata that applies to the conversation.
 	//
 	// Types that are assignable to Metadata:
+	//
 	//	*Conversation_CallMetadata_
 	Metadata isConversation_Metadata `protobuf_oneof:"metadata"`
 	// A time to live expiration setting, can be either a specified timestamp or a
@@ -583,6 +584,7 @@ type Conversation struct {
 	// the specified time.
 	//
 	// Types that are assignable to Expiration:
+	//
 	//	*Conversation_ExpireTime
 	//	*Conversation_Ttl
 	Expiration isConversation_Expiration `protobuf_oneof:"expiration"`
@@ -926,6 +928,7 @@ type ConversationDataSource struct {
 	// The source of the conversation.
 	//
 	// Types that are assignable to Source:
+	//
 	//	*ConversationDataSource_GcsSource
 	//	*ConversationDataSource_DialogflowSource
 	Source isConversationDataSource_Source `protobuf_oneof:"source"`
@@ -1132,6 +1135,7 @@ type AnalysisResult struct {
 	// Metadata discovered during analysis.
 	//
 	// Types that are assignable to Metadata:
+	//
 	//	*AnalysisResult_CallAnalysisMetadata_
 	Metadata isAnalysisResult_Metadata `protobuf_oneof:"metadata"`
 	// The time at which the analysis ended.
@@ -1397,6 +1401,7 @@ type CallAnnotation struct {
 	// The data in the annotation.
 	//
 	// Types that are assignable to Data:
+	//
 	//	*CallAnnotation_InterruptionData
 	//	*CallAnnotation_SentimentData
 	//	*CallAnnotation_SilenceData
@@ -1585,6 +1590,7 @@ type AnnotationBoundary struct {
 	// A detailed boundary, which describes a more specific point.
 	//
 	// Types that are assignable to DetailedBoundary:
+	//
 	//	*AnnotationBoundary_WordIndex
 	DetailedBoundary isAnnotationBoundary_DetailedBoundary `protobuf_oneof:"detailed_boundary"`
 	// The index in the sequence of transcribed pieces of the conversation where
@@ -2754,6 +2760,7 @@ type PhraseMatchRuleConfig struct {
 	// The configuration of the phrase match rule.
 	//
 	// Types that are assignable to Config:
+	//
 	//	*PhraseMatchRuleConfig_ExactMatchConfig
 	Config isPhraseMatchRuleConfig_Config `protobuf_oneof:"config"`
 }
@@ -2997,6 +3004,7 @@ type RuntimeAnnotation struct {
 	// The data in the annotation.
 	//
 	// Types that are assignable to Data:
+	//
 	//	*RuntimeAnnotation_ArticleSuggestion
 	//	*RuntimeAnnotation_FaqAnswer
 	//	*RuntimeAnnotation_SmartReply
@@ -3251,9 +3259,9 @@ type ArticleSuggestionData struct {
 	// Map that contains metadata about the Article Suggestion and the document
 	// that it originates from.
 	Metadata map[string]string `protobuf:"bytes,4,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Name of the query record.
+	// The name of the answer record.
 	// Format:
-	// projects/{project}/locations/{location}/queryRecords/{query_record}
+	// projects/{project}/locations/{location}/answerRecords/{answer_record}
 	QueryRecord string `protobuf:"bytes,5,opt,name=query_record,json=queryRecord,proto3" json:"query_record,omitempty"`
 	// The knowledge document that this answer was extracted from.
 	// Format:
@@ -3352,9 +3360,9 @@ type FaqAnswerData struct {
 	// Map that contains metadata about the FAQ answer and the document that
 	// it originates from.
 	Metadata map[string]string `protobuf:"bytes,4,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Name of the query record.
+	// The name of the answer record.
 	// Format:
-	// projects/{project}/locations/{location}/queryRecords/{query_record}.
+	// projects/{project}/locations/{location}/answerRecords/{answer_record}
 	QueryRecord string `protobuf:"bytes,5,opt,name=query_record,json=queryRecord,proto3" json:"query_record,omitempty"`
 	// The knowledge document that this answer was extracted from.
 	// Format:
@@ -3451,9 +3459,9 @@ type SmartReplyData struct {
 	// Map that contains metadata about the Smart Reply and the document from
 	// which it originates.
 	Metadata map[string]string `protobuf:"bytes,3,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Name of the query record.
+	// The name of the answer record.
 	// Format:
-	// projects/{project}/locations/{location}/queryRecords/{query_record}
+	// projects/{project}/locations/{location}/answerRecords/{answer_record}
 	QueryRecord string `protobuf:"bytes,4,opt,name=query_record,json=queryRecord,proto3" json:"query_record,omitempty"`
 }
 
@@ -3532,9 +3540,9 @@ type SmartComposeSuggestionData struct {
 	// Map that contains metadata about the Smart Compose suggestion and the
 	// document from which it originates.
 	Metadata map[string]string `protobuf:"bytes,3,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Name of the query record.
+	// The name of the answer record.
 	// Format:
-	// projects/{project}/locations/{location}/queryRecords/{query_record}
+	// projects/{project}/locations/{location}/answerRecords/{answer_record}
 	QueryRecord string `protobuf:"bytes,4,opt,name=query_record,json=queryRecord,proto3" json:"query_record,omitempty"`
 }
 
@@ -3665,6 +3673,7 @@ type ConversationParticipant struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Participant:
+	//
 	//	*ConversationParticipant_DialogflowParticipantName
 	//	*ConversationParticipant_UserId
 	Participant isConversationParticipant_Participant `protobuf_oneof:"participant"`
