@@ -393,7 +393,7 @@ type Instance struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Format: `projects/*/locations/*/instance`.
-	// Currently only locations/global is supported.
+	// Currently only `locations/global` is supported.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Output only. Creation timestamp.
 	CreateTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
