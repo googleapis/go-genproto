@@ -220,9 +220,9 @@ type UpdateDatasetRequest struct {
 	// For the `FieldMask` definition, see [google.protobuf.FieldMask][google.protobuf.FieldMask].
 	// Updatable fields:
 	//
-	//   * `display_name`
-	//   * `description`
-	//   * `labels`
+	//   - `display_name`
+	//   - `description`
+	//   - `labels`
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -284,17 +284,17 @@ type ListDatasetsRequest struct {
 	// An expression for filtering the results of the request. For field names
 	// both snake_case and camelCase are supported.
 	//
-	//   * `display_name`: supports = and !=
-	//   * `metadata_schema_uri`: supports = and !=
-	//   * `labels` supports general map functions that is:
-	//     * `labels.key=value` - key:value equality
-	//     * `labels.key:* or labels:key - key existence
-	//     * A key including a space must be quoted. `labels."a key"`.
+	//   - `display_name`: supports = and !=
+	//   - `metadata_schema_uri`: supports = and !=
+	//   - `labels` supports general map functions that is:
+	//   - `labels.key=value` - key:value equality
+	//   - `labels.key:* or labels:key - key existence
+	//   - A key including a space must be quoted. `labels."a key"`.
 	//
 	// Some examples:
 	//
-	//   * `displayName="myDisplayName"`
-	//   * `labels.myKey="myValue"`
+	//   - `displayName="myDisplayName"`
+	//   - `labels.myKey="myValue"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -306,9 +306,9 @@ type ListDatasetsRequest struct {
 	// Use "desc" after a field name for descending.
 	// Supported fields:
 	//
-	//   * `display_name`
-	//   * `create_time`
-	//   * `update_time`
+	//   - `display_name`
+	//   - `create_time`
+	//   - `update_time`
 	OrderBy string `protobuf:"bytes,6,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 }
 
@@ -1070,8 +1070,7 @@ type ListSavedQueriesResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// A list of SavedQueries that matches the specified filter in the
-	// request.
+	// A list of SavedQueries that match the specified filter in the request.
 	SavedQueries []*SavedQuery `protobuf:"bytes,1,rep,name=saved_queries,json=savedQueries,proto3" json:"saved_queries,omitempty"`
 	// The standard List next-page token.
 	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`

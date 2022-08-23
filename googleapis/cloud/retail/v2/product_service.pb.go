@@ -390,19 +390,24 @@ type ListProductsRequest struct {
 	// [filter][google.cloud.retail.v2.ListProductsRequest.filter] is unset.
 	// * List [Product.Type.VARIANT][google.cloud.retail.v2.Product.Type.VARIANT]
 	// [Product][google.cloud.retail.v2.Product]s sharing the same
-	//   [Product.Type.PRIMARY][google.cloud.retail.v2.Product.Type.PRIMARY]
-	//   [Product][google.cloud.retail.v2.Product]. For example:
-	//     `primary_product_id = "some_product_id"`
+	//
+	//	[Product.Type.PRIMARY][google.cloud.retail.v2.Product.Type.PRIMARY]
+	//	[Product][google.cloud.retail.v2.Product]. For example:
+	//	  `primary_product_id = "some_product_id"`
+	//
 	// * List [Product][google.cloud.retail.v2.Product]s bundled in a
 	// [Product.Type.COLLECTION][google.cloud.retail.v2.Product.Type.COLLECTION]
 	// [Product][google.cloud.retail.v2.Product].
-	//   For example:
-	//     `collection_product_id = "some_product_id"`
+	//
+	//	For example:
+	//	  `collection_product_id = "some_product_id"`
+	//
 	// * List [Product][google.cloud.retail.v2.Product]s with a partibular type.
 	// For example:
-	//     `type = "PRIMARY"`
-	//     `type = "VARIANT"`
-	//     `type = "COLLECTION"`
+	//
+	//	`type = "PRIMARY"`
+	//	`type = "VARIANT"`
+	//	`type = "COLLECTION"`
 	//
 	// If the field is unrecognizable, an INVALID_ARGUMENT error is returned.
 	//
@@ -2433,6 +2438,13 @@ type ProductServiceClient interface {
 	// and
 	// [ProductService.RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces].
 	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
+	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
 	SetInventory(ctx context.Context, in *SetInventoryRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
@@ -2449,6 +2461,13 @@ type ProductServiceClient interface {
 	// or
 	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
+	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
 	AddFulfillmentPlaces(ctx context.Context, in *AddFulfillmentPlacesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
@@ -2464,6 +2483,13 @@ type ProductServiceClient interface {
 	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
 	// or
 	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2488,6 +2514,13 @@ type ProductServiceClient interface {
 	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
 	// has no effect on local inventories.
 	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
+	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
 	AddLocalInventories(ctx context.Context, in *AddLocalInventoriesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
@@ -2508,6 +2541,13 @@ type ProductServiceClient interface {
 	// and
 	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
 	// has no effect on local inventories.
+	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2682,6 +2722,13 @@ type ProductServiceServer interface {
 	// and
 	// [ProductService.RemoveFulfillmentPlaces][google.cloud.retail.v2.ProductService.RemoveFulfillmentPlaces].
 	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
+	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
 	SetInventory(context.Context, *SetInventoryRequest) (*longrunning.Operation, error)
@@ -2698,6 +2745,13 @@ type ProductServiceServer interface {
 	// or
 	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
 	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
+	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
 	AddFulfillmentPlaces(context.Context, *AddFulfillmentPlacesRequest) (*longrunning.Operation, error)
@@ -2713,6 +2767,13 @@ type ProductServiceServer interface {
 	// [ProductService.GetProduct][google.cloud.retail.v2.ProductService.GetProduct]
 	// or
 	// [ProductService.ListProducts][google.cloud.retail.v2.ProductService.ListProducts].
+	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
@@ -2737,6 +2798,13 @@ type ProductServiceServer interface {
 	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
 	// has no effect on local inventories.
 	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
+	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.
 	AddLocalInventories(context.Context, *AddLocalInventoriesRequest) (*longrunning.Operation, error)
@@ -2757,6 +2825,13 @@ type ProductServiceServer interface {
 	// and
 	// [ProductService.UpdateProduct][google.cloud.retail.v2.ProductService.UpdateProduct]
 	// has no effect on local inventories.
+	//
+	// The returned [Operation][]s will be obsolete after 1 day, and
+	// [GetOperation][] API will return NOT_FOUND afterwards.
+	//
+	// If conflicting updates are issued, the [Operation][]s associated with the
+	// stale updates will not be marked as [done][Operation.done] until being
+	// obsolete.
 	//
 	// This feature is only available for users who have Retail Search enabled.
 	// Please enable Retail Search on Cloud Console before using this feature.

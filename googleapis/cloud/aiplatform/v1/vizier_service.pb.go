@@ -400,7 +400,7 @@ type SuggestTrialsRequest struct {
 	// Required. The project and location that the Study belongs to.
 	// Format: `projects/{project}/locations/{location}/studies/{study}`
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The number of suggestions requested.
+	// Required. The number of suggestions requested. It must be positive.
 	SuggestionCount int32 `protobuf:"varint,2,opt,name=suggestion_count,json=suggestionCount,proto3" json:"suggestion_count,omitempty"`
 	// Required. The identifier of the client that is requesting the suggestion.
 	//

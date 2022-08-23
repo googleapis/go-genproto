@@ -99,12 +99,13 @@ type CompleteQueryRequest struct {
 	//
 	// * user-data
 	//
-	// * cloud-retail:
-	//   This option requires enabling auto-learning function first. See
-	//   [guidelines](https://cloud.google.com/retail/docs/completion-overview#generated-completion-dataset).
+	//   - cloud-retail:
+	//     This option requires enabling auto-learning function first. See
+	//     [guidelines](https://cloud.google.com/retail/docs/completion-overview#generated-completion-dataset).
 	Dataset string `protobuf:"bytes,6,opt,name=dataset,proto3" json:"dataset,omitempty"`
 	// Completion max suggestions. If left unset or set to 0, then will fallback
-	// to the configured value [CompletionConfig.max_suggestions][].
+	// to the configured value
+	// [CompletionConfig.max_suggestions][google.cloud.retail.v2.CompletionConfig.max_suggestions].
 	//
 	// The maximum allowed max suggestions is 20. If it is set higher, it will be
 	// capped by 20.
@@ -215,15 +216,15 @@ type CompleteQueryResponse struct {
 	// field is set and [UserEvent][google.cloud.retail.v2.UserEvent] is imported.
 	// The recent searches satisfy the follow rules:
 	//
-	//  * They are ordered from latest to oldest.
+	//   - They are ordered from latest to oldest.
 	//
-	//  * They are matched with
-	//  [CompleteQueryRequest.query][google.cloud.retail.v2.CompleteQueryRequest.query]
-	//  case insensitively.
+	//   - They are matched with
+	//     [CompleteQueryRequest.query][google.cloud.retail.v2.CompleteQueryRequest.query]
+	//     case insensitively.
 	//
-	//  * They are transformed to lower case.
+	//   - They are transformed to lower case.
 	//
-	//  * They are UTF-8 safe.
+	//   - They are UTF-8 safe.
 	//
 	// Recent searches are deduplicated. More recent searches will be reserved
 	// when duplication happens.

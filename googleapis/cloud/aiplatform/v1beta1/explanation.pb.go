@@ -371,13 +371,13 @@ type Attribution struct {
 	//
 	// The format of the value is determined by the feature's input format:
 	//
-	//   * If the feature is a scalar value, the attribution value is a
+	//   - If the feature is a scalar value, the attribution value is a
 	//     [floating number][google.protobuf.Value.number_value].
 	//
-	//   * If the feature is an array of scalar values, the attribution value is
+	//   - If the feature is an array of scalar values, the attribution value is
 	//     an [array][google.protobuf.Value.list_value].
 	//
-	//   * If the feature is a struct, the attribution value is a
+	//   - If the feature is a struct, the attribution value is a
 	//     [struct][google.protobuf.Value.struct_value]. The keys in the
 	//     attribution value struct are the same as the keys in the feature
 	//     struct. The formats of the values in the attribution struct are
@@ -574,7 +574,7 @@ type ExplanationSpec struct {
 
 	// Required. Parameters that configure explaining of the Model's predictions.
 	Parameters *ExplanationParameters `protobuf:"bytes,1,opt,name=parameters,proto3" json:"parameters,omitempty"`
-	// Required. Metadata describing the Model's input and output for explanation.
+	// Optional. Metadata describing the Model's input and output for explanation.
 	Metadata *ExplanationMetadata `protobuf:"bytes,2,opt,name=metadata,proto3" json:"metadata,omitempty"`
 }
 
@@ -631,6 +631,7 @@ type ExplanationParameters struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Method:
+	//
 	//	*ExplanationParameters_SampledShapleyAttribution
 	//	*ExplanationParameters_IntegratedGradientsAttribution
 	//	*ExplanationParameters_XraiAttribution
@@ -647,7 +648,7 @@ type ExplanationParameters struct {
 	// explaining.
 	//
 	// If not populated, returns attributions for [top_k][google.cloud.aiplatform.v1beta1.ExplanationParameters.top_k] indices of outputs.
-	// If neither top_k nor output_indeices is populated, returns the argmax
+	// If neither top_k nor output_indices is populated, returns the argmax
 	// index of the outputs.
 	//
 	// Only applicable to Models that predict multiple outputs (e,g, multi-class
@@ -1021,6 +1022,7 @@ type SmoothGradConfig struct {
 	// prior to computing gradients.
 	//
 	// Types that are assignable to GradientNoiseSigma:
+	//
 	//	*SmoothGradConfig_NoiseSigma
 	//	*SmoothGradConfig_FeatureNoiseSigma
 	GradientNoiseSigma isSmoothGradConfig_GradientNoiseSigma `protobuf_oneof:"GradientNoiseSigma"`
@@ -1242,6 +1244,7 @@ type Examples struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Config:
+	//
 	//	*Examples_NearestNeighborSearchConfig
 	//	*Examples_Presets
 	Config isExamples_Config `protobuf_oneof:"config"`
@@ -1869,7 +1872,7 @@ var file_google_cloud_aiplatform_v1beta1_explanation_proto_rawDesc = []byte{
 	0x20, 0x01, 0x28, 0x0b, 0x32, 0x34, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c,
 	0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76,
 	0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x45, 0x78, 0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52,
+	0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x42, 0x03, 0xe0, 0x41, 0x01, 0x52,
 	0x08, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x22, 0xad, 0x04, 0x0a, 0x15, 0x45, 0x78,
 	0x70, 0x6c, 0x61, 0x6e, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74,
 	0x65, 0x72, 0x73, 0x12, 0x7c, 0x0a, 0x1b, 0x73, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x64, 0x5f, 0x73,

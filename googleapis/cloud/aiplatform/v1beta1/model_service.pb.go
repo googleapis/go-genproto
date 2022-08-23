@@ -243,9 +243,11 @@ type GetModelRequest struct {
 	//
 	// In order to retrieve a specific version of the model, also provide
 	// the version ID or version alias.
-	//   Example: `projects/{project}/locations/{location}/models/{model}@2`
-	//              or
-	//            `projects/{project}/locations/{location}/models/{model}@golden`
+	//
+	//	Example: `projects/{project}/locations/{location}/models/{model}@2`
+	//	           or
+	//	         `projects/{project}/locations/{location}/models/{model}@golden`
+	//
 	// If no version ID or alias is specified, the "default" version will be
 	// returned. The "default" version alias is created for the first version of
 	// the model, and can be moved to other versions later on. There will be
@@ -304,19 +306,19 @@ type ListModelsRequest struct {
 	// An expression for filtering the results of the request. For field names
 	// both snake_case and camelCase are supported.
 	//
-	//   * `model` supports = and !=. `model` represents the Model ID,
+	//   - `model` supports = and !=. `model` represents the Model ID,
 	//     i.e. the last segment of the Model's [resource name][google.cloud.aiplatform.v1beta1.Model.name].
-	//   * `display_name` supports = and !=
-	//   * `labels` supports general map functions that is:
-	//     * `labels.key=value` - key:value equality
-	//     * `labels.key:* or labels:key - key existence
-	//     * A key including a space must be quoted. `labels."a key"`.
+	//   - `display_name` supports = and !=
+	//   - `labels` supports general map functions that is:
+	//   - `labels.key=value` - key:value equality
+	//   - `labels.key:* or labels:key - key existence
+	//   - A key including a space must be quoted. `labels."a key"`.
 	//
 	// Some examples:
 	//
-	//   * `model=1234`
-	//   * `displayName="myDisplayName"`
-	//   * `labels.myKey="myValue"`
+	//   - `model=1234`
+	//   - `displayName="myDisplayName"`
+	//   - `labels.myKey="myValue"`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -473,14 +475,14 @@ type ListModelVersionsRequest struct {
 	// An expression for filtering the results of the request. For field names
 	// both snake_case and camelCase are supported.
 	//
-	//   * `labels` supports general map functions that is:
-	//     * `labels.key=value` - key:value equality
-	//     * `labels.key:* or labels:key - key existence
-	//     * A key including a space must be quoted. `labels."a key"`.
+	//   - `labels` supports general map functions that is:
+	//   - `labels.key=value` - key:value equality
+	//   - `labels.key:* or labels:key - key existence
+	//   - A key including a space must be quoted. `labels."a key"`.
 	//
 	// Some examples:
 	//
-	//   * `labels.myKey="myValue"`
+	//   - `labels.myKey="myValue"`
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Mask specifying which fields to read.
 	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,5,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
@@ -915,7 +917,7 @@ type MergeVersionAliasesRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The set of version aliases to merge.
 	// The alias should be at most 128 characters, and match
-	// `[a-z][a-z0-9-]{0,126}[a-z-0-9]`.
+	// `[a-z][a-zA-Z0-9-]{0,126}[a-z-0-9]`.
 	// Add the `-` prefix to an alias means removing that alias from the version.
 	// `-` is NOT counted in the 128 characters. Example: `-golden` means removing
 	// the `golden` alias from the version.
@@ -1600,7 +1602,7 @@ type ListModelEvaluationSlicesRequest struct {
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// The standard list filter.
 	//
-	//   * `slice.dimension` - for =.
+	//   - `slice.dimension` - for =.
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`

@@ -89,7 +89,8 @@ func (ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_Predi
 	return file_google_cloud_aiplatform_v1_model_monitoring_proto_rawDescGZIP(), []int{0, 3, 0, 0}
 }
 
-// Next ID: 8
+// The objective configuration for model monitoring, including the information
+// needed to detect anomalies for one particular model.
 type ModelMonitoringObjectiveConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -166,13 +167,13 @@ func (x *ModelMonitoringObjectiveConfig) GetExplanationConfig() *ModelMonitoring
 	return nil
 }
 
-// Next ID: 3
 type ModelMonitoringAlertConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Alert:
+	//
 	//	*ModelMonitoringAlertConfig_EmailAlertConfig_
 	Alert isModelMonitoringAlertConfig_Alert `protobuf_oneof:"alert"`
 	// Dump the anomalies to Cloud Logging. The anomalies will be put to json
@@ -248,13 +249,13 @@ type ModelMonitoringAlertConfig_EmailAlertConfig_ struct {
 func (*ModelMonitoringAlertConfig_EmailAlertConfig_) isModelMonitoringAlertConfig_Alert() {}
 
 // The config for feature monitoring threshold.
-// Next ID: 3
 type ThresholdConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Threshold:
+	//
 	//	*ThresholdConfig_Value
 	Threshold isThresholdConfig_Threshold `protobuf_oneof:"threshold"`
 }
@@ -312,10 +313,11 @@ type isThresholdConfig_Threshold interface {
 type ThresholdConfig_Value struct {
 	// Specify a threshold value that can trigger the alert.
 	// If this threshold config is for feature distribution distance:
-	//   1. For categorical feature, the distribution distance is calculated by
-	//      L-inifinity norm.
-	//   2. For numerical feature, the distribution distance is calculated by
-	//      Jensen–Shannon divergence.
+	//  1. For categorical feature, the distribution distance is calculated by
+	//     L-inifinity norm.
+	//  2. For numerical feature, the distribution distance is calculated by
+	//     Jensen–Shannon divergence.
+	//
 	// Each feature must have a non-zero threshold if they need to be monitored.
 	// Otherwise no alert will be triggered for that feature.
 	Value float64 `protobuf:"fixed64,1,opt,name=value,proto3,oneof"`
@@ -325,7 +327,6 @@ func (*ThresholdConfig_Value) isThresholdConfig_Threshold() {}
 
 // Sampling Strategy for logging, can be for both training and prediction
 // dataset.
-// Next ID: 2
 type SamplingStrategy struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -381,6 +382,7 @@ type ModelMonitoringObjectiveConfig_TrainingDataset struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to DataSource:
+	//
 	//	*ModelMonitoringObjectiveConfig_TrainingDataset_Dataset
 	//	*ModelMonitoringObjectiveConfig_TrainingDataset_GcsSource
 	//	*ModelMonitoringObjectiveConfig_TrainingDataset_BigquerySource
@@ -737,6 +739,7 @@ type ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline struct
 	// used to generate the baseline of feature attribution scores.
 	//
 	// Types that are assignable to Destination:
+	//
 	//	*ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_Gcs
 	//	*ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_Bigquery
 	Destination isModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_Destination `protobuf_oneof:"destination"`
