@@ -159,7 +159,7 @@ type LookupRequest struct {
 	ProjectId string `protobuf:"bytes,8,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// The ID of the database against which to make the request.
 	//
-	// '(default)' is not allowed; please use empty string '' to refer the default
+	// '(default)' is not allowed; please use empty string ” to refer the default
 	// database.
 	DatabaseId string `protobuf:"bytes,9,opt,name=database_id,json=databaseId,proto3" json:"database_id,omitempty"`
 	// The options for this lookup request.
@@ -320,7 +320,7 @@ type RunQueryRequest struct {
 	ProjectId string `protobuf:"bytes,8,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// The ID of the database against which to make the request.
 	//
-	// '(default)' is not allowed; please use empty string '' to refer the default
+	// '(default)' is not allowed; please use empty string ” to refer the default
 	// database.
 	DatabaseId string `protobuf:"bytes,9,opt,name=database_id,json=databaseId,proto3" json:"database_id,omitempty"`
 	// Entities are partitioned into subsets, identified by a partition ID.
@@ -333,6 +333,7 @@ type RunQueryRequest struct {
 	// The type of query.
 	//
 	// Types that are assignable to QueryType:
+	//
 	//	*RunQueryRequest_Query
 	//	*RunQueryRequest_GqlQuery
 	QueryType isRunQueryRequest_QueryType `protobuf_oneof:"query_type"`
@@ -505,7 +506,7 @@ type BeginTransactionRequest struct {
 	ProjectId string `protobuf:"bytes,8,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// The ID of the database against which to make the request.
 	//
-	// '(default)' is not allowed; please use empty string '' to refer the default
+	// '(default)' is not allowed; please use empty string ” to refer the default
 	// database.
 	DatabaseId string `protobuf:"bytes,9,opt,name=database_id,json=databaseId,proto3" json:"database_id,omitempty"`
 	// Options for a new transaction.
@@ -624,7 +625,7 @@ type RollbackRequest struct {
 	ProjectId string `protobuf:"bytes,8,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// The ID of the database against which to make the request.
 	//
-	// '(default)' is not allowed; please use empty string '' to refer the default
+	// '(default)' is not allowed; please use empty string ” to refer the default
 	// database.
 	DatabaseId string `protobuf:"bytes,9,opt,name=database_id,json=databaseId,proto3" json:"database_id,omitempty"`
 	// Required. The transaction identifier, returned by a call to
@@ -735,7 +736,7 @@ type CommitRequest struct {
 	ProjectId string `protobuf:"bytes,8,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// The ID of the database against which to make the request.
 	//
-	// '(default)' is not allowed; please use empty string '' to refer the default
+	// '(default)' is not allowed; please use empty string ” to refer the default
 	// database.
 	DatabaseId string `protobuf:"bytes,9,opt,name=database_id,json=databaseId,proto3" json:"database_id,omitempty"`
 	// The type of commit to perform. Defaults to `TRANSACTIONAL`.
@@ -743,6 +744,7 @@ type CommitRequest struct {
 	// Must be set when mode is `TRANSACTIONAL`.
 	//
 	// Types that are assignable to TransactionSelector:
+	//
 	//	*CommitRequest_Transaction
 	TransactionSelector isCommitRequest_TransactionSelector `protobuf_oneof:"transaction_selector"`
 	// The mutations to perform.
@@ -927,7 +929,7 @@ type AllocateIdsRequest struct {
 	ProjectId string `protobuf:"bytes,8,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// The ID of the database against which to make the request.
 	//
-	// '(default)' is not allowed; please use empty string '' to refer the default
+	// '(default)' is not allowed; please use empty string ” to refer the default
 	// database.
 	DatabaseId string `protobuf:"bytes,9,opt,name=database_id,json=databaseId,proto3" json:"database_id,omitempty"`
 	// Required. A list of keys with incomplete key paths for which to allocate IDs.
@@ -1048,7 +1050,7 @@ type ReserveIdsRequest struct {
 	ProjectId string `protobuf:"bytes,8,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty"`
 	// The ID of the database against which to make the request.
 	//
-	// '(default)' is not allowed; please use empty string '' to refer the default
+	// '(default)' is not allowed; please use empty string ” to refer the default
 	// database.
 	DatabaseId string `protobuf:"bytes,9,opt,name=database_id,json=databaseId,proto3" json:"database_id,omitempty"`
 	// Required. A list of keys with complete key paths whose numeric IDs should not be
@@ -1157,13 +1159,14 @@ type Mutation struct {
 	// The mutation operation.
 	//
 	// For `insert`, `update`, and `upsert`:
-	// - The entity's key must not be reserved/read-only.
-	// - No property in the entity may have a reserved name,
-	//   not even a property in an entity in a value.
-	// - No value in the entity may have meaning 18,
-	//   not even a value in an entity in another value.
+	//   - The entity's key must not be reserved/read-only.
+	//   - No property in the entity may have a reserved name,
+	//     not even a property in an entity in a value.
+	//   - No value in the entity may have meaning 18,
+	//     not even a value in an entity in another value.
 	//
 	// Types that are assignable to Operation:
+	//
 	//	*Mutation_Insert
 	//	*Mutation_Update
 	//	*Mutation_Upsert
@@ -1174,6 +1177,7 @@ type Mutation struct {
 	// are not applied, and are marked as such in MutationResult.
 	//
 	// Types that are assignable to ConflictDetectionStrategy:
+	//
 	//	*Mutation_BaseVersion
 	//	*Mutation_UpdateTime
 	ConflictDetectionStrategy isMutation_ConflictDetectionStrategy `protobuf_oneof:"conflict_detection_strategy"`
@@ -1428,6 +1432,7 @@ type ReadOptions struct {
 	// Datastore mode.
 	//
 	// Types that are assignable to ConsistencyType:
+	//
 	//	*ReadOptions_ReadConsistency_
 	//	*ReadOptions_Transaction
 	//	*ReadOptions_ReadTime
@@ -1500,7 +1505,6 @@ type isReadOptions_ConsistencyType interface {
 
 type ReadOptions_ReadConsistency_ struct {
 	// The non-transactional read consistency to use.
-	// Cannot be set to `STRONG` for global queries.
 	ReadConsistency ReadOptions_ReadConsistency `protobuf:"varint,1,opt,name=read_consistency,json=readConsistency,proto3,enum=google.datastore.v1.ReadOptions_ReadConsistency,oneof"`
 }
 
@@ -1538,6 +1542,7 @@ type TransactionOptions struct {
 	// supported.
 	//
 	// Types that are assignable to Mode:
+	//
 	//	*TransactionOptions_ReadWrite_
 	//	*TransactionOptions_ReadOnly_
 	Mode isTransactionOptions_Mode `protobuf_oneof:"mode"`

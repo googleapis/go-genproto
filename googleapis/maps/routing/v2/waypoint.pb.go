@@ -45,6 +45,7 @@ type Waypoint struct {
 	// Different ways to represent a location.
 	//
 	// Types that are assignable to LocationType:
+	//
 	//	*Waypoint_Location
 	//	*Waypoint_PlaceId
 	LocationType isWaypoint_LocationType `protobuf_oneof:"location_type"`
@@ -72,7 +73,7 @@ type Waypoint struct {
 	// value, the route will pass through the location so that the vehicle can
 	// stop at the side of road that the location is biased towards from the
 	// center of the road. This option works only for 'DRIVE' and 'TWO_WHEELER'
-	// travel modes, and when the 'location_type' is set to 'location'.
+	// travel modes.
 	SideOfRoad bool `protobuf:"varint,5,opt,name=side_of_road,json=sideOfRoad,proto3" json:"side_of_road,omitempty"`
 }
 
