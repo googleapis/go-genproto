@@ -224,11 +224,8 @@ type ListDeliveryVehiclesRequest struct {
 	// delivery vehicles are returned.
 	//
 	// Note that the only queries supported for `ListDeliveryVehicles` are
-	// equality comparisons on vehicle attributes (`attributes.<key> = <value>`).
-	// Comparison operators besides `=` (like `!=`, `>`, `<`, etc.) aren't
-	// supported. Queries that include them are rejected. You can combine
-	// attribute equality queries with **AND**, but not with any other boolean
-	// operator.
+	// on vehicle attributes (for example, `attributes.<key> = <value>` or
+	// `attributes.<key1> = <value1> AND attributes.<key2> = <value2>`).
 	Filter string `protobuf:"bytes,6,opt,name=filter,proto3" json:"filter,omitempty"`
 	// Optional. A filter that limits the search area to a rectangle defined by the
 	// northeast and southwest corner points.
@@ -913,11 +910,11 @@ type UpdateTaskRequest struct {
 	// The following fields are maintained by Fleet Engine. Do not update
 	// them using `Task.update`.
 	//
-	//   * `last_location`.
-	//   * `last_location_snappable`.
-	//   * `name`.
-	//   * `remaining_vehicle_journey_segments`.
-	//   * `task_outcome_location_source`.
+	//   - `last_location`.
+	//   - `last_location_snappable`.
+	//   - `name`.
+	//   - `remaining_vehicle_journey_segments`.
+	//   - `task_outcome_location_source`.
 	//
 	// Note: You cannot change the value of `task_outcome` once you set it.
 	//
