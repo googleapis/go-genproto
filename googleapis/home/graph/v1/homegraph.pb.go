@@ -156,23 +156,25 @@ func (*RequestSyncDevicesResponse) Descriptor() ([]byte, []int) {
 // # Example
 //
 // ```json
-// {
-//   "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
-//   "agentUserId": "1234",
-//   "payload": {
-//     "devices": {
-//       "states": {
-//         "123": {
-//           "on": true
-//         },
-//         "456": {
-//           "on": true,
-//           "brightness": 10
-//         }
-//       },
-//     }
-//   }
-// }
+//
+//	{
+//	  "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
+//	  "agentUserId": "1234",
+//	  "payload": {
+//	    "devices": {
+//	      "states": {
+//	        "123": {
+//	          "on": true
+//	        },
+//	        "456": {
+//	          "on": true,
+//	          "brightness": 10
+//	        }
+//	      },
+//	    }
+//	  }
+//	}
+//
 // ```
 type ReportStateAndNotificationRequest struct {
 	state         protoimpl.MessageState
@@ -712,26 +714,28 @@ func (x *AgentDeviceId) GetId() string {
 // # Example
 //
 // ```json
-// {
-//   "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
-//   "payload": {
-//     "devices": {
-//       "123": {
-//         "on": true,
-//         "online": true
-//       },
-//       "456": {
-//         "on": true,
-//         "online": true,
-//         "brightness": 80,
-//         "color": {
-//           "name": "cerulean",
-//           "spectrumRGB": 31655
-//         }
-//       }
-//     }
-//   }
-// }
+//
+//	{
+//	  "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
+//	  "payload": {
+//	    "devices": {
+//	      "123": {
+//	        "on": true,
+//	        "online": true
+//	      },
+//	      "456": {
+//	        "on": true,
+//	        "online": true,
+//	        "brightness": 80,
+//	        "color": {
+//	          "name": "cerulean",
+//	          "spectrumRGB": 31655
+//	        }
+//	      }
+//	    }
+//	  }
+//	}
+//
 // ```
 type QueryResponse struct {
 	state         protoimpl.MessageState
@@ -907,36 +911,38 @@ func (x *SyncRequest) GetAgentUserId() string {
 // # Example
 //
 // ```json
-// {
-//   "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
-//   "payload": {
-//     "agentUserId": "1836.15267389",
-//     "devices": [{
-//       "id": "123",
-//       "type": "action.devices.types.OUTLET",
-//       "traits": [
-//         "action.devices.traits.OnOff"
-//       ],
-//       "name": {
-//         "defaultNames": ["My Outlet 1234"],
-//         "name": "Night light",
-//         "nicknames": ["wall plug"]
-//       },
-//       "willReportState": false,
-//       "deviceInfo": {
-//         "manufacturer": "lights-out-inc",
-//         "model": "hs1234",
-//         "hwVersion": "3.2",
-//         "swVersion": "11.4"
-//       },
-//       "customData": {
-//         "fooValue": 74,
-//         "barValue": true,
-//         "bazValue": "foo"
-//       }
-//     }]
-//   }
-// }
+//
+//	{
+//	  "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
+//	  "payload": {
+//	    "agentUserId": "1836.15267389",
+//	    "devices": [{
+//	      "id": "123",
+//	      "type": "action.devices.types.OUTLET",
+//	      "traits": [
+//	        "action.devices.traits.OnOff"
+//	      ],
+//	      "name": {
+//	        "defaultNames": ["My Outlet 1234"],
+//	        "name": "Night light",
+//	        "nicknames": ["wall plug"]
+//	      },
+//	      "willReportState": false,
+//	      "deviceInfo": {
+//	        "manufacturer": "lights-out-inc",
+//	        "model": "hs1234",
+//	        "hwVersion": "3.2",
+//	        "swVersion": "11.4"
+//	      },
+//	      "customData": {
+//	        "fooValue": 74,
+//	        "barValue": true,
+//	        "bazValue": "foo"
+//	      }
+//	    }]
+//	  }
+//	}
+//
 // ```
 type SyncResponse struct {
 	state         protoimpl.MessageState

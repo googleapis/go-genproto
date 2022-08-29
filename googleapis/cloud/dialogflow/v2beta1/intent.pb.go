@@ -4768,14 +4768,14 @@ func (x *Intent_Message_CarouselSelect_Item) GetImage() *Intent_Message_Image {
 // Rich Business Messaging (RBM) Media displayed in Cards
 // The following media-types are currently supported:
 //
-// Image Types
+// # Image Types
 //
 // * image/jpeg
 // * image/jpg'
 // * image/gif
 // * image/png
 //
-// Video Types
+// # Video Types
 //
 // * video/h263
 // * video/m4v

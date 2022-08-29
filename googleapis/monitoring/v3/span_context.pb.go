@@ -41,7 +41,7 @@ const (
 //
 // It contains the name of a span with format:
 //
-//     projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+//	projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
 type SpanContext struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

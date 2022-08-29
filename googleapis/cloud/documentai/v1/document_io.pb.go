@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -259,6 +259,7 @@ type BatchDocumentsInputConfig struct {
 	// The source.
 	//
 	// Types that are assignable to Source:
+	//
 	//	*BatchDocumentsInputConfig_GcsPrefix
 	//	*BatchDocumentsInputConfig_GcsDocuments
 	Source isBatchDocumentsInputConfig_Source `protobuf_oneof:"source"`
@@ -345,6 +346,7 @@ type DocumentOutputConfig struct {
 	// The destination of the results.
 	//
 	// Types that are assignable to Destination:
+	//
 	//	*DocumentOutputConfig_GcsOutputConfig_
 	Destination isDocumentOutputConfig_Destination `protobuf_oneof:"destination"`
 }

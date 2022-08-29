@@ -49,20 +49,20 @@ const (
 //
 // Example:
 //
-//     type: google.api.Service
-//     name: calendar.googleapis.com
-//     title: Google Calendar API
-//     apis:
-//     - name: google.calendar.v3.Calendar
-//     authentication:
-//       providers:
-//       - id: google_calendar_auth
-//         jwks_uri: https://www.googleapis.com/oauth2/v1/certs
-//         issuer: https://securetoken.google.com
-//       rules:
-//       - selector: "*"
-//         requirements:
-//           provider_id: google_calendar_auth
+//	type: google.api.Service
+//	name: calendar.googleapis.com
+//	title: Google Calendar API
+//	apis:
+//	- name: google.calendar.v3.Calendar
+//	authentication:
+//	  providers:
+//	  - id: google_calendar_auth
+//	    jwks_uri: https://www.googleapis.com/oauth2/v1/certs
+//	    issuer: https://securetoken.google.com
+//	  rules:
+//	  - selector: "*"
+//	    requirements:
+//	      provider_id: google_calendar_auth
 type Service struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

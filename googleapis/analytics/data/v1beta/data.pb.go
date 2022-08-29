@@ -2179,17 +2179,21 @@ func (x *PivotDimensionHeader) GetDimensionValues() []*DimensionValue {
 //
 // ```none
 // "dimensions": [
-//   {
-//     "name": "eventName"
-//   },
-//   {
-//     "name": "countryId"
-//   }
+//
+//	{
+//	  "name": "eventName"
+//	},
+//	{
+//	  "name": "countryId"
+//	}
+//
 // ],
 // "metrics": [
-//   {
-//     "name": "eventCount"
-//   }
+//
+//	{
+//	  "name": "eventCount"
+//	}
+//
 // ]
 // ```
 //
@@ -2198,17 +2202,21 @@ func (x *PivotDimensionHeader) GetDimensionValues() []*DimensionValue {
 //
 // ```none
 // "dimensionValues": [
-//   {
-//     "value": "in_app_purchase"
-//   },
-//   {
-//     "value": "JP"
-//   }
+//
+//	{
+//	  "value": "in_app_purchase"
+//	},
+//	{
+//	  "value": "JP"
+//	}
+//
 // ],
 // "metricValues": [
-//   {
-//     "value": "15"
-//   }
+//
+//	{
+//	  "value": "15"
+//	}
+//
 // ]
 // ```
 type Row struct {
@@ -3541,15 +3549,15 @@ func (x *OrderBy_PivotOrderBy) GetPivotSelections() []*OrderBy_PivotOrderBy_Pivo
 // metric_name = "Sessions",
 // then the rows will be sorted based on Sessions in Chrome.
 //
-//     ---------|----------|----------------|----------|----------------
-//              |  Chrome  |    Chrome      |  Safari  |     Safari
-//     ---------|----------|----------------|----------|----------------
-//      Country | Sessions | Pages/Sessions | Sessions | Pages/Sessions
-//     ---------|----------|----------------|----------|----------------
-//         US   |    2     |       2        |     3    |        1
-//     ---------|----------|----------------|----------|----------------
-//       Canada |    3     |       1        |     4    |        1
-//     ---------|----------|----------------|----------|----------------
+//	---------|----------|----------------|----------|----------------
+//	         |  Chrome  |    Chrome      |  Safari  |     Safari
+//	---------|----------|----------------|----------|----------------
+//	 Country | Sessions | Pages/Sessions | Sessions | Pages/Sessions
+//	---------|----------|----------------|----------|----------------
+//	    US   |    2     |       2        |     3    |        1
+//	---------|----------|----------------|----------|----------------
+//	  Canada |    3     |       1        |     4    |        1
+//	---------|----------|----------------|----------|----------------
 type OrderBy_PivotOrderBy_PivotSelection struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

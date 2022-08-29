@@ -431,14 +431,14 @@ func (x *DetectIntentResponse) GetAllowCancellation() bool {
 //
 // Multiple request messages should be sent in order:
 //
-// 1.  The first message must contain
+//  1. The first message must contain
 //     [session][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.session],
 //     [query_input][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.query_input] plus optionally
 //     [query_params][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.query_params]. If the client
 //     wants to receive an audio response, it should also contain
 //     [output_audio_config][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.output_audio_config].
 //
-// 2.  If [query_input][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.query_input] was set to
+//  2. If [query_input][google.cloud.dialogflow.cx.v3beta1.StreamingDetectIntentRequest.query_input] was set to
 //     [query_input.audio.config][google.cloud.dialogflow.cx.v3beta1.AudioInput.config], all subsequent messages
 //     must contain [query_input.audio.audio][google.cloud.dialogflow.cx.v3beta1.AudioInput.audio] to continue with
 //     Speech recognition.
@@ -450,7 +450,7 @@ func (x *DetectIntentResponse) GetAllowCancellation() bool {
 //
 //     * Dialogflow will bill you for the audio duration so far.
 //     * Dialogflow discards all Speech recognition results in favor of the
-//       input text.
+//     input text.
 //     * Dialogflow will use the language code from the first message.
 //
 // After you sent all input, you must half-close or abort the request stream.
@@ -565,14 +565,14 @@ func (x *StreamingDetectIntentRequest) GetEnablePartialResponse() bool {
 // The first (N-1) responses set either the `recognition_result` or
 // `detect_intent_response` field, depending on the request:
 //
-// *   If the `StreamingDetectIntentRequest.query_input.audio` field was
+//   - If the `StreamingDetectIntentRequest.query_input.audio` field was
 //     set, and the `StreamingDetectIntentRequest.enable_partial_response`
 //     field was false, the `recognition_result` field is populated for each
 //     of the (N-1) responses.
 //     See the [StreamingRecognitionResult][google.cloud.dialogflow.cx.v3beta1.StreamingRecognitionResult] message for details
 //     about the result message sequence.
 //
-// *   If the `StreamingDetectIntentRequest.enable_partial_response` field was
+//   - If the `StreamingDetectIntentRequest.enable_partial_response` field was
 //     true, the `detect_intent_response` field is populated for each
 //     of the (N-1) responses, where 1 <= N <= 4.
 //     These responses set the [DetectIntentResponse.response_type][google.cloud.dialogflow.cx.v3beta1.DetectIntentResponse.response_type] field
@@ -1034,7 +1034,6 @@ func (x *QueryParameters) GetFlowVersions() []string {
 // 3.  Natural language speech audio to be processed.
 //
 // 4.  An event to be triggered.
-//
 type QueryInput struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

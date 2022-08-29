@@ -350,6 +350,7 @@ type MigrationTask struct {
 	// The details of the task.
 	//
 	// Types that are assignable to TaskDetails:
+	//
 	//	*MigrationTask_TranslationConfigDetails
 	TaskDetails isMigrationTask_TaskDetails `protobuf_oneof:"task_details"`
 	// Output only. Immutable. The unique identifier for the migration task. The
@@ -360,7 +361,7 @@ type MigrationTask struct {
 	// Translation_Oracle2BQ, Translation_HiveQL2BQ, Translation_SparkSQL2BQ,
 	// Translation_Snowflake2BQ, Translation_Netezza2BQ,
 	// Translation_AzureSynapse2BQ, Translation_Vertica2BQ,
-	// Translation_SQLServer2BQ, Translation_Presto2BQ.
+	// Translation_SQLServer2BQ, Translation_Presto2BQ, Translation_MySQL2BQ.
 	Type string `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
 	// Output only. The current state of the task.
 	State MigrationTask_State `protobuf:"varint,4,opt,name=state,proto3,enum=google.cloud.bigquery.migration.v2.MigrationTask_State" json:"state,omitempty"`

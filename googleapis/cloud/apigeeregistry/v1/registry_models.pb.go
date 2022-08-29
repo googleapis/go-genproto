@@ -37,8 +37,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// An Api is a top-level description of an API.
-// Apis are produced by producers and are commitments to provide services.
+// A top-level description of an API.
+// Produced by producers and are commitments to provide services.
 type Api struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -56,26 +56,26 @@ type Api struct {
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// A user-definable description of the availability of this service.
 	// Format: free-form, but we expect single words that describe availability,
-	// e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+	// e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
 	Availability string `protobuf:"bytes,6,opt,name=availability,proto3" json:"availability,omitempty"`
 	// The recommended version of the API.
-	// Format: apis/{api}/versions/{version}
+	// Format: `apis/{api}/versions/{version}`
 	RecommendedVersion string `protobuf:"bytes,7,opt,name=recommended_version,json=recommendedVersion,proto3" json:"recommended_version,omitempty"`
 	// The recommended deployment of the API.
-	// Format: apis/{api}/deployments/{deployment}
+	// Format: `apis/{api}/deployments/{deployment}`
 	RecommendedDeployment string `protobuf:"bytes,8,opt,name=recommended_deployment,json=recommendedDeployment,proto3" json:"recommended_deployment,omitempty"`
 	// Labels attach identifying metadata to resources. Identifying metadata can
 	// be used to filter list operations.
 	//
 	// Label keys and values can be no longer than 64 characters
 	// (Unicode codepoints), can only contain lowercase letters, numeric
-	// characters, underscores and dashes. International characters are allowed.
+	// characters, underscores, and dashes. International characters are allowed.
 	// No more than 64 user labels can be associated with one resource (System
 	// labels are excluded).
 	//
 	// See https://goo.gl/xmQnxf for more information and examples of labels.
 	// System reserved label keys are prefixed with
-	// "apigeeregistry.googleapis.com/" and cannot be changed.
+	// `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels map[string]string `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Annotations attach non-identifying metadata to resources.
 	//
@@ -187,7 +187,7 @@ func (x *Api) GetAnnotations() map[string]string {
 	return nil
 }
 
-// An ApiVersion describes a particular version of an API.
+// Describes a particular version of an API.
 // ApiVersions are what consumers actually use.
 type ApiVersion struct {
 	state         protoimpl.MessageState
@@ -206,7 +206,7 @@ type ApiVersion struct {
 	UpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
 	// A user-definable description of the lifecycle phase of this API version.
 	// Format: free-form, but we expect single words that describe API maturity,
-	// e.g. "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION",
+	// e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION",
 	// "DEPRECATED", "RETIRED".
 	State string `protobuf:"bytes,6,opt,name=state,proto3" json:"state,omitempty"`
 	// Labels attach identifying metadata to resources. Identifying metadata can
@@ -220,7 +220,7 @@ type ApiVersion struct {
 	//
 	// See https://goo.gl/xmQnxf for more information and examples of labels.
 	// System reserved label keys are prefixed with
-	// "apigeeregistry.googleapis.com/" and cannot be changed.
+	// `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels map[string]string `protobuf:"bytes,7,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Annotations attach non-identifying metadata to resources.
 	//
@@ -318,11 +318,11 @@ func (x *ApiVersion) GetAnnotations() map[string]string {
 	return nil
 }
 
-// An ApiSpec describes a version of an API in a structured way.
+// Describes a version of an API in a structured way.
 // ApiSpecs provide formal descriptions that consumers can use to use a version.
 // ApiSpec resources are intended to be fully-resolved descriptions of an
 // ApiVersion. When specs consist of multiple files, these should be bundled
-// together (e.g. in a zip archive) and stored as a unit. Multiple specs can
+// together (e.g., in a zip archive) and stored as a unit. Multiple specs can
 // exist to provide representations in different API description formats.
 // Synchronization of these representations would be provided by tooling and
 // background services.
@@ -349,8 +349,8 @@ type ApiSpec struct {
 	RevisionUpdateTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=revision_update_time,json=revisionUpdateTime,proto3" json:"revision_update_time,omitempty"`
 	// A style (format) descriptor for this spec that is specified as a Media Type
 	// (https://en.wikipedia.org/wiki/Media_type). Possible values include
-	// "application/vnd.apigee.proto", "application/vnd.apigee.openapi", and
-	// "application/vnd.apigee.graphql", with possible suffixes representing
+	// `application/vnd.apigee.proto`, `application/vnd.apigee.openapi`, and
+	// `application/vnd.apigee.graphql`, with possible suffixes representing
 	// compression types. These hypothetical names are defined in the vendor tree
 	// defined in RFC6838 (https://tools.ietf.org/html/rfc6838) and are not final.
 	// Content types can specify compression. Currently only GZip compression is
@@ -382,7 +382,7 @@ type ApiSpec struct {
 	//
 	// See https://goo.gl/xmQnxf for more information and examples of labels.
 	// System reserved label keys are prefixed with
-	// "apigeeregistry.googleapis.com/" and cannot be changed.
+	// `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels map[string]string `protobuf:"bytes,14,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Annotations attach non-identifying metadata to resources.
 	//
@@ -522,7 +522,7 @@ func (x *ApiSpec) GetAnnotations() map[string]string {
 	return nil
 }
 
-// An ApiDeployment describes a service running at particular address that
+// Describes a service running at particular address that
 // provides a particular version of an API. ApiDeployments have revisions which
 // correspond to different configurations of a single deployment in time.
 // Revision identifiers should be updated whenever the served API spec or
@@ -548,14 +548,14 @@ type ApiDeployment struct {
 	RevisionCreateTime *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=revision_create_time,json=revisionCreateTime,proto3" json:"revision_create_time,omitempty"`
 	// Output only. Last update timestamp: when the represented revision was last modified.
 	RevisionUpdateTime *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=revision_update_time,json=revisionUpdateTime,proto3" json:"revision_update_time,omitempty"`
-	// The full resource name (including revision id) of the spec of the API being
+	// The full resource name (including revision ID) of the spec of the API being
 	// served by the deployment. Changes to this value will update the revision.
-	// Format: apis/{api}/deployments/{deployment}
+	// Format: `apis/{api}/deployments/{deployment}`
 	ApiSpecRevision string `protobuf:"bytes,8,opt,name=api_spec_revision,json=apiSpecRevision,proto3" json:"api_spec_revision,omitempty"`
 	// The address where the deployment is serving. Changes to this value will
 	// update the revision.
 	EndpointUri string `protobuf:"bytes,9,opt,name=endpoint_uri,json=endpointUri,proto3" json:"endpoint_uri,omitempty"`
-	// The address of the external channel of the API (e.g. the Developer
+	// The address of the external channel of the API (e.g., the Developer
 	// Portal). Changes to this value will not affect the revision.
 	ExternalChannelUri string `protobuf:"bytes,10,opt,name=external_channel_uri,json=externalChannelUri,proto3" json:"external_channel_uri,omitempty"`
 	// Text briefly identifying the intended audience of the API. Changes to this
@@ -575,7 +575,7 @@ type ApiDeployment struct {
 	//
 	// See https://goo.gl/xmQnxf for more information and examples of labels.
 	// System reserved label keys are prefixed with
-	// "apigeeregistry.googleapis.com/" and cannot be changed.
+	// `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels map[string]string `protobuf:"bytes,14,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Annotations attach non-identifying metadata to resources.
 	//
@@ -719,8 +719,8 @@ func (x *ApiDeployment) GetAnnotations() map[string]string {
 // and are used to store metadata that is too large or numerous to be stored
 // directly on the resource. Since artifacts are stored separately from parent
 // resources, they should generally be used for metadata that is needed
-// infrequently, i.e. not for display in primary views of the resource but
-// perhaps displayed or downloaded upon request. The ListArtifacts method
+// infrequently, i.e., not for display in primary views of the resource but
+// perhaps displayed or downloaded upon request. The `ListArtifacts` method
 // allows artifacts to be quickly enumerated and checked for presence without
 // downloading their (potentially-large) contents.
 type Artifact struct {

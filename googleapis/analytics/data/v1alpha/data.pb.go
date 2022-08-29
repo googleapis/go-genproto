@@ -1583,17 +1583,21 @@ func (x *MetricHeader) GetType() MetricType {
 //
 // ```none
 // "dimensions": [
-//   {
-//     "name": "eventName"
-//   },
-//   {
-//     "name": "countryId"
-//   }
+//
+//	{
+//	  "name": "eventName"
+//	},
+//	{
+//	  "name": "countryId"
+//	}
+//
 // ],
 // "metrics": [
-//   {
-//     "name": "eventCount"
-//   }
+//
+//	{
+//	  "name": "eventCount"
+//	}
+//
 // ]
 // ```
 //
@@ -1602,17 +1606,21 @@ func (x *MetricHeader) GetType() MetricType {
 //
 // ```none
 // "dimensionValues": [
-//   {
-//     "value": "in_app_purchase"
-//   },
-//   {
-//     "value": "JP"
-//   }
+//
+//	{
+//	  "value": "in_app_purchase"
+//	},
+//	{
+//	  "value": "JP"
+//	}
+//
 // ],
 // "metricValues": [
-//   {
-//     "value": "15"
-//   }
+//
+//	{
+//	  "value": "15"
+//	}
+//
 // ]
 // ```
 type Row struct {

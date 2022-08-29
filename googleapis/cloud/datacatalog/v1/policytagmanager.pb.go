@@ -101,12 +101,14 @@ func (Taxonomy_PolicyType) EnumDescriptor() ([]byte, []int) {
 //
 // ```
 // + PII
-//   + Account number
-//   + Age
-//   + SSN
-//   + Zipcode
+//   - Account number
+//   - Age
+//   - SSN
+//   - Zipcode
+//
 // + Financials
-//   + Revenue
+//   - Revenue
+//
 // ```
 //
 // A "data origin" taxonomy might contain the following policy tags:
@@ -229,9 +231,10 @@ func (x *Taxonomy) GetActivatedPolicyTypes() []Taxonomy_PolicyType {
 //
 // ```
 // + Geolocation
-//   + LatLong
-//   + City
-//   + ZipCode
+//   - LatLong
+//   - City
+//   - ZipCode
+//
 // ```
 //
 // Where the "Geolocation" policy tag contains three children.

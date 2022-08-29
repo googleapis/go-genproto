@@ -39,12 +39,12 @@ const (
 //
 // Example:
 //
-//     context:
-//       rules:
-//       - selector: "*"
-//         requested:
-//         - google.rpc.context.ProjectContext
-//         - google.rpc.context.OriginContext
+//	context:
+//	  rules:
+//	  - selector: "*"
+//	    requested:
+//	    - google.rpc.context.ProjectContext
+//	    - google.rpc.context.OriginContext
 //
 // The above specifies that all methods in the API request
 // `google.rpc.context.ProjectContext` and
@@ -61,13 +61,13 @@ const (
 //
 // Example:
 //
-//     context:
-//       rules:
-//        - selector: "google.example.library.v1.LibraryService.CreateBook"
-//          allowed_request_extensions:
-//          - google.foo.v1.NewExtension
-//          allowed_response_extensions:
-//          - google.foo.v1.NewExtension
+//	context:
+//	  rules:
+//	   - selector: "google.example.library.v1.LibraryService.CreateBook"
+//	     allowed_request_extensions:
+//	     - google.foo.v1.NewExtension
+//	     allowed_response_extensions:
+//	     - google.foo.v1.NewExtension
 //
 // You can also specify extension ID instead of fully qualified extension name
 // here.

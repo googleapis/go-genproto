@@ -151,11 +151,12 @@ func (StandardSqlDataType_TypeKind) EnumDescriptor() ([]byte, []int) {
 // INT64: {type_kind="INT64"}
 // ARRAY<STRING>: {type_kind="ARRAY", array_element_type="STRING"}
 // STRUCT<x STRING, y ARRAY<DATE>>:
-//   {type_kind="STRUCT",
-//    struct_type={fields=[
-//      {name="x", type={type_kind="STRING"}},
-//      {name="y", type={type_kind="ARRAY", array_element_type="DATE"}}
-//    ]}}
+//
+//	{type_kind="STRUCT",
+//	 struct_type={fields=[
+//	   {name="x", type={type_kind="STRING"}},
+//	   {name="y", type={type_kind="ARRAY", array_element_type="DATE"}}
+//	 ]}}
 type StandardSqlDataType struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

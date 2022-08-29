@@ -103,12 +103,12 @@ func (HealthStatus) EnumDescriptor() ([]byte, []int) {
 // Such as:
 // - remote_agent
 //   - container
-//     - runtime
-//     - appgateway
-//       - appconnector
-//         - appconnection
-//           - tunnel
-//       - logagent
+//   - runtime
+//   - appgateway
+//   - appconnector
+//   - appconnection
+//   - tunnel
+//   - logagent
 type ResourceInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -123,7 +123,6 @@ func (x *Usage) GetProducerNotificationChannel() string {
 //
 // NOTE: Under development.
 //
-//
 // Use this rule to configure unregistered calls for the service. Unregistered
 // calls are calls that do not contain consumer project identity.
 // (Example: calls that do not contain an API key).
@@ -133,17 +132,17 @@ func (x *Usage) GetProducerNotificationChannel() string {
 //
 // Example of an API that wants to allow unregistered calls for entire service.
 //
-//     usage:
-//       rules:
-//       - selector: "*"
-//         allow_unregistered_calls: true
+//	usage:
+//	  rules:
+//	  - selector: "*"
+//	    allow_unregistered_calls: true
 //
 // Example of a method that wants to allow unregistered calls.
 //
-//     usage:
-//       rules:
-//       - selector: "google.example.library.v1.LibraryService.CreateBook"
-//         allow_unregistered_calls: true
+//	usage:
+//	  rules:
+//	  - selector: "google.example.library.v1.LibraryService.CreateBook"
+//	    allow_unregistered_calls: true
 type UsageRule struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
