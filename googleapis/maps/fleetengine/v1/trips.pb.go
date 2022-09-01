@@ -309,50 +309,52 @@ type Trip struct {
 	// the final destination, or the actual time when they were dropped off.
 	DropoffTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=dropoff_time,json=dropoffTime,proto3" json:"dropoff_time,omitempty"`
 	// Output only. The full path from the current location to the dropoff point, inclusive.
-	// If this is a shared ride, this path could include waypoints from other
-	// trips.
+	// This path could include waypoints from other trips.
 	RemainingWaypoints []*TripWaypoint `protobuf:"bytes,16,rep,name=remaining_waypoints,json=remainingWaypoints,proto3" json:"remaining_waypoints,omitempty"`
-	// This field supports manual ordering of the waypoints for the trip.
-	// It contains all of the remaining waypoints of vehicle assigned, as well as
-	// the pickup and drop-off waypoints for this trip.
-	// If the trip hasn't been assigned to a vehicle, then this field is ignored.
-	// For privacy reasons, this field is only populated by the server on
-	// UpdateTrip and CreateTrip calls, and NOT on GetTrip calls.
+	// This field supports manual ordering of the waypoints for the trip. It
+	// contains all of the remaining waypoints for the assigned vehicle, as well
+	// as the pickup and drop-off waypoints for this trip. If the trip hasn't been
+	// assigned to a vehicle, then this field is ignored. For privacy reasons,
+	// this field is only populated by the server on UpdateTrip and CreateTrip
+	// calls, NOT on GetTrip calls.
 	VehicleWaypoints []*TripWaypoint `protobuf:"bytes,20,rep,name=vehicle_waypoints,json=vehicleWaypoints,proto3" json:"vehicle_waypoints,omitempty"`
 	// Output only. Anticipated route for this trip to the first entry in remaining_waypoints.
-	// If back_to_back or shared trips are enabled, the waypoints may belong to a
-	// different trip.
+	// Note that the first waypoint may belong to a different trip.
 	Route []*latlng.LatLng `protobuf:"bytes,9,rep,name=route,proto3" json:"route,omitempty"`
-	// Output only. An encoded path to the next waypoint. This field facilitates journey
-	// sharing between a driver app and a rider app. Note: This field is intended
-	// only for use by the Driver SDK and Consumer SDK.
+	// Output only. An encoded path to the next waypoint.
+	//
+	// Note: This field is intended only for use by the Driver SDK and Consumer
+	// SDK. Decoding is not yet supported.
 	CurrentRouteSegment string `protobuf:"bytes,21,opt,name=current_route_segment,json=currentRouteSegment,proto3" json:"current_route_segment,omitempty"`
-	// Output only. Indicates the last time the route was modified.  Note: This field is
-	// intended only for use by the Driver SDK and Consumer SDK.
+	// Output only. Indicates the last time the route was modified.
+	//
+	// Note: This field is intended only for use by the Driver SDK and Consumer
+	// SDK.
 	CurrentRouteSegmentVersion *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=current_route_segment_version,json=currentRouteSegmentVersion,proto3" json:"current_route_segment_version,omitempty"`
 	// Output only. Indicates the traffic conditions along the `current_route_segment` when
-	// they're available. Note: This field is intended only for use by the Driver
-	// SDK and Consumer SDK.
+	// they're available.
+	//
+	// Note: This field is intended only for use by the Driver SDK and Consumer
+	// SDK.
 	CurrentRouteSegmentTraffic *ConsumableTrafficPolyline `protobuf:"bytes,28,opt,name=current_route_segment_traffic,json=currentRouteSegmentTraffic,proto3" json:"current_route_segment_traffic,omitempty"`
 	// Output only. Indicates the last time the `current_route_segment_traffic` was modified.
+	//
 	// Note: This field is intended only for use by the Driver SDK and Consumer
 	// SDK.
 	CurrentRouteSegmentTrafficVersion *timestamppb.Timestamp `protobuf:"bytes,30,opt,name=current_route_segment_traffic_version,json=currentRouteSegmentTrafficVersion,proto3" json:"current_route_segment_traffic_version,omitempty"`
 	// Output only. The waypoint where `current_route_segment` ends.
 	CurrentRouteSegmentEndPoint *TripWaypoint `protobuf:"bytes,24,opt,name=current_route_segment_end_point,json=currentRouteSegmentEndPoint,proto3" json:"current_route_segment_end_point,omitempty"`
-	// Output only. The remaining driving distance in `current_route_segment` field. This
-	// field facilitates journey sharing between a driver and rider. The value
-	// is unspecified if the trip is not assigned to a vehicle or the trip is
-	// completed or cancelled.
+	// Output only. The remaining driving distance in the `current_route_segment` field. The
+	// value is unspecified if the trip is not assigned to a vehicle, or the trip
+	// is completed or cancelled.
 	RemainingDistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,12,opt,name=remaining_distance_meters,json=remainingDistanceMeters,proto3" json:"remaining_distance_meters,omitempty"`
-	// Output only. The ETA to the next waypoint (the first entry in the
-	// `remaining_waypoints` field). This field facilitates journey sharing
-	// between a driver and a consumer. The value is unspecified if the trip is
-	// not assigned to a vehicle, or the trip is inactive (completed or
-	// cancelled).
+	// Output only. The ETA to the next waypoint (the first entry in the `remaining_waypoints`
+	// field). The value is unspecified if the trip is not assigned to a vehicle,
+	// or the trip is inactive (completed or cancelled).
 	EtaToFirstWaypoint *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=eta_to_first_waypoint,json=etaToFirstWaypoint,proto3" json:"eta_to_first_waypoint,omitempty"`
 	// Output only. The duration from when the Trip data is returned to the time in
-	// `Trip.eta_to_first_waypoint`.
+	// `Trip.eta_to_first_waypoint`. The value is unspecified if the trip is not
+	// assigned to a vehicle, or the trip is inactive (completed or cancelled).
 	RemainingTimeToFirstWaypoint *durationpb.Duration `protobuf:"bytes,27,opt,name=remaining_time_to_first_waypoint,json=remainingTimeToFirstWaypoint,proto3" json:"remaining_time_to_first_waypoint,omitempty"`
 	// Output only. Indicates the last time that `remaining_waypoints` was changed (a
 	// waypoint was added, removed, or changed).

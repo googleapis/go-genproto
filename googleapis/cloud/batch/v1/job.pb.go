@@ -1331,9 +1331,6 @@ type AllocationPolicy_Accelerator struct {
 	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	// The number of accelerators of this type.
 	Count int64 `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
-	// When true, Batch will install the GPU drivers.
-	// This field will be ignored if specified.
-	//
 	// Deprecated: Do not use.
 	InstallGpuDrivers bool `protobuf:"varint,3,opt,name=install_gpu_drivers,json=installGpuDrivers,proto3" json:"install_gpu_drivers,omitempty"`
 }
