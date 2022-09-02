@@ -57,8 +57,7 @@ type Waypoint struct {
 	// added to the `legs` array, but they do route the journey through the
 	// waypoint. You can only set this value on waypoints that are intermediates.
 	// The request fails if you set this field on terminal waypoints.
-	// If
-	// [ComputeRoutesRequest][google.maps.routing.v2.ComputeRoutesRequest.optimize_waypoint_order]
+	// If `ComputeRoutesRequest.optimize_waypoint_order`
 	// is set to true then this field cannot be set to
 	// true; otherwise, the request fails.
 	Via bool `protobuf:"varint,3,opt,name=via,proto3" json:"via,omitempty"`

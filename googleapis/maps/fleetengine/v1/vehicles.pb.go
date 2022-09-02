@@ -439,7 +439,9 @@ type Vehicle struct {
 	// The polyline specifying the route the driver app intends to take to
 	// the next waypoint. This list is also returned in
 	// `Trip.current_route_segment` for all active trips assigned to the vehicle.
-	// Note: This field is intended only for use by the Driver SDK.
+	//
+	// Note: This field is intended only for use by the Driver SDK. Decoding is
+	// not yet supported.
 	CurrentRouteSegment string `protobuf:"bytes,20,opt,name=current_route_segment,json=currentRouteSegment,proto3" json:"current_route_segment,omitempty"`
 	// Input only. Fleet Engine uses this information to improve Journey Sharing.
 	CurrentRouteSegmentTraffic *TrafficPolylineData `protobuf:"bytes,28,opt,name=current_route_segment_traffic,json=currentRouteSegmentTraffic,proto3" json:"current_route_segment_traffic,omitempty"`
@@ -454,29 +456,26 @@ type Vehicle struct {
 	// not fully specified. This field is ignored in `UpdateVehicle` calls unless
 	// `current_route_segment` is also specified.
 	CurrentRouteSegmentEndPoint *TripWaypoint `protobuf:"bytes,24,opt,name=current_route_segment_end_point,json=currentRouteSegmentEndPoint,proto3" json:"current_route_segment_end_point,omitempty"`
-	// The remaining driving distance for the `current_route_segment`. This field
-	// facilitates journey sharing between the Driver app and the Consumer app.
-	// This value is provided by the Driver SDK. This field is also returned in
-	// `Trip.remaining_distance_meters` for all active trips assigned to the
-	// vehicle. The value is unspecified if the `current_route_segment` field is
-	// empty, or if the Driver SDK has not updated its value.
+	// The remaining driving distance for the `current_route_segment`.
+	// This value is also returned in `Trip.remaining_distance_meters` for all
+	// active trips assigned to the vehicle. The value is unspecified if the
+	// `current_route_segment` field is empty.
 	RemainingDistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,18,opt,name=remaining_distance_meters,json=remainingDistanceMeters,proto3" json:"remaining_distance_meters,omitempty"`
-	// The ETA to the first entry in the `waypoints` field. This field facilitates
-	// journey sharing between a driver app and a consumer app.  The Driver SDK
-	// provides the value under typical conditions. This field is also returned in
-	// `Trip.eta_to_first_waypoint` for all applicable trips assigned to the
-	// vehicle. The value is unspecified if the `waypoints` field is empty.
+	// The ETA to the first entry in the `waypoints` field.  The value is
+	// unspecified if the `waypoints` field is empty or the
+	// `Vehicle.current_route_segment` field is empty.
+	//
+	// When updating a vehicle, `remaining_time_seconds` takes precedence over
+	// `eta_to_first_waypoint` in the same request.
 	EtaToFirstWaypoint *timestamppb.Timestamp `protobuf:"bytes,19,opt,name=eta_to_first_waypoint,json=etaToFirstWaypoint,proto3" json:"eta_to_first_waypoint,omitempty"`
-	// Input only. The remaining driving time for the `current_route_segment`. This field
-	// facilitates journey sharing between the Driver app and the Consumer app.
-	// This value is updated by the Driver SDK. The value is unspecified if the
+	// Input only. The remaining driving time for the `current_route_segment`. The value is
+	// unspecified if the `waypoints` field is empty or the
 	// `Vehicle.current_route_segment` field is empty. This value should match
 	// `eta_to_first_waypoint` - `current_time` if all parties are using the same
 	// clock.
 	//
-	// <p>When updating a vehicle, if you update both `eta_to_first_waypoint` and
-	// `remaining_time_seconds` in the same request, `remaining_time_seconds`
-	// takes precedence.
+	// When updating a vehicle, `remaining_time_seconds` takes precedence over
+	// `eta_to_first_waypoint` in the same request.
 	RemainingTimeSeconds *wrapperspb.Int32Value `protobuf:"bytes,25,opt,name=remaining_time_seconds,json=remainingTimeSeconds,proto3" json:"remaining_time_seconds,omitempty"`
 	// The remaining waypoints assigned to this Vehicle.
 	Waypoints []*TripWaypoint `protobuf:"bytes,22,rep,name=waypoints,proto3" json:"waypoints,omitempty"`

@@ -340,6 +340,7 @@ type TerminalPointId struct {
 	// Deprecated.
 	//
 	// Types that are assignable to Id:
+	//
 	//	*TerminalPointId_PlaceId
 	//	*TerminalPointId_GeneratedId
 	Id isTerminalPointId_Id `protobuf_oneof:"Id"`
@@ -538,26 +539,26 @@ type TripWaypoint struct {
 	TripId string `protobuf:"bytes,2,opt,name=trip_id,json=tripId,proto3" json:"trip_id,omitempty"`
 	// The role this waypoint plays in this trip, such as pickup or dropoff.
 	WaypointType WaypointType `protobuf:"varint,3,opt,name=waypoint_type,json=waypointType,proto3,enum=maps.fleetengine.v1.WaypointType" json:"waypoint_type,omitempty"`
-	// The path from the previous waypoint to the current waypoint.
+	// The path from the previous waypoint to the current waypoint.  Undefined for
+	// the first waypoint in a list. This field is only populated when requested.
 	PathToWaypoint []*latlng.LatLng `protobuf:"bytes,4,rep,name=path_to_waypoint,json=pathToWaypoint,proto3" json:"path_to_waypoint,omitempty"`
 	// The encoded path from the previous waypoint to the current waypoint.
-	// Decoding is not yet supported.
+	//
+	// <p>Note: This field is intended only for use by the Driver SDK and Consumer
+	// SDK. Decoding is not yet supported.
 	EncodedPathToWaypoint string `protobuf:"bytes,5,opt,name=encoded_path_to_waypoint,json=encodedPathToWaypoint,proto3" json:"encoded_path_to_waypoint,omitempty"`
 	// The traffic conditions along the path to this waypoint.  Note that traffic
 	// is only available for Google Map Platform Rides and Deliveries Solution
 	// customers.
 	TrafficToWaypoint *ConsumableTrafficPolyline `protobuf:"bytes,10,opt,name=traffic_to_waypoint,json=trafficToWaypoint,proto3" json:"traffic_to_waypoint,omitempty"`
-	// The path distance from the previous waypoint to the current waypoint. If
-	// the waypoint is the first waypoint in the list (e.g.,
-	// `Vehicle.waypoints[0]` or `Trip.remaining_waypoints[0]`), then the value of
-	// this field is undefined.
+	// The path distance from the previous waypoint to the current waypoint.
+	// Undefined for the first waypoint in a list.
 	DistanceMeters *wrapperspb.Int32Value `protobuf:"bytes,6,opt,name=distance_meters,json=distanceMeters,proto3" json:"distance_meters,omitempty"`
-	// The estimated time of arrival at this waypoint.
+	// The estimated time of arrival at this waypoint. Undefined for the first
+	// waypoint in a list.
 	Eta *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=eta,proto3" json:"eta,omitempty"`
-	// The travel time from previous waypoint to this point. If the waypoint is
-	// the first waypoint in the list (e.g., `Vehicle.waypoints[0]` or
-	// `Trip.remaining_waypoints[0]`), then this value indicates the remaining
-	// time to the waypoint.
+	// The travel time from previous waypoint to this point. Undefined for the
+	// first waypoint in a list.
 	Duration *durationpb.Duration `protobuf:"bytes,8,opt,name=duration,proto3" json:"duration,omitempty"`
 }
 
