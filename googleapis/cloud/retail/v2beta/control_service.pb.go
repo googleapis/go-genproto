@@ -234,7 +234,7 @@ type GetControlRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The resource name of the Control to delete. Format:
+	// Required. The resource name of the Control to get. Format:
 	// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
@@ -297,7 +297,7 @@ type ListControlsRequest struct {
 	//
 	// * List all the products under the parent branch if
 	// [filter][google.cloud.retail.v2beta.ListControlsRequest.filter] is unset.
-	// * List controls that are used in a single ServingConfig:
+	//   - List controls that are used in a single ServingConfig:
 	//     'serving_config = "boosted_home_page_cvr"'
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
 }
@@ -748,12 +748,13 @@ type ControlServiceClient interface {
 	//
 	// [Control][google.cloud.retail.v2beta.Control] cannot be set to a different
 	// oneof field, if so an INVALID_ARGUMENT is returned. If the
-	// [Control][google.cloud.retail.v2beta.Control] to delete does not exist, a
+	// [Control][google.cloud.retail.v2beta.Control] to update does not exist, a
 	// NOT_FOUND error is returned.
 	UpdateControl(ctx context.Context, in *UpdateControlRequest, opts ...grpc.CallOption) (*Control, error)
 	// Gets a Control.
 	GetControl(ctx context.Context, in *GetControlRequest, opts ...grpc.CallOption) (*Control, error)
-	// Lists all Controls linked to this catalog.
+	// Lists all Controls by their parent
+	// [Catalog][google.cloud.retail.v2beta.Catalog].
 	ListControls(ctx context.Context, in *ListControlsRequest, opts ...grpc.CallOption) (*ListControlsResponse, error)
 }
 
@@ -826,12 +827,13 @@ type ControlServiceServer interface {
 	//
 	// [Control][google.cloud.retail.v2beta.Control] cannot be set to a different
 	// oneof field, if so an INVALID_ARGUMENT is returned. If the
-	// [Control][google.cloud.retail.v2beta.Control] to delete does not exist, a
+	// [Control][google.cloud.retail.v2beta.Control] to update does not exist, a
 	// NOT_FOUND error is returned.
 	UpdateControl(context.Context, *UpdateControlRequest) (*Control, error)
 	// Gets a Control.
 	GetControl(context.Context, *GetControlRequest) (*Control, error)
-	// Lists all Controls linked to this catalog.
+	// Lists all Controls by their parent
+	// [Catalog][google.cloud.retail.v2beta.Catalog].
 	ListControls(context.Context, *ListControlsRequest) (*ListControlsResponse, error)
 }
 

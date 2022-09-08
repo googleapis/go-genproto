@@ -51,16 +51,6 @@ const (
 	ImportProductsRequest_INCREMENTAL ImportProductsRequest_ReconciliationMode = 1
 	// Calculates diff and replaces the entire product dataset. Existing
 	// products may be deleted if they are not present in the source location.
-	//
-	// Can only be set while using
-	// [BigQuerySource][google.cloud.retail.v2beta.BigQuerySource]. And the
-	// BigQuery dataset must be created in the data location "us (multiple
-	// regions in United States)", otherwise a PERMISSION_DENIED error is
-	// thrown.
-	//
-	// Add the IAM permission "BigQuery Data Viewer" for
-	// cloud-retail-customer-data-access@system.gserviceaccount.com before
-	// using this feature otherwise an error is thrown.
 	ImportProductsRequest_FULL ImportProductsRequest_ReconciliationMode = 2
 )
 
@@ -106,7 +96,6 @@ func (ImportProductsRequest_ReconciliationMode) EnumDescriptor() ([]byte, []int)
 }
 
 // Google Cloud Storage location for input content.
-// format.
 type GcsSource struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -127,25 +116,26 @@ type GcsSource struct {
 	//
 	// * `product` (default): One JSON
 	// [Product][google.cloud.retail.v2beta.Product] per line. Each product must
-	//   have a valid [Product.id][google.cloud.retail.v2beta.Product.id].
-	// * `product_merchant_center`: See [Importing catalog data from Merchant
-	//   Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc).
+	//
+	//	have a valid [Product.id][google.cloud.retail.v2beta.Product.id].
+	//   - `product_merchant_center`: See [Importing catalog data from Merchant
+	//     Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc).
 	//
 	// Supported values for user events imports:
 	//
 	// * `user_event` (default): One JSON
 	// [UserEvent][google.cloud.retail.v2beta.UserEvent] per line.
-	// * `user_event_ga360`: Using
-	//   https://support.google.com/analytics/answer/3437719.
+	//   - `user_event_ga360`: Using
+	//     https://support.google.com/analytics/answer/3437719.
 	//
 	// Supported values for control imports:
 	//
-	// * 'control' (default): One JSON
+	// * `control` (default): One JSON
 	// [Control][google.cloud.retail.v2beta.Control] per line.
 	//
 	// Supported values for catalog attribute imports:
 	//
-	// * 'catalog_attribute' (default): One CSV
+	// * `catalog_attribute` (default): One CSV
 	// [CatalogAttribute][google.cloud.retail.v2beta.CatalogAttribute] per line.
 	DataSchema string `protobuf:"bytes,2,opt,name=data_schema,json=dataSchema,proto3" json:"data_schema,omitempty"`
 }
@@ -206,6 +196,7 @@ type BigQuerySource struct {
 	// is not partitioned.
 	//
 	// Types that are assignable to Partition:
+	//
 	//	*BigQuerySource_PartitionDate
 	Partition isBigQuerySource_Partition `protobuf_oneof:"partition"`
 	// The project ID (can be project # or ID) that the BigQuery source is in with
@@ -228,21 +219,21 @@ type BigQuerySource struct {
 	//
 	// * `product` (default): One JSON
 	// [Product][google.cloud.retail.v2beta.Product] per line. Each product must
-	//   have a valid [Product.id][google.cloud.retail.v2beta.Product.id].
-	// * `product_merchant_center`: See [Importing catalog data from Merchant
-	//   Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc).
+	//
+	//	have a valid [Product.id][google.cloud.retail.v2beta.Product.id].
+	//   - `product_merchant_center`: See [Importing catalog data from Merchant
+	//     Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc).
 	//
 	// Supported values for user events imports:
 	//
 	// * `user_event` (default): One JSON
 	// [UserEvent][google.cloud.retail.v2beta.UserEvent] per line.
-	// * `user_event_ga360`:
-	//   The schema is available here:
-	//   https://support.google.com/analytics/answer/3437719.
-	// * `user_event_ga4`: This feature is in private preview. Please contact the
-	//   support team for importing Google Analytics 4 events.
-	//   The schema is available here:
-	//   https://support.google.com/analytics/answer/7029846.
+	//   - `user_event_ga360`:
+	//     The schema is available here:
+	//     https://support.google.com/analytics/answer/3437719.
+	//   - `user_event_ga4`:
+	//     The schema is available here:
+	//     https://support.google.com/analytics/answer/7029846.
 	//
 	// Supported values for auto-completion imports:
 	//
@@ -340,9 +331,8 @@ type isBigQuerySource_Partition interface {
 type BigQuerySource_PartitionDate struct {
 	// BigQuery time partitioned table's _PARTITIONDATE in YYYY-MM-DD format.
 	//
-	// Only supported when
-	// [ImportProductsRequest.reconciliation_mode][google.cloud.retail.v2beta.ImportProductsRequest.reconciliation_mode]
-	// is set to `FULL`.
+	// Only supported in
+	// [ImportProductsRequest][google.cloud.retail.v2beta.ImportProductsRequest].
 	PartitionDate *date.Date `protobuf:"bytes,6,opt,name=partition_date,json=partitionDate,proto3,oneof"`
 }
 
@@ -457,6 +447,7 @@ type ImportErrorsConfig struct {
 	// Required. Errors destination.
 	//
 	// Types that are assignable to Destination:
+	//
 	//	*ImportErrorsConfig_GcsPrefix
 	Destination isImportErrorsConfig_Destination `protobuf_oneof:"destination"`
 }
@@ -513,7 +504,7 @@ type isImportErrorsConfig_Destination interface {
 
 type ImportErrorsConfig_GcsPrefix struct {
 	// Google Cloud Storage prefix for import errors. This must be an empty,
-	// existing Cloud Storage directory. Import errors will be written to
+	// existing Cloud Storage directory. Import errors are written to
 	// sharded files in this directory, one per line, as a JSON-encoded
 	// `google.rpc.Status` message.
 	GcsPrefix string `protobuf:"bytes,1,opt,name=gcs_prefix,json=gcsPrefix,proto3,oneof"`
@@ -541,29 +532,24 @@ type ImportProductsRequest struct {
 	InputConfig *ProductInputConfig `protobuf:"bytes,2,opt,name=input_config,json=inputConfig,proto3" json:"input_config,omitempty"`
 	// The desired location of errors incurred during the Import.
 	ErrorsConfig *ImportErrorsConfig `protobuf:"bytes,3,opt,name=errors_config,json=errorsConfig,proto3" json:"errors_config,omitempty"`
-	// Indicates which fields in the provided imported 'products' to update. If
-	// not set, will by default update all fields.
+	// Indicates which fields in the provided imported `products` to update. If
+	// not set, all fields are updated.
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,4,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	// The mode of reconciliation between existing products and the products to be
 	// imported. Defaults to
 	// [ReconciliationMode.INCREMENTAL][google.cloud.retail.v2beta.ImportProductsRequest.ReconciliationMode.INCREMENTAL].
 	ReconciliationMode ImportProductsRequest_ReconciliationMode `protobuf:"varint,5,opt,name=reconciliation_mode,json=reconciliationMode,proto3,enum=google.cloud.retail.v2beta.ImportProductsRequest_ReconciliationMode" json:"reconciliation_mode,omitempty"`
 	// Full Pub/Sub topic name for receiving notification. If this field is set,
-	// when the import is finished, a notification will be sent to
-	// specified Pub/Sub topic. The message data will be JSON string of a
+	// when the import is finished, a notification is sent to
+	// specified Pub/Sub topic. The message data is JSON string of a
 	// [Operation][google.longrunning.Operation].
 	//
 	// Format of the Pub/Sub topic is `projects/{project}/topics/{topic}`. It has
 	// to be within the same project as
 	// [ImportProductsRequest.parent][google.cloud.retail.v2beta.ImportProductsRequest.parent].
-	// Make sure that both
-	// `cloud-retail-customer-data-access@system.gserviceaccount.com` and
-	// `service-<project number>@gcp-sa-retail.iam.gserviceaccount.com`
-	// have the `pubsub.topics.publish` IAM permission on the topic.
-	//
-	// Only supported when
-	// [ImportProductsRequest.reconciliation_mode][google.cloud.retail.v2beta.ImportProductsRequest.reconciliation_mode]
-	// is set to `FULL`.
+	// Make sure that `service-<project
+	// number>@gcp-sa-retail.iam.gserviceaccount.com` has the
+	// `pubsub.topics.publish` IAM permission on the topic.
 	NotificationPubsubTopic string `protobuf:"bytes,7,opt,name=notification_pubsub_topic,json=notificationPubsubTopic,proto3" json:"notification_pubsub_topic,omitempty"`
 }
 
@@ -730,8 +716,8 @@ type ImportCompletionDataRequest struct {
 	// Required. The desired input location of the data.
 	InputConfig *CompletionDataInputConfig `protobuf:"bytes,2,opt,name=input_config,json=inputConfig,proto3" json:"input_config,omitempty"`
 	// Pub/Sub topic for receiving notification. If this field is set,
-	// when the import is finished, a notification will be sent to
-	// specified Pub/Sub topic. The message data will be JSON string of a
+	// when the import is finished, a notification is sent to
+	// specified Pub/Sub topic. The message data is JSON string of a
 	// [Operation][google.longrunning.Operation].
 	// Format of the Pub/Sub topic is `projects/{project}/topics/{topic}`.
 	NotificationPubsubTopic string `protobuf:"bytes,3,opt,name=notification_pubsub_topic,json=notificationPubsubTopic,proto3" json:"notification_pubsub_topic,omitempty"`
@@ -799,6 +785,7 @@ type ProductInputConfig struct {
 	// Required. The source of the input.
 	//
 	// Types that are assignable to Source:
+	//
 	//	*ProductInputConfig_ProductInlineSource
 	//	*ProductInputConfig_GcsSource
 	//	*ProductInputConfig_BigQuerySource
@@ -899,6 +886,7 @@ type UserEventInputConfig struct {
 	// The source of the input.
 	//
 	// Types that are assignable to Source:
+	//
 	//	*UserEventInputConfig_UserEventInlineSource
 	//	*UserEventInputConfig_GcsSource
 	//	*UserEventInputConfig_BigQuerySource
@@ -1007,6 +995,7 @@ type CompletionDataInputConfig struct {
 	// * `allowlist`:  One JSON allow suggestion per line.
 	//
 	// Types that are assignable to Source:
+	//
 	//	*CompletionDataInputConfig_BigQuerySource
 	Source isCompletionDataInputConfig_Source `protobuf_oneof:"source"`
 }
@@ -1072,7 +1061,7 @@ type CompletionDataInputConfig_BigQuerySource struct {
 
 func (*CompletionDataInputConfig_BigQuerySource) isCompletionDataInputConfig_Source() {}
 
-// Metadata related to the progress of the Import operation. This will be
+// Metadata related to the progress of the Import operation. This is
 // returned by the google.longrunning.Operation.metadata field.
 type ImportMetadata struct {
 	state         protoimpl.MessageState
@@ -1093,8 +1082,8 @@ type ImportMetadata struct {
 	// Deprecated: Do not use.
 	RequestId string `protobuf:"bytes,5,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
 	// Pub/Sub topic for receiving notification. If this field is set,
-	// when the import is finished, a notification will be sent to
-	// specified Pub/Sub topic. The message data will be JSON string of a
+	// when the import is finished, a notification is sent to
+	// specified Pub/Sub topic. The message data is JSON string of a
 	// [Operation][google.longrunning.Operation].
 	// Format of the Pub/Sub topic is `projects/{project}/topics/{topic}`.
 	NotificationPubsubTopic string `protobuf:"bytes,6,opt,name=notification_pubsub_topic,json=notificationPubsubTopic,proto3" json:"notification_pubsub_topic,omitempty"`

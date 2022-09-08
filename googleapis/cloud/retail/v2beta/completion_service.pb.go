@@ -99,9 +99,9 @@ type CompleteQueryRequest struct {
 	//
 	// * user-data
 	//
-	// * cloud-retail:
-	//   This option requires enabling auto-learning function first. See
-	//   [guidelines](https://cloud.google.com/retail/docs/completion-overview#generated-completion-dataset).
+	//   - cloud-retail:
+	//     This option requires enabling auto-learning function first. See
+	//     [guidelines](https://cloud.google.com/retail/docs/completion-overview#generated-completion-dataset).
 	Dataset string `protobuf:"bytes,6,opt,name=dataset,proto3" json:"dataset,omitempty"`
 	// Completion max suggestions. If left unset or set to 0, then will fallback
 	// to the configured value
@@ -216,15 +216,15 @@ type CompleteQueryResponse struct {
 	// field is set and [UserEvent][google.cloud.retail.v2beta.UserEvent] is
 	// imported. The recent searches satisfy the follow rules:
 	//
-	//  * They are ordered from latest to oldest.
+	//   - They are ordered from latest to oldest.
 	//
-	//  * They are matched with
-	//  [CompleteQueryRequest.query][google.cloud.retail.v2beta.CompleteQueryRequest.query]
-	//  case insensitively.
+	//   - They are matched with
+	//     [CompleteQueryRequest.query][google.cloud.retail.v2beta.CompleteQueryRequest.query]
+	//     case insensitively.
 	//
-	//  * They are transformed to lower case.
+	//   - They are transformed to lower case.
 	//
-	//  * They are UTF-8 safe.
+	//   - They are UTF-8 safe.
 	//
 	// Recent searches are deduplicated. More recent searches will be reserved
 	// when duplication happens.
@@ -665,7 +665,7 @@ type CompletionServiceClient interface {
 	// Completes the specified prefix with keyword suggestions.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Please enable Retail Search on Cloud Console before using this feature.
+	// Enable Retail Search on Cloud Console before using this feature.
 	CompleteQuery(ctx context.Context, in *CompleteQueryRequest, opts ...grpc.CallOption) (*CompleteQueryResponse, error)
 	// Bulk import of processed completion dataset.
 	//
@@ -675,7 +675,7 @@ type CompletionServiceClient interface {
 	// are indexed successfully and ready for serving. The process takes hours.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Please enable Retail Search on Cloud Console before using this feature.
+	// Enable Retail Search on Cloud Console before using this feature.
 	ImportCompletionData(ctx context.Context, in *ImportCompletionDataRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 }
 
@@ -710,7 +710,7 @@ type CompletionServiceServer interface {
 	// Completes the specified prefix with keyword suggestions.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Please enable Retail Search on Cloud Console before using this feature.
+	// Enable Retail Search on Cloud Console before using this feature.
 	CompleteQuery(context.Context, *CompleteQueryRequest) (*CompleteQueryResponse, error)
 	// Bulk import of processed completion dataset.
 	//
@@ -720,7 +720,7 @@ type CompletionServiceServer interface {
 	// are indexed successfully and ready for serving. The process takes hours.
 	//
 	// This feature is only available for users who have Retail Search enabled.
-	// Please enable Retail Search on Cloud Console before using this feature.
+	// Enable Retail Search on Cloud Console before using this feature.
 	ImportCompletionData(context.Context, *ImportCompletionDataRequest) (*longrunning.Operation, error)
 }
 

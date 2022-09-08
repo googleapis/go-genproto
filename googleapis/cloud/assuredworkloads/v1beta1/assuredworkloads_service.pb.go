@@ -269,8 +269,8 @@ type AssuredWorkloadsServiceClient interface {
 	DeleteWorkload(ctx context.Context, in *DeleteWorkloadRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Gets Assured Workload associated with a CRM Node
 	GetWorkload(ctx context.Context, in *GetWorkloadRequest, opts ...grpc.CallOption) (*Workload, error)
-	// A request to analyze a hypothetical move of a source project or
-	// project-based workload to a target (destination) folder-based workload.
+	// Analyze if the source Assured Workloads can be moved to the target Assured
+	// Workload
 	AnalyzeWorkloadMove(ctx context.Context, in *AnalyzeWorkloadMoveRequest, opts ...grpc.CallOption) (*AnalyzeWorkloadMoveResponse, error)
 	// Lists Assured Workloads under a CRM Node.
 	ListWorkloads(ctx context.Context, in *ListWorkloadsRequest, opts ...grpc.CallOption) (*ListWorkloadsResponse, error)
@@ -372,8 +372,8 @@ type AssuredWorkloadsServiceServer interface {
 	DeleteWorkload(context.Context, *DeleteWorkloadRequest) (*emptypb.Empty, error)
 	// Gets Assured Workload associated with a CRM Node
 	GetWorkload(context.Context, *GetWorkloadRequest) (*Workload, error)
-	// A request to analyze a hypothetical move of a source project or
-	// project-based workload to a target (destination) folder-based workload.
+	// Analyze if the source Assured Workloads can be moved to the target Assured
+	// Workload
 	AnalyzeWorkloadMove(context.Context, *AnalyzeWorkloadMoveRequest) (*AnalyzeWorkloadMoveResponse, error)
 	// Lists Assured Workloads under a CRM Node.
 	ListWorkloads(context.Context, *ListWorkloadsRequest) (*ListWorkloadsResponse, error)

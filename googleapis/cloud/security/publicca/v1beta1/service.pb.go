@@ -40,19 +40,20 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Creates a new
-// [ExternalAccountKey][google.cloud.security.publicca.v1beta1.ExternalAccountKey]
-// in a given project.
+// Creates a new [ExternalAccountKey][google.cloud.security.publicca.v1beta1.ExternalAccountKey] in a given project.
 type CreateExternalAccountKeyRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent resource where this external_account_key will be
-	// created. Format:
-	// projects/[project_id]/locations/[location]/externalAccountKeys.
+	// Required. The parent resource where this external_account_key will be created.
+	// Format: projects/[project_id]/locations/[location].
+	// At present only the "global" location is supported.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The external account key to create.
+	// Required. The external account key to create. This field only exists to future-proof
+	// the API. At present, all fields in ExternalAccountKey are output only and
+	// all values are ignored. For the purpose of the
+	// CreateExternalAccountKeyRequest, set it to a default/empty value.
 	ExternalAccountKey *ExternalAccountKey `protobuf:"bytes,2,opt,name=external_account_key,json=externalAccountKey,proto3" json:"external_account_key,omitempty"`
 }
 
@@ -253,9 +254,7 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type PublicCertificateAuthorityServiceClient interface {
-	// Creates a new
-	// [ExternalAccountKey][google.cloud.security.publicca.v1beta1.ExternalAccountKey]
-	// bound to the project.
+	// Creates a new [ExternalAccountKey][google.cloud.security.publicca.v1beta1.ExternalAccountKey] bound to the project.
 	CreateExternalAccountKey(ctx context.Context, in *CreateExternalAccountKeyRequest, opts ...grpc.CallOption) (*ExternalAccountKey, error)
 }
 
@@ -278,9 +277,7 @@ func (c *publicCertificateAuthorityServiceClient) CreateExternalAccountKey(ctx c
 
 // PublicCertificateAuthorityServiceServer is the server API for PublicCertificateAuthorityService service.
 type PublicCertificateAuthorityServiceServer interface {
-	// Creates a new
-	// [ExternalAccountKey][google.cloud.security.publicca.v1beta1.ExternalAccountKey]
-	// bound to the project.
+	// Creates a new [ExternalAccountKey][google.cloud.security.publicca.v1beta1.ExternalAccountKey] bound to the project.
 	CreateExternalAccountKey(context.Context, *CreateExternalAccountKeyRequest) (*ExternalAccountKey, error)
 }
 
