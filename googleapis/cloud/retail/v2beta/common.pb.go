@@ -206,7 +206,7 @@ type SearchSolutionUseCase int32
 
 const (
 	// The value when it's unspecified. In this case, server behavior defaults to
-	// [SEARCH_SOLUTION_USE_CASE_SEARCH][].
+	// [SEARCH_SOLUTION_USE_CASE_SEARCH][google.cloud.retail.v2beta.SearchSolutionUseCase.SEARCH_SOLUTION_USE_CASE_SEARCH].
 	SearchSolutionUseCase_SEARCH_SOLUTION_USE_CASE_UNSPECIFIED SearchSolutionUseCase = 0
 	// Search use case. Expects the traffic has a non-empty
 	// [query][google.cloud.retail.v2beta.SearchRequest.query].
@@ -325,10 +325,12 @@ func (x *Condition) GetActiveTimeRange() []*Condition_TimeRange {
 }
 
 // A rule is a condition-action pair
+//
 // * A condition defines when a rule is to be triggered.
 // * An action specifies what occurs on that trigger.
-// Currently only boost rules are supported.
-// Currently only supported by the search endpoint.
+// Currently rules only work for [controls][google.cloud.retail.v2beta.Control]
+// with
+// [SOLUTION_TYPE_SEARCH][google.cloud.retail.v2beta.SolutionType.SOLUTION_TYPE_SEARCH].
 type Rule struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -337,6 +339,7 @@ type Rule struct {
 	// An action must be provided.
 	//
 	// Types that are assignable to Action:
+	//
 	//	*Rule_BoostAction_
 	//	*Rule_RedirectAction_
 	//	*Rule_OnewaySynonymsAction_
@@ -985,6 +988,7 @@ type Interval struct {
 	// Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Types that are assignable to Min:
+	//
 	//	*Interval_Minimum
 	//	*Interval_ExclusiveMinimum
 	Min isInterval_Min `protobuf_oneof:"min"`
@@ -995,6 +999,7 @@ type Interval struct {
 	// Otherwise, an INVALID_ARGUMENT error is returned.
 	//
 	// Types that are assignable to Max:
+	//
 	//	*Interval_Maximum
 	//	*Interval_ExclusiveMaximum
 	Max isInterval_Max `protobuf_oneof:"max"`
@@ -1496,18 +1501,18 @@ type LocalInventory struct {
 	// This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT
 	// error is returned:
 	//
-	// * At most 30 attributes are allowed.
-	// * The key must be a UTF-8 encoded string with a length limit of 32
-	//   characters.
-	// * The key must match the pattern: `[a-zA-Z0-9][a-zA-Z0-9_]*`. For example,
-	//   key0LikeThis or KEY_1_LIKE_THIS.
-	// * The attribute values must be of the same type (text or number).
-	// * Only 1 value is allowed for each attribute.
-	// * For text values, the length limit is 256 UTF-8 characters.
-	// * The attribute does not support search. The `searchable` field should be
-	//   unset or set to false.
-	// * The max summed total bytes of custom attribute keys and values per
-	//   product is 5MiB.
+	//   - At most 30 attributes are allowed.
+	//   - The key must be a UTF-8 encoded string with a length limit of 32
+	//     characters.
+	//   - The key must match the pattern: `[a-zA-Z0-9][a-zA-Z0-9_]*`. For example,
+	//     key0LikeThis or KEY_1_LIKE_THIS.
+	//   - The attribute values must be of the same type (text or number).
+	//   - Only 1 value is allowed for each attribute.
+	//   - For text values, the length limit is 256 UTF-8 characters.
+	//   - The attribute does not support search. The `searchable` field should be
+	//     unset or set to false.
+	//   - The max summed total bytes of custom attribute keys and values per
+	//     product is 5MiB.
 	Attributes map[string]*CustomAttribute `protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Input only. Supported fulfillment types. Valid fulfillment type values
 	// include commonly used types (such as pickup in store and same day
@@ -1604,8 +1609,8 @@ type Condition_QueryTerm struct {
 	// Value cannot be empty.
 	// Value can have at most 3 terms if specified as a partial match. Each
 	// space separated string is considered as one term.
-	// Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not
-	// allowed for partial match.
+	// For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms
+	// and not allowed for a partial match.
 	Value string `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	// Whether this is supposed to be a full or partial match.
 	FullMatch bool `protobuf:"varint,2,opt,name=full_match,json=fullMatch,proto3" json:"full_match,omitempty"`
@@ -1750,10 +1755,11 @@ type Rule_BoostAction struct {
 	//
 	// * To boost products with product ID "product_1" or "product_2", and
 	// color
-	//   "Red" or "Blue":<br>
-	//   *(id: ANY("product_1", "product_2"))<br>*
-	//   *AND<br>*
-	//   *(colorFamilies: ANY("Red", "Blue"))<br>*
+	//
+	//	"Red" or "Blue":<br>
+	//	*(id: ANY("product_1", "product_2"))<br>*
+	//	*AND<br>*
+	//	*(colorFamilies: ANY("Red", "Blue"))<br>*
 	ProductsFilter string `protobuf:"bytes,2,opt,name=products_filter,json=productsFilter,proto3" json:"products_filter,omitempty"`
 }
 
@@ -1830,14 +1836,17 @@ type Rule_FilterAction struct {
 	// * Filter syntax is identical to
 	// [SearchRequest.filter][google.cloud.retail.v2beta.SearchRequest.filter].
 	// See more
-	//   details at the Retail Search
-	//   [user guide](/retail/search/docs/filter-and-order#filter).
+	//
+	//	details at the Retail Search
+	//	[user guide](/retail/search/docs/filter-and-order#filter).
+	//
 	// * To filter products with product ID "product_1" or "product_2", and
 	// color
-	//   "Red" or "Blue":<br>
-	//   *(id: ANY("product_1", "product_2"))<br>*
-	//   *AND<br>*
-	//   *(colorFamilies: ANY("Red", "Blue"))<br>*
+	//
+	//	"Red" or "Blue":<br>
+	//	*(id: ANY("product_1", "product_2"))<br>*
+	//	*AND<br>*
+	//	*(colorFamilies: ANY("Red", "Blue"))<br>*
 	Filter string `protobuf:"bytes,1,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
