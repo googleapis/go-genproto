@@ -470,7 +470,8 @@ type Feature struct {
 	MaxResults int32 `protobuf:"varint,2,opt,name=max_results,json=maxResults,proto3" json:"max_results,omitempty"`
 	// Model to use for the feature.
 	// Supported values: "builtin/stable" (the default if unset) and
-	// "builtin/latest".
+	// "builtin/latest". `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` also
+	// support "builtin/weekly" for the bleeding edge release updated weekly.
 	Model string `protobuf:"bytes,3,opt,name=model,proto3" json:"model,omitempty"`
 }
 

@@ -367,19 +367,64 @@ type StructuredQuery struct {
 	//   - `WHERE __name__ > ... AND a > 1` becomes
 	//     `WHERE __name__ > ... AND a > 1 ORDER BY a ASC, __name__ ASC`
 	OrderBy []*StructuredQuery_Order `protobuf:"bytes,4,rep,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
-	// A starting point for the query results.
-	StartAt *Cursor `protobuf:"bytes,7,opt,name=start_at,json=startAt,proto3" json:"start_at,omitempty"`
-	// A end point for the query results.
-	EndAt *Cursor `protobuf:"bytes,8,opt,name=end_at,json=endAt,proto3" json:"end_at,omitempty"`
-	// The number of results to skip.
+	// A potential prefix of a position in the result set to start the query at.
 	//
-	// Applies before limit, but after all other constraints. Must be >= 0 if
-	// specified.
+	// The ordering of the result set is based on the `ORDER BY` clause of the
+	// original query.
+	//
+	// ```
+	// SELECT * FROM k WHERE a = 1 AND b > 2 ORDER BY b ASC, __name__ ASC;
+	// ```
+	//
+	// This query's results are ordered by `(b ASC, __name__ ASC)`.
+	//
+	// Cursors can reference either the full ordering or a prefix of the location,
+	// though it cannot reference more fields than what are in the provided
+	// `ORDER BY`.
+	//
+	// Continuing off the example above, attaching the following start cursors
+	// will have varying impact:
+	//
+	//   - `START BEFORE (2, /k/123)`: start the query right before `a = 1 AND
+	//     b > 2 AND __name__ > /k/123`.
+	//   - `START AFTER (10)`: start the query right after `a = 1 AND b > 10`.
+	//
+	// Unlike `OFFSET` which requires scanning over the first N results to skip,
+	// a start cursor allows the query to begin at a logical position. This
+	// position is not required to match an actual result, it will scan forward
+	// from this position to find the next document.
+	//
+	// Requires:
+	//
+	//   - The number of values cannot be greater than the number of fields
+	//     specified in the `ORDER BY` clause.
+	StartAt *Cursor `protobuf:"bytes,7,opt,name=start_at,json=startAt,proto3" json:"start_at,omitempty"`
+	// A potential prefix of a position in the result set to end the query at.
+	//
+	// This is similar to `START_AT` but with it controlling the end position
+	// rather than the start position.
+	//
+	// Requires:
+	//
+	//   - The number of values cannot be greater than the number of fields
+	//     specified in the `ORDER BY` clause.
+	EndAt *Cursor `protobuf:"bytes,8,opt,name=end_at,json=endAt,proto3" json:"end_at,omitempty"`
+	// The number of documents to skip before returning the first result.
+	//
+	// This applies after the constraints specified by the `WHERE`, `START AT`, &
+	// `END AT` but before the `LIMIT` clause.
+	//
+	// Requires:
+	//
+	// * The value must be greater than or equal to zero if specified.
 	Offset int32 `protobuf:"varint,6,opt,name=offset,proto3" json:"offset,omitempty"`
 	// The maximum number of results to return.
 	//
 	// Applies after all other constraints.
-	// Must be >= 0 if specified.
+	//
+	// Requires:
+	//
+	// * The value must be greater than or equal to zero if specified.
 	Limit *wrapperspb.Int32Value `protobuf:"bytes,5,opt,name=limit,proto3" json:"limit,omitempty"`
 }
 
@@ -471,6 +516,90 @@ func (x *StructuredQuery) GetLimit() *wrapperspb.Int32Value {
 	return nil
 }
 
+// Firestore query for running an aggregation over a [StructuredQuery][google.firestore.v1.StructuredQuery].
+type StructuredAggregationQuery struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The base query to aggregate over.
+	//
+	// Types that are assignable to QueryType:
+	//
+	//	*StructuredAggregationQuery_StructuredQuery
+	QueryType isStructuredAggregationQuery_QueryType `protobuf_oneof:"query_type"`
+	// Optional. Series of aggregations to apply over the results of the `structured_query`.
+	//
+	// Requires:
+	//
+	// * A minimum of one and maximum of five aggregations per query.
+	Aggregations []*StructuredAggregationQuery_Aggregation `protobuf:"bytes,3,rep,name=aggregations,proto3" json:"aggregations,omitempty"`
+}
+
+func (x *StructuredAggregationQuery) Reset() {
+	*x = StructuredAggregationQuery{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_firestore_v1_query_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StructuredAggregationQuery) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StructuredAggregationQuery) ProtoMessage() {}
+
+func (x *StructuredAggregationQuery) ProtoReflect() protoreflect.Message {
+	mi := &file_google_firestore_v1_query_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StructuredAggregationQuery.ProtoReflect.Descriptor instead.
+func (*StructuredAggregationQuery) Descriptor() ([]byte, []int) {
+	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{1}
+}
+
+func (m *StructuredAggregationQuery) GetQueryType() isStructuredAggregationQuery_QueryType {
+	if m != nil {
+		return m.QueryType
+	}
+	return nil
+}
+
+func (x *StructuredAggregationQuery) GetStructuredQuery() *StructuredQuery {
+	if x, ok := x.GetQueryType().(*StructuredAggregationQuery_StructuredQuery); ok {
+		return x.StructuredQuery
+	}
+	return nil
+}
+
+func (x *StructuredAggregationQuery) GetAggregations() []*StructuredAggregationQuery_Aggregation {
+	if x != nil {
+		return x.Aggregations
+	}
+	return nil
+}
+
+type isStructuredAggregationQuery_QueryType interface {
+	isStructuredAggregationQuery_QueryType()
+}
+
+type StructuredAggregationQuery_StructuredQuery struct {
+	// Nested structured query.
+	StructuredQuery *StructuredQuery `protobuf:"bytes,1,opt,name=structured_query,json=structuredQuery,proto3,oneof"`
+}
+
+func (*StructuredAggregationQuery_StructuredQuery) isStructuredAggregationQuery_QueryType() {}
+
 // A position in a query result set.
 type Cursor struct {
 	state         protoimpl.MessageState
@@ -490,7 +619,7 @@ type Cursor struct {
 func (x *Cursor) Reset() {
 	*x = Cursor{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[1]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -503,7 +632,7 @@ func (x *Cursor) String() string {
 func (*Cursor) ProtoMessage() {}
 
 func (x *Cursor) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[1]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -516,7 +645,7 @@ func (x *Cursor) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Cursor.ProtoReflect.Descriptor instead.
 func (*Cursor) Descriptor() ([]byte, []int) {
-	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{1}
+	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Cursor) GetValues() []*Value {
@@ -551,7 +680,7 @@ type StructuredQuery_CollectionSelector struct {
 func (x *StructuredQuery_CollectionSelector) Reset() {
 	*x = StructuredQuery_CollectionSelector{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[2]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -564,7 +693,7 @@ func (x *StructuredQuery_CollectionSelector) String() string {
 func (*StructuredQuery_CollectionSelector) ProtoMessage() {}
 
 func (x *StructuredQuery_CollectionSelector) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[2]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -613,7 +742,7 @@ type StructuredQuery_Filter struct {
 func (x *StructuredQuery_Filter) Reset() {
 	*x = StructuredQuery_Filter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[3]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -626,7 +755,7 @@ func (x *StructuredQuery_Filter) String() string {
 func (*StructuredQuery_Filter) ProtoMessage() {}
 
 func (x *StructuredQuery_Filter) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[3]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -714,7 +843,7 @@ type StructuredQuery_CompositeFilter struct {
 func (x *StructuredQuery_CompositeFilter) Reset() {
 	*x = StructuredQuery_CompositeFilter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[4]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -727,7 +856,7 @@ func (x *StructuredQuery_CompositeFilter) String() string {
 func (*StructuredQuery_CompositeFilter) ProtoMessage() {}
 
 func (x *StructuredQuery_CompositeFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[4]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -774,7 +903,7 @@ type StructuredQuery_FieldFilter struct {
 func (x *StructuredQuery_FieldFilter) Reset() {
 	*x = StructuredQuery_FieldFilter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[5]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -787,7 +916,7 @@ func (x *StructuredQuery_FieldFilter) String() string {
 func (*StructuredQuery_FieldFilter) ProtoMessage() {}
 
 func (x *StructuredQuery_FieldFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[5]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -843,7 +972,7 @@ type StructuredQuery_UnaryFilter struct {
 func (x *StructuredQuery_UnaryFilter) Reset() {
 	*x = StructuredQuery_UnaryFilter{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[6]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -856,7 +985,7 @@ func (x *StructuredQuery_UnaryFilter) String() string {
 func (*StructuredQuery_UnaryFilter) ProtoMessage() {}
 
 func (x *StructuredQuery_UnaryFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[6]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -919,7 +1048,7 @@ type StructuredQuery_Order struct {
 func (x *StructuredQuery_Order) Reset() {
 	*x = StructuredQuery_Order{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[7]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -932,7 +1061,7 @@ func (x *StructuredQuery_Order) String() string {
 func (*StructuredQuery_Order) ProtoMessage() {}
 
 func (x *StructuredQuery_Order) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[7]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -962,19 +1091,24 @@ func (x *StructuredQuery_Order) GetDirection() StructuredQuery_Direction {
 	return StructuredQuery_DIRECTION_UNSPECIFIED
 }
 
-// A reference to a field, such as `max(messages.time) as max_time`.
+// A reference to a field in a document, ex: `stats.operations`.
 type StructuredQuery_FieldReference struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// The relative path of the document being referenced.
+	//
+	// Requires:
+	//
+	// * Conform to [document field name][google.firestore.v1.Document.fields] limitations.
 	FieldPath string `protobuf:"bytes,2,opt,name=field_path,json=fieldPath,proto3" json:"field_path,omitempty"`
 }
 
 func (x *StructuredQuery_FieldReference) Reset() {
 	*x = StructuredQuery_FieldReference{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[8]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -987,7 +1121,7 @@ func (x *StructuredQuery_FieldReference) String() string {
 func (*StructuredQuery_FieldReference) ProtoMessage() {}
 
 func (x *StructuredQuery_FieldReference) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[8]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1026,7 +1160,7 @@ type StructuredQuery_Projection struct {
 func (x *StructuredQuery_Projection) Reset() {
 	*x = StructuredQuery_Projection{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_firestore_v1_query_proto_msgTypes[9]
+		mi := &file_google_firestore_v1_query_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1039,7 +1173,7 @@ func (x *StructuredQuery_Projection) String() string {
 func (*StructuredQuery_Projection) ProtoMessage() {}
 
 func (x *StructuredQuery_Projection) ProtoReflect() protoreflect.Message {
-	mi := &file_google_firestore_v1_query_proto_msgTypes[9]
+	mi := &file_google_firestore_v1_query_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1058,6 +1192,194 @@ func (*StructuredQuery_Projection) Descriptor() ([]byte, []int) {
 func (x *StructuredQuery_Projection) GetFields() []*StructuredQuery_FieldReference {
 	if x != nil {
 		return x.Fields
+	}
+	return nil
+}
+
+// Defines a aggregation that produces a single result.
+type StructuredAggregationQuery_Aggregation struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The type of aggregation to perform, required.
+	//
+	// Types that are assignable to Operator:
+	//
+	//	*StructuredAggregationQuery_Aggregation_Count_
+	Operator isStructuredAggregationQuery_Aggregation_Operator `protobuf_oneof:"operator"`
+	// Optional. Optional name of the field to store the result of the aggregation into.
+	//
+	// If not provided, Firestore will pick a default name following the format
+	// `field_<incremental_id++>`. For example:
+	//
+	// ```
+	// AGGREGATE
+	//
+	//	COUNT_UP_TO(1) AS count_up_to_1,
+	//	COUNT_UP_TO(2),
+	//	COUNT_UP_TO(3) AS count_up_to_3,
+	//	COUNT_UP_TO(4)
+	//
+	// OVER (
+	//
+	//	...
+	//
+	// );
+	// ```
+	//
+	// becomes:
+	//
+	// ```
+	// AGGREGATE
+	//
+	//	COUNT_UP_TO(1) AS count_up_to_1,
+	//	COUNT_UP_TO(2) AS field_1,
+	//	COUNT_UP_TO(3) AS count_up_to_3,
+	//	COUNT_UP_TO(4) AS field_2
+	//
+	// OVER (
+	//
+	//	...
+	//
+	// );
+	// ```
+	//
+	// Requires:
+	//
+	// * Must be unique across all aggregation aliases.
+	// * Conform to [document field name][google.firestore.v1.Document.fields] limitations.
+	Alias string `protobuf:"bytes,7,opt,name=alias,proto3" json:"alias,omitempty"`
+}
+
+func (x *StructuredAggregationQuery_Aggregation) Reset() {
+	*x = StructuredAggregationQuery_Aggregation{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_firestore_v1_query_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StructuredAggregationQuery_Aggregation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StructuredAggregationQuery_Aggregation) ProtoMessage() {}
+
+func (x *StructuredAggregationQuery_Aggregation) ProtoReflect() protoreflect.Message {
+	mi := &file_google_firestore_v1_query_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StructuredAggregationQuery_Aggregation.ProtoReflect.Descriptor instead.
+func (*StructuredAggregationQuery_Aggregation) Descriptor() ([]byte, []int) {
+	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{1, 0}
+}
+
+func (m *StructuredAggregationQuery_Aggregation) GetOperator() isStructuredAggregationQuery_Aggregation_Operator {
+	if m != nil {
+		return m.Operator
+	}
+	return nil
+}
+
+func (x *StructuredAggregationQuery_Aggregation) GetCount() *StructuredAggregationQuery_Aggregation_Count {
+	if x, ok := x.GetOperator().(*StructuredAggregationQuery_Aggregation_Count_); ok {
+		return x.Count
+	}
+	return nil
+}
+
+func (x *StructuredAggregationQuery_Aggregation) GetAlias() string {
+	if x != nil {
+		return x.Alias
+	}
+	return ""
+}
+
+type isStructuredAggregationQuery_Aggregation_Operator interface {
+	isStructuredAggregationQuery_Aggregation_Operator()
+}
+
+type StructuredAggregationQuery_Aggregation_Count_ struct {
+	// Count aggregator.
+	Count *StructuredAggregationQuery_Aggregation_Count `protobuf:"bytes,1,opt,name=count,proto3,oneof"`
+}
+
+func (*StructuredAggregationQuery_Aggregation_Count_) isStructuredAggregationQuery_Aggregation_Operator() {
+}
+
+// Count of documents that match the query.
+//
+// The `COUNT(*)` aggregation function operates on the entire document
+// so it does not require a field reference.
+type StructuredAggregationQuery_Aggregation_Count struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Optional. Optional constraint on the maximum number of documents to count.
+	//
+	// This provides a way to set an upper bound on the number of documents
+	// to scan, limiting latency and cost.
+	//
+	// Unspecified is interpreted as no bound.
+	//
+	// High-Level Example:
+	//
+	// ```
+	// AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
+	// ```
+	//
+	// Requires:
+	//
+	// * Must be greater than zero when present.
+	UpTo *wrapperspb.Int64Value `protobuf:"bytes,1,opt,name=up_to,json=upTo,proto3" json:"up_to,omitempty"`
+}
+
+func (x *StructuredAggregationQuery_Aggregation_Count) Reset() {
+	*x = StructuredAggregationQuery_Aggregation_Count{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_firestore_v1_query_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *StructuredAggregationQuery_Aggregation_Count) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StructuredAggregationQuery_Aggregation_Count) ProtoMessage() {}
+
+func (x *StructuredAggregationQuery_Aggregation_Count) ProtoReflect() protoreflect.Message {
+	mi := &file_google_firestore_v1_query_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StructuredAggregationQuery_Aggregation_Count.ProtoReflect.Descriptor instead.
+func (*StructuredAggregationQuery_Aggregation_Count) Descriptor() ([]byte, []int) {
+	return file_google_firestore_v1_query_proto_rawDescGZIP(), []int{1, 0, 0}
+}
+
+func (x *StructuredAggregationQuery_Aggregation_Count) GetUpTo() *wrapperspb.Int64Value {
+	if x != nil {
+		return x.UpTo
 	}
 	return nil
 }
@@ -1211,25 +1533,53 @@ var file_google_firestore_v1_query_proto_rawDesc = []byte{
 	0x19, 0x0a, 0x15, 0x44, 0x49, 0x52, 0x45, 0x43, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x55, 0x4e, 0x53,
 	0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0d, 0x0a, 0x09, 0x41, 0x53,
 	0x43, 0x45, 0x4e, 0x44, 0x49, 0x4e, 0x47, 0x10, 0x01, 0x12, 0x0e, 0x0a, 0x0a, 0x44, 0x45, 0x53,
-	0x43, 0x45, 0x4e, 0x44, 0x49, 0x4e, 0x47, 0x10, 0x02, 0x22, 0x54, 0x0a, 0x06, 0x43, 0x75, 0x72,
-	0x73, 0x6f, 0x72, 0x12, 0x32, 0x0a, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x18, 0x01, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72,
-	0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52,
-	0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x62, 0x65, 0x66, 0x6f, 0x72,
-	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x62, 0x65, 0x66, 0x6f, 0x72, 0x65, 0x42,
-	0xc3, 0x01, 0x0a, 0x17, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66,
-	0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x42, 0x0a, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x3c, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
-	0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73,
-	0x2f, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2f, 0x76, 0x31, 0x3b, 0x66, 0x69,
-	0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0xa2, 0x02, 0x04, 0x47, 0x43, 0x46, 0x53, 0xaa, 0x02,
-	0x19, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x46, 0x69,
-	0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x19, 0x47, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x46, 0x69, 0x72, 0x65, 0x73, 0x74,
-	0x6f, 0x72, 0x65, 0x5c, 0x56, 0x31, 0xea, 0x02, 0x1c, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a,
-	0x3a, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x3a, 0x3a, 0x46, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72,
-	0x65, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x43, 0x45, 0x4e, 0x44, 0x49, 0x4e, 0x47, 0x10, 0x02, 0x22, 0xb5, 0x03, 0x0a, 0x1a, 0x53, 0x74,
+	0x72, 0x75, 0x63, 0x74, 0x75, 0x72, 0x65, 0x64, 0x41, 0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x51, 0x0a, 0x10, 0x73, 0x74, 0x72, 0x75,
+	0x63, 0x74, 0x75, 0x72, 0x65, 0x64, 0x5f, 0x71, 0x75, 0x65, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x24, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72, 0x65,
+	0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x74, 0x72, 0x75, 0x63, 0x74, 0x75,
+	0x72, 0x65, 0x64, 0x51, 0x75, 0x65, 0x72, 0x79, 0x48, 0x00, 0x52, 0x0f, 0x73, 0x74, 0x72, 0x75,
+	0x63, 0x74, 0x75, 0x72, 0x65, 0x64, 0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x64, 0x0a, 0x0c, 0x61,
+	0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x3b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72, 0x65, 0x73,
+	0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x74, 0x72, 0x75, 0x63, 0x74, 0x75, 0x72,
+	0x65, 0x64, 0x41, 0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x2e, 0x41, 0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x42, 0x03,
+	0xe0, 0x41, 0x01, 0x52, 0x0c, 0x61, 0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x1a, 0xcf, 0x01, 0x0a, 0x0b, 0x41, 0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x12, 0x59, 0x0a, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x41, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74,
+	0x6f, 0x72, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x74, 0x72, 0x75, 0x63, 0x74, 0x75, 0x72, 0x65,
+	0x64, 0x41, 0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x2e, 0x41, 0x67, 0x67, 0x72, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x43, 0x6f,
+	0x75, 0x6e, 0x74, 0x48, 0x00, 0x52, 0x05, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x19, 0x0a, 0x05,
+	0x61, 0x6c, 0x69, 0x61, 0x73, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x42, 0x03, 0xe0, 0x41, 0x01,
+	0x52, 0x05, 0x61, 0x6c, 0x69, 0x61, 0x73, 0x1a, 0x3e, 0x0a, 0x05, 0x43, 0x6f, 0x75, 0x6e, 0x74,
+	0x12, 0x35, 0x0a, 0x05, 0x75, 0x70, 0x5f, 0x74, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x42, 0x03, 0xe0, 0x41,
+	0x01, 0x52, 0x04, 0x75, 0x70, 0x54, 0x6f, 0x42, 0x0a, 0x0a, 0x08, 0x6f, 0x70, 0x65, 0x72, 0x61,
+	0x74, 0x6f, 0x72, 0x42, 0x0c, 0x0a, 0x0a, 0x71, 0x75, 0x65, 0x72, 0x79, 0x5f, 0x74, 0x79, 0x70,
+	0x65, 0x22, 0x54, 0x0a, 0x06, 0x43, 0x75, 0x72, 0x73, 0x6f, 0x72, 0x12, 0x32, 0x0a, 0x06, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e, 0x76,
+	0x31, 0x2e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x12,
+	0x16, 0x0a, 0x06, 0x62, 0x65, 0x66, 0x6f, 0x72, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52,
+	0x06, 0x62, 0x65, 0x66, 0x6f, 0x72, 0x65, 0x42, 0xc3, 0x01, 0x0a, 0x17, 0x63, 0x6f, 0x6d, 0x2e,
+	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65,
+	0x2e, 0x76, 0x31, 0x42, 0x0a, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50,
+	0x01, 0x5a, 0x3c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67,
+	0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f,
+	0x72, 0x65, 0x2f, 0x76, 0x31, 0x3b, 0x66, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0xa2,
+	0x02, 0x04, 0x47, 0x43, 0x46, 0x53, 0xaa, 0x02, 0x19, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x46, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x2e,
+	0x56, 0x31, 0xca, 0x02, 0x19, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75,
+	0x64, 0x5c, 0x46, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x5c, 0x56, 0x31, 0xea, 0x02,
+	0x1c, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x3a, 0x3a,
+	0x46, 0x69, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1245,52 +1595,60 @@ func file_google_firestore_v1_query_proto_rawDescGZIP() []byte {
 }
 
 var file_google_firestore_v1_query_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_google_firestore_v1_query_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_google_firestore_v1_query_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_google_firestore_v1_query_proto_goTypes = []interface{}{
-	(StructuredQuery_Direction)(0),                // 0: google.firestore.v1.StructuredQuery.Direction
-	(StructuredQuery_CompositeFilter_Operator)(0), // 1: google.firestore.v1.StructuredQuery.CompositeFilter.Operator
-	(StructuredQuery_FieldFilter_Operator)(0),     // 2: google.firestore.v1.StructuredQuery.FieldFilter.Operator
-	(StructuredQuery_UnaryFilter_Operator)(0),     // 3: google.firestore.v1.StructuredQuery.UnaryFilter.Operator
-	(*StructuredQuery)(nil),                       // 4: google.firestore.v1.StructuredQuery
-	(*Cursor)(nil),                                // 5: google.firestore.v1.Cursor
-	(*StructuredQuery_CollectionSelector)(nil),    // 6: google.firestore.v1.StructuredQuery.CollectionSelector
-	(*StructuredQuery_Filter)(nil),                // 7: google.firestore.v1.StructuredQuery.Filter
-	(*StructuredQuery_CompositeFilter)(nil),       // 8: google.firestore.v1.StructuredQuery.CompositeFilter
-	(*StructuredQuery_FieldFilter)(nil),           // 9: google.firestore.v1.StructuredQuery.FieldFilter
-	(*StructuredQuery_UnaryFilter)(nil),           // 10: google.firestore.v1.StructuredQuery.UnaryFilter
-	(*StructuredQuery_Order)(nil),                 // 11: google.firestore.v1.StructuredQuery.Order
-	(*StructuredQuery_FieldReference)(nil),        // 12: google.firestore.v1.StructuredQuery.FieldReference
-	(*StructuredQuery_Projection)(nil),            // 13: google.firestore.v1.StructuredQuery.Projection
-	(*wrapperspb.Int32Value)(nil),                 // 14: google.protobuf.Int32Value
-	(*Value)(nil),                                 // 15: google.firestore.v1.Value
+	(StructuredQuery_Direction)(0),                       // 0: google.firestore.v1.StructuredQuery.Direction
+	(StructuredQuery_CompositeFilter_Operator)(0),        // 1: google.firestore.v1.StructuredQuery.CompositeFilter.Operator
+	(StructuredQuery_FieldFilter_Operator)(0),            // 2: google.firestore.v1.StructuredQuery.FieldFilter.Operator
+	(StructuredQuery_UnaryFilter_Operator)(0),            // 3: google.firestore.v1.StructuredQuery.UnaryFilter.Operator
+	(*StructuredQuery)(nil),                              // 4: google.firestore.v1.StructuredQuery
+	(*StructuredAggregationQuery)(nil),                   // 5: google.firestore.v1.StructuredAggregationQuery
+	(*Cursor)(nil),                                       // 6: google.firestore.v1.Cursor
+	(*StructuredQuery_CollectionSelector)(nil),           // 7: google.firestore.v1.StructuredQuery.CollectionSelector
+	(*StructuredQuery_Filter)(nil),                       // 8: google.firestore.v1.StructuredQuery.Filter
+	(*StructuredQuery_CompositeFilter)(nil),              // 9: google.firestore.v1.StructuredQuery.CompositeFilter
+	(*StructuredQuery_FieldFilter)(nil),                  // 10: google.firestore.v1.StructuredQuery.FieldFilter
+	(*StructuredQuery_UnaryFilter)(nil),                  // 11: google.firestore.v1.StructuredQuery.UnaryFilter
+	(*StructuredQuery_Order)(nil),                        // 12: google.firestore.v1.StructuredQuery.Order
+	(*StructuredQuery_FieldReference)(nil),               // 13: google.firestore.v1.StructuredQuery.FieldReference
+	(*StructuredQuery_Projection)(nil),                   // 14: google.firestore.v1.StructuredQuery.Projection
+	(*StructuredAggregationQuery_Aggregation)(nil),       // 15: google.firestore.v1.StructuredAggregationQuery.Aggregation
+	(*StructuredAggregationQuery_Aggregation_Count)(nil), // 16: google.firestore.v1.StructuredAggregationQuery.Aggregation.Count
+	(*wrapperspb.Int32Value)(nil),                        // 17: google.protobuf.Int32Value
+	(*Value)(nil),                                        // 18: google.firestore.v1.Value
+	(*wrapperspb.Int64Value)(nil),                        // 19: google.protobuf.Int64Value
 }
 var file_google_firestore_v1_query_proto_depIdxs = []int32{
-	13, // 0: google.firestore.v1.StructuredQuery.select:type_name -> google.firestore.v1.StructuredQuery.Projection
-	6,  // 1: google.firestore.v1.StructuredQuery.from:type_name -> google.firestore.v1.StructuredQuery.CollectionSelector
-	7,  // 2: google.firestore.v1.StructuredQuery.where:type_name -> google.firestore.v1.StructuredQuery.Filter
-	11, // 3: google.firestore.v1.StructuredQuery.order_by:type_name -> google.firestore.v1.StructuredQuery.Order
-	5,  // 4: google.firestore.v1.StructuredQuery.start_at:type_name -> google.firestore.v1.Cursor
-	5,  // 5: google.firestore.v1.StructuredQuery.end_at:type_name -> google.firestore.v1.Cursor
-	14, // 6: google.firestore.v1.StructuredQuery.limit:type_name -> google.protobuf.Int32Value
-	15, // 7: google.firestore.v1.Cursor.values:type_name -> google.firestore.v1.Value
-	8,  // 8: google.firestore.v1.StructuredQuery.Filter.composite_filter:type_name -> google.firestore.v1.StructuredQuery.CompositeFilter
-	9,  // 9: google.firestore.v1.StructuredQuery.Filter.field_filter:type_name -> google.firestore.v1.StructuredQuery.FieldFilter
-	10, // 10: google.firestore.v1.StructuredQuery.Filter.unary_filter:type_name -> google.firestore.v1.StructuredQuery.UnaryFilter
-	1,  // 11: google.firestore.v1.StructuredQuery.CompositeFilter.op:type_name -> google.firestore.v1.StructuredQuery.CompositeFilter.Operator
-	7,  // 12: google.firestore.v1.StructuredQuery.CompositeFilter.filters:type_name -> google.firestore.v1.StructuredQuery.Filter
-	12, // 13: google.firestore.v1.StructuredQuery.FieldFilter.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
-	2,  // 14: google.firestore.v1.StructuredQuery.FieldFilter.op:type_name -> google.firestore.v1.StructuredQuery.FieldFilter.Operator
-	15, // 15: google.firestore.v1.StructuredQuery.FieldFilter.value:type_name -> google.firestore.v1.Value
-	3,  // 16: google.firestore.v1.StructuredQuery.UnaryFilter.op:type_name -> google.firestore.v1.StructuredQuery.UnaryFilter.Operator
-	12, // 17: google.firestore.v1.StructuredQuery.UnaryFilter.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
-	12, // 18: google.firestore.v1.StructuredQuery.Order.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
-	0,  // 19: google.firestore.v1.StructuredQuery.Order.direction:type_name -> google.firestore.v1.StructuredQuery.Direction
-	12, // 20: google.firestore.v1.StructuredQuery.Projection.fields:type_name -> google.firestore.v1.StructuredQuery.FieldReference
-	21, // [21:21] is the sub-list for method output_type
-	21, // [21:21] is the sub-list for method input_type
-	21, // [21:21] is the sub-list for extension type_name
-	21, // [21:21] is the sub-list for extension extendee
-	0,  // [0:21] is the sub-list for field type_name
+	14, // 0: google.firestore.v1.StructuredQuery.select:type_name -> google.firestore.v1.StructuredQuery.Projection
+	7,  // 1: google.firestore.v1.StructuredQuery.from:type_name -> google.firestore.v1.StructuredQuery.CollectionSelector
+	8,  // 2: google.firestore.v1.StructuredQuery.where:type_name -> google.firestore.v1.StructuredQuery.Filter
+	12, // 3: google.firestore.v1.StructuredQuery.order_by:type_name -> google.firestore.v1.StructuredQuery.Order
+	6,  // 4: google.firestore.v1.StructuredQuery.start_at:type_name -> google.firestore.v1.Cursor
+	6,  // 5: google.firestore.v1.StructuredQuery.end_at:type_name -> google.firestore.v1.Cursor
+	17, // 6: google.firestore.v1.StructuredQuery.limit:type_name -> google.protobuf.Int32Value
+	4,  // 7: google.firestore.v1.StructuredAggregationQuery.structured_query:type_name -> google.firestore.v1.StructuredQuery
+	15, // 8: google.firestore.v1.StructuredAggregationQuery.aggregations:type_name -> google.firestore.v1.StructuredAggregationQuery.Aggregation
+	18, // 9: google.firestore.v1.Cursor.values:type_name -> google.firestore.v1.Value
+	9,  // 10: google.firestore.v1.StructuredQuery.Filter.composite_filter:type_name -> google.firestore.v1.StructuredQuery.CompositeFilter
+	10, // 11: google.firestore.v1.StructuredQuery.Filter.field_filter:type_name -> google.firestore.v1.StructuredQuery.FieldFilter
+	11, // 12: google.firestore.v1.StructuredQuery.Filter.unary_filter:type_name -> google.firestore.v1.StructuredQuery.UnaryFilter
+	1,  // 13: google.firestore.v1.StructuredQuery.CompositeFilter.op:type_name -> google.firestore.v1.StructuredQuery.CompositeFilter.Operator
+	8,  // 14: google.firestore.v1.StructuredQuery.CompositeFilter.filters:type_name -> google.firestore.v1.StructuredQuery.Filter
+	13, // 15: google.firestore.v1.StructuredQuery.FieldFilter.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
+	2,  // 16: google.firestore.v1.StructuredQuery.FieldFilter.op:type_name -> google.firestore.v1.StructuredQuery.FieldFilter.Operator
+	18, // 17: google.firestore.v1.StructuredQuery.FieldFilter.value:type_name -> google.firestore.v1.Value
+	3,  // 18: google.firestore.v1.StructuredQuery.UnaryFilter.op:type_name -> google.firestore.v1.StructuredQuery.UnaryFilter.Operator
+	13, // 19: google.firestore.v1.StructuredQuery.UnaryFilter.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
+	13, // 20: google.firestore.v1.StructuredQuery.Order.field:type_name -> google.firestore.v1.StructuredQuery.FieldReference
+	0,  // 21: google.firestore.v1.StructuredQuery.Order.direction:type_name -> google.firestore.v1.StructuredQuery.Direction
+	13, // 22: google.firestore.v1.StructuredQuery.Projection.fields:type_name -> google.firestore.v1.StructuredQuery.FieldReference
+	16, // 23: google.firestore.v1.StructuredAggregationQuery.Aggregation.count:type_name -> google.firestore.v1.StructuredAggregationQuery.Aggregation.Count
+	19, // 24: google.firestore.v1.StructuredAggregationQuery.Aggregation.Count.up_to:type_name -> google.protobuf.Int64Value
+	25, // [25:25] is the sub-list for method output_type
+	25, // [25:25] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_google_firestore_v1_query_proto_init() }
@@ -1313,7 +1671,7 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Cursor); i {
+			switch v := v.(*StructuredAggregationQuery); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1325,7 +1683,7 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StructuredQuery_CollectionSelector); i {
+			switch v := v.(*Cursor); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1337,7 +1695,7 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StructuredQuery_Filter); i {
+			switch v := v.(*StructuredQuery_CollectionSelector); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1349,7 +1707,7 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StructuredQuery_CompositeFilter); i {
+			switch v := v.(*StructuredQuery_Filter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1361,7 +1719,7 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StructuredQuery_FieldFilter); i {
+			switch v := v.(*StructuredQuery_CompositeFilter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1373,7 +1731,7 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StructuredQuery_UnaryFilter); i {
+			switch v := v.(*StructuredQuery_FieldFilter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1385,7 +1743,7 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StructuredQuery_Order); i {
+			switch v := v.(*StructuredQuery_UnaryFilter); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1397,7 +1755,7 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StructuredQuery_FieldReference); i {
+			switch v := v.(*StructuredQuery_Order); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1409,6 +1767,18 @@ func file_google_firestore_v1_query_proto_init() {
 			}
 		}
 		file_google_firestore_v1_query_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StructuredQuery_FieldReference); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_firestore_v1_query_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StructuredQuery_Projection); i {
 			case 0:
 				return &v.state
@@ -1420,14 +1790,44 @@ func file_google_firestore_v1_query_proto_init() {
 				return nil
 			}
 		}
+		file_google_firestore_v1_query_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StructuredAggregationQuery_Aggregation); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_firestore_v1_query_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*StructuredAggregationQuery_Aggregation_Count); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
-	file_google_firestore_v1_query_proto_msgTypes[3].OneofWrappers = []interface{}{
+	file_google_firestore_v1_query_proto_msgTypes[1].OneofWrappers = []interface{}{
+		(*StructuredAggregationQuery_StructuredQuery)(nil),
+	}
+	file_google_firestore_v1_query_proto_msgTypes[4].OneofWrappers = []interface{}{
 		(*StructuredQuery_Filter_CompositeFilter)(nil),
 		(*StructuredQuery_Filter_FieldFilter)(nil),
 		(*StructuredQuery_Filter_UnaryFilter)(nil),
 	}
-	file_google_firestore_v1_query_proto_msgTypes[6].OneofWrappers = []interface{}{
+	file_google_firestore_v1_query_proto_msgTypes[7].OneofWrappers = []interface{}{
 		(*StructuredQuery_UnaryFilter_Field)(nil),
+	}
+	file_google_firestore_v1_query_proto_msgTypes[11].OneofWrappers = []interface{}{
+		(*StructuredAggregationQuery_Aggregation_Count_)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1435,7 +1835,7 @@ func file_google_firestore_v1_query_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_firestore_v1_query_proto_rawDesc,
 			NumEnums:      4,
-			NumMessages:   10,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
