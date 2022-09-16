@@ -811,8 +811,6 @@ type UpdateTableRequest struct {
 
 	// Required. The table to update.
 	// The table's `name` field is used to identify the table to update.
-	// Format:
-	// `projects/{project}/instances/{instance}/tables/[_a-zA-Z0-9][-_.a-zA-Z0-9]*`
 	Table *Table `protobuf:"bytes,1,opt,name=table,proto3" json:"table,omitempty"`
 	// Required. The list of fields to update.
 	// A mask specifying which fields (e.g. `deletion_protection`) in the `table`

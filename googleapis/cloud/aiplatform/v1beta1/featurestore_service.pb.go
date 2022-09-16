@@ -182,20 +182,24 @@ type ListFeaturestoresRequest struct {
 	//
 	// * `create_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
 	// Values must be
-	//   in RFC 3339 format.
+	//
+	//	in RFC 3339 format.
+	//
 	// * `update_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
 	// Values must be
-	//   in RFC 3339 format.
+	//
+	//	in RFC 3339 format.
+	//
 	// * `online_serving_config.fixed_node_count`: Supports `=`, `!=`, `<`, `>`,
 	// `<=`, and `>=` comparisons.
 	// * `labels`: Supports key-value equality and key presence.
 	//
 	// Examples:
 	//
-	// * `create_time > "2020-01-01" OR update_time > "2020-01-01"`
-	//    Featurestores created or updated after 2020-01-01.
-	// * `labels.env = "prod"`
-	//    Featurestores with label "env" set to "prod".
+	//   - `create_time > "2020-01-01" OR update_time > "2020-01-01"`
+	//     Featurestores created or updated after 2020-01-01.
+	//   - `labels.env = "prod"`
+	//     Featurestores with label "env" set to "prod".
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The maximum number of Featurestores to return. The service may return fewer
 	// than this value. If unspecified, at most 100 Featurestores will be
@@ -214,9 +218,9 @@ type ListFeaturestoresRequest struct {
 	// Use "desc" after a field name for descending.
 	// Supported Fields:
 	//
-	//   * `create_time`
-	//   * `update_time`
-	//   * `online_serving_config.fixed_node_count`
+	//   - `create_time`
+	//   - `update_time`
+	//   - `online_serving_config.fixed_node_count`
 	OrderBy string `protobuf:"bytes,5,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	// Mask specifying which fields to read.
 	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,6,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
@@ -377,9 +381,9 @@ type UpdateFeaturestoreRequest struct {
 	//
 	// Updatable fields:
 	//
-	//   * `labels`
-	//   * `online_serving_config.fixed_node_count`
-	//   * `online_serving_config.scaling`
+	//   - `labels`
+	//   - `online_serving_config.fixed_node_count`
+	//   - `online_serving_config.scaling`
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -501,6 +505,7 @@ type ImportFeatureValuesRequest struct {
 	// the format.
 	//
 	// Types that are assignable to Source:
+	//
 	//	*ImportFeatureValuesRequest_AvroSource
 	//	*ImportFeatureValuesRequest_BigquerySource
 	//	*ImportFeatureValuesRequest_CsvSource
@@ -509,6 +514,7 @@ type ImportFeatureValuesRequest struct {
 	// Timestamps must be millisecond-aligned.
 	//
 	// Types that are assignable to FeatureTimeSource:
+	//
 	//	*ImportFeatureValuesRequest_FeatureTimeField
 	//	*ImportFeatureValuesRequest_FeatureTime
 	FeatureTimeSource isImportFeatureValuesRequest_FeatureTimeSource `protobuf_oneof:"feature_time_source"`
@@ -782,6 +788,7 @@ type BatchReadFeatureValuesRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to ReadOption:
+	//
 	//	*BatchReadFeatureValuesRequest_CsvReadInstances
 	//	*BatchReadFeatureValuesRequest_BigqueryReadInstances
 	ReadOption isBatchReadFeatureValuesRequest_ReadOption `protobuf_oneof:"read_option"`
@@ -911,7 +918,8 @@ type BatchReadFeatureValuesRequest_CsvReadInstances struct {
 	//
 	// `csv_read_instances` are read instances stored in a plain-text CSV file.
 	// The header should be:
-	//     [ENTITY_TYPE_ID1], [ENTITY_TYPE_ID2], ..., timestamp
+	//
+	//	[ENTITY_TYPE_ID1], [ENTITY_TYPE_ID2], ..., timestamp
 	//
 	// The columns can be in any order.
 	//
@@ -939,6 +947,7 @@ type ExportFeatureValuesRequest struct {
 	// Required. The mode in which Feature values are exported.
 	//
 	// Types that are assignable to Mode:
+	//
 	//	*ExportFeatureValuesRequest_SnapshotExport_
 	//	*ExportFeatureValuesRequest_FullExport_
 	Mode isExportFeatureValuesRequest_Mode `protobuf_oneof:"mode"`
@@ -1120,6 +1129,7 @@ type FeatureValueDestination struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Destination:
+	//
 	//	*FeatureValueDestination_BigqueryDestination
 	//	*FeatureValueDestination_TfrecordDestination
 	//	*FeatureValueDestination_CsvDestination
@@ -1203,12 +1213,12 @@ type FeatureValueDestination_TfrecordDestination struct {
 	// Below are the mapping from Feature value type
 	// in Featurestore to Feature value type in TFRecord:
 	//
-	//     Value type in Featurestore                 | Value type in TFRecord
-	//     DOUBLE, DOUBLE_ARRAY                       | FLOAT_LIST
-	//     INT64, INT64_ARRAY                         | INT64_LIST
-	//     STRING, STRING_ARRAY, BYTES                | BYTES_LIST
-	//     true -> byte_string("true"), false -> byte_string("false")
-	//     BOOL, BOOL_ARRAY (true, false)             | BYTES_LIST
+	//	Value type in Featurestore                 | Value type in TFRecord
+	//	DOUBLE, DOUBLE_ARRAY                       | FLOAT_LIST
+	//	INT64, INT64_ARRAY                         | INT64_LIST
+	//	STRING, STRING_ARRAY, BYTES                | BYTES_LIST
+	//	true -> byte_string("true"), false -> byte_string("false")
+	//	BOOL, BOOL_ARRAY (true, false)             | BYTES_LIST
 	TfrecordDestination *TFRecordDestination `protobuf:"bytes,2,opt,name=tfrecord_destination,json=tfrecordDestination,proto3,oneof"`
 }
 
@@ -1449,13 +1459,13 @@ type ListEntityTypesRequest struct {
 	//
 	// Examples:
 	//
-	// * `create_time > \"2020-01-31T15:30:00.000000Z\" OR
-	//      update_time > \"2020-01-31T15:30:00.000000Z\"` --> EntityTypes created
-	//      or updated after 2020-01-31T15:30:00.000000Z.
-	// * `labels.active = yes AND labels.env = prod` --> EntityTypes having both
+	//   - `create_time > \"2020-01-31T15:30:00.000000Z\" OR
+	//     update_time > \"2020-01-31T15:30:00.000000Z\"` --> EntityTypes created
+	//     or updated after 2020-01-31T15:30:00.000000Z.
+	//   - `labels.active = yes AND labels.env = prod` --> EntityTypes having both
 	//     (active: yes) and (env: prod) labels.
-	// * `labels.env: *` --> Any EntityType which has a label with 'env' as the
-	//   key.
+	//   - `labels.env: *` --> Any EntityType which has a label with 'env' as the
+	//     key.
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The maximum number of EntityTypes to return. The service may return fewer
 	// than this value. If unspecified, at most 1000 EntityTypes will be returned.
@@ -1475,9 +1485,9 @@ type ListEntityTypesRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `entity_type_id`
-	//   * `create_time`
-	//   * `update_time`
+	//   - `entity_type_id`
+	//   - `create_time`
+	//   - `update_time`
 	OrderBy string `protobuf:"bytes,5,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	// Mask specifying which fields to read.
 	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,6,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
@@ -1638,15 +1648,15 @@ type UpdateEntityTypeRequest struct {
 	//
 	// Updatable fields:
 	//
-	//   * `description`
-	//   * `labels`
-	//   * `monitoring_config.snapshot_analysis.disabled`
-	//   * `monitoring_config.snapshot_analysis.monitoring_interval_days`
-	//   * `monitoring_config.snapshot_analysis.staleness_days`
-	//   * `monitoring_config.import_features_analysis.state`
-	//   * `monitoring_config.import_features_analysis.anomaly_detection_baseline`
-	//   * `monitoring_config.numerical_threshold_config.value`
-	//   * `monitoring_config.categorical_threshold_config.value`
+	//   - `description`
+	//   - `labels`
+	//   - `monitoring_config.snapshot_analysis.disabled`
+	//   - `monitoring_config.snapshot_analysis.monitoring_interval_days`
+	//   - `monitoring_config.snapshot_analysis.staleness_days`
+	//   - `monitoring_config.import_features_analysis.state`
+	//   - `monitoring_config.import_features_analysis.anomaly_detection_baseline`
+	//   - `monitoring_config.numerical_threshold_config.value`
+	//   - `monitoring_config.categorical_threshold_config.value`
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -2017,14 +2027,14 @@ type ListFeaturesRequest struct {
 	//
 	// Examples:
 	//
-	// * `value_type = DOUBLE` --> Features whose type is DOUBLE.
-	// * `create_time > \"2020-01-31T15:30:00.000000Z\" OR
-	//      update_time > \"2020-01-31T15:30:00.000000Z\"` --> EntityTypes created
-	//      or updated after 2020-01-31T15:30:00.000000Z.
-	// * `labels.active = yes AND labels.env = prod` --> Features having both
+	//   - `value_type = DOUBLE` --> Features whose type is DOUBLE.
+	//   - `create_time > \"2020-01-31T15:30:00.000000Z\" OR
+	//     update_time > \"2020-01-31T15:30:00.000000Z\"` --> EntityTypes created
+	//     or updated after 2020-01-31T15:30:00.000000Z.
+	//   - `labels.active = yes AND labels.env = prod` --> Features having both
 	//     (active: yes) and (env: prod) labels.
-	// * `labels.env: *` --> Any Feature which has a label with 'env' as the
-	//   key.
+	//   - `labels.env: *` --> Any Feature which has a label with 'env' as the
+	//     key.
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The maximum number of Features to return. The service may return fewer
 	// than this value. If unspecified, at most 1000 Features will be returned.
@@ -2043,10 +2053,10 @@ type ListFeaturesRequest struct {
 	// Use "desc" after a field name for descending.
 	// Supported fields:
 	//
-	//   * `feature_id`
-	//   * `value_type`
-	//   * `create_time`
-	//   * `update_time`
+	//   - `feature_id`
+	//   - `value_type`
+	//   - `create_time`
+	//   - `update_time`
 	OrderBy string `protobuf:"bytes,5,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
 	// Mask specifying which fields to read.
 	ReadMask *fieldmaskpb.FieldMask `protobuf:"bytes,6,opt,name=read_mask,json=readMask,proto3" json:"read_mask,omitempty"`
@@ -2217,13 +2227,13 @@ type SearchFeaturesRequest struct {
 	// and the FIELD are converted to a sequence of words (i.e. tokens) for
 	// comparison. This is done by:
 	//
-	//   * Removing leading/trailing whitespace and tokenizing the search value.
-	//   Characters that are not one of alphanumeric `[a-zA-Z0-9]`, underscore
-	//   `_`, or asterisk `*` are treated as delimiters for tokens. `*` is treated
-	//   as a wildcard that matches characters within a token.
-	//   * Ignoring case.
-	//   * Prepending an asterisk to the first and appending an asterisk to the
-	//   last token in QUERY.
+	//   - Removing leading/trailing whitespace and tokenizing the search value.
+	//     Characters that are not one of alphanumeric `[a-zA-Z0-9]`, underscore
+	//     `_`, or asterisk `*` are treated as delimiters for tokens. `*` is treated
+	//     as a wildcard that matches characters within a token.
+	//   - Ignoring case.
+	//   - Prepending an asterisk to the first and appending an asterisk to the
+	//     last token in QUERY.
 	//
 	// A QUERY must be either a singular token or a phrase. A phrase is one or
 	// multiple words enclosed in double quotation marks ("). With phrases, the
@@ -2246,7 +2256,6 @@ type SearchFeaturesRequest struct {
 	// containing the substring `foo` and description containing the substring
 	// `bar`.
 	//
-	//
 	// Besides field queries, the following exact-match filters are
 	// supported. The exact-match filters do not support wildcards. Unlike
 	// field-restricted queries, exact-match filters are case-sensitive.
@@ -2262,11 +2271,11 @@ type SearchFeaturesRequest struct {
 	// Examples:
 	// * `description = "foo bar"` --> Any Feature with description exactly equal
 	// to `foo bar`
-	// * `value_type = DOUBLE` --> Features whose type is DOUBLE.
-	// * `labels.active = yes AND labels.env = prod` --> Features having both
+	//   - `value_type = DOUBLE` --> Features whose type is DOUBLE.
+	//   - `labels.active = yes AND labels.env = prod` --> Features having both
 	//     (active: yes) and (env: prod) labels.
-	// * `labels.env: *` --> Any Feature which has a label with `env` as the
-	//   key.
+	//   - `labels.env: *` --> Any Feature which has a label with `env` as the
+	//     key.
 	Query string `protobuf:"bytes,3,opt,name=query,proto3" json:"query,omitempty"`
 	// The maximum number of Features to return. The service may return fewer
 	// than this value. If unspecified, at most 100 Features will be returned.
@@ -2353,11 +2362,11 @@ type SearchFeaturesResponse struct {
 	//
 	// Fields returned:
 	//
-	//  * `name`
-	//  * `description`
-	//  * `labels`
-	//  * `create_time`
-	//  * `update_time`
+	//   - `name`
+	//   - `description`
+	//   - `labels`
+	//   - `create_time`
+	//   - `update_time`
 	Features []*Feature `protobuf:"bytes,1,rep,name=features,proto3" json:"features,omitempty"`
 	// A token, which can be sent as [SearchFeaturesRequest.page_token][google.cloud.aiplatform.v1beta1.SearchFeaturesRequest.page_token] to
 	// retrieve the next page.
@@ -2432,9 +2441,9 @@ type UpdateFeatureRequest struct {
 	//
 	// Updatable fields:
 	//
-	//   * `description`
-	//   * `labels`
-	//   * `disable_monitoring`
+	//   - `description`
+	//   - `labels`
+	//   - `disable_monitoring`
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 
@@ -2811,6 +2820,55 @@ func (x *BatchReadFeatureValuesOperationMetadata) GetGenericMetadata() *GenericO
 	return nil
 }
 
+// Details of operations that delete Feature values.
+type DeleteFeatureValuesOperationMetadata struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Operation metadata for Featurestore delete Features values.
+	GenericMetadata *GenericOperationMetadata `protobuf:"bytes,1,opt,name=generic_metadata,json=genericMetadata,proto3" json:"generic_metadata,omitempty"`
+}
+
+func (x *DeleteFeatureValuesOperationMetadata) Reset() {
+	*x = DeleteFeatureValuesOperationMetadata{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[35]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteFeatureValuesOperationMetadata) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteFeatureValuesOperationMetadata) ProtoMessage() {}
+
+func (x *DeleteFeatureValuesOperationMetadata) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[35]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteFeatureValuesOperationMetadata.ProtoReflect.Descriptor instead.
+func (*DeleteFeatureValuesOperationMetadata) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *DeleteFeatureValuesOperationMetadata) GetGenericMetadata() *GenericOperationMetadata {
+	if x != nil {
+		return x.GenericMetadata
+	}
+	return nil
+}
+
 // Details of operations that perform create EntityType.
 type CreateEntityTypeOperationMetadata struct {
 	state         protoimpl.MessageState
@@ -2824,7 +2882,7 @@ type CreateEntityTypeOperationMetadata struct {
 func (x *CreateEntityTypeOperationMetadata) Reset() {
 	*x = CreateEntityTypeOperationMetadata{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[35]
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[36]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2837,7 +2895,7 @@ func (x *CreateEntityTypeOperationMetadata) String() string {
 func (*CreateEntityTypeOperationMetadata) ProtoMessage() {}
 
 func (x *CreateEntityTypeOperationMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[35]
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[36]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2850,7 +2908,7 @@ func (x *CreateEntityTypeOperationMetadata) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CreateEntityTypeOperationMetadata.ProtoReflect.Descriptor instead.
 func (*CreateEntityTypeOperationMetadata) Descriptor() ([]byte, []int) {
-	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{35}
+	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *CreateEntityTypeOperationMetadata) GetGenericMetadata() *GenericOperationMetadata {
@@ -2873,7 +2931,7 @@ type CreateFeatureOperationMetadata struct {
 func (x *CreateFeatureOperationMetadata) Reset() {
 	*x = CreateFeatureOperationMetadata{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[36]
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[37]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2886,7 +2944,7 @@ func (x *CreateFeatureOperationMetadata) String() string {
 func (*CreateFeatureOperationMetadata) ProtoMessage() {}
 
 func (x *CreateFeatureOperationMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[36]
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[37]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2899,7 +2957,7 @@ func (x *CreateFeatureOperationMetadata) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateFeatureOperationMetadata.ProtoReflect.Descriptor instead.
 func (*CreateFeatureOperationMetadata) Descriptor() ([]byte, []int) {
-	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{36}
+	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *CreateFeatureOperationMetadata) GetGenericMetadata() *GenericOperationMetadata {
@@ -2922,7 +2980,7 @@ type BatchCreateFeaturesOperationMetadata struct {
 func (x *BatchCreateFeaturesOperationMetadata) Reset() {
 	*x = BatchCreateFeaturesOperationMetadata{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[37]
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[38]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2935,7 +2993,7 @@ func (x *BatchCreateFeaturesOperationMetadata) String() string {
 func (*BatchCreateFeaturesOperationMetadata) ProtoMessage() {}
 
 func (x *BatchCreateFeaturesOperationMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[37]
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[38]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2948,7 +3006,7 @@ func (x *BatchCreateFeaturesOperationMetadata) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use BatchCreateFeaturesOperationMetadata.ProtoReflect.Descriptor instead.
 func (*BatchCreateFeaturesOperationMetadata) Descriptor() ([]byte, []int) {
-	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{37}
+	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *BatchCreateFeaturesOperationMetadata) GetGenericMetadata() *GenericOperationMetadata {
@@ -2957,6 +3015,211 @@ func (x *BatchCreateFeaturesOperationMetadata) GetGenericMetadata() *GenericOper
 	}
 	return nil
 }
+
+// Request message for
+// [FeaturestoreService.DeleteFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeatureValues].
+type DeleteFeatureValuesRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Defines options to select feature values to be deleted.
+	//
+	// Types that are assignable to DeleteOption:
+	//
+	//	*DeleteFeatureValuesRequest_SelectEntity_
+	DeleteOption isDeleteFeatureValuesRequest_DeleteOption `protobuf_oneof:"DeleteOption"`
+	// Required. The resource name of the EntityType grouping the Features for
+	// which values are being deleted from. Format:
+	// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entityType}`
+	EntityType string `protobuf:"bytes,1,opt,name=entity_type,json=entityType,proto3" json:"entity_type,omitempty"`
+}
+
+func (x *DeleteFeatureValuesRequest) Reset() {
+	*x = DeleteFeatureValuesRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[39]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteFeatureValuesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteFeatureValuesRequest) ProtoMessage() {}
+
+func (x *DeleteFeatureValuesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[39]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteFeatureValuesRequest.ProtoReflect.Descriptor instead.
+func (*DeleteFeatureValuesRequest) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{39}
+}
+
+func (m *DeleteFeatureValuesRequest) GetDeleteOption() isDeleteFeatureValuesRequest_DeleteOption {
+	if m != nil {
+		return m.DeleteOption
+	}
+	return nil
+}
+
+func (x *DeleteFeatureValuesRequest) GetSelectEntity() *DeleteFeatureValuesRequest_SelectEntity {
+	if x, ok := x.GetDeleteOption().(*DeleteFeatureValuesRequest_SelectEntity_); ok {
+		return x.SelectEntity
+	}
+	return nil
+}
+
+func (x *DeleteFeatureValuesRequest) GetEntityType() string {
+	if x != nil {
+		return x.EntityType
+	}
+	return ""
+}
+
+type isDeleteFeatureValuesRequest_DeleteOption interface {
+	isDeleteFeatureValuesRequest_DeleteOption()
+}
+
+type DeleteFeatureValuesRequest_SelectEntity_ struct {
+	// Select feature values to be deleted by specifying entities.
+	SelectEntity *DeleteFeatureValuesRequest_SelectEntity `protobuf:"bytes,2,opt,name=select_entity,json=selectEntity,proto3,oneof"`
+}
+
+func (*DeleteFeatureValuesRequest_SelectEntity_) isDeleteFeatureValuesRequest_DeleteOption() {}
+
+// Response message for
+// [FeaturestoreService.DeleteFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeatureValues].
+type DeleteFeatureValuesResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *DeleteFeatureValuesResponse) Reset() {
+	*x = DeleteFeatureValuesResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[40]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteFeatureValuesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteFeatureValuesResponse) ProtoMessage() {}
+
+func (x *DeleteFeatureValuesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[40]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteFeatureValuesResponse.ProtoReflect.Descriptor instead.
+func (*DeleteFeatureValuesResponse) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{40}
+}
+
+// Selector for entityId. Getting ids from the given source.
+type EntityIdSelector struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Details about the source data, including the location of the storage and
+	// the format.
+	//
+	// Types that are assignable to EntityIdsSource:
+	//
+	//	*EntityIdSelector_CsvSource
+	EntityIdsSource isEntityIdSelector_EntityIdsSource `protobuf_oneof:"EntityIdsSource"`
+	// Source column that holds entity IDs. If not provided, entity IDs are
+	// extracted from the column named `entity_id`.
+	EntityIdField string `protobuf:"bytes,5,opt,name=entity_id_field,json=entityIdField,proto3" json:"entity_id_field,omitempty"`
+}
+
+func (x *EntityIdSelector) Reset() {
+	*x = EntityIdSelector{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[41]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EntityIdSelector) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EntityIdSelector) ProtoMessage() {}
+
+func (x *EntityIdSelector) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[41]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EntityIdSelector.ProtoReflect.Descriptor instead.
+func (*EntityIdSelector) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{41}
+}
+
+func (m *EntityIdSelector) GetEntityIdsSource() isEntityIdSelector_EntityIdsSource {
+	if m != nil {
+		return m.EntityIdsSource
+	}
+	return nil
+}
+
+func (x *EntityIdSelector) GetCsvSource() *CsvSource {
+	if x, ok := x.GetEntityIdsSource().(*EntityIdSelector_CsvSource); ok {
+		return x.CsvSource
+	}
+	return nil
+}
+
+func (x *EntityIdSelector) GetEntityIdField() string {
+	if x != nil {
+		return x.EntityIdField
+	}
+	return ""
+}
+
+type isEntityIdSelector_EntityIdsSource interface {
+	isEntityIdSelector_EntityIdsSource()
+}
+
+type EntityIdSelector_CsvSource struct {
+	// Source of Csv
+	CsvSource *CsvSource `protobuf:"bytes,3,opt,name=csv_source,json=csvSource,proto3,oneof"`
+}
+
+func (*EntityIdSelector_CsvSource) isEntityIdSelector_EntityIdsSource() {}
 
 // Defines the Feature value(s) to import.
 type ImportFeatureValuesRequest_FeatureSpec struct {
@@ -2975,7 +3238,7 @@ type ImportFeatureValuesRequest_FeatureSpec struct {
 func (x *ImportFeatureValuesRequest_FeatureSpec) Reset() {
 	*x = ImportFeatureValuesRequest_FeatureSpec{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[38]
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[42]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2988,7 +3251,7 @@ func (x *ImportFeatureValuesRequest_FeatureSpec) String() string {
 func (*ImportFeatureValuesRequest_FeatureSpec) ProtoMessage() {}
 
 func (x *ImportFeatureValuesRequest_FeatureSpec) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[38]
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[42]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3032,7 +3295,7 @@ type BatchReadFeatureValuesRequest_PassThroughField struct {
 func (x *BatchReadFeatureValuesRequest_PassThroughField) Reset() {
 	*x = BatchReadFeatureValuesRequest_PassThroughField{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[39]
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[43]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3045,7 +3308,7 @@ func (x *BatchReadFeatureValuesRequest_PassThroughField) String() string {
 func (*BatchReadFeatureValuesRequest_PassThroughField) ProtoMessage() {}
 
 func (x *BatchReadFeatureValuesRequest_PassThroughField) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[39]
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[43]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3088,7 +3351,7 @@ type BatchReadFeatureValuesRequest_EntityTypeSpec struct {
 func (x *BatchReadFeatureValuesRequest_EntityTypeSpec) Reset() {
 	*x = BatchReadFeatureValuesRequest_EntityTypeSpec{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[40]
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[44]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3101,7 +3364,7 @@ func (x *BatchReadFeatureValuesRequest_EntityTypeSpec) String() string {
 func (*BatchReadFeatureValuesRequest_EntityTypeSpec) ProtoMessage() {}
 
 func (x *BatchReadFeatureValuesRequest_EntityTypeSpec) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[40]
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[44]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3158,7 +3421,7 @@ type ExportFeatureValuesRequest_SnapshotExport struct {
 func (x *ExportFeatureValuesRequest_SnapshotExport) Reset() {
 	*x = ExportFeatureValuesRequest_SnapshotExport{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[41]
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[45]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3171,7 +3434,7 @@ func (x *ExportFeatureValuesRequest_SnapshotExport) String() string {
 func (*ExportFeatureValuesRequest_SnapshotExport) ProtoMessage() {}
 
 func (x *ExportFeatureValuesRequest_SnapshotExport) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[41]
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[45]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3221,7 +3484,7 @@ type ExportFeatureValuesRequest_FullExport struct {
 func (x *ExportFeatureValuesRequest_FullExport) Reset() {
 	*x = ExportFeatureValuesRequest_FullExport{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[42]
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[46]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3234,7 +3497,7 @@ func (x *ExportFeatureValuesRequest_FullExport) String() string {
 func (*ExportFeatureValuesRequest_FullExport) ProtoMessage() {}
 
 func (x *ExportFeatureValuesRequest_FullExport) ProtoReflect() protoreflect.Message {
-	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[42]
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[46]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3260,6 +3523,58 @@ func (x *ExportFeatureValuesRequest_FullExport) GetStartTime() *timestamppb.Time
 func (x *ExportFeatureValuesRequest_FullExport) GetEndTime() *timestamppb.Timestamp {
 	if x != nil {
 		return x.EndTime
+	}
+	return nil
+}
+
+// Message to select entity.
+// If an entity id is selected, all the feature values corresponding to the
+// entity id will be deleted, including the entityId.
+type DeleteFeatureValuesRequest_SelectEntity struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Required. Selectors choosing feature values of which entity id to be
+	// deleted from the EntityType.
+	EntityIdSelector *EntityIdSelector `protobuf:"bytes,1,opt,name=entity_id_selector,json=entityIdSelector,proto3" json:"entity_id_selector,omitempty"`
+}
+
+func (x *DeleteFeatureValuesRequest_SelectEntity) Reset() {
+	*x = DeleteFeatureValuesRequest_SelectEntity{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[47]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteFeatureValuesRequest_SelectEntity) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteFeatureValuesRequest_SelectEntity) ProtoMessage() {}
+
+func (x *DeleteFeatureValuesRequest_SelectEntity) ProtoReflect() protoreflect.Message {
+	mi := &file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[47]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteFeatureValuesRequest_SelectEntity.ProtoReflect.Descriptor instead.
+func (*DeleteFeatureValuesRequest_SelectEntity) Descriptor() ([]byte, []int) {
+	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP(), []int{39, 0}
+}
+
+func (x *DeleteFeatureValuesRequest_SelectEntity) GetEntityIdSelector() *EntityIdSelector {
+	if x != nil {
+		return x.EntityIdSelector
 	}
 	return nil
 }
@@ -3805,33 +4120,76 @@ var file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDesc = []
 	0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x47,
 	0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d,
 	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x0f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63,
-	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x22, 0x89, 0x01, 0x0a, 0x21, 0x43, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x4f, 0x70, 0x65,
-	0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x64,
-	0x0a, 0x10, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61,
-	0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x39, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
-	0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f,
-	0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x47, 0x65, 0x6e, 0x65, 0x72,
-	0x69, 0x63, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64,
-	0x61, 0x74, 0x61, 0x52, 0x0f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61,
-	0x64, 0x61, 0x74, 0x61, 0x22, 0x86, 0x01, 0x0a, 0x1e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x46,
-	0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d,
-	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x64, 0x0a, 0x10, 0x67, 0x65, 0x6e, 0x65, 0x72,
-	0x69, 0x63, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x39, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
-	0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65,
-	0x74, 0x61, 0x31, 0x2e, 0x47, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x4f, 0x70, 0x65, 0x72, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x0f, 0x67, 0x65,
-	0x6e, 0x65, 0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x22, 0x8c, 0x01,
-	0x0a, 0x24, 0x42, 0x61, 0x74, 0x63, 0x68, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x46, 0x65, 0x61,
-	0x74, 0x75, 0x72, 0x65, 0x73, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65,
+	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x22, 0x8c, 0x01, 0x0a, 0x24, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73,
+	0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
+	0x61, 0x12, 0x64, 0x0a, 0x10, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x5f, 0x6d, 0x65, 0x74,
+	0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x39, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61,
+	0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x47, 0x65,
+	0x6e, 0x65, 0x72, 0x69, 0x63, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65,
+	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x0f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x4d,
+	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x22, 0x89, 0x01, 0x0a, 0x21, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x4f, 0x70, 0x65, 0x72,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x64, 0x0a,
+	0x10, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
+	0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x39, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
+	0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x47, 0x65, 0x6e, 0x65, 0x72, 0x69,
+	0x63, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61,
+	0x74, 0x61, 0x52, 0x0f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61, 0x64,
+	0x61, 0x74, 0x61, 0x22, 0x86, 0x01, 0x0a, 0x1e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x46, 0x65,
+	0x61, 0x74, 0x75, 0x72, 0x65, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65,
 	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x64, 0x0a, 0x10, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x69,
 	0x63, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x39, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e,
 	0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74,
 	0x61, 0x31, 0x2e, 0x47, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74,
 	0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x0f, 0x67, 0x65, 0x6e,
-	0x65, 0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x32, 0xb0, 0x29, 0x0a,
+	0x65, 0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x22, 0x8c, 0x01, 0x0a,
+	0x24, 0x42, 0x61, 0x74, 0x63, 0x68, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x46, 0x65, 0x61, 0x74,
+	0x75, 0x72, 0x65, 0x73, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74,
+	0x61, 0x64, 0x61, 0x74, 0x61, 0x12, 0x64, 0x0a, 0x10, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63,
+	0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x39, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61,
+	0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x2e, 0x47, 0x65, 0x6e, 0x65, 0x72, 0x69, 0x63, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x52, 0x0f, 0x67, 0x65, 0x6e, 0x65,
+	0x72, 0x69, 0x63, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x22, 0xe2, 0x02, 0x0a, 0x1a,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x56, 0x61, 0x6c,
+	0x75, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x6f, 0x0a, 0x0d, 0x73, 0x65,
+	0x6c, 0x65, 0x63, 0x74, 0x5f, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x48, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64,
+	0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65,
+	0x74, 0x61, 0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72,
+	0x65, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x2e, 0x53,
+	0x65, 0x6c, 0x65, 0x63, 0x74, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x48, 0x00, 0x52, 0x0c, 0x73,
+	0x65, 0x6c, 0x65, 0x63, 0x74, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12, 0x4d, 0x0a, 0x0b, 0x65,
+	0x6e, 0x74, 0x69, 0x74, 0x79, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x42, 0x2c, 0xe0, 0x41, 0x02, 0xfa, 0x41, 0x26, 0x0a, 0x24, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74,
+	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e,
+	0x63, 0x6f, 0x6d, 0x2f, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0a,
+	0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x54, 0x79, 0x70, 0x65, 0x1a, 0x74, 0x0a, 0x0c, 0x53, 0x65,
+	0x6c, 0x65, 0x63, 0x74, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12, 0x64, 0x0a, 0x12, 0x65, 0x6e,
+	0x74, 0x69, 0x74, 0x79, 0x5f, 0x69, 0x64, 0x5f, 0x73, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x6f, 0x72,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x31, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e,
+	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d,
+	0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49,
+	0x64, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x42, 0x03, 0xe0, 0x41, 0x02, 0x52, 0x10,
+	0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x64, 0x53, 0x65, 0x6c, 0x65, 0x63, 0x74, 0x6f, 0x72,
+	0x42, 0x0e, 0x0a, 0x0c, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e,
+	0x22, 0x1d, 0x0a, 0x1b, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72,
+	0x65, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x9a, 0x01, 0x0a, 0x10, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x64, 0x53, 0x65, 0x6c, 0x65,
+	0x63, 0x74, 0x6f, 0x72, 0x12, 0x4b, 0x0a, 0x0a, 0x63, 0x73, 0x76, 0x5f, 0x73, 0x6f, 0x75, 0x72,
+	0x63, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
+	0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f,
+	0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x43, 0x73, 0x76, 0x53, 0x6f,
+	0x75, 0x72, 0x63, 0x65, 0x48, 0x00, 0x52, 0x09, 0x63, 0x73, 0x76, 0x53, 0x6f, 0x75, 0x72, 0x63,
+	0x65, 0x12, 0x26, 0x0a, 0x0f, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x5f, 0x69, 0x64, 0x5f, 0x66,
+	0x69, 0x65, 0x6c, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x65, 0x6e, 0x74, 0x69,
+	0x74, 0x79, 0x49, 0x64, 0x46, 0x69, 0x65, 0x6c, 0x64, 0x42, 0x11, 0x0a, 0x0f, 0x45, 0x6e, 0x74,
+	0x69, 0x74, 0x79, 0x49, 0x64, 0x73, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x32, 0xe5, 0x2b, 0x0a,
 	0x13, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x53, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x12, 0xb0, 0x02, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x46,
 	0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x12, 0x3a, 0x2e, 0x67, 0x6f,
@@ -4143,42 +4501,62 @@ var file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDesc = []
 	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x24, 0x45, 0x78, 0x70, 0x6f, 0x72,
 	0x74, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x4f, 0x70,
 	0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x12,
-	0xee, 0x01, 0x0a, 0x0e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72,
-	0x65, 0x73, 0x12, 0x36, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75,
-	0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62,
-	0x65, 0x74, 0x61, 0x31, 0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x46, 0x65, 0x61, 0x74, 0x75,
-	0x72, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x37, 0x2e, 0x67, 0x6f, 0x6f,
+	0xb2, 0x02, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72,
+	0x65, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x12, 0x3b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
+	0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
+	0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x6c, 0x6f,
+	0x6e, 0x67, 0x72, 0x75, 0x6e, 0x6e, 0x69, 0x6e, 0x67, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x22, 0xbe, 0x01, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x64, 0x22, 0x5f, 0x2f, 0x76,
+	0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2f, 0x7b, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x5f, 0x74,
+	0x79, 0x70, 0x65, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c,
+	0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x2f, 0x66, 0x65, 0x61, 0x74, 0x75,
+	0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x73, 0x2f, 0x2a, 0x2f, 0x65, 0x6e, 0x74, 0x69, 0x74,
+	0x79, 0x54, 0x79, 0x70, 0x65, 0x73, 0x2f, 0x2a, 0x7d, 0x3a, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65,
+	0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x3a, 0x01, 0x2a,
+	0xda, 0x41, 0x0b, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x5f, 0x74, 0x79, 0x70, 0x65, 0xca, 0x41,
+	0x43, 0x0a, 0x1b, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65,
+	0x56, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x24,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x56, 0x61, 0x6c,
+	0x75, 0x65, 0x73, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61,
+	0x64, 0x61, 0x74, 0x61, 0x12, 0xee, 0x01, 0x0a, 0x0e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x46,
+	0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x12, 0x36, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
+	0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68,
+	0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x37, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61,
+	0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61,
+	0x31, 0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x6b, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x49,
+	0x12, 0x47, 0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2f, 0x7b, 0x6c, 0x6f, 0x63, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x3d, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f,
+	0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x66, 0x65, 0x61,
+	0x74, 0x75, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x73, 0x3a, 0x73, 0x65, 0x61, 0x72, 0x63,
+	0x68, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0xda, 0x41, 0x08, 0x6c, 0x6f, 0x63, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0xda, 0x41, 0x0e, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2c,
+	0x71, 0x75, 0x65, 0x72, 0x79, 0x1a, 0x4d, 0xca, 0x41, 0x19, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74,
+	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e,
+	0x63, 0x6f, 0x6d, 0xd2, 0x41, 0x2e, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77,
+	0x77, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74,
+	0x66, 0x6f, 0x72, 0x6d, 0x42, 0xf5, 0x01, 0x0a, 0x23, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f,
 	0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74,
-	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x53, 0x65, 0x61,
-	0x72, 0x63, 0x68, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x22, 0x6b, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x49, 0x12, 0x47, 0x2f, 0x76, 0x31,
-	0x62, 0x65, 0x74, 0x61, 0x31, 0x2f, 0x7b, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x3d,
-	0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x2f, 0x2a, 0x2f, 0x6c, 0x6f, 0x63, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x2a, 0x7d, 0x2f, 0x66, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x73,
-	0x74, 0x6f, 0x72, 0x65, 0x73, 0x3a, 0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x46, 0x65, 0x61, 0x74,
-	0x75, 0x72, 0x65, 0x73, 0xda, 0x41, 0x08, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0xda,
-	0x41, 0x0e, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2c, 0x71, 0x75, 0x65, 0x72, 0x79,
-	0x1a, 0x4d, 0xca, 0x41, 0x19, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0xd2, 0x41,
-	0x2e, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x77, 0x77, 0x77, 0x2e, 0x67, 0x6f, 0x6f,
-	0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x75, 0x74, 0x68,
-	0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2d, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x42,
-	0xf5, 0x01, 0x0a, 0x23, 0x63, 0x6f, 0x6d, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63,
-	0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e,
-	0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x42, 0x18, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65,
-	0x73, 0x74, 0x6f, 0x72, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x50, 0x72, 0x6f, 0x74,
-	0x6f, 0x50, 0x01, 0x5a, 0x49, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61,
-	0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
-	0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64,
-	0x2f, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2f, 0x76, 0x31, 0x62, 0x65,
-	0x74, 0x61, 0x31, 0x3b, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0xaa, 0x02,
-	0x1f, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x41, 0x49,
-	0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x56, 0x31, 0x42, 0x65, 0x74, 0x61, 0x31,
-	0xca, 0x02, 0x1f, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x5c,
-	0x41, 0x49, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x5c, 0x56, 0x31, 0x62, 0x65, 0x74,
-	0x61, 0x31, 0xea, 0x02, 0x22, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x3a, 0x3a, 0x43, 0x6c, 0x6f,
-	0x75, 0x64, 0x3a, 0x3a, 0x41, 0x49, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x3a, 0x3a,
-	0x56, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x42, 0x18, 0x46, 0x65,
+	0x61, 0x74, 0x75, 0x72, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x49, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x61, 0x70, 0x69, 0x73, 0x2f,
+	0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d,
+	0x2f, 0x76, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x3b, 0x61, 0x69, 0x70, 0x6c, 0x61, 0x74, 0x66,
+	0x6f, 0x72, 0x6d, 0xaa, 0x02, 0x1f, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x43, 0x6c, 0x6f,
+	0x75, 0x64, 0x2e, 0x41, 0x49, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x2e, 0x56, 0x31,
+	0x42, 0x65, 0x74, 0x61, 0x31, 0xca, 0x02, 0x1f, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x5c, 0x43,
+	0x6c, 0x6f, 0x75, 0x64, 0x5c, 0x41, 0x49, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x5c,
+	0x56, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0xea, 0x02, 0x22, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x3a, 0x3a, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x3a, 0x3a, 0x41, 0x49, 0x50, 0x6c, 0x61, 0x74, 0x66,
+	0x6f, 0x72, 0x6d, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x65, 0x74, 0x61, 0x31, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -4193,7 +4571,7 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescGZIP
 	return file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDescData
 }
 
-var file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes = make([]protoimpl.MessageInfo, 43)
+var file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes = make([]protoimpl.MessageInfo, 48)
 var file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_goTypes = []interface{}{
 	(*CreateFeaturestoreRequest)(nil),                      // 0: google.cloud.aiplatform.v1beta1.CreateFeaturestoreRequest
 	(*GetFeaturestoreRequest)(nil),                         // 1: google.cloud.aiplatform.v1beta1.GetFeaturestoreRequest
@@ -4230,125 +4608,136 @@ var file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_goTypes = []
 	(*ImportFeatureValuesOperationMetadata)(nil),           // 32: google.cloud.aiplatform.v1beta1.ImportFeatureValuesOperationMetadata
 	(*ExportFeatureValuesOperationMetadata)(nil),           // 33: google.cloud.aiplatform.v1beta1.ExportFeatureValuesOperationMetadata
 	(*BatchReadFeatureValuesOperationMetadata)(nil),        // 34: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesOperationMetadata
-	(*CreateEntityTypeOperationMetadata)(nil),              // 35: google.cloud.aiplatform.v1beta1.CreateEntityTypeOperationMetadata
-	(*CreateFeatureOperationMetadata)(nil),                 // 36: google.cloud.aiplatform.v1beta1.CreateFeatureOperationMetadata
-	(*BatchCreateFeaturesOperationMetadata)(nil),           // 37: google.cloud.aiplatform.v1beta1.BatchCreateFeaturesOperationMetadata
-	(*ImportFeatureValuesRequest_FeatureSpec)(nil),         // 38: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.FeatureSpec
-	(*BatchReadFeatureValuesRequest_PassThroughField)(nil), // 39: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.PassThroughField
-	(*BatchReadFeatureValuesRequest_EntityTypeSpec)(nil),   // 40: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.EntityTypeSpec
-	(*ExportFeatureValuesRequest_SnapshotExport)(nil),      // 41: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.SnapshotExport
-	(*ExportFeatureValuesRequest_FullExport)(nil),          // 42: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.FullExport
-	(*Featurestore)(nil),                                   // 43: google.cloud.aiplatform.v1beta1.Featurestore
-	(*fieldmaskpb.FieldMask)(nil),                          // 44: google.protobuf.FieldMask
-	(*AvroSource)(nil),                                     // 45: google.cloud.aiplatform.v1beta1.AvroSource
-	(*BigQuerySource)(nil),                                 // 46: google.cloud.aiplatform.v1beta1.BigQuerySource
-	(*CsvSource)(nil),                                      // 47: google.cloud.aiplatform.v1beta1.CsvSource
-	(*timestamppb.Timestamp)(nil),                          // 48: google.protobuf.Timestamp
-	(*FeatureSelector)(nil),                                // 49: google.cloud.aiplatform.v1beta1.FeatureSelector
-	(*BigQueryDestination)(nil),                            // 50: google.cloud.aiplatform.v1beta1.BigQueryDestination
-	(*TFRecordDestination)(nil),                            // 51: google.cloud.aiplatform.v1beta1.TFRecordDestination
-	(*CsvDestination)(nil),                                 // 52: google.cloud.aiplatform.v1beta1.CsvDestination
-	(*EntityType)(nil),                                     // 53: google.cloud.aiplatform.v1beta1.EntityType
-	(*Feature)(nil),                                        // 54: google.cloud.aiplatform.v1beta1.Feature
-	(*GenericOperationMetadata)(nil),                       // 55: google.cloud.aiplatform.v1beta1.GenericOperationMetadata
-	(*longrunning.Operation)(nil),                          // 56: google.longrunning.Operation
+	(*DeleteFeatureValuesOperationMetadata)(nil),           // 35: google.cloud.aiplatform.v1beta1.DeleteFeatureValuesOperationMetadata
+	(*CreateEntityTypeOperationMetadata)(nil),              // 36: google.cloud.aiplatform.v1beta1.CreateEntityTypeOperationMetadata
+	(*CreateFeatureOperationMetadata)(nil),                 // 37: google.cloud.aiplatform.v1beta1.CreateFeatureOperationMetadata
+	(*BatchCreateFeaturesOperationMetadata)(nil),           // 38: google.cloud.aiplatform.v1beta1.BatchCreateFeaturesOperationMetadata
+	(*DeleteFeatureValuesRequest)(nil),                     // 39: google.cloud.aiplatform.v1beta1.DeleteFeatureValuesRequest
+	(*DeleteFeatureValuesResponse)(nil),                    // 40: google.cloud.aiplatform.v1beta1.DeleteFeatureValuesResponse
+	(*EntityIdSelector)(nil),                               // 41: google.cloud.aiplatform.v1beta1.EntityIdSelector
+	(*ImportFeatureValuesRequest_FeatureSpec)(nil),         // 42: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.FeatureSpec
+	(*BatchReadFeatureValuesRequest_PassThroughField)(nil), // 43: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.PassThroughField
+	(*BatchReadFeatureValuesRequest_EntityTypeSpec)(nil),   // 44: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.EntityTypeSpec
+	(*ExportFeatureValuesRequest_SnapshotExport)(nil),      // 45: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.SnapshotExport
+	(*ExportFeatureValuesRequest_FullExport)(nil),          // 46: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.FullExport
+	(*DeleteFeatureValuesRequest_SelectEntity)(nil),        // 47: google.cloud.aiplatform.v1beta1.DeleteFeatureValuesRequest.SelectEntity
+	(*Featurestore)(nil),                                   // 48: google.cloud.aiplatform.v1beta1.Featurestore
+	(*fieldmaskpb.FieldMask)(nil),                          // 49: google.protobuf.FieldMask
+	(*AvroSource)(nil),                                     // 50: google.cloud.aiplatform.v1beta1.AvroSource
+	(*BigQuerySource)(nil),                                 // 51: google.cloud.aiplatform.v1beta1.BigQuerySource
+	(*CsvSource)(nil),                                      // 52: google.cloud.aiplatform.v1beta1.CsvSource
+	(*timestamppb.Timestamp)(nil),                          // 53: google.protobuf.Timestamp
+	(*FeatureSelector)(nil),                                // 54: google.cloud.aiplatform.v1beta1.FeatureSelector
+	(*BigQueryDestination)(nil),                            // 55: google.cloud.aiplatform.v1beta1.BigQueryDestination
+	(*TFRecordDestination)(nil),                            // 56: google.cloud.aiplatform.v1beta1.TFRecordDestination
+	(*CsvDestination)(nil),                                 // 57: google.cloud.aiplatform.v1beta1.CsvDestination
+	(*EntityType)(nil),                                     // 58: google.cloud.aiplatform.v1beta1.EntityType
+	(*Feature)(nil),                                        // 59: google.cloud.aiplatform.v1beta1.Feature
+	(*GenericOperationMetadata)(nil),                       // 60: google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	(*longrunning.Operation)(nil),                          // 61: google.longrunning.Operation
 }
 var file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_depIdxs = []int32{
-	43, // 0: google.cloud.aiplatform.v1beta1.CreateFeaturestoreRequest.featurestore:type_name -> google.cloud.aiplatform.v1beta1.Featurestore
-	44, // 1: google.cloud.aiplatform.v1beta1.ListFeaturestoresRequest.read_mask:type_name -> google.protobuf.FieldMask
-	43, // 2: google.cloud.aiplatform.v1beta1.ListFeaturestoresResponse.featurestores:type_name -> google.cloud.aiplatform.v1beta1.Featurestore
-	43, // 3: google.cloud.aiplatform.v1beta1.UpdateFeaturestoreRequest.featurestore:type_name -> google.cloud.aiplatform.v1beta1.Featurestore
-	44, // 4: google.cloud.aiplatform.v1beta1.UpdateFeaturestoreRequest.update_mask:type_name -> google.protobuf.FieldMask
-	45, // 5: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.avro_source:type_name -> google.cloud.aiplatform.v1beta1.AvroSource
-	46, // 6: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.bigquery_source:type_name -> google.cloud.aiplatform.v1beta1.BigQuerySource
-	47, // 7: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.csv_source:type_name -> google.cloud.aiplatform.v1beta1.CsvSource
-	48, // 8: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.feature_time:type_name -> google.protobuf.Timestamp
-	38, // 9: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.feature_specs:type_name -> google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.FeatureSpec
-	47, // 10: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.csv_read_instances:type_name -> google.cloud.aiplatform.v1beta1.CsvSource
-	46, // 11: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.bigquery_read_instances:type_name -> google.cloud.aiplatform.v1beta1.BigQuerySource
+	48, // 0: google.cloud.aiplatform.v1beta1.CreateFeaturestoreRequest.featurestore:type_name -> google.cloud.aiplatform.v1beta1.Featurestore
+	49, // 1: google.cloud.aiplatform.v1beta1.ListFeaturestoresRequest.read_mask:type_name -> google.protobuf.FieldMask
+	48, // 2: google.cloud.aiplatform.v1beta1.ListFeaturestoresResponse.featurestores:type_name -> google.cloud.aiplatform.v1beta1.Featurestore
+	48, // 3: google.cloud.aiplatform.v1beta1.UpdateFeaturestoreRequest.featurestore:type_name -> google.cloud.aiplatform.v1beta1.Featurestore
+	49, // 4: google.cloud.aiplatform.v1beta1.UpdateFeaturestoreRequest.update_mask:type_name -> google.protobuf.FieldMask
+	50, // 5: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.avro_source:type_name -> google.cloud.aiplatform.v1beta1.AvroSource
+	51, // 6: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.bigquery_source:type_name -> google.cloud.aiplatform.v1beta1.BigQuerySource
+	52, // 7: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.csv_source:type_name -> google.cloud.aiplatform.v1beta1.CsvSource
+	53, // 8: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.feature_time:type_name -> google.protobuf.Timestamp
+	42, // 9: google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.feature_specs:type_name -> google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest.FeatureSpec
+	52, // 10: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.csv_read_instances:type_name -> google.cloud.aiplatform.v1beta1.CsvSource
+	51, // 11: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.bigquery_read_instances:type_name -> google.cloud.aiplatform.v1beta1.BigQuerySource
 	11, // 12: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.destination:type_name -> google.cloud.aiplatform.v1beta1.FeatureValueDestination
-	39, // 13: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.pass_through_fields:type_name -> google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.PassThroughField
-	40, // 14: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.entity_type_specs:type_name -> google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.EntityTypeSpec
-	41, // 15: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.snapshot_export:type_name -> google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.SnapshotExport
-	42, // 16: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.full_export:type_name -> google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.FullExport
+	43, // 13: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.pass_through_fields:type_name -> google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.PassThroughField
+	44, // 14: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.entity_type_specs:type_name -> google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.EntityTypeSpec
+	45, // 15: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.snapshot_export:type_name -> google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.SnapshotExport
+	46, // 16: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.full_export:type_name -> google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.FullExport
 	11, // 17: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.destination:type_name -> google.cloud.aiplatform.v1beta1.FeatureValueDestination
-	49, // 18: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.feature_selector:type_name -> google.cloud.aiplatform.v1beta1.FeatureSelector
+	54, // 18: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.feature_selector:type_name -> google.cloud.aiplatform.v1beta1.FeatureSelector
 	10, // 19: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.settings:type_name -> google.cloud.aiplatform.v1beta1.DestinationFeatureSetting
-	50, // 20: google.cloud.aiplatform.v1beta1.FeatureValueDestination.bigquery_destination:type_name -> google.cloud.aiplatform.v1beta1.BigQueryDestination
-	51, // 21: google.cloud.aiplatform.v1beta1.FeatureValueDestination.tfrecord_destination:type_name -> google.cloud.aiplatform.v1beta1.TFRecordDestination
-	52, // 22: google.cloud.aiplatform.v1beta1.FeatureValueDestination.csv_destination:type_name -> google.cloud.aiplatform.v1beta1.CsvDestination
-	53, // 23: google.cloud.aiplatform.v1beta1.CreateEntityTypeRequest.entity_type:type_name -> google.cloud.aiplatform.v1beta1.EntityType
-	44, // 24: google.cloud.aiplatform.v1beta1.ListEntityTypesRequest.read_mask:type_name -> google.protobuf.FieldMask
-	53, // 25: google.cloud.aiplatform.v1beta1.ListEntityTypesResponse.entity_types:type_name -> google.cloud.aiplatform.v1beta1.EntityType
-	53, // 26: google.cloud.aiplatform.v1beta1.UpdateEntityTypeRequest.entity_type:type_name -> google.cloud.aiplatform.v1beta1.EntityType
-	44, // 27: google.cloud.aiplatform.v1beta1.UpdateEntityTypeRequest.update_mask:type_name -> google.protobuf.FieldMask
-	54, // 28: google.cloud.aiplatform.v1beta1.CreateFeatureRequest.feature:type_name -> google.cloud.aiplatform.v1beta1.Feature
+	55, // 20: google.cloud.aiplatform.v1beta1.FeatureValueDestination.bigquery_destination:type_name -> google.cloud.aiplatform.v1beta1.BigQueryDestination
+	56, // 21: google.cloud.aiplatform.v1beta1.FeatureValueDestination.tfrecord_destination:type_name -> google.cloud.aiplatform.v1beta1.TFRecordDestination
+	57, // 22: google.cloud.aiplatform.v1beta1.FeatureValueDestination.csv_destination:type_name -> google.cloud.aiplatform.v1beta1.CsvDestination
+	58, // 23: google.cloud.aiplatform.v1beta1.CreateEntityTypeRequest.entity_type:type_name -> google.cloud.aiplatform.v1beta1.EntityType
+	49, // 24: google.cloud.aiplatform.v1beta1.ListEntityTypesRequest.read_mask:type_name -> google.protobuf.FieldMask
+	58, // 25: google.cloud.aiplatform.v1beta1.ListEntityTypesResponse.entity_types:type_name -> google.cloud.aiplatform.v1beta1.EntityType
+	58, // 26: google.cloud.aiplatform.v1beta1.UpdateEntityTypeRequest.entity_type:type_name -> google.cloud.aiplatform.v1beta1.EntityType
+	49, // 27: google.cloud.aiplatform.v1beta1.UpdateEntityTypeRequest.update_mask:type_name -> google.protobuf.FieldMask
+	59, // 28: google.cloud.aiplatform.v1beta1.CreateFeatureRequest.feature:type_name -> google.cloud.aiplatform.v1beta1.Feature
 	20, // 29: google.cloud.aiplatform.v1beta1.BatchCreateFeaturesRequest.requests:type_name -> google.cloud.aiplatform.v1beta1.CreateFeatureRequest
-	54, // 30: google.cloud.aiplatform.v1beta1.BatchCreateFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1beta1.Feature
-	44, // 31: google.cloud.aiplatform.v1beta1.ListFeaturesRequest.read_mask:type_name -> google.protobuf.FieldMask
-	54, // 32: google.cloud.aiplatform.v1beta1.ListFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1beta1.Feature
-	54, // 33: google.cloud.aiplatform.v1beta1.SearchFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1beta1.Feature
-	54, // 34: google.cloud.aiplatform.v1beta1.UpdateFeatureRequest.feature:type_name -> google.cloud.aiplatform.v1beta1.Feature
-	44, // 35: google.cloud.aiplatform.v1beta1.UpdateFeatureRequest.update_mask:type_name -> google.protobuf.FieldMask
-	55, // 36: google.cloud.aiplatform.v1beta1.CreateFeaturestoreOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
-	55, // 37: google.cloud.aiplatform.v1beta1.UpdateFeaturestoreOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
-	55, // 38: google.cloud.aiplatform.v1beta1.ImportFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
-	55, // 39: google.cloud.aiplatform.v1beta1.ExportFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
-	55, // 40: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
-	55, // 41: google.cloud.aiplatform.v1beta1.CreateEntityTypeOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
-	55, // 42: google.cloud.aiplatform.v1beta1.CreateFeatureOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
-	55, // 43: google.cloud.aiplatform.v1beta1.BatchCreateFeaturesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
-	49, // 44: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.EntityTypeSpec.feature_selector:type_name -> google.cloud.aiplatform.v1beta1.FeatureSelector
-	10, // 45: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.EntityTypeSpec.settings:type_name -> google.cloud.aiplatform.v1beta1.DestinationFeatureSetting
-	48, // 46: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.SnapshotExport.snapshot_time:type_name -> google.protobuf.Timestamp
-	48, // 47: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.SnapshotExport.start_time:type_name -> google.protobuf.Timestamp
-	48, // 48: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.FullExport.start_time:type_name -> google.protobuf.Timestamp
-	48, // 49: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.FullExport.end_time:type_name -> google.protobuf.Timestamp
-	0,  // 50: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateFeaturestore:input_type -> google.cloud.aiplatform.v1beta1.CreateFeaturestoreRequest
-	1,  // 51: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeaturestore:input_type -> google.cloud.aiplatform.v1beta1.GetFeaturestoreRequest
-	2,  // 52: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListFeaturestores:input_type -> google.cloud.aiplatform.v1beta1.ListFeaturestoresRequest
-	4,  // 53: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateFeaturestore:input_type -> google.cloud.aiplatform.v1beta1.UpdateFeaturestoreRequest
-	5,  // 54: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeaturestore:input_type -> google.cloud.aiplatform.v1beta1.DeleteFeaturestoreRequest
-	14, // 55: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateEntityType:input_type -> google.cloud.aiplatform.v1beta1.CreateEntityTypeRequest
-	15, // 56: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetEntityType:input_type -> google.cloud.aiplatform.v1beta1.GetEntityTypeRequest
-	16, // 57: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListEntityTypes:input_type -> google.cloud.aiplatform.v1beta1.ListEntityTypesRequest
-	18, // 58: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateEntityType:input_type -> google.cloud.aiplatform.v1beta1.UpdateEntityTypeRequest
-	19, // 59: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteEntityType:input_type -> google.cloud.aiplatform.v1beta1.DeleteEntityTypeRequest
-	20, // 60: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateFeature:input_type -> google.cloud.aiplatform.v1beta1.CreateFeatureRequest
-	21, // 61: google.cloud.aiplatform.v1beta1.FeaturestoreService.BatchCreateFeatures:input_type -> google.cloud.aiplatform.v1beta1.BatchCreateFeaturesRequest
-	23, // 62: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeature:input_type -> google.cloud.aiplatform.v1beta1.GetFeatureRequest
-	24, // 63: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListFeatures:input_type -> google.cloud.aiplatform.v1beta1.ListFeaturesRequest
-	28, // 64: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateFeature:input_type -> google.cloud.aiplatform.v1beta1.UpdateFeatureRequest
-	29, // 65: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeature:input_type -> google.cloud.aiplatform.v1beta1.DeleteFeatureRequest
-	6,  // 66: google.cloud.aiplatform.v1beta1.FeaturestoreService.ImportFeatureValues:input_type -> google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest
-	8,  // 67: google.cloud.aiplatform.v1beta1.FeaturestoreService.BatchReadFeatureValues:input_type -> google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest
-	9,  // 68: google.cloud.aiplatform.v1beta1.FeaturestoreService.ExportFeatureValues:input_type -> google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest
-	26, // 69: google.cloud.aiplatform.v1beta1.FeaturestoreService.SearchFeatures:input_type -> google.cloud.aiplatform.v1beta1.SearchFeaturesRequest
-	56, // 70: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateFeaturestore:output_type -> google.longrunning.Operation
-	43, // 71: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeaturestore:output_type -> google.cloud.aiplatform.v1beta1.Featurestore
-	3,  // 72: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListFeaturestores:output_type -> google.cloud.aiplatform.v1beta1.ListFeaturestoresResponse
-	56, // 73: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateFeaturestore:output_type -> google.longrunning.Operation
-	56, // 74: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeaturestore:output_type -> google.longrunning.Operation
-	56, // 75: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateEntityType:output_type -> google.longrunning.Operation
-	53, // 76: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetEntityType:output_type -> google.cloud.aiplatform.v1beta1.EntityType
-	17, // 77: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListEntityTypes:output_type -> google.cloud.aiplatform.v1beta1.ListEntityTypesResponse
-	53, // 78: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateEntityType:output_type -> google.cloud.aiplatform.v1beta1.EntityType
-	56, // 79: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteEntityType:output_type -> google.longrunning.Operation
-	56, // 80: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateFeature:output_type -> google.longrunning.Operation
-	56, // 81: google.cloud.aiplatform.v1beta1.FeaturestoreService.BatchCreateFeatures:output_type -> google.longrunning.Operation
-	54, // 82: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeature:output_type -> google.cloud.aiplatform.v1beta1.Feature
-	25, // 83: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListFeatures:output_type -> google.cloud.aiplatform.v1beta1.ListFeaturesResponse
-	54, // 84: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateFeature:output_type -> google.cloud.aiplatform.v1beta1.Feature
-	56, // 85: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeature:output_type -> google.longrunning.Operation
-	56, // 86: google.cloud.aiplatform.v1beta1.FeaturestoreService.ImportFeatureValues:output_type -> google.longrunning.Operation
-	56, // 87: google.cloud.aiplatform.v1beta1.FeaturestoreService.BatchReadFeatureValues:output_type -> google.longrunning.Operation
-	56, // 88: google.cloud.aiplatform.v1beta1.FeaturestoreService.ExportFeatureValues:output_type -> google.longrunning.Operation
-	27, // 89: google.cloud.aiplatform.v1beta1.FeaturestoreService.SearchFeatures:output_type -> google.cloud.aiplatform.v1beta1.SearchFeaturesResponse
-	70, // [70:90] is the sub-list for method output_type
-	50, // [50:70] is the sub-list for method input_type
-	50, // [50:50] is the sub-list for extension type_name
-	50, // [50:50] is the sub-list for extension extendee
-	0,  // [0:50] is the sub-list for field type_name
+	59, // 30: google.cloud.aiplatform.v1beta1.BatchCreateFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1beta1.Feature
+	49, // 31: google.cloud.aiplatform.v1beta1.ListFeaturesRequest.read_mask:type_name -> google.protobuf.FieldMask
+	59, // 32: google.cloud.aiplatform.v1beta1.ListFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1beta1.Feature
+	59, // 33: google.cloud.aiplatform.v1beta1.SearchFeaturesResponse.features:type_name -> google.cloud.aiplatform.v1beta1.Feature
+	59, // 34: google.cloud.aiplatform.v1beta1.UpdateFeatureRequest.feature:type_name -> google.cloud.aiplatform.v1beta1.Feature
+	49, // 35: google.cloud.aiplatform.v1beta1.UpdateFeatureRequest.update_mask:type_name -> google.protobuf.FieldMask
+	60, // 36: google.cloud.aiplatform.v1beta1.CreateFeaturestoreOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	60, // 37: google.cloud.aiplatform.v1beta1.UpdateFeaturestoreOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	60, // 38: google.cloud.aiplatform.v1beta1.ImportFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	60, // 39: google.cloud.aiplatform.v1beta1.ExportFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	60, // 40: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	60, // 41: google.cloud.aiplatform.v1beta1.DeleteFeatureValuesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	60, // 42: google.cloud.aiplatform.v1beta1.CreateEntityTypeOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	60, // 43: google.cloud.aiplatform.v1beta1.CreateFeatureOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	60, // 44: google.cloud.aiplatform.v1beta1.BatchCreateFeaturesOperationMetadata.generic_metadata:type_name -> google.cloud.aiplatform.v1beta1.GenericOperationMetadata
+	47, // 45: google.cloud.aiplatform.v1beta1.DeleteFeatureValuesRequest.select_entity:type_name -> google.cloud.aiplatform.v1beta1.DeleteFeatureValuesRequest.SelectEntity
+	52, // 46: google.cloud.aiplatform.v1beta1.EntityIdSelector.csv_source:type_name -> google.cloud.aiplatform.v1beta1.CsvSource
+	54, // 47: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.EntityTypeSpec.feature_selector:type_name -> google.cloud.aiplatform.v1beta1.FeatureSelector
+	10, // 48: google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest.EntityTypeSpec.settings:type_name -> google.cloud.aiplatform.v1beta1.DestinationFeatureSetting
+	53, // 49: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.SnapshotExport.snapshot_time:type_name -> google.protobuf.Timestamp
+	53, // 50: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.SnapshotExport.start_time:type_name -> google.protobuf.Timestamp
+	53, // 51: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.FullExport.start_time:type_name -> google.protobuf.Timestamp
+	53, // 52: google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest.FullExport.end_time:type_name -> google.protobuf.Timestamp
+	41, // 53: google.cloud.aiplatform.v1beta1.DeleteFeatureValuesRequest.SelectEntity.entity_id_selector:type_name -> google.cloud.aiplatform.v1beta1.EntityIdSelector
+	0,  // 54: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateFeaturestore:input_type -> google.cloud.aiplatform.v1beta1.CreateFeaturestoreRequest
+	1,  // 55: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeaturestore:input_type -> google.cloud.aiplatform.v1beta1.GetFeaturestoreRequest
+	2,  // 56: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListFeaturestores:input_type -> google.cloud.aiplatform.v1beta1.ListFeaturestoresRequest
+	4,  // 57: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateFeaturestore:input_type -> google.cloud.aiplatform.v1beta1.UpdateFeaturestoreRequest
+	5,  // 58: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeaturestore:input_type -> google.cloud.aiplatform.v1beta1.DeleteFeaturestoreRequest
+	14, // 59: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateEntityType:input_type -> google.cloud.aiplatform.v1beta1.CreateEntityTypeRequest
+	15, // 60: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetEntityType:input_type -> google.cloud.aiplatform.v1beta1.GetEntityTypeRequest
+	16, // 61: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListEntityTypes:input_type -> google.cloud.aiplatform.v1beta1.ListEntityTypesRequest
+	18, // 62: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateEntityType:input_type -> google.cloud.aiplatform.v1beta1.UpdateEntityTypeRequest
+	19, // 63: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteEntityType:input_type -> google.cloud.aiplatform.v1beta1.DeleteEntityTypeRequest
+	20, // 64: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateFeature:input_type -> google.cloud.aiplatform.v1beta1.CreateFeatureRequest
+	21, // 65: google.cloud.aiplatform.v1beta1.FeaturestoreService.BatchCreateFeatures:input_type -> google.cloud.aiplatform.v1beta1.BatchCreateFeaturesRequest
+	23, // 66: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeature:input_type -> google.cloud.aiplatform.v1beta1.GetFeatureRequest
+	24, // 67: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListFeatures:input_type -> google.cloud.aiplatform.v1beta1.ListFeaturesRequest
+	28, // 68: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateFeature:input_type -> google.cloud.aiplatform.v1beta1.UpdateFeatureRequest
+	29, // 69: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeature:input_type -> google.cloud.aiplatform.v1beta1.DeleteFeatureRequest
+	6,  // 70: google.cloud.aiplatform.v1beta1.FeaturestoreService.ImportFeatureValues:input_type -> google.cloud.aiplatform.v1beta1.ImportFeatureValuesRequest
+	8,  // 71: google.cloud.aiplatform.v1beta1.FeaturestoreService.BatchReadFeatureValues:input_type -> google.cloud.aiplatform.v1beta1.BatchReadFeatureValuesRequest
+	9,  // 72: google.cloud.aiplatform.v1beta1.FeaturestoreService.ExportFeatureValues:input_type -> google.cloud.aiplatform.v1beta1.ExportFeatureValuesRequest
+	39, // 73: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeatureValues:input_type -> google.cloud.aiplatform.v1beta1.DeleteFeatureValuesRequest
+	26, // 74: google.cloud.aiplatform.v1beta1.FeaturestoreService.SearchFeatures:input_type -> google.cloud.aiplatform.v1beta1.SearchFeaturesRequest
+	61, // 75: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateFeaturestore:output_type -> google.longrunning.Operation
+	48, // 76: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeaturestore:output_type -> google.cloud.aiplatform.v1beta1.Featurestore
+	3,  // 77: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListFeaturestores:output_type -> google.cloud.aiplatform.v1beta1.ListFeaturestoresResponse
+	61, // 78: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateFeaturestore:output_type -> google.longrunning.Operation
+	61, // 79: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeaturestore:output_type -> google.longrunning.Operation
+	61, // 80: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateEntityType:output_type -> google.longrunning.Operation
+	58, // 81: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetEntityType:output_type -> google.cloud.aiplatform.v1beta1.EntityType
+	17, // 82: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListEntityTypes:output_type -> google.cloud.aiplatform.v1beta1.ListEntityTypesResponse
+	58, // 83: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateEntityType:output_type -> google.cloud.aiplatform.v1beta1.EntityType
+	61, // 84: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteEntityType:output_type -> google.longrunning.Operation
+	61, // 85: google.cloud.aiplatform.v1beta1.FeaturestoreService.CreateFeature:output_type -> google.longrunning.Operation
+	61, // 86: google.cloud.aiplatform.v1beta1.FeaturestoreService.BatchCreateFeatures:output_type -> google.longrunning.Operation
+	59, // 87: google.cloud.aiplatform.v1beta1.FeaturestoreService.GetFeature:output_type -> google.cloud.aiplatform.v1beta1.Feature
+	25, // 88: google.cloud.aiplatform.v1beta1.FeaturestoreService.ListFeatures:output_type -> google.cloud.aiplatform.v1beta1.ListFeaturesResponse
+	59, // 89: google.cloud.aiplatform.v1beta1.FeaturestoreService.UpdateFeature:output_type -> google.cloud.aiplatform.v1beta1.Feature
+	61, // 90: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeature:output_type -> google.longrunning.Operation
+	61, // 91: google.cloud.aiplatform.v1beta1.FeaturestoreService.ImportFeatureValues:output_type -> google.longrunning.Operation
+	61, // 92: google.cloud.aiplatform.v1beta1.FeaturestoreService.BatchReadFeatureValues:output_type -> google.longrunning.Operation
+	61, // 93: google.cloud.aiplatform.v1beta1.FeaturestoreService.ExportFeatureValues:output_type -> google.longrunning.Operation
+	61, // 94: google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeatureValues:output_type -> google.longrunning.Operation
+	27, // 95: google.cloud.aiplatform.v1beta1.FeaturestoreService.SearchFeatures:output_type -> google.cloud.aiplatform.v1beta1.SearchFeaturesResponse
+	75, // [75:96] is the sub-list for method output_type
+	54, // [54:75] is the sub-list for method input_type
+	54, // [54:54] is the sub-list for extension type_name
+	54, // [54:54] is the sub-list for extension extendee
+	0,  // [0:54] is the sub-list for field type_name
 }
 
 func init() { file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() }
@@ -4784,7 +5173,7 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateEntityTypeOperationMetadata); i {
+			switch v := v.(*DeleteFeatureValuesOperationMetadata); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4796,7 +5185,7 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateFeatureOperationMetadata); i {
+			switch v := v.(*CreateEntityTypeOperationMetadata); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4808,7 +5197,7 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BatchCreateFeaturesOperationMetadata); i {
+			switch v := v.(*CreateFeatureOperationMetadata); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4820,7 +5209,7 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ImportFeatureValuesRequest_FeatureSpec); i {
+			switch v := v.(*BatchCreateFeaturesOperationMetadata); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4832,7 +5221,7 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BatchReadFeatureValuesRequest_PassThroughField); i {
+			switch v := v.(*DeleteFeatureValuesRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4844,7 +5233,7 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BatchReadFeatureValuesRequest_EntityTypeSpec); i {
+			switch v := v.(*DeleteFeatureValuesResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4856,7 +5245,7 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExportFeatureValuesRequest_SnapshotExport); i {
+			switch v := v.(*EntityIdSelector); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4868,7 +5257,67 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() {
 			}
 		}
 		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ImportFeatureValuesRequest_FeatureSpec); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BatchReadFeatureValuesRequest_PassThroughField); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*BatchReadFeatureValuesRequest_EntityTypeSpec); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ExportFeatureValuesRequest_SnapshotExport); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ExportFeatureValuesRequest_FullExport); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[47].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteFeatureValuesRequest_SelectEntity); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4900,13 +5349,19 @@ func file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_init() {
 		(*FeatureValueDestination_TfrecordDestination)(nil),
 		(*FeatureValueDestination_CsvDestination)(nil),
 	}
+	file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[39].OneofWrappers = []interface{}{
+		(*DeleteFeatureValuesRequest_SelectEntity_)(nil),
+	}
+	file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_msgTypes[41].OneofWrappers = []interface{}{
+		(*EntityIdSelector_CsvSource)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_google_cloud_aiplatform_v1beta1_featurestore_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   43,
+			NumMessages:   48,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -4979,13 +5434,13 @@ type FeaturestoreServiceClient interface {
 	//
 	// There are also scenarios where the caller can cause inconsistency.
 	//
-	//  - Source data for import contains multiple distinct Feature values for
-	//    the same entity ID and timestamp.
-	//  - Source is modified during an import. This includes adding, updating, or
-	//  removing source data and/or metadata. Examples of updating metadata
-	//  include but are not limited to changing storage location, storage class,
-	//  or retention policy.
-	//  - Online serving cluster is under-provisioned.
+	//   - Source data for import contains multiple distinct Feature values for
+	//     the same entity ID and timestamp.
+	//   - Source is modified during an import. This includes adding, updating, or
+	//     removing source data and/or metadata. Examples of updating metadata
+	//     include but are not limited to changing storage location, storage class,
+	//     or retention policy.
+	//   - Online serving cluster is under-provisioned.
 	ImportFeatureValues(ctx context.Context, in *ImportFeatureValuesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Batch reads Feature values from a Featurestore.
 	//
@@ -4996,6 +5451,17 @@ type FeaturestoreServiceClient interface {
 	BatchReadFeatureValues(ctx context.Context, in *BatchReadFeatureValuesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Exports Feature values from all the entities of a target EntityType.
 	ExportFeatureValues(ctx context.Context, in *ExportFeatureValuesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
+	// Delete Feature values from Featurestore.
+	//
+	// The progress of the deletion is tracked by the returned operation. The
+	// deleted feature values are guaranteed to be invisible to subsequent read
+	// operations after the operation is marked as successfully done.
+	//
+	// If a delete feature values operation fails, the feature values
+	// returned from reads and exports may be inconsistent. If consistency is
+	// required, the caller must retry the same delete request again and wait till
+	// the new operation returned is marked as successfully done.
+	DeleteFeatureValues(ctx context.Context, in *DeleteFeatureValuesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Searches Features matching a query in a given project.
 	SearchFeatures(ctx context.Context, in *SearchFeaturesRequest, opts ...grpc.CallOption) (*SearchFeaturesResponse, error)
 }
@@ -5179,6 +5645,15 @@ func (c *featurestoreServiceClient) ExportFeatureValues(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *featurestoreServiceClient) DeleteFeatureValues(ctx context.Context, in *DeleteFeatureValuesRequest, opts ...grpc.CallOption) (*longrunning.Operation, error) {
+	out := new(longrunning.Operation)
+	err := c.cc.Invoke(ctx, "/google.cloud.aiplatform.v1beta1.FeaturestoreService/DeleteFeatureValues", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *featurestoreServiceClient) SearchFeatures(ctx context.Context, in *SearchFeaturesRequest, opts ...grpc.CallOption) (*SearchFeaturesResponse, error) {
 	out := new(SearchFeaturesResponse)
 	err := c.cc.Invoke(ctx, "/google.cloud.aiplatform.v1beta1.FeaturestoreService/SearchFeatures", in, out, opts...)
@@ -5237,13 +5712,13 @@ type FeaturestoreServiceServer interface {
 	//
 	// There are also scenarios where the caller can cause inconsistency.
 	//
-	//  - Source data for import contains multiple distinct Feature values for
-	//    the same entity ID and timestamp.
-	//  - Source is modified during an import. This includes adding, updating, or
-	//  removing source data and/or metadata. Examples of updating metadata
-	//  include but are not limited to changing storage location, storage class,
-	//  or retention policy.
-	//  - Online serving cluster is under-provisioned.
+	//   - Source data for import contains multiple distinct Feature values for
+	//     the same entity ID and timestamp.
+	//   - Source is modified during an import. This includes adding, updating, or
+	//     removing source data and/or metadata. Examples of updating metadata
+	//     include but are not limited to changing storage location, storage class,
+	//     or retention policy.
+	//   - Online serving cluster is under-provisioned.
 	ImportFeatureValues(context.Context, *ImportFeatureValuesRequest) (*longrunning.Operation, error)
 	// Batch reads Feature values from a Featurestore.
 	//
@@ -5254,6 +5729,17 @@ type FeaturestoreServiceServer interface {
 	BatchReadFeatureValues(context.Context, *BatchReadFeatureValuesRequest) (*longrunning.Operation, error)
 	// Exports Feature values from all the entities of a target EntityType.
 	ExportFeatureValues(context.Context, *ExportFeatureValuesRequest) (*longrunning.Operation, error)
+	// Delete Feature values from Featurestore.
+	//
+	// The progress of the deletion is tracked by the returned operation. The
+	// deleted feature values are guaranteed to be invisible to subsequent read
+	// operations after the operation is marked as successfully done.
+	//
+	// If a delete feature values operation fails, the feature values
+	// returned from reads and exports may be inconsistent. If consistency is
+	// required, the caller must retry the same delete request again and wait till
+	// the new operation returned is marked as successfully done.
+	DeleteFeatureValues(context.Context, *DeleteFeatureValuesRequest) (*longrunning.Operation, error)
 	// Searches Features matching a query in a given project.
 	SearchFeatures(context.Context, *SearchFeaturesRequest) (*SearchFeaturesResponse, error)
 }
@@ -5318,6 +5804,9 @@ func (*UnimplementedFeaturestoreServiceServer) BatchReadFeatureValues(context.Co
 }
 func (*UnimplementedFeaturestoreServiceServer) ExportFeatureValues(context.Context, *ExportFeatureValuesRequest) (*longrunning.Operation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExportFeatureValues not implemented")
+}
+func (*UnimplementedFeaturestoreServiceServer) DeleteFeatureValues(context.Context, *DeleteFeatureValuesRequest) (*longrunning.Operation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFeatureValues not implemented")
 }
 func (*UnimplementedFeaturestoreServiceServer) SearchFeatures(context.Context, *SearchFeaturesRequest) (*SearchFeaturesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchFeatures not implemented")
@@ -5669,6 +6158,24 @@ func _FeaturestoreService_ExportFeatureValues_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FeaturestoreService_DeleteFeatureValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteFeatureValuesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeaturestoreServiceServer).DeleteFeatureValues(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/google.cloud.aiplatform.v1beta1.FeaturestoreService/DeleteFeatureValues",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeaturestoreServiceServer).DeleteFeatureValues(ctx, req.(*DeleteFeatureValuesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _FeaturestoreService_SearchFeatures_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SearchFeaturesRequest)
 	if err := dec(in); err != nil {
@@ -5766,6 +6273,10 @@ var _FeaturestoreService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ExportFeatureValues",
 			Handler:    _FeaturestoreService_ExportFeatureValues_Handler,
+		},
+		{
+			MethodName: "DeleteFeatureValues",
+			Handler:    _FeaturestoreService_DeleteFeatureValues_Handler,
 		},
 		{
 			MethodName: "SearchFeatures",
