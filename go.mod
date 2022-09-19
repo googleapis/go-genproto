@@ -39,6 +39,7 @@ require (
 	cloud.google.com/go/privatecatalog v0.5.0
 	cloud.google.com/go/recommender v1.5.0
 	cloud.google.com/go/redis v1.7.0
+	cloud.google.com/go/retail v1.8.0
 	cloud.google.com/go/scheduler v1.4.0
 	cloud.google.com/go/secretmanager v1.6.0
 	cloud.google.com/go/security v1.7.0

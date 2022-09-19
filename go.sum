@@ -72,6 +72,8 @@ cloud.google.com/go/recommender v1.5.0 h1:mqy/VKIKCascBT1q+ZbgWAYOY+KKDwkRNHcBg1
 cloud.google.com/go/recommender v1.5.0/go.mod h1:jdoeiBIVrJe9gQjwd759ecLJbxCDED4A6p+mqoqDvTg=
 cloud.google.com/go/redis v1.7.0 h1:pP6SOq8nDUQ9bUZoHdOVRp1nX2ANfiXyadRdWquYZIQ=
 cloud.google.com/go/redis v1.7.0/go.mod h1:V3x5Jq1jzUcg+UNsRvdmsfuFnit1cfe3Z/PGyq/lm4Y=
+cloud.google.com/go/retail v1.8.0 h1:cdbsv+P0nwIv7YfcY1QfQ7bA7iWDwQ2yi3fr4vfOg9s=
+cloud.google.com/go/retail v1.8.0/go.mod h1:QblKS8waDmNUhghY2TI9O3JLlFk8jybHeV4BF19FrE4=
 cloud.google.com/go/scheduler v1.4.0 h1:GzmMMK2+nSbuFvik9/tmju6DKmnVNOFXMW/SHZz+gt4=
 cloud.google.com/go/scheduler v1.4.0/go.mod h1:drcJBmxF3aqZJRhmkHQ9b3uSSpQoltBPGPxGAWROx6s=
 cloud.google.com/go/secretmanager v1.6.0 h1:5v0zegRMlytVnN7J+bg5Ipqah3I2RZ67ysy00mvA+lA=
