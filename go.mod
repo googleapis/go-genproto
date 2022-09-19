@@ -19,6 +19,19 @@ require (
 	cloud.google.com/go/documentai v1.7.0
 	cloud.google.com/go/domains v0.6.0
 	cloud.google.com/go/functions v1.6.0
+	cloud.google.com/go/gaming v1.5.0
+	cloud.google.com/go/gkeconnect v0.5.0
+	cloud.google.com/go/gkehub v0.9.0
+	cloud.google.com/go/language v1.4.0
+	cloud.google.com/go/lifesciences v0.5.0
+	cloud.google.com/go/mediatranslation v0.5.0
+	cloud.google.com/go/memcache v1.4.0
+	cloud.google.com/go/metastore v1.5.0
+	cloud.google.com/go/networkconnectivity v1.4.0
+	cloud.google.com/go/networksecurity v0.5.0
+	cloud.google.com/go/notebooks v1.2.0
+	cloud.google.com/go/osconfig v1.7.0
+	cloud.google.com/go/oslogin v1.4.0
 	cloud.google.com/go/security v1.5.0
 	github.com/golang/protobuf v1.5.2
 	google.golang.org/grpc v1.48.0
