@@ -5,12 +5,15 @@ go 1.19
 require (
 	cloud.google.com/go/analytics v0.11.0
 	cloud.google.com/go/area120 v0.5.0
+	cloud.google.com/go/artifactregistry v1.6.0
 	cloud.google.com/go/asset v1.5.0
 	cloud.google.com/go/assuredworkloads v1.5.0
 	cloud.google.com/go/automl v1.5.0
 	cloud.google.com/go/billing v1.4.0
 	cloud.google.com/go/binaryauthorization v1.1.0
+	cloud.google.com/go/cloudtasks v1.5.0
 	cloud.google.com/go/datacatalog v1.5.0
+	cloud.google.com/go/dataflow v0.6.0
 	cloud.google.com/go/dataform v0.3.0
 	cloud.google.com/go/datalabeling v0.5.0
 	cloud.google.com/go/dataqna v0.5.0
@@ -43,6 +46,9 @@ require (
 	cloud.google.com/go/servicedirectory v1.4.0
 	cloud.google.com/go/speech v1.6.0
 	cloud.google.com/go/talent v1.1.0
+	cloud.google.com/go/videointelligence v1.6.0
+	cloud.google.com/go/webrisk v1.4.0
+	cloud.google.com/go/workflows v1.6.0
 	github.com/golang/protobuf v1.5.2
 	google.golang.org/grpc v1.48.0
 	google.golang.org/protobuf v1.28.1

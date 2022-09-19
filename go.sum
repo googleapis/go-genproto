@@ -4,6 +4,8 @@ cloud.google.com/go/analytics v0.11.0 h1:+d7hZrqp2IebYPliDiv4AwnUAIqVhMiXHm3G/G9
 cloud.google.com/go/analytics v0.11.0/go.mod h1:DjEWCu41bVbYcKyvlws9Er60YE4a//bK6mnhWvQeFNI=
 cloud.google.com/go/area120 v0.5.0 h1:WTNlum1kMjhnBToR1zbvyhR9IjRnqHJ9UshTbW2P71w=
 cloud.google.com/go/area120 v0.5.0/go.mod h1:DE/n4mp+iqVyvxHN41Vf1CR602GiHQjFPusMFW6bGR4=
+cloud.google.com/go/artifactregistry v1.6.0 h1:xAZG9+PMmr2sYXrirtNfSPUeDXTwphAyMB8Ak+zMbhA=
+cloud.google.com/go/artifactregistry v1.6.0/go.mod h1:IYt0oBPSAGYj/kprzsBjZ/4LnG/zOcHyFHjWPCi6SAQ=
 cloud.google.com/go/asset v1.5.0 h1:Px0CZuM7u6mcDysLR2QHlEWza0tN+iSjwCtFZtBY6DA=
 cloud.google.com/go/asset v1.5.0/go.mod h1:5mfs8UvcM5wHhqtSv8J1CtxxaQq3AdBxxQi2jGW/K4o=
 cloud.google.com/go/assuredworkloads v1.5.0 h1:4YrCLlal8VEyEl0NsTyUU1TZ+5yikF0UOcqMHtaoCgw=
@@ -14,8 +16,12 @@ cloud.google.com/go/billing v1.4.0 h1:SHH+VeM82hsUhSvZ41QIFLO/7hL2SM6auHhCOGt9mw
 cloud.google.com/go/billing v1.4.0/go.mod h1:g9IdKBEFlItS8bTtlrZdVLWSSdSyFUZKXNS02zKMOZY=
 cloud.google.com/go/binaryauthorization v1.1.0 h1:CQHsCbtttPweeGwjl0iVnGVR4a+vITzB2aqNoo7vs94=
 cloud.google.com/go/binaryauthorization v1.1.0/go.mod h1:xwnoWu3Y84jbuHa0zd526MJYmtnVXn0syOjaJgy4+dM=
+cloud.google.com/go/cloudtasks v1.5.0 h1:iamBJut/kfiaoSBiz5ehzbrLBl0okqHMDJPNHFTle6c=
+cloud.google.com/go/cloudtasks v1.5.0/go.mod h1:fD92REy1x5woxkKEkLdvavGnPJGEn8Uic9nWuLzqCpY=
 cloud.google.com/go/datacatalog v1.5.0 h1:Q9DXHJhkRsPm+EfOj60EGlCK0VMSnd4T/BsVmY2Tmg4=
 cloud.google.com/go/datacatalog v1.5.0/go.mod h1:M7GPLNQeLfWqeIm3iuiruhPzkt65+Bx8dAKvScX8jvs=
+cloud.google.com/go/dataflow v0.6.0 h1:N9KtiJFlW/J1jqlSoQorP4Dgj18z0zHbX9xLKrJzSSU=
+cloud.google.com/go/dataflow v0.6.0/go.mod h1:9QwV89cGoxjjSR9/r7eFDqqjtvbKxAK2BaYU6PVk9UM=
 cloud.google.com/go/dataform v0.3.0 h1:Kj89ovEwxiRZBkx8uoRt0AaS5deR6+pfpnS3XGv9z0o=
 cloud.google.com/go/dataform v0.3.0/go.mod h1:cj8uNliRlHpa6L3yVhDOBrUXH+BPAO1+KFMQQNSThKo=
 cloud.google.com/go/datalabeling v0.5.0 h1:b7/y5HgaqRFUmbizVQ0yOXlAtEOkiZXUVrhKGOsBdGg=
@@ -80,6 +86,12 @@ cloud.google.com/go/speech v1.6.0 h1:T/FRwj5ZsImOno7dSckh05LPIvRgW8Gx2ARTeNqIqlY
 cloud.google.com/go/speech v1.6.0/go.mod h1:79tcr4FHCimOp56lwC01xnt/WPJZc4v3gzyT7FoBkCM=
 cloud.google.com/go/talent v1.1.0 h1:21beHmO0XsFawwzxAtWNoZln8930k737/6P5DPXAQPI=
 cloud.google.com/go/talent v1.1.0/go.mod h1:Vl4pt9jiHKvOgF9KoZo6Kob9oV4lwd/ZD5Cto54zDRw=
+cloud.google.com/go/videointelligence v1.6.0 h1:bGbQVZDdKxMhywFruluDEgQW9g5TqAgVeT+gE6WAFOs=
+cloud.google.com/go/videointelligence v1.6.0/go.mod h1:w0DIDlVRKtwPCn/C4iwZIJdvC69yInhW0cfi+p546uU=
+cloud.google.com/go/webrisk v1.4.0 h1:ng1tnznwioN3iYbHJf7rQ7mce+YmBzk8v0qX7E8YXeI=
+cloud.google.com/go/webrisk v1.4.0/go.mod h1:Hn8X6Zr+ziE2aNd8SliSDWpEnSS1u4R9+xXZmFiHmGE=
+cloud.google.com/go/workflows v1.6.0 h1:0rYwTypSlEAqaoKO5l2mIecafBvFplpjegMghkyDHdU=
+cloud.google.com/go/workflows v1.6.0/go.mod h1:6t9F5h/unJz41YqfBmqSASJSXccBLtD1Vwf+KmJENM0=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
