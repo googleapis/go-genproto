@@ -32,7 +32,17 @@ require (
 	cloud.google.com/go/notebooks v1.2.0
 	cloud.google.com/go/osconfig v1.7.0
 	cloud.google.com/go/oslogin v1.4.0
-	cloud.google.com/go/security v1.5.0
+	cloud.google.com/go/phishingprotection v0.5.0
+	cloud.google.com/go/privatecatalog v0.5.0
+	cloud.google.com/go/recommender v1.5.0
+	cloud.google.com/go/redis v1.7.0
+	cloud.google.com/go/scheduler v1.4.0
+	cloud.google.com/go/secretmanager v1.6.0
+	cloud.google.com/go/security v1.7.0
+	cloud.google.com/go/securitycenter v1.13.0
+	cloud.google.com/go/servicedirectory v1.4.0
+	cloud.google.com/go/speech v1.6.0
+	cloud.google.com/go/talent v1.1.0
 	github.com/golang/protobuf v1.5.2
 	google.golang.org/grpc v1.48.0
 	google.golang.org/protobuf v1.28.1
