@@ -68,6 +68,8 @@ cloud.google.com/go/phishingprotection v0.5.0 h1:2JlDLzHfDbOhMLBrQeNDWXbhM8266iz
 cloud.google.com/go/phishingprotection v0.5.0/go.mod h1:Y3HZknsK9bc9dMi+oE8Bim0lczMU6hrX0UpADuMefr0=
 cloud.google.com/go/privatecatalog v0.5.0 h1:F+sJo8MKSDOEWwrMsUerjdawn6a9NQVG7ir+IX5XYjc=
 cloud.google.com/go/privatecatalog v0.5.0/go.mod h1:XgosMUvvPyxDjAVNDYxJ7wBW8//hLDDYmnsNcMGq1K0=
+cloud.google.com/go/recommendationengine v0.5.0 h1:CR3PLwZOfNSWApMXKpMT0+zdpsJEU9ns4qNlqSBRySc=
+cloud.google.com/go/recommendationengine v0.5.0/go.mod h1:E5756pJcVFeVgaQv3WNpImkFP8a+RptV6dDLGPILjvg=
 cloud.google.com/go/recommender v1.5.0 h1:mqy/VKIKCascBT1q+ZbgWAYOY+KKDwkRNHcBg1uk+uo=
 cloud.google.com/go/recommender v1.5.0/go.mod h1:jdoeiBIVrJe9gQjwd759ecLJbxCDED4A6p+mqoqDvTg=
 cloud.google.com/go/redis v1.7.0 h1:pP6SOq8nDUQ9bUZoHdOVRp1nX2ANfiXyadRdWquYZIQ=
