@@ -21,6 +21,7 @@ require (
 	cloud.google.com/go/dialogflow v1.15.0
 	cloud.google.com/go/documentai v1.7.0
 	cloud.google.com/go/domains v0.6.0
+	cloud.google.com/go/edgecontainer v0.1.0
 	cloud.google.com/go/functions v1.6.0
 	cloud.google.com/go/gaming v1.5.0
 	cloud.google.com/go/gkeconnect v0.5.0
@@ -54,7 +55,7 @@ require (
 	cloud.google.com/go/webrisk v1.4.0
 	cloud.google.com/go/workflows v1.6.0
 	github.com/golang/protobuf v1.5.2
-	google.golang.org/grpc v1.48.0
+	google.golang.org/grpc v1.49.0
 	google.golang.org/protobuf v1.28.1
 )
 
