@@ -49,6 +49,7 @@ require (
 	cloud.google.com/go/speech v1.6.0
 	cloud.google.com/go/talent v1.1.0
 	cloud.google.com/go/videointelligence v1.6.0
+	cloud.google.com/go/vision/v2 v2.2.0
 	cloud.google.com/go/webrisk v1.4.0
 	cloud.google.com/go/workflows v1.6.0
 	github.com/golang/protobuf v1.5.2

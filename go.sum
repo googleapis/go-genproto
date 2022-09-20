@@ -92,6 +92,8 @@ cloud.google.com/go/talent v1.1.0 h1:21beHmO0XsFawwzxAtWNoZln8930k737/6P5DPXAQPI
 cloud.google.com/go/talent v1.1.0/go.mod h1:Vl4pt9jiHKvOgF9KoZo6Kob9oV4lwd/ZD5Cto54zDRw=
 cloud.google.com/go/videointelligence v1.6.0 h1:bGbQVZDdKxMhywFruluDEgQW9g5TqAgVeT+gE6WAFOs=
 cloud.google.com/go/videointelligence v1.6.0/go.mod h1:w0DIDlVRKtwPCn/C4iwZIJdvC69yInhW0cfi+p546uU=
+cloud.google.com/go/vision/v2 v2.2.0 h1:W7DxaZ74iYxO40tYFRsfZqdOWCbUYs9fTQ8/wQNUVak=
+cloud.google.com/go/vision/v2 v2.2.0/go.mod h1:uCdV4PpN1S0jyCyq8sIM42v2Y6zOLkZs+4R9LrGYwFo=
 cloud.google.com/go/webrisk v1.4.0 h1:ng1tnznwioN3iYbHJf7rQ7mce+YmBzk8v0qX7E8YXeI=
 cloud.google.com/go/webrisk v1.4.0/go.mod h1:Hn8X6Zr+ziE2aNd8SliSDWpEnSS1u4R9+xXZmFiHmGE=
 cloud.google.com/go/workflows v1.6.0 h1:0rYwTypSlEAqaoKO5l2mIecafBvFplpjegMghkyDHdU=
