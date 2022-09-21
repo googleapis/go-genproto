@@ -9,6 +9,7 @@ require (
 	cloud.google.com/go/asset v1.5.0
 	cloud.google.com/go/assuredworkloads v1.5.0
 	cloud.google.com/go/automl v1.5.0
+	cloud.google.com/go/bigquery v1.42.0
 	cloud.google.com/go/billing v1.4.0
 	cloud.google.com/go/binaryauthorization v1.1.0
 	cloud.google.com/go/cloudtasks v1.5.0

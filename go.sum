@@ -10,6 +10,8 @@ cloud.google.com/go/assuredworkloads v1.5.0 h1:4YrCLlal8VEyEl0NsTyUU1TZ+5yikF0UO
 cloud.google.com/go/assuredworkloads v1.5.0/go.mod h1:n8HOZ6pff6re5KYfBXcFvSViQjDwxFkAkmUFffJRbbY=
 cloud.google.com/go/automl v1.5.0 h1:Av8bE5rMQxUl4SVfYsEczEJf1ftIKQOUGGzpzEYwodY=
 cloud.google.com/go/automl v1.5.0/go.mod h1:34EjfoFGMZ5sgJ9EoLsRtdPSNZLcfflJR39VbVNS2M0=
+cloud.google.com/go/bigquery v1.42.0 h1:JuTk8po4bCKRwObdT0zLb1K0BGkGHJdtgs2GK3j2Gws=
+cloud.google.com/go/bigquery v1.42.0/go.mod h1:8dRTJxhtG+vwBKzE5OseQn/hiydoQN3EedCaOdYmxRA=
 cloud.google.com/go/billing v1.4.0 h1:SHH+VeM82hsUhSvZ41QIFLO/7hL2SM6auHhCOGt9mwA=
 cloud.google.com/go/billing v1.4.0/go.mod h1:g9IdKBEFlItS8bTtlrZdVLWSSdSyFUZKXNS02zKMOZY=
 cloud.google.com/go/binaryauthorization v1.1.0 h1:CQHsCbtttPweeGwjl0iVnGVR4a+vITzB2aqNoo7vs94=
