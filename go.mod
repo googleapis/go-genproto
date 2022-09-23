@@ -3,6 +3,7 @@ module google.golang.org/genproto
 go 1.19
 
 require (
+	cloud.google.com/go/aiplatform v1.22.0
 	cloud.google.com/go/analytics v0.11.0
 	cloud.google.com/go/area120 v0.5.0
 	cloud.google.com/go/artifactregistry v1.6.0

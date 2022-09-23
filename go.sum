@@ -1,3 +1,5 @@
+cloud.google.com/go/aiplatform v1.22.0 h1:D5nT9LhFKyXr8b/Ah+H3u5zSorUIQGuyymEJ85CaSjY=
+cloud.google.com/go/aiplatform v1.22.0/go.mod h1:ig5Nct50bZlzV6NvKaTwmplLLddFx0YReh9WfTO5jKw=
 cloud.google.com/go/analytics v0.11.0 h1:+d7hZrqp2IebYPliDiv4AwnUAIqVhMiXHm3G/G9l6ms=
 cloud.google.com/go/analytics v0.11.0/go.mod h1:DjEWCu41bVbYcKyvlws9Er60YE4a//bK6mnhWvQeFNI=
 cloud.google.com/go/area120 v0.5.0 h1:WTNlum1kMjhnBToR1zbvyhR9IjRnqHJ9UshTbW2P71w=
