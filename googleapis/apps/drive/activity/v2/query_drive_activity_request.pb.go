@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -45,6 +45,7 @@ type QueryDriveActivityRequest struct {
 	// ancestor_name = `items/root` if no key is specified.
 	//
 	// Types that are assignable to Key:
+	//
 	//	*QueryDriveActivityRequest_ItemName
 	//	*QueryDriveActivityRequest_AncestorName
 	Key isQueryDriveActivityRequest_Key `protobuf_oneof:"key"`
@@ -70,16 +71,21 @@ type QueryDriveActivityRequest struct {
 	//   - `time`: Uses numerical operators on date values either in
 	//     terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.
 	//     Examples:
-	//       - `time > 1452409200000 AND time <= 1492812924310`
-	//       - `time >= "2016-01-10T01:02:03-05:00"`
+	//
+	//   - `time > 1452409200000 AND time <= 1492812924310`
+	//
+	//   - `time >= "2016-01-10T01:02:03-05:00"`
 	//
 	//   - `detail.action_detail_case`: Uses the "has" operator (:) and
 	//     either a singular value or a list of allowed action types enclosed in
 	//     parentheses.
 	//     Examples:
-	//       - `detail.action_detail_case: RENAME`
-	//       - `detail.action_detail_case:(CREATE EDIT)`
-	//       - `-detail.action_detail_case:MOVE`
+	//
+	//   - `detail.action_detail_case: RENAME`
+	//
+	//   - `detail.action_detail_case:(CREATE EDIT)`
+	//
+	//   - `-detail.action_detail_case:MOVE`
 	Filter string `protobuf:"bytes,8,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
@@ -197,6 +203,7 @@ type ConsolidationStrategy struct {
 	// How the individual activities are consolidated.
 	//
 	// Types that are assignable to Strategy:
+	//
 	//	*ConsolidationStrategy_None
 	//	*ConsolidationStrategy_Legacy_
 	Strategy isConsolidationStrategy_Strategy `protobuf_oneof:"strategy"`

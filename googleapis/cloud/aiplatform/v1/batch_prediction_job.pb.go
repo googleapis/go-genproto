@@ -52,7 +52,7 @@ type BatchPredictionJob struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Required. The user-defined name of this BatchPredictionJob.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// The name of the Model resoure that produces the predictions via this job,
+	// The name of the Model resource that produces the predictions via this job,
 	// must share the same ancestor Location.
 	// Starting this job has no impact on any existing deployments of the Model
 	// and their resources.
@@ -103,12 +103,12 @@ type BatchPredictionJob struct {
 	// `predictions_format` field of the
 	// [BatchPredictionJob.output_config][google.cloud.aiplatform.v1.BatchPredictionJob.output_config] object:
 	//
-	//  * `bigquery`: output includes a column named `explanation`. The value
-	//    is a struct that conforms to the [Explanation][google.cloud.aiplatform.v1.Explanation] object.
-	//  * `jsonl`: The JSON objects on each line include an additional entry
-	//    keyed `explanation`. The value of the entry is a JSON object that
-	//    conforms to the [Explanation][google.cloud.aiplatform.v1.Explanation] object.
-	//  * `csv`: Generating explanations for CSV format is not supported.
+	//   - `bigquery`: output includes a column named `explanation`. The value
+	//     is a struct that conforms to the [Explanation][google.cloud.aiplatform.v1.Explanation] object.
+	//   - `jsonl`: The JSON objects on each line include an additional entry
+	//     keyed `explanation`. The value of the entry is a JSON object that
+	//     conforms to the [Explanation][google.cloud.aiplatform.v1.Explanation] object.
+	//   - `csv`: Generating explanations for CSV format is not supported.
 	//
 	// If this field is set to true, either the [Model.explanation_spec][google.cloud.aiplatform.v1.Model.explanation_spec] or
 	// [explanation_spec][google.cloud.aiplatform.v1.BatchPredictionJob.explanation_spec] must be populated.
@@ -377,6 +377,7 @@ type BatchPredictionJob_InputConfig struct {
 	// Required. The source of the input.
 	//
 	// Types that are assignable to Source:
+	//
 	//	*BatchPredictionJob_InputConfig_GcsSource
 	//	*BatchPredictionJob_InputConfig_BigquerySource
 	Source isBatchPredictionJob_InputConfig_Source `protobuf_oneof:"source"`
@@ -479,6 +480,7 @@ type BatchPredictionJob_OutputConfig struct {
 	// Required. The destination of the output.
 	//
 	// Types that are assignable to Destination:
+	//
 	//	*BatchPredictionJob_OutputConfig_GcsDestination
 	//	*BatchPredictionJob_OutputConfig_BigqueryDestination
 	Destination isBatchPredictionJob_OutputConfig_Destination `protobuf_oneof:"destination"`
@@ -614,6 +616,7 @@ type BatchPredictionJob_OutputInfo struct {
 	// The output location into which prediction output is written.
 	//
 	// Types that are assignable to OutputLocation:
+	//
 	//	*BatchPredictionJob_OutputInfo_GcsOutputDirectory
 	//	*BatchPredictionJob_OutputInfo_BigqueryOutputDataset
 	OutputLocation isBatchPredictionJob_OutputInfo_OutputLocation `protobuf_oneof:"output_location"`

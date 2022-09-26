@@ -167,17 +167,22 @@ type ListCustomJobsRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
-	//   * `state` supports `=`, `!=` comparisons.
-	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//   - `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   - `state` supports `=`, `!=` comparisons.
+	//   - `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
 	//     `create_time` must be in RFC 3339 format.
+	//   - `labels` supports general map functions that is:
+	//     `labels.key=value` - key:value equality
+	//     `labels.key:* - key existence
 	//
 	// Some examples of using the filter are:
 	//
-	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
-	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
-	//   * `NOT display_name="my_job"`
-	//   * `create_time>"2021-05-18T00:00:00Z"`
+	//   - `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   - `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   - `NOT display_name="my_job"`
+	//   - `create_time>"2021-05-18T00:00:00Z"`
+	//   - `labels.keyA=valueA`
+	//   - `labels.keyB:*`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -541,17 +546,22 @@ type ListDataLabelingJobsRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
-	//   * `state` supports `=`, `!=` comparisons.
-	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//   - `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   - `state` supports `=`, `!=` comparisons.
+	//   - `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
 	//     `create_time` must be in RFC 3339 format.
+	//   - `labels` supports general map functions that is:
+	//     `labels.key=value` - key:value equality
+	//     `labels.key:* - key existence
 	//
 	// Some examples of using the filter are:
 	//
-	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
-	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
-	//   * `NOT display_name="my_job"`
-	//   * `create_time>"2021-05-18T00:00:00Z"`
+	//   - `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   - `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   - `NOT display_name="my_job"`
+	//   - `create_time>"2021-05-18T00:00:00Z"`
+	//   - `labels.keyA=valueA`
+	//   - `labels.keyB:*`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -926,17 +936,22 @@ type ListHyperparameterTuningJobsRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
-	//   * `state` supports `=`, `!=` comparisons.
-	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//   - `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   - `state` supports `=`, `!=` comparisons.
+	//   - `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
 	//     `create_time` must be in RFC 3339 format.
+	//   - `labels` supports general map functions that is:
+	//     `labels.key=value` - key:value equality
+	//     `labels.key:* - key existence
 	//
 	// Some examples of using the filter are:
 	//
-	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
-	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
-	//   * `NOT display_name="my_job"`
-	//   * `create_time>"2021-05-18T00:00:00Z"`
+	//   - `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   - `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   - `NOT display_name="my_job"`
+	//   - `create_time>"2021-05-18T00:00:00Z"`
+	//   - `labels.keyA=valueA`
+	//   - `labels.keyB:*`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -1302,18 +1317,23 @@ type ListBatchPredictionJobsRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
-	//   * `model_display_name` supports `=`, `!=` comparisons.
-	//   * `state` supports `=`, `!=` comparisons.
-	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//   - `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   - `model_display_name` supports `=`, `!=` comparisons.
+	//   - `state` supports `=`, `!=` comparisons.
+	//   - `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
 	//     `create_time` must be in RFC 3339 format.
+	//   - `labels` supports general map functions that is:
+	//     `labels.key=value` - key:value equality
+	//     `labels.key:* - key existence
 	//
 	// Some examples of using the filter are:
 	//
-	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
-	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
-	//   * `NOT display_name="my_job"`
-	//   * `create_time>"2021-05-18T00:00:00Z"`
+	//   - `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   - `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   - `NOT display_name="my_job"`
+	//   - `create_time>"2021-05-18T00:00:00Z"`
+	//   - `labels.keyA=valueA`
+	//   - `labels.keyB:*`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -1868,17 +1888,22 @@ type ListModelDeploymentMonitoringJobsRequest struct {
 	//
 	// Supported fields:
 	//
-	//   * `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
-	//   * `state` supports `=`, `!=` comparisons.
-	//   * `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
+	//   - `display_name` supports `=`, `!=` comparisons, and `:` wildcard.
+	//   - `state` supports `=`, `!=` comparisons.
+	//   - `create_time` supports `=`, `!=`,`<`, `<=`,`>`, `>=` comparisons.
 	//     `create_time` must be in RFC 3339 format.
+	//   - `labels` supports general map functions that is:
+	//     `labels.key=value` - key:value equality
+	//     `labels.key:* - key existence
 	//
 	// Some examples of using the filter are:
 	//
-	//   * `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
-	//   * `state!="JOB_STATE_FAILED" OR display_name="my_job"`
-	//   * `NOT display_name="my_job"`
-	//   * `create_time>"2021-05-18T00:00:00Z"`
+	//   - `state="JOB_STATE_SUCCEEDED" AND display_name:"my_job_*"`
+	//   - `state!="JOB_STATE_FAILED" OR display_name="my_job"`
+	//   - `NOT display_name="my_job"`
+	//   - `create_time>"2021-05-18T00:00:00Z"`
+	//   - `labels.keyA=valueA`
+	//   - `labels.keyB:*`
 	Filter string `protobuf:"bytes,2,opt,name=filter,proto3" json:"filter,omitempty"`
 	// The standard list page size.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -2039,19 +2064,21 @@ type UpdateModelDeploymentMonitoringJobRequest struct {
 	//
 	// Updatable fields:
 	//
-	//   * `display_name`
-	//   * `model_deployment_monitoring_schedule_config`
-	//   * `model_monitoring_alert_config`
-	//   * `logging_sampling_strategy`
-	//   * `labels`
-	//   * `log_ttl`
-	//   * `enable_monitoring_pipeline_logs`
+	//   - `display_name`
+	//   - `model_deployment_monitoring_schedule_config`
+	//   - `model_monitoring_alert_config`
+	//   - `logging_sampling_strategy`
+	//   - `labels`
+	//   - `log_ttl`
+	//   - `enable_monitoring_pipeline_logs`
+	//
 	// .  and
-	//   * `model_deployment_monitoring_objective_configs`
+	//   - `model_deployment_monitoring_objective_configs`
+	//
 	// .  or
-	//   * `model_deployment_monitoring_objective_configs.objective_config.training_dataset`
-	//   * `model_deployment_monitoring_objective_configs.objective_config.training_prediction_skew_detection_config`
-	//   * `model_deployment_monitoring_objective_configs.objective_config.prediction_drift_detection_config`
+	//   - `model_deployment_monitoring_objective_configs.objective_config.training_dataset`
+	//   - `model_deployment_monitoring_objective_configs.objective_config.training_prediction_skew_detection_config`
+	//   - `model_deployment_monitoring_objective_configs.objective_config.prediction_drift_detection_config`
 	UpdateMask *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 }
 

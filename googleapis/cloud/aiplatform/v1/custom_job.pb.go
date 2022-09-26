@@ -214,7 +214,6 @@ func (x *CustomJob) GetWebAccessUris() map[string]string {
 }
 
 // Represents the spec of a CustomJob.
-// Next Id: 15
 type CustomJobSpec struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -265,17 +264,17 @@ type CustomJobSpec struct {
 	// The following Vertex AI environment variables will be passed to
 	// containers or python modules when this field is set:
 	//
-	//   For CustomJob:
+	//	For CustomJob:
 	//
-	//   * AIP_MODEL_DIR = `<base_output_directory>/model/`
-	//   * AIP_CHECKPOINT_DIR = `<base_output_directory>/checkpoints/`
-	//   * AIP_TENSORBOARD_LOG_DIR = `<base_output_directory>/logs/`
+	//	* AIP_MODEL_DIR = `<base_output_directory>/model/`
+	//	* AIP_CHECKPOINT_DIR = `<base_output_directory>/checkpoints/`
+	//	* AIP_TENSORBOARD_LOG_DIR = `<base_output_directory>/logs/`
 	//
-	//   For CustomJob backing a Trial of HyperparameterTuningJob:
+	//	For CustomJob backing a Trial of HyperparameterTuningJob:
 	//
-	//   * AIP_MODEL_DIR = `<base_output_directory>/<trial_id>/model/`
-	//   * AIP_CHECKPOINT_DIR = `<base_output_directory>/<trial_id>/checkpoints/`
-	//   * AIP_TENSORBOARD_LOG_DIR = `<base_output_directory>/<trial_id>/logs/`
+	//	* AIP_MODEL_DIR = `<base_output_directory>/<trial_id>/model/`
+	//	* AIP_CHECKPOINT_DIR = `<base_output_directory>/<trial_id>/checkpoints/`
+	//	* AIP_TENSORBOARD_LOG_DIR = `<base_output_directory>/<trial_id>/logs/`
 	BaseOutputDirectory *GcsDestination `protobuf:"bytes,6,opt,name=base_output_directory,json=baseOutputDirectory,proto3" json:"base_output_directory,omitempty"`
 	// Optional. The name of a Vertex AI [Tensorboard][google.cloud.aiplatform.v1.Tensorboard] resource to which this CustomJob
 	// will upload Tensorboard logs.
@@ -389,6 +388,7 @@ type WorkerPoolSpec struct {
 	// The custom task to be executed in this worker pool.
 	//
 	// Types that are assignable to Task:
+	//
 	//	*WorkerPoolSpec_ContainerSpec
 	//	*WorkerPoolSpec_PythonPackageSpec
 	Task isWorkerPoolSpec_Task `protobuf_oneof:"task"`
