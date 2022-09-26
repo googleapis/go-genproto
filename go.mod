@@ -14,6 +14,7 @@ require (
 	cloud.google.com/go/billing v1.4.0
 	cloud.google.com/go/binaryauthorization v1.1.0
 	cloud.google.com/go/cloudtasks v1.5.0
+	cloud.google.com/go/containeranalysis v0.5.1
 	cloud.google.com/go/datacatalog v1.5.0
 	cloud.google.com/go/dataflow v0.6.0
 	cloud.google.com/go/dataform v0.3.0
