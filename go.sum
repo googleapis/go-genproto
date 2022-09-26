@@ -20,6 +20,8 @@ cloud.google.com/go/binaryauthorization v1.1.0 h1:CQHsCbtttPweeGwjl0iVnGVR4a+vIT
 cloud.google.com/go/binaryauthorization v1.1.0/go.mod h1:xwnoWu3Y84jbuHa0zd526MJYmtnVXn0syOjaJgy4+dM=
 cloud.google.com/go/cloudtasks v1.5.0 h1:iamBJut/kfiaoSBiz5ehzbrLBl0okqHMDJPNHFTle6c=
 cloud.google.com/go/cloudtasks v1.5.0/go.mod h1:fD92REy1x5woxkKEkLdvavGnPJGEn8Uic9nWuLzqCpY=
+cloud.google.com/go/containeranalysis v0.5.1 h1:seZBe4+LZGIRd72O3ZjDlftBdO4m0MjgURzlMGSvqpg=
+cloud.google.com/go/containeranalysis v0.5.1/go.mod h1:1D92jd8gRR/c0fGMlymRgxWD3Qw9C1ff6/T7mLgVL8I=
 cloud.google.com/go/datacatalog v1.5.0 h1:Q9DXHJhkRsPm+EfOj60EGlCK0VMSnd4T/BsVmY2Tmg4=
 cloud.google.com/go/datacatalog v1.5.0/go.mod h1:M7GPLNQeLfWqeIm3iuiruhPzkt65+Bx8dAKvScX8jvs=
 cloud.google.com/go/dataflow v0.6.0 h1:N9KtiJFlW/J1jqlSoQorP4Dgj18z0zHbX9xLKrJzSSU=
