@@ -182,8 +182,8 @@ type DeliveryVehicle struct {
 	// The journey segments assigned to this Delivery Vehicle, starting from the
 	// Vehicle's most recently reported location.
 	RemainingVehicleJourneySegments []*VehicleJourneySegment `protobuf:"bytes,8,rep,name=remaining_vehicle_journey_segments,json=remainingVehicleJourneySegments,proto3" json:"remaining_vehicle_journey_segments,omitempty"`
-	// A list of custom Delivery Vehicle attributes. Each attribute must have a
-	// unique key.
+	// A list of custom Delivery Vehicle attributes. A Delivery Vehicle can have
+	// at most 50 attributes, and each attribute must have a unique key.
 	Attributes []*DeliveryVehicleAttribute `protobuf:"bytes,9,rep,name=attributes,proto3" json:"attributes,omitempty"`
 }
 
