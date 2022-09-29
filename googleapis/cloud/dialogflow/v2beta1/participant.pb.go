@@ -163,12 +163,14 @@ type SuggestionFeature_Type int32
 const (
 	// Unspecified feature type.
 	SuggestionFeature_TYPE_UNSPECIFIED SuggestionFeature_Type = 0
-	// Run article suggestion model.
+	// Run article suggestion model for chat.
 	SuggestionFeature_ARTICLE_SUGGESTION SuggestionFeature_Type = 1
 	// Run FAQ model.
 	SuggestionFeature_FAQ SuggestionFeature_Type = 2
-	// Run smart reply model.
+	// Run smart reply model for chat.
 	SuggestionFeature_SMART_REPLY SuggestionFeature_Type = 3
+	// Run conversation summarization model for chat.
+	SuggestionFeature_CONVERSATION_SUMMARIZATION SuggestionFeature_Type = 8
 )
 
 // Enum value maps for SuggestionFeature_Type.
@@ -178,12 +180,14 @@ var (
 		1: "ARTICLE_SUGGESTION",
 		2: "FAQ",
 		3: "SMART_REPLY",
+		8: "CONVERSATION_SUMMARIZATION",
 	}
 	SuggestionFeature_Type_value = map[string]int32{
-		"TYPE_UNSPECIFIED":   0,
-		"ARTICLE_SUGGESTION": 1,
-		"FAQ":                2,
-		"SMART_REPLY":        3,
+		"TYPE_UNSPECIFIED":           0,
+		"ARTICLE_SUGGESTION":         1,
+		"FAQ":                        2,
+		"SMART_REPLY":                3,
+		"CONVERSATION_SUMMARIZATION": 8,
 	}
 )
 
@@ -231,15 +235,15 @@ type Participant struct {
 	//
 	// You can specify a user id as follows:
 	//
-	// 1. If you set this field in
-	//    [CreateParticipantRequest][google.cloud.dialogflow.v2beta1.CreateParticipantRequest.participant] or
-	//    [UpdateParticipantRequest][google.cloud.dialogflow.v2beta1.UpdateParticipantRequest.participant],
-	//    Dialogflow adds the obfuscated user id with the participant.
+	//  1. If you set this field in
+	//     [CreateParticipantRequest][google.cloud.dialogflow.v2beta1.CreateParticipantRequest.participant] or
+	//     [UpdateParticipantRequest][google.cloud.dialogflow.v2beta1.UpdateParticipantRequest.participant],
+	//     Dialogflow adds the obfuscated user id with the participant.
 	//
-	// 2. If you set this field in
-	//    [AnalyzeContent][google.cloud.dialogflow.v2beta1.AnalyzeContentRequest.obfuscated_external_user_id] or
-	//    [StreamingAnalyzeContent][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.obfuscated_external_user_id],
-	//    Dialogflow will update [Participant.obfuscated_external_user_id][google.cloud.dialogflow.v2beta1.Participant.obfuscated_external_user_id].
+	//  2. If you set this field in
+	//     [AnalyzeContent][google.cloud.dialogflow.v2beta1.AnalyzeContentRequest.obfuscated_external_user_id] or
+	//     [StreamingAnalyzeContent][google.cloud.dialogflow.v2beta1.StreamingAnalyzeContentRequest.obfuscated_external_user_id],
+	//     Dialogflow will update [Participant.obfuscated_external_user_id][google.cloud.dialogflow.v2beta1.Participant.obfuscated_external_user_id].
 	//
 	// Dialogflow uses this user id for following purposes:
 	// 1) Billing and measurement. If user with the same
@@ -250,11 +254,11 @@ type Participant struct {
 	//
 	// Note:
 	//
-	// * Please never pass raw user ids to Dialogflow. Always obfuscate your user
-	//   id first.
-	// * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a
-	//   hash function like SHA-512.
-	// * The length of the user id must be <= 256 characters.
+	//   - Please never pass raw user ids to Dialogflow. Always obfuscate your user
+	//     id first.
+	//   - Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a
+	//     hash function like SHA-512.
+	//   - The length of the user id must be <= 256 characters.
 	ObfuscatedExternalUserId string `protobuf:"bytes,7,opt,name=obfuscated_external_user_id,json=obfuscatedExternalUserId,proto3" json:"obfuscated_external_user_id,omitempty"`
 	// Optional. Key-value filters on the metadata of documents returned by article
 	// suggestion. If specified, article suggestion only returns suggested
@@ -263,14 +267,17 @@ type Participant struct {
 	// filters to match all documents that have 'US' or 'CA' in their market
 	// metadata values and 'agent' in their user metadata values will be
 	// ```
-	// documents_metadata_filters {
-	//   key: "market"
-	//   value: "US,CA"
-	// }
-	// documents_metadata_filters {
-	//   key: "user"
-	//   value: "agent"
-	// }
+	//
+	//	documents_metadata_filters {
+	//	  key: "market"
+	//	  value: "US,CA"
+	//	}
+	//
+	//	documents_metadata_filters {
+	//	  key: "user"
+	//	  value: "agent"
+	//	}
+	//
 	// ```
 	DocumentsMetadataFilters map[string]string `protobuf:"bytes,8,rep,name=documents_metadata_filters,json=documentsMetadataFilters,proto3" json:"documents_metadata_filters,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
@@ -888,6 +895,7 @@ type AutomatedAgentReply struct {
 	// Required.
 	//
 	// Types that are assignable to Response:
+	//
 	//	*AutomatedAgentReply_DetectIntentResponse
 	Response isAutomatedAgentReply_Response `protobuf_oneof:"response"`
 	// Response messages from the automated agent.
@@ -895,6 +903,7 @@ type AutomatedAgentReply struct {
 	// Info on the query match for the automated agent response.
 	//
 	// Types that are assignable to Match:
+	//
 	//	*AutomatedAgentReply_Intent
 	//	*AutomatedAgentReply_Event
 	Match isAutomatedAgentReply_Match `protobuf_oneof:"match"`
@@ -1128,14 +1137,17 @@ type AssistQueryParameters struct {
 	// filters to match all documents that have 'US' or 'CA' in their market
 	// metadata values and 'agent' in their user metadata values will be
 	// ```
-	// documents_metadata_filters {
-	//   key: "market"
-	//   value: "US,CA"
-	// }
-	// documents_metadata_filters {
-	//   key: "user"
-	//   value: "agent"
-	// }
+	//
+	//	documents_metadata_filters {
+	//	  key: "market"
+	//	  value: "US,CA"
+	//	}
+	//
+	//	documents_metadata_filters {
+	//	  key: "user"
+	//	  value: "agent"
+	//	}
+	//
 	// ```
 	DocumentsMetadataFilters map[string]string `protobuf:"bytes,1,rep,name=documents_metadata_filters,json=documentsMetadataFilters,proto3" json:"documents_metadata_filters,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
@@ -1192,6 +1204,7 @@ type AnalyzeContentRequest struct {
 	// Required. The input content.
 	//
 	// Types that are assignable to Input:
+	//
 	//	*AnalyzeContentRequest_TextInput
 	//	*AnalyzeContentRequest_AudioInput
 	//	*AnalyzeContentRequest_EventInput
@@ -1233,12 +1246,12 @@ type AnalyzeContentRequest struct {
 	// participant.
 	//
 	// Given two messages under the same participant:
-	//  - If send time are different regardless of whether the content of the
-	//  messages are exactly the same, the conversation will regard them as
-	//  two distinct messages sent by the participant.
-	//  - If send time is the same regardless of whether the content of the
-	//  messages are exactly the same, the conversation will regard them as
-	//  same message, and ignore the message received later.
+	//   - If send time are different regardless of whether the content of the
+	//     messages are exactly the same, the conversation will regard them as
+	//     two distinct messages sent by the participant.
+	//   - If send time is the same regardless of whether the content of the
+	//     messages are exactly the same, the conversation will regard them as
+	//     same message, and ignore the message received later.
 	//
 	// If the value is not provided, a new request will always be regarded as a
 	// new message without any de-duplication.
@@ -1452,10 +1465,10 @@ type AnalyzeContentResponse struct {
 	// Optional. The audio data bytes encoded as specified in the request.
 	// This field is set if:
 	//
-	//  - `reply_audio_config` was specified in the request, or
-	//  - The automated agent responded with audio to play to the user. In such
-	//    case, `reply_audio.config` contains settings used to synthesize the
-	//    speech.
+	//   - `reply_audio_config` was specified in the request, or
+	//   - The automated agent responded with audio to play to the user. In such
+	//     case, `reply_audio.config` contains settings used to synthesize the
+	//     speech.
 	//
 	// In some scenarios, multiple output audio fields may be present in the
 	// response structure. In these cases, only the top-most-level audio output
@@ -1669,6 +1682,7 @@ type StreamingAnalyzeContentRequest struct {
 	// Required. The input config.
 	//
 	// Types that are assignable to Config:
+	//
 	//	*StreamingAnalyzeContentRequest_AudioConfig
 	//	*StreamingAnalyzeContentRequest_TextConfig
 	Config isStreamingAnalyzeContentRequest_Config `protobuf_oneof:"config"`
@@ -1681,6 +1695,7 @@ type StreamingAnalyzeContentRequest struct {
 	// Required. The input.
 	//
 	// Types that are assignable to Input:
+	//
 	//	*StreamingAnalyzeContentRequest_InputAudio
 	//	*StreamingAnalyzeContentRequest_InputText
 	//	*StreamingAnalyzeContentRequest_InputDtmf
@@ -1934,10 +1949,10 @@ type StreamingAnalyzeContentResponse struct {
 	// Optional. The audio data bytes encoded as specified in the request.
 	// This field is set if:
 	//
-	//  - The `reply_audio_config` field is specified in the request.
-	//  - The automated agent, which this output comes from, responded with audio.
-	//    In such case, the `reply_audio.config` field contains settings used to
-	//    synthesize the speech.
+	//   - The `reply_audio_config` field is specified in the request.
+	//   - The automated agent, which this output comes from, responded with audio.
+	//     In such case, the `reply_audio.config` field contains settings used to
+	//     synthesize the speech.
 	//
 	// In some scenarios, multiple output audio fields may be present in the
 	// response structure. In these cases, only the top-most-level audio output
@@ -2070,10 +2085,12 @@ type AnnotatedMessagePart struct {
 	// this message part. For example for a system entity of type
 	// `@sys.unit-currency`, this may contain:
 	// <pre>
-	// {
-	//   "amount": 5,
-	//   "currency": "USD"
-	// }
+	//
+	//	{
+	//	  "amount": 5,
+	//	  "currency": "USD"
+	//	}
+	//
 	// </pre>
 	FormattedValue *structpb.Value `protobuf:"bytes,3,opt,name=formatted_value,json=formattedValue,proto3" json:"formatted_value,omitempty"`
 }
@@ -2464,6 +2481,7 @@ type SuggestionResult struct {
 	// Different type of suggestion response.
 	//
 	// Types that are assignable to SuggestionResponse:
+	//
 	//	*SuggestionResult_Error
 	//	*SuggestionResult_SuggestArticlesResponse
 	//	*SuggestionResult_SuggestFaqAnswersResponse
@@ -3458,6 +3476,7 @@ type ResponseMessage struct {
 	// Required. The rich response message.
 	//
 	// Types that are assignable to Message:
+	//
 	//	*ResponseMessage_Text_
 	//	*ResponseMessage_Payload
 	//	*ResponseMessage_LiveAgentHandoff_
@@ -3996,6 +4015,7 @@ type ResponseMessage_TelephonyTransferCall struct {
 	// Endpoint to transfer the call to.
 	//
 	// Types that are assignable to Endpoint:
+	//
 	//	*ResponseMessage_TelephonyTransferCall_PhoneNumber
 	//	*ResponseMessage_TelephonyTransferCall_SipUri
 	Endpoint isResponseMessage_TelephonyTransferCall_Endpoint `protobuf_oneof:"endpoint"`
@@ -4084,6 +4104,7 @@ type ResponseMessage_MixedAudio_Segment struct {
 	// Content of the segment.
 	//
 	// Types that are assignable to Content:
+	//
 	//	*ResponseMessage_MixedAudio_Segment_Audio
 	//	*ResponseMessage_MixedAudio_Segment_Uri
 	Content isResponseMessage_MixedAudio_Segment_Content `protobuf_oneof:"content"`
@@ -4408,18 +4429,20 @@ var file_google_cloud_dialogflow_v2beta1_participant_proto_rawDesc = []byte{
 	0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x50,
 	0x41, 0x52, 0x54, 0x49, 0x41, 0x4c, 0x10, 0x01, 0x12, 0x09, 0x0a, 0x05, 0x46, 0x49, 0x4e, 0x41,
 	0x4c, 0x10, 0x02, 0x42, 0x0a, 0x0a, 0x08, 0x72, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42,
-	0x07, 0x0a, 0x05, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x22, 0xb0, 0x01, 0x0a, 0x11, 0x53, 0x75, 0x67,
+	0x07, 0x0a, 0x05, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x22, 0xd0, 0x01, 0x0a, 0x11, 0x53, 0x75, 0x67,
 	0x67, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65, 0x12, 0x4b,
 	0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x37, 0x2e, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2e, 0x64, 0x69, 0x61, 0x6c,
 	0x6f, 0x67, 0x66, 0x6c, 0x6f, 0x77, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x53,
 	0x75, 0x67, 0x67, 0x65, 0x73, 0x74, 0x69, 0x6f, 0x6e, 0x46, 0x65, 0x61, 0x74, 0x75, 0x72, 0x65,
-	0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0x4e, 0x0a, 0x04, 0x54,
+	0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0x6e, 0x0a, 0x04, 0x54,
 	0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x10, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50,
 	0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x16, 0x0a, 0x12, 0x41, 0x52, 0x54,
 	0x49, 0x43, 0x4c, 0x45, 0x5f, 0x53, 0x55, 0x47, 0x47, 0x45, 0x53, 0x54, 0x49, 0x4f, 0x4e, 0x10,
 	0x01, 0x12, 0x07, 0x0a, 0x03, 0x46, 0x41, 0x51, 0x10, 0x02, 0x12, 0x0f, 0x0a, 0x0b, 0x53, 0x4d,
-	0x41, 0x52, 0x54, 0x5f, 0x52, 0x45, 0x50, 0x4c, 0x59, 0x10, 0x03, 0x22, 0xf9, 0x01, 0x0a, 0x15,
+	0x41, 0x52, 0x54, 0x5f, 0x52, 0x45, 0x50, 0x4c, 0x59, 0x10, 0x03, 0x12, 0x1e, 0x0a, 0x1a, 0x43,
+	0x4f, 0x4e, 0x56, 0x45, 0x52, 0x53, 0x41, 0x54, 0x49, 0x4f, 0x4e, 0x5f, 0x53, 0x55, 0x4d, 0x4d,
+	0x41, 0x52, 0x49, 0x5a, 0x41, 0x54, 0x49, 0x4f, 0x4e, 0x10, 0x08, 0x22, 0xf9, 0x01, 0x0a, 0x15,
 	0x41, 0x73, 0x73, 0x69, 0x73, 0x74, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d,
 	0x65, 0x74, 0x65, 0x72, 0x73, 0x12, 0x92, 0x01, 0x0a, 0x1a, 0x64, 0x6f, 0x63, 0x75, 0x6d, 0x65,
 	0x6e, 0x74, 0x73, 0x5f, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x66, 0x69, 0x6c,
