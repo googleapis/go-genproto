@@ -140,6 +140,10 @@ const (
 	ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_BIGQUERY                      = src.ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_BIGQUERY
 	ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_JSONL                         = src.ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_JSONL
 	ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PREDICTION_FORMAT_UNSPECIFIED = src.ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PREDICTION_FORMAT_UNSPECIFIED
+	ModelSourceInfo_AUTOML                                                                             = src.ModelSourceInfo_AUTOML
+	ModelSourceInfo_BQML                                                                               = src.ModelSourceInfo_BQML
+	ModelSourceInfo_CUSTOM                                                                             = src.ModelSourceInfo_CUSTOM
+	ModelSourceInfo_MODEL_SOURCE_TYPE_UNSPECIFIED                                                      = src.ModelSourceInfo_MODEL_SOURCE_TYPE_UNSPECIFIED
 	Model_AUTOMATIC_RESOURCES                                                                          = src.Model_AUTOMATIC_RESOURCES
 	Model_DEDICATED_RESOURCES                                                                          = src.Model_DEDICATED_RESOURCES
 	Model_DEPLOYMENT_RESOURCES_TYPE_UNSPECIFIED                                                        = src.Model_DEPLOYMENT_RESOURCES_TYPE_UNSPECIFIED
@@ -341,6 +345,8 @@ var (
 	ModelDeploymentMonitoringObjectiveType_value                                                = src.ModelDeploymentMonitoringObjectiveType_value
 	ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PredictionFormat_name  = src.ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PredictionFormat_name
 	ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PredictionFormat_value = src.ModelMonitoringObjectiveConfig_ExplanationConfig_ExplanationBaseline_PredictionFormat_value
+	ModelSourceInfo_ModelSourceType_name                                                        = src.ModelSourceInfo_ModelSourceType_name
+	ModelSourceInfo_ModelSourceType_value                                                       = src.ModelSourceInfo_ModelSourceType_value
 	Model_DeploymentResourcesType_name                                                          = src.Model_DeploymentResourcesType_name
 	Model_DeploymentResourcesType_value                                                         = src.Model_DeploymentResourcesType_value
 	Model_ExportFormat_ExportableContent_name                                                   = src.Model_ExportFormat_ExportableContent_name
@@ -993,7 +999,7 @@ type CsvSource = src.CsvSource
 // Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
 type CustomJob = src.CustomJob
 
-// Represents the spec of a CustomJob. Next Id: 15
+// Represents the spec of a CustomJob.
 //
 // Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
 type CustomJobSpec = src.CustomJobSpec
@@ -1115,6 +1121,13 @@ type DeleteFeatureValuesRequest = src.DeleteFeatureValuesRequest
 // Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
 type DeleteFeatureValuesRequest_SelectEntity = src.DeleteFeatureValuesRequest_SelectEntity
 type DeleteFeatureValuesRequest_SelectEntity_ = src.DeleteFeatureValuesRequest_SelectEntity_
+
+// Message to select time range and feature. Values of the selected feature
+// generated within an inclusive time range will be deleted.
+//
+// Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
+type DeleteFeatureValuesRequest_SelectTimeRangeAndFeature = src.DeleteFeatureValuesRequest_SelectTimeRangeAndFeature
+type DeleteFeatureValuesRequest_SelectTimeRangeAndFeature_ = src.DeleteFeatureValuesRequest_SelectTimeRangeAndFeature_
 
 // Response message for
 // [FeaturestoreService.DeleteFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreService.DeleteFeatureValues].
@@ -2980,6 +2993,16 @@ type ModelServiceClient = src.ModelServiceClient
 // Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
 type ModelServiceServer = src.ModelServiceServer
 
+// Detail description of the source information of the model.
+//
+// Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
+type ModelSourceInfo = src.ModelSourceInfo
+
+// Source of the model.
+//
+// Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
+type ModelSourceInfo_ModelSourceType = src.ModelSourceInfo_ModelSourceType
+
 // Identifies a type of Model's prediction resources.
 //
 // Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
@@ -3062,6 +3085,12 @@ type PipelineJobDetail = src.PipelineJobDetail
 //
 // Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
 type PipelineJob_RuntimeConfig = src.PipelineJob_RuntimeConfig
+
+// The type of an input artifact.
+//
+// Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
+type PipelineJob_RuntimeConfig_InputArtifact = src.PipelineJob_RuntimeConfig_InputArtifact
+type PipelineJob_RuntimeConfig_InputArtifact_ArtifactId = src.PipelineJob_RuntimeConfig_InputArtifact_ArtifactId
 
 // PipelineServiceClient is the client API for PipelineService service. For
 // semantics around ctx use and closing/ending streaming RPCs, please refer to
@@ -3351,6 +3380,17 @@ type ReadTensorboardTimeSeriesDataRequest = src.ReadTensorboardTimeSeriesDataReq
 //
 // Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
 type ReadTensorboardTimeSeriesDataResponse = src.ReadTensorboardTimeSeriesDataResponse
+
+// Request message for [MetadataService.DeleteContextChildrenRequest][].
+//
+// Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
+type RemoveContextChildrenRequest = src.RemoveContextChildrenRequest
+
+// Response message for
+// [MetadataService.RemoveContextChildren][google.cloud.aiplatform.v1beta1.MetadataService.RemoveContextChildren].
+//
+// Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
+type RemoveContextChildrenResponse = src.RemoveContextChildrenResponse
 
 // Request message for
 // [IndexService.RemoveDatapoints][google.cloud.aiplatform.v1beta1.IndexService.RemoveDatapoints]
@@ -3676,6 +3716,13 @@ type StudySpec_ParameterSpec_IntegerValueSpec_ = src.StudySpec_ParameterSpec_Int
 //
 // Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
 type StudySpec_ParameterSpec_ScaleType = src.StudySpec_ParameterSpec_ScaleType
+
+// This contains flag for manually disabling transfer learning for a study.
+// The names of prior studies being used for transfer learning (if any) are
+// also listed here.
+//
+// Deprecated: Please use types in: cloud.google.com/go/aiplatform/apiv1beta1/aiplatformpb
+type StudySpec_TransferLearningConfig = src.StudySpec_TransferLearningConfig
 
 // Describes the Study state.
 //
