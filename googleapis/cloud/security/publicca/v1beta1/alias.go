@@ -17,7 +17,9 @@
 // Package publicca aliases all exported identifiers in package
 // "cloud.google.com/go/security/publicca/apiv1beta1/publiccapb".
 //
-// Deprecated: Please use types in: cloud.google.com/go/security/publicca/apiv1beta1/publiccapb
+// Deprecated: Please use types in: cloud.google.com/go/security/publicca/apiv1beta1/publiccapb.
+// Please read https://github.com/googleapis/google-cloud-go/blob/main/migration.md
+// for more details.
 package publicca
 
 import (

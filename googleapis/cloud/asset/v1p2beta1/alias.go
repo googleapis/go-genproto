@@ -17,7 +17,9 @@
 // Package asset aliases all exported identifiers in package
 // "cloud.google.com/go/asset/apiv1p2beta1/assetpb".
 //
-// Deprecated: Please use types in: cloud.google.com/go/asset/apiv1p2beta1/assetpb
+// Deprecated: Please use types in: cloud.google.com/go/asset/apiv1p2beta1/assetpb.
+// Please read https://github.com/googleapis/google-cloud-go/blob/main/migration.md
+// for more details.
 package asset
 
 import (
