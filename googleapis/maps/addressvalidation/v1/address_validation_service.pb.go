@@ -204,10 +204,10 @@ type ValidateAddressRequest struct {
 	// Supported regions can be found in the
 	// [FAQ](https://developers.google.com/maps/documentation/address-validation/faq#which_regions_are_currently_supported).
 	//
-	// The [language_code][google.type.PostalAddress.language_code] value for the
-	// given address is not yet used. The validated address result will be
-	// populated based on the preferred language for the given address, as
-	// identified by the system.
+	// The [language_code][google.type.PostalAddress.language_code] value in the
+	// input address is reserved for future uses and is ignored today. The
+	// validated address result will be populated based on the preferred language
+	// for the given address, as identified by the system.
 	//
 	// The Address Validation API ignores the values in
 	// [recipients][google.type.PostalAddress.recipients] and
@@ -234,9 +234,6 @@ type ValidateAddressRequest struct {
 	// at least two [google.type.PostalAddress.address_lines] where the first line
 	// contains the street number and name and the second line contains the city,
 	// state, and zip code.
-	//
-	// Warning: though this option will enable the USPS CASS compatible mode, the
-	// Address Validation API is not yet officially CASS certified.
 	EnableUspsCass bool `protobuf:"varint,3,opt,name=enable_usps_cass,json=enableUspsCass,proto3" json:"enable_usps_cass,omitempty"`
 }
 
@@ -470,8 +467,8 @@ type ValidationResult struct {
 	Geocode *Geocode `protobuf:"bytes,3,opt,name=geocode,proto3" json:"geocode,omitempty"`
 	// Other information relevant to deliverability.
 	Metadata *AddressMetadata `protobuf:"bytes,4,opt,name=metadata,proto3" json:"metadata,omitempty"`
-	// Extra deliverability flags provided by USPS. Only provided for US
-	// addresses.
+	// Extra deliverability flags provided by USPS. Only provided in region `US`
+	// and `PR`.
 	UspsData *UspsData `protobuf:"bytes,5,opt,name=usps_data,json=uspsData,proto3" json:"usps_data,omitempty"`
 }
 

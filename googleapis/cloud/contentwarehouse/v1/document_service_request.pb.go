@@ -198,8 +198,6 @@ func (x *CreateDocumentRequest) GetCreateMask() *fieldmaskpb.FieldMask {
 }
 
 // Request message for DocumentService.GetDocument.
-//
-// Next ID: 4
 type GetDocumentRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -414,6 +412,7 @@ func (x *DeleteDocumentRequest) GetRequestMetadata() *RequestMetadata {
 	return nil
 }
 
+// Request message for DocumentService.SearchDocuments.
 type SearchDocumentsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

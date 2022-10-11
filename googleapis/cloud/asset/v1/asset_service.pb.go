@@ -382,8 +382,7 @@ type ExportAssetsRequest struct {
 	// Asset content type. If not specified, no content but the asset name will be
 	// returned.
 	ContentType ContentType `protobuf:"varint,4,opt,name=content_type,json=contentType,proto3,enum=google.cloud.asset.v1.ContentType" json:"content_type,omitempty"`
-	// Required. Output configuration indicating where the results will be output
-	// to.
+	// Required. Output configuration indicating where the results will be output to.
 	OutputConfig *OutputConfig `protobuf:"bytes,5,opt,name=output_config,json=outputConfig,proto3" json:"output_config,omitempty"`
 	// A list of relationship types to export, for example:
 	// `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if
@@ -478,10 +477,8 @@ func (x *ExportAssetsRequest) GetRelationshipTypes() []string {
 }
 
 // The export asset response. This message is returned by the
-// [google.longrunning.Operations.GetOperation][google.longrunning.Operations.GetOperation]
-// method in the returned
-// [google.longrunning.Operation.response][google.longrunning.Operation.response]
-// field.
+// [google.longrunning.Operations.GetOperation][google.longrunning.Operations.GetOperation] method in the returned
+// [google.longrunning.Operation.response][google.longrunning.Operation.response] field.
 type ExportAssetsResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -558,11 +555,11 @@ type ListAssetsRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. Name of the organization, folder, or project the assets belong
-	// to. Format: "organizations/[organization-number]" (such as
-	// "organizations/123"), "projects/[project-id]" (such as
-	// "projects/my-project-id"), "projects/[project-number]" (such as
-	// "projects/12345"), or "folders/[folder-number]" (such as "folders/12345").
+	// Required. Name of the organization, folder, or project the assets belong to. Format:
+	// "organizations/[organization-number]" (such as "organizations/123"),
+	// "projects/[project-id]" (such as "projects/my-project-id"),
+	// "projects/[project-number]" (such as "projects/12345"), or
+	// "folders/[folder-number]" (such as "folders/12345").
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Timestamp to take an asset snapshot. This can only be set to a timestamp
 	// between the current time and the current time minus 35 days (inclusive).
@@ -945,8 +942,9 @@ type CreateFeedRequest struct {
 	// Required. This is the client-assigned asset feed identifier and it needs to
 	// be unique under a specific parent project/folder/organization.
 	FeedId string `protobuf:"bytes,2,opt,name=feed_id,json=feedId,proto3" json:"feed_id,omitempty"`
-	// Required. The feed details. The field `name` must be empty and it will be
-	// generated in the format of: projects/project_number/feeds/feed_id
+	// Required. The feed details. The field `name` must be empty and it will be generated
+	// in the format of:
+	// projects/project_number/feeds/feed_id
 	// folders/folder_number/feeds/feed_id
 	// organizations/organization_number/feeds/feed_id
 	Feed *Feed `protobuf:"bytes,3,opt,name=feed,proto3" json:"feed,omitempty"`
@@ -1162,8 +1160,8 @@ type UpdateFeedRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The new values of feed details. It must match an existing feed
-	// and the field `name` must be in the format of:
+	// Required. The new values of feed details. It must match an existing feed and the
+	// field `name` must be in the format of:
 	// projects/project_number/feeds/feed_id or
 	// folders/folder_number/feeds/feed_id or
 	// organizations/organization_number/feeds/feed_id.
@@ -2049,9 +2047,8 @@ type SearchAllResourcesRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. A scope can be a project, a folder, or an organization. The
-	// search is limited to the resources within the `scope`. The caller must be
-	// granted the
+	// Required. A scope can be a project, a folder, or an organization. The search is
+	// limited to the resources within the `scope`. The caller must be granted the
 	// [`cloudasset.assets.searchAllResources`](https://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
 	// permission on the desired scope.
 	//
@@ -2083,7 +2080,11 @@ type SearchAllResourcesRequest struct {
 	//     and its value is "prod".
 	//   - `labels.env:*` to find Cloud resources that have a label "env".
 	//   - `kmsKey:key` to find Cloud resources encrypted with a customer-managed
-	//     encryption key whose name contains the word "key".
+	//     encryption key whose name contains "key" as a word. This field is
+	//     deprecated. Please use the `kmsKeys` field to retrieve KMS key
+	//     information.
+	//   - `kmsKeys:key` to find Cloud resources encrypted with customer-managed
+	//     encryption keys whose name contains the word "key".
 	//   - `relationships:instance-group-1` to find Cloud resources that have
 	//     relationships with "instance-group-1" in the related resource name.
 	//   - `relationships:INSTANCE_TO_INSTANCEGROUP` to find compute instances that
@@ -2111,8 +2112,8 @@ type SearchAllResourcesRequest struct {
 	//     fields and are also located in the "us-west1" region or the "global"
 	//     location.
 	Query string `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
-	// Optional. A list of asset types that this request searches for. If empty,
-	// it will search all the [searchable asset
+	// Optional. A list of asset types that this request searches for. If empty, it will
+	// search all the [searchable asset
 	// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
 	//
 	// Regular expressions are also supported. For example:
@@ -2126,20 +2127,19 @@ type SearchAllResourcesRequest struct {
 	// regular expression syntax. If the regular expression does not match any
 	// supported asset type, an INVALID_ARGUMENT error will be returned.
 	AssetTypes []string `protobuf:"bytes,3,rep,name=asset_types,json=assetTypes,proto3" json:"asset_types,omitempty"`
-	// Optional. The page size for search result pagination. Page size is capped
-	// at 500 even if a larger value is given. If set to zero, server will pick an
-	// appropriate default. Returned results may be fewer than requested. When
-	// this happens, there could be more results as long as `next_page_token` is
-	// returned.
+	// Optional. The page size for search result pagination. Page size is capped at 500 even
+	// if a larger value is given. If set to zero, server will pick an appropriate
+	// default. Returned results may be fewer than requested. When this happens,
+	// there could be more results as long as `next_page_token` is returned.
 	PageSize int32 `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// Optional. If present, then retrieve the next batch of results from the
-	// preceding call to this method. `page_token` must be the value of
-	// `next_page_token` from the previous response. The values of all other
-	// method parameters, must be identical to those in the previous call.
+	// Optional. If present, then retrieve the next batch of results from the preceding call
+	// to this method. `page_token` must be the value of `next_page_token` from
+	// the previous response. The values of all other method parameters, must be
+	// identical to those in the previous call.
 	PageToken string `protobuf:"bytes,5,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// Optional. A comma-separated list of fields specifying the sorting order of
-	// the results. The default order is ascending. Add " DESC" after the field
-	// name to indicate descending order. Redundant space characters are ignored.
+	// Optional. A comma-separated list of fields specifying the sorting order of the
+	// results. The default order is ascending. Add " DESC" after the field name
+	// to indicate descending order. Redundant space characters are ignored.
 	// Example: "location DESC, name".
 	// Only singular primitive fields in the response are sortable:
 	//
@@ -2149,21 +2149,20 @@ type SearchAllResourcesRequest struct {
 	//   - displayName
 	//   - description
 	//   - location
-	//   - kmsKey
 	//   - createTime
 	//   - updateTime
 	//   - state
 	//   - parentFullResourceName
 	//   - parentAssetType
 	//
-	// All the other fields such as repeated fields (e.g., `networkTags`), map
-	// fields (e.g., `labels`) and struct fields (e.g., `additionalAttributes`)
-	// are not supported.
+	// All the other fields such as repeated fields (e.g., `networkTags`,
+	// `kmsKeys`), map fields (e.g., `labels`) and struct fields (e.g.,
+	// `additionalAttributes`) are not supported.
 	OrderBy string `protobuf:"bytes,6,opt,name=order_by,json=orderBy,proto3" json:"order_by,omitempty"`
-	// Optional. A comma-separated list of fields specifying which fields to be
-	// returned in ResourceSearchResult. Only '*' or combination of top level
-	// fields can be specified. Field names of both snake_case and camelCase are
-	// supported. Examples: `"*"`, `"name,location"`, `"name,versionedResources"`.
+	// Optional. A comma-separated list of fields specifying which fields to be returned in
+	// ResourceSearchResult. Only '*' or combination of top level fields can be
+	// specified. Field names of both snake_case and camelCase are supported.
+	// Examples: `"*"`, `"name,location"`, `"name,versionedResources"`.
 	//
 	// The read_mask paths must be valid field paths listed but not limited to
 	// (both snake_case and camelCase are supported):
@@ -2179,7 +2178,9 @@ type SearchAllResourcesRequest struct {
 	//   - tagValueIds
 	//   - labels
 	//   - networkTags
-	//   - kmsKey
+	//   - kmsKey (This field is deprecated. Please use the `kmsKeys` field to
+	//     retrieve KMS key information.)
+	//   - kmsKeys
 	//   - createTime
 	//   - updateTime
 	//   - state
@@ -2342,9 +2343,9 @@ type SearchAllIamPoliciesRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. A scope can be a project, a folder, or an organization. The
-	// search is limited to the IAM policies within the `scope`. The caller must
-	// be granted the
+	// Required. A scope can be a project, a folder, or an organization. The search is
+	// limited to the IAM policies within the `scope`. The caller must be granted
+	// the
 	// [`cloudasset.assets.searchAllIamPolicies`](https://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
 	// permission on the desired scope.
 	//
@@ -2398,20 +2399,18 @@ type SearchAllIamPoliciesRequest struct {
 	//   - `memberTypes:user` to find IAM policy bindings that contain the
 	//     principal type "user".
 	Query string `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
-	// Optional. The page size for search result pagination. Page size is capped
-	// at 500 even if a larger value is given. If set to zero, server will pick an
-	// appropriate default. Returned results may be fewer than requested. When
-	// this happens, there could be more results as long as `next_page_token` is
-	// returned.
+	// Optional. The page size for search result pagination. Page size is capped at 500 even
+	// if a larger value is given. If set to zero, server will pick an appropriate
+	// default. Returned results may be fewer than requested. When this happens,
+	// there could be more results as long as `next_page_token` is returned.
 	PageSize int32 `protobuf:"varint,3,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// Optional. If present, retrieve the next batch of results from the preceding
-	// call to this method. `page_token` must be the value of `next_page_token`
-	// from the previous response. The values of all other method parameters must
-	// be identical to those in the previous call.
+	// Optional. If present, retrieve the next batch of results from the preceding call to
+	// this method. `page_token` must be the value of `next_page_token` from the
+	// previous response. The values of all other method parameters must be
+	// identical to those in the previous call.
 	PageToken string `protobuf:"bytes,4,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// Optional. A list of asset types that the IAM policies are attached to. If
-	// empty, it will search the IAM policies that are attached to all the
-	// [searchable asset
+	// Optional. A list of asset types that the IAM policies are attached to. If empty, it
+	// will search the IAM policies that are attached to all the [searchable asset
 	// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
 	//
 	// Regular expressions are also supported. For example:
@@ -2427,9 +2426,9 @@ type SearchAllIamPoliciesRequest struct {
 	// regular expression syntax. If the regular expression does not match any
 	// supported asset type, an INVALID_ARGUMENT error will be returned.
 	AssetTypes []string `protobuf:"bytes,5,rep,name=asset_types,json=assetTypes,proto3" json:"asset_types,omitempty"`
-	// Optional. A comma-separated list of fields specifying the sorting order of
-	// the results. The default order is ascending. Add " DESC" after the field
-	// name to indicate descending order. Redundant space characters are ignored.
+	// Optional. A comma-separated list of fields specifying the sorting order of the
+	// results. The default order is ascending. Add " DESC" after the field name
+	// to indicate descending order. Redundant space characters are ignored.
 	// Example: "assetType DESC, resource".
 	// Only singular primitive fields in the response are sortable:
 	//   - resource
@@ -2582,8 +2581,8 @@ type IamPolicyAnalysisQuery struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The relative name of the root asset. Only resources and IAM
-	// policies within the scope will be analyzed.
+	// Required. The relative name of the root asset. Only resources and IAM policies within
+	// the scope will be analyzed.
 	//
 	// This can only be an organization number (such as "organizations/123"), a
 	// folder number (such as "folders/123"), a project ID (such as
@@ -2681,8 +2680,7 @@ func (x *IamPolicyAnalysisQuery) GetConditionContext() *IamPolicyAnalysisQuery_C
 	return nil
 }
 
-// A request message for
-// [AssetService.AnalyzeIamPolicy][google.cloud.asset.v1.AssetService.AnalyzeIamPolicy].
+// A request message for [AssetService.AnalyzeIamPolicy][google.cloud.asset.v1.AssetService.AnalyzeIamPolicy].
 type AnalyzeIamPolicyRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2707,8 +2705,7 @@ type AnalyzeIamPolicyRequest struct {
 	// 0 or empty string, etc., because we use proto3, which doesn't support field
 	// presence yet.
 	SavedAnalysisQuery string `protobuf:"bytes,3,opt,name=saved_analysis_query,json=savedAnalysisQuery,proto3" json:"saved_analysis_query,omitempty"`
-	// Optional. Amount of time executable has to complete.  See JSON
-	// representation of
+	// Optional. Amount of time executable has to complete.  See JSON representation of
 	// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json).
 	//
 	// If this field is set with a value less than the RPC deadline, and the
@@ -2774,8 +2771,7 @@ func (x *AnalyzeIamPolicyRequest) GetExecutionTimeout() *durationpb.Duration {
 	return nil
 }
 
-// A response message for
-// [AssetService.AnalyzeIamPolicy][google.cloud.asset.v1.AssetService.AnalyzeIamPolicy].
+// A response message for [AssetService.AnalyzeIamPolicy][google.cloud.asset.v1.AssetService.AnalyzeIamPolicy].
 type AnalyzeIamPolicyResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2787,11 +2783,9 @@ type AnalyzeIamPolicyResponse struct {
 	// [AnalyzeIamPolicyRequest.analyze_service_account_impersonation][] is
 	// enabled.
 	ServiceAccountImpersonationAnalysis []*AnalyzeIamPolicyResponse_IamPolicyAnalysis `protobuf:"bytes,2,rep,name=service_account_impersonation_analysis,json=serviceAccountImpersonationAnalysis,proto3" json:"service_account_impersonation_analysis,omitempty"`
-	// Represents whether all entries in the
-	// [main_analysis][google.cloud.asset.v1.AnalyzeIamPolicyResponse.main_analysis]
-	// and
-	// [service_account_impersonation_analysis][google.cloud.asset.v1.AnalyzeIamPolicyResponse.service_account_impersonation_analysis]
-	// have been fully explored to answer the query in the request.
+	// Represents whether all entries in the [main_analysis][google.cloud.asset.v1.AnalyzeIamPolicyResponse.main_analysis] and
+	// [service_account_impersonation_analysis][google.cloud.asset.v1.AnalyzeIamPolicyResponse.service_account_impersonation_analysis] have been fully explored to
+	// answer the query in the request.
 	FullyExplored bool `protobuf:"varint,3,opt,name=fully_explored,json=fullyExplored,proto3" json:"fully_explored,omitempty"`
 }
 
@@ -2935,8 +2929,7 @@ func (*IamPolicyAnalysisOutputConfig_GcsDestination_) isIamPolicyAnalysisOutputC
 func (*IamPolicyAnalysisOutputConfig_BigqueryDestination) isIamPolicyAnalysisOutputConfig_Destination() {
 }
 
-// A request message for
-// [AssetService.AnalyzeIamPolicyLongrunning][google.cloud.asset.v1.AssetService.AnalyzeIamPolicyLongrunning].
+// A request message for [AssetService.AnalyzeIamPolicyLongrunning][google.cloud.asset.v1.AssetService.AnalyzeIamPolicyLongrunning].
 type AnalyzeIamPolicyLongrunningRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2961,8 +2954,7 @@ type AnalyzeIamPolicyLongrunningRequest struct {
 	// 0 or empty string, etc., because we use proto3, which doesn't support field
 	// presence yet.
 	SavedAnalysisQuery string `protobuf:"bytes,3,opt,name=saved_analysis_query,json=savedAnalysisQuery,proto3" json:"saved_analysis_query,omitempty"`
-	// Required. Output configuration indicating where the results will be output
-	// to.
+	// Required. Output configuration indicating where the results will be output to.
 	OutputConfig *IamPolicyAnalysisOutputConfig `protobuf:"bytes,2,opt,name=output_config,json=outputConfig,proto3" json:"output_config,omitempty"`
 }
 
@@ -3019,8 +3011,7 @@ func (x *AnalyzeIamPolicyLongrunningRequest) GetOutputConfig() *IamPolicyAnalysi
 	return nil
 }
 
-// A response message for
-// [AssetService.AnalyzeIamPolicyLongrunning][google.cloud.asset.v1.AssetService.AnalyzeIamPolicyLongrunning].
+// A response message for [AssetService.AnalyzeIamPolicyLongrunning][google.cloud.asset.v1.AssetService.AnalyzeIamPolicyLongrunning].
 type AnalyzeIamPolicyLongrunningResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -3080,8 +3071,7 @@ type SavedQuery struct {
 	Creator string `protobuf:"bytes,4,opt,name=creator,proto3" json:"creator,omitempty"`
 	// Output only. The last update time of this saved query.
 	LastUpdateTime *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=last_update_time,json=lastUpdateTime,proto3" json:"last_update_time,omitempty"`
-	// Output only. The account's email address who has updated this saved query
-	// most recently.
+	// Output only. The account's email address who has updated this saved query most recently.
 	LastUpdater string `protobuf:"bytes,6,opt,name=last_updater,json=lastUpdater,proto3" json:"last_updater,omitempty"`
 	// Labels applied on the resource.
 	// This value should not contain more than 10 entries. The key and value of
@@ -3185,18 +3175,18 @@ type CreateSavedQueryRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the project/folder/organization where this
-	// saved_query should be created in. It can only be an organization number
-	// (such as "organizations/123"), a folder number (such as "folders/123"), a
-	// project ID (such as "projects/my-project-id")", or a project number (such
-	// as "projects/12345").
+	// Required. The name of the project/folder/organization where this saved_query
+	// should be created in. It can only be an organization number (such as
+	// "organizations/123"), a folder number (such as "folders/123"), a project ID
+	// (such as "projects/my-project-id")", or a project number (such as
+	// "projects/12345").
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
-	// Required. The saved_query details. The `name` field must be empty as it
-	// will be generated based on the parent and saved_query_id.
+	// Required. The saved_query details. The `name` field must be empty as it will be
+	// generated based on the parent and saved_query_id.
 	SavedQuery *SavedQuery `protobuf:"bytes,2,opt,name=saved_query,json=savedQuery,proto3" json:"saved_query,omitempty"`
-	// Required. The ID to use for the saved query, which must be unique in the
-	// specified parent. It will become the final component of the saved query's
-	// resource name.
+	// Required. The ID to use for the saved query, which must be unique in the specified
+	// parent. It will become the final component of the saved query's resource
+	// name.
 	//
 	// This value should be 4-63 characters, and valid characters
 	// are /[a-z][0-9]-/.
@@ -3318,8 +3308,8 @@ type ListSavedQueriesRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The parent project/folder/organization whose savedQueries are to
-	// be listed. It can only be using project/folder/organization number (such as
+	// Required. The parent project/folder/organization whose savedQueries are to be
+	// listed. It can only be using project/folder/organization number (such as
 	// "folders/12345")", or a project ID (such as "projects/my-project-id").
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Optional. The expression to filter resources.
@@ -3330,9 +3320,8 @@ type ListSavedQueriesRequest struct {
 	//
 	// See https://google.aip.dev/160 for more information on the grammar.
 	Filter string `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty"`
-	// Optional. The maximum number of saved queries to return per page. The
-	// service may return fewer than this value. If unspecified, at most 50 will
-	// be returned.
+	// Optional. The maximum number of saved queries to return per page. The service may
+	// return fewer than this value. If unspecified, at most 50 will be returned.
 	//
 	//	The maximum value is 1000; values above 1000 will be coerced to 1000.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -3534,8 +3523,7 @@ type DeleteSavedQueryRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The name of the saved query to delete. It must be in the format
-	// of:
+	// Required. The name of the saved query to delete. It must be in the format of:
 	//
 	// * projects/project_number/savedQueries/saved_query_id
 	// * folders/folder_number/savedQueries/saved_query_id
@@ -3978,8 +3966,8 @@ type QueryAssetsRequest struct {
 	//	*QueryAssetsRequest_Statement
 	//	*QueryAssetsRequest_JobReference
 	Query isQueryAssetsRequest_Query `protobuf_oneof:"query"`
-	// Optional. The maximum number of rows to return in the results. Responses
-	// are limited to 10 MB and 1000 rows.
+	// Optional. The maximum number of rows to return in the results. Responses are limited
+	// to 10 MB and 1000 rows.
 	//
 	// By default, the maximum row count is 1000. When the byte or row count limit
 	// is reached, the rest of the query results will be paginated.
@@ -3990,11 +3978,10 @@ type QueryAssetsRequest struct {
 	//
 	// The field will be ignored when [output_config] is specified.
 	PageToken string `protobuf:"bytes,5,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// Optional. Specifies the maximum amount of time that the client is willing
-	// to wait for the query to complete. By default, this limit is 5 min for the
-	// first query, and 1 minute for the following queries. If the query is
-	// complete, the `done` field in the `QueryAssetsResponse` is true, otherwise
-	// false.
+	// Optional. Specifies the maximum amount of time that the client is willing to wait
+	// for the query to complete. By default, this limit is 5 min for the first
+	// query, and 1 minute for the following queries. If the query is complete,
+	// the `done` field in the `QueryAssetsResponse` is true, otherwise false.
 	//
 	// Like BigQuery [jobs.query
 	// API](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query#queryrequest)
@@ -4149,8 +4136,8 @@ type QueryAssetsRequest_Statement struct {
 }
 
 type QueryAssetsRequest_JobReference struct {
-	// Optional. Reference to the query job, which is from the
-	// `QueryAssetsResponse` of previous `QueryAssets` call.
+	// Optional. Reference to the query job, which is from the `QueryAssetsResponse` of
+	// previous `QueryAssets` call.
 	JobReference string `protobuf:"bytes,3,opt,name=job_reference,json=jobReference,proto3,oneof"`
 }
 
@@ -4163,15 +4150,14 @@ type isQueryAssetsRequest_Time interface {
 }
 
 type QueryAssetsRequest_ReadTimeWindow struct {
-	// Optional. [start_time] is required. [start_time] must be less than
-	// [end_time] Defaults [end_time] to now if [start_time] is set and
-	// [end_time] isn't. Maximum permitted time range is 7 days.
+	// Optional. [start_time] is required. [start_time] must be less than [end_time]
+	// Defaults [end_time] to now if [start_time] is set and [end_time] isn't.
+	// Maximum permitted time range is 7 days.
 	ReadTimeWindow *TimeWindow `protobuf:"bytes,7,opt,name=read_time_window,json=readTimeWindow,proto3,oneof"`
 }
 
 type QueryAssetsRequest_ReadTime struct {
-	// Optional. Queries cloud assets as they appeared at the specified point in
-	// time.
+	// Optional. Queries cloud assets as they appeared at the specified point in time.
 	ReadTime *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=read_time,json=readTime,proto3,oneof"`
 }
 
@@ -4525,8 +4511,7 @@ func (x *TableFieldSchema) GetFields() []*TableFieldSchema {
 	return nil
 }
 
-// A request message for
-// [AssetService.BatchGetEffectiveIamPolicies][google.cloud.asset.v1.AssetService.BatchGetEffectiveIamPolicies].
+// A request message for [AssetService.BatchGetEffectiveIamPolicies][google.cloud.asset.v1.AssetService.BatchGetEffectiveIamPolicies].
 type BatchGetEffectiveIamPoliciesRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4598,8 +4583,7 @@ func (x *BatchGetEffectiveIamPoliciesRequest) GetNames() []string {
 	return nil
 }
 
-// A response message for
-// [AssetService.BatchGetEffectiveIamPolicies][google.cloud.asset.v1.AssetService.BatchGetEffectiveIamPolicies].
+// A response message for [AssetService.BatchGetEffectiveIamPolicies][google.cloud.asset.v1.AssetService.BatchGetEffectiveIamPolicies].
 type BatchGetEffectiveIamPoliciesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -4607,10 +4591,9 @@ type BatchGetEffectiveIamPoliciesResponse struct {
 
 	// The effective policies for a batch of resources. Note that the results
 	// order is the same as the order of
-	// [BatchGetEffectiveIamPoliciesRequest.names][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesRequest.names].
-	// When a resource does not have any effective IAM policies, its corresponding
-	// policy_result will contain empty
-	// [EffectiveIamPolicy.policies][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.policies].
+	// [BatchGetEffectiveIamPoliciesRequest.names][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesRequest.names]. When a resource does not
+	// have any effective IAM policies, its corresponding policy_result will
+	// contain empty [EffectiveIamPolicy.policies][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.policies].
 	PolicyResults []*BatchGetEffectiveIamPoliciesResponse_EffectiveIamPolicy `protobuf:"bytes,2,rep,name=policy_results,json=policyResults,proto3" json:"policy_results,omitempty"`
 }
 
@@ -4840,10 +4823,9 @@ type IamPolicyAnalysisQuery_Options struct {
 	// Optional. If true, the identities section of the result will expand any
 	// Google groups appearing in an IAM policy binding.
 	//
-	// If
-	// [IamPolicyAnalysisQuery.identity_selector][google.cloud.asset.v1.IamPolicyAnalysisQuery.identity_selector]
-	// is specified, the identity in the result will be determined by the
-	// selector, and this flag is not allowed to set.
+	// If [IamPolicyAnalysisQuery.identity_selector][google.cloud.asset.v1.IamPolicyAnalysisQuery.identity_selector] is specified, the
+	// identity in the result will be determined by the selector, and this flag
+	// is not allowed to set.
 	//
 	// If true, the default max expansion per group is 1000 for
 	// AssetService.AnalyzeIamPolicy][].
@@ -4853,30 +4835,27 @@ type IamPolicyAnalysisQuery_Options struct {
 	// Optional. If true, the access section of result will expand any roles
 	// appearing in IAM policy bindings to include their permissions.
 	//
-	// If
-	// [IamPolicyAnalysisQuery.access_selector][google.cloud.asset.v1.IamPolicyAnalysisQuery.access_selector]
-	// is specified, the access section of the result will be determined by the
-	// selector, and this flag is not allowed to set.
+	// If [IamPolicyAnalysisQuery.access_selector][google.cloud.asset.v1.IamPolicyAnalysisQuery.access_selector] is specified, the access
+	// section of the result will be determined by the selector, and this flag
+	// is not allowed to set.
 	//
 	// Default is false.
 	ExpandRoles bool `protobuf:"varint,2,opt,name=expand_roles,json=expandRoles,proto3" json:"expand_roles,omitempty"`
-	// Optional. If true and
-	// [IamPolicyAnalysisQuery.resource_selector][google.cloud.asset.v1.IamPolicyAnalysisQuery.resource_selector]
-	// is not specified, the resource section of the result will expand any
-	// resource attached to an IAM policy to include resources lower in the
-	// resource hierarchy.
+	// Optional. If true and [IamPolicyAnalysisQuery.resource_selector][google.cloud.asset.v1.IamPolicyAnalysisQuery.resource_selector] is not
+	// specified, the resource section of the result will expand any resource
+	// attached to an IAM policy to include resources lower in the resource
+	// hierarchy.
 	//
 	// For example, if the request analyzes for which resources user A has
 	// permission P, and the results include an IAM policy with P on a GCP
 	// folder, the results will also include resources in that folder with
 	// permission P.
 	//
-	// If true and
-	// [IamPolicyAnalysisQuery.resource_selector][google.cloud.asset.v1.IamPolicyAnalysisQuery.resource_selector]
-	// is specified, the resource section of the result will expand the
-	// specified resource to include resources lower in the resource hierarchy.
-	// Only project or lower resources are supported. Folder and organization
-	// resource cannot be used together with this option.
+	// If true and [IamPolicyAnalysisQuery.resource_selector][google.cloud.asset.v1.IamPolicyAnalysisQuery.resource_selector] is specified,
+	// the resource section of the result will expand the specified resource to
+	// include resources lower in the resource hierarchy. Only project or
+	// lower resources are supported. Folder and organization resource cannot be
+	// used together with this option.
 	//
 	// For example, if the request analyzes for which users have permission P on
 	// a GCP project with this option enabled, the results will include all
@@ -4888,19 +4867,19 @@ type IamPolicyAnalysisQuery_Options struct {
 	//
 	// Default is false.
 	ExpandResources bool `protobuf:"varint,3,opt,name=expand_resources,json=expandResources,proto3" json:"expand_resources,omitempty"`
-	// Optional. If true, the result will output the relevant parent/child
-	// relationships between resources. Default is false.
+	// Optional. If true, the result will output the relevant parent/child relationships
+	// between resources.
+	// Default is false.
 	OutputResourceEdges bool `protobuf:"varint,4,opt,name=output_resource_edges,json=outputResourceEdges,proto3" json:"output_resource_edges,omitempty"`
-	// Optional. If true, the result will output the relevant membership
-	// relationships between groups and other groups, and between groups and
-	// principals. Default is false.
+	// Optional. If true, the result will output the relevant membership relationships
+	// between groups and other groups, and between groups and principals.
+	// Default is false.
 	OutputGroupEdges bool `protobuf:"varint,5,opt,name=output_group_edges,json=outputGroupEdges,proto3" json:"output_group_edges,omitempty"`
-	// Optional. If true, the response will include access analysis from
-	// identities to resources via service account impersonation. This is a very
-	// expensive operation, because many derived queries will be executed. We
-	// highly recommend you use
-	// [AssetService.AnalyzeIamPolicyLongrunning][google.cloud.asset.v1.AssetService.AnalyzeIamPolicyLongrunning]
-	// rpc instead.
+	// Optional. If true, the response will include access analysis from identities to
+	// resources via service account impersonation. This is a very expensive
+	// operation, because many derived queries will be executed. We highly
+	// recommend you use [AssetService.AnalyzeIamPolicyLongrunning][google.cloud.asset.v1.AssetService.AnalyzeIamPolicyLongrunning] rpc
+	// instead.
 	//
 	// For example, if the request analyzes for which resources user A has
 	// permission P, and there's an IAM policy states user A has
@@ -5087,13 +5066,11 @@ type AnalyzeIamPolicyResponse_IamPolicyAnalysis struct {
 
 	// The analysis query.
 	AnalysisQuery *IamPolicyAnalysisQuery `protobuf:"bytes,1,opt,name=analysis_query,json=analysisQuery,proto3" json:"analysis_query,omitempty"`
-	// A list of
-	// [IamPolicyAnalysisResult][google.cloud.asset.v1.IamPolicyAnalysisResult]
-	// that matches the analysis query, or empty if no result is found.
+	// A list of [IamPolicyAnalysisResult][google.cloud.asset.v1.IamPolicyAnalysisResult] that matches the analysis query, or
+	// empty if no result is found.
 	AnalysisResults []*IamPolicyAnalysisResult `protobuf:"bytes,2,rep,name=analysis_results,json=analysisResults,proto3" json:"analysis_results,omitempty"`
-	// Represents whether all entries in the
-	// [analysis_results][google.cloud.asset.v1.AnalyzeIamPolicyResponse.IamPolicyAnalysis.analysis_results]
-	// have been fully explored to answer the query.
+	// Represents whether all entries in the [analysis_results][google.cloud.asset.v1.AnalyzeIamPolicyResponse.IamPolicyAnalysis.analysis_results] have been
+	// fully explored to answer the query.
 	FullyExplored bool `protobuf:"varint,3,opt,name=fully_explored,json=fullyExplored,proto3" json:"fully_explored,omitempty"`
 	// A list of non-critical errors happened during the query handling.
 	NonCriticalErrors []*IamPolicyAnalysisState `protobuf:"bytes,5,rep,name=non_critical_errors,json=nonCriticalErrors,proto3" json:"non_critical_errors,omitempty"`
@@ -5165,8 +5142,8 @@ type IamPolicyAnalysisOutputConfig_GcsDestination struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The uri of the Cloud Storage object. It's the same uri that is
-	// used by gsutil. Example: "gs://bucket_name/object_name". See [Viewing and
+	// Required. The uri of the Cloud Storage object. It's the same uri that is used by
+	// gsutil. Example: "gs://bucket_name/object_name". See [Viewing and
 	// Editing Object
 	// Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
 	// for more information.
@@ -5222,14 +5199,12 @@ type IamPolicyAnalysisOutputConfig_BigQueryDestination struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The BigQuery dataset in format
-	// "projects/projectId/datasets/datasetId", to which the analysis results
-	// should be exported. If this dataset does not exist, the export call will
-	// return an INVALID_ARGUMENT error.
+	// Required. The BigQuery dataset in format "projects/projectId/datasets/datasetId",
+	// to which the analysis results should be exported. If this dataset does
+	// not exist, the export call will return an INVALID_ARGUMENT error.
 	Dataset string `protobuf:"bytes,1,opt,name=dataset,proto3" json:"dataset,omitempty"`
-	// Required. The prefix of the BigQuery tables to which the analysis results
-	// will be written. Tables will be created based on this table_prefix if not
-	// exist:
+	// Required. The prefix of the BigQuery tables to which the analysis results will be
+	// written. Tables will be created based on this table_prefix if not exist:
 	//   - <table_prefix>_analysis table will contain export operation's metadata.
 	//   - <table_prefix>_analysis_result will contain all the
 	//     [IamPolicyAnalysisResult][google.cloud.asset.v1.IamPolicyAnalysisResult].
@@ -5239,8 +5214,8 @@ type IamPolicyAnalysisOutputConfig_BigQueryDestination struct {
 	TablePrefix string `protobuf:"bytes,2,opt,name=table_prefix,json=tablePrefix,proto3" json:"table_prefix,omitempty"`
 	// The partition key for BigQuery partitioned table.
 	PartitionKey IamPolicyAnalysisOutputConfig_BigQueryDestination_PartitionKey `protobuf:"varint,3,opt,name=partition_key,json=partitionKey,proto3,enum=google.cloud.asset.v1.IamPolicyAnalysisOutputConfig_BigQueryDestination_PartitionKey" json:"partition_key,omitempty"`
-	// Optional. Specifies the action that occurs if the destination table or
-	// partition already exists. The following values are supported:
+	// Optional. Specifies the action that occurs if the destination table or partition
+	// already exists. The following values are supported:
 	//
 	// * WRITE_TRUNCATE: If the table or partition already exists, BigQuery
 	// overwrites the entire table or all the partitions data.
@@ -5379,11 +5354,8 @@ type isSavedQuery_QueryContent_QueryContent interface {
 
 type SavedQuery_QueryContent_IamPolicyAnalysisQuery struct {
 	// An IAM Policy Analysis query, which could be used in
-	// the
-	// [AssetService.AnalyzeIamPolicy][google.cloud.asset.v1.AssetService.AnalyzeIamPolicy]
-	// rpc or the
-	// [AssetService.AnalyzeIamPolicyLongrunning][google.cloud.asset.v1.AssetService.AnalyzeIamPolicyLongrunning]
-	// rpc.
+	// the [AssetService.AnalyzeIamPolicy][google.cloud.asset.v1.AssetService.AnalyzeIamPolicy] rpc or
+	// the [AssetService.AnalyzeIamPolicyLongrunning][google.cloud.asset.v1.AssetService.AnalyzeIamPolicyLongrunning] rpc.
 	IamPolicyAnalysisQuery *IamPolicyAnalysisQuery `protobuf:"bytes,1,opt,name=iam_policy_analysis_query,json=iamPolicyAnalysisQuery,proto3,oneof"`
 }
 
@@ -5395,12 +5367,11 @@ type QueryAssetsOutputConfig_BigQueryDestination struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The BigQuery dataset where the query results will be saved. It
-	// has the format of "projects/{projectId}/datasets/{datasetId}".
+	// Required. The BigQuery dataset where the query results will be saved. It has the
+	// format of "projects/{projectId}/datasets/{datasetId}".
 	Dataset string `protobuf:"bytes,1,opt,name=dataset,proto3" json:"dataset,omitempty"`
-	// Required. The BigQuery table where the query results will be saved. If
-	// this table does not exist, a new table with the given name will be
-	// created.
+	// Required. The BigQuery table where the query results will be saved. If this table
+	// does not exist, a new table with the given name will be created.
 	Table string `protobuf:"bytes,2,opt,name=table,proto3" json:"table,omitempty"`
 	// Specifies the action that occurs if the destination table or partition
 	// already exists. The following values are supported:
@@ -5409,8 +5380,10 @@ type QueryAssetsOutputConfig_BigQueryDestination struct {
 	// overwrites the entire table or all the partitions data.
 	// * WRITE_APPEND: If the table or partition already exists, BigQuery
 	// appends the data to the table or the latest partition.
-	// * WRITE_EMPTY: If the table already exists and contains data, an error is
-	// returned.
+	// * WRITE_EMPTY: If the table already exists and contains data, a
+	// 'duplicate' error is returned in the job result.
+	//
+	// The default value is WRITE_EMPTY.
 	WriteDisposition string `protobuf:"bytes,3,opt,name=write_disposition,json=writeDisposition,proto3" json:"write_disposition,omitempty"`
 }
 
@@ -5475,32 +5448,23 @@ type BatchGetEffectiveIamPoliciesResponse_EffectiveIamPolicy struct {
 
 	// The [full_resource_name]
 	// (https://cloud.google.com/asset-inventory/docs/resource-name-format)
-	// for which the
-	// [policies][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.policies]
-	// are computed. This is one of the
-	// [BatchGetEffectiveIamPoliciesRequest.names][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesRequest.names]
-	// the caller provides in the request.
+	// for which the [policies][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.policies] are computed. This is one of the
+	// [BatchGetEffectiveIamPoliciesRequest.names][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesRequest.names] the caller provides in the
+	// request.
 	FullResourceName string `protobuf:"bytes,1,opt,name=full_resource_name,json=fullResourceName,proto3" json:"full_resource_name,omitempty"`
-	// The effective policies for the
-	// [full_resource_name][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.full_resource_name].
+	// The effective policies for the [full_resource_name][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.full_resource_name].
 	//
-	// These policies include the policy set on the
-	// [full_resource_name][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.full_resource_name]
-	// and those set on its parents and ancestors up to the
-	// [BatchGetEffectiveIamPoliciesRequest.scope][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesRequest.scope].
-	// Note that these policies are not filtered according to the resource type
-	// of the
+	// These policies include the policy set on the [full_resource_name][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.full_resource_name] and
+	// those set on its parents and ancestors up to the
+	// [BatchGetEffectiveIamPoliciesRequest.scope][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesRequest.scope]. Note that these policies
+	// are not filtered according to the resource type of the
 	// [full_resource_name][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.full_resource_name].
 	//
 	// These policies are hierarchically ordered by
-	// [PolicyInfo.attached_resource][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.attached_resource]
-	// starting from
-	// [full_resource_name][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.full_resource_name]
+	// [PolicyInfo.attached_resource][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.attached_resource] starting from [full_resource_name][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.full_resource_name]
 	// itself to its parents and ancestors, such that policies[i]'s
-	// [PolicyInfo.attached_resource][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.attached_resource]
-	// is the child of policies[i+1]'s
-	// [PolicyInfo.attached_resource][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.attached_resource],
-	// if policies[i+1] exists.
+	// [PolicyInfo.attached_resource][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.attached_resource] is the child of policies[i+1]'s
+	// [PolicyInfo.attached_resource][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.attached_resource], if policies[i+1] exists.
 	Policies []*BatchGetEffectiveIamPoliciesResponse_EffectiveIamPolicy_PolicyInfo `protobuf:"bytes,2,rep,name=policies,proto3" json:"policies,omitempty"`
 }
 
@@ -5556,12 +5520,9 @@ type BatchGetEffectiveIamPoliciesResponse_EffectiveIamPolicy_PolicyInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The full resource name the
-	// [policy][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.policy]
-	// is directly attached to.
+	// The full resource name the [policy][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.policy] is directly attached to.
 	AttachedResource string `protobuf:"bytes,1,opt,name=attached_resource,json=attachedResource,proto3" json:"attached_resource,omitempty"`
-	// The IAM policy that's directly attached to the
-	// [attached_resource][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.attached_resource].
+	// The IAM policy that's directly attached to the [attached_resource][google.cloud.asset.v1.BatchGetEffectiveIamPoliciesResponse.EffectiveIamPolicy.PolicyInfo.attached_resource].
 	Policy *v1.Policy `protobuf:"bytes,2,opt,name=policy,proto3" json:"policy,omitempty"`
 }
 
@@ -7728,14 +7689,13 @@ type AssetServiceClient interface {
 	// Exports assets with time and resource types to a given Cloud Storage
 	// location/BigQuery table. For Cloud Storage location destinations, the
 	// output format is newline-delimited JSON. Each line represents a
-	// [google.cloud.asset.v1.Asset][google.cloud.asset.v1.Asset] in the JSON
-	// format; for BigQuery table destinations, the output table stores the fields
-	// in asset Protobuf as columns. This API implements the
-	// [google.longrunning.Operation][google.longrunning.Operation] API, which
-	// allows you to keep track of the export. We recommend intervals of at least
-	// 2 seconds with exponential retry to poll the export operation result. For
-	// regular-size resource parent, the export operation usually finishes within
-	// 5 minutes.
+	// [google.cloud.asset.v1.Asset][google.cloud.asset.v1.Asset] in the JSON format; for BigQuery table
+	// destinations, the output table stores the fields in asset Protobuf as
+	// columns. This API implements the [google.longrunning.Operation][google.longrunning.Operation] API,
+	// which allows you to keep track of the export. We recommend intervals of at
+	// least 2 seconds with exponential retry to poll the export operation result.
+	// For regular-size resource parent, the export operation usually finishes
+	// within 5 minutes.
 	ExportAssets(ctx context.Context, in *ExportAssetsRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Lists assets with time and resource types and returns paged results in
 	// response.
@@ -7776,12 +7736,11 @@ type AssetServiceClient interface {
 	// accesses on which resources, and writes the analysis results to a Google
 	// Cloud Storage or a BigQuery destination. For Cloud Storage destination, the
 	// output format is the JSON format that represents a
-	// [AnalyzeIamPolicyResponse][google.cloud.asset.v1.AnalyzeIamPolicyResponse].
-	// This method implements the
-	// [google.longrunning.Operation][google.longrunning.Operation], which allows
-	// you to track the operation status. We recommend intervals of at least 2
-	// seconds with exponential backoff retry to poll the operation result. The
-	// metadata contains the metadata for the long-running operation.
+	// [AnalyzeIamPolicyResponse][google.cloud.asset.v1.AnalyzeIamPolicyResponse]. This method implements the
+	// [google.longrunning.Operation][google.longrunning.Operation], which allows you to track the operation
+	// status. We recommend intervals of at least 2 seconds with exponential
+	// backoff retry to poll the operation result. The metadata contains the
+	// metadata for the long-running operation.
 	AnalyzeIamPolicyLongrunning(ctx context.Context, in *AnalyzeIamPolicyLongrunningRequest, opts ...grpc.CallOption) (*longrunning.Operation, error)
 	// Analyze moving a resource to a specified destination without kicking off
 	// the actual move. The analysis is best effort depending on the user's
@@ -8011,14 +7970,13 @@ type AssetServiceServer interface {
 	// Exports assets with time and resource types to a given Cloud Storage
 	// location/BigQuery table. For Cloud Storage location destinations, the
 	// output format is newline-delimited JSON. Each line represents a
-	// [google.cloud.asset.v1.Asset][google.cloud.asset.v1.Asset] in the JSON
-	// format; for BigQuery table destinations, the output table stores the fields
-	// in asset Protobuf as columns. This API implements the
-	// [google.longrunning.Operation][google.longrunning.Operation] API, which
-	// allows you to keep track of the export. We recommend intervals of at least
-	// 2 seconds with exponential retry to poll the export operation result. For
-	// regular-size resource parent, the export operation usually finishes within
-	// 5 minutes.
+	// [google.cloud.asset.v1.Asset][google.cloud.asset.v1.Asset] in the JSON format; for BigQuery table
+	// destinations, the output table stores the fields in asset Protobuf as
+	// columns. This API implements the [google.longrunning.Operation][google.longrunning.Operation] API,
+	// which allows you to keep track of the export. We recommend intervals of at
+	// least 2 seconds with exponential retry to poll the export operation result.
+	// For regular-size resource parent, the export operation usually finishes
+	// within 5 minutes.
 	ExportAssets(context.Context, *ExportAssetsRequest) (*longrunning.Operation, error)
 	// Lists assets with time and resource types and returns paged results in
 	// response.
@@ -8059,12 +8017,11 @@ type AssetServiceServer interface {
 	// accesses on which resources, and writes the analysis results to a Google
 	// Cloud Storage or a BigQuery destination. For Cloud Storage destination, the
 	// output format is the JSON format that represents a
-	// [AnalyzeIamPolicyResponse][google.cloud.asset.v1.AnalyzeIamPolicyResponse].
-	// This method implements the
-	// [google.longrunning.Operation][google.longrunning.Operation], which allows
-	// you to track the operation status. We recommend intervals of at least 2
-	// seconds with exponential backoff retry to poll the operation result. The
-	// metadata contains the metadata for the long-running operation.
+	// [AnalyzeIamPolicyResponse][google.cloud.asset.v1.AnalyzeIamPolicyResponse]. This method implements the
+	// [google.longrunning.Operation][google.longrunning.Operation], which allows you to track the operation
+	// status. We recommend intervals of at least 2 seconds with exponential
+	// backoff retry to poll the operation result. The metadata contains the
+	// metadata for the long-running operation.
 	AnalyzeIamPolicyLongrunning(context.Context, *AnalyzeIamPolicyLongrunningRequest) (*longrunning.Operation, error)
 	// Analyze moving a resource to a specified destination without kicking off
 	// the actual move. The analysis is best effort depending on the user's

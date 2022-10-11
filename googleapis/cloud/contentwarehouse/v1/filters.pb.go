@@ -147,7 +147,6 @@ func (FileTypeFilter_FileType) EnumDescriptor() ([]byte, []int) {
 	return file_google_cloud_contentwarehouse_v1_filters_proto_rawDescGZIP(), []int{3, 0}
 }
 
-// NEXT_ID: 13
 type DocumentQuery struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
