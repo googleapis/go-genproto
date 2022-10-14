@@ -50,13 +50,15 @@ type CreateServiceRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Required. The location and project in which this service should be created.
-	// Format: projects/{projectnumber}/locations/{location}
+	// The location and project in which this service should be created.
+	// Format: projects/{project}/locations/{location}
+	// Only lowercase characters, digits, and hyphens.
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Required. The Service instance to create.
 	Service *Service `protobuf:"bytes,2,opt,name=service,proto3" json:"service,omitempty"`
-	// Required. The unique identifier for the Service. The name of the service becomes
-	// {parent}/services/{service_id}.
+	// Required. The unique identifier for the Service. It must begin with letter,
+	// and may not end with hyphen; must contain fewer than 50 characters.
+	// The name of the service becomes {parent}/services/{service_id}.
 	ServiceId string `protobuf:"bytes,3,opt,name=service_id,json=serviceId,proto3" json:"service_id,omitempty"`
 	// Indicates that the request should be validated and default values
 	// populated, without persisting the request or creating any resources.
@@ -201,7 +203,7 @@ type ListServicesRequest struct {
 
 	// Required. The location and project to list resources on.
 	// Location must be a valid GCP region, and may not be the "-" wildcard.
-	// Format: projects/{projectnumber}/locations/{location}
+	// Format: projects/{project}/locations/{location}
 	Parent string `protobuf:"bytes,1,opt,name=parent,proto3" json:"parent,omitempty"`
 	// Maximum number of Services to return in this call.
 	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -338,7 +340,7 @@ type GetServiceRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The full name of the Service.
-	// Format: projects/{projectnumber}/locations/{location}/services/{service}
+	// Format: projects/{project}/locations/{location}/services/{service}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 }
 
@@ -388,7 +390,7 @@ type DeleteServiceRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Required. The full name of the Service.
-	// Format: projects/{projectnumber}/locations/{location}/services/{service}
+	// Format: projects/{project}/locations/{location}/services/{service}
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Indicates that the request should be validated without actually
 	// deleting any resources.
